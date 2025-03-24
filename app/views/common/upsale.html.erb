@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="upsale-notification <%= additional_classes %>">
-    <h2><%= feature_title %></h2>
+  <%= render(Primer::Beta::Heading.new(tag: :h2)) { feature_title } %>
     <% if feature_description.empty? %>
       <p class="upsale--feature-reference">
         <%= t("js.admin.enterprise.upsale.benefits.description") %>
@@ -19,9 +19,7 @@
         <%= t("js.admin.enterprise.upsale.benefits.professional_support_text") %>
       </p>
     <% else %>
-      <p class="upsale--feature-reference">
-        <%= feature_description %>
-      </p>
+      <%= render(Primer::Beta::Text.new) { feature_description } %>
     <% end %>
 
     <p class="upsale--feature-reference">
@@ -40,25 +38,37 @@
     <br>
     <%= t("admin.enterprise.upgrade_info") %>
     </p>
-    <%= link_to(
-          OpenProject::Static::Links.links[:contact_us][:href],
-          { class: "button",
-            aria: { label: t("admin.enterprise.buttons.contact") },
-            target: "_blank",
-            title: t("admin.enterprise.buttons.contact") }
-        ) do %>
-      <span class="button--text"><%= t("admin.enterprise.buttons.contact") %></span>
-    <% end %>
 
-    <%= link_to(
-          OpenProject::Static::Links.links[:pricing][:href],
-          { class: "button -primary",
-            aria: { label: t("admin.enterprise.buttons.upgrade") },
+    <%=
+      render(Primer::OpenProject::FlexLayout.new(align_items: :center, style: "justify-self: center")) do |flex|
+        flex.with_column do
+          render(Primer::Beta::Button.new(
+            tag: :a,
+            scheme: :secondary,
+            href: OpenProject::Static::Links.links[:contact_us][:href],
             target: "_blank",
-            title: t("admin.enterprise.buttons.upgrade") }
-        ) do %>
-      <%= spot_icon("enterprise-addons") %>
-      <span class="button--text"><%= t("admin.enterprise.buttons.upgrade") %></span>
-    <% end %>
-    <opce-free-trial-button></opce-free-trial-button>
+            title: t("admin.enterprise.buttons.contact"),
+            aria_label: t("admin.enterprise.buttons.contact"),
+            )) { t("admin.enterprise.buttons.contact") }
+        end
+
+        flex.with_column(ml: 1) do
+          render(Primer::Beta::Button.new(
+            tag: :a,
+            scheme: :primary,
+            href: OpenProject::Static::Links.links[:pricing][:href],
+            target: "_blank",
+            title: t("admin.enterprise.buttons.upgrade"),
+            aria_label: t("admin.enterprise.buttons.upgrade"),
+            )) do |link|
+            link.with_leading_visual_icon(icon: :"op-enterprise-addons")
+            t("admin.enterprise.buttons.upgrade")
+          end
+        end
+
+        flex.with_column(ml: 1) do
+          angular_component_tag("opce-free-trial-button")
+        end
+      end
+    %>
 </div>
