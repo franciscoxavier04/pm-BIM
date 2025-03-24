@@ -36,7 +36,7 @@ RSpec.describe "WorkPackages-Settings-Activities", :js do
 
   current_user { create(:admin) }
 
-  it "enables and disables the settings for the project" do
+  it "enables and disables the settings for the project", with_ee: %i[comments_with_restricted_visibility] do
     activities_settings_page.visit!
     expect(page).to have_css("#activities-form")
 
