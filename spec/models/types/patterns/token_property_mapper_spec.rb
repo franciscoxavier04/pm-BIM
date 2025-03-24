@@ -33,13 +33,15 @@ require "spec_helper"
 RSpec.describe Types::Patterns::TokenPropertyMapper do
   shared_let(:responsible) { create(:user, firstname: "Responsible") }
   shared_let(:assignee) { create(:user, firstname: "Assignee") }
+  shared_let(:parent_assignee) { create(:user, firstname: "Parent", lastname: "Assignee") }
 
   shared_let(:category) { create(:category) }
 
   shared_let(:project) { create(:project, parent: create(:project), status_code: 1, status_explanation: "A Mess") }
 
   shared_let(:work_package_parent) do
-    create(:work_package, project:, category:, start_date: Date.yesterday, estimated_hours: 120, due_date: 3.months.from_now)
+    create(:work_package, project:, category:, start_date: Date.yesterday, estimated_hours: 120,
+                          due_date: 3.months.from_now, assigned_to: parent_assignee)
   end
 
   shared_let(:work_package) do
