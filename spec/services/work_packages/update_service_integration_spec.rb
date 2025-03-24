@@ -1561,6 +1561,8 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
       # the `self_and_ancestors` association is loaded in an `after_save` hook. In order to happen,
       # we must validate or save a record again after it was already saved in the current request.
       # Once the issue is fixed, it is safe to remove the association reset.
+      # https://github.com/rails/rails/issues/54807
+
       work_package.association(:self_and_ancestors).reset
 
       expect(subject).to be_success
