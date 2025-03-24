@@ -61,7 +61,7 @@ You can then specify the following:
 
 If you want to change the details of a meeting, for example its time or location, open the meetings details view by clicking on the title in the overview list and click on **Edit** next to the meeting’s name.
 
-![edit-meeting](edit-meeting.png)
+![Edit icon a classic meeting in OpenProject](edit-meeting.png)
 
 An edit screen is displayed and the meeting information can be adjusted.
 
