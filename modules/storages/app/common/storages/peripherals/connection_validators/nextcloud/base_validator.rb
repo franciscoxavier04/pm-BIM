@@ -37,12 +37,28 @@ module Storages
             @storage = storage
           end
 
-          def call = raise Errors::SubclassResponsibility
+          def call
+            catch :interrupted do
+              validate
+            end
+
+            @results
+          end
 
           private
 
-          def update_result(method, value)
-            @results[method.to_sym] = value
+          def validate = raise Errors::SubclassResponsibility
+
+          def register_checks(*keys)
+            @results = keys.to_h { [it, CheckResult.skipped(it)] }
+          end
+
+          def update_result(key, value)
+            if @results&.has_key?(key)
+              @results[key] = value
+            else
+              raise ArgumentError, "Check #{key} not registered."
+            end
           end
 
           def pass_check(key)
@@ -54,8 +70,9 @@ module Storages
             throw :interrupted
           end
 
-          def warn_check(key, message)
+          def warn_check(key, message, halt_validation: false)
             update_result(key, CheckResult.warning(key, message))
+            throw :interrupted if halt_validation
           end
 
           def message(key, context = {})

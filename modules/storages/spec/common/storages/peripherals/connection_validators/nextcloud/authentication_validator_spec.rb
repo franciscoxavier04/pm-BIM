@@ -108,8 +108,8 @@ module Storages
                 user.update!(identity_url: "ldap-provider:this-will-trigger-a-warning")
                 result = validator.call
 
-                expect(result[:non_oidc_provisioned_user]).to be_warning
-                expect(result[:non_oidc_provisioned_user].message).to eq(I18n.t(i18n_key(:oidc_non_oidc_user)))
+                expect(result[:provisioned_user_provider]).to be_warning
+                expect(result[:provisioned_user_provider].message).to eq(I18n.t(i18n_key(:oidc_non_oidc_user)))
 
                 state_count = result.values.map { it.state }.tally
                 expect(state_count).to eq({ success: 1, skipped: 1, warning: 1 })

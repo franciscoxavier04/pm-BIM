@@ -53,8 +53,8 @@ module Storages
                 .to_return(status: 404, body: "Not Found")
 
               results = validator.call
-              expect(results[:host_url_not_found]).to be_a_failure
-              expect(results[:host_url_not_found].message).to eq(I18n.t(i18n_key(:host_not_found)))
+              expect(results[:host_url_accessible]).to be_a_failure
+              expect(results[:host_url_accessible].message).to eq(I18n.t(i18n_key(:host_not_found)))
             end
 
             it "integration app version mismatch", vcr: "nextcloud/capabilities_success" do
@@ -62,15 +62,15 @@ module Storages
               allow(subject).to receive(:nextcloud_dependencies).and_return(absurd_version)
 
               results = validator.call
-              expect(results[:version_mismatch]).to be_a_failure
-              expect(results[:version_mismatch].message).to eq(I18n.t(i18n_key(:app_version_mismatch)))
+              expect(results[:dependencies_versions]).to be_a_failure
+              expect(results[:dependencies_versions].message).to eq(I18n.t(i18n_key(:app_version_mismatch)))
             end
 
             it "integration app disabled / missing", vcr: "nextcloud/capabilities_success_app_disabled" do
               results = validator.call
 
-              expect(results[:missing_dependencies]).to be_a_failure
-              expect(results[:missing_dependencies].message)
+              expect(results[:dependencies_check]).to be_a_failure
+              expect(results[:dependencies_check].message)
                 .to eq(I18n.t(i18n_key(:missing_dependencies), dependency: "Integration OpenProject"))
             end
           end

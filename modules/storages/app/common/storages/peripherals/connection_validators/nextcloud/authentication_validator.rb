@@ -38,21 +38,14 @@ module Storages
             @user = User.current
           end
 
-          def call
-            catch :interrupted do
-              @storage.authenticate_via_idp? ? validate_sso : validate_oauth
-            end
-
-            @results
-          end
-
           private
 
+          def validate
+            @storage.authenticate_via_idp? ? validate_sso : validate_oauth
+          end
+
           def validate_oauth
-            @results = {
-              existing_token: CheckResult.skipped(:existing_token),
-              user_bound_request: CheckResult.skipped(:user_bound_request)
-            }
+            register_checks(:existing_token, :user_bound_request)
 
             oauth_token
             user_bound_request
@@ -62,28 +55,23 @@ module Storages
             if OAuthClientToken.where(user: @user, oauth_client: @storage.oauth_client).any?
               pass_check(:existing_token)
             else
-              warn_check(:existing_token, message(:oauth_token_missing))
-              throw :interrupted
+              warn_check(:existing_token, message(:oauth_token_missing), halt_validation: true)
             end
           end
 
           def user_bound_request
             Registry["nextcloud.queries.files"]
               .call(storage: @storage, auth_strategy:, folder: ParentFolder.new("/")).on_failure do
-              fail_check(__method__, message("oauth_request_#{it.result}"))
+              fail_check(:user_bound_request, message("oauth_request_#{it.result}"))
             end
 
-            pass_check(__method__)
+            pass_check(:user_bound_request)
           end
 
           def auth_strategy = Registry["nextcloud.authentication.user_bound"].call(storage: @storage, user: @user)
 
           def validate_sso
-            @results = {
-              non_provisioned_user: CheckResult.skipped(:non_provisioned_user),
-              non_oidc_provisioned_user: CheckResult.skipped(:non_oidc_provisioned_user),
-              token_usability: CheckResult.skipped(:token_usability)
-            }
+            register_checks(:non_provisioned_user, :provisioned_user_provider, :token_usability)
 
             non_provisioned_user
             non_oidc_provisioned_user
@@ -92,19 +80,17 @@ module Storages
 
           def non_provisioned_user
             if @user.identity_url.present?
-              pass_check(__method__)
+              pass_check(:non_provisioned_user)
             else
-              warn_check(__method__, message(:oidc_non_provisioned_user))
-              throw :interrupted
+              warn_check(:non_provisioned_user, message(:oidc_non_provisioned_user), halt_validation: true)
             end
           end
 
           def non_oidc_provisioned_user
             if @user.authentication_provider.is_a?(OpenIDConnect::Provider)
-              pass_check(__method__)
+              pass_check(:provisioned_user_provider)
             else
-              warn_check(__method__, message(:oidc_non_oidc_user))
-              throw :interrupted
+              warn_check(:provisioned_user_provider, message(:oidc_non_oidc_user), halt_validation: true)
             end
           end
 
@@ -112,7 +98,7 @@ module Storages
             service = OpenIDConnect::UserTokens::FetchService.new(user: @user)
 
             result = service.access_token_for(audience: @storage.audience)
-            return pass_check(__method__) if result.success?
+            return pass_check(:token_usability) if result.success?
 
             error_code = case result.failure
                          in { code: /token_exchange/ | :unable_to_exchange_token }
@@ -125,8 +111,7 @@ module Storages
                            :unknown_error
                          end
 
-            fail_check(__method__, message(error_code))
-            throw :interrupted
+            fail_check(:token_usability, message(error_code))
           end
         end
       end
