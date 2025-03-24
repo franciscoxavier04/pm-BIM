@@ -38,7 +38,7 @@ module Storages
         end
 
         def self.failure(key, message)
-          new(key:, state: :failure, message: message, timestamp: Time.zone.now)
+          new(key:, state: :failure, message:, timestamp: Time.zone.now)
         end
 
         def self.success(key)
@@ -46,7 +46,7 @@ module Storages
         end
 
         def self.warning(key, message)
-          new(key:, state: :warning, message: message, timestamp: Time.zone.now)
+          new(key:, state: :warning, message:, timestamp: Time.zone.now)
         end
 
         def success? = state == :success

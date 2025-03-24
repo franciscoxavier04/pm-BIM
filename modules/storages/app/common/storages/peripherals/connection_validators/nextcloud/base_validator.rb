@@ -33,6 +33,8 @@ module Storages
     module ConnectionValidators
       module Nextcloud
         class BaseValidator
+          include TaggedLogging
+
           def initialize(storage)
             @storage = storage
           end
