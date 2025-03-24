@@ -35,6 +35,10 @@ class Queries::Principals::Filters::RestrictedMentionableOnWorkPackageFilter <
   end
 
   def human_name
-    "restricted mentionable" # Internal use
+    "restricted mentionable" # Only for Internal use, not visible in the UI
+  end
+
+  def permission
+    :view_comments_with_restricted_visibility
   end
 end
