@@ -79,7 +79,7 @@ module WorkPackages
       end
 
       def disabled?
-        !schedule_manually
+        !schedule_manually && (milestone? || work_package.children.any?)
       end
 
       def milestone?
@@ -94,6 +94,10 @@ module WorkPackages
 
       def disabled_checkbox?
         !schedule_manually && work_package.children.any?
+      end
+
+      def minimal_scheduling_date
+        schedule_manually ? nil : work_package.start_date
       end
     end
   end

@@ -147,7 +147,7 @@ RSpec.describe WorkPackages::DatePicker::DialogContentComponent, type: :componen
 
       it "shows the date form with disabled fields" do
         expect(dialog_content).to have_field(I18n.t("attributes.start_date"), disabled: true)
-        expect(dialog_content).to have_field(I18n.t("attributes.due_date"), disabled: true)
+        expect(dialog_content).to have_field(I18n.t("attributes.due_date"), disabled: false)
       end
 
       it "shows the banner 'The start date is set by a predecessor'" do
@@ -169,7 +169,7 @@ RSpec.describe WorkPackages::DatePicker::DialogContentComponent, type: :componen
 
       it "shows the date form with disabled fields" do
         expect(dialog_content).to have_field(I18n.t("attributes.start_date"), disabled: true)
-        expect(dialog_content).to have_field(I18n.t("attributes.due_date"), disabled: true)
+        expect(dialog_content).to have_field(I18n.t("attributes.due_date"), disabled: false)
       end
 
       it "shows the banner 'The start date is set by a predecessor'" do
