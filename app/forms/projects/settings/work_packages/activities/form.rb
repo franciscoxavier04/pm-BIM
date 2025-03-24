@@ -33,7 +33,7 @@ module Projects::Settings::WorkPackages::Activities
       f.check_box(
         name: :enabled_comments_with_restricted_visibility,
         label: I18n.t("settings.work_packages.activities.enable_comments_with_restricted_visibility"),
-        caption: I18n.t("settings.work_packages.activities.helper_text"),
+        caption: caption_text,
         checked: model.project.enabled_comments_with_restricted_visibility
       )
 
@@ -46,6 +46,16 @@ module Projects::Settings::WorkPackages::Activities
 
     def initialize(**_options)
       super()
+    end
+
+    private
+
+    def caption_text
+      link = render(Primer::Beta::Link.new(href: OpenProject::Static::Links.url_for(:user_guides_work_package_activity))) do
+        I18n.t("label_learn_more")
+      end
+
+      I18n.t("settings.work_packages.activities.helper_text", link:).html_safe
     end
   end
 end
