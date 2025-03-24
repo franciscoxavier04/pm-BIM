@@ -53,8 +53,16 @@ RSpec.describe Types::Patterns::TokenPropertyMapper do
     create(:string_wp_custom_field).tap do |custom_field|
       project.work_package_custom_fields << custom_field
       work_package.type.custom_fields << custom_field
+    end
+  end
 
-      create(:work_package_custom_value, custom_field:, customized: work_package, value: "test")
+  shared_let(:mult_list_custom_field) do
+    create(:multi_list_wp_custom_field).tap do
+      project.work_package_custom_fields << it
+      work_package.type.custom_fields << it
+
+      work_package.send(:"custom_field_#{it.id}=", it.possible_values.take(2))
+      work_package.save
     end
   end
 
@@ -63,6 +71,11 @@ RSpec.describe Types::Patterns::TokenPropertyMapper do
       expect { details[:fn].call(work_package) }.not_to raise_error
       expect(details[:fn].call(work_package)).not_to be_nil
     end
+  end
+
+  it "multi value fields are supported" do
+    function = described_class.new.fetch :"custom_field_#{mult_list_custom_field.id}"
+    expect(function.call(work_package)).to eq(%w[A B])
   end
 
   it "returns all possible tokens" do

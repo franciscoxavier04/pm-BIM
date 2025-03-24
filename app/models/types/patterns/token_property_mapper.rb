@@ -37,8 +37,6 @@ module Types
         context.public_send(key.to_sym)
       end.curry
 
-      # Parent ID <- Is tagged as Parent
-
       TOKEN_PROPERTY_MAP = IceNine.deep_freeze(
         {
           id: { fn: ->(wp) { wp.id }, label: -> { WorkPackage.human_attribute_name(:id) } },
@@ -118,7 +116,7 @@ module Types
       end
 
       def all_work_package_cfs
-        WorkPackageCustomField.where(multi_value: false).where.not(field_format: %w[text bool link empty]).order(:name)
+        WorkPackageCustomField.where.not(field_format: %w[text bool link empty]).order(:name)
       end
 
       def project_attributes

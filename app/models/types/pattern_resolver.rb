@@ -56,6 +56,8 @@ module Types
       case value
       when Date, Time, DateTime
         value.strftime("%Y-%m-%d")
+      when Array
+        value.join(", ")
       when NilClass
         "NA"
       else
