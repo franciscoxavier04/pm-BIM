@@ -47,7 +47,7 @@ module Storages
 
             before { User.current = user }
 
-            it "passes when the user has a token and the request works", vcr: "nextcloud/files_query_root" do
+            it "passes when the user has a token and the request works", vcr: "nextcloud/user_query_success" do
               result = validator.call
 
               expect(result.values).to all(be_success)
@@ -63,7 +63,7 @@ module Storages
             end
 
             it "returns a failure if the remote call failed" do
-              Registry.stub("nextcloud.queries.files", ->(_) { ServiceResult.failure(result: :unauthorized) })
+              Registry.stub("nextcloud.queries.user", ->(_) { ServiceResult.failure(result: :unauthorized) })
 
               result = validator.call
               expect(result[:user_bound_request]).to be_a_failure
@@ -101,7 +101,7 @@ module Storages
                 expect(result[:non_provisioned_user].message).to eq(I18n.t(i18n_key(:oidc_non_provisioned_user)))
 
                 state_count = result.values.map { it.state }.tally
-                expect(state_count).to eq({ skipped: 2, warning: 1 })
+                expect(state_count).to eq({ skipped: 3, warning: 1 })
               end
 
               it "returns a warning if the user is not provisioned by an oidc provider" do
@@ -112,7 +112,7 @@ module Storages
                 expect(result[:provisioned_user_provider].message).to eq(I18n.t(i18n_key(:oidc_non_oidc_user)))
 
                 state_count = result.values.map { it.state }.tally
-                expect(state_count).to eq({ success: 1, skipped: 1, warning: 1 })
+                expect(state_count).to eq({ success: 1, skipped: 2, warning: 1 })
               end
             end
 
@@ -122,8 +122,8 @@ module Storages
                   create(:oidc_user_token, user:)
                   result = validator.call
 
-                  expect(result[:token_usability]).to be_failure
-                  expect(result[:token_usability].message).to eq(I18n.t(i18n_key(:oidc_cant_acquire_token)))
+                  expect(result[:token_negotiable]).to be_failure
+                  expect(result[:token_negotiable].message).to eq(I18n.t(i18n_key(:oidc_cant_acquire_token)))
                 end
               end
 
@@ -151,8 +151,8 @@ module Storages
 
                   result = validator.call
 
-                  expect(result[:token_usability]).to be_failure
-                  expect(result[:token_usability].message).to eq(I18n.t(i18n_key(:oidc_cant_refresh_token)))
+                  expect(result[:token_negotiable]).to be_failure
+                  expect(result[:token_negotiable].message).to eq(I18n.t(i18n_key(:oidc_cant_refresh_token)))
                 end
 
                 it "fails when refresh fails" do
@@ -162,8 +162,8 @@ module Storages
 
                   result = validator.call
 
-                  expect(result[:token_usability]).to be_failure
-                  expect(result[:token_usability].message).to eq(I18n.t(i18n_key(:oidc_cant_refresh_token)))
+                  expect(result[:token_negotiable]).to be_failure
+                  expect(result[:token_negotiable].message).to eq(I18n.t(i18n_key(:oidc_cant_refresh_token)))
                 end
 
                 context "when the server supports token exchange" do
@@ -189,8 +189,8 @@ module Storages
 
                     result = validator.call
 
-                    expect(result[:token_usability]).to be_failure
-                    expect(result[:token_usability].message).to eq(I18n.t(i18n_key(:oidc_cant_exchange_token)))
+                    expect(result[:token_negotiable]).to be_failure
+                    expect(result[:token_negotiable].message).to eq(I18n.t(i18n_key(:oidc_cant_exchange_token)))
                     expect(exchange_request).to have_been_requested.once
                   end
 
@@ -202,8 +202,8 @@ module Storages
 
                     result = validator.call
 
-                    expect(result[:token_usability]).to be_failure
-                    expect(result[:token_usability].message).to eq(I18n.t(i18n_key(:oidc_cant_exchange_token)))
+                    expect(result[:token_negotiable]).to be_failure
+                    expect(result[:token_negotiable].message).to eq(I18n.t(i18n_key(:oidc_cant_exchange_token)))
                     expect(exchange_request).to have_been_requested.once
                   end
                 end

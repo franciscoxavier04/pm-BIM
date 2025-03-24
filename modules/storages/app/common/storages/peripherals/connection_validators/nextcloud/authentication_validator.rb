@@ -60,8 +60,7 @@ module Storages
           end
 
           def user_bound_request
-            Registry["nextcloud.queries.files"]
-              .call(storage: @storage, auth_strategy:, folder: ParentFolder.new("/")).on_failure do
+            Registry["nextcloud.queries.user"].call(storage: @storage, auth_strategy:).on_failure do
               fail_check(:user_bound_request, message("oauth_request_#{it.result}"))
             end
 
@@ -71,11 +70,12 @@ module Storages
           def auth_strategy = Registry["nextcloud.authentication.user_bound"].call(storage: @storage, user: @user)
 
           def validate_sso
-            register_checks(:non_provisioned_user, :provisioned_user_provider, :token_usability)
+            register_checks(:non_provisioned_user, :provisioned_user_provider, :token_negotiable, :user_bound_request)
 
             non_provisioned_user
             non_oidc_provisioned_user
-            token_usability
+            token_negotiable
+            user_bound_request
           end
 
           def non_provisioned_user
@@ -94,11 +94,11 @@ module Storages
             end
           end
 
-          def token_usability
+          def token_negotiable
             service = OpenIDConnect::UserTokens::FetchService.new(user: @user)
 
             result = service.access_token_for(audience: @storage.audience)
-            return pass_check(:token_usability) if result.success?
+            return pass_check(:token_negotiable) if result.success?
 
             error_code = case result.failure
                          in { code: /token_exchange/ | :unable_to_exchange_token }
@@ -111,7 +111,7 @@ module Storages
                            :unknown_error
                          end
 
-            fail_check(:token_usability, message(error_code))
+            fail_check(:token_negotiable, message(error_code))
           end
         end
       end
