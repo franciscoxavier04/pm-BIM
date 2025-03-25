@@ -67,7 +67,11 @@ module EnterpriseEdition
                 :feature_key
 
     def title
-      @title || I18n.t("ee.upsale.#{feature_key}.title", default: I18n.t("ee.upsale.title"))
+      @title || I18n.t("ee.upsale.#{feature_key}.title", default: default_title)
+    end
+
+    def default_title
+      I18n.t("ee.upsale.plan_title", plan:)
     end
 
     def description
@@ -84,6 +88,10 @@ module EnterpriseEdition
           If that isn't applicable, a description parameter needs to be provided.
         TEXT
       )
+    end
+
+    def plan
+      @plan ||= OpenProject::Token.lowest_plan_for(feature_key)&.capitalize
     end
 
     def link_title

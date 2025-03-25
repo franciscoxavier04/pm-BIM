@@ -2050,6 +2050,7 @@ en:
   ee:
     upsale:
       title: "Enterprise add-on"
+      plan_title: "Enterprise %{plan} add-on"
       link_title: "More information"
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
