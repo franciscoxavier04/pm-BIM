@@ -31,17 +31,19 @@
 class WorkPackages::ActivitiesTab::RestrictedMentionsSanitizer
   def initialize(work_package, notes)
     @work_package = work_package
-    @parser = Nokogiri::HTML.fragment(notes)
+    @notes = notes
   end
 
   def call
+    return "" if notes.blank?
+
     convert_unmentionable_principals_to_plain_text
     CGI.unescapeHTML(parser.to_html)
   end
 
   private
 
-  attr_reader :work_package, :parser
+  attr_reader :work_package, :notes
 
   def convert_unmentionable_principals_to_plain_text
     mentionable_principals_ids = mentionable_principals.pluck(:id)
@@ -51,6 +53,10 @@ class WorkPackages::ActivitiesTab::RestrictedMentionsSanitizer
         mention.replace(mention.content)
       end
     end
+  end
+
+  def parser
+    @parser ||= Nokogiri::HTML.fragment(notes)
   end
 
   def mentionable_principals

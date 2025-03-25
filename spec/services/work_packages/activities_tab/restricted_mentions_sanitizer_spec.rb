@@ -88,6 +88,14 @@ RSpec.describe WorkPackages::ActivitiesTab::RestrictedMentionsSanitizer do
     expect(subject).to eq(expected_output)
   end
 
+  context "when the notes are empty" do
+    let(:input) { "" }
+
+    it "returns an empty string" do
+      expect(subject).to eq("")
+    end
+  end
+
   def create_user_without_restricted_comments_view_permissions
     viewer_role = create(:project_role, permissions: %i[view_work_packages])
     create(:user,
