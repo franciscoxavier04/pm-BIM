@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -421,10 +423,11 @@ RSpec.describe "API V3 Authentication" do
         .to_return(status: 200, body: JWT::JWK::Set.new(jwk_response).export.to_json, headers: {})
     end
     let(:jwk_response) { jwk }
+    let(:user) { create(:user, identity_url: "keycloak:#{token_sub}") }
 
     before do
       create(:oidc_provider, slug: "keycloak")
-      create(:user, identity_url: "keycloak:#{token_sub}")
+      user.save!
       keys_request_stub
 
       header "Authorization", "Bearer #{token}"
@@ -507,6 +510,19 @@ RSpec.describe "API V3 Authentication" do
         expect(last_response).to have_http_status :unauthorized
         expect(JSON.parse(last_response.body)).to eq(error_response_body)
         error = "The signature key ID is unknown"
+        expect(last_response.header["WWW-Authenticate"])
+          .to eq(%{Bearer realm="OpenProject API", error="invalid_token", error_description="#{error}"})
+      end
+    end
+
+    context "when user identified by token is not known" do
+      let(:user) { create(:user, identity_url: "keycloak:not-the-token-sub") }
+
+      it "fails with HTTP 401 Unauthorized" do
+        get resource
+        expect(last_response).to have_http_status :unauthorized
+        expect(JSON.parse(last_response.body)).to eq(error_response_body)
+        error = "The user identified by the token is not known"
         expect(last_response.header["WWW-Authenticate"])
           .to eq(%{Bearer realm="OpenProject API", error="invalid_token", error_description="#{error}"})
       end
