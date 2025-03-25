@@ -44,6 +44,8 @@ export default class MyTimeTrackingController extends Controller {
       }
     });
 
+    const DEFAULT_TIMED_EVENT_DURATION = '01:00';
+
     this.calendar = new Calendar(this.calendarTarget, {
       plugins: [timeGridPlugin, dayGridPlugin, interactionPlugin],
       initialView: this.calendarView(),
@@ -58,6 +60,7 @@ export default class MyTimeTrackingController extends Controller {
       selectable: this.canCreateValue,
       editable: this.canEditValue,
       eventResizableFromStart: true,
+      defaultTimedEventDuration: DEFAULT_TIMED_EVENT_DURATION,
       allDayContent: I18n.t('js.myTimeTracking.noSpecificTime'),
       eventClassNames(arg) {
         return [
@@ -89,27 +92,48 @@ export default class MyTimeTrackingController extends Controller {
         const startMoment = moment(info.event.startStr);
         const endMoment = moment(info.event.endStr);
 
+        const newEventHours = info.event.allDay ? info.event.extendedProps.hours as number : moment.duration(endMoment.diff(startMoment)).asHours();
+
+        info.event.setExtendedProp('hours', newEventHours);
+
         this.updateTimeEntry(
           info.event.id,
           startMoment.format('YYYY-MM-DD'),
           info.event.allDay ? null : startMoment.format('HH:mm'),
-          info.event.allDay ? info.event.extendedProps.hours as number : moment.duration(endMoment.diff(startMoment)).asHours(),
+          newEventHours,
           info.revert,
         );
       },
 
-      // TODO: When dragging from all day to the calendar, we need to set the hours
+      eventDragStart: (info) => {
+        // When dragging from all day into the calendar set the defaultTimedEventDuration to the hours of the event so
+        // that we display it correctly in the calendar. Will be reset in the drop event
+        if (info.event.allDay) {
+          this.calendar.setOption('defaultTimedEventDuration', moment.duration(info.event.extendedProps.hours as number, 'hours').asMilliseconds());
+        }
+      },
 
       eventDrop: (info) => {
         const startMoment = moment(info.event.startStr);
-        const endMoment = moment(info.event.endStr);
 
         this.updateTimeEntry(
           info.event.id,
           startMoment.format('YYYY-MM-DD'),
           info.event.allDay ? null : startMoment.format('HH:mm'),
-          info.event.allDay ? info.event.extendedProps.hours as number : moment.duration(endMoment.diff(startMoment)).asHours(),
+          info.event.extendedProps.hours as number,
           info.revert,
+        );
+
+        if (!info.event.allDay) {
+          info.event.setEnd(startMoment.add(info.event.extendedProps.hours as number, 'hours').toDate());
+        }
+
+        this.calendar.setOption('defaultTimedEventDuration', DEFAULT_TIMED_EVENT_DURATION);
+      },
+      eventClick: (info) => {
+        void this.turboRequests.request(
+          `${this.pathHelper.timeEntryEditDialog(info.event.id)}?onlyMe=true`,
+          { method: 'GET' },
         );
       },
     });
@@ -140,7 +164,7 @@ export default class MyTimeTrackingController extends Controller {
         void response.text().then((html) => {
           renderStreamMessage(html);
         });
-      } else if (!response.ok && revertFunction) { revertFunction(); }
+      } else if (revertFunction) { revertFunction(); }
     }).catch(() => {
       if (revertFunction) { revertFunction(); }
     });
