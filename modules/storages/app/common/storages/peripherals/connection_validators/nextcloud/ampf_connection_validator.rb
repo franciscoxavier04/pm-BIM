@@ -35,39 +35,32 @@ module Storages
         class AmpfConnectionValidator < BaseValidator
           using ServiceResultRefinements
 
-          def call
-            @results = {
-              userless_access_denied: CheckResult.skipped(:userless_access_denied),
-              group_folder_not_found: CheckResult.skipped(:group_folder_not_found),
-              files_request_failed_with_unknown_error: CheckResult.skipped(:files_request_failed_with_unknown_error),
-              with_unexpected_content: CheckResult.skipped(:with_unexpected_content)
-            }
-
-            catch :interrupted do
-              userless_access_denied
-              group_folder_not_found
-              files_request_failed_with_unknown_error
-              with_unexpected_content
-            end
-
-            @results
-          end
-
           private
+
+          def validate
+            register_checks(
+              :userless_access, :group_folder_presence, :files_request, :group_folder_contents
+            )
+
+            userless_access_denied
+            group_folder_not_found
+            files_request_failed_with_unknown_error
+            with_unexpected_content
+          end
 
           def userless_access_denied
             if files.result == :unauthorized
-              fail_check(__method__, message(:userless_access_denied))
+              fail_check(:userless_access, message(:userless_access_denied))
             else
-              pass_check(__method__)
+              pass_check(:userless_access)
             end
           end
 
           def group_folder_not_found
             if files.result == :not_found
-              fail_check(__method__, message(:group_folder_not_found))
+              fail_check(:group_folder_presence, message(:group_folder_not_found))
             else
-              pass_check(__method__)
+              pass_check(:group_folder_presence)
             end
           end
 
@@ -79,18 +72,18 @@ module Storages
                     "status: #{files.result}\n\t" \
                     "response: #{files.error_payload}"
 
-              fail_check(__method__, message(:unknown_error))
+              fail_check(:files_request, message(:unknown_error))
             else
-              pass_check(__method__)
+              pass_check(:files_request)
             end
           end
 
           def with_unexpected_content
             unexpected_files = files.result.files.reject { managed_project_folder_ids.include?(it.id) }
-            return pass_check(__method__) if unexpected_files.empty?
+            return pass_check(:group_folder_contents) if unexpected_files.empty?
 
             log_extraneous_files(unexpected_files)
-            warn_check(__method__, message(:unexpected_content))
+            warn_check(:group_folder_contents, message(:unexpected_content))
           end
 
           def log_extraneous_files(unexpected_files)

@@ -70,8 +70,8 @@ module Storages
 
               states = results.values.map { it.state }.tally
               expect(states).to eq({ failure: 1, skipped: 3 })
-              expect(results[:userless_access_denied]).to be_failure
-              expect(results[:userless_access_denied].message).to eq(i18n_message(:userless_access_denied))
+              expect(results[:userless_access]).to be_failure
+              expect(results[:userless_access].message).to eq(i18n_message(:userless_access_denied))
             end
           end
 
@@ -81,8 +81,8 @@ module Storages
             it "fails the check" do
               results = validator.call
 
-              expect(results[:group_folder_not_found]).to be_failure
-              expect(results[:group_folder_not_found].message).to eq(i18n_message(:group_folder_not_found))
+              expect(results[:group_folder_presence]).to be_failure
+              expect(results[:group_folder_presence].message).to eq(i18n_message(:group_folder_not_found))
             end
           end
 
@@ -94,8 +94,8 @@ module Storages
             it "fails the check and logs the error" do
               results = validator.call
 
-              expect(results[:files_request_failed_with_unknown_error]).to be_failure
-              expect(results[:files_request_failed_with_unknown_error].message)
+              expect(results[:files_request]).to be_failure
+              expect(results[:files_request].message)
                 .to eq(i18n_message(:unknown_error))
 
               expect(Rails.logger).to have_received(:error).with(/Connection validation failed with unknown error/)
@@ -117,8 +117,8 @@ module Storages
             it "warns the user about extraneous folders" do
               results = validator.call
 
-              expect(results[:with_unexpected_content]).to be_a_warning
-              expect(results[:with_unexpected_content].message).to eq(i18n_message(:unexpected_content))
+              expect(results[:group_folder_contents]).to be_a_warning
+              expect(results[:group_folder_contents].message).to eq(i18n_message(:unexpected_content))
             end
           end
 
