@@ -79,20 +79,20 @@ export default class RestrictedCommentController extends Controller {
       const sanitizePath = `/work_packages/${this.workPackagesActivitiesTabIndexOutlet.workPackageIdValue}/activities/sanitize_restricted_mentions`;
       const csrfToken = (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).content;
 
-      const response = await fetch(sanitizePath, {
-        method: 'POST',
-        body: JSON.stringify({ journal: { notes: editorData } }),
-        headers: {
-          'X-CSRF-Token': csrfToken,
-          'Content-Type': 'application/json',
-        },
-      });
+      try {
+        const response = await fetch(sanitizePath, {
+          method: 'POST',
+          body: JSON.stringify({ journal: { notes: editorData } }),
+          headers: {
+            'X-CSRF-Token': csrfToken,
+            'Content-Type': 'application/json',
+          },
+        });
 
-      if (response.ok) {
         const sanitizedNotes = await response.text();
         this.ckEditorInstance.setData(sanitizedNotes);
-      } else {
-        console.error('Failed to sanitize restricted mentions');
+      } catch (error) {
+        console.error(`Failed to sanitize restricted mentions: ${error}`);
       }
     }
   }
