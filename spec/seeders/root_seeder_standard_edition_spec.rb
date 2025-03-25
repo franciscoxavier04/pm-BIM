@@ -67,8 +67,7 @@ RSpec.describe RootSeeder,
       expect(VersionSetting.count).to eq 4
       expect(Boards::Grid.count).to eq 5
       expect(Boards::Grid.count { |grid| grid.options.has_key?(:filters) }).to eq 1
-      expect(Project::StageDefinition.count).to eq 4
-      expect(Project::GateDefinition.count).to eq 3
+      expect(Project::PhaseDefinition.count).to eq 7
     end
 
     it "links work packages to their version" do
@@ -191,8 +190,7 @@ RSpec.describe RootSeeder,
         expect(Version.count).to eq 4
         expect(VersionSetting.count).to eq 4
         expect(Boards::Grid.count).to eq 5
-        expect(Project::StageDefinition.count).to eq 4
-        expect(Project::GateDefinition.count).to eq 3
+        expect(Project::PhaseDefinition.count).to eq 7
       end
     end
   end

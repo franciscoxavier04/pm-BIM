@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe BasicData::LifeCycleStepDefinitionSeeder do
+RSpec.describe BasicData::ProjectPhaseDefinitionSeeder do
   include_context "with basic seed data"
   subject(:seeder) { described_class.new(seed_data) }
 
@@ -43,52 +43,47 @@ RSpec.describe BasicData::LifeCycleStepDefinitionSeeder do
   context "with some life cycles defined" do
     let(:data_hash) do
       YAML.load <<~SEEDING_DATA_YAML
-        life_cycles:
+        project_phases:
         - reference: :default_project_phase_initiating
           name: Initiating
-          type: Project::StageDefinition
           color_name: :default_color_pm2_orange
         - reference: :default_phase_ready_for_executing
           name: Ready for Executing
-          type: Project::GateDefinition
           color_name: :default_color_pm2_purple
         - reference: :default_phase_planning
           name: Planning
-          type: Project::StageDefinition
           color_name: :default_color_pm2_red
         - reference: :default_phase_executing
           name: Executing
-          type: Project::StageDefinition
           color_name: :default_color_pm2_magenta
         - reference: :default_phase_closing
           name: Closing
-          type: Project::StageDefinition
           color_name: :default_color_pm2_green_yellow
       SEEDING_DATA_YAML
     end
 
     it "creates the corresponding life cycles with the given attributes" do
       expect(Project::PhaseDefinition.count).to eq(5)
-      expect(Project::StageDefinition.find_by(name: "Initiating")).to have_attributes(
+      expect(Project::PhaseDefinition.find_by(name: "Initiating")).to have_attributes(
         color: have_attributes(name: "PM2 Orange")
       )
-      expect(Project::GateDefinition.find_by(name: "Ready for Executing")).to have_attributes(
+      expect(Project::PhaseDefinition.find_by(name: "Ready for Executing")).to have_attributes(
         color: have_attributes(name: "PM2 Purple")
       )
-      expect(Project::StageDefinition.find_by(name: "Planning")).to have_attributes(
+      expect(Project::PhaseDefinition.find_by(name: "Planning")).to have_attributes(
         color: have_attributes(name: "PM2 Red")
       )
-      expect(Project::StageDefinition.find_by(name: "Executing")).to have_attributes(
+      expect(Project::PhaseDefinition.find_by(name: "Executing")).to have_attributes(
         color: have_attributes(name: "PM2 Magenta")
       )
-      expect(Project::StageDefinition.find_by(name: "Closing")).to have_attributes(
+      expect(Project::PhaseDefinition.find_by(name: "Closing")).to have_attributes(
         color: have_attributes(name: "PM2 Green Yellow")
       )
     end
 
-    it "references the life cycles in the seed data" do
+    it "references the phases in the seed data" do
       Project::PhaseDefinition.find_each do |expected_stage|
-        reference = :"default_life_cycle_#{expected_stage.name.downcase.gsub(/\s+/, '_')}"
+        reference = :"default_phase_#{expected_stage.name.downcase.gsub(/\s+/, '_')}"
         expect(seed_data.find_reference(reference)).to eq(expected_stage)
       end
     end
@@ -118,7 +113,7 @@ RSpec.describe BasicData::LifeCycleStepDefinitionSeeder do
     end
   end
 
-  context "without life cycles defined" do
+  context "without phases defined" do
     let(:data_hash) do
       YAML.load <<~SEEDING_DATA_YAML
         nothing here: ''

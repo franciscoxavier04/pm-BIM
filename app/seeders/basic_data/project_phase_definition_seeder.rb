@@ -33,13 +33,12 @@ module BasicData
       BasicData::ProjectPhaseColorSeeder
     ]
 
-    self.attribute_names_for_lookups = %i[name type]
+    self.attribute_names_for_lookups = %i[name]
 
-    def model_attributes(life_cyle_data)
+    def model_attributes(phase_data)
       {
-        name: life_cyle_data["name"],
-        type: life_cyle_data["type"],
-        color_id: color_id(life_cyle_data["color_name"])
+        name: phase_data["name"],
+        color_id: color_id(phase_data["color_name"])
       }
     end
   end

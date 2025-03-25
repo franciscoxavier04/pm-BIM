@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe BasicData::LifeCycleColorSeeder do
+RSpec.describe BasicData::ProjectPhaseColorSeeder do
   include_context "with basic seed data"
   subject(:seeder) { described_class.new(seed_data) }
 
@@ -43,7 +43,7 @@ RSpec.describe BasicData::LifeCycleColorSeeder do
   context "with some life cycle colors defined" do
     let(:data_hash) do
       YAML.load <<~SEEDING_DATA_YAML
-        life_cycle_colors:
+        project_phase_colors:
         - reference: :default_color_pm2_orange
           name: PM2 Orange
           hexcode: "#F7983A"
@@ -72,7 +72,7 @@ RSpec.describe BasicData::LifeCycleColorSeeder do
       end
 
       it "references the life cycle colors in the seed data" do
-        color_names = data_hash["life_cycle_colors"].pluck("name")
+        color_names = data_hash["project_phase_colors"].pluck("name")
         Color.where(name: color_names).find_each do |expected_stage|
           reference = :"default_color_#{expected_stage.name.downcase.gsub(/\s+/, '_')}"
           expect(seed_data.find_reference(reference)).to eq(expected_stage)
