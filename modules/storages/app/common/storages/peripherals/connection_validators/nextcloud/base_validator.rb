@@ -31,28 +31,54 @@
 module Storages
   module Peripherals
     module ConnectionValidators
-      CheckResult = Data.define(:key, :state, :message, :timestamp) do
-        private_class_method :new
-        def self.skipped(key)
-          new(key:, state: :skipped, message: nil, timestamp: nil)
-        end
+      module Nextcloud
+        class BaseValidator
+          def initialize(storage)
+            @storage = storage
+          end
 
-        def self.failure(key, message)
-          new(key:, state: :failure, message: message, timestamp: Time.zone.now)
-        end
+          def call
+            catch :interrupted do
+              validate
+            end
 
-        def self.success(key)
-          new(key:, state: :success, message: nil, timestamp: Time.zone.now)
-        end
+            @results
+          end
 
-        def self.warning(key, message)
-          new(key:, state: :warning, message: message, timestamp: Time.zone.now)
-        end
+          private
 
-        def success? = state == :success
-        def failure? = state == :failure
-        def warning? = state == :warning
-        def skipped? = state == :skipped
+          def validate = raise Errors::SubclassResponsibility
+
+          def register_checks(*keys)
+            @results = keys.to_h { [it, CheckResult.skipped(it)] }
+          end
+
+          def update_result(key, value)
+            if @results&.has_key?(key)
+              @results[key] = value
+            else
+              raise ArgumentError, "Check #{key} not registered."
+            end
+          end
+
+          def pass_check(key)
+            update_result(key, CheckResult.success(key))
+          end
+
+          def fail_check(key, message)
+            update_result(key, CheckResult.failure(key, message))
+            throw :interrupted
+          end
+
+          def warn_check(key, message, halt_validation: false)
+            update_result(key, CheckResult.warning(key, message))
+            throw :interrupted if halt_validation
+          end
+
+          def message(key, context = {})
+            I18n.t("storages.health.connection_validation.#{key}", **context)
+          end
+        end
       end
     end
   end
