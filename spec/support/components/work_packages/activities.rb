@@ -183,9 +183,14 @@ module Components
         page.find_test_selector("op-open-work-package-journal-form-trigger").click
       end
 
+      def refocus_editor
+        ckeditor.refocus
+        expect_focus_on_editor
+      end
+
       def expect_focus_on_editor
         page.within_test_selector("op-work-package-journal-form-element") do
-          expect(page).to have_css(".ck-content:focus")
+          expect(page).to have_css(".ck-content:focus", wait: 10)
         end
       end
 
@@ -201,7 +206,11 @@ module Components
       end
 
       def type_comment(text)
-        open_new_comment_editor if page.find_test_selector("op-open-work-package-journal-form-trigger")
+        begin
+          open_new_comment_editor if page.find_test_selector("op-open-work-package-journal-form-trigger")
+        rescue Capybara::ElementNotFound
+          # If the editor is already open, we don't need to open it again
+        end
 
         # Wait for the editor form to be present and ready
         wait_for { page }.to have_test_selector("op-work-package-journal-form-element")
@@ -242,10 +251,7 @@ module Components
         page.within_test_selector("op-work-package-journal-form-element") do
           get_editor_form_field_element.set_value(text)
 
-          if restricted
-            expect(page).to have_test_selector("op-work-package-journal-restricted-comment-checkbox")
-            page.check("Restrict visibility")
-          end
+          check_restricted_visibility_comment_checkbox if restricted
 
           page.find_test_selector("op-submit-work-package-journal-form").click if save
         end
@@ -298,6 +304,11 @@ module Components
         end
 
         expect(page).to have_test_selector("op-work-package-journal-form-element")
+      end
+
+      def check_restricted_visibility_comment_checkbox
+        expect(page).to have_test_selector("op-work-package-journal-restricted-comment-checkbox")
+        page.check("Restrict visibility")
       end
 
       def dismiss_comment_editor_with_esc

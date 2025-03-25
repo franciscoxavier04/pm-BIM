@@ -32,13 +32,12 @@ require "spec_helper"
 
 RSpec.describe "Work package comments with restricted visibility",
                :js,
-               :with_cuprite,
                with_flag: { comments_with_restricted_visibility: true } do
-  let(:project) { create(:project) }
-  let(:admin) { create(:admin) }
-  let(:viewer) { create_user_with_restricted_comments_view_permissions }
-  let(:viewer_with_commenting_permission) { create_user_with_restricted_comments_view_and_write_permissions }
-  let(:project_admin) { create_user_as_project_admin }
+  shared_let(:project) { create(:project) }
+  shared_let(:admin) { create(:admin) }
+  shared_let(:viewer) { create_user_with_restricted_comments_view_permissions }
+  shared_let(:viewer_with_commenting_permission) { create_user_with_restricted_comments_view_and_write_permissions }
+  shared_let(:project_admin) { create_user_as_project_admin }
 
   let(:work_package) { create(:work_package, project:, author: admin) }
   let(:first_comment) do
@@ -173,6 +172,61 @@ RSpec.describe "Work package comments with restricted visibility",
     end
   end
 
+  describe "mentioning users in comments" do
+    current_user { project_admin }
+
+    shared_let(:user_without_restricted_comments_view_permissions) do
+      create_user_without_restricted_comments_view_permissions
+    end
+
+    shared_let(:group) { create(:group, firstname: "A", lastname: "Group") }
+    shared_let(:group_member) do
+      group_role = create(:project_role)
+      create(:member,
+             principal: group,
+             project:,
+             roles: [group_role])
+    end
+
+    before do
+      wp_page.visit!
+      wait_for_reload
+      expect_angular_frontend_initialized
+      wp_page.wait_for_activity_tab
+    end
+
+    context "with restricted comments enabled" do
+      it "restricts mentions to project members with view comments with restricted visibility permission" do
+        activity_tab.open_new_comment_editor
+        expect(page).to have_test_selector("op-work-package-journal-form-element")
+
+        activity_tab.check_restricted_visibility_comment_checkbox
+        activity_tab.refocus_editor
+        activity_tab.type_comment("@")
+
+        expect(page.all(".mention-list-item").map(&:text))
+          .to contain_exactly("Project Admin", "Restricted Viewer", "Restricted ViewerCommenter")
+      end
+    end
+
+    context "with restricted comments disabled" do
+      it "allows mentioning project members" do
+        activity_tab.type_comment("@")
+
+        expect(page.all(".mention-list-item").map(&:text))
+          .to contain_exactly("A Viewer", "Group", "Project Admin", "Restricted Viewer", "Restricted ViewerCommenter")
+      end
+    end
+  end
+
+  def create_user_without_restricted_comments_view_permissions
+    viewer_role = create(:project_role, permissions: %i[view_work_packages])
+    create(:user,
+           firstname: "A",
+           lastname: "Viewer",
+           member_with_roles: { project => viewer_role })
+  end
+
   def create_user_as_project_admin
     member_role = create(:project_role,
                          permissions: %i[view_work_packages add_work_package_notes
@@ -188,7 +242,7 @@ RSpec.describe "Work package comments with restricted visibility",
   def create_user_with_restricted_comments_view_permissions
     viewer_role = create(:project_role, permissions: %i[view_work_packages view_comments_with_restricted_visibility])
     create(:user,
-           firstname: "A",
+           firstname: "Restricted",
            lastname: "Viewer",
            member_with_roles: { project => viewer_role })
   end
@@ -201,8 +255,8 @@ RSpec.describe "Work package comments with restricted visibility",
                                                                     add_comments_with_restricted_visibility
                                                                     edit_own_comments_with_restricted_visibility])
     create(:user,
-           firstname: "A",
-           lastname: "Viewer",
+           firstname: "Restricted",
+           lastname: "ViewerCommenter",
            member_with_roles: { project => viewer_role_with_commenting_permission })
   end
 end
