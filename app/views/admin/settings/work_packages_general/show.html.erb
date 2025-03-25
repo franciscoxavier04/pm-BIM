@@ -52,9 +52,6 @@ See COPYRIGHT and LICENSE files for more details.
         <p data-admin--work-packages-settings-target="warningText"></p>
       </div>
     </div>
-    <%=
-      render(EnterpriseEdition::BannerComponent.new(:conditional_highlighting, mb: 3))
-    %>
     <div class="form--field settings--highlighting-mode">
       <%= setting_select(
             :work_package_list_default_highlighting_mode,
@@ -66,7 +63,11 @@ See COPYRIGHT and LICENSE files for more details.
               options[:disabled] = "disabled" unless EnterpriseToken.allows_to?(:conditional_highlighting)
             end
           ) %>
-    </div>
+      <div class="form--field-extra-actions">
+        <%=
+          render(EnterpriseEdition::BannerComponent.new(:conditional_highlighting, mt: 2))
+        %>
+      </div>
     <% if EnterpriseToken.allows_to? :conditional_highlighting %>
       <div class="form--field -indented -vertical settings--highlighted-attributes" style="<%= "display: none" unless Setting[:work_package_list_default_highlighting_mode] == "inline" %>">
         <%= setting_multiselect(
