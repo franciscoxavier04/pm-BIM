@@ -196,7 +196,6 @@ import { NoResultsComponent } from 'core-app/shared/components/no-results/no-res
 import {
   OpNonWorkingDaysListComponent,
 } from 'core-app/shared/components/op-non-working-days-list/op-non-working-days-list.component';
-import { EnterpriseBannerComponent } from 'core-app/shared/components/enterprise-banner/enterprise-banner.component';
 import {
   CollapsibleSectionComponent,
 } from 'core-app/shared/components/collapsible-section/collapsible-section.component';
@@ -464,7 +463,6 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-enterprise-base', EnterpriseBaseComponent, { injector });
     registerCustomElement('opce-no-results', NoResultsComponent, { injector });
     registerCustomElement('opce-non-working-days-list', OpNonWorkingDaysListComponent, { injector });
-    registerCustomElement('opce-enterprise-banner', EnterpriseBannerComponent, { injector });
     registerCustomElement('opce-collapsible-section-augment', CollapsibleSectionComponent, { injector });
     registerCustomElement('opce-main-menu-toggle', MainMenuToggleComponent, { injector });
     registerCustomElement('opce-main-menu-resizer', MainMenuResizerComponent, { injector });
