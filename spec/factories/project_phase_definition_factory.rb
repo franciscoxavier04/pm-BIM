@@ -26,20 +26,10 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Project::Gate < Project::LifeCycleStep
-  alias_attribute :date, :start_date
+FactoryBot.define do
+  factory :project_phase_definition, class: "Project::PhaseDefinition" do
+    sequence(:name) { |n| "Phase definition #{n}" }
 
-  # This ensures the type cannot be changed after initialising the class.
-  validates :type, inclusion: { in: %w[Project::Gate], message: :must_be_a_gate }
-  validate :end_date_not_allowed
-
-  def end_date_not_allowed
-    if end_date.present?
-      errors.add(:base, :end_date_not_allowed)
-    end
-  end
-
-  def not_set?
-    date.blank?
+    color
   end
 end

@@ -31,7 +31,7 @@ module ProjectLifeCycleSteps
     validate :select_custom_fields_permission
     validate :consecutive_steps_have_increasing_dates
 
-    def valid?(context = :saving_life_cycle_steps) = super
+    def valid?(context = :saving_phases) = super
 
     def select_custom_fields_permission
       return if user.allowed_in_project?(:edit_project_stages_and_gates, model)
@@ -41,7 +41,7 @@ module ProjectLifeCycleSteps
 
     def consecutive_steps_have_increasing_dates
       # Filter out steps with missing dates before proceeding with comparison
-      filtered_steps = model.available_life_cycle_steps.select(&:start_date)
+      filtered_steps = model.available_phases.select(&:start_date)
 
       # Only proceed with comparisons if there are at least 2 valid steps
       return if filtered_steps.size < 2
@@ -53,7 +53,7 @@ module ProjectLifeCycleSteps
           field = current_step.is_a?(Project::Stage) ? :date_range : :date
           model.errors.import(
             current_step.errors.add(field, :non_continuous_dates, step:),
-            attribute: :"available_life_cycle_steps.#{field}"
+            attribute: :"available_phases.#{field}"
           )
         end
       end

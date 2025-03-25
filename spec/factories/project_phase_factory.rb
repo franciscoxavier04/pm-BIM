@@ -26,32 +26,13 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "rails_helper"
-require "support/shared/project_life_cycle_helpers"
+FactoryBot.define do
+  factory :project_phase, class: "Project::Phase" do
+    project
+    definition factory: :project_phase_definition
+    active { true }
 
-RSpec.describe Project::Gate do
-  it_behaves_like "a Project::LifeCycleStep event"
-
-  describe "validations" do
-    it { is_expected.to validate_inclusion_of(:type).in_array(["Project::Gate"]).with_message(:must_be_a_gate) }
-
-    it "is invalid if `end_date` is present" do
-      subject.end_date = Time.zone.today
-
-      expect(subject).not_to be_valid
-      expect(subject.errors[:base])
-        .to include("Cannot assign end date to a Project::Gate")
-    end
-
-    it "is valid if `end_date` is not present" do
-      valid_gate = build(:project_gate, end_date: nil)
-      expect(valid_gate).to be_valid
-    end
-
-    it "is invalid if type and class name do not match" do
-      subject.type = "Project::Stage"
-      expect(subject).not_to be_valid
-      expect(subject.errors.symbols_for(:type)).to include(:type_and_class_name_mismatch)
-    end
+    start_date { Date.current - 2.days }
+    end_date { Date.current + 2.days }
   end
 end

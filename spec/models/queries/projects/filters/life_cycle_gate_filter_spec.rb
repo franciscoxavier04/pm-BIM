@@ -41,7 +41,7 @@ RSpec.describe Queries::Projects::Filters::LifeCycleGateFilter do
   end
 
   before do
-    allow(Project::LifeCycleStepDefinition)
+    allow(Project::PhaseDefinition)
       .to receive(:all)
             .and_return([stage, gate])
   end

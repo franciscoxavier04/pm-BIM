@@ -292,7 +292,7 @@ class PermittedParams
 
   def project_life_cycles
     params.require(:project).permit(
-      available_life_cycle_steps_attributes: %i[id date date_range]
+      available_phases_attributes: %i[id date date_range]
     )
   end
 

@@ -79,7 +79,7 @@ class Journals::CreateService
            FROM project_phases
            WHERE project_phases.project_id = :journable_id) phases
         ON
-          phases.id = project_phase_journals.life_cycle_step_id
+          phases.id = project_phase_journals.phase_id
         WHERE
           phases.start_date IS DISTINCT FROM project_phase_journals.start_date
           OR phases.end_date IS DISTINCT FROM project_phase_journals.end_date

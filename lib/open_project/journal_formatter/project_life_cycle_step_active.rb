@@ -32,7 +32,7 @@ class OpenProject::JournalFormatter::ProjectLifeCycleStepActive < JournalFormatt
   def render(key, values, options = { html: true })
     return if !values[0] == !values[1]
 
-    step = Project::LifeCycleStep.find(key[/\d+/])
+    step = Project::Phase.find(key[/\d+/])
 
     name = step.definition.name
     label = options[:html] ? content_tag(:strong, name) : name

@@ -38,7 +38,7 @@ class Queries::Projects::Selects::LifeCycleStep < Queries::Selects::Base
   def self.all_available
     return [] unless available?
 
-    Project::LifeCycleStepDefinition
+    Project::PhaseDefinition
       .pluck(:id)
       .map { |id| new(:"lcsd_#{id}") }
   end
@@ -50,7 +50,7 @@ class Queries::Projects::Selects::LifeCycleStep < Queries::Selects::Base
   def life_cycle_step_definition
     return @life_cycle_step_definition if defined?(@life_cycle_step_definition)
 
-    @life_cycle_step_definition = Project::LifeCycleStepDefinition
+    @life_cycle_step_definition = Project::PhaseDefinition
                                     .find_by(id: attribute[KEY, 1])
   end
 

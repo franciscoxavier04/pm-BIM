@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,32 +28,32 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "rails_helper"
-require "support/shared/project_life_cycle_helpers"
+require "spec_helper"
 
-RSpec.describe Project::StageDefinition do
-  it_behaves_like "a Project::LifeCycleStepDefinition event"
+RSpec.describe Project::PhaseDefinitions::Scopes::WithProjectCount do
+  let!(:definition_a) { create(:project_stage_definition, name: "foo") }
+  let!(:definition_b) { create(:project_gate_definition, name: "bar") }
+  let!(:definition_c) { create(:project_stage_definition, name: "baz") }
 
-  describe "associations" do
-    it "has many stages" do
-      expect(subject).to have_many(:stages).class_name("Project::Stage")
-                        .with_foreign_key(:definition_id)
-                        .inverse_of(:definition)
-                        .dependent(:destroy)
+  before do
+    create(:project).tap do |project|
+      create(:project_stage, project:, definition: definition_a)
+      create(:project_stage, project:, definition: definition_b)
+    end
+
+    create(:project).tap do |project|
+      create(:project_stage, project:, definition: definition_a)
+      create(:project_stage, project:, definition: definition_b, active: false)
     end
   end
 
-  describe "validations" do
-    it "is invalid if type and class name do not match" do
-      subject.type = "Project::GateDefinition"
-      expect(subject).not_to be_valid
-      expect(subject.errors.symbols_for(:type)).to include(:type_and_class_name_mismatch)
-    end
-  end
-
-  describe "#step_class" do
-    it "returns Project::Stage" do
-      expect(subject.step_class).to eq(Project::Stage)
+  describe ".with_project_count" do
+    it "queries project counts alongside definitions" do
+      expect(Project::PhaseDefinition.with_project_count).to contain_exactly(
+        having_attributes(id: definition_a.id, name: "foo", project_count: 2),
+        having_attributes(id: definition_b.id, name: "bar", project_count: 1),
+        having_attributes(id: definition_c.id, name: "baz", project_count: 0)
+      )
     end
   end
 end

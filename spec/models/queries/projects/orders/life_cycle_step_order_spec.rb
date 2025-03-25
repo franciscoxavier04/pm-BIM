@@ -104,11 +104,11 @@ RSpec.describe Queries::Projects::Orders::LifeCycleStepOrder do
     let(:id) { 42 }
 
     before do
-      allow(Project::LifeCycleStepDefinition).to receive(:find_by).with(id: id.to_s).and_return(step_definition)
+      allow(Project::PhaseDefinition).to receive(:find_by).with(id: id.to_s).and_return(step_definition)
     end
 
     context "when life cycle definition exists" do
-      let(:step_definition) { instance_double(Project::LifeCycleStepDefinition) }
+      let(:step_definition) { instance_double(Project::PhaseDefinition) }
 
       it "returns the life cycle definition" do
         expect(instance.life_cycle_step_definition).to eq(step_definition)
@@ -117,7 +117,7 @@ RSpec.describe Queries::Projects::Orders::LifeCycleStepOrder do
       it "memoizes the life cycle definition" do
         2.times { instance.life_cycle_step_definition }
 
-        expect(Project::LifeCycleStepDefinition).to have_received(:find_by).once
+        expect(Project::PhaseDefinition).to have_received(:find_by).once
       end
     end
 
@@ -131,7 +131,7 @@ RSpec.describe Queries::Projects::Orders::LifeCycleStepOrder do
       it "memoizes the life cycle" do
         2.times { instance.life_cycle_step_definition }
 
-        expect(Project::LifeCycleStepDefinition).to have_received(:find_by).once
+        expect(Project::PhaseDefinition).to have_received(:find_by).once
       end
     end
   end

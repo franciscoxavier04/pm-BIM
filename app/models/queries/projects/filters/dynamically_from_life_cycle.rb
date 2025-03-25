@@ -69,7 +69,7 @@ module Queries::Projects::Filters::DynamicallyFromLifeCycle
       key = %w[Queries::Projects::Filters::LifeCycleStepFilter all_step_definitions]
 
       RequestStore
-        .fetch(key) { Project::LifeCycleStepDefinition.all.to_a }
+        .fetch(key) { Project::PhaseDefinition.all.to_a }
         .select { |lcsd| lcsd.is_a?(step_subclass) }
     end
 

@@ -100,14 +100,14 @@ module Queries::Projects::Filters::FilterOnLifeCycle
 
   def stage_where_on(start_date, end_date = start_date)
     life_cycle_scope(Project::Stage.name)
-      .where(date_range_clause(Project::LifeCycleStep.table_name, "start_date", nil, start_date))
-      .where(date_range_clause(Project::LifeCycleStep.table_name, "end_date", end_date, nil))
+      .where(date_range_clause(Project::Phase.table_name, "start_date", nil, start_date))
+      .where(date_range_clause(Project::Phase.table_name, "end_date", end_date, nil))
   end
 
   def stage_where_between(start_date, end_date)
     life_cycle_scope(Project::Stage.name)
-      .where(date_range_clause(Project::LifeCycleStep.table_name, "start_date", start_date, nil))
-      .where(date_range_clause(Project::LifeCycleStep.table_name, "end_date", nil, end_date))
+      .where(date_range_clause(Project::Phase.table_name, "start_date", start_date, nil))
+      .where(date_range_clause(Project::Phase.table_name, "end_date", nil, end_date))
   end
 
   def stage_overlaps_this_week
@@ -116,8 +116,8 @@ module Queries::Projects::Filters::FilterOnLifeCycle
       .where.not(end_date: nil)
       .where(
         <<~SQL.squish, beginning_of_week, end_of_week
-          daterange(#{Project::LifeCycleStep.table_name}.start_date,
-                    #{Project::LifeCycleStep.table_name}.end_date,
+          daterange(#{Project::Phase.table_name}.start_date,
+                    #{Project::Phase.table_name}.end_date,
                     '[]')
           &&
           daterange(?, ?, '[]')
@@ -140,7 +140,7 @@ module Queries::Projects::Filters::FilterOnLifeCycle
   def gate_where(start_date, end_date = start_date)
     # On gates, only the start_date is set.
     life_cycle_scope(Project::Gate.name)
-      .where(date_range_clause(Project::LifeCycleStep.table_name, "start_date", start_date, end_date))
+      .where(date_range_clause(Project::Phase.table_name, "start_date", start_date, end_date))
   end
 
   def parsed_start
@@ -164,8 +164,8 @@ module Queries::Projects::Filters::FilterOnLifeCycle
   end
 
   def life_cycle_scope(type)
-    life_cycle_scope = Project::LifeCycleStep
-      .where("#{Project::LifeCycleStep.table_name}.project_id = #{Project.table_name}.id")
+    life_cycle_scope = Project::Phase
+      .where("#{Project::Phase.table_name}.project_id = #{Project.table_name}.id")
       .where(project_id: Project.allowed_to(User.current, :view_project_stages_and_gates))
       .where(type:)
       .active

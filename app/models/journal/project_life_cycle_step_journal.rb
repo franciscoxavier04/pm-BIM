@@ -31,7 +31,7 @@
 class Journal::ProjectLifeCycleStepJournal < Journal::AssociatedJournal
   self.table_name = "project_life_cycle_step_journals"
 
-  belongs_to :life_cycle_step, class_name: "Project::LifeCycleStep"
+  belongs_to :phase, class_name: "Project::LifeCycleStep"
 
   alias_attribute :date, :start_date
 

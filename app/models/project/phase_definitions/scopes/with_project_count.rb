@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,32 +28,23 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "rails_helper"
-require "support/shared/project_life_cycle_helpers"
+module Project::PhaseDefinitions::Scopes
+  module WithProjectCount
+    extend ActiveSupport::Concern
 
-RSpec.describe Project::GateDefinition do
-  it_behaves_like "a Project::LifeCycleStepDefinition event"
+    class_methods do
+      def with_project_count
+        project_counts = Project::Phase
+          .where(active: true)
+          .group(:definition_id)
+          .select(:definition_id, "COUNT(project_id) AS count")
 
-  describe "associations" do
-    it "has many gates" do
-      expect(subject).to have_many(:gates).class_name("Project::Gate")
-                        .with_foreign_key(:definition_id)
-                        .inverse_of(:definition)
-                        .dependent(:destroy)
-    end
-  end
-
-  describe "validations" do
-    it "is invalid if type and class name do not match" do
-      subject.type = "Project::StageDefinition"
-      expect(subject).not_to be_valid
-      expect(subject.errors.symbols_for(:type)).to include(:type_and_class_name_mismatch)
-    end
-  end
-
-  describe "#step_class" do
-    it "returns Project::Stage" do
-      expect(subject.step_class).to eq(Project::Gate)
+        Project::PhaseDefinition
+          .with(project_counts:)
+          .joins("LEFT OUTER JOIN project_counts ON #{quoted_table_name}.id = project_counts.definition_id")
+          .select("#{quoted_table_name}.*")
+          .select("COALESCE(project_counts.count, 0) AS project_count")
+      end
     end
   end
 end

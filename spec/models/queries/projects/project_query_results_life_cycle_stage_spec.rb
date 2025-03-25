@@ -69,7 +69,7 @@ RSpec.describe ProjectQuery, "results of a life cycle stage filter" do
   # rubocop:disable RSpec/ScatteredSetup
   def self.disable_stage
     before do
-      Project::LifeCycleStep.where(type: Project::Stage.name).update_all(active: false)
+      Project::Phase.where(type: Project::Stage.name).update_all(active: false)
     end
   end
 

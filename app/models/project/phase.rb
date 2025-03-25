@@ -26,10 +26,27 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Project::Stage < Project::LifeCycleStep
-  # This ensures the type cannot be changed after initialising the class.
-  validates :type, inclusion: { in: %w[Project::Stage], message: :must_be_a_stage }
+class Project::Phase < ApplicationRecord
+  belongs_to :project, optional: false, inverse_of: :available_phases
+  belongs_to :definition,
+             optional: false,
+             class_name: "Project::PhaseDefinition"
+  has_many :work_packages, inverse_of: :project_phase, dependent: :nullify
+
   validate :validate_date_range
+
+  delegate :name, :position, to: :definition
+
+  attr_readonly :definition_id, :type
+
+  scope :active, -> { where(active: true) }
+
+  class << self
+    def visible(user = User.current)
+      allowed_projects = Project.allowed_to(user, :view_project_stages_and_gates)
+      active.where(project: allowed_projects)
+    end
+  end
 
   def working_days_count
     return nil if not_set?
@@ -60,5 +77,10 @@ class Project::Stage < Project::LifeCycleStep
     elsif range_set? && (start_date > end_date)
       errors.add(:date_range, :start_date_must_be_before_end_date)
     end
+  end
+
+  def column_name
+    # The id of the associated definition is relevant for displaying the correct column headers
+    "lcsd_#{definition_id}"
   end
 end

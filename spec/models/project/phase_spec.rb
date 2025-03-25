@@ -27,17 +27,36 @@
 #++
 
 require "rails_helper"
-require "support/shared/project_life_cycle_helpers"
 
-RSpec.describe Project::Stage do
-  it_behaves_like "a Project::LifeCycleStep event"
+RSpec.describe Project::Phase do
+  it "can be instantiated" do
+    expect { described_class.new }.not_to raise_error(NotImplementedError)
+  end
 
-  describe "validations" do
-    it { is_expected.to validate_inclusion_of(:type).in_array(["Project::Stage"]).with_message(:must_be_a_stage) }
+  it { is_expected.to have_readonly_attribute(:definition_id) }
 
-    it "is valid when `start_date` and `end_date` are present" do
-      valid_stage = build(:project_stage)
-      expect(valid_stage).to be_valid
+  describe "associations" do
+    it { is_expected.to belong_to(:project).required }
+    it { is_expected.to belong_to(:definition).required }
+    it { is_expected.to have_many(:work_packages) }
+  end
+
+  describe ".visible" do
+    let(:project) { create(:project) }
+    let(:development_project) { create(:project) }
+    let(:user) do
+      create(:user,
+             member_with_permissions:
+             { project => %i(view_project view_project_stages_and_gates),
+               development_project => %i(view_project) })
+    end
+
+    let!(:phase) { create(:project_phase, project:) }
+    let!(:phase_dev) { create(:project_phase, project: development_project) }
+    let!(:inactive_phase) { create(:project_phase, project: development_project, active: false) }
+
+    it "returns active phases where the user has a view_project_stages_and_gates permission" do
+      expect(described_class.visible(user)).to contain_exactly(phase)
     end
   end
 
@@ -69,7 +88,7 @@ RSpec.describe Project::Stage do
 
   describe "#validate_date_range" do
     it "is valid when both dates are blank" do
-      stage = build(:project_stage, start_date: nil, end_date: nil)
+      stage = build(:project_phase, start_date: nil, end_date: nil)
       expect(stage).to be_valid
     end
 
@@ -97,12 +116,6 @@ RSpec.describe Project::Stage do
       subject.end_date = Time.zone.today
       expect(subject).not_to be_valid
       expect(subject.errors[:date_range]).to be_empty
-    end
-
-    it "is invalid if type and class name do not match" do
-      subject.type = "Project::Gate"
-      expect(subject).not_to be_valid
-      expect(subject.errors.symbols_for(:type)).to include(:type_and_class_name_mismatch)
     end
   end
 
@@ -135,8 +148,8 @@ RSpec.describe Project::Stage do
 
       allow(Day).to receive(:working).and_return(Day)
       allow(Day).to receive(:from_range)
-                .with(from: subject.start_date, to: subject.end_date)
-                .and_return([])
+                      .with(from: subject.start_date, to: subject.end_date)
+                      .and_return([])
 
       expect(subject.working_days_count).to eq(0)
 

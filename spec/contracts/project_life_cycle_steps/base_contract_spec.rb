@@ -39,7 +39,7 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
 
   context "with authorized user" do
     let(:user) { build_stubbed(:user) }
-    let(:project) { build_stubbed(:project, available_life_cycle_steps: steps) }
+    let(:project) { build_stubbed(:project, available_phases: steps) }
     let(:steps) { [] }
 
     before do
@@ -81,7 +81,7 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
             let(:steps) { [gate3, gate1] }
 
             it_behaves_like "contract is invalid",
-                            "available_life_cycle_steps.date": :non_continuous_dates
+                            "available_phases.date": :non_continuous_dates
 
             it "adds an error to the decreasing step" do
               contract.validate
@@ -93,7 +93,7 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
             let(:steps) { [gate3, stage2] }
 
             it_behaves_like "contract is invalid",
-                            "available_life_cycle_steps.date_range": :non_continuous_dates
+                            "available_phases.date_range": :non_continuous_dates
 
             it "adds an error to the decreasing step" do
               contract.validate
@@ -107,7 +107,7 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
           let(:steps) { [gate1, step4] }
 
           it_behaves_like "contract is invalid",
-                          "available_life_cycle_steps.date": :non_continuous_dates
+                          "available_phases.date": :non_continuous_dates
         end
 
         context "when steps have touching start and end dates" do
@@ -116,14 +116,14 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
             let(:steps) { [stage2, stage4] }
 
             it_behaves_like "contract is invalid",
-                            "available_life_cycle_steps.date_range": :non_continuous_dates
+                            "available_phases.date_range": :non_continuous_dates
 
             context "when having an empty step in between" do
               let(:step_missing_dates) { build_stubbed(:project_stage, start_date: nil, end_date: nil) }
               let(:steps) { [stage2, step_missing_dates, stage4] }
 
               it_behaves_like "contract is invalid",
-                              "available_life_cycle_steps.date_range": :non_continuous_dates
+                              "available_phases.date_range": :non_continuous_dates
             end
           end
 
@@ -132,14 +132,14 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
             let(:steps) { [gate1, gate4] }
 
             it_behaves_like "contract is invalid",
-                            "available_life_cycle_steps.date": :non_continuous_dates
+                            "available_phases.date": :non_continuous_dates
 
             context "when having an empty step in between" do
               let(:step_missing_dates) { build_stubbed(:project_stage, start_date: nil, end_date: nil) }
               let(:steps) { [gate1, step_missing_dates, gate4] }
 
               it_behaves_like "contract is invalid",
-                              "available_life_cycle_steps.date": :non_continuous_dates
+                              "available_phases.date": :non_continuous_dates
             end
           end
 
@@ -200,7 +200,7 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
             let(:steps) { [stage2, step_missing_dates, gate1] }
 
             it_behaves_like "contract is invalid",
-                            "available_life_cycle_steps.date": :non_continuous_dates
+                            "available_phases.date": :non_continuous_dates
 
             it "adds an error to the decreasing step" do
               contract.validate
@@ -211,11 +211,11 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
       end
 
       describe "triggering validations on the model" do
-        it "sets the :saving_life_cycle_steps validation context" do
+        it "sets the :saving_phases validation context" do
           allow(project).to receive(:valid?)
 
           contract.validate
-          expect(project).to have_received(:valid?).with(:saving_life_cycle_steps)
+          expect(project).to have_received(:valid?).with(:saving_phases)
         end
       end
     end

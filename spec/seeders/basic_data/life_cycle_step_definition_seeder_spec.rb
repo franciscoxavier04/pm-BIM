@@ -68,7 +68,7 @@ RSpec.describe BasicData::LifeCycleStepDefinitionSeeder do
     end
 
     it "creates the corresponding life cycles with the given attributes" do
-      expect(Project::LifeCycleStepDefinition.count).to eq(5)
+      expect(Project::PhaseDefinition.count).to eq(5)
       expect(Project::StageDefinition.find_by(name: "Initiating")).to have_attributes(
         color: have_attributes(name: "PM2 Orange")
       )
@@ -87,7 +87,7 @@ RSpec.describe BasicData::LifeCycleStepDefinitionSeeder do
     end
 
     it "references the life cycles in the seed data" do
-      Project::LifeCycleStepDefinition.find_each do |expected_stage|
+      Project::PhaseDefinition.find_each do |expected_stage|
         reference = :"default_life_cycle_#{expected_stage.name.downcase.gsub(/\s+/, '_')}"
         expect(seed_data.find_reference(reference)).to eq(expected_stage)
       end
@@ -126,7 +126,7 @@ RSpec.describe BasicData::LifeCycleStepDefinitionSeeder do
     end
 
     it "creates no life cycles" do
-      expect(Project::LifeCycleStepDefinition.count).to eq(0)
+      expect(Project::PhaseDefinition.count).to eq(0)
     end
   end
 end

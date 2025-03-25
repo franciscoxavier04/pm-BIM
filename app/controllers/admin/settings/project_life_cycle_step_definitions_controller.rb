@@ -61,7 +61,7 @@ module Admin::Settings
     end
 
     def create
-      @definition = Project::LifeCycleStepDefinition.new(definition_params)
+      @definition = Project::PhaseDefinition.new(definition_params)
 
       if @definition.save
         flash[:notice] = I18n.t(:notice_successful_create)
@@ -123,11 +123,11 @@ module Admin::Settings
     end
 
     def find_definitions
-      @definitions = Project::LifeCycleStepDefinition.with_project_count
+      @definitions = Project::PhaseDefinition.with_project_count
     end
 
     def find_definition
-      @definition = Project::LifeCycleStepDefinition.find(params[:id])
+      @definition = Project::PhaseDefinition.find(params[:id])
     end
 
     def definition_params

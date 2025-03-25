@@ -59,7 +59,7 @@ module Components
                        end
 
           datepicker.open(
-            "input[id^='project_available_life_cycle_steps_attributes_#{step.position - 1}']"
+            "input[id^='project_available_phases_attributes_#{step.position - 1}']"
           )
 
           Array(value).each do |date|
@@ -104,7 +104,7 @@ module Components
             expect(page).to have_field(
               label,
               with: value,
-              name: "project[available_life_cycle_steps_attributes][#{position - 1}][#{field}]"
+              name: "project[available_phases_attributes][#{position - 1}][#{field}]"
             )
           end
         end
@@ -144,7 +144,7 @@ module Components
         def expect_selector_for(step, selector:, text: nil, present: true)
           within_async_content do
             field = step.is_a?(Project::Stage) ? :date_range : :date
-            input_id = "#project_available_life_cycle_steps_attributes_#{step.position - 1}_#{field}"
+            input_id = "#project_available_phases_attributes_#{step.position - 1}_#{field}"
             parent = find(input_id).ancestor("primer-datepicker-field")
 
             if present

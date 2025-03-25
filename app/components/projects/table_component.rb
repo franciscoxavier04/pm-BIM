@@ -196,7 +196,7 @@ module Projects
     end
 
     def project_life_cycle_step_by_definition(definition, project)
-      @project_life_cycle_steps_by_definition ||= Project::LifeCycleStep
+      @project_life_cycle_steps_by_definition ||= Project::Phase
                                                     .visible
                                                     .index_by { |s| [s.definition_id, s.project_id] }
 

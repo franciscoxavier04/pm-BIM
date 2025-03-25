@@ -37,7 +37,7 @@ RSpec.describe OpenProject::JournalFormatter::ProjectLifeCycleStepDates do
     subject(:result) { described_class.new(nil).render(key, values, html:) }
 
     before do
-      allow(Project::LifeCycleStep).to receive(:find).with(step.id.to_s).and_return(step)
+      allow(Project::Phase).to receive(:find).with(step.id.to_s).and_return(step)
     end
 
     def date(day) = Date.new(2025, 1, day)

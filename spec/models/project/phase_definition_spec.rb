@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,24 +28,27 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-FactoryBot.define do
-  factory :project_life_cycle_step, class: "Project::LifeCycleStep" do
-    project
-    active { true }
+require "rails_helper"
 
-    trait :skip_validate do
-      to_create { |instance| instance.save(validate: false) }
+RSpec.describe Project::PhaseDefinition do
+  it "can be instantiated" do
+    expect { described_class.new }.not_to raise_error
+  end
+
+  describe "validations" do
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_uniqueness_of(:name) }
+  end
+
+  describe "associations" do
+    it "has many phases" do
+      expect(subject).to have_many(:phases).class_name("Project::Phase")
+                                           .with_foreign_key(:definition_id)
+                                           .inverse_of(:definition)
+                                           .dependent(:destroy)
     end
 
-    factory :project_stage, class: "Project::Stage" do
-      definition factory: :project_stage_definition
-      start_date { Date.current - 2.days }
-      end_date { Date.current + 2.days }
-    end
-
-    factory :project_gate, class: "Project::Gate" do
-      definition factory: :project_gate_definition
-      date { Date.current + 2.days }
-    end
+    it { is_expected.to have_many(:projects).through(:phases) }
+    it { is_expected.to belong_to(:color).required }
   end
 end

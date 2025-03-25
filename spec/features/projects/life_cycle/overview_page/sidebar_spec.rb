@@ -132,7 +132,7 @@ RSpec.describe "Show project life cycles on project overview page", :js, with_fl
 
     describe "with no values" do
       before do
-        Project::LifeCycleStep.update_all(start_date: nil, end_date: nil)
+        Project::Phase.update_all(start_date: nil, end_date: nil)
       end
 
       it "shows the correct value for the project custom field if given" do

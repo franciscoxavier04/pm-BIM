@@ -67,7 +67,7 @@ RSpec.describe ProjectQuery, "results of a life cycle gate filter" do
   # rubocop:disable RSpec/ScatteredSetup
   def self.disable_gate
     before do
-      Project::LifeCycleStep.where(type: Project::Gate.name).update_all(active: false)
+      Project::Phase.where(type: Project::Gate.name).update_all(active: false)
     end
   end
 

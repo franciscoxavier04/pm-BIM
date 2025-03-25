@@ -103,6 +103,10 @@ class MergeLifecycleSteps < ActiveRecord::Migration[8.0]
     change_table(:project_life_cycle_step_journals) do |t|
       t.rename :life_cycle_step_id, :phase_id
     end
+
+    change_table(:work_packages) do |t|
+      t.rename :project_life_cycle_step_id, :project_phase_id
+    end
   end
 
   def rename_tables

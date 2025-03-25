@@ -27,7 +27,7 @@
 #++
 module BasicData
   class LifeCycleStepDefinitionSeeder < ModelSeeder
-    self.model_class = Project::LifeCycleStepDefinition
+    self.model_class = Project::PhaseDefinition
     self.seed_data_model_key = "life_cycles"
     self.needs = [
       BasicData::LifeCycleColorSeeder
