@@ -69,6 +69,11 @@ RSpec.describe "New work package datepicker",
     # Bug #62300 - Manual scheduling mode button can be clicked without producing a 500 error
     datepicker.click_manual_scheduling_mode
 
+    # Bug #61960 - Automatic scheduling mode button can be clicked
+    datepicker.click_automatic_scheduling_mode
+    datepicker.expect_save_button_disabled
+    datepicker.click_manual_scheduling_mode
+
     date_field.save!
     date_field.expect_inactive!
     date_field.expect_value "#{start} - #{due}"

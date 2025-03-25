@@ -333,7 +333,7 @@ RSpec.describe "work package export", :js, :selenium do
       context "with no columns" do
         let(:query_columns) { [] }
         let(:expected_params) do
-          default_expected_params.merge({ columns: [""], pdf_export_type: "report" })
+          default_expected_params.merge({ columns: [""], pdf_export_type: "report", no_columns: "1" })
         end
 
         it "does export a pdf" do
