@@ -330,6 +330,8 @@ class MeetingsController < ApplicationController
   end
 
   def fetch_timezone
+    return unless timezone_params.keys.count == 2
+
     User.execute_as(User.current) do
       meeting = Meeting.new(timezone_params)
       @text = friendly_timezone_name(User.current.time_zone, period: meeting.start_time)
@@ -563,6 +565,6 @@ class MeetingsController < ApplicationController
                        params.require(:structured_meeting)
                      end
 
-    meeting_params.permit(:start_date, :start_time_hour).compact_blank
+    @timezone_params ||= meeting_params.permit(:start_date, :start_time_hour).compact_blank
   end
 end
