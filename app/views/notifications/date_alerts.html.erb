@@ -1,5 +1,11 @@
 <% html_title t("js.notifications.title") %>
 
 <% content_for :content_body do %>
-  <%= angular_component_tag "opce-ian-date-alerts-upsale" %>
+  <%= render template: "common/upsale",
+             locals: {
+               feature_title: t("enterprise_features.date_alerts"),
+               feature_description: t("ee.upsale.date_alerts.description"),
+               feature_reference: "enterprise-date-alerts",
+               feature_video: "enterprise/date-alert-notifications.mp4"
+             } %>
 <% end %>

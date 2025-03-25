@@ -161,10 +161,6 @@ import {
   WorkPackageSplitViewEntryComponent,
 } from 'core-app/features/work-packages/routing/wp-split-view/wp-split-view-entry.component';
 import {
-  InAppNotificationsDateAlertsUpsaleComponent,
-} from 'core-app/features/in-app-notifications/date-alerts-upsale/ian-date-alerts-upsale.component';
-import { ShareUpsaleComponent } from 'core-app/features/enterprise/share-upsale/share-upsale.component';
-import {
   StorageLoginButtonComponent,
 } from 'core-app/shared/components/storages/storage-login-button/storage-login-button.component';
 import { OpCustomModalOverlayComponent } from 'core-app/shared/components/modal/custom-modal-overlay.component';
@@ -443,8 +439,6 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-notification-settings', NotificationsSettingsPageComponent, { injector });
     registerCustomElement('opce-reminder-settings', ReminderSettingsPageComponent, { injector });
     registerCustomElement('opce-notification-center', InAppNotificationCenterComponent, { injector });
-    registerCustomElement('opce-ian-date-alerts-upsale', InAppNotificationsDateAlertsUpsaleComponent, { injector });
-    registerCustomElement('opce-share-upsale', ShareUpsaleComponent, { injector });
     registerCustomElement('opce-wp-split-view', WorkPackageSplitViewEntryComponent, { injector });
     registerCustomElement('opce-timer-account-menu', TimerAccountMenuComponent, { injector });
     registerCustomElement('opce-remote-field-updater', RemoteFieldUpdaterComponent, { injector });

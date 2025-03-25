@@ -1,5 +1,11 @@
 <% html_title t("js.notifications.title") %>
 
 <% content_for :content_body do %>
-  <%= angular_component_tag "opce-share-upsale" %>
+  <%= render template: "common/upsale",
+             locals: {
+               feature_title: t("enterprise_features.work_package_sharing"),
+               feature_description: t("ee.upsale.work_package_sharing.description"),
+               feature_reference: "enterprise-work-package-sharing",
+               feature_video: "enterprise/share-work-package.mp4"
+             } %>
 <% end %>
