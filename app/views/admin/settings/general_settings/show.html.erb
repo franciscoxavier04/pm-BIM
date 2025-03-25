@@ -63,7 +63,13 @@ See COPYRIGHT and LICENSE files for more details.
     <div class="form--field">
       <%= setting_text_area :allowed_link_protocols, rows: 5, container_class: "-wide" %>
       <div class="form--field-instructions">
-        <%= t(:setting_allowed_link_protocols_text_html) %>
+        <%= t(:setting_allowed_link_protocols_text_html,
+              tel_code: content_tag(:code, "tel"),
+              element_code: content_tag(:code, "element"),
+              http_code: content_tag(:code, "http"),
+              https_code: content_tag(:code, "https"),
+              mailto_code: content_tag(:code, "mailto"),
+              ) %>
       </div>
     </div>
     <div class="form--field"><%= setting_check_box :feeds_enabled, size: 6 %></div>
