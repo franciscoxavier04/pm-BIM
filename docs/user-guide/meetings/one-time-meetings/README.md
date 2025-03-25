@@ -217,7 +217,7 @@ You can send an email reminder to all the meeting participants. Select the dropd
 
 ## Meeting attachments
 
-You can attachments in the meetings in the **Attachments** section in the right bottom corner. You can either user the **+Attach files** link to select files from your computer or drag and drop them.
+You can add attachments in the meetings in the **Attachments** section in the right bottom corner. You can either user the **+Attach files** link to select files from your computer or drag and drop them.
 
 Added attachments can be added to the Notes section of agenda packages by dragging and dropping them from the Attachments section.
 
