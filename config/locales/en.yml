@@ -657,13 +657,6 @@ en:
     edit:
       form_configuration:
         tab: "Form configuration"
-      more_info_text_html: >
-        Enterprise edition allows you to customize form configuration with these additional add-ons: <br>
-        <ul class="%{list_styling_class}">
-          <li><b>Add new attribute groups</b></li>
-          <li><b>Rename attribute groups</b></li>
-          <li><b>Add a table of related work packages</b></li>
-        </ul>
       projects:
         tab: "Projects"
         enabled_projects: "Enabled projects"
@@ -2059,9 +2052,11 @@ en:
       conditional_highlighting:
         description: "Need certain work packages to stand out from the mass? Use conditional highlighting in the work packages table."
       form_configuration:
-        description: "Customize the form configuration with these additional add-ons:"
-        add_groups: "Add new attribute groups"
-        rename_groups: "Rename attributes groups"
+        description: "Customize form configuration with these additional add-ons:"
+        features:
+          groups: "Add new attribute groups"
+          rename: "Rename attribute groups"
+          related: "Add a table of related work packages"
 
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Work package priorities"

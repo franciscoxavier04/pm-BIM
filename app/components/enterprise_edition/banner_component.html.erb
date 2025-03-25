@@ -12,7 +12,14 @@
       end
     end
     grid.with_area(:"title-container") { render(Primer::Beta::Text.new) { title } }
-    grid.with_area(:"description-container") { render(Primer::Beta::Text.new) { description } }
+    grid.with_area(:"description-container") do
+      if features.present?
+        concat render(Primer::Beta::Text.new) { description }
+        concat content_tag(:ul) { safe_join features.map { |text| render(Primer::Beta::Text.new(tag: :li)) { text } } }
+      else
+        render(Primer::Beta::Text.new) { description }
+      end
+    end
     grid.with_area(:"link-container") do
       render(Primer::Beta::Link.new(href: href)) do |link|
         link.with_trailing_visual_icon(icon: "link-external")
