@@ -106,7 +106,7 @@ export class CKEditorSetupService {
 
     const allowedLinkProtocols = this.configurationService.allowedLinkProtocols;
     if (allowedLinkProtocols) {
-      config.link = { allowedLinkProtocols };
+      config.link = { allowedProtocols: allowedLinkProtocols };
     }
 
     return config;
