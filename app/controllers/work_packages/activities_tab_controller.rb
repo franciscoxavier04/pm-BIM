@@ -139,6 +139,13 @@ class WorkPackages::ActivitiesTabController < ApplicationController
     respond_with_turbo_streams
   end
 
+  def sanitize_restricted_mentions
+    sanitizer = WorkPackages::ActivitiesTab::RestrictedMentionsSanitizer.new(@work_package, journal_params[:notes])
+    sanitized_notes = sanitizer.call
+
+    render plain: sanitized_notes
+  end
+
   def toggle_reaction # rubocop:disable Metrics/AbcSize
     emoji_reaction_service =
       if @journal.emoji_reactions.exists?(user: User.current, reaction: params[:reaction])

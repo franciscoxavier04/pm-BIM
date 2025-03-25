@@ -650,10 +650,12 @@ Rails.application.routes.draw do
         get :cancel_edit
         put :toggle_reaction
       end
+
       collection do
         get :update_streams
         get :update_filter # filter not persisted
         put :update_sorting # sorting is persisted
+        post :sanitize_restricted_mentions
       end
     end
 

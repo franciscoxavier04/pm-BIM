@@ -195,7 +195,7 @@ RSpec.describe "Work package comments with restricted visibility",
       wp_page.wait_for_activity_tab
     end
 
-    context "with restricted comments enabled" do
+    context "with restricted comments initially enabled" do
       it "restricts mentions to project members with view comments with restricted visibility permission" do
         activity_tab.open_new_comment_editor
         expect(page).to have_test_selector("op-work-package-journal-form-element")
@@ -209,12 +209,27 @@ RSpec.describe "Work package comments with restricted visibility",
       end
     end
 
-    context "with restricted comments disabled" do
-      it "allows mentioning project members" do
+    context "with restricted comments initially disabled" do
+      it "allows mentioning project members but they are sanitized when the checkbox is checked" do
         activity_tab.type_comment("@")
 
         expect(page.all(".mention-list-item").map(&:text))
           .to contain_exactly("A Viewer", "Group", "Project Admin", "Restricted Viewer", "Restricted ViewerCommenter")
+
+        page.find(".mention-list-item", text: "A Viewer").click
+        activity_tab.type_comment("@Restricted")
+        page.first(".mention-list-item", text: "Restricted Viewer").click
+        activity_tab.type_comment("@Group")
+        page.find(".mention-list-item", text: "Group").click
+
+        activity_tab.check_restricted_visibility_comment_checkbox
+
+        page.within_test_selector("op-work-package-journal-form-element") do
+          expect(page.all("a.mention").map(&:text))
+            .to contain_exactly("@Restricted Viewer")
+
+          expect(page).to have_text("@A Viewer") & have_text("@Group")
+        end
       end
     end
   end

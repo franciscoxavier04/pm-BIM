@@ -58,13 +58,46 @@ export default class RestrictedCommentController extends Controller {
 
     this.formContainerTarget.classList.toggle(this.highlightClass, isChecked);
     this.toggleLearnMoreLink(isChecked);
-
     this.isRestrictedValue = isChecked;
+
+    if (isChecked) {
+      void this.sanitizeRestrictedMentions();
+    }
   }
 
   private toggleLearnMoreLink(isChecked:boolean):void {
     if (this.workPackagesActivitiesTabIndexOutlet.isMobile()) return; // hidden on mobile
 
     this.learnMoreLinkTarget.classList.toggle(this.hiddenClass, !isChecked);
+  }
+
+  private async sanitizeRestrictedMentions():Promise<void> {
+    if (this.ckEditorInstance) {
+      const editorData = this.ckEditorInstance.getData({ trim: false });
+      if (editorData.length === 0) return;
+
+      const sanitizePath = `/work_packages/${this.workPackagesActivitiesTabIndexOutlet.workPackageIdValue}/activities/sanitize_restricted_mentions`;
+      const csrfToken = (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).content;
+
+      const response = await fetch(sanitizePath, {
+        method: 'POST',
+        body: JSON.stringify({ journal: { notes: editorData } }),
+        headers: {
+          'X-CSRF-Token': csrfToken,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        const sanitizedNotes = await response.text();
+        this.ckEditorInstance.setData(sanitizedNotes);
+      } else {
+        console.error('Failed to sanitize restricted mentions');
+      }
+    }
+  }
+
+  private get ckEditorInstance() {
+    return this.workPackagesActivitiesTabIndexOutlet.getCkEditorInstance();
   }
 }
