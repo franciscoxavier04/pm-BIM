@@ -40,13 +40,13 @@ RSpec.describe ProjectQuery, "results of a life cycle stage filter" do
   shared_let(:stage_end_date) { Date.parse("2025-02-17") }
   shared_let(:project_with_stage) { create(:project, name: "Project with stage") }
   shared_let(:stage) do
-    create(:project_stage, project: project_with_stage, start_date: stage_start_date, end_date: stage_end_date)
+    create(:project_phase, project: project_with_stage, start_date: stage_start_date, end_date: stage_end_date)
   end
 
   # This is added to ensure that the filter only works on the stage provided.
   shared_let(:project_with_rival_stage) { create(:project, name: "Project with rival stage") }
   shared_let(:rival_stage) do
-    create(:project_stage, project: project_with_rival_stage, start_date: stage_start_date, end_date: stage_end_date)
+    create(:project_phase, project: project_with_rival_stage, start_date: stage_start_date, end_date: stage_end_date)
   end
 
   shared_let(:gate_date) { Date.parse("2025-03-06") }

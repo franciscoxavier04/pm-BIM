@@ -32,31 +32,31 @@ RSpec.shared_context "with seeded projects and stages and gates" do
   shared_let(:admin) { create(:admin) }
 
   shared_let(:life_cycle_initiating_definition) do
-    create :project_stage_definition, name: "Initiating"
+    create :project_phase_definition, name: "Initiating"
   end
   shared_let(:life_cycle_ready_for_planning_definition) do
-    create :project_gate_definition, name: "Ready for Planning"
+    create :project_phase_definition, name: "Ready for Planning"
   end
   shared_let(:life_cycle_planning_definition) do
-    create :project_stage_definition, name: "Planning"
+    create :project_phase_definition, name: "Planning"
   end
   shared_let(:life_cycle_ready_for_executing_definition) do
-    create :project_gate_definition, name: "Ready for Executing"
+    create :project_phase_definition, name: "Ready for Executing"
   end
   shared_let(:life_cycle_executing_definition) do
-    create :project_stage_definition, name: "Executing"
+    create :project_phase_definition, name: "Executing"
   end
   shared_let(:life_cycle_ready_for_closing_definition) do
-    create :project_gate_definition, name: "Ready for Closing"
+    create :project_phase_definition, name: "Ready for Closing"
   end
   shared_let(:life_cycle_closing_definition) do
-    create :project_stage_definition, name: "Closing"
+    create :project_phase_definition, name: "Closing"
   end
 
   let(:start_date) { Time.zone.today.next_week }
 
   let(:life_cycle_initiating) do
-    create :project_stage,
+    create :project_phase,
            definition: life_cycle_initiating_definition,
            start_date:,
            end_date: start_date + 1.day,
@@ -69,7 +69,7 @@ RSpec.shared_context "with seeded projects and stages and gates" do
            project:
   end
   let(:life_cycle_planning) do
-    create :project_stage,
+    create :project_phase,
            definition: life_cycle_planning_definition,
            start_date: start_date + 4.days,
            end_date: start_date + 7.days,
@@ -82,7 +82,7 @@ RSpec.shared_context "with seeded projects and stages and gates" do
            project:
   end
   let(:life_cycle_executing) do
-    create :project_stage,
+    create :project_phase,
            definition: life_cycle_executing_definition,
            start_date: start_date + 9.days,
            end_date: start_date + 10.days,
@@ -95,7 +95,7 @@ RSpec.shared_context "with seeded projects and stages and gates" do
            project:
   end
   let(:life_cycle_closing) do
-    create :project_stage,
+    create :project_phase,
            definition: life_cycle_closing_definition,
            start_date: start_date + 14.days,
            end_date: start_date + 18.days,

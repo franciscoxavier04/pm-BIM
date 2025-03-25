@@ -429,7 +429,7 @@ RSpec.describe SortHelper do
     end
 
     context "with a life cycle gate column" do
-      let(:life_cycle_step) { create(:project_gate_definition) }
+      let(:life_cycle_step) { create(:project_phase_definition) }
       let(:life_cycle_column) { Queries::Projects::Selects::LifeCycleStep.new("lcsd_#{life_cycle_step.id}") }
 
       let(:options) { { caption: life_cycle_step.name } }
@@ -455,7 +455,7 @@ RSpec.describe SortHelper do
       end
 
       context "with a life cycle stage column" do
-        let(:life_cycle_step) { create(:project_stage_definition) }
+        let(:life_cycle_step) { create(:project_phase_definition) }
 
         it "shows a commit icon in the header for gates" do
           icon = action_menu.at_css(".generic-table--action-menu-button .Button-leadingVisual .octicon-git-commit")

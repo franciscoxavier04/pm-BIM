@@ -29,7 +29,7 @@
 #++
 
 class Journals::CreateService
-  class ProjectLifeCycleStep < Association
+  class ProjectPhase < Association
     def associated?
       journable.respond_to?(:phases)
     end

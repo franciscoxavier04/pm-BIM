@@ -54,7 +54,7 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
     describe "validations" do
       describe "#consecutive_steps_have_increasing_dates" do
         let(:gate1) { build_stubbed(:project_gate, start_date: Date.new(2024, 1, 1)) }
-        let(:stage2) { build_stubbed(:project_stage, start_date: Date.new(2024, 2, 1), end_date: Date.new(2024, 2, 28)) }
+        let(:stage2) { build_stubbed(:project_phase, start_date: Date.new(2024, 2, 1), end_date: Date.new(2024, 2, 28)) }
         let(:gate3) { build_stubbed(:project_gate, start_date: Date.new(2024, 3, 1), end_date: Date.new(2024, 3, 15)) }
         let(:steps) { [gate1, stage2, gate3] }
 
@@ -112,14 +112,14 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
 
         context "when steps have touching start and end dates" do
           context "when 2 Stages are touching" do
-            let(:stage4) { build_stubbed(:project_stage, start_date: Date.new(2024, 2, 28), end_date: Date.new(2024, 3, 1)) }
+            let(:stage4) { build_stubbed(:project_phase, start_date: Date.new(2024, 2, 28), end_date: Date.new(2024, 3, 1)) }
             let(:steps) { [stage2, stage4] }
 
             it_behaves_like "contract is invalid",
                             "available_phases.date_range": :non_continuous_dates
 
             context "when having an empty step in between" do
-              let(:step_missing_dates) { build_stubbed(:project_stage, start_date: nil, end_date: nil) }
+              let(:step_missing_dates) { build_stubbed(:project_phase, start_date: nil, end_date: nil) }
               let(:steps) { [stage2, step_missing_dates, stage4] }
 
               it_behaves_like "contract is invalid",
@@ -135,7 +135,7 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
                             "available_phases.date": :non_continuous_dates
 
             context "when having an empty step in between" do
-              let(:step_missing_dates) { build_stubbed(:project_stage, start_date: nil, end_date: nil) }
+              let(:step_missing_dates) { build_stubbed(:project_phase, start_date: nil, end_date: nil) }
               let(:steps) { [gate1, step_missing_dates, gate4] }
 
               it_behaves_like "contract is invalid",
@@ -150,7 +150,7 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
             it_behaves_like "contract is valid"
 
             context "when having an empty step in between" do
-              let(:step_missing_dates) { build_stubbed(:project_stage, start_date: nil, end_date: nil) }
+              let(:step_missing_dates) { build_stubbed(:project_phase, start_date: nil, end_date: nil) }
               let(:steps) { [stage2, step_missing_dates, gate4] }
 
               it_behaves_like "contract is valid"
@@ -158,13 +158,13 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
           end
 
           context "when a Stage and a Gate are touching on the end date" do
-            let(:stage4) { build_stubbed(:project_stage, start_date: Date.new(2023, 12, 30), end_date: Date.new(2024, 1, 1)) }
+            let(:stage4) { build_stubbed(:project_phase, start_date: Date.new(2023, 12, 30), end_date: Date.new(2024, 1, 1)) }
             let(:steps) { [stage4, gate1] }
 
             it_behaves_like "contract is valid"
 
             context "when having an empty step in between" do
-              let(:step_missing_dates) { build_stubbed(:project_stage, start_date: nil, end_date: nil) }
+              let(:step_missing_dates) { build_stubbed(:project_phase, start_date: nil, end_date: nil) }
               let(:steps) { [stage4, step_missing_dates, gate1] }
 
               it_behaves_like "contract is valid"
@@ -173,13 +173,13 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
 
           context "when a Stage, a Gate, and anothe Stage are touching" do
             let(:gate4) { build_stubbed(:project_gate, start_date: Date.new(2024, 2, 28)) }
-            let(:stage5) { build_stubbed(:project_stage, start_date: Date.new(2024, 2, 28), end_date: Date.new(2024, 3, 1)) }
+            let(:stage5) { build_stubbed(:project_phase, start_date: Date.new(2024, 2, 28), end_date: Date.new(2024, 3, 1)) }
             let(:steps) { [stage2, gate4, stage5] }
 
             it_behaves_like "contract is valid"
 
             context "when having an empty step in between" do
-              let(:step_missing_dates) { build_stubbed(:project_stage, start_date: nil, end_date: nil) }
+              let(:step_missing_dates) { build_stubbed(:project_phase, start_date: nil, end_date: nil) }
               let(:steps) { [stage2, gate4, step_missing_dates, stage5] }
 
               it_behaves_like "contract is valid"
@@ -188,7 +188,7 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
         end
 
         context "when a step has missing start dates" do
-          let(:step_missing_dates) { build_stubbed(:project_stage, start_date: nil, end_date: nil) }
+          let(:step_missing_dates) { build_stubbed(:project_phase, start_date: nil, end_date: nil) }
 
           context "and the other steps have increasing dates" do
             let(:steps) { [gate1, step_missing_dates, stage2] }

@@ -381,11 +381,11 @@ RSpec.describe Project do
   end
 
   describe "life_cycles" do
-    it { is_expected.to have_many(:life_cycle_steps).class_name("Project::LifeCycleStep").dependent(:destroy) }
+    it { is_expected.to have_many(:life_cycle_steps).class_name("Project::Phase").dependent(:destroy) }
 
     it "has many available_phases" do
       expect(subject).to have_many(:available_phases)
-                    .class_name("Project::LifeCycleStep")
+                    .class_name("Project::Phase")
                     .inverse_of(:project)
                     .dependent(:destroy)
                     .order(position: :asc)
@@ -411,7 +411,7 @@ RSpec.describe Project do
       let(:user) do
         create(:user, member_with_permissions: { project => %i(view_project view_project_phases) })
       end
-      let!(:project_stage) { create :project_stage, :skip_validate, project:, start_date: nil }
+      let!(:project_phase) { create :project_phase, :skip_validate, project:, start_date: nil }
 
       before { allow(User).to receive(:current).and_return user }
 

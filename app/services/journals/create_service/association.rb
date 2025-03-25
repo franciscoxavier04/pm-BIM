@@ -36,7 +36,7 @@ class Journals::CreateService
       AgendaItemable
       Attachable
       Customizable
-      ProjectLifeCycleStep
+      ProjectPhase
       Storable
     ].freeze
 

@@ -63,7 +63,7 @@ RSpec.describe Queries::Projects::Orders::LifeCycleStepOrder do
     current_user { user }
 
     context "without feature flag set" do
-      let!(:life_cycle_def) { create(:project_stage_definition) }
+      let!(:life_cycle_def) { create(:project_phase_definition) }
 
       it "does not allow to sort by it" do
         expect(instance).not_to be_available
@@ -72,7 +72,7 @@ RSpec.describe Queries::Projects::Orders::LifeCycleStepOrder do
 
     context "with feature flag set", with_flag: { stages_and_gates: true } do
       context "for a stage definition" do
-        let!(:life_cycle_def) { create(:project_stage_definition) }
+        let!(:life_cycle_def) { create(:project_phase_definition) }
 
         it "allows to sort by it" do
           expect(instance).to be_available
@@ -80,7 +80,7 @@ RSpec.describe Queries::Projects::Orders::LifeCycleStepOrder do
       end
 
       context "for a gate definition" do
-        let!(:life_cycle_def) { create(:project_gate_definition) }
+        let!(:life_cycle_def) { create(:project_phase_definition) }
 
         it "allows to sort by it" do
           expect(instance).to be_available
@@ -88,7 +88,7 @@ RSpec.describe Queries::Projects::Orders::LifeCycleStepOrder do
       end
 
       context "without permission in any project" do
-        let!(:life_cycle_def) { create(:project_gate_definition) }
+        let!(:life_cycle_def) { create(:project_phase_definition) }
         let(:permissions) { [] }
 
         it "is not available" do

@@ -204,7 +204,7 @@ RSpec.describe Project, "acts_as_journalized" do
 
   describe "life cycle steps", with_settings: { journal_aggregation_time_minutes: 0 } do
     describe "activation/deactivation" do
-      let!(:stage) { build(:project_stage, project:, active: true, start_date: nil, end_date: nil) }
+      let!(:stage) { build(:project_phase, project:, active: true, start_date: nil, end_date: nil) }
       let!(:gate) { build(:project_gate, project:, active: true, date: nil) }
 
       context "when adding activated" do
@@ -241,7 +241,7 @@ RSpec.describe Project, "acts_as_journalized" do
     end
 
     describe "modifying dates" do
-      let!(:stage) { create(:project_stage, project:, start_date: original_stage_start, end_date: original_stage_end) }
+      let!(:stage) { create(:project_phase, project:, start_date: original_stage_start, end_date: original_stage_end) }
       let!(:gate) { create(:project_gate, project:, date: original_gate_date) }
 
       before do
@@ -326,7 +326,7 @@ RSpec.describe Project, "acts_as_journalized" do
 
     describe "combined" do
       let!(:stage) do
-        build(:project_stage, project:, active: true, start_date: Date.new(2025, 1, 30), end_date: Date.new(2025, 1, 31))
+        build(:project_phase, project:, active: true, start_date: Date.new(2025, 1, 30), end_date: Date.new(2025, 1, 31))
       end
       let!(:gate) { build(:project_gate, project:, active: true, date: Date.new(2025, 2, 1)) }
 

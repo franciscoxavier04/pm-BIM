@@ -31,9 +31,9 @@
 require "spec_helper"
 
 RSpec.describe Queries::Projects::Filters::LifeCycleGateFilter do
-  let(:gate) { build_stubbed(:project_gate_definition) }
+  let(:gate) { build_stubbed(:project_phase_definition) }
   # Defined here and in the .all to check that the filter only works on gates
-  let(:stage) { build_stubbed(:project_stage_definition) }
+  let(:stage) { build_stubbed(:project_phase_definition) }
   let(:query) { build_stubbed(:project_query) }
 
   let(:instance) do

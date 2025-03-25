@@ -253,13 +253,13 @@ RSpec.describe "Projects lists columns", :js, with_settings: { login_required?: 
   context "with life cycle columns" do
     shared_let(:life_cycle_gate) { create(:project_gate, project:, date: Date.new(2024, 12, 13)) }
     shared_let(:life_cycle_stage) do
-      create(:project_stage,
+      create(:project_phase,
              project: development_project,
              start_date: Date.new(2024, 12, 1),
              end_date: Date.new(2024, 12, 13))
     end
     shared_let(:inactive_life_cycle_gate) { create(:project_gate, project:, active: false) }
-    shared_let(:inactive_life_cycle_stage) { create(:project_stage, project: development_project, active: false) }
+    shared_let(:inactive_life_cycle_stage) { create(:project_phase, project: development_project, active: false) }
 
     context "with the feature flag disabled", with_flag: { stages_and_gates: false } do
       specify "life cycle columns cannot be configured to show up" do

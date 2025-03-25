@@ -58,7 +58,7 @@ RSpec.describe OpenProject::JournalFormatter::ProjectLifeCycleStepDates do
 
     describe "for gate changes" do
       let(:step) { build_stubbed(:project_gate, definition:) }
-      let(:definition) { build_stubbed(:project_gate_definition, name: "The Gate") }
+      let(:definition) { build_stubbed(:project_phase_definition, name: "The Gate") }
 
       context "when date added" do
         let(:values) { [nil, date(28)..] }
@@ -94,8 +94,8 @@ RSpec.describe OpenProject::JournalFormatter::ProjectLifeCycleStepDates do
     end
 
     describe "for stage changes" do
-      let(:step) { build_stubbed(:project_stage, definition:) }
-      let(:definition) { build_stubbed(:project_stage_definition, name: "The Stage") }
+      let(:step) { build_stubbed(:project_phase, definition:) }
+      let(:definition) { build_stubbed(:project_phase_definition, name: "The Stage") }
 
       context "when date range added" do
         let(:values) { [nil, date(28)..date(29)] }

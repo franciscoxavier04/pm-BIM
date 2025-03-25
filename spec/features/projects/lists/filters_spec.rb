@@ -54,7 +54,7 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
            })
   end
   shared_let(:stage) do
-    create(:project_stage, project:, start_date: Time.zone.today - 5.days, end_date: Time.zone.today + 10.days)
+    create(:project_phase, project:, start_date: Time.zone.today - 5.days, end_date: Time.zone.today + 10.days)
   end
   shared_let(:gate) { create(:project_gate, project: public_project, date: Time.zone.today) }
 

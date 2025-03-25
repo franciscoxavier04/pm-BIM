@@ -50,7 +50,7 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
         Project::Phase.update_all(start_date: nil, end_date: nil)
       end
 
-      it "shows all the Project::LifeCycleSteps without a value" do
+      it "shows all the Project::Phases without a value" do
         dialog = overview_page.open_edit_dialog_for_life_cycles
 
         dialog.expect_input("Initiating", value: "", type: :stage, position: 1)
@@ -75,7 +75,7 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
     end
 
     context "when all LifeCycleSteps have a value" do
-      it "shows all the Project::LifeCycleSteps and updates them correctly" do
+      it "shows all the Project::Phases and updates them correctly" do
         dialog = overview_page.open_edit_dialog_for_life_cycles
 
         expect_angular_frontend_initialized

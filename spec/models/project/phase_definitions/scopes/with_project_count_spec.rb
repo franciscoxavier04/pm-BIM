@@ -31,19 +31,19 @@
 require "spec_helper"
 
 RSpec.describe Project::PhaseDefinitions::Scopes::WithProjectCount do
-  let!(:definition_a) { create(:project_stage_definition, name: "foo") }
-  let!(:definition_b) { create(:project_gate_definition, name: "bar") }
-  let!(:definition_c) { create(:project_stage_definition, name: "baz") }
+  let!(:definition_a) { create(:project_phase_definition, name: "foo") }
+  let!(:definition_b) { create(:project_phase_definition, name: "bar") }
+  let!(:definition_c) { create(:project_phase_definition, name: "baz") }
 
   before do
     create(:project).tap do |project|
-      create(:project_stage, project:, definition: definition_a)
-      create(:project_stage, project:, definition: definition_b)
+      create(:project_phase, project:, definition: definition_a)
+      create(:project_phase, project:, definition: definition_b)
     end
 
     create(:project).tap do |project|
-      create(:project_stage, project:, definition: definition_a)
-      create(:project_stage, project:, definition: definition_b, active: false)
+      create(:project_phase, project:, definition: definition_a)
+      create(:project_phase, project:, definition: definition_b, active: false)
     end
   end
 
