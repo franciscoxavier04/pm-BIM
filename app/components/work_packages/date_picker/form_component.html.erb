@@ -98,7 +98,7 @@
           )
         end
 
-        body.with_row("aria-hidden": true) do
+        body.with_row("aria-hidden": true, classes: "wp-datepicker-dialog--date-picker-instance") do
           helpers.angular_component_tag "opce-wp-date-picker-instance",
                                         inputs: {
                                           start_date: work_package.start_date,
