@@ -270,9 +270,6 @@ en:
           zero: no sub-items
           one: 1 sub-item
           other: "%{count} sub-items"
-    upsale:
-      custom_field_format_hierarchy: "Need a hierarchy in your custom fields for work packages?"
-
     text_add_new_custom_field: >
       To add new custom fields to a project you first need to create them before
       you can add them to this project.
@@ -2059,6 +2056,8 @@ en:
           related: "Add a table of related work packages"
       readonly_work_packages:
         description: "Mark work packages as read-only for specific statuses."
+      custom_field_hierarchies:
+        description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
 
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Work package priorities"

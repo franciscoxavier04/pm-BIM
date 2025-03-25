@@ -151,6 +151,8 @@ enterprise_docs:
     href: https://www.openproject.org/enterprise-edition/?op_referrer=settings-wp-attribute-highlighting#attribute-highlighting
   board_view:
     href: https://www.openproject.org/docs/user-guide/agile-boards/#action-boards-enterprise-add-on
+  custom_field_hierarchies:
+    href: https://www.openproject.org/docs/system-admin-guide/custom-fields/#hierarchy-custom-field-enterprise-add-on
 sysadmin_docs:
   saml:
     href: https://www.openproject.org/docs/system-admin-guide/authentication/saml/
