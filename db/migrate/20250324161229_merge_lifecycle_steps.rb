@@ -1,0 +1,98 @@
+# frozen_string_literal: true
+
+#
+# OpenProject is an open source project management software.
+# Copyright (C) the OpenProject GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License version 3.
+#
+# OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+# Copyright (C) 2006-2013 Jean-Philippe Lang
+# Copyright (C) 2010-2013 the ChiliProject Team
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# See COPYRIGHT and LICENSE files for more details.
+#++
+
+class MergeLifecycleSteps < ActiveRecord::Migration[8.0]
+  def change
+    reversible do |direction|
+      direction.up do
+        delete_life_cycle_project_queries
+        delete_life_cycles
+      end
+    end
+
+    change_table(:project_life_cycle_step_definitions, bulk: true) do |t|
+      t.column :start_gate, :boolean, default: false, null: false
+      t.column :start_gate_name, :string
+      # TODO: Consider renaming all 'end_date' columns to 'finish_date' to be in line with how the
+      # dates are to be named for work packages
+      t.column :end_gate, :boolean, default: false, null: false
+      t.column :end_gate_name, :string
+
+      t.remove :type, type: :string
+    end
+
+    change_table(:project_life_cycle_steps) do |t|
+      t.remove :type, type: :string
+    end
+  end
+
+  def delete_life_cycles
+    # The feature is behind a feature flag and not yet released.
+    # Potential data is thus simply removed and the seeder will add the updated data.
+    execute <<-SQL.squish
+      DELETE FROM project_life_cycle_steps;
+    SQL
+
+    execute <<-SQL.squish
+      DELETE FROM project_life_cycle_step_definitions;
+    SQL
+
+    execute <<-SQL.squish
+      DELETE FROM project_life_cycle_step_journals;
+    SQL
+  end
+
+  def delete_life_cycle_project_queries
+    step_ids = select_all(<<-SQL.squish).to_a.flatten.flat_map(&:values)
+      SELECT id from project_life_cycle_step_definitions;
+    SQL
+
+    if step_ids.any?
+      # This should be possible to be done like with orders and filters
+      execute <<-SQL.squish
+        DELETE
+        FROM project_queries
+        WHERE selects::jsonb ?| array[#{step_ids.map { |id| "'lcsd_#{id}'" }.join(',')}];
+      SQL
+    end
+
+    execute <<-SQL.squish
+      DELETE
+      FROM project_queries
+      WHERE jsonb_path_exists(orders::jsonb, '$[*] ? (@.attribute like_regex "^lcsd.*")');
+    SQL
+
+    execute <<-SQL.squish
+      DELETE
+      FROM project_queries
+      WHERE jsonb_path_exists(filters::jsonb, '$[*] ? (@.attribute like_regex "^lcsd.*")');
+    SQL
+  end
+end
