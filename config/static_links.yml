@@ -147,6 +147,8 @@ enterprise_docs:
     href: https://www.openproject.org/docs/system-admin-guide/manage-work-packages/work-package-status/#create-a-new-work-package-status
   customize_life_cycle:
     href: https://www.openproject.org/enterprise-edition
+  conditional_highlighting:
+    href: https://www.openproject.org/enterprise-edition/?op_referrer=settings-wp-attribute-highlighting#attribute-highlighting
 sysadmin_docs:
   saml:
     href: https://www.openproject.org/docs/system-admin-guide/authentication/saml/
