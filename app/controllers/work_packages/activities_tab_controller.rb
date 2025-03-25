@@ -140,10 +140,7 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def sanitize_restricted_mentions
-    sanitizer = WorkPackages::ActivitiesTab::RestrictedMentionsSanitizer.new(@work_package, journal_params[:notes])
-    sanitized_notes = sanitizer.call
-
-    render plain: sanitized_notes
+    render plain: sanitized_journal_notes
   end
 
   def toggle_reaction # rubocop:disable Metrics/AbcSize
@@ -228,6 +225,10 @@ class WorkPackages::ActivitiesTabController < ApplicationController
     User.current.preference&.comments_sorting || OpenProject::Configuration.default_comment_sort_order
   end
 
+  def sanitized_journal_notes
+    WorkPackages::ActivitiesTab::RestrictedMentionsSanitizer.new(@work_package, journal_params[:notes]).call
+  end
+
   def journal_params
     params.expect(journal: %i[notes restricted])
   end
@@ -302,12 +303,15 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def create_journal_service_call
+    restricted = to_boolean(journal_params[:restricted], false)
+    notes = restricted ? sanitized_journal_notes : journal_params[:notes]
+
     AddWorkPackageNoteService
       .new(user: User.current,
            work_package: @work_package)
-      .call(journal_params[:notes],
+      .call(notes,
             send_notifications: to_boolean(params[:notify], true),
-            restricted: to_boolean(journal_params[:restricted], false))
+            restricted:)
   end
 
   def to_boolean(value, default)
@@ -315,9 +319,8 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def update_journal_service_call
-    Journals::UpdateService.new(model: @journal, user: User.current).call(
-      notes: journal_params[:notes]
-    )
+    notes = @journal.restricted? ? sanitized_journal_notes : journal_params[:notes]
+    Journals::UpdateService.new(model: @journal, user: User.current).call(notes:)
   end
 
   def generate_time_based_update_streams(last_update_timestamp)
