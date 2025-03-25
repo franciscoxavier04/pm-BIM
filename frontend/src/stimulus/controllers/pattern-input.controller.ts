@@ -217,7 +217,7 @@ export default class PatternInputController extends Controller {
       .reduce((acc, [groupKey, attributes]) => {
         if (groupKey !== 'work_package') {
           Object.entries(attributes).forEach(([key, value]) => {
-            attributes[key] = `${this.headingLocalesValue[groupKey]}: ${value}`;
+            attributes[key] = `${this.tokenPrefix(groupKey)} ${value}`;
           });
         }
 
@@ -349,7 +349,11 @@ export default class PatternInputController extends Controller {
     if (textContent === null) { return null; }
 
     if (this.isToken(parent)) {
-      return textContent.slice(0, selection.anchorOffset);
+      const key = parent.dataset.prop;
+      const prefix = this.tokenPrefix(key.slice(0, key.indexOf('_')));
+      const start = prefix && textContent.startsWith(prefix) ? prefix.length + 2 : 0;
+
+      return textContent.slice(start, selection.anchorOffset);
     }
 
     const posKey = textContent.lastIndexOf(COMPLETION_CHARACTER);
@@ -533,6 +537,11 @@ export default class PatternInputController extends Controller {
       .reduce((acc, index) => {
         return `${acc.slice(0, index)}${CONTROL_SPACE}${acc.slice(index)}`;
       }, blueprint);
+  }
+
+  private tokenPrefix(groupKey:string):string {
+    const locale = this.headingLocalesValue[groupKey];
+    return locale ? `${locale}:` : '';
   }
 
   private toBlueprint():string {
