@@ -39,8 +39,8 @@ RSpec.describe "Work package comments with restricted visibility",
   shared_let(:viewer_with_commenting_permission) { create_user_with_restricted_comments_view_and_write_permissions }
   shared_let(:project_admin) { create_user_as_project_admin }
 
-  let(:work_package) { create(:work_package, project:, author: admin) }
-  let(:first_comment) do
+  shared_let(:work_package) { create(:work_package, project:, author: admin) }
+  shared_let(:first_comment) do
     create(:work_package_journal, user: admin, notes: "A (restricted) comment by admin",
                                   journable: work_package, version: 2, restricted: true)
   end
@@ -230,6 +230,20 @@ RSpec.describe "Work package comments with restricted visibility",
 
           expect(page).to have_text("@A Viewer") & have_text("@Group")
         end
+      end
+    end
+
+    context "when editing a restricted comment" do
+      it "honors mentionable principals" do
+        activity_tab.within_journal_entry(first_comment) do
+          page.find_test_selector("op-wp-journal-#{first_comment.id}-action-menu").click
+          page.find_test_selector("op-wp-journal-#{first_comment.id}-edit").click
+
+          activity_tab.type_comment(" @")
+        end
+
+        expect(page.all(".mention-list-item").map(&:text))
+            .to contain_exactly("Project Admin", "Restricted Viewer", "Restricted ViewerCommenter")
       end
     end
   end

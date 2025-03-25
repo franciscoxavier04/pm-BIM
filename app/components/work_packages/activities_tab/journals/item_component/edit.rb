@@ -33,6 +33,7 @@ module WorkPackages
         include ApplicationHelper
         include OpPrimer::ComponentHelpers
         include OpTurbo::Streamable
+        include WorkPackages::ActivitiesTab::StimulusControllers
 
         def initialize(journal:, filter:)
           super
@@ -48,6 +49,12 @@ module WorkPackages
 
         def wrapper_uniq_by
           journal.id
+        end
+
+        def wrapper_data_attributes
+          {
+            restricted_comment_stimulus_controller("-is-restricted-value") => journal.restricted?
+          }
         end
       end
     end
