@@ -799,6 +799,7 @@ fil:
       typeahead_placeholder: Maghanap ng posibleng watchers
     relation_labels:
       parent: "Magulang"
+      child: "Child"
       children: "Ang mga bata"
       relates: "Nauugnay sa"
       duplicates: "Mga kopya"

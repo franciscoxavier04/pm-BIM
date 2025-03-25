@@ -980,6 +980,7 @@ lt:
         column_names: "Stulpeliai"
         relations_to_type_column: "Ryšiai su %{type}"
         relations_of_type_column: "%{type} ryšiai"
+        child_work_packages: "Child work packages"
         group_by: "Grupuoti rezultatus pagal"
         sort_by: "Sort results by"
         filters: "Filtrai"

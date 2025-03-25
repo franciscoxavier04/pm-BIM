@@ -956,6 +956,7 @@ vi:
         column_names: "Cột"
         relations_to_type_column: "Quan hệ với %{type}"
         relations_of_type_column: "%{type} quan hệ"
+        child_work_packages: "Child work packages"
         group_by: "Nhóm kết quả bởi"
         sort_by: "Sort results by"
         filters: "Bộ lọc"

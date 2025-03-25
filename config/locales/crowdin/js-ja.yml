@@ -799,6 +799,7 @@ ja:
       typeahead_placeholder: ウォッチャーの選択肢を検索
     relation_labels:
       parent: "親項目"
+      child: "Child"
       children: "子"
       relates: "関連先"
       duplicates: "複製"

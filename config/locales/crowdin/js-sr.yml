@@ -800,6 +800,7 @@ sr:
       typeahead_placeholder: Search for possible watchers
     relation_labels:
       parent: "Parent"
+      child: "Child"
       children: "Children"
       relates: "Related To"
       duplicates: "Duplicates"

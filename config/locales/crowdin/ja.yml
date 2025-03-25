@@ -954,6 +954,7 @@ ja:
         column_names: "列"
         relations_to_type_column: "%{type} との関連"
         relations_of_type_column: "%{type} 関連"
+        child_work_packages: "Child work packages"
         group_by: "グループ化"
         sort_by: "Sort results by"
         filters: "フィルタ"

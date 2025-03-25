@@ -799,6 +799,7 @@ bg:
       typeahead_placeholder: Search for possible watchers
     relation_labels:
       parent: "Горна категория"
+      child: "Child"
       children: "Деца"
       relates: "Свързано с"
       duplicates: "Дубликати"

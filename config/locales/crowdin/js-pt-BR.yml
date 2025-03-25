@@ -798,6 +798,7 @@ pt-BR:
       typeahead_placeholder: Procurar possíveis observadores
     relation_labels:
       parent: "Pai"
+      child: "Child"
       children: "Filhos"
       relates: "Relacionado a"
       duplicates: "Duplicados"

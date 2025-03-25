@@ -977,6 +977,7 @@ uk:
         column_names: "Стовпці"
         relations_to_type_column: "Відносини з %{type}"
         relations_of_type_column: "%{type} відносини"
+        child_work_packages: "Child work packages"
         group_by: "Групувати результати по"
         sort_by: "Сортувати результати за"
         filters: "Фільтри"

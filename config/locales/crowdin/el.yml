@@ -961,6 +961,7 @@ el:
         column_names: "Στήλες"
         relations_to_type_column: "Συσχετίσεις με %{type}"
         relations_of_type_column: "%{type} συσχετίσεις"
+        child_work_packages: "Child work packages"
         group_by: "Ομαδοποίηση αποτελεσμάτων κατά"
         sort_by: "Sort results by"
         filters: "Φίλτρα"

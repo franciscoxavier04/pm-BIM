@@ -798,6 +798,7 @@ tr:
       typeahead_placeholder: Olası takip edenler için arayın
     relation_labels:
       parent: "Üst"
+      child: "Child"
       children: "Çocuk"
       relates: "İlişkili"
       duplicates: "Kopyalayan"

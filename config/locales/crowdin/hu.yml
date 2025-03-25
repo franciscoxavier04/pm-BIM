@@ -964,6 +964,7 @@ hu:
         column_names: "Oszlopok"
         relations_to_type_column: "Kapcsolatok %{type}-hoz"
         relations_of_type_column: "%{type} kapcsolatok"
+        child_work_packages: "Child work packages"
         group_by: "Csoport szintű eredmények"
         sort_by: "Sort results by"
         filters: "Szürő"

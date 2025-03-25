@@ -954,6 +954,7 @@ ms:
         column_names: "Kolum"
         relations_to_type_column: "Berhubung dengan %{type}"
         relations_of_type_column: "%{type} hubungan"
+        child_work_packages: "Child work packages"
         group_by: "Kumpulkan hasil mengikut"
         sort_by: "Sort results by"
         filters: "Penyaring"

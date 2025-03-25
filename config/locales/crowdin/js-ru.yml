@@ -800,6 +800,7 @@ ru:
       typeahead_placeholder: Поиск возможных наблюдателей
     relation_labels:
       parent: "Родитель"
+      child: "Child"
       children: "Дочерние пакеты работ"
       relates: "Связан с"
       duplicates: "Дублирует"

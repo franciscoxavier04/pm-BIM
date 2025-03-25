@@ -964,6 +964,7 @@
         column_names: "Kolonner"
         relations_to_type_column: "Forbindelser til %{type}"
         relations_of_type_column: "%{type} relasjoner"
+        child_work_packages: "Child work packages"
         group_by: "Gruppèr resultater etter"
         sort_by: "Sort results by"
         filters: "Filtre"

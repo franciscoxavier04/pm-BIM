@@ -974,6 +974,7 @@ ro:
         column_names: "Coloane"
         relations_to_type_column: "Relații cu %{type}"
         relations_of_type_column: "%{type} relații"
+        child_work_packages: "Child work packages"
         group_by: "Grupare rezultate"
         sort_by: "Sort results by"
         filters: "Filtre"

@@ -799,6 +799,7 @@ et:
       typeahead_placeholder: Search for possible watchers
     relation_labels:
       parent: "Pärineb teemast"
+      child: "Child"
       children: "Lapsed"
       relates: "Related To"
       duplicates: "Duplicates"

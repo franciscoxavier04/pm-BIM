@@ -965,6 +965,7 @@ sv:
         column_names: "Kolumner"
         relations_to_type_column: "Relationer till %{type}"
         relations_of_type_column: "relationer av typ %{type}"
+        child_work_packages: "Child work packages"
         group_by: "Gruppera resultat efter"
         sort_by: "Sort results by"
         filters: "Filter"

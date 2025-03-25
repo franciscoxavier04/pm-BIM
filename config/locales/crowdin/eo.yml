@@ -965,6 +965,7 @@ eo:
         column_names: "Kolumnoj"
         relations_to_type_column: "Rilatoj kun %{type}"
         relations_of_type_column: "%{type} rilatoj"
+        child_work_packages: "Child work packages"
         group_by: "Grupaj rezultoj laŭ"
         sort_by: "Sort results by"
         filters: "Filtriloj"

@@ -798,6 +798,7 @@ de:
       typeahead_placeholder: Nach möglichen Beobachtern suchen
     relation_labels:
       parent: "Übergeordnetes Arbeitspaket"
+      child: "Child"
       children: "Untergeordnete Arbeitspakete"
       relates: "Verwandt mit"
       duplicates: "Dupliziert"

@@ -803,6 +803,7 @@ ar:
       typeahead_placeholder: Search for possible watchers
     relation_labels:
       parent: "الجذر"
+      child: "Child"
       children: "الأطفال"
       relates: "متعلق ب"
       duplicates: "التكرارات"

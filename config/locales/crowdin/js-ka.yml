@@ -799,6 +799,7 @@ ka:
       typeahead_placeholder: Search for possible watchers
     relation_labels:
       parent: "მშობელი"
+      child: "Child"
       children: "შვილები"
       relates: "მიეკუთვნება"
       duplicates: "დუბლები"

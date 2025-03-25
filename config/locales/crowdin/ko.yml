@@ -956,6 +956,7 @@ ko:
         column_names: "컬럼"
         relations_to_type_column: "%{type}에 대한 관계"
         relations_of_type_column: "%{type} 관계"
+        child_work_packages: "Child work packages"
         group_by: "그룹 결과"
         sort_by: "결과 정렬 기준"
         filters: "필터"

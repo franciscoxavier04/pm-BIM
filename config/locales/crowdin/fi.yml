@@ -965,6 +965,7 @@ fi:
         column_names: "Sarakkeet"
         relations_to_type_column: "Riippuvuus %{type}"
         relations_of_type_column: "%{type} -riippuvuus"
+        child_work_packages: "Child work packages"
         group_by: "Ryhmittele tulokset"
         sort_by: "Sort results by"
         filters: "Suodattimet"

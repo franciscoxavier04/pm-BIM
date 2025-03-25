@@ -964,6 +964,7 @@ tr:
         column_names: "Sütunlar"
         relations_to_type_column: "%{type} ile ilişkileri"
         relations_of_type_column: "%{type} ilişkiler"
+        child_work_packages: "Child work packages"
         group_by: "Sonuçları grupla"
         sort_by: "Sonuçları şuna göre sırala"
         filters: "Filtreler"
@@ -1591,7 +1592,7 @@ tr:
     project_life_cycle_step:
       activated: "activated"
       deactivated: "deactivated"
-      added_date: "set to %{date}"
+      added_date: "%{date} tarihine ayarlandı"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
   #common attributes of all models

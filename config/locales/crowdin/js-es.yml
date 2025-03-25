@@ -799,6 +799,7 @@ es:
       typeahead_placeholder: Buscar posibles observadores
     relation_labels:
       parent: "Principal"
+      child: "Child"
       children: "Sub-elemento"
       relates: "Relacionado con"
       duplicates: "Duplicados"

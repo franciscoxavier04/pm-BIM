@@ -965,6 +965,7 @@ si:
         column_names: "තීරු"
         relations_to_type_column: "සබඳතා %{type}"
         relations_of_type_column: "%{type} සබඳතා"
+        child_work_packages: "Child work packages"
         group_by: "කණ්ඩායම් ප්රතිඵල විසින්"
         sort_by: "Sort results by"
         filters: "පෙරහන්"

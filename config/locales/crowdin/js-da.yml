@@ -798,6 +798,7 @@ da:
       typeahead_placeholder: Search for possible watchers
     relation_labels:
       parent: "Overordnet"
+      child: "Child"
       children: "Underordnede"
       relates: "Knyttet til"
       duplicates: "Dubletter"

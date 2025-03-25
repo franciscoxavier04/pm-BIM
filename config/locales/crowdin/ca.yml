@@ -962,6 +962,7 @@ ca:
         column_names: "Columnes"
         relations_to_type_column: "Relacions a %{type}"
         relations_of_type_column: "relacions %{type}"
+        child_work_packages: "Child work packages"
         group_by: "Agrupa els resultats per"
         sort_by: "Sort results by"
         filters: "Filtres"

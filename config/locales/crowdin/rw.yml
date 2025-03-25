@@ -965,6 +965,7 @@ rw:
         column_names: "Columns"
         relations_to_type_column: "Relations to %{type}"
         relations_of_type_column: "%{type} relations"
+        child_work_packages: "Child work packages"
         group_by: "Group results by"
         sort_by: "Sort results by"
         filters: "Filters"

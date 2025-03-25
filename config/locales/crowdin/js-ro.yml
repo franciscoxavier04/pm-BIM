@@ -799,6 +799,7 @@ ro:
       typeahead_placeholder: Căutarea de posibili observatori
     relation_labels:
       parent: "Părinte"
+      child: "Child"
       children: "Copii"
       relates: "În relație cu"
       duplicates: "Dublează"

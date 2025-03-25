@@ -799,6 +799,7 @@ hi:
       typeahead_placeholder: Search for possible watchers
     relation_labels:
       parent: "जनक"
+      child: "Child"
       children: "Children"
       relates: "Related To"
       duplicates: "Duplicates"

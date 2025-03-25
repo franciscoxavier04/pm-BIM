@@ -801,6 +801,7 @@ he:
       typeahead_placeholder: Search for possible watchers
     relation_labels:
       parent: "אב"
+      child: "Child"
       children: "ילדים"
       relates: "קשור ל"
       duplicates: "כפילויות"

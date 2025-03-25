@@ -35,15 +35,15 @@ zh-TW:
         label_sort_desc: "最新的在最上面"
         label_type_to_comment: "留言。輸入 @ 來通知他人。"
         label_submit_comment: "留言"
-        label_who: Who?
+        label_who: 什麼？
         changed_on: "異動於"
         created_on: "新增於"
         changed: "變更"
         created: "建立"
         commented: "已留言"
-        restrict_visibility: Restrict visibility
-        restricted_journal: Restricted comments are visible to a limited group of members.
-        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
+        restrict_visibility: 限制可視性
+        restricted_journal: 受限留言僅對有限的群組成員可見。
+        unsaved_changes_confirmation_message: 您有未儲存的變更。您確實要關閉編輯器嗎？
   admin:
     plugins:
       no_results_title_text: 目前沒有安裝任何外掛程式
@@ -614,9 +614,9 @@ zh-TW:
           label: "主題模板"
           caption: "新增文字或輸入 / 來搜尋屬性。您可以使用空格來分隔它們。"
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "工作項目"
+            parent: "上層"
+            project: "專案"
           insert_as_text: "未找到屬性。以文字新增：\"%{word}"
       export_configuration:
         tab: "產生PDF檔案"
@@ -954,6 +954,7 @@ zh-TW:
         column_names: "欄"
         relations_to_type_column: "與 %{type} 的關連"
         relations_of_type_column: "%{type} 關係"
+        child_work_packages: "Child work packages"
         group_by: "分組依據"
         sort_by: "排序結果"
         filters: "篩選條件"
@@ -1048,9 +1049,9 @@ zh-TW:
       wiki_page:
         parent_title: "上層頁面"
         redirect_existing_links: "將現有的連結重定向"
-        text: "Page content"
+        text: "頁面內容"
       work_package:
-        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
+        ancestor: "子工作項" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "開始插入"
         begin_deletion: "開始刪除"
         children: "子項"
@@ -1066,7 +1067,7 @@ zh-TW:
           title: "工作日"
           false: "限工作日"
           true: "包含非工作日"
-        journal_restricted: Restricted Journal
+        journal_restricted: 限制存取日誌
         notify: "通知" #used in custom actions
         parent: "上層目錄："
         parent_issue: "上層工作項目："
@@ -1110,7 +1111,7 @@ zh-TW:
         empty: "不可為空"
         even: "必須是偶數"
         exclusion: "已保留"
-        feature_disabled: is not available.
+        feature_disabled: 不可用。
         file_too_large: "太大 (最大為 %{count} Bytes)."
         filter_does_not_exist: "過濾條件不存在"
         format: "與預期的格式“%{expected}”不符"
@@ -1562,17 +1563,17 @@ zh-TW:
       changeset: "變更集"
       message: "討論區"
       news: "最新消息"
-      project_details: "Project details"
+      project_details: "專案詳細資訊"
       subproject: "包含子專案"
       time_entry: "耗時"
       wiki_edit: "維基"
       work_package: "工作項目"
     project_life_cycle_step:
-      activated: "activated"
-      deactivated: "deactivated"
-      added_date: "set to %{date}"
-      changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
+      activated: "已啟用"
+      deactivated: "已停用"
+      added_date: "設定為 %{date}"
+      changed_date: "從 %{from} 改為 %{to}"
+      removed_date: "已刪除日期：%{date}"
   #common attributes of all models
   attributes:
     active: "啟用"
@@ -2023,7 +2024,7 @@ zh-TW:
     changeset: "已編輯變更"
     message: 訊息已編輯
     news: 最新消息
-    project_details: "Project details edited"
+    project_details: "專案詳細資訊已編輯"
     project: "專案已編輯"
     projects: "專案已編輯"
     reply: 已回覆
@@ -2103,7 +2104,7 @@ zh-TW:
     succeeded: "匯出完成"
     failed: "嘗試匯出工作項目時發生錯誤： %{message}"
     errors:
-      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
+      embedded_table_with_too_many_columns: "此內嵌工作項目表格無法符合頁面大小，請減少欄位數量。"
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2149,11 +2150,11 @@ zh-TW:
       hyphenation_language:
         label: '「語言」連字符號'
       page_orientation:
-        label: Page orientation
-        caption: Select the orientation of the pages in the PDF document.
+        label: 頁面方向
+        caption: 請選擇 PDF 文件頁面的方向。
         options:
-          portrait: Portrait
-          landscape: Landscape
+          portrait: 直向
+          landscape: 橫向
   extraction:
     available:
       pdftotext: "Pdftotext 可用 (非必要)"
@@ -3260,7 +3261,7 @@ zh-TW:
   permission_add_project: "建立專案"
   permission_add_work_package_attachments: "新增附件"
   permission_add_work_package_attachments_explanation: "允許在沒有編輯工作項目權限的情況下新增附件"
-  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
+  permission_add_comments_with_restricted_visibility: "寫下限制顯示的留言"
   permission_archive_project: "封存專案"
   permission_create_user: "新增使用者"
   permission_manage_user: "編輯使用者"
@@ -3289,12 +3290,12 @@ zh-TW:
   permission_edit_work_package_notes_explanation: "注意：擁有此權限的使用者可以編輯任何人的註解。"
   permission_edit_work_packages: "編輯工作項目"
   permission_edit_messages: "編輯訊息"
-  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
+  permission_edit_own_comments_with_restricted_visibility: "編輯擁有但限制顯示的留言"
   permission_edit_own_work_package_notes: "編輯自己的留言"
   permission_edit_own_messages: "編輯自己張貼的訊息"
   permission_edit_own_time_entries: "編輯自己的時間日誌"
-  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
+  permission_edit_others_comments_with_restricted_visibility: "審核限制顯示的留言"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "警告：擁有此權限的使用者能夠編輯其他使用者限制顯示的留言。"
   permission_edit_project: "編輯專案"
   permission_edit_project_attributes: "編輯項目屬性"
   permission_edit_project_stages_and_gates: "檢視專案階段與關卡"
@@ -3335,7 +3336,7 @@ zh-TW:
   permission_manage_own_reminders: "建立自己的提醒事項"
   permission_view_project: "檢視專案"
   permission_view_changesets: "在 OpenProject 檢視版本庫修訂"
-  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
+  permission_view_comments_with_restricted_visibility: "查看受限顯示的留言"
   permission_view_commit_author_statistics: "檢視 Commit 的作者統計資訊"
   permission_view_dashboards: "檢視儀表板"
   permission_view_work_package_watchers: "檢視監看者清單"

@@ -799,6 +799,7 @@ hu:
       typeahead_placeholder: Lehetséges megfigyelők keresése
     relation_labels:
       parent: "Szülő"
+      child: "Child"
       children: "Gyermekek"
       relates: "Kapcsolódóan"
       duplicates: "Duplikátumok"

@@ -981,6 +981,7 @@ ru:
         column_names: "Столбцы"
         relations_to_type_column: "Отношения к %{type}"
         relations_of_type_column: "%{type} отношения"
+        child_work_packages: "Child work packages"
         group_by: "Результаты группы по"
         sort_by: "Сортировать по"
         filters: "Фильтры"

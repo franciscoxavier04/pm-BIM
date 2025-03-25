@@ -800,6 +800,7 @@ sl:
       typeahead_placeholder: Išči potencialne udeležence
     relation_labels:
       parent: "Nadrejeni"
+      child: "Child"
       children: "Podrejeni"
       relates: "Povezan z"
       duplicates: "Dvojniki"

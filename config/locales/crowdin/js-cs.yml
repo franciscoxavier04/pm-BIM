@@ -800,6 +800,7 @@ cs:
       typeahead_placeholder: Hledání možných přihlížejících
     relation_labels:
       parent: "Nadřazený"
+      child: "Child"
       children: "Potomci"
       relates: "Související s"
       duplicates: "Duplikáty"

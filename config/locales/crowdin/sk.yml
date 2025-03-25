@@ -983,6 +983,7 @@ sk:
         column_names: "Stĺpce"
         relations_to_type_column: "Vzťahy k %{type}"
         relations_of_type_column: "vzťah typu: %{type}"
+        child_work_packages: "Child work packages"
         group_by: "zoskupiť výsledky podľa"
         sort_by: "Sort results by"
         filters: "Filtre"

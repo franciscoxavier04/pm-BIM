@@ -799,6 +799,7 @@ af:
       typeahead_placeholder: Search for possible watchers
     relation_labels:
       parent: "Ouer"
+      child: "Child"
       children: "Kinders"
       relates: "Related To"
       duplicates: "Duplicates"

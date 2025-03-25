@@ -801,6 +801,7 @@ lt:
       typeahead_placeholder: Ieškoti galimų stebėtojų
     relation_labels:
       parent: "Tėvas"
+      child: "Child"
       children: "Pasekėjai"
       relates: "Susiję su"
       duplicates: "Dublikatai"

@@ -801,6 +801,7 @@ pl:
       typeahead_placeholder: Szukaj możliwych obserwatorów
     relation_labels:
       parent: "Rodzic"
+      child: "Child"
       children: "Dzieci"
       relates: "Powiązany z"
       duplicates: "Duplikaty"

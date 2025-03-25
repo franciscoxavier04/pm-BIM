@@ -963,6 +963,7 @@ fr:
         column_names: "Colonnes"
         relations_to_type_column: "Relations avec %{type}"
         relations_of_type_column: "relations de %{type}"
+        child_work_packages: "Child work packages"
         group_by: "Grouper les résultats par"
         sort_by: "Trier les résultats par"
         filters: "Filtres"

@@ -799,6 +799,7 @@ si:
       typeahead_placeholder: හැකි මුරකරුවන් සොයන්න
     relation_labels:
       parent: "මාපිය"
+      child: "Child"
       children: "දරුවන්"
       relates: "සම්බන්ධ කිරීම"
       duplicates: "අනුපිටපත්"

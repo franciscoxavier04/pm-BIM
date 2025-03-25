@@ -798,6 +798,7 @@ th:
       typeahead_placeholder: Search for possible watchers
     relation_labels:
       parent: "หัวข้อหลัก"
+      child: "Child"
       children: "Children"
       relates: "ที่เกี่ยวข้องกับ"
       duplicates: "Duplicates"

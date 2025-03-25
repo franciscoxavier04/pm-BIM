@@ -58,9 +58,9 @@ zh-TW:
         end_time: 完成時間
     models:
       time_entry:
-        other: "Time entries"
+        other: "時間項"
       cost_entry:
-        other: "Cost entries"
+        other: "成本項"
       cost_type:
         other: "費用類別"
       time_entry_activity:

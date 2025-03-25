@@ -962,6 +962,7 @@ it:
         column_names: "Colonne"
         relations_to_type_column: "Relazioni con %{type}"
         relations_of_type_column: "relazioni %{type}"
+        child_work_packages: "Child work packages"
         group_by: "Raggruppa i risultati per"
         sort_by: "Ordina risultati per"
         filters: "Filtri"

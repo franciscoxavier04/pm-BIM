@@ -980,6 +980,7 @@ pl:
         column_names: "Kolumny"
         relations_to_type_column: "Relacje %{type}"
         relations_of_type_column: " %{type} relacji"
+        child_work_packages: "Child work packages"
         group_by: "Grupuj wyniki"
         sort_by: "Sortuj wyniki wg"
         filters: "Filtry"

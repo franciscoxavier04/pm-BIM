@@ -799,6 +799,7 @@ fi:
       typeahead_placeholder: Etsi mahdollisia seuraajia
     relation_labels:
       parent: "Ylätaso"
+      child: "Child"
       children: "Alitehtävä"
       relates: "Liittyy"
       duplicates: "Alkuperäinen"

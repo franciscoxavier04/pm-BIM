@@ -801,6 +801,7 @@ uk:
       typeahead_placeholder: Пошук можливих спостерігачів
     relation_labels:
       parent: "Джерело"
+      child: "Child"
       children: "Дочірні елементи"
       relates: "Пов'язано з"
       duplicates: "Дублікати"

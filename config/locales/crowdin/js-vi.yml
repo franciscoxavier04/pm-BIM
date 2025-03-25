@@ -798,6 +798,7 @@ vi:
       typeahead_placeholder: Tìm kiếm người có thể theo dõi
     relation_labels:
       parent: "Cha"
+      child: "Child"
       children: "Con"
       relates: "Liên quan đến"
       duplicates: "Trùng lặp"

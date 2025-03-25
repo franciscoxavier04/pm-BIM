@@ -799,6 +799,7 @@ it:
       typeahead_placeholder: Ricerca possibili osservatori
     relation_labels:
       parent: "Superiore"
+      child: "Child"
       children: "Figli"
       relates: "Riferito a"
       duplicates: "Duplica"

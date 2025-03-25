@@ -799,6 +799,7 @@ eo:
       typeahead_placeholder: Serĉi por eblaj atentantoj
     relation_labels:
       parent: "Patro"
+      child: "Child"
       children: "Filo"
       relates: "Rilata al"
       duplicates: "Duobligitaj"

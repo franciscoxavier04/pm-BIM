@@ -798,6 +798,7 @@ el:
       typeahead_placeholder: Αναζήτηση πιθανών παρατηρητών
     relation_labels:
       parent: "Γονέας"
+      child: "Child"
       children: "Παιδιά"
       relates: "Σχετίζεται με"
       duplicates: "Αντίγραφα"

@@ -799,6 +799,7 @@ fa:
       typeahead_placeholder: جستجو برای دنبال کننده ها
     relation_labels:
       parent: "بالادستی"
+      child: "Child"
       children: "بچه ها"
       relates: "مربوط به"
       duplicates: "کپی ها"

@@ -965,6 +965,7 @@ fil:
         column_names: "Mga hanay"
         relations_to_type_column: "Mga relasyon sa %{type}"
         relations_of_type_column: "%{type} na mga relasyon"
+        child_work_packages: "Child work packages"
         group_by: "Mga resulta sa grupo sa pamamagitan ng"
         sort_by: "Sort results by"
         filters: "Mga nasala"

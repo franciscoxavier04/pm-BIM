@@ -961,6 +961,7 @@ nl:
         column_names: "Kolommen"
         relations_to_type_column: "Betrekkingen %{type}"
         relations_of_type_column: "%{type} betrekkingen"
+        child_work_packages: "Child work packages"
         group_by: "Groepeer resultaten op"
         sort_by: "Sort results by"
         filters: "Filters"

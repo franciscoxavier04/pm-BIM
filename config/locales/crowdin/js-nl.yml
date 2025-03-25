@@ -799,6 +799,7 @@ nl:
       typeahead_placeholder: Zoek naar mogelijke toezichthouders
     relation_labels:
       parent: "Bovenliggend werkpakket"
+      child: "Child"
       children: "Subdocumenten"
       relates: "Verwant Met"
       duplicates: "Kopies"

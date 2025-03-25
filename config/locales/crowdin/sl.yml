@@ -982,6 +982,7 @@ sl:
         column_names: "Stolpci"
         relations_to_type_column: "Povezave z %{type}"
         relations_of_type_column: "%{type} povezave"
+        child_work_packages: "Child work packages"
         group_by: "Rezultati grupirani po"
         sort_by: "Sort results by"
         filters: "Filtri"

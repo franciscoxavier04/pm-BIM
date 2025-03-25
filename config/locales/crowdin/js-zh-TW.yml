@@ -796,6 +796,7 @@ zh-TW:
       typeahead_placeholder: 尋找可能的監看者
     relation_labels:
       parent: "上層目錄："
+      child: "Child"
       children: "子項目"
       relates: "關聯"
       duplicates: "重複"

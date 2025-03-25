@@ -799,6 +799,7 @@ ca:
       typeahead_placeholder: Cercar possibles observadors
     relation_labels:
       parent: "Pare"
+      child: "Child"
       children: "Fills"
       relates: "Relacionats amb"
       duplicates: "Duplica"

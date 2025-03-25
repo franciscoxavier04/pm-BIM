@@ -801,6 +801,7 @@ sk:
       typeahead_placeholder: Vyhľadajte možných pozorovateľov
     relation_labels:
       parent: "Nadradený balíček"
+      child: "Child"
       children: "Potomkovia"
       relates: "Previazaný na"
       duplicates: "Kópie"

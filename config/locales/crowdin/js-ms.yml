@@ -798,6 +798,7 @@ ms:
       typeahead_placeholder: Cari pemerhati yang mungkin
     relation_labels:
       parent: "Induk"
+      child: "Child"
       children: "Anak"
       relates: "Berkaitan Dengan"
       duplicates: "Duplikasi"

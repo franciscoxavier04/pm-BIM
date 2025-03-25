@@ -798,6 +798,7 @@ sv:
       typeahead_placeholder: Sök efter möjliga bevakare
     relation_labels:
       parent: "Överordnad"
+      child: "Child"
       children: "Barn"
       relates: "Relaterade till"
       duplicates: "Dubbletter"

@@ -798,6 +798,7 @@ id:
       typeahead_placeholder: Mencari pengawas yang memungkinkan
     relation_labels:
       parent: "Induk"
+      child: "Child"
       children: "Sub"
       relates: "Berkaitan dengan"
       duplicates: "Duplikat"

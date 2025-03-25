@@ -799,6 +799,7 @@
       typeahead_placeholder: Søk etter mulige overvåkere
     relation_labels:
       parent: "Overordnet"
+      child: "Child"
       children: "Underordnede"
       relates: "Relatert til"
       duplicates: "Duplikater"

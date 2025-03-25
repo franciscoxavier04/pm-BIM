@@ -952,6 +952,7 @@ id:
         column_names: "Kolom"
         relations_to_type_column: "Relasi untuk %{type}"
         relations_of_type_column: "Relasi %{type}"
+        child_work_packages: "Child work packages"
         group_by: "Group"
         sort_by: "Sort results by"
         filters: "Filter"
