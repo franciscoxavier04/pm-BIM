@@ -678,7 +678,7 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
     context "with the feature flag enabled", with_flag: { stages_and_gates: true } do
       context "with the necessary permissions" do
         before do
-          project_role.add_permission!(:view_project_stages_and_gates)
+          project_role.add_permission!(:view_project_phases)
         end
 
         it "allows filtering the projects by life cycle elements" do
@@ -762,7 +762,7 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
     context "with the feature flag enabled", with_flag: { stages_and_gates: true } do
       context "with the necessary permissions" do
         before do
-          project_role.add_permission!(:view_project_stages_and_gates)
+          project_role.add_permission!(:view_project_phases)
         end
 
         it "allows filtering the projects by the life cycle stage" do
@@ -843,7 +843,7 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
       context "with the feature flag enabled", with_flag: { stages_and_gates: true } do
         context "with the necessary permissions" do
           before do
-            project_role.add_permission!(:view_project_stages_and_gates)
+            project_role.add_permission!(:view_project_phases)
           end
 
           it "allows filtering the projects by the life cycle gate" do

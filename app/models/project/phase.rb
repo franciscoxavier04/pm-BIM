@@ -43,7 +43,7 @@ class Project::Phase < ApplicationRecord
 
   class << self
     def visible(user = User.current)
-      allowed_projects = Project.allowed_to(user, :view_project_stages_and_gates)
+      allowed_projects = Project.allowed_to(user, :view_project_phases)
       active.where(project: allowed_projects)
     end
   end

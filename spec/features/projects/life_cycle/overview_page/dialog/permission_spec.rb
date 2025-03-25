@@ -53,7 +53,7 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
   end
 
   describe "with sufficient View Stages and Gates permissions" do
-    let(:permissions) { %i[view_project view_project_stages_and_gates] }
+    let(:permissions) { %i[view_project view_project_phases] }
 
     it "shows the attributes sidebar" do
       overview_page.within_life_cycles_sidebar do
@@ -63,7 +63,7 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
   end
 
   describe "with Edit project permissions" do
-    let(:permissions) { %i[view_project view_project_stages_and_gates edit_project] }
+    let(:permissions) { %i[view_project view_project_phases edit_project] }
 
     it "does not show the edit buttons" do
       overview_page.within_life_cycles_sidebar do
@@ -73,7 +73,7 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
   end
 
   describe "with sufficient Edit Stages and Gates permissions" do
-    let(:permissions) { %i[view_project view_project_stages_and_gates edit_project edit_project_stages_and_gates] }
+    let(:permissions) { %i[view_project view_project_phases edit_project edit_project_phases] }
 
     it "shows the edit buttons" do
       overview_page.within_life_cycles_sidebar do

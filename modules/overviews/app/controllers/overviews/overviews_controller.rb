@@ -139,7 +139,7 @@ module ::Overviews
         @project.project_custom_fields.visible.any?
       @life_cycles_sidebar_enabled =
         OpenProject::FeatureDecisions.stages_and_gates_active? &&
-        User.current.allowed_in_project?(:view_project_stages_and_gates, @project) &&
+        User.current.allowed_in_project?(:view_project_phases, @project) &&
         @project.life_cycle_steps.active.any?
     end
 

@@ -26,11 +26,11 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 module BasicData
-  class LifeCycleStepDefinitionSeeder < ModelSeeder
+  class ProjectPhaseDefinitionSeeder < ModelSeeder
     self.model_class = Project::PhaseDefinition
-    self.seed_data_model_key = "life_cycles"
+    self.seed_data_model_key = "project_phases"
     self.needs = [
-      BasicData::LifeCycleColorSeeder
+      BasicData::ProjectPhaseColorSeeder
     ]
 
     self.attribute_names_for_lookups = %i[name type]

@@ -34,7 +34,7 @@ module ProjectLifeCycleSteps
     def valid?(context = :saving_phases) = super
 
     def select_custom_fields_permission
-      return if user.allowed_in_project?(:edit_project_stages_and_gates, model)
+      return if user.allowed_in_project?(:edit_project_phases, model)
 
       errors.add :base, :error_unauthorized
     end

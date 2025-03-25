@@ -64,7 +64,7 @@ RSpec.describe AddProjectLifeCycleStepRoles, type: :model do
     end
   end
 
-  context "for a role not eligible to view_project_stages_and_gates" do
+  context "for a role not eligible to view_project_phases" do
     let!(:role) do
       create(:project_role,
              add_public_permissions: false,
@@ -75,25 +75,25 @@ RSpec.describe AddProjectLifeCycleStepRoles, type: :model do
     it_behaves_like "migration is idempotent"
   end
 
-  context "for a role eligible to view_project_stages_and_gates" do
+  context "for a role eligible to view_project_phases" do
     let(:permissions) { %i[view_project permission1 permission2] }
     let!(:role) { create(:project_role, permissions:) }
 
-    it_behaves_like "adding permissions", %i[view_project_stages_and_gates]
+    it_behaves_like "adding permissions", %i[view_project_phases]
     it_behaves_like "migration is idempotent"
   end
 
-  context "for a role with view_project_stages_and_gates" do
-    let(:permissions) { %i[view_project_stages_and_gates view_project permission1 permission2] }
+  context "for a role with view_project_phases" do
+    let(:permissions) { %i[view_project_phases view_project permission1 permission2] }
     let!(:role) { create(:project_role, permissions:) }
 
     it_behaves_like "not changing permissions"
     it_behaves_like "migration is idempotent"
   end
 
-  context "for a role not eligible to edit_project_stages_and_gates" do
+  context "for a role not eligible to edit_project_phases" do
     let(:permissions) do
-      %i[view_project_stages_and_gates permission1 permission2]
+      %i[view_project_phases permission1 permission2]
     end
     let!(:role) { create(:project_role, permissions:) }
 
@@ -101,30 +101,30 @@ RSpec.describe AddProjectLifeCycleStepRoles, type: :model do
     it_behaves_like "migration is idempotent"
   end
 
-  context "for a role eligible to edit_project_stages_and_gates having view_project_stages_and_gates" do
+  context "for a role eligible to edit_project_phases having view_project_phases" do
     let(:permissions) do
-      %i[view_project_stages_and_gates edit_project
+      %i[view_project_phases edit_project
          view_project permission1 permission2]
     end
     let!(:role) { create(:project_role, permissions:) }
 
-    it_behaves_like "adding permissions", %i[edit_project_stages_and_gates]
+    it_behaves_like "adding permissions", %i[edit_project_phases]
     it_behaves_like "migration is idempotent"
   end
 
-  context "for a role eligible to edit_project_stages_and_gates not having view_project_stages_and_gates" do
+  context "for a role eligible to edit_project_phases not having view_project_phases" do
     let(:permissions) do
       %i[edit_project view_project permission1 permission2]
     end
     let!(:role) { create(:project_role, permissions:) }
 
-    it_behaves_like "adding permissions", %i[edit_project_stages_and_gates view_project_stages_and_gates]
+    it_behaves_like "adding permissions", %i[edit_project_phases view_project_phases]
     it_behaves_like "migration is idempotent"
   end
 
-  context "for a role that already has the edit_project_stages_and_gates and view_project_stages_and_gates permission" do
+  context "for a role that already has the edit_project_phases and view_project_phases permission" do
     let(:permissions) do
-      %i[edit_project_stages_and_gates view_project_stages_and_gates
+      %i[edit_project_phases view_project_phases
          edit_project view_project permission1 permission2]
     end
     let!(:role) { create(:project_role, permissions:) }

@@ -46,7 +46,7 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
   def available?
     life_cycle_step_definition.present? &&
       OpenProject::FeatureDecisions.stages_and_gates_active? &&
-      User.current.allowed_in_any_project?(:view_project_stages_and_gates)
+      User.current.allowed_in_any_project?(:view_project_phases)
   end
 
   private
@@ -85,7 +85,7 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
   # Ensure that only life cycle columns viewable to the current user are considered
   # for ordering the query result.
   def viewable_project_ids
-    Project.allowed_to(User.current, :view_project_stages_and_gates).select(:id)
+    Project.allowed_to(User.current, :view_project_phases).select(:id)
   end
 
   def order_condition

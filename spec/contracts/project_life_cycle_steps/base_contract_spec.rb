@@ -44,7 +44,7 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
 
     before do
       mock_permissions_for(user) do |mock|
-        mock.allow_in_project(:edit_project_stages_and_gates, project:)
+        mock.allow_in_project(:edit_project_phases, project:)
       end
     end
 

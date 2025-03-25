@@ -27,8 +27,8 @@
 #++
 
 module BasicData
-  class LifeCycleColorSeeder < ColorSeeder
-    self.seed_data_model_key = "life_cycle_colors"
+  class ProjectPhaseColorSeeder < ColorSeeder
+    self.seed_data_model_key = "project_phase_colors"
 
     def applicable?
       missing_color_names.any?

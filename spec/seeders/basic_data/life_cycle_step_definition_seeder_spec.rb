@@ -44,23 +44,23 @@ RSpec.describe BasicData::LifeCycleStepDefinitionSeeder do
     let(:data_hash) do
       YAML.load <<~SEEDING_DATA_YAML
         life_cycles:
-        - reference: :default_life_cycle_initiating
+        - reference: :default_project_phase_initiating
           name: Initiating
           type: Project::StageDefinition
           color_name: :default_color_pm2_orange
-        - reference: :default_life_cycle_ready_for_executing
+        - reference: :default_phase_ready_for_executing
           name: Ready for Executing
           type: Project::GateDefinition
           color_name: :default_color_pm2_purple
-        - reference: :default_life_cycle_planning
+        - reference: :default_phase_planning
           name: Planning
           type: Project::StageDefinition
           color_name: :default_color_pm2_red
-        - reference: :default_life_cycle_executing
+        - reference: :default_phase_executing
           name: Executing
           type: Project::StageDefinition
           color_name: :default_color_pm2_magenta
-        - reference: :default_life_cycle_closing
+        - reference: :default_phase_closing
           name: Closing
           type: Project::StageDefinition
           color_name: :default_color_pm2_green_yellow
@@ -104,16 +104,16 @@ RSpec.describe BasicData::LifeCycleStepDefinitionSeeder do
 
       it "registers existing matching life cycles as references in the seed data" do
         # using the first seed data as the expected value
-        expect(second_seed_data.find_reference(:default_life_cycle_initiating))
-          .to eq(seed_data.find_reference(:default_life_cycle_initiating))
-        expect(second_seed_data.find_reference(:default_life_cycle_ready_for_executing))
-          .to eq(seed_data.find_reference(:default_life_cycle_ready_for_executing))
-        expect(second_seed_data.find_reference(:default_life_cycle_planning))
-          .to eq(seed_data.find_reference(:default_life_cycle_planning))
-        expect(second_seed_data.find_reference(:default_life_cycle_executing))
-          .to eq(seed_data.find_reference(:default_life_cycle_executing))
-        expect(second_seed_data.find_reference(:default_life_cycle_closing))
-          .to eq(seed_data.find_reference(:default_life_cycle_closing))
+        expect(second_seed_data.find_reference(:default_project_phase_initiating))
+          .to eq(seed_data.find_reference(:default_project_phase_initiating))
+        expect(second_seed_data.find_reference(:default_phase_ready_for_executing))
+          .to eq(seed_data.find_reference(:default_phase_ready_for_executing))
+        expect(second_seed_data.find_reference(:default_phase_planning))
+          .to eq(seed_data.find_reference(:default_phase_planning))
+        expect(second_seed_data.find_reference(:default_phase_executing))
+          .to eq(seed_data.find_reference(:default_phase_executing))
+        expect(second_seed_data.find_reference(:default_phase_closing))
+          .to eq(seed_data.find_reference(:default_phase_closing))
       end
     end
   end

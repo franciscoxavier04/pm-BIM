@@ -346,7 +346,7 @@ RSpec.describe "Projects lists columns", :js, with_settings: { login_required?: 
           projects_page.visit!
         end
 
-        context "for users without view_project_stages_and_gates permission" do
+        context "for users without view_project_phases permission" do
           specify "life cycle columns cannot be configured to show up" do
             element_selector = "#columns-select_autocompleter ng-select.op-draggable-autocomplete--input"
             results_selector = "#columns-select_autocompleter ng-dropdown-panel .ng-dropdown-panel-items"
@@ -359,8 +359,8 @@ RSpec.describe "Projects lists columns", :js, with_settings: { login_required?: 
           end
         end
 
-        context "for users with view_project_stages_and_gates permission" do
-          let(:permissions) { %i(view_project view_project_stages_and_gates) }
+        context "for users with view_project_phases permission" do
+          let(:permissions) { %i(view_project view_project_phases) }
 
           specify "life cycle columns show up when configured to do so" do
             projects_page.expect_columns("Name")

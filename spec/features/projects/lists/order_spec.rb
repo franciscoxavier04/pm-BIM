@@ -330,7 +330,7 @@ RSpec.describe "Projects lists ordering", :js, with_settings: { login_required?:
              date: public_gate.date + 2.days)
     end
 
-    shared_let(:life_cycle_permissions) { %i(view_project view_project_stages_and_gates) }
+    shared_let(:life_cycle_permissions) { %i(view_project view_project_phases) }
     shared_let(:basic_permissions) { %i(view_project) }
 
     shared_let(:user) do

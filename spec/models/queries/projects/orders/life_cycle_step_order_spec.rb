@@ -52,7 +52,7 @@ RSpec.describe Queries::Projects::Orders::LifeCycleStepOrder do
   describe "#available?" do
     let(:instance) { described_class.new("lcsd_#{life_cycle_def.id}") }
 
-    let(:permissions) { %i(view_project_stages_and_gates) }
+    let(:permissions) { %i(view_project_phases) }
     let(:project) { create(:project) }
     let(:user) do
       create(:user, member_with_permissions: {

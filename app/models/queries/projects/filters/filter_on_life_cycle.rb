@@ -48,7 +48,7 @@ module Queries::Projects::Filters::FilterOnLifeCycle
 
   def available?
     OpenProject::FeatureDecisions.stages_and_gates_active? &&
-      User.current.allowed_in_any_project?(:view_project_stages_and_gates)
+      User.current.allowed_in_any_project?(:view_project_phases)
   end
 
   def where
@@ -166,7 +166,7 @@ module Queries::Projects::Filters::FilterOnLifeCycle
   def life_cycle_scope(type)
     life_cycle_scope = Project::Phase
       .where("#{Project::Phase.table_name}.project_id = #{Project.table_name}.id")
-      .where(project_id: Project.allowed_to(User.current, :view_project_stages_and_gates))
+      .where(project_id: Project.allowed_to(User.current, :view_project_phases))
       .where(type:)
       .active
 

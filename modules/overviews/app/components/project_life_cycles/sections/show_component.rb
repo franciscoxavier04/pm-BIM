@@ -43,7 +43,7 @@ module ProjectLifeCycles
       private
 
       def allowed_to_edit?
-        User.current.allowed_in_project?(:edit_project_stages_and_gates, @project)
+        User.current.allowed_in_project?(:edit_project_phases, @project)
       end
     end
   end

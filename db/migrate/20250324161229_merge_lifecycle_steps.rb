@@ -34,6 +34,15 @@ class MergeLifecycleSteps < ActiveRecord::Migration[8.0]
       direction.up do
         delete_life_cycle_project_queries
         delete_life_cycles
+
+        rename_permissions("view_project_stages_and_gates", "view_project_phases")
+        rename_permissions("select_project_life_cycle", "select_project_phases")
+        rename_permissions("edit_project_stages_and_gates", "edit_project_phases")
+      end
+      direction.down do
+        rename_permissions("view_project_phases", "view_project_stages_and_gates")
+        rename_permissions("select_project_phases", "select_project_life_cycle")
+        rename_permissions("edit_project_phases", "edit_project_stages_and_gates")
       end
     end
 
@@ -113,5 +122,13 @@ class MergeLifecycleSteps < ActiveRecord::Migration[8.0]
     rename_table :project_life_cycle_step_definitions, :project_phase_definitions
     rename_table :project_life_cycle_steps, :project_phases
     rename_table :project_life_cycle_step_journals, :project_phase_journals
+  end
+
+  def rename_permissions(old, new)
+    execute <<-SQL.squish
+      UPDATE role_permissions
+      SET permission = '#{new}'
+      WHERE permission = '#{old}'
+    SQL
   end
 end

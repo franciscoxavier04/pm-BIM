@@ -396,8 +396,8 @@ RSpec.describe Project do
         .to include("\"project_life_cycle_steps\".\"active\" = TRUE")
     end
 
-    it "checks for :view_project_stages_and_gates permission" do
-      project_condition = described_class.allowed_to(User.current, :view_project_stages_and_gates).select(:id)
+    it "checks for :view_project_phases permission" do
+      project_condition = described_class.allowed_to(User.current, :view_project_phases).select(:id)
 
       expect(subject.available_phases.to_sql).to include(project_condition.to_sql)
     end
@@ -409,7 +409,7 @@ RSpec.describe Project do
 
     describe ".validates_associated" do
       let(:user) do
-        create(:user, member_with_permissions: { project => %i(view_project view_project_stages_and_gates) })
+        create(:user, member_with_permissions: { project => %i(view_project view_project_phases) })
       end
       let!(:project_stage) { create :project_stage, :skip_validate, project:, start_date: nil }
 

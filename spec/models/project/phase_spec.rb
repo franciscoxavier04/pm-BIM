@@ -47,7 +47,7 @@ RSpec.describe Project::Phase do
     let(:user) do
       create(:user,
              member_with_permissions:
-             { project => %i(view_project view_project_stages_and_gates),
+             { project => %i(view_project view_project_phases),
                development_project => %i(view_project) })
     end
 
@@ -55,7 +55,7 @@ RSpec.describe Project::Phase do
     let!(:phase_dev) { create(:project_phase, project: development_project) }
     let!(:inactive_phase) { create(:project_phase, project: development_project, active: false) }
 
-    it "returns active phases where the user has a view_project_stages_and_gates permission" do
+    it "returns active phases where the user has a view_project_phases permission" do
       expect(described_class.visible(user)).to contain_exactly(phase)
     end
   end

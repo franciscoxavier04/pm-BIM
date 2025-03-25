@@ -34,7 +34,7 @@ RSpec.describe ProjectQuery, "results of a life cycle stage filter" do
   let(:instance) { described_class.new }
   let(:filter_key) { "lcsd_stage_#{stage.definition_id}" }
 
-  shared_let(:view_role) { create(:project_role, permissions: %i[view_project_stages_and_gates]) }
+  shared_let(:view_role) { create(:project_role, permissions: %i[view_project_phases]) }
 
   shared_let(:stage_start_date) { Date.parse("2025-02-07") }
   shared_let(:stage_end_date) { Date.parse("2025-02-17") }
@@ -57,10 +57,10 @@ RSpec.describe ProjectQuery, "results of a life cycle stage filter" do
 
   shared_let(:user) do
     create(:user, member_with_permissions: {
-             project_with_stage => %i[view_project_stages_and_gates],
-             project_with_rival_stage => %i[view_project_stages_and_gates],
-             project_with_gate => %i[view_project_stages_and_gates],
-             project_without_step => %i[view_project_stages_and_gates]
+             project_with_stage => %i[view_project_phases],
+             project_with_rival_stage => %i[view_project_phases],
+             project_with_gate => %i[view_project_phases],
+             project_without_step => %i[view_project_phases]
            })
   end
 
@@ -87,7 +87,7 @@ RSpec.describe ProjectQuery, "results of a life cycle stage filter" do
         .where(role_id: Role.joins(:member_roles)
                             .where(member_roles: { member_id: Member.where(project: [project_with_stage,
                                                                                      project_with_gate]) }))
-        .where(permission: :view_project_stages_and_gates)
+        .where(permission: :view_project_phases)
         .destroy_all
     end
   end
