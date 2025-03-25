@@ -66,11 +66,11 @@ module Storages
 
           def files_request_failed_with_unknown_error
             if files.result == :error
-              error "Connection validation failed with unknown error:\n\t" \
-                    "storage: ##{@storage.id} #{@storage.name}\n\t" \
-                    "request: Group folder content\n\t" \
-                    "status: #{files.result}\n\t" \
-                    "response: #{files.error_payload}"
+              error "Connection validation failed with unknown error:\n" \
+                    "\tstorage: ##{@storage.id} #{@storage.name}\n" \
+                    "\trequest: Group folder content\n" \
+                    "\tstatus: #{files.result}\n" \
+                    "\tresponse: #{files.error_payload}"
 
               fail_check(:files_request, message(:unknown_error))
             else
@@ -97,7 +97,8 @@ module Storages
           def auth_strategy = Registry["nextcloud.authentication.userless"].call
 
           def managed_project_folder_ids
-            @managed_project_folder_ids ||= ProjectStorage.automatic.where(storage: @storage).pluck(:project_folder_id)
+            @managed_project_folder_ids ||= ProjectStorage.automatic.where(storage: @storage)
+                                                          .pluck(:project_folder_id).to_set
           end
 
           def files
