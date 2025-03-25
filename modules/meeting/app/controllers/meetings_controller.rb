@@ -332,16 +332,16 @@ class MeetingsController < ApplicationController
   def fetch_timezone
     User.execute_as(User.current) do
       meeting = Meeting.new(timezone_params)
-      text = friendly_timezone_name(User.current.time_zone, period: meeting.start_time)
-
-      respond_to do |format|
-        format.html { render plain: text }
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.update("meeting-timezone",
-                                                   plain: text)
-        end
-      end
+      @text = friendly_timezone_name(User.current.time_zone, period: meeting.start_time)
     end
+
+    prefix = params[:structured_meeting] ? "structured_" : ""
+
+    add_caption_to_input_element_via_turbo_stream("input[name='#{prefix}meeting[start_time_hour]']",
+                                                  caption: @text,
+                                                  clean_other_captions: true)
+
+    respond_with_turbo_streams
   end
 
   private

@@ -66,9 +66,5 @@ module Meetings
         :update
       end
     end
-
-    def timezone_caption
-      friendly_timezone_name(User.current.time_zone, period: @meeting.start_time)
-    end
   end
 end

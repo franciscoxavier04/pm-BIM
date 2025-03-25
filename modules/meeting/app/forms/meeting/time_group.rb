@@ -41,7 +41,8 @@ class Meeting::TimeGroup < ApplicationForm
         required: true,
         autofocus: false,
         data: {
-          action: "input->recurring-meetings--form#updateFrequencyText"
+          action: "input->recurring-meetings--form#updateFrequencyText \
+                   input->meetings--form#updateTimezoneText"
         }
       )
 
@@ -52,11 +53,13 @@ class Meeting::TimeGroup < ApplicationForm
         placeholder: Meeting.human_attribute_name(:start_time),
         label: Meeting.human_attribute_name(:start_time),
         required: true,
-        caption: formatted_time_zone_offset,
+        caption: timezone_caption,
         data: {
-          action: "input->recurring-meetings--form#updateFrequencyText"
+          action: "input->recurring-meetings--form#updateFrequencyText \
+                   input->meetings--form#updateTimezoneText"
         }
       )
+
       group.text_field(
         name: :duration,
         type: :text,
@@ -93,5 +96,9 @@ class Meeting::TimeGroup < ApplicationForm
     else
       meeting.duration
     end
+  end
+
+  def timezone_caption
+    friendly_timezone_name(User.current.time_zone, period: @meeting.start_time)
   end
 end

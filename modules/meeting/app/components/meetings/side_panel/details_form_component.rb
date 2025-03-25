@@ -53,9 +53,5 @@ module Meetings
     def start_time_initial_value
       format_time(@meeting.start_time, include_date: false, format: "%H:%M")
     end
-
-    def timezone_caption
-      friendly_timezone_name(User.current.time_zone, period: @meeting.start_time)
-    end
   end
 end
