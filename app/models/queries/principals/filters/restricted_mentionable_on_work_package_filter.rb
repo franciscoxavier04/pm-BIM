@@ -29,7 +29,21 @@
 # ++
 
 class Queries::Principals::Filters::RestrictedMentionableOnWorkPackageFilter <
-    Queries::Principals::Filters::MentionableOnWorkPackageFilter
+    Queries::Principals::Filters::PrincipalFilter
+  validate :values_are_a_single_work_package_id
+
+  def allowed_values
+    raise NotImplementedError, "There would be too many candidates"
+  end
+
+  def allowed_values_subset
+    @allowed_values_subset ||= ::WorkPackage.visible
+  end
+
+  def type
+    :list_optional
+  end
+
   def key
     :restricted_mentionable_on_work_package
   end
@@ -38,7 +52,30 @@ class Queries::Principals::Filters::RestrictedMentionableOnWorkPackageFilter <
     "restricted mentionable" # Only for Internal use, not visible in the UI
   end
 
+  def apply_to(query_scope)
+    case operator
+    when "="
+      query_scope.where(id: User.allowed_members_on_work_package(permission, work_package))
+    when "!"
+      query_scope.where.not(id: User.allowed_members_on_work_package(permission, work_package))
+    end
+  end
+
   def permission
     :view_comments_with_restricted_visibility
+  end
+
+  private
+
+  def values_are_a_single_work_package_id
+    errors.add(:values, :single_value_requirement) if values.size > 1
+  end
+
+  def type_strategy
+    @type_strategy ||= Queries::Filters::Strategies::HugeList.new(self)
+  end
+
+  def work_package
+    WorkPackage.find(values.first)
   end
 end
