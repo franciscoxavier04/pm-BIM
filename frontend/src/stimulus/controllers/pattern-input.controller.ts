@@ -188,7 +188,7 @@ export default class PatternInputController extends Controller {
     }
 
     const parentNode = this.currentRange.startContainer.parentNode;
-    if (parentNode !== null && this.isToken(parentNode)) {
+    if (this.isToken(parentNode)) {
       this.replaceToken(token, parentNode);
     } else {
       this.insertNodeAtCurrentRange(token);
@@ -203,7 +203,7 @@ export default class PatternInputController extends Controller {
     const target = event.currentTarget as ListElement;
     const parentNode = this.currentRange.startContainer.parentNode;
     const text = document.createTextNode(target.dataset.prop);
-    if (parentNode !== null && this.isToken(parentNode)) {
+    if (this.isToken(parentNode)) {
       this.replaceToken(text, parentNode);
     } else {
       this.insertNodeAtCurrentRange(text);
@@ -288,10 +288,17 @@ export default class PatternInputController extends Controller {
 
     const postRange = document.createRange();
     if (position === 'after') {
-      postRange.setStartAfter(target);
+      if (this.isToken(target) && target.nextSibling?.textContent === CONTROL_SPACE) {
+        postRange.setStartAfter(target.nextSibling);
+      } else if (this.isToken(target) && this.isText(target.nextSibling)) {
+        postRange.setStart(target.nextSibling, 1);
+      } else {
+        postRange.setStartAfter(target);
+      }
     } else {
       postRange.setStartBefore(target);
     }
+
     selection.removeAllRanges();
     selection.addRange(postRange);
   }
@@ -305,6 +312,10 @@ export default class PatternInputController extends Controller {
   }
 
   private replaceToken(node:Node, token:TokenElement):void {
+    if (this.isText(node) && token.nextSibling?.textContent === CONTROL_SPACE) {
+      token.nextSibling.remove();
+    }
+
     token.replaceWith(node);
     this.setRealCaretPositionAtNode(node);
     this.updateFormInputValue();
@@ -330,6 +341,7 @@ export default class PatternInputController extends Controller {
     wordRange.deleteContents();
     wordRange.insertNode(node);
 
+    this.sanitizeContent();
     this.setRealCaretPositionAtNode(node);
     this.updateFormInputValue();
     this.setRange();
@@ -411,7 +423,7 @@ export default class PatternInputController extends Controller {
   private appendInsertAsTextElement(word:string):void {
     const template = this.insertAsTextTemplateTarget.content.cloneNode(true) as DocumentFragment;
     const item = template.firstElementChild;
-    if (item === null || !this.isListItem(item)) { return; }
+    if (!this.isListItem(item)) { return; }
 
     const textElement = item.querySelector('span');
     if (textElement === null) { return; }
@@ -503,7 +515,7 @@ export default class PatternInputController extends Controller {
             node.after(document.createTextNode(CONTROL_SPACE));
           }
 
-          if (this.isText(follower) && !this.isWhitespaceOrControlSpace(follower.wholeText[0])) {
+          if (this.isText(follower) && !this.isWhitespaceOrControlSpace(follower.wholeText[0] || '')) {
             node.after(document.createTextNode(CONTROL_SPACE));
           }
         }
@@ -565,20 +577,20 @@ export default class PatternInputController extends Controller {
     return node === this.currentRange.startContainer.parentNode;
   }
 
-  private isToken(node:Node):node is TokenElement {
+  private isToken(node:Node|null):node is TokenElement {
     return this.isElement(node) && node.dataset.role === 'token';
   }
 
-  private isListItem(node:Node):node is ListElement {
+  private isListItem(node:Node|null):node is ListElement {
     return this.isElement(node) && node.dataset.role === 'list_item';
   }
 
-  private isText(node:Node):node is Text {
-    return node.nodeType === Node.TEXT_NODE;
+  private isText(node:Node|null):node is Text {
+    return node !== null && node.nodeType === Node.TEXT_NODE;
   }
 
-  private isElement(node:Node):node is HTMLElement {
-    return node.nodeType === Node.ELEMENT_NODE;
+  private isElement(node:Node|null):node is HTMLElement {
+    return node !== null && node.nodeType === Node.ELEMENT_NODE;
   }
 
   private isWhitespaceOrControlSpace(value:string):boolean {
