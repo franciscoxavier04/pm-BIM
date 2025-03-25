@@ -100,8 +100,8 @@ module JournalChanges
     ::Acts::Journalized::Differ::Association.new(
       predecessor,
       self,
-      association: :project_life_cycle_step_journals,
-      id_attribute: :life_cycle_step_id
+      association: :project_phase_journals,
+      id_attribute: :phase_id
     ).multiple_attributes_changes(
       %i[active date_range],
       key_prefix: "project_life_cycle_step"

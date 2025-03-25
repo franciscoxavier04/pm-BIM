@@ -31,12 +31,12 @@
 class Journals::CreateService
   class ProjectLifeCycleStep < Association
     def associated?
-      journable.respond_to?(:life_cycle_steps)
+      journable.respond_to?(:phases)
     end
 
     def cleanup_predecessor(predecessor)
       cleanup_predecessor_for(predecessor,
-                              "project_life_cycle_step_journals",
+                              "project_phase_journals",
                               :journal_id,
                               :id)
     end
@@ -44,23 +44,23 @@ class Journals::CreateService
     def insert_sql
       sanitize(<<~SQL.squish, journable_id:)
         INSERT INTO
-          project_life_cycle_step_journals (
+          project_phase_journals (
             journal_id,
-            life_cycle_step_id,
+            phase_id,
             start_date,
             end_date,
             active
           )
         SELECT
           #{id_from_inserted_journal_sql},
-          project_life_cycle_steps.id,
-          project_life_cycle_steps.start_date,
-          project_life_cycle_steps.end_date,
-          project_life_cycle_steps.active
-        FROM project_life_cycle_steps
+          project_phases.id,
+          project_phases.start_date,
+          project_phases.end_date,
+          project_phases.active
+        FROM project_phases
         WHERE
           #{only_if_created_sql}
-          AND project_life_cycle_steps.project_id = :journable_id
+          AND project_phases.project_id = :journable_id
       SQL
     end
 
@@ -71,19 +71,19 @@ class Journals::CreateService
         FROM
           max_journals
         LEFT OUTER JOIN
-          project_life_cycle_step_journals
+          project_phase_journals
         ON
-          project_life_cycle_step_journals.journal_id = max_journals.id
+          project_phase_journals.journal_id = max_journals.id
         FULL JOIN
           (SELECT *
-           FROM project_life_cycle_steps
-           WHERE project_life_cycle_steps.project_id = :journable_id) life_cycle_steps
+           FROM project_phases
+           WHERE project_phases.project_id = :journable_id) phases
         ON
-          life_cycle_steps.id = project_life_cycle_step_journals.life_cycle_step_id
+          phases.id = project_phase_journals.life_cycle_step_id
         WHERE
-          life_cycle_steps.start_date IS DISTINCT FROM project_life_cycle_step_journals.start_date
-          OR life_cycle_steps.end_date IS DISTINCT FROM project_life_cycle_step_journals.end_date
-          OR life_cycle_steps.active IS DISTINCT FROM project_life_cycle_step_journals.active
+          phases.start_date IS DISTINCT FROM project_phase_journals.start_date
+          OR phases.end_date IS DISTINCT FROM project_phase_journals.end_date
+          OR phases.active IS DISTINCT FROM project_phase_journals.active
       SQL
     end
   end

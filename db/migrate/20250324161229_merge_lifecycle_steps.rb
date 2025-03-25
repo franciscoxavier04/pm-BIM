@@ -37,20 +37,8 @@ class MergeLifecycleSteps < ActiveRecord::Migration[8.0]
       end
     end
 
-    change_table(:project_life_cycle_step_definitions, bulk: true) do |t|
-      t.column :start_gate, :boolean, default: false, null: false
-      t.column :start_gate_name, :string
-      # TODO: Consider renaming all 'end_date' columns to 'finish_date' to be in line with how the
-      # dates are to be named for work packages
-      t.column :end_gate, :boolean, default: false, null: false
-      t.column :end_gate_name, :string
-
-      t.remove :type, type: :string
-    end
-
-    change_table(:project_life_cycle_steps) do |t|
-      t.remove :type, type: :string
-    end
+    adapt_tables
+    rename_tables
   end
 
   def delete_life_cycles
@@ -94,5 +82,32 @@ class MergeLifecycleSteps < ActiveRecord::Migration[8.0]
       FROM project_queries
       WHERE jsonb_path_exists(filters::jsonb, '$[*] ? (@.attribute like_regex "^lcsd.*")');
     SQL
+  end
+
+  def adapt_tables
+    change_table(:project_life_cycle_step_definitions, bulk: true) do |t|
+      t.column :start_gate, :boolean, default: false, null: false
+      t.column :start_gate_name, :string
+      # TODO: Consider renaming all 'end_date' columns to 'finish_date' to be in line with how the
+      # dates are to be named for work packages
+      t.column :end_gate, :boolean, default: false, null: false
+      t.column :end_gate_name, :string
+
+      t.remove :type, type: :string
+    end
+
+    change_table(:project_life_cycle_steps) do |t|
+      t.remove :type, type: :string
+    end
+
+    change_table(:project_life_cycle_step_journals) do |t|
+      t.rename :life_cycle_step_id, :phase_id
+    end
+  end
+
+  def rename_tables
+    rename_table :project_life_cycle_step_definitions, :project_phase_definitions
+    rename_table :project_life_cycle_steps, :project_phases
+    rename_table :project_life_cycle_step_journals, :project_phase_journals
   end
 end

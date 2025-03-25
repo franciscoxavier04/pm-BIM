@@ -109,25 +109,42 @@ RSpec.describe MergeLifecycleSteps, type: :model do
 
   subject { ActiveRecord::Migration.suppress_messages { described_class.new.migrate(:up) } }
 
-  it "removes all project life cycle steps" do
-    expect { subject }
-      .to change { ActiveRecord::Base.connection.select_one("SELECT COUNT(*) FROM project_life_cycle_steps")["count"] }
-            .from(3).to(0)
+  it "removes all project life cycle steps and renames the table" do
+    expect(ActiveRecord::Base.connection.select_one("SELECT COUNT(*) FROM project_life_cycle_steps")["count"])
+      .to eq 3
+
+    subject
+
+    expect(ActiveRecord::Base.connection.table_exists?("project_life_cycle_steps"))
+      .to be false
+    expect(ActiveRecord::Base.connection.select_one("SELECT COUNT(*) FROM project_phases")["count"])
+      .to eq 0
   end
 
-  it "removes all project life cycle step definitions" do
-    expect { subject }
-      .to change { ActiveRecord::Base.connection.select_one("SELECT COUNT(*) FROM project_life_cycle_step_definitions")["count"] }
-            .from(3).to(0)
+  it "removes all project life cycle step definitions and renames the table" do
+    expect(ActiveRecord::Base.connection.select_one("SELECT COUNT(*) FROM project_life_cycle_step_definitions")["count"])
+      .to eq 3
+
+    subject
+
+    expect(ActiveRecord::Base.connection.table_exists?("project_life_cycle_step_definitions"))
+      .to be false
+    expect(ActiveRecord::Base.connection.select_one("SELECT COUNT(*) FROM project_phase_definitions")["count"])
+      .to eq 0
   end
 
-  it "removes all project life cycle step journal entries but leaves the journal" do
-    expect { subject }
-      .to(change { ActiveRecord::Base.connection.select_one("SELECT COUNT(*) FROM project_life_cycle_step_journals")["count"] }
-            .from(3).to(0)
-            .and(change do
-              ActiveRecord::Base.connection.select_one("SELECT COUNT(*) FROM journals where id =#{project_journal.id}")["count"]
-            end.by(0)))
+  it "removes all project life cycle step journal entries but leaves the journal - the step journal table is removed" do
+    expect(ActiveRecord::Base.connection.select_one("SELECT COUNT(*) FROM project_life_cycle_step_journals")["count"])
+      .to eq 3
+
+    subject
+
+    expect(ActiveRecord::Base.connection.table_exists?("project_life_cycle_step_journals"))
+      .to be false
+    expect(ActiveRecord::Base.connection.select_one("SELECT COUNT(*) FROM project_phase_journals")["count"])
+      .to eq 0
+    expect(Journal)
+      .to exist(id: project_journal.id)
   end
 
   it "removes all queries with life cycle references in order, select or filters" do
