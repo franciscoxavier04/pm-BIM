@@ -49,8 +49,7 @@ module EnterpriseEdition
                    skip_render: !EnterpriseToken.show_banners?(feature: feature_key),
                    **system_arguments)
       @system_arguments = system_arguments
-      @system_arguments[:tag] = "div"
-      @system_arguments[:test_selector] = "op-ee-banner-#{feature_key.to_s.tr('_', '-')}"
+      @system_arguments[:test_selector] = "op-enterprise-banner-#{feature_key.to_s.tr('_', '-')}"
       super
 
       @feature_key = feature_key
