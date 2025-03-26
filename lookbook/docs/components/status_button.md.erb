@@ -1,6 +1,6 @@
-This component defines a colored status button with an action menu to select other statuses. The component is optionally marked readonly, resulting in disabling the action menu.
+The Status button communicates the current status of something (like a meeting or a work package) using a label and a colour. Optionally, it allows the user to change the status to something else. The button triggers an action menu with alternate statuses. In read-only mode, the status button does not offer any interaction.
 
-The colours adapt to the currently active mode (light/dark/light high contrast).
+The colours adapt automatically to the currently active mode (light/dark/light high contrast).
 
 ## Overview
 
@@ -8,17 +8,17 @@ The colours adapt to the currently active mode (light/dark/light high contrast).
 
 ## Anatomy
 
-The component provides two use-cases:
+The component provides two variants:
 
-**1. Using colors only**
+**1. With colour markers**
 
-For any selectable status items, the color will be shown as a small circle using our internal color helpers for that.
+For any selectable status item, a small colour marker will be displayed. The colour of this marker is determined by our internal colour helpers. 
 
 <%= embed OpPrimer::StatusButtonComponentPreview, :playground %>
 
-**2. Using icons and colors**
+**2. With icons and colours**
 
-Only the button itself will be shown coloured with a leading icon. In the action menu dropdown, there will also be used leading icons. Colors will not be shown in the dropdown.
+The button will be coloured, along with a leading icon in the foreground colour (the same as the text). The action dropdown menu will also show icons; the dropdown will not, however, show colours.
 
 <%= embed OpPrimer::StatusButtonComponentPreview, :with_icon %>
 
@@ -26,11 +26,12 @@ Only the button itself will be shown coloured with a leading icon. In the action
 
 **Do**
 
--
+- Use the component when each status needs a colour. (Eg. meeting or work package status)
+- Specify the colour for each status; these colours are not automatically set via Primer and must be manually entered. However, using named Primer colour variables is encouraged (although a hex code will also work, thanks to the internal colour helpers who will translate it to other colour modes).
 
 **Don't**
 
-- Don't use the component if the status is not colored. You can simply use an ActionMenu for this case.
+- Don't use the component if the status is not coloured. You can simply use an ActionMenu for this case.
 
 ## Used in
 
@@ -43,7 +44,7 @@ The component is used in:
 
 For detailed examples have a look at the other [preview examples](/lookbook/inspect/OpenProject/Primer/status_button/playground) of the component.
 
-This is an exemplary playground of the `OpPrimer::StatusButtonComponent`.
+This is an example playground of the `OpPrimer::StatusButtonComponent`.
 
 <%= embed OpPrimer::StatusButtonComponentPreview, :playground, panels: %i[params source] %>
 
