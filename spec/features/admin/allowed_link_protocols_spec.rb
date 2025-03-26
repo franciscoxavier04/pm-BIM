@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,25 +28,34 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Admin::Settings
-  class GeneralSettingsController < ::Admin::SettingsController
-    menu_item :settings_general
+require "spec_helper"
 
-    def settings_params
-      super.tap do |settings|
-        settings["allowed_link_protocols"] = settings["allowed_link_protocols"].split(/\r?\n/)
-      end
+RSpec.describe "Allowed link protocols", :js do
+  let(:admin) { create(:admin) }
+  let(:always_allowed_protocols) { Setting::AllowedLinkProtocols::ALWAYS_ALLOWED }
+
+  before do
+    login_as(admin)
+    visit admin_settings_general_path
+  end
+
+  it "allows updating the allowed link protocols" do
+    always_allowed_protocols.each do |protocol|
+      expect(Setting.allowed_link_protocols).not_to include(protocol)
+      expect(Setting::AllowedLinkProtocols.all).to include(protocol)
     end
 
-    def extra_permitted_filters
-      # attachment_whitelist is normally permitted as an array parameter.
-      # Explicitly permit it as a string here.
-      [:allowed_link_protocols]
-    end
+    scroll_to_element find_by_id("settings_allowed_link_protocols")
 
-    def show
-      super
-      @guessed_host = request.host_with_port.dup
-    end
+    custom_protocols = %w[ftp sftp data]
+    find_by_id("settings_allowed_link_protocols").set(custom_protocols.join("\n"))
+
+    click_on "Save"
+    expect(page).to have_text I18n.t(:notice_successful_update)
+
+    RequestStore.clear!
+    expect(Setting.allowed_link_protocols).to match_array(custom_protocols)
+    expect(Setting::AllowedLinkProtocols.all).to include(*custom_protocols)
+    expect(Setting::AllowedLinkProtocols.all).to include(*always_allowed_protocols)
   end
 end
