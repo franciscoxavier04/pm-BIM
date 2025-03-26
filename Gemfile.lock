@@ -437,14 +437,14 @@ GEM
       descendants_tracker (~> 0.0.1)
     color_conversion (0.1.2)
     colored2 (4.0.3)
-    commonmarker (2.1.1)
+    commonmarker (2.2.0)
       rb_sys (~> 0.9)
-    commonmarker (2.1.1-aarch64-linux)
-    commonmarker (2.1.1-aarch64-linux-musl)
-    commonmarker (2.1.1-arm64-darwin)
-    commonmarker (2.1.1-x86_64-darwin)
-    commonmarker (2.1.1-x86_64-linux)
-    commonmarker (2.1.1-x86_64-linux-musl)
+    commonmarker (2.2.0-aarch64-linux)
+    commonmarker (2.2.0-aarch64-linux-musl)
+    commonmarker (2.2.0-arm64-darwin)
+    commonmarker (2.2.0-x86_64-darwin)
+    commonmarker (2.2.0-x86_64-linux)
+    commonmarker (2.2.0-x86_64-linux-musl)
     compare-xml (0.66)
       nokogiri (~> 1.8)
     concurrent-ruby (1.3.4)
@@ -1304,7 +1304,7 @@ DEPENDENCIES
   climate_control
   closure_tree (~> 7.4.0)
   colored2
-  commonmarker (~> 2.1.0)
+  commonmarker (~> 2.2.0)
   compare-xml (~> 0.66)
   costs!
   csv (~> 3.3)
@@ -1501,7 +1501,7 @@ CHECKSUMS
   activerecord (8.0.2) sha256=793470b92c44e4198d0262ac60086b7822f0ea585079ad67e32a6e4c86f2d90a
   activerecord-import (2.1.0) sha256=7b1bc586c4b636e125c18f533c9ac4421dd2dbac8f4865dbf576382a338c2c94
   activerecord-nulldb-adapter (1.1.1) sha256=034c91106183b954b072fba14c2786adf1a2b9e852ce04f85f823afaf03e9820
-  activerecord-session_store (2.2.0)
+  activerecord-session_store (2.2.0) sha256=65918054573683bf4f87af89e765e1fece14c9d71cfac1f11abe4687c96e2743
   activestorage (8.0.2) sha256=f83d221e0f06ae38f2200e55490bd155c76d0add330f6e300e8646048d672977
   activesupport (8.0.2) sha256=8565cddba31b900cdc17682fd66ecd020441e3eef320a9930285394e8c07a45e
   acts_as_list (1.2.4) sha256=5e6ed695f1879d66ae7d8eb1625a72db215a26a9c8ec0047b866a80883ea5651
@@ -1553,13 +1553,13 @@ CHECKSUMS
   coercible (1.0.0) sha256=5081ad24352cc8435ce5472bc2faa30260c7ea7f2102cc6a9f167c4d9bffaadc
   color_conversion (0.1.2) sha256=99bea5fa412e1527a11389975aa6ad445ff8528ebae202c11d08c45ea2b94c96
   colored2 (4.0.3) sha256=63e1038183976287efc43034f5cca17fb180b4deef207da8ba78d051cbce2b37
-  commonmarker (2.1.1) sha256=829f2843df626180a2e6cab40ee16f1006713548dd5a27f9c6f4da5f57a0d130
-  commonmarker (2.1.1-aarch64-linux) sha256=b4e5314de68ff03f87038d3e6c4b5c557698c2f882381e3ee7980c9fdd894cbb
-  commonmarker (2.1.1-aarch64-linux-musl) sha256=7ffaba4304f3cf80847529fe50782d365dd5b968fbec918ad04548855f82577f
-  commonmarker (2.1.1-arm64-darwin) sha256=73f0ea7978e331deaa9e020af657edb876947d80300f4ffab3e765cf07e9fccc
-  commonmarker (2.1.1-x86_64-darwin) sha256=e80a1aa3d7b20e02c270acc5764888deafa013ce0d69f2b78ff2af7d6b7b16b5
-  commonmarker (2.1.1-x86_64-linux) sha256=dacb67f9e85fad11f137580d91f676a68e3f5e370d5f4432e4953eab37d52d77
-  commonmarker (2.1.1-x86_64-linux-musl) sha256=d5fd9ebd6a1367663e6b1fd77e43aa65705947437a769df3f5313189ad5ad8f9
+  commonmarker (2.2.0) sha256=046408c0a2dfe316dc507162f42d9cd9715c1e9b7e8b92b910256479c4c51a21
+  commonmarker (2.2.0-aarch64-linux) sha256=f1013b73101553f0c1ebfb9d2241a8167fd54b01d7da3f6892c60f2ef6a92cef
+  commonmarker (2.2.0-aarch64-linux-musl) sha256=4dc4a117a0ba6fd4fece377bc005ea61fc649d50eece68f93c014d06f3114d1c
+  commonmarker (2.2.0-arm64-darwin) sha256=35a20f17966141e4cc75c3ed86820a4ab7314996c6eb2ab8c0a9ad6c0dbd9d85
+  commonmarker (2.2.0-x86_64-darwin) sha256=77e21d1e89531289c8c59fcbac71940419bc5385fefeaaa36badd4cdbb6580b9
+  commonmarker (2.2.0-x86_64-linux) sha256=4bba87191d533a7099595f9f8fe5f9ccda283090f117c6fdec8a452f275f851f
+  commonmarker (2.2.0-x86_64-linux-musl) sha256=80a87ccb7d147dc57d0dd5550a5868602b1914d7cd13c8c23e5c5794ce460736
   compare-xml (0.66) sha256=e21aa5c0f69ef1177eced997c688fd4df989084e74a1b612257af32e1dd05319
   concurrent-ruby (1.3.4) sha256=d4aa926339b0a86b5b5054a0a8c580163e6f5dcbdfd0f4bb916b1a2570731c32
   connection_pool (2.5.0) sha256=233b92f8d38e038c1349ccea65dd3772727d669d6d2e71f9897c8bf5cd53ebfc
