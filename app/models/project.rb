@@ -119,7 +119,7 @@ class Project < ApplicationRecord
   def validation_context
     case Array(super)
     in [*, :saving_custom_fields, *] => context
-      context << default_validation_context
+      context | [default_validation_context]
     else
       super
     end

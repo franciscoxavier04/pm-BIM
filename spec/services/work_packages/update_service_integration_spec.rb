@@ -1539,13 +1539,38 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
     end
 
     it "removes the parent successfully and reschedules the parent" do
-      expect(parent.valid?).to be(false)
+      expect(parent.valid?(:saving_custom_fields)).to be(false)
+      # Unload the `ancestor_hierarchies` association so that we don't validate the associatied
+      # records. `closure_tree`'s behaviour is to reload the associations after save, even if they
+      # weren't loaded, see: https://github.com/ClosureTree/closure_tree/blob/
+      # 509f6dfa58da18bb4bff6ded0469263216579a90/lib/closure_tree/hierarchy_maintenance.rb#L44-L45
+      #
+      # However, having the associations loaded will cause an unexpected association validation
+      # in rails, when using custom validation contexts.
+      # The `associated_records_to_validate_or_save` method from AR will return different objects
+      # when a custom context is provided, vs when a default context is present, leading to a
+      # different set of associated objects being validated. As a result, calling `wp.valid?` will
+      # pass, while calling `wp.valid?(:custom_context)` will fail with an error on the
+      # `closure_tree`'s `self_and_ancestors` association.
+      # https://github.com/rails/rails/blob/9f39c019243138d73bb265ec32da9aee26b2c18f/
+      # activerecord/lib/active_record/autosave_association.rb#L298-L306
+      #
+      # The inconsistency is on rails' side, but in this testcase it can be avoided by
+      # unloading the `self_and_ancestors` relation on the work package.
+      # The likelihood of this issue to happen in the application is rather small because,
+      # the `self_and_ancestors` association is loaded in an `after_save` hook. In order to happen,
+      # we must validate or save a record again after it was already saved in the current request.
+      # Once the issue is fixed, it is safe to remove the association reset.
+      # https://github.com/rails/rails/issues/54807
+
+      work_package.association(:self_and_ancestors).reset
+
       expect(subject).to be_success
 
       expect(work_package.reload.parent).to be_nil
 
       parent.reload
-      expect(parent.valid?).to be(false)
+      expect(parent).not_to be_valid(:saving_custom_fields)
       expect(parent.start_date)
         .to eql(sibling.start_date)
       expect(parent.due_date)
