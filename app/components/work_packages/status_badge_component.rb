@@ -7,6 +7,6 @@ class WorkPackages::StatusBadgeComponent < ApplicationComponent
     super
 
     @status = status
-    @system_arguments = system_arguments.merge({ classes: "__hl_background_status_#{@status.id}" })
+    @system_arguments = system_arguments.merge({ classes: "__hl_background __hl_status_#{@status.id}" })
   end
 end

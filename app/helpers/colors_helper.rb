@@ -49,49 +49,52 @@ module ColorsHelper
   end
 
   #
-  # Styles to display colors itself (e.g. for the colors autocompleter)
-  ##
-  def color_css
-    Color.find_each do |color|
-      set_background_colors_for(class_name: ".#{hl_inline_class('color', color)}_dot::before", color:)
-      set_foreground_colors_for(class_name: ".#{hl_inline_class('color', color)}_text", color:)
-    end
-  end
-
-  #
   # Styles to display the color of attributes (type, status etc.) for example in the WP view
   ##
-  def resources_scope_color_css(name, scope, inline_foreground: false)
-    scope.includes(:color).find_each do |entry|
-      resource_color_css(name, entry, inline_foreground: inline_foreground)
-    end
+  def resource_color_css(name, scope)
+    scope.map do |entry|
+      color = entry.is_a?(::Color) ? entry : entry.color
+
+      if color.nil?
+        ".#{hl_color_class(name, entry)} { display: none }"
+      else
+
+        ".#{hl_color_class(name, entry)} { #{default_color_styles(color.hexcode)} #{theme_variables} }"
+      end
+    end.join("\n")
   end
 
-  def resource_color_css(name, entry, inline_foreground: false)
-    color = entry.color
-
-    if color.nil?
-      concat ".#{hl_inline_class(name, entry)}::before { display: none }\n"
-      return
-    end
-
-    if inline_foreground
-      set_foreground_colors_for(class_name: ".#{hl_inline_class(name, entry)}", color:)
+  def theme_variables
+    mode = User.current.pref.theme.split("_", 2)[0]
+    if mode == "dark"
+      default_variables_dark
     else
-      set_background_colors_for(class_name: ".#{hl_inline_class(name, entry)}::before", color:)
+      default_variables_light
     end
-
-    set_background_colors_for(class_name: ".#{hl_background_class(name, entry)}", color:)
   end
 
-  def hl_inline_class(name, model)
-    id = model.respond_to?(:id) ? model.id : model
-    "__hl_inline_#{name}_#{id}"
+  def background_color_css
+    mode = User.current.pref.theme.split("_", 2)[0]
+
+    if mode == "dark"
+      ".__hl_background { #{highlighted_background_dark} }"
+    else
+      ".__hl_background { #{highlighted_background_light} }"
+    end
   end
 
-  def hl_background_class(name, model)
-    id = model.respond_to?(:id) ? model.id : model
-    "__hl_background_#{name}_#{id}"
+  def foreground_color_css
+    mode = User.current.pref.theme.split("_", 2)[0]
+
+    if mode == "dark"
+      ".__hl_foreground { #{highlighted_foreground_dark} }"
+    else
+      ".__hl_foreground { #{highlighted_foreground_light} }"
+    end
+  end
+
+  def hl_color_class(name, model)
+    "__hl_#{name}_#{model.id}"
   end
 
   def icon_for_color(color, options = {})
@@ -115,92 +118,68 @@ module ColorsHelper
     DesignColor.find_by(variable:)&.hexcode
   end
 
-  def set_background_colors_for(class_name:, color:)
-    mode = User.current.pref.theme.split("_", 2)[0]
-
-    concat "#{class_name} { #{default_color_styles(color.hexcode)} }"
-    if mode == "dark"
-      concat "#{class_name} { #{default_variables_dark} }"
-      concat "#{class_name} { #{highlighted_background_dark} }"
-    else
-      concat "#{class_name} { #{default_variables_light} }"
-      concat "#{class_name} { #{highlighted_background_light} }"
-    end
-  end
-
-  def set_foreground_colors_for(class_name:, color:)
-    mode = User.current.pref.theme.split("_", 2)[0]
-
-    concat "#{class_name} { #{default_color_styles(color.hexcode)} }"
-    if mode == "dark"
-      concat "#{class_name} { #{default_variables_dark} }"
-      concat "#{class_name} { #{highlighted_foreground_dark} }"
-    else
-      concat "#{class_name} { #{default_variables_light} }"
-      concat "#{class_name} { #{highlighted_foreground_light} }"
-    end
-  end
-
-  # rubocop:disable Layout/LineLength
   def default_color_styles(hex)
     color = ColorConversion::Color.new(hex)
     rgb = color.rgb
     hsl = color.hsl
 
-    "--color-r: #{rgb[:r]};
-     --color-g: #{rgb[:g]};
-     --color-b: #{rgb[:b]};
-     --color-h: #{hsl[:h]};
-     --color-s: #{hsl[:s]};
-     --color-l: #{hsl[:l]};
-     --perceived-lightness: calc( ((var(--color-r) * 0.2126) + (var(--color-g) * 0.7152) + (var(--color-b) * 0.0722)) / 255 );
-     --lightness-switch: max(0, min(calc((1/(var(--lightness-threshold) - var(--perceived-lightness)))), 1));"
+    <<~CSS.squish
+      --color-r: #{rgb[:r]};
+      --color-g: #{rgb[:g]};
+      --color-b: #{rgb[:b]};
+      --color-h: #{hsl[:h]};
+      --color-s: #{hsl[:s]};
+      --color-l: #{hsl[:l]};
+      --perceived-lightness: calc( ((var(--color-r) * 0.2126) + (var(--color-g) * 0.7152) + (var(--color-b) * 0.0722)) / 255 );
+      --lightness-switch: max(0, min(calc((1/(var(--lightness-threshold) - var(--perceived-lightness)))), 1));
+    CSS
   end
 
   def default_variables_dark
-    "--lightness-threshold: 0.6;
-     --background-alpha: 0.18;
-     --lighten-by: calc(((var(--lightness-threshold) - var(--perceived-lightness)) * 100) * var(--lightness-switch));"
+    <<~CSS.squish
+      --lightness-threshold: 0.6;
+      --background-alpha: 0.18;
+      --lighten-by: calc(((var(--lightness-threshold) - var(--perceived-lightness)) * 100) * var(--lightness-switch));
+    CSS
   end
 
   def default_variables_light
-    "--lightness-threshold: 0.453;"
+    <<~CSS.squish
+      --lightness-threshold: 0.453;
+    CSS
   end
 
   def highlighted_background_dark
-    "color: hsl(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) + var(--lighten-by)) * 1%)) !important;
-     background: rgba(var(--color-r), var(--color-g), var(--color-b), var(--background-alpha)) !important;
-     border: 1px solid hsl(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) + var(--lighten-by)) * 1%)) !important;"
+    <<~CSS.squish
+      color: hsl(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) + var(--lighten-by)) * 1%)) !important;
+      background: rgba(var(--color-r), var(--color-g), var(--color-b), var(--background-alpha)) !important;
+      border: 1px solid hsl(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) + var(--lighten-by)) * 1%)) !important;
+    CSS
   end
 
   def highlighted_background_light
-    style = "color: hsl(0deg, 0%, calc(var(--lightness-switch) * 100%)) !important;
-     background: rgb(var(--color-r), var(--color-g), var(--color-b)) !important;"
     mode = User.current.pref.theme
+    border_adjustment_factor = (mode == "light_high_contrast" ? 75 : 15)
 
-    style +=
-      if mode == "light_high_contrast"
-        "border: 1px solid hsla(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) - 75) * 1%), 1) !important;"
-      else
-        "border: 1px solid hsl(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) - 15) * 1%)) !important;"
-      end
-
-    style
+    <<~CSS.squish
+      color: hsl(0deg, 0%, calc(var(--lightness-switch) * 100%)) !important;
+      background: rgb(var(--color-r), var(--color-g), var(--color-b)) !important;
+      border: 1px solid hsl(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) - #{border_adjustment_factor}) * 1%)) !important;
+    CSS
   end
 
   def highlighted_foreground_dark
-    "color: hsla(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) + var(--lighten-by)) * 1%), 1) !important;"
+    <<~CSS.squish
+      color: hsla(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) + var(--lighten-by)) * 1%), 1) !important;
+    CSS
   end
 
   def highlighted_foreground_light
     mode = User.current.pref.theme
+    color_adjustment_factor = (mode == "light_high_contrast" ? 0.5 : 0.22)
 
-    if mode == "light_high_contrast"
-      "color: hsla(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) - (var(--color-l) * 0.5)) * 1%), 1) !important;"
-    else
-      "color: hsla(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) - (var(--color-l) * 0.22)) * 1%), 1) !important;"
-    end
+    <<~CSS.squish
+      color: hsla(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) - (var(--color-l) * #{color_adjustment_factor})) * 1%), 1) !important;
+    CSS
   end
-
-  # rubocop:enable Layout/LineLength
 end
