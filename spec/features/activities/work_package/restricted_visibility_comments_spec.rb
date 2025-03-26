@@ -33,6 +33,8 @@ require "spec_helper"
 RSpec.describe "Work package comments with restricted visibility",
                :js,
                with_flag: { comments_with_restricted_visibility: true } do
+  include RestrictedVisibilityCommentsHelpers
+
   shared_let(:project) { create(:project) }
   shared_let(:admin) { create(:admin) }
   shared_let(:viewer) { create_user_with_restricted_comments_view_permissions }
@@ -246,46 +248,5 @@ RSpec.describe "Work package comments with restricted visibility",
             .to contain_exactly("Project Admin", "Restricted Viewer", "Restricted ViewerCommenter")
       end
     end
-  end
-
-  def create_user_without_restricted_comments_view_permissions
-    viewer_role = create(:project_role, permissions: %i[view_work_packages])
-    create(:user,
-           firstname: "A",
-           lastname: "Viewer",
-           member_with_roles: { project => viewer_role })
-  end
-
-  def create_user_as_project_admin
-    member_role = create(:project_role,
-                         permissions: %i[view_work_packages add_work_package_notes
-                                         edit_own_work_package_notes
-                                         view_comments_with_restricted_visibility
-                                         add_comments_with_restricted_visibility
-                                         edit_own_comments_with_restricted_visibility
-                                         edit_others_comments_with_restricted_visibility])
-    create(:user, firstname: "Project", lastname: "Admin",
-                  member_with_roles: { project => member_role })
-  end
-
-  def create_user_with_restricted_comments_view_permissions
-    viewer_role = create(:project_role, permissions: %i[view_work_packages view_comments_with_restricted_visibility])
-    create(:user,
-           firstname: "Restricted",
-           lastname: "Viewer",
-           member_with_roles: { project => viewer_role })
-  end
-
-  def create_user_with_restricted_comments_view_and_write_permissions
-    viewer_role_with_commenting_permission = create(:project_role,
-                                                    permissions: %i[view_work_packages add_work_package_notes
-                                                                    edit_own_work_package_notes
-                                                                    view_comments_with_restricted_visibility
-                                                                    add_comments_with_restricted_visibility
-                                                                    edit_own_comments_with_restricted_visibility])
-    create(:user,
-           firstname: "Restricted",
-           lastname: "ViewerCommenter",
-           member_with_roles: { project => viewer_role_with_commenting_permission })
   end
 end

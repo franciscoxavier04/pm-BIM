@@ -32,6 +32,8 @@ require "spec_helper"
 
 RSpec.describe Queries::Principals::Filters::RestrictedMentionableOnWorkPackageFilter do
   it_behaves_like "basic query filter" do
+    include RestrictedVisibilityCommentsHelpers
+
     let(:class_key) { :restricted_mentionable_on_work_package }
     let(:type) { :list_optional }
     let(:human_name) { "restricted mentionable" }
@@ -99,35 +101,6 @@ RSpec.describe Queries::Principals::Filters::RestrictedMentionableOnWorkPackageF
             .to contain_exactly(user_without_restricted_comments_view_permissions)
         end
       end
-    end
-
-    def create_user_without_restricted_comments_view_permissions
-      viewer_role = create(:project_role, permissions: %i[view_work_packages])
-      create(:user,
-             firstname: "A",
-             lastname: "Viewer",
-             member_with_roles: { project => viewer_role })
-    end
-
-    def create_user_with_restricted_comments_view_permissions
-      viewer_role = create(:project_role, permissions: %i[view_work_packages view_comments_with_restricted_visibility])
-      create(:user,
-             firstname: "Restricted",
-             lastname: "Viewer",
-             member_with_roles: { project => viewer_role })
-    end
-
-    def create_user_with_restricted_comments_view_and_write_permissions
-      viewer_role_with_commenting_permission = create(:project_role,
-                                                      permissions: %i[view_work_packages add_work_package_notes
-                                                                      edit_own_work_package_notes
-                                                                      view_comments_with_restricted_visibility
-                                                                      add_comments_with_restricted_visibility
-                                                                      edit_own_comments_with_restricted_visibility])
-      create(:user,
-             firstname: "Restricted",
-             lastname: "ViewerCommenter",
-             member_with_roles: { project => viewer_role_with_commenting_permission })
     end
   end
 end
