@@ -62,6 +62,7 @@ export default class MyTimeTrackingController extends Controller {
       eventResizableFromStart: true,
       defaultTimedEventDuration: DEFAULT_TIMED_EVENT_DURATION,
       allDayContent: I18n.t('js.myTimeTracking.noSpecificTime'),
+      dayMaxEventRows: 4, // 3 + more link
       eventClassNames(arg) {
         return [
           'calendar-time-entry-event',
@@ -69,10 +70,28 @@ export default class MyTimeTrackingController extends Controller {
           '__hl_border_top',
         ];
       },
-      eventDidMount(_info) {
-        // console.log(info.event);
-        //eslint-disable-next-line
-        // info.el.innerHTML = info.event.extendedProps.customEventView;
+      eventContent: (arg) => {
+        let time = '';
+
+        if (arg.event.allDay) {
+          time = `${this.displayDuration(arg.event.extendedProps.hours as number)}`;
+        } else {
+          time = `${moment(arg.event.start).format('HH:mm')}-${moment(arg.event.end).format('HH:mm')} (${this.displayDuration(arg.event.extendedProps.hours as number)})`;
+        }
+
+        return ({
+          html: `
+            <div class="fc-event-main-frame">
+              <div class="fc-event-time">${time}</div>
+              <div class="fc-event-title-container">
+                <div class="fc-event-title fc-sticky">
+                  <a href="${this.pathHelper.workPackageShortPath(arg.event.extendedProps.workPackageId as string)}">${arg.event.extendedProps.workPackageSubject}</a>
+                </div>
+                <div class="text-muted">
+                  <a href="${this.pathHelper.projectPath(arg.event.extendedProps.projectId as string)}">${arg.event.extendedProps.projectName}</a>
+                </div>
+              </div>
+            </div>` });
       },
       select: (info) => {
         let dialogParams = 'onlyMe=true';
@@ -131,6 +150,9 @@ export default class MyTimeTrackingController extends Controller {
         this.calendar.setOption('defaultTimedEventDuration', DEFAULT_TIMED_EVENT_DURATION);
       },
       eventClick: (info) => {
+        // check if we clicked on a link tag, if so exit early as we don't want to show the modal
+        if (info.jsEvent.target instanceof HTMLAnchorElement) { return; }
+
         void this.turboRequests.request(
           `${this.pathHelper.timeEntryEditDialog(info.event.id)}?onlyMe=true`,
           { method: 'GET' },
@@ -168,6 +190,16 @@ export default class MyTimeTrackingController extends Controller {
     }).catch(() => {
       if (revertFunction) { revertFunction(); }
     });
+  }
+
+  displayDuration(duration:number):string {
+    const hours = Math.floor(duration);
+    const minutes = Math.round((duration - hours) * 60);
+
+    if (minutes === 0) {
+      return `${hours}h`;
+    }
+    return `${hours}h ${minutes}m`;
   }
 
   calendarView():string {

@@ -50,7 +50,11 @@ module FullCalendar
     def as_json(*)
       super.merge(
         hours: time_entry.hours,
-        statusId: time_entry.work_package.status_id
+        statusId: time_entry.work_package.status_id,
+        workPackageId: time_entry.work_package.id,
+        workPackageSubject: time_entry.work_package.subject,
+        projectId: time_entry.project.id,
+        projectName: time_entry.project.name
       )
     end
 
