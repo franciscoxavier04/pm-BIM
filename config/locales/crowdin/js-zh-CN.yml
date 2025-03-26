@@ -797,7 +797,7 @@ zh-CN:
       typeahead_placeholder: 查找可能的关注者
     relation_labels:
       parent: "父级"
-      child: "Child"
+      child: "子级"
       children: "子任务"
       relates: "关于"
       duplicates: "重复项"

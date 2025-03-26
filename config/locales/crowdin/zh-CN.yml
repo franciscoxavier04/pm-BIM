@@ -952,7 +952,7 @@ zh-CN:
         column_names: "列"
         relations_to_type_column: "与%{type} 的关系"
         relations_of_type_column: "%{type} 关系"
-        child_work_packages: "Child work packages"
+        child_work_packages: "子级工作包"
         group_by: "汇总结果根据"
         sort_by: "结果排序方式"
         filters: "筛选器"
