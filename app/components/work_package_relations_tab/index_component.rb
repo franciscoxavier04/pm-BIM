@@ -117,7 +117,7 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
     end
 
     menu.with_item(
-      label: t("work_package_relations_tab.relations.existing_child"),
+      label: t("work_package_relations_tab.relations.child"),
       href: new_work_package_children_relation_path(work_package),
       content_arguments: {
         data: { turbo_stream: true }
