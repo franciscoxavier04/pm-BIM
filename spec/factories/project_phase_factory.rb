@@ -28,11 +28,22 @@
 
 FactoryBot.define do
   factory :project_phase, class: "Project::Phase" do
+    sequence(:name) { |n| "Project Phase #{n}" }
     project
     definition factory: :project_phase_definition
     active { true }
 
     start_date { Date.current - 2.days }
     end_date { Date.current + 2.days }
+
+    trait :with_start_gate do
+      start_gate { true }
+      sequence(:start_gate_name) { |n| "Project Start Gate #{n}" }
+    end
+
+    trait :with_end_gate do
+      end_gate { true }
+      sequence(:end_gate_name) { |n| "Project End Gate #{n}" }
+    end
   end
 end
