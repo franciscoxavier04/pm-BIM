@@ -1,29 +1,47 @@
 <%=
-  grid_layout("op-ee-banner", **@system_arguments) do |grid|
-    grid.with_area(:"icon-container") do
-      content_tag :div, class: "op-ee-banner--shield" do
-        render(
-          Primer::Beta::Octicon.new(
-            icon: "op-enterprise-addons",
-            size: :medium,
-            classes: "op-ee-banner--icon"
-          )
-        )
+  render(Primer::Alpha::Banner.new(
+    classes: "op-enterprise-banner",
+    full: false,
+    icon: :"op-enterprise-addons",
+    mb: 2
+  )) do
+    flex_layout do |flex|
+      flex.with_row do
+        render(Primer::Beta::Text.new(font_weight: :bold)) { title }
       end
-    end
-    grid.with_area(:"title-container") { render(Primer::Beta::Text.new) { title } }
-    grid.with_area(:"description-container") do
-      if features.present?
-        concat render(Primer::Beta::Text.new) { description }
-        concat content_tag(:ul) { safe_join features.map { |text| render(Primer::Beta::Text.new(tag: :li)) { text } } }
-      else
+
+      flex.with_row(mt: 1) do
         render(Primer::Beta::Text.new) { description }
       end
-    end
-    grid.with_area(:"link-container") do
-      render(Primer::Beta::Link.new(href: href)) do |link|
-        link.with_trailing_visual_icon(icon: "link-external")
-        link_title
+
+      if features.present?
+        flex.with_row do
+          content_tag(:ul) { safe_join features.map { |text| render(Primer::Beta::Text.new(tag: :li)) { text } } }
+        end
+      end
+
+      flex.with_row(mt: 2, flex_layout: true, align_items: :center) do |buttons|
+        buttons.with_column do
+          helpers.angular_component_tag("opce-free-trial-button")
+        end
+
+        buttons.with_column(ml: 1) do
+          render(Primer::Beta::Button.new(
+            tag: :a,
+            href: OpenProject::Static::Links.links[:pricing][:href],
+            target: "_blank",
+            classes: "upsale-colored-background",
+            title: t("admin.enterprise.buttons.upgrade"),
+            aria_label: t("admin.enterprise.buttons.upgrade"),
+          )) { t("admin.enterprise.buttons.upgrade") }
+        end
+
+        buttons.with_column(ml: 1) do
+          render(Primer::Beta::Link.new(href:)) do |link|
+            link.with_trailing_visual_icon(icon: "link-external")
+            link_title
+          end
+        end
       end
     end
   end

@@ -28,41 +28,9 @@
  / ++
  /
 
-$op-ee-banner--shield-width: 32px
+.op-enterprise-banner
+  border-color: var(--borderColor-severe-muted)
+  background: white
 
-// This is not named op-enterprise-banner because as of now, there is still a legacy angular component that uses that block name.
-.op-ee-banner
-  display: grid
-  grid-template-columns: $op-ee-banner--shield-width auto auto
-  grid-template-areas: "icon-container title-container" "icon-container description-container" "icon-container link-container"
-  grid-column-gap: 0.5rem
-  justify-content: left
-  @media screen and (min-width: $breakpoint-md)
-    grid-template-areas: "icon-container title-container title-container" "icon-container description-container link-container"
-
-  &--icon-container
+  .Banner-visual .octicon
     @extend .upsale-colored
-    align-self: start
-    justify-self: center
-
-  &--shield
-    @extend .upsale-border-colored
-    width: $op-ee-banner--shield-width
-    height: 42px
-    border-width: 10px 5px 10px 5px
-    border-radius: 0 0 10px 10px
-    border-style: solid
-    display: flex
-    align-items: center
-    justify-content: center
-
-  &--icon
-    width: $op-ee-banner--shield-width
-    height: $op-ee-banner--shield-width
-
-  &--title-container
-    @extend .upsale-colored
-    font-weight: bold
-
-  &--link-container
-    align-self: start
