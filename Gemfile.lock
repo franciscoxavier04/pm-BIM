@@ -304,13 +304,12 @@ GEM
       activerecord (>= 4.2)
     activerecord-nulldb-adapter (1.1.1)
       activerecord (>= 6.0, < 8.1)
-    activerecord-session_store (2.1.0)
-      actionpack (>= 6.1)
-      activerecord (>= 6.1)
+    activerecord-session_store (2.2.0)
+      actionpack (>= 7.0)
+      activerecord (>= 7.0)
       cgi (>= 0.3.6)
-      multi_json (~> 1.11, >= 1.11.2)
       rack (>= 2.0.8, < 4)
-      railties (>= 6.1)
+      railties (>= 7.0)
     activestorage (8.0.2)
       actionpack (= 8.0.2)
       activejob (= 8.0.2)
@@ -1280,7 +1279,7 @@ DEPENDENCIES
   activemodel-serializers-xml (~> 1.0.1)
   activerecord-import (~> 2.1.0)
   activerecord-nulldb-adapter (~> 1.1.1)
-  activerecord-session_store (~> 2.1.0)
+  activerecord-session_store (~> 2.2.0)
   acts_as_list (~> 1.2.0)
   acts_as_tree (~> 2.9.0)
   addressable (~> 2.8.0)
@@ -1502,7 +1501,7 @@ CHECKSUMS
   activerecord (8.0.2) sha256=793470b92c44e4198d0262ac60086b7822f0ea585079ad67e32a6e4c86f2d90a
   activerecord-import (2.1.0) sha256=7b1bc586c4b636e125c18f533c9ac4421dd2dbac8f4865dbf576382a338c2c94
   activerecord-nulldb-adapter (1.1.1) sha256=034c91106183b954b072fba14c2786adf1a2b9e852ce04f85f823afaf03e9820
-  activerecord-session_store (2.1.0) sha256=f8453b1d618d0c8744683f0808fda4c01c9a93508301316299dd1b9756662374
+  activerecord-session_store (2.2.0)
   activestorage (8.0.2) sha256=f83d221e0f06ae38f2200e55490bd155c76d0add330f6e300e8646048d672977
   activesupport (8.0.2) sha256=8565cddba31b900cdc17682fd66ecd020441e3eef320a9930285394e8c07a45e
   acts_as_list (1.2.4) sha256=5e6ed695f1879d66ae7d8eb1625a72db215a26a9c8ec0047b866a80883ea5651
