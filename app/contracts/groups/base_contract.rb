@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -35,6 +37,7 @@ module Groups
     # hence we need to put "lastname" as an attribute here
     attribute :name
     attribute :lastname
+    attribute :identity_url
 
     validate :validate_unique_users
 
