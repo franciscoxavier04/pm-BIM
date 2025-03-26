@@ -995,7 +995,7 @@ ru:
         manually_sorted: "Новый запрос с ручной сортировкой"
         latest_activity: "Последние действия"
         created_by_me: "Создано мной"
-        assigned_to_me: "Предназначено для меня"
+        assigned_to_me: "Назначены мне"
         recently_created: "Недавно созданное"
         all_open: "Все открытые"
         overdue: "Просрочено"

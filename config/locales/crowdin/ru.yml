@@ -908,7 +908,7 @@ ru:
         widgets: "Виджеты"
       journal:
         notes: "Примечания"
-        cause_type: "Cause type"
+        cause_type: "Причина"
       ldap_auth_source:
         account: "Аккаунт"
         attr_firstname: "Атрибут имени"
@@ -2454,7 +2454,7 @@ ru:
   label_applied_status: "Прикладной статус"
   label_archive_project: "Архивировать проект"
   label_ascending: "По возрастанию"
-  label_assigned_to_me_work_packages: "Переданные мне пакеты работ"
+  label_assigned_to_me_work_packages: "Пакеты работ, назначенные мне"
   label_associated_revisions: "Связанные изменения"
   label_attachment_plural: "Вложения"
   label_attribute: "Атрибут"

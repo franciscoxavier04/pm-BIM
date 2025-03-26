@@ -4375,7 +4375,7 @@ de:
   enterprise_features:
     baseline_comparison: Grundlinie (Planungsvergleich)
     board_view: Board Ansicht
-    conditional_highlighting: Conditional Highlighting
+    conditional_highlighting: Bedingte Hervorhebung
     custom_actions: Benutzerdefinierte Aktionen
     custom_field_hierarchies: Selbstdefinierte Felder vom Typ Hierarchie
     customize_life_cycle: Projektlebenszyklus anpassen
@@ -4395,4 +4395,4 @@ de:
     virus_scanning: Virus-Scan von Anhängen
     work_package_query_relation_columns: Arbeitspaket-Relationsspalten
     work_package_sharing: Teilen von Arbeitspaketen
-    work_package_subject_generation: Work Package Subject Generation
+    work_package_subject_generation: Arbeitspaket-Betreff Generierung

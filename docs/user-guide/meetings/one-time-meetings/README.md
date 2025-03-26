@@ -145,7 +145,7 @@ An editor will appear, allowing you to enter and format text, similar to editing
 
 Click **Save** to add the outcome agenda.
 
-After saving an agenda item outcome, you can still edit it. Click the **More** (three dots) menu on the right edge of each outcome item and select *Edit outocme*.
+After saving an agenda item outcome, you can still edit it. Click the **More** (three dots) menu on the right edge of each outcome item and select *Edit outcome*.
 
 ![Edit an agenda item outcome in OpenProject meetings](openproject_userguide_meetings_agenda_outcome_more_menu.png)
 
@@ -217,7 +217,7 @@ You can send an email reminder to all the meeting participants. Select the dropd
 
 ## Meeting attachments
 
-You can attachments in the meetings in the **Attachments** section in the right bottom corner. You can either user the **+Attach files** link to select files from your computer or drag and drop them.
+You can add attachments in the meetings in the **Attachments** section in the right bottom corner. You can either user the **+Attach files** link to select files from your computer or drag and drop them.
 
 Added attachments can be added to the Notes section of agenda packages by dragging and dropping them from the Attachments section.
 
