@@ -51,7 +51,7 @@ export class WpTableConfigurationColumnsTabComponent implements TabComponent, On
   }
 
   ngOnInit() {
-    this.eeShowBanners = this.bannerService.eeShowBanners;
+    this.eeShowBanners = this.bannerService.showBannerFor('work_package_query_relation_columns');
     this.selectedColumns.forEach((c:DraggableOption) => {
       this.selectedColumnMap[c.id] = true;
     });

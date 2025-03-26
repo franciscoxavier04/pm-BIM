@@ -46,7 +46,7 @@ module EnterpriseEdition
                    description: nil,
                    link_title: nil,
                    href: nil,
-                   skip_render: !EnterpriseToken.show_banners?(feature: feature_key),
+                   skip_render: EnterpriseToken.hide_banners?,
                    **system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:test_selector] = "op-enterprise-banner-#{feature_key.to_s.tr('_', '-')}"

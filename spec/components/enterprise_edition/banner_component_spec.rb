@@ -67,9 +67,6 @@ RSpec.describe EnterpriseEdition::BannerComponent, type: :component do
   end
 
   before do
-    allow(EnterpriseToken)
-      .to receive(:show_banners?)
-            .and_return(ee_show_banners)
     allow(OpenProject::Static::Links)
       .to receive(:links)
             .and_return(static_links)
@@ -174,25 +171,5 @@ RSpec.describe EnterpriseEdition::BannerComponent, type: :component do
     it "raises an error" do
       expect { render_component_in_mo }.to raise_error(RuntimeError)
     end
-  end
-
-  context "if banners are hidden" do
-    let(:ee_show_banners) { false }
-
-    it "hides the component" do
-      render_component_in_mo
-
-      expect(page).to have_no_css ".op-ee-banner"
-    end
-  end
-
-  context "if banners are hidden but skip_render is overwritten" do
-    let(:ee_show_banners) { false }
-    let(:render_component) do
-      render_inline(described_class.new(:some_enterprise_feature,
-                                        skip_render: false))
-    end
-
-    it_behaves_like "renders the component"
   end
 end

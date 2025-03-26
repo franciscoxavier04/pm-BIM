@@ -37,7 +37,7 @@ See COPYRIGHT and LICENSE files for more details.
           render(EnterpriseEdition::BannerComponent.new(:form_configuration, mb: 3))
         %>
 
-        <% if EnterpriseToken.show_banners? %>
+        <% unless EnterpriseToken.allows_to?(:form_configuration) %>
           <%= angular_component_tag "opce-no-results",
                                     inputs: {
                                       title: t("text_form_configuration") + t("text_custom_field_hint_activate_per_project")

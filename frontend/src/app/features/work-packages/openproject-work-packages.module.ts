@@ -138,7 +138,7 @@ import {
   WpTableConfigurationDisplaySettingsTabComponent,
 } from 'core-app/features/work-packages/components/wp-table/configuration-modal/tabs/display-settings-tab.component';
 import {
-  WpTableConfigurationFiltersTab,
+  WpTableConfigurationFiltersTabComponent,
 } from 'core-app/features/work-packages/components/wp-table/configuration-modal/tabs/filters-tab.component';
 import {
   WpTableConfigurationSortByTabComponent,
@@ -604,7 +604,7 @@ import { OpWpDatePickerModalComponent } from 'core-app/shared/components/datepic
     WpTableConfigurationModalComponent,
     WpTableConfigurationColumnsTabComponent,
     WpTableConfigurationDisplaySettingsTabComponent,
-    WpTableConfigurationFiltersTab,
+    WpTableConfigurationFiltersTabComponent,
     WpTableConfigurationSortByTabComponent,
     WpTableConfigurationTimelinesTabComponent,
     WpTableConfigurationHighlightingTabComponent,
@@ -661,7 +661,7 @@ import { OpWpDatePickerModalComponent } from 'core-app/shared/components/datepic
 
     // Modals
     WpTableConfigurationModalComponent,
-    WpTableConfigurationFiltersTab,
+    WpTableConfigurationFiltersTabComponent,
 
     // Needed so that e.g. IFC can access it.
     WorkPackageCreateButtonComponent,

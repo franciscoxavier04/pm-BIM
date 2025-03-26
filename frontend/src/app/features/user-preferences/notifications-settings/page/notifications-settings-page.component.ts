@@ -140,7 +140,7 @@ export class NotificationsSettingsPageComponent extends UntilDestroyedMixin impl
 
   ngOnInit():void {
     this.form.disable();
-    this.eeShowBanners = this.bannersService.eeShowBanners;
+    this.eeShowBanners = this.bannersService.showBannerFor('date_alerts');
 
     this
       .currentUserService

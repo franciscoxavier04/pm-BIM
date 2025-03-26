@@ -68,6 +68,7 @@ export class GroupEditInPlaceComponent implements OnInit {
 
   startEditing():void {
     this.bannerService.conditional(
+      'work_package_query_relation_columns',
       () => this.bannerService.showEEOnlyHint(),
       () => {
         this.editing = true;

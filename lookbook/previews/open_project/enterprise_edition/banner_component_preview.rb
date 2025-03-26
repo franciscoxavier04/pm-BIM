@@ -51,9 +51,6 @@ module OpenProject
       # ```
       #
       # The href is inferred from `OpenProject::Static::Links.enterprise_docs[feature_key][:href]`.
-      #
-      # The value of `EnterpriseToken.show_banners?` is used to determine whether the banner should be shown. For this
-      # example, that value is overwritten as the banner might otherwise not show up in the preview.
       def default
         render(
           ::EnterpriseEdition::BannerComponent
