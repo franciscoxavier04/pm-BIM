@@ -168,10 +168,10 @@ You can copy the branch name from the OpenProject work package as described in t
 
 ![Git snippet to create a new branch in GitLab entered into command line interface](openproject-system-guide-gitlab-integration-branch-git-snippet-cli.png)
 
-When using CLI you can also use the **Create branch with emtpy commit** Git snippet. 
+When using a CLI you can also use the **Create branch with empty commit** Git snippet. 
 ![Git snippet to create a branch with empty commit under GitLab tab in a work package in OpenProject](openproject-system-guide-gitlab-integration-git_snippet_empty_commit.png)
 
-The advantage of using this snippet is that there is no need to first create a branch and then copy a separate Git snippet for the commit. A new branch will be created from your current branch, which will then be pushed to GitLab, along with an empty commit with a link to a work.
+The advantage of using this snippet is that there is no need to first create a branch and then copy a separate Git snippet for the commit. A new branch will be created from your current branch along with an empty commit, which when pushed to GitLab will link back to the work package.
 
 ![Git snippet to create a new branch with empty commit in GitLab entered into command line interface](openproject-system-guide-gitlab-integration-branch-and-commit-git-snippet-cli.png)
 
