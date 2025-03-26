@@ -2041,6 +2041,8 @@ en:
     upsale:
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
+      plan_name: "%{plan} enterprise plan"
+      plan_text_html: "Available only through the %{plan_name}."
       link_title: "More information"
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."

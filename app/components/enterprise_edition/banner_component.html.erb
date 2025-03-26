@@ -11,7 +11,9 @@
       end
 
       flex.with_row(mt: 1) do
-        render(Primer::Beta::Text.new) { description }
+        concat render(Primer::Beta::Text.new) { description }
+        concat " "
+        concat render(Primer::Beta::Text.new) { plan_text }
       end
 
       if features.present?

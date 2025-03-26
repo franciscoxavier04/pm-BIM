@@ -46,7 +46,7 @@ module EnterpriseEdition
                    description: nil,
                    link_title: nil,
                    href: nil,
-                   skip_render: !EnterpriseToken.show_banners?,
+                   skip_render: !EnterpriseToken.show_banners?(feature: feature_key),
                    **system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = "div"
@@ -90,6 +90,11 @@ module EnterpriseEdition
           If that isn't applicable, a description parameter needs to be provided.
         TEXT
       )
+    end
+
+    def plan_text
+      plan_name = render(Primer::Beta::Text.new(font_weight: :bold, classes: "upsale-colored")) { I18n.t("ee.upsale.plan_name", plan:) }
+      I18n.t("ee.upsale.plan_text_html", plan_name:).html_safe
     end
 
     def features
