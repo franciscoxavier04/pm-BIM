@@ -1164,7 +1164,7 @@ GEM
     store_attribute (2.0.0)
       activerecord (>= 6.1)
     stringex (2.8.6)
-    stringio (3.1.5)
+    stringio (3.1.6)
     structured_warnings (0.4.0)
     svg-graph (2.2.2)
     swd (2.0.3)
@@ -1885,7 +1885,7 @@ CHECKSUMS
   stackprof (0.2.27) sha256=aff6d28656c852e74cf632cc2046f849033dc1dedffe7cb8c030d61b5745e80c
   store_attribute (2.0.0) sha256=3399d9baa20776ec9dcb266cff407aac82bf99791678d6266ea617703e4b0e28
   stringex (2.8.6) sha256=c7b382d2b2a47a1e1646f256df201c48d487d6296fbb289d76802f67f5e929c4
-  stringio (3.1.5) sha256=bca92461515a131535743bc81d5559fa1de7d80cff9a654d6c0af6f9f27e35c8
+  stringio (3.1.6) sha256=292c495d1657adfcdf0a32eecf12a60e6691317a500c3112ad3b2e31068274f5
   structured_warnings (0.4.0) sha256=ff9a59278e3ad8d18f742e677b764ce374f16e52c7993c0ff7d76900e93383ad
   svg-graph (2.2.2) sha256=f928866403055e6539afdfdab5f6268d108b2abc9f002e0fc51b16511809513a
   swd (2.0.3) sha256=4cdbe2a4246c19f093fce22e967ec3ebdd4657d37673672e621bf0c7eb770655
