@@ -286,10 +286,13 @@ class MeetingsController < ApplicationController
     case params[:state]
     when "open"
       @meeting.open!
+      expanded = true
     when "closed"
       @meeting.closed!
+      expanded = nil
     when "in_progress"
       @meeting.in_progress!
+      expanded = false
     end
 
     if @meeting.errors.any?
@@ -297,6 +300,10 @@ class MeetingsController < ApplicationController
     else
       update_all_via_turbo_stream
     end
+
+    @meeting_section = @meeting.backlog
+    update_section_header_via_turbo_stream(expanded: expanded)
+    update_section_via_turbo_stream(expanded: expanded)
 
     respond_with_turbo_streams
   end

@@ -28,8 +28,8 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module MeetingAgendaItems
-  class ListComponent < ApplicationComponent
+module MeetingSections
+  class BacklogComponent < ApplicationComponent
     include ApplicationHelper
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
@@ -40,6 +40,7 @@ module MeetingAgendaItems
       @meeting = meeting
       @form_hidden = form_hidden
       @form_type = form_type
+      @backlog = meeting.backlog
     end
 
     def empty?
@@ -47,6 +48,10 @@ module MeetingAgendaItems
     end
 
     private
+
+    def show?
+      !@meeting.closed?
+    end
 
     def wrapper_data_attributes
       {
@@ -58,7 +63,9 @@ module MeetingAgendaItems
     def drop_target_config
       {
         "is-drag-and-drop-target": true,
-        "target-allowed-drag-type": "section" # the type of dragged items which are allowed to be dropped in this target
+        "target-container-accessor": ".Box > ul", # the accessor of the container that contains the drag and drop items
+        "target-id": @backlog.id, # the id of the target
+        "target-allowed-drag-type": "agenda-item" # the type of dragged items which are allowed to be dropped in this target
       }
     end
 
@@ -68,10 +75,6 @@ module MeetingAgendaItems
 
     def insert_target_modifier_id
       "meeting-section-new-item"
-    end
-
-    def sections_except_backlog
-      @meeting.sections.reject(&:backlog?)
     end
   end
 end

@@ -143,7 +143,7 @@ module Meetings
       end
 
       def render_agenda_item_form_via_turbo_stream(meeting: @meeting, meeting_section: @meeting_section, type: :simple)
-        if meeting.sections.empty?
+        if meeting.sections.empty? && meeting_section != meeting.backlog
           render_agenda_item_form_for_empty_meeting_via_turbo_stream(type:)
         else
           render_agenda_item_form_in_section_via_turbo_stream(meeting:, meeting_section:, type:)
@@ -200,6 +200,14 @@ module Meetings
         # as the list is updated without displaying the form, the new button needs to be enabled again
         # the new button might be in a disabled state
         update_new_button_via_turbo_stream(disabled: false) if form_hidden == true
+      end
+
+      def update_backlog_via_turbo_stream(meeting: @meeting)
+        update_via_turbo_stream(
+          component: MeetingSections::BacklogComponent.new(
+            meeting:
+          )
+        )
       end
 
       def update_item_via_turbo_stream(state: :show, meeting_agenda_item: @meeting_agenda_item, display_notes_input: nil)
@@ -340,24 +348,26 @@ module Meetings
         end
       end
 
-      def update_section_header_via_turbo_stream(meeting_section: @meeting_section, state: :show)
+      def update_section_header_via_turbo_stream(meeting_section: @meeting_section, state: :show, expanded: true)
         update_via_turbo_stream(
           component: MeetingSections::HeaderComponent.new(
             meeting_section:,
-            state:
+            state:,
+            expanded:
           )
         )
       end
 
       def update_section_via_turbo_stream(meeting_section: @meeting_section, form_hidden: true, form_type: :simple,
-                                          force_wrapper: false, state: :show)
+                                          force_wrapper: false, state: :show, expanded: true)
         update_via_turbo_stream(
           component: MeetingSections::ShowComponent.new(
             meeting_section:,
             form_type:,
             form_hidden:,
             force_wrapper:,
-            state:
+            state:,
+            expanded:
           )
         )
       end
@@ -430,6 +440,7 @@ module Meetings
         update_sidebar_component_via_turbo_stream
         update_new_button_via_turbo_stream
         update_list_via_turbo_stream
+        update_backlog_via_turbo_stream
       end
     end
   end

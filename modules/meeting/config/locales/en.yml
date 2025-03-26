@@ -428,6 +428,11 @@ en:
   label_agenda_outcome_delete: "Remove outcome"
   text_outcome_not_editable_anymore: "This outcome is not editable anymore."
 
+  label_agenda_backlog: "Agenda backlog"
+  text_agenda_backlog: "The backlog is shared with all occurrences of this series. You can drag items in and out to add or remove them from a particular meeting. The backlog is only visible when the meeting status is open and hidden once the meeting is in progress."
+  label_agenda_backlog_toggle: "Toggle"
+
+
   text_agenda_item_title: 'Agenda item "%{title}"'
   text_agenda_work_package_deleted: 'Agenda item for deleted work package'
   text_deleted_agenda_item: 'Deleted agenda item'

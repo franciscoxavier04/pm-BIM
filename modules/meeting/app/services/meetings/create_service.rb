@@ -55,7 +55,7 @@ module Meetings
           {
             meeting_id: meeting.id,
             backlog: true,
-            title: "Agenda backlog"
+            title: I18n.t(:label_agenda_backlog)
           }
         )
     end

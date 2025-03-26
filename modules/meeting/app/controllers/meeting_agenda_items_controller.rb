@@ -47,7 +47,11 @@ class MeetingAgendaItemsController < ApplicationController
       render_error_flash_message_via_turbo_stream(message: t("text_meeting_not_editable_anymore"))
     else
       if params[:meeting_section_id].present?
-        meeting_section = @meeting.sections.find(params[:meeting_section_id])
+        meeting_section = if params[:meeting_section_id] == @meeting.backlog.id.to_s
+                            @meeting.backlog
+                          else
+                            @meeting.sections.find(params[:meeting_section_id])
+                          end
       end
       render_agenda_item_form_via_turbo_stream(meeting_section:, type: @agenda_item_type)
     end

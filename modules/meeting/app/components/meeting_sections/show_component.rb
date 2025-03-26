@@ -37,7 +37,7 @@ module MeetingSections
     with_collection_parameter :meeting_section
 
     def initialize(meeting_section:, first_and_last: [], form_hidden: true, form_type: :simple, insert_target_modified: true,
-                   force_wrapper: false, state: :show)
+                   force_wrapper: false, state: :show, expanded: true)
       super
 
       @meeting = meeting_section.meeting
@@ -49,7 +49,7 @@ module MeetingSections
       @insert_target_modified = insert_target_modified
       @force_wrapper = force_wrapper
       @state = state
-      @backlog = meeting_section.backlog?
+      @expanded = expanded
     end
 
     private
@@ -68,11 +68,6 @@ module MeetingSections
 
     def editable?
       @meeting_section.editable? && User.current.allowed_in_project?(:manage_agendas, @meeting_section.project)
-    end
-
-    def render?
-      # !@backlog
-      true
     end
 
     def render_section_wrapper?

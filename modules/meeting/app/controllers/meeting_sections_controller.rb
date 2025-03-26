@@ -170,6 +170,16 @@ class MeetingSectionsController < ApplicationController
     respond_with_turbo_streams
   end
 
+  def toggle
+    @meeting_section = MeetingSection.find(toggle_params[:id])
+    next_state = !ActiveModel::Type::Boolean.new.cast(toggle_params[:expanded])
+
+    update_section_header_via_turbo_stream(expanded: next_state)
+    update_section_via_turbo_stream(expanded: next_state)
+
+    respond_with_turbo_streams
+  end
+
   private
 
   def set_meeting
@@ -203,5 +213,9 @@ class MeetingSectionsController < ApplicationController
     update_all_via_turbo_stream
     # show additional base error message
     render_base_error_in_flash_message_via_turbo_stream(call.errors)
+  end
+
+  def toggle_params
+    @toggle_params ||= params.permit(:id, :expanded)
   end
 end

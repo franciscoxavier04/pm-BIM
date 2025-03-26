@@ -1,0 +1,15 @@
+<%=
+  component_wrapper(data: wrapper_data_attributes) do
+    if show?
+      flex_layout(mb: 3) do |flex|
+        flex.with_row(classes: "dragula-container", id: insert_target_modifier_id, data: { "allowed-drop-type": "section" }.merge(drop_target_config)) do
+          render(
+            MeetingSections::ShowComponent.new(
+              meeting_section: @backlog
+            )
+          )
+        end
+      end
+    end
+  end
+%>

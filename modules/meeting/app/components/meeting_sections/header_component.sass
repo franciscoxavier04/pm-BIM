@@ -3,11 +3,12 @@
 .op-meeting-section
   display: grid
   grid-template-columns: 20px auto 1fr fit-content(40px)
-  grid-template-areas: "drag-handle content duration actions"
+  grid-template-areas: "drag-handle content duration actions" ". description description description"
 
   &--drag-handle,
   &--duration,
-  &--content
+  &--content,
+  &--description
     align-self: center
 
   &--actions
@@ -18,6 +19,10 @@
 
   &--content
     @include text-shortener
+
+  .backlog-header
+    display: flex
+    align-items: center
 
   @media screen and (max-width: $breakpoint-lg)
     grid-template-columns: 20px auto 1fr 50px

@@ -33,13 +33,15 @@ module MeetingSections
     include OpPrimer::ComponentHelpers
     include OpTurbo::Streamable
 
-    def initialize(meeting_section:, state: :show, first_and_last: [])
+    def initialize(meeting_section:, state: :show, first_and_last: [], expanded: true)
       super
 
       @meeting_section = meeting_section
+      @meeting = meeting_section.meeting
       @meeting_agenda_items = meeting_section.agenda_items
       @first_and_last = first_and_last
       @state = state
+      @expanded = expanded
     end
 
     private
@@ -161,6 +163,10 @@ module MeetingSections
                      }) do |item|
         item.with_leading_visual_icon(icon: :trash)
       end
+    end
+
+    def backlog?
+      @meeting_section == @meeting.backlog
     end
   end
 end
