@@ -98,6 +98,31 @@ module EnterpriseEdition
       @features = I18n.t("ee.upsale.#{feature_key}.features", default: nil)&.values
     end
 
+    def buttons
+      [
+        free_trial_button,
+        upgrade_now_button,
+        more_info_button
+      ].compact
+    end
+
+    def free_trial_button
+      return if EnterpriseToken.active?
+      helpers.angular_component_tag("opce-free-trial-button")
+    end
+
+    # Allow providing a custom upgrade now button
+    def upgrade_now_button
+      nil
+    end
+
+    def more_info_button
+      render(Primer::Beta::Link.new(href:)) do |link|
+        link.with_trailing_visual_icon(icon: "link-external")
+        link_title
+      end
+    end
+
     def plan
       @plan ||= OpenProject::Token.lowest_plan_for(feature_key)&.capitalize
     end

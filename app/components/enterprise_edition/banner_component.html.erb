@@ -20,26 +20,10 @@
         end
       end
 
-      flex.with_row(mt: 2, flex_layout: true, align_items: :center) do |buttons|
-        buttons.with_column do
-          helpers.angular_component_tag("opce-free-trial-button")
-        end
-
-        buttons.with_column(ml: 1) do
-          render(Primer::Beta::Button.new(
-            tag: :a,
-            href: OpenProject::Static::Links.links[:pricing][:href],
-            target: "_blank",
-            classes: "upsale-colored-background",
-            title: t("admin.enterprise.buttons.upgrade"),
-            aria_label: t("admin.enterprise.buttons.upgrade"),
-          )) { t("admin.enterprise.buttons.upgrade") }
-        end
-
-        buttons.with_column(ml: 1) do
-          render(Primer::Beta::Link.new(href:)) do |link|
-            link.with_trailing_visual_icon(icon: "link-external")
-            link_title
+      flex.with_row(mt: 2, flex_layout: true, align_items: :center) do |button_layout|
+        buttons.each_with_index do |button, i|
+          button_layout.with_column(ml: (i == 0 ? 0 : 2)) do
+            button
           end
         end
       end
