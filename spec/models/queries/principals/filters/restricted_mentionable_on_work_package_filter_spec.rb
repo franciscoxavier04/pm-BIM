@@ -91,6 +91,28 @@ RSpec.describe Queries::Principals::Filters::RestrictedMentionableOnWorkPackageF
             .to contain_exactly(user_with_restricted_comments_view_permissions,
                                 user_with_restricted_comments_view_and_write_permissions)
         end
+
+        context "with users and groups" do
+          let(:group_member1) { create(:user) }
+          let(:group_member2) { create(:user) }
+          let(:group_role) { create(:project_role, permissions: %i[view_work_packages view_comments_with_restricted_visibility]) }
+          let(:group) do
+            create(:group, members: [group_member1, group_member2]) do |group|
+              Members::CreateService
+               .new(user: User.system, contract_class: EmptyContract)
+               .call(project:, principal: group, roles: [group_role])
+            end
+          end
+
+          it "returns all mentionable principals including group and group members" do
+            expect(subject)
+              .to contain_exactly(user_with_restricted_comments_view_permissions,
+                                  user_with_restricted_comments_view_and_write_permissions,
+                                  group,
+                                  group_member1,
+                                  group_member2)
+          end
+        end
       end
 
       context "with a ! operator" do

@@ -55,9 +55,9 @@ class Queries::Principals::Filters::RestrictedMentionableOnWorkPackageFilter <
   def apply_to(query_scope)
     case operator
     when "="
-      query_scope.where(id: User.allowed_members_on_work_package(permission, work_package))
+      query_scope.where(id: project_members.select(:user_id))
     when "!"
-      query_scope.where.not(id: User.allowed_members_on_work_package(permission, work_package))
+      query_scope.where.not(id: project_members.select(:user_id))
     end
   end
 
@@ -67,12 +67,18 @@ class Queries::Principals::Filters::RestrictedMentionableOnWorkPackageFilter <
 
   private
 
+  def type_strategy
+    @type_strategy ||= Queries::Filters::Strategies::HugeList.new(self)
+  end
+
   def values_are_a_single_work_package_id
     errors.add(:values, :single_value_requirement) if values.size > 1
   end
 
-  def type_strategy
-    @type_strategy ||= Queries::Filters::Strategies::HugeList.new(self)
+  def project_members
+    Member.of_project(work_package.project)
+          .joins(roles: :role_permissions)
+          .where(role_permissions: { permission: })
   end
 
   def work_package
