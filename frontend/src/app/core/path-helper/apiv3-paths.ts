@@ -46,13 +46,12 @@ export class ApiV3Paths {
       // that are members of that project:
       filters.add('member', '=', [(workPackage.project as HalResource).id as string]);
     } else {
-      const isRestrictedAttribute = 'data-work-packages--activities-tab--restricted-comment-is-restricted-value';
-      const addCommentIsRestricted = document.getElementById('work-packages-activities-tab-add-comment-component')?.getAttribute(isRestrictedAttribute) === 'true';
-      const editorIsRestricted = document.querySelector('.work-packages-activities-tab-journals-item-component-edit')?.getAttribute(isRestrictedAttribute) === 'true';
-      const isRestricted = addCommentIsRestricted || editorIsRestricted;
+      const isRestrictedAttributeValue = 'data-work-packages--activities-tab--restricted-comment-is-restricted-value';
+      const addingCommentIsRestricted = document.getElementById('work-packages-activities-tab-add-comment-component')?.getAttribute(isRestrictedAttributeValue) === 'true';
+      const editingCommentIsRestricted = document.querySelector('.work-packages-activities-tab-journals-item-component-edit')?.getAttribute(isRestrictedAttributeValue) === 'true';
 
       // that are mentionable on the work package
-      if (isRestricted) {
+      if (addingCommentIsRestricted || editingCommentIsRestricted) {
         filters.add('restricted_mentionable_on_work_package', '=', [workPackage.id.toString()]);
       } else {
         filters.add('mentionable_on_work_package', '=', [workPackage.id.toString()]);
