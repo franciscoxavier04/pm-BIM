@@ -35,16 +35,16 @@ module WorkPackages
       include OpTurbo::Streamable
       include WorkPackagesHelper
 
-      attr_reader :query
+      def query
+        model
+      end
 
-      def initialize(query)
-        super
-
-        @query = query
+      def format
+        raise NotImplementedError, "Must be overridden in subclass"
       end
 
       def export_settings
-        @export_settings ||= query.export_settings.where(format: "csv").first_or_initialize
+        @export_settings ||= query.export_settings.where(format:).first_or_initialize
       end
     end
   end
