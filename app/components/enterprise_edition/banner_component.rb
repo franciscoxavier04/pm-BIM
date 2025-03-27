@@ -37,11 +37,14 @@ module EnterpriseEdition
     include PlanForFeature
 
     # @param feature_key [Symbol, NilClass] The key of the feature to show the banner for.
+    # @param i18n_scope [String] Provide the i18n scope to look for title, description, and features.
+    #                            Defaults to "ee.upsale.{feature_key}"
     # @param dismissable [boolean] Allow this banner to be dismissed.
     # @param dismiss_key [String] Provide a string to identify this banner when being dismissed. Defaults to feature_key
     # @param skip_render [Boolean] Whether to skip rendering the banner.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(feature_key,
+                   i18n_scope: "ee.upsale.#{feature_key}",
                    dismissable: false,
                    dismiss_key: feature_key,
                    skip_render: EnterpriseToken.hide_banners?,
@@ -53,7 +56,8 @@ module EnterpriseEdition
       @system_arguments[:test_selector] = @system_arguments[:id]
       super
 
-      @feature_key = feature_key
+      self.feature_key = feature_key
+      self.i18n_scope = i18n_scope
       @skip_render = skip_render
       @dismissable = dismissable
       @dismiss_key = dismiss_key
@@ -61,8 +65,7 @@ module EnterpriseEdition
 
     private
 
-    attr_reader :skip_render,
-                :feature_key
+    attr_reader :skip_render
 
     def render?
       !(skip_render || dismissed?)

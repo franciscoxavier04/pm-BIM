@@ -34,10 +34,11 @@ module EnterpriseEdition
 
     included do
       attr_accessor :feature_key
+      attr_accessor :i18n_scope
     end
 
     def title
-      I18n.t("ee.upsale.#{feature_key}.title", default: default_title)
+      I18n.t(:title, scope: i18n_scope, default: default_title)
     end
 
     def default_title
@@ -46,16 +47,16 @@ module EnterpriseEdition
 
     def description
       @description || begin
-        if I18n.exists?(:"ee.upsale.#{feature_key}.description_html")
-          I18n.t("ee.upsale.#{feature_key}.description_html").html_safe
+        if I18n.exists?(:description_html, scope: i18n_scope)
+          I18n.t(:description_html, scope: i18n_scope).html_safe
         else
-          I18n.t("ee.upsale.#{feature_key}.description")
+          I18n.t(:description, scope: i18n_scope)
         end
       end
     rescue I18n::MissingTranslationData => e
       raise e.exception(
         <<~TEXT.squish
-          The expected '#{I18n.locale}.ee.upsale.#{feature_key}.description' nor '#{I18n.locale}.ee.upsale.#{feature_key}.description_html' key does not exist.
+          The expected '#{I18n.locale}.#{i18n_scope}.description' nor '#{I18n.locale}.#{i18n_scope}.description_html' key does not exist.
           Ideally, provide it in the locale file.
           If that isn't applicable, a description parameter needs to be provided.
         TEXT
@@ -65,7 +66,7 @@ module EnterpriseEdition
     def features
       return @features if defined?(@features)
 
-      @features = I18n.t("ee.upsale.#{feature_key}.features", default: nil)&.values
+      @features = I18n.t(:features, scope: i18n_scope, default: nil)&.values
     end
 
     def plan
