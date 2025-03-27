@@ -1,0 +1,8 @@
+<h1> We are a table component </h1>
+<h2><%= title %></h2>
+
+<ul>
+  <%- time_entries.each do |te| %>
+    <li><%= te.spent_on %> <%= te.hours %>h - <%= te.work_package.subject %></li>
+  <%- end %>
+</ul>

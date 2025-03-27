@@ -48,7 +48,7 @@ module My
 
     layout "global"
 
-    helper_method :current_day, :today?, :this_week?, :this_month?, :time_entries_json
+    helper_method :current_day, :today?, :this_week?, :this_month?, :list_view_component
 
     def calendar
       if browser.device.mobile?
@@ -122,6 +122,15 @@ module My
       @time_entries = TimeEntry
         .includes(:project, :activity, { work_package: :status })
         .where(user: User.current, spent_on: time_scope)
+        .order(:spent_on, :start_time, :hours)
+    end
+
+    def list_view_component
+      if params[:view_mode] == "list"
+        My::TimeTracking::TableComponent.new(time_entries: @time_entries, mode: params[:action].to_sym, date: current_day)
+      else
+        My::TimeTracking::CalendarComponent.new(time_entries: @time_entries, mode: params[:action].to_sym, date: current_day)
+      end
     end
   end
 end
