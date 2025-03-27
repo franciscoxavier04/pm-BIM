@@ -124,7 +124,7 @@ RSpec.describe Queries::Projects::Filters::ProjectPhaseGateFilter do
   describe ".key" do
     it "is a regex for matching lifecycle steps" do
       expect(described_class.key)
-        .to eql(/\Aproject_(?<boundry>end|start)_gate_(?<id>\d+)\z/)
+        .to eql(/\Aproject_(?<gate>end|start)_gate_(?<id>\d+)\z/)
     end
   end
 
