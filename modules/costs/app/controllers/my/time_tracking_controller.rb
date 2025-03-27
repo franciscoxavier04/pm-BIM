@@ -96,12 +96,6 @@ module My
 
     private
 
-    def time_entries_json
-      @time_entries.map do |time_entry|
-        FullCalendar::TimeEntryEvent.from_time_entry(time_entry)
-      end.to_json
-    end
-
     def current_day
       return @current_day if defined?(@current_day)
 

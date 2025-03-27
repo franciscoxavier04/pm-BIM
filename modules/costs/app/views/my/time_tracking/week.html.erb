@@ -28,4 +28,4 @@
   end
 %>
 
-<%= render(partial: "calendar", locals: { mode: "week" }) %>
+<%= render(My::TimeTracking::CalendarComponent.new(time_entries: @time_entries, mode: :week, date: current_day)) %>

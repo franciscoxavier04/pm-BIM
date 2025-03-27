@@ -10,4 +10,4 @@
   end
 %>
 
-<%= render(partial: "calendar", locals: { mode: "month" }) %>
+<%= render(My::TimeTracking::CalendarComponent.new(time_entries: @time_entries, mode: :month, date: current_day)) %>

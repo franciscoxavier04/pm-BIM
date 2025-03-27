@@ -1,0 +1,25 @@
+<%= component_wrapper(tag: "div", data: wrapper_data) do %>
+  <%= render(Primer::OpenProject::SubHeader.new) do |component|
+        component.with_text { title }
+
+        component.with_action_component do
+          render(Primer::Beta::ButtonGroup.new) do |group|
+            group.with_button(icon: "arrow-left", tag: :a, **previous_attrs)
+            group.with_button(icon: "arrow-right", tag: :a, **next_attrs)
+          end
+        end
+
+        component.with_action_button(tag: :a, href: today_href) { "Today" }
+
+        component.with_action_button(
+          scheme: :primary,
+          data: {
+            "turbo-stream" => true
+          },
+          tag: :a,
+          href: dialog_time_entries_path(onlyMe: true)
+        ) { "Log Time" }
+      end %>
+
+  <div data-my--time-tracking-target="calendar"></div>
+<%- end %>
