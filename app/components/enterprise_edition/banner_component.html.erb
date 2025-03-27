@@ -1,33 +1,47 @@
 <%=
-  render(Primer::Alpha::Banner.new(
-    classes: "op-enterprise-banner",
-    full: false,
-    icon: :"op-enterprise-addons",
-    **@system_arguments
-  )) do
-    flex_layout do |flex|
-      flex.with_row do
-        render(Primer::Beta::Text.new(font_weight: :bold)) { title }
-      end
+  grid_layout("op-enterprise-banner", **@system_arguments) do |grid|
+    grid.with_area(:visual) do
+      render(Primer::Beta::Octicon.new(icon: :"op-enterprise-addons", classes: "op-enterprise-banner--icon"))
+    end
 
-      flex.with_row(mt: 1) do
-        concat render(Primer::Beta::Text.new) { description }
-        concat " "
-        concat render(Primer::Beta::Text.new) { plan_text }
-      end
-
-      if features.present?
+    grid.with_area(:content) do
+      flex_layout do |flex|
         flex.with_row do
-          content_tag(:ul) { safe_join features.map { |text| render(Primer::Beta::Text.new(tag: :li)) { text } } }
+          render(Primer::Beta::Text.new(font_weight: :bold)) { title }
         end
-      end
 
-      flex.with_row(mt: 2, flex_layout: true, align_items: :center) do |button_layout|
-        buttons.each_with_index do |button, i|
-          button_layout.with_column(ml: (i == 0 ? 0 : 2)) do
-            button
+        flex.with_row(mt: 1) do
+          concat render(Primer::Beta::Text.new) { description }
+          concat " "
+          concat render(Primer::Beta::Text.new) { plan_text }
+        end
+
+        if features.present?
+          flex.with_row do
+            content_tag(:ul) { safe_join features.map { |text| render(Primer::Beta::Text.new(tag: :li)) { text } } }
           end
         end
+
+        flex.with_row(mt: 2, flex_layout: true, align_items: :center) do |button_layout|
+          buttons.each_with_index do |button, i|
+            button_layout.with_column(ml: (i == 0 ? 0 : 2)) do
+              button
+            end
+          end
+        end
+      end
+    end
+
+    if @dismissable
+      grid.with_area(:dismiss) do
+        render(
+          Primer::Beta::IconButton.new(
+            classes: "op-enterprise-banner--close-icon",
+            scheme: :invisible,
+            icon: :x,
+            aria: { label: "Hide" }
+          )
+        )
       end
     end
   end

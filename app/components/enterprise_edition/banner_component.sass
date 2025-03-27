@@ -28,9 +28,32 @@
  / ++
  /
 
-.op-enterprise-banner
-  border-color: var(--borderColor-severe-muted)
-  background: white
 
-  .Banner-visual .octicon
-    @extend .upsale-colored
+.op-enterprise-banner
+  display: grid
+  grid-auto-flow: column
+  grid-template-areas: "visual content dismiss"
+  grid-template-columns: min-content 1fr min-content
+  grid-template-rows: min-content
+  border: var(--borderWidth-thin) solid var(--borderColor-severe-muted)
+  border-radius: var(--borderRadius-medium)
+  background: var(--body-background)
+  padding: var(--base-size-8)
+
+  &--visual
+    display: grid
+    align-self: start
+    padding: var(--base-size-6) var(--base-size-8)
+
+  &--icon
+    color: var(--enterprise-upsale-color)
+    margin-block: calc(var(--base-size-4) / 2)
+
+  &--close-icon
+    color: var(--enterprise-upsale-color)
+
+  &--content
+    padding: var(--base-size-6) var(--base-size-8)
+
+  &--dismiss
+    margin-left: var(--controlStack-medium-gap-condensed)

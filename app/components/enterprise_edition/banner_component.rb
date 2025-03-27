@@ -49,6 +49,7 @@ module EnterpriseEdition
                    skip_render: EnterpriseToken.hide_banners?,
                    **system_arguments)
       @system_arguments = system_arguments
+      @system_arguments[:tag] = :div
       @system_arguments[:test_selector] = "op-enterprise-banner-#{feature_key.to_s.tr('_', '-')}"
       super
 
@@ -58,6 +59,7 @@ module EnterpriseEdition
       @link_title = link_title
       @href = href
       @skip_render = skip_render
+      @dismissable = true
     end
 
     private
@@ -112,6 +114,7 @@ module EnterpriseEdition
 
     def free_trial_button
       return if EnterpriseToken.active?
+
       helpers.angular_component_tag("opce-free-trial-button")
     end
 
