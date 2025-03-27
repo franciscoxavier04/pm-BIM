@@ -1648,7 +1648,7 @@ en:
       time_entry: "Spent time"
       wiki_edit: "Wiki"
       work_package: "Work packages"
-    project_life_cycle_step:
+    project_phase:
       activated: "activated"
       deactivated: "deactivated"
       added_date: "set to %{date}"

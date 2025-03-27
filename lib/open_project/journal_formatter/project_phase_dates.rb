@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class OpenProject::JournalFormatter::ProjectLifeCycleStepDates < JournalFormatter::Base
+class OpenProject::JournalFormatter::ProjectPhaseDates < JournalFormatter::Base
   def render(key, values, options = { html: true })
     step = Project::Phase.find(key[/\d+/])
 
@@ -43,20 +43,9 @@ class OpenProject::JournalFormatter::ProjectLifeCycleStepDates < JournalFormatte
   private
 
   def date_change_message(values:, step:, options:)
-    case step
-    when Project::Gate
-      if values
-        from, to = values.map { format_date(_1&.begin) }
+    from, to = values.map { format_date_range(_1) }
 
-        format_date_change(from:, to:, options:)
-      end
-    when Project::Stage
-      if values
-        from, to = values.map { format_date_range(_1) }
-
-        format_date_change(from:, to:, options:)
-      end
-    end
+    format_date_change(from:, to:, options:)
   end
 
   def format_date_range(date_range)
@@ -65,13 +54,13 @@ class OpenProject::JournalFormatter::ProjectLifeCycleStepDates < JournalFormatte
 
   def format_date_change(from:, to:, options:)
     if from && to
-      I18n.t("activity.project_life_cycle_step.changed_date", from:, to:)
+      I18n.t("activity.project_phase.changed_date", from:, to:)
     elsif to
-      I18n.t("activity.project_life_cycle_step.added_date", date: to)
+      I18n.t("activity.project_phase.added_date", date: to)
     elsif from
       date = options[:html] ? content_tag("del", from) : from
 
-      I18n.t("activity.project_life_cycle_step.removed_date", date:)
+      I18n.t("activity.project_phase.removed_date", date:)
     end
   end
 end

@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe OpenProject::JournalFormatter::ProjectLifeCycleStepActive do
+RSpec.describe OpenProject::JournalFormatter::ProjectPhaseActive do
   describe "#render" do
     let(:key) { "project_life_cycle_step_#{step.id}_active" }
 
@@ -39,8 +39,6 @@ RSpec.describe OpenProject::JournalFormatter::ProjectLifeCycleStepActive do
     before do
       allow(Project::Phase).to receive(:find).with(step.id.to_s).and_return(step)
     end
-
-    def date(day) = Date.new(2025, 1, day)
 
     shared_examples "test result" do
       context "with html output" do
@@ -56,59 +54,22 @@ RSpec.describe OpenProject::JournalFormatter::ProjectLifeCycleStepActive do
       end
     end
 
-    describe "for gate changes" do
-      let(:step) { build_stubbed(:project_gate, definition:) }
-      let(:definition) { build_stubbed(:project_phase_definition, name: "The Gate") }
-
-      context "when activated" do
-        let(:values) { [false, true] }
-        let(:plain_result) { "The Gate activated" }
-        let(:html_result) { "<strong>The Gate</strong> activated" }
-
-        include_examples "test result"
-      end
-
-      context "when deactivated" do
-        let(:values) { [true, false] }
-        let(:plain_result) { "The Gate deactivated" }
-        let(:html_result) { "<strong>The Gate</strong> deactivated" }
-
-        include_examples "test result"
-      end
-
-      context "when no change between truthy values" do
-        let(:values) { [true, true] }
-        let(:plain_result) { nil }
-        let(:html_result) { nil }
-
-        include_examples "test result"
-      end
-
-      context "when no change between falsey values" do
-        let(:values) { [nil, false] }
-        let(:plain_result) { nil }
-        let(:html_result) { nil }
-
-        include_examples "test result"
-      end
-    end
-
-    describe "for stage changes" do
+    describe "for phase changes" do
       let(:step) { build_stubbed(:project_phase, definition:) }
-      let(:definition) { build_stubbed(:project_phase_definition, name: "The Stage") }
+      let(:definition) { build_stubbed(:project_phase_definition, name: "The Phase") }
 
       context "when activated" do
         let(:values) { [false, true] }
-        let(:plain_result) { "The Stage activated" }
-        let(:html_result) { "<strong>The Stage</strong> activated" }
+        let(:plain_result) { "The Phase activated" }
+        let(:html_result) { "<strong>The Phase</strong> activated" }
 
         include_examples "test result"
       end
 
       context "when deactivated" do
         let(:values) { [true, false] }
-        let(:plain_result) { "The Stage deactivated" }
-        let(:html_result) { "<strong>The Stage</strong> deactivated" }
+        let(:plain_result) { "The Phase deactivated" }
+        let(:html_result) { "<strong>The Phase</strong> deactivated" }
 
         include_examples "test result"
       end

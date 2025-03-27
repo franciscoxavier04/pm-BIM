@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe OpenProject::JournalFormatter::ProjectLifeCycleStepDates do
+RSpec.describe OpenProject::JournalFormatter::ProjectPhaseDates do
   describe "#render" do
     let(:key) { "project_life_cycle_step_#{step.id}_date_range" }
 
@@ -56,67 +56,30 @@ RSpec.describe OpenProject::JournalFormatter::ProjectLifeCycleStepDates do
       end
     end
 
-    describe "for gate changes" do
-      let(:step) { build_stubbed(:project_gate, definition:) }
-      let(:definition) { build_stubbed(:project_phase_definition, name: "The Gate") }
-
-      context "when date added" do
-        let(:values) { [nil, date(28)..] }
-        let(:plain_result) { "The Gate set to 01/28/2025" }
-        let(:html_result) { "<strong>The Gate</strong> set to 01/28/2025" }
-
-        include_examples "test result"
-      end
-
-      context "when date changed" do
-        let(:values) { [date(28).., date(29)..] }
-        let(:plain_result) { "The Gate changed from 01/28/2025 to 01/29/2025" }
-        let(:html_result) { "<strong>The Gate</strong> changed from 01/28/2025 to 01/29/2025" }
-
-        include_examples "test result"
-      end
-
-      context "when date removed" do
-        let(:values) { [date(28).., nil] }
-        let(:plain_result) { "The Gate date deleted 01/28/2025" }
-        let(:html_result) { "<strong>The Gate</strong> date deleted <del>01/28/2025</del>" }
-
-        include_examples "test result"
-      end
-
-      context "when both dates absent" do
-        let(:values) { [nil, nil] }
-        let(:plain_result) { nil }
-        let(:html_result) { nil }
-
-        include_examples "test result"
-      end
-    end
-
-    describe "for stage changes" do
+    describe "for phase changes" do
       let(:step) { build_stubbed(:project_phase, definition:) }
-      let(:definition) { build_stubbed(:project_phase_definition, name: "The Stage") }
+      let(:definition) { build_stubbed(:project_phase_definition, name: "The Phase") }
 
       context "when date range added" do
         let(:values) { [nil, date(28)..date(29)] }
-        let(:plain_result) { "The Stage set to 01/28/2025 - 01/29/2025" }
-        let(:html_result) { "<strong>The Stage</strong> set to 01/28/2025 - 01/29/2025" }
+        let(:plain_result) { "The Phase set to 01/28/2025 - 01/29/2025" }
+        let(:html_result) { "<strong>The Phase</strong> set to 01/28/2025 - 01/29/2025" }
 
         include_examples "test result"
       end
 
       context "when date range changed" do
         let(:values) { [date(28)..date(29), date(28)..date(30)] }
-        let(:plain_result) { "The Stage changed from 01/28/2025 - 01/29/2025 to 01/28/2025 - 01/30/2025" }
-        let(:html_result) { "<strong>The Stage</strong> changed from 01/28/2025 - 01/29/2025 to 01/28/2025 - 01/30/2025" }
+        let(:plain_result) { "The Phase changed from 01/28/2025 - 01/29/2025 to 01/28/2025 - 01/30/2025" }
+        let(:html_result) { "<strong>The Phase</strong> changed from 01/28/2025 - 01/29/2025 to 01/28/2025 - 01/30/2025" }
 
         include_examples "test result"
       end
 
       context "when date range removed" do
         let(:values) { [date(28)..date(29), nil] }
-        let(:plain_result) { "The Stage date deleted 01/28/2025 - 01/29/2025" }
-        let(:html_result) { "<strong>The Stage</strong> date deleted <del>01/28/2025 - 01/29/2025</del>" }
+        let(:plain_result) { "The Phase date deleted 01/28/2025 - 01/29/2025" }
+        let(:html_result) { "<strong>The Phase</strong> date deleted <del>01/28/2025 - 01/29/2025</del>" }
 
         include_examples "test result"
       end

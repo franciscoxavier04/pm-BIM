@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class OpenProject::JournalFormatter::ProjectLifeCycleStepActive < JournalFormatter::Base
+class OpenProject::JournalFormatter::ProjectPhaseActive < JournalFormatter::Base
   def render(key, values, options = { html: true })
     return if !values[0] == !values[1]
 
@@ -44,9 +44,9 @@ class OpenProject::JournalFormatter::ProjectLifeCycleStepActive < JournalFormatt
 
   def activation_message(values:)
     if values[1]
-      I18n.t("activity.project_life_cycle_step.activated")
+      I18n.t("activity.project_phase.activated")
     elsif values[0]
-      I18n.t("activity.project_life_cycle_step.deactivated")
+      I18n.t("activity.project_phase.deactivated")
     end
   end
 end
