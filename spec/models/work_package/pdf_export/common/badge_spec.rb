@@ -28,40 +28,34 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module WorkPackage::PDFExport::Common::Badge
-  class BadgeCallback
-    def initialize(options)
-      @color = options[:color]
-      @document = options[:document]
-      @radius = options[:radius]
-      @offset = options[:offset] || 0
+require "spec_helper"
+
+RSpec.describe WorkPackage::PDFExport::Common::Badge do
+  let(:badge) { Class.new { extend WorkPackage::PDFExport::Common::Badge } }
+
+  describe "#readable_color" do
+    it "returns white for dark colors: black" do
+      expect(badge.readable_color("000000")).to eq("FFFFFF")
     end
 
-    def render_behind(fragment)
-      original_color = @document.fill_color
-      @document.fill_color = @color
-      @document.fill_rounded_rectangle([fragment.left, fragment.top + 1 + @offset], fragment.width, fragment.height + 3, @radius)
-      @document.fill_color = original_color
+    it "returns white for dark colors: dark blue" do
+      expect(badge.readable_color("1864AB")).to eq("FFFFFF")
     end
-  end
 
-  def readable_color(pdf_background_color)
-    sum = [
-      pdf_background_color[0..1],
-      pdf_background_color[2..3],
-      pdf_background_color[4..5]
-    ].sum { |color_part| color_part.to_i(16) }
-    lightness = sum / 3
-    lightness < 130 ? "FFFFFF" : "000000"
-  end
+    it "returns white for dark colors: blue-6" do
+      expect(badge.readable_color("228BE6")).to eq("000000")
+    end
 
-  def prawn_badge(text, color, offset: 0)
-    badge = BadgeCallback.new({ color: color, radius: 8, document: pdf, offset: })
-    {
-      text: (Prawn::Text::NBSP * 3) + text + (Prawn::Text::NBSP * 3),
-      size: 8,
-      color: readable_color(color),
-      callback: badge
-    }
+    it "returns black for light colors: orange-2" do
+      expect(badge.readable_color("FFD8A8")).to eq("000000")
+    end
+
+    it "returns black for light colors: cyan-0" do
+      expect(badge.readable_color("E3FAFC")).to eq("000000")
+    end
+
+    it "returns black for light colors: white" do
+      expect(badge.readable_color("FFFFFF")).to eq("000000")
+    end
   end
 end
