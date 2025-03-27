@@ -527,5 +527,18 @@ RSpec.describe "API V3 Authentication" do
           .to eq(%{Bearer realm="OpenProject API", error="invalid_token", error_description="#{error}"})
       end
     end
+
+    context "when user identified by token is locked" do
+      let(:user) { create(:user, :locked, identity_url: "keycloak:#{token_sub}") }
+
+      it "fails with HTTP 401 Unauthorized" do
+        get resource
+        expect(last_response).to have_http_status :unauthorized
+        expect(JSON.parse(last_response.body)).to eq(error_response_body)
+        error = "The user account is locked"
+        expect(last_response.header["WWW-Authenticate"])
+          .to eq(%{Bearer realm="OpenProject API", error="invalid_token", error_description="#{error}"})
+      end
+    end
   end
 end
