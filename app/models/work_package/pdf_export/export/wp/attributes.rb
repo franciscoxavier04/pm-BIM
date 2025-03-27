@@ -46,14 +46,10 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
   def write_long_text_field!(work_package, field_id)
     custom_value = work_package.custom_field_values
                                .find { |cv| cv.custom_field.id == field_id && cv.custom_field.formattable? }
-    if custom_value&.value
-      write_long_text_custom_field!(work_package, custom_value.value, custom_value.custom_field.name)
-    end
+    write_long_text_custom_field!(work_package, custom_value.value || "", custom_value.custom_field.name)
   end
 
   def write_long_text_custom_field!(work_package, markdown, label)
-    return if markdown.blank?
-
     write_optional_page_break
     write_long_text_custom_field_label(label)
     write_markdown_field_value(work_package, markdown)

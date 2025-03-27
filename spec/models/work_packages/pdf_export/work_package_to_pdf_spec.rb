@@ -34,7 +34,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
   include Redmine::I18n
   include PDFExportSpecUtils
   let(:type) do
-    create(:type_bug, custom_fields: [cf_long_text, cf_disabled_in_project, cf_global_bool])
+    create(:type_bug, custom_fields: [cf_long_text, cf_empty_long_text, cf_disabled_in_project, cf_global_bool])
   end
   let(:parent_project) do
     create(:project, name: "Parent project")
@@ -65,8 +65,8 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
              project_custom_field_bool.id => true,
              project_custom_field_long_text.id => "foo"
            },
-           work_package_custom_fields: [cf_long_text, cf_disabled_in_project, cf_global_bool],
-           work_package_custom_field_ids: [cf_long_text.id, cf_global_bool.id]) # cf_disabled_in_project.id is disabled
+           work_package_custom_fields: [cf_long_text, cf_empty_long_text, cf_disabled_in_project, cf_global_bool],
+           work_package_custom_field_ids: [cf_long_text.id, cf_empty_long_text.id, cf_global_bool.id]) # cf_disabled_in_project.id is disabled
   end
   let(:forbidden_project) do
     create(:project,
@@ -78,8 +78,8 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
            status_code: "on_track",
            active: true,
            parent: parent_project,
-           work_package_custom_fields: [cf_long_text, cf_disabled_in_project, cf_global_bool],
-           work_package_custom_field_ids: [cf_long_text.id, cf_global_bool.id]) # cf_disabled_in_project.id is disabled
+           work_package_custom_fields: [cf_long_text, cf_empty_long_text, cf_disabled_in_project, cf_global_bool],
+           work_package_custom_field_ids: [cf_long_text.id, cf_empty_long_text.id, cf_global_bool.id]) # cf_disabled_in_project.id is disabled
   end
   let(:user) do
     create(:user,
@@ -97,9 +97,12 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
   let(:image_attachment) { Attachment.new author: user, file: File.open(image_path) }
   let(:attachments) { [image_attachment] }
   let(:cf_long_text_description) { "**foo** *faa*" }
+  let(:cf_empty_long_text_description) { "" }
   let(:cf_long_text) do
-    create(:issue_custom_field, :text,
-           name: "Work Package Custom Field Long Text")
+    create(:issue_custom_field, :text, name: "Work Package Custom Field Long Text")
+  end
+  let(:cf_empty_long_text) do
+    create(:issue_custom_field, :text, name: "Empty Work Package Custom Field Long Text")
   end
   let!(:cf_disabled_in_project) do
     # NOT enabled by project.work_package_custom_field_ids => NOT in PDF
@@ -157,6 +160,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
            description:,
            custom_values: {
              cf_long_text.id => cf_long_text_description,
+             cf_empty_long_text.id => cf_empty_long_text_description,
              cf_disabled_in_project.id => "6.25",
              cf_global_bool.id => true
            }).tap do |wp|
@@ -219,6 +223,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
       "Date", "05/30/2024 - 03/13/2025",
       "Other",
       "Work Package Custom Field Boolean", "Yes",
+      "Empty Work Package Custom Field Long Text",
       "Work Package Custom Field Long Text", "foo   faa",
       "Costs",
       "Spent units", "Labor costs", "Unit costs", "Overall costs", "Budget"
@@ -439,9 +444,10 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
           end,
           "Custom field boolean", I18n.t(:general_text_Yes),
           "Custom field rich text", "[#{I18n.t('export.macro.rich_text_unsupported')}]",
-          "Custom field hidden",
+
           "1", export_time_formatted, project.name,
 
+          "Custom field hidden",
           "No replacement of:",
           "projectValue:1:status",
           "projectLabel:status",
