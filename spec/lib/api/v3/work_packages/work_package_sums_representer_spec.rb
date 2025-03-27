@@ -41,6 +41,7 @@ RSpec.describe API::V3::WorkPackages::WorkPackageSumsRepresenter do
       story_points: 5,
       remaining_hours: 10,
       estimated_hours: 5,
+      done_ratio: 50,
       material_costs: 5,
       labor_costs: 10,
       overall_costs: 15,
@@ -66,6 +67,13 @@ RSpec.describe API::V3::WorkPackages::WorkPackageSumsRepresenter do
     it "is represented" do
       expected = "PT10H"
       expect(subject).to be_json_eql(expected.to_json).at_path("remainingTime")
+    end
+  end
+
+  describe "percentageDone" do
+    it "is represented" do
+      expected = 50
+      expect(subject).to be_json_eql(expected.to_json).at_path("percentageDone")
     end
   end
 
