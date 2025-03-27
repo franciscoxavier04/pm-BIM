@@ -55,14 +55,13 @@ primer_form_with(
       }
     )
     form.html_content do
-      tag.div(
-        class: "op-toast -warning -with-bottom-spacing",
-        hidden: true,
-        data: { admin__progress_tracking_target: "warningToast" }
+      render(
+        Primer::Alpha::Banner.new(
+          scheme: :warning,
+          data: { admin__progress_tracking_target: "warningToast" }
+        )
       ) do
-        tag.div(class: "op-toast--content") do
-          tag.p(data: { admin__progress_tracking_target: "warningText" })
-        end
+        render(Primer::Beta::Text.new(data: { admin__progress_tracking_target: "warningText" }))
       end
     end
     form.radio_button_group(
