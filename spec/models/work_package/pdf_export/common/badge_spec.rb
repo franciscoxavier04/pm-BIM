@@ -42,7 +42,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Badge do
       expect(badge.readable_color("1864AB")).to eq("FFFFFF")
     end
 
-    it "returns white for light colors: blue-6" do
+    it "returns white for dark colors: blue-6" do
       expect(badge.readable_color("228BE6")).to eq("000000")
     end
 
