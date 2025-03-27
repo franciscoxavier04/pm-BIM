@@ -243,7 +243,7 @@ Read more about [subscribing to a calendar](../../calendar/#subscribe-to-a-calen
 
 Meetings in OpenProject can have three different statuses: Open, In Progress, and Closed. Depending on the meeting status, different options are available, such as editing the agenda, adding outcomes, or finalizing the meeting. You can transition between these statuses using the meeting status button  with a drop-down menu under the meeting name or in the right-hand pane.
 
-![Meeting status in OpenProjec](openproject_userguide_meetings_meeting_status.png)
+![Meeting status in OpenProject](openproject_userguide_meetings_meeting_status.png)
 
 Clicking on this button will show following status options:
 
