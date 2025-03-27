@@ -57,6 +57,12 @@ de:
         start_time: Startzeit
         end_time: Endzeit
     models:
+      time_entry:
+        one: "Time entry"
+        other: "Time entries"
+      cost_entry:
+        one: "Cost entry"
+        other: "Cost entries"
       cost_type:
         one: "Kostentyp"
         other: "Kostentypen"
@@ -175,8 +181,6 @@ de:
   text_reassign_time_and_cost_entries: "Gebuchte Aufwände diesem Ticket zuweisen:"
   text_warning_hidden_elements: "Es wurden möglicherweise nicht alle Einträge berücksichtigt."
   week: "Woche"
-  js:
-    text_are_you_sure: "Sind Sie sicher?"
   api_v3:
     errors:
       validation:

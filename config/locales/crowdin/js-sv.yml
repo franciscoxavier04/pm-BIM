@@ -798,6 +798,7 @@ sv:
       typeahead_placeholder: Sök efter möjliga bevakare
     relation_labels:
       parent: "Överordnad"
+      child: "Child"
       children: "Barn"
       relates: "Relaterade till"
       duplicates: "Dubbletter"
@@ -827,7 +828,7 @@ sv:
       add_new_child: "Skapa nytt barn"
       create_new: "Skapa ny"
       add_existing: "Lägg till befintlig"
-      add_existing_child: "Lägg till befintligt barn"
+      add_existing_child: "Add child"
       remove_child: "Ta bort barn"
       add_new_relation: "Skapa ny relation"
       add_existing_relation: "Lägg till befintlig relation"

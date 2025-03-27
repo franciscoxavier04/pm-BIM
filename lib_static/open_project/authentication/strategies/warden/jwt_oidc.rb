@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenProject
   module Authentication
     module Strategies
@@ -24,7 +26,11 @@ module OpenProject
               ->(payload_and_provider) do
                 payload, provider = payload_and_provider
                 user = User.find_by(identity_url: "#{provider.slug}:#{payload['sub']}")
-                success!(user) if user
+                if user
+                  success!(user)
+                else
+                  fail_with_header!(error: "invalid_token", error_description: "The user identified by the token is not known")
+                end
               end,
               ->(error) { fail_with_header!(error: "invalid_token", error_description: error) }
             )

@@ -57,6 +57,20 @@ ar:
         start_time: Start time
         end_time: Finish time
     models:
+      time_entry:
+        zero: "Time entries"
+        one: "Time entry"
+        two: "Time entries"
+        few: "Time entries"
+        many: "Time entries"
+        other: "Time entries"
+      cost_entry:
+        zero: "Cost entries"
+        one: "Cost entry"
+        two: "Cost entries"
+        few: "Cost entries"
+        many: "Cost entries"
+        other: "Cost entries"
       cost_type:
         zero: "أنواع التكلفة"
         one: "أنواع التكلفة"
@@ -183,8 +197,6 @@ ar:
   text_reassign_time_and_cost_entries: "إعادة تعيين الساعات والتكاليف التي تم التبليغ عنها لمجموعة العمل هذه:"
   text_warning_hidden_elements: "من الممكن أنه تمّ استبعاد بعض الإدخالات من التجميع."
   week: "الأسبوع"
-  js:
-    text_are_you_sure: "هل أنت متأكد؟"
   api_v3:
     errors:
       validation:

@@ -46,7 +46,7 @@ RSpec.describe "Admin Edit File storage",
     page.find_test_selector("storage-delete-button").click
 
     expect(page).to have_text("DELETE FILE STORAGE")
-    expect(page).to have_current_path("#{confirm_destroy_admin_settings_storage_path(storage)}?utf8=%E2%9C%93")
+    expect(page).to have_current_path(confirm_destroy_admin_settings_storage_path(storage))
     storage_delete_button = page.find_button("Delete", disabled: true)
 
     fill_in("delete_confirmation", with: "Foo Nextcloud")
@@ -293,7 +293,7 @@ RSpec.describe "Admin Edit File storage",
       aggregate_failures "Storage Audience" do
         find_test_selector("storage-edit-storage-audience-button").click
         within_test_selector("storage-audience-form") do
-          expect(page.find(:radio_button, "Define storage audience manually")).to be_checked
+          expect(page).to have_checked_field("Define storage audience manually")
           expect(page).to have_field("Storage Audience")
 
           click_on "Save and continue"
@@ -304,7 +304,7 @@ RSpec.describe "Admin Edit File storage",
           choose("Use first access token obtained by identity provider")
           expect(page).to have_no_field("Storage Audience")
           choose("Define storage audience manually")
-          expect(find_field("Storage Audience").value).to eq("schmaudience")
+          expect(page).to have_field("Storage Audience", with: "schmaudience")
 
           click_on "Save and continue"
         end
@@ -314,8 +314,8 @@ RSpec.describe "Admin Edit File storage",
 
         find_test_selector("storage-edit-storage-audience-button").click
         within_test_selector("storage-audience-form") do
-          expect(page.find(:radio_button, "Define storage audience manually")).to be_checked
-          expect(find_field("Storage Audience").value).to eq("schmaudience")
+          expect(page).to have_checked_field("Define storage audience manually")
+          expect(page).to have_field("Storage Audience", with: "schmaudience")
 
           choose("Use first access token obtained by identity provider")
           click_on "Save and continue"
@@ -329,11 +329,11 @@ RSpec.describe "Admin Edit File storage",
 
         find_test_selector("storage-edit-storage-audience-button").click
         within_test_selector("storage-audience-form") do
-          expect(page.find(:radio_button, "Use first access token obtained by identity provider")).to be_checked
+          expect(page).to have_checked_field("Use first access token obtained by identity provider")
           expect(page).to have_no_field("Storage Audience")
 
           choose("Define storage audience manually")
-          expect(find_field("Storage Audience").value).to be_empty
+          expect(page).to have_field("Storage Audience", with: "")
         end
       end
     end

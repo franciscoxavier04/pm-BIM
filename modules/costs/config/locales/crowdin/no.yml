@@ -57,6 +57,12 @@
         start_time: Starttid
         end_time: Finish time
     models:
+      time_entry:
+        one: "Time entry"
+        other: "Time entries"
+      cost_entry:
+        one: "Cost entry"
+        other: "Cost entries"
       cost_type:
         one: "Kostnadstype"
         other: "Kostnadstyper"
@@ -175,8 +181,6 @@
   text_reassign_time_and_cost_entries: "Overfør rapporterte timer og kostnader til denne arbeidspakken:"
   text_warning_hidden_elements: "Noen oppføringer kan være utelatt fra aggregeringen."
   week: "uke"
-  js:
-    text_are_you_sure: "Er du sikker?"
   api_v3:
     errors:
       validation:

@@ -63,17 +63,23 @@ class RecurringMeeting < ApplicationRecord
   after_save :unset_schedule
   before_destroy :remove_jobs
 
-  enum frequency: {
-    daily: 0,
-    working_days: 1,
-    weekly: 2
-  }.freeze, _prefix: true, _default: "weekly"
+  enum :frequency,
+       {
+         daily: 0,
+         working_days: 1,
+         weekly: 2
+       },
+       prefix: true,
+       default: "weekly"
 
-  enum end_after: {
-    specific_date: 0,
-    iterations: 1,
-    never: 3
-  }.freeze, _prefix: true, _default: "never"
+  enum :end_after,
+       {
+         specific_date: 0,
+         iterations: 1,
+         never: 3
+       },
+       prefix: true,
+       default: "never"
 
   has_many :meetings,
            inverse_of: :recurring_meeting,
@@ -123,6 +129,8 @@ class RecurringMeeting < ApplicationRecord
   end
 
   def weekday
+    return I18n.t(:label_empty_element) if start_time.blank?
+
     I18n.l(start_time, format: "%A")
   end
 

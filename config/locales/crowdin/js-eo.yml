@@ -799,6 +799,7 @@ eo:
       typeahead_placeholder: Serĉi por eblaj atentantoj
     relation_labels:
       parent: "Patro"
+      child: "Child"
       children: "Filo"
       relates: "Rilata al"
       duplicates: "Duobligitaj"
@@ -828,7 +829,7 @@ eo:
       add_new_child: "Krei novan filon"
       create_new: "Krei novan"
       add_existing: "Aldoni ekzistantan"
-      add_existing_child: "Aldoni ekzistantan filon"
+      add_existing_child: "Add child"
       remove_child: "Forigi filon"
       add_new_relation: "Krei novan rilaton"
       add_existing_relation: "Aldoni ekzistantan rilaton"

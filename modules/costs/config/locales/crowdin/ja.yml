@@ -57,6 +57,10 @@ ja:
         start_time: 開始時間
         end_time: 終了時間
     models:
+      time_entry:
+        other: "Time entries"
+      cost_entry:
+        other: "Cost entries"
       cost_type:
         other: "コスト種類"
       time_entry_activity:
@@ -173,8 +177,6 @@ ja:
   text_reassign_time_and_cost_entries: "報告された時間とコストをこの作業項目に再割り当てください。"
   text_warning_hidden_elements: "いくつかのエントリは、集計から除外されている可能性があります。"
   week: "週間"
-  js:
-    text_are_you_sure: "よろしいですか？"
   api_v3:
     errors:
       validation:

@@ -35,11 +35,15 @@ si:
         label_sort_desc: "Newest on top"
         label_type_to_comment: "Add a comment. Type @ to notify people."
         label_submit_comment: "Submit comment"
+        label_who: Who?
         changed_on: "changed on"
         created_on: "created this on"
         changed: "changed"
         created: "created"
         commented: "commented"
+        restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: There are currently no plugins installed.
@@ -618,8 +622,12 @@ si:
           caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
         pattern:
           label: "Subject pattern"
-          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
-          insert_as_text: "Add as text: \"%{word}\""
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -752,9 +760,9 @@ si:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      new_child: "New child"
+      new_child: "Create new child"
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
-      existing_child: "Existing child"
+      child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
       label_blocks_singular: "කුට්ටි"
@@ -957,6 +965,7 @@ si:
         column_names: "තීරු"
         relations_to_type_column: "සබඳතා %{type}"
         relations_of_type_column: "%{type} සබඳතා"
+        child_work_packages: "Child work packages"
         group_by: "කණ්ඩායම් ප්රතිඵල විසින්"
         sort_by: "Sort results by"
         filters: "පෙරහන්"
@@ -1039,6 +1048,7 @@ si:
         auto_hide_popups: "ස්වයං සඟවන්න සාර්ථකත්වය දැනුම්දීම්"
         warn_on_leaving_unsaved: "නොගැලවූ වෙනස්කම් සහිත වැඩ පැකේජයකින් පිටවන විට මට අනතුරු අඟවන්න"
         theme: "Mode"
+        time_zone: "වේලා කලාපය"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1050,7 +1060,9 @@ si:
       wiki_page:
         parent_title: "මව් පිටුව"
         redirect_existing_links: "පවතින සබැඳි නැවත හරවා යැවීම"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "ඇතුළත් කිරීම ආරම්භ කරන්න"
         begin_deletion: "මකාදැමීම ආරම්භ කරන්න"
         children: "උප මූලිකාංග"
@@ -1066,6 +1078,7 @@ si:
           title: "Working days"
           false: "working days only"
           true: "include non-working days"
+        journal_restricted: Restricted Journal
         notify: "Notify" #used in custom actions
         parent: "මාපිය"
         parent_issue: "මාපිය"
@@ -1109,6 +1122,7 @@ si:
         empty: "හිස් විය නොහැක."
         even: "පවා විය යුතුය."
         exclusion: "වෙන් කර ඇත."
+        feature_disabled: is not available.
         file_too_large: "ඉතා විශාලයි (උපරිම ප්රමාණය බයිට් %{count} කි)."
         filter_does_not_exist: "filter does not exist."
         format: "does not match the expected format '%{expected}'."
@@ -1571,11 +1585,17 @@ si:
       changeset: "වෙනස්කම්"
       message: "සංසද"
       news: "පුවත්"
-      project_attribute: "Project attributes"
+      project_details: "Project details"
       subproject: "Include subprojects"
       time_entry: "වැය කළ කාලය"
       wiki_edit: "විකි"
       work_package: "වැඩ පැකේජ"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "ක්රියාකාරී"
@@ -1606,6 +1626,7 @@ si:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "සංදර්ශකය"
     due_date: "අවසන් දිනය"
     estimated_hours: "Work"
@@ -1670,6 +1691,7 @@ si:
     version: "අනුවාදය"
     visible: "දෘශ්යමාන"
     work_package: "වැඩ පැකේජය"
+    work_package_id: "වැඩ පැකේජය"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"
@@ -2043,7 +2065,7 @@ si:
     changeset: "සංස්කරණය කරන ලද වෙනස්"
     message: සංස්කරණය කරන ලද පණිවිඩය
     news: පුවත්
-    project_attributes: "Project attributes edited"
+    project_details: "Project details edited"
     project: "සංස්කරණය කරන ලද ව්යාපෘතිය"
     projects: "සංස්කරණය කරන ලද ව්යාපෘතිය"
     reply: පිළිතුරු
@@ -2122,6 +2144,8 @@ si:
     your_work_packages_export: "Work packages are being exported"
     succeeded: "Export completed"
     failed: "An error has occurred while trying to export the work packages: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "පරමාණුව"
       csv: "සීඑස්වී"
@@ -2166,6 +2190,12 @@ si:
         caption: Break line between words for better layout and justification.
       hyphenation_language:
         label: Language and hyphenation
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "ලබා ගත හැකි PDftotext (විකල්ප)"
@@ -3276,6 +3306,7 @@ si:
   permission_add_project: "Create projects"
   permission_add_work_package_attachments: "ඇමුණුම් එකතු කරන්න"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "සංරක්ෂිත ව්යාපෘතිය"
   permission_create_user: "Create users"
   permission_manage_user: "Edit users"
@@ -3304,9 +3335,12 @@ si:
   permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "වැඩ පැකේජ සංස්කරණය කරන්න"
   permission_edit_messages: "පණිවිඩ සංස්කරණය කරන්න"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "Edit own comments"
   permission_edit_own_messages: "තමන්ගේම පණිවිඩ සංස්කරණය කරන්න"
   permission_edit_own_time_entries: "ම කාලය ලඝු-සටහන් සංස්කරණය"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "ව්යාපෘතිය සංස්කරණය කරන්න"
   permission_edit_project_attributes: "Edit project attributes"
   permission_edit_project_stages_and_gates: "Edit project stages and gates"
@@ -3347,6 +3381,7 @@ si:
   permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "View projects"
   permission_view_changesets: "OpenProject හි නිධි සංශෝධන බලන්න"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "කතෘ සංඛ්යා ලේඛන බලන්න"
   permission_view_dashboards: "View dashboards"
   permission_view_work_package_watchers: "මුරකරුවන් ලැයිස්තුව බලන්න"
@@ -3390,6 +3425,10 @@ si:
       project_verification: "මකාදැමීම සත්යාපනය කිරීම සඳහා ව්යාපෘතියේ නම %{name} ඇතුළත් කරන්න."
       subprojects_confirmation: "එහි උප ව්යාපෘතිය (ය): %{value} ද මකා දැමෙනු ඇත."
       title: "ව්යාපෘතිය මකන්න %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: ව්යාපෘතියේ සාමාජිකයින්ට ව්යාපෘතියේ ගබඩාව නැවත ස්ථානගත කිරීමට සිදුවනු ඇත.
       warning_two: ව්යාපෘතියට පවත්නා සබැඳි තවදුරටත් ක්රියා නොකරනු ඇත.
@@ -3534,6 +3573,9 @@ si:
     manual: "set to Manual"
     automatic: "set to Automatic"
   search_input_placeholder: "සොයන්න..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
     Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
@@ -3799,6 +3841,8 @@ si:
     working_days:
       section_work_week: "Work week"
       section_holidays_and_closures: "Holidays and closures"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "මාර්ක්ඩවුන්"
     plain: "සරල පෙළ"

@@ -21,6 +21,7 @@
 #++
 ru:
   js:
+    text_are_you_sure: "Уверены?"
     work_packages:
       property_groups:
         costs: "Затраты"

@@ -27,7 +27,6 @@
 #++
 
 require "spec_helper"
-require File.expand_path("../support/shared/become_member", __dir__)
 
 RSpec.describe Project do
   include BecomeMember

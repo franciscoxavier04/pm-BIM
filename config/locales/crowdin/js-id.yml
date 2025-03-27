@@ -102,7 +102,7 @@ id:
     button_save: "Simpan"
     button_settings: "Pengaturan"
     button_uncheck_all: "Uncek semua"
-    button_update: "Perbarui"
+    button_update: "Update"
     button_export-atom: "Download Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "Buat baru"
@@ -798,6 +798,7 @@ id:
       typeahead_placeholder: Mencari pengawas yang memungkinkan
     relation_labels:
       parent: "Induk"
+      child: "Child"
       children: "Sub"
       relates: "Berkaitan dengan"
       duplicates: "Duplikat"
@@ -827,7 +828,7 @@ id:
       add_new_child: "Create new child"
       create_new: "Create new"
       add_existing: "Add existing"
-      add_existing_child: "Add existing child"
+      add_existing_child: "Add child"
       remove_child: "Remove child"
       add_new_relation: "Create new relation"
       add_existing_relation: "Add existing relation"

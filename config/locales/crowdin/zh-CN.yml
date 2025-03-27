@@ -35,11 +35,15 @@ zh-CN:
         label_sort_desc: "时间降序"
         label_type_to_comment: "添加评论。输入 @ 以通知他人。"
         label_submit_comment: "提交评论"
+        label_who: 谁？
         changed_on: "更改于"
         created_on: "创建于"
         changed: "已更改"
         created: "已创建"
         commented: "已评论"
+        restrict_visibility: 限制可见性
+        restricted_journal: 受限制的评论对一组成员可见。
+        unsaved_changes_confirmation_message: 您有未保存的更改。您确定要关闭编辑器吗？
   admin:
     plugins:
       no_results_title_text: 目前没有安装插件。
@@ -79,7 +83,7 @@ zh-CN:
         text: "您确定要删除当前使用的企业版令牌吗？"
         title: "删除令牌"
       replace_token: "替换您当前的支持令牌"
-      order: "订购本地部署版的 Enterprise edition"
+      order: "订购本地部署的 Enterprise edition"
       paste: "粘贴您企业版的支持令牌"
       required_for_feature: "此功能仅限具激活的企业版支持令牌的订阅者使用。"
       enterprise_link: "如需了解详细信息，请单击此处。"
@@ -606,8 +610,12 @@ zh-CN:
           caption: "使用引用属性和文本定义模式，自动生成工作包主题。用户将无法手动编辑主题。"
         pattern:
           label: "主题模式"
-          caption: "搜索属性或添加文本。要在元素之间创建空格，请将其添加为文本。"
-          insert_as_text: "添加文本：%{word}"
+          caption: "添加文本或输入斜杠“/”以搜索属性。你可以使用空格来分隔它们。"
+          headings:
+            work_package: "工作包"
+            parent: "父级"
+            project: "项目"
+          insert_as_text: "未找到属性。以文本形式添加：“%{word}”"
       export_configuration:
         tab: "生成 PDF"
         intro: "为此类型选择模板。模板决定此类型工作包导出的PDF的设计和可见属性。默认选择列表上的第一个模板。"
@@ -739,9 +747,9 @@ zh-CN:
       follows_description: "相关工作包必须在本工作包启动前完成"
       label_child_singular: "子节点"
       label_child_plural: "子项"
-      new_child: "新建子项"
+      new_child: "Create new child"
       new_child_text: "创建工作包，作为当前(父)工作包的子项"
-      existing_child: "添加现有子项"
+      child: "Child"
       child_description: "使相关工作包成为当前(父) 工作包的子项目"
       label_closest: "最近的"
       label_blocks_singular: "阻止"
@@ -944,6 +952,7 @@ zh-CN:
         column_names: "列"
         relations_to_type_column: "与%{type} 的关系"
         relations_of_type_column: "%{type} 关系"
+        child_work_packages: "子级工作包"
         group_by: "汇总结果根据"
         sort_by: "结果排序方式"
         filters: "筛选器"
@@ -1026,6 +1035,7 @@ zh-CN:
         auto_hide_popups: "自动隐藏成功通知"
         warn_on_leaving_unsaved: "离开未保存更改的工作包时提示我"
         theme: "模式"
+        time_zone: "时区"
         mode_guideline: "某些模式会覆盖自定义主题的颜色，以便于访问和阅读。如需完整的自定义主题，请选择 \"浅色 \"模式。"
         daily_reminders: "每日提醒"
         workdays: "工作日"
@@ -1037,7 +1047,9 @@ zh-CN:
       wiki_page:
         parent_title: "父级页面"
         redirect_existing_links: "将现有的链接重定向"
+        text: "页面内容"
       work_package:
+        ancestor: "子级" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "开始插入"
         begin_deletion: "开始删除"
         children: "子元素"
@@ -1053,6 +1065,7 @@ zh-CN:
           title: "工作日"
           false: "仅工作日"
           true: "包括非工作日"
+        journal_restricted: 受限制的日记
         notify: "通知" #used in custom actions
         parent: "父级"
         parent_issue: "父级"
@@ -1096,6 +1109,7 @@ zh-CN:
         empty: "不能为空。"
         even: "必须是偶数。"
         exclusion: "是保留关键字。"
+        feature_disabled: 不可用。
         file_too_large: "太大 (最大大小为 %{count} 字节)。"
         filter_does_not_exist: "筛选器不存在。"
         format: "与预期的格式“%{expected}”不匹配。"
@@ -1547,11 +1561,17 @@ zh-CN:
       changeset: "更改集"
       message: "论坛"
       news: "新闻"
-      project_attribute: "项目属性"
+      project_details: "项目详细信息"
       subproject: "包括子项目"
       time_entry: "用时"
       wiki_edit: "维基"
       work_package: "工作包"
+    project_life_cycle_step:
+      activated: "已激活"
+      deactivated: "已停用"
+      added_date: "设为 %{date}"
+      changed_date: "由 %{from} 变更为 %{to}"
+      removed_date: "删除日期%{date}"
   #common attributes of all models
   attributes:
     active: "激活"
@@ -1582,6 +1602,7 @@ zh-CN:
     derived_due_date: "派生的完成日期"
     derived_estimated_hours: "总工作量"
     derived_start_date: "派生的开始日期"
+    direction: "方向"
     display_sums: "显示汇总"
     due_date: "完成日期"
     estimated_hours: "工作"
@@ -1646,6 +1667,7 @@ zh-CN:
     version: "版本"
     visible: "可见"
     work_package: "工作包"
+    work_package_id: "工作包"
   backup:
     failed: "备份失败"
     label_backup_token: "备份令牌"
@@ -2000,7 +2022,7 @@ zh-CN:
     changeset: "编辑更改集"
     message: 编辑消息
     news: 新闻
-    project_attributes: "项目属性已编辑"
+    project_details: "项目详情已编辑"
     project: "项目已编辑"
     projects: "项目已编辑"
     reply: 答复
@@ -2079,6 +2101,8 @@ zh-CN:
     your_work_packages_export: "正在导出工作包"
     succeeded: "导出完成"
     failed: "在尝试导出工作包时发生错误： %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "此嵌入式工作包表无法放在此页面上，请减少列数。"
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2123,6 +2147,12 @@ zh-CN:
         caption: 为了更好的布局和说明，在单词之间换行。
       hyphenation_language:
         label: 语言和连惯性
+      page_orientation:
+        label: 页面方向
+        caption: 选择 PDF 文档中页面的方向。
+        options:
+          portrait: 纵向
+          landscape: 横向
   extraction:
     available:
       pdftotext: "Pdftotext 可用 (可选)"
@@ -2781,7 +2811,7 @@ zh-CN:
   label_revision_id: "修订版本 %{value}"
   label_revision_plural: "修订"
   label_roadmap: "路线图"
-  label_roadmap_edit: "编辑路线图%{name}"
+  label_roadmap_edit: "编辑路线图 %{name}"
   label_roadmap_due_in: "%{value} 到期"
   label_roadmap_no_work_packages: "该版本没有工作包。"
   label_roadmap_overdue: "%{value} 超时"
@@ -3228,6 +3258,7 @@ zh-CN:
   permission_add_project: "创建项目"
   permission_add_work_package_attachments: "添加附件"
   permission_add_work_package_attachments_explanation: "允许在没有编辑工作包权限的情况下添加附件"
+  permission_add_comments_with_restricted_visibility: "编写可见性受限的评论"
   permission_archive_project: "归档项目"
   permission_create_user: "创建用户"
   permission_manage_user: "编辑用户"
@@ -3256,9 +3287,12 @@ zh-CN:
   permission_edit_work_package_notes_explanation: "注意：拥有此权限的用户可以编辑任何人的评论。"
   permission_edit_work_packages: "编辑工作包"
   permission_edit_messages: "编辑消息"
+  permission_edit_own_comments_with_restricted_visibility: "编辑自己的可见性受限的评论"
   permission_edit_own_work_package_notes: "编辑自己的评论"
   permission_edit_own_messages: "编辑自己的消息"
   permission_edit_own_time_entries: "编辑自己的时间记录"
+  permission_edit_others_comments_with_restricted_visibility: "编辑自己的可见性受限的评论"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "注意：具有此权限的用户能够编辑其他用户的可见性受限的评论。"
   permission_edit_project: "编辑项目"
   permission_edit_project_attributes: "编辑项目属性"
   permission_edit_project_stages_and_gates: "编辑项目阶段和关口"
@@ -3299,6 +3333,7 @@ zh-CN:
   permission_manage_own_reminders: "创建个人提醒事项"
   permission_view_project: "查看项目"
   permission_view_changesets: "查看 OpenProject 存储库修订"
+  permission_view_comments_with_restricted_visibility: "查看可见性受限的评论"
   permission_view_commit_author_statistics: "查看提交作者统计信息"
   permission_view_dashboards: "查看仪表板"
   permission_view_work_package_watchers: "查看关注者列表"
@@ -3342,6 +3377,10 @@ zh-CN:
       project_verification: "输入项目的名称 %{name}，以确认删除。"
       subprojects_confirmation: "其 子项目(s): %{value} 也将被删除。"
       title: "删除项目 %{name}"
+    filters:
+      life_cycle_any: "生命周期：任何阶段或门"
+      life_cycle_stage: "生命周期阶段：%{stage}"
+      life_cycle_gate: "生命周期门：%{gate}"
     identifier:
       warning_one: 项目的成员将重新迁移至项目的存储库。
       warning_two: 该项目的现有链接将不再有效。
@@ -3456,7 +3495,7 @@ zh-CN:
       managed: "在 OpenProject 中创建新的存储库"
     storage:
       not_available: "磁盘存储开销不可用于此存储库。"
-      update_timeout: "在 N 分钟内保留存储库最后所需的磁盘空间信息。由于计算存储库所需的磁盘空间可能增加系统开销，增加该值可以减少性能影响。"
+      update_timeout: "在 N 分钟内保留存储库最后所需磁盘空间的信息。由于计算存储库所需的磁盘空间可能增加系统开销，增加该值可以减少性能影响。"
       oauth_application_details: "关闭此窗口后，将无法再次访问客户端密钥值。请将这些值复制到 Nextcloud OpenProject 集成设置中："
       oauth_application_details_link_text: "转到设置页面"
       setup_documentation_details: "如果您在配置新文件存储方面需要帮助，请查看文档："
@@ -3484,6 +3523,9 @@ zh-CN:
     manual: "设为手动"
     automatic: "设为自动"
   search_input_placeholder: "搜索"
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "首次登录重定向"
   setting_after_first_login_redirect_url_text_html: >
     设置用户首次登录后的重定向路径。如果该路径为空，则重定向到主页以进行导览介绍。 <br/> 示例： <code>/my/page</code>
@@ -3624,7 +3666,7 @@ zh-CN:
   setting_session_ttl_hint: "当设置的值低于5时，其作用类似于禁用。"
   setting_session_ttl_enabled: "会话过期"
   setting_start_of_week: "一周起始日"
-  setting_sys_api_enabled: "启用存储库管理网页服务"
+  setting_sys_api_enabled: "启用版本库管理 web 服务"
   setting_sys_api_description: "存储库管理网页服务提供了集成的，用户授权的存储库访问。"
   setting_time_format: "时间"
   setting_total_percent_complete_mode: "计算 完成% 层次结构总数"
@@ -3749,6 +3791,8 @@ zh-CN:
     working_days:
       section_work_week: "工作周"
       section_holidays_and_closures: "节假日与停业"
+    work_packages:
+      not_allowed_text: "您没有查看此页面的权限。"
   text_formatting:
     markdown: "Markdown"
     plain: "纯文本"
@@ -3971,7 +4015,7 @@ zh-CN:
   warning_user_limit_reached_admin: >
     添加额外的用户将超出当前限制。请<a href="%{upgrade_url}">升级您的计划</a>，以确保外部用户能够访问此实例。
   warning_user_limit_reached_instructions: >
-    您已达到用户限制（%{current}/%{max} 活跃用户）。请联系 sales@openproject.com 升级您的企业版计划以添加额外用户。
+    您达到了用户限制（%{current}/%{max}活跃用户）。 请联系sales@openproject.com以升级您的Enterprise edition计划并添加其他用户。
   warning_protocol_mismatch_html: >
 
   warning_bar:

@@ -35,11 +35,15 @@ ru:
         label_sort_desc: "Новые вверху"
         label_type_to_comment: "Добавить комментарий. Введите @ для уведомления пользователей."
         label_submit_comment: "Отправить комментарий"
+        label_who: Кто?
         changed_on: "изменено"
         created_on: "создано в"
         changed: "изменено"
         created: "создано"
         commented: "прокомментировано"
+        restrict_visibility: Ограничить видимость
+        restricted_journal: Ограниченные комментарии видны ограниченной группе участников.
+        unsaved_changes_confirmation_message: У вас есть несохраненные изменения. Вы уверены, что хотите закрыть редактор?
   admin:
     plugins:
       no_results_title_text: В настоящее время плагины не установлены.
@@ -632,8 +636,12 @@ ru:
           caption: "Определите шаблон, используя атрибуты ссылок и текст, чтобы автоматически генерировать темы пакетов работ. Пользователи не смогут вручную редактировать темы."
         pattern:
           label: "Шаблон темы"
-          caption: "Поиск атрибута или добавление текста. Чтобы создать пробел между элементами, добавьте его в виде текста."
-          insert_as_text: "Добавить как текст: \"%{word}\""
+          caption: "Добавьте текст или введите / для поиска атрибута. Вы можете добавить пробелы, чтобы разделить их."
+          headings:
+            work_package: "Пакет работ"
+            parent: "Верхний уровень"
+            project: "Проект"
+          insert_as_text: "Атрибуты не найдены. Добавить как текст: \"%{word}\""
       export_configuration:
         tab: "Создать PDF"
         intro: "Выберите, какие шаблоны из имеющихся Вы хотите активировать для этого типа. Шаблон задаёт дизайн и атрибуты в экспортированном PDF-файле пакета работ этого типа. Первый шаблон из списка выбирается по умолчанию."
@@ -768,9 +776,9 @@ ru:
       follows_description: "Соответствующий пакет работ обязательно должен быть завершен до того, как начнется этот пакет"
       label_child_singular: "дочерний пакет работ"
       label_child_plural: "дочерние пакеты работ"
-      new_child: "Новый дочерний пакет работ"
+      new_child: "Create new child"
       new_child_text: "Создает связанный пакет работ в качестве подпункта текущего (родительского) пакета работ"
-      existing_child: "Существующий дочерний пакет работ"
+      child: "Child"
       child_description: "Делает связанный пакет работ дочерним текущему (родительскому) пакету работ"
       label_closest: "Ближайший"
       label_blocks_singular: "блоки"
@@ -973,6 +981,7 @@ ru:
         column_names: "Столбцы"
         relations_to_type_column: "Отношения к %{type}"
         relations_of_type_column: "%{type} отношения"
+        child_work_packages: "Дочерние пакеты работ"
         group_by: "Результаты группы по"
         sort_by: "Сортировать по"
         filters: "Фильтры"
@@ -1055,6 +1064,7 @@ ru:
         auto_hide_popups: "Автоматически скрывать уведомления об успешных действиях"
         warn_on_leaving_unsaved: "При покидании рабочего пакета предупреждать о не сохраненных изменениях"
         theme: "Режим"
+        time_zone: "Часовой пояс"
         mode_guideline: "Некоторые режимы перезаписывают пользовательские цвета темы для удобства и удобочитаемости. Для полной пользовательской темы выберите светлый режим."
         daily_reminders: "Ежедневные напоминания"
         workdays: "Рабочие дни"
@@ -1066,7 +1076,9 @@ ru:
       wiki_page:
         parent_title: "Родительская страница"
         redirect_existing_links: "Перенаправление существующих ссылок"
+        text: "Содержимое страницы"
       work_package:
+        ancestor: "Потомки" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Начало вставки"
         begin_deletion: "Начало удаления"
         children: "Вложенные элементы"
@@ -1082,6 +1094,7 @@ ru:
           title: "Рабочие дни"
           false: "только рабочие дни"
           true: "включить нерабочие дни"
+        journal_restricted: Ограниченный журнал
         notify: "Уведомлять" #used in custom actions
         parent: "Родитель"
         parent_issue: "Родитель"
@@ -1125,6 +1138,7 @@ ru:
         empty: "не может быть пустым."
         even: "должно быть чётным."
         exclusion: "зарезервировано."
+        feature_disabled: недоступно.
         file_too_large: "слишком большой (максимальный размер составляет %{count} байт)."
         filter_does_not_exist: "фильтр не существует."
         format: "не соответствует ожидаемому формату '%{expected}'."
@@ -1609,11 +1623,17 @@ ru:
       changeset: "Наборы изменений"
       message: "Форумы"
       news: "Новости"
-      project_attribute: "Атрибуты проекта"
+      project_details: "Детали проекта"
       subproject: "Включить подпроекты"
       time_entry: "Затраченное время"
       wiki_edit: "Wiki"
       work_package: "Пакеты работ"
+    project_life_cycle_step:
+      activated: "активирован"
+      deactivated: "деактивирован"
+      added_date: "установлено на %{date}"
+      changed_date: "изменено с %{from} to %{to}"
+      removed_date: "дата удаления %{date}"
   #common attributes of all models
   attributes:
     active: "Активно"
@@ -1644,6 +1664,7 @@ ru:
     derived_due_date: "Дата окончания производства"
     derived_estimated_hours: "Общее Предполагаемое время"
     derived_start_date: "Дата начала производства"
+    direction: "Направление"
     display_sums: "Отображение суммы"
     due_date: "Дата окончания"
     estimated_hours: "Предполагаемое время"
@@ -1708,6 +1729,7 @@ ru:
     version: "Этапы"
     visible: "Видимый"
     work_package: "Пакет работ"
+    work_package_id: "Пакет работ"
   backup:
     failed: "Сбой резервного копирования"
     label_backup_token: "Маркер резервного копирования"
@@ -2119,7 +2141,7 @@ ru:
     changeset: "Набор изменений отредактирован"
     message: Сообщение отредактировано
     news: Новости
-    project_attributes: "Атрибуты проекта изменены"
+    project_details: "Детали проекта изменены"
     project: "Проект отредактирован"
     projects: "Проект отредактирован"
     reply: Отвечено
@@ -2198,6 +2220,8 @@ ru:
     your_work_packages_export: "Пакеты работ экспортируются"
     succeeded: "Экспорт завершен"
     failed: "Произошла ошибка при попытке экспортировать пакеты работ: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "Эта встроенная таблица пакета работ не помещается на странице, пожалуйста, сократите количество столбцов таблицы."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2242,6 +2266,12 @@ ru:
         caption: Линия разрыва между словами для лучшего расположения и выравнивания.
       hyphenation_language:
         label: Язык и переносы
+      page_orientation:
+        label: Ориентация страницы
+        caption: Выберите ориентацию страниц в PDF-документе.
+        options:
+          portrait: Портретная
+          landscape: Альбомная
   extraction:
     available:
       pdftotext: "Pdftotext доступно (опционально)"
@@ -3355,6 +3385,7 @@ ru:
   permission_add_project: "Создание проектов"
   permission_add_work_package_attachments: "Добавить вложения"
   permission_add_work_package_attachments_explanation: "Позволяет добавлять вложения без права редактирования пакетов работ"
+  permission_add_comments_with_restricted_visibility: "Написать комментарии с ограниченной видимостью"
   permission_archive_project: "Архивировать проект"
   permission_create_user: "Создать пользователей"
   permission_manage_user: "Изменить пользователей"
@@ -3383,9 +3414,12 @@ ru:
   permission_edit_work_package_notes_explanation: "Внимание: Пользователи с таким правом могут редактировать любые комментарии."
   permission_edit_work_packages: "Редактировать пакеты работ"
   permission_edit_messages: "Редактировать сообщения"
+  permission_edit_own_comments_with_restricted_visibility: "Редактировать свои комментарии с ограниченной видимостью"
   permission_edit_own_work_package_notes: "Редактировать свои комментарии"
   permission_edit_own_messages: "Редактировать свои сообщения"
   permission_edit_own_time_entries: "Редактировать собственные учетные записи о времени"
+  permission_edit_others_comments_with_restricted_visibility: "Модерировать комментарии с ограниченной видимостью"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Внимание: пользователи с этим правом могут редактировать комментарии других пользователей с ограниченной видимостью."
   permission_edit_project: "Редактировать проект"
   permission_edit_project_attributes: "Редактирование атрибутов проекта"
   permission_edit_project_stages_and_gates: "Редактировать этапы и стадии проекта"
@@ -3426,6 +3460,7 @@ ru:
   permission_manage_own_reminders: "Создать собственные напоминания"
   permission_view_project: "Просмотр проектов"
   permission_view_changesets: "Просмотр изменений репозитория в OpenProject"
+  permission_view_comments_with_restricted_visibility: "Просмотр комментариев с ограниченной видимостью"
   permission_view_commit_author_statistics: "Посмотреть статистику автора, внесшего свою часть работы"
   permission_view_dashboards: "Просмотр панелей инструментов"
   permission_view_work_package_watchers: "Посмотреть список наблюдателей"
@@ -3469,6 +3504,10 @@ ru:
       project_verification: "Введите название проекта %{name} для проверки удаления."
       subprojects_confirmation: "Его подпроекты: %{value} также будут удалены."
       title: "Удаление проекта %{name}"
+    filters:
+      life_cycle_any: "Жизненный цикл: любой этап или стадия"
+      life_cycle_stage: "Этап жизненного цикла: %{stage}"
+      life_cycle_gate: "Стадия жизненного цикла: %{gate}"
     identifier:
       warning_one: Участникам проекта нужно будет переместить репозитории проекта.
       warning_two: Существующие ссылки на проект больше работать не будут.
@@ -3611,6 +3650,9 @@ ru:
     manual: "установить на Ручной"
     automatic: "установить на Автоматический"
   search_input_placeholder: "Поиск ..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "Перенаправление первого входа"
   setting_after_first_login_redirect_url_text_html: >
     Задайте путь для перенаправления пользователей после их первого входа в систему. Если не задано, то пользователь будет перенаправлен на домашнюю страницу обзорного тура. <br/> Например: <code>/my/page</code>
@@ -3876,6 +3918,8 @@ ru:
     working_days:
       section_work_week: "Рабочая неделя"
       section_holidays_and_closures: "Праздничные и нерабочие дни"
+    work_packages:
+      not_allowed_text: "У вас нет необходимых прав для просмотра этой страницы."
   text_formatting:
     markdown: "Markdown"
     plain: "Обычный текст"

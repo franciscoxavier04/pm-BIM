@@ -57,6 +57,12 @@ it:
         start_time: Ora di inizio
         end_time: Ora di fine
     models:
+      time_entry:
+        one: "Time entry"
+        other: "Time entries"
+      cost_entry:
+        one: "Cost entry"
+        other: "Cost entries"
       cost_type:
         one: "Tipo di costo"
         other: "Tipo di costo"
@@ -175,8 +181,6 @@ it:
   text_reassign_time_and_cost_entries: "Riassegna orari e costi segnalati a questa macro-attività (work package):"
   text_warning_hidden_elements: "Alcune voci potrebbero essere state escluse dall'aggregazione."
   week: "settimana"
-  js:
-    text_are_you_sure: "Sei sicuro/a?"
   api_v3:
     errors:
       validation:

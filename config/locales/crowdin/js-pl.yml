@@ -801,6 +801,7 @@ pl:
       typeahead_placeholder: Szukaj możliwych obserwatorów
     relation_labels:
       parent: "Rodzic"
+      child: "Child"
       children: "Dzieci"
       relates: "Powiązany z"
       duplicates: "Duplikaty"
@@ -830,7 +831,7 @@ pl:
       add_new_child: "Utwórz nowy podrzędny"
       create_new: "Utwórz nową"
       add_existing: "Dodaj istniejącą"
-      add_existing_child: "Dodaj istniejący podrzędny"
+      add_existing_child: "Add child"
       remove_child: "Usuń podrzędny"
       add_new_relation: "Utwórz nową relację"
       add_existing_relation: "Dodaj istniejącą relację"

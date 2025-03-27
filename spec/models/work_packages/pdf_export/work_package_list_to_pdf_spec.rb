@@ -375,7 +375,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
           "2.", "2", work_package_parent.subject,
           "1/2", export_time_formatted, query.name,
           I18n.t("js.work_packages.tabs.overview"),
-          list_custom_field.name.upcase, column_title(:story_points),
+          list_custom_field.name, column_title(:story_points),
 
           "Foo", work_package_child.story_points.to_s,
           "Foo, Bar", work_package_parent.story_points.to_s,

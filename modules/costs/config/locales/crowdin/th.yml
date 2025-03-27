@@ -57,6 +57,10 @@ th:
         start_time: Start time
         end_time: Finish time
     models:
+      time_entry:
+        other: "Time entries"
+      cost_entry:
+        other: "Cost entries"
       cost_type:
         other: "Cost types"
       time_entry_activity:
@@ -173,8 +177,6 @@ th:
   text_reassign_time_and_cost_entries: "Reassign reported hours and costs to this work package:"
   text_warning_hidden_elements: "Some entries may have been excluded from the aggregation."
   week: "week"
-  js:
-    text_are_you_sure: "คุณแน่ใจหรือไม่ ?"
   api_v3:
     errors:
       validation:

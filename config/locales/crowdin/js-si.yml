@@ -799,6 +799,7 @@ si:
       typeahead_placeholder: හැකි මුරකරුවන් සොයන්න
     relation_labels:
       parent: "මාපිය"
+      child: "Child"
       children: "දරුවන්"
       relates: "සම්බන්ධ කිරීම"
       duplicates: "අනුපිටපත්"
@@ -828,7 +829,7 @@ si:
       add_new_child: "නව දරුවෙකු නිර්මාණය කරන්න"
       create_new: "නව නිර්මාණය"
       add_existing: "පවතින එකතු කරන්න"
-      add_existing_child: "දැනට පවතින දරුවා එකතු කරන්න"
+      add_existing_child: "Add child"
       remove_child: "දරුවා ඉවත් කරන්න"
       add_new_relation: "නව සම්බන්ධතාවයක් සාදන්න"
       add_existing_relation: "පවතින සම්බන්ධතාවය එකතු කරන්න"

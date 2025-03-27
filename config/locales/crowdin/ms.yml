@@ -35,11 +35,15 @@ ms:
         label_sort_desc: "Terbaru di bahagian atas"
         label_type_to_comment: "Tambah ulasan. Taip @ untuk memberitahu orang."
         label_submit_comment: "Hantar komen"
+        label_who: Who?
         changed_on: "ditukar pada"
         created_on: "mencipta ini pada"
         changed: "berubah"
         created: "dicipta"
         commented: "mengulas"
+        restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: Pada masa ini tiada sebarang plugin yang dipasang.
@@ -608,8 +612,12 @@ ms:
           caption: "Tentukan corak menggunakan atribut dan teks yang dirujuk untuk menjana subjek pakej kerja secara automatik. Pengguna tidak akan dapat mengedit subjek secara manual."
         pattern:
           label: "Corak subjek"
-          caption: "Cari atribut atau tambah teks. Untuk mencipta ruang antara elemen, tambahkannya sebagai teks."
-          insert_as_text: "Add as text: \"%{word}\""
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Hasilkan PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -741,9 +749,9 @@ ms:
       follows_description: "Pakej kerja yang berkaitan semestinya perlu diselesaikan sebelum yang ini boleh dimulakan"
       label_child_singular: "anak"
       label_child_plural: "kanak-kanak"
-      new_child: "New child"
+      new_child: "Create new child"
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
-      existing_child: "Existing child"
+      child: "Child"
       child_description: "Menjadikan pakej kerja berkaitan sub-item pakej kerja semasa (ibu bapa)."
       label_closest: "Closest"
       label_blocks_singular: "blok"
@@ -946,6 +954,7 @@ ms:
         column_names: "Kolum"
         relations_to_type_column: "Berhubung dengan %{type}"
         relations_of_type_column: "%{type} hubungan"
+        child_work_packages: "Child work packages"
         group_by: "Kumpulkan hasil mengikut"
         sort_by: "Sort results by"
         filters: "Penyaring"
@@ -1028,6 +1037,7 @@ ms:
         auto_hide_popups: "Pemberitahuan kejayaan auto-sembunyi"
         warn_on_leaving_unsaved: "Beri amaran kepada saya apabila meninggalkan pakej kerja dengan perubahan yang belum disimpan."
         theme: "Mod"
+        time_zone: "Zon waktu"
         mode_guideline: "Sesetengah mod akan menulis ganti warna tema tersuai untuk kebolehaksesan dan kebolehbacaan. Untuk tema tersuai penuh, sila pilih mod Cahaya."
         daily_reminders: "Daily reminders"
         workdays: "Hari bekerja"
@@ -1039,7 +1049,9 @@ ms:
       wiki_page:
         parent_title: "Halaman induk"
         redirect_existing_links: "Ubah hala pautan sedia ada"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Permulaan kemasukan"
         begin_deletion: "Permulaan pemadaman"
         children: "Subelemen"
@@ -1055,6 +1067,7 @@ ms:
           title: "Hari bekerja"
           false: "hari bekerja sahaja"
           true: "termasuk hari tidak bekerja"
+        journal_restricted: Restricted Journal
         notify: "Maklumkan" #used in custom actions
         parent: "Induk"
         parent_issue: "Induk"
@@ -1098,6 +1111,7 @@ ms:
         empty: "tidak boleh kosong."
         even: "perlu sama."
         exclusion: "sudah dikhaskan."
+        feature_disabled: is not available.
         file_too_large: "adalah terlalu besar (saiz maksimum adalah %{count} Bytes)."
         filter_does_not_exist: "penyaring tidak wujud."
         format: "tidak sepadan dengan format yang dijangka '%{expected}'."
@@ -1549,11 +1563,17 @@ ms:
       changeset: "Set ubah suai"
       message: "Forum-forum"
       news: "Berita"
-      project_attribute: "Atribut projek"
+      project_details: "Project details"
       subproject: "Termasuk subprojek"
       time_entry: "Masa yang dihabiskan"
       wiki_edit: "Wiki"
       work_package: "Pakej kerja"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktif"
@@ -1584,6 +1604,7 @@ ms:
     derived_due_date: "Tarikh tamat yang diperolehi"
     derived_estimated_hours: "Jumlah kerja"
     derived_start_date: "Tarikh mula yang diperolehi"
+    direction: "Direction"
     display_sums: "Paparkan Jumlah"
     due_date: "Tarikh tamat"
     estimated_hours: "Kerja"
@@ -1648,6 +1669,7 @@ ms:
     version: "Versi"
     visible: "Terlihat"
     work_package: "Pakej kerja"
+    work_package_id: "Pakej kerja"
   backup:
     failed: "Sandaran gagal"
     label_backup_token: "Token sandaran"
@@ -2002,7 +2024,7 @@ ms:
     changeset: "Set perubahan telah diedit"
     message: Mesej telah diedit
     news: Berita
-    project_attributes: "Atribut projek telah diedit"
+    project_details: "Project details edited"
     project: "Projek telah diedit"
     projects: "Projek telah diedit"
     reply: Dibalas
@@ -2081,6 +2103,8 @@ ms:
     your_work_packages_export: "Pakej kerja sedang dieksport"
     succeeded: "Eksport selesai"
     failed: "Ralat telah berlaku semasa cuba mengeksport pakej kerja: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2125,6 +2149,12 @@ ms:
         caption: Break line between words for better layout and justification.
       hyphenation_language:
         label: Language and hyphenation
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "PdfkeTeks tersedia (pilihan)"
@@ -3232,6 +3262,7 @@ ms:
   permission_add_project: "Cipta projek"
   permission_add_work_package_attachments: "Tambah lampiran"
   permission_add_work_package_attachments_explanation: "Benarkan penambahan lampiran tanpa kebenaran Edit pakej kerja"
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "Arkib projek"
   permission_create_user: "Cipta pengguna"
   permission_manage_user: "Edit pengguna"
@@ -3260,9 +3291,12 @@ ms:
   permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Edit pakej kerja"
   permission_edit_messages: "Edit mesej"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "Edit own comments"
   permission_edit_own_messages: "Edit mesej sendiri"
   permission_edit_own_time_entries: "Edit log masa sendiri"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Edit projek"
   permission_edit_project_attributes: "Edit atribut projek"
   permission_edit_project_stages_and_gates: "Edit peringkat projek dan gerbang"
@@ -3303,6 +3337,7 @@ ms:
   permission_manage_own_reminders: "Buat peringatan sendiri"
   permission_view_project: "Lihat projek"
   permission_view_changesets: "Lihat semakan repositori dalam OpenProject"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "Lihat statistik pengarang komit"
   permission_view_dashboards: "Lihat papan pemuka"
   permission_view_work_package_watchers: "Lihat senarai pemerhati"
@@ -3346,6 +3381,10 @@ ms:
       project_verification: "Masukkan nama projek %{name} untuk mengesahkan pemadaman."
       subprojects_confirmation: "Subprojeknya: %{value} juga akan dipadamkan."
       title: "Padamkan projek %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Ahli projek akan perlu memindahkan semula repositori projek.
       warning_two: Pautan sedia ada pada projek tidak akan berfungsi lagi.
@@ -3490,6 +3529,9 @@ ms:
     manual: "set to Manual"
     automatic: "set to Automatic"
   search_input_placeholder: "Cari ..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
     Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
@@ -3755,6 +3797,8 @@ ms:
     working_days:
       section_work_week: "Minggu bekerja"
       section_holidays_and_closures: "Hari perayaan dan penutupan"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Teks biasa"

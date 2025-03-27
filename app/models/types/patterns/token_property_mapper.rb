@@ -39,6 +39,7 @@ module Types
 
       TOKEN_PROPERTY_MAP = IceNine.deep_freeze(
         {
+          id: { fn: ->(wp) { wp.id }, label: -> { WorkPackage.human_attribute_name(:id) } },
           accountable: { fn: ->(wp) { wp.responsible&.name }, label: -> { WorkPackage.human_attribute_name(:responsible) } },
           assignee: { fn: ->(wp) { wp.assigned_to&.name }, label: -> { WorkPackage.human_attribute_name(:assigned_to) } },
           author: { fn: ->(wp) { wp.author&.name }, label: -> { WorkPackage.human_attribute_name(:author) } },
@@ -46,7 +47,10 @@ module Types
           creation_date: { fn: ->(wp) { wp.created_at }, label: -> { WorkPackage.human_attribute_name(:created_at) } },
           estimated_time: { fn: ->(wp) { wp.estimated_hours }, label: -> { WorkPackage.human_attribute_name(:estimated_hours) } },
           finish_date: { fn: ->(wp) { wp.due_date }, label: -> { WorkPackage.human_attribute_name(:due_date) } },
-          parent: { fn: ->(wp) { wp.parent&.id }, label: -> { WorkPackage.human_attribute_name(:parent) } },
+          parent_id: { fn: ->(wp) { wp.parent&.id }, label: -> { WorkPackage.human_attribute_name(:parent_id) } },
+          parent_assignee: { fn: ->(wp) { wp.parent&.assigned_to&.name }, label: -> {
+            WorkPackage.human_attribute_name(:assigned_to)
+          } },
           parent_author: { fn: ->(wp) { wp.parent&.author&.name }, label: -> { WorkPackage.human_attribute_name(:author) } },
           parent_category: { fn: ->(wp) { wp.parent&.category&.name },
                              label: -> { WorkPackage.human_attribute_name(:category) } },
@@ -57,6 +61,7 @@ module Types
           parent_finish_date: { fn: ->(wp) { wp.parent&.due_date },
                                 label: -> { WorkPackage.human_attribute_name(:due_date) } },
           parent_priority: { fn: ->(wp) { wp.parent&.priority }, label: -> { WorkPackage.human_attribute_name(:priority) } },
+          parent_subject: { fn: ->(wp) { wp.parent&.subject }, label: -> { WorkPackage.human_attribute_name(:subject) } },
           priority: { fn: ->(wp) { wp.priority }, label: -> { WorkPackage.human_attribute_name(:priority) } },
           project: { fn: ->(wp) { wp.project_id }, label: -> { WorkPackage.human_attribute_name(:project) } },
           project_active: { fn: ->(wp) { wp.project&.active? }, label: -> { Project.human_attribute_name(:active) } },
@@ -111,7 +116,7 @@ module Types
       end
 
       def all_work_package_cfs
-        WorkPackageCustomField.where(multi_value: false).where.not(field_format: %w[text bool link empty]).order(:name)
+        WorkPackageCustomField.where.not(field_format: %w[text bool link empty]).order(:name)
       end
 
       def project_attributes

@@ -286,7 +286,7 @@ ko:
       full_past: "%{base}, %{time}, %{end_date}에 종료"
       never_ending: "%{base}, %{time}"
     open:
-      title: "열기"
+      title: "의제 열림"
       subtitle: >
         오픈 미팅에는 편집할 수 있는 의제가 있으며 개별 사용자의 '내 미팅' 섹션에 표시됩니다. 미팅 시리즈 템플릿의 변경 사항은 이미 오픈된 미팅 항목에 영향을 미치지 않습니다.
       blankslate:

@@ -118,6 +118,43 @@ RSpec.describe EnterpriseToken do
     end
   end
 
+  describe ".banner_type_for" do
+    before do
+      allow(described_class).to receive(:allows_to?).with(:active_feature).and_return(true)
+      allow(described_class).to receive(:allows_to?).with(:inactive_feature).and_return(false)
+    end
+
+    context "without an EnterpriseToken" do
+      before do
+        allow(described_class).to receive(:active?).and_return(false)
+      end
+
+      it "returns :no_token" do
+        expect(described_class.banner_type_for(feature: :active_feature)).to eq(:no_token)
+      end
+    end
+
+    context "with a feature that is included in the EnterpriseToken" do
+      before do
+        allow(described_class).to receive(:active?).and_return(true)
+      end
+
+      it "returns nil" do
+        expect(described_class.banner_type_for(feature: :active_feature)).to be_nil
+      end
+    end
+
+    context "with a feature that is not included in the EnterpriseToken" do
+      before do
+        allow(described_class).to receive(:active?).and_return(true)
+      end
+
+      it "returns :upsell" do
+        expect(described_class.banner_type_for(feature: :inactive_feature)).to eq(:upsell)
+      end
+    end
+  end
+
   describe "existing token" do
     before do
       allow_any_instance_of(EnterpriseToken).to receive(:token_object).and_return(object)

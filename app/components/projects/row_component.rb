@@ -323,7 +323,7 @@ module Projects
           scheme: :default,
           icon: :check,
           label: I18n.t(:label_project_activity),
-          href: project_activity_index_path(project, event_types: ["project_attributes"])
+          href: project_activity_index_path(project, event_types: ["project_details"])
         }
       end
     end

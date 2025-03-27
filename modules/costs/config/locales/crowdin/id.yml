@@ -57,6 +57,10 @@ id:
         start_time: Waktu mulai
         end_time: Finish time
     models:
+      time_entry:
+        other: "Time entries"
+      cost_entry:
+        other: "Cost entries"
       cost_type:
         other: "Jenis biaya"
       time_entry_activity:
@@ -173,8 +177,6 @@ id:
   text_reassign_time_and_cost_entries: "Assign ulang laporan jam dan biaya pada work package ini:"
   text_warning_hidden_elements: "Beberapa entri mungkin tidak dipakai oleh agregasi yang dilakukan."
   week: "minggu"
-  js:
-    text_are_you_sure: "Apakah anda yakin?"
   api_v3:
     errors:
       validation:

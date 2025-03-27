@@ -102,7 +102,7 @@ vi:
     button_save: "Lưu"
     button_settings: "Cài đặt"
     button_uncheck_all: "Bỏ chọn tất cả"
-    button_update: "Cập nhật"
+    button_update: "Cập Nhật"
     button_export-atom: "Tải xuống Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "Tạo"
@@ -798,6 +798,7 @@ vi:
       typeahead_placeholder: Tìm kiếm người có thể theo dõi
     relation_labels:
       parent: "Cha"
+      child: "Child"
       children: "Con"
       relates: "Liên quan đến"
       duplicates: "Trùng lặp"
@@ -827,7 +828,7 @@ vi:
       add_new_child: "Tạo con mới"
       create_new: "Tạo mới"
       add_existing: "Thêm hiện có"
-      add_existing_child: "Thêm con hiện có"
+      add_existing_child: "Add child"
       remove_child: "Xóa con"
       add_new_relation: "Tạo quan hệ mới"
       add_existing_relation: "Thêm quan hệ hiện có"

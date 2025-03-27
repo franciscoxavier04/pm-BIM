@@ -57,6 +57,12 @@ ka:
         start_time: Start time
         end_time: Finish time
     models:
+      time_entry:
+        one: "Time entry"
+        other: "Time entries"
+      cost_entry:
+        one: "Cost entry"
+        other: "Cost entries"
       cost_type:
         one: "ღირებულების ტიპი"
         other: "ღირებულების ტიპი"
@@ -175,8 +181,6 @@ ka:
   text_reassign_time_and_cost_entries: "Reassign reported hours and costs to this work package:"
   text_warning_hidden_elements: "Some entries may have been excluded from the aggregation."
   week: "კვირა"
-  js:
-    text_are_you_sure: "დარწმუნებული ბრძანდებით?"
   api_v3:
     errors:
       validation:

@@ -290,7 +290,7 @@ es:
       full_past: "%{base} a las %{time}, finalizó el %{end_date}"
       never_ending: "%{base} a las %{time}"
     open:
-      title: "Abrir"
+      title: "Agenda abierta"
       subtitle: >
         Las reuniones abiertas tienen agendas que se pueden editar y que aparecen en la sección «Mis reuniones» de los usuarios individuales. Los cambios en la plantilla de la serie de reuniones no afectan a las repeticiones ya abiertas.
       blankslate:

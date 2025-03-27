@@ -35,11 +35,15 @@ ko:
         label_sort_desc: "최신 순"
         label_type_to_comment: "코멘트를 추가하세요. 사람들에게 알려주려면 @을 입력하세요."
         label_submit_comment: "코멘트 제출"
+        label_who: Who?
         changed_on: "- 변경함:"
         created_on: "- 이 패키지를 생성함:"
         changed: "- 변경함"
         created: "- 생성함"
         commented: "- 코멘트 작성함"
+        restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: 현재 설치된 플러그인이 없습니다.
@@ -610,8 +614,12 @@ ko:
           caption: "참조된 특성과 텍스트를 사용하여 패턴을 정의하고 작업 패키지 제목을 자동으로 생성하세요. 사용자는 제목을 수동으로 편집할 수 없습니다."
         pattern:
           label: "제목 패턴"
-          caption: "특성을 검색하거나 텍스트를 추가하세요. 요소 사이에 공백을 넣으려면 텍스트로 추가하세요."
-          insert_as_text: "텍스트로 추가: \"%{word}\""
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "PDF 생성"
         intro: "사용 가능한 템플릿 중에서 이 유형에 대해 활성화하려는 템플릿을 선택하세요. 템플릿은 이 유형을 사용하여 작업 패키지의 내보낸 PDF에서 표시되는 디자인과 특성을 결정합니다. 목록의 첫 번째 템플릿이 기본적으로 선택됩니다."
@@ -743,9 +751,9 @@ ko:
       follows_description: "이 패키지를 시작하려면 관련 작업 패키지가 반드시 먼저 완료되어야 합니다"
       label_child_singular: "자식"
       label_child_plural: "자식"
-      new_child: "새로운 자식"
+      new_child: "Create new child"
       new_child_text: "관련 작업 패키지를 현재(부모) 작업 패키지의 하위 항목으로 만듭니다"
-      existing_child: "기존 자식"
+      child: "Child"
       child_description: "관련 작업 패키지를 현재(부모) 작업 패키지의 하위 항목으로 만듭니다"
       label_closest: "가장 가까운 대상"
       label_blocks_singular: "블록"
@@ -948,6 +956,7 @@ ko:
         column_names: "컬럼"
         relations_to_type_column: "%{type}에 대한 관계"
         relations_of_type_column: "%{type} 관계"
+        child_work_packages: "Child work packages"
         group_by: "그룹 결과"
         sort_by: "결과 정렬 기준"
         filters: "필터"
@@ -1030,6 +1039,7 @@ ko:
         auto_hide_popups: "자동 숨김 성공 알림"
         warn_on_leaving_unsaved: "저장하지 않고 작업 패키지를 벗어날 때 알려주세요."
         theme: "모드"
+        time_zone: "표준 시간대"
         mode_guideline: "일부 모드는 접근성과 가독성을 위해 사용자 지정 테마 색상을 덮어씁니다. 전체 사용자 지정 테마의 경우 라이트 모드를 선택하세요."
         daily_reminders: "일일 미리 알림"
         workdays: "근무일"
@@ -1041,7 +1051,9 @@ ko:
       wiki_page:
         parent_title: "부모 페이지"
         redirect_existing_links: "기존 링크 리디렉션"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "삽입 시작"
         begin_deletion: "삭제 시작"
         children: "하위 요소"
@@ -1057,6 +1069,7 @@ ko:
           title: "근무일"
           false: "근무일만"
           true: "휴무일 포함"
+        journal_restricted: Restricted Journal
         notify: "알림" #used in custom actions
         parent: "부모"
         parent_issue: "부모"
@@ -1100,6 +1113,7 @@ ko:
         empty: "비워둘 수 없습니다."
         even: "에 짝수를 입력해 주세요"
         exclusion: "예약됨"
+        feature_disabled: is not available.
         file_too_large: "은(는) 너무 큽니다. (최대 %{count} 바이트)"
         filter_does_not_exist: "필터가 존재하지 않습니다."
         format: "- 필요한 형식 '%{expected}'과(와) 일치하지 않습니다."
@@ -1551,11 +1565,17 @@ ko:
       changeset: "변경 집합"
       message: "포럼"
       news: "뉴스"
-      project_attribute: "프로젝트 특성"
+      project_details: "Project details"
       subproject: "하위 프로젝트 포함"
       time_entry: "소요 시간"
       wiki_edit: "위키"
       work_package: "작업 패키지"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "활성"
@@ -1586,6 +1606,7 @@ ko:
     derived_due_date: "파생된 완료 날짜"
     derived_estimated_hours: "총 작업"
     derived_start_date: "파생된 시작 날짜"
+    direction: "방향"
     display_sums: "합계 표시"
     due_date: "완료 날짜"
     estimated_hours: "작업"
@@ -1650,6 +1671,7 @@ ko:
     version: "버전"
     visible: "표시"
     work_package: "작업 패키지"
+    work_package_id: "작업 패키지"
   backup:
     failed: "백업 실패"
     label_backup_token: "백업 토큰"
@@ -2004,7 +2026,7 @@ ko:
     changeset: "변경 집합 편집됨"
     message: 메시지 편집됨
     news: 뉴스
-    project_attributes: "프로젝트 특성 편집됨"
+    project_details: "Project details edited"
     project: "프로젝트 편집됨"
     projects: "프로젝트 편집됨"
     reply: 회신함
@@ -2083,6 +2105,8 @@ ko:
     your_work_packages_export: "작업 패키지를 내보내는 중입니다."
     succeeded: "내보내기 완료"
     failed: "작업 패키지를 내보내려는 중에 오류가 발생했습니다: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2127,6 +2151,12 @@ ko:
         caption: 개선된 레이아웃과 양쪽 맞춤을 위한 단어 사이 줄 바꿈입니다.
       hyphenation_language:
         label: 언어 및 하이픈 넣기
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext 사용 가능(선택적)"
@@ -3234,6 +3264,7 @@ ko:
   permission_add_project: "프로젝트 만들기"
   permission_add_work_package_attachments: "첨부 파일 추가"
   permission_add_work_package_attachments_explanation: "작업 패키지 편집 권한 없이 첨부 파일 추가를 허용합니다."
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "프로젝트 보관"
   permission_create_user: "사용자 만들기"
   permission_manage_user: "사용자 편집"
@@ -3262,9 +3293,12 @@ ko:
   permission_edit_work_package_notes_explanation: "주의: 이 권한이 있는 사용자는 다른 사용자의 코멘트를 편집할 수 있습니다."
   permission_edit_work_packages: "작업 패키지 편집"
   permission_edit_messages: "메시지 편집"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "내 코멘트 편집"
   permission_edit_own_messages: "내 메시지 편집"
   permission_edit_own_time_entries: "내 시간 로그 편집"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "프로젝트 편집"
   permission_edit_project_attributes: "프로젝트 특성 편집"
   permission_edit_project_stages_and_gates: "프로젝트 단계 및 게이트 편집"
@@ -3305,6 +3339,7 @@ ko:
   permission_manage_own_reminders: "고유한 미리 알림 만들기"
   permission_view_project: "프로젝트 보기"
   permission_view_changesets: "OpenProject에서 리포지토리 수정 사항 보기"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "커밋 작성자 통계 보기"
   permission_view_dashboards: "대시보드 보기"
   permission_view_work_package_watchers: "주시자 목록 보기"
@@ -3348,6 +3383,10 @@ ko:
       project_verification: "삭제를 확인하려면 프로젝트 이름 %{name}(을)를 입력하세요."
       subprojects_confirmation: "하위 프로젝트 %{value}도 삭제됩니다."
       title: "프로젝트 %{name} 삭제"
+    filters:
+      life_cycle_any: "수명 주기: 단계 또는 게이트"
+      life_cycle_stage: "수명 주기 단계: %{stage}"
+      life_cycle_gate: "수명 주기 게이트: %{gate}"
     identifier:
       warning_one: 프로젝트 멤버는 프로젝트의 리포지토리를 재배치해야 합니다.
       warning_two: 프로젝트의 기존 링크는 더 이상 작동하지 않습니다.
@@ -3490,6 +3529,9 @@ ko:
     manual: "수동으로 설정"
     automatic: "자동으로 설정"
   search_input_placeholder: "검색..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "첫 번째 로그인 리디렉션"
   setting_after_first_login_redirect_url_text_html: >
     첫 로그인 후 사용자를 리디렉션할 경로를 설정하세요. 비어 있으면 온보딩 투어의 홈페이지로 리디렉션됩니다. <br/> 예: <code>/my/page</code>
@@ -3755,6 +3797,8 @@ ko:
     working_days:
       section_work_week: "근무 주"
       section_holidays_and_closures: "공휴일 및 휴업일"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "일반 텍스트"

@@ -35,11 +35,15 @@ it:
         label_sort_desc: "Più recenti in cima"
         label_type_to_comment: "Aggiungi un commento. Digita @ per avvisare le persone."
         label_submit_comment: "Invia commento"
+        label_who: Who?
         changed_on: "ha modificato il"
         created_on: "l'ha creata il"
         changed: "ha modificato"
         created: "ha creato"
         commented: "ha commentato"
+        restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: Al momento non vi sono plugin installati.
@@ -76,11 +80,11 @@ it:
       upgrade_to_ee: "Aggiorna a Enterprise edition"
       add_token: "Carica un token di assistenza per Enterprise edition"
       delete_token_modal:
-        text: "Vuoi davvero rimuovere il token Enterprise Edition attualmente utilizzato?"
+        text: "Vuoi davvero rimuovere il token Enterprise edition attualmente utilizzato?"
         title: "Elimina token"
       replace_token: "Sostituisci il token di assistenza attuale"
       order: "Ordina l'edizione Enterprise on-premises"
-      paste: "Incolla il tuo token di assistenza per Enterprise Edition"
+      paste: "Incolla il tuo token di assistenza per Enterprise edition"
       required_for_feature: "Questa aggiunta è disponibile solo con un token di assistenza Enterprise Edition attivo."
       enterprise_link: "Per ulteriori informazioni, clicca qui."
       start_trial: "Inizia la prova gratuita"
@@ -615,8 +619,12 @@ it:
           caption: "Definisci uno schema utilizzando attributi e testo referenziati per generare automaticamente gli oggetti delle macro-attività. Gli utenti non saranno in grado di modificare manualmente gli oggetti."
         pattern:
           label: "Schema dell'oggetto"
-          caption: "Cerca un attributo o aggiungi testo. Per creare uno spazio tra gli elementi aggiungilo come testo."
-          insert_as_text: "Aggiungi come testo: \"%{word}\""
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Genera PDF"
         intro: "Seleziona quali modelli tra quelli disponibili desideri abilitare per questo tipo. Il modello determina il design e gli attributi visibili nel PDF esportato di una macro-attività che utilizza questo tipo. Il primo modello nell'elenco è selezionato per impostazione predefinita."
@@ -749,9 +757,9 @@ it:
       follows_description: "La macro-attività correlata deve necessariamente terminare prima dell'inizio di questa"
       label_child_singular: "figlia"
       label_child_plural: "figlie"
-      new_child: "Nuovo figlio"
+      new_child: "Create new child"
       new_child_text: "Crea una macro-attività correlata come sottovoce della macro-attività attuale (genitore)"
-      existing_child: "Figlio esistente"
+      child: "Child"
       child_description: "Rende la macro-attività correlata un sottoelemento della macro-attività corrente (genitore)"
       label_closest: "Il più vicino"
       label_blocks_singular: "blocca"
@@ -954,6 +962,7 @@ it:
         column_names: "Colonne"
         relations_to_type_column: "Relazioni con %{type}"
         relations_of_type_column: "relazioni %{type}"
+        child_work_packages: "Child work packages"
         group_by: "Raggruppa i risultati per"
         sort_by: "Ordina risultati per"
         filters: "Filtri"
@@ -1036,6 +1045,7 @@ it:
         auto_hide_popups: "Nascondi automaticamente le notifiche di successo"
         warn_on_leaving_unsaved: "Avvisami quando sto lasciando una macro-attività non salvata"
         theme: "Modalità"
+        time_zone: "Fuso orario"
         mode_guideline: "Alcune modalità sovrascrivono i colori del tema personalizzato per ragioni di accessibilità e leggibilità. Per usare il tema personalizzato completo, seleziona la modalità Chiaro."
         daily_reminders: "Promemoria giornalieri"
         workdays: "Giorni lavorativi"
@@ -1047,7 +1057,9 @@ it:
       wiki_page:
         parent_title: "Pagina padre"
         redirect_existing_links: "Reindirizza i collegamenti esistenti"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Inizio inserimento"
         begin_deletion: "Inizio cancellazione"
         children: "Sottoelementi"
@@ -1063,6 +1075,7 @@ it:
           title: "Giorni lavorativi"
           false: "solo giorni lavorativi"
           true: "includi giorni non lavorativi"
+        journal_restricted: Restricted Journal
         notify: "Notifica" #used in custom actions
         parent: "Superiore"
         parent_issue: "Superiore"
@@ -1098,7 +1111,7 @@ it:
         confirmation: "non coincide con %{attribute}."
         could_not_be_copied: "%{dependency} non può essere (completamente) copiato."
         does_not_exist: "non esiste."
-        error_enterprise_only: "%{action} è disponibile solo in OpenProject Enterprise Edition"
+        error_enterprise_only: "%{action} è disponibile solo in OpenProject Enterprise edition"
         error_unauthorized: "potrebbe non essere accessibile."
         error_readonly: "è in sola lettura, pertanto non è stato possibile modificarlo."
         error_conflict: "L'informazione è stata aggiornata da almeno un altro utente nel frattempo."
@@ -1106,6 +1119,7 @@ it:
         empty: "non può essere vuoto."
         even: "deve essere pari."
         exclusion: "è riservato."
+        feature_disabled: is not available.
         file_too_large: "è troppo grande (la dimensione massima è %{count} Byte)."
         filter_does_not_exist: "il filtro non esiste"
         format: "non corrisponde al formato previsto '%{expected}'."
@@ -1568,11 +1582,17 @@ it:
       changeset: "Insiemi di modifiche"
       message: "Forum"
       news: "Notizie"
-      project_attribute: "Attributi del progetto"
+      project_details: "Project details"
       subproject: "Includi sottoprogetti"
       time_entry: "Tempo trascorso"
       wiki_edit: "Wiki"
       work_package: "Macro-attività"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Attivo"
@@ -1603,6 +1623,7 @@ it:
     derived_due_date: "Data di fine derivata"
     derived_estimated_hours: "Lavoro totale"
     derived_start_date: "Data di inizio derivata"
+    direction: "Direzione"
     display_sums: "Visualizza somme"
     due_date: "Data di fine"
     estimated_hours: "Lavoro"
@@ -1667,6 +1688,7 @@ it:
     version: "Versione"
     visible: "Visibile"
     work_package: "Macro-attività"
+    work_package_id: "Macro-attività"
   backup:
     failed: "Backup fallito"
     label_backup_token: "Token di backup"
@@ -2000,7 +2022,7 @@ it:
   error_cookie_missing: "Il cookie di OpenProject è mancante. Prego, verifica che i cookie siano attivati, questa applicazione non funziona correttamente senza."
   error_custom_option_not_found: "L'opzione non esiste."
   error_enterprise_activation_user_limit: "Il tuo account potrebbe non essere attivo (raggiunto il limite utente). Si prega di contattare l'amministratore per ottenere l'accesso."
-  error_enterprise_token_invalid_domain: "L'Enterprise Edition non è attiva. Il dominio del token Enterprise (%{actual}) non corrisponde al nome host del sistema (%{expected})."
+  error_enterprise_token_invalid_domain: "L'Enterprise edition non è attiva. Il dominio del token Enterprise (%{actual}) non corrisponde al nome host del sistema (%{expected})."
   error_failed_to_delete_entry: "Cancellazione voce non riuscita."
   error_in_dependent: "Errore nel tentativo di modificare l'oggetto dipendente: %{dependent_class} #%{related_id} - %{related_subject}: %{error}"
   error_in_new_dependent: "Errore nel tentativo di creare un oggetto dipendente: %{dependent_class} - %{related_subject}: %{error}"
@@ -2040,7 +2062,7 @@ it:
     changeset: "Changeset modificato"
     message: Messaggio modificato
     news: Notizie
-    project_attributes: "Attributi del progetto modificati"
+    project_details: "Project details edited"
     project: "Progetto modificato"
     projects: "Progetto modificato"
     reply: Risposto
@@ -2119,6 +2141,8 @@ it:
     your_work_packages_export: "Le macro-attività sono in fase di esportazione"
     succeeded: "Esportazione completata"
     failed: "Si è verificato un errore durante il tentativo di esportare le macro-attività: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2163,6 +2187,12 @@ it:
         caption: Per una migliore impaginazione e giustificazione, inserisci un a capo tra le parole.
       hyphenation_language:
         label: Lingua e trattini
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdfatesto disponibile (opzionale)"
@@ -2192,10 +2222,10 @@ it:
     blocks:
       community: "Comunità di OpenProject"
       upsale:
-        title: "Aggiorna ad Enterprise Edition"
+        title: "Aggiorna ad Enterprise edition"
         more_info: "Altre informazioni"
     links:
-      upgrade_enterprise_edition: "Aggiorna ad Enterprise Edition"
+      upgrade_enterprise_edition: "Aggiorna ad Enterprise edition"
       postgres_migration: "Migrazione dell'installazione su PostgreSQL"
       user_guides: "Guide utente"
       faq: "FAQ"
@@ -2520,7 +2550,7 @@ it:
   label_enumerations: "Enumerazioni"
   label_enterprise: "Enterprise"
   label_enterprise_active_users: "%{current}/%{limit} utenti attivi riservati"
-  label_enterprise_edition: "Enterprise Edition"
+  label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Supporto per Imprese"
   label_environment: "Ambiente"
   label_estimates_and_progress: "Stime e progressi"
@@ -3273,6 +3303,7 @@ it:
   permission_add_project: "Crea progetti"
   permission_add_work_package_attachments: "Aggiungi allegati"
   permission_add_work_package_attachments_explanation: "Consente di aggiungere allegati senza l'autorizzazione Modifica macro-attività"
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "Archivia progetto"
   permission_create_user: "Crea utenti"
   permission_manage_user: "Modifica gli utenti"
@@ -3301,9 +3332,12 @@ it:
   permission_edit_work_package_notes_explanation: "Attenzione: gli utenti con questa autorizzazione possono modificare i commenti di chiunque."
   permission_edit_work_packages: "Modificare macro-attività"
   permission_edit_messages: "Modificare messaggi"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "Modifica i commenti propri"
   permission_edit_own_messages: "Modificare i propri messaggi"
   permission_edit_own_time_entries: "Modificare i propri registri di orario effettuato"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Modificare un progetto"
   permission_edit_project_attributes: "Modifica gli attributi del progetto"
   permission_edit_project_stages_and_gates: "Modifica le fasi e i controlli di progetto"
@@ -3344,6 +3378,7 @@ it:
   permission_manage_own_reminders: "Crea promemoria"
   permission_view_project: "Visualizza progetti"
   permission_view_changesets: "Visualizza l'archivio revisioni in OpenProject"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "Visualizza le statistiche dell'autore delle modifiche confermate"
   permission_view_dashboards: "Visualizza dashboard"
   permission_view_work_package_watchers: "Vedi la lista degli osservatori"
@@ -3387,6 +3422,10 @@ it:
       project_verification: "Immettere il nome del progetto %{name} per verificare l'eliminazione."
       subprojects_confirmation: "Anche il suo sottoprogetto(i): %{value} sarà eliminato(i)."
       title: "Elimina il progetto %{name}"
+    filters:
+      life_cycle_any: "Ciclo di vita: qualsiasi fase o controllo"
+      life_cycle_stage: "Fase del ciclo di vita: %{stage}"
+      life_cycle_gate: "Controllo del ciclo di vita: %{gate}"
     identifier:
       warning_one: I membri del progetto dovranno trasferire gli archivi del progetto.
       warning_two: I collegamenti esistenti al progetto non funzioneranno più.
@@ -3531,6 +3570,9 @@ it:
     manual: "imposta su Manuale"
     automatic: "impostato su Automatico"
   search_input_placeholder: "Ricerca..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "Reindirizzamento di primo accesso"
   setting_after_first_login_redirect_url_text_html: >
     Imposta un percorso per reindirizzare gli utenti dopo il loro primo accesso. Se vuoto, reindirizza alla home page per il tour di onboarding. <br/> Esempio: <code>/my/page</code>
@@ -3796,6 +3838,8 @@ it:
     working_days:
       section_work_week: "Settimana lavorativa"
       section_holidays_and_closures: "Festività e chiusure"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Testo semplice"

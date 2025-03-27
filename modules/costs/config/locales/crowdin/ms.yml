@@ -57,6 +57,10 @@ ms:
         start_time: Masa mula
         end_time: Finish time
     models:
+      time_entry:
+        other: "Time entries"
+      cost_entry:
+        other: "Cost entries"
       cost_type:
         other: "Jenis kos"
       time_entry_activity:
@@ -173,8 +177,6 @@ ms:
   text_reassign_time_and_cost_entries: "Tetapkan semula jam dan kos yang dilaporkan ke projek:"
   text_warning_hidden_elements: "Beberapa entri mungkin telah dikecualikan daripada pengumpulan."
   week: "minggu"
-  js:
-    text_are_you_sure: "Adakah anda pasti?"
   api_v3:
     errors:
       validation:

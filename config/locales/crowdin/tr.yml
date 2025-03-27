@@ -35,11 +35,15 @@ tr:
         label_sort_desc: "En üstte en yeni"
         label_type_to_comment: "Bir yorum ekleyin. Kişilere bildirmek için @ yazın."
         label_submit_comment: "Yorum gönder"
+        label_who: Kim?
         changed_on: "üzerinde değişti"
         created_on: "bunu oluşturdu"
         changed: "değişti"
         created: "oluşturuldu"
         commented: "yorumlandı"
+        restrict_visibility: Görünürlüğü kısıtlayın
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: Şu anda yüklü bir eklenti yok.
@@ -618,6 +622,10 @@ tr:
         pattern:
           label: "Konu deseni"
           caption: "Öznitelik için arayın ya da metin ekleyin. Elementler arası boşluk eklemek için bunu metin olarak girin."
+          headings:
+            work_package: "İş paketi"
+            parent: "Üst"
+            project: "Proje"
           insert_as_text: "\"%{word}\" metni olarak ekle"
       export_configuration:
         tab: "PDF oluştur"
@@ -751,9 +759,9 @@ tr:
       follows_description: "Bu iş paketinin başlayabilmesi için ilgili iş paketinin mutlaka bitmesi gerekir"
       label_child_singular: "alt"
       label_child_plural: "alt"
-      new_child: "Yeni alt"
+      new_child: "Create new child"
       new_child_text: "Geçerli (ana) iş paketinin bir alt öğesi olarak ilgili bir iş paketi oluşturur"
-      existing_child: "Mevcut alt"
+      child: "Child"
       child_description: "İlgili iş paketini geçerli (ana) iş paketinin bir alt öğesi yapar"
       label_closest: "En yakın"
       label_blocks_singular: "engelleyen"
@@ -956,6 +964,7 @@ tr:
         column_names: "Sütunlar"
         relations_to_type_column: "%{type} ile ilişkileri"
         relations_of_type_column: "%{type} ilişkiler"
+        child_work_packages: "Child work packages"
         group_by: "Sonuçları grupla"
         sort_by: "Sonuçları şuna göre sırala"
         filters: "Filtreler"
@@ -1038,6 +1047,7 @@ tr:
         auto_hide_popups: "Başarılı bildirimleri otomatik olarak gizle"
         warn_on_leaving_unsaved: "İş paketlerinden ayrılırken kaydedilmemiş değişiklik olduğunda beni uyar"
         theme: "Mod"
+        time_zone: "Zaman dilimi"
         mode_guideline: "Bazı modlar, erişilebilirlik ve okunabilirlik için özel tema renklerini değiştirecektir. Özel temada tüm özellikleri kullanmak için lütfen Açık modu seçin."
         daily_reminders: "Günlük hatırlatmalar"
         workdays: "İş günleri"
@@ -1049,7 +1059,9 @@ tr:
       wiki_page:
         parent_title: "Üst sayfa"
         redirect_existing_links: "Varolan bağlantıları yönlendirme"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Eklemeye başlama"
         begin_deletion: "Silme işleminin başlangıcı"
         children: "Alt öğeler"
@@ -1065,6 +1077,7 @@ tr:
           title: "İş Günleri"
           false: "Sadece iş günleri"
           true: "çalışılmayan günleri dahil et"
+        journal_restricted: Restricted Journal
         notify: "Bildirim" #used in custom actions
         parent: "Üst"
         parent_issue: "Üst"
@@ -1108,6 +1121,7 @@ tr:
         empty: "boş olamaz."
         even: "çift olmalı."
         exclusion: "ayrılmıştır."
+        feature_disabled: is not available.
         file_too_large: "çok büyük (en büyük boyut %{count} bayt)."
         filter_does_not_exist: "Filtre mevcut değil"
         format: "Beklenen biçim '%{expected}' ile eşleşmiyor."
@@ -1570,11 +1584,17 @@ tr:
       changeset: "Değişiklik listeleri"
       message: "Forumlar"
       news: "Haberler"
-      project_attribute: "Proje öznitelikleri"
+      project_details: "Project details"
       subproject: "Alt projeleri dahil et"
       time_entry: "Harcanan zaman"
       wiki_edit: "Rehber"
       work_package: "İş paketleri"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "%{date} tarihine ayarlandı"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktif"
@@ -1605,6 +1625,7 @@ tr:
     derived_due_date: "Türetilmiş bitiş tarihi"
     derived_estimated_hours: "Toplam İş"
     derived_start_date: "Türetilmiş başlangıç tarihi"
+    direction: "Direction"
     display_sums: "Toplamları görüntüle"
     due_date: "Bitiş tarihi"
     estimated_hours: "Çalışma"
@@ -1669,6 +1690,7 @@ tr:
     version: "Sürüm"
     visible: "Görünür"
     work_package: "İş paketi"
+    work_package_id: "İş paketi"
   backup:
     failed: "Yedekleme başarısız oldu"
     label_backup_token: "Yedek jeton"
@@ -2042,7 +2064,7 @@ tr:
     changeset: "Değişiklikler düzenlendi"
     message: Mesaj düzenlendi
     news: Haberler
-    project_attributes: "Proje öznitelikleri düzenlendi"
+    project_details: "Project details edited"
     project: "Proje düzenlendi"
     projects: "Proje düzenlendi"
     reply: Yanıtlandı
@@ -2121,6 +2143,8 @@ tr:
     your_work_packages_export: "İş paketleri dışa aktarılıyor"
     succeeded: "Dışa aktarma tamamlandı"
     failed: "İş paketlerini dışa aktarmaya çalışırken bir hata oluştu: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2165,6 +2189,12 @@ tr:
         caption: Daha iyi düzen ve hizalama için kelimeleri böl.
       hyphenation_language:
         label: Dil ve heceleme
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext kullanılabilir (isteğe bağlı)"
@@ -3273,6 +3303,7 @@ tr:
   permission_add_project: "Proje oluşturma"
   permission_add_work_package_attachments: "Dosya Ekle"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "Projeyi arşivle"
   permission_create_user: "Kullanıcı oluşturma"
   permission_manage_user: "Kullanıcı düzenleme"
@@ -3301,9 +3332,12 @@ tr:
   permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "İş paketlerini düzenlemek"
   permission_edit_messages: "İletileri düzenlemek"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "Kendi notlarını düzenleme"
   permission_edit_own_messages: "Kendi iletilerini düzenlemek"
   permission_edit_own_time_entries: "Kendi zaman kayıtlarını düzenlemek"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Proje düzenleme"
   permission_edit_project_attributes: "Proje özniteliklerini düzenleme"
   permission_edit_project_stages_and_gates: "Edit project stages and gates"
@@ -3344,6 +3378,7 @@ tr:
   permission_manage_own_reminders: "Kendi hatırlatıcısını oluşturma"
   permission_view_project: "Projeleri görüntüleme"
   permission_view_changesets: "OpenProject'de depo revizyonlarını görüntüle"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "Yazar istatistiklerini inceleyin"
   permission_view_dashboards: "Gösterge panellerini gösterme"
   permission_view_work_package_watchers: "Takip eden listesini göster"
@@ -3387,6 +3422,10 @@ tr:
       project_verification: "Silme işlemini doğrulamak için projenin adını% {name} girin. %{name}"
       subprojects_confirmation: "Alt projeleri:% {value} de silinecek. %{value}"
       title: "% {Name} adlı projeyi sil %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Projenin üyeleri, projenin depoları yeniden yerleştirmek zorunda kalacaklardır.
       warning_two: Projeye mevcut bağlantılar artık çalışmayacaktır.
@@ -3531,6 +3570,9 @@ tr:
     manual: "Elle ayarla"
     automatic: "Otomatik ayarla"
   search_input_placeholder: "Ara ..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "İlk giriş yönlendirmesi"
   setting_after_first_login_redirect_url_text_html: >
     Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
@@ -3796,6 +3838,8 @@ tr:
     working_days:
       section_work_week: "Çalışma Haftası"
       section_holidays_and_closures: "Tatiller ve kapanışlar"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Düz yazı"

@@ -799,6 +799,7 @@ es:
       typeahead_placeholder: Buscar posibles observadores
     relation_labels:
       parent: "Principal"
+      child: "Child"
       children: "Sub-elemento"
       relates: "Relacionado con"
       duplicates: "Duplicados"
@@ -828,7 +829,7 @@ es:
       add_new_child: "Crear nuevo sub-elemento"
       create_new: "Crear nuevo"
       add_existing: "Agregar existente"
-      add_existing_child: "Añadir sub-elemento existente"
+      add_existing_child: "Add child"
       remove_child: "Eliminar sub-elemento"
       add_new_relation: "Crear nueva relación"
       add_existing_relation: "Agregar relación existente"

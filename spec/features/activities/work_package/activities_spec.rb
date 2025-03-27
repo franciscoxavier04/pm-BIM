@@ -2,7 +2,7 @@
 
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -232,6 +232,48 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
 
         activity_tab.add_comment(text: "First comment by user with commenting permission via a work package share")
         activity_tab.expect_journal_notes(text: "First comment by user with commenting permission via a work package share")
+      end
+    end
+
+    context "when a user cannot see comments with restricted visibility",
+            with_flag: { comments_with_restricted_visibility: true } do
+      current_user { member }
+
+      before do
+        create(:work_package_journal,
+               user: admin,
+               notes: "First comment by admin",
+               journable: work_package,
+               restricted: true,
+               version: 2)
+      end
+
+      it "does not show the comment" do
+        wp_page.visit!
+        wp_page.wait_for_activity_tab
+
+        activity_tab.expect_no_journal_notes(text: "First comment by admin")
+      end
+    end
+
+    context "when a user can see comments with restricted visibility",
+            with_flag: { comments_with_restricted_visibility: true } do
+      current_user { admin }
+
+      before do
+        create(:work_package_journal,
+               user: admin,
+               notes: "First comment by admin",
+               journable: work_package,
+               restricted: true,
+               version: 2)
+      end
+
+      it "shows the comment" do
+        wp_page.visit!
+        wp_page.wait_for_activity_tab
+
+        activity_tab.expect_journal_notes(text: "First comment by admin")
       end
     end
   end
@@ -1470,6 +1512,28 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
           within_test_selector("op-work-package-journal-form-element") do
             editor = FormFields::Primerized::EditorFormField.new("notes", selector: "#work-package-journal-form-element")
             editor.expect_value("First comment by admin")
+          end
+        end
+      end
+
+      context "when the work package is invalid due to a required custom field" do
+        let!(:custom_field) do
+          create(:integer_wp_custom_field, is_required: true, is_for_all: true, default_value: nil) do |cf|
+            project.types.first.custom_fields << cf
+            project.work_package_custom_fields << cf
+          end
+        end
+
+        it "the creation call still succeeds" do
+          activity_tab.add_comment(text: "First comment by admin")
+
+          comment = work_package.journals.reload.last
+
+          activity_tab.within_journal_entry(comment) do
+            page.find_test_selector("op-wp-journal-#{comment.id}-action-menu").click
+
+            expect(page).to have_test_selector("op-wp-journal-#{comment.id}-edit")
+            expect(page).to have_test_selector("op-wp-journal-#{comment.id}-quote")
           end
         end
       end

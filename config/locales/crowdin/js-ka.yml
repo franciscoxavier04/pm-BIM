@@ -799,6 +799,7 @@ ka:
       typeahead_placeholder: Search for possible watchers
     relation_labels:
       parent: "მშობელი"
+      child: "Child"
       children: "შვილები"
       relates: "მიეკუთვნება"
       duplicates: "დუბლები"
@@ -828,7 +829,7 @@ ka:
       add_new_child: "Create new child"
       create_new: "ახლის შექმნა"
       add_existing: "არსებულის დამატება"
-      add_existing_child: "Add existing child"
+      add_existing_child: "Add child"
       remove_child: "შვილის წაშლა"
       add_new_relation: "Create new relation"
       add_existing_relation: "Add existing relation"

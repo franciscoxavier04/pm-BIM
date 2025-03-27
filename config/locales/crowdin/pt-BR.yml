@@ -35,11 +35,15 @@ pt-BR:
         label_sort_desc: "Mais recentes em cima"
         label_type_to_comment: "Adicione um comentário. Digite @ para notificar as pessoas."
         label_submit_comment: "Enviar comentário"
+        label_who: Who?
         changed_on: "alterado em"
         created_on: "criou em"
         changed: "alterou"
         created: "criou"
         commented: "comentou"
+        restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: Atualmente, não existem plugins instalados.
@@ -615,8 +619,12 @@ pt-BR:
           caption: "Defina um padrão usando atributos referenciados e texto para gerar automaticamente os tópicos dos pacotes de trabalho. Os usuários não poderão editar os tópicos manualmente."
         pattern:
           label: "Padrão de assunto"
-          caption: "Pesquise um atributo ou adicione texto. Para inserir um espaço entre os elementos, adicione-o como texto."
-          insert_as_text: "Adicionar como texto: \"%{word}\""
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Gerar PDF"
         intro: "Selecione quais modelos disponíveis você deseja ativar para este tipo. O modelo define o design e os atributos visíveis no PDF exportado de um pacote de trabalho desse tipo. O primeiro modelo da lista é selecionado por padrão."
@@ -749,9 +757,9 @@ pt-BR:
       follows_description: "O pacote de trabalho relacionado deve ser finalizado antes que este possa ser iniciado"
       label_child_singular: "filho"
       label_child_plural: "filhos"
-      new_child: "Novo filho"
+      new_child: "Create new child"
       new_child_text: "Cria um pacote de trabalho relacionado como um subpacote do pacote de trabalho atual (pai)"
-      existing_child: "Filho existente"
+      child: "Child"
       child_description: "Torna o pacote de trabalho relacionado uma subtarefa do pacote de trabalho atual (pai)"
       label_closest: "Mais próximo"
       label_blocks_singular: "blocos"
@@ -954,6 +962,7 @@ pt-BR:
         column_names: "Colunas"
         relations_to_type_column: "Relações com %{type}"
         relations_of_type_column: "Relações de %{type}"
+        child_work_packages: "Child work packages"
         group_by: "Agrupar resultados por"
         sort_by: "Ordenar resultados por"
         filters: "Filtros"
@@ -1036,6 +1045,7 @@ pt-BR:
         auto_hide_popups: "Auto-ocultar notificações de sucesso"
         warn_on_leaving_unsaved: "Alertar-me ao sair de um pacote de trabalho sem salvar as alterações"
         theme: "Modo"
+        time_zone: "Fuso horário"
         mode_guideline: "Alguns modos substituirão as cores personalizadas do tema para melhorar a acessibilidade e a legibilidade. Para usar o tema totalmente personalizado, selecione o modo Claro."
         daily_reminders: "Lembretes diários"
         workdays: "Dias úteis"
@@ -1047,7 +1057,9 @@ pt-BR:
       wiki_page:
         parent_title: "Página pai"
         redirect_existing_links: "Redireciona links existentes"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Início da inserção"
         begin_deletion: "Início da exclusão"
         children: "Subelementos"
@@ -1063,6 +1075,7 @@ pt-BR:
           title: "Dias úteis"
           false: "Apenas dias úteis"
           true: "incluindo dias não-úteis"
+        journal_restricted: Restricted Journal
         notify: "Notificar" #used in custom actions
         parent: "Pai"
         parent_issue: "Pai"
@@ -1106,6 +1119,7 @@ pt-BR:
         empty: "não pode ser vazio."
         even: "deve ser par."
         exclusion: "está reservado."
+        feature_disabled: is not available.
         file_too_large: "é muito grande (tamanho máximo é %{count} Bytes)."
         filter_does_not_exist: "filtro não existe."
         format: "não corresponde ao formato '%{expected}' esperado."
@@ -1568,11 +1582,17 @@ pt-BR:
       changeset: "Cj de alterações"
       message: "Fóruns"
       news: "Notícias"
-      project_attribute: "Atributos do projeto"
+      project_details: "Project details"
       subproject: "Incluir subprojetos"
       time_entry: "Tempo gasto"
       wiki_edit: "Wiki"
       work_package: "Pacotes de trabalho"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Ativo"
@@ -1603,6 +1623,7 @@ pt-BR:
     derived_due_date: "Data de término derivada"
     derived_estimated_hours: "Total trabalho"
     derived_start_date: "Data inicial derivada"
+    direction: "Direção"
     display_sums: "Mostrar somas"
     due_date: "Data de conclusão"
     estimated_hours: "Trabalho"
@@ -1667,6 +1688,7 @@ pt-BR:
     version: "Versão"
     visible: "Visível"
     work_package: "Pacote de trabalho"
+    work_package_id: "Pacote de trabalho"
   backup:
     failed: "Cópia de segurança falhou"
     label_backup_token: "Token de backup"
@@ -2040,7 +2062,7 @@ pt-BR:
     changeset: "Conjunto de alterações editadas"
     message: Mensagem editada
     news: Notícias
-    project_attributes: "Atributos do projeto editado"
+    project_details: "Project details edited"
     project: "Projeto editado"
     projects: "Projeto editado"
     reply: Respondida
@@ -2119,6 +2141,8 @@ pt-BR:
     your_work_packages_export: "Os pacotes de trabalho estão sendo exportados"
     succeeded: "Exportação concluída"
     failed: "Ocorreu um erro ao tentar exportar os pacotes de trabalho: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2163,6 +2187,12 @@ pt-BR:
         caption: Quebra a linha entre as palavras para melhor exibição e justificação.
       hyphenation_language:
         label: Idioma e hifenização
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext disponível (opcional)"
@@ -3272,6 +3302,7 @@ pt-BR:
   permission_add_project: "Criar projetos"
   permission_add_work_package_attachments: "Adicionar anexos"
   permission_add_work_package_attachments_explanation: "Permite adicionar anexos sem permissão de edição de pacotes de trabalho"
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "Arquivar projeto"
   permission_create_user: "Criar usuários"
   permission_manage_user: "Editar usuários"
@@ -3300,9 +3331,12 @@ pt-BR:
   permission_edit_work_package_notes_explanation: "Atenção: Usuários com esta permissão podem editar comentários de qualquer pessoa."
   permission_edit_work_packages: "Editar pacotes de trabalho"
   permission_edit_messages: "Editar mensagens"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "Editar os próprios comentários"
   permission_edit_own_messages: "Editar as próprias mensagens"
   permission_edit_own_time_entries: "Editar os próprios registros de tempo"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Editar projeto"
   permission_edit_project_attributes: "Editar atributos do projeto"
   permission_edit_project_stages_and_gates: "Editar fases e marcos do projeto"
@@ -3343,6 +3377,7 @@ pt-BR:
   permission_manage_own_reminders: "Criar seus próprios lembretes"
   permission_view_project: "Visualizar projetos"
   permission_view_changesets: "Revisões do repositório vistas no OpenProject"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "Ver estatísticas de commits do autor"
   permission_view_dashboards: "Visualizar painéis"
   permission_view_work_package_watchers: "Visualizar lista de observadores"
@@ -3386,6 +3421,10 @@ pt-BR:
       project_verification: "Digite o nome do projeto %{name} para verificar a exclusão."
       subprojects_confirmation: "Seu(s) subprojeto(s): %{value} também será(ão) excluído(s)."
       title: "Excluir o projeto %{name}"
+    filters:
+      life_cycle_any: "Ciclo de Vida: Qualquer fase ou marco"
+      life_cycle_stage: "Fase do Ciclo de Vida: %{stage}"
+      life_cycle_gate: "Marco de Ciclo de Vida: %{gate}"
     identifier:
       warning_one: Membros do projeto terão que realocar os repositórios do projeto.
       warning_two: Links existentes para o projeto deixarão de funcionar.
@@ -3530,6 +3569,9 @@ pt-BR:
     manual: "definir como Manual"
     automatic: "definido como Automático"
   search_input_placeholder: "Pesquisar..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "Redirecionamento de primeiro login"
   setting_after_first_login_redirect_url_text_html: >
     Defina um caminho para redirecionar os usuários após o primeiro login. Se deixado em branco, eles serão redirecionados para a página inicial do tour de introdução. <br/> Exemplo: <code>/my/page</code>
@@ -3795,6 +3837,8 @@ pt-BR:
     working_days:
       section_work_week: "Semana de trabalho"
       section_holidays_and_closures: "Feriados e fechamentos"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Texto simples"

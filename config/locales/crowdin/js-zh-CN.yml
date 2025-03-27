@@ -797,6 +797,7 @@ zh-CN:
       typeahead_placeholder: 查找可能的关注者
     relation_labels:
       parent: "父级"
+      child: "子级"
       children: "子任务"
       relates: "关于"
       duplicates: "重复项"
@@ -826,7 +827,7 @@ zh-CN:
       add_new_child: "创建新的子任务"
       create_new: "新建"
       add_existing: "添加现有"
-      add_existing_child: "增加现有的子任务"
+      add_existing_child: "Add child"
       remove_child: "删除子任务"
       add_new_relation: "创建新的关系"
       add_existing_relation: "添加现有关系"

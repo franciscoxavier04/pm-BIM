@@ -35,11 +35,15 @@ nl:
         label_sort_desc: "Nieuwste bovenaan"
         label_type_to_comment: "Add a comment. Type @ to notify people."
         label_submit_comment: "Verstuur reactie"
+        label_who: Who?
         changed_on: "gewijzigd op"
         created_on: "creëerde dit op"
         changed: "gewijzigd"
         created: "aangemaakt"
         commented: "gaf commentaar op"
+        restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: Er zijn momenteel geen plugins geïnstalleerd.
@@ -614,8 +618,12 @@ nl:
           caption: "Definieer een patroon met kenmerken en tekst waarnaar verwezen wordt om automatisch werkpakketonderwerpen te genereren. Gebruikers kunnen de onderwerpen niet handmatig bewerken."
         pattern:
           label: "Onderwerp patroon"
-          caption: "Zoek naar een attribuut of voeg tekst toe. Als u een spatie tussen elementen wilt maken, voegt u deze toe als tekst."
-          insert_as_text: "Add as text: \"%{word}\""
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -748,9 +756,9 @@ nl:
       follows_description: "Het gerelateerde werkpakket moet noodzakelijkerwijs voltooid zijn voordat dit werkpakket kan beginnen"
       label_child_singular: "kind"
       label_child_plural: "kinderen"
-      new_child: "Nieuw kind"
+      new_child: "Create new child"
       new_child_text: "Creëert een gerelateerd werkpakket als subitem van het huidige (bovenliggende) werkpakket"
-      existing_child: "Bestaand kind"
+      child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
       label_blocks_singular: "blokkeert"
@@ -953,6 +961,7 @@ nl:
         column_names: "Kolommen"
         relations_to_type_column: "Betrekkingen %{type}"
         relations_of_type_column: "%{type} betrekkingen"
+        child_work_packages: "Child work packages"
         group_by: "Groepeer resultaten op"
         sort_by: "Sort results by"
         filters: "Filters"
@@ -1035,6 +1044,7 @@ nl:
         auto_hide_popups: "Automatisch verbergen geslaagd-meldingen"
         warn_on_leaving_unsaved: "Mij waarschuwen bij het verlaten van een werkpakket met niet-opgeslagen wijzigingen"
         theme: "Modus"
+        time_zone: "Tijdzone"
         mode_guideline: "Sommige modi overschrijven aangepaste themakleuren voor toegankelijkheid en leesbaarheid. Voor het volledige aangepaste thema selecteert u de Light-modus."
         daily_reminders: "Daily reminders"
         workdays: "Werkdagen"
@@ -1046,7 +1056,9 @@ nl:
       wiki_page:
         parent_title: "Bovenliggende pagina"
         redirect_existing_links: "Bestaande koppelingen omleiden"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Begin van het invoegen"
         begin_deletion: "Begin van de verwijdering"
         children: "Subelementen"
@@ -1062,6 +1074,7 @@ nl:
           title: "Werkdagen"
           false: "Alleen werkdagen"
           true: "inclusief niet-werkdagen"
+        journal_restricted: Restricted Journal
         notify: "Melding" #used in custom actions
         parent: "Bovenliggend werkpakket"
         parent_issue: "Bovenliggend werkpakket"
@@ -1105,6 +1118,7 @@ nl:
         empty: "mag niet leeg zijn."
         even: "moet gelijk zijn."
         exclusion: "is gereserveerd."
+        feature_disabled: is not available.
         file_too_large: "is te groot (maximum grootte is %{count} Bytes)."
         filter_does_not_exist: "filter bestaat niet."
         format: "komt niet overeen met het verwachte formaat '%{expected}' '."
@@ -1567,11 +1581,17 @@ nl:
       changeset: "Wijzigingensets"
       message: "Fora"
       news: "Nieuws"
-      project_attribute: "Projectkenmerken"
+      project_details: "Project details"
       subproject: "Inclusief subprojecten"
       time_entry: "Bestede tijd"
       wiki_edit: "Wiki"
       work_package: "Werkpakketten"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Actief"
@@ -1602,6 +1622,7 @@ nl:
     derived_due_date: "Afgeleide einddatum"
     derived_estimated_hours: "Totaal werk"
     derived_start_date: "Afgeleide startdatum"
+    direction: "Direction"
     display_sums: "Bedragen weergeven"
     due_date: "Einddatum"
     estimated_hours: "Werk"
@@ -1666,6 +1687,7 @@ nl:
     version: "Versie"
     visible: "zichtbaar"
     work_package: "Werkpakket"
+    work_package_id: "Werkpakket"
   backup:
     failed: "Back-up mislukt"
     label_backup_token: "Back-up token"
@@ -2039,7 +2061,7 @@ nl:
     changeset: "Wijzigingsset bewerkt"
     message: Bericht bewerkt
     news: Nieuws
-    project_attributes: "Projectkenmerken bewerkt"
+    project_details: "Project details edited"
     project: "Project bewerkt"
     projects: "Project bewerkt"
     reply: Beantwoord
@@ -2118,6 +2140,8 @@ nl:
     your_work_packages_export: "Work packages are being exported"
     succeeded: "Export completed"
     failed: "An error has occurred while trying to export the work packages: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2162,6 +2186,12 @@ nl:
         caption: Break line between words for better layout and justification.
       hyphenation_language:
         label: Language and hyphenation
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext beschikbaar (optioneel)"
@@ -3271,6 +3301,7 @@ nl:
   permission_add_project: "Projecten aanmaken"
   permission_add_work_package_attachments: "Bijlagen toevoegen"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "Project archiveren"
   permission_create_user: "Gebruikers aanmaken"
   permission_manage_user: "Gebruikers bewerken"
@@ -3299,9 +3330,12 @@ nl:
   permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Werkpakketten bewerken"
   permission_edit_messages: "Berichten bewerken"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "Edit own comments"
   permission_edit_own_messages: "Eigen berichten bewerken"
   permission_edit_own_time_entries: "Bewerk de logboeken van de eigen tijd"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Project bewerken"
   permission_edit_project_attributes: "Bewerk project kenmerken"
   permission_edit_project_stages_and_gates: "Edit project stages and gates"
@@ -3342,6 +3376,7 @@ nl:
   permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "Bekijk projecten"
   permission_view_changesets: "Bekijk opslagplaats wijzigingen in OpenProject"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "Bekijk de commit auteur statistieken"
   permission_view_dashboards: "View dashboards"
   permission_view_work_package_watchers: "Lijst van de watchers weergave"
@@ -3385,6 +3420,10 @@ nl:
       project_verification: "Voer de projectnaam %{name} in om de verwijdering te verifiëren."
       subprojects_confirmation: "De subproject(en): %{value} worden ook verwijderd."
       title: "Verwijder het project %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Leden van het project zullen de opslagplaatsen van het project moeten verplaatsen.
       warning_two: Bestaande koppelingen naar het project zullen niet langer werken.
@@ -3529,6 +3568,9 @@ nl:
     manual: "set to Manual"
     automatic: "set to Automatic"
   search_input_placeholder: "Zoeken ..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
     Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
@@ -3794,6 +3836,8 @@ nl:
     working_days:
       section_work_week: "Werkweek"
       section_holidays_and_closures: "Feestdagen en sluitingen"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Onopgemaakte tekst"

@@ -801,6 +801,7 @@ sk:
       typeahead_placeholder: Vyhľadajte možných pozorovateľov
     relation_labels:
       parent: "Nadradený balíček"
+      child: "Child"
       children: "Potomkovia"
       relates: "Previazaný na"
       duplicates: "Kópie"
@@ -830,7 +831,7 @@ sk:
       add_new_child: "Vytvoriť nový podradený"
       create_new: "Vytvoriť nový"
       add_existing: "Pridať existujúci"
-      add_existing_child: "Pridať existujúci podradený"
+      add_existing_child: "Add child"
       remove_child: "Zmazať podradený"
       add_new_relation: "Vytvoriť nový vzťah"
       add_existing_relation: "Pridať existujúci vzťah"

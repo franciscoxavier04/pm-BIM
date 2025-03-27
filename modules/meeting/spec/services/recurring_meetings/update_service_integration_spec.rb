@@ -111,13 +111,13 @@ RSpec.describe RecurringMeetings::UpdateService, "integration", type: :model do
       end
     end
 
-    context "when updating the frequency and start_time" do
+    context "when updating the frequency and start_time",
+            with_good_job: RecurringMeetings::InitNextOccurrenceJob do
       let(:params) do
         { start_time: Time.zone.today + 2.days + 11.hours }
       end
 
       before do
-        ActiveJob::Base.disable_test_adapter
         RecurringMeetings::InitNextOccurrenceJob
           .set(wait_until: Time.zone.today + 1.day + 10.hours)
           .perform_later(series)

@@ -35,11 +35,15 @@ fr:
         label_sort_desc: "Les plus récents en haut"
         label_type_to_comment: "Ajoutez un commentaire. Saisissez @ pour informer les gens."
         label_submit_comment: "Envoyer le commentaire"
+        label_who: Who?
         changed_on: "modifié le"
         created_on: "a créé ce lot de travaux le"
         changed: "modifié"
         created: "créé"
         commented: "commenté"
+        restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: Aucun plugin n'est actuellement installé.
@@ -616,8 +620,12 @@ fr:
           caption: "Définissez un modèle utilisant des attributs et du texte référencés pour générer automatiquement des sujets de lots de travaux. Les utilisateurs ne pourront pas modifier manuellement les sujets."
         pattern:
           label: "Modèle de sujet"
-          caption: "Recherchez un attribut ou ajoutez du texte. Pour créer un espace entre les éléments, ajoutez-le en tant que texte."
-          insert_as_text: "Ajouter en tant que texte : « %{word} »"
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Générer un fichier PDF"
         intro: "Sélectionnez les modèles disponibles que vous souhaitez activer pour ce type. Le modèle détermine la conception et les attributs visibles dans le fichier PDF exporté d'un lot de travaux utilisant ce type. Le premier modèle de la liste est sélectionné par défaut."
@@ -750,9 +758,9 @@ fr:
       follows_description: "Le lot de travaux lié doit nécessairement se terminer avant que celui-ci puisse commencer"
       label_child_singular: "enfant"
       label_child_plural: "enfants"
-      new_child: "Nouvel enfant"
+      new_child: "Create new child"
       new_child_text: "Crée un lot de travaux lié en tant que sous-élément du lot de travaux actuel (parent)"
-      existing_child: "Enfant existant"
+      child: "Child"
       child_description: "Fait du lot de travaux lié un sous-élément du lot de travaux actuel (parent)"
       label_closest: "Le plus proche"
       label_blocks_singular: "blocs"
@@ -955,6 +963,7 @@ fr:
         column_names: "Colonnes"
         relations_to_type_column: "Relations avec %{type}"
         relations_of_type_column: "relations de %{type}"
+        child_work_packages: "Child work packages"
         group_by: "Grouper les résultats par"
         sort_by: "Trier les résultats par"
         filters: "Filtres"
@@ -1037,6 +1046,7 @@ fr:
         auto_hide_popups: "Masquer automatiquement les notifications de succès"
         warn_on_leaving_unsaved: "M'avertir lorsque je quitte un lot de travaux contenant des modifications non enregistrées"
         theme: "Mode"
+        time_zone: "Fuseau horaire"
         mode_guideline: "Certains modes écraseront les couleurs personnalisées du thème pour l'accessibilité et la lisibilité. Pour le thème personnalisé complet, veuillez sélectionner le mode Clair."
         daily_reminders: "Rappels quotidiens"
         workdays: "Jours ouvrés"
@@ -1048,7 +1058,9 @@ fr:
       wiki_page:
         parent_title: "Page parente"
         redirect_existing_links: "Rediriger les liens existants"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Début de l’insertion"
         begin_deletion: "Début de la suppression"
         children: "Sous-éléments"
@@ -1064,6 +1076,7 @@ fr:
           title: "Jours ouvrés"
           false: "jours ouvrés seulement"
           true: "Inclure les jours non ouvrés"
+        journal_restricted: Restricted Journal
         notify: "Notifier" #used in custom actions
         parent: "Parent"
         parent_issue: "Parent"
@@ -1107,6 +1120,7 @@ fr:
         empty: "ne peut pas être vide."
         even: "doit être pair."
         exclusion: "est réservé."
+        feature_disabled: is not available.
         file_too_large: "est trop volumineux (la taille maximale est de %{count} octets)."
         filter_does_not_exist: "le filtre n'existe pas."
         format: "ne correspond pas au format attendu « %{expected} »."
@@ -1569,11 +1583,17 @@ fr:
       changeset: "Révisions"
       message: "Forums"
       news: "Actualités"
-      project_attribute: "Attributs du projet"
+      project_details: "Project details"
       subproject: "Inclure les sous-projets"
       time_entry: "Temps passé"
       wiki_edit: "Wiki"
       work_package: "Lots de travaux"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Actif"
@@ -1604,6 +1624,7 @@ fr:
     derived_due_date: "Date de fin dérivée"
     derived_estimated_hours: "Travail total"
     derived_start_date: "Date de début dérivée"
+    direction: "Direction"
     display_sums: "Afficher les sommes"
     due_date: "Date de fin"
     estimated_hours: "Travail"
@@ -1668,6 +1689,7 @@ fr:
     version: "Version"
     visible: "Visible"
     work_package: "Lot de travaux"
+    work_package_id: "Lot de travaux"
   backup:
     failed: "Échec de la sauvegarde"
     label_backup_token: "Jeton de sauvegarde"
@@ -2041,7 +2063,7 @@ fr:
     changeset: "Lot de modification édité"
     message: Message édité
     news: Actualités
-    project_attributes: "Attributs du projet modifiés"
+    project_details: "Project details edited"
     project: "Projet édité"
     projects: "Projet édité"
     reply: Y a-t-il eu une réponse
@@ -2120,6 +2142,8 @@ fr:
     your_work_packages_export: "Les lots de travaux sont exportés"
     succeeded: "Exportation terminée"
     failed: "Une erreur s'est produite lors de l'exportation des lots de travaux : %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2164,6 +2188,12 @@ fr:
         caption: Séparez la ligne entre les mots pour assurer une meilleure mise en page et une meilleure justification.
       hyphenation_language:
         label: Langue et césure
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext disponible (optionnel)"
@@ -3274,6 +3304,7 @@ fr:
   permission_add_project: "Créer des projets"
   permission_add_work_package_attachments: "Ajouter pièces jointes"
   permission_add_work_package_attachments_explanation: "Permet d'ajouter des pièces jointes sans avoir le droit de modifier les lots de travaux"
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "Archiver le projet"
   permission_create_user: "Créer des utilisateurs"
   permission_manage_user: "Modifier les utilisateurs"
@@ -3302,9 +3333,12 @@ fr:
   permission_edit_work_package_notes_explanation: "Attention : les utilisateurs disposant de cette autorisation peuvent modifier les commentaires de n'importe qui."
   permission_edit_work_packages: "Éditer des lots de travaux"
   permission_edit_messages: "Éditer des messages"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "Modifier ses propres commentaires"
   permission_edit_own_messages: "Éditer ses propres messages"
   permission_edit_own_time_entries: "Éditer mes propres enregistrements de temps"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Éditer le projet"
   permission_edit_project_attributes: "Modifier les attributs du projet"
   permission_edit_project_stages_and_gates: "Modifier les étapes et les portes du projet"
@@ -3345,6 +3379,7 @@ fr:
   permission_manage_own_reminders: "Créer des rappels personnalisés"
   permission_view_project: "Voir les projets"
   permission_view_changesets: "Voir révisions du dépôt dans OpenProject"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "Voir les statistiques des auteurs de «commit»"
   permission_view_dashboards: "Voir les tableaux de bord"
   permission_view_work_package_watchers: "Voir la liste des observateurs"
@@ -3388,6 +3423,10 @@ fr:
       project_verification: "Saisissez le nom du projet %{name} pour valider la suppression."
       subprojects_confirmation: "Son(ses) sous-projet(s): %{value} sera(seront) également supprimé(s)."
       title: "Supprimer le projet %{name}"
+    filters:
+      life_cycle_any: "Cycle de vie : n'importe quelle étape ou porte"
+      life_cycle_stage: "Étape du cycle de vie : %{stage}"
+      life_cycle_gate: "Porte du cycle de vie : %{gate}"
     identifier:
       warning_one: Les membres du projet devront déplacer les répertoires du projet.
       warning_two: Les liens existants vers le projet ne fonctionneront plus.
@@ -3532,6 +3571,9 @@ fr:
     manual: "régler sur le mode manuel"
     automatic: "régler sur le mode automatique"
   search_input_placeholder: "Rechercher…"
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "Redirection de première connexion"
   setting_after_first_login_redirect_url_text_html: >
     Définissez un chemin pour rediriger les utilisateurs après leur première connexion. S’il est vide, les utilisateurs seront redirigés vers la page d'accueil de la visite d'intégration. <br/> Exemple : <code>/my/page</code>
@@ -3797,6 +3839,8 @@ fr:
     working_days:
       section_work_week: "Semaine de travail"
       section_holidays_and_closures: "Vacances et fermetures"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Texte brut"

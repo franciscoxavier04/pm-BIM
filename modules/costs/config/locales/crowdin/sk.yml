@@ -57,6 +57,16 @@ sk:
         start_time: Start time
         end_time: Finish time
     models:
+      time_entry:
+        one: "Time entry"
+        few: "Time entries"
+        many: "Time entries"
+        other: "Time entries"
+      cost_entry:
+        one: "Cost entry"
+        few: "Cost entries"
+        many: "Cost entries"
+        other: "Cost entries"
       cost_type:
         one: "Typ nákladu"
         few: "Typy nákladov"
@@ -179,8 +189,6 @@ sk:
   text_reassign_time_and_cost_entries: "Priradiť výkaz hodín a náklady k projektu:"
   text_warning_hidden_elements: "Neboli zohľadnené všetky záznamy."
   week: "týždeň"
-  js:
-    text_are_you_sure: "Ste si istí?"
   api_v3:
     errors:
       validation:

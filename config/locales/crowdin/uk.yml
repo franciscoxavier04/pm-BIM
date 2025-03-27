@@ -35,11 +35,15 @@ uk:
         label_sort_desc: "Найновіші вгорі"
         label_type_to_comment: "Додайте коментар. Введіть @, щоб сповістити людину."
         label_submit_comment: "Надіслати коментар"
+        label_who: Who?
         changed_on: "змінено"
         created_on: "створив(-ла)"
         changed: "змінив(-ла)"
         created: "створив(-ла)"
         commented: "прокоментував(-ла)"
+        restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: Зараз немає встановлених плагінів.
@@ -628,8 +632,12 @@ uk:
           caption: "Визначте шаблон, використовуючи атрибути й текст, щоб теми пакетів робіт створювались автоматично. Користувачі не зможуть редагувати теми."
         pattern:
           label: "Шаблон теми"
-          caption: "Знайдіть атрибут або додайте текст. Проміжок між елементами потрібно додавати як текст."
-          insert_as_text: "Додати як текст: «%{word}»"
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Згенерувати PDF"
         intro: "Виберіть, які шаблони з доступних вам ви хочете ввімкнути для цього типу. Шаблон визначає дизайн і атрибути, що відображаються в експортованому PDF-файлі пакета робіт за допомогою цього типу. Перший шаблон у списку вибирається за замовчуванням."
@@ -764,9 +772,9 @@ uk:
       follows_description: "Зв’язаний пакет робіт обов’язково має завершуватися перед початком цього"
       label_child_singular: "дочірній елемент"
       label_child_plural: "дочірні елементи"
-      new_child: "Новий дочірній"
+      new_child: "Create new child"
       new_child_text: "Створює звʼязаний пакет робіт як піделемент поточного (батьківського) пакета робіт"
-      existing_child: "Наявний дочірній"
+      child: "Child"
       child_description: "Вкладає звʼязаний пакет робіт як піделемент поточного (батьківського) пакета робіт"
       label_closest: "Найближчі"
       label_blocks_singular: "блоки"
@@ -969,6 +977,7 @@ uk:
         column_names: "Стовпці"
         relations_to_type_column: "Відносини з %{type}"
         relations_of_type_column: "%{type} відносини"
+        child_work_packages: "Child work packages"
         group_by: "Групувати результати по"
         sort_by: "Сортувати результати за"
         filters: "Фільтри"
@@ -1051,6 +1060,7 @@ uk:
         auto_hide_popups: "Автоматичне приховування сповіщень про успіх"
         warn_on_leaving_unsaved: "Попереджати мене, коли залишив робочий пакет із незбереженими змінами"
         theme: "Режим"
+        time_zone: "Часовий пояс"
         mode_guideline: "У деяких режимах кольори користувацької теми замінюються, щоб полегшити взаємодію з користувачем і зробити її зручнішою. Якщо потрібна повністю користувацька тема, виберіть світлий режим."
         daily_reminders: "Щоденні нагадування"
         workdays: "Робочі дні"
@@ -1062,7 +1072,9 @@ uk:
       wiki_page:
         parent_title: "Головна сторінка"
         redirect_existing_links: "Перенаправити існуючі посилання"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Початок вставки"
         begin_deletion: "Початок видалення"
         children: "Субелементи"
@@ -1078,6 +1090,7 @@ uk:
           title: "Робочі дні"
           false: "лише робочі дні"
           true: "включати неробочі дні"
+        journal_restricted: Restricted Journal
         notify: "Сповіщати" #used in custom actions
         parent: "Джерело"
         parent_issue: "Джерело"
@@ -1121,6 +1134,7 @@ uk:
         empty: "не може бути порожнім."
         even: "має бути рівним."
         exclusion: "зарезервовано."
+        feature_disabled: is not available.
         file_too_large: "занадто великий (максимальний розмір -%{count} байт)"
         filter_does_not_exist: "фільтр не існує."
         format: "не відповідає очікуваному формату «%{expected}»."
@@ -1605,11 +1619,17 @@ uk:
       changeset: "Набори змін"
       message: "Форуми"
       news: "Новини"
-      project_attribute: "Атрибути проєкту"
+      project_details: "Project details"
       subproject: "Включити підпроєкти"
       time_entry: "Витрачений час"
       wiki_edit: "Wiki"
       work_package: "Пакети робіт"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Активний"
@@ -1640,6 +1660,7 @@ uk:
     derived_due_date: "Отримана дата завершення"
     derived_estimated_hours: "Загальний обсяг робіт"
     derived_start_date: "Отримана дата початку"
+    direction: "Напрямок"
     display_sums: "Відображати суми"
     due_date: "Дата закінчення"
     estimated_hours: "Робота"
@@ -1704,6 +1725,7 @@ uk:
     version: "Версія"
     visible: "Видиме"
     work_package: "Пакет робіт"
+    work_package_id: "Робочий пакет"
   backup:
     failed: "Помилка резервної копії"
     label_backup_token: "Маркер резервного копіювання"
@@ -2115,7 +2137,7 @@ uk:
     changeset: "Набір змін відредаговано"
     message: Повідомлення відредаговано
     news: Новини
-    project_attributes: "Атрибути проєкту змінено"
+    project_details: "Project details edited"
     project: "Проєкт змінено"
     projects: "Проєкт змінено"
     reply: Відповіли
@@ -2194,6 +2216,8 @@ uk:
     your_work_packages_export: "Пакет робіт експортуються"
     succeeded: "Експорт завершено"
     failed: "Під час спроби експортувати пакети робіт сталася помилка: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2238,6 +2262,12 @@ uk:
         caption: Розрив між словами для покращення розташування й вирівнювання.
       hyphenation_language:
         label: Мова й поділ слів на склади
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Доступний текст PDF (необов'язково)"
@@ -2663,7 +2693,7 @@ uk:
   label_index_by_title: "Індекс за назвою"
   label_information: "Інформація"
   label_information_plural: "Інформація"
-  label_installation_guides: "Інструкції із встановлення"
+  label_installation_guides: "Інструкції зі встановлення"
   label_integer: "Ціле число"
   label_internal: "Власне"
   label_introduction_video: "Введення відео"
@@ -3350,6 +3380,7 @@ uk:
   permission_add_project: "Створення проєктів"
   permission_add_work_package_attachments: "Додати вкладення"
   permission_add_work_package_attachments_explanation: "Дає змогу додавати вкладення без дозволу «Редагування пакетів робіт»"
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "Архівувати проєкт"
   permission_create_user: "Створення користувачів"
   permission_manage_user: "Редагування користувачів"
@@ -3378,9 +3409,12 @@ uk:
   permission_edit_work_package_notes_explanation: "Увага! Користувачі із цим дозволом можуть редагувати будь-чиї коментарі."
   permission_edit_work_packages: "Редагувати робочі пакети"
   permission_edit_messages: "Редагування повідомлень"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "Редагувати власні коментарі"
   permission_edit_own_messages: "Редагування власних повідомлень"
   permission_edit_own_time_entries: "Редагування власного обліку часу"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Редагувати проект"
   permission_edit_project_attributes: " Редагувати атрибути проєкту"
   permission_edit_project_stages_and_gates: "Редагування етапів і контрольних точок проєкту"
@@ -3421,6 +3455,7 @@ uk:
   permission_manage_own_reminders: "Створюйте власні нагадування"
   permission_view_project: "Перегляд проєктів"
   permission_view_changesets: "Перегляд змін репозиторію (сховища) в OpenProject"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "Перегляд статистики комітів автора"
   permission_view_dashboards: "Перегляд панелей керування"
   permission_view_work_package_watchers: "Перегляд списку спостерігачів"
@@ -3464,6 +3499,10 @@ uk:
       project_verification: "Введіть ім'я проекту %{name}, щоб верифікувати видалення."
       subprojects_confirmation: "Підпроекти: %{value} також будуть видалені."
       title: "Видалити проект %{name}"
+    filters:
+      life_cycle_any: "Життєвий цикл: будь-який етап або контрольна точка"
+      life_cycle_stage: "Етап життєвого циклу: %{stage}"
+      life_cycle_gate: "Контрольна точка життєвого циклу: %{gate}"
     identifier:
       warning_one: Членам проекту доведеться перенести репозиторії проекту.
       warning_two: Існуючі посилання на проект більше не працюватимуть.
@@ -3608,6 +3647,9 @@ uk:
     manual: "ручне"
     automatic: "автоматичне"
   search_input_placeholder: "Пошук ..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "Переспрямування після першого входу"
   setting_after_first_login_redirect_url_text_html: >
     Задайте шлях для переспрямування користувачів після першого входу. Якщо не задано, користувачі переспрямовуються на головну сторінку з ознайомленням. <br/>Наприклад: <code>/my/page</code>
@@ -3873,6 +3915,8 @@ uk:
     working_days:
       section_work_week: "Робочий тиждень"
       section_holidays_and_closures: "Свята й вихідні"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Простий текст"

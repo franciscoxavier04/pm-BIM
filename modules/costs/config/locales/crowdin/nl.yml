@@ -57,6 +57,12 @@ nl:
         start_time: Starttijd
         end_time: Eindtijd
     models:
+      time_entry:
+        one: "Time entry"
+        other: "Time entries"
+      cost_entry:
+        one: "Cost entry"
+        other: "Cost entries"
       cost_type:
         one: "Soort kosten"
         other: "Soort kosten"
@@ -175,8 +181,6 @@ nl:
   text_reassign_time_and_cost_entries: "Gerapporteerde uren en kosten voor dit werkpakket opnieuw toewijzen:"
   text_warning_hidden_elements: "Sommige items zijn mogelijk uitgesloten van de aggregatie."
   week: "week"
-  js:
-    text_are_you_sure: "Weet u het zeker?"
   api_v3:
     errors:
       validation:

@@ -57,6 +57,12 @@ et:
         start_time: Start time
         end_time: Finish time
     models:
+      time_entry:
+        one: "Time entry"
+        other: "Time entries"
+      cost_entry:
+        one: "Cost entry"
+        other: "Cost entries"
       cost_type:
         one: "Kulu liik"
         other: "Kulu liigid"
@@ -175,8 +181,6 @@ et:
   text_reassign_time_and_cost_entries: "Reassign reported hours and costs to this work package:"
   text_warning_hidden_elements: "Some entries may have been excluded from the aggregation."
   week: "week"
-  js:
-    text_are_you_sure: "Kas oled kindel?"
   api_v3:
     errors:
       validation:

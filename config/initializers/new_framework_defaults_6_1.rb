@@ -62,13 +62,13 @@
 # Set the default queue name for the analysis job to the queue adapter default.
 # Rails 6.0 used :active_storage_analysis.
 # Rails 6.1+ default is nil (when nil, default Active Job queue is used).
-# Rails.application.config.active_storage.queues.analysis = nil
+Rails.application.config.active_storage.queues.analysis = nil
 
 # https://guides.rubyonrails.org/configuring.html#config-active-storage-queues-purge
 # Set the default queue name for the purge job to the queue adapter default.
 # Rails 6.0 used :active_storage_purge.
 # Rails 6.1+ default is nil (when nil, default Active Job queue is used).
-# Rails.application.config.active_storage.queues.purge = nil
+Rails.application.config.active_storage.queues.purge = nil
 
 # https://guides.rubyonrails.org/configuring.html#config-action-mailbox-queues-incineration
 # Set the default queue name for the incineration job to the queue adapter default.
@@ -93,3 +93,9 @@
 # preloading assets when using `javascript_include_tag` and `stylesheet_link_tag`.
 # Previous versions had false. Rails 6.1+ default is true.
 # Rails.application.config.action_view.preload_links_header = true
+
+# Copied from 5.1 to keep the value to false even with the defaults of 5.1 being activated.
+# https://guides.rubyonrails.org/configuring.html#config-action-view-form-with-generates-remote-forms
+# Make `form_with` generate non-remote forms. Previous versions had false.
+# Rails 5.1, 5.2, and 6.0 default is true. Rails 6.1+ default is false.
+Rails.application.config.action_view.form_with_generates_remote_forms = false

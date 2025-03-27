@@ -35,11 +35,15 @@ es:
         label_sort_desc: "Lo más reciente en la parte superior"
         label_type_to_comment: "Añada un comentario. Escriba @ para notificar a personas."
         label_submit_comment: "Enviar comentario"
+        label_who: Who?
         changed_on: "cambiado el"
         created_on: "creó esto el"
         changed: "cambiado"
         created: "creado"
         commented: "comentado"
+        restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: Actualmente no hay ningún plugin instalado.
@@ -616,8 +620,12 @@ es:
           caption: "Defina un patrón utilizando atributos referenciados y texto para generar automáticamente asuntos de paquetes de trabajo. Los usuarios no podrán editar manualmente los asuntos."
         pattern:
           label: "Patrón del asunto"
-          caption: "Busque un atributo o añada un texto. Para crear un espacio entre elementos, añádalo como texto."
-          insert_as_text: "Añadir como texto: «%{word}»"
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generar PDF"
         intro: "Seleccione qué plantillas de las disponibles desea habilitar para este tipo. La plantilla determina el diseño y los atributos visibles en el PDF exportado de un paquete de trabajo que utilice este tipo. La primera plantilla de la lista se selecciona por defecto."
@@ -654,7 +662,7 @@ es:
           automatic_with_children: "Fechas determinadas por paquetes de trabajo secundarios."
           automatic_with_predecessor: "La fecha de inicio la fija un predecesor."
           manual_mobile: "Programado manualmente."
-          manually_scheduled: "Programado manualmente. No afectadas por relaciones."
+          manually_scheduled: "Programado manualmente. Fechas no afectadas por relaciones."
       blankslate:
         title: "Sin predecesores"
         description: "Para activar la programación automática, este paquete de trabajo debe tener al menos un predecesor. Entonces se programará automáticamente para que comience después del predecesor más cercano."
@@ -750,9 +758,9 @@ es:
       follows_description: "El paquete de trabajo relacionado tiene que terminar necesariamente antes de que este pueda empezar"
       label_child_singular: "secundario"
       label_child_plural: "secundarios"
-      new_child: "Añadir elemento secundario"
+      new_child: "Create new child"
       new_child_text: "Crea un paquete de trabajo relacionado como un subelemento del paquete de trabajo actual (principal)"
-      existing_child: "Elemento secundario existente"
+      child: "Child"
       child_description: "Hace que el paquete de trabajo relacionado sea un subelemento del paquete de trabajo actual (principal)"
       label_closest: "Más cercano"
       label_blocks_singular: "bloquea"
@@ -955,6 +963,7 @@ es:
         column_names: "Columnas"
         relations_to_type_column: "Relaciones con %{type}"
         relations_of_type_column: "Relaciones de %{type}"
+        child_work_packages: "Child work packages"
         group_by: "Resultados de grupo por"
         sort_by: "Ordenar resultados por"
         filters: "Filtros"
@@ -1037,6 +1046,7 @@ es:
         auto_hide_popups: "Auto-ocultar notificaciones satisfactorias"
         warn_on_leaving_unsaved: "Avisarme cuando salga de un paquete de trabajo con cambios sin guardar"
         theme: "Modo"
+        time_zone: "Zona horaria"
         mode_guideline: "Algunos modos sobrescribirán los colores del tema personalizado por motivos de accesibilidad y legibilidad. Para obtener el tema personalizado completo, seleccione el modo Claro."
         daily_reminders: "Recordatorios diarios"
         workdays: "Días laborables"
@@ -1048,7 +1058,9 @@ es:
       wiki_page:
         parent_title: "Página Padre"
         redirect_existing_links: "Redirigir los enlaces existentes"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Inicio de la inserción"
         begin_deletion: "Inicio de la eliminación"
         children: "Subelementos"
@@ -1064,6 +1076,7 @@ es:
           title: "Días laborables"
           false: "solo días laborables"
           true: "incluir días no laborables"
+        journal_restricted: Restricted Journal
         notify: "Notificar" #used in custom actions
         parent: "Padre"
         parent_issue: "Padre"
@@ -1107,6 +1120,7 @@ es:
         empty: "No puede estar vacío."
         even: "debe ser incluido."
         exclusion: "está reservado."
+        feature_disabled: is not available.
         file_too_large: "es demasiado grande (el tamaño máximo es de %{count} Bytes)."
         filter_does_not_exist: "el filtro no existe."
         format: "no coincide con el formato esperado '%{expected}'."
@@ -1569,11 +1583,17 @@ es:
       changeset: "Conjuntos de cambios"
       message: "Foros"
       news: "Noticias"
-      project_attribute: "Atributos del proyecto"
+      project_details: "Project details"
       subproject: "Incluir subproyectos"
       time_entry: "Tiempo invertido"
       wiki_edit: "Wiki"
       work_package: "Paquetes de trabajo"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Activo"
@@ -1604,6 +1624,7 @@ es:
     derived_due_date: "Fecha final derivada"
     derived_estimated_hours: "Trabajo total"
     derived_start_date: "Fecha de comienzo deseada"
+    direction: "Dirección"
     display_sums: "Mostrar sumas"
     due_date: "Fecha de finalización"
     estimated_hours: "Trabajo"
@@ -1668,6 +1689,7 @@ es:
     version: "Versión"
     visible: "Visible"
     work_package: "Paquete de trabajo"
+    work_package_id: "Paquete de trabajo"
   backup:
     failed: "La copia de seguridad ha fallado"
     label_backup_token: "Token de copias de seguridad"
@@ -2041,7 +2063,7 @@ es:
     changeset: "Set de cambios editado"
     message: Mensaje editado
     news: Noticias
-    project_attributes: "Atributos del proyecto editados"
+    project_details: "Project details edited"
     project: "Proyecto editado"
     projects: "Proyecto editado"
     reply: Respondió
@@ -2120,6 +2142,8 @@ es:
     your_work_packages_export: "Se están exportando paquetes de trabajo"
     succeeded: "Exportación completada"
     failed: "Se ha producido un error al intentar exportar los paquetes de trabajo: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atomo"
       csv: "CSV"
@@ -2164,6 +2188,12 @@ es:
         caption: Rompa la línea entre las palabras para una mejor disposición y justificación.
       hyphenation_language:
         label: Idioma y guion
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext disponible (opcional)"
@@ -3273,6 +3303,7 @@ es:
   permission_add_project: "Crear proyectos"
   permission_add_work_package_attachments: "Añadir archivos adjuntos"
   permission_add_work_package_attachments_explanation: "Permite añadir archivos adjuntos sin el permiso Editar paquetes de trabajo"
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "Archivar proyecto"
   permission_create_user: "Crear usuarios"
   permission_manage_user: "Editar usuarios"
@@ -3301,9 +3332,12 @@ es:
   permission_edit_work_package_notes_explanation: "Precaución: Los usuarios con este permiso pueden editar los comentarios de cualquier persona."
   permission_edit_work_packages: "Editar paquetes de trabajo"
   permission_edit_messages: "Editar mensajes"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "Editar comentarios propios"
   permission_edit_own_messages: "Editar mensajes propios"
   permission_edit_own_time_entries: "Editar registros de tiempo propios"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Editar proyecto"
   permission_edit_project_attributes: "Editar atributos del proyecto"
   permission_edit_project_stages_and_gates: "Editar etapas y puertas del proyecto"
@@ -3344,6 +3378,7 @@ es:
   permission_manage_own_reminders: "Crear recordatorios propios"
   permission_view_project: "Ver proyectos"
   permission_view_changesets: "Ver las revisiones del repositorio en OpenProject"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "Ver estadísticas del commit del autor"
   permission_view_dashboards: "Ver paneles de control"
   permission_view_work_package_watchers: "Ver lista de observadores"
@@ -3387,6 +3422,10 @@ es:
       project_verification: "Introduzca el nombre del proyecto %{name} para confirmar la eliminación."
       subprojects_confirmation: "Los sub-proyecto(s): %{value} también serán eliminado."
       title: "Borrar el proyecto %{name}"
+    filters:
+      life_cycle_any: "Ciclo de vida: cualquier etapa o puerta"
+      life_cycle_stage: "Etapa del ciclo de vida: %{stage}"
+      life_cycle_gate: "Puerta del ciclo de vida: %{gate}"
     identifier:
       warning_one: Los miembros del proyecto deberán migrar los repositorios del proyecto.
       warning_two: Los links al proyeto existentes dejarán de funcionar.
@@ -3531,6 +3570,9 @@ es:
     manual: "establecer en Manual"
     automatic: "establecer en Automático"
   search_input_placeholder: "Buscar..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "Primera redirección de inicio de sesión"
   setting_after_first_login_redirect_url_text_html: >
     Establezca una ruta para redirigir a los usuarios tras su primer inicio de sesión. Si está vacía, redirige a la página de inicio del recorrido de incorporación. <br/> Ejemplo: <code>/my/page</code>
@@ -3796,6 +3838,8 @@ es:
     working_days:
       section_work_week: "Semana de trabajo"
       section_holidays_and_closures: "Vacaciones y cierres"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Texto sin formato"
