@@ -17,7 +17,7 @@ OpenProject work packages will directly display information from GitHub in a sep
 
 The GitHub tab shows all PRs linked to a work package with their corresponding statuses (e.g. 'Open' or 'Merged') as well as the state (e.g. 'success' or 'queued') of the GitHub actions configured to run for a PR. PRs and work packages are in an n:m relationship, so a work package can be linked to multiple PRs and a PR can be linked to multiple work packages.
 
-Additionally, in your OpenProject work package, the GitHub integration allows you to create a branch straight from the work package and the corresponding pull request.
+Additionally, in your OpenProject work package, the GitHub integration supports you in creating a branch straight from the work package and the corresponding pull request.
 
 ![Git snippets dropdown menu under GitHub tab in OpenProject work package](openproject-system-guide-github-integation-github-git-snippets.png)
 
