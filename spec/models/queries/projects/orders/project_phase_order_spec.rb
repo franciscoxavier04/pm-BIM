@@ -33,24 +33,24 @@ require "spec_helper"
 RSpec.describe Queries::Projects::Orders::ProjectPhaseOrder do
   describe ".key" do
     it "matches key in correct format for life cycles" do
-      expect(described_class.key).to match("lcsd_42")
+      expect(described_class.key).to match("project_phase_42")
     end
 
     it "doesn't match non numerical id" do
-      expect(described_class.key).not_to match("lcsd_lcsd")
+      expect(described_class.key).not_to match("project_phase_abc")
     end
 
     it "doesn't match with prefix" do
-      expect(described_class.key).not_to match("xlcsd_42")
+      expect(described_class.key).not_to match("xproject_phase__42")
     end
 
     it "doesn't match with suffix" do
-      expect(described_class.key).not_to match("lcsd_42x")
+      expect(described_class.key).not_to match("project_phase__42x")
     end
   end
 
   describe "#available?" do
-    let(:instance) { described_class.new("lcsd_#{life_cycle_def.id}") }
+    let(:instance) { described_class.new("project_phase_#{project_phase_def.id}") }
 
     let(:permissions) { %i(view_project_phases) }
     let(:project) { create(:project) }
@@ -63,7 +63,7 @@ RSpec.describe Queries::Projects::Orders::ProjectPhaseOrder do
     current_user { user }
 
     context "without feature flag set" do
-      let!(:life_cycle_def) { create(:project_phase_definition) }
+      let!(:project_phase_def) { create(:project_phase_definition) }
 
       it "does not allow to sort by it" do
         expect(instance).not_to be_available
@@ -71,24 +71,14 @@ RSpec.describe Queries::Projects::Orders::ProjectPhaseOrder do
     end
 
     context "with feature flag set", with_flag: { stages_and_gates: true } do
-      context "for a stage definition" do
-        let!(:life_cycle_def) { create(:project_phase_definition) }
+      let!(:project_phase_def) { create(:project_phase_definition) }
 
-        it "allows to sort by it" do
-          expect(instance).to be_available
-        end
-      end
-
-      context "for a gate definition" do
-        let!(:life_cycle_def) { create(:project_phase_definition) }
-
-        it "allows to sort by it" do
-          expect(instance).to be_available
-        end
+      it "allows to sort by it" do
+        expect(instance).to be_available
       end
 
       context "without permission in any project" do
-        let!(:life_cycle_def) { create(:project_phase_definition) }
+        let!(:project_phase_def) { create(:project_phase_definition) }
         let(:permissions) { [] }
 
         it "is not available" do
@@ -98,38 +88,38 @@ RSpec.describe Queries::Projects::Orders::ProjectPhaseOrder do
     end
   end
 
-  describe "#life_cycle_step_definition" do
+  describe "#project_phase_definition" do
     let(:instance) { described_class.new(name) }
-    let(:name) { "lcsd_42" }
+    let(:name) { "project_phase_#{id}" }
     let(:id) { 42 }
 
     before do
-      allow(Project::PhaseDefinition).to receive(:find_by).with(id: id.to_s).and_return(step_definition)
+      allow(Project::PhaseDefinition).to receive(:find_by).with(id: id.to_s).and_return(phase_definition)
     end
 
-    context "when life cycle definition exists" do
-      let(:step_definition) { instance_double(Project::PhaseDefinition) }
+    context "when project phase definition exists" do
+      let(:phase_definition) { instance_double(Project::PhaseDefinition) }
 
-      it "returns the life cycle definition" do
-        expect(instance.life_cycle_step_definition).to eq(step_definition)
+      it "returns the project phase definition" do
+        expect(instance.project_phase_definition).to eq(phase_definition)
       end
 
-      it "memoizes the life cycle definition" do
-        2.times { instance.life_cycle_step_definition }
+      it "memoizes the project phase definition" do
+        2.times { instance.project_phase_definition }
 
         expect(Project::PhaseDefinition).to have_received(:find_by).once
       end
     end
 
-    context "when life cycle definition doesn't exist" do
-      let(:step_definition) { nil }
+    context "when project phase definition doesn't exist" do
+      let(:phase_definition) { nil }
 
       it "returns the life cycle" do
-        expect(instance.life_cycle_step_definition).to be_nil
+        expect(instance.project_phase_definition).to be_nil
       end
 
       it "memoizes the life cycle" do
-        2.times { instance.life_cycle_step_definition }
+        2.times { instance.project_phase_definition }
 
         expect(Project::PhaseDefinition).to have_received(:find_by).once
       end
