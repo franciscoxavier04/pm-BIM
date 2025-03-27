@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-module Queries::Projects::Filters::FilterOnLifeCycle
+module Queries::Projects::Filters::FilterOnProjectPhase
   extend ActiveSupport::Concern
   include Queries::Operators::DateRangeClauses
 
@@ -94,24 +94,24 @@ module Queries::Projects::Filters::FilterOnLifeCycle
     raise NotImplementedError
   end
 
-  def life_cycle_scope_limit(scope)
+  def project_phase_scope_limit(scope)
     scope
   end
 
-  def stage_where_on(start_date, end_date = start_date)
-    life_cycle_scope(Project::Stage.name)
+  def phase_where_on(start_date, end_date = start_date)
+    project_phase_scope
       .where(date_range_clause(Project::Phase.table_name, "start_date", nil, start_date))
       .where(date_range_clause(Project::Phase.table_name, "end_date", end_date, nil))
   end
 
-  def stage_where_between(start_date, end_date)
-    life_cycle_scope(Project::Stage.name)
+  def phase_where_between(start_date, end_date)
+    project_phase_scope
       .where(date_range_clause(Project::Phase.table_name, "start_date", start_date, nil))
       .where(date_range_clause(Project::Phase.table_name, "end_date", nil, end_date))
   end
 
-  def stage_overlaps_this_week
-    life_cycle_scope(Project::Stage.name)
+  def phase_overlaps_this_week
+    project_phase_scope
       .where.not(start_date: nil)
       .where.not(end_date: nil)
       .where(
@@ -125,22 +125,10 @@ module Queries::Projects::Filters::FilterOnLifeCycle
       )
   end
 
-  def stage_none
-    life_cycle_scope(Project::Stage.name)
+  def phase_none
+    project_phase_scope
       .where(start_date: nil)
       .where(end_date: nil)
-  end
-
-  def gate_none
-    life_cycle_scope(Project::Gate.name)
-      .where(start_date: nil)
-      .where(end_date: nil)
-  end
-
-  def gate_where(start_date, end_date = start_date)
-    # On gates, only the start_date is set.
-    life_cycle_scope(Project::Gate.name)
-      .where(date_range_clause(Project::Phase.table_name, "start_date", start_date, end_date))
   end
 
   def parsed_start
@@ -163,14 +151,13 @@ module Queries::Projects::Filters::FilterOnLifeCycle
     beginning_of_week + 7.days
   end
 
-  def life_cycle_scope(type)
-    life_cycle_scope = Project::Phase
+  def project_phase_scope
+    project_phase_scope = Project::Phase
       .where("#{Project::Phase.table_name}.project_id = #{Project.table_name}.id")
       .where(project_id: Project.allowed_to(User.current, :view_project_phases))
-      .where(type:)
       .active
 
-    life_cycle_scope_limit(life_cycle_scope)
+    project_phase_scope_limit(project_phase_scope)
   end
 
   delegate :connection, to: :"ActiveRecord::Base"

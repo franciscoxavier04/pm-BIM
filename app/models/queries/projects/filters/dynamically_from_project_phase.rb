@@ -28,66 +28,66 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-module Queries::Projects::Filters::DynamicallyFromLifeCycle
+module Queries::Projects::Filters::DynamicallyFromProjectPhase
   extend ActiveSupport::Concern
 
   included do
-    def initialize(name, options = {})
-      @life_cycle_step_definition = options[:life_cycle_step_definition]
-
-      super
-    end
-
     private
 
-    attr_accessor :life_cycle_step_definition
+    attr_accessor :project_phase_definition
   end
 
   class_methods do
     def all_for(context = nil)
-      all_step_definitions
-        .map do |step|
-        create!(name: name_for_step(step), context:)
+      all_phase_definitions
+        .flat_map do |phase|
+        create_from_phase(phase, context)
       rescue ::Queries::Filters::InvalidError
-        Rails.logger.error "Failed to map life cycle step definition filter for #{step.name} (CF##{step.id})."
+        Rails.logger.error "Failed to map phase definition filter for #{phase.name} (CF##{phase.id})."
         nil
       end
     end
 
     def create!(name:, **options)
-      life_cycle_step_definition = find_by_accessor(name)
-      raise ::Queries::Filters::InvalidError if life_cycle_step_definition.nil?
+      project_phase_definition = find_by_accessor(name)
+      raise ::Queries::Filters::InvalidError if project_phase_definition.nil?
 
-      new(name, options.merge(life_cycle_step_definition:))
+      new(name, options.merge(project_phase_definition:))
     end
 
     def key
       raise NotImplementedError
     end
 
-    def all_step_definitions
-      key = %w[Queries::Projects::Filters::LifeCycleStepFilter all_step_definitions]
+    private
 
-      RequestStore
-        .fetch(key) { Project::PhaseDefinition.all.to_a }
-        .select { |lcsd| lcsd.is_a?(step_subclass) }
+    def all_phase_definitions
+      key = %w[Queries::Projects::Filters::DynamicallyFromProjectPhase all_phase_definitions]
+
+      RequestStore.fetch(key) { Project::PhaseDefinition.all.to_a }
     end
 
     def find_by_accessor(name)
       match = name.match key
 
-      if match.present? && match[1].to_i > 0
-        all_step_definitions
-          .detect { |lcsd| lcsd.id == match[1].to_i }
+      if match.present? && match[:id].to_i > 0
+        all_phase_definitions
+          .detect { |definition| accessor_matches?(definition, match) }
       end
     end
 
-    def name_for_step(_step)
+    def create_from_phase(_phase, _context)
       raise NotImplementedError
     end
 
-    def step_subclass
-      raise NotImplementedError
+    def accessor_matches?(definition, match)
+      definition.id == match[:id].to_i
     end
+  end
+
+  def initialize(name, options = {})
+    @project_phase_definition = options[:project_phase_definition]
+
+    super
   end
 end

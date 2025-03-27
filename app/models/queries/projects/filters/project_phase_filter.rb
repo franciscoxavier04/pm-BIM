@@ -28,54 +28,50 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-class Queries::Projects::Filters::LifeCycleStageFilter < Queries::Projects::Filters::Base
-  include Queries::Projects::Filters::DynamicallyFromLifeCycle
-  include Queries::Projects::Filters::FilterOnLifeCycle
+class Queries::Projects::Filters::ProjectPhaseFilter < Queries::Projects::Filters::Base
+  include Queries::Projects::Filters::DynamicallyFromProjectPhase
+  include Queries::Projects::Filters::FilterOnProjectPhase
 
   class << self
     def key
-      /\Alcsd_stage_(\d+)\z/
+      /\Aproject_phase_(?<id>\d+)\z/
     end
 
     private
 
-    def name_for_step(stage)
-      "lcsd_stage_#{stage.id}"
-    end
-
-    def step_subclass
-      Project::StageDefinition
+    def create_from_phase(phase, context)
+      create!(name: "project_phase_#{phase.id}", context:)
     end
   end
 
   def human_name
-    I18n.t("project.filters.life_cycle_stage", stage: life_cycle_step_definition.name)
+    I18n.t("project.filters.project_phase", phase: project_phase_definition.name)
   end
 
   private
 
   def on_date
-    stage_where_on(parsed_start)
+    phase_where_on(parsed_start)
   end
 
   def on_today
-    stage_where_on(today)
+    phase_where_on(today)
   end
 
   def between_date
-    stage_where_between(parsed_start, parsed_end)
+    phase_where_between(parsed_start, parsed_end)
   end
 
   def this_week
-    stage_overlaps_this_week
+    phase_overlaps_this_week
   end
 
   def none
-    stage_none
+    phase_none
   end
 
-  def life_cycle_scope_limit(scope)
+  def project_phase_scope_limit(scope)
     super
-      .where(definition_id: life_cycle_step_definition.id)
+      .where(definition_id: project_phase_definition.id)
   end
 end

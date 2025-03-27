@@ -37,9 +37,9 @@ module Queries::Projects
     filter Filters::FavoredFilter
     filter Filters::IdFilter
     filter Filters::LatestActivityAtFilter
-    filter Filters::LifeCycleAnyFilter
-    filter Filters::LifeCycleGateFilter
-    filter Filters::LifeCycleStageFilter
+    filter Filters::ProjectPhaseAnyFilter
+    filter Filters::ProjectPhaseGateFilter
+    filter Filters::ProjectPhaseFilter
     filter Filters::MemberOfFilter
     filter Filters::NameAndIdentifierFilter
     filter Filters::NameFilter

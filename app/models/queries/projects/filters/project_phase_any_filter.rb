@@ -28,41 +28,36 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-class Queries::Projects::Filters::LifeCycleAnyFilter < Queries::Projects::Filters::Base
-  include Queries::Projects::Filters::FilterOnLifeCycle
+class Queries::Projects::Filters::ProjectPhaseAnyFilter < Queries::Projects::Filters::Base
+  include Queries::Projects::Filters::FilterOnProjectPhase
   include Queries::Operators::DateRangeClauses
 
   # Similar to other lifecycle steps
   def self.key
-    :lcsd_any
+    :project_phase_any
   end
 
   def human_name
-    I18n.t("project.filters.life_cycle_any")
+    I18n.t("project.filters.project_phase_any")
   end
 
   def on_date
-    stage_where_on(parsed_start)
-      .or(gate_where(parsed_end))
+    phase_where_on(parsed_start)
   end
 
   def on_today
-    stage_where_on(today)
-      .or(gate_where(today, today))
+    phase_where_on(today)
   end
 
   def between_date
-    stage_where_between(parsed_start, parsed_end)
-      .or(gate_where(parsed_start, parsed_end))
+    phase_where_between(parsed_start, parsed_end)
   end
 
   def this_week
-    stage_overlaps_this_week
-      .or(gate_where(beginning_of_week.to_date, end_of_week.to_date))
+    phase_overlaps_this_week
   end
 
   def none
-    stage_none
-      .or(gate_none)
+    phase_none
   end
 end

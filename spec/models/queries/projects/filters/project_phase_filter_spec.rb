@@ -30,10 +30,10 @@
 
 require "spec_helper"
 
-RSpec.describe Queries::Projects::Filters::LifeCycleStageFilter do
-  let(:stage) { build_stubbed(:project_phase_definition) }
-  # Defined here and in the .all to check that the filter only works on gates
-  let(:gate) { build_stubbed(:project_phase_definition) }
+RSpec.describe Queries::Projects::Filters::ProjectPhaseFilter do
+  let(:phase) { build_stubbed(:project_phase_definition) }
+  let(:phase_with_end_gate) { build_stubbed(:project_phase_definition, end_gate: true) }
+  let(:phase_with_start_gate) { build_stubbed(:project_phase_definition, start_gate: true) }
   let(:query) { build_stubbed(:project_query) }
 
   let(:instance) do
@@ -43,20 +43,20 @@ RSpec.describe Queries::Projects::Filters::LifeCycleStageFilter do
   before do
     allow(Project::PhaseDefinition)
       .to receive(:all)
-            .and_return([stage, gate])
+            .and_return([phase, phase_with_end_gate, phase_with_start_gate])
   end
 
   describe ".create!" do
-    context "for an existing stage" do
-      it "returns a filter based on the stage" do
-        expect(described_class.create!(name: "lcsd_stage_#{stage.id}", context: query))
+    context "for an existing phase" do
+      it "returns a filter based on the phase" do
+        expect(described_class.create!(name: "project_phase_#{phase.id}", context: query))
           .to be_a described_class
       end
     end
 
-    context "for a non existing stage" do
+    context "for a non existing phase" do
       it "raise an error" do
-        expect { described_class.create!(name: "lcsd_stage_-1", context: query) }
+        expect { described_class.create!(name: "project_phase_-1", context: query) }
           .to raise_error Queries::Filters::InvalidError
       end
     end
@@ -68,29 +68,31 @@ RSpec.describe Queries::Projects::Filters::LifeCycleStageFilter do
         .to all(be_a(described_class))
 
       expect(described_class.all_for.map(&:human_name))
-        .to contain_exactly(I18n.t("project.filters.life_cycle_stage", stage: stage.name))
+        .to contain_exactly(I18n.t("project.filters.project_phase", phase: phase.name),
+                            I18n.t("project.filters.project_phase", phase: phase_with_end_gate.name),
+                            I18n.t("project.filters.project_phase", phase: phase_with_start_gate.name))
     end
   end
 
   describe ".key" do
     it "is a regex for matching lifecycle steps" do
       expect(described_class.key)
-        .to eql(/\Alcsd_stage_(\d+)\z/)
+        .to eql(/\Aproject_phase_(?<id>\d+)\z/)
     end
   end
 
   describe "human_name" do
-    let(:accessor) { "lcsd_stage_#{stage.id}" }
+    let(:accessor) { "project_phase_#{phase.id}" }
 
-    it "is the name of the stage with a prefix" do
+    it "is the name of the phase with a prefix" do
       expect(instance.human_name)
-        .to eql I18n.t("project.filters.life_cycle_stage", stage: stage.name)
+        .to eql I18n.t("project.filters.project_phase", phase: phase.name)
     end
   end
 
   describe "#available?" do
     let(:project) { build_stubbed(:project) }
-    let(:accessor) { "lcsd_stage_#{stage.id}" }
+    let(:accessor) { "project_phase_#{phase.id}" }
     let(:user) { build_stubbed(:user) }
 
     current_user { user }
@@ -130,7 +132,7 @@ RSpec.describe Queries::Projects::Filters::LifeCycleStageFilter do
   end
 
   describe "#type" do
-    let(:accessor) { "lcsd_stage_#{stage.id}" }
+    let(:accessor) { "project_phase_#{phase.id}" }
 
     it "is :date" do
       expect(instance.type)
@@ -139,7 +141,7 @@ RSpec.describe Queries::Projects::Filters::LifeCycleStageFilter do
   end
 
   describe "#name" do
-    let(:accessor) { "lcsd_stage_#{stage.id}" }
+    let(:accessor) { "project_phase_#{phase.id}" }
 
     it "is the accessor" do
       expect(instance.name)
