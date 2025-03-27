@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,7 +31,8 @@
 module OpenProject
   module EnterpriseEdition
     # @logical_path OpenProject/EnterpriseEdition
-    class BannerComponentPreview < Lookbook::Preview
+    class UpsalePageComponentPreview < Lookbook::Preview
+      # Render a full-screen upsale page, with optional video or image features.
       # The easiest way to render the banner component is to provide a feature key and
       # have the assorted data structures match the expectations.
       # The text will be fetched from the i18n files:
@@ -54,19 +57,29 @@ module OpenProject
       # You can also provide a custom i18n_scope to change the place where the component looks for
       # title, description, and features.
       #
+      # To provide a video or image, use the respective `video:` or `image:` tags.
+      # If none or provided, a default image will be used.
+      #
       # The href is inferred from `OpenProject::Static::Links.enterprise_docs[feature_key][:href]`.
-      # @param dismissable toggle
-      def default(dismissable: false)
+      def default
         render(
-          ::EnterpriseEdition::BannerComponent
-            .new(:customize_life_cycle, dismissable:)
+          ::EnterpriseEdition::UpsalePageComponent
+            .new(:customize_life_cycle)
         )
       end
 
-      def dismissable
+      def video
         render(
-          ::EnterpriseEdition::BannerComponent
-            .new(:customize_life_cycle, dismiss_key: nil, dismissable: true)
+          ::EnterpriseEdition::UpsalePageComponent
+            .new(:date_alerts,
+                 video: "enterprise/date-alert-notifications.mp4")
+        )
+      end
+
+      def image
+        render(
+          ::EnterpriseEdition::UpsalePageComponent
+            .new(:ldap_groups, image: "enterprise/ldap-groups.jpg")
         )
       end
     end

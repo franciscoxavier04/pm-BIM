@@ -1,8 +1,7 @@
-<% helpers.write_augur_to_gon %>
-
-<% if !EnterpriseToken.current.present? %>
-  <% helpers.write_trial_key_to_gon %>
-<% end %>
+<% if respond_to?(:gon) %>
+  <% helpers.write_augur_to_gon %>
+  <% helpers.write_trial_key_to_gon if !EnterpriseToken.current.present? %>
+ <% end %>
 
 <div class="op-enterprise-upsale-page">
   <%=

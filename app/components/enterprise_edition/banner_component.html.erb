@@ -36,7 +36,7 @@
             classes: "op-enterprise-banner--close-icon",
             scheme: :invisible,
             tag: :a,
-            href: dismiss_enterprise_banner_path(feature_key:),
+            href: dismiss_enterprise_banner_path(feature_key: @dismiss_key),
             data: { turbo_stream: true, turbo_method: :post },
             icon: :x,
             aria: { label: t("ee.upsale.hide_banner") }
