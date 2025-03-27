@@ -39,6 +39,16 @@ class ExportSetting < ApplicationRecord
 
   validate :unique_format_per_query
 
+  def settings
+    # Read idiomatic symbol keys for JSONB column
+    super.symbolize_keys
+  end
+
+  def settings=(value)
+    # Provide database with string keys
+    super(value.stringify_keys)
+  end
+
   private
 
   def unique_format_per_query
