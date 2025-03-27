@@ -153,6 +153,26 @@ enterprise_docs:
     href: https://www.openproject.org/docs/user-guide/agile-boards/#action-boards-enterprise-add-on
   custom_field_hierarchies:
     href: https://www.openproject.org/docs/system-admin-guide/custom-fields/#hierarchy-custom-field-enterprise-add-on
+  define_custom_style:
+    href: https://www.openproject.org/enterprise-edition
+  custom_actions:
+    href: https://www.openproject.org/enterprise-edition
+  date_alerts:
+    href: https://www.openproject.org/enterprise-edition
+  work_package_sharing:
+    href: https://www.openproject.org/enterprise-edition
+  virus_scanning:
+    href: https://www.openproject.org/enterprise-edition
+  sso_auth_providers:
+    href: https://www.openproject.org/enterprise-edition
+  ldap_groups:
+    href: https://www.openproject.org/enterprise-edition
+  team_planner:
+    href: https://www.openproject.org/enterprise-edition
+  placeholder_users:
+    href: https://www.openproject.org/enterprise-edition
+  one_drive_sharepoint_file_storage:
+    href: https://www.openproject.org/enterprise-edition
 sysadmin_docs:
   saml:
     href: https://www.openproject.org/docs/system-admin-guide/authentication/saml/

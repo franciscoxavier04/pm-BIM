@@ -37,11 +37,13 @@ module EnterpriseEdition
     def initialize(feature_key, **system_arguments)
       super
 
+      @system_arguments = system_arguments
+      @system_arguments[:align_items] ||= :center
       @feature_key = feature_key
     end
 
     def call
-      flex_layout(align_items: :center) do |flex|
+      flex_layout(**@system_arguments) do |flex|
         buttons.each_with_index do |button, i|
           flex.with_column(ml: (i == 0 ? 0 : 2)) do
             button
@@ -74,7 +76,7 @@ module EnterpriseEdition
     end
 
     def more_info_button
-      render(Primer::Beta::Link.new(href:)) do |link|
+      render(Primer::Beta::Link.new(href: enterprise_link)) do |link|
         link.with_trailing_visual_icon(icon: "link-external")
         link_title
       end
@@ -84,7 +86,7 @@ module EnterpriseEdition
       I18n.t("ee.upsale.#{feature_key}.link_title", default: I18n.t("ee.upsale.link_title"))
     end
 
-    def href
+    def enterprise_link
       href_value = OpenProject::Static::Links.links.dig(:enterprise_docs, feature_key, :href)
 
       unless href_value

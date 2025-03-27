@@ -34,35 +34,26 @@ module EnterpriseEdition
   # It will only be rendered if necessary.
   class BannerComponent < ApplicationComponent
     include OpPrimer::ComponentHelpers
+    include PlanForFeature
 
     # @param feature_key [Symbol, NilClass] The key of the feature to show the banner for.
-    # @param title [String] The title of the banner.
-    # @param description [String] The description of the banner.
-    # @param href [String] The URL to link to.
     # @param dismissable [boolean] Allow this banner to be dismissed.
     # @param dismiss_key [String] Provide a string to identify this banner when being dismissed. Defaults to feature_key
     # @param skip_render [Boolean] Whether to skip rendering the banner.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(feature_key,
-                   title: nil,
-                   description: nil,
-                   link_title: nil,
-                   href: nil,
                    dismissable: false,
                    dismiss_key: feature_key,
                    skip_render: EnterpriseToken.hide_banners?,
                    **system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = :div
+      @system_arguments[:mb] ||= 2
       @system_arguments[:id] = "op-enterprise-banner-#{feature_key.to_s.tr('_', '-')}"
       @system_arguments[:test_selector] = @system_arguments[:id]
       super
 
       @feature_key = feature_key
-      @title = title
-      @description = description
-      @link_title = link_title
-      @href = href
       @skip_render = skip_render
       @dismissable = dismissable
       @dismiss_key = dismiss_key
@@ -72,47 +63,6 @@ module EnterpriseEdition
 
     attr_reader :skip_render,
                 :feature_key
-
-    def title
-      @title || I18n.t("ee.upsale.#{feature_key}.title", default: default_title)
-    end
-
-    def default_title
-      I18n.t("ee.upsale.plan_title", plan:)
-    end
-
-    def description
-      @description || begin
-        if I18n.exists?(:"ee.upsale.#{feature_key}.description_html")
-          I18n.t("ee.upsale.#{feature_key}.description_html").html_safe
-        else
-          I18n.t("ee.upsale.#{feature_key}.description")
-        end
-      end
-    rescue I18n::MissingTranslationData => e
-      raise e.exception(
-        <<~TEXT.squish
-          The expected '#{I18n.locale}.ee.upsale.#{feature_key}.description' nor '#{I18n.locale}.ee.upsale.#{feature_key}.description_html' key does not exist.
-          Ideally, provide it in the locale file.
-          If that isn't applicable, a description parameter needs to be provided.
-        TEXT
-      )
-    end
-
-    def plan_text
-      plan_name = render(Primer::Beta::Text.new(font_weight: :bold, classes: "upsale-colored")) { I18n.t("ee.upsale.plan_name", plan:) }
-      I18n.t("ee.upsale.plan_text_html", plan_name:).html_safe
-    end
-
-    def features
-      return @features if defined?(@features)
-
-      @features = I18n.t("ee.upsale.#{feature_key}.features", default: nil)&.values
-    end
-
-    def plan
-      @plan ||= OpenProject::Token.lowest_plan_for(feature_key)&.capitalize
-    end
 
     def render?
       !(skip_render || dismissed?)
