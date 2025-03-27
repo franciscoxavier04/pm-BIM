@@ -829,7 +829,7 @@ ro:
       add_new_child: "Creează copil nou"
       create_new: "Creează nou"
       add_existing: "Adaugă existent"
-      add_existing_child: "Adaugă copil existent"
+      add_existing_child: "Add child"
       remove_child: "Elimină copil"
       add_new_relation: "Crează o nouă relație"
       add_existing_relation: "Adaugă relație existentă"

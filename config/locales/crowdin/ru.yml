@@ -776,9 +776,9 @@ ru:
       follows_description: "Соответствующий пакет работ обязательно должен быть завершен до того, как начнется этот пакет"
       label_child_singular: "дочерний пакет работ"
       label_child_plural: "дочерние пакеты работ"
-      new_child: "Новый дочерний пакет работ"
+      new_child: "Create new child"
       new_child_text: "Создает связанный пакет работ в качестве подпункта текущего (родительского) пакета работ"
-      existing_child: "Существующий дочерний пакет работ"
+      child: "Child"
       child_description: "Делает связанный пакет работ дочерним текущему (родительскому) пакету работ"
       label_closest: "Ближайший"
       label_blocks_singular: "блоки"
@@ -800,7 +800,7 @@ ru:
       duplicated_by_description: "Связанный пакет работ является копией этого"
       duplicated_description: "Связанный пакет работ является копией этого"
       label_includes_singular: "включает"
-      label_includes_plural: "включают"
+      label_includes_plural: "включает в себя"
       includes_description: "Отмечает связанный пакет работ как включающий этот пакет без дополнительного эффекта"
       label_partof_singular: "часть"
       label_partof_plural: "часть"
@@ -3650,6 +3650,9 @@ ru:
     manual: "установить на Ручной"
     automatic: "установить на Автоматический"
   search_input_placeholder: "Поиск ..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "Перенаправление первого входа"
   setting_after_first_login_redirect_url_text_html: >
     Задайте путь для перенаправления пользователей после их первого входа в систему. Если не задано, то пользователь будет перенаправлен на домашнюю страницу обзорного тура. <br/> Например: <code>/my/page</code>

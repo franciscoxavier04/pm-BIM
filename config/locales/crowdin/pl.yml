@@ -775,9 +775,9 @@ pl:
       follows_description: "Powiązany pakiet roboczy musi koniecznie zostać ukończony przed rozpoczęciem tego pakietu"
       label_child_singular: "element podrzędny"
       label_child_plural: "elementy podrzędne"
-      new_child: "Nowy element podrzędny"
+      new_child: "Create new child"
       new_child_text: "Tworzy powiązany pakiet roboczy jako element podrzędny bieżącego (nadrzędnego) pakietu roboczego"
-      existing_child: "Istniejący element podrzędny"
+      child: "Child"
       child_description: "Ustawia powiązany pakiet roboczy jako element podrzędny bieżącego (nadrzędnego) pakietu roboczego"
       label_closest: "Najbliższy"
       label_blocks_singular: "blok"
@@ -3649,6 +3649,9 @@ pl:
     manual: "ustaw na Ręczny"
     automatic: "ustaw na Automatyczny"
   search_input_placeholder: "Wyszukaj ..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "Przekierowanie pierwszego logowania"
   setting_after_first_login_redirect_url_text_html: >
     Ustaw ścieżkę przekierowania użytkowników po ich pierwszym zalogowaniu. Jeśli jest pusta, przekierowuje do strony głównej wycieczki wdrożeniowej. <br/> Przykład: <code>/my/page</code>

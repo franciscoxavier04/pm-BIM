@@ -829,7 +829,7 @@ fil:
       add_new_child: "Maglikha ng bagong bata"
       create_new: "Create new"
       add_existing: "Add existing"
-      add_existing_child: "Magdagdag ng umiiral na bata"
+      add_existing_child: "Add child"
       remove_child: "Alisin ang bata"
       add_new_relation: "Lumikha ng pagkikipag-ugnayan"
       add_existing_relation: "Add existing relation"

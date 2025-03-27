@@ -757,9 +757,9 @@ pt-PT:
       follows_description: "O pacote de trabalho relacionado tem necessariamente de ser iniciado antes deste começar"
       label_child_singular: "secundário"
       label_child_plural: "secundários"
-      new_child: "Novo elemento secundário"
+      new_child: "Create new child"
       new_child_text: "Cria um pacote de trabalho relacionado como um subitem do pacote de trabalho atual (principal)"
-      existing_child: "Elemento secundário existente"
+      child: "Child"
       child_description: "Torna o pacote de trabalho relacionado num subitem do pacote de trabalho atual (principal)"
       label_closest: "Mais próximo"
       label_blocks_singular: "bloqueia"
@@ -3567,6 +3567,9 @@ pt-PT:
     manual: "definir como Manual"
     automatic: "definir como Automático"
   search_input_placeholder: "Procurar ..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "Redirecionamento do primeiro início de sessão"
   setting_after_first_login_redirect_url_text_html: >
     Defina um caminho para redirecionar os utilizadores após o primeiro início de sessão. Se estiver vazio, redireciona para a página inicial do tour de integração. <br/> Exemplo: <code>/my/page</code>
