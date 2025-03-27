@@ -45,8 +45,23 @@ module WorkPackage::PDFExport::Common::Badge
     end
   end
 
+  def readable_color(pdf_background_color)
+    sum = [
+      pdf_background_color[0..1],
+      pdf_background_color[2..3],
+      pdf_background_color[4..5]
+    ].sum { |color_part| color_part.to_i(16) }
+    lightness = sum / 3
+    lightness < 130 ? "FFFFFF" : "000000"
+  end
+
   def prawn_badge(text, color, offset: 0)
     badge = BadgeCallback.new({ color: color, radius: 8, document: pdf, offset: })
-    { text: (Prawn::Text::NBSP * 3) + text + (Prawn::Text::NBSP * 3), size: 8, callback: badge }
+    {
+      text: (Prawn::Text::NBSP * 3) + text + (Prawn::Text::NBSP * 3),
+      size: 8,
+      color: readable_color(color),
+      callback: badge
+    }
   end
 end
