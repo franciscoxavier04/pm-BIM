@@ -440,11 +440,10 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
           "Custom field boolean", I18n.t(:general_text_Yes),
           "Custom field rich text", "[#{I18n.t('export.macro.rich_text_unsupported')}]",
           "Custom field hidden",
-          "No replacement of:",
-          "projectValue:1:status",
-
           "1", export_time_formatted, project.name,
 
+          "No replacement of:",
+          "projectValue:1:status",
           "projectLabel:status",
           "projectValue:2:status projectLabel:status",
           "projectValue:3:status", "projectLabel:status",
