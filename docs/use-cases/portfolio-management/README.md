@@ -10,13 +10,13 @@ keywords: use-case, portfolio management
 
 If you have a lot of projects running at the same time it can be helpful and even necessary to have a meta level overview of your projects, keep track of the project status and due dates. With OpenProject you can do just that.
 
-![OpenProject projects portfolio overview](openproject_projects_overview.png)
+![Overview of all projects in OpenProject](openproject_use_case_portfolio_projects_overview.png)
 
 ## Creating projects overview
 
 Step 1: To view all projects, first select the **Select a project** dropdown menu, then click on the **Projects list** button.
 
-![open project list](openproject_select_projects_list.png)
+![Select a project dropdown menu and a button to open projects list in OpenProject](openproject_use_case_portfolio_projects_list_button.png)
 
 Step 2: You will get a list of all the projects that exist in your organization. You can filter the list by various project attributes, such as **project owner** or **creation date**. You can also use project custom fields as filters (please keep in mind that this is an enterprise add-on).  If you have not added any custom fields yet, please see [here](../../system-admin-guide/custom-fields/) how to do it.
 
