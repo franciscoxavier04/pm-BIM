@@ -380,8 +380,8 @@ RSpec.describe Project do
     end
   end
 
-  describe "life_cycles" do
-    it { is_expected.to have_many(:life_cycle_steps).class_name("Project::Phase").dependent(:destroy) }
+  describe "#project_phases" do
+    it { is_expected.to have_many(:phases).class_name("Project::Phase").dependent(:destroy) }
 
     it "has many available_phases" do
       expect(subject).to have_many(:available_phases)
@@ -393,7 +393,7 @@ RSpec.describe Project do
 
     it "checks for active flag" do
       expect(subject.available_phases.to_sql)
-        .to include("\"project_life_cycle_steps\".\"active\" = TRUE")
+        .to include("\"project_phases\".\"active\" = TRUE")
     end
 
     it "checks for :view_project_phases permission" do
@@ -404,7 +404,7 @@ RSpec.describe Project do
 
     it "eager loads :definition" do
       expect(subject.available_phases.to_sql)
-        .to include("LEFT OUTER JOIN \"project_life_cycle_step_definitions\" ON")
+        .to include("LEFT OUTER JOIN \"project_phase_definitions\" ON")
     end
 
     describe ".validates_associated" do
@@ -413,7 +413,7 @@ RSpec.describe Project do
       end
       let!(:project_phase) { create :project_phase, :skip_validate, project:, start_date: nil }
 
-      before { allow(User).to receive(:current).and_return user }
+      current_user { user }
 
       it "is valid without a validation context" do
         expect(project).to be_valid

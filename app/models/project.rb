@@ -96,7 +96,7 @@ class Project < ApplicationRecord
   has_many :recurring_meetings, dependent: :destroy
 
   accepts_nested_attributes_for :available_phases
-  validates_associated :available_phase, on: :saving_phases
+  validates_associated :available_phases, on: :saving_phases
 
   store_attribute :settings, :deactivate_work_package_attachments, :boolean
 
