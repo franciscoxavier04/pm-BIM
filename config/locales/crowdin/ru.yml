@@ -792,7 +792,7 @@ ru:
       duplicated_by_description: "Связанный пакет работ является копией этого"
       duplicated_description: "Связанный пакет работ является копией этого"
       label_includes_singular: "включает"
-      label_includes_plural: "включают"
+      label_includes_plural: "включает в себя"
       includes_description: "Отмечает связанный пакет работ как включающий этот пакет без дополнительного эффекта"
       label_partof_singular: "часть"
       label_partof_plural: "часть"

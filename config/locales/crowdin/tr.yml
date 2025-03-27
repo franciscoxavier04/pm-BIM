@@ -171,7 +171,7 @@ tr:
       plain: "hiçbiri"
       simple_tls: "LDAPS"
       start_tls: "STARTTLS"
-      plain_description: "LDAP sunucusuna şifrelenmemiş bir bağlantı açar. Üretim için tavsiye edilmez."
+      plain_description: "LDAP sunucusuna şifrelenmemiş bir bağlantı açar. Canlı ortam için tavsiye edilmez."
       simple_tls_description: "LDAPS'yi kullanın. LDAP sunucusunda ayrı bir bağlantı noktası gerektirir. Bu mod genellikle kullanımdan kaldırılmıştır, mümkün olduğunda STARTTLS kullanmanızı öneririz."
       start_tls_description: "Standart LDAP bağlantı noktasına bağlandıktan sonra bir STARTTLS komutu gönderir. Şifreli bağlantılar için önerilir."
       section_more_info_link_html: >
@@ -381,7 +381,7 @@ tr:
           label: "Proje özniteliğini ara"
         actions:
           label_enable_single: "Active in this project, click to disable"
-          label_disable_single: "Inactive in this project, click to enable"
+          label_disable_single: "Bu projede kapalı, açmak için tıklayın"
           remove_from_project: "Projeden kaldır"
         is_required_blank_slate:
           heading: Tüm projelerde zorunludur
@@ -399,18 +399,18 @@ tr:
         new_label: "Yeni öncelik"
   project_stage:
     working_days_count:
-      one: "Duration: %{count} working day"
-      other: "Duration: %{count} working days"
+      one: "Süre: %{count} iş günü"
+      other: "Süre: %{count} iş günü"
   lists:
     create:
-      success: "The modified list has been saved as a new list"
-      failure: "The modified list cannot be saved: %{errors}"
+      success: "Değiştirilen liste yeni bir liste olarak kaydedildi"
+      failure: "Değiştirilen liste kaydedilemedi: %{errors}"
     update:
       success: "Değiştirilen liste kaydedildi"
-      failure: "The modified list cannot be saved: %{errors}"
+      failure: "Değiştirilen liste kaydedilemedi: %{errors}"
     publish:
       success: "Liste herkese açık hale getirildi"
-      failure: "The list cannot be made public: %{errors}"
+      failure: "Liste herkese açık yapılamadı: %{errors}"
     unpublish:
       success: "Liste gizli hale getirildi"
       failure: "The list cannot be made private: %{errors}"
@@ -617,7 +617,7 @@ tr:
           caption: "İş paketi konularını otomatik olarak oluşturmak için başvurulan öznitelikleri ve metni kullanarak bir kalıp tanımlayın. Kullanıcılar konuları elle düzenleyemeyecektir."
         pattern:
           label: "Konu deseni"
-          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          caption: "Öznitelik için arayın ya da metin ekleyin. Elementler arası boşluk eklemek için bunu metin olarak girin."
           insert_as_text: "\"%{word}\" metni olarak ekle"
       export_configuration:
         tab: "PDF oluştur"

@@ -37,7 +37,7 @@ tr:
         default: "Varsayılan maliyet türü"
       work_package:
         costs_by_type: "Harcanan maliyet"
-        labor_costs: "İşçilik maliyetleri"
+        labor_costs: "İş gücü maliyetleri"
         material_costs: "Birim maliyeti"
         overall_costs: "Tüm maliyetler"
         spent_costs: "Harcanan maliyet"
