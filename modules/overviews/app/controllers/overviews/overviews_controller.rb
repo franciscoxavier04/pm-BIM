@@ -140,7 +140,7 @@ module ::Overviews
       @life_cycles_sidebar_enabled =
         OpenProject::FeatureDecisions.stages_and_gates_active? &&
         User.current.allowed_in_project?(:view_project_phases, @project) &&
-        @project.life_cycle_steps.active.any?
+        @project.phases.active.any?
     end
 
     def handle_errors(project_with_errors, section)
