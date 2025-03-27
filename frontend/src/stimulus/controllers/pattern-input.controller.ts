@@ -363,7 +363,7 @@ export default class PatternInputController extends Controller {
     if (this.isToken(parent)) {
       const key = parent.dataset.prop;
       const prefix = this.tokenPrefix(key.slice(0, key.indexOf('_')));
-      const start = prefix && textContent.startsWith(prefix) ? prefix.length + 2 : 0;
+      const start = prefix && textContent.startsWith(`${prefix} `) ? prefix.length + 1 : 0;
 
       return textContent.slice(start, selection.anchorOffset);
     }
@@ -515,7 +515,7 @@ export default class PatternInputController extends Controller {
             node.after(document.createTextNode(CONTROL_SPACE));
           }
 
-          if (this.isText(follower) && !this.isWhitespaceOrControlSpace(follower.wholeText[0] || '')) {
+          if (this.isText(follower) && !this.isWhitespaceOrControlSpace(follower.wholeText[0])) {
             node.after(document.createTextNode(CONTROL_SPACE));
           }
         }
@@ -593,8 +593,8 @@ export default class PatternInputController extends Controller {
     return node !== null && node.nodeType === Node.ELEMENT_NODE;
   }
 
-  private isWhitespaceOrControlSpace(value:string):boolean {
-    if (value.length !== 1) { return false; }
+  private isWhitespaceOrControlSpace(value:string|undefined|null):boolean {
+    if (!value || value.length !== 1) { return false; }
 
     return new RegExp(`[${CONTROL_SPACE}\\s]`).test(value);
   }
