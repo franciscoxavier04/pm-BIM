@@ -32,19 +32,19 @@ module Storages
   module Peripherals
     module ConnectionValidators
       module Nextcloud
-        class AmpfConnectionValidator < BaseValidator
+        class AmpfConfigurationValidator < BaseValidatorGroup
           using ServiceResultRefinements
 
           private
 
           def validate
             register_checks(
-              :userless_access, :group_folder_presence, :files_request, :group_folder_contents
+              :files_request, :userless_access, :group_folder_presence, :group_folder_contents
             )
 
+            files_request_failed_with_unknown_error
             userless_access_denied
             group_folder_not_found
-            files_request_failed_with_unknown_error
             with_unexpected_content
           end
 

@@ -35,7 +35,7 @@ module Storages
   module Peripherals
     module ConnectionValidators
       module Nextcloud
-        RSpec.describe AmpfConnectionValidator, :webmock do
+        RSpec.describe AmpfConfigurationValidator, :webmock do
           let(:storage) { create(:nextcloud_storage_configured, :as_automatically_managed) }
           let(:project_folder_id) { "1337" }
           let!(:project_storage) do
@@ -57,9 +57,7 @@ module Storages
           end
 
           it "pass all checks" do
-            results = validator.call
-
-            expect(results.values).to all(be_success)
+            expect(validator.call).to be_success
           end
 
           context "if userless authentication fails" do
@@ -68,8 +66,8 @@ module Storages
             it "fails and skips the next checks" do
               results = validator.call
 
-              states = results.values.map { it.state }.tally
-              expect(states).to eq({ failure: 1, skipped: 3 })
+              states = results.tally
+              expect(states).to eq({ success: 1, failure: 1, skipped: 2 })
               expect(results[:userless_access]).to be_failure
               expect(results[:userless_access].message).to eq(i18n_message(:userless_access_denied))
             end

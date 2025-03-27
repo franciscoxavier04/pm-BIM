@@ -31,55 +31,36 @@
 module Storages
   module Peripherals
     module ConnectionValidators
-      module Nextcloud
-        class BaseValidator
-          include TaggedLogging
+      class ValidationGroupResult
+        delegate :[], to: :@results
 
-          def initialize(storage)
-            @storage = storage
-          end
+        def initialize
+          @results = {}
+        end
 
-          def call
-            catch :interrupted do
-              validate
-            end
+        def success? = @results.values.all?(&:success?)
+        def non_failure? = @results.values.none?(&:failure?)
+        def failure? = @results.values.any?(&:failure?)
+        def warning? = @results.values.any?(&:warning?)
 
-            @results
-          end
+        def tally
+          @results.values.map(&:state).tally
+        end
 
-          private
+        def register_checks(keys)
+          Array(keys).each { register_check(it) }
+        end
 
-          def validate = raise Errors::SubclassResponsibility
+        def register_check(key)
+          Kernel.warn("Overriding already defined check") if @results.key?(key)
 
-          def register_checks(*keys)
-            @results = keys.to_h { [it, CheckResult.skipped(it)] }
-          end
+          @results[key] = CheckResult.skipped(key)
+        end
 
-          def update_result(key, value)
-            if @results&.has_key?(key)
-              @results[key] = value
-            else
-              raise ArgumentError, "Check #{key} not registered."
-            end
-          end
+        def update_result(key, value)
+          raise(ArgumentError, "Check #{key} not registered.") unless @results.key?(key)
 
-          def pass_check(key)
-            update_result(key, CheckResult.success(key))
-          end
-
-          def fail_check(key, message)
-            update_result(key, CheckResult.failure(key, message))
-            throw :interrupted
-          end
-
-          def warn_check(key, message, halt_validation: false)
-            update_result(key, CheckResult.warning(key, message))
-            throw :interrupted if halt_validation
-          end
-
-          def message(key, context = {})
-            I18n.t("storages.health.connection_validation.#{key}", **context)
-          end
+          @results[key] = value
         end
       end
     end

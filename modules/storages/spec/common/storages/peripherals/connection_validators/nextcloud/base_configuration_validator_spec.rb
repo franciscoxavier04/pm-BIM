@@ -40,11 +40,11 @@ module Storages
 
           subject(:validator) { described_class.new(storage) }
 
-          it "returns a hash with check 'key' as key and a CheckResult as value", vcr: "nextcloud/capabilities_success" do
+          it "returns a GroupValidationResult", vcr: "nextcloud/capabilities_success" do
             results = validator.call
 
-            expect(results).to be_a(Hash)
-            expect(results.values).to all(be_success)
+            expect(results).to be_a(ValidationGroupResult)
+            expect(results).to be_success
           end
 
           describe "when errors occurs" do

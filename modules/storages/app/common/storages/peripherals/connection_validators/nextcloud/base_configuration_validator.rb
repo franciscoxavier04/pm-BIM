@@ -32,7 +32,7 @@ module Storages
   module Peripherals
     module ConnectionValidators
       module Nextcloud
-        class BaseConfigurationValidator < BaseValidator
+        class BaseConfigurationValidator < BaseValidatorGroup
           private
 
           def validate
@@ -46,7 +46,7 @@ module Storages
 
           def capabilities_request_status
             if capabilities.failure? && capabilities.result != :not_found
-              fail_check(:capabilities_request, message(:error))
+              fail_check(:capabilities_request, message(:unknown_error))
             else
               pass_check(:capabilities_request)
             end
