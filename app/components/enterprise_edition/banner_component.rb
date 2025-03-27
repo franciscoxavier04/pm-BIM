@@ -110,49 +110,8 @@ module EnterpriseEdition
       @features = I18n.t("ee.upsale.#{feature_key}.features", default: nil)&.values
     end
 
-    def buttons
-      [
-        free_trial_button,
-        upgrade_now_button,
-        more_info_button
-      ].compact
-    end
-
-    def free_trial_button
-      return if EnterpriseToken.active?
-
-      helpers.angular_component_tag("opce-free-trial-button")
-    end
-
-    # Allow providing a custom upgrade now button
-    def upgrade_now_button
-      nil
-    end
-
-    def more_info_button
-      render(Primer::Beta::Link.new(href:)) do |link|
-        link.with_trailing_visual_icon(icon: "link-external")
-        link_title
-      end
-    end
-
     def plan
       @plan ||= OpenProject::Token.lowest_plan_for(feature_key)&.capitalize
-    end
-
-    def link_title
-      @link_title || I18n.t("ee.upsale.#{feature_key}.link_title", default: I18n.t("ee.upsale.link_title"))
-    end
-
-    def href
-      href_value = @href || OpenProject::Static::Links.links.dig(:enterprise_docs, feature_key, :href)
-
-      unless href_value
-        raise "Neither a custom href is provided nor is a value set " \
-              "in OpenProject::Static::Links.enterprise_docs[#{feature_key}][:href]"
-      end
-
-      href_value
     end
 
     def render?
