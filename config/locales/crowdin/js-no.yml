@@ -829,7 +829,7 @@
       add_new_child: "Opprett ny underordnet"
       create_new: "Opprett ny"
       add_existing: "Legg til eksisterende"
-      add_existing_child: "Legg til eksisterende underordnet"
+      add_existing_child: "Add child"
       remove_child: "Fjern underordnet"
       add_new_relation: "Lag ny relasjon"
       add_existing_relation: "Legg til eksisterende relasjon"

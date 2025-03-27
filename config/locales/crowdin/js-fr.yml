@@ -829,7 +829,7 @@ fr:
       add_new_child: "Créer un nouvel enfant"
       create_new: "Créer nouveau"
       add_existing: "Ajouter existant"
-      add_existing_child: "Ajouter un enfant existant"
+      add_existing_child: "Add child"
       remove_child: "Supprimer enfant"
       add_new_relation: "Créer une nouvelle relation"
       add_existing_relation: "Ajouter une relation existante"

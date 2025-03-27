@@ -757,9 +757,9 @@ it:
       follows_description: "La macro-attività correlata deve necessariamente terminare prima dell'inizio di questa"
       label_child_singular: "figlia"
       label_child_plural: "figlie"
-      new_child: "Nuovo figlio"
+      new_child: "Create new child"
       new_child_text: "Crea una macro-attività correlata come sottovoce della macro-attività attuale (genitore)"
-      existing_child: "Figlio esistente"
+      child: "Child"
       child_description: "Rende la macro-attività correlata un sottoelemento della macro-attività corrente (genitore)"
       label_closest: "Il più vicino"
       label_blocks_singular: "blocca"
@@ -3570,6 +3570,9 @@ it:
     manual: "imposta su Manuale"
     automatic: "impostato su Automatico"
   search_input_placeholder: "Ricerca..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "Reindirizzamento di primo accesso"
   setting_after_first_login_redirect_url_text_html: >
     Imposta un percorso per reindirizzare gli utenti dopo il loro primo accesso. Se vuoto, reindirizza alla home page per il tour di onboarding. <br/> Esempio: <code>/my/page</code>

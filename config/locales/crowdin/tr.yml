@@ -35,13 +35,13 @@ tr:
         label_sort_desc: "En üstte en yeni"
         label_type_to_comment: "Bir yorum ekleyin. Kişilere bildirmek için @ yazın."
         label_submit_comment: "Yorum gönder"
-        label_who: Who?
+        label_who: Kim?
         changed_on: "üzerinde değişti"
         created_on: "bunu oluşturdu"
         changed: "değişti"
         created: "oluşturuldu"
         commented: "yorumlandı"
-        restrict_visibility: Restrict visibility
+        restrict_visibility: Görünürlüğü kısıtlayın
         restricted_journal: Restricted comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
@@ -175,7 +175,7 @@ tr:
       plain: "hiçbiri"
       simple_tls: "LDAPS"
       start_tls: "STARTTLS"
-      plain_description: "LDAP sunucusuna şifrelenmemiş bir bağlantı açar. Üretim için tavsiye edilmez."
+      plain_description: "LDAP sunucusuna şifrelenmemiş bir bağlantı açar. Canlı ortam için tavsiye edilmez."
       simple_tls_description: "LDAPS'yi kullanın. LDAP sunucusunda ayrı bir bağlantı noktası gerektirir. Bu mod genellikle kullanımdan kaldırılmıştır, mümkün olduğunda STARTTLS kullanmanızı öneririz."
       start_tls_description: "Standart LDAP bağlantı noktasına bağlandıktan sonra bir STARTTLS komutu gönderir. Şifreli bağlantılar için önerilir."
       section_more_info_link_html: >
@@ -385,7 +385,7 @@ tr:
           label: "Proje özniteliğini ara"
         actions:
           label_enable_single: "Active in this project, click to disable"
-          label_disable_single: "Inactive in this project, click to enable"
+          label_disable_single: "Bu projede kapalı, açmak için tıklayın"
           remove_from_project: "Projeden kaldır"
         is_required_blank_slate:
           heading: Tüm projelerde zorunludur
@@ -403,18 +403,18 @@ tr:
         new_label: "Yeni öncelik"
   project_stage:
     working_days_count:
-      one: "Duration: %{count} working day"
-      other: "Duration: %{count} working days"
+      one: "Süre: %{count} iş günü"
+      other: "Süre: %{count} iş günü"
   lists:
     create:
-      success: "The modified list has been saved as a new list"
-      failure: "The modified list cannot be saved: %{errors}"
+      success: "Değiştirilen liste yeni bir liste olarak kaydedildi"
+      failure: "Değiştirilen liste kaydedilemedi: %{errors}"
     update:
       success: "Değiştirilen liste kaydedildi"
-      failure: "The modified list cannot be saved: %{errors}"
+      failure: "Değiştirilen liste kaydedilemedi: %{errors}"
     publish:
       success: "Liste herkese açık hale getirildi"
-      failure: "The list cannot be made public: %{errors}"
+      failure: "Liste herkese açık yapılamadı: %{errors}"
     unpublish:
       success: "Liste gizli hale getirildi"
       failure: "The list cannot be made private: %{errors}"
@@ -623,9 +623,9 @@ tr:
           label: "Konu deseni"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "İş paketi"
+            parent: "Üst"
+            project: "Proje"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "PDF oluştur"
@@ -759,9 +759,9 @@ tr:
       follows_description: "Bu iş paketinin başlayabilmesi için ilgili iş paketinin mutlaka bitmesi gerekir"
       label_child_singular: "alt"
       label_child_plural: "alt"
-      new_child: "Yeni alt"
+      new_child: "Create new child"
       new_child_text: "Geçerli (ana) iş paketinin bir alt öğesi olarak ilgili bir iş paketi oluşturur"
-      existing_child: "Mevcut alt"
+      child: "Child"
       child_description: "İlgili iş paketini geçerli (ana) iş paketinin bir alt öğesi yapar"
       label_closest: "En yakın"
       label_blocks_singular: "engelleyen"
@@ -3570,6 +3570,9 @@ tr:
     manual: "Elle ayarla"
     automatic: "Otomatik ayarla"
   search_input_placeholder: "Ara ..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "İlk giriş yönlendirmesi"
   setting_after_first_login_redirect_url_text_html: >
     Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>

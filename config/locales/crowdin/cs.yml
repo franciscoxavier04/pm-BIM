@@ -778,9 +778,9 @@ cs:
       follows_description: "Související pracovní balíček musí být ukončen dříve, než bude možné začít tento"
       label_child_singular: "dítě"
       label_child_plural: "Potomci"
-      new_child: "Novy potomek"
+      new_child: "Create new child"
       new_child_text: "Vytvoří související pracovní balíček jako podpoložku aktuálního (nadřazeného) pracovního balíčku"
-      existing_child: "Existujici potomek"
+      child: "Child"
       child_description: "Udělá související pracovní balíček podpoložkou aktuálního (nadřazeného) pracovního balíčku"
       label_closest: "Nejbližší"
       label_blocks_singular: "bloky"
@@ -3654,6 +3654,9 @@ cs:
     manual: "set to Manual"
     automatic: "set to Automatic"
   search_input_placeholder: "Hledat ..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
     Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>

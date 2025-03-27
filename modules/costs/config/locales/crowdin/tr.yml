@@ -37,7 +37,7 @@ tr:
         default: "Varsayılan maliyet türü"
       work_package:
         costs_by_type: "Harcanan maliyet"
-        labor_costs: "İşçilik maliyetleri"
+        labor_costs: "İş gücü maliyetleri"
         material_costs: "Birim maliyeti"
         overall_costs: "Tüm maliyetler"
         spent_costs: "Harcanan maliyet"
@@ -58,11 +58,11 @@ tr:
         end_time: Bitiş zamanı
     models:
       time_entry:
-        one: "Time entry"
-        other: "Time entries"
+        one: "Zaman girişleri"
+        other: "Zaman girişleri"
       cost_entry:
-        one: "Cost entry"
-        other: "Cost entries"
+        one: "Maliyet girişi"
+        other: "Maliyet girişleri"
       cost_type:
         one: "Maliyet türü"
         other: "Maliyet türü"

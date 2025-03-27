@@ -828,7 +828,7 @@ tr:
       add_new_child: "Yeni alt birim oluştur"
       create_new: "Yeni oluştur"
       add_existing: "Mevcut olanı ekle"
-      add_existing_child: "Mevcut bir alt birim ekle"
+      add_existing_child: "Add child"
       remove_child: "Alt bileşeni kaldır"
       add_new_relation: "Yeni ilişki oluştur"
       add_existing_relation: "Varolan ilişki ekle"

@@ -830,7 +830,7 @@ cs:
       add_new_child: "Vytvořit nového potomka"
       create_new: "Vytvořit nový"
       add_existing: "Přidat existující"
-      add_existing_child: "Přidat existujícího potomka"
+      add_existing_child: "Add child"
       remove_child: "Odstranit potomka"
       add_new_relation: "Vytvořit nový vztah"
       add_existing_relation: "Přidat existující vztah"

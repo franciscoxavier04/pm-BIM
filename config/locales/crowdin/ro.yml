@@ -769,9 +769,9 @@ ro:
       follows_description: "Pachetul de lucru asociat trebuie neapărat să înceapă după finalizarea acestuia"
       label_child_singular: "copil"
       label_child_plural: "copii"
-      new_child: "Copil nou"
+      new_child: "Create new child"
       new_child_text: "Creează un pachet de lucru asociat ca sub-element al pachetului de lucru curent (părinte)"
-      existing_child: "Copil existent"
+      child: "Child"
       child_description: "Face din pachetul de lucru asociat un sub-element al pachetului de lucru actual (părinte)"
       label_closest: "Closest"
       label_blocks_singular: "blochează"
@@ -3613,6 +3613,9 @@ ro:
     manual: "set to Manual"
     automatic: "set to Automatic"
   search_input_placeholder: "Caută ..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
     Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>

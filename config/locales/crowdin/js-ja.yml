@@ -829,7 +829,7 @@ ja:
       add_new_child: "子関係を作成"
       create_new: "新規作成"
       add_existing: "既存を追加"
-      add_existing_child: "既存の子関係を追加"
+      add_existing_child: "Add child"
       remove_child: "子関係を削除"
       add_new_relation: "新しい関係を作成"
       add_existing_relation: "既存の関係を追加"
