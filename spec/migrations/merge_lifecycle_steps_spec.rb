@@ -81,29 +81,32 @@ RSpec.describe MergeLifecycleSteps, type: :model do
   end
 
   let(:query_without_lifecycle) { create(:project_query) }
-  let(:query_with_lifecycle_select) { create(:project_query, select: %w[name lcsd_2 project_status]) }
+  let(:query_with_lifecycle_select) do
+    create(:project_query).tap do |q|
+      q.update_column(:selects,
+                      [instance_double(Queries::Selects::Base, attribute: "name"),
+                       instance_double(Queries::Selects::Base, attribute: "lcsd_2"),
+                       instance_double(Queries::Selects::Base, attribute: "project_status")])
+    end
+  end
   let(:query_with_lifecycle_order) do
     create(:project_query).tap do |q|
-      q.order("lcsd_3" => "desc")
-      q.save(validate: false)
+      q.update_column(:orders, [instance_double(Queries::Orders::Base, attribute: "lcsd_3", direction: "desc")])
     end
   end
   let(:query_with_lifecycle_any_filter) do
     create(:project_query).tap do |q|
-      q.where("lcsd_any", "t", [])
-      q.save
+      q.update_column(:filters, [instance_double(Queries::Filters::Base, field: "lcsd_any", operator: "", values: [])])
     end
   end
   let(:query_with_lifecycle_gate_filter) do
     create(:project_query).tap do |q|
-      q.where("lcsd_gate_2", "t", [])
-      q.save
+      q.update_column(:filters, [instance_double(Queries::Filters::Base, field: "lcsd_gate_2", operator: "", values: [])])
     end
   end
   let(:query_with_lifecycle_stage_filter) do
     create(:project_query).tap do |q|
-      q.where("lcsd_stage_1", "t", [])
-      q.save
+      q.update_column(:filters, [instance_double(Queries::Filters::Base, field: "lcsd_stage_1", operator: "", values: [])])
     end
   end
 
