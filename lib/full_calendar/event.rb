@@ -42,6 +42,11 @@ module FullCalendar
     attribute :url, :string
     attribute :class_names, array: true, default: []
 
+    # override in subclasses to add more fields to the JSON
+    def additional_attributes
+      {}
+    end
+
     def as_json
       {
         "id" => id,
@@ -51,26 +56,12 @@ module FullCalendar
         "end" => ends_at,
         "title" => title,
         "url" => url,
-        "classNames" => class_names,
-        "customEventView" => rendered_event_content
-      }.compact_blank.as_json
+        "classNames" => class_names
+      }.merge(additional_attributes).compact_blank.as_json
     end
 
     def to_json(*)
       as_json.to_json(*)
-    end
-
-    def event_content_view_component
-      # override in subclasses
-      nil
-    end
-
-    private
-
-    def rendered_event_content
-      if event_content_view_component
-        ApplicationController.render(event_content_view_component, layout: false)
-      end
     end
   end
 end

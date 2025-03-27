@@ -47,19 +47,15 @@ module FullCalendar
       end
     end
 
-    def as_json(*)
-      super.merge(
+    def additional_attributes
+      {
         hours: time_entry.hours,
         statusId: time_entry.work_package.status_id,
         workPackageId: time_entry.work_package.id,
         workPackageSubject: time_entry.work_package.subject,
         projectId: time_entry.project.id,
         projectName: time_entry.project.name
-      )
-    end
-
-    def event_content_view_component
-      TimeTracking::TimeEntryEventComponent.new(time_entry: time_entry)
+      }
     end
   end
 end
