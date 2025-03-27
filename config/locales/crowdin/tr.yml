@@ -621,12 +621,12 @@ tr:
           caption: "İş paketi konularını otomatik olarak oluşturmak için başvurulan öznitelikleri ve metni kullanarak bir kalıp tanımlayın. Kullanıcılar konuları elle düzenleyemeyecektir."
         pattern:
           label: "Konu deseni"
-          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          caption: "Öznitelik için arayın ya da metin ekleyin. Elementler arası boşluk eklemek için bunu metin olarak girin."
           headings:
             work_package: "İş paketi"
             parent: "Üst"
             project: "Proje"
-          insert_as_text: "No attributes found. Add as text: \"%{word}\""
+          insert_as_text: "\"%{word}\" metni olarak ekle"
       export_configuration:
         tab: "PDF oluştur"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
