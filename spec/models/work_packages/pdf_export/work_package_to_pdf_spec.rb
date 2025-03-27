@@ -66,7 +66,9 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
              project_custom_field_long_text.id => "foo"
            },
            work_package_custom_fields: [cf_long_text, cf_empty_long_text, cf_disabled_in_project, cf_global_bool],
-           work_package_custom_field_ids: [cf_long_text.id, cf_empty_long_text.id, cf_global_bool.id]) # cf_disabled_in_project.id is disabled
+
+           # cf_disabled_in_project.id not included == disabled
+           work_package_custom_field_ids: [cf_long_text.id, cf_empty_long_text.id, cf_global_bool.id])
   end
   let(:forbidden_project) do
     create(:project,
@@ -79,7 +81,9 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
            active: true,
            parent: parent_project,
            work_package_custom_fields: [cf_long_text, cf_empty_long_text, cf_disabled_in_project, cf_global_bool],
-           work_package_custom_field_ids: [cf_long_text.id, cf_empty_long_text.id, cf_global_bool.id]) # cf_disabled_in_project.id is disabled
+
+           # cf_disabled_in_project.id not included == disabled
+           work_package_custom_field_ids: [cf_long_text.id, cf_empty_long_text.id, cf_global_bool.id])
   end
   let(:user) do
     create(:user,
