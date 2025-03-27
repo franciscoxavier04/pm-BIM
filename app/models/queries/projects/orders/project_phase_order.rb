@@ -28,23 +28,23 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
+class Queries::Projects::Orders::ProjectPhaseOrder < Queries::Orders::Base
   self.model = Project
 
-  validates :life_cycle_step_definition, presence: { message: I18n.t(:"activerecord.errors.messages.does_not_exist") }
+  validates :project_phase_definition, presence: { message: I18n.t(:"activerecord.errors.messages.does_not_exist") }
 
   def self.key
-    /\Alcsd_(\d+)\z/
+    /\Aproject_phase_(\d+)\z/
   end
 
-  def life_cycle_step_definition
-    return @life_cycle_step_definition if defined?(@life_cycle_step_definition)
+  def project_phase_definition
+    return @project_phase_definition if defined?(@project_phase_definition)
 
-    @life_cycle_step_definition = Project::PhaseDefinition.find_by(id: attribute[/\Alcsd_(\d+)\z/, 1])
+    @project_phase_definition = Project::PhaseDefinition.find_by(id: attribute[/\Aproject_phase_(\d+)\z/, 1])
   end
 
   def available?
-    life_cycle_step_definition.present? &&
+    project_phase_definition.present? &&
       OpenProject::FeatureDecisions.stages_and_gates_active? &&
       User.current.allowed_in_any_project?(:view_project_phases)
   end
@@ -54,25 +54,25 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
   def joins
     join = <<~SQL.squish
       LEFT JOIN (
-              SELECT steps.*, steps.definition_id as def_id
-              FROM project_life_cycle_steps steps
+              SELECT project_phases.*, project_phases.definition_id as def_id
+              FROM project_phases
               WHERE
-                steps.active = true
-                AND steps.definition_id = :definition_id
-                AND steps.project_id IN (#{viewable_project_ids.to_sql})
+                project_phases.active = true
+                AND project_phases.definition_id = :definition_id
+                AND project_phases.project_id IN (#{viewable_project_ids.to_sql})
             ) #{subquery_table_name} ON #{subquery_table_name}.project_id = projects.id
     SQL
 
-    ActiveRecord::Base.sanitize_sql([join, { definition_id: life_cycle_step_definition.id }])
+    ActiveRecord::Base.sanitize_sql([join, { definition_id: project_phase_definition.id }])
   end
 
   # Since we can combine multiple queries with their respective ORDER BY clauses, we need to make sure
   # that the names of our tables are unique. It suffices to include the definition id into the name as there can only
   # ever be one order statement per definition.
   def subquery_table_name
-    definition_id = life_cycle_step_definition.id
+    definition_id = project_phase_definition.id
 
-    :"life_cycle_steps_subquery_#{definition_id}"
+    :"project_phase_subquery_#{definition_id}"
   end
 
   def order(scope)
@@ -93,9 +93,9 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
     # Note that this SQL query uses the subquery defined in `joins`.
     steps_table = Arel::Table.new(subquery_table_name.to_s)
 
-    # WHERE subquery_table_name.def_id = life_cycle_step_definition.id OR subquery_table_name.def_id IS NULL
+    # WHERE subquery_table_name.def_id = project_phase_definition.id OR subquery_table_name.def_id IS NULL
     steps_table[:def_id]
-      .eq(life_cycle_step_definition.id)
+      .eq(project_phase_definition.id)
       .or(steps_table[:def_id].eq(nil))
   end
 

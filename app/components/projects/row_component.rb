@@ -30,8 +30,9 @@
 module Projects
   class RowComponent < ::RowComponent
     delegate :identifier, to: :project
-    delegate :favored_project_ids, to: :table
-    delegate :project_life_cycle_step_by_definition, to: :table
+    delegate :favored_project_ids,
+             :project_phase_by_definition,
+             to: :table
 
     def project
       model.first
@@ -100,7 +101,7 @@ module Projects
     def life_cycle_step_column(column)
       return nil unless user_can_view_project_phases?
 
-      life_cycle_step = project_life_cycle_step_by_definition(column.life_cycle_step_definition, project)
+      life_cycle_step = project_phase_by_definition(column.project_phase_definition, project)
 
       return nil if life_cycle_step.blank?
 
@@ -392,7 +393,7 @@ module Projects
     end
 
     def life_cycle_step_column?(column)
-      column.is_a?(::Queries::Projects::Selects::LifeCycleStep)
+      column.is_a?(::Queries::Projects::Selects::ProjectPhase)
     end
 
     def current_page

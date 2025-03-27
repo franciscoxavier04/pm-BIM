@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe Queries::Projects::Orders::LifeCycleStepOrder do
+RSpec.describe Queries::Projects::Orders::ProjectPhaseOrder do
   describe ".key" do
     it "matches key in correct format for life cycles" do
       expect(described_class.key).to match("lcsd_42")

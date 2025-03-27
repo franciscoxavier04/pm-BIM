@@ -56,7 +56,7 @@ module Queries::Projects
     order Orders::CustomFieldOrder
     order Orders::DefaultOrder
     order Orders::LatestActivityAtOrder
-    order Orders::LifeCycleStepOrder
+    order Orders::ProjectPhaseOrder
     order Orders::NameOrder
     order Orders::ProjectStatusOrder
     order Orders::RequiredDiskSpaceOrder
@@ -67,7 +67,7 @@ module Queries::Projects
     select Selects::Default
     select Selects::Favored
     select Selects::LatestActivityAt
-    select Selects::LifeCycleStep
+    select Selects::ProjectPhase
     select Selects::RequiredDiskSpace
     select Selects::Status
   end

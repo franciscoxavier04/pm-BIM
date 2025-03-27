@@ -28,8 +28,8 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-class Queries::Projects::Selects::LifeCycleStep < Queries::Selects::Base
-  KEY = /\Alcsd_(\d+)\z/
+class Queries::Projects::Selects::ProjectPhase < Queries::Selects::Base
+  KEY = /\Aproject_phase_(\d+)\z/
 
   def self.key
     KEY
@@ -40,43 +40,35 @@ class Queries::Projects::Selects::LifeCycleStep < Queries::Selects::Base
 
     Project::PhaseDefinition
       .pluck(:id)
-      .map { |id| new(:"lcsd_#{id}") }
+      .map { |id| new(:"project_phase_#{id}") }
   end
 
   def caption
-    life_cycle_step_definition.name
+    project_phase_definition.name
   end
 
-  def life_cycle_step_definition
-    return @life_cycle_step_definition if defined?(@life_cycle_step_definition)
+  def project_phase_definition
+    return @project_phase_definition if defined?(@project_phase_definition)
 
-    @life_cycle_step_definition = Project::PhaseDefinition
+    @project_phase_definition = Project::PhaseDefinition
                                     .find_by(id: attribute[KEY, 1])
   end
 
   def self.available?
     OpenProject::FeatureDecisions.stages_and_gates_active? &&
-    User.current.allowed_in_any_project?(:view_project_phases)
+      User.current.allowed_in_any_project?(:view_project_phases)
   end
 
   def available?
-    life_cycle_step_definition.present?
+    project_phase_definition.present?
   end
 
   def visual_icon
-    # Show the proper icon for the definition with the correct color.
-    icon = case life_cycle_step_definition
-           when Project::StageDefinition
-             :"git-commit"
-           when Project::GateDefinition
-             :diamond
-           else
-             raise "Unknown life cycle definition for: #{life_cycle_step_definition}"
-           end
-
-    classes = helpers.hl_inline_class("life_cycle_step_definition", life_cycle_step_definition)
-
-    { icon:, classes: }
+    {
+      # TODO: needs to be changed
+      icon: :"git-commit",
+      classes: helpers.hl_inline_class("project_phase_definition", project_phase_definition)
+    }
   end
 
   def action_menu_classes
