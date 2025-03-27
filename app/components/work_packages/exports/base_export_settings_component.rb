@@ -42,6 +42,10 @@ module WorkPackages
 
         @query = query
       end
+
+      def export_settings
+        @export_settings ||= query.export_settings.where(format: "csv").first_or_initialize
+      end
     end
   end
 end
