@@ -20,6 +20,7 @@ export default class MyTimeTrackingController extends Controller {
     initialDate: String,
     canCreate: Boolean,
     canEdit: Boolean,
+    forceTimes: Boolean,
   };
 
   declare readonly calendarTarget:HTMLElement;
@@ -28,6 +29,7 @@ export default class MyTimeTrackingController extends Controller {
   declare readonly initialDateValue:string;
   declare readonly canCreateValue:boolean;
   declare readonly canEditValue:boolean;
+  declare readonly forceTimesValue:boolean;
 
   private calendar:Calendar;
 
@@ -38,7 +40,11 @@ export default class MyTimeTrackingController extends Controller {
 
     // handle dialog close event
     document.addEventListener('dialog:close', (event:CustomEvent) => {
-      const { detail: { dialog, submitted } } = event as { detail:{ dialog:HTMLDialogElement; submitted:boolean }; };
+      const {
+        detail: { dialog, submitted },
+      } = event as {
+        detail:{ dialog:HTMLDialogElement; submitted:boolean };
+      };
       if (dialog.id === 'time-entry-dialog' && submitted) {
         window.location.reload();
       }
@@ -79,7 +85,7 @@ export default class MyTimeTrackingController extends Controller {
           time = `${moment(arg.event.start).format('HH:mm')}-${moment(arg.event.end).format('HH:mm')} (${this.displayDuration(arg.event.extendedProps.hours as number)})`;
         }
 
-        return ({
+        return {
           html: `
             <div class="fc-event-main-frame">
               <div class="fc-event-time">${time}</div>
@@ -91,7 +97,8 @@ export default class MyTimeTrackingController extends Controller {
                   <a href="${this.pathHelper.projectPath(arg.event.extendedProps.projectId as string)}">${arg.event.extendedProps.projectName}</a>
                 </div>
               </div>
-            </div>` });
+            </div>`,
+        };
       },
       select: (info) => {
         let dialogParams = 'onlyMe=true';
@@ -111,7 +118,9 @@ export default class MyTimeTrackingController extends Controller {
         const startMoment = moment(info.event.startStr);
         const endMoment = moment(info.event.endStr);
 
-        const newEventHours = info.event.allDay ? info.event.extendedProps.hours as number : moment.duration(endMoment.diff(startMoment)).asHours();
+        const newEventHours = info.event.allDay
+          ? (info.event.extendedProps.hours as number)
+          : moment.duration(endMoment.diff(startMoment)).asHours();
 
         info.event.setExtendedProp('hours', newEventHours);
 
@@ -128,8 +137,21 @@ export default class MyTimeTrackingController extends Controller {
         // When dragging from all day into the calendar set the defaultTimedEventDuration to the hours of the event so
         // that we display it correctly in the calendar. Will be reset in the drop event
         if (info.event.allDay) {
-          this.calendar.setOption('defaultTimedEventDuration', moment.duration(info.event.extendedProps.hours as number, 'hours').asMilliseconds());
+          this.calendar.setOption(
+            'defaultTimedEventDuration',
+            moment
+              .duration(info.event.extendedProps.hours as number, 'hours')
+              .asMilliseconds(),
+          );
         }
+      },
+
+      eventAllow: (dropInfo) => {
+        if (dropInfo.allDay && this.forceTimesValue) {
+          return false;
+        }
+
+        return true;
       },
 
       eventDrop: (info) => {
@@ -144,14 +166,23 @@ export default class MyTimeTrackingController extends Controller {
         );
 
         if (!info.event.allDay) {
-          info.event.setEnd(startMoment.add(info.event.extendedProps.hours as number, 'hours').toDate());
+          info.event.setEnd(
+            startMoment
+              .add(info.event.extendedProps.hours as number, 'hours')
+              .toDate(),
+          );
         }
 
-        this.calendar.setOption('defaultTimedEventDuration', DEFAULT_TIMED_EVENT_DURATION);
+        this.calendar.setOption(
+          'defaultTimedEventDuration',
+          DEFAULT_TIMED_EVENT_DURATION,
+        );
       },
       eventClick: (info) => {
         // check if we clicked on a link tag, if so exit early as we don't want to show the modal
-        if (info.jsEvent.target instanceof HTMLAnchorElement) { return; }
+        if (info.jsEvent.target instanceof HTMLAnchorElement) {
+          return;
+        }
 
         void this.turboRequests.request(
           `${this.pathHelper.timeEntryEditDialog(info.event.id)}?onlyMe=true`,
@@ -163,33 +194,43 @@ export default class MyTimeTrackingController extends Controller {
     this.calendar.render();
   }
 
-  updateTimeEntry(timeEntryId:string, spentOn:string, startTime:string | null, hours:number, revertFunction:() => void) {
-    const csrfToken = document.querySelector<HTMLMetaElement>('meta[name="csrf-token"]')?.content || '';
-    fetch(
-      this.pathHelper.timeEntryUpdate(timeEntryId),
-      {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-Token': csrfToken,
-        },
-        body: JSON.stringify({
-          time_entry: {
-            spent_on: spentOn,
-            start_time: startTime,
-            hours,
-          },
-        }),
+  updateTimeEntry(
+    timeEntryId:string,
+    spentOn:string,
+    startTime:string | null,
+    hours:number,
+    revertFunction:() => void,
+  ) {
+    const csrfToken = document.querySelector<HTMLMetaElement>('meta[name="csrf-token"]')
+        ?.content || '';
+    fetch(this.pathHelper.timeEntryUpdate(timeEntryId), {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken,
       },
-    ).then((response) => {
-      if (response.ok) {
-        void response.text().then((html) => {
-          renderStreamMessage(html);
-        });
-      } else if (revertFunction) { revertFunction(); }
-    }).catch(() => {
-      if (revertFunction) { revertFunction(); }
-    });
+      body: JSON.stringify({
+        time_entry: {
+          spent_on: spentOn,
+          start_time: startTime,
+          hours,
+        },
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          void response.text().then((html) => {
+            renderStreamMessage(html);
+          });
+        } else if (revertFunction) {
+          revertFunction();
+        }
+      })
+      .catch(() => {
+        if (revertFunction) {
+          revertFunction();
+        }
+      });
   }
 
   displayDuration(duration:number):string {

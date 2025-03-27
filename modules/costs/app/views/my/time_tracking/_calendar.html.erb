@@ -5,7 +5,8 @@
   data-my--time-tracking-time-entries-value="<%= time_entries_json %>"
   data-my--time-tracking-initial-date-value="<%= current_day %>"
   data-my--time-tracking-can-create-value="<%= User.current.allowed_in_any_project?(:log_own_time) %>"
-  data-my--time-tracking-can-edit-value="<%= User.current.allowed_in_any_project?(:edit_own_time_entries) %>">
+  data-my--time-tracking-can-edit-value="<%= User.current.allowed_in_any_project?(:edit_own_time_entries) %>"
+  data-my--time-tracking-force-times-value="<%= TimeEntry.must_track_start_and_end_time? %>">
   <%= render(Primer::OpenProject::SubHeader.new) do |component|
         component.with_text do
           "#{current_day.beginning_of_week.day}-#{current_day.end_of_week.day}. #{current_day.strftime('%B %Y')}"
