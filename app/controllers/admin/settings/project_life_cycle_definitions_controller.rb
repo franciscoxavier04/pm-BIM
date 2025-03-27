@@ -29,29 +29,24 @@
 #++
 
 module Admin::Settings
-  class ProjectLifeCycleStepDefinitionsController < ::Admin::SettingsController
+  class ProjectLifeCycleDefinitionsController < ::Admin::SettingsController
     include FlashMessagesOutputSafetyHelper
     include OpTurbo::ComponentStream
     include Projects::LifeCycleDefinitionHelper
 
-    menu_item :project_life_cycle_step_definitions_settings
+    menu_item :project_life_cycle_definitions_settings
 
     before_action :check_feature_flag
     before_action :require_enterprise_token, except: %i[index]
 
-    before_action :find_definitions, only: %i[index]
     before_action :find_definition, only: %i[edit update destroy move drop]
 
-    def index; end
-
-    def new_stage
-      @definition = Project::StageDefinition.new
-
-      render :form
+    def index
+      @definitions = Project::PhaseDefinition.with_project_count
     end
 
-    def new_gate
-      @definition = Project::GateDefinition.new
+    def new
+      @definition = Project::PhaseDefinition.new
 
       render :form
     end
@@ -122,16 +117,21 @@ module Admin::Settings
       render_402 unless allowed_to_customize_life_cycle?
     end
 
-    def find_definitions
-      @definitions = Project::PhaseDefinition.with_project_count
-    end
-
     def find_definition
       @definition = Project::PhaseDefinition.find(params[:id])
     end
 
     def definition_params
-      params.require(:project_life_cycle_step_definition).permit(:type, :name, :color_id)
+      params.require(:project_phase_definition)
+            .permit(
+              :type,
+              :name,
+              :color_id,
+              :start_gate_name,
+              :end_gate_name,
+              :start_gate,
+              :end_gate
+            )
     end
 
     def update_definitions_via_turbo_stream

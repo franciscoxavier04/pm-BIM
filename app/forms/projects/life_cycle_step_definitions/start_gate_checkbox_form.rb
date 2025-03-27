@@ -28,28 +28,19 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Project::PhaseDefinition < ApplicationRecord
-  include ::Scopes::Scoped
-
-  has_many :phases,
-           class_name: "Project::Phase",
-           foreign_key: :definition_id,
-           inverse_of: :definition,
-           dependent: :destroy
-  has_many :projects, through: :phases
-  belongs_to :color, optional: false
-
-  validates :name, presence: true, uniqueness: true
-  validates :start_gate_name, presence: true, if: Proc.new { |d| d.start_gate.present? }
-  validates :end_gate_name, presence: true, if: Proc.new { |d| d.end_gate.present? }
-  acts_as_list
-
-  default_scope { order(:position) }
-
-  scopes :with_project_count
-
-  def column_name
-    # TODO: rename
-    "lcsd_#{id}"
+module Projects::LifeCycleStepDefinitions
+  class StartGateCheckboxForm < ApplicationForm
+    form do |f|
+      f.check_box(
+        label: attribute_name(:start_gate),
+        name: :start_gate,
+        caption: I18n.t("settings.project_phase_definitions.start_gate_caption"),
+        input_width: :medium,
+        data: {
+          "show-when-checked-target": "cause",
+          target_name: "start_gate"
+        }
+      )
+    end
   end
 end

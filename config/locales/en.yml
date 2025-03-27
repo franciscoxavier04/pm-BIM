@@ -1039,6 +1039,10 @@ en:
       project/phase_definition:
         name: "Name"
         color: "Color"
+        start_gate: "Start phase gate"
+        start_gate_name: "Start phase gate name"
+        end_gate: "Finish phase gate"
+        end_gate_name: "Finish phase gate name"
       query:
         sums: "Sums"
         columns: "Columns"
@@ -2870,7 +2874,7 @@ en:
   label_project_new: "New project"
   label_project_plural: "Projects"
   label_project_list_plural: "Project lists"
-  label_project_lifecycle: "Project lifecycle"
+  label_project_life_cycle: "Project life cycle"
   label_project_attributes_plural: "Project attributes"
   label_project_custom_field_plural: "Project attributes"
   label_project_settings: "Project settings"
@@ -3957,27 +3961,27 @@ en:
       new:
         heading: "New attribute"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
-    project_life_cycle_step_definitions:
-      heading: "Project lifecycle"
-      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+    project_phase_definitions:
+      heading: "Project life cycle"
+      heading_description: "The project life cycles consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
       label_add: "Add"
       label_add_description: "Add lifecycle definition"
-      label_add_stage: "Stage"
-      label_add_gate: "Gate"
       filter:
         label: "Search project stage or gate"
-      section_header: "Stages and gates"
+      section_header: "Phases"
       non_defined: "Neither stages nor gates are currently defined."
+      phase_gates: "Phase gates"
       new:
         description: "Changes to this project step will be reflected in all projects where it is enabled."
-      new_stage:
-        heading: "New stage"
-      new_gate:
-        heading: "New gate"
-      edit_stage:
-        heading: "Edit stage"
-      edit_gate:
-        heading: "Edit gate"
+        heading: "New Phase"
+      edit:
+        heading: "Edit Phase"
+      both_gate: "Start and finish gate"
+      no_gate: "No gate"
+      start_gate: "Start gate"
+      start_gate_caption: "Add a gate with the start date of the phase"
+      end_gate: "Finish gate"
+      end_gate_caption: "Add a gate with the end date of the phase"
     projects:
       missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
       section_new_projects: "Settings for new projects"

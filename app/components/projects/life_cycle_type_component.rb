@@ -32,18 +32,19 @@ module Projects
     include OpPrimer::ComponentHelpers
 
     def text
-      model.model_name.human
+      if model.start_gate? && model.end_gate?
+        I18n.t("settings.project_phase_definitions.both_gate")
+      elsif model.start_gate?
+        I18n.t("settings.project_phase_definitions.start_gate")
+      elsif model.end_gate?
+        I18n.t("settings.project_phase_definitions.end_gate")
+      else
+        I18n.t("settings.project_phase_definitions.no_gate")
+      end
     end
 
     def icon
-      case model
-      when Project::StageDefinition
-        :"git-commit"
-      when Project::GateDefinition
-        :diamond
-      else
-        raise NotImplementedError, "Unknown model #{model.class} to render a LifeCycleTypeComponent with"
-      end
+      :"git-commit"
     end
 
     def icon_color_class

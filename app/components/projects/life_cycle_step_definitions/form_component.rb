@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,30 +26,27 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
+module Projects::LifeCycleStepDefinitions
+  class FormComponent < ApplicationComponent
+    include OpPrimer::ComponentHelpers
 
-class Project::PhaseDefinition < ApplicationRecord
-  include ::Scopes::Scoped
+    def selected?(tabname)
+      tabname == if no_errors || details_tab_errors.any?
+                   :details
+                 else
+                   :phase_gates
+                 end
+    end
 
-  has_many :phases,
-           class_name: "Project::Phase",
-           foreign_key: :definition_id,
-           inverse_of: :definition,
-           dependent: :destroy
-  has_many :projects, through: :phases
-  belongs_to :color, optional: false
+    private
 
-  validates :name, presence: true, uniqueness: true
-  validates :start_gate_name, presence: true, if: Proc.new { |d| d.start_gate.present? }
-  validates :end_gate_name, presence: true, if: Proc.new { |d| d.end_gate.present? }
-  acts_as_list
+    def no_errors
+      model.errors.empty?
+    end
 
-  default_scope { order(:position) }
-
-  scopes :with_project_count
-
-  def column_name
-    # TODO: rename
-    "lcsd_#{id}"
+    def details_tab_errors
+      model.errors.attribute_names & %i[name color]
+    end
   end
 end

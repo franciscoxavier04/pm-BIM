@@ -29,33 +29,18 @@
 #++
 
 module Projects::LifeCycleStepDefinitions
-  class Form < ApplicationForm
+  class FinishGateCheckboxForm < ApplicationForm
     form do |f|
-      f.hidden(name: :type) unless model.persisted?
-
-      f.text_field(
-        label: attribute_name(:name),
-        name: :name,
-        required: true,
-        input_width: :medium
+      f.check_box(
+        label: attribute_name(:end_gate),
+        name: :end_gate,
+        caption: I18n.t("settings.project_phase_definitions.end_gate_caption"),
+        input_width: :medium,
+        data: {
+          "show-when-checked-target": "cause",
+          target_name: "end_gate"
+        }
       )
-
-      f.color_select_list(
-        label: attribute_name(:color),
-        name: :color,
-        required: true,
-        input_width: :medium
-      )
-
-      f.submit(
-        scheme: :primary,
-        name: :submit,
-        label: submit_label
-      )
-    end
-
-    def submit_label
-      I18n.t(model.persisted? ? :button_update : :button_create)
     end
   end
 end

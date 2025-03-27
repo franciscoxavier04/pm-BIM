@@ -28,28 +28,15 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Project::PhaseDefinition < ApplicationRecord
-  include ::Scopes::Scoped
-
-  has_many :phases,
-           class_name: "Project::Phase",
-           foreign_key: :definition_id,
-           inverse_of: :definition,
-           dependent: :destroy
-  has_many :projects, through: :phases
-  belongs_to :color, optional: false
-
-  validates :name, presence: true, uniqueness: true
-  validates :start_gate_name, presence: true, if: Proc.new { |d| d.start_gate.present? }
-  validates :end_gate_name, presence: true, if: Proc.new { |d| d.end_gate.present? }
-  acts_as_list
-
-  default_scope { order(:position) }
-
-  scopes :with_project_count
-
-  def column_name
-    # TODO: rename
-    "lcsd_#{id}"
+module Projects::LifeCycleStepDefinitions
+  class StartGateNameForm < ApplicationForm
+    form do |f|
+      f.text_field(
+        label: attribute_name(:start_gate_name),
+        name: :start_gate_name,
+        input_width: :medium,
+        required: true
+      )
+    end
   end
 end
