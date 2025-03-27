@@ -2044,6 +2044,7 @@ en:
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available only through the %{plan_name}."
       link_title: "More information"
+      hide_banner: "Hide this banner"
       work_package_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:

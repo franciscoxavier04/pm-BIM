@@ -1,5 +1,6 @@
 <%=
-  grid_layout("op-enterprise-banner", **@system_arguments) do |grid|
+  grid_layout("op-enterprise-banner",
+              **@system_arguments) do |grid|
     grid.with_area(:visual) do
       render(Primer::Beta::Octicon.new(icon: :"op-enterprise-addons", classes: "op-enterprise-banner--icon"))
     end
@@ -38,8 +39,11 @@
           Primer::Beta::IconButton.new(
             classes: "op-enterprise-banner--close-icon",
             scheme: :invisible,
+            tag: :a,
+            href: dismiss_enterprise_banner_path(feature_key:),
+            data: { turbo_stream: true, turbo_method: :post },
             icon: :x,
-            aria: { label: "Hide" }
+            aria: { label: t("ee.upsale.hide_banner") }
           )
         )
       end

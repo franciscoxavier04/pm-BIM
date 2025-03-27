@@ -39,6 +39,8 @@ module EnterpriseEdition
     # @param title [String] The title of the banner.
     # @param description [String] The description of the banner.
     # @param href [String] The URL to link to.
+    # @param dismissable [boolean] Allow this banner to be dismissed.
+    # @param dismiss_key [String] Provide a string to identify this banner when being dismissed. Defaults to feature_key
     # @param skip_render [Boolean] Whether to skip rendering the banner.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(feature_key,
@@ -46,11 +48,14 @@ module EnterpriseEdition
                    description: nil,
                    link_title: nil,
                    href: nil,
+                   dismissable: false,
+                   dismiss_key: feature_key,
                    skip_render: EnterpriseToken.hide_banners?,
                    **system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = :div
-      @system_arguments[:test_selector] = "op-enterprise-banner-#{feature_key.to_s.tr('_', '-')}"
+      @system_arguments[:id] = "op-enterprise-banner-#{feature_key.to_s.tr('_', '-')}"
+      @system_arguments[:test_selector] = @system_arguments[:id]
       super
 
       @feature_key = feature_key
@@ -59,7 +64,8 @@ module EnterpriseEdition
       @link_title = link_title
       @href = href
       @skip_render = skip_render
-      @dismissable = true
+      @dismissable = dismissable
+      @dismiss_key = dismiss_key
     end
 
     private
@@ -150,7 +156,13 @@ module EnterpriseEdition
     end
 
     def render?
-      !skip_render
+      !(skip_render || dismissed?)
+    end
+
+    def dismissed?
+      return false unless @dismissable
+
+      User.current.pref.dismissed_banner?(@dismiss_key)
     end
   end
 end
