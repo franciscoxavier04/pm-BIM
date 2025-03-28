@@ -47,7 +47,7 @@ module Types
           creation_date: { fn: ->(wp) { wp.created_at }, label: -> { WorkPackage.human_attribute_name(:created_at) } },
           estimated_time: { fn: ->(wp) { wp.estimated_hours }, label: -> { WorkPackage.human_attribute_name(:estimated_hours) } },
           finish_date: { fn: ->(wp) { wp.due_date }, label: -> { WorkPackage.human_attribute_name(:due_date) } },
-          parent_id: { fn: ->(wp) { wp.parent&.id }, label: -> { WorkPackage.human_attribute_name(:parent_id) } },
+          parent_id: { fn: ->(wp) { wp.parent&.id }, label: -> { WorkPackage.human_attribute_name(:id) } },
           parent_assignee: { fn: ->(wp) { wp.parent&.assigned_to&.name }, label: -> {
             WorkPackage.human_attribute_name(:assigned_to)
           } },

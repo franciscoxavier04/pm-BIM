@@ -52,7 +52,7 @@ module Storages
         end
 
         def register_check(key)
-          Kernel.warn("Overriding already defined check") if @results.key?(key)
+          warn("Overriding already defined check") if @results.key?(key)
 
           @results[key] = CheckResult.skipped(key)
         end

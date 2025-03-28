@@ -38,12 +38,12 @@ module Storages
             @validation_groups ||= {}
           end
 
-          def register_group(group_name, klass, when: ->(storage, *) { storage.configured? })
+          def register_group(group_name, klass, when: ->(*) { true })
             validation_groups[group_name] = { klass:, when: }
           end
         end
 
-        register_group :base_configuration, Nextcloud::BaseConfigurationValidator
+        register_group :base_configuration, Nextcloud::StorageConfigurationValidator
         register_group :authentication, Nextcloud::AuthenticationValidator,
                        when: ->(_, result) { result.group(:base_configuration).non_failure? }
         register_group :ampf_configuration, Nextcloud::AmpfConfigurationValidator,
@@ -61,8 +61,6 @@ module Storages
               result.add_group_result(key, group_metadata[:klass].new(@storage).call)
             end
           end
-        rescue KeyError
-          ValidatorResult.new
         end
 
         private

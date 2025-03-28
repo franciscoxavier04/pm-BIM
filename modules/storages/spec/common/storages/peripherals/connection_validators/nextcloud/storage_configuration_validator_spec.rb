@@ -35,7 +35,7 @@ module Storages
   module Peripherals
     module ConnectionValidators
       module Nextcloud
-        RSpec.describe BaseConfigurationValidator, :webmock do
+        RSpec.describe StorageConfigurationValidator, :webmock do
           let(:storage) { create(:nextcloud_storage_with_local_connection, :as_not_automatically_managed) }
 
           subject(:validator) { described_class.new(storage) }
@@ -47,7 +47,17 @@ module Storages
             expect(results).to be_success
           end
 
-          describe "when errors occurs" do
+          describe "possible error scenarios" do
+            context "when the storage is not configured" do
+              let(:storage) { create(:nextcloud_storage) }
+
+              it "the check fails" do
+                results = validator.call
+                expect(results[:storage_configured]).to be_a_failure
+                expect(results[:storage_configured].message).to eq(I18n.t(i18n_key(:not_configured)))
+              end
+            end
+
             it "base url could not be reached" do
               stub_request(:get, UrlBuilder.url(storage.uri, "/ocs/v2.php/cloud/capabilities"))
                 .to_return(status: 404, body: "Not Found")
