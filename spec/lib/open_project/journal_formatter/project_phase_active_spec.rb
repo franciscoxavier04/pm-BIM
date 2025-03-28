@@ -33,6 +33,7 @@ require "spec_helper"
 RSpec.describe OpenProject::JournalFormatter::ProjectPhaseActive do
   describe "#render" do
     let(:key) { "project_life_cycle_step_#{step.id}_active" }
+    let(:step) { build_stubbed(:project_phase, definition:) }
 
     subject(:result) { described_class.new(nil).render(key, values, html:) }
 
@@ -41,26 +42,23 @@ RSpec.describe OpenProject::JournalFormatter::ProjectPhaseActive do
     end
 
     shared_examples "test result" do
+      context "with text output" do
+        let(:html) { false }
+
+        it { is_expected.to eq text_result }
+      end
+
       context "with html output" do
         let(:html) { true }
 
         it { is_expected.to eq html_result }
       end
-
-      context "with plain output" do
-        let(:html) { false }
-
-        it { is_expected.to eq plain_result }
-      end
     end
 
-    describe "for phase changes" do
-      let(:step) { build_stubbed(:project_phase, definition:) }
-      let(:definition) { build_stubbed(:project_phase_definition, name: "The Phase") }
-
+    shared_examples "for phase changes" do
       context "when activated" do
         let(:values) { [false, true] }
-        let(:plain_result) { "The Phase activated" }
+        let(:text_result) { "The Phase activated" }
         let(:html_result) { "<strong>The Phase</strong> activated" }
 
         include_examples "test result"
@@ -68,7 +66,7 @@ RSpec.describe OpenProject::JournalFormatter::ProjectPhaseActive do
 
       context "when deactivated" do
         let(:values) { [true, false] }
-        let(:plain_result) { "The Phase deactivated" }
+        let(:text_result) { "The Phase deactivated" }
         let(:html_result) { "<strong>The Phase</strong> deactivated" }
 
         include_examples "test result"
@@ -76,7 +74,7 @@ RSpec.describe OpenProject::JournalFormatter::ProjectPhaseActive do
 
       context "when no change between truthy values" do
         let(:values) { [true, true] }
-        let(:plain_result) { nil }
+        let(:text_result) { nil }
         let(:html_result) { nil }
 
         include_examples "test result"
@@ -84,11 +82,59 @@ RSpec.describe OpenProject::JournalFormatter::ProjectPhaseActive do
 
       context "when no change between falsey values" do
         let(:values) { [nil, false] }
-        let(:plain_result) { nil }
+        let(:text_result) { nil }
         let(:html_result) { nil }
 
         include_examples "test result"
       end
+    end
+
+    context "without gates" do
+      let(:definition) do
+        build_stubbed(
+          :project_phase_definition,
+          name: "The Phase"
+        )
+      end
+
+      include_examples "for phase changes"
+    end
+
+    context "with start gate" do
+      let(:definition) do
+        build_stubbed(
+          :project_phase_definition,
+          :with_start_gate,
+          name: "The Phase"
+        )
+      end
+
+      include_examples "for phase changes"
+    end
+
+    context "with end gate" do
+      let(:definition) do
+        build_stubbed(
+          :project_phase_definition,
+          :with_end_gate,
+          name: "The Phase"
+        )
+      end
+
+      include_examples "for phase changes"
+    end
+
+    context "with both gates" do
+      let(:definition) do
+        build_stubbed(
+          :project_phase_definition,
+          :with_start_gate,
+          :with_end_gate,
+          name: "The Phase"
+        )
+      end
+
+      include_examples "for phase changes"
     end
   end
 end

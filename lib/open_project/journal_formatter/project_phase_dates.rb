@@ -30,35 +30,78 @@
 
 class OpenProject::JournalFormatter::ProjectPhaseDates < JournalFormatter::Base
   def render(key, values, options = { html: true })
+    html = options[:html]
+
     step = Project::Phase.find(key[/\d+/])
 
-    name = step.definition.name
-    label = options[:html] ? content_tag(:strong, name) : name
+    phase_message = format_phase_message(step:, values:, html:)
+    return unless phase_message
 
-    message = date_change_message(values:, step:, options:)
+    start_gate_message = format_start_gate_message(step:, values:, html:)
+    end_gate_message = format_end_gate_message(step:, values:, html:)
 
-    "#{label} #{message}" if message
+    if start_gate_message && end_gate_message
+      I18n.t("activity.project_phase.phase_and_both_gates", phase_message:, start_gate_message:, end_gate_message:)
+    elsif (gate_message = start_gate_message || end_gate_message)
+      I18n.t("activity.project_phase.phase_and_one_gate", phase_message:, gate_message:)
+    else
+      phase_message
+    end
   end
 
   private
 
-  def date_change_message(values:, step:, options:)
-    from, to = values.map { format_date_range(it) }
+  def format_phase_message(step:, values:, html:)
+    name = step.definition.name
+    from, to = values.map { format_date_range(_1) }
 
-    format_date_change(from:, to:, options:)
+    format_message(name:, from:, to:, html:)
+  end
+
+  def format_start_gate_message(step:, values:, html:)
+    return unless step.definition.start_gate
+
+    values = values.map { _1&.begin }
+    return if values[0] == values[1]
+
+    name = step.definition.start_gate_name
+    from, to = values.map { format_date(_1) }
+
+    format_message(name:, from:, to:, html:)
+  end
+
+  def format_end_gate_message(step:, values:, html:)
+    return unless step.definition.end_gate
+
+    values = values.map { _1&.end }
+    return if values[0] == values[1]
+
+    name = step.definition.end_gate_name
+    from, to = values.map { format_date(_1) }
+
+    format_message(name:, from:, to:, html:)
   end
 
   def format_date_range(date_range)
     "#{format_date(date_range.begin)} - #{format_date(date_range.end)}" if date_range
   end
 
-  def format_date_change(from:, to:, options:)
+  def format_message(name:, from:, to:, html:)
+    date_change_message = format_date_change(from:, to:, html:)
+    return unless date_change_message
+
+    label = html ? content_tag(:strong, name) : name
+
+    "#{label} #{date_change_message}"
+  end
+
+  def format_date_change(from:, to:, html:)
     if from && to
       I18n.t("activity.project_phase.changed_date", from:, to:)
     elsif to
       I18n.t("activity.project_phase.added_date", date: to)
     elsif from
-      date = options[:html] ? content_tag("del", from) : from
+      date = html ? content_tag("del", from) : from
 
       I18n.t("activity.project_phase.removed_date", date:)
     end
