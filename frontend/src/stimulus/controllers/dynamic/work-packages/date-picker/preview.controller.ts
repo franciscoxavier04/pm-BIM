@@ -361,7 +361,6 @@ export default class PreviewController extends DialogPreviewController {
     }
   }
 
-  // called from inputs defined in the date_picker/date_form.rb
   onHighlightField(e:Event) {
     const fieldToHighlight = e.target as HTMLInputElement;
     if (fieldToHighlight) {
