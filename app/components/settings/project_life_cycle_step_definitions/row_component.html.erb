@@ -57,7 +57,7 @@ See COPYRIGHT and LICENSE files for more details.
         end
       end
       title_container.with_column do
-        render(Projects::LifeCycleTypeComponent.new(definition))
+        render(Projects::LifeCycleComponent.new(definition))
       end
       title_container.with_column(classes: "no-wrap") do
         render(Primer::Beta::Text.new) { t("project.count", count: definition.project_count) }

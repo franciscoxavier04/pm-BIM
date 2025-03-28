@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 module Projects
-  class LifeCycleTypeComponent < ApplicationComponent
+  class LifeCycleComponent < ApplicationComponent
     include OpPrimer::ComponentHelpers
 
     def text
@@ -44,6 +44,7 @@ module Projects
     end
 
     def icon
+      # TODO: Update icon as per mockups.
       :"git-commit"
     end
 
