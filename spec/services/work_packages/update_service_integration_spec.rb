@@ -1539,7 +1539,6 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
     end
 
     it "removes the parent successfully and reschedules the parent" do
-      expect(parent.valid?(:saving_custom_fields)).to be(false)
       # Unload the `ancestor_hierarchies` association so that we don't validate the associatied
       # records. `closure_tree`'s behaviour is to reload the associations after save, even if they
       # weren't loaded, see: https://github.com/ClosureTree/closure_tree/blob/
@@ -1564,6 +1563,8 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
       # https://github.com/rails/rails/issues/54807
 
       work_package.association(:self_and_ancestors).reset
+
+      expect(parent.valid?(:saving_custom_fields)).to be(false)
 
       expect(subject).to be_success
 
