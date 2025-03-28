@@ -193,6 +193,25 @@ module TableHelpers
         expect(other.relations.relates.first.lag).to be_nil
       end
 
+      it "can creates 'follows' and 'relates' relations at the same time out of the table data" do
+        table_representation = <<~TABLE
+          subject     | related to | predecessors
+          pred        |            |
+          other       |            |
+          main        | other      | pred
+        TABLE
+
+        table_data = described_class.for(table_representation)
+        table = table_data.create_work_packages
+        expect(table.work_packages.count).to eq(3)
+        pred = table.work_package(:pred)
+        other = table.work_package(:other)
+        main = table.work_package(:main)
+        expect(main.relations.count).to eq(2)
+        expect(main.relations.relates.first.to).to eq(other)
+        expect(main.relations.follows.first.to).to eq(pred)
+      end
+
       it "raises an error if a given status name does not exist" do
         table_representation = <<~TABLE
           subject | status |

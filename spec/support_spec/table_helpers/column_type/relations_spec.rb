@@ -28,45 +28,36 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module TableHelpers
-  module ColumnType
-    # Column to add relates/related to relations to work packages.
-    #
-    # Supported texts:
-    #   - :wp
-    #
-    # They can be combined by separated them with commas: "wp1, wp2".
-    #
-    # Example:
-    #
-    #   | subject   | related to |
-    #   | main      |            |
-    #   | other one | main       |
-    class RelatedToRelations < Generic
-      def attributes_for_work_package(_attribute, _work_package)
-        {}
-      end
+require "spec_helper"
 
-      def extract_data(_attribute, raw_header, work_package_data, _work_packages_data)
-        relations =
-          work_package_data.dig(:row, raw_header)
-                           .split(",")
-                           .map(&:strip)
-                           .compact_blank
-                           .to_h do |name|
-                             relation = make_related_to_relation(name)
-                             [relation[:with], relation]
-                           end
-        { relations: }.compact_blank
-      end
+module TableHelpers::ColumnType
+  RSpec.describe "Relations" do
+    subject(:column_type) { described_class.new }
 
-      def make_related_to_relation(name)
-        {
-          raw: name,
-          type: :relates,
-          with: name
-        }
-      end
+    def parsed_data(table)
+      TableHelpers::TableParser.new.parse(table)
+    end
+
+    it "can merge relations from multiple relation columns" do
+      work_package_data = parsed_data(<<~TABLE).pluck(:relations)
+        | predecessors    | relates to |
+        | main            |            |
+        |                 | related wp |
+        | main with lag 3 | related wp |
+      TABLE
+      expect(work_package_data)
+        .to eq([
+                 {
+                   "main" => { raw: "main", type: :follows, with: "main", lag: 0 }
+                 },
+                 {
+                   "related wp" => { raw: "related wp", type: :relates, with: "related wp" }
+                 },
+                 {
+                   "main" => { raw: "main with lag 3", type: :follows, with: "main", lag: 3 },
+                   "related wp" => { raw: "related wp", type: :relates, with: "related wp" }
+                 }
+               ])
     end
   end
 end
