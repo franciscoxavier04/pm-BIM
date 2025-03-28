@@ -747,9 +747,9 @@ zh-CN:
       follows_description: "相关工作包必须在本工作包启动前完成"
       label_child_singular: "子节点"
       label_child_plural: "子项"
-      new_child: "Create new child"
+      new_child: "新建子工作包"
       new_child_text: "创建工作包，作为当前(父)工作包的子项"
-      child: "Child"
+      child: "子工作包"
       child_description: "使相关工作包成为当前(父) 工作包的子项目"
       label_closest: "最近的"
       label_blocks_singular: "阻止"
@@ -3523,9 +3523,9 @@ zh-CN:
     manual: "设为手动"
     automatic: "设为自动"
   search_input_placeholder: "搜索"
-  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols: "允许的链接协议"
   setting_allowed_link_protocols_text_html: >-
-    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
+    允许这些协议在工作包描述、长文本字段和评论中显示为链接。例如，%{tel_code} 或 %{element_code}。每行输入一个协议。<br/> 协议 %{http_code}、%{https_code} 和 %{mailto_code} 始终允许。
   setting_after_first_login_redirect_url: "首次登录重定向"
   setting_after_first_login_redirect_url_text_html: >
     设置用户首次登录后的重定向路径。如果该路径为空，则重定向到主页以进行导览介绍。 <br/> 示例： <code>/my/page</code>

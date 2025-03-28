@@ -827,7 +827,7 @@ zh-CN:
       add_new_child: "创建新的子任务"
       create_new: "新建"
       add_existing: "添加现有"
-      add_existing_child: "Add child"
+      add_existing_child: "增加已存在的子任务"
       remove_child: "删除子任务"
       add_new_relation: "创建新的关系"
       add_existing_relation: "添加现有关系"

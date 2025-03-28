@@ -776,9 +776,9 @@ ru:
       follows_description: "Соответствующий пакет работ обязательно должен быть завершен до того, как начнется этот пакет"
       label_child_singular: "дочерний пакет работ"
       label_child_plural: "дочерние пакеты работ"
-      new_child: "Create new child"
+      new_child: "Создать новый дочерний пакет работ"
       new_child_text: "Создает связанный пакет работ в качестве подпункта текущего (родительского) пакета работ"
-      child: "Child"
+      child: "Дочерний пакет работ"
       child_description: "Делает связанный пакет работ дочерним текущему (родительскому) пакету работ"
       label_closest: "Ближайший"
       label_blocks_singular: "блоки"
@@ -3647,8 +3647,8 @@ ru:
     warnings:
       cannot_annotate: "Этот файл не может быть прокомментирован."
   scheduling:
-    manual: "установить на Ручной"
-    automatic: "установить на Автоматический"
+    manual: "установлено на Ручной"
+    automatic: "установлено на Автоматический"
   search_input_placeholder: "Поиск ..."
   setting_allowed_link_protocols: "Allowed link protocols"
   setting_allowed_link_protocols_text_html: >-

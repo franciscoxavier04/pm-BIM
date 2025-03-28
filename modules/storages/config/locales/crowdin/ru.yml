@@ -242,9 +242,9 @@ ru:
         host_not_found: По настроенному адресу хоста сервер Nextcloud не найден. Пожалуйста, проверьте конфигурацию.
         missing_dependencies: 'Для файлового хранилища отсутствует необходимая зависимость. Пожалуйста, добавьте следующую зависимость: %{dependency}.'
         not_configured: Соединение не удалось подтвердить. Пожалуйста, сначала завершите настройку.
-        oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
-        oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
-        oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as there's no token for the current user.
+        oauth_request_not_found: OpenProject не смог найти корневую папку Nextcloud для текущего зарегистрированного пользователя. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
+        oauth_request_unauthorized: У текущего пользователя нет прав на просмотр основной папки Nextcloud или мы не смогли получить токен. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
+        oauth_token_missing: OpenProject не может протестировать связь пользователя с Nextcloud, так как для текущего пользователя нет токена.
         oidc_cant_acquire_token: Ваша настройка OpenID Connect не предоставляет необходимой аудитории и не предоставляет возможности обмена токенами. Пожалуйста, ознакомьтесь с нашей документацией для получения дополнительной информации.
         oidc_cant_exchange_token: Похоже, возникла проблема с настройкой Exchange Token вашего провайдера OpenID Connect. Пожалуйста, проверьте его конфигурацию и повторите попытку.
         oidc_cant_refresh_token: Произошла ошибка во время проверки Вашего доступа к хранилищу. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.

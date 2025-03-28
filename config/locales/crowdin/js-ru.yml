@@ -830,7 +830,7 @@ ru:
       add_new_child: "Создать новый дочерний пакет работ"
       create_new: "Создать новый"
       add_existing: "Добавить существующий"
-      add_existing_child: "Add child"
+      add_existing_child: "Добавить дочерний пакет работ"
       remove_child: "Удалить дочерний элемент"
       add_new_relation: "Создать новую связь"
       add_existing_relation: "Добавить существующее отношение"
