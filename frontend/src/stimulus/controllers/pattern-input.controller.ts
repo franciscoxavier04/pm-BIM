@@ -115,13 +115,13 @@ export default class PatternInputController extends Controller {
       }
     }
 
+    this.setRange();
+
     // close the suggestions
     if (['Escape', 'ArrowLeft', 'ArrowRight', 'End', 'Home'].includes(event.key)) {
       this.clearSuggestionsFilter();
       this.sanitizeContent();
     }
-
-    this.setRange();
   }
 
   input_change():void {
@@ -137,9 +137,6 @@ export default class PatternInputController extends Controller {
       this.filterSuggestions(word);
     }
 
-    this.tagInvalidTokens();
-    this.sanitizeContent();
-
     // This resets the cursor position without changing it.
     // It is necessary because chromium based browsers try to
     // retain styling and adds an unwanted <font> tag,
@@ -150,7 +147,10 @@ export default class PatternInputController extends Controller {
       selection.removeAllRanges();
       selection.addRange(range);
     }
+
     this.setRange();
+    this.tagInvalidTokens();
+    this.sanitizeContent();
   }
 
   input_mouseup() {
