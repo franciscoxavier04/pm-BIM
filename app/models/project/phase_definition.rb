@@ -40,8 +40,8 @@ class Project::PhaseDefinition < ApplicationRecord
   belongs_to :color, optional: false
 
   validates :name, presence: true, uniqueness: true
-  validates :start_gate_name, presence: true, if: Proc.new { |d| d.start_gate.present? }
-  validates :end_gate_name, presence: true, if: Proc.new { |d| d.end_gate.present? }
+  validates :start_gate_name, presence: true, if: :start_gate?
+  validates :end_gate_name, presence: true, if: :end_gate?
   acts_as_list
 
   default_scope { order(:position) }
