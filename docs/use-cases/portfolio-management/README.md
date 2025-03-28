@@ -17,7 +17,7 @@ If you have a lot of projects running at the same time it can be helpful and eve
 
 ### Access project list
 
-To view all projects, first select the **Select a project** dropdown menu, then click on the **Project lists** button. You can also get to projects overview by selecting **Projects** from the [global modules](../../user-guide/homepage/global-modules) menu in the top right corner.
+To view all projects, first select the **Select a project** dropdown menu, then click on the **Project lists** button. You can also get to projects overview by selecting **Projects** from the [global modules](../../homepage/global-modules) menu in the top right corner.
 
 ![Select a project dropdown menu and a button to open project list in OpenProject](openproject_use_case_portfolio_projects_list_button.png)
 
@@ -29,7 +29,7 @@ You will see a list of all projects within your organization. You can filter thi
 
 You can further adjust this view by adding or re-arranging columns and changing the sorting order. To sort the project list, click on a column heading, such as **Status**. Read more about [configuring project lists](../../user-guide/projects/project-lists/#configure-project-lists-view). 
 
-After you have adjusted the projects overview to your liking, you can save it, [export it](../../user-guide/projects/project-lists/#export-project-lists-view) or [share it with key stakeholders](../../user-guide/projects/project-lists/#share-project-lists-view).
+After you have adjusted the projects overview to your liking, you can save it, [export it](../../projects/project-lists/#export-project-lists-view) or [share it with key stakeholders](../../projects/project-lists/#share-project-lists-view).
 
 ### Projects in Gantt view
 
