@@ -122,16 +122,13 @@ module Admin::Settings
     end
 
     def definition_params
-      params.require(:project_phase_definition)
-            .permit(
-              :type,
-              :name,
-              :color_id,
-              :start_gate_name,
-              :end_gate_name,
-              :start_gate,
-              :end_gate
-            )
+      params.expect(project_phase_definition: %i[type
+                                                 name
+                                                 color_id
+                                                 start_gate_name
+                                                 end_gate_name
+                                                 start_gate
+                                                 end_gate])
     end
 
     def update_definitions_via_turbo_stream

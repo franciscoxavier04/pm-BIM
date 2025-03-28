@@ -43,7 +43,7 @@ class OpenProject::JournalFormatter::ProjectPhaseDates < JournalFormatter::Base
   private
 
   def date_change_message(values:, step:, options:)
-    from, to = values.map { format_date_range(_1) }
+    from, to = values.map { format_date_range(it) }
 
     format_date_change(from:, to:, options:)
   end
