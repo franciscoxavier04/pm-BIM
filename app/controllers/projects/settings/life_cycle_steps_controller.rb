@@ -71,8 +71,7 @@ class Projects::Settings::LifeCycleStepsController < Projects::SettingsControlle
         {
           project_id: @project.id,
           definition_id: definition.id,
-          active:,
-          type: definition.step_class
+          active:
         }
       end,
       unique_by: %i[project_id definition_id]

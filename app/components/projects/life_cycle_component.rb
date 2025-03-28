@@ -31,6 +31,10 @@ module Projects
   class LifeCycleComponent < ApplicationComponent
     include OpPrimer::ComponentHelpers
 
+    # TODO: This component is currently not in use! It should be a shared component
+    # between the Projects::Settings::LifeCycleSteps::StepComponent and the
+    # Settings::ProjectLifeCycleStepDefinitions::RowComponent.
+    # It should hold the icon, definition name and gate text information.
     def text
       if model.start_gate? && model.end_gate?
         I18n.t("settings.project_phase_definitions.both_gate")

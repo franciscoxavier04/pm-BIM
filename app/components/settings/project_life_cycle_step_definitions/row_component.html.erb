@@ -39,6 +39,9 @@ See COPYRIGHT and LICENSE files for more details.
           )
         end
       end
+      title_container.with_column(classes: icon_color_class) do
+        render Primer::Beta::Octicon.new(icon: icon)
+      end
       title_container.with_column(classes: "ellipsis", test_selector: "project-life-cycle-step-definition-name") do
         render(
           if allowed_to_customize_life_cycle?
@@ -57,7 +60,7 @@ See COPYRIGHT and LICENSE files for more details.
         end
       end
       title_container.with_column do
-        render(Projects::LifeCycleComponent.new(definition))
+        render(Primer::Beta::Text.new(**gate_text_options)) { gate_info }
       end
       title_container.with_column(classes: "no-wrap") do
         render(Primer::Beta::Text.new) { t("project.count", count: definition.project_count) }

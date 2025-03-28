@@ -4,11 +4,14 @@
     justify_content: :space_between
   ) do |step_container|
     step_container.with_column(flex_layout: true, mr: 2, classes: "min-width-0") do |title_container|
-      title_container.with_column(pt: 1, mr: 3, classes: "ellipsis") do
+      title_container.with_column(pt: 1, mr: 1, classes: icon_color_class) do
+        render Primer::Beta::Octicon.new(icon: icon)
+      end
+      title_container.with_column(pt: 1, mr: 2, classes: "ellipsis") do
         render(Primer::Beta::Text.new(classes: "filter-target-visible-text")) { definition.name }
       end
       title_container.with_column(pt: 1, classes: "no-wrap") do
-        render(Projects::LifeCycleComponent.new(definition))
+        render(Primer::Beta::Text.new(**gate_text_options)) { gate_info }
       end
     end
     # py: 1 quick fix: prevents the row from bouncing as the toggle switch currently changes height while toggling
