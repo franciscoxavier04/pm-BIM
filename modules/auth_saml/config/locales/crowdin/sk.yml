@@ -1,9 +1,9 @@
 sk:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
-        display_name: Name
-        identifier: Identifier
+        display_name: Názov
+        identifier: Identifikátor
         secret: Secret
         scope: Scope
         assertion_consumer_service_url: ACS (Assertion consumer service) URL
@@ -21,9 +21,8 @@ sk:
         private_key: Corresponding private key for OpenProject SAML requests
         signature_method: Signature algorithm
         digest_method: Digest algorithm
-        format: "Format"
+        format: "Formát"
         icon: "Custom icon"
-  activerecord:
     errors:
       models:
         saml/provider:
@@ -75,7 +74,7 @@ sk:
         format: 'Attribute format'
       section_headers:
         configuration: "Primary configuration"
-        attributes: "Attributes"
+        attributes: "Atribúty"
       section_texts:
         display_name: "Configure the display name of the SAML provider."
         metadata: "Pre-fill configuration using a metadata URL or by pasting metadata XML"

@@ -87,29 +87,29 @@ export class OpAutocompleterService extends UntilDestroyedMixin {
   // If you need to fetch our default date sources like work_packages or users,
   // you should use the default method (loadAvailable), otherwise you should implement a function for
   // your desired resource
-  public loadData(matching:string|null, resource:TOpAutocompleterResource, filters?:IAPIFilter[], searchKey?:string) {
+  public loadData(matching:string|null, resource:TOpAutocompleterResource, filters?:IAPIFilter[], searchKey?:string, allowEmpty:boolean = false) {
     // Exit early if the query string is empty as there is no typeahead
-    if (matching === null || matching.length === 0) {
+    if (!allowEmpty && (matching === null || matching.length === 0)) {
       return of([]);
     }
 
     switch (resource) {
       // in this case we can add more functions for fetching usual resources
       default: {
-        return this.loadAvailable(matching, resource, filters, searchKey);
+        return this.loadAvailable(matching || '', resource, filters, searchKey);
       }
     }
   }
 
   // A method for returning data based on a custom URL (i.e. in time logging we have a special endpoint for retrieving
   // work packages)
-  public loadFromUrl(url:string, matching:string|null, resource:TOpAutocompleterResource, filters?:IAPIFilter[], searchKey?:string) {
+  public loadFromUrl(url:string, matching:string|null, resource:TOpAutocompleterResource, filters?:IAPIFilter[], searchKey?:string, allowEmpty:boolean = false) {
     // Exit early if the query string is empty as there is no typeahead
-    if (matching === null || matching.length === 0) {
+    if (!allowEmpty && (matching === null || matching.length === 0)) {
       return of([]);
     }
 
-    const finalFilters:ApiV3FilterBuilder = this.createFilters(filters ?? [], matching, searchKey);
+    const finalFilters:ApiV3FilterBuilder = this.createFilters(filters ?? [], matching || '', searchKey);
     const params = this.createParams(resource);
 
     const stringifiedBuiltOutUrl = addFiltersToPath(url, finalFilters, params).toString();

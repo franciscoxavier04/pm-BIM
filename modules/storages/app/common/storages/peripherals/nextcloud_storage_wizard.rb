@@ -35,10 +35,10 @@ module Storages
 
       # OAuth 2.0 SSO
 
-      step :nextcloud_audience,
+      step :storage_audience,
            section: :oauth_configuration,
            if: ->(storage) { storage.authenticate_via_idp? },
-           completed_if: ->(storage) { storage.nextcloud_audience.present? }
+           completed_if: ->(storage) { storage.storage_audience.present? }
 
       # Two-Way OAuth 2.0
 

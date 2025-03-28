@@ -40,8 +40,12 @@ module Storages::Storages
     private
 
     def set_attributes(params)
+      audience_config = params.delete(:audience_configuration)
+
       super
+
       unset_nextcloud_application_credentials if nextcloud_storage?
+      set_idp_audience if audience_config == "idp"
     end
 
     def sanitize_host
@@ -71,6 +75,10 @@ module Storages::Storages
 
     def nextcloud_storage?
       storage.is_a?(Storages::NextcloudStorage)
+    end
+
+    def set_idp_audience
+      storage.storage_audience = OpenIDConnect::UserToken::IDP_AUDIENCE
     end
   end
 end

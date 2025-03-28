@@ -57,6 +57,7 @@
           # Combine visible and invisible relations into a single list
           all_relations = relation_group.visible_relations.map { |r| [r, :visible] } +
             relation_group.ghost_relations.map { |r| [r, :ghost] }
+          all_relations.sort_by! { |r| r[0].id }
 
           flex.with_row(mb: 4) do
             render_relation_group(
@@ -69,7 +70,8 @@
                 WorkPackageRelationsTab::RelationComponent.new(
                   work_package: work_package,
                   relation: relation,
-                  visibility: visibility
+                  visibility: visibility,
+                  closest: relation_group.closest_relation?(relation)
                 )
               )
             end
@@ -83,6 +85,7 @@
           # Combine visible and invisible children into a single list
           all_children = visible_children.map { |r| [r, :visible] } +
             ghost_children.map { |r| [r, :ghost] }
+          all_children.sort_by! { |r| r[0].created_at }
 
           flex.with_row do
             render_relation_group(

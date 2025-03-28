@@ -58,7 +58,9 @@ module Storages
       def sso_misconfigured
         return None() unless @storage.authenticate_via_idp?
 
-        non_provisioned_user.or { non_oidc_provisioned_user }.or { token_usability }
+        non_provisioned_user
+          .or { non_oidc_provisioned_user }
+          .or { token_usability }
       end
 
       def non_provisioned_user
@@ -70,20 +72,6 @@ module Storages
                                       description: I18n.t("storages.health.connection_validation.oidc_non_provisioned_user")))
       end
 
-      def token_usability
-        usable_token = @user.oidc_user_tokens.with_audience(@storage.audience).first
-        return None() if usable_token
-
-        # Temporary error as I implement the next steps
-        Some(ConnectionValidation
-               .new(type: :error,
-                    error_code: :oidc_no_token_with_required_audience,
-                    timestamp: Time.current,
-                    description: I18n.t(
-                      "storages.health.connection_validation.oidc_no_token_with_required_audience", audience: @storage.audience
-                    )))
-      end
-
       def non_oidc_provisioned_user
         return None() if @user.authentication_provider.is_a?(OpenIDConnect::Provider)
 
@@ -91,6 +79,29 @@ module Storages
                                       error_code: :oidc_non_oidc_user,
                                       timestamp: Time.current,
                                       description: I18n.t("storages.health.connection_validation.oidc_non_oidc_user")))
+      end
+
+      def token_usability
+        service = OpenIDConnect::UserTokens::FetchService.new(user: @user)
+
+        result = service.access_token_for(audience: @storage.audience)
+        return None() if result.success?
+
+        error_code = case result.failure
+                     in { code: /token_exchange/ | :unable_to_exchange_token }
+                       :oidc_cant_exchange_token
+                     in { code: /token_refresh/ }
+                       :oidc_cant_refresh_token
+                     in { code: :no_token_for_audience }
+                       :oidc_cant_acquire_token
+                     else
+                       :unknown_error
+                     end
+
+        Some(ConnectionValidation.new(type: :error,
+                                      error_code:,
+                                      timestamp: Time.current,
+                                      description: I18n.t("storages.health.connection_validation.#{error_code}")))
       end
 
       def has_base_configuration_error?

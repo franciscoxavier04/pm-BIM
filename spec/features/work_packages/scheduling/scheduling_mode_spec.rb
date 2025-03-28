@@ -144,6 +144,7 @@ RSpec.describe "scheduling mode", :js do
     combined_field.activate!(expect_open: false)
     combined_field.expect_active!
     combined_field.toggle_scheduling_mode # toggle to manual mode
+    combined_field.expect_manual_scheduling_mode
     combined_field.update(%w[2016-01-05 2016-01-10], save: false)
     combined_field.expect_duration 6
     combined_field.save!
@@ -155,7 +156,7 @@ RSpec.describe "scheduling mode", :js do
     work_packages_page.wait_for_activity_tab
 
     # Changing the scheduling mode is journalized
-    activity_tab.expect_journal_changed_attribute(text: "Manual scheduling activated")
+    activity_tab.expect_journal_changed_attribute(text: "Scheduling mode set to Manual")
     work_packages_page.switch_to_tab(tab: :overview)
 
     expect_dates(wp, "2016-01-05", "2016-01-10")
@@ -183,6 +184,11 @@ RSpec.describe "scheduling mode", :js do
     combined_field.activate!(expect_open: false)
     combined_field.expect_active!
     combined_field.toggle_scheduling_mode # toggle to automatic mode
+
+    wait_for_network_idle
+
+    combined_field.expect_automatic_scheduling_mode
+
     combined_field.save!
 
     work_packages_page.expect_and_dismiss_toaster message: "Successful update."
@@ -213,6 +219,9 @@ RSpec.describe "scheduling mode", :js do
     combined_field.activate!(expect_open: false)
     combined_field.expect_active!
     combined_field.toggle_scheduling_mode # toggle to manual mode
+    combined_field.expect_manual_scheduling_mode
+
+    wait_for_network_idle
 
     # The calendar needs some time to get initialized.
     sleep 2
@@ -253,6 +262,10 @@ RSpec.describe "scheduling mode", :js do
     combined_field.activate!(expect_open: false)
     combined_field.expect_active!
     combined_field.toggle_scheduling_mode
+    combined_field.expect_automatic_scheduling_mode
+
+    wait_for_network_idle
+
     combined_field.save!
 
     work_packages_page.expect_and_dismiss_toaster message: "Successful update."

@@ -1,5 +1,5 @@
 id:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
         display_name: Nama
@@ -23,7 +23,6 @@ id:
         digest_method: Algoritma intisari
         format: "Format"
         icon: "Ikon kustom"
-  activerecord:
     errors:
       models:
         saml/provider:

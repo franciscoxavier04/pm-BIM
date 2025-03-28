@@ -30,6 +30,7 @@ ja:
         overridden_costs: "オーバーライドされたコスト"
         spent: "使用済"
         spent_on: "日付"
+        logged_by: "によって記録"
       cost_type:
         unit: "単位名"
         unit_plural: "単位名"
@@ -56,10 +57,14 @@ ja:
         start_time: 開始時間
         end_time: 終了時間
     models:
+      time_entry:
+        other: "Time entries"
+      cost_entry:
+        other: "Cost entries"
       cost_type:
         other: "コスト種類"
       time_entry_activity:
-        other: "Time tracking activities"
+        other: "タイムトラッキングアクティビティ"
       rate: "原価率"
     errors:
       models:
@@ -81,7 +86,7 @@ ja:
   button_add_rate: "原価率を追加"
   button_log_costs: "単価を記録"
   button_log_time: "ログ"
-  button_add_activity: "Activity"
+  button_add_activity: "活動"
   caption_booked_on_project: "プロジェクトの予約"
   caption_default: "デフォルト"
   caption_default_rate_history_for: "%{user} のデフォルト率の履歴"
@@ -94,11 +99,9 @@ ja:
   caption_set_rate: "現在の進捗を設定する"
   caption_show_locked: "ロックの種類を表示します。"
   caption_log_time_dialog: "時間を記録"
-  caption_activity_order_changed: "Order successfully changed."
   description_date_for_new_rate: "新しいレートの日付"
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
-  error_activity_could_not_be_moved: "Activity could not be moved."
   group_by_others: "どのグループにもない"
   label_between: "次の範囲内"
   label_cost_filter_add: "コストフィルタの追加"
@@ -139,9 +142,9 @@ ja:
   label_until: "まで"
   label_valid_from: "から有効"
   label_yes: "はい"
-  label_time: "Time"
+  label_time: "時間"
   label_cost: "Cost"
-  label_costs: "Costs"
+  label_costs: "コスト"
   label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: まずワークパッケージを選択してください。
   notice_something_wrong: "エラーが発生しました。再試行してください。"
@@ -174,8 +177,6 @@ ja:
   text_reassign_time_and_cost_entries: "報告された時間とコストをこの作業項目に再割り当てください。"
   text_warning_hidden_elements: "いくつかのエントリは、集計から除外されている可能性があります。"
   week: "週間"
-  js:
-    text_are_you_sure: "よろしいですか？"
   api_v3:
     errors:
       validation:

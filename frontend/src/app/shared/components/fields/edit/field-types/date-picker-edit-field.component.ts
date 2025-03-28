@@ -27,13 +27,13 @@
  */
 
 import {
+  ChangeDetectorRef,
   Directive,
-  OnDestroy,
-  OnInit,
-  Injector,
   ElementRef,
   Inject,
-  ChangeDetectorRef,
+  Injector,
+  OnDestroy,
+  OnInit,
 } from '@angular/core';
 import { InjectField } from 'core-app/shared/helpers/angular/inject-field.decorator';
 import { TimezoneService } from 'core-app/core/datetime/timezone.service';
@@ -50,6 +50,8 @@ import { ResourceChangeset } from 'core-app/shared/components/fields/changeset/r
 import { HalResource } from 'core-app/features/hal/resources/hal-resource';
 import { IFieldSchema } from 'core-app/shared/components/fields/field.base';
 import { EditFieldHandler } from 'core-app/shared/components/fields/edit/editing-portal/edit-field-handler';
+import { OpModalService } from 'core-app/shared/components/modal/modal.service';
+import { OpWpDatePickerModalComponent } from 'core-app/shared/components/datepicker/wp-date-picker-modal/wp-date-picker.modal';
 
 @Directive()
 export abstract class DatePickerEditFieldComponent extends EditFieldComponent implements OnInit, OnDestroy {
@@ -58,6 +60,11 @@ export abstract class DatePickerEditFieldComponent extends EditFieldComponent im
   @InjectField() deviceService:DeviceService;
 
   turboFrameSrc:string;
+  opened = false;
+
+  private createHandler:EventListener = this.handleSuccessfulCreate.bind(this);
+  private updateHandler:EventListener = this.handleSuccessfulUpdate.bind(this);
+  private cancelHandler:EventListener = this.cancel.bind(this);
 
   constructor(
     readonly I18n:I18nService,
@@ -68,6 +75,7 @@ export abstract class DatePickerEditFieldComponent extends EditFieldComponent im
     readonly cdRef:ChangeDetectorRef,
     readonly injector:Injector,
     readonly pathHelper:PathHelperService,
+    readonly opModalService:OpModalService,
   ) {
     super(I18n, elementRef, change, schema, handler, cdRef, injector);
   }
@@ -76,33 +84,57 @@ export abstract class DatePickerEditFieldComponent extends EditFieldComponent im
     super.ngOnInit();
     this.turboFrameSrc = `${this.pathHelper.workPackageDatepickerDialogContentPath(this.change.id)}?field=${this.name}`;
 
-    this.handler
-      .$onUserActivate
-      .pipe(
-        this.untilDestroyed(),
-      )
-      .subscribe(() => {
-        this.showDatePickerModal();
-      });
+    document.addEventListener('date-picker-modal:create', this.createHandler);
+    document.addEventListener('date-picker-modal:update', this.updateHandler);
+    document.addEventListener('date-picker-modal:cancel', this.cancelHandler);
   }
 
   ngOnDestroy():void {
     super.ngOnDestroy();
+
+    document.removeEventListener('date-picker-modal:create', this.createHandler);
+    document.removeEventListener('date-picker-modal:update', this.updateHandler);
+    document.removeEventListener('date-picker-modal:cancel', this.cancelHandler);
   }
 
-  public showDatePickerModal():void { }
+  public showDatePickerModal():void {
+    this.opModalService
+      .show(
+        OpWpDatePickerModalComponent,
+        this.injector,
+        { resource: this.resource, name: this.name, change: this.change },
+      )
+      .subscribe((modal) => {
+        modal
+          .closingEvent
+          .subscribe(() => {
+            if (this.opened) {
+              this.onModalClosed();
+            }
+        });
 
-  public handleSuccessfulCreate(JSONResponse:{ duration:number, startDate:Date, dueDate:Date, includeNonWorkingDays:boolean, scheduleManually:boolean }):void {
+       this.opened = true;
+      });
+  }
+
+  public handleSuccessfulCreate(event:CustomEvent):void {
+    const { detail: {
+      duration,
+      startDate,
+      dueDate,
+      includeNonWorkingDays,
+      scheduleManually } } = event as { detail:{ duration:number, startDate:Date, dueDate:Date, includeNonWorkingDays:boolean, scheduleManually:boolean } };
+
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment
-    this.resource.duration = JSONResponse.duration ? this.timezoneService.toISODuration(JSONResponse.duration, 'days') : null;
+    this.resource.duration = duration ? this.timezoneService.toISODuration(duration, 'days') : null;
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment
-    this.resource.dueDate = JSONResponse.dueDate;
+    this.resource.dueDate = dueDate;
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment
-    this.resource.startDate = JSONResponse.startDate;
+    this.resource.startDate = startDate;
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment
-    this.resource.includeNonWorkingDays = JSONResponse.includeNonWorkingDays;
+    this.resource.includeNonWorkingDays = includeNonWorkingDays;
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment
-    this.resource.scheduleManually = JSONResponse.scheduleManually;
+    this.resource.scheduleManually = scheduleManually;
 
     this.onModalClosed();
   }
@@ -111,46 +143,13 @@ export abstract class DatePickerEditFieldComponent extends EditFieldComponent im
     this.onModalClosed();
   }
 
-  public onModalClosed():void { }
+  public onModalClosed():void {
+    this.opened = false;
 
-  public updateFrameSrc():void {
-    const url = new URL(
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      this.pathHelper.workPackageDatepickerDialogContentPath(this.resource.id as string),
-      window.location.origin,
-    );
-
-    url.searchParams.set('field', this.name);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/no-unsafe-member-access
-    url.searchParams.set('work_package[initial][start_date]', this.nullAsEmptyStringFormatter(this.resource.startDate));
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/no-unsafe-member-access
-    url.searchParams.set('work_package[initial][due_date]', this.nullAsEmptyStringFormatter(this.resource.dueDate));
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/no-unsafe-member-access
-    url.searchParams.set('work_package[initial][duration]', this.nullAsEmptyStringFormatter(this.resource.duration));
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument
-    url.searchParams.set('work_package[initial][ignore_non_working_days]', this.nullAsEmptyStringFormatter(this.resource.includeNonWorkingDays));
-
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/no-unsafe-member-access
-    url.searchParams.set('work_package[start_date]', this.nullAsEmptyStringFormatter(this.resource.startDate));
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/no-unsafe-member-access
-    url.searchParams.set('work_package[due_date]', this.nullAsEmptyStringFormatter(this.resource.dueDate));
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/no-unsafe-member-access
-    url.searchParams.set('work_package[duration]', this.nullAsEmptyStringFormatter(this.resource.duration));
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument
-    url.searchParams.set('work_package[ignore_non_working_days]', this.nullAsEmptyStringFormatter(this.resource.includeNonWorkingDays));
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    if (this.resource?.id === 'new') {
-      url.searchParams.set('work_package[start_date_touched]', 'true');
+    if (!this.handler.inEditMode) {
+      this.handler.deactivate(false);
     }
-
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    this.turboFrameSrc = url.toString();
   }
 
-  private nullAsEmptyStringFormatter(value:null|undefined|string):string {
-    if (value === undefined || value === null) {
-      return '';
-    }
-    return value;
-  }
+  public cancel():void {}
 }

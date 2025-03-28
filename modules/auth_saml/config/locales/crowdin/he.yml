@@ -1,5 +1,5 @@
 he:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
         display_name: שם
@@ -21,9 +21,8 @@ he:
         private_key: Corresponding private key for OpenProject SAML requests
         signature_method: Signature algorithm
         digest_method: Digest algorithm
-        format: "Format"
+        format: "תצורה"
         icon: "Custom icon"
-  activerecord:
     errors:
       models:
         saml/provider:
@@ -75,7 +74,7 @@ he:
         format: 'Attribute format'
       section_headers:
         configuration: "Primary configuration"
-        attributes: "Attributes"
+        attributes: "תכונות"
       section_texts:
         display_name: "Configure the display name of the SAML provider."
         metadata: "Pre-fill configuration using a metadata URL or by pasting metadata XML"

@@ -29,6 +29,8 @@
 require "spec_helper"
 
 RSpec.describe "filter work packages", :js do
+  include Components::Autocompleter::NgSelectAutocompleteHelpers
+
   shared_let(:user) { create(:admin, preferences: { time_zone: "Etc/UTC" }) }
   shared_let(:watcher) { create(:user) }
   shared_let(:role) { create(:existing_project_role, permissions: [:view_work_packages]) }
@@ -69,6 +71,10 @@ RSpec.describe "filter work packages", :js do
   end
 
   context "by version in project" do
+    shared_let(:other_project) { create(:project) }
+    shared_let(:inaccessible_version) { create(:version, project: other_project) }
+    shared_let(:shared_version) { create(:version, project: other_project, sharing: "system") }
+
     let(:version) { create(:version, project:) }
     let(:work_package_with_version) do
       create(:work_package, project:, subject: "With version", version:)
@@ -84,6 +90,31 @@ RSpec.describe "filter work packages", :js do
 
     it "allows filtering, saving, retrieving and altering the saved filter" do
       filters.open
+
+      # Expect filters to be grouped by project name
+      filters.add_filter("Version")
+
+      expect_ng_option(
+        page.find_by_id("values-version"),
+        version,
+        grouping: project.name,
+        results_selector: "body"
+      )
+
+      expect_ng_option(
+        page.find_by_id("values-version"),
+        shared_version,
+        grouping: other_project.name,
+        results_selector: "body"
+      )
+
+      expect_no_ng_option(
+        page.find_by_id("values-version"),
+        inaccessible_version,
+        results_selector: "body"
+      )
+
+      filters.remove_filter "version"
 
       filters.add_filter_by("Version", "is (OR)", version.name)
 

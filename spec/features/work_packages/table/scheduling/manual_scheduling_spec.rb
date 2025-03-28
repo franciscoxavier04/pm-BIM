@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 RSpec.describe "Manual scheduling", :js do
@@ -56,8 +58,8 @@ RSpec.describe "Manual scheduling", :js do
 
       # Expect not editable
       start_date.within_modal do
-        expect(page).to have_css('input[name="work_package[start_date]"][disabled]')
-        expect(page).to have_css('input[name="work_package[due_date]"][disabled]')
+        expect(page).to have_css("#{test_selector('op-datepicker-modal--start-date-field')}[disabled]")
+        expect(page).to have_css("#{test_selector('op-datepicker-modal--due-date-field')}[disabled]")
         expect(page).to have_css("#{test_selector('op-datepicker-modal--action')}:not([disabled])", text: "Cancel")
         expect(page).to have_css("#{test_selector('op-datepicker-modal--action')}:not([disabled])", text: "Save")
       end
@@ -66,8 +68,8 @@ RSpec.describe "Manual scheduling", :js do
 
       # Expect editable
       start_date.within_modal do
-        expect(page).to have_css('input[name="work_package[start_date]"]:not([disabled])')
-        expect(page).to have_css('input[name="work_package[due_date]"]:not([disabled])')
+        expect(page).to have_css("#{test_selector('op-datepicker-modal--start-date-field')}:not([disabled])", visible: :hidden)
+        expect(page).to have_css("#{test_selector('op-datepicker-modal--due-date-field')}:not([disabled])")
         expect(page).to have_css("#{test_selector('op-datepicker-modal--action')}:not([disabled])", text: "Cancel")
         expect(page).to have_css("#{test_selector('op-datepicker-modal--action')}:not([disabled])", text: "Save")
       end
@@ -101,6 +103,7 @@ RSpec.describe "Manual scheduling", :js do
 
       # Expect not editable
       start_date.within_modal do
+        page.find_test_selector("wp-datepicker--show-start-date").click
         fill_in "work_package[start_date]", with: "2020-07-20"
         fill_in "work_package[due_date]", with: "2020-07-25"
       end

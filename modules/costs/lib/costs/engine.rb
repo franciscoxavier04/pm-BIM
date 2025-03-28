@@ -140,7 +140,7 @@ module Costs
 
       menu :admin_menu,
            :time_entry_activities,
-           { controller: "/admin/time_entry_activities", action: :index },
+           { controller: "/admin/settings/time_entry_activities", action: :index },
            if: ->(*) { User.current.admin? },
            parent: :admin_costs,
            caption: :enumeration_activities

@@ -9,8 +9,7 @@
           <span class="form--field-container">
             <div class="form--field-affix">
               <%= icon_for_color(
-                    OpenStruct.new(
-                      variable: design_color.variable,
+                    Color.new(
                       hexcode: design_color.hexcode
                     ),
                     data: { target: "#design_colors_" + design_color.variable }

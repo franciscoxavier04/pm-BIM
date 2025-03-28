@@ -30,6 +30,7 @@ cs:
         overridden_costs: "Přepsané náklady"
         spent: "Strávený čas"
         spent_on: "Datum"
+        logged_by: "Zadáno"
       cost_type:
         unit: "Název jednotky"
         unit_plural: "Název Pluralizované jednotky"
@@ -56,6 +57,16 @@ cs:
         start_time: Čas zahájení
         end_time: Čas dokončení
     models:
+      time_entry:
+        one: "Time entry"
+        few: "Time entries"
+        many: "Time entries"
+        other: "Time entries"
+      cost_entry:
+        one: "Cost entry"
+        few: "Cost entries"
+        many: "Cost entries"
+        other: "Cost entries"
       cost_type:
         one: "Druh nákladů"
         few: "Typy nákladů"
@@ -63,9 +74,9 @@ cs:
         other: "Typy nákladů"
       time_entry_activity:
         one: "Time tracking activity"
-        few: "Time tracking activities"
-        many: "Time tracking activities"
-        other: "Time tracking activities"
+        few: "Sledování času"
+        many: "Sledování času"
+        other: "Sledování času"
       rate: "Sazba"
     errors:
       models:
@@ -87,7 +98,7 @@ cs:
   button_add_rate: "Přidat kurz"
   button_log_costs: "Logovat jednotkové náklady"
   button_log_time: "Log"
-  button_add_activity: "Activity"
+  button_add_activity: "Aktivita"
   caption_booked_on_project: "Rezervováno v projektu"
   caption_default: "Výchozí"
   caption_default_rate_history_for: "Výchozí historie sazeb  pro %{user}"
@@ -100,11 +111,9 @@ cs:
   caption_set_rate: "Nastavit aktuální sazbu."
   caption_show_locked: "Zobrazit uzamčené typy"
   caption_log_time_dialog: "Čas logu"
-  caption_activity_order_changed: "Order successfully changed."
   description_date_for_new_rate: "Datum pro nový kurz"
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
-  error_activity_could_not_be_moved: "Activity could not be moved."
   group_by_others: "není v žádné skupině"
   label_between: "mezi"
   label_cost_filter_add: "Přidat filtr nákladového vstupu"
@@ -146,9 +155,9 @@ cs:
   label_valid_from: "Platné od"
   label_yes: "Ano"
   label_time: "Čas"
-  label_cost: "Cost"
-  label_costs: "Costs"
-  label_mandatory_fields: "Mandatory fields"
+  label_cost: "Náklady"
+  label_costs: "Náklady"
+  label_mandatory_fields: "Povinné pole"
   placeholder_activity_select_work_package_first: Nejprve je nutné vybrat pracovní balíček
   notice_something_wrong: "Něco se pokazilo. Zkuste to prosím znovu."
   notice_successful_restore: "Úspěšně obnoveno."
@@ -180,8 +189,6 @@ cs:
   text_reassign_time_and_cost_entries: "Přiřadit k tomuto pracovnímu balíčku nahlášené hodiny a náklady:"
   text_warning_hidden_elements: "Některé položky mohly být z agregace vyloučeny."
   week: "týden"
-  js:
-    text_are_you_sure: "Jste si jisti?"
   api_v3:
     errors:
       validation:

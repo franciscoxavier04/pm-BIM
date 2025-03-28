@@ -65,7 +65,7 @@ RSpec.describe Storages::NextcloudStorage do
         aggregate_failures "configuration_checks" do
           expect(storage.configuration_checks)
             .to eq(host_name_configured: true,
-                   nextcloud_audience_configured: true,
+                   storage_audience_configured: true,
                    storage_oauth_client_configured: true,
                    openproject_oauth_application_configured: true)
         end
@@ -85,10 +85,10 @@ RSpec.describe Storages::NextcloudStorage do
       end
     end
 
-    context "without nextcloud audience" do
+    context "without storage audience" do
       let(:storage) do
         build(:nextcloud_storage,
-              nextcloud_audience: "",
+              storage_audience: "",
               oauth_application: build(:oauth_application),
               oauth_client: build(:oauth_client))
       end
@@ -97,7 +97,7 @@ RSpec.describe Storages::NextcloudStorage do
         aggregate_failures do
           expect(storage.configured?).to be(true)
           aggregate_failures "configuration_checks" do
-            expect(storage.configuration_checks[:nextcloud_audience_configured]).to be(true)
+            expect(storage.configuration_checks[:storage_audience_configured]).to be(true)
           end
         end
       end
@@ -106,7 +106,7 @@ RSpec.describe Storages::NextcloudStorage do
         let(:storage) do
           build(:nextcloud_storage,
                 authentication_method: "oauth2_sso",
-                nextcloud_audience: "",
+                storage_audience: "",
                 oauth_application: build(:oauth_application),
                 oauth_client: build(:oauth_client))
         end
@@ -115,7 +115,7 @@ RSpec.describe Storages::NextcloudStorage do
           aggregate_failures do
             expect(storage.configured?).to be(false)
             aggregate_failures "configuration_checks" do
-              expect(storage.configuration_checks[:nextcloud_audience_configured]).to be(false)
+              expect(storage.configuration_checks[:storage_audience_configured]).to be(false)
             end
           end
         end
@@ -138,7 +138,7 @@ RSpec.describe Storages::NextcloudStorage do
         let(:storage) do
           build(:nextcloud_storage,
                 authentication_method: "oauth2_sso",
-                nextcloud_audience: "some")
+                storage_audience: "some")
         end
 
         it "returns true" do

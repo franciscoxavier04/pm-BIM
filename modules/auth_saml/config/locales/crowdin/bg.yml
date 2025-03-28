@@ -1,5 +1,5 @@
 bg:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
         display_name: Име
@@ -23,7 +23,6 @@ bg:
         digest_method: Алгоритъм Digest
         format: "Формат"
         icon: "Персонализирана икона"
-  activerecord:
     errors:
       models:
         saml/provider:

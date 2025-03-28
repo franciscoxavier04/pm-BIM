@@ -30,6 +30,7 @@ fa:
         overridden_costs: "هزینه‌های لغو شده"
         spent: "صرف شده"
         spent_on: "تاریخ"
+        logged_by: "Logged by"
       cost_type:
         unit: "نام واحد"
         unit_plural: "نام واحد پولی"
@@ -56,6 +57,12 @@ fa:
         start_time: زمان شروع
         end_time: Finish time
     models:
+      time_entry:
+        one: "Time entry"
+        other: "Time entries"
+      cost_entry:
+        one: "Cost entry"
+        other: "Cost entries"
       cost_type:
         one: "نوع هزینه"
         other: "انواع هزینه"
@@ -83,7 +90,7 @@ fa:
   button_add_rate: "افزودن نرخ (ضریب) پرداخت"
   button_log_costs: "ثبت هزینه‌های واحد"
   button_log_time: "Log"
-  button_add_activity: "Activity"
+  button_add_activity: "فعالیت"
   caption_booked_on_project: "رزرو شده در پروژه"
   caption_default: "پیش‌فرض"
   caption_default_rate_history_for: "تاریخچه ضریب (نرخ) پرداختی پیش‌فرض برای %{user}"
@@ -96,11 +103,9 @@ fa:
   caption_set_rate: "تنظیم ضریب پرداخت (نرخ) کنونی"
   caption_show_locked: "نمایش انواع قفل‌شده"
   caption_log_time_dialog: "پیگیری زمان"
-  caption_activity_order_changed: "Order successfully changed."
   description_date_for_new_rate: "تاریخ برای شروع ضریب پرداختی (نرخ) جدید"
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
-  error_activity_could_not_be_moved: "Activity could not be moved."
   group_by_others: "در هیچ گروهی نیست"
   label_between: "بین"
   label_cost_filter_add: "افزودن فیلتر ورودی هزینه"
@@ -141,9 +146,9 @@ fa:
   label_until: "تا"
   label_valid_from: "معتبر از"
   label_yes: "بله"
-  label_time: "Time"
+  label_time: "زمان"
   label_cost: "Cost"
-  label_costs: "Costs"
+  label_costs: "هزینه ها"
   label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "مشکلی پیش آمد. لطفا دوباره تلاش کنید."
@@ -176,8 +181,6 @@ fa:
   text_reassign_time_and_cost_entries: "تخصیص ساعت‌ها و هزینه‌های گزارش شده به پروژه"
   text_warning_hidden_elements: "Some entries may have been excluded from the aggregation."
   week: "هفته"
-  js:
-    text_are_you_sure: "آیا مطمئن هستید؟"
   api_v3:
     errors:
       validation:

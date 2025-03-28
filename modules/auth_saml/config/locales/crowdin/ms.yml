@@ -1,5 +1,5 @@
 ms:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
         display_name: Nama
@@ -23,7 +23,6 @@ ms:
         digest_method: Algoritma penghadaman
         format: "Format"
         icon: "Ikon tersuai"
-  activerecord:
     errors:
       models:
         saml/provider:

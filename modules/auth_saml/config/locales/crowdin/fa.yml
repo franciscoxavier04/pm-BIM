@@ -1,5 +1,5 @@
 fa:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
         display_name: نام
@@ -21,9 +21,8 @@ fa:
         private_key: کلید خصوصی مرتبط به احراز هویت های سخت افزاری
         signature_method: الگوریتم امضا
         digest_method: الگوریتم خلاصه سازی در رمزنگاری
-        format: "قالب"
+        format: "قالب‎بندی"
         icon: "نماد دلخواه"
-  activerecord:
     errors:
       models:
         saml/provider:

@@ -21,7 +21,23 @@
 #See docs/COPYRIGHT.rdoc for more details.
 #++
 pt-BR:
+  attributes:
+    commit: "Commit"
+    gitlab: "Identificador do GitLab"
+    gitlab_avatar_url: "URL da imagem de perfil"
+    gitlab_email: "E-mail do GitLab"
+    gitlab_html_url: "URL de HTML do GitLab  "
+    gitlab_merge_request: "Merge Request"
+    gitlab_name: "Nome no GitLab"
+    gitlab_updated_at: "Atualizado em"
+    gitlab_user_avatar_url: "URL da imagem de perfil do GitLab"
+    gitlab_username: "Nome de usuário do GitLab"
   activerecord:
+    attributes:
+      gitlab_pipeline:
+        ci_details: "Detalhes do CI"
+      gitlab_merge_request:
+        labels: "Rótulos"
     errors:
       models:
         gitlab_issue:

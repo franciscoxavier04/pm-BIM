@@ -30,6 +30,7 @@ ms:
         overridden_costs: "Kos yang diambil alih"
         spent: "Dibelanja"
         spent_on: "Tarikh"
+        logged_by: "Dilog oleh"
       cost_type:
         unit: "Nama unit"
         unit_plural: "Nama majmuk unit"
@@ -46,20 +47,24 @@ ms:
       user:
         default_rates: "Kadar default"
       time_entry:
-        project: Project
-        user: User
-        work_package: Work package
+        project: Projek
+        user: Pengguna
+        work_package: Pakej kerja
         hours: Jam
-        comments: Comment
+        comments: Komen
         activity: Aktiviti
         spent_on: Tarikh
-        start_time: Start time
+        start_time: Masa mula
         end_time: Finish time
     models:
+      time_entry:
+        other: "Time entries"
+      cost_entry:
+        other: "Cost entries"
       cost_type:
         other: "Jenis kos"
       time_entry_activity:
-        other: "Time tracking activities"
+        other: "Aktiviti penjejakan masa"
       rate: "Kadar"
     errors:
       models:
@@ -81,7 +86,7 @@ ms:
   button_add_rate: "Tambah kadar"
   button_log_costs: "Log kos unit"
   button_log_time: "Log"
-  button_add_activity: "Activity"
+  button_add_activity: "Aktiviti"
   caption_booked_on_project: "Ditempah pada projek"
   caption_default: "Default"
   caption_default_rate_history_for: "Sejarah kadar default untuk %{user}"
@@ -93,12 +98,10 @@ ms:
   caption_save_rate: "Simpan kadar"
   caption_set_rate: "Tetapkan kadar semasa"
   caption_show_locked: "Papar jenis terkunci"
-  caption_log_time_dialog: "Log time"
-  caption_activity_order_changed: "Order successfully changed."
+  caption_log_time_dialog: "Masa log"
   description_date_for_new_rate: "Tarikh untuk kadar baru"
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
-  error_activity_could_not_be_moved: "Activity could not be moved."
   group_by_others: "tiada dalam mana-mana kumpulan"
   label_between: "antara"
   label_cost_filter_add: "Tambah saringan kos entri"
@@ -141,7 +144,7 @@ ms:
   label_yes: "Ya"
   label_time: "Masa"
   label_cost: "Cost"
-  label_costs: "Costs"
+  label_costs: "Kos"
   label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Ada ralat berlaku. Sila cuba lagi."
@@ -174,8 +177,6 @@ ms:
   text_reassign_time_and_cost_entries: "Tetapkan semula jam dan kos yang dilaporkan ke projek:"
   text_warning_hidden_elements: "Beberapa entri mungkin telah dikecualikan daripada pengumpulan."
   week: "minggu"
-  js:
-    text_are_you_sure: "Adakah anda pasti?"
   api_v3:
     errors:
       validation:

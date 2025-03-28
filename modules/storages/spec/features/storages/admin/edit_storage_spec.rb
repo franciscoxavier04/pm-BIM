@@ -46,7 +46,7 @@ RSpec.describe "Admin Edit File storage",
     page.find_test_selector("storage-delete-button").click
 
     expect(page).to have_text("DELETE FILE STORAGE")
-    expect(page).to have_current_path("#{confirm_destroy_admin_settings_storage_path(storage)}?utf8=%E2%9C%93")
+    expect(page).to have_current_path(confirm_destroy_admin_settings_storage_path(storage))
     storage_delete_button = page.find_button("Delete", disabled: true)
 
     fill_in("delete_confirmation", with: "Foo Nextcloud")
@@ -247,7 +247,7 @@ RSpec.describe "Admin Edit File storage",
         :nextcloud_storage,
         :as_automatically_managed,
         authentication_method: "oauth2_sso",
-        nextcloud_audience: "",
+        storage_audience: "",
         name: "Cloud Storage"
       )
     end
@@ -273,10 +273,10 @@ RSpec.describe "Admin Edit File storage",
         expect(page).to have_test_selector("label-host_name_configured-status", text: "Completed")
         expect(page).to have_test_selector("storage-description", text: "Nextcloud - #{storage.name} - #{storage.host}")
 
-        # Nextcloud audience
-        expect(page).to have_test_selector("nextcloud-audience-label", text: "Nextcloud Audience")
-        expect(page).to have_test_selector("label-nextcloud_audience_configured-status", text: "Incomplete")
-        expect(page).to have_test_selector("nextcloud-audience-description", text: "No audience has been configured")
+        # Storage audience
+        expect(page).to have_test_selector("storage-audience-label", text: "Storage Audience")
+        expect(page).to have_test_selector("label-storage_audience_configured-status", text: "Incomplete")
+        expect(page).to have_test_selector("storage-audience-description", text: "No audience has been configured")
 
         # Automatically managed project folders
         expect(page).to have_test_selector("storage-managed-project-folders-label",
@@ -290,18 +290,51 @@ RSpec.describe "Admin Edit File storage",
       # Only testing interaction with components not tested
       # in Two-Way OAuth 2.0 case
 
-      aggregate_failures "Nextcloud Audience" do
-        find_test_selector("storage-edit-nextcloud-audience-button").click
-        within_test_selector("storage-nextcloud-audience-form") do
-          click_on "Save and continue"
-          expect(page).to have_text("Nextcloud Audience can't be blank")
+      aggregate_failures "Storage Audience" do
+        find_test_selector("storage-edit-storage-audience-button").click
+        within_test_selector("storage-audience-form") do
+          expect(page).to have_checked_field("Define storage audience manually")
+          expect(page).to have_field("Storage Audience")
 
-          fill_in "Nextcloud Audience", with: "schmaudience"
+          click_on "Save and continue"
+          expect(page).to have_text("Storage Audience can't be blank")
+
+          fill_in "Storage Audience", with: "schmaudience"
+
+          choose("Use first access token obtained by identity provider")
+          expect(page).to have_no_field("Storage Audience")
+          choose("Define storage audience manually")
+          expect(page).to have_field("Storage Audience", with: "schmaudience")
+
           click_on "Save and continue"
         end
 
-        expect(page).to have_test_selector("label-nextcloud_audience_configured-status", text: "Completed")
-        expect(page).to have_test_selector("nextcloud-audience-description", text: "Using audience schmaudience")
+        expect(page).to have_test_selector("label-storage_audience_configured-status", text: "Completed")
+        expect(page).to have_test_selector("storage-audience-description", text: "Obtaining tokens for audience \"schmaudience\"")
+
+        find_test_selector("storage-edit-storage-audience-button").click
+        within_test_selector("storage-audience-form") do
+          expect(page).to have_checked_field("Define storage audience manually")
+          expect(page).to have_field("Storage Audience", with: "schmaudience")
+
+          choose("Use first access token obtained by identity provider")
+          click_on "Save and continue"
+        end
+
+        expect(page).to have_test_selector("label-storage_audience_configured-status", text: "Completed")
+        expect(page).to have_test_selector(
+          "storage-audience-description",
+          text: "Using first access token received by identity provider, regardless of audience."
+        )
+
+        find_test_selector("storage-edit-storage-audience-button").click
+        within_test_selector("storage-audience-form") do
+          expect(page).to have_checked_field("Use first access token obtained by identity provider")
+          expect(page).to have_no_field("Storage Audience")
+
+          choose("Define storage audience manually")
+          expect(page).to have_field("Storage Audience", with: "")
+        end
       end
     end
 

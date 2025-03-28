@@ -1,12 +1,4 @@
-<%= render(
-      Primer::OpenProject::SubHeader.new(
-        data: {
-          controller: "filter--filters-form",
-          "application-target": "dynamic",
-          "filter--filters-form-output-format-value": "json"
-        }
-      )
-    ) do |subheader|
+<%= render(Primer::OpenProject::SubHeader.new) do |subheader|
       subheader.with_filter_component do
         render(Primer::Alpha::SegmentedControl.new("aria-label": I18n.t(:label_filter_plural))) do |control|
           control.with_item(

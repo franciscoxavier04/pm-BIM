@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -130,6 +132,7 @@ RSpec.describe Query::Results, "sums" do
     create(:type) do |t|
       t.custom_fields << int_cf
       t.custom_fields << float_cf
+      project.types << t
     end
   end
   let(:current_user) do

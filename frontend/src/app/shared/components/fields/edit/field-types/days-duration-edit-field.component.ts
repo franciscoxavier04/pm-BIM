@@ -27,7 +27,6 @@
  */
 
 import {
-  ChangeDetectionStrategy,
   Component,
   OnInit,
 } from '@angular/core';
@@ -36,11 +35,8 @@ import * as moment from 'moment-timezone';
 
 @Component({
   templateUrl: './days-duration-edit-field.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DaysDurationEditFieldComponent extends DatePickerEditFieldComponent implements OnInit {
-  opened = false;
-
   public get formattedValue():number {
     return Number(moment.duration(this.value).asDays().toFixed(0));
   }
@@ -53,13 +49,9 @@ export class DaysDurationEditFieldComponent extends DatePickerEditFieldComponent
     event.stopPropagation();
   }
 
-  showDatePickerModal() {
-    this.opened = true;
-  }
-
   onModalClosed() {
+    super.onModalClosed();
     void this.handler.handleUserSubmit();
-    this.opened = false;
   }
 
   cancel():void {

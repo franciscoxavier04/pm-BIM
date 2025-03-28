@@ -30,6 +30,7 @@ zh-TW:
         overridden_costs: "覆蓋成本"
         spent: "花費"
         spent_on: "日期"
+        logged_by: "記錄者"
       cost_type:
         unit: "單位名稱"
         unit_plural: "單位名稱(複數)"
@@ -56,6 +57,10 @@ zh-TW:
         start_time: 開始時間
         end_time: 完成時間
     models:
+      time_entry:
+        other: "時間項"
+      cost_entry:
+        other: "成本項"
       cost_type:
         other: "費用類別"
       time_entry_activity:
@@ -94,11 +99,9 @@ zh-TW:
   caption_set_rate: "設定當前費率"
   caption_show_locked: "顯示鎖定類型"
   caption_log_time_dialog: "日誌時間"
-  caption_activity_order_changed: "成功更改排序。"
   description_date_for_new_rate: "新費率的日期"
   description_costs_settings: "定義所有專案中所需的成本格式。"
   description_time_settings: "定義在所有專案中記錄時間時，哪些欄位是必須填寫的。"
-  error_activity_could_not_be_moved: "活動無法移除。"
   group_by_others: "不在任何群組中"
   label_between: "介於"
   label_cost_filter_add: "增加成本篩選條件"
@@ -174,8 +177,6 @@ zh-TW:
   text_reassign_time_and_cost_entries: "將小時數和成本重新設定到工作項目中："
   text_warning_hidden_elements: "一些資料可能已排除在合併之外。"
   week: "週"
-  js:
-    text_are_you_sure: "是否確定？"
   api_v3:
     errors:
       validation:

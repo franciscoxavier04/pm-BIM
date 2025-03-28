@@ -87,7 +87,7 @@ ro:
         item_1:
           name: Ready for Planning
         item_2:
-          name: Planning
+          name: Planificare
         item_3:
           name: Ready for Executing
         item_4:
@@ -309,11 +309,11 @@ ro:
               name: Tablă de sarcini
               lists:
                 item_0:
-                  name: Wish list
+                  name: Listă dorințe
                 item_1:
-                  name: Short list
+                  name: Listă scurtă
                 item_2:
-                  name: Priority list for today
+                  name: Listă priorități pentru astăzi
                 item_3:
                   name: Niciodată
           project-overview:

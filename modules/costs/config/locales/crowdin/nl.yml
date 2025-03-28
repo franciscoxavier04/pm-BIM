@@ -30,6 +30,7 @@ nl:
         overridden_costs: "Overschreven kosten"
         spent: "Uitgegeven"
         spent_on: "Datum"
+        logged_by: "Gelogd door"
       cost_type:
         unit: "Naam eenheid"
         unit_plural: "Vermeerderde eenheid naam"
@@ -56,6 +57,12 @@ nl:
         start_time: Starttijd
         end_time: Eindtijd
     models:
+      time_entry:
+        one: "Time entry"
+        other: "Time entries"
+      cost_entry:
+        one: "Cost entry"
+        other: "Cost entries"
       cost_type:
         one: "Soort kosten"
         other: "Soort kosten"
@@ -83,7 +90,7 @@ nl:
   button_add_rate: "Tarief toevoegen"
   button_log_costs: "Registreer kost per eenheid"
   button_log_time: "Registreer"
-  button_add_activity: "Activity"
+  button_add_activity: "Activiteit"
   caption_booked_on_project: "Gereserveerd op project"
   caption_default: "Standaard"
   caption_default_rate_history_for: "Standaard tarief geschiedenis voor %{user}"
@@ -96,11 +103,9 @@ nl:
   caption_set_rate: "Stel huidige tarief in"
   caption_show_locked: "Toon vergrendelde types"
   caption_log_time_dialog: "Registreer tijd"
-  caption_activity_order_changed: "Order successfully changed."
   description_date_for_new_rate: "Datum voor nieuw tarief"
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
-  error_activity_could_not_be_moved: "Activity could not be moved."
   group_by_others: "niet in een groep"
   label_between: "tussen"
   label_cost_filter_add: "Filter voor kosteninvoer toevoegen"
@@ -141,9 +146,9 @@ nl:
   label_until: "tot"
   label_valid_from: "Geldig vanaf"
   label_yes: "Ja"
-  label_time: "Time"
+  label_time: "Tijd"
   label_cost: "Cost"
-  label_costs: "Costs"
+  label_costs: "Kosten"
   label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Eerst moet u een werkpakket selecteren
   notice_something_wrong: "Er is iets fout gegaan. Probeer het opnieuw."
@@ -176,8 +181,6 @@ nl:
   text_reassign_time_and_cost_entries: "Gerapporteerde uren en kosten voor dit werkpakket opnieuw toewijzen:"
   text_warning_hidden_elements: "Sommige items zijn mogelijk uitgesloten van de aggregatie."
   week: "week"
-  js:
-    text_are_you_sure: "Weet u het zeker?"
   api_v3:
     errors:
       validation:

@@ -56,10 +56,32 @@ RSpec.describe "Projects life cycle settings", :js, with_flag: { stages_and_gate
 
   let(:project_life_cycle_page) { Pages::Projects::Settings::LifeCycle.new(project) }
 
+  let(:activity_page) { Pages::Projects::Activity.new(project) }
+
   context "with sufficient permissions" do
     current_user { user_with_permission }
 
+    let(:activities) do
+      [
+        initiating_stage,
+        ready_to_execute_gate,
+        executing_stage,
+        ready_to_close_gate,
+        closing_stage
+      ].map { |step| "#{step.name} activated" }
+    end
+
     it "allows toggling the active/inactive state of lifecycle steps and filtering them" do
+      activity_page.visit!
+
+      activity_page.show_details
+
+      activity_page.within_journal(number: 1) do
+        activities.each do |activity|
+          activity_page.expect_no_activity(activity)
+        end
+      end
+
       project_life_cycle_page.visit!
 
       project_life_cycle_page.expect_listed(initiating_stage => false,
@@ -133,6 +155,16 @@ RSpec.describe "Projects life cycle settings", :js, with_flag: { stages_and_gate
 
       project_life_cycle_page.expect_not_listed(ready_to_execute_gate,
                                                 ready_to_close_gate)
+
+      activity_page.visit!
+
+      activity_page.show_details
+
+      activity_page.within_journal(number: 1) do
+        activities.each do |activity|
+          activity_page.expect_activity(activity)
+        end
+      end
     end
   end
 

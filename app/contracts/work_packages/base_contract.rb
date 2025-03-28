@@ -222,6 +222,8 @@ module WorkPackages
     end
     alias_method :assignable_responsibles, :assignable_assignees
 
+    def valid?(context = :saving_custom_fields) = super
+
     private
 
     attr_reader :can

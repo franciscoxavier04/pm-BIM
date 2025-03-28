@@ -37,9 +37,9 @@ Work package relations indicate that work packages address a similar topic or cr
 
 You can select one of the following relations:
 
-- **New child** - This option lets you create a new package and automatically adds it as a child to the current (parent) work package. 
+- **Create new child** - This option lets you create a new package and automatically adds it as a child to the current (parent) work package.
 
-- **Existing child** - This option allows you to add an existing work package as a child to the current (parent) work package.
+- **Child** - This option allows you to add an existing work package as a child to the current (parent) work package.
 
 - **Related to** - This option adds a link from the work package A to work package B, so that project members can immediately see the connection, even if the work packages are not members of the same hierarchy.
 
@@ -51,7 +51,7 @@ You can select one of the following relations:
 - **Blocks / Blocked by** - This option defines status change restrictions between two work packages. If you set a work package A to be blocking work package B, the status of work package B cannot be set to closed or resolved until the work package A is closed.
 
 - **Predecessor (before)/ Successor (after)** - Defines a chronological relation between two work packages. For example, if you set a work package A to precede a work package B, the start date of B has to be at least a day after the finish date of A.
-  Please note: If work package B is in [manual scheduling mode](../../gantt-chart/scheduling/#manual-scheduling-mode), changing the finish date of work package A will have no effect on work package B.
+  Please note: If work package B is in [manual scheduling mode](../../gantt-chart/scheduling/#manual-scheduling), changing the finish date of work package A will have no effect on work package B.
 
 > [!TIP]
 > Prior to 15.1, *Predecessor (before)* was called *Precedes*, and *Successor (after)* was called *Follows*.
@@ -115,7 +115,7 @@ There are **four ways to add or create a child work package**:
 
 ### Add a child in the *Relations* tab in a work package's details view
 
-Open a work package and select the tab *Relations*. Here you can click on *+ Relation* button, and select either *New child* or *Existing child* option to add a new or an existing work package as a child to the current one.
+Open a work package and select the tab *Relations*. Here you can click on *+ Relation* button, and select either *Create new child* or *Child* option to add a new or an existing work package as a child to the current one.
 
 ![Add a child to a work package in OpenProject](openproject_user_guide_wp_add_child.png)
 

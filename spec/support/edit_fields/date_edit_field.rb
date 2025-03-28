@@ -36,6 +36,8 @@ class DateEditField < EditField
            :toggle_scheduling_mode,
            :expect_manual_scheduling_mode,
            :expect_automatic_scheduling_mode,
+           :enable_start_date,
+           :enable_due_date,
            to: :datepicker
 
   def modal_selector
@@ -86,7 +88,7 @@ class DateEditField < EditField
     if active?
       modal_element.find(input_selector)
     else
-      page.find(".#{property_name} .spot-input")
+      page.find(".#{property_name} .op-input")
     end
   end
 
@@ -131,7 +133,11 @@ class DateEditField < EditField
 
   def set_value(value)
     if value.is_a?(Array)
+      datepicker.enable_start_date_if_visible
+      datepicker.enable_due_date_if_visible
+
       datepicker.clear!
+
       datepicker.set_start_date value.first
       datepicker.set_due_date value.last
 
@@ -143,7 +149,7 @@ class DateEditField < EditField
   end
 
   def expect_value(value)
-    expect(page).to have_css(".#{property_name} .spot-input", value:)
+    expect(page).to have_css(".#{property_name} .op-input", value:)
   end
 
   def set_active_date(value)

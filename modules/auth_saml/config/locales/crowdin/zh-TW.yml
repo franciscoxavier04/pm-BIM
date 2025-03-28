@@ -1,5 +1,5 @@
 zh-TW:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
         display_name: 名稱
@@ -23,7 +23,6 @@ zh-TW:
         digest_method: 摘要演算法
         format: "格式"
         icon: "自訂圖示"
-  activerecord:
     errors:
       models:
         saml/provider:

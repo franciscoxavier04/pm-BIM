@@ -45,7 +45,7 @@ class Storages::Admin::StoragesController < ApplicationController
   # and set the @<controller_name> variable to the object referenced in the URL.
   before_action :require_admin
   before_action :find_model_object,
-                only: %i[show_oauth_application destroy edit edit_host edit_nextcloud_audience confirm_destroy update
+                only: %i[show_oauth_application destroy edit edit_host edit_storage_audience confirm_destroy update
                          change_health_notifications_enabled replace_oauth_application]
   before_action :ensure_valid_wizard_parameters, only: [:new]
   before_action :require_ee_token_for_one_drive, only: [:new]
@@ -123,8 +123,8 @@ class Storages::Admin::StoragesController < ApplicationController
     respond_with_turbo_streams
   end
 
-  def edit_nextcloud_audience
-    update_via_turbo_stream(component: Storages::Admin::Forms::NextcloudAudienceFormComponent.new(@storage))
+  def edit_storage_audience
+    update_via_turbo_stream(component: Storages::Admin::Forms::StorageAudienceFormComponent.new(@storage))
     respond_with_turbo_streams
   end
 
@@ -196,7 +196,7 @@ class Storages::Admin::StoragesController < ApplicationController
   end
 
   def replace_oauth_application
-    @storage.oauth_application.destroy
+    @storage.oauth_application&.destroy
     service_result = ::Storages::OAuthApplications::CreateService.new(storage: @storage, user: current_user).call
 
     if service_result.success?
@@ -252,7 +252,8 @@ class Storages::Admin::StoragesController < ApplicationController
               "provider_type",
               "host",
               "authentication_method",
-              "nextcloud_audience",
+              "audience_configuration",
+              "storage_audience",
               "oauth_client_id",
               "oauth_client_secret",
               "tenant_id",

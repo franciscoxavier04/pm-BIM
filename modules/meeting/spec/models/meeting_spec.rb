@@ -27,7 +27,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require File.dirname(__FILE__) + "/../spec_helper"
+require_relative "../spec_helper"
 
 RSpec.describe Meeting do
   shared_let (:user1) { create(:user) }
