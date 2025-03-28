@@ -112,7 +112,7 @@ tr:
         inline: "Satır içi vurgula:"
         entire_card_by: "Kartın tamamı"
       remove_from_list: "Kartı listeden çıkar"
-    caption_rate_history: "Ücret geçmişi"
+    caption_rate_history: "Değerleme geçmişi"
     clipboard:
       browser_error: "Tarayıcınız panoya kopyalamayı desteklemiyor. Lütfen elle kopyalayın: %{content}"
       copied_successful: "Panoya başarıyla kopyalandı!"
@@ -587,7 +587,7 @@ tr:
         boards:
           overview: "Görünümü değiştirmek ve çevik panolar görünümünü kullanarak projenizi yönetmek için <b>panolar</b>'ı seçin."
           lists_kanban: "Burada panonuzda birden çok liste (sütun) oluşturabilirsiniz. Bu özellik, örneğin bir <b>Kanban panosu</b> oluşturmanıza olanak tanır."
-          lists_basic: "Burada, hızlı panonuz içinde birden fazla liste (sütun) oluşturabilirsiniz."
+          lists_basic: "Burada, çevik panonuz içinde birden fazla liste (sütun) oluşturabilirsiniz."
           add: "Panodaki listeye <b>yeni bir kart oluşturmak</b> veya <b>mevcut bir kartı eklemek</b> için artı (+) simgesini tıklayın."
           drag: "Yeniden sıralamak veya başka bir listeye taşımak için kartlarınızı belirli bir listeye sürükleyip bırakın. <br> Sağ üst köşedeki bilgi (i) simgesine tıklayabilir veya bir kartı çift tıklayarak ayrıntılarını açabilirsiniz."
         wp:

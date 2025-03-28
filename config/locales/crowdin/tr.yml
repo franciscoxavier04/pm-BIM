@@ -620,7 +620,7 @@ tr:
           caption: "Öznitelik için arayın ya da metin ekleyin. Elementler arası boşluk eklemek için bunu metin olarak girin."
           insert_as_text: "\"%{word}\" metni olarak ekle"
       export_configuration:
-        tab: "PDF oluştur"
+        tab: "PDF oluşturma"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
         pdf_export_templates:
           label: "PDF Dışa Aktarma şablonları"
@@ -2149,7 +2149,7 @@ tr:
       label: "Sözleşme"
       caption: Standart Alman sözleşme formuna göre biçimlendirilmiş iş paketi ayrıntıları.
     dialog:
-      title: PDF Oluştur
+      title: PDF oluştur
       submit: İndir
       templates:
         label: "Şablon"
@@ -3264,7 +3264,7 @@ tr:
           tb: "TB"
   onboarding:
     heading_getting_started: "Genel görünümü al"
-    text_getting_started_description: "OpenProject ile proje yönetimi ve ekip işbirliği hakkında hızlı bir genel bakış elde edin. Bu videoyu yardım menüsünden yeniden başlatabilirsiniz."
+    text_getting_started_description: "OpenProject ile proje yönetimi ve ekip çalışması konusunda genel bir fikir edinin. Bu videoyu yardım menüsünden yeniden başlatabilirsiniz."
     welcome: "%{app_title}'e hoş geldiniz"
     select_language: "Lütfen dilinizi seçin"
   permission_add_work_package_notes: "Yorum ekle"
