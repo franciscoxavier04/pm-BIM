@@ -35,7 +35,7 @@ RSpec.describe ProjectQuery, "results of a project phase gate filter" do
 
   shared_let(:view_role) { create(:project_role, permissions: %i[view_project_phases]) }
 
-  shared_let(:gate_definition) { create(:project_phase_definition, start_gate: true, end_gate: true) }
+  shared_let(:gate_definition) { create(:project_phase_definition, :with_start_gate, :with_end_gate) }
   shared_let(:start_gate_date) { Date.parse("2025-03-04") }
   shared_let(:end_gate_date) { Date.parse("2025-03-07") }
   shared_let(:project_with_gate) { create(:project, name: "Project with gate") }
@@ -48,7 +48,7 @@ RSpec.describe ProjectQuery, "results of a project phase gate filter" do
   end
 
   # This is added to ensure that the filter only works on the gate provided.
-  shared_let(:rival_gate_definition) { create(:project_phase_definition, start_gate: true) }
+  shared_let(:rival_gate_definition) { create(:project_phase_definition, :with_start_gate, :with_end_gate) }
   shared_let(:project_with_rival_gate) { create(:project, name: "Project with rival gate") }
   shared_let(:rival_gate) do
     create(:project_phase,
