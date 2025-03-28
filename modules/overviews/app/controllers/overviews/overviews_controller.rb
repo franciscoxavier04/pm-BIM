@@ -91,7 +91,7 @@ module ::Overviews
                 .new(user: current_user,
                      model: @project,
                      contract_class: ProjectLifeCycleSteps::UpdateContract)
-                .call(permitted_params.project_life_cycles)
+                .call(permitted_params.project_phases)
 
       update_via_turbo_stream(
         component: ProjectLifeCycles::Sections::EditComponent.new(service_call.result),
@@ -105,7 +105,7 @@ module ::Overviews
     def update_project_life_cycles
       service_call = ::ProjectLifeCycleSteps::UpdateService
                       .new(user: current_user, model: @project)
-                      .call(permitted_params.project_life_cycles)
+                      .call(permitted_params.project_phases)
 
       if service_call.success?
         update_via_turbo_stream(
