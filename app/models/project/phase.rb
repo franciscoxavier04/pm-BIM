@@ -35,7 +35,11 @@ class Project::Phase < ApplicationRecord
 
   validate :validate_date_range
 
-  delegate :name, :position, to: :definition
+  delegate :name,
+           :position,
+           :start_gate?,
+           :end_gate?,
+           to: :definition
 
   attr_readonly :definition_id, :type
 
