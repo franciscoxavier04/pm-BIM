@@ -78,7 +78,7 @@ module WorkPackages
         end
       end
 
-      def readonly?
+      def disabled?
         !schedule_manually
       end
 
