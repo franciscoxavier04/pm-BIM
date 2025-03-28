@@ -74,7 +74,7 @@ RSpec.describe EnterpriseToken do
       let(:ee_manager_visible) { true }
 
       it "returns true" do
-        expect(described_class).to be_show_banners
+        expect(described_class).not_to be_hide_banners
       end
     end
 
@@ -82,7 +82,7 @@ RSpec.describe EnterpriseToken do
       let(:ee_manager_visible) { false }
 
       it "returns false" do
-        expect(described_class).not_to be_show_banners
+        expect(described_class).to be_hide_banners
       end
     end
   end
@@ -176,7 +176,7 @@ RSpec.describe EnterpriseToken do
           allow(service_double)
             .to receive(:call)
             .with(:forbidden_action)
-            .and_return ServiceResult.success(result: true)
+            .and_return ServiceResult.success(result: false)
           allow(service_double)
             .to receive(:call)
             .with(:allowed_action)

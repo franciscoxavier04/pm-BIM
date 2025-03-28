@@ -41,13 +41,11 @@ module EnterpriseEdition
     #                            Defaults to "ee.upsale.{feature_key}"
     # @param dismissable [boolean] Allow this banner to be dismissed.
     # @param dismiss_key [String] Provide a string to identify this banner when being dismissed. Defaults to feature_key
-    # @param skip_render [Boolean] Whether to skip rendering the banner.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(feature_key,
                    i18n_scope: "ee.upsale.#{feature_key}",
                    dismissable: false,
                    dismiss_key: feature_key,
-                   skip_render: EnterpriseToken.hide_banners?,
                    **system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = :div
@@ -58,7 +56,6 @@ module EnterpriseEdition
 
       self.feature_key = feature_key
       self.i18n_scope = i18n_scope
-      @skip_render = skip_render
       @dismissable = dismissable
       @dismiss_key = dismiss_key
     end
@@ -68,7 +65,11 @@ module EnterpriseEdition
     attr_reader :skip_render
 
     def render?
-      !(skip_render || dismissed?)
+      !(EnterpriseToken.hide_banners? || feature_available? || dismissed?)
+    end
+
+    def feature_available?
+      EnterpriseToken.allows_to?(feature_key)
     end
 
     def dismissed?
