@@ -62,8 +62,7 @@ module Projects
     end
 
     def gate_icon
-      # TODO: use op-gate once octicons is released and merged in
-      :"git-commit"
+      :"op-gate"
     end
 
     def icon_color_class

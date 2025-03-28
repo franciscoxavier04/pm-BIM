@@ -54,7 +54,7 @@ module ProjectLifeCycles
         def icon
           case model
           when Project::Stage
-            :"git-commit"
+            :"op-phase"
           when Project::Gate
             :diamond
           else

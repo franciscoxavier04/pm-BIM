@@ -65,8 +65,7 @@ class Queries::Projects::Selects::ProjectPhase < Queries::Selects::Base
 
   def visual_icon
     {
-      # TODO: needs to be changed
-      icon: :"git-commit",
+      icon: :"op-phase",
       classes: helpers.hl_inline_class("project_phase_definition", project_phase_definition)
     }
   end

@@ -447,7 +447,7 @@ RSpec.describe SortHelper do
       end
 
       it "shows a commit icon in the header for gates" do
-        icon = action_menu.at_css(".generic-table--action-menu-button .Button-leadingVisual .octicon-git-commit")
+        icon = action_menu.at_css(".generic-table--action-menu-button .Button-leadingVisual .octicon-op-phase")
         expect(icon).to be_present
 
         header_text = action_menu.at_css(".generic-table--action-menu-button .Button-label").text.strip

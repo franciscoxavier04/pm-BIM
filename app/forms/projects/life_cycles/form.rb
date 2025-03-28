@@ -87,7 +87,7 @@ module Projects::LifeCycles
     def icon
       icon_name = case model
                   when Project::Stage
-                    :"git-commit"
+                    :"op-phase"
                   when Project::Gate
                     :diamond
                   else

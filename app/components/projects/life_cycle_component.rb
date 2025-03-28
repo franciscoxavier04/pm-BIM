@@ -44,8 +44,7 @@ module Projects
     end
 
     def icon
-      # TODO: Update icon as per mockups.
-      :"git-commit"
+      :"op-phase"
     end
 
     def icon_color_class
