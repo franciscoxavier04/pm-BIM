@@ -31,55 +31,50 @@
 module Storages
   module Peripherals
     module ConnectionValidators
-      module Nextcloud
-        class BaseValidator
-          include TaggedLogging
+      class BaseValidatorGroup
+        include TaggedLogging
 
-          def initialize(storage)
-            @storage = storage
+        def initialize(storage)
+          @storage = storage
+          @results = ValidationGroupResult.new
+        end
+
+        def call
+          catch :interrupted do
+            validate
           end
 
-          def call
-            catch :interrupted do
-              validate
-            end
+          @results
+        end
 
-            @results
-          end
+        private
 
-          private
+        def validate = raise Errors::SubclassResponsibility
 
-          def validate = raise Errors::SubclassResponsibility
+        def register_checks(*keys)
+          keys.each { @results.register_check(it) }
+        end
 
-          def register_checks(*keys)
-            @results = keys.to_h { [it, CheckResult.skipped(it)] }
-          end
+        def update_result(...)
+          @results.update_result(...)
+        end
 
-          def update_result(key, value)
-            if @results&.has_key?(key)
-              @results[key] = value
-            else
-              raise ArgumentError, "Check #{key} not registered."
-            end
-          end
+        def pass_check(key)
+          update_result(key, CheckResult.success(key))
+        end
 
-          def pass_check(key)
-            update_result(key, CheckResult.success(key))
-          end
+        def fail_check(key, message)
+          update_result(key, CheckResult.failure(key, message))
+          throw :interrupted
+        end
 
-          def fail_check(key, message)
-            update_result(key, CheckResult.failure(key, message))
-            throw :interrupted
-          end
+        def warn_check(key, message, halt_validation: false)
+          update_result(key, CheckResult.warning(key, message))
+          throw :interrupted if halt_validation
+        end
 
-          def warn_check(key, message, halt_validation: false)
-            update_result(key, CheckResult.warning(key, message))
-            throw :interrupted if halt_validation
-          end
-
-          def message(key, context = {})
-            I18n.t("storages.health.connection_validation.#{key}", **context)
-          end
+        def message(key, context = {})
+          I18n.t("storages.health.connection_validation.#{key}", **context)
         end
       end
     end

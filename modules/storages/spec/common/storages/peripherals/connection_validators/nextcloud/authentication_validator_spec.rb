@@ -48,9 +48,7 @@ module Storages
             before { User.current = user }
 
             it "passes when the user has a token and the request works", vcr: "nextcloud/user_query_success" do
-              result = validator.call
-
-              expect(result.values).to all(be_success)
+              expect(validator.call).to be_success
             end
 
             it "returns a warning when there's no token for the current user" do
@@ -87,9 +85,7 @@ module Storages
 
             it "succeeds give the user is provisioned and tokens can be acquired" do
               create(:oidc_user_token, user:, extra_audiences: storage.audience)
-              result = validator.call
-
-              expect(result.values).to all(be_success)
+              expect(validator.call).to be_success
             end
 
             describe "error and warning handling" do
@@ -100,7 +96,7 @@ module Storages
                 expect(result[:non_provisioned_user]).to be_warning
                 expect(result[:non_provisioned_user].message).to eq(I18n.t(i18n_key(:oidc_non_provisioned_user)))
 
-                state_count = result.values.map { it.state }.tally
+                state_count = result.tally
                 expect(state_count).to eq({ skipped: 3, warning: 1 })
               end
 
@@ -111,7 +107,7 @@ module Storages
                 expect(result[:provisioned_user_provider]).to be_warning
                 expect(result[:provisioned_user_provider].message).to eq(I18n.t(i18n_key(:oidc_non_oidc_user)))
 
-                state_count = result.values.map { it.state }.tally
+                state_count = result.tally
                 expect(state_count).to eq({ success: 1, skipped: 2, warning: 1 })
               end
             end
@@ -138,9 +134,7 @@ module Storages
                                                     refresh_token: expired_storage_token.refresh_token })
                                       .and_return_json(status: 200, body: { access_token: "NEW_TOKEN" })
 
-                  result = validator.call
-
-                  expect(result.values).to all(be_success)
+                  expect(validator.call).to be_success
                   expect(refresh_request).to have_been_requested.once
                 end
 
@@ -176,8 +170,7 @@ module Storages
                                                        grant_type: OpenIDConnect::Provider::TOKEN_EXCHANGE_GRANT_TYPE })
                                          .and_return_json(status: 200, body: { access_token: "NEW_TOKEN" })
 
-                    result = validator.call
-                    expect(result.values).to all(be_success)
+                    expect(validator.call).to be_success
                     expect(exchange_request).to have_been_requested.once
                   end
 

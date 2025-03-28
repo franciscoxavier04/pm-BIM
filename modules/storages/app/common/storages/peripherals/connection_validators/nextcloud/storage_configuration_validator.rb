@@ -32,21 +32,31 @@ module Storages
   module Peripherals
     module ConnectionValidators
       module Nextcloud
-        class BaseConfigurationValidator < BaseValidator
+        class StorageConfigurationValidator < BaseValidatorGroup
           private
 
           def validate
-            register_checks(:capabilities_request, :host_url_accessible, :dependencies_check, :dependencies_versions)
+            register_checks(:storage_configured, :capabilities_request,
+                            :host_url_accessible, :dependencies_check, :dependencies_versions)
 
+            storage_configuration_status
             capabilities_request_status
             host_url_not_found
             missing_dependencies
             version_mismatch
           end
 
+          def storage_configuration_status
+            if @storage.configured?
+              pass_check(:storage_configured)
+            else
+              fail_check(:storage_configured, message(:not_configured))
+            end
+          end
+
           def capabilities_request_status
             if capabilities.failure? && capabilities.result != :not_found
-              fail_check(:capabilities_request, message(:error))
+              fail_check(:capabilities_request, message(:unknown_error))
             else
               pass_check(:capabilities_request)
             end
