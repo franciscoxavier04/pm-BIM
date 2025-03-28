@@ -56,6 +56,10 @@ module WorkPackages
         end
       end
 
+      def has_saved_export_settings?
+        @query.export_settings.any?
+      end
+
       def export_formats_settings
         [
           { id: "pdf", icon: :"op-pdf",

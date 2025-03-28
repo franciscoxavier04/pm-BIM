@@ -51,7 +51,17 @@
       <% end %>
     <% end %>
   <% end %>
-  <% dialog.with_footer do %>
+  <% dialog.with_footer(show_divider: true) do %>
+    <%= render(
+          Primer::Alpha::CheckBox.new(
+            id: "#{EXPORT_FORM_ID}-save_export_settings",
+            name: "save_export_settings",
+            value: "true",
+            unchecked_value: "false",
+            checked: has_saved_export_settings?,
+            label: I18n.t("export.dialog.save_export_settings.label")
+          )
+        ) %>
     <%= render(Primer::ButtonComponent.new(data: { "close-dialog-id": MODAL_ID })) { I18n.t(:button_cancel) } %>
     <%= render(
           Primer::ButtonComponent.new(
