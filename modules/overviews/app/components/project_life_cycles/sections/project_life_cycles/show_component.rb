@@ -52,18 +52,11 @@ module ProjectLifeCycles
         end
 
         def icon
-          case model
-          when Project::Stage
-            :"op-phase"
-          when Project::Gate
-            :diamond
-          else
-            raise NotImplementedError, "Unknown model #{model.class} to render a LifeCycleForm with"
-          end
+          :"op-phase"
         end
 
         def icon_color_class
-          helpers.hl_inline_class("life_cycle_step_definition", model.definition)
+          helpers.hl_inline_class("project_phase_definition", model.definition)
         end
 
         def text

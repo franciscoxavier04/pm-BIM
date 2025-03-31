@@ -52,7 +52,7 @@ module Projects
     end
 
     def icon_color_class
-      helpers.hl_inline_class("life_cycle_step_definition", model)
+      helpers.hl_inline_class("project_phase_definition", model)
     end
 
     def text_options

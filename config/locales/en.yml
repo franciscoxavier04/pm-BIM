@@ -1037,6 +1037,7 @@ en:
       project/phase:
         date_range: "Date range"
         definition: "Definition"
+        date_range: "Date range"
       project/phase_definition:
         name: "Name"
         color: "Color"
