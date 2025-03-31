@@ -17,7 +17,8 @@ If you have a lot of projects running at the same time it can be helpful and eve
 
 ### Access project list
 
-To view all projects, first select the **Select a project** dropdown menu, then click on the **Project lists** button. You can also get to projects overview by selecting **Projects** from the [global modules](../../user-guide/homepage/global-modules) menu in the top right corner.
+To view all projects, first select the **Select a project** dropdown menu, then click on the **Project lists** button. 
+You can also get to projects overview by selecting **Projects** from the [global modules](../../user-guide/home/global-modules) menu in the top right corner.
 
 ![Select a project dropdown menu and a button to open project list in OpenProject](openproject_use_case_portfolio_projects_list_button.png)
 
@@ -29,7 +30,9 @@ You will see a list of all projects within your organization. You can filter thi
 
 You can further adjust this view by adding or re-arranging columns and changing the sorting order. To sort the project list, click on a column heading, such as **Status**. Read more about [configuring project lists](../../user-guide/projects/project-lists/#configure-project-lists-view). 
 
-After you have adjusted the projects overview to your liking, you can save it, [export it](../../user-guide/projects/project-lists/#export-project-lists-view) or [share it with key stakeholders](../../user-guide/projects/project-lists/#share-project-lists-view).
+After you have adjusted the projects overview to your liking, you can save it, 
+[export it](../../user-guide/projects/project-lists/#export-project-lists) or 
+[share it with key stakeholders](../../user-guide/projects/project-lists/#share-project-lists).
 
 ### Projects in Gantt view
 
@@ -41,7 +44,7 @@ The **Gantt charts** module will open and the selected projects will be displaye
 
 ![Multiple projects displayed in a Gantt charts view in OpenProject](openproject_use_case_portfolio_gantt_charts_view.png)
 
-You can configure this view using the button with the three dots at the upper right corner and select **Configure view**. Find out more about [Gantt charts configuration](../../user-guide/gantt-chart/#gantt-chart-configuration).
+You can configure this view using the button with the three dots in the upper right corner and select **Configure view**. Find out more about [Gantt charts configuration](../../user-guide/gantt-chart/#gantt-chart-configuration).
 
 ![Configure projects overview in Gantt charts module in OpenProject](openproject_use_case_portfolio_projects_overview_gantt_view_configure.png)
 
@@ -73,7 +76,7 @@ And how the dynamic data, such as calculations, filters, macros and reference la
 
 ![Editing a wiki page with dynamic data on project details in OpenProject](openproject_use_case_portfolio_wiki_status_report_edit_mode.png)
 
-For more information about the syntax and how the attributes work please look [here](../../user-guide/wysiwyg/).
+For more information about the syntax and how the attributes work, please look [here](../../user-guide/wysiwyg/).
 
 If you want to work with multiple Wiki-based reports, you can create a parent Wiki page as a table of contents, for example, on which all the other reports are listed.
 
