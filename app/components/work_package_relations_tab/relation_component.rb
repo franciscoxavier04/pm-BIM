@@ -1,44 +1,69 @@
+# frozen_string_literal: true
+
+#-- copyright
+# OpenProject is an open source project management software.
+# Copyright (C) the OpenProject GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License version 3.
+#
+# OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+# Copyright (C) 2006-2013 Jean-Philippe Lang
+# Copyright (C) 2010-2013 the ChiliProject Team
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# See COPYRIGHT and LICENSE files for more details.
+#++
+
 class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   include ApplicationHelper
   include OpPrimer::ComponentHelpers
 
-  attr_reader :work_package, :relation, :visibility, :child, :editable
+  attr_reader :work_package, :relation_item, :relation, :child, :editable
 
   # Checks if the relation or child work package is visible to the current user
   #
   # @param work_package [WorkPackage] The work package whose relations are being displayed
   # @param relation [Relation, nil] The relation between work packages, if any
-  # @param visibility [Symbol] The visibility status of the relation (:visible or :ghost)
   # @param child [WorkPackage, nil] The child work package, if this is a parent-child relationship
   # @param editable [Boolean] Whether the relation can be edited
   # @param closest [Boolean] Whether the follows relation is the closest
   def initialize(work_package:,
+                 relation_item:,
                  relation:,
-                 visibility:,
                  child: nil,
                  editable: true,
                  closest: false)
     super()
 
     @work_package = work_package
+    @relation_item = relation_item
     @relation = relation
-    @visibility = visibility
     @child = child
     @editable = editable
     @closest = closest
   end
 
   def related_work_package
-    @related_work_package ||= if parent_child_relationship?
-                                @child
-                              else
-                                relation.from == work_package ? relation.to : relation.from
-                              end
+    relation_item.related
   end
 
   private
 
-  def parent_child_relationship? = @child.present?
+  def parent_child_relationship? = @relation.nil?
 
   def should_render_edit_option?
     # Children have nothing to edit as it's not a relation.
@@ -65,15 +90,7 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   end
 
   def visible?
-    @visibility == :visible
-  end
-
-  def underlying_resource_id
-    @underlying_resource_id ||= if parent_child_relationship?
-                                  @child.id
-                                else
-                                  @relation.other_work_package(work_package).id
-                                end
+    relation_item.visible?
   end
 
   def should_display_description?
@@ -127,14 +144,14 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   end
 
   def action_menu_test_selector
-    "op-relation-row-#{underlying_resource_id}-action-menu"
+    "op-relation-row-#{related_work_package.id}-action-menu"
   end
 
   def edit_button_test_selector
-    "op-relation-row-#{underlying_resource_id}-edit-button"
+    "op-relation-row-#{related_work_package.id}-edit-button"
   end
 
   def delete_button_test_selector
-    "op-relation-row-#{underlying_resource_id}-delete-button"
+    "op-relation-row-#{related_work_package.id}-delete-button"
   end
 end

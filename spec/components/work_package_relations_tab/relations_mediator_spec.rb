@@ -31,14 +31,45 @@
 require "rails_helper"
 
 RSpec.describe WorkPackageRelationsTab::RelationsMediator do
+  create_shared_association_defaults_for_work_package_factory
+
   shared_let(:user) { create(:admin) }
-  shared_let(:work_package) { create(:work_package) }
 
   current_user { user }
 
   subject(:mediator) { described_class.new(work_package:) }
 
+  context "with a work package having multiple kind of relations" do
+    let_work_packages(<<~TABLE)
+      hierarchy         | predecessors | relates to
+      predecessor       |              |
+      related 1         |              |
+      related 2         |              | work package
+      successor         | work package |
+      work package      | predecessor  | related 1
+        child           |              |
+    TABLE
+
+    it "returns all relations of the work package" do
+      expect(mediator.relation_group("children").all_relation_items).to contain_exactly(
+        have_attributes(class: described_class::RelationItem, type: "children", related: child, visibility: :visible)
+      )
+      expect(mediator.relation_group("precedes").all_relation_items).to contain_exactly(
+        have_attributes(class: described_class::RelationItem, type: "precedes", related: successor, visibility: :visible)
+      )
+      expect(mediator.relation_group("follows").all_relation_items).to contain_exactly(
+        have_attributes(class: described_class::RelationItem, type: "follows", related: predecessor, visibility: :visible)
+      )
+      expect(mediator.relation_group("relates").all_relation_items).to contain_exactly(
+        have_attributes(class: described_class::RelationItem, type: "relates", related: related1, visibility: :visible),
+        have_attributes(class: described_class::RelationItem, type: "relates", related: related2, visibility: :visible)
+      )
+    end
+  end
+
   describe "RelationGroup" do
+    shared_let(:work_package) { create(:work_package) }
+
     let(:group) { mediator.relation_group("follows") }
 
     describe "#type" do
@@ -62,7 +93,7 @@ RSpec.describe WorkPackageRelationsTab::RelationsMediator do
       TABLE
 
       describe "#closest_relation" do
-        it "returns the closest follows relation" do
+        it "returns the closest follows relation of the group" do
           expect(group.closest_relation).to eq _table.relation(predecessor: predecessor2)
         end
       end
@@ -92,6 +123,34 @@ RSpec.describe WorkPackageRelationsTab::RelationsMediator do
         it "always returns false" do
           expect(group.closest_relation?(_table.relation(predecessor: predecessor1))).to be false
         end
+      end
+    end
+
+    describe "#all_relation_items" do
+      let(:work_package) { build_stubbed(:work_package) }
+
+      it "returns all relations of the group as RelationItem instances, " \
+         "ordered by oldest first (lowest id first), mixing visible and ghost relations" do
+        relation_group = described_class::RelationGroup.new(
+          type: "relates",
+          work_package:,
+          visible_relations: [
+            build_stubbed(:relates_relation, id: 4, from: work_package),
+            build_stubbed(:relates_relation, id: 2, from: work_package)
+          ],
+          ghost_relations: [
+            build_stubbed(:relates_relation, id: 1, from: work_package),
+            build_stubbed(:relates_relation, id: 3, from: work_package)
+          ]
+        )
+        expect(relation_group.all_relation_items).to match(
+          [
+            have_attributes(class: described_class::RelationItem, relation: have_attributes(id: 1)),
+            have_attributes(class: described_class::RelationItem, relation: have_attributes(id: 2)),
+            have_attributes(class: described_class::RelationItem, relation: have_attributes(id: 3)),
+            have_attributes(class: described_class::RelationItem, relation: have_attributes(id: 4))
+          ]
+        )
       end
     end
   end

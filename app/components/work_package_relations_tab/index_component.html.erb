@@ -55,23 +55,21 @@
           base_key = "#{I18N_NAMESPACE}.relations.label_#{relation_group.type}"
 
           # Combine visible and invisible relations into a single list
-          all_relations = relation_group.visible_relations.map { |r| [r, :visible] } +
-            relation_group.ghost_relations.map { |r| [r, :ghost] }
-          all_relations.sort_by! { |r| r[0].id }
+          all_relation_items = relation_group.all_relation_items
 
           flex.with_row(mb: 4) do
             render_relation_group(
               title: t("#{base_key}_plural").upcase_first,
               relation_type: relation_group.type,
-              items: all_relations
-            ) do |relation, visibility|
+              relation_items: all_relation_items
+            ) do |relation_item|
               # Render each relation with its visibility
               render(
                 WorkPackageRelationsTab::RelationComponent.new(
-                  work_package: work_package,
-                  relation: relation,
-                  visibility: visibility,
-                  closest: relation_group.closest_relation?(relation)
+                  work_package:,
+                  relation_item:,
+                  relation: relation_item.relation,
+                  closest: relation_group.closest_relation?(relation_item.relation)
                 )
               )
             end
@@ -82,23 +80,20 @@
         if any_children?
           base_key = "#{key_namespace}.label_child"
 
-          # Combine visible and invisible children into a single list
-          all_children = visible_children.map { |r| [r, :visible] } +
-            ghost_children.map { |r| [r, :ghost] }
-          all_children.sort_by! { |r| r[0].created_at }
+          all_relation_items = relations_mediator.relation_group("children").all_relation_items
 
           flex.with_row do
             render_relation_group(
               title: t("#{base_key}_plural").upcase_first,
               relation_type: :children,
-              items: all_children
-            ) do |child, visibility|
+              relation_items: all_relation_items
+            ) do |relation_item|
               render(
                 WorkPackageRelationsTab::RelationComponent.new(
                   work_package:,
+                  relation_item:,
                   relation: nil,
-                  child:,
-                  visibility: visibility
+                  child: relation_item.related
                 )
               )
             end

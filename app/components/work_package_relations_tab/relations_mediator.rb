@@ -29,9 +29,9 @@
 #++
 
 class WorkPackageRelationsTab::RelationsMediator
-  RelationGroup = Data.define(:type, :visible_relations, :ghost_relations) do
-    def initialize(type:, visible_relations:, ghost_relations:)
-      super(type: ActiveSupport::StringInquirer.new(type), visible_relations:, ghost_relations:)
+  RelationGroup = Data.define(:type, :work_package, :visible_relations, :ghost_relations) do
+    def initialize(type:, work_package:, visible_relations:, ghost_relations:)
+      super(type: ActiveSupport::StringInquirer.new(type.to_s), work_package:, visible_relations:, ghost_relations:)
     end
 
     def count
@@ -46,6 +46,18 @@ class WorkPackageRelationsTab::RelationsMediator
       visible_relations + ghost_relations
     end
 
+    def all_relation_items
+      (visible_relation_items + ghost_relation_items).sort_by(&:order_key)
+    end
+
+    def visible_relation_items
+      visible_relations.map { |relation| RelationItem.new(type:, work_package:, relation:, visibility: :visible) }
+    end
+
+    def ghost_relation_items
+      ghost_relations.map { |relation| RelationItem.new(type:, work_package:, relation:, visibility: :ghost) }
+    end
+
     def closest_relation?(relation) = closest_relation == relation
 
     def closest_relation
@@ -56,6 +68,24 @@ class WorkPackageRelationsTab::RelationsMediator
         .select(&:soonest_start)
         .max
         &.relation
+    end
+  end
+
+  RelationItem = Data.define(:type, :relation, :related, :visibility) do
+    def initialize(type:, work_package:, relation:, visibility:)
+      if relation.is_a?(Relation)
+        related = relation.other_work_package(work_package)
+      else
+        related = relation # relation is the child
+        relation = nil
+      end
+      super(type:, relation:, related:, visibility:)
+    end
+
+    def visible? = visibility == :visible
+
+    def order_key
+      [type, relation&.id, related&.id]
     end
   end
 
@@ -95,12 +125,14 @@ class WorkPackageRelationsTab::RelationsMediator
     if type == "children"
       RelationGroup.new(
         type:,
+        work_package:,
         visible_relations: visible_children,
         ghost_relations: ghost_children
       )
     else
       RelationGroup.new(
         type:,
+        work_package:,
         visible_relations: filter_relations_by_type(visible_relations, type),
         ghost_relations: filter_relations_by_type(ghost_relations, type)
       )
