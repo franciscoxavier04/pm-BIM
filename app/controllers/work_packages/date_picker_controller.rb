@@ -154,7 +154,8 @@ class WorkPackages::DatePickerController < ApplicationController
                                                          focused_field:,
                                                          triggering_field: params[:triggering_field],
                                                          touched_field_map:,
-                                                         date_mode:)
+                                                         date_mode:,
+                                                         live_region: true)
   end
 
   def focused_field

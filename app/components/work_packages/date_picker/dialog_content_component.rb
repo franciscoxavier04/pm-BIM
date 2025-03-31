@@ -46,6 +46,7 @@ module WorkPackages
                      focused_field: :start_date,
                      triggering_field: nil,
                      touched_field_map: {},
+                     live_region: false,
                      date_mode: nil)
         super
 
@@ -55,6 +56,7 @@ module WorkPackages
         @triggering_field = triggering_field
         @touched_field_map = touched_field_map
         @date_mode = date_mode
+        @live_region = live_region
       end
 
       private

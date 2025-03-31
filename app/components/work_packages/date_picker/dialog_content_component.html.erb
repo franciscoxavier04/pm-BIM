@@ -1,5 +1,6 @@
 <%=
-  content_tag("turbo-frame", id: "wp-datepicker-dialog--content") do
+  content_tag("turbo-frame", id: "wp-datepicker-dialog--content") do %>
+  <%=
     component_wrapper(
       data: { "application-target": "dynamic",
               controller: "work-packages--date-picker--preview",
@@ -115,6 +116,8 @@
           end
         end
       end
-    end
-  end
-%>
+      end%>
+  <% if @live_region %>
+  <%= render OpTurbo::StreamComponent.new(action: :aria, message: "test", type:"polite", target: "nil") %>
+    <% end %>
+<% end %>
