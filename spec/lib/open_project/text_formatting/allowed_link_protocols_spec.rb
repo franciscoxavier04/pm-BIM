@@ -66,6 +66,20 @@ RSpec.describe OpenProject::TextFormatting, "OpenProject allowed link protocols"
     it_behaves_like "format_text produces" do
       let(:raw) do
         <<~RAW
+          An autolinked data:text/plain;base64,SGVsbG8sIFdvcmxkIQ==.
+        RAW
+      end
+
+      let(:expected) do
+        <<~EXPECTED
+          <p class="op-uc-p">An autolinked data:text/plain;base64,SGVsbG8sIFdvcmxkIQ==.</p>
+        EXPECTED
+      end
+    end
+
+    it_behaves_like "format_text produces" do
+      let(:raw) do
+        <<~RAW
           A link with [custom protocol](ftp://example.org)
         RAW
       end
@@ -110,6 +124,34 @@ RSpec.describe OpenProject::TextFormatting, "OpenProject allowed link protocols"
     it_behaves_like "format_text produces" do
       let(:raw) do
         <<~RAW
+          An autolinked ftp://example.org
+        RAW
+      end
+
+      let(:expected) do
+        <<~EXPECTED
+          <p class="op-uc-p">An autolinked <a href="ftp://example.org" rel="noopener noreferrer" target="_top" class="op-uc-link">ftp://example.org</a></p>
+        EXPECTED
+      end
+    end
+
+    it_behaves_like "format_text produces" do
+      let(:raw) do
+        <<~RAW
+          An autolinked ftp://example.org.
+        RAW
+      end
+
+      let(:expected) do
+        <<~EXPECTED
+          <p class="op-uc-p">An autolinked <a href="ftp://example.org" rel="noopener noreferrer" target="_top" class="op-uc-link">ftp://example.org</a>.</p>
+        EXPECTED
+      end
+    end
+
+    it_behaves_like "format_text produces" do
+      let(:raw) do
+        <<~RAW
           A link with [SFTP protocol](sftp://example.org)
         RAW
       end
@@ -147,6 +189,20 @@ RSpec.describe OpenProject::TextFormatting, "OpenProject allowed link protocols"
       let(:expected) do
         <<~EXPECTED
           <p class="op-uc-p">A link with <a href="data:text/plain;base64,SGVsbG8sIFdvcmxkIQ==" rel="noopener noreferrer" target="_top" class="op-uc-link">data protocol</a></p>
+        EXPECTED
+      end
+    end
+
+    it_behaves_like "format_text produces" do
+      let(:raw) do
+        <<~RAW
+          An autolinked data:text/plain;base64,SGVsbG8sIFdvcmxkIQ==.
+        RAW
+      end
+
+      let(:expected) do
+        <<~EXPECTED
+          <p class="op-uc-p">An autolinked <a href="data:text/plain;base64,SGVsbG8sIFdvcmxkIQ==" rel="noopener noreferrer" target="_top" class="op-uc-link">data:text/plain;base64,SGVsbG8sIFdvcmxkIQ==</a>.</p>
         EXPECTED
       end
     end
