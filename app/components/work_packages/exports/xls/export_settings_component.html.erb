@@ -14,7 +14,7 @@
             name: "show_relations",
             value: "true",
             unchecked_value: "false",
-            checked: export_settings.settings.fetch(:show_relations, false),
+            checked: export_settings.true?(:show_relations),
             label: I18n.t("export.dialog.xls.include_relations.label"),
             caption: I18n.t("export.dialog.xls.include_relations.caption"),
             visually_hide_label: false
@@ -29,7 +29,7 @@
             name: "show_descriptions",
             value: "true",
             unchecked_value: "false",
-            checked: export_settings.settings.fetch(:show_descriptions, false),
+            checked: export_settings.true?(:show_descriptions),
             label: I18n.t("export.dialog.xls.include_descriptions.label"),
             caption: I18n.t("export.dialog.xls.include_descriptions.caption"),
             visually_hide_label: false

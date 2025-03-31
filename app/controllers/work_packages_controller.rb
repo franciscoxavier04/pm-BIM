@@ -135,6 +135,8 @@ class WorkPackagesController < ApplicationController
   end
 
   def export_list(mime_type)
+    save_export_settings if params[:save_export_settings].to_bool
+
     job_id = WorkPackages::Exports::ScheduleService
                .new(user: current_user)
                .call(query: @query, mime_type:, params:)
@@ -168,6 +170,21 @@ class WorkPackagesController < ApplicationController
   end
 
   private
+
+  def save_export_settings
+    relevant_keys = %i[format columns show_relations show_descriptions long_text_fields
+                       show_images gantt_mode gantt_width paper_size]
+
+    user_settings = params.slice(*relevant_keys)
+
+    if user_settings[:format] == "pdf"
+      user_settings[:format] = "pdf_#{params[:pdf_export_type]}"
+    end
+
+    export_settings = @query.export_settings_for(user_settings[:format])
+    export_settings.settings = user_settings
+    export_settings.save!
+  end
 
   def authorize_on_work_package
     deny_access(not_found: true) unless work_package
