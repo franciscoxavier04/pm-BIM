@@ -51,8 +51,8 @@ class ExportSetting < ApplicationRecord
 
   # Some boolean settings are saved as string. Use this method to conveniently check if they are
   # set to true. Assumes that all boolean settings default to false.
-  def true?(key)
-    settings.fetch(key, false).to_s.to_bool
+  def true?(key, default: false)
+    settings.fetch(key, default).to_s.to_bool
   end
 
   private
