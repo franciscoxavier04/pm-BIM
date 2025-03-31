@@ -91,7 +91,7 @@ projects:
     types:
       - :default_type_task
       - :default_type_milestone
-      - :default_type_phase
+      - :default_type_summary_task
     t_categories:
       - Category 1 (to be changed in Project settings)
     queries:
@@ -248,7 +248,7 @@ projects:
         reference: :organize_open_source_conference
         description: ''
         status: :default_status_in_progress
-        type: :default_type_phase
+        type: :default_type_summary_task
         duration: 15
         schedule_manually: false
         children:
@@ -316,7 +316,7 @@ projects:
         reference: :follow_up_tasks
         description: ''
         status: :default_status_to_be_scheduled
-        type: :default_type_phase
+        type: :default_type_summary_task
         duration: 11
         schedule_manually: false
         children:
@@ -451,7 +451,7 @@ projects:
     types:
       - :default_type_task
       - :default_type_milestone
-      - :default_type_phase
+      - :default_type_summary_task
       - :default_type_epic
       - :default_type_user_story
       - :default_type_bug
@@ -465,7 +465,7 @@ projects:
         sort_by: id
         type:
           - :default_type_milestone
-          - :default_type_phase
+          - :default_type_summary_task
         timeline: true
       - t_name: Product backlog
         status: open
@@ -711,7 +711,7 @@ projects:
       - t_subject: Develop v1.0
         reference: :develop_v1_0
         status: :default_status_in_progress
-        type: :default_type_phase
+        type: :default_type_summary_task
         start: 14
         duration: 4
       - t_subject: Release v1.0
@@ -726,7 +726,7 @@ projects:
       - t_subject: Develop v1.1
         reference: :develop_v1_1
         status: :default_status_new
-        type: :default_type_phase
+        type: :default_type_summary_task
         start: 21
         duration: 4
       - t_subject: Release v1.1
@@ -741,7 +741,7 @@ projects:
       - t_subject: Develop v2.0
         reference: :develop_v2_0
         status: :default_status_new
-        type: :default_type_phase
+        type: :default_type_summary_task
         start: 28
         duration: 4
       - t_subject: Release v2.0
@@ -903,8 +903,8 @@ types:
     color_name: :default_color_green_light
     is_milestone: true
     position: 2
-  - reference: :default_type_phase
-    t_name: Phase
+  - reference: :default_type_summary_task
+    t_name: Summary task
     is_default: true
     color_name: 'orange-5'
     position: 3
@@ -946,7 +946,7 @@ workflows:
       - :default_status_on_hold
       - :default_status_rejected
       - :default_status_closed
-  - type: :default_type_phase
+  - type: :default_type_summary_task
     statuses:
       - :default_status_new
       - :default_status_to_be_scheduled
