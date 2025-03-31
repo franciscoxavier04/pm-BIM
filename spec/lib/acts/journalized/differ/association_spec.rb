@@ -130,32 +130,32 @@ RSpec.describe Acts::Journalized::Differ::Association do
 
   describe "#multiple_attributes_changes" do
     let(:original) do
-      build(:journal, project_life_cycle_step_journals: [
-              build_stubbed(:project_life_cycle_step_journal, life_cycle_step_id: 1, active: false),
-              build_stubbed(:project_life_cycle_step_journal, life_cycle_step_id: 3, active: true),
-              build_stubbed(:project_life_cycle_step_journal, life_cycle_step_id: 4, active: true,
-                                                              start_date: Date.new(2024, 1, 16),
-                                                              end_date: Date.new(2024, 1, 17))
+      build(:journal, project_phase_journals: [
+              build_stubbed(:project_phase_journal, phase_id: 1, active: false),
+              build_stubbed(:project_phase_journal, phase_id: 3, active: true),
+              build_stubbed(:project_phase_journal, phase_id: 4, active: true,
+                                                    start_date: Date.new(2024, 1, 16),
+                                                    end_date: Date.new(2024, 1, 17))
             ])
     end
 
     let(:changed) do
-      build(:journal, project_life_cycle_step_journals: [
-              build_stubbed(:project_life_cycle_step_journal, life_cycle_step_id: 1, active: true),
-              build_stubbed(:project_life_cycle_step_journal, life_cycle_step_id: 2, active: true),
-              build_stubbed(:project_life_cycle_step_journal, life_cycle_step_id: 3, active: false,
-                                                              start_date: Date.new(2024, 1, 17),
-                                                              end_date: Date.new(2024, 1, 18)),
-              build_stubbed(:project_life_cycle_step_journal, life_cycle_step_id: 4, active: true,
-                                                              start_date: Date.new(2024, 1, 17),
-                                                              end_date: Date.new(2024, 1, 18))
+      build(:journal, project_phase_journals: [
+              build_stubbed(:project_phase_journal, phase_id: 1, active: true),
+              build_stubbed(:project_phase_journal, phase_id: 2, active: true),
+              build_stubbed(:project_phase_journal, phase_id: 3, active: false,
+                                                    start_date: Date.new(2024, 1, 17),
+                                                    end_date: Date.new(2024, 1, 18)),
+              build_stubbed(:project_phase_journal, phase_id: 4, active: true,
+                                                    start_date: Date.new(2024, 1, 17),
+                                                    end_date: Date.new(2024, 1, 18))
             ])
     end
 
     let(:instance) do
       described_class.new(original, changed,
-                          association: :project_life_cycle_step_journals,
-                          id_attribute: :life_cycle_step_id,
+                          association: :project_phase_journals,
+                          id_attribute: :phase_id,
                           multiple_values:)
     end
 
