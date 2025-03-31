@@ -41,7 +41,7 @@ module ::TypesHelper
       {
         name: "form_configuration",
         partial: "types/form/form_configuration",
-        path: edit_tab_type_path(id: @type.id, tab: :form_configuration),
+        path: edit_tab_type_path(id: @type.id, tab: :edit_attribute_groups),
         label: "types.edit.form_configuration.tab"
       },
       {
