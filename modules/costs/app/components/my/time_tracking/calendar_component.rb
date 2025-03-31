@@ -110,6 +110,13 @@ module My
           { href: my_time_tracking_month_path(date: date + 1.month), aria: { label: I18n.t(:label_next_month) } }
         end
       end
+
+      def total_hours
+        total_hours = time_entries.sum(&:hours).round(2)
+        total_str = DurationConverter.output(total_hours, format: :hours_and_minutes)
+
+        I18n.t(mode, scope: "total_times", hours: total_str)
+      end
     end
   end
 end

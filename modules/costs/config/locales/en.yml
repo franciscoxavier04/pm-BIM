@@ -204,6 +204,11 @@ en:
 
   week: "week"
 
+  total_times:
+    week: "Week Total: %{hours}"
+    month: "Month Total: %{hours}"
+    day: "Day Total: %{hours}"
+
   api_v3:
     errors:
       validation:
