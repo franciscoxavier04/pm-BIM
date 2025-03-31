@@ -411,7 +411,9 @@ RSpec.describe Project do
       let(:user) do
         create(:user, member_with_permissions: { project => %i(view_project view_project_phases) })
       end
-      let!(:project_phase) { create :project_phase, :skip_validate, project:, start_date: nil }
+      let!(:project_phase) do
+        create :project_phase, :skip_validate, project:, start_date: Date.new(3000, 1, 1), end_date: Date.new(2000, 1, 1)
+      end
 
       current_user { user }
 
