@@ -29,32 +29,19 @@
 project_phases:
   - reference: :default_project_phase_initiating
     t_name: Initiating
-    type: Project::PhaseDefinition
     color_name: :default_color_pm2_orange
-  - reference: :default_phase_ready_for_planning
-    t_name: Ready for Planning
-    type: Project::PhaseDefinition
-    color_name: :default_color_pm2_purple
-  - reference: :default_phase_planning
+  - reference: :default_project_phase_planning
     t_name: Planning
-    type: Project::PhaseDefinition
     color_name: :default_color_pm2_red
-  - reference: :default_phase_ready_for_executing
-    t_name: Ready for Executing
-    type: Project::PhaseDefinition
-    color_name: :default_color_pm2_purple
-  - reference: :default_phase_executing
+    t_start_gate: Ready for Planning
+  - reference: :default_project_phase_executing
     t_name: Executing
-    type: Project::PhaseDefinition
     color_name: :default_color_pm2_magenta
-  - reference: :default_phase_ready_for_closing
-    t_name: Ready for Closing
-    type: Project::PhaseDefinition
-    color_name: :default_color_pm2_purple
-  - reference: :default_phase_closing
+    t_start_gate: Ready for Executing
+  - reference: :default_project_phase_closing
     t_name: Closing
-    type: Project::PhaseDefinition
     color_name: :default_color_pm2_green_yellow
+    t_start_gate: Ready for Closing
 
 priorities:
   - reference: :default_priority_low

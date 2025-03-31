@@ -25,6 +25,7 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+
 module BasicData
   class ProjectPhaseDefinitionSeeder < ModelSeeder
     self.model_class = Project::PhaseDefinition
@@ -36,9 +37,14 @@ module BasicData
     self.attribute_names_for_lookups = %i[name]
 
     def model_attributes(phase_data)
+      start_gate_name = phase_data["start_gate"]
+      start_gate = !start_gate_name.nil?
+
       {
         name: phase_data["name"],
-        color_id: color_id(phase_data["color_name"])
+        color_id: color_id(phase_data["color_name"]),
+        start_gate:,
+        start_gate_name:
       }
     end
   end
