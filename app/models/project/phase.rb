@@ -76,11 +76,7 @@ class Project::Phase < ApplicationRecord
   end
 
   def validate_date_range
-    if range_incomplete?
-      errors.add(:date_range, :incomplete)
-    elsif range_set? && (start_date > end_date)
-      errors.add(:date_range, :start_date_must_be_before_end_date)
-    end
+    errors.add(:date_range, :start_date_must_be_before_end_date) if range_set? && (start_date > end_date)
   end
 
   def column_name

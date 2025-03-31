@@ -1035,6 +1035,7 @@ en:
         is_required: "Required for all projects"
         custom_field_section: Section
       project/phase:
+        date_range: "Date range"
         definition: "Definition"
       project/phase_definition:
         name: "Name"

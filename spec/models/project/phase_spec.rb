@@ -92,18 +92,6 @@ RSpec.describe Project::Phase do
       expect(stage).to be_valid
     end
 
-    it "adds error if start_date is blank" do
-      subject.end_date = Time.zone.today
-      expect(subject).not_to be_valid
-      expect(subject.errors.symbols_for(:date_range)).to include(:incomplete)
-    end
-
-    it "adds error if end_date is blank" do
-      subject.start_date = Time.zone.today
-      expect(subject).not_to be_valid
-      expect(subject.errors.symbols_for(:date_range)).to include(:incomplete)
-    end
-
     it "adds error if start_date is after end_date" do
       subject.start_date = Date.tomorrow
       subject.end_date = Time.zone.today
