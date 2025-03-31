@@ -35,13 +35,13 @@ de:
         label_sort_desc: "Neueste oben"
         label_type_to_comment: "Einen Kommentar hinzufügen. @ tippen, um Personen zu benachrichtigen."
         label_submit_comment: "Kommentar absenden"
-        label_who: Who?
+        label_who: Wer?
         changed_on: "geändert am"
         created_on: "erstellte dies am"
         changed: "geändert"
         created: "erstellt"
         commented: "kommentiert"
-        restrict_visibility: Restrict visibility
+        restrict_visibility: Sichtbarkeit einschränken
         restricted_journal: Restricted comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
@@ -617,9 +617,9 @@ de:
           label: "Thema-Schema"
           caption: "Fügen Sie Text oder Typ / um nach einem Attribut zu suchen. Sie können Leerzeichen hinzufügen, um sie zu trennen."
           headings:
-            work_package: "Work package"
+            work_package: "Arbeitspaket"
             parent: "Parent"
-            project: "Project"
+            project: "Projekt"
           insert_as_text: "Keine Attribute gefunden. Als Text hinzufügen: \"%{word}\""
       export_configuration:
         tab: "PDF generieren"
@@ -1053,9 +1053,9 @@ de:
       wiki_page:
         parent_title: "Übergeordnete Seite"
         redirect_existing_links: "Existierende Links umleiten"
-        text: "Page content"
+        text: "Seiteninhalt"
       work_package:
-        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
+        ancestor: "Nachkommen von" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Beginn der Einfügung"
         begin_deletion: "Beginn des Löschvorgangs"
         children: "Kindelemente"
@@ -1115,7 +1115,7 @@ de:
         empty: "muss ausgefüllt werden."
         even: "muss gerade sein."
         exclusion: "ist nicht verfügbar."
-        feature_disabled: is not available.
+        feature_disabled: ist nicht verfügbar.
         file_too_large: "ist zu groß (nicht mehr als %{count} Bytes erlaubt)."
         filter_does_not_exist: "Filter existiert nicht."
         format: "stimmt nicht mit dem erwarteten Format '%{expected} ' überein."
@@ -1578,15 +1578,15 @@ de:
       changeset: "Änderungssätze"
       message: "Foren"
       news: "Neuigkeiten"
-      project_details: "Project details"
+      project_details: "Projektdetails"
       subproject: "Unterprojekte einbeziehen"
       time_entry: "Aufgewendete Zeit"
       wiki_edit: "Wiki"
       work_package: "Arbeitspakete"
     project_life_cycle_step:
-      activated: "activated"
-      deactivated: "deactivated"
-      added_date: "set to %{date}"
+      activated: "aktiviert"
+      deactivated: "deaktiviert"
+      added_date: "auf %{date} festlegen"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
   #common attributes of all models
@@ -2058,7 +2058,7 @@ de:
     changeset: "Projektarchiv-Änderung bearbeitet"
     message: Nachricht bearbeitet
     news: Neuigkeiten
-    project_details: "Project details edited"
+    project_details: "Projektdetails bearbeitet"
     project: "Projekt bearbeitet"
     projects: "Projekt bearbeitet"
     reply: Antwort erstellt
@@ -2184,11 +2184,11 @@ de:
       hyphenation_language:
         label: Sprache und Silbentrennung
       page_orientation:
-        label: Page orientation
+        label: Seitenausrichtung
         caption: Select the orientation of the pages in the PDF document.
         options:
-          portrait: Portrait
-          landscape: Landscape
+          portrait: Hochformat
+          landscape: Querformat
   extraction:
     available:
       pdftotext: "Pdftotext verfügbar (optional)"
