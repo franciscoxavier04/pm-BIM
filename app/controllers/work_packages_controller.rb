@@ -135,7 +135,7 @@ class WorkPackagesController < ApplicationController
   end
 
   def export_list(mime_type)
-    save_export_settings if params[:save_export_settings].to_bool
+    save_export_settings if params[:save_export_settings]&.to_bool
 
     job_id = WorkPackages::Exports::ScheduleService
                .new(user: current_user)
