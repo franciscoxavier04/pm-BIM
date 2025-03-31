@@ -45,9 +45,15 @@ module OpenProject::TextFormatting
       # Skip text nodes that are within preformatted or linked blocks
       SKIPPED_BLOCKS = %w(pre code kbd a).to_set
 
+      def self.protocols
+        Setting
+          .allowed_link_protocols
+          .map { |protocol| Regexp.escape(protocol) }
+      end
+
       # Match custom schemes and ignore trailing punctuation
       def self.regexp
-        %r{((?:#{Setting.allowed_link_protocols.join('|')}):/?/?[^\s<\u00A0"]*[^\s<\u00A0",;\.])}i
+        %r{((?:#{protocols.join('|')}):/?/?[^\s<\u00A0"]*[^\s<\u00A0",;\.])}i
       end
 
       def call
