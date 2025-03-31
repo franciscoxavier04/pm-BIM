@@ -39,11 +39,10 @@ module Admin::Settings
     before_action :check_feature_flag
     before_action :require_enterprise_token, except: %i[index]
 
+    before_action :find_definitions, only: %i[index]
     before_action :find_definition, only: %i[edit update destroy move drop]
 
-    def index
-      @definitions = Project::PhaseDefinition.with_project_count
-    end
+    def index; end
 
     def new
       @definition = Project::PhaseDefinition.new
@@ -115,6 +114,10 @@ module Admin::Settings
 
     def require_enterprise_token
       render_402 unless allowed_to_customize_life_cycle?
+    end
+
+    def find_definitions
+      @definitions = Project::PhaseDefinition.with_project_count
     end
 
     def find_definition
