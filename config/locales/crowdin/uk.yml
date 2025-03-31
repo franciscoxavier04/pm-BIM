@@ -772,9 +772,9 @@ uk:
       follows_description: "Зв’язаний пакет робіт обов’язково має завершуватися перед початком цього"
       label_child_singular: "дочірній елемент"
       label_child_plural: "дочірні елементи"
-      new_child: "Новий дочірній"
+      new_child: "Create new child"
       new_child_text: "Створює звʼязаний пакет робіт як піделемент поточного (батьківського) пакета робіт"
-      existing_child: "Наявний дочірній"
+      child: "Child"
       child_description: "Вкладає звʼязаний пакет робіт як піделемент поточного (батьківського) пакета робіт"
       label_closest: "Найближчі"
       label_blocks_singular: "блоки"
@@ -3647,6 +3647,9 @@ uk:
     manual: "ручне"
     automatic: "автоматичне"
   search_input_placeholder: "Пошук ..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "Переспрямування після першого входу"
   setting_after_first_login_redirect_url_text_html: >
     Задайте шлях для переспрямування користувачів після першого входу. Якщо не задано, користувачі переспрямовуються на головну сторінку з ознайомленням. <br/>Наприклад: <code>/my/page</code>

@@ -757,9 +757,9 @@ pt-BR:
       follows_description: "O pacote de trabalho relacionado deve ser finalizado antes que este possa ser iniciado"
       label_child_singular: "filho"
       label_child_plural: "filhos"
-      new_child: "Novo filho"
+      new_child: "Create new child"
       new_child_text: "Cria um pacote de trabalho relacionado como um subpacote do pacote de trabalho atual (pai)"
-      existing_child: "Filho existente"
+      child: "Child"
       child_description: "Torna o pacote de trabalho relacionado uma subtarefa do pacote de trabalho atual (pai)"
       label_closest: "Mais próximo"
       label_blocks_singular: "blocos"
@@ -3569,6 +3569,9 @@ pt-BR:
     manual: "definir como Manual"
     automatic: "definido como Automático"
   search_input_placeholder: "Pesquisar..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "Redirecionamento de primeiro login"
   setting_after_first_login_redirect_url_text_html: >
     Defina um caminho para redirecionar os usuários após o primeiro login. Se deixado em branco, eles serão redirecionados para a página inicial do tour de introdução. <br/> Exemplo: <code>/my/page</code>

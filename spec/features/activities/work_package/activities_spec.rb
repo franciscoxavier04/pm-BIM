@@ -1515,6 +1515,28 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
           end
         end
       end
+
+      context "when the work package is invalid due to a required custom field" do
+        let!(:custom_field) do
+          create(:integer_wp_custom_field, is_required: true, is_for_all: true, default_value: nil) do |cf|
+            project.types.first.custom_fields << cf
+            project.work_package_custom_fields << cf
+          end
+        end
+
+        it "the creation call still succeeds" do
+          activity_tab.add_comment(text: "First comment by admin")
+
+          comment = work_package.journals.reload.last
+
+          activity_tab.within_journal_entry(comment) do
+            page.find_test_selector("op-wp-journal-#{comment.id}-action-menu").click
+
+            expect(page).to have_test_selector("op-wp-journal-#{comment.id}-edit")
+            expect(page).to have_test_selector("op-wp-journal-#{comment.id}-quote")
+          end
+        end
+      end
     end
 
     context "when editing a comment" do

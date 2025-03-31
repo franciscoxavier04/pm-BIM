@@ -758,9 +758,9 @@ fr:
       follows_description: "Le lot de travaux lié doit nécessairement se terminer avant que celui-ci puisse commencer"
       label_child_singular: "enfant"
       label_child_plural: "enfants"
-      new_child: "Nouvel enfant"
+      new_child: "Create new child"
       new_child_text: "Crée un lot de travaux lié en tant que sous-élément du lot de travaux actuel (parent)"
-      existing_child: "Enfant existant"
+      child: "Child"
       child_description: "Fait du lot de travaux lié un sous-élément du lot de travaux actuel (parent)"
       label_closest: "Le plus proche"
       label_blocks_singular: "blocs"
@@ -3571,6 +3571,9 @@ fr:
     manual: "régler sur le mode manuel"
     automatic: "régler sur le mode automatique"
   search_input_placeholder: "Rechercher…"
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "Redirection de première connexion"
   setting_after_first_login_redirect_url_text_html: >
     Définissez un chemin pour rediriger les utilisateurs après leur première connexion. S’il est vide, les utilisateurs seront redirigés vers la page d'accueil de la visite d'intégration. <br/> Exemple : <code>/my/page</code>

@@ -80,7 +80,7 @@ module WorkPackages
           show_clear_button: !disabled?(name) && !duration_field?(name),
           classes: "op-datepicker-modal--date-field #{'op-datepicker-modal--date-field_current' if @focused_field == name}",
           validation_message: validation_message(name),
-          type: duration_field?(name) ? :number : :text
+          type: field_type(name)
         )
 
         if duration_field?(name)
@@ -175,6 +175,12 @@ module WorkPackages
         else
           @work_package.public_send(name)
         end
+      end
+
+      def field_type(name)
+        return :number if duration_field?(name)
+
+        helpers.browser.device.mobile? ? :date : :text
       end
 
       def validation_message(name)

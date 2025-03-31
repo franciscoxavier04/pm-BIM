@@ -217,7 +217,7 @@ You can send an email reminder to all the meeting participants. Select the dropd
 
 ## Meeting attachments
 
-You can attachments in the meetings in the **Attachments** section in the right bottom corner. You can either user the **+Attach files** link to select files from your computer or drag and drop them.
+You can add attachments in the meetings in the **Attachments** section in the right bottom corner. You can either user the **+Attach files** link to select files from your computer or drag and drop them.
 
 Added attachments can be added to the Notes section of agenda packages by dragging and dropping them from the Attachments section.
 
@@ -243,7 +243,7 @@ Read more about [subscribing to a calendar](../../calendar/#subscribe-to-a-calen
 
 Meetings in OpenProject can have three different statuses: Open, In Progress, and Closed. Depending on the meeting status, different options are available, such as editing the agenda, adding outcomes, or finalizing the meeting. You can transition between these statuses using the meeting status button  with a drop-down menu under the meeting name or in the right-hand pane.
 
-![Meeting status in OpenProjec](openproject_userguide_meetings_meeting_status.png)
+![Meeting status in OpenProject](openproject_userguide_meetings_meeting_status.png)
 
 Clicking on this button will show following status options:
 

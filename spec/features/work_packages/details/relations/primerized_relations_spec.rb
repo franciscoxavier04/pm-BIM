@@ -405,7 +405,7 @@ RSpec.describe "Primerized work package relations tab",
     end
 
     it "doesn't autocomplete parent, children, and WP itself" do
-      relations_tab.select_relation_type "Existing child"
+      relations_tab.select_relation_type "Child"
 
       wait_for_reload
 

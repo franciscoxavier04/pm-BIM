@@ -758,9 +758,9 @@ es:
       follows_description: "El paquete de trabajo relacionado tiene que terminar necesariamente antes de que este pueda empezar"
       label_child_singular: "secundario"
       label_child_plural: "secundarios"
-      new_child: "Añadir elemento secundario"
+      new_child: "Create new child"
       new_child_text: "Crea un paquete de trabajo relacionado como un subelemento del paquete de trabajo actual (principal)"
-      existing_child: "Elemento secundario existente"
+      child: "Child"
       child_description: "Hace que el paquete de trabajo relacionado sea un subelemento del paquete de trabajo actual (principal)"
       label_closest: "Más cercano"
       label_blocks_singular: "bloquea"
@@ -3570,6 +3570,9 @@ es:
     manual: "establecer en Manual"
     automatic: "establecer en Automático"
   search_input_placeholder: "Buscar..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "Primera redirección de inicio de sesión"
   setting_after_first_login_redirect_url_text_html: >
     Establezca una ruta para redirigir a los usuarios tras su primer inicio de sesión. Si está vacía, redirige a la página de inicio del recorrido de incorporación. <br/> Ejemplo: <code>/my/page</code>

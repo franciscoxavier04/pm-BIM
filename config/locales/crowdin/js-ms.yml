@@ -828,7 +828,7 @@ ms:
       add_new_child: "Cipta anak baru"
       create_new: "Cipta baru"
       add_existing: "Tambah sedia ada"
-      add_existing_child: "Tambah anak sedia ada"
+      add_existing_child: "Add child"
       remove_child: "Padam anak"
       add_new_relation: "Cipta perhubungan baharu"
       add_existing_relation: "Tambah perhubungan sedia ada"

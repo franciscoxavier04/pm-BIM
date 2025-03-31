@@ -829,7 +829,7 @@ ca:
       add_new_child: "Crear nou fill"
       create_new: "Crear nou"
       add_existing: "Afegir existent"
-      add_existing_child: "Afegir fill existent"
+      add_existing_child: "Add child"
       remove_child: "Eliminar fill"
       add_new_relation: "Crea una nova relació"
       add_existing_relation: "Afegir relació existent"

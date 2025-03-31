@@ -749,9 +749,9 @@ zh-TW:
       follows_description: "在這個工作項目開始之前，相關的工作必須先完成"
       label_child_singular: "子項目"
       label_child_plural: "子項目"
-      new_child: "新增子項目"
+      new_child: "Create new child"
       new_child_text: "使相關工作成為目前（上層）工作項目的子項目"
-      existing_child: "現有子項目"
+      child: "Child"
       child_description: "使相關工作成為目前（父）工作項目的子項目"
       label_closest: "最近的"
       label_blocks_singular: "區塊"
@@ -954,7 +954,7 @@ zh-TW:
         column_names: "欄"
         relations_to_type_column: "與 %{type} 的關連"
         relations_of_type_column: "%{type} 關係"
-        child_work_packages: "Child work packages"
+        child_work_packages: "子工作項目"
         group_by: "分組依據"
         sort_by: "排序結果"
         filters: "篩選條件"
@@ -3528,6 +3528,9 @@ zh-TW:
     manual: "設定為手動"
     automatic: "設定為自動"
   search_input_placeholder: "搜尋 ..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "首次登入重新導向"
   setting_after_first_login_redirect_url_text_html: >
     設定使用者首次登入後的重新導向路徑。如果為空，則會重定向到上線導覽的首頁。 <br/> 範例：<code>/my/page</code>

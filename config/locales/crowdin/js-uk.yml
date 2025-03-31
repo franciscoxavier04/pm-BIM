@@ -831,7 +831,7 @@ uk:
       add_new_child: "Створити новий дочірній елемент"
       create_new: "Створити новий"
       add_existing: "Додати існуючий"
-      add_existing_child: "Додати існуючий дочірній елемент"
+      add_existing_child: "Add child"
       remove_child: "Видалити дочірній елемент"
       add_new_relation: "Створити нове відношення"
       add_existing_relation: "Додати існуюче співвідношення"

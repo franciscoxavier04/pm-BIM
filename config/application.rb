@@ -57,7 +57,7 @@ module OpenProject
     # Goal is to reach 8.0 defaults. Overridden defaults should be stored in
     # specific initializers files. See
     # https://community.openproject.org/wp/45463 for details.
-    config.load_defaults 6.0
+    config.load_defaults 6.1
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.

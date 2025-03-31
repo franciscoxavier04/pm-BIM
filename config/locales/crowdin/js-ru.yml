@@ -800,7 +800,7 @@ ru:
       typeahead_placeholder: Поиск возможных наблюдателей
     relation_labels:
       parent: "Родитель"
-      child: "Child"
+      child: "Дочерний"
       children: "Дочерние пакеты работ"
       relates: "Связан с"
       duplicates: "Дублирует"
@@ -809,7 +809,7 @@ ru:
       blocked: "Блокируется"
       precedes: "Предшествует"
       follows: "Следует"
-      includes: "Включения"
+      includes: "Включает в себя"
       partof: "Является частью"
       requires: "Требует выполнения"
       required: "Требуется для выполнения"
@@ -830,7 +830,7 @@ ru:
       add_new_child: "Создать новый дочерний пакет работ"
       create_new: "Создать новый"
       add_existing: "Добавить существующий"
-      add_existing_child: "Добавить существующий дочерний пакет работ"
+      add_existing_child: "Добавить дочерний пакет работ"
       remove_child: "Удалить дочерний элемент"
       add_new_relation: "Создать новую связь"
       add_existing_relation: "Добавить существующее отношение"

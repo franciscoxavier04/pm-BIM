@@ -833,7 +833,7 @@ ar:
       add_new_child: "إنشاء طفل جديد"
       create_new: "Create new"
       add_existing: "Add existing"
-      add_existing_child: "Add existing child"
+      add_existing_child: "Add child"
       remove_child: "إزالة طفل"
       add_new_relation: "إنشاء علاقة جديدة"
       add_existing_relation: "Add existing relation"

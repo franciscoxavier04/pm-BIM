@@ -828,7 +828,7 @@ el:
       add_new_child: "Δημιουργήστε καινούργιο παιδί"
       create_new: "Δημιουργία νέου"
       add_existing: "Προσθήκη υπάρχοντος"
-      add_existing_child: "Προσθήκη υπάρχοντος παιδιού"
+      add_existing_child: "Add child"
       remove_child: "Αφαίρεση παιδιού"
       add_new_relation: "Δημιουργία νέας συσχέτισης"
       add_existing_relation: "Προσθέστε υπάρχουσα συσχέτιση"

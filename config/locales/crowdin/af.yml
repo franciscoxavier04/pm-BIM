@@ -760,9 +760,9 @@ af:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      new_child: "New child"
+      new_child: "Create new child"
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
-      existing_child: "Existing child"
+      child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
       label_blocks_singular: "blokke"
@@ -3573,6 +3573,9 @@ af:
     manual: "set to Manual"
     automatic: "set to Automatic"
   search_input_placeholder: "Search ..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
     Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>

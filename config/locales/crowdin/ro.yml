@@ -769,9 +769,9 @@ ro:
       follows_description: "Pachetul de lucru asociat trebuie neapărat să înceapă după finalizarea acestuia"
       label_child_singular: "copil"
       label_child_plural: "copii"
-      new_child: "Copil nou"
+      new_child: "Create new child"
       new_child_text: "Creează un pachet de lucru asociat ca sub-element al pachetului de lucru curent (părinte)"
-      existing_child: "Copil existent"
+      child: "Child"
       child_description: "Face din pachetul de lucru asociat un sub-element al pachetului de lucru actual (părinte)"
       label_closest: "Closest"
       label_blocks_singular: "blochează"
@@ -842,7 +842,7 @@ ro:
     signup_with_auth_provider: "sau înregistrează-te folosind"
     auth_source_login: Autentifică-te ca <em>%{login}</em> pentru a activa contul.
     omniauth_login: Autentifică-te pentru activarea contului tău.
-  actionview_instancetag_blank_option: "Vă rugăm să selectaţi"
+  actionview_instancetag_blank_option: "Selectează"
   activerecord:
     attributes:
       announcements:
@@ -2812,7 +2812,7 @@ ro:
   label_placeholder_user_new: "Utilizator nou"
   label_placeholder_user_plural: "Utilizatori de tip Placeholder"
   label_planning: "Planificare"
-  label_please_login: "Vă rugăm să vă autentificați"
+  label_please_login: "Te rog să te autentifici"
   label_plugins: "Module"
   label_modules_and_plugins: "Module și Plugin-uri"
   label_precedes: "precede"
@@ -3278,7 +3278,7 @@ ro:
   notice_internal_server_error: "A apărut o eroare pe pagina pe care aţi încercat să o accesaţi. Dacă veţi continua să experimentați probleme vă rugăm să contactaţi administratorul %{app_title} pentru asistenţă."
   notice_locking_conflict: "Informaţia a fost actualizată de cel puţin un alt utilizator între timp."
   notice_locking_conflict_additional_information: "Modificările au fost făcute de %{users}."
-  notice_locking_conflict_reload_page: "Vă rugăm să reîncărcaţi pagina, examinaţi modificările şi reaplicați actualizările."
+  notice_locking_conflict_reload_page: "Te rog să reîncarci pagina, examinează modificările și reaplică actualizările."
   notice_locking_conflict_warning: "This page has been updated by someone else. To not lose your edits, copy them locally and reload to view the updated version."
   notice_locking_conflict_danger: "Could not save your changes because of conflicting modifications. To not lose your edits, copy them locally and reload to view the updated version."
   notice_locking_conflict_action_button: "Discard changes and reload"
@@ -3613,6 +3613,9 @@ ro:
     manual: "set to Manual"
     automatic: "set to Automatic"
   search_input_placeholder: "Caută ..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
     Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
@@ -4344,7 +4347,7 @@ ro:
   unsupported_browser:
     title: "Browserul dvs. este învechit și nu este acceptat."
     message: "Este posibil să întâmpinați erori și o experiență degradată pe această pagină."
-    update_message: "Vă rugăm să actualizaţi browser-ul."
+    update_message: "Te rog să actualizezi browser-ul."
     close_warning: "Ignoră acest avertisment."
   oauth:
     application:

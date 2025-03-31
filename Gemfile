@@ -37,7 +37,7 @@ ruby File.read(File.expand_path(".ruby-version", __dir__)).strip
 gem "actionpack-xml_parser", "~> 2.0.0"
 gem "activemodel-serializers-xml", "~> 1.0.1"
 gem "activerecord-import", "~> 2.1.0"
-gem "activerecord-session_store", "~> 2.1.0"
+gem "activerecord-session_store", "~> 2.2.0"
 gem "ox"
 gem "rails", "~> 8.0.1"
 gem "responders", "~> 3.0"
@@ -83,7 +83,7 @@ gem "htmldiff"
 gem "stringex", "~> 2.8.5"
 
 # CommonMark markdown parser with GFM extension
-gem "commonmarker", "~> 2.1.0"
+gem "commonmarker", "~> 2.2.0"
 
 # HTML pipeline for transformations on text formatter output
 # such as sanitization or additional features
@@ -410,6 +410,6 @@ gemfiles.each do |file|
   send(:eval_gemfile, file) if File.readable?(file)
 end
 
-gem "openproject-octicons", "~>19.22.3 "
-gem "openproject-octicons_helper", "~>19.22.3"
-gem "openproject-primer_view_components", "~>0.57.0"
+gem "openproject-octicons", "~>19.23.0"
+gem "openproject-octicons_helper", "~>19.23.0"
+gem "openproject-primer_view_components", "~>0.58.0"

@@ -58,7 +58,7 @@ pt-BR:
         end_time: Hora Final
     models:
       time_entry:
-        one: "Time entry"
+        one: ""
         other: "Time entries"
       cost_entry:
         one: "Cost entry"

@@ -34,7 +34,7 @@ Copying a work package allows to easily create and adjust new work packages base
 
 ## Copy link to clipboard
 
-This option copies a short link to the work package to your clipboard  so you can quickly paste it elsewhere. It can also be useful when you  want to quickly copy links to multiple work packages without having to  open the detailed view of each one.
+This option copies a short link to the work package to your clipboard  so you can quickly paste it elsewhere. It can also be useful when you want to quickly copy links to multiple work packages without having to  open the detailed view of each one.
 
 ## Move a work package to a different project
 

@@ -34,7 +34,7 @@ Here is an example of the date picker in OpenProject. This is what you will see:
 
 1. The **information banner** on top of date picker will state what scheduling mode is selected and if there are possible date constraints due to existing work package relations. The message will vary depending on the scheduling mode selected and the existing work package relations. This banner is only shown for work packages that have relations
 2. The **show relations** button on the banner will open a Gantt chart view showing an overview of all directly-related work packages
-3. The **Relation tabs** let you see a list of relevant relations for the current work pacakges: *predecessors*, *successors* or *children*
+3. The **Relation tabs** let you see a list of relevant relations for the current work packages: *predecessors*, *successors* or *children*
 4. The **scheduling mode toggle** allows you to switch between [manual](#manual-scheduling) and [automatic](#automatic-scheduling) modes
 5. The **Working days only** switch, that lets you switch between counting only working days or all days to the total duration
 6. **Start date**, **finish date** and **duration** input fields

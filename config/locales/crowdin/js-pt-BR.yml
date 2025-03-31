@@ -828,7 +828,7 @@ pt-BR:
       add_new_child: "Criar novo filho"
       create_new: "Criar novo"
       add_existing: "Adicionar existente"
-      add_existing_child: "Adicionar filho existente"
+      add_existing_child: "Add child"
       remove_child: "Remover filho"
       add_new_relation: "Criar nova relação"
       add_existing_relation: "Adicionar relação existente"

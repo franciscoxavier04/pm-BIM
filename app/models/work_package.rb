@@ -147,7 +147,7 @@ class WorkPackage < ApplicationRecord
   # thus the associated agenda items will be available at the time the callback method is performed.
   around_destroy :save_agenda_item_journals, prepend: true, if: -> { meeting_agenda_items.any? }
 
-  acts_as_customizable
+  acts_as_customizable validate_on: :saving_custom_fields
 
   acts_as_searchable columns: ["subject",
                                "#{table_name}.description",

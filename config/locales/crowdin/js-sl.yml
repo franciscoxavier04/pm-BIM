@@ -830,7 +830,7 @@ sl:
       add_new_child: "Kreiraj podrejen zahtevek"
       create_new: "Ustvari novega"
       add_existing: "Dodaj obstoječe"
-      add_existing_child: "Dodaj obstuječega podrejenega"
+      add_existing_child: "Add child"
       remove_child: "Odstrani podrejenega"
       add_new_relation: "Ustvari novo povezavo"
       add_existing_relation: "Dodaj obstoječo povezavo"

@@ -48,7 +48,7 @@ render(Primer::Alpha::TabPanels.new(label: I18n.t(:project_module_costs))) do |c
     component.with_tab(selected: true, id: "tab-time") do |tab|
       tab.with_text { I18n.t(:label_time) }
       tab.with_panel do
-        primer_form_with(scope: :settings, action: :update, method: :patch) do |time_form|
+        admin_settings_primer_form_with(scope: :settings, action: :update, method: :patch) do |time_form|
           render_inline_settings_form(time_form) do |form|
             form.html_content do
               render(Primer::Beta::Subhead.new(hide_border: true)) do |subhead|
@@ -70,7 +70,7 @@ render(Primer::Alpha::TabPanels.new(label: I18n.t(:project_module_costs))) do |c
   component.with_tab(id: "tab-costs", selected: !OpenProject::FeatureDecisions.track_start_and_end_times_for_time_entries_active?) do |tab|
     tab.with_text { I18n.t(:label_costs) }
     tab.with_panel do
-      primer_form_with(scope: :settings, action: :update, method: :patch) do |time_form|
+      admin_settings_primer_form_with(scope: :settings, action: :update, method: :patch) do |time_form|
         render_inline_settings_form(time_form) do |form|
           form.html_content do
             render(Primer::Beta::Subhead.new(hide_border: true)) do |subhead|
@@ -78,8 +78,8 @@ render(Primer::Alpha::TabPanels.new(label: I18n.t(:project_module_costs))) do |c
               subhead.with_description { I18n.t(:description_costs_settings) }
             end
           end
-          form.text_field(name: :costs_currency, input_width: :large)
-          form.text_field(name: :costs_currency_format, input_width: :large)
+          form.text_field(name: :costs_currency, input_width: :small)
+          form.text_field(name: :costs_currency_format, input_width: :small)
 
           form.submit
         end

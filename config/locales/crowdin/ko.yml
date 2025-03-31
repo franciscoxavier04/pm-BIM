@@ -751,9 +751,9 @@ ko:
       follows_description: "이 패키지를 시작하려면 관련 작업 패키지가 반드시 먼저 완료되어야 합니다"
       label_child_singular: "자식"
       label_child_plural: "자식"
-      new_child: "새로운 자식"
+      new_child: "Create new child"
       new_child_text: "관련 작업 패키지를 현재(부모) 작업 패키지의 하위 항목으로 만듭니다"
-      existing_child: "기존 자식"
+      child: "Child"
       child_description: "관련 작업 패키지를 현재(부모) 작업 패키지의 하위 항목으로 만듭니다"
       label_closest: "가장 가까운 대상"
       label_blocks_singular: "블록"
@@ -3529,6 +3529,9 @@ ko:
     manual: "수동으로 설정"
     automatic: "자동으로 설정"
   search_input_placeholder: "검색..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "첫 번째 로그인 리디렉션"
   setting_after_first_login_redirect_url_text_html: >
     첫 로그인 후 사용자를 리디렉션할 경로를 설정하세요. 비어 있으면 온보딩 투어의 홈페이지로 리디렉션됩니다. <br/> 예: <code>/my/page</code>

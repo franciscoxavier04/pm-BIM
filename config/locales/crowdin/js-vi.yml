@@ -828,7 +828,7 @@ vi:
       add_new_child: "Tạo con mới"
       create_new: "Tạo mới"
       add_existing: "Thêm hiện có"
-      add_existing_child: "Thêm con hiện có"
+      add_existing_child: "Add child"
       remove_child: "Xóa con"
       add_new_relation: "Tạo quan hệ mới"
       add_existing_relation: "Thêm quan hệ hiện có"
