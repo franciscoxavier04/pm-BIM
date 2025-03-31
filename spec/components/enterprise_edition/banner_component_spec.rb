@@ -60,10 +60,10 @@ RSpec.describe EnterpriseEdition::BannerComponent, type: :component do
   let(:translations) do
     {
       ee: {
+        features: {
+          some_enterprise_feature: "Enterprise feature translation"
+        },
         upsale: i18n_upsale
-      },
-      enterprise_features: {
-        some_enterprise_feature: "Enterprise feature translation"
       }
     }
   end
@@ -215,8 +215,10 @@ RSpec.describe EnterpriseEdition::BannerComponent, type: :component do
             }
           }
         },
-        enterprise_features: {
-          some_enterprise_feature: "Enterprise feature translation"
+        ee: {
+          features: {
+            some_enterprise_feature: "Enterprise feature translation"
+          }
         }
       }
     end

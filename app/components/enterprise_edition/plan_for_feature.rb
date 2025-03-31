@@ -42,7 +42,7 @@ module EnterpriseEdition
     end
 
     def default_title
-      I18n.t(feature_key, scope: :enterprise_features)
+      I18n.t(feature_key, scope: :"ee.features")
     end
 
     def description

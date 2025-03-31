@@ -53,7 +53,7 @@ module EnterpriseHelper
 
   def enterprise_plan_additional_features(enterprise_token)
     (enterprise_token.try(:features) || [])
-      .filter_map { |feature| I18n.t(feature, scope: [:enterprise_features], default: nil) }
+      .filter_map { |feature| I18n.t(feature, scope: :"ee.features", default: nil) }
       .sort
       .join(", ")
   end
