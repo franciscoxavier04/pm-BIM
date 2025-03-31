@@ -12,7 +12,7 @@ class ErrorsController < ApplicationController
 
   def unacceptable
     render file: "#{Rails.public_path.join('422.html')}",
-           status: :unacceptable,
+           status: :not_acceptable,
            layout: false
   end
 
