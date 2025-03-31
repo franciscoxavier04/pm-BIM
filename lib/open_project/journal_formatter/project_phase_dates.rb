@@ -53,7 +53,7 @@ class OpenProject::JournalFormatter::ProjectPhaseDates < JournalFormatter::Base
 
   def format_phase_message(step:, values:, html:)
     name = step.definition.name
-    from, to = values.map { format_date_range(_1) }
+    from, to = values.map { format_date_range(it) }
 
     format_message(name:, from:, to:, html:)
   end
@@ -61,11 +61,11 @@ class OpenProject::JournalFormatter::ProjectPhaseDates < JournalFormatter::Base
   def format_start_gate_message(step:, values:, html:)
     return unless step.definition.start_gate
 
-    values = values.map { _1&.begin }
+    values = values.map { it&.begin }
     return if values[0] == values[1]
 
     name = step.definition.start_gate_name
-    from, to = values.map { format_date(_1) }
+    from, to = values.map { format_date(it) }
 
     format_message(name:, from:, to:, html:)
   end
@@ -73,11 +73,11 @@ class OpenProject::JournalFormatter::ProjectPhaseDates < JournalFormatter::Base
   def format_end_gate_message(step:, values:, html:)
     return unless step.definition.end_gate
 
-    values = values.map { _1&.end }
+    values = values.map { it&.end }
     return if values[0] == values[1]
 
     name = step.definition.end_gate_name
-    from, to = values.map { format_date(_1) }
+    from, to = values.map { format_date(it) }
 
     format_message(name:, from:, to:, html:)
   end
