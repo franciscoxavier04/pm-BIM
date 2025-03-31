@@ -404,13 +404,13 @@ en:
       life_cycle:
         header:
           title: "Project lifecycle"
-          description_html: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
-        non_defined: "Neither stages nor gates are currently defined."
-        section_header: "Stages and gates"
+          description_html: 'These project phases define this project lifecycle and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target="_blank">project overview</a>.'
+        non_defined: "No phases are currently defined."
+        section_header: "Phases"
         step:
           use_in_project: "Use %{step} in this project"
         filter:
-          label: "Search project stage or gate"
+          label: "Search project phase"
       project_custom_fields:
         header:
           title: "Project attributes"
@@ -1583,8 +1583,6 @@ en:
         other: "Notifications"
       placeholder_user: "Placeholder user"
       project: "Project"
-      project/gate_definition: "Gate"
-      project/stage_definition: "Stage"
       project_query:
         one: "Project list"
         other: "Project lists"
@@ -2052,7 +2050,7 @@ en:
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
-        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
+        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Add new attribute groups"
@@ -3971,9 +3969,9 @@ en:
       label_add: "Add"
       label_add_description: "Add lifecycle definition"
       filter:
-        label: "Search project stage or gate"
+        label: "Search project phase"
       section_header: "Phases"
-      non_defined: "Neither stages nor gates are currently defined."
+      non_defined: "No phases are currently defined."
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project step will be reflected in all projects where it is enabled."
