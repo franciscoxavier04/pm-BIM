@@ -80,9 +80,4 @@ class Project::Phase < ApplicationRecord
   def validate_date_range
     errors.add(:date_range, :start_date_must_be_before_end_date) if range_set? && (start_date > end_date)
   end
-
-  def column_name
-    # The id of the associated definition is relevant for displaying the correct column headers
-    "lcsd_#{definition_id}"
-  end
 end

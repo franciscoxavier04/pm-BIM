@@ -429,15 +429,15 @@ RSpec.describe SortHelper do
     end
 
     context "with a project phase column" do
-      let(:life_cycle_step) { create(:project_phase_definition) }
-      let(:life_cycle_column) { Queries::Projects::Selects::ProjectPhase.new("project_phase_#{life_cycle_step.id}") }
+      let(:project_phase_definition) { create(:project_phase_definition) }
+      let(:life_cycle_column) { Queries::Projects::Selects::ProjectPhase.new("project_phase_#{project_phase_definition.id}") }
 
-      let(:options) { { caption: life_cycle_step.name } }
+      let(:options) { { caption: project_phase_definition.name } }
 
       subject(:output) do
         # Not setting any filter column mappings here, so for other column types, this should use the default filter
         helper.sort_header_with_action_menu(life_cycle_column,
-                                            %W[name project_phase_#{life_cycle_step.id}], {}, **options)
+                                            %W[name project_phase_#{project_phase_definition.id}], {}, **options)
       end
 
       it "never offers a filter by action" do

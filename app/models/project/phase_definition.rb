@@ -47,9 +47,4 @@ class Project::PhaseDefinition < ApplicationRecord
   default_scope { order(:position) }
 
   scopes :with_project_count
-
-  def column_name
-    # TODO: rename
-    "lcsd_#{id}"
-  end
 end
