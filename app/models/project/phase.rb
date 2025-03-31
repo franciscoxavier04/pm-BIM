@@ -37,6 +37,8 @@ class Project::Phase < ApplicationRecord
 
   delegate :name,
            :position,
+           :start_gate_name,
+           :end_gate_name,
            :start_gate?,
            :end_gate?,
            to: :definition

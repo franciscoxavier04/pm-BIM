@@ -40,5 +40,9 @@ FactoryBot.define do
     trait :skip_validate do
       to_create { |instance| instance.save(validate: false) }
     end
+
+    trait :with_gated_definition do
+      definition { association(:project_phase_definition, :with_start_gate, :with_end_gate) }
+    end
   end
 end
