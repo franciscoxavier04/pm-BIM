@@ -61,10 +61,11 @@ module WorkPackages
 
       def selected_columns
         if export_settings.settings.key?(:columns)
-          # FIXME: the order of the columns is not preserved
           saved_cols = export_settings.settings[:columns]
-          available_columns
-            .select { |column| saved_cols.include?(column[:id]) }
+          # Restore the saved columns, retaining the saved order
+          saved_cols.filter_map do |col|
+            available_columns.find { |c| c[:id] == col }
+          end
         else
           query
             .columns

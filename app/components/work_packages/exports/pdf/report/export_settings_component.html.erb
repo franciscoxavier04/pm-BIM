@@ -31,7 +31,7 @@
     <%= render(
           Primer::Alpha::CheckBox.new(
             name: "show_images",
-            checked: export_settings.settings.fetch(:show_images, true).to_bool,
+            checked: export_settings.settings.fetch(:show_images, true).to_s.to_bool,
             value: "true",
             unchecked_value: "false",
             label: I18n.t("export.dialog.pdf.include_images.label"),
