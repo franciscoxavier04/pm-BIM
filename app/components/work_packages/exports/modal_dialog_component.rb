@@ -56,7 +56,12 @@ module WorkPackages
         end
       end
 
-      def has_saved_export_settings?
+      # Users can save their export settings, but only for saved queries.
+      def offer_to_save_export_settings?
+        @query.persisted?
+      end
+
+      def saved_export_settings?
         @query.export_settings.any?
       end
 
