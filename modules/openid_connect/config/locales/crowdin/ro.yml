@@ -3,7 +3,7 @@ ro:
     name: "OpenProject OpenID Connect"
     description: "Adds OmniAuth OpenID Connect strategy providers to OpenProject."
   logout_warning: >
-    Ați fost deconectat. Conținutul oricărui formular pe care îl trimiteți poate fi pierdut. Vă rugăm să [vă conectați].
+    Ai fost deconectat. Conținutul oricărui formular pe care îl trimiți poate fi pierdut. Te rog să [te conectezi].
   activerecord:
     attributes:
       openid_connect/provider:

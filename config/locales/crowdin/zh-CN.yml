@@ -752,7 +752,7 @@ zh-CN:
       label_blocked_by_singular: "被阻止"
       label_blocked__by_plural: "被阻止"
       blocked_description: "相关工作包结束之前，本工作包不能关闭"
-      blocked_by_description: "在本工作包结束之前，相关工作包不能关闭"
+      blocked_by_description: "在相关工作包结束之前，本工作包不能关闭"
       label_duplicates_singular: "复制"
       label_duplicates_plural: "复制"
       duplicates_description: "这是相关工作包的副本"
