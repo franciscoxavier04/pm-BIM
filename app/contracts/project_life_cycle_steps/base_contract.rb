@@ -49,10 +49,10 @@ module ProjectLifeCycleSteps
       # Compare consecutive steps in pairs
       filtered_steps.each_cons(2) do |previous_step, current_step|
         if has_invalid_dates?(previous_step, current_step)
-          model.errors.import(
-            current_step.errors.add(:date_range, :non_continuous_dates),
-            attribute: :"available_phases.date_range"
-          )
+          error = current_step.errors.add(:date_range, :non_continuous_dates)
+          unless model.errors.include?(:"available_phases.date_range")
+            model.errors.import(error, attribute: :"available_phases.date_range")
+          end
         end
       end
     end
