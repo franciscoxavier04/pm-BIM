@@ -129,9 +129,9 @@ module Admin::Settings
                                                  name
                                                  color_id
                                                  start_gate_name
-                                                 end_gate_name
+                                                 finish_gate_name
                                                  start_gate
-                                                 end_gate])
+                                                 finish_gate])
     end
 
     def update_definitions_via_turbo_stream

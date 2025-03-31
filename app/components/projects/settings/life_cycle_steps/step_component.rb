@@ -48,12 +48,12 @@ module Projects
         end
 
         def gate_info
-          if definition.start_gate? && definition.end_gate?
+          if definition.start_gate? && definition.finish_gate?
             I18n.t("settings.project_phase_definitions.both_gate")
           elsif definition.start_gate?
             I18n.t("settings.project_phase_definitions.start_gate")
-          elsif definition.end_gate?
-            I18n.t("settings.project_phase_definitions.end_gate")
+          elsif definition.finish_gate?
+            I18n.t("settings.project_phase_definitions.finish_gate")
           else
             I18n.t("settings.project_phase_definitions.no_gate")
           end

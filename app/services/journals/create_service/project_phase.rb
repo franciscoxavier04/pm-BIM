@@ -48,14 +48,14 @@ class Journals::CreateService
             journal_id,
             phase_id,
             start_date,
-            end_date,
+            finish_date,
             active
           )
         SELECT
           #{id_from_inserted_journal_sql},
           project_phases.id,
           project_phases.start_date,
-          project_phases.end_date,
+          project_phases.finish_date,
           project_phases.active
         FROM project_phases
         WHERE
@@ -82,7 +82,7 @@ class Journals::CreateService
           phases.id = project_phase_journals.phase_id
         WHERE
           phases.start_date IS DISTINCT FROM project_phase_journals.start_date
-          OR phases.end_date IS DISTINCT FROM project_phase_journals.end_date
+          OR phases.finish_date IS DISTINCT FROM project_phase_journals.finish_date
           OR phases.active IS DISTINCT FROM project_phase_journals.active
       SQL
     end

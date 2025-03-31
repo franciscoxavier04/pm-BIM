@@ -32,8 +32,8 @@ module Projects::LifeCycleStepDefinitions
   class FinishGateNameForm < ApplicationForm
     form do |f|
       f.text_field(
-        label: attribute_name(:end_gate_name),
-        name: :end_gate_name,
+        label: attribute_name(:finish_gate_name),
+        name: :finish_gate_name,
         input_width: :medium,
         required: true
       )

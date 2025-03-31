@@ -35,14 +35,14 @@ FactoryBot.define do
     active { true }
 
     start_date { Date.current - 2.days }
-    end_date { Date.current + 2.days }
+    finish_date { Date.current + 2.days }
 
     trait :skip_validate do
       to_create { |instance| instance.save(validate: false) }
     end
 
     trait :with_gated_definition do
-      definition { association(:project_phase_definition, :with_start_gate, :with_end_gate) }
+      definition { association(:project_phase_definition, :with_start_gate, :with_finish_gate) }
     end
   end
 end

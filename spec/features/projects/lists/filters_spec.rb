@@ -54,13 +54,13 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
            })
   end
   shared_let(:stage) do
-    create(:project_phase, project:, start_date: Time.zone.today - 5.days, end_date: Time.zone.today + 10.days)
+    create(:project_phase, project:, start_date: Time.zone.today - 5.days, finish_date: Time.zone.today + 10.days)
   end
   shared_let(:gate) do
     create(:project_phase,
            :with_gated_definition,
            project: public_project,
-           end_date: Time.zone.today)
+           finish_date: Time.zone.today)
   end
 
   let(:news) { create(:news, project:) }
@@ -854,54 +854,54 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
           it "allows filtering the projects by the project phase gate" do
             load_and_open_filters manager
 
-            projects_page.set_filter("project_end_gate_#{gate.definition_id}",
-                                     "Project phase gate: #{gate.end_gate_name}",
+            projects_page.set_filter("project_finish_gate_#{gate.definition_id}",
+                                     "Project phase gate: #{gate.finish_gate_name}",
                                      "on",
                                      [Time.zone.today])
 
             projects_page.expect_projects_not_listed(development_project, project)
             projects_page.expect_projects_in_order(public_project)
 
-            projects_page.remove_filter("project_end_gate_#{gate.definition_id}")
+            projects_page.remove_filter("project_finish_gate_#{gate.definition_id}")
 
             projects_page.expect_projects_in_order(development_project, project, public_project)
 
-            projects_page.set_filter("project_end_gate_#{gate.definition_id}",
-                                     "Project phase gate: #{gate.end_gate_name}",
+            projects_page.set_filter("project_finish_gate_#{gate.definition_id}",
+                                     "Project phase gate: #{gate.finish_gate_name}",
                                      "today")
 
             projects_page.expect_projects_not_listed(development_project, project)
             projects_page.expect_projects_in_order(public_project)
 
-            projects_page.remove_filter("project_end_gate_#{gate.definition_id}")
+            projects_page.remove_filter("project_finish_gate_#{gate.definition_id}")
 
             projects_page.expect_projects_in_order(development_project, project, public_project)
 
-            projects_page.set_filter("project_end_gate_#{gate.definition_id}",
-                                     "Project phase gate: #{gate.end_gate_name}",
+            projects_page.set_filter("project_finish_gate_#{gate.definition_id}",
+                                     "Project phase gate: #{gate.finish_gate_name}",
                                      "between",
                                      [Time.zone.today - 5.days, Time.zone.today + 10.days])
 
             projects_page.expect_projects_not_listed(development_project, project)
             projects_page.expect_projects_in_order(public_project)
 
-            projects_page.remove_filter("project_end_gate_#{gate.definition_id}")
+            projects_page.remove_filter("project_finish_gate_#{gate.definition_id}")
 
             projects_page.expect_projects_in_order(development_project, project, public_project)
 
-            projects_page.set_filter("project_end_gate_#{gate.definition_id}",
-                                     "Project phase gate: #{gate.end_gate_name}",
+            projects_page.set_filter("project_finish_gate_#{gate.definition_id}",
+                                     "Project phase gate: #{gate.finish_gate_name}",
                                      "this week")
 
             projects_page.expect_projects_not_listed(development_project, project)
             projects_page.expect_projects_in_order(public_project)
 
-            projects_page.remove_filter("project_end_gate_#{gate.definition_id}")
+            projects_page.remove_filter("project_finish_gate_#{gate.definition_id}")
 
             projects_page.expect_projects_in_order(development_project, project, public_project)
 
-            projects_page.set_filter("project_end_gate_#{gate.definition_id}",
-                                     "Project phase gate: #{gate.end_gate_name}",
+            projects_page.set_filter("project_finish_gate_#{gate.definition_id}",
+                                     "Project phase gate: #{gate.finish_gate_name}",
                                      "is empty")
 
             projects_page.expect_projects_not_listed(public_project, development_project, project)

@@ -63,12 +63,12 @@ module ProjectLifeCycleSteps
       step.start_date
     end
 
-    def end_date_for(step)
-      step.end_date || step.start_date # Use the start_date as fallback for single date stages
+    def finish_date_for(step)
+      step.finish_date || step.start_date # Use the start_date as fallback for single date stages
     end
 
     def has_invalid_dates?(previous_step, current_step)
-      start_date_for(current_step) <= end_date_for(previous_step)
+      start_date_for(current_step) <= finish_date_for(previous_step)
     end
   end
 end

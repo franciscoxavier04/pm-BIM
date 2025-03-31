@@ -98,26 +98,26 @@ module Queries::Projects::Filters::FilterOnProjectPhase
     scope
   end
 
-  def phase_where_on(start_date, end_date = start_date)
+  def phase_where_on(start_date, finish_date = start_date)
     project_phase_scope
       .where(date_range_clause(Project::Phase.table_name, "start_date", nil, start_date))
-      .where(date_range_clause(Project::Phase.table_name, "end_date", end_date, nil))
+      .where(date_range_clause(Project::Phase.table_name, "finish_date", finish_date, nil))
   end
 
-  def phase_where_between(start_date, end_date)
+  def phase_where_between(start_date, finish_date)
     project_phase_scope
       .where(date_range_clause(Project::Phase.table_name, "start_date", start_date, nil))
-      .where(date_range_clause(Project::Phase.table_name, "end_date", nil, end_date))
+      .where(date_range_clause(Project::Phase.table_name, "finish_date", nil, finish_date))
   end
 
   def phase_overlaps_this_week
     project_phase_scope
       .where.not(start_date: nil)
-      .where.not(end_date: nil)
+      .where.not(finish_date: nil)
       .where(
         <<~SQL.squish, beginning_of_week, end_of_week
           daterange(#{Project::Phase.table_name}.start_date,
-                    #{Project::Phase.table_name}.end_date,
+                    #{Project::Phase.table_name}.finish_date,
                     '[]')
           &&
           daterange(?, ?, '[]')
@@ -128,7 +128,7 @@ module Queries::Projects::Filters::FilterOnProjectPhase
   def phase_none
     project_phase_scope
       .where(start_date: nil)
-      .where(end_date: nil)
+      .where(finish_date: nil)
   end
 
   def parsed_start

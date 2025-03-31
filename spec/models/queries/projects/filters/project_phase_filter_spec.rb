@@ -32,7 +32,7 @@ require "spec_helper"
 
 RSpec.describe Queries::Projects::Filters::ProjectPhaseFilter do
   let(:phase) { build_stubbed(:project_phase_definition) }
-  let(:phase_with_end_gate) { build_stubbed(:project_phase_definition, end_gate: true) }
+  let(:phase_with_finish_gate) { build_stubbed(:project_phase_definition, finish_gate: true) }
   let(:phase_with_start_gate) { build_stubbed(:project_phase_definition, start_gate: true) }
   let(:query) { build_stubbed(:project_query) }
 
@@ -43,7 +43,7 @@ RSpec.describe Queries::Projects::Filters::ProjectPhaseFilter do
   before do
     allow(Project::PhaseDefinition)
       .to receive(:all)
-            .and_return([phase, phase_with_end_gate, phase_with_start_gate])
+            .and_return([phase, phase_with_finish_gate, phase_with_start_gate])
   end
 
   describe ".create!" do
@@ -69,7 +69,7 @@ RSpec.describe Queries::Projects::Filters::ProjectPhaseFilter do
 
       expect(described_class.all_for.map(&:human_name))
         .to contain_exactly(I18n.t("project.filters.project_phase", phase: phase.name),
-                            I18n.t("project.filters.project_phase", phase: phase_with_end_gate.name),
+                            I18n.t("project.filters.project_phase", phase: phase_with_finish_gate.name),
                             I18n.t("project.filters.project_phase", phase: phase_with_start_gate.name))
     end
   end

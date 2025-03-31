@@ -206,9 +206,9 @@ RSpec.describe Project, "acts_as_journalized" do
 
   describe "phases", with_settings: { journal_aggregation_time_minutes: 0 } do
     describe "activation/deactivation" do
-      let(:phase1) { build(:project_phase, project:, active: true, start_date: nil, end_date: nil) }
-      let(:phase2) { build(:project_phase, project:, active: false, start_date: nil, end_date: nil) }
-      let(:phase3) { build(:project_phase, project:, active: true, start_date: nil, end_date: nil) }
+      let(:phase1) { build(:project_phase, project:, active: true, start_date: nil, finish_date: nil) }
+      let(:phase2) { build(:project_phase, project:, active: false, start_date: nil, finish_date: nil) }
+      let(:phase3) { build(:project_phase, project:, active: true, start_date: nil, finish_date: nil) }
 
       context "when adding" do
         it "contains the change" do
@@ -244,10 +244,10 @@ RSpec.describe Project, "acts_as_journalized" do
     end
 
     describe "modifying dates" do
-      let!(:phase1) { create(:project_phase, project:, start_date: original1&.begin, end_date: original1&.end) }
-      let!(:phase2) { create(:project_phase, project:, start_date: original2&.begin, end_date: original2&.end) }
-      let!(:phase3) { create(:project_phase, project:, start_date: original3&.begin, end_date: original3&.end) }
-      let!(:phase4) { create(:project_phase, project:, start_date: original4&.begin, end_date: original4&.end) }
+      let!(:phase1) { create(:project_phase, project:, start_date: original1&.begin, finish_date: original1&.end) }
+      let!(:phase2) { create(:project_phase, project:, start_date: original2&.begin, finish_date: original2&.end) }
+      let!(:phase3) { create(:project_phase, project:, start_date: original3&.begin, finish_date: original3&.end) }
+      let!(:phase4) { create(:project_phase, project:, start_date: original4&.begin, finish_date: original4&.end) }
 
       before do
         project.save!
@@ -260,8 +260,8 @@ RSpec.describe Project, "acts_as_journalized" do
         let(:original4) { nil }
 
         it "contains the change" do
-          phase1.update(start_date: Date.new(2025, 1, 28), end_date: Date.new(2025, 1, 29))
-          phase2.update(start_date: Date.new(2025, 1, 30), end_date: Date.new(2025, 1, 31))
+          phase1.update(start_date: Date.new(2025, 1, 28), finish_date: Date.new(2025, 1, 29))
+          phase2.update(start_date: Date.new(2025, 1, 30), finish_date: Date.new(2025, 1, 31))
           project.save!
 
           expect(project.last_journal.details).to match(
@@ -286,9 +286,9 @@ RSpec.describe Project, "acts_as_journalized" do
         let(:original4) { Date.new(2025, 2, 5)..Date.new(2025, 2, 7) }
 
         it "contains the change" do
-          phase1.update(start_date: Date.new(2025, 1, 1), end_date: Date.new(2025, 1, 7))
-          phase2.update(start_date: Date.new(2025, 1, 16), end_date: Date.new(2025, 1, 18))
-          phase3.update(start_date: Date.new(2025, 1, 25), end_date: Date.new(2025, 1, 31))
+          phase1.update(start_date: Date.new(2025, 1, 1), finish_date: Date.new(2025, 1, 7))
+          phase2.update(start_date: Date.new(2025, 1, 16), finish_date: Date.new(2025, 1, 18))
+          phase3.update(start_date: Date.new(2025, 1, 25), finish_date: Date.new(2025, 1, 31))
           project.save!
 
           expect(project.last_journal.details).to match(
@@ -317,8 +317,8 @@ RSpec.describe Project, "acts_as_journalized" do
         let(:original4) { Date.new(2025, 2, 5)..Date.new(2025, 2, 7) }
 
         it "contains the change" do
-          phase1.update(start_date: nil, end_date: nil)
-          phase2.update(start_date: nil, end_date: nil)
+          phase1.update(start_date: nil, finish_date: nil)
+          phase2.update(start_date: nil, finish_date: nil)
           project.save!
 
           expect(project.last_journal.details).to match(
@@ -339,10 +339,10 @@ RSpec.describe Project, "acts_as_journalized" do
 
     describe "combined" do
       let(:phase1) do
-        build(:project_phase, project:, active: true, start_date: Date.new(2025, 1, 28), end_date: Date.new(2025, 1, 29))
+        build(:project_phase, project:, active: true, start_date: Date.new(2025, 1, 28), finish_date: Date.new(2025, 1, 29))
       end
       let(:phase2) do
-        build(:project_phase, project:, active: false, start_date: Date.new(2025, 1, 30), end_date: Date.new(2025, 1, 31))
+        build(:project_phase, project:, active: false, start_date: Date.new(2025, 1, 30), finish_date: Date.new(2025, 1, 31))
       end
 
       it "contains both changes" do

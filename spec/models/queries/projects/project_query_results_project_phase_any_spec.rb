@@ -36,10 +36,10 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
   shared_let(:view_role) { create(:project_role, permissions: %i[view_project_phases]) }
 
   shared_let(:phase_start_date) { Date.parse("2025-02-07") }
-  shared_let(:phase_end_date) { Date.parse("2025-02-17") }
+  shared_let(:phase_finish_date) { Date.parse("2025-02-17") }
   shared_let(:project_with_phase) { create(:project, name: "Project with phase") }
   shared_let(:phase) do
-    create(:project_phase, project: project_with_phase, start_date: phase_start_date, end_date: phase_end_date)
+    create(:project_phase, project: project_with_phase, start_date: phase_start_date, finish_date: phase_finish_date)
   end
 
   shared_let(:project_without_phase) { create(:project, name: "Project without phase") }
@@ -68,7 +68,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
 
   def self.remove_phase_dates
     before do
-      phase.update_columns(end_date: nil, start_date: nil)
+      phase.update_columns(finish_date: nil, start_date: nil)
     end
   end
 
@@ -91,7 +91,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
     end
 
     context "when filtering in the middle of the phase" do
-      let(:values) { [(phase_start_date + ((phase_end_date - phase_start_date) / 2)).to_s] }
+      let(:values) { [(phase_start_date + ((phase_finish_date - phase_start_date) / 2)).to_s] }
 
       it "returns the project whose phase is covering an interval including the date" do
         expect(instance.results).to contain_exactly(project_with_phase)
@@ -107,7 +107,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
     end
 
     context "when filtering on the last day of the phase" do
-      let(:values) { [phase_end_date.to_s] }
+      let(:values) { [phase_finish_date.to_s] }
 
       it "returns the project whose phase ends on that date" do
         expect(instance.results).to contain_exactly(project_with_phase)
@@ -123,7 +123,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
     end
 
     context "when filtering after the phase" do
-      let(:values) { [(phase_end_date + 1.day).to_s] }
+      let(:values) { [(phase_finish_date + 1.day).to_s] }
 
       it "returns no project" do
         expect(instance.results).to be_empty
@@ -131,7 +131,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
     end
 
     context "when the phase has no dates" do
-      let(:values) { [phase_end_date.to_s] }
+      let(:values) { [phase_finish_date.to_s] }
 
       remove_phase_dates
 
@@ -141,7 +141,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
     end
 
     context "when filtering in the middle of the phase but with the phase being inactive" do
-      let(:values) { [(phase_start_date + ((phase_end_date - phase_start_date) / 2)).to_s] }
+      let(:values) { [(phase_start_date + ((phase_finish_date - phase_start_date) / 2)).to_s] }
 
       disable_phase
 
@@ -151,7 +151,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
     end
 
     context "when filtering in the middle of the phase but without permissions" do
-      let(:values) { [(phase_start_date + ((phase_end_date - phase_start_date) / 2)).to_s] }
+      let(:values) { [(phase_start_date + ((phase_finish_date - phase_start_date) / 2)).to_s] }
 
       remove_permissions
 
@@ -168,7 +168,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
 
     context "when being in the middle of the phase" do
       it "returns the project whose phase is currently running" do
-        Timecop.travel((phase_start_date + (phase_end_date - phase_start_date)).noon) do
+        Timecop.travel((phase_start_date + (phase_finish_date - phase_start_date)).noon) do
           expect(instance.results).to contain_exactly(project_with_phase)
         end
       end
@@ -184,7 +184,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
 
     context "when being on the last day of the phase" do
       it "returns the project whose phase begins on that date" do
-        Timecop.travel(phase_end_date.noon) do
+        Timecop.travel(phase_finish_date.noon) do
           expect(instance.results).to contain_exactly(project_with_phase)
         end
       end
@@ -200,7 +200,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
 
     context "when being after the phase" do
       it "returns no project" do
-        Timecop.travel(phase_end_date.noon + 1.day) do
+        Timecop.travel(phase_finish_date.noon + 1.day) do
           expect(instance.results).to be_empty
         end
       end
@@ -210,7 +210,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
       remove_phase_dates
 
       it "returns no project" do
-        Timecop.travel(phase_end_date.noon) do
+        Timecop.travel(phase_finish_date.noon) do
           expect(instance.results).to be_empty
         end
       end
@@ -220,7 +220,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
       disable_phase
 
       it "returns no project" do
-        Timecop.travel((phase_start_date + (phase_end_date - phase_start_date)).noon) do
+        Timecop.travel((phase_start_date + (phase_finish_date - phase_start_date)).noon) do
           expect(instance.results).to be_empty
         end
       end
@@ -230,7 +230,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
       remove_permissions
 
       it "returns no project" do
-        Timecop.travel((phase_start_date + (phase_end_date - phase_start_date)).noon) do
+        Timecop.travel((phase_start_date + (phase_finish_date - phase_start_date)).noon) do
           expect(instance.results).to be_empty
         end
       end
@@ -260,7 +260,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
 
     context "when the current week overlaps the end of the phase" do
       it "returns the project whose phase begins within the week" do
-        Timecop.travel(phase_end_date.noon) do
+        Timecop.travel(phase_finish_date.noon) do
           expect(instance.results).to contain_exactly(project_with_phase)
         end
       end
@@ -276,7 +276,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
 
     context "when being after the phase" do
       it "returns no project" do
-        Timecop.travel(phase_end_date.noon + 7.days) do
+        Timecop.travel(phase_finish_date.noon + 7.days) do
           expect(instance.results).to be_empty
         end
       end
@@ -286,7 +286,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
       remove_phase_dates
 
       it "returns no project" do
-        Timecop.travel(phase_end_date.noon + 7.days) do
+        Timecop.travel(phase_finish_date.noon + 7.days) do
           expect(instance.results).to be_empty
         end
       end
@@ -315,7 +315,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
     context "when being on Monday, the phase ends on Sunday and the week is configured to start on Sunday",
             with_settings: { start_of_week: 7 } do
       before do
-        phase.update_column(:end_date, Date.parse("2025-02-16"))
+        phase.update_column(:finish_date, Date.parse("2025-02-16"))
       end
 
       it "returns the project whose phase has ended within the current week" do
@@ -328,7 +328,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
     context "when being on Monday, the phase ends on Sunday and the week is configured to start on Monday",
             with_settings: { start_of_week: 1 } do
       before do
-        phase.update_column(:end_date, Date.parse("2025-02-16"))
+        phase.update_column(:finish_date, Date.parse("2025-02-16"))
       end
 
       it "returns no project as the phase ended in the week before" do
@@ -341,7 +341,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
     context "when being on Sunday, the phase ends on Monday and the week is configured to start on Monday",
             with_settings: { start_of_week: 1 } do
       before do
-        phase.update_column(:end_date, Date.parse("2025-02-17"))
+        phase.update_column(:finish_date, Date.parse("2025-02-17"))
       end
 
       it "returns the project whose phase has ended within the current week" do
@@ -354,7 +354,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
     context "when being on Sunday, the phase ends on Monday and the week is configured to start on Sunday",
             with_settings: { start_of_week: 7 } do
       before do
-        phase.update_column(:end_date, Date.parse("2025-02-17"))
+        phase.update_column(:finish_date, Date.parse("2025-02-17"))
       end
 
       it "returns no project as the phase ended in the week before" do
@@ -371,7 +371,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
     end
 
     context "when encompassing the phase completely" do
-      let(:values) { [(phase_start_date - 1.day).to_s, (phase_end_date + 1.day).to_s] }
+      let(:values) { [(phase_start_date - 1.day).to_s, (phase_finish_date + 1.day).to_s] }
 
       it "returns the project with the phase" do
         expect(instance.results).to contain_exactly(project_with_phase)
@@ -379,7 +379,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
     end
 
     context "when encompassing the phase precisely" do
-      let(:values) { [phase_start_date.to_s, phase_end_date.to_s] }
+      let(:values) { [phase_start_date.to_s, phase_finish_date.to_s] }
 
       it "returns the project with the phase" do
         expect(instance.results).to contain_exactly(project_with_phase)
@@ -387,7 +387,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
     end
 
     context "when the values overlap the phase's start date but not the end date" do
-      let(:values) { [(phase_start_date - 1.day).to_s, (phase_end_date - 1.day).to_s] }
+      let(:values) { [(phase_start_date - 1.day).to_s, (phase_finish_date - 1.day).to_s] }
 
       it "returns no project" do
         expect(instance.results).to be_empty
@@ -395,7 +395,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
     end
 
     context "when the values overlap the phase's end date but not the start date" do
-      let(:values) { [(phase_start_date + 1.day).to_s, phase_end_date.to_s] }
+      let(:values) { [(phase_start_date + 1.day).to_s, phase_finish_date.to_s] }
 
       it "returns no project" do
         expect(instance.results).to be_empty
@@ -403,7 +403,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
     end
 
     context "when the values are between the start and the end date of the phase" do
-      let(:values) { [(phase_start_date + 1.day).to_s, (phase_end_date - 1.day).to_s] }
+      let(:values) { [(phase_start_date + 1.day).to_s, (phase_finish_date - 1.day).to_s] }
 
       it "returns no project" do
         expect(instance.results).to be_empty
@@ -435,7 +435,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
     end
 
     context "when only the upper value is provided and that one is after the phase's end date" do
-      let(:values) { ["", (phase_end_date + 1.day).to_s] }
+      let(:values) { ["", (phase_finish_date + 1.day).to_s] }
 
       it "returns the project with the phase" do
         expect(instance.results).to contain_exactly(project_with_phase)
@@ -443,7 +443,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
     end
 
     context "when the phase has no dates" do
-      let(:values) { [(phase_start_date - 1.day).to_s, (phase_end_date + 1.day).to_s] }
+      let(:values) { [(phase_start_date - 1.day).to_s, (phase_finish_date + 1.day).to_s] }
 
       remove_phase_dates
 
@@ -461,7 +461,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
     end
 
     context "when encompassing the phase completely but with the phase disabled" do
-      let(:values) { [(phase_start_date - 1.day).to_s, (phase_end_date + 1.day).to_s] }
+      let(:values) { [(phase_start_date - 1.day).to_s, (phase_finish_date + 1.day).to_s] }
 
       disable_phase
 
@@ -471,7 +471,7 @@ RSpec.describe ProjectQuery, "results of 'Project phase: Any' filter" do
     end
 
     context "when encompassing the phase completely but without permissions" do
-      let(:values) { [(phase_start_date - 1.day).to_s, (phase_end_date + 1.day).to_s] }
+      let(:values) { [(phase_start_date - 1.day).to_s, (phase_finish_date + 1.day).to_s] }
 
       remove_permissions
 

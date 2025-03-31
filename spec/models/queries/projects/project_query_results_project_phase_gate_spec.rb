@@ -35,26 +35,26 @@ RSpec.describe ProjectQuery, "results of a project phase gate filter" do
 
   shared_let(:view_role) { create(:project_role, permissions: %i[view_project_phases]) }
 
-  shared_let(:gate_definition) { create(:project_phase_definition, :with_start_gate, :with_end_gate) }
+  shared_let(:gate_definition) { create(:project_phase_definition, :with_start_gate, :with_finish_gate) }
   shared_let(:start_gate_date) { Date.parse("2025-03-04") }
-  shared_let(:end_gate_date) { Date.parse("2025-03-07") }
+  shared_let(:finish_gate_date) { Date.parse("2025-03-07") }
   shared_let(:project_with_gate) { create(:project, name: "Project with gate") }
   shared_let(:gate) do
     create(:project_phase,
            project: project_with_gate,
            start_date: start_gate_date,
-           end_date: end_gate_date,
+           finish_date: finish_gate_date,
            definition: gate_definition)
   end
 
   # This is added to ensure that the filter only works on the gate provided.
-  shared_let(:rival_gate_definition) { create(:project_phase_definition, :with_start_gate, :with_end_gate) }
+  shared_let(:rival_gate_definition) { create(:project_phase_definition, :with_start_gate, :with_finish_gate) }
   shared_let(:project_with_rival_gate) { create(:project, name: "Project with rival gate") }
   shared_let(:rival_gate) do
     create(:project_phase,
            project: project_with_rival_gate,
            start_date: start_gate_date,
-           end_date: end_gate_date,
+           finish_date: finish_gate_date,
            definition: rival_gate_definition)
   end
 
@@ -468,9 +468,9 @@ RSpec.describe ProjectQuery, "results of a project phase gate filter" do
     it_behaves_like "a project phase gate filter"
   end
 
-  context "for a gate on the end date" do
-    let(:boundary) { "end" }
-    let(:filter_reference_date) { end_gate_date }
+  context "for a gate on the finish date" do
+    let(:boundary) { "finish" }
+    let(:filter_reference_date) { finish_gate_date }
 
     it_behaves_like "a project phase gate filter"
   end

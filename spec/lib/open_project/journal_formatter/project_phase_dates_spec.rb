@@ -224,8 +224,8 @@ RSpec.describe OpenProject::JournalFormatter::ProjectPhaseDates do
         build_stubbed(
           :project_phase_definition,
           name: "The Phase",
-          end_gate: true,
-          end_gate_name: "The End Gate"
+          finish_gate: true,
+          finish_gate_name: "The End Gate"
         )
       end
 
@@ -311,8 +311,8 @@ RSpec.describe OpenProject::JournalFormatter::ProjectPhaseDates do
           name: "The Phase",
           start_gate: true,
           start_gate_name: "The Start Gate",
-          end_gate: true,
-          end_gate_name: "The End Gate"
+          finish_gate: true,
+          finish_gate_name: "The End Gate"
         )
       end
 

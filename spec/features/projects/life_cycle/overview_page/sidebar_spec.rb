@@ -119,8 +119,9 @@ RSpec.describe "Show project life cycles on project overview page", :js, with_fl
             overview_page.within_life_cycle_container(life_cycle) do
               expected_date = [
                 life_cycle.start_date.strftime("%m/%d/%Y"),
-                life_cycle.end_date.strftime("%m/%d/%Y")
+                life_cycle.finish_date.strftime("%m/%d/%Y")
               ].join("\n-\n")
+
               expect(page).to have_text expected_date
             end
           end
@@ -130,7 +131,7 @@ RSpec.describe "Show project life cycles on project overview page", :js, with_fl
 
     describe "with no values" do
       before do
-        Project::Phase.update_all(start_date: nil, end_date: nil)
+        Project::Phase.update_all(start_date: nil, finish_date: nil)
       end
 
       it "shows the correct value for the project custom field if given" do

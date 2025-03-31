@@ -78,7 +78,7 @@ class Queries::Projects::Orders::ProjectPhaseOrder < Queries::Orders::Base
   def order(scope)
     with_raise_on_invalid do
       scope.where(order_condition)
-           .order(*order_by_start_and_end_date)
+           .order(*order_by_start_and_finish_date)
     end
   end
 
@@ -99,13 +99,13 @@ class Queries::Projects::Orders::ProjectPhaseOrder < Queries::Orders::Base
       .or(steps_table[:def_id].eq(nil))
   end
 
-  def order_by_start_and_end_date
+  def order_by_start_and_finish_date
     steps_table = Arel::Table.new(subquery_table_name.to_s)
 
-    # Even though a gate does not define an end_date, this code still works.
+    # Even though a gate does not define an finish_date, this code still works.
     [
       steps_table[:start_date].send(direction),
-      steps_table[:end_date].send(direction)
+      steps_table[:finish_date].send(direction)
     ]
   end
 end

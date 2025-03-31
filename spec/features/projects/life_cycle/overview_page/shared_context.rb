@@ -59,49 +59,49 @@ RSpec.shared_context "with seeded projects and stages and gates" do
     create :project_phase,
            definition: life_cycle_initiating_definition,
            start_date:,
-           end_date: start_date + 1.day,
+           finish_date: start_date + 1.day,
            project:
   end
   let(:life_cycle_ready_for_planning) do
     create :project_phase,
            definition: life_cycle_ready_for_planning_definition,
            start_date: start_date + 2.days,
-           end_date: start_date + 2.days,
+           finish_date: start_date + 2.days,
            project:
   end
   let(:life_cycle_planning) do
     create :project_phase,
            definition: life_cycle_planning_definition,
            start_date: start_date + 4.days,
-           end_date: start_date + 7.days,
+           finish_date: start_date + 7.days,
            project:
   end
   let(:life_cycle_ready_for_executing) do
     create :project_phase,
            definition: life_cycle_ready_for_executing_definition,
            start_date: start_date + 8.days,
-           end_date: start_date + 8.days,
+           finish_date: start_date + 8.days,
            project:
   end
   let(:life_cycle_executing) do
     create :project_phase,
            definition: life_cycle_executing_definition,
            start_date: start_date + 9.days,
-           end_date: start_date + 10.days,
+           finish_date: start_date + 10.days,
            project:
   end
   let(:life_cycle_ready_for_closing) do
     create :project_phase,
            definition: life_cycle_ready_for_closing_definition,
            start_date: start_date + 11.days,
-           end_date: start_date + 11.days,
+           finish_date: start_date + 11.days,
            project:
   end
   let(:life_cycle_closing) do
     create :project_phase,
            definition: life_cycle_closing_definition,
            start_date: start_date + 14.days,
-           end_date: start_date + 18.days,
+           finish_date: start_date + 18.days,
            project:
   end
 
