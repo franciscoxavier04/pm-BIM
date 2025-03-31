@@ -39,18 +39,6 @@ module ProjectLifeCycles
           model.not_set?
         end
 
-        def render_value
-          render(Primer::Beta::Text.new) do
-            concat [
-              model.start_date,
-              model.end_date
-            ]
-            .compact
-            .map { |d| helpers.format_date(d) }
-            .join(" - ")
-          end
-        end
-
         def icon
           :"op-phase"
         end

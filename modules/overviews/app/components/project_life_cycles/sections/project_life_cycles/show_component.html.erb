@@ -23,7 +23,7 @@
       if not_set?
         render(Primer::Beta::Text.new) { t("placeholders.default") }
       else
-        render_value
+        render Projects::PhaseComponent.new(phase: model)
       end
     end
   end
