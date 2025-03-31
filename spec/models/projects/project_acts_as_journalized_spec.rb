@@ -42,7 +42,7 @@ RSpec.describe Project, "acts_as_journalized" do
 
   context "on project creation" do
     it "has one journal entry" do
-      expect(Journal.all.count).to eq(1)
+      expect(Journal.count).to eq(1)
       expect(Journal.first.journable).to eq(project)
     end
 
