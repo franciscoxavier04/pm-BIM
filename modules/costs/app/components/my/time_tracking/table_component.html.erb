@@ -1,8 +1,36 @@
-<h1> We are a table component </h1>
-<h2><%= title %></h2>
+<%= component_wrapper(tag: "div") do %>
+  <%= render(Primer::OpenProject::SubHeader.new) do |component|
+        component.with_text { title }
 
-<ul>
-  <%- time_entries.each do |te| %>
-    <li><%= te.spent_on %> <%= te.hours %>h - <%= te.work_package.subject %></li>
+        component.with_action_component do
+          render(Primer::Beta::ButtonGroup.new) do |group|
+            group.with_button(icon: "arrow-left", tag: :a, **previous_attrs)
+            group.with_button(icon: "arrow-right", tag: :a, **next_attrs)
+          end
+        end
+
+        component.with_action_button(tag: :a, href: today_href) { "Today" }
+
+        component.with_action_button(
+          scheme: :primary,
+          data: {
+            "turbo-stream" => true
+          },
+          tag: :a,
+          href: dialog_time_entries_path(onlyMe: true)
+        ) { "Log Time" }
+      end %>
+
+  <ul>
+    <%- range.each do |date| %>
+      <li>
+      <h3><%= date %> (<%= time_entries_by_day[date].count %> entries, <%= total_hours_per_day(date) %>)</h3>
+      <ul>
+        <%- time_entries_by_day[date].each do |te| %>
+          <li><%= te.spent_on %> <%= te.hours %>h - <%= te.work_package.subject %></li>
+        <%- end %>
+      </ul>
+      </li>
   <%- end %>
-</ul>
+  </ul>
+<%- end %>

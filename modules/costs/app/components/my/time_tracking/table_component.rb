@@ -32,6 +32,7 @@ module My
   module TimeTracking
     class TableComponent < ApplicationComponent
       include OpTurbo::Streamable
+      include ComponentNavigation
 
       options time_entries: [],
               mode: :week,
@@ -39,57 +40,23 @@ module My
 
       private
 
-      def today_href
+      def range
         case mode
-        when :day
-          my_time_tracking_day_path(date: Date.current)
-        when :week
-          my_time_tracking_week_path(date: Date.current)
-        when :month
-          my_time_tracking_month_path(date: Date.current)
+        when :day then [date]
+        when :week then date.all_week
+        when :month then date.all_month
         end
       end
 
-      def title # rubocop:disable Metrics/AbcSize
-        case mode
-        when :day
-          I18n.l(date, format: :long)
-        when :week
-          bow = date.beginning_of_week
-          eow = date.end_of_week
-
-          if bow.year == eow.year && bow.month == eow.month
-            "#{bow.strftime('%d.')} - #{eow.strftime('%d. %B %Y')}"
-          elsif bow.year == eow.year
-            "#{bow.strftime('%d. %B')} - #{eow.strftime('%d. %B %Y')}"
-          else
-            "#{bow.strftime('%d. %B %Y')} - #{eow.strftime('%d. %B %Y')}"
-          end
-        when :month
-          date.strftime("%B %Y")
+      def time_entries_by_day
+        @time_entries_by_day ||= time_entries.group_by(&:spent_on).tap do |hash|
+          hash.default_proc = ->(h, k) { h[k] = [] }
         end
       end
 
-      def previous_attrs
-        case mode
-        when :day
-          { href: my_time_tracking_day_path(date: date - 1.day), aria: { label: I18n.t(:label_previous_day) } }
-        when :week
-          { href: my_time_tracking_week_path(date: date - 1.week), aria: { label: I18n.t(:label_previous_week) } }
-        when :month
-          { href: my_time_tracking_month_path(date: date - 1.month), aria: { label: I18n.t(:label_previous_month) } }
-        end
-      end
-
-      def next_attrs
-        case mode
-        when :day
-          { href: my_time_tracking_day_path(date: date + 1.day), aria: { label: I18n.t(:label_next_day) } }
-        when :week
-          { href: my_time_tracking_week_path(date: date + 1.week), aria: { label: I18n.t(:label_next_week) } }
-        when :month
-          { href: my_time_tracking_month_path(date: date + 1.month), aria: { label: I18n.t(:label_next_month) } }
-        end
+      def total_hours_per_day(date)
+        total_hours = time_entries_by_day[date].sum(&:hours).round(2)
+        DurationConverter.output(total_hours, format: :hours_and_minutes)
       end
     end
   end

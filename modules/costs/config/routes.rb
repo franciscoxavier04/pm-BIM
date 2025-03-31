@@ -57,7 +57,7 @@ Rails.application.routes.draw do
     get "/time-tracking/week(-:view_mode)" => "time_tracking#week",
         defaults: { view_mode: "calendar" },
         as: :time_tracking_week
-    get "/time-tracking/month(-view_mode)" => "time_tracking#month",
+    get "/time-tracking/month(-:view_mode)" => "time_tracking#month",
         defaults: { view_mode: "calendar" },
         as: :time_tracking_month
   end

@@ -32,6 +32,7 @@ module My
   module TimeTracking
     class CalendarComponent < ApplicationComponent
       include OpTurbo::Streamable
+      include ComponentNavigation
 
       options time_entries: [],
               mode: :week,
@@ -56,59 +57,6 @@ module My
         time_entries.map do |time_entry|
           FullCalendar::TimeEntryEvent.from_time_entry(time_entry)
         end.to_json
-      end
-
-      def today_href
-        case mode
-        when :day
-          my_time_tracking_day_path(date: Date.current)
-        when :week
-          my_time_tracking_week_path(date: Date.current)
-        when :month
-          my_time_tracking_month_path(date: Date.current)
-        end
-      end
-
-      def title # rubocop:disable Metrics/AbcSize
-        case mode
-        when :day
-          I18n.l(date, format: :long)
-        when :week
-          bow = date.beginning_of_week
-          eow = date.end_of_week
-
-          if bow.year == eow.year && bow.month == eow.month
-            "#{bow.strftime('%d.')} - #{eow.strftime('%d. %B %Y')}"
-          elsif bow.year == eow.year
-            "#{bow.strftime('%d. %B')} - #{eow.strftime('%d. %B %Y')}"
-          else
-            "#{bow.strftime('%d. %B %Y')} - #{eow.strftime('%d. %B %Y')}"
-          end
-        when :month
-          date.strftime("%B %Y")
-        end
-      end
-
-      def previous_attrs
-        case mode
-        when :day
-          { href: my_time_tracking_day_path(date: date - 1.day), aria: { label: I18n.t(:label_previous_day) } }
-        when :week
-          { href: my_time_tracking_week_path(date: date - 1.week), aria: { label: I18n.t(:label_previous_week) } }
-        when :month
-          { href: my_time_tracking_month_path(date: date - 1.month), aria: { label: I18n.t(:label_previous_month) } }
-        end
-      end
-
-      def next_attrs
-        case mode
-        when :day
-          { href: my_time_tracking_day_path(date: date + 1.day), aria: { label: I18n.t(:label_next_day) } }
-        when :week
-          { href: my_time_tracking_week_path(date: date + 1.week), aria: { label: I18n.t(:label_next_week) } }
-        when :month
-          { href: my_time_tracking_month_path(date: date + 1.month), aria: { label: I18n.t(:label_next_month) } }
-        end
       end
 
       def total_hours
