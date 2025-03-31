@@ -172,6 +172,9 @@ class WorkPackagesController < ApplicationController
   private
 
   def save_export_settings
+    # Saving export settings is only allowed for saved queries
+    return false if @query.new_record?
+
     relevant_keys = %i[format columns show_relations show_descriptions long_text_fields
                        show_images gantt_mode gantt_width paper_size]
 
@@ -183,7 +186,7 @@ class WorkPackagesController < ApplicationController
 
     export_settings = @query.export_settings_for(user_settings[:format])
     export_settings.settings = user_settings
-    export_settings.save!
+    export_settings.save
   end
 
   def authorize_on_work_package
