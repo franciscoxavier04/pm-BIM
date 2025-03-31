@@ -49,6 +49,12 @@ class ExportSetting < ApplicationRecord
     super(value.stringify_keys)
   end
 
+  # Some boolean settings are saved as string. Use this method to conveniently check if they are
+  # set to true. Assumes that all boolean settings default to false.
+  def true?(key)
+    settings.fetch(key, false).to_bool
+  end
+
   private
 
   def unique_format_per_query

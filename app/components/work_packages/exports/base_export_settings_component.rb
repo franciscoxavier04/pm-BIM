@@ -44,7 +44,7 @@ module WorkPackages
       end
 
       def export_settings
-        @export_settings ||= query.export_settings.where(format:).first_or_initialize
+        @export_settings ||= query.export_settings_for(format)
       end
     end
   end

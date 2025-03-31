@@ -41,8 +41,7 @@ module WorkPackages
         super()
 
         @export_settings = export_settings
-        # TODO: respond_to can be removed once all ExportSettingComponents have been migrated
-        @query = export_settings.respond_to?(:query) ? export_settings.query : export_settings
+        @query = @export_settings.query
         @id = id
         @caption = caption
         @label = label
@@ -61,17 +60,16 @@ module WorkPackages
       end
 
       def selected_columns
-        # TODO: respond_to can be removed once all ExportSettingComponents have been migrated
-        if export_settings.respond_to?(:settings) && export_settings.settings.key?(:columns)
+        if export_settings.settings.key?(:columns)
+          # FIXME: the order of the columns is not preserved
           saved_cols = export_settings.settings[:columns]
-          query
-            .columns
-            .select { |column| saved_cols.include?(column.name.to_s) }
+          available_columns
+            .select { |column| saved_cols.include?(column[:id]) }
         else
           query
             .columns
+            .map { |column| { id: column.name.to_s, name: column.caption } }
         end
-          .map { |column| { id: column.name.to_s, name: column.caption } }
       end
     end
   end
