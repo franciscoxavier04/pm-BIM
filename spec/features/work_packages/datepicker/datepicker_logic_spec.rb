@@ -1104,7 +1104,8 @@ RSpec.describe "Datepicker modal logic test cases (WP #43539)", :js, with_settin
         datepicker.expect_working_days_only true
 
         # The non-working days are disabled
-        datepicker.expect_not_disabled Date.parse("2022-06-25")
+        datepicker.expect_disabled Date.parse("2022-06-25")
+        datepicker.expect_disabled Date.parse("2022-06-26")
         # The rest is not disabled
         datepicker.expect_not_disabled Date.parse("2022-06-27")
 
@@ -1113,6 +1114,10 @@ RSpec.describe "Datepicker modal logic test cases (WP #43539)", :js, with_settin
         datepicker.expect_duration 6
 
         datepicker.uncheck_working_days_only
+
+        # The non-working days are no longer disabled
+        datepicker.expect_not_disabled Date.parse("2022-06-25")
+        datepicker.expect_not_disabled Date.parse("2022-06-26")
 
         # Since the due date was touched before, the value is kept and duration adjusted
         datepicker.expect_due_date "2022-06-27", disabled: false
