@@ -88,12 +88,12 @@ RSpec.describe WorkPackageRelationsTab::RelationsMediator do
 
     context "having a closest relation" do
       shared_let_work_packages(<<~TABLE)
-        hierarchy    | MTWTFSS    | scheduling mode | predecessors
-        predecessor1 | XXX        | manual          |
-        predecessor2 | XX         | manual          |
-        predecessor3 | XX         | manual          |
-        predecessor4 |            | manual          |
-        work_package |          X | automatic       | predecessor1 with lag 2, predecessor2 with lag 7, predecessor3 with lag 7, predecessor4 with lag 10
+        hierarchy    | MTWTFSS    | scheduling mode | successors
+        predecessor1 | XXX        | manual          | work_package with lag 2
+        predecessor2 | XX         | manual          | work_package with lag 7
+        predecessor3 | XX         | manual          | work_package with lag 7
+        predecessor4 |            | manual          | work_package with lag 10
+        work_package |          X | automatic       |
       TABLE
 
       describe "#closest_relation" do

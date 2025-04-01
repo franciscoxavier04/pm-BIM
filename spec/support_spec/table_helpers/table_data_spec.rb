@@ -176,6 +176,32 @@ module TableHelpers
         expect(follower.follows_relations.first.lag).to eq(2)
       end
 
+      it "creates 'precedes' relations between work packages out of the table data" do
+        table_representation = <<~TABLE
+          subject     | successors
+          predecessor | precedes main with lag 2
+          main        | precedes successor
+          successor   |
+        TABLE
+
+        table_data = described_class.for(table_representation)
+        table = table_data.create_work_packages
+        expect(table.work_packages.count).to eq(3)
+        predecessor = table.work_package(:predecessor)
+        main = table.work_package(:main)
+        successor = table.work_package(:successor)
+
+        expect(main.follows_relations.count).to eq(1)
+        expect(main.follows_relations.first.predecessor).to eq(predecessor)
+        expect(main.follows_relations.first.successor).to eq(main)
+        expect(main.follows_relations.first.lag).to eq(2)
+
+        expect(main.precedes_relations.count).to eq(1)
+        expect(main.precedes_relations.first.predecessor).to eq(main)
+        expect(main.precedes_relations.first.successor).to eq(successor)
+        expect(main.precedes_relations.first.lag).to eq(0)
+      end
+
       it "creates 'relates' relations between work packages out of the table data" do
         table_representation = <<~TABLE
           subject  | related to
