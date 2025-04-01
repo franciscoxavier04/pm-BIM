@@ -41,5 +41,12 @@ FactoryBot.define do
       end_gate { true }
       sequence(:end_gate_name) { |n| "Phase definition End Gate #{n}" }
     end
+
+    trait :with_gates do
+      start_gate { true }
+      end_gate { true }
+      sequence(:start_gate_name) { |n| "Phase definition Start Gate #{n}" }
+      sequence(:end_gate_name) { |n| "Phase definition End Gate #{n}" }
+    end
   end
 end

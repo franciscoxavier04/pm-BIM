@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -115,14 +117,10 @@ RSpec.describe "Show project life cycles on project overview page", :js, with_fl
         overview_page.within_life_cycles_sidebar do
           project_life_cycles.each do |life_cycle|
             overview_page.within_life_cycle_container(life_cycle) do
-              expected_date = if life_cycle.is_a? Project::Stage
-                                [
-                                  life_cycle.start_date.strftime("%m/%d/%Y"),
-                                  life_cycle.end_date.strftime("%m/%d/%Y")
-                                ].join(" - ")
-                              else
-                                life_cycle.start_date.strftime("%m/%d/%Y")
-                              end
+              expected_date = [
+                life_cycle.start_date.strftime("%m/%d/%Y"),
+                life_cycle.end_date.strftime("%m/%d/%Y")
+              ].join("\n-\n")
               expect(page).to have_text expected_date
             end
           end

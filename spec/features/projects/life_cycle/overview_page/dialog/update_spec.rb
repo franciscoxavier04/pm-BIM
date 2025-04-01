@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -53,13 +55,13 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
       it "shows all the Project::Phases without a value" do
         dialog = overview_page.open_edit_dialog_for_life_cycles
 
-        dialog.expect_input("Initiating", value: "", type: :stage, position: 1)
-        dialog.expect_input("Ready for Planning", value: "", type: :gate, position: 2)
-        dialog.expect_input("Planning", value: "", type: :stage, position: 3)
-        dialog.expect_input("Ready for Executing", value: "", type: :gate, position: 4)
-        dialog.expect_input("Executing", value: "", type: :stage, position: 5)
-        dialog.expect_input("Ready for Closing", value: "", type: :gate, position: 6)
-        dialog.expect_input("Closing", value: "", type: :stage, position: 7)
+        dialog.expect_input("Initiating", value: "", position: 1)
+        dialog.expect_input("Ready for Planning", value: "", position: 2)
+        dialog.expect_input("Planning", value: "", position: 3)
+        dialog.expect_input("Ready for Executing", value: "", position: 4)
+        dialog.expect_input("Executing", value: "", position: 5)
+        dialog.expect_input("Ready for Closing", value: "", position: 6)
+        dialog.expect_input("Closing", value: "", position: 7)
 
         # Saving the dialog is successful
         dialog.submit
@@ -89,32 +91,34 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
         retry_block do
           # Retrying due to a race condition between filling the input vs submitting the form preview.
           original_dates = [life_cycle_initiating.start_date, life_cycle_initiating.end_date]
-          dialog.set_date_for(life_cycle_initiating, value: original_dates)
+          dialog.set_date_for(life_cycle_initiating, values: original_dates)
 
           page.driver.clear_network_traffic
-          dialog.set_date_for(life_cycle_initiating, value: initiating_dates)
+          dialog.set_date_for(life_cycle_initiating, values: initiating_dates)
 
           dialog.expect_caption(life_cycle_initiating, text: "Duration: 8 working days")
           # Ensure that only 1 ajax request is triggered after setting the date range.
           expect(page.driver.browser.network.traffic.size).to eq(1)
         end
 
-        ready_for_planning_date = start_date + 1.day
-        dialog.set_date_for(life_cycle_ready_for_planning, value: ready_for_planning_date)
-        dialog.expect_no_caption(life_cycle_ready_for_planning)
+        dialog.clear_date_for(life_cycle_ready_for_planning)
 
         # Saving the dialog is successful
         dialog.submit
         dialog.expect_closed
 
         # Sidebar is refreshed with the updated values
-        expected_date_range = initiating_dates.map { I18n.l(_1) }.join(" - ")
         overview_page.within_life_cycle_container(life_cycle_initiating) do
-          expect(page).to have_text expected_date_range
+          expect(page).to have_text initiating_dates.map { I18n.l(it) }.join("\n-\n")
         end
 
+        ready_for_planning_dates = [
+          life_cycle_ready_for_planning.start_date,
+          life_cycle_ready_for_planning.end_date
+        ].map { I18n.l(it) }.join("\n-\n")
+
         overview_page.within_life_cycle_container(life_cycle_ready_for_planning) do
-          expect(page).to have_text I18n.l(ready_for_planning_date)
+          expect(page).to have_no_text ready_for_planning_dates
         end
 
         activity_page.visit!
@@ -133,9 +137,10 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
                                         "#{I18n.l life_cycle_initiating_was.end_date} to " \
                                         "#{I18n.l life_cycle_initiating.start_date} - " \
                                         "#{I18n.l life_cycle_initiating.end_date}")
-          activity_page.expect_activity("Ready for Planning changed from " \
-                                        "#{I18n.l life_cycle_ready_for_planning_was.date} to " \
-                                        "#{I18n.l life_cycle_ready_for_planning.date}")
+
+          activity_page.expect_activity("Ready for Planning date deleted " \
+                                        "#{I18n.l life_cycle_ready_for_planning_was.start_date} - " \
+                                        "#{I18n.l life_cycle_ready_for_planning_was.end_date}")
         end
       end
 
@@ -153,8 +158,8 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
 
         # Retrying due to a race condition between filling the input vs submitting the form preview.
         retry_block do
-          value = start_date + cycled_days.next.days
-          dialog.set_date_for(life_cycle_ready_for_planning, value:)
+          values = start_date + cycled_days.next.days
+          dialog.set_date_for(life_cycle_ready_for_planning, values:)
 
           dialog.expect_validation_message(life_cycle_ready_for_planning, text: expected_text)
         end
@@ -168,8 +173,8 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
 
         retry_block do
           # The validation message is cleared when date is changed
-          value = start_date + 2.days + cycled_days.next.days
-          dialog.set_date_for(life_cycle_ready_for_planning, value:)
+          values = start_date + 2.days + cycled_days.next.days
+          dialog.set_date_for(life_cycle_ready_for_planning, values:)
           dialog.expect_no_validation_message(life_cycle_ready_for_planning)
         end
 
