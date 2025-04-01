@@ -21,16 +21,8 @@
         ) { "Log Time" }
       end %>
 
-  <ul>
     <%- range.each do |date| %>
-      <li>
-      <h3><%= date %> (<%= time_entries_by_day[date].count %> entries, <%= total_hours_per_day(date) %>)</h3>
-      <ul>
-        <%- time_entries_by_day[date].each do |te| %>
-          <li><%= te.spent_on %> <%= te.hours %>h - <%= te.work_package.subject %></li>
-        <%- end %>
-      </ul>
-      </li>
-  <%- end %>
-  </ul>
+      <h2><%= date %></h2>
+      <%= render(My::TimeTracking::DailyEntriesTable.new(rows: time_entries_by_day[date])) %>
+    <%- end %>
 <%- end %>
