@@ -40,6 +40,13 @@ module My
 
       private
 
+      def wrapper_data
+        {
+          "controller" => "generic-dialog-close",
+          "application-target" => "dynamic"
+        }
+      end
+
       def range
         case mode
         when :day then [date]

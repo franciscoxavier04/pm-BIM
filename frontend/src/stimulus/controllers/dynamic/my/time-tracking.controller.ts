@@ -39,16 +39,7 @@ export default class MyTimeTrackingController extends Controller {
     this.pathHelper = context.services.pathHelperService;
 
     // handle dialog close event
-    document.addEventListener('dialog:close', (event:CustomEvent) => {
-      const {
-        detail: { dialog, submitted },
-      } = event as {
-        detail:{ dialog:HTMLDialogElement; submitted:boolean };
-      };
-      if (dialog.id === 'time-entry-dialog' && submitted) {
-        window.location.reload();
-      }
-    });
+    document.addEventListener('dialog:close', this.dialogCloseListener);
 
     const DEFAULT_TIMED_EVENT_DURATION = '01:00';
 
@@ -194,15 +185,13 @@ export default class MyTimeTrackingController extends Controller {
     this.calendar.render();
   }
 
-  updateTimeEntry(
-    timeEntryId:string,
-    spentOn:string,
-    startTime:string | null,
-    hours:number,
-    revertFunction:() => void,
-  ) {
-    const csrfToken = document.querySelector<HTMLMetaElement>('meta[name="csrf-token"]')
-        ?.content || '';
+  disconnect():void {
+    document.removeEventListener('dialog:close', this.dialogCloseListener);
+  }
+
+  updateTimeEntry(timeEntryId:string, spentOn:string, startTime:string | null, hours:number, revertFunction:() => void) {
+    const csrfToken = document.querySelector<HTMLMetaElement>('meta[name="csrf-token"]')?.content || '';
+
     fetch(this.pathHelper.timeEntryUpdate(timeEntryId), {
       method: 'PATCH',
       headers: {
@@ -253,6 +242,13 @@ export default class MyTimeTrackingController extends Controller {
         return 'timeGridDay';
       default:
         return 'timeGridWeek';
+    }
+  }
+
+  dialogCloseListener(this:void, event:CustomEvent):void {
+    const { detail: { dialog, submitted } } = event as { detail:{ dialog:HTMLDialogElement; submitted:boolean }; };
+    if (dialog.id === 'time-entry-dialog' && submitted) {
+      window.location.reload();
     }
   }
 }

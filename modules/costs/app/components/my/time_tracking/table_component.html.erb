@@ -1,4 +1,4 @@
-<%= component_wrapper(tag: "div") do %>
+<%= component_wrapper(tag: "div", data: wrapper_data) do %>
   <%= render(Primer::OpenProject::SubHeader.new) do |component|
         component.with_text { title }
 
@@ -22,7 +22,7 @@
       end %>
 
     <%- range.each do |date| %>
-      <h2><%= date %></h2>
+      <%= render(Primer::OpenProject::Heading.new(tag: :h2)) { date.strftime("%A %d") } %>
       <%= render(My::TimeTracking::DailyEntriesTable.new(rows: time_entries_by_day[date])) %>
     <%- end %>
 <%- end %>
