@@ -32,7 +32,7 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   include ApplicationHelper
   include OpPrimer::ComponentHelpers
 
-  attr_reader :relation_item, :editable, :closest
+  attr_reader :relation_item, :editable
 
   delegate :relation, :work_package, to: :relation_item
 
@@ -40,15 +40,11 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   #
   # @param relation_item [WorkPackageRelationsTab::RelationsMediator::RelationItem] The relation item to display
   # @param editable [Boolean] Whether the relation can be edited
-  # @param closest [Boolean] Whether the follows relation is the closest
-  def initialize(relation_item:,
-                 editable: true,
-                 closest: false)
+  def initialize(relation_item:, editable: true)
     super()
 
     @relation_item = relation_item
     @editable = editable
-    @closest = closest
   end
 
   def related_work_package
@@ -120,7 +116,7 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   end
 
   def closest?
-    closest
+    relation_item.closest?
   end
 
   def edit_path

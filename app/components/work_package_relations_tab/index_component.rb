@@ -57,34 +57,34 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
     should_render_add_child? || should_render_add_relations?
   end
 
-  def render_relation_group(title:, relation_type:, relation_items:, &_block)
+  def render_relation_group(title:, relation_group:, &)
     render(border_box_container(
              padding: :condensed,
-             data: { test_selector: "op-relation-group-#{relation_type}" }
+             data: { test_selector: "op-relation-group-#{relation_group.type}" }
            )) do |border_box|
-      if relation_type == :children && should_render_add_child?
-        render_children_header(border_box, title, relation_items)
+      if relation_group.type.children? && should_render_add_child?
+        render_children_header(border_box, title, relation_group.count)
       else
-        render_header(border_box, title, relation_items)
+        render_header(border_box, title, relation_group.count)
       end
 
-      render_items(border_box, relation_items, &_block)
+      render_items(border_box, relation_group.all_relation_items, &)
     end
   end
 
-  def render_header(border_box, title, relation_items)
+  def render_header(border_box, title, count)
     border_box.with_header(py: 3) do
       concat render(Primer::Beta::Text.new(mr: 2, font_size: :normal, font_weight: :bold)) { title }
-      concat render(Primer::Beta::Counter.new(count: relation_items.count, round: true, scheme: :primary))
+      concat render(Primer::Beta::Counter.new(count:, round: true, scheme: :primary))
     end
   end
 
-  def render_children_header(border_box, title, relation_items) # rubocop:disable Metrics/AbcSize
+  def render_children_header(border_box, title, count) # rubocop:disable Metrics/AbcSize
     border_box.with_header(py: 3) do
       flex_layout(justify_content: :space_between, align_items: :center) do |header|
         header.with_column(mr: 2) do
           concat render(Primer::Beta::Text.new(mr: 2, font_size: :normal, font_weight: :bold)) { title }
-          concat render(Primer::Beta::Counter.new(count: relation_items.count, round: true, scheme: :primary))
+          concat render(Primer::Beta::Counter.new(count:, round: true, scheme: :primary))
         end
         header.with_column do
           render(Primer::Alpha::ActionMenu.new(menu_id: NEW_CHILD_ACTION_MENU)) do |menu|

@@ -52,23 +52,15 @@
 
         # Relations
         directionally_aware_grouped_relations.each do |relation_group|
-          base_key = "#{I18N_NAMESPACE}.relations.label_#{relation_group.type}"
-
-          # Combine visible and invisible relations into a single list
-          all_relation_items = relation_group.all_relation_items
+          base_key = "#{key_namespace}.label_#{relation_group.type}"
 
           flex.with_row(mb: 4) do
             render_relation_group(
               title: t("#{base_key}_plural").upcase_first,
-              relation_type: relation_group.type,
-              relation_items: all_relation_items
+              relation_group:
             ) do |relation_item|
-              # Render each relation with its visibility
               render(
-                WorkPackageRelationsTab::RelationComponent.new(
-                  relation_item:,
-                  closest: relation_group.closest_relation?(relation_item.relation)
-                )
+                WorkPackageRelationsTab::RelationComponent.new(relation_item:)
               )
             end
           end
@@ -78,13 +70,10 @@
         if any_children?
           base_key = "#{key_namespace}.label_child"
 
-          all_relation_items = relations_mediator.relation_group("children").all_relation_items
-
           flex.with_row do
             render_relation_group(
               title: t("#{base_key}_plural").upcase_first,
-              relation_type: :children,
-              relation_items: all_relation_items
+              relation_group: relations_mediator.relation_group("children")
             ) do |relation_item|
               render(
                 WorkPackageRelationsTab::RelationComponent.new(relation_item:)

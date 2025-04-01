@@ -29,9 +29,21 @@
 #++
 
 class WorkPackageRelationsTab::RelationsMediator
-  RelationGroup = Data.define(:type, :work_package, :visible_relations, :ghost_relations) do
+  RelationGroup = Data.define(:type, :work_package, :visible_relations, :ghost_relations, :closest_relation) do
     def initialize(type:, work_package:, visible_relations:, ghost_relations:)
-      super(type: ActiveSupport::StringInquirer.new(type.to_s), work_package:, visible_relations:, ghost_relations:)
+      type = ActiveSupport::StringInquirer.new(type.to_s)
+      closest_relation = self.class.closest_relation(type, visible_relations + ghost_relations)
+      super(type:, work_package:, visible_relations:, ghost_relations:, closest_relation:)
+    end
+
+    def self.closest_relation(type, relations)
+      return nil unless type.follows?
+
+      relations
+        .map { WorkPackageRelationsTab::ClosestRelation.new(it) }
+        .select(&:soonest_start)
+        .max
+        &.relation
     end
 
     def count
@@ -51,38 +63,51 @@ class WorkPackageRelationsTab::RelationsMediator
     end
 
     def visible_relation_items
-      visible_relations.map { |relation| RelationItem.new(type:, work_package:, relation:, visibility: :visible) }
+      to_relation_items(visible_relations, :visible)
     end
 
     def ghost_relation_items
-      ghost_relations.map { |relation| RelationItem.new(type:, work_package:, relation:, visibility: :ghost) }
+      to_relation_items(ghost_relations, :ghost)
     end
 
     def closest_relation?(relation) = closest_relation == relation
 
-    def closest_relation
-      return nil unless type.follows?
-
-      all_relations
-        .map { WorkPackageRelationsTab::ClosestRelation.new(it) }
-        .select(&:soonest_start)
-        .max
-        &.relation
+    def to_relation_items(relations, visibility)
+      relations.map do |relation|
+        closest = closest_relation?(relation)
+        RelationItem.new(type:, work_package:, relation:, visibility:, closest:)
+      end
     end
   end
 
-  RelationItem = Data.define(:type, :work_package, :related, :relation, :visibility) do
-    def initialize(type:, work_package:, relation:, visibility:)
+  # Represents a relation item to be displayed in the relations tab or the date
+  # picker tabs.
+  #
+  # @param type [String] The type of relation
+  # @param work_package [WorkPackage] The work package for which the relation
+  #   is displayed
+  # @param related [WorkPackage] The related work package: the other work
+  #   package of therelation, or the child for child relations.
+  # @param relation [Relation, nil] The relation, `nil` for child relations
+  # @param visibility [Symbol] The visibility of the relation, `:visible` to
+  #   show related work package information or `:ghost` to show a placeholder
+  #   with dates and lag information for some relation types
+  # @param closest [Boolean] Whether the relation is the closest follows
+  #   relation
+  RelationItem = Data.define(:type, :work_package, :related, :relation, :visibility, :closest) do
+    def initialize(type:, work_package:, relation:, visibility: :visible, closest: false)
       if relation.is_a?(Relation)
         related = relation.other_work_package(work_package)
       else
-        related = relation # relation is the child
+        related = relation # for parent-child relations, `relation` parameter holds the child work package
         relation = nil
       end
-      super(type:, work_package:, related:, relation:, visibility:)
+      super(type:, work_package:, related:, relation:, visibility:, closest:)
     end
 
     def visible? = visibility == :visible
+
+    def closest? = closest
 
     def order_key
       [type, relation&.id, related&.id]
