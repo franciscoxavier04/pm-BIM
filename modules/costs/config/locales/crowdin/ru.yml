@@ -63,10 +63,10 @@ ru:
         many: "Записей о трудозатратах"
         other: "Записи о трудозатратах"
       cost_entry:
-        one: "Cost entry"
+        one: "Запись трудозатрат"
         few: "Cost entries"
         many: "Cost entries"
-        other: "Cost entries"
+        other: "Записи трудозатрат"
       cost_type:
         one: "Тип затрат"
         few: "Типы затрат"
