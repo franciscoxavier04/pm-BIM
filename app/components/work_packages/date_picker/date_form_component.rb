@@ -77,7 +77,7 @@ module WorkPackages
           value: field_value(name),
           disabled: disabled?(name),
           label:,
-          show_clear_button: !disabled?(name) && !duration_field?(name),
+          show_clear_button: show_clear_button?(name),
           classes: "op-datepicker-modal--date-field #{'op-datepicker-modal--date-field_current' if @focused_field == name}",
           validation_message: validation_message(name),
           type: field_type(name)
@@ -243,6 +243,10 @@ module WorkPackages
 
       def normalized_underscore_name(name)
         name.to_s.underscore
+      end
+
+      def show_clear_button?(name)
+        !disabled?(name) && !duration_field?(name) && !helpers.browser.device.mobile?
       end
     end
   end
