@@ -553,7 +553,8 @@ Rails.application.routes.draw do
       resource :new_project, controller: "/admin/settings/new_project_settings", only: %i[show update]
       resources :project_phase_definitions,
                 path: "project_life_cycle",
-                controller: "/admin/settings/project_life_cycle_definitions" do
+                controller: "/admin/settings/project_life_cycle_definitions",
+                except: :show do
         member do
           patch :move
           put :drop # should be patch, but requires passing method to generic-drag-and-drop controller
