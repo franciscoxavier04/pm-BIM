@@ -65,16 +65,16 @@ class Project::Phase < ApplicationRecord
     self.finish_date ||= start_date # Allow single dates as range
   end
 
-  def not_set?
-    start_date.blank? || finish_date.blank?
+  def range_set?
+    start_date? && finish_date?
   end
 
-  def range_set?
-    !not_set?
+  def not_set?
+    !range_set?
   end
 
   def range_incomplete?
-    start_date.blank? ^ finish_date.blank?
+    start_date? ^ finish_date?
   end
 
   def validate_date_range
