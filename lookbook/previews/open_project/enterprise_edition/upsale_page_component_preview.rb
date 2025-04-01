@@ -60,12 +60,10 @@ module OpenProject
       # To provide a video or image, use the respective `video:` or `image:` tags.
       # If none or provided, a default image will be used.
       #
-      # The href is inferred from `OpenProject::Static::Links.enterprise_docs[feature_key][:href]`.
+      # The href is inferred from `OpenProject::Static::Links.enterprise_features[feature_key][:href]`.
+      # @display min_height 450px
       def default
-        render(
-          ::EnterpriseEdition::UpsalePageComponent
-            .new(:customize_life_cycle)
-        )
+        render ::EnterpriseEdition::UpsalePageComponent.new(:customize_life_cycle)
       end
 
       def video

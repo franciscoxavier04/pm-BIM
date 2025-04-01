@@ -50,7 +50,7 @@ RSpec.describe EnterpriseEdition::BannerComponent, type: :component do
   end
   let(:static_links) do
     {
-      enterprise_docs: {
+      enterprise_features: {
         some_enterprise_feature: {
           href:
         }
@@ -244,7 +244,7 @@ RSpec.describe EnterpriseEdition::BannerComponent, type: :component do
   context "without a link key in the static_link file" do
     let(:static_links) do
       {
-        enterprise_docs: {
+        enterprise_features: {
           some_enterprise_feature: {}
         }
       }

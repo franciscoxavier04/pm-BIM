@@ -54,8 +54,9 @@ module OpenProject
       # You can also provide a custom i18n_scope to change the place where the component looks for
       # title, description, and features.
       #
-      # The href is inferred from `OpenProject::Static::Links.enterprise_docs[feature_key][:href]`.
+      # The href is inferred from `OpenProject::Static::Links.enterprise_features[feature_key][:href]`.
       # @param dismissable toggle
+      # @display min_height 250px
       def default(dismissable: false)
         render(
           ::EnterpriseEdition::BannerComponent
@@ -63,6 +64,7 @@ module OpenProject
         )
       end
 
+      # @display min_height 250px
       def dismissable
         render(
           ::EnterpriseEdition::BannerComponent

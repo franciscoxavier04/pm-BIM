@@ -130,7 +130,7 @@ pricing:
   href: https://www.openproject.org/pricing/
 progress_tracking_docs:
   href: https://www.openproject.org/docs/user-guide/time-and-costs/progress-tracking/
-enterprise_docs:
+enterprise_features:
   work_package_subject_generation:
     href: https://www.openproject.org/docs/system-admin-guide/manage-work-packages/work-package-types/#work-package-subject-configuration-enterprise-add-on
   form_configuration:

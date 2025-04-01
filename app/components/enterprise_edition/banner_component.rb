@@ -62,8 +62,6 @@ module EnterpriseEdition
 
     private
 
-    attr_reader :skip_render
-
     def render?
       !(EnterpriseToken.hide_banners? || feature_available? || dismissed?)
     end
