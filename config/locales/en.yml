@@ -403,8 +403,8 @@ en:
         no_results_title_text: There are currently no custom fields available.
       life_cycle:
         header:
-          title: "Project lifecycle"
-          description_html: 'These project phases define this project lifecycle and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target="_blank">project overview</a>.'
+          title: "Project life cycle"
+          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
         non_defined: "No phases are currently defined."
         section_header: "Phases"
         step:
@@ -2814,7 +2814,7 @@ en:
   label_none_parentheses: "(none)"
   label_not_contains: "doesn't contain"
   label_not_equals: "is not"
-  label_life_cycle_step_plural: "Project lifecycle"
+  label_life_cycle_step_plural: "Project life cycle"
   label_on: "on"
   label_operator_all: "is not empty"
   label_operator_none: "is empty"
@@ -3460,7 +3460,7 @@ en:
   permission_select_custom_fields: "Select custom fields"
   permission_select_project_custom_fields: "Select project attributes"
   permission_select_project_phases: "Select project phases"
-  permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the lifecycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
+  permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the life cycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "Select project modules"
   permission_share_work_packages: "Share work packages"
   permission_manage_types: "Select types"
@@ -3965,16 +3965,16 @@ en:
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
     project_phase_definitions:
       heading: "Project life cycle"
-      heading_description: "Project lifecycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
+      heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
       label_add: "Add"
-      label_add_description: "Add lifecycle definition"
+      label_add_description: "Add life cycle definition"
       filter:
         label: "Search project phase"
       section_header: "Phases"
       non_defined: "No phases are currently defined."
       phase_gates: "Phase gates"
       new:
-        description: "Changes to this project step will be reflected in all projects where it is enabled."
+        description: "Changes to this project phase will be reflected in all projects where it is enabled."
         heading: "New Phase"
       edit:
         heading: "Edit Phase"
@@ -4023,7 +4023,7 @@ en:
   text_are_you_sure_continue: "Are you sure you want to continue?"
   text_are_you_sure_with_children: "Delete work package and all child work packages?"
   text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
-  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this phase will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Assign to the project"
   text_form_configuration: >
     You can customize which fields will be displayed in work package forms.
