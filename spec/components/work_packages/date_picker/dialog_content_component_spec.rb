@@ -52,6 +52,12 @@ RSpec.describe WorkPackages::DatePicker::DialogContentComponent, type: :componen
       it "shows the date form" do
         expect(dialog_content).to have_field(I18n.t("attributes.start_date"))
         expect(dialog_content).to have_field(I18n.t("attributes.due_date"))
+        expect(dialog_content).to
+        have_css('input[data-test-selector="op-datepicker-modal--start-date-field"][aria-live="polite"]')
+        expect(dialog_content).to
+        have_css('input[data-test-selector="op-datepicker-modal--due-date-field"][aria-live="polite"]')
+        expect(dialog_content).to
+        have_css('input[data-test-selector="op-datepicker-modal--duration-field"][aria-live="polite"]')
       end
 
       it "has an enabled save button" do
