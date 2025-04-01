@@ -46,9 +46,9 @@
                 tab_content.with_text { I18n.t("work_packages.datepicker_modal.tabs.#{tab.key}") }
                 tab_content.with_counter(count: relation_group.count)
                 tab_content.with_panel(m: 3, classes: "wp-datepicker-dialog--content-tab--relation-tab") do
-                  if relation_group.any?
+                  if relation_group.relation_items.any?
                     render(border_box_container(padding: :condensed)) do |box|
-                      relation_group.all_relation_items.each do |relation_item|
+                      relation_group.relation_items.each do |relation_item|
                         box.with_row(scheme: :default) do
                           render(
                             WorkPackageRelationsTab::RelationComponent.new(

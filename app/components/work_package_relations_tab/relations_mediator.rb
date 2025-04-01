@@ -29,54 +29,60 @@
 #++
 
 class WorkPackageRelationsTab::RelationsMediator
-  RelationGroup = Data.define(:type, :work_package, :visible_relations, :ghost_relations, :closest_relation) do
+  RelationGroupBuilder = Data.define(:type, :work_package, :visible_relations, :ghost_relations) do
     def initialize(type:, work_package:, visible_relations:, ghost_relations:)
       type = ActiveSupport::StringInquirer.new(type.to_s)
-      closest_relation = self.class.closest_relation(type, visible_relations + ghost_relations)
-      super(type:, work_package:, visible_relations:, ghost_relations:, closest_relation:)
+      super
     end
 
-    def self.closest_relation(type, relations)
+    def closest_relation
       return nil unless type.follows?
 
-      relations
+      (visible_relations + ghost_relations)
         .map { WorkPackageRelationsTab::ClosestRelation.new(it) }
         .select(&:soonest_start)
         .max
         &.relation
     end
 
-    def count
-      visible_relations.count + ghost_relations.count
+    def build_relation_group
+      closest_relation = self.closest_relation
+      relation_items = build_all_relation_items(closest_relation)
+      RelationGroup.new(type:, relation_items:)
     end
 
-    def any?
-      visible_relations.any? || ghost_relations.any?
+    def build_all_relation_items(closest_relation)
+      [
+        *visible_relation_items(closest_relation),
+        *ghost_relation_items(closest_relation)
+      ].sort_by(&:order_key)
     end
 
-    def all_relations
-      visible_relations + ghost_relations
+    def visible_relation_items(closest_relation)
+      build_relation_items(visible_relations, :visible, closest_relation)
     end
 
-    def all_relation_items
-      (visible_relation_items + ghost_relation_items).sort_by(&:order_key)
+    def ghost_relation_items(closest_relation)
+      build_relation_items(ghost_relations, :ghost, closest_relation)
     end
 
-    def visible_relation_items
-      to_relation_items(visible_relations, :visible)
-    end
-
-    def ghost_relation_items
-      to_relation_items(ghost_relations, :ghost)
-    end
-
-    def closest_relation?(relation) = closest_relation == relation
-
-    def to_relation_items(relations, visibility)
+    def build_relation_items(relations, visibility, closest_relation)
       relations.map do |relation|
-        closest = closest_relation?(relation)
+        closest = (relation == closest_relation)
         RelationItem.new(type:, work_package:, relation:, visibility:, closest:)
       end
+    end
+  end
+
+  RelationGroup = Data.define(:type, :relation_items) do
+    delegate :count, :any?, to: :relation_items
+
+    def all_relation_items
+      relation_items
+    end
+
+    def closest_relation
+      relation_items.find(&:closest?)&.relation
     end
   end
 
@@ -142,21 +148,24 @@ class WorkPackageRelationsTab::RelationsMediator
   end
 
   def relation_group(type)
-    if type == Relation::TYPE_CHILD
-      RelationGroup.new(
-        type:,
-        work_package:,
-        visible_relations: visible_children,
-        ghost_relations: ghost_children
-      )
-    else
-      RelationGroup.new(
-        type:,
-        work_package:,
-        visible_relations: filter_relations_by_type(visible_relations, type),
-        ghost_relations: filter_relations_by_type(ghost_relations, type)
-      )
-    end
+    builder =
+      if type == Relation::TYPE_CHILD
+        RelationGroupBuilder.new(
+          type:,
+          work_package:,
+          visible_relations: visible_children,
+          ghost_relations: ghost_children
+        )
+      else
+        RelationGroupBuilder.new(
+          type:,
+          work_package:,
+          visible_relations: filter_relations_by_type(visible_relations, type),
+          ghost_relations: filter_relations_by_type(ghost_relations, type)
+        )
+      end
+
+    builder.build_relation_group
   end
 
   def all_relations_count

@@ -51,18 +51,18 @@ RSpec.describe WorkPackageRelationsTab::RelationsMediator do
     TABLE
 
     it "returns all relations of the work package" do
-      expect(mediator.relation_group(Relation::TYPE_CHILD).all_relation_items).to contain_exactly(
+      expect(mediator.relation_group(Relation::TYPE_CHILD).relation_items).to contain_exactly(
         have_attributes(class: described_class::RelationItem, type: Relation::TYPE_CHILD, related: child, visibility: :visible)
       )
-      expect(mediator.relation_group(Relation::TYPE_PRECEDES).all_relation_items).to contain_exactly(
+      expect(mediator.relation_group(Relation::TYPE_PRECEDES).relation_items).to contain_exactly(
         have_attributes(class: described_class::RelationItem, type: Relation::TYPE_PRECEDES, related: successor,
                         visibility: :visible)
       )
-      expect(mediator.relation_group(Relation::TYPE_FOLLOWS).all_relation_items).to contain_exactly(
+      expect(mediator.relation_group(Relation::TYPE_FOLLOWS).relation_items).to contain_exactly(
         have_attributes(class: described_class::RelationItem, type: Relation::TYPE_FOLLOWS, related: predecessor,
                         visibility: :visible)
       )
-      expect(mediator.relation_group(Relation::TYPE_RELATES).all_relation_items).to contain_exactly(
+      expect(mediator.relation_group(Relation::TYPE_RELATES).relation_items).to contain_exactly(
         have_attributes(class: described_class::RelationItem, type: Relation::TYPE_RELATES, related: related1,
                         visibility: :visible),
         have_attributes(class: described_class::RelationItem, type: Relation::TYPE_RELATES, related: related2,
@@ -101,13 +101,6 @@ RSpec.describe WorkPackageRelationsTab::RelationsMediator do
           expect(group.closest_relation).to eq _table.relation(predecessor: predecessor2)
         end
       end
-
-      describe "#closest_relation?(relation)" do
-        it "returns true if the given relation is the closest one, false otherwise" do
-          expect(group.closest_relation?(_table.relation(predecessor: predecessor2))).to be true
-          expect(group.closest_relation?(_table.relation(predecessor: predecessor1))).to be false
-        end
-      end
     end
 
     context "without having a closest relation" do
@@ -122,20 +115,16 @@ RSpec.describe WorkPackageRelationsTab::RelationsMediator do
           expect(group.closest_relation).to be_nil
         end
       end
-
-      describe "#closest_relation?(relation)" do
-        it "always returns false" do
-          expect(group.closest_relation?(_table.relation(predecessor: predecessor1))).to be false
-        end
-      end
     end
+  end
 
-    describe "#all_relation_items" do
+  describe "RelationGroupBuilder" do
+    describe "#build_relation_group" do
       let(:work_package) { build_stubbed(:work_package) }
 
-      it "returns all relations of the group as RelationItem instances, " \
+      it "returns a RelationGroup instance with all relations of the group as RelationItem instances, " \
          "ordered by oldest first (lowest id first), mixing visible and ghost relations" do
-        relation_group = described_class::RelationGroup.new(
+        relation_group_builder = described_class::RelationGroupBuilder.new(
           type: "relates",
           work_package:,
           visible_relations: [
@@ -147,7 +136,8 @@ RSpec.describe WorkPackageRelationsTab::RelationsMediator do
             build_stubbed(:relates_relation, id: 3, from: work_package)
           ]
         )
-        expect(relation_group.all_relation_items).to match(
+        relation_group = relation_group_builder.build_relation_group
+        expect(relation_group.relation_items).to match(
           [
             have_attributes(class: described_class::RelationItem, relation: have_attributes(id: 1)),
             have_attributes(class: described_class::RelationItem, relation: have_attributes(id: 2)),

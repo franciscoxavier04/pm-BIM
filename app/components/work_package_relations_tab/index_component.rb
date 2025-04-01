@@ -66,7 +66,7 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
         render_header(border_box, title, relation_group.count)
       end
 
-      render_items(border_box, relation_group.all_relation_items, &)
+      render_items(border_box, relation_group.relation_items, &)
     end
   end
 
