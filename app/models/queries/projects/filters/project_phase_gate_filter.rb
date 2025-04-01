@@ -34,21 +34,21 @@ class Queries::Projects::Filters::ProjectPhaseGateFilter < Queries::Projects::Fi
 
   class << self
     def key
-      /\Aproject_(?<gate>end|start)_gate_(?<id>\d+)\z/
+      /\Aproject_(?<gate>finish|start)_gate_(?<id>\d+)\z/
     end
 
     private
 
     def accessor_matches?(definition, match)
-      super && match[:gate].in?(%w[start end]) &&
+      super && match[:gate].in?(%w[start finish]) &&
         ((match[:gate] == "start" && definition.start_gate) ||
-         (match[:gate] == "end" && definition.end_gate))
+         (match[:gate] == "finish" && definition.finish_gate))
     end
 
     def create_from_phase(phase, context)
       filters = []
       filters << create!(name: "project_start_gate_#{phase.id}", context:) if phase.start_gate
-      filters << create!(name: "project_end_gate_#{phase.id}", context:) if phase.end_gate
+      filters << create!(name: "project_finish_gate_#{phase.id}", context:) if phase.finish_gate
       filters
     end
   end
@@ -63,7 +63,7 @@ class Queries::Projects::Filters::ProjectPhaseGateFilter < Queries::Projects::Fi
     gate_name = if project_phase_gate == "start"
                   project_phase_definition.start_gate_name
                 else
-                  project_phase_definition.end_gate_name
+                  project_phase_definition.finish_gate_name
                 end
 
     I18n.t("project.filters.project_phase_gate", gate: gate_name)
@@ -94,12 +94,12 @@ class Queries::Projects::Filters::ProjectPhaseGateFilter < Queries::Projects::Fi
       .where(column_name => nil)
   end
 
-  def gate_where(start_date, end_date = start_date)
+  def gate_where(start_date, finish_date = start_date)
     project_phase_scope
       .where(date_range_clause(Project::Phase.table_name,
                                column_name,
                                start_date,
-                               end_date))
+                               finish_date))
   end
 
   def project_phase_scope_limit(scope)

@@ -32,13 +32,13 @@ module Projects::LifeCycleStepDefinitions
   class FinishGateCheckboxForm < ApplicationForm
     form do |f|
       f.check_box(
-        label: attribute_name(:end_gate),
-        name: :end_gate,
-        caption: I18n.t("settings.project_phase_definitions.end_gate_caption"),
+        label: attribute_name(:finish_gate),
+        name: :finish_gate,
+        caption: I18n.t("settings.project_phase_definitions.finish_gate_caption"),
         input_width: :medium,
         data: {
           "show-when-checked-target": "cause",
-          target_name: "end_gate"
+          target_name: "finish_gate"
         }
       )
     end

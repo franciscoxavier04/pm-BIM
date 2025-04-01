@@ -53,9 +53,9 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
 
     describe "validations" do
       describe "#consecutive_phases_have_increasing_dates" do
-        let(:phase1) { build_stubbed(:project_phase, start_date: Date.new(2024, 1, 1), end_date: Date.new(2024, 1, 1)) }
-        let(:phase2) { build_stubbed(:project_phase, start_date: Date.new(2024, 2, 1), end_date: Date.new(2024, 2, 28)) }
-        let(:phase3) { build_stubbed(:project_phase, start_date: Date.new(2024, 3, 1), end_date: Date.new(2024, 3, 15)) }
+        let(:phase1) { build_stubbed(:project_phase, start_date: Date.new(2024, 1, 1), finish_date: Date.new(2024, 1, 1)) }
+        let(:phase2) { build_stubbed(:project_phase, start_date: Date.new(2024, 2, 1), finish_date: Date.new(2024, 2, 28)) }
+        let(:phase3) { build_stubbed(:project_phase, start_date: Date.new(2024, 3, 1), finish_date: Date.new(2024, 3, 15)) }
         let(:phases) { [phase1, phase2, phase3] }
 
         context "when no phases are present" do
@@ -91,7 +91,7 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
         end
 
         context "when phases with identical dates" do
-          let(:phase2) { build_stubbed(:project_phase, start_date: Date.new(2024, 1, 1), end_date: Date.new(2024, 1, 1)) }
+          let(:phase2) { build_stubbed(:project_phase, start_date: Date.new(2024, 1, 1), finish_date: Date.new(2024, 1, 1)) }
 
           it_behaves_like "contract is invalid",
                           "available_phases.date_range": :non_continuous_dates
@@ -99,13 +99,13 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
 
         context "when phases have touching start and end dates" do
           context "when 2 Phases are touching" do
-            let(:phase2) { build_stubbed(:project_phase, start_date: Date.new(2024, 1, 1), end_date: Date.new(2024, 1, 1)) }
+            let(:phase2) { build_stubbed(:project_phase, start_date: Date.new(2024, 1, 1), finish_date: Date.new(2024, 1, 1)) }
 
             it_behaves_like "contract is invalid",
                             "available_phases.date_range": :non_continuous_dates
 
             context "when having an empty step in between" do
-              let(:step_missing_dates) { build_stubbed(:project_phase, start_date: nil, end_date: nil) }
+              let(:step_missing_dates) { build_stubbed(:project_phase, start_date: nil, finish_date: nil) }
               let(:phases) { [phase1, step_missing_dates, phase2] }
 
               it_behaves_like "contract is invalid",
@@ -114,8 +114,8 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
           end
 
           context "when 3 Phases are touching" do
-            let(:phase2) { build_stubbed(:project_phase, start_date: Date.new(2024, 1, 1), end_date: Date.new(2024, 1, 1)) }
-            let(:phase3) { build_stubbed(:project_phase, start_date: Date.new(2024, 1, 1), end_date: Date.new(2024, 1, 2)) }
+            let(:phase2) { build_stubbed(:project_phase, start_date: Date.new(2024, 1, 1), finish_date: Date.new(2024, 1, 1)) }
+            let(:phase3) { build_stubbed(:project_phase, start_date: Date.new(2024, 1, 1), finish_date: Date.new(2024, 1, 2)) }
 
             it_behaves_like "contract is invalid",
                             "available_phases.date_range": :non_continuous_dates
@@ -127,7 +127,7 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
             end
 
             context "when having an empty step in between" do
-              let(:step_missing_dates) { build_stubbed(:project_phase, start_date: nil, end_date: nil) }
+              let(:step_missing_dates) { build_stubbed(:project_phase, start_date: nil, finish_date: nil) }
               let(:phases) { [phase1, phase2, step_missing_dates, phase3] }
 
               it_behaves_like "contract is invalid",
@@ -144,7 +144,7 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
         end
 
         context "when a step has missing start dates" do
-          let(:step_missing_dates) { build_stubbed(:project_phase, start_date: nil, end_date: nil) }
+          let(:step_missing_dates) { build_stubbed(:project_phase, start_date: nil, finish_date: nil) }
 
           context "and the other phases have increasing dates" do
             let(:phases) { [phase1, step_missing_dates, phase2] }

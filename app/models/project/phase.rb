@@ -38,9 +38,9 @@ class Project::Phase < ApplicationRecord
   delegate :name,
            :position,
            :start_gate_name,
-           :end_gate_name,
+           :finish_gate_name,
            :start_gate?,
-           :end_gate?,
+           :finish_gate?,
            to: :definition
 
   attr_readonly :definition_id, :type
@@ -57,16 +57,16 @@ class Project::Phase < ApplicationRecord
   def working_days_count
     return nil if not_set?
 
-    Day.working.from_range(from: start_date, to: end_date).count
+    Day.working.from_range(from: start_date, to: finish_date).count
   end
 
   def date_range=(param)
-    self.start_date, self.end_date = param.split(" - ")
-    self.end_date ||= start_date # Allow single dates as range
+    self.start_date, self.finish_date = param.split(" - ")
+    self.finish_date ||= start_date # Allow single dates as range
   end
 
   def not_set?
-    start_date.blank? || end_date.blank?
+    start_date.blank? || finish_date.blank?
   end
 
   def range_set?
@@ -74,10 +74,10 @@ class Project::Phase < ApplicationRecord
   end
 
   def range_incomplete?
-    start_date.blank? ^ end_date.blank?
+    start_date.blank? ^ finish_date.blank?
   end
 
   def validate_date_range
-    errors.add(:date_range, :start_date_must_be_before_end_date) if range_set? && (start_date > end_date)
+    errors.add(:date_range, :start_date_must_be_before_finish_date) if range_set? && (start_date > finish_date)
   end
 end

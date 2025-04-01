@@ -49,7 +49,7 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
   describe "with the dialog open" do
     context "when all LifeCycleSteps are blank" do
       before do
-        Project::Phase.update_all(start_date: nil, end_date: nil)
+        Project::Phase.update_all(start_date: nil, finish_date: nil)
       end
 
       it "shows all the Project::Phases without a value" do
@@ -90,7 +90,7 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
 
         retry_block do
           # Retrying due to a race condition between filling the input vs submitting the form preview.
-          original_dates = [life_cycle_initiating.start_date, life_cycle_initiating.end_date]
+          original_dates = [life_cycle_initiating.start_date, life_cycle_initiating.finish_date]
           dialog.set_date_for(life_cycle_initiating, values: original_dates)
 
           page.driver.clear_network_traffic
@@ -114,7 +114,7 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
 
         ready_for_planning_dates = [
           life_cycle_ready_for_planning.start_date,
-          life_cycle_ready_for_planning.end_date
+          life_cycle_ready_for_planning.finish_date
         ].map { I18n.l(it) }.join("\n-\n")
 
         overview_page.within_life_cycle_container(life_cycle_ready_for_planning) do
@@ -134,13 +134,13 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
         activity_page.within_journal(number: 1) do
           activity_page.expect_activity("Initiating changed from " \
                                         "#{I18n.l life_cycle_initiating_was.start_date} - " \
-                                        "#{I18n.l life_cycle_initiating_was.end_date} to " \
+                                        "#{I18n.l life_cycle_initiating_was.finish_date} to " \
                                         "#{I18n.l life_cycle_initiating.start_date} - " \
-                                        "#{I18n.l life_cycle_initiating.end_date}")
+                                        "#{I18n.l life_cycle_initiating.finish_date}")
 
           activity_page.expect_activity("Ready for Planning date deleted " \
                                         "#{I18n.l life_cycle_ready_for_planning_was.start_date} - " \
-                                        "#{I18n.l life_cycle_ready_for_planning_was.end_date}")
+                                        "#{I18n.l life_cycle_ready_for_planning_was.finish_date}")
         end
       end
 
@@ -191,12 +191,12 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
         activity_page.within_journal(number: 1) do
           expected_date_from = [
             I18n.l(life_cycle_ready_for_planning_was.start_date),
-            I18n.l(life_cycle_ready_for_planning_was.end_date)
+            I18n.l(life_cycle_ready_for_planning_was.finish_date)
           ].join(" - ")
 
           expected_date_to = [
             I18n.l(life_cycle_ready_for_planning.start_date),
-            I18n.l(life_cycle_ready_for_planning.end_date)
+            I18n.l(life_cycle_ready_for_planning.finish_date)
           ].join(" - ")
           activity_page.expect_activity("Ready for Planning changed from " \
                                         "#{expected_date_from} to " \

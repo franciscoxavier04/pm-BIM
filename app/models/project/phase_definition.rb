@@ -41,7 +41,7 @@ class Project::PhaseDefinition < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :start_gate_name, presence: true, if: :start_gate?
-  validates :end_gate_name, presence: true, if: :end_gate?
+  validates :finish_gate_name, presence: true, if: :finish_gate?
   acts_as_list
 
   default_scope { order(:position) }

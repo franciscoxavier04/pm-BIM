@@ -36,12 +36,12 @@ module Projects
     # Settings::ProjectLifeCycleStepDefinitions::RowComponent.
     # It should hold the icon, definition name and gate text information.
     def text
-      if model.start_gate? && model.end_gate?
+      if model.start_gate? && model.finish_gate?
         I18n.t("settings.project_phase_definitions.both_gate")
       elsif model.start_gate?
         I18n.t("settings.project_phase_definitions.start_gate")
-      elsif model.end_gate?
-        I18n.t("settings.project_phase_definitions.end_gate")
+      elsif model.finish_gate?
+        I18n.t("settings.project_phase_definitions.finish_gate")
       else
         I18n.t("settings.project_phase_definitions.no_gate")
       end

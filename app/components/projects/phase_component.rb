@@ -46,8 +46,8 @@ module Projects
     end
 
     def finish_date
-      if phase.end_date.present?
-        helpers.format_date(phase.end_date)
+      if phase.finish_date.present?
+        helpers.format_date(phase.finish_date)
       else
         helpers.t("js.label_no_due_date")
       end
@@ -58,7 +58,7 @@ module Projects
     end
 
     def display_finish_gate?
-      phase.end_gate? && phase.end_date.present?
+      phase.finish_gate? && phase.finish_date.present?
     end
 
     def gate_icon

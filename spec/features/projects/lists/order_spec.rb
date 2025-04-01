@@ -280,28 +280,28 @@ RSpec.describe "Projects lists ordering", :js, with_settings: { login_required?:
              project:,
              definition: stage_def,
              start_date: Date.new(2025, 1, 1),
-             end_date: Date.new(2025, 1, 13))
+             finish_date: Date.new(2025, 1, 13))
     end
     let!(:public_stage) do
       create(:project_phase,
              project: public_project,
              definition: stage_def,
              start_date: Date.new(2025, 2, 12),
-             end_date: Date.new(2025, 2, 20))
+             finish_date: Date.new(2025, 2, 20))
     end
     let!(:child_stage) do
       create(:project_phase,
              project: child_project_m,
              definition: stage_def,
              start_date: public_stage.start_date,
-             end_date: public_stage.end_date + 1.day)
+             finish_date: public_stage.finish_date + 1.day)
     end
     let!(:last_stage) do
       create(:project_phase,
              project: development_project,
              definition: stage_def,
              start_date: public_stage.start_date,
-             end_date: public_stage.end_date + 2.days)
+             finish_date: public_stage.finish_date + 2.days)
     end
 
     let(:gate_def) { create(:project_phase_definition, :with_start_gate) }

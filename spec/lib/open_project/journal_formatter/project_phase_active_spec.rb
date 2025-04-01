@@ -116,7 +116,7 @@ RSpec.describe OpenProject::JournalFormatter::ProjectPhaseActive do
       let(:definition) do
         build_stubbed(
           :project_phase_definition,
-          :with_end_gate,
+          :with_finish_gate,
           name: "The Phase"
         )
       end
@@ -129,7 +129,7 @@ RSpec.describe OpenProject::JournalFormatter::ProjectPhaseActive do
         build_stubbed(
           :project_phase_definition,
           :with_start_gate,
-          :with_end_gate,
+          :with_finish_gate,
           name: "The Phase"
         )
       end

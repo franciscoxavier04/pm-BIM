@@ -34,6 +34,6 @@ class Journal::ProjectPhaseJournal < Journal::AssociatedJournal
   belongs_to :phase, class_name: "Project::Phase"
 
   def date_range
-    start_date..end_date if start_date || end_date
+    start_date..finish_date if start_date || finish_date
   end
 end

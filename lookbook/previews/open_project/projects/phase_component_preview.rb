@@ -33,7 +33,7 @@ module OpenProject::Projects
   class PhaseComponentPreview < Lookbook::Preview
     def phase_with_both_gates
       phase = Project::Phase.new(id: 1,
-                                 definition: definition(start_gate: true, end_gate: true),
+                                 definition: definition(start_gate: true, finish_gate: true),
                                  start_date: Date.current - 2.days,
                                  end_date: Date.current + 2.days)
 
@@ -42,7 +42,7 @@ module OpenProject::Projects
 
     def phase_with_both_gates_dates_not_set
       phase = Project::Phase.new(id: 1,
-                                 definition: definition(start_gate: true, end_gate: true))
+                                 definition: definition(start_gate: true, finish_gate: true))
 
       render_with_template(locals: { phase: })
     end
@@ -56,9 +56,9 @@ module OpenProject::Projects
       render_with_template(locals: { phase: })
     end
 
-    def phase_with_end_gate
+    def phase_with_finish_gate
       phase = Project::Phase.new(id: 1,
-                                 definition: definition(end_gate: true),
+                                 definition: definition(finish_gate: true),
                                  start_date: Date.current - 2.days,
                                  end_date: Date.current + 2.days)
 
@@ -76,13 +76,13 @@ module OpenProject::Projects
 
     private
 
-    def definition(start_gate: false, end_gate: false)
+    def definition(start_gate: false, finish_gate: false)
       Project::PhaseDefinition.new(id: 1,
                                    name: "The first gate",
                                    start_gate: start_gate,
                                    start_gate_name: start_gate ? "Before the phase" : nil,
-                                   end_gate: end_gate,
-                                   end_gate_name: end_gate ? "After the phase" : nil)
+                                   finish_gate: finish_gate,
+                                   finish_gate_name: finish_gate ? "After the phase" : nil)
     end
   end
 end

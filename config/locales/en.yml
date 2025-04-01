@@ -1043,8 +1043,8 @@ en:
         color: "Color"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
-        end_gate: "Finish phase gate"
-        end_gate_name: "Finish phase gate name"
+        finish_gate: "Finish phase gate"
+        finish_gate_name: "Finish phase gate name"
       query:
         sums: "Sums"
         columns: "Columns"
@@ -1349,7 +1349,7 @@ en:
         project/phase:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "start date must be before the end date."
+              start_date_must_be_before_finish_date: "start date must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
               incomplete: "is incomplete."
         query:
@@ -1655,7 +1655,7 @@ en:
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
       phase_and_one_gate: "%{phase_message}. %{gate_message}"
-      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{end_gate_message}"
+      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
 
   # common attributes of all models
   attributes:
@@ -3982,8 +3982,8 @@ en:
       no_gate: "No gate"
       start_gate: "Start gate"
       start_gate_caption: "Add a gate with the start date of the phase"
-      end_gate: "Finish gate"
-      end_gate_caption: "Add a gate with the end date of the phase"
+      finish_gate: "Finish gate"
+      finish_gate_caption: "Add a gate with the end date of the phase"
     projects:
       missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
       section_new_projects: "Settings for new projects"

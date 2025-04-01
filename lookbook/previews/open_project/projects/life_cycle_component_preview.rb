@@ -33,9 +33,9 @@ module OpenProject
     # @logical_path OpenProject/Projects
     class LifeCycleComponentPreview < Lookbook::Preview
       # @param start_gate [boolean]
-      # @param end_gate [boolean]
-      def phase(start_gate: false, end_gate: false)
-        model = Project::PhaseDefinition.new(id: 1, name: "The first phase", start_gate:, end_gate:)
+      # @param finish_gate [boolean]
+      def phase(start_gate: false, finish_gate: false)
+        model = Project::PhaseDefinition.new(id: 1, name: "The first phase", start_gate:, finish_gate:)
         render_with_template(locals: { model: })
       end
     end

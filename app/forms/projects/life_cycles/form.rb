@@ -52,7 +52,7 @@ module Projects::LifeCycles
     end
 
     def multi_value_life_cycle_input(form)
-      value = [model.start_date, model.end_date].compact.join(" - ")
+      value = [model.start_date, model.finish_date].compact.join(" - ")
 
       input_attributes = { name: :date_range, value: }
       if model.working_days_count

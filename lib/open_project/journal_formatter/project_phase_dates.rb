@@ -38,11 +38,11 @@ class OpenProject::JournalFormatter::ProjectPhaseDates < JournalFormatter::Base
     return unless phase_message
 
     start_gate_message = format_start_gate_message(step:, values:, html:)
-    end_gate_message = format_end_gate_message(step:, values:, html:)
+    finish_gate_message = format_finish_gate_message(step:, values:, html:)
 
-    if start_gate_message && end_gate_message
-      I18n.t("activity.project_phase.phase_and_both_gates", phase_message:, start_gate_message:, end_gate_message:)
-    elsif (gate_message = start_gate_message || end_gate_message)
+    if start_gate_message && finish_gate_message
+      I18n.t("activity.project_phase.phase_and_both_gates", phase_message:, start_gate_message:, finish_gate_message:)
+    elsif (gate_message = start_gate_message || finish_gate_message)
       I18n.t("activity.project_phase.phase_and_one_gate", phase_message:, gate_message:)
     else
       phase_message
@@ -70,13 +70,13 @@ class OpenProject::JournalFormatter::ProjectPhaseDates < JournalFormatter::Base
     format_message(name:, from:, to:, html:)
   end
 
-  def format_end_gate_message(step:, values:, html:)
-    return unless step.definition.end_gate
+  def format_finish_gate_message(step:, values:, html:)
+    return unless step.definition.finish_gate
 
     values = values.map { it&.end }
     return if values[0] == values[1]
 
-    name = step.definition.end_gate_name
+    name = step.definition.finish_gate_name
     from, to = values.map { format_date(it) }
 
     format_message(name:, from:, to:, html:)

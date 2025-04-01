@@ -97,20 +97,20 @@ class MergeLifecycleSteps < ActiveRecord::Migration[8.0]
     change_table(:project_life_cycle_step_definitions, bulk: true) do |t|
       t.column :start_gate, :boolean, default: false, null: false
       t.column :start_gate_name, :string
-      # TODO: Consider renaming all 'end_date' columns to 'finish_date' to be in line with how the
-      # dates are to be named for work packages
-      t.column :end_gate, :boolean, default: false, null: false
-      t.column :end_gate_name, :string
+      t.column :finish_gate, :boolean, default: false, null: false
+      t.column :finish_gate_name, :string
 
       t.remove :type, type: :string
     end
 
     change_table(:project_life_cycle_steps) do |t|
       t.remove :type, type: :string
+      t.rename :end_date, :finish_date
     end
 
     change_table(:project_life_cycle_step_journals) do |t|
       t.rename :life_cycle_step_id, :phase_id
+      t.rename :end_date, :finish_date
     end
 
     change_table(:work_packages) do |t|

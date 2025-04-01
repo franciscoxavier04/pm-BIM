@@ -256,13 +256,13 @@ RSpec.describe "Projects lists columns", :js, with_settings: { login_required?: 
              :with_gated_definition,
              project: development_project,
              start_date: Date.new(2024, 12, 1),
-             end_date: Date.new(2024, 12, 13))
+             finish_date: Date.new(2024, 12, 13))
     end
     shared_let(:project_phase) do
       create(:project_phase,
              project:,
              start_date: Date.new(2024, 12, 1),
-             end_date: Date.new(2024, 12, 13))
+             finish_date: Date.new(2024, 12, 13))
     end
     shared_let(:inactive_project_phase_with_gates) do
       create(:project_phase,
@@ -280,7 +280,7 @@ RSpec.describe "Projects lists columns", :js, with_settings: { login_required?: 
         element_selector = "#columns-select_autocompleter ng-select.op-draggable-autocomplete--input"
         results_selector = "#columns-select_autocompleter ng-dropdown-panel .ng-dropdown-panel-items"
         projects_page.expect_no_config_columns(project_phase_with_gates.start_gate_name,
-                                               project_phase_with_gates.end_gate_name,
+                                               project_phase_with_gates.finish_gate_name,
                                                project_phase.name,
                                                inactive_project_phase_with_gates.name,
                                                inactive_project_phase.name,
@@ -299,7 +299,7 @@ RSpec.describe "Projects lists columns", :js, with_settings: { login_required?: 
         specify "configuring project phase column display" do
           # project phase columns do not show up by default
           projects_page.expect_columns("Name")
-          projects_page.expect_no_columns(project_phase_with_gates.end_gate_name,
+          projects_page.expect_no_columns(project_phase_with_gates.finish_gate_name,
                                           project_phase_with_gates.start_gate_name,
                                           project_phase_with_gates.name,
                                           project_phase.name,

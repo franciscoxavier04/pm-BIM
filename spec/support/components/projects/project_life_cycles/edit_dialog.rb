@@ -109,7 +109,7 @@ module Components
         end
 
         def expect_input_for(step)
-          value = "#{step.start_date.strftime('%Y-%m-%d')} - #{step.end_date.strftime('%Y-%m-%d')}"
+          value = "#{step.start_date.strftime('%Y-%m-%d')} - #{step.finish_date.strftime('%Y-%m-%d')}"
 
           expect_input(step.name, value:, position: step.position)
         end
