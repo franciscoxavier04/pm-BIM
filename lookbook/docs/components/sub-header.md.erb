@@ -6,19 +6,36 @@ This component is an own implementation for OpenProject requirements of contextu
 
 ## Anatomy
 
-**Filter input:** (Optional) It will change depending on the viewport:
+### Desktop
 
-- **Desktop:** A basic [text input](https://primer.style/components/text-input) with a [search icon](https://primer.style/components/text-input#with-leading-and-trailing-visuals) which is mostly used on index pages to filter the elements below.
-- **Mobile:**
-  - There will be an IconButton shown instead of the input
-  - Clicking that, will show the input again and hide all other elements of the SubHeader
-  - An additional cancel button is shown to return to the previous state
+The sub header accepts a number of additional components.
 
-**Filter button:** (Optional)A button which is shown next to the filter input (or on the very left, if there is no filter input)
+On the left side:
 
-**Text:** (Optional) A bold text shown in the middle of the SubHeader
+- **Search filter**: (Optional) A basic [text input](https://primer.style/components/text-input) with a [search icon](https://primer.style/components/text-input#with-leading-and-trailing-visuals) which is mostly used on index pages to filter the elements below.
+- **Filter button:** (Optional) A button which is shown next to the filter input (or on the very left, if there is no filter input)
+- **Segmented controls** (optional) to switch two pre-filtered views
+- **Action buttons**: (Optional) A set of buttons 
 
-**Action buttons**: (Optional) A set of buttons that are shown on the right side
+At the center of the sub header:
+
+- **Text:** (Optional) A bold text shown in the middle of the SubHeader
+
+On the right side: 
+
+- **A primary button**: (Optional) This is often an *add* action
+- **Secondary buttons**: (Optional) Rarer but additional actions can be offered to the user.
+
+### Mobile
+
+The Sub header automatically adapts to mobile screens:
+
+- The actions on the left side always turn into icon buttons without labels. * Note: All sub header items must have an icon specified, even if the desktop version does not show it.*
+- If there are badges (eg. on the 'Filter' tab), these will be displayed
+- The search button is also just an icon; on click, it takes the full length (hiding all other actions), with a cancel button to go back to the previous state
+- The right-side actions (usually a solitary primary add "+ {Object} button) will remain in its full form. They will not go into icon-only mode.
+- All actions that do not have a visible label need a title or ARIA label for accessibility
+
 
 ## Best practices
 
@@ -27,6 +44,7 @@ This component is an own implementation for OpenProject requirements of contextu
 - Restrict SubHeader actions to the page's content-specific actions (e.g. filtering or creating a new object).
 - Use IconButtons instead of Buttons for actions only when the icon is clear enough to describe the action.
 - When more actions are necessary, or if a menu is needed, use an ActionMenu instead of the ActionButtons.
+- Specify an icon for all items, even if it is not displayed int he desktop version
 
 **Don't**
 
