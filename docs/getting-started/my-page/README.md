@@ -81,7 +81,7 @@ To delete a widget from the dashboard, click on the three dots in the upper righ
 
 ## My spent time widget
 
-To track spent time, [add the **My spent time** widget](#add-widgets) in the p.
+To track spent time, [add the **My spent time** widget](#add-widgets) in the My page.
 
 You can directly create new time entries by clicking on the day, change the date with drag and drop, edit or remove time entries.
 
