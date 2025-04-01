@@ -102,10 +102,19 @@ RSpec.describe "work package export", :js, :selenium do
     end
   end
 
-  def open_export_dialog!
-    wp_table.visit_query query
+  def open_export_dialog!(query_target = :query)
+    case query_target
+    when :query
+      wp_table.visit_query query
+    when :default
+      wp_table.visit_with_params ""
+    else
+      raise ArgumentError, "query_target must be :query or :default"
+    end
+
     work_packages_page.ensure_loaded
     settings_menu.open_and_choose I18n.t("js.toolbar.settings.export")
+    expect(page).to have_css("#op-work-packages-export-dialog", wait: 5)
     click_on export_type
     sleep 0.1
   end
@@ -113,6 +122,18 @@ RSpec.describe "work package export", :js, :selenium do
   def export!
     click_on I18n.t("export.dialog.submit")
     expect(page).to have_no_button(I18n.t("export.dialog.submit"), wait: 1)
+  end
+
+  def close_export_dialog!
+    expect(page).to have_button(I18n.t("js.button_close"))
+    click_on I18n.t("js.button_close")
+    expect(page).to have_no_button(I18n.t("js.button_close"))
+  end
+
+  def export_and_reopen_dialog!(query_target = :query)
+    export!
+    close_export_dialog!
+    open_export_dialog!(query_target)
   end
 
   context "with Query options" do
@@ -182,6 +203,7 @@ RSpec.describe "work package export", :js, :selenium do
     let(:expected_params) { default_expected_params }
 
     before do
+      query.export_settings.delete_all
       open_export_dialog!
     end
 
@@ -201,6 +223,67 @@ RSpec.describe "work package export", :js, :selenium do
         uncheck I18n.t("export.dialog.xls.include_descriptions.label")
         export!
       end
+    end
+  end
+
+  context "with a saved query" do
+    let!(:query) { create(:query, name: "saved settings query", user: current_user, project:) }
+    let(:export_type) { I18n.t("export.dialog.format.options.csv.label") }
+    let(:expected_mime_type) { :csv }
+    let(:expected_params) { default_expected_params.merge({ title: "saved settings query", show_descriptions: "true" }) }
+
+    before do
+      open_export_dialog!
+    end
+
+    it "saves the export settings" do
+      # Ensure that the option to save export settings is there and both checkboxes are unchecked
+      expect(page.find_test_selector("op-work-packages-export-dialog-form-save-export-settings")).not_to be_checked
+      expect(page.find_test_selector("show-descriptions-csv")).not_to be_checked
+
+      # Save settings and include descriptions
+      check I18n.t("export.dialog.save_export_settings.label")
+      check I18n.t("export.dialog.xls.include_descriptions.label")
+
+      export_and_reopen_dialog!
+      # Last settings are remembered
+      expect(page.find_test_selector("show-descriptions-csv")).to be_checked
+      expect(page.find_test_selector("op-work-packages-export-dialog-form-save-export-settings")).to be_checked
+
+      # Uncheck both checkboxes again (do not include descriptions, do not save changes)
+      uncheck I18n.t("export.dialog.save_export_settings.label")
+      uncheck I18n.t("export.dialog.xls.include_descriptions.label")
+      expected_params[:show_descriptions] = "false" # adjust expectation
+
+      export_and_reopen_dialog!
+
+      # Last saved settings are restored
+      expect(page.find_test_selector("show-descriptions-csv")).to be_checked
+      expect(page.find_test_selector("op-work-packages-export-dialog-form-save-export-settings")).to be_checked
+    end
+  end
+
+  context "with an unsaved query" do
+    let(:export_type) { I18n.t("export.dialog.format.options.csv.label") }
+    let(:expected_mime_type) { :csv }
+    let(:expected_params) { default_expected_params.merge({ title: "All open", show_descriptions: "true" }) }
+
+    before do
+      open_export_dialog!(:default)
+    end
+
+    it "does not offer to save export settings" do
+      # There is no save option
+      expect(page).not_to have_test_selector("op-work-packages-export-dialog-form-save-export-settings")
+      # show_descriptions is unchecked by default
+      expect(page.find_test_selector("show-descriptions-csv")).not_to be_checked
+
+      # Check show_descriptions and export, then reopen dialog
+      check I18n.t("export.dialog.xls.include_descriptions.label")
+      export_and_reopen_dialog!(:default)
+
+      # show_descriptions is still unchecked
+      expect(page.find_test_selector("show-descriptions-csv")).not_to be_checked
     end
   end
 

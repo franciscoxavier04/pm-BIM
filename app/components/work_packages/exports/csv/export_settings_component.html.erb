@@ -17,7 +17,10 @@
             checked: export_settings.true?(:show_descriptions),
             label: I18n.t("export.dialog.xls.include_descriptions.label"),
             caption: I18n.t("export.dialog.xls.include_descriptions.caption"),
-            visually_hide_label: false
+            visually_hide_label: false,
+            data: {
+              test_selector: "show-descriptions-csv"
+            }
           )
         ) %>
   <% end %>
