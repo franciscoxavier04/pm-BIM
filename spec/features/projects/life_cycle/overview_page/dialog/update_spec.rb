@@ -144,13 +144,13 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
         end
       end
 
-      it "shows the validation errors" do
+      it "shows the validation errors", with_settings: { journal_aggregation_time_minutes: 0 } do
         expect_angular_frontend_initialized
         wait_for_network_idle
 
         dialog = overview_page.open_edit_dialog_for_life_cycles
 
-        expected_text = "Date can't be earlier than the previous Stage's end date."
+        expected_text = "Date range can't be earlier than the previous phase's end date."
 
         # Cycling is required so we always select a different date on the datepicker,
         # making sure the change event is triggered.
@@ -158,7 +158,7 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
 
         # Retrying due to a race condition between filling the input vs submitting the form preview.
         retry_block do
-          values = start_date + cycled_days.next.days
+          values = [start_date + cycled_days.next.days] * 2
           dialog.set_date_for(life_cycle_ready_for_planning, values:)
 
           dialog.expect_validation_message(life_cycle_ready_for_planning, text: expected_text)
@@ -173,7 +173,7 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
 
         retry_block do
           # The validation message is cleared when date is changed
-          values = start_date + 2.days + cycled_days.next.days
+          values = [start_date + 2.days + cycled_days.next.days] * 2
           dialog.set_date_for(life_cycle_ready_for_planning, values:)
           dialog.expect_no_validation_message(life_cycle_ready_for_planning)
         end
@@ -188,11 +188,19 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
 
         life_cycle_ready_for_planning_was = life_cycle_ready_for_planning.dup
         life_cycle_ready_for_planning.reload
-
         activity_page.within_journal(number: 1) do
+          expected_date_from = [
+            I18n.l(life_cycle_ready_for_planning_was.start_date),
+            I18n.l(life_cycle_ready_for_planning_was.end_date)
+          ].join(" - ")
+
+          expected_date_to = [
+            I18n.l(life_cycle_ready_for_planning.start_date),
+            I18n.l(life_cycle_ready_for_planning.end_date)
+          ].join(" - ")
           activity_page.expect_activity("Ready for Planning changed from " \
-                                        "#{I18n.l life_cycle_ready_for_planning_was.date} to " \
-                                        "#{I18n.l life_cycle_ready_for_planning.date}")
+                                        "#{expected_date_from} to " \
+                                        "#{expected_date_to}")
         end
       end
     end
