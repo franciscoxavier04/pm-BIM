@@ -30,6 +30,7 @@
 module Projects::LifeCycleStepDefinitions
   class FormComponent < ApplicationComponent
     include OpPrimer::ComponentHelpers
+    include OpPrimer::FormHelpers
 
     def selected?(tabname)
       tabname == if no_errors || details_tab_errors.any?
