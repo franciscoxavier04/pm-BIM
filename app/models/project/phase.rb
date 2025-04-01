@@ -43,7 +43,7 @@ class Project::Phase < ApplicationRecord
            :finish_gate?,
            to: :definition
 
-  attr_readonly :definition_id, :type
+  attr_readonly :definition_id
 
   scope :active, -> { where(active: true) }
 
