@@ -71,7 +71,7 @@ class WorkPackageRelationsTab::RelationsMediator
     end
   end
 
-  RelationItem = Data.define(:type, :relation, :related, :visibility) do
+  RelationItem = Data.define(:type, :work_package, :related, :relation, :visibility) do
     def initialize(type:, work_package:, relation:, visibility:)
       if relation.is_a?(Relation)
         related = relation.other_work_package(work_package)
@@ -79,7 +79,7 @@ class WorkPackageRelationsTab::RelationsMediator
         related = relation # relation is the child
         relation = nil
       end
-      super(type:, relation:, related:, visibility:)
+      super(type:, work_package:, related:, relation:, visibility:)
     end
 
     def visible? = visibility == :visible

@@ -32,27 +32,21 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   include ApplicationHelper
   include OpPrimer::ComponentHelpers
 
-  attr_reader :work_package, :relation_item, :relation, :child, :editable
+  attr_reader :relation_item, :editable, :closest
+
+  delegate :relation, :work_package, to: :relation_item
 
   # Checks if the relation or child work package is visible to the current user
   #
-  # @param work_package [WorkPackage] The work package whose relations are being displayed
-  # @param relation [Relation, nil] The relation between work packages, if any
-  # @param child [WorkPackage, nil] The child work package, if this is a parent-child relationship
+  # @param relation_item [WorkPackageRelationsTab::RelationsMediator::RelationItem] The relation item to display
   # @param editable [Boolean] Whether the relation can be edited
   # @param closest [Boolean] Whether the follows relation is the closest
-  def initialize(work_package:,
-                 relation_item:,
-                 relation:,
-                 child: nil,
+  def initialize(relation_item:,
                  editable: true,
                  closest: false)
     super()
 
-    @work_package = work_package
     @relation_item = relation_item
-    @relation = relation
-    @child = child
     @editable = editable
     @closest = closest
   end
@@ -61,9 +55,15 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
     relation_item.related
   end
 
+  def child
+    if parent_child_relationship?
+      relation_item.related
+    end
+  end
+
   private
 
-  def parent_child_relationship? = @relation.nil?
+  def parent_child_relationship? = relation.nil?
 
   def should_render_edit_option?
     # Children have nothing to edit as it's not a relation.
@@ -81,12 +81,12 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   end
 
   def allowed_to_manage_subtasks?
-    helpers.current_user.allowed_in_project?(:manage_subtasks, @work_package.project) &&
-      helpers.current_user.allowed_in_project?(:manage_subtasks, @child.project)
+    helpers.current_user.allowed_in_project?(:manage_subtasks, work_package.project) &&
+      helpers.current_user.allowed_in_project?(:manage_subtasks, child.project)
   end
 
   def allowed_to_manage_relations?
-    helpers.current_user.allowed_in_project?(:manage_work_package_relations, @work_package.project)
+    helpers.current_user.allowed_in_project?(:manage_work_package_relations, work_package.project)
   end
 
   def visible?
@@ -120,22 +120,22 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   end
 
   def closest?
-    @closest
+    closest
   end
 
   def edit_path
     if parent_child_relationship?
       raise NotImplementedError, "Children relationships are not editable"
     else
-      edit_work_package_relation_path(@work_package, @relation)
+      edit_work_package_relation_path(work_package, relation)
     end
   end
 
   def destroy_path
     if parent_child_relationship?
-      work_package_children_relation_path(@work_package, @child)
+      work_package_children_relation_path(work_package, child)
     else
-      work_package_relation_path(@work_package, @relation)
+      work_package_relation_path(work_package, relation)
     end
   end
 

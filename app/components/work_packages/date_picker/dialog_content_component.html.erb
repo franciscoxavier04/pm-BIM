@@ -52,10 +52,7 @@
                         box.with_row(scheme: :default) do
                           render(
                             WorkPackageRelationsTab::RelationComponent.new(
-                              work_package:,
                               relation_item:,
-                              relation: (relation_item.relation unless relation_group.type.children?),
-                              child: (relation_item.relation if relation_group.type.children?),
                               editable: false,
                               closest: relation_group.closest_relation?(relation_item.relation)
                             )

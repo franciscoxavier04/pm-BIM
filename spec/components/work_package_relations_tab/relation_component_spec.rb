@@ -48,21 +48,20 @@ RSpec.describe WorkPackageRelationsTab::RelationComponent, type: :component do
   end
 
   def render_component(**params)
-    render_inline(described_class.new(work_package:, **params))
+    render_inline(described_class.new(**params))
   end
 
   context "with child relations" do
     context "when visible" do
       it "renders a title link" do
-        expect(render_component(relation_item: relation_item(type: "children", relation: child, visibility: :visible),
-                                relation: nil, child: child))
+        expect(render_component(relation_item: relation_item(type: "children", relation: child, visibility: :visible)))
           .to have_link "child"
       end
 
       context "when editable" do
         it "renders an action menu" do
           component = render_component(relation_item: relation_item(type: "children", relation: child, visibility: :visible),
-                                       relation: nil, child: child, editable: true)
+                                       editable: true)
           expect(component).to have_menu # FIXME: aria-labelledby does not resolve here "Relation actions"
           expect(component).to have_selector :menuitem, "Delete relation"
         end
@@ -71,21 +70,18 @@ RSpec.describe WorkPackageRelationsTab::RelationComponent, type: :component do
 
     context "when ghost" do
       it "does not render a title link" do
-        expect(render_component(relation_item: relation_item(type: "children", relation: child, visibility: :ghost),
-                                relation: nil, child: child))
+        expect(render_component(relation_item: relation_item(type: "children", relation: child, visibility: :ghost)))
           .to have_no_link "child"
       end
 
       it "renders a title and message without details" do
-        rendered_component = render_component(relation_item: relation_item(type: "children", relation: child, visibility: :ghost),
-                                              relation: nil, child: child)
+        rendered_component = render_component(relation_item: relation_item(type: "children", relation: child, visibility: :ghost))
         expect(rendered_component).to have_text "Related work package"
         expect(rendered_component).to have_text "This is not visible to you due to permissions."
       end
 
       it "does not render an action menu" do
-        expect(render_component(relation_item: relation_item(type: "children", relation: child, visibility: :ghost),
-                                relation: nil, child: child))
+        expect(render_component(relation_item: relation_item(type: "children", relation: child, visibility: :ghost)))
           .to have_no_menu
       end
     end
@@ -96,21 +92,19 @@ RSpec.describe WorkPackageRelationsTab::RelationComponent, type: :component do
 
     context "when visible" do
       it "renders a title link" do
-        rendered_component = render_component(relation_item: relation_item(type: "follows", relation:, visibility: :visible),
-                                              relation:)
+        rendered_component = render_component(relation_item: relation_item(type: "follows", relation:, visibility: :visible))
         expect(rendered_component).to have_link "predecessor"
       end
 
       it "renders the lag" do
-        rendered_component = render_component(relation_item: relation_item(type: "follows", relation:, visibility: :visible),
-                                              relation:)
+        rendered_component = render_component(relation_item: relation_item(type: "follows", relation:, visibility: :visible))
         expect(rendered_component).to have_text "Lag: 2 days"
       end
 
       context "when editable" do
         it "renders a action menu" do
           rendered_component = render_component(relation_item: relation_item(type: "follows", relation:, visibility: :visible),
-                                                relation:, editable: true)
+                                                editable: true)
           expect(rendered_component).to have_menu # FIXME: aria-labelledby does not resolve here "Relation actions"
           expect(rendered_component).to have_selector :menuitem, "Edit relation"
           expect(rendered_component).to have_selector :menuitem, "Delete relation"
@@ -120,8 +114,7 @@ RSpec.describe WorkPackageRelationsTab::RelationComponent, type: :component do
 
     context "when ghost" do
       subject(:rendered_component) do
-        render_component(relation_item: relation_item(type: "follows", relation:, visibility: :ghost),
-                         relation:)
+        render_component(relation_item: relation_item(type: "follows", relation:, visibility: :ghost))
       end
 
       it "does not render a title link" do
@@ -141,11 +134,11 @@ RSpec.describe WorkPackageRelationsTab::RelationComponent, type: :component do
     context "when closest" do
       it "always renders a closest label" do
         relation_item = relation_item(type: "follows", relation:, visibility: :visible)
-        expect(render_component(relation_item:, relation:, closest: true))
+        expect(render_component(relation_item:, closest: true))
           .to have_primer_label "Closest", scheme: :primary
 
         relation_item = relation_item(type: "follows", relation:, visibility: :ghost)
-        expect(render_component(relation_item:, relation:, closest: true))
+        expect(render_component(relation_item:, closest: true))
           .to have_primer_label "Closest", scheme: :primary
       end
     end
