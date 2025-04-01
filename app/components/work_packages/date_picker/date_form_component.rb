@@ -157,12 +157,8 @@ module WorkPackages
       end
 
       def disabled?(name)
-        if name == :duration
-          if !@schedule_manually && @work_package.children.any?
-            return true
-          end
-
-          return false
+        if name == :start_date && !@schedule_manually
+          return true
         end
 
         @disabled
@@ -196,7 +192,7 @@ module WorkPackages
                          "focus->work-packages--date-picker--preview#onHighlightField",
                  test_selector: "op-datepicker-modal--#{name.to_s.dasherize}-field" }
 
-        if @focused_field == name
+        if @focused_field == name && !disabled?(name)
           data[:qa_highlighted] = "true"
           data[:focus] = "true"
         end
