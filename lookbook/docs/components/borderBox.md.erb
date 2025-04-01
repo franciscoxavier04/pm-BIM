@@ -1,0 +1,40 @@
+The Border Box element is used to display structured items in a list, each with a set of actions. It is used for example:
+
+- to display a list of meetings 
+- to display individual meeting agenda items in a meeting 
+- to display the a list of project attributes
+- to display a list of configured OAuth applications
+
+## Anatomy
+
+The Border Box element is made up of
+
+1. The **header** acts as a container for the items below it. It's often to distinguish between sections. It is optional.
+2. Individual **items** below can vary in what information they show.
+
+If a page uses a Border Box with a header, all sections must use headers.
+
+## Options
+
+- **Collapsible header**: A collapsible header has an arrow next to the title and allows collapsing and expanding the contents below. When collapsed, the bottom border is slightly thicker to indicate something is hidden.
+- **Header description**: When collapsed, the optional header description is hidden.
+- **Header counter**: The counter can display the number of items that that particular section contains.
+- **Draggable**: Both header and items can have drag handles. Individual items can be dragged up and down and into other sections. The sections themselves can also be moved up and down.
+- **More button**: A more button can have contextual actions such as edit, delete and move (move up, move to top, move down, move to the end).
+
+## Best practices
+
+**Do**
+
+- Use sections (with headers) to better organise content if they have logical categories (eg. Open and Planned meetings).
+
+**Don't**
+
+- Don't mix sections with and without headers. If one section has a header, they must all have headers.
+- Don't make sections collapsible if they do not need to be. 
+
+
+## Technical notes
+
+
+### Code structure
