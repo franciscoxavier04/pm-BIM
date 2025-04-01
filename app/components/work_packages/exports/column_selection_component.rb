@@ -60,16 +60,20 @@ module WorkPackages
       end
 
       def selected_columns
-        if export_settings.settings.key?(:columns)
-          saved_cols = export_settings.settings[:columns]
-          # Restore the saved columns, retaining the saved order
-          saved_cols.filter_map do |col|
-            available_columns.find { |c| c[:id] == col }
-          end
-        else
-          query
-            .columns
-            .map { |column| { id: column.name.to_s, name: column.caption } }
+        return columns_from_saved_export_settings if export_settings.settings.key?(:columns)
+
+        query
+          .columns
+          .map { |column| { id: column.name.to_s, name: column.caption } }
+      end
+
+      private
+
+      def columns_from_saved_export_settings
+        saved_cols = export_settings.settings[:columns]
+        # Restore the saved columns, retaining the saved order
+        saved_cols.filter_map do |col|
+          available_columns.find { |c| c[:id] == col }
         end
       end
     end

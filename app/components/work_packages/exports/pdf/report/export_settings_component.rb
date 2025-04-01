@@ -45,9 +45,7 @@ module WorkPackages
           end
 
           def selected_long_text_fields
-            default_long_text_fields = [DESCRIPTION_CF] + WorkPackageCustomField
-                                                            .where(field_format: "text")
-                                                            .map { |cf| { id: cf.id, name: cf.name } }
+            default_long_text_fields = available_long_text_fields
 
             saved_long_text_fields = if export_settings.settings.key?(:long_text_fields)
                                        saved = export_settings.settings.fetch(:long_text_fields, "").split
