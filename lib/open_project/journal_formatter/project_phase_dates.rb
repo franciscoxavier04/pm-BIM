@@ -32,7 +32,8 @@ class OpenProject::JournalFormatter::ProjectPhaseDates < JournalFormatter::Base
   def render(key, values, options = { html: true })
     html = options[:html]
 
-    step = Project::Phase.find(key[/\d+/])
+    step = Project::Phase.find_by(id: key[/\d+/])
+    return unless step
 
     phase_message = format_phase_message(step:, values:, html:)
     return unless phase_message

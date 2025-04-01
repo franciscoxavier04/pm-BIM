@@ -32,13 +32,14 @@ require "spec_helper"
 
 RSpec.describe OpenProject::JournalFormatter::ProjectPhaseActive do
   describe "#render" do
-    let(:key) { "project_life_cycle_step_#{step.id}_active" }
+    let(:id) { step.id }
+    let(:key) { "project_life_cycle_step_#{id}_active" }
     let(:step) { build_stubbed(:project_phase, definition:) }
 
     subject(:result) { described_class.new(nil).render(key, values, html:) }
 
     before do
-      allow(Project::Phase).to receive(:find).with(step.id.to_s).and_return(step)
+      allow(Project::Phase).to receive(:find_by).with(id: id.to_s).and_return(step)
     end
 
     shared_examples "test result" do
@@ -135,6 +136,17 @@ RSpec.describe OpenProject::JournalFormatter::ProjectPhaseActive do
       end
 
       include_examples "for phase changes"
+    end
+
+    context "when phase was removed" do
+      let(:id) { 42 }
+      let(:step) { nil }
+
+      let(:values) { [false, true] }
+      let(:text_result) { nil }
+      let(:html_result) { nil }
+
+      include_examples "test result"
     end
   end
 end

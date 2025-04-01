@@ -32,7 +32,8 @@ require "spec_helper"
 
 RSpec.describe OpenProject::JournalFormatter::ProjectPhaseDates do
   describe "#render" do
-    let(:key) { "project_life_cycle_step_#{step.id}_date_range" }
+    let(:id) { step.id }
+    let(:key) { "project_life_cycle_step_#{id}_date_range" }
     let(:step) { build_stubbed(:project_phase, definition:) }
 
     let(:date_range_added) { [nil, date(29)..date(30)] }
@@ -44,7 +45,7 @@ RSpec.describe OpenProject::JournalFormatter::ProjectPhaseDates do
     subject(:result) { described_class.new(nil).render(key, values, html:) }
 
     before do
-      allow(Project::Phase).to receive(:find).with(step.id.to_s).and_return(step)
+      allow(Project::Phase).to receive(:find_by).with(id: id.to_s).and_return(step)
     end
 
     def date(day) = Date.new(2025, 1, day)
@@ -399,6 +400,17 @@ RSpec.describe OpenProject::JournalFormatter::ProjectPhaseDates do
 
         include_examples "test result"
       end
+    end
+
+    context "when phase was removed" do
+      let(:id) { 42 }
+      let(:step) { nil }
+
+      let(:values) { date_range_added }
+      let(:text_result) { nil }
+      let(:html_result) { nil }
+
+      include_examples "test result"
     end
   end
 end
