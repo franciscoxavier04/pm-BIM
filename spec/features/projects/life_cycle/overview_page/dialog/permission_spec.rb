@@ -30,7 +30,7 @@ require "spec_helper"
 require_relative "../shared_context"
 
 RSpec.describe "Edit project stages and gates on project overview page", :js, with_flag: { stages_and_gates: true } do
-  include_context "with seeded projects and stages and gates"
+  include_context "with seeded projects and phases"
   shared_let(:user) { create(:user) }
   let(:overview_page) { Pages::Projects::Show.new(project) }
   let(:permissions) { [] }

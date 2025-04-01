@@ -32,7 +32,7 @@ require "spec_helper"
 require_relative "../shared_context"
 
 RSpec.describe "Edit project stages and gates on project overview page", :js, with_flag: { stages_and_gates: true } do
-  include_context "with seeded projects and stages and gates"
+  include_context "with seeded projects and phases"
 
   shared_let(:overview) { create :overview, project: }
 
@@ -56,12 +56,9 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
         dialog = overview_page.open_edit_dialog_for_life_cycles
 
         dialog.expect_input("Initiating", value: "", position: 1)
-        dialog.expect_input("Ready for Planning", value: "", position: 2)
-        dialog.expect_input("Planning", value: "", position: 3)
-        dialog.expect_input("Ready for Executing", value: "", position: 4)
-        dialog.expect_input("Executing", value: "", position: 5)
-        dialog.expect_input("Ready for Closing", value: "", position: 6)
-        dialog.expect_input("Closing", value: "", position: 7)
+        dialog.expect_input("Planning", value: "", position: 2)
+        dialog.expect_input("Executing", value: "", position: 3)
+        dialog.expect_input("Closing", value: "", position: 4)
 
         # Saving the dialog is successful
         dialog.submit
@@ -101,7 +98,7 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
           expect(page.driver.browser.network.traffic.size).to eq(1)
         end
 
-        dialog.clear_date_for(life_cycle_ready_for_planning)
+        dialog.clear_date_for(life_cycle_planning)
 
         # Saving the dialog is successful
         dialog.submit
@@ -113,11 +110,11 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
         end
 
         ready_for_planning_dates = [
-          life_cycle_ready_for_planning.start_date,
-          life_cycle_ready_for_planning.finish_date
+          life_cycle_planning.start_date,
+          life_cycle_planning.finish_date
         ].map { I18n.l(it) }.join("\n-\n")
 
-        overview_page.within_life_cycle_container(life_cycle_ready_for_planning) do
+        overview_page.within_life_cycle_container(life_cycle_planning) do
           expect(page).to have_no_text ready_for_planning_dates
         end
 
@@ -128,8 +125,8 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
         life_cycle_initiating_was = life_cycle_initiating.dup
         life_cycle_initiating.reload
 
-        life_cycle_ready_for_planning_was = life_cycle_ready_for_planning.dup
-        life_cycle_ready_for_planning.reload
+        life_cycle_planning_was = life_cycle_planning.dup
+        life_cycle_planning.reload
 
         activity_page.within_journal(number: 1) do
           activity_page.expect_activity("Initiating changed from " \
@@ -138,9 +135,9 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
                                         "#{I18n.l life_cycle_initiating.start_date} - " \
                                         "#{I18n.l life_cycle_initiating.finish_date}")
 
-          activity_page.expect_activity("Ready for Planning date deleted " \
-                                        "#{I18n.l life_cycle_ready_for_planning_was.start_date} - " \
-                                        "#{I18n.l life_cycle_ready_for_planning_was.finish_date}")
+          activity_page.expect_activity("Planning date deleted " \
+                                        "#{I18n.l life_cycle_planning_was.start_date} - " \
+                                        "#{I18n.l life_cycle_planning_was.finish_date}")
         end
       end
 
@@ -159,9 +156,9 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
         # Retrying due to a race condition between filling the input vs submitting the form preview.
         retry_block do
           values = [start_date + cycled_days.next.days] * 2
-          dialog.set_date_for(life_cycle_ready_for_planning, values:)
+          dialog.set_date_for(life_cycle_planning, values:)
 
-          dialog.expect_validation_message(life_cycle_ready_for_planning, text: expected_text)
+          dialog.expect_validation_message(life_cycle_planning, text: expected_text)
         end
 
         # Saving the dialog fails
@@ -169,13 +166,13 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
         dialog.expect_open
 
         # The validation message is kept after the unsuccessful save attempt
-        dialog.expect_validation_message(life_cycle_ready_for_planning, text: expected_text)
+        dialog.expect_validation_message(life_cycle_planning, text: expected_text)
 
         retry_block do
           # The validation message is cleared when date is changed
           values = [start_date + 2.days + cycled_days.next.days] * 2
-          dialog.set_date_for(life_cycle_ready_for_planning, values:)
-          dialog.expect_no_validation_message(life_cycle_ready_for_planning)
+          dialog.set_date_for(life_cycle_planning, values:)
+          dialog.expect_no_validation_message(life_cycle_planning)
         end
 
         # Saving the dialog is successful
@@ -186,19 +183,19 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
 
         activity_page.show_details
 
-        life_cycle_ready_for_planning_was = life_cycle_ready_for_planning.dup
-        life_cycle_ready_for_planning.reload
+        life_cycle_planning_was = life_cycle_planning.dup
+        life_cycle_planning.reload
         activity_page.within_journal(number: 1) do
           expected_date_from = [
-            I18n.l(life_cycle_ready_for_planning_was.start_date),
-            I18n.l(life_cycle_ready_for_planning_was.finish_date)
+            I18n.l(life_cycle_planning_was.start_date),
+            I18n.l(life_cycle_planning_was.finish_date)
           ].join(" - ")
 
           expected_date_to = [
-            I18n.l(life_cycle_ready_for_planning.start_date),
-            I18n.l(life_cycle_ready_for_planning.finish_date)
+            I18n.l(life_cycle_planning.start_date),
+            I18n.l(life_cycle_planning.finish_date)
           ].join(" - ")
-          activity_page.expect_activity("Ready for Planning changed from " \
+          activity_page.expect_activity("Planning changed from " \
                                         "#{expected_date_from} to " \
                                         "#{expected_date_to}")
         end

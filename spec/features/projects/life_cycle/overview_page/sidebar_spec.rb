@@ -32,7 +32,7 @@ require "spec_helper"
 require_relative "shared_context"
 
 RSpec.describe "Show project life cycles on project overview page", :js, with_flag: { stages_and_gates: true } do
-  include_context "with seeded projects and stages and gates"
+  include_context "with seeded projects and phases"
 
   let(:overview_page) { Pages::Projects::Show.new(project) }
 
@@ -68,30 +68,24 @@ RSpec.describe "Show project life cycles on project overview page", :js, with_fl
       overview_page.within_life_cycles_sidebar do
         expected_stages = [
           "Initiating",
-          "Ready for Planning",
           "Planning",
-          "Ready for Executing",
           "Executing",
-          "Ready for Closing",
           "Closing"
         ]
         fields = page.all(".op-project-life-cycle-container > div:first-child")
         expect(fields.map(&:text)).to eq(expected_stages)
       end
 
-      life_cycle_ready_for_executing_definition.move_to_bottom
+      life_cycle_executing_definition.move_to_bottom
 
       overview_page.visit_page
 
       overview_page.within_life_cycles_sidebar do
         expected_stages = [
           "Initiating",
-          "Ready for Planning",
           "Planning",
-          "Executing",
-          "Ready for Closing",
           "Closing",
-          "Ready for Executing"
+          "Executing"
         ]
         fields = page.all(".op-project-life-cycle-container > div:first-child")
         expect(fields.map(&:text)).to eq(expected_stages)
@@ -99,12 +93,12 @@ RSpec.describe "Show project life cycles on project overview page", :js, with_fl
     end
 
     it "does not show stages and gates not enabled for this project in a sidebar" do
-      life_cycle_ready_for_executing.toggle!(:active)
+      life_cycle_executing.toggle!(:active)
 
       overview_page.visit_page
 
       overview_page.within_life_cycles_sidebar do
-        expect(page).to have_no_text life_cycle_ready_for_executing.name
+        expect(page).to have_no_text life_cycle_executing.name
       end
     end
   end
