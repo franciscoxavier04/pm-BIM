@@ -53,7 +53,7 @@ RSpec.describe WorkPackageRelationsTab::RelationComponent, type: :component do
 
   context "with child relation item" do
     context "when visible" do
-      let(:relation_item) { build_relation_item(type: "children", relation: child, visibility: :visible) }
+      let(:relation_item) { build_relation_item(type: Relation::TYPE_CHILD, relation: child, visibility: :visible) }
 
       it "renders a title link" do
         expect(render_component(relation_item:))
@@ -77,7 +77,7 @@ RSpec.describe WorkPackageRelationsTab::RelationComponent, type: :component do
     end
 
     context "when ghost" do
-      let(:relation_item) { build_relation_item(type: "children", relation: child, visibility: :ghost) }
+      let(:relation_item) { build_relation_item(type: Relation::TYPE_CHILD, relation: child, visibility: :ghost) }
 
       it "does not render a title link" do
         expect(render_component(relation_item:))
@@ -99,7 +99,7 @@ RSpec.describe WorkPackageRelationsTab::RelationComponent, type: :component do
 
   context "with follows relations" do
     let(:relation) { _table.relation(predecessor: predecessor) }
-    let(:relation_item) { build_relation_item(type: "follows", relation:, visibility: :visible) }
+    let(:relation_item) { build_relation_item(type: Relation::TYPE_FOLLOWS, relation:, visibility: :visible) }
 
     context "when visible" do
       it "renders a title link" do
@@ -130,7 +130,7 @@ RSpec.describe WorkPackageRelationsTab::RelationComponent, type: :component do
     end
 
     context "when ghost" do
-      let(:relation_item) { build_relation_item(type: "follows", relation:, visibility: :ghost) }
+      let(:relation_item) { build_relation_item(type: Relation::TYPE_FOLLOWS, relation:, visibility: :ghost) }
 
       subject(:rendered_component) { render_component(relation_item:) }
 
@@ -150,11 +150,11 @@ RSpec.describe WorkPackageRelationsTab::RelationComponent, type: :component do
 
     context "when closest" do
       it "always renders a closest label" do
-        relation_item = build_relation_item(type: "follows", relation:, visibility: :visible, closest: true)
+        relation_item = build_relation_item(type: Relation::TYPE_FOLLOWS, relation:, visibility: :visible, closest: true)
         expect(render_component(relation_item:))
           .to have_primer_label "Closest", scheme: :primary
 
-        relation_item = build_relation_item(type: "follows", relation:, visibility: :ghost, closest: true)
+        relation_item = build_relation_item(type: Relation::TYPE_FOLLOWS, relation:, visibility: :ghost, closest: true)
         expect(render_component(relation_item:))
           .to have_primer_label "Closest", scheme: :primary
       end

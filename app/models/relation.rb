@@ -49,6 +49,9 @@ class Relation < ApplicationRecord
   TYPE_PARENT       = "parent"
   TYPE_CHILD        = "child"
 
+  # The order of the types is important. It's used to build up `ORDERED_TYPES`
+  # which is used to order relations of different kind like in the "Add relation"
+  # menu or the relations tab.
   TYPES = {
     TYPE_RELATES => {
       name: :label_relates_to, sym_name: :label_relates_to, order: 1, sym: TYPE_RELATES
@@ -92,6 +95,8 @@ class Relation < ApplicationRecord
       sym: TYPE_REQUIRES, reverse: TYPE_REQUIRES
     }
   }.freeze
+
+  ORDERED_TYPES = [*TYPES.keys, TYPE_CHILD].freeze
 
   include ::Scopes::Scoped
 

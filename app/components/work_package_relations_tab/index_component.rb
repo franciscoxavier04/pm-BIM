@@ -21,9 +21,7 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   delegate :work_package,
            :visible_children,
            :ghost_children,
-           :directionally_aware_grouped_relations,
-           :any_relations?,
-           :any_children?,
+           :relation_groups,
            to: :relations_mediator
 
   # Initialize the component with required data
@@ -62,7 +60,7 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
              padding: :condensed,
              data: { test_selector: "op-relation-group-#{relation_group.type}" }
            )) do |border_box|
-      if relation_group.type.children? && should_render_add_child?
+      if relation_group.type.child? && should_render_add_child?
         render_children_header(border_box, title, relation_group.count)
       else
         render_header(border_box, title, relation_group.count)

@@ -47,33 +47,12 @@
 
   <%=
     flex_layout(mb: 3) do |flex|
-      if any_relations?
-        key_namespace = "#{I18N_NAMESPACE}.relations"
-
-        # Relations
-        directionally_aware_grouped_relations.each do |relation_group|
-          base_key = "#{key_namespace}.label_#{relation_group.type}"
-
+      if relation_groups.any?
+        relation_groups.each do |relation_group|
           flex.with_row(mb: 4) do
             render_relation_group(
-              title: t("#{base_key}_plural").upcase_first,
+              title: t("#{I18N_NAMESPACE}.relations.label_#{relation_group.type}_plural").upcase_first,
               relation_group:
-            ) do |relation_item|
-              render(
-                WorkPackageRelationsTab::RelationComponent.new(relation_item:)
-              )
-            end
-          end
-        end
-
-        # Children
-        if any_children?
-          base_key = "#{key_namespace}.label_child"
-
-          flex.with_row do
-            render_relation_group(
-              title: t("#{base_key}_plural").upcase_first,
-              relation_group: relations_mediator.relation_group("children")
             ) do |relation_item|
               render(
                 WorkPackageRelationsTab::RelationComponent.new(relation_item:)

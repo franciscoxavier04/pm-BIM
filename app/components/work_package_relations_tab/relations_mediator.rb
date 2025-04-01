@@ -121,33 +121,28 @@ class WorkPackageRelationsTab::RelationsMediator
   end
 
   def visible_relations
-    @visible_relations ||= work_package.relations.visible.includes(:to, :from)
+    @visible_relations ||= work_package.relations.visible.includes(:to, :from).load
   end
 
   def visible_children
-    @visible_children ||= work_package.children.visible
+    @visible_children ||= work_package.children.visible.load
   end
 
   def ghost_relations
-    @ghost_relations = work_package.relations.includes(:to, :from).where.not(id: visible_relations.select(:id))
+    @ghost_relations ||= work_package.relations.includes(:to, :from).where.not(id: visible_relations.select(:id)).load
   end
 
   def ghost_children
-    @ghost_children ||= work_package.children.where.not(id: visible_children.select(:id))
+    @ghost_children ||= work_package.children.where.not(id: visible_children.select(:id)).load
   end
 
-  def directionally_aware_grouped_relations
-    # Collect all unique relation types
-    all_relation_types = collect_all_relation_types
-
-    # Group visible and invisible relations by type
-    all_relation_types.map do |type|
-      relation_group(type)
-    end
+  def relation_groups
+    @relation_groups ||= Relation::ORDERED_TYPES.map { |type| relation_group(type) }
+                                                .filter(&:any?)
   end
 
   def relation_group(type)
-    if type == "children"
+    if type == Relation::TYPE_CHILD
       RelationGroup.new(
         type:,
         work_package:,
@@ -164,25 +159,11 @@ class WorkPackageRelationsTab::RelationsMediator
     end
   end
 
-  def any_relations?
-    visible_relations.any? || ghost_relations.any? || visible_children.any? || ghost_children.any?
-  end
-
   def all_relations_count
     visible_relations.count + ghost_relations.count + visible_children.count + ghost_children.count
   end
 
-  def any_children?
-    visible_children.any? || ghost_children.any?
-  end
-
   private
-
-  def collect_all_relation_types
-    (visible_relations + ghost_relations).map do |relation|
-      relation.relation_type_for(work_package)
-    end.uniq
-  end
 
   def filter_relations_by_type(relations, type)
     relations.select do |relation|

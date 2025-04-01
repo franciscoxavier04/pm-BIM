@@ -51,18 +51,22 @@ RSpec.describe WorkPackageRelationsTab::RelationsMediator do
     TABLE
 
     it "returns all relations of the work package" do
-      expect(mediator.relation_group("children").all_relation_items).to contain_exactly(
-        have_attributes(class: described_class::RelationItem, type: "children", related: child, visibility: :visible)
+      expect(mediator.relation_group(Relation::TYPE_CHILD).all_relation_items).to contain_exactly(
+        have_attributes(class: described_class::RelationItem, type: Relation::TYPE_CHILD, related: child, visibility: :visible)
       )
-      expect(mediator.relation_group("precedes").all_relation_items).to contain_exactly(
-        have_attributes(class: described_class::RelationItem, type: "precedes", related: successor, visibility: :visible)
+      expect(mediator.relation_group(Relation::TYPE_PRECEDES).all_relation_items).to contain_exactly(
+        have_attributes(class: described_class::RelationItem, type: Relation::TYPE_PRECEDES, related: successor,
+                        visibility: :visible)
       )
-      expect(mediator.relation_group("follows").all_relation_items).to contain_exactly(
-        have_attributes(class: described_class::RelationItem, type: "follows", related: predecessor, visibility: :visible)
+      expect(mediator.relation_group(Relation::TYPE_FOLLOWS).all_relation_items).to contain_exactly(
+        have_attributes(class: described_class::RelationItem, type: Relation::TYPE_FOLLOWS, related: predecessor,
+                        visibility: :visible)
       )
-      expect(mediator.relation_group("relates").all_relation_items).to contain_exactly(
-        have_attributes(class: described_class::RelationItem, type: "relates", related: related1, visibility: :visible),
-        have_attributes(class: described_class::RelationItem, type: "relates", related: related2, visibility: :visible)
+      expect(mediator.relation_group(Relation::TYPE_RELATES).all_relation_items).to contain_exactly(
+        have_attributes(class: described_class::RelationItem, type: Relation::TYPE_RELATES, related: related1,
+                        visibility: :visible),
+        have_attributes(class: described_class::RelationItem, type: Relation::TYPE_RELATES, related: related2,
+                        visibility: :visible)
       )
     end
   end
