@@ -61,7 +61,10 @@
                 value: "true",
                 unchecked_value: "false",
                 checked: saved_export_settings?,
-                label: I18n.t("export.dialog.save_export_settings.label")
+                label: I18n.t("export.dialog.save_export_settings.label"),
+                data: {
+                  test_selector: "#{EXPORT_FORM_ID}-save-export-settings"
+                }
               )
             ) %>
       <% end %>

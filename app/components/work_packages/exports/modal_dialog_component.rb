@@ -62,7 +62,7 @@ module WorkPackages
       end
 
       def saved_export_settings?
-        @query.export_settings.any?
+        @query.export_settings.any?(&:persisted?)
       end
 
       def export_formats_settings
