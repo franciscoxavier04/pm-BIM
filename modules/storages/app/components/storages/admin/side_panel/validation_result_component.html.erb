@@ -30,27 +30,42 @@ See COPYRIGHT and LICENSE files for more details.
 <%=
   component_wrapper do
     flex_layout do |container|
-      container.with_row(test_selector: "validation-result--subtitle") do
-        render(Primer::Beta::Text.new(font_weight: :bold)) { I18n.t("storages.health.connection_validation.subtitle") }
-      end
+      if validation_result?
+        container.with_row(test_selector: "validation-result--subtitle") do
+          header = status_summary
 
-      if @result.validation_result_exists?
-        container.with_row(mt: 2) do
-          status = status_indicator
-
-          concat(render(Primer::Beta::Text.new(pr: 2, test_selector: "validation-result--timestamp")) do
-            I18n.t('storages.health.checked', datetime: helpers.format_time(@result.timestamp))
-          end)
-          concat(render(Primer::Beta::Label.new(scheme: status[:scheme])) { status[:label] })
+          concat(render(Primer::Beta::Octicon.new(icon: header[:icon], color: header[:color], mr: 2)))
+          concat(render(Primer::Beta::Text.new(font_weight: :bold)) { header[:text] })
         end
-      end
-
-      if @result.description.present?
-        prefix = @result.error_code? ? "#{@result.error_code.upcase}: " : ""
 
         container.with_row(mt: 2) do
           render(Primer::Beta::Text.new(color: :muted, test_selector: "validation-result--description")) do
-            prefix + @result.description
+            "All connections and systems are working as expected. Last check: 28.03.2025 6:40 PM."
+          end
+        end
+
+        container.with_row(mt: 2) do
+          render(Storages::Admin::SidePanel::HealthReportDialogComponent.new(storage: model, report: @result))
+        end
+      else
+        container.with_row do
+          primer_form_with(
+            model:,
+            url: validate_connection_admin_settings_storage_connection_validation_path(model),
+            method: :post,
+            data: { turbo: true }
+          ) do
+            render(
+              Primer::Beta::Button.new(
+                scheme: :link,
+                color: :default,
+                font_weight: :bold,
+                type: :submit
+              )
+            ) do |button|
+              button.with_leading_visual_icon(icon: "meter")
+              I18n.t("storages.health.connection_validation.action")
+            end
           end
         end
       end

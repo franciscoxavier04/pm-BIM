@@ -32,7 +32,8 @@ module Storages
   module Peripherals
     module ConnectionValidators
       class ValidationGroupResult
-        delegate :[], to: :@results
+        # TODO: remove []=
+        delegate :[], :[]=, :each, to: :@results
 
         def initialize
           @results = {}

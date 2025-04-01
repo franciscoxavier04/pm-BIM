@@ -51,8 +51,10 @@ module Storages
           raise "Unsupported provider type: #{@storage.provider_type}"
         end
 
-        @result = validator.validate
-        update_via_turbo_stream(component: SidePanel::ValidationResultComponent.new(result: @result))
+        # @result = validator.validate
+        @result = test_success
+
+        update_via_turbo_stream(component: SidePanel::ValidationResultComponent.new(storage: @storage, result: @result))
         respond_to_with_turbo_streams
       end
 
@@ -61,6 +63,40 @@ module Storages
       def find_model_object(object_id = :storage_id)
         super
         @storage = @object
+      end
+
+      def test_success # rubocop:disable Metrics/AbcSize
+        r = Peripherals::ConnectionValidators::ValidatorResult.new
+
+        base_configuration = Peripherals::ConnectionValidators::ValidationGroupResult.new
+        base_configuration[:storage_configured] =
+          Peripherals::ConnectionValidators::CheckResult.success(:storage_configured)
+        base_configuration[:capabilities_request] =
+          Peripherals::ConnectionValidators::CheckResult.success(:capabilities_request)
+        base_configuration[:host_url_accessible] =
+          Peripherals::ConnectionValidators::CheckResult.success(:host_url_accessible)
+        base_configuration[:dependencies_check] =
+          Peripherals::ConnectionValidators::CheckResult.success(:dependencies_check)
+        base_configuration[:dependencies_versions] =
+          Peripherals::ConnectionValidators::CheckResult.success(:dependencies_versions)
+
+        authentication = Peripherals::ConnectionValidators::ValidationGroupResult.new
+        authentication[:existing_token] = Peripherals::ConnectionValidators::CheckResult.success(:existing_token)
+        authentication[:user_bound_request] = Peripherals::ConnectionValidators::CheckResult.success(:user_bound_request)
+
+        ampf_configuration = Peripherals::ConnectionValidators::ValidationGroupResult.new
+        ampf_configuration[:files_request] = Peripherals::ConnectionValidators::CheckResult.success(:files_request)
+        ampf_configuration[:userless_access] = Peripherals::ConnectionValidators::CheckResult.success(:userless_access)
+        ampf_configuration[:group_folder_presence] =
+          Peripherals::ConnectionValidators::CheckResult.success(:group_folder_presence)
+        ampf_configuration[:group_folder_contents] =
+          Peripherals::ConnectionValidators::CheckResult.success(:group_folder_contents)
+
+        r.add_group_result(:base_configuration, base_configuration)
+        r.add_group_result(:authentication, authentication)
+        r.add_group_result(:ampf_configuration, ampf_configuration)
+
+        r
       end
     end
   end

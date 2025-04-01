@@ -31,32 +31,22 @@
 module Storages
   module Admin
     module SidePanel
-      class ValidationResultComponent < ApplicationComponent
-        include OpPrimer::ComponentHelpers
+      class HealthReportDialogComponent < ApplicationComponent
         include OpTurbo::Streamable
+        include OpPrimer::ComponentHelpers
 
-        def initialize(storage:, result:)
+        TEST_SELECTOR = "op-storages--health-report-dialog"
+
+        def initialize(storage:, report:)
           super(storage)
-          @result = result
+          @report = report
         end
 
         private
 
-        def status_summary
-          if @result.nil?
-            { icon: nil, color: :success, text: "Run connection validation" }
-          elsif @result.healthy?
-            { icon: :"check-circle", color: :success, text: "All checks passed" }
-          elsif @result.unhealthy?
-            { icon: :alert, color: :danger, text: "2 checks failed" }
-          elsif @result.warning?
-            { icon: :alert, color: :warning, text: "3 checks failed" }
-          else
-            raise ArgumentError, "Unknown validation result type: #{@result.type}"
-          end
+        def subtitle
+          "Last check: 28.03.2025 6:40 PM"
         end
-
-        def validation_result? = @result.present?
       end
     end
   end

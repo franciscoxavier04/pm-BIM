@@ -1,0 +1,95 @@
+<%#-- copyright
+OpenProject is an open source project management software.
+Copyright (C) the OpenProject GmbH
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License version 3.
+
+OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+Copyright (C) 2006-2013 Jean-Philippe Lang
+Copyright (C) 2010-2013 the ChiliProject Team
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+See COPYRIGHT and LICENSE files for more details.
+
+++#%>
+
+<%=
+  render(
+    Primer::Alpha::Dialog.new(
+      title: "Health report for #{model.name}",
+      subtitle:,
+      size: :large,
+      test_selector: TEST_SELECTOR
+    )
+  ) do |dialog|
+    dialog.with_show_button(
+      scheme: :link,
+      color: :default,
+      font_weight: :bold
+    ) do
+      "Open full health report"
+    end
+    dialog.with_header(show_divider: true)
+    dialog.with_body do
+      component_wrapper do
+        flex_layout do |modal_body|
+          modal_body.with_row do
+            flex_layout(align_items: :center, justify_content: :space_between) do |summary|
+              summary.with_column(flex_layout: true) do |container|
+                container.with_row do
+                  concat(render(Primer::Beta::Octicon.new(icon: :"check-circle", color: :success, mr: 2)))
+                  concat(render(Primer::Beta::Text.new(font_weight: :bold)) { "All checks successful" })
+                end
+
+                container.with_row(mt: 2) do
+                  render(Primer::Beta::Text.new) { "All connections and systems are working as expected. " }
+                end
+              end
+
+              summary.with_column do
+                primer_form_with(
+                  model:,
+                  url: validate_connection_admin_settings_storage_connection_validation_path(model),
+                  method: :post,
+                  data: { turbo: true }
+                ) do
+                  render(Primer::Beta::Button.new(scheme: :primary, type: :submit)) do
+                    I18n.t("storages.health.connection_validation.action")
+                  end
+                end
+              end
+            end
+          end
+
+          @report.each_pair do |group, checks|
+            modal_body.with_row(mt: 3) do
+              render(Primer::Beta::BorderBox.new) do |box|
+                box.with_header { group.to_s.humanize }
+
+                checks.each do |key, value|
+                  box.with_row do
+                    "#{key.to_s.humanize} - #{value.state.to_s.humanize}"
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+%>
