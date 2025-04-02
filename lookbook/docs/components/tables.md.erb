@@ -41,6 +41,39 @@ Define the columns of the table as class method:
 
 ```ruby
 module ModuleA
-  class TableComponent <::TableComponent
-    columns :name
+  class TableComponent < ::TableComponent
+    columns :name, :description, :sort
+    # ...
+  end
+end
+```
+
+**Headers**
+
+Define the headers of the component as a method retu
+
+```ruby
+module ModuleA
+  class TableComponent < ::TableComponent
+    # ...
+
+    def headers
+      [
+        [:a, { caption: 'Column A' }],
+        [:b, { caption: 'Column B' }],
+        [:c, { caption: 'Column C' }]
+      ]
+    end
+
+  # ...
+  end
+end
+```
+
+**Actions**
+
+Define the actions in the row component as `button_links`. See the example code
+
+### Full example
+
 <%= embed OpenProject::Deprecated::TablePreview, :default, panels: %i[source] %>

@@ -4,19 +4,19 @@
 
 ## Anatomy
 
-**Note:** The BorderBoxTable is based on the `Primer::Beta::BorderBox` with a CSS grid applied inside to align the individual rows and make it look like a table. Please note, that it is technically not a table and has therefore none of the benefits a normal HTML table would have (e.g  automatic column width adjustments or accessibility support). If you want or need that, please use the [TableComponent docs](./tables))
+**Note:** The BorderBoxTable is based on the `Primer::Beta::BorderBox` with a CSS grid applied inside to align the individual rows and make it look like a table. Please note, that it is technically not a table and has therefore none of the benefits a normal HTML table would have (e.g  automatic column width adjustments or accessibility short cuts). If you want or need that, please use the [TableComponent docs](./tables))
 
 ## Best practices
 
 **Do**
 
-- Use a BorderBox table if you have a *few* entries of unsorted data, that does not require pagination
+- Use a BorderBoxTable if you have a *few* entries of unsorted data, that does not require pagination
 - Use up to two actions using the `:secondary` scheme of `Primer::Beta::Button` and `Primer::Beta::IconButton`.
 - OR: Use an action menu with `:invisible` scheme
 
 **Don't**
 
-- Use the BorderBox table for a lot of items that require sorting or pagination
+- Use the BorderBoxTable for a lot of items that require sorting or pagination
 
 ## Technical notes
 
@@ -79,3 +79,6 @@ end
 <%= embed OpPrimer::BorderBoxTableComponentPreview, :default, panels: %i[source] %>
 
 For detailed examples have a look at the other [preview examples](/lookbook/inspect/OpenProject/Primer/border_box_table/default) of the component.
+
+Note for Henriette:
+Example with CollapsibleHeader???
