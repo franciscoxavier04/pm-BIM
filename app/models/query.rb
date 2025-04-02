@@ -422,7 +422,7 @@ class Query < ApplicationRecord
   end
 
   def export_settings_for(format)
-    export_settings.where(format: format).first_or_initialize
+    export_settings.where(format:).first_or_initialize
   end
 
   private

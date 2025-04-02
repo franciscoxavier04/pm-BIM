@@ -50,9 +50,9 @@ class ExportSetting < ApplicationRecord
   end
 
   # Some boolean settings are saved as string. Use this method to conveniently check if they are
-  # set to true. Assumes that all boolean settings default to false.
+  # set to true.
   def true?(key, default: false)
-    settings.fetch(key, default).to_s.to_bool
+    %w[true 1].include?(settings.fetch(key, default).to_s)
   end
 
   private
