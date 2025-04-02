@@ -32,6 +32,7 @@ export default class extends Controller {
     }
 
     this.toggleOption(selectedValue);
+    this.selectTarget.selectedIndex = 0;
   }
 
   hide(event:MouseEvent) {
