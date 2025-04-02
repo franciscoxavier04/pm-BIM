@@ -33,8 +33,6 @@ module My
     class DailyEntriesTable < OpPrimer::BorderBoxTableComponent
       columns :time, :hours, :subject, :project, :activity, :comments
 
-      options :date, :time_entries
-
       def row_class
         TimeEntryRow
       end
@@ -44,6 +42,20 @@ module My
       end
 
       def has_actions? = true
+
+      def action_row_header_content
+        render(Primer::Beta::IconButton.new(
+                 icon: "plus",
+                 scheme: :invisible,
+                 size: :small,
+                 tag: :a,
+                 tooltip_direction: :e,
+                 href: dialog_time_entries_path(onlyMe: true, date: options[:date]),
+                 data: { "turbo-stream" => true },
+                 label: t("label_log_time"),
+                 aria: { label: t("label_log_time") }
+               ))
+      end
 
       def headers
         [
