@@ -66,10 +66,11 @@
           <%= styled_label_tag("custom_action_actions_#{action.key}", action.human_name, class: "-top") %>
 
           <% input_name = "custom_action[actions][#{action.key}]" %>
-          <% if %i(associated_property boolean).include?(action.type) %>
+          <% if %i(associated_property boolean user project).include?(action.type) %>
             <div class="form--field-container">
               <div class="form--select-container -middle">
-                <% if action.key == :project %>
+                <% case action.type %>
+                <% when :project %>
                   <%= angular_component_tag "opce-project-autocompleter",
                                             inputs: {
                                               multiple: false,
@@ -79,6 +80,29 @@
                                               appendTo: "body",
                                               labelForId: "custom_action_actions_#{action.key}",
                                               inputValue: action.values.first
+                                            } %>
+                <% when :user %>
+                  <% selected = action.value_objects.map { |v| { id: v[:value], name: v[:label] } } %>
+                  <%= angular_component_tag "opce-user-autocompleter",
+                                            inputs: {
+                                              hideSelected: true,
+                                              defaultData: false,
+                                              placeholder: I18n.t(:label_user_search),
+                                              resource: "principals",
+                                              url: ::API::V3::Utilities::PathHelper::ApiV3Path.principals,
+                                              model: action.multi_value? ? selected : selected.first,
+                                              inputName: input_name,
+                                              filters: [
+                                                { name: "status", operator: "!", values: [Principal.statuses["locked"].to_s] },
+                                              ],
+                                              appendTo: "body",
+                                              additionalOptions: [
+                                                { id: nil, name: I18n.t("placeholders.default") },
+                                                { id: action.current_user_value_key, name: action.current_user_name }
+                                              ],
+                                              searchKey: "any_name_attribute",
+                                              labelForId: "custom_action_actions_#{action.key}",
+                                              focusDirectly: false
                                             } %>
                 <% else %>
                   <% selected = action.value_objects.map { |v| { id: v[:value], name: v[:label] } } %>
@@ -149,7 +173,7 @@
   <div class="form--space"></div>
 
   <div class="form--field">
-    <label class="form--label" for="custom-actions-form--add-action">
+    <label class="form--label" for="add-custom-action-select">
       <%= op_icon("icon-add icon4") %>
       <%= I18n.t(:"custom_actions.actions.add") %>
     </label>
@@ -157,9 +181,10 @@
       <span class="form--select-container -middle">
         <%= select_tag "add_action",
                        options_for_select(
-                         @custom_action.all_actions.map { |a| { key: a.key, label: a.human_name } },
+                         @custom_action.all_actions.map { |a| [a.human_name, a.key] },
                          disabled: active_section_keys
                        ),
+                       id: "add-custom-action-select",
                        prompt: t(:"custom_actions.actions.add"),
                        data: {
                          "hide-sections-target": "select",

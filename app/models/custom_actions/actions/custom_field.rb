@@ -35,6 +35,14 @@ class CustomActions::Actions::CustomField < CustomActions::Actions::Base
     raise NotImplementedError
   end
 
+  def type
+    if custom_field.field_format == "user"
+      :user
+    else
+      super
+    end
+  end
+
   def custom_field
     self.class.custom_field
   end
