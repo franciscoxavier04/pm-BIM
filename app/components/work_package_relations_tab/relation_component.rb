@@ -34,7 +34,7 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
 
   attr_reader :relation_item, :editable
 
-  delegate :relation, :work_package, to: :relation_item
+  delegate :closest?, :relation, :visible?, :work_package, to: :relation_item
 
   # Checks if the relation or child work package is visible to the current user
   #
@@ -52,10 +52,10 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   end
 
   def child
-    if parent_child_relationship?
-      relation_item.related
-    end
+    relation_item.related if parent_child_relationship?
   end
+
+  def editable? = editable
 
   private
 
@@ -67,7 +67,7 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   end
 
   def should_render_action_menu?
-    return false unless editable
+    return false unless editable?
 
     if parent_child_relationship?
       allowed_to_manage_subtasks?
@@ -83,10 +83,6 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
 
   def allowed_to_manage_relations?
     helpers.current_user.allowed_in_project?(:manage_work_package_relations, work_package.project)
-  end
-
-  def visible?
-    relation_item.visible?
   end
 
   def should_display_description?
@@ -113,10 +109,6 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
     return false if parent_child_relationship?
 
     relation.relation_type_for(work_package) == Relation::TYPE_PRECEDES
-  end
-
-  def closest?
-    relation_item.closest?
   end
 
   def edit_path

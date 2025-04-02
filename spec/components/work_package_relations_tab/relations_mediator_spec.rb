@@ -136,7 +136,7 @@ RSpec.describe WorkPackageRelationsTab::RelationsMediator do
       it "returns all relations of the group as RelationItem instances, " \
          "ordered by oldest first (lowest id first), mixing visible and ghost relations" do
         relation_group = described_class::RelationGroup.new(
-          type: "relates",
+          type: Relation::TYPE_RELATES,
           work_package:,
           visible_relations: [
             build_stubbed(:relates_relation, id: 4, from: work_package),

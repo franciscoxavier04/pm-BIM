@@ -51,5 +51,19 @@ FactoryBot.define do
       relation_type { "follows" }
       lag { 0 }
     end
+
+    factory :precedes_relation do
+      # Use these transient attributes if you always mix up `from` and `to`
+      # attributes in a precedes relation
+      transient do
+        predecessor { nil }
+        successor { nil }
+      end
+
+      from { predecessor || super() }
+      to { successor || super() }
+      relation_type { "precedes" }
+      lag { 0 }
+    end
   end
 end

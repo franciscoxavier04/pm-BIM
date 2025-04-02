@@ -32,18 +32,8 @@ class WorkPackageRelationsTab::RelationsMediator
   RelationGroup = Data.define(:type, :work_package, :visible_relations, :ghost_relations, :closest_relation) do
     def initialize(type:, work_package:, visible_relations:, ghost_relations:)
       type = ActiveSupport::StringInquirer.new(type.to_s)
-      closest_relation = self.class.closest_relation(type, visible_relations + ghost_relations)
+      closest_relation = WorkPackageRelationsTab::ClosestRelation.of(work_package, visible_relations + ghost_relations)
       super(type:, work_package:, visible_relations:, ghost_relations:, closest_relation:)
-    end
-
-    def self.closest_relation(type, relations)
-      return nil unless type.follows?
-
-      relations
-        .map { WorkPackageRelationsTab::ClosestRelation.new(it) }
-        .select(&:soonest_start)
-        .max
-        &.relation
     end
 
     def count
@@ -87,7 +77,7 @@ class WorkPackageRelationsTab::RelationsMediator
   # @param work_package [WorkPackage] The work package for which the relation
   #   is displayed
   # @param related [WorkPackage] The related work package: the other work
-  #   package of therelation, or the child for child relations.
+  #   package of the relation, or the child for child relations.
   # @param relation [Relation, nil] The relation, `nil` for child relations
   # @param visibility [Symbol] The visibility of the relation, `:visible` to
   #   show related work package information or `:ghost` to show a placeholder
