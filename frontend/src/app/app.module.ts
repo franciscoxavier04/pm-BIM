@@ -203,12 +203,6 @@ import {
 import { CopyToClipboardComponent } from 'core-app/shared/components/copy-to-clipboard/copy-to-clipboard.component';
 import { GlobalSearchTitleComponent } from 'core-app/core/global_search/title/global-search-title.component';
 import { ContentTabsComponent } from 'core-app/shared/components/tabs/content-tabs/content-tabs.component';
-import {
-  AddSectionDropdownComponent,
-} from 'core-app/shared/components/hide-section/add-section-dropdown/add-section-dropdown.component';
-import {
-  HideSectionLinkComponent,
-} from 'core-app/shared/components/hide-section/hide-section-link/hide-section-link.component';
 import { PersistentToggleComponent } from 'core-app/shared/components/persistent-toggle/persistent-toggle.component';
 import { TypeFormConfigurationComponent } from 'core-app/features/admin/types/type-form-configuration.component';
 import { ToastsContainerComponent } from 'core-app/shared/components/toaster/toasts-container.component';
@@ -232,7 +226,9 @@ import { CurrentProjectService } from 'core-app/core/current-project/current-pro
 import {
   TimeEntriesWorkPackageAutocompleterComponent,
 } from 'core-app/shared/components/autocompleter/time-entries-work-package-autocompleter/time-entries-work-package-autocompleter.component';
-import { OpWpDatePickerInstanceComponent } from 'core-app/shared/components/datepicker/wp-date-picker-modal/wp-date-picker-instance.component';
+import {
+  OpWpDatePickerInstanceComponent,
+} from 'core-app/shared/components/datepicker/wp-date-picker-modal/wp-date-picker-instance.component';
 
 export function initializeServices(injector:Injector) {
   return () => {
@@ -475,8 +471,6 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-copy-to-clipboard', CopyToClipboardComponent, { injector });
     registerCustomElement('opce-global-search-title', GlobalSearchTitleComponent, { injector });
     registerCustomElement('opce-content-tabs', ContentTabsComponent, { injector });
-    registerCustomElement('opce-add-section-dropdown', AddSectionDropdownComponent, { injector });
-    registerCustomElement('opce-hide-section-link', HideSectionLinkComponent, { injector });
     registerCustomElement('opce-persistent-toggle', PersistentToggleComponent, { injector });
     registerCustomElement('opce-admin-type-form-configuration', TypeFormConfigurationComponent, { injector });
     registerCustomElement('opce-toasts-container', ToastsContainerComponent, { injector });
