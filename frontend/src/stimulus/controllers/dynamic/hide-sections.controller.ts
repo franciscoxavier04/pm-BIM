@@ -1,11 +1,24 @@
 import { Controller } from '@hotwired/stimulus';
+import { navigator } from '@hotwired/turbo';
 
 export default class extends Controller {
-  static targets = ['section', 'select'];
+  static targets = ['section', 'select', 'form'];
 
   declare readonly sectionTargets:HTMLElement[];
 
   declare readonly selectTarget:HTMLSelectElement;
+
+  declare readonly formTarget:HTMLFormElement;
+
+  private boundSubmitListener = this.onSubmit.bind(this);
+
+  formTargetConnected(target:HTMLFormElement) {
+    target.addEventListener('submit', this.boundSubmitListener);
+  }
+
+  formTargetDisconnected(target:HTMLFormElement) {
+    target.removeEventListener('submit', this.boundSubmitListener);
+  }
 
   add(event:Event) {
     const selectedValue = (event.target as HTMLSelectElement).value;
@@ -41,5 +54,23 @@ export default class extends Controller {
     }
 
     option.disabled = !option.disabled;
+  }
+
+  // Remove hidden sections on submit
+  onSubmit(event:SubmitEvent) {
+    if (this.formTarget.dataset.confirmed === 'true' || this.sectionTargets.length === 0) {
+      return true;
+    }
+
+    this.formTarget.dataset.confirmed = 'true';
+    this.sectionTargets.forEach((section) => {
+      if (section.hidden) {
+        section.remove();
+      }
+    });
+
+    event.preventDefault();
+    navigator.submitForm(this.formTarget, event?.submitter || undefined);
+    return false;
   }
 }
