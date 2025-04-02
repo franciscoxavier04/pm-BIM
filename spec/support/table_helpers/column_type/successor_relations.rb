@@ -30,49 +30,46 @@
 
 module TableHelpers
   module ColumnType
-    # Column to add predecessors to work packages like "wp1, wp2 with lag 2, wp3".
+    # Column to add successors to work packages like "wp1, wp2 with lag 2, wp3".
     #
     # Supported texts:
     #   - :wp
     #   - :wp with lag :int
-    #   - follows :wp
-    #   - follows :wp with lag :int
-    # They can be combined by separated them with commas: "follows wp1, wp2 with lag 2, wp3".
+    #   - precedes :wp
+    #   - precedes :wp with lag :int
+    # They can be combined by separated them with commas: "precedes wp1, wp2 with lag 2, wp3".
     #
     # Example:
     #
-    #   | subject   | predecessors            |
-    #   | main      |                         |
-    #   | follower  | follows main with lag 2 |
-    #   | follower2 | follows follower, main  |
-    #
-    # Adapted from (now deleted) original implementation
-    # in `spec/support/schedule_helpers/chart_builder.rb`.
-    class PredecessorRelations < Generic
+    #   | subject      | successors                   |
+    #   | predecessor2 | main, predecessor with lag 2 |
+    #   | predecessor  | precedes main                |
+    #   | main         |                              |
+    class SuccessorRelations < Generic
       def attributes_for_work_package(_attribute, _work_package)
         {}
       end
 
       def extract_data(_attribute, raw_header, work_package_data, _work_packages_data)
-        predecessors = work_package_data.dig(:row, raw_header)
-        predecessors = predecessors.split(",").map(&:strip).compact_blank
-        parse_predecessors(predecessors)
+        successors = work_package_data.dig(:row, raw_header)
+        successors = successors.split(",").map(&:strip).compact_blank
+        parse_successors(successors)
       end
 
-      def parse_predecessors(predecessors)
-        relations = predecessors.to_h do |predecessor|
-          relation = parse_predecessor(predecessor)
+      def parse_successors(successors)
+        relations = successors.to_h do |successor|
+          relation = parse_successor(successor)
           [relation[:with], relation]
         end
         { relations: }.compact_blank
       end
 
-      def parse_predecessor(predecessor)
-        case predecessor
-        when /^(?:follows)?\s*(.+?)(?: with lag (\d+))?\s*$/
+      def parse_successor(successor)
+        case successor
+        when /^(?:precedes)?\s*(.+?)(?: with lag (\d+))?\s*$/
           {
-            raw: predecessor,
-            type: :follows,
+            raw: successor,
+            type: :precedes,
             with: $1,
             lag: $2.to_i
           }
@@ -81,13 +78,13 @@ module TableHelpers
             dictionary: [
               ":wp",
               ":wp with lag :int",
-              "follows :wp",
-              "follows :wp with lag :int"
+              "precedes :wp",
+              "precedes :wp with lag :int"
             ]
           )
-          suggestions = spell_checker.correct(predecessor).map(&:inspect).join(" ")
+          suggestions = spell_checker.correct(successor).map(&:inspect).join(" ")
           did_you_mean = " Did you mean #{suggestions} instead?" if suggestions.present?
-          raise "unable to parse predecessor #{predecessor.inspect}.#{did_you_mean}"
+          raise "unable to parse successor #{successor.inspect}.#{did_you_mean}"
         end
       end
     end

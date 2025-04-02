@@ -34,10 +34,76 @@ RSpec.describe WorkPackageRelationsTab::ClosestRelation do
   let(:work_package) { build_stubbed(:work_package) }
   let(:today) { Time.zone.today }
 
-  def closest_relation(lag: 0, **wp_attributes)
+  def follows_relation(lag: 0, **wp_attributes)
     predecessor = build_stubbed(:work_package, **wp_attributes)
-    relation = build_stubbed(:follows_relation, from: work_package, to: predecessor, lag:)
+    build_stubbed(:follows_relation, from: work_package, to: predecessor, lag:)
+  end
+
+  def precedes_relation(lag: 0, **wp_attributes)
+    successor = build_stubbed(:work_package, **wp_attributes)
+    build_stubbed(:precedes_relation, from: work_package, to: successor, lag:)
+  end
+
+  def relates_relation(**wp_attributes)
+    related = build_stubbed(:work_package, **wp_attributes)
+    build_stubbed(:relates_relation, from: work_package, to: related)
+  end
+
+  def closest_relation(lag: 0, **wp_attributes)
+    relation = follows_relation(lag:, **wp_attributes)
     described_class.new(relation)
+  end
+
+  describe ".of" do
+    it "returns the closest relation of a list of follows relations" do
+      relations = [
+        follows_relation(due_date: 4.days.ago),
+        follows_relation(due_date: 4.days.ago, lag: 2)
+      ]
+      expect(described_class.of(work_package, relations)).to eq(relations.last)
+    end
+
+    it "ignores relations not being 'follows' relations" do
+      relations = [
+        follows_relation(due_date: 4.days.ago),
+        follows_relation(due_date: 4.days.ago, lag: 2),
+        relates_relation(due_date: today)
+      ]
+      expect(described_class.of(work_package, relations)).to eq(relations.second)
+    end
+
+    it "ignores 'follows' relations not having any dates" do
+      relations = [
+        follows_relation(start_date: nil, due_date: nil)
+      ]
+      expect(described_class.of(work_package, relations)).to be_nil
+    end
+
+    it "ignores child relations" do
+      child_relation = build_stubbed(:work_package, parent: work_package)
+      relations = [
+        child_relation
+      ]
+      expect(described_class.of(work_package, relations)).to be_nil
+    end
+
+    it "distinguishes between 'follows' and 'precedes' relations" do
+      relations = [
+        follows_relation(due_date: 4.days.ago),
+        follows_relation(due_date: 4.days.ago, lag: 2),
+        precedes_relation(due_date: today)
+      ]
+      expect(described_class.of(work_package, relations)).to eq(relations.second)
+    end
+
+    it "returns nil when there no 'follows' relations are given" do
+      relations = [
+        relates_relation(due_date: today),
+        precedes_relation(due_date: today)
+      ]
+      expect(described_class.of(work_package, relations)).to be_nil
+      expect(described_class.of(work_package, [])).to be_nil
+    end
   end
 
   describe "#<=>" do

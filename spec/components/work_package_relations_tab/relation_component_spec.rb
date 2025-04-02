@@ -43,92 +43,119 @@ RSpec.describe WorkPackageRelationsTab::RelationComponent, type: :component do
       child      |            | automatic       |
   TABLE
 
-  def render_component(**params)
-    render_inline(described_class.new(work_package:, **params))
+  def build_relation_item(type:, relation:, visibility: :visible, closest: false)
+    WorkPackageRelationsTab::RelationsMediator::RelationItem.new(type:, relation:, work_package:, visibility:, closest:)
   end
 
-  context "with child relations" do
+  def render_component(**params)
+    render_inline(described_class.new(**params))
+  end
+
+  context "with child relation item" do
     context "when visible" do
+      let(:relation_item) { build_relation_item(type: Relation::TYPE_CHILD, relation: child, visibility: :visible) }
+
       it "renders a title link" do
-        expect(render_component(relation: nil, child: child, visibility: :visible))
+        expect(render_component(relation_item:))
           .to have_link "child"
       end
 
       context "when editable" do
         it "renders an action menu" do
-          component = render_component(relation: nil, child: child, visibility: :visible, editable: true)
+          component = render_component(relation_item:, editable: true)
           expect(component).to have_menu # FIXME: aria-labelledby does not resolve here "Relation actions"
           expect(component).to have_selector :menuitem, "Delete relation"
+        end
+      end
+
+      context "when not editable" do
+        it "does not render an action menu" do
+          component = render_component(relation_item:, editable: false)
+          expect(component).not_to have_menu
         end
       end
     end
 
     context "when ghost" do
+      let(:relation_item) { build_relation_item(type: Relation::TYPE_CHILD, relation: child, visibility: :ghost) }
+
       it "does not render a title link" do
-        expect(render_component(relation: nil, child: child, visibility: :ghost))
+        expect(render_component(relation_item:))
           .to have_no_link "child"
       end
 
       it "renders a title and message without details" do
-        expect(render_component(relation: nil, child: child, visibility: :ghost))
-          .to have_text "Related work package"
-        expect(render_component(relation: nil, child: child, visibility: :ghost))
-          .to have_text "This is not visible to you due to permissions."
+        rendered_component = render_component(relation_item:)
+        expect(rendered_component).to have_text "Related work package"
+        expect(rendered_component).to have_text "This is not visible to you due to permissions."
       end
 
       it "does not render an action menu" do
-        expect(render_component(relation: nil, child: child, visibility: :ghost))
+        expect(render_component(relation_item:))
           .to have_no_menu
       end
     end
   end
 
   context "with follows relations" do
+    let(:relation) { _table.relation(predecessor: predecessor) }
+    let(:relation_item) { build_relation_item(type: Relation::TYPE_FOLLOWS, relation:, visibility: :visible) }
+
     context "when visible" do
       it "renders a title link" do
-        expect(render_component(relation: _table.relation(predecessor: predecessor), visibility: :visible))
-          .to have_link "predecessor"
+        rendered_component = render_component(relation_item:)
+        expect(rendered_component).to have_link "predecessor"
       end
 
       it "renders the lag" do
-        expect(render_component(relation: _table.relation(predecessor: predecessor), visibility: :visible))
-          .to have_text "Lag: 2 days"
+        rendered_component = render_component(relation_item:)
+        expect(rendered_component).to have_text "Lag: 2 days"
       end
 
       context "when editable" do
-        it "renders a action menu" do
-          component = render_component(relation: _table.relation(predecessor: predecessor), visibility: :visible, editable: true)
-          expect(component).to have_menu # FIXME: aria-labelledby does not resolve here "Relation actions"
-          expect(component).to have_selector :menuitem, "Edit relation"
-          expect(component).to have_selector :menuitem, "Delete relation"
+        it "renders an action menu" do
+          rendered_component = render_component(relation_item:, editable: true)
+          expect(rendered_component).to have_menu # FIXME: aria-labelledby does not resolve here "Relation actions"
+          expect(rendered_component).to have_selector :menuitem, "Edit relation"
+          expect(rendered_component).to have_selector :menuitem, "Delete relation"
+        end
+      end
+
+      context "when not editable" do
+        it "does not render an action menu" do
+          rendered_component = render_component(relation_item:, editable: false)
+          expect(rendered_component).not_to have_menu
         end
       end
     end
 
     context "when ghost" do
+      let(:relation_item) { build_relation_item(type: Relation::TYPE_FOLLOWS, relation:, visibility: :ghost) }
+
+      subject(:rendered_component) { render_component(relation_item:) }
+
       it "does not render a title link" do
-        expect(render_component(relation: _table.relation(predecessor: predecessor), visibility: :ghost))
-          .to have_no_link "child"
+        expect(rendered_component).to have_no_link "predecessor"
       end
 
       it "renders a title and message without details" do
-        expect(render_component(relation: _table.relation(predecessor: predecessor), visibility: :ghost))
-          .to have_text "Related work package"
-        expect(render_component(relation: _table.relation(predecessor: predecessor), visibility: :ghost))
-          .to have_text "This is not visible to you due to permissions."
+        expect(rendered_component).to have_text "Related work package"
+        expect(rendered_component).to have_text "This is not visible to you due to permissions."
       end
 
       it "does not render an action menu" do
-        expect(render_component(relation: _table.relation(predecessor: predecessor), visibility: :ghost))
-          .to have_no_menu
+        expect(rendered_component).to have_no_menu
       end
     end
 
     context "when closest" do
       it "always renders a closest label" do
-        expect(render_component(relation: _table.relation(predecessor: predecessor), visibility: :visible, closest: true))
+        relation_item = build_relation_item(type: Relation::TYPE_FOLLOWS, relation:, visibility: :visible, closest: true)
+        expect(render_component(relation_item:))
           .to have_primer_label "Closest", scheme: :primary
-        expect(render_component(relation: _table.relation(predecessor: predecessor), visibility: :ghost, closest: true))
+
+        relation_item = build_relation_item(type: Relation::TYPE_FOLLOWS, relation:, visibility: :ghost, closest: true)
+        expect(render_component(relation_item:))
           .to have_primer_label "Closest", scheme: :primary
       end
     end

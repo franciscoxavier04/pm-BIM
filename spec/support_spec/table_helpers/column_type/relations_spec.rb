@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,35 +28,36 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "rack/utils"
+require "spec_helper"
 
-class WorkPackages::SplitViewController < ApplicationController
-  # Authorization is checked in the find_work_package action
-  no_authorization_required! :update_counter, :get_relations_counter
-  before_action :find_work_package
+module TableHelpers::ColumnType
+  RSpec.describe "Relations" do
+    subject(:column_type) { described_class.new }
 
-  def update_counter
-    respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: [
-          WorkPackages::Details::UpdateCounterComponent
-            .new(work_package: @work_package, menu_name: params[:counter])
-            .render_as_turbo_stream(action: :replace, view_context:)
-        ]
-      end
+    def parsed_data(table)
+      TableHelpers::TableParser.new.parse(table)
     end
-  end
 
-  def get_relations_counter
-    mediator = WorkPackageRelationsTab::RelationsMediator.new(work_package: @work_package)
-    render json: { count: mediator.all_relations_count }
-  end
-
-  private
-
-  def find_work_package
-    @work_package = WorkPackage.visible.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    render_404 message: I18n.t(:error_work_package_id_not_found)
+    it "can merge relations from multiple relation columns" do
+      work_package_data = parsed_data(<<~TABLE).pluck(:relations)
+        | predecessors    | relates to |
+        | main            |            |
+        |                 | related wp |
+        | main with lag 3 | related wp |
+      TABLE
+      expect(work_package_data)
+        .to eq([
+                 {
+                   "main" => { raw: "main", type: :follows, with: "main", lag: 0 }
+                 },
+                 {
+                   "related wp" => { raw: "related wp", type: :relates, with: "related wp" }
+                 },
+                 {
+                   "main" => { raw: "main with lag 3", type: :follows, with: "main", lag: 3 },
+                   "related wp" => { raw: "related wp", type: :relates, with: "related wp" }
+                 }
+               ])
+    end
   end
 end
