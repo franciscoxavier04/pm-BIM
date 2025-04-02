@@ -109,7 +109,7 @@ RSpec.describe WorkPackages::Types::SubjectConfigurationComponent, type: :compon
     it "shows the enterprise banner" do
       render_component
 
-      expect(page).to have_test_selector("op-enterprise-banner-work-package-subject-generation")
+      expect(page).to have_enterprise_banner
     end
 
     it "disables only automatic mode selector", :aggregate_failures do
@@ -125,7 +125,7 @@ RSpec.describe WorkPackages::Types::SubjectConfigurationComponent, type: :compon
       it "shows the enterprise banner" do
         render_component
 
-        expect(page).to have_test_selector("op-enterprise-banner-work-package-subject-generation")
+        expect(page).to have_enterprise_banner
       end
 
       it "enables mode selectors", :aggregate_failures do

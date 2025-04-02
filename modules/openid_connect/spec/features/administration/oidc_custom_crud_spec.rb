@@ -175,7 +175,8 @@ RSpec.describe "OIDC administration CRUD",
   context "without EE", without_ee: %i[sso_auth_providers] do
     it "renders the upsale page" do
       visit "/admin/openid_connect/providers"
-      expect(page).to have_text "OpenID providers is an Enterprise  add-on"
+      expect(page).to have_enterprise_banner
+      expect(page).to have_text "Available only through the Premium enterprise plan"
     end
   end
 end

@@ -59,7 +59,9 @@ export class BannersService {
     return url.toString();
   }
 
-  public conditional(feature:string, bannersVisible?:() => void, bannersNotVisible?:() => void) {
+  public async conditional(feature:string, bannersVisible?:() => void, bannersNotVisible?:() => void) {
+    await this.configuration.initialize();
+
     if (this.showBannerFor(feature)) {
       this.callMaybe(bannersVisible);
     } else {

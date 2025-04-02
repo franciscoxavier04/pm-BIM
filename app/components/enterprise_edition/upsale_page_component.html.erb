@@ -3,7 +3,7 @@
   <% helpers.write_trial_key_to_gon if !EnterpriseToken.current.present? %>
  <% end %>
 
-<div class="op-enterprise-upsale-page">
+<div class="op-enterprise-upsale-page" data-test-selector="op-enterprise-upsale-page">
   <%=
     render(Primer::OpenProject::FlexLayout.new(justify_content: :center, align_items: :center)) do |flex|
       flex.with_column do

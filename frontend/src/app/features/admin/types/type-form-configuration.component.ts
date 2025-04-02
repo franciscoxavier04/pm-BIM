@@ -181,7 +181,7 @@ export class TypeFormConfigurationComponent extends UntilDestroyedMixin implemen
   }
 
   editQuery(group:TypeGroup):void {
-    this.typeBanner.conditional(
+    void this.typeBanner.conditional(
       'edit_attribute_groups',
       () => this.typeBanner.showEEOnlyHint(),
       () => {

@@ -36,7 +36,7 @@ RSpec.describe EnterpriseEdition::BannerComponent, type: :component do
   let(:description) { "Some description" }
   let(:expected_description) { description }
   let(:href) { "https://www.example.org" }
-  let(:component_test_selector) { "op-enterprise-banner-some-enterprise-feature" }
+  let(:component_test_selector) { "op-enterprise-banner" }
   let(:features) { nil }
   let(:enforce_available_locales) { I18n.config.enforce_available_locales }
   let(:i18n_upsale) do
@@ -245,13 +245,22 @@ RSpec.describe EnterpriseEdition::BannerComponent, type: :component do
     let(:static_links) do
       {
         enterprise_features: {
+          default: {
+            href: "https://example.com"
+          },
           some_enterprise_feature: {}
         }
       }
     end
 
-    it "raises an error" do
-      expect { render_component_in_mo }.to raise_error(RuntimeError)
+    it "uses the default" do
+      render_component_in_mo
+
+      component = find_test_selector(component_test_selector)
+
+      expect(component).to have_text(expected_title)
+      expect(component).to have_text(expected_description)
+      expect(component).to have_link("More information", href: "https://example.com")
     end
   end
 end

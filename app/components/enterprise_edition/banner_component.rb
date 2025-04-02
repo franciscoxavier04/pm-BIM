@@ -51,7 +51,8 @@ module EnterpriseEdition
       @system_arguments = system_arguments
       @system_arguments[:tag] = :div
       @system_arguments[:mb] ||= 2
-      @system_arguments[:test_selector] = "op-enterprise-banner-#{feature_key.to_s.tr('_', '-')}"
+      @system_arguments[:id] = "op-enterprise-banner-#{feature_key.to_s.tr('_', '-')}"
+      @system_arguments[:test_selector] = "op-enterprise-banner"
       super
 
       self.feature_key = feature_key
