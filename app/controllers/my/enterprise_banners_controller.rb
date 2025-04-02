@@ -28,24 +28,38 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 class My::EnterpriseBannersController < ApplicationController
-  before_action :require_login
+  include OpTurbo::ComponentStream
 
-  authorization_checked! :dismiss
+  before_action :require_login
+  before_action :get_feature_key
+
+  authorization_checked! :dismiss, :show
+
+  def show
+    dismissable = ActiveRecord::Type::Boolean.new.cast(params[:dismissable])
+
+    respond_to do |format|
+      format.html do
+        render(EnterpriseEdition::BannerComponent.new(@feature_key, dismissable:), layout: false)
+      end
+    end
+  end
 
   def dismiss
-    feature_key = params[:feature_key].to_s
-
     pref = User.current.pref
-    pref.dismiss_banner(feature_key)
+    pref.dismiss_banner(@feature_key)
     if pref.save
-      respond_to do |format|
-        format.turbo_stream do
-          id = "op-enterprise-banner-#{feature_key.tr('_', '-')}"
-          render turbo_stream: turbo_stream.remove(id)
-        end
-      end
+      remove_via_turbo_stream(component: EnterpriseEdition::BannerComponent.new(@feature_key))
+      respond_with_turbo_streams
     else
       respond_with_flash_error(message: call.message)
     end
+  end
+
+  private
+
+  def get_feature_key
+    @feature_key = params[:feature_key].to_sym
+    render_400 unless OpenProject::Token.lowest_plan_for(@feature_key)
   end
 end

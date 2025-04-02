@@ -60,9 +60,6 @@ export class BoardListContainerComponent extends UntilDestroyedMixin implements 
     addList: this.I18n.t('js.boards.add_list'),
     unnamedList: this.I18n.t('js.boards.label_unnamed_list'),
     hiddenListWarning: this.I18n.t('js.boards.text_hidden_list_warning'),
-    teaser_text: this.I18n.t('js.boards.upsale.teaser_text'),
-    upgrade_to_ee_text: this.I18n.t('js.boards.upsale.upgrade'),
-    more_info_link: enterpriseDocsUrl.boards,
   };
 
   /** Container reference */

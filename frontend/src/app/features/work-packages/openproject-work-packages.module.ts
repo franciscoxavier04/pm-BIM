@@ -404,6 +404,7 @@ import {
   WorkPackageSplitViewEntryComponent,
 } from 'core-app/features/work-packages/routing/wp-split-view/wp-split-view-entry.component';
 import { OpWpDatePickerModalComponent } from 'core-app/shared/components/datepicker/wp-date-picker-modal/wp-date-picker.modal';
+import { OpenprojectEnterpriseModule } from 'core-app/features/enterprise/openproject-enterprise.module';
 
 @NgModule({
   imports: [
@@ -434,6 +435,7 @@ import { OpWpDatePickerModalComponent } from 'core-app/shared/components/datepic
     OpenprojectStoragesModule,
 
     WorkPackageIsolatedQuerySpaceDirective,
+    OpenprojectEnterpriseModule,
   ],
   providers: [
     // Notification service

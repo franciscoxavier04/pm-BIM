@@ -34,6 +34,7 @@ module EnterpriseEdition
   # It will only be rendered if necessary.
   class BannerComponent < ApplicationComponent
     include OpPrimer::ComponentHelpers
+    include OpTurbo::Streamable
     include PlanForFeature
 
     # @param feature_key [Symbol, NilClass] The key of the feature to show the banner for.
@@ -50,14 +51,17 @@ module EnterpriseEdition
       @system_arguments = system_arguments
       @system_arguments[:tag] = :div
       @system_arguments[:mb] ||= 2
-      @system_arguments[:id] = "op-enterprise-banner-#{feature_key.to_s.tr('_', '-')}"
-      @system_arguments[:test_selector] = @system_arguments[:id]
+      @system_arguments[:test_selector] = "op-enterprise-banner-#{feature_key.to_s.tr('_', '-')}"
       super
 
       self.feature_key = feature_key
       self.i18n_scope = i18n_scope
       @dismissable = dismissable
       @dismiss_key = dismiss_key
+    end
+
+    def wrapper_key
+      "enterprise_banner_#{feature_key}"
     end
 
     private
