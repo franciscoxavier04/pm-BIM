@@ -136,6 +136,14 @@ RSpec.describe "work package export", :js, :selenium do
     open_export_dialog!(query_target)
   end
 
+  def expect_selected_columns(columns = %w[])
+    selected_columns = page.within(".op-draggable-autocomplete--selected") do
+      all(".op-draggable-autocomplete--item-text").map(&:text)
+    end
+
+    expect(selected_columns).to eq(columns)
+  end
+
   context "with Query options" do
     let(:export_type) { I18n.t("export.dialog.format.options.pdf.label") }
     let(:expected_mime_type) { :pdf }
@@ -230,7 +238,19 @@ RSpec.describe "work package export", :js, :selenium do
     let!(:query) { create(:query, name: "saved settings query", user: current_user, project:) }
     let(:export_type) { I18n.t("export.dialog.format.options.csv.label") }
     let(:expected_mime_type) { :csv }
-    let(:expected_params) { default_expected_params.merge({ title: "saved settings query", show_descriptions: "true" }) }
+    let(:expected_columns) { %w[ID Subject Type Status Assignee Priority] }
+    let(:expected_params) do
+      default_expected_params.merge(
+        {
+          title: "saved settings query",
+          show_descriptions: "true",
+          columns: %w[subject type status assigned_to priority]
+        }
+      )
+    end
+    let(:query_columns) do
+      query.displayable_columns.filter_map { |c| c.name.to_s if expected_columns.include?(c.name.to_s) }
+    end
 
     before do
       open_export_dialog!
@@ -240,26 +260,38 @@ RSpec.describe "work package export", :js, :selenium do
       # Ensure that the option to save export settings is there and both checkboxes are unchecked
       expect(page.find_test_selector("op-work-packages-export-dialog-form-save-export-settings")).not_to be_checked
       expect(page.find_test_selector("show-descriptions-csv")).not_to be_checked
+      expect_selected_columns(expected_columns)
 
       # Save settings and include descriptions
       check I18n.t("export.dialog.save_export_settings.label")
       check I18n.t("export.dialog.xls.include_descriptions.label")
+      # Remove the first column
+      page.within(".op-draggable-autocomplete--selected") do
+        first(".op-draggable-autocomplete--remove-item").click
+      end
 
       export_and_reopen_dialog!
       # Last settings are remembered
       expect(page.find_test_selector("show-descriptions-csv")).to be_checked
       expect(page.find_test_selector("op-work-packages-export-dialog-form-save-export-settings")).to be_checked
+      expect_selected_columns(expected_columns - ["ID"])
 
       # Uncheck both checkboxes again (do not include descriptions, do not save changes)
       uncheck I18n.t("export.dialog.save_export_settings.label")
       uncheck I18n.t("export.dialog.xls.include_descriptions.label")
-      expected_params[:show_descriptions] = "false" # adjust expectation
-
+      # Remove the last column
+      page.within(".op-draggable-autocomplete--selected") do
+        all(".op-draggable-autocomplete--remove-item").last.click
+      end
+      # Adjust expectation and export
+      expected_params[:show_descriptions] = "false"
+      expected_params[:columns].pop
       export_and_reopen_dialog!
 
       # Last saved settings are restored
       expect(page.find_test_selector("show-descriptions-csv")).to be_checked
       expect(page.find_test_selector("op-work-packages-export-dialog-form-save-export-settings")).to be_checked
+      expect_selected_columns(expected_columns - ["ID"])
     end
   end
 
