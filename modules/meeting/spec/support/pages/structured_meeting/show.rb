@@ -331,7 +331,7 @@ module Pages::StructuredMeeting
 
     def reopen_meeting
       click_on("Reopen meeting")
-      expect(page).to have_link("Mark as in progress")
+      expect(page).to have_link("Start meeting")
     end
 
     def close_dialog
