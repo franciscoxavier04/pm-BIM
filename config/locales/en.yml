@@ -2063,6 +2063,8 @@ en:
         description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       conditional_highlighting:
         description: "Need certain work packages to stand out from the mass? Use conditional highlighting in the work packages table."
+      work_package_query_relation_columns:
+        description: "Need to see relations or child elements in the work package list?"
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:

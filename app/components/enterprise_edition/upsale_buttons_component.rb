@@ -88,13 +88,9 @@ module EnterpriseEdition
 
     def enterprise_link
       href_value = OpenProject::Static::Links.links.dig(:enterprise_features, feature_key, :href)
+      default_value = OpenProject::Static::Links.links.dig(:enterprise_features, :default, :href)
 
-      unless href_value
-        raise "A link for this feature needs to be provided " \
-              "in OpenProject::Static::Links.enterprise_features[#{feature_key}][:href]"
-      end
-
-      href_value
+      href_value || default_value
     end
   end
 end
