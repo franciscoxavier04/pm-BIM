@@ -1,8 +1,9 @@
 import { StreamActions, StreamElement } from '@hotwired/turbo';
 import { announce } from '@primer/live-region-element';
+
 export function registerAriaStreamAction() {
   StreamActions.aria = function dialogStreamAction(this:StreamElement) {
-    document.addEventListener("turbo:before-stream-render", () => {
+    setTimeout(() => {
       const message = this.getAttribute('message')??'';
       const type = this.getAttribute('type')??'polite';
       if (type === 'assertive') {
@@ -14,6 +15,6 @@ export function registerAriaStreamAction() {
           politeness: 'polite',
         });
       }
-    });
+    }, 5000);
   };
 }
