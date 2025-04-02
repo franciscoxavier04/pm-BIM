@@ -242,7 +242,7 @@ module Storages
     def extract_origin_user_id(token)
       auth_strategy = ::Storages::Peripherals::Registry
                         .resolve("#{self}.authentication.specific_bearer_token")
-                        .with_token(token.access_token)
+                        .with_token(token)
       ::Storages::Peripherals::Registry
         .resolve("#{self}.queries.user")
         .call(auth_strategy:, storage: self)

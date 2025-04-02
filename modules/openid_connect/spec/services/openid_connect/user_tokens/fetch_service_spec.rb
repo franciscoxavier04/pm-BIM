@@ -55,7 +55,6 @@ RSpec.describe OpenIDConnect::UserTokens::FetchService, :webmock do
                                             refresh_token: "refresh-token-exchanged",
                                             audiences: [aud]))
     end
-    allow(OpenProject::Notifications).to receive(:send)
   end
 
   describe "#access_token_for" do
@@ -65,33 +64,6 @@ RSpec.describe OpenIDConnect::UserTokens::FetchService, :webmock do
 
     it "returns the stored access token" do
       expect(result.value!).to eq(access_token)
-    end
-
-    it "emits appropriate event" do
-      result.value!
-
-      expect(OpenProject::Notifications).to have_received(:send).with(
-        described_class::TOKEN_OBTAINED_EVENT,
-        token: instance_of(OpenIDConnect::UserToken),
-        audience: queried_audience
-      ).once
-    end
-
-    it "does not create RemoteIdentity if storage with appropriate audience is absent" do
-      create(:nextcloud_storage, storage_audience: "not-expected-audience")
-      expect { result }.not_to change(RemoteIdentity, :count)
-    end
-
-    context "when OpenProject notification raises an error" do
-      let(:error) { StandardError.new("I am an error") }
-
-      before do
-        allow(OpenProject::Notifications).to receive(:send).and_raise(error)
-      end
-
-      it "raises the same error" do
-        expect { result }.to raise_error(error)
-      end
     end
 
     context "when the token doesn't expire and can't be parsed as JWT" do

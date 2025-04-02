@@ -116,7 +116,8 @@ module OAuthClients
           oauth_client_token.save!
 
           RemoteIdentities::CreateService
-            .call(user: @user, integration: @oauth_client.integration, token: oauth_client_token, force_update: true)
+            .new(user: @user, integration: @oauth_client.integration, auth_source: @oauth_client)
+            .call(token: oauth_client_token.access_token, force_update: true)
             .on_failure do |e|
               id_create_error = e
               raise ActiveRecord::Rollback

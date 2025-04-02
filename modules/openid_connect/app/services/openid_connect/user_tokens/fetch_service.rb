@@ -38,8 +38,6 @@ module OpenIDConnect
       include Dry::Monads::Result(TokenOperationError)
       include Dry::Monads::Do.for(:access_token_for)
 
-      TOKEN_OBTAINED_EVENT = "access_token_obtained"
-
       attr_reader :user
 
       def initialize(user:,
@@ -68,15 +66,10 @@ module OpenIDConnect
         token = yield token_with_audience(audience)
         token = yield @token_refresh.call(token) if expired?(token)
 
-        emit_event(token, audience)
         Success(token.access_token)
       end
 
       private
-
-      def emit_event(token, audience)
-        OpenProject::Notifications.send(TOKEN_OBTAINED_EVENT, audience:, token:)
-      end
 
       def token_with_audience(aud)
         token = @user.oidc_user_tokens.with_audience(aud).first

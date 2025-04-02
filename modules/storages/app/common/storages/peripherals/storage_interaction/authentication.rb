@@ -63,7 +63,7 @@ module Storages
         # - :error If an unexpected error occurred
         def self.authorization_state(storage:, user:)
           selector = AuthenticationMethodSelector.new(storage:, user:)
-          return :not_connected if RemoteIdentity.where(integration: storage, user:).none? && selector.storage_oauth?
+          return :not_connected if RemoteIdentity.where(integration: storage, user:).none?
 
           auth_strategy = Registry.resolve("#{storage}.authentication.user_bound").call(user:, storage:)
 

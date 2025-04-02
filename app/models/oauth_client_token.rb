@@ -31,7 +31,6 @@
 class OAuthClientToken < ApplicationRecord
   belongs_to :user, optional: false
   belongs_to :oauth_client, optional: false
-  alias_method :auth_source, :oauth_client
 
   validates :user, uniqueness: { scope: :oauth_client }
 

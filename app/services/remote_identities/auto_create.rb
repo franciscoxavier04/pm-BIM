@@ -29,39 +29,43 @@
 #++
 
 module RemoteIdentities
-  class CreateService
-    def initialize(user:, integration:, auth_source:)
-      @integration = integration
+  class AutoCreate
+    IntegrationConfig = Data.define(:name, :integration_fetcher, :token_fetcher)
 
-      @model = RemoteIdentity.find_or_initialize_by(user:, auth_source:, integration:)
-    end
-
-    def call(token:, force_update: false)
-      if @model.new_record? || force_update
-        user_id = @integration.extract_origin_user_id(token)
-        return user_id if user_id.failure?
-
-        @model.origin_user_id = user_id.result
-        return success unless @model.changed?
-        return failure unless @model.save
-
-        OpenProject::Notifications.send(
-          OpenProject::Events::REMOTE_IDENTITY_CREATED,
-          integration: @integration
-        )
+    class << self
+      def register(name, integration_fetcher:, token_fetcher:)
+        configs << IntegrationConfig.new(name:, integration_fetcher:, token_fetcher:)
       end
 
-      success
-    end
+      def handle_login(user)
+        configs.each do |config|
+          config.integration_fetcher.call(user).each do |integration|
+            token = config.token_fetcher.call(user, integration)
+            create_remote_identity(user:, integration:, token:)
+          end
+        rescue StandardError => e
+          error("Unhandled exception while creating #{config.name} RemoteIdentity for user #{user.id}: #{e.message}")
+        end
+      end
 
-    private
+      private
 
-    def success
-      ServiceResult.success(result: @model)
-    end
+      def configs
+        @configs ||= []
+      end
 
-    def failure
-      ServiceResult.failure(result: @model, errors: @model.errors)
+      def create_remote_identity(user:, integration:, token:)
+        RemoteIdentities::CreateService
+          .new(user:, integration:, auth_source: user.authentication_provider)
+          .call(token:)
+          .on_failure do |e|
+            error("RemoteIdentity creation for user #{user.id} failed: #{e.message}")
+          end
+      end
+
+      def error(message)
+        Rails.logger.error(message)
+      end
     end
   end
 end

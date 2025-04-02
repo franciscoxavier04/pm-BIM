@@ -135,21 +135,26 @@ module OpenProject::Storages
         ) do |payload|
           ::Storages::HealthService.new(storage: payload[:storage]).healthy
         end
+      end
+    end
 
-        OpenProject::Notifications.subscribe(
-          ::OpenIDConnect::UserTokens::FetchService::TOKEN_OBTAINED_EVENT
-        ) do |payload|
-          audience = payload[:audience]
-          token = payload[:token]
-          storage = Storages::Storage.with_audience(audience).first
-          if storage
-            RemoteIdentities::CreateService
-              .call(user: token.user, integration: storage, token:)
-              .on_failure do |failure|
-                Rails.logger.error("RemoteIdentity creation for user #{token.user.id} failed: #{failure.message}")
-              end
+    initializer "openproject_storages.remote_identity_setup" do
+      Rails.application.config.to_prepare do
+        RemoteIdentities::AutoCreate.register(
+          :storages,
+          integration_fetcher: ->(user) do
+            Storages::NextcloudStorage.all.select do |storage|
+              storage.configured? &&
+                Storages::Peripherals::StorageInteraction::AuthenticationMethodSelector.new(user:, storage:).sso?
+            end
+          end,
+          token_fetcher: ->(user, storage) do
+            OpenIDConnect::UserTokens::FetchService
+              .new(user:)
+              .access_token_for(audience: storage.audience)
+              .value! # should we do something else than raising on error?
           end
-        end
+        )
       end
     end
 

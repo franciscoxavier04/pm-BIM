@@ -110,6 +110,7 @@ RSpec.describe OpenProject::OpenIDConnect::Hooks::Hook do
 
     before do
       allow(OpenIDConnect::UserTokens::CreateService).to receive(:new).and_return(create_service)
+      allow(RemoteIdentities::AutoCreate).to receive(:handle_login)
       session_mapper.as_stubbed_const
     end
 
@@ -126,6 +127,12 @@ RSpec.describe OpenProject::OpenIDConnect::Hooks::Hook do
       )
     end
 
+    it "calls the remote identity auto-create hook" do
+      call_hook
+
+      expect(RemoteIdentities::AutoCreate).to have_received(:handle_login).with(user)
+    end
+
     it "calls SessionMapper" do
       call_hook
 
@@ -140,6 +147,12 @@ RSpec.describe OpenProject::OpenIDConnect::Hooks::Hook do
 
         expect(OpenIDConnect::UserTokens::CreateService).not_to have_received(:new)
         expect(create_service).not_to have_received(:call)
+      end
+
+      it "does not call the remote identity auto-create hook" do
+        call_hook
+
+        expect(RemoteIdentities::AutoCreate).not_to have_received(:handle_login)
       end
 
       it "calls SessionMapper anyways" do
@@ -167,6 +180,12 @@ RSpec.describe OpenProject::OpenIDConnect::Hooks::Hook do
           known_audiences: [OpenIDConnect::UserToken::IDP_AUDIENCE],
           clear_previous: true
         )
+      end
+
+      it "calls the remote identity auto-create hook" do
+        call_hook
+
+        expect(RemoteIdentities::AutoCreate).to have_received(:handle_login).with(user)
       end
 
       it "calls SessionMapper" do

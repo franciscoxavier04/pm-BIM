@@ -64,12 +64,6 @@ module Storages
                   end
                 end
               end
-
-              private
-
-              def oidc_provider_for(user)
-                user.authentication_provider.is_a?(OpenIDConnect::Provider)
-              end
             end
           end
         end
