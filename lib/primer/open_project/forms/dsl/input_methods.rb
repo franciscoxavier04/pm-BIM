@@ -17,10 +17,6 @@ module Primer
             add_input ColorSelectInput.new(builder:, form:, **, &)
           end
 
-          def text_with_link(**)
-            add_input TextWithLinkInput.new(builder:, form:, **)
-          end
-
           def html_content(**, &)
             add_input HtmlContentInput.new(builder:, form:, **, &)
           end
