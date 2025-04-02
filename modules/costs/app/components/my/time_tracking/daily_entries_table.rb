@@ -32,6 +32,7 @@ module My
   module TimeTracking
     class DailyEntriesTable < OpPrimer::BorderBoxTableComponent
       columns :time, :hours, :subject, :project, :activity, :comments
+      main_column :time, :subject, :project
 
       def row_class
         TimeEntryRow
