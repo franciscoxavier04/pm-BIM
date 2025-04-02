@@ -29,22 +29,19 @@
 #++
 
 module MeetingSections
-  class BacklogComponent < ApplicationComponent
+  class Backlogs::HeaderComponent < ApplicationComponent
     include ApplicationHelper
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(meeting:, form_hidden: true, form_type: :simple)
+    def initialize(backlog:, box: nil)
       super
 
-      @meeting = meeting
-      @form_hidden = form_hidden
-      @form_type = form_type
-      @backlog = meeting.backlog
-    end
-
-    def empty?
-      @meeting.agenda_items.empty? && @meeting.sections.empty?
+      # binding.pry
+      @backlog = backlog
+      @meeting = backlog.meeting
+      @box = box
+      @collapsed = collapsed?
     end
 
     private
@@ -53,28 +50,36 @@ module MeetingSections
       !@meeting.closed?
     end
 
-    def wrapper_data_attributes
-      {
-        controller: "generic-drag-and-drop",
-        "application-target": "dynamic"
-      }
+    def collapsed?
+      if @meeting.open?
+        false
+      elsif @meeting.in_progress?
+        true
+      end
     end
 
-    def drop_target_config
-      {
-        "is-drag-and-drop-target": true,
-        "target-container-accessor": ".Box > ul", # the accessor of the container that contains the drag and drop items
-        "target-id": @backlog.id, # the id of the target
-        "target-allowed-drag-type": "agenda-item" # the type of dragged items which are allowed to be dropped in this target
-      }
-    end
-
-    def insert_target_modified?
-      true
-    end
-
-    def insert_target_modifier_id
-      "meeting-section-new-item"
-    end
+    # def wrapper_data_attributes
+    #   {
+    #     controller: "generic-drag-and-drop",
+    #     "application-target": "dynamic"
+    #   }
+    # end
+    #
+    # def drop_target_config
+    #   {
+    #     "is-drag-and-drop-target": true,
+    #     "target-container-accessor": ".Box > ul", # the accessor of the container that contains the drag and drop items
+    #     # "target-id": @backlog.id, # the id of the target
+    #     "target-allowed-drag-type": "agenda-item" # the type of dragged items which are allowed to be dropped in this target
+    #   }
+    # end
+    #
+    # def insert_target_modified?
+    #   true
+    # end
+    #
+    # def insert_target_modifier_id
+    #   "meeting-section-new-item"
+    # end
   end
 end

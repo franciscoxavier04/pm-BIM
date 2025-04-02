@@ -3,7 +3,11 @@
     render(border_box_container(mt: 3, data: drag_and_drop_target_config)) do |component|
       if render_section_wrapper?
         component.with_header(font_weight: :bold, pl: 0) do
-          render(MeetingSections::HeaderComponent.new(meeting_section: @meeting_section, state: @state, expanded: @expanded))
+          render(MeetingSections::HeaderComponent.new(meeting_section: @meeting_section, state: @state))
+        end
+      elsif render_backlog? && !@meeting.closed?
+        component.with_header do
+          render(MeetingSections::Backlogs::HeaderComponent.new(backlog: @meeting_section, box: component))
         end
       end
       if render_new_button_in_section?
@@ -17,7 +21,7 @@
             end
           end
         end
-      elsif @expanded
+      else
         first_and_last = [@meeting_agenda_items.first, @meeting_agenda_items.last]
         @meeting_agenda_items.each do |agenda_item|
           render(

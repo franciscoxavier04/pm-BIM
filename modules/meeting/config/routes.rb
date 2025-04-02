@@ -119,7 +119,6 @@ Rails.application.routes.draw do
         get :cancel_edit
         put :drop
         put :move
-        get :toggle
       end
     end
     resources :outcomes, controller: "meeting_outcomes" do

@@ -1,0 +1,7 @@
+<%=
+  component_wrapper do
+    if show?
+      render(Primer::OpenProject::BorderBox::CollapsibleHeader.new(title: I18n.t("label_agenda_backlog"), box: @box, description: I18n.t("text_agenda_backlog"), count: @backlog.agenda_items.count, collapsed: @collapsed))
+    end
+  end
+%>

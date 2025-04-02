@@ -14,29 +14,11 @@
           end
         end
 
-        if @meeting_section.agenda_items_sum_duration_in_minutes > 0 && !backlog?
+        if @meeting_section.agenda_items_sum_duration_in_minutes > 0
           grid.with_area(:duration, Primer::Beta::Text, color: :subtle, mr: 1) do
             render(Primer::Beta::Text.new(font_weight: :normal, color: :subtle)) do
               render(OpenProject::Common::DurationComponent.new(@meeting_section.agenda_items_sum_duration_in_minutes, :minutes, abbreviated: true))
             end
-          end
-        end
-
-        if backlog?
-          grid.with_area(:duration, ml: 1, mr: 1, classes: "backlog-header") do
-            concat(render(Primer::Beta::Counter.new(count: @meeting_agenda_items.count, scheme: :primary, mr: 1)))
-            concat(
-              render(
-                Primer::Beta::IconButton.new(
-                  tag: :a,
-                  scheme: :invisible,
-                  icon: @expanded ? "chevron-up" : "chevron-down",
-                  "aria-label": I18n.t(:label_agenda_backlog_toggle),
-                  href: toggle_meeting_section_path(@meeting, @meeting_section, expanded: @expanded),
-                  data: { turbo_stream: true }
-                )
-              )
-            )
           end
         end
 
@@ -54,14 +36,6 @@
               add_work_package_action(menu)
               menu.with_divider
               delete_action_item(menu)
-            end
-          end
-        end
-
-        if backlog? && @expanded
-          grid.with_area(:description, tag: :span, classes: "hide-when-print hidden-for-mobile") do
-            render(Primer::Beta::Text.new(font_weight: :normal, color: :subtle)) do
-              I18n.t(:text_agenda_backlog)
             end
           end
         end

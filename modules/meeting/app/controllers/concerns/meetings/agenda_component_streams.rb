@@ -202,14 +202,6 @@ module Meetings
         update_new_button_via_turbo_stream(disabled: false) if form_hidden == true
       end
 
-      def update_backlog_via_turbo_stream(meeting: @meeting)
-        update_via_turbo_stream(
-          component: MeetingSections::BacklogComponent.new(
-            meeting:
-          )
-        )
-      end
-
       def update_item_via_turbo_stream(state: :show, meeting_agenda_item: @meeting_agenda_item, display_notes_input: nil)
         replace_via_turbo_stream(
           component: MeetingAgendaItems::ItemComponent.new(
@@ -348,12 +340,19 @@ module Meetings
         end
       end
 
-      def update_section_header_via_turbo_stream(meeting_section: @meeting_section, state: :show, expanded: true)
+      def update_section_header_via_turbo_stream(meeting_section: @meeting_section, state: :show)
         update_via_turbo_stream(
           component: MeetingSections::HeaderComponent.new(
             meeting_section:,
-            state:,
-            expanded:
+            state:
+          )
+        )
+      end
+
+      def update_backlog_via_turbo_stream(meeting: @meeting)
+        update_via_turbo_stream(
+          component: MeetingSections::Backlogs::ContainerComponent.new(
+            meeting: meeting
           )
         )
       end

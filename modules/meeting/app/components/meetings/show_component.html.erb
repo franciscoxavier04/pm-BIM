@@ -17,7 +17,7 @@
             end
 
             agenda.with_row do
-              render(MeetingSections::BacklogComponent.new(meeting: @meeting))
+              render(MeetingSections::Backlogs::ContainerComponent.new(meeting: @meeting))
             end
 
             agenda.with_row(mt: 3, display: [:block, nil, :none]) do
