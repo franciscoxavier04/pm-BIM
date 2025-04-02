@@ -215,8 +215,8 @@ fi:
         new_date_time: "New date/time"
     label_mail_all_participants: "Send email to all participants"
     types:
-      classic: "Classic"
-      classic_text: "Organize your meeting as a single formattable text agenda and protocol."
+      classic: "Classic (unsupported)"
+      classic_text: "Note: Classic meetings will be removed in the next version of OpenProject."
       structured: "Structured"
       one_time: "One-time"
       recurring: "Recurring"

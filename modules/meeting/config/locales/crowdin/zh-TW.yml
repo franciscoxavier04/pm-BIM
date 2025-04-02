@@ -213,8 +213,8 @@ zh-TW:
         new_date_time: "新日期/時間"
     label_mail_all_participants: "發送電子郵件給所有參與者"
     types:
-      classic: "經典"
-      classic_text: "將會議組織為單一可格式化的文字議程和規程。"
+      classic: "Classic (unsupported)"
+      classic_text: "Note: Classic meetings will be removed in the next version of OpenProject."
       structured: "結構化"
       one_time: "一次性"
       recurring: "重覆"

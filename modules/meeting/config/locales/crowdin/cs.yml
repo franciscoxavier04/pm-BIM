@@ -219,8 +219,8 @@ cs:
         new_date_time: "Nové datum/čas"
     label_mail_all_participants: "Poslat e-mail všem účastníkům"
     types:
-      classic: "Klasické"
-      classic_text: "Organize your meeting as a single formattable text agenda and protocol."
+      classic: "Classic (unsupported)"
+      classic_text: "Note: Classic meetings will be removed in the next version of OpenProject."
       structured: "Strukturované"
       one_time: "Jednorázový"
       recurring: "Opakované"

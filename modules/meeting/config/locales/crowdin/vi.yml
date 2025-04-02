@@ -213,8 +213,8 @@ vi:
         new_date_time: "Ngày/giờ mới"
     label_mail_all_participants: "Gửi email đến tất cả người tham gia"
     types:
-      classic: "Cổ điển"
-      classic_text: "Tổ chức cuộc họp của bạn như một chương trình nghị sự đơn và biên bản định dạng văn bản."
+      classic: "Classic (unsupported)"
+      classic_text: "Note: Classic meetings will be removed in the next version of OpenProject."
       structured: "Đã cấu trúc"
       one_time: "Một lần"
       recurring: "Định kỳ"

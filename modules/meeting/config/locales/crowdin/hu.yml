@@ -215,8 +215,8 @@ hu:
         new_date_time: "Új időpont"
     label_mail_all_participants: "Email küldése minden résztvevőnek"
     types:
-      classic: "Szokásos"
-      classic_text: "Organize your meeting as a single formattable text agenda and protocol."
+      classic: "Classic (unsupported)"
+      classic_text: "Note: Classic meetings will be removed in the next version of OpenProject."
       structured: "Structured"
       one_time: "One-time"
       recurring: "Recurring"

@@ -215,8 +215,8 @@ nl:
         new_date_time: "Nieuwe datum/tijd"
     label_mail_all_participants: "E-mail verzenden naar alle deelnemers"
     types:
-      classic: "Klassiek"
-      classic_text: "Organiseer uw vergadering met een opmaakbare tekstagenda en protocol."
+      classic: "Classic (unsupported)"
+      classic_text: "Note: Classic meetings will be removed in the next version of OpenProject."
       structured: "Gestructureerd"
       one_time: "Eenmalig"
       recurring: "Terugkerend"
