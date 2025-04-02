@@ -143,7 +143,7 @@ The dark mode for OpenProject is a personal setting to display the application i
 
 A dashboard is defined as an overview page in a software. In OpenProject, you have several options to create dashboards:
 
-1. You have the [My Page](#my-page), which shows your personal customized [widgets](#widget) on one page, for example a calendar or work package reports.
+1. You have the [My page](#my-page), which shows your personal customized [widgets](#widget) on one page, for example a calendar or work package reports.
 
 2. You have the [project overview](#project-overview) dashboard, which gives you an overview of your project. Please note that only project admins can add and remove widgets to the project overview.
 
@@ -234,9 +234,9 @@ In OpenProject, a member is defined as a single person in a project. Project mem
 
 A module in OpenProject is defined as an independent unit of functionality that can be used to extend and improve the existing core functions. A project admin can activate and de-activate modules in the project settings. Some examples for modules in OpenProject are: Forums, Time and costs, Wiki or the Work packages module. [See our user guide for more information on all modules in OpenProject](../user-guide/#overview-of-modules-in-openproject).
 
-### My Page
+### My page
 
-The My Page in OpenProject is defined as your personal [dashboard](#dashboard) with important overarching project information, such as work package reports, news, spent time, or a calendar. It can be configured to your specific needs. [Read more about the My Page in OpenProject](../getting-started/my-page/).
+The My page in OpenProject is defined as your personal [dashboard](#dashboard) with important overarching project information, such as work package reports, news, spent time, or a calendar. It can be configured to your specific needs. [Read more about the My page in OpenProject](../getting-started/my-page/).
 
 ## N
 
@@ -426,7 +426,7 @@ Versions in OpenProject are defined as an attribute for [work packages](#work-pa
 
 ### Widget
 
-A widget in OpenProject is defined as a small and customizable element that provides relevant information at a glance. Use widgets on your [My Page](#my-page) dashboard or on the [project overview](#project-overview). [See all available project overview widgets](../user-guide/project-overview/#available-project-overview-widgets) and read [how to add a widget to the project overview](../user-guide/project-overview/#widgets).
+A widget in OpenProject is defined as a small and customizable element that provides relevant information at a glance. Use widgets on your [My page](#my-page) dashboard or on the [project overview](#project-overview). [See all available project overview widgets](../user-guide/project-overview/#available-project-overview-widgets) and read [how to add a widget to the project overview](../user-guide/project-overview/#widgets).
 
 ### Wiki
 

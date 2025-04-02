@@ -219,8 +219,8 @@ pl:
         new_date_time: "Nowa data/godzina"
     label_mail_all_participants: "Wyślij wiadomość e-mail do wszystkich uczestników"
     types:
-      classic: "Klasyczny"
-      classic_text: "Zorganizuj spotkanie w jednym formatowanym tekstowym planie spotkania i protokole."
+      classic: "Classic (unsupported)"
+      classic_text: "Note: Classic meetings will be removed in the next version of OpenProject."
       structured: "Zorganizowane"
       one_time: "Jednorazowe"
       recurring: "Cykliczne"

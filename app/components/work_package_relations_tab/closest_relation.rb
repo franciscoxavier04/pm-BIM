@@ -35,6 +35,15 @@ module WorkPackageRelationsTab
 
     delegate :predecessor, to: :relation
 
+    def self.of(work_package, relations)
+      relations
+        .filter { |relation| relation.try(:relation_type_for, work_package) == Relation::TYPE_FOLLOWS }
+        .map { WorkPackageRelationsTab::ClosestRelation.new(it) }
+        .select(&:soonest_start)
+        .max
+        &.relation
+    end
+
     def <=>(other)
       comparison = compare_nilable_dates(soonest_start, other.soonest_start)
       comparison = -compare_nilable_dates(predecessor.created_at, other.predecessor.created_at) if comparison.zero?

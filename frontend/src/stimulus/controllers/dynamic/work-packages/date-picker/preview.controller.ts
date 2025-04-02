@@ -39,10 +39,12 @@ export default class PreviewController extends DialogPreviewController {
   static values = {
     dateMode: String,
     triggeringField: String,
+    scheduleManually: Boolean,
   };
 
   declare dateModeValue:string;
   declare triggeringFieldValue:string;
+  declare scheduleManuallyValue:boolean;
 
   private timezoneService:TimezoneService;
   private highlightedField:HTMLInputElement|null = null;
@@ -78,6 +80,8 @@ export default class PreviewController extends DialogPreviewController {
 
     document.addEventListener('date-picker:flatpickr-dates-changed', this.handleFlatpickrDatesChangedBound);
     this.focusOnOpen();
+
+    this.prepareInputFieldsForSafari();
   }
 
   disconnect() {
@@ -170,6 +174,7 @@ export default class PreviewController extends DialogPreviewController {
 
     let dateFieldToChange:HTMLInputElement;
     if (this.highlightedField === this.dueDateField
+        || (this.highlightedField === this.durationField && !this.scheduleManuallyValue)
         || (this.highlightedField === this.durationField
         && (this.currentStartDate !== null || !this.isTouched('start_date'))
         && this.currentDueDate === null)) {
@@ -217,12 +222,11 @@ export default class PreviewController extends DialogPreviewController {
       this.setDurationFieldValue(this.currentDuration);
       this.doMarkFieldAsTouched('due_date');
     }
+
     this.currentStartDate = selectedDate;
     this.setStartDateFieldValue(this.currentStartDate);
     this.doMarkFieldAsTouched('start_date');
-    if (this.currentDueDate) {
-      this.highlightField(this.dueDateField);
-    }
+
     this.keepFieldValue();
   }
 
@@ -235,12 +239,11 @@ export default class PreviewController extends DialogPreviewController {
       this.setDurationFieldValue(this.currentDuration);
       this.doMarkFieldAsTouched('start_date');
     }
+
     this.currentDueDate = selectedDate;
     this.setDueDateFieldValue(this.currentDueDate);
     this.doMarkFieldAsTouched('due_date');
-    if (this.currentStartDate) {
-      this.highlightField(this.startDateField);
-    }
+
     this.keepFieldValue();
   }
 
@@ -447,12 +450,19 @@ export default class PreviewController extends DialogPreviewController {
       return;
     }
 
+    if (!this.scheduleManuallyValue) {
+      // Fix the start date to avoid that it gets changed accidentally
+      this.markTouched('start_date');
+    }
+
     if (this.isBeingEdited('start_date')) {
       this.untouchFieldsWhenStartDateIsEdited();
     } else if (this.isBeingEdited('due_date')) {
       this.untouchFieldsWhenDueDateIsEdited();
     } else if (this.isBeingEdited('duration')) {
       this.untouchFieldsWhenDurationIsEdited();
+    } else if (this.isBeingEdited('ignore_non_working_days')) {
+      this.untouchFieldsWhenIgnoreNonWorkingDaysIsEdited();
     }
   }
 
@@ -478,29 +488,47 @@ export default class PreviewController extends DialogPreviewController {
   }
 
   private untouchFieldsWhenDueDateIsEdited():void {
-    if (this.isTouchedAndEmpty('start_date') && this.isValueSet('duration')) {
-      // force start date derivation
-      this.markUntouched('start_date');
-      this.markTouched('duration');
-    } else if (this.isValueSet('start_date')) {
+    if (this.scheduleManuallyValue) {
+      if (this.isTouchedAndEmpty('start_date') && this.isValueSet('duration')) {
+        // force start date derivation
+        this.markUntouched('start_date');
+        this.markTouched('duration');
+      } else if (this.isValueSet('start_date')) {
+        this.markUntouched('duration');
+      }
+    } else {
       this.markUntouched('duration');
     }
   }
 
   private untouchFieldsWhenDurationIsEdited():void {
-    if (this.isTouched('start_date')) {
-      if (this.isValueSet('start_date')) {
-        this.markUntouched('due_date');
-      } else if (this.isValueSet('due_date')) {
-        this.markUntouched('start_date');
-        this.markTouched('due_date');
+    if (this.scheduleManuallyValue) {
+      if (this.isTouched('start_date')) {
+        if (this.isValueSet('start_date')) {
+          this.markUntouched('due_date');
+        } else if (this.isValueSet('due_date')) {
+          this.markUntouched('start_date');
+          this.markTouched('due_date');
+        }
+      } else if (this.isTouched('due_date')) {
+        if (this.isValueSet('due_date')) {
+          this.markUntouched('start_date');
+        } else if (this.isValueSet('start_date')) {
+          this.markUntouched('due_date');
+          this.markTouched('start_date');
+        }
       }
-    } else if (this.isTouched('due_date')) {
-      if (this.isValueSet('due_date')) {
-        this.markUntouched('start_date');
-      } else if (this.isValueSet('start_date')) {
+    } else {
+      this.markUntouched('due_date');
+    }
+  }
+
+  private untouchFieldsWhenIgnoreNonWorkingDaysIsEdited():void {
+    if (!this.scheduleManuallyValue) {
+      if (this.isTouched('duration')) {
         this.markUntouched('due_date');
-        this.markTouched('start_date');
+      } else if (this.isTouched('due_date')) {
+        this.markUntouched('duration');
       }
     }
   }
@@ -515,5 +543,21 @@ export default class PreviewController extends DialogPreviewController {
       tabs.setAttribute('tabindex', '-1');
       tabs.focus();
     }
+  }
+
+  /*
+   * This method qualifies as the most stupid thing I had to do in a long time.
+   * Safari is the only browser which does not clear the input when using the native datepicker "clear" method.
+   * It rather resets it to the original value of the input.
+   * That is why we manually set the defaultValue to an empty string,
+   * but since the defaultValue is used for the value, we have to manually set this again.
+   * See: https://stackoverflow.com/a/64886383/8900797
+   */
+  private prepareInputFieldsForSafari() {
+    [this.startDateField, this.dueDateField].forEach((field:HTMLInputElement) => {
+      const value = field.value;
+      field.defaultValue = '';
+      field.value = value;
+    });
   }
 }

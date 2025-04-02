@@ -139,7 +139,7 @@ module API
 
           {
             href: generate_pdf_dialog_work_package_path(id: represented.id),
-            type: "text/html",
+            type: "text/vnd.turbo-stream.html",
             title: "Generate PDF"
           }
         end

@@ -59,7 +59,7 @@ RSpec.describe WorkPackageRelationsTab::IndexComponent, type: :component do
     TABLE
 
     it "renders the relations group" do
-      expect(render_component).to have_test_selector("op-relation-group-children")
+      expect(render_component).to have_test_selector("op-relation-group-child")
     end
 
     it "renders the relations in child creation order" do

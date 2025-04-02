@@ -32,7 +32,7 @@ module Storages
   module Peripherals
     module ConnectionValidators
       module Nextcloud
-        class AuthenticationValidator < BaseValidator
+        class AuthenticationValidator < BaseValidatorGroup
           def initialize(storage)
             super
             @user = User.current

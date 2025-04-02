@@ -120,6 +120,11 @@ export class WorkPackageViewContextMenu extends OpContextMenuHandler {
       case 'log_time':
         this.logTimeForSelectedWorkPackage();
         break;
+
+      case 'generate_pdf':
+        void this.turboRequests.requestStream(String(link));
+        break;
+
       case 'relations':
         void this.$state.go(
           `${splitViewRoute(this.$state)}.tabs`,

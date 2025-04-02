@@ -74,10 +74,6 @@ import { CollapsibleSectionComponent } from './components/collapsible-section/co
 import { NoResultsComponent } from './components/no-results/no-results.component';
 import { EditableToolbarTitleComponent } from './components/editable-toolbar-title/editable-toolbar-title.component';
 import { PersistentToggleComponent } from './components/persistent-toggle/persistent-toggle.component';
-import {
-  AddSectionDropdownComponent,
-} from './components/hide-section/add-section-dropdown/add-section-dropdown.component';
-import { HideSectionLinkComponent } from './components/hide-section/hide-section-link/hide-section-link.component';
 import { RemoteFieldUpdaterComponent } from './components/remote-field-updater/remote-field-updater.component';
 import { OpOptionListComponent } from './components/option-list/option-list.component';
 import { OpProjectIncludeComponent } from './components/project-include/project-include.component';
@@ -224,8 +220,6 @@ export function bootstrapModule(injector:Injector):void {
     EditableToolbarTitleComponent,
 
     PersistentToggleComponent,
-    HideSectionLinkComponent,
-    AddSectionDropdownComponent,
     RemoteFieldUpdaterComponent,
 
     // Enterprise Edition

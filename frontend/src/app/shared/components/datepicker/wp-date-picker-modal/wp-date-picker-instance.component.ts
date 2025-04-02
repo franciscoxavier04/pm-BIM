@@ -258,7 +258,10 @@ export class OpWpDatePickerInstanceComponent extends UntilDestroyedMixin impleme
 
   private isDayDisabled(dayElement:DayElement):boolean {
     const minimalDate = this.minimalSchedulingDate || null;
-    return !this.isSchedulable || (!this.scheduleManually && !!minimalDate && dayElement.dateObj <= minimalDate);
+    return !this.isSchedulable
+      || (!this.scheduleManually
+        && !!minimalDate
+        && dayElement.dateObj.setHours(0, 0, 0, 0) < new Date(minimalDate).setHours(0, 0, 0, 0));
   }
 
   /**

@@ -53,7 +53,10 @@ module TableHelpers
                            .split(",")
                            .map(&:strip)
                            .compact_blank
-                           .map { |name| make_related_to_relation(name) }
+                           .to_h do |name|
+                             relation = make_related_to_relation(name)
+                             [relation[:with], relation]
+                           end
         { relations: }.compact_blank
       end
 

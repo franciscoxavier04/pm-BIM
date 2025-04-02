@@ -215,8 +215,8 @@ pt-BR:
         new_date_time: "Nova data/hora"
     label_mail_all_participants: "Enviar e-mail para todos os participantes"
     types:
-      classic: "Clássico"
-      classic_text: "Organize sua reunião como uma única agenda e protocolo de texto formatáveis."
+      classic: "Classic (unsupported)"
+      classic_text: "Note: Classic meetings will be removed in the next version of OpenProject."
       structured: "Estruturada"
       one_time: "Única"
       recurring: "Recorrente"
@@ -424,6 +424,6 @@ pt-BR:
   text_agenda_item_move_next_meeting: "Tem certeza de que deseja mover isso para a próxima reunião em %{date} às %{time}?"
   text_agenda_item_moved_to_next_meeting: "Item da agenda movido para a próxima reunião em %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Este pacote de trabalho ainda não está programado na agenda de uma reunião futura."
-  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
+  text_agenda_item_move_next_meeting_cancelled: "Não é possível mover para a próxima reunião porque ela foi cancelada."
   text_work_package_add_to_meeting_hint: 'Use o botão "Adicionar à reunião" para adicionar este pacote de trabalho a uma próxima reunião.'
   text_work_package_has_no_past_meeting_agenda_items: "Este pacote de trabalho não foi mencionado em uma reunião anterior."

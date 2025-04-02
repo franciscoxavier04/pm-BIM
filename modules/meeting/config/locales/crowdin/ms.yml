@@ -213,8 +213,8 @@ ms:
         new_date_time: "Tarikh/masa baharu"
     label_mail_all_participants: "Hantar e-mel kepada semua peserta"
     types:
-      classic: "Klasik"
-      classic_text: "Atur mesyuarat anda sebagai agenda dan protokol teks boleh format tunggal."
+      classic: "Classic (unsupported)"
+      classic_text: "Note: Classic meetings will be removed in the next version of OpenProject."
       structured: "Berstruktur"
       one_time: "Sekali"
       recurring: "Berulang"

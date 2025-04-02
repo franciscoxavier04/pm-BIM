@@ -312,7 +312,7 @@ module Components
       end
 
       def children_table
-        page.find_test_selector("op-relation-group-children")
+        page.find_test_selector("op-relation-group-child")
       end
 
       def add_existing_child(work_package)

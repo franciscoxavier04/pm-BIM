@@ -286,6 +286,12 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
   def update_dates_from_rescheduled_children
     return if work_package.schedule_manually?
 
+    # A milestone can't have children. An error will be reported for it.
+    # Updating dates from children's dates would add more errors like "due date
+    # is different from start date" and confuse the user.
+    # Better return and keep dates unified to have only one meaningful error.
+    return if work_package_now_milestone?
+
     # do a reschedule call to get the work package dates from the rescheduled children
     service = WorkPackages::SetScheduleService.new(user: User.current, work_package:, switching_to_automatic_mode: [work_package])
     service.call(work_package.changes.keys.map(&:to_sym)).result

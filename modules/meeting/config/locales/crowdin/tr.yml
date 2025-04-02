@@ -215,8 +215,8 @@ tr:
         new_date_time: "Yeni tarih/saat"
     label_mail_all_participants: "Tüm katılımcılara e-posta gönder"
     types:
-      classic: "Klasik"
-      classic_text: "Toplantınızı biçimlendirilebilir bir metin gündemi ve protokolüyle düzenleyin."
+      classic: "Classic (unsupported)"
+      classic_text: "Note: Classic meetings will be removed in the next version of OpenProject."
       structured: "Planlı"
       one_time: "Tek seferlik"
       recurring: "Yinelenen"

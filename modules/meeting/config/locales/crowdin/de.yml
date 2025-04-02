@@ -215,8 +215,8 @@ de:
         new_date_time: "Neue(s) Datum/Zeit"
     label_mail_all_participants: "E-Mail an alle Teilnehmer senden"
     types:
-      classic: "Klassisch"
-      classic_text: "Organisieren Sie Ihre Besprechung und zugehöriges Protokoll in einem einzelnen Notizblock."
+      classic: "Classic (unsupported)"
+      classic_text: "Note: Classic meetings will be removed in the next version of OpenProject."
       structured: "Dynamisch"
       one_time: "Einmalig"
       recurring: "Terminserie"
