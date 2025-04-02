@@ -59,13 +59,21 @@ module My
 
       def headers
         [
-          [:time, { caption: "Time" }],
+          TimeEntry.can_track_start_and_end_time? ? [:time, { caption: "Time" }] : nil,
           [:hours, { caption: "Hours" }],
           [:subject, { caption: "Subject" }],
           [:project, { caption: "Project" }],
           [:activity, { caption: "Activity" }],
           [:comments, { caption: "Comments" }]
-        ]
+        ].compact
+      end
+
+      def skip_column?(column)
+        if column == :time
+          !TimeEntry.can_track_start_and_end_time?
+        else
+          false
+        end
       end
     end
   end

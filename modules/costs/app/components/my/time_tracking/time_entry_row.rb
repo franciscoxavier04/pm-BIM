@@ -55,8 +55,18 @@ module My
         end
       end
 
-      def time
-        time_entry.start_timestamp || ""
+      def time # rubocop:disable Metrics/AbcSize
+        return if time_entry.start_time.blank?
+
+        times = [I18n.l(time_entry.start_timestamp, format: :time)]
+
+        times << if time_entry.start_timestamp.to_date == time_entry.end_timestamp.to_date
+                   I18n.l(time_entry.end_timestamp, format: :time)
+                 else
+                   I18n.l(time_entry.end_timestamp, format: :short)
+                 end
+
+        times.join(" - ")
       end
 
       def hours
@@ -64,11 +74,16 @@ module My
       end
 
       def subject
-        "##{time_entry.work_package.id} - #{time_entry.work_package.subject}"
+        render(Primer::Beta::Link.new(href: project_work_package_path(time_entry.project, time_entry.work_package),
+                                      underline: false)) do
+          "##{time_entry.work_package.id}"
+        end + " - #{time_entry.work_package.subject}"
       end
 
       def project
-        time_entry.project.name
+        render(Primer::Beta::Link.new(href: project_path(time_entry.project), underline: false)) do
+          time_entry.project.name
+        end
       end
 
       def activity
