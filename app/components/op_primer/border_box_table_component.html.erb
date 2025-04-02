@@ -55,10 +55,10 @@ See COPYRIGHT and LICENSE files for more details.
       if has_actions?
         concat render(
           Primer::BaseComponent.new(
-            classes: heading_class,
-            tag: :div
+            classes: header_classes(:actions),
+            tag: :span
           )
-        )
+        ) { action_row_header_content }
       end
     end
 
