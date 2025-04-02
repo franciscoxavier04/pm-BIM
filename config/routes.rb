@@ -551,14 +551,10 @@ Rails.application.routes.draw do
       resource :progress_tracking, controller: "/admin/settings/progress_tracking", only: %i[show update]
       resource :projects, controller: "/admin/settings/projects_settings", only: %i[show update]
       resource :new_project, controller: "/admin/settings/new_project_settings", only: %i[show update]
-      resources :project_life_cycle_step_definitions,
+      resources :project_phase_definitions,
                 path: "project_life_cycle",
-                controller: "/admin/settings/project_life_cycle_step_definitions",
-                only: %i[index create edit update destroy] do
-        collection do
-          get :new_stage
-          get :new_gate
-        end
+                controller: "/admin/settings/project_life_cycle_definitions",
+                except: :show do
         member do
           patch :move
           put :drop # should be patch, but requires passing method to generic-drag-and-drop controller

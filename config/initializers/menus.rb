@@ -349,7 +349,7 @@ Redmine::MenuManager.map :admin_menu do |menu|
   menu.push :admin_projects_settings,
             ->(_) { # TODO: doesn't need to be a proc when condition is removed
               if OpenProject::FeatureDecisions.stages_and_gates_active?
-                { controller: "/admin/settings/project_life_cycle_step_definitions", action: :index }
+                { controller: "/admin/settings/project_life_cycle_definitions", action: :index }
               else
                 { controller: "/admin/settings/project_custom_fields", action: :index }
               end
@@ -358,10 +358,10 @@ Redmine::MenuManager.map :admin_menu do |menu|
             caption: :label_project_plural,
             icon: "project"
 
-  menu.push :project_life_cycle_step_definitions_settings,
-            { controller: "/admin/settings/project_life_cycle_step_definitions", action: :index },
+  menu.push :project_life_cycle_definitions_settings,
+            { controller: "/admin/settings/project_life_cycle_definitions", action: :index },
             if: ->(_) { User.current.admin? && OpenProject::FeatureDecisions.stages_and_gates_active? },
-            caption: :label_project_lifecycle,
+            caption: :label_project_life_cycle,
             parent: :admin_projects_settings
 
   menu.push :project_custom_fields_settings,
@@ -644,7 +644,7 @@ Redmine::MenuManager.map :project_menu do |menu|
   project_menu_items = {
     general: { caption: :label_information_plural },
     life_cycle_steps: {
-      caption: :label_life_cycle_step_plural,
+      caption: :label_project_life_cycle,
       action: :index,
       if: ->(_) { OpenProject::FeatureDecisions.stages_and_gates_active? }
     },
