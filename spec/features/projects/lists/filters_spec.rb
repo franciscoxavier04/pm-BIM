@@ -51,7 +51,8 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
              project => project_role,
              public_project => project_role,
              development_project => project_role
-           })
+           },
+           global_permissions: %i[view_user_email])
   end
   shared_let(:stage) do
     create(:project_phase, project:, start_date: Time.zone.today - 5.days, finish_date: Time.zone.today + 10.days)
@@ -498,7 +499,7 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
     end
 
     it "filters for the project that has the corresponding value" do
-      load_and_open_filters admin
+      load_and_open_filters manager
 
       projects_page.set_filter(user_cf.column_name, user_cf.name, "is (OR)", [some_user.name])
 
@@ -506,7 +507,7 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
     end
 
     it "displays the visible project members as available options" do
-      load_and_open_filters admin
+      load_and_open_filters manager
 
       expected_options = [
         { name: some_user.name, email: some_user.mail },
