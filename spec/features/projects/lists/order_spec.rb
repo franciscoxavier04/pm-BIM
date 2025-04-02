@@ -414,7 +414,7 @@ RSpec.describe "Projects lists ordering", :js, with_settings: { login_required?:
       end
     end
 
-    context "without permission to view stages and gates" do
+    context "without permission to view phases" do
       before do
         login_as(user)
         visit projects_path

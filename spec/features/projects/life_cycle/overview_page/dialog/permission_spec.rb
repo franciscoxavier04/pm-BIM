@@ -29,7 +29,7 @@
 require "spec_helper"
 require_relative "../shared_context"
 
-RSpec.describe "Edit project stages and gates on project overview page", :js, with_flag: { stages_and_gates: true } do
+RSpec.describe "Edit project phases on project overview page", :js, with_flag: { stages_and_gates: true } do
   include_context "with seeded projects and phases"
   shared_let(:user) { create(:user) }
   let(:overview_page) { Pages::Projects::Show.new(project) }
@@ -44,7 +44,7 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
     overview_page.visit_page
   end
 
-  describe "with insufficient View Stages and Gates permissions" do
+  describe "with insufficient View phases permissions" do
     let(:permissions) { %i[view_project] }
 
     it "does not show the attributes sidebar" do
@@ -52,12 +52,12 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
     end
   end
 
-  describe "with sufficient View Stages and Gates permissions" do
+  describe "with sufficient View phases permissions" do
     let(:permissions) { %i[view_project view_project_phases] }
 
     it "shows the attributes sidebar" do
       overview_page.within_life_cycles_sidebar do
-        expect(page).to have_text("Project lifecycle")
+        expect(page).to have_text("Project life cycle")
       end
     end
   end
@@ -72,7 +72,7 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
     end
   end
 
-  describe "with sufficient Edit Stages and Gates permissions" do
+  describe "with sufficient Edit phases permissions" do
     let(:permissions) { %i[view_project view_project_phases edit_project edit_project_phases] }
 
     it "shows the edit buttons" do

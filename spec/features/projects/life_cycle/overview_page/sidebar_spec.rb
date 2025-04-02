@@ -43,14 +43,14 @@ RSpec.describe "Show project life cycles on project overview page", :js, with_fl
     overview_page.expect_visible_sidebar
   end
 
-  context "when stages and gates are disabled", with_flag: { stages_and_gates: false } do
+  context "when phases are disabled", with_flag: { stages_and_gates: false } do
     it "does not show the sidebar" do
       overview_page.visit_page
       overview_page.expect_no_visible_sidebar
     end
   end
 
-  context "when all stages and gates are disabled for this project" do
+  context "when all phases are disabled for this project" do
     before do
       project_life_cycles.each { |p| p.toggle!(:active) }
     end
@@ -62,7 +62,7 @@ RSpec.describe "Show project life cycles on project overview page", :js, with_fl
   end
 
   describe "with correct order and scoping" do
-    it "shows the project stages and gates in the correct order" do
+    it "shows the project phases in the correct order" do
       overview_page.visit_page
 
       overview_page.within_life_cycles_sidebar do
@@ -92,7 +92,7 @@ RSpec.describe "Show project life cycles on project overview page", :js, with_fl
       end
     end
 
-    it "does not show stages and gates not enabled for this project in a sidebar" do
+    it "does not show phases not enabled for this project in a sidebar" do
       life_cycle_executing.toggle!(:active)
 
       overview_page.visit_page
