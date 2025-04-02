@@ -42,7 +42,6 @@
                                         model: condition.value_objects.map { |v| { id: v[:value], name: v[:label] } },
                                         inputName: input_name,
                                         bindLabel: "name",
-                                        bindValue: "id",
                                         labelForId: "custom_action_conditions_#{condition.key}",
                                         appendTo: "body"
                                       } %>
@@ -81,15 +80,15 @@
                                               inputValue: action.values.first
                                             } %>
                 <% else %>
+                  <% selected = action.value_objects.map { |v| { id: v[:value], name: v[:label] } } %>
                   <%= angular_component_tag "opce-autocompleter",
                                             inputs: {
                                               multiple: action.multi_value?,
                                               defaultData: false,
                                               items: action.allowed_values.map { |v| { id: v[:value], name: v[:label] } },
-                                              model: action.value_objects.map { |v| { id: v[:value], name: v[:label] } },
+                                              model: action.multi_value? ? selected : selected.first,
                                               inputName: input_name,
                                               bindLabel: "name",
-                                              bindValue: "id",
                                               labelForId: "custom_action_actions_#{action.key}",
                                               appendTo: "body"
                                             } %>
