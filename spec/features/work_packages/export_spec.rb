@@ -414,12 +414,25 @@ RSpec.describe "work package export", :js, :selenium do
       end
 
       context "with long text fields selection" do
-        let(:expected_params) { default_params_report.merge({ long_text_fields: "description 43" }) }
+        let(:expected_params) { default_params_report.merge({ long_text_fields: "description #{cf_text_b.id}" }) }
 
         it "exports a pdf report with all remaining custom fields" do
-          find("span.op-draggable-autocomplete--item-text", text: "Long text custom field")
-            .sibling(".op-draggable-autocomplete--remove-item").click
-          export!
+          # Remove one custom field
+          page.within(".op-angular-component[data-id='\"ltf-select-export-pdf-report\"']") do
+            find(".op-draggable-autocomplete--item-text", text: "Long text custom field")
+              .sibling(".op-draggable-autocomplete--remove-item").click
+          end
+
+          # Save export settings, export and reopen dialog
+          check I18n.t("export.dialog.save_export_settings.label")
+          export_and_reopen_dialog!
+          choose export_sub_type
+
+          selected_long_fields = page.within(".op-angular-component[data-id='\"ltf-select-export-pdf-report\"']") do
+            all(".op-draggable-autocomplete--item-text").map(&:text)
+          end
+          # The removed field has been saved
+          expect(selected_long_fields).to contain_exactly("Description", cf_text_b.name)
         end
       end
 
