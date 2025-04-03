@@ -1,9 +1,12 @@
 .spot-modal-overlay
   position: fixed
-  top: 0
   left: 0
   right: 0
   bottom: 0
+  // Again, iOS and Safari are being special. When the keyboard opens, that pushes the whole viewport to the top.
+  // Thus, when using `top: 0` half of the modal is pushed out of the screen.
+  // Instead, we only set `bottom: 0` and set the height to the app height which is set programmatically on every screen resize
+  height: var(--app-height)
   @include spot-z-index("drop-modal")
   background: rgba(0, 0, 0, 0.5)
   justify-content: center
