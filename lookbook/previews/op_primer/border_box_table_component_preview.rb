@@ -18,5 +18,10 @@ module OpPrimer
     def with_action_menu
       render_with_template
     end
+
+    # See the [component documentation](/lookbook/pages/components/border_box_table) for more details.
+    def with_footer
+      render_with_template
+    end
   end
 end
