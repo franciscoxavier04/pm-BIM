@@ -40,7 +40,6 @@ module MeetingSections
                    force_wrapper: false, state: :show, collapsed: false)
       super
 
-      # binding.pry
       @meeting = meeting_section.meeting
       @meeting_section = meeting_section
       @meeting_agenda_items = meeting_section.agenda_items

@@ -64,4 +64,12 @@ class MeetingSection < ApplicationRecord
   def agenda_items_sum_duration_in_minutes
     agenda_items.sum(:duration_in_minutes)
   end
+
+  def last_position
+    if agenda_items.empty?
+      1
+    else
+      agenda_items.maximum(:position) + 1
+    end
+  end
 end

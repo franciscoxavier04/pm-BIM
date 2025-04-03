@@ -43,7 +43,7 @@ module MeetingAgendaItems
     end
 
     def empty?
-      @meeting.agenda_items.empty? && @meeting.sections.empty?
+      @meeting.agenda_items.reject { |item| item.meeting_section&.backlog? }.empty? && @meeting.sections.empty?
     end
 
     private

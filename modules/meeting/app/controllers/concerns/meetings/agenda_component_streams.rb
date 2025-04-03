@@ -216,7 +216,7 @@ module Meetings
       def add_item_via_turbo_stream(meeting_agenda_item: @meeting_agenda_item, clear_slate: false) # rubocop:disable Metrics/AbcSize
         if clear_slate
           update_list_via_turbo_stream(form_hidden: false, form_type: @agenda_item_type)
-        elsif meeting_agenda_item.meeting.agenda_items.count == 1
+        elsif meeting_agenda_item.meeting.agenda_items.count == 1 && meeting_agenda_item.meeting.sections.present?
           update_list_via_turbo_stream(form_hidden: true)
 
           update_new_component_via_turbo_stream(
@@ -224,7 +224,6 @@ module Meetings
             meeting_section: meeting_agenda_item.meeting_section,
             type: @agenda_item_type
           )
-
         else
           update_section_header_via_turbo_stream(meeting_section: meeting_agenda_item.meeting_section)
 
@@ -358,15 +357,14 @@ module Meetings
       end
 
       def update_section_via_turbo_stream(meeting_section: @meeting_section, form_hidden: true, form_type: :simple,
-                                          force_wrapper: false, state: :show, expanded: true)
+                                          force_wrapper: false, state: :show)
         update_via_turbo_stream(
           component: MeetingSections::ShowComponent.new(
             meeting_section:,
             form_type:,
             form_hidden:,
             force_wrapper:,
-            state:,
-            expanded:
+            state:
           )
         )
       end

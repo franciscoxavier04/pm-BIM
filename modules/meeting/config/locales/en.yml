@@ -413,6 +413,8 @@ en:
   label_agenda_item_deleted_wp: "Deleted work package reference"
   label_agenda_item_actions: "Agenda items actions"
   label_agenda_item_move_to_next: "Move to next meeting"
+  label_agenda_item_move_to_backlog: "Move to backlog"
+  label_agenda_item_move_to_current_meeting: "Move to current meeting"
   label_agenda_item_move_to_top: "Move to top"
   label_agenda_item_move_to_bottom: "Move to bottom"
   label_agenda_item_move_up: "Move up"
@@ -429,7 +431,7 @@ en:
   text_outcome_not_editable_anymore: "This outcome is not editable anymore."
 
   label_agenda_backlog: "Agenda backlog"
-  text_agenda_backlog: "The backlog is shared with all occurrences of this series. You can drag items in and out to add or remove them from a particular meeting. The backlog is only visible when the meeting status is open and hidden once the meeting is in progress."
+  text_agenda_backlog: "This backlog is unique to this one-time meeting. You can drag items in and out to add or remove them from the meeting agenda."
 
 
   text_agenda_item_title: 'Agenda item "%{title}"'

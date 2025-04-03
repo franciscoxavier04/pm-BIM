@@ -40,6 +40,7 @@ class MeetingAgendaItemsController < ApplicationController
                 except: %i[new cancel_new create]
   before_action :authorize
   before_action :check_recurring_meeting_param, only: %i[move_to_next_meeting]
+  before_action :assign_drop_params, only: %i[drop]
 
   def new
     if @meeting.closed?
@@ -47,11 +48,7 @@ class MeetingAgendaItemsController < ApplicationController
       render_error_flash_message_via_turbo_stream(message: t("text_meeting_not_editable_anymore"))
     else
       if params[:meeting_section_id].present?
-        meeting_section = if params[:meeting_section_id] == @meeting.backlog.id.to_s
-                            @meeting.backlog
-                          else
-                            @meeting.sections.find(params[:meeting_section_id])
-                          end
+        meeting_section = MeetingSection.find_by(id: params[:meeting_section_id])
       end
       render_agenda_item_form_via_turbo_stream(meeting_section:, type: @agenda_item_type)
     end
@@ -90,7 +87,7 @@ class MeetingAgendaItemsController < ApplicationController
     if call.success?
       reset_meeting_from_agenda_item
       # enable continue editing
-      add_item_via_turbo_stream(clear_slate: false)
+      add_item_via_turbo_stream(clear_slate: @meeting.sections.empty?)
       update_header_component_via_turbo_stream
       update_sidebar_details_component_via_turbo_stream
     else
@@ -165,8 +162,8 @@ class MeetingAgendaItemsController < ApplicationController
     call = ::MeetingAgendaItems::DropService.new(
       user: current_user, meeting_agenda_item: @meeting_agenda_item
     ).call(
-      target_id: params[:target_id],
-      position: params[:position]
+      target_id: @target_id,
+      position: @position
     )
 
     if call.success?
@@ -290,5 +287,17 @@ class MeetingAgendaItemsController < ApplicationController
     else
       @next_occurrence = next_occurrence.meeting
     end
+  end
+
+  def assign_drop_params # rubocop:disable Metrics/AbcSize
+    @target_id, @position =
+      if params[:type] == "to_current"
+        section = @meeting.sections.order(position: :desc).first
+        [section&.id, section&.last_position]
+      elsif params[:type] == "to_backlog"
+        [@meeting.backlog.id, @meeting.backlog.last_position]
+      else
+        [params[:target_id], params[:position]]
+      end
   end
 end

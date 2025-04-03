@@ -186,6 +186,26 @@ module MeetingAgendaItems
       end
     end
 
+    def move_to_backlog_action_item(menu)
+      menu.with_item(label: I18n.t(:label_agenda_item_move_to_backlog),
+                     href: drop_meeting_agenda_item_path(@meeting_agenda_item.meeting, @meeting_agenda_item, type: :to_backlog),
+                     form_arguments: {
+                       method: :put, data: { "turbo-stream": true }
+                     }) do |item|
+        item.with_leading_visual_icon(icon: "discussion-outdated")
+      end
+    end
+
+    def move_to_current_meeting_action_item(menu)
+      menu.with_item(label: I18n.t(:label_agenda_item_move_to_current_meeting),
+                     href: drop_meeting_agenda_item_path(@meeting_agenda_item.meeting, @meeting_agenda_item, type: :to_current),
+                     form_arguments: {
+                       method: :put, data: { "turbo-stream": true }
+                     }) do |item|
+        item.with_leading_visual_icon(icon: "cross-reference")
+      end
+    end
+
     def duration_color_scheme
       if @meeting.end_time < @meeting_agenda_item.end_time
         :danger
@@ -204,6 +224,10 @@ module MeetingAgendaItems
 
     def move_to_next_meeting_enabled?
       edit_enabled? && @meeting.recurring? && @meeting.recurring_meeting&.next_occurrence.present?
+    end
+
+    def in_backlog?
+      @meeting_agenda_item.meeting_section == @meeting.backlog
     end
   end
 end

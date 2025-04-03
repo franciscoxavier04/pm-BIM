@@ -37,7 +37,6 @@ module MeetingSections
     def initialize(backlog:, box: nil)
       super
 
-      # binding.pry
       @backlog = backlog
       @meeting = backlog.meeting
       @box = box
