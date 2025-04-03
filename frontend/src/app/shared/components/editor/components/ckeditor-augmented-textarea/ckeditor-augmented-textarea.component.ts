@@ -36,28 +36,31 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
+import { navigator } from '@hotwired/turbo';
+import { componentDestroyed } from '@w11k/ngx-componentdestroyed';
+import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
+import { IAttachment } from 'core-app/core/state/attachments/attachment.model';
+import { AttachmentsResourceService } from 'core-app/core/state/attachments/attachments.service';
+import { States } from 'core-app/core/states/states.service';
+import { HAL_NEW_RESOURCE_ID } from 'core-app/features/hal/helpers/is-new-resource';
+import { AttachmentCollectionResource } from 'core-app/features/hal/resources/attachment-collection-resource';
 import { HalResource } from 'core-app/features/hal/resources/hal-resource';
 import { HalResourceService } from 'core-app/features/hal/services/hal-resource.service';
-import { States } from 'core-app/core/states/states.service';
-import { filter, takeUntil } from 'rxjs/operators';
-import { ToastService } from 'core-app/shared/components/toaster/toast.service';
-import { I18nService } from 'core-app/core/i18n/i18n.service';
+import { populateInputsFromDataset } from 'core-app/shared/components/dataset-inputs';
 import {
   ICKEditorMacroType,
   ICKEditorType,
 } from 'core-app/shared/components/editor/components/ckeditor/ckeditor-setup.service';
-import { OpCkeditorComponent } from 'core-app/shared/components/editor/components/ckeditor/op-ckeditor.component';
-import { componentDestroyed } from '@w11k/ngx-componentdestroyed';
-import { UntilDestroyedMixin } from 'core-app/shared/helpers/angular/until-destroyed.mixin';
 import {
   ICKEditorContext,
   ICKEditorInstance,
 } from 'core-app/shared/components/editor/components/ckeditor/ckeditor.types';
+import { OpCkeditorComponent } from 'core-app/shared/components/editor/components/ckeditor/op-ckeditor.component';
+import { ToastService } from 'core-app/shared/components/toaster/toast.service';
+import { UntilDestroyedMixin } from 'core-app/shared/helpers/angular/until-destroyed.mixin';
 import { fromEvent } from 'rxjs';
-import { AttachmentCollectionResource } from 'core-app/features/hal/resources/attachment-collection-resource';
-import { populateInputsFromDataset } from 'core-app/shared/components/dataset-inputs';
-import { navigator } from '@hotwired/turbo';
+import { filter, take, takeUntil } from 'rxjs/operators';
 
 
 @Component({
@@ -95,6 +98,9 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   // Output focus events
   @Output() editorFocus = new EventEmitter<void>();
 
+  // Output attachment added events
+  @Output() attachmentAdded = new EventEmitter<IAttachment>();
+
   // Which template to include
   public element:HTMLElement;
 
@@ -131,6 +137,7 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
     protected Notifications:ToastService,
     protected I18n:I18nService,
     protected states:States,
+    protected attachmentsResourceService:AttachmentsResourceService,
   ) {
     super();
     populateInputsFromDataset(this);
@@ -232,6 +239,19 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
 
   private setupAttachmentAddedCallback(editor:ICKEditorInstance) {
     editor.model.on('op:attachment-added', () => {
+      const collectionKey = AttachmentsResourceService.getAttachmentsSelfLink(this.halResource as HalResource) || HAL_NEW_RESOURCE_ID;
+
+      this.attachmentsResourceService
+        .collection(collectionKey)
+        .pipe(
+          take(1),
+          filter((attachments) => attachments.length > 0),
+        )
+        .subscribe((attachments) => {
+          const latestAttachment = attachments[attachments.length - 1];
+          this.attachmentAdded.emit(latestAttachment);
+        });
+
       this.states.forResource(this.halResource as HalResource)?.putValue(this.halResource);
     });
   }
