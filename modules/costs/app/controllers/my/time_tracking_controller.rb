@@ -127,7 +127,7 @@ module My
 
     def list_view_component
       if params[:view_mode] == "list"
-        My::TimeTracking::TableComponent.new(time_entries: @time_entries, mode: params[:action].to_sym, date: current_day)
+        My::TimeTracking::ListComponent.new(time_entries: @time_entries, mode: params[:action].to_sym, date: current_day)
       else
         My::TimeTracking::CalendarComponent.new(time_entries: @time_entries, mode: params[:action].to_sym, date: current_day)
       end

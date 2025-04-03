@@ -30,7 +30,7 @@
 
 module My
   module TimeTracking
-    class TableComponent < ApplicationComponent
+    class ListComponent < ApplicationComponent
       include OpTurbo::Streamable
       include ComponentNavigation
 
@@ -64,6 +64,18 @@ module My
       def total_hours_per_day(date)
         total_hours = time_entries_by_day[date].sum(&:hours).round(2)
         DurationConverter.output(total_hours, format: :hours_and_minutes)
+      end
+
+      def date_title(date)
+        result = [date.strftime("%A %d")]
+
+        if date.today?
+          result << render(Primer::Beta::Text.new(color: :muted)) { t("label_today") }
+        elsif date.yesterday?
+          result << render(Primer::Beta::Text.new(color: :muted)) { t("label_yesterday") }
+        end
+
+        safe_join(result, " ")
       end
     end
   end

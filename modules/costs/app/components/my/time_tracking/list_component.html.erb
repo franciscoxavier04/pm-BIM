@@ -22,7 +22,9 @@
       end %>
 
     <%- range.each_with_index do |date, i| %>
-      <%= render(Primer::OpenProject::Heading.new(tag: :h2, classes: class_names("mt-3" => !i.zero?))) { date.strftime("%A %d") } %>
+      <%= render(Primer::OpenProject::Heading.new(tag: :h2, classes: class_names("mt-3" => !i.zero?))) do
+            date_title(date)
+          end %>
       <%= render(My::TimeTracking::DailyEntriesTable.new(rows: time_entries_by_day[date], date: date)) %>
     <%- end %>
 <%- end %>
