@@ -34,17 +34,15 @@ zh-CN:
           name: 灰色（深）
         item_13:
           name: 黑色
-      life_cycle_colors:
+      project_phase_colors:
         item_0:
-          name: PM2 橙色
+          name: PM2 Orange
         item_1:
-          name: PM2 紫色
+          name: PM2 Red
         item_2:
-          name: PM2 红色
+          name: PM2 Magenta
         item_3:
-          name: PM2 品红
-        item_4:
-          name: PM2 绿黄
+          name: PM2 Green Yellow
       document_categories:
         item_0:
           name: 文档
@@ -81,21 +79,18 @@ zh-CN:
         item_1:
           name: 默认全局角色
     standard:
-      life_cycles:
+      project_phases:
         item_0:
-          name: 正在启动
+          name: Initiating
         item_1:
-          name: 准备计划
+          name: Planning
+          start_gate: Ready for Planning
         item_2:
-          name: 计划中
+          name: Executing
+          start_gate: Ready for Executing
         item_3:
-          name: 准备执行
-        item_4:
-          name: 执行中
-        item_5:
-          name: 准备关闭
-        item_6:
-          name: 关闭中
+          name: Closing
+          start_gate: Ready for Closing
       priorities:
         item_0:
           name: 低
@@ -489,7 +484,7 @@ zh-CN:
         item_1:
           name: 里程碑
         item_2:
-          name: 阶段
+          name: Summary task
         item_3:
           name: 功能
         item_4:

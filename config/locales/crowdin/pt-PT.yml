@@ -367,14 +367,14 @@ pt-PT:
         no_results_title_text: Atualmente não existem campos personalizados disponíveis.
       life_cycle:
         header:
-          title: "Ciclo de vida do projeto"
-          description_html: 'Estas fases e portas do projeto no ciclo de vida do projeto serão apresentadas na sua <a href=%{overview_url} target="_blank">página de visão geral do projeto</a> e são definidas nas <a href=%{admin_settings_url} target="_blank">definições de administração</a> pelo administrador da instância. Pode ativar ou desativar atributos individuais.'
-        non_defined: "Atualmente, não estão definidas nem as fases nem as portas."
-        section_header: "Fases e portas"
+          title: "Project life cycle"
+          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
+        non_defined: "No phases are currently defined."
+        section_header: "Phases"
         step:
           use_in_project: "Utilize %{step} neste projeto"
         filter:
-          label: "Pesquisar fase ou porta do projeto"
+          label: "Search project phase"
       project_custom_fields:
         header:
           title: "Atributos do projeto"
@@ -399,10 +399,10 @@ pt-PT:
         no_results_title_text: Não há espaço adicional gravado em disco que seja consumido por este projeto.
       work_package_priorities:
         new_label: "Nova prioridade"
-  project_stage:
+  project_phase:
     working_days_count:
-      one: "Duração: %{count} dia útil"
-      other: "Duração: %{count} dias úteis"
+      one: "Duration: %{count} working day"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "A lista modificada foi guardada como uma nova lista"
@@ -951,11 +951,16 @@ pt-PT:
       project_custom_field:
         is_required: "Obrigatório para todos os projetos"
         custom_field_section: Secção
-      project/life_cycle_step:
-        definition: "Definição"
-      project/life_cycle_step_definition:
-        name: "Nome"
-        color: "Cor"
+      project/phase:
+        date_range: "Date range"
+        definition: "Definition"
+      project/phase_definition:
+        name: "Name"
+        color: "Color"
+        start_gate: "Start phase gate"
+        start_gate_name: "Start phase gate name"
+        finish_gate: "Finish phase gate"
+        finish_gate_name: "Finish phase gate name"
       query:
         sums: "Somas"
         columns: "Colunas"
@@ -1256,42 +1261,12 @@ pt-PT:
           attributes:
             project_ids:
               blank: "Selecione um projeto."
-        project/life_cycle_step_definition:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "tem de ser Project::StageDefinition ou Project::GateDefinition"
-              type_and_class_name_mismatch: "tem de corresponder ao nome da classe instanciada"
-        project/gate_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "tem de ser um Project::GateDefinition"
-        project/stage_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "tem de ser um Project::StageDefinition"
-        project/life_cycle_step:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "tem de ser Project::Stage ou Project::Gate"
-              must_be_a_stage: "tem de ser um Project::Stage"
-              must_be_a_gate: "tem de ser um Project::Gate"
-              type_and_class_name_mismatch: "tem de corresponder ao nome da classe instanciada"
-        project/gate:
-          attributes:
-            base:
-              end_date_not_allowed: "Não é possível atribuir uma data de fim a um Project::Gate"
-            type:
-              type_and_class_name_mismatch: "tem de ser um Project::Gate"
-            date:
-              non_continuous_dates: "não pode ser anterior à data de fim do %{step} anterior."
-        project/stage:
+        project/phase:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "a data de início tem de ser anterior à data de fim."
-              non_continuous_dates: "não pode ser anterior à data de fim do %{step} anterior."
-              incomplete: "está incompleto."
-            type:
-              type_and_class_name_mismatch: "tem de ser um Project::Stage"
+              start_date_must_be_before_finish_date: "start date must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              incomplete: "is incomplete."
         query:
           attributes:
             project:
@@ -1522,8 +1497,6 @@ pt-PT:
         other: "Notificações"
       placeholder_user: "Utilizador de espaço reservado"
       project: "Projecto"
-      project/gate_definition: "Porta"
-      project/stage_definition: "Fase"
       project_query:
         one: "Lista de projetos"
         other: "Listas de projetos"
@@ -1587,12 +1560,14 @@ pt-PT:
       time_entry: "Tempo gasto"
       wiki_edit: "Wiki"
       work_package: "Pacotes de trabalho"
-    project_life_cycle_step:
+    project_phase:
       activated: "activated"
       deactivated: "deactivated"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
   #common attributes of all models
   attributes:
     active: "Ativo"
@@ -1992,7 +1967,7 @@ pt-PT:
       automatic_subject_generation:
         description: "Crie temas gerados automaticamente utilizando atributos e texto referenciados."
       customize_life_cycle:
-        description: "Crie e organize fases e portas de projeto diferentes das fornecidas pelo planeamento do ciclo de projeto PM2."
+        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Personalize a configuração do formulário com estes complementos adicionais:"
         add_groups: "Adicionar novos grupos de atributos"
@@ -2737,7 +2712,7 @@ pt-PT:
   label_none_parentheses: "(nenhum)"
   label_not_contains: "não contém"
   label_not_equals: "não é"
-  label_life_cycle_step_plural: "Ciclo de vida do projeto"
+  label_life_cycle_step_plural: "Project life cycle"
   label_on: "on"
   label_operator_all: "não está vazio"
   label_operator_none: "está vazio"
@@ -2799,7 +2774,7 @@ pt-PT:
   label_project_new: "Novo Projecto"
   label_project_plural: "Projetos"
   label_project_list_plural: "Listas do projeto"
-  label_project_lifecycle: "Ciclo de vida do projeto"
+  label_project_life_cycle: "Project life cycle"
   label_project_attributes_plural: "Atributos do projeto"
   label_project_custom_field_plural: "Atributos do projeto"
   label_project_settings: "Configurações do projeto"
@@ -3339,7 +3314,7 @@ pt-PT:
   permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Editar projeto"
   permission_edit_project_attributes: "Editar atributos do projeto"
-  permission_edit_project_stages_and_gates: "Editar fases e portas do projeto"
+  permission_edit_project_phases: "Edit project phases"
   permission_edit_reportings: "Editar comunicações"
   permission_edit_time_entries: "Editar registos de tempo para outros utilizadores"
   permission_edit_timelines: "Editar cronogramas"
@@ -3369,8 +3344,8 @@ pt-PT:
   permission_search_project: "Pesquisar projeto"
   permission_select_custom_fields: "Escolher campos adicionais..."
   permission_select_project_custom_fields: "Selecionar atributos do projeto"
-  permission_select_project_life_cycle: "Selecionar fases e portas do projeto"
-  permission_select_project_life_cycle_explanation: "Ativar/desativar as fases e as portas de um projeto. Permite ao utilizador selecionar o ciclo de vida adequado para o projeto, uma vez que as fases e as portas inativas não serão visíveis na página de visão geral do projeto nem na lista de projetos."
+  permission_select_project_phases: "Select project phases"
+  permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the life cycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "Selecione módulos do projeto"
   permission_share_work_packages: "Compartilhar pacotes de trabalho"
   permission_manage_types: "Selecione tipos"
@@ -3396,7 +3371,7 @@ pt-PT:
   permission_work_package_assigned_explanation: "Os pacotes de trabalho podem ser atribuídos a utilizadores e grupos com deste papel nos respetivos projetos"
   permission_view_project_activity: "Ver atividade do projeto"
   permission_view_project_attributes: "Ver atributos do projeto"
-  permission_view_project_stages_and_gates: "Ver fases e portas do projeto"
+  permission_view_project_phases: "View project phases"
   permission_save_bcf_queries: "Guardar consultas BCF"
   permission_manage_public_bcf_queries: "Gerir consultas BCF públicas"
   permission_edit_attribute_help_texts: "Editar textos de ajuda de atributos"
@@ -3422,9 +3397,9 @@ pt-PT:
       subprojects_confirmation: "O(s) seu(s) sub-projeto(s): %{value} também será/serão apagado(s)."
       title: "Apagar o projeto %{name}"
     filters:
-      life_cycle_any: "Ciclo de vida: Qualquer fase ou porta"
-      life_cycle_stage: "Fase do ciclo de vida: %{stage}"
-      life_cycle_gate: "Porta do ciclo de vida: %{gate}"
+      project_phase: "Project phase: %{phase}"
+      project_phase_any: "Project phase: Any"
+      project_phase_gate: "Project phase gate: %{gate}"
     identifier:
       warning_one: Os membros do projeto terão de realocar os repositórios do projeto.
       warning_two: Os links existentes para o projeto já não funcionarão.
@@ -3802,27 +3777,27 @@ pt-PT:
       new:
         heading: "Novo atributo"
         description: "As alterações a este atributo do projeto irão refletir-se em todos os projetos em que estiver ativado. Os atributos obrigatórios não podem ser desativados por projeto."
-    project_life_cycle_step_definitions:
-      heading: "Ciclo de vida do projeto"
-      heading_description: "O ciclo de vida do projeto consiste em fases e portas que estruturam os seus projetos. Estas irão aparecer na página de visão geral de um projeto e estão disponíveis na lista de projetos. Pode selecionar fases e portas individuais para personalizar um projeto, mas não é possível reordenar ao nível do projeto."
-      label_add: "Adicionar"
-      label_add_description: "Adicionar definição do ciclo de vida"
-      label_add_stage: "Fase"
-      label_add_gate: "Porta"
+    project_phase_definitions:
+      heading: "Project life cycle"
+      heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
+      label_add: "Add"
+      label_add_description: "Add life cycle definition"
       filter:
-        label: "Pesquisar fase ou porta do projeto"
-      section_header: "Fases e portas"
-      non_defined: "Atualmente, não estão definidas nem as fases nem as portas."
+        label: "Search project phase"
+      section_header: "Phases"
+      non_defined: "No phases are currently defined."
+      phase_gates: "Phase gates"
       new:
-        description: "As alterações a este passo do projeto serão refletidas em todos os projetos em que estiver ativado."
-      new_stage:
-        heading: "Nova fase"
-      new_gate:
-        heading: "Nova porta"
-      edit_stage:
-        heading: "Editar fase"
-      edit_gate:
-        heading: "Editar porta"
+        description: "Changes to this project phase will be reflected in all projects where it is enabled."
+        heading: "New Phase"
+      edit:
+        heading: "Edit Phase"
+      both_gate: "Start and finish gate"
+      no_gate: "No gate"
+      start_gate: "Start gate"
+      start_gate_caption: "Add a gate with the start date of the phase"
+      finish_gate: "Finish gate"
+      finish_gate_caption: "Add a gate with the end date of the phase"
     projects:
       missing_dependencies: "Foi verificado o módulo do projeto %{module} que depende de %{dependencies}. Também tem de verificar estas dependências."
       section_new_projects: "Configurações para novos projetos"
@@ -3858,7 +3833,7 @@ pt-PT:
   text_are_you_sure_continue: "Tem a certeza que deseja continuar?"
   text_are_you_sure_with_children: "Apagar o pacote de trabalho e todos os pacotes de trabalho filhos?"
   text_are_you_sure_with_project_custom_fields: "A eliminação deste atributo também elimina os seus valores em todos os projetos. Tem a certeza de que pretende fazê-lo?"
-  text_are_you_sure_with_project_life_cycle_step: "A eliminação deste passo também elimina as suas utilizações em todos os projetos. Tem a certeza de que pretende fazê-lo?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this phase will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Atribuir ao projeto"
   text_form_configuration: >
     Pode personalizar quais os campos que serão exibidos nos formulários de pacote de trabalho. Pode agrupar livremente os campos para refletir as necessidades para o seu domínio.

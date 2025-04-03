@@ -34,17 +34,15 @@ pl:
           name: Szary (ciemny)
         item_13:
           name: Czarny
-      life_cycle_colors:
+      project_phase_colors:
         item_0:
-          name: PM2 pomarańczowy
+          name: PM2 Orange
         item_1:
-          name: PM2 fioletowy
+          name: PM2 Red
         item_2:
-          name: PM2 czerwony
+          name: PM2 Magenta
         item_3:
-          name: PM2 amarantowy
-        item_4:
-          name: PM2 żółtozielony
+          name: PM2 Green Yellow
       document_categories:
         item_0:
           name: Dokumentacja
@@ -81,21 +79,18 @@ pl:
         item_1:
           name: Standardowa rola globalna
     standard:
-      life_cycles:
+      project_phases:
         item_0:
-          name: Inicjowanie
+          name: Initiating
         item_1:
-          name: Gotowy do planowania
+          name: Planning
+          start_gate: Ready for Planning
         item_2:
-          name: Planowanie
+          name: Executing
+          start_gate: Ready for Executing
         item_3:
-          name: Gotowy do wykonania
-        item_4:
-          name: Wykonywanie
-        item_5:
-          name: Gotowy do zamknięcia
-        item_6:
-          name: Zamykanie
+          name: Closing
+          start_gate: Ready for Closing
       priorities:
         item_0:
           name: Niski
@@ -490,7 +485,7 @@ pl:
         item_1:
           name: Kamień milowy
         item_2:
-          name: Etap
+          name: Summary task
         item_3:
           name: Cecha/Funkcja
         item_4:

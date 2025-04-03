@@ -219,8 +219,8 @@ ru:
         new_date_time: "Новые дата/время"
     label_mail_all_participants: "Отправить письмо всем участникам"
     types:
-      classic: "Classic (unsupported)"
-      classic_text: "Note: Classic meetings will be removed in the next version of OpenProject."
+      classic: "Классический (не поддерживается)"
+      classic_text: "Примечание: совещания классического типа будут удалены в следующей версии OpenProject."
       structured: "Структурированная"
       one_time: "Однократная"
       recurring: "Периодичность"

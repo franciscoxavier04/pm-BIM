@@ -369,14 +369,14 @@ tr:
         no_results_title_text: Şu anda kullanılabilir özel alan bulunmamakta.
       life_cycle:
         header:
-          title: "Proje yaşam döngüsü"
-          description_html: 'Proje yaşam döngüsündeki bu proje aşamaları ve kapıları <a href=%{overview_url} target="_blank">projeye genel bakış sayfası</a>nda görüntülenir ve kurulumun yöneticisi tarafından <a href=%{admin_settings_url} target="_blank">yönetim ayarları</a> içinde tanımlanır. Öznitelikleri tek tek etkinleştirebilir veya devre dışı bırakabilirsiniz.'
-        non_defined: "Şu anda ne aşamalar ne de kapılar tanımlanmıştır."
-        section_header: "Aşamalar ve kapılar"
+          title: "Project life cycle"
+          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
+        non_defined: "No phases are currently defined."
+        section_header: "Phases"
         step:
           use_in_project: "Use %{step} in this project"
         filter:
-          label: "Proje aşaması veya kapısı ara"
+          label: "Search project phase"
       project_custom_fields:
         header:
           title: "Proje öznitelikleri"
@@ -401,10 +401,10 @@ tr:
         no_results_title_text: Bu proje tarafından tüketilen ek kayıtlı disk alanı yoktur.
       work_package_priorities:
         new_label: "Yeni öncelik"
-  project_stage:
+  project_phase:
     working_days_count:
-      one: "Süre: %{count} iş günü"
-      other: "Süre: %{count} iş günü"
+      one: "Duration: %{count} working day"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Değiştirilen liste yeni bir liste olarak kaydedildi"
@@ -953,11 +953,16 @@ tr:
       project_custom_field:
         is_required: "Tüm projelerde zorunludur"
         custom_field_section: Bölüm
-      project/life_cycle_step:
-        definition: "Tanım"
-      project/life_cycle_step_definition:
-        name: "İsim"
-        color: "Renk"
+      project/phase:
+        date_range: "Date range"
+        definition: "Definition"
+      project/phase_definition:
+        name: "Name"
+        color: "Color"
+        start_gate: "Start phase gate"
+        start_gate_name: "Start phase gate name"
+        finish_gate: "Finish phase gate"
+        finish_gate_name: "Finish phase gate name"
       query:
         sums: "Toplam"
         columns: "Sütunlar"
@@ -1258,42 +1263,12 @@ tr:
           attributes:
             project_ids:
               blank: "Lütfen bir proje seçin."
-        project/life_cycle_step_definition:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "Project::StageDefinition veya Project::GateDefinition olmalıdır"
-              type_and_class_name_mismatch: "örneklenen sınıf adıyla eşleşmelidir"
-        project/gate_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "bir Project::GateDefinition olmalıdır"
-        project/stage_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "bir Project::StageDefinition olmalıdır"
-        project/life_cycle_step:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "Project::Stage veya Project::Gate olmalıdır"
-              must_be_a_stage: "bir Project::Stage olmalıdır"
-              must_be_a_gate: "bir Project::Gate olmalıdır"
-              type_and_class_name_mismatch: "örneklenen sınıf adıyla eşleşmelidir"
-        project/gate:
-          attributes:
-            base:
-              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
-            type:
-              type_and_class_name_mismatch: "bir Project::Gate olmalıdır"
-            date:
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
-        project/stage:
+        project/phase:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "start date must be before the end date."
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
-              incomplete: "tamamlanmamıştır."
-            type:
-              type_and_class_name_mismatch: "bir Project::Stage olmalıdır"
+              start_date_must_be_before_finish_date: "start date must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              incomplete: "is incomplete."
         query:
           attributes:
             project:
@@ -1524,8 +1499,6 @@ tr:
         other: "Bildirimler"
       placeholder_user: "Yer tutucu kullanıcı"
       project: "Proje"
-      project/gate_definition: "Kapı"
-      project/stage_definition: "Aşama"
       project_query:
         one: "Proje listesi"
         other: "Proje listesi"
@@ -1589,12 +1562,14 @@ tr:
       time_entry: "Harcanan zaman"
       wiki_edit: "Rehber"
       work_package: "İş paketleri"
-    project_life_cycle_step:
+    project_phase:
       activated: "activated"
       deactivated: "deactivated"
-      added_date: "%{date} tarihine ayarlandı"
+      added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
   #common attributes of all models
   attributes:
     active: "Aktif"
@@ -1994,7 +1969,7 @@ tr:
       automatic_subject_generation:
         description: "Referens öznitelikleri ve metni kullanarak otomatik konular oluşturun."
       customize_life_cycle:
-        description: "PM2 proje döngüsü planlaması tarafından sağlananlardan farklı proje aşamaları ve kapıları oluşturun ve düzenleyin."
+        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Bu ek eklentilerle form yapılandırmasını özelleştirin:"
         add_groups: "Yeni öznitelik grubu ekleyin"
@@ -2739,7 +2714,7 @@ tr:
   label_none_parentheses: "(yok)"
   label_not_contains: "içermiyor"
   label_not_equals: "değildir"
-  label_life_cycle_step_plural: "Proje yaşam döngüsü"
+  label_life_cycle_step_plural: "Project life cycle"
   label_on: "açık"
   label_operator_all: "boş değil"
   label_operator_none: "boş"
@@ -2801,7 +2776,7 @@ tr:
   label_project_new: "Yeni proje"
   label_project_plural: "Projeler"
   label_project_list_plural: "Proje listesi"
-  label_project_lifecycle: "Proje yaşam döngüsü"
+  label_project_life_cycle: "Project life cycle"
   label_project_attributes_plural: "Proje öznitelikleri"
   label_project_custom_field_plural: "Proje öznitelikleri"
   label_project_settings: "Proje ayarları"
@@ -3340,7 +3315,7 @@ tr:
   permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Proje düzenleme"
   permission_edit_project_attributes: "Proje özniteliklerini düzenleme"
-  permission_edit_project_stages_and_gates: "Edit project stages and gates"
+  permission_edit_project_phases: "Edit project phases"
   permission_edit_reportings: "Raporlamayı düzenlemek"
   permission_edit_time_entries: "Diğer kullanıcılar için zaman günlüklerini düzenleyin"
   permission_edit_timelines: "Zaman akışını düzenlemek"
@@ -3370,8 +3345,8 @@ tr:
   permission_search_project: "Projeyi ara"
   permission_select_custom_fields: "Özel alanları seçin"
   permission_select_project_custom_fields: "Select project attributes"
-  permission_select_project_life_cycle: "Select project stages and gates"
-  permission_select_project_life_cycle_explanation: "Activate/Deactivate the stages and gates in a project. Enables the user to select the lifecycle appropriate for the project as inactive stages and gates will not be visible in the project overview page nor the project list."
+  permission_select_project_phases: "Select project phases"
+  permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the life cycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "Proje modülleri seçmek"
   permission_share_work_packages: "İş paketini paylaşma"
   permission_manage_types: "İş paketi türlerini seçmek"
@@ -3397,7 +3372,7 @@ tr:
   permission_work_package_assigned_explanation: "İşpaketleri bağlı projedeki rollere göre kullanıcı ve gruplara atanabilir"
   permission_view_project_activity: "Proje faaliyetlerini görüntüleme"
   permission_view_project_attributes: "Proje özniteliklerini görüntüleme"
-  permission_view_project_stages_and_gates: "Proje aşamalarını ve kapılarını görüntüleyin"
+  permission_view_project_phases: "View project phases"
   permission_save_bcf_queries: "BCF sorgularını kaydetme"
   permission_manage_public_bcf_queries: "Genel BCF sorgularını yönetme"
   permission_edit_attribute_help_texts: "Öznitelik yardım metinlerini düzenleme"
@@ -3423,9 +3398,9 @@ tr:
       subprojects_confirmation: "Alt projeleri:% {value} de silinecek. %{value}"
       title: "% {Name} adlı projeyi sil %{name}"
     filters:
-      life_cycle_any: "Lifecycle: Any stage or gate"
-      life_cycle_stage: "Lifecycle stage: %{stage}"
-      life_cycle_gate: "Lifecycle gate: %{gate}"
+      project_phase: "Project phase: %{phase}"
+      project_phase_any: "Project phase: Any"
+      project_phase_gate: "Project phase gate: %{gate}"
     identifier:
       warning_one: Projenin üyeleri, projenin depoları yeniden yerleştirmek zorunda kalacaklardır.
       warning_two: Projeye mevcut bağlantılar artık çalışmayacaktır.
@@ -3805,27 +3780,27 @@ tr:
       new:
         heading: "Yeni öznitelik"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
-    project_life_cycle_step_definitions:
-      heading: "Proje yaşam döngüsü"
-      heading_description: "Proje yaşam döngüsü, projelerinizi yapılandıran aşamalardan ve kapılardan oluşur. Bunlar bir projenin genel bakış sayfasında görünecek ve projeler listesinde bulunacaktır. Bir projeyi özelleştirmek için tek tek aşamalar ve kapılar seçilebilir, ancak proje düzeyinde yeniden sıralama mümkün değildir."
-      label_add: "Ekle"
-      label_add_description: "Yaşam döngüsü tanımı ekleyin"
-      label_add_stage: "Aşama"
-      label_add_gate: "Kapı"
+    project_phase_definitions:
+      heading: "Project life cycle"
+      heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
+      label_add: "Add"
+      label_add_description: "Add life cycle definition"
       filter:
-        label: "Proje aşaması veya kapısı ara"
-      section_header: "Aşamalar ve kapılar"
-      non_defined: "Şu anda ne aşamalar ne de kapılar tanımlanmıştır."
+        label: "Search project phase"
+      section_header: "Phases"
+      non_defined: "No phases are currently defined."
+      phase_gates: "Phase gates"
       new:
-        description: "Bu proje adımında yapılan değişiklikler, etkin olduğu tüm projelere yansıtılacaktır."
-      new_stage:
-        heading: "Yeni aşama"
-      new_gate:
-        heading: "Yeni kapı"
-      edit_stage:
-        heading: "Aşamayı düzenle"
-      edit_gate:
-        heading: "Kapıyı düzenle"
+        description: "Changes to this project phase will be reflected in all projects where it is enabled."
+        heading: "New Phase"
+      edit:
+        heading: "Edit Phase"
+      both_gate: "Start and finish gate"
+      no_gate: "No gate"
+      start_gate: "Start gate"
+      start_gate_caption: "Add a gate with the start date of the phase"
+      finish_gate: "Finish gate"
+      finish_gate_caption: "Add a gate with the end date of the phase"
     projects:
       missing_dependencies: "%{dependencies} bağımlılıkları olan %{module} proje modülü kontrol edildi. Bu bağımlılıkları da kontrol etmeniz gerekir."
       section_new_projects: "Yeni projeler için ayarlar"
@@ -3861,7 +3836,7 @@ tr:
   text_are_you_sure_continue: "Devam etmek istediğinize emin misiniz?"
   text_are_you_sure_with_children: "Sil iş paketi ve tüm alt çalışma paketlerini?"
   text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
-  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this phase will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Projeye ata"
   text_form_configuration: >
     İş paketi formunda görüntülenecek alanları özelleştirebilirsiniz. Tüm işlerinizde kullanabileceğiniz şekilde bunları gruplayabilirsiniz.

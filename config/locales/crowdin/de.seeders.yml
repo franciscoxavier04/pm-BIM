@@ -34,17 +34,15 @@ de:
           name: Grau (dunkel)
         item_13:
           name: Schwarz
-      life_cycle_colors:
+      project_phase_colors:
         item_0:
           name: PM2 Orange
         item_1:
-          name: PM2 Lila
+          name: PM2 Red
         item_2:
-          name: PM2 Rot
+          name: PM2 Magenta
         item_3:
-          name: PM2 Rosa
-        item_4:
-          name: PM2 Grüngelb
+          name: PM2 Green Yellow
       document_categories:
         item_0:
           name: Dokumentation
@@ -81,21 +79,18 @@ de:
         item_1:
           name: Globale Standardrolle
     standard:
-      life_cycles:
+      project_phases:
         item_0:
-          name: Initiierung
+          name: Initiating
         item_1:
-          name: Bereit für Planung
+          name: Planning
+          start_gate: Ready for Planning
         item_2:
-          name: Planung
+          name: Executing
+          start_gate: Ready for Executing
         item_3:
-          name: Bereit für Durchführung
-        item_4:
-          name: Durchführung
-        item_5:
-          name: Bereit für Abschluss
-        item_6:
-          name: Abschluss
+          name: Closing
+          start_gate: Ready for Closing
       priorities:
         item_0:
           name: Niedrig
@@ -490,7 +485,7 @@ de:
         item_1:
           name: Meilenstein
         item_2:
-          name: Phase
+          name: Summary task
         item_3:
           name: Feature
         item_4:

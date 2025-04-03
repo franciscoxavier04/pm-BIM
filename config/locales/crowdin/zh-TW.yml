@@ -368,14 +368,14 @@ zh-TW:
         no_results_title_text: 目前沒有客製欄位可用。
       life_cycle:
         header:
-          title: "專案生命週期"
-          description_html: '專案生命週期中的這些專案階段和關卡將顯示在您的 <a href=%{overview_url} target="_blank「> 專案總覽頁面</a> 中，並由實例的管理員在 <a href=%{admin_settings_url} target=」_blank"> 管理設定</a> 中定義。您可以啟用或停用個別屬性。'
-        non_defined: "目前階段和閘門都未定義。"
-        section_header: "階段與關卡"
+          title: "Project life cycle"
+          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
+        non_defined: "No phases are currently defined."
+        section_header: "Phases"
         step:
           use_in_project: "在本專案中使用 %{step}"
         filter:
-          label: "搜尋專案階段或關卡"
+          label: "Search project phase"
       project_custom_fields:
         header:
           title: "專案屬性"
@@ -400,9 +400,9 @@ zh-TW:
         no_results_title_text: 該專案沒有額外消耗磁碟空間。
       work_package_priorities:
         new_label: "新優先權"
-  project_stage:
+  project_phase:
     working_days_count:
-      other: "時間： %{count} 工作天"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "修改後的清單已儲存為新清單"
@@ -943,11 +943,16 @@ zh-TW:
       project_custom_field:
         is_required: "所有專案都需要"
         custom_field_section: 區段
-      project/life_cycle_step:
-        definition: "定義"
-      project/life_cycle_step_definition:
-        name: "名稱"
-        color: "顏色"
+      project/phase:
+        date_range: "Date range"
+        definition: "Definition"
+      project/phase_definition:
+        name: "Name"
+        color: "Color"
+        start_gate: "Start phase gate"
+        start_gate_name: "Start phase gate name"
+        finish_gate: "Finish phase gate"
+        finish_gate_name: "Finish phase gate name"
       query:
         sums: "總和"
         columns: "欄位"
@@ -1248,42 +1253,12 @@ zh-TW:
           attributes:
             project_ids:
               blank: "請選擇一個專案"
-        project/life_cycle_step_definition:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: ""
-              type_and_class_name_mismatch: "必須與實體化的類別名稱相符"
-        project/gate_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "必須是 Project::GateDefinition"
-        project/stage_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "必須是 Project::StageDefinition"
-        project/life_cycle_step:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: ""
-              must_be_a_stage: ""
-              must_be_a_gate: "必須是 Project::Gate"
-              type_and_class_name_mismatch: "必須與實體化的類別名稱相符"
-        project/gate:
-          attributes:
-            base:
-              end_date_not_allowed: "無法為 Project::Gate 指定結束日期"
-            type:
-              type_and_class_name_mismatch: "必須是 Project::Gate"
-            date:
-              non_continuous_dates: "不能早於前一個 %{step}的結束日期。"
-        project/stage:
+        project/phase:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "開始日期必須在結束日期之前。"
-              non_continuous_dates: "不能早於前一個 %{step}的結束日期。"
-              incomplete: "未完成。"
-            type:
-              type_and_class_name_mismatch: "必須是 Project::Stage"
+              start_date_must_be_before_finish_date: "start date must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              incomplete: "is incomplete."
         query:
           attributes:
             project:
@@ -1510,8 +1485,6 @@ zh-TW:
         other: "通知"
       placeholder_user: "占位使用者"
       project: "專案"
-      project/gate_definition: "關卡"
-      project/stage_definition: "階段"
       project_query:
         other: "專案列表"
       query: "自訂查詢"
@@ -1568,12 +1541,14 @@ zh-TW:
       time_entry: "耗時"
       wiki_edit: "維基"
       work_package: "工作項目"
-    project_life_cycle_step:
-      activated: "已啟用"
-      deactivated: "已停用"
-      added_date: "設定為 %{date}"
-      changed_date: "從 %{from} 改為 %{to}"
-      removed_date: "已刪除日期：%{date}"
+    project_phase:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
   #common attributes of all models
   attributes:
     active: "啟用"
@@ -1954,7 +1929,7 @@ zh-TW:
       automatic_subject_generation:
         description: "使用參考的屬性和文字建立自動產生的主題。"
       customize_life_cycle:
-        description: "建立和組織不同於 PM2 專案週期規劃所提供的專案階段和關卡。"
+        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "使用以下附加組件自定義表單配置："
         add_groups: "增加新的屬性群組"
@@ -2699,7 +2674,7 @@ zh-TW:
   label_none_parentheses: "（無）"
   label_not_contains: "不包含"
   label_not_equals: "不是"
-  label_life_cycle_step_plural: "專案生命週期"
+  label_life_cycle_step_plural: "Project life cycle"
   label_on: "開啟"
   label_operator_all: "全部"
   label_operator_none: "無"
@@ -2761,7 +2736,7 @@ zh-TW:
   label_project_new: "新增專案"
   label_project_plural: "專案"
   label_project_list_plural: "專案列表"
-  label_project_lifecycle: "專案生命週期"
+  label_project_life_cycle: "Project life cycle"
   label_project_attributes_plural: "專案屬性"
   label_project_custom_field_plural: "專案屬性"
   label_project_settings: "專案設定"
@@ -3298,7 +3273,7 @@ zh-TW:
   permission_edit_others_comments_with_restricted_visibility_explanation: "警告：擁有此權限的使用者能夠編輯其他使用者限制顯示的留言。"
   permission_edit_project: "編輯專案"
   permission_edit_project_attributes: "編輯項目屬性"
-  permission_edit_project_stages_and_gates: "檢視專案階段與關卡"
+  permission_edit_project_phases: "Edit project phases"
   permission_edit_reportings: "編輯報表"
   permission_edit_time_entries: "編輯他人耗時"
   permission_edit_timelines: "編輯時間軸"
@@ -3328,8 +3303,8 @@ zh-TW:
   permission_search_project: "搜尋專案"
   permission_select_custom_fields: "選擇客製欄位"
   permission_select_project_custom_fields: "選擇專案屬性"
-  permission_select_project_life_cycle: "選擇專案階段與關卡"
-  permission_select_project_life_cycle_explanation: "啟動/停用專案中的階段和關卡。使用者可以選擇適合專案的生命週期，因為非活躍階段和關卡不會在專案總覽頁面或專案清單中顯示。"
+  permission_select_project_phases: "Select project phases"
+  permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the life cycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "選擇專案的模組"
   permission_share_work_packages: "參與工作項目"
   permission_manage_types: "選擇類型"
@@ -3355,7 +3330,7 @@ zh-TW:
   permission_work_package_assigned_explanation: "可以將工作項目分配給在相應專案中擁有此角色的使用者和群組"
   permission_view_project_activity: "查看專案活動"
   permission_view_project_attributes: "查看專案屬性"
-  permission_view_project_stages_and_gates: "檢視專案階段與關卡"
+  permission_view_project_phases: "View project phases"
   permission_save_bcf_queries: "保存 BCF 查詢"
   permission_manage_public_bcf_queries: "管理公開的 BCF 查詢"
   permission_edit_attribute_help_texts: "編輯屬性說明文字"
@@ -3381,9 +3356,9 @@ zh-TW:
       subprojects_confirmation: "它的子專案: %{value} 將會一併刪除"
       title: "刪除專案 %{name}"
     filters:
-      life_cycle_any: "生命週期：任何階段或關卡"
-      life_cycle_stage: "生命週期階段：%{stage}"
-      life_cycle_gate: "生命週期關卡：%{gate}"
+      project_phase: "Project phase: %{phase}"
+      project_phase_any: "Project phase: Any"
+      project_phase_gate: "Project phase gate: %{gate}"
     identifier:
       warning_one: 這個專案的成員將必須搬移專案的版本庫
       warning_two: 專案現有的連結將不再有效
@@ -3763,27 +3738,27 @@ zh-TW:
       new:
         heading: "新屬性"
         description: "專案屬性的變更將套用在已啟用該屬性專案中。 若為必要屬性，無法個別專案停用。"
-    project_life_cycle_step_definitions:
-      heading: "專案生命週期"
-      heading_description: "專案生命週期由結構專案的階段和關卡組成。它們會出現在專案的總覽頁面中，並可在專案清單中找到。可以選擇個別階段和關卡來自訂專案，但無法在專案層級上重新排序。"
-      label_add: "增加"
-      label_add_description: "新增生命週期定義"
-      label_add_stage: "階段"
-      label_add_gate: "關卡"
+    project_phase_definitions:
+      heading: "Project life cycle"
+      heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
+      label_add: "Add"
+      label_add_description: "Add life cycle definition"
       filter:
-        label: "搜尋專案階段或關卡"
-      section_header: "階段與關卡"
-      non_defined: "目前階段和關卡都未定義。"
+        label: "Search project phase"
+      section_header: "Phases"
+      non_defined: "No phases are currently defined."
+      phase_gates: "Phase gates"
       new:
-        description: "此專案步驟的變更會反映在啟用此步驟的所有專案中。"
-      new_stage:
-        heading: "新增階段"
-      new_gate:
-        heading: "增加關卡"
-      edit_stage:
-        heading: "編輯階段"
-      edit_gate:
-        heading: "編輯關卡"
+        description: "Changes to this project phase will be reflected in all projects where it is enabled."
+        heading: "New Phase"
+      edit:
+        heading: "Edit Phase"
+      both_gate: "Start and finish gate"
+      no_gate: "No gate"
+      start_gate: "Start gate"
+      start_gate_caption: "Add a gate with the start date of the phase"
+      finish_gate: "Finish gate"
+      finish_gate_caption: "Add a gate with the end date of the phase"
     projects:
       missing_dependencies: "已檢查依賴於 %{dependencies} 的項目模塊 %{module}。您也需要檢查這些依賴項。"
       section_new_projects: "新專案的設置"
@@ -3819,7 +3794,7 @@ zh-TW:
   text_are_you_sure_continue: "你要繼續嗎?"
   text_are_you_sure_with_children: "刪除工作項目以及所有子工作項目?"
   text_are_you_sure_with_project_custom_fields: "刪除該屬性也會刪除其在所有項目中的值。您確定要這樣做嗎？"
-  text_are_you_sure_with_project_life_cycle_step: "刪除此步驟也會刪除其在所有專案中的使用。您確定要這麼做？"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this phase will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "分配給專案"
   text_form_configuration: >
     您可以自訂哪些欄位將會顯示在工作項目表單中。您可以自由的群組化這些欄位來符合您的需求。
