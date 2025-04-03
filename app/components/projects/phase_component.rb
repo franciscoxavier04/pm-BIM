@@ -61,12 +61,28 @@ module Projects
       phase.finish_gate? && phase.finish_date.present?
     end
 
-    def gate_icon
+    def self.gate_icon
       :"op-gate"
+    end
+    delegate :gate_icon, to: :class
+
+    def self.icon_color_class(definition_id)
+      # FIXME: this is a workaround so that this class method can be called from another component
+      helper = Object.new.extend(ColorsHelper)
+      helper.hl_inline_class("project_phase_definition", definition_id)
     end
 
     def icon_color_class
-      helpers.hl_inline_class("project_phase_definition", phase.definition_id)
+      self.class.icon_color_class(phase.definition_id)
+    end
+
+    def hover_card_data_args(gate: "start")
+      raise ArgumentError, "gate must be either 'start' or 'finish'" unless %w[start finish].include?(gate.to_s)
+
+      {
+        hover_card_trigger_target: "trigger",
+        hover_card_url: "/projects/#{phase.id}/hover_card?gate=#{gate}"
+      }
     end
 
     private

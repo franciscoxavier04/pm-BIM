@@ -1,0 +1,67 @@
+# frozen_string_literal: true
+
+#-- copyright
+# OpenProject is an open source project management software.
+# Copyright (C) the OpenProject GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License version 3.
+#
+# OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+# Copyright (C) 2006-2013 Jean-Philippe Lang
+# Copyright (C) 2010-2013 the ChiliProject Team
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# See COPYRIGHT and LICENSE files for more details.
+#++
+
+class Projects::HoverCardComponent < ApplicationComponent
+  include OpPrimer::ComponentHelpers
+
+  attr_reader :phase
+
+  def initialize(id:, gate: "start")
+    super
+
+    @id = id
+    @phase = Project::Phase.joins(:definition).includes(:definition).find(id)
+    @gate = gate.to_sym
+  end
+
+  def phase_gate_name
+    case @gate
+    when :start
+      @phase.definition.start_gate? ? @phase.definition.start_gate_name : nil
+    else
+      @phase.definition.finish_gate? ? @phase.definition.finish_gate_name : nil
+    end
+  end
+
+  def phase_gate_date
+    date = case @gate
+           when :start
+             @phase.start_date
+           else
+             @phase.finish_date
+           end
+
+    helpers.format_date(date)
+  end
+
+  def icon_color_class
+    Projects::PhaseComponent.icon_color_class(@phase.definition.id)
+  end
+end

@@ -298,6 +298,8 @@ Rails.application.routes.draw do
 
       patch :types
 
+      get "hover_card" => "projects/hover_card#show"
+
       # Destroy uses a get request to prompt the user before the actual DELETE request
       get :destroy_info, as: "confirm_destroy"
       post :deactivate_work_package_attachments
