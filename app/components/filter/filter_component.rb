@@ -100,7 +100,7 @@ module Filter
                   { items: filter.allowed_values.map { |name, id| { name:, id: } } }
                 end
 
-      autocomplete_options.merge(options).merge(model: filter.values)
+      autocomplete_options.merge(options)
     end
 
     def list_autocomplete_options(filter)

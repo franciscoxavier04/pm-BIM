@@ -11,6 +11,7 @@
                               multiple: true,
                               multipleAsSeparateInputs: false,
                               inputValue: filter.values,
+                              model: filter.values,
                               appendTo: "body",
                               id: "#{filter.name}_value",
                               hiddenFieldAction: "change->filter--filters-form#autocompleteSendForm"
@@ -19,6 +20,5 @@
                               # the action can't be registered on the input field at the time
                               # of the #connect lifecycle hook of the filter--filters-form
                               # Stimulus controller.
-                            }.merge(autocomplete_options.except(:component))
-  %>
+                            }.merge(autocomplete_options.except(:component)) %>
 <% end %>
