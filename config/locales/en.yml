@@ -875,6 +875,8 @@ en:
       label_parent_plural: "parent"
       ghost_relation_title: "Related work package"
       ghost_relation_description: "This is not visible to you due to permissions."
+      create_relation_aria_live_message: "A new relation is created"
+      create_child_aria_live_message: "A new child relation is created"
 
   label_invitation: Invitation
   account:
