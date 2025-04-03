@@ -39,11 +39,16 @@ module Components
         expect(page).to have_css(".op-filters-form", visible: :hidden)
       end
 
-      def expect_filter_set(filter_name)
+      def expect_filter_set(filter_name, value: nil)
         if filter_name == "name_and_identifier"
           expect(page.find_by_id(filter_name).value).not_to be_empty
+        elsif value
+          within("li[data-filter-name='#{filter_name}']:not(.hidden)", visible: :hidden) do
+            expect(page).to have_css(".advanced-filters--filter-value", text: value, visible: :all)
+          end
         else
-          expect(page).to have_css("li[data-filter-name='#{filter_name}']:not(.hidden)", visible: :hidden)
+          expect(page)
+            .to have_css("li[data-filter-name='#{filter_name}']:not(.hidden)", visible: :hidden)
         end
       end
 
