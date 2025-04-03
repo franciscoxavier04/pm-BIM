@@ -2140,7 +2140,7 @@ de:
       caption: Alle Attribute, die in der aktuellen Formularkonfiguration mit der Standardvorlage vorhanden sind.
     template_contract:
       label: "Vertrag"
-      caption: Details des Arbeitspakets im Format des deutschen Standardvertragsformulars.
+      caption: Details des Arbeitspakets im Format der deutschen Standardvertragsform.
     dialog:
       title: PDF generieren
       submit: Download
