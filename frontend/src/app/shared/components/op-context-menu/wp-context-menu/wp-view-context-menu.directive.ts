@@ -185,6 +185,7 @@ export class WorkPackageViewContextMenu extends OpContextMenuHandler {
   }
 
   protected buildItems():OpContextMenuItem[] {
+    const selected = this.getSelectedWorkPackages();
     const items = this.permittedActions.map((action:WorkPackageAction) => ({
       class: undefined as string | undefined,
       disabled: false,
@@ -201,7 +202,7 @@ export class WorkPackageViewContextMenu extends OpContextMenuHandler {
       },
     }));
 
-    if (!isNewResource(this.workPackage)) {
+    if (selected.length === 1 && !isNewResource(this.workPackage)) {
       items.unshift({
         disabled: false,
         icon: 'icon-view-fullscreen',
@@ -221,7 +222,7 @@ export class WorkPackageViewContextMenu extends OpContextMenuHandler {
         },
       });
 
-      if (this.allowSplitScreenActions) {
+      if (selected.length === 1 && this.allowSplitScreenActions) {
         items.unshift({
           disabled: false,
           icon: 'icon-view-split',
