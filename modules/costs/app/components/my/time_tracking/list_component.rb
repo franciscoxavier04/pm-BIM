@@ -66,14 +66,23 @@ module My
         DurationConverter.output(total_hours, format: :hours_and_minutes)
       end
 
-      def date_title(date)
-        result = [date.strftime("%A %d")]
+      def date_title(date) # rubocop:disable Metrics/AbcSize
+        result = [
+          render(Primer::Beta::Text.new) { date.strftime("%A %d") }
+        ]
 
         if date.today?
           result << render(Primer::Beta::Text.new(color: :muted)) { t("label_today") }
         elsif date.yesterday?
           result << render(Primer::Beta::Text.new(color: :muted)) { t("label_yesterday") }
         end
+
+        result << render(Primer::Beta::Text.new(color: :muted)) do
+          count = time_entries_by_day[date].count
+          "#{count} #{TimeEntry.model_name.human(count: count)}"
+        end
+
+        result << render(Primer::Beta::Text.new) { total_hours_per_day(date) }
 
         safe_join(result, " ")
       end
