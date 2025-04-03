@@ -33,6 +33,7 @@ module Types
     class TokenPropertyMapper
       DEFAULT_FUNCTION = ->(key, context) do
         return nil if context.nil?
+        return nil unless context.respond_to?(key.to_sym)
 
         context.public_send(key.to_sym)
       end.curry
