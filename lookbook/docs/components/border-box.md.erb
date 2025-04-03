@@ -1,5 +1,6 @@
-The Border Box element is used to display structured items in a list, each with a set of actions. It is used for example:
+The Border Box element is used to display structured items in a list, each with a set of actions.
 
+<%= embed OpPrimer::BorderBoxComponentPreview, :default %>
 
 ## Anatomy
 
@@ -12,20 +13,19 @@ If a page uses a Border Box with a header, all sections must use headers.
 
 ## Header
 
-Note for Parimal:
-You can chose between a collapsibleHeader and a free-chosen Header. The collapsible Header consists of Title, counter(optional) and description(optional).
-
-The header can either be static or collapsible. 
+The header can either be static or collapsible.
 
 The collapsibleHeader brings additional functionality:
 
-- an **arrow indicator** next to the title  indicates if the section is collapsed or expanded. 
+- an **arrow indicator** next to the title  indicates if the section is collapsed or expanded.
 - a **header description** (optional) to give additional context to the content of that section. Hidden when collapsed.
 - a **counter** (optional) displays the number of items that that particular section contains.
-  
+
 When collapsed, the bottom border is slightly thicker to indicate something is hidden.
 
 Both the collapsible header and static heads can accept additional actions. For example, a **more button** can offer additional contextual actions such as edit, delete and move (move up, move to top, move down, move to the end).
+
+<%= embed OpPrimer::BorderBoxComponentPreview, :collapsible %>
 
 ## Uses
 
@@ -47,8 +47,8 @@ If the content needs to be more structured (with columns and column headers), pl
 - Don't mix sections with and without headers. If one section has a header, they must all have headers.
 - Don't make sections collapsible if they do not need to be.
 
-
 ## Technical notes
 
+<%= embed OpPrimer::BorderBoxComponentPreview, :collapsible, panels: %i[source] %>
 
-### Code structure
+For detailed examples have a look at the other [border box preview examples](/lookbook/inspect/primer/beta/border_box/playground) or the [collapsible header preview examples](/lookbook/inspect/primer/open_project/border_box/collapsible_header/playground).
