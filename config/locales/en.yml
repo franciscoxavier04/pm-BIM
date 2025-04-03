@@ -1707,6 +1707,8 @@ en:
     priority: "Priority"
     project: "Project"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reason"
     responsible: "Accountable"
     required: "Required"

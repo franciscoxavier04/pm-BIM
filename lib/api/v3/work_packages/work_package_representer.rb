@@ -487,6 +487,31 @@ module API
 
         associated_resource :project
 
+        resource :project_phase_definition,
+                 link_cache_if: -> { view_project_phase_allowed? },
+                 link: ->(*) {
+                   if phase_set_and_active?
+                     {
+                       href: api_v3_paths.project_phase_definition(represented.project_phase_definition_id),
+                       title: represented.project_phase_definition.name
+                     }
+                   else
+                     {
+                       href: nil,
+                       title: nil
+                     }
+                   end
+                 },
+                 getter: ->(*) do
+                   if embed_links && phase_set_and_active? && view_project_phase_allowed?
+                     API::V3::ProjectPhaseDefinitions::ProjectPhaseDefinitionRepresenter.create(
+                       represented.project_phase_definition, current_user:
+                     )
+                   end
+                 end,
+                 # TODO: write the setter
+                 setter: ->(*) {}
+
         associated_resource :status
 
         associated_resource :author,
@@ -630,6 +655,10 @@ module API
           @view_budgets_allowed ||= current_user.allowed_in_project?(:view_budgets, represented.project)
         end
 
+        def view_project_phase_allowed?
+          @view_project_phase_allowed ||= current_user.allowed_in_project?(:view_project_phases, represented.project)
+        end
+
         def export_work_packages_allowed?
           @export_work_packages_allowed ||=
             current_user.allowed_in_work_package?(:export_work_packages, represented)
@@ -638,6 +667,12 @@ module API
         def add_work_packages_allowed?
           @add_work_packages_allowed ||=
             current_user.allowed_in_project?(:add_work_packages, represented.project)
+        end
+
+        def phase_set_and_active?
+          represented.project&.phases&.any? do
+            it.definition_id == represented.project_phase_definition_id && it.active?
+          end
         end
 
         def relations

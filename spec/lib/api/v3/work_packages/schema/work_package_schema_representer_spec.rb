@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -823,6 +825,41 @@ RSpec.describe API::V3::WorkPackages::Schema::WorkPackageSchemaRepresenter do
       end
     end
 
+    describe "projectPhaseDefinition" do
+      # TODO: spec feature flag
+      context "with the view_project_phases permission" do
+        let(:permissions) { %i[edit_work_packages view_project_phases] }
+
+        it_behaves_like "has basic schema properties" do
+          let(:path) { "projectPhaseDefinition" }
+          let(:type) { "ProjectPhaseDefinition" }
+          let(:name) { I18n.t("attributes.project_phase") }
+          let(:required) { false }
+          let(:writable) { false }
+          let(:location) { "_links" }
+        end
+      end
+
+      context "with the edit_project_phases permission" do
+        let(:permissions) { %i[edit_work_packages view_project_phases edit_project_phases] }
+
+        it_behaves_like "has basic schema properties" do
+          let(:path) { "projectPhaseDefinition" }
+          let(:type) { "ProjectPhaseDefinition" }
+          let(:name) { I18n.t("attributes.project_phase") }
+          let(:required) { false }
+          let(:writable) { true }
+          let(:location) { "_links" }
+        end
+      end
+
+      context "without the view_project_phases permission view time_entries permission" do
+        it "has no spentTime attribute" do
+          expect(subject).not_to have_json_path("projectPhaseDefinitions")
+        end
+      end
+    end
+
     describe "parent" do
       it_behaves_like "has basic schema properties" do
         let(:path) { "parent" }
@@ -1245,7 +1282,7 @@ RSpec.describe API::V3::WorkPackages::Schema::WorkPackageSchemaRepresenter do
         end
       end
 
-      context "if the type is switches" do
+      context "if the locale is switched" do
         it_behaves_like "changes" do
           let(:change) { allow(I18n).to receive(:locale).and_return(:de) }
         end

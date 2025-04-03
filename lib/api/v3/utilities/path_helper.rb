@@ -327,6 +327,8 @@ module API
 
           resources :project
 
+          show :project_phase_definition
+
           show :project_status
 
           def self.projects_available_parents
@@ -547,7 +549,7 @@ module API
           resources :work_package, except: :schema
 
           def self.work_package(id, timestamps: nil)
-            "#{root}/work_packages/#{id}" + \
+            "#{root}/work_packages/#{id}" +
               if (param_value = timestamps_to_param_value(timestamps)).present? && Array(timestamps).any?(&:historic?)
                 "?#{{ timestamps: param_value }.to_query}"
               end.to_s

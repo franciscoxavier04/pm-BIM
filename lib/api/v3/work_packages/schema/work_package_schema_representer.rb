@@ -26,9 +26,6 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "roar/decorator"
-require "roar/json/hal"
-
 module API
   module V3
     module WorkPackages
@@ -84,7 +81,7 @@ module API
           def initialize(schema, self_link:, **context)
             @base_schema_link = context.delete(:base_schema_link) || nil
             @show_lock_version = !context.delete(:hide_lock_version)
-            super(schema, self_link:, **context)
+            super
           end
 
           link :baseSchema do
@@ -93,6 +90,7 @@ module API
 
           link :attachments do
             next if represented.work_package.hide_attachments?
+
             { href: nil }
           end
 
@@ -227,6 +225,13 @@ module API
                                        api_v3_paths.available_projects_on_edit(represented.id)
                                      end
                                    }
+
+          # TODO: Turn into schema_with_allowed_link
+          schema :project_phase_definition,
+                 type: "ProjectPhaseDefinition",
+                 location: :link,
+                 required: false,
+                 name_source: :project_phase
 
           schema_with_allowed_link :parent,
                                    type: "WorkPackage",

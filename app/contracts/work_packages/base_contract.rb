@@ -82,6 +82,9 @@ module WorkPackages
     attribute :parent_id,
               permission: :manage_subtasks
 
+    attribute :project_phase_definition_id,
+              permission: :edit_project_phases
+
     attribute :assigned_to_id do
       next unless model.project
 

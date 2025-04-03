@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -65,6 +67,7 @@ RSpec.describe API::V3::WorkPackages::WorkPackageRepresenter do
                   parent:,
                   type:,
                   project:,
+                  project_phase_definition:,
                   priority:,
                   assigned_to: assignee,
                   responsible:,
@@ -94,10 +97,13 @@ RSpec.describe API::V3::WorkPackages::WorkPackageRepresenter do
       view_file_links
       manage_file_links
       delete_work_packages
+      view_project_phases
     ]
   end
   let(:permissions) { all_permissions }
-  let(:project) { build_stubbed(:project_with_types) }
+  let(:project) { build_stubbed(:project_with_types, phases: project_phase.present? ? [project_phase] : []) }
+  let(:project_phase) { build_stubbed(:project_phase, definition: project_phase_definition) }
+  let(:project_phase_definition) { build_stubbed(:project_phase_definition) }
   let(:type) do
     type = project.types.first
 
@@ -665,6 +671,50 @@ RSpec.describe API::V3::WorkPackages::WorkPackageRepresenter do
         it "has the project embedded" do
           expect(subject).to be_json_eql("Project".to_json).at_path("#{embedded_path}/_type")
           expect(subject).to be_json_eql(project.name.to_json).at_path("#{embedded_path}/name")
+        end
+      end
+
+      describe "projectPhaseDefinition" do
+        context "without a phase being set" do
+          before do
+            work_package.project_phase_definition = nil
+          end
+
+          it_behaves_like "has an empty link" do
+            let(:link) { "projectPhaseDefinition" }
+          end
+        end
+
+        context "with a phase being set" do
+          it_behaves_like "has a titled link" do
+            let(:link) { "projectPhaseDefinition" }
+            let(:href) { api_v3_paths.project_phase_definition(project_phase_definition.id) }
+            let(:title) { project_phase_definition.name }
+          end
+        end
+
+        context "with the phase not existing in the project" do
+          let(:project_phase) { nil }
+
+          it_behaves_like "has an empty link" do
+            let(:link) { "projectPhaseDefinition" }
+          end
+        end
+
+        context "with the phase being inactive in the project" do
+          let(:project_phase) { build_stubbed(:project_phase, active: false, definition: project_phase_definition) }
+
+          it_behaves_like "has an empty link" do
+            let(:link) { "projectPhaseDefinition" }
+          end
+        end
+
+        context "without the user being allowed to see the reference" do
+          let(:permissions) { all_permissions - [:view_project_phases] }
+
+          it_behaves_like "has no link" do
+            let(:link) { "projectPhaseDefinition" }
+          end
         end
       end
 
@@ -1312,6 +1362,42 @@ RSpec.describe API::V3::WorkPackages::WorkPackageRepresenter do
         end
       end
 
+      describe "projectPhaseDefinition" do
+        let(:embedded_path) { "_embedded/projectPhaseDefinition" }
+        let(:embedded_resource) { project_phase_definition }
+        let(:embedded_resource_type) { "ProjectPhaseDefinition" }
+
+        context "without a phase being set" do
+          before do
+            work_package.project_phase_definition = nil
+          end
+
+          it_behaves_like "has the resource not embedded"
+        end
+
+        context "with a phase being set" do
+          it_behaves_like "has the resource embedded"
+        end
+
+        context "with the phase not existing in the project" do
+          let(:project_phase) { nil }
+
+          it_behaves_like "has the resource not embedded"
+        end
+
+        context "with the phase being inactive in the project" do
+          let(:project_phase) { build_stubbed(:project_phase, active: false, definition: project_phase_definition) }
+
+          it_behaves_like "has the resource not embedded"
+        end
+
+        context "without the user being allowed to see the reference" do
+          let(:permissions) { all_permissions - [:view_project_phases] }
+
+          it_behaves_like "has the resource not embedded"
+        end
+      end
+
       context "when passing timestamps" do
         let(:timestamps) { [Timestamp.new(baseline_time), Timestamp.now] }
         let(:baseline_time) { Time.zone.parse("2022-01-01") }
@@ -1448,6 +1534,7 @@ RSpec.describe API::V3::WorkPackages::WorkPackageRepresenter do
     end
 
     describe "caching" do
+      # TODO: include project_phase and phase_definition into the cache key
       it "is based on the representer's cache_key" do
         allow(OpenProject::Cache)
           .to receive(:fetch)
