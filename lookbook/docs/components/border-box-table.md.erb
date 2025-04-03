@@ -20,6 +20,16 @@ If you want or need that, please use the [TableComponent docs](./tables))
 
 - Don't use the BorderBoxTable when the table consists of a large number of items that require sorting or pagination
 
+## Uses
+
+- to display a list of meetings
+- to display a list of configured SAML providers
+- to display a list of configured OpenID providers
+- to display a list of configured SCIM clients
+
+If the content does not need a table structure with column headers and grids, please use the simpler [Border Box](border-box-table) component instead.
+
+
 ## Technical notes
 
 Since the `BorderBoxTable` is a sub-class of our normal `TableComponent` it follows the same architecture. For the basic usage please visit the [TableComponent docs](./tables). The following docs are only about the additional specifics of the `BorderBoxTable`.
