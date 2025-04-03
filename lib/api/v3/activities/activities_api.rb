@@ -56,6 +56,8 @@ module API
                                                                  { notes: declared_params[:comment] }
                                                                })
                                                           .mount
+
+            mount ::API::V3::Attachments::AttachmentsByActivityCommentAPI
           end
         end
       end

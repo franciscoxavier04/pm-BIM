@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,30 +27,34 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-module WorkPackages::ActivitiesTab::Journals
-  class NotesForm < ApplicationForm
-    delegate :object, to: :@builder
 
-    form do |notes_form|
-      notes_form.rich_text_area(
-        classes: "ck-editor-primer-adjusted",
-        name: :notes,
-        label: nil,
-        rich_text_options: {
-          showAttachments: false,
-          resource:,
-          editor_type: "constrained"
-        }
-      )
-    end
+require "api/v3/attachments/attachment_collection_representer"
 
-    private
+module API
+  module V3
+    module Attachments
+      class AttachmentsByActivityCommentAPI < ::API::OpenProjectAPI
+        resources :attachments do
+          helpers API::V3::Attachments::AttachmentsByContainerAPI::Helpers
 
-    def resource
-      return unless object
+          helpers do
+            def container
+              @activity
+            end
 
-      API::V3::Activities::ActivityRepresenter
-        .create(object, current_user: User.current, embed_links: false)
+            def get_attachment_self_path
+              api_v3_paths.attachments_by_activity_comment(container.id)
+            end
+          end
+
+          get &API::V3::Attachments::AttachmentsByContainerAPI.read
+          post &API::V3::Attachments::AttachmentsByContainerAPI.create(%i[add_work_package_notes])
+
+          namespace :prepare do
+            post &API::V3::Attachments::AttachmentsByContainerAPI.prepare(%i[add_work_package_notes])
+          end
+        end
+      end
     end
   end
 end

@@ -33,6 +33,8 @@ module API
         include API::V3::Utilities
         include API::Decorators::DateProperty
         include API::Decorators::FormattableProperty
+        include API::Caching::CachedRepresenter
+        include ::API::V3::Attachments::AttachableRepresenterMixin
         include ActivityPropertyFormatters
 
         self_link path: :activity,
