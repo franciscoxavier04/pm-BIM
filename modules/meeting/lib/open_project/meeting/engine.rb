@@ -91,7 +91,8 @@ module OpenProject::Meeting
                    {
                      meeting_agenda_items: %i[new cancel_new create edit cancel_edit update destroy drop move
                                               move_to_next_meeting],
-                     meeting_sections: %i[new cancel_new create edit cancel_edit update destroy drop move]
+                     meeting_sections: %i[new cancel_new create edit cancel_edit update destroy drop move
+                                          clear_backlog clear_backlog_dialog]
                    },
                    permissible_on: :project, # TODO: Change this to :meeting when MeetingRoles are available
                    require: :member

@@ -1,7 +1,19 @@
 <%=
   component_wrapper do
     if show?
-      render(Primer::OpenProject::BorderBox::CollapsibleHeader.new(title: I18n.t("label_agenda_backlog"), box: @box, description: I18n.t("text_agenda_backlog"), count: @backlog.agenda_items.count, collapsed: @collapsed))
+      flex_layout(align_items: :center, justify_content: :space_between) do |flex|
+        flex.with_column(classes: "backlog--collapsible-header") do
+          render(Primer::OpenProject::BorderBox::CollapsibleHeader.new(title: I18n.t("label_agenda_backlog"), box: @box, description: I18n.t("text_agenda_backlog"), count: @backlog.agenda_items.count, collapsed: @collapsed))
+        end
+
+        flex.with_column(classes: "hide-when-print") do
+          render(Primer::Alpha::ActionMenu.new(data: { test_selector: "meeting-section-action-menu" })) do |menu|
+            menu.with_show_button(icon: "kebab-horizontal", "aria-label": t("settings.project_attributes.label_section_actions"), scheme: :invisible)
+            clear_action_item(menu)
+          end
+        end
+      end
+
     end
   end
 %>

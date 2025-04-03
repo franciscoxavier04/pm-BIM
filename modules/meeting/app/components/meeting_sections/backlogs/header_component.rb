@@ -57,6 +57,20 @@ module MeetingSections
       end
     end
 
+    def clear_action_item(menu)
+      menu.with_item(
+        label: I18n.t(:label_recurring_meeting_series_delete),
+        href: clear_backlog_dialog_meeting_sections_path(@meeting),
+        scheme: :danger,
+        tag: :a,
+        content_arguments: {
+          data: { controller: "async-dialog" }
+        }
+      ) do |item|
+        item.with_leading_visual_icon(icon: :trash)
+      end
+    end
+
     # def wrapper_data_attributes
     #   {
     #     controller: "generic-drag-and-drop",
