@@ -1,0 +1,59 @@
+## What are ARIA Live Regions?
+ARIA Live Regions are a crucial accessibility feature that allows screen readers to announce dynamic content updates without requiring user focus changes.
+
+### ARIA Live Attributes
+ARIA Live Regions rely on specific attributes to control how updates are announced:
+- `aria-live="polite"`: Announces updates when the user is idle.
+- `aria-live="assertive"`: Announces updates immediately, interrupting the user.
+- `aria-atomic="true"`: Ensures the entire content of the region is read when it changes.
+
+## Implementing ARIA Live Regions in Primer
+Primer provides built-in components to implement ARIA Live Regions easily, for example: live region component.
+We have decided to use a single global ARIA live region in base.html to ensure live regions are present in the DOM before updates occur. This approach is better than having multiple live regions because it ensures that announcements are delivered in a clear and consistent manner. By centralizing updates, we avoid potential conflicts between overlapping live regions and provide a more seamless experience for screen reader users.
+
+### Live Region in `base.html`
+```html
+<live-region>
+  <div id="polite" aria-live="polite" aria-atomic="true" class="hidden-for-sighted"></div>
+  <div id="assertive" aria-live="assertive" aria-atomic="true" class="hidden-for-sighted"></div>
+</live-region>
+```
+
+The `@primer/live-region-element` package provides methods to trigger announcements programmatically:
+
+```ts
+import { announce } from '@primer/live-region-element';
+
+announce('Example polite message', { politeness: 'polite' });
+```
+
+### Using Turbo Streams to Trigger ARIA Live Updates
+To use this feature in a Rails Turbo response:
+```ruby
+OpTurbo::StreamComponent.new(action: :aria, message: "Form submission successful!", type: "polite", role: "status", target: "nil")
+```
+- This creates a **Turbo Stream update** with:
+  - `action: :aria` → Calls the `aria` action defined in `aria.stream.action.ts`
+  - `message: "Form submission successful!"` → The text announced by the screen reader
+  - `type: "polite"` → Ensures the message is read when the user is idle
+  - `role: "status"` → Helps screen readers recognize this as a status update
+  - `target: "nil"` → Ensures the update isn't inserted into the DOM but is handled as an announcement
+
+### Turbo Stream Action for ARIA Live
+```ts
+import { StreamActions, StreamElement } from '@hotwired/turbo';
+import { announce } from '@primer/live-region-element';
+
+export function registerAriaStreamAction() {
+  StreamActions.aria = function dialogStreamAction(this: StreamElement) {
+    setTimeout(() => {
+      const message = this.getAttribute('message') ?? '';
+      const type = this.getAttribute('type') ?? 'polite';
+
+      announce(message, {
+        politeness: type, // Dynamically sets either 'polite' or 'assertive'
+      });
+    }, 5000); // Delays announcement to ensure proper screen reader processing
+  };
+}
+```
