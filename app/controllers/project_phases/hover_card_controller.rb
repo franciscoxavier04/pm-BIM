@@ -28,40 +28,31 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Projects::HoverCardComponent < ApplicationComponent
-  include OpPrimer::ComponentHelpers
+module ProjectPhases
+  class HoverCardController < ApplicationController
+    no_authorization_required! :show
 
-  attr_reader :phase
+    def show
+      permitted_params = hover_card_params
 
-  def initialize(id:, gate: "start")
-    super
+      unless valid_gate?(permitted_params[:gate])
+        render json: { error: "Invalid gate parameter" }, status: :unprocessable_entity
+      end
 
-    @id = id
-    @phase = Project::Phase.joins(:definition).includes(:definition).find(id)
-    @gate = gate.to_sym
-  end
+      @id = permitted_params[:id]
+      @gate = permitted_params[:gate]
 
-  def phase_gate_name
-    case @gate
-    when :start
-      @phase.definition.start_gate? ? @phase.definition.start_gate_name : nil
-    else
-      @phase.definition.finish_gate? ? @phase.definition.finish_gate_name : nil
+      render layout: nil
     end
-  end
 
-  def phase_gate_date
-    date = case @gate
-           when :start
-             @phase.start_date
-           else
-             @phase.finish_date
-           end
+    private
 
-    helpers.format_date(date)
-  end
+    def hover_card_params
+      params.permit(:id, :gate)
+    end
 
-  def icon_color_class
-    Projects::PhaseComponent.icon_color_class(@phase.definition.id)
+    def valid_gate?(gate)
+      gate.present? && %w[start finish].include?(gate)
+    end
   end
 end
