@@ -242,7 +242,7 @@ RSpec.describe Storages::Peripherals::NextcloudConnectionValidator, :webmock do
       ))
     end
 
-    let(:user) { create(:user, identity_url: "#{oidc_provider.slug}:UNIVERSALLY-DUPLICATED-IDENTIFIER") }
+    let(:user) { create(:user, authentication_provider: oidc_provider) }
     let!(:oidc_provider) { create(:oidc_provider) }
 
     before do
@@ -278,7 +278,7 @@ RSpec.describe Storages::Peripherals::NextcloudConnectionValidator, :webmock do
     end
 
     describe "checks related to the token" do
-      let(:user) { create(:user, identity_url: "#{oidc_provider.slug}:UNIVERSALLY-DUPLICATED-IDENTIFIER") }
+      let(:user) { create(:user, authentication_provider: oidc_provider) }
 
       context "when the token doesn't have the necessary audiences" do
         it "returns a validation failure in case the server does not support token exchange" do

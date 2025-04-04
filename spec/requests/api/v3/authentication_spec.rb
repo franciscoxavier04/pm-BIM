@@ -423,10 +423,9 @@ RSpec.describe "API V3 Authentication" do
         .to_return(status: 200, body: JWT::JWK::Set.new(jwk_response).export.to_json, headers: {})
     end
     let(:jwk_response) { jwk }
-    let(:user) { create(:user, identity_url: "keycloak:#{token_sub}") }
+    let(:user) { create(:user, authentication_provider: create(:oidc_provider), external_id: token_sub) }
 
     before do
-      create(:oidc_provider, slug: "keycloak")
       user.save!
       keys_request_stub
 
@@ -516,7 +515,7 @@ RSpec.describe "API V3 Authentication" do
     end
 
     context "when user identified by token is not known" do
-      let(:user) { create(:user, identity_url: "keycloak:not-the-token-sub") }
+      let(:user) { create(:user, authentication_provider: create(:oidc_provider)) }
 
       it "fails with HTTP 401 Unauthorized" do
         get resource
@@ -529,7 +528,7 @@ RSpec.describe "API V3 Authentication" do
     end
 
     context "when user identified by token is locked" do
-      let(:user) { create(:user, :locked, identity_url: "keycloak:#{token_sub}") }
+      let(:user) { create(:user, :locked, authentication_provider: create(:oidc_provider), external_id: token_sub) }
 
       it "fails with HTTP 401 Unauthorized" do
         get resource
