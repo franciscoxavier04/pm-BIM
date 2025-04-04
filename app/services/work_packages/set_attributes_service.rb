@@ -92,12 +92,7 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
   # If +ignore_non_working_days+ has been changed, try deriving +due_date+ and
   # +start_date+ before +duration+.
   def derivable_date_attribute_by_others_presence
-    fields =
-      if work_package.ignore_non_working_days_changed?
-        %i[due_date start_date duration]
-      else
-        %i[duration due_date start_date]
-      end
+    fields = %i[duration due_date start_date]
     fields.find { |field| derivable_by_others_presence?(field) }
   end
 
