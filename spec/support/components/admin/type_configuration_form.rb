@@ -170,7 +170,8 @@ module Components
 
         group = find_group(name)
         group.find(".type-form-query-group--edit-button").click
-        wait_for_reload if using_cuprite?
+        # Wait for the modal to appear.
+        expect(page).to have_css(".wp-table--configuration-modal")
       end
 
       def add_attribute_group(name, expect: true)
