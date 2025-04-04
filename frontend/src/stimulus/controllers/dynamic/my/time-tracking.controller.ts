@@ -84,9 +84,7 @@ export default class MyTimeTrackingController extends Controller {
                 <div class="fc-event-title fc-sticky">
                   <a href="${this.pathHelper.workPackageShortPath(arg.event.extendedProps.workPackageId as string)}">${arg.event.extendedProps.workPackageSubject}</a>
                 </div>
-                <div class="text-muted">
-                  <a href="${this.pathHelper.projectPath(arg.event.extendedProps.projectId as string)}">${arg.event.extendedProps.projectName}</a>
-                </div>
+                <div class="color-fg-muted">${arg.event.extendedProps.projectName}</div>
               </div>
             </div>`,
         };
@@ -179,6 +177,11 @@ export default class MyTimeTrackingController extends Controller {
           `${this.pathHelper.timeEntryEditDialog(info.event.id)}?onlyMe=true`,
           { method: 'GET' },
         );
+      },
+
+      viewDidMount: (info) => {
+        const content = '<tr role="presentation" class="fc-scrollgrid-section fc-scrollgrid-section-header "><th role="presentation"><div class="fc-scroller-harness"><div class="fc-scroller" style="overflow: hidden scroll;"><table role="presentation" style="width: 2399px;" class="fc-col-header "><colgroup><col style="width: 61px;"></colgroup><thead role="presentation"><tr role="row"><th aria-hidden="true" class="fc-timegrid-axis"><div class="fc-timegrid-axis-frame"></div></th><th role="columnheader" data-date="2025-03-31" class="fc-col-header-cell fc-day fc-day-mon fc-day-past"><div class="fc-scrollgrid-sync-inner"><a aria-label="31. März 2025" class="fc-col-header-cell-cushion">Mo. 31.3.</a></div></th><th role="columnheader" data-date="2025-04-01" class="fc-col-header-cell fc-day fc-day-tue fc-day-past"><div class="fc-scrollgrid-sync-inner"><a aria-label="1. April 2025" class="fc-col-header-cell-cushion">Di. 1.4.</a></div></th><th role="columnheader" data-date="2025-04-02" class="fc-col-header-cell fc-day fc-day-wed fc-day-past"><div class="fc-scrollgrid-sync-inner"><a aria-label="2. April 2025" class="fc-col-header-cell-cushion">Mi. 2.4.</a></div></th><th role="columnheader" data-date="2025-04-03" class="fc-col-header-cell fc-day fc-day-thu fc-day-past"><div class="fc-scrollgrid-sync-inner"><a aria-label="3. April 2025" class="fc-col-header-cell-cushion">Do. 3.4.</a></div></th><th role="columnheader" data-date="2025-04-04" class="fc-col-header-cell fc-day fc-day-fri fc-day-today"><div class="fc-scrollgrid-sync-inner"><a aria-label="4. April 2025" class="fc-col-header-cell-cushion">Fr. 4.4.</a></div></th><th role="columnheader" data-date="2025-04-05" class="fc-col-header-cell fc-day fc-day-sat fc-day-future"><div class="fc-scrollgrid-sync-inner"><a aria-label="5. April 2025" class="fc-col-header-cell-cushion">Sa. 5.4.</a></div></th><th role="columnheader" data-date="2025-04-06" class="fc-col-header-cell fc-day fc-day-sun fc-day-future"><div class="fc-scrollgrid-sync-inner"><a aria-label="6. April 2025" class="fc-col-header-cell-cushion">So. 6.4.</a></div></th></tr></thead></table></div></div></th></tr>';
+        info.el.querySelector('.fc-timegrid .fc-scrollgrid tbody')?.insertAdjacentHTML('beforeend', content);
       },
     });
 
