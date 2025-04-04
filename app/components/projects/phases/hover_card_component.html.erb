@@ -28,7 +28,7 @@ See COPYRIGHT and LICENSE files for more details.
 ++#%>
 
 <%=
-  if @phase.present?
+  if @phase&.active?
     flex_layout(classes: "op-phase-gate-hover-card", data: { test_selector: "phase-gate-hover-card-#{phase.id}" }) do |flex|
       flex.with_row do
         flex_layout(classes: "op-phase-gate-hover-card--info", justify_content: :space_between) do |f|

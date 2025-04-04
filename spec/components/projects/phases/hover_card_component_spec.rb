@@ -33,11 +33,10 @@ require "rails_helper"
 RSpec.describe Projects::Phases::HoverCardComponent, type: :component do
   include Rails.application.routes.url_helpers
 
-  let(:phase) { create(:project_phase, :with_gated_definition) }
-  let(:phase_id) { phase.id }
+  let(:phase) { build_stubbed(:project_phase, :with_gated_definition) }
   let(:gate) { "start" }
 
-  subject { described_class.new(id: phase_id, gate:) }
+  subject { described_class.new(phase:, gate:) }
 
   before do
     render_inline(subject)
@@ -79,7 +78,7 @@ RSpec.describe Projects::Phases::HoverCardComponent, type: :component do
   end
 
   context "when inactive" do
-    let(:phase) { create(:project_phase, active: false) }
+    let(:phase) { build_stubbed(:project_phase, active: false) }
 
     it "renders a generic error message" do
       expect(page).to have_text(I18n.t("http.response.unexpected"))
@@ -87,7 +86,7 @@ RSpec.describe Projects::Phases::HoverCardComponent, type: :component do
   end
 
   context "when phase cannot be found in database" do
-    let(:phase_id) { :does_not_exist }
+    let(:phase) { nil }
 
     it "renders a generic error message" do
       expect(page).to have_text(I18n.t("http.response.unexpected"))

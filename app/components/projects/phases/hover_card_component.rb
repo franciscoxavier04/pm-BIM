@@ -35,17 +35,12 @@ module Projects
 
       attr_reader :phase
 
-      def initialize(id:, gate:)
+      def initialize(phase:, gate:)
         raise ArgumentError, "gate must be either 'start' or 'finish'" unless %w[start finish].include?(gate)
 
         super
 
-        @phase = Project::Phase
-                   .joins(:definition)
-                   .includes(:definition)
-                   .where(active: true)
-                   .find_by(id: id)
-
+        @phase = phase
         @gate = gate.to_sym
       end
 

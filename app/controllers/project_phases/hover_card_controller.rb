@@ -39,7 +39,8 @@ module ProjectPhases
         render json: { error: "Invalid gate parameter" }, status: :unprocessable_entity
       end
 
-      @id = permitted_params[:id]
+      id = permitted_params[:id]
+      @phase = Project::Phase.eager_load(:definition).where(active: true).find_by(id:)
       @gate = permitted_params[:gate]
 
       render layout: nil
