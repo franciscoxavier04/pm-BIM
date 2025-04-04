@@ -32,6 +32,7 @@ module Projects
   module Phases
     class HoverCardComponent < ApplicationComponent
       include OpPrimer::ComponentHelpers
+      include Projects::Phases::Shared
 
       attr_reader :phase
 
@@ -62,10 +63,6 @@ module Projects
                end
 
         helpers.format_date(date)
-      end
-
-      def icon_color_class
-        Projects::PhaseComponent.icon_color_class(@phase.definition.id)
       end
     end
   end

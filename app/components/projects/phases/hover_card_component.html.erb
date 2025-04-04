@@ -35,7 +35,7 @@ See COPYRIGHT and LICENSE files for more details.
           f.with_column(classes: "op-phase-gate-hover-card--name flex-self-start") do
             flex_layout do |fl|
               fl.with_column(classes: icon_color_class, mr: 1) do
-                render Primer::Beta::Octicon.new(icon: Projects::PhaseComponent.gate_icon)
+                render Primer::Beta::Octicon.new(icon: gate_icon)
               end
               fl.with_column do
                 render(Primer::Beta::Text.new(data: { test_selector: "phase-gate-hover-card-name" })) { phase_gate_name }
