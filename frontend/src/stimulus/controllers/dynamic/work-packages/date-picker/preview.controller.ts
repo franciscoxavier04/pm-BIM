@@ -124,21 +124,21 @@ export default class PreviewController extends DialogPreviewController {
     }
   }
 
-  private get dueDateField():HTMLInputElement {
-    return document.getElementsByName('work_package[due_date]')[0] as HTMLInputElement;
+  private get dueDateField():HTMLInputElement|undefined {
+    return document.getElementsByName('work_package[due_date]')[0] as HTMLInputElement|undefined;
   }
 
-  private get startDateField():HTMLInputElement {
+  private get startDateField():HTMLInputElement|undefined {
     return document.getElementsByName('work_package[start_date]')[0] as HTMLInputElement;
   }
 
-  private get durationField():HTMLInputElement {
+  private get durationField():HTMLInputElement|undefined {
     return document.getElementsByName('work_package[duration]')[0] as HTMLInputElement;
   }
 
   handleFlatpickrDatesChanged(event:CustomEvent<{ dates:Date[] }>) {
     const dates = event.detail.dates;
-    let fieldUpdatedWithUserValue:HTMLInputElement|null = null;
+    let fieldUpdatedWithUserValue:HTMLInputElement|null|undefined = null;
 
     if (this.isMilestone) {
       this.currentStartDate = dates[0];
@@ -162,7 +162,7 @@ export default class PreviewController extends DialogPreviewController {
     }
   }
 
-  dateFieldToChange():HTMLInputElement {
+  dateFieldToChange():HTMLInputElement|undefined {
     if (this.isMilestone) {
       return this.startDateField;
     }
@@ -172,7 +172,7 @@ export default class PreviewController extends DialogPreviewController {
       this.highlightedField = currentlyHighledField as HTMLInputElement;
     }
 
-    let dateFieldToChange:HTMLInputElement;
+    let dateFieldToChange:HTMLInputElement|undefined;
     if (this.highlightedField === this.dueDateField
         || (this.highlightedField === this.durationField && !this.scheduleManuallyValue)
         || (this.highlightedField === this.durationField
@@ -185,7 +185,11 @@ export default class PreviewController extends DialogPreviewController {
     return dateFieldToChange;
   }
 
-  swapDateFieldsIfNeeded(selectedDate:Date, dateFieldToChange:HTMLInputElement) {
+  swapDateFieldsIfNeeded(selectedDate:Date, dateFieldToChange:HTMLInputElement|undefined) {
+    if (dateFieldToChange === undefined) {
+      return;
+    }
+
     // It needs to be swapped if the other field is set, the field to change is
     // unset, and setting it would make start and end be in the wrong order.
     if (
@@ -376,7 +380,11 @@ export default class PreviewController extends DialogPreviewController {
     }
   }
 
-  highlightField(newHighlightedField:HTMLInputElement) {
+  highlightField(newHighlightedField:HTMLInputElement|undefined) {
+    if (newHighlightedField === undefined) {
+      return;
+    }
+
     this.highlightedField = newHighlightedField;
     Array.from(document.getElementsByClassName('op-datepicker-modal--date-field_current')).forEach(
       (el) => {
@@ -555,10 +563,12 @@ export default class PreviewController extends DialogPreviewController {
    * See: https://stackoverflow.com/a/64886383/8900797
    */
   private prepareInputFieldsForSafari() {
-    [this.startDateField, this.dueDateField].forEach((field:HTMLInputElement) => {
-      const value = field.value;
-      field.defaultValue = '';
-      field.value = value;
-    });
+    [this.startDateField, this.dueDateField]
+      .filter((field):field is NonNullable<typeof field> => field != null)
+      .forEach((field) => {
+        const value = field.value;
+        field.defaultValue = '';
+        field.value = value;
+      });
   }
 }
