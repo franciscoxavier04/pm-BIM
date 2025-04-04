@@ -3,7 +3,7 @@
     if display_start_gate?
       type_container.with_column(
         classes: icon_color_class,
-        data: hover_card_data_args.merge({ test_selector: start_gate_test_selector })
+        data: hover_card_data_args(gate: :start).merge({ test_selector: start_gate_test_selector })
       ) do
         render Primer::Beta::Octicon.new(icon: gate_icon)
       end
@@ -20,7 +20,7 @@
     if display_finish_gate?
       type_container.with_column(
         classes: icon_color_class,
-        data: hover_card_data_args(gate: "finish").merge({ test_selector: finish_gate_test_selector })
+        data: hover_card_data_args(gate: :finish).merge({ test_selector: finish_gate_test_selector })
       ) do
         render Primer::Beta::Octicon.new(icon: gate_icon)
       end

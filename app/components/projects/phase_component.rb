@@ -84,8 +84,8 @@ module Projects
       self.class.icon_color_class(phase.definition_id)
     end
 
-    def hover_card_data_args(gate: "start")
-      raise ArgumentError, "gate must be either 'start' or 'finish'" unless %w[start finish].include?(gate.to_s)
+    def hover_card_data_args(gate:)
+      raise ArgumentError, "gate must be either :start or :finish" unless %i[start finish].include?(gate)
 
       {
         hover_card_trigger_target: "trigger",
