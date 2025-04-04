@@ -46,16 +46,12 @@ export class ApiV3Paths {
       // that are members of that project:
       filters.add('member', '=', [(workPackage.project as HalResource).id as string]);
     } else {
-      const isRestrictedAttributeValue = 'data-work-packages--activities-tab--restricted-comment-is-restricted-value';
-      const addingCommentIsRestricted = document.getElementById('work-packages-activities-tab-add-comment-component')?.getAttribute(isRestrictedAttributeValue) === 'true';
-      const editingCommentIsRestricted = document.querySelector('.work-packages-activities-tab-journals-item-component-edit')?.getAttribute(isRestrictedAttributeValue) === 'true';
-
       // that are mentionable on the work package
-      if (addingCommentIsRestricted || editingCommentIsRestricted) {
-        filters.add('restricted_mentionable_on_work_package', '=', [workPackage.id.toString()]);
-      } else {
-        filters.add('mentionable_on_work_package', '=', [workPackage.id.toString()]);
-      }
+      filters.add(
+        (this.isRestrictedMentionable() ? 'restricted_mentionable_on_work_package' : 'mentionable_on_work_package'),
+        '=',
+        [workPackage.id.toString()],
+      );
     }
     // That are users:
     filters.add('type', '=', ['User', 'Group']);
@@ -66,5 +62,19 @@ export class ApiV3Paths {
     }
 
     return `${this.apiV3Base}/principals?${filters.toParams({ sortBy: '[["name","asc"]]', offset: '1', pageSize: '10' })}`;
+  }
+
+  /**
+   * Check if either adding or editing a comment is restricted, and thus
+   * the mentionable principals are to be restricted
+   *
+   * @returns {boolean}
+   */
+  private isRestrictedMentionable():boolean {
+    const isRestrictedAttributeValue = 'data-work-packages--activities-tab--restricted-comment-is-restricted-value';
+    const addingCommentIsRestricted = document.getElementById('work-packages-activities-tab-add-comment-component')?.getAttribute(isRestrictedAttributeValue) === 'true';
+    const editingCommentIsRestricted = document.querySelector('.work-packages-activities-tab-journals-item-component-edit')?.getAttribute(isRestrictedAttributeValue) === 'true';
+
+    return addingCommentIsRestricted || editingCommentIsRestricted;
   }
 }
