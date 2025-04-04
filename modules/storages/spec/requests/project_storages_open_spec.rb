@@ -99,7 +99,7 @@ RSpec.describe "projects/:project_id/project_storages/:id/open" do
                   let(:provider) { create(:oidc_provider) }
 
                   current_user do
-                    create(:user, identity_url: "#{provider.slug}:cheese", member_with_permissions: { project => permissions })
+                    create(:user, authentication_provider: provider, member_with_permissions: { project => permissions })
                   end
 
                   it "redirects to the storage directly" do

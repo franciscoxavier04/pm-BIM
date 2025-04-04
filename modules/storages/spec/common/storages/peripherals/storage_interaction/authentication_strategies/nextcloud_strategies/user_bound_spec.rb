@@ -34,7 +34,7 @@ require_module_spec_helper
 RSpec.describe Storages::Peripherals::StorageInteraction::AuthenticationStrategies::NextcloudStrategies::UserBound do
   context "if user is provisioned by an IDP" do
     let(:provider) { create(:oidc_provider) }
-    let(:user) { create(:user, identity_url: "#{provider.slug}:me") }
+    let(:user) { create(:user, authentication_provider: provider) }
 
     context "if file storage is configured for sso only" do
       let(:storage) { create(:nextcloud_storage, :oidc_sso_enabled) }
