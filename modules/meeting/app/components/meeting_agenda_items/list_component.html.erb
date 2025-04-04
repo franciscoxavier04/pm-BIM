@@ -1,5 +1,5 @@
 <%=
-  component_wrapper(data: wrapper_data_attributes) do
+  component_wrapper do
     flex_layout(mb: 3) do |flex|
       if @meeting.template?
         flex.with_row(mb: 3) do
@@ -18,7 +18,7 @@
           end
         end
       end
-      flex.with_row(classes: "dragula-container", id: insert_target_modifier_id, data: { "allowed-drop-type": "section" }.merge(drop_target_config)) do
+      flex.with_row(id: insert_target_modifier_id, data: { "allowed-drop-type": "section" }.merge(drop_target_config)) do
         first_and_last = [@meeting.sections.first, @meeting.sections.last]
         render(
           MeetingSections::ShowComponent.with_collection(

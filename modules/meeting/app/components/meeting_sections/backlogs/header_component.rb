@@ -70,29 +70,5 @@ module MeetingSections
         item.with_leading_visual_icon(icon: :trash)
       end
     end
-
-    # def wrapper_data_attributes
-    #   {
-    #     controller: "generic-drag-and-drop",
-    #     "application-target": "dynamic"
-    #   }
-    # end
-    #
-    # def drop_target_config
-    #   {
-    #     "is-drag-and-drop-target": true,
-    #     "target-container-accessor": ".Box > ul", # the accessor of the container that contains the drag and drop items
-    #     # "target-id": @backlog.id, # the id of the target
-    #     "target-allowed-drag-type": "agenda-item" # the type of dragged items which are allowed to be dropped in this target
-    #   }
-    # end
-    #
-    # def insert_target_modified?
-    #   true
-    # end
-    #
-    # def insert_target_modifier_id
-    #   "meeting-section-new-item"
-    # end
   end
 end

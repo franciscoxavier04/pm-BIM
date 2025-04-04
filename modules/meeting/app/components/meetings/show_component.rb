@@ -38,5 +38,14 @@ module Meetings
       @meeting = meeting
       @project = meeting.project
     end
+
+    private
+
+    def wrapper_data_attributes
+      {
+        controller: "generic-drag-and-drop",
+        "application-target": "dynamic"
+      }
+    end
   end
 end

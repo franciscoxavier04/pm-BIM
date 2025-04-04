@@ -6,7 +6,7 @@
 
     show_page.with_row do
       render(Primer::Alpha::Layout.new(stacking_breakpoint: :md)) do |content|
-        content.with_main do
+        content.with_main(classes: "dragula-container", data: wrapper_data_attributes) do
           flex_layout do |agenda|
             agenda.with_row do
               render(MeetingAgendaItems::ListComponent.new(meeting: @meeting))

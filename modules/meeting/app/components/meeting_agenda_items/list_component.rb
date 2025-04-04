@@ -48,13 +48,6 @@ module MeetingAgendaItems
 
     private
 
-    def wrapper_data_attributes
-      {
-        controller: "generic-drag-and-drop",
-        "application-target": "dynamic"
-      }
-    end
-
     def drop_target_config
       {
         "is-drag-and-drop-target": true,
