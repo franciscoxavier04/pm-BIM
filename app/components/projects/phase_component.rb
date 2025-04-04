@@ -45,12 +45,20 @@ module Projects
       end
     end
 
+    def start_gate_test_selector
+      "phase-gate-start-#{phase.id}"
+    end
+
     def finish_date
       if phase.finish_date.present?
         helpers.format_date(phase.finish_date)
       else
         helpers.t("js.label_no_due_date")
       end
+    end
+
+    def finish_gate_test_selector
+      "phase-gate-finish-#{phase.id}"
     end
 
     def display_start_gate?

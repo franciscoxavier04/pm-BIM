@@ -92,6 +92,16 @@ RSpec.describe "Show project life cycles on project overview page", :js, with_fl
       end
     end
 
+    it "shows a hover card when you hover over a gate" do
+      overview_page.visit_page
+
+      overview_page.within_life_cycles_sidebar do
+        page.find_test_selector("phase-gate-start-#{life_cycle_planning.id}").hover
+      end
+
+      expect(page).to have_test_selector("phase-gate-hover-card-name", text: life_cycle_planning.start_gate_name)
+    end
+
     it "does not show phases not enabled for this project in a sidebar" do
       life_cycle_executing.toggle!(:active)
 
