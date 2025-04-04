@@ -2095,6 +2095,8 @@ lv:
     dialog:
       title: "Eksportēt"
       submit: "Eksportēt"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:

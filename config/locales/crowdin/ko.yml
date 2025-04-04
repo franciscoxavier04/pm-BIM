@@ -2017,6 +2017,8 @@ ko:
     dialog:
       title: "내보내기"
       submit: "내보내기"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "파일 형식"
         options:

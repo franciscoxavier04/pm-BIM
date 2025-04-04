@@ -2056,6 +2056,8 @@ bg:
     dialog:
       title: "Експортиране"
       submit: "Експортиране"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:

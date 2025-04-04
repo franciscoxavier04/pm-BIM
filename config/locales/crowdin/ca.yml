@@ -2053,6 +2053,8 @@ ca:
     dialog:
       title: "Exportar"
       submit: "Exportar"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:

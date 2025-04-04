@@ -2017,6 +2017,8 @@ vi:
     dialog:
       title: "Xuất"
       submit: "Xuất"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "Định dạng tệp tin"
         options:

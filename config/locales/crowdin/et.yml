@@ -2056,6 +2056,8 @@ et:
     dialog:
       title: "Ekspordi"
       submit: "Ekspordi"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:

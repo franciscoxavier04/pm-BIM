@@ -2054,6 +2054,8 @@ hi:
     dialog:
       title: "निर्यात"
       submit: "निर्यात"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:

@@ -2056,6 +2056,8 @@ si:
     dialog:
       title: "අපනයන"
       submit: "අපනයන"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:

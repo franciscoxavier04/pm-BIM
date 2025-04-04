@@ -2015,6 +2015,8 @@ zh-TW:
     dialog:
       title: "匯出"
       submit: "匯出"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "檔案格式"
         options:

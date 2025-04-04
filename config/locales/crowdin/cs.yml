@@ -2134,6 +2134,8 @@ cs:
     dialog:
       title: "Export"
       submit: "Export"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "Formát souboru"
         options:

@@ -2056,6 +2056,8 @@ fi:
     dialog:
       title: "Vie"
       submit: "Vie"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:

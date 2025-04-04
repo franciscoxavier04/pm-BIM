@@ -2095,6 +2095,8 @@ hr:
     dialog:
       title: "Izvezi"
       submit: "Izvezi"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:

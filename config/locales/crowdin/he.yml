@@ -2134,6 +2134,8 @@ he:
     dialog:
       title: "ייצוא"
       submit: "ייצוא"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:

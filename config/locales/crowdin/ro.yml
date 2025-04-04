@@ -2095,6 +2095,8 @@ ro:
     dialog:
       title: "Exportă"
       submit: "Exportă"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:

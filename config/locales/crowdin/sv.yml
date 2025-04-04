@@ -2056,6 +2056,8 @@ sv:
     dialog:
       title: "Exportera"
       submit: "Exportera"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "Filformat"
         options:

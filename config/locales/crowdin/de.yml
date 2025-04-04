@@ -2049,6 +2049,8 @@ de:
     dialog:
       title: "Exportieren"
       submit: "Exportieren"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "Dateiformat"
         options:
@@ -2140,7 +2142,7 @@ de:
       caption: Alle Attribute, die in der aktuellen Formularkonfiguration mit der Standardvorlage vorhanden sind.
     template_contract:
       label: "Vertrag"
-      caption: Details des Arbeitspakets im Format der deutschen Standardvertragsform.
+      caption: Details des Arbeitspakets im Format des deutschen Standardvertragsformulars.
     dialog:
       title: PDF generieren
       submit: Download

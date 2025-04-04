@@ -401,7 +401,7 @@ af:
   label_meeting_state_in_progress: "In-vordering"
   label_meeting_reopen_action: "Reopen meeting"
   label_meeting_close_action: "Close meeting"
-  label_meeting_in_progress_action: "Mark as in progress"
+  label_meeting_in_progress_action: "Start meeting"
   text_meeting_open_description: "This meeting is open. You can add/remove agenda items and edit them as you please. Once the agenda is ready, mark it as in progress to document outcomes."
   text_meeting_closed_description: "This meeting is closed. You cannot add/remove agenda items anymore."
   text_meeting_in_progress_description: "This meeting is in progress. You can document outcomes for each agenda item, re-arrange them, and even add new ones. Once the meeting is complete, you can mark it as closed to lock it."

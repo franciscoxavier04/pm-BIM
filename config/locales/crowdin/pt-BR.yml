@@ -2053,6 +2053,8 @@ pt-BR:
     dialog:
       title: "Exportar"
       submit: "Exportar"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "Formato do arquivo"
         options:

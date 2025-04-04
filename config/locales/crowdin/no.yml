@@ -2055,6 +2055,8 @@
     dialog:
       title: "Eksporter"
       submit: "Eksporter"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "Filformat"
         options:

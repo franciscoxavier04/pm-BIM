@@ -2133,6 +2133,8 @@ sl:
     dialog:
       title: "Izvozi"
       submit: "Izvozi"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:

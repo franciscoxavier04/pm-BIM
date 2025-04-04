@@ -2052,6 +2052,8 @@ el:
     dialog:
       title: "Εξαγωγή"
       submit: "Εξαγωγή"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:

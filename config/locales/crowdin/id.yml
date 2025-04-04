@@ -2013,6 +2013,8 @@ id:
     dialog:
       title: "Ekspor"
       submit: "Ekspor"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:

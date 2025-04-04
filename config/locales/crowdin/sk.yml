@@ -2134,6 +2134,8 @@ sk:
     dialog:
       title: "Exportovať"
       submit: "Exportovať"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:

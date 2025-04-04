@@ -2053,6 +2053,8 @@ it:
     dialog:
       title: "Esporta"
       submit: "Esporta"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "Formato file"
         options:

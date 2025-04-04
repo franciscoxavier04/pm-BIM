@@ -989,7 +989,7 @@ pt-PT:
       relation:
         lag: "Atraso"
         from: "Pacote de trabalho relacionado"
-        to: "Tarefas Relacionadas"
+        to: "Pacote de trabalho relacionado"
         relation_type: "Tipo de relação"
       reminder:
         remindable: "Objeto lembrado"
@@ -1003,7 +1003,7 @@ pt-PT:
       role:
         permissions: "Permissões"
       status:
-        is_closed: "Tarefa fechada"
+        is_closed: "Pacote de trabalho fechado"
         is_readonly: "Pacote de trabalho só de leitura"
         excluded_from_totals: "Excluir do cálculo dos totais na hierarquia"
         default_done_ratio: "% de conclusão"
@@ -1019,7 +1019,7 @@ pt-PT:
       type:
         description: "Texto padrão para a descrição"
         attribute_groups: ""
-        is_in_roadmap: "Exibido no roteiro por padrão"
+        is_in_roadmap: "Apresentado no roteiro por defeito"
         is_default: "Ativado para novos projetos por padrão"
         is_milestone: "É um marco"
         color: "Cor"
@@ -1505,7 +1505,7 @@ pt-PT:
       role:
         one: "Função"
         other: "Papel"
-      status: "Estado da tarefa"
+      status: "Estado do pacote de trabalho"
       token/api:
         one: Token de acesso
         other: Tokens de acesso
@@ -1953,9 +1953,9 @@ pt-PT:
   description_query_sort_criteria_attribute: "Ordenar por atributo"
   description_query_sort_criteria_direction: "Direção da ordenação"
   description_search: "Campo de pesquisa"
-  description_select_work_package: "Selecione tarefa"
+  description_select_work_package: "Selecionar pacote de trabalho"
   description_selected_columns: "Colunas selecionadas"
-  description_sub_work_package: "Sub-tarefa de trabalho de actual"
+  description_sub_work_package: "Sub-pacote de trabalho do atual"
   description_toc_toggle: "Mostrar/ocultar a tabela de conteúdos"
   description_wiki_subpages_reassign: "Escolha a nova página do pai"
   #Text direction: Left-to-Right (ltr) or Right-to-Left (rtl)
@@ -1973,7 +1973,7 @@ pt-PT:
         add_groups: "Adicionar novos grupos de atributos"
         rename_groups: "Mudar o nome de grupos de atributos"
   enumeration_activities: "Atividades de controlo de tempo"
-  enumeration_work_package_priorities: "Prioridades de tarefas"
+  enumeration_work_package_priorities: "Prioridades do pacote de trabalho"
   enumeration_reported_project_statuses: "Estado do projeto reportado"
   enumeration_caption_order_changed: "Ordem alterada com sucesso."
   enumeration_could_not_be_moved: "A enumeração não pode ser movida."
@@ -1988,7 +1988,7 @@ pt-PT:
   error_can_not_delete_standard_type: "Tipos de padrão não podem ser eliminados."
   error_can_not_invite_user: "Falha no envio do convite ao utilizador."
   error_can_not_remove_role: "Esta função já está a ser utilizada e não pode ser eliminada."
-  error_can_not_reopen_work_package_on_closed_version: "Uma tarefa atribuída a uma versão fechada não pode ser reaberta"
+  error_can_not_reopen_work_package_on_closed_version: "Um pacote de trabalho atribuído a uma versão fechada não pode ser reaberto"
   error_can_not_find_all_resources: "Não foi possível encontrar todos os recursos relacionados a esta solicitação."
   error_can_not_unarchive_project: "Este projeto não pode ser desarquivado: %{errors}"
   error_check_user_and_role: "Por favor, escolha um utilizador e uma função."
@@ -2007,7 +2007,7 @@ pt-PT:
   error_pdf_failed_to_export: "Não foi possível guardar a exportação de PDF: %{error}"
   error_token_authenticity: "Não é possível verificar o token de Cross-Site Request Forgery. Tentou enviar dados em vários navegadores ou abas? Feche todas as abas e tente novamente."
   error_reminder_not_found: "O lembrete não foi encontrado ou já foi notificado."
-  error_work_package_not_found_in_project: "A tarefa não foi encontrada ou não pertence a este projecto"
+  error_work_package_not_found_in_project: "O pacote de trabalho não foi encontrado ou não pertence a este projeto"
   error_work_package_id_not_found: "O pacote de trabalho não foi encontrado."
   error_must_be_project_member: "deve ser membro do projeto"
   error_migrations_are_pending: "A sua instalação do OpenProject tem migrações pendentes da base de dados pendentes. Provavelmente esqueceu-se de fazer as migrações após a última atualização. Por favor, verifique o guia de atualização, de forma a atualizar a sua instalação corretamente."
@@ -2020,7 +2020,7 @@ pt-PT:
   error_scm_command_failed: "Ocorreu um erro ao tentar aceder ao repositório: %{value}"
   error_scm_not_found: "A entrada ou a revisão não foi encontrado no repositório."
   error_type_could_not_be_saved: "Não foi possível guardar o tipo"
-  error_unable_delete_status: "O estado de tarefas não pode ser eliminado, pois ele é utilizado pelo menos por uma tarefa."
+  error_unable_delete_status: "O estado do pacote de trabalho não pode ser eliminado, visto que é utilizado por pelo menos um pacote de trabalho."
   error_unable_delete_default_status: "Não foi possível apagar o estado por defeito do pacote de trabalho. Por favor selecione outro estado de pacote de trabalho antes de apagar o atual."
   error_unable_to_connect: "Não é possível ligar (%{value})"
   error_unable_delete_wiki: "Não é possível eliminar a página wiki."
@@ -2043,9 +2043,9 @@ pt-PT:
     reply: Respondeu
     time_entry: "Timelog editado"
     wiki_page: "Página wiki editada"
-    work_package_closed: "Tarefa fechada"
-    work_package_edit: "Tarefa editada"
-    work_package_note: "Nota da tarefa adicionada"
+    work_package_closed: "Pacote de trabalho fechado"
+    work_package_edit: "Pacote de trabalho editado"
+    work_package_note: "Nota de pacote de trabalho adicionada"
     title:
       project: "Projeto: %{name}"
       subproject: "Subprojeto: %{name}"
@@ -2053,6 +2053,8 @@ pt-PT:
     dialog:
       title: "Exportar"
       submit: "Exportar"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "Formato do ficheiro"
         options:
@@ -2291,7 +2293,7 @@ pt-PT:
         title: "iCalendar"
         text_hint: 'Os tokens iCalendar permitem aos utilizadores <a href="%{path}" target="_blank">subscrever calendários do OpenProject</a> e visualizar informações atualizadas sobre pacotes de trabalho de clientes externos.'
         disabled_text: "As subscrições do iCalendar não são ativadas pelo administrador. Contacte o seu administrador para utilizar esta funcionalidade."
-        empty_text_hint: "Para adicionar um token do iCalendar, subscreva um calendário novo ou já existente a partir do módulo Calendário de um projeto. Tem de ter as permissões necessárias."
+        empty_text_hint: "Para adicionar um token do iCalendar, subscreva um calendário novo ou já existente a partir do módulo Calendários de um projeto. Tem de ter as permissões necessárias."
       oauth:
         title: "OAuth"
         text_hint: "Os tokens de OAuth permitem que as aplicações externas se liguem a esta instância do OpenProject."
@@ -2347,7 +2349,7 @@ pt-PT:
   label_add_columns: "Adicionar colunas selecionadas"
   label_add_note: "Adicionar uma nota"
   label_add_projects: "Adicionar projetos"
-  label_add_related_work_packages: "Adicionar tarefas relacionada"
+  label_add_related_work_packages: "Adicionar pacotes de trabalho relacionados"
   label_add_subtask: "Adicionar subtarefa"
   label_added: "adicionado"
   label_added_by: "Adicionado por %{author}"
@@ -2380,7 +2382,7 @@ pt-PT:
   label_applied_status: "Status aplicado"
   label_archive_project: "Arquivar projeto"
   label_ascending: "Ascendente"
-  label_assigned_to_me_work_packages: "Tarefas atribuídas a mim"
+  label_assigned_to_me_work_packages: "Pacotes de trabalho atribuídos a mim"
   label_associated_revisions: "Revisões associadas"
   label_attachment_plural: "Anexos"
   label_attribute: "Atributo"
@@ -2416,11 +2418,11 @@ pt-PT:
   label_board_plural: "Quadros"
   label_branch: "Ramo"
   label_browse: "Navegador"
-  label_bulk_edit_selected_work_packages: "Editar tarefas selecionadas de seguida"
+  label_bulk_edit_selected_work_packages: "Edição em massa de pacotes de trabalho selecionados"
   label_bundled: "(Empacotado)"
-  label_calendar: "Calendário"
+  label_calendar: "Calendários"
   label_calendars_and_dates: "Calendários e datas"
-  label_calendar_show: "Mostrar calendário"
+  label_calendar_show: "Mostrar Calendários"
   label_category: "Categoria"
   label_completed: Concluído
   label_consent_settings: "Consentimento do utilizador"
@@ -2496,7 +2498,7 @@ pt-PT:
   label_descending: "Descendente"
   label_details: "Detalhes"
   label_defaults: "Predefinições"
-  label_development_roadmap: "Mapa de Desenvolvimento"
+  label_development_roadmap: "Roteiro de desenvolvimento"
   label_diff: "diff"
   label_diff_inline: "em linha"
   label_diff_side_by_side: "lado a lado"
@@ -2579,7 +2581,7 @@ pt-PT:
   label_hierarchy_leaf: "Folha da hierarquia"
   label_home: "Início"
   label_subject_or_id: "ID ou Assunto"
-  label_calendar_subscriptions: "Subscrições do calendário"
+  label_calendar_subscriptions: "Subscrições de Calendários"
   label_identifier: "Identificador"
   label_in: "em"
   label_in_less_than: "em menos de"
@@ -2678,7 +2680,7 @@ pt-PT:
   label_more_than_ago: "mais do que dias atrás"
   label_move_column_left: "Mover coluna esquerda"
   label_move_column_right: "Mover a coluna direita"
-  label_move_work_package: "Mover tarefa"
+  label_move_work_package: "Mover pacote de trabalho"
   label_my_account: "Definições da conta"
   label_my_activity: "A minha atividade"
   label_my_account_data: "Dados da minha conta"
@@ -2795,7 +2797,7 @@ pt-PT:
   label_registration_activation_by_email: "ativação de conta por e-mail"
   label_registration_automatic_activation: "ativação automática de conta"
   label_registration_manual_activation: "ativação manual de conta"
-  label_related_work_packages: "Tarefas relacionados"
+  label_related_work_packages: "Pacotes de trabalho relacionados"
   label_relates: "relacionado com"
   label_relates_to: "relacionado com"
   label_relation: "Relação"
@@ -2812,7 +2814,7 @@ pt-PT:
   label_report: "Relatório"
   label_report_bug: "Reportar um erro"
   label_report_plural: "Relatórios"
-  label_reported_work_packages: "Relatório de tarefas"
+  label_reported_work_packages: "Pacotes de trabalho reportados"
   label_reporting: "A reportar"
   label_reporting_plural: "Comunicações"
   label_repository: "Repositório"
@@ -2825,9 +2827,9 @@ pt-PT:
   label_revision: "Revisão"
   label_revision_id: "Revisão %{value}"
   label_revision_plural: "Revisões"
-  label_roadmap: "Planificação"
-  label_roadmap_edit: "Editar planificação %{name}"
-  label_roadmap_due_in: "%{value} devido"
+  label_roadmap: "Roteiro"
+  label_roadmap_edit: "Editar roteiro %{name}"
+  label_roadmap_due_in: "Entrega em %{value}"
   label_roadmap_no_work_packages: "Não há pacotes de trabalho para esta versão"
   label_roadmap_overdue: "%{value} atrasado"
   label_role_and_permissions: "Funções e permissões"
@@ -2955,17 +2957,17 @@ pt-PT:
   label_work_package: "Pacote de trabalho"
   label_work_package_attachments: "Anexos do pacote de trabalho"
   label_work_package_category_new: "Nova categoria"
-  label_work_package_category_plural: "Categorias de tarefas"
+  label_work_package_category_plural: "Categorias de pacotes de trabalho"
   label_work_package_hierarchy: "Hierarquia de pacotes de trabalho"
-  label_work_package_new: "Nova tarefa"
+  label_work_package_new: "Novo pacote de trabalho"
   label_work_package_edit: "Editar pacote de trabalho %{name}"
-  label_work_package_plural: "Tarefas"
+  label_work_package_plural: "Pacotes de trabalho"
   label_work_package_status: "Estado da tarefa"
   label_work_package_status_new: "Novo estado"
-  label_work_package_status_plural: "Estado da tarefa"
+  label_work_package_status_plural: "Estados dos pacotes de trabalho"
   label_work_package_types: "Tipos de pacote de trabalho"
   label_work_package_tracking: "Controle de pacote de trabalho"
-  label_work_package_view_all: "Ver todas as tarefas"
+  label_work_package_view_all: "Ver todos os pacotes de trabalho"
   label_workflow: "Fluxo de trabalho"
   label_workflow_copy: "Copiar fluxo de trabalho"
   label_workflow_plural: "Fluxos de Trabalho"
@@ -3272,7 +3274,7 @@ pt-PT:
     welcome: "Bem-vindo ao %{app_title}"
     select_language: "Selecione o seu idioma"
   permission_add_work_package_notes: "Adicionar comentários"
-  permission_add_work_packages: "Adicionar tarefas"
+  permission_add_work_packages: "Adicionar pacotes de trabalho"
   permission_add_messages: "Publicar mensagens"
   permission_add_project: "Criar projetos"
   permission_add_work_package_attachments: "Adicionar anexos"
@@ -3285,17 +3287,17 @@ pt-PT:
   permission_add_subprojects: "Criar subprojetos"
   permission_add_work_package_watchers: "Adicionar observadores"
   permission_assign_versions: "Atribuir versões"
-  permission_browse_repository: "Acesso somente de leitura ao repositório (browse e check-out)"
+  permission_browse_repository: "Acesso só de leitura ao repositório (navegar e fazer checkout)"
   permission_change_wiki_parent_page: "Alterar a página wiki fonte"
   permission_change_work_package_status: "Altere o estado do pacote de trabalho"
   permission_change_work_package_status_explanation: "Permite alterar o estado sem permissão de edição de pacotes de trabalho"
   permission_comment_news: "Comentar notícias"
-  permission_commit_access: "Acesso de leitura/gravação para o repositório (confirmação)"
+  permission_commit_access: "Acesso de leitura/escrita ao repositório (comprometer)"
   permission_copy_projects: "Copiar projeto"
   permission_copy_work_packages: "Copiar pacotes de trabalho"
   permission_create_backup: "Criar cópias de segurança"
   permission_delete_work_package_watchers: "Eliminar observador"
-  permission_delete_work_packages: "Eliminar tarefas"
+  permission_delete_work_packages: "Eliminar pacotes de trabalho"
   permission_delete_messages: "Eliminar mensagens"
   permission_delete_own_messages: "Eliminar as próprias mensagens"
   permission_delete_reportings: "Eliminar comunicações"
@@ -3304,7 +3306,7 @@ pt-PT:
   permission_delete_wiki_pages_attachments: "Eliminar anexos"
   permission_edit_work_package_notes: "Moderar comentários"
   permission_edit_work_package_notes_explanation: "Atenção: os utilizadores com esta permissão podem editar os comentários de qualquer pessoa."
-  permission_edit_work_packages: "Editar tarefas"
+  permission_edit_work_packages: "Editar pacotes de trabalho"
   permission_edit_messages: "Editar mensagens"
   permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "Editar os próprios comentários"
@@ -3327,7 +3329,7 @@ pt-PT:
   permission_manage_forums: "Gerir fóruns"
   permission_manage_categories: "Gerir categorias de pacote de trabalho"
   permission_manage_dashboards: "Gerenciar painéis"
-  permission_manage_work_package_relations: "Gerir relações entre tarefas"
+  permission_manage_work_package_relations: "Gerir as relações entre os pacotes de trabalho"
   permission_manage_members: "Gerir Membros"
   permission_manage_news: "Gerir noticias"
   permission_manage_project_activities: "Gerir atividades do projeto"
@@ -3337,7 +3339,7 @@ pt-PT:
   permission_manage_versions: "Gerir versões"
   permission_manage_wiki: "Gerir wiki"
   permission_manage_wiki_menu: "Gerir menu da wiki"
-  permission_move_work_packages: "Mover tarefa"
+  permission_move_work_packages: "Mover pacotes de trabalho"
   permission_protect_wiki_pages: "Proteger páginas da wiki"
   permission_rename_wiki_pages: "Renomear páginas da wiki"
   permission_save_queries: "Guardar visualizações"
@@ -3401,7 +3403,7 @@ pt-PT:
       project_phase_any: "Project phase: Any"
       project_phase_gate: "Project phase gate: %{gate}"
     identifier:
-      warning_one: Os membros do projeto terão de realocar os repositórios do projeto.
+      warning_one: Os membros do projeto terão de relocalizar os repositórios do projeto.
       warning_two: Os links existentes para o projeto já não funcionarão.
       title: Alterar o identificador do projeto
     not_available: "Projeto N/A"
@@ -3521,16 +3523,16 @@ pt-PT:
       setup_documentation_details_link_text: "Definição de armazenamentos"
       show_warning_details: "Para usar esse armazenamento de ficheiros, lembre-se de ativar o módulo e o armazenamento específico nas definições do projeto de cada projeto desejado."
     subversion:
-      existing_title: "Repositório de subversão existente"
-      existing_introduction: "Se tem um repositório de Subversion existente, pode vinculá-lo com o OpenProject para aceder a ele dentro da aplicação."
+      existing_title: "Repositório Subversion existente"
+      existing_introduction: "Se tiver um repositório Subversion existente, pode ligá-lo ao OpenProject para aceder ao mesmo a partir da aplicação."
       existing_url: "URL existente"
       instructions:
         managed_url: "Esta é a URL do repositório Subversion (local) gerido."
         url: "Digite a URL do repositório. Isto também pode direcionar um repositório local (começando com %{local_proto}), ou um repositório remoto. São suportados os seguintes esquemas de URL:"
       managed_title: "Repositório Subversion integrado no OpenProject"
-      managed_introduction: "Deixe o OpenProject criar e integrar um repositório Subversion local automaticamente."
+      managed_introduction: "Permita que o OpenProject crie e integre automaticamente um repositório Subversion local."
       managed_url: "Gerir URL"
-      password: "Senha do Repositório"
+      password: "Palavra-passe do repositório"
       username: "Nome do utilizador do repositório"
     truncated: "Pedimos desculpa, mas tivemos que truncar este diretório para ficheiros %{limit}. Entradas %{truncated} foram omitidas da lista."
     named_repository: "%{vendor_name} repositório"
@@ -3640,7 +3642,7 @@ pt-PT:
     Cada estado tem um valor de <i> % de conclusão</i> associado. A alteração do estado altera a <i>% de conclusão</i>.
   setting_work_package_done_ratio_explanation_html: >
     No modo <b>baseado no trabalho</b>, a % de conclusão pode ser definida livremente para qualquer valor. Se, opcionalmente, introduzir um valor para Trabalho, o Trabalho restante será automaticamente derivado. No modo <b>baseado no estado</b>, cada estado tem um valor de % de conclusão associado. A alteração do estado altera a % de conclusão.
-  setting_work_package_properties: "Propriedades das tarefas"
+  setting_work_package_properties: "Propriedades do pacote de trabalho"
   setting_work_package_startdate_is_adddate: "Utilizar a data atual como data de início para novos pacotes de trabalho"
   setting_work_packages_projects_export_limit: "Pacotes de trabalho / limite de exportação de projetos"
   setting_journal_aggregation_time_minutes: "Ações do utilizador agregadas em"
@@ -3685,7 +3687,7 @@ pt-PT:
   setting_session_ttl_hint: "Valor abaixo de 5 trabalhos como desativado"
   setting_session_ttl_enabled: "A Sessão expirou"
   setting_start_of_week: "A semana começa a"
-  setting_sys_api_enabled: "Habilitar o serviço web de gestão do repositório"
+  setting_sys_api_enabled: "Ativar o serviço web de gestão de repositórios"
   setting_sys_api_description: "O serviço de web de gestão de repositório fornece integração e autorização ao utilizador para aceder a repositórios."
   setting_time_format: "Tempo"
   setting_total_percent_complete_mode: "Cálculo dos totais da hierarquia da % de conclusão"
@@ -3756,7 +3758,7 @@ pt-PT:
         type: "Linha inteira por tipo"
         priority: "Linha inteira por prioridade"
     icalendar:
-      enable_subscriptions_text_html: Permite que os utilizadores com as permissões necessárias subscrevam os calendários do OpenProject e acedam às informações do pacote de trabalho através de um cliente de calendário externo.<strong>Nota:</strong> leia sobre as <a href="%{link}" target="_blank">subscrições do iCalendar</a> para entender os possíveis riscos de segurança antes de ativar esta opção.
+      enable_subscriptions_text_html: Permite que os utilizadores com as permissões necessárias subscrevam os calendários do OpenProject e acedam às informações do pacote de trabalho através de um cliente de Calendários externo.<strong>Nota:</strong> leia sobre as <a href="%{link}" target="_blank">subscrições do iCalendar</a> para entender os possíveis riscos de segurança antes de ativar esta opção.
     language_name_being_default: "%{language_name} (padrão)"
     notifications:
       events_explanation: "Determina o evento sobre o qual é enviado um e-mail. Os pacotes de trabalho são eliminados desta lista uma vez que as notificações sobre eles podem ser configuradas especificamente para todos os utilizadores."
@@ -3878,7 +3880,7 @@ pt-PT:
   text_hours_between: "Entre %{min} e %{max} horas."
   text_work_package_added: "O pacote de trabalho %{id} foi reportado por %{author}."
   text_work_package_category_destroy_assignments: "Remover atribuições da categoria"
-  text_work_package_category_destroy_question: "Algumas tarefas (%{count}) estão atribuídas a esta categoria. O que é que quer fazer?"
+  text_work_package_category_destroy_question: "Alguns pacotes de trabalho (%{count}) estão atribuídos a esta categoria. O que quer fazer?"
   text_work_package_category_reassign_to: "Reatribuir pacotes de trabalho para esta categoria"
   text_work_package_updated: "O pacote de trabalho %{id} foi atualizado por %{author}."
   text_work_package_watcher_added: "Foi adicionado como observador do pacote de trabalho %{id} por %{watcher_changer}."
@@ -4058,7 +4060,7 @@ pt-PT:
   #TODO: merge with work_packages top level key
   work_package:
     updated_automatically_by_child_changes: |
-      _Atualizado automaticamente através da alteração de valor na tarefa %{child}_
+      _Atualizado automaticamente através da alteração de valores no pacote de trabalho filho %{child}_
     destroy:
       info: "Apagar o pacote de trabalho é uma ação irreversível."
       title: "Eliminar o pacote de trabalho"
@@ -4224,8 +4226,8 @@ pt-PT:
         context_object_not_found: "Não é possível encontrar o recurso dado como contexto."
       validation:
         due_date: "Data de término não pode ser definida em pacotes de trabalho pai."
-        invalid_user_assigned_to_work_package: "O utilizador escolhido não pode ser '%{property}' para esta tarefa."
-        start_date: "Data de início não pode ser definida em tarefas do pai."
+        invalid_user_assigned_to_work_package: "O utilizador escolhido não pode ser \"%{property}\" para este pacote de trabalho."
+        start_date: "A data de início não pode ser definida nos pacotes de trabalho principais."
       eprops:
         invalid_gzip: "é gzip inválido: %{message}"
         invalid_json: "é json inválido: %{message}"
@@ -4269,7 +4271,7 @@ pt-PT:
           expired: "O token de acesso expirou"
           unknown: "O token de acesso é inválido"
         revoke:
-          unauthorized: "Não está autorizado a executar esta tarefa"
+          unauthorized: "Não tem autorização para revogar este token."
         forbidden_token:
           missing_scope: 'O acesso a este recurso requer o escopo "%{oauth_scopes}".'
   unsupported_browser:

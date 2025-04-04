@@ -2055,6 +2055,8 @@ hu:
     dialog:
       title: "Exportálás"
       submit: "Exportálás"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:

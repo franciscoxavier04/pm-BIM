@@ -2054,6 +2054,8 @@ fr:
     dialog:
       title: "Exporter"
       submit: "Exporter"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "Format de fichier"
         options:

@@ -2132,6 +2132,8 @@ ru:
     dialog:
       title: "Экспорт"
       submit: "Экспорт"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "Формат файла"
         options:
@@ -3734,7 +3736,7 @@ ru:
   setting_mail_handler_body_delimiters: "Усечение сообщений после одной из этих линий"
   setting_mail_handler_body_delimiter_regex: "Сообщение усекается по этому регулярному выражению"
   setting_mail_handler_ignore_filenames: "Игнорируемые вложения почты"
-  setting_new_project_user_role_id: "Роль, назначаемая пользователю-создателю проекта"
+  setting_new_project_user_role_id: "Роль, назначаемая пользователю-создателю проекта, не являющемуся администратором"
   setting_password_active_rules: "Активные классы символов"
   setting_password_count_former_banned: "Количество паролей, запрещенных для повторного использования"
   setting_password_days_valid: "Количество дней, после которого требуется смена пароля"

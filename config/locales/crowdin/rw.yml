@@ -2056,6 +2056,8 @@ rw:
     dialog:
       title: "Export"
       submit: "Export"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:

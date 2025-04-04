@@ -397,7 +397,7 @@ zh-TW:
   label_meeting_state_in_progress: "進行中"
   label_meeting_reopen_action: "重新開啟會議"
   label_meeting_close_action: "關閉會議"
-  label_meeting_in_progress_action: "標記為進行中"
+  label_meeting_in_progress_action: "Start meeting"
   text_meeting_open_description: "此會議是開放的。您可以新增/移除議程項目，並隨意編輯。一旦議程準備就緒，請將其標示為進行中，以記錄結果。"
   text_meeting_closed_description: "此會議已關閉。您不能再新增/移除議程項目。"
   text_meeting_in_progress_description: "此會議正在進行中。您可以記錄每個議程項目的結果、重新排列它們，甚至新增新的項目。會議完成後，您可以將其標示為已結束，以鎖定它。"

@@ -2015,6 +2015,8 @@ ja:
     dialog:
       title: "外部出力"
       submit: "外部出力"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:

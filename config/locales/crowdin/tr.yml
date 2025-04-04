@@ -2055,6 +2055,8 @@ tr:
     dialog:
       title: "Dışarı aktar"
       submit: "Dışarı aktar"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "Dosya biçimi"
         options:

@@ -2056,6 +2056,8 @@ eo:
     dialog:
       title: "Eksporti"
       submit: "Eksporti"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:

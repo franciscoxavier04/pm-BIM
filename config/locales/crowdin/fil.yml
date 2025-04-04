@@ -2056,6 +2056,8 @@ fil:
     dialog:
       title: "I-export"
       submit: "I-export"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:
