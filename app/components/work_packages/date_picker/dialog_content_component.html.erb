@@ -1,5 +1,9 @@
 <%=
   content_tag("turbo-frame", id: "wp-datepicker-dialog--content") do %>
+  <live-region>
+    <div id="polite" aria-live="polite" aria-atomic="true" class="hidden-for-sighted"></div>
+    <div id="assertive" aria-live="assertive" aria-atomic="true" class="hidden-for-sighted"></div>
+  </live-region>
   <%=
     component_wrapper(
       data: { "application-target": "dynamic",
