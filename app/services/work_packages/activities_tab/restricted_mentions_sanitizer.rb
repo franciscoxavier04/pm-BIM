@@ -29,6 +29,10 @@
 #++
 
 class WorkPackages::ActivitiesTab::RestrictedMentionsSanitizer
+  def self.sanitize(work_package, notes)
+    new(work_package, notes).call
+  end
+
   def initialize(work_package, notes)
     @work_package = work_package
     @notes = notes

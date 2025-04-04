@@ -141,6 +141,9 @@ class WorkPackages::ActivitiesTabController < ApplicationController
 
   def sanitize_restricted_mentions
     render plain: sanitized_journal_notes
+  rescue StandardError => e
+    handle_internal_server_error(e)
+    respond_with_turbo_streams
   end
 
   def toggle_reaction # rubocop:disable Metrics/AbcSize
@@ -226,7 +229,7 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def sanitized_journal_notes
-    WorkPackages::ActivitiesTab::RestrictedMentionsSanitizer.new(@work_package, journal_params[:notes]).call
+    WorkPackages::ActivitiesTab::RestrictedMentionsSanitizer.sanitize(@work_package, journal_params[:notes])
   end
 
   def journal_params

@@ -248,5 +248,23 @@ RSpec.describe "Work package comments with restricted visibility",
             .to contain_exactly("Project Admin", "Restricted Viewer", "Restricted ViewerCommenter")
       end
     end
+
+    context "with a server error" do
+      before do
+        allow(WorkPackages::ActivitiesTab::RestrictedMentionsSanitizer).to receive(:sanitize)
+          .and_raise(RuntimeError, "Something went wrong!!!")
+      end
+
+      it "shows an error message" do
+        activity_tab.type_comment("@Restricted")
+        page.first(".mention-list-item", text: "Restricted Viewer").click
+
+        activity_tab.check_restricted_visibility_comment_checkbox
+
+        page.within_test_selector("op-primer-flash-message") do
+          expect(page).to have_text("Something went wrong!!!")
+        end
+      end
+    end
   end
 end

@@ -29,6 +29,7 @@
  */
 
 import { Controller } from '@hotwired/stimulus';
+import { renderStreamMessage } from '@hotwired/turbo';
 import type IndexController from './index.controller';
 
 export default class RestrictedCommentController extends Controller {
@@ -89,10 +90,16 @@ export default class RestrictedCommentController extends Controller {
           },
         });
 
-        const sanitizedNotes = await response.text();
-        this.ckEditorInstance.setData(sanitizedNotes);
+        const sanitizedNotesResponse = await response.text();
+
+        if (response.ok) {
+          this.ckEditorInstance.setData(sanitizedNotesResponse);
+        } else {
+          renderStreamMessage(sanitizedNotesResponse);
+          throw new Error(`Failed to sanitize restricted mentions. Response status: ${response.status}`);
+        }
       } catch (error) {
-        console.error(`Failed to sanitize restricted mentions: ${error}`);
+        console.error(error);
       }
     }
   }
