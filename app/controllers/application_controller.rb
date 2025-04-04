@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -185,7 +187,7 @@ class ApplicationController < ActionController::Base
   # Create CSRF issue
   def log_csrf_failure
     message = "CSRF validation error"
-    message << " (No session cookie present)" if openproject_cookie_missing?
+    message += " (No session cookie present)" if openproject_cookie_missing?
 
     op_handle_error message, reference: :csrf_validation_failed
   end
