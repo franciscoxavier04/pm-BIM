@@ -38,8 +38,12 @@ module Projects
       def initialize(id:, gate: "start")
         super
 
-        @id = id
-        @phase = Project::Phase.joins(:definition).includes(:definition).find(id)
+        @phase = Project::Phase
+                   .joins(:definition)
+                   .includes(:definition)
+                   .where(active: true)
+                   .find_by(id: id)
+
         @gate = gate.to_sym
       end
 
