@@ -53,6 +53,14 @@ class EnterpriseToken < ApplicationRecord
       end
     end
 
+    def banner_type_for(feature:)
+      if !active?
+        :no_token
+      elsif !allows_to?(feature)
+        :upsell
+      end
+    end
+
     def set_current_token
       token = EnterpriseToken.order(Arel.sql("created_at DESC")).first
 

@@ -86,17 +86,17 @@ class Project < ApplicationRecord
   has_many :notification_settings, dependent: :destroy
   has_many :project_storages, dependent: :destroy, class_name: "Storages::ProjectStorage"
   has_many :storages, through: :project_storages
-  has_many :life_cycle_steps, class_name: "Project::LifeCycleStep", dependent: :destroy
-  has_many :available_life_cycle_steps,
+  has_many :phases, class_name: "Project::Phase", dependent: :destroy
+  has_many :available_phases,
            -> { visible.eager_load(:definition).order(position: :asc) },
-           class_name: "Project::LifeCycleStep",
+           class_name: "Project::Phase",
            inverse_of: :project,
            dependent: :destroy
 
   has_many :recurring_meetings, dependent: :destroy
 
-  accepts_nested_attributes_for :available_life_cycle_steps
-  validates_associated :available_life_cycle_steps, on: :saving_life_cycle_steps
+  accepts_nested_attributes_for :available_phases
+  validates_associated :available_phases, on: :saving_phases
 
   store_attribute :settings, :deactivate_work_package_attachments, :boolean
   store_attribute :settings, :enabled_comments_with_restricted_visibility, :boolean
@@ -120,7 +120,7 @@ class Project < ApplicationRecord
   def validation_context
     case Array(super)
     in [*, :saving_custom_fields, *] => context
-      context << default_validation_context
+      context | [default_validation_context]
     else
       super
     end
@@ -147,8 +147,8 @@ class Project < ApplicationRecord
   register_journal_formatted_fields "public", formatter_key: :visibility
   register_journal_formatted_fields "parent_id", formatter_key: :subproject_named_association
   register_journal_formatted_fields /custom_fields_\d+/, formatter_key: :custom_field
-  register_journal_formatted_fields /^project_life_cycle_step_\d+_active$/, formatter_key: :project_life_cycle_step_active
-  register_journal_formatted_fields /^project_life_cycle_step_\d+_date_range$/, formatter_key: :project_life_cycle_step_dates
+  register_journal_formatted_fields /^project_phase_\d+_active$/, formatter_key: :project_phase_active
+  register_journal_formatted_fields /^project_phase_\d+_date_range$/, formatter_key: :project_phase_dates
 
   has_paper_trail
 

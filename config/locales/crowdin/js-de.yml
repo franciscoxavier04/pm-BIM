@@ -798,6 +798,7 @@ de:
       typeahead_placeholder: Nach möglichen Beobachtern suchen
     relation_labels:
       parent: "Übergeordnetes Arbeitspaket"
+      child: "Child"
       children: "Untergeordnete Arbeitspakete"
       relates: "Verwandt mit"
       duplicates: "Dupliziert"
@@ -827,7 +828,7 @@ de:
       add_new_child: "Neue Unteraufgabe"
       create_new: "Neu erstellen"
       add_existing: "Bestehende hinzufügen"
-      add_existing_child: "Unteraufgabe zuweisen"
+      add_existing_child: "Add child"
       remove_child: "Unteraufgabe entfernen"
       add_new_relation: "Neue Beziehung erstellen"
       add_existing_relation: "Bestehende Beziehung hinzufügen"

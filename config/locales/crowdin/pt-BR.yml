@@ -35,15 +35,15 @@ pt-BR:
         label_sort_desc: "Mais recentes em cima"
         label_type_to_comment: "Adicione um comentário. Digite @ para notificar as pessoas."
         label_submit_comment: "Enviar comentário"
-        label_who: Who?
+        label_who: Quem?
         changed_on: "alterado em"
         created_on: "criou em"
         changed: "alterou"
         created: "criou"
         commented: "comentou"
-        restrict_visibility: Restrict visibility
-        restricted_journal: Restricted comments are visible to a limited group of members.
-        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
+        restrict_visibility: Restringir visibilidade
+        restricted_journal: Comentários restritos são visíveis a um grupo limitado de membros.
+        unsaved_changes_confirmation_message: Você tem alterações não salvas. Tem certeza que deseja fechar o editor?
   admin:
     plugins:
       no_results_title_text: Atualmente, não existem plugins instalados.
@@ -368,14 +368,14 @@ pt-BR:
         no_results_title_text: Não há campos personalizados disponíveis.
       life_cycle:
         header:
-          title: "Ciclo de vida do projeto"
-          description_html: 'Essas fases e marcos no ciclo de vida do projeto serão exibidos na sua <a href=%{overview_url} target="_blank">página de visão geral do projeto</a> e são definidos nas <a href=%{admin_settings_url} target="_blank">configurações de administração</a> pelo administrador da instância. Você pode ativar ou desativar atributos individuais.'
-        non_defined: "Nem fases nem marcos estão atualmente definidos."
-        section_header: "Fases e marcos"
+          title: "Project life cycle"
+          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
+        non_defined: "No phases are currently defined."
+        section_header: "Phases"
         step:
           use_in_project: "Use %{step} neste projeto"
         filter:
-          label: "Pesquisar fase ou marco do projeto"
+          label: "Search project phase"
       project_custom_fields:
         header:
           title: "Atributos do projeto"
@@ -400,10 +400,10 @@ pt-BR:
         no_results_title_text: Não há espaço adicional gravado em disco que seja consumido por este projeto.
       work_package_priorities:
         new_label: "Nova prioridade"
-  project_stage:
+  project_phase:
     working_days_count:
-      one: "Duração: %{count} dia útil"
-      other: "Duração: %{count} dias úteis"
+      one: "Duration: %{count} working day"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "A lista modificada foi salva como uma nova lista"
@@ -619,12 +619,12 @@ pt-BR:
           caption: "Defina um padrão usando atributos referenciados e texto para gerar automaticamente os tópicos dos pacotes de trabalho. Os usuários não poderão editar os tópicos manualmente."
         pattern:
           label: "Padrão de assunto"
-          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          caption: "Digite o texto ou aperte / para pesquisar um atributo. Você pode separá-los por espaço."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
-          insert_as_text: "No attributes found. Add as text: \"%{word}\""
+            work_package: "Pacote de trabalho"
+            parent: "Pai"
+            project: "Projeto"
+          insert_as_text: "Nenhum atributo encontrado. Digite um texto como: \"%{word}\""
       export_configuration:
         tab: "Gerar PDF"
         intro: "Selecione quais modelos disponíveis você deseja ativar para este tipo. O modelo define o design e os atributos visíveis no PDF exportado de um pacote de trabalho desse tipo. O primeiro modelo da lista é selecionado por padrão."
@@ -759,7 +759,7 @@ pt-BR:
       label_child_plural: "filhos"
       new_child: "Novo filho"
       new_child_text: "Cria um pacote de trabalho relacionado como um subpacote do pacote de trabalho atual (pai)"
-      existing_child: "Filho existente"
+      child: "Filho"
       child_description: "Torna o pacote de trabalho relacionado uma subtarefa do pacote de trabalho atual (pai)"
       label_closest: "Mais próximo"
       label_blocks_singular: "blocos"
@@ -951,17 +951,23 @@ pt-BR:
       project_custom_field:
         is_required: "Obrigatório para todos os projetos"
         custom_field_section: Seção
-      project/life_cycle_step:
-        definition: "Definição"
-      project/life_cycle_step_definition:
-        name: "Nome"
-        color: "Cor"
+      project/phase:
+        date_range: "Date range"
+        definition: "Definition"
+      project/phase_definition:
+        name: "Name"
+        color: "Color"
+        start_gate: "Start phase gate"
+        start_gate_name: "Start phase gate name"
+        finish_gate: "Finish phase gate"
+        finish_gate_name: "Finish phase gate name"
       query:
         sums: "Somas"
         columns: "Colunas"
         column_names: "Colunas"
         relations_to_type_column: "Relações com %{type}"
         relations_of_type_column: "Relações de %{type}"
+        child_work_packages: "Pacotes de trabalho filhos"
         group_by: "Agrupar resultados por"
         sort_by: "Ordenar resultados por"
         filters: "Filtros"
@@ -1056,9 +1062,9 @@ pt-BR:
       wiki_page:
         parent_title: "Página pai"
         redirect_existing_links: "Redireciona links existentes"
-        text: "Page content"
+        text: "Conteúdo da página"
       work_package:
-        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
+        ancestor: "Descendentes de" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Início da inserção"
         begin_deletion: "Início da exclusão"
         children: "Subelementos"
@@ -1074,7 +1080,7 @@ pt-BR:
           title: "Dias úteis"
           false: "Apenas dias úteis"
           true: "incluindo dias não-úteis"
-        journal_restricted: Restricted Journal
+        journal_restricted: Diário restrito
         notify: "Notificar" #used in custom actions
         parent: "Pai"
         parent_issue: "Pai"
@@ -1118,7 +1124,7 @@ pt-BR:
         empty: "não pode ser vazio."
         even: "deve ser par."
         exclusion: "está reservado."
-        feature_disabled: is not available.
+        feature_disabled: não está disponível.
         file_too_large: "é muito grande (tamanho máximo é %{count} Bytes)."
         filter_does_not_exist: "filtro não existe."
         format: "não corresponde ao formato '%{expected}' esperado."
@@ -1255,42 +1261,12 @@ pt-BR:
           attributes:
             project_ids:
               blank: "Selecione um projeto."
-        project/life_cycle_step_definition:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "deve ser Project::StageDefinition ou Project::GateDefinition"
-              type_and_class_name_mismatch: "deve corresponder ao nome da classe instanciada"
-        project/gate_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "deve ser um Project::GateDefinition"
-        project/stage_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "deve ser um Project::StageDefinition"
-        project/life_cycle_step:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "deve ser Project::Stage ou Project::Gate"
-              must_be_a_stage: "deve ser um Project::Stage"
-              must_be_a_gate: "deve ser um Project::Gate"
-              type_and_class_name_mismatch: "deve corresponder ao nome da classe instanciada"
-        project/gate:
-          attributes:
-            base:
-              end_date_not_allowed: "Não é possível atribuir data de término a um Project::Gate"
-            type:
-              type_and_class_name_mismatch: "deve ser um Project::Gate"
-            date:
-              non_continuous_dates: "não pode ser anterior à data de término do %{step} anterior."
-        project/stage:
+        project/phase:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "a data inicial deve ser anterior à data final."
-              non_continuous_dates: "não pode ser anterior à data de término do %{step} anterior."
-              incomplete: "está incompleto."
-            type:
-              type_and_class_name_mismatch: "deve ser um Project::Stage"
+              start_date_must_be_before_finish_date: "start date must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              incomplete: "is incomplete."
         query:
           attributes:
             project:
@@ -1521,8 +1497,6 @@ pt-BR:
         other: "Notificações"
       placeholder_user: "Usuário do espaço reservado"
       project: "Projeto"
-      project/gate_definition: "Portão"
-      project/stage_definition: "Fase"
       project_query:
         one: "Lista de projetos"
         other: "Listas de projeto"
@@ -1581,17 +1555,19 @@ pt-BR:
       changeset: "Cj de alterações"
       message: "Fóruns"
       news: "Notícias"
-      project_details: "Project details"
+      project_details: "Detalhes do projeto"
       subproject: "Incluir subprojetos"
       time_entry: "Tempo gasto"
       wiki_edit: "Wiki"
       work_package: "Pacotes de trabalho"
-    project_life_cycle_step:
+    project_phase:
       activated: "activated"
       deactivated: "deactivated"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
   #common attributes of all models
   attributes:
     active: "Ativo"
@@ -1991,7 +1967,7 @@ pt-BR:
       automatic_subject_generation:
         description: "Crie assuntos gerados automaticamente com base em atributos e textos referenciados."
       customize_life_cycle:
-        description: "Crie e organize estágios e marcos do projeto diferentes dos definidos no planejamento do ciclo de vida do projeto PM2."
+        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Personalize a configuração do formulário com estes complementos adicionais:"
         add_groups: "Adicionar novos grupos de atributos"
@@ -2061,7 +2037,7 @@ pt-BR:
     changeset: "Conjunto de alterações editadas"
     message: Mensagem editada
     news: Notícias
-    project_details: "Project details edited"
+    project_details: "Detalhes do projeto editados"
     project: "Projeto editado"
     projects: "Projeto editado"
     reply: Respondida
@@ -2077,6 +2053,8 @@ pt-BR:
     dialog:
       title: "Exportar"
       submit: "Exportar"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "Formato do arquivo"
         options:
@@ -2141,7 +2119,7 @@ pt-BR:
     succeeded: "Exportação concluída"
     failed: "Ocorreu um erro ao tentar exportar os pacotes de trabalho: %{message}"
     errors:
-      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
+      embedded_table_with_too_many_columns: "Essa tabela embutida de pacotes de trabalho não coube na página, por favor, reduza o número de colunas."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2187,11 +2165,11 @@ pt-BR:
       hyphenation_language:
         label: Idioma e hifenização
       page_orientation:
-        label: Page orientation
-        caption: Select the orientation of the pages in the PDF document.
+        label: Orientação da página
+        caption: Selecione a orientação das páginas no documento PDF.
         options:
-          portrait: Portrait
-          landscape: Landscape
+          portrait: Retrato
+          landscape: Paisagem
   extraction:
     available:
       pdftotext: "Pdftotext disponível (opcional)"
@@ -2736,7 +2714,7 @@ pt-BR:
   label_none_parentheses: "(nenhum)"
   label_not_contains: "não contém"
   label_not_equals: "não é"
-  label_life_cycle_step_plural: "Ciclo de vida do projeto"
+  label_life_cycle_step_plural: "Project life cycle"
   label_on: "ligado"
   label_operator_all: "não está vazio"
   label_operator_none: "está vazio"
@@ -2798,7 +2776,7 @@ pt-BR:
   label_project_new: "Novo projeto"
   label_project_plural: "Projetos"
   label_project_list_plural: "Listas de projeto"
-  label_project_lifecycle: "Ciclo de vida do projeto"
+  label_project_life_cycle: "Project life cycle"
   label_project_attributes_plural: "Atributos do projeto"
   label_project_custom_field_plural: "Atributos do projeto"
   label_project_settings: "Configurações do projeto"
@@ -3301,7 +3279,7 @@ pt-BR:
   permission_add_project: "Criar projetos"
   permission_add_work_package_attachments: "Adicionar anexos"
   permission_add_work_package_attachments_explanation: "Permite adicionar anexos sem permissão de edição de pacotes de trabalho"
-  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
+  permission_add_comments_with_restricted_visibility: "Escrever comentários de visibilidade restrita"
   permission_archive_project: "Arquivar projeto"
   permission_create_user: "Criar usuários"
   permission_manage_user: "Editar usuários"
@@ -3330,15 +3308,15 @@ pt-BR:
   permission_edit_work_package_notes_explanation: "Atenção: Usuários com esta permissão podem editar comentários de qualquer pessoa."
   permission_edit_work_packages: "Editar pacotes de trabalho"
   permission_edit_messages: "Editar mensagens"
-  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
+  permission_edit_own_comments_with_restricted_visibility: "Editar seus comentários de visibilidade restrita"
   permission_edit_own_work_package_notes: "Editar os próprios comentários"
   permission_edit_own_messages: "Editar as próprias mensagens"
   permission_edit_own_time_entries: "Editar os próprios registros de tempo"
-  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
+  permission_edit_others_comments_with_restricted_visibility: "Gerenciar comentários de visibilidade restrita"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Atenção: Usuários com essa permissão conseguem editar os comentários de visibilidade restrita de outros usuários."
   permission_edit_project: "Editar projeto"
   permission_edit_project_attributes: "Editar atributos do projeto"
-  permission_edit_project_stages_and_gates: "Editar fases e marcos do projeto"
+  permission_edit_project_phases: "Edit project phases"
   permission_edit_reportings: "Editar relatórios"
   permission_edit_time_entries: "Editar registro de hora para outros usuários"
   permission_edit_timelines: "Editar cronogramas"
@@ -3368,15 +3346,15 @@ pt-BR:
   permission_search_project: "Buscar projeto"
   permission_select_custom_fields: "Selecionar campos personalizados"
   permission_select_project_custom_fields: "Selecione os atributos do projeto"
-  permission_select_project_life_cycle: "Selecionar fases e marcos do projeto"
-  permission_select_project_life_cycle_explanation: "Ative ou desative os estágios e marcos de um projeto. Isso permite que o usuário selecione o ciclo de vida adequado para o projeto, pois os estágios e marcos desativados não serão exibidos na página de visão geral nem na lista de projetos."
+  permission_select_project_phases: "Select project phases"
+  permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the life cycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "Selecionar módulos do projeto"
   permission_share_work_packages: "Compartilhar pacotes de trabalho"
   permission_manage_types: "Selecionar tipos"
   permission_manage_own_reminders: "Criar seus próprios lembretes"
   permission_view_project: "Visualizar projetos"
   permission_view_changesets: "Revisões do repositório vistas no OpenProject"
-  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
+  permission_view_comments_with_restricted_visibility: "Veja comentários de visibilidade restrita"
   permission_view_commit_author_statistics: "Ver estatísticas de commits do autor"
   permission_view_dashboards: "Visualizar painéis"
   permission_view_work_package_watchers: "Visualizar lista de observadores"
@@ -3395,7 +3373,7 @@ pt-BR:
   permission_work_package_assigned_explanation: "Pacotes de trabalho podem ser atribuídos a usuários e grupos em posse deste papel no respectivo projeto"
   permission_view_project_activity: "Visualizar a atividade do projeto"
   permission_view_project_attributes: "Visualizar atributos do projeto"
-  permission_view_project_stages_and_gates: "Visualizar fases e marcos do projeto"
+  permission_view_project_phases: "View project phases"
   permission_save_bcf_queries: "Salvar consultas a BCF"
   permission_manage_public_bcf_queries: "Gerenciar consultas públicas a BCF"
   permission_edit_attribute_help_texts: "Editar textos de ajuda do atributos"
@@ -3421,9 +3399,9 @@ pt-BR:
       subprojects_confirmation: "Seu(s) subprojeto(s): %{value} também será(ão) excluído(s)."
       title: "Excluir o projeto %{name}"
     filters:
-      life_cycle_any: "Ciclo de Vida: Qualquer fase ou marco"
-      life_cycle_stage: "Fase do Ciclo de Vida: %{stage}"
-      life_cycle_gate: "Marco de Ciclo de Vida: %{gate}"
+      project_phase: "Project phase: %{phase}"
+      project_phase_any: "Project phase: Any"
+      project_phase_gate: "Project phase gate: %{gate}"
     identifier:
       warning_one: Membros do projeto terão que realocar os repositórios do projeto.
       warning_two: Links existentes para o projeto deixarão de funcionar.
@@ -3568,6 +3546,9 @@ pt-BR:
     manual: "definir como Manual"
     automatic: "definido como Automático"
   search_input_placeholder: "Pesquisar..."
+  setting_allowed_link_protocols: "Protocolos de link permitidos"
+  setting_allowed_link_protocols_text_html: >-
+    Permite que estes protocolos sejam apresentados como links nas descrições do pacote de trabalho, campos de texto e comentários. Por exemplo, %{tel_code} ou %{element_code}. Insira um protocolo por linha. <br/> Os protocolos %{http_code}, %{https_code} e %{mailto_code} estão sempre permitidos.
   setting_after_first_login_redirect_url: "Redirecionamento de primeiro login"
   setting_after_first_login_redirect_url_text_html: >
     Defina um caminho para redirecionar os usuários após o primeiro login. Se deixado em branco, eles serão redirecionados para a página inicial do tour de introdução. <br/> Exemplo: <code>/my/page</code>
@@ -3800,27 +3781,27 @@ pt-BR:
       new:
         heading: "Novo atributo"
         description: "As alterações realizadas neste atributo do projeto serão aplicadas em todos os projetos onde ele estiver habilitado. Atributos obrigatórios não podem ser desativados em projetos específicos."
-    project_life_cycle_step_definitions:
-      heading: "Ciclo de vida do projeto"
-      heading_description: "O ciclo de vida do projeto é composto por fases e marcos que estruturam seus projetos. Eles serão exibidos na página de visão geral do projeto e estarão disponíveis na lista de projetos. É possível selecionar fases e marcos individuais para personalizar um projeto, mas a reordenação não pode ser feita no nível do projeto."
-      label_add: "Adicionar"
-      label_add_description: "Adicionar definição de ciclo de vida"
-      label_add_stage: "Fase"
-      label_add_gate: "Portão"
+    project_phase_definitions:
+      heading: "Project life cycle"
+      heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
+      label_add: "Add"
+      label_add_description: "Add life cycle definition"
       filter:
-        label: "Pesquisar fase ou marco do projeto"
-      section_header: "Fases e marcos"
-      non_defined: "Nem fases nem marcos estão atualmente definidos."
+        label: "Search project phase"
+      section_header: "Phases"
+      non_defined: "No phases are currently defined."
+      phase_gates: "Phase gates"
       new:
-        description: "Alterações neste estágio do projeto serão aplicadas a todos os projetos nos quais ele esteja ativado."
-      new_stage:
-        heading: "Novo fase"
-      new_gate:
-        heading: "Novo marco"
-      edit_stage:
-        heading: "Editar fase"
-      edit_gate:
-        heading: "Editar marco"
+        description: "Changes to this project phase will be reflected in all projects where it is enabled."
+        heading: "New Phase"
+      edit:
+        heading: "Edit Phase"
+      both_gate: "Start and finish gate"
+      no_gate: "No gate"
+      start_gate: "Start gate"
+      start_gate_caption: "Add a gate with the start date of the phase"
+      finish_gate: "Finish gate"
+      finish_gate_caption: "Add a gate with the end date of the phase"
     projects:
       missing_dependencies: "Módulo de projeto %{module} foi verificado e depende de %{dependencies}. Você também precisa verificar estas dependências."
       section_new_projects: "Configurações para novos projetos"
@@ -3834,7 +3815,7 @@ pt-BR:
       section_work_week: "Semana de trabalho"
       section_holidays_and_closures: "Feriados e fechamentos"
     work_packages:
-      not_allowed_text: "You do not have the necessary permissions to view this page."
+      not_allowed_text: "Você não tem as permissões necessárias para visualizar esta página."
   text_formatting:
     markdown: "Markdown"
     plain: "Texto simples"
@@ -3856,7 +3837,7 @@ pt-BR:
   text_are_you_sure_continue: "Tem certeza de que deseja continuar?"
   text_are_you_sure_with_children: "Excluir o pacote de trabalho e todos os pacotes de trabalho filhos?"
   text_are_you_sure_with_project_custom_fields: "Ao excluir este atributo, os valores associados a ele serão removidos de todos os projetos. Tem certeza de que deseja continuar?"
-  text_are_you_sure_with_project_life_cycle_step: "Ao excluir esta etapa, os usos associados a ele serão removidos de todos os projetos. Tem certeza de que deseja continuar?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this phase will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Atribuir ao projeto"
   text_form_configuration: >
     Você pode personalizar quais campos serão exibidos em formulários de pacote de trabalho. Livremente, você pode agrupar os campos para refletir as necessidades para o seu domínio.

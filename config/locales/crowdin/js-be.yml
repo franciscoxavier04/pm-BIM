@@ -801,6 +801,7 @@ be:
       typeahead_placeholder: Search for possible watchers
     relation_labels:
       parent: "Parent"
+      child: "Child"
       children: "Children"
       relates: "Related To"
       duplicates: "Duplicates"
@@ -830,7 +831,7 @@ be:
       add_new_child: "Create new child"
       create_new: "Create new"
       add_existing: "Add existing"
-      add_existing_child: "Add existing child"
+      add_existing_child: "Add child"
       remove_child: "Remove child"
       add_new_relation: "Create new relation"
       add_existing_relation: "Add existing relation"

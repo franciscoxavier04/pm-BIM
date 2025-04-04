@@ -77,10 +77,10 @@ module WorkPackages
           value: field_value(name),
           disabled: disabled?(name),
           label:,
-          show_clear_button: !disabled?(name) && !duration_field?(name),
+          show_clear_button: show_clear_button?(name),
           classes: "op-datepicker-modal--date-field #{'op-datepicker-modal--date-field_current' if @focused_field == name}",
           validation_message: validation_message(name),
-          type: duration_field?(name) ? :number : :text
+          type: field_type(name)
         )
 
         if duration_field?(name)
@@ -157,12 +157,8 @@ module WorkPackages
       end
 
       def disabled?(name)
-        if name == :duration
-          if !@schedule_manually && @work_package.children.any?
-            return true
-          end
-
-          return false
+        if name == :start_date && !@schedule_manually
+          return true
         end
 
         @disabled
@@ -175,6 +171,12 @@ module WorkPackages
         else
           @work_package.public_send(name)
         end
+      end
+
+      def field_type(name)
+        return :number if duration_field?(name)
+
+        helpers.browser.device.mobile? ? :date : :text
       end
 
       def validation_message(name)
@@ -190,7 +192,7 @@ module WorkPackages
                          "focus->work-packages--date-picker--preview#onHighlightField",
                  test_selector: "op-datepicker-modal--#{name.to_s.dasherize}-field" }
 
-        if @focused_field == name
+        if @focused_field == name && !disabled?(name)
           data[:qa_highlighted] = "true"
           data[:focus] = "true"
         end
@@ -241,6 +243,10 @@ module WorkPackages
 
       def normalized_underscore_name(name)
         name.to_s.underscore
+      end
+
+      def show_clear_button?(name)
+        !disabled?(name) && !duration_field?(name) && !helpers.browser.device.mobile?
       end
     end
   end

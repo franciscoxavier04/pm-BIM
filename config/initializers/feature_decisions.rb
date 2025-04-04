@@ -49,7 +49,7 @@ OpenProject::FeatureDecisions.add :generate_work_package_subjects,
                                                "automatically generated work package subjects."
 
 OpenProject::FeatureDecisions.add :stages_and_gates,
-                                  description: "Enables the under construction feature of stages and gates."
+                                  description: "Enables the under construction feature of phases."
 
 OpenProject::FeatureDecisions.add :oidc_token_exchange,
                                   description: "Enables the under construction OAuth2 token exchange, allowing " \

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -40,7 +42,7 @@ RSpec.describe Project, "acts_as_journalized" do
 
   context "on project creation" do
     it "has one journal entry" do
-      expect(Journal.all.count).to eq(1)
+      expect(Journal.count).to eq(1)
       expect(Journal.first.journable).to eq(project)
     end
 
@@ -202,38 +204,39 @@ RSpec.describe Project, "acts_as_journalized" do
     end
   end
 
-  describe "life cycle steps", with_settings: { journal_aggregation_time_minutes: 0 } do
+  describe "phases", with_settings: { journal_aggregation_time_minutes: 0 } do
     describe "activation/deactivation" do
-      let!(:stage) { build(:project_stage, project:, active: true, start_date: nil, end_date: nil) }
-      let!(:gate) { build(:project_gate, project:, active: true, date: nil) }
+      let(:phase1) { build(:project_phase, project:, active: true, start_date: nil, finish_date: nil) }
+      let(:phase2) { build(:project_phase, project:, active: false, start_date: nil, finish_date: nil) }
+      let(:phase3) { build(:project_phase, project:, active: true, start_date: nil, finish_date: nil) }
 
-      context "when adding activated" do
+      context "when adding" do
         it "contains the change" do
-          project.update!(life_cycle_steps: [stage, gate])
+          project.update!(phases: [phase1, phase2])
 
           expect(project.last_journal.details).to eq(
             {
-              "project_life_cycle_step_#{stage.id}_active" => [nil, true],
-              "project_life_cycle_step_#{gate.id}_active" => [nil, true]
+              "project_phase_#{phase1.id}_active" => [nil, true],
+              "project_phase_#{phase2.id}_active" => [nil, false]
             }
           )
         end
       end
 
-      context "when deactivating" do
+      context "when updating" do
         before do
-          project.update!(life_cycle_steps: [stage, gate])
+          project.update!(phases: [phase1, phase2, phase3])
         end
 
         it "contains the change" do
-          stage.update(active: false)
-          gate.update(active: false)
+          phase1.update(active: false)
+          phase2.update(active: true)
           project.save!
 
           expect(project.last_journal.details).to eq(
             {
-              "project_life_cycle_step_#{stage.id}_active" => [true, false],
-              "project_life_cycle_step_#{gate.id}_active" => [true, false]
+              "project_phase_#{phase1.id}_active" => [true, false],
+              "project_phase_#{phase2.id}_active" => [false, true]
             }
           )
         end
@@ -241,32 +244,35 @@ RSpec.describe Project, "acts_as_journalized" do
     end
 
     describe "modifying dates" do
-      let!(:stage) { create(:project_stage, project:, start_date: original_stage_start, end_date: original_stage_end) }
-      let!(:gate) { create(:project_gate, project:, date: original_gate_date) }
+      let!(:phase1) { create(:project_phase, project:, start_date: original1&.begin, finish_date: original1&.end) }
+      let!(:phase2) { create(:project_phase, project:, start_date: original2&.begin, finish_date: original2&.end) }
+      let!(:phase3) { create(:project_phase, project:, start_date: original3&.begin, finish_date: original3&.end) }
+      let!(:phase4) { create(:project_phase, project:, start_date: original4&.begin, finish_date: original4&.end) }
 
       before do
         project.save!
       end
 
       context "when setting dates" do
-        let(:original_stage_start) { nil }
-        let(:original_stage_end) { nil }
-        let(:original_gate_date) { nil }
+        let(:original1) { nil }
+        let(:original2) { nil }
+        let(:original3) { nil }
+        let(:original4) { nil }
 
         it "contains the change" do
-          stage.update(start_date: Date.new(2025, 1, 30), end_date: Date.new(2025, 1, 31))
-          gate.update(date: Date.new(2025, 2, 1))
+          phase1.update(start_date: Date.new(2025, 1, 28), finish_date: Date.new(2025, 1, 29))
+          phase2.update(start_date: Date.new(2025, 1, 30), finish_date: Date.new(2025, 1, 31))
           project.save!
 
           expect(project.last_journal.details).to match(
             {
-              "project_life_cycle_step_#{stage.id}_date_range" => [
+              "project_phase_#{phase1.id}_date_range" => [
+                nil,
+                Date.new(2025, 1, 28)..Date.new(2025, 1, 29)
+              ],
+              "project_phase_#{phase2.id}_date_range" => [
                 nil,
                 Date.new(2025, 1, 30)..Date.new(2025, 1, 31)
-              ],
-              "project_life_cycle_step_#{gate.id}_date_range" => [
-                nil,
-                Date.new(2025, 2, 1)..
               ]
             }
           )
@@ -274,24 +280,30 @@ RSpec.describe Project, "acts_as_journalized" do
       end
 
       context "when changing dates" do
-        let(:original_stage_start) { Date.new(2025, 1, 30) }
-        let(:original_stage_end) { Date.new(2025, 1, 31) }
-        let(:original_gate_date) { Date.new(2025, 2, 1) }
+        let(:original1) { Date.new(2025, 1, 5)..Date.new(2025, 1, 7) }
+        let(:original2) { Date.new(2025, 1, 15)..Date.new(2025, 1, 17) }
+        let(:original3) { Date.new(2025, 1, 25)..Date.new(2025, 1, 27) }
+        let(:original4) { Date.new(2025, 2, 5)..Date.new(2025, 2, 7) }
 
         it "contains the change" do
-          stage.update(start_date: Date.new(2025, 1, 30), end_date: Date.new(2025, 2, 1))
-          gate.update(date: Date.new(2025, 2, 3))
+          phase1.update(start_date: Date.new(2025, 1, 1), finish_date: Date.new(2025, 1, 7))
+          phase2.update(start_date: Date.new(2025, 1, 16), finish_date: Date.new(2025, 1, 18))
+          phase3.update(start_date: Date.new(2025, 1, 25), finish_date: Date.new(2025, 1, 31))
           project.save!
 
           expect(project.last_journal.details).to match(
             {
-              "project_life_cycle_step_#{stage.id}_date_range" => [
-                Date.new(2025, 1, 30)..Date.new(2025, 1, 31),
-                Date.new(2025, 1, 30)..Date.new(2025, 2, 1)
+              "project_phase_#{phase1.id}_date_range" => [
+                Date.new(2025, 1, 5)..Date.new(2025, 1, 7),
+                Date.new(2025, 1, 1)..Date.new(2025, 1, 7)
               ],
-              "project_life_cycle_step_#{gate.id}_date_range" => [
-                Date.new(2025, 2, 1)..,
-                Date.new(2025, 2, 3)..
+              "project_phase_#{phase2.id}_date_range" => [
+                Date.new(2025, 1, 15)..Date.new(2025, 1, 17),
+                Date.new(2025, 1, 16)..Date.new(2025, 1, 18)
+              ],
+              "project_phase_#{phase3.id}_date_range" => [
+                Date.new(2025, 1, 25)..Date.new(2025, 1, 27),
+                Date.new(2025, 1, 25)..Date.new(2025, 1, 31)
               ]
             }
           )
@@ -299,23 +311,24 @@ RSpec.describe Project, "acts_as_journalized" do
       end
 
       context "when removing dates" do
-        let(:original_stage_start) { Date.new(2025, 1, 30) }
-        let(:original_stage_end) { Date.new(2025, 1, 31) }
-        let(:original_gate_date) { Date.new(2025, 2, 1) }
+        let(:original1) { Date.new(2025, 1, 5)..Date.new(2025, 1, 7) }
+        let(:original2) { Date.new(2025, 1, 15)..Date.new(2025, 1, 17) }
+        let(:original3) { Date.new(2025, 1, 25)..Date.new(2025, 1, 27) }
+        let(:original4) { Date.new(2025, 2, 5)..Date.new(2025, 2, 7) }
 
         it "contains the change" do
-          stage.update(start_date: nil, end_date: nil)
-          gate.update(date: nil)
+          phase1.update(start_date: nil, finish_date: nil)
+          phase2.update(start_date: nil, finish_date: nil)
           project.save!
 
           expect(project.last_journal.details).to match(
             {
-              "project_life_cycle_step_#{stage.id}_date_range" => [
-                Date.new(2025, 1, 30)..Date.new(2025, 1, 31),
+              "project_phase_#{phase1.id}_date_range" => [
+                Date.new(2025, 1, 5)..Date.new(2025, 1, 7),
                 nil
               ],
-              "project_life_cycle_step_#{gate.id}_date_range" => [
-                Date.new(2025, 2, 1)..,
+              "project_phase_#{phase2.id}_date_range" => [
+                Date.new(2025, 1, 15)..Date.new(2025, 1, 17),
                 nil
               ]
             }
@@ -325,26 +338,22 @@ RSpec.describe Project, "acts_as_journalized" do
     end
 
     describe "combined" do
-      let!(:stage) do
-        build(:project_stage, project:, active: true, start_date: Date.new(2025, 1, 30), end_date: Date.new(2025, 1, 31))
+      let(:phase1) do
+        build(:project_phase, project:, active: true, start_date: Date.new(2025, 1, 28), finish_date: Date.new(2025, 1, 29))
       end
-      let!(:gate) { build(:project_gate, project:, active: true, date: Date.new(2025, 2, 1)) }
+      let(:phase2) do
+        build(:project_phase, project:, active: false, start_date: Date.new(2025, 1, 30), finish_date: Date.new(2025, 1, 31))
+      end
 
       it "contains both changes" do
-        project.update!(life_cycle_steps: [stage, gate])
+        project.update!(phases: [phase1, phase2])
 
         expect(project.last_journal.details).to match(
           {
-            "project_life_cycle_step_#{stage.id}_active" => [nil, true],
-            "project_life_cycle_step_#{stage.id}_date_range" => [
-              nil,
-              Date.new(2025, 1, 30)..Date.new(2025, 1, 31)
-            ],
-            "project_life_cycle_step_#{gate.id}_active" => [nil, true],
-            "project_life_cycle_step_#{gate.id}_date_range" => [
-              nil,
-              Date.new(2025, 2, 1)..
-            ]
+            "project_phase_#{phase1.id}_active" => [nil, true],
+            "project_phase_#{phase1.id}_date_range" => [nil, Date.new(2025, 1, 28)..Date.new(2025, 1, 29)],
+            "project_phase_#{phase2.id}_active" => [nil, false],
+            "project_phase_#{phase2.id}_date_range" => [nil, Date.new(2025, 1, 30)..Date.new(2025, 1, 31)]
           }
         )
       end
@@ -358,7 +367,7 @@ RSpec.describe Project, "acts_as_journalized" do
       end
 
       before do
-        create(:project_gate, project_id: project.id)
+        create(:project_phase, project_id: project.id)
       end
 
       it "fails when using save_journals" do

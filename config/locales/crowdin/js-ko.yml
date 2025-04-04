@@ -798,6 +798,7 @@ ko:
       typeahead_placeholder: 가능한 전문가를 검색합니다
     relation_labels:
       parent: "부모"
+      child: "Child"
       children: "하위"
       relates: "관련 항목"
       duplicates: "중복"
@@ -827,7 +828,7 @@ ko:
       add_new_child: "새 자식 만들기"
       create_new: "새로 만들기"
       add_existing: "기존 추가"
-      add_existing_child: "기존 자식 추가"
+      add_existing_child: "Add child"
       remove_child: "자식 제거"
       add_new_relation: "새 관계 만들기"
       add_existing_relation: "기존 관계 추가"

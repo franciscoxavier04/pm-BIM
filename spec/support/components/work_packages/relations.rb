@@ -311,28 +311,15 @@ module Components
         find(".wp-relation--parent-remove").click
       end
 
-      def open_children_autocompleter
-        retry_block do
-          next if page.has_selector?(".wp-relations--children .ng-input input")
-
-          SeleniumHubWaiter.wait
-          page.find_test_selector("op-wp-inline-create-reference",
-                                  text: I18n.t("js.relation_buttons.add_existing_child")).click
-
-          # Security check to be sure that the autocompleter has finished loading
-          page.find ".wp-relations--children .ng-input input"
-        end
-      end
-
       def children_table
-        page.find_test_selector("op-relation-group-children")
+        page.find_test_selector("op-relation-group-child")
       end
 
       def add_existing_child(work_package)
         SeleniumHubWaiter.wait
 
         retry_block do
-          select_relation_type "Existing child"
+          select_relation_type "Child"
         end
 
         within "##{WorkPackageRelationsTab::AddWorkPackageChildFormComponent::DIALOG_ID}" do

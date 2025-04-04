@@ -43,6 +43,46 @@ RSpec.describe WorkPackages::DatePicker::DialogContentComponent, type: :componen
     end
   end
 
+  context "when the work package is new" do
+    let(:work_package) { build(:work_package) }
+
+    context "when manually scheduled" do
+      let(:schedule_manually) { true }
+
+      it "shows the date form" do
+        expect(dialog_content).to have_field(I18n.t("attributes.start_date"), aria: { live: :polite })
+        expect(dialog_content).to have_field(I18n.t("attributes.due_date"), aria: { live: :polite })
+        expect(dialog_content).to have_field(WorkPackage.human_attribute_name("duration"), aria: { live: :polite })
+      end
+
+      it "has an enabled save button" do
+        expect(dialog_content).to have_button(I18n.t("button_save"), disabled: false)
+      end
+
+      it "can switch to automatic scheduling mode" do
+        expect(dialog_content).to have_link(I18n.t("work_packages.datepicker_modal.mode.automatic"))
+      end
+    end
+
+    context "when automatically scheduled" do
+      let(:schedule_manually) { false }
+
+      it "does not show the date form" do
+        expect(dialog_content).to have_no_field(I18n.t("attributes.start_date"), disabled: :all)
+        expect(dialog_content).to have_no_field(I18n.t("attributes.due_date"), disabled: :all)
+      end
+
+      it "displays a blank slate explaining it can't be automatically scheduled because there are no predecessors" do
+        expect(dialog_content).to have_text(I18n.t("work_packages.datepicker_modal.blankslate.title"))
+        expect(dialog_content).to have_text(I18n.t("work_packages.datepicker_modal.blankslate.description"))
+      end
+
+      it "has a disabled save button" do
+        expect(dialog_content).to have_button(I18n.t("button_save"), disabled: true)
+      end
+    end
+  end
+
   context "when manually scheduled" do
     let(:schedule_manually) { true }
     let(:work_package) { build_stubbed(:work_package) }
@@ -54,6 +94,10 @@ RSpec.describe WorkPackages::DatePicker::DialogContentComponent, type: :componen
 
     it "has an enabled save button" do
       expect(dialog_content).to have_button(I18n.t("button_save"), disabled: false)
+    end
+
+    it "can switch to automatic scheduling mode" do
+      expect(dialog_content).to have_link(I18n.t("work_packages.datepicker_modal.mode.automatic"))
     end
   end
 
@@ -104,7 +148,7 @@ RSpec.describe WorkPackages::DatePicker::DialogContentComponent, type: :componen
 
       it "shows the date form with disabled fields" do
         expect(dialog_content).to have_field(I18n.t("attributes.start_date"), disabled: true)
-        expect(dialog_content).to have_field(I18n.t("attributes.due_date"), disabled: true)
+        expect(dialog_content).to have_field(I18n.t("attributes.due_date"), disabled: false)
       end
 
       it "shows the banner 'The start date is set by a predecessor'" do
@@ -126,7 +170,7 @@ RSpec.describe WorkPackages::DatePicker::DialogContentComponent, type: :componen
 
       it "shows the date form with disabled fields" do
         expect(dialog_content).to have_field(I18n.t("attributes.start_date"), disabled: true)
-        expect(dialog_content).to have_field(I18n.t("attributes.due_date"), disabled: true)
+        expect(dialog_content).to have_field(I18n.t("attributes.due_date"), disabled: false)
       end
 
       it "shows the banner 'The start date is set by a predecessor'" do

@@ -13,7 +13,7 @@
     d.with_footer do
       component_collection do |footer_collection|
         footer_collection.with_component(
-          Primer::ButtonComponent.new(
+          Primer::Beta::Button.new(
             data: {
               "close-dialog-id": "edit-project-custom-fields-dialog-#{@project_custom_field_section.id}"
             }
@@ -22,7 +22,7 @@
           t("button_cancel")
         end
         footer_collection.with_component(
-          Primer::ButtonComponent.new(
+          Primer::Beta::Button.new(
             scheme: :primary,
             type: :submit,
             form: "project-section-edit-form",

@@ -34,17 +34,15 @@ it:
           name: Grigio (scuro)
         item_13:
           name: Nero
-      life_cycle_colors:
+      project_phase_colors:
         item_0:
-          name: PM2 Arancione
+          name: PM2 Orange
         item_1:
-          name: PM2 Viola
+          name: PM2 Red
         item_2:
-          name: PM2 Rosso
-        item_3:
           name: PM2 Magenta
-        item_4:
-          name: PM2 Giallo Verde
+        item_3:
+          name: PM2 Green Yellow
       document_categories:
         item_0:
           name: Documentazione
@@ -81,21 +79,18 @@ it:
         item_1:
           name: Ruolo globale standard
     standard:
-      life_cycles:
+      project_phases:
         item_0:
-          name: Avviamento
+          name: Initiating
         item_1:
-          name: Pronto per la pianificazione
+          name: Planning
+          start_gate: Ready for Planning
         item_2:
-          name: Pianificazione
+          name: Executing
+          start_gate: Ready for Executing
         item_3:
-          name: Pronto per l'esecuzione
-        item_4:
-          name: Esecuzione
-        item_5:
-          name: Pronto per la chiusura
-        item_6:
-          name: Chiusura
+          name: Closing
+          start_gate: Ready for Closing
       priorities:
         item_0:
           name: Basso
@@ -490,7 +485,7 @@ it:
         item_1:
           name: Traguardo
         item_2:
-          name: Fase
+          name: Summary task
         item_3:
           name: Funzionalità
         item_4:

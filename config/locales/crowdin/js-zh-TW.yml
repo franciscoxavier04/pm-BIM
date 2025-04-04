@@ -796,6 +796,7 @@ zh-TW:
       typeahead_placeholder: 尋找可能的監看者
     relation_labels:
       parent: "上層目錄："
+      child: "子項目"
       children: "子項目"
       relates: "關聯"
       duplicates: "重複"
@@ -825,7 +826,7 @@ zh-TW:
       add_new_child: "建立子工作項目"
       create_new: "新增"
       add_existing: "添加現有的"
-      add_existing_child: "加入現有子項目"
+      add_existing_child: "Add child"
       remove_child: "移除子項目"
       add_new_relation: "建立新關聯"
       add_existing_relation: "增加現有關系"

@@ -369,14 +369,14 @@ ko:
         no_results_title_text: 사용 가능한 사용자 필드가 없습니다.
       life_cycle:
         header:
-          title: "프로젝트 수명 주기"
-          description_html: '프로젝트 수명 주기의 이러한 프로젝트 단계와 게이트는 <a href=%{overview_url} target="_blank">프로젝트 개요 페이지</a>에 표시되며, 인스턴스 관리자가 <a href=%{admin_settings_url} target="_blank">관리 설정</a>에서 정의합니다. 개별 특성을 활성화하거나 비활성화할 수 있습니다.'
-        non_defined: "단계나 게이트가 현재 정의되어 있지 않습니다."
-        section_header: "단계 및 게이트"
+          title: "Project life cycle"
+          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
+        non_defined: "No phases are currently defined."
+        section_header: "Phases"
         step:
           use_in_project: "이 프로젝트에서 %{step} 사용"
         filter:
-          label: "프로젝트 단계 또는 게이트 검색"
+          label: "Search project phase"
       project_custom_fields:
         header:
           title: "프로젝트 특성"
@@ -401,9 +401,9 @@ ko:
         no_results_title_text: 이 프로젝트에서 사용하는 추가 기록 디스크 공간이 없습니다.
       work_package_priorities:
         new_label: "새로운 우선 순위"
-  project_stage:
+  project_phase:
     working_days_count:
-      other: "기간: 근무일 %{count}일"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "수정된 목록이 새 목록으로 저장되었습니다"
@@ -751,9 +751,9 @@ ko:
       follows_description: "이 패키지를 시작하려면 관련 작업 패키지가 반드시 먼저 완료되어야 합니다"
       label_child_singular: "자식"
       label_child_plural: "자식"
-      new_child: "새로운 자식"
+      new_child: "Create new child"
       new_child_text: "관련 작업 패키지를 현재(부모) 작업 패키지의 하위 항목으로 만듭니다"
-      existing_child: "기존 자식"
+      child: "Child"
       child_description: "관련 작업 패키지를 현재(부모) 작업 패키지의 하위 항목으로 만듭니다"
       label_closest: "가장 가까운 대상"
       label_blocks_singular: "블록"
@@ -945,17 +945,23 @@ ko:
       project_custom_field:
         is_required: "모든 프로젝트에 필수"
         custom_field_section: 섹션
-      project/life_cycle_step:
-        definition: "정의"
-      project/life_cycle_step_definition:
-        name: "이름"
-        color: "색상"
+      project/phase:
+        date_range: "Date range"
+        definition: "Definition"
+      project/phase_definition:
+        name: "Name"
+        color: "Color"
+        start_gate: "Start phase gate"
+        start_gate_name: "Start phase gate name"
+        finish_gate: "Finish phase gate"
+        finish_gate_name: "Finish phase gate name"
       query:
         sums: "합계"
         columns: "컬럼"
         column_names: "컬럼"
         relations_to_type_column: "%{type}에 대한 관계"
         relations_of_type_column: "%{type} 관계"
+        child_work_packages: "Child work packages"
         group_by: "그룹 결과"
         sort_by: "결과 정렬 기준"
         filters: "필터"
@@ -1249,42 +1255,12 @@ ko:
           attributes:
             project_ids:
               blank: "프로젝트를 선택하세요."
-        project/life_cycle_step_definition:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "- Project::StageDefinition 또는 Project::GateDefinition여야(이어야) 합니다"
-              type_and_class_name_mismatch: "- 인스턴스화된 클래스 이름과 일치해야 합니다"
-        project/gate_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "- Project::GateDefinition여야(이어야) 합니다"
-        project/stage_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "- Project::StageDefinition여야(이어야) 합니다"
-        project/life_cycle_step:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "- Project::Stage 또는 Project::Gate여야(이어야) 합니다"
-              must_be_a_stage: "- Project::Stage여야(이어야) 합니다"
-              must_be_a_gate: "- Project::Gate여야(이어야) 합니다"
-              type_and_class_name_mismatch: "- 인스턴스화된 클래스 이름과 일치해야 합니다"
-        project/gate:
-          attributes:
-            base:
-              end_date_not_allowed: "Project::Gate에 종료 날짜를 할당할 수 없습니다"
-            type:
-              type_and_class_name_mismatch: "- Project::Gate여야(이어야) 합니다"
-            date:
-              non_continuous_dates: "- 이전 %{step}의 종료일보다 빠를 수 없습니다."
-        project/stage:
+        project/phase:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "시작 날짜는 종료 날짜 이전이어야 합니다."
-              non_continuous_dates: "- 이전 %{step}의 종료일보다 빠를 수 없습니다."
-              incomplete: "- 미완료 상태입니다."
-            type:
-              type_and_class_name_mismatch: "- Project::Stage여야(이어야) 합니다"
+              start_date_must_be_before_finish_date: "start date must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              incomplete: "is incomplete."
         query:
           attributes:
             project:
@@ -1511,8 +1487,6 @@ ko:
         other: "알림"
       placeholder_user: "플레이스홀더 사용자"
       project: "프로젝트"
-      project/gate_definition: "게이트"
-      project/stage_definition: "단계"
       project_query:
         other: "프로젝트 목록"
       query: "사용자 지정 쿼리"
@@ -1569,12 +1543,14 @@ ko:
       time_entry: "소요 시간"
       wiki_edit: "위키"
       work_package: "작업 패키지"
-    project_life_cycle_step:
+    project_phase:
       activated: "activated"
       deactivated: "deactivated"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
   #common attributes of all models
   attributes:
     active: "활성"
@@ -1955,7 +1931,7 @@ ko:
       automatic_subject_generation:
         description: "참조된 특성과 텍스트를 사용하여 자동으로 생성되는 제목을 만듭니다."
       customize_life_cycle:
-        description: "PM2 프로젝트 사이클 계획에서 제공하는 것과는 다른 프로젝트 단계와 게이트를 만들고 구성합니다."
+        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "다음과 같은 기타 추가 기능으로 양식 구성을 사용자 지정하세요."
         add_groups: "새로운 특성 그룹 추가"
@@ -2041,6 +2017,8 @@ ko:
     dialog:
       title: "내보내기"
       submit: "내보내기"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "파일 형식"
         options:
@@ -2700,7 +2678,7 @@ ko:
   label_none_parentheses: "(없음)"
   label_not_contains: "포함하지 않음"
   label_not_equals: "일치하지 않음"
-  label_life_cycle_step_plural: "프로젝트 수명 주기"
+  label_life_cycle_step_plural: "Project life cycle"
   label_on: "에"
   label_operator_all: "비어 있지 않음"
   label_operator_none: "비어 있음"
@@ -2762,7 +2740,7 @@ ko:
   label_project_new: "새 프로젝트"
   label_project_plural: "프로젝트"
   label_project_list_plural: "프로젝트 목록"
-  label_project_lifecycle: "프로젝트 수명 주기"
+  label_project_life_cycle: "Project life cycle"
   label_project_attributes_plural: "프로젝트 특성"
   label_project_custom_field_plural: "프로젝트 특성"
   label_project_settings: "프로젝트 설정"
@@ -3300,7 +3278,7 @@ ko:
   permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "프로젝트 편집"
   permission_edit_project_attributes: "프로젝트 특성 편집"
-  permission_edit_project_stages_and_gates: "프로젝트 단계 및 게이트 편집"
+  permission_edit_project_phases: "Edit project phases"
   permission_edit_reportings: "보고 편집"
   permission_edit_time_entries: "다른 사용자의 시간 로그 편집"
   permission_edit_timelines: "타임라인 편집"
@@ -3330,8 +3308,8 @@ ko:
   permission_search_project: "프로젝트 검색"
   permission_select_custom_fields: "사용자 지정 필드 선택"
   permission_select_project_custom_fields: "프로젝트 특성 선택"
-  permission_select_project_life_cycle: "프로젝트 단계 및 게이트 선택"
-  permission_select_project_life_cycle_explanation: "프로젝트의 단계 및 게이트를 활성화/비활성화하세요. 비활성 단계 및 게이트는 프로젝트 개요 페이지나 프로젝트 목록에 표시되지 않으므로 사용자가 프로젝트에 적합한 수명 주기를 선택할 수 있습니다."
+  permission_select_project_phases: "Select project phases"
+  permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the life cycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "프로젝트 모듈 선택"
   permission_share_work_packages: "작업 패키지 공유"
   permission_manage_types: "유형 선택"
@@ -3357,7 +3335,7 @@ ko:
   permission_work_package_assigned_explanation: "작업 패키지는 각각의 프로젝트에서 이 역할을 가진 사용자와 그룹에 할당될 수 있습니다."
   permission_view_project_activity: "프로젝트 활동 보기"
   permission_view_project_attributes: "프로젝트 특성 보기"
-  permission_view_project_stages_and_gates: "프로젝트 단계 및 게이트 보기"
+  permission_view_project_phases: "View project phases"
   permission_save_bcf_queries: "BCF 쿼리 저장"
   permission_manage_public_bcf_queries: "공용 BCF 쿼리 관리"
   permission_edit_attribute_help_texts: "특성 도움말 텍스트 편집"
@@ -3383,9 +3361,9 @@ ko:
       subprojects_confirmation: "하위 프로젝트 %{value}도 삭제됩니다."
       title: "프로젝트 %{name} 삭제"
     filters:
-      life_cycle_any: "수명 주기: 단계 또는 게이트"
-      life_cycle_stage: "수명 주기 단계: %{stage}"
-      life_cycle_gate: "수명 주기 게이트: %{gate}"
+      project_phase: "Project phase: %{phase}"
+      project_phase_any: "Project phase: Any"
+      project_phase_gate: "Project phase gate: %{gate}"
     identifier:
       warning_one: 프로젝트 멤버는 프로젝트의 리포지토리를 재배치해야 합니다.
       warning_two: 프로젝트의 기존 링크는 더 이상 작동하지 않습니다.
@@ -3528,6 +3506,9 @@ ko:
     manual: "수동으로 설정"
     automatic: "자동으로 설정"
   search_input_placeholder: "검색..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "첫 번째 로그인 리디렉션"
   setting_after_first_login_redirect_url_text_html: >
     첫 로그인 후 사용자를 리디렉션할 경로를 설정하세요. 비어 있으면 온보딩 투어의 홈페이지로 리디렉션됩니다. <br/> 예: <code>/my/page</code>
@@ -3760,27 +3741,27 @@ ko:
       new:
         heading: "새 특성"
         description: "이 프로젝트 특성에 대한 변경 사항은 이 특성이 활성화된 모든 프로젝트에 반영됩니다. 필수 특성은 프로젝트별로 비활성화할 수 없습니다."
-    project_life_cycle_step_definitions:
-      heading: "프로젝트 수명 주기"
-      heading_description: "프로젝트 수명 주기는 프로젝트를 구조화하는 단계 및 게이트로 구성됩니다. 이는 프로젝트의 개요 페이지에 나타나고 프로젝트 목록에서 사용할 수 있습니다. 개별 단계 및 게이트를 선택하여 프로젝트를 사용자 지정할 수 있지만 프로젝트 레벨에서 재정렬할 수는 없습니다."
-      label_add: "추가"
-      label_add_description: "수명 주기 정의 추가"
-      label_add_stage: "단계"
-      label_add_gate: "게이트"
+    project_phase_definitions:
+      heading: "Project life cycle"
+      heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
+      label_add: "Add"
+      label_add_description: "Add life cycle definition"
       filter:
-        label: "프로젝트 단계 또는 게이트 검색"
-      section_header: "단계 및 게이트"
-      non_defined: "단계나 게이트가 현재 정의되어 있지 않습니다."
+        label: "Search project phase"
+      section_header: "Phases"
+      non_defined: "No phases are currently defined."
+      phase_gates: "Phase gates"
       new:
-        description: "이 프로젝트 단계의 변경 사항은 이 단계가 활성화된 모든 프로젝트에 반영됩니다."
-      new_stage:
-        heading: "새 단계"
-      new_gate:
-        heading: "새 게이트"
-      edit_stage:
-        heading: "단계 편집"
-      edit_gate:
-        heading: "게이트 편집"
+        description: "Changes to this project phase will be reflected in all projects where it is enabled."
+        heading: "New Phase"
+      edit:
+        heading: "Edit Phase"
+      both_gate: "Start and finish gate"
+      no_gate: "No gate"
+      start_gate: "Start gate"
+      start_gate_caption: "Add a gate with the start date of the phase"
+      finish_gate: "Finish gate"
+      finish_gate_caption: "Add a gate with the end date of the phase"
     projects:
       missing_dependencies: "%{dependencies}에 의존하는 프로젝트 모듈 %{module}이(가) 확인되었습니다. 이러한 종속성도 확인해야 합니다."
       section_new_projects: "새 프로젝트의 설정"
@@ -3816,7 +3797,7 @@ ko:
   text_are_you_sure_continue: "계속하시겠습니까?"
   text_are_you_sure_with_children: "작업 패키지 및 모든 자식 작업 패키지를 삭제하시겠습니까?"
   text_are_you_sure_with_project_custom_fields: "이 특성을 삭제하면 모든 프로젝트에서 해당 값도 삭제됩니다. 계속하시겠습니까?"
-  text_are_you_sure_with_project_life_cycle_step: "이 단계를 삭제하면 모든 프로젝트에서 해당 사용도 삭제됩니다. 계속하시겠습니까?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this phase will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "프로젝트에 할당"
   text_form_configuration: >
     작업 패키지 양식으로 표시할 필드를 사용자 지정할 수 있습니다. 해당 도메인의 요구 사항을 반영하도록 필드를 자유롭게 그룹화할 수 있습니다.

@@ -801,6 +801,7 @@ lt:
       typeahead_placeholder: Ieškoti galimų stebėtojų
     relation_labels:
       parent: "Tėvas"
+      child: "Child"
       children: "Pasekėjai"
       relates: "Susiję su"
       duplicates: "Dublikatai"
@@ -830,7 +831,7 @@ lt:
       add_new_child: "Sukurti naują vaiką"
       create_new: "Sukurti naują"
       add_existing: "Pridėti esamą"
-      add_existing_child: "Pridėti jau esamą vaiką"
+      add_existing_child: "Add child"
       remove_child: "Pašalinti vaiką"
       add_new_relation: "Sukurti naują ryšį"
       add_existing_relation: "Pridėti esamą sąryšį"

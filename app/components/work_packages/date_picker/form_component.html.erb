@@ -39,7 +39,6 @@
                       qa_selected: !schedule_manually
                     },
                     test_selector: "op-datepicker-modal--scheduling_automatic",
-                    disabled: work_package.new_record?,
                     label: I18n.t("work_packages.datepicker_modal.mode.automatic"),
                     selected: !schedule_manually
                   )
@@ -98,7 +97,7 @@
           )
         end
 
-        body.with_row("aria-hidden": true) do
+        body.with_row("aria-hidden": true, classes: "wp-datepicker-dialog--date-picker-instance") do
           helpers.angular_component_tag "opce-wp-date-picker-instance",
                                         inputs: {
                                           start_date: work_package.start_date,
@@ -106,6 +105,7 @@
                                           ignore_non_working_days: work_package.ignore_non_working_days,
                                           schedule_manually:,
                                           is_schedulable: !disabled?,
+                                          minimal_scheduling_date:,
                                           is_milestone: milestone?,
                                           date_mode:,
                                           start_date_field_id: "work_package_start_date",

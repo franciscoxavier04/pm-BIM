@@ -34,5 +34,5 @@ RSpec.describe Overviews::OverviewsController, "view_project_life_cycles permiss
   include PermissionSpecs
 
   # render sidebar on project overview page with view_project permission
-  check_permission_required_for("overviews/overviews#project_life_cycles_sidebar", :view_project_stages_and_gates)
+  check_permission_required_for("overviews/overviews#project_life_cycles_sidebar", :view_project_phases)
 end

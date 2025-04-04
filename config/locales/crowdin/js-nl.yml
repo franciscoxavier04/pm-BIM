@@ -799,6 +799,7 @@ nl:
       typeahead_placeholder: Zoek naar mogelijke toezichthouders
     relation_labels:
       parent: "Bovenliggend werkpakket"
+      child: "Child"
       children: "Subdocumenten"
       relates: "Verwant Met"
       duplicates: "Kopies"
@@ -828,7 +829,7 @@ nl:
       add_new_child: "Maak nieuw kind"
       create_new: "Nieuwe aanmaken"
       add_existing: "Bestaande toevoegen"
-      add_existing_child: "Voeg bestaand kind toe"
+      add_existing_child: "Add child"
       remove_child: "Verwijder kind"
       add_new_relation: "Maak nieuwe relatie"
       add_existing_relation: "Bestaande relatie toevoegen"

@@ -799,6 +799,7 @@ fi:
       typeahead_placeholder: Etsi mahdollisia seuraajia
     relation_labels:
       parent: "Ylätaso"
+      child: "Child"
       children: "Alitehtävä"
       relates: "Liittyy"
       duplicates: "Alkuperäinen"
@@ -828,7 +829,7 @@ fi:
       add_new_child: "Luo uusi alitehtävä"
       create_new: "Create new"
       add_existing: "Lisää olemassaoleva"
-      add_existing_child: "Lisää alitehtävä"
+      add_existing_child: "Add child"
       remove_child: "Poista alitehtävä"
       add_new_relation: "Luo uusi riippuvuus"
       add_existing_relation: "Lisää olemassa oleva suhde"
