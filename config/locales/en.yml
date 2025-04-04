@@ -2056,7 +2056,8 @@ en:
         add_groups: "Add new attribute groups"
         rename_groups: "Rename attributes groups"
       comments_with_restricted_visibility:
-        description: "To be defined"
+        title: "For your eyes only"
+        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly. Available only through the enterprise professional plan."
 
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Work package priorities"
