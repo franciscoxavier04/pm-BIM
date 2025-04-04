@@ -28,8 +28,10 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-class Queries::Principals::Filters::MentionableOnWorkPackageFilter <
-  Queries::Principals::Filters::PrincipalFilter
+class Queries::Principals::Filters::RestrictedMentionableOnWorkPackageFilter <
+    Queries::Principals::Filters::PrincipalFilter
+  validate :values_are_a_single_work_package_id
+
   def allowed_values
     raise NotImplementedError, "There would be too many candidates"
   end
@@ -43,20 +45,24 @@ class Queries::Principals::Filters::MentionableOnWorkPackageFilter <
   end
 
   def key
-    :mentionable_on_work_package
+    :restricted_mentionable_on_work_package
   end
 
   def human_name
-    "mentionable" # Only for Internal use, not visible in the UI
+    "restricted mentionable" # Only for Internal use, not visible in the UI
   end
 
   def apply_to(query_scope)
     case operator
     when "="
-      query_scope.where(id: principals_with_a_membership)
+      query_scope.where(id: project_members.select(:user_id))
     when "!"
-      query_scope.where(id: visible_scope.where.not(id: principals_with_a_membership.select(:id)))
+      query_scope.where.not(id: project_members.select(:user_id))
     end
+  end
+
+  def permission
+    :view_comments_with_restricted_visibility
   end
 
   private
@@ -65,39 +71,17 @@ class Queries::Principals::Filters::MentionableOnWorkPackageFilter <
     @type_strategy ||= Queries::Filters::Strategies::HugeList.new(self)
   end
 
-  def principals_with_a_membership
-    visible_scope.where(id: work_package_members.select(:user_id))
-                 .or(visible_scope.where(id: project_members.select(:user_id)))
-  end
-
-  def visible_scope
-    Principal.visible(User.current)
-             .includes(members: :roles)
-             .references(members: :roles)
-  end
-
-  def work_package_members
-    Member.joins(:member_roles)
-          .of_work_package(values)
-          .where(member_roles: { role_id: mentionable_work_package_role_ids })
-  end
-
-  def mentionable_work_package_role_ids
-    Role.where(builtin: [Role::BUILTIN_WORK_PACKAGE_EDITOR,
-                         Role::BUILTIN_WORK_PACKAGE_COMMENTER])
-        .select(:id)
+  def values_are_a_single_work_package_id
+    errors.add(:values, :single_value_requirement) if values.size > 1
   end
 
   def project_members
-    Member.of_project(projects)
-          .where(entity: nil)
+    Member.of_project(work_package.project)
+          .joins(roles: :role_permissions)
+          .where(role_permissions: { permission: })
   end
 
-  def work_packages
-    WorkPackage.where(id: values)
-  end
-
-  def projects
-    Project.where(id: work_packages.select(:project_id))
+  def work_package
+    WorkPackage.find(values.first)
   end
 end

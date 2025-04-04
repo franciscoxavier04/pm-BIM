@@ -2,7 +2,7 @@
 
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -27,18 +27,47 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-module WorkPackages::ActivitiesTab::Journals
-  class RestrictedNoteForm < ApplicationForm
-    form do |notes_form|
-      notes_form.check_box(
-        name: :restricted,
-        label: I18n.t("activities.work_packages.activity_tab.restrict_visibility"),
-        checked: false,
-        data: {
-          "work-packages--activities-tab--restricted-comment-target": "restrictedCheckbox",
-          action: "input->work-packages--activities-tab--restricted-comment#toggleRestriction"
-        }
-      )
+
+class WorkPackages::ActivitiesTab::RestrictedMentionsSanitizer
+  def self.sanitize(work_package, notes)
+    new(work_package, notes).call
+  end
+
+  def initialize(work_package, notes)
+    @work_package = work_package
+    @notes = notes
+  end
+
+  def call
+    return "" if notes.blank?
+
+    convert_unmentionable_principals_to_plain_text
+    CGI.unescapeHTML(parser.to_html)
+  end
+
+  private
+
+  attr_reader :work_package, :notes
+
+  def convert_unmentionable_principals_to_plain_text
+    mentionable_principals_ids = mentionable_principals.pluck(:id)
+
+    parser.css("mention").each do |mention|
+      unless mentionable_principals_ids.include?(mention["data-id"].to_i)
+        mention.replace(mention.content)
+      end
     end
+  end
+
+  def parser
+    @parser ||= Nokogiri::HTML.fragment(notes)
+  end
+
+  def mentionable_principals
+    @mentionable_principals ||= Queries::Principals::PrincipalQuery.new(user: User.current)
+      .where(:restricted_mentionable_on_work_package, "=", [work_package.id])
+      .where(:status, "!", [Principal.statuses[:locked]])
+      .where(:type, "=", %w[User Group])
+      .results
   end
 end
