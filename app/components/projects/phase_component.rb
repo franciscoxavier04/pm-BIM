@@ -82,7 +82,7 @@ module Projects
       {
         hover_card_trigger_target: "trigger",
         hover_card_url: hover_card_project_phase_path(phase, gate:),
-        test_selector: "phase-gate-#{gate}-#{phase.id}"
+        test_selector: "phase-#{phase.id}-#{gate}-gate"
       }
     end
 
