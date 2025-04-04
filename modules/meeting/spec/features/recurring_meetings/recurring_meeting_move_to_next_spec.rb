@@ -96,6 +96,8 @@ RSpec.describe "Recurring meetings move to next meeting", :js do
           meeting_page.select_action(agenda_item, "Move to next meeting")
         end
 
+        expect_and_dismiss_flash(message: "Agenda item moved to the next meeting")
+
         meeting_page.expect_no_agenda_item(title: "Test notes")
       end
     end
