@@ -29,39 +29,28 @@
 #++
 
 require "spec_helper"
-require_module_spec_helper
-require Rails.root.join("spec/services/principals/replace_references_context")
 
-RSpec.describe Principals::ReplaceReferencesService, "#call", type: :model do
-  subject(:service_call) { instance.call(from: principal, to: to_principal) }
+RSpec.describe Principals::DeleteJob, "Meetings", type: :model do
+  subject(:job) { described_class.perform_now(principal) }
 
-  shared_let(:other_user) { create(:user, firstname: "other user") }
-  shared_let(:principal) { create(:user, firstname: "old principal") }
-  shared_let(:to_principal) { create(:user, firstname: "new principal") }
-
-  let(:instance) do
-    described_class.new
+  shared_let(:deleted_user) do
+    create(:deleted_user)
+  end
+  let(:principal) do
+    create(:user)
   end
 
-  context "with MeetingAgendaItem" do
-    it_behaves_like "rewritten record",
-                    :meeting_agenda_item,
-                    :author_id
+  context "with a meeting" do
+    let!(:meeting) { create(:meeting, author: principal) }
+    let!(:meeting_agenda_item) { create(:meeting_agenda_item, presenter: principal) }
+    let!(:meeting_outcome) { create(:meeting_outcome, meeting_agenda_item:, author: principal) }
 
-    it_behaves_like "rewritten record",
-                    :meeting_agenda_item,
-                    :presenter_id
-  end
+    it "rewrites the references" do
+      job
 
-  context "with MeetingOutcome" do
-    it_behaves_like "rewritten record",
-                    :meeting_outcome,
-                    :author_id
-  end
-
-  context "with Journal::MeetingAgendaItemJournal" do
-    it_behaves_like "rewritten record",
-                    :journal_meeting_agenda_item_journal,
-                    :author_id
+      expect(meeting.reload.author).to eq deleted_user
+      expect(meeting_agenda_item.reload.presenter).to eq deleted_user
+      expect(meeting_outcome.reload.author).to eq deleted_user
+    end
   end
 end
