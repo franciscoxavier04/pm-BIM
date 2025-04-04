@@ -26,30 +26,28 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ProjectLifeCycles
-  module Sections
-    module ProjectLifeCycles
-      class ShowComponent < ApplicationComponent
-        include ApplicationHelper
-        include OpPrimer::ComponentHelpers
+module Overviews
+  module ProjectPhases
+    class ItemComponent < ApplicationComponent
+      include ApplicationHelper
+      include OpPrimer::ComponentHelpers
 
-        private
+      private
 
-        def not_set?
-          model.not_set?
-        end
+      def not_set?
+        model.not_set?
+      end
 
-        def icon
-          :"op-phase"
-        end
+      def icon
+        :"op-phase"
+      end
 
-        def icon_color_class
-          helpers.hl_inline_class("project_phase_definition", model.definition)
-        end
+      def icon_color_class
+        helpers.hl_inline_class("project_phase_definition", model.definition)
+      end
 
-        def text
-          model.name
-        end
+      def text
+        model.name
       end
     end
   end

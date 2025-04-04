@@ -26,23 +26,25 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ProjectCustomFields
-  class SidePanelComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpPrimer::ComponentHelpers
-    include OpTurbo::Streamable
+module Overviews
+  module ProjectCustomFields
+    class SidePanelComponent < ApplicationComponent
+      include ApplicationHelper
+      include OpPrimer::ComponentHelpers
+      include OpTurbo::Streamable
 
-    def initialize(project:)
-      super
+      def initialize(project:)
+        super
 
-      @project = project
-    end
+        @project = project
+      end
 
-    private
+      private
 
-    def available_project_custom_fields_grouped_by_section
-      @available_project_custom_fields_grouped_by_section ||=
-        @project.available_custom_fields.group_by(&:project_custom_field_section)
+      def available_project_custom_fields_grouped_by_section
+        @available_project_custom_fields_grouped_by_section ||=
+          @project.available_custom_fields.group_by(&:project_custom_field_section)
+      end
     end
   end
 end

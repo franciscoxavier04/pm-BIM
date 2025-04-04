@@ -28,8 +28,8 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ProjectLifeCycles
-  module Sections
+module Overviews
+  module ProjectPhases
     class EditDialogComponent < ApplicationComponent
       include ApplicationHelper
       include OpTurbo::Streamable

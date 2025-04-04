@@ -42,7 +42,7 @@ module Projects::LifeCycles
         label:,
         leading_visual: { icon: :calendar },
         datepicker_options: {
-          inDialog: ProjectLifeCycles::Sections::EditDialogComponent::DIALOG_ID,
+          inDialog: Overviews::ProjectPhases::EditDialogComponent::DIALOG_ID,
           data: { action: "change->overview--project-life-cycles-form#previewForm" }
         },
         wrapper_data_attributes: {

@@ -8,7 +8,7 @@
   ) do |d|
     d.with_header(variant: :large)
     d.with_body do
-      render(::ProjectLifeCycles::Sections::EditComponent.new(model))
+      render(Overviews::ProjectPhases::EditComponent.new(model))
     end
     d.with_footer do
       component_collection do |footer_collection|

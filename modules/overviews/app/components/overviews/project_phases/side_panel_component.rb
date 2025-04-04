@@ -26,16 +26,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ProjectLifeCycles
-  class SidePanelComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpPrimer::ComponentHelpers
-    include OpTurbo::Streamable
+module Overviews
+  module ProjectPhases
+    class SidePanelComponent < ApplicationComponent
+      include ApplicationHelper
+      include OpPrimer::ComponentHelpers
+      include OpTurbo::Streamable
 
-    def initialize(project:)
-      super
+      def initialize(project:)
+        super
 
-      @project = project
+        @project = project
+      end
     end
   end
 end

@@ -26,8 +26,8 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ProjectCustomFields
-  module Sections
+module Overviews
+  module ProjectCustomFields
     class ShowComponent < ApplicationComponent
       include ApplicationHelper
       include OpPrimer::ComponentHelpers
