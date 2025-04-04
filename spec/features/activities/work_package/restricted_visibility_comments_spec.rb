@@ -52,17 +52,40 @@ RSpec.describe "Work package comments with restricted visibility",
   context "with an admin user" do
     current_user { admin }
 
-    before do
-      wp_page.visit!
-      wp_page.wait_for_activity_tab
+    context "when the feature is enabled for the project" do
+      before do
+        project.enabled_comments_with_restricted_visibility = true
+        project.save!
+
+        wp_page.visit!
+        wp_page.wait_for_activity_tab
+      end
+
+      it "allows adding a comment with restricted visibility" do
+        activity_tab.expect_input_field
+
+        activity_tab.add_comment(text: "First (restricted) comment by admin", restricted: true)
+
+        activity_tab.expect_journal_notes(text: "First (restricted) comment by admin")
+      end
     end
 
-    it "allows adding a comment with restricted visibility" do
-      activity_tab.expect_input_field
+    context "when the feature is not enabled for the project" do
+      before do
+        project.enabled_comments_with_restricted_visibility = false
+        project.save!
 
-      activity_tab.add_comment(text: "First (restricted) comment by admin", restricted: true)
+        wp_page.visit!
+        wp_page.wait_for_activity_tab
+      end
 
-      activity_tab.expect_journal_notes(text: "First (restricted) comment by admin")
+      it "allows adding a comment with restricted visibility" do
+        activity_tab.expect_input_field
+
+        activity_tab.type_comment("This comment cannot be restricted")
+
+        expect(page).not_to have_test_selector("op-work-package-journal-restricted-comment-checkbox")
+      end
     end
   end
 
