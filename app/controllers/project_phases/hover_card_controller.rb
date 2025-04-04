@@ -31,29 +31,27 @@
 module ProjectPhases
   class HoverCardController < ApplicationController
     no_authorization_required! :show
+    before_action :assign_gate
+    before_action :find_phase
 
-    def show
-      permitted_params = hover_card_params
+    layout false
 
-      unless valid_gate?(permitted_params[:gate])
-        render json: { error: "Invalid gate parameter" }, status: :unprocessable_entity
-      end
-
-      id = permitted_params[:id]
-      @phase = Project::Phase.eager_load(:definition).where(active: true).find_by(id:)
-      @gate = permitted_params[:gate]
-
-      render layout: nil
-    end
+    def show; end
 
     private
 
-    def hover_card_params
-      params.permit(:id, :gate)
+    def assign_gate
+      @gate = params[:gate]
+      return if @gate.in?(%w[start finish])
+
+      render json: { error: "Invalid gate parameter" }, status: :unprocessable_entity
     end
 
-    def valid_gate?(gate)
-      gate.present? && %w[start finish].include?(gate)
+    def find_phase
+      @phase = Project::Phase.where(active: true).eager_load(:definition).find_by(id: params[:id])
+      return if @phase
+
+      render json: { error: "Invalid id parameter" }, status: :unprocessable_entity
     end
   end
 end
