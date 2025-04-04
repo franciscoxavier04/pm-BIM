@@ -30,15 +30,29 @@
 
 module ProjectPhases
   class HoverCardController < ApplicationController
-    no_authorization_required! :show
+    before_action :authorize
+    before_action :check_feature_flag
     before_action :assign_gate
     before_action :find_phase
+    before_action :check_access
 
     layout false
 
     def show; end
 
     private
+
+    def check_feature_flag
+      return if OpenProject::FeatureDecisions.stages_and_gates_active?
+
+      render json: { error: "Not found" }, status: :not_found
+    end
+
+    def check_access
+      return if User.current.allowed_in_project?(:view_project_phases, @phase.project)
+
+      render json: { error: "Forbidden" }, status: :forbidden
+    end
 
     def assign_gate
       @gate = params[:gate]
