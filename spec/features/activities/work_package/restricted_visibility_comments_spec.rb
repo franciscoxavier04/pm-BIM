@@ -34,7 +34,7 @@ RSpec.describe "Work package comments with restricted visibility",
                :js,
                :with_cuprite,
                with_flag: { comments_with_restricted_visibility: true } do
-  let(:project) { create(:project) }
+  let(:project) { create(:project, enabled_comments_with_restricted_visibility: true) }
   let(:admin) { create(:admin) }
   let(:viewer) { create_user_with_restricted_comments_view_permissions }
   let(:viewer_with_commenting_permission) { create_user_with_restricted_comments_view_and_write_permissions }
@@ -54,9 +54,6 @@ RSpec.describe "Work package comments with restricted visibility",
 
     context "when the feature is enabled for the project" do
       before do
-        project.enabled_comments_with_restricted_visibility = true
-        project.save!
-
         wp_page.visit!
         wp_page.wait_for_activity_tab
       end
