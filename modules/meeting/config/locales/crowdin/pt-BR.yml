@@ -401,7 +401,7 @@ pt-BR:
   label_meeting_state_in_progress: "Em andamento"
   label_meeting_reopen_action: "Reabrir reunião"
   label_meeting_close_action: "Fechar reunião"
-  label_meeting_in_progress_action: "Marcar como \"Em andamento\""
+  label_meeting_in_progress_action: "Start meeting"
   text_meeting_open_description: "Esta reunião está aberta. Você pode adicionar, remover e editar itens da agenda como quiser. Assim que a agenda estiver pronta, marque-a como \"Em andamento\" para registrar os resultados."
   text_meeting_closed_description: "Esta reunião está fechada. Você não pode mais adicionar/remover itens da agenda."
   text_meeting_in_progress_description: "A reunião está em andamento. Você pode registrar os resultados de cada item da agenda, reorganizá-los e adicionar novos. Quando a reunião for concluída, marque-a como encerrada para bloqueá-la."

@@ -365,14 +365,14 @@ pt-PT:
     ical_sharing_modal:
       title: "Subscrever o calendário"
       inital_setup_error_message: "Ocorreu um erro ao recuperar os dados."
-      description: "Pode utilizar o URL (iCalendar) para subscrever este calendário num cliente externo e visualizar informações atualizadas sobre o pacote de trabalho a partir daí."
+      description: "Pode utilizar o URL (iCalendar) para subscrever este calendário num cliente externo e ver informações atualizadas sobre o pacote de trabalho a partir daí."
       warning: "Não partilhe este URL com outros utilizadores. Qualquer pessoa com este link poderá ver os detalhes do pacote de trabalho sem uma conta ou palavra-passe."
       token_name_label: "Onde irá utilizar isto?"
       token_name_placeholder: 'Escreva um nome, por exemplo, "Telefone"'
       token_name_description_text: 'Se subscrever este calendário a partir de vários dispositivos, este nome irá ajudá-lo a distinguir entre eles na sua lista de <a href="my/access_token", target="_blank">tokens de acesso</a>.'
       copy_url_label: "Copiar URL"
       ical_generation_error_text: "Ocorreu um erro ao gerar o URL do calendário."
-      success_message: 'O URL "%{name}" foi copiado com sucesso para a área de transferência. Cole-o no seu cliente de calendário para concluir a subscrição.'
+      success_message: 'O URL "%{name}" foi copiado com sucesso para a área de transferência. Cole-o no seu cliente de Calendários para concluir a subscrição.'
     label_activate: "Ativar"
     label_assignee: "Responsável"
     label_add_column_after: "Adicionar coluna após"
@@ -601,7 +601,7 @@ pt-PT:
           timeline: "Aqui pode <b>editar o seu plano de projeto</b>, criar novos pacotes de trabalho, tais como tarefas, marcos, fases e muito mais, bem como <b>adicionar dependências</b>. Todos os membros da equipa podem ver e atualizar o plano mais recente a qualquer momento."
         team_planner:
           overview: "O planeador de equipa permite atribuir tarefas visualmente aos membros da equipa e obter uma visão geral de quem está a trabalhar e no quê (onde)."
-          calendar: "O quadro de planeamento semanal ou quinzenal exibe todos os pacotes de trabalho atribuídos aos membros de sua equipa."
+          calendar: "O quadro de planeamento semanal ou quinzenal apresenta todos os pacotes de trabalho atribuídos aos membros da sua equipa."
           add_assignee: "Para começar, adicione responsáveis ao planeador da equipa."
           add_existing: "Pesquise pacotes de trabalho existentes e arraste-os para o planeador de equipa para atribuí-los instantaneamente a um membro da equipa e definir as datas de início e término."
           card: "Arraste os pacotes de trabalho horizontalmente para os mover para trás ou para frente no tempo, arraste as bordas para alterar as datas de início e término, e arraste verticalmente para uma linha diferente para atribuir a outro membro."

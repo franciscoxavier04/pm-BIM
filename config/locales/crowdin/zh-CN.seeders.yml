@@ -36,13 +36,13 @@ zh-CN:
           name: 黑色
       project_phase_colors:
         item_0:
-          name: PM2 Orange
+          name: PM2 橙
         item_1:
-          name: PM2 Red
+          name: PM2 红
         item_2:
-          name: PM2 Magenta
+          name: PM2 品红
         item_3:
-          name: PM2 Green Yellow
+          name: PM2 绿黄
       document_categories:
         item_0:
           name: 文档
@@ -81,16 +81,16 @@ zh-CN:
     standard:
       project_phases:
         item_0:
-          name: Initiating
+          name: 启动中
         item_1:
-          name: Planning
-          start_gate: Ready for Planning
+          name: 计划中
+          start_gate: 准备计划
         item_2:
-          name: Executing
-          start_gate: Ready for Executing
+          name: 执行中
+          start_gate: 准备执行
         item_3:
-          name: Closing
-          start_gate: Ready for Closing
+          name: 关闭中
+          start_gate: 准备关闭
       priorities:
         item_0:
           name: 低
@@ -104,7 +104,7 @@ zh-CN:
         demo-project:
           name: 演示项目
           status_explanation: 所有任务都按计划进行。相关人员均知晓各自任务。系统已完全建立。
-          description: 这是对此演示项目目标的简短摘要。
+          description: 这是对此演示 Scrum 项目目标的简短摘要。
           news:
             item_0:
               title: 欢迎来到您的演示项目
@@ -222,7 +222,7 @@ zh-CN:
         scrum-project:
           name: Scrum 项目
           status_explanation: 所有任务都按计划进行。相关人员均知晓各自任务。系统已完全建立。
-          description: 这是对此演示Scrum项目目标的简短摘要。
+          description: 这是对此演示 Scrum 项目目标的简短摘要。
           news:
             item_0:
               title: 欢迎来到您的 Scrum 演示项目
@@ -484,7 +484,7 @@ zh-CN:
         item_1:
           name: 里程碑
         item_2:
-          name: Summary task
+          name: 摘要任务
         item_3:
           name: 功能
         item_4:

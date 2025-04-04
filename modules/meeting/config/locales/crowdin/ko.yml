@@ -397,7 +397,7 @@ ko:
   label_meeting_state_in_progress: "진행 중"
   label_meeting_reopen_action: "미팅 다시 열기"
   label_meeting_close_action: "미팅 닫기"
-  label_meeting_in_progress_action: "진행 중으로 표시"
+  label_meeting_in_progress_action: "Start meeting"
   text_meeting_open_description: "이 미팅은 오픈 상태입니다. 의제 항목을 추가/제거하고 원하는 대로 편집할 수 있습니다. 의제가 준비되면 진행 중으로 표시하여 결과를 문서화하세요."
   text_meeting_closed_description: "이 미팅은 종료되었습니다. 더 이상 의제 항목을 추가/제거할 수 없습니다."
   text_meeting_in_progress_description: "이 미팅은 진행 중입니다. 각 의제 항목에 대한 결과를 문서화하고, 재정렬하고, 새로운 항목을 추가할 수도 있습니다. 미팅이 완료되면 닫힘으로 표시하여 잠글 수 있습니다."

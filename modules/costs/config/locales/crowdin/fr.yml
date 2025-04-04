@@ -58,11 +58,11 @@ fr:
         end_time: Heure de fin
     models:
       time_entry:
-        one: "Time entry"
-        other: "Time entries"
+        one: "Saisie du temps"
+        other: "Saisies du temps"
       cost_entry:
-        one: "Cost entry"
-        other: "Cost entries"
+        one: "Saisie du coût"
+        other: "Saisies de coûts"
       cost_type:
         one: "Types de coût"
         other: "Types de coûts"
