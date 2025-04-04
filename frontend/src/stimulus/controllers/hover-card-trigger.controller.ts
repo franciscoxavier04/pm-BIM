@@ -114,7 +114,6 @@ export default class HoverCardTriggerController extends ApplicationController {
     e.preventDefault();
     e.stopPropagation();
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     let el = e.target as HTMLElement;
     if (!el) { return; }
 
