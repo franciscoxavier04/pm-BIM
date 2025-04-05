@@ -1293,6 +1293,10 @@ ja:
             values:
               inclusion: "フィルタの値が無効です"
               format: "%{message}"
+        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+          attributes:
+            values:
+              single_value_requirement: "must be a single work package"
         relation:
           typed_dag:
             circular_dependency: "関係が、関係のループを作ります。"

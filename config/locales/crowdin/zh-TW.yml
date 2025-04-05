@@ -1293,6 +1293,10 @@ zh-TW:
             values:
               inclusion: "過濾條件錯誤"
               format: "%{message}"
+        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+          attributes:
+            values:
+              single_value_requirement: "must be a single work package"
         relation:
           typed_dag:
             circular_dependency: "無限迴圈的關聯。"

@@ -1295,6 +1295,10 @@ ko:
             values:
               inclusion: "필터에 잘못된 값이 있습니다."
               format: "%{message}"
+        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+          attributes:
+            values:
+              single_value_requirement: "must be a single work package"
         relation:
           typed_dag:
             circular_dependency: "이 관계는 관계의 원을 만듭니다."

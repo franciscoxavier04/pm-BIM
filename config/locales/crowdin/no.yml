@@ -1303,6 +1303,10 @@
             values:
               inclusion: "filteret har ugyldige verdier."
               format: "%{message}"
+        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+          attributes:
+            values:
+              single_value_requirement: "must be a single work package"
         relation:
           typed_dag:
             circular_dependency: "Forholdet skaper en sirkel av forhold."

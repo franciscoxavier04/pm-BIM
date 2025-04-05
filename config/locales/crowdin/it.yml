@@ -1301,6 +1301,10 @@ it:
             values:
               inclusion: "il filtro ha valori non validi."
               format: "%{message}"
+        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+          attributes:
+            values:
+              single_value_requirement: "must be a single work package"
         relation:
           typed_dag:
             circular_dependency: "La relazione crea un riferimento circolare."

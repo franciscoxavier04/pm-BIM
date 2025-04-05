@@ -1302,6 +1302,10 @@ es:
             values:
               inclusion: "El filtro tiene valores inválidos."
               format: "%{message}"
+        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+          attributes:
+            values:
+              single_value_requirement: "must be a single work package"
         relation:
           typed_dag:
             circular_dependency: "La relación crea un bucle de relaciones."
