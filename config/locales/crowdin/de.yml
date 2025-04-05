@@ -42,8 +42,8 @@ de:
         created: "erstellt"
         commented: "kommentiert"
         restrict_visibility: Sichtbarkeit einschränken
-        restricted_journal: Restricted comments are visible to a limited group of members.
-        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
+        restricted_journal: Kommentare mit eingeschränkter Sichtbarkeit sind nur mit entsprechender Berechtigung sichtbar.
+        unsaved_changes_confirmation_message: Sie haben ungespeicherte Änderungen. Sind Sie sicher, dass Sie den Editor schließen möchten?
   admin:
     plugins:
       no_results_title_text: Es sind derzeit keine Plugins installiert.
@@ -1076,7 +1076,7 @@ de:
           title: "Werktage"
           false: "Nur Werktage"
           true: "Mit Wochenenden"
-        journal_restricted: Restricted Journal
+        journal_restricted: Journal mit eingeschränkter Sichtbarkeit
         notify: "Benachrichtigung" #used in custom actions
         parent: "Übergeordnetes Arbeitspaket"
         parent_issue: "Übergeordnetes Arbeitspaket"
@@ -2113,7 +2113,7 @@ de:
     succeeded: "Export abgeschlossen"
     failed: "Beim Versuch, die Arbeitspakete zu exportieren, ist ein Fehler aufgetreten: %{message}"
     errors:
-      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
+      embedded_table_with_too_many_columns: "Diese eingebettete Arbeitspakettabelle passte nicht auf die Seite. Bitte reduzieren Sie die Anzahl der Spalten."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2160,7 +2160,7 @@ de:
         label: Sprache und Silbentrennung
       page_orientation:
         label: Seitenausrichtung
-        caption: Select the orientation of the pages in the PDF document.
+        caption: Wählen Sie die Ausrichtung der Seiten im PDF-Dokument.
         options:
           portrait: Hochformat
           landscape: Querformat
@@ -3274,7 +3274,7 @@ de:
   permission_add_project: "Projekte erstellen"
   permission_add_work_package_attachments: "Anhänge hinzufügen"
   permission_add_work_package_attachments_explanation: "Erlaubt das Hinzufügen von Anhängen ohne die Berechtigung, das Arbeitspaket selbst zu bearbeiten"
-  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
+  permission_add_comments_with_restricted_visibility: "Kommentare mit eingeschränkter Sichtbarkeit schreiben"
   permission_archive_project: "Projekt archivieren"
   permission_create_user: "Benutzer erstellen"
   permission_manage_user: "Benutzer bearbeiten"
@@ -3303,12 +3303,12 @@ de:
   permission_edit_work_package_notes_explanation: "Achtung: Benutzer mit dieser Berechtigung können den Kommentar eines anderen Benutzers bearbeiten."
   permission_edit_work_packages: "Arbeitspakete bearbeiten"
   permission_edit_messages: "Forenbeiträge bearbeiten"
-  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
+  permission_edit_own_comments_with_restricted_visibility: "Eigene Kommentare mit eingeschränkter Sichtbarkeit bearbeiten"
   permission_edit_own_work_package_notes: "Eigene Kommentare bearbeiten"
   permission_edit_own_messages: "Eigene Forenbeiträge bearbeiten"
   permission_edit_own_time_entries: "Selbstgebuchte Aufwände bearbeiten"
-  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
+  permission_edit_others_comments_with_restricted_visibility: "Kommentare mit eingeschränkter Sichtbarkeit moderieren"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Achtung: Benutzer mit dieser Berechtigung können Kommentare anderer Benutzer mit eingeschränkter Sichtbarkeit bearbeiten."
   permission_edit_project: "Projekt bearbeiten"
   permission_edit_project_attributes: "Projektattribute bearbeiten"
   permission_edit_project_phases: "Projektphasen bearbeiten"
@@ -3349,7 +3349,7 @@ de:
   permission_manage_own_reminders: "Eigene Erinnerungen erstellen"
   permission_view_project: "Projekt anzeigen"
   permission_view_changesets: "Revisionen des Projektarchivs in OpenProject ansehen"
-  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
+  permission_view_comments_with_restricted_visibility: "Kommentare mit eingeschränkter Sichtbarkeit sehen"
   permission_view_commit_author_statistics: "Commit Autor Statistiken ansehen"
   permission_view_dashboards: "Dashboard anzeigen"
   permission_view_work_package_watchers: "Liste der Beobachter ansehen"
@@ -3541,9 +3541,9 @@ de:
     manual: "auf Manuell setzen"
     automatic: "auf Automatisch setzen"
   search_input_placeholder: "Suchen ..."
-  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols: "Erlaubte Link-Protokolle"
   setting_allowed_link_protocols_text_html: >-
-    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
+    Erlauben Sie es, diese Protokolle als Links in Arbeitspaket-Beschreibungen, langen Textfeldern und Kommentaren darzustellen. Zum Beispiel %{tel_code} oder %{element_code}. Geben Sie ein Protokoll pro Zeile ein. <br/> Protokolle %{http_code}, %{https_code} und %{mailto_code} sind immer erlaubt.
   setting_after_first_login_redirect_url: "Weiterleitung nach erster Anmeldung"
   setting_after_first_login_redirect_url_text_html: >
     Legen Sie einen Pfad fest, an den Nutzer:innen nach der ersten Anmeldung weitergeleitet werden. Wenn leer, führt er auf die Startseite des Onboarding-Tours. <br/> Beispiel: <code>/meine/seite</code>
