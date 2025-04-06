@@ -3780,7 +3780,7 @@ de:
       heading: "Projekt-Lebenszyklus"
       heading_description: "Der Projekt-Lebenszyklus definiert die Projektphasen, die für Ihre Projektplanung verwendet werden können und auf der Übersichtsseite jedes Projekts erscheinen. Diese Attribute können aktiviert oder deaktiviert werden, aber nicht auf Projektebene neu geordnet werden."
       label_add: "Hinzufügen"
-      label_add_description: "Add life cycle definition"
+      label_add_description: "Lebenszyklus-Definition hinzufügen"
       filter:
         label: "Projektphase suchen"
       section_header: "Phasen"
