@@ -1300,7 +1300,7 @@ de:
         queries/principals/filters/restricted_mentionable_on_work_package_filter:
           attributes:
             values:
-              single_value_requirement: "must be a single work package"
+              single_value_requirement: "muss ein einzelnes Arbeitspaket sein"
         relation:
           typed_dag:
             circular_dependency: "Die Beziehung erzeugt eine zirkuläre Abhängigkeit."
