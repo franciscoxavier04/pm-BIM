@@ -37,7 +37,10 @@ See COPYRIGHT and LICENSE files for more details.
         @tabs.each do |tab|
           tab_nav.with_tab(selected: selected_tab(@tabs) == tab, href: tab[:path]) do |t|
             feature = tab[:enterprise_feature]
-            t.with_icon(icon: :"op-enterprise-addons") if feature && !EnterpriseToken.allows_to?(feature)
+
+            if feature && !EnterpriseToken.allows_to?(feature)
+              t.with_icon(icon: :"op-enterprise-addons", classes: "upsale-colored")
+            end
             t.with_text { I18n.t(tab[:label]) }
           end
         end
