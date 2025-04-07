@@ -37,9 +37,9 @@
   <% if @video.present? %>
     <%= video_tag @video, controls: false, class: "widget-box--teaser-video", autoplay: true, loop: true, muted: true %>
   <% elsif @image.present? %>
-    <%= image_tag @image, class: "widget-box--teaser-image" %>
+    <%= image_tag @image, class: "widget-box--teaser-image widget-box--teaser-image_default" %>
   <% else %>
-    <%= image_tag "enterprise-add-on.svg", class: "widget-box--teaser-image_default" %>
+    <%= image_tag "enterprise-add-on.svg", class: "widget-box--teaser-image widget-box--teaser-image_default" %>
   <% end %>
 
   <%= render EnterpriseEdition::UpsaleButtonsComponent.new(feature_key, justify_content: :center) %>
