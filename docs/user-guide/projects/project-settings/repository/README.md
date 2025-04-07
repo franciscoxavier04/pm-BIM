@@ -20,6 +20,6 @@ Navigate to *Project settings -> Repository*.
 1. Choose a **source control management system** (SVN or GIT).
 2. Enter the URL of your existing repository.
 3. Enter username and password for your repository.
-4. Press the blue **Create** button.
+4. Press the **Create** button.
 
-![User-guide-project-settings-repository](User-guide-project-settings-repository-1581424843016.png)
+![Repository settings under project settings in OpenProject](openproject_user_guide_project_settings_repository.png)
