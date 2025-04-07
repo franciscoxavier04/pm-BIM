@@ -368,14 +368,14 @@ ru:
         no_results_title_text: Нет доступных настраиваемых полей.
       life_cycle:
         header:
-          title: "Project life cycle"
+          title: "Жизненный цикл проекта"
           description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
-        non_defined: "No phases are currently defined."
-        section_header: "Phases"
+        non_defined: "В настоящее время этапы не определены."
+        section_header: "Этапы"
         step:
           use_in_project: "Использовано %{step} в этом проекте"
         filter:
-          label: "Search project phase"
+          label: "Поиск этапа проекта"
       project_custom_fields:
         header:
           title: "Атрибуты проекта"
@@ -402,10 +402,10 @@ ru:
         new_label: "Новый приоритет"
   project_phase:
     working_days_count:
-      one: "Duration: %{count} working day"
+      one: "Продолжительность: %{count} рабочий день"
       few: "Duration: %{count} working days"
       many: "Duration: %{count} working days"
-      other: "Duration: %{count} working days"
+      other: "Продолжительность: %{count} рабочих дней"
   lists:
     create:
       success: "Измененный список был сохранен как новый"
@@ -971,15 +971,15 @@ ru:
         is_required: "Требуется для всех проектов"
         custom_field_section: Раздел
       project/phase:
-        date_range: "Date range"
-        definition: "Definition"
+        date_range: "Диапазон дат"
+        definition: "Описание"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
-        start_gate: "Start phase gate"
-        start_gate_name: "Start phase gate name"
-        finish_gate: "Finish phase gate"
-        finish_gate_name: "Finish phase gate name"
+        name: "Имя"
+        color: "Цвет"
+        start_gate: "Начальная стадия этапа"
+        start_gate_name: "Имя начальной стадии этапа"
+        finish_gate: "Конечная стадия этапа"
+        finish_gate_name: "Имя конечной стадии этапа"
       query:
         sums: "Сумма"
         columns: "Столбцы"
@@ -1283,9 +1283,9 @@ ru:
         project/phase:
           attributes:
             date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
-              non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+              start_date_must_be_before_finish_date: "дата начала должна быть раньше даты окончания."
+              non_continuous_dates: "не может быть раньше, чем дата окончания предыдущего этапа."
+              incomplete: "неполный."
         query:
           attributes:
             project:
@@ -1320,6 +1320,10 @@ ru:
             values:
               inclusion: "у фильтра недопустимые значения."
               format: "%{message}"
+        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+          attributes:
+            values:
+              single_value_requirement: "must be a single work package"
         relation:
           typed_dag:
             circular_dependency: "Зацикливание зависимостей."
@@ -1602,13 +1606,13 @@ ru:
       wiki_edit: "Wiki"
       work_package: "Пакеты работ"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
-      added_date: "set to %{date}"
-      changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
+      activated: "активирован"
+      deactivated: "деактивирован"
+      added_date: "установлено на %{date}"
+      changed_date: "изменено с %{from} на %{to}"
+      removed_date: "дата удаления %{date}"
       phase_and_one_gate: "%{phase_message}. %{gate_message}"
-      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_both_gates: "%{phase_message}. %{start_gate_message} и %{finish_gate_message}"
   #common attributes of all models
   attributes:
     active: "Активно"
@@ -2046,7 +2050,7 @@ ru:
       automatic_subject_generation:
         description: "Создать автоматически генерируемые темы, используя атрибуты и текст."
       customize_life_cycle:
-        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
+        description: "Создание и организация этапов и стадий проекта, отличных от тех, что предусмотрены планированием цикла проекта PM2."
       form_configuration:
         description: "Настройте конфигурацию формы с помощью этих дополнительных дополнений:"
         add_groups: "Добавить новую группу атрибутов"
@@ -2133,7 +2137,7 @@ ru:
       title: "Экспорт"
       submit: "Экспорт"
       save_export_settings:
-        label: "Save settings"
+        label: "Сохранить настройки"
       format:
         label: "Формат файла"
         options:
@@ -2793,7 +2797,7 @@ ru:
   label_none_parentheses: "(нет)"
   label_not_contains: "не содержит"
   label_not_equals: "не"
-  label_life_cycle_step_plural: "Project life cycle"
+  label_life_cycle_step_plural: "Жизненный цикл проекта"
   label_on: "на"
   label_operator_all: "не пусто"
   label_operator_none: "пусто"
@@ -2855,7 +2859,7 @@ ru:
   label_project_new: "Новый проект"
   label_project_plural: "Проекты"
   label_project_list_plural: "Списки проектов"
-  label_project_life_cycle: "Project life cycle"
+  label_project_life_cycle: "Жизненный цикл проекта"
   label_project_attributes_plural: "Атрибуты проекта"
   label_project_custom_field_plural: "Атрибуты проекта"
   label_project_settings: "Настройки проекта"
@@ -3399,7 +3403,7 @@ ru:
   permission_edit_others_comments_with_restricted_visibility_explanation: "Внимание: пользователи с этим правом могут редактировать комментарии других пользователей с ограниченной видимостью."
   permission_edit_project: "Редактировать проект"
   permission_edit_project_attributes: "Редактирование атрибутов проекта"
-  permission_edit_project_phases: "Edit project phases"
+  permission_edit_project_phases: "Редактировать этапы проекта"
   permission_edit_reportings: "Редактировать отчеты"
   permission_edit_time_entries: "Править трудозатраты других пользователей"
   permission_edit_timelines: "Редактировать графики"
@@ -3429,8 +3433,8 @@ ru:
   permission_search_project: "Поиск проекта"
   permission_select_custom_fields: "Выберите настраиваемые поля"
   permission_select_project_custom_fields: "Выберите атрибуты проекта"
-  permission_select_project_phases: "Select project phases"
-  permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the life cycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
+  permission_select_project_phases: "Выбрать этапы проекта"
+  permission_select_project_phases_explanation: "Включить/отключить этапы проекта. Позволяет пользователю выбрать жизненный цикл, подходящий для проекта, поскольку неактивные этапы не будут видны ни на странице обзора проекта, ни в списке проектов."
   permission_select_project_modules: "Выбор модулей проекта"
   permission_share_work_packages: "Поделиться пакетами работ"
   permission_manage_types: "Выберите типы"
@@ -3456,7 +3460,7 @@ ru:
   permission_work_package_assigned_explanation: "Пакеты работ могут быть привязаны к пользователям и группам в зависимости от этой роли в рамках соответствующего проекта"
   permission_view_project_activity: "Просмотр деятельности по проекту"
   permission_view_project_attributes: "Просмотр атрибутов проекта"
-  permission_view_project_phases: "View project phases"
+  permission_view_project_phases: "Просмотр этапов проекта"
   permission_save_bcf_queries: "Сохранить запросы BCF"
   permission_manage_public_bcf_queries: "Управление публичными BCF запросами"
   permission_edit_attribute_help_texts: "Редактировать атрибут справки"
@@ -3482,9 +3486,9 @@ ru:
       subprojects_confirmation: "Его подпроекты: %{value} также будут удалены."
       title: "Удаление проекта %{name}"
     filters:
-      project_phase: "Project phase: %{phase}"
-      project_phase_any: "Project phase: Any"
-      project_phase_gate: "Project phase gate: %{gate}"
+      project_phase: "Этап проекта: %{phase}"
+      project_phase_any: "Этап проекта: Любой"
+      project_phase_gate: "Стадия этапа проекта: %{gate}"
     identifier:
       warning_one: Участникам проекта нужно будет переместить репозитории проекта.
       warning_two: Существующие ссылки на проект больше работать не будут.
@@ -3863,26 +3867,26 @@ ru:
         heading: "Новый атрибут"
         description: "Изменения этого атрибута проекта будут отражены во всех проектах, где он включен. Обязательные атрибуты не могут быть отключены для каждого проекта."
     project_phase_definitions:
-      heading: "Project life cycle"
+      heading: "Жизненный цикл проекта"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
-      label_add_description: "Add life cycle definition"
+      label_add: "Добавить"
+      label_add_description: "Add project phase definition"
       filter:
-        label: "Search project phase"
-      section_header: "Phases"
-      non_defined: "No phases are currently defined."
-      phase_gates: "Phase gates"
+        label: "Поиск этапа проекта"
+      section_header: "Этапы"
+      non_defined: "В настоящее время этапы не определены."
+      phase_gates: "Стадии этапа"
       new:
-        description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
+        description: "Изменения на этом этапе проекта будут отражены во всех проектах, где он включен."
+        heading: "Новый этап"
       edit:
-        heading: "Edit Phase"
-      both_gate: "Start and finish gate"
-      no_gate: "No gate"
-      start_gate: "Start gate"
-      start_gate_caption: "Add a gate with the start date of the phase"
-      finish_gate: "Finish gate"
-      finish_gate_caption: "Add a gate with the end date of the phase"
+        heading: "Изменить этап"
+      both_gate: "Начать и завершить стадию"
+      no_gate: "Нет стадии"
+      start_gate: "Начать стадию"
+      start_gate_caption: "Добавить стадию с датой начала этапа"
+      finish_gate: "Завершить стадию"
+      finish_gate_caption: "Добавить стадию с датой окончания этапа"
     projects:
       missing_dependencies: "Был проверен модуль проекта %{module}, который зависит от %{dependencies}. Вам также необходимо проверить эти зависимости."
       section_new_projects: "Настройки для новых проектов"
@@ -3918,7 +3922,7 @@ ru:
   text_are_you_sure_continue: "Вы уверены, что хотите продолжить?"
   text_are_you_sure_with_children: "Удалить пакет работ и все дочерние пакеты работ?"
   text_are_you_sure_with_project_custom_fields: "Удаление этого атрибута также приведет к удалению его значений во всех проектах. Вы уверены, что хотите это сделать?"
-  text_are_you_sure_with_project_life_cycle_step: "Deleting this phase will also delete its usages in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Удаление этого этапа также приведет к его удалению во всех используемых проектах. Вы уверены, что хотите это сделать?"
   text_assign_to_project: "Назначить на проект"
   text_form_configuration: >
     Вы можете настроить, какие поля будут показываться в формах пакетов работ. Вы можете свободно сгруппировать поля с учетом потребностей вашего домена.
