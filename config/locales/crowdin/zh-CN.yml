@@ -367,7 +367,7 @@ zh-CN:
       life_cycle:
         header:
           title: "项目生命周期"
-          description_html: "活动项目阶段定义此项目的生命周期，并在<a href=%{admin_settings_url} target=\"_blank\">管理设置</a>。已启用的阶段将显示在您的<a href=%{overview_url} target=\"_blank\"> 项目概述中</a>。"
+          description_html: "活动项目阶段定义此项目的生命周期，并在<a href=%{admin_settings_url} target=\"_blank\">管理设置</a>。已启用的阶段将显示在您的 <a href=%{overview_url} target=\"_blank\"> 项目概述中</a>。"
         non_defined: "当前没有定义阶段。"
         section_header: "阶段"
         step:

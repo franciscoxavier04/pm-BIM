@@ -36,13 +36,13 @@ ru:
           name: Чёрный
       project_phase_colors:
         item_0:
-          name: PM2 Orange
+          name: PM2 Оранжевый
         item_1:
-          name: PM2 Red
+          name: PM2 Красный
         item_2:
-          name: PM2 Magenta
+          name: PM2 Пурпурный
         item_3:
-          name: PM2 Green Yellow
+          name: PM2 Зелено-жёлтый
       document_categories:
         item_0:
           name: Документация
@@ -81,16 +81,16 @@ ru:
     standard:
       project_phases:
         item_0:
-          name: Initiating
+          name: Запуск
         item_1:
-          name: Planning
-          start_gate: Ready for Planning
+          name: Планирование
+          start_gate: Готово к планированию
         item_2:
-          name: Executing
-          start_gate: Ready for Executing
+          name: Выполнение
+          start_gate: Готово к выполнению
         item_3:
-          name: Closing
-          start_gate: Ready for Closing
+          name: Завершение
+          start_gate: Готово к завершению
       priorities:
         item_0:
           name: Низкий
@@ -485,7 +485,7 @@ ru:
         item_1:
           name: Веха
         item_2:
-          name: Summary task
+          name: Сводка задачи
         item_3:
           name: Функция
         item_4:

@@ -47,10 +47,15 @@ class WorkPackageCustomField < CustomField
   }
 
   scope :visible_by_user, ->(user) {
-    where(projects: { id: Project.visible(user) })
-      .where(types: { id: Type.enabled_in(Project.visible(user)) })
-      .or(where(is_for_all: true).references(:projects, :types))
-      .includes(:projects, :types)
+    # Prefer a subquery to a join to avoid the database query returning
+    # the cross product of projects, types and custom fields.
+    where(id:
+      unscoped
+        .where(projects: { id: Project.visible(user) })
+        .where(types: { id: Type.enabled_in(Project.visible(user)) })
+        .or(unscoped.where(is_for_all: true))
+        .includes(:projects, :types)
+        .select(:id))
   }
 
   scope :usable_as_custom_action, -> {
