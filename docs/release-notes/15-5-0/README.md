@@ -88,9 +88,9 @@ With the recent improvements to One-time and Recurring meetings, the older Class
 
 To prepare for this transition, the **Classic option in the + Meeting dropdown is now marked as unsupported**, accompanied by the following notice: “Classic meetings will be removed in the next version of OpenProject.”
 
-![Dropdown menu in the OpenProject Meetings module, with highlighted option of "Classic meetings (unsupported)"](openproject-15-5-classic-meetings-highlighted.png)
+![Dropdown menu in the OpenProject Meetings module, with highlighted option of "Classic (unsupported)"](openproject-15-5-classic-meetings-highlighted.png)
 
-We recommend switching to the newer meeting types to benefit from the latest features and ensure a smooth transition.
+We recommend switching to the newer meeting types to benefit from the latest features and ensure a smooth transition. Read this article to learn more about the reasons and what happens to your existing Classic meetings.
 
 ## Important updates and breaking changes
 
