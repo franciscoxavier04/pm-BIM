@@ -37,7 +37,7 @@ module Overviews
         super
 
         @project = project
-        @life_cycle_steps = @project.available_phases
+        @phases = @project.available_phases
       end
 
       private
