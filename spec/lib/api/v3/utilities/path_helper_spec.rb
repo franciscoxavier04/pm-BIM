@@ -296,6 +296,10 @@ RSpec.describe API::V3::Utilities::PathHelper do
     end
   end
 
+  describe "project phase paths" do
+    it_behaves_like "show", :project_phase
+  end
+
   describe "project phase definition paths" do
     it_behaves_like "show", :project_phase_definition
   end

@@ -674,22 +674,22 @@ RSpec.describe API::V3::WorkPackages::WorkPackageRepresenter do
         end
       end
 
-      describe "projectPhaseDefinition" do
+      describe "projectPhase" do
+        context "with a phase being set" do
+          it_behaves_like "has a titled link" do
+            let(:link) { "projectPhase" }
+            let(:href) { api_v3_paths.project_phase(project_phase.id) }
+            let(:title) { project_phase.name }
+          end
+        end
+
         context "without a phase being set" do
           before do
             work_package.project_phase_definition = nil
           end
 
           it_behaves_like "has an empty link" do
-            let(:link) { "projectPhaseDefinition" }
-          end
-        end
-
-        context "with a phase being set" do
-          it_behaves_like "has a titled link" do
-            let(:link) { "projectPhaseDefinition" }
-            let(:href) { api_v3_paths.project_phase_definition(project_phase_definition.id) }
-            let(:title) { project_phase_definition.name }
+            let(:link) { "projectPhase" }
           end
         end
 
@@ -697,7 +697,7 @@ RSpec.describe API::V3::WorkPackages::WorkPackageRepresenter do
           let(:project_phase) { nil }
 
           it_behaves_like "has an empty link" do
-            let(:link) { "projectPhaseDefinition" }
+            let(:link) { "projectPhase" }
           end
         end
 
@@ -705,7 +705,7 @@ RSpec.describe API::V3::WorkPackages::WorkPackageRepresenter do
           let(:project_phase) { build_stubbed(:project_phase, active: false, definition: project_phase_definition) }
 
           it_behaves_like "has an empty link" do
-            let(:link) { "projectPhaseDefinition" }
+            let(:link) { "projectPhase" }
           end
         end
 
@@ -713,7 +713,7 @@ RSpec.describe API::V3::WorkPackages::WorkPackageRepresenter do
           let(:permissions) { all_permissions - [:view_project_phases] }
 
           it_behaves_like "has no link" do
-            let(:link) { "projectPhaseDefinition" }
+            let(:link) { "projectPhase" }
           end
         end
       end
@@ -1363,9 +1363,13 @@ RSpec.describe API::V3::WorkPackages::WorkPackageRepresenter do
       end
 
       describe "projectPhaseDefinition" do
-        let(:embedded_path) { "_embedded/projectPhaseDefinition" }
+        let(:embedded_path) { "_embedded/projectPhase" }
         let(:embedded_resource) { project_phase_definition }
-        let(:embedded_resource_type) { "ProjectPhaseDefinition" }
+        let(:embedded_resource_type) { "ProjectPhase" }
+
+        context "with a phase being set" do
+          it_behaves_like "has the resource embedded"
+        end
 
         context "without a phase being set" do
           before do
@@ -1373,10 +1377,6 @@ RSpec.describe API::V3::WorkPackages::WorkPackageRepresenter do
           end
 
           it_behaves_like "has the resource not embedded"
-        end
-
-        context "with a phase being set" do
-          it_behaves_like "has the resource embedded"
         end
 
         context "with the phase not existing in the project" do

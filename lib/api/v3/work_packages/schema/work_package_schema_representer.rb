@@ -227,11 +227,12 @@ module API
                                    }
 
           # TODO: Turn into schema_with_allowed_link
-          schema :project_phase_definition,
-                 type: "ProjectPhaseDefinition",
+          schema :project_phase,
+                 type: "ProjectPhase",
                  location: :link,
                  required: false,
-                 name_source: :project_phase
+                 show_if: ->(*) { current_user.allowed_in_project?(:view_project_phases, represented.project) },
+                 writable: -> { represented.writable?(:project_phase_definition_id) }
 
           schema_with_allowed_link :parent,
                                    type: "WorkPackage",

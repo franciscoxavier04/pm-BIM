@@ -487,13 +487,13 @@ module API
 
         associated_resource :project
 
-        resource :project_phase_definition,
+        resource :project_phase,
                  link_cache_if: -> { view_project_phase_allowed? },
                  link: ->(*) {
                    if phase_set_and_active?
                      {
-                       href: api_v3_paths.project_phase_definition(represented.project_phase_definition_id),
-                       title: represented.project_phase_definition.name
+                       href: api_v3_paths.project_phase(project_phase.id),
+                       title: project_phase.name
                      }
                    else
                      {
@@ -504,8 +504,8 @@ module API
                  },
                  getter: ->(*) do
                    if embed_links && phase_set_and_active? && view_project_phase_allowed?
-                     API::V3::ProjectPhaseDefinitions::ProjectPhaseDefinitionRepresenter.create(
-                       represented.project_phase_definition, current_user:
+                     API::V3::ProjectPhases::ProjectPhaseRepresenter.create(
+                       project_phase, current_user:
                      )
                    end
                  end,
@@ -669,10 +669,14 @@ module API
             current_user.allowed_in_project?(:add_work_packages, represented.project)
         end
 
-        def phase_set_and_active?
-          represented.project&.phases&.any? do
-            it.definition_id == represented.project_phase_definition_id && it.active?
+        def project_phase
+          @project_phase ||= represented.project&.phases&.detect do
+            it.definition_id == represented.project_phase_definition_id
           end
+        end
+
+        def phase_set_and_active?
+          project_phase&.active?
         end
 
         def relations

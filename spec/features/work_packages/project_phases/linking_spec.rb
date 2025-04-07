@@ -51,9 +51,11 @@ RSpec.describe "Linking Projects phases and work packages settings", :js, with_f
 
   let(:work_package_page) { Pages::FullWorkPackage.new(work_package) }
 
-  it "allows seeing linked phases" do
+  it "allows seeing and editing linked phases" do
     work_package_page.visit!
 
     work_package_page.expect_attributes(project_phase_definition: executing_phase_definition.name)
+
+    work_package_page.set_attributes({ project_phase_definition: initiating_phase_definition.name })
   end
 end

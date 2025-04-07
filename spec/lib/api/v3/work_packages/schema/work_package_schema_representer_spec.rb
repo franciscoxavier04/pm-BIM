@@ -831,8 +831,8 @@ RSpec.describe API::V3::WorkPackages::Schema::WorkPackageSchemaRepresenter do
         let(:permissions) { %i[edit_work_packages view_project_phases] }
 
         it_behaves_like "has basic schema properties" do
-          let(:path) { "projectPhaseDefinition" }
-          let(:type) { "ProjectPhaseDefinition" }
+          let(:path) { "projectPhase" }
+          let(:type) { "ProjectPhase" }
           let(:name) { I18n.t("attributes.project_phase") }
           let(:required) { false }
           let(:writable) { false }
@@ -844,8 +844,8 @@ RSpec.describe API::V3::WorkPackages::Schema::WorkPackageSchemaRepresenter do
         let(:permissions) { %i[edit_work_packages view_project_phases edit_project_phases] }
 
         it_behaves_like "has basic schema properties" do
-          let(:path) { "projectPhaseDefinition" }
-          let(:type) { "ProjectPhaseDefinition" }
+          let(:path) { "projectPhase" }
+          let(:type) { "ProjectPhase" }
           let(:name) { I18n.t("attributes.project_phase") }
           let(:required) { false }
           let(:writable) { true }
@@ -853,9 +853,9 @@ RSpec.describe API::V3::WorkPackages::Schema::WorkPackageSchemaRepresenter do
         end
       end
 
-      context "without the view_project_phases permission view time_entries permission" do
-        it "has no spentTime attribute" do
-          expect(subject).not_to have_json_path("projectPhaseDefinitions")
+      context "without the view_project_phases permission" do
+        it "has no projectPhase attribute" do
+          expect(subject).not_to have_json_path("projectPhase")
         end
       end
     end

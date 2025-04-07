@@ -101,7 +101,7 @@ export function initializeCoreDisplayFields(displayFieldService:DisplayFieldServ
       .addFieldType(TypeDisplayField, 'type', ['Type'])
       .addFieldType(ResourceDisplayField, 'resource', [
         'Project',
-        'ProjectPhaseDefinition',
+        'ProjectPhase',
         'TimeEntriesActivity',
         'Version',
         'Category',

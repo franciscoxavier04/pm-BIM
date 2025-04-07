@@ -327,6 +327,7 @@ module API
 
           resources :project
 
+          show :project_phase
           show :project_phase_definition
 
           show :project_status
