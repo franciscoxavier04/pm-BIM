@@ -83,7 +83,7 @@ export default class QuoteCommentController extends Controller {
   private setCommentRestriction(isRestricted:boolean) {
     if (isRestricted && !this.workPackagesActivitiesTabRestrictedCommentOutlet.restrictedCheckboxTarget.checked) {
       this.workPackagesActivitiesTabRestrictedCommentOutlet.restrictedCheckboxTarget.checked = isRestricted;
-      this.workPackagesActivitiesTabRestrictedCommentOutlet.toggleBackgroundColor();
+      this.workPackagesActivitiesTabRestrictedCommentOutlet.toggleRestriction();
     }
   }
 
