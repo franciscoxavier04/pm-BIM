@@ -54,20 +54,3 @@
 .widget-box--blocks--upsale-image
   width: 200px
   margin: auto
-
-// There is a breadcrumb at the top of some of the Enterprise pages showing some spacing,
-// but for some other pages without a breadcrumb, there is no space at the top of of the page.
-// Therefore, we are just hiding the breadcrumb on top of these pages.
-:has(.upsale-notification_hide-breadcrumb)
-  #breadcrumb:has(:not(.-show))
-    display: block
-    visibility: hidden
-
-@media screen and (max-width: $breakpoint-sm)
-  .upsale-notification
-    max-width: none
-
-    .widget-box--teaser-image,
-    .widget-box--teaser-video
-      width: 90%
-      border-radius: 15px

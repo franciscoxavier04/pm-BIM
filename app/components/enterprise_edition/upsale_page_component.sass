@@ -46,3 +46,11 @@
     width: 30%
     margin-bottom: 20px
     box-shadow: 4px 4px 10px rgb(0 0 0 / 15%)
+
+  @media screen and (max-width: $breakpoint-md)
+    max-width: none
+
+    .widget-box--teaser-image,
+    .widget-box--teaser-video
+      width: 90%
+      border-radius: 15px
