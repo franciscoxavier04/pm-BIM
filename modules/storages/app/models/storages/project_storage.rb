@@ -95,6 +95,8 @@ module Storages
       end
     end
 
+    # TODO: This method should be removed, callers should refer to the project_storages_controller and its "open" action
+    #       directly, which already takes care of ensuring the connection when needed.
     def open_with_connection_ensured
       return unless storage.configured?
       return open_project_storage_url if storage.authenticate_via_idp?
@@ -106,16 +108,11 @@ module Storages
       )
     end
 
-    private
-
     def open_project_storage_url
-      OpenProject::StaticRouting::StaticRouter
-        .new
-        .url_helpers.open_project_storage_url(host: Setting.host_name,
-                                              protocol: "https",
-                                              project_id: project.identifier,
-                                              id:)
+      OpenProject::StaticRouting::StaticRouter.new.url_helpers.open_project_storage_url(project_id: project.identifier, id:)
     end
+
+    private
 
     def managed_folder_identifier
       @managed_folder_identifier ||=
