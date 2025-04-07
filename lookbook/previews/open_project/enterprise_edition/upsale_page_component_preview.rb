@@ -47,8 +47,6 @@ module OpenProject
       #         title: "A splendid feature"
       #         # Could also be description_html if necessary
       #         description: "This is a splendid feature that you should use. It just might transform your life."
-      #         # Title of the link used for this feature only. If this is missing, the default link title is used.
-      #         title_link: "Even more information"
       #         # An unordered list of features
       #         features:
       #           some_key: "Some feature"
