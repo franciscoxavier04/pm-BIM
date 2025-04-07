@@ -97,7 +97,7 @@ relationGroupClass(from.id!),
     columnId:string,
   ):void {
     const relationLabel = document.createElement('span');
-    relationLabel.classList.add('relation-row--type-label');
+    relationLabel.classList.add('relation-row--type-label', 'badge');
     relationLabel.textContent = typeLabel;
 
     jRow.find(`.${relationCellClassName}`).empty();
