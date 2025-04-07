@@ -56,9 +56,15 @@ Clicking on the dropdown symbol expands the view to show all related child work 
 
 ![Work package table with expanded children work packages in the children column](openproject-15-5-children-work-package-table-unfolded.png)
 
-### Advanced date picker in mobile screens
+### Improved date picker rendering in mobile screens
+
+The date picker now uses the native mobile date input and **opens in a full-screen modal on small screens**. This improves accessibility and interaction. The mini calendar has been removed to reduce clutter and improve usability on mobile devices.
 
 ### PDF exports matching configured form layout
+
+Single work package PDF exports now **follow the configured form layout**, including attribute groups, field order, and long text fields. For example, if the Date field is grouped with other scheduling fields in your form configuration, it will appear the same way in the PDF — not split into separate start and end dates.
+
+You can also **export in portrait or landscape orientation**, and **query group tables are included if configured**. If a table doesn’t fit on the page, a note is displayed instead.
 
 ### Chronical ordering of relations
 
