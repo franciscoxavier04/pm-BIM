@@ -292,7 +292,7 @@ class MeetingAgendaItemsController < ApplicationController
   def assign_drop_params # rubocop:disable Metrics/AbcSize
     @target_id, @position =
       if params[:type] == "to_current"
-        section = @meeting.sections.order(position: :desc).first
+        section = @meeting.sections.reorder(position: :desc).first
         [section&.id, section&.last_position]
       elsif params[:type] == "to_backlog"
         [@meeting.backlog.id, @meeting.backlog.last_position]

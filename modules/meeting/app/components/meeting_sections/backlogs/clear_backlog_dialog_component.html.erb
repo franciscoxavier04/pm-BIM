@@ -2,8 +2,8 @@
   render(
     Primer::OpenProject::DangerDialog.new(
       id: "meetings-clear-backlog-dialog",
-      confirm_button_text: I18n.t(:label_recurring_meeting_series_end_now),
-      title: I18n.t("recurring_meeting.end_series_dialog.title"),
+      confirm_button_text: I18n.t(:label_backlog_clear_button),
+      title: I18n.t(:label_backlog_clear),
       form_arguments: {
         action: clear_backlog_meeting_sections_path(@meeting),
         method: :post
@@ -11,10 +11,8 @@
     )
   ) do |dialog|
     dialog.with_confirmation_message do |message|
-      message.with_heading(tag: :h2) { I18n.t(:text_meeting_series_end_early_heading) }
-      message.with_description_content(I18n.t(:text_meeting_series_end_early))
+      message.with_heading(tag: :h2) { I18n.t(:label_agenda_backlog_clear_title) }
+      message.with_description_content(I18n.t(:text_agenda_backlog_clear_description))
     end
-
-    dialog.with_confirmation_check_box_content(I18n.t("text_permanent_delete_confirmation_checkbox_label"))
   end
 %>

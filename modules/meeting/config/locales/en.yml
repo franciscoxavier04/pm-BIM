@@ -435,6 +435,9 @@ en:
   label_backlog_clear_button: "Clear all"
   text_backlog_clear_error: "One or more errors occurred while trying to clear the backlog."
 
+  label_backlog_clear: "Clear backlog"
+  label_backlog_clear_button: "Clear all"
+
   label_agenda_backlog: "Agenda backlog"
   text_agenda_backlog: "This backlog is unique to this one-time meeting. You can drag items in and out to add or remove them from the meeting agenda."
   label_agenda_backlog_clear_title: "Clear agenda backlog?"

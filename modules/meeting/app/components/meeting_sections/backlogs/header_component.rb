@@ -59,7 +59,7 @@ module MeetingSections
 
     def clear_action_item(menu)
       menu.with_item(
-        label: I18n.t(:label_recurring_meeting_series_delete),
+        label: I18n.t(:label_backlog_clear),
         href: clear_backlog_dialog_meeting_sections_path(@meeting),
         scheme: :danger,
         tag: :a,
@@ -68,6 +68,30 @@ module MeetingSections
         }
       ) do |item|
         item.with_leading_visual_icon(icon: :trash)
+      end
+    end
+
+    def add_agenda_item_action(menu)
+      menu.with_item(
+        label: t("activerecord.models.meeting_agenda_item", count: 1),
+        href: new_meeting_agenda_item_path(@meeting, type: "simple", meeting_section_id: @backlog.id),
+        content_arguments: {
+          data: { "turbo-stream": true, "test-selector": "meeting-backlog-add-agenda-item-from-menu" }
+        }
+      ) do |item|
+        item.with_leading_visual_icon(icon: :plus)
+      end
+    end
+
+    def add_work_package_action(menu)
+      menu.with_item(
+        label: t("activerecord.models.work_package", count: 1),
+        href: new_meeting_agenda_item_path(@meeting, type: "work_package", meeting_section_id: @backlog.id),
+        content_arguments: {
+          data: { "turbo-stream": true, "test-selector": "meeting-backlog-add-work-package-from-menu" }
+        }
+      ) do |item|
+        item.with_leading_visual_icon(icon: :plus)
       end
     end
   end
