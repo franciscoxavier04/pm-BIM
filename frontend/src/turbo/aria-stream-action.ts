@@ -3,7 +3,6 @@ import { announce } from '@primer/live-region-element';
 
 export function registerAriaStreamAction() {
   StreamActions.aria = function dialogStreamAction(this:StreamElement) {
-    //document.addEventListener('turbo:before-stream-render', () => {
       const message = this.getAttribute('message') ?? '';
       const type = this.getAttribute('type') ?? 'polite';
       if (type === 'assertive') {
@@ -13,8 +12,8 @@ export function registerAriaStreamAction() {
       } else {
         announce(message, {
           politeness: 'polite',
+          delayMs: 5000,
         });
       }
-   //});
   };
 }
