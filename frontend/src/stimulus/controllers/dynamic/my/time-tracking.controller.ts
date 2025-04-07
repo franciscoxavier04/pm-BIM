@@ -6,6 +6,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 import moment from 'moment';
+import allLocales from '@fullcalendar/core/locales-all';
 import { renderStreamMessage } from '@hotwired/turbo';
 
 export default class MyTimeTrackingController extends Controller {
@@ -19,6 +20,7 @@ export default class MyTimeTrackingController extends Controller {
     timeEntries: Array,
     initialDate: String,
     canCreate: Boolean,
+    locale: String,
     canEdit: Boolean,
     forceTimes: Boolean,
   };
@@ -30,6 +32,7 @@ export default class MyTimeTrackingController extends Controller {
   declare readonly canCreateValue:boolean;
   declare readonly canEditValue:boolean;
   declare readonly forceTimesValue:boolean;
+  declare readonly localeValue:string;
 
   private calendar:Calendar;
 
@@ -46,8 +49,8 @@ export default class MyTimeTrackingController extends Controller {
     this.calendar = new Calendar(this.calendarTarget, {
       plugins: [timeGridPlugin, dayGridPlugin, interactionPlugin],
       initialView: this.calendarView(),
-      firstDay: 1, // get from settings
-      locale: 'de', // also get from settings
+      locales: allLocales,
+      locale: this.localeValue,
       events: this.timeEntriesValue,
       headerToolbar: false,
       initialDate: this.initialDateValue,
@@ -71,7 +74,7 @@ export default class MyTimeTrackingController extends Controller {
         let timeDetails = '';
 
         if (!arg.event.allDay) {
-          timeDetails = `<div class="color-fg-muted mt-3">${moment(arg.event.start).format('HH:mm')} - ${moment(arg.event.end).format('HH:mm')}</div>`;
+          timeDetails = `<div class="color-fg-muted mt-3">${moment(arg.event.start).format('LT')} - ${moment(arg.event.end).format('LT')}</div>`;
         }
 
         return {
