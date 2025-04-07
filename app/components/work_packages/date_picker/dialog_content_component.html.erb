@@ -105,6 +105,6 @@
       end
       end%>
   <% if @live_region %>
-  <%= render OpTurbo::StreamComponent.new(action: :aria, message: "test", type:"polite", target: "nil") %>
+  <%= render OpTurbo::StreamComponent.new(action: :aria, message: @live_region, type:"polite", target: "nil") %>
     <% end %>
 <% end %>

@@ -158,7 +158,7 @@ class WorkPackages::DatePickerController < ApplicationController
                                                          triggering_field: params[:triggering_field],
                                                          touched_field_map:,
                                                          date_mode:,
-                                                         live_region: true)
+                                                         live_region: "start date is #{@work_package.start_date}, finish date is #{@work_package.due_date}, duration is #{@work_package.duration}")
   end
 
   def focused_field
