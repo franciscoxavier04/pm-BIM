@@ -3,21 +3,30 @@ title: OpenProject 15.5.0
 sidebar_navigation:
     title: 15.5.0
 release_version: 15.5.0
-release_date: 2025-04-03
+release_date: 2025-04-16
 ---
 
 # OpenProject 15.5.0
 
-Release date: 2025-04-03
+Release date: 2025-04-16
 
-We released OpenProject [OpenProject 15.5.0](https://community.openproject.org/versions/2171).
-The release contains several bug fixes and we recommend updating to the newest version.
-In these Release Notes, we will give an overview of important feature changes.
-At the end, you will find a complete list of all changes and bug fixes.
+We released OpenProject [OpenProject 15.5.0](https://community.openproject.org/versions/2171). The release contains several bug fixes, and we recommend updating to the newest version. In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
 
 ## Important feature changes
 
-<!-- Inform about the major features in this section -->
+### Filter for descendants (children and grandchildren) of work packages
+
+### Advanced accessibility in the date picker
+
+### % Complete included in work package table sums
+
+### Column for children in work package tables
+
+### Advanced date picker in mobile screens
+
+### PDF exports matching configured form layout
+
+### Chronical ordering of relations
 
 ## Important updates and breaking changes
 
@@ -82,7 +91,7 @@ At the end, you will find a complete list of all changes and bug fixes.
 ## Contributions
 A very special thank you goes to our sponsors for this release.
 Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes.
-Special thanks for reporting and finding bugs go to Abhiyan Paudyal, Andreas H., Paul Kernstock, Patrick Stapf, Stefan Weiberg.
+Special thanks for reporting and finding bugs go to Abhiyan Paudyal, Andreas H., Paul Kernstock, Patrick Stapf, and Stefan Weiberg.
 
 Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings!
 Would you like to help out with translations yourself?
