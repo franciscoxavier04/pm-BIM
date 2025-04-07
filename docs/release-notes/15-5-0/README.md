@@ -10,7 +10,7 @@ release_date: 2025-04-16
 
 Release date: 2025-04-16
 
-We released OpenProject [OpenProject 15.5.0](https://community.openproject.org/versions/2171). The release contains several bug fixes, and we recommend updating to the newest version. In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
+We released [OpenProject 15.5.0](https://community.openproject.org/versions/2171). The release contains several bug fixes, and we recommend updating to the newest version. In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
 
 ## Important feature changes
 
@@ -44,7 +44,7 @@ All three values — Work, Remaining work, and % Complete — are calculated in 
 
 ### Column for children in work package tables
 
-OpenProject 15.5 introduces a new Children column in work package tables. Similar to other relationship columns, this column provides an expandable view showing related child work packages directly in the table — without needing to filter for them separately.
+OpenProject 15.5 introduces a new **Children** column in work package tables. Similar to other relation columns, this column provides an expandable view showing related child work packages directly in the table — without needing to filter for them separately.
 
 This makes it easier to get a quick overview of a parent work package and its structure, especially when working with large datasets or filtered views.
 
@@ -90,7 +90,8 @@ To prepare for this transition, the **Classic option in the + Meeting dropdown i
 
 ![Dropdown menu in the OpenProject Meetings module, with highlighted option of "Classic (unsupported)"](openproject-15-5-classic-meetings-highlighted.png)
 
-We recommend switching to the newer meeting types to benefit from the latest features and ensure a smooth transition. Read this article to learn more about the reasons and what happens to your existing Classic meetings.
+> [!NOTE]
+> We recommend switching to the newer Meeting types to benefit from the latest features and ensure a smooth transition. [Read this article to learn more about the reasons and what happens to your existing Classic meetings](https://www.openproject.org/blog/).
 
 ## Important updates and breaking changes
 
