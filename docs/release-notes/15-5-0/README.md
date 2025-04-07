@@ -40,13 +40,31 @@ The **% Complete** value is now included in the sum row of work package tables. 
 
 All three values — Work, Remaining work, and % Complete — are calculated in alignment with the selected progress reporting mode.
 
+![Work package table showing % Complete, Work and Remaining work – with highlighted sums](openproject-15-5-percentage-complete-sum-highlighted.png)
+
 ### Column for children in work package tables
+
+OpenProject 15.5 introduces a new Children column in work package tables. Similar to other relationship columns, this column provides an expandable view showing related child work packages directly in the table — without needing to filter for them separately.
+
+This makes it easier to get a quick overview of a parent work package and its structure, especially when working with large datasets or filtered views.
+
+The column displays the number of children next to each parent, along with a clickable dropdown symbol. 
+
+![Work package table with a highlighted 'Children' column - the number of children being displayed next to each parent, along with a dropdown-symbol](openproject-15-5-children-work-package-table-highlighted.png)
+
+Clicking on the dropdown symbol expands the view to show all related child work packages, each marked with a **Child** label:
+
+![Work package table with expanded children work packages in the children column](openproject-15-5-children-work-package-table-unfolded.png)
 
 ### Advanced date picker in mobile screens
 
 ### PDF exports matching configured form layout
 
 ### Chronical ordering of relations
+
+### Note about imminent sunsetting of Classic meetings
+
+ in create meeting dropdown
 
 ## Important updates and breaking changes
 
