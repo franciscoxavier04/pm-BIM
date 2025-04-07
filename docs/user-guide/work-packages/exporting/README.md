@@ -191,7 +191,7 @@ Click the **Download** button to generate the PDF export.
 >
 > Layout of the PDF export follows the [work package configuration form](../../../system-admin-guide/manage-work-packages/work-package-types/#work-package-form-configuration-enterprise-add-on) defined for specific work package types. 
 
-![Example of a single work package PDF export in OpenProject](opEnproject-user-guide-single-pdf-export.png)
+![Example of a single work package PDF export in OpenProject](openproject-user-guide-single-pdf-export.png)
 
 ### Export single work package in Atom format
 
