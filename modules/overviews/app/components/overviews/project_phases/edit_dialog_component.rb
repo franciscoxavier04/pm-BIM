@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,43 +28,14 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ProjectCustomFields
-  module Sections
-    class ShowComponent < ApplicationComponent
+module Overviews
+  module ProjectPhases
+    class EditDialogComponent < ApplicationComponent
       include ApplicationHelper
-      include OpPrimer::ComponentHelpers
       include OpTurbo::Streamable
+      include OpPrimer::ComponentHelpers
 
-      def initialize(project:, project_custom_field_section:, project_custom_fields:)
-        super
-
-        @project = project
-        @project_custom_field_section = project_custom_field_section
-        @project_custom_fields = project_custom_fields
-
-        eager_load_project_custom_field_values
-      end
-
-      private
-
-      def allowed_to_edit?
-        User.current.allowed_in_project?(:edit_project_attributes, @project)
-      end
-
-      def eager_load_project_custom_field_values
-        # TODO: move to service
-        @eager_loaded_project_custom_field_values = CustomValue
-          .includes(custom_field: :custom_options)
-          .where(
-            custom_field_id: @project_custom_fields.pluck(:id),
-            customized_id: @project.id
-          )
-        .to_a
-      end
-
-      def get_eager_loaded_project_custom_field_values_for(custom_field_id)
-        @eager_loaded_project_custom_field_values.select { |pcfv| pcfv.custom_field_id == custom_field_id }
-      end
+      DIALOG_ID = "edit-project-life-cycles-dialog"
     end
   end
 end

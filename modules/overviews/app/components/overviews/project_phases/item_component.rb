@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,23 +28,28 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ProjectCustomFields
-  module Sections
-    class EditComponent < ApplicationComponent
+module Overviews
+  module ProjectPhases
+    class ItemComponent < ApplicationComponent
       include ApplicationHelper
-      include OpTurbo::Streamable
       include OpPrimer::ComponentHelpers
 
-      def initialize(project:,
-                     project_custom_field_section:)
-        super
+      private
 
-        @project = project
-        @project_custom_field_section = project_custom_field_section
+      def not_set?
+        model.not_set?
       end
 
-      def wrapper_uniq_by
-        @project_custom_field_section.id
+      def icon
+        :"op-phase"
+      end
+
+      def icon_color_class
+        helpers.hl_inline_class("project_phase_definition", model.definition)
+      end
+
+      def text
+        model.name
       end
     end
   end

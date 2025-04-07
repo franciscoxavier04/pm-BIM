@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,16 +28,25 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ProjectLifeCycles
-  class SidePanelComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpPrimer::ComponentHelpers
-    include OpTurbo::Streamable
+module Overviews
+  module ProjectPhases
+    class ShowComponent < ApplicationComponent
+      include ApplicationHelper
+      include OpPrimer::ComponentHelpers
+      include OpTurbo::Streamable
 
-    def initialize(project:)
-      super
+      def initialize(project:)
+        super
 
-      @project = project
+        @project = project
+        @phases = @project.available_phases
+      end
+
+      private
+
+      def allowed_to_edit?
+        User.current.allowed_in_project?(:edit_project_phases, @project)
+      end
     end
   end
 end

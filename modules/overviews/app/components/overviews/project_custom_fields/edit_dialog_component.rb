@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,23 +28,20 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ProjectCustomFields
-  class SidePanelComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpPrimer::ComponentHelpers
-    include OpTurbo::Streamable
+module Overviews
+  module ProjectCustomFields
+    class EditDialogComponent < ApplicationComponent
+      include ApplicationHelper
+      include OpTurbo::Streamable
+      include OpPrimer::ComponentHelpers
 
-    def initialize(project:)
-      super
+      def initialize(project:,
+                     project_custom_field_section:)
+        super
 
-      @project = project
-    end
-
-    private
-
-    def available_project_custom_fields_grouped_by_section
-      @available_project_custom_fields_grouped_by_section ||=
-        @project.available_custom_fields.group_by(&:project_custom_field_section)
+        @project = project
+        @project_custom_field_section = project_custom_field_section
+      end
     end
   end
 end

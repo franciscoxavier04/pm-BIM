@@ -26,7 +26,7 @@
           margin = i == @project_custom_fields.size - 1 ? 0 : 3
           details_container.with_row(mb: margin) do
             render(
-              ProjectCustomFields::Sections::ProjectCustomFields::ShowComponent.new(
+              Overviews::ProjectCustomFields::ItemComponent.new(
                 project_custom_field:,
                 project_custom_field_values: get_eager_loaded_project_custom_field_values_for(project_custom_field.id)
               )

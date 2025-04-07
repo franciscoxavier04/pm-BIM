@@ -28,14 +28,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ProjectLifeCycles
-  module Sections
-    class EditDialogComponent < ApplicationComponent
+module Overviews
+  module ProjectPhases
+    class SidePanelComponent < ApplicationComponent
       include ApplicationHelper
-      include OpTurbo::Streamable
       include OpPrimer::ComponentHelpers
+      include OpTurbo::Streamable
 
-      DIALOG_ID = "edit-project-life-cycles-dialog"
+      def initialize(project:)
+        super
+
+        @project = project
+      end
     end
   end
 end
