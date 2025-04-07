@@ -37,9 +37,9 @@ class Journal < ApplicationRecord
   include Reactable
 
   # Inline attachments for Journal#notes aka comments
-  # FIXME: Not the final version- permissions need to be revised
   acts_as_attachable view_permission: :view_work_packages,
-                     add_permission: :add_work_package_notes,
+                     add_on_new_permission: :add_work_package_notes,
+                     add_on_persisted_permission: :edit_own_work_package_notes,
                      delete_permission: :edit_own_work_package_notes,
                      only_user_allowed: true
 

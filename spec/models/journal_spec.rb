@@ -30,6 +30,12 @@
 require "spec_helper"
 
 RSpec.describe Journal do
+  it_behaves_like "acts_as_attachable included" do
+    let(:project) { create(:project) }
+    let(:work_package) { create(:work_package, project:) }
+    let(:model_instance) { create(:work_package_journal, journable: work_package, version: 2) }
+  end
+
   describe "#journable" do
     it "raises no error on a new journal without a journable" do
       expect(described_class.new.journable)
