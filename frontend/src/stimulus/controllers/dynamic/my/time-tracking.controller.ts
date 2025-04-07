@@ -53,10 +53,8 @@ export default class MyTimeTrackingController extends Controller {
       locale: this.localeValue,
       events: this.timeEntriesValue,
       headerToolbar: false,
+      aspectRatio: 2,
       initialDate: this.initialDateValue,
-      height: 800,
-      contentHeight: 780,
-      aspectRatio: 3,
       selectable: this.canCreateValue,
       editable: this.canEditValue,
       eventResizableFromStart: true,
@@ -68,24 +66,26 @@ export default class MyTimeTrackingController extends Controller {
           'calendar-time-entry-event',
           `__hl_status_${arg.event.extendedProps.statusId}`,
           '__hl_border_top',
+          'ellipsis',
         ];
       },
       eventContent: (arg) => {
         let timeDetails = '';
 
         if (!arg.event.allDay) {
-          timeDetails = `<div class="color-fg-muted mt-3">${moment(arg.event.start).format('LT')} - ${moment(arg.event.end).format('LT')}</div>`;
+          const time = `${moment(arg.event.start).format('LT')} - ${moment(arg.event.end).format('LT')}`;
+          timeDetails = `<div class="color-fg-muted mt-3" title="${time}">${time}</div>`;
         }
 
         return {
           html: `
            <div class="fc-event-main-frame">
-             <div class="fc-event-time">${this.displayDuration(arg.event.extendedProps.hours as number)}</div>
+             <div class="fc-event-time mb-1">${this.displayDuration(arg.event.extendedProps.hours as number)}</div>
              <div class="fc-event-title-container">
-               <div class="fc-event-title mb-2">
+               <div class="fc-event-title mb-2" title="${arg.event.extendedProps.workPackageSubject}">
                  <a href="${this.pathHelper.workPackageShortPath(arg.event.extendedProps.workPackageId as string)}">${arg.event.extendedProps.workPackageSubject}</a>
                </div>
-               <div class="color-fg-muted">${arg.event.extendedProps.projectName}</div>
+               <div class="color-fg-muted" title="${arg.event.extendedProps.projectName}">${arg.event.extendedProps.projectName}</div>
                ${timeDetails}
              </div>
            </div>`,
