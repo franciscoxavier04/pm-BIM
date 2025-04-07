@@ -60,7 +60,10 @@ module MeetingAgendaItems
     end
 
     def add_outcome_action?
-      @meeting_agenda_item.editable? && @meeting.in_progress? && !@meeting_agenda_item.outcomes.exists?
+      @meeting_agenda_item.editable? &&
+        @meeting.in_progress? &&
+        !@meeting_agenda_item.outcomes.exists? &&
+        @meeting_agenda_item.in_backlog?
     end
 
     def first?

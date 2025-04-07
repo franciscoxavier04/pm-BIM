@@ -124,4 +124,8 @@ class MeetingAgendaItem < ApplicationRecord
   def copy_attributes
     attributes.except("id", "meeting_id")
   end
+
+  def in_backlog?
+    !meeting_section.backlog?
+  end
 end
