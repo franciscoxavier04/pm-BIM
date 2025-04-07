@@ -181,13 +181,17 @@ If you select **Generate PDF**, a modal will open, where you can adjust the foll
   - If *Attributes and description* template is selected, the project name will be suggested for the footer. This text will be placed at the center of the footer. 
   - If *Contract* template is selected, the work package subject will be suggested as the footer text. This text will be placed at the right corner of the footer.
   
-  
+- **Page orientation**, which allows selecting *Portrait* or *Landscape* layout of the pages in the PDF.  
 
 ![PDF generation modal for export of single work packages in OpenProject](openproject_user_guide_work_package_export_pdf_modal.png)
 
 Click the **Download** button to generate the PDF export. 
 
-![Example of a single work package PDF export in OpenProject](openproject-user-guide-single-pdf-export.png)
+> [!NOTE]
+>
+> Layout of the PDF export follows the [work package configuration form](../../../system-admin-guide/manage-work-packages/work-package-types/#work-package-form-configuration-enterprise-add-on) defined for specific work package types. 
+
+![Example of a single work package PDF export in OpenProject](opEnproject-user-guide-single-pdf-export.png)
 
 ### Export single work package in Atom format
 
