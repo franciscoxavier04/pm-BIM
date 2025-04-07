@@ -36,6 +36,10 @@ This update is part of our ongoing ARIA implementation strategy, with [further a
 
 ### % Complete included in work package table sums
 
+The **% Complete** value is now included in the sum row of work package tables. This complements the existing Work and Remaining work columns and gives a quick, consistent overview of project progress.
+
+All three values — Work, Remaining work, and % Complete — are calculated in alignment with the selected progress reporting mode.
+
 ### Column for children in work package tables
 
 ### Advanced date picker in mobile screens
