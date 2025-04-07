@@ -16,6 +16,14 @@ We released OpenProject [OpenProject 15.5.0](https://community.openproject.org/v
 
 ### Filter for descendants (children and grandchildren) of work packages
 
+Users can now filter work packages for "Descendants of" a certain work package – or several work packages. This allows users to see all descendants of one or multiple work packages in one view.
+
+Before this release, users could only filter for parents, not for descendants like children or grandchildren.
+
+The new filter works everywhere work package filters are possible, e.g. work package tables or agile boards.
+
+![Work package table filtered for descendants of a phase](openproject-15-5-descendants-filter-highlighted.png)
+
 ### Advanced accessibility in the date picker
 
 ### % Complete included in work package table sums
