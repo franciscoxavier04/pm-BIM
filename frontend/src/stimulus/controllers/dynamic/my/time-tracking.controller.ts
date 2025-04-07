@@ -61,6 +61,10 @@ export default class MyTimeTrackingController extends Controller {
       defaultTimedEventDuration: DEFAULT_TIMED_EVENT_DURATION,
       allDayContent: I18n.t('js.myTimeTracking.noSpecificTime'),
       dayMaxEventRows: 4, // 3 + more link
+      eventMinHeight: 30,
+      eventMaxStack: 2,
+      eventShortHeight: 31,
+      nowIndicator: true,
       eventClassNames(arg) {
         return [
           'calendar-time-entry-event',
