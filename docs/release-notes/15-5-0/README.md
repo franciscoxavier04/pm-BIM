@@ -68,9 +68,29 @@ You can also **export in portrait or landscape orientation**, and **query group 
 
 ### Chronical ordering of relations
 
-### Note about imminent sunsetting of Classic meetings
+Relations in the Relations tab and date picker are now consistently ordered by their creation date, regardless of whether the related work packages are fully visible or permission-restricted.
 
- in create meeting dropdown
+This change improves clarity by showing relations in the exact order they were added — with the oldest first — and removes the previous grouping by visibility status.
+
+### Group work package-related project settings in a new entry called 'Work packages'
+
+To improve navigation, related project settings have been grouped under a new **Work packages** section in the project settings. This section includes three tabs:
+
+- [Types](../../user-guide/projects/project-settings/work-packages/#work-package-types)
+- [Categories](../../user-guide/projects/project-settings/work-packages/#work-package-categories)
+- [Custom fields](../../user-guide/projects/project-settings/work-packages/#work-package-custom-fields)
+
+The previous individual entries have been moved into this grouped view. Existing URLs now redirect to their new locations, ensuring a smooth transition. This is a structural improvement only — no changes were made to permissions or underlying functionality.
+
+### Classic meetings marked as unsupported — removal planned for the next release
+
+With the recent improvements to One-time and Recurring meetings, the older Classic meetings are now considered outdated and will be removed in the next OpenProject release (likely version 16.0). This change has been planned and communicated since the introduction of what were then called Dynamic meetings (now One-time and Recurring).
+
+To prepare for this transition, the **Classic option in the + Meeting dropdown is now marked as unsupported**, accompanied by the following notice: “Classic meetings will be removed in the next version of OpenProject.”
+
+![Dropdown menu in the OpenProject Meetings module, with highlighted option of "Classic meetings (unsupported)"](openproject-15-5-classic-meetings-highlighted.png)
+
+We recommend switching to the newer meeting types to benefit from the latest features and ensure a smooth transition.
 
 ## Important updates and breaking changes
 
