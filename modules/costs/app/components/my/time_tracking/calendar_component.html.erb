@@ -23,5 +23,7 @@
 
   <div data-my--time-tracking-target="calendar"></div>
 
-  <div><%= total_hours %></div>
+  <%- if mode != :day %>
+    <div><%= total_hours %></div>
+  <%- end %>
 <%- end %>

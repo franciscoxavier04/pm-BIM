@@ -165,6 +165,13 @@ en:
   label_costs: "Costs"
   label_mandatory_fields: "Mandatory fields"
   label_my_time_tracking: "My time tracking"
+  label_no_time: "No time tracked"
+  label_next_day: "Next day"
+  label_next_week: "Next week"
+  label_next_month: "Next month"
+  label_previous_day: "Previous day"
+  label_previous_week: "Previous week"
+  label_previous_month: "Previous month"
 
   placeholder_activity_select_work_package_first: Work package selection is required first
 

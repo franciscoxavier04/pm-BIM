@@ -68,25 +68,24 @@ export default class MyTimeTrackingController extends Controller {
         ];
       },
       eventContent: (arg) => {
-        let time = '';
+        let timeDetails = '';
 
-        if (arg.event.allDay) {
-          time = `${this.displayDuration(arg.event.extendedProps.hours as number)}`;
-        } else {
-          time = `${moment(arg.event.start).format('HH:mm')}-${moment(arg.event.end).format('HH:mm')} (${this.displayDuration(arg.event.extendedProps.hours as number)})`;
+        if (!arg.event.allDay) {
+          timeDetails = `<div class="color-fg-muted mt-3">${moment(arg.event.start).format('HH:mm')} - ${moment(arg.event.end).format('HH:mm')}</div>`;
         }
 
         return {
           html: `
-            <div class="fc-event-main-frame">
-              <div class="fc-event-time">${time}</div>
-              <div class="fc-event-title-container">
-                <div class="fc-event-title fc-sticky">
-                  <a href="${this.pathHelper.workPackageShortPath(arg.event.extendedProps.workPackageId as string)}">${arg.event.extendedProps.workPackageSubject}</a>
-                </div>
-                <div class="color-fg-muted">${arg.event.extendedProps.projectName}</div>
-              </div>
-            </div>`,
+           <div class="fc-event-main-frame">
+             <div class="fc-event-time">${this.displayDuration(arg.event.extendedProps.hours as number)}</div>
+             <div class="fc-event-title-container">
+               <div class="fc-event-title mb-2">
+                 <a href="${this.pathHelper.workPackageShortPath(arg.event.extendedProps.workPackageId as string)}">${arg.event.extendedProps.workPackageSubject}</a>
+               </div>
+               <div class="color-fg-muted">${arg.event.extendedProps.projectName}</div>
+               ${timeDetails}
+             </div>
+           </div>`,
         };
       },
       select: (info) => {
@@ -178,10 +177,14 @@ export default class MyTimeTrackingController extends Controller {
           { method: 'GET' },
         );
       },
-
-      viewDidMount: (info) => {
-        const content = '<tr role="presentation" class="fc-scrollgrid-section fc-scrollgrid-section-header "><th role="presentation"><div class="fc-scroller-harness"><div class="fc-scroller" style="overflow: hidden scroll;"><table role="presentation" style="width: 2399px;" class="fc-col-header "><colgroup><col style="width: 61px;"></colgroup><thead role="presentation"><tr role="row"><th aria-hidden="true" class="fc-timegrid-axis"><div class="fc-timegrid-axis-frame"></div></th><th role="columnheader" data-date="2025-03-31" class="fc-col-header-cell fc-day fc-day-mon fc-day-past"><div class="fc-scrollgrid-sync-inner"><a aria-label="31. März 2025" class="fc-col-header-cell-cushion">Mo. 31.3.</a></div></th><th role="columnheader" data-date="2025-04-01" class="fc-col-header-cell fc-day fc-day-tue fc-day-past"><div class="fc-scrollgrid-sync-inner"><a aria-label="1. April 2025" class="fc-col-header-cell-cushion">Di. 1.4.</a></div></th><th role="columnheader" data-date="2025-04-02" class="fc-col-header-cell fc-day fc-day-wed fc-day-past"><div class="fc-scrollgrid-sync-inner"><a aria-label="2. April 2025" class="fc-col-header-cell-cushion">Mi. 2.4.</a></div></th><th role="columnheader" data-date="2025-04-03" class="fc-col-header-cell fc-day fc-day-thu fc-day-past"><div class="fc-scrollgrid-sync-inner"><a aria-label="3. April 2025" class="fc-col-header-cell-cushion">Do. 3.4.</a></div></th><th role="columnheader" data-date="2025-04-04" class="fc-col-header-cell fc-day fc-day-fri fc-day-today"><div class="fc-scrollgrid-sync-inner"><a aria-label="4. April 2025" class="fc-col-header-cell-cushion">Fr. 4.4.</a></div></th><th role="columnheader" data-date="2025-04-05" class="fc-col-header-cell fc-day fc-day-sat fc-day-future"><div class="fc-scrollgrid-sync-inner"><a aria-label="5. April 2025" class="fc-col-header-cell-cushion">Sa. 5.4.</a></div></th><th role="columnheader" data-date="2025-04-06" class="fc-col-header-cell fc-day fc-day-sun fc-day-future"><div class="fc-scrollgrid-sync-inner"><a aria-label="6. April 2025" class="fc-col-header-cell-cushion">So. 6.4.</a></div></th></tr></thead></table></div></div></th></tr>';
-        info.el.querySelector('.fc-timegrid .fc-scrollgrid tbody')?.insertAdjacentHTML('beforeend', content);
+      viewDidMount: () => {
+        setTimeout(() => this.addTotalFooter(), 100);
+      },
+      eventDidMount: () => {
+        setTimeout(() => this.addTotalFooter(), 100);
+      },
+      eventChange: () => {
+        setTimeout(() => this.addTotalFooter(), 100);
       },
     });
 
@@ -190,6 +193,119 @@ export default class MyTimeTrackingController extends Controller {
 
   disconnect():void {
     document.removeEventListener('dialog:close', this.dialogCloseListener);
+
+    // Clean up calendar when controller disconnects
+    if (this.calendar) {
+      this.calendar.destroy();
+    }
+  }
+
+  addTotalFooter() {
+    if (!this.calendar) return;
+    const calendarScrollGridWrapper = document.querySelector('.fc-timegrid .fc-scrollgrid tbody');
+
+    if (!calendarScrollGridWrapper) return;
+
+    // Add footer dividier if it doesn't exist
+    if (calendarScrollGridWrapper.querySelector('.fc-timegrid-footer-divider') === null) {
+      calendarScrollGridWrapper.insertAdjacentHTML('beforeend', '<tr role="presentation" class="fc-scrollgrid-section fc-timegrid-footer-divider"><td class="fc-timegrid-divider fc-cell-shaded"></td></tr>');
+    }
+
+    // Remove existing footer if it exists
+    const existingFooter = document.querySelector('.fc-timegrid-footer-totals');
+    if (existingFooter) {
+      existingFooter.remove();
+    }
+    const days:string[] = [];
+    document.querySelectorAll('.fc-timegrid-cols .fc-day').forEach((dayElement) => {
+      days.push(dayElement.getAttribute('data-date') as string);
+    });
+
+    calendarScrollGridWrapper.appendChild(this.buildHtmlFooter(days));
+  }
+
+  calculateTotalHours(dayStr:string):number {
+    // Calculate total hours for this day
+    let totalHours = 0;
+
+    this.calendar.getEvents().forEach((event) => {
+      const eventStart = event.start;
+      if (!eventStart) return;
+
+      // Format event date for comparison
+      const eventDateStr = eventStart.toISOString().slice(0, 10);
+
+      if (eventDateStr === dayStr && event.extendedProps && event.extendedProps.hours) {
+        totalHours += event.extendedProps.hours as number;
+      }
+    });
+
+    return totalHours;
+  }
+
+  buildHtmlFooter(days:string[]):HTMLTableRowElement {
+    const tr = document.createElement('tr');
+    tr.setAttribute('role', 'presentation');
+    tr.className = 'fc-scrollgrid-section fc-scrollgrid-section-footer fc-timegrid-footer-totals';
+
+    const td = document.createElement('td');
+    td.setAttribute('role', 'presentation');
+
+    const scrollerHarness = document.createElement('div');
+    scrollerHarness.className = 'fc-scroller-harness';
+
+    const scroller = document.createElement('div');
+    scroller.className = 'fc-scroller';
+    scroller.style.overflow = 'hidden scroll';
+
+    const table = document.createElement('table');
+    table.setAttribute('role', 'presentation');
+    table.className = 'fc-col-footer';
+
+    const colgroup = document.createElement('colgroup');
+    const col = document.createElement('col');
+    col.style.width = '61px';
+
+    const tbody = document.createElement('tbody');
+    tbody.setAttribute('role', 'presentation');
+
+    const tbodyTr = document.createElement('tr');
+    tbodyTr.setAttribute('role', 'row');
+
+    const th1 = document.createElement('th');
+    th1.setAttribute('aria-hidden', 'true');
+    th1.className = 'fc-timegrid-axis';
+
+    const axisFrame = document.createElement('div');
+    axisFrame.className = 'fc-timegrid-axis-frame';
+
+    th1.appendChild(axisFrame);
+    tbodyTr.appendChild(th1);
+
+    // Add columns for each day
+    days.forEach((day) => {
+      const footerCell = document.createElement('th');
+      footerCell.setAttribute('role', 'columnfooter');
+      footerCell.className = 'fc-col-footer-cell fc-day';
+
+      // Inner div in der zweiten Zelle erstellen
+      const syncInner = document.createElement('div');
+      syncInner.className = 'fc-scrollgrid-sync-inner';
+      syncInner.textContent = this.displayDuration(this.calculateTotalHours(day));
+      footerCell.appendChild(syncInner);
+      tbodyTr.appendChild(footerCell);
+    });
+
+    tbody.appendChild(tbodyTr);
+    colgroup.appendChild(col);
+    table.appendChild(colgroup);
+    table.appendChild(tbody);
+    scroller.appendChild(table);
+    scrollerHarness.appendChild(scroller);
+    td.appendChild(scrollerHarness);
+    tr.appendChild(td);
+
+    return tr;
   }
 
   updateTimeEntry(timeEntryId:string, spentOn:string, startTime:string | null, hours:number, revertFunction:() => void) {
@@ -232,6 +348,9 @@ export default class MyTimeTrackingController extends Controller {
     if (minutes === 0) {
       return `${hours}h`;
     }
+    if (hours === 0) {
+      return `${minutes}m`;
+    }
     return `${hours}h ${minutes}m`;
   }
 
@@ -249,7 +368,7 @@ export default class MyTimeTrackingController extends Controller {
   }
 
   dialogCloseListener(this:void, event:CustomEvent):void {
-    const { detail: { dialog, submitted } } = event as { detail:{ dialog:HTMLDialogElement; submitted:boolean }; };
+    const { detail: { dialog, submitted } } = event as { detail:{ dialog:HTMLDialogElement; submitted:boolean } };
     if (dialog.id === 'time-entry-dialog' && submitted) {
       window.location.reload();
     }
