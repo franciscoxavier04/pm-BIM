@@ -63,6 +63,14 @@ class MigrateClassicMeetings < ActiveRecord::Migration[8.0]
       WHERE mc.type = 'MeetingMinutes';
     SQL
 
+    # Close classic meetings that are in the past
+    execute <<~SQL.squish
+      UPDATE meetings
+      SET state = 5
+      WHERE type = 'Meeting'
+      AND start_time < CURRENT_TIMESTAMP
+    SQL
+
     # Remove STI column
     remove_column :meetings, :type
   end
