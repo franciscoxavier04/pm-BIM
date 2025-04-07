@@ -16,15 +16,23 @@ We released OpenProject [OpenProject 15.5.0](https://community.openproject.org/v
 
 ### Filter for descendants (children and grandchildren) of work packages
 
-Users can now filter work packages for "Descendants of" a certain work package – or several work packages. This allows users to see all descendants of one or multiple work packages in one view.
+In OpenProject 15.5, you can now filter for all descendants of a work package — including children, grandchildren, and deeper levels. This is especially helpful when focusing on a specific part of a project that includes multiple levels of work packages.
 
-Before this release, users could only filter for parents, not for descendants like children or grandchildren.
+The new filter option **Descendants of** allows you to select one or more parent work packages by ID and display all their subordinate items. It is available wherever filters are supported — such as work package tables or agile boards.
 
-The new filter works everywhere work package filters are possible, e.g. work package tables or agile boards.
+Previously, it was only possible to filter for parent work packages, not their lower-level hierarchy.
 
 ![Work package table filtered for descendants of a phase](openproject-15-5-descendants-filter-highlighted.png)
 
 ### Advanced accessibility in the date picker
+
+Accessibility remains a key focus in OpenProject, and with version 15.5, we’ve enhanced support for screen readers. These improvements ensure that users relying on assistive technologies receive meaningful feedback during manual date input.
+
+- Informative announcements are now triggered when switching between manual and automatic scheduling.
+- Changes in one date field (e.g., Start date or Duration) are announced as they update related fields.
+- The “Today” shortcuts include ARIA labels to give clear context, such as “Select today as start date.”
+
+This update is part of our ongoing ARIA implementation strategy, with [further accessibility enhancements planned in upcoming versions](https://community.openproject.org/wp/62708).
 
 ### % Complete included in work package table sums
 
