@@ -36,7 +36,7 @@ module OpenIDConnect
     menu_item :plugin_openid_connect
 
     before_action :require_admin
-    before_action :check_ee
+    before_action :check_ee, except: %i[index]
     before_action :find_provider, only: %i[edit show update confirm_destroy destroy]
     before_action :set_edit_state, only: %i[create edit update]
 
@@ -123,10 +123,7 @@ module OpenIDConnect
     private
 
     def check_ee
-      unless EnterpriseToken.allows_to?(:sso_auth_providers)
-        render template: "/openid_connect/providers/upsale"
-        false
-      end
+      redirect_to action: :index unless EnterpriseToken.allows_to?(:sso_auth_providers)
     end
 
     def find_provider

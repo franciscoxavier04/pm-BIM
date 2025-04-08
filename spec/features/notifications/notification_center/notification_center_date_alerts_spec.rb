@@ -195,11 +195,13 @@ RSpec.describe "Notification center date alerts", :js, with_settings: { journal_
       side_menu.click_item "Date alert"
 
       expect(page).to have_current_path(/notifications\/date_alerts/)
-      expect(page).to have_text "Date alerts is an Enterprise"
-      expect(page).to have_text "Please upgrade to a paid plan "
+      expect(page).to have_enterprise_upsale_page(:basic)
 
       # It does not allows direct url access
       visit notifications_center_path(filter: "reason", name: "dateAlert")
+
+      expect(page).to have_current_path(/notifications\/date_alerts/)
+      expect(page).to have_enterprise_upsale_page(:basic)
     end
   end
 

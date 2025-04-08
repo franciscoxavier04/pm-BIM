@@ -34,7 +34,7 @@ require "support/flash/expectations"
 RSpec.describe "Work package activity", :js, :with_cuprite do
   include Flash::Expectations
 
-  let(:project) { create(:project) }
+  let(:project) { create(:project, enabled_comments_with_restricted_visibility: true) }
   let(:admin) { create(:admin) }
   let(:member_role) do
     create(:project_role,

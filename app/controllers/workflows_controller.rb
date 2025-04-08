@@ -152,6 +152,6 @@ class WorkflowsController < ApplicationController
   def permitted_status_params
     params["status"]
       .to_unsafe_h
-      .select { |key, value| /\A\d+\z/.match?(key) && /\A\d+\z/.match?(value) }
+      .select { |key, value| /\A\d+\z/.match?(key) && value.keys.all? { /\A\d+\z/.match?(it) } }
   end
 end

@@ -280,6 +280,7 @@ Rails.application.routes.draw do
         get :categories, to: redirect("projects/%{project_id}/settings/work_packages/categories")
         resource :work_packages, only: %i[show]
         namespace :work_packages do
+          resource :activities, only: %i[show update]
           resource :types, only: %i[show update]
           resource :custom_fields, only: %i[show update]
           resource :categories, only: %i[show update]
@@ -446,6 +447,12 @@ Rails.application.routes.draw do
           format: "html",
           constraints: { rev: /[\w.\-]+/, repo_path: /.*/ },
           as: "show_revisions_path"
+    end
+  end
+
+  resources :project_phases, only: [] do
+    member do
+      get "/hover_card" => "project_phases/hover_card#show", as: "hover_card"
     end
   end
 
@@ -700,7 +707,7 @@ Rails.application.routes.draw do
     get "/new" => "work_packages#index", on: :collection, as: "new", state: "new"
     # We do not want to match the work package export routes
     get "(/*state)" => "work_packages#show", on: :member, as: "", constraints: { id: /\d+/, state: /(?!(shares|split_view)).+/ }
-    get "/share_upsale" => "work_packages#index", on: :collection, as: "share_upsale"
+    get "/share_upsale" => "work_packages#share_upsale", on: :collection, as: "share_upsale"
     get "/edit" => "work_packages#show", on: :member, as: "edit"
   end
 
@@ -795,6 +802,9 @@ Rails.application.routes.draw do
 
     resources :sessions, controller: "my/sessions", as: "my_sessions", only: %i[index show destroy]
     resources :auto_login_tokens, controller: "my/auto_login_tokens", as: "my_auto_login_tokens", only: %i[destroy]
+
+    get "/banner" => "my/enterprise_banners#show", as: "show_enterprise_banner"
+    post "/dismiss_banner" => "my/enterprise_banners#dismiss", as: "dismiss_enterprise_banner"
   end
 
   scope controller: "my" do
