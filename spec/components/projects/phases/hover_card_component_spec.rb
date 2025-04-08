@@ -45,7 +45,7 @@ RSpec.describe Projects::Phases::HoverCardComponent, type: :component do
 
   context "for start" do
     it "renders successfully" do
-      page.find_test_selector("phase-gate-hover-card-name", text: phase.definition.start_gate_name)
+      page.find_test_selector("phase-gate-hover-card-name", text: phase.start_gate_name)
       page.find_test_selector("phase-gate-hover-card-date", text: phase.start_date.strftime("%m/%d/%Y"))
     end
 
@@ -63,7 +63,7 @@ RSpec.describe Projects::Phases::HoverCardComponent, type: :component do
     let(:gate) { "finish" }
 
     it "renders successfully" do
-      page.find_test_selector("phase-gate-hover-card-name", text: phase.definition.finish_gate_name)
+      page.find_test_selector("phase-gate-hover-card-name", text: phase.finish_gate_name)
       page.find_test_selector("phase-gate-hover-card-date", text: phase.finish_date.strftime("%m/%d/%Y"))
     end
 

@@ -48,9 +48,9 @@ module Projects
       def phase_gate_name
         case @gate
         when :start
-          @phase.definition.start_gate? ? @phase.start_gate_name : nil
+          @phase.start_gate? ? @phase.start_gate_name : nil
         else
-          @phase.definition.finish_gate? ? @phase.finish_gate_name : nil
+          @phase.finish_gate? ? @phase.finish_gate_name : nil
         end
       end
 
