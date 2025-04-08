@@ -28,18 +28,30 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Projects::Settings::WorkPackagesController < Projects::SettingsController
-  menu_item :settings_work_packages
+require "spec_helper"
 
-  def show
-    if User.current.allowed_in_project?(:manage_types, @project)
-      redirect_to project_settings_work_packages_types_path
-    elsif User.current.allowed_in_project?(:manage_categories, @project)
-      redirect_to project_settings_work_packages_categories_path
-    elsif User.current.allowed_in_project?(:select_custom_fields, @project)
-      redirect_to project_settings_work_packages_custom_fields_path
-    elsif User.current.allowed_in_project?(:edit_project, @project)
-      redirect_to project_settings_work_packages_activities_path
-    end
+RSpec.describe "WorkPackages-Settings-Activities", :js do
+  let!(:project) { create(:project) }
+  let(:activities_settings_page) { Pages::Projects::Settings::Activities.new(project) }
+
+  current_user { create(:admin) }
+
+  it "enables and disables the settings for the project", with_ee: %i[comments_with_restricted_visibility] do
+    activities_settings_page.visit!
+    expect(page).to have_css("#activities-form")
+
+    expect(page).to have_field(:project_enabled_comments_with_restricted_visibility, checked: false)
+
+    check("Enable restricted visibility comments")
+    click_link_or_button "Save"
+
+    expect_and_dismiss_flash(message: "Successful update.")
+    expect(page).to have_field(:project_enabled_comments_with_restricted_visibility, checked: true)
+
+    uncheck("Enable restricted visibility comments")
+    click_link_or_button "Save"
+
+    expect_and_dismiss_flash(message: "Successful update.")
+    expect(page).to have_field(:project_enabled_comments_with_restricted_visibility, checked: false)
   end
 end

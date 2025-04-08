@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,20 +26,26 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-class Projects::Settings::WorkPackagesController < Projects::SettingsController
-  menu_item :settings_work_packages
+require "support/pages/page"
 
-  def show
-    if User.current.allowed_in_project?(:manage_types, @project)
-      redirect_to project_settings_work_packages_types_path
-    elsif User.current.allowed_in_project?(:manage_categories, @project)
-      redirect_to project_settings_work_packages_categories_path
-    elsif User.current.allowed_in_project?(:select_custom_fields, @project)
-      redirect_to project_settings_work_packages_custom_fields_path
-    elsif User.current.allowed_in_project?(:edit_project, @project)
-      redirect_to project_settings_work_packages_activities_path
+module Pages
+  module Projects
+    module Settings
+      class Activities < Pages::Page
+        attr_accessor :project
+
+        def initialize(project)
+          super()
+
+          @project = project
+        end
+
+        def path
+          "/projects/#{project.identifier}/settings/work_packages/activities"
+        end
+      end
     end
   end
 end

@@ -27,19 +27,35 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+module Projects::Settings::WorkPackages::Activities
+  class Form < ApplicationForm
+    form do |f|
+      f.check_box(
+        name: :enabled_comments_with_restricted_visibility,
+        label: I18n.t("settings.work_packages.activities.enable_comments_with_restricted_visibility"),
+        caption: caption_text,
+        checked: model.project.enabled_comments_with_restricted_visibility
+      )
 
-class Projects::Settings::WorkPackagesController < Projects::SettingsController
-  menu_item :settings_work_packages
+      f.submit(
+        name: :submit,
+        label: I18n.t(:button_save),
+        scheme: :primary
+      )
+    end
 
-  def show
-    if User.current.allowed_in_project?(:manage_types, @project)
-      redirect_to project_settings_work_packages_types_path
-    elsif User.current.allowed_in_project?(:manage_categories, @project)
-      redirect_to project_settings_work_packages_categories_path
-    elsif User.current.allowed_in_project?(:select_custom_fields, @project)
-      redirect_to project_settings_work_packages_custom_fields_path
-    elsif User.current.allowed_in_project?(:edit_project, @project)
-      redirect_to project_settings_work_packages_activities_path
+    def initialize(**_options)
+      super()
+    end
+
+    private
+
+    def caption_text
+      link = render(Primer::Beta::Link.new(href: OpenProject::Static::Links.url_for(:user_guides_work_package_activity))) do
+        I18n.t("label_learn_more")
+      end
+
+      I18n.t("settings.work_packages.activities.helper_text", link:).html_safe
     end
   end
 end
