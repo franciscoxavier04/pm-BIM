@@ -105,7 +105,7 @@ class TimeEntriesController < ApplicationController
     @time_entry = call.result
 
     if call.success?
-      render_success_flash_message_via_turbo_stream(message: "Event successfully changed")
+      render_success_flash_message_via_turbo_stream(message: t("notice_updated_successfully"))
     else
       form_component = TimeEntries::TimeEntryFormComponent.new(time_entry: @time_entry, **form_config_options)
       update_via_turbo_stream(component: form_component, status: :bad_request)
