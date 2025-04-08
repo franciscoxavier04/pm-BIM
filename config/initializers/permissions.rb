@@ -136,7 +136,9 @@ Rails.application.reloader.to_prepare do
                      require: :member
 
       map.permission :view_project_phases,
-                     {},
+                     {
+                       "project_phases/hover_card": :show
+                     },
                      permissible_on: :project,
                      dependencies: :view_project,
                      visible: -> { OpenProject::FeatureDecisions.stages_and_gates_active? }

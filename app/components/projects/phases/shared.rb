@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# -- copyright
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,54 +26,16 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
+
 module Projects
-  class PhaseComponent < ApplicationComponent
-    include OpPrimer::ComponentHelpers
-    include Projects::Phases::Shared
+  module Phases
+    module Shared
+      def gate_icon = :"op-gate"
 
-    def initialize(phase:, **)
-      @phase = phase
-
-      super(**)
-    end
-
-    def start_date
-      if phase.start_date.present?
-        helpers.format_date(phase.start_date)
-      else
-        helpers.t("js.label_no_start_date")
+      def icon_color_class
+        helpers.hl_inline_class("project_phase_definition", phase.definition_id)
       end
     end
-
-    def finish_date
-      if phase.finish_date.present?
-        helpers.format_date(phase.finish_date)
-      else
-        helpers.t("js.label_no_due_date")
-      end
-    end
-
-    def display_start_gate?
-      phase.start_gate? && phase.start_date.present?
-    end
-
-    def display_finish_gate?
-      phase.finish_gate? && phase.finish_date.present?
-    end
-
-    def hover_card_data_args(gate:)
-      raise ArgumentError, "gate must be either :start or :finish" unless %i[start finish].include?(gate)
-
-      {
-        hover_card_trigger_target: "trigger",
-        hover_card_url: hover_card_project_phase_path(phase, gate:),
-        test_selector: "phase-#{phase.id}-#{gate}-gate"
-      }
-    end
-
-    private
-
-    attr_reader :phase
   end
 end

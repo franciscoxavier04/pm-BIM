@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# -- copyright
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,54 +26,46 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
-module Projects
-  class PhaseComponent < ApplicationComponent
-    include OpPrimer::ComponentHelpers
-    include Projects::Phases::Shared
+#++
 
-    def initialize(phase:, **)
-      @phase = phase
+module ProjectPhases
+  class HoverCardController < ApplicationController
+    before_action :authorize
+    before_action :check_feature_flag
+    before_action :assign_gate
+    before_action :find_phase
+    before_action :check_access
 
-      super(**)
-    end
+    layout false
 
-    def start_date
-      if phase.start_date.present?
-        helpers.format_date(phase.start_date)
-      else
-        helpers.t("js.label_no_start_date")
-      end
-    end
-
-    def finish_date
-      if phase.finish_date.present?
-        helpers.format_date(phase.finish_date)
-      else
-        helpers.t("js.label_no_due_date")
-      end
-    end
-
-    def display_start_gate?
-      phase.start_gate? && phase.start_date.present?
-    end
-
-    def display_finish_gate?
-      phase.finish_gate? && phase.finish_date.present?
-    end
-
-    def hover_card_data_args(gate:)
-      raise ArgumentError, "gate must be either :start or :finish" unless %i[start finish].include?(gate)
-
-      {
-        hover_card_trigger_target: "trigger",
-        hover_card_url: hover_card_project_phase_path(phase, gate:),
-        test_selector: "phase-#{phase.id}-#{gate}-gate"
-      }
-    end
+    def show; end
 
     private
 
-    attr_reader :phase
+    def check_feature_flag
+      return if OpenProject::FeatureDecisions.stages_and_gates_active?
+
+      render json: { error: "Not found" }, status: :not_found
+    end
+
+    def check_access
+      return if User.current.allowed_in_project?(:view_project_phases, @phase.project)
+
+      render json: { error: "Forbidden" }, status: :forbidden
+    end
+
+    def assign_gate
+      @gate = params[:gate]
+      return if @gate.in?(%w[start finish])
+
+      render json: { error: "Invalid gate parameter" }, status: :unprocessable_entity
+    end
+
+    def find_phase
+      @phase = Project::Phase.where(active: true).eager_load(:definition).find_by(id: params[:id])
+      return if @phase
+
+      render json: { error: "Invalid id parameter" }, status: :unprocessable_entity
+    end
   end
 end

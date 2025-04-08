@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# -- copyright
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,54 +26,44 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
+
 module Projects
-  class PhaseComponent < ApplicationComponent
-    include OpPrimer::ComponentHelpers
-    include Projects::Phases::Shared
+  module Phases
+    class HoverCardComponent < ApplicationComponent
+      include OpPrimer::ComponentHelpers
+      include Projects::Phases::Shared
 
-    def initialize(phase:, **)
-      @phase = phase
+      attr_reader :phase
 
-      super(**)
-    end
+      def initialize(phase:, gate:)
+        raise ArgumentError, "gate must be either 'start' or 'finish'" unless %w[start finish].include?(gate)
 
-    def start_date
-      if phase.start_date.present?
-        helpers.format_date(phase.start_date)
-      else
-        helpers.t("js.label_no_start_date")
+        super
+
+        @phase = phase
+        @gate = gate.to_sym
+      end
+
+      def phase_gate_name
+        case @gate
+        when :start
+          @phase.start_gate? ? @phase.start_gate_name : nil
+        else
+          @phase.finish_gate? ? @phase.finish_gate_name : nil
+        end
+      end
+
+      def phase_gate_date
+        date = case @gate
+               when :start
+                 @phase.start_date
+               else
+                 @phase.finish_date
+               end
+
+        helpers.format_date(date)
       end
     end
-
-    def finish_date
-      if phase.finish_date.present?
-        helpers.format_date(phase.finish_date)
-      else
-        helpers.t("js.label_no_due_date")
-      end
-    end
-
-    def display_start_gate?
-      phase.start_gate? && phase.start_date.present?
-    end
-
-    def display_finish_gate?
-      phase.finish_gate? && phase.finish_date.present?
-    end
-
-    def hover_card_data_args(gate:)
-      raise ArgumentError, "gate must be either :start or :finish" unless %i[start finish].include?(gate)
-
-      {
-        hover_card_trigger_target: "trigger",
-        hover_card_url: hover_card_project_phase_path(phase, gate:),
-        test_selector: "phase-#{phase.id}-#{gate}-gate"
-      }
-    end
-
-    private
-
-    attr_reader :phase
   end
 end
