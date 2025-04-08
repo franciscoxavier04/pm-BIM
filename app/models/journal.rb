@@ -40,8 +40,7 @@ class Journal < ApplicationRecord
   acts_as_attachable view_permission: :view_work_packages,
                      add_on_new_permission: :add_work_package_notes,
                      add_on_persisted_permission: :edit_own_work_package_notes,
-                     delete_permission: :edit_own_work_package_notes,
-                     only_user_allowed: true
+                     delete_permission: :edit_own_work_package_notes
 
   register_journal_formatter OpenProject::JournalFormatter::ActiveStatus
   register_journal_formatter OpenProject::JournalFormatter::AgendaItemDiff
