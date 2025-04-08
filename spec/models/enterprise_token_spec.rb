@@ -32,13 +32,13 @@ require "spec_helper"
 
 RSpec.describe EnterpriseToken do
   let(:object) { OpenProject::Token.new domain: Setting.host_name }
-  let(:ee_manager_visible) { true }
+  let(:ee_hide_banners) { true }
 
   subject { described_class.new(encoded_token: "foo") }
 
   before do
     RequestStore.delete :current_ee_token
-    allow(OpenProject::Configuration).to receive(:ee_manager_visible?).and_return(ee_manager_visible)
+    allow(OpenProject::Configuration).to receive(:ee_hide_banners?).and_return(ee_hide_banners)
   end
 
   describe ".active?" do
@@ -71,18 +71,18 @@ RSpec.describe EnterpriseToken do
 
   describe ".hide_banners?" do
     context "when ee manager is visible" do
-      let(:ee_manager_visible) { true }
+      let(:ee_hide_banners) { true }
 
       it "returns true" do
-        expect(described_class).not_to be_hide_banners
+        expect(described_class).to be_hide_banners
       end
     end
 
     context "when ee manager is not visible" do
-      let(:ee_manager_visible) { false }
+      let(:ee_hide_banners) { false }
 
       it "returns false" do
-        expect(described_class).to be_hide_banners
+        expect(described_class).not_to be_hide_banners
       end
     end
   end
@@ -221,10 +221,10 @@ RSpec.describe EnterpriseToken do
     end
   end
 
-  describe "Configuration file has `ee_manager_visible` set to false" do
+  describe "Configuration file has `ee_hide_banners` set to false" do
     it "does not show banners promoting EE" do
-      allow(OpenProject::Configuration).to receive(:ee_manager_visible?).and_return(false)
-      expect(described_class).to be_hide_banners
+      allow(OpenProject::Configuration).to receive(:ee_hide_banners?).and_return(false)
+      expect(described_class).not_to be_hide_banners
     end
   end
 end
