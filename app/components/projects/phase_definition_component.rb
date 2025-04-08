@@ -31,10 +31,6 @@ module Projects
   class PhaseDefinitionComponent < ApplicationComponent
     include OpPrimer::ComponentHelpers
 
-    # TODO: This component is currently not in use! It should be a shared component
-    # between the Projects::Settings::LifeCycleSteps::StepComponent and the
-    # Settings::ProjectLifeCycleStepDefinitions::RowComponent.
-    # It should hold the icon, definition name and gate text information.
     def phase_text
       model.name
     end
