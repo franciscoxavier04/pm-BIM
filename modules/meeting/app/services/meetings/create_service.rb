@@ -43,7 +43,10 @@ module Meetings
         end
       end
 
-      call.merge! create_backlog(call.result) if call.success?
+      if call.success?
+        backlog = create_backlog(call.result)
+        call.merge!(backlog)
+      end
 
       call
     end
