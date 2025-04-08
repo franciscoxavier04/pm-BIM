@@ -159,11 +159,11 @@ RSpec.describe CostQuery::PDF::TimesheetGenerator do
       generator.format_hours(time_entry_without_time.hours),
 
       I18n.t("export.timesheet.sums_hours"),
-      generator.format_hours(time_entries.select { |entry| entry.user == user }.map(&:hours).sum),
-      generator.format_hours(time_entries.select { |entry| entry.user == time_entry_user }.map(&:hours).sum),
+      generator.format_hours(time_entries.select { |entry| entry.user == user }.sum(&:hours)),
+      generator.format_hours(time_entries.select { |entry| entry.user == time_entry_user }.sum(&:hours)),
 
       "#{I18n.t('export.timesheet.total_sum')}:",
-      generator.format_hours(time_entries.map(&:hours).sum),
+      generator.format_hours(time_entries.sum(&:hours))
     ]
   end
 
