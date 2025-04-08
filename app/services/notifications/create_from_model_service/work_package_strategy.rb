@@ -31,8 +31,8 @@ module Notifications::CreateFromModelService::WorkPackageStrategy
     %i(mentioned assigned responsible watched commented created processed prioritized scheduled shared)
   end
 
-  def self.permission(journal, reason)
-    if journal.restricted? && %i[mentioned commented].include?(reason)
+  def self.permission(journal, _reason)
+    if journal.restricted?
       :view_comments_with_restricted_visibility
     else
       :view_work_packages
