@@ -234,7 +234,7 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def journal_params
-    params.expect(journal: [:notes, :restricted, { attachment_ids: [] }])
+    params.expect(journal: %i[notes restricted])
   end
 
   def handle_successful_create_call(call)

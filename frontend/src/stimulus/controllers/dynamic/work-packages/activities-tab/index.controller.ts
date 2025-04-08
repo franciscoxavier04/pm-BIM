@@ -28,14 +28,12 @@
  * ++
  */
 
-import { ID } from '@datorama/akita';
 import { Controller } from '@hotwired/stimulus';
-import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
-import { IAttachment } from 'core-app/core/state/attachments/attachment.model';
-import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 import {
   ICKEditorInstance,
 } from 'core-app/shared/components/editor/components/ckeditor/ckeditor.types';
+import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
+import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 
 enum AnchorType {
   Comment = 'comment',
@@ -47,10 +45,6 @@ interface CustomEventWithIdParam extends Event {
     id:string;
     anchorName:AnchorType;
   };
-}
-
-interface AttachmentEvent extends CustomEvent {
-  detail:IAttachment;
 }
 
 export default class IndexController extends Controller {
@@ -101,13 +95,11 @@ export default class IndexController extends Controller {
   private adjustMarginBound:EventListener;
   private onBlurEditorBound:EventListener;
   private onFocusEditorBound:EventListener;
-  private onAttachmentAddedBound:EventListener;
 
   private saveInProgress:boolean;
   private updateInProgress:boolean;
-  private attachmentIds:Set<ID> = new Set();
-
   private turboRequests:TurboRequestsService;
+
   private apiV3Service:ApiV3Service;
 
   async connect() {
@@ -566,11 +558,6 @@ export default class IndexController extends Controller {
       }
     };
 
-    this.onAttachmentAddedBound = (event:AttachmentEvent) => {
-      const attachment = event.detail;
-      this.attachmentIds.add(attachment.id);
-    };
-
     const editorElement = this.getCkEditorElement();
     if (editorElement) {
       editorElement.addEventListener('saveRequested', this.onSubmitBound);
@@ -578,7 +565,6 @@ export default class IndexController extends Controller {
       editorElement.addEventListener('editorKeyup', this.adjustMarginBound);
       editorElement.addEventListener('editorBlur', this.onBlurEditorBound);
       editorElement.addEventListener('editorFocus', this.onFocusEditorBound);
-      editorElement.addEventListener('attachmentAdded', this.onAttachmentAddedBound);
     }
   }
 
@@ -590,7 +576,6 @@ export default class IndexController extends Controller {
       editorElement.removeEventListener('editorKeyup', this.adjustMarginBound);
       editorElement.removeEventListener('editorBlur', this.onBlurEditorBound);
       editorElement.removeEventListener('editorFocus', this.onFocusEditorBound);
-      editorElement.removeEventListener('attachmentAdded', this.onAttachmentAddedBound);
     }
   }
 
@@ -788,12 +773,6 @@ export default class IndexController extends Controller {
     formData.append('last_update_timestamp', this.lastServerTimestampValue);
     formData.append('filter', this.filterValue);
     formData.append('journal[notes]', data);
-
-    if (this.attachmentIds.size > 0) {
-      this.attachmentIds.forEach((attachmentId) => {
-        formData.append('journal[attachment_ids][]', attachmentId.toString());
-      });
-    }
 
     return formData;
   }
