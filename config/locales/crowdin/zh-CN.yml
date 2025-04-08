@@ -1294,7 +1294,7 @@ zh-CN:
         queries/principals/filters/restricted_mentionable_on_work_package_filter:
           attributes:
             values:
-              single_value_requirement: "must be a single work package"
+              single_value_requirement: "必须是单个工作包"
         relation:
           typed_dag:
             circular_dependency: "关系会创建关系的循环。"
@@ -3743,7 +3743,7 @@ zh-CN:
       heading: "项目生命周期"
       heading_description: "项目生命周期定义了可以用于您的项目规划并将出现在每个项目的概览页面中的项目阶段。 这些属性可以启用或禁用，但不能在项目一级重新排序。"
       label_add: "添加"
-      label_add_description: "Add project phase definition"
+      label_add_description: "添加项目阶段定义"
       filter:
         label: "搜索项目阶段"
       section_header: "阶段"
