@@ -36,7 +36,7 @@ module WorkPackages::ActivitiesTab::Journals
         checked: false,
         data: {
           "work-packages--activities-tab--restricted-comment-target": "restrictedCheckbox",
-          action: "input->work-packages--activities-tab--restricted-comment#toggleBackgroundColor"
+          action: "input->work-packages--activities-tab--restricted-comment#toggleRestriction"
         }
       )
     end

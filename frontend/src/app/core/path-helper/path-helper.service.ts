@@ -58,6 +58,10 @@ export class PathHelperService {
     return `${this.api.v3.apiV3Base}/file_links`;
   }
 
+  public bannerFramePath(feature:string, dismissable:boolean):string {
+    return `${this.staticBase}/my/banner?feature_key=${feature}&dismissable=${dismissable}`;
+  }
+
   public ifcModelsPath(projectIdentifier:string) {
     return `${this.staticBase}/projects/${projectIdentifier}/ifc_models`;
   }

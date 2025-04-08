@@ -106,7 +106,7 @@ ro:
   caption_save_rate: "Salvează tarif"
   caption_set_rate: "Setează tarif curent"
   caption_show_locked: "Afișați tipurile blocate"
-  caption_log_time_dialog: "Consum timp"
+  caption_log_time_dialog: "Registru timp"
   description_date_for_new_rate: "Dată pentru noul tarif"
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."

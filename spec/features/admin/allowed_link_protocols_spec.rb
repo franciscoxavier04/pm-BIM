@@ -57,5 +57,15 @@ RSpec.describe "Allowed link protocols", :js do
     expect(Setting.allowed_link_protocols).to match_array(custom_protocols)
     expect(Setting::AllowedLinkProtocols.all).to include(*custom_protocols)
     expect(Setting::AllowedLinkProtocols.all).to include(*always_allowed_protocols)
+
+    scroll_to_element find_by_id("settings_allowed_link_protocols")
+    custom_protocols = %w[http+ssh f[oa]x]
+    find_by_id("settings_allowed_link_protocols").set(custom_protocols.join("\n"))
+
+    click_on "Save"
+    expect(page).to have_text I18n.t(:notice_successful_update)
+
+    RequestStore.clear!
+    expect(Setting.allowed_link_protocols).to contain_exactly("http+ssh", "foax")
   end
 end

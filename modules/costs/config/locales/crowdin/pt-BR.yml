@@ -58,11 +58,11 @@ pt-BR:
         end_time: Hora Final
     models:
       time_entry:
-        one: ""
-        other: "Time entries"
+        one: "Registro de tempo"
+        other: "Registros de tempo"
       cost_entry:
-        one: "Cost entry"
-        other: "Cost entries"
+        one: "Registro de custo"
+        other: "Registros de custo"
       cost_type:
         one: "Tipo de custo"
         other: "Tipos de custo"

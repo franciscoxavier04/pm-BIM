@@ -1024,7 +1024,7 @@ RSpec.describe "Datepicker modal logic test cases (WP #43539)", :js, with_settin
     end
   end
 
-  context "when setting 'Duration' and 'Working days only' of an automatically scheduled work package" do
+  context "when setting values of an automatically scheduled work package" do
     let(:work_package) do
       bug_wp.tap do |wp|
         # add a predecessor so that automatic scheduling mode can be selected and date picker is visible.
@@ -1047,27 +1047,117 @@ RSpec.describe "Datepicker modal logic test cases (WP #43539)", :js, with_settin
       }
     end
 
-    it "updates the finish date, instead of disappearing (Regression #61894)" do
-      datepicker.expect_automatic_scheduling_mode
-      datepicker.expect_due_date "2022-06-21", disabled: true
-      datepicker.expect_duration 2
-      datepicker.expect_working_days_only true
+    context "when changing 'Duration' and 'Working days only'" do
+      it "updates the finish date, instead of disappearing (Regression #61894)" do
+        datepicker.expect_automatic_scheduling_mode
+        datepicker.expect_due_date "2022-06-21", disabled: false
+        datepicker.expect_duration 2
+        datepicker.expect_working_days_only true
 
-      datepicker.set_duration 6
+        datepicker.set_duration 6
 
-      # start date is 20 and Saturday and Sunday are non-working days, so finish date is 27
-      datepicker.expect_due_date "2022-06-27", disabled: true
+        # start date is 20 and Saturday and Sunday are non-working days, so finish date is 27
+        datepicker.expect_due_date "2022-06-27", disabled: false
 
-      datepicker.uncheck_working_days_only
+        datepicker.uncheck_working_days_only
 
-      # start date is 20, non-working days are ignored so finish date is 25
-      datepicker.expect_due_date "2022-06-25", disabled: true
+        # start date is 20, non-working days are ignored so finish date is 25
+        datepicker.expect_due_date "2022-06-25", disabled: false
 
-      apply_and_expect_saved start_date: Date.parse("2022-06-20"),
-                             due_date: Date.parse("2022-06-25"),
-                             duration: 6,
-                             ignore_non_working_days: true,
-                             schedule_manually: false
+        apply_and_expect_saved start_date: Date.parse("2022-06-20"),
+                               due_date: Date.parse("2022-06-25"),
+                               duration: 6,
+                               ignore_non_working_days: true,
+                               schedule_manually: false
+      end
+    end
+
+    context "when changing 'Due date'" do
+      it "can change it via the input field" do
+        datepicker.expect_automatic_scheduling_mode
+        datepicker.expect_due_date "2022-06-21", disabled: false
+        datepicker.expect_duration 2
+        datepicker.expect_working_days_only true
+
+        datepicker.set_due_date "2022-06-27"
+
+        datepicker.expect_duration 6
+
+        datepicker.uncheck_working_days_only
+
+        # Since the due date was touched before, the value is kept and duration adjusted
+        datepicker.expect_due_date "2022-06-27", disabled: false
+        datepicker.expect_duration 8
+
+        apply_and_expect_saved start_date: Date.parse("2022-06-20"),
+                               due_date: Date.parse("2022-06-27"),
+                               duration: 8,
+                               ignore_non_working_days: true,
+                               schedule_manually: false
+      end
+
+      it "can change it via the datepicker field" do
+        datepicker.expect_automatic_scheduling_mode
+        datepicker.expect_due_date "2022-06-21", disabled: false
+        datepicker.expect_due_highlighted
+        datepicker.expect_duration 2
+        datepicker.expect_working_days_only true
+
+        # The non-working days are disabled
+        datepicker.expect_disabled Date.parse("2022-06-25")
+        datepicker.expect_disabled Date.parse("2022-06-26")
+        # The rest is not disabled
+        datepicker.expect_not_disabled Date.parse("2022-06-27")
+
+        datepicker.set_date Date.parse("2022-06-27")
+
+        datepicker.expect_duration 6
+
+        datepicker.uncheck_working_days_only
+
+        # The non-working days are no longer disabled
+        datepicker.expect_not_disabled Date.parse("2022-06-25")
+        datepicker.expect_not_disabled Date.parse("2022-06-26")
+
+        # Since the due date was touched before, the value is kept and duration adjusted
+        datepicker.expect_due_date "2022-06-27", disabled: false
+        datepicker.expect_duration 8
+
+        apply_and_expect_saved start_date: Date.parse("2022-06-20"),
+                               due_date: Date.parse("2022-06-27"),
+                               duration: 8,
+                               ignore_non_working_days: true,
+                               schedule_manually: false
+      end
+
+      it "can change duration as well while preserving the start date" do
+        datepicker.expect_automatic_scheduling_mode
+        datepicker.expect_due_date "2022-06-21", disabled: false
+        datepicker.expect_duration 2
+        datepicker.expect_working_days_only true
+
+        # Changing the due date will change the duration
+        datepicker.set_due_date "2022-06-27"
+        datepicker.expect_start_date "2022-06-20", disabled: true
+        datepicker.expect_duration 6
+
+        # Changing the duration afterwards, will change the due date again
+        datepicker.set_duration 7
+        datepicker.expect_due_date "2022-06-28", disabled: false
+        datepicker.expect_start_date "2022-06-20", disabled: true
+
+        # Changing the due date again, will again change the duration
+        datepicker.set_due_date "2022-06-27"
+        datepicker.expect_start_date "2022-06-20", disabled: true
+        datepicker.expect_duration 6
+
+        # Even unchecking the non working days will preserve the start date
+        # Since the due date was touched before, the value is kept and duration adjusted
+        datepicker.uncheck_working_days_only
+        datepicker.expect_due_date "2022-06-27", disabled: false
+        datepicker.expect_start_date "2022-06-20", disabled: true
+        datepicker.expect_duration 8
+      end
     end
   end
 

@@ -365,14 +365,14 @@ id:
         no_results_title_text: There are currently no custom fields available.
       life_cycle:
         header:
-          title: "Project lifecycle"
-          description_html: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
-        non_defined: "Neither stages nor gates are currently defined."
-        section_header: "Stages and gates"
+          title: "Project life cycle"
+          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
+        non_defined: "No phases are currently defined."
+        section_header: "Phases"
         step:
           use_in_project: "Use %{step} in this project"
         filter:
-          label: "Search project stage or gate"
+          label: "Search project phase"
       project_custom_fields:
         header:
           title: "Atribut proyek"
@@ -397,7 +397,7 @@ id:
         no_results_title_text: Tidak ada ruang disk terekam tambahan yang digunakan oleh proyek ini.
       work_package_priorities:
         new_label: "New priority"
-  project_stage:
+  project_phase:
     working_days_count:
       other: "Duration: %{count} working days"
   lists:
@@ -941,11 +941,16 @@ id:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Bagian
-      project/life_cycle_step:
+      project/phase:
+        date_range: "Date range"
         definition: "Definition"
-      project/life_cycle_step_definition:
-        name: "Nama"
-        color: "Warna"
+      project/phase_definition:
+        name: "Name"
+        color: "Color"
+        start_gate: "Start phase gate"
+        start_gate_name: "Start phase gate name"
+        finish_gate: "Finish phase gate"
+        finish_gate_name: "Finish phase gate name"
       query:
         sums: "Sums"
         columns: "Kolom"
@@ -1246,42 +1251,12 @@ id:
           attributes:
             project_ids:
               blank: "Please select a project."
-        project/life_cycle_step_definition:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "must be either Project::StageDefinition or Project::GateDefinition"
-              type_and_class_name_mismatch: "must match the instantiated class name"
-        project/gate_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "must be a Project::GateDefinition"
-        project/stage_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "must be a Project::StageDefinition"
-        project/life_cycle_step:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "must be either Project::Stage or Project::Gate"
-              must_be_a_stage: "must be a Project::Stage"
-              must_be_a_gate: "must be a Project::Gate"
-              type_and_class_name_mismatch: "must match the instantiated class name"
-        project/gate:
-          attributes:
-            base:
-              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
-            type:
-              type_and_class_name_mismatch: "must be a Project::Gate"
-            date:
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
-        project/stage:
+        project/phase:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "start date must be before the end date."
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+              start_date_must_be_before_finish_date: "start date must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
               incomplete: "is incomplete."
-            type:
-              type_and_class_name_mismatch: "must be a Project::Stage"
         query:
           attributes:
             project:
@@ -1316,6 +1291,10 @@ id:
             values:
               inclusion: "filter has invalid values."
               format: "%{message}"
+        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+          attributes:
+            values:
+              single_value_requirement: "must be a single work package"
         relation:
           typed_dag:
             circular_dependency: "Relasi menciptakan lingkaran relasi-relasi."
@@ -1508,8 +1487,6 @@ id:
         other: "Notifications"
       placeholder_user: "Pengguna placeholder"
       project: "Project"
-      project/gate_definition: "Gate"
-      project/stage_definition: "Stage"
       project_query:
         other: "Project lists"
       query: "Query kustom"
@@ -1566,12 +1543,14 @@ id:
       time_entry: "Durasi"
       wiki_edit: "Wiki"
       work_package: "Paket-Penugasan"
-    project_life_cycle_step:
+    project_phase:
       activated: "activated"
       deactivated: "deactivated"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
   #common attributes of all models
   attributes:
     active: "Aktif"
@@ -1952,7 +1931,7 @@ id:
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
-        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
+        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Menambahkan atribut kelompok-kelompok baru"
@@ -2038,6 +2017,8 @@ id:
     dialog:
       title: "Ekspor"
       submit: "Ekspor"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:
@@ -2697,7 +2678,7 @@ id:
   label_none_parentheses: "(kosong)"
   label_not_contains: "tidak berisi"
   label_not_equals: "tidak"
-  label_life_cycle_step_plural: "Project lifecycle"
+  label_life_cycle_step_plural: "Project life cycle"
   label_on: "pada"
   label_operator_all: "tidak kosong"
   label_operator_none: "kosong"
@@ -2759,7 +2740,7 @@ id:
   label_project_new: "Project baru"
   label_project_plural: "Project"
   label_project_list_plural: "Project lists"
-  label_project_lifecycle: "Project lifecycle"
+  label_project_life_cycle: "Project life cycle"
   label_project_attributes_plural: "Atribut proyek"
   label_project_custom_field_plural: "Atribut proyek"
   label_project_settings: "Projek setting"
@@ -3297,7 +3278,7 @@ id:
   permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Edit Project"
   permission_edit_project_attributes: "Edit project attributes"
-  permission_edit_project_stages_and_gates: "Edit project stages and gates"
+  permission_edit_project_phases: "Edit project phases"
   permission_edit_reportings: "Edit pelaporan"
   permission_edit_time_entries: "Edit time logs for other users"
   permission_edit_timelines: "Edit Timeline"
@@ -3327,8 +3308,8 @@ id:
   permission_search_project: "Search project"
   permission_select_custom_fields: "Pilih bidang khusus"
   permission_select_project_custom_fields: "Select project attributes"
-  permission_select_project_life_cycle: "Select project stages and gates"
-  permission_select_project_life_cycle_explanation: "Activate/Deactivate the stages and gates in a project. Enables the user to select the lifecycle appropriate for the project as inactive stages and gates will not be visible in the project overview page nor the project list."
+  permission_select_project_phases: "Select project phases"
+  permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the life cycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "Pilih modul Project"
   permission_share_work_packages: "Share work packages"
   permission_manage_types: "Pilih Tipe"
@@ -3354,7 +3335,7 @@ id:
   permission_work_package_assigned_explanation: "Paket kerja dapat ditetapkan untuk pengguna-pengguna tunggal dan kelompok-kelompok yang memiliki peran dalam proyek masing-masing"
   permission_view_project_activity: "View project activity"
   permission_view_project_attributes: "View project attributes"
-  permission_view_project_stages_and_gates: "View project stages and gates"
+  permission_view_project_phases: "View project phases"
   permission_save_bcf_queries: "Save BCF queries"
   permission_manage_public_bcf_queries: "Manage public BCF queries"
   permission_edit_attribute_help_texts: "Edit attribute help texts"
@@ -3380,9 +3361,9 @@ id:
       subprojects_confirmation: "Its subproject(s): %{value} will also be deleted."
       title: "Delete the project %{name}"
     filters:
-      life_cycle_any: "Lifecycle: Any stage or gate"
-      life_cycle_stage: "Lifecycle stage: %{stage}"
-      life_cycle_gate: "Lifecycle gate: %{gate}"
+      project_phase: "Project phase: %{phase}"
+      project_phase_any: "Project phase: Any"
+      project_phase_gate: "Project phase gate: %{gate}"
     identifier:
       warning_one: Members of the project will have to relocate the project's repositories.
       warning_two: Existing links to the project will no longer work.
@@ -3760,27 +3741,27 @@ id:
       new:
         heading: "New attribute"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
-    project_life_cycle_step_definitions:
-      heading: "Project lifecycle"
-      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Tambah"
-      label_add_description: "Add lifecycle definition"
-      label_add_stage: "Stage"
-      label_add_gate: "Gate"
+    project_phase_definitions:
+      heading: "Project life cycle"
+      heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
+      label_add: "Add"
+      label_add_description: "Add project phase definition"
       filter:
-        label: "Search project stage or gate"
-      section_header: "Stages and gates"
-      non_defined: "Neither stages nor gates are currently defined."
+        label: "Search project phase"
+      section_header: "Phases"
+      non_defined: "No phases are currently defined."
+      phase_gates: "Phase gates"
       new:
-        description: "Changes to this project step will be reflected in all projects where it is enabled."
-      new_stage:
-        heading: "New stage"
-      new_gate:
-        heading: "New gate"
-      edit_stage:
-        heading: "Edit stage"
-      edit_gate:
-        heading: "Edit gate"
+        description: "Changes to this project phase will be reflected in all projects where it is enabled."
+        heading: "New Phase"
+      edit:
+        heading: "Edit Phase"
+      both_gate: "Start and finish gate"
+      no_gate: "No gate"
+      start_gate: "Start gate"
+      start_gate_caption: "Add a gate with the start date of the phase"
+      finish_gate: "Finish gate"
+      finish_gate_caption: "Add a gate with the end date of the phase"
     projects:
       missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
       section_new_projects: "Settings for new projects"
@@ -3816,7 +3797,7 @@ id:
   text_are_you_sure_continue: "Are you sure you want to continue?"
   text_are_you_sure_with_children: "Hapus Paket-Penugasan dan semua paket turunannya?"
   text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
-  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this phase will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Tetapkan untuk Project"
   text_form_configuration: >
     Anda dapat mengkustom field-field mana yang akan ditampilkan dalam form paket kerja. Anda dapat dengan bebas mengelompokkan field-field untuk mencerminkan kebutuhan-kebutuhan untuk domain Anda.

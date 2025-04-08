@@ -366,14 +366,14 @@ nl:
         no_results_title_text: Momenteel zijn er geen aangepaste velden beschikbaar.
       life_cycle:
         header:
-          title: "Project levenscyclus"
-          description_html: 'Deze projectfasen en -poorten in de projectlevenscyclus worden weergegeven in uw <a href=%{overview_url} target="_blank">projectoverzichtspagina</a> en worden gedefinieerd in de <a href=%{admin_settings_url} target="_blank">administratie-instellingen</a> door de beheerder van de instantie. U kunt individuele attributen in- of uitschakelen.'
-        non_defined: "Er zijn momenteel geen fasen of poorten gedefinieerd."
-        section_header: "Fasen en poorten"
+          title: "Project life cycle"
+          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
+        non_defined: "No phases are currently defined."
+        section_header: "Phases"
         step:
           use_in_project: "Gebruik %{step} in dit project"
         filter:
-          label: "Zoek projectfase of poort"
+          label: "Search project phase"
       project_custom_fields:
         header:
           title: "Projectkenmerken"
@@ -398,10 +398,10 @@ nl:
         no_results_title_text: Er is geen extra opgenomen schijfruimte verbruikt door dit project.
       work_package_priorities:
         new_label: "New priority"
-  project_stage:
+  project_phase:
     working_days_count:
       one: "Duration: %{count} working day"
-      other: "Duur: %{count} werkdagen"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "De gewijzigde lijst is opgeslagen als een nieuwe lijst"
@@ -950,11 +950,16 @@ nl:
       project_custom_field:
         is_required: "Vereist voor alle projecten"
         custom_field_section: Sectie
-      project/life_cycle_step:
+      project/phase:
+        date_range: "Date range"
         definition: "Definition"
-      project/life_cycle_step_definition:
-        name: "Naam"
-        color: "Kleur"
+      project/phase_definition:
+        name: "Name"
+        color: "Color"
+        start_gate: "Start phase gate"
+        start_gate_name: "Start phase gate name"
+        finish_gate: "Finish phase gate"
+        finish_gate_name: "Finish phase gate name"
       query:
         sums: "Sums"
         columns: "Kolommen"
@@ -1255,42 +1260,12 @@ nl:
           attributes:
             project_ids:
               blank: "Selecteer een project."
-        project/life_cycle_step_definition:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "moet Project::StageDefinition of Project::GateDefinition zijn"
-              type_and_class_name_mismatch: "moet overeenkomen met de geïnstantieerde klassenaam"
-        project/gate_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "moet een Project::GateDefinition zijn"
-        project/stage_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "moet een Project::StageDefinition zijn"
-        project/life_cycle_step:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "moet Project::Stage of Project::Gate zijn"
-              must_be_a_stage: "moet een Project::Gate zijn"
-              must_be_a_gate: "moet een Project::Gate zijn"
-              type_and_class_name_mismatch: "moet overeenkomen met de geconcretiseerd klassenaam"
-        project/gate:
-          attributes:
-            base:
-              end_date_not_allowed: "Kan geen einddatum toewijzen aan een Project::Gate"
-            type:
-              type_and_class_name_mismatch: "moet een Project::Gate zijn"
-            date:
-              non_continuous_dates: "kan niet eerder zijn dan de einddatum van de vorige %{step}."
-        project/stage:
+        project/phase:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "startdatum moet voor de einddatum liggen."
-              non_continuous_dates: "kan niet eerder zijn dan de einddatum van de vorige %{step}."
-              incomplete: "is onvolledig."
-            type:
-              type_and_class_name_mismatch: "moet een Project::Gate zijn"
+              start_date_must_be_before_finish_date: "start date must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              incomplete: "is incomplete."
         query:
           attributes:
             project:
@@ -1325,6 +1300,10 @@ nl:
             values:
               inclusion: "filter heeft ongeldige waarden."
               format: "%{message}"
+        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+          attributes:
+            values:
+              single_value_requirement: "must be a single work package"
         relation:
           typed_dag:
             circular_dependency: "De relatie wordt gemaakt van een kring van relaties."
@@ -1521,8 +1500,6 @@ nl:
         other: "Meldingen"
       placeholder_user: "Tijdelijke gebruiker"
       project: "Project"
-      project/gate_definition: "Gate"
-      project/stage_definition: "Stage"
       project_query:
         one: "Projectlijst"
         other: "Projectlijsten"
@@ -1586,12 +1563,14 @@ nl:
       time_entry: "Bestede tijd"
       wiki_edit: "Wiki"
       work_package: "Werkpakketten"
-    project_life_cycle_step:
+    project_phase:
       activated: "activated"
       deactivated: "deactivated"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
   #common attributes of all models
   attributes:
     active: "Actief"
@@ -1991,7 +1970,7 @@ nl:
       automatic_subject_generation:
         description: "Maak automatisch gegenereerde onderwerpen met behulp van kenmerken en tekst waarnaar verwezen wordt."
       customize_life_cycle:
-        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
+        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Toevoegen van nieuwe attribuutgroepen"
@@ -2077,6 +2056,8 @@ nl:
     dialog:
       title: "Exporteren"
       submit: "Exporteren"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:
@@ -2736,7 +2717,7 @@ nl:
   label_none_parentheses: "(geen)"
   label_not_contains: "bevat geen"
   label_not_equals: "is niet"
-  label_life_cycle_step_plural: "Project levenscyclus"
+  label_life_cycle_step_plural: "Project life cycle"
   label_on: "op"
   label_operator_all: "is niet leeg"
   label_operator_none: "is leeg"
@@ -2798,7 +2779,7 @@ nl:
   label_project_new: "Nieuw project"
   label_project_plural: "Projecten"
   label_project_list_plural: "Projectlijsten"
-  label_project_lifecycle: "Project levenscyclus"
+  label_project_life_cycle: "Project life cycle"
   label_project_attributes_plural: "Projectkenmerken"
   label_project_custom_field_plural: "Projectkenmerken"
   label_project_settings: "Project Instellingen"
@@ -3338,7 +3319,7 @@ nl:
   permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Project bewerken"
   permission_edit_project_attributes: "Bewerk project kenmerken"
-  permission_edit_project_stages_and_gates: "Edit project stages and gates"
+  permission_edit_project_phases: "Edit project phases"
   permission_edit_reportings: "Rapporteringen bewerken"
   permission_edit_time_entries: "Bewerk tijdregistraties voor andere gebruikers"
   permission_edit_timelines: "Bewerken van tijdlijnen"
@@ -3368,8 +3349,8 @@ nl:
   permission_search_project: "Search project"
   permission_select_custom_fields: "Aangepaste velden selecteren"
   permission_select_project_custom_fields: "Selecteer project kenmerk"
-  permission_select_project_life_cycle: "Select project stages and gates"
-  permission_select_project_life_cycle_explanation: "Activate/Deactivate the stages and gates in a project. Enables the user to select the lifecycle appropriate for the project as inactive stages and gates will not be visible in the project overview page nor the project list."
+  permission_select_project_phases: "Select project phases"
+  permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the life cycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "Selecteer project modules"
   permission_share_work_packages: "Share work packages"
   permission_manage_types: "Selecteer typen"
@@ -3395,7 +3376,7 @@ nl:
   permission_work_package_assigned_explanation: "Werkpakketten kunnen worden toegewezen aan gebruikers en groepen met deze rol in het respectieve project"
   permission_view_project_activity: "Projectactiviteit bekijken"
   permission_view_project_attributes: "Toon project kenmerken"
-  permission_view_project_stages_and_gates: "View project stages and gates"
+  permission_view_project_phases: "View project phases"
   permission_save_bcf_queries: "Save BCF queries"
   permission_manage_public_bcf_queries: "Manage public BCF queries"
   permission_edit_attribute_help_texts: "De helpteksten van attributen bewerken"
@@ -3421,9 +3402,9 @@ nl:
       subprojects_confirmation: "De subproject(en): %{value} worden ook verwijderd."
       title: "Verwijder het project %{name}"
     filters:
-      life_cycle_any: "Lifecycle: Any stage or gate"
-      life_cycle_stage: "Lifecycle stage: %{stage}"
-      life_cycle_gate: "Lifecycle gate: %{gate}"
+      project_phase: "Project phase: %{phase}"
+      project_phase_any: "Project phase: Any"
+      project_phase_gate: "Project phase gate: %{gate}"
     identifier:
       warning_one: Leden van het project zullen de opslagplaatsen van het project moeten verplaatsen.
       warning_two: Bestaande koppelingen naar het project zullen niet langer werken.
@@ -3803,27 +3784,27 @@ nl:
       new:
         heading: "Nieuw kenmerk"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
-    project_life_cycle_step_definitions:
-      heading: "Project levenscyclus"
-      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Toevoegen"
-      label_add_description: "Add lifecycle definition"
-      label_add_stage: "Stage"
-      label_add_gate: "Gate"
+    project_phase_definitions:
+      heading: "Project life cycle"
+      heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
+      label_add: "Add"
+      label_add_description: "Add project phase definition"
       filter:
-        label: "Zoek projectfase of poort"
-      section_header: "Fasen en poorten"
-      non_defined: "Er zijn momenteel geen fasen of poorten gedefinieerd."
+        label: "Search project phase"
+      section_header: "Phases"
+      non_defined: "No phases are currently defined."
+      phase_gates: "Phase gates"
       new:
-        description: "Changes to this project step will be reflected in all projects where it is enabled."
-      new_stage:
-        heading: "New stage"
-      new_gate:
-        heading: "New gate"
-      edit_stage:
-        heading: "Edit stage"
-      edit_gate:
-        heading: "Edit gate"
+        description: "Changes to this project phase will be reflected in all projects where it is enabled."
+        heading: "New Phase"
+      edit:
+        heading: "Edit Phase"
+      both_gate: "Start and finish gate"
+      no_gate: "No gate"
+      start_gate: "Start gate"
+      start_gate_caption: "Add a gate with the start date of the phase"
+      finish_gate: "Finish gate"
+      finish_gate_caption: "Add a gate with the end date of the phase"
     projects:
       missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
       section_new_projects: "Instellingen voor nieuwe projecten"
@@ -3859,7 +3840,7 @@ nl:
   text_are_you_sure_continue: "Weet u zeker dat u wilt doorgaan?"
   text_are_you_sure_with_children: "Verwijder werk pakket en alle kinderen daarvan?"
   text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
-  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this phase will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Wijs aan project toe"
   text_form_configuration: >
     U kunt aanpassen welke velden worden weergegeven in pakket werkformulieren. U kunt deze velden vrij groeperen om de weergave aan uw eigen behoeften aan te passen.

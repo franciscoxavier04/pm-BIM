@@ -282,6 +282,10 @@ module Components
         expect_no_row(relatable)
       end
 
+      def expect_no_relations
+        expect(page).to have_test_selector("no-relations-blankslate", text: "This work package does not have any relations yet.")
+      end
+
       def add_parent(query, work_package)
         # Open the parent edit
         SeleniumHubWaiter.wait
@@ -312,7 +316,7 @@ module Components
       end
 
       def children_table
-        page.find_test_selector("op-relation-group-children")
+        page.find_test_selector("op-relation-group-child")
       end
 
       def add_existing_child(work_package)

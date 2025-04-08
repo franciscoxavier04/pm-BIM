@@ -32,7 +32,8 @@ require "spec_helper"
 
 RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
   shared_let(:type) { create(:type_standard) }
-  shared_let(:project_types) { [type] }
+  shared_let(:milestone_type) { create(:type_milestone) }
+  shared_let(:project_types) { [type, milestone_type] }
   shared_let(:project) do
     create(:project, types: project_types)
   end
@@ -1297,6 +1298,21 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
           | child        |  X      | manual
         TABLE
       end
+    end
+  end
+
+  context "when changing the type of a work package with children into a milestone" do
+    let_work_packages(<<~TABLE)
+      | hierarchy    | MTWTFSS | scheduling mode
+      | work_package | XXX     | automatic
+      |   child      | XXX     | manual
+    TABLE
+    let(:attributes) { { type: milestone_type } }
+
+    it "returns only one error: work package has children and cannot be changed into a milestone (Bug #62190)" do
+      expect(subject).to be_failure
+      expect(subject.errors.attribute_names).to contain_exactly(:type)
+      expect(subject.errors.details).to include(type: [{ error: :cannot_be_milestone_due_to_children }])
     end
   end
 

@@ -72,9 +72,6 @@ en:
         main-menu-bg-selected-background: "Main menu when selected"
         main-menu-bg-hover-background: "Main menu on hover"
       custom_colors: "Custom colors"
-      customize: "Customize your OpenProject installation with your own logo and colors."
-      enterprise_notice: "As a special 'Thank you!' for their financial contribution to develop OpenProject, this tiny add-on is only available for Enterprise edition support subscribers."
-      enterprise_more_info: "Note: the used logo will be publicly accessible."
       manage_colors: "Edit color select options"
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
@@ -237,9 +234,6 @@ en:
     new: "New custom action"
     edit: "Edit custom action %{name}"
     execute: "Execute %{name}"
-    upsale:
-      title: "Custom actions"
-      description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
 
   custom_fields:
     admin:
@@ -270,9 +264,6 @@ en:
           zero: no sub-items
           one: 1 sub-item
           other: "%{count} sub-items"
-    upsale:
-      custom_field_format_hierarchy: "Need a hierarchy in your custom fields for work packages?"
-
     text_add_new_custom_field: >
       To add new custom fields to a project you first need to create them before
       you can add them to this project.
@@ -403,14 +394,14 @@ en:
         no_results_title_text: There are currently no custom fields available.
       life_cycle:
         header:
-          title: "Project lifecycle"
-          description_html: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
-        non_defined: "Neither stages nor gates are currently defined."
-        section_header: "Stages and gates"
+          title: "Project life cycle"
+          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
+        non_defined: "No phases are currently defined."
+        section_header: "Phases"
         step:
           use_in_project: "Use %{step} in this project"
         filter:
-          label: "Search project stage or gate"
+          label: "Search project phase"
       project_custom_fields:
         header:
           title: "Project attributes"
@@ -437,7 +428,7 @@ en:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
       work_package_priorities:
         new_label: "New priority"
-  project_stage:
+  project_phase:
     working_days_count:
       one: "Duration: %{count} working day"
       other: "Duration: %{count} working days"
@@ -590,12 +581,6 @@ en:
         the data of another deleted account.
       irreversible: "This action is irreversible"
       confirmation: "Enter the placeholder user name %{name} to confirm the deletion."
-    upsale:
-      title: Placeholder users
-      description: >
-        Placeholder users are a way to assign work packages to users who are not part of your project.
-        They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available,
-         or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
   prioritiies:
     edit:
       priority_color_text: |
@@ -657,13 +642,6 @@ en:
     edit:
       form_configuration:
         tab: "Form configuration"
-      more_info_text_html: >
-        Enterprise edition allows you to customize form configuration with these additional add-ons: <br>
-        <ul class="%{list_styling_class}">
-          <li><b>Add new attribute groups</b></li>
-          <li><b>Rename attribute groups</b></li>
-          <li><b>Add a table of related work packages</b></li>
-        </ul>
       projects:
         tab: "Projects"
         enabled_projects: "Enabled projects"
@@ -1034,11 +1012,16 @@ en:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
-      project/life_cycle_step:
+      project/phase:
+        date_range: "Date range"
         definition: "Definition"
-      project/life_cycle_step_definition:
+      project/phase_definition:
         name: "Name"
         color: "Color"
+        start_gate: "Start phase gate"
+        start_gate_name: "Start phase gate name"
+        finish_gate: "Finish phase gate"
+        finish_gate_name: "Finish phase gate name"
       query:
         sums: "Sums"
         columns: "Columns"
@@ -1124,6 +1107,7 @@ en:
         consented_at: "Consented at"
       user_preference:
         comments_sorting: "Display comments"
+        dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Accessibility mode"
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
@@ -1340,42 +1324,12 @@ en:
           attributes:
             project_ids:
               blank: "Please select a project."
-        project/life_cycle_step_definition:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "must be either Project::StageDefinition or Project::GateDefinition"
-              type_and_class_name_mismatch: "must match the instantiated class name"
-        project/gate_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "must be a Project::GateDefinition"
-        project/stage_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "must be a Project::StageDefinition"
-        project/life_cycle_step:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "must be either Project::Stage or Project::Gate"
-              must_be_a_stage: "must be a Project::Stage"
-              must_be_a_gate: "must be a Project::Gate"
-              type_and_class_name_mismatch: "must match the instantiated class name"
-        project/gate:
-          attributes:
-            base:
-              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
-            type:
-              type_and_class_name_mismatch: "must be a Project::Gate"
-            date:
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
-        project/stage:
+        project/phase:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "start date must be before the end date."
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+              start_date_must_be_before_finish_date: "start date must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
               incomplete: "is incomplete."
-            type:
-              type_and_class_name_mismatch: "must be a Project::Stage"
         query:
           attributes:
             project:
@@ -1410,6 +1364,10 @@ en:
             values:
               inclusion: "filter has invalid values."
               format: "%{message}"
+        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+          attributes:
+            values:
+              single_value_requirement: "must be a single work package"
         relation:
           typed_dag:
             circular_dependency: "The relationship creates a circle of relationships."
@@ -1607,8 +1565,6 @@ en:
         other: "Notifications"
       placeholder_user: "Placeholder user"
       project: "Project"
-      project/gate_definition: "Gate"
-      project/stage_definition: "Stage"
       project_query:
         one: "Project list"
         other: "Project lists"
@@ -1674,12 +1630,14 @@ en:
       time_entry: "Spent time"
       wiki_edit: "Wiki"
       work_package: "Work packages"
-    project_life_cycle_step:
+    project_phase:
       activated: "activated"
       deactivated: "deactivated"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
 
   # common attributes of all models
   attributes:
@@ -2068,17 +2026,80 @@ en:
   direction: ltr
 
   ee:
+    features:
+      baseline_comparison: Baseline Comparisons
+      board_view: Advanced Boards
+      conditional_highlighting: Conditional Highlighting
+      comments_with_restricted_visibility: Comments With Restricted Visibility
+      custom_actions: Custom Actions
+      custom_field_hierarchies: Custom fields of type hierarchy
+      customize_life_cycle: Customize Life Cycle
+      date_alerts: Date Alerts
+      define_custom_style: Custom theme and logo
+      edit_attribute_groups: Edit Attribute Groups
+      gantt_pdf_export: Gantt PDF Export
+      grid_widget_wp_graph: Grid Widget Work Package Graph
+      ldap_groups: LDAP users and group sync
+      one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+      placeholder_users: Placeholder Users
+      project_list_sharing: Project List Sharing
+      readonly_work_packages: Readonly Work Packages
+      sso_auth_providers: Single sign-on
+      team_planner_view: Team Planner View
+      two_factor_authentication: 2FA Authentication
+      virus_scanning: Antivirus Scanning
+      work_package_query_relation_columns: Work Package Query Relation Columns
+      work_package_sharing: Share work packages with external users
+      work_package_subject_generation: Work Package Subject Generation
     upsale:
       title: "Enterprise add-on"
       automatic_subject_generation:
+      plan_title: "Enterprise %{plan} add-on"
+      plan_name: "%{plan} enterprise plan"
+      plan_text_html: "Available only through the %{plan_name}."
+      hide_banner: "Hide this banner"
+      baseline_comparison:
+        description: Highlight changes made to this list since any point in the past.
+      work_package_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
-        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
-      form_configuration:
-        description: "Customize the form configuration with these additional add-ons:"
-        add_groups: "Add new attribute groups"
-        rename_groups: "Rename attributes groups"
-
+        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
+      conditional_highlighting:
+        description: "Need certain work packages to stand out from the mass? Use conditional highlighting in the work packages table."
+      work_package_query_relation_columns:
+        description: "Need to see relations or child elements in the work package list?"
+      edit_attribute_groups:
+        description: "Customize form configuration with these additional add-ons:"
+        features:
+          groups: "Add new attribute groups"
+          rename: "Rename attribute groups"
+          related: "Add a table of related work packages"
+      readonly_work_packages:
+        description: "Mark work packages as read-only for specific statuses."
+      custom_field_hierarchies:
+        description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
+      date_alerts:
+        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+      work_package_sharing:
+        description: "Share work packages with users who are not members of the project."
+      define_custom_style:
+        title: "Custom color theme and logo"
+        more_info: "Note: the used logo will be publicly accessible."
+        description: Customize your OpenProject installation with your own logo and colors.
+      custom_actions:
+        title: "Custom actions"
+        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+      virus_scanning:
+        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
+      placeholder_users:
+        title: Placeholder users
+        description: >
+          Placeholder users are a way to assign work packages to users who are not part of your project.
+          They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available,
+          or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
+      comments_with_restricted_visibility:
+        title: "For your eyes only"
+        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly. Available only through the enterprise professional plan."
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Work package priorities"
   enumeration_reported_project_statuses: "Reported project status"
@@ -2165,6 +2186,8 @@ en:
     dialog:
       title: "Export"
       submit: "Export"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:
@@ -2837,7 +2860,7 @@ en:
   label_none_parentheses: "(none)"
   label_not_contains: "doesn't contain"
   label_not_equals: "is not"
-  label_life_cycle_step_plural: "Project lifecycle"
+  label_life_cycle_step_plural: "Project life cycle"
   label_on: "on"
   label_operator_all: "is not empty"
   label_operator_none: "is empty"
@@ -2899,7 +2922,7 @@ en:
   label_project_new: "New project"
   label_project_plural: "Projects"
   label_project_list_plural: "Project lists"
-  label_project_lifecycle: "Project lifecycle"
+  label_project_life_cycle: "Project life cycle"
   label_project_attributes_plural: "Project attributes"
   label_project_custom_field_plural: "Project attributes"
   label_project_settings: "Project settings"
@@ -3367,6 +3390,7 @@ en:
   notice_successful_delete: "Successful deletion."
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Successful update."
+  notice_unsuccessful_update: "Update failed."
   notice_successful_update_custom_fields_added_to_project: |
     Successful update. The custom fields of the activated types are automatically activated
     on the work package form. <a href="%{url}" target="_blank">See more</a>.
@@ -3452,7 +3476,7 @@ en:
   permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Edit project"
   permission_edit_project_attributes: "Edit project attributes"
-  permission_edit_project_stages_and_gates: "Edit project stages and gates"
+  permission_edit_project_phases: "Edit project phases"
   permission_edit_reportings: "Edit reportings"
   permission_edit_time_entries: "Edit time logs for other users"
   permission_edit_timelines: "Edit timelines"
@@ -3482,8 +3506,8 @@ en:
   permission_search_project: "Search project"
   permission_select_custom_fields: "Select custom fields"
   permission_select_project_custom_fields: "Select project attributes"
-  permission_select_project_life_cycle: "Select project stages and gates"
-  permission_select_project_life_cycle_explanation: "Activate/Deactivate the stages and gates in a project. Enables the user to select the lifecycle appropriate for the project as inactive stages and gates will not be visible in the project overview page nor the project list."
+  permission_select_project_phases: "Select project phases"
+  permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the life cycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "Select project modules"
   permission_share_work_packages: "Share work packages"
   permission_manage_types: "Select types"
@@ -3509,7 +3533,7 @@ en:
   permission_work_package_assigned_explanation: "Work packages can be assigned to users and groups in possession of this role in the respective project"
   permission_view_project_activity: "View project activity"
   permission_view_project_attributes: "View project attributes"
-  permission_view_project_stages_and_gates: "View project stages and gates"
+  permission_view_project_phases: "View project phases"
   permission_save_bcf_queries: "Save BCF queries"
   permission_manage_public_bcf_queries: "Manage public BCF queries"
   permission_edit_attribute_help_texts: "Edit attribute help texts"
@@ -3537,9 +3561,9 @@ en:
       subprojects_confirmation: "Its subproject(s): %{value} will also be deleted."
       title: "Delete the project %{name}"
     filters:
-      life_cycle_any: "Lifecycle: Any stage or gate"
-      life_cycle_stage: "Lifecycle stage: %{stage}"
-      life_cycle_gate: "Lifecycle gate: %{gate}"
+      project_phase: "Project phase: %{phase}"
+      project_phase_any: "Project phase: Any"
+      project_phase_gate: "Project phase gate: %{gate}"
     identifier:
       warning_one: Members of the project will have to relocate the project's repositories.
       warning_two: Existing links to the project will no longer work.
@@ -3920,8 +3944,6 @@ en:
         Virus scanning has been enabled successfully.
         There are %{file_count} that were uploaded previously and still need to be scanned.
         This process has been scheduled in the background. The files will remain accessible during the scan.
-      upsale:
-        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       actions:
         delete: "Delete the file"
         quarantine: "Quarantine the file"
@@ -3986,27 +4008,27 @@ en:
       new:
         heading: "New attribute"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
-    project_life_cycle_step_definitions:
-      heading: "Project lifecycle"
-      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+    project_phase_definitions:
+      heading: "Project life cycle"
+      heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
       label_add: "Add"
-      label_add_description: "Add lifecycle definition"
-      label_add_stage: "Stage"
-      label_add_gate: "Gate"
+      label_add_description: "Add project phase definition"
       filter:
-        label: "Search project stage or gate"
-      section_header: "Stages and gates"
-      non_defined: "Neither stages nor gates are currently defined."
+        label: "Search project phase"
+      section_header: "Phases"
+      non_defined: "No phases are currently defined."
+      phase_gates: "Phase gates"
       new:
-        description: "Changes to this project step will be reflected in all projects where it is enabled."
-      new_stage:
-        heading: "New stage"
-      new_gate:
-        heading: "New gate"
-      edit_stage:
-        heading: "Edit stage"
-      edit_gate:
-        heading: "Edit gate"
+        description: "Changes to this project phase will be reflected in all projects where it is enabled."
+        heading: "New Phase"
+      edit:
+        heading: "Edit Phase"
+      both_gate: "Start and finish gate"
+      no_gate: "No gate"
+      start_gate: "Start gate"
+      start_gate_caption: "Add a gate with the start date of the phase"
+      finish_gate: "Finish gate"
+      finish_gate_caption: "Add a gate with the end date of the phase"
     projects:
       missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
       section_new_projects: "Settings for new projects"
@@ -4021,6 +4043,9 @@ en:
       section_holidays_and_closures: "Holidays and closures"
     work_packages:
       not_allowed_text: "You do not have the necessary permissions to view this page."
+      activities:
+        enable_comments_with_restricted_visibility: "Enable restricted visibility comments"
+        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to select roles that have the necessary permissions and will not be visible publicly. %{link}"
 
   text_formatting:
     markdown: "Markdown"
@@ -4046,7 +4071,7 @@ en:
   text_are_you_sure_continue: "Are you sure you want to continue?"
   text_are_you_sure_with_children: "Delete work package and all child work packages?"
   text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
-  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this phase will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Assign to the project"
   text_form_configuration: >
     You can customize which fields will be displayed in work package forms.
@@ -4063,12 +4088,6 @@ en:
   text_custom_field_hint_activate_per_project_and_type: >
     Custom fields need to be activated per work
     package type and per project.
-  text_wp_status_read_only_html: >
-    The Enterprise edition will add these additional add-ons for
-    work packages' statuses fields: <br>
-    <ul>
-      <li><b>Allow to mark work packages to read-only for specific statuses</b></li>
-    </ul>
   text_project_custom_field_html: >
     The Enterprise edition will add these additional add-ons for projects' custom fields: <br>
     <ul>
@@ -4693,28 +4712,3 @@ en:
 
   enterprise_plans:
     legacy_enterprise: "Enterprise Plan"
-
-  enterprise_features:
-    baseline_comparison: Baseline Comparison
-    board_view: Board View
-    conditional_highlighting: Conditional Highlighting
-    custom_actions: Custom Actions
-    custom_field_hierarchies: Custom Field Hierarchies
-    customize_life_cycle: Customize Life Cycle
-    date_alerts: Date Alerts
-    define_custom_style: Define Custom Style
-    edit_attribute_groups: Edit Attribute Groups
-    gantt_pdf_export: Gantt PDF Export
-    grid_widget_wp_graph: Grid Widget Work Package Graph
-    ldap_groups: LDAP Groups
-    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
-    placeholder_users: Placeholder Users
-    project_list_sharing: Project List Sharing
-    readonly_work_packages: Readonly Work Packages
-    sso_auth_providers: SSO Auth Providers
-    team_planner_view: Team Planner View
-    two_factor_authentication: Two-Factor Authentication
-    virus_scanning: Attachment Virus Scanning
-    work_package_query_relation_columns: Work Package Query Relation Columns
-    work_package_sharing: Work Package Sharing
-    work_package_subject_generation: Work Package Subject Generation

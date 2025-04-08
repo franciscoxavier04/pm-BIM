@@ -34,11 +34,11 @@ RSpec.describe Overviews::OverviewsController, "edit_project_life_cycles permiss
   include PermissionSpecs
 
   # render dialog with inputs for editing project attributes with edit_project permission
-  check_permission_required_for("overviews/overviews#project_life_cycles_dialog", :edit_project_stages_and_gates)
+  check_permission_required_for("overviews/overviews#project_life_cycles_dialog", :edit_project_phases)
 
   # render form with inputs for editing project attributes with edit_project permission
-  check_permission_required_for("overviews/overviews#project_life_cycles_form", :edit_project_stages_and_gates)
+  check_permission_required_for("overviews/overviews#project_life_cycles_form", :edit_project_phases)
 
   # update project attributes with edit_project permission, deeper permission check via contract in place
-  check_permission_required_for("overviews/overviews#update_project_life_cycles", :edit_project_stages_and_gates)
+  check_permission_required_for("overviews/overviews#update_project_life_cycles", :edit_project_phases)
 end

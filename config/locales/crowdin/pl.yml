@@ -366,14 +366,14 @@ pl:
         no_results_title_text: Nie ma dostępnych pól niestandardowych.
       life_cycle:
         header:
-          title: "Cykl życia projektu"
-          description_html: 'Te etapy i bramki w cyklu życia projektu będą wyświetlane na <a href=%{overview_url} target="_blank">stronie przeglądu projektu</a> i są definiowane w <a href=%{admin_settings_url} target="_blank">ustawieniach administracyjnych</a> przez administratora wystąpienia. Poszczególne atrybuty można włączyć lub wyłączyć.'
-        non_defined: "Ani etapy, ani bramki nie są obecnie zdefiniowane."
-        section_header: "Etapy i bramki"
+          title: "Project life cycle"
+          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
+        non_defined: "No phases are currently defined."
+        section_header: "Phases"
         step:
           use_in_project: "Użyj kroku %{step} w tym projekcie"
         filter:
-          label: "Wyszukaj etap lub brankę projektu"
+          label: "Search project phase"
       project_custom_fields:
         header:
           title: "Atrybuty projektu"
@@ -398,12 +398,12 @@ pl:
         no_results_title_text: Nie ma dodatkowego zarejestrowanego miejsca na dysku zużytego przez ten projekt.
       work_package_priorities:
         new_label: "Nowy priorytet"
-  project_stage:
+  project_phase:
     working_days_count:
-      one: "Czas trwania: %{count} dzień roboczy"
-      few: "Czas trwania: %{count} dni robocze"
-      many: "Czas trwania: %{count} dni roboczych"
-      other: "Czas trwania: %{count} dnia roboczego"
+      one: "Duration: %{count} working day"
+      few: "Duration: %{count} working days"
+      many: "Duration: %{count} working days"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Zmodyfikowana lista została zapisana jako nowa lista"
@@ -969,11 +969,16 @@ pl:
       project_custom_field:
         is_required: "Wymagane dla wszystkich projektów"
         custom_field_section: Sekcja
-      project/life_cycle_step:
-        definition: "Definicja"
-      project/life_cycle_step_definition:
-        name: "Nazwa"
-        color: "Kolor"
+      project/phase:
+        date_range: "Date range"
+        definition: "Definition"
+      project/phase_definition:
+        name: "Name"
+        color: "Color"
+        start_gate: "Start phase gate"
+        start_gate_name: "Start phase gate name"
+        finish_gate: "Finish phase gate"
+        finish_gate_name: "Finish phase gate name"
       query:
         sums: "Sumy"
         columns: "Kolumny"
@@ -1274,42 +1279,12 @@ pl:
           attributes:
             project_ids:
               blank: "Wybierz projekt."
-        project/life_cycle_step_definition:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "musi mieć wartość Project::StageDefinition albo Project::GateDefinition"
-              type_and_class_name_mismatch: "musi być zgodna z nazwą tworzonego wystąpienia klasy"
-        project/gate_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "musi mieć wartość Project::GateDefinition"
-        project/stage_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "musi mieć wartość Project::StageDefinition"
-        project/life_cycle_step:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "musi mieć wartość Project::Stage albo Project::Gate"
-              must_be_a_stage: "musi mieć wartość Project::Stage"
-              must_be_a_gate: "musi mieć wartość Project::Gate"
-              type_and_class_name_mismatch: "musi odpowiadać nazwie tworzonego wystąpienia klasy"
-        project/gate:
-          attributes:
-            base:
-              end_date_not_allowed: "Nie można przypisać daty zakończenia do Project::Gate"
-            type:
-              type_and_class_name_mismatch: "musi mieć wartość Project::Gate"
-            date:
-              non_continuous_dates: "nie może być wcześniejsza niż data zakończenia poprzedniego %{step}."
-        project/stage:
+        project/phase:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "data rozpoczęcia musi być wcześniejsza niż data zakończenia."
-              non_continuous_dates: "nie może być wcześniejsza niż data zakończenia poprzedniego %{step}."
-              incomplete: "jest niekompletny."
-            type:
-              type_and_class_name_mismatch: "musi mieć wartość Project::Stage"
+              start_date_must_be_before_finish_date: "start date must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              incomplete: "is incomplete."
         query:
           attributes:
             project:
@@ -1344,6 +1319,10 @@ pl:
             values:
               inclusion: "filtr ma nieważne wartości."
               format: "%{message}"
+        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+          attributes:
+            values:
+              single_value_requirement: "must be a single work package"
         relation:
           typed_dag:
             circular_dependency: "Relacja tworzy krąg relacji."
@@ -1548,8 +1527,6 @@ pl:
         other: "Powiadomień"
       placeholder_user: "Użytkownik zastępczy"
       project: "Projekt"
-      project/gate_definition: "Bramka"
-      project/stage_definition: "Etap"
       project_query:
         one: "Lista projektów"
         few: "Listy projektów"
@@ -1627,12 +1604,14 @@ pl:
       time_entry: "Poświęcony czas"
       wiki_edit: "Wiki"
       work_package: "Pakiety robocze"
-    project_life_cycle_step:
+    project_phase:
       activated: "activated"
       deactivated: "deactivated"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
   #common attributes of all models
   attributes:
     active: "Aktywne"
@@ -2070,7 +2049,7 @@ pl:
       automatic_subject_generation:
         description: "Utwórz automatycznie generowane tematy za pomocą wywoływanych atrybutów i tekstu."
       customize_life_cycle:
-        description: "Twórz i organizuj etapy i bramki projektu inne niż zapewniane przez planowanie cyklu projektu PM2."
+        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Dostosuj konfigurację formularza za pomocą tych dodatków:"
         add_groups: "Dodaj nowe grupy atrybutów"
@@ -2156,6 +2135,8 @@ pl:
     dialog:
       title: "Eksport"
       submit: "Eksportuj"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "Format pliku"
         options:
@@ -2815,7 +2796,7 @@ pl:
   label_none_parentheses: "(brak)"
   label_not_contains: "nie zawierają"
   label_not_equals: "nie jest"
-  label_life_cycle_step_plural: "Cykl życia projektu"
+  label_life_cycle_step_plural: "Project life cycle"
   label_on: "wł"
   label_operator_all: "nie jest puste"
   label_operator_none: "jest puste"
@@ -2877,7 +2858,7 @@ pl:
   label_project_new: "Nowy projekt"
   label_project_plural: "Projekty"
   label_project_list_plural: "Listy projektów"
-  label_project_lifecycle: "Cykl życia projektu"
+  label_project_life_cycle: "Project life cycle"
   label_project_attributes_plural: "Atrybuty projektu"
   label_project_custom_field_plural: "Atrybuty projektu"
   label_project_settings: "Ustawienia projektu"
@@ -3421,7 +3402,7 @@ pl:
   permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Edycja projektu"
   permission_edit_project_attributes: "Edytuj atrybuty projektu"
-  permission_edit_project_stages_and_gates: "Edytuj etapy i bramki projektu"
+  permission_edit_project_phases: "Edit project phases"
   permission_edit_reportings: "Edycja raportów"
   permission_edit_time_entries: "Edycja dzienników czasu pracy dla innych użytkowników"
   permission_edit_timelines: "Edycja osi czasu"
@@ -3451,8 +3432,8 @@ pl:
   permission_search_project: "Wyszukaj projekt"
   permission_select_custom_fields: "Wybierz pola niestandardowe"
   permission_select_project_custom_fields: "Wybierz atrybuty projektu"
-  permission_select_project_life_cycle: "Wybierz etapy i bramki projektu"
-  permission_select_project_life_cycle_explanation: "Aktywuj/dezaktywuj etapy i bramki w projekcie. Umożliwia użytkownikowi wybranie cyklu życia odpowiedniego dla projektu, ponieważ nieaktywne etapy i bramki nie będą widoczne na stronie przeglądu projektu ani na liście projektów."
+  permission_select_project_phases: "Select project phases"
+  permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the life cycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "Wybieranie modułów projektu"
   permission_share_work_packages: "Udostępnij pakiety robocze"
   permission_manage_types: "Select types"
@@ -3478,7 +3459,7 @@ pl:
   permission_work_package_assigned_explanation: "Pakiety robocze mogą być przypisane do użytkowników i grup znajdujących się w posiadaniu tej roli w odpowiednim projekcie"
   permission_view_project_activity: "Wyświetl aktywność projektu"
   permission_view_project_attributes: "Wyświetl atrybuty projektu"
-  permission_view_project_stages_and_gates: "Wyświetlanie etapów i bramek projektu"
+  permission_view_project_phases: "View project phases"
   permission_save_bcf_queries: "Zapisz zapytania BCF"
   permission_manage_public_bcf_queries: "Zarządzanie publicznymi zapytaniami BCF"
   permission_edit_attribute_help_texts: "Edytuj teksty pomocy dotyczące atrybutów"
@@ -3504,9 +3485,9 @@ pl:
       subprojects_confirmation: "Podprojekt(y): %{value} zostaną także usunięte."
       title: "Usuń projekt %{name}"
     filters:
-      life_cycle_any: "Cykl życia: dowolny etap lub bramka"
-      life_cycle_stage: "Etap cyklu życia: %{stage}"
-      life_cycle_gate: "Bramka cyklu życia: %{gate}"
+      project_phase: "Project phase: %{phase}"
+      project_phase_any: "Project phase: Any"
+      project_phase_gate: "Project phase gate: %{gate}"
     identifier:
       warning_one: Członkowie projektu będą musieli przenieść repozytoria projektu.
       warning_two: Istniejące linki do projektu nie będą dłużej działać.
@@ -3884,27 +3865,27 @@ pl:
       new:
         heading: "Nowy atrybut"
         description: "Zmiany tego atrybutu projektu zostaną odzwierciedlone we wszystkich projektach, w których jest on włączony. Wymaganych atrybutów nie można wyłączyć dla poszczególnych projektów."
-    project_life_cycle_step_definitions:
-      heading: "Cykl życia projektu"
-      heading_description: "Cykl życia projektu składa się z etapów i bramek, które kształtują Twoje projekty. Będą one wyświetlane na stronie przeglądu projektu i będą dostępne na liście projektów. Poszczególne etapy i bramki można wybrać w celu dostosowania projektu, ale nie można zmienić kolejności na poziomie projektu."
-      label_add: "Dodaj"
-      label_add_description: "Dodaj definicję cyklu życia"
-      label_add_stage: "Etap"
-      label_add_gate: "Bramka"
+    project_phase_definitions:
+      heading: "Project life cycle"
+      heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
+      label_add: "Add"
+      label_add_description: "Add project phase definition"
       filter:
-        label: "Wyszukaj etap lub brankę projektu"
-      section_header: "Etapy i bramki"
-      non_defined: "Ani etapy, ani bramki nie są obecnie zdefiniowane."
+        label: "Search project phase"
+      section_header: "Phases"
+      non_defined: "No phases are currently defined."
+      phase_gates: "Phase gates"
       new:
-        description: "Zmiany w tym kroku projektu zostaną odzwierciedlone we wszystkich projektach, w których jest on włączony."
-      new_stage:
-        heading: "Nowy etap"
-      new_gate:
-        heading: "Nowa bramka"
-      edit_stage:
-        heading: "Edytuj etap"
-      edit_gate:
-        heading: "Edytuj bramkę"
+        description: "Changes to this project phase will be reflected in all projects where it is enabled."
+        heading: "New Phase"
+      edit:
+        heading: "Edit Phase"
+      both_gate: "Start and finish gate"
+      no_gate: "No gate"
+      start_gate: "Start gate"
+      start_gate_caption: "Add a gate with the start date of the phase"
+      finish_gate: "Finish gate"
+      finish_gate_caption: "Add a gate with the end date of the phase"
     projects:
       missing_dependencies: "Sprawdzono moduł projektu %{module}, który zależy od %{dependencies}. Musisz sprawdzić również te zależności."
       section_new_projects: "Ustawienia nowych projektów"
@@ -3940,7 +3921,7 @@ pl:
   text_are_you_sure_continue: "Czy na pewno chcesz kontynuować?"
   text_are_you_sure_with_children: "Usunąć pakiet roboczy i wszystkie podrzędne pakiety?"
   text_are_you_sure_with_project_custom_fields: "Usunięcie tego atrybutu spowoduje również usunięcie jego wartości we wszystkich projektach. Czy na pewno chcesz to zrobić?"
-  text_are_you_sure_with_project_life_cycle_step: "Usunięcie tego kroku spowoduje również usunięcie jego użycia we wszystkich projektach. Czy na pewno chcesz to zrobić?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this phase will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Przypisz do projektu"
   text_form_configuration: >
     Możesz określić, które pola będą wyświetlane w formularzach Work Package. Możesz dowolnie grupować pola aby dostosować do swoich potrzeb.

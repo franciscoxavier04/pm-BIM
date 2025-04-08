@@ -60,8 +60,9 @@ module TableHelpers
       end
 
       def parse_predecessors(predecessors)
-        relations = predecessors.map do |predecessor|
-          parse_predecessor(predecessor)
+        relations = predecessors.to_h do |predecessor|
+          relation = parse_predecessor(predecessor)
+          [relation[:with], relation]
         end
         { relations: }.compact_blank
       end

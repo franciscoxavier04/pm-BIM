@@ -32,16 +32,17 @@ require "spec_helper"
 
 RSpec.describe "Work package comments with restricted visibility",
                :js,
-               :with_cuprite,
                with_flag: { comments_with_restricted_visibility: true } do
-  let(:project) { create(:project) }
-  let(:admin) { create(:admin) }
-  let(:viewer) { create_user_with_restricted_comments_view_permissions }
-  let(:viewer_with_commenting_permission) { create_user_with_restricted_comments_view_and_write_permissions }
-  let(:project_admin) { create_user_as_project_admin }
+  include RestrictedVisibilityCommentsHelpers
 
-  let(:work_package) { create(:work_package, project:, author: admin) }
-  let(:first_comment) do
+  shared_let(:project) { create(:project, enabled_comments_with_restricted_visibility: true) }
+  shared_let(:admin) { create(:admin) }
+  shared_let(:viewer) { create_user_with_restricted_comments_view_permissions }
+  shared_let(:viewer_with_commenting_permission) { create_user_with_restricted_comments_view_and_write_permissions }
+  shared_let(:project_admin) { create_user_as_project_admin }
+
+  shared_let(:work_package) { create(:work_package, project:, author: admin) }
+  shared_let(:first_comment) do
     create(:work_package_journal, user: admin, notes: "A (restricted) comment by admin",
                                   journable: work_package, version: 2, restricted: true)
   end
@@ -52,17 +53,37 @@ RSpec.describe "Work package comments with restricted visibility",
   context "with an admin user" do
     current_user { admin }
 
-    before do
-      wp_page.visit!
-      wp_page.wait_for_activity_tab
+    context "when the feature is enabled for the project" do
+      before do
+        wp_page.visit!
+        wp_page.wait_for_activity_tab
+      end
+
+      it "allows adding a comment with restricted visibility" do
+        activity_tab.expect_input_field
+
+        activity_tab.add_comment(text: "First (restricted) comment by admin", restricted: true)
+
+        activity_tab.expect_journal_notes(text: "First (restricted) comment by admin")
+      end
     end
 
-    it "allows adding a comment with restricted visibility" do
-      activity_tab.expect_input_field
+    context "when the feature is not enabled for the project" do
+      before do
+        project.enabled_comments_with_restricted_visibility = false
+        project.save!
 
-      activity_tab.add_comment(text: "First (restricted) comment by admin", restricted: true)
+        wp_page.visit!
+        wp_page.wait_for_activity_tab
+      end
 
-      activity_tab.expect_journal_notes(text: "First (restricted) comment by admin")
+      it "allows adding a comment with restricted visibility" do
+        activity_tab.expect_input_field
+
+        activity_tab.type_comment("This comment cannot be restricted")
+
+        expect(page).not_to have_test_selector("op-work-package-journal-restricted-comment-checkbox")
+      end
     end
   end
 
@@ -173,36 +194,97 @@ RSpec.describe "Work package comments with restricted visibility",
     end
   end
 
-  def create_user_as_project_admin
-    member_role = create(:project_role,
-                         permissions: %i[view_work_packages add_work_package_notes
-                                         edit_own_work_package_notes
-                                         view_comments_with_restricted_visibility
-                                         add_comments_with_restricted_visibility
-                                         edit_own_comments_with_restricted_visibility
-                                         edit_others_comments_with_restricted_visibility])
-    create(:user, firstname: "Project", lastname: "Admin",
-                  member_with_roles: { project => member_role })
-  end
+  describe "mentioning users in comments" do
+    current_user { project_admin }
 
-  def create_user_with_restricted_comments_view_permissions
-    viewer_role = create(:project_role, permissions: %i[view_work_packages view_comments_with_restricted_visibility])
-    create(:user,
-           firstname: "A",
-           lastname: "Viewer",
-           member_with_roles: { project => viewer_role })
-  end
+    shared_let(:user_without_restricted_comments_view_permissions) do
+      create_user_without_restricted_comments_view_permissions
+    end
 
-  def create_user_with_restricted_comments_view_and_write_permissions
-    viewer_role_with_commenting_permission = create(:project_role,
-                                                    permissions: %i[view_work_packages add_work_package_notes
-                                                                    edit_own_work_package_notes
-                                                                    view_comments_with_restricted_visibility
-                                                                    add_comments_with_restricted_visibility
-                                                                    edit_own_comments_with_restricted_visibility])
-    create(:user,
-           firstname: "A",
-           lastname: "Viewer",
-           member_with_roles: { project => viewer_role_with_commenting_permission })
+    shared_let(:group) { create(:group, firstname: "A", lastname: "Group") }
+    shared_let(:group_member) do
+      group_role = create(:project_role)
+      create(:member,
+             principal: group,
+             project:,
+             roles: [group_role])
+    end
+
+    before do
+      wp_page.visit!
+      wait_for_reload
+      expect_angular_frontend_initialized
+      wp_page.wait_for_activity_tab
+    end
+
+    context "with restricted comments initially enabled" do
+      it "restricts mentions to project members with view comments with restricted visibility permission" do
+        activity_tab.open_new_comment_editor
+        expect(page).to have_test_selector("op-work-package-journal-form-element")
+
+        activity_tab.check_restricted_visibility_comment_checkbox
+        activity_tab.refocus_editor
+        activity_tab.type_comment("@")
+
+        expect(page.all(".mention-list-item").map(&:text))
+          .to contain_exactly("Project Admin", "Restricted Viewer", "Restricted ViewerCommenter")
+      end
+    end
+
+    context "with restricted comments initially disabled" do
+      it "allows mentioning project members but they are sanitized when the checkbox is checked" do
+        activity_tab.type_comment("@")
+
+        expect(page.all(".mention-list-item").map(&:text))
+          .to contain_exactly("A Viewer", "Group", "Project Admin", "Restricted Viewer", "Restricted ViewerCommenter")
+
+        page.find(".mention-list-item", text: "A Viewer").click
+        activity_tab.type_comment("@Restricted")
+        page.first(".mention-list-item", text: "Restricted Viewer").click
+        activity_tab.type_comment("@Group")
+        page.find(".mention-list-item", text: "Group").click
+
+        activity_tab.check_restricted_visibility_comment_checkbox
+
+        page.within_test_selector("op-work-package-journal-form-element") do
+          expect(page.all("a.mention").map(&:text))
+            .to contain_exactly("@Restricted Viewer")
+
+          expect(page).to have_text("@A Viewer") & have_text("@Group")
+        end
+      end
+    end
+
+    context "when editing a restricted comment" do
+      it "honors mentionable principals" do
+        activity_tab.within_journal_entry(first_comment) do
+          page.find_test_selector("op-wp-journal-#{first_comment.id}-action-menu").click
+          page.find_test_selector("op-wp-journal-#{first_comment.id}-edit").click
+
+          activity_tab.type_comment(" @")
+        end
+
+        expect(page.all(".mention-list-item").map(&:text))
+            .to contain_exactly("Project Admin", "Restricted Viewer", "Restricted ViewerCommenter")
+      end
+    end
+
+    context "with a server error" do
+      before do
+        allow(WorkPackages::ActivitiesTab::RestrictedMentionsSanitizer).to receive(:sanitize)
+          .and_raise(RuntimeError, "Something went wrong!!!")
+      end
+
+      it "shows an error message" do
+        activity_tab.type_comment("@Restricted")
+        page.first(".mention-list-item", text: "Restricted Viewer").click
+
+        activity_tab.check_restricted_visibility_comment_checkbox
+
+        page.within_test_selector("op-primer-flash-message") do
+          expect(page).to have_text("Something went wrong!!!")
+        end
+      end
+    end
   end
 end

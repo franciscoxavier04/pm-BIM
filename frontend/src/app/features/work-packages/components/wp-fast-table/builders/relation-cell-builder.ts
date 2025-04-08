@@ -73,7 +73,7 @@ export class RelationCellbuilder {
     badge.classList.add('wp-table--relation-count');
 
     badge.textContent = count.toString();
-    badge.classList.add('badge', '-border-only');
+    badge.classList.add('badge');
 
     return badge;
   }
