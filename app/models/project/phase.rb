@@ -31,7 +31,8 @@ class Project::Phase < ApplicationRecord
   belongs_to :definition,
              optional: false,
              class_name: "Project::PhaseDefinition"
-  has_many :work_packages, inverse_of: :project_phase, dependent: :nullify
+  has_many :work_packages,
+           through: :definition
 
   validate :validate_date_range
 
