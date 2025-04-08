@@ -36,13 +36,13 @@ zh-TW:
           name: 黑色
       project_phase_colors:
         item_0:
-          name: PM2 Orange
+          name: PM2 橙色
         item_1:
-          name: PM2 Red
+          name: PM2 紅色
         item_2:
-          name: PM2 Magenta
+          name: PM2 紅紫色
         item_3:
-          name: PM2 Green Yellow
+          name: PM2 黃綠色
       document_categories:
         item_0:
           name: 說明文件
@@ -81,16 +81,16 @@ zh-TW:
     standard:
       project_phases:
         item_0:
-          name: Initiating
+          name: 初始化中
         item_1:
-          name: Planning
-          start_gate: Ready for Planning
+          name: 計劃中
+          start_gate: 準備規劃
         item_2:
-          name: Executing
-          start_gate: Ready for Executing
+          name: 執行中
+          start_gate: 準備執行
         item_3:
-          name: Closing
-          start_gate: Ready for Closing
+          name: 正在關閉
+          start_gate: 準備關閉
       priorities:
         item_0:
           name: 低
@@ -483,7 +483,7 @@ zh-TW:
         item_1:
           name: 里程碑
         item_2:
-          name: Summary task
+          name: 摘要工作
         item_3:
           name: 功能
         item_4:
