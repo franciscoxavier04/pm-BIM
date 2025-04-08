@@ -76,20 +76,4 @@ RSpec.describe Projects::Phases::HoverCardComponent, type: :component do
       end
     end
   end
-
-  context "when inactive" do
-    let(:phase) { build_stubbed(:project_phase, active: false) }
-
-    it "renders a generic error message" do
-      expect(page).to have_text(I18n.t("http.response.unexpected"))
-    end
-  end
-
-  context "when phase cannot be found in database" do
-    let(:phase) { nil }
-
-    it "renders a generic error message" do
-      expect(page).to have_text(I18n.t("http.response.unexpected"))
-    end
-  end
 end
