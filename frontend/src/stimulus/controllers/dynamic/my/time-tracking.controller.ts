@@ -110,12 +110,18 @@ export default class MyTimeTrackingController extends Controller {
         );
       },
       eventResize: (info) => {
+        // it does not make sense to resize the events without start & end times
+        // we cannot only disable resize, because we want to be able to drag the events
+        // so we need to revert the event to its original size
+        if (info.event.allDay) {
+          info.revert();
+          return;
+        }
+
         const startMoment = moment(info.event.startStr);
         const endMoment = moment(info.event.endStr);
 
-        const newEventHours = info.event.allDay
-          ? (info.event.extendedProps.hours as number)
-          : moment.duration(endMoment.diff(startMoment)).asHours();
+        const newEventHours = moment.duration(endMoment.diff(startMoment)).asHours();
 
         info.event.setExtendedProp('hours', newEventHours);
 
@@ -132,12 +138,7 @@ export default class MyTimeTrackingController extends Controller {
         // When dragging from all day into the calendar set the defaultTimedEventDuration to the hours of the event so
         // that we display it correctly in the calendar. Will be reset in the drop event
         if (info.event.allDay) {
-          this.calendar.setOption(
-            'defaultTimedEventDuration',
-            moment
-              .duration(info.event.extendedProps.hours as number, 'hours')
-              .asMilliseconds(),
-          );
+          this.calendar.setOption('defaultTimedEventDuration', moment.duration(info.event.extendedProps.hours as number, 'hours').asMilliseconds());
         }
       },
 
@@ -168,10 +169,7 @@ export default class MyTimeTrackingController extends Controller {
           );
         }
 
-        this.calendar.setOption(
-          'defaultTimedEventDuration',
-          DEFAULT_TIMED_EVENT_DURATION,
-        );
+        this.calendar.setOption('defaultTimedEventDuration', DEFAULT_TIMED_EVENT_DURATION);
       },
       eventClick: (info) => {
         // check if we clicked on a link tag, if so exit early as we don't want to show the modal
@@ -184,15 +182,9 @@ export default class MyTimeTrackingController extends Controller {
           { method: 'GET' },
         );
       },
-      viewDidMount: () => {
-        setTimeout(() => this.addTotalFooter(), 100);
-      },
-      eventDidMount: () => {
-        setTimeout(() => this.addTotalFooter(), 100);
-      },
-      eventChange: () => {
-        setTimeout(() => this.addTotalFooter(), 100);
-      },
+      viewDidMount: () => { setTimeout(() => this.addTotalFooter(), 100); },
+      eventDidMount: () => { setTimeout(() => this.addTotalFooter(), 100); },
+      eventChange: () => { setTimeout(() => this.addTotalFooter(), 100); },
     });
 
     this.calendar.render();
@@ -215,18 +207,22 @@ export default class MyTimeTrackingController extends Controller {
 
     // Add footer dividier if it doesn't exist
     if (calendarScrollGridWrapper.querySelector('.fc-timegrid-footer-divider') === null) {
-      calendarScrollGridWrapper.insertAdjacentHTML('beforeend', '<tr role="presentation" class="fc-scrollgrid-section fc-timegrid-footer-divider"><td class="fc-timegrid-divider fc-cell-shaded"></td></tr>');
+      calendarScrollGridWrapper.insertAdjacentHTML(
+        'beforeend',
+        '<tr role="presentation" class="fc-scrollgrid-section fc-timegrid-footer-divider"><td class="fc-timegrid-divider fc-cell-shaded"></td></tr>',
+      );
     }
 
     // Remove existing footer if it exists
     const existingFooter = document.querySelector('.fc-timegrid-footer-totals');
-    if (existingFooter) {
-      existingFooter.remove();
-    }
+    if (existingFooter) { existingFooter.remove(); }
+
     const days:string[] = [];
-    document.querySelectorAll('.fc-timegrid-cols .fc-day').forEach((dayElement) => {
-      days.push(dayElement.getAttribute('data-date') as string);
-    });
+    document
+      .querySelectorAll('.fc-timegrid-cols .fc-day')
+      .forEach((dayElement) => {
+        days.push(dayElement.getAttribute('data-date') as string);
+      });
 
     calendarScrollGridWrapper.appendChild(this.buildHtmlFooter(days));
   }
@@ -298,7 +294,9 @@ export default class MyTimeTrackingController extends Controller {
       // Inner div in der zweiten Zelle erstellen
       const syncInner = document.createElement('div');
       syncInner.className = 'fc-scrollgrid-sync-inner';
-      syncInner.textContent = this.displayDuration(this.calculateTotalHours(day));
+      syncInner.textContent = this.displayDuration(
+        this.calculateTotalHours(day),
+      );
       footerCell.appendChild(syncInner);
       tbodyTr.appendChild(footerCell);
     });
@@ -330,14 +328,14 @@ export default class MyTimeTrackingController extends Controller {
           start_time: startTime,
           hours,
         },
+        no_dialog: true,
       }),
     })
       .then((response) => {
-        if (response.ok) {
-          void response.text().then((html) => {
-            renderStreamMessage(html);
-          });
-        } else if (revertFunction) {
+        void response.text().then((html) => {
+          renderStreamMessage(html);
+        });
+        if (!response.ok && revertFunction) {
           revertFunction();
         }
       })

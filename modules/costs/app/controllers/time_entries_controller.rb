@@ -97,7 +97,7 @@ class TimeEntriesController < ApplicationController
     end
   end
 
-  def update
+  def update # rubocop:disable Metrics/AbcSize
     call = TimeEntries::UpdateService
       .new(user: current_user, model: @time_entry)
       .call(permitted_params.time_entries)
@@ -106,12 +106,15 @@ class TimeEntriesController < ApplicationController
 
     if call.success?
       render_success_flash_message_via_turbo_stream(message: t("notice_updated_successfully"))
+    elsif params[:no_dialog]
+      render_error_flash_message_via_turbo_stream(message: t("notice_update_failed",
+                                                             errors: call.errors.full_messages.join(", ")))
     else
       form_component = TimeEntries::TimeEntryFormComponent.new(time_entry: @time_entry, **form_config_options)
       update_via_turbo_stream(component: form_component, status: :bad_request)
     end
 
-    respond_with_turbo_streams
+    respond_with_turbo_streams(status: call.success? ? :ok : :bad_request)
   end
 
   def destroy
