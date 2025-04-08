@@ -24,16 +24,6 @@ Previously, it was only possible to filter for parent work packages, not their l
 
 ![Work package table filtered for descendants of a phase](openproject-15-5-descendants-filter-highlighted.png)
 
-### Advanced accessibility in the date picker
-
-Accessibility remains a key focus in OpenProject, and with version 15.5, we’ve enhanced support for screen readers. These improvements ensure that users relying on assistive technologies receive meaningful feedback during manual date input.
-
-- Informative announcements are now triggered when switching between manual and automatic scheduling.
-- Changes in one date field (e.g., Start date or Duration) are announced as they update related fields.
-- The “Today” shortcuts include ARIA labels to give clear context, such as “Select today as start date.”
-
-This update is part of our ongoing ARIA implementation strategy, with [further accessibility enhancements planned in upcoming versions](https://community.openproject.org/wp/62708).
-
 ### % Complete included in work package table sums
 
 The **% Complete** value is now included in the sum row of work package tables. This complements the existing Work and Remaining work columns and gives a quick, consistent overview of project progress.
@@ -56,6 +46,16 @@ Clicking on the dropdown symbol expands the view to show all related child work 
 
 ![Work package table with expanded children work packages in the children column](openproject-15-5-children-work-package-table-unfolded.png)
 
+### Advanced accessibility in the date picker
+
+Accessibility remains a key focus in OpenProject, and with version 15.5, we’ve enhanced support for screen readers. These improvements ensure that users relying on assistive technologies receive meaningful feedback during manual date input.
+
+- Informative announcements are now triggered when switching between manual and automatic scheduling.
+- Changes in one date field (e.g., Start date or Duration) are announced as they update related fields.
+- The “Today” shortcuts include ARIA labels to give clear context, such as “Select today as start date.”
+
+This update is part of our ongoing ARIA implementation strategy, with [further accessibility enhancements planned in upcoming versions](https://community.openproject.org/wp/62708).
+
 ### Improved date picker rendering in mobile screens
 
 The date picker now uses the native mobile date input and **opens in a full-screen modal on small screens**. This improves accessibility and interaction. The mini calendar has been removed to reduce clutter and improve usability on mobile devices.
@@ -72,7 +72,7 @@ Relations in the Relations tab and date picker are now consistently ordered by t
 
 This change improves clarity by showing relations in the exact order they were added — with the oldest first — and removes the previous grouping by visibility status.
 
-### Group work package-related project settings in a new entry called 'Work packages'
+### Work package related project settings grouped in a new entry
 
 To improve navigation, related project settings have been grouped under a new **Work packages** section in the project settings. This section includes three tabs:
 
@@ -84,7 +84,7 @@ The previous individual entries have been moved into this grouped view. Existing
 
 ### Classic meetings marked as unsupported — removal planned for the next release
 
-With the recent improvements to One-time and Recurring meetings, the older Classic meetings are now considered outdated and will be removed in the next OpenProject release (likely version 16.0). This change has been planned and communicated since the introduction of what were then called Dynamic meetings (now One-time and Recurring).
+With the recent improvements to One-time and Recurring meetings, the older Classic meetings are now considered outdated and will be removed in the next OpenProject release (16.0). This change has been planned and communicated since the introduction of what were then called Dynamic meetings (now One-time and Recurring).
 
 To prepare for this transition, the **Classic option in the + Meeting dropdown is now marked as unsupported**, accompanied by the following notice: “Classic meetings will be removed in the next version of OpenProject.”
 
