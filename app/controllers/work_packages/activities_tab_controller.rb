@@ -329,6 +329,7 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   def generate_time_based_update_streams(last_update_timestamp)
     journals = @work_package
                  .journals
+                 .restricted_visible
                  .with_sequence_version
 
     if @filter == :only_comments
