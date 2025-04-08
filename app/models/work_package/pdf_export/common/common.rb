@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -83,6 +85,10 @@ module WorkPackage::PDFExport::Common::Common
 
   def make_link_anchor(anchor, caption)
     "<link anchor=\"#{anchor}\">#{caption}</link>"
+  end
+
+  def make_link_href(href, caption)
+    "<link href=\"#{href}\">#{caption}</link>"
   end
 
   def link_target_at_current_y(id)
@@ -295,7 +301,7 @@ module WorkPackage::PDFExport::Common::Common
   end
 
   def make_link_href_cell(href, caption)
-    "<color rgb='#{styles.link_color}'><link href='#{href}'>#{caption}</link></color>"
+    "<color rgb='#{styles.link_color}'>#{make_link_href(href, caption)}</color>"
   end
 
   def get_id_column_cell(work_package, value)

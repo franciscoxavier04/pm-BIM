@@ -1,3 +1,33 @@
+# frozen_string_literal: true
+
+#-- copyright
+# OpenProject is an open source project management software.
+# Copyright (C) the OpenProject GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License version 3.
+#
+# OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+# Copyright (C) 2006-2013 Jean-Philippe Lang
+# Copyright (C) 2010-2013 the ChiliProject Team
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# See COPYRIGHT and LICENSE files for more details.
+#++
+
 class CostQuery::PDF::TimesheetGenerator
   include WorkPackage::PDFExport::Common::Common
   include WorkPackage::PDFExport::Common::Attachments
@@ -113,6 +143,12 @@ class CostQuery::PDF::TimesheetGenerator
       .group_by(&:user)
   end
 
+  def all_users
+    all_entries
+      .uniq { |entry| entry.user.id }
+      .map(&:user)
+  end
+
   def all_entries
     @all_entries ||= begin
       ids = query
@@ -137,9 +173,10 @@ class CostQuery::PDF::TimesheetGenerator
   end
 
   def build_table_day_rows(spent_on, entries)
+    total_for_day = entries.sum(&:hours)
     day_rows = []
     entries.each do |entry|
-      day_rows.push(build_table_row(spent_on, entry))
+      day_rows.push(build_table_row(spent_on, entry, total_for_day))
       if entry.comments.present?
         day_rows.push(build_table_row_comment(entry))
       end
@@ -147,14 +184,24 @@ class CostQuery::PDF::TimesheetGenerator
     day_rows
   end
 
-  def build_table_row(spent_on, entry)
+  def build_table_row(spent_on, entry, total_for_day)
     [
-      { content: format_date(spent_on), rowspan: entry.comments.present? ? 2 : 1 },
-      entry.work_package&.subject || "",
+      { content: "#{format_date(spent_on)}\n#{format_hours(total_for_day)}", rowspan: entry.comments.present? ? 2 : 1 },
+      build_table_subject_cell(entry),
       with_times_column? ? format_spent_on_time(entry) : nil,
-      format_hours(entry.hours || 0),
+      { content: format_hours(entry.hours || 0), align: :right },
       entry.activity&.name || ""
     ].compact
+  end
+
+  def build_table_subject_cell(entry)
+    return "" if entry.work_package.nil?
+
+    href = url_helpers.work_package_url(entry.work_package)
+    {
+      content: "#{make_link_href(href, "##{entry.work_package.id}")} #{entry.work_package.subject || ''}",
+      inline_format: true
+    }
   end
 
   def build_table_row_sum(entries)
@@ -162,7 +209,7 @@ class CostQuery::PDF::TimesheetGenerator
       { content: "", rowspan: 1 },
       "",
       with_times_column? ? "" : nil,
-      { content: format_sum_time_entries(entries), font_style: :bold },
+      { content: format_sum_time_entries(entries), font_style: :bold, align: :right },
       ""
     ].compact
   end
@@ -189,7 +236,7 @@ class CostQuery::PDF::TimesheetGenerator
       { content: TimeEntry.human_attribute_name(:spent_on), rowspan: 1 },
       I18n.t(:"activerecord.models.work_package"),
       with_times_column? ? I18n.t(:"export.timesheet.time") : nil,
-      TimeEntry.human_attribute_name(:hours),
+      { content: TimeEntry.human_attribute_name(:hours), align: :right },
       TimeEntry.human_attribute_name(:activity)
     ].compact
   end
@@ -357,17 +404,75 @@ class CostQuery::PDF::TimesheetGenerator
   end
 
   def write_overview!
-    groups = grouped_by_user_entries
-    return if groups.size <= 1
+    users = all_users
+    return if users.size <= 1
 
     write_heading!
     write_hr!
-    write_overview_table!(overview_table_rows(groups))
+
+    start_date, end_date = all_entries.map(&:spent_on).minmax
+    users
+      .each_slice(6) do |users_chunk|
+      write_sum_table!(users_chunk, start_date, end_date)
+    end
 
     start_new_page_if_needed
   end
 
-  def write_overview_table!(rows)
+  def build_sum_table_footer_rows(users, users_sums)
+    total = users_sums.to_a.sum(&:last)
+    [
+      [{ content: I18n.t("export.timesheet.sums_hours"), font_style: :bold }] + users.map do |user|
+        { content: format_hours(users_sums[user.id]), align: :right, font_style: :bold }
+      end,
+      [
+        {
+          content: "#{I18n.t('export.timesheet.total_sum')}: #{format_hours(total)}",
+          align: :right, font_style: :bold, colspan: 1 + users.length
+        }
+      ]
+    ]
+  end
+
+  def build_sum_table_row(date, users, users_sums)
+    row = []
+    users.each do |user|
+      sum = calc_sum_for_user_on_day(user, date)
+      users_sums[user.id] = (users_sums[user.id] || 0) + sum
+      row.push(sum > 0 ? { content: format_hours(sum), align: :right } : "")
+    end
+    return nil unless row.any? { |column| !column.empty? }
+
+    [format_date(date)] + row
+  end
+
+  def calc_sum_for_user_on_day(user, date)
+    all_entries.select { |entry| entry.user == user && entry.spent_on == date }.sum(&:hours)
+  end
+
+  def build_sum_table_rows(users, start_date, end_date)
+    rows = []
+    users_sums = {}
+    (start_date..end_date).each do |date|
+      row = build_sum_table_row(date, users, users_sums)
+      rows.push(row) unless row.nil?
+    end
+    rows = rows + build_sum_table_footer_rows(users, users_sums) unless rows.empty?
+    rows
+  end
+
+  def write_sum_table!(users, start_date, end_date)
+    rows = build_sum_table_rows(users, start_date, end_date)
+    unless rows.empty?
+      header_row = [{ content: TimeEntry.human_attribute_name(:spent_on), font_style: :bold }] +
+        users.map do |user|
+          {
+            content: make_link_anchor("user_#{user.id}", user.name),
+            inline_format: true, align: :right, font_style: :bold
+          }
+        end
+      rows.unshift(header_row)
+    end
     pdf.make_table(
       rows,
       header: true,
@@ -379,31 +484,13 @@ class CostQuery::PDF::TimesheetGenerator
         borders: %i[top bottom left right],
         padding: [TABLE_CELL_PADDING, TABLE_CELL_PADDING, TABLE_CELL_PADDING + 2, TABLE_CELL_PADDING]
       }
-    ) do |table|
-      adjust_overview_border_sum_row(table)
-    end.draw
+    ).draw
   end
 
   def adjust_overview_border_sum_row(table)
     row = table.rows(-1)
     row.columns(0).style { |c| c.borders = c.borders - [:right] }
     row.columns(-1).style { |c| c.borders = c.borders - [:left] }
-  end
-
-  def overview_table_rows(groups)
-    rows = [
-      [
-        { content: TimeEntry.human_attribute_name(:user), font_style: :bold },
-        { content: I18n.t("export.timesheet.sum_hours"), font_style: :bold }
-      ]
-    ]
-    groups.each do |user, entries|
-      rows.push([user.name, format_sum_time_entries(entries)])
-    end
-
-    total = groups.sum { |_user, entries| entries.sum(&:hours) }
-    rows.push(["", { content: format_hours(total), font_style: :bold }])
-    rows
   end
 
   def write_heading!
@@ -416,6 +503,7 @@ class CostQuery::PDF::TimesheetGenerator
   end
 
   def write_username(user)
+    link_target_at_current_y("user_#{user.id}")
     pdf.formatted_text([{ text: user.name, size: H2_FONT_SIZE }])
     pdf.move_down(H2_MARGIN_BOTTOM)
   end
@@ -431,7 +519,7 @@ class CostQuery::PDF::TimesheetGenerator
   def format_hours(hours)
     return "" if hours.nil? || hours < 0
 
-    DurationConverter.output(hours)
+    DurationConverter.output(hours, format: :hours_and_minutes)
   end
 
   def format_spent_on_time(entry)
