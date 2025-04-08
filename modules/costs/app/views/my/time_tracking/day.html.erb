@@ -1,13 +1,2 @@
-<%=
-  render Primer::OpenProject::PageHeader.new do |header|
-    header.with_title { I18n.t(:label_today) }
-    header.with_breadcrumbs(
-      [
-        { text: I18n.t(:label_my_time_tracking), href: my_time_tracking_path },
-        I18n.t(:label_today)
-      ]
-    )
-  end
-%>
-
+<%= render(My::TimeTracking::HeaderComponent.new(mode: params[:action].to_sym, date: current_day)) %>
 <%= render(list_view_component) %>

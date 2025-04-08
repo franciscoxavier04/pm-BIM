@@ -172,6 +172,10 @@ en:
   label_previous_day: "Previous day"
   label_previous_week: "Previous week"
   label_previous_month: "Previous month"
+  label_specific_day: "Day %{day}"
+  label_specific_week: "Week #%{week}"
+  label_specific_month: "Month %{month}"
+  label_list: "List"
 
   placeholder_activity_select_work_package_first: Work package selection is required first
 
