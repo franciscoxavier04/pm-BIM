@@ -158,7 +158,12 @@ class WorkPackages::DatePickerController < ApplicationController
                                                          triggering_field: params[:triggering_field],
                                                          touched_field_map:,
                                                          date_mode:,
-                                                         live_region: "start date is #{@work_package.start_date}, finish date is #{@work_package.due_date}, duration is #{@work_package.duration}")
+                                                         live_region_message: I18n.t("work_packages.datepicker_modal.update_inputs_aria_live_message",
+                                                                             start_date: @work_package.start_date,
+                                                                             due_date: @work_package.due_date,
+                                                                             duration: @work_package.duration,
+                                                                             working_days_only: @work_package.ignore_non_working_days ? I18n.t("activerecord.attributes.work_package.include_non_working_days.true") : I18n.t("activerecord.attributes.work_package.include_non_working_days.false"),
+                                                                             scheduling: @work_package.schedule_manually ? I18n.t("work_packages.datepicker_modal.mode.manual") : I18n.t("work_packages.datepicker_modal.mode.automatic")))
   end
 
   def focused_field
