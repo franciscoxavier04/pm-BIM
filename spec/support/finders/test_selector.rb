@@ -33,11 +33,13 @@ module TestSelectorFinders
   end
 
   def find_test_selector(value, **)
-    find(:test_id, value, **)
+    target = respond_to?(:page) ? page : self
+    target.find(:test_id, value, **)
   end
 
   def within_test_selector(value, **, &)
-    within(:test_id, value, **, &)
+    target = respond_to?(:page) ? page : self
+    target.within(:test_id, value, **, &)
   end
 
   # expect(page).to have_test_selector('foo')
@@ -57,4 +59,5 @@ RSpec.configure do |config|
   Capybara::Session.include(TestSelectorFinders)
   Capybara::DSL.extend(TestSelectorFinders)
   config.include TestSelectorFinders, type: :feature
+  config.include TestSelectorFinders, type: :component
 end
