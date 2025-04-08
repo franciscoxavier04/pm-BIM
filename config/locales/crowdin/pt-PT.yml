@@ -947,7 +947,7 @@ pt-PT:
           false: "desmarcado como modelo"
         types: "Tipos"
         versions: "Versões"
-        work_packages: "Tarefas"
+        work_packages: "Pacotes de trabalho"
       project_custom_field:
         is_required: "Obrigatório para todos os projetos"
         custom_field_section: Secção

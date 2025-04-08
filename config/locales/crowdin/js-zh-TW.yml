@@ -826,7 +826,7 @@ zh-TW:
       add_new_child: "建立子工作項目"
       create_new: "新增"
       add_existing: "添加現有的"
-      add_existing_child: "Add child"
+      add_existing_child: "增加子項目"
       remove_child: "移除子項目"
       add_new_relation: "建立新關聯"
       add_existing_relation: "增加現有關系"

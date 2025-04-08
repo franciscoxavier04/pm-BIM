@@ -36,7 +36,9 @@ module OpenProject::TeamPlanner
              author_url: "https://www.openproject.org",
              bundled: true,
              settings: {} do
-      project_module :team_planner_view, dependencies: :work_package_tracking, enterprise_feature: true do
+      project_module :team_planner_view,
+                     dependencies: :work_package_tracking,
+                     enterprise_feature: "team_planner_view" do
         permission :view_team_planner,
                    { "team_planner/team_planner": %i[index show upsale overview],
                      "team_planner/menus": %i[show] },
