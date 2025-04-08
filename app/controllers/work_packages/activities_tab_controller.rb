@@ -328,10 +328,9 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def claim_journal_attachments_for(journal)
-    return if (attachment_ids = journal_params[:attachment_ids]).blank?
-
-    journal.attachments = Attachment.where(author: User.current, id: attachment_ids, container: nil)
-    journal.save
+    WorkPackages::ActivitiesTab::CommentAttachmentsClaims::ClaimsService
+      .new(user: User.current, model: journal)
+      .call
   end
 
   def generate_time_based_update_streams(last_update_timestamp)
