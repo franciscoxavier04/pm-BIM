@@ -42,11 +42,7 @@ See COPYRIGHT and LICENSE files for more details.
 <% else %>
   <%=
     render(
-      EnterpriseEdition::BannerComponent.new(
-        :comments_with_restricted_visibility,
-        href: OpenProject::Static::Links.url_for(:user_guides_work_package_activity),
-        mb: 3
-      )
+      EnterpriseEdition::BannerComponent.new(:comments_with_restricted_visibility, mb: 3)
     )
   %>
 <% end %>

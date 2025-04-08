@@ -2031,6 +2031,7 @@ en:
       baseline_comparison: Baseline Comparisons
       board_view: Advanced Boards
       conditional_highlighting: Conditional Highlighting
+      comments_with_restricted_visibility: Comments With Restricted Visibility
       custom_actions: Custom Actions
       custom_field_hierarchies: Custom fields of type hierarchy
       customize_life_cycle: Customize Life Cycle
