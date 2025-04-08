@@ -125,8 +125,6 @@ class TimeEntriesController < ApplicationController
       form_component = TimeEntries::TimeEntryFormComponent.new(time_entry: @time_entry, **form_config_options)
       update_via_turbo_stream(component: form_component, status: :bad_request)
     end
-
-    respond_with_turbo_streams
   end
 
   private

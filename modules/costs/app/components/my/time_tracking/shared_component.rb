@@ -30,7 +30,7 @@
 #
 module My
   module TimeTracking
-    module ComponentNavigation
+    module SharedComponent
       extend ActiveSupport::Concern
       def title # rubocop:disable Metrics/AbcSize
         case mode
@@ -41,14 +41,14 @@ module My
           eow = date.end_of_week
 
           if bow.year == eow.year && bow.month == eow.month
-            "#{bow.strftime('%d.')} - #{eow.strftime('%d. %B %Y')}"
+            [I18n.l(bow, format: "%d."), I18n.l(eow, format: "%d. %B %Y")].join(" - ")
           elsif bow.year == eow.year
-            "#{bow.strftime('%d. %B')} - #{eow.strftime('%d. %B %Y')}"
+            [I18n.l(bow, format: "%d. %B"), I18n.l(eow, format: "%d. %B %Y")].join(" - ")
           else
-            "#{bow.strftime('%d. %B %Y')} - #{eow.strftime('%d. %B %Y')}"
+            [I18n.l(bow, format: "%d. %B %Y"), I18n.l(eow, format: "%d. %B %Y")].join(" - ")
           end
         when :month
-          date.strftime("%B %Y")
+          I18n.l(date, format: "%B %Y")
         end
       end
 

@@ -32,7 +32,8 @@ module My
   module TimeTracking
     class CalendarComponent < ApplicationComponent
       include OpTurbo::Streamable
-      include ComponentNavigation
+      include OpPrimer::ComponentHelpers
+      include SharedComponent
 
       options time_entries: [],
               mode: :week,

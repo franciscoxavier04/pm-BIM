@@ -23,7 +23,9 @@
 
   <div data-my--time-tracking-target="calendar"></div>
 
-  <%- if mode != :day %>
-    <div><%= total_hours %></div>
-  <%- end %>
-<%- end %>
+  <% if mode != :day %>
+    <%= flex_layout(align_items: :flex_end) do |flex| %>
+     <% flex.with_row(mt: 2, font_weight: :bold) { total_hours } %>
+    <% end %>
+  <% end %>
+<% end %>

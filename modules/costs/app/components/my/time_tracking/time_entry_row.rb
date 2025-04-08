@@ -34,10 +34,12 @@ module My
       def button_links
         [
           action_menu
-        ]
+        ].compact
       end
 
       def action_menu
+        return nil unless User.current.allowed_in_work_package?(:edit_own_time_entries, time_entry.work_package)
+
         render(Primer::Alpha::ActionMenu.new) do |menu|
           menu.with_show_button(icon: "kebab-horizontal", "aria-label": t("label_more"), scheme: :invisible)
           menu.with_item(
