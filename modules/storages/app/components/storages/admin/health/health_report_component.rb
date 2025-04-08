@@ -30,22 +30,68 @@
 
 module Storages
   module Admin
-    module SidePanel
-      class ValidationResultComponent < ApplicationComponent
+    module Health
+      class HealthReportComponent < ApplicationComponent
         include OpPrimer::ComponentHelpers
         include OpTurbo::Streamable
 
-        def initialize(storage:, result:)
+        def initialize(storage:, report:)
           super(storage)
-          @result = result
+          @report = report
         end
 
         private
 
-        def summary_header
-          tally = @result.tally
-          failure = tally[:failure] || 0
-          warning = tally[:warning] || 0
+        def data
+          @data ||= compute_display_data
+        end
+
+        def compute_display_data
+          if @report.nil?
+            return {
+              heading: I18n.t("storages.health.no_report"),
+              description: I18n.t("storages.health.no_report_description")
+            }
+          end
+
+          checks_tally = @report.tally
+          if @report.healthy?
+            {
+              summary: summary_with_icon(checks_tally),
+              description: I18n.t("storages.health.summary.success")
+            }
+          else
+            description = if @report.unhealthy?
+                            I18n.t("storages.health.summary.failure")
+                          else
+                            I18n.t("storages.health.summary.warning")
+                          end
+            {
+              summary: summary_with_icon(checks_tally),
+              description:
+            }
+          end
+        end
+
+        def group_summary(group)
+          icon = group.failure? || group.warning? ? :alert : "check-circle"
+          icon_color = if group.failure?
+                         :danger
+                       elsif group.warning?
+                         :attention
+                       else
+                         :success
+                       end
+
+          checks = group.tally
+          key = group.failure? || group.success? ? :failure : :warning
+
+          { icon:, icon_color:, text: I18n.t("storages.health.checks.#{key.to_s.pluralize}", count: checks[key]) }
+        end
+
+        def summary_with_icon(check_tally)
+          failure = check_tally[:failure] || 0
+          warning = check_tally[:warning] || 0
 
           if failure > 0
             { icon: :alert, icon_color: :danger, text: I18n.t("storages.health.checks.failures", count: failure) }
@@ -54,18 +100,6 @@ module Storages
           else
             { icon: :"check-circle", icon_color: :success, text: I18n.t("storages.health.checks.failures", count: 0) }
           end
-        end
-
-        def summary_description
-          text = if @result.healthy?
-                   I18n.t("storages.health.summary.success")
-                 elsif @result.unhealthy?
-                   I18n.t("storages.health.summary.failure")
-                 else
-                   I18n.t("storages.health.summary.warning")
-                 end
-
-          "#{text} #{I18n.t('storages.health.checked', datetime: @result.latest_timestamp)}"
         end
       end
     end

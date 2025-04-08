@@ -30,22 +30,51 @@
 
 module Storages
   module Admin
-    module SidePanel
-      class HealthReportDialogComponent < ApplicationComponent
-        include OpTurbo::Streamable
+    module Health
+      class CheckResultComponent < ApplicationComponent
         include OpPrimer::ComponentHelpers
 
-        TEST_SELECTOR = "op-storages--health-report-dialog"
-
-        def initialize(storage:, report:)
-          super(storage)
-          @report = report
+        def initialize(group:, result:)
+          super(result)
+          @group = group
         end
 
         private
 
-        def subtitle
-          "Last check: 28.03.2025 6:40 PM"
+        def data
+          @data ||= {
+            text: I18n.t("storages.health.checks.#{@group}.#{model.key}"),
+            status_color:,
+            status_text:,
+            error_text: model.message,
+            docs_href: ::OpenProject::Static::Links[:storage_docs][:health_status][:href]
+          }
+        end
+
+        def status_color
+          if model.success?
+            :success
+          elsif model.failure?
+            :danger
+          elsif model.warning? || model.skipped?
+            :attention
+          else
+            raise ArgumentError, "invalid check result state"
+          end
+        end
+
+        def status_text
+          if model.success?
+            I18n.t("storages.health.label_passed")
+          elsif model.failure?
+            I18n.t("storages.health.label_failed")
+          elsif model.warning?
+            I18n.t("storages.health.label_warning")
+          elsif model.skipped?
+            I18n.t("storages.health.label_skipped")
+          else
+            raise ArgumentError, "invalid check result state"
+          end
         end
       end
     end

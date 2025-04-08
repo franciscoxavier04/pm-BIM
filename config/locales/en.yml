@@ -2070,7 +2070,6 @@ en:
   ee:
     upsale:
       title: "Enterprise add-on"
-      link_title: "More information"
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2314,7 +2313,6 @@ en:
       community: "OpenProject community"
       upsale:
         title: "Upgrade to Enterprise edition"
-        more_info: "More information"
     links:
       upgrade_enterprise_edition: "Upgrade to Enterprise edition"
       postgres_migration: "Migrating your installation to PostgreSQL"
@@ -2801,6 +2799,7 @@ en:
   label_modules: "Modules"
   label_months_from: "months from"
   label_more: "More"
+  label_more_information: "More information"
   label_more_than_ago: "more than days ago"
   label_move_column_left: "Move column left"
   label_move_column_right: "Move column right"

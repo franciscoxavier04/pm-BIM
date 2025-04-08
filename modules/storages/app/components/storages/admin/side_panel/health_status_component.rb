@@ -35,6 +35,12 @@ module Storages
         include ApplicationHelper
         include OpTurbo::Streamable
         include OpPrimer::ComponentHelpers
+
+        private
+
+        def report
+          Rails.cache.read("storage_#{model.id}_health_status_report")
+        end
       end
     end
   end
