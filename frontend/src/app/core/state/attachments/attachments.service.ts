@@ -144,12 +144,12 @@ export class AttachmentsResourceService extends ResourceStoreService<IAttachment
       );
   }
 
-  public static getAttachmentsSelfLink(resource: HalResource): string | null {
+  public static getAttachmentsSelfLink(resource:HalResource):string | null {
     if (isNewResource(resource)) {
       return null;
     }
 
-    const attachments = resource.attachments as { href?: string };
+    const attachments = resource.attachments as { href?:string };
     return attachments?.href || null;
   }
 
