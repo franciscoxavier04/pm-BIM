@@ -1313,6 +1313,10 @@ ro:
             values:
               inclusion: "are valori invalide."
               format: "%{message}"
+        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+          attributes:
+            values:
+              single_value_requirement: "must be a single work package"
         relation:
           typed_dag:
             circular_dependency: "Relația creează un cerc închis."
@@ -2095,6 +2099,8 @@ ro:
     dialog:
       title: "Exportă"
       submit: "Exportă"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:
@@ -2554,7 +2560,7 @@ ro:
   label_duplicated_by: "dublat de"
   label_duplicate: "duplicat"
   label_duplicates: "dublează"
-  label_edit: "Editează"
+  label_edit: "Editare"
   label_edit_x: "Editare: %{x}"
   label_enable_multi_select: "Comutare selecție multiplă"
   label_enabled_project_custom_fields: "Câmpuri personalizate activate"
@@ -2608,7 +2614,7 @@ ro:
   label_generate_key: "Generare cheie"
   label_git_path: "Calea catre directorul .git"
   label_greater_or_equal: ">="
-  label_group_by: "Grupează după"
+  label_group_by: "Grupare după"
   label_group_new: "Grupare nouă"
   label_group: "Grup"
   label_group_named: "Grup %{name}"
@@ -3827,7 +3833,7 @@ ro:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
       label_add: "Add"
-      label_add_description: "Adaugă definiția ciclului de viață"
+      label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"
       section_header: "Phases"
