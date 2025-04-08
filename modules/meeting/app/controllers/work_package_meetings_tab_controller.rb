@@ -70,7 +70,7 @@ class WorkPackageMeetingsTabController < ApplicationController
           work_package_id: @work_package.id,
           presenter_id: current_user.id,
           item_type: MeetingAgendaItem::ITEM_TYPES[:work_package],
-          meeting_section_id: backlog.id
+          meeting_section_id: backlog_id
         )
       )
 
@@ -99,9 +99,11 @@ class WorkPackageMeetingsTabController < ApplicationController
     @add_work_package_to_meeting_params ||= params.require(:meeting_agenda_item).permit(:meeting_id, :notes)
   end
 
-  def backlog
+  def backlog_id
     meeting_id = add_work_package_to_meeting_params[:meeting_id]
-    Meeting.find(meeting_id).backlog
+    return if meeting_id.blank?
+
+    Meeting.find(meeting_id).backlog.id
   end
 
   def set_agenda_items(direction)

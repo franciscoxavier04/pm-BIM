@@ -400,7 +400,9 @@ module Pages::Meetings
     end
 
     def in_latest_section_form(&)
-      page.within(all(".op-meeting-section-container").last, &)
+      sections = all(".op-meeting-section-container")
+      last_except_backlog = sections[-2]
+      page.within(last_except_backlog, &)
     end
 
     def add_section(&)
