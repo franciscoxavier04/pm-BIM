@@ -31,15 +31,32 @@
 module Storages
   module Peripherals
     module ConnectionValidators
-      class NextcloudValidator < BaseConnectionValidator
+      class BaseConnectionValidator
+        class << self
+          def validation_groups
+            @validation_groups ||= {}
+          end
 
-        register_group :base_configuration, Nextcloud::StorageConfigurationValidator
-        register_group :authentication, Nextcloud::AuthenticationValidator,
-                       precondition: ->(_, result) { result.group(:base_configuration).non_failure? }
-        register_group :ampf_configuration, Nextcloud::AmpfConfigurationValidator,
-                       precondition: ->(storage, result) {
-                         result.group(:base_configuration).non_failure? && storage.automatic_management_enabled?
-                       }
+          def register_group(group_name, klass, precondition: ->(*) { true })
+            validation_groups[group_name] = { klass:, precondition: }
+          end
+        end
+
+        def initialize(storage)
+          @storage = storage
+        end
+
+        def call
+          validation_groups.each_with_object(ValidatorResult.new) do |(key, group_metadata), result|
+            if group_metadata[:precondition].call(@storage, result)
+              result.add_group_result(key, group_metadata[:klass].call(@storage))
+            end
+          end
+        end
+
+        private
+
+        def validation_groups = self.class.validation_groups
       end
     end
   end

@@ -34,27 +34,44 @@ require_module_spec_helper
 module Storages
   module Peripherals
     module ConnectionValidators
-      RSpec.describe NextcloudValidator, :webmock do
-        it "does not run the AMPF tests if the storage is not automatically managed",
-           vcr: "nextcloud/capabilities_success" do
-          results = described_class.new(storage: create(:nextcloud_storage_with_local_connection)).validate
+      class TestValidator < BaseConnectionValidator
+        def self.reset_groups!
+          @validation_groups = nil
+        end
+      end
 
-          expect { results.group(:ampf_configuration) }.to raise_error(KeyError)
+      RSpec.describe BaseConnectionValidator, :webmock do
+        let(:storage) { create(:nextcloud_storage_configured) }
+
+        subject(:validator) { TestValidator.new(storage) }
+
+        after { TestValidator.reset_groups! }
+
+        it "returns a ValidationResult" do
+          expect(validator.call).to be_a(ValidatorResult)
+        end
+
+        it "only runs a verification if the precondition evaluates as truthy" do
+          test_group = class_spy(Nextcloud::StorageConfigurationValidator)
+          TestValidator.register_group :test_group, test_group, precondition: ->(_, _) { false }
+
+          result = validator.call
+          expect(result).to be_empty
+          expect(test_group).not_to have_received(:call)
         end
 
         it "aggregates all the results from the tests", vcr: "nextcloud/capabilities_success" do
-          results = described_class.new(storage: create(:nextcloud_storage_with_local_connection)).validate
+          TestValidator.register_group :base_configuration, Nextcloud::StorageConfigurationValidator
+          TestValidator.register_group :authentication, Nextcloud::AuthenticationValidator,
+                                       precondition: ->(_, result) { result.group(:base_configuration).non_failure? }
+
+          results = TestValidator.new(create(:nextcloud_storage_with_local_connection)).call
+
+          pp results
 
           expect(results).to be_warning
           expect(results.group(:base_configuration)).to be_success
           expect(results.group(:authentication)).to be_warning
-        end
-
-        it "does not run any further tests if base configuration failed", vcr: "nextcloud/capabilities_invalid_data" do
-          results = described_class.new(storage: create(:nextcloud_storage_with_local_connection)).validate
-
-          expect { results.group(:authentication) }.to raise_error(KeyError)
-          expect { results.group(:ampf_configuration) }.to raise_error(KeyError)
         end
       end
     end
