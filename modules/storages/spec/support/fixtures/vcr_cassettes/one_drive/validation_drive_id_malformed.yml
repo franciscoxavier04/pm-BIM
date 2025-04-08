@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://login.microsoftonline.com/e36f1dbc-fdae-427e-b61b-0d96ddfb81a4/oauth2/v2.0/token
+    uri: https://login.microsoftonline.com/4d44bf36-9b56-45c0-8807-bbf386dd047f/oauth2/v2.0/token
     body:
       encoding: ASCII-8BIT
       string: grant_type=client_credentials&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default+offline_access&client_id=b8a5bb54-5fb2-4e0e-9427-9d24dbac32ff&client_secret=nB58Q%7EwWf6.4zUIojn2nzkrpzDWlkQtDSWPcLa6R

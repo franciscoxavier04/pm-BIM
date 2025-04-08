@@ -237,7 +237,7 @@ en:
         app_version_mismatch: The Integration OpenProject app version is not supported. Please update your Nextcloud server.
         client_id_wrong: The configured OAuth 2 client id is invalid. Please check the configuration.
         client_secret_wrong: The configured OAuth 2 client secret is invalid. Please check the configuration.
-        drive_id_wrong: The configured drive id seems invalid. Please check the configuration.
+        drive_id_wrong: The configured drive id could not be found. Please check the configuration.
         group_folder_not_found: The group folder could not be found.
         group_folder_version_mismatch: The Group Folder version is not supported. Please update your Nextcloud server.
         host_not_found: No Nextcloud server found at the configured host url. Please check the configuration.
@@ -251,6 +251,12 @@ en:
         oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
+        one_drive:
+          client_cant_delete_folder: The client is having trouble deleting folders. Please check the setup documentation for your storage.
+          client_write_permission_missing: The client seems to have write permissions missing. Please check the setup documentation for your storage.
+          drive_id_not_found: The configured drive id could not be found. Please check the configuration.
+          drive_id_wrong: The configured drive id seems invalid. Please check the configuration.
+          unexpected_content: Unexpected content found in the drive.
         placeholder: Check your connection against the server.
         subtitle: Connection validation
         tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
@@ -259,12 +265,6 @@ en:
           one_drive: Unexpected content found in the drive.
         unknown_error: The connection could not be validated. An unknown error occurred. Please check the server logs for further information.
         userless_access_denied: The configured app password is invalid.
-        one_drive:
-          client_write_permission_missing: The client seems to have write permissions missing. Please check the setup documentation for your storage.
-          client_cant_delete_folder: The client is having trouble deleting folders. Please check the setup documentation for your storage.
-          drive_id_not_found: The configured drive id could not be found. Please check the configuration.
-          unexpected_content: Unexpected content found in the drive.
-
       label_error: Error
       label_healthy: Healthy
       label_pending: Pending

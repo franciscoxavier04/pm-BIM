@@ -130,7 +130,7 @@ module Storages
                 results = described_class.new(storage).call
 
                 expect(results[:drive_id_format]).to be_a_failure
-                expect(results[:drive_id_format].message).to eq(I18n.t(i18n_key(:drive_id_wrong)))
+                expect(results[:drive_id_format].message).to eq(I18n.t(i18n_key("one_drive.drive_id_wrong")))
               end
 
               it "fails when is not found", vcr: "one_drive/validation_drive_id_not_found" do
@@ -138,7 +138,7 @@ module Storages
                 results = described_class.new(storage).call
 
                 expect(results[:drive_id_not_found]).to be_a_failure
-                expect(results[:drive_id_not_found].message).to eq(I18n.t(i18n_key(:drive_id_not_found)))
+                expect(results[:drive_id_not_found].message).to eq(I18n.t(i18n_key("one_drive.drive_id_not_found")))
               end
             end
           end

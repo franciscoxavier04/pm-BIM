@@ -48,19 +48,13 @@ module Storages
             check_client_id
             malformed_drive_id
             drive_not_found
-
-            # User access
-            # token_usability
-
-            # AMPF
-            # .or { drive_with_unexpected_content }
           end
 
           def malformed_drive_id
             return pass_check(:drive_id_format) if query_result.success?
 
             if error_payload.dig(:error, :code) == "invalidRequest"
-              fail_check(:drive_id_format, message(:drive_id_wrong)) # FIXME: new key :malformed
+              fail_check(:drive_id_format, message("one_drive.drive_id_wrong"))
             else
               pass_check(:drive_id_format)
             end
@@ -68,7 +62,7 @@ module Storages
 
           def drive_not_found
             if query_result.result == :not_found
-              fail_check(:drive_id_not_found, message(:drive_id_not_found))
+              fail_check(:drive_id_not_found, message("one_drive.drive_id_not_found"))
             else
               pass_check(:drive_id_not_found)
             end
@@ -128,11 +122,10 @@ module Storages
           end
 
           def query_result
-            @query_result ||= Registry.resolve("#{@storage}.queries.files").call(storage: @storage, auth_strategy:,
-                                                                                 folder: root_folder)
+            @query_result ||= Registry.resolve("#{@storage}.queries.files")
+                                      .call(storage: @storage, auth_strategy:, folder: ParentFolder.root)
           end
 
-          def root_folder = Peripherals::ParentFolder.new("/")
           def auth_strategy = Registry.resolve("one_drive.authentication.userless").call
 
           def error_payload
