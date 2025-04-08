@@ -66,7 +66,7 @@ Single work package PDF exports now **follow the configured form layout**, inclu
 
 You can also **export in portrait or landscape orientation**, and **query group tables are included if configured**. If a table doesn’t fit on the page, a note is displayed instead.
 
-### Chronical ordering of relations
+### Chronological ordering of relations
 
 Relations in the Relations tab and date picker are now consistently ordered by their creation date, regardless of whether the related work packages are fully visible or permission-restricted.
 
@@ -91,7 +91,7 @@ To prepare for this transition, the **Classic option in the + Meeting dropdown i
 ![Dropdown menu in the OpenProject Meetings module, with highlighted option of "Classic (unsupported)"](openproject-15-5-classic-meetings-highlighted.png)
 
 > [!NOTE]
-> We recommend switching to the newer Meeting types to benefit from the latest features and ensure a smooth transition. [Read this article to learn more about the reasons and what happens to your existing Classic meetings](https://www.openproject.org/blog/).
+> We recommend switching to the newer Meeting types to benefit from the latest features and ensure a smooth transition. [Read this article to learn more about the reasons and what will happen to your existing Classic meetings](https://www.openproject.org/blog/).
 
 ## Important updates and breaking changes
 
