@@ -41,8 +41,7 @@ module Attachments
 
       def set_attachments_attributes(attributes)
         attachment_ids = attributes.delete(:attachment_ids)
-
-        return unless attachment_ids
+        return if attachment_ids.blank?
 
         model.attachments_replacements = Attachment.where(id: attachment_ids)
       end
