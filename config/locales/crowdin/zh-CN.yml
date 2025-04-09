@@ -1022,7 +1022,7 @@ zh-CN:
         consented_at: "同意在"
       user_preference:
         comments_sorting: "显示评论"
-        dismissed_enterprise_banners: "Hidden enterprise banners"
+        dismissed_enterprise_banners: "隐藏企业横幅广告"
         impaired: "辅助功能模式"
         auto_hide_popups: "自动隐藏成功通知"
         warn_on_leaving_unsaved: "离开未保存更改的工作包时提示我"
@@ -1913,77 +1913,77 @@ zh-CN:
   direction: 从左向右
   ee:
     features:
-      baseline_comparison: Baseline Comparisons
-      board_view: Advanced Boards
-      conditional_highlighting: Conditional Highlighting
-      comments_with_restricted_visibility: Comments With Restricted Visibility
-      custom_actions: Custom Actions
-      custom_field_hierarchies: Custom fields of type hierarchy
-      customize_life_cycle: Customize Life Cycle
-      date_alerts: Date Alerts
-      define_custom_style: Custom theme and logo
-      edit_attribute_groups: Edit Attribute Groups
-      gantt_pdf_export: Gantt PDF Export
-      grid_widget_wp_graph: Grid Widget Work Package Graph
-      ldap_groups: LDAP users and group sync
-      one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
-      placeholder_users: Placeholder Users
-      project_list_sharing: Project List Sharing
-      readonly_work_packages: Readonly Work Packages
-      sso_auth_providers: Single sign-on
-      team_planner_view: Team Planner View
-      two_factor_authentication: 2FA Authentication
-      virus_scanning: Antivirus Scanning
-      work_package_query_relation_columns: Work Package Query Relation Columns
-      work_package_sharing: Share work packages with external users
-      work_package_subject_generation: Work Package Subject Generation
+      baseline_comparison: 基线比较
+      board_view: 高级面板
+      conditional_highlighting: 条件高亮
+      comments_with_restricted_visibility: 限制可见性的评论
+      custom_actions: 自定义操作
+      custom_field_hierarchies: 类型层次结构的自定义字段
+      customize_life_cycle: 自定义生命周期
+      date_alerts: 日期提醒
+      define_custom_style: 自定义主题和logo
+      edit_attribute_groups: 编辑属性组
+      gantt_pdf_export: 甘特图 PDF 导出
+      grid_widget_wp_graph: 工作包图网格小组件
+      ldap_groups: LDAP 用户和群组同步
+      one_drive_sharepoint_file_storage: OneDrive/SharePoint 文件存储
+      placeholder_users: 占位符用户
+      project_list_sharing: 项目列表共享
+      readonly_work_packages: 只读工作包
+      sso_auth_providers: 单点登录
+      team_planner_view: 团队计划视图
+      two_factor_authentication: 双重身份认证
+      virus_scanning: 抗病毒扫描
+      work_package_query_relation_columns: 工作包查询关系列
+      work_package_sharing: 与外部用户共享工作包
+      work_package_subject_generation: 工作包主题生成
     upsale:
       title: "企业附加组件"
-      plan_title: "Enterprise %{plan} add-on"
+      plan_title: "企业%{plan}附加组件"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available only through the %{plan_name}."
       link_title: "更多信息"
-      hide_banner: "Hide this banner"
+      hide_banner: "隐藏此广告"
       baseline_comparison:
-        description: Highlight changes made to this list since any point in the past.
+        description: 高亮显示过去对该清单所作的修改。
       work_package_subject_generation:
-        description: "Create automatically generated subjects using referenced attributes and text."
+        description: "使用引用的属性和文本自动生成主题。"
       customize_life_cycle:
         description: "创建和组织与PM2项目周期规划不同的项目阶段。"
       conditional_highlighting:
-        description: "Need certain work packages to stand out from the mass? Use conditional highlighting in the work packages table."
+        description: "想让工作包脱颖而出吗？在工作包表中使用条件高亮显示。"
       work_package_query_relation_columns:
-        description: "Need to see relations or child elements in the work package list?"
+        description: "需要在工作包列表中看到关系或子项吗？"
       edit_attribute_groups:
-        description: "Customize form configuration with these additional add-ons:"
+        description: "使用这些附加组件自定义表单配置："
         features:
-          groups: "Add new attribute groups"
-          rename: "Rename attribute groups"
-          related: "Add a table of related work packages"
+          groups: "添加新属性组"
+          rename: "重命名属性组"
+          related: "添加一个相关工作包表"
       readonly_work_packages:
-        description: "Mark work packages as read-only for specific statuses."
+        description: "标记工作包为只读的特定状态。"
       custom_field_hierarchies:
-        description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
+        description: "层次结构自定义字段允许通过使用多层次选择列表在工作包中组织层次结构。"
       date_alerts:
-        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+        description: "通过日期提醒，您将收到即将开始或完成日期的通知，以免错过或忘记重要截止日期。"
       work_package_sharing:
-        description: "Share work packages with users who are not members of the project."
+        description: "与非此项目成员的用户共享工作包。"
       define_custom_style:
-        title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        title: "自定义颜色主题和logo"
+        more_info: "注：使用的logo将可公开访问。"
+        description: 使用您自己的logi和颜色自定义 OpenProject 安装。
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "自定义操作"
+        description: "自定义动作是一键式快捷方式，您可以在根据状态、角色、类型或项目。在某些工作包上执行一组预先定义的操作。"
       virus_scanning:
-        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
+        description: "确保在 OpenProject 中上传的文件在被其他用户访问之前进行病毒扫描。"
       placeholder_users:
-        title: Placeholder users
+        title: 占位符用户
         description: >
-          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
+          占位符用户是一种将工作包分配给不属于您项目的用户的方法。它们在一系列场景中十分有用；例如，如果您需要跟踪尚未命名或可用资源的任务，或者如果您不想让该人员访问 OpenProject 但仍希望跟踪分配给他们的任务。
       comments_with_restricted_visibility:
-        title: "For your eyes only"
-        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly. Available only through the enterprise professional plan."
+        title: "仅您可见"
+        description: "评论可见性限制允许内部团队能够私下沟通。 这些只对某些项目角色可见，并且永远不会公开可见。只能通过企业专业计划提供。"
   enumeration_activities: "时间跟踪活动"
   enumeration_work_package_priorities: "工作包优先级"
   enumeration_reported_project_statuses: "报告的项目状态"
@@ -3245,7 +3245,7 @@ zh-CN:
   notice_successful_delete: "成功删除。"
   notice_successful_cancel: "取消成功"
   notice_successful_update: "成功更新。"
-  notice_unsuccessful_update: "Update failed."
+  notice_unsuccessful_update: "更新失败。"
   notice_successful_update_custom_fields_added_to_project: |
     更新成功。已激活类型的自定义字段在工作包表单上自动激活。<a href="%{url}" target="_blank">了解详情</a>。
   notice_to_many_principals_to_display: "搜索结果数量过多。\n请键入新成员 (或组) 的名字来缩小搜索范围。"
@@ -3822,8 +3822,8 @@ zh-CN:
     work_packages:
       not_allowed_text: "您没有查看此页面的权限。"
       activities:
-        enable_comments_with_restricted_visibility: "Enable restricted visibility comments"
-        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to select roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_comments_with_restricted_visibility: "启用评论可见性限制"
+        helper_text: "评论可见性限制允许内部团队能够私下沟通。这些仅对某些具有必要权限的选定角色可见，且永远不会公开显示。%{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "纯文本"

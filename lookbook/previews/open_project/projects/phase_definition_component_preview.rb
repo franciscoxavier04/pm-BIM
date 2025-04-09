@@ -31,12 +31,14 @@
 module OpenProject
   module Projects
     # @logical_path OpenProject/Projects
-    class LifeCycleComponentPreview < Lookbook::Preview
+    class PhaseDefinitionComponentPreview < Lookbook::Preview
+      # @param edit_link [boolean]
       # @param start_gate [boolean]
       # @param finish_gate [boolean]
-      def phase(start_gate: false, finish_gate: false)
+      def phase(edit_link: false, start_gate: false, finish_gate: false)
         model = Project::PhaseDefinition.new(id: 1, name: "The first phase", start_gate:, finish_gate:)
-        render_with_template(locals: { model: })
+
+        render_with_template(locals: { model:, edit_link: })
       end
     end
   end

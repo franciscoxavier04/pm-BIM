@@ -28,14 +28,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 module Projects
-  class LifeCycleComponent < ApplicationComponent
+  class PhaseDefinitionComponent < ApplicationComponent
     include OpPrimer::ComponentHelpers
 
-    # TODO: This component is currently not in use! It should be a shared component
-    # between the Projects::Settings::LifeCycleSteps::StepComponent and the
-    # Settings::ProjectLifeCycleStepDefinitions::RowComponent.
-    # It should hold the icon, definition name and gate text information.
-    def text
+    def phase_text
+      model.name
+    end
+
+    def phase_href
+      edit_admin_settings_project_phase_definition_path(model)
+    end
+
+    def gates_text
       if model.start_gate? && model.finish_gate?
         I18n.t("settings.project_phase_definitions.both_gate")
       elsif model.start_gate?
@@ -52,14 +56,22 @@ module Projects
     end
 
     def icon_color_class
-      helpers.hl_inline_class("project_phase_definition", model)
+      helpers.hl_inline_class("project_phase_definition", model.id)
     end
 
-    def text_options
+    def gates_text_options
       # The tag: :div is is a hack to fix the line height difference
       # caused by font_size: :small. That line height difference
       # would otherwise lead to the text being not on the same height as the icon
-      { color: :muted, font_size: :small, tag: :div }.merge(options)
+      { color: :muted, font_size: :small, tag: :div }.merge(options[:gates_text_options] || {})
+    end
+
+    def phase_text_options
+      { font_weight: :bold }.merge(options[:phase_text_options] || {})
+    end
+
+    def edit_link?
+      options[:edit_link]
     end
   end
 end
