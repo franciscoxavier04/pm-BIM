@@ -450,6 +450,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :project_phases, only: [] do
+    member do
+      get "/hover_card" => "project_phases/hover_card#show", as: "hover_card"
+    end
+  end
+
   resources :admin, controller: :admin, only: :index do
     collection do
       get :plugins

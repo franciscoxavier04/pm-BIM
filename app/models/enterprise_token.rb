@@ -46,7 +46,7 @@ class EnterpriseToken < ApplicationRecord
     end
 
     def hide_banners?
-      !OpenProject::Configuration.ee_manager_visible?
+      OpenProject::Configuration.ee_hide_banners?
     end
 
     def banner_type_for(feature:)

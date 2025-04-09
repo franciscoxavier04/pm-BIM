@@ -673,7 +673,7 @@ GEM
     htmldiff (0.0.1)
     htmlentities (4.3.4)
     http-2 (1.0.2)
-    http_parser.rb (0.6.0)
+    http_parser.rb (0.8.0)
     httpclient (2.9.0)
       mutex_m
     httpx (1.3.4)
@@ -734,7 +734,7 @@ GEM
       addressable (~> 2.8)
       childprocess (~> 5.0)
       logger (~> 1.6)
-    lefthook (1.11.7)
+    lefthook (1.11.8)
     letter_opener (1.10.0)
       launchy (>= 2.2, < 4)
     letter_opener_web (3.0.0)
@@ -920,13 +920,13 @@ GEM
       date
       stringio
     public_suffix (6.0.1)
-    puffing-billy (4.0.0)
+    puffing-billy (4.0.1)
       addressable (~> 2.5)
       em-http-request (~> 1.1, >= 1.1.0)
       em-synchrony
       eventmachine (~> 1.2)
       eventmachine_httpserver
-      http_parser.rb (~> 0.6.0)
+      http_parser.rb (~> 0.8.0)
       multi_json
     puma (6.6.0)
       nio4r (~> 2.0)
@@ -1662,7 +1662,7 @@ CHECKSUMS
   htmldiff (0.0.1) sha256=a96d068c8b8ea96cca3154a61785365d83129f47f1df964c6b1666924ce113a1
   htmlentities (4.3.4) sha256=125a73c6c9f2d1b62100b7c3c401e3624441b663762afa7fe428476435a673da
   http-2 (1.0.2) sha256=607004ffec28fcb5c392cccaef22d9ffe5b5575fc859ab665fb426a14cf3a83c
-  http_parser.rb (0.6.0) sha256=f11d0aec50ef26a7d1f991e627ac88acdb5979282aeba7a5c3be6ce0636ed196
+  http_parser.rb (0.8.0) sha256=5a0932f1fa82ce08a8516a2685d5a86031c000560f89946913c555a0697544be
   httpclient (2.9.0) sha256=4b645958e494b2f86c2f8a2f304c959baa273a310e77a2931ddb986d83e498c8
   httpx (1.3.4) sha256=d90bac25b909184479af1bd95e66b0a336a11d76076342caae5809ffd7d63799
   i18n (1.14.7) sha256=ceba573f8138ff2c0915427f1fc5bdf4aa3ab8ae88c8ce255eb3ecf0a11a5d0f
@@ -1685,7 +1685,7 @@ CHECKSUMS
   ladle (1.0.1) sha256=e8586964108c798d48bf57d2a65bd5602e8e5223a176b6602a0fb36c0bda90dc
   language_server-protocol (3.17.0.4) sha256=c484626478664fd13482d8180947c50a8590484b1258b99b7aedb3b69df89669
   launchy (3.1.1) sha256=72b847b5cc961589dde2c395af0108c86ff0119f42d4648d25b5440ebb10059e
-  lefthook (1.11.7) sha256=797b4798481229aabd9c2b0f04f0ad9f87412fd31564e86d87b48f908582c4ea
+  lefthook (1.11.8) sha256=0e0cde4cd7b58ea93d3504b6a3674f1199f1945db9d5b31ff5301ef329a5545d
   letter_opener (1.10.0) sha256=2ff33f2e3b5c3c26d1959be54b395c086ca6d44826e8bf41a14ff96fdf1bdbb2
   letter_opener_web (3.0.0) sha256=3f391efe0e8b9b24becfab5537dfb17a5cf5eb532038f947daab58cb4b749860
   lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
@@ -1793,7 +1793,7 @@ CHECKSUMS
   pry-rescue (1.6.0) sha256=985bfd506d9866b587fd86790cf8445266a41b7f92c627fc5b21ec7d92aba6db
   psych (5.2.3) sha256=84a54bb952d14604fea22d99938348814678782f58b12648fcdfa4d2fce859ee
   public_suffix (6.0.1) sha256=61d44e1cab5cbbbe5b31068481cf16976dd0dc1b6b07bd95617ef8c5e3e00c6f
-  puffing-billy (4.0.0) sha256=0453380ad9a66d455675148ff7ab95a7544b6a239f0a91e11494affa94b7fff9
+  puffing-billy (4.0.1) sha256=d23ea4b2fd54d6d213a85c4a1f603459d9b1634d93ac012dab59d36f380e778a
   puma (6.6.0) sha256=f25c06873eb3d5de5f0a4ebc783acc81a4ccfe580c760cfe323497798018ad87
   puma-plugin-statsd (2.6.0) sha256=c13ffe6a2fa2d3c245af673316e6d2556f5d0c151455d1934dffc96ce814ea03
   raabro (1.4.0) sha256=d4fa9ff5172391edb92b242eed8be802d1934b1464061ae5e70d80962c5da882

@@ -80,8 +80,6 @@ export default class PreviewController extends DialogPreviewController {
 
     document.addEventListener('date-picker:flatpickr-dates-changed', this.handleFlatpickrDatesChangedBound);
     this.focusOnOpen();
-
-    this.prepareInputFieldsForSafari();
   }
 
   disconnect() {
@@ -373,6 +371,10 @@ export default class PreviewController extends DialogPreviewController {
     const fieldToHighlight = e.target as HTMLInputElement;
     if (fieldToHighlight) {
       this.highlightField(fieldToHighlight);
+      window.setTimeout(() => {
+        // For mobile, we have to make sure that the active field is scrolled into view after the keyboard is opened
+        fieldToHighlight.scrollIntoView(true);
+      }, 200);
       // Datepicker can need an update when the focused field changes. This
       // allows to switch between single and range mode in certain edge cases.
       this.readCurrentValues();
@@ -552,23 +554,5 @@ export default class PreviewController extends DialogPreviewController {
       tabs.setAttribute('tabindex', '-1');
       tabs.focus();
     }
-  }
-
-  /*
-   * This method qualifies as the most stupid thing I had to do in a long time.
-   * Safari is the only browser which does not clear the input when using the native datepicker "clear" method.
-   * It rather resets it to the original value of the input.
-   * That is why we manually set the defaultValue to an empty string,
-   * but since the defaultValue is used for the value, we have to manually set this again.
-   * See: https://stackoverflow.com/a/64886383/8900797
-   */
-  private prepareInputFieldsForSafari() {
-    [this.startDateField, this.dueDateField]
-      .filter((field):field is NonNullable<typeof field> => field != null)
-      .forEach((field) => {
-        const value = field.value;
-        field.defaultValue = '';
-        field.value = value;
-      });
   }
 }

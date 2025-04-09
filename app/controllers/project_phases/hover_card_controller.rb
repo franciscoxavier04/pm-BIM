@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# -- copyright
+#-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2010-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,18 +26,46 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
 
-module OpenProject
-  module Projects
-    # @logical_path OpenProject/Projects
-    class LifeCycleComponentPreview < Lookbook::Preview
-      # @param start_gate [boolean]
-      # @param finish_gate [boolean]
-      def phase(start_gate: false, finish_gate: false)
-        model = Project::PhaseDefinition.new(id: 1, name: "The first phase", start_gate:, finish_gate:)
-        render_with_template(locals: { model: })
-      end
+module ProjectPhases
+  class HoverCardController < ApplicationController
+    before_action :authorize
+    before_action :check_feature_flag
+    before_action :assign_gate
+    before_action :find_phase
+    before_action :check_access
+
+    layout false
+
+    def show; end
+
+    private
+
+    def check_feature_flag
+      return if OpenProject::FeatureDecisions.stages_and_gates_active?
+
+      render json: { error: "Not found" }, status: :not_found
+    end
+
+    def check_access
+      return if User.current.allowed_in_project?(:view_project_phases, @phase.project)
+
+      render json: { error: "Forbidden" }, status: :forbidden
+    end
+
+    def assign_gate
+      @gate = params[:gate]
+      return if @gate.in?(%w[start finish])
+
+      render json: { error: "Invalid gate parameter" }, status: :unprocessable_entity
+    end
+
+    def find_phase
+      @phase = Project::Phase.where(active: true).eager_load(:definition).find_by(id: params[:id])
+      return if @phase
+
+      render json: { error: "Invalid id parameter" }, status: :unprocessable_entity
     end
   end
 end

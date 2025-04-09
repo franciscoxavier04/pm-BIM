@@ -358,10 +358,10 @@
           learn_about: "Lær mer om de nye funksjonene"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_4":
+          "15_5":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Enable automatic scheduling mode.</li> <li>Set agenda item outcomes for meetings.</li> <li>Generate PDF documents from a work package description.</li> <li>Better manage a large number of projects with an enhanced project lists view.</li> <li>Use @-mention of user when quote replying to a comment.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Filter for descendants (children and grandchildren) of work packages.</li> <li>Benefit from advanced accessibility in the date picker.</li> <li>See % Complete included in work package table sums.</li> <li>Include a column for children in work package tables.</li> <li>Better use the date picker in mobile screens.</li> <li>PDF exports matching configured form layout.</li> </ul>
     ical_sharing_modal:
       title: "Abonner på kalender"
       inital_setup_error_message: "En feil oppstod under henting av data."
@@ -631,9 +631,6 @@
         property_is: "is in %{difference_in_days}."
         property_was: "was %{difference_in_days} ago."
         property_is_deleted: "is deleted."
-        upsale:
-          title: "Dato varsler"
-          description: "Med datovarsler, vil du bli varslet om kommende start- eller sluttdatoer slik at du aldri går glipp av eller glemmer en viktig frist."
       center:
         label_actor_and: "og"
         and_more_users:
@@ -696,7 +693,6 @@
           date_alerts:
             title: "Dato varsler"
             description: "Automatiske varsler når viktige datoer nærmer seg for åpne arbeidspakker du er med i (utførende, ansvarlig eller overvåker)."
-            teaser_text: "Med datovarsler, vil du bli varslet om kommende start- eller sluttdatoer slik at du aldri går glipp av eller glemmer en viktig frist."
           overdue: Når forfalt
         project_specific:
           title: "Prosjekt-spesifikke varslingsinnstillinger"
@@ -1047,8 +1043,6 @@
       sharing:
         title: "Del arbeidspakke"
         show_all_users: "Vis alle brukere som arbeidspakken er delt med"
-        upsale:
-          description: "Del arbeidspakker med brukere som ikke er medlemmer i prosjektet."
       table:
         configure_button: "Konfigurer tabell for arbeidspakke"
         summary: "Tabell med rader for arbeidspakke og kolonner for arbeidspakkeegenskaper."
@@ -1083,10 +1077,6 @@
           manually: "Manuelt"
           warning: "Du vil miste din forrige sortering når du aktiverer automatiske sorteringsmodus."
         columns_help_text: "Bruk inndatafelt over for å legge til kolonner til din tabellvisning. Du kan dra og slippe kolonnene for å endre rekkefølgen for dem."
-        upsale:
-          attribute_highlighting: "Trenger du visse arbeidspakker som skiller seg ut fra massen?"
-          relation_columns: "Trenger du å se relasjoner i listen over arbeidspakke?"
-          check_out_link: "Sjekk ut Enterprise-utgaven."
         relation_filters:
           filter_work_packages_by_relation_type: "Filtrer arbeidspakker etter relasjonstype"
       tabs:
@@ -1300,9 +1290,7 @@
       clear: "Nullstill"
       apply: "Bruk"
       header_description: "Marker endringer som er gjort på denne listen tidligere."
-      enterprise_header_description: "Marker endringer på denne listen tidligere med Enterprise Edition."
       show_changes_since: "Vis endringer siden"
-      baseline_comparison: "Sammenligning grunnlinje"
       help_description: "Referansetidssone for grunnlinjen."
       time_description: "I din lokale tid: %{datetime}"
       time: "Tidspunkt"
