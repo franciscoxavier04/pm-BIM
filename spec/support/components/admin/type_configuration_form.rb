@@ -166,7 +166,11 @@ module Components
       end
 
       def edit_query_group(name)
-        SeleniumHubWaiter.wait unless using_cuprite?
+        if using_cuprite?
+          wait_for_reload
+        else
+          SeleniumHubWaiter.wait
+        end
 
         group = find_group(name)
         group.find(".type-form-query-group--edit-button").click
