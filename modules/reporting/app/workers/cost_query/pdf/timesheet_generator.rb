@@ -41,9 +41,9 @@ class CostQuery::PDF::TimesheetGenerator
   H1_MARGIN_BOTTOM = 2
   HR_MARGIN_BOTTOM = 16
   TABLE_CELL_FONT_SIZE = 10
-  TABLE_CELL_BORDER_COLOR = "BBBBBB".freeze
+  TABLE_CELL_BORDER_COLOR = "BBBBBB"
   TABLE_CELL_PADDING = 4
-  COMMENT_FONT_COLOR = "636C76".freeze
+  COMMENT_FONT_COLOR = "636C76"
   H2_FONT_SIZE = 20
   H2_MARGIN_BOTTOM = 10
   SUM_TABLE_FIRST_COLUMN_WIDTH = 68
@@ -152,13 +152,13 @@ class CostQuery::PDF::TimesheetGenerator
 
   def all_entries
     @all_entries ||= begin
-                       ids = query
-                               .each_direct_result
-                               .filter { |r| r.fields["type"] == "TimeEntry" }
-                               .flat_map { |r| r.fields["id"] }
+      ids = query
+              .each_direct_result
+              .filter { |r| r.fields["type"] == "TimeEntry" }
+              .flat_map { |r| r.fields["id"] }
 
-                       TimeEntry.where(id: ids).includes(%i[user activity work_package project])
-                     end
+      TimeEntry.where(id: ids).includes(%i[user activity work_package project])
+    end
   end
 
   def build_table_rows(entries)
@@ -225,11 +225,11 @@ class CostQuery::PDF::TimesheetGenerator
 
   def build_table_row_comment(entry)
     [{
-       content: entry.comments,
-       text_color: COMMENT_FONT_COLOR,
-       font_style: :italic,
-       colspan: table_columns_widths.size
-     }]
+      content: entry.comments,
+      text_color: COMMENT_FONT_COLOR,
+      font_style: :italic,
+      colspan: table_columns_widths.size
+    }]
   end
 
   def table_header_columns
@@ -445,7 +445,7 @@ class CostQuery::PDF::TimesheetGenerator
     end
     return nil unless row.any? { |column| !column.empty? }
 
-    [content:format_date(date)] + row
+    [content: format_date(date)] + row
   end
 
   def calc_sum_for_user_on_day(user, date)
@@ -463,18 +463,21 @@ class CostQuery::PDF::TimesheetGenerator
     rows
   end
 
+  def build_sum_table_header_row(users)
+    [{ content: TimeEntry.human_attribute_name(:spent_on), font_style: :bold }] +
+      users.map do |user|
+        {
+          content: make_link_anchor("user_#{user.id}", user.name),
+          inline_format: true, font_style: :bold
+        }
+      end
+  end
+
   def write_sum_table!(users, start_date, end_date)
     rows = build_sum_table_rows(users, start_date, end_date)
-    unless rows.empty?
-      header_row = [{ content: TimeEntry.human_attribute_name(:spent_on), font_style: :bold }] +
-        users.map do |user|
-          {
-            content: make_link_anchor("user_#{user.id}", user.name),
-            inline_format: true, font_style: :bold
-          }
-        end
-      rows.unshift(header_row)
-    end
+    return if rows.empty?
+
+    rows.unshift(build_sum_table_header_row(users))
     pdf.make_table(
       rows,
       header: true,
