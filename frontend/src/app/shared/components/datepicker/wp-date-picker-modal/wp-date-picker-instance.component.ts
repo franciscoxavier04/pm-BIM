@@ -198,13 +198,6 @@ export class OpWpDatePickerInstanceComponent extends UntilDestroyedMixin impleme
     }
   }
 
-  private isDifferentDates(dates:Date[], mode:DateMode):boolean {
-    const [start, end] = dates;
-    return mode === 'single'
-      ? start?.getTime() !== this.startDateValue?.getTime()
-      : start?.getTime() !== this.startDateValue?.getTime() || end?.getTime() !== this.dueDateValue?.getTime();
-  }
-
   private toDate(date:string|null):Date|null {
     return date ? new Date(date) : null;
   }
