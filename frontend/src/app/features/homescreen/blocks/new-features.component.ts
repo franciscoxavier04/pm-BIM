@@ -37,7 +37,7 @@ const OpVersionI18n = '15_5';
 // The key used to identify the svg representing the central feature in the version.
 // This might be different to OpVersionI18n for a while since the teaser text is often ready
 // before the image is.
-const OpVersionImage = '15_4';
+const OpVersionImage = '15_5';
 
 const OpReleaseURL = 'https://www.openproject.org/docs/release-notes';
 
