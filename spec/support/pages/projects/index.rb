@@ -238,7 +238,6 @@ module Pages
 
       def set_advanced_filter(name, human_name, human_operator = nil, values = [], send_keys: false)
         selected_filter = select_filter(name, human_name)
-        apply_operator(name, human_operator)
 
         within(selected_filter) do
           return unless values.any?
@@ -519,7 +518,7 @@ module Pages
       end
 
       def project_in_first_row(column_text_separator: "\n")
-        first_row = within("#projects-table") { find(".op-project-row-component", match: :first) }
+        first_row = within("#projects-table") { first(".op-project-row-component") }
         Project.find_by!(name: first_row.text.split(column_text_separator).first)
       end
 

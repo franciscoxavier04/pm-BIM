@@ -370,7 +370,7 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
     }
 
     if (Array.isArray(this.model)) {
-      return this.model.map((el) => el[this.inputBindValue as 'id'] as string);
+      return this.model.map((el) => (_.isObject(el) ? el[this.inputBindValue as 'id'] : el) as string);
     }
 
     return this.model[this.inputBindValue as 'id'] as string;

@@ -41,6 +41,7 @@ RSpec.describe "Persisted lists on projects index page",
 
   shared_let(:custom_field) { create(:text_project_custom_field) }
   shared_let(:invisible_custom_field) { create(:project_custom_field, admin_only: true) }
+  shared_let(:list_custom_field) { create(:list_project_custom_field) }
 
   shared_let(:project) do
     create(:project,
@@ -54,7 +55,8 @@ RSpec.describe "Persisted lists on projects index page",
                      public: true)
     project.custom_field_values = {
       invisible_custom_field.id => "Secret CF",
-      custom_field.id => "Visible CF"
+      custom_field.id => "Visible CF",
+      list_custom_field.id => list_custom_field.possible_values.first.id
     }
     project.save
     project
@@ -559,6 +561,23 @@ RSpec.describe "Persisted lists on projects index page",
       projects_page.visit!
       projects_page.set_sidebar_filter(my_projects_list.name)
       projects_page.expect_filter_set("project_status_code", value: "On track")
+
+      projects_page.open_filters
+      projects_page.set_filter(list_custom_field.column_name,
+                               list_custom_field.name,
+                               "is (OR)",
+                               [list_custom_field.possible_values.first.value])
+
+      wait_for_reload
+      projects_page.save_query
+
+      projects_page.set_sidebar_filter(my_projects_list.name)
+      projects_page.expect_filter_set("project_status_code", value: "On track")
+
+      projects_page.expect_filter_set(
+        list_custom_field.column_name,
+        value: list_custom_field.possible_values.first.value
+      )
     end
 
     it "cannot access another user`s list" do
