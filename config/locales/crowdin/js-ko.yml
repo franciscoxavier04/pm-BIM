@@ -358,10 +358,10 @@ ko:
           learn_about: "새로운 기능에 대해 자세히 알아보기"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_4":
+          "15_5":
             standard:
               new_features_html: >
-                이 릴리스는 다음과 같은 다양한 기능과 개선 사항을 제공합니다. <br> <ul class="%{list_styling_class}"> <li>자동 스케줄링 모드를 활성화합니다.</li> <li>미팅에 대한 의제 항목 결과를 설정합니다.</li> <li>작업 패키지 설명에서 PDF 문서를 생성합니다.</li> <li>향상된 프로젝트 목록 보기로 다수의 프로젝트 관리를 개선합니다.</li> <li>코멘트에 대한 답변을 인용할 때 @를 사용하여 사용자를 멘션합니다.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Filter for descendants (children and grandchildren) of work packages.</li> <li>Benefit from advanced accessibility in the date picker.</li> <li>See % Complete included in work package table sums.</li> <li>Include a column for children in work package tables.</li> <li>Better use the date picker in mobile screens.</li> <li>PDF exports matching configured form layout.</li> </ul>
     ical_sharing_modal:
       title: "캘린더 구독"
       inital_setup_error_message: "데이터를 가져오는 중에 오류가 발생했습니다."

@@ -358,10 +358,10 @@ fr:
           learn_about: "En savoir plus sur les nouvelles fonctionnalités"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_4":
+          "15_5":
             standard:
               new_features_html: >
-                La version apporte diverses fonctionnalités et améliorations pour vous, p. ex., <br> <ul class="%{list_styling_class}"> <li>Activer le mode de planification automatique.</li> <li>Définir les résultats des points à l'ordre du jour pour les réunions.</li> <li>Générer des documents PDF à partir d'une description de la tâche.</li> <li>Gérer un grand nombre de projets grâce à une vue améliorée des listes de projets.</li> <li>Utiliser la fonction de mention @ de l'utilisateur pour répondre à un commentaire.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Filter for descendants (children and grandchildren) of work packages.</li> <li>Benefit from advanced accessibility in the date picker.</li> <li>See % Complete included in work package table sums.</li> <li>Include a column for children in work package tables.</li> <li>Better use the date picker in mobile screens.</li> <li>PDF exports matching configured form layout.</li> </ul>
     ical_sharing_modal:
       title: "S'abonner au calendrier"
       inital_setup_error_message: "Une erreur est survenue lors de la récupération des données."
