@@ -59,12 +59,14 @@ en:
         project: Project
         user: User
         work_package: Work package
+        subject: Subject
         hours: Hours
         comments: Comment
         activity: Activity
         spent_on: Date
         start_time: Start time
         end_time: Finish time
+        time: Time
     models:
       time_entry:
         one: "Time entry"

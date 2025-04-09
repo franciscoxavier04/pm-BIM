@@ -53,19 +53,19 @@ module My
                  tooltip_direction: :e,
                  href: dialog_time_entries_path(onlyMe: true, date: options[:date]),
                  data: { "turbo-stream" => true },
-                 label: t("label_log_time"),
-                 aria: { label: t("label_log_time") }
+                 label: t("button_log_time"),
+                 aria: { label: t("button_log_time") }
                ))
       end
 
       def headers
         [
-          TimeEntry.can_track_start_and_end_time? ? [:time, { caption: "Time" }] : nil,
-          [:hours, { caption: "Hours" }],
-          [:subject, { caption: "Subject" }],
-          [:project, { caption: "Project" }],
-          [:activity, { caption: "Activity" }],
-          [:comments, { caption: "Comments" }]
+          TimeEntry.can_track_start_and_end_time? ? [:time, { caption: TimeEntry.human_attribute_name(:time) }] : nil,
+          [:hours, { caption: TimeEntry.human_attribute_name(:hours) }],
+          [:subject, { caption: TimeEntry.human_attribute_name(:subject) }],
+          [:project, { caption: TimeEntry.human_attribute_name(:project) }],
+          [:activity, { caption: TimeEntry.human_attribute_name(:activity) }],
+          [:comments, { caption: TimeEntry.human_attribute_name(:comments) }]
         ].compact
       end
 

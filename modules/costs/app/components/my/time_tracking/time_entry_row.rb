@@ -34,7 +34,7 @@ module My
       def button_links
         [
           action_menu
-        ].compact
+        ]
       end
 
       def action_menu
