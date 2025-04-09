@@ -51,7 +51,7 @@ module My
     helper_method :current_day, :today?, :this_week?, :this_month?, :list_view_component
 
     def calendar
-      if browser.device.mobile?
+      if mobile?
         redirect_to action: :day, view_mode: default_view_mode
       else
         redirect_to action: :week, view_mode: default_view_mode
@@ -131,6 +131,10 @@ module My
       else
         My::TimeTracking::CalendarComponent.new(time_entries: @time_entries, mode: params[:action].to_sym, date: current_day)
       end
+    end
+
+    def mobile?
+      browser.device.mobile?
     end
   end
 end
