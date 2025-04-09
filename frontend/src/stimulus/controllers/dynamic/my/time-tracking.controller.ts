@@ -78,7 +78,7 @@ export default class MyTimeTrackingController extends Controller {
 
         if (!arg.event.allDay) {
           const time = `${moment(arg.event.start).format('LT')} - ${moment(arg.event.end).format('LT')}`;
-          timeDetails = `<div class="color-fg-muted mt-3" title="${time}">${time}</div>`;
+          timeDetails = `<div class="color-fg-muted mt-2" title="${time}">${time}</div>`;
         }
 
         return {
