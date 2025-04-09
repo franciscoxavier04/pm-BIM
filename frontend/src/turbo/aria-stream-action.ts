@@ -6,11 +6,11 @@ export function registerAriaStreamAction() {
       const message = this.getAttribute('message') ?? '';
       const type = this.getAttribute('type') ?? 'polite';
       if (type === 'assertive') {
-        announce(message, {
+        void announce(message, {
           politeness: 'assertive',
         });
       } else {
-        announce(message, {
+        void announce(message, {
           politeness: 'polite',
           delayMs: 5000,
         });
