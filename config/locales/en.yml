@@ -2053,7 +2053,6 @@ en:
       work_package_subject_generation: Work Package Subject Generation
     upsale:
       title: "Enterprise add-on"
-      automatic_subject_generation:
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available only through the %{plan_name}."

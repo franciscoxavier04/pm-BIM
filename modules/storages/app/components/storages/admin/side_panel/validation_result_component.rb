@@ -65,7 +65,7 @@ module Storages
                    I18n.t("storages.health.summary.warning")
                  end
 
-          "#{text} #{I18n.t('storages.health.checked', datetime: @result.latest_timestamp)}"
+          "#{text} #{I18n.t('storages.health.checked', datetime: helpers.format_time(@result.latest_timestamp))}"
         end
       end
     end

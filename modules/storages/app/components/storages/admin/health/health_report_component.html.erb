@@ -59,7 +59,7 @@ See COPYRIGHT and LICENSE files for more details.
 
             @report.each_pair do |group, checks|
               report_container.with_row(mt: 3) do
-                render(Primer::Beta::BorderBox.new) do |box|
+                render(Primer::Beta::BorderBox.new(test_selector: "op-storages--health-report-group")) do |box|
                   box.with_header do
                     flex_layout(justify_content: :space_between) do |header|
                       header.with_column do

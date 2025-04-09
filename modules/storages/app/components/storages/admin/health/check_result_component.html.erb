@@ -53,7 +53,9 @@ See COPYRIGHT and LICENSE files for more details.
 
     if data[:error_text].present?
       cell.with_row(mt: 1) do
-        render(Primer::Beta::Text.new) { data[:error_text] }
+        render(Primer::Beta::Text.new(test_selector: "op-storages--health-status-check-information")) do
+          data[:error_text]
+        end
       end
     end
   end

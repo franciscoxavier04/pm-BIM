@@ -32,11 +32,7 @@ See COPYRIGHT and LICENSE files for more details.
     render(Primer::OpenProject::SidePanel::Section.new) do |section|
       section.with_title { I18n.t("storages.health.title") }
 
-      flex_layout do |health_status_container|
-        health_status_container.with_row do
-          render(Storages::Admin::SidePanel::ValidationResultComponent.new(storage: model, result: report))
-        end
-      end
+      render(Storages::Admin::SidePanel::ValidationResultComponent.new(storage: model, result: report))
     end
   end
 %>

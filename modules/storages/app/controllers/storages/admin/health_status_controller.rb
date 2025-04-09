@@ -47,7 +47,7 @@ module Storages
       end
 
       def show
-        @report = Rails.cache.read(cache_key)
+        @report = Rails.cache.read(validator.report_cache_key)
       end
 
       def create
@@ -71,21 +71,22 @@ module Storages
       end
 
       def create_and_cache_report
-        case @storage.provider_type
-        when ::Storages::Storage::PROVIDER_TYPE_NEXTCLOUD
-          report = Peripherals::ConnectionValidators::NextcloudValidator.new(storage: @storage).validate
-        when ::Storages::Storage::PROVIDER_TYPE_ONE_DRIVE
-          raise "Unsupported provider type: #{@storage.provider_type}"
-        else
-          raise "Unsupported provider type: #{@storage.provider_type}"
-        end
-
-        Rails.cache.write(cache_key, report, expires_in: 6.hours)
+        report = validator.validate
+        Rails.cache.write(validator.report_cache_key, report, expires_in: 6.hours)
 
         report
       end
 
-      def cache_key = "storage_#{@storage.id}_health_status_report"
+      def validator
+        @validator ||= case @storage.provider_type
+                       when ::Storages::Storage::PROVIDER_TYPE_NEXTCLOUD
+                         Peripherals::ConnectionValidators::NextcloudValidator.new(storage: @storage)
+                       when ::Storages::Storage::PROVIDER_TYPE_ONE_DRIVE
+                         raise "Unsupported provider type: #{@storage.provider_type}"
+                       else
+                         raise "Unsupported provider type: #{@storage.provider_type}"
+                       end
+      end
     end
   end
 end

@@ -39,7 +39,16 @@ module Storages
         private
 
         def report
-          Rails.cache.read("storage_#{model.id}_health_status_report")
+          validator = case model.provider_type
+                      when ::Storages::Storage::PROVIDER_TYPE_NEXTCLOUD
+                        Peripherals::ConnectionValidators::NextcloudValidator.new(storage: model)
+                      when ::Storages::Storage::PROVIDER_TYPE_ONE_DRIVE
+                        raise "Unsupported provider type: #{model.provider_type}"
+                      else
+                        raise "Unsupported provider type: #{model.provider_type}"
+                      end
+
+          Rails.cache.read(validator.report_cache_key)
         end
       end
     end
