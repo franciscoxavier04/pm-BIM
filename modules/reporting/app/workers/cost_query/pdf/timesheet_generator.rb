@@ -46,6 +46,7 @@ class CostQuery::PDF::TimesheetGenerator
   COMMENT_FONT_COLOR = "636C76".freeze
   H2_FONT_SIZE = 20
   H2_MARGIN_BOTTOM = 10
+  SUM_TABLE_FIRST_COLUMN_WIDTH = 68
 
   COLUMN_DATE_WIDTH = 66
   COLUMN_ACTIVITY_WIDTH = 100
@@ -151,13 +152,13 @@ class CostQuery::PDF::TimesheetGenerator
 
   def all_entries
     @all_entries ||= begin
-      ids = query
-              .each_direct_result
-              .filter { |r| r.fields["type"] == "TimeEntry" }
-              .flat_map { |r| r.fields["id"] }
+                       ids = query
+                               .each_direct_result
+                               .filter { |r| r.fields["type"] == "TimeEntry" }
+                               .flat_map { |r| r.fields["id"] }
 
-      TimeEntry.where(id: ids).includes(%i[user activity work_package project])
-    end
+                       TimeEntry.where(id: ids).includes(%i[user activity work_package project])
+                     end
   end
 
   def build_table_rows(entries)
@@ -224,11 +225,11 @@ class CostQuery::PDF::TimesheetGenerator
 
   def build_table_row_comment(entry)
     [{
-      content: entry.comments,
-      text_color: COMMENT_FONT_COLOR,
-      font_style: :italic,
-      colspan: table_columns_widths.size
-    }]
+       content: entry.comments,
+       text_color: COMMENT_FONT_COLOR,
+       font_style: :italic,
+       colspan: table_columns_widths.size
+     }]
   end
 
   def table_header_columns
@@ -414,6 +415,7 @@ class CostQuery::PDF::TimesheetGenerator
     users
       .each_slice(6) do |users_chunk|
       write_sum_table!(users_chunk, start_date, end_date)
+      pdf.move_down(28)
     end
 
     start_new_page_if_needed
@@ -443,7 +445,7 @@ class CostQuery::PDF::TimesheetGenerator
     end
     return nil unless row.any? { |column| !column.empty? }
 
-    [format_date(date)] + row
+    [content:format_date(date)] + row
   end
 
   def calc_sum_for_user_on_day(user, date)
@@ -468,7 +470,7 @@ class CostQuery::PDF::TimesheetGenerator
         users.map do |user|
           {
             content: make_link_anchor("user_#{user.id}", user.name),
-            inline_format: true, align: :right, font_style: :bold
+            inline_format: true, font_style: :bold
           }
         end
       rows.unshift(header_row)
@@ -477,6 +479,7 @@ class CostQuery::PDF::TimesheetGenerator
       rows,
       header: true,
       width: pdf.bounds.width,
+      column_widths: sum_table_column_widths(users),
       cell_style: {
         size: TABLE_CELL_FONT_SIZE,
         border_color: TABLE_CELL_BORDER_COLOR,
@@ -485,6 +488,12 @@ class CostQuery::PDF::TimesheetGenerator
         padding: [TABLE_CELL_PADDING, TABLE_CELL_PADDING, TABLE_CELL_PADDING + 2, TABLE_CELL_PADDING]
       }
     ).draw
+  end
+
+  def sum_table_column_widths(users)
+    [SUM_TABLE_FIRST_COLUMN_WIDTH].concat(
+      [(pdf.bounds.width - SUM_TABLE_FIRST_COLUMN_WIDTH) / users.length] * users.length
+    )
   end
 
   def adjust_overview_border_sum_row(table)
