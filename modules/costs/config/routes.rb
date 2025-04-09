@@ -51,14 +51,11 @@ Rails.application.routes.draw do
     get "/timer" => "timer#show", as: "timers"
 
     get "/time-tracking" => "time_tracking#calendar"
-    get "/time-tracking/day(-:view_mode)" => "time_tracking#day",
-        defaults: { view_mode: "calendar" },
+    get "/time-tracking/day(-:view_mode)(/:date)" => "time_tracking#day",
         as: :time_tracking_day
-    get "/time-tracking/week(-:view_mode)" => "time_tracking#week",
-        defaults: { view_mode: "calendar" },
+    get "/time-tracking/week(-:view_mode)(/:date)" => "time_tracking#week",
         as: :time_tracking_week
-    get "/time-tracking/month(-:view_mode)" => "time_tracking#month",
-        defaults: { view_mode: "calendar" },
+    get "/time-tracking/month(-:view_mode)(/:date)" => "time_tracking#month",
         as: :time_tracking_month
   end
 

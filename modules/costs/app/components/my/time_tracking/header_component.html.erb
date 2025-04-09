@@ -24,13 +24,15 @@
         button_arguments: { button_block: params[:view_mode] == "list" ? list_button : cal_button }
       ) do |menu|
         menu.with_item(
-          label: "Calendar", tag: :a,
+          label: t(:label_calendar),
+          tag: :a,
           href: url_for(params.permit(:controller, :action, :date).merge(view_mode: "calendar"))
         ) do |item|
           item.with_leading_visual_icon(icon: :calendar)
         end
         menu.with_item(
-          label: "List", tag: :a,
+          label: t(:label_list),
+          tag: :a,
           href: url_for(params.permit(:controller, :action, :date).merge(view_mode: "list"))
         ) do |item|
           item.with_leading_visual_icon(icon: "list-unordered")

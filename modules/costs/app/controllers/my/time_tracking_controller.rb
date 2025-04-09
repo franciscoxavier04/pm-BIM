@@ -52,34 +52,22 @@ module My
 
     def calendar
       if browser.device.mobile?
-        redirect_to action: :day
+        redirect_to action: :day, view_mode: default_view_mode
       else
-        redirect_to action: :week
+        redirect_to action: :week, view_mode: default_view_mode
       end
     end
 
     def day
       load_time_entries(current_day)
-
-      # TODO: At some point the filters will reduce the list, so we need to load them seperately
-      @project_filters = @time_entries.map(&:project).uniq
-      @activity_filters = @time_entries.map(&:activity).uniq
     end
 
     def week
       load_time_entries(current_day.all_week)
-
-      # TODO: At some point the filters will reduce the list, so we need to load them seperately
-      @project_filters = @time_entries.map(&:project).uniq
-      @activity_filters = @time_entries.map(&:activity).uniq
     end
 
     def month
       load_time_entries(current_day.all_month)
-
-      # TODO: At some point the filters will reduce the list, so we need to load them seperately
-      @project_filters = @time_entries.map(&:project).uniq
-      @activity_filters = @time_entries.map(&:activity).uniq
     end
 
     def today?
@@ -110,6 +98,18 @@ module My
       @current_day = parsed_date || current_date
     end
 
+    def default_view_mode
+      if TimeEntry.can_track_start_and_end_time?
+        "calendar"
+      else
+        "list"
+      end
+    end
+
+    def view_mode
+      ActiveSupport::StringInquirer.new(params[:view_mode] || default_view_mode)
+    end
+
     def current_date
       case params[:action].to_sym
       when :day then Time.zone.today
@@ -126,7 +126,7 @@ module My
     end
 
     def list_view_component
-      if params[:view_mode] == "list"
+      if view_mode.list?
         My::TimeTracking::ListComponent.new(time_entries: @time_entries, mode: params[:action].to_sym, date: current_day)
       else
         My::TimeTracking::CalendarComponent.new(time_entries: @time_entries, mode: params[:action].to_sym, date: current_day)
