@@ -240,6 +240,8 @@ module Pages
         selected_filter = select_filter(name, human_name)
 
         within(selected_filter) do
+          apply_operator(name, human_operator)
+
           return unless values.any?
 
           if boolean_filter?(name)
