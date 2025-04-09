@@ -184,8 +184,7 @@ en:
   notice_successful_lock: "Locked successfully."
   notice_cost_logged_successfully: "Unit cost logged successfully."
   notice_different_time_zones: "This user has a different time zone (%{tz}). Time will be logged using their time zone."
-  notice_updated_successfully: "Time entry updated successfully."
-  notice_update_failed: "Failed to update time entry. Errors: %{errors}"
+  notice_time_entry_update_failed: "Failed to update time entry. Errors: %{errors}"
 
   permission_edit_cost_entries: "Edit booked unit costs"
   permission_edit_own_cost_entries: "Edit own booked unit costs"

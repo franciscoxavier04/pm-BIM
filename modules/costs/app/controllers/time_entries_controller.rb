@@ -104,14 +104,14 @@ class TimeEntriesController < ApplicationController
 
     @time_entry = call.result
 
-    if call.success?
-      render_success_flash_message_via_turbo_stream(message: t("notice_updated_successfully"))
-    elsif params[:no_dialog]
-      render_error_flash_message_via_turbo_stream(message: t("notice_update_failed",
-                                                             errors: call.errors.full_messages.join(", ")))
-    else
-      form_component = TimeEntries::TimeEntryFormComponent.new(time_entry: @time_entry, **form_config_options)
-      update_via_turbo_stream(component: form_component, status: :bad_request)
+    if call.failure?
+      if params[:no_dialog]
+        render_error_flash_message_via_turbo_stream(message: t("notice_time_entry_update_failed",
+                                                               errors: call.errors.full_messages.join(", ")))
+      else
+        form_component = TimeEntries::TimeEntryFormComponent.new(time_entry: @time_entry, **form_config_options)
+        update_via_turbo_stream(component: form_component, status: :bad_request)
+      end
     end
 
     respond_with_turbo_streams(status: call.success? ? :ok : :bad_request)
