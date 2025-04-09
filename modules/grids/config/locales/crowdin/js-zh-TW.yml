@@ -2,7 +2,7 @@ zh-TW:
   ee:
     upsale:
       grid_widget_wp_graph:
-        description: "Some widgets, like the work package graph widget, are only available in the Enterprise edition."
+        description: "某些組件，如工作項目圖形組件，只在企業版提供。"
   js:
     grid:
       add_widget: '新增小工具'

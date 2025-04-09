@@ -357,10 +357,10 @@ ro:
           learn_about: "Aflați mai multe despre noile caracteristici"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_4":
+          "15_5":
             standard:
               new_features_html: >
-                Versiunea aduce diverse caracteristici și îmbunătățiri pentru tine, de ex. <br> <ul class="%{list_styling_class}"> <li>Activează modul de programare automată.</li> <li>Stabilește rezultatele de pe ordinea de zi pentru ședințe.</li> <li>Generează documentele PDF dintr-o descriere a pachetului de lucru.</li> <li>O mai bună gestionare a unui număr mare de proiecte cu o vizualizare îmbunătățită a listelor de proiecte.</li> <li>Utilizează @-mențiunea utilizatorului atunci când citezi un comentariu.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Filter for descendants (children and grandchildren) of work packages.</li> <li>Benefit from advanced accessibility in the date picker.</li> <li>See % Complete included in work package table sums.</li> <li>Include a column for children in work package tables.</li> <li>Better use the date picker in mobile screens.</li> <li>PDF exports matching configured form layout.</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "An error occured while fetching data."

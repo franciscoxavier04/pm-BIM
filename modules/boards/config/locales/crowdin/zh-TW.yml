@@ -9,7 +9,7 @@ zh-TW:
   ee:
     upsale:
       board_view:
-        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
+        description: '想使用看板來自動化您的工作流程嗎？進階看板是企業版附加功能，請升級至付費方案以啟用此功能。'
   boards:
     label_board: "看板"
     label_boards: "看板"

@@ -357,10 +357,10 @@ pt-BR:
           learn_about: "Saiba mais sobre os novos recursos"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_4":
+          "15_5":
             standard:
               new_features_html: >
-                A versão traz diversos recursos e melhorias para você, por exemplo: <br> <ul class="%{list_styling_class}"> <li>Ativar o modo de agendamento automático.</li> <li>Definir os resultados dos itens da pauta para reuniões.</li> <li>Gerar documentos em PDF a partir da descrição de um pacote de trabalho.</li> <li>Gerenciar melhor um grande número de projetos com uma visualização aprimorada da lista de projetos.</li> <li>Usar @menção de usuário ao responder com citação a um comentário.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Filter for descendants (children and grandchildren) of work packages.</li> <li>Benefit from advanced accessibility in the date picker.</li> <li>See % Complete included in work package table sums.</li> <li>Include a column for children in work package tables.</li> <li>Better use the date picker in mobile screens.</li> <li>PDF exports matching configured form layout.</li> </ul>
     ical_sharing_modal:
       title: "Assinar calendário"
       inital_setup_error_message: "Ocorreu um erro ao buscar dados."

@@ -8,11 +8,11 @@ zh-CN:
   project_module_team_planner_view: "工作组规划器"
   ee:
     feature_names:
-      team_planner_view: "Team planner"
+      team_planner_view: "工作组规划器"
     upsale:
       team_planner_view:
-        title: "Team planner"
-        description: "Get a complete overview of your team’s planning with Team Planner. Stretch, shorten and drag-and-drop work packages to modify dates, move them or change assignees."
+        title: "工作组规划器"
+        description: "通过工作组规划器，您可以获得团队计划的完整概览。您可以拉伸、缩短和拖放工作包来修改日期、移动工作包或更改指定人。"
   team_planner:
     label_team_planner: "工作组规划器"
     label_new_team_planner: "新的工作组规划器"
