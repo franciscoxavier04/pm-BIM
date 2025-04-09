@@ -1,4 +1,5 @@
 <%= component_wrapper(tag: "div", data: wrapper_data) do %>
+  <%= render(My::TimeTracking::HeaderComponent.new(mode: mode, date: date)) %>
   <%= render(Primer::OpenProject::SubHeader.new) do |component|
         component.with_text { title }
 
@@ -9,7 +10,7 @@
           end
         end
 
-        component.with_action_button(tag: :a, href: today_href) { t("label_today") }
+        component.with_action_button(tag: :a, href: today_href) { t(:label_today) }
 
         component.with_action_button(
           scheme: :primary,
@@ -18,7 +19,7 @@
           },
           tag: :a,
           href: dialog_time_entries_path(onlyMe: true)
-        ) { "Log Time" }
+        ) { t(:button_log_time) }
       end %>
 
     <%- range.each_with_index do |date, i| %>

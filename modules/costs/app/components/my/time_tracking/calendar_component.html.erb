@@ -1,4 +1,5 @@
 <%= flex_layout(data: wrapper_data, classes: "time-entry-calendar") do |calendar_page| %>
+<% calendar_page.with_row { render(My::TimeTracking::HeaderComponent.new(mode: mode, date: date)) } %>
 <% calendar_page.with_row do %>
   <%= render(Primer::OpenProject::SubHeader.new) do |component|
         component.with_text { title }
@@ -10,7 +11,7 @@
           end
         end
 
-        component.with_action_button(tag: :a, href: today_href) { "Today" }
+        component.with_action_button(tag: :a, href: today_href) { I18n.t(:label_today) }
 
         component.with_action_button(
           scheme: :primary,
