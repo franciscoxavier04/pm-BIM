@@ -27,9 +27,11 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<% html_title t(:label_administration), t("custom_actions.upsale.title") %>
+<% html_title t(:label_administration), t("ee.upsale.custom_actions.title") %>
 
-<%= render EnterpriseEdition::UpsalePageComponent.new(
-  :custom_actions,
-  video: "enterprise/custom-actions.mp4"
-) %>
+<%=
+  render EnterpriseEdition::UpsalePageComponent.new(
+    :custom_actions,
+    video: "enterprise/custom-actions.mp4"
+  )
+%>
