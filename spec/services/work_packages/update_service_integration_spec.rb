@@ -1301,6 +1301,85 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
     end
   end
 
+  describe "due_date and ignore_non_working_days combinations" do
+    before do
+      set_non_working_week_days("saturday", "sunday")
+    end
+
+    context "on an automatically scheduled successor whose start date is after a non-working day" do
+      shared_let_work_packages(<<~TABLE)
+        | subject      | MTWTFSSmtwtfss | scheduling mode | days counting     | successors
+        | predecessor  |   XX           | manual          | working days only | work_package with lag 1
+        | work_package |        XXX     | automatic       | working days only |
+      TABLE
+
+      context "when setting ignore_non_working_days to true" do
+        let(:attributes) { { ignore_non_working_days: true } }
+
+        it "moves the start date earlier to start on a non-working day " \
+           "and moves the due date too to keep same duration" do
+          expect(subject).to be_success
+
+          expect_work_packages_after_reload([work_package, predecessor], <<~TABLE)
+            | subject      | MTWTFSSmtwtfss | scheduling mode | days counting
+            | predecessor  |   XX           | manual          | working days only
+            | work_package |      XXX       | automatic       | all days
+          TABLE
+        end
+      end
+
+      context "when setting ignore_non_working_days to true and setting a due date" do
+        let(:attributes) { { ignore_non_working_days: true, due_date: _table.next_friday } }
+
+        it "moves the start date earlier to start on a non-working day and uses the given due date" do
+          expect(subject).to be_success
+
+          expect_work_packages_after_reload([work_package, predecessor], <<~TABLE)
+            | subject      | MTWTFSSmtwtfss | scheduling mode | days counting
+            | predecessor  |   XX           | manual          | working days only
+            | work_package |      XXXXXXX   | automatic       | all days
+          TABLE
+        end
+      end
+
+      context "when setting ignore_non_working_days to true and unsetting the due date" do
+        let(:attributes) { { ignore_non_working_days: true, due_date: nil } }
+
+        it "moves the start date earlier to start on a non-working day and removes the due date and duration" do
+          expect(subject).to be_success
+
+          expect_work_packages_after_reload([work_package, predecessor], <<~TABLE)
+            | subject      | MTWTFSSmtwtfss | duration | scheduling mode | days counting
+            | predecessor  |   XX           |        2 | manual          | working days only
+            | work_package |      [         |          | automatic       | all days
+          TABLE
+        end
+      end
+    end
+
+    context "on an automatically scheduled successor whose start and due dates are on non-working days " \
+            "when setting only ignore_non_working_days to false" do
+      let_work_packages(<<~TABLE)
+        | subject      | MTWTFSSmtwtfss | duration | scheduling mode | days counting     | successors
+        | predecessor  |   XX           |        2 | manual          | working days only | work_package with lag 1
+        | work_package |      XXXXXXXX  |        8 | automatic       | all days          |
+      TABLE
+
+      let(:attributes) { { ignore_non_working_days: false } }
+
+      it "moves the start date earlier to start on a non-working day " \
+         "and moves the due date too to keep same duration" do
+        expect(subject).to be_success
+
+        expect_work_packages_after_reload([work_package, predecessor], <<~TABLE)
+          | subject      | MTWTFSSmtwtfss    | duration | scheduling mode | days counting
+          | predecessor  |   XX              |        2 | manual          | working days only
+          | work_package |        XXXXX..XXX |        8 | automatic       | working days only
+        TABLE
+      end
+    end
+  end
+
   context "when changing the type of a work package with children into a milestone" do
     let_work_packages(<<~TABLE)
       | hierarchy    | MTWTFSS | scheduling mode

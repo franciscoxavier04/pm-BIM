@@ -293,6 +293,7 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
   end
 
   def update_dates_from_self
+    # this method is only called by #update_dates when there are no children
     min_start = new_start_date
 
     return unless min_start
@@ -388,6 +389,7 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
   end
 
   def new_start_date
+    # this method is only called by #update_dates_from_self when there are no children
     if work_package.schedule_manually?
       # Weird rule from SetScheduleService: if the work package does not have a
       # start date, it inherits it from the parent soonest start, regardless of
@@ -409,24 +411,22 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
   end
 
   def new_start_date_from_self
-    return unless work_package.schedule_manually_changed?
+    # this method is only called by #new_start_date when there are no children
+    return unless work_package.schedule_manually_changed? || work_package.ignore_non_working_days_changed?
 
-    [min_child_date, work_package.soonest_start].compact.max
+    work_package.soonest_start
   end
 
   def new_due_date(min_start)
-    duration = children_duration || work_package.duration
-    return unless work_package.due_date || duration
-
-    due_date =
-      if duration
-        days.due_date(min_start, duration)
-      else
-        work_package.due_date
-      end
-
-    # if due date is before start date, then start is used as due date.
-    [min_start, due_date].max
+    # this method is only called by #update_dates_from_self when there are no children
+    if work_package.due_date_came_from_user?
+      work_package.due_date
+    elsif work_package.duration
+      days.due_date(min_start, work_package.duration)
+    elsif work_package.due_date
+      # if due date is before start date, then start is used as due date.
+      [min_start, work_package.due_date].max
+    end
   end
 
   def work_package
