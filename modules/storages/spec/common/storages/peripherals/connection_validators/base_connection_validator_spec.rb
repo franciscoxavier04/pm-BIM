@@ -67,8 +67,6 @@ module Storages
 
           results = TestValidator.new(create(:nextcloud_storage_with_local_connection)).call
 
-          pp results
-
           expect(results).to be_warning
           expect(results.group(:base_configuration)).to be_success
           expect(results.group(:authentication)).to be_warning

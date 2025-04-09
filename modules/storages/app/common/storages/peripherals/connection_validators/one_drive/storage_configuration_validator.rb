@@ -71,7 +71,7 @@ module Storages
           def check_tenant_id
             return pass_check(:tenant_id) if query_result.success?
 
-            tenant_id_regex = /Tenant '#{@storage.tenant_id}' not found|is neither/
+            tenant_id_regex = /tenant (?:identifier )?'#{@storage.tenant_id}' (?:not found|is neither)/i
 
             if error_payload[:error] == "invalid_request" && error_payload[:error_description].match?(tenant_id_regex)
               fail_check(:tenant_id, message(:tenant_id_wrong))

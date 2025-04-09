@@ -74,8 +74,12 @@ module Storages
           def create_folder
             Registry["one_drive.commands.create_folder"]
               .call(storage: @storage, auth_strategy:, folder_name: TEST_FOLDER_NAME, parent_location: ParentFolder.root)
-              .on_failure { fail_check(:client_folder_creation, message("one_drive.client_write_permission_missing")) }
               .on_success { pass_check(:client_folder_creation) }
+              .on_failure do
+              reason = it.result == :already_exists ? :existing_test_folder : :client_write_permission_missing
+
+              fail_check(:client_folder_creation, message("one_drive.#{reason}", folder_name: TEST_FOLDER_NAME))
+            end
           end
 
           def log_extraneous_files(unexpected_files)

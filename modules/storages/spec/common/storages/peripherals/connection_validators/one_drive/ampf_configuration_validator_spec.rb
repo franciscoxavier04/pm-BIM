@@ -38,6 +38,7 @@ module Storages
         RSpec.describe AmpfConfigurationValidator, :webmock do
           let(:storage) { create(:sharepoint_dev_drive_storage, :as_automatically_managed) }
           let(:auth_strategy) { Registry["one_drive.authentication.userless"].call }
+          let(:folder_name) { described_class::TEST_FOLDER_NAME }
 
           subject(:validator) { described_class.new(storage) }
 
@@ -59,7 +60,7 @@ module Storages
             it "fails when folders can't be created" do
               create_cmd = class_double(StorageInteraction::OneDrive::CreateFolderCommand)
               allow(create_cmd).to receive(:call)
-                                     .with(storage:, auth_strategy:, folder_name: /.+/, parent_location: ParentFolder.root)
+                                     .with(storage:, auth_strategy:, folder_name:, parent_location: ParentFolder.root)
                                      .and_return(ServiceResult.failure)
 
               Registry.stub("one_drive.commands.create_folder", create_cmd)
@@ -69,6 +70,18 @@ module Storages
               expect(results[:client_folder_creation]).to be_a_failure
               expect(results[:client_folder_creation].message)
                 .to eq(I18n.t(i18n_key("one_drive.client_write_permission_missing")))
+            end
+
+            it "fails when the test folder already exists on the remote", vcr: "one_drive/validator_test_folder_already_exists" do
+              Registry["one_drive.commands.create_folder"]
+                .call(storage:, auth_strategy:, folder_name:, parent_location: ParentFolder.root)
+
+              result = validator.call
+              expect(result[:client_folder_creation]).to be_a_failure
+              expect(result[:client_folder_creation].message)
+                .to eq(I18n.t(i18n_key("one_drive.existing_test_folder"), folder_name:))
+            ensure
+              StorageInteraction::OneDrive::DeleteFolderCommand.call(storage:, auth_strategy:, location: created_folder)
             end
 
             it "fails when folders can't be deleted", vcr: "one_drive/validator_create_folder" do
@@ -91,7 +104,7 @@ module Storages
 
           def created_folder
             Registry["one_drive.queries.files"].call(storage:, auth_strategy:, folder: ParentFolder.root).on_success do
-              folder = it.result.files.detect { |file| file.name.include?(described_class::TEST_FOLDER_NAME) }
+              folder = it.result.files.detect { |file| file.name.include?(folder_name) }
 
               return folder.id
             end
