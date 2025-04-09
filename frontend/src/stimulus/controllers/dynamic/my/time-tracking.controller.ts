@@ -53,7 +53,7 @@ export default class MyTimeTrackingController extends Controller {
       locale: this.localeValue,
       events: this.timeEntriesValue,
       headerToolbar: false,
-      aspectRatio: 2,
+      height: '100%',
       initialDate: this.initialDateValue,
       selectable: this.canCreateValue,
       editable: this.canEditValue,

@@ -1,4 +1,5 @@
-<%= component_wrapper(tag: "div", data: wrapper_data) do %>
+<%= flex_layout(data: wrapper_data, classes: "time-entry-calendar") do |calendar_page| %>
+<% calendar_page.with_row do %>
   <%= render(Primer::OpenProject::SubHeader.new) do |component|
         component.with_text { title }
 
@@ -20,12 +21,14 @@
           href: dialog_time_entries_path(onlyMe: true)
         ) { "Log Time" }
       end %>
-
-  <div data-my--time-tracking-target="calendar"></div>
+  <% end %>
+  <% calendar_page.with_row(classes: "op-fc-wrapper", data: { "my--time-tracking-target" => "calendar" }) %>
 
   <% if mode != :day %>
+<% calendar_page.with_row do %>
     <%= flex_layout(align_items: :flex_end) do |flex| %>
      <% flex.with_row(mt: 2, font_weight: :bold) { total_hours } %>
+    <% end %>
     <% end %>
   <% end %>
 <% end %>
