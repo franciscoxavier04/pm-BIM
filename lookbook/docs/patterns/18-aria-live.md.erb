@@ -8,8 +8,10 @@ ARIA Live Regions rely on specific attributes to control how updates are announc
 - `aria-atomic="true"`: Ensures the entire content of the region is read when it changes.
 
 ## Implementing ARIA Live Regions in Primer
-Primer provides built-in components to implement ARIA Live Regions easily, for example: live region component.
+Primer provides a built-in component named live-region to implement ARIA Live Regions easily.
 We have decided to use a single global ARIA live region in base.html to ensure live regions are present in the DOM before updates occur. This approach is better than having multiple live regions because it ensures that announcements are delivered in a clear and consistent manner. By centralizing updates, we avoid potential conflicts between overlapping live regions and provide a more seamless experience for screen reader users.
+There is an exception for modal or dialog, especially if that dialog traps focus. When a dialog is open, screen readers often limit their reading and focus to within the dialog. If aria-live region is in base.html (outside the dialog), it becomes “invisible” to the screen reader while the modal is open — it's still updated in the DOM, but not announced until the dialog is closed, and the screen reader returns to the full DOM scope.
+In this case, we should add the live-region component to the dialog itself, like what we have implemented for primerized date picker.
 
 ### Live Region in `base.html`
 ```html
@@ -28,7 +30,7 @@ announce('Example polite message', { politeness: 'polite' });
 ```
 
 ### Using Turbo Streams to Trigger ARIA Live Updates
-To use this feature in a Rails Turbo response:
+To use it in a Rails Turbo response, and send updates to the scråeen reader after any action, we create a new Turbo stream component that triggers an ARIA action.:
 ```ruby
 OpTurbo::StreamComponent.new(action: :aria, message: "Form submission successful!", type: "polite", role: "status", target: "nil")
 ```
@@ -39,21 +41,48 @@ OpTurbo::StreamComponent.new(action: :aria, message: "Form submission successful
   - `role: "status"` → Helps screen readers recognize this as a status update
   - `target: "nil"` → Ensures the update isn't inserted into the DOM but is handled as an announcement
 
+#### How to use it?
+In controller:
+```ruby
+  render_success_flash_message_via_turbo_stream(message: I18n.t(:notice_successful_update))
+  render_aria_update_message(
+    message: I18n.t("work_package_relations_tab.relations.create_child_aria_live_message"),
+    type: "polite",
+    role: "alert"
+  )
+  respond_with_turbo_streams
+```
+When updating via Turbo Frame:
+```erb
+<%= content_tag("turbo-frame", id: "frame-id") do %>
+  <%= render OpTurbo::StreamComponent.new(
+        action: :aria,
+        message: "Update!!",
+        type: "polite",
+        target: "nil"
+      ) %>
+<% end %>
+```
 ### Turbo Stream Action for ARIA Live
+The `registerAriaStreamAction` method defines a custom Turbo Stream action called `aria`. When triggered, it announces a message (using ARIA live regions) to screen readers, with a tone of either `"polite"` or `"assertive"`, depending on the `type` attribute in the stream element.
 ```ts
 import { StreamActions, StreamElement } from '@hotwired/turbo';
 import { announce } from '@primer/live-region-element';
 
 export function registerAriaStreamAction() {
-  StreamActions.aria = function dialogStreamAction(this: StreamElement) {
-    setTimeout(() => {
+  StreamActions.aria = function dialogStreamAction(this:StreamElement) {
       const message = this.getAttribute('message') ?? '';
       const type = this.getAttribute('type') ?? 'polite';
-
-      announce(message, {
-        politeness: type, // Dynamically sets either 'polite' or 'assertive'
-      });
-    }, 5000); // Delays announcement to ensure proper screen reader processing
+      if (type === 'assertive') {
+        void announce(message, {
+          politeness: 'assertive',
+        });
+      } else {
+        void announce(message, {
+          politeness: 'polite',
+          delayMs: 5000,
+        });
+      }
   };
 }
 ```
