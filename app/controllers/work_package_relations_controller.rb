@@ -103,7 +103,11 @@ class WorkPackageRelationsController < ApplicationController
       component = WorkPackageRelationsTab::IndexComponent.new(work_package: @work_package, **)
       replace_via_turbo_stream(component:)
       render_success_flash_message_via_turbo_stream(message: I18n.t(:notice_successful_update))
-      render_aria_update_message(message:I18n.t("work_package_relations_tab.relations.create_relation_aria_live_message"), type:"polite", role: "alert")
+      render_aria_update_message(
+        message: I18n.t("work_package_relations_tab.relations.create_relation_aria_live_message"),
+        type: "polite",
+        role: "alert"
+      )
       respond_with_turbo_streams
     else
       respond_with_turbo_streams(status: :unprocessable_entity)
