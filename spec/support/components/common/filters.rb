@@ -164,7 +164,7 @@ module Components
           end
         when "between"
           if send_keys
-            find_field("from_value").send_keysvalues.first
+            find_field("from_value").send_keys values.first
             find_field("to_value").send_keys values.second
           else
             fill_in "from_value", with: values.first
@@ -220,6 +220,10 @@ module Components
 
       def date_filter?(filter)
         filter[:"data-filter-type"] == "date"
+      end
+
+      def date_time_filter?(filter)
+        filter[:"data-filter-type"] == "datetime_past"
       end
 
       def boolean_filter?(_filter)

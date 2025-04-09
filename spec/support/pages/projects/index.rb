@@ -250,26 +250,7 @@ module Pages
           elsif date_filter?(selected_filter) || date_time_filter?(selected_filter)
             select(human_operator, from: "operator")
             wait_for_network_idle
-            set_date_filter(human_operator, values, send_keys:)
-          end
-        end
-      end
-
-      def set_date_filter(human_operator, values, send_keys: false)
-        case human_operator
-        when "on", "less than days ago", "more than days ago", "days ago"
-          if send_keys
-            find_field("value").send_keys values.first
-          else
-            fill_in "value", with: values.first
-          end
-        when "between"
-          if send_keys
-            find_field("from_value").send_keys values.first
-            find_field("to_value").send_keys values.second
-          else
-            fill_in "from_value", with: values.first
-            fill_in "to_value", with: values.second
+            set_created_at_filter(human_operator, values, send_keys:)
           end
         end
       end
@@ -538,10 +519,6 @@ module Pages
 
       def boolean_filter?(filter)
         %w[active member_of favored public templated].include?(filter.to_s)
-      end
-
-      def date_time_filter?(filter)
-        filter[:"data-filter-type"] == "datetime_past"
       end
 
       def submenu
