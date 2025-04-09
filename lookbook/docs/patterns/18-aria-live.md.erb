@@ -30,7 +30,7 @@ announce('Example polite message', { politeness: 'polite' });
 ```
 
 ### Using Turbo Streams to Trigger ARIA Live Updates
-To use it in a Rails Turbo response, and send updates to the scråeen reader after any action, we create a new Turbo stream component that triggers an ARIA action.:
+To use it in a Rails Turbo response, and send updates to the screen reader after any action, we create a new Turbo stream component that triggers an ARIA action:
 ```ruby
 OpTurbo::StreamComponent.new(action: :aria, message: "Form submission successful!", type: "polite", role: "status", target: "nil")
 ```
@@ -44,25 +44,30 @@ OpTurbo::StreamComponent.new(action: :aria, message: "Form submission successful
 #### How to use it?
 In controller:
 ```ruby
-  render_success_flash_message_via_turbo_stream(message: I18n.t(:notice_successful_update))
-  render_aria_update_message(
-    message: I18n.t("work_package_relations_tab.relations.create_child_aria_live_message"),
-    type: "polite",
-    role: "alert"
-  )
-  respond_with_turbo_streams
+    def render_aria_update_message(message:, type:, role: "alert")
+      turbo_streams << OpTurbo::StreamComponent.new(action: :aria, message:, type:, role:, target: "nil").render_in(view_context)
+    end
+
+    def update
+      render_success_flash_message_via_turbo_stream(message: I18n.t(:notice_successful_update))
+      render_aria_update_message(message: I18n.t("work_package_relations_tab.relations.create_child_aria_live_message"),type: "polite",role: "alert")
+      respond_with_turbo_streams
+    end
 ```
 When updating via Turbo Frame:
 ```erb
 <%= content_tag("turbo-frame", id: "frame-id") do %>
+....
   <%= render OpTurbo::StreamComponent.new(
-        action: :aria,
-        message: "Update!!",
-        type: "polite",
-        target: "nil"
-      ) %>
+    action: :aria,
+    message: "Update!!",
+    type: "polite",
+    target: "nil"
+  ) %>
 <% end %>
+
 ```
+
 ### Turbo Stream Action for ARIA Live
 The `registerAriaStreamAction` method defines a custom Turbo Stream action called `aria`. When triggered, it announces a message (using ARIA live regions) to screen readers, with a tone of either `"polite"` or `"assertive"`, depending on the `type` attribute in the stream element.
 ```ts
