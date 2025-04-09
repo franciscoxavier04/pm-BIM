@@ -54,8 +54,12 @@ RSpec.describe "Linking Projects phases and work packages settings", :js, with_f
   it "allows seeing and editing linked phases" do
     work_package_page.visit!
 
-    work_package_page.expect_attributes(project_phase_definition: executing_phase_definition.name)
+    work_package_page.expect_attributes(project_phase: executing_phase_definition.name)
 
-    work_package_page.set_attributes({ project_phase_definition: initiating_phase_definition.name })
+    work_package_page.set_attributes({ projectPhase: initiating_phase_definition.name })
+
+    work_package_page.expect_and_dismiss_toaster(message: "Successful update.")
+
+    work_package_page.expect_attributes(project_phase: initiating_phase_definition.name)
   end
 end

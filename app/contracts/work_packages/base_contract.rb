@@ -83,7 +83,13 @@ module WorkPackages
               permission: :manage_subtasks
 
     attribute :project_phase_definition_id,
-              permission: :edit_project_phases
+              permission: :view_project_phases,
+              writable: ->(*) {
+                OpenProject::FeatureDecisions.stages_and_gates_active?
+              } do
+      validate_phase_active_in_project
+    end
+    attribute_alias :project_phase_definition_id, :project_phase_id
 
     attribute :assigned_to_id do
       next unless model.project
@@ -198,6 +204,18 @@ module WorkPackages
 
     def assignable_priorities
       IssuePriority.active
+    end
+
+    def assignable_project_phases
+      if model.project
+        model
+          .project
+          .phases
+          .active
+          .order_by_position
+      else
+        Project::Phase.none
+      end
     end
 
     def assignable_versions(only_open: true)
@@ -524,6 +542,14 @@ module WorkPackages
         if not_set_but_others_are_present?(field)
           errors.add field, :cannot_be_null
         end
+      end
+    end
+
+    def validate_phase_active_in_project
+      if model.project.present? &&
+        model.project_phase_definition_id.present? &&
+        !assignable_project_phases.exists?(definition_id: model.project_phase_definition_id)
+        errors.add :project_phase_id, :inclusion
       end
     end
 

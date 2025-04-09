@@ -27,6 +27,8 @@
 #++
 
 class Project::Phase < ApplicationRecord
+  include ::Scopes::Scoped
+
   belongs_to :project, optional: false, inverse_of: :available_phases
   belongs_to :definition,
              optional: false,
@@ -47,6 +49,7 @@ class Project::Phase < ApplicationRecord
   attr_readonly :definition_id
 
   scope :active, -> { where(active: true) }
+  scopes :order_by_position
 
   class << self
     def visible(user = User.current)

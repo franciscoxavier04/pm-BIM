@@ -226,13 +226,20 @@ module API
                                      end
                                    }
 
-          # TODO: Turn into schema_with_allowed_link
-          schema :project_phase,
-                 type: "ProjectPhase",
-                 location: :link,
-                 required: false,
-                 show_if: ->(*) { current_user.allowed_in_project?(:view_project_phases, represented.project) },
-                 writable: -> { represented.writable?(:project_phase_definition_id) }
+          schema_with_allowed_collection :project_phase,
+                                         value_representer: ProjectPhases::ProjectPhaseRepresenter,
+                                         link_factory: ->(phase) {
+                                           {
+                                             href: api_v3_paths.project_phase(phase.id),
+                                             title: phase.name
+                                           }
+                                         },
+                                         required: false,
+                                         show_if: ->(*) {
+                                           current_user.allowed_in_project?(:view_project_phases, represented.project) &&
+                                             OpenProject::FeatureDecisions.stages_and_gates_active?
+                                         },
+                                         writable: -> { represented.writable?(:project_phase_definition_id) }
 
           schema_with_allowed_link :parent,
                                    type: "WorkPackage",

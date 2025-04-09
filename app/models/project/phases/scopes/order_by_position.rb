@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,31 +26,17 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-FactoryBot.define do
-  factory :project_phase, class: "Project::Phase" do
-    project
-    definition factory: :project_phase_definition
-    active { true }
+module Project::Phases::Scopes
+  module OrderByPosition
+    extend ActiveSupport::Concern
 
-    start_date { Date.current - 2.days }
-    finish_date { Date.current + 2.days }
-
-    trait :skip_validate do
-      to_create { |instance| instance.save(validate: false) }
-    end
-
-    trait :with_gated_definition do
-      definition { association(:project_phase_definition, :with_start_gate, :with_finish_gate) }
-    end
-
-    trait :active do
-      active { true }
-    end
-
-    trait :inactive do
-      active { false }
+    class_methods do
+      def order_by_position
+        includes(:definition)
+          .order("#{Project::PhaseDefinition.table_name}.position ASC")
+      end
     end
   end
 end

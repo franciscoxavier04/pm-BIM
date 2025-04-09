@@ -509,8 +509,19 @@ module API
                      )
                    end
                  end,
-                 # TODO: write the setter
-                 setter: ->(*) {}
+                 setter: ->(fragment:, **) do
+                   link = ::API::Decorators::LinkObject.new(represented,
+                                                            path: :project_phases,
+                                                            property_name: :project_phase,
+                                                            setter: :project_phase_id=)
+
+                   link.from_hash(fragment)
+
+                   represented.project_phase_definition_id = Project::Phase
+                                                               .where(id: represented.project_phase_id)
+                                                               .pick(:definition_id)
+                                                               .to_s
+                 end
 
         associated_resource :status
 
@@ -656,7 +667,8 @@ module API
         end
 
         def view_project_phase_allowed?
-          @view_project_phase_allowed ||= current_user.allowed_in_project?(:view_project_phases, represented.project)
+          @view_project_phase_allowed ||= current_user.allowed_in_project?(:view_project_phases, represented.project) &&
+            OpenProject::FeatureDecisions.stages_and_gates_active?
         end
 
         def export_work_packages_allowed?

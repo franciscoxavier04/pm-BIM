@@ -93,6 +93,7 @@ export function initializeCoreEditFields(editFieldService:EditFieldService, sele
       .addFieldType(UserEditFieldComponent, 'user', ['User'])
       .addFieldType(SelectEditFieldComponent, 'select', [
         'Priority',
+        'ProjectPhase',
         'Status',
         'Type',
         'Version',

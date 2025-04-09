@@ -825,35 +825,37 @@ RSpec.describe API::V3::WorkPackages::Schema::WorkPackageSchemaRepresenter do
       end
     end
 
-    describe "projectPhaseDefinition" do
-      # TODO: spec feature flag
-      context "with the view_project_phases permission" do
+    describe "projectPhase" do
+      context "with the feature enabled", with_flag: { stages_and_gates: true } do
+        context "with the view_project_phases permission" do
+          let(:permissions) { %i[edit_work_packages view_project_phases] }
+
+          it_behaves_like "has basic schema properties" do
+            let(:path) { "projectPhase" }
+            let(:type) { "ProjectPhase" }
+            let(:name) { I18n.t("attributes.project_phase") }
+            let(:required) { false }
+            let(:writable) { true }
+            let(:location) { "_links" }
+          end
+
+          it_behaves_like "has a collection of allowed values" do
+            let(:json_path) { "projectPhase" }
+            let(:href_path) { "project_phases" }
+            let(:factory) { :project_phase }
+          end
+        end
+
+        context "without the view_project_phases permission" do
+          it "has no projectPhase attribute" do
+            expect(subject).not_to have_json_path("projectPhase")
+          end
+        end
+      end
+
+      context "with the feature disabled" do
         let(:permissions) { %i[edit_work_packages view_project_phases] }
 
-        it_behaves_like "has basic schema properties" do
-          let(:path) { "projectPhase" }
-          let(:type) { "ProjectPhase" }
-          let(:name) { I18n.t("attributes.project_phase") }
-          let(:required) { false }
-          let(:writable) { false }
-          let(:location) { "_links" }
-        end
-      end
-
-      context "with the edit_project_phases permission" do
-        let(:permissions) { %i[edit_work_packages view_project_phases edit_project_phases] }
-
-        it_behaves_like "has basic schema properties" do
-          let(:path) { "projectPhase" }
-          let(:type) { "ProjectPhase" }
-          let(:name) { I18n.t("attributes.project_phase") }
-          let(:required) { false }
-          let(:writable) { true }
-          let(:location) { "_links" }
-        end
-      end
-
-      context "without the view_project_phases permission" do
         it "has no projectPhase attribute" do
           expect(subject).not_to have_json_path("projectPhase")
         end
