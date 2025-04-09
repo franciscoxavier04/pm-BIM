@@ -114,11 +114,17 @@ Automatic scheduling is useful for automatically scheduling work packages with e
 
 A work package can only be in automatic scheduling mode if it has predecessors or children.
 
-An automatically-scheduled work package with predecessors will automatically start one working day after the finish date of the nearest predecessor. You can still enter a duration (and effectively change the finish date). This temporal relationship is maintained even if the dates of the predecessor are changed; for example, if the predecessor is moved forwards or backwards in time (either because the finish date or duration changed), the automatically-scheduled work package will also change its start date so it starts the day after the new date. This makes it possible to create a dependable chain of automatically scheduled work packages that automatically adjust to planning changes. 
+An automatically-scheduled work package with predecessors will automatically start one working day after the finish date of the nearest predecessor. However, both the **duration** and **finish date** can now be edited directly.
+
+You can still enter a duration (and effectively change the finish date). 
+
+You can either enter a duration to adjust the finish date or select a finish date manually in the date picker. Note that the dates before the automatically derived start date are inactive, i.e. the finish date must be set on or after the start date. 
+
+This temporal relationship is maintained even if the dates of the predecessor are changed; for example, if the predecessor is moved forwards or backwards in time (either because the finish date or duration changed), the automatically-scheduled work package will also change its start date so it starts the day after the new date. This makes it possible to create a dependable chain of automatically scheduled work packages that automatically adjust to planning changes. 
 
 ![A switch on the date picker allows you to enable automatic scheduling mode in OpenProject](openproject_user_guide_date_picker_banner_automatic_mode.png)
 
-When switching from manual to automatic scheduling, a warning banner notifies you the dates are not determined by child work packages. This allows automatic date setting based on existing relations.
+When switching from manual to automatic scheduling, a warning banner notifies you the dates are now determined by predecessor or child work packages. This allows automatic date setting based on existing relations.
 
 ![A blue banner informing the user that the worked package is automatically scheduled](openproject_user_guide_date_picker_banner_automatic_mode_relations_banner.png)
 
