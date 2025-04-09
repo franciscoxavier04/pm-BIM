@@ -158,12 +158,28 @@ class WorkPackages::DatePickerController < ApplicationController
                                                          triggering_field: params[:triggering_field],
                                                          touched_field_map:,
                                                          date_mode:,
-                                                         live_region_message: I18n.t("work_packages.datepicker_modal.update_inputs_aria_live_message",
-                                                                             start_date: @work_package.start_date,
-                                                                             due_date: @work_package.due_date,
-                                                                             duration: @work_package.duration,
-                                                                             working_days_only: @work_package.ignore_non_working_days ? I18n.t("activerecord.attributes.work_package.include_non_working_days.true") : I18n.t("activerecord.attributes.work_package.include_non_working_days.false"),
-                                                                             scheduling: @work_package.schedule_manually ? I18n.t("work_packages.datepicker_modal.mode.manual") : I18n.t("work_packages.datepicker_modal.mode.automatic")))
+                                                         live_region_message: live_region_message)
+  end
+
+  def live_region_message
+    I18n.t(
+      "work_packages.datepicker_modal.update_inputs_aria_live_message",
+      start_date: @work_package.start_date,
+      due_date: @work_package.due_date,
+      duration: @work_package.duration,
+      working_days_only: working_days_label,
+      scheduling: scheduling_label
+    )
+  end
+
+  def working_days_label
+    key = @work_package.ignore_non_working_days ? "true" : "false"
+    I18n.t("activerecord.attributes.work_package.include_non_working_days.#{key}")
+  end
+
+  def scheduling_label
+    mode = @work_package.schedule_manually ? "manual" : "automatic"
+    I18n.t("work_packages.datepicker_modal.mode.#{mode}")
   end
 
   def focused_field
