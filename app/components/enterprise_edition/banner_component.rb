@@ -34,75 +34,51 @@ module EnterpriseEdition
   # It will only be rendered if necessary.
   class BannerComponent < ApplicationComponent
     include OpPrimer::ComponentHelpers
+    include OpTurbo::Streamable
+    include PlanForFeature
 
     # @param feature_key [Symbol, NilClass] The key of the feature to show the banner for.
-    # @param title [String] The title of the banner.
-    # @param description [String] The description of the banner.
-    # @param href [String] The URL to link to.
-    # @param skip_render [Boolean] Whether to skip rendering the banner.
+    # @param i18n_scope [String] Provide the i18n scope to look for title, description, and features.
+    #                            Defaults to "ee.upsale.{feature_key}"
+    # @param dismissable [boolean] Allow this banner to be dismissed.
+    # @param dismiss_key [String] Provide a string to identify this banner when being dismissed. Defaults to feature_key
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(feature_key,
-                   title: nil,
-                   description: nil,
-                   link_title: nil,
-                   href: nil,
-                   skip_render: !EnterpriseToken.show_banners?,
+                   i18n_scope: "ee.upsale.#{feature_key}",
+                   dismissable: false,
+                   dismiss_key: feature_key,
                    **system_arguments)
       @system_arguments = system_arguments
-      @system_arguments[:tag] = "div"
-      @system_arguments[:test_selector] = "op-ee-banner-#{feature_key.to_s.tr('_', '-')}"
+      @system_arguments[:tag] = :div
+      @system_arguments[:mb] ||= 2
+      @system_arguments[:id] = "op-enterprise-banner-#{feature_key.to_s.tr('_', '-')}"
+      @system_arguments[:test_selector] = "op-enterprise-banner"
       super
 
-      @feature_key = feature_key
-      @title = title
-      @description = description
-      @link_title = link_title
-      @href = href
-      @skip_render = skip_render
+      self.feature_key = feature_key
+      self.i18n_scope = i18n_scope
+      @dismissable = dismissable
+      @dismiss_key = dismiss_key
+    end
+
+    def wrapper_key
+      "enterprise_banner_#{feature_key}"
     end
 
     private
 
-    attr_reader :skip_render,
-                :feature_key
-
-    def title
-      @title || I18n.t("ee.upsale.#{feature_key}.title", default: I18n.t("ee.upsale.title"))
-    end
-
-    def description
-      @description || begin
-        I18n.t("ee.upsale.#{feature_key}.description")
-      rescue StandardError
-        I18n.t("ee.upsale.#{feature_key}.description_html")
-      end
-    rescue I18n::MissingTranslationData => e
-      raise e.exception(
-        <<~TEXT.squish
-          The expected '#{I18n.locale}.ee.upsale.#{feature_key}.description' key does not exist.
-          Ideally, provide it in the locale file.
-          If that isn't applicable, a description parameter needs to be provided.
-        TEXT
-      )
-    end
-
-    def link_title
-      @link_title || I18n.t("ee.upsale.#{feature_key}.link_title", default: I18n.t("ee.upsale.link_title"))
-    end
-
-    def href
-      href_value = @href || OpenProject::Static::Links.links.dig(:enterprise_docs, feature_key, :href)
-
-      unless href_value
-        raise "Neither a custom href is provided nor is a value set " \
-              "in OpenProject::Static::Links.enterprise_docs[#{feature_key}][:href]"
-      end
-
-      href_value
-    end
-
     def render?
-      !skip_render
+      !(EnterpriseToken.hide_banners? || feature_available? || dismissed?)
+    end
+
+    def feature_available?
+      EnterpriseToken.allows_to?(feature_key)
+    end
+
+    def dismissed?
+      return false unless @dismissable
+
+      User.current.pref.dismissed_banner?(@dismiss_key)
     end
   end
 end

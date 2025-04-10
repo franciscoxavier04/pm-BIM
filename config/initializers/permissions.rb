@@ -101,6 +101,7 @@ Rails.application.reloader.to_prepare do
                        "projects/settings/general": %i[show],
                        "projects/settings/storage": %i[show],
                        "projects/settings/work_packages": %i[show],
+                       "projects/settings/work_packages/activities": %i[show update],
                        "projects/templated": %i[create destroy],
                        "projects/identifier": %i[show update]
                      },
@@ -135,7 +136,9 @@ Rails.application.reloader.to_prepare do
                      require: :member
 
       map.permission :view_project_phases,
-                     {},
+                     {
+                       "project_phases/hover_card": :show
+                     },
                      permissible_on: :project,
                      dependencies: :view_project,
                      visible: -> { OpenProject::FeatureDecisions.stages_and_gates_active? }
@@ -242,7 +245,7 @@ Rails.application.reloader.to_prepare do
                      {
                        versions: %i[index show status_by],
                        journals: %i[index],
-                       work_packages: %i[show index show_conflict_flash_message],
+                       work_packages: %i[show index show_conflict_flash_message share_upsale],
                        work_packages_api: [:get],
                        "work_packages/reports": %i[report report_details],
                        "work_packages/activities_tab": %i[index update_streams update_sorting update_filter],

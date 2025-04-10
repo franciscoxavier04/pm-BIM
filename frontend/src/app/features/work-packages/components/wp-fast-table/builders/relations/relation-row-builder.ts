@@ -72,7 +72,7 @@ public readonly injector:Injector,
       commonRowClassName,
 tableRowClassName,
 'issue',
-'wp-table--relations-aditional-row',
+'wp-table--relations-additional-row',
 identifier,
 `${identifier}-table`,
 relationGroupClass(from.id!),
@@ -97,7 +97,7 @@ relationGroupClass(from.id!),
     columnId:string,
   ):void {
     const relationLabel = document.createElement('span');
-    relationLabel.classList.add('relation-row--type-label');
+    relationLabel.classList.add('relation-row--type-label', 'badge');
     relationLabel.textContent = typeLabel;
 
     jRow.find(`.${relationCellClassName}`).empty();

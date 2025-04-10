@@ -358,10 +358,10 @@ uk:
           learn_about: "Дізнатися більше про нові функції"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_4":
+          "15_5":
             standard:
               new_features_html: >
-                Цей випуск включає багато нових функцій і покращень. <br> <ul class="%{list_styling_class}"> <li>Режим автоматичного планування.</li> <li>Налаштування результатів елемента порядку денного для нарад.</li> <li>Створення PDF-документів на основі опису пакета робіт.</li> <li>Зручніше керування великою кількістю проєктів завдяки покращеному перегляду списку проєктів.</li> <li>Згадування (@) користувачів у цитатах із відповідей на коментарі.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Filter for descendants (children and grandchildren) of work packages.</li> <li>Benefit from advanced accessibility in the date picker.</li> <li>See % Complete included in work package table sums.</li> <li>Include a column for children in work package tables.</li> <li>Better use the date picker in mobile screens.</li> <li>PDF exports matching configured form layout.</li> </ul>
     ical_sharing_modal:
       title: "Підписатися на календар"
       inital_setup_error_message: "Під час отримання даних сталася помилка."
@@ -631,9 +631,6 @@ uk:
         property_is: "через %{difference_in_days}."
         property_was: "%{difference_in_days} тому."
         property_is_deleted: "видалено."
-        upsale:
-          title: "Оповіщення про дати"
-          description: "Завдяки оповіщенням про дати ви завжди знатимете про заплановані дати початку або завершення, тож ніколи не пропускатимете важливі терміни та не забуватимете про них."
       center:
         label_actor_and: "і"
         and_more_users:
@@ -698,7 +695,6 @@ uk:
           date_alerts:
             title: "Оповіщення про дати"
             description: "Автоматичні сповіщення в разі наближення важливих дат для відкритих пакетів робіт, з якими ви пов’язані (виконавець, відповідальний або спостерігач)."
-            teaser_text: "Завдяки оповіщенням про дати ви завжди знатимете про заплановані дати початку або завершення, тож ніколи не пропускатимете важливі терміни та не забуватимете про них."
           overdue: Якщо прострочено
         project_specific:
           title: "Параметри сповіщень проєкту"
@@ -1049,8 +1045,6 @@ uk:
       sharing:
         title: "Надати доступ до пакета робіт"
         show_all_users: "Показувати всіх користувачів, яким надано доступ до пакета робіт"
-        upsale:
-          description: "Діліться пакетами робіт із користувачами, які не належать до учасників проєкту."
       table:
         configure_button: "Налаштуйте таблицю робочих пакетів"
         summary: "Таблиця з рядками пакетів робіт і стовпцями атрибутів пакетів робіт."
@@ -1085,10 +1079,6 @@ uk:
           manually: "Вручну"
           warning: "Ви втратите попереднє сортування при активації автоматичного сортування."
         columns_help_text: "Використовуйте поля введення вище, щоб додавати стовпці до свого подання таблиці. Ви можете перевпорядковувати стовпці перетягуванням."
-        upsale:
-          attribute_highlighting: "Потрібні певні робочі пакети, щоб виділитися зі скупчення?"
-          relation_columns: "Потрібно бачити відносини у списку робочих пакетів?"
-          check_out_link: "Ознайомтеся з версією Enterprise."
         relation_filters:
           filter_work_packages_by_relation_type: "Фільтрувати пакети робіт за типом зв’язку"
       tabs:
@@ -1308,9 +1298,7 @@ uk:
       clear: "Очистити"
       apply: "Застосувати"
       header_description: "Виділяйте зміни, внесені в цей список із будь-якого моменту часу в минулому."
-      enterprise_header_description: "Виділяйте зміни, внесені в цей список із будь-якого моменту часу в минулому за допомогою версії Enterprise Edition."
       show_changes_since: "Показувати зміни з"
-      baseline_comparison: "Порівняння з вихідним рівнем"
       help_description: "Контрольний часовий пояс для вихідного рівня."
       time_description: "За вашим місцевим часом: %{datetime}"
       time: "Час"
