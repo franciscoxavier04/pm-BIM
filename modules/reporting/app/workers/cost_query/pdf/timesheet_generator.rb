@@ -40,13 +40,15 @@ class CostQuery::PDF::TimesheetGenerator
   H1_FONT_SIZE = 26
   H1_MARGIN_BOTTOM = 2
   HR_MARGIN_BOTTOM = 16
+  TABLE_MARGIN_BOTTOM = 28
   TABLE_CELL_FONT_SIZE = 10
   TABLE_CELL_BORDER_COLOR = "BBBBBB"
   TABLE_CELL_PADDING = 4
   COMMENT_FONT_COLOR = "636C76"
   H2_FONT_SIZE = 20
   H2_MARGIN_BOTTOM = 10
-  SUM_TABLE_FIRST_COLUMN_WIDTH = 68
+  SUM_TABLE_FIRST_COLUMN_WIDTH = 90
+  SUM_TABLE_MAX_USER_COLUMNS = 6
 
   COLUMN_DATE_WIDTH = 66
   COLUMN_ACTIVITY_WIDTH = 100
@@ -362,7 +364,7 @@ class CostQuery::PDF::TimesheetGenerator
       current_table_height += grouped_row_height
     end
     write_grouped_row_table(current_table, true)
-    pdf.move_down(28)
+    pdf.move_down(TABLE_MARGIN_BOTTOM)
   end
 
   def write_grouped_row_table(grouped_rows, has_sum_row)
@@ -413,9 +415,9 @@ class CostQuery::PDF::TimesheetGenerator
 
     start_date, end_date = all_entries.map(&:spent_on).minmax
     users
-      .each_slice(6) do |users_chunk|
+      .each_slice(SUM_TABLE_MAX_USER_COLUMNS) do |users_chunk|
       write_sum_table!(users_chunk, start_date, end_date)
-      pdf.move_down(28)
+      pdf.move_down(TABLE_MARGIN_BOTTOM)
     end
 
     start_new_page_if_needed
@@ -445,7 +447,11 @@ class CostQuery::PDF::TimesheetGenerator
     end
     return nil unless row.any? { |column| !column.empty? }
 
-    [content: format_date(date)] + row
+    [format_date_with_weekday(date)] + row
+  end
+
+  def format_date_with_weekday(date)
+    "#{I18n.l(date.to_date, format: '%a')}, #{format_date(date)}"
   end
 
   def calc_sum_for_user_on_day(user, date)

@@ -149,13 +149,13 @@ RSpec.describe CostQuery::PDF::TimesheetGenerator do
       user.name,
       time_entry_user.name,
 
-      format_date(user_time_entry.spent_on),
+      generator.format_date_with_weekday(user_time_entry.spent_on),
       generator.format_hours(user_time_entry.hours), generator.format_hours(time_entry.hours + other_time_entry.hours),
 
-      format_date(time_entry_with_comment.spent_on),
+      generator.format_date_with_weekday(time_entry_with_comment.spent_on),
       generator.format_hours(time_entry_with_comment.hours),
 
-      format_date(time_entry_without_time.spent_on),
+      generator.format_date_with_weekday(time_entry_without_time.spent_on),
       generator.format_hours(time_entry_without_time.hours),
 
       I18n.t("export.timesheet.sums_hours"),
