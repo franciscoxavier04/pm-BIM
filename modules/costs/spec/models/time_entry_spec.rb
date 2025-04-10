@@ -533,23 +533,47 @@ RSpec.describe TimeEntry do
   end
 
   describe ".must_track_start_and_end_time?" do
-    context "with the allow setting enabled", with_settings: { allow_tracking_start_and_end_times: true } do
-      context "with the enforce setting enabled", with_settings: { enforce_tracking_start_and_end_times: true } do
-        it { expect(described_class).to be_must_track_start_and_end_time }
+    context "when the EnterpriseToken does not allow enforcement", with_ee: [] do
+      context "with the allow setting enabled", with_settings: { allow_tracking_start_and_end_times: true } do
+        context "with the enforce setting enabled", with_settings: { enforce_tracking_start_and_end_times: true } do
+          it { expect(described_class).not_to be_must_track_start_and_end_time }
+        end
+
+        context "with the enforce setting disabled", with_settings: { enforce_tracking_start_and_end_times: false } do
+          it { expect(described_class).not_to be_must_track_start_and_end_time }
+        end
       end
 
-      context "with the enforce setting disabled", with_settings: { enforce_tracking_start_and_end_times: false } do
-        it { expect(described_class).not_to be_must_track_start_and_end_time }
+      context "with the allow setting disabled", with_settings: { allow_tracking_start_and_end_times: false } do
+        context "with the enforce setting enabled", with_settings: { enforce_tracking_start_and_end_times: true } do
+          it { expect(described_class).not_to be_must_track_start_and_end_time }
+        end
+
+        context "with the enforce setting disabled", with_settings: { enforce_tracking_start_and_end_times: false } do
+          it { expect(described_class).not_to be_must_track_start_and_end_time }
+        end
       end
     end
 
-    context "with the allow setting disabled", with_settings: { allow_tracking_start_and_end_times: false } do
-      context "with the enforce setting enabled", with_settings: { enforce_tracking_start_and_end_times: true } do
-        it { expect(described_class).not_to be_must_track_start_and_end_time }
+    context "when the EnterpriseToken allows enforcement", with_ee: [:time_entry_time_restrictions] do
+      context "with the allow setting enabled", with_settings: { allow_tracking_start_and_end_times: true } do
+        context "with the enforce setting enabled", with_settings: { enforce_tracking_start_and_end_times: true } do
+          it { expect(described_class).to be_must_track_start_and_end_time }
+        end
+
+        context "with the enforce setting disabled", with_settings: { enforce_tracking_start_and_end_times: false } do
+          it { expect(described_class).not_to be_must_track_start_and_end_time }
+        end
       end
 
-      context "with the enforce setting disabled", with_settings: { enforce_tracking_start_and_end_times: false } do
-        it { expect(described_class).not_to be_must_track_start_and_end_time }
+      context "with the allow setting disabled", with_settings: { allow_tracking_start_and_end_times: false } do
+        context "with the enforce setting enabled", with_settings: { enforce_tracking_start_and_end_times: true } do
+          it { expect(described_class).not_to be_must_track_start_and_end_time }
+        end
+
+        context "with the enforce setting disabled", with_settings: { enforce_tracking_start_and_end_times: false } do
+          it { expect(described_class).not_to be_must_track_start_and_end_time }
+        end
       end
     end
   end
