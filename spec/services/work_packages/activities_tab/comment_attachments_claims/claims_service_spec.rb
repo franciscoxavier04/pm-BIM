@@ -34,6 +34,7 @@ require "services/base_services/behaves_like_update_service"
 RSpec.describe WorkPackages::ActivitiesTab::CommentAttachmentsClaims::ClaimsService do
   shared_let(:user) { create(:user) }
   shared_let(:work_package) { create(:work_package, author: user) }
+  shared_let(:journal) { create(:work_package_journal, journable: work_package, version: 2, notes: "") }
 
   it_behaves_like "BaseServices update service" do
     let(:model_instance) { build_stubbed(:work_package_journal, journable: work_package, version: 2, notes: "") }
@@ -43,20 +44,22 @@ RSpec.describe WorkPackages::ActivitiesTab::CommentAttachmentsClaims::ClaimsServ
 
   describe "#call" do
     context "when the journal has no notes" do
-      let(:journal_without_notes) { create(:work_package_journal, journable: work_package, version: 2, notes: "") }
-
       subject(:attachment_claims_service) do
         described_class.new(
           user:,
-          model: journal_without_notes
+          model: journal
         )
+      end
+
+      before do
+        journal.update!(notes: "")
       end
 
       it "does not claim any attachments" do
         claim_result = attachment_claims_service.call
         expect(claim_result).to be_success
 
-        expect(journal_without_notes.reload.attachments).to be_empty
+        expect(journal.reload.attachments).to be_empty
       end
     end
 
@@ -64,8 +67,6 @@ RSpec.describe WorkPackages::ActivitiesTab::CommentAttachmentsClaims::ClaimsServ
       shared_let(:attachment1) { create(:attachment, author: user, container: nil) }
       shared_let(:attachment2) { create(:attachment, author: user, container: nil) }
       shared_let(:attachment3) { create(:attachment, author: user, container: nil) }
-
-      let(:journal_with_attachments) { create(:work_package_journal, journable: work_package, version: 3, notes:) }
 
       let(:notes) do
         <<~HTML
@@ -88,15 +89,19 @@ RSpec.describe WorkPackages::ActivitiesTab::CommentAttachmentsClaims::ClaimsServ
       subject(:attachment_claims_service) do
         described_class.new(
           user:,
-          model: journal_with_attachments
+          model: journal
         )
+      end
+
+      before do
+        journal.update!(notes:)
       end
 
       it "claims the attachments" do
         claim_result = attachment_claims_service.call
         expect(claim_result).to be_success
 
-        expect(journal_with_attachments.reload.attachments).to contain_exactly(attachment1, attachment2, attachment3)
+        expect(journal.reload.attachments).to contain_exactly(attachment1, attachment2, attachment3)
       end
     end
   end
