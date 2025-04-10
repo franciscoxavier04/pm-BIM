@@ -58,10 +58,8 @@ render(Primer::Alpha::TabPanels.new(label: I18n.t(:project_module_costs))) do |c
 
           form.check_box(name: :allow_tracking_start_and_end_times)
 
-          unless EnterpriseToken.allows_to?(:time_entry_time_restrictions)
-            form.html_content do
-              render(::EnterpriseEdition::BannerComponent.new(:time_entry_time_restrictions, dismissable: false))
-            end
+          form.html_content do
+            render(::EnterpriseEdition::BannerComponent.new(:time_entry_time_restrictions, dismissable: false))
           end
           form.check_box(name: :enforce_tracking_start_and_end_times, disabled: !EnterpriseToken.allows_to?(:time_entry_time_restrictions))
 
