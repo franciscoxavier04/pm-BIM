@@ -123,7 +123,15 @@ module API
             "#{root}/attachments/#{id}/content"
           end
 
+          def self.attachments_by_activity_bcf_comment(id)
+            attachments_by_activity(id)
+          end
+
           def self.attachments_by_activity_comment(id)
+            attachments_by_activity(id)
+          end
+
+          def self.attachments_by_activity(id)
             "#{root}/activities/#{id}/attachments"
           end
 
