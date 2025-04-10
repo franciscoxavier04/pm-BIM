@@ -195,7 +195,7 @@ RSpec.describe "SAML administration CRUD",
   context "without EE", without_ee: %i[sso_auth_providers] do
     it "renders the upsale page" do
       visit "/admin/saml/providers"
-      expect(page).to have_text "SAML identity providers is an Enterprise  add-on"
+      expect(page).to have_text "Available only through the Premium enterprise plan"
     end
   end
 end

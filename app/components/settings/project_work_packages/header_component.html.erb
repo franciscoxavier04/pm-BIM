@@ -46,6 +46,9 @@ See COPYRIGHT and LICENSE files for more details.
           tab.with_text { t("attributes.custom_values") }
         end
       end
+      tab_nav.with_tab(selected: selected?(:activities), href: project_settings_work_packages_activities_path) do |tab|
+        tab.with_text { t("label_activity") }
+      end
     end
   end
 %>

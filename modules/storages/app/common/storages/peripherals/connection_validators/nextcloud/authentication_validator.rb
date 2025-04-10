@@ -52,7 +52,7 @@ module Storages
           end
 
           def oauth_token
-            if OAuthClientToken.where(user: @user, oauth_client: @storage.oauth_client).any?
+            if OAuthClientToken.for_user_and_client(@user, @storage.oauth_client).exists?
               pass_check(:existing_token)
             else
               warn_check(:existing_token, message(:oauth_token_missing), halt_validation: true)

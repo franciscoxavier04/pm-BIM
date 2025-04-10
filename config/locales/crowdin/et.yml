@@ -28,14 +28,14 @@ et:
       activity_tab:
         no_results_title_text: No activity to display
         no_results_description_text: 'Choose "Show everything" to show all activity and comments'
-        label_activity_show_all: "Show everything"
-        label_activity_show_only_comments: "Show comments only"
-        label_activity_show_only_changes: "Show changes only"
-        label_sort_asc: "Newest at the bottom"
-        label_sort_desc: "Newest on top"
+        label_activity_show_all: "Näita kõike"
+        label_activity_show_only_comments: "Näita ainult kommentaare"
+        label_activity_show_only_changes: "Näita ainult muudatusi"
+        label_sort_asc: "Uuemad allpool"
+        label_sort_desc: "Uusimad ülevalpool"
         label_type_to_comment: "Add a comment. Type @ to notify people."
         label_submit_comment: "Submit comment"
-        label_who: Who?
+        label_who: Kes?
         changed_on: "changed on"
         created_on: "created this on"
         changed: "changed"
@@ -51,21 +51,18 @@ et:
     custom_styles:
       color_theme: "Värviteema"
       color_theme_custom: "(Kohandatud)"
-      tab_interface: "Interface"
-      tab_branding: "Branding"
-      tab_pdf_export_styles: "PDF export styles"
+      tab_interface: "Kasutajaliides"
+      tab_branding: "Firma sümboolika"
+      tab_pdf_export_styles: "PDF-i eksportimise stiilid"
       colors:
-        primary-button-color: "Primary button"
-        accent-color: "Accent"
-        header-bg-color: "Header background"
+        primary-button-color: "Peamine nupp"
+        accent-color: "Põhivärv"
+        header-bg-color: "Päise taust"
         header-item-bg-hover-color: "Header background on hover"
         main-menu-bg-color: "Main menu background"
         main-menu-bg-selected-background: "Main menu when selected"
         main-menu-bg-hover-background: "Main menu on hover"
       custom_colors: "Custom colors"
-      customize: "Customize your OpenProject installation with your own logo and colors."
-      enterprise_notice: "As a special 'Thank you!' for their financial contribution to develop OpenProject, this tiny add-on is only available for Enterprise edition support subscribers."
-      enterprise_more_info: "Note: the used logo will be publicly accessible."
       manage_colors: "Edit color select options"
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
@@ -88,8 +85,8 @@ et:
       required_for_feature: "This add-on is only available with an active Enterprise edition support token."
       enterprise_link: "For more information, click here."
       start_trial: "Start free trial"
-      book_now: "Book now"
-      get_quote: "Get a quote"
+      book_now: "Broneeri kohe"
+      get_quote: "Küsi pakkumist"
       buttons:
         upgrade: "Upgrade now"
         contact: "Contact us for a demo"
@@ -190,34 +187,31 @@ et:
       no_results_title_text: There are currently no posts for the forum.
   colors:
     index:
-      no_results_title_text: There are currently no colors.
-      no_results_content_text: Create a new color
+      no_results_title_text: Hetkel värve pole.
+      no_results_content_text: Loo uus värv
       label_new_color: "Uus värv"
     new:
-      label_new_color: "New Color"
+      label_new_color: "Uus värv"
     edit:
-      label_edit_color: "Edit Color"
+      label_edit_color: "Muuda värvi"
     form:
       label_new_color: "Uus värv"
       label_edit_color: "Muuda värvi"
-    label_no_color: "No color"
+    label_no_color: "Värvi pole"
     label_properties: "Atribuudid"
     label_really_delete_color: >
       Kas oled kindel, et tahad seda värvi kustutada? Tüübid, mis seda värvi kasutavad, jäävad alles.
   custom_actions:
     actions:
-      name: "Actions"
-      add: "Add action"
+      name: "Tegevused"
+      add: "Lisa tegevus"
       assigned_to:
         executing_user_value: "(Assign to executing user)"
-    conditions: "Conditions"
-    plural: "Custom actions"
-    new: "New custom action"
+    conditions: "Tingimused"
+    plural: "Kohandatud toimingud"
+    new: "Uus kohandatud toiming"
     edit: "Edit custom action %{name}"
     execute: "Execute %{name}"
-    upsale:
-      title: "Custom actions"
-      description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
   custom_fields:
     admin:
       custom_field_projects:
@@ -247,8 +241,6 @@ et:
           zero: no sub-items
           one: 1 sub-item
           other: "%{count} sub-items"
-    upsale:
-      custom_field_format_hierarchy: "Need a hierarchy in your custom fields for work packages?"
     text_add_new_custom_field: >
       To add new custom fields to a project you first need to create them before you can add them to this project.
     is_enabled_globally: "Is enabled globally"
@@ -293,8 +285,8 @@ et:
     rules:
       depth: "Depth"
       item: "Item"
-      label: "Label"
-      short: "Short name"
+      label: "Silt"
+      short: "Lühinimi"
       parent: "Pärineb teemast"
       blueprint: "Pattern blueprint"
   global_search:
@@ -316,8 +308,8 @@ et:
   projects:
     copy:
       #Contains custom strings for options when copying a project that cannot be found elsewhere.
-      members: "Project members"
-      overviews: "Project overview"
+      members: "Projekti liikmed"
+      overviews: "Projekti ülevaade"
       queries: "Work packages: saved views"
       wiki_page_attachments: "Wiki pages: attachments"
       work_package_attachments: "Work packages: attachments"
@@ -340,46 +332,46 @@ et:
         label: Project name filter
         placeholder: Search by project name
     lists:
-      active: "Active projects"
+      active: "Aktiivsed projektid"
       my: "Minu projektid"
-      favored: "Favorite projects"
-      archived: "Archived projects"
-      shared: "Shared project lists"
+      favored: "Lemmikprojektid"
+      archived: "Arhiveeritud projektid"
+      shared: "Jagatud projektide nimekiri"
       my_lists: "My project lists"
       new:
-        placeholder: "New project list"
+        placeholder: "Uute projektide nimekiri"
       delete_modal:
-        title: "Delete project list"
-        heading: "Delete this project list?"
+        title: "Kustuta projektide nimekiri"
+        heading: "Kas kustutada see projektide nimekiri?"
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
-      change_identifier: Change identifier
+      change_identifier: Muuda identifikaatorit
       actions:
-        label_enable_all: "Enable all"
-        label_disable_all: "Disable all"
+        label_enable_all: "Luba kõik"
+        label_disable_all: "Keela kõik"
       activities:
-        no_results_title_text: There are currently no activities available.
+        no_results_title_text: Ühtegi toimingut pole praegu saadaval.
       forums:
-        no_results_title_text: There are currently no forums for the project.
+        no_results_title_text: Projektis pole praegu ühtegi foorumit.
         no_results_content_text: Loo uus värv
       categories:
-        no_results_title_text: There are currently no work package categories.
+        no_results_title_text: Praegu pole ühtegi tööpaketti.
         no_results_content_text: Create a new work package category
       custom_fields:
         no_results_title_text: There are currently no custom fields available.
       life_cycle:
         header:
-          title: "Project life cycle"
+          title: "Projekti elutsükkel"
           description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
-        non_defined: "No phases are currently defined."
-        section_header: "Phases"
+        non_defined: "Ühtegi etappi pole praegu määratud."
+        section_header: "Etapid"
         step:
           use_in_project: "Use %{step} in this project"
         filter:
-          label: "Search project phase"
+          label: "Otsi projekti etappi"
       project_custom_fields:
         header:
-          title: "Project attributes"
+          title: "Projekti omadused"
           description_html: 'These project attributes will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> under their respective sections. You can enable or disable individual attributes. Project attributes and sections are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. '
         filter:
           label: "Search project attribute"
@@ -396,7 +388,7 @@ et:
           enable_type_in_project: 'Luba kasutada tüüpi "%{type}" projektis'
       versions:
         no_results_title_text: There are currently no versions for the project.
-        no_results_content_text: Create a new version
+        no_results_content_text: Loo uus versioon
       storage:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
       work_package_priorities:
@@ -515,9 +507,9 @@ et:
       remembered_devices: "Remembered devices"
       remembered_devices_caption: "A list of all devices that logged into this account using the 'Stay logged in' option."
       session_name: "%{browser_name} %{browser_version} on %{os_name}"
-      browser: "Browser"
-      device: "Device / OS"
-      unknown_browser: "unknown browser"
+      browser: "Veebilehitseja"
+      device: "Seade / OS"
+      unknown_browser: "tundmatu veebilehitseja"
       unknown_os: "unknown operating system"
       current: "Current session"
       title: "Session management"
@@ -544,10 +536,6 @@ et:
         All occurrences of the placeholder user (e.g., as assignee, responsible or other user values) will be reassigned to an account called "Deleted user". As the data of every deleted account is reassigned to this account it will not be possible to distinguish the data the user created from the data of another deleted account.
       irreversible: "This action is irreversible"
       confirmation: "Enter the placeholder user name %{name} to confirm the deletion."
-    upsale:
-      title: Placeholder users
-      description: >
-        Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
   prioritiies:
     edit:
       priority_color_text: |
@@ -591,21 +579,19 @@ et:
       headers:
         is_default: "Vaikimisi"
         is_closed: "Suletud"
-        is_readonly: "Read-only"
-        excluded_from_totals: "Excluded from totals"
+        is_readonly: "Kirjutuskaitstud"
+        excluded_from_totals: "Jäetakse koguarvust välja"
   themes:
-    dark: "Dark"
-    light: "Light"
-    light_high_contrast: "Light high contrast"
+    dark: "Tume"
+    light: "Hele"
+    light_high_contrast: "Hele kõrge kontrastiga"
   types:
     index:
-      no_results_title_text: There are currently no types.
-      no_results_content_text: Create a new type
+      no_results_title_text: Ühtegi liiki pole.
+      no_results_content_text: Loo uus liik
     edit:
       form_configuration:
         tab: "Vormi seadistamine"
-      more_info_text_html: >
-        Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
       projects:
         tab: "Projektid"
         enabled_projects: "Lubatud projektid"
@@ -624,18 +610,18 @@ et:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Tööpakett"
+            parent: "Peamine"
+            project: "Projekt"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
-        tab: "Generate PDF"
+        tab: "Genereeri PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
         pdf_export_templates:
           label: "PDF Export templates"
           actions:
-            label_enable_all: "Enable all"
-            label_disable_all: "Disable all"
+            label_enable_all: "Luba kõik"
+            label_disable_all: "Keela kõik"
   versions:
     overview:
       work_packages_in_archived_projects: "The version is shared with archived projects which still have work packages assigned to this version. These are counted, but will not appear in the linked views."
@@ -653,7 +639,7 @@ et:
     datepicker_modal:
       banner:
         description:
-          automatic_mobile: "Start date derived."
+          automatic_mobile: "Alguse kuupäev tuletati."
           click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
           manual_mobile: "Ignoring relations."
           manual_gap_between_predecessors: "There is a gap between this and all predecessors."
@@ -672,18 +658,18 @@ et:
         title: "Working days only"
       mode:
         title: "Scheduling mode"
-        automatic: "Automatic"
-        manual: "Manual"
-      show_relations: "Show relations"
+        automatic: "Automaatne"
+        manual: "Käsitsi"
+      show_relations: "Näita seoseid"
       tabs:
-        aria_label: "Datepicker tabs"
+        aria_label: "Kuupäeva valija vahekaardid"
         children: "Lapsed"
         dates: "Kuupäevad"
-        predecessors: "Predecessors"
-        successors: "Successors"
+        predecessors: "Eeltingimused"
+        successors: "Järgijad"
         blankslate:
           predecessors:
-            title: "No predecessors"
+            title: "Eeltingimusi pole"
             description: "This work package does not have any predecessors."
           successors:
             title: "No successors"
@@ -735,14 +721,14 @@ et:
     index:
       action_bar_title: "Add relations to other work packages to create a link between them."
       no_results_title_text: There are currently no relations available.
-      blankslate_heading: "No relations"
+      blankslate_heading: "Seoseid pole"
       blankslate_description: "This work package does not have any relations yet."
     label_add_child_button: "Child"
-    label_add_x: "Add %{x}"
-    label_edit_x: "Edit %{x}"
-    label_add_description: "Add description"
+    label_add_x: "Lisa %{x}"
+    label_edit_x: "Muuda %{x}"
+    label_add_description: "Lisa kirjeldus"
     lag:
-      subject: "Lag"
+      subject: "Viivitus"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
@@ -783,8 +769,8 @@ et:
       label_duplicated_by_plural: "dubleeris"
       duplicated_by_description: "The related work package is a copy of this"
       duplicated_description: "The related work package is a copy of this"
-      label_includes_singular: "includes"
-      label_includes_plural: "includes"
+      label_includes_singular: "sisaldab"
+      label_includes_plural: "sisaldab"
       includes_description: "Marks the related work package as including this one with no additional effect"
       label_partof_singular: "part of"
       label_partof_plural: "part of"
@@ -792,8 +778,8 @@ et:
       label_part_of_plural: "part of"
       partof_description: "Marks the related work package as being part of this one with no additional effect"
       part_of_description: "Marks the related work package as being part of this one with no additional effect"
-      label_requires_singular: "requires"
-      label_requires_plural: "requires"
+      label_requires_singular: "nõuab"
+      label_requires_plural: "nõuab"
       requires_description: "Marks the related work package as a requirement to this one"
       label_required_singular: "required by"
       label_required_plural: "required by"
@@ -850,13 +836,13 @@ et:
         attribute_name: "Atribuut"
         help_text: "Abitekst"
       capability:
-        context: "Context"
+        context: "Kontekst"
       changeset:
         repository: "Hoidla"
       comment:
         commented: "Kommenteeritud" #an object that this comment belongs to
       custom_action:
-        actions: "Actions"
+        actions: "Tegevused"
       custom_field:
         allow_non_open_versions: "Allow non-open versions"
         default_value: "Vaikeväärtus"
@@ -872,7 +858,7 @@ et:
         possible_values: "Võimalikud väärtused"
         regexp: "Regulaaravaldis"
         searchable: "Otsitav"
-        admin_only: "Admin-only"
+        admin_only: "Ainult admin"
       custom_value:
         value: "Väärtus"
       doorkeeper/application:
@@ -933,17 +919,17 @@ et:
         public_value:
           title: "Nähtavus"
           true: "public"
-          false: "private"
+          false: "privaatne"
         queries: "Päringuid"
         status_code: "Projekti olek"
-        status_explanation: "Project status description"
+        status_explanation: "Projekti staatuse kirjeldus"
         status_codes:
-          not_started: "Not started"
-          on_track: "On track"
-          at_risk: "At risk"
-          off_track: "Off track"
+          not_started: "Pole alustatud"
+          on_track: "Graafikus"
+          at_risk: "On ohus"
+          off_track: "Pole graafikus"
           finished: "Lõpetatud"
-          discontinued: "Discontinued"
+          discontinued: "Lopetatud"
         templated: "Template project"
         templated_value:
           true: "marked as template"
@@ -953,19 +939,19 @@ et:
         work_packages: "Teemad"
       project_custom_field:
         is_required: "Required for all projects"
-        custom_field_section: Section
+        custom_field_section: Sektsioon
       project/phase:
-        date_range: "Date range"
-        definition: "Definition"
+        date_range: "Kuupäevavahemik"
+        definition: "Definitsioon"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
-        start_gate: "Start phase gate"
-        start_gate_name: "Start phase gate name"
-        finish_gate: "Finish phase gate"
-        finish_gate_name: "Finish phase gate name"
+        name: "Nimi"
+        color: "Värv"
+        start_gate: "Etapi alguse värav"
+        start_gate_name: "Etapi alguse värava nimi"
+        finish_gate: "Etapi lõpu värav"
+        finish_gate_name: "Etapi lõpu värava nimi"
       query:
-        sums: "Sums"
+        sums: "Summad"
         columns: "Väljad"
         column_names: "Väljad"
         relations_to_type_column: "Relations to %{type}"
@@ -974,8 +960,8 @@ et:
         group_by: "Grupeeri tulemused"
         sort_by: "Sort results by"
         filters: "Filtrid"
-        timeline_labels: "Timeline labels"
-        timeline_visible: "Show Gantt chart"
+        timeline_labels: "Ajatelje sildid"
+        timeline_visible: "Näita gantt diagrammi"
         timeline_zoom_level: "Gantt chart zoom level"
         timestamps: "Baseline timestamps"
         sort_criteria: "Sort criteria"
@@ -983,24 +969,24 @@ et:
         highlighting_mode: "Highlight mode"
         display_representation: "Display mode"
         show_hierarchies: "Display mode"
-        starred: "Favorite"
-        hidden: "Hidden"
+        starred: "Lemmik"
+        hidden: "Peidetud"
         manual_sorting: "Manual sort order"
         ordered_work_packages: "Work packages order"
         include_subprojects: "Include subprojects"
         results: "Tulemused"
       relation:
-        lag: "Lag"
+        lag: "Viivitus"
         from: "Seotud teema"
         to: "Seotud teema"
         relation_type: "Relation type"
       reminder:
-        remindable: "Reminded object"
+        remindable: "Meeldetuletatud objekt"
         remind_at: "Remind at"
         remind_at_date: "Kuupäev"
         remind_at_time: "Aeg"
       reminder_notification:
-        notification: "Notification"
+        notification: "Märguanne"
       repository:
         url: "URL"
       role:
@@ -1009,7 +995,7 @@ et:
         is_closed: "Teema on suletud"
         is_readonly: "Work package read-only"
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
-        default_done_ratio: "% Complete"
+        default_done_ratio: "% valmis"
       token/ical:
         calendar: "Kalender"
         ical_token_query_assignment: "Query assignment"
@@ -1026,10 +1012,10 @@ et:
         is_default: "Activated for new projects by default"
         is_milestone: "on verstapost"
         color: "Värv"
-        patterns: "Patterns"
+        patterns: "Mustrid"
       remote_identity:
         auth_source: "Auth Source"
-        integration: "Integration"
+        integration: "Integratsioon"
         user: "Kasutaja"
       user:
         admin: "Administraator"
@@ -1049,10 +1035,11 @@ et:
         consented_at: "Consented at"
       user_preference:
         comments_sorting: "Kuva kommentaare"
+        dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Hõlbustusfunktsioonidega režiim"
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
-        theme: "Mode"
+        theme: "Režiim"
         time_zone: "Ajavöönd"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
@@ -1080,7 +1067,7 @@ et:
         end_deletion: "End of the deletion"
         ignore_non_working_days: "Ignore non working days"
         include_non_working_days:
-          title: "Working days"
+          title: "Tööpäevad"
           false: "working days only"
           true: "include non-working days"
         journal_restricted: Restricted Journal
@@ -1090,7 +1077,7 @@ et:
         parent_work_package: "Pärineb teemast"
         priority: "Prioriteet"
         progress: "% Complete"
-        readonly: "Read only"
+        readonly: "Kirjutuskaitstud"
         remaining_hours: "Remaining work"
         remaining_time: "Remaining work"
         shared_with_users: "Shared with"
@@ -1145,8 +1132,8 @@ et:
         not_available: "is not available due to a system configuration."
         not_deletable: "cannot be deleted."
         not_current_user: "is not the current user."
-        not_found: "not found."
-        not_a_date: "is not a valid date."
+        not_found: "ei leitud."
+        not_a_date: "pole korrektne kuupäev."
         not_a_datetime: "is not a valid date time."
         not_a_number: "pole arv."
         not_allowed: "is invalid because of missing permissions."
@@ -1304,6 +1291,10 @@ et:
             values:
               inclusion: "filter has invalid values."
               format: "%{message}"
+        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+          attributes:
+            values:
+              single_value_requirement: "must be a single work package"
         relation:
           typed_dag:
             circular_dependency: "The relationship creates a circle of relationships."
@@ -1964,17 +1955,78 @@ et:
   #Text direction: Left-to-Right (ltr) or Right-to-Left (rtl)
   direction: vasakult paremale
   ee:
+    features:
+      baseline_comparison: Baseline Comparisons
+      board_view: Advanced Boards
+      conditional_highlighting: Conditional Highlighting
+      comments_with_restricted_visibility: Comments With Restricted Visibility
+      custom_actions: Custom Actions
+      custom_field_hierarchies: Custom fields of type hierarchy
+      customize_life_cycle: Customize Life Cycle
+      date_alerts: Date Alerts
+      define_custom_style: Custom theme and logo
+      edit_attribute_groups: Edit Attribute Groups
+      gantt_pdf_export: Gantt PDF Export
+      grid_widget_wp_graph: Grid Widget Work Package Graph
+      ldap_groups: LDAP users and group sync
+      one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+      placeholder_users: Placeholder Users
+      project_list_sharing: Project List Sharing
+      readonly_work_packages: Readonly Work Packages
+      sso_auth_providers: Single sign-on
+      team_planner_view: Team Planner View
+      two_factor_authentication: 2FA Authentication
+      virus_scanning: Antivirus Scanning
+      work_package_query_relation_columns: Work Package Query Relation Columns
+      work_package_sharing: Share work packages with external users
+      work_package_subject_generation: Work Package Subject Generation
     upsale:
       title: "Enterprise add-on"
+      plan_title: "Enterprise %{plan} add-on"
+      plan_name: "%{plan} enterprise plan"
+      plan_text_html: "Available only through the %{plan_name}."
       link_title: "Lisainfo"
-      automatic_subject_generation:
+      hide_banner: "Hide this banner"
+      baseline_comparison:
+        description: Highlight changes made to this list since any point in the past.
+      work_package_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
         description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
-      form_configuration:
-        description: "Customize the form configuration with these additional add-ons:"
-        add_groups: "Add new attribute groups"
-        rename_groups: "Rename attributes groups"
+      conditional_highlighting:
+        description: "Need certain work packages to stand out from the mass? Use conditional highlighting in the work packages table."
+      work_package_query_relation_columns:
+        description: "Need to see relations or child elements in the work package list?"
+      edit_attribute_groups:
+        description: "Customize form configuration with these additional add-ons:"
+        features:
+          groups: "Add new attribute groups"
+          rename: "Rename attribute groups"
+          related: "Add a table of related work packages"
+      readonly_work_packages:
+        description: "Mark work packages as read-only for specific statuses."
+      custom_field_hierarchies:
+        description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
+      date_alerts:
+        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+      work_package_sharing:
+        description: "Share work packages with users who are not members of the project."
+      define_custom_style:
+        title: "Custom color theme and logo"
+        more_info: "Note: the used logo will be publicly accessible."
+        description: Customize your OpenProject installation with your own logo and colors.
+      custom_actions:
+        title: "Custom actions"
+        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+      virus_scanning:
+        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
+      placeholder_users:
+        title: Placeholder users
+        description: >
+          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
+      comments_with_restricted_visibility:
+        title: "For your eyes only"
+        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly. Available only through the enterprise professional plan."
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Teemade prioriteedid"
   enumeration_reported_project_statuses: "Esitatud projekti olek"
@@ -3239,6 +3291,7 @@ et:
   notice_successful_delete: "Kustutamine õnnestus."
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Uuendamine õnnestus."
+  notice_unsuccessful_update: "Update failed."
   notice_successful_update_custom_fields_added_to_project: |
     Successful update. The custom fields of the activated types are automatically activated
     on the work package form. <a href="%{url}" target="_blank">See more</a>.
@@ -3733,8 +3786,6 @@ et:
         Remaining files have been scanned. There are %{file_count} in quarantine. You are being redirected to the quarantine page. Use this page to delete or override quarantined files.
       remaining_rescanned_files: >
         Virus scanning has been enabled successfully. There are %{file_count} that were uploaded previously and still need to be scanned. This process has been scheduled in the background. The files will remain accessible during the scan.
-      upsale:
-        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       actions:
         delete: "Delete the file"
         quarantine: "Quarantine the file"
@@ -3820,6 +3871,9 @@ et:
       section_holidays_and_closures: "Holidays and closures"
     work_packages:
       not_allowed_text: "You do not have the necessary permissions to view this page."
+      activities:
+        enable_comments_with_restricted_visibility: "Enable restricted visibility comments"
+        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to select roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Plain text"
@@ -3855,8 +3909,6 @@ et:
     When using custom fields: Keep in mind that custom fields need to be activated per project, too.
   text_custom_field_hint_activate_per_project_and_type: >
     Custom fields need to be activated per work package type and per project.
-  text_wp_status_read_only_html: >
-    The Enterprise edition will add these additional add-ons for work packages' statuses fields: <br> <ul> <li><b>Allow to mark work packages to read-only for specific statuses</b></li> </ul>
   text_project_custom_field_html: >
     The Enterprise edition will add these additional add-ons for projects' custom fields: <br> <ul> <li><b>Add custom fields for projects to your Project list to create a project portfolio view</b></li> </ul>
   text_custom_logo_instructions: >
@@ -4401,27 +4453,3 @@ et:
     description: "Adds the OmniAuth SAML provider to OpenProject"
   enterprise_plans:
     legacy_enterprise: "Enterprise Plan"
-  enterprise_features:
-    baseline_comparison: Baseline Comparison
-    board_view: Board View
-    conditional_highlighting: Conditional Highlighting
-    custom_actions: Custom Actions
-    custom_field_hierarchies: Custom Field Hierarchies
-    customize_life_cycle: Customize Life Cycle
-    date_alerts: Date Alerts
-    define_custom_style: Define Custom Style
-    edit_attribute_groups: Edit Attribute Groups
-    gantt_pdf_export: Gantt PDF Export
-    grid_widget_wp_graph: Grid Widget Work Package Graph
-    ldap_groups: LDAP Groups
-    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
-    placeholder_users: Placeholder Users
-    project_list_sharing: Project List Sharing
-    readonly_work_packages: Readonly Work Packages
-    sso_auth_providers: SSO Auth Providers
-    team_planner_view: Team Planner View
-    two_factor_authentication: Two-Factor Authentication
-    virus_scanning: Attachment Virus Scanning
-    work_package_query_relation_columns: Work Package Query Relation Columns
-    work_package_sharing: Work Package Sharing
-    work_package_subject_generation: Work Package Subject Generation

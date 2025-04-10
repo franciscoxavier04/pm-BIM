@@ -93,7 +93,6 @@ export class QueryFilterComponent implements OnInit {
     readonly schemaCache:SchemaCacheService,
     readonly I18n:I18nService,
     readonly currentProject:CurrentProjectService,
-    readonly bannerService:BannersService,
   ) {
   }
 
@@ -116,7 +115,6 @@ export class QueryFilterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.eeShowBanners = this.bannerService.eeShowBanners;
     this.availableOperators = this.schemaCache.of(this.filter).availableOperators;
     this.showValuesInput = this.showValues();
     this.baselineIncompatibleFilter = this.wpTableBaseline.isActive() && this.wpTableBaseline.isIncompatibleFilter(this.filter.id);
