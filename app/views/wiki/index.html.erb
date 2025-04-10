@@ -26,18 +26,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
-
-<% if @related_page %>
-  <% breadcrumb_for_page(@related_page, t(:label_table_of_contents)) %>
-<% else %>
-  <% breadcrumb_paths(t(:label_table_of_contents)) %>
-<% end %>
-
-<%= toolbar title: t(:label_wiki_toc) do %>
-  <%= content_tag(:li, watcher_link(@wiki, User.current), class: "toolbar-item") %>
-<% end %>
-
 <% html_title t(:label_wiki_toc) %>
+
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { t(:label_wiki_toc) }
+    header.with_breadcrumbs(
+      breadcrumb_for_page(@related_page, t(:label_table_of_contents))
+    )
+    watcher_action_button(header, @wiki)
+  end
+%>
 
 <div class="wiki-content">
   <%= render_page_hierarchy(@pages_by_parent_id, nil, timestamp: true) %>
