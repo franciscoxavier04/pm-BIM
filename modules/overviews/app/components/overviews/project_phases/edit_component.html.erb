@@ -7,19 +7,14 @@
       method: :put,
       data: {
         controller: "overview--project-life-cycles-form",
-        "overview--project-life-cycles-form-url-value": project_life_cycles_form_path(project_id: model.id),
+        "overview--project-life-cycles-form-url-value": preview_project_phase_path(model),
         "application-target": "dynamic",
         turbo: true,
         turbo_stream: true,
         "test-selector": "async-dialog-content"
-      },
-      url: update_project_life_cycles_path(project_id: model.id)
+      }
     ) do |f|
-      render(Primer::Forms::SpacingWrapper.new) do
-        f.fields_for(:available_phases) do |life_cycle_form|
-          render(Projects::LifeCycles::Form.new(life_cycle_form))
-        end
-      end
+      render(Projects::LifeCycles::Form.new(f))
     end
   end
 %>

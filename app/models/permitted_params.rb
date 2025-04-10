@@ -289,10 +289,8 @@ class PermittedParams
     whitelist.merge(custom_field_values(:project))
   end
 
-  def project_phases
-    params.require(:project).permit(
-      available_phases_attributes: %i[id date date_range]
-    )
+  def project_phase
+    params.require(:project_phase).permit(%i[id date_range])
   end
 
   def project_custom_field_project_mapping

@@ -28,20 +28,5 @@
 
 module ProjectLifeCycleSteps
   class PreviewAttributesService < ::BaseServices::SetAttributes
-    def perform(*)
-      super.tap do |service_call|
-        clear_unchanged_fields(service_call)
-      end
-    end
-
-    private
-
-    def clear_unchanged_fields(service_call)
-      service_call
-        .result
-        .available_phases
-        .select(&:not_set?)
-        .each { _1.errors.clear }
-    end
   end
 end

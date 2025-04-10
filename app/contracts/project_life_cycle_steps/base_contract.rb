@@ -28,47 +28,15 @@
 
 module ProjectLifeCycleSteps
   class BaseContract < ::ModelContract
-    validate :select_custom_fields_permission
-    validate :consecutive_steps_have_increasing_dates
+    attribute :start_date
+    attribute :finish_date
 
-    def valid?(context = :saving_phases) = super
+    validate :edit_project_phase_permission
 
-    def select_custom_fields_permission
-      return if user.allowed_in_project?(:edit_project_phases, model)
+    def edit_project_phase_permission
+      return if user.allowed_in_project?(:edit_project_phases, model.project)
 
       errors.add :base, :error_unauthorized
-    end
-
-    def consecutive_steps_have_increasing_dates
-      # Filter out steps with missing dates before proceeding with comparison
-      filtered_steps = model.available_phases.select(&:start_date)
-
-      # Only proceed with comparisons if there are at least 2 valid steps
-      return if filtered_steps.size < 2
-
-      # Compare consecutive steps in pairs
-      filtered_steps.each_cons(2) do |previous_step, current_step|
-        if has_invalid_dates?(previous_step, current_step)
-          error = current_step.errors.add(:date_range, :non_continuous_dates)
-          unless model.errors.include?(:"available_phases.date_range")
-            model.errors.import(error, attribute: :"available_phases.date_range")
-          end
-        end
-      end
-    end
-
-    private
-
-    def start_date_for(step)
-      step.start_date
-    end
-
-    def finish_date_for(step)
-      step.finish_date || step.start_date # Use the start_date as fallback for single date stages
-    end
-
-    def has_invalid_dates?(previous_step, current_step)
-      start_date_for(current_step) <= finish_date_for(previous_step)
     end
   end
 end

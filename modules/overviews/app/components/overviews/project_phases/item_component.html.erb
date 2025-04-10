@@ -20,10 +20,12 @@
     end
 
     life_cycle_container.with_row(w: :full) do
-      if not_set?
-        render(Primer::Beta::Text.new) { t("placeholders.default") }
-      else
-        render Projects::PhaseComponent.new(phase: model)
+      render(authorized_edit_link) do
+        if not_set?
+          render(Primer::Beta::Text.new) { t("placeholders.default") }
+        else
+          render Projects::PhaseComponent.new(phase: model)
+        end
       end
     end
   end
