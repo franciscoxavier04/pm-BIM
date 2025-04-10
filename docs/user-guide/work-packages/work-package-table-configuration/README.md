@@ -91,10 +91,21 @@ The results will automatically update and display in the work package table.
 
 ### Filter for a work package's children
 
-If you want to only show work package with specific parents (e.g. all work packages belonging to a specific phase of your project) you can use the filter "Parent". Enter all required work packages and press Enter. This will show the selected work package(s) and its/their children.
-If you only select work packages without children, no work packages will be shown at all.
+To display only work packages with specific parent packages (e.g., all work packages within a particular project phase), use the **Parent** filter. Enter the desired parent work package(s) and press Enter. This will display the selected parent package(s) along with their child work packages.
 
-![filter-for-parent-work-package](filter-for-parent-work-package.png)
+> [!TIP]
+> If you select only work packages that have no children, no results will be shown.
+
+![Filter to include all children of a work package in a work package table in OpenProject](openproject_user_guide_wp_table_filter_by_parent.png)
+
+### Filter for descendants of a work package
+
+To display all subordinate work packages (children, grandchildren, etc.) of a specific work package, use the **Descendants of** filter. Enter one or more parent work package IDs into the filter field and press Enter. This will display all descendant work packages across all hierarchy levels below the selected work package(s). if the selected work packages have no descendants, no results will be shown.
+
+> [!NOTE]
+> It is not currently possible to limit the filter to a specific level of hierarchy: i.e. only show "grandchildren".
+
+![Filter to include all descendants of a work package in a work package table in OpenProject](openproject_user_guide_wp_table_filter_by_descendands_of.png)
 
 ### Include/exclude work packages from a specific project or subproject
 
