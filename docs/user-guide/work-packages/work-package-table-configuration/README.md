@@ -210,7 +210,7 @@ To display the sums of eligible work package attributes, go to the work package 
 
 If you group the work package table, sums will be shown for each group.
 
-
+![Example of sums for Work, Remaining work and % Complete shown in a work package table in OpenProject](openproject_user_guide_wp_table_display_sums.png)
 
 ## Attribute highlighting (Enterprise add-on)
 
