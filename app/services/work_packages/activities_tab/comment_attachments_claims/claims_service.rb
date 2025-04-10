@@ -32,13 +32,7 @@ module WorkPackages
   module ActivitiesTab
     module CommentAttachmentsClaims
       class ClaimsService < BaseServices::Update
-        def persist(service_result)
-          if service_result.result.attachments_replacements.present?
-            service_result.result.attachments = service_result.result.attachments_replacements
-          end
-
-          super
-        end
+        include Attachments::ReplaceAttachments
 
         private
 

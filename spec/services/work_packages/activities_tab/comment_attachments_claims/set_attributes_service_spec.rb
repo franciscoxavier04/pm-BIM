@@ -72,18 +72,18 @@ RSpec.describe WorkPackages::ActivitiesTab::CommentAttachmentsClaims::SetAttribu
     context "when the journal notes have no attachments" do
       let(:notes) { "Lorem ipsum dolor sit amet" }
 
-      it "does not set the attachments" do
+      it "defines empty attachments" do
         expect(set_attributes_service).to be_success
-        expect(set_attributes_service.result.attachments_replacements).to be_nil
+        expect(set_attributes_service.result.attachments_replacements).to be_empty
       end
     end
 
     context "when the journal notes are nil" do
       let(:notes) { nil }
 
-      it "does not set the attachments" do
+      it "defines atttachments as empty" do
         expect(set_attributes_service).to be_success
-        expect(set_attributes_service.result.attachments_replacements).to be_nil
+        expect(set_attributes_service.result.attachments_replacements).to be_empty
       end
     end
   end
