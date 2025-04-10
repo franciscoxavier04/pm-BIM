@@ -43,13 +43,10 @@ module Storages
         private
 
         def summary_header
-          tally = @result.tally
-          failure = tally[:failure] || 0
-          warning = tally[:warning] || 0
-
-          if failure > 0
+          case @result.tally
+          in { failure: 1.. }
             { icon: :alert, icon_color: :danger, text: I18n.t("storages.health.checks.failures", count: failure) }
-          elsif warning > 0
+          in { warning: 1.. }
             { icon: :alert, icon_color: :attention, text: I18n.t("storages.health.checks.warnings", count: warning) }
           else
             { icon: :"check-circle", icon_color: :success, text: I18n.t("storages.health.checks.failures", count: 0) }

@@ -47,30 +47,20 @@ module Storages
         end
 
         def compute_display_data
-          if @report.nil?
-            return {
-              heading: I18n.t("storages.health.no_report"),
-              description: I18n.t("storages.health.no_report_description")
-            }
-          end
+          return {} if @report.nil?
 
-          checks_tally = @report.tally
-          if @report.healthy?
-            {
-              summary: summary_with_icon(checks_tally),
-              description: I18n.t("storages.health.summary.success")
-            }
-          else
-            description = if @report.unhealthy?
-                            I18n.t("storages.health.summary.failure")
-                          else
-                            I18n.t("storages.health.summary.warning")
-                          end
-            {
-              summary: summary_with_icon(checks_tally),
-              description:
-            }
-          end
+          description = if @report.healthy?
+                          I18n.t("storages.health.summary.success")
+                        elsif @report.unhealthy?
+                          I18n.t("storages.health.summary.failure")
+                        else
+                          I18n.t("storages.health.summary.warning")
+                        end
+
+          {
+            summary: summary_with_icon(@report.tally),
+            description:
+          }
         end
 
         def group_summary(group)
@@ -90,12 +80,10 @@ module Storages
         end
 
         def summary_with_icon(check_tally)
-          failure = check_tally[:failure] || 0
-          warning = check_tally[:warning] || 0
-
-          if failure > 0
+          case check_tally
+          in { failure: 1.. }
             { icon: :alert, icon_color: :danger, text: I18n.t("storages.health.checks.failures", count: failure) }
-          elsif warning > 0
+          in { warning: 1.. }
             { icon: :alert, icon_color: :attention, text: I18n.t("storages.health.checks.warnings", count: warning) }
           else
             { icon: :"check-circle", icon_color: :success, text: I18n.t("storages.health.checks.failures", count: 0) }

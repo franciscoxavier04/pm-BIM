@@ -232,8 +232,8 @@ en:
       storage_provider: Storage provider
     health:
       actions:
-        run_checks: Run tests now
-        rerun_checks: Re-run all checks
+        run_checks: "Run checks now"
+        rerun_checks: "Re-run all checks"
       checks:
         failures:
           zero: "All checks passed"
@@ -252,13 +252,16 @@ en:
         authentication:
           existing_token: "User token"
           header: "Authentication"
-          user_bound_request: "Sample request for user"
+          non_provisioned_user: "User provisioned by IDP"
+          provisioned_user_provider: "User provisioned by OIDC"
+          token_negotiable: "User token capabilities"
+          user_bound_request: "User-based request authentication"
         ampf_configuration:
-          files_request: "Check for file storage content"
-          group_folder_contents: "Group folder content"
-          group_folder_presence: "Group folder"
+          files_request: "Fetching group folder files"
+          group_folder_contents: "Group folder has expected content"
+          group_folder_presence: "Group folder exists"
           header: "Automatically managed project folder configuration"
-          userless_access: "Sample request without a user"
+          userless_access: "Server-side request authentication"
       checked: Last checked %{datetime}
       connection_validation:
         app_version_mismatch: The Integration OpenProject app version is not supported. Please update your Nextcloud server.
@@ -272,7 +275,7 @@ en:
         not_configured: The connection could not be validated. Please finish configuration first.
         oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
         oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
-        oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as there's no token for the current user.
+        oauth_token_missing: "OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account."
         oidc_cant_acquire_token: Your OpenID Connect setup doesn't provide the necessary audience, nor provides token exchange capabilities. Please check out our documentation for more information.
         oidc_cant_exchange_token: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
         oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
@@ -291,8 +294,8 @@ en:
       label_pending: Pending
       label_skipped: Skipped
       label_warning: Warning
-      no_report: No report available
-      no_report_description: "Run the tests now for a full health status report for this file storage."
+      no_report: "No report available"
+      no_report_description: "Run the checks now for a full health status report for this file storage."
       open_report: "Open full health report"
       project_folders:
         subtitle: Automatically managed project folders
