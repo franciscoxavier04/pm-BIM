@@ -360,7 +360,7 @@ de:
           "15_5":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Filter for descendants (children and grandchildren) of work packages.</li> <li>Benefit from advanced accessibility in the date picker.</li> <li>See % Complete included in work package table sums.</li> <li>Include a column for children in work package tables.</li> <li>Better use the date picker in mobile screens.</li> <li>PDF exports matching configured form layout.</li> </ul>
+                Das Release bringt Ihnen verschiedene Funktionen und Verbesserungen, z. B. <br> <ul class="%{list_styling_class}"> <li>Filtern nach untergeordneten Arbeitspaketen (Kinder und Kindes-Kinder).</li> <li>Profitieren Sie von der verbesserten Barrierefreiheit im Datumswähler.</li> <li>"% Vollständig" als den Arbeitspaket-Tabellensumme auswählbar.</li> <li>Fügen Sie eine Spalte für Kinder in Arbeitspakettabellen ein.</li> <li>Benutzen Sie die native Datumsauswahl auf mobilen Endgeräten.</li> <li>PDF-Export gemäß des konfigurierten Formularlayouts.</li> </ul>
     ical_sharing_modal:
       title: "Kalender abonnieren"
       inital_setup_error_message: "Beim Abrufen der Daten ist ein Fehler aufgetreten."

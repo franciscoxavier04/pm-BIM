@@ -1940,8 +1940,8 @@ zh-CN:
     upsale:
       title: "企业附加组件"
       plan_title: "企业%{plan}附加组件"
-      plan_name: "%{plan} enterprise plan"
-      plan_text_html: "Available only through the %{plan_name}."
+      plan_name: "%{plan}企业计划"
+      plan_text_html: "只能通过%{plan_name}使用。"
       link_title: "更多信息"
       hide_banner: "隐藏此广告"
       baseline_comparison:

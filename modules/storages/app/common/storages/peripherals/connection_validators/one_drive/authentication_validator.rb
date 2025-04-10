@@ -28,33 +28,42 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
-require_module_spec_helper
-
 module Storages
   module Peripherals
     module ConnectionValidators
-      RSpec.describe NextcloudValidator, :webmock do
-        it "does not run the AMPF tests if the storage is not automatically managed",
-           vcr: "nextcloud/capabilities_success" do
-          results = described_class.new(storage: create(:nextcloud_storage_with_local_connection)).validate
+      module OneDrive
+        class AuthenticationValidator < BaseValidatorGroup
+          def initialize(storage)
+            super
+            @user = User.current
+          end
 
-          expect { results.group(:ampf_configuration) }.to raise_error(KeyError)
-        end
+          private
 
-        it "aggregates all the results from the tests", vcr: "nextcloud/capabilities_success" do
-          results = described_class.new(storage: create(:nextcloud_storage_with_local_connection)).validate
+          def validate
+            register_checks(:existing_token, :user_bound_request)
 
-          expect(results).to be_warning
-          expect(results.group(:base_configuration)).to be_success
-          expect(results.group(:authentication)).to be_warning
-        end
+            oauth_token
+            user_bound_request
+          end
 
-        it "does not run any further tests if base configuration failed", vcr: "nextcloud/capabilities_invalid_data" do
-          results = described_class.new(storage: create(:nextcloud_storage_with_local_connection)).validate
+          def oauth_token
+            if OAuthClientToken.for_user_and_client(@user, @storage.oauth_client).exists?
+              pass_check(:existing_token)
+            else
+              warn_check(:existing_token, message(:oauth_token_missing), halt_validation: true)
+            end
+          end
 
-          expect { results.group(:authentication) }.to raise_error(KeyError)
-          expect { results.group(:ampf_configuration) }.to raise_error(KeyError)
+          def user_bound_request
+            Registry["one_drive.queries.user"].call(storage: @storage, auth_strategy:).on_failure do
+              fail_check(:user_bound_request, message("oauth_request_#{it.result}"))
+            end
+
+            pass_check(:user_bound_request)
+          end
+
+          def auth_strategy = Registry["one_drive.authentication.user_bound"].call(storage: @storage, user: @user)
         end
       end
     end

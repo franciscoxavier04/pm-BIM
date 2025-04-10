@@ -36,6 +36,7 @@ RSpec.describe EnterprisesController do
       subscriber: "Foobar",
       mail: "foo@example.org",
       starts_at: Date.today,
+      version: "1",
       expires_at: nil
     }
   end

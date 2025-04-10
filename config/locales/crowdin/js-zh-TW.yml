@@ -359,7 +359,7 @@ zh-TW:
           "15_5":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Filter for descendants (children and grandchildren) of work packages.</li> <li>Benefit from advanced accessibility in the date picker.</li> <li>See % Complete included in work package table sums.</li> <li>Include a column for children in work package tables.</li> <li>Better use the date picker in mobile screens.</li> <li>PDF exports matching configured form layout.</li> </ul>
+                本次更新為您帶來多項新功能與改進，例如：<br><ul class="%{list_styling_class}"> <li>子工作項目與孫工作項目的篩選功能</li> <li>日期選擇器強化無障礙輔助功能</li> <li>工作項目表格總計顯示完成百分比（% Complete）</li> <li>工作項目表格新增子工作項專用欄位</li> <li>行動裝置日期選擇器操作體驗優化</li> <li>PDF 匯出格式支援自訂表單版面配置</li> </ul>
     ical_sharing_modal:
       title: "訂閱日曆"
       inital_setup_error_message: "更新資料時發生錯誤"

@@ -2,7 +2,7 @@ zh-CN:
   ee:
     upsale:
       grid_widget_wp_graph:
-        description: "某些微件，例如工作包图微件，仅适用于企业版。"
+        description: "某些微件，例如工作包图微件，仅在企业版提供。"
   js:
     grid:
       add_widget: '添加微件'
