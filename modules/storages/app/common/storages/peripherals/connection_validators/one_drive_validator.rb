@@ -30,41 +30,15 @@
 
 module Storages
   module Peripherals
-    module StorageInteraction
-      module AuthenticationStrategies
-        class Strategy
-          attr_reader :key, :user, :use_cache, :token
-
-          def initialize(key)
-            @key = key
-            # per default authorization strategies are using the cache
-            # to reduce the number authentication requests
-            @use_cache = true
-          end
-
-          def with_user(user)
-            @user = user
-            self
-          end
-
-          def with_cache(use_cache)
-            @use_cache = use_cache
-            self
-          end
-
-          def with_token(token)
-            @token = token
-            self
-          end
-
-          def ==(other)
-            @key == other.key && @use_cache == other.use_cache && @user == other.user && @token == other.token
-          end
-
-          def hash
-            [@key, @use_cache, @user, @token].hash
-          end
-        end
+    module ConnectionValidators
+      class OneDriveValidator < BaseConnectionValidator
+        register_group :base_configuration, OneDrive::StorageConfigurationValidator
+        register_group :authentication, OneDrive::AuthenticationValidator,
+                       precondition: ->(_, result) { result.group(:base_configuration).non_failure? }
+        register_group :ampf_configuration, OneDrive::AmpfConfigurationValidator,
+                       precondition: ->(storage, result) {
+                         result.group(:base_configuration).non_failure? && storage.automatic_management_enabled?
+                       }
       end
     end
   end

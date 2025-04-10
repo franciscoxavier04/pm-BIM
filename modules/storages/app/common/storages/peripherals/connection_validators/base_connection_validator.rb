@@ -30,41 +30,33 @@
 
 module Storages
   module Peripherals
-    module StorageInteraction
-      module AuthenticationStrategies
-        class Strategy
-          attr_reader :key, :user, :use_cache, :token
-
-          def initialize(key)
-            @key = key
-            # per default authorization strategies are using the cache
-            # to reduce the number authentication requests
-            @use_cache = true
+    module ConnectionValidators
+      class BaseConnectionValidator
+        class << self
+          def validation_groups
+            @validation_groups ||= {}
           end
 
-          def with_user(user)
-            @user = user
-            self
-          end
-
-          def with_cache(use_cache)
-            @use_cache = use_cache
-            self
-          end
-
-          def with_token(token)
-            @token = token
-            self
-          end
-
-          def ==(other)
-            @key == other.key && @use_cache == other.use_cache && @user == other.user && @token == other.token
-          end
-
-          def hash
-            [@key, @use_cache, @user, @token].hash
+          def register_group(group_name, klass, precondition: ->(*) { true })
+            validation_groups[group_name] = { klass:, precondition: }
           end
         end
+
+        def initialize(storage)
+          @storage = storage
+        end
+
+        def call
+          validation_groups.each_with_object(ValidatorResult.new) do |(key, group_metadata), result|
+            if group_metadata[:precondition].call(@storage, result)
+              result.add_group_result(key, group_metadata[:klass].call(@storage))
+            end
+          end
+        end
+
+        private
+
+        def validation_groups = self.class.validation_groups
       end
     end
   end
