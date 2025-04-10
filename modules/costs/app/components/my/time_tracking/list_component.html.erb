@@ -1,5 +1,5 @@
 <%= component_wrapper(tag: "div", data: wrapper_data) do %>
-  <%= render(My::TimeTracking::HeaderComponent.new(mode: mode, date: date)) %>
+  <%= render(My::TimeTracking::HeaderComponent.new(mode:, date:, view_mode: :list)) %>
   <%= render(Primer::OpenProject::SubHeader.new) do |component|
         component.with_text { title }
 

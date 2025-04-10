@@ -31,7 +31,7 @@
 module My
   module TimeTracking
     class HeaderComponent < ApplicationComponent
-      options :date, :mode
+      options :date, :mode, :view_mode
 
       def title
         case mode
@@ -58,10 +58,49 @@ module My
       end
 
       def month_title
-        if Date.current == date
-          I18n.t(:label_today)
+        if Date.current.all_month.include?(date)
+          I18n.t(:label_this_month)
         else
-          I18n.t(:label_specific_day, day: I18n.l(date, format: :short))
+          I18n.t(:label_specific_month, month: I18n.l(date, format: "%B %Y"))
+        end
+      end
+
+      def view_mode_block
+        if view_mode == :list
+          lambda do |button|
+            button.with_leading_visual_icon(icon: "list-unordered")
+            button.with_trailing_action_icon(icon: "triangle-down")
+            t(:label_list)
+          end
+        else
+          lambda do |button|
+            button.with_leading_visual_icon(icon: :calendar)
+            button.with_trailing_action_icon(icon: "triangle-down")
+            t(:label_calendar)
+          end
+        end
+      end
+
+      def calendar_mode_button_block
+        case mode
+        when :day
+          lambda do |button|
+            button.with_leading_visual_icon(icon: :calendar)
+            button.with_trailing_action_icon(icon: "triangle-down")
+            t(:label_day)
+          end
+        when :week
+          lambda do |button|
+            button.with_leading_visual_icon(icon: :calendar)
+            button.with_trailing_action_icon(icon: "triangle-down")
+            t(:label_week)
+          end
+        when :month
+          lambda do |button|
+            button.with_leading_visual_icon(icon: :calendar)
+            button.with_trailing_action_icon(icon: "triangle-down")
+            t(:label_month)
+          end
         end
       end
     end

@@ -178,6 +178,8 @@ en:
   label_specific_week: "Week #%{week}"
   label_specific_month: "Month %{month}"
   label_list: "List"
+  label_month: "Month"
+  label_day: "Day"
 
   placeholder_activity_select_work_package_first: Work package selection is required first
 

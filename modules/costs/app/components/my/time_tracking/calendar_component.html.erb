@@ -1,5 +1,5 @@
 <%= flex_layout(data: wrapper_data, classes: "time-entry-calendar") do |calendar_page| %>
-<% calendar_page.with_row { render(My::TimeTracking::HeaderComponent.new(mode: mode, date: date)) } %>
+<% calendar_page.with_row { render(My::TimeTracking::HeaderComponent.new(mode:, date:, view_mode: :calendar)) } %>
 <% calendar_page.with_row do %>
   <%= render(Primer::OpenProject::SubHeader.new) do |component|
         component.with_text { title }

@@ -34,21 +34,11 @@ module My
 
     no_authorization_required!(:calendar, :day, :week, :month)
 
-    current_menu_item do |ctrl|
-      if ctrl.params[:action] == "day" && ctrl.today?
-        :my_time_tracking_today
-      elsif ctrl.params[:action] == "week" && ctrl.this_week?
-        :my_time_tracking_this_week
-      elsif ctrl.params[:action] == "month" && ctrl.this_month?
-        :my_time_tracking_this_month
-      else
-        :my_time_tracking
-      end
-    end
+    menu_item :my_time_tracking
 
     layout "global"
 
-    helper_method :current_day, :today?, :this_week?, :this_month?, :list_view_component
+    helper_method :current_day, :today?, :this_week?, :this_month?, :list_view_component, :view_mode
 
     def calendar
       if mobile?
@@ -107,7 +97,11 @@ module My
     end
 
     def view_mode
-      ActiveSupport::StringInquirer.new(params[:view_mode] || default_view_mode)
+      if ["calendar", "list"].include?(params[:view_mode])
+        params[:view_mode]
+      else
+        default_view_mode
+      end.to_sym
     end
 
     def current_date
@@ -126,10 +120,18 @@ module My
     end
 
     def list_view_component
-      if view_mode.list?
-        My::TimeTracking::ListComponent.new(time_entries: @time_entries, mode: params[:action].to_sym, date: current_day)
+      if view_mode == :list
+        My::TimeTracking::ListComponent.new(
+          time_entries: @time_entries,
+          mode: params[:action].to_sym,
+          date: current_day
+        )
       else
-        My::TimeTracking::CalendarComponent.new(time_entries: @time_entries, mode: params[:action].to_sym, date: current_day)
+        My::TimeTracking::CalendarComponent.new(
+          time_entries: @time_entries,
+          mode: params[:action].to_sym,
+          date: current_day
+        )
       end
     end
 

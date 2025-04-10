@@ -7,21 +7,24 @@
         ]
       )
 
-      cal_button = lambda do |button|
-        button.with_leading_visual_icon(icon: :calendar)
-        button.with_trailing_action_icon(icon: :"triangle-down")
-        t(:label_calendar)
-      end
-
-      list_button = lambda do |button|
-        button.with_leading_visual_icon(icon: "list-unordered")
-        button.with_trailing_action_icon(icon: :"triangle-down")
-        t(:label_list)
+      header.with_action_menu(
+        menu_arguments: { anchor_align: :end },
+        button_arguments: { button_block: calendar_mode_button_block }
+      ) do |menu|
+        %i[day week month].each do |action|
+          menu.with_item(
+            label: t("label_#{action}"),
+            tag: :a,
+            href: url_for(params.permit(:controller, :date, :view_mode).merge(action:))
+          ) do |item|
+            item.with_leading_visual_icon(icon: :calendar)
+          end
+        end
       end
 
       header.with_action_menu(
         menu_arguments: { anchor_align: :end },
-        button_arguments: { button_block: params[:view_mode] == "list" ? list_button : cal_button }
+        button_arguments: { button_block: view_mode_block }
       ) do |menu|
         menu.with_item(
           label: t(:label_calendar),
