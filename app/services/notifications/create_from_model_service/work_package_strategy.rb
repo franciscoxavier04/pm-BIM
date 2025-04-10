@@ -33,6 +33,8 @@ module Notifications::CreateFromModelService::WorkPackageStrategy
 
   def self.permission(journal, _reason)
     if journal.restricted?
+      # we assume that if a journal is restricted it is a comment and respects the
+      # view comments with restricted visibility permissions
       :view_comments_with_restricted_visibility
     else
       :view_work_packages
