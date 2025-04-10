@@ -80,29 +80,6 @@ module My
           end
         end
       end
-
-      def calendar_mode_button_block
-        case mode
-        when :day
-          lambda do |button|
-            button.with_leading_visual_icon(icon: :calendar)
-            button.with_trailing_action_icon(icon: "triangle-down")
-            t(:label_day)
-          end
-        when :week
-          lambda do |button|
-            button.with_leading_visual_icon(icon: :calendar)
-            button.with_trailing_action_icon(icon: "triangle-down")
-            t(:label_week)
-          end
-        when :month
-          lambda do |button|
-            button.with_leading_visual_icon(icon: :calendar)
-            button.with_trailing_action_icon(icon: "triangle-down")
-            t(:label_month)
-          end
-        end
-      end
     end
   end
 end
