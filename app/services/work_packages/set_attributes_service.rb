@@ -398,23 +398,18 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
 
       days.soonest_working_day(new_start_date_from_parent)
     else
-      min_start = new_start_date_from_parent || new_start_date_from_self
+      min_start = new_start_date_from_parent || work_package.soonest_start
       days.soonest_working_day(min_start)
     end
   end
 
+  # Returns the soonest start date from the parent if the parent has changed.
+  # If the parent has changed, #soonest_start would be inaccurate.
   def new_start_date_from_parent
     return unless work_package.parent_id_changed? &&
                   work_package.parent
 
     work_package.parent.soonest_start
-  end
-
-  def new_start_date_from_self
-    # this method is only called by #new_start_date when there are no children
-    return unless work_package.schedule_manually_changed? || work_package.ignore_non_working_days_changed?
-
-    work_package.soonest_start
   end
 
   def new_due_date(min_start)

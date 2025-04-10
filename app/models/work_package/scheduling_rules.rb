@@ -59,13 +59,16 @@ module WorkPackage::SchedulingRules
   #
   # The soonest start for this work package is the maximum of these values: 2017/07/28.
   def soonest_start
-    # eager load `to` to avoid n+1 in #successor_soonest_start
     @scheduling_relations_soonest_start ||=
       Relation
         .used_for_scheduling_of(self)
-        .includes(:to)
+        .includes(:to) # eager load `to` to avoid n+1 in #successor_soonest_start
         .filter_map(&:successor_soonest_start)
         .max
+
+    # The final result should not be cached as it depends on
+    # ignore_non_working_days value, which can change between consecutive calls
+    # to #soonest_start
     WorkPackages::Shared::Days.for(self)
                               .soonest_working_day(@scheduling_relations_soonest_start)
   end

@@ -1378,6 +1378,33 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
         TABLE
       end
     end
+
+    context "on an automatically scheduled work package with a wrong automatically scheduled start date " \
+            "even without setting any attributes" do
+      # There was a bug in previous versions where the lag was all-days when
+      # successor's ignore_non_working_days was true, leading to a start being
+      # too early. The correct behavior for lag is to be working days only, even
+      # if the successor ignores non-working days.
+      #
+      # The update service must be able to fix these wrong dates.
+      let_work_packages(<<~TABLE)
+        | subject      | MTWTFSSmtwt | scheduling mode | days counting     | successors
+        | predecessor  |   XX        | manual          | working days only | work_package with lag 3
+        | work_package |        XX   | automatic       | all days          |
+      TABLE
+      let(:attributes) { {} }
+
+      it "moves the start date to the correct date " \
+         "and moves the due date too to keep same duration" do
+        expect(subject).to be_success
+
+        expect_work_packages_after_reload([work_package, predecessor], <<~TABLE)
+          | subject      | MTWTFSSmtwt | scheduling mode | days counting
+          | predecessor  |   XX        | manual          | working days only
+          | work_package |          XX | automatic       | all days
+        TABLE
+      end
+    end
   end
 
   context "when changing the type of a work package with children into a milestone" do
