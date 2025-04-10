@@ -416,12 +416,20 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
     # this method is only called by #update_dates_from_self when there are no children
     if work_package.due_date_came_from_user?
       work_package.due_date
-    elsif work_package.duration
-      days.due_date(min_start, work_package.duration)
-    elsif work_package.due_date
+    elsif reuse_current_due_date?
       # if due date is before start date, then start is used as due date.
       [min_start, work_package.due_date].max
+    elsif work_package.duration
+      days.due_date(min_start, work_package.duration)
     end
+  end
+
+  def reuse_current_due_date?
+    return false if work_package.due_date.nil?
+    return true if work_package.ignore_non_working_days_came_from_user?
+
+    # use due date only if duration cannot be used
+    work_package.duration.nil?
   end
 
   def work_package

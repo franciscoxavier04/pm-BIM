@@ -461,11 +461,6 @@ export default class PreviewController extends DialogPreviewController {
       return;
     }
 
-    if (!this.scheduleManuallyValue) {
-      // Fix the start date to avoid that it gets changed accidentally
-      this.markTouched('start_date');
-    }
-
     if (this.isBeingEdited('start_date')) {
       this.untouchFieldsWhenStartDateIsEdited();
     } else if (this.isBeingEdited('due_date')) {

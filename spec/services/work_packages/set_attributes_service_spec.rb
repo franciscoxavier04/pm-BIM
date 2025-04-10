@@ -2002,7 +2002,7 @@ RSpec.describe WorkPackages::SetAttributesService,
         let(:expected_attributes) do
           {
             start_date: next_monday,
-            due_date: next_monday + 7.days
+            due_date: WorkPackages::Shared::WorkingDays.new.soonest_working_day(Time.zone.today + 5.days)
           }
         end
       end

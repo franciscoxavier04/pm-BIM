@@ -1317,13 +1317,13 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
         let(:attributes) { { ignore_non_working_days: true } }
 
         it "moves the start date earlier to start on a non-working day " \
-           "and moves the due date too to keep same duration" do
+           "and keeps the current due date and updates the duration accordingly" do
           expect(subject).to be_success
 
           expect_work_packages_after_reload([work_package, predecessor], <<~TABLE)
             | subject      | MTWTFSSmtwtfss | scheduling mode | days counting
             | predecessor  |   XX           | manual          | working days only
-            | work_package |      XXX       | automatic       | all days
+            | work_package |      XXXXX     | automatic       | all days
           TABLE
         end
       end
@@ -1367,14 +1367,13 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
 
       let(:attributes) { { ignore_non_working_days: false } }
 
-      it "moves the start date earlier to start on a non-working day " \
-         "and moves the due date too to keep same duration" do
+      it "moves the dates to the next working day and adjusts the duration accordingly" do
         expect(subject).to be_success
 
         expect_work_packages_after_reload([work_package, predecessor], <<~TABLE)
-          | subject      | MTWTFSSmtwtfss    | duration | scheduling mode | days counting
-          | predecessor  |   XX              |        2 | manual          | working days only
-          | work_package |        XXXXX..XXX |        8 | automatic       | working days only
+          | subject      | MTWTFSSmtwtfss  | duration | scheduling mode | days counting
+          | predecessor  |   XX            |        2 | manual          | working days only
+          | work_package |        XXXXX..X |        6 | automatic       | working days only
         TABLE
       end
     end
