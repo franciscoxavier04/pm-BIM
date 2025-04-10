@@ -35,6 +35,7 @@ module RecurringMeetings
             :count,
             :direction,
             :max_count,
+            :hide_footer,
             :blankslate_title,
             :blankslate_desc
 
@@ -45,6 +46,7 @@ module RecurringMeetings
     end
 
     def has_footer?
+      return false if options[:hide_footer]
       return true if options[:max_count].nil?
 
       options[:max_count] - count > 0
