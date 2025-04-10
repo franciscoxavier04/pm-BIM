@@ -244,11 +244,17 @@ en:
           other: "%{count} checks returned a warning"
         base_configuration:
           capabilities_request: "Remote file storage capabilities"
+          client_id: "Client ID"
+          client_secret: "Client secret"
           dependencies_check: "Dependencies"
           dependencies_versions: "Dependencies (version)"
+          diagnostic_request: "Diagnostic request"
+          drive_id_format: "Drive ID format"
+          drive_id_not_found: "Drive exists"
           header: "Basic configuration"
           host_url_accessible: "Host URL accessible"
           storage_configured: "Configuration complete"
+          tenant_id: "Tenant ID"
         authentication:
           existing_token: "User token"
           header: "Authentication"
