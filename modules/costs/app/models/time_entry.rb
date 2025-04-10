@@ -169,13 +169,12 @@ class TimeEntry < ApplicationRecord
 
   class << self
     def can_track_start_and_end_time?(_project: nil)
-      OpenProject::FeatureDecisions.track_start_and_end_times_for_time_entries_active? &&
-        Setting.allow_tracking_start_and_end_times?
+      Setting.allow_tracking_start_and_end_times?
       # TODO: Add project check when we have decided if we also want a project specific flag
     end
 
     def must_track_start_and_end_time?(_project: nil)
-      can_track_start_and_end_time? && Setting.enforce_tracking_start_and_end_times?
+      Setting.enforce_tracking_start_and_end_times?
       # TODO: Add project check when we have decided if we also want a project specific flag
     end
   end
