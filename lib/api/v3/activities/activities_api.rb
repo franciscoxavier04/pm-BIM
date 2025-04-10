@@ -35,7 +35,13 @@ module API
             after_validation do
               @activity = Journal.find(declared_params[:id])
 
-              authorize_by_with_raise @activity.journable.visible?(current_user) do
+              authorize_by_with_raise(
+                if request.get?
+                  @activity.visible?(current_user)
+                else
+                  @activity.editable_by?(current_user)
+                end
+              ) do
                 raise API::Errors::NotFound
               end
             end

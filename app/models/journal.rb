@@ -150,6 +150,22 @@ class Journal < ApplicationRecord
     end
   end
 
+  def attachments_visible?(user = User.current)
+    if restricted?
+      super && user.allowed_in_project?(:view_comments_with_restricted_visibility, project)
+    else
+      super
+    end
+  end
+
+  def visible?(user = User.current)
+    if restricted?
+      user.allowed_in_project?(:view_comments_with_restricted_visibility, project)
+    else
+      journable.visible?(user)
+    end
+  end
+
   def editable_by?(user)
     journable.journal_editable_by?(self, user)
   end
