@@ -27,6 +27,172 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { h(@page.title) }
+    header.with_breadcrumbs(
+      breadcrumb_for_page(@page)
+    )
+    if @editable
+      if User.current.allowed_in_project?(:edit_wiki_pages, @project) && @page.current_version?
+        header.with_action_button(
+          tag: :a,
+          mobile_icon: :pencil,
+          mobile_label: t(:button_edit),
+          size: :medium,
+          href: url_for(controller: 'wiki', action: 'edit', id: @page),
+          aria: { label: I18n.t(:button_edit) },
+          title: I18n.t(:button_edit)
+        ) do |button|
+          button.with_leading_visual_icon(icon: :pencil)
+          t(:button_edit)
+        end
+      end
+      watcher_action_button(header, @page.object)
+      unless @page.current_version?
+        header.with_action_button(
+          tag: :a,
+          mobile_icon: :pencil,
+          mobile_label: t(:label_history),
+          size: :medium,
+          href: url_for(controller: 'wiki', action: "history", id: @page),
+          aria: { label: t(:label_history) },
+          title: t(:label_history)
+        ) do |button|
+          button.with_leading_visual_icon(icon: "book")
+          t(:label_history)
+        end
+      end
+    end
+    header.with_action_button(
+      tag: :a,
+      mobile_icon: :download,
+      mobile_label: t("js.label_export"),
+      size: :medium,
+      href: "", # Empty href for modal trigger
+      title: t("js.label_export"),
+      class: "modal-delivery-element--activation-link icon-context icon-export",
+      data: {
+        augmented_model_wrapper: true,
+        modal_class_name: "wiki-export---modal"
+      }
+    ) do |button|
+      button.with_leading_visual_icon(icon: :download)
+      render partial: "wiki/wiki_export_modal"
+      t("js.label_export")
+    end
+    header.with_action_menu(
+      menu_arguments: { anchor_align: :end },
+      button_arguments: { icon: "op-kebab-vertical", "aria-label": t(:label_menu) }
+    ) do |menu|
+      if @editable
+        if User.current.allowed_in_project?(:protect_wiki_pages, @project)
+          if !@page.protected?
+            menu.with_item(
+              label: t(:button_lock),
+              tag: :a,
+              size: :medium,
+              content_arguments: { data: { method: :post } },
+              href: url_for(controller: 'wiki', action: 'protect', id: @page, protected: 1),
+            ) do |item|
+              item.with_leading_visual_icon(icon: :lock)
+            end
+          end
+          if @page.protected?
+            menu.with_item(
+              label: t(:button_unlock),
+              tag: :a,
+              size: :medium,
+              content_arguments: { data: { method: :post } },
+              href: url_for(controller: 'wiki', action: 'protect', id: @page, protected: 0),
+              ) do |item|
+              item.with_leading_visual_icon(icon: :unlock)
+            end
+          end
+        end
+        if @page.current_version?
+          if User.current.allowed_in_project?(:rename_wiki_pages, @project)
+            menu.with_item(
+              label: t(:button_rename),
+              tag: :a,
+              size: :medium,
+              href: url_for(controller: 'wiki', action: 'rename', id: @page),
+              ) do |item|
+              item.with_leading_visual_icon(icon: 'arrow-switch')
+            end
+          end
+          if User.current.allowed_in_project?(:change_wiki_parent_page, @project)
+            menu.with_item(
+              label: t(:button_change_parent_page),
+              tag: :a,
+              size: :medium,
+              href: url_for(controller: 'wiki', action: 'edit_parent_page', id: @page),
+              ) do |item|
+              item.with_leading_visual_icon(icon: :link)
+            end
+          end
+        end
+
+        if User.current.allowed_in_project?(:delete_wiki_pages, @project)
+          menu.with_item(
+            label: t(:button_delete),
+            scheme: :danger,
+            tag: :a,
+            size: :medium,
+            content_arguments: { data: { confirm: t(:text_are_you_sure), method: :delete } },
+            href: url_for(controller: 'wiki', action: 'destroy', id: @page),
+            ) do |item|
+            item.with_leading_visual_icon(icon: :trash)
+          end
+        end
+        if User.current.allowed_in_project?(:edit_wiki_pages, @project) && !@page.current_version?
+          menu.with_item(
+            label: t(:button_rollback),
+            href: url_for(controller: 'wiki', action: "edit", id: @page, version: @page.version),
+            ) do |item|
+            item.with_leading_visual_icon(icon: :x)
+          end
+        end
+        if User.current.allowed_in_project?(:view_wiki_edits, @project)
+          menu.with_item(
+            label: t(:label_history),
+            href: url_for(controller: 'wiki', action: "history", id: @page),
+            ) do |item|
+            item.with_leading_visual_icon(icon: :history)
+          end
+        end
+        if User.current.allowed_in_project?(:edit_wiki_pages, @project)
+          menu.with_item(
+            label: t(:button_manage_menu_entry),
+            href: url_for(controller: "/wiki_menu_items", action: "edit", project_id: @project.identifier, id: @page),
+            ) do |item|
+            item.with_leading_visual_icon(icon: :gear)
+          end
+        end
+        menu.with_item(
+          tag: :a,
+          label: t(:button_print),
+          content_arguments: { data: {
+            controller: "print",
+            action: "print#triggerPrint"
+          } },
+          title: t("wiki.print_hint"),
+          href: "",
+          ) do |item|
+          item.with_leading_visual_icon(icon: "op-printer")
+        end
+        menu.with_item(
+          tag: :a,
+          label: t(:label_table_of_contents),
+          title: t("wiki.print_hint"),
+          href: url_for({ controller: "/wiki", action: "index", project_id: @project.identifier, id: @page }),
+          ) do |item|
+          item.with_leading_visual_icon(icon: "op-view-list")
+        end
+      end
+    end
+  end
+%>
 <%= call_hook :wiki_navigation %>
 <% if @page.current_version? %>
   <% title = h(@page.title) %>
@@ -40,6 +206,7 @@ See COPYRIGHT and LICENSE files for more details.
 <% description strip_tags(@formatted_text) %>
 
 <%= toolbar title: title, html: { class: "-with-dropdown" } do %>
+
   <% if @editable %>
     <% if @page && User.current.allowed_in_project?(:edit_wiki_pages, @project) %>
       <li class="toolbar-item">
@@ -54,27 +221,6 @@ See COPYRIGHT and LICENSE files for more details.
           <% end %>
       </li>
     <% end %>
-    <% if @page.current_version? %>
-      <li class="toolbar-item">
-        <%= link_to_if_authorized(
-              { action: "edit", id: @page },
-              { aria: { label: t(:button_edit) },
-                title: t(:button_edit),
-                class: "button" }
-            ) do %>
-          <%= op_icon("button--icon icon-edit") %>
-          <span class="button--text"><%= t(:button_edit) %></span>
-        <% end %>
-      </li>
-    <% end %>
-    <li class="toolbar-item hidden-for-tablet">
-      <%= watcher_link(@page.object, User.current) %>
-    </li>
-    <% unless @page.current_version? %>
-      <li class="toolbar-item  hidden-for-mobile">
-        <%= link_to(t(:label_history), { action: "history", id: @page }, class: "button icon-wiki") %>
-      </li>
-    <% end %>
   <% end %>
   <li class="toolbar-item drop-down">
     <a href="#" aria-haspopup="true" title="<%= t(:label_more) %>" class="button">
@@ -83,30 +229,6 @@ See COPYRIGHT and LICENSE files for more details.
       <%= op_icon("button--dropdown-indicator") %>
     </a>
     <ul style="display:none;" class="menu-drop-down-container">
-      <% if @editable %>
-        <%= li_unless_nil(link_to_if_authorized(t(:button_lock), { action: "protect", id: @page, protected: 1 }, method: :post, class: "icon-context icon-locked")) if !@page.protected? %>
-        <%= li_unless_nil(link_to_if_authorized(t(:button_unlock), { action: "protect", id: @page, protected: 0 }, method: :post, class: "icon-context icon-unlocked")) if @page.protected? %>
-        <% if @page.current_version? %>
-          <%= li_unless_nil(
-                link_to_if_authorized(
-                  t(:button_rename),
-                  { action: "rename", id: @page },
-                  class: "icon-context icon-rename"
-                )
-              ) %>
-          <%= li_unless_nil(
-                link_to_if_authorized(
-                  t(:button_change_parent_page),
-                  { action: "edit_parent_page", id: @page },
-                  class: "icon-context icon-link"
-                )
-              ) %>
-        <% end %>
-        <%= li_unless_nil(link_to_if_authorized(t(:button_delete), { action: "destroy", id: @page }, method: :delete, data: { confirm: t(:text_are_you_sure) }, class: "icon-context icon-delete")) %>
-        <%= li_unless_nil(link_to_if_authorized(t(:button_rollback), { action: "edit", id: @page, version: @page.version }, class: "icon-context icon-cancel")) unless @page.current_version? %>
-      <% end %>
-      <%= li_unless_nil(link_to_if_authorized(t(:label_history), { action: "history", id: @page }, class: "icon-context icon-activity-history")) %>
-      <%= li_unless_nil(link_to_if_authorized(t(:button_manage_menu_entry), { controller: "/wiki_menu_items", action: "edit", project_id: @project.identifier, id: @page }, class: "icon-context icon-settings")) %>
       <li>
         <%= link_to t(:button_print),
                     "",
@@ -133,8 +255,6 @@ See COPYRIGHT and LICENSE files for more details.
     </ul>
   </li>
 <% end %>
-
-<% breadcrumb_paths(*(@page.ancestors.reverse.collect { |parent| link_to h(parent.breadcrumb_title), { id: parent, project_id: parent.project } } + [h(@page.breadcrumb_title)])) %>
 
 <% if params[:version] %>
   <hr>
