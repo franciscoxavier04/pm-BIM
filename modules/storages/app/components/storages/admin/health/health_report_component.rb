@@ -82,9 +82,17 @@ module Storages
         def summary_with_icon(check_tally)
           case check_tally
           in { failure: 1.. }
-            { icon: :alert, icon_color: :danger, text: I18n.t("storages.health.checks.failures", count: failure) }
+            {
+              icon: :alert,
+              icon_color: :danger,
+              text: I18n.t("storages.health.checks.failures", count: check_tally[:failure])
+            }
           in { warning: 1.. }
-            { icon: :alert, icon_color: :attention, text: I18n.t("storages.health.checks.warnings", count: warning) }
+            {
+              icon: :alert,
+              icon_color: :attention,
+              text: I18n.t("storages.health.checks.warnings", count: check_tally[:warning])
+            }
           else
             { icon: :"check-circle", icon_color: :success, text: I18n.t("storages.health.checks.failures", count: 0) }
           end

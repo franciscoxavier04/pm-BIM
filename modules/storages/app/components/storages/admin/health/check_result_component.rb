@@ -47,7 +47,7 @@ module Storages
             status_color:,
             status_text:,
             error_text: model.message,
-            docs_href: ::OpenProject::Static::Links[:storage_docs][:health_status][:href]
+            docs_href: ::OpenProject::Static::Links.url_for(:storage_docs, :health_status)
           }
         end
 

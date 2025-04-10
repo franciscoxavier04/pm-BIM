@@ -71,21 +71,14 @@ module Storages
       end
 
       def create_and_cache_report
-        report = validator.validate
+        report = validator.call
         Rails.cache.write(validator.report_cache_key, report, expires_in: 6.hours)
 
         report
       end
 
       def validator
-        @validator ||= case @storage.provider_type
-                       when ::Storages::Storage::PROVIDER_TYPE_NEXTCLOUD
-                         Peripherals::ConnectionValidators::NextcloudValidator.new(storage: @storage)
-                       when ::Storages::Storage::PROVIDER_TYPE_ONE_DRIVE
-                         raise "Unsupported provider type: #{@storage.provider_type}"
-                       else
-                         raise "Unsupported provider type: #{@storage.provider_type}"
-                       end
+        @validator ||= Peripherals::Registry.resolve("#{@storage}.validators.connection").new(@storage)
       end
     end
   end
