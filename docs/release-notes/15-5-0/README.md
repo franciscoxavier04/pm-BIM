@@ -94,7 +94,7 @@ To prepare for this transition, the **Classic option in the + Meeting dropdown i
 ![Dropdown menu in the OpenProject Meetings module, with highlighted option of "Classic (unsupported)"](openproject-15-5-classic-meetings-highlighted.png)
 
 > [!NOTE]
-> We recommend switching to the newer Meeting types to benefit from the latest features and ensure a smooth transition. [Read this article to learn more about the reasons and what will happen to your existing Classic meetings](https://www.openproject.org/blog/).
+> We recommend switching to the newer Meeting types to benefit from the latest features and ensure a smooth transition. [Read this article to learn more about the reasons and what will happen to your existing Classic meetings](https://www.openproject.org/blog/end-classic-meetings-may-2025/).
 
 ## Important updates and breaking changes
 
