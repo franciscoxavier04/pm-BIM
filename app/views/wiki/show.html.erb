@@ -193,6 +193,24 @@ See COPYRIGHT and LICENSE files for more details.
     end
   end
 %>
+
+<%=
+  render(Primer::OpenProject::SubHeader.new) do |subheader|
+    if @editable && @page && User.current.allowed_in_project?(:edit_wiki_pages, @project)
+      subheader.with_action_button(
+        scheme: :primary,
+        aria: { label: t("wiki.index.no_results_content_text") },
+        title: t("wiki.index.no_results_content_text"),
+        tag: :a,
+        href: url_for({ controller: "/wiki", action: "new_child", project_id: @project.identifier, id: @page })
+      ) do |button|
+        button.with_leading_visual_icon(icon: :plus)
+        t(:create_new_page)
+      end
+    end
+  end
+%>
+
 <%= call_hook :wiki_navigation %>
 <% if @page.current_version? %>
   <% title = h(@page.title) %>
@@ -206,22 +224,6 @@ See COPYRIGHT and LICENSE files for more details.
 <% description strip_tags(@formatted_text) %>
 
 <%= toolbar title: title, html: { class: "-with-dropdown" } do %>
-
-  <% if @editable %>
-    <% if @page && User.current.allowed_in_project?(:edit_wiki_pages, @project) %>
-      <li class="toolbar-item">
-          <%= link_to(
-                { controller: "/wiki", action: "new_child", project_id: @project.identifier, id: @page },
-                { class: "button -primary",
-                  aria: { label: t("wiki.index.no_results_content_text") },
-                  title: t("wiki.index.no_results_content_text") }
-              ) do %>
-            <%= op_icon("button--icon icon-add") %>
-            <span class="button--text"><%= t(:create_new_page) %></span>
-          <% end %>
-      </li>
-    <% end %>
-  <% end %>
   <li class="toolbar-item drop-down">
     <a href="#" aria-haspopup="true" title="<%= t(:label_more) %>" class="button">
       <%= op_icon("button--icon icon-show-more hidden-for-desktop") %>
