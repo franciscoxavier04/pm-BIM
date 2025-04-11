@@ -39,7 +39,6 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
   let(:project) { build_stubbed(:project) }
   let(:phase) { build_stubbed(:project_phase, project:) }
 
-
   context "with authorized user" do
     before do
       mock_permissions_for(user) do |mock|
