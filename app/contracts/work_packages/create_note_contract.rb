@@ -33,7 +33,7 @@ module WorkPackages
     def self.model = WorkPackage
 
     attribute :journal_notes do
-      errors.add(:journal_notes, :error_unauthorized) unless can?(:comment)
+      errors.add(:journal_notes, :error_unauthorized) unless adding_notes_allowed?
       errors.add(:journal_notes, :blank) if model.journal_notes.blank?
     end
 
@@ -45,14 +45,12 @@ module WorkPackages
 
     private
 
-    def can?(permission)
-      policy.allowed?(model, permission)
+    def adding_notes_allowed?
+      allowed_in_work_package?(:add_work_package_notes) || allowed_in_work_package?(:edit_work_packages)
     end
 
-    attr_writer :policy
-
-    def policy
-      @policy ||= WorkPackagePolicy.new(user)
+    def allowed_in_work_package?(permission)
+      user.allowed_in_work_package?(permission, model)
     end
   end
 end
