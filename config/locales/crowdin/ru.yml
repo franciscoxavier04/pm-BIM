@@ -993,7 +993,7 @@ ru:
         timeline_labels: "Временные метки"
         timeline_visible: "Показать диаграмму Ганта"
         timeline_zoom_level: "Масштаб диаграммы Гантта"
-        timestamps: "Baseline timestamps"
+        timestamps: "Метки времени базового уровня"
         sort_criteria: "Критерии сортировки"
         highlighted_attributes: "Выделенные атрибуты"
         highlighting_mode: "Режим подсветки"
