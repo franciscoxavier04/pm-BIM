@@ -260,7 +260,7 @@ module Storages
             type: :warning,
             error_code: :wrn_unexpected_content,
             timestamp: Time.current,
-            description: I18n.t("storages.health.connection_validation.unexpected_content.nextcloud")
+            description: I18n.t("storages.health.connection_validation.nextcloud.unexpected_content")
           )
         )
       end
