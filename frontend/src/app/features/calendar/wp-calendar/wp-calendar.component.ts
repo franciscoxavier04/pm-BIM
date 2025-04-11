@@ -400,11 +400,11 @@ export class WorkPackagesCalendarComponent extends UntilDestroyedMixin implement
       const startDate = this.workPackagesCalendar.eventDate(workPackage, 'start');
       const endDate = this.workPackagesCalendar.eventDate(workPackage, 'due');
 
-      const exclusiveEnd = moment(endDate).add(1, 'days').format('YYYY-MM-DD');
+      const exclusiveEnd = endDate && moment(endDate).add(1, 'days').format('YYYY-MM-DD');
 
       return {
         title: workPackage.subject,
-        start: startDate,
+        start: startDate || endDate,
         editable: this.workPackagesCalendar.dateEditable(workPackage),
         durationEditable: this.workPackagesCalendar.eventDurationEditable(workPackage),
         end: exclusiveEnd,
