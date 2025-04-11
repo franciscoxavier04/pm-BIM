@@ -207,14 +207,6 @@ export default class MyTimeTrackingController extends Controller {
 
     if (!calendarScrollGridWrapper) return;
 
-    // Add footer dividier if it doesn't exist
-    if (calendarScrollGridWrapper.querySelector('.fc-timegrid-footer-divider') === null) {
-      calendarScrollGridWrapper.insertAdjacentHTML(
-        'beforeend',
-        '<tr role="presentation" class="fc-scrollgrid-section fc-timegrid-footer-divider"><td class="fc-timegrid-divider fc-cell-shaded"></td></tr>',
-      );
-    }
-
     // Remove existing footer if it exists
     const existingFooter = document.querySelector('.fc-timegrid-footer-totals');
     if (existingFooter) { existingFooter.remove(); }
@@ -251,7 +243,7 @@ export default class MyTimeTrackingController extends Controller {
   buildHtmlFooter(days:string[]):HTMLTableRowElement {
     const tr = document.createElement('tr');
     tr.setAttribute('role', 'presentation');
-    tr.className = 'fc-scrollgrid-section fc-scrollgrid-section-footer fc-timegrid-footer-totals';
+    tr.className = 'fc-scrollgrid-section fc-timegrid-footer-totals';
 
     const td = document.createElement('td');
     td.setAttribute('role', 'presentation');
