@@ -75,7 +75,8 @@ module ::Overviews
     private
 
     def find_project_phase_and_project
-      @project_phase = Project::Phase.where(active: true).eager_load(:definition).find(params[:id])
+      @project_phase = Project::Phase.where(active: true).eager_load(:definition, :project).find(params[:id])
+      @project = @project_phase.project
     rescue ActiveRecord::RecordNotFound
       # TODO: Use rescue from in the controller, and remove all the rescue instances
       render_404
