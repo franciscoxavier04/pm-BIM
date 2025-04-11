@@ -21,7 +21,7 @@
         menu.with_item(
           label: t(:label_list),
           tag: :a,
-          href: url_for(params.permit(:controller, :date).merge(view_mode: "list", action: "week"))
+          href: url_for(params.permit(:controller, :date, :action).merge(view_mode: "list"))
         ) do |item|
           item.with_leading_visual_icon(icon: "list-unordered")
         end

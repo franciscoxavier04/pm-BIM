@@ -3,18 +3,7 @@
 <% calendar_page.with_row do %>
   <%= render(Primer::OpenProject::SubHeader.new) do |component|
         component.with_filter_component do
-          render(Primer::Alpha::SegmentedControl.new("aria-label": I18n.t(:label_meeting_date_time))) do |control|
-            %i[day week month].each do |action|
-              control.with_item(
-                tag: :a,
-                href: url_for(params.permit(:controller, :date).merge(action:, view_mode: "calendar")),
-                icon: "calendar", # TODO: Replace with proper icon
-                label: t("label_#{action}"),
-                title: t("label_#{action}"),
-                selected: (mode == action)
-              )
-            end
-          end
+          render(My::TimeTracking::ModeSwitcherComponent.new(current_mode: mode, view_mode: :calendar))
         end
 
         component.with_text { title }

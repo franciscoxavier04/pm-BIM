@@ -1,6 +1,10 @@
 <%= component_wrapper(tag: "div", data: wrapper_data) do %>
   <%= render(My::TimeTracking::HeaderComponent.new(mode:, date:, view_mode: :list)) %>
   <%= render(Primer::OpenProject::SubHeader.new) do |component|
+        component.with_filter_component do
+          render(My::TimeTracking::ModeSwitcherComponent.new(current_mode: mode, view_mode: :calendar))
+        end
+
         component.with_text { title }
 
         component.with_action_component do
