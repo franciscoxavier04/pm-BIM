@@ -109,8 +109,6 @@ class AttributeHelpTextsController < ApplicationController
 
   def find_entry
     @attribute_help_text = AttributeHelpText.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   def find_type_scope

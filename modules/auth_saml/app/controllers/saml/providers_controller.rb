@@ -180,8 +180,6 @@ module Saml
 
     def find_provider
       @provider = Saml::Provider.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      render_404
     end
 
     def check_provider_writable
