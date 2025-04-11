@@ -31,7 +31,7 @@ Work package relations indicate that work packages address a similar topic or cr
 4. Enter a description of the relation. It will be visible for both of the related work packages.
 5. Press the Enter key and click the **Save** button.
 
-![autocompletion](openproject_user_guide_wp_add_relations_button.png)
+!["Add relations" button under Relations tab in an OpenProject work package](openproject_user_guide_wp_add_relations_button.png)
 
 ![Add a related work package in OpenProject](openproject_user_guide_wp_add_relations_form.png)
 
@@ -67,7 +67,7 @@ For the relations of type Predecessor/Successor, you can also define **Lag**, wh
 > [!TIP]
 > The selected relation status will be automatically displayed in the work package that you enter. For example if you select "Blocks" in the current work package A and specify work package B, work package B will automatically show that it is "Blocked by" A.
 
-
+After adding related work packages, they are listed in the Relations tab. Related work packages are grouped by the type of relation into corresponding sections. The order of the sections matches the order of relation types in the drop-down menu of the +Relation button (i.e., relates to, predecessors, successors, etc.). The Children section is listed last. Within each section, the related work packages are ordered chronologically, based on when the relations were added.
 
 ### Moving related work packages
 
@@ -173,3 +173,5 @@ You can also add a column with information about parent work packages:
 3. Now the column with the information about a parent relation is displayed in the work package table.
 
 ![Select parent as column in OpenProject work package tables](openproject_user_guide_wp_table_show_parent.png)
+
+*Parent* column displays all direct children work packages. If you want to include all deeper hierarchy levels, i.e. include grandchildren and so on, use the **Descendants of** filter. Learn more about [filtering for descendants](../work-package-table-configuration/#filter-for-descendats-of-a-work-package).
