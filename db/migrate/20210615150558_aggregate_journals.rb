@@ -34,7 +34,6 @@ class AggregateJournals < ActiveRecord::Migration[6.1]
 
   # Classes have been removed by now
   class WikiContent < ApplicationRecord; end
-  class MeetingContent < ApplicationRecord; end
 
   # Class has been changed in the meantime.
   # It received a status enum which's column does not yet exist when this migration runs.
