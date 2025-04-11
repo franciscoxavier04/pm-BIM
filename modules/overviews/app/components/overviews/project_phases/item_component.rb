@@ -58,6 +58,7 @@ module Overviews
             href: edit_project_phase_path(model),
             data: { controller: "async-dialog" },
             aria: { label: I18n.t(:label_edit) },
+            test_selector: "project-life-cycle-edit-button-#{model.id}",
             underline: false
           )
         else

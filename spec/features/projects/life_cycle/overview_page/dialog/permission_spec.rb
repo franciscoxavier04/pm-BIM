@@ -38,6 +38,10 @@ RSpec.describe "Edit project phases on project overview page", :js, with_flag: {
   current_user { user }
 
   before do
+    # Mocking the Project::Phase.visible scope
+    allow(Project).to receive(:allowed_to).and_call_original
+    allow(Project).to receive(:allowed_to).with(user, :view_project_phases).and_return(project)
+
     mock_permissions_for(user) do |mock|
       mock.allow_in_project(*permissions, project:) # any project
     end
@@ -67,7 +71,10 @@ RSpec.describe "Edit project phases on project overview page", :js, with_flag: {
 
     it "does not show the edit buttons" do
       overview_page.within_life_cycles_sidebar do
-        expect(page).to have_no_css("[data-test-selector='project-life-cycles-edit-button']")
+        project_life_cycles.each do |lc|
+          expect(page)
+            .to have_no_css("[data-test-selector='project-life-cycle-edit-button-#{lc.id}']")
+        end
       end
     end
   end
@@ -77,7 +84,10 @@ RSpec.describe "Edit project phases on project overview page", :js, with_flag: {
 
     it "shows the edit buttons" do
       overview_page.within_life_cycles_sidebar do
-        expect(page).to have_css("[data-test-selector='project-life-cycles-edit-button']")
+        project_life_cycles.each do |lc|
+          expect(page)
+            .to have_css("[data-test-selector='project-life-cycle-edit-button-#{lc.id}']")
+        end
       end
     end
   end
