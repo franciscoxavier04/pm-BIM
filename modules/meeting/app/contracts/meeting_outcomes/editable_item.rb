@@ -33,7 +33,8 @@ module MeetingOutcomes
     extend ActiveSupport::Concern
 
     included do
-      validate :validate_editable, :validate_meeting_existence, :user_allowed_to_add, :validate_not_in_backlog
+      validate :validate_editable, :validate_meeting_existence, :user_allowed_to_add
+      validate :validate_not_in_backlog if OpenProject::FeatureDecisions.meeting_backlogs_active?
     end
 
     protected
