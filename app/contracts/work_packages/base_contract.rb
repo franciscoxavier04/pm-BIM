@@ -548,7 +548,8 @@ module WorkPackages
     def validate_phase_active_in_project
       if model.project.present? &&
         model.project_phase_definition_id.present? &&
-        !assignable_project_phases.exists?(definition_id: model.project_phase_definition_id)
+        !(model.project_changed? && !model.project_phase_definition_changed?) &&
+        !project_definition_assignable?
         errors.add :project_phase_id, :inclusion
       end
     end
@@ -623,6 +624,10 @@ module WorkPackages
 
     def type_inexistent?
       model.type.is_a?(Type::InexistentType)
+    end
+
+    def project_definition_assignable?
+      assignable_project_phases.exists?(definition_id: model.project_phase_definition_id)
     end
 
     # Returns a scope of status the user is able to apply

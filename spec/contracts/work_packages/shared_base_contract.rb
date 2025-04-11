@@ -34,11 +34,11 @@ RSpec.shared_examples "work package contract" do
   include_context "ModelContract shared context"
   shared_let(:persisted_type) { create(:type) }
   shared_let(:persisted_project) { create(:project, types: [persisted_type]) }
+  shared_let(:persisted_other_project) { create(:project, types: [persisted_type]) }
   shared_let(:persisted_project_version) { create(:version, project: persisted_project) }
   shared_let(:persisted_other_project_version) { create(:version) }
   shared_let(:persisted_status) { create(:status) }
   shared_let(:persisted_priority) { create(:priority) }
-  shared_let(:other_persisted_project) { create(:project, types: [persisted_type]) }
   shared_let(:persisted_possible_assignee) do
     create(:user, member_with_permissions: { persisted_project => %i[view_work_packages work_package_assigned] })
   end
@@ -53,7 +53,8 @@ RSpec.shared_examples "work package contract" do
   shared_let(:persisted_inactive_project_phase) { create(:project_phase, :inactive, project: persisted_project) }
 
   shared_let(:persisted_user) do
-    create(:user, member_with_roles: { persisted_project => persisted_user_role })
+    create(:user, member_with_roles: { persisted_project => persisted_user_role,
+                                       persisted_other_project => persisted_user_role })
   end
 
   let(:other_user) { build_stubbed(:user) }

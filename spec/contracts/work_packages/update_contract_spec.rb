@@ -95,7 +95,7 @@ RSpec.describe WorkPackages::UpdateContract do
     end
 
     describe "project_id" do
-      let(:target_project) { other_persisted_project }
+      let(:target_project) { persisted_other_project }
       let(:target_permissions) { [:move_work_packages] }
 
       before do
@@ -322,6 +322,32 @@ RSpec.describe WorkPackages::UpdateContract do
         let(:parent_visible) { false }
 
         it_behaves_like "contract is invalid", parent_id: %i[error_unauthorized]
+      end
+    end
+
+    describe "project_phase_definition", with_flag: { stages_and_gates: true } do
+      let(:permissions) { super() + %i[view_project_phases move_work_packages] }
+
+      context "when not changing the value but assigning a project in which the phase is not active" do
+        before do
+          # This leads to the project already having had the phase_definition assigned
+          work_package.project_phase_definition = persisted_project_phase_definition
+          work_package.save
+          work_package.reload
+
+          work_package.project = persisted_other_project
+        end
+
+        it_behaves_like "contract is valid"
+      end
+
+      context "when changing the value and assigning a project in which the phase is not active" do
+        before do
+          work_package.project_phase_definition = persisted_project_phase_definition
+          work_package.project = persisted_other_project
+        end
+
+        it_behaves_like "contract is invalid", project_phase_id: :inclusion
       end
     end
   end
