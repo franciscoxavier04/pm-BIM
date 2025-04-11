@@ -75,7 +75,7 @@ RSpec.describe Storages::Admin::HealthStatusController do
       validator = instance_double(Storages::Peripherals::ConnectionValidators::NextcloudValidator)
       report = Storages::Peripherals::ConnectionValidators::ValidatorResult.new
       allow(Storages::Peripherals::ConnectionValidators::NextcloudValidator).to receive(:new).and_return(validator)
-      allow(validator).to receive_messages(validate: report, report_cache_key: cache_key)
+      allow(validator).to receive_messages(call: report, report_cache_key: cache_key)
     end
 
     it "creates and caches a health status report and redirects to show" do
@@ -92,7 +92,7 @@ RSpec.describe Storages::Admin::HealthStatusController do
       validator = instance_double(Storages::Peripherals::ConnectionValidators::NextcloudValidator)
       report = Storages::Peripherals::ConnectionValidators::ValidatorResult.new
       allow(Storages::Peripherals::ConnectionValidators::NextcloudValidator).to receive(:new).and_return(validator)
-      allow(validator).to receive_messages(validate: report, report_cache_key: cache_key)
+      allow(validator).to receive_messages(call: report, report_cache_key: cache_key)
     end
 
     it "creates and caches a health status report and updates page via turbo stream" do

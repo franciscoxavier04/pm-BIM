@@ -44,7 +44,7 @@ RSpec.describe Storages::Admin::Health::HealthReportComponent, type: :component 
 
     it "renders a placeholder blankslate" do
       expect(page).to have_text("No report available")
-      expect(page).to have_link("Run tests now")
+      expect(page).to have_link("Run checks now")
     end
   end
 
