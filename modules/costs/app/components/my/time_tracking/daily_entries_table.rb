@@ -45,6 +45,8 @@ module My
       def has_actions? = true
 
       def action_row_header_content
+        return if options[:mode] == :month
+
         render(Primer::Beta::IconButton.new(
                  icon: "plus",
                  scheme: :invisible,
