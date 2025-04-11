@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Pages::StructuredMeeting
+module Pages::Meeting
   class History < ::Pages::Page
     def initialize(meeting)
       super()

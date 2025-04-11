@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,32 +28,22 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module API
-  module V3
-    module MeetingContents
-      class MeetingContentRepresenter < ::API::Decorators::Single
-        include API::Decorators::LinkedResource
-        include API::Caching::CachedRepresenter
-        include ::API::V3::Attachments::AttachableRepresenterMixin
+require_relative "../show"
 
-        self_link title_getter: ->(*) {}
-
-        property :id
-
-        associated_resource :project,
-                            link: ->(*) do
-                              next unless represented.project.present?
-
-                              {
-                                href: api_v3_paths.project(represented.project.id),
-                                title: represented.project.name
-                              }
-                            end
-
-        def _type
-          "MeetingContent"
-        end
+module Pages::Meetings::Mobile
+  class Show < ::Pages::Meetings::Show
+    def expect_participants(count: 1)
+      within(meeting_details_container) do
+        expect(page).to have_text(Meeting.human_attribute_name(:participant, count:))
+        expect(page).to have_link("Show all")
       end
+    end
+
+    def open_participant_form
+      within(meeting_details_container) do
+        click_link_or_button "Show all"
+      end
+      expect(page).to have_modal("Participants")
     end
   end
 end
