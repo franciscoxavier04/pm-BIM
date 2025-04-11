@@ -1953,7 +1953,7 @@ de:
       board_view: Advanced Boards
       conditional_highlighting: Conditional Highlighting
       comments_with_restricted_visibility: Comments With Restricted Visibility
-      custom_actions: Custom Actions
+      custom_actions: Benutzerdefinierte Aktionen
       custom_field_hierarchies: Custom fields of type hierarchy
       customize_life_cycle: Customize Life Cycle
       date_alerts: Date Alerts
@@ -1968,7 +1968,7 @@ de:
       readonly_work_packages: Readonly Work Packages
       sso_auth_providers: Single sign-on
       team_planner_view: Team Planner View
-      two_factor_authentication: 2FA Authentication
+      two_factor_authentication: 2FA-Authentifizierung
       virus_scanning: Antivirus Scanning
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
@@ -1993,8 +1993,8 @@ de:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
-          rename: "Rename attribute groups"
+          groups: "Neue Attributgruppen hinzufügen"
+          rename: "Attributgruppen umbenennen"
           related: "Add a table of related work packages"
       readonly_work_packages:
         description: "Mark work packages as read-only for specific statuses."
@@ -2009,7 +2009,7 @@ de:
         more_info: "Note: the used logo will be publicly accessible."
         description: Customize your OpenProject installation with your own logo and colors.
       custom_actions:
-        title: "Custom actions"
+        title: "Benutzerdefinierte Aktionen"
         description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
@@ -3284,7 +3284,7 @@ de:
   notice_successful_delete: "Erfolgreich gelöscht."
   notice_successful_cancel: "Erfolgreiche Absage."
   notice_successful_update: "Erfolgreich aktualisiert."
-  notice_unsuccessful_update: "Update failed."
+  notice_unsuccessful_update: "Aktualisierung fehlgeschlagen."
   notice_successful_update_custom_fields_added_to_project: |
     Erfolgreich aktualisiert. Die benutzerdefinierten Felder der aktivierten Typen werden automatisch
     im Arbeitspaket-Formular aktiviert. <a href="%{url}" target="_blank">Siehe mehr</a>.
@@ -3865,7 +3865,7 @@ de:
     work_packages:
       not_allowed_text: "Sie haben nicht die notwendigen Rechte, um diese Seite zu sehen."
       activities:
-        enable_comments_with_restricted_visibility: "Enable restricted visibility comments"
+        enable_comments_with_restricted_visibility: "Kommentare mit eingeschränkter Sichtbarkeit aktivieren"
         helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to select roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"

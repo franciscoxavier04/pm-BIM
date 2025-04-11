@@ -250,6 +250,13 @@ zh-TW:
         oidc_cant_refresh_token: 在嘗試檢查您存取儲存空間時發生錯誤。請檢查伺服器日誌以取得進一步資訊。
         oidc_non_oidc_user: 目前使用者雖然已配置，但不是由 OpenID Connect (OIDC) 身分提供者配置的。請使用 OIDC 配置的使用者重新執行檢查。
         oidc_non_provisioned_user: 當前用戶不是由 OpenID Connect Identity Provider 提供。請使用提供的使用者重新執行檢查。
+        one_drive:
+          client_cant_delete_folder: The client is having trouble deleting folders. Please check the setup documentation for your storage.
+          client_write_permission_missing: The client seems to have write permissions missing. Please check the setup documentation for your storage.
+          drive_id_not_found: The configured drive id could not be found. Please check the configuration.
+          drive_id_wrong: The configured drive id seems invalid. Please check the configuration.
+          existing_test_folder: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
+          unexpected_content: Unexpected content found in the drive.
         placeholder: 根據伺服器檢查您的連線。
         subtitle: 連線驗證
         tenant_id_wrong: 設定的目錄 (租戶) id 無效。請檢查設定。

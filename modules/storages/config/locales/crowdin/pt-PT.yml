@@ -250,6 +250,13 @@ pt-PT:
         oidc_cant_refresh_token: Ocorreu um erro ao tentar verificar o seu acesso ao armazenamento. Consulte os registos do servidor para obter mais informações.
         oidc_non_oidc_user: O utilizador atual, embora aprovisionado, não foi aprovisionado por um fornecedor de identidade OpenID Connect (OIDC). Volte a executar a verificação com um utilizador aprovisionado pelo OIDC.
         oidc_non_provisioned_user: O utilizador atual não é fornecido por um fornecedor de identidade OpenID Connect. Volte a executar a verificação com um utilizador fornecido.
+        one_drive:
+          client_cant_delete_folder: The client is having trouble deleting folders. Please check the setup documentation for your storage.
+          client_write_permission_missing: The client seems to have write permissions missing. Please check the setup documentation for your storage.
+          drive_id_not_found: The configured drive id could not be found. Please check the configuration.
+          drive_id_wrong: The configured drive id seems invalid. Please check the configuration.
+          existing_test_folder: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
+          unexpected_content: Unexpected content found in the drive.
         placeholder: Verifique a sua ligação com o servidor.
         subtitle: Validação da ligação
         tenant_id_wrong: O ID do diretório (inquilino) configurado é inválido. Verifique a configuração.

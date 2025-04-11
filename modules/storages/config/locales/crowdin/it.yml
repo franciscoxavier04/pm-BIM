@@ -250,6 +250,13 @@ it:
         oidc_cant_refresh_token: Si è verificato un errore durante il tentativo di verificare il tuo accesso all'archiviazione. Controlla i log del server per ulteriori informazioni.
         oidc_non_oidc_user: L'utente attuale, pur essendo stato registrato, non è stato fornito da un provider di identità OpenID Connect (OIDC). Esegui nuovamente il controllo con un utente fornito da OIDC.
         oidc_non_provisioned_user: L'utente attuale non è fornito da un provider di identità OpenID Connect. Esegui nuovamente il controllo con un utente fornito.
+        one_drive:
+          client_cant_delete_folder: The client is having trouble deleting folders. Please check the setup documentation for your storage.
+          client_write_permission_missing: The client seems to have write permissions missing. Please check the setup documentation for your storage.
+          drive_id_not_found: The configured drive id could not be found. Please check the configuration.
+          drive_id_wrong: The configured drive id seems invalid. Please check the configuration.
+          existing_test_folder: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
+          unexpected_content: Unexpected content found in the drive.
         placeholder: Verifica la tua connessione con il server.
         subtitle: Verifica della connessione
         tenant_id_wrong: L'ID della directory non è valido. Verifica la configurazione.

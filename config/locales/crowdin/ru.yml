@@ -979,7 +979,7 @@ ru:
         timeline_labels: "Временные метки"
         timeline_visible: "Показать диаграмму Ганта"
         timeline_zoom_level: "Масштаб диаграммы Гантта"
-        timestamps: "Baseline timestamps"
+        timestamps: "Метки времени базового уровня"
         sort_criteria: "Критерии сортировки"
         highlighted_attributes: "Выделенные атрибуты"
         highlighting_mode: "Режим подсветки"
@@ -1051,7 +1051,7 @@ ru:
         consented_at: "Согласен с"
       user_preference:
         comments_sorting: "Показывать комментарии"
-        dismissed_enterprise_banners: "Hidden enterprise banners"
+        dismissed_enterprise_banners: "Скрытые корпоративные баннеры"
         impaired: "Режим отображения для людей с ограниченными возможностями"
         auto_hide_popups: "Автоматически скрывать уведомления об успешных действиях"
         warn_on_leaving_unsaved: "При покидании рабочего пакета предупреждать о не сохраненных изменениях"
@@ -1310,7 +1310,7 @@ ru:
         queries/principals/filters/restricted_mentionable_on_work_package_filter:
           attributes:
             values:
-              single_value_requirement: "must be a single work package"
+              single_value_requirement: "должно быть одним пакетом работ"
         relation:
           typed_dag:
             circular_dependency: "Зацикливание зависимостей."
@@ -2032,53 +2032,53 @@ ru:
   direction: Слева направо
   ee:
     features:
-      baseline_comparison: Baseline Comparisons
-      board_view: Advanced Boards
-      conditional_highlighting: Conditional Highlighting
-      comments_with_restricted_visibility: Comments With Restricted Visibility
-      custom_actions: Custom Actions
+      baseline_comparison: Сравнение базовых уровней
+      board_view: Расширенные доски
+      conditional_highlighting: Условное выделение
+      comments_with_restricted_visibility: Комментарии с ограниченной видимостью
+      custom_actions: Пользовательские действия
       custom_field_hierarchies: Custom fields of type hierarchy
-      customize_life_cycle: Customize Life Cycle
-      date_alerts: Date Alerts
-      define_custom_style: Custom theme and logo
-      edit_attribute_groups: Edit Attribute Groups
-      gantt_pdf_export: Gantt PDF Export
+      customize_life_cycle: Настройка жизненного цикла
+      date_alerts: Дата оповещения
+      define_custom_style: Пользовательская тема и логотип
+      edit_attribute_groups: Редактировать группы атрибутов
+      gantt_pdf_export: Экспорт диаграммы Ганта в PDF
       grid_widget_wp_graph: Grid Widget Work Package Graph
-      ldap_groups: LDAP users and group sync
-      one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
-      placeholder_users: Placeholder Users
-      project_list_sharing: Project List Sharing
-      readonly_work_packages: Readonly Work Packages
-      sso_auth_providers: Single sign-on
-      team_planner_view: Team Planner View
-      two_factor_authentication: 2FA Authentication
-      virus_scanning: Antivirus Scanning
+      ldap_groups: Синхронизация пользователей LDAP и групп
+      one_drive_sharepoint_file_storage: Файловое хранилище OneDrive/SharePoint
+      placeholder_users: Пользователи-заполнители
+      project_list_sharing: Совместное использование списка проектов
+      readonly_work_packages: Пакеты работ только для чтения
+      sso_auth_providers: Единый вход (SSO)
+      team_planner_view: Просмотр командных планировщиков
+      two_factor_authentication: 2FA аутентификация
+      virus_scanning: Антивирусное сканирование
       work_package_query_relation_columns: Work Package Query Relation Columns
-      work_package_sharing: Share work packages with external users
-      work_package_subject_generation: Work Package Subject Generation
+      work_package_sharing: Поделиться пакетами работ с внешними пользователями
+      work_package_subject_generation: Создание темы пакета работ
     upsale:
       title: "Корпоративное дополнение"
-      plan_title: "Enterprise %{plan} add-on"
-      plan_name: "%{plan} enterprise plan"
-      plan_text_html: "Available only through the %{plan_name}."
+      plan_title: "Дополнение корпоративной версии %{plan}"
+      plan_name: "Корпоративная версия %{plan}"
+      plan_text_html: "Доступно только в %{plan_name}."
       link_title: "Дополнительная информация"
-      hide_banner: "Hide this banner"
+      hide_banner: "Скрыть этот баннер"
       baseline_comparison:
-        description: Highlight changes made to this list since any point in the past.
+        description: Выделите изменения, внесенные в этот список с любого момента в прошлом.
       work_package_subject_generation:
-        description: "Create automatically generated subjects using referenced attributes and text."
+        description: "Создать автоматически генерируемые темы, используя атрибуты и текст."
       customize_life_cycle:
         description: "Создание и организация этапов и стадий проекта, отличных от тех, что предусмотрены планированием цикла проекта PM2."
       conditional_highlighting:
-        description: "Need certain work packages to stand out from the mass? Use conditional highlighting in the work packages table."
+        description: "Нужно ли выделять определённые пакеты работ из общего списка? Используйте условное выделение в таблице пакетов работ."
       work_package_query_relation_columns:
-        description: "Need to see relations or child elements in the work package list?"
+        description: "Нужно видеть отношения или дочерние элементы в списке пакетов работ?"
       edit_attribute_groups:
-        description: "Customize form configuration with these additional add-ons:"
+        description: "Настроить конфигурацию формы с помощью этих дополнений:"
         features:
-          groups: "Add new attribute groups"
+          groups: "Добавить новую группу атрибутов"
           rename: "Rename attribute groups"
-          related: "Add a table of related work packages"
+          related: "Добавить таблицу связанных пакетов работ"
       readonly_work_packages:
         description: "Mark work packages as read-only for specific statuses."
       custom_field_hierarchies:
@@ -2088,20 +2088,20 @@ ru:
       work_package_sharing:
         description: "Share work packages with users who are not members of the project."
       define_custom_style:
-        title: "Custom color theme and logo"
+        title: "Пользовательская цветовая тема и логотип"
         more_info: "Note: the used logo will be publicly accessible."
         description: Customize your OpenProject installation with your own logo and colors.
       custom_actions:
-        title: "Custom actions"
+        title: "Пользовательские действия"
         description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
-        title: Placeholder users
+        title: Пользователи-заполнители
         description: >
           Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
       comments_with_restricted_visibility:
-        title: "For your eyes only"
+        title: "Только для вас"
         description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly. Available only through the enterprise professional plan."
   enumeration_activities: "Отслеживание времени"
   enumeration_work_package_priorities: "Приоритеты пакета работ"
@@ -3368,7 +3368,7 @@ ru:
   notice_successful_delete: "Удаление выполнено."
   notice_successful_cancel: "Отмена прошла успешно."
   notice_successful_update: "Обновление выполнено."
-  notice_unsuccessful_update: "Update failed."
+  notice_unsuccessful_update: "Ошибка обновления."
   notice_successful_update_custom_fields_added_to_project: |
     Успешное обновление. Пользовательские поля активированных типов автоматически активируются
     в форме пакета работ. <a href="%{url}" target="_blank">Подробнее</a>.
