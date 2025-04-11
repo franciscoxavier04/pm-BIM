@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -58,7 +60,13 @@ module WorkPackage::SchedulingRules
   #   C is 2017/07/28 (CP due date: 25, 26 and 27 is the 2 days lag => 28)
   #
   # The soonest start for this work package is the maximum of these values: 2017/07/28.
-  def soonest_start
+  #
+  # @param working_days_from [WorkPackage, nil] the work package for which to
+  #   find the next working day after the soonest start given by the scheduling
+  #   relations. If nil, the work package itself is used. Useful for a work
+  #   package calculating the soonest start given by its parent as it may have a
+  #   different `ignore_working_days` value than its parent.
+  def soonest_start(working_days_from: nil)
     @scheduling_relations_soonest_start ||=
       Relation
         .used_for_scheduling_of(self)
@@ -69,7 +77,7 @@ module WorkPackage::SchedulingRules
     # The final result should not be cached as it depends on
     # ignore_non_working_days value, which can change between consecutive calls
     # to #soonest_start
-    WorkPackages::Shared::Days.for(self)
-                              .soonest_working_day(@scheduling_relations_soonest_start)
+    days = WorkPackages::Shared::Days.for(working_days_from || self)
+    days.soonest_working_day(@scheduling_relations_soonest_start)
   end
 end

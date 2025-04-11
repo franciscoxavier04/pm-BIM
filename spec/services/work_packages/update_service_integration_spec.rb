@@ -1056,6 +1056,102 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
       end
     end
 
+    context "when the work package has its own predecessor which ends later than its future " \
+            "parent predecessor (Bug #63296)" do
+      let_work_packages(<<~TABLE)
+        subject                | MTWTFSSmtwtf   | scheduling mode | predecessors
+        new_parent_predecessor | XXX            | manual          |
+        new_parent             |    XX          | automatic       | new_parent_predecessor
+        predecessor            |        XXX     | manual          |
+        work_package           |           XX   | automatic       | predecessor
+      TABLE
+      let(:attributes) { { parent: new_parent } }
+
+      it "sets its dates according to its own soonest start and its new parent soonest start" \
+         "then it sets parent's dates to be the same as the work package" do
+        expect(subject).to be_success
+        expect(work_package.reload.parent).to eq new_parent
+        expect(subject.all_results.map(&:subject)).to contain_exactly("work_package", "new_parent")
+
+        expect_work_packages(subject.all_results + [new_parent_predecessor, predecessor], <<~TABLE)
+          subject                | MTWTFSSmtwtf   |
+          new_parent_predecessor | XXX            |
+          new_parent             |           XX   |
+          predecessor            |        XXX     |
+          work_package           |           XX   |
+        TABLE
+      end
+    end
+
+    context "when the work package changes its parent" do
+      let_work_packages(<<~TABLE)
+        subject                | MTWTFSSmtwtf   | scheduling mode | predecessors
+        new_parent_predecessor | XXX            | manual          |
+        new_parent             |    XX          | automatic       | new_parent_predecessor
+        old_parent_predecessor |        XXX     | manual          |
+        old_parent             |           XX   | automatic       | old_parent_predecessor
+          work_package         |           XX   | automatic       |
+      TABLE
+      let(:attributes) { { parent: new_parent } }
+
+      it "sets its dates according to its own soonest start and its new parent " \
+         "soonest start, not its old parent" do
+        expect(subject).to be_success
+        expect(work_package.reload.parent).to eq new_parent
+        expect(subject.all_results.map(&:subject)).to contain_exactly("work_package")
+
+        expect_work_packages(WorkPackage.all, <<~TABLE)
+          subject                | MTWTFSSmtwtf   | scheduling mode
+          new_parent_predecessor | XXX            | manual
+          new_parent             |    XX          | automatic
+            work_package         |    XX          | automatic
+          old_parent_predecessor |        XXX     | manual
+          old_parent             |           XX   | automatic
+        TABLE
+      end
+    end
+
+    context "when the work package and the parent being set have different ignore_working_days values" do
+      before do
+        set_non_working_week_days("saturday", "sunday")
+      end
+
+      let_work_packages(<<~TABLE)
+        hierarchy          | MTWTFSSmt | scheduling mode | days counting     | predecessors
+        parent_predecessor |   XXX     | manual          | working days only |
+        parent             |        XX | automatic       | working days only | parent_predecessor
+          wp all days      |        XX | automatic       | working days only |
+        # predecessor is here so that work_package can be in automatic scheduling mode
+        predecessor        | XX        | manual          | working days only |
+        work_package       |   XX      | automatic       | all days          | predecessor
+      TABLE
+      let(:attributes) { { parent: } }
+
+      it "calculates correctly the soonest working day for the child using the child's ignore_working_days value" do
+        # actually it does not calculate dates correctly in SetAttributesService,
+        # but the rescheduling happening later in the UpdateService moves it
+        # correctly and updates the parent accordingly
+        expect(subject).to be_success
+        expect(work_package.reload.parent).to eq parent
+
+        # TODO: "parent" is there twice because it is updated once in the
+        # SetScheduleService which sets the parent dates to the children's
+        # dates, and once in the UpdateAncestorsService which sets the
+        # ignore_non_working_days value. This problem is registered in bug
+        # #61758.
+        expect(subject.all_results.map(&:subject)).to contain_exactly("work_package", "parent", "parent")
+
+        expect_work_packages(WorkPackage.all, <<~TABLE)
+          subject            | MTWTFSSmt | scheduling mode | days counting
+          parent_predecessor |   XXX     | manual          | working days only
+          parent             |      XXXX | automatic       | all days
+            wp all days      |        XX | automatic       | working days only
+          predecessor        | XX        | manual          | working days only
+          work_package       |      XX   | automatic       | all days
+        TABLE
+      end
+    end
+
     context "when the work package is automatically scheduled, has a child and no dates" do
       let_work_packages(<<~TABLE)
         hierarchy              | MTWTFSS        | scheduling mode | predecessors

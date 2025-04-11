@@ -398,7 +398,7 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
 
       days.soonest_working_day(new_start_date_from_parent)
     else
-      min_start = new_start_date_from_parent || work_package.soonest_start
+      min_start = [new_start_date_from_parent, work_package.soonest_start].compact.max
       days.soonest_working_day(min_start)
     end
   end
@@ -409,7 +409,7 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
     return unless work_package.parent_id_changed? &&
                   work_package.parent
 
-    work_package.parent.soonest_start
+    work_package.parent.soonest_start(working_days_from: work_package)
   end
 
   def new_due_date(min_start)
