@@ -51,13 +51,13 @@ module WikiHelper
     # Add ancestors
     breadcrumbs += page.ancestors.reverse.map do |parent|
       {
-        href: url_for(controller: 'wiki', action: 'show', project_id: parent.project, id: parent.title),
+        href: url_for(controller: "wiki", action: "show", project_id: parent.project, id: parent.title),
         text: parent.breadcrumb_title
       }
     end
 
     # Optional action
-    breadcrumbs <<  action if action
+    breadcrumbs << action if action
 
     # Final page title (just a string)
     breadcrumbs << h(page.breadcrumb_title) unless action
