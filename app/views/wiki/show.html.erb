@@ -64,23 +64,6 @@ See COPYRIGHT and LICENSE files for more details.
         end
       end
     end
-    header.with_action_button(
-      tag: :a,
-      mobile_icon: :download,
-      mobile_label: t("js.label_export"),
-      size: :medium,
-      href: "", # Empty href for modal trigger
-      title: t("js.label_export"),
-      class: "modal-delivery-element--activation-link icon-context icon-export",
-      data: {
-        augmented_model_wrapper: true,
-        modal_class_name: "wiki-export---modal"
-      }
-    ) do |button|
-      button.with_leading_visual_icon(icon: :download)
-      render partial: "wiki/wiki_export_modal"
-      t("js.label_export")
-    end
     header.with_action_menu(
       menu_arguments: { anchor_align: :end },
       button_arguments: { icon: "op-kebab-vertical", "aria-label": t(:label_menu) }
@@ -181,6 +164,18 @@ See COPYRIGHT and LICENSE files for more details.
           ) do |item|
           item.with_leading_visual_icon(icon: "op-printer")
         end
+        if User.current.allowed_in_project?(:export_wiki_pages, @project)
+          menu.with_item(
+            tag: :a,
+            label: t("js.label_export"),
+            size: :medium,
+            href: "",
+            title: t("js.label_export"),
+            classes: "modal-delivery-element--activation-link"
+            ) do |item|
+            item.with_leading_visual_icon(icon: :download)
+          end
+        end
         menu.with_item(
           tag: :a,
           label: t(:label_table_of_contents),
@@ -194,6 +189,15 @@ See COPYRIGHT and LICENSE files for more details.
   end
 %>
 
+<section data-augmented-model-wrapper
+         data-modal-class-name="wiki-export---modal">
+  <%= link_to t("js.label_export"),
+              "",
+              title: t("js.label_export"),
+              style: "display: none;"
+               %>
+  <%= render partial: "wiki/wiki_export_modal" %>
+</section>
 <%=
   render(Primer::OpenProject::SubHeader.new) do |subheader|
     if @editable && @page && User.current.allowed_in_project?(:edit_wiki_pages, @project)
@@ -222,41 +226,6 @@ See COPYRIGHT and LICENSE files for more details.
 <% title "#{t(:project_module_wiki)} | #{title}" %>
 <% @formatted_text = format_text @page, :text, attachments: @page.attachments %>
 <% description strip_tags(@formatted_text) %>
-
-<%= toolbar title: title, html: { class: "-with-dropdown" } do %>
-  <li class="toolbar-item drop-down">
-    <a href="#" aria-haspopup="true" title="<%= t(:label_more) %>" class="button">
-      <%= op_icon("button--icon icon-show-more hidden-for-desktop") %>
-      <span class="button--text"><%= t(:label_more) %></span>
-      <%= op_icon("button--dropdown-indicator") %>
-    </a>
-    <ul style="display:none;" class="menu-drop-down-container">
-      <li>
-        <%= link_to t(:button_print),
-                    "",
-                    title: t("wiki.print_hint"),
-                    class: "icon-context icon-print",
-                    data: {
-                      controller: "print",
-                      action: "print#triggerPrint"
-                    } %>
-      </li>
-      <% if User.current.allowed_in_project?(:export_wiki_pages, @project) %>
-        <section data-augmented-model-wrapper
-                 data-modal-class-name="wiki-export---modal">
-          <li>
-            <%= link_to I18n.t("js.label_export"),
-                        "",
-                        title: I18n.t("js.label_export"),
-                        class: "modal-delivery-element--activation-link icon-context icon-export" %>
-          </li>
-          <%= render partial: "wiki/wiki_export_modal" %>
-        </section>
-      <% end %>
-      <%= li_unless_nil(link_to_if_authorized(t(:label_table_of_contents), { controller: "/wiki", action: "index", project_id: @project.identifier, id: @page }, class: "icon-context icon-view-list")) %>
-    </ul>
-  </li>
-<% end %>
 
 <% if params[:version] %>
   <hr>
