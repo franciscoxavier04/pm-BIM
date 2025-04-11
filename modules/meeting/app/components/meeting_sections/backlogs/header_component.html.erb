@@ -3,7 +3,14 @@
     if show?
       flex_layout(align_items: :flex_start) do |flex|
         flex.with_column(flex: 1, pt: 1) do
-          render(Primer::OpenProject::BorderBox::CollapsibleHeader.new(title: I18n.t("label_agenda_backlog"), box: @box, description: I18n.t("text_agenda_backlog"), count: @backlog.agenda_items.count, collapsed: @collapsed))
+          render(
+            Primer::OpenProject::BorderBox::CollapsibleHeader.new(
+              title: I18n.t("label_agenda_backlog"), box: @box, description: I18n.t("text_agenda_backlog"), count: @backlog.agenda_items.count, collapsed: @collapsed, data: {
+                keep_collapsed_state_target: "section",
+                action: "click->keep-collapsed-state#rememberState"
+              }
+            )
+          )
         end
 
         flex.with_column(classes: "hide-when-print") do

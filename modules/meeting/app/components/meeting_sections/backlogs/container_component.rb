@@ -34,9 +34,10 @@ module MeetingSections
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(meeting:)
+    def initialize(collapsed:, meeting:)
       super
 
+      @collapsed = collapsed
       @meeting = meeting
       @backlog = meeting.backlog
     end

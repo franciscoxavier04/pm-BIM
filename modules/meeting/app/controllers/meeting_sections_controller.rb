@@ -182,7 +182,7 @@ class MeetingSectionsController < ApplicationController
       errors << call.errors unless call.success?
     end
 
-    update_backlog_via_turbo_stream
+    update_backlog_via_turbo_stream(collapsed: true.to_s)
     render_error_flash_message_via_turbo_stream(message: t("text_backlog_clear_error")) if errors.any?
 
     respond_with_turbo_streams
@@ -225,5 +225,9 @@ class MeetingSectionsController < ApplicationController
     update_all_via_turbo_stream
     # show additional base error message
     render_base_error_in_flash_message_via_turbo_stream(call.errors)
+  end
+
+  def toggle_params
+    @toggle_params ||= params.permit(:id, :collapsed)
   end
 end

@@ -34,13 +34,13 @@ module MeetingSections
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(backlog:, box: nil)
+    def initialize(backlog:, collapsed:, box: nil)
       super
-
       @backlog = backlog
       @meeting = backlog.meeting
       @box = box
-      @collapsed = collapsed?
+      @collapsed = collapsed == "true" unless collapsed.nil?
+      @collapsed = default if @collapsed.nil?
     end
 
     private
@@ -49,7 +49,7 @@ module MeetingSections
       !@meeting.closed?
     end
 
-    def collapsed?
+    def default
       if @meeting.open?
         false
       elsif @meeting.in_progress?

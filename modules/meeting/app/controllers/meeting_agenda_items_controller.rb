@@ -88,7 +88,7 @@ class MeetingAgendaItemsController < ApplicationController
       reset_meeting_from_agenda_item
       # enable continue editing
       add_item_via_turbo_stream(clear_slate: false)
-      update_backlog_via_turbo_stream
+      update_backlog_via_turbo_stream(collapsed: nil)
       update_header_component_via_turbo_stream
       update_sidebar_details_component_via_turbo_stream
     else
@@ -171,7 +171,8 @@ class MeetingAgendaItemsController < ApplicationController
       if call.result[:section_changed]
         move_item_to_other_section_via_turbo_stream(
           old_section: call.result[:old_section],
-          current_section: call.result[:current_section]
+          current_section: call.result[:current_section],
+          collapsed: params[:collapsed]
         )
       else
         move_item_within_section_via_turbo_stream

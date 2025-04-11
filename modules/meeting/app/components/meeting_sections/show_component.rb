@@ -37,7 +37,7 @@ module MeetingSections
     with_collection_parameter :meeting_section
 
     def initialize(meeting_section:, first_and_last: [], form_hidden: true, form_type: :simple, insert_target_modified: true,
-                   force_wrapper: false, state: :show, collapsed: false)
+                   force_wrapper: false, state: :show, collapsed: nil)
       super
 
       @meeting = meeting_section.meeting

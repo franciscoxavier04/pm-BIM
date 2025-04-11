@@ -7,7 +7,7 @@
         end
       elsif OpenProject::FeatureDecisions.meeting_backlogs_active? && render_backlog? && !@meeting.closed?
         component.with_header do
-          render(MeetingSections::Backlogs::HeaderComponent.new(backlog: @meeting_section, box: component))
+          render(MeetingSections::Backlogs::HeaderComponent.new(backlog: @meeting_section, box: component, collapsed: @collapsed))
         end
       end
       if render_new_button_in_section?

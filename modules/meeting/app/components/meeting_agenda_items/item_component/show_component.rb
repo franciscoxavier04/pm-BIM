@@ -191,9 +191,11 @@ module MeetingAgendaItems
 
     def move_to_backlog_action_item(menu)
       menu.with_item(label: I18n.t(:label_agenda_item_move_to_backlog),
-                     href: drop_meeting_agenda_item_path(@meeting_agenda_item.meeting, @meeting_agenda_item, type: :to_backlog),
-                     form_arguments: {
-                       method: :put, data: { "turbo-stream": true }
+                     tag: :button,
+                     content_arguments: { data: {
+                       action: "click->keep-collapsed-state#interceptMoveTo",
+                       href: drop_meeting_agenda_item_path(@meeting_agenda_item.meeting, @meeting_agenda_item, type: :to_backlog)
+                     }
                      }) do |item|
         item.with_leading_visual_icon(icon: "discussion-outdated")
       end
@@ -201,9 +203,11 @@ module MeetingAgendaItems
 
     def move_to_current_meeting_action_item(menu)
       menu.with_item(label: I18n.t(:label_agenda_item_move_to_current_meeting),
-                     href: drop_meeting_agenda_item_path(@meeting_agenda_item.meeting, @meeting_agenda_item, type: :to_current),
-                     form_arguments: {
-                       method: :put, data: { "turbo-stream": true }
+                     tag: :button,
+                     content_arguments: { data: {
+                       action: "click->keep-collapsed-state#interceptMoveTo",
+                       href: drop_meeting_agenda_item_path(@meeting_agenda_item.meeting, @meeting_agenda_item, type: :to_current)
+                     }
                      }) do |item|
         item.with_leading_visual_icon(icon: "cross-reference")
       end
