@@ -166,6 +166,8 @@ paths:
     "$ref": "./paths/action.yml"
   "/api/v3/activities/{id}":
     "$ref": "./paths/activity.yml"
+  "/api/v3/activities/{id}/attachments":
+    "$ref": "./paths/activity_attachments.yml"
   "/api/v3/attachments":
     "$ref": "./paths/attachments.yml"
   "/api/v3/attachments/{id}":

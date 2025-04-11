@@ -32,6 +32,60 @@ properties:
     format: date-time
     description: Time of update
     readOnly: true
+  _links:
+    type: object
+    properties:
+      self:
+        allOf:
+          - "$ref": "./link.yml"
+          - description: |-
+              This activity
+
+              **Resource**: Activity
+            readOnly: true
+      workPackage:
+        allOf:
+          - "$ref": "./link.yml"
+          - description: |-
+              The work package this activity belongs to
+
+              **Resource**: WorkPackage
+            readOnly: true
+      user:
+        allOf:
+          - "$ref": "./link.yml"
+          - description: |-
+              The user who created this activity
+
+              **Resource**: User
+            readOnly: true
+      update:
+        allOf:
+          - "$ref": "./link.yml"
+          - description: |-
+              Update this activity
+
+              **Method**: PATCH
+
+              **Resource**: Activity
+      attachments:
+        allOf:
+          - "$ref": "./link.yml"
+          - description: |-
+              The attachment collection of this activity
+
+              **Resource**: AttachmentCollection
+            readOnly: true
+      addAttachment:
+        allOf:
+          - "$ref": "./link.yml"
+          - description: |-
+              Attach a file to the activity
+
+              # Conditions
+
+              **Permission**: add_work_package_notes or add_comments_with_restricted_visibility (for internal comments)
+            readOnly: true
 example:
   _type: Activity::Comment
   _links:
@@ -44,6 +98,14 @@ example:
     user:
       href: "/api/v3/users/1"
       title: John Sheppard - admin
+    attachments:
+      href: "/api/v3/activities/1/attachments"
+    addAttachment:
+      href: "/api/v3/activities/1/attachments"
+      method: post
+    update:
+      href: "/api/v3/activities/1"
+      method: "patch"
   id: 1
   details:
   - format: markdown

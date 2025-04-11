@@ -1,0 +1,217 @@
+# /api/v3/activities/{id}/attachments
+---
+get:
+  parameters:
+    - description: ID of the activity whose attachments will be listed
+      example: '1'
+      in: path
+      name: id
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      content:
+        application/hal+json:
+          examples:
+            response:
+              value:
+                _embedded:
+                  elements:
+                  - _links:
+                      self:
+                        href: "/api/v3/attachments/30389"
+                        title: "Screenshot.png"
+                      author:
+                        href: "/api/v3/users/435"
+                        title: "Test User"
+                      staticDownloadLocation:
+                        href: "/api/v3/attachments/30389/content"
+                      downloadLocation:
+                        href: "/api/v3/attachments/30389/content"
+                      delete:
+                        href: "/api/v3/attachments/30389"
+                        method: delete
+                    _type: Attachment
+                    id: 30389
+                    fileName: "Screenshot.png"
+                    fileSize: 187760
+                    description:
+                      format: plain
+                      html: ''
+                      raw: ''
+                    status: "uploaded"
+                    contentType: image/png
+                    digest:
+                      algorithm: md5
+                      hash: cdd548290edfc1486c180585889dcea8
+                    createdAt: '2025-04-10T11:19:41.821Z'
+                _links:
+                  self:
+                    href: "/api/v3/activities/79093/attachments"
+                _type: Collection
+                count: 1
+                total: 1
+          schema:
+            "$ref": "../components/schemas/attachments_model.yml"
+      description: OK
+      headers: {}
+    '404':
+      content:
+        application/hal+json:
+          schema:
+            $ref: "../components/schemas/error_response.yml"
+          examples:
+            response:
+              value:
+                _type: Error
+                errorIdentifier: urn:openproject-org:api:v3:errors:NotFound
+                message: The requested resource could not be found.
+      description: |-
+        Returned if the activity does not exist or the client does not have sufficient permissions
+        to see it.
+
+        **Required permission:** view_work_packages or view_comments_with_restricted_visibility (for internal comments)
+
+        *Note: A client without sufficient permissions shall not be able to test for the existence of an activity.
+        That's why a 404 is returned here, even if a 403 might be more appropriate.*
+      headers: {}
+  tags:
+  - Attachments
+  description: ''
+  operationId: List_attachments_by_activity
+  summary: List attachments by activity
+post:
+  parameters:
+    - description: ID of the activity to receive the attachment
+      example: '1'
+      in: path
+      name: id
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      content:
+        application/hal+json:
+          schema:
+            $ref: "../components/schemas/attachment_model.yml"
+          examples:
+            response:
+              value:
+                _type: Attachment
+                id: 30389
+                fileName: "Screenshot.png"
+                fileSize: 187760
+                description:
+                  format: plain
+                  html: ''
+                  raw: ''
+                status: "uploaded"
+                contentType: image/png
+                digest:
+                  algorithm: md5
+                  hash: cdd548290edfc1486c180585889dcea8
+                createdAt: '2025-04-10T11:19:41.821Z'
+                _links:
+                  self:
+                    href: "/api/v3/attachments/30389"
+                    title: "Screenshot.png"
+                  author:
+                    href: "/api/v3/users/435"
+                    title: "Test User"
+                  staticDownloadLocation:
+                    href: "/api/v3/attachments/30389/content"
+                  downloadLocation:
+                    href: "/api/v3/attachments/30389/content"
+                  delete:
+                    href: "/api/v3/attachments/30389"
+                    method: delete
+      description: OK
+      headers: {}
+    '400':
+      content:
+        application/hal+json:
+          schema:
+            $ref: "../components/schemas/error_response.yml"
+          examples:
+            response:
+              value:
+                _type: Error
+                errorIdentifier: urn:openproject-org:api:v3:errors:InvalidRequestBody
+                message: The request could not be parsed as JSON.
+      description: |-
+        Returned if the client sends a not understandable request. Reasons include:
+
+        * Omitting one of the required parts (metadata and file)
+
+        * sending unparsable JSON in the metadata part
+      headers: {}
+    '403':
+      content:
+        application/hal+json:
+          schema:
+            $ref: "../components/schemas/error_response.yml"
+          examples:
+            response:
+              value:
+                _type: Error
+                errorIdentifier: urn:openproject-org:api:v3:errors:MissingPermission
+                message: You are not allowed to add attachments to this activity.
+      description: |-
+        Returned if the client does not have sufficient permissions.
+
+        **Required permission:** view_work_packages or view_comments_with_restricted_visibility (for internal comments)
+
+        *Note that you will only receive this error, if you are at least allowed to see the activity*
+      headers: {}
+    '404':
+      content:
+        application/hal+json:
+          schema:
+            $ref: "../components/schemas/error_response.yml"
+          examples:
+            response:
+              value:
+                _type: Error
+                errorIdentifier: urn:openproject-org:api:v3:errors:NotFound
+                message: The requested resource could not be found.
+      description: |-
+        Returned if the activity does not exist or the client does not have sufficient permissions
+        to see it.
+
+        **Required permission:** view_work_packages or view_comments_with_restricted_visibility (for internal comments)
+
+        *Note: A client without sufficient permissions shall not be able to test for the existence of an activity.
+        That's why a 404 is returned here, even if a 403 might be more appropriate.*
+      headers: {}
+    '406':
+      $ref: "../components/responses/missing_content_type.yml"
+    '415':
+      $ref: "../components/responses/unsupported_media_type.yml"
+    '422':
+      content:
+        application/hal+json:
+          schema:
+            $ref: "../components/schemas/error_response.yml"
+          examples:
+            response:
+              value:
+                _type: Error
+                errorIdentifier: urn:openproject-org:api:v3:errors:PropertyConstraintViolation
+                message: File is too large (maximum size is 5242880 Bytes).
+      description: |-
+        Returned if the client tries to send an invalid attachment.
+        Reasons are:
+
+        * Omitting the file name (`fileName` property of metadata part)
+
+        * Sending a file that is too large
+      headers: {}
+  tags:
+  - Attachments
+  description: |-
+    Adds an attachment to the activity.
+
+  operationId: Add_attachment_to_activity
+  summary: Add attachment to activity
