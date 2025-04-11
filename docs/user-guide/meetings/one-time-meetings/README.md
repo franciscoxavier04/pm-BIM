@@ -255,17 +255,17 @@ Clicking on this button will show following status options:
 
 ### Open meeting status 
 
-When a meeting is *Open*, you can prepare the agenda by adding or removing agenda items. Once the agenda is ready, the meeting can be marked as *In Progress*. 
+When a meeting is *Open*, you can prepare the agenda by adding or removing agenda items. Once the agenda is ready, the meeting can be started.  
 
 > [!TIP]
 >
-> In an open meeting state in addition to the status menu, you will directly see the **Mark as in progress** link on the right.
+> In an open meeting state in addition to the status menu, you will directly see the **Start a meeting** link on the right.
 
-![Mark a meeting as in progress in OpenProject](openproject_userguide_meetings_meeting_mark_in_progress.png)
+![Link to start a meeting in OpenProject](openproject_userguide_meetings_meeting_mark_in_progress.png)
 
 ### Mark meeting in progress
 
-Once the agenda is ready, the meeting can be marked as *In progress*. To mark a meeting in progress you can use the dropdown status menu on the right side or under the meeting name. 
+Once the agenda is ready, the meeting can be started. To mark a meeting in progress you can use the dropdown status menu and select *In progress* or click the *Start meeting* link on the right side.
 
 Setting a meeting *In progress* allows adding [**Agenda item outcomes**](#add-agenda-item-outcomes) by using the **+ Outcome** buttons.
 
