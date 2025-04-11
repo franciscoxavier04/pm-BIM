@@ -264,11 +264,22 @@ class WorkPackages::DatePickerController < ApplicationController
     wp_params = manage_params_for_automatic_mode(wp_params)
 
     if wp_params.present?
-      WorkPackages::SetAttributesService
-        .new(user: current_user,
-             model: @work_package,
-             contract_class: WorkPackages::CreateContract)
-        .call(wp_params)
+      service_result = WorkPackages::SetAttributesService
+                         .new(user: current_user,
+                              model: @work_package,
+                              contract_class: WorkPackages::CreateContract)
+                         .call(wp_params)
+
+      field_set_to_nwd = field_set_to_non_working_day(wp_params)
+      if field_set_to_nwd.present?
+        @work_package
+          .errors
+          .add(field_set_to_nwd,
+               I18n.t("activerecord.errors.models.work_package.attributes.#{field_set_to_nwd}.cannot_be_non_working"))
+
+      end
+
+      service_result
     end
   end
 
@@ -329,5 +340,23 @@ class WorkPackages::DatePickerController < ApplicationController
     wp_params["start_date"] = work_package.start_date.to_s
 
     wp_params
+  end
+
+  def field_set_to_non_working_day(wp_params)
+    return :start_date if wp_params[:start_date].present? && set_to_a_non_working_day?(:start_date)
+
+    :due_date if wp_params[:due_date].present? && set_to_a_non_working_day?(:due_date)
+  end
+
+  def set_to_a_non_working_day?(field)
+    date = params.require(:work_package)[field]
+    return false if date.nil?
+
+    @working_day_service ||= WorkPackages::Shared::WorkingDays.new
+    begin
+      !!params.require(:work_package)[:ignore_non_working_days] && @working_day_service.non_working?(Date.parse(date))
+    rescue Date::Error
+      false
+    end
   end
 end

@@ -89,4 +89,45 @@ RSpec.describe "Datepicker modal individual non working days (WP #44453)", :js,
 
     it_behaves_like "shows individual non working days"
   end
+
+  context "when manually entering a date which is a non working day (regression #62525)" do
+    let(:work_package) { bug_wp }
+    let(:date_field) { work_packages_page.edit_field(:combinedDate) }
+    let(:datepicker) { date_field.datepicker }
+    let(:work_packages_page) { Pages::FullWorkPackage.new(work_package, project) }
+
+    it "shows an error message" do
+      login_as user
+
+      work_packages_page.visit!
+      work_packages_page.ensure_page_loaded
+
+      date_field.activate!
+      date_field.expect_active!
+      # Wait for the datepicker to be initialized
+      datepicker.expect_visible
+
+      datepicker.enable_start_date
+
+      # Set the start date to a non working day
+      datepicker.set_start_date non_working_day_this_week.date
+      datepicker.expect_start_date_error(
+        I18n.t("activerecord.errors.models.work_package.attributes.start_date.cannot_be_non_working")
+      )
+
+      # Set the start date to a working day again
+      datepicker.set_start_date Time.zone.today
+      datepicker.expect_start_date_error nil
+
+      # Set the due date to a non working day
+      datepicker.set_due_date non_working_day_this_week.date
+      datepicker.expect_due_date_error(
+        I18n.t("activerecord.errors.models.work_package.attributes.due_date.cannot_be_non_working")
+      )
+
+      # Set the due date to a working day again
+      datepicker.set_due_date Time.zone.today
+      datepicker.expect_due_date_error nil
+    end
+  end
 end
