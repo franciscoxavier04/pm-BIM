@@ -30,6 +30,6 @@
       <%= render(Primer::OpenProject::Heading.new(tag: :h2, classes: class_names("mt-3" => !i.zero?))) do
             date_title(date)
           end %>
-      <%= render(My::TimeTracking::DailyEntriesTable.new(rows: time_entries_by_day[date], date: date)) %>
+      <%= render(My::TimeTracking::DailyEntriesTable.new(rows: grouped_time_entries[date], date: date, mode: mode)) %>
     <%- end %>
 <%- end %>

@@ -51,33 +51,43 @@ module My
         case mode
         when :day then [date]
         when :week then date.all_week
-        when :month then date.all_month
+        when :month then date.all_month.map(&:beginning_of_week).uniq
         end
       end
 
-      def time_entries_by_day
-        @time_entries_by_day ||= time_entries.group_by(&:spent_on).tap do |hash|
-          hash.default_proc = ->(h, k) { h[k] = [] }
-        end
+      def grouped_time_entries
+        @grouped_time_entries ||= time_entries
+          .group_by { |entry| mode == :month ? entry.spent_on.beginning_of_week : entry.spent_on }
+          .tap do |hash|
+            hash.default_proc = ->(h, k) { h[k] = [] }
+          end
       end
 
-      def total_hours_per_day(date)
+      def total_hours_for(date)
         total_hours = time_entries_by_day[date].sum(&:hours).round(2)
         DurationConverter.output(total_hours, format: :hours_and_minutes)
       end
 
       def date_title(date)
-        result = [
-          render(Primer::Beta::Text.new) { date.strftime("%A %d") }
-        ]
-
-        if date.today?
-          result << render(Primer::Beta::Text.new(color: :muted)) { t("label_today") }
-        elsif date.yesterday?
-          result << render(Primer::Beta::Text.new(color: :muted)) { t("label_yesterday") }
+        if mode == :month
+          I18n.t(:label_specific_week, week: date.strftime("%W %Y"))
+        else
+          date.strftime("%A %d")
         end
+      end
 
-        safe_join(result, " ")
+      def date_additional_info(date)
+        if mode == :month
+          if Date.current.beginning_of_week == date
+            t(:label_this_week)
+          elsif 1.week.ago.beginning_of_week == date
+            t(:label_last_week)
+          end
+        elsif date.today?
+          t(:label_today)
+        elsif date.yesterday?
+          t(:label_yesterday)
+        end
       end
     end
   end

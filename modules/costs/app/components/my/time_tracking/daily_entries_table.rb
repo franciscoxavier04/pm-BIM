@@ -31,7 +31,7 @@
 module My
   module TimeTracking
     class DailyEntriesTable < OpPrimer::BorderBoxTableComponent
-      columns :time, :hours, :subject, :project, :activity, :comments
+      columns :spent_on, :time, :hours, :subject, :project, :activity, :comments
       main_column :time, :subject, :project
 
       def row_class
@@ -60,6 +60,7 @@ module My
 
       def headers
         [
+          options[:mode] == :month ? [:spent_on, { caption: TimeEntry.human_attribute_name(:spent_on) }] : nil,
           TimeEntry.can_track_start_and_end_time? ? [:time, { caption: TimeEntry.human_attribute_name(:time) }] : nil,
           [:hours, { caption: TimeEntry.human_attribute_name(:hours) }],
           [:subject, { caption: TimeEntry.human_attribute_name(:subject) }],
@@ -72,6 +73,8 @@ module My
       def skip_column?(column)
         if column == :time
           !TimeEntry.can_track_start_and_end_time?
+        elsif column == :spent_on
+          options[:mode] != :month
         else
           false
         end

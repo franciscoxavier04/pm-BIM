@@ -57,6 +57,10 @@ module My
         end
       end
 
+      def spent_on
+        I18n.l(time_entry.spent_on)
+      end
+
       def time # rubocop:disable Metrics/AbcSize
         return if time_entry.start_time.blank?
 
