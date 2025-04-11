@@ -99,6 +99,8 @@ module ::TwoFactorAuthentication
     # Get the used device for verification
     def otp_service_for_verification(user)
       otp_service(user, use_device: remembered_device(user))
+    rescue ActiveRecord::RecordNotFound
+      render_404
       false
     end
 
@@ -118,6 +120,8 @@ module ::TwoFactorAuthentication
         end
 
       otp_service(@authenticated_user, use_channel: channel, use_device: device)
+    rescue ActiveRecord::RecordNotFound
+      render_404
       false
     end
 
