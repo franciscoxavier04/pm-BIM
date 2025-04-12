@@ -369,7 +369,7 @@ ru:
       life_cycle:
         header:
           title: "Жизненный цикл проекта"
-          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
+          description_html: "Активные фазы проекта определяют жизненный цикл этого проекта и указываются в <a href=%{admin_settings_url} target=\"_blank\">настройках администратора</a>. Включенные фазы будут доступны в Вашем <a href=%{overview_url} target=\"_blank\">обзоре проекта</a>."
         non_defined: "В настоящее время этапы не определены."
         section_header: "Этапы"
         step:
@@ -403,8 +403,8 @@ ru:
   project_phase:
     working_days_count:
       one: "Продолжительность: %{count} рабочий день"
-      few: "Duration: %{count} working days"
-      many: "Duration: %{count} working days"
+      few: "Продолжительность: %{count} рабочих дня"
+      many: "Продолжительность: %{count} рабочих дней"
       other: "Продолжительность: %{count} рабочих дней"
   lists:
     create:
@@ -3862,7 +3862,7 @@ ru:
         description: "Изменения этого атрибута проекта будут отражены во всех проектах, где он включен. Обязательные атрибуты не могут быть отключены для каждого проекта."
     project_phase_definitions:
       heading: "Жизненный цикл проекта"
-      heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
+      heading_description: "Жизненный цикл проекта определяет фазы проекта, которые могут быть использованы для планирования Вашего проекта и отображаются на странице Обзор каждого проекта. Эти атрибуты могут быть включены или выключены, но не могут быть переупорядочены на уровне проекта."
       label_add: "Добавить"
       label_add_description: "Добавить описание жизненного цикла"
       filter:

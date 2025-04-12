@@ -884,7 +884,7 @@ zh-CN:
         page: "页"
         row_count: "行数"
         column_count: "列数"
-        widgets: "小部件"
+        widgets: "微件"
       journal:
         notes: "备注"
         cause_type: "Cause 类型"
@@ -4357,7 +4357,7 @@ zh-CN:
     define_custom_style: 创建自定义样式
     edit_attribute_groups: 编辑属性组
     gantt_pdf_export: 甘特图 PDF 导出
-    grid_widget_wp_graph: 网格小组件工作包图
+    grid_widget_wp_graph: 工作包图微件
     ldap_groups: LDAP 组
     one_drive_sharepoint_file_storage: OneDrive/SharePoint 文件存储
     placeholder_users: 占位符用户

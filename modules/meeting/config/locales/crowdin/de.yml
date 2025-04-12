@@ -133,11 +133,13 @@ de:
   label_recurring_meeting_restore: "Dieses Vorkommen wiederherstellen"
   label_recurring_meeting_schedule: "Terminplan"
   label_recurring_meeting_next_occurrence: "Nächstes Ereignis"
-  label_recurring_meeting_more: "Es gibt %{count} folgende Besprechungen (%{schedule})."
   label_recurring_meeting_no_end_date: "Es sind weitere Besprechungen geplant (%{schedule})."
-  label_recurring_meeting_more_singular: "Es gibt %{count} folgende Besprechung (%{schedule})."
-  label_recurring_meeting_more_past: "Es gibt %{count} weitere vergangene Besprechungen."
-  label_recurring_meeting_more_past_singular: "Es gibt %{count} weitere vergangene Besprechung."
+  label_recurring_meeting_more:
+    one: "There is one more scheduled meeting (%{schedule})."
+    other: "There are %{count} more scheduled meetings (%{schedule})."
+  label_recurring_meeting_more_past:
+    one: "There is one more past meeting."
+    other: "There are %{count} more past meetings."
   label_recurring_meeting_show_more: "Mehr anzeigen"
   label_recurring_meeting_series_create: "Terminserie erstellen"
   label_recurring_meeting_series_edit: "Terminserie bearbeiten"
