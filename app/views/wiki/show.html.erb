@@ -40,7 +40,7 @@ See COPYRIGHT and LICENSE files for more details.
           mobile_icon: :pencil,
           mobile_label: t(:button_edit),
           size: :medium,
-          href: url_for(controller: 'wiki', action: 'edit', id: @page),
+          href: url_for(controller: "wiki", action: "edit", id: @page),
           aria: { label: I18n.t(:button_edit) },
           title: I18n.t(:button_edit)
         ) do |button|
@@ -52,10 +52,10 @@ See COPYRIGHT and LICENSE files for more details.
       unless @page.current_version?
         header.with_action_button(
           tag: :a,
-          mobile_icon: :pencil,
+          mobile_icon: :book,
           mobile_label: t(:label_history),
           size: :medium,
-          href: url_for(controller: 'wiki', action: "history", id: @page),
+          href: url_for(controller: "wiki", action: "history", id: @page),
           aria: { label: t(:label_history) },
           title: t(:label_history)
         ) do |button|
@@ -76,7 +76,7 @@ See COPYRIGHT and LICENSE files for more details.
               tag: :a,
               size: :medium,
               content_arguments: { data: { method: :post } },
-              href: url_for(controller: 'wiki', action: 'protect', id: @page, protected: 1),
+              href: url_for(controller: "wiki", action: "protect", id: @page, protected: 1)
             ) do |item|
               item.with_leading_visual_icon(icon: :lock)
             end
@@ -87,8 +87,8 @@ See COPYRIGHT and LICENSE files for more details.
               tag: :a,
               size: :medium,
               content_arguments: { data: { method: :post } },
-              href: url_for(controller: 'wiki', action: 'protect', id: @page, protected: 0),
-              ) do |item|
+              href: url_for(controller: "wiki", action: "protect", id: @page, protected: 0)
+            ) do |item|
               item.with_leading_visual_icon(icon: :unlock)
             end
           end
@@ -99,9 +99,9 @@ See COPYRIGHT and LICENSE files for more details.
               label: t(:button_rename),
               tag: :a,
               size: :medium,
-              href: url_for(controller: 'wiki', action: 'rename', id: @page),
-              ) do |item|
-              item.with_leading_visual_icon(icon: 'arrow-switch')
+              href: url_for(controller: "wiki", action: "rename", id: @page)
+            ) do |item|
+              item.with_leading_visual_icon(icon: "arrow-switch")
             end
           end
           if User.current.allowed_in_project?(:change_wiki_parent_page, @project)
@@ -109,8 +109,8 @@ See COPYRIGHT and LICENSE files for more details.
               label: t(:button_change_parent_page),
               tag: :a,
               size: :medium,
-              href: url_for(controller: 'wiki', action: 'edit_parent_page', id: @page),
-              ) do |item|
+              href: url_for(controller: "wiki", action: "edit_parent_page", id: @page)
+            ) do |item|
               item.with_leading_visual_icon(icon: :link)
             end
           end
@@ -123,32 +123,32 @@ See COPYRIGHT and LICENSE files for more details.
             tag: :a,
             size: :medium,
             content_arguments: { data: { confirm: t(:text_are_you_sure), method: :delete } },
-            href: url_for(controller: 'wiki', action: 'destroy', id: @page),
-            ) do |item|
+            href: url_for(controller: "wiki", action: "destroy", id: @page)
+          ) do |item|
             item.with_leading_visual_icon(icon: :trash)
           end
         end
         if User.current.allowed_in_project?(:edit_wiki_pages, @project) && !@page.current_version?
           menu.with_item(
             label: t(:button_rollback),
-            href: url_for(controller: 'wiki', action: "edit", id: @page, version: @page.version),
-            ) do |item|
+            href: url_for(controller: "wiki", action: "edit", id: @page, version: @page.version)
+          ) do |item|
             item.with_leading_visual_icon(icon: :x)
           end
         end
         if User.current.allowed_in_project?(:view_wiki_edits, @project)
           menu.with_item(
             label: t(:label_history),
-            href: url_for(controller: 'wiki', action: "history", id: @page),
-            ) do |item|
+            href: url_for(controller: "wiki", action: "history", id: @page)
+          ) do |item|
             item.with_leading_visual_icon(icon: :history)
           end
         end
         if User.current.allowed_in_project?(:edit_wiki_pages, @project)
           menu.with_item(
             label: t(:button_manage_menu_entry),
-            href: url_for(controller: "/wiki_menu_items", action: "edit", project_id: @project.identifier, id: @page),
-            ) do |item|
+            href: url_for(controller: "/wiki_menu_items", action: "edit", project_id: @project.identifier, id: @page)
+          ) do |item|
             item.with_leading_visual_icon(icon: :gear)
           end
         end
@@ -160,8 +160,8 @@ See COPYRIGHT and LICENSE files for more details.
             action: "print#triggerPrint"
           } },
           title: t("wiki.print_hint"),
-          href: "",
-          ) do |item|
+          href: ""
+        ) do |item|
           item.with_leading_visual_icon(icon: "op-printer")
         end
         if User.current.allowed_in_project?(:export_wiki_pages, @project)
@@ -172,7 +172,7 @@ See COPYRIGHT and LICENSE files for more details.
             href: "",
             title: t("js.label_export"),
             classes: "modal-delivery-element--activation-link"
-            ) do |item|
+          ) do |item|
             item.with_leading_visual_icon(icon: :download)
           end
         end
@@ -180,8 +180,8 @@ See COPYRIGHT and LICENSE files for more details.
           tag: :a,
           label: t(:label_table_of_contents),
           title: t("wiki.print_hint"),
-          href: url_for({ controller: "/wiki", action: "index", project_id: @project.identifier, id: @page }),
-          ) do |item|
+          href: url_for({ controller: "/wiki", action: "index", project_id: @project.identifier, id: @page })
+        ) do |item|
           item.with_leading_visual_icon(icon: "op-view-list")
         end
       end
@@ -194,8 +194,7 @@ See COPYRIGHT and LICENSE files for more details.
   <%= link_to t("js.label_export"),
               "",
               title: t("js.label_export"),
-              style: "display: none;"
-               %>
+              style: "display: none;" %>
   <%= render partial: "wiki/wiki_export_modal" %>
 </section>
 <%=
