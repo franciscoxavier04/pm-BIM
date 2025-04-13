@@ -148,7 +148,7 @@ See COPYRIGHT and LICENSE files for more details.
             item.with_leading_visual_icon(icon: :history)
           end
         end
-        if User.current.allowed_in_project?(:edit_wiki_pages, @project)
+        if User.current.allowed_in_project?(:manage_wiki_menu, @project)
           menu.with_item(
             label: t(:button_manage_menu_entry),
             href: url_for(controller: "/wiki_menu_items", action: "edit", project_id: @project.identifier, id: @page)
