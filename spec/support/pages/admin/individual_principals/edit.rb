@@ -131,8 +131,9 @@ module Pages
         end
 
         def activate!
-          within ".toolbar-items" do
-            click_button "Activate"
+          within ".PageHeader-actions" do
+            page.find('[data-test-selector="wiki-more-dropdown-menu"]').click
+            page.find(".ActionListItem", text: "Activate", exact_text: true).click
           end
         end
       end

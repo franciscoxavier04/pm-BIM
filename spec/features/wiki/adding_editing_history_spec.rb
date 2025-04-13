@@ -83,10 +83,10 @@ RSpec.describe "wiki pages", :js, :selenium, with_settings: { journal_aggregatio
     click_button "Save"
 
     expect_and_dismiss_flash(message: "Successful creation.")
-    expect(page).to have_css(".title-container", text: "New page")
+    expect(page).to have_css(".PageHeader-title", text: "New page")
     expect(page).to have_css(".wiki-content", text: content_first_version)
 
-    within ".toolbar-items" do
+    within ".PageHeader-actions" do
       SeleniumHubWaiter.wait
       click_on "Edit"
     end
@@ -97,10 +97,10 @@ RSpec.describe "wiki pages", :js, :selenium, with_settings: { journal_aggregatio
     click_button "Save"
     expect(page).to have_css(".wiki-content", text: content_second_version)
 
-    within ".toolbar-items" do
+    within ".PageHeader-actions" do
       SeleniumHubWaiter.wait
-      click_on "More"
-      click_on "History"
+      page.find('[data-test-selector="wiki-more-dropdown-menu"]').click
+      page.find(".ActionListItem", text: "History", exact_text: true).click
     end
 
     SeleniumHubWaiter.wait
@@ -113,7 +113,10 @@ RSpec.describe "wiki pages", :js, :selenium, with_settings: { journal_aggregatio
 
     SeleniumHubWaiter.wait
     # Go back to history
-    find(".button", text: "History").click
+    within ".PageHeader-actions" do
+      find(".PageHeader-action", text: "History").click
+    end
+
 
     # Click on first version
     # to determine text (Regression test #31531)
@@ -133,7 +136,7 @@ RSpec.describe "wiki pages", :js, :selenium, with_settings: { journal_aggregatio
 
     visit project_wiki_path(project, "new page")
 
-    within ".toolbar-items" do
+    within ".PageHeader-actions" do
       SeleniumHubWaiter.wait
       click_on "Edit"
     end
@@ -145,10 +148,10 @@ RSpec.describe "wiki pages", :js, :selenium, with_settings: { journal_aggregatio
     SeleniumHubWaiter.wait
     click_button "Save"
 
-    within ".toolbar-items" do
+    within ".PageHeader-actions" do
       SeleniumHubWaiter.wait
-      click_on "More"
-      click_on "History"
+      page.find('[data-test-selector="wiki-more-dropdown-menu"]').click
+      page.find(".ActionListItem", text: "History", exact_text: true).click
     end
 
     expect(page).to have_css("tr.wiki-page-version:last-of-type .author", text: other_user.name)

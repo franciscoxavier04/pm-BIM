@@ -61,7 +61,7 @@ RSpec.describe "Upload attachment to wiki page", :js, :selenium do
     expect(page).to have_content("Image uploaded the first time")
     attachments_list.expect_attached("image.png")
 
-    within ".toolbar-items" do
+    within ".PageHeader-actions" do
       click_on "Edit"
     end
 
@@ -119,7 +119,7 @@ RSpec.describe "Upload attachment to wiki page", :js, :selenium do
     # required sleep otherwise clicking on the Edit button doesn't do anything
     SeleniumHubWaiter.wait
 
-    within ".toolbar-items" do
+    within ".PageHeader-actions" do
       click_on "Edit"
     end
 
