@@ -40,21 +40,32 @@ module WikiHelper
                                               ids:)
   end
 
-  def breadcrumb_for_page(page, action = nil)
+  def breadcrumb_for_page(project, page, action = nil)
     breadcrumbs = []
-    breadcrumbs << { href: project_overview_path(@project.id), text: @project.name }
-    if @page&.ancestors&.any?
-      breadcrumbs += page.ancestors.reverse.map do |parent|
-        {
-          href: project_wiki_path(parent, parent.project),
-          text: parent.breadcrumb_title
-        }
-      end
-    end
+    breadcrumbs << project_breadcrumb(project)
+    breadcrumbs += ancestor_breadcrumbs(page)
     breadcrumbs << h(page.breadcrumb_title) unless action
     breadcrumbs << action if action
     breadcrumbs
   end
+
+  private
+
+  def project_breadcrumb(project)
+    { href: project_overview_path(project.id), text: project.name }
+  end
+
+  def ancestor_breadcrumbs(page)
+    return [] unless page&.ancestors&.any?
+
+    page.ancestors.reverse.map do |parent|
+      {
+        href: project_wiki_path(parent, parent.project),
+        text: parent.breadcrumb_title
+      }
+    end
+  end
+
 
   private
 
