@@ -58,11 +58,11 @@ it:
         end_time: Ora di fine
     models:
       time_entry:
-        one: "Time entry"
-        other: "Time entries"
+        one: "Voce tempo"
+        other: "Voci tempi"
       cost_entry:
-        one: "Cost entry"
-        other: "Cost entries"
+        one: "Voce costi"
+        other: "Voci costi"
       cost_type:
         one: "Tipo di costo"
         other: "Tipo di costo"

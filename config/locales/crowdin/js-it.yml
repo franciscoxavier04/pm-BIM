@@ -361,7 +361,7 @@ it:
           "15_5":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Filter for descendants (children and grandchildren) of work packages.</li> <li>Benefit from advanced accessibility in the date picker.</li> <li>See % Complete included in work package table sums.</li> <li>Include a column for children in work package tables.</li> <li>Better use the date picker in mobile screens.</li> <li>PDF exports matching configured form layout.</li> </ul>
+                Questa versione offre diverse funzionalità e miglioramenti, ad esempio <br> <ul class="%{list_styling_class}"> <li>Filtro per discendenti (figli e nipoti) della macro-attività.</li> <li>Approfitta dell'accessibilità avanzata nel selettore data.</li> <li>Visualizza la % di completamento inclusa nelle somme delle tabelle delle macro-attività.</li> <li>Includi una colonna per i figli nelle tabelle delle macro-attività.</li> <li>Utilizza meglio il selettore data nelle schermate dei dispositivi mobili.</li> <li>Esportazioni PDF corrispondenti al layout del modulo configurato.</li> </ul>
     ical_sharing_modal:
       title: "Iscriviti al calendario"
       inital_setup_error_message: "Si è verificato un errore recuperando i dati."
@@ -795,7 +795,7 @@ it:
       typeahead_placeholder: Ricerca possibili osservatori
     relation_labels:
       parent: "Superiore"
-      child: "Child"
+      child: "Figlio"
       children: "Figli"
       relates: "Riferito a"
       duplicates: "Duplica"
@@ -825,7 +825,7 @@ it:
       add_new_child: "Crea nuovo figlio"
       create_new: "Crea nuovo"
       add_existing: "Aggiungi esistente"
-      add_existing_child: "Add child"
+      add_existing_child: "Aggiungi figlio"
       remove_child: "Rimuovi figlio"
       add_new_relation: "Crea nuova relazione"
       add_existing_relation: "Aggiungere relazione esistente"

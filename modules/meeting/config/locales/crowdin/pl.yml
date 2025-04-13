@@ -72,7 +72,7 @@ pl:
         invalid_time_format: "nie jest prawidłowy. Wymagany format to: GG:MM"
     models:
       recurring_meeting: "Spotkanie cykliczne"
-      meeting: "One-time meeting"
+      meeting: "Spotkanie jednorazowe"
       meeting_agenda_item: "Punkt programu"
       meeting_agenda: "Plan spotkania"
       meeting_section: "Sekcja"
@@ -293,7 +293,7 @@ pl:
       full_past: "%{base} o %{time}, zakończone %{end_date}"
       never_ending: "%{base} o %{time}"
     open:
-      title: "Agenda opened"
+      title: "Otwarto plan spotkania"
       subtitle: >
         Spotkania otwarte mają porządek obrad, który można edytować i prezentować w sekcji „Moje spotkania”. Zmiany w szablonie serii spotkań nie mają wpływu na już otwarte wystąpienia spotkania.
       blankslate:
@@ -404,7 +404,7 @@ pl:
   label_meeting_state_in_progress: "W toku"
   label_meeting_reopen_action: "Otwórz ponownie spotkanie"
   label_meeting_close_action: "Zamknij spotkanie"
-  label_meeting_in_progress_action: "Start meeting"
+  label_meeting_in_progress_action: "Rozpocznij spotkanie"
   text_meeting_open_description: "To spotkanie jest otwarte. Możesz dodać/usunąć punkty planu spotkania i edytować je tak, jak chcesz. Gdy plan spotkania będzie gotowy, należy oznaczyć go jako „w toku” w celu dokumentowania wyników."
   text_meeting_closed_description: "To spotkanie jest zamknięte. Nie można już dodawać/usuwać elementów planu spotkania."
   text_meeting_in_progress_description: "To spotkanie jest w toku. Możesz udokumentować wyniki każdego punktu planu spotkania, zmienić ich kolejność, a nawet dodać nowe. Gdy spotkanie zostanie ukończone, możesz oznaczyć je jako zamknięte, aby je zablokować."
@@ -427,6 +427,6 @@ pl:
   text_agenda_item_move_next_meeting: "Czy na pewno chcesz przenieść to na następne spotkanie %{date} o %{time}?"
   text_agenda_item_moved_to_next_meeting: "Punkt planu spotkania przeniesiono na następne spotkanie w dniu %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Ten pakiet roboczy nie został jeszcze zaplanowany w planie nadchodzącego spotkania."
-  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
+  text_agenda_item_move_next_meeting_cancelled: "Nie można przenieść na następne spotkanie, ponieważ zostało ono anulowane."
   text_work_package_add_to_meeting_hint: 'Użyj przycisku „Dodaj do spotkania”, aby dodać ten pakiet roboczy do nadchodzącego spotkania.'
   text_work_package_has_no_past_meeting_agenda_items: "Ten pakiet roboczy nie został wspomniany na poprzednim spotkaniu."

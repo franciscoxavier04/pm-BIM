@@ -236,7 +236,7 @@ zh-CN:
       hierarchy:
         subitems:
           zero: 无子项目
-          one: 1个子项目
+          one: 1 个子项目
           other: "%{count} 个子项目"
     text_add_new_custom_field: >
       要向项目添加新的自定义字段，您需要先创建字段，然后才能将其添加到此项目中。
@@ -1022,7 +1022,7 @@ zh-CN:
         consented_at: "同意在"
       user_preference:
         comments_sorting: "显示评论"
-        dismissed_enterprise_banners: "隐藏企业横幅广告"
+        dismissed_enterprise_banners: "隐藏企业横幅"
         impaired: "辅助功能模式"
         auto_hide_popups: "自动隐藏成功通知"
         warn_on_leaving_unsaved: "离开未保存更改的工作包时提示我"
@@ -3313,7 +3313,7 @@ zh-CN:
   permission_delete_timelines: "删除时间线"
   permission_delete_wiki_pages: "删除维基页面"
   permission_delete_wiki_pages_attachments: "删除附件"
-  permission_edit_work_package_notes: "中度评论"
+  permission_edit_work_package_notes: "审核评论"
   permission_edit_work_package_notes_explanation: "注意：拥有此权限的用户可以编辑任何人的评论。"
   permission_edit_work_packages: "编辑工作包"
   permission_edit_messages: "编辑消息"
@@ -3822,8 +3822,8 @@ zh-CN:
     work_packages:
       not_allowed_text: "您没有查看此页面的权限。"
       activities:
-        enable_comments_with_restricted_visibility: "启用评论可见性限制"
-        helper_text: "评论可见性限制允许内部团队能够私下沟通。这些仅对某些具有必要权限的选定角色可见，且永远不会公开显示。%{link}"
+        enable_comments_with_restricted_visibility: "启用限制可见性评论"
+        helper_text: "限制评论允许内部团队能够私下沟通。这些仅对具有必要权限的选定角色可见，并且永远不会公开显示。%{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "纯文本"

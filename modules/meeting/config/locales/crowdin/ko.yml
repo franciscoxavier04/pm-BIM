@@ -69,7 +69,7 @@ ko:
         invalid_time_format: "은(는) 유효한 시간이 아닙니다. 필요한 형식: HH:MM"
     models:
       recurring_meeting: "반복 미팅"
-      meeting: "One-time meeting"
+      meeting: "일회성 미팅"
       meeting_agenda_item: "의제 항목"
       meeting_agenda: "의제"
       meeting_section: "섹션"
@@ -415,6 +415,6 @@ ko:
   text_agenda_item_move_next_meeting: "이 미팅을 %{date} %{time}의 다음 미팅으로 이동하시겠습니까?"
   text_agenda_item_moved_to_next_meeting: "의제 항목이 %{date}의 다음 미팅으로 이동되었습니다."
   text_work_package_has_no_upcoming_meeting_agenda_items: "이 작업 패키지는 향후 미팅 의제에서 아직 예약되지 않았습니다."
-  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
+  text_agenda_item_move_next_meeting_cancelled: "취소되었으므로 다음 미팅으로 이동할 수 없습니다."
   text_work_package_add_to_meeting_hint: '이 작업 패키지를 향후 미팅에 추가하려면 "미팅에 추가" 버튼을 사용하세요.'
   text_work_package_has_no_past_meeting_agenda_items: "이 작업 패키지는 과거 미팅에서 멘션되지 않았습니다."

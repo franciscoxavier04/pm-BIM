@@ -36,13 +36,13 @@ uk:
           name: Чорний
       project_phase_colors:
         item_0:
-          name: PM2 Orange
+          name: PM2 оранжевий
         item_1:
-          name: PM2 Red
+          name: PM2 червоний
         item_2:
-          name: PM2 Magenta
+          name: PM2 пурпуровий
         item_3:
-          name: PM2 Green Yellow
+          name: PM2 зелено-жовтий
       document_categories:
         item_0:
           name: Документація
