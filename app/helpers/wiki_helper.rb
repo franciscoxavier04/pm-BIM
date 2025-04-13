@@ -44,7 +44,6 @@ module WikiHelper
     breadcrumbs = []
     breadcrumbs << { href: project_overview_path(@project.id), text: @project.name }
     if @page&.ancestors&.any?
-      # Add ancestors
       breadcrumbs += page.ancestors.reverse.map do |parent|
         {
           href: project_wiki_path(parent, parent.project),
@@ -52,7 +51,6 @@ module WikiHelper
         }
       end
     end
-    # Final page title (just a string)
     breadcrumbs << h(page.breadcrumb_title) unless action
     breadcrumbs << action if action
     breadcrumbs
