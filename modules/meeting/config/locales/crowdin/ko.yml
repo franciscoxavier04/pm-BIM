@@ -134,9 +134,9 @@ ko:
   label_recurring_meeting_next_occurrence: "다음 항목"
   label_recurring_meeting_no_end_date: "예정된 미팅(%{schedule})이 더 있습니다."
   label_recurring_meeting_more:
-    other: "There are %{count} more scheduled meetings (%{schedule})."
+    other: "예정된 미팅(%{schedule})이 %{count}개 더 있습니다."
   label_recurring_meeting_more_past:
-    other: "There are %{count} more past meetings."
+    other: "지난 미팅이 %{count}개 더 있습니다."
   label_recurring_meeting_show_more: "자세히 표시"
   label_recurring_meeting_series_create: "미팅 시리즈 만들기"
   label_recurring_meeting_series_edit: "미팅 시리즈 편집"
@@ -420,6 +420,6 @@ ko:
   text_agenda_item_move_next_meeting: "이 미팅을 %{date} %{time}의 다음 미팅으로 이동하시겠습니까?"
   text_agenda_item_moved_to_next_meeting: "의제 항목이 %{date}의 다음 미팅으로 이동되었습니다."
   text_work_package_has_no_upcoming_meeting_agenda_items: "이 작업 패키지는 향후 미팅 의제에서 아직 예약되지 않았습니다."
-  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
+  text_agenda_item_move_next_meeting_cancelled: "취소되었으므로 다음 미팅으로 이동할 수 없습니다."
   text_work_package_add_to_meeting_hint: '이 작업 패키지를 향후 미팅에 추가하려면 "미팅에 추가" 버튼을 사용하세요.'
   text_work_package_has_no_past_meeting_agenda_items: "이 작업 패키지는 과거 미팅에서 멘션되지 않았습니다."

@@ -3792,12 +3792,12 @@ pt-PT:
         heading: "Nova fase"
       edit:
         heading: "Editar fase"
-      both_gate: "Start and finish gate"
-      no_gate: "No gate"
-      start_gate: "Start gate"
-      start_gate_caption: "Add a gate with the start date of the phase"
-      finish_gate: "Finish gate"
-      finish_gate_caption: "Add a gate with the end date of the phase"
+      both_gate: "Porta de início e conclusão"
+      no_gate: "Sem porta"
+      start_gate: "Porta de início"
+      start_gate_caption: "Adicionar uma porta com a data de início da fase"
+      finish_gate: "Porta de conclusão"
+      finish_gate_caption: "Adicionar uma porta com a data de conclusão da fase"
     projects:
       missing_dependencies: "Foi verificado o módulo do projeto %{module} que depende de %{dependencies}. Também tem de verificar estas dependências."
       section_new_projects: "Configurações para novos projetos"

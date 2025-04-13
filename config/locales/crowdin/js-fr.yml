@@ -799,7 +799,7 @@ fr:
       typeahead_placeholder: Rechercher les observateurs potentiels
     relation_labels:
       parent: "Parent"
-      child: "Child"
+      child: "Enfant"
       children: "Enfants"
       relates: "En relation avec"
       duplicates: "Duplique"
@@ -829,7 +829,7 @@ fr:
       add_new_child: "Créer un nouvel enfant"
       create_new: "Créer nouveau"
       add_existing: "Ajouter existant"
-      add_existing_child: "Add child"
+      add_existing_child: "Ajouter un enfant"
       remove_child: "Supprimer enfant"
       add_new_relation: "Créer une nouvelle relation"
       add_existing_relation: "Ajouter une relation existante"

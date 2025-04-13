@@ -135,11 +135,11 @@ pt-PT:
   label_recurring_meeting_next_occurrence: "Próxima ocorrência"
   label_recurring_meeting_no_end_date: "Existem mais reuniões agendadas (%{schedule})."
   label_recurring_meeting_more:
-    one: "There is one more scheduled meeting (%{schedule})."
-    other: "There are %{count} more scheduled meetings (%{schedule})."
+    one: "Existe mais uma reunião agendada (%{schedule})."
+    other: "Existem mais %{count} reuniões agendadas (%{schedule})."
   label_recurring_meeting_more_past:
-    one: "There is one more past meeting."
-    other: "There are %{count} more past meetings."
+    one: "Existe mais uma reunião anterior."
+    other: "Existem mais %{count} reuniões anteriores."
   label_recurring_meeting_show_more: "Mostrar mais"
   label_recurring_meeting_series_create: "Criar série de reuniões"
   label_recurring_meeting_series_edit: "Editar série de reuniões"
