@@ -66,7 +66,6 @@ module WikiHelper
     end
   end
 
-
   private
 
   def wiki_page_options_for_select_of_level(pages,
