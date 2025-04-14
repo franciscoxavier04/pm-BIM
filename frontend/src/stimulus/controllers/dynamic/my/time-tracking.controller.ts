@@ -59,7 +59,7 @@ export default class MyTimeTrackingController extends Controller {
       editable: this.canEditValue,
       eventResizableFromStart: true,
       defaultTimedEventDuration: DEFAULT_TIMED_EVENT_DURATION,
-      allDayContent: I18n.t('js.myTimeTracking.noSpecificTime'),
+      allDayContent: '',
       dayMaxEventRows: 4, // 3 + more link
       eventMinHeight: 30,
       eventMaxStack: 2,
@@ -262,7 +262,8 @@ export default class MyTimeTrackingController extends Controller {
 
     const colgroup = document.createElement('colgroup');
     const col = document.createElement('col');
-    col.style.width = '61px';
+    const otherCol = document.querySelector('.fc-scrollgrid-section-header .fc-col-header col') as HTMLElement;
+    col.style.width = otherCol?.style?.width;
 
     const tbody = document.createElement('tbody');
     tbody.setAttribute('role', 'presentation');
