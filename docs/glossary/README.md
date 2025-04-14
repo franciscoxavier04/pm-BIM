@@ -126,7 +126,7 @@ In OpenProject, a custom field is defined as an additional field which can be ad
 
 **More information on custom fields in OpenProject**
 
-- [Read how to enable custom fields in projects to use them in work packages](../user-guide/projects/project-settings/custom-fields/)
+- [Read how to enable custom fields in projects to use them in work packages](../user-guide/projects/project-settings/work-packages/#work-package-custom-fields)
 - [Read how to create custom fields as a system admin in OpenProject](../system-admin-guide/custom-fields/)
 
 ### Custom query
@@ -460,7 +460,7 @@ In OpenProject, a [work package](../user-guide/work-packages/#overview) is defin
 
 ### Work package categories
 
-Work package categories are a functionality used to automatically assign a [member](#member) to a work package by specifying a category. [Read more about work package categories in OpenProject](../user-guide/projects/project-settings/work-package-categories/#manage-work-package-categories).
+Work package categories are a functionality used to automatically assign a [member](#member) to a work package by specifying a category. [Read more about work package categories in OpenProject](../user-guide/projects/project-settings/work-packages/#work-package-categories).
 
 ### Work package ID
 
@@ -474,7 +474,7 @@ The work package table in OpenProject is defined as the overview of all work pac
 
 ### Work package types
 
-Work package types are the different items a work package can represent. Each work package is associated to exactly one type. Examples for most used work package types are a Task, a Milestone, a [Phase](#phase) or a Bug. The work package types can be customized in the system administration. [Read more about work package types in OpenProject](../user-guide/projects/project-settings/work-package-types/#work-package-types).
+Work package types are the different items a work package can represent. Each work package is associated to exactly one type. Examples for most used work package types are a Task, a Milestone, a [Phase](#phase) or a Bug. The work package types can be customized in the system administration. [Read more about work package types in OpenProject](../user-guide/projects/project-settings/work-packages/#work-package-types).
 
 ### Work package view
 

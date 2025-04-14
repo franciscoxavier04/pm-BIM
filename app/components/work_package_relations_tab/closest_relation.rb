@@ -57,7 +57,7 @@ module WorkPackageRelationsTab
     def soonest_start
       return @soonest_start if defined?(@soonest_start)
 
-      @soonest_start = relation.successor_soonest_start(gap: 0.days)
+      @soonest_start = relation.successor_soonest_start
     end
 
     def inspect

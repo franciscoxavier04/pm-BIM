@@ -229,8 +229,6 @@ module ::TwoFactorAuthentication
 
     def find_device
       @device = target_user.otp_devices.find(params[:device_id])
-    rescue ActiveRecord::RecordNotFound
-      render_404
     end
 
     def find_user

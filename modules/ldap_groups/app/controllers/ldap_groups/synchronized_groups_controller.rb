@@ -52,8 +52,6 @@ module LdapGroups
 
     def find_group
       @group = SynchronizedGroup.find(params[:ldap_group_id])
-    rescue ActiveRecord::RecordNotFound
-      render_404
     end
 
     def check_ee

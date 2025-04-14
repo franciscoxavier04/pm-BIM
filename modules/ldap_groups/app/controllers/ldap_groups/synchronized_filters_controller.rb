@@ -73,8 +73,6 @@ module LdapGroups
 
     def find_filter
       @filter = SynchronizedFilter.find(params[:ldap_filter_id])
-    rescue ActiveRecord::RecordNotFound
-      render_404
     end
 
     def check_ee

@@ -73,8 +73,6 @@ module Admin
 
       def find_attachment
         @attachment = @attachments.find(params[:id])
-      rescue ActiveRecord::RecordNotFound
-        render_404
       end
     end
   end
