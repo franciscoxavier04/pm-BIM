@@ -113,7 +113,7 @@ export class WorkPackageRelationsComponent extends UntilDestroyedMixin implement
     void this.turboRequests.request(url);
   }
 
-  private updateFrontendData(event:CustomEvent) {
+  private async updateFrontendData(event:CustomEvent) {
     if (event) {
       const form = event.target as HTMLFormElement;
       const updateWorkPackage = !!form.dataset?.updateWorkPackage;
@@ -126,10 +126,10 @@ export class WorkPackageRelationsComponent extends UntilDestroyedMixin implement
             .work_packages
             .id(this.workPackage.id!)
             .refresh();
-          this.halEvents.push(this.workPackage, { eventType: 'updated' });
 
           // Refetch relations
-          void this.wpRelations.require(this.workPackage.id!, true);
+          await this.wpRelations.require(this.workPackage.id!, true);
+          this.halEvents.push(this.workPackage, { eventType: 'updated' });
 
           this.updateCounter();
         }
