@@ -346,15 +346,23 @@ class CostQuery::PDF::TimesheetGenerator
   end
 
   def write_table(user, entries)
-    wants_sum_row = entries.map(&:spent_on).uniq.length > 1
+    wants_sum_row = more_than_one_day?(entries)
     rows = build_table_rows(entries, wants_sum_row)
     # prawn-table does not support splitting a rowspan cell on page break, so we have to merge the first column manually
     # for easier handling existing rowspan cells are grouped as one row
     grouped_rows = split_group_rows(rows, wants_sum_row)
     # start a new page if the username would be printed alone at the end of the page
-    pdf.start_new_page if available_space_from_bottom < grouped_rows[0][:height] + grouped_rows[1][:height] + username_height
+    pdf.start_new_page if available_space_from_bottom < grouped_table_height(grouped_rows)
     write_username(user)
     write_grouped_tables(grouped_rows, wants_sum_row)
+  end
+
+  def grouped_table_height(grouped_rows)
+    grouped_rows[0][:height] + grouped_rows[1][:height] + username_height
+  end
+
+  def more_than_one_day?(entries)
+    entries.map(&:spent_on).uniq.length > 1
   end
 
   def available_space_from_bottom
@@ -427,7 +435,11 @@ class CostQuery::PDF::TimesheetGenerator
     write_heading!
     write_hr!
     write_total_sum!
+    write_sums_tables!(users)
+    start_new_page_if_needed
+  end
 
+  def write_sums_tables!(users)
     start_date, end_date = all_entries.map(&:spent_on).minmax
     num_groups = (users.length / SUM_TABLE_MAX_USER_COLUMNS.to_f).ceil
     users
@@ -435,8 +447,6 @@ class CostQuery::PDF::TimesheetGenerator
       write_sum_table!(users_chunk.compact, start_date, end_date)
       pdf.move_down(TABLE_MARGIN_BOTTOM)
     end
-
-    start_new_page_if_needed
   end
 
   def write_total_sum!
