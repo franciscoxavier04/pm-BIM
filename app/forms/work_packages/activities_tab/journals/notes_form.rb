@@ -48,7 +48,7 @@ module WorkPackages::ActivitiesTab::Journals
       return unless object
 
       API::V3::Activities::ActivityRepresenter
-        .create(object, current_user: User.current, embed_links: false)
+        .create(object, current_user: User.current, embed_links: true)
     end
   end
 end

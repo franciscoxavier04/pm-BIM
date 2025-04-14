@@ -28,10 +28,12 @@
 
 import { HalResource } from 'core-app/features/hal/resources/hal-resource';
 import { Attachable } from 'core-app/features/hal/resources/mixins/attachable-mixin';
+import { WorkPackageResource } from 'core-app/features/hal/resources/work-package-resource';
 import { AttachmentCollectionResource } from './attachment-collection-resource';
 
 interface ActivityCommentResourceEmbedded {
   attachments:AttachmentCollectionResource;
+  workPackage:WorkPackageResource;
 }
 
 interface ActivityCommentResourceLinks extends ActivityCommentResourceEmbedded {

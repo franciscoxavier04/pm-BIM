@@ -76,6 +76,12 @@ module API
 
         property :version, render_nil: true
 
+        property :work_package,
+                 embedded: true,
+                 exec_context: :decorator,
+                 if: ->(*) { embed_links },
+                 uncacheable: true
+
         date_time_property :created_at
         date_time_property :updated_at
 
@@ -85,6 +91,15 @@ module API
           else
             "Activity"
           end
+        end
+
+        def work_package
+          return unless represented.journable.is_a?(WorkPackage)
+
+          API::V3::WorkPackages::WorkPackageRepresenter
+            .create(represented.journable,
+                    current_user: current_user,
+                    embed_links: false)
         end
 
         private

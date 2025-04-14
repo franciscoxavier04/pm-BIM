@@ -2,6 +2,23 @@
 ---
 type: object
 properties:
+  _embedded:
+    type: object
+    properties:
+      attachments:
+        allOf:
+        - "$ref": "./attachments_model.yml"
+        - description: |-
+            Collection of attachments for this activity
+      workPackage:
+        allOf:
+        - "$ref": "./work_package_model.yml"
+        - description: |-
+            The work package this activity belongs to
+
+            # Conditions
+
+            Only embedded when the journable of the activity is a work package
   id:
     type: integer
     description: Activity id
@@ -88,6 +105,82 @@ properties:
             readOnly: true
 example:
   _type: Activity::Comment
+  _embedded:
+    attachments:
+      _type: Collection
+      total: 1
+      count: 1
+      _embedded:
+        elements:
+          - _type: Attachment
+            id: 30388
+            fileName: "Task_Ensure_financing___4___OpenProject_DEV.jpeg"
+            fileSize: 540992
+            description:
+              format: plain
+              raw: ""
+              html: ""
+            status: "uploaded"
+            contentType: "image/jpeg"
+            digest:
+              algorithm: "md5"
+              hash: "d02d312b25383b595a9fa10f1a8999fe"
+            createdAt: "2025-04-08T15:37:19.275Z"
+            _links:
+              self:
+                href: "/api/v3/attachments/30388"
+                title: "Task_Ensure_financing___4___OpenProject_DEV.jpeg"
+              author:
+                href: "/api/v3/users/435"
+                title: "Firstname"
+              container:
+                href: "/api/v3/activities/79090"
+              staticDownloadLocation:
+                href: "/api/v3/attachments/30388/content"
+              downloadLocation:
+                href: "/api/v3/attachments/30388/content"
+              delete:
+                href: "/api/v3/attachments/30388"
+                method: "delete"
+      _links:
+        self:
+          href: "/api/v3/activities/79090/attachments"
+    workPackage:
+      _type: WorkPackage
+      id: 10403
+      lockVersion: 2
+      subject: "Ensure financing"
+      description:
+        format: "markdown"
+        raw: Lorem ipsum dolor sit amet.
+        html: "<p>Lorem ipsum dolor sit amet.</p>"
+      scheduleManually: true
+      startDate: null
+      dueDate: null
+      derivedStartDate: null
+      derivedDueDate: null
+      estimatedTime: null
+      derivedEstimatedTime: null
+      derivedRemainingTime: null
+      duration: null
+      ignoreNonWorkingDays: false
+      percentageDone: null
+      derivedPercentageDone: null
+      createdAt: "2025-03-24T13:11:09.480Z"
+      updatedAt: "2025-04-14T11:00:02.411Z"
+      _links:
+        self:
+          href: "/api/v3/work_packages/10403"
+          title: "Ensure financing"
+        type:
+          href: "/api/v3/types/1"
+          title: "Task"
+        status:
+          href: "/api/v3/statuses/1"
+          title: "New"
+        project:
+          href: "/api/v3/projects/918"
+          title: "RVC Test"
   _links:
     self:
       href: "/api/v3/activity/1"
