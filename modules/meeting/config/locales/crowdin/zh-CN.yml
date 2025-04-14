@@ -69,7 +69,7 @@ zh-CN:
         invalid_time_format: "不是有效时间。所需格式：HH:MM"
     models:
       recurring_meeting: "定期会议"
-      meeting: "One-time meeting"
+      meeting: "一次性会议"
       meeting_agenda_item: "议程项目"
       meeting_agenda: "议程"
       meeting_section: "节"

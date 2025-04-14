@@ -2,7 +2,7 @@ uk:
   ee:
     upsale:
       grid_widget_wp_graph:
-        description: "Some widgets, like the work package graph widget, are only available in the Enterprise edition."
+        description: "Деякі віджети, наприклад віджет графіка пакета робіт, доступні тільки у випуску Enterprise."
   js:
     grid:
       add_widget: 'Додати віджет'

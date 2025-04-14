@@ -361,7 +361,7 @@ fr:
           "15_5":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Filter for descendants (children and grandchildren) of work packages.</li> <li>Benefit from advanced accessibility in the date picker.</li> <li>See % Complete included in work package table sums.</li> <li>Include a column for children in work package tables.</li> <li>Better use the date picker in mobile screens.</li> <li>PDF exports matching configured form layout.</li> </ul>
+                La version apporte diverses fonctionnalités et améliorations, par exemple : <br> <ul class="%{list_styling_class}"> <li>Filtre pour les descendants (enfants et petits-enfants) des lots de travaux.</li> <li>Accessibilité avancée dans le sélecteur de date.</li> <li>Affichage du pourcentage d'avancement inclus dans les totaux des tableaux de lots de travaux.</li> <li>Ajout d'une colonne pour les enfants dans les tableaux des lots de travaux.</li> <li>Utilisation améliorée du sélecteur de date sur les écrans mobiles.</li> <li>Correspondance des exportations PDF avec la mise en page configurée du formulaire.</li> </ul>
     ical_sharing_modal:
       title: "S'abonner au calendrier"
       inital_setup_error_message: "Une erreur est survenue lors de la récupération des données."

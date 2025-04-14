@@ -70,7 +70,7 @@ es:
         invalid_time_format: "no es una hora válida. Formato requerido: HH:MM"
     models:
       recurring_meeting: "Reunión periódica"
-      meeting: "One-time meeting"
+      meeting: "Reunión única"
       meeting_agenda_item: "Puntos de Agenda"
       meeting_agenda: "Agenda"
       meeting_section: "Sección"
