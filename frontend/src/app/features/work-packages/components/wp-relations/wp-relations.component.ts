@@ -37,7 +37,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { WorkPackageResource } from 'core-app/features/hal/resources/work-package-resource';
-import { debounceTime, filter } from 'rxjs/operators';
+import { filter, throttleTime } from 'rxjs/operators';
 import { UntilDestroyedMixin } from 'core-app/shared/helpers/angular/until-destroyed.mixin';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { WorkPackageRelationsService } from './wp-relations.service';
@@ -87,7 +87,7 @@ export class WorkPackageRelationsComponent extends UntilDestroyedMixin implement
       .events$
       .pipe(
         filter((e) => e.eventType === 'association' || e.eventType === 'updated'),
-        debounceTime(500),
+        throttleTime(1000),
         this.untilDestroyed(),
       )
       .subscribe(() => {
