@@ -9,7 +9,7 @@ et:
       openid_connect/provider:
         name: Nimi
         slug: Unique identifier
-        display_name: Display name
+        display_name: Näidatav nimi
         client_id: Kliendi ID
         client_secret: Kliendi salasõna
         secret: Secret
@@ -90,7 +90,7 @@ et:
       microsoft_entra:
         name: Microsoft Entra
       custom:
-        name: Custom
+        name: Kohandatud
       upsale:
         title: "Single Sign-On (SSO) with OpenID connect"
         description: Connect OpenProject to an OpenID connect identity provider

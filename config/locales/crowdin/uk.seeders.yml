@@ -36,13 +36,13 @@ uk:
           name: Чорний
       project_phase_colors:
         item_0:
-          name: PM2 Orange
+          name: PM2 оранжевий
         item_1:
-          name: PM2 Red
+          name: PM2 червоний
         item_2:
-          name: PM2 Magenta
+          name: PM2 пурпуровий
         item_3:
-          name: PM2 Green Yellow
+          name: PM2 зелено-жовтий
       document_categories:
         item_0:
           name: Документація
@@ -81,16 +81,16 @@ uk:
     standard:
       project_phases:
         item_0:
-          name: Initiating
+          name: Ініціювання
         item_1:
-          name: Planning
-          start_gate: Ready for Planning
+          name: Планування
+          start_gate: Готово до планування
         item_2:
-          name: Executing
-          start_gate: Ready for Executing
+          name: Виконання
+          start_gate: Готово до виконання
         item_3:
-          name: Closing
-          start_gate: Ready for Closing
+          name: Закриття
+          start_gate: Готово до закриття
       priorities:
         item_0:
           name: Низький
@@ -481,7 +481,7 @@ uk:
         item_1:
           name: Етап
         item_2:
-          name: Summary task
+          name: Завдання зі зведення
         item_3:
           name: Характеристика
         item_4:

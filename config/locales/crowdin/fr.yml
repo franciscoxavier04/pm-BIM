@@ -35,15 +35,15 @@ fr:
         label_sort_desc: "Les plus récents en haut"
         label_type_to_comment: "Ajoutez un commentaire. Saisissez @ pour informer les gens."
         label_submit_comment: "Envoyer le commentaire"
-        label_who: Who?
+        label_who: Qui ?
         changed_on: "modifié le"
         created_on: "a créé ce lot de travaux le"
         changed: "modifié"
         created: "créé"
         commented: "commenté"
-        restrict_visibility: Restrict visibility
-        restricted_journal: Restricted comments are visible to a limited group of members.
-        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
+        restrict_visibility: Restreindre la visibilité
+        restricted_journal: Les commentaires restreints sont visibles pour un groupe limité de membres.
+        unsaved_changes_confirmation_message: Vous avez des modifications non enregistrées. Voulez-vous vraiment fermer l'éditeur ?
   admin:
     plugins:
       no_results_title_text: Aucun plugin n'est actuellement installé.
@@ -361,14 +361,14 @@ fr:
         no_results_title_text: Il n'y a actuellement aucun champ personnalisé disponible.
       life_cycle:
         header:
-          title: "Project life cycle"
-          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
-        non_defined: "No phases are currently defined."
+          title: "Cycle de vie du projet"
+          description_html: "Les phases actives du projet définissent le cycle de vie de ce projet et sont définies dans les <a href=%{admin_settings_url} target=\"_blank\">paramètres d'administration</a>. Les phases activées seront affichées dans votre <a href=%{overview_url} target=\"_blank\">aperçu du projet</a>."
+        non_defined: "Aucune phase n'est actuellement définie."
         section_header: "Phases"
         step:
           use_in_project: "Utiliser %{step} dans ce projet"
         filter:
-          label: "Search project phase"
+          label: "Rechercher une phase de projet"
       project_custom_fields:
         header:
           title: "Attributs du projet"
@@ -395,8 +395,8 @@ fr:
         new_label: "Nouvelle priorité"
   project_phase:
     working_days_count:
-      one: "Duration: %{count} working day"
-      other: "Duration: %{count} working days"
+      one: "Durée : %{count} jour ouvrable"
+      other: "Durée : %{count} jours ouvrables"
   lists:
     create:
       success: "La liste modifiée a été enregistrée en tant que nouvelle liste"
@@ -606,12 +606,12 @@ fr:
           caption: "Définissez un modèle utilisant des attributs et du texte référencés pour générer automatiquement des sujets de lots de travaux. Les utilisateurs ne pourront pas modifier manuellement les sujets."
         pattern:
           label: "Modèle de sujet"
-          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          caption: "Ajouter du texte ou saisissez / pour rechercher un attribut. Vous pouvez ajouter des espaces pour les séparer."
           headings:
-            work_package: "Work package"
+            work_package: "Lot de travaux"
             parent: "Parent"
-            project: "Project"
-          insert_as_text: "No attributes found. Add as text: \"%{word}\""
+            project: "Projet"
+          insert_as_text: "Aucun attribut n'a été trouvé. Ajouter en tant que texte : « %{word} »"
       export_configuration:
         tab: "Générer un fichier PDF"
         intro: "Sélectionnez les modèles disponibles que vous souhaitez activer pour ce type. Le modèle détermine la conception et les attributs visibles dans le fichier PDF exporté d'un lot de travaux utilisant ce type. Le premier modèle de la liste est sélectionné par défaut."
@@ -744,9 +744,9 @@ fr:
       follows_description: "Le lot de travaux lié doit nécessairement se terminer avant que celui-ci puisse commencer"
       label_child_singular: "enfant"
       label_child_plural: "enfants"
-      new_child: "Create new child"
+      new_child: "Créer un nouvel enfant"
       new_child_text: "Crée un lot de travaux lié en tant que sous-élément du lot de travaux actuel (parent)"
-      child: "Child"
+      child: "Enfant"
       child_description: "Fait du lot de travaux lié un sous-élément du lot de travaux actuel (parent)"
       label_closest: "Le plus proche"
       label_blocks_singular: "blocs"
@@ -939,22 +939,22 @@ fr:
         is_required: "Requis pour tous les projets"
         custom_field_section: Section
       project/phase:
-        date_range: "Date range"
-        definition: "Definition"
+        date_range: "Plage de dates"
+        definition: "Définition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
-        start_gate: "Start phase gate"
-        start_gate_name: "Start phase gate name"
-        finish_gate: "Finish phase gate"
-        finish_gate_name: "Finish phase gate name"
+        name: "Nom"
+        color: "Couleur"
+        start_gate: "Étape de validation initiale"
+        start_gate_name: "Nom de l'étape de validation initiale"
+        finish_gate: "Étape de validation finale"
+        finish_gate_name: "Nom de l'étape de validation finale"
       query:
         sums: "Total "
         columns: "Colonnes"
         column_names: "Colonnes"
         relations_to_type_column: "Relations avec %{type}"
         relations_of_type_column: "relations de %{type}"
-        child_work_packages: "Child work packages"
+        child_work_packages: "Lots de travaux enfants"
         group_by: "Grouper les résultats par"
         sort_by: "Trier les résultats par"
         filters: "Filtres"
@@ -1033,7 +1033,7 @@ fr:
         consented_at: "Consenti à"
       user_preference:
         comments_sorting: "Afficher les commentaires"
-        dismissed_enterprise_banners: "Hidden enterprise banners"
+        dismissed_enterprise_banners: "Bannières d'entreprise masquées"
         impaired: "Mode d'accessibilité"
         auto_hide_popups: "Masquer automatiquement les notifications de succès"
         warn_on_leaving_unsaved: "M'avertir lorsque je quitte un lot de travaux contenant des modifications non enregistrées"
@@ -1050,9 +1050,9 @@ fr:
       wiki_page:
         parent_title: "Page parente"
         redirect_existing_links: "Rediriger les liens existants"
-        text: "Page content"
+        text: "Contenu de la page"
       work_package:
-        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
+        ancestor: "Descendants de" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Début de l’insertion"
         begin_deletion: "Début de la suppression"
         children: "Sous-éléments"
@@ -1068,7 +1068,7 @@ fr:
           title: "Jours ouvrés"
           false: "jours ouvrés seulement"
           true: "Inclure les jours non ouvrés"
-        journal_restricted: Restricted Journal
+        journal_restricted: Journal restreint
         notify: "Notifier" #used in custom actions
         parent: "Parent"
         parent_issue: "Parent"
@@ -1112,7 +1112,7 @@ fr:
         empty: "ne peut pas être vide."
         even: "doit être pair."
         exclusion: "est réservé."
-        feature_disabled: is not available.
+        feature_disabled: n'est pas disponible.
         file_too_large: "est trop volumineux (la taille maximale est de %{count} octets)."
         filter_does_not_exist: "le filtre n'existe pas."
         format: "ne correspond pas au format attendu « %{expected} »."
@@ -1252,9 +1252,9 @@ fr:
         project/phase:
           attributes:
             date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
-              non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+              start_date_must_be_before_finish_date: "la date de début doit être antérieure à la date de fin."
+              non_continuous_dates: "ne peut pas être antérieure à la date de fin de la phase précédente."
+              incomplete: "est incomplet."
         query:
           attributes:
             project:
@@ -1292,7 +1292,7 @@ fr:
         queries/principals/filters/restricted_mentionable_on_work_package_filter:
           attributes:
             values:
-              single_value_requirement: "must be a single work package"
+              single_value_requirement: "doit être un lot de travaux unique"
         relation:
           typed_dag:
             circular_dependency: "La relation créée un cercle de relations."
@@ -1547,19 +1547,19 @@ fr:
       changeset: "Révisions"
       message: "Forums"
       news: "Actualités"
-      project_details: "Project details"
+      project_details: "Détails du projet"
       subproject: "Inclure les sous-projets"
       time_entry: "Temps passé"
       wiki_edit: "Wiki"
       work_package: "Lots de travaux"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
-      added_date: "set to %{date}"
-      changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
+      activated: "activée"
+      deactivated: "désactivée"
+      added_date: "définie sur %{date}"
+      changed_date: "changée du %{from} au %{to}"
+      removed_date: "date de suppression %{date}"
       phase_and_one_gate: "%{phase_message}. %{gate_message}"
-      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_both_gates: "%{phase_message}. %{start_gate_message} et %{finish_gate_message}"
   #common attributes of all models
   attributes:
     active: "Actif"
@@ -2090,7 +2090,7 @@ fr:
     changeset: "Lot de modification édité"
     message: Message édité
     news: Actualités
-    project_details: "Project details edited"
+    project_details: "Détails du projet modifiés"
     project: "Projet édité"
     projects: "Projet édité"
     reply: Y a-t-il eu une réponse
@@ -2107,7 +2107,7 @@ fr:
       title: "Exporter"
       submit: "Exporter"
       save_export_settings:
-        label: "Save settings"
+        label: "Enregistrer les paramètres"
       format:
         label: "Format de fichier"
         options:
@@ -2172,7 +2172,7 @@ fr:
     succeeded: "Exportation terminée"
     failed: "Une erreur s'est produite lors de l'exportation des lots de travaux : %{message}"
     errors:
-      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
+      embedded_table_with_too_many_columns: "Ce tableau des lots de travaux ne tient pas sur la page. Veuillez réduire le nombre de colonnes."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2218,11 +2218,11 @@ fr:
       hyphenation_language:
         label: Langue et césure
       page_orientation:
-        label: Page orientation
-        caption: Select the orientation of the pages in the PDF document.
+        label: Orientation de la page
+        caption: Sélectionnez l'orientation des pages dans le document PDF.
         options:
           portrait: Portrait
-          landscape: Landscape
+          landscape: Paysage
   extraction:
     available:
       pdftotext: "Pdftotext disponible (optionnel)"
@@ -2767,7 +2767,7 @@ fr:
   label_none_parentheses: "(none)"
   label_not_contains: "ne contient pas"
   label_not_equals: "n'est pas"
-  label_life_cycle_step_plural: "Project life cycle"
+  label_life_cycle_step_plural: "Cycle de vie du projet"
   label_on: "le"
   label_operator_all: "n'est pas vide"
   label_operator_none: "est vide"
@@ -2829,7 +2829,7 @@ fr:
   label_project_new: "Nouveau projet"
   label_project_plural: "Projets"
   label_project_list_plural: "Listes de projets"
-  label_project_life_cycle: "Project life cycle"
+  label_project_life_cycle: "Cycle de vie du projet"
   label_project_attributes_plural: "Attributs du projet"
   label_project_custom_field_plural: "Attributs du projet"
   label_project_settings: "Paramètres du projet"
@@ -3289,7 +3289,7 @@ fr:
   notice_successful_delete: "Suppression réussie."
   notice_successful_cancel: "Annulation réussie."
   notice_successful_update: "Mise à jour réussie."
-  notice_unsuccessful_update: "Update failed."
+  notice_unsuccessful_update: "Mise à jour échouée."
   notice_successful_update_custom_fields_added_to_project: |
     Mise à jour réussie. Les champs personnalisés des types activés sont automatiquement activés
     sur le formulaire du lot de travaux. <a href="%{url}" target="_blank">Voir plus</a>.
@@ -3334,7 +3334,7 @@ fr:
   permission_add_project: "Créer des projets"
   permission_add_work_package_attachments: "Ajouter pièces jointes"
   permission_add_work_package_attachments_explanation: "Permet d'ajouter des pièces jointes sans avoir le droit de modifier les lots de travaux"
-  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
+  permission_add_comments_with_restricted_visibility: "Écrire des commentaires avec une visibilité restreinte"
   permission_archive_project: "Archiver le projet"
   permission_create_user: "Créer des utilisateurs"
   permission_manage_user: "Modifier les utilisateurs"
@@ -3363,15 +3363,15 @@ fr:
   permission_edit_work_package_notes_explanation: "Attention : les utilisateurs disposant de cette autorisation peuvent modifier les commentaires de n'importe qui."
   permission_edit_work_packages: "Éditer des lots de travaux"
   permission_edit_messages: "Éditer des messages"
-  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
+  permission_edit_own_comments_with_restricted_visibility: "Modifier les propres commentaires avec une visibilité restreinte"
   permission_edit_own_work_package_notes: "Modifier ses propres commentaires"
   permission_edit_own_messages: "Éditer ses propres messages"
   permission_edit_own_time_entries: "Éditer mes propres enregistrements de temps"
-  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
+  permission_edit_others_comments_with_restricted_visibility: "Modérer les commentaires avec une visibilité restreinte"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Attention : les utilisateurs ayant cette permission peuvent modifier les commentaires d'autres utilisateurs avec une visibilité restreinte."
   permission_edit_project: "Éditer le projet"
   permission_edit_project_attributes: "Modifier les attributs du projet"
-  permission_edit_project_phases: "Edit project phases"
+  permission_edit_project_phases: "Modifier les phases du projet"
   permission_edit_reportings: "Éditer rapports"
   permission_edit_time_entries: "Modifier les journaux de temps pour les autres utilisateurs"
   permission_edit_timelines: "Éditer les lignes du temps"
@@ -3401,15 +3401,15 @@ fr:
   permission_search_project: "Rechercher un projet"
   permission_select_custom_fields: "Sélectionner les champs personnalisés"
   permission_select_project_custom_fields: "Sélectionner les attributs du projet"
-  permission_select_project_phases: "Select project phases"
-  permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the life cycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
+  permission_select_project_phases: "Sélectionner les phases du projet"
+  permission_select_project_phases_explanation: "Activer/désactiver les phases d'un projet. Permet à l'utilisateur de sélectionner le cycle de vie approprié pour le projet, car les phases inactives ne seront pas visibles dans la page d'aperçu du projet ni dans la liste des projets."
   permission_select_project_modules: "Sélectionner modules de projet"
   permission_share_work_packages: "Partager des lots de travaux"
   permission_manage_types: "Sélectionner types"
   permission_manage_own_reminders: "Créer des rappels personnalisés"
   permission_view_project: "Voir les projets"
   permission_view_changesets: "Voir révisions du dépôt dans OpenProject"
-  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
+  permission_view_comments_with_restricted_visibility: "Voir les commentaires avec une visibilité restreinte"
   permission_view_commit_author_statistics: "Voir les statistiques des auteurs de «commit»"
   permission_view_dashboards: "Voir les tableaux de bord"
   permission_view_work_package_watchers: "Voir la liste des observateurs"
@@ -3428,7 +3428,7 @@ fr:
   permission_work_package_assigned_explanation: "Des lots de travaux peuvent être assignés à des utilisateurs et des groupes possédant ce rôle dans le projet respectif"
   permission_view_project_activity: "Visualisation de l'activité du projet"
   permission_view_project_attributes: "Voir les attributs du projet"
-  permission_view_project_phases: "View project phases"
+  permission_view_project_phases: "Voir les phases du projet"
   permission_save_bcf_queries: "Enregistrer les requêtes BCF"
   permission_manage_public_bcf_queries: "Gérer les requêtes publiques BCF"
   permission_edit_attribute_help_texts: "Modifier les textes d'aide des attributs"
@@ -3454,9 +3454,9 @@ fr:
       subprojects_confirmation: "Son(ses) sous-projet(s): %{value} sera(seront) également supprimé(s)."
       title: "Supprimer le projet %{name}"
     filters:
-      project_phase: "Project phase: %{phase}"
-      project_phase_any: "Project phase: Any"
-      project_phase_gate: "Project phase gate: %{gate}"
+      project_phase: "Phase du projet : %{phase}"
+      project_phase_any: "Phase du projet : toutes"
+      project_phase_gate: "Porte de phase du projet : %{gate}"
     identifier:
       warning_one: Les membres du projet devront déplacer les répertoires du projet.
       warning_two: Les liens existants vers le projet ne fonctionneront plus.
@@ -3601,9 +3601,9 @@ fr:
     manual: "régler sur le mode manuel"
     automatic: "régler sur le mode automatique"
   search_input_placeholder: "Rechercher…"
-  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols: "Protocoles de lien autorisés"
   setting_allowed_link_protocols_text_html: >-
-    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
+    Permettre que ces protocoles soient affichés sous forme de liens dans les descriptions des lots de travaux, les champs de texte long et les commentaires. Par exemple, %{tel_code} ou %{element_code}. Saisissez un protocole par ligne. <br/>Les protocoles %{http_code}, %{https_code} et %{mailto_code} sont toujours autorisés.
   setting_after_first_login_redirect_url: "Redirection de première connexion"
   setting_after_first_login_redirect_url_text_html: >
     Définissez un chemin pour rediriger les utilisateurs après leur première connexion. S’il est vide, les utilisateurs seront redirigés vers la page d'accueil de la visite d'intégration. <br/> Exemple : <code>/my/page</code>
@@ -3835,26 +3835,26 @@ fr:
         heading: "Nouvel attribut"
         description: "Les modifications apportées à cet attribut de projet seront répercutées dans tous les projets où il est activé. Les attributs obligatoires ne peuvent pas être désactivés par projet."
     project_phase_definitions:
-      heading: "Project life cycle"
-      heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
-      label_add_description: "Add project phase definition"
+      heading: "Cycle de vie du projet"
+      heading_description: "Le cycle de vie du projet définit les phases du projet qui peuvent être utilisées pour la planification de votre projet et apparaîtra dans la page d'aperçu de chaque projet. Ces attributs peuvent être activés ou désactivés, mais pas réordonnés au niveau du projet."
+      label_add: "Ajouter"
+      label_add_description: "Ajouter une définition de phase de projet"
       filter:
-        label: "Search project phase"
+        label: "Rechercher une phase de projet"
       section_header: "Phases"
-      non_defined: "No phases are currently defined."
-      phase_gates: "Phase gates"
+      non_defined: "Aucune phase n'est actuellement définie."
+      phase_gates: "Portes de phase"
       new:
-        description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
+        description: "Les modifications apportées à cette phase du projet seront répercutées dans tous les projets où elle est activée."
+        heading: "Nouvelle phase"
       edit:
-        heading: "Edit Phase"
-      both_gate: "Start and finish gate"
-      no_gate: "No gate"
-      start_gate: "Start gate"
-      start_gate_caption: "Add a gate with the start date of the phase"
-      finish_gate: "Finish gate"
-      finish_gate_caption: "Add a gate with the end date of the phase"
+        heading: "Modifier la phase"
+      both_gate: "Porte de début et de fin"
+      no_gate: "Aucune porte"
+      start_gate: "Porte de début"
+      start_gate_caption: "Ajouter une porte avec la date de début de la phase"
+      finish_gate: "Porte de fin"
+      finish_gate_caption: "Ajouter une porte avec la date de fin de la phase"
     projects:
       missing_dependencies: "Le module de projet %{module} a été vérifié et dépend de %{dependencies}. Vous devez également vérifier ces dépendances."
       section_new_projects: "Paramètres pour les nouveaux projets"
@@ -3868,10 +3868,10 @@ fr:
       section_work_week: "Semaine de travail"
       section_holidays_and_closures: "Vacances et fermetures"
     work_packages:
-      not_allowed_text: "You do not have the necessary permissions to view this page."
+      not_allowed_text: "Vous n'avez pas les autorisations nécessaires pour voir cette page."
       activities:
-        enable_comments_with_restricted_visibility: "Enable restricted visibility comments"
-        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to select roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_comments_with_restricted_visibility: "Activer les commentaires de visibilité restreinte"
+        helper_text: "Les commentaires restreints permettent à une équipe interne de communiquer entre eux en privé. Ces commentaires ne sont visibles que pour sélectionner les rôles qui ont les autorisations nécessaires et ne seront pas visibles publiquement. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Texte brut"
@@ -3893,7 +3893,7 @@ fr:
   text_are_you_sure_continue: "Voulez-vous vraiment continuer ?"
   text_are_you_sure_with_children: "Supprimer le lot de travaux et tous les lots de travaux enfants ?"
   text_are_you_sure_with_project_custom_fields: "Supprimer cet attribut supprimera également ses valeurs dans tous les projets. Voulez-vous vraiment continuer ?"
-  text_are_you_sure_with_project_life_cycle_step: "Deleting this phase will also delete its usages in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "La suppression de cette phase entraînera également la suppression de son utilisation dans tous les projets. Voulez-vous vraiment continuer ?"
   text_assign_to_project: "Assigner le projet"
   text_form_configuration: >
     Vous pouvez personnaliser comment les champs seront affichés sur le plan de travail. Vous pouvez librement regrouper les champs pour refléter les besoins pour votre domaine.

@@ -33,7 +33,6 @@ import { QueryResource } from 'core-app/features/hal/resources/query-resource';
 import { CustomActionResource } from 'core-app/features/hal/resources/custom-action-resource';
 import { HalResource } from 'core-app/features/hal/resources/hal-resource';
 import { WikiPageResource } from 'core-app/features/hal/resources/wiki-page-resource';
-import { MeetingContentResource } from 'core-app/features/hal/resources/meeting-content-resource';
 import { PostResource } from 'core-app/features/hal/resources/post-resource';
 import { StatusResource } from 'core-app/features/hal/resources/status-resource';
 import { AttachmentCollectionResource } from 'core-app/features/hal/resources/attachment-collection-resource';
@@ -185,9 +184,6 @@ const halResourceDefaultConfig:{ [typeName:string]:HalResourceFactoryConfigInter
   },
   Meeting: {
     cls: MeetingResource,
-  },
-  MeetingContent: {
-    cls: MeetingContentResource,
   },
   Post: {
     cls: PostResource,

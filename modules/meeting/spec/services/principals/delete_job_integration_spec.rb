@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,20 +28,29 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module MeetingContents
-  class UpdateService < ::BaseServices::Update
-    include Attachments::ReplaceAttachments
+require "spec_helper"
 
-    def persist(call)
-      content = call.result
+RSpec.describe Principals::DeleteJob, "Meetings", type: :model do
+  subject(:job) { described_class.perform_now(principal) }
 
-      if content.lock_version_changed?
-        call.errors.add(:base, I18n.t(:notice_locking_conflict))
-        call.success = false
-        return call
-      end
+  shared_let(:deleted_user) do
+    create(:deleted_user)
+  end
+  let(:principal) do
+    create(:user)
+  end
 
-      super
+  context "with a meeting" do
+    let!(:meeting) { create(:meeting, author: principal) }
+    let!(:meeting_agenda_item) { create(:meeting_agenda_item, presenter: principal) }
+    let!(:meeting_outcome) { create(:meeting_outcome, meeting_agenda_item:, author: principal) }
+
+    it "rewrites the references" do
+      job
+
+      expect(meeting.reload.author).to eq deleted_user
+      expect(meeting_agenda_item.reload.presenter).to eq deleted_user
+      expect(meeting_outcome.reload.author).to eq deleted_user
     end
   end
 end

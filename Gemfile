@@ -201,7 +201,7 @@ gem "aws-sdk-core", "~> 3.107"
 # File upload via fog + screenshots on travis
 gem "aws-sdk-s3", "~> 1.91"
 
-gem "openproject-token", "~> 5.1.2"
+gem "openproject-token", "~> 5.2.0"
 
 gem "plaintext", "~> 0.3.2"
 
@@ -410,6 +410,6 @@ gemfiles.each do |file|
   send(:eval_gemfile, file) if File.readable?(file)
 end
 
-gem "openproject-octicons", "~>19.23.0"
-gem "openproject-octicons_helper", "~>19.23.0"
-gem "openproject-primer_view_components", "~>0.60.0"
+gem "openproject-octicons", "~>19.24.2"
+gem "openproject-octicons_helper", "~>19.24.2"
+gem "openproject-primer_view_components", "~>0.61.0"

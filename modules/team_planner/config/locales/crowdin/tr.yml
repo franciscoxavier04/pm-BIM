@@ -8,11 +8,11 @@ tr:
   project_module_team_planner_view: "Takım planlayıcıları"
   ee:
     feature_names:
-      team_planner_view: "Team planner"
+      team_planner_view: "Takım planlayıcısı"
     upsale:
       team_planner_view:
-        title: "Team planner"
-        description: "Get a complete overview of your team’s planning with Team Planner. Stretch, shorten and drag-and-drop work packages to modify dates, move them or change assignees."
+        title: "Takım planlayıcısı"
+        description: "Takım Planlayıcısı ile ekibinizin planlamasına ilişkin eksiksiz bir genel bakış elde edin. Tarihleri değiştirmek, taşımak veya atananları değiştirmek için iş paketlerini genişletin, kısaltın ve sürükleyip bırakın."
   team_planner:
     label_team_planner: "Takım planlayıcısı"
     label_new_team_planner: "Yeni takım planlayıcı "

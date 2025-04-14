@@ -28,15 +28,15 @@
       activity_tab:
         no_results_title_text: No activity to display
         no_results_description_text: 'Choose "Show everything" to show all activity and comments'
-        label_activity_show_all: "Show everything"
-        label_activity_show_only_comments: "Show comments only"
-        label_activity_show_only_changes: "Show changes only"
+        label_activity_show_all: "Vis alt"
+        label_activity_show_only_comments: "Vis kommentarer"
+        label_activity_show_only_changes: "Vis endringer"
         label_sort_asc: "Newest at the bottom"
-        label_sort_desc: "Newest on top"
+        label_sort_desc: "Nyheter øverst"
         label_type_to_comment: "Add a comment. Type @ to notify people."
         label_submit_comment: "Submit comment"
-        label_who: Who?
-        changed_on: "changed on"
+        label_who: Hvem?
+        changed_on: "Endret dato"
         created_on: "created this on"
         changed: "changed"
         created: "opprettet"
@@ -363,8 +363,8 @@
         header:
           title: "Project life cycle"
           description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
-        non_defined: "No phases are currently defined."
-        section_header: "Phases"
+        non_defined: "Ingen faser definert."
+        section_header: "Faser"
         step:
           use_in_project: "Use %{step} in this project"
         filter:
@@ -392,7 +392,7 @@
       storage:
         no_results_title_text: Det er ingen ekstra registrert diskplass brukt av dette prosjektet.
       work_package_priorities:
-        new_label: "New priority"
+        new_label: "Ny prioritet"
   project_phase:
     working_days_count:
       one: "Duration: %{count} working day"
@@ -581,7 +581,7 @@
         is_readonly: "Kun lesetilgang"
         excluded_from_totals: "Unntatt fra totaler"
   themes:
-    dark: "Dark"
+    dark: "Mørk"
     light: "Lyst"
     light_high_contrast: "Lys høy kontrast"
   types:
@@ -611,7 +611,7 @@
           headings:
             work_package: "Work package"
             parent: "Parent"
-            project: "Project"
+            project: "Prosjekt"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -826,7 +826,7 @@
       attachment:
         attachment_content: "Vedleggets innhold"
         attachment_file_name: "Vedleggets filnavn"
-        content_type: "Content-type"
+        content_type: "Innholdstype"
         downloads: "Nedlastinger"
         file: "Fil"
         filename: "Fil"
@@ -835,7 +835,7 @@
         attribute_name: "Egenskap"
         help_text: "Hjelpetekst"
       capability:
-        context: "Context"
+        context: "Kontekst"
       changeset:
         repository: "Pakkebrønn"
       comment:
@@ -941,9 +941,9 @@
         custom_field_section: Seksjon
       project/phase:
         date_range: "Date range"
-        definition: "Definition"
+        definition: "Definisjon"
       project/phase_definition:
-        name: "Name"
+        name: "Navn"
         color: "Color"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
@@ -1567,7 +1567,7 @@
     assigned_to: "Deltaker"
     assignee: "Utførende"
     attachments: "Vedlegg"
-    actor: "Actor"
+    actor: "Aktør"
     action: "Handling"
     author: "Forfatter"
     avatar: "Profilbilde"
@@ -1920,7 +1920,7 @@
         one: "time"
         other: " timer"
       day:
-        one: "day"
+        one: "dag"
         other: "dager"
   description_active: "Aktiv?"
   description_attachment_toggle: "Vis/Skjul vedlegg"
@@ -1985,7 +1985,7 @@
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available only through the %{plan_name}."
       link_title: "Mer informasjon"
-      hide_banner: "Hide this banner"
+      hide_banner: "Skjul banneret"
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
       work_package_subject_generation:

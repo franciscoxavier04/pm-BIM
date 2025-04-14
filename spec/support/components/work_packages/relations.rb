@@ -56,11 +56,21 @@ module Components
         end
       end
 
+      def expect_tab_is_loaded
+        # Search the current window in order to avoid within scope restrictions
+        within_window(page.current_window) do
+          within("wp-relations-tab") do
+            expect(page).to have_no_css("op-content-loader")
+          end
+        end
+      end
+
       def expect_add_relation_button
         expect(page).to have_test_selector("new-relation-action-menu")
       end
 
       def expect_no_add_relation_button
+        expect_tab_is_loaded # Make sure the tab is loaded before checking non existing elements
         expect(page).not_to have_test_selector("new-relation-action-menu")
       end
 
@@ -83,6 +93,7 @@ module Components
       end
 
       def expect_no_row(relatable)
+        expect_tab_is_loaded # Make sure the tab is loaded before checking non existing elements
         actual_relatable = find_relatable(relatable)
         expect(page).not_to have_test_selector("op-relation-row-visible-#{actual_relatable.id}"),
                             "expected no relation row for work package " \
@@ -307,6 +318,7 @@ module Components
       end
 
       def expect_no_parent
+        expect_tab_is_loaded # Make sure the tab is loaded before checking non existing elements
         expect(page).not_to have_test_selector "op-wp-breadcrumb-parent", wait: 10
       end
 

@@ -459,7 +459,7 @@ GEM
     crass (1.0.6)
     css_parser (1.21.1)
       addressable
-    csv (3.3.3)
+    csv (3.3.4)
     cuprite (0.15.1)
       capybara (~> 3.0)
       ferrum (~> 0.15.0)
@@ -480,9 +480,9 @@ GEM
       representable (>= 3.1.1, < 4)
     doorkeeper (5.8.2)
       railties (>= 5)
-    dotenv (3.1.7)
-    dotenv-rails (3.1.7)
-      dotenv (= 3.1.7)
+    dotenv (3.1.8)
+    dotenv-rails (3.1.8)
+      dotenv (= 3.1.8)
       railties (>= 6.1)
     drb (2.2.1)
     dry-auto_inject (1.1.0)
@@ -734,7 +734,7 @@ GEM
       addressable (~> 2.8)
       childprocess (~> 5.0)
       logger (~> 1.6)
-    lefthook (1.11.8)
+    lefthook (1.11.9)
     letter_opener (1.10.0)
       launchy (>= 2.2, < 4)
     letter_opener_web (3.0.0)
@@ -853,17 +853,17 @@ GEM
       validate_email
       validate_url
       webfinger (~> 2.0)
-    openproject-octicons (19.23.0)
-    openproject-octicons_helper (19.23.0)
+    openproject-octicons (19.24.2)
+    openproject-octicons_helper (19.24.2)
       actionview
-      openproject-octicons (= 19.23.0)
+      openproject-octicons (= 19.24.2)
       railties
-    openproject-primer_view_components (0.60.0)
+    openproject-primer_view_components (0.61.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       openproject-octicons (>= 19.23.0)
       view_component (>= 3.1, < 4.0)
-    openproject-token (5.1.2)
+    openproject-token (5.2.0)
       activemodel
     openssl (3.3.0)
     openssl-signature_algorithm (1.3.0)
@@ -1388,15 +1388,15 @@ DEPENDENCIES
   openproject-job_status!
   openproject-ldap_groups!
   openproject-meeting!
-  openproject-octicons (~> 19.23.0)
-  openproject-octicons_helper (~> 19.23.0)
+  openproject-octicons (~> 19.24.2)
+  openproject-octicons_helper (~> 19.24.2)
   openproject-openid_connect!
-  openproject-primer_view_components (~> 0.60.0)
+  openproject-primer_view_components (~> 0.61.0)
   openproject-recaptcha!
   openproject-reporting!
   openproject-storages!
   openproject-team_planner!
-  openproject-token (~> 5.1.2)
+  openproject-token (~> 5.2.0)
   openproject-two_factor_authentication!
   openproject-webhooks!
   openproject-xls_export!
@@ -1570,7 +1570,7 @@ CHECKSUMS
   crack (1.0.0) sha256=c83aefdb428cdc7b66c7f287e488c796f055c0839e6e545fec2c7047743c4a49
   crass (1.0.6) sha256=dc516022a56e7b3b156099abc81b6d2b08ea1ed12676ac7a5657617f012bd45d
   css_parser (1.21.1) sha256=6cfd3ffc0a97333b39d2b1b49c95397b05e0e3b684d68f77ec471ba4ec2ef7c7
-  csv (3.3.3) sha256=7e2966befb7bdaf7d5e9b36e1de73e6a5e7a72f584f180a1726aec88a1b0a900
+  csv (3.3.4) sha256=e96ecd5a8c3494aa5b596282249daba5c6033203c199248e6146e36d2a78d8cd
   cuprite (0.15.1) sha256=0b3a25b2e408b345dfa0bae8bc5e7f021f913737c746edece9ca9fbb57eba259
   daemons (1.4.1) sha256=8fc76d76faec669feb5e455d72f35bd4c46dc6735e28c420afb822fac1fa9a1d
   dalli (3.2.8) sha256=2e63595084d91fae2655514a02c5d4fc0f16c0799893794abe23bf628bebaaa5
@@ -1583,8 +1583,8 @@ CHECKSUMS
   diff-lcs (1.6.1) sha256=12a5a83f3e37a8e2f4427268e305914d5f1879f22b4e73bb1a09f76a3dd86cd4
   disposable (0.6.3) sha256=7f2a3fb251bff6cd83f25b164043d4ec3531209b51b066ed476a9df9c2d384cc
   doorkeeper (5.8.2) sha256=a73d07aeaf590b1e7e2a35390446f23131c9f37bc0561653e514d3973f4d50d3
-  dotenv (3.1.7) sha256=c670df478675d23889e657beaca6fb423228f75ce9f052a0690c0d0daa333cf3
-  dotenv-rails (3.1.7) sha256=02c07b9601ad64046e196f48f6280c2cc660b073e08b30ad5c2f78b4872e9189
+  dotenv (3.1.8) sha256=9e1176060ced581f8e6ce4384e91361817763a76e3c625c8bddc18b35bd392c3
+  dotenv-rails (3.1.8) sha256=46c9d1226a8b58a83b5f61325aa8cffd25cea1c0fafdfbbbee1e5dfea77980c4
   drb (2.2.1) sha256=e9d472bf785f558b96b25358bae115646da0dbfd45107ad858b0bc0d935cb340
   dry-auto_inject (1.1.0) sha256=f9276cb5d15a3ef138e1f1149e289e287f636de57ef4a6decd233542eb708f78
   dry-configurable (1.3.0) sha256=882d862858567fc1210d2549d4c090f34370fc1bb7c5c1933de3fe792e18afa8
@@ -1685,7 +1685,7 @@ CHECKSUMS
   ladle (1.0.1) sha256=e8586964108c798d48bf57d2a65bd5602e8e5223a176b6602a0fb36c0bda90dc
   language_server-protocol (3.17.0.4) sha256=c484626478664fd13482d8180947c50a8590484b1258b99b7aedb3b69df89669
   launchy (3.1.1) sha256=72b847b5cc961589dde2c395af0108c86ff0119f42d4648d25b5440ebb10059e
-  lefthook (1.11.8) sha256=0e0cde4cd7b58ea93d3504b6a3674f1199f1945db9d5b31ff5301ef329a5545d
+  lefthook (1.11.9) sha256=48d2cddfc7c0b34bd40ef460b22305082282abafa6903573cef6a4af4386e987
   letter_opener (1.10.0) sha256=2ff33f2e3b5c3c26d1959be54b395c086ca6d44826e8bf41a14ff96fdf1bdbb2
   letter_opener_web (3.0.0) sha256=3f391efe0e8b9b24becfab5537dfb17a5cf5eb532038f947daab58cb4b749860
   lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
@@ -1754,15 +1754,15 @@ CHECKSUMS
   openproject-job_status (1.0.0)
   openproject-ldap_groups (1.0.0)
   openproject-meeting (1.0.0)
-  openproject-octicons (19.23.0) sha256=bf69988c440b4aef249b2cb30e7c4139370e3b5d0c6e77ef2323eb0f48a37c13
-  openproject-octicons_helper (19.23.0) sha256=d501eb62e323e326ce56eb9e4ea0d499dfca8ec5c382843c78025a529a0a8156
+  openproject-octicons (19.24.2) sha256=c4d63f4c16796c51e2a43cefae29e6042aa5cd418ea1bc11015add12e25c841e
+  openproject-octicons_helper (19.24.2) sha256=b7c8e7f4a22f60c8ac9ae70535e92a90121f28d58391aa21053bf751efc1c576
   openproject-openid_connect (1.0.0)
-  openproject-primer_view_components (0.60.0) sha256=3cf4229abbc3529ad450862088594ad96f9b8dce578a76c834159fe1eb1843f9
+  openproject-primer_view_components (0.61.0) sha256=1f9ba167181034c87c10f436c62adeb2e73e4f4ae6e18cbb8d91a1118d63f2f4
   openproject-recaptcha (1.0.0)
   openproject-reporting (1.0.0)
   openproject-storages (1.0.0)
   openproject-team_planner (1.0.0)
-  openproject-token (5.1.2) sha256=5114494eda1b068acf75c26040516fcda94c9d5dc2c28cb33cf15ff22a24628a
+  openproject-token (5.2.0) sha256=dd30482ea94897f24b7dc19d1f1cdd5a149e76635e29bf2ca34d31cf82f9d394
   openproject-two_factor_authentication (1.0.0)
   openproject-webhooks (1.0.0)
   openproject-xls_export (1.0.0)
