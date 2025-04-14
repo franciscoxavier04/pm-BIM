@@ -45,7 +45,7 @@ RSpec.describe WorkPackages::CreateNoteContract do
     wp
   end
   let(:user) { build_stubbed(:user) }
-  let(:permissions) { %i[add_work_package_notes] }
+  let(:permissions) { %i[add_work_package_notes add_comments_with_restricted_visibility] }
 
   before do
     mock_permissions_for(user) do |mock|
@@ -108,6 +108,28 @@ RSpec.describe WorkPackages::CreateNoteContract do
 
       context "and journal_restricted is false, and comments_with_restricted_visibility_active? is disabled",
               with_flag: { comments_with_restricted_visibility_active: false } do
+        before do
+          work_package.journal_restricted = false
+        end
+
+        it_behaves_like "contract is valid"
+      end
+
+      context "with journal_restricted is true, comments_with_restricted_visibility_active? is active but lacking permissions",
+              with_flag: { comments_with_restricted_visibility_active: true } do
+        let(:permissions) { super() - [:add_comments_with_restricted_visibility] }
+
+        before do
+          work_package.journal_restricted = true
+        end
+
+        it_behaves_like "contract is invalid", journal_restricted: :error_unauthorized
+      end
+
+      context "with journal_restricted is false, comments_with_restricted_visibility_active? is active and lacking permissions",
+              with_flag: { comments_with_restricted_visibility_active: true } do
+        let(:permissions) { super() - [:add_comments_with_restricted_visibility] }
+
         before do
           work_package.journal_restricted = false
         end

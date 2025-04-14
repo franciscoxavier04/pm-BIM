@@ -38,8 +38,13 @@ module WorkPackages
     end
 
     attribute :journal_restricted do
-      if model.journal_restricted && !OpenProject::FeatureDecisions.comments_with_restricted_visibility_active?
+      next unless model.journal_restricted
+
+      unless OpenProject::FeatureDecisions.comments_with_restricted_visibility_active?
         errors.add(:journal_restricted, :feature_disabled)
+      end
+      unless allowed_in_project?(:add_comments_with_restricted_visibility)
+        errors.add(:journal_restricted, :error_unauthorized)
       end
     end
 
@@ -51,6 +56,10 @@ module WorkPackages
 
     def allowed_in_work_package?(permission)
       user.allowed_in_work_package?(permission, model)
+    end
+
+    def allowed_in_project?(permission)
+      user.allowed_in_project?(permission, model.project)
     end
   end
 end
