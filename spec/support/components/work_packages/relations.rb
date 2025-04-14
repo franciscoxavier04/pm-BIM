@@ -350,11 +350,12 @@ module Components
       end
 
       def remove_child(work_package)
-        child_wp_row = find_row(work_package)
-
-        within(child_wp_row) do
-          relatable_action_menu(work_package).click
-          relatable_delete_button(work_package).click
+        retry_block do
+          child_wp_row = find_row(work_package)
+          within(child_wp_row) do
+            relatable_action_menu(work_package).click
+            relatable_delete_button(work_package).click
+          end
         end
 
         expect_no_row(work_package)
