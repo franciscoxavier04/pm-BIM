@@ -124,9 +124,8 @@ RSpec.describe CostQuery::PDF::TimesheetGenerator do
     [generator.format_hours(sum)]
   end
 
-  def expected_entry_row(t_entry, with_times_column, sum_per_day)
-    result = [format_date(t_entry.spent_on)]
-    result.push(sum_per_day) unless sum_per_day.nil?
+  def expected_entry_row(t_entry, with_times_column)
+    result = [generator.format_date_with_weekday(t_entry.spent_on)]
     result.concat(expected_entry_columns(t_entry, with_times_column))
   end
 
@@ -145,6 +144,9 @@ RSpec.describe CostQuery::PDF::TimesheetGenerator do
   def expected_overview_page_content
     [
       query.name,
+      "#{I18n.t('export.timesheet.total_sum')}: ",
+      generator.format_hours(time_entries.sum(&:hours)),
+
       TimeEntry.human_attribute_name(:spent_on),
       user.name,
       time_entry_user.name,
@@ -160,10 +162,7 @@ RSpec.describe CostQuery::PDF::TimesheetGenerator do
 
       I18n.t("export.timesheet.sums_hours"),
       generator.format_hours(time_entries.select { |entry| entry.user == user }.sum(&:hours)),
-      generator.format_hours(time_entries.select { |entry| entry.user == time_entry_user }.sum(&:hours)),
-
-      "#{I18n.t('export.timesheet.total_sum')}:",
-      generator.format_hours(time_entries.sum(&:hours))
+      generator.format_hours(time_entries.select { |entry| entry.user == time_entry_user }.sum(&:hours))
     ]
   end
 
@@ -171,8 +170,7 @@ RSpec.describe CostQuery::PDF::TimesheetGenerator do
     [
       user.name,
       *expected_table_header(with_times_column),
-      *expected_entry_row(user_time_entry, with_times_column, generator.format_hours(user_time_entry.hours)),
-      *expected_sum_row(user, with_times_column)
+      *expected_entry_row(user_time_entry, with_times_column)
     ]
   end
 
@@ -180,12 +178,12 @@ RSpec.describe CostQuery::PDF::TimesheetGenerator do
     [
       time_entry.user.name,
       *expected_table_header(with_times_column),
-      format_date(time_entry.spent_on), # merged date rows
-      generator.format_hours(time_entry.hours + other_time_entry.hours),
+      generator.format_date_with_weekday(time_entry.spent_on), # merged date rows
       *expected_entry_columns(time_entry, with_times_column),
       *expected_entry_columns(other_time_entry, with_times_column),
-      *expected_entry_row(time_entry_with_comment, with_times_column, generator.format_hours(time_entry_with_comment.hours)),
-      *expected_entry_row(time_entry_without_time, with_times_column, generator.format_hours(time_entry_without_time.hours)),
+      generator.format_hours(time_entry.hours + other_time_entry.hours),
+      *expected_entry_row(time_entry_with_comment, with_times_column),
+      *expected_entry_row(time_entry_without_time, with_times_column),
       *expected_sum_row(time_entry.user, with_times_column)
     ]
   end
