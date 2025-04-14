@@ -27,11 +27,12 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 # ++
-#
+
 module My
   module TimeTracking
-    module SharedComponent
-      extend ActiveSupport::Concern
+    class SubHeaderComponent < ApplicationComponent
+      options :date, :mode, :view_mode
+
       def title # rubocop:disable Metrics/AbcSize
         case mode
         when :day

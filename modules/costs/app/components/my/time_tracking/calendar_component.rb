@@ -33,7 +33,6 @@ module My
     class CalendarComponent < ApplicationComponent
       include OpTurbo::Streamable
       include OpPrimer::ComponentHelpers
-      include SharedComponent
 
       options time_entries: [],
               mode: :week,

@@ -1,9 +1,9 @@
 <%= render(Primer::OpenProject::PageHeader.new) do |header|
-      header.with_title(variant: :large) { title }
+      header.with_title { I18n.t(:label_my_time_tracking) }
       header.with_breadcrumbs(
         [
-          { text: I18n.t(:label_my_time_tracking), href: my_time_tracking_path },
-          title
+          { href: home_path, text: helpers.organization_name },
+          { text: I18n.t(:label_my_time_tracking), href: my_time_tracking_path }
         ]
       )
 

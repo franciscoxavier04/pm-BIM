@@ -33,38 +33,6 @@ module My
     class HeaderComponent < ApplicationComponent
       options :date, :mode, :view_mode
 
-      def title
-        case mode
-        when :week then week_title
-        when :month then month_title
-        when :day then day_title
-        end
-      end
-
-      def day_title
-        if Date.current == date
-          I18n.t(:label_today)
-        else
-          I18n.t(:label_specific_day, day: I18n.l(date, format: :short))
-        end
-      end
-
-      def week_title
-        if Date.current.all_week.include?(date)
-          I18n.t(:label_this_week)
-        else
-          I18n.t(:label_specific_week, week: I18n.l(date, format: "%W %Y"))
-        end
-      end
-
-      def month_title
-        if Date.current.all_month.include?(date)
-          I18n.t(:label_this_month)
-        else
-          I18n.t(:label_specific_month, month: I18n.l(date, format: "%B %Y"))
-        end
-      end
-
       def view_mode_block
         if view_mode == :list
           lambda do |button|

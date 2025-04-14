@@ -1,33 +1,6 @@
 <%= flex_layout(data: wrapper_data, classes: "time-entry-calendar") do |calendar_page| %>
-<% calendar_page.with_row { render(My::TimeTracking::HeaderComponent.new(mode:, date:, view_mode: :calendar)) } %>
-<% calendar_page.with_row do %>
-  <%= render(Primer::OpenProject::SubHeader.new) do |component|
-        component.with_filter_component do
-          render(My::TimeTracking::ModeSwitcherComponent.new(current_mode: mode, view_mode: :calendar))
-        end
-
-        component.with_text { title }
-
-        component.with_action_component do
-          render(Primer::Beta::ButtonGroup.new) do |group|
-            group.with_button(icon: "arrow-left", tag: :a, **previous_attrs)
-            group.with_button(icon: "arrow-right", tag: :a, **next_attrs)
-          end
-        end
-
-        component.with_action_button(tag: :a, href: today_href) { I18n.t(:label_today) }
-
-        component.with_action_button(
-          scheme: :primary,
-          data: {
-            "turbo-stream" => true
-          },
-          tag: :a,
-          href: dialog_time_entries_path(onlyMe: true)
-        ) { t(:button_log_time) }
-      end %>
-  <% end %>
-
+  <% calendar_page.with_row { render(My::TimeTracking::HeaderComponent.new(mode:, date:, view_mode: :calendar)) } %>
+  <% calendar_page.with_row { render(My::TimeTracking::SubHeaderComponent.new(mode:, date:, view_mode: :calendar)) } %>
   <% calendar_page.with_row(classes: "op-fc-wrapper", data: { "my--time-tracking-target" => "calendar" }) %>
 
   <% if mode != :day %>
