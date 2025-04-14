@@ -54,20 +54,6 @@ RSpec.describe "Datepicker modal logic test cases (WP #43539)", :js, with_settin
   let(:current_user) { user }
   let(:work_package) { bug_wp }
 
-  shared_context "with default browser timezone" do
-    let(:_comment) do
-      "This context does not try to override the browser timezone. " \
-        "It will be the same as the system (positive offset for European devs, UTC for CI)."
-    end
-  end
-
-  shared_context "with a negative browser timezone (New York)", driver: :chrome_new_york_time_zone do
-    let(:_comment) do
-      "This context overrides browser timezone to be America/New_York. " \
-        "Timezone offset is -4/-5 hours (EDT/EST)."
-    end
-  end
-
   def apply_and_expect_saved(attributes)
     date_field.save!
 
