@@ -1,0 +1,33 @@
+The <strong>CollapsibleSection</strong> is awesome :)
+
+<%= embed Patterns::CollapsibleSectionPreview, :default %>
+
+## Anatomy
+
+The CollapsibleSection consists of two basic parts: the title and the content that shall be collapsed. However, for the title there are some additional options available:
+
+- The title
+  - A caption (optional): Text, shown next to the title in a subtle colour
+  - Additional information (optional): Free content, shown at the end of the title row
+- The collapsible content area
+
+## Best practices
+
+**Do**
+
+**Don't**
+
+- Don't use the CollapsibleSection if you want to collapse the content of a BorderBox. Use the [BorderBox::CollapsibleHeader](./tables/border-box-table.md.erb) instead.
+- Don't use too complex elements for the `additional_information` slot. It is designed for small texts or an individual button.
+
+## Used in
+
+* The time report overview
+
+## Technical notes
+
+<%= embed Patterns::CollapsibleSectionPreview, :full_example, panels: %i[source] %>
+
+## Examples
+
+For detailed examples have a look at the other [preview examples](/lookbook/inspect/primer/open_project/collapsible_section/default) of the component.
