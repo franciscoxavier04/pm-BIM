@@ -282,10 +282,11 @@ Rails.application.reloader.to_prepare do
                      contract_actions: { work_packages: %i[move] }
 
       wpt.permission :copy_work_packages,
-                     {},
+                     { "work_packages/moves": %i[new create] },
                      permissible_on: %i[work_package project],
                      require: :loggedin,
-                     dependencies: :view_work_packages
+                     dependencies: :view_work_packages,
+                     contract_actions: { work_packages: %i[copy] }
 
       wpt.permission :add_work_package_notes,
                      {
