@@ -101,6 +101,10 @@ module Components
       end
     end
 
+    def expect_add_start_date_button_visible
+      expect(container).to have_link("Start date")
+    end
+
     def enable_due_date
       retry_block do
         page.find_test_selector("wp-datepicker--show-due-date").click
@@ -236,7 +240,7 @@ module Components
     def input_aria_related_element(input_element, describedby:)
       input_element["aria-describedby"]
         .split
-        .find { _1.start_with?("#{describedby}-") }
+        .find { it.start_with?("#{describedby}-") }
         &.then { |id| find(id:, visible: :all) }
     end
   end

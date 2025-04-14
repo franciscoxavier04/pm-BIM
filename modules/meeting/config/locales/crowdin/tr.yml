@@ -131,11 +131,13 @@ tr:
   label_recurring_meeting_restore: "Bu toplantıyı geri al"
   label_recurring_meeting_schedule: "Planla"
   label_recurring_meeting_next_occurrence: "Sonraki gerçekleşme"
-  label_recurring_meeting_more: "%{count} ek planlanmış toplantı bulunmaktadır (%{schedule})."
   label_recurring_meeting_no_end_date: "Daha fazla planlanmış toplantı var (%{schedule})."
-  label_recurring_meeting_more_singular: "Ek %{count} planlanmış toplantı bulunmaktadır (%{schedule})."
-  label_recurring_meeting_more_past: "%{count} toplantı daha var."
-  label_recurring_meeting_more_past_singular: "%{count} toplantı daha var."
+  label_recurring_meeting_more:
+    one: "Planlanmış bir toplantı daha var (%{schedule})."
+    other: "Planlanmış %{count} toplantı daha var (%{schedule})."
+  label_recurring_meeting_more_past:
+    one: "Geçmiş bir toplantı daha var."
+    other: "Geçmiş %{count} toplantı daha var."
   label_recurring_meeting_show_more: "Daha fazlasını göster"
   label_recurring_meeting_series_create: "Toplantı serisi oluştur"
   label_recurring_meeting_series_edit: "Toplantı serisini düzenle"

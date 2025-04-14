@@ -130,11 +130,11 @@ zh-TW:
   label_recurring_meeting_restore: "恢復此事件"
   label_recurring_meeting_schedule: "排程"
   label_recurring_meeting_next_occurrence: "下一次會議"
-  label_recurring_meeting_more: "還有 %{count} 預定會議 (%{schedule})。"
   label_recurring_meeting_no_end_date: "有更多排定的會議 (%{schedule})。"
-  label_recurring_meeting_more_singular: "還有 %{count} 預定會議 (%{schedule})。"
-  label_recurring_meeting_more_past: "還有 %{count} 更多過去的會議。"
-  label_recurring_meeting_more_past_singular: "還有 %{count} 更多過去的會議。"
+  label_recurring_meeting_more:
+    other: "There are %{count} more scheduled meetings (%{schedule})."
+  label_recurring_meeting_more_past:
+    other: "There are %{count} more past meetings."
   label_recurring_meeting_show_more: "顯示更多"
   label_recurring_meeting_series_create: "建立會議系列"
   label_recurring_meeting_series_edit: "編輯系列會議"
