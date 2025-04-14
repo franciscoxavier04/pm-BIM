@@ -360,7 +360,7 @@ zh-CN:
           "15_5":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Filter for descendants (children and grandchildren) of work packages.</li> <li>Benefit from advanced accessibility in the date picker.</li> <li>See % Complete included in work package table sums.</li> <li>Include a column for children in work package tables.</li> <li>Better use the date picker in mobile screens.</li> <li>PDF exports matching configured form layout.</li> </ul>
+                该版本为您带来了多项功能与改进，例如：<br> <ul class="%{list_styling_class}"> <li>筛选工作包后代（子级和孙级）。</li> <li>日期选择器支持高级无障碍功能。</li> <li>工作包表格汇总中显示完成百分比。</li> <li>工作包表格新增子级列。</li> <li>优化移动端屏幕的日期选择器使用体验。</li> <li>PDF 导出与配置的表单布局保持一致。</li> </ul>
     ical_sharing_modal:
       title: "订阅日历"
       inital_setup_error_message: "获取数据时发生错误。"

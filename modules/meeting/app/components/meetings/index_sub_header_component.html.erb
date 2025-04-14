@@ -31,7 +31,7 @@
             menu.with_item(
               label: I18n.t("meeting.types.one_time"),
               tag: :a,
-              href: polymorphic_path([:new_dialog, @project, :meetings], type: :structured),
+              href: polymorphic_path([:new_dialog, @project, :meetings]),
               content_arguments: { data: { controller: "async-dialog" } }
             ) do |item|
               item.with_description.with_content(t("meeting.types.structured_text"))
@@ -44,14 +44,6 @@
               content_arguments: { data: { controller: "async-dialog" } }
             ) do |item|
               item.with_description.with_content(t("meeting.types.recurring_text"))
-            end
-
-            menu.with_item(
-              label: I18n.t("meeting.types.classic"),
-              tag: :a,
-              href: dynamic_path
-            ) do |item|
-              item.with_description.with_content(t("meeting.types.classic_text"))
             end
           end
         end

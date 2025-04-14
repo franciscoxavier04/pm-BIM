@@ -72,11 +72,9 @@ uk:
         invalid_time_format: "не є допустимим часом. Необхідний формат: HH:MM"
     models:
       recurring_meeting: "Повторювана нарада"
-      structured_meeting: "Одноразова нарада"
-      meeting: "Нарада"
+      meeting: "Одноразова нарада"
       meeting_agenda_item: "Порядок денний"
       meeting_agenda: "Порядок денний"
-      meeting_minutes: "Хвилини"
       meeting_section: "Розділ"
   activity:
     filter:
@@ -219,9 +217,6 @@ uk:
         new_date_time: "Нова дата/час"
     label_mail_all_participants: "Надіслати лист усім учасникам"
     types:
-      classic: "Classic (unsupported)"
-      classic_text: "Note: Classic meetings will be removed in the next version of OpenProject."
-      structured: "Структурована"
       one_time: "Одноразова"
       recurring: "Повторювана"
       recurring_text: "Створюйте серії нарад на основі динамічного шаблона для кожної події."
@@ -298,7 +293,7 @@ uk:
       full_past: "%{base} о %{time}, завершено %{end_date}"
       never_ending: "%{base} о %{time}"
     open:
-      title: "Agenda opened"
+      title: "Порядок денний відкрито"
       subtitle: >
         Відкриті наради мають порядок денний, який можна редагувати і який відображається в розділі «Мої наради» для окремих користувачів. Зміни в шаблоні серії нарад не впливають на вже відкриті наради.
       blankslate:
@@ -409,7 +404,7 @@ uk:
   label_meeting_state_in_progress: "Поточна"
   label_meeting_reopen_action: "Відкрити зустріч знову"
   label_meeting_close_action: "Закрити зустріч"
-  label_meeting_in_progress_action: "Start meeting"
+  label_meeting_in_progress_action: "Почати нараду"
   text_meeting_open_description: "Це відкрита нарада. Ви можете додавати / вилучати пункти порядку денного й редагувати їх. Коли порядок денний буде готовий, позначте її як поточну в результатах документа."
   text_meeting_closed_description: "Це закрита нарада. Ви більше не можете додати або вилучати пункти порядку денного."
   text_meeting_in_progress_description: "Це поточна нарада. Ви можете документувати результати для кожного пункту порядку денного, перевпорядковувати їх і навіть додавати нові. Коли нараду буде завершено, позначте її як закриту, щоб заблокувати."
@@ -432,6 +427,6 @@ uk:
   text_agenda_item_move_next_meeting: "Справді перемістити в нову нараду, заплановану на %{date} о %{time}?"
   text_agenda_item_moved_to_next_meeting: "Пункт порядку денного переміщено в нову нараду, що відбудеться %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Цей пакет робіт ще не заплановано в порядку денному майбутньої наради."
-  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
+  text_agenda_item_move_next_meeting_cancelled: "Не вдається перейти до наступної наради, оскільки її скасовано."
   text_work_package_add_to_meeting_hint: 'Натисніть кнопку «Додати до наради», щоб додати цей пакет робіт до майбутньої наради.'
   text_work_package_has_no_past_meeting_agenda_items: "Цей пакет робіт не згадано в минулій нараді."

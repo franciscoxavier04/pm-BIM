@@ -41,12 +41,13 @@ RSpec.describe Types::Patterns::TokenPropertyMapper do
 
   shared_let(:work_package_parent) do
     create(:work_package, project:, category:, start_date: Date.yesterday, estimated_hours: 120,
-                          due_date: 3.months.from_now, assigned_to: parent_assignee)
+                          remaining_hours: 80, due_date: 3.months.from_now, assigned_to: parent_assignee)
   end
 
   shared_let(:work_package) do
     create(:work_package, responsible:, project:, category:, due_date: 1.month.from_now, assigned_to: assignee,
-                          parent: work_package_parent, start_date: Time.zone.today, estimated_hours: 30)
+                          parent: work_package_parent, start_date: Time.zone.today, estimated_hours: 30,
+                          remaining_hours: 25)
   end
 
   shared_let(:string_custom_field) do

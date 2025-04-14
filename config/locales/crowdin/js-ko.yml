@@ -361,7 +361,7 @@ ko:
           "15_5":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Filter for descendants (children and grandchildren) of work packages.</li> <li>Benefit from advanced accessibility in the date picker.</li> <li>See % Complete included in work package table sums.</li> <li>Include a column for children in work package tables.</li> <li>Better use the date picker in mobile screens.</li> <li>PDF exports matching configured form layout.</li> </ul>
+                이 릴리스에서는 사용자를 위한 다음과 같은 다양한 기능과 개선 사항이 제공됩니다. <br> <ul class="%{list_styling_class}"> <li>작업 패키지의 하위 항목(자식 및 손자)을 필터링합니다.</li> <li>날짜 선택기의 고급 접근성을 지원합니다.</li> <li>작업 패키지 테이블 합계에 포함된 완료 %가 표시됩니다.</li> <li>작업 패키지 테이블에 자식에 대한 열이 포함됩니다.</li> <li>모바일 화면에서 날짜 선택기를 보다 효율적으로 사용합니다.</li> <li>구성된 양식 레이아웃과 일치하는 PDF를 내보냅니다.</li> </ul>
     ical_sharing_modal:
       title: "캘린더 구독"
       inital_setup_error_message: "데이터를 가져오는 중에 오류가 발생했습니다."
@@ -794,7 +794,7 @@ ko:
       typeahead_placeholder: 가능한 전문가를 검색합니다
     relation_labels:
       parent: "부모"
-      child: "Child"
+      child: "자식"
       children: "하위"
       relates: "관련 항목"
       duplicates: "중복"
@@ -824,7 +824,7 @@ ko:
       add_new_child: "새 자식 만들기"
       create_new: "새로 만들기"
       add_existing: "기존 추가"
-      add_existing_child: "Add child"
+      add_existing_child: "자식 추가"
       remove_child: "자식 제거"
       add_new_relation: "새 관계 만들기"
       add_existing_relation: "기존 관계 추가"

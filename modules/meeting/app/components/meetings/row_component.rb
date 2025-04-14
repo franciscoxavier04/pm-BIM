@@ -122,7 +122,6 @@ module Meetings
                      href: copy_project_meeting_path(project, model),
                      content_arguments: {
                        data: {
-                         turbo: model.is_a?(StructuredMeeting),
                          turbo_stream: true
                        }
                      }) do |item|

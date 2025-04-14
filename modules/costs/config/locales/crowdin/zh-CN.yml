@@ -181,3 +181,9 @@ zh-CN:
     errors:
       validation:
         start_time_different_date: "开始时间 (%{start_time}) 的日期部分必须与 支出日期(%{spent_on})相同。"
+  ee:
+    features:
+      time_entry_time_restrictions: 需要准确的时间跟踪
+    upsale:
+      time_entry_time_restrictions:
+        description: "通过要求在记录时间时提供确切的开始和结束时间来改进你的时间跟踪。"

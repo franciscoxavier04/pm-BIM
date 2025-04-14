@@ -361,7 +361,7 @@ uk:
           "15_5":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Filter for descendants (children and grandchildren) of work packages.</li> <li>Benefit from advanced accessibility in the date picker.</li> <li>See % Complete included in work package table sums.</li> <li>Include a column for children in work package tables.</li> <li>Better use the date picker in mobile screens.</li> <li>PDF exports matching configured form layout.</li> </ul>
+                Цей випуск включає багато нових функцій і покращень. <br> <ul class="%{list_styling_class}"> <li>Фільтрування за нащадками (дочірніх і нижчого рівня) пакетів робіт.</li> <li>Покращені спеціальні можливості засобу вибору даних.</li> <li>Перегляд атрибута «% завершення» в підсумках таблиці пакета робіт.</li> <li>Додавання стовпця дочірніх елементів у таблиці пакетів робіт.</li> <li>Зручніше використання засобу вибору даних на екранах мобільних пристроїв.</li> <li>Експорт даних у форматі PDF відповідно до налаштувань макета форми.</li> </ul>
     ical_sharing_modal:
       title: "Підписатися на календар"
       inital_setup_error_message: "Під час отримання даних сталася помилка."
@@ -797,7 +797,7 @@ uk:
       typeahead_placeholder: Пошук можливих спостерігачів
     relation_labels:
       parent: "Джерело"
-      child: "Child"
+      child: "Дочірній"
       children: "Дочірні елементи"
       relates: "Пов'язано з"
       duplicates: "Дублікати"
@@ -827,7 +827,7 @@ uk:
       add_new_child: "Створити новий дочірній елемент"
       create_new: "Створити новий"
       add_existing: "Додати існуючий"
-      add_existing_child: "Add child"
+      add_existing_child: "Додати дочірній елемент"
       remove_child: "Видалити дочірній елемент"
       add_new_relation: "Створити нове відношення"
       add_existing_relation: "Додати існуюче співвідношення"
