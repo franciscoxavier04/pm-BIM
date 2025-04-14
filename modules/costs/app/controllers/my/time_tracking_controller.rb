@@ -32,7 +32,7 @@ module My
   class TimeTrackingController < ApplicationController
     before_action :require_login
 
-    no_authorization_required!(:calendar, :day, :week, :month)
+    no_authorization_required!(:index, :day, :week, :month)
 
     menu_item :my_time_tracking
 
@@ -40,7 +40,7 @@ module My
 
     helper_method :current_day, :today?, :this_week?, :this_month?, :list_view_component, :view_mode
 
-    def calendar
+    def index
       if mobile?
         redirect_to action: :day, view_mode: default_view_mode
       else

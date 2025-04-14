@@ -144,28 +144,10 @@ module Costs
 
       menu :global_menu,
            :my_time_tracking,
-           { controller: "/my/time_tracking", action: "calendar" },
+           { controller: "/my/time_tracking", action: "index" },
            after: :my_page,
            caption: :label_my_time_tracking,
            icon: :stopwatch
-
-      #       menu :global_menu,
-      #            :my_time_tracking_today,
-      #            { controller: "/my/time_tracking", action: "day" },
-      #            parent: :my_time_tracking,
-      #            caption: :label_today
-      #
-      #       menu :global_menu,
-      #            :my_time_tracking_this_week,
-      #            { controller: "/my/time_tracking", action: "week" },
-      #            parent: :my_time_tracking,
-      #            caption: :label_this_week
-      #
-      #       menu :global_menu,
-      #            :my_time_tracking_this_month,
-      #            { controller: "/my/time_tracking", action: "month" },
-      #            parent: :my_time_tracking,
-      #            caption: :label_this_month
     end
 
     initializer "costs.settings" do

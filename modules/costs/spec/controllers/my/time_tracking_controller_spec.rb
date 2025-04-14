@@ -49,7 +49,7 @@ RSpec.describe My::TimeTrackingController do
         end
 
         it "redirects to the week calendar view" do
-          get :calendar
+          get :index
           expect(response).to redirect_to(action: :week, view_mode: "calendar")
         end
       end
@@ -60,7 +60,7 @@ RSpec.describe My::TimeTrackingController do
         end
 
         it "redirects to the week list view" do
-          get :calendar
+          get :index
           expect(response).to redirect_to(action: :week, view_mode: "list")
         end
       end
@@ -77,7 +77,7 @@ RSpec.describe My::TimeTrackingController do
         end
 
         it "redirects to the day calendar view" do
-          get :calendar
+          get :index
           expect(response).to redirect_to(action: :day, view_mode: "calendar")
         end
       end
@@ -88,7 +88,7 @@ RSpec.describe My::TimeTrackingController do
         end
 
         it "redirects to the day list view" do
-          get :calendar
+          get :index
           expect(response).to redirect_to(action: :day, view_mode: "list")
         end
       end
