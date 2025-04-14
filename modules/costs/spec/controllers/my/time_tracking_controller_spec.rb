@@ -94,4 +94,55 @@ RSpec.describe My::TimeTrackingController do
       end
     end
   end
+
+  describe "GET /my/time-tracking/day" do
+    it "without a date param it uses the current date" do
+      get :day
+      expect(assigns(:current_day)).to eq(Date.current)
+    end
+
+    it "with a date param it uses the given date" do
+      get :day, params: { date: "2023-12-31" }
+      expect(assigns(:current_day)).to eq(Date.parse("2023-12-31"))
+    end
+
+    it "with an invalid date param it uses the current date" do
+      get :day, params: { date: "invalid-date" }
+      expect(assigns(:current_day)).to eq(Date.current)
+    end
+  end
+
+  describe "GET /my/time-tracking/week" do
+    it "without a date param it uses the beginning of current week" do
+      get :week
+      expect(assigns(:current_day)).to eq(Date.current.beginning_of_week)
+    end
+
+    it "with a date param it uses the given date" do
+      get :week, params: { date: "2023-12-31" }
+      expect(assigns(:current_day)).to eq(Date.parse("2023-12-31"))
+    end
+
+    it "with an invalid date param it uses the beginning of current week" do
+      get :week, params: { date: "invalid-date" }
+      expect(assigns(:current_day)).to eq(Date.current.beginning_of_week)
+    end
+  end
+
+  describe "GET /my/time-tracking/month" do
+    it "without a date param it uses the beginning of current month" do
+      get :month
+      expect(assigns(:current_day)).to eq(Date.current.beginning_of_month)
+    end
+
+    it "with a date param it uses the given date" do
+      get :month, params: { date: "2023-12-31" }
+      expect(assigns(:current_day)).to eq(Date.parse("2023-12-31"))
+    end
+
+    it "with an invalid date param it uses the beginning of current month" do
+      get :month, params: { date: "invalid-date" }
+      expect(assigns(:current_day)).to eq(Date.current.beginning_of_month)
+    end
+  end
 end
