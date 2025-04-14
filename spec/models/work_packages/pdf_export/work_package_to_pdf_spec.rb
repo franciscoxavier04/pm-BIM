@@ -99,6 +99,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
   let(:image_path) { Rails.root.join("spec/fixtures/files/image.png") }
   let(:priority) { create(:priority_normal) }
   let(:image_attachment) { Attachment.new author: user, file: File.open(image_path) }
+  let(:image_attachment_elsewhere) { Attachment.new author: user, file: File.open(image_path) }
   let(:attachments) { [image_attachment] }
   let(:cf_long_text_description) { "**foo** *faa*" }
   let(:cf_empty_long_text_description) { "" }
@@ -137,6 +138,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
          </figure>
       </p>
       <p><unknown-tag>Foo</unknown-tag></p>
+      <img class="op-uc-image op-uc-image_inline" src="/api/v3/attachments/#{image_attachment_elsewhere.id}/content">
     DESCRIPTION
   end
   let(:work_package) do
@@ -258,6 +260,11 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
       images: }
   end
 
+  before do
+    image_attachment.save
+    image_attachment_elsewhere.save
+  end
+
   describe "with a request for a PDF" do
     describe "with rich text and images" do
       it "contains correct data" do
@@ -274,17 +281,16 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
         ].flatten.join(" ")
         expect(result).to eq(expected_result)
         expect(result).not_to include("DisabledCustomField")
-        expect(pdf[:images].length).to eq(2)
+        expect(pdf[:images].length).to eq(3)
       end
     end
 
-    describe "with a faulty image" do
+    describe "with faulty images" do
       before do
         # simulate a null pointer exception
         # https://appsignal.com/openproject-gmbh/sites/62a6d833d2a5e482c1ef825d/exceptions/incidents/2326/samples/62a6d833d2a5e482c1ef825d-848752493603098719217252846401
         # where attachment data is in the database but the file is missing, corrupted or not accessible
-        allow(image_attachment).to receive(:file)
-                                     .and_return(nil)
+        allow_any_instance_of(Attachment).to receive(:file).and_return(nil)
       end
 
       it "still finishes the export" do
