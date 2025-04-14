@@ -242,7 +242,7 @@ zh-CN:
       hierarchy:
         subitems:
           zero: 无子项目
-          one: 1个子项目
+          one: 1 个子项目
           other: "%{count} 个子项目"
     upsale:
       custom_field_format_hierarchy: "工作包的自定义字段需要层级结构？"
@@ -884,7 +884,7 @@ zh-CN:
         page: "页"
         row_count: "行数"
         column_count: "列数"
-        widgets: "小部件"
+        widgets: "微件"
       journal:
         notes: "备注"
         cause_type: "Cause 类型"
@@ -3258,7 +3258,7 @@ zh-CN:
   permission_delete_timelines: "删除时间线"
   permission_delete_wiki_pages: "删除维基页面"
   permission_delete_wiki_pages_attachments: "删除附件"
-  permission_edit_work_package_notes: "中度评论"
+  permission_edit_work_package_notes: "审核评论"
   permission_edit_work_package_notes_explanation: "注意：拥有此权限的用户可以编辑任何人的评论。"
   permission_edit_work_packages: "编辑工作包"
   permission_edit_messages: "编辑消息"
@@ -4357,7 +4357,7 @@ zh-CN:
     define_custom_style: 创建自定义样式
     edit_attribute_groups: 编辑属性组
     gantt_pdf_export: 甘特图 PDF 导出
-    grid_widget_wp_graph: 网格小组件工作包图
+    grid_widget_wp_graph: 网格工作包图微件
     ldap_groups: LDAP 组
     one_drive_sharepoint_file_storage: OneDrive/SharePoint 文件存储
     placeholder_users: 占位符用户

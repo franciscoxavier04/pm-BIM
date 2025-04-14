@@ -35,15 +35,15 @@ es:
         label_sort_desc: "Lo más reciente en la parte superior"
         label_type_to_comment: "Añada un comentario. Escriba @ para notificar a personas."
         label_submit_comment: "Enviar comentario"
-        label_who: Who?
+        label_who: '¿Quién?'
         changed_on: "cambiado el"
         created_on: "creó esto el"
         changed: "cambiado"
         created: "creado"
         commented: "comentado"
-        restrict_visibility: Restrict visibility
-        restricted_journal: Restricted comments are visible to a limited group of members.
-        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
+        restrict_visibility: Restringir visibilidad
+        restricted_journal: Los comentarios restringidos son visibles para un grupo limitado de miembros.
+        unsaved_changes_confirmation_message: Tiene cambios sin guardar. ¿Seguro que desea cerrar el editor?
   admin:
     plugins:
       no_results_title_text: Actualmente no hay ningún plugin instalado.
@@ -367,14 +367,14 @@ es:
         no_results_title_text: Actualmente no hay campos personalizados disponibles.
       life_cycle:
         header:
-          title: "Project life cycle"
-          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
-        non_defined: "No phases are currently defined."
-        section_header: "Phases"
+          title: "Ciclo de vida del proyecto"
+          description_html: "Las fases activas del proyecto definen el ciclo de vida de este proyecto y se definen en los <a href=%{admin_settings_url} target=\"_blank\">ajustes de administración</a>. Las fases habilitadas se mostrarán en su <a href=%{overview_url} target=\"_blank\">resumen del proyecto</a>."
+        non_defined: "Actualmente no hay fases definidas."
+        section_header: "Fases"
         step:
           use_in_project: "Usar %{step} en este proyecto"
         filter:
-          label: "Search project phase"
+          label: "Buscar fase del proyecto"
       project_custom_fields:
         header:
           title: "Atributos del proyecto"
@@ -401,8 +401,8 @@ es:
         new_label: "Nueva prioridad"
   project_phase:
     working_days_count:
-      one: "Duration: %{count} working day"
-      other: "Duration: %{count} working days"
+      one: "Duración: %{count} día laborable"
+      other: "Duración: %{count} días laborables"
   lists:
     create:
       success: "La lista modificada se ha guardado como una nueva lista"
@@ -620,7 +620,7 @@ es:
           caption: "Defina un patrón utilizando atributos referenciados y texto para generar automáticamente asuntos de paquetes de trabajo. Los usuarios no podrán editar manualmente los asuntos."
         pattern:
           label: "Patrón del asunto"
-          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          caption: "Añada texto o escriba / para buscar un atributo. Puede añadir espacios para separarlos."
           headings:
             work_package: "Work package"
             parent: "Parent"
@@ -954,9 +954,9 @@ es:
         custom_field_section: Sección
       project/phase:
         date_range: "Date range"
-        definition: "Definition"
+        definition: "Definición"
       project/phase_definition:
-        name: "Name"
+        name: "Nombre"
         color: "Color"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
