@@ -27,7 +27,7 @@ You can enable or disable work package types for a specific project by following
 
 ![Work package types under project settings in OpenProject](openproject_user_guide_project_settings_work_packages_types.png)
 
-> ![TIP] 
+> [!TIP] 
 >
 > [Work package types can be managed](../../../../system-admin-guide/manage-work-packages/work-package-types) under System *Administration* -> *Work packages* -> *Types*.
 

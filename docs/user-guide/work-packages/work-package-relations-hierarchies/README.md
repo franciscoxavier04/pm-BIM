@@ -174,4 +174,4 @@ You can also add a column with information about parent work packages:
 
 ![Select parent as column in OpenProject work package tables](openproject_user_guide_wp_table_show_parent.png)
 
-*Parent* column displays all direct children work packages. If you want to include all deeper hierarchy levels, i.e. include grandchildren and so on, use the **Descendants of** filter. Learn more about [filtering for descendants](../work-package-table-configuration/#filter-for-descendats-of-a-work-package).
+*Parent* column displays all direct children work packages. If you want to include all deeper hierarchy levels, i.e. include grandchildren and so on, use the **Descendants of** filter. Learn more about [filtering for descendants](../work-package-table-configuration/#filter-for-descendants-of-a-work-package).
