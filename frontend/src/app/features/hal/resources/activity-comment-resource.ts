@@ -47,4 +47,5 @@ class ActivityCommentBaseResource extends HalResource {
 
 export const ActivityCommentResource = Attachable(ActivityCommentBaseResource);
 
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 export interface ActivityCommentResource extends ActivityCommentBaseResource, ActivityCommentResourceLinks {}
