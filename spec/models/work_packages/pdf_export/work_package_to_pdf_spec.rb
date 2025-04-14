@@ -290,7 +290,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
         # simulate a null pointer exception
         # https://appsignal.com/openproject-gmbh/sites/62a6d833d2a5e482c1ef825d/exceptions/incidents/2326/samples/62a6d833d2a5e482c1ef825d-848752493603098719217252846401
         # where attachment data is in the database but the file is missing, corrupted or not accessible
-        allow_any_instance_of(Attachment).to receive(:file).and_return(nil)
+        allow_any_instance_of(Attachment).to receive(:file).and_return(nil) # rubocop:disable RSpec/AnyInstance
       end
 
       it "still finishes the export" do
