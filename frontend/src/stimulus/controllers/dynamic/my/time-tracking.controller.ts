@@ -65,6 +65,7 @@ export default class MyTimeTrackingController extends Controller {
       eventMaxStack: 2,
       eventShortHeight: 31,
       nowIndicator: true,
+      businessHours: { daysOfWeek: [1, 2, 3, 4, 5], startTime: '00:00', endTime: '24:00' },
       eventClassNames(arg) {
         return [
           'calendar-time-entry-event',
