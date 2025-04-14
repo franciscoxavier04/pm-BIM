@@ -63,8 +63,8 @@ module My
       end
 
       def total_hours_for(date)
-        total_hours = time_entries_by_day[date].sum(&:hours).round(2)
-        DurationConverter.output(total_hours, format: :hours_and_minutes)
+        total_hours = grouped_time_entries[date].sum(&:hours).round(2)
+        DurationConverter.output(total_hours, format: :hours_and_minutes).presence || "0h"
       end
 
       def date_title(date)
@@ -75,7 +75,16 @@ module My
         end
       end
 
-      def date_additional_info(date)
+      def date_additional(date)
+        entries_count = grouped_time_entries[date].size
+        "#{entries_count} #{TimeEntry.model_name.human(count: entries_count)}"
+      end
+
+      def collapsed?(_date)
+        false
+      end
+
+      def date_caption(date)
         if mode == :month
           if Date.current.beginning_of_week == date
             t(:label_this_week)

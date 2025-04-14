@@ -2,10 +2,19 @@
   <%= render(My::TimeTracking::HeaderComponent.new(mode:, date:, view_mode: :list)) %>
   <%= render(My::TimeTracking::SubHeaderComponent.new(mode:, date:, view_mode: :list)) %>
 
-    <%- range.each_with_index do |date, i| %>
-      <%= render(Primer::OpenProject::Heading.new(tag: :h2, classes: class_names("mt-3" => !i.zero?))) do
-            date_title(date)
-          end %>
-      <%= render(My::TimeTracking::DailyEntriesTable.new(rows: grouped_time_entries[date], date: date, mode: mode)) %>
-    <%- end %>
-<%- end %>
+    <% range.each do |date| %>
+      <%= render(Primer::OpenProject::CollapsibleSection.new, collapsed: collapsed?(date)) do |section| %>
+        <% section.with_title { date_title(date) } %>
+        <% section.with_caption { date_caption(date) } %>
+        <% section.with_additional_information do %>
+          <%=
+            render(Primer::Beta::Text.new(color: :muted)) { "#{date_additional(date)} - " } +
+            render(Primer::Beta::Text.new) { total_hours_for(date) }
+          %>
+        <% end %>
+        <% section.with_collapsible_content do %>
+          <%= render(My::TimeTracking::DailyEntriesTable.new(rows: grouped_time_entries[date], date: date, mode: mode)) %>
+        <% end %>
+      <% end %>
+    <% end %>
+<% end %>
