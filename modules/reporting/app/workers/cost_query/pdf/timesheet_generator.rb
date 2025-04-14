@@ -151,18 +151,18 @@ class CostQuery::PDF::TimesheetGenerator
     all_entries
       .uniq { |entry| entry.user.id }
       .map(&:user)
-      .sort_by { |user| user.name }
+      .sort_by(&:name)
   end
 
   def all_entries
     @all_entries ||= begin
-                       ids = query
-                               .each_direct_result
-                               .filter { |r| r.fields["type"] == "TimeEntry" }
-                               .flat_map { |r| r.fields["id"] }
+      ids = query
+              .each_direct_result
+              .filter { |r| r.fields["type"] == "TimeEntry" }
+              .flat_map { |r| r.fields["id"] }
 
-                       TimeEntry.where(id: ids).includes(%i[user activity work_package project])
-                     end
+      TimeEntry.where(id: ids).includes(%i[user activity work_package project])
+    end
   end
 
   def build_table_rows(entries, wants_sum_row)
@@ -240,11 +240,11 @@ class CostQuery::PDF::TimesheetGenerator
 
   def build_table_row_comment(entry)
     [{
-       content: entry.comments,
-       text_color: COMMENT_FONT_COLOR,
-       font_style: :italic,
-       colspan: table_columns_widths.size
-     }]
+      content: entry.comments,
+      text_color: COMMENT_FONT_COLOR,
+      font_style: :italic,
+      colspan: table_columns_widths.size
+    }]
   end
 
   def table_header_columns
@@ -469,7 +469,7 @@ class CostQuery::PDF::TimesheetGenerator
     [format_date_with_weekday(date)] + row
   end
 
-  def build_sum_table_sum_cell(sum, user, date)
+  def build_sum_table_sum_cell(sum, _user, _date)
     {
       content: format_hours(sum),
       align: :right, inline_format: true
