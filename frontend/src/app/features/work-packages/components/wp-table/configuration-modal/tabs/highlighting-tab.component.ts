@@ -74,7 +74,7 @@ export class WpTableConfigurationHighlightingTabComponent implements TabComponen
 
     this.setSelectedValues();
 
-    this.eeShowBanners = this.Banners.eeShowBanners;
+    this.eeShowBanners = this.Banners.showBannerFor('conditional_highlighting');
     this.updateMode(this.wpTableHighlight.current.mode);
 
     if (this.eeShowBanners) {

@@ -903,28 +903,51 @@ RSpec.describe WorkPackage do
     end
 
     context "when comments_with_restricted_visibility is enabled", with_flag: { comments_with_restricted_visibility: true } do
-      context "when the user cannot see restricted journals" do
+      context "and setting is enabled for the project" do
         before do
+          work_package.project.enabled_comments_with_restricted_visibility = true
+          work_package.project.save!
+        end
+
+        context "when the user cannot see restricted journals" do
+          before do
+            mock_permissions_for(user) do |mock|
+              mock.allow_in_work_package :view_work_packages, work_package:
+            end
+          end
+
+          it "does not return the restricted journal" do
+            expect(journals.map(&:id)).not_to include(restricted_note.id)
+            expect(journals.map(&:id)).to include(unrestricted_note.id)
+          end
+        end
+
+        context "when the user can see restricted journals" do
+          before do
+            mock_permissions_for(user) do |mock|
+              mock.allow_in_project(:view_comments_with_restricted_visibility, project: work_package.project)
+            end
+          end
+
+          it "returns all journals" do
+            expect(journals.map(&:id)).to include(restricted_note.id, unrestricted_note.id)
+          end
+        end
+      end
+
+      context "and setting is disabled for the project" do
+        before do
+          work_package.project.enabled_comments_with_restricted_visibility = false
+          work_package.project.save!
+
           mock_permissions_for(user) do |mock|
-            mock.allow_in_work_package :view_work_packages, work_package:
+            mock.allow_in_project(:view_comments_with_restricted_visibility, project: work_package.project)
           end
         end
 
         it "does not return the restricted journal" do
           expect(journals.map(&:id)).not_to include(restricted_note.id)
           expect(journals.map(&:id)).to include(unrestricted_note.id)
-        end
-      end
-
-      context "when the user can see restricted journals" do
-        before do
-          mock_permissions_for(user) do |mock|
-            mock.allow_in_project(:view_comments_with_restricted_visibility, project: work_package.project)
-          end
-        end
-
-        it "returns all journals" do
-          expect(journals.map(&:id)).to include(restricted_note.id, unrestricted_note.id)
         end
       end
     end

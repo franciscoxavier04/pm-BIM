@@ -1,5 +1,6 @@
 <% html_title t("js.notifications.title") %>
 
-<% content_for :content_body do %>
-  <%= angular_component_tag "opce-share-upsale" %>
-<% end %>
+<%= render EnterpriseEdition::UpsalePageComponent.new(
+  :work_package_sharing,
+  video: "enterprise/share-work-package.mp4"
+) %>

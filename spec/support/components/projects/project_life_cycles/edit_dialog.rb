@@ -54,7 +54,7 @@ module Components
         end
 
         def set_date_for(step, values:)
-          dialog_selector = "##{::ProjectLifeCycles::Sections::EditDialogComponent::DIALOG_ID}"
+          dialog_selector = "##{Overviews::ProjectPhases::EditDialogComponent::DIALOG_ID}"
 
           datepicker = Components::RangeDatepicker.new(dialog_selector)
 

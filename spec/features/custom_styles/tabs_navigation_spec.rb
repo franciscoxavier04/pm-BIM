@@ -38,7 +38,8 @@ RSpec.describe "Tabs navigation and content switching on the admin/design page" 
     end
 
     it "redirects to upsale page" do
-      expect(page).to have_css(".upsale-notification")
+      expect(page).to have_enterprise_upsale_page
+      expect(page).to have_text "Available only through the Basic enterprise plan"
     end
   end
 

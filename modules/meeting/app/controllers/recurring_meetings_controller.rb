@@ -346,9 +346,9 @@ class RecurringMeetingsController < ApplicationController
   end
 
   def structured_meeting_params
-    if params[:structured_meeting].present?
+    if params[:meeting].present?
       params
-        .require(:structured_meeting)
+        .require(:meeting)
     end
   end
 

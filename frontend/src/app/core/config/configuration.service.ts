@@ -146,6 +146,10 @@ export class ConfigurationService {
     return this.systemPreference<string[]>('activeFeatureFlags');
   }
 
+  public get availableFeatures():string[] {
+    return this.systemPreference<string[]>('availableFeatures');
+  }
+
   private loadConfiguration() {
     return this
       .apiV3Service

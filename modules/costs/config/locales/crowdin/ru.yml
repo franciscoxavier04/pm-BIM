@@ -193,3 +193,9 @@ ru:
     errors:
       validation:
         start_time_different_date: "Дата startTime (%{start_time}) должна быть такой же, как дата spentOn (%{spent_on})."
+  ee:
+    features:
+      time_entry_time_restrictions: Требует точного отслеживания времени
+    upsale:
+      time_entry_time_restrictions:
+        description: "Улучшите отслеживание времени, требуя точного времени начала и окончания при записи трудозатрат."

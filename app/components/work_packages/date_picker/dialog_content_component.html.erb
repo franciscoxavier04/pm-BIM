@@ -76,7 +76,7 @@
         collection.with_component(Primer::Alpha::Dialog::Footer.new) do
           component_collection do |footer|
             footer.with_component(
-              Primer::ButtonComponent.new(
+              Primer::Beta::Button.new(
                 data: { action: "work-packages--date-picker--preview#cancel" },
                 test_selector: "op-datepicker-modal--action"
               )
@@ -85,7 +85,7 @@
             end
 
             footer.with_component(
-              Primer::ButtonComponent.new(
+              Primer::Beta::Button.new(
                 scheme: :primary,
                 type: :submit,
                 form: DIALOG_FORM_ID,

@@ -193,3 +193,9 @@ uk:
     errors:
       validation:
         start_time_different_date: "Частина дати в значенні startTime (%{start_time}) має збігатися зі значенням дати spentOn (%{spent_on})."
+  ee:
+    features:
+      time_entry_time_restrictions: Вимагати точного відстеження часу
+    upsale:
+      time_entry_time_restrictions:
+        description: "Удоскональте відстеження часу, вимагаючи введення точного часу початку й завершення робіт."

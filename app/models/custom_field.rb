@@ -373,7 +373,7 @@ class CustomField < ApplicationRecord
     if project&.persisted?
       project.shared_versions
     elsif options[:scope] == :visible
-      Version.visible.or(Version.systemwide)
+      Version.visible
     else
       Version.systemwide
     end
