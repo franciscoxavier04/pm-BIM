@@ -40,12 +40,23 @@ module My
             control.with_item(
               tag: :a,
               href: url_for(params.permit(:controller, :date).merge(action:, view_mode: view_mode)),
-              icon: "calendar", # TODO: Replace with proper icon
+              icon: icon_for_mode(action),
               label: t("label_#{action}"),
               title: t("label_#{action}"),
               selected: (current_mode == action)
             )
           end
+        end
+      end
+
+      def icon_for_mode(mode)
+        case mode
+        when :day
+          "op-calendar-day"
+        when :week
+          "op-calendar-week"
+        else
+          "calendar"
         end
       end
     end
