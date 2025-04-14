@@ -128,8 +128,6 @@ module OpenIDConnect
 
     def find_provider
       @provider = OpenIDConnect::Provider.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      render_404
     end
 
     def default_breadcrumb; end

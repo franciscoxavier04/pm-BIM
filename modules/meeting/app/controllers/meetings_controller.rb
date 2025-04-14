@@ -439,8 +439,6 @@ class MeetingsController < ApplicationController
     @meeting = Meeting
       .includes([:project, :author, { participants: :user }, :sections, { agenda_items: :outcomes }])
       .find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   def convert_params # rubocop:disable Metrics/AbcSize
@@ -516,8 +514,6 @@ class MeetingsController < ApplicationController
     return unless copied_from_meeting_id
 
     @copy_from = Meeting.visible.find(copied_from_meeting_id)
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   def copy_attributes

@@ -212,8 +212,6 @@ module Admin::Settings
 
     def find_custom_field
       @custom_field = ProjectCustomField.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      render_404
     end
 
     def drop_success_streams(call)
