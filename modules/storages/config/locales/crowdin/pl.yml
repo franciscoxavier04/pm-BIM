@@ -250,6 +250,13 @@ pl:
         oidc_cant_refresh_token: Podczas próby sprawdzenia Twojego dostępu do magazynu wystąpił błąd. Aby uzyskać dalsze informacje, sprawdź dzienniki serwera.
         oidc_non_oidc_user: Bieżący użytkownik, choć otrzymał konfigurację, nie otrzymał konfiguracji od dostawcy tożsamości OpenID Connect (OIDC). Przeprowadź ponowne sprawdzenie z użytkownikiem, który otrzymał konfigurację od OIDC.
         oidc_non_provisioned_user: Bieżący użytkownik nie jest dostarczany przez dostawcę tożsamości OpenID Connect. Ponownie uruchom sprawdzanie z dostarczonym użytkownikiem.
+        one_drive:
+          client_cant_delete_folder: Klient ma problemy z usunięciem folderów. Sprawdź dokumentację konfiguracji swojej pamięci masowej.
+          client_write_permission_missing: Klient nie ma uprawnień zapisu. Sprawdź dokumentację konfiguracji swojej pamięci masowej.
+          drive_id_not_found: Nie można znaleźć skonfigurowanego Drive ID. Sprawdź konfigurację.
+          drive_id_wrong: Skonfigurowany Drive ID jest nieprawidłowy. Sprawdź konfigurację.
+          existing_test_folder: Wymagany do testowania folder %{folder_name} już istnieje. Usuń go i spróbuj ponownie.
+          unexpected_content: Na dysku znaleziono nieoczekiwaną zawartość.
         placeholder: Sprawdź połączenie z serwerem.
         subtitle: Weryfikacja połączenia
         tenant_id_wrong: Skonfigurowany katalog (dzierżawca) jest nieprawidłowy. Sprawdź konfigurację.

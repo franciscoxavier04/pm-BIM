@@ -41,12 +41,13 @@ RSpec.describe Types::Patterns::TokenPropertyMapper do
 
   shared_let(:work_package_parent) do
     create(:work_package, project:, category:, start_date: Date.yesterday, estimated_hours: 120,
-                          due_date: 3.months.from_now, assigned_to: parent_assignee)
+                          remaining_hours: 80, due_date: 3.months.from_now, assigned_to: parent_assignee)
   end
 
   shared_let(:work_package) do
     create(:work_package, responsible:, project:, category:, due_date: 1.month.from_now, assigned_to: assignee,
-                          parent: work_package_parent, start_date: Time.zone.today, estimated_hours: 30)
+                          parent: work_package_parent, start_date: Time.zone.today, estimated_hours: 30,
+                          remaining_hours: 25)
   end
 
   shared_let(:string_custom_field) do
@@ -66,6 +67,12 @@ RSpec.describe Types::Patterns::TokenPropertyMapper do
     end
   end
 
+  shared_let(:not_activated_custom_field) do
+    create(:boolean_wp_custom_field).tap do |custom_field|
+      work_package.type.custom_fields << custom_field
+    end
+  end
+
   described_class::TOKEN_PROPERTY_MAP.each_pair do |key, details|
     it "the token named #{key} resolves successfully" do
       expect { details[:fn].call(work_package) }.not_to raise_error
@@ -76,6 +83,12 @@ RSpec.describe Types::Patterns::TokenPropertyMapper do
   it "multi value fields are supported" do
     function = described_class.new.fetch :"custom_field_#{mult_list_custom_field.id}"
     expect(function.call(work_package)).to eq(%w[A B])
+  end
+
+  it "must return nil if custom field is not activated in project" do
+    function = described_class.new.fetch :"custom_field_#{not_activated_custom_field.id}"
+    expect { function.call(work_package) }.not_to raise_error
+    expect(function.call(work_package)).to be_nil
   end
 
   it "returns all possible tokens" do

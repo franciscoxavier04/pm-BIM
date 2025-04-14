@@ -63,9 +63,6 @@ uk:
         main-menu-bg-selected-background: "Головне меню в разі вибору"
         main-menu-bg-hover-background: "Головне меню в разі наведення"
       custom_colors: "Кольори за власними вподобаннями"
-      customize: "Персоналізуйте свій екземпляр OpenProject за допомогою власного логотипа й кольорів."
-      enterprise_notice: "Це крихітне доповнення доступне тільки для підписників версії Enterprise як особлива подяка за їхню фінансову підтримку розвитку OpenProject."
-      enterprise_more_info: "Примітка: використаний логотип буде загальнодоступний."
       manage_colors: "Редагувати параметри вибору кольору"
       instructions:
         primary-button-color: "Насичений акцентний колір використовується для більшості важливих кнопок на екрані."
@@ -211,9 +208,6 @@ uk:
     new: "Нова спеціальна дія"
     edit: "Редагувати спеціальну дію %{name}"
     execute: "Виконати %{name}"
-    upsale:
-      title: "Власні дії"
-      description: "Користувацькі дії – це ярлики набору попередньо визначених дій, які ви можете включати в певні пакети робіт залежно від статусу, ролі, типу або проєкту."
   custom_fields:
     admin:
       custom_field_projects:
@@ -243,8 +237,6 @@ uk:
           zero: немає піделементів
           one: 1 піделемент
           other: "Піделементів: %{count}"
-    upsale:
-      custom_field_format_hierarchy: "Потрібно створити ієрархію в користувацьких полях для пакетів робіт?"
     text_add_new_custom_field: >
       Щоб додати нові користувальницькі поля до проекту, спочатку потрібно створити їх, перш ніж ви зможете додати їх до цього проекту.
     is_enabled_globally: "Увімкнено у всьому світі"
@@ -554,10 +546,6 @@ uk:
         Усі екземпляри прототипу користувача (наприклад, виконавець, відповідальний тощо) буде перепризначено обліковому запису з назвою «Видалений користувач». Оскільки дані кожного видаленого облікового запису перепризначаються цьому обліковому запису, відрізнити дані, створені користувачем, від даних іншого видаленого облікового запису, може бути важко.
       irreversible: "Цю дію не можна скасувати"
       confirmation: "Введіть ім’я прототипу  користувача %{name}, щоб підтвердити видалення."
-    upsale:
-      title: Прототипи користувачів
-      description: >
-        Прототипи користувачів допомагають призначати пакети робіт користувачам, які не входять у ваш проєкт. Вони можуть бути корисні в різних сценаріях. Наприклад, якщо потрібно відстежувати завдання для ресурсу, який поки не доступний або не названий. Або ж ви хочете відстежувати завдання, призначені особі, не надаючи їй доступу до OpenProject.
   prioritiies:
     edit:
       priority_color_text: |
@@ -614,8 +602,6 @@ uk:
     edit:
       form_configuration:
         tab: "Конфігурація форми"
-      more_info_text_html: >
-        У версії Enterprise можна персоналізувати конфігурацію форми за допомогою таких додаткових доповнень: <br> <ul class="%{list_styling_class}">Додавання нових груп атрибутів</b></li> <li><b>Перейменування груп атрибутів</b></li> <li><b>Додавання таблиці пов’язаних пакетів робіт</b></li> </ul>
       projects:
         tab: "Проєкти"
         enabled_projects: "Включені проєкти"
@@ -1061,6 +1047,7 @@ uk:
         consented_at: "Згоден на"
       user_preference:
         comments_sorting: "Відображення коментарів"
+        dismissed_enterprise_banners: "Приховані банери Enterprise"
         impaired: "Режим спеціальних можливостей"
         auto_hide_popups: "Автоматичне приховування сповіщень про успіх"
         warn_on_leaving_unsaved: "Попереджати мене, коли залишив робочий пакет із незбереженими змінами"
@@ -1316,6 +1303,10 @@ uk:
             values:
               inclusion: "фільтр має неприпустимі значення."
               format: "%{message}"
+        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+          attributes:
+            values:
+              single_value_requirement: "має бути одним пакетом робіт"
         relation:
           typed_dag:
             circular_dependency: "Відносини створюють коло відносин."
@@ -2036,17 +2027,78 @@ uk:
   #Text direction: Left-to-Right (ltr) or Right-to-Left (rtl)
   direction: зліва направо
   ee:
+    features:
+      baseline_comparison: Порівняння з вихідним рівнем
+      board_view: Покращені Дошки
+      conditional_highlighting: Умовне виділення
+      comments_with_restricted_visibility: Коментарі з обмеженою видимістю
+      custom_actions: Користувацькі дії
+      custom_field_hierarchies: Користувацькі поля типу «Ієрархія»
+      customize_life_cycle: Налаштування життєвого циклу
+      date_alerts: Оповіщення про дати
+      define_custom_style: Користувацька тема й логотип
+      edit_attribute_groups: Редагування груп атрибутів
+      gantt_pdf_export: Експорт діаграми Ґантта в PDF
+      grid_widget_wp_graph: Графік пакета робіт у вигляді сітки
+      ldap_groups: Синхронізація користувачів і груп LDAP
+      one_drive_sharepoint_file_storage: Файлове сховище OneDrive / SharePoint
+      placeholder_users: Прототипи користувачів
+      project_list_sharing: Спільне використання списку проєктів
+      readonly_work_packages: Пакети робіт лише для читання
+      sso_auth_providers: Єдиний вхід
+      team_planner_view: Подання командного планувальника
+      two_factor_authentication: Двофакторна автентифікація
+      virus_scanning: Пошук вірусів
+      work_package_query_relation_columns: Стовпці зв’язків запиту пакета робіт
+      work_package_sharing: Діліться пакетами робіт із зовнішніми користувачами
+      work_package_subject_generation: Створення теми пакета робіт
     upsale:
       title: "Доповнення версії Enterprise"
+      plan_title: "Доповнення версії Enterprise %{plan}"
+      plan_name: "Версія Enterprise %{plan}"
+      plan_text_html: "Доступно лише у версії %{plan_name}."
       link_title: "Додаткові відомості"
-      automatic_subject_generation:
+      hide_banner: "Приховати цей банер"
+      baseline_comparison:
+        description: Виділяйте зміни, внесені в цей список із будь-якого моменту часу в минулому.
+      work_package_subject_generation:
         description: "Створюйте автоматично згенеровані теми на основі атрибутів і тексту."
       customize_life_cycle:
         description: "Створюйте й упорядковуйте етапи й проєкту, відмінні від тих, що передбачено плануванням циклу проєкту PM2."
-      form_configuration:
+      conditional_highlighting:
+        description: "Потрібно, щоб виокремити певні пакети робіт? Скористайтесь умовним виділенням у таблиці пакетів робіт."
+      work_package_query_relation_columns:
+        description: "Хочете переглядати зв’язки або дочірні елементи в списку пакетів робіт?"
+      edit_attribute_groups:
         description: "Налаштуйте конфігурацію форми за допомогою цих додаткових доповнень:"
-        add_groups: "Додати нові групи атрибутів"
-        rename_groups: "Перейменувати групи атрибутів"
+        features:
+          groups: "Додати нові групи атрибутів"
+          rename: "Перейменувати групи атрибутів"
+          related: "Додати таблицю зв’язаних пакетів робіт"
+      readonly_work_packages:
+        description: "Позначайте пакети робіт як доступні лише для читання залежно від статусу."
+      custom_field_hierarchies:
+        description: "Користувацькі поля типу «Ієрархія» дають змогу впорядковувати ієрархічні структури в пакети роьіт, використовуючи багаторівневі списки."
+      date_alerts:
+        description: "Завдяки оповіщенням про дати ви завжди знатимете про заплановані дати початку або завершення, тож ніколи не пропускатимете важливі терміни й не забуватимете про них."
+      work_package_sharing:
+        description: "Діліться пакетами робіт із користувачами, які не належать до учасників проєкту."
+      define_custom_style:
+        title: "Користувацький колір теми й логотип"
+        more_info: "Примітка: вибраний логотип буде загальнодоступний."
+        description: Персоналізуйте свій екземпляр OpenProject за допомогою власного логотипа й кольорів.
+      custom_actions:
+        title: "Користувацькі дії"
+        description: "Користувацькі дії – це ярлики набору попередньо визначених дій, які ви можете включати в певні пакети робіт залежно від статусу, ролі, типу або проєкту."
+      virus_scanning:
+        description: "Переконайтеся, що вивантажені в OpenProject файли перевіряються на віруси перед тим, як стають доступними для інших користувачів."
+      placeholder_users:
+        title: Прототипи користувачів
+        description: >
+          Прототипи користувачів допомагають призначати пакети робіт користувачам, які не входять у ваш проєкт. Вони можуть бути корисні в різних сценаріях. Наприклад, якщо потрібно відстежувати завдання для ресурсу, який поки не доступний або не визначений. Або ж ви хочете відстежувати завдання, призначені особі, не надаючи їй доступу до OpenProject.
+      comments_with_restricted_visibility:
+        title: "Лише для вас"
+        description: "Завдяки коментарям з обмеженою видимістю учасники внутрішньої команди можуть спілкуватися приватно. Ці коментарі бачать лише користувачі з певними ролями в проєкті й ніколи не відображаються для всіх. Функція доступна лише за наявності професійного плану Enterprise."
   enumeration_activities: "Дії щодо відстеження часу"
   enumeration_work_package_priorities: "Пріоритети робочого пакету"
   enumeration_reported_project_statuses: "Повідомлення про статус проекту"
@@ -2128,6 +2180,8 @@ uk:
     dialog:
       title: "Експорт"
       submit: "Експортувати"
+      save_export_settings:
+        label: "Зберегти налаштування"
       format:
         label: "Формат файлу"
         options:
@@ -2668,7 +2722,7 @@ uk:
   label_index_by_title: "Індекс за назвою"
   label_information: "Інформація"
   label_information_plural: "Інформація"
-  label_installation_guides: "Інструкції із встановлення"
+  label_installation_guides: "Інструкції зі встановлення"
   label_integer: "Ціле число"
   label_internal: "Власне"
   label_introduction_video: "Введення відео"
@@ -3310,6 +3364,7 @@ uk:
   notice_successful_delete: "Видалення успішно завершене."
   notice_successful_cancel: "Успішно видалено."
   notice_successful_update: "Успішно оновлено."
+  notice_unsuccessful_update: "Не вдалось оновити."
   notice_successful_update_custom_fields_added_to_project: |
     Оновлення завершено. Користувацькі поля активованих типів автоматично активовано у формі пакета робіт. <a href="%{url}" target="_blank">Докладніше</a>.
   notice_to_many_principals_to_display: "Є занадто багато результатів.\nЗвузити пошук ввівши назву нового елемента (або групи)."
@@ -3805,8 +3860,6 @@ uk:
         Решту файлів перевірено. Файлів на карантині: %{file_count}. Зараз ви перейдете на сторінку карантину, де можна видалити або замінити файли, перенесені в карантин.
       remaining_rescanned_files: >
         Перевірку на віруси ввімкнено. Потрібно ще перевірити деякі вивантажені раніше файли (%{file_count}). Цей процес заплановано у фоновому режимі. Файли будуть доступні під час перевірки.
-      upsale:
-        description: "Переконайтеся, що вивантажені в OpenProject файли перевіряються на віруси перед тим, як стають доступними для інших користувачів."
       actions:
         delete: "Видалити файл"
         quarantine: "Перенести файл на карантин"
@@ -3861,7 +3914,7 @@ uk:
       heading: "Життєвий цикл проєкту"
       heading_description: "Життєвий цикл проєкту визначає етапи, які можна використовувати для планування й відображення проєкту на сторінці панелі огляду. Ці атрибути можна вмикати або вимикати, але їх не можна перевпорядковувати на рівні окремого проєкту."
       label_add: "Додати"
-      label_add_description: "Додайте визначення життєвого циклу"
+      label_add_description: "Додати визначення етапу проєкту"
       filter:
         label: "Пошук за назвою етапу"
       section_header: "Етапи"
@@ -3892,6 +3945,9 @@ uk:
       section_holidays_and_closures: "Свята й вихідні"
     work_packages:
       not_allowed_text: "У вас немає дозволів для перегляду цієї сторінки."
+      activities:
+        enable_comments_with_restricted_visibility: "Увімкнути коментарі з обмеженою видимістю"
+        helper_text: "Завдяки коментарям з обмеженою видимістю учасники внутрішньої команди можуть спілкуватися приватно. Ці коментарі доступні лише користувачам із певними ролями й необхідними дозволами й ніколи не відображаються для всіх. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Простий текст"
@@ -3927,8 +3983,6 @@ uk:
     При використанні спеціальних полів: Майте на увазі, що спеціальні поля повинні бути активовані для кожного проекту.
   text_custom_field_hint_activate_per_project_and_type: >
     Користувальницькі поля повинні бути активовані за типом робочого пакета та проекту.
-  text_wp_status_read_only_html: >
-    У версії Enterprise Edition з’являться такі додаткові доповнення для полів статусу пакетів робіт: <br> <ul><li><b>Дозволити позначати пакети робіт певних статусів як доступні тільки для читання</b></li> </ul>
   text_project_custom_field_html: >
     У версії Enterprise з’являться такі додаткові доповнення для користувацьких полів проєктів: <br> <ul><li><b>Додавати користувацькі поля проєктів у список проєктів для створення режиму перегляду портфеля проєктів</b></li> </ul>
   text_custom_logo_instructions: >
@@ -4476,27 +4530,3 @@ uk:
     description: "Додає постачальника OmniAuth SAML в OpenProject"
   enterprise_plans:
     legacy_enterprise: "План Enterprise"
-  enterprise_features:
-    baseline_comparison: Порівняння з вихідним рівнем
-    board_view: Подання дошки
-    conditional_highlighting: Умовне виділення
-    custom_actions: Користувацькі дії
-    custom_field_hierarchies: Ієрархії користувацьких полів
-    customize_life_cycle: Налаштування життєвого циклу
-    date_alerts: Оповіщення про дати
-    define_custom_style: Визначення користувацького стилю
-    edit_attribute_groups: Редагування груп атрибутів
-    gantt_pdf_export: Експорт діаграми Ґантта в PDF
-    grid_widget_wp_graph: Графік пакета робіт у вигляді сітки
-    ldap_groups: Групи LDAP
-    one_drive_sharepoint_file_storage: Сховище файлів OneDrive / SharePoint
-    placeholder_users: Прототипи користувачів
-    project_list_sharing: Спільне використання списку проєктів
-    readonly_work_packages: Пакети робіт лише для читання
-    sso_auth_providers: Постачальники автентифікації SSO
-    team_planner_view: Подання командного планувальника
-    two_factor_authentication: Двофакторна автентифікація
-    virus_scanning: Пошук вірусів у вкладеннях
-    work_package_query_relation_columns: Стовпці зв’язків запиту пакета робіт
-    work_package_sharing: Спільне використання пакета робіт
-    work_package_subject_generation: Створення теми пакета робіт

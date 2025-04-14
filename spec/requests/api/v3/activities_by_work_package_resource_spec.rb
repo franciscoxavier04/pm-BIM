@@ -80,6 +80,11 @@ RSpec.describe API::V3::Activities::ActivitiesByWorkPackageAPI do # rubocop:disa
                  version: 2)
         end
 
+        before do
+          project.enabled_comments_with_restricted_visibility = true
+          project.save!
+        end
+
         context "and user has the permission to see it" do
           it "includes restricted activities" do
             get api_v3_paths.work_package_activities work_package.id

@@ -83,7 +83,7 @@ gem "htmldiff"
 gem "stringex", "~> 2.8.5"
 
 # CommonMark markdown parser with GFM extension
-gem "commonmarker", "~> 2.2.0"
+gem "commonmarker", "~> 2.3.0"
 
 # HTML pipeline for transformations on text formatter output
 # such as sanitization or additional features
@@ -201,7 +201,7 @@ gem "aws-sdk-core", "~> 3.107"
 # File upload via fog + screenshots on travis
 gem "aws-sdk-s3", "~> 1.91"
 
-gem "openproject-token", "~> 5.0"
+gem "openproject-token", "~> 5.2.0"
 
 gem "plaintext", "~> 0.3.2"
 
@@ -340,7 +340,7 @@ group :development, :test do
   # https://github.com/puma/puma/issues/2835#issuecomment-2302133927
   gem "byebug"
 
-  gem "pry-byebug", "~> 3.10.0", platforms: [:mri]
+  gem "pry-byebug", "~> 3.11.0", platforms: [:mri]
   gem "pry-rails", "~> 0.3.6"
   gem "pry-rescue", "~> 1.6.0"
 
@@ -410,6 +410,6 @@ gemfiles.each do |file|
   send(:eval_gemfile, file) if File.readable?(file)
 end
 
-gem "openproject-octicons", "~>19.23.0"
-gem "openproject-octicons_helper", "~>19.23.0"
-gem "openproject-primer_view_components", "~>0.59.2"
+gem "openproject-octicons", "~>19.24.2"
+gem "openproject-octicons_helper", "~>19.24.2"
+gem "openproject-primer_view_components", "~>0.61.0"

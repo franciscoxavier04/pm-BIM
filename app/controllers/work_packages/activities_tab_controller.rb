@@ -139,6 +139,13 @@ class WorkPackages::ActivitiesTabController < ApplicationController
     respond_with_turbo_streams
   end
 
+  def sanitize_restricted_mentions
+    render plain: sanitized_journal_notes
+  rescue StandardError => e
+    handle_internal_server_error(e)
+    respond_with_turbo_streams
+  end
+
   def toggle_reaction # rubocop:disable Metrics/AbcSize
     emoji_reaction_service =
       if @journal.emoji_reactions.exists?(user: User.current, reaction: params[:reaction])
@@ -221,6 +228,10 @@ class WorkPackages::ActivitiesTabController < ApplicationController
     User.current.preference&.comments_sorting || OpenProject::Configuration.default_comment_sort_order
   end
 
+  def sanitized_journal_notes
+    WorkPackages::ActivitiesTab::RestrictedMentionsSanitizer.sanitize(@work_package, journal_params[:notes])
+  end
+
   def journal_params
     params.expect(journal: %i[notes restricted])
   end
@@ -295,12 +306,15 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def create_journal_service_call
+    restricted = to_boolean(journal_params[:restricted], false)
+    notes = restricted ? sanitized_journal_notes : journal_params[:notes]
+
     AddWorkPackageNoteService
       .new(user: User.current,
            work_package: @work_package)
-      .call(journal_params[:notes],
+      .call(notes,
             send_notifications: to_boolean(params[:notify], true),
-            restricted: to_boolean(journal_params[:restricted], false))
+            restricted:)
   end
 
   def to_boolean(value, default)
@@ -308,14 +322,14 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def update_journal_service_call
-    Journals::UpdateService.new(model: @journal, user: User.current).call(
-      notes: journal_params[:notes]
-    )
+    notes = @journal.restricted? ? sanitized_journal_notes : journal_params[:notes]
+    Journals::UpdateService.new(model: @journal, user: User.current).call(notes:)
   end
 
   def generate_time_based_update_streams(last_update_timestamp)
     journals = @work_package
                  .journals
+                 .restricted_visible
                  .with_sequence_version
 
     if @filter == :only_comments

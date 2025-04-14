@@ -70,11 +70,9 @@ fr:
         invalid_time_format: "n’est pas une heure valide. Format requis : HH:MM"
     models:
       recurring_meeting: "Réunion récurrente"
-      structured_meeting: "Réunion ponctuelle"
-      meeting: "Réunion"
+      meeting: "Réunion ponctuelle"
       meeting_agenda_item: ""
       meeting_agenda: "Ordre du jour"
-      meeting_minutes: "Compte-rendu"
       meeting_section: "Section"
   activity:
     filter:
@@ -217,9 +215,6 @@ fr:
         new_date_time: "Nouvelle date/heure"
     label_mail_all_participants: "Envoyer un mail à tous les participants"
     types:
-      classic: "Classique (non pris en charge)"
-      classic_text: "Note : les réunions classiques seront supprimées dans la prochaine version d'OpenProject."
-      structured: "Structurée"
       one_time: "Ponctuelle"
       recurring: "Récurrente"
       recurring_text: "Créez une série de réunions avec un modèle dynamique pour chaque occurrence."

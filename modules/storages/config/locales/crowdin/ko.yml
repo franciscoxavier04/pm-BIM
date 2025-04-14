@@ -250,6 +250,13 @@ ko:
         oidc_cant_refresh_token: 저장소에 대한 액세스를 확인하는 동안 오류가 발생했습니다. 자세한 내용은 서버 로그를 확인하세요.
         oidc_non_oidc_user: 현재 사용자는 프로비저닝되는 동안, OpenID Connect(OIDC) ID 공급자에 의해 프로비저닝되지 않았습니다. OIDC 프로비저닝 사용자로 확인을 다시 실행하세요.
         oidc_non_provisioned_user: 현재 사용자는 OpenID Connect ID 공급자에 의해 제공되지 않았습니다. 제공된 사용자로 확인을 다시 실행하세요.
+        one_drive:
+          client_cant_delete_folder: 클라이언트에서 폴더를 삭제하는 중에 문제가 발생했습니다. 저장소에 대한 설정 설명서를 확인하세요.
+          client_write_permission_missing: 클라이언트에 쓰기 권한이 없는 것 같습니다. 저장소에 대한 설정 설명서를 확인하세요.
+          drive_id_not_found: 구성된 드라이브 ID를 찾을 수 없습니다. 구성을 확인하세요.
+          drive_id_wrong: 구성된 드라이브 ID가 유효하지 않은 것 같습니다. 구성을 확인하세요.
+          existing_test_folder: 테스트에 필요한 %{folder_name} 폴더가 이미 있습니다. 이 폴더를 삭제한 후에 다시 시도하세요.
+          unexpected_content: 드라이브에서 예기치 않은 콘텐츠가 발견되었습니다.
         placeholder: 서버에 대한 연결을 확인하세요.
         subtitle: 연결 유효성 검사
         tenant_id_wrong: 구성된 디렉터리(테넌트) ID가 잘못되었습니다. 구성을 확인하세요.

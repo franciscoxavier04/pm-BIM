@@ -36,10 +36,6 @@ export default class OpMeetingsFormController extends ApplicationController {
   private turboRequests:TurboRequestsService;
   private pathHelper:PathHelperService;
 
-  static values = { structured: Boolean };
-
-  declare structuredValue:boolean;
-
   async connect() {
     const context = await window.OpenProject.getPluginContext();
     this.turboRequests = context.services.turboRequests;
@@ -52,11 +48,7 @@ export default class OpMeetingsFormController extends ApplicationController {
     let key:string;
 
     ['start_date', 'start_time_hour'].forEach((name) => {
-      if (this.structuredValue === true) {
-        key = `structured_meeting[${name}]`;
-      } else {
-        key = `meeting[${name}]`;
-      }
+      key = `meeting[${name}]`;
       urlSearchParams.append(key, data.get(key) as string);
     });
 

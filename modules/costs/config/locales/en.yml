@@ -119,7 +119,6 @@ en:
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
 
-
   group_by_others: "not in any group"
 
   label_between: "between"
@@ -208,3 +207,10 @@ en:
     errors:
       validation:
         start_time_different_date: "Date part of startTime (%{start_time}) must be the same as the spentOn (%{spent_on}) date."
+
+  ee:
+    features:
+      time_entry_time_restrictions: Require exact time tracking
+    upsale:
+      time_entry_time_restrictions:
+        description: "Improve your time tracking by requiring exact start and finish times when logging time."

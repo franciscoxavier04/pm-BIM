@@ -33,6 +33,7 @@ module Types
     class TokenPropertyMapper
       DEFAULT_FUNCTION = ->(key, context) do
         return nil if context.nil?
+        return nil unless context.respond_to?(key.to_sym)
 
         context.public_send(key.to_sym)
       end.curry
@@ -46,6 +47,7 @@ module Types
           category: { fn: ->(wp) { wp.category&.name }, label: -> { WorkPackage.human_attribute_name(:category) } },
           creation_date: { fn: ->(wp) { wp.created_at }, label: -> { WorkPackage.human_attribute_name(:created_at) } },
           estimated_time: { fn: ->(wp) { wp.estimated_hours }, label: -> { WorkPackage.human_attribute_name(:estimated_hours) } },
+          remaining_time: { fn: ->(wp) { wp.remaining_hours }, label: -> { WorkPackage.human_attribute_name(:remaining_hours) } },
           finish_date: { fn: ->(wp) { wp.due_date }, label: -> { WorkPackage.human_attribute_name(:due_date) } },
           parent_id: { fn: ->(wp) { wp.parent&.id }, label: -> { WorkPackage.human_attribute_name(:id) } },
           parent_assignee: { fn: ->(wp) { wp.parent&.assigned_to&.name }, label: -> {
@@ -58,6 +60,8 @@ module Types
                                   label: -> { WorkPackage.human_attribute_name(:created_at) } },
           parent_estimated_time: { fn: ->(wp) { wp.parent&.estimated_hours },
                                    label: -> { WorkPackage.human_attribute_name(:estimated_hours) } },
+          parent_remaining_time: { fn: ->(wp) { wp.parent&.remaining_hours },
+                                   label: -> { WorkPackage.human_attribute_name(:remaining_hours) } },
           parent_finish_date: { fn: ->(wp) { wp.parent&.due_date },
                                 label: -> { WorkPackage.human_attribute_name(:due_date) } },
           parent_priority: { fn: ->(wp) { wp.parent&.priority }, label: -> { WorkPackage.human_attribute_name(:priority) } },
@@ -93,7 +97,7 @@ module Types
       private
 
       def default_tokens
-        TOKEN_PROPERTY_MAP.keys.each_with_object({ project: {}, work_package: {}, parent: {} }) do |key, obj|
+        TOKEN_PROPERTY_MAP.keys.each_with_object({ work_package: {}, project: {}, parent: {} }) do |key, obj|
           label = TOKEN_PROPERTY_MAP.dig(key, :label).call
 
           case key.to_s
