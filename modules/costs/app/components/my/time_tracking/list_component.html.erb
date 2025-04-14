@@ -3,7 +3,7 @@
   <%= render(My::TimeTracking::SubHeaderComponent.new(mode:, date:, view_mode: :list)) %>
 
     <% range.each do |date| %>
-      <%= render(Primer::OpenProject::CollapsibleSection.new, collapsed: collapsed?(date)) do |section| %>
+      <%= render(Primer::OpenProject::CollapsibleSection.new(collapsed: collapsed?(date))) do |section| %>
         <% section.with_title { date_title(date) } %>
         <% section.with_caption { date_caption(date) } %>
         <% section.with_additional_information do %>

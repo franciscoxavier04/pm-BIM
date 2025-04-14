@@ -80,8 +80,8 @@ module My
         "#{entries_count} #{TimeEntry.model_name.human(count: entries_count)}"
       end
 
-      def collapsed?(_date)
-        false
+      def collapsed?(date)
+        date.past?
       end
 
       def date_caption(date)
