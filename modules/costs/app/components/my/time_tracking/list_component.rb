@@ -32,6 +32,7 @@ module My
   module TimeTracking
     class ListComponent < ApplicationComponent
       include OpTurbo::Streamable
+      include OpPrimer::ComponentHelpers
 
       options time_entries: [],
               mode: :week,
