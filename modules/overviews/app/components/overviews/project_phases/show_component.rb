@@ -41,12 +41,6 @@ module Overviews
         @project = project
         @phases = @project.available_phases
       end
-
-      private
-
-      def allowed_to_edit?
-        User.current.allowed_in_project?(:edit_project_phases, @project)
-      end
     end
   end
 end
