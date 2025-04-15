@@ -391,8 +391,8 @@ en:
   text_notificiation_invited: "This mail contains an ics entry for the meeting below:"
 
   text_meeting_empty_heading: "Your meeting is empty"
-  text_meeting_empty_description_1: "Start by adding agenda items below. Each item can be as simple as just a title, but you can also add additional details like duration and notes."
-  text_meeting_empty_description_2: 'You can also add references to existing work packages. When you do, related notes will automatically be visible in the work package''s "Meetings" tab.'
+  text_meeting_empty_description1: "Start by adding agenda items below. Each item can be as simple as just a title, but you can also add additional details like duration and notes."
+  text_meeting_empty_description2: 'You can also add references to existing work packages. When you do, related notes will automatically be visible in the work package''s "Meetings" tab.'
   label_meeting_empty_action: "Add agenda item"
 
   label_meeting_actions: "Meeting actions"
