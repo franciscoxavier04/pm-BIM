@@ -30,62 +30,60 @@
 
 module My
   class TimeTrackingController < ApplicationController
-    before_action :require_login
+    include OpTurbo::ComponentStream
 
-    no_authorization_required!(:index, :day, :week, :month)
+    before_action :require_login, :view_mode, :mode, :date
+
+    no_authorization_required!(:index, :refresh)
 
     menu_item :my_time_tracking
 
     layout "global"
 
-    helper_method :current_day, :today?, :this_week?, :this_month?, :list_view_component, :view_mode
+    helper_method :list_view_component
 
     def index
-      if mobile?
-        redirect_to action: :day, view_mode: default_view_mode
-      else
-        redirect_to action: :week, view_mode: default_view_mode
+      case mode
+      when :day then load_time_entries(date)
+      when :week then load_time_entries(date.all_week)
+      when :month then load_time_entries(date.all_month)
       end
     end
 
-    def day
-      load_time_entries(current_day)
-    end
-
-    def week
-      load_time_entries(current_day.all_week)
-    end
-
-    def month
-      load_time_entries(current_day.all_month)
-    end
-
-    def today?
-      current_day == Time.zone.today
-    end
-
-    def this_week?
-      current_day == Time.zone.today.beginning_of_week
-    end
-
-    def this_month?
-      current_day == Time.zone.today.beginning_of_month
+    def refresh
+      if mode == :month
+        load_time_entries(date.all_week)
+      else
+        load_time_entries(date)
+      end
     end
 
     private
 
-    def current_day
-      return @current_day if defined?(@current_day)
+    def date
+      @date ||= parsed_date || current_date
+    end
 
-      parsed_date = if params[:date].present?
-                      begin
-                        Date.iso8601(params[:date])
-                      rescue StandardError
-                        nil
-                      end
-                    end
+    def parsed_date
+      if params[:date].present?
+        begin
+          Date.iso8601(params[:date])
+        rescue StandardError
+          nil
+        end
+      end
+    end
 
-      @current_day = parsed_date || current_date
+    def default_mode
+      if mobile?
+        "day"
+      else
+        "week"
+      end
+    end
+
+    def mode
+      @mode ||= (params[:mode].presence || default_mode).to_sym
     end
 
     def default_view_mode
@@ -97,15 +95,11 @@ module My
     end
 
     def view_mode
-      if ["calendar", "list"].include?(params[:view_mode])
-        params[:view_mode]
-      else
-        default_view_mode
-      end.to_sym
+      @view_mode ||= (params[:view_mode].presence || default_view_mode).to_sym
     end
 
     def current_date
-      case params[:action].to_sym
+      case mode
       when :day then Time.zone.today
       when :week then Time.zone.today.beginning_of_week
       when :month then Time.zone.today.beginning_of_month
@@ -124,14 +118,14 @@ module My
       if view_mode == :list
         My::TimeTracking::ListComponent.new(
           time_entries: @time_entries,
-          mode: params[:action].to_sym,
-          date: current_day
+          mode: mode,
+          date: date
         )
       else
         My::TimeTracking::CalendarComponent.new(
           time_entries: @time_entries,
-          mode: params[:action].to_sym,
-          date: current_day
+          mode: mode,
+          date: date
         )
       end
     end

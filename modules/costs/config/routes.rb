@@ -50,13 +50,15 @@ Rails.application.routes.draw do
   namespace "my" do
     get "/timer" => "timer#show", as: "timers"
 
-    get "/time-tracking" => "time_tracking#index"
-    get "/time-tracking/day(-:view_mode)(/:date)" => "time_tracking#day",
-        as: :time_tracking_day
-    get "/time-tracking/week(-:view_mode)(/:date)" => "time_tracking#week",
-        as: :time_tracking_week
-    get "/time-tracking/month(-:view_mode)(/:date)" => "time_tracking#month",
-        as: :time_tracking_month
+    get "/time-tracking/(:mode-:view_mode)(/:date)" => "time_tracking#index",
+        as: :time_tracking,
+        constraints: {
+          mode: /day|week|month/,
+          view_mode: /list|calendar/,
+          date: /\d{4}-\d{2}-\d{2}/
+        }
+    get "/time-tracking/refresh" => "time_tracking#refresh",
+        as: :time_tracking_refresh
   end
 
   scope "projects/:project_id", as: "project", module: "projects" do

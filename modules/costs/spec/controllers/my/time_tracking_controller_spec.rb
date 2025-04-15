@@ -48,9 +48,10 @@ RSpec.describe My::TimeTrackingController do
           allow(TimeEntry).to receive(:can_track_start_and_end_time?).and_return(true)
         end
 
-        it "redirects to the week calendar view" do
+        it "renders the calendar week view" do
           get :index
-          expect(response).to redirect_to(action: :week, view_mode: "calendar")
+          expect(assigns(:mode)).to eq(:week)
+          expect(assigns(:view_mode)).to eq(:calendar)
         end
       end
 
@@ -59,9 +60,10 @@ RSpec.describe My::TimeTrackingController do
           allow(TimeEntry).to receive(:can_track_start_and_end_time?).and_return(false)
         end
 
-        it "redirects to the week list view" do
+        it "renders the week list view" do
           get :index
-          expect(response).to redirect_to(action: :week, view_mode: "list")
+          expect(assigns(:mode)).to eq(:week)
+          expect(assigns(:view_mode)).to eq(:list)
         end
       end
     end
@@ -76,9 +78,10 @@ RSpec.describe My::TimeTrackingController do
           allow(TimeEntry).to receive(:can_track_start_and_end_time?).and_return(true)
         end
 
-        it "redirects to the day calendar view" do
+        it "renders the day calendar view" do
           get :index
-          expect(response).to redirect_to(action: :day, view_mode: "calendar")
+          expect(assigns(:mode)).to eq(:day)
+          expect(assigns(:view_mode)).to eq(:calendar)
         end
       end
 
@@ -87,9 +90,10 @@ RSpec.describe My::TimeTrackingController do
           allow(TimeEntry).to receive(:can_track_start_and_end_time?).and_return(false)
         end
 
-        it "redirects to the day list view" do
+        it "renders the day list view" do
           get :index
-          expect(response).to redirect_to(action: :day, view_mode: "list")
+          expect(assigns(:mode)).to eq(:day)
+          expect(assigns(:view_mode)).to eq(:list)
         end
       end
     end
@@ -97,52 +101,52 @@ RSpec.describe My::TimeTrackingController do
 
   describe "GET /my/time-tracking/day" do
     it "without a date param it uses the current date" do
-      get :day
-      expect(assigns(:current_day)).to eq(Date.current)
+      get :index, params: { mode: :day }
+      expect(assigns(:date)).to eq(Date.current)
     end
 
     it "with a date param it uses the given date" do
-      get :day, params: { date: "2023-12-31" }
-      expect(assigns(:current_day)).to eq(Date.parse("2023-12-31"))
+      get :index, params: { mode: :day, date: "2023-12-31" }
+      expect(assigns(:date)).to eq(Date.parse("2023-12-31"))
     end
 
     it "with an invalid date param it uses the current date" do
-      get :day, params: { date: "invalid-date" }
-      expect(assigns(:current_day)).to eq(Date.current)
+      get :index, params: { mode: :day, date: "invalid-date" }
+      expect(assigns(:date)).to eq(Date.current)
     end
   end
 
   describe "GET /my/time-tracking/week" do
     it "without a date param it uses the beginning of current week" do
-      get :week
-      expect(assigns(:current_day)).to eq(Date.current.beginning_of_week)
+      get :index, params: { mode: :week }
+      expect(assigns(:date)).to eq(Date.current.beginning_of_week)
     end
 
     it "with a date param it uses the given date" do
-      get :week, params: { date: "2023-12-31" }
-      expect(assigns(:current_day)).to eq(Date.parse("2023-12-31"))
+      get :index, params: { mode: :week, date: "2023-12-31" }
+      expect(assigns(:date)).to eq(Date.parse("2023-12-31"))
     end
 
     it "with an invalid date param it uses the beginning of current week" do
-      get :week, params: { date: "invalid-date" }
-      expect(assigns(:current_day)).to eq(Date.current.beginning_of_week)
+      get :index, params: { mode: :week, date: "invalid-date" }
+      expect(assigns(:date)).to eq(Date.current.beginning_of_week)
     end
   end
 
   describe "GET /my/time-tracking/month" do
     it "without a date param it uses the beginning of current month" do
-      get :month
-      expect(assigns(:current_day)).to eq(Date.current.beginning_of_month)
+      get :index, params: { mode: :month }
+      expect(assigns(:date)).to eq(Date.current.beginning_of_month)
     end
 
     it "with a date param it uses the given date" do
-      get :month, params: { date: "2023-12-31" }
-      expect(assigns(:current_day)).to eq(Date.parse("2023-12-31"))
+      get :index, params: { mode: :month, date: "2023-12-31" }
+      expect(assigns(:date)).to eq(Date.parse("2023-12-31"))
     end
 
     it "with an invalid date param it uses the beginning of current month" do
-      get :month, params: { date: "invalid-date" }
-      expect(assigns(:current_day)).to eq(Date.current.beginning_of_month)
+      get :index, params: { mode: :month, date: "invalid-date" }
+      expect(assigns(:date)).to eq(Date.current.beginning_of_month)
     end
   end
 end

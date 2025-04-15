@@ -32,18 +32,19 @@ module My
   module TimeTracking
     class ModeSwitcherComponent < ApplicationComponent
       options :current_mode,
-              :view_mode
+              :view_mode,
+              :date
 
       def call
         render(Primer::Alpha::SegmentedControl.new("aria-label": I18n.t(:label_meeting_date_time))) do |control|
-          %i[day week month].each do |action|
+          %i[day week month].each do |mode|
             control.with_item(
               tag: :a,
-              href: url_for(params.permit(:controller, :date).merge(action:, view_mode: view_mode)),
-              icon: icon_for_mode(action),
-              label: t("label_#{action}"),
-              title: t("label_#{action}"),
-              selected: (current_mode == action)
+              href: my_time_tracking_path(date:, view_mode:, mode:),
+              icon: icon_for_mode(mode),
+              label: t("label_#{mode}"),
+              title: t("label_#{mode}"),
+              selected: (current_mode == mode)
             )
           end
         end

@@ -1,6 +1,6 @@
 <%= render(Primer::OpenProject::SubHeader.new) do |component|
       component.with_filter_component do
-        render(My::TimeTracking::ModeSwitcherComponent.new(current_mode: mode, view_mode: view_mode))
+        render(My::TimeTracking::ModeSwitcherComponent.new(current_mode: mode, view_mode: view_mode, date: date))
       end
 
       component.with_text { title }
