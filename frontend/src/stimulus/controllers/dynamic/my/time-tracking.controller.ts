@@ -1,4 +1,4 @@
-import { Controller } from '@hotwired/stimulus';
+import { ActionEvent, Controller } from '@hotwired/stimulus';
 import { Calendar } from '@fullcalendar/core';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -17,6 +17,7 @@ export default class MyTimeTrackingController extends Controller {
 
   static values = {
     mode: String,
+    viewMode: String,
     timeEntries: Array,
     initialDate: String,
     canCreate: Boolean,
@@ -26,6 +27,7 @@ export default class MyTimeTrackingController extends Controller {
   };
 
   declare readonly calendarTarget:HTMLElement;
+  declare readonly hasCalendarTarget:boolean;
   declare readonly modeValue:string;
   declare readonly timeEntriesValue:object[];
   declare readonly initialDateValue:string;
@@ -33,19 +35,36 @@ export default class MyTimeTrackingController extends Controller {
   declare readonly canEditValue:boolean;
   declare readonly forceTimesValue:boolean;
   declare readonly localeValue:string;
+  declare readonly viewModeValue:string;
 
   private calendar:Calendar;
+  private DEFAULT_TIMED_EVENT_DURATION = '01:00';
+  private updatingDate:string|null = null;
+  private boundListener = this.dialogCloseListener.bind(this);
 
   async connect() {
     const context = await window.OpenProject.getPluginContext();
     this.turboRequests = context.services.turboRequests;
     this.pathHelper = context.services.pathHelperService;
 
+    if (this.hasCalendarTarget && this.viewModeValue === 'calendar') {
+      this.initializeCalendar();
+    }
+
     // handle dialog close event
-    document.addEventListener('dialog:close', this.dialogCloseListener);
+    document.addEventListener('dialog:close', this.boundListener);
+  }
 
-    const DEFAULT_TIMED_EVENT_DURATION = '01:00';
+  disconnect():void {
+    document.removeEventListener('dialog:close', this.boundListener);
 
+    // Clean up calendar when controller disconnects
+    if (this.calendar) {
+      this.calendar.destroy();
+    }
+  }
+
+  initializeCalendar() {
     this.calendar = new Calendar(this.calendarTarget, {
       plugins: [timeGridPlugin, dayGridPlugin, interactionPlugin],
       initialView: this.calendarView(),
@@ -58,7 +77,7 @@ export default class MyTimeTrackingController extends Controller {
       selectable: this.canCreateValue,
       editable: this.canEditValue,
       eventResizableFromStart: true,
-      defaultTimedEventDuration: DEFAULT_TIMED_EVENT_DURATION,
+      defaultTimedEventDuration: this.DEFAULT_TIMED_EVENT_DURATION,
       allDayContent: '',
       dayMaxEventRows: 4, // 3 + more link
       eventMinHeight: 30,
@@ -172,7 +191,7 @@ export default class MyTimeTrackingController extends Controller {
           );
         }
 
-        this.calendar.setOption('defaultTimedEventDuration', DEFAULT_TIMED_EVENT_DURATION);
+        this.calendar.setOption('defaultTimedEventDuration', this.DEFAULT_TIMED_EVENT_DURATION);
       },
       eventClick: (info) => {
         // check if we clicked on a link tag, if so exit early as we don't want to show the modal
@@ -191,15 +210,6 @@ export default class MyTimeTrackingController extends Controller {
     });
 
     this.calendar.render();
-  }
-
-  disconnect():void {
-    document.removeEventListener('dialog:close', this.dialogCloseListener);
-
-    // Clean up calendar when controller disconnects
-    if (this.calendar) {
-      this.calendar.destroy();
-    }
   }
 
   addTotalFooter() {
@@ -368,10 +378,35 @@ export default class MyTimeTrackingController extends Controller {
     }
   }
 
-  dialogCloseListener(this:void, event:CustomEvent):void {
+  newTimeEntry(event:ActionEvent) {
+    const dialogParams = `onlyMe=true&date=${event.params.date}`;
+    this.updatingDate = event.params.date as string;
+
+    void this.turboRequests.request(
+      `${this.pathHelper.timeEntryDialog()}?${dialogParams}`,
+      { method: 'GET' },
+    );
+  }
+
+  dialogCloseListener(event:CustomEvent):void {
     const { detail: { dialog, submitted } } = event as { detail:{ dialog:HTMLDialogElement; submitted:boolean } };
-    if (dialog.id === 'time-entry-dialog' && submitted) {
+    if (dialog.id !== 'time-entry-dialog' || !submitted) { return; }
+
+    // we simply refresh the calendar page
+    if (this.viewModeValue === 'calendar') {
       window.location.reload();
+      return;
+    }
+
+    // list view replaces only the updated date
+    if (this.viewModeValue === 'list') {
+      // we don't know what date we clicked, so we need to reload the whole page
+      if (this.updatingDate) {
+        void this.turboRequests.request(this.pathHelper.myTimeTrackingRefresh(this.updatingDate, this.viewModeValue, this.modeValue), { method: 'GET' });
+        this.updatingDate = null;
+      } else {
+        window.location.reload();
+      }
     }
   }
 }

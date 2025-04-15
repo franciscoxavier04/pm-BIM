@@ -41,8 +41,10 @@ module My
 
       def wrapper_data
         {
-          "controller" => "generic-dialog-close",
-          "application-target" => "dynamic"
+          "controller" => "my--time-tracking",
+          "application-target" => "dynamic",
+          "my--time-tracking-mode-value" => mode,
+          "my--time-tracking-view-mode-value" => "list"
         }
       end
 
@@ -62,22 +64,12 @@ module My
           end
       end
 
-      def total_hours_for(date)
-        total_hours = grouped_time_entries[date].sum(&:hours).round(2)
-        DurationConverter.output(total_hours, format: :hours_and_minutes).presence || "0h"
-      end
-
       def date_title(date)
         if mode == :month
           I18n.t(:label_specific_week, week: date.strftime("%W"))
         else
           date.strftime("%A %d")
         end
-      end
-
-      def entry_count_for(date)
-        entries_count = grouped_time_entries[date].size
-        "#{entries_count} #{TimeEntry.model_name.human(count: entries_count)}"
       end
 
       def collapsed?(date)

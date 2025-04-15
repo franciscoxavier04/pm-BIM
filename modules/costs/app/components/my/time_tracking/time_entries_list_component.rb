@@ -30,16 +30,13 @@
 
 module My
   module TimeTracking
-    class DailyEntriesTable < OpPrimer::BorderBoxTableComponent
+    class TimeEntriesListComponent < OpPrimer::BorderBoxTableComponent
+      include OpTurbo::Streamable
       columns :spent_on, :time, :hours, :subject, :project, :activity, :comments
       main_column :time, :subject, :project
 
       def row_class
         TimeEntryRow
-      end
-
-      def container_id
-        "time-entries-table-#{options[:date].iso8601}"
       end
 
       def mobile_title
@@ -57,8 +54,11 @@ module My
                  size: :small,
                  tag: :a,
                  tooltip_direction: :e,
-                 href: dialog_time_entries_path(onlyMe: true, date: options[:date]),
-                 data: { "turbo-stream" => true },
+                 href: "#",
+                 data: {
+                   action: "my--time-tracking#newTimeEntry",
+                   "my--time-tracking-date-param" => options[:date]
+                 },
                  label: t("button_log_time"),
                  aria: { label: t("button_log_time") }
                ))

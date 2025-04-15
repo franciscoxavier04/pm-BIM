@@ -51,11 +51,20 @@ module My
     end
 
     def refresh
-      if mode == :month
+      if mode == :month # for the month we have the whole week in the table, for the rest it's the day
         load_time_entries(date.all_week)
       else
         load_time_entries(date)
       end
+
+      update_via_turbo_stream(
+        component: My::TimeTracking::ListWrapperComponent.new(time_entries: @time_entries, date: date, mode: mode)
+      )
+      update_via_turbo_stream(
+        component: My::TimeTracking::ListStatsComponent.new(time_entries: @time_entries, date: date)
+      )
+
+      respond_with_turbo_streams
     end
 
     private

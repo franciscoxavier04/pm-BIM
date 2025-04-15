@@ -30,42 +30,30 @@
 
 module My
   module TimeTracking
-    class CalendarComponent < ApplicationComponent
+    class ListStatsComponent < OpPrimer::BorderBoxTableComponent
       include OpTurbo::Streamable
-      include OpPrimer::ComponentHelpers
 
-      options time_entries: [],
-              mode: :week,
-              date: Date.current
+      options :time_entries, :date
 
-      private
-
-      def wrapper_data
-        {
-          "controller" => "my--time-tracking",
-          "application-target" => "dynamic",
-          "my--time-tracking-mode-value" => mode,
-          "my--time-tracking-view-mode-value" => "calendar",
-          "my--time-tracking-time-entries-value" => time_entries_json,
-          "my--time-tracking-initial-date-value" => date.iso8601,
-          "my--time-tracking-can-create-value" => User.current.allowed_in_any_project?(:log_own_time),
-          "my--time-tracking-can-edit-value" => User.current.allowed_in_any_project?(:edit_own_time_entries),
-          "my--time-tracking-force-times-value" => TimeEntry.must_track_start_and_end_time?,
-          "my--time-tracking-locale-value" => I18n.locale
-        }
+      def wrapper_key
+        "time-entries-list-stats-#{date.iso8601}"
       end
 
-      def time_entries_json
-        time_entries.map do |time_entry|
-          FullCalendar::TimeEntryEvent.from_time_entry(time_entry)
-        end.to_json
+      def call
+        component_wrapper do
+          render(Primer::Beta::Text.new(color: :muted)) { "#{entry_count} - " } +
+          render(Primer::Beta::Text.new) { total_hours }
+        end
       end
 
       def total_hours
         total_hours = time_entries.sum(&:hours).round(2)
-        total_str = DurationConverter.output(total_hours, format: :hours_and_minutes).presence || t("label_no_time")
+        DurationConverter.output(total_hours, format: :hours_and_minutes).presence || "0h"
+      end
 
-        I18n.t(mode, scope: "total_times", hours: total_str)
+      def entry_count
+        entries_count = time_entries.size
+        "#{entries_count} #{TimeEntry.model_name.human(count: entries_count)}"
       end
     end
   end
