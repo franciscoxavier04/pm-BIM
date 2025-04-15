@@ -129,6 +129,7 @@ class WorkPackages::ActivitiesTabController < ApplicationController
       call = update_journal_service_call
 
       if call.success? && call.result
+        claim_journal_attachments_for(call.result)
         update_item_show_component(journal: call.result, grouped_emoji_reactions: grouped_emoji_reactions_for_journal)
       else
         handle_failed_create_or_update_call(call)

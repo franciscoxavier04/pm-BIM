@@ -104,5 +104,53 @@ RSpec.describe WorkPackages::ActivitiesTab::CommentAttachmentsClaims::ClaimsServ
         expect(journal.reload.attachments).to contain_exactly(attachment1, attachment2, attachment3)
       end
     end
+
+    context "with existing comment attachments" do
+      let(:comment) do
+        work_package.add_journal(user:, notes:)
+        work_package.save(validate: false)
+        work_package.journals.last
+      end
+
+      let(:existing_attachment) { create(:attachment, author: user, container: nil) }
+      let(:existing_attachment_excluded) { create(:attachment, author: user, container: nil) }
+      let(:newly_attached) { create(:attachment, author: user, container: nil) }
+
+      let(:notes) do
+        <<~HTML
+          <img class="op-uc-image op-uc-image_inline" src="/api/v3/attachments/#{existing_attachment.id}/content">
+
+          First attachment
+
+          <br>
+
+          <img class="op-uc-image op-uc-image_inline" src="/api/v3/attachments/#{newly_attached.id}/content">
+
+          Second attachment
+        HTML
+      end
+
+      before do
+        comment.attachments << [existing_attachment, existing_attachment_excluded]
+        comment.save(validate: false)
+      end
+
+      subject(:attachment_claims_service) do
+        described_class.new(
+          user: user,
+          model: comment
+        )
+      end
+
+      it "replaces the comment attachments with newly updated ones" do
+        expect(comment.reload.attachments).to contain_exactly(existing_attachment, existing_attachment_excluded)
+
+        claim_result = attachment_claims_service.call
+        expect(claim_result).to be_success
+
+        expect(comment.reload.attachments).to contain_exactly(existing_attachment, newly_attached)
+        expect(Attachment.exists?(existing_attachment_excluded.id)).to be(false)
+      end
+    end
   end
 end
