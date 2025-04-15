@@ -75,7 +75,7 @@ module My
         end
       end
 
-      def date_additional(date)
+      def entry_count_for(date)
         entries_count = grouped_time_entries[date].size
         "#{entries_count} #{TimeEntry.model_name.human(count: entries_count)}"
       end

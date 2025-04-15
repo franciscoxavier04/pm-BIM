@@ -8,8 +8,8 @@
         <% section.with_caption { date_caption(date) } %>
         <% section.with_additional_information do %>
           <%=
-            render(Primer::Beta::Text.new(color: :muted)) { "#{date_additional(date)} - " } +
-            render(Primer::Beta::Text.new) { total_hours_for(date) }
+            render(Primer::Beta::Text.new(color: :muted, id: "time-entries-count-#{date.iso8601}")) { "#{entry_count_for(date)} - " } +
+            render(Primer::Beta::Text.new(id: "time-entries-total-#{date.iso8601}")) { total_hours_for(date) }
           %>
         <% end %>
         <% section.with_collapsible_content do %>
