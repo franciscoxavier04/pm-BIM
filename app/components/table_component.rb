@@ -159,6 +159,10 @@ class TableComponent < ApplicationComponent
     nil
   end
 
+  def container_id
+    nil
+  end
+
   def columns
     self.class.columns.reject { skip_column?(it) }
   end
