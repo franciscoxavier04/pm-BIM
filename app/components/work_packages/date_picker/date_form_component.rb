@@ -81,8 +81,7 @@ module WorkPackages
           classes: "op-datepicker-modal--date-field #{'op-datepicker-modal--date-field_current' if @focused_field == name}",
           validation_message: validation_message(name),
           type: field_type(name),
-          placeholder: placeholder(name),
-          aria: { live: :polite, atomic: true }
+          placeholder: placeholder(name)
         )
 
         if duration_field?(name)
@@ -212,7 +211,10 @@ module WorkPackages
           data[:focus] = "true"
         end
 
-        { data: }
+        {
+          data: data,
+          aria: { live: :polite, atomic: true }
+        }
       end
 
       def single_date_field_button_link(focused_field)
