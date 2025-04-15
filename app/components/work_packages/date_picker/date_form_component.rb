@@ -81,7 +81,8 @@ module WorkPackages
           classes: "op-datepicker-modal--date-field #{'op-datepicker-modal--date-field_current' if @focused_field == name}",
           validation_message: validation_message(name),
           type: field_type(name),
-          placeholder: placeholder(name)
+          placeholder: placeholder(name),
+          aria: { live: :polite, atomic: true }
         )
 
         if duration_field?(name)
