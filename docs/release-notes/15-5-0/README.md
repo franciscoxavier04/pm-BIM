@@ -94,7 +94,7 @@ To prepare for this transition, the **Classic option in the + Meeting dropdown i
 ![Dropdown menu in the OpenProject Meetings module, with highlighted option of "Classic (unsupported)"](openproject-15-5-classic-meetings-highlighted.png)
 
 > [!NOTE]
-> We recommend switching to the newer Meeting types to benefit from the latest features and ensure a smooth transition. [Read this article to learn more about the reasons and what will happen to your existing Classic meetings](https://www.openproject.org/blog/).
+> We recommend switching to the newer Meeting types to benefit from the latest features and ensure a smooth transition. [Read this article to learn more about the reasons and what will happen to your existing Classic meetings](https://www.openproject.org/blog/end-classic-meetings-may-2025/).
 
 ## Important updates and breaking changes
 
@@ -162,8 +162,10 @@ A very special thank you goes to City of Cologne, Deutsche Bahn and ZenDiS for s
 Special thanks for reporting and finding bugs go to Abhiyan Paudyal, Andreas H., Paul Kernstock, Patrick Stapf, and Stefan Weiberg.
 
 Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to particularly thank the following users:
+- [Yuliia Pavliuk](https://crowdin.com/profile/pav.yulia), for a great number of translations into Ukrainian.
+- [Adam Siemienski](https://crowdin.com/profile/siemienas), for a great number of translations into Polish.
 - [NCAA](https://crowdin.com/profile/ncaa), for a great number of translations into Danish.
 - [greench](https://crowdin.com/profile/greench), for a great number of translations into Turkish.
-- [Adam Siemienski](https://crowdin.com/profile/siemienas), for a great number of translations into Polish.
+
 
 Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
