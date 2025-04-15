@@ -34,6 +34,8 @@ module WorkPackages
       class SetAttributesService < ::BaseServices::SetAttributes
         include ::Attachments::SetReplacements
 
+        ATTACHMENT_CSS_SELECTOR = "img.op-uc-image"
+
         def perform(params = {})
           super(
             params.reverse_merge(
@@ -47,7 +49,7 @@ module WorkPackages
         def collect_attachment_ids_from_notes
           return [] if model.notes.blank?
 
-          parser.css("img.op-uc-image").filter_map do |img|
+          parser.css(ATTACHMENT_CSS_SELECTOR).filter_map do |img|
             src = img["src"]
             next if src.blank?
 
