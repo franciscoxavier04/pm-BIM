@@ -64,7 +64,7 @@ RSpec.describe "my time tracking", :js do
 
   it "does something" do
     allow(TimeEntry).to receive(:can_track_start_and_end_time?).and_return(true)
-    visit my_time_tracking_week_path(date: "2025-04-09", view_mode: "list")
+    visit my_time_tracking_path(date: "2025-04-09", view_mode: "list")
     # save_and_open_screenshot
   end
 end
