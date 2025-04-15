@@ -191,7 +191,8 @@ class CostQuery::PDF::TimesheetGenerator
     [
       {
         content: format_date_with_weekday(spent_on),
-        rowspan: (entry.comments.present? ? 2 : 1)
+        rowspan: (entry.comments.present? ? 2 : 1),
+        cell_id: spent_on_day_id(entry.user, spent_on)
       },
       build_table_subject_cell(entry),
       with_times_column? ? format_spent_on_time(entry) : nil,
@@ -208,6 +209,10 @@ class CostQuery::PDF::TimesheetGenerator
       { content: format_sum_time_entries(entries), font_style: :bold, align: :right },
       ""
     ].compact
+  end
+
+  def spent_on_day_id(user, spent_on)
+    "entry_#{user.id}_#{spent_on}"
   end
 
   def build_table_subject_cell(entry)
@@ -267,7 +272,7 @@ class CostQuery::PDF::TimesheetGenerator
                               end
   end
 
-  def build_table(rows, has_sum_row)
+  def build_table(rows, has_sum_row, with_anchors)
     pdf.make_table(
       rows,
       header: true,
@@ -286,6 +291,7 @@ class CostQuery::PDF::TimesheetGenerator
       adjust_borders_spanned_column(table)
       adjust_border_header_row(table)
       adjust_border_sum_row(table) if has_sum_row
+      add_pdf_table_anchors(table) if with_anchors
     end
   end
 
@@ -327,7 +333,7 @@ class CostQuery::PDF::TimesheetGenerator
   end
 
   def split_group_rows(table_rows, has_sum_row)
-    measure_table = build_table(table_rows, has_sum_row)
+    measure_table = build_table(table_rows, has_sum_row, false)
     groups = []
     index = 0
     while index < table_rows.length
@@ -393,7 +399,7 @@ class CostQuery::PDF::TimesheetGenerator
     current_table = []
     merge_first_columns(grouped_rows)
     grouped_rows.map! { |row| current_table.concat(row[:rows]) }
-    build_table(current_table, has_sum_row).draw
+    build_table(current_table, has_sum_row, true).draw
   end
 
   def merge_first_columns(grouped_rows)
@@ -479,9 +485,9 @@ class CostQuery::PDF::TimesheetGenerator
     [format_date_with_weekday(date)] + row
   end
 
-  def build_sum_table_sum_cell(sum, _user, _date)
+  def build_sum_table_sum_cell(sum, user, date)
     {
-      content: format_hours(sum),
+      content: make_link_anchor(spent_on_day_id(user, date), format_hours(sum)),
       align: :right, inline_format: true
     }
   end
