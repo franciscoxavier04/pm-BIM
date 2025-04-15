@@ -41,7 +41,7 @@ module ::Overviews
     end
 
     def preview
-      service_call = ::ProjectLifeCycleSteps::PreviewAttributesService
+      service_call = ::ProjectLifeCycleSteps::SetAttributesService
                 .new(user: current_user,
                      model: @project_phase,
                      contract_class: ProjectLifeCycleSteps::UpdateContract)
@@ -57,25 +57,27 @@ module ::Overviews
     end
 
     def update
-      service_call = ::ProjectLifeCycleSteps::UpdateService.new(user: current_user, model: @project_phase)
+      service_call = ::ProjectLifeCycleSteps::UpdateService
+                      .new(user: current_user, model: @project_phase)
                       .call(permitted_params.project_phase)
-      if service_call.success?
-        update_via_turbo_stream(
-          component: Overviews::ProjectPhases::SidePanelComponent.new(project: @project)
-        )
-      else
-        update_via_turbo_stream(
-          component: Overviews::ProjectPhases::EditComponent.new(service_call.result)
-        )
-      end
 
-      respond_to_with_turbo_streams(status: service_call.success? ? :ok : :unprocessable_entity)
+      component, status =
+        if service_call.success?
+          [Overviews::ProjectPhases::SidePanelComponent.new(project: @project), :ok]
+        else
+          [Overviews::ProjectPhases::EditComponent.new(service_call.result), :unprocessable_entity]
+        end
+
+      update_via_turbo_stream(component:)
+      respond_to_with_turbo_streams(status:)
     end
 
     private
 
     def find_project_phase_and_project
-      @project_phase = Project::Phase.where(active: true).eager_load(:definition, :project).find(params[:id])
+      @project_phase = Project::Phase.where(active: true)
+                                     .eager_load(:definition, :project)
+                                     .find(params[:id])
       @project = @project_phase.project
     rescue ActiveRecord::RecordNotFound
       # TODO: Use rescue from in the controller, and remove all the rescue instances

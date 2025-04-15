@@ -72,8 +72,7 @@ RSpec.describe "Edit project phases on project overview page", :js, with_flag: {
     it "does not show the edit buttons" do
       overview_page.within_life_cycles_sidebar do
         project_life_cycles.each do |lc|
-          expect(page)
-            .to have_no_css("[data-test-selector='project-life-cycle-edit-button-#{lc.id}']")
+          expect(page).to have_no_link(href: edit_project_phase_path(lc))
         end
       end
     end
@@ -85,8 +84,7 @@ RSpec.describe "Edit project phases on project overview page", :js, with_flag: {
     it "shows the edit buttons" do
       overview_page.within_life_cycles_sidebar do
         project_life_cycles.each do |lc|
-          expect(page)
-            .to have_css("[data-test-selector='project-life-cycle-edit-button-#{lc.id}']")
+          expect(page).to have_link(href: edit_project_phase_path(lc))
         end
       end
     end

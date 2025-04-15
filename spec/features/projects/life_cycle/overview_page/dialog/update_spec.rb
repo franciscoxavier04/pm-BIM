@@ -83,26 +83,15 @@ RSpec.describe "Edit project phases on project overview page", :js, with_flag: {
         retry_block do
           # Retrying due to a race condition between filling the input vs submitting the form preview.
           original_dates = [life_cycle_initiating.start_date, life_cycle_initiating.finish_date]
-          dialog.set_date_for(life_cycle_initiating, values: original_dates)
+          dialog.set_date_for(values: original_dates)
 
           page.driver.clear_network_traffic
-          dialog.set_date_for(life_cycle_initiating, values: initiating_dates)
+          dialog.set_date_for(values: initiating_dates)
 
-          dialog.expect_caption(life_cycle_initiating, text: "Duration: 8 working days")
+          dialog.expect_caption(text: "Duration: 8 working days")
           # Ensure that only 1 ajax request is triggered after setting the date range.
           expect(page.driver.browser.network.traffic.size).to eq(1)
         end
-
-        # Saving the dialog is successful
-        dialog.submit
-        dialog.expect_closed
-
-        # Clear the value of life_cycle_planning
-        dialog = overview_page.open_edit_dialog_for_life_cycle(life_cycle_planning)
-        expect_angular_frontend_initialized
-
-        dialog.expect_input_for(life_cycle_planning)
-        dialog.clear_date_for(life_cycle_planning)
 
         # Saving the dialog is successful
         dialog.submit
@@ -113,6 +102,18 @@ RSpec.describe "Edit project phases on project overview page", :js, with_flag: {
           expect(page).to have_text initiating_dates.map { I18n.l(it) }.join("\n-\n")
         end
 
+        # Clear the value of life_cycle_planning
+        dialog = overview_page.open_edit_dialog_for_life_cycle(life_cycle_planning)
+        expect_angular_frontend_initialized
+
+        dialog.expect_input_for(life_cycle_planning)
+        dialog.clear_date
+
+        # Saving the dialog is successful
+        dialog.submit
+        dialog.expect_closed
+
+        # Sidebar is refreshed with the updated values
         ready_for_planning_dates = [
           life_cycle_planning.start_date,
           life_cycle_planning.finish_date

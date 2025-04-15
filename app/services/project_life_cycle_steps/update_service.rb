@@ -29,9 +29,7 @@
 module ProjectLifeCycleSteps
   class UpdateService < ::BaseServices::Update
     def after_perform(call)
-      life_cycle_step = call.result
-
-      project = life_cycle_step.project
+      project = call.result.project
       project.touch_and_save_journals
 
       call
