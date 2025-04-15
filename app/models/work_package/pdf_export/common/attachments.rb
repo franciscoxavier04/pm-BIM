@@ -71,9 +71,11 @@ module WorkPackage::PDFExport::Common::Attachments
   end
 
   def attachment_by_api_content_src(_work_package, src)
-    # /attachments/#{id}/content
-    parts = src.split("/")
-    attachments_id = parts[-2]
+    attachment_regex = %r{/attachments/(\d+)/content}
+    return nil unless src&.match?(attachment_regex)
+
+    attachments_id = src.scan(attachment_regex).first.first
+
     # return nil if the src is not an attachment url
     return nil unless api_url_helpers.attachment_content(attachments_id) == src
 
