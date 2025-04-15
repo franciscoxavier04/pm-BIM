@@ -128,12 +128,20 @@ module WorkPackages
         end
 
         def edit_action_item(menu)
-          menu.with_item(label: t("js.label_edit_comment"),
+          menu.with_item(label: edit_action_label,
                          href: edit_work_package_activity_path(journal.journable, journal, filter:),
                          content_arguments: {
                            data: { turbo_stream: true, test_selector: "op-wp-journal-#{journal.id}-edit" }
                          }) do |item|
             item.with_leading_visual_icon(icon: :pencil)
+          end
+        end
+
+        def edit_action_label
+          if journal.user == User.current
+            t("js.label_edit_comment")
+          else
+            t("js.label_moderate_comment")
           end
         end
 
