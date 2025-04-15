@@ -50,7 +50,7 @@ module Meeting::VirtualStartTime
   ##
   # Actually sets the aggregated start_time attribute.
   def update_start_time!
-    write_attribute(:start_time, start_time)
+    self[:start_time] = start_time
   end
 
   ##
@@ -80,7 +80,7 @@ module Meeting::VirtualStartTime
 
     return if date.nil? || time.nil?
 
-    Time.zone.local(
+    time_zone.local(
       date.year,
       date.month,
       date.day,
@@ -92,7 +92,7 @@ module Meeting::VirtualStartTime
   def set_initial_values
     # set defaults
     # Start date is set to tomorrow at 10 AM (Current users local time)
-    write_attribute(:start_time, User.current.time_zone.now.at_midnight + 34.hours) if start_time.nil?
+    self[:start_time] = time_zone.now.at_midnight + 34.hours if start_time.nil?
     update_derived_fields
   end
 
