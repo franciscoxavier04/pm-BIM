@@ -38,6 +38,10 @@ module My
         TimeEntryRow
       end
 
+      def container_id
+        "time-entries-table-#{options[:date].iso8601}"
+      end
+
       def mobile_title
         TimeEntry.model_name.human(count: 2)
       end
