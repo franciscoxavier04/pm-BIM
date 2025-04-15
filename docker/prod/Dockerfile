@@ -1,7 +1,7 @@
-ARG RUBY_VERSION="3.4.2"
-FROM ruby:${RUBY_VERSION}-bookworm AS base
+FROM debian:bookworm AS base
 LABEL maintainer="operations@openproject.com"
 
+ARG RUBY_VERSION="3.4.2"
 ARG NODE_VERSION="20.9.0"
 ARG BIM_SUPPORT=true
 ENV USE_JEMALLOC=false
@@ -42,8 +42,12 @@ RUN useradd -d /home/$APP_USER -m $APP_USER && \
 
 WORKDIR $APP_PATH
 
-# upgrade bundler
-RUN gem install bundler --no-document
+# update and upgrade
+RUN apt-get update -qq && apt-get upgrade -y
+
+# install ruby
+COPY ./docker/prod/setup/install-ruby.sh ./docker/prod/setup/
+RUN bash docker/prod/setup/install-ruby.sh $RUBY_VERSION
 
 # system dependencies, nodejs
 COPY ./docker/prod/setup/preinstall-common.sh ./docker/prod/setup/preinstall-common.sh
