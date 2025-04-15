@@ -50,6 +50,7 @@ module My
           "my--time-tracking-initial-date-value" => date.iso8601,
           "my--time-tracking-can-create-value" => User.current.allowed_in_any_project?(:log_own_time),
           "my--time-tracking-can-edit-value" => User.current.allowed_in_any_project?(:edit_own_time_entries),
+          "my--time-tracking-allow-times-value" => TimeEntry.can_track_start_and_end_time?,
           "my--time-tracking-force-times-value" => TimeEntry.must_track_start_and_end_time?,
           "my--time-tracking-locale-value" => I18n.locale
         }

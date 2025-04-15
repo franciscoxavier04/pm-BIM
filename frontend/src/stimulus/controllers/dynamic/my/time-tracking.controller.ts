@@ -23,6 +23,7 @@ export default class MyTimeTrackingController extends Controller {
     canCreate: Boolean,
     locale: String,
     canEdit: Boolean,
+    allowTimes: Boolean,
     forceTimes: Boolean,
   };
 
@@ -33,6 +34,7 @@ export default class MyTimeTrackingController extends Controller {
   declare readonly initialDateValue:string;
   declare readonly canCreateValue:boolean;
   declare readonly canEditValue:boolean;
+  declare readonly allowTimesValue:boolean;
   declare readonly forceTimesValue:boolean;
   declare readonly localeValue:string;
   declare readonly viewModeValue:string;
@@ -164,8 +166,12 @@ export default class MyTimeTrackingController extends Controller {
         }
       },
 
-      eventAllow: (dropInfo) => {
+      eventAllow: (dropInfo, draggedEvent) => {
         if (dropInfo.allDay && this.forceTimesValue) {
+          return false;
+        }
+
+        if (!dropInfo.allDay && draggedEvent?.allDay && !this.allowTimesValue) {
           return false;
         }
 

@@ -14,14 +14,14 @@
         menu.with_item(
           label: t(:label_calendar),
           tag: :a,
-          href: url_for(params.permit(:controller, :action, :date).merge(view_mode: "calendar"))
+          href: my_time_tracking_path(date: date, mode: mode, view_mode: "calendar")
         ) do |item|
           item.with_leading_visual_icon(icon: :calendar)
         end
         menu.with_item(
           label: t(:label_list),
           tag: :a,
-          href: url_for(params.permit(:controller, :date, :action).merge(view_mode: "list"))
+          href: my_time_tracking_path(date: date, mode: mode, view_mode: "list")
         ) do |item|
           item.with_leading_visual_icon(icon: "list-unordered")
         end
