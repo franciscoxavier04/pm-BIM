@@ -71,7 +71,6 @@ export class OpWpDatePickerInstanceComponent extends UntilDestroyedMixin impleme
   @Input() public dueDate:string|null;
 
   @Input() public isSchedulable:boolean = true;
-  @Input() public minimalSchedulingDate:Date|null;
   @Input() public dateMode:DateMode;
 
   @Input() startDateFieldId:string;
@@ -85,6 +84,7 @@ export class OpWpDatePickerInstanceComponent extends UntilDestroyedMixin impleme
   private datePickerInstance:DatePicker;
   private startDateValue:Date|null;
   private dueDateValue:Date|null;
+  private minimalSchedulingDate:Date|null;
   private onFlatpickrSetValuesBound = this.onFlatpickrSetValues.bind(this);
 
   constructor(
@@ -101,6 +101,7 @@ export class OpWpDatePickerInstanceComponent extends UntilDestroyedMixin impleme
     populateInputsFromDataset(this);
     this.startDateValue = this.toDate(this.startDate);
     this.dueDateValue = this.toDate(this.dueDate);
+    this.computeMinimalSchedulingDate();
   }
 
   ngAfterViewInit():void {
@@ -130,6 +131,7 @@ export class OpWpDatePickerInstanceComponent extends UntilDestroyedMixin impleme
     // that date if it's not visible.
     const dateToJumpTo = this.findDateToJumpTo(details.dates);
     [this.startDateValue, this.dueDateValue] = details.dates;
+    this.computeMinimalSchedulingDate();
     this.setDatePickerDates(details.dates, dateToJumpTo);
 
     this.datePickerInstance.setOption('mode', details.mode);
@@ -143,6 +145,10 @@ export class OpWpDatePickerInstanceComponent extends UntilDestroyedMixin impleme
     if (details.dates.length === 2) {
       this.allowHoverFor(this.datePickerInstance.datepickerInstance.calendarContainer);
     }
+  }
+
+  private computeMinimalSchedulingDate() {
+    this.minimalSchedulingDate = this.startDateValue && this.timezoneService.utcDateToLocalDate(this.startDateValue);
   }
 
   private findDateToJumpTo(dates:Date[]):Date|null {
@@ -198,13 +204,6 @@ export class OpWpDatePickerInstanceComponent extends UntilDestroyedMixin impleme
     }
   }
 
-  private isDifferentDates(dates:Date[], mode:DateMode):boolean {
-    const [start, end] = dates;
-    return mode === 'single'
-      ? start?.getTime() !== this.startDateValue?.getTime()
-      : start?.getTime() !== this.startDateValue?.getTime() || end?.getTime() !== this.dueDateValue?.getTime();
-  }
-
   private toDate(date:string|null):Date|null {
     return date ? new Date(date) : null;
   }
@@ -257,11 +256,10 @@ export class OpWpDatePickerInstanceComponent extends UntilDestroyedMixin impleme
   }
 
   private isDayDisabled(dayElement:DayElement):boolean {
-    const minimalDate = this.minimalSchedulingDate || null;
     return !this.isSchedulable
       || (!this.scheduleManually
-        && !!minimalDate
-        && dayElement.dateObj.setHours(0, 0, 0, 0) < new Date(minimalDate).setHours(0, 0, 0, 0));
+        && !!this.minimalSchedulingDate
+        && dayElement.dateObj < this.minimalSchedulingDate);
   }
 
   /**

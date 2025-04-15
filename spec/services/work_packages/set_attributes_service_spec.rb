@@ -1478,6 +1478,80 @@ RSpec.describe WorkPackages::SetAttributesService,
           end
         end
       end
+
+      context "without changing anything, when scheduling mode is automatic " \
+              "and start date initial date is different from the calculated soonest start" do
+        let(:work_package) do
+          build_stubbed(:work_package, start_date: monday,
+                                       due_date: friday,
+                                       ignore_non_working_days: true)
+        end
+        let(:call_attributes) { {} }
+
+        before do
+          allow(work_package).to receive(:soonest_start).and_return(wednesday)
+        end
+
+        context "when scheduling mode is automatic" do
+          before do
+            work_package.schedule_manually = false
+          end
+
+          it_behaves_like "service call" do
+            it "moves the start date to the calculated soonest start, keeps duration and adjusts due date" do
+              expect { subject }
+                .to change { work_package.slice(:start_date, :due_date, :duration) }
+                .from(start_date: monday, due_date: friday, duration: 5)
+                .to(start_date: wednesday, due_date: sunday, duration: 5)
+            end
+          end
+        end
+
+        context "when scheduling mode is manual" do
+          before do
+            work_package.schedule_manually = true
+          end
+
+          it_behaves_like "service call" do
+            it "does not change any dates" do
+              expect { subject }
+                .not_to change { work_package.slice(:start_date, :due_date, :duration) }
+            end
+          end
+        end
+
+        context "when scheduling mode is initially manual and is changed to automatic" do
+          let(:call_attributes) { { schedule_manually: false } }
+
+          before do
+            work_package.schedule_manually = true
+          end
+
+          it_behaves_like "service call" do
+            it "moves the start date to the calculated soonest start, keeps duration and adjusts due date" do
+              expect { subject }
+                .to change { work_package.slice(:start_date, :due_date, :duration) }
+                .from(start_date: monday, due_date: friday, duration: 5)
+                .to(start_date: wednesday, due_date: sunday, duration: 5)
+            end
+          end
+        end
+
+        context "when scheduling mode is initially automatic and is changed to manual" do
+          let(:call_attributes) { { schedule_manually: true } }
+
+          before do
+            work_package.schedule_manually = false
+          end
+
+          it_behaves_like "service call" do
+            it "does not change any dates" do
+              expect { subject }
+                .not_to change { work_package.slice(:start_date, :due_date, :duration) }
+            end
+          end
+        end
+      end
     end
   end
 
@@ -1928,7 +2002,7 @@ RSpec.describe WorkPackages::SetAttributesService,
         let(:expected_attributes) do
           {
             start_date: next_monday,
-            due_date: next_monday + 7.days
+            due_date: WorkPackages::Shared::WorkingDays.new.soonest_working_day(Time.zone.today + 5.days)
           }
         end
       end

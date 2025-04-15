@@ -82,8 +82,6 @@ module ::TeamPlanner
       @view = Query
         .visible(current_user)
         .find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      render_404
     end
 
     def visible_plans(project = nil)

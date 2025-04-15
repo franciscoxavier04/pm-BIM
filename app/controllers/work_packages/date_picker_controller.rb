@@ -236,6 +236,8 @@ class WorkPackages::DatePickerController < ApplicationController
             .slice(*allowed_touched_params)
             .merge(schedule_manually:, date_mode:, triggering_field: params[:triggering_field])
             .permit!
+    else
+      {}
     end
   end
 

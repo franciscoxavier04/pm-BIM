@@ -58,8 +58,6 @@ module Webhooks
 
       def find_webhook
         @webhook = webhook_class.find(params[:webhook_id])
-      rescue ActiveRecord::RecordNotFound
-        render_404
       end
 
       def webhook_class

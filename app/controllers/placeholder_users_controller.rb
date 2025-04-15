@@ -146,8 +146,6 @@ class PlaceholderUsersController < ApplicationController
 
   def find_placeholder_user
     @placeholder_user = PlaceholderUser.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   protected

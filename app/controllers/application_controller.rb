@@ -133,6 +133,10 @@ class ApplicationController < ActionController::Base
                payload: ::OpenProject::Logging::ThreadPoolContextBuilder.build!
   end
 
+  rescue_from ActiveRecord::RecordNotFound do
+    render_404
+  end
+
   before_action :authorization_check_required,
                 :user_setup,
                 :set_localization,
@@ -240,16 +244,12 @@ class ApplicationController < ActionController::Base
   # Note: find() is Project.friendly.find()
   def find_project
     @project = Project.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   # Find project of id params[:project_id]
   # Note: find() is Project.friendly.find()
   def find_project_by_project_id
     @project = Project.find(params[:project_id])
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   # Finds and sets @project based on @object.project
@@ -257,8 +257,6 @@ class ApplicationController < ActionController::Base
     render_404 if @object.blank?
 
     @project = @object.project
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   def find_model_object(object_id = :id)
@@ -267,8 +265,6 @@ class ApplicationController < ActionController::Base
       @object = model.find(params[object_id])
       instance_variable_set(:"@#{controller_name.singularize}", @object) if @object
     end
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   def find_model_object_and_project(object_id = :id)
@@ -280,8 +276,6 @@ class ApplicationController < ActionController::Base
     else
       @project = Project.find(params[:project_id])
     end
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   # TODO: this method is right now only suited for controllers of objects that somehow have an association to Project
@@ -295,8 +289,6 @@ class ApplicationController < ActionController::Base
     associated.each do |a|
       instance_variable_set("@" + a.class.to_s.downcase, a)
     end
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   # this method finds all records that are specified in the associations param
@@ -337,8 +329,6 @@ class ApplicationController < ActionController::Base
 
     @projects = @work_packages.filter_map(&:project).uniq
     @project = @projects.first if @projects.size == 1
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   def back_url

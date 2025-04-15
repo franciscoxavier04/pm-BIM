@@ -123,8 +123,16 @@ module Components
       container.click_button cancel_button_label
     end
 
+    def expect_save_button_enabled
+      expect(container).to have_button(save_button_label, disabled: false)
+    end
+
     def expect_save_button_disabled
       expect(container).to have_button(save_button_label, disabled: true)
+    end
+
+    def expect_cancel_button_enabled
+      expect(container).to have_button(cancel_button_label, disabled: false)
     end
 
     ##
