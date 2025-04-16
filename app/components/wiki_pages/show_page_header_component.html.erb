@@ -67,34 +67,21 @@ See COPYRIGHT and LICENSE files for more details.
     header.with_action_menu(
       menu_arguments: { anchor_align: :end },
       button_arguments: {
-        icon: "op-kebab-vertical",
+        icon: "kebab-horizontal",
         "aria-label": t(:label_more),
         data: { "test-selector": "wiki-more-dropdown-menu" }
       }
     ) do |menu|
       if @editable
         if User.current.allowed_in_project?(:protect_wiki_pages, @project)
-          if !@page.protected?
-            menu.with_item(
-              label: t(:button_lock),
-              tag: :a,
-              size: :medium,
-              content_arguments: { data: { method: :post } },
-              href: url_for(controller: "wiki", action: "protect", id: @page, protected: 1)
-            ) do |item|
-              item.with_leading_visual_icon(icon: :lock)
-            end
-          end
-          if @page.protected?
-            menu.with_item(
-              label: t(:button_unlock),
-              tag: :a,
-              size: :medium,
-              content_arguments: { data: { method: :post } },
-              href: url_for(controller: "wiki", action: "protect", id: @page, protected: 0)
-            ) do |item|
-              item.with_leading_visual_icon(icon: :unlock)
-            end
+          menu.with_item(
+            label: lock_data[:label],
+            tag: :a,
+            size: :medium,
+            content_arguments: { data: { method: :post } },
+            href: url_for(controller: "wiki", action: "protect", id: @page, protected: lock_data[:protected])
+          ) do |item|
+            item.with_leading_visual_icon(icon: lock_data[:icon])
           end
         end
         if @page.current_version?

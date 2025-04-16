@@ -39,5 +39,13 @@ module WikiPages
       @project = project
       @editable = editable
     end
+
+    def lock_data
+      if @page.protected?
+        { label: t(:button_unlock), icon: :unlock, protected: 0 }
+      else
+        { label: t(:button_lock), icon: :lock, protected: 1 }
+      end
+    end
   end
 end
