@@ -215,6 +215,9 @@ es:
         new_date_time: "Fecha y hora nuevas"
     label_mail_all_participants: "Enviar email a todos los participantes"
     types:
+      classic: "Clásicas (sin soporte)"
+      classic_text: "Nota: Las reuniones clásicas se eliminarán en la próxima versión de OpenProject."
+      structured: "Estructurada"
       one_time: "Única"
       recurring: "Periódico"
       recurring_text: "Cree series de reuniones con una plantilla dinámica para cada repetición."

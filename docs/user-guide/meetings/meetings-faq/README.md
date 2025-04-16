@@ -21,7 +21,7 @@ With OpenProject 15.3.0, dynamic meetings can either be [one-time meetings](../o
 - All existing classic meetings will be converted into a one-time dynamic meetings. 
 - Agenda text will be converted to agenda items. 
 - Meeting minutes will be converted into meeting outcome. 
-- Author informattion will be saved in the respective presenter fields. 
+- Author information will be saved in the respective presenter fields. 
 
 ## Can I add a meeting to a calendar?
 
