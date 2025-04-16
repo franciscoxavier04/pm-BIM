@@ -167,7 +167,7 @@ module WorkPackages
 
       def field_value(name)
         errors = @work_package.errors.where(name)
-        if (user_value = errors.map { |error| error.options[:value] }.find { !_1.nil? })
+        if (user_value = errors.map { |error| error.options[:value] }.find { !it.nil? })
           user_value
         else
           @work_package.public_send(name)
