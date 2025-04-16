@@ -51,6 +51,24 @@ module Overviews
       def text
         model.name
       end
+
+      def authorized_edit_link
+        if allowed_to_edit?
+          Primer::Beta::Link.new(
+            href: edit_project_phase_path(model),
+            data: { controller: "async-dialog" },
+            aria: { label: I18n.t(:label_edit) },
+            test_selector: "project-life-cycle-edit-button-#{model.id}",
+            underline: false
+          )
+        else
+          Primer::Content.new
+        end
+      end
+
+      def allowed_to_edit?
+        User.current.allowed_in_project?(:edit_project_phases, model.project)
+      end
     end
   end
 end

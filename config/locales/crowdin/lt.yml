@@ -289,8 +289,9 @@ lt:
   global_search:
     placeholder: "Ieškoti %{app_title}"
     overwritten_tabs:
-      wiki_pages: "Wiki"
+      all: "All"
       messages: "Forumas"
+      wiki_pages: "Wiki"
   groups:
     index:
       no_results_title_text: Nėra jokių grupių.

@@ -133,11 +133,11 @@ es:
   label_recurring_meeting_next_occurrence: "Siguiente repetición"
   label_recurring_meeting_no_end_date: "Hay más reuniones programadas (%{schedule})."
   label_recurring_meeting_more:
-    one: "There is one more scheduled meeting (%{schedule})."
-    other: "There are %{count} more scheduled meetings (%{schedule})."
+    one: "Hay una reunión más programada (%{schedule})."
+    other: "Hay %{count} reuniones más programadas (%{schedule})."
   label_recurring_meeting_more_past:
-    one: "There is one more past meeting."
-    other: "There are %{count} more past meetings."
+    one: "Hay una reunión más pasada."
+    other: "Hay %{count} reuniones más pasadas."
   label_recurring_meeting_show_more: "Mostrar más"
   label_recurring_meeting_series_create: "Crear serie de reuniones"
   label_recurring_meeting_series_edit: "Editar serie de reuniones"

@@ -291,8 +291,9 @@ ru:
   global_search:
     placeholder: "Поиск в %{app_title}"
     overwritten_tabs:
-      wiki_pages: "Wiki"
+      all: "All"
       messages: "Форум"
+      wiki_pages: "Wiki"
   groups:
     index:
       no_results_title_text: Нет групп.

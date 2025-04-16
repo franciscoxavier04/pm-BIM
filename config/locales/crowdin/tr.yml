@@ -292,8 +292,9 @@ tr:
   global_search:
     placeholder: "%{app_title} içinde ara"
     overwritten_tabs:
-      wiki_pages: "Viki"
+      all: "All"
       messages: "Forum"
+      wiki_pages: "Viki"
   groups:
     index:
       no_results_title_text: Şu anda hiç grup bulunmamakta.

@@ -462,6 +462,7 @@ ro:
     label_menu_collapse: "restrângere"
     label_menu_expand: "extindere"
     label_more_than_ago: "acum mai mult de zile"
+    label_moderate_comment: "Moderate comment"
     label_next: "Înainte"
     label_no_color: "Nicio culoare"
     label_no_data: "Nu există date de afișat"

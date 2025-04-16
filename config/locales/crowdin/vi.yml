@@ -292,8 +292,9 @@ vi:
   global_search:
     placeholder: "Tìm kiếm trong %{app_title}"
     overwritten_tabs:
-      wiki_pages: "Wiki"
+      all: "All"
       messages: "Diễn đàn"
+      wiki_pages: "Wiki"
   groups:
     index:
       no_results_title_text: Hiện có không có nhóm.

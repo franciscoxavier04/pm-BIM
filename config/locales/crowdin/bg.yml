@@ -292,8 +292,9 @@ bg:
   global_search:
     placeholder: "Търсене в %{app_title}"
     overwritten_tabs:
-      wiki_pages: "Wiki"
+      all: "All"
       messages: "Форум"
+      wiki_pages: "Wiki"
   groups:
     index:
       no_results_title_text: В момента няма групи.

@@ -292,8 +292,9 @@ th:
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
-      wiki_pages: "วิกิ"
+      all: "All"
       messages: "ฟอรั่ม"
+      wiki_pages: "วิกิ"
   groups:
     index:
       no_results_title_text: ขณะนี้ยังไม่มีกลุ่มใดๆ

@@ -292,8 +292,9 @@ cs:
   global_search:
     placeholder: "Hledat v %{app_title}"
     overwritten_tabs:
-      wiki_pages: "Wiki"
+      all: "All"
       messages: "Fórum"
+      wiki_pages: "Wiki"
   groups:
     index:
       no_results_title_text: V současné době neexistují žádné skupiny.

@@ -292,8 +292,9 @@ ka:
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
-      wiki_pages: "ვიკი"
+      all: "All"
       messages: "ფორუმი"
+      wiki_pages: "ვიკი"
   groups:
     index:
       no_results_title_text: There are currently no groups.

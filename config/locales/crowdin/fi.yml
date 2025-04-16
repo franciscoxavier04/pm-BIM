@@ -292,8 +292,9 @@ fi:
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
-      wiki_pages: "Wiki"
+      all: "All"
       messages: "Keskustelupalsta"
+      wiki_pages: "Wiki"
   groups:
     index:
       no_results_title_text: Tällä hetkellä ei ole ryhmiä.

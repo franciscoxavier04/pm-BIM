@@ -289,8 +289,9 @@ pl:
   global_search:
     placeholder: "Wyszukaj w %{app_title}"
     overwritten_tabs:
-      wiki_pages: "Wiki"
+      all: "All"
       messages: "Forum"
+      wiki_pages: "Wiki"
   groups:
     index:
       no_results_title_text: Nie ma żadnych grup.

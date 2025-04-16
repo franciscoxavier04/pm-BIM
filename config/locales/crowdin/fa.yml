@@ -292,8 +292,9 @@ fa:
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
-      wiki_pages: "دانشنامه"
+      all: "All"
       messages: "تالار گفتگو"
+      wiki_pages: "دانشنامه"
   groups:
     index:
       no_results_title_text: There are currently no groups.

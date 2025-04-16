@@ -361,7 +361,7 @@ es:
           "15_5":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Filter for descendants (children and grandchildren) of work packages.</li> <li>Benefit from advanced accessibility in the date picker.</li> <li>See % Complete included in work package table sums.</li> <li>Include a column for children in work package tables.</li> <li>Better use the date picker in mobile screens.</li> <li>PDF exports matching configured form layout.</li> </ul>
+                La versión incluye varias funciones y mejoras para usted, por ejemplo: <br> <ul class="%{list_styling_class}"> <li>Filtro para descendientes (secundarios y subsecundarios) de paquetes de trabajo. </li> <li>Benefíciese de la accesibilidad avanzada en el selector de fechas.</li> <li>Vea el % completado incluido en las sumas de la tabla de paquetes de trabajo.</li> <li>Incluya una columna para los elementos secundarios en las tablas de paquetes de trabajo.</li> <li>Utilice mejor el selector de fechas en las pantallas móviles.</li> <li>Exportaciones en PDF que coinciden con el diseño de formulario configurado.</li> </ul>
     ical_sharing_modal:
       title: "Suscribirse al calendario"
       inital_setup_error_message: "Se ha producido un error al obtener los datos."
@@ -463,6 +463,7 @@ es:
     label_menu_collapse: "colapsar"
     label_menu_expand: "expandir"
     label_more_than_ago: "más que hace unos días"
+    label_moderate_comment: "Moderate comment"
     label_next: "Siguiente"
     label_no_color: "Sin color"
     label_no_data: "No hay datos disponibles"
@@ -795,7 +796,7 @@ es:
       typeahead_placeholder: Buscar posibles observadores
     relation_labels:
       parent: "Principal"
-      child: "Child"
+      child: "Elemento secundario"
       children: "Sub-elemento"
       relates: "Relacionado con"
       duplicates: "Duplicados"
@@ -825,7 +826,7 @@ es:
       add_new_child: "Crear nuevo sub-elemento"
       create_new: "Crear nuevo"
       add_existing: "Agregar existente"
-      add_existing_child: "Add child"
+      add_existing_child: "Añadir elemento secundario"
       remove_child: "Eliminar sub-elemento"
       add_new_relation: "Crear nueva relación"
       add_existing_relation: "Agregar relación existente"
