@@ -90,10 +90,6 @@ class Storages::Admin::AccessManagementController < ApplicationController
     ActionController::Base.helpers.link_to(t(:project_module_storages), admin_settings_storages_path)
   end
 
-  def show_local_breadcrumb
-    true
-  end
-
   private
 
   def find_model_object(object_id = :storage_id)

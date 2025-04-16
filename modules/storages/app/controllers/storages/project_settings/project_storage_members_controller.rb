@@ -55,10 +55,6 @@ class Storages::ProjectSettings::ProjectStorageMembersController < Projects::Set
     t(:"storages.page_titles.project_settings.members_connection_status")
   end
 
-  def show_local_breadcrumb
-    true
-  end
-
   private
 
   def find_model_object(object_id = :project_storage_id)

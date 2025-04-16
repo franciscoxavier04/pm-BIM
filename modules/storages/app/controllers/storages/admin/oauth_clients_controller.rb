@@ -98,12 +98,6 @@ class Storages::Admin::OAuthClientsController < ApplicationController
     ActionController::Base.helpers.link_to(t(:project_module_storages), admin_settings_storages_path)
   end
 
-  # See: default_breadcrumb above
-  # Defines whether to show breadcrumbs on the page or not.
-  def show_local_breadcrumb
-    true
-  end
-
   def show_redirect_uri
     respond_to do |format|
       format.html { render layout: false }

@@ -239,10 +239,6 @@ module ::TwoFactorAuthentication
       current_user
     end
 
-    def show_local_breadcrumb
-      true
-    end
-
     def default_breadcrumb
       t("two_factor_authentication.label_devices")
     end

@@ -58,14 +58,6 @@ module BreadcrumbHelper
     end
   end
 
-  def show_breadcrumb
-    if !!(defined? show_local_breadcrumb)
-      show_local_breadcrumb
-    else
-      false
-    end
-  end
-
   private
 
   # transform anchor tag strings to {href, text} objects

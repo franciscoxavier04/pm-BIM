@@ -206,10 +206,6 @@ class MyController < ApplicationController
     I18n.t(:label_my_account)
   end
 
-  def show_local_breadcrumb
-    false
-  end
-
   def redirect_if_password_change_not_allowed_for(user)
     unless user.change_password_allowed?
       flash[:error] = I18n.t(:notice_can_t_change_password)
