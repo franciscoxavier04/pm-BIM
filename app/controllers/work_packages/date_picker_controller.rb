@@ -276,6 +276,10 @@ class WorkPackages::DatePickerController < ApplicationController
           .errors
           .add(field,
                I18n.t("activerecord.errors.models.work_package.attributes.#{field}.cannot_be_non_working"))
+
+        # The SetAttributesService will correct the field and set it to the next working day.
+        # We have to keep the params in sync
+        params[:work_package][field] = @work_package[field].to_s
       end
 
       service_result
