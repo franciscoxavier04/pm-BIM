@@ -69,6 +69,7 @@ class MeetingsController < ApplicationController
 
   def show
     respond_to do |format|
+      format.pdf { export_pdf }
       format.html do
         html_title "#{t(:label_meeting)}: #{@meeting.title}"
         if @meeting.state == "cancelled"
@@ -536,5 +537,19 @@ class MeetingsController < ApplicationController
 
   def timezone_params
     @timezone_params ||= params.require(:meeting).permit(:start_date, :start_time_hour).compact_blank
+  end
+
+  def export_pdf
+    job = ::Meetings::ExportJob.perform_later(
+      export: MeetingExport.create,
+      user: current_user,
+      mime_type: :pdf,
+      query: @meeting
+    )
+    if request.headers["Accept"]&.include?("application/json")
+      render json: { job_id: job.job_id }
+    else
+      redirect_to job_status_path(job.job_id)
+    end
   end
 end

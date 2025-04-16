@@ -98,6 +98,20 @@
         end
 
         menu.with_item(
+          label:  t("meeting.label_export_pdf"),
+          tag: :a,
+          href: project_meeting_path(@project, @meeting, format: :pdf),
+          content_arguments: {
+            # turbo: false,
+            "data-application-target": "dynamic",
+            "data-controller": "job-dialog"
+          },
+          value: ""
+        ) do |item|
+          item.with_leading_visual_icon(icon: :"op-pdf")
+        end
+
+        menu.with_item(
           label: t(:label_history),
           tag: :a,
           href: history_project_meeting_path(@project, @meeting),

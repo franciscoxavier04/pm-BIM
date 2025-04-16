@@ -208,6 +208,10 @@ module OpenProject::Meeting
       OpenProject::ProjectLatestActivity.register on: "Meeting"
 
       PermittedParams.permit(:search, :meetings)
+
+      ::Exports::Register.register do
+        single(::Meeting, Meetings::Exporter)
+      end
     end
 
     add_api_path :meetings do
