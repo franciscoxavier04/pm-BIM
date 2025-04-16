@@ -58,6 +58,14 @@ module Settings
       def show_custom_fields?
         User.current.allowed_in_project?(:select_custom_fields, @project)
       end
+
+      def activity_title
+        label = t("label_activity").html_safe
+        if !EnterpriseToken.allows_to?(:comments_with_restricted_visibility)
+          label << render(Primer::Beta::Octicon.new(icon: "op-enterprise-addons", classes: "upsale-colored", ml: 2))
+        end
+        label
+      end
     end
   end
 end
