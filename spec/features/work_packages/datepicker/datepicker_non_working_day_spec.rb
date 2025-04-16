@@ -112,7 +112,7 @@ RSpec.describe "Datepicker modal individual non working days (WP #44453)", :js,
       # Set the start date to a non working day
       datepicker.set_start_date non_working_day_this_week.date
       datepicker.expect_start_date_error(
-        I18n.t("activerecord.errors.models.work_package.attributes.start_date.cannot_be_non_working")
+        I18n.t("activerecord.errors.models.work_package.attributes.start_date.cannot_be_non_working").capitalize
       )
 
       # Set the start date to a working day again
@@ -122,7 +122,7 @@ RSpec.describe "Datepicker modal individual non working days (WP #44453)", :js,
       # Set the due date to a non working day
       datepicker.set_due_date non_working_day_this_week.date
       datepicker.expect_due_date_error(
-        I18n.t("activerecord.errors.models.work_package.attributes.due_date.cannot_be_non_working")
+        I18n.t("activerecord.errors.models.work_package.attributes.due_date.cannot_be_non_working").capitalize
       )
 
       # Set the due date to a working day again
