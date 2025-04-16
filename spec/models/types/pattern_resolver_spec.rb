@@ -46,7 +46,7 @@ RSpec.describe Types::PatternResolver do
 
     it "resolves the pattern" do
       expect(subject.resolve(work_package))
-        .to eq("#{work_package.id} | NA | #{work_package.created_at.to_date.iso8601}")
+        .to eq("#{work_package.id} | N/A | #{work_package.created_at.to_date.iso8601}")
     end
   end
 
