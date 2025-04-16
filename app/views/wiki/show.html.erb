@@ -27,6 +27,10 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 <%= render(WikiPages::ShowPageHeaderComponent.new(page: @page, project: @project, editable: @editable)) %>
+<% if @editable && @page && User.current.allowed_in_project?(:edit_wiki_pages, @project)%>
+  <%= render(WikiPages::ShowSubHeaderComponent.new(page: @page, project: @project, editable: @editable)) %>
+<% end %>
+
 <%= call_hook :wiki_navigation %>
 <% if @page.current_version? %>
   <% title = h(@page.title) %>
