@@ -292,8 +292,9 @@ he:
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
-      wiki_pages: "ויקי"
+      all: "All"
       messages: "פורום"
+      wiki_pages: "ויקי"
   groups:
     index:
       no_results_title_text: There are currently no groups.

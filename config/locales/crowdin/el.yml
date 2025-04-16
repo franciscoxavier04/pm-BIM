@@ -288,8 +288,9 @@ el:
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
-      wiki_pages: "Wiki"
+      all: "All"
       messages: "Φόρουμ"
+      wiki_pages: "Wiki"
   groups:
     index:
       no_results_title_text: Προς το παρόν δεν υπάρχουν ομάδες.

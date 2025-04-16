@@ -291,8 +291,9 @@ hu:
   global_search:
     placeholder: "Keresés:  %{app_title} oldalon"
     overwritten_tabs:
-      wiki_pages: "Wiki"
+      all: "All"
       messages: "Fórum"
+      wiki_pages: "Wiki"
   groups:
     index:
       no_results_title_text: Jelenleg nincsenek csoportok.

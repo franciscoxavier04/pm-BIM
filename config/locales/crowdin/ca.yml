@@ -289,8 +289,9 @@ ca:
   global_search:
     placeholder: "Cerca a %{app_title}"
     overwritten_tabs:
-      wiki_pages: "Wiki"
+      all: "All"
       messages: "Fòrum"
+      wiki_pages: "Wiki"
   groups:
     index:
       no_results_title_text: Actualment no hi ha cap grup.

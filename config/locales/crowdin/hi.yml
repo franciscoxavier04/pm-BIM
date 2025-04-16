@@ -292,8 +292,9 @@ hi:
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
-      wiki_pages: "विकी"
+      all: "All"
       messages: "मंच"
+      wiki_pages: "विकी"
   groups:
     index:
       no_results_title_text: There are currently no groups.

@@ -230,7 +230,7 @@ zh-CN:
       storage_oauth: Nextcloud OAuth
       storage_provider: 存储提供商
     health:
-      checked: 上次检查于 %{datetime}
+      checked: 上次检查于 %{datetime} 
       connection_validation:
         action: 重新检查连接
         app_version_mismatch: 不受支持的集成 OpenProject 应用程序版本。请更新您的 Nextcloud 服务器。
@@ -271,7 +271,7 @@ zh-CN:
       label_warning: 警告
       project_folders:
         subtitle: 自动托管项目文件夹
-      since: 自从 %{datetime}
+      since: 自从 %{datetime} 
       title: 健康状态
     health_email_notifications:
       description_subscribed: 所有管理员都会收到该存储的健康状态电子邮件通知。

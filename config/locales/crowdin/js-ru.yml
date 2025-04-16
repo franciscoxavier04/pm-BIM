@@ -462,6 +462,7 @@ ru:
     label_menu_collapse: "свернуть"
     label_menu_expand: "развернуть"
     label_more_than_ago: "более нескольких дней назад"
+    label_moderate_comment: "Moderate comment"
     label_next: "Следующий"
     label_no_color: "Без цвета"
     label_no_data: "Нет данных для отображения"

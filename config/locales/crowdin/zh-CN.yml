@@ -289,8 +289,9 @@ zh-CN:
   global_search:
     placeholder: "在%{app_title}中搜索"
     overwritten_tabs:
-      wiki_pages: "维基"
+      all: "All"
       messages: "论坛"
+      wiki_pages: "维基"
   groups:
     index:
       no_results_title_text: 目前没有组。
@@ -870,7 +871,7 @@ zh-CN:
         page: "页"
         row_count: "行数"
         column_count: "列数"
-        widgets: "微件"
+        widgets: "小部件"
       journal:
         notes: "备注"
         cause_type: "Cause 类型"

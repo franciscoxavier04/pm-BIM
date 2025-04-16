@@ -72,7 +72,7 @@ ru:
         invalid_time_format: "недопустимое время. Требуемый формат: ЧЧ:ММ"
     models:
       recurring_meeting: "Повторяющееся совещание"
-      meeting: "One-time meeting"
+      meeting: "Однократное совещание"
       meeting_agenda_item: "Пункт повестки"
       meeting_agenda: "Повестка дня"
       meeting_section: "Раздел"
@@ -135,15 +135,15 @@ ru:
   label_recurring_meeting_next_occurrence: "Следующее событие"
   label_recurring_meeting_no_end_date: "Есть и другие запланированные совещания (%{schedule})."
   label_recurring_meeting_more:
-    one: "There is one more scheduled meeting (%{schedule})."
+    one: "Есть еще одно запланированное совещание (%{schedule})."
     few: "There are %{count} more scheduled meetings (%{schedule})."
     many: "There are %{count} more scheduled meetings (%{schedule})."
-    other: "There are %{count} more scheduled meetings (%{schedule})."
+    other: "Есть еще %{count} запланированных совещаний (%{schedule})."
   label_recurring_meeting_more_past:
-    one: "There is one more past meeting."
+    one: "Есть еще одно прошедшее совещание."
     few: "There are %{count} more past meetings."
     many: "There are %{count} more past meetings."
-    other: "There are %{count} more past meetings."
+    other: "Есть еще %{count} прошедших совещаний."
   label_recurring_meeting_show_more: "Показать еще"
   label_recurring_meeting_series_create: "Создать серию совещаний"
   label_recurring_meeting_series_edit: "Изменить серию совещаний"

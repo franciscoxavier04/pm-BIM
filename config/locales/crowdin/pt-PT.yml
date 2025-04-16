@@ -290,8 +290,9 @@ pt-PT:
   global_search:
     placeholder: "Pesquisar em %{app_title}"
     overwritten_tabs:
-      wiki_pages: "Wiki"
+      all: "All"
       messages: "Fórum"
+      wiki_pages: "Wiki"
   groups:
     index:
       no_results_title_text: Atualmente, não existem grupos.
@@ -605,12 +606,12 @@ pt-PT:
           caption: "Defina um padrão ao utilizar atributos referenciados e texto para gerar automaticamente temas dod pacotes de trabalho. Os utilizadores não poderão editar manualmente os temas."
         pattern:
           label: "Padrão do tema"
-          caption: "Adicione ou introduza texto / para pesquisar um atributo. Pode adicionar espaços para separá-los."
+          caption: "Adicione ou introduza texto / para pesquisar por um atributo. Pode adicionar espaços para separá-los."
           headings:
             work_package: "Pacote de trabalho"
             parent: "Principal"
             project: "Projeto"
-          insert_as_text: "Não foram encontrados atributos. Adidionar como texto: \"%{word}\""
+          insert_as_text: "Não foram encontrados atributos. Adicionar como texto: \"%{word}\""
       export_configuration:
         tab: "Gerar PDF"
         intro: "Selecione os modelos disponíveis que pretende ativar para este tipo. O modelo determina o design e os atributos visíveis no PDF exportado de um pacote de trabalho que utiliza este tipo. O primeiro modelo da lista é selecionado por predefinição."
@@ -945,8 +946,8 @@ pt-PT:
         color: "Cor"
         start_gate: "Porta de fase inicial"
         start_gate_name: "Nome da porta de fase inicial"
-        finish_gate: "Porta de fase final"
-        finish_gate_name: "Nome da porta de fase final"
+        finish_gate: "Porta de fase de conclusão"
+        finish_gate_name: "Nome da porta de fase de conclusão"
       query:
         sums: "Somas"
         columns: "Colunas"
@@ -1251,8 +1252,8 @@ pt-PT:
         project/phase:
           attributes:
             date_range:
-              start_date_must_be_before_finish_date: "a data de início tem de ser anterior à data de fim."
-              non_continuous_dates: "não pode ser anterior à data de fim da fase anterior."
+              start_date_must_be_before_finish_date: "a data de início tem de ser anterior à data de conclusão."
+              non_continuous_dates: "não pode ser anterior à data de conclusão da fase anterior."
               incomplete: "está incompleto."
         query:
           attributes:
@@ -3832,7 +3833,7 @@ pt-PT:
         description: "As alterações a este atributo do projeto irão refletir-se em todos os projetos em que estiver ativado. Os atributos obrigatórios não podem ser desativados por projeto."
     project_phase_definitions:
       heading: "Ciclo de vida do projeto"
-      heading_description: "O ciclo de vida do projeto define as fases do projeto que podem ser usadas para o planeamento do seu projeto e aparecerão na página de visão geral de cada projeto. Estes atributos podem ser ativados ou desativados, mas não re-ordenados ao nível de um projeto."
+      heading_description: "O ciclo de vida do projeto define as fases do projeto que podem ser usadas para o planeamento do seu projeto e aparecerão na página de visão geral de cada projeto. Estes atributos podem ser ativados ou desativados, mas não reordenados ao nível de um projeto."
       label_add: "Adicionar"
       label_add_description: "Adicionar definição de fase do projeto"
       filter:
@@ -3889,7 +3890,7 @@ pt-PT:
   text_are_you_sure_continue: "Tem a certeza que deseja continuar?"
   text_are_you_sure_with_children: "Apagar o pacote de trabalho e todos os pacotes de trabalho filhos?"
   text_are_you_sure_with_project_custom_fields: "A eliminação deste atributo também elimina os seus valores em todos os projetos. Tem a certeza de que pretende fazê-lo?"
-  text_are_you_sure_with_project_life_cycle_step: "A eliminação desta fase também elimina as suas utilizações em todos os projetos. Tem a certeza de que pretende fazê-lo?"
+  text_are_you_sure_with_project_life_cycle_step: "A eliminação desta fase também eliminará as suas utilizações em todos os projetos. Tem a certeza de que pretende fazê-lo?"
   text_assign_to_project: "Atribuir ao projeto"
   text_form_configuration: >
     Pode personalizar quais os campos que serão exibidos nos formulários de pacote de trabalho. Pode agrupar livremente os campos para refletir as necessidades para o seu domínio.

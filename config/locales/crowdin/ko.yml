@@ -292,8 +292,9 @@ ko:
   global_search:
     placeholder: "%{app_title}에서 검색"
     overwritten_tabs:
-      wiki_pages: "위키"
+      all: "All"
       messages: "포럼"
+      wiki_pages: "위키"
   groups:
     index:
       no_results_title_text: 그룹이 없습니다.

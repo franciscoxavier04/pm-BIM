@@ -288,8 +288,9 @@ uk:
   global_search:
     placeholder: "Пошук у додатку %{app_title}"
     overwritten_tabs:
-      wiki_pages: "Wiki"
+      all: "All"
       messages: "Форум"
+      wiki_pages: "Wiki"
   groups:
     index:
       no_results_title_text: Наразі немає груп.

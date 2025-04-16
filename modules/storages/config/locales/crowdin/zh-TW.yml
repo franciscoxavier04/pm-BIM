@@ -220,14 +220,14 @@ zh-TW:
       general_information: 基本資訊
       oauth_configuration: OAuth 設定
       one_drive_oauth: Azure OAuth
-      openproject_oauth: OpenProject 開放授權 (OAuth)
+      openproject_oauth: OpenProject 開放授權 (OAuth) 
       project_folders: 專案資料夾
       redirect_uri: 重新導向 URI
       storage_audience: 儲存受眾
       storage_audience_blank: 尚未設定受眾。
       storage_audience_description: 取得受眾 "%{audience}" 的權杖(tokens)。
       storage_audience_idp: 使用身分提供者收到的第一個存取標記，不論受眾為何。
-      storage_oauth: NextCloud 授權 (OAuth)
+      storage_oauth: NextCloud 授權 (OAuth) 
       storage_provider: 儲存空間提供商
     health:
       checked: 上次檢查時間：%{datetime}
@@ -251,12 +251,12 @@ zh-TW:
         oidc_non_oidc_user: 目前使用者雖然已配置，但不是由 OpenID Connect (OIDC) 身分提供者配置的。請使用 OIDC 配置的使用者重新執行檢查。
         oidc_non_provisioned_user: 當前用戶不是由 OpenID Connect Identity Provider 提供。請使用提供的使用者重新執行檢查。
         one_drive:
-          client_cant_delete_folder: The client is having trouble deleting folders. Please check the setup documentation for your storage.
-          client_write_permission_missing: The client seems to have write permissions missing. Please check the setup documentation for your storage.
-          drive_id_not_found: The configured drive id could not be found. Please check the configuration.
-          drive_id_wrong: The configured drive id seems invalid. Please check the configuration.
-          existing_test_folder: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
-          unexpected_content: Unexpected content found in the drive.
+          client_cant_delete_folder: 用戶刪除資料夾失敗，請檢查儲存空間的文件設定。
+          client_write_permission_missing: 用戶似乎缺少寫入權限，請檢查儲存空間的文件設定。
+          drive_id_not_found: 找不到已設定的磁碟代碼。請檢查相關設定。
+          drive_id_wrong: 設定的磁碟代碼似乎不對。請檢查相關設定。
+          existing_test_folder: 測試所需的資料夾 %{folder_name} 已經存在。請刪除後再重試。
+          unexpected_content: 在磁碟中發現未預期的內容。
         placeholder: 根據伺服器檢查您的連線。
         subtitle: 連線驗證
         tenant_id_wrong: 設定的目錄 (租戶) id 無效。請檢查設定。

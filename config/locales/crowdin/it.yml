@@ -290,8 +290,9 @@ it:
   global_search:
     placeholder: "Cerca in %{app_title}"
     overwritten_tabs:
-      wiki_pages: "Wiki"
+      all: "All"
       messages: "Forum"
+      wiki_pages: "Wiki"
   groups:
     index:
       no_results_title_text: Al momento non esistono gruppi.

@@ -292,8 +292,9 @@ si:
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
-      wiki_pages: "විකි"
+      all: "All"
       messages: "සංසදය"
+      wiki_pages: "විකි"
   groups:
     index:
       no_results_title_text: දැනට කණ්ඩායම් නොමැත.

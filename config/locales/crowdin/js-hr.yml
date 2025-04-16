@@ -463,6 +463,7 @@ hr:
     label_menu_collapse: "sakriti"
     label_menu_expand: "proširiti"
     label_more_than_ago: "prije nekoliko dana"
+    label_moderate_comment: "Moderate comment"
     label_next: "Sljedeći"
     label_no_color: "No color"
     label_no_data: "Nema podataka za prikaz"
