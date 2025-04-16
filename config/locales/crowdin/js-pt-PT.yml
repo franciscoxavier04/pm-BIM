@@ -358,21 +358,21 @@ pt-PT:
           learn_about: "Saiba mais sobre os novos recursos"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_4":
+          "15_5":
             standard:
               new_features_html: >
-                A versão traz várias funcionalidades e melhorias para si, por exemplo <br> <ul class="%{list_styling_class}"> <li>Ativar o modo de programação automática.</li> <li>Definir os resultados dos pontos da ordem de trabalhos das reuniões.</li> <li>Gerar documentos PDF a partir da descrição de um pacote de trabalho.</li> <li>Gerir melhor um grande número de projetos com uma vista de listas de projetos melhorada.</li> <li>Utilizar a função de @-menção do utilizador quando responder a um comentário.</li> </ul>
+                A versão inclui diversas funcionalidades e melhorias para si, como o <br> <ul class="%{list_styling_class}"> <li>Filtro para descendentes (filhos e netos) de pacotes de trabalho.</li> <li>Tire partido de uma acessibilidade avançada no seletor de datas.</li> <li>Veja a % de conclusão incluída nas somas da tabela do pacote de trabalho.</li> <li>Inclua uma coluna para filhos nas tabelas de pacotes de trabalho.</li> <li>Melhor utilização do seletor de datas em ecrãs de dispositivos móveis.</li> <li>Exportações de PDF que correspondem à disposição do formulário configurada.</li> </ul>
     ical_sharing_modal:
       title: "Subscrever o calendário"
       inital_setup_error_message: "Ocorreu um erro ao recuperar os dados."
-      description: "Pode utilizar o URL (iCalendar) para subscrever este calendário num cliente externo e visualizar informações atualizadas sobre o pacote de trabalho a partir daí."
+      description: "Pode utilizar o URL (iCalendar) para subscrever este calendário num cliente externo e ver informações atualizadas sobre o pacote de trabalho a partir daí."
       warning: "Não partilhe este URL com outros utilizadores. Qualquer pessoa com este link poderá ver os detalhes do pacote de trabalho sem uma conta ou palavra-passe."
       token_name_label: "Onde irá utilizar isto?"
       token_name_placeholder: 'Escreva um nome, por exemplo, "Telefone"'
       token_name_description_text: 'Se subscrever este calendário a partir de vários dispositivos, este nome irá ajudá-lo a distinguir entre eles na sua lista de <a href="my/access_token", target="_blank">tokens de acesso</a>.'
       copy_url_label: "Copiar URL"
       ical_generation_error_text: "Ocorreu um erro ao gerar o URL do calendário."
-      success_message: 'O URL "%{name}" foi copiado com sucesso para a área de transferência. Cole-o no seu cliente de calendário para concluir a subscrição.'
+      success_message: 'O URL "%{name}" foi copiado com sucesso para a área de transferência. Cole-o no seu cliente de Calendários para concluir a subscrição.'
     label_activate: "Ativar"
     label_assignee: "Responsável"
     label_add_column_after: "Adicionar coluna após"
@@ -601,7 +601,7 @@ pt-PT:
           timeline: "Aqui pode <b>editar o seu plano de projeto</b>, criar novos pacotes de trabalho, tais como tarefas, marcos, fases e muito mais, bem como <b>adicionar dependências</b>. Todos os membros da equipa podem ver e atualizar o plano mais recente a qualquer momento."
         team_planner:
           overview: "O planeador de equipa permite atribuir tarefas visualmente aos membros da equipa e obter uma visão geral de quem está a trabalhar e no quê (onde)."
-          calendar: "O quadro de planeamento semanal ou quinzenal exibe todos os pacotes de trabalho atribuídos aos membros de sua equipa."
+          calendar: "O quadro de planeamento semanal ou quinzenal apresenta todos os pacotes de trabalho atribuídos aos membros da sua equipa."
           add_assignee: "Para começar, adicione responsáveis ao planeador da equipa."
           add_existing: "Pesquise pacotes de trabalho existentes e arraste-os para o planeador de equipa para atribuí-los instantaneamente a um membro da equipa e definir as datas de início e término."
           card: "Arraste os pacotes de trabalho horizontalmente para os mover para trás ou para frente no tempo, arraste as bordas para alterar as datas de início e término, e arraste verticalmente para uma linha diferente para atribuir a outro membro."
@@ -799,6 +799,7 @@ pt-PT:
       typeahead_placeholder: Procurar possíveis observadores
     relation_labels:
       parent: "Mãe"
+      child: "Secundário"
       children: "Filhos"
       relates: "Relacionado com"
       duplicates: "Repetidos"
@@ -828,7 +829,7 @@ pt-PT:
       add_new_child: "Criar novo filho"
       create_new: "Criar novo"
       add_existing: "Adicionar existente"
-      add_existing_child: "Adicionar filho existente"
+      add_existing_child: "Adicionar secundário"
       remove_child: "Remover filho"
       add_new_relation: "Criar nova relação"
       add_existing_relation: "Adicionar relação existente"

@@ -121,7 +121,8 @@ pt-PT:
       mapping_login: >
         Atributos SAML da resposta utilizados para o início de sessão.
       mapping_mail: >
-        Atributos SAML da resposta utilizados para o e-mail do utilizador.
+        Atributos SAML da resposta utilizados
+        para o e-mail do utilizador.
       mapping_firstname: >
         Atributos SAML da resposta utilizados para o nome indicado.
       mapping_lastname: >

@@ -57,6 +57,10 @@ zh-TW:
         start_time: 開始時間
         end_time: 完成時間
     models:
+      time_entry:
+        other: "時間項"
+      cost_entry:
+        other: "成本項"
       cost_type:
         other: "費用類別"
       time_entry_activity:
@@ -173,8 +177,6 @@ zh-TW:
   text_reassign_time_and_cost_entries: "將小時數和成本重新設定到工作項目中："
   text_warning_hidden_elements: "一些資料可能已排除在合併之外。"
   week: "週"
-  js:
-    text_are_you_sure: "是否確定？"
   api_v3:
     errors:
       validation:

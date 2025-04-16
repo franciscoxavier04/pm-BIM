@@ -358,10 +358,10 @@ pl:
           learn_about: "Dowiedz się więcej o nowych funkcjach"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_4":
+          "15_5":
             standard:
               new_features_html: >
-                Ta wersja wprowadza różne funkcje i ulepszenia, np. <br> <ul class="%{list_styling_class}"> <li>Włącz automatyczny tryb planowania.</li> <li>Ustaw wyniki punktów planu spotkania.</li> <li>Generuj dokumenty PDF na podstawie opisu pakietu roboczego.</li> <li>Lepiej zarządzaj dużą liczbą projektów dzięki ulepszonemu widokowi list projektów.</li> <li>Użyj @-wzmianki o użytkowniku, gdy go cytujesz, odpowiadając na komentarz.</li> </ul>
+                Wersja zawiera różne nowe funkcje i ulepszenia, np. <br> <ul class="%{list_styling_class}"> <li>Filtr elementów potomnych (podrzędnych i ich elementów podrzędnych) pakietów roboczych.</li> <li>Korzystaj z zaawansowanej dostępności w selektorze dat.</li> <li>Wyświetlanie % ukończenia w tabeli pakietów roboczych.</li> <li>Dołącz kolumnę elementów podrzędnych w tabelach pakietów roboczych.</li> <li>Poprawione używanie selektora dat na ekranach urządzeń mobilnych.</li> <li>Eksport w formacie PDF pasujący do skonfigurowanego układu formularza.</li> </ul>
     ical_sharing_modal:
       title: "Subskrybuj kalendarz"
       inital_setup_error_message: "Podczas pobierania danych wystąpił błąd."
@@ -801,6 +801,7 @@ pl:
       typeahead_placeholder: Szukaj możliwych obserwatorów
     relation_labels:
       parent: "Rodzic"
+      child: "Element podrzędny"
       children: "Dzieci"
       relates: "Powiązany z"
       duplicates: "Duplikaty"
@@ -830,7 +831,7 @@ pl:
       add_new_child: "Utwórz nowy podrzędny"
       create_new: "Utwórz nową"
       add_existing: "Dodaj istniejącą"
-      add_existing_child: "Dodaj istniejący podrzędny"
+      add_existing_child: "Dodaj element podrzędny"
       remove_child: "Usuń podrzędny"
       add_new_relation: "Utwórz nową relację"
       add_existing_relation: "Dodaj istniejącą relację"

@@ -133,11 +133,13 @@ de:
   label_recurring_meeting_restore: "Dieses Vorkommen wiederherstellen"
   label_recurring_meeting_schedule: "Terminplan"
   label_recurring_meeting_next_occurrence: "Nächstes Ereignis"
-  label_recurring_meeting_more: "Es gibt %{count} folgende Besprechungen (%{schedule})."
   label_recurring_meeting_no_end_date: "Es sind weitere Besprechungen geplant (%{schedule})."
-  label_recurring_meeting_more_singular: "Es gibt %{count} folgende Besprechung (%{schedule})."
-  label_recurring_meeting_more_past: "Es gibt %{count} weitere vergangene Besprechungen."
-  label_recurring_meeting_more_past_singular: "Es gibt %{count} weitere vergangene Besprechung."
+  label_recurring_meeting_more:
+    one: "There is one more scheduled meeting (%{schedule})."
+    other: "There are %{count} more scheduled meetings (%{schedule})."
+  label_recurring_meeting_more_past:
+    one: "There is one more past meeting."
+    other: "There are %{count} more past meetings."
   label_recurring_meeting_show_more: "Mehr anzeigen"
   label_recurring_meeting_series_create: "Terminserie erstellen"
   label_recurring_meeting_series_edit: "Terminserie bearbeiten"
@@ -215,8 +217,8 @@ de:
         new_date_time: "Neue(s) Datum/Zeit"
     label_mail_all_participants: "E-Mail an alle Teilnehmer senden"
     types:
-      classic: "Klassisch"
-      classic_text: "Organisieren Sie Ihre Besprechung und zugehöriges Protokoll in einem einzelnen Notizblock."
+      classic: "Klassisch (nicht unterstützt)"
+      classic_text: "Hinweis: Klassische Meetings werden in der nächsten Version von OpenProject entfernt."
       structured: "Dynamisch"
       one_time: "Einmalig"
       recurring: "Terminserie"
@@ -290,7 +292,7 @@ de:
       full_past: "%{base} um %{time}, endet am %{end_date}"
       never_ending: "%{base} um %{time}"
     open:
-      title: "Öffnen"
+      title: "Tagesordnung geöffnet"
       subtitle: >
         Offene Besprechungen haben Tagesordnungen, die bearbeitet werden können und im Bereich "Meine Meetings" der Teilnehmer angezeigt werden. Änderungen an der Vorlage für Besprechungsserien wirken sich nicht mehr auf diese bereits geöffneten Besprechungen aus.
       blankslate:
@@ -401,7 +403,7 @@ de:
   label_meeting_state_in_progress: "In Durchführung"
   label_meeting_reopen_action: "Besprechung wiedereröffnen"
   label_meeting_close_action: "Besprechung schließen"
-  label_meeting_in_progress_action: "Durchführung der Besprechung beginnen"
+  label_meeting_in_progress_action: "Besprechung starten"
   text_meeting_open_description: "Diese Besprechung ist offen. Sie können Tagesordnungspunkte hinzufügen oder entfernen und bearbeiten. Sobald die Tagesordnung fertig ist, wechseln Sie auf In Durchführung, um Ergebnisse zu dokumentieren."
   text_meeting_closed_description: "Diese Besprechung ist abgeschlossen. Sie können keine Tagesordnungspunkte mehr hinzufügen/entfernen."
   text_meeting_in_progress_description: "Diese Besprechung befindet sich in Durchführung. Sie können die Ergebnisse für jeden Tagesordnungspunkt dokumentieren, neu anordnen und neue Punkte hinzufügen. Sobald die Besprechung abgeschlossen ist, können Sie es als geschlossen markieren, um es zu sperren."

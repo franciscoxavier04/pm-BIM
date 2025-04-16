@@ -123,8 +123,16 @@ module Components
       container.click_button cancel_button_label
     end
 
+    def expect_save_button_enabled
+      expect(container).to have_button(save_button_label, disabled: false)
+    end
+
     def expect_save_button_disabled
       expect(container).to have_button(save_button_label, disabled: true)
+    end
+
+    def expect_cancel_button_enabled
+      expect(container).to have_button(cancel_button_label, disabled: false)
     end
 
     ##
@@ -186,14 +194,15 @@ module Components
     # Expect the given date to be visible and disabled
     def expect_disabled(date)
       label = date.strftime("%B %-d, %Y")
-      expect(page).to have_css(".flatpickr-day.flatpickr-disabled[aria-label='#{label}']")
+      expect(page).to have_css(".flatpickr-day.flatpickr-disabled[aria-label='#{label}']," \
+                               ".flatpickr-day.flatpickr-non-working-day[aria-label='#{label}']")
     end
 
     ##
     # Expect the given date to be visible and enabled
     def expect_not_disabled(date)
       label = date.strftime("%B %-d, %Y")
-      expect(page).to have_css(".flatpickr-day:not(.flatpickr-disabled)[aria-label='#{label}']")
+      expect(page).to have_css(".flatpickr-day:not(.flatpickr-disabled):not(.flatpickr-non-working-day)[aria-label='#{label}']")
     end
 
     protected

@@ -11,7 +11,7 @@
           when :simple
             render(MeetingAgendaItem::Title.new(f))
           when :work_package
-            render(MeetingAgendaItem::WorkPackage.new(f))
+            render(MeetingAgendaItem::WorkPackage.new(f, autofocus: @autofocus))
           end
         end
 

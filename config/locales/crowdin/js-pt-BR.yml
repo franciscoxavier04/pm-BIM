@@ -357,10 +357,10 @@ pt-BR:
           learn_about: "Saiba mais sobre os novos recursos"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_4":
+          "15_5":
             standard:
               new_features_html: >
-                A versão traz diversos recursos e melhorias para você, por exemplo: <br> <ul class="%{list_styling_class}"> <li>Ativar o modo de agendamento automático.</li> <li>Definir os resultados dos itens da pauta para reuniões.</li> <li>Gerar documentos em PDF a partir da descrição de um pacote de trabalho.</li> <li>Gerenciar melhor um grande número de projetos com uma visualização aprimorada da lista de projetos.</li> <li>Usar @menção de usuário ao responder com citação a um comentário.</li> </ul>
+                A nova versão traz várias funcionalidades e melhorias para você, por ex.: <br> <ul class="%{list_styling_class}"> <li>Filtro para descendentes (filhos e netos) de pacotes de trabalho.</li> <li>Aproveite a acessibilidade avançada no seletor de datas.</li> <li>Veja a % de Conclusão incluída nas somas da tabela de pacotes de trabalho.</li> <li>Inclua uma coluna para filhos nas tabelas de pacotes de trabalho.</li> <li>Melhor uso do seletor de datas em telas móveis.</li> <li>Exportações em PDF com o layout do formulário configurado.</li> </ul>
     ical_sharing_modal:
       title: "Assinar calendário"
       inital_setup_error_message: "Ocorreu um erro ao buscar dados."
@@ -798,6 +798,7 @@ pt-BR:
       typeahead_placeholder: Procurar possíveis observadores
     relation_labels:
       parent: "Pai"
+      child: "Filho"
       children: "Filhos"
       relates: "Relacionado a"
       duplicates: "Duplicados"
@@ -827,7 +828,7 @@ pt-BR:
       add_new_child: "Criar novo filho"
       create_new: "Criar novo"
       add_existing: "Adicionar existente"
-      add_existing_child: "Adicionar filho existente"
+      add_existing_child: "Adicionar filho"
       remove_child: "Remover filho"
       add_new_relation: "Criar nova relação"
       add_existing_relation: "Adicionar relação existente"

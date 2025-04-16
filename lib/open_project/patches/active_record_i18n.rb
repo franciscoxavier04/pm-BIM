@@ -37,12 +37,6 @@ module ActiveRecord
 
       options[:default] ||= :"activerecord.models.#{attr}"
 
-      if Rails.env.local?
-        def attr.humanize(*)
-          raise ArgumentError, "I18n translation missing for attribute #{self}"
-        end
-      end
-
       super
     end
   end

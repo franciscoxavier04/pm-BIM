@@ -34,7 +34,7 @@ Here is an example of the date picker in OpenProject. This is what you will see:
 
 1. The **information banner** on top of date picker will state what scheduling mode is selected and if there are possible date constraints due to existing work package relations. The message will vary depending on the scheduling mode selected and the existing work package relations. This banner is only shown for work packages that have relations
 2. The **show relations** button on the banner will open a Gantt chart view showing an overview of all directly-related work packages
-3. The **Relation tabs** let you see a list of relevant relations for the current work pacakges: *predecessors*, *successors* or *children*
+3. The **Relation tabs** let you see a list of relevant relations for the current work packages: *predecessors*, *successors* or *children*
 4. The **scheduling mode toggle** allows you to switch between [manual](#manual-scheduling) and [automatic](#automatic-scheduling) modes
 5. The **Working days only** switch, that lets you switch between counting only working days or all days to the total duration
 6. **Start date**, **finish date** and **duration** input fields
@@ -114,11 +114,18 @@ Automatic scheduling is useful for automatically scheduling work packages with e
 
 A work package can only be in automatic scheduling mode if it has predecessors or children.
 
-An automatically-scheduled work package with predecessors will automatically start one working day after the finish date of the nearest predecessor. You can still enter a duration (and effectively change the finish date). This temporal relationship is maintained even if the dates of the predecessor are changed; for example, if the predecessor is moved forwards or backwards in time (either because the finish date or duration changed), the automatically-scheduled work package will also change its start date so it starts the day after the new date. This makes it possible to create a dependable chain of automatically scheduled work packages that automatically adjust to planning changes. 
+An automatically-scheduled work package with predecessors will automatically start one working day after the finish date of the nearest predecessor.  
+
+You can adjust the dates of the successor by either
+
+- changing its **duration** or
+- by adjusting its **finish date**. You can do this by either typing in a new date manually or clicking on a new date in the date picker. Please note that the dates before the automatically derived start date will be inactive, i.e. the finish date must be set on or after the start date. 
+
+This temporal relationship is maintained even if the dates of the predecessor are changed; for example, if the predecessor is moved forwards or backwards in time (either because the finish date or duration changed), the automatically-scheduled work package will also change its start date so it starts the day after the new date. This makes it possible to create a dependable chain of automatically scheduled work packages that automatically adjust to planning changes. 
 
 ![A switch on the date picker allows you to enable automatic scheduling mode in OpenProject](openproject_user_guide_date_picker_banner_automatic_mode.png)
 
-When switching from manual to automatic scheduling, a warning banner notifies you the dates are not determined by child work packages. This allows automatic date setting based on existing relations.
+When switching from manual to automatic scheduling, a warning banner notifies you the dates are now determined by predecessor or child work packages. This allows automatic date setting based on existing relations.
 
 ![A blue banner informing the user that the worked package is automatically scheduled](openproject_user_guide_date_picker_banner_automatic_mode_relations_banner.png)
 

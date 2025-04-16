@@ -230,7 +230,7 @@ zh-CN:
       storage_oauth: Nextcloud OAuth
       storage_provider: 存储提供商
     health:
-      checked: 上次检查于 %{datetime}
+      checked: 上次检查于 %{datetime} 
       connection_validation:
         action: 重新检查连接
         app_version_mismatch: 不受支持的集成 OpenProject 应用程序版本。请更新您的 Nextcloud 服务器。
@@ -242,6 +242,9 @@ zh-CN:
         host_not_found: 在配置的主机 URL 中找不到 Nextcloud 服务器。请检查配置。
         missing_dependencies: '文件存储缺少一个必需的依赖项。请添加以下依赖项： %{dependency}.'
         not_configured: 无法验证连接。请先完成配置。
+        oauth_request_not_found: OpenProject 无法使用当前登录用户找到 Nextcloud 的根文件夹。请检查服务器日志以获取更多信息。
+        oauth_request_unauthorized: 当前用户未被授权查看 Nextcloud 的主文件夹，或者我们无法获取令牌。请检查服务器日志以获取进一步的信息。
+        oauth_token_missing: OpenProject 无法测试与 Nextcloud 的用户级别通信，因为当前用户没有令牌。
         oidc_cant_acquire_token: 您的 OpenID Connect 设置未提供必要的受众，也不提供令牌交换功能。请查阅我们的文档以获取更多信息。
         oidc_cant_exchange_token: 似乎您的 OpenID Connect 提供商上的 Token Exchange 设置存在问题。请检查其配置并重试。
         oidc_cant_refresh_token: 尝试检查您对存储的访问时出错。请检查服务器日志以获取更多信息。
@@ -261,7 +264,7 @@ zh-CN:
       label_warning: 警告
       project_folders:
         subtitle: 自动托管项目文件夹
-      since: 自从 %{datetime}
+      since: 自从 %{datetime} 
       title: 健康状态
     health_email_notifications:
       description_subscribed: 所有管理员都会收到该存储的健康状态电子邮件通知。

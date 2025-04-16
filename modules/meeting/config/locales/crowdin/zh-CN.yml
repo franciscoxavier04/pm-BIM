@@ -132,11 +132,11 @@ zh-CN:
   label_recurring_meeting_restore: "恢复此事件"
   label_recurring_meeting_schedule: "日程"
   label_recurring_meeting_next_occurrence: "下一个事件"
-  label_recurring_meeting_more: "还有至少 %{count} 个预定会议 (%{schedule})。"
   label_recurring_meeting_no_end_date: "还有更多预定会议 (%{schedule})。"
-  label_recurring_meeting_more_singular: "还有至少 %{count} 个预定会议 (%{schedule})。"
-  label_recurring_meeting_more_past: "有至少 %{count} 个过往会议。"
-  label_recurring_meeting_more_past_singular: "有至少 %{count} 个过往会议。"
+  label_recurring_meeting_more:
+    other: "还有 %{count} 个已安排的会议 (%{schedule}）。"
+  label_recurring_meeting_more_past:
+    other: "还有 %{count} 次过往会议。"
   label_recurring_meeting_show_more: "显示更多"
   label_recurring_meeting_series_create: "创建会议系列"
   label_recurring_meeting_series_edit: "编辑会议系列"
@@ -213,8 +213,8 @@ zh-CN:
         new_date_time: "新日期/时间"
     label_mail_all_participants: "发送电子邮件给所有参与者"
     types:
-      classic: "经典"
-      classic_text: "将您的会议组织成一个单一格式的文本议程和协议。"
+      classic: "经典(不支持)"
+      classic_text: "注意：经典会议将在下一版 OpenProject 中删除。"
       structured: "结构化"
       one_time: "动态"
       recurring: "定期"
@@ -286,7 +286,7 @@ zh-CN:
       full_past: "%{base} 在 %{time}，于 %{end_date}结束"
       never_ending: "%{base} 在 %{time}"
     open:
-      title: "打开"
+      title: "议程已打开"
       subtitle: >
         公开会议的议程可以编辑，并显示在个人用户的 "我的会议 "部分。更改会议系列模板不会影响已经发生的会议事件。
       blankslate:
@@ -397,7 +397,7 @@ zh-CN:
   label_meeting_state_in_progress: "进行中"
   label_meeting_reopen_action: "重新开放会议"
   label_meeting_close_action: "关闭会议"
-  label_meeting_in_progress_action: "标记为进行中"
+  label_meeting_in_progress_action: "开始会议"
   text_meeting_open_description: "本次会议已打开。您可以添加/删除议程项目并随时编辑。 一旦议程就绪，就将其记载为正在取得的成果。"
   text_meeting_closed_description: "此会议已关闭。您不能再添加/移除议程项目。"
   text_meeting_in_progress_description: "本次会议正在进行中。您可以记录每个议程项目的结果，重新排列，甚至添加新的项目。 一旦会议完成，您可以将其标记为关闭以便锁定。"

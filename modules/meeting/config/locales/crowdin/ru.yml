@@ -53,7 +53,7 @@ ru:
       meeting_section:
         title: "Заголовок"
       recurring_meeting:
-        frequency: "Периодичность"
+        frequency: "Частота"
         interval: "Промежуток"
         start_date: "Начинается"
         start_time: "Время начала"
@@ -135,11 +135,17 @@ ru:
   label_recurring_meeting_restore: "Восстановить это событие"
   label_recurring_meeting_schedule: "Расписание"
   label_recurring_meeting_next_occurrence: "Следующее событие"
-  label_recurring_meeting_more: "Есть еще %{count} запланированных совещаний (%{schedule})."
   label_recurring_meeting_no_end_date: "Есть и другие запланированные совещания (%{schedule})."
-  label_recurring_meeting_more_singular: "Есть еще %{count} запланированное совещание (%{schedule})."
-  label_recurring_meeting_more_past: "Есть еще %{count} прошедших совещаний."
-  label_recurring_meeting_more_past_singular: "Есть еще %{count} прошедшее совещание."
+  label_recurring_meeting_more:
+    one: "Есть еще одно запланированное совещание (%{schedule})."
+    few: "There are %{count} more scheduled meetings (%{schedule})."
+    many: "There are %{count} more scheduled meetings (%{schedule})."
+    other: "Есть еще %{count} запланированных совещаний (%{schedule})."
+  label_recurring_meeting_more_past:
+    one: "Есть еще одно прошедшее совещание."
+    few: "There are %{count} more past meetings."
+    many: "There are %{count} more past meetings."
+    other: "Есть еще %{count} прошедших совещаний."
   label_recurring_meeting_show_more: "Показать еще"
   label_recurring_meeting_series_create: "Создать серию совещаний"
   label_recurring_meeting_series_edit: "Изменить серию совещаний"
@@ -219,8 +225,8 @@ ru:
         new_date_time: "Новые дата/время"
     label_mail_all_participants: "Отправить письмо всем участникам"
     types:
-      classic: "Классический"
-      classic_text: "Организуйте свое совещание в виде единой текстовой повестки дня и протокола, которые можно отформатировать."
+      classic: "Классический (не поддерживается)"
+      classic_text: "Примечание: совещания классического типа будут удалены в следующей версии OpenProject."
       structured: "Структурированная"
       one_time: "Однократная"
       recurring: "Периодичность"
@@ -273,8 +279,8 @@ ru:
     frequency:
       x_daily:
         one: "Каждый день"
-        few: "Every %{count} days"
-        many: "Every %{count} days"
+        few: "Каждые %{count} дня"
+        many: "Каждые %{count} дней"
         other: "Каждые %{count} дней"
       x_weekly:
         one: "Каждую неделю"
@@ -298,7 +304,7 @@ ru:
       full_past: "%{base} в %{time}, закончился %{end_date}"
       never_ending: "%{base} в %{time}"
     open:
-      title: "Открыть"
+      title: "Повестка дня открыта"
       subtitle: >
         Открытые совещания имеют повестки дня, которые могут быть отредактированы и показаны в разделе «Мои совещания». Изменения в шаблоне серии совещаний не влияют на уже открытые совещания.
       blankslate:
@@ -409,7 +415,7 @@ ru:
   label_meeting_state_in_progress: "В процессе"
   label_meeting_reopen_action: "Открыть совещание заново"
   label_meeting_close_action: "Закрыть совещание"
-  label_meeting_in_progress_action: "Отметить как в процессе"
+  label_meeting_in_progress_action: "Начать совещание"
   text_meeting_open_description: "Совещание открыто. Вы можете добавлять/удалять пункты повестки дня и редактировать их так, как захотите. Как только повестка дня будет готова, отметьте ее как \"в процессе\" для документирования результатов."
   text_meeting_closed_description: "Это совещание является закрытым. Вы не можете добавлять/удалять пункты повестки."
   text_meeting_in_progress_description: "Совещание в процессе. Вы можете документировать результаты для каждого пункта повестки дня, переупорядочить их и даже добавить новые. После завершения совещания вы можете пометить его как закрытое для блокировки."

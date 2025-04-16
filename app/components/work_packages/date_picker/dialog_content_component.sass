@@ -22,8 +22,10 @@ $body-height: 460px
 
 @media screen and (max-width: $breakpoint-sm)
   .wp-datepicker-dialog
-    &--UnderlineNav
+    &--UnderlineNav,
+    &--date-picker-instance
       display: none !important
+
     &--body
       padding-top: var(--stack-padding-normal)
       min-height: unset

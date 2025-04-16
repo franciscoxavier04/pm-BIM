@@ -28,18 +28,22 @@
       activity_tab:
         no_results_title_text: No activity to display
         no_results_description_text: 'Choose "Show everything" to show all activity and comments'
-        label_activity_show_all: "Show everything"
-        label_activity_show_only_comments: "Show comments only"
-        label_activity_show_only_changes: "Show changes only"
+        label_activity_show_all: "Vis alt"
+        label_activity_show_only_comments: "Vis kommentarer"
+        label_activity_show_only_changes: "Vis endringer"
         label_sort_asc: "Newest at the bottom"
-        label_sort_desc: "Newest on top"
+        label_sort_desc: "Nyheter øverst"
         label_type_to_comment: "Add a comment. Type @ to notify people."
         label_submit_comment: "Submit comment"
-        changed_on: "changed on"
+        label_who: Hvem?
+        changed_on: "Endret dato"
         created_on: "created this on"
         changed: "changed"
         created: "opprettet"
         commented: "kommentert"
+        restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: Det er for tiden ingen utvidelser installert.
@@ -365,14 +369,14 @@
         no_results_title_text: Det er ingen egendefinerte felt tilgjengelig.
       life_cycle:
         header:
-          title: "Project lifecycle"
-          description_html: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
-        non_defined: "Neither stages nor gates are currently defined."
-        section_header: "Stages and gates"
+          title: "Project life cycle"
+          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
+        non_defined: "Ingen faser definert."
+        section_header: "Faser"
         step:
           use_in_project: "Use %{step} in this project"
         filter:
-          label: "Search project stage or gate"
+          label: "Search project phase"
       project_custom_fields:
         header:
           title: "Prosjektegenskaper"
@@ -396,8 +400,8 @@
       storage:
         no_results_title_text: Det er ingen ekstra registrert diskplass brukt av dette prosjektet.
       work_package_priorities:
-        new_label: "New priority"
-  project_stage:
+        new_label: "Ny prioritet"
+  project_phase:
     working_days_count:
       one: "Duration: %{count} working day"
       other: "Duration: %{count} working days"
@@ -589,7 +593,7 @@
         is_readonly: "Kun lesetilgang"
         excluded_from_totals: "Unntatt fra totaler"
   themes:
-    dark: "Dark"
+    dark: "Mørk"
     light: "Lyst"
     light_high_contrast: "Lys høy kontrast"
   types:
@@ -617,8 +621,12 @@
           caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
         pattern:
           label: "Subject pattern"
-          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
-          insert_as_text: "Add as text: \"%{word}\""
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Prosjekt"
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -751,9 +759,9 @@
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      new_child: "New child"
+      new_child: "Create new child"
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
-      existing_child: "Existing child"
+      child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
       label_blocks_singular: "blokkeringer"
@@ -832,7 +840,7 @@
       attachment:
         attachment_content: "Vedleggets innhold"
         attachment_file_name: "Vedleggets filnavn"
-        content_type: "Content-type"
+        content_type: "Innholdstype"
         downloads: "Nedlastinger"
         file: "Fil"
         filename: "Fil"
@@ -841,7 +849,7 @@
         attribute_name: "Egenskap"
         help_text: "Hjelpetekst"
       capability:
-        context: "Context"
+        context: "Kontekst"
       changeset:
         repository: "Pakkebrønn"
       comment:
@@ -945,17 +953,23 @@
       project_custom_field:
         is_required: "Påkrevd for alle prosjekter"
         custom_field_section: Seksjon
-      project/life_cycle_step:
-        definition: "Definition"
-      project/life_cycle_step_definition:
+      project/phase:
+        date_range: "Date range"
+        definition: "Definisjon"
+      project/phase_definition:
         name: "Navn"
-        color: "Farge"
+        color: "Color"
+        start_gate: "Start phase gate"
+        start_gate_name: "Start phase gate name"
+        finish_gate: "Finish phase gate"
+        finish_gate_name: "Finish phase gate name"
       query:
         sums: "Sums"
         columns: "Kolonner"
         column_names: "Kolonner"
         relations_to_type_column: "Forbindelser til %{type}"
         relations_of_type_column: "%{type} relasjoner"
+        child_work_packages: "Child work packages"
         group_by: "Gruppèr resultater etter"
         sort_by: "Sort results by"
         filters: "Filtre"
@@ -1038,6 +1052,7 @@
         auto_hide_popups: "Auto-skjul suksessvarsler"
         warn_on_leaving_unsaved: "Varsle meg når jeg forlater en arbeidspakke med ulagrede endringer"
         theme: "Modus"
+        time_zone: "Tidssone"
         mode_guideline: "Noen moduser vil overskrive tilpassede temafarger for tilgjengelighet og leselighet. For å få fullstendig tilpasset tema, velg lys modus."
         daily_reminders: "Daily reminders"
         workdays: "Arbeidsdager"
@@ -1049,7 +1064,9 @@
       wiki_page:
         parent_title: "Overordnet side"
         redirect_existing_links: "Omdirigere eksisterende lenker"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Begynnelsen av innsettingen"
         begin_deletion: "Begynnelsen av slettingen"
         children: "Underelementer"
@@ -1065,6 +1082,7 @@
           title: "Arbeidsdager"
           false: "kun arbeidsdager"
           true: "Inkluder arbeidsfrie dager"
+        journal_restricted: Restricted Journal
         notify: "Varsle" #used in custom actions
         parent: "Overordnet"
         parent_issue: "Overordnet"
@@ -1108,6 +1126,7 @@
         empty: "kan ikke være tomt."
         even: "må være partall"
         exclusion: "er reservert."
+        feature_disabled: is not available.
         file_too_large: "er for stor (maks størrelse er %{count} Bytes)."
         filter_does_not_exist: "filter finnes ikke."
         format: "samsvarer ikke med det forventede formatet '%{expected}'."
@@ -1244,42 +1263,12 @@
           attributes:
             project_ids:
               blank: "Velg et prosjekt."
-        project/life_cycle_step_definition:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "must be either Project::StageDefinition or Project::GateDefinition"
-              type_and_class_name_mismatch: "must match the instantiated class name"
-        project/gate_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "must be a Project::GateDefinition"
-        project/stage_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "must be a Project::StageDefinition"
-        project/life_cycle_step:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "must be either Project::Stage or Project::Gate"
-              must_be_a_stage: "must be a Project::Stage"
-              must_be_a_gate: "must be a Project::Gate"
-              type_and_class_name_mismatch: "must match the instantiated class name"
-        project/gate:
-          attributes:
-            base:
-              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
-            type:
-              type_and_class_name_mismatch: "must be a Project::Gate"
-            date:
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
-        project/stage:
+        project/phase:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "start date must be before the end date."
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+              start_date_must_be_before_finish_date: "start date must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
               incomplete: "is incomplete."
-            type:
-              type_and_class_name_mismatch: "must be a Project::Stage"
         query:
           attributes:
             project:
@@ -1510,8 +1499,6 @@
         other: "Varsler"
       placeholder_user: "Plassholder bruker"
       project: "Prosjekt"
-      project/gate_definition: "Gate"
-      project/stage_definition: "Stage"
       project_query:
         one: "Project list"
         other: "Prosjektlister"
@@ -1570,18 +1557,26 @@
       changeset: "Endringssett"
       message: "Forum"
       news: "Nyheter"
-      project_attribute: "Prosjekt egenskaper"
+      project_details: "Project details"
       subproject: "Inkluder underprosjekter"
       time_entry: "Tid brukt"
       wiki_edit: "Wiki"
       work_package: "Arbeidspakker"
+    project_phase:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
   #common attributes of all models
   attributes:
     active: "Aktiv"
     assigned_to: "Deltaker"
     assignee: "Utførende"
     attachments: "Vedlegg"
-    actor: "Actor"
+    actor: "Aktør"
     action: "Handling"
     author: "Forfatter"
     avatar: "Profilbilde"
@@ -1605,6 +1600,7 @@
     derived_due_date: "Utledet Sluttdato"
     derived_estimated_hours: "Totalt arbeid"
     derived_start_date: "Utledet startdato"
+    direction: "Direction"
     display_sums: "Vis summer"
     due_date: "Sluttdato"
     estimated_hours: "Arbeid"
@@ -1669,6 +1665,7 @@
     version: "Versjon"
     visible: "Synlig"
     work_package: "Arbeidspakke"
+    work_package_id: "Arbeidspakke"
   backup:
     failed: "Sikkerhetskopiering mislyktes"
     label_backup_token: "Sikkerhetskopieringsnøkkel"
@@ -1932,7 +1929,7 @@
         one: "time"
         other: " timer"
       day:
-        one: "day"
+        one: "dag"
         other: "dager"
   description_active: "Aktiv?"
   description_attachment_toggle: "Vis/Skjul vedlegg"
@@ -1972,7 +1969,7 @@
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
-        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
+        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Tilpass skjemakonfigurasjonen med disse ekstra utvidelsene:"
         add_groups: "Legg til nye attributtgrupper"
@@ -2042,7 +2039,7 @@
     changeset: "Changeset ble redigert"
     message: Meldingen ble redigert
     news: Nyheter
-    project_attributes: "Prosjektets egenskaper redigert"
+    project_details: "Project details edited"
     project: "Prosjektet er redigert"
     projects: "Prosjektet er redigert"
     reply: Besvart
@@ -2121,6 +2118,8 @@
     your_work_packages_export: "Arbeidspakker eksporteres"
     succeeded: "Eksport fullført"
     failed: "Det oppstod en feil ved forsøk på å eksportere arbeidspakker: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2165,6 +2164,12 @@
         caption: Break line between words for better layout and justification.
       hyphenation_language:
         label: Language and hyphenation
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext tilgjengelig (valgfritt)"
@@ -2709,7 +2714,7 @@
   label_none_parentheses: "(ingen)"
   label_not_contains: "inneholder ikke"
   label_not_equals: "er ikke"
-  label_life_cycle_step_plural: "Project lifecycle"
+  label_life_cycle_step_plural: "Project life cycle"
   label_on: "på"
   label_operator_all: "er ikke tom"
   label_operator_none: "er tom"
@@ -2771,7 +2776,7 @@
   label_project_new: "Nytt prosjekt"
   label_project_plural: "Prosjekter"
   label_project_list_plural: "Prosjektlister"
-  label_project_lifecycle: "Project lifecycle"
+  label_project_life_cycle: "Project life cycle"
   label_project_attributes_plural: "Prosjektegenskaper"
   label_project_custom_field_plural: "Prosjektegenskaper"
   label_project_settings: "Prosjektinnstillinger"
@@ -3275,6 +3280,7 @@
   permission_add_project: "Opprett prosjekt"
   permission_add_work_package_attachments: "Legg til vedlegg"
   permission_add_work_package_attachments_explanation: "Tillater å legge til vedlegg uten å redigere arbeidspakke-tillatelse"
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "Arkiver prosjekt"
   permission_create_user: "Opprett brukere"
   permission_manage_user: "Rediger brukere"
@@ -3303,12 +3309,15 @@
   permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Rediger arbeidspakker"
   permission_edit_messages: "Rediger meldinger"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "Edit own comments"
   permission_edit_own_messages: "Rediger egne meldinger"
   permission_edit_own_time_entries: "Rediger egne tidsrapporter"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Rediger prosjekt"
   permission_edit_project_attributes: "Rediger prosjektattributter"
-  permission_edit_project_stages_and_gates: "Edit project stages and gates"
+  permission_edit_project_phases: "Edit project phases"
   permission_edit_reportings: "Rediger rapporteringer"
   permission_edit_time_entries: "Rediger tidslogger for andre brukere"
   permission_edit_timelines: "Rediger tidslinjer"
@@ -3338,14 +3347,15 @@
   permission_search_project: "Søk i prosjekt"
   permission_select_custom_fields: "Velg egendefinerte felt"
   permission_select_project_custom_fields: "Velg prosjektegenskaper"
-  permission_select_project_life_cycle: "Select project stages and gates"
-  permission_select_project_life_cycle_explanation: "Activate/Deactivate the stages and gates in a project. Enables the user to select the lifecycle appropriate for the project as inactive stages and gates will not be visible in the project overview page nor the project list."
+  permission_select_project_phases: "Select project phases"
+  permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the life cycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "Velg prosjektmoduler"
   permission_share_work_packages: "Del arbeidspakker"
   permission_manage_types: "Velg typer"
   permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "Vis prosjekter"
   permission_view_changesets: "Se revideringer av lagringssteder i OpenProject"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "Vis statistikk over forfatterbidrag"
   permission_view_dashboards: "Vis dashbord"
   permission_view_work_package_watchers: "Vis liste over overvåkere"
@@ -3364,7 +3374,7 @@
   permission_work_package_assigned_explanation: "Arbeidspakker kan tildeles brukere og grupper med denne rollen i det respektive prosjektet"
   permission_view_project_activity: "Vis prosjektaktivitet"
   permission_view_project_attributes: "Vis prosjektattributter"
-  permission_view_project_stages_and_gates: "View project stages and gates"
+  permission_view_project_phases: "View project phases"
   permission_save_bcf_queries: "Lagre BCF-spørringer"
   permission_manage_public_bcf_queries: "Administrere offentlige BCF-spørringer"
   permission_edit_attribute_help_texts: "Rediger hjelpetekster for egenskap"
@@ -3389,6 +3399,10 @@
       project_verification: "Skriv inn prosjektets navn %{name} for å bekrefte slettingen."
       subprojects_confirmation: "Underprosjekt(ene): %{value} vil også bli slettet."
       title: "Slett prosjektet %{name}"
+    filters:
+      project_phase: "Project phase: %{phase}"
+      project_phase_any: "Project phase: Any"
+      project_phase_gate: "Project phase gate: %{gate}"
     identifier:
       warning_one: Medlemmer av prosjektet må relokalisere prosjektets arkiv.
       warning_two: Eksisterende koblinger til prosjektet vil ikke lenger fungere.
@@ -3533,6 +3547,9 @@
     manual: "set to Manual"
     automatic: "set to Automatic"
   search_input_placeholder: "Søk..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
     Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
@@ -3765,27 +3782,27 @@
       new:
         heading: "Ny egenskap"
         description: "Endringer i denne prosjektegenskapen gjenspeiles i alle prosjekter der det er aktivert. Påkrevde egenskaper kan ikke deaktiveres per prosjekt."
-    project_life_cycle_step_definitions:
-      heading: "Project lifecycle"
-      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Legg til"
-      label_add_description: "Add lifecycle definition"
-      label_add_stage: "Stage"
-      label_add_gate: "Gate"
+    project_phase_definitions:
+      heading: "Project life cycle"
+      heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
+      label_add: "Add"
+      label_add_description: "Add life cycle definition"
       filter:
-        label: "Search project stage or gate"
-      section_header: "Stages and gates"
-      non_defined: "Neither stages nor gates are currently defined."
+        label: "Search project phase"
+      section_header: "Phases"
+      non_defined: "No phases are currently defined."
+      phase_gates: "Phase gates"
       new:
-        description: "Changes to this project step will be reflected in all projects where it is enabled."
-      new_stage:
-        heading: "New stage"
-      new_gate:
-        heading: "New gate"
-      edit_stage:
-        heading: "Edit stage"
-      edit_gate:
-        heading: "Edit gate"
+        description: "Changes to this project phase will be reflected in all projects where it is enabled."
+        heading: "New Phase"
+      edit:
+        heading: "Edit Phase"
+      both_gate: "Start and finish gate"
+      no_gate: "No gate"
+      start_gate: "Start gate"
+      start_gate_caption: "Add a gate with the start date of the phase"
+      finish_gate: "Finish gate"
+      finish_gate_caption: "Add a gate with the end date of the phase"
     projects:
       missing_dependencies: "Prosjektmodul %{module} ble valgt, og denne avhenger av %{dependencies}. Du må også sjekke disse avhengighetene."
       section_new_projects: "Innstillinger for nye prosjekter"
@@ -3798,6 +3815,8 @@
     working_days:
       section_work_week: "Arbeidsuke"
       section_holidays_and_closures: "Ferier og lukking"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Rabatt"
     plain: "Ren tekst"
@@ -3819,7 +3838,7 @@
   text_are_you_sure_continue: "Er du sikker på at du vil fortsette?"
   text_are_you_sure_with_children: "Slette arbeidspakken og alle underordnede arbeidspakker?"
   text_are_you_sure_with_project_custom_fields: "Hvis du sletter dette attributtet, slettes også dets verdier i alle prosjekter. Er du sikker på at du vil gjøre dette?"
-  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this phase will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Tildel til prosjektet"
   text_form_configuration: >
     Du kan tilpasse hvilke felt som vises i skjemaer for arbeidspakker. Du kan fritt gruppere feltene for å reflektere behovene for ditt domene.

@@ -357,10 +357,10 @@ de:
           learn_about: "Erfahren Sie mehr über die neuen Funktionen"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_4":
+          "15_5":
             standard:
               new_features_html: >
-                Das Release bringt verschiedene Funktionen und Verbesserungen für Sie, z.B. <br> <ul class="%{list_styling_class}"> <li>Automatischen Terminplanungsmodus aktivieren.</li> <li>Tagesordnungspunkte für Besprechungen festlegen.</li> <li>PDF-Dokumente aus einer Arbeitspaketbeschreibung generieren.</li> <li>Mit einer verbesserten Projektlistenansicht eine große Anzahl von Projekten besser verwalten.</li> <li>@-Erwähnung der Nutzer:innen, wenn auf einen Kommentar geantwortet wird.</li> </ul>
+                Das Release bringt Ihnen verschiedene Funktionen und Verbesserungen, z. B. <br> <ul class="%{list_styling_class}"> <li>Filtern nach untergeordneten Arbeitspaketen (Kinder und Kindes-Kinder).</li> <li>Profitieren Sie von der verbesserten Barrierefreiheit im Datumswähler.</li> <li>"% Vollständig" als den Arbeitspaket-Tabellensumme auswählbar.</li> <li>Fügen Sie eine Spalte für Kinder in Arbeitspakettabellen ein.</li> <li>Benutzen Sie die native Datumsauswahl auf mobilen Endgeräten.</li> <li>PDF-Export gemäß des konfigurierten Formularlayouts.</li> </ul>
     ical_sharing_modal:
       title: "Kalender abonnieren"
       inital_setup_error_message: "Beim Abrufen der Daten ist ein Fehler aufgetreten."
@@ -798,6 +798,7 @@ de:
       typeahead_placeholder: Nach möglichen Beobachtern suchen
     relation_labels:
       parent: "Übergeordnetes Arbeitspaket"
+      child: "Kind"
       children: "Untergeordnete Arbeitspakete"
       relates: "Verwandt mit"
       duplicates: "Dupliziert"
@@ -827,7 +828,7 @@ de:
       add_new_child: "Neue Unteraufgabe"
       create_new: "Neu erstellen"
       add_existing: "Bestehende hinzufügen"
-      add_existing_child: "Unteraufgabe zuweisen"
+      add_existing_child: "Kind hinzufügen"
       remove_child: "Unteraufgabe entfernen"
       add_new_relation: "Neue Beziehung erstellen"
       add_existing_relation: "Bestehende Beziehung hinzufügen"

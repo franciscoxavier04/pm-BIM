@@ -358,10 +358,10 @@ it:
           learn_about: "Scopri di più sulle nuove funzionalità"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_4":
+          "15_5":
             standard:
               new_features_html: >
-                Questa versione offre diverse funzionalità e miglioramenti, ad esempio <br> <ul class="%{list_styling_class}"> <li>Abilita la modalità di pianificazione automatica.</li> <li>Imposta i risultati dei punti all'ordine del giorno per le riunioni.</li> <li>Genera documenti PDF da una descrizione di macro-attività.</li> <li>Gestisci meglio un gran numero di progetti con una visualizzazione migliorata degli elenchi di progetti.</li> <li>Utilizza la menzione di un'utente con la chiocciola @ per citarlo nella risposta a un commento.</li> </ul>
+                Questa versione offre diverse funzionalità e miglioramenti, ad esempio <br> <ul class="%{list_styling_class}"> <li>Filtro per discendenti (figli e nipoti) della macro-attività.</li> <li>Approfitta dell'accessibilità avanzata nel selettore data.</li> <li>Visualizza la % di completamento inclusa nelle somme delle tabelle delle macro-attività.</li> <li>Includi una colonna per i figli nelle tabelle delle macro-attività.</li> <li>Utilizza meglio il selettore data nelle schermate dei dispositivi mobili.</li> <li>Esportazioni PDF corrispondenti al layout del modulo configurato.</li> </ul>
     ical_sharing_modal:
       title: "Iscriviti al calendario"
       inital_setup_error_message: "Si è verificato un errore recuperando i dati."
@@ -799,6 +799,7 @@ it:
       typeahead_placeholder: Ricerca possibili osservatori
     relation_labels:
       parent: "Superiore"
+      child: "Figlio"
       children: "Figli"
       relates: "Riferito a"
       duplicates: "Duplica"
@@ -828,7 +829,7 @@ it:
       add_new_child: "Crea nuovo figlio"
       create_new: "Crea nuovo"
       add_existing: "Aggiungi esistente"
-      add_existing_child: "Aggiungi figlio esistente"
+      add_existing_child: "Aggiungi figlio"
       remove_child: "Rimuovi figlio"
       add_new_relation: "Crea nuova relazione"
       add_existing_relation: "Aggiungere relazione esistente"

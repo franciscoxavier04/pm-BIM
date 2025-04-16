@@ -35,11 +35,15 @@ bg:
         label_sort_desc: "Newest on top"
         label_type_to_comment: "Add a comment. Type @ to notify people."
         label_submit_comment: "Submit comment"
+        label_who: Who?
         changed_on: "changed on"
         created_on: "created this on"
         changed: "changed"
         created: "created"
         commented: "commented"
+        restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: В момента няма инсталирани приставки.
@@ -365,14 +369,14 @@ bg:
         no_results_title_text: В момента няма налични потребителски полета.
       life_cycle:
         header:
-          title: "Project lifecycle"
-          description_html: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
-        non_defined: "Neither stages nor gates are currently defined."
-        section_header: "Stages and gates"
+          title: "Project life cycle"
+          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
+        non_defined: "No phases are currently defined."
+        section_header: "Phases"
         step:
           use_in_project: "Use %{step} in this project"
         filter:
-          label: "Search project stage or gate"
+          label: "Search project phase"
       project_custom_fields:
         header:
           title: "Атрибути на проекта"
@@ -397,7 +401,7 @@ bg:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
       work_package_priorities:
         new_label: "New priority"
-  project_stage:
+  project_phase:
     working_days_count:
       one: "Duration: %{count} working day"
       other: "Duration: %{count} working days"
@@ -618,8 +622,12 @@ bg:
           caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
         pattern:
           label: "Subject pattern"
-          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
-          insert_as_text: "Add as text: \"%{word}\""
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -752,9 +760,9 @@ bg:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      new_child: "New child"
+      new_child: "Create new child"
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
-      existing_child: "Existing child"
+      child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
       label_blocks_singular: "блокировки"
@@ -946,17 +954,23 @@ bg:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Раздел
-      project/life_cycle_step:
+      project/phase:
+        date_range: "Date range"
         definition: "Definition"
-      project/life_cycle_step_definition:
-        name: "Име"
-        color: "Цвят"
+      project/phase_definition:
+        name: "Name"
+        color: "Color"
+        start_gate: "Start phase gate"
+        start_gate_name: "Start phase gate name"
+        finish_gate: "Finish phase gate"
+        finish_gate_name: "Finish phase gate name"
       query:
         sums: "Sums"
         columns: "Колони"
         column_names: "Колони"
         relations_to_type_column: "Relations to %{type}"
         relations_of_type_column: "%{type} relations"
+        child_work_packages: "Child work packages"
         group_by: "Групай резултатите по"
         sort_by: "Sort results by"
         filters: "Филтри"
@@ -1039,6 +1053,7 @@ bg:
         auto_hide_popups: "Автоматично скриване на успешните известия"
         warn_on_leaving_unsaved: "Предупреждавайте ме при напускане на работен пакет с незаписани промени"
         theme: "Режим"
+        time_zone: "Часова зона"
         mode_guideline: "Някои режими ще пренапишат цветовете на персонализираната тема за достъпност и четливост. За пълна персонализирана тема изберете режим Light."
         daily_reminders: "Daily reminders"
         workdays: "Работни дни"
@@ -1050,7 +1065,9 @@ bg:
       wiki_page:
         parent_title: "Предишна страница"
         redirect_existing_links: "Пренасочи съществуващи връзки"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Начало на вмъкване"
         begin_deletion: "Начало на изтриване"
         children: "Поделементи"
@@ -1066,6 +1083,7 @@ bg:
           title: "Работни дни"
           false: "само в работни дни"
           true: "включват неработни дни"
+        journal_restricted: Restricted Journal
         notify: "Уведомяване" #used in custom actions
         parent: "Горна категория"
         parent_issue: "Горна категория"
@@ -1109,6 +1127,7 @@ bg:
         empty: "не може да бъде празно."
         even: "трябва да бъде четно число."
         exclusion: "е запазено."
+        feature_disabled: is not available.
         file_too_large: "е твърде голям (максимален размер %{count} байта)."
         filter_does_not_exist: "филтърът не съществува."
         format: "не съответства на очаквания формат '%{expected}'."
@@ -1245,42 +1264,12 @@ bg:
           attributes:
             project_ids:
               blank: "Please select a project."
-        project/life_cycle_step_definition:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "must be either Project::StageDefinition or Project::GateDefinition"
-              type_and_class_name_mismatch: "must match the instantiated class name"
-        project/gate_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "must be a Project::GateDefinition"
-        project/stage_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "must be a Project::StageDefinition"
-        project/life_cycle_step:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "must be either Project::Stage or Project::Gate"
-              must_be_a_stage: "must be a Project::Stage"
-              must_be_a_gate: "must be a Project::Gate"
-              type_and_class_name_mismatch: "must match the instantiated class name"
-        project/gate:
-          attributes:
-            base:
-              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
-            type:
-              type_and_class_name_mismatch: "must be a Project::Gate"
-            date:
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
-        project/stage:
+        project/phase:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "start date must be before the end date."
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+              start_date_must_be_before_finish_date: "start date must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
               incomplete: "is incomplete."
-            type:
-              type_and_class_name_mismatch: "must be a Project::Stage"
         query:
           attributes:
             project:
@@ -1511,8 +1500,6 @@ bg:
         other: "Notifications"
       placeholder_user: "Потребител на заместител"
       project: "Проект"
-      project/gate_definition: "Gate"
-      project/stage_definition: "Stage"
       project_query:
         one: "Project list"
         other: "Project lists"
@@ -1571,11 +1558,19 @@ bg:
       changeset: "Набори от промени"
       message: "Форуми"
       news: "Новини"
-      project_attribute: "Атрибути на проекта"
+      project_details: "Project details"
       subproject: "Include subprojects"
       time_entry: "Отработено време"
       wiki_edit: "Wiki"
       work_package: "Работни пакети"
+    project_phase:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
   #common attributes of all models
   attributes:
     active: "Активен"
@@ -1606,6 +1601,7 @@ bg:
     derived_due_date: "Изведена крайна дата"
     derived_estimated_hours: "Total work"
     derived_start_date: "Изведена начална дата"
+    direction: "Direction"
     display_sums: "Показване на суми"
     due_date: "Крайна дата"
     estimated_hours: "Работа"
@@ -1670,6 +1666,7 @@ bg:
     version: "Версия"
     visible: "Видимо"
     work_package: "Работен пакет"
+    work_package_id: "Работен пакет"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"
@@ -1973,7 +1970,7 @@ bg:
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
-        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
+        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Добавяне на нови групи атрибути"
@@ -2043,7 +2040,7 @@ bg:
     changeset: "Редактиран пакет промени"
     message: Съобщението е редактирано
     news: Новини
-    project_attributes: "Project attributes edited"
+    project_details: "Project details edited"
     project: "Проекта е редактиран"
     projects: "Проекта е редактиран"
     reply: Отговорено
@@ -2122,6 +2119,8 @@ bg:
     your_work_packages_export: "Work packages are being exported"
     succeeded: "Export completed"
     failed: "An error has occurred while trying to export the work packages: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Атом"
       csv: "CSV"
@@ -2166,6 +2165,12 @@ bg:
         caption: Break line between words for better layout and justification.
       hyphenation_language:
         label: Language and hyphenation
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext available (optional)"
@@ -2710,7 +2715,7 @@ bg:
   label_none_parentheses: "(none)"
   label_not_contains: "doesn't contain"
   label_not_equals: "is not"
-  label_life_cycle_step_plural: "Project lifecycle"
+  label_life_cycle_step_plural: "Project life cycle"
   label_on: "на"
   label_operator_all: "is not empty"
   label_operator_none: "is empty"
@@ -2772,7 +2777,7 @@ bg:
   label_project_new: "Нов проект"
   label_project_plural: "Проекти"
   label_project_list_plural: "Project lists"
-  label_project_lifecycle: "Project lifecycle"
+  label_project_life_cycle: "Project life cycle"
   label_project_attributes_plural: "Атрибути на проекта"
   label_project_custom_field_plural: "Атрибути на проекта"
   label_project_settings: "Настройки на проекта"
@@ -3276,6 +3281,7 @@ bg:
   permission_add_project: "Create projects"
   permission_add_work_package_attachments: "Add attachments"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "Archive project"
   permission_create_user: "Create users"
   permission_manage_user: "Edit users"
@@ -3304,12 +3310,15 @@ bg:
   permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Edit work packages"
   permission_edit_messages: "Редактиране на съобщенията"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "Edit own comments"
   permission_edit_own_messages: "Edit own messages"
   permission_edit_own_time_entries: "Edit own time logs"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Edit project"
   permission_edit_project_attributes: "Edit project attributes"
-  permission_edit_project_stages_and_gates: "Edit project stages and gates"
+  permission_edit_project_phases: "Edit project phases"
   permission_edit_reportings: "Edit reportings"
   permission_edit_time_entries: "Edit time logs for other users"
   permission_edit_timelines: "Edit timelines"
@@ -3339,14 +3348,15 @@ bg:
   permission_search_project: "Търесене на проект"
   permission_select_custom_fields: "Изберете потребителски полета"
   permission_select_project_custom_fields: "Избор атрибути на проекта"
-  permission_select_project_life_cycle: "Select project stages and gates"
-  permission_select_project_life_cycle_explanation: "Activate/Deactivate the stages and gates in a project. Enables the user to select the lifecycle appropriate for the project as inactive stages and gates will not be visible in the project overview page nor the project list."
+  permission_select_project_phases: "Select project phases"
+  permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the life cycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "Избор модули на проекта"
   permission_share_work_packages: "Споделяне на работни пакети"
   permission_manage_types: "Изберете видове"
   permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "Преглед на проекти"
   permission_view_changesets: "Преглед на ревизиите на хранилището в OpenProject"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "Преглед статистиката за авторите на ангажименти"
   permission_view_dashboards: "Преглед на табла за управление"
   permission_view_work_package_watchers: "Преглед на списъка с наблюдатели"
@@ -3365,7 +3375,7 @@ bg:
   permission_work_package_assigned_explanation: "Работните пакети могат да бъдат възлагани на потребители и групи, които притежават тази роля в съответния проект."
   permission_view_project_activity: "Преглед на дейностите по проекта"
   permission_view_project_attributes: "View project attributes"
-  permission_view_project_stages_and_gates: "View project stages and gates"
+  permission_view_project_phases: "View project phases"
   permission_save_bcf_queries: "Запазване на заявките на BCF"
   permission_manage_public_bcf_queries: "Управление на публични запитвания за BCF"
   permission_edit_attribute_help_texts: "Редактиране помощните текстове на атрибутите"
@@ -3390,6 +3400,10 @@ bg:
       project_verification: "Въведете името на проекта %{name} , за да потвърдите изтриването."
       subprojects_confirmation: "Неговият(те) подпроект(и): %{value} също ще бъде изтрит(и)."
       title: "Изтриване на проекта %{name}"
+    filters:
+      project_phase: "Project phase: %{phase}"
+      project_phase_any: "Project phase: Any"
+      project_phase_gate: "Project phase gate: %{gate}"
     identifier:
       warning_one: Членовете на проекта ще трябва да преместят хранилищата на проекта.
       warning_two: Съществуващите връзки към проекта вече няма да работят.
@@ -3534,6 +3548,9 @@ bg:
     manual: "set to Manual"
     automatic: "set to Automatic"
   search_input_placeholder: "Търсене ..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
     Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
@@ -3766,27 +3783,27 @@ bg:
       new:
         heading: "New attribute"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
-    project_life_cycle_step_definitions:
-      heading: "Project lifecycle"
-      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Добави"
-      label_add_description: "Add lifecycle definition"
-      label_add_stage: "Stage"
-      label_add_gate: "Gate"
+    project_phase_definitions:
+      heading: "Project life cycle"
+      heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
+      label_add: "Add"
+      label_add_description: "Add life cycle definition"
       filter:
-        label: "Search project stage or gate"
-      section_header: "Stages and gates"
-      non_defined: "Neither stages nor gates are currently defined."
+        label: "Search project phase"
+      section_header: "Phases"
+      non_defined: "No phases are currently defined."
+      phase_gates: "Phase gates"
       new:
-        description: "Changes to this project step will be reflected in all projects where it is enabled."
-      new_stage:
-        heading: "New stage"
-      new_gate:
-        heading: "New gate"
-      edit_stage:
-        heading: "Edit stage"
-      edit_gate:
-        heading: "Edit gate"
+        description: "Changes to this project phase will be reflected in all projects where it is enabled."
+        heading: "New Phase"
+      edit:
+        heading: "Edit Phase"
+      both_gate: "Start and finish gate"
+      no_gate: "No gate"
+      start_gate: "Start gate"
+      start_gate_caption: "Add a gate with the start date of the phase"
+      finish_gate: "Finish gate"
+      finish_gate_caption: "Add a gate with the end date of the phase"
     projects:
       missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
       section_new_projects: "Настройки за нови проекти"
@@ -3799,6 +3816,8 @@ bg:
     working_days:
       section_work_week: "Work week"
       section_holidays_and_closures: "Holidays and closures"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Plain text"
@@ -3820,7 +3839,7 @@ bg:
   text_are_you_sure_continue: "Are you sure you want to continue?"
   text_are_you_sure_with_children: "Delete work package and all child work packages?"
   text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
-  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this phase will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Assign to the project"
   text_form_configuration: >
     You can customize which fields will be displayed in work package forms. You can freely group the fields to reflect the needs for your domain.

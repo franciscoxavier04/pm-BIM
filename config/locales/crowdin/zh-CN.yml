@@ -35,11 +35,15 @@ zh-CN:
         label_sort_desc: "时间降序"
         label_type_to_comment: "添加评论。输入 @ 以通知他人。"
         label_submit_comment: "提交评论"
+        label_who: 谁？
         changed_on: "更改于"
         created_on: "创建于"
         changed: "已更改"
         created: "已创建"
         commented: "已评论"
+        restrict_visibility: 限制可见性
+        restricted_journal: 受限制的评论对一组成员可见。
+        unsaved_changes_confirmation_message: 您有未保存的更改。您确定要关闭编辑器吗？
   admin:
     plugins:
       no_results_title_text: 目前没有安装插件。
@@ -238,7 +242,7 @@ zh-CN:
       hierarchy:
         subitems:
           zero: 无子项目
-          one: 1个子项目
+          one: 1 个子项目
           other: "%{count} 个子项目"
     upsale:
       custom_field_format_hierarchy: "工作包的自定义字段需要层级结构？"
@@ -363,13 +367,13 @@ zh-CN:
       life_cycle:
         header:
           title: "项目生命周期"
-          description_html: '项目生命周期中的这些项目阶段和关口将显示在 <a href=%{overview_url} target="_blank"> 项目概览页面</a> 中，并由实例管理员在 <a href=%{admin_settings_url} target="_blank"> 管理设置</a> 中定义。您可以启用或禁用单个属性。'
-        non_defined: "目前既未定义阶段也未定关口。"
-        section_header: "阶段和关口"
+          description_html: "活动项目阶段定义此项目的生命周期，并在<a href=%{admin_settings_url} target=\"_blank\">管理设置</a>。已启用的阶段将显示在您的 <a href=%{overview_url} target=\"_blank\"> 项目概述中</a>。"
+        non_defined: "当前没有定义阶段。"
+        section_header: "阶段"
         step:
           use_in_project: "在此项目中使用 %{step}"
         filter:
-          label: "搜索项目阶段或关口"
+          label: "搜索项目阶段"
       project_custom_fields:
         header:
           title: "项目属性"
@@ -394,7 +398,7 @@ zh-CN:
         no_results_title_text: 此项目没有已记录的额外磁盘空间消耗。
       work_package_priorities:
         new_label: "新优先级"
-  project_stage:
+  project_phase:
     working_days_count:
       other: "时长： %{count} 个工作日"
   lists:
@@ -606,8 +610,12 @@ zh-CN:
           caption: "使用引用属性和文本定义模式，自动生成工作包主题。用户将无法手动编辑主题。"
         pattern:
           label: "主题模式"
-          caption: "搜索属性或添加文本。要在元素之间创建空格，请将其添加为文本。"
-          insert_as_text: "添加文本：%{word}"
+          caption: "添加文本或输入斜杠“/”以搜索属性。你可以使用空格来分隔它们。"
+          headings:
+            work_package: "工作包"
+            parent: "父级"
+            project: "项目"
+          insert_as_text: "未找到属性。以文本形式添加：“%{word}”"
       export_configuration:
         tab: "生成 PDF"
         intro: "为此类型选择模板。模板决定此类型工作包导出的PDF的设计和可见属性。默认选择列表上的第一个模板。"
@@ -739,9 +747,9 @@ zh-CN:
       follows_description: "相关工作包必须在本工作包启动前完成"
       label_child_singular: "子节点"
       label_child_plural: "子项"
-      new_child: "新建子项"
+      new_child: "新建子工作包"
       new_child_text: "创建工作包，作为当前(父)工作包的子项"
-      existing_child: "添加现有子项"
+      child: "子工作包"
       child_description: "使相关工作包成为当前(父) 工作包的子项目"
       label_closest: "最近的"
       label_blocks_singular: "阻止"
@@ -752,7 +760,7 @@ zh-CN:
       label_blocked_by_singular: "被阻止"
       label_blocked__by_plural: "被阻止"
       blocked_description: "相关工作包结束之前，本工作包不能关闭"
-      blocked_by_description: "在本工作包结束之前，相关工作包不能关闭"
+      blocked_by_description: "在相关工作包结束之前，本工作包不能关闭"
       label_duplicates_singular: "复制"
       label_duplicates_plural: "复制"
       duplicates_description: "这是相关工作包的副本"
@@ -876,7 +884,7 @@ zh-CN:
         page: "页"
         row_count: "行数"
         column_count: "列数"
-        widgets: "小部件"
+        widgets: "微件"
       journal:
         notes: "备注"
         cause_type: "Cause 类型"
@@ -933,17 +941,23 @@ zh-CN:
       project_custom_field:
         is_required: "在所有项目中应用"
         custom_field_section: 单元
-      project/life_cycle_step:
+      project/phase:
+        date_range: "日期范围"
         definition: "定义"
-      project/life_cycle_step_definition:
+      project/phase_definition:
         name: "名称"
         color: "颜色"
+        start_gate: "开始阶段关口"
+        start_gate_name: "开始阶段关口名称"
+        finish_gate: "结束阶段关口"
+        finish_gate_name: "结束阶段关口名称"
       query:
         sums: "总和"
         columns: "列"
         column_names: "列"
         relations_to_type_column: "与%{type} 的关系"
         relations_of_type_column: "%{type} 关系"
+        child_work_packages: "子级工作包"
         group_by: "汇总结果根据"
         sort_by: "结果排序方式"
         filters: "筛选器"
@@ -1026,6 +1040,7 @@ zh-CN:
         auto_hide_popups: "自动隐藏成功通知"
         warn_on_leaving_unsaved: "离开未保存更改的工作包时提示我"
         theme: "模式"
+        time_zone: "时区"
         mode_guideline: "某些模式会覆盖自定义主题的颜色，以便于访问和阅读。如需完整的自定义主题，请选择 \"浅色 \"模式。"
         daily_reminders: "每日提醒"
         workdays: "工作日"
@@ -1037,7 +1052,9 @@ zh-CN:
       wiki_page:
         parent_title: "父级页面"
         redirect_existing_links: "将现有的链接重定向"
+        text: "页面内容"
       work_package:
+        ancestor: "子级" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "开始插入"
         begin_deletion: "开始删除"
         children: "子元素"
@@ -1053,6 +1070,7 @@ zh-CN:
           title: "工作日"
           false: "仅工作日"
           true: "包括非工作日"
+        journal_restricted: 受限制的日记
         notify: "通知" #used in custom actions
         parent: "父级"
         parent_issue: "父级"
@@ -1096,6 +1114,7 @@ zh-CN:
         empty: "不能为空。"
         even: "必须是偶数。"
         exclusion: "是保留关键字。"
+        feature_disabled: 不可用。
         file_too_large: "太大 (最大大小为 %{count} 字节)。"
         filter_does_not_exist: "筛选器不存在。"
         format: "与预期的格式“%{expected}”不匹配。"
@@ -1232,42 +1251,12 @@ zh-CN:
           attributes:
             project_ids:
               blank: "请选择一个项目。"
-        project/life_cycle_step_definition:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "必须是 Project::StageDefinition 或 Project::GateDefinition"
-              type_and_class_name_mismatch: "必须匹配实例化类型名称"
-        project/gate_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "必须是一个项目：:关口定义"
-        project/stage_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "必须是一个项目：:阶段定义"
-        project/life_cycle_step:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "必须是 Project::Stage 或 Project::Gate"
-              must_be_a_stage: "必须是 Project::Stage"
-              must_be_a_gate: "必须是 Project::Gate"
-              type_and_class_name_mismatch: "必须匹配实例化类型名称"
-        project/gate:
-          attributes:
-            base:
-              end_date_not_allowed: "无法将结束日期分配给一个项目：:关口"
-            type:
-              type_and_class_name_mismatch: "必须是一个项目：:关口"
-            date:
-              non_continuous_dates: "不能早于前一个 %{step}的结束日期。"
-        project/stage:
+        project/phase:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "开始日期必须早于结束日期。"
-              non_continuous_dates: "不能早于前一个 %{step}的结束日期。"
+              start_date_must_be_before_finish_date: "开始日期必须早于结束日期。"
+              non_continuous_dates: "不能早于上一阶段的结束日期。"
               incomplete: "不完整。"
-            type:
-              type_and_class_name_mismatch: "必须是一个项目::阶段"
         query:
           attributes:
             project:
@@ -1494,8 +1483,6 @@ zh-CN:
         other: "通知"
       placeholder_user: "占位符用户"
       project: "项目"
-      project/gate_definition: "关口"
-      project/stage_definition: "阶段"
       project_query:
         other: "项目列表"
       query: "自定义查询"
@@ -1547,11 +1534,19 @@ zh-CN:
       changeset: "更改集"
       message: "论坛"
       news: "新闻"
-      project_attribute: "项目属性"
+      project_details: "项目详细信息"
       subproject: "包括子项目"
       time_entry: "用时"
       wiki_edit: "维基"
       work_package: "工作包"
+    project_phase:
+      activated: "已激活"
+      deactivated: "已停用"
+      added_date: "设为 %{date}"
+      changed_date: "由 %{from} 变更为 %{to}"
+      removed_date: "删除日期%{date}"
+      phase_and_one_gate: "%{phase_message}。%{gate_message}"
+      phase_and_both_gates: "%{phase_message}。%{start_gate_message}，和%{finish_gate_message}"
   #common attributes of all models
   attributes:
     active: "激活"
@@ -1582,6 +1577,7 @@ zh-CN:
     derived_due_date: "派生的完成日期"
     derived_estimated_hours: "总工作量"
     derived_start_date: "派生的开始日期"
+    direction: "方向"
     display_sums: "显示汇总"
     due_date: "完成日期"
     estimated_hours: "工作"
@@ -1646,6 +1642,7 @@ zh-CN:
     version: "版本"
     visible: "可见"
     work_package: "工作包"
+    work_package_id: "工作包"
   backup:
     failed: "备份失败"
     label_backup_token: "备份令牌"
@@ -1930,7 +1927,7 @@ zh-CN:
       automatic_subject_generation:
         description: "使用引用的属性和文本自动生成主题。"
       customize_life_cycle:
-        description: "创建和组织与 PM2 项目周期规划不同的项目阶段和关口。"
+        description: "创建和组织与PM2项目周期规划不同的项目阶段。"
       form_configuration:
         description: "使用以下附加组件自定义表单配置："
         add_groups: "添加新属性组"
@@ -2000,7 +1997,7 @@ zh-CN:
     changeset: "编辑更改集"
     message: 编辑消息
     news: 新闻
-    project_attributes: "项目属性已编辑"
+    project_details: "项目详情已编辑"
     project: "项目已编辑"
     projects: "项目已编辑"
     reply: 答复
@@ -2079,6 +2076,8 @@ zh-CN:
     your_work_packages_export: "正在导出工作包"
     succeeded: "导出完成"
     failed: "在尝试导出工作包时发生错误： %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "此嵌入式工作包表无法放在此页面上，请减少列数。"
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2123,6 +2122,12 @@ zh-CN:
         caption: 为了更好的布局和说明，在单词之间换行。
       hyphenation_language:
         label: 语言和连惯性
+      page_orientation:
+        label: 页面方向
+        caption: 选择 PDF 文档中页面的方向。
+        options:
+          portrait: 纵向
+          landscape: 横向
   extraction:
     available:
       pdftotext: "Pdftotext 可用 (可选)"
@@ -2729,7 +2734,7 @@ zh-CN:
   label_project_new: "新的项目"
   label_project_plural: "项目"
   label_project_list_plural: "项目列表"
-  label_project_lifecycle: "项目生命周期"
+  label_project_life_cycle: "项目生命周期"
   label_project_attributes_plural: "项目属性"
   label_project_custom_field_plural: "项目属性"
   label_project_settings: "项目设置"
@@ -3228,6 +3233,7 @@ zh-CN:
   permission_add_project: "创建项目"
   permission_add_work_package_attachments: "添加附件"
   permission_add_work_package_attachments_explanation: "允许在没有编辑工作包权限的情况下添加附件"
+  permission_add_comments_with_restricted_visibility: "编写可见性受限的评论"
   permission_archive_project: "归档项目"
   permission_create_user: "创建用户"
   permission_manage_user: "编辑用户"
@@ -3252,16 +3258,19 @@ zh-CN:
   permission_delete_timelines: "删除时间线"
   permission_delete_wiki_pages: "删除维基页面"
   permission_delete_wiki_pages_attachments: "删除附件"
-  permission_edit_work_package_notes: "中度评论"
+  permission_edit_work_package_notes: "审核评论"
   permission_edit_work_package_notes_explanation: "注意：拥有此权限的用户可以编辑任何人的评论。"
   permission_edit_work_packages: "编辑工作包"
   permission_edit_messages: "编辑消息"
+  permission_edit_own_comments_with_restricted_visibility: "编辑自己的可见性受限的评论"
   permission_edit_own_work_package_notes: "编辑自己的评论"
   permission_edit_own_messages: "编辑自己的消息"
   permission_edit_own_time_entries: "编辑自己的时间记录"
+  permission_edit_others_comments_with_restricted_visibility: "编辑自己的可见性受限的评论"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "注意：具有此权限的用户能够编辑其他用户的可见性受限的评论。"
   permission_edit_project: "编辑项目"
   permission_edit_project_attributes: "编辑项目属性"
-  permission_edit_project_stages_and_gates: "编辑项目阶段和关口"
+  permission_edit_project_phases: "编辑项目阶段"
   permission_edit_reportings: "编辑报告"
   permission_edit_time_entries: "编辑其他用户的时间日志"
   permission_edit_timelines: "编辑时间线"
@@ -3291,14 +3300,15 @@ zh-CN:
   permission_search_project: "搜索项目"
   permission_select_custom_fields: "选择自定义字段"
   permission_select_project_custom_fields: "选择项目属性"
-  permission_select_project_life_cycle: "选择项目阶段和关口"
-  permission_select_project_life_cycle_explanation: "激活/停用项目中的阶段和关口。允许户选择适合项目的生命周期，因为非激活的阶段和关口在项目概览页或项目列表中都不可见。"
+  permission_select_project_phases: "选择项目阶段"
+  permission_select_project_phases_explanation: "激活/停用项目中的阶段。允许户选择适合项目的生命周期，因为非激活的阶段在项目概览页或项目列表中都不可见。"
   permission_select_project_modules: "选择项目模块"
   permission_share_work_packages: "共享工作包"
   permission_manage_types: "选择类型"
   permission_manage_own_reminders: "创建个人提醒事项"
   permission_view_project: "查看项目"
   permission_view_changesets: "查看 OpenProject 存储库修订"
+  permission_view_comments_with_restricted_visibility: "查看可见性受限的评论"
   permission_view_commit_author_statistics: "查看提交作者统计信息"
   permission_view_dashboards: "查看仪表板"
   permission_view_work_package_watchers: "查看关注者列表"
@@ -3317,7 +3327,7 @@ zh-CN:
   permission_work_package_assigned_explanation: "工作包可以分配给在各自项目中拥有此角色的用户和组"
   permission_view_project_activity: "查看项目活动"
   permission_view_project_attributes: "查看项目属性"
-  permission_view_project_stages_and_gates: "查看项目阶段和关口"
+  permission_view_project_phases: "查看项目阶段"
   permission_save_bcf_queries: "保存 BCF 查询"
   permission_manage_public_bcf_queries: "管理公开的 BCF 查询"
   permission_edit_attribute_help_texts: "编辑属性帮助文本"
@@ -3342,6 +3352,10 @@ zh-CN:
       project_verification: "输入项目的名称 %{name}，以确认删除。"
       subprojects_confirmation: "其 子项目(s): %{value} 也将被删除。"
       title: "删除项目 %{name}"
+    filters:
+      project_phase: "项目阶段：%{phase}"
+      project_phase_any: "项目阶段：任何阶段"
+      project_phase_gate: "项目阶段关口：%{gate}"
     identifier:
       warning_one: 项目的成员将重新迁移至项目的存储库。
       warning_two: 该项目的现有链接将不再有效。
@@ -3484,6 +3498,9 @@ zh-CN:
     manual: "设为手动"
     automatic: "设为自动"
   search_input_placeholder: "搜索"
+  setting_allowed_link_protocols: "允许的链接协议"
+  setting_allowed_link_protocols_text_html: >-
+    允许这些协议在工作包描述、长文本字段和评论中显示为链接。例如，%{tel_code} 或 %{element_code}。每行输入一个协议。<br/> 协议 %{http_code}、%{https_code} 和 %{mailto_code} 始终允许。
   setting_after_first_login_redirect_url: "首次登录重定向"
   setting_after_first_login_redirect_url_text_html: >
     设置用户首次登录后的重定向路径。如果该路径为空，则重定向到主页以进行导览介绍。 <br/> 示例： <code>/my/page</code>
@@ -3716,27 +3733,27 @@ zh-CN:
       new:
         heading: "新建属性"
         description: "对该项目属性的更改将反映在启用该属性的所有项目中。不能按项目禁用必填属性。"
-    project_life_cycle_step_definitions:
+    project_phase_definitions:
       heading: "项目生命周期"
-      heading_description: "项目生命周期由阶段和关口组成，用于构建项目。它们将显示在项目的概述页面，并在项目列表中提供。可以选择单个阶段和关口来定制项目，但无法在项目级别上重新排序。"
+      heading_description: "项目生命周期定义了可以用于您的项目规划并将出现在每个项目的概览页面中的项目阶段。 这些属性可以启用或禁用，但不能在项目一级重新排序。"
       label_add: "添加"
       label_add_description: "添加生命周期定义"
-      label_add_stage: "阶段"
-      label_add_gate: "关口"
       filter:
-        label: "搜索项目阶段或关口"
-      section_header: "阶段和关口"
-      non_defined: "目前既未定义阶段也未定关口。"
+        label: "搜索项目阶段"
+      section_header: "阶段"
+      non_defined: "当前没有定义阶段。"
+      phase_gates: "阶段关口"
       new:
-        description: "对该项目步骤的更改将反映在启用该步骤的所有项目中。"
-      new_stage:
+        description: "对此项目阶段的更改将反映在所有启用的项目中。"
         heading: "新阶段"
-      new_gate:
-        heading: "新关口"
-      edit_stage:
+      edit:
         heading: "编辑阶段"
-      edit_gate:
-        heading: "编辑阶段"
+      both_gate: "开始和结束关口"
+      no_gate: "无关口"
+      start_gate: "开始关口"
+      start_gate_caption: "添加一个带有阶段开始日期的关口"
+      finish_gate: "结束关口"
+      finish_gate_caption: "添加一个带有阶段结束日期的关口"
     projects:
       missing_dependencies: "已检查依赖于 %{dependencies} 的项目模块 %{module}。您也需要检查这些依赖项。"
       section_new_projects: "新项目的设置"
@@ -3749,6 +3766,8 @@ zh-CN:
     working_days:
       section_work_week: "工作周"
       section_holidays_and_closures: "节假日与停业"
+    work_packages:
+      not_allowed_text: "您没有查看此页面的权限。"
   text_formatting:
     markdown: "Markdown"
     plain: "纯文本"
@@ -3770,7 +3789,7 @@ zh-CN:
   text_are_you_sure_continue: "确定要继续吗？"
   text_are_you_sure_with_children: "删除工作包和所有子工作包吗？"
   text_are_you_sure_with_project_custom_fields: "删除该属性也会删除其在所有项目中的值。您确定要这样做吗？"
-  text_are_you_sure_with_project_life_cycle_step: "删除该步骤也会删除其在所有项目中的使用。您确定要这样做吗？"
+  text_are_you_sure_with_project_life_cycle_step: "删除这个阶段也会删除它在所有项目中的使用。您确定要这样做吗？"
   text_assign_to_project: "分配给项目"
   text_form_configuration: >
     您可以自定义哪些字段将显示在工作包窗体中。您可以自由地对字段进行分组, 以反映您的域的需求。
@@ -4338,7 +4357,7 @@ zh-CN:
     define_custom_style: 创建自定义样式
     edit_attribute_groups: 编辑属性组
     gantt_pdf_export: 甘特图 PDF 导出
-    grid_widget_wp_graph: 网格小组件工作包图
+    grid_widget_wp_graph: 网格工作包图微件
     ldap_groups: LDAP 组
     one_drive_sharepoint_file_storage: OneDrive/SharePoint 文件存储
     placeholder_users: 占位符用户

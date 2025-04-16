@@ -44,6 +44,11 @@ module Settings
         format: :string,
         default: nil
       },
+      allowed_link_protocols: {
+        format: :array,
+        description: "Allowed protocols for links in the WYSIWYG editor and formatted texts",
+        default: []
+      },
       apiv3_cors_enabled: {
         description: "Enable CORS headers for APIv3 server responses",
         default: false

@@ -79,7 +79,7 @@ module WorkPackages
       end
 
       def disabled?
-        !schedule_manually
+        !schedule_manually && (milestone? || work_package.children.any?)
       end
 
       def milestone?

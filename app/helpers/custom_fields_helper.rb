@@ -81,7 +81,7 @@ module CustomFieldsHelper
       angular_component_tag "opce-basic-single-date-picker",
                             inputs: {
                               required: custom_field.required?,
-                              id: field_id,
+                              inputId: field_id,
                               name: field_name
                             }
     when "text"

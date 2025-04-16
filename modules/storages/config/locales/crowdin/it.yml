@@ -242,6 +242,9 @@ it:
         host_not_found: Non è stato trovato alcun server Nextcloud all'indirizzo host configurato. Controlla la configurazione.
         missing_dependencies: 'Manca una dipendenza necessaria per l''archiviazione dei file. Aggiungi la seguente dipendenza: %{dependency}.'
         not_configured: Non è stato possibile verificare la connessione. Prima è necessario completare la configurazione.
+        oauth_request_not_found: OpenProject non è riuscito a trovare la cartella principale di Nextcloud utilizzando l'utente attualmente connesso. Per ulteriori informazioni, consulta i log del server.
+        oauth_request_unauthorized: L'utente attuale non è autorizzato a visualizzare la cartella principale di Nextcloud oppure non siamo riusciti ad acquisire un token. Per ulteriori informazioni, consulta i log del server.
+        oauth_token_missing: OpenProject non può testare la comunicazione a livello utente con Nextcloud poiché non esiste alcun token per l'utente corrente.
         oidc_cant_acquire_token: La configurazione di OpenID Connect non fornisce il pubblico necessario, né fornisce capacità di scambio di token. Consulta la nostra documentazione per maggiori informazioni.
         oidc_cant_exchange_token: Sembra esserci un problema con la configurazione di Token Exchange sul tuo OpenID Connect Provider. Controlla la sua configurazione e riprova.
         oidc_cant_refresh_token: Si è verificato un errore durante il tentativo di verificare il tuo accesso all'archiviazione. Controlla i log del server per ulteriori informazioni.

@@ -57,6 +57,12 @@ da:
         start_time: Start time
         end_time: Finish time
     models:
+      time_entry:
+        one: "Time entry"
+        other: "Time entries"
+      cost_entry:
+        one: "Cost entry"
+        other: "Cost entries"
       cost_type:
         one: "Omkostningstype"
         other: "Omkostningstyper"
@@ -175,8 +181,6 @@ da:
   text_reassign_time_and_cost_entries: "Gentildel indberettede timer og omkostninger til denne arbejdspakke:"
   text_warning_hidden_elements: "Visse angivelser kan været blevet ekskluderet fra sammenlægning."
   week: "uge"
-  js:
-    text_are_you_sure: "Sikker?"
   api_v3:
     errors:
       validation:

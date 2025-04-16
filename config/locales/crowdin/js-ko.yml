@@ -358,10 +358,10 @@ ko:
           learn_about: "새로운 기능에 대해 자세히 알아보기"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_4":
+          "15_5":
             standard:
               new_features_html: >
-                이 릴리스는 다음과 같은 다양한 기능과 개선 사항을 제공합니다. <br> <ul class="%{list_styling_class}"> <li>자동 스케줄링 모드를 활성화합니다.</li> <li>미팅에 대한 의제 항목 결과를 설정합니다.</li> <li>작업 패키지 설명에서 PDF 문서를 생성합니다.</li> <li>향상된 프로젝트 목록 보기로 다수의 프로젝트 관리를 개선합니다.</li> <li>코멘트에 대한 답변을 인용할 때 @를 사용하여 사용자를 멘션합니다.</li> </ul>
+                이 릴리스에서는 사용자를 위한 다음과 같은 다양한 기능과 개선 사항이 제공됩니다. <br> <ul class="%{list_styling_class}"> <li>작업 패키지의 하위 항목(자식 및 손자)을 필터링합니다.</li> <li>날짜 선택기의 고급 접근성을 지원합니다.</li> <li>작업 패키지 테이블 합계에 포함된 완료 %가 표시됩니다.</li> <li>작업 패키지 테이블에 자식에 대한 열이 포함됩니다.</li> <li>모바일 화면에서 날짜 선택기를 보다 효율적으로 사용합니다.</li> <li>구성된 양식 레이아웃과 일치하는 PDF를 내보냅니다.</li> </ul>
     ical_sharing_modal:
       title: "캘린더 구독"
       inital_setup_error_message: "데이터를 가져오는 중에 오류가 발생했습니다."
@@ -798,6 +798,7 @@ ko:
       typeahead_placeholder: 가능한 전문가를 검색합니다
     relation_labels:
       parent: "부모"
+      child: "자식"
       children: "하위"
       relates: "관련 항목"
       duplicates: "중복"
@@ -827,7 +828,7 @@ ko:
       add_new_child: "새 자식 만들기"
       create_new: "새로 만들기"
       add_existing: "기존 추가"
-      add_existing_child: "기존 자식 추가"
+      add_existing_child: "자식 추가"
       remove_child: "자식 제거"
       add_new_relation: "새 관계 만들기"
       add_existing_relation: "기존 관계 추가"

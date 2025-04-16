@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
         resource :automatically_managed_project_folders,
                  controller: "/storages/admin/automatically_managed_project_folders",
-                 only: %i[index new create edit update]
+                 only: %i[new create edit update]
 
         resource :access_management, controller: "/storages/admin/access_management", only: %i[new create edit update]
 

@@ -96,7 +96,7 @@ Lastly, revert to the previous system user:
 
 ## Installation of Ruby
 
-The are several possibilities to install Ruby on your machine.
+There are several possibilities to install Ruby on your machine.
 We will use [rbenv](https://github.com/rbenv/rbenv).
 Please be aware that the actual installation of a specific Ruby version takes some time to finish.
 

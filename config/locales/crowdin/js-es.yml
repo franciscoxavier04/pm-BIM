@@ -358,10 +358,10 @@ es:
           learn_about: "Más información sobre las nuevas funciones"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_4":
+          "15_5":
             standard:
               new_features_html: >
-                La versión trae varias funciones y mejoras para usted, por ejemplo <br> <ul class="%{list_styling_class}"> <li>Habilitar el modo de programación automática.</li> <li>Establecer los resultados de los puntos del orden del día para las reuniones. </li> <li>Generar documentos PDF a partir de la descripción de un paquete de trabajo.</li> <li>Mejorar la gestión de un gran número de proyectos con una vista mejorada de las listas de proyectos.</li> <li>Utilizar la @-mención del usuario al citar respondiendo a un comentario.</li> </ul>
+                La versión incluye varias funciones y mejoras para usted, por ejemplo: <br> <ul class="%{list_styling_class}"> <li>Filtro para descendientes (secundarios y subsecundarios) de paquetes de trabajo. </li> <li>Benefíciese de la accesibilidad avanzada en el selector de fechas.</li> <li>Vea el % completado incluido en las sumas de la tabla de paquetes de trabajo.</li> <li>Incluya una columna para los elementos secundarios en las tablas de paquetes de trabajo.</li> <li>Utilice mejor el selector de fechas en las pantallas móviles.</li> <li>Exportaciones en PDF que coinciden con el diseño de formulario configurado.</li> </ul>
     ical_sharing_modal:
       title: "Suscribirse al calendario"
       inital_setup_error_message: "Se ha producido un error al obtener los datos."
@@ -799,6 +799,7 @@ es:
       typeahead_placeholder: Buscar posibles observadores
     relation_labels:
       parent: "Principal"
+      child: "Elemento secundario"
       children: "Sub-elemento"
       relates: "Relacionado con"
       duplicates: "Duplicados"
@@ -828,7 +829,7 @@ es:
       add_new_child: "Crear nuevo sub-elemento"
       create_new: "Crear nuevo"
       add_existing: "Agregar existente"
-      add_existing_child: "Añadir sub-elemento existente"
+      add_existing_child: "Añadir elemento secundario"
       remove_child: "Eliminar sub-elemento"
       add_new_relation: "Crear nueva relación"
       add_existing_relation: "Agregar relación existente"

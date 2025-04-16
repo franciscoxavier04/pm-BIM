@@ -51,9 +51,10 @@ module MeetingAgendaItems::Outcomes
 
     def wrapper_data_attributes
       {
+        controller: "ckeditor-focus scroll-into-view",
         "test-selector": "meeting-outcome-input",
-        controller: "meeting-outcome-form",
-        "application-target": "dynamic"
+        "ckeditor-focus-target": "editor",
+        "ckeditor-focus-autofocus-value": "true"
       }
     end
   end

@@ -35,11 +35,15 @@ ms:
         label_sort_desc: "Terbaru di bahagian atas"
         label_type_to_comment: "Tambah ulasan. Taip @ untuk memberitahu orang."
         label_submit_comment: "Hantar komen"
+        label_who: Who?
         changed_on: "ditukar pada"
         created_on: "mencipta ini pada"
         changed: "berubah"
         created: "dicipta"
         commented: "mengulas"
+        restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: Pada masa ini tiada sebarang plugin yang dipasang.
@@ -364,14 +368,14 @@ ms:
         no_results_title_text: Tiada ruangan tersuai tersedia buat masa ini.
       life_cycle:
         header:
-          title: "Kitaran hayat projek"
-          description_html: 'Peringkat projek dan gerbang dalam kitaran hayat projek ini akan dipaparkan dalam <a href=%{overview_url} target="_blank">halaman gambaran keseluruhan projek</a> anda dan ditakrifkan dalam <a href=%{admin_settings_url} target= "_blank">tetapan pentadbiran</a> oleh pentadbir contoh. Anda boleh mendayakan atau melumpuhkan atribut individu.'
-        non_defined: "Peringkat mahupun gerbang tidak ditakrifkan pada masa ini."
-        section_header: "Peringkat dan pintu gerbang"
+          title: "Project life cycle"
+          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
+        non_defined: "No phases are currently defined."
+        section_header: "Phases"
         step:
           use_in_project: "Gunakan %{step} dalam projek ini"
         filter:
-          label: "Cari peringkat projek atau pintu pagar"
+          label: "Search project phase"
       project_custom_fields:
         header:
           title: "Atribut projek"
@@ -396,9 +400,9 @@ ms:
         no_results_title_text: Tiada ruang cakera terekod tambahan yang digunakan untuk projek ini.
       work_package_priorities:
         new_label: "New priority"
-  project_stage:
+  project_phase:
     working_days_count:
-      other: "Tempoh: %{count} hari bekerja"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Senarai yang diubah suai telah disimpan sebagai senarai baharu."
@@ -608,8 +612,12 @@ ms:
           caption: "Tentukan corak menggunakan atribut dan teks yang dirujuk untuk menjana subjek pakej kerja secara automatik. Pengguna tidak akan dapat mengedit subjek secara manual."
         pattern:
           label: "Corak subjek"
-          caption: "Cari atribut atau tambah teks. Untuk mencipta ruang antara elemen, tambahkannya sebagai teks."
-          insert_as_text: "Add as text: \"%{word}\""
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Hasilkan PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -741,9 +749,9 @@ ms:
       follows_description: "Pakej kerja yang berkaitan semestinya perlu diselesaikan sebelum yang ini boleh dimulakan"
       label_child_singular: "anak"
       label_child_plural: "kanak-kanak"
-      new_child: "New child"
+      new_child: "Create new child"
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
-      existing_child: "Existing child"
+      child: "Child"
       child_description: "Menjadikan pakej kerja berkaitan sub-item pakej kerja semasa (ibu bapa)."
       label_closest: "Closest"
       label_blocks_singular: "blok"
@@ -935,17 +943,23 @@ ms:
       project_custom_field:
         is_required: "Diperlukan untuk semua projek"
         custom_field_section: Bahagian
-      project/life_cycle_step:
+      project/phase:
+        date_range: "Date range"
         definition: "Definition"
-      project/life_cycle_step_definition:
-        name: "Nama"
-        color: "Warna"
+      project/phase_definition:
+        name: "Name"
+        color: "Color"
+        start_gate: "Start phase gate"
+        start_gate_name: "Start phase gate name"
+        finish_gate: "Finish phase gate"
+        finish_gate_name: "Finish phase gate name"
       query:
         sums: "Sums"
         columns: "Kolum"
         column_names: "Kolum"
         relations_to_type_column: "Berhubung dengan %{type}"
         relations_of_type_column: "%{type} hubungan"
+        child_work_packages: "Child work packages"
         group_by: "Kumpulkan hasil mengikut"
         sort_by: "Sort results by"
         filters: "Penyaring"
@@ -1028,6 +1042,7 @@ ms:
         auto_hide_popups: "Pemberitahuan kejayaan auto-sembunyi"
         warn_on_leaving_unsaved: "Beri amaran kepada saya apabila meninggalkan pakej kerja dengan perubahan yang belum disimpan."
         theme: "Mod"
+        time_zone: "Zon waktu"
         mode_guideline: "Sesetengah mod akan menulis ganti warna tema tersuai untuk kebolehaksesan dan kebolehbacaan. Untuk tema tersuai penuh, sila pilih mod Cahaya."
         daily_reminders: "Daily reminders"
         workdays: "Hari bekerja"
@@ -1039,7 +1054,9 @@ ms:
       wiki_page:
         parent_title: "Halaman induk"
         redirect_existing_links: "Ubah hala pautan sedia ada"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Permulaan kemasukan"
         begin_deletion: "Permulaan pemadaman"
         children: "Subelemen"
@@ -1055,6 +1072,7 @@ ms:
           title: "Hari bekerja"
           false: "hari bekerja sahaja"
           true: "termasuk hari tidak bekerja"
+        journal_restricted: Restricted Journal
         notify: "Maklumkan" #used in custom actions
         parent: "Induk"
         parent_issue: "Induk"
@@ -1098,6 +1116,7 @@ ms:
         empty: "tidak boleh kosong."
         even: "perlu sama."
         exclusion: "sudah dikhaskan."
+        feature_disabled: is not available.
         file_too_large: "adalah terlalu besar (saiz maksimum adalah %{count} Bytes)."
         filter_does_not_exist: "penyaring tidak wujud."
         format: "tidak sepadan dengan format yang dijangka '%{expected}'."
@@ -1234,42 +1253,12 @@ ms:
           attributes:
             project_ids:
               blank: "Sila pilih projek."
-        project/life_cycle_step_definition:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "mestilah sama ada Project::StageDefinition atau Project::GateDefinition"
-              type_and_class_name_mismatch: "mesti sepadan dengan nama kelas yang diintai"
-        project/gate_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "mestilah Projek::GateDefinition"
-        project/stage_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "mestilah Project::StageDefinition"
-        project/life_cycle_step:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "mestilah sama ada Project::Stage atau Project::Gate"
-              must_be_a_stage: "mestilah Projek::Pentas"
-              must_be_a_gate: "mestilah Projek::Gate"
-              type_and_class_name_mismatch: "mesti sepadan dengan nama kelas yang diintai"
-        project/gate:
-          attributes:
-            base:
-              end_date_not_allowed: "Tidak boleh menetapkan tarikh tamat kepada Projek::Gate"
-            type:
-              type_and_class_name_mismatch: "mesti Projek::Gate"
-            date:
-              non_continuous_dates: "tidak boleh lebih awal daripada tarikh tamat %{step} sebelumnya."
-        project/stage:
+        project/phase:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "tarikh mula mestilah sebelum tarikh tamat."
-              non_continuous_dates: "tidak boleh lebih awal daripada tarikh tamat %{step} sebelumnya."
-              incomplete: "tidak lengkap."
-            type:
-              type_and_class_name_mismatch: "mestilah Projek::Pentas"
+              start_date_must_be_before_finish_date: "start date must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              incomplete: "is incomplete."
         query:
           attributes:
             project:
@@ -1496,8 +1485,6 @@ ms:
         other: "Pemberitahuan"
       placeholder_user: "Pengguna placeholder"
       project: "Projek"
-      project/gate_definition: "Gerbang"
-      project/stage_definition: "Peringkat"
       project_query:
         other: "Senarai projek"
       query: "Pertanyaan tersuai"
@@ -1549,11 +1536,19 @@ ms:
       changeset: "Set ubah suai"
       message: "Forum-forum"
       news: "Berita"
-      project_attribute: "Atribut projek"
+      project_details: "Project details"
       subproject: "Termasuk subprojek"
       time_entry: "Masa yang dihabiskan"
       wiki_edit: "Wiki"
       work_package: "Pakej kerja"
+    project_phase:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
   #common attributes of all models
   attributes:
     active: "Aktif"
@@ -1584,6 +1579,7 @@ ms:
     derived_due_date: "Tarikh tamat yang diperolehi"
     derived_estimated_hours: "Jumlah kerja"
     derived_start_date: "Tarikh mula yang diperolehi"
+    direction: "Direction"
     display_sums: "Paparkan Jumlah"
     due_date: "Tarikh tamat"
     estimated_hours: "Kerja"
@@ -1648,6 +1644,7 @@ ms:
     version: "Versi"
     visible: "Terlihat"
     work_package: "Pakej kerja"
+    work_package_id: "Pakej kerja"
   backup:
     failed: "Sandaran gagal"
     label_backup_token: "Token sandaran"
@@ -1932,7 +1929,7 @@ ms:
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
-        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
+        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Menyuaikan borang konfigurasi dengan segala jenis tambahan ini:"
         add_groups: "Tambah kumpulan atribut baharu"
@@ -2002,7 +1999,7 @@ ms:
     changeset: "Set perubahan telah diedit"
     message: Mesej telah diedit
     news: Berita
-    project_attributes: "Atribut projek telah diedit"
+    project_details: "Project details edited"
     project: "Projek telah diedit"
     projects: "Projek telah diedit"
     reply: Dibalas
@@ -2081,6 +2078,8 @@ ms:
     your_work_packages_export: "Pakej kerja sedang dieksport"
     succeeded: "Eksport selesai"
     failed: "Ralat telah berlaku semasa cuba mengeksport pakej kerja: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2125,6 +2124,12 @@ ms:
         caption: Break line between words for better layout and justification.
       hyphenation_language:
         label: Language and hyphenation
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "PdfkeTeks tersedia (pilihan)"
@@ -2669,7 +2674,7 @@ ms:
   label_none_parentheses: "(tiada)"
   label_not_contains: "tidak mengandungi"
   label_not_equals: "adalah tidak"
-  label_life_cycle_step_plural: "Kitaran hayat projek"
+  label_life_cycle_step_plural: "Project life cycle"
   label_on: "pada"
   label_operator_all: "bukan kosong"
   label_operator_none: "adalah kosong"
@@ -2731,7 +2736,7 @@ ms:
   label_project_new: "Projek baharu"
   label_project_plural: "Projek"
   label_project_list_plural: "Senarai projek"
-  label_project_lifecycle: "Kitaran hayat projek"
+  label_project_life_cycle: "Project life cycle"
   label_project_attributes_plural: "Atribut projek"
   label_project_custom_field_plural: "Atribut projek"
   label_project_settings: "Tetapan projek"
@@ -3232,6 +3237,7 @@ ms:
   permission_add_project: "Cipta projek"
   permission_add_work_package_attachments: "Tambah lampiran"
   permission_add_work_package_attachments_explanation: "Benarkan penambahan lampiran tanpa kebenaran Edit pakej kerja"
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "Arkib projek"
   permission_create_user: "Cipta pengguna"
   permission_manage_user: "Edit pengguna"
@@ -3260,12 +3266,15 @@ ms:
   permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Edit pakej kerja"
   permission_edit_messages: "Edit mesej"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "Edit own comments"
   permission_edit_own_messages: "Edit mesej sendiri"
   permission_edit_own_time_entries: "Edit log masa sendiri"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Edit projek"
   permission_edit_project_attributes: "Edit atribut projek"
-  permission_edit_project_stages_and_gates: "Edit peringkat projek dan gerbang"
+  permission_edit_project_phases: "Edit project phases"
   permission_edit_reportings: "Edit laporan"
   permission_edit_time_entries: "Edit log masa untuk pengguna lain"
   permission_edit_timelines: "Edit garis masa"
@@ -3295,14 +3304,15 @@ ms:
   permission_search_project: "Cari projek"
   permission_select_custom_fields: "Pilih ruang tersuai"
   permission_select_project_custom_fields: "Pilih atribut projek"
-  permission_select_project_life_cycle: "Pilih peringkat projek dan gerbang"
-  permission_select_project_life_cycle_explanation: "Aktifkan/Nyahaktifkan peringkat dan pintu dalam projek. Membolehkan pengguna memilih kitaran hayat yang sesuai untuk projek kerana peringkat dan pintu yang tidak aktif tidak akan kelihatan dalam halaman gambaran keseluruhan projek mahupun senarai projek."
+  permission_select_project_phases: "Select project phases"
+  permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the life cycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "Pilih modul projek"
   permission_share_work_packages: "Kongsi pakej kerja"
   permission_manage_types: "Pilih jenis"
   permission_manage_own_reminders: "Buat peringatan sendiri"
   permission_view_project: "Lihat projek"
   permission_view_changesets: "Lihat semakan repositori dalam OpenProject"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "Lihat statistik pengarang komit"
   permission_view_dashboards: "Lihat papan pemuka"
   permission_view_work_package_watchers: "Lihat senarai pemerhati"
@@ -3321,7 +3331,7 @@ ms:
   permission_work_package_assigned_explanation: "Pakej kerja boleh ditugaskan kepada pengguna dan kumpulan yang memegang peranan ini dalam projek yang berkaitan"
   permission_view_project_activity: "Lihat aktiviti projek"
   permission_view_project_attributes: "Lihat atribut projek"
-  permission_view_project_stages_and_gates: "Lihat peringkat projek dan pintu pagar"
+  permission_view_project_phases: "View project phases"
   permission_save_bcf_queries: "Simpan pertanyaan BCF"
   permission_manage_public_bcf_queries: "Urus pertanyaan BCF awam"
   permission_edit_attribute_help_texts: "Edit atribut teks bantuan"
@@ -3346,6 +3356,10 @@ ms:
       project_verification: "Masukkan nama projek %{name} untuk mengesahkan pemadaman."
       subprojects_confirmation: "Subprojeknya: %{value} juga akan dipadamkan."
       title: "Padamkan projek %{name}"
+    filters:
+      project_phase: "Project phase: %{phase}"
+      project_phase_any: "Project phase: Any"
+      project_phase_gate: "Project phase gate: %{gate}"
     identifier:
       warning_one: Ahli projek akan perlu memindahkan semula repositori projek.
       warning_two: Pautan sedia ada pada projek tidak akan berfungsi lagi.
@@ -3490,6 +3504,9 @@ ms:
     manual: "set to Manual"
     automatic: "set to Automatic"
   search_input_placeholder: "Cari ..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
     Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
@@ -3722,27 +3739,27 @@ ms:
       new:
         heading: "Atribut baharu"
         description: "Perubahan pada atribut projek ini akan dipantulkan ke dalam semua projek di mana ia telah diaktifkan. Atribut yang diperlukan tidak boleh dinyahdayakan berdasarkan setiap projek."
-    project_life_cycle_step_definitions:
-      heading: "Kitaran hayat projek"
-      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Tambah"
-      label_add_description: "Add lifecycle definition"
-      label_add_stage: "Peringkat"
-      label_add_gate: "Gerbang"
+    project_phase_definitions:
+      heading: "Project life cycle"
+      heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
+      label_add: "Add"
+      label_add_description: "Add life cycle definition"
       filter:
-        label: "Cari peringkat projek atau pintu pagar"
-      section_header: "Peringkat dan pintu gerbang"
-      non_defined: "Peringkat mahupun gerbang tidak ditakrifkan pada masa ini."
+        label: "Search project phase"
+      section_header: "Phases"
+      non_defined: "No phases are currently defined."
+      phase_gates: "Phase gates"
       new:
-        description: "Changes to this project step will be reflected in all projects where it is enabled."
-      new_stage:
-        heading: "New stage"
-      new_gate:
-        heading: "New gate"
-      edit_stage:
-        heading: "Edit stage"
-      edit_gate:
-        heading: "Edit gate"
+        description: "Changes to this project phase will be reflected in all projects where it is enabled."
+        heading: "New Phase"
+      edit:
+        heading: "Edit Phase"
+      both_gate: "Start and finish gate"
+      no_gate: "No gate"
+      start_gate: "Start gate"
+      start_gate_caption: "Add a gate with the start date of the phase"
+      finish_gate: "Finish gate"
+      finish_gate_caption: "Add a gate with the end date of the phase"
     projects:
       missing_dependencies: "Modul projek %{module} telah disemak yang bergantung pada %{dependencies}. Anda perlu menyemak kebergantungan ini juga."
       section_new_projects: "Tetapan untuk projek baharu"
@@ -3755,6 +3772,8 @@ ms:
     working_days:
       section_work_week: "Minggu bekerja"
       section_holidays_and_closures: "Hari perayaan dan penutupan"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Teks biasa"
@@ -3776,7 +3795,7 @@ ms:
   text_are_you_sure_continue: "Adakah anda pasti anda ingin teruskan?"
   text_are_you_sure_with_children: "Padam pakej kerja dan semua pakej kerja anak?"
   text_are_you_sure_with_project_custom_fields: "Memadam atribut ini akan memadam nilainya dalam semua projek. Adakah anda pasti anda ingin lakukan ini?"
-  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this phase will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Tugaskan ke projek"
   text_form_configuration: >
     Anda boleh mengubah suai ruangan yang akan dipaparkan dalam borang pakej kerja. Anda boleh mengumpulkan ruangan tersebut dengan bebas untuk memantulkan keperluan domain anda.

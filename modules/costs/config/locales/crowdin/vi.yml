@@ -57,6 +57,10 @@ vi:
         start_time: Thời gian bắt đầu
         end_time: Thời gian hoàn thành
     models:
+      time_entry:
+        other: "Time entries"
+      cost_entry:
+        other: "Cost entries"
       cost_type:
         other: "Loại chi phí"
       time_entry_activity:
@@ -173,8 +177,6 @@ vi:
   text_reassign_time_and_cost_entries: "Gán lại giờ và chi phí đã báo cáo cho gói công việc này:"
   text_warning_hidden_elements: "Một số mục có thể đã bị loại trừ khỏi tổng hợp."
   week: "tuần"
-  js:
-    text_are_you_sure: "Bạn có chắc không?"
   api_v3:
     errors:
       validation:

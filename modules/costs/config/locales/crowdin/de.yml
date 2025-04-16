@@ -57,6 +57,12 @@ de:
         start_time: Startzeit
         end_time: Endzeit
     models:
+      time_entry:
+        one: "Zeitbuchung"
+        other: "Zeiterfassungen"
+      cost_entry:
+        one: "Kosteneintrag"
+        other: "Kosteneinträge"
       cost_type:
         one: "Kostentyp"
         other: "Kostentypen"
@@ -96,7 +102,7 @@ de:
   caption_save_rate: "Satz speichern"
   caption_set_rate: "Aktuellen Satz festlegen"
   caption_show_locked: "Gesperrte Typen anzeigen"
-  caption_log_time_dialog: "Zeit protokollieren"
+  caption_log_time_dialog: "Zeit buchen"
   description_date_for_new_rate: "Datum für neuen Satz"
   description_costs_settings: "Definieren Sie das gewünschte Format für Kosten in allen Projekten."
   description_time_settings: "Legen Sie fest, welche Felder bei Zeitbuchungen in allen Projekten ausgefüllt werden müssen."
@@ -175,8 +181,6 @@ de:
   text_reassign_time_and_cost_entries: "Gebuchte Aufwände diesem Ticket zuweisen:"
   text_warning_hidden_elements: "Es wurden möglicherweise nicht alle Einträge berücksichtigt."
   week: "Woche"
-  js:
-    text_are_you_sure: "Sind Sie sicher?"
   api_v3:
     errors:
       validation:

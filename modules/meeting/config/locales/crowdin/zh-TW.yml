@@ -132,11 +132,11 @@ zh-TW:
   label_recurring_meeting_restore: "恢復此事件"
   label_recurring_meeting_schedule: "排程"
   label_recurring_meeting_next_occurrence: "下一次會議"
-  label_recurring_meeting_more: "還有 %{count} 預定會議 (%{schedule})。"
   label_recurring_meeting_no_end_date: "有更多排定的會議 (%{schedule})。"
-  label_recurring_meeting_more_singular: "還有 %{count} 預定會議 (%{schedule})。"
-  label_recurring_meeting_more_past: "還有 %{count} 更多過去的會議。"
-  label_recurring_meeting_more_past_singular: "還有 %{count} 更多過去的會議。"
+  label_recurring_meeting_more:
+    other: "還有 %{count} 預定會議 (%{schedule})。"
+  label_recurring_meeting_more_past:
+    other: "還有 %{count} 個更多過去的會議。"
   label_recurring_meeting_show_more: "顯示更多"
   label_recurring_meeting_series_create: "建立會議系列"
   label_recurring_meeting_series_edit: "編輯系列會議"
@@ -213,8 +213,8 @@ zh-TW:
         new_date_time: "新日期/時間"
     label_mail_all_participants: "發送電子郵件給所有參與者"
     types:
-      classic: "經典"
-      classic_text: "將會議組織為單一可格式化的文字議程和規程。"
+      classic: "傳統(不支援)"
+      classic_text: "注意：傳統會議將在 OpenProject 的下一個版本中刪除。"
       structured: "結構化"
       one_time: "一次性"
       recurring: "重覆"
@@ -286,7 +286,7 @@ zh-TW:
       full_past: "%{base} 於 %{time}, 結束於 %{end_date}"
       never_ending: "%{base} 在 %{time}"
     open:
-      title: "開始"
+      title: "議程已建立"
       subtitle: >
         公開會議的議程可以編輯，並顯示在個別使用者的「我的會議」區段中。變更會議系列範本不會影響已開放的會議。
       blankslate:
@@ -397,7 +397,7 @@ zh-TW:
   label_meeting_state_in_progress: "進行中"
   label_meeting_reopen_action: "重新開啟會議"
   label_meeting_close_action: "關閉會議"
-  label_meeting_in_progress_action: "標記為進行中"
+  label_meeting_in_progress_action: "會議開始"
   text_meeting_open_description: "此會議是開放的。您可以新增/移除議程項目，並隨意編輯。一旦議程準備就緒，請將其標示為進行中，以記錄結果。"
   text_meeting_closed_description: "此會議已關閉。您不能再新增/移除議程項目。"
   text_meeting_in_progress_description: "此會議正在進行中。您可以記錄每個議程項目的結果、重新排列它們，甚至新增新的項目。會議完成後，您可以將其標示為已結束，以鎖定它。"

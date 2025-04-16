@@ -57,6 +57,12 @@ hu:
         start_time: Kezdés
         end_time: Finish time
     models:
+      time_entry:
+        one: "Time entry"
+        other: "Time entries"
+      cost_entry:
+        one: "Cost entry"
+        other: "Cost entries"
       cost_type:
         one: "Költségtípus"
         other: "Költségtípusok"
@@ -175,8 +181,6 @@ hu:
   text_reassign_time_and_cost_entries: "A work packege-hez jelentett órák és költségek újrafelvitele:"
   text_warning_hidden_elements: "Néhány bejegyzés lehet, hogy kimaradt az összesítésből."
   week: "hét"
-  js:
-    text_are_you_sure: "Biztos vagy benne?"
   api_v3:
     errors:
       validation:

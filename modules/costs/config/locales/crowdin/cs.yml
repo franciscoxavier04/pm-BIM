@@ -57,6 +57,16 @@ cs:
         start_time: Čas zahájení
         end_time: Čas dokončení
     models:
+      time_entry:
+        one: "Time entry"
+        few: "Time entries"
+        many: "Time entries"
+        other: "Time entries"
+      cost_entry:
+        one: "Cost entry"
+        few: "Cost entries"
+        many: "Cost entries"
+        other: "Cost entries"
       cost_type:
         one: "Druh nákladů"
         few: "Typy nákladů"
@@ -179,8 +189,6 @@ cs:
   text_reassign_time_and_cost_entries: "Přiřadit k tomuto pracovnímu balíčku nahlášené hodiny a náklady:"
   text_warning_hidden_elements: "Některé položky mohly být z agregace vyloučeny."
   week: "týden"
-  js:
-    text_are_you_sure: "Jste si jisti?"
   api_v3:
     errors:
       validation:

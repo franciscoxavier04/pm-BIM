@@ -232,7 +232,7 @@ module Components
         page.find_test_selector("op-submit-work-package-journal-form").click
       end
 
-      def add_comment(text: nil, save: true)
+      def add_comment(text: nil, save: true, restricted: false)
         if page.find_test_selector("op-open-work-package-journal-form-trigger")
           open_new_comment_editor
         else
@@ -241,6 +241,12 @@ module Components
 
         page.within_test_selector("op-work-package-journal-form-element") do
           get_editor_form_field_element.set_value(text)
+
+          if restricted
+            expect(page).to have_test_selector("op-work-package-journal-restricted-comment-checkbox")
+            page.check("Restrict visibility")
+          end
+
           page.find_test_selector("op-submit-work-package-journal-form").click if save
         end
 
@@ -292,6 +298,16 @@ module Components
         end
 
         expect(page).to have_test_selector("op-work-package-journal-form-element")
+      end
+
+      def dismiss_comment_editor_with_esc
+        page.find_test_selector("op-work-package-journal-form-element").send_keys(:escape)
+      end
+
+      def dismiss_comment_editor_with_cancel_button
+        page.within_test_selector("op-work-package-journal-form") do
+          click_on "Cancel"
+        end
       end
 
       def get_all_comments_as_array
