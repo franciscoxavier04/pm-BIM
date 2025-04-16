@@ -67,5 +67,5 @@ OpenProject::FeatureDecisions.add :comments_with_restricted_visibility,
 
 OpenProject::FeatureDecisions.add :meeting_backlogs,
                                   description: "Enables backlogs for meetings. " \
-                                               "Note: Meetings created with this flag off will not be accessible " \
-                                               "after activating it."
+                                               "Note: Meetings created with this flag off and recurring " \
+                                               "meetings will not be accessible after activating it."
