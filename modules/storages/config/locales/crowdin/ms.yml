@@ -27,7 +27,7 @@ ms:
         host: Hos
         name: Nama
         provider_type: Jenis penyedia
-        tenant: ID Direktori (penyewa)
+        tenant: ID Direktori (penyewa) 
     errors:
       messages:
         invalid_host_url: bukan URL yang sah.
@@ -50,7 +50,7 @@ ms:
             host:
               authorization_header_missing: belum disediakan sepenuhnya. Contoh Nextcloud tidak menerima pengepala "Dibenarkan" yang diperlukan untuk token Bearer berdasarkan kebenaran permintaan API. Sila periksa dua kali server konfigurasi HTTP anda dengan teliti.
               cannot_be_connected_to: tidak dapat dihubungi. Sila pastikan hos boleh dihubungi dan apl penyepaduan OpenProject dipasang.
-              minimal_nextcloud_version_unmet: tidak memenuhi keperluan versi minimum (haruslah Nextcloud 23 atau lebih tinggi)
+              minimal_nextcloud_version_unmet: tidak memenuhi keperluan versi minimum (haruslah Nextcloud 23 atau lebih tinggi) 
               not_nextcloud_server: ialah bukan server Nextcloud
               op_application_not_installed: kelihatan tidak mempunyai aplikasi "Integrasi OpenProject" yang terpasang. Sila pasangkannya terlebih dahulu dan cuba sekali lagi.
             password:
@@ -214,7 +214,7 @@ ms:
         manual_management: Akses dan folder yang dikendalikan secara manual
         manual_management_description: Ciptakan dan uruskan folder mengikut projek sendiri secara manual. Anda perlu memastikan pengguna-pengguna berkaitan mempunyai akses secara manual.
         setup_incomplete: Pilih jenis pengurusan akses pengguna dan penciptaan folder.
-        subtitle: Pengurusan akses
+        subtitle: Pengurusan akses 
       access_management_section: Akses dan folder projek
       automatically_managed_folders: Folder yang dikendalikan secara automatik
       general_information: Maklumat umum
@@ -313,7 +313,7 @@ ms:
         integration: OneDrive/SharePoint
         missing_client_id_for_redirect_uri: Sila isikan nilai-nilai OAuth untuk menjana URI
         oauth_client_redirect_uri: Sila salin nilai ini ke URI ubah hala Web baharu di bawah Ubah Hala URI.
-        oauth_client_secret: Sekiranya tiada aplikasi rahsia pelanggan di bawah kelayakan Pelanggan, sila cipta yang baharu.
+        oauth_client_secret: Sekiranya tiada aplikasi rahsia pelanggan di bawah kelayakan Pelanggan, sila cipta yang baharu. 
         oauth_configuration: Salin nilai-nilai ini dari aplikasi yang diingini di %{application_link_text}.
         provider_configuration: Sila pastikan anda mempunyai hak pentadbiran dalam %{application_link_text} atau hubungi pentadbir Microsoft anda sebelum membuat penyediaan. Anda juga perlu mendaftar aplikasi Azure atau menggunakan yang sedia ada untuk pengesahan di portal.
         tenant_id: Sila salin ID Direktori (penyewa) dari aplikasi yang diingini dan pendaftaran Aplikasi di %{application_link_text}.
@@ -397,7 +397,7 @@ ms:
         subtitle: Tambah storan fail luaran untuk memuat naik, pautkan dan uruskan fail di pakej kerja.
       managed_project_folders:
         subtitle: |-
-          Benarkan OpenProject ciptakan folder mengikut projek secara automatik. Ini dicadangkan kerana ia memastikan setiap ahli
+          Benarkan OpenProject ciptakan folder mengikut projek secara automatik. Ini dicadangkan kerana ia memastikan setiap ahli 
           pasukan sentiasa mempunyai kebenaran akses yang betul.
         subtitle_short: Benarkan OpenProject ciptakan folder mengikut projek secara automatik.
         title: Folder projek yang dikendalikan secara automatik
@@ -418,7 +418,7 @@ ms:
         name: Nextcloud
         name_placeholder: cth. Nextcloud
       one_drive:
-        label_oauth_client_id: ID Aplikasi (pelanggan) OAuth Azure
+        label_oauth_client_id: ID Aplikasi (pelanggan) OAuth Azure 
         label_oauth_client_secret: Nilai Pelanggan Rahsia OAuth Azure
         name: OneDrive/SharePoint
         name_placeholder: cth. OneDrive
@@ -438,6 +438,6 @@ ms:
     successful_storage_connection: Storan berjaya disambungkan! Ingat untuk mengaktifkan storan dalam tab Projek untuk setiap projek yang diingini untuk menggunakannya.
     upsale:
       description: |-
-        Integrasikan OneDrive/SharePoint anda sebagai storan fail dengan OpenProject. Muat naik fail dan pautkan terus ke
+        Integrasikan OneDrive/SharePoint anda sebagai storan fail dengan OpenProject. Muat naik fail dan pautkan terus ke 
         pakej kerja dalam projek.
       title: Integrasi OneDrive/SharePoint
