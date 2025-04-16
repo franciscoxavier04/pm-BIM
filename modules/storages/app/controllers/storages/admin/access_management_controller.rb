@@ -86,10 +86,6 @@ class Storages::Admin::AccessManagementController < ApplicationController
     respond_with_turbo_streams
   end
 
-  def default_breadcrumb
-    ActionController::Base.helpers.link_to(t(:project_module_storages), admin_settings_storages_path)
-  end
-
   private
 
   def find_model_object(object_id = :storage_id)

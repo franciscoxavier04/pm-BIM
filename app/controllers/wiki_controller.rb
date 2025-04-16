@@ -410,14 +410,6 @@ class WikiController < ApplicationController
     page.editable_by?(User.current)
   end
 
-  def default_breadcrumb
-    Wiki.model_name.human
-  end
-
-  def show_local_breadcrumb
-    false
-  end
-
   def redirect_to_show
     redirect_to action: :show, project_id: @project, id: @page
   end
