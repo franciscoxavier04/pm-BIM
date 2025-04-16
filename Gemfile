@@ -151,7 +151,7 @@ gem "gon", "~> 6.4.0"
 gem "lograge", "~> 0.14.0"
 
 # Structured warnings to selectively disable them in production
-gem "structured_warnings", "~> 0.4.0"
+gem "structured_warnings", "~> 0.5.0"
 
 # catch exceptions and send them to any airbrake compatible backend
 # don't require by default, instead load on-demand when actually configured
