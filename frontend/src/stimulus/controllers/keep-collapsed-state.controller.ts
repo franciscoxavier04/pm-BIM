@@ -30,27 +30,14 @@
 
 import { ApplicationController } from 'stimulus-use';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
+import { appendCollapsedState } from '../helpers/collapsible-helper';
 
 export default class KeepCollapsedStateController extends ApplicationController {
   private turboRequests:TurboRequestsService;
 
-  static targets = ['section'];
-  static values = {
-    collapsed: Boolean,
-  };
-
-  declare collapsedValue:boolean;
-  declare hasCollapsedValue:boolean;
-
-  declare sectionTarget:HTMLElement;
-
   async connect() {
     const context = await window.OpenProject.getPluginContext();
     this.turboRequests = context.services.turboRequests;
-  }
-
-  rememberState() {
-    this.collapsedValue = this.sectionTarget.classList.contains('CollapsibleHeader--collapsed');
   }
 
   interceptMoveTo(event:Event):void {
@@ -59,9 +46,7 @@ export default class KeepCollapsedStateController extends ApplicationController 
     const target = event.currentTarget as HTMLElement;
     const url = new URL(target.dataset.href!, window.location.origin);
 
-    if (this.hasCollapsedValue) {
-      url.searchParams.append('collapsed', this.collapsedValue.toString());
-    }
+    appendCollapsedState(url.searchParams);
 
     void this
       .turboRequests

@@ -28,15 +28,14 @@
  * ++
  */
 
-import GenericDragAndDropController from './generic-drag-and-drop.controller';
-import { appendCollapsedState } from '../../helpers/collapsible-helper';
+export function appendCollapsedState(
+  target:URLSearchParams | FormData,
+  headerSelector:string = '.CollapsibleHeader',
+):void {
+  const header = document.querySelector(headerSelector);
 
-export default class MeetingsDragAndDropController extends GenericDragAndDropController {
-  protected override buildData(el:Element, target:Element):FormData {
-    const data = super.buildData(el, target);
-
-    appendCollapsedState(data);
-
-    return data;
+  if (header) {
+    const collapsed = header.classList.contains('CollapsibleHeader--collapsed');
+    target.append('collapsed', collapsed.toString());
   }
 }
