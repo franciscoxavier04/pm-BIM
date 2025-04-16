@@ -135,11 +135,11 @@ es:
   label_recurring_meeting_next_occurrence: "Siguiente repetición"
   label_recurring_meeting_no_end_date: "Hay más reuniones programadas (%{schedule})."
   label_recurring_meeting_more:
-    one: "There is one more scheduled meeting (%{schedule})."
-    other: "There are %{count} more scheduled meetings (%{schedule})."
+    one: "Hay una reunión más programada (%{schedule})."
+    other: "Hay %{count} reuniones más programadas (%{schedule})."
   label_recurring_meeting_more_past:
-    one: "There is one more past meeting."
-    other: "There are %{count} more past meetings."
+    one: "Hay una reunión más pasada."
+    other: "Hay %{count} reuniones más pasadas."
   label_recurring_meeting_show_more: "Mostrar más"
   label_recurring_meeting_series_create: "Crear serie de reuniones"
   label_recurring_meeting_series_edit: "Editar serie de reuniones"
@@ -217,8 +217,8 @@ es:
         new_date_time: "Fecha y hora nuevas"
     label_mail_all_participants: "Enviar email a todos los participantes"
     types:
-      classic: "Classic (unsupported)"
-      classic_text: "Note: Classic meetings will be removed in the next version of OpenProject."
+      classic: "Clásicas (sin soporte)"
+      classic_text: "Nota: Las reuniones clásicas se eliminarán en la próxima versión de OpenProject."
       structured: "Estructurada"
       one_time: "Única"
       recurring: "Periódico"

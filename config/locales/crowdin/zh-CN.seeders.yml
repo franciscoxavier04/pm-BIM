@@ -163,6 +163,7 @@ zh-CN:
 
                     可以在这里找到我们的 [用户指南](https://www.openproject.org/docs/user-guide/) 。
                     遇到任何问题或需要支持，请联系我们：[support@openproject.com](mailto:support@openproject.com)。
+
               item_5:
                 options:
                   name: 工作包
@@ -212,8 +213,8 @@ zh-CN:
             * 插入文本和图片，也可以从其他文档中复制和粘贴
             * 创建带父页面的页面层次结构
             * 在项目菜单中包含wiki页面
-            * 使用宏来包含，例如：目录、工作包列表或甘特图
-            * 在其他文本字段中包含wiki页面，例如：项目概览页面
+            * 使用宏来包含，例如：目录、工作包列表或甘特图 
+            * 在其他文本字段中包含wiki页面，例如：项目概览页面 
             * 包含指向其他文档的链接
             * 查看更改历史
             * 以 Markdown 格式查看

@@ -329,7 +329,7 @@ pl:
     label_edit_storage_host: Edytuj hosta magazynu
     label_existing_manual_folder: Istniejący folder z ręcznie zarządzanymi uprawnieniami
     label_file_storage: Magazyn plików
-    label_host: Adres URL hosta
+    label_host: Adres URL hosta 
     label_inactive: Nieaktywny
     label_managed_project_folders:
       application_password: Hasło aplikacji

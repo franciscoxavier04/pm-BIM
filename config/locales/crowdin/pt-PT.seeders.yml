@@ -86,8 +86,8 @@ pt-PT:
           name: Planeamento
           start_gate: Pronto para o planeamento
         item_2:
-          name: Em execução
-          start_gate: Pronto para a execução
+          name: A executar
+          start_gate: Pronto para executar
         item_3:
           name: Encerramento
           start_gate: Pronto para o encerramento
