@@ -270,13 +270,12 @@ class WorkPackages::DatePickerController < ApplicationController
                               contract_class: WorkPackages::CreateContract)
                          .call(wp_params)
 
-      field_set_to_nwd = field_set_to_non_working_day(wp_params)
-      if field_set_to_nwd.present?
+      fields_set_to_nwd = fields_set_to_non_working_day(wp_params)
+      fields_set_to_nwd.each do |field|
         @work_package
           .errors
-          .add(field_set_to_nwd,
-               I18n.t("activerecord.errors.models.work_package.attributes.#{field_set_to_nwd}.cannot_be_non_working"))
-
+          .add(field,
+               I18n.t("activerecord.errors.models.work_package.attributes.#{field}.cannot_be_non_working"))
       end
 
       service_result
@@ -342,10 +341,14 @@ class WorkPackages::DatePickerController < ApplicationController
     wp_params
   end
 
-  def field_set_to_non_working_day(wp_params)
-    return :start_date if wp_params[:start_date].present? && set_to_a_non_working_day?(:start_date)
+  def fields_set_to_non_working_day(wp_params)
+    result = []
 
-    :due_date if wp_params[:due_date].present? && set_to_a_non_working_day?(:due_date)
+    %i[start_date due_date].each do |field|
+      result << field if wp_params[field].present? && set_to_a_non_working_day?(field)
+    end
+
+    result
   end
 
   def set_to_a_non_working_day?(field)
@@ -354,7 +357,7 @@ class WorkPackages::DatePickerController < ApplicationController
 
     @working_day_service ||= WorkPackages::Shared::WorkingDays.new
     begin
-      !!params.require(:work_package)[:ignore_non_working_days] && @working_day_service.non_working?(Date.parse(date))
+      !@work_package.ignore_non_working_days? && @working_day_service.non_working?(Date.parse(date))
     rescue Date::Error
       false
     end
