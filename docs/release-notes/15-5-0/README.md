@@ -14,6 +14,10 @@ We released [OpenProject 15.5.0](https://community.openproject.org/versions/2171
 
 ## Important feature changes
 
+Take a look at our release video showing the most important features introduced in OpenProject 15.5.0:
+  
+![Release video of OpenProject 15.5](https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject_15_5_release.mp4)
+
 ### Filter for descendants (children and grandchildren) of work packages
 
 In OpenProject 15.5, you can now filter for all descendants of a work package — including children, grandchildren, and deeper levels. This is especially helpful when focusing on a specific part of a project that includes multiple levels of work packages.
