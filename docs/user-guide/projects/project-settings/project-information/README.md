@@ -32,7 +32,7 @@ If you click the **three dot** icon, you will see a dropdown menu with the follo
 
 - [Copy a project](../../#copy-a-project)
 - [Archive a project](../../#archive-a-project)
-- [Set a project as a tempate](../../project-templates) 
+- [Set a project as a template](../../project-templates) 
 - [Delete a project](../../#delete-a-project)
 
 ![Copy, archive or delete a project in project settings in OpenProject](openproject_user_guide_project_settings_information_more_icon_menu.png)
