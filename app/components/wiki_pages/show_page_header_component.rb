@@ -29,7 +29,7 @@
 #++
 
 module WikiPages
-  class WikiHeaderComponent < ApplicationComponent
+  class ShowPageHeaderComponent < ApplicationComponent
     include OpPrimer::ComponentHelpers
     include ApplicationHelper
 

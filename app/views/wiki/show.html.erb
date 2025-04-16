@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
-<%= render(WikiPages::WikiHeaderComponent.new(page: @page, project: @project, editable: @editable)) %>
+<%= render(WikiPages::ShowPageHeaderComponent.new(page: @page, project: @project, editable: @editable)) %>
 <%= call_hook :wiki_navigation %>
 <% if @page.current_version? %>
   <% title = h(@page.title) %>
