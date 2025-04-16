@@ -244,8 +244,6 @@ class UsersController < ApplicationController
     else
       @user = User.find(params[:id])
     end
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   def authorize_for_user

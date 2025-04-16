@@ -75,8 +75,6 @@ class CustomFieldsController < ApplicationController
 
   def find_custom_field
     @custom_field = CustomField.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   def check_custom_field

@@ -38,6 +38,9 @@
   &-input-wrap[invalid='true'] input:not(:focus)
     border-color: var(--control-borderColor-danger)
 
+  &-spacingWrapper > :empty
+    display: none
+
 .UnderlineNav
   @include no-visible-scroll-bar
   margin-bottom: 12px

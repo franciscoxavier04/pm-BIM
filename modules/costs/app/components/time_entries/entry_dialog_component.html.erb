@@ -15,7 +15,7 @@
       <% if time_entry.persisted? %>
         <% flex.with_column do %>
           <%= render(
-                Primer::ButtonComponent.new(
+                Primer::Beta::Button.new(
                   scheme: :danger,
                   test_selector: "destroy-time-entry-button",
                   data: {
@@ -32,10 +32,10 @@
       <% flex.with_column(classes: "time-entry-button-push") %>
       <% flex.with_column do %>
         <%= render(
-              Primer::ButtonComponent.new(data: { "close-dialog-id": "time-entry-dialog" })
+              Primer::Beta::Button.new(data: { "close-dialog-id": "time-entry-dialog" })
             ) { I18n.t("button_cancel") } %>
         <%= render(
-              Primer::ButtonComponent.new(
+              Primer::Beta::Button.new(
                 scheme: :primary,
                 type: :submit,
                 test_selector: "create-time-entry-button",

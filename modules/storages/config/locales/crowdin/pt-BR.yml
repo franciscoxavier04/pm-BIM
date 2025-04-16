@@ -250,6 +250,13 @@ pt-BR:
         oidc_cant_refresh_token: Ocorreu um erro ao tentar verificar seu acesso ao armazenamento. Verifique os logs do servidor para mais informações.
         oidc_non_oidc_user: O usuário atual, embora provisionado, não foi provisionado por um Provedor de Identidade OpenID Connect (OIDC). Execute a verificação novamente com um usuário provisionado pelo OIDC.
         oidc_non_provisioned_user: O usuário atual não foi fornecido por um Provedor de Identidade OpenID Connect. Execute a verificação novamente com um usuário fornecido.
+        one_drive:
+          client_cant_delete_folder: O cliente está com dificuldades para excluir pastas. Verifique a documentação de configuração do seu armazenamento.
+          client_write_permission_missing: O cliente parece não ter permissão para gravar. Verifique a documentação de configuração do armazenamento.
+          drive_id_not_found: O drive Id configurado não foi encontrado. Verifique a configuração.
+          drive_id_wrong: O Id da unidade configurada parece ser inválido. Verifique a configuração.
+          existing_test_folder: A pasta %{folder_name}, necessária para o teste, já existe. Exclua-a e tente novamente.
+          unexpected_content: Conteúdo inesperado encontrado na unidade.
         placeholder: Verifique sua conexão com o servidor.
         subtitle: Validação de conexão
         tenant_id_wrong: O ID do diretório (inquilino) configurado é inválido. Verifique a configuração.

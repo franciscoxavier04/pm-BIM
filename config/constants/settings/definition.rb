@@ -409,9 +409,13 @@ module Settings
         allowed: %w[standard bim]
       },
       ee_manager_visible: {
-        description: "Show or hide the Enterprise configuration page and enterprise banners",
+        description: "Show the Enterprise configuration page",
         default: true,
         writable: false
+      },
+      ee_hide_banners: {
+        description: "Hide the Enterprise enterprise banners",
+        default: false
       },
       enable_internal_assets_server: {
         description: "Serve assets through the Rails internal asset server",

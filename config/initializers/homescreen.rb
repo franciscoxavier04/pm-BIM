@@ -56,7 +56,7 @@ OpenProject::Static::Homescreen.manage :blocks do |blocks|
     },
     {
       partial: "community",
-      if: Proc.new { EnterpriseToken.show_banners? || OpenProject::Configuration.show_community_links? }
+      if: Proc.new { OpenProject::Configuration.show_community_links? }
     },
     {
       partial: "administration",
@@ -64,7 +64,7 @@ OpenProject::Static::Homescreen.manage :blocks do |blocks|
     },
     {
       partial: "upsale",
-      if: Proc.new { EnterpriseToken.show_banners? }
+      if: Proc.new { !EnterpriseToken.hide_banners? }
     }
   )
 end

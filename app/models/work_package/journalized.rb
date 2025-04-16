@@ -33,6 +33,7 @@ module WorkPackage::Journalized
     acts_as_journalized journals_association_extension: proc {
       def restricted_visible
         if OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? &&
+            proxy_association.owner.project.enabled_comments_with_restricted_visibility &&
             User.current.allowed_in_project?(:view_comments_with_restricted_visibility, proxy_association.owner.project)
           all
         else

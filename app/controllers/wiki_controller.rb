@@ -367,8 +367,6 @@ class WikiController < ApplicationController
     @project = Project.find(params[:project_id])
     @wiki = @project.wiki
     render_404 unless @wiki
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   # Finds or created the wiki page associated

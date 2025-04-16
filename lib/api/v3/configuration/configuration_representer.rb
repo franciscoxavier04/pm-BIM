@@ -98,6 +98,11 @@ module API
                      .map { |flag| flag.camelize(:lower) }
                  }
 
+        property :available_features,
+                 getter: ->(*) {
+                   EnterpriseToken.current&.available_features || []
+                 }
+
         property :allowed_link_protocols,
                  getter: ->(*) { Setting::AllowedLinkProtocols.all }
 

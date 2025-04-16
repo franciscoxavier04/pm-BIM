@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-require_relative "../../../support/pages/structured_meeting/show"
+require_relative "../../../support/pages/meetings/show"
 
 RSpec.describe "Meeting Outcomes CRUD", :js do
   shared_let(:project) { create(:project, enabled_module_names: %w[meetings]) }
@@ -46,7 +46,7 @@ RSpec.describe "Meeting Outcomes CRUD", :js do
            member_with_permissions: { project => %i[view_meetings manage_agendas close_meeting_agendas] }
   end
   shared_let(:meeting) do
-    create :structured_meeting,
+    create :meeting,
            project:,
            start_time: "2024-12-31T13:30:00Z",
            duration: 1.5,
@@ -59,7 +59,7 @@ RSpec.describe "Meeting Outcomes CRUD", :js do
 
   let(:current_user) { user }
   let(:state) { :in_progress }
-  let(:show_page) { Pages::StructuredMeeting::Show.new(meeting) }
+  let(:show_page) { Pages::Meetings::Show.new(meeting) }
   let(:field) do
     TextEditorField.new(page, "Outcome", selector: test_selector("meeting-outcome-input"))
   end
