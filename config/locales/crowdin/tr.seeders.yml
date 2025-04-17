@@ -143,7 +143,7 @@ tr:
             widgets:
               item_0:
                 options:
-                  name: Hoş geldiniz
+                  name: Hoş geldiniz 
               item_1:
                 options:
                   name: Başlarken
@@ -315,7 +315,7 @@ tr:
             widgets:
               item_0:
                 options:
-                  name: Hoş geldiniz
+                  name: Hoş geldiniz 
               item_1:
                 options:
                   name: Başlarken

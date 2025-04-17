@@ -28,8 +28,6 @@
 # Changes to this file should be kept in sync with
 # frontend/src/app/shared/helpers/chronic_duration.js.
 
-# rubocop:disable Metrics/AbcSize
-# rubocop:disable Metrics/PerceivedComplexity
 module ChronicDuration
   extend self
 
@@ -81,7 +79,7 @@ module ChronicDuration
   # Given an integer and an optional format,
   # returns a formatted string representing elapsed time
   # rubocop:disable Lint/UselessAssignment
-  def output(seconds, opts = {})
+  def output(seconds, opts = {}) # rubocop:disable Metrics/AbcSize, Metrics/PerceivedComplexity
     int = seconds.to_i
     seconds = int if seconds - int == 0 # if seconds end with .0
 
@@ -102,7 +100,7 @@ module ChronicDuration
     month = days_per_month * day
     year = SECONDS_PER_YEAR
 
-    if opts[:format] == :hours_only
+    if %i[hours_only hours_and_minutes].include?(opts[:format])
       hours = seconds / 3600.0
       seconds = 0
     elsif opts[:format] == :hours_colon_minutes
@@ -189,6 +187,11 @@ module ChronicDuration
       hours = hours.round(2)
       hours_int = hours.to_i
       hours = hours_int if hours - hours_int == 0 # if hours end with .0
+    when :hours_and_minutes
+      dividers = { hours: "h", minutes: "m", keep_zero: false }
+
+      minutes = ((hours % 1) * 60).round
+      hours = hours.floor
     when :hours_colon_minutes
       dividers = {
         hours: ":", minutes: "", keep_zero: true
@@ -299,7 +302,7 @@ module ChronicDuration
   end
 
   # Parse 3:41:59 and return 3 hours 41 minutes 59 seconds
-  def filter_by_type(string)
+  def filter_by_type(string) # rubocop:disable Metrics/AbcSize
     chrono_units_list = duration_units_list.reject { |v| v == "weeks" }
 
     if string.delete(" ")&.match?(time_matcher)
@@ -326,7 +329,7 @@ module ChronicDuration
 
   # Get rid of unknown words and map found
   # words to defined time units
-  def filter_through_white_list(string, opts)
+  def filter_through_white_list(string, opts) # rubocop:disable Metrics/AbcSize, Metrics/PerceivedComplexity
     res = []
     string.split.each do |word|
       if word&.match?(float_matcher)
@@ -387,5 +390,3 @@ module ChronicDuration
     %w[and with plus]
   end
 end
-# rubocop:enable Metrics/AbcSize
-# rubocop:enable Metrics/PerceivedComplexity

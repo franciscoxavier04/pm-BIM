@@ -462,6 +462,7 @@ el:
     label_menu_collapse: "σύμπτυξη"
     label_menu_expand: "επέκταση"
     label_more_than_ago: "σε περισσότερο από ημέρες πριν"
+    label_moderate_comment: "Moderate comment"
     label_next: "Επόμενο"
     label_no_color: "Χωρίς χρώμα"
     label_no_data: "Δεν υπάρχουν δεδομένα για εμφάνιση"

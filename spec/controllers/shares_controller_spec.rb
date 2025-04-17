@@ -57,8 +57,9 @@ RSpec.describe SharesController do
           mock_permissions_for(user, &:forbid_everything)
         end
 
-        it "raises a RecordNotFound error" do
-          expect { make_request }.to raise_error(ActiveRecord::RecordNotFound)
+        it "returns a 404 status" do
+          make_request
+          expect(response).to have_http_status(:not_found)
         end
       end
 
@@ -87,8 +88,9 @@ RSpec.describe SharesController do
           mock_permissions_for(user, &:forbid_everything)
         end
 
-        it "raises a RecordNotFound error" do
-          expect { make_request }.to raise_error(ActiveRecord::RecordNotFound)
+        it "returns a 404 status" do
+          make_request
+          expect(response).to have_http_status(:not_found)
         end
       end
 

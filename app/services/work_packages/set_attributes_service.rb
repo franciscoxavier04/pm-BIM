@@ -293,6 +293,7 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
   end
 
   def update_dates_from_self
+    # this method is only called by #update_dates when there are no children
     min_start = new_start_date
 
     return unless min_start
@@ -388,6 +389,7 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
   end
 
   def new_start_date
+    # this method is only called by #update_dates_from_self when there are no children
     if work_package.schedule_manually?
       # Weird rule from SetScheduleService: if the work package does not have a
       # start date, it inherits it from the parent soonest start, regardless of
@@ -396,37 +398,38 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
 
       days.soonest_working_day(new_start_date_from_parent)
     else
-      min_start = new_start_date_from_parent || new_start_date_from_self
+      min_start = [new_start_date_from_parent, work_package.soonest_start].compact.max
       days.soonest_working_day(min_start)
     end
   end
 
+  # Returns the soonest start date from the parent if the parent has changed.
+  # If the parent has changed, #soonest_start would be inaccurate.
   def new_start_date_from_parent
     return unless work_package.parent_id_changed? &&
                   work_package.parent
 
-    work_package.parent.soonest_start
-  end
-
-  def new_start_date_from_self
-    return unless work_package.schedule_manually_changed?
-
-    [min_child_date, work_package.soonest_start].compact.max
+    work_package.parent.soonest_start(working_days_from: work_package)
   end
 
   def new_due_date(min_start)
-    duration = children_duration || work_package.duration
-    return unless work_package.due_date || duration
+    # this method is only called by #update_dates_from_self when there are no children
+    if work_package.due_date_came_from_user?
+      work_package.due_date
+    elsif reuse_current_due_date?
+      # if due date is before start date, then start is used as due date.
+      [min_start, work_package.due_date].max
+    elsif work_package.duration
+      days.due_date(min_start, work_package.duration)
+    end
+  end
 
-    due_date =
-      if duration
-        days.due_date(min_start, duration)
-      else
-        work_package.due_date
-      end
+  def reuse_current_due_date?
+    return false if work_package.due_date.nil?
+    return true if work_package.ignore_non_working_days_came_from_user?
 
-    # if due date is before start date, then start is used as due date.
-    [min_start, due_date].max
+    # use due date only if duration cannot be used
+    work_package.duration.nil?
   end
 
   def work_package

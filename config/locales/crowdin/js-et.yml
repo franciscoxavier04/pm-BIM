@@ -463,6 +463,7 @@ et:
     label_menu_collapse: "sulge"
     label_menu_expand: "laienda"
     label_more_than_ago: "vanem kui"
+    label_moderate_comment: "Moderate comment"
     label_next: "Järgmine"
     label_no_color: "No color"
     label_no_data: "Pole"

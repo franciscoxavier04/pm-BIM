@@ -290,8 +290,9 @@ it:
   global_search:
     placeholder: "Cerca in %{app_title}"
     overwritten_tabs:
-      wiki_pages: "Wiki"
+      all: "All"
       messages: "Forum"
+      wiki_pages: "Wiki"
   groups:
     index:
       no_results_title_text: Al momento non esistono gruppi.
@@ -2023,7 +2024,7 @@ it:
           Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
       comments_with_restricted_visibility:
         title: "For your eyes only"
-        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly. Available only through the enterprise professional plan."
+        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "Attività di monitoraggio dei tempi"
   enumeration_work_package_priorities: "Priorità della macro-attività"
   enumeration_reported_project_statuses: "Stato di progetto segnalato"
@@ -3870,7 +3871,7 @@ it:
       not_allowed_text: "Non hai i permessi necessari per visualizzare questa pagina."
       activities:
         enable_comments_with_restricted_visibility: "Abilita commenti a visibilità limitata"
-        helper_text: "I commenti limitati consentono a un team interno di comunicare privatamente. Questi sono visibili solo per selezionare i ruoli che hanno i permessi necessari e non saranno visibili pubblicamente. %{link}"
+        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Testo semplice"

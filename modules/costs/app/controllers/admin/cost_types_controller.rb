@@ -151,8 +151,6 @@ module Admin
 
     def find_cost_type
       @cost_type = CostType.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      render_404
     end
 
     def show_local_breadcrumb

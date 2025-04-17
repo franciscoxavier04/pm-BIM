@@ -463,6 +463,7 @@ mn:
     label_menu_collapse: "collapse"
     label_menu_expand: "expand"
     label_more_than_ago: "more than days ago"
+    label_moderate_comment: "Moderate comment"
     label_next: "Next"
     label_no_color: "No color"
     label_no_data: "No data to display"

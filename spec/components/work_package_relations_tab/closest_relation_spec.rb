@@ -215,21 +215,21 @@ RSpec.describe WorkPackageRelationsTab::ClosestRelation do
       let(:due_date) { Date.new(2020, 7, 14) }
 
       context "without a lag" do
-        it "returns the due date" do
-          expect(closest_relation(due_date:).soonest_start).to eq(Date.new(2020, 7, 14))
+        it "returns the day after the due date" do
+          expect(closest_relation(due_date:).soonest_start).to eq(Date.new(2020, 7, 15))
         end
       end
 
       context "with a positive lag" do
-        it "returns the combined due date and lag" do
-          expect(closest_relation(lag: 11, due_date:).soonest_start).to eq(Date.new(2020, 7, 25))
+        it "returns the day after the due date plus the lag" do
+          expect(closest_relation(lag: 3, due_date:).soonest_start).to eq(Date.new(2020, 7, 18))
         end
       end
 
       context "with a negative lag" do
         it "returns the combined due date and lag" do
           pending "negative lags are not yet implemented"
-          expect(closest_relation(lag: -2, due_date:).soonest_start).to eq(Date.new(2020, 7, 12))
+          expect(closest_relation(lag: -2, due_date:).soonest_start).to eq(Date.new(2020, 7, 13))
         end
       end
     end
@@ -238,21 +238,21 @@ RSpec.describe WorkPackageRelationsTab::ClosestRelation do
       let(:start_date) { Date.new(2020, 7, 14) }
 
       context "with a zero lag" do
-        it "returns the start date" do
-          expect(closest_relation(start_date:).soonest_start).to eq(Date.new(2020, 7, 14))
+        it "returns the day after the start date" do
+          expect(closest_relation(start_date:).soonest_start).to eq(Date.new(2020, 7, 15))
         end
       end
 
       context "with a positive lag" do
-        it "returns the combined start date and lag" do
-          expect(closest_relation(lag: 11, start_date:).soonest_start).to eq(Date.new(2020, 7, 25))
+        it "returns the day after the start date plus the lag" do
+          expect(closest_relation(lag: 3, start_date:).soonest_start).to eq(Date.new(2020, 7, 18))
         end
       end
 
       context "with a negative lag" do
         it "returns the combined start date and lag" do
           pending "negative lags are not yet implemented (Feature OP#38606)"
-          expect(closest_relation(lag: -2, start_date:).soonest_start).to eq(Date.new(2020, 7, 12))
+          expect(closest_relation(lag: -2, start_date:).soonest_start).to eq(Date.new(2020, 7, 13))
         end
       end
     end
@@ -263,7 +263,7 @@ RSpec.describe WorkPackageRelationsTab::ClosestRelation do
 
     it "outputs object for debugging" do
       expect(subject.inspect)
-        .to start_with("#<WorkPackageRelationsTab::ClosestRelation soonest_start: 2022-07-07")
+        .to start_with("#<WorkPackageRelationsTab::ClosestRelation soonest_start: 2022-07-08")
         .and include(subject.relation.inspect)
     end
   end

@@ -291,8 +291,9 @@ ru:
   global_search:
     placeholder: "Поиск в %{app_title}"
     overwritten_tabs:
-      wiki_pages: "Wiki"
+      all: "Bсе"
       messages: "Форум"
+      wiki_pages: "Wiki"
   groups:
     index:
       no_results_title_text: Нет групп.
@@ -1014,7 +1015,7 @@ ru:
         default_done_ratio: "% завершения"
       token/ical:
         calendar: "Календарь"
-        ical_token_query_assignment: "Query assignment"
+        ical_token_query_assignment: "Задание запроса"
       time_entry:
         activity: "Деятельность"
         hours: "Часы"
@@ -2043,7 +2044,7 @@ ru:
       define_custom_style: Пользовательская тема и логотип
       edit_attribute_groups: Редактировать группы атрибутов
       gantt_pdf_export: Экспорт диаграммы Ганта в PDF
-      grid_widget_wp_graph: Grid Widget Work Package Graph
+      grid_widget_wp_graph: График рабочего пакета виджета Таблица
       ldap_groups: Синхронизация пользователей LDAP и групп
       one_drive_sharepoint_file_storage: Файловое хранилище OneDrive/SharePoint
       placeholder_users: Пользователи-заполнители
@@ -2053,7 +2054,7 @@ ru:
       team_planner_view: Просмотр командных планировщиков
       two_factor_authentication: 2FA аутентификация
       virus_scanning: Антивирусное сканирование
-      work_package_query_relation_columns: Work Package Query Relation Columns
+      work_package_query_relation_columns: Колонки запросов пакета работ
       work_package_sharing: Поделиться пакетами работ с внешними пользователями
       work_package_subject_generation: Создание темы пакета работ
     upsale:
@@ -2102,7 +2103,7 @@ ru:
           Пользователи-заполнители — это способ назначить пакеты работ пользователям, которые не являются частью Вашего проекта. Они могут быть полезны в различных сценариях; например, если Вам нужно отслеживать задачи для ресурса, которые ещё не назван или недоступен, или если Вы не хотите дать доступ конкретному человеку доступ к OpenProject, но по-прежнему хотите отслеживать назначенные на него задачи.
       comments_with_restricted_visibility:
         title: "Только для вас"
-        description: "Ограниченные по видимости комментарии позволяют внутренней команде общаться между собой. Эти комментарии видны только определённым ролям проекта и никогда будут видны общедоступно. Функционал доступен только по коммерческому плану OpenProject."
+        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "Отслеживание времени"
   enumeration_work_package_priorities: "Приоритеты пакета работ"
   enumeration_reported_project_statuses: "Перечень отчетов о статусах проекта"
@@ -3950,7 +3951,7 @@ ru:
       not_allowed_text: "У вас нет необходимых прав для просмотра этой страницы."
       activities:
         enable_comments_with_restricted_visibility: "Включить ограниченные по видимости комментарии"
-        helper_text: "Ограниченные по видимости комментарии позволяют внутренней команде общаться между собой в частном порядке. Эти комментарии видны только определённым ролям проекта и никогда будут видны всем. %{link}"
+        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Обычный текст"

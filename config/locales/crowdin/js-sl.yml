@@ -462,6 +462,7 @@ sl:
     label_menu_collapse: "Zapri"
     label_menu_expand: "Razširi"
     label_more_than_ago: "pred več kot nekaj dnevi"
+    label_moderate_comment: "Moderate comment"
     label_next: "Naprej"
     label_no_color: "Brez barve"
     label_no_data: "Ni podatkov za prikaz"

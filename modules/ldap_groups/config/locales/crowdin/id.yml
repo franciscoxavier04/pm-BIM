@@ -3,7 +3,7 @@ id:
     upsale:
       ldap_groups:
         title: 'LDAP group synchronization'
-        description: 'Synchronize LDAP groups with OpenProject groups to manage users, change their permissions and facilitate user management across groups.'
+        description: 'Sinkronisasi grup LDAP dengan grup OpenProject untuk mengatur pengguna, mengubah hak akses, dan memberikan fasilitas manajemen antar grup.'
   plugin_openproject_ldap_groups:
     name: "OpenProject LDAP groups"
     description: "Synchronization of LDAP group memberships."
@@ -11,7 +11,7 @@ id:
     attributes:
       ldap_groups/synchronized_group:
         dn: 'DN'
-        auth_source: 'Auth source'
+        auth_source: 'Sumber Otentikasi'
         ldap_auth_source: 'koneksi LDAP'
         sync_users: 'Sinkronkan pengguna'
       ldap_groups/synchronized_filter:

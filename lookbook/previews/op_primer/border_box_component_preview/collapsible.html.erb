@@ -1,12 +1,10 @@
 <%= render(Primer::Beta::BorderBox.new) do |component| %>
   <% component.with_header do %>
-    <%= render(
-          Primer::OpenProject::BorderBox::CollapsibleHeader.new(
-            box: component,
-            title: "Collapsible header",
-            count: 3
-          )
-        ) %>
+    <%= render(Primer::OpenProject::BorderBox::CollapsibleHeader.new(box: component)) do |header|
+          header.with_count(count: 3)
+          header.with_title { "Collapsible title" }
+          header.with_description { "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor" }
+        end %>
   <% end %>
   <% component.with_body { "Body" } %>
   <% component.with_row do %>

@@ -292,8 +292,9 @@ ko:
   global_search:
     placeholder: "%{app_title}에서 검색"
     overwritten_tabs:
-      wiki_pages: "위키"
+      all: "All"
       messages: "포럼"
+      wiki_pages: "위키"
   groups:
     index:
       no_results_title_text: 그룹이 없습니다.
@@ -1987,7 +1988,7 @@ ko:
           Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
       comments_with_restricted_visibility:
         title: "For your eyes only"
-        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly. Available only through the enterprise professional plan."
+        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "시간 추적 활동"
   enumeration_work_package_priorities: "작업 패키지 우선 순위"
   enumeration_reported_project_statuses: "보고된 프로젝트 상태"
@@ -3829,7 +3830,7 @@ ko:
       not_allowed_text: "이 페이지를 보는 데 필요한 권한이 없습니다."
       activities:
         enable_comments_with_restricted_visibility: "제한된 표시 여부 코멘트 활성화"
-        helper_text: "제한된 코멘트를 사용하면 내부 팀은 비공개로 서로 커뮤니케이션할 수 있습니다. 이러한 코멘트는 필요한 권한을 가진 특정 역할에만 표시되며 공개적으로 표시되지 않습니다. %{link}"
+        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "일반 텍스트"

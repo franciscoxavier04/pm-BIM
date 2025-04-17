@@ -74,6 +74,7 @@ export class WpCustomActionComponent extends UntilDestroyedMixin implements OnIn
         this.untilDestroyed(),
       )
       .subscribe(() => this.cdRef.detectChanges());
+    this.fetchAction();
   }
 
   private fetchAction() {

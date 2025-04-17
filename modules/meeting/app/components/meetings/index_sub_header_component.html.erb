@@ -13,7 +13,7 @@
 
       if render_create_button?
         subheader.with_action_component do
-          render Primer::Alpha::ActionMenu.new(anchor_align: :end) do |menu|
+          render Primer::Alpha::ActionMenu.new(anchor_align: :end, size: :small) do |menu|
             menu.with_show_button(
               scheme: :primary,
               test_selector: "add-meeting-button",

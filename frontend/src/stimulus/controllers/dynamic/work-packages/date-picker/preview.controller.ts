@@ -374,7 +374,7 @@ export default class PreviewController extends DialogPreviewController {
       window.setTimeout(() => {
         // For mobile, we have to make sure that the active field is scrolled into view after the keyboard is opened
         fieldToHighlight.scrollIntoView(true);
-      }, 200);
+      }, 300);
       // Datepicker can need an update when the focused field changes. This
       // allows to switch between single and range mode in certain edge cases.
       this.readCurrentValues();
@@ -459,11 +459,6 @@ export default class PreviewController extends DialogPreviewController {
     if (this.isInitialValueEmpty('start_date') && !this.isTouched('start_date')) {
       // let start date be derived
       return;
-    }
-
-    if (!this.scheduleManuallyValue) {
-      // Fix the start date to avoid that it gets changed accidentally
-      this.markTouched('start_date');
     }
 
     if (this.isBeingEdited('start_date')) {
