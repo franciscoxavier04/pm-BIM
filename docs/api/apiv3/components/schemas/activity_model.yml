@@ -2,108 +2,96 @@
 ---
 type: object
 properties:
+  _type:
+    type: string
+    enum:
+      - "Activity::Comment"
+  id:
+    type: integer
+    description: Activity id
+    minimum: 1
+  version:
+    type: integer
+    description: Activity version
+    minimum: 1
+  comment:
+    $ref: './formattable.yml'
+  details:
+    type: array
+    items:
+      $ref: './formattable.yml'
+  createdAt:
+    type: string
+    format: date-time
+    description: Time of creation
+  updatedAt:
+    type: string
+    format: date-time
+    description: Time of update
   _embedded:
     type: object
     properties:
       attachments:
         allOf:
-        - "$ref": "./attachments_model.yml"
-        - description: |-
-            Collection of attachments for this activity
+          - $ref: './attachments_model.yml'
+          - description: Collection of attachments for this activity
       workPackage:
         allOf:
-        - "$ref": "./work_package_model.yml"
-        - description: |-
-            The work package this activity belongs to
-
-            # Conditions
-
-            Only embedded when the journable of the activity is a work package
-  id:
-    type: integer
-    description: Activity id
-    readOnly: true
-    exclusiveMinimum: 0
-  version:
-    type: integer
-    description: Activity version
-    readOnly: true
-    exclusiveMinimum: 0
-  comment:
-    allOf:
-    - "$ref": "./formattable.yml"
-    - {}
-  details:
-    type: array
-    readOnly: true
-    items:
-      allOf:
-      - "$ref": "./formattable.yml"
-  createdAt:
-    type: string
-    format: date-time
-    description: Time of creation
-    readOnly: true
-  updatedAt:
-    type: string
-    format: date-time
-    description: Time of update
-    readOnly: true
+          - $ref: './work_package_model.yml'
+          - description: |-
+              The work package this activity belongs to
+              
+              # Conditions
+              
+              Only embedded when the `journable` of the activity is a work package
   _links:
     type: object
     properties:
       self:
         allOf:
-          - "$ref": "./link.yml"
+          - $ref: './link.yml'
           - description: |-
               This activity
 
               **Resource**: Activity
-            readOnly: true
       workPackage:
         allOf:
-          - "$ref": "./link.yml"
+          - $ref: './link.yml'
           - description: |-
               The work package this activity belongs to
 
               **Resource**: WorkPackage
-            readOnly: true
       user:
         allOf:
-          - "$ref": "./link.yml"
+          - $ref: './link.yml'
           - description: |-
               The user who created this activity
 
-              **Resource**: User
-            readOnly: true
+              **Resource**: Principal
       update:
         allOf:
-          - "$ref": "./link.yml"
-          - description: |-
-              Update this activity
-
-              **Method**: PATCH
-
-              **Resource**: Activity
+          - $ref: './link.yml'
+          - description: Update this activity
       attachments:
         allOf:
-          - "$ref": "./link.yml"
+          - $ref: './link.yml'
           - description: |-
               The attachment collection of this activity
 
-              **Resource**: AttachmentCollection
-            readOnly: true
+              **Resource**: Attachments
       addAttachment:
         allOf:
-          - "$ref": "./link.yml"
+          - $ref: './link.yml'
           - description: |-
               Attach a file to the activity
 
               # Conditions
 
-              **Permission**: add_work_package_notes or add_comments_with_restricted_visibility (for internal comments)
-            readOnly: true
+              **Permissions**: 
+              - `add_work_package_notes`
+              - for internal comments: `add_comments_with_restricted_visibility`
 example:
+  id: 1
   _type: Activity::Comment
   _embedded:
     attachments:
@@ -199,11 +187,10 @@ example:
     update:
       href: "/api/v3/activities/1"
       method: "patch"
-  id: 1
   details:
-  - format: markdown
-    raw: Lorem ipsum dolor sit amet.
-    html: "<p>Lorem ipsum dolor sit amet.</p>"
+    - format: markdown
+      raw: Lorem ipsum dolor sit amet.
+      html: "<p>Lorem ipsum dolor sit amet.</p>"
   comment:
     format: markdown
     raw: Lorem ipsum dolor sit amet.
