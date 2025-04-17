@@ -269,8 +269,16 @@ class WorkPackages::DatePickerController < ApplicationController
       WorkPackages::SetAttributesService
         .new(user: current_user,
              model: @work_package,
-             contract_class: WorkPackages::CreateContract)
+             contract_class:)
         .call(wp_params)
+    end
+  end
+
+  def contract_class
+    if @work_package.new_record?
+      WorkPackages::CreateContract
+    else
+      WorkPackages::UpdateContract
     end
   end
 

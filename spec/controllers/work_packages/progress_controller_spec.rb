@@ -48,7 +48,6 @@ RSpec.describe WorkPackages::ProgressController do
   describe "GET /work_packages/progress/new" do
     let(:params) do
       {
-        "work_package_id" => work_package.id,
         "work_package" => {
           "initial" => {
             "estimated_hours" => "7.0",
