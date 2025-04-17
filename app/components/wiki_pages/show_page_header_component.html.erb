@@ -123,7 +123,7 @@ See COPYRIGHT and LICENSE files for more details.
             item.with_leading_visual_icon(icon: :trash)
           end
         end
-        if User.current.allowed_in_project?(:edit_wiki_pages, @project) && !@page.current_version?
+        if show_rollback?
           menu.with_item(
             label: t(:button_rollback),
             href: url_for(controller: "wiki", action: "edit", id: @page, version: @page.version)
