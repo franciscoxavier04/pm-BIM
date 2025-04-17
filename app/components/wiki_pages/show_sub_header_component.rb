@@ -33,10 +33,15 @@ module WikiPages
     include OpPrimer::ComponentHelpers
     include ApplicationHelper
 
-    def initialize(page:, project:)
+    def initialize(page:, project:, editable:)
       super
       @page = page
       @project = project
+      @editable = editable
+    end
+
+    def show_create?
+      @editable && @page && User.current.allowed_in_project?(:edit_wiki_pages, @project)
     end
   end
 end
