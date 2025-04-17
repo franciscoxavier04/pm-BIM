@@ -98,6 +98,7 @@ class WikiController < ApplicationController
     end
 
     @editable = editable?
+    @show_create = show_create?
   end
 
   def new; end
@@ -339,6 +340,9 @@ class WikiController < ApplicationController
     :"no-menu-item-#{default_item.menu_identifier}"
   end
 
+  def show_create?
+    @editable && @page && User.current.allowed_in_project?(:edit_wiki_pages, @project)
+  end
   private
 
   def locked?
