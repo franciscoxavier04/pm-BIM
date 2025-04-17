@@ -132,7 +132,7 @@ module Pages
 
         def activate!
           within ".PageHeader-actions" do
-            page.find('[data-test-selector="wiki-more-dropdown-menu"]').click
+            page.find_test_selector("wiki-more-dropdown-menu").click
             page.find(".ActionListItem", text: "Activate", exact_text: true).click
           end
         end

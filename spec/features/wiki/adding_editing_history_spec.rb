@@ -99,7 +99,7 @@ RSpec.describe "wiki pages", :js, :selenium, with_settings: { journal_aggregatio
 
     within ".PageHeader-actions" do
       SeleniumHubWaiter.wait
-      page.find('[data-test-selector="wiki-more-dropdown-menu"]').click
+      page.find_test_selector("wiki-more-dropdown-menu").click
       page.find(".ActionListItem", text: "History", exact_text: true).click
     end
 
@@ -150,7 +150,7 @@ RSpec.describe "wiki pages", :js, :selenium, with_settings: { journal_aggregatio
 
     within ".PageHeader-actions" do
       SeleniumHubWaiter.wait
-      page.find('[data-test-selector="wiki-more-dropdown-menu"]').click
+      page.find_test_selector("wiki-more-dropdown-menu").click
       page.find(".ActionListItem", text: "History", exact_text: true).click
     end
 

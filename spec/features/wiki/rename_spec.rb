@@ -47,7 +47,7 @@ RSpec.describe "Wiki page", :js do
     visit project_wiki_path(project, wiki_page)
 
     SeleniumHubWaiter.wait
-    page.find('[data-test-selector="wiki-more-dropdown-menu"]').click
+    page.find_test_selector("wiki-more-dropdown-menu").click
     page.find(".ActionListItem", text: "Rename", exact_text: true).click
 
     SeleniumHubWaiter.wait
