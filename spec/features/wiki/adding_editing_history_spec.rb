@@ -86,10 +86,7 @@ RSpec.describe "wiki pages", :js, :selenium, with_settings: { journal_aggregatio
     expect(page).to have_test_selector("wiki-page-header-title", text: "New page")
     expect(page).to have_css(".wiki-content", text: content_first_version)
 
-    within ".PageHeader-actions" do
-      SeleniumHubWaiter.wait
-      click_on "Edit"
-    end
+    page.find_test_selector("wiki-edit-action-button").click
 
     find(".ck-content").set(content_second_version)
 
@@ -97,11 +94,8 @@ RSpec.describe "wiki pages", :js, :selenium, with_settings: { journal_aggregatio
     click_button "Save"
     expect(page).to have_css(".wiki-content", text: content_second_version)
 
-    within ".PageHeader-actions" do
-      SeleniumHubWaiter.wait
-      page.find_test_selector("wiki-more-dropdown-menu").click
-      page.find(".ActionListItem", text: "History", exact_text: true).click
-    end
+    page.find_test_selector("wiki-more-dropdown-menu").click
+    page.find_test_selector("wiki-history-action-menu-item").click
 
     SeleniumHubWaiter.wait
     click_on "View differences"
@@ -111,12 +105,8 @@ RSpec.describe "wiki pages", :js, :selenium, with_settings: { journal_aggregatio
       expect(page).to have_css("del.diffmod", text: "first")
     end
 
-    SeleniumHubWaiter.wait
     # Go back to history
-    within ".PageHeader-actions" do
-      find(".PageHeader-action", text: "History").click
-    end
-
+    page.find_test_selector("wiki-history-button").click
 
     # Click on first version
     # to determine text (Regression test #31531)
@@ -136,10 +126,7 @@ RSpec.describe "wiki pages", :js, :selenium, with_settings: { journal_aggregatio
 
     visit project_wiki_path(project, "new page")
 
-    within ".PageHeader-actions" do
-      SeleniumHubWaiter.wait
-      click_on "Edit"
-    end
+    page.find_test_selector("wiki-edit-action-button").click
 
     find(".ck-content").set(content_third_version)
 
@@ -148,11 +135,8 @@ RSpec.describe "wiki pages", :js, :selenium, with_settings: { journal_aggregatio
     SeleniumHubWaiter.wait
     click_button "Save"
 
-    within ".PageHeader-actions" do
-      SeleniumHubWaiter.wait
-      page.find_test_selector("wiki-more-dropdown-menu").click
-      page.find(".ActionListItem", text: "History", exact_text: true).click
-    end
+    page.find_test_selector("wiki-more-dropdown-menu").click
+    page.find_test_selector("wiki-history-action-menu-item").click
 
     expect(page).to have_css("tr.wiki-page-version:last-of-type .author", text: other_user.name)
     expect(page).to have_css("tr.wiki-page-version:last-of-type .comments", text: other_user_comment)

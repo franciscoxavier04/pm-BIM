@@ -29,9 +29,10 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%=
   render Primer::OpenProject::PageHeader.new do |header|
-    header.with_title(test_selector: "wiki-page-header-title")  { h(@page.title) }
+    header.with_title(test_selector: "wiki-page-header-title") { h(@page.title) }
     header.with_breadcrumbs(
-      helpers.breadcrumb_for_page(@project, @page)
+      helpers.breadcrumb_for_page(@project, @page),
+      data: { "test-selector": "wiki-breadcrumbs" }
     )
     if @editable
       if User.current.allowed_in_project?(:edit_wiki_pages, @project) && @page.current_version?
@@ -42,7 +43,7 @@ See COPYRIGHT and LICENSE files for more details.
           size: :medium,
           href: url_for(controller: "wiki", action: "edit", id: @page),
           aria: { label: I18n.t(:button_edit) },
-          data: { "test-selector": "wiki-edit-button" },
+          data: { "test-selector": "wiki-edit-action-button" },
           title: I18n.t(:button_edit)
         ) do |button|
           button.with_leading_visual_icon(icon: :pencil)
@@ -91,6 +92,7 @@ See COPYRIGHT and LICENSE files for more details.
               label: t(:button_rename),
               tag: :a,
               size: :medium,
+              data: { "test-selector": "wiki-rename-action-menu-item" },
               href: url_for(controller: "wiki", action: "rename", id: @page)
             ) do |item|
               item.with_leading_visual_icon(icon: "arrow-switch")
@@ -115,7 +117,8 @@ See COPYRIGHT and LICENSE files for more details.
             tag: :a,
             size: :medium,
             content_arguments: { data: { confirm: t(:text_are_you_sure), method: :delete } },
-            href: url_for(controller: "wiki", action: "destroy", id: @page)
+            href: url_for(controller: "wiki", action: "destroy", id: @page),
+            data: { "test-selector": "wiki-delete-action-menu-item" }
           ) do |item|
             item.with_leading_visual_icon(icon: :trash)
           end
@@ -131,7 +134,8 @@ See COPYRIGHT and LICENSE files for more details.
         if User.current.allowed_in_project?(:view_wiki_edits, @project)
           menu.with_item(
             label: t(:label_history),
-            href: url_for(controller: "wiki", action: "history", id: @page)
+            href: url_for(controller: "wiki", action: "history", id: @page),
+            data: { "test-selector": "wiki-history-action-menu-item" }
           ) do |item|
             item.with_leading_visual_icon(icon: :history)
           end
@@ -139,7 +143,8 @@ See COPYRIGHT and LICENSE files for more details.
         if User.current.allowed_in_project?(:manage_wiki_menu, @project)
           menu.with_item(
             label: t(:button_manage_menu_entry),
-            href: url_for(controller: "/wiki_menu_items", action: "edit", project_id: @project.identifier, id: @page)
+            href: url_for(controller: "/wiki_menu_items", action: "edit", project_id: @project.identifier, id: @page),
+            data: { "test-selector": "wiki-configure-menu-action-menu-item" }
           ) do |item|
             item.with_leading_visual_icon(icon: :gear)
           end
