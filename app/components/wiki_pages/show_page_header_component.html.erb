@@ -42,6 +42,7 @@ See COPYRIGHT and LICENSE files for more details.
           size: :medium,
           href: url_for(controller: "wiki", action: "edit", id: @page),
           aria: { label: I18n.t(:button_edit) },
+          data: { "test-selector": "wiki-edit-button" },
           title: I18n.t(:button_edit)
         ) do |button|
           button.with_leading_visual_icon(icon: :pencil)

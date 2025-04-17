@@ -121,7 +121,7 @@ RSpec.describe "Wysiwyg child pages spec", :js do
           expect(page).to have_css("h1", text: "My page")
 
           SeleniumHubWaiter.wait
-          find(".toolbar .icon-edit").click
+          page.find_test_selector("wiki-edit-button").click
         end
 
         editor.in_editor do |_container, _editable|
@@ -154,7 +154,7 @@ RSpec.describe "Wysiwyg child pages spec", :js do
           expect(page).to have_css("h1", text: "My page")
 
           SeleniumHubWaiter.wait
-          find(".toolbar .icon-edit").click
+          page.find_test_selector("wiki-edit-button").click
         end
       end
     end
