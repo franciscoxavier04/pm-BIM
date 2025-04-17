@@ -5,7 +5,7 @@
         component.with_header(font_weight: :bold, pl: 0) do
           render(MeetingSections::HeaderComponent.new(meeting_section: @meeting_section, state: @state))
         end
-      elsif OpenProject::FeatureDecisions.meeting_backlogs_active? && render_backlog? && !@meeting.closed?
+      elsif render_backlog?
         component.with_header do
           render(MeetingSections::Backlogs::HeaderComponent.new(backlog: @meeting_section, box: component, collapsed: @collapsed))
         end

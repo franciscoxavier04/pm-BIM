@@ -42,14 +42,12 @@ module MeetingSections
       @backlog = meeting.backlog
     end
 
-    # def empty?
-    #   @meeting.agenda_items.empty? && @meeting.sections.empty?
-    # end
-
     private
 
     def show?
-      !@meeting.closed?
+      !@meeting.closed? &&
+        !@meeting.template? &&
+        OpenProject::FeatureDecisions.meeting_backlogs_active?
     end
   end
 end

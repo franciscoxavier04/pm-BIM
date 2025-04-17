@@ -46,10 +46,6 @@ module MeetingSections
 
     private
 
-    def show?
-      !@meeting.closed?
-    end
-
     def default
       if @meeting.open?
         false

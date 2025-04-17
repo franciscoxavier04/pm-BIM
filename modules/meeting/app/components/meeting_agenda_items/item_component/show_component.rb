@@ -134,7 +134,7 @@ module MeetingAgendaItems
     end
 
     def move_to_next_meeting_action_item(menu)
-      return if @meeting.templated?
+      return if in_template?
       return if @series.nil?
 
       next_date = @series.next_occurrence(from_time: @meeting.start_time)
@@ -228,11 +228,23 @@ module MeetingAgendaItems
     end
 
     def move_to_next_meeting_enabled?
-      edit_enabled? && @meeting.recurring? && @meeting.recurring_meeting&.next_occurrence.present?
+      edit_enabled? && @meeting.recurring? && @meeting.recurring_meeting&.next_occurrence.present? && !in_template?
     end
 
     def in_backlog?
-      @meeting_agenda_item.meeting_section == @meeting.backlog
+      @meeting_agenda_item.meeting_section.backlog?
+    end
+
+    def move_to_current_meeting_action?
+      in_backlog? && OpenProject::FeatureDecisions.meeting_backlogs_active?
+    end
+
+    def move_to_backlog_action?
+      !in_backlog? && OpenProject::FeatureDecisions.meeting_backlogs_active?
+    end
+
+    def in_template?
+      @meeting.templated?
     end
   end
 end

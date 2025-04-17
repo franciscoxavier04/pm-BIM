@@ -37,7 +37,6 @@ module MeetingSections
       super
 
       @meeting = meeting
-      # @project = series.project
     end
   end
 end

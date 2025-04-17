@@ -77,9 +77,11 @@
               move_actions(menu)
             end
 
-            menu.with_divider if OpenProject::FeatureDecisions.meeting_backlogs_active?
-            move_to_current_meeting_action_item(menu) if in_backlog? && OpenProject::FeatureDecisions.meeting_backlogs_active?
-            move_to_backlog_action_item(menu) if !in_backlog? && OpenProject::FeatureDecisions.meeting_backlogs_active?
+            if !in_template?
+              menu.with_divider if OpenProject::FeatureDecisions.meeting_backlogs_active?
+              move_to_current_meeting_action_item(menu) if move_to_current_meeting_action?
+              move_to_backlog_action_item(menu) if move_to_backlog_action?
+            end
 
             if move_to_next_meeting_enabled?
               menu.with_divider

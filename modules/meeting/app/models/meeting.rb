@@ -54,7 +54,7 @@ class Meeting < ApplicationRecord
 
   has_many :agenda_items, dependent: :destroy, class_name: "MeetingAgendaItem", inverse_of: :meeting
   has_many :sections, -> { where(backlog: false) }, dependent: :delete_all, class_name: "MeetingSection"
-  has_one :backlog, -> { where(backlog: true) }, dependent: :destroy, class_name: "MeetingSection"
+  has_one :own_backlog, -> { where(backlog: true) }, dependent: :destroy, class_name: "MeetingSection"
 
   accepts_nested_attributes_for :agenda_items
 
@@ -275,6 +275,14 @@ class Meeting < ApplicationRecord
 
   def duration_exceeded_by_agenda_items_in_minutes
     agenda_items_sum_duration_in_minutes - (duration * 60)
+  end
+
+  def backlog
+    if recurring? && !templated?
+      recurring_meeting.template.backlog
+    else
+      own_backlog
+    end
   end
 
   private
