@@ -46,15 +46,17 @@ RSpec::Matchers.define :have_enterprise_banner do |**args|
 
   failure_message do
     <<~MESSAGE
-      Expected page to have Enterprise edition banner, but it does not:
-      #{@error}
+      Expected page to have Enterprise banner, but it is absent or invisible.
     MESSAGE
   end
 
   failure_message_when_negated do
+    puts Capybara::Screenshot.screenshot_and_save_page
+    banner_text = page.find(test_selector("op-enterprise-banner")).text
     <<~MESSAGE
-      Expected page not to have Enterprise edition banner, but it does:
-      #{@error}
+      Expected page not to have Enterprise banner, but it is present and visible.
+      Enterprise banner text:
+        #{banner_text.gsub("\n", "\n  ")}
     MESSAGE
   end
 end
