@@ -81,6 +81,7 @@ import {
 import {
   ProgressPopoverEditFieldComponent,
 } from 'core-app/shared/components/fields/edit/field-types/progress-popover-edit-field.component';
+import { ProjectPhaseAutocompleterComponent } from '../../autocompleter/project-phase-autocompleter/project-phase-autocompleter.component';
 
 export function initializeCoreEditFields(editFieldService:EditFieldService, selectAutocompleterRegisterService:SelectAutocompleterRegisterService) {
   return ():void => {
@@ -139,5 +140,6 @@ export function initializeCoreEditFields(editFieldService:EditFieldService, sele
 
     selectAutocompleterRegisterService.register(VersionAutocompleterComponent, 'Version');
     selectAutocompleterRegisterService.register(WorkPackageAutocompleterComponent, 'WorkPackage');
+    selectAutocompleterRegisterService.register(ProjectPhaseAutocompleterComponent, 'ProjectPhase');
   };
 }
