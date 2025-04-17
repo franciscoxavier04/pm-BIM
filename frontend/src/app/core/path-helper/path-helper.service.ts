@@ -298,7 +298,7 @@ export class PathHelperService {
 
   public workPackageProgressModalPath(workPackageId:string|number) {
     if (workPackageId === 'new') {
-      return `${this.workPackagePath(workPackageId)}/progress/new`;
+      return `${this.workPackagesPath()}/progress/new`;
     }
 
     return `${this.workPackagePath(workPackageId)}/progress/edit`;

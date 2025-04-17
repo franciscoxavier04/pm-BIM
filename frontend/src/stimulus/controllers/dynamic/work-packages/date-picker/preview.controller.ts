@@ -309,14 +309,6 @@ export default class PreviewController extends DialogPreviewController {
     this.updateFlatpickrCalendar();
   }
 
-  ensureValidPathname(formAction:string):string {
-    return formAction;
-  }
-
-  ensureValidWpAction(wpPath:string):string {
-    return wpPath.endsWith('/work_packages/date_picker') ? 'new' : 'edit';
-  }
-
   afterRendering() {
     this.readCurrentValues();
     this.updateFlatpickrCalendar();
