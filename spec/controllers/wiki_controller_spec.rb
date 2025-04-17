@@ -1072,7 +1072,7 @@ RSpec.describe WikiController do
           get "index", params: { id: @wiki_menu_item.name, project_id: project.id }
 
           expect(response).to be_successful
-          assert_select ".PageHeader-title", text: "Table of Contents"
+          assert_select '[data-test-selector="wiki-toc-page-header-title"]', text: "Table of Contents"
           assert_select "#main-menu a.#{@wiki_menu_item.menu_identifier}-menu-item.selected"
         end
       end

@@ -83,7 +83,7 @@ RSpec.describe "wiki pages", :js, :selenium, with_settings: { journal_aggregatio
     click_button "Save"
 
     expect_and_dismiss_flash(message: "Successful creation.")
-    expect(page).to have_css(".PageHeader-title", text: "New page")
+    expect(page).to have_test_selector("wiki-page-header-title", text: "New page")
     expect(page).to have_css(".wiki-content", text: content_first_version)
 
     within ".PageHeader-actions" do

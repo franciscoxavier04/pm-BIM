@@ -30,7 +30,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%=
   render Primer::OpenProject::PageHeader.new do |header|
-    header.with_title { t(:label_wiki_toc) }
+    header.with_title(test_selector: "wiki-toc-page-header-title") { t(:label_wiki_toc) }
     header.with_breadcrumbs(
       breadcrumb_for_page(@project, @related_page, t(:label_table_of_contents))
     )
