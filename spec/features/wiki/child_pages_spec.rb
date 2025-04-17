@@ -62,6 +62,9 @@ RSpec.describe "wiki child pages", :js, :selenium do
     click_button "Save"
 
     # hierarchy displayed in the breadcrumb
+    within('[data-test-selector="wiki-breadcrumbs"]') do
+      expect(page).to have_text(parent_page.title.to_s)
+    end
     expect(page).to have_css(".breadcrumb-item",
                              text: parent_page.title.to_s)
 
