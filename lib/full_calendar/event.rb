@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,17 +28,40 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-en:
-  js:
-    text_are_you_sure: "Are you sure?"
-    myTimeTracking:
-      noSpecificTime: "No specific time"
-    work_packages:
-      property_groups:
-        costs: "Costs"
-      properties:
-        overallCosts: "Overall costs"
-        spentUnits: "Spent units"
-    button_log_costs: "Log unit costs"
-    label_hour: "hour"
-    label_hours: "hours"
+module FullCalendar
+  class Event
+    include ActiveModel::Model
+    include ActiveModel::Attributes
+
+    attribute :id, :string
+    attribute :group_id, :string
+    attribute :all_day, :boolean, default: false
+    attribute :starts_at, :datetime
+    attribute :ends_at, :datetime
+    attribute :title, :string
+    attribute :url, :string
+    attribute :class_names, array: true, default: []
+
+    # override in subclasses to add more fields to the JSON
+    def additional_attributes
+      {}
+    end
+
+    def as_json
+      {
+        "id" => id,
+        "groupId" => group_id,
+        "allDay" => all_day,
+        "start" => starts_at,
+        "end" => ends_at,
+        "title" => title,
+        "url" => url,
+        "classNames" => class_names
+      }.merge(additional_attributes).compact_blank.as_json
+    end
+
+    def to_json(*)
+      as_json.to_json(*)
+    end
+  end
+end

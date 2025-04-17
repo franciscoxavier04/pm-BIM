@@ -1,4 +1,6 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -24,19 +26,24 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-en:
-  js:
-    text_are_you_sure: "Are you sure?"
-    myTimeTracking:
-      noSpecificTime: "No specific time"
-    work_packages:
-      property_groups:
-        costs: "Costs"
-      properties:
-        overallCosts: "Overall costs"
-        spentUnits: "Spent units"
-    button_log_costs: "Log unit costs"
-    label_hour: "hour"
-    label_hours: "hours"
+module My
+  module TimeTracking
+    class ListWrapperComponent < OpPrimer::BorderBoxTableComponent
+      include OpTurbo::Streamable
+
+      options :time_entries, :date, :mode
+
+      def wrapper_key
+        "time-entries-list-#{options[:date].iso8601}"
+      end
+
+      def call
+        component_wrapper do
+          render(My::TimeTracking::TimeEntriesListComponent.new(rows: time_entries, date: date, mode: mode))
+        end
+      end
+    end
+  end
+end

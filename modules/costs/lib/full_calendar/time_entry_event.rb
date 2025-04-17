@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,17 +28,34 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-en:
-  js:
-    text_are_you_sure: "Are you sure?"
-    myTimeTracking:
-      noSpecificTime: "No specific time"
-    work_packages:
-      property_groups:
-        costs: "Costs"
-      properties:
-        overallCosts: "Overall costs"
-        spentUnits: "Spent units"
-    button_log_costs: "Log unit costs"
-    label_hour: "hour"
-    label_hours: "hours"
+module FullCalendar
+  class TimeEntryEvent < Event
+    attr_accessor :time_entry
+
+    class << self
+      def from_time_entry(time_entry)
+        event = new(
+          id: time_entry.id,
+          starts_at: time_entry.start_timestamp || time_entry.spent_on,
+          ends_at: time_entry.end_timestamp || time_entry.spent_on,
+          all_day: time_entry.start_time.blank?,
+          title: "#{time_entry.project.name}: ##{time_entry.work_package.id} #{time_entry.work_package.subject}"
+        )
+        event.time_entry = time_entry
+
+        event
+      end
+    end
+
+    def additional_attributes
+      {
+        hours: time_entry.hours,
+        statusId: time_entry.work_package.status_id,
+        workPackageId: time_entry.work_package.id,
+        workPackageSubject: time_entry.work_package.subject,
+        projectId: time_entry.project.id,
+        projectName: time_entry.project.name
+      }
+    end
+  end
+end

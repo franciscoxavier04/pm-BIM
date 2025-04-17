@@ -1,4 +1,6 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -24,19 +26,35 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-en:
-  js:
-    text_are_you_sure: "Are you sure?"
-    myTimeTracking:
-      noSpecificTime: "No specific time"
-    work_packages:
-      property_groups:
-        costs: "Costs"
-      properties:
-        overallCosts: "Overall costs"
-        spentUnits: "Spent units"
-    button_log_costs: "Log unit costs"
-    label_hour: "hour"
-    label_hours: "hours"
+module My
+  module TimeTracking
+    class ListStatsComponent < OpPrimer::BorderBoxTableComponent
+      include OpTurbo::Streamable
+
+      options :time_entries, :date
+
+      def wrapper_key
+        "time-entries-list-stats-#{date.iso8601}"
+      end
+
+      def call
+        component_wrapper do
+          render(Primer::Beta::Text.new(color: :muted)) { "#{entry_count} - " } +
+          render(Primer::Beta::Text.new) { total_hours }
+        end
+      end
+
+      def total_hours
+        total_hours = time_entries.sum(&:hours).round(2)
+        DurationConverter.output(total_hours, format: :hours_and_minutes).presence || "0h"
+      end
+
+      def entry_count
+        entries_count = time_entries.size
+        "#{entries_count} #{TimeEntry.model_name.human(count: entries_count)}"
+      end
+    end
+  end
+end

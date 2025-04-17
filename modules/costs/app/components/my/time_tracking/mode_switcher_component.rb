@@ -1,4 +1,6 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -24,19 +26,40 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-en:
-  js:
-    text_are_you_sure: "Are you sure?"
-    myTimeTracking:
-      noSpecificTime: "No specific time"
-    work_packages:
-      property_groups:
-        costs: "Costs"
-      properties:
-        overallCosts: "Overall costs"
-        spentUnits: "Spent units"
-    button_log_costs: "Log unit costs"
-    label_hour: "hour"
-    label_hours: "hours"
+module My
+  module TimeTracking
+    class ModeSwitcherComponent < ApplicationComponent
+      options :current_mode,
+              :view_mode,
+              :date
+
+      def call
+        render(Primer::Alpha::SegmentedControl.new("aria-label": I18n.t(:label_meeting_date_time))) do |control|
+          %i[day week month].each do |mode|
+            control.with_item(
+              tag: :a,
+              href: my_time_tracking_path(date:, view_mode:, mode:),
+              icon: icon_for_mode(mode),
+              label: t("label_#{mode}"),
+              title: t("label_#{mode}"),
+              selected: (current_mode == mode)
+            )
+          end
+        end
+      end
+
+      def icon_for_mode(mode)
+        case mode
+        when :day
+          "op-calendar-day"
+        when :week
+          "op-calendar-week"
+        else
+          "calendar"
+        end
+      end
+    end
+  end
+end

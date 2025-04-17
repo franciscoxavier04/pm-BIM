@@ -1,4 +1,6 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -24,19 +26,28 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-en:
-  js:
-    text_are_you_sure: "Are you sure?"
-    myTimeTracking:
-      noSpecificTime: "No specific time"
-    work_packages:
-      property_groups:
-        costs: "Costs"
-      properties:
-        overallCosts: "Overall costs"
-        spentUnits: "Spent units"
-    button_log_costs: "Log unit costs"
-    label_hour: "hour"
-    label_hours: "hours"
+module My
+  module TimeTracking
+    class HeaderComponent < ApplicationComponent
+      options :date, :mode, :view_mode
+
+      def view_mode_block
+        if view_mode == :list
+          lambda do |button|
+            button.with_leading_visual_icon(icon: "list-unordered")
+            button.with_trailing_action_icon(icon: "triangle-down")
+            t(:label_list)
+          end
+        else
+          lambda do |button|
+            button.with_leading_visual_icon(icon: :calendar)
+            button.with_trailing_action_icon(icon: "triangle-down")
+            t(:label_calendar)
+          end
+        end
+      end
+    end
+  end
+end
