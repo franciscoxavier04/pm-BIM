@@ -83,7 +83,7 @@ module EnterpriseEdition
     end
 
     def link_title
-      I18n.t("ee.upsale.#{feature_key}.link_title", default: I18n.t("ee.upsale.link_title"))
+      I18n.t("ee.upsale.#{feature_key}.link_title", default: I18n.t(:label_more_information))
     end
 
     def enterprise_link

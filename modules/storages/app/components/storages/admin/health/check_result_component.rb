@@ -30,48 +30,51 @@
 
 module Storages
   module Admin
-    module SidePanel
-      class ValidationResultComponent < ApplicationComponent
+    module Health
+      class CheckResultComponent < ApplicationComponent
         include OpPrimer::ComponentHelpers
-        include OpTurbo::Streamable
 
-        def initialize(storage:, result:)
-          super(storage)
-          @result = result
+        def initialize(group:, result:)
+          super(result)
+          @group = group
         end
 
         private
 
-        def summary_header
-          tally = @result.tally
-          case tally
-          in { failure: 1.. }
-            {
-              icon: :alert,
-              icon_color: :danger,
-              text: I18n.t("storages.health.checks.failures", count: tally[:failure])
-            }
-          in { warning: 1.. }
-            {
-              icon: :alert,
-              icon_color: :attention,
-              text: I18n.t("storages.health.checks.warnings", count: tally[:warning])
-            }
+        def data
+          @data ||= {
+            text: I18n.t("storages.health.checks.#{@group}.#{model.key}"),
+            status_color:,
+            status_text:,
+            error_text: model.message,
+            docs_href: ::OpenProject::Static::Links.url_for(:storage_docs, :health_status)
+          }
+        end
+
+        def status_color
+          if model.success?
+            :success
+          elsif model.failure?
+            :danger
+          elsif model.warning? || model.skipped?
+            :attention
           else
-            { icon: :"check-circle", icon_color: :success, text: I18n.t("storages.health.checks.failures", count: 0) }
+            raise ArgumentError, "invalid check result state"
           end
         end
 
-        def summary_description
-          text = if @result.healthy?
-                   I18n.t("storages.health.summary.success")
-                 elsif @result.unhealthy?
-                   I18n.t("storages.health.summary.failure")
-                 else
-                   I18n.t("storages.health.summary.warning")
-                 end
-
-          "#{text} #{I18n.t('storages.health.checked', datetime: helpers.format_time(@result.latest_timestamp))}"
+        def status_text
+          if model.success?
+            I18n.t("storages.health.label_passed")
+          elsif model.failure?
+            I18n.t("storages.health.label_failed")
+          elsif model.warning?
+            I18n.t("storages.health.label_warning")
+          elsif model.skipped?
+            I18n.t("storages.health.label_skipped")
+          else
+            raise ArgumentError, "invalid check result state"
+          end
         end
       end
     end

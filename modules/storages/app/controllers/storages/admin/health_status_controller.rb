@@ -30,29 +30,36 @@
 
 module Storages
   module Admin
-    class ConnectionValidationController < ApplicationController
+    class HealthStatusController < ApplicationController
       include OpTurbo::ComponentStream
 
-      layout "admin"
-
-      before_action :require_admin
+      layout :admin_or_frame_layout
 
       model_object Storage
 
-      before_action :find_model_object, only: %i[validate_connection]
+      before_action :require_admin
+      before_action :find_model_object
 
-      def validate_connection
-        case @storage.provider_type
-        when ::Storages::Storage::PROVIDER_TYPE_NEXTCLOUD
-          validator = Peripherals::NextcloudConnectionValidator.new(storage: @storage)
-        when ::Storages::Storage::PROVIDER_TYPE_ONE_DRIVE
-          validator = Peripherals::OneDriveConnectionValidator.new(storage: @storage)
-        else
-          raise "Unsupported provider type: #{@storage.provider_type}"
-        end
+      def admin_or_frame_layout
+        return "turbo_rails/frame" if turbo_frame_request?
 
-        @result = validator.validate
-        update_via_turbo_stream(component: SidePanel::ValidationResultComponent.new(result: @result))
+        "admin"
+      end
+
+      def show
+        @report = Rails.cache.read(validator.report_cache_key)
+      end
+
+      def create
+        create_and_cache_report
+
+        redirect_to admin_settings_storage_health_status_report_path(@storage), status: :see_other
+      end
+
+      def create_health_status_report
+        report = create_and_cache_report
+
+        update_via_turbo_stream(component: SidePanel::ValidationResultComponent.new(storage: @storage, result: report))
         respond_to_with_turbo_streams
       end
 
@@ -61,6 +68,17 @@ module Storages
       def find_model_object(object_id = :storage_id)
         super
         @storage = @object
+      end
+
+      def create_and_cache_report
+        report = validator.call
+        Rails.cache.write(validator.report_cache_key, report, expires_in: 6.hours)
+
+        report
+      end
+
+      def validator
+        @validator ||= Peripherals::Registry.resolve("#{@storage}.validators.connection").new(@storage)
       end
     end
   end

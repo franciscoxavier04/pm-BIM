@@ -53,10 +53,8 @@ Rails.application.routes.draw do
           end
         end
 
-        resource :connection_validation,
-                 controller: "/storages/admin/connection_validation",
-                 only: [] do
-          post :validate_connection, on: :member
+        resource :health_status_report, controller: "/storages/admin/health_status", only: %i[show create] do
+          post :create_health_status_report
         end
 
         member do
