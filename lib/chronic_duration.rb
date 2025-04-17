@@ -197,13 +197,7 @@ module ChronicDuration
         # Pad zeros on minutes
         divider = ":"
         result = str.split(divider).each_with_index.map do |n, index|
-          if index > 0 && n.length == 1
-            "0#{n}"
-          elsif index > 0 && n.empty?
-            "00"
-          else
-            n
-          end
+          n.rjust(index > 0 ? 2 : 1, "0")
         end.join(divider)
         "#{result} h"
       end
