@@ -2025,7 +2025,7 @@ es:
           Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
       comments_with_restricted_visibility:
         title: "For your eyes only"
-        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly. Available only through the enterprise professional plan."
+        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "Actividades de seguimiento del tiempo"
   enumeration_work_package_priorities: "Prioridades del paquete de trabajo"
   enumeration_reported_project_statuses: "Estatus del proyecto reportado"
@@ -3871,7 +3871,7 @@ es:
       not_allowed_text: "No tiene los permisos necesarios para ver esta página."
       activities:
         enable_comments_with_restricted_visibility: "Activar comentarios de visibilidad restringida"
-        helper_text: "Los comentarios restringidos permiten que un equipo interno se comunique entre sí de forma privada. Solo son visibles para determinados roles que tienen los permisos necesarios y no serán visibles públicamente. %{link}"
+        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Texto sin formato"

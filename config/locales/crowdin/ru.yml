@@ -2103,7 +2103,7 @@ ru:
           Пользователи-заполнители — это способ назначить пакеты работ пользователям, которые не являются частью Вашего проекта. Они могут быть полезны в различных сценариях; например, если Вам нужно отслеживать задачи для ресурса, которые ещё не назван или недоступен, или если Вы не хотите дать доступ конкретному человеку доступ к OpenProject, но по-прежнему хотите отслеживать назначенные на него задачи.
       comments_with_restricted_visibility:
         title: "Только для вас"
-        description: "Ограниченные по видимости комментарии позволяют внутренней команде общаться между собой. Эти комментарии видны только определённым ролям проекта и никогда будут видны общедоступно. Функционал доступен только по коммерческому плану OpenProject."
+        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "Отслеживание времени"
   enumeration_work_package_priorities: "Приоритеты пакета работ"
   enumeration_reported_project_statuses: "Перечень отчетов о статусах проекта"
@@ -3951,7 +3951,7 @@ ru:
       not_allowed_text: "У вас нет необходимых прав для просмотра этой страницы."
       activities:
         enable_comments_with_restricted_visibility: "Включить ограниченные по видимости комментарии"
-        helper_text: "Ограниченные по видимости комментарии позволяют внутренней команде общаться между собой в частном порядке. Эти комментарии видны только определённым ролям проекта и никогда будут видны всем. %{link}"
+        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Обычный текст"

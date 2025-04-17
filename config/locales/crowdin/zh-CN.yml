@@ -1984,7 +1984,7 @@ zh-CN:
           占位符用户是一种将工作包分配给不属于您项目的用户的方法。它们在一系列场景中十分有用；例如，如果您需要跟踪尚未命名或可用资源的任务，或者如果您不想让该人员访问 OpenProject 但仍希望跟踪分配给他们的任务。
       comments_with_restricted_visibility:
         title: "仅您可见"
-        description: "评论可见性限制允许内部团队能够私下沟通。 这些只对某些项目角色可见，并且永远不会公开可见。只能通过企业专业计划提供。"
+        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "时间跟踪活动"
   enumeration_work_package_priorities: "工作包优先级"
   enumeration_reported_project_statuses: "报告的项目状态"
@@ -3824,7 +3824,7 @@ zh-CN:
       not_allowed_text: "您没有查看此页面的权限。"
       activities:
         enable_comments_with_restricted_visibility: "启用限制可见性评论"
-        helper_text: "限制评论允许内部团队能够私下沟通。这些仅对具有必要权限的选定角色可见，并且永远不会公开显示。%{link}"
+        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "纯文本"
