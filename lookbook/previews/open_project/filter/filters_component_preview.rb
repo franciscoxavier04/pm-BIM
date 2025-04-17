@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenProject
   module Filter
     # @logical_path OpenProject/Filter

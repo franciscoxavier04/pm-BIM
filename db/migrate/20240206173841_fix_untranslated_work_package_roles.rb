@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FixUntranslatedWorkPackageRoles < ActiveRecord::Migration[7.1]
   def up
     seed_work_package_roles_data.each_value do |work_package_role_data|

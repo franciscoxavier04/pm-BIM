@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -32,7 +34,7 @@ class CostQuery::Filter::LoggedById < Report::Filter::Base
   end
 
   def self.me_value
-    "me".freeze
+    "me"
   end
 
   def transformed_values

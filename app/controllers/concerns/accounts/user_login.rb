@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Accounts::UserLogin
   include ::Accounts::AuthenticationStages
   include ::Accounts::RedirectAfterLogin

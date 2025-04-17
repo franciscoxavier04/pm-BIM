@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateProjectCustomFieldProjectMappings < ActiveRecord::Migration[7.0]
   def up
     create_table :project_custom_field_project_mappings do |t|

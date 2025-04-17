@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveSomeStringLengthConstraints < ActiveRecord::Migration[7.0]
   def up
     change_column(:categories, :name, :string, limit: nil)

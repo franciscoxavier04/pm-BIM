@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # OpenProject Calendar module
 #
 # Copyright (C) the OpenProject GmbH

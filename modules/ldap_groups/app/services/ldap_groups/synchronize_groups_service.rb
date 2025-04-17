@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module LdapGroups
   class SynchronizeGroupsService
     attr_reader :ldap, :synced_groups

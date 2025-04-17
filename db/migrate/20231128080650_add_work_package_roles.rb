@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddWorkPackageRoles < ActiveRecord::Migration[7.0]
   def up
     # This is how the role was seeded in the first iteration of seeds

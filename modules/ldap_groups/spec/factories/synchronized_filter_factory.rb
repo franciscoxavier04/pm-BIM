@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :ldap_synchronized_filter, class: "::LdapGroups::SynchronizedFilter" do
     name { "foo and bar" }

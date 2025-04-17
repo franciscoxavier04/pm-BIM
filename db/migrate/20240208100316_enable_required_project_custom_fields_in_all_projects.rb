@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EnableRequiredProjectCustomFieldsInAllProjects < ActiveRecord::Migration[7.1]
   def up
     required_custom_field_ids = ProjectCustomField.required.ids

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddCreateUserPermissionToRoles < ActiveRecord::Migration[7.0]
   class MigrationRolePermission < ApplicationRecord
     self.table_name = "role_permissions"

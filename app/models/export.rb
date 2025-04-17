@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Export < ApplicationRecord
   has_one(
     :job_status,

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Auto-build js translations in dev mode
 Rails.application.config.after_initialize do
   if Rails.env.development?

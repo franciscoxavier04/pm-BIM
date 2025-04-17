@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Saml
   module Provider::HashBuilder
     def formatted_attribute_statements

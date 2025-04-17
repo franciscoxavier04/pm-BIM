@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module OpenProject
   module Recaptcha
     module Configuration
-      CONFIG_KEY = "recaptcha_via_hcaptcha".freeze
+      CONFIG_KEY = "recaptcha_via_hcaptcha"
 
       extend self
 

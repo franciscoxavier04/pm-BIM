@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -30,7 +32,7 @@ require "digest/sha1"
 
 class User < Principal
   VALID_NAME_REGEX = /\A[\d\p{Alpha}\p{Mark}\p{Space}\p{Emoji}'’´\-_.,@()+&*–]+\z/
-  CURRENT_USER_LOGIN_ALIAS = "me".freeze
+  CURRENT_USER_LOGIN_ALIAS = "me"
   USER_FORMATS_STRUCTURE = {
     firstname_lastname: %i[firstname lastname],
     firstname: [:firstname],

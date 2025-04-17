@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Announcement < ApplicationRecord
   scope :active,  -> { where(active: true) }
   scope :current, -> { where("show_until >= ?", Date.today) }

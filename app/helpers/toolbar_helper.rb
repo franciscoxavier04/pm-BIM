@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ToolbarHelper
   include ERB::Util
   include ActionView::Helpers::OutputSafetyHelper

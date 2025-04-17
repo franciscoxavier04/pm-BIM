@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddProjectQueryRoles < ActiveRecord::Migration[7.1]
   def up
     view_role ||= ProjectQueryRole.find_or_initialize_by(builtin: Role::BUILTIN_PROJECT_QUERY_VIEW)

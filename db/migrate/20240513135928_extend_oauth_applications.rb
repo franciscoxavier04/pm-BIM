@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ExtendOAuthApplications < ActiveRecord::Migration[7.1]
   def change
     change_table :oauth_applications, bulk: true do |t|

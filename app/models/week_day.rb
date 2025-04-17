@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WeekDay
   DAY_RANGE = Array(1..7)
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require_relative "../../../../../spec/features/work_packages/table/context_menu/context_menu_shared_examples"
 require_relative "../../support/pages/ifc_models/show_default"

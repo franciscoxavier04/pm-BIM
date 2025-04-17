@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Shares
   module ProjectQueries
     class ProjectAccessWarningComponent < ViewComponent::Base # rubocop:disable OpenProject/AddPreviewForViewComponent

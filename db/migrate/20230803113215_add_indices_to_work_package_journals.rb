@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddIndicesToWorkPackageJournals < ActiveRecord::Migration[7.0]
   def change
     add_index :work_package_journals, :assigned_to_id

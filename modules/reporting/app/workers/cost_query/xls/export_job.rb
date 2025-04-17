@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "active_storage/filename"
 
 class CostQuery::XLS::ExportJob < Exports::ExportJob

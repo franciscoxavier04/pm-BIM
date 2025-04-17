@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveObsoleteDesignVariables < ActiveRecord::Migration[7.1]
   OBSOLETE_COLOR_VARIABLES = %w( main-menu-font-color
                                  main-menu-selected-font-color

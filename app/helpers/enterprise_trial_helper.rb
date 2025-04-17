@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module EnterpriseTrialHelper
   def chargebee_content_security_policy
     script_src = %w(js.chargebee.com)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module XlsExport::Project::Exporter
   class XLS < Projects::Exports::QueryExporter
     include ::XlsExport::Concerns::SpreadsheetBuilder

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UpdateProgressCalculation < ActiveRecord::Migration[7.1]
   # See https://community.openproject.org/wp/40749 for migration details
   def up

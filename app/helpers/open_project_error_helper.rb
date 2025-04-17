@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 # Logging helper to forward to the OpenProject log delegator
 # which will log and report errors appropriately.

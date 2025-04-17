@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateDeployTargets < ActiveRecord::Migration[7.1]
   def change
     create_table :deploy_targets do |t|

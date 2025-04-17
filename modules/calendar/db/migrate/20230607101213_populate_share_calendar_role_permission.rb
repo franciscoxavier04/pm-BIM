@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require Rails.root.join("db/migrate/migration_utils/permission_adder")
 
 class PopulateShareCalendarRolePermission < ActiveRecord::Migration[7.0]

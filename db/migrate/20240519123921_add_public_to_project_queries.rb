@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddPublicToProjectQueries < ActiveRecord::Migration[7.1]
   def change
     add_column :project_queries, :public, :boolean, default: false, null: false

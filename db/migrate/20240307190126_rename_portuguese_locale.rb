@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RenamePortugueseLocale < ActiveRecord::Migration[7.1]
   def up
     execute "UPDATE users SET language = 'pt-BR' WHERE language = 'pt'"

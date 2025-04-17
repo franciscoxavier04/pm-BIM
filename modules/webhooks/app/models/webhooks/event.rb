@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Webhooks
   class Event < ApplicationRecord
     belongs_to :webhook

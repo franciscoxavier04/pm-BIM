@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Ldap
   class BaseService
     attr_reader :ldap

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenProject::Queries
   # @logical_path OpenProject/Queries
   class SortByComponentPreview < Lookbook::Preview

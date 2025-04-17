@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateHierarchicalItems < ActiveRecord::Migration[7.1]
   def change
     create_table :hierarchical_items do |t|

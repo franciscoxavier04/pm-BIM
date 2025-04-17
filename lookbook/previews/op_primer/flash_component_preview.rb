@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpPrimer
   # @logical_path OpenProject/Primer
   class FlashComponentPreview < Lookbook::Preview

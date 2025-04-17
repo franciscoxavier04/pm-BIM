@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples_for "attribute" do
   it "reflects the value in the object" do
     expect(subject)

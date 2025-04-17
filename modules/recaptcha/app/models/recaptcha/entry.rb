@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Recaptcha
   class Entry < ::ApplicationRecord
     self.table_name_prefix = "recaptcha_"

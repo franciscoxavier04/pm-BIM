@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is a project management system.
 # Copyright (C) the OpenProject GmbH

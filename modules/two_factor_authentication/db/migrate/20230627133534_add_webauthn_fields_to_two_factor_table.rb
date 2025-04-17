@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddWebauthnFieldsToTwoFactorTable < ActiveRecord::Migration[7.0]
   def change
     add_column :two_factor_authentication_devices, :webauthn_external_id, :string, null: true

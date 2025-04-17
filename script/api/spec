@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 if /((-h)|(--help))/.match?(ARGV.join(" "))
   puts "Prints the self-contained OpenAPI 3.0 specification of OpenProject's APIv3"

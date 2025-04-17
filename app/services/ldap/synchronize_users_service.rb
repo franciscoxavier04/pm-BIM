@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Ldap
   class SynchronizeUsersService < BaseService
     attr_reader :logins

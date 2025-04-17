@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateMeetingAgendaItemJournals < ActiveRecord::Migration[7.0]
   # rubocop:disable Rails/CreateTableWithTimestamps(RuboCop)
   def change

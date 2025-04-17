@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 # Extracts sections of a BCF markup file
 # manually. If we want to extract the entire markup,

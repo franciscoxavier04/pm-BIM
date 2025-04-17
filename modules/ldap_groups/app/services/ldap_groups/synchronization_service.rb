@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module LdapGroups
   class SynchronizationService
     def self.synchronize!

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Redmine - project management software
 # Copyright (C) 2006-2009  Jean-Philippe Lang
 # Adapted to fit needs for mOTP

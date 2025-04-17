@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples_for "an action checked for required login" do
   describe "WITH no login required" do
     before do

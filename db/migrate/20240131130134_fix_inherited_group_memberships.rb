@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FixInheritedGroupMemberships < ActiveRecord::Migration[7.0]
   def up
     # Recreate member_roles for all group members

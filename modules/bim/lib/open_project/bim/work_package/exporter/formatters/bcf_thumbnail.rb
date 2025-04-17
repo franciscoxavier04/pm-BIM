@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenProject::Bim::WorkPackage::Exporter::Formatters
   class BcfThumbnail < ::Exports::Formatters::Default
     def self.apply?(name, _export_format)

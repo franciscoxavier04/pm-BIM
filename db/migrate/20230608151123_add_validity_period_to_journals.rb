@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddValidityPeriodToJournals < ActiveRecord::Migration[7.0]
   def change
     add_column :journals, :validity_period, :tstzrange

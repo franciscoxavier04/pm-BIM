@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ::Avatars
   class AvatarController < ::ApplicationController
     before_action :ensure_enabled

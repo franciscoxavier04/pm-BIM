@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UrlHelper
   def url_for_with_params(**args)
     query = request.query_parameters

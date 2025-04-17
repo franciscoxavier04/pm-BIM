@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Bim::Bcf
   class Issue < ApplicationRecord
     self.table_name = :bcf_issues

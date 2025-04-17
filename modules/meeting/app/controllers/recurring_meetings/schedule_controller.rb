@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module RecurringMeetings
   class ScheduleController < ApplicationController
     authorize_with_permission :create_meetings, global: true

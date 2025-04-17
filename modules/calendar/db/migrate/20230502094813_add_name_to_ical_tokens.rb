@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddNameToICalTokens < ActiveRecord::Migration[7.0]
   def up
     # Add column with default value to avoid null values for existing records in preview environment

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do |application|
   # Ensure stage is entered when reloading in dev mode
   application.config.to_prepare do

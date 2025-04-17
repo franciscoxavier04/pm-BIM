@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OpenProject::Reporting::CostEntryXlsTable < OpenProject::XlsExport::XlsViews
   def generate
     @spreadsheet = OpenProject::XlsExport::SpreadsheetBuilder.new(I18n.t(:label_money))

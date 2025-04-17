@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddStandardGlobalRole < ActiveRecord::Migration[7.1]
   def change
     standard_global_role ||= GlobalRole.find_or_initialize_by(builtin: Role::BUILTIN_STANDARD_GLOBAL)

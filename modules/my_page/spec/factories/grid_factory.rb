@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :my_page, class: "Grids::MyPage" do
     user

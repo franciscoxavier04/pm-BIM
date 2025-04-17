@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MigrateSamlSettingsToProviders < ActiveRecord::Migration[7.1]
   def up
     settings = Setting.plugin_openproject_auth_saml

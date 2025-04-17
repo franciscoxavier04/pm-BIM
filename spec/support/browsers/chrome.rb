@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # rubocop:disable Metrics/PerceivedComplexity
 def register_chrome(language, name: :"chrome_#{language}", headless: "new", override_time_zone: nil)
   Capybara.register_driver name do |app|

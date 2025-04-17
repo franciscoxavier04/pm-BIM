@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require "spreadsheet"
 require "models/projects/exporter/exportable_project_context"

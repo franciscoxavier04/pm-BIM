@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FixDerivedWorkAndRemainingWorkValues < ActiveRecord::Migration[7.0]
   def up
     execute(update_derived_values_as_sum_of_self_and_descendants_sql)

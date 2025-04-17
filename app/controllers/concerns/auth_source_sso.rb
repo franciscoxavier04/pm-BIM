@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 # If OPENPROJECT_AUTH__SOURCE__SSO_HEADER and OPENPROJECT_AUTH__SOURCE__SSO_SECRET are
 # configured OpenProject will login the user given in the HTTP header with the given name

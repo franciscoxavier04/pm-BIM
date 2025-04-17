@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "omniauth-saml"
 module OpenProject
   module AuthSaml

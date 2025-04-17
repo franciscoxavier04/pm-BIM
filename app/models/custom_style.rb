@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CustomStyle < ApplicationRecord
   mount_uploader :logo, OpenProject::Configuration.file_uploader
   mount_uploader :export_logo, OpenProject::Configuration.file_uploader

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "fastimage"
 
 RSpec.shared_examples "avatar management" do

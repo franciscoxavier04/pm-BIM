@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require_relative "shared_context"
 require "features/work_packages/table/context_menu/context_menu_shared_examples"

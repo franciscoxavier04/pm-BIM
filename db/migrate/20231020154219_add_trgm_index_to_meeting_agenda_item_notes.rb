@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddTrgmIndexToMeetingAgendaItemNotes < ActiveRecord::Migration[7.0]
   def change
     # A previous migration 20230328154645_add_gin_trgm_index_on_journals_and_custom_values

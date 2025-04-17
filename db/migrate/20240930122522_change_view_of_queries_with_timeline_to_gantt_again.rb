@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "20231201085450_change_view_of_queries_with_timeline_to_gantt"
 
 # Inherit from the original migration `ChangeViewOfQueriesWithTimelineToGantt`

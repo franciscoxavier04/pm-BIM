@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeViewOfQueriesWithTimelineToGantt < ActiveRecord::Migration[7.0]
   class MigrationQuery < ApplicationRecord
     self.table_name = "queries"

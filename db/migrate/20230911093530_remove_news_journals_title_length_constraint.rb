@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveNewsJournalsTitleLengthConstraint < ActiveRecord::Migration[7.0]
   def up
     change_column(:news_journals, :title, :string, limit: nil)

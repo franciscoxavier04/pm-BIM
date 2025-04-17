@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddIndexesToCustomOptions < ActiveRecord::Migration[7.1]
   def change
     # A previous migration 20230328154645_add_gin_trgm_index_on_journals_and_custom_values

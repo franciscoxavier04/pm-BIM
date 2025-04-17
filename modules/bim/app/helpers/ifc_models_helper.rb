@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module IfcModelsHelper
   def provision_gon_for_ifc_model(all_models, shown_models)
     all_converted_models = converted_ifc_models(all_models)

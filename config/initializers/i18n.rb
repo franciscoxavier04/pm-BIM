@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # load custom translation rules, as stored in config/locales/plurals.rb
 # to be aware of e.g. Japanese not having a plural from for nouns
 require "open_project/translations/pluralization_backend"

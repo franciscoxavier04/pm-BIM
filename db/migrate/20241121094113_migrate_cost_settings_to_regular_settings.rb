@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MigrateCostSettingsToRegularSettings < ActiveRecord::Migration[7.1]
   def up
     costs_settings = Setting.plugin_costs || {}

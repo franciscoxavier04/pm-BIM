@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module LdapGroups
   class Membership < ApplicationRecord
     belongs_to :user

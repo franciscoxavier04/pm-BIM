@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "active_storage/filename"
 
 class CostQuery::PDF::ExportTimesheetJob < Exports::ExportJob

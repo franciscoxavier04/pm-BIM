@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenProject
   module Common
     # @logical_path OpenProject/Common

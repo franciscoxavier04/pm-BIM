@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "open_project/version"
 require_relative "../../lib_static/open_project/appsignal"
 

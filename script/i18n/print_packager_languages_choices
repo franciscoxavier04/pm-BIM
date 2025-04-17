@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 # Outputs the Choices and Translations lines for openproject/default_language
 # select option in packager installation.

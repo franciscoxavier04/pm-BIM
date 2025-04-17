@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SetCustomFieldsFilterDefaultTrue < ActiveRecord::Migration[7.0]
   def up
     change_column_default :custom_fields, :is_filter, true

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resources :team_planners,
             controller: "team_planner/team_planner",

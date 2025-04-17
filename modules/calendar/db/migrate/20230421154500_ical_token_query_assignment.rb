@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ICalTokenQueryAssignment < ActiveRecord::Migration[7.0]
   def change
     create_table :ical_token_query_assignments do |t|

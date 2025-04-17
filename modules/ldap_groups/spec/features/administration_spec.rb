@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "../spec_helper"
 
 RSpec.describe "LDAP group sync administration spec", :js do

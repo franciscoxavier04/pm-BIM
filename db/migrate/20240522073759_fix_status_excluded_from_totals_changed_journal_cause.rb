@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Update journal entries from this:
 #
 # {

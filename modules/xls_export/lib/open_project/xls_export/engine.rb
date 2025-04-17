@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenProject::XlsExport
   class Engine < ::Rails::Engine
     engine_name :openproject_xls_export

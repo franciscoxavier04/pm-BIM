@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RecaptchaLimitOverride
   def invalid_response?(resp)
     return super unless OpenProject::Recaptcha::use_hcaptcha?

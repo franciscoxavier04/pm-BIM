@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CostQuery::PDF::TimesheetGenerator
   include WorkPackage::PDFExport::Common::Common
   include WorkPackage::PDFExport::Common::Attachments
@@ -11,9 +13,9 @@ class CostQuery::PDF::TimesheetGenerator
   H1_MARGIN_BOTTOM = 2
   HR_MARGIN_BOTTOM = 16
   TABLE_CELL_FONT_SIZE = 10
-  TABLE_CELL_BORDER_COLOR = "BBBBBB".freeze
+  TABLE_CELL_BORDER_COLOR = "BBBBBB"
   TABLE_CELL_PADDING = 4
-  COMMENT_FONT_COLOR = "636C76".freeze
+  COMMENT_FONT_COLOR = "636C76"
   H2_FONT_SIZE = 20
   H2_MARGIN_BOTTOM = 10
 

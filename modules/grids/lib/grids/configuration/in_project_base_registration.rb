@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Grids::Configuration
   class InProjectBaseRegistration < ::Grids::Configuration::Registration
     widgets "work_packages_table",

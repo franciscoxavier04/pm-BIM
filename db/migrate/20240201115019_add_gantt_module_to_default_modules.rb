@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddGanttModuleToDefaultModules < ActiveRecord::Migration[7.0]
   def up
     if Setting.default_projects_modules_writable? && Setting.default_projects_modules&.exclude?("gantt")

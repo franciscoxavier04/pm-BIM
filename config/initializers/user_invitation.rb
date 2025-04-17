@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.config.after_initialize do
   ##
   # The default behaviour is to send the user a sign-up mail

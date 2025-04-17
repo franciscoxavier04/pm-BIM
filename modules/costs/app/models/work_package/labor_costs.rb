@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WorkPackage
   class LaborCosts < AbstractCosts
     def costs_model

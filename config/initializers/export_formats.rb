@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do |application|
   application.config.to_prepare do
     Exports::Register.register do

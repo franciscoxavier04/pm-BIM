@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RoleToProjectRole < ActiveRecord::Migration[7.0]
   def up
     rename_role("Role", "ProjectRole")

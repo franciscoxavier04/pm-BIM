@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeDoneRatioDefaultValueToNull < ActiveRecord::Migration[7.1]
   def change
     change_column_null :work_packages, :done_ratio, true

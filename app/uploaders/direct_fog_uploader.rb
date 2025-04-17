@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "fog_file_uploader"
 
 class DirectFogUploader < FogFileUploader

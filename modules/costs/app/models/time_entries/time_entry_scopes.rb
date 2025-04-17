@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TimeEntries
   module TimeEntryScopes
     include ::CostScopes

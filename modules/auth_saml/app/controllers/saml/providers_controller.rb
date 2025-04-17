@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Saml
   class ProvidersController < ::ApplicationController
     include OpTurbo::ComponentStream

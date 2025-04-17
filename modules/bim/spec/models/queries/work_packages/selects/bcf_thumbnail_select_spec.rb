@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require Rails.root.join("spec/models/queries/work_packages/selects/shared_query_select_specs").to_s
 

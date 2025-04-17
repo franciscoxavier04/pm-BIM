@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples "can upload an IFC file" do
   let(:user) { create(:admin) }
   let(:project) { create(:project, enabled_module_names: %i[bim]) }

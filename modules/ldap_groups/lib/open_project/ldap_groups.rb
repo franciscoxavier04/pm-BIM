@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenProject
   module LdapGroups
     require "open_project/ldap_groups/engine"

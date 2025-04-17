@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Helper module included in ApplicationHelper and ActionController so that
 # hooks can be called in views like this:
 #

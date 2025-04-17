@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "timeout"
 
 timeout = (ENV["WAIT_FOR_DB_TIMEOUT_SECONDS"] || 120).to_i

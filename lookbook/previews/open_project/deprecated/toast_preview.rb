@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenProject
   module Deprecated
     # @logical_path OpenProject/deprecated

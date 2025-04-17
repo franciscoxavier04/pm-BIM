@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,8 +29,8 @@
 #++
 
 class Queries::Meetings::Filters::TimeFilter < Queries::Meetings::Filters::MeetingFilter
-  PAST_VALUE = "past".freeze
-  FUTURE_VALUE = "future".freeze
+  PAST_VALUE = "past"
+  FUTURE_VALUE = "future"
 
   validate :validate_only_single_value
 

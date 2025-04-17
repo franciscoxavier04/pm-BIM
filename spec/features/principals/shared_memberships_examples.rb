@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_context "principal membership management context" do
   shared_let(:project) do
     create(:project,

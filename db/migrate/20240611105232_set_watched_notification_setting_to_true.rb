@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SetWatchedNotificationSettingToTrue < ActiveRecord::Migration[7.1]
   def change
     change_column_default :notification_settings, :shared, from: false, to: true

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Use rack-timeout if we run in clustered mode with at least 2 workers
 # so that workers, should a timeout occur, can be restarted without interruption.
 if OpenProject::Configuration.web_workers >= 2

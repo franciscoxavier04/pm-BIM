@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenProject::Bim::Patches
   module API::V3::ExportFormats
     def representation_formats

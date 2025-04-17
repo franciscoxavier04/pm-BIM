@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AnnouncementsHelper
   def notice_annoucement_active
     if @announcement.active_and_current?

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "migration_utils/permission_adder"
 
 class GrantSelectProjectLifeCyclePermission < ActiveRecord::Migration[7.1]

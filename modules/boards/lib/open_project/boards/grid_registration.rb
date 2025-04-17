@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenProject
   module Boards
     class GridRegistration < ::Grids::Configuration::Registration

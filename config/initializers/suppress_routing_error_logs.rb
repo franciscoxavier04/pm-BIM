@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module NoRoutingErrorLogging
   def log_error(env, wrapper)
     super unless ignore_error?(env, wrapper)
