@@ -141,12 +141,22 @@ RSpec.describe CostQuery::PDF::TimesheetGenerator do
     ].compact
   end
 
-  def expected_overview_page_content
+  def expected_overview_table_content
     [
-      query.name,
-      "#{I18n.t('export.timesheet.total_sum')}: ",
+      I18n.t("export.timesheet.overview_per_user_total"),
+      TimeEntry.human_attribute_name(:user),
+      I18n.t("export.timesheet.sums_hours"),
+      user.name,
+      generator.format_hours(time_entries.select { |entry| entry.user == user }.sum(&:hours)),
+      time_entry_user.name,
+      generator.format_hours(time_entries.select { |entry| entry.user == time_entry_user }.sum(&:hours)),
       generator.format_hours(time_entries.sum(&:hours)),
+    ]
+  end
 
+  def expected_overview_sums_content
+    [
+      I18n.t("export.timesheet.overview_per_user_day"),
       TimeEntry.human_attribute_name(:spent_on),
       user.name,
       time_entry_user.name,
@@ -164,6 +174,10 @@ RSpec.describe CostQuery::PDF::TimesheetGenerator do
       generator.format_hours(time_entries.select { |entry| entry.user == user }.sum(&:hours)),
       generator.format_hours(time_entries.select { |entry| entry.user == time_entry_user }.sum(&:hours))
     ]
+  end
+
+  def expected_overview_page_content
+    [query.name] + expected_overview_table_content + expected_overview_sums_content
   end
 
   def expected_first_user_table(with_times_column)
