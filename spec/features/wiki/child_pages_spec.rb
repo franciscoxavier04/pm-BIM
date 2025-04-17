@@ -65,8 +65,6 @@ RSpec.describe "wiki child pages", :js, :selenium do
     within('[data-test-selector="wiki-page-header-breadcrumbs"]') do
       expect(page).to have_text(parent_page.title.to_s)
     end
-    expect(page).to have_css(".breadcrumb-item",
-                             text: parent_page.title.to_s)
 
     # hierarchy displayed in the sidebar
     expect(page).to have_css(".pages-hierarchy",
