@@ -45,13 +45,11 @@ RSpec.describe "Datepicker modal individual non working days (WP #44453)", :js,
     create(:non_working_day,
            date: Time.zone.today.beginning_of_week.next_occurring(:tuesday))
   end
-  shared_let(:working_day_this_week) { Time.zone.today.beginning_of_week.next_occurring(:wednesday) }
 
   shared_let(:non_working_day_next_year) do
     create(:non_working_day,
            date: Time.zone.today.end_of_year.next_occurring(:tuesday))
   end
-  shared_let(:working_day_next_year) { Time.zone.today.end_of_year.next_occurring(:wednesday) }
 
   shared_examples "shows individual non working days" do
     let(:work_packages_page) { Pages::FullWorkPackage.new(work_package, project) }
@@ -114,12 +112,12 @@ RSpec.describe "Datepicker modal individual non working days (WP #44453)", :js,
       # Set the start date to a non working day
       datepicker.set_start_date non_working_day_this_week.date
       # The date is automatically updated to the next working day
-      datepicker.expect_start_date working_day_this_week
+      datepicker.expect_start_date non_working_day_this_week.date + 1.day
 
       # Set the due date to a non working day
       datepicker.set_due_date non_working_day_next_year.date
       # The date is automatically updated to the next working day
-      datepicker.expect_due_date working_day_next_year
+      datepicker.expect_due_date non_working_day_next_year.date + 1.day
     end
   end
 end
