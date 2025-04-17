@@ -201,7 +201,6 @@ en:
       storage_delete_result_3: In case this storage has automatically managed project folders, those and their contained files will be deleted forever.
     dependencies:
       nextcloud:
-        group_folders_app: Group folders
         integration_app: Integration OpenProject
     enabled_in_projects:
       setup_incomplete_description: This storage has an incomplete setup. Please, complete the setup before enabling it in multiple projects.
