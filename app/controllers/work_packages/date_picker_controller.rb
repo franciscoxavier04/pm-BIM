@@ -270,17 +270,7 @@ class WorkPackages::DatePickerController < ApplicationController
                               contract_class: WorkPackages::CreateContract)
                          .call(wp_params)
 
-      fields_set_to_nwd = fields_set_to_non_working_day(wp_params)
-      fields_set_to_nwd.each do |field|
-        @work_package
-          .errors
-          .add(field,
-               I18n.t("activerecord.errors.models.work_package.attributes.#{field}.cannot_be_non_working"))
-
-        # The SetAttributesService will correct the field and set it to the next working day.
-        # We have to keep the params in sync
-        params[:work_package][field] = @work_package[field].to_s
-      end
+      handle_non_working_days_case wp_params
 
       service_result
     end
@@ -343,6 +333,20 @@ class WorkPackages::DatePickerController < ApplicationController
     wp_params["start_date"] = work_package.start_date.to_s
 
     wp_params
+  end
+
+  def handle_non_working_days_case(wp_params)
+    fields_set_to_nwd = fields_set_to_non_working_day(wp_params)
+    fields_set_to_nwd.each do |field|
+      @work_package
+        .errors
+        .add(field,
+             I18n.t("activerecord.errors.models.work_package.attributes.#{field}.cannot_be_non_working"))
+
+      # The SetAttributesService will correct the field and set it to the next working day.
+      # We have to keep the params in sync
+      params[:work_package][field] = @work_package[field].to_s
+    end
   end
 
   def fields_set_to_non_working_day(wp_params)
