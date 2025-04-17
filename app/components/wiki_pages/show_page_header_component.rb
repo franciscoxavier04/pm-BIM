@@ -47,5 +47,9 @@ module WikiPages
         { label: t(:button_lock), icon: :lock, protected: 1 }
       end
     end
+
+    def show_edit?
+      User.current.allowed_in_project?(:edit_wiki_pages, @project) && @page.current_version?
+    end
   end
 end

@@ -35,7 +35,7 @@ See COPYRIGHT and LICENSE files for more details.
       data: { "test-selector": "wiki-page-header-breadcrumbs" }
     )
     if @editable
-      if User.current.allowed_in_project?(:edit_wiki_pages, @project) && @page.current_version?
+      if show_edit?
         header.with_action_button(
           tag: :a,
           mobile_icon: :pencil,
