@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -47,7 +49,7 @@ module WorkPackage::Journalized
       def self.event_title
         Proc.new do |o|
           title = o.to_s
-          title << " (#{o.status.name})" if o.status.present?
+          title += " (#{o.status.name})" if o.status.present?
 
           title
         end
@@ -64,7 +66,7 @@ module WorkPackage::Journalized
           journal = o.last_journal
           t = "work_package"
 
-          t << if journal && journal.details.empty? && !journal.initial?
+          t += if journal && journal.details.empty? && !journal.initial?
                  "-note"
                else
                  status = Status.find_by(id: o.status_id)
