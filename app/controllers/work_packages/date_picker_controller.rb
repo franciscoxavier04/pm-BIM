@@ -350,13 +350,9 @@ class WorkPackages::DatePickerController < ApplicationController
   end
 
   def fields_set_to_non_working_day(wp_params)
-    result = []
-
-    %i[start_date due_date].each do |field|
-      result << field if wp_params[field].present? && set_to_a_non_working_day?(field)
+    %i[start_date due_date].filter do |field|
+      wp_params[field].present? && set_to_a_non_working_day?(field)
     end
-
-    result
   end
 
   def set_to_a_non_working_day?(field)
