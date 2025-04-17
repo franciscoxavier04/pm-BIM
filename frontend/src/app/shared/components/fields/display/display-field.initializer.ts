@@ -86,6 +86,9 @@ import {
   WorkPackageSpentTimeDisplayField,
 } from 'core-app/shared/components/fields/display/field-types/wp-spent-time-display-field.module';
 import { LinkDisplayField } from 'core-app/shared/components/fields/display/field-types/link-display-field.module';
+import {
+  ProjectPhaseDisplayField,
+} from 'core-app/shared/components/fields/display/field-types/project-phase-display-field.module';
 
 export function initializeCoreDisplayFields(displayFieldService:DisplayFieldService) {
   return () => {
@@ -101,12 +104,12 @@ export function initializeCoreDisplayFields(displayFieldService:DisplayFieldServ
       .addFieldType(TypeDisplayField, 'type', ['Type'])
       .addFieldType(ResourceDisplayField, 'resource', [
         'Project',
-        'ProjectPhase',
         'TimeEntriesActivity',
         'Version',
         'Category',
         'CustomField::Hierarchy::Item',
         'CustomOption'])
+      .addFieldType(ProjectPhaseDisplayField, 'projectPhase', ['ProjectPhase'])
       .addFieldType(ResourcesDisplayField, 'resources', ['[]CustomOption', '[]CustomField::Hierarchy::Item'])
       .addFieldType(ResourcesDisplayField, 'resources', ['[]Version'])
       .addFieldType(MultipleUserFieldModule, 'users', ['[]User'])
