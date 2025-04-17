@@ -579,7 +579,7 @@ class CostQuery::PDF::TimesheetGenerator
   def format_hours(hours)
     return "" if hours.nil? || hours < 0
 
-    DurationConverter.output(hours, format: :hours_and_minutes)
+    DurationConverter.output(hours, format: :hours_colon_minutes)
   end
 
   def format_spent_on_time(entry)

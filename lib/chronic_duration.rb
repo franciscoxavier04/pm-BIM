@@ -105,7 +105,7 @@ module ChronicDuration
     if opts[:format] == :hours_only
       hours = seconds / 3600.0
       seconds = 0
-    elsif opts[:format] == :hours_and_minutes
+    elsif opts[:format] == :hours_colon_minutes
       hours = (seconds / hour).to_i
       minutes = (seconds % hour / minute).to_i
       minutes += 1 if (seconds % hour % minute) > 0
@@ -189,7 +189,7 @@ module ChronicDuration
       hours = hours.round(2)
       hours_int = hours.to_i
       hours = hours_int if hours - hours_int == 0 # if hours end with .0
-    when :hours_and_minutes
+    when :hours_colon_minutes
       dividers = {
         hours: ":", minutes: "", keep_zero: true
       }
