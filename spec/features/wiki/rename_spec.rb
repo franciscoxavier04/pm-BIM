@@ -46,9 +46,8 @@ RSpec.describe "Wiki page", :js do
   it "allows renaming" do
     visit project_wiki_path(project, wiki_page)
 
-    SeleniumHubWaiter.wait
     page.find_test_selector("wiki-more-dropdown-menu").click
-    page.find(".ActionListItem", text: "Rename", exact_text: true).click
+    page.find_test_selector("wiki-rename-action-menu-item").click
 
     SeleniumHubWaiter.wait
     fill_in "Title", with: rename_name

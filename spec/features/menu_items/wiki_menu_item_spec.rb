@@ -93,7 +93,7 @@ RSpec.describe "Wiki menu items",
 
     # creating the menu item with the pages name for the menu item
     page.find_test_selector("wiki-more-dropdown-menu").click
-    page.find(".ActionListItem", text: "Configure menu item", exact_text: true).click
+    page.find_test_selector("wiki-configure-menu-action-menu-item").click
 
     choose "Show as menu item in project navigation"
 
@@ -115,7 +115,7 @@ RSpec.describe "Wiki menu items",
     # modifying the menu item to a different name and to be a subpage
 
     page.find_test_selector("wiki-more-dropdown-menu").click
-    page.find(".ActionListItem", text: "Configure menu item", exact_text: true).click
+    page.find_test_selector("wiki-configure-menu-action-menu-item").click
     wait_for_network_idle
 
     fill_in "Name of menu item", with: "Custom page name"
@@ -150,7 +150,7 @@ RSpec.describe "Wiki menu items",
 
     page.find_test_selector("wiki-more-dropdown-menu").click
     accept_alert do
-      page.find(".ActionListItem", text: "Delete", exact_text: true).click
+      page.find_test_selector("wiki-delete-action-menu-item").click
     end
 
     within "#menu-sidebar" do
@@ -163,7 +163,7 @@ RSpec.describe "Wiki menu items",
     visit project_wiki_path(project, other_wiki_page)
 
     page.find_test_selector("wiki-more-dropdown-menu").click
-    page.find(".ActionListItem", text: "Configure menu item", exact_text: true).click
+    page.find_test_selector("wiki-configure-menu-action-menu-item").click
 
     choose "Do not show this wikipage in project navigation"
 
