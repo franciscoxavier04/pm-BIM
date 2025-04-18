@@ -230,47 +230,47 @@ ru:
       storage_provider: Поставщик хранилища
     health:
       actions:
-        rerun_checks: Re-run all checks
-        run_checks: Run checks now
+        rerun_checks: Перезапустить все проверки
+        run_checks: Выполнить проверку
       checked: Последняя проверка %{datetime}
       checks:
         ampf_configuration:
-          files_request: Fetching group folder files
-          group_folder_contents: Group folder has expected content
-          group_folder_presence: Group folder exists
-          header: Automatically managed project folder configuration
-          userless_access: Server-side request authentication
+          files_request: Получение файлов групповых папок
+          group_folder_contents: Папка группы ожидала содержимое
+          group_folder_presence: Папка группы существует
+          header: Конфигурация автоматически управляемых папок проекта
+          userless_access: Аутентификация на стороне сервера
         authentication:
-          existing_token: User token
-          header: Authentication
-          non_provisioned_user: User provisioned by IDP
-          provisioned_user_provider: User provisioned by OIDC
-          token_negotiable: User token capabilities
-          user_bound_request: User-based request authentication
+          existing_token: Токен пользователя
+          header: Аутентификация
+          non_provisioned_user: Пользователь зарегистрирован через IDC
+          provisioned_user_provider: Пользователь зарегистрирован через OIDC
+          token_negotiable: Права пользовательского токена
+          user_bound_request: Пользовательский запрос аутентификации
         base_configuration:
-          capabilities_request: Remote file storage capabilities
-          client_id: Client ID
-          client_secret: Client secret
-          dependencies_check: Dependencies
-          dependencies_versions: Dependencies (version)
-          diagnostic_request: Diagnostic request
-          drive_id_format: Drive ID format
-          drive_id_not_found: Drive exists
-          header: Basic configuration
-          host_url_accessible: Host URL accessible
-          storage_configured: Configuration complete
-          tenant_id: Tenant ID
+          capabilities_request: Возможности удаленного хранилища
+          client_id: ID клиента
+          client_secret: Закрытый ключ клиента
+          dependencies_check: Зависимости
+          dependencies_versions: Зависимости (версия)
+          diagnostic_request: Диагностический запрос
+          drive_id_format: Формат ID диска
+          drive_id_not_found: Диск существует
+          header: Основные настройки
+          host_url_accessible: Адрес хоста доступен
+          storage_configured: Настройка завершена
+          tenant_id: Идентификатор арендатора
         failures:
-          zero: All checks passed
-          one: "%{count} check failed"
-          few: "%{count} checks failed"
-          many: "%{count} checks failed"
-          other: "%{count} checks failed"
+          zero: Проверка прошла успешна
+          one: "%{count} проверка не удалась"
+          few: "%{count} проверка не удалась"
+          many: "%{count} проверка не удалась"
+          other: "%{count} проверка не удалась"
         warnings:
-          one: "%{count} check returned a warning"
-          few: "%{count} checks returned a warning"
-          many: "%{count} checks returned a warning"
-          other: "%{count} checks returned a warning"
+          one: "%{count} проверка с предупреждением"
+          few: "%{count} проверки с предупреждениями"
+          many: "%{count} проверок с предупреждениями"
+          other: "%{count} проверок с предупреждениями"
       connection_validation:
         app_version_mismatch: Версия приложения "Интеграция OpenProject" не поддерживается. Пожалуйста, обновите ваш сервер Nextcloud.
         client_id_wrong: Настроенный идентификатор клиента OAuth 2 недействителен. Пожалуйста, проверьте конфигурацию.
@@ -281,10 +281,10 @@ ru:
         host_not_found: По настроенному адресу хоста сервер Nextcloud не найден. Пожалуйста, проверьте конфигурацию.
         missing_dependencies: 'Для файлового хранилища отсутствует необходимая зависимость. Пожалуйста, добавьте следующую зависимость: %{dependency}.'
         nextcloud:
-          oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
-          oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
-          oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
-          unexpected_content: Unexpected content found in the managed group folder.
+          oauth_request_not_found: OpenProject не смог найти корневую папку Nextcloud для текущего зарегистрированного пользователя. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
+          oauth_request_unauthorized: У текущего пользователя нет прав на просмотр основной папки Nextcloud или мы не смогли получить токен. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
+          oauth_token_missing: OpenProject не может протестировать пользовательскую связь с Nextcloud, так как пользователь еще не связал свою учетную запись Nextcloud.
+          unexpected_content: В управляемой папке группы обнаружено неожиданное содержимое.
         not_configured: Соединение не удалось подтвердить. Пожалуйста, сначала завершите настройку.
         oidc_cant_acquire_token: Ваша настройка OpenID Connect не предоставляет необходимой аудитории и не предоставляет возможности обмена токенами. Пожалуйста, ознакомьтесь с нашей документацией для получения дополнительной информации.
         oidc_cant_exchange_token: Похоже, возникла проблема с настройкой Exchange Token вашего провайдера OpenID Connect. Пожалуйста, проверьте его конфигурацию и повторите попытку.
@@ -297,9 +297,9 @@ ru:
           drive_id_not_found: Настроенный идентификатор диска не найден. Пожалуйста, проверьте конфигурацию.
           drive_id_wrong: Настроенный идентификатор диска не найден. Пожалуйста, проверьте конфигурацию.
           existing_test_folder: Папка %{folder_name}, необходимая для тестирования, уже существует. Удалите ее и повторите попытку.
-          oauth_request_not_found: OpenProject couldn't find the root folder in the drive using the current logged-in user. Please check the server logs for further information.
-          oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive or we couldn't acquire a token. Please check the server logs for further information.
-          oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
+          oauth_request_not_found: OpenProject не смог найти корневую папку для текущего зарегистрированного пользователя. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
+          oauth_request_unauthorized: У текущего пользователя нет прав на просмотр корневой папки OneDrive или мы не смогли получить токен. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
+          oauth_token_missing: OpenProject не может протестировать пользовательскую связь с OneDrive/SharePoint, так как пользователь еще не связал свою учетную запись Microsoft.
           unexpected_content: На диске обнаружено неожидаемое содержимое.
         placeholder: Проверьте подключение к серверу.
         subtitle: Проверка соединения
@@ -307,23 +307,23 @@ ru:
         unknown_error: Соединение не удалось подтвердить. Произошла неизвестная ошибка. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
         userless_access_denied: Указанный пароль приложения неверен.
       label_error: Ошибка
-      label_failed: Failed
+      label_failed: Ошибка
       label_healthy: Здоровые
-      label_passed: Passed
+      label_passed: Пройден
       label_pending: В ожидании
-      label_skipped: Skipped
+      label_skipped: Пропущен
       label_warning: Предупреждение
-      no_report: No report available
-      no_report_description: Run the checks now for a full health status report for this file storage.
-      open_report: Open full health report
+      no_report: Нет доступных отчетов
+      no_report_description: Запуск проверок для полного отчёта о состоянии этого файлового хранилища.
+      open_report: Открыть полный отчёт о состоянии
       project_folders:
         subtitle: Автоматически управляемые папки проекта
       since: с %{datetime}
       summary:
-        failure: Some checks failed and the system does not work as expected.
-        success: All connections and systems are working as expected.
-        warning: Some checks returned a warning. This can lead to unexpected behaviour.
-      title: Health status report
+        failure: Некоторые проверки не удались, и система работает не так, как ожидалось.
+        success: Все соединения и системы работают, как и ожидалось.
+        warning: Некоторые проверки вернули предупреждение. Это может привести к неожиданному поведению.
+      title: Отчёт о состоянии хранилища
     health_email_notifications:
       description_subscribed: Все администраторы получают уведомления о состоянии здоровья этого хранилища.
       description_unsubscribed: Уведомления о состоянии здоровья этого хранилища были отключены для всех администраторов.

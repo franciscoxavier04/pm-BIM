@@ -230,41 +230,41 @@ zh-TW:
       storage_provider: 儲存空間提供商
     health:
       actions:
-        rerun_checks: Re-run all checks
-        run_checks: Run checks now
+        rerun_checks: 重新執行所有檢查
+        run_checks: 立即執行檢查
       checked: 上次檢查時間：%{datetime}
       checks:
         ampf_configuration:
-          files_request: Fetching group folder files
-          group_folder_contents: Group folder has expected content
-          group_folder_presence: Group folder exists
-          header: Automatically managed project folder configuration
-          userless_access: Server-side request authentication
+          files_request: 正在擷取群組資料夾檔案
+          group_folder_contents: 群組資料夾包含預期的內容
+          group_folder_presence: 群組目錄已存在
+          header: 自動管理專案資料夾設定
+          userless_access: 服務器端要求認證
         authentication:
-          existing_token: User token
-          header: Authentication
-          non_provisioned_user: User provisioned by IDP
-          provisioned_user_provider: User provisioned by OIDC
-          token_negotiable: User token capabilities
-          user_bound_request: User-based request authentication
+          existing_token: 用戶權杖(token)
+          header: 驗證
+          non_provisioned_user: 使用者由身分提供者（IDP）佈建
+          provisioned_user_provider: 使用者由身分提供者（OIDC）佈建
+          token_negotiable: 使用者權杖(token)功能
+          user_bound_request: 依使用者身分進行請求驗證
         base_configuration:
-          capabilities_request: Remote file storage capabilities
-          client_id: Client ID
-          client_secret: Client secret
-          dependencies_check: Dependencies
-          dependencies_versions: Dependencies (version)
-          diagnostic_request: Diagnostic request
-          drive_id_format: Drive ID format
-          drive_id_not_found: Drive exists
-          header: Basic configuration
-          host_url_accessible: Host URL accessible
-          storage_configured: Configuration complete
-          tenant_id: Tenant ID
+          capabilities_request: 遠端檔案儲存能力
+          client_id: 客戶端 ID
+          client_secret: 客戶端金鑰
+          dependencies_check: 依賴套件
+          dependencies_versions: 依賴(版本)
+          diagnostic_request: 檢查請求
+          drive_id_format: 硬碟ID格式
+          drive_id_not_found: 硬碟已存在
+          header: 基本設定
+          host_url_accessible: 主機URL可存取
+          storage_configured: 設定完成
+          tenant_id: 租戶ID
         failures:
-          zero: All checks passed
-          other: "%{count} checks failed"
+          zero: 全部檢查通過
+          other: "%{count} 檢查失敗"
         warnings:
-          other: "%{count} checks returned a warning"
+          other: "%{count} 次檢查結果顯示警告"
       connection_validation:
         app_version_mismatch: 不支援整合 OpenProject 應用程式版本。請更新您的 Nextcloud 伺服器。
         client_id_wrong: 設定的 OAuth 2 客戶端 ID 無效。請檢查設定。
@@ -275,10 +275,10 @@ zh-TW:
         host_not_found: 在設定的主機網址未找到 Nextcloud 伺服器。請檢查設定。
         missing_dependencies: '檔案儲存中缺少所需的相依性。請新增下列相依性： %{dependency}。'
         nextcloud:
-          oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
-          oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
-          oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
-          unexpected_content: Unexpected content found in the managed group folder.
+          oauth_request_not_found: OpenProject 無法使用目前登入的使用者找到 Nextcloud 的根資料夾。請檢查伺服器日誌以獲取更多資訊。
+          oauth_request_unauthorized: 目前使用者無權查看 Nextcloud 的主資料夾，或者我們無法取得權杖(token)。請檢查伺服器日誌以獲取更多資訊。
+          oauth_token_missing: OpenProject 無法測試與 Nextcloud 的用戶級連線，因為沒有當前用戶的權杖(token)。
+          unexpected_content: 在管理的群組資料夾中發現非預期內容。
         not_configured: 連線無法驗證。請先完成設定。
         oidc_cant_acquire_token: 您的 OpenID Connect 設定未提供必要的受眾，也未提供權杖(token)交換功能。請查看我們的說明文件以瞭解更多資訊。
         oidc_cant_exchange_token: 您的 OpenID Connect 提供者的 Token Exchange 設定似乎有問題。請檢查其設定並再次嘗試。
@@ -291,9 +291,9 @@ zh-TW:
           drive_id_not_found: 找不到已設定的磁碟代碼。請檢查相關設定。
           drive_id_wrong: 設定的磁碟代碼似乎不對。請檢查相關設定。
           existing_test_folder: 測試所需的資料夾 %{folder_name} 已經存在。請刪除後再重試。
-          oauth_request_not_found: OpenProject couldn't find the root folder in the drive using the current logged-in user. Please check the server logs for further information.
-          oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive or we couldn't acquire a token. Please check the server logs for further information.
-          oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
+          oauth_request_not_found: OpenProject 無法使用目前登入的使用者找到 Nextcloud 的根資料夾。請檢查伺服器日誌以獲取更多資訊。
+          oauth_request_unauthorized: 目前使用者無權查看 Nextcloud 的主資料夾，或者我們無法取得權杖(token)。請檢查伺服器日誌以獲取更多資訊。
+          oauth_token_missing: OpenProject 無法測試使用者與 OneDrive/SharePoint 的連線，因為使用者尚未連結 Microsoft 帳號。
           unexpected_content: 在磁碟中發現未預期的內容。
         placeholder: 根據伺服器檢查您的連線。
         subtitle: 連線驗證
@@ -301,23 +301,23 @@ zh-TW:
         unknown_error: 連線無法驗證。發生未知錯誤。請檢查伺服器日誌以瞭解進一步資訊。
         userless_access_denied: 設定的應用程式密碼無效。
       label_error: 錯誤
-      label_failed: Failed
+      label_failed: 損壞
       label_healthy: 健康的
-      label_passed: Passed
+      label_passed: 通過
       label_pending: 待處理
-      label_skipped: Skipped
+      label_skipped: 已略過
       label_warning: 警告
-      no_report: No report available
-      no_report_description: Run the checks now for a full health status report for this file storage.
-      open_report: Open full health report
+      no_report: 沒有報告
+      no_report_description: 現在執行檢查，查看此檔案儲存的完整健康報告。
+      open_report: 開啟完整健康報告
       project_folders:
         subtitle: 自動管理的專案文件夾
       since: 自從%{datetime}開始
       summary:
-        failure: Some checks failed and the system does not work as expected.
-        success: All connections and systems are working as expected.
-        warning: Some checks returned a warning. This can lead to unexpected behaviour.
-      title: Health status report
+        failure: 部分檢查失敗，系統無法如預期運作。
+        success: 所有連線與系統均如預期運作。
+        warning: 某些檢查返回警告，可能會引發預期外的行為。
+      title: 健康狀況報告
     health_email_notifications:
       description_subscribed: 所有管理員都會收到此儲存空間的運作狀況電子郵件通知。
       description_unsubscribed: 已向所有管理員關閉此儲存的運作狀況電子郵件通知。

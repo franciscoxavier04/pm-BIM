@@ -23,7 +23,7 @@ ru:
   js:
     text_are_you_sure: "Уверены?"
     myTimeTracking:
-      noSpecificTime: "No specific time"
+      noSpecificTime: "Нет определенного времени"
     work_packages:
       property_groups:
         costs: "Затраты"
