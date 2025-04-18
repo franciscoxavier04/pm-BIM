@@ -544,7 +544,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         # expect all journal entries
         activity_tab.expect_journal_notes(text: "First comment by admin")
         activity_tab.expect_journal_notes(text: "Second comment by admin")
-        activity_tab.expect_journal_changed_attribute(text: "Subject")
+        activity_tab.expect_journal_changed_attribute(text: "A new subject")
 
         activity_tab.filter_journals(:only_comments)
 
