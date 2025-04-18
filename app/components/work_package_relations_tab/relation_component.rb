@@ -51,10 +51,6 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
     relation_item.related
   end
 
-  def child
-    relation_item.related if parent_child_relationship?
-  end
-
   def editable? = editable
 
   private
@@ -62,7 +58,7 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   def parent_child_relationship? = relation.nil?
 
   def should_render_edit_option?
-    # Children have nothing to edit as it's not a relation.
+    # Children and parent can not be edited as it's not a relation.
     !parent_child_relationship? && allowed_to_manage_relations?
   end
 
@@ -70,7 +66,7 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
     return false unless editable?
 
     if parent_child_relationship?
-      allowed_to_manage_subtasks?
+      allowed_to_manage_subtasks? && relation_item.type.child?
     else
       allowed_to_manage_relations?
     end
@@ -78,7 +74,7 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
 
   def allowed_to_manage_subtasks?
     helpers.current_user.allowed_in_project?(:manage_subtasks, work_package.project) &&
-      helpers.current_user.allowed_in_project?(:manage_subtasks, child.project)
+      helpers.current_user.allowed_in_project?(:manage_subtasks, related_work_package.project)
   end
 
   def allowed_to_manage_relations?
@@ -121,7 +117,7 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
 
   def destroy_path
     if parent_child_relationship?
-      work_package_children_relation_path(work_package, child)
+      work_package_children_relation_path(work_package, related_work_package)
     else
       work_package_relation_path(work_package, relation)
     end
