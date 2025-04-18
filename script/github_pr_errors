@@ -85,7 +85,7 @@ class Options
       options.merge!(parse_url(ARGV.first)) if ARGV.any?
     end
 
-    def parse_args
+    def parse_args # rubocop:disable Metrics/AbcSize
       options = {}
       opt_parser = OptionParser.new do |parser|
         parser.banner = BANNER
