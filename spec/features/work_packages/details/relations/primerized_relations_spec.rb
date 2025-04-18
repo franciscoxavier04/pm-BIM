@@ -156,12 +156,13 @@ RSpec.describe "Primerized work package relations tab",
 
       expect(page).to have_css(relations_panel_selector)
 
-      tabs.expect_counter("relations", 7)
+      tabs.expect_counter("relations", 8)
 
       relations_tab.expect_not_closest_relation(relation_follows1)
       relations_tab.expect_closest_relation(relation_follows2)
       relations_tab.expect_relation(relation_relates)
       relations_tab.expect_relation(relation_blocked)
+      relations_tab.expect_relation(parent_work_package)
 
       # Relations not visible due to lack of permissions on the project
       relations_tab.expect_ghost_relation(restricted_relation_relates)
@@ -197,7 +198,7 @@ RSpec.describe "Primerized work package relations tab",
 
       expect { relation_follows1.reload }.to raise_error(ActiveRecord::RecordNotFound)
 
-      tabs.expect_counter("relations", 6)
+      tabs.expect_counter("relations", 7)
 
       # Relations not visible due to lack of permissions on the project
       relations_tab.expect_ghost_relation(restricted_relation_relates)
@@ -212,7 +213,7 @@ RSpec.describe "Primerized work package relations tab",
       relations_tab.remove_child(child_wp)
       expect(child_wp.reload.parent).to be_nil
 
-      tabs.expect_counter("relations", 6)
+      tabs.expect_counter("relations", 7)
 
       # Relations not visible due to lack of permissions on the project
       relations_tab.expect_ghost_relation(restricted_relation_relates)
@@ -237,7 +238,7 @@ RSpec.describe "Primerized work package relations tab",
       expect(relation_row).to have_text("5 days")
 
       # Unchanged
-      tabs.expect_counter("relations", 7)
+      tabs.expect_counter("relations", 8)
       relations_tab.expect_ghost_relation(restricted_relation_relates)
       relations_tab.expect_ghost_relation(restricted_child_work_package)
 
@@ -248,7 +249,7 @@ RSpec.describe "Primerized work package relations tab",
       expect(relation_row).to have_text("And they can be edited!")
 
       # Unchanged
-      tabs.expect_counter("relations", 7)
+      tabs.expect_counter("relations", 8)
 
       # Relations not visible due to lack of permissions on the project
       relations_tab.expect_ghost_relation(restricted_relation_relates)
@@ -324,7 +325,7 @@ RSpec.describe "Primerized work package relations tab",
       relations_tab.expect_relation(wp_successor)
 
       # Bumped by one
-      tabs.expect_counter("relations", 8)
+      tabs.expect_counter("relations", 9)
       # Relation is created
       expect(Relation.follows.where(from: wp_successor, to: work_package)).to exist
 
@@ -355,7 +356,7 @@ RSpec.describe "Primerized work package relations tab",
       relations_tab.expect_relation(wp_blocks)
 
       # Bumped by one
-      tabs.expect_counter("relations", 8)
+      tabs.expect_counter("relations", 9)
       # Relation is created
       expect(Relation.blocks.where(from: wp_blocks, to: work_package)).to exist
     end
@@ -388,13 +389,13 @@ RSpec.describe "Primerized work package relations tab",
 
       wait_for_network_idle
 
-      tabs.expect_counter("relations", 7)
+      tabs.expect_counter("relations", 8)
 
       relations_tab.add_existing_child(not_child_yet_wp)
       relations_tab.expect_child(not_child_yet_wp)
 
       # Bumped by one
-      tabs.expect_counter("relations", 8)
+      tabs.expect_counter("relations", 9)
 
       # Child relation is created
       expect(not_child_yet_wp.reload.parent).to eq work_package
@@ -455,7 +456,7 @@ RSpec.describe "Primerized work package relations tab",
 
       wait_for_network_idle
 
-      tabs.expect_counter("relations", 7)
+      tabs.expect_counter("relations", 8)
 
       relations_tab.expect_no_add_relation_button
       relations_tab.expect_no_relatable_action_menu(wp_related)
@@ -472,7 +473,7 @@ RSpec.describe "Primerized work package relations tab",
 
         wait_for_network_idle
 
-        tabs.expect_counter("relations", 7)
+        tabs.expect_counter("relations", 8)
 
         # The menu is shown as the user can add a relation
         relations_tab.expect_add_relation_button
@@ -527,7 +528,7 @@ RSpec.describe "Primerized work package relations tab",
 
         wait_for_network_idle
 
-        tabs.expect_counter("relations", 7)
+        tabs.expect_counter("relations", 8)
 
         # The menu is shown as the user can add a child
         relations_tab.expect_add_relation_button
