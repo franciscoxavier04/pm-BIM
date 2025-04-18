@@ -252,7 +252,7 @@ it:
         oidc_non_provisioned_user: L'utente attuale non è fornito da un provider di identità OpenID Connect. Esegui nuovamente il controllo con un utente fornito.
         placeholder: Verifica la tua connessione con il server.
         subtitle: Verifica della connessione
-        tenant_id_wrong: L'ID della directory non è valido. Verifica la configurazione.
+        tenant_id_wrong: L'ID della directory non è valido. Verifica la configurazione. 
         unexpected_content:
           nextcloud: Contenuto inatteso trovato nella cartella di gruppo gestita.
           one_drive: Contenuto inatteso nello spazio di archiviazione.
