@@ -2063,7 +2063,6 @@ sl:
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available only through the %{plan_name}."
-      link_title: "Več informacij"
       hide_banner: "Hide this banner"
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
@@ -2333,7 +2332,6 @@ sl:
       community: "Skupnost OpenProject"
       upsale:
         title: "Upgrade to Enterprise edition"
-        more_info: "Več informacij"
     links:
       upgrade_enterprise_edition: "Upgrade to Enterprise edition"
       postgres_migration: "Selitev namestitve na PostgreSQL"
@@ -2810,6 +2808,7 @@ sl:
   label_modules: "Moduli"
   label_months_from: "mesecev od"
   label_more: "več"
+  label_more_information: "More information"
   label_more_than_ago: "pred več kot nekaj dnevi"
   label_move_column_left: "Premakni stolpec v levo"
   label_move_column_right: "Premakni stolpec v desno"

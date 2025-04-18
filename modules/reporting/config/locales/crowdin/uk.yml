@@ -93,7 +93,8 @@ uk:
       button: "Експортувати табель обліку часу в PDF"
       timesheet: "Табель обліку часу"
       time: "Час"
-      sum_hours: Сума
+      sums_hours: Sums
+      total_sum: Total sum
     cost_reports:
       title: "Експорт звітів про витрати у форматі XLS"
       start_time: "Час початку"

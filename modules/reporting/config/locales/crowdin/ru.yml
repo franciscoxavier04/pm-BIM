@@ -93,7 +93,8 @@ ru:
       button: "Экспорт табеля учета рабочего времени в PDF"
       timesheet: "Табель учета рабочего времени"
       time: "Время"
-      sum_hours: Сумма
+      sums_hours: Sums
+      total_sum: Total sum
     cost_reports:
       title: "Экспорт ваших отчетов о затратах в XLS"
       start_time: "Время начала"

@@ -1985,7 +1985,6 @@ hu:
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available only through the %{plan_name}."
-      link_title: "További információ"
       hide_banner: "Hide this banner"
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
@@ -2255,7 +2254,6 @@ hu:
       community: "OpenProject Közösség"
       upsale:
         title: "Váltás Vállalati Verzióra"
-        more_info: "További információ"
     links:
       upgrade_enterprise_edition: "Váltás Vállalati Verzióra"
       postgres_migration: "A rendszer költöztetése PostreSQL-re"
@@ -2732,6 +2730,7 @@ hu:
   label_modules: "Modulok"
   label_months_from: "hónaptól"
   label_more: "További"
+  label_more_information: "More information"
   label_more_than_ago: "több, nappal ezelőtt"
   label_move_column_left: "Oszlop mozgatása balra"
   label_move_column_right: "Oszlop mozgatása jobbra"

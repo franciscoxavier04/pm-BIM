@@ -1982,7 +1982,6 @@ nl:
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available only through the %{plan_name}."
-      link_title: "Meer informatie"
       hide_banner: "Hide this banner"
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
@@ -2252,7 +2251,6 @@ nl:
       community: "OpenProject gemeenschap"
       upsale:
         title: "Upgrade naar Enterprise-editie"
-        more_info: "Meer informatie"
     links:
       upgrade_enterprise_edition: "Upgrade naar Enterprise-editie"
       postgres_migration: "Uw installatie overzetten naar PostgreSQL"
@@ -2729,6 +2727,7 @@ nl:
   label_modules: "Modules"
   label_months_from: "maanden vanaf"
   label_more: "Meer"
+  label_more_information: "More information"
   label_more_than_ago: "meer dan dagen geleden"
   label_move_column_left: "Verplaats kolom naar links"
   label_move_column_right: "Verplaats kolom naar rechts"

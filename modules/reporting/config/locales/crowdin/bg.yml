@@ -93,7 +93,8 @@ bg:
       button: "Export PDF timesheet"
       timesheet: "Timesheet"
       time: "Час"
-      sum_hours: Сума
+      sums_hours: Sums
+      total_sum: Total sum
     cost_reports:
       title: "Вашият износ на отчети за разходите XLS"
       start_time: "Начален час"

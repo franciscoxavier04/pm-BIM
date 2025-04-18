@@ -2064,7 +2064,6 @@ sk:
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available only through the %{plan_name}."
-      link_title: "Viac informácií"
       hide_banner: "Hide this banner"
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
@@ -2334,7 +2333,6 @@ sk:
       community: "OpenProject komunita"
       upsale:
         title: "Upgrade to Enterprise edition"
-        more_info: "Viac informácií"
     links:
       upgrade_enterprise_edition: "Upgrade to Enterprise edition"
       postgres_migration: "Migrating your installation to PostgreSQL"
@@ -2811,6 +2809,7 @@ sk:
   label_modules: "Moduly"
   label_months_from: "mesiacov od"
   label_more: "Viac"
+  label_more_information: "More information"
   label_more_than_ago: "pred viac než dňom"
   label_move_column_left: "Presunúť stĺpec vľavo"
   label_move_column_right: "Premiestniť stĺpec vpravo"

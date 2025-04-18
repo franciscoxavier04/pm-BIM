@@ -1986,7 +1986,6 @@ si:
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available only through the %{plan_name}."
-      link_title: "වැඩි විස්තර"
       hide_banner: "Hide this banner"
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
@@ -2256,7 +2255,6 @@ si:
       community: "විවෘත ව්යාපෘති ප්රජාව"
       upsale:
         title: "Upgrade to Enterprise edition"
-        more_info: "වැඩි විස්තර"
     links:
       upgrade_enterprise_edition: "Upgrade to Enterprise edition"
       postgres_migration: "ඔබගේ ස්ථාපනය PostgreSQL වෙත සංක්රමණය කිරීම"
@@ -2733,6 +2731,7 @@ si:
   label_modules: "මොඩියුල"
   label_months_from: "මාස සිට"
   label_more: "තවත්"
+  label_more_information: "More information"
   label_more_than_ago: "දින කිහිපයකට පෙර"
   label_move_column_left: "තීරුව වමට ගෙනයන්න"
   label_move_column_right: "තීරුව දකුණට ගෙනයන්න"

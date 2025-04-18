@@ -93,7 +93,8 @@ lt:
       button: "Export PDF timesheet"
       timesheet: "Timesheet"
       time: "Laikas"
-      sum_hours: Suma
+      sums_hours: Sums
+      total_sum: Total sum
     cost_reports:
       title: "Jūsų kainos ataskaitų XLS eksportas"
       start_time: "Pradžios laikas"

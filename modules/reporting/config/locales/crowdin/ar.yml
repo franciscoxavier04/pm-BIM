@@ -93,7 +93,8 @@ ar:
       button: "Export PDF timesheet"
       timesheet: "Timesheet"
       time: "الوقت"
-      sum_hours: المجموع
+      sums_hours: Sums
+      total_sum: Total sum
     cost_reports:
       title: "Your Cost Reports XLS export"
       start_time: "Start time"

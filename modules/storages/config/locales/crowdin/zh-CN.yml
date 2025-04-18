@@ -200,7 +200,6 @@ zh-CN:
       storage_delete_result_3: 如果此存储具有自动托管的项目文件夹，这些文件夹及其包含的文件将被永久删除。
     dependencies:
       nextcloud:
-        group_folders_app: 组文件夹
         integration_app: 集成 OpenProject
     enabled_in_projects:
       setup_incomplete_description: 这个存储设置不完整。请在多个项目中启用它之前完成设置。
@@ -230,9 +229,43 @@ zh-CN:
       storage_oauth: Nextcloud OAuth
       storage_provider: 存储提供商
     health:
-      checked: 上次检查于 %{datetime} 
+      actions:
+        rerun_checks: Re-run all checks
+        run_checks: Run checks now
+      checked: 上次检查于 %{datetime}
+      checks:
+        ampf_configuration:
+          files_request: Fetching group folder files
+          group_folder_contents: Group folder has expected content
+          group_folder_presence: Group folder exists
+          header: Automatically managed project folder configuration
+          userless_access: Server-side request authentication
+        authentication:
+          existing_token: User token
+          header: Authentication
+          non_provisioned_user: User provisioned by IDP
+          provisioned_user_provider: User provisioned by OIDC
+          token_negotiable: User token capabilities
+          user_bound_request: User-based request authentication
+        base_configuration:
+          capabilities_request: Remote file storage capabilities
+          client_id: Client ID
+          client_secret: Client secret
+          dependencies_check: Dependencies
+          dependencies_versions: Dependencies (version)
+          diagnostic_request: Diagnostic request
+          drive_id_format: Drive ID format
+          drive_id_not_found: Drive exists
+          header: Basic configuration
+          host_url_accessible: Host URL accessible
+          storage_configured: Configuration complete
+          tenant_id: Tenant ID
+        failures:
+          zero: All checks passed
+          other: "%{count} checks failed"
+        warnings:
+          other: "%{count} checks returned a warning"
       connection_validation:
-        action: 重新检查连接
         app_version_mismatch: 不受支持的集成 OpenProject 应用程序版本。请更新您的 Nextcloud 服务器。
         client_id_wrong: 已配置的 OAuth 2 客户端ID无效。请检查配置。
         client_secret_wrong: 已配置的 OAuth 2 客户端ID无效。请检查配置。
@@ -241,10 +274,12 @@ zh-CN:
         group_folder_version_mismatch: 不受支持的组文件夹版本。请更新您的 Nextcloud 服务器。
         host_not_found: 在配置的主机 URL 中找不到 Nextcloud 服务器。请检查配置。
         missing_dependencies: '文件存储缺少一个必需的依赖项。请添加以下依赖项： %{dependency}.'
+        nextcloud:
+          oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
+          oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
+          oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
+          unexpected_content: Unexpected content found in the managed group folder.
         not_configured: 无法验证连接。请先完成配置。
-        oauth_request_not_found: OpenProject 无法使用当前登录用户找到 Nextcloud 的根文件夹。请检查服务器日志以获取更多信息。
-        oauth_request_unauthorized: 当前用户未被授权查看 Nextcloud 的主文件夹，或者我们无法获取令牌。请检查服务器日志以获取进一步的信息。
-        oauth_token_missing: OpenProject 无法测试与 Nextcloud 的用户级别通信，因为当前用户没有令牌。
         oidc_cant_acquire_token: 您的 OpenID Connect 设置未提供必要的受众，也不提供令牌交换功能。请查阅我们的文档以获取更多信息。
         oidc_cant_exchange_token: 似乎您的 OpenID Connect 提供商上的 Token Exchange 设置存在问题。请检查其配置并重试。
         oidc_cant_refresh_token: 尝试检查您对存储的访问时出错。请检查服务器日志以获取更多信息。
@@ -256,23 +291,33 @@ zh-CN:
           drive_id_not_found: 找不到配置的驱动器 ID。请检查配置。
           drive_id_wrong: 配置的驱动器 ID 似乎无效。请检查配置。
           existing_test_folder: 测试所需的文件夹 %{folder_name} 已经存在。请将其删除并重试。
+          oauth_request_not_found: OpenProject couldn't find the root folder in the drive using the current logged-in user. Please check the server logs for further information.
+          oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive or we couldn't acquire a token. Please check the server logs for further information.
+          oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
           unexpected_content: 在驱动器中找到意外内容。
         placeholder: 检查您与服务器的连接。
         subtitle: 连接验证
         tenant_id_wrong: 已配置的 OAuth 2 客户端ID无效。请检查配置。
-        unexpected_content:
-          nextcloud: 在管理组文件夹中发现意外内容。
-          one_drive: 在驱动器中发现意外内容。
         unknown_error: 连接无法验证。出现未知错误。请查看服务器日志以获取更多信息。
         userless_access_denied: 已配置的应用密码无效。
       label_error: 错误
+      label_failed: Failed
       label_healthy: 健康
+      label_passed: Passed
       label_pending: 待处理
+      label_skipped: Skipped
       label_warning: 警告
+      no_report: No report available
+      no_report_description: Run the checks now for a full health status report for this file storage.
+      open_report: Open full health report
       project_folders:
         subtitle: 自动托管项目文件夹
-      since: 自从 %{datetime} 
-      title: 健康状态
+      since: 自从 %{datetime}
+      summary:
+        failure: Some checks failed and the system does not work as expected.
+        success: All connections and systems are working as expected.
+        warning: Some checks returned a warning. This can lead to unexpected behaviour.
+      title: Health status report
     health_email_notifications:
       description_subscribed: 所有管理员都会收到该存储的健康状态电子邮件通知。
       description_unsubscribed: 所有管理员都已关闭此存储的健康状态电子邮件通知。

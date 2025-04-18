@@ -2142,7 +2142,6 @@ ar:
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available only through the %{plan_name}."
-      link_title: "More information"
       hide_banner: "Hide this banner"
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
@@ -2412,7 +2411,6 @@ ar:
       community: "مجتمع أوبِن بروجِكت"
       upsale:
         title: "Upgrade to Enterprise edition"
-        more_info: "More information"
     links:
       upgrade_enterprise_edition: "Upgrade to Enterprise edition"
       postgres_migration: "Migrating your installation to PostgreSQL"
@@ -2889,6 +2887,7 @@ ar:
   label_modules: "أنماط"
   label_months_from: "أشهر من"
   label_more: "المزيد"
+  label_more_information: "More information"
   label_more_than_ago: "منذ أكثر من أيام"
   label_move_column_left: "انقل العمود لليسار"
   label_move_column_right: "انقل العمود لليمين"

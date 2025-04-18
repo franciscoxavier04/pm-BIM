@@ -2058,7 +2058,6 @@ uk:
       plan_title: "Доповнення версії Enterprise %{plan}"
       plan_name: "Версія Enterprise %{plan}"
       plan_text_html: "Доступно лише у версії %{plan_name}."
-      link_title: "Додаткові відомості"
       hide_banner: "Приховати цей банер"
       baseline_comparison:
         description: Виділяйте зміни, внесені в цей список із будь-якого моменту часу в минулому.
@@ -2328,7 +2327,6 @@ uk:
       community: "Спільнота OpenProject"
       upsale:
         title: "Оновлення до версії Enterprise"
-        more_info: "Більше інформації"
     links:
       upgrade_enterprise_edition: "Оновлення до версії Enterprise"
       postgres_migration: "Міграція інсталяції в PostgreSQL"
@@ -2805,6 +2803,7 @@ uk:
   label_modules: "Модулі"
   label_months_from: "місяців(ця) з"
   label_more: "Більше"
+  label_more_information: "More information"
   label_more_than_ago: "більш ніж днів(я) назад"
   label_move_column_left: "Перемістити стовпець ліворуч"
   label_move_column_right: "Перемістити стовпець праворуч"

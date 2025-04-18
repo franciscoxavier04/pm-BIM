@@ -1986,7 +1986,6 @@ sv:
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available only through the %{plan_name}."
-      link_title: "Mer information"
       hide_banner: "Hide this banner"
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
@@ -2256,7 +2255,6 @@ sv:
       community: "OpenProject community"
       upsale:
         title: "Upgrade to Enterprise edition"
-        more_info: "Mer information"
     links:
       upgrade_enterprise_edition: "Upgrade to Enterprise edition"
       postgres_migration: "Migrera din installation till PostgreSQL"
@@ -2733,6 +2731,7 @@ sv:
   label_modules: "Moduler"
   label_months_from: "månader från"
   label_more: "Mer"
+  label_more_information: "More information"
   label_more_than_ago: "mer än dagar sedan"
   label_move_column_left: "Flytta kolumnen till vänster"
   label_move_column_right: "Flytta kolumnen till höger"

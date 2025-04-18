@@ -1943,7 +1943,6 @@ zh-CN:
       plan_title: "企业 %{plan} 附加组件"
       plan_name: "%{plan} 企业计划"
       plan_text_html: "只能通过%{plan_name}使用。"
-      link_title: "更多信息"
       hide_banner: "隐藏此广告"
       baseline_comparison:
         description: 高亮显示自从过去任意时间点以来对此列表所做的更改。
@@ -1984,7 +1983,7 @@ zh-CN:
           占位符用户是一种将工作包分配给不属于您项目的用户的方法。它们在一系列场景中十分有用；例如，如果您需要跟踪尚未命名或可用资源的任务，或者如果您不想让该人员访问 OpenProject 但仍希望跟踪分配给他们的任务。
       comments_with_restricted_visibility:
         title: "仅您可见"
-        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+        description: "评论可见性限制允许内部团队能够私下沟通。 这些只对某些项目角色可见，并且永远不会公开可见。"
   enumeration_activities: "时间跟踪活动"
   enumeration_work_package_priorities: "工作包优先级"
   enumeration_reported_project_statuses: "报告的项目状态"
@@ -2213,7 +2212,6 @@ zh-CN:
       community: "OpenProject 社区"
       upsale:
         title: "升级到企业版"
-        more_info: "更多信息"
     links:
       upgrade_enterprise_edition: "升级到企业版"
       postgres_migration: "将您的安装迁移到 PostgreSQL"
@@ -2690,6 +2688,7 @@ zh-CN:
   label_modules: "模块"
   label_months_from: "月份从"
   label_more: "更多"
+  label_more_information: "More information"
   label_more_than_ago: "更多天前"
   label_move_column_left: "左移列"
   label_move_column_right: "右移列"
@@ -3824,7 +3823,7 @@ zh-CN:
       not_allowed_text: "您没有查看此页面的权限。"
       activities:
         enable_comments_with_restricted_visibility: "启用限制可见性评论"
-        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
+        helper_text: "限制评论允许内部团队能够私下沟通。这些仅对具有必要权限的选定角色可见，并且永远不会公开显示。%{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "纯文本"

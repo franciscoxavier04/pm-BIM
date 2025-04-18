@@ -50,12 +50,14 @@ de:
         project: Projekt
         user: Benutzer
         work_package: Arbeitspaket
+        subject: Subject
         hours: Stunden
         comments: Kommentar
         activity: Aktivität
         spent_on: Datum
         start_time: Startzeit
         end_time: Endzeit
+        time: Time
     models:
       time_entry:
         one: "Zeitbuchung"
@@ -150,12 +152,28 @@ de:
   label_cost: "Kosten"
   label_costs: "Kosten"
   label_mandatory_fields: "Pflichtfelder"
+  label_my_time_tracking: "My time tracking"
+  label_no_time: "No time tracked"
+  label_next_day: "Next day"
+  label_next_week: "Woche vor"
+  label_next_month: "Next month"
+  label_previous_day: "Previous day"
+  label_previous_week: "Woche zurück"
+  label_previous_month: "Previous month"
+  label_specific_day: "Day %{day}"
+  label_specific_week: "Calendar week %{week}"
+  label_specific_month: "Month %{month}"
+  label_list: "Liste"
+  label_month: "Month"
+  label_day: "Day"
+  label_today_capitalized: "Today"
   placeholder_activity_select_work_package_first: Die Auswahl des Arbeitspakets ist zuerst erforderlich
   notice_something_wrong: "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
   notice_successful_restore: "Erfolgreich wiederhergestellt."
   notice_successful_lock: "Erfolgreich gesperrt."
   notice_cost_logged_successfully: "Stückkosten erfolgreich gebucht."
   notice_different_time_zones: "Dieser Benutzer hat eine andere Zeitzone (%{tz}). Die Zeit wird unter Verwendung seiner Zeitzone protokolliert."
+  notice_time_entry_update_failed: "Failed to update time entry. Errors: %{errors}"
   permission_edit_cost_entries: "Bearbeiten gebuchter Stückkosten"
   permission_edit_own_cost_entries: "Bearbeiten eigener gebuchter Stückkosten"
   permission_edit_hourly_rates: "Stundensätze bearbeiten"
@@ -181,6 +199,10 @@ de:
   text_reassign_time_and_cost_entries: "Gebuchte Aufwände diesem Ticket zuweisen:"
   text_warning_hidden_elements: "Es wurden möglicherweise nicht alle Einträge berücksichtigt."
   week: "Woche"
+  total_times:
+    week: "Week Total: %{hours}"
+    month: "Month Total: %{hours}"
+    day: "Day Total: %{hours}"
   api_v3:
     errors:
       validation:

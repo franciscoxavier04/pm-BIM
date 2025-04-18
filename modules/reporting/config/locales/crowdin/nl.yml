@@ -93,7 +93,8 @@ nl:
       button: "Exporteer PDF-tijdregistratie"
       timesheet: "Tijdregistratie"
       time: "Tijd"
-      sum_hours: Som
+      sums_hours: Sums
+      total_sum: Total sum
     cost_reports:
       title: "Jouw kostenrapporten XLS export"
       start_time: "Starttijd"
