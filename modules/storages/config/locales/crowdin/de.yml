@@ -230,40 +230,40 @@ de:
       storage_provider: Speicheranbieter
     health:
       actions:
-        rerun_checks: Re-run all checks
-        run_checks: Run checks now
+        rerun_checks: Alle Überprüfungen erneut ausführen
+        run_checks: Überprüfungen jetzt ausführen
       checked: Zuletzt geprüft %{datetime}
       checks:
         ampf_configuration:
-          files_request: Fetching group folder files
-          group_folder_contents: Group folder has expected content
-          group_folder_presence: Group folder exists
-          header: Automatically managed project folder configuration
-          userless_access: Server-side request authentication
+          files_request: Gruppenordnerdateien werden abgerufen
+          group_folder_contents: Gruppenordner hat erwarteten Inhalt
+          group_folder_presence: Gruppenordner existiert
+          header: Automatisch verwaltete Projektordner-Konfiguration
+          userless_access: Serverseitige Anfrageauthentifizierung
         authentication:
-          existing_token: User token
-          header: Authentication
-          non_provisioned_user: User provisioned by IDP
-          provisioned_user_provider: User provisioned by OIDC
-          token_negotiable: User token capabilities
-          user_bound_request: User-based request authentication
+          existing_token: Benutzer Token
+          header: Authentifizierung
+          non_provisioned_user: Durch IDP bereitgestellter Benutzer
+          provisioned_user_provider: Durch OIDC bereitgestellter Benutzer
+          token_negotiable: Benutzer-Token-Fähigkeiten
+          user_bound_request: Benutzerbasierte Anfrageauthentifizierung
         base_configuration:
           capabilities_request: Remote file storage capabilities
           client_id: Client ID
-          client_secret: Client secret
-          dependencies_check: Dependencies
-          dependencies_versions: Dependencies (version)
-          diagnostic_request: Diagnostic request
+          client_secret: Client-Geheimnis
+          dependencies_check: Abhängigkeiten
+          dependencies_versions: Abhängigkeiten (Version)
+          diagnostic_request: Diagnoseanfrage
           drive_id_format: Drive ID format
-          drive_id_not_found: Drive exists
-          header: Basic configuration
-          host_url_accessible: Host URL accessible
-          storage_configured: Configuration complete
+          drive_id_not_found: Laufwerk existiert
+          header: Basiskonfiguration
+          host_url_accessible: Host-URL erreichbar
+          storage_configured: Konfiguration abgeschlossen
           tenant_id: Tenant ID
         failures:
-          zero: All checks passed
-          one: "%{count} check failed"
-          other: "%{count} checks failed"
+          zero: Alle Überprüfungen bestanden
+          one: "%{count} Überprüfung fehlgeschlagen"
+          other: "%{count} Überprüfungen fehlgeschlagen"
         warnings:
           one: "%{count} check returned a warning"
           other: "%{count} checks returned a warning"
@@ -296,30 +296,30 @@ de:
           oauth_request_not_found: OpenProject couldn't find the root folder in the drive using the current logged-in user. Please check the server logs for further information.
           oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive or we couldn't acquire a token. Please check the server logs for further information.
           oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
-          unexpected_content: Unexpected content found in the drive.
+          unexpected_content: Unerwarteter Inhalt auf dem Laufwerk gefunden.
         placeholder: Überprüfen Sie Ihre Verbindung mit dem Server.
         subtitle: Verbindungsvalidierung
         tenant_id_wrong: Die konfigurierte Verzeichnis-(Mandanten-)ID ist ungültig. Bitte überprüfen Sie die Konfiguration.
         unknown_error: Die Verbindung konnte nicht validiert werden. Es ist ein unbekannter Fehler aufgetreten. Bitte prüfen Sie die Serverprotokolle für weitere Informationen.
         userless_access_denied: Das konfigurierte App-Passwort ist ungültig.
       label_error: Fehler
-      label_failed: Failed
+      label_failed: Fehlgeschlagen
       label_healthy: Fehlerfrei
-      label_passed: Passed
+      label_passed: Bestanden
       label_pending: Ausstehend
-      label_skipped: Skipped
+      label_skipped: Übersprungen
       label_warning: Warnung
-      no_report: No report available
+      no_report: Kein Bericht verfügbar
       no_report_description: Run the checks now for a full health status report for this file storage.
-      open_report: Open full health report
+      open_report: Vollständigen Gesundheitsbericht öffnen
       project_folders:
         subtitle: Automatisch verwaltete Projektordner
       since: seit %{datetime}
       summary:
-        failure: Some checks failed and the system does not work as expected.
-        success: All connections and systems are working as expected.
-        warning: Some checks returned a warning. This can lead to unexpected behaviour.
-      title: Health status report
+        failure: Einige Überprüfungen sind fehlgeschlagen und das System funktioniert nicht wie erwartet.
+        success: Alle Verbindungen und Systeme funktionieren wie erwartet.
+        warning: Einige Überprüfungen ergaben eine Warnung. Dies kann zu unerwartetem Verhalten führen.
+      title: Gesundheitsstatusbericht
     health_email_notifications:
       description_subscribed: Alle Administratoren erhalten E-Mail-Benachrichtigungen über den Zustand dieses Dateispeichers.
       description_unsubscribed: Die E-Mail-Benachrichtigungen über den Zustand dieses Speichers wurden für alle Administratoren deaktiviert.

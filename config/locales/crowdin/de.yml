@@ -289,7 +289,7 @@ de:
   global_search:
     placeholder: "Suche in %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "Alle"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
@@ -1952,19 +1952,19 @@ de:
     features:
       baseline_comparison: Baseline Comparisons
       board_view: Advanced Boards
-      conditional_highlighting: Conditional Highlighting
-      comments_with_restricted_visibility: Comments With Restricted Visibility
+      conditional_highlighting: Bedingte Hervorhebung
+      comments_with_restricted_visibility: Kommentare mit eingeschränkter Sichtbarkeit
       custom_actions: Benutzerdefinierte Aktionen
-      custom_field_hierarchies: Custom fields of type hierarchy
+      custom_field_hierarchies: Selbstdefinierte Felder vom Typ Hierarchie
       customize_life_cycle: Customize Life Cycle
       date_alerts: Date Alerts
       define_custom_style: Custom theme and logo
-      edit_attribute_groups: Edit Attribute Groups
+      edit_attribute_groups: Attributgruppen bearbeiten
       gantt_pdf_export: Gantt PDF Export
       grid_widget_wp_graph: Grid Widget Work Package Graph
       ldap_groups: LDAP users and group sync
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
-      placeholder_users: Placeholder Users
+      placeholder_users: Platzhalter-Benutzer
       project_list_sharing: Project List Sharing
       readonly_work_packages: Readonly Work Packages
       sso_auth_providers: Single sign-on
@@ -2005,8 +2005,8 @@ de:
       work_package_sharing:
         description: "Share work packages with users who are not members of the project."
       define_custom_style:
-        title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
+        title: "Selbstdefiniertes Farbthema und Logo"
+        more_info: "Hinweis: Das verwendete Logo wird öffentlich zugänglich sein."
         description: Customize your OpenProject installation with your own logo and colors.
       custom_actions:
         title: "Benutzerdefinierte Aktionen"
@@ -2014,11 +2014,11 @@ de:
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
-        title: Placeholder users
+        title: Platzhalter-Benutzer
         description: >
           Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
       comments_with_restricted_visibility:
-        title: "For your eyes only"
+        title: "Nur für Sie"
         description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "Aktivitäten für Zeiterfassung"
   enumeration_work_package_priorities: "Arbeitspaket-Prioritäten"
@@ -2724,7 +2724,7 @@ de:
   label_modules: "Module"
   label_months_from: "Monate ab"
   label_more: "Mehr"
-  label_more_information: "More information"
+  label_more_information: "Weitere Informationen"
   label_more_than_ago: "vor mehr als (Tage)"
   label_move_column_left: "Spalte nach links"
   label_move_column_right: "Spalte nach rechts"
