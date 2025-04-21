@@ -243,13 +243,13 @@ zh-CN:
         authentication:
           existing_token: 用户 token
           header: 认证
-          non_provisioned_user: 用户提供的 IDP
-          provisioned_user_provider: 用户提供的 OIDC
-          token_negotiable: 用户token能力
-          user_bound_request: 基于用户的请求身份验证
+          non_provisioned_user: 由 IDP 提供的用户
+          provisioned_user_provider: 由 OIDC 提供的用户
+          token_negotiable: 用户 token 能力
+          user_bound_request: 基于用户的身份验证请求
         base_configuration:
           capabilities_request: 远程文件存储能力
-          client_id: 客户端ID
+          client_id: 客户端 ID
           client_secret: 客户端密钥
           dependencies_check: 依赖项
           dependencies_versions: 依赖项(版本)
@@ -257,14 +257,14 @@ zh-CN:
           drive_id_format: 驱动器 ID 格式
           drive_id_not_found: 驱动器已存在
           header: 基础配置
-          host_url_accessible: 可以访问主机 URL
+          host_url_accessible: 主机 URL 可访问
           storage_configured: 配置完成
           tenant_id: 租户 ID
         failures:
           zero: 全部检查通过
-          other: "%{count}检查失败"
+          other: "%{count} 检查失败"
         warnings:
-          other: "%{count}检查返回警告"
+          other: "%{count} 检查返回警告"
       connection_validation:
         app_version_mismatch: 不受支持的集成 OpenProject 应用程序版本。请更新您的 Nextcloud 服务器。
         client_id_wrong: 已配置的 OAuth 2 客户端ID无效。请检查配置。
@@ -275,9 +275,9 @@ zh-CN:
         host_not_found: 在配置的主机 URL 中找不到 Nextcloud 服务器。请检查配置。
         missing_dependencies: '文件存储缺少一个必需的依赖项。请添加以下依赖项： %{dependency}.'
         nextcloud:
-          oauth_request_not_found: OpenProject 无法使用当前登录用户找到Nextcloud的根文件夹。请检查服务器日志以获取更多信息。
-          oauth_request_unauthorized: 当前用户未被授权查看Nextcloud的主文件夹，或我们无法获取token。 请检查服务器日志以获取更多信息。
-          oauth_token_missing: OpenProject 无法测试用户与Nextcloud之间的通信，因为用户尚未链接他们的Nextcloud帐户。
+          oauth_request_not_found: OpenProject 无法使用当前登录的用户找到 Nextcloud 的根文件夹。请检查服务器日志以获取更多信息。
+          oauth_request_unauthorized: 当前用户未被授权查看 Nextcloud 的主文件夹，或我们无法获取 token。 请检查服务器日志以获取更多信息。
+          oauth_token_missing: OpenProject 无法测试用户与 Nextcloud 之间的通信，因为用户尚未链接他们的 Nextcloud 帐户。
           unexpected_content: 在管理组文件夹中发现意外内容。
         not_configured: 无法验证连接。请先完成配置。
         oidc_cant_acquire_token: 您的 OpenID Connect 设置未提供必要的受众，也不提供令牌交换功能。请查阅我们的文档以获取更多信息。
@@ -292,8 +292,8 @@ zh-CN:
           drive_id_wrong: 配置的驱动器 ID 似乎无效。请检查配置。
           existing_test_folder: 测试所需的文件夹 %{folder_name} 已经存在。请将其删除并重试。
           oauth_request_not_found: OpenProject 无法使用当前登录用户在驱动器中找到根文件夹。请检查服务器日志以获取更多信息。
-          oauth_request_unauthorized: 当前用户未被授权查看OneDrive的根文件夹或我们无法获取token。 请检查服务器日志以获取更多信息。
-          oauth_token_missing: OpenProject 无法测试用户与OneDrive/SharePoint的通信，因为用户尚未链接他们的微软帐户。
+          oauth_request_unauthorized: 当前用户未被授权查看 OneDrive 的根文件夹或我们无法获取 token。 请检查服务器日志以获取更多信息。
+          oauth_token_missing: OpenProject 无法测试用户与 OneDrive/SharePoint 的通信，因为用户尚未链接他们的微软帐户。
           unexpected_content: 在驱动器中找到意外内容。
         placeholder: 检查您与服务器的连接。
         subtitle: 连接验证
