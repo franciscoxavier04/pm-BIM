@@ -1803,7 +1803,8 @@ tr:
     text:
       failed: '"%{source_project_name}" project "%{target_project_name}" projesine kopyalanamadı.'
       succeeded: '"%{source_project_name}" projesini "%{target_project_name}" dosyasına kopyaladı.'
-  create_new_page: "Viki sayfası"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Wiki page"
   date:
     abbr_day_names:
       - "Pzr"

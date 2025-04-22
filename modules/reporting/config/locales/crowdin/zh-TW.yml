@@ -94,7 +94,8 @@ zh-TW:
       timesheet: "時間表"
       time: "時間"
       sums_hours: 加總
-      total_sum: 總計
+      overview_per_user_total: "Overview: Total hours per user"
+      overview_per_user_day: "Overview: Hours per user per day"
     cost_reports:
       title: "您的成本報表(以XLS匯出)"
       start_time: "開始時間"

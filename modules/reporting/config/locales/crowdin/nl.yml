@@ -94,7 +94,8 @@ nl:
       timesheet: "Tijdregistratie"
       time: "Tijd"
       sums_hours: Sums
-      total_sum: Total sum
+      overview_per_user_total: "Overview: Total hours per user"
+      overview_per_user_day: "Overview: Hours per user per day"
     cost_reports:
       title: "Jouw kostenrapporten XLS export"
       start_time: "Starttijd"

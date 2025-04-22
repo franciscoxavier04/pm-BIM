@@ -1804,7 +1804,8 @@ si:
     text:
       failed: 'ව්යාපෘතිය "%{source_project_name}" ව්යාපෘතිය "%{target_project_name}" දක්වා පිටපත් කල නොහැක.'
       succeeded: 'Copied project "%{source_project_name}" to "%{target_project_name}".'
-  create_new_page: "විකි පිටුව"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Wiki page"
   date:
     abbr_day_names:
       - "හිරු"

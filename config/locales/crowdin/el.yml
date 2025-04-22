@@ -1800,7 +1800,8 @@ el:
     text:
       failed: 'Δεν ήταν δυνατή η αντιγραφή του έργου "%{source_project_name}" στο έργο "%{target_project_name}".'
       succeeded: 'Αντιγράφτηκε το έργο "%{source_project_name}" στο "%{target_project_name}".'
-  create_new_page: "Σελίδα Wiki"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Wiki page"
   date:
     abbr_day_names:
       - "Κυρ"
