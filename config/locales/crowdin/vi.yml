@@ -1947,7 +1947,6 @@ vi:
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available only through the %{plan_name}."
-      link_title: "Thông tin thêm"
       hide_banner: "Hide this banner"
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
@@ -2217,7 +2216,6 @@ vi:
       community: "Cộng đồng OpenProject"
       upsale:
         title: "Nâng cấp lên phiên bản Enterprise"
-        more_info: "Thêm thông tin"
     links:
       upgrade_enterprise_edition: "Nâng cấp lên phiên bản Enterprise"
       postgres_migration: "Di chuyển cài đặt của bạn lên PostgreSQL"
@@ -2694,6 +2692,7 @@ vi:
   label_modules: "Mô-đun"
   label_months_from: "tháng từ"
   label_more: "Xem thêm"
+  label_more_information: "More information"
   label_more_than_ago: "nhiều hơn mấy ngày trước"
   label_move_column_left: "Di chuyển cột sang trái"
   label_move_column_right: "Di chuyển cột sang phải"

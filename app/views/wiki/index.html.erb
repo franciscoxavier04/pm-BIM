@@ -32,7 +32,11 @@ See COPYRIGHT and LICENSE files for more details.
   render Primer::OpenProject::PageHeader.new do |header|
     header.with_title(test_selector: "wiki-toc-page-header-title") { t(:label_wiki_toc) }
     header.with_breadcrumbs(
-      breadcrumb_for_page(@project, @related_page, t(:label_table_of_contents))
+      [
+        { href: project_overview_path(@project.id), text: @project.name },
+        { href: url_for({ controller: "/wiki", action: "index", project_id: @project.identifier, id: @related_page }), text: t("activerecord.models.wiki") },
+        t(:label_wiki_toc)
+      ]
     )
     watcher_action_button(header, @wiki)
   end

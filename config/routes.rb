@@ -664,23 +664,23 @@ Rails.application.routes.draw do
 
     resources :children_relations, only: %i[new create destroy], controller: "work_package_children_relations"
 
-    resource :progress, only: %i[new edit update], controller: "work_packages/progress"
+    resource :progress, only: %i[edit update], controller: "work_packages/progress"
     collection do
       resource :progress,
-               only: :create,
+               only: %i[create new],
                controller: "work_packages/progress",
                as: :work_package_progress
     end
 
-    resource :datepicker_dialog_content,
-             only: %i[show new edit update],
+    resource :date_picker,
+             only: %i[show edit update],
              controller: "work_packages/date_picker",
-             on: :member,
-             as: "datepicker_dialog_content"
+             as: "date_picker"
     collection do
-      resource :datepicker_dialog_content,
-               only: :create,
-               controller: "work_packages/date_picker"
+      resource :date_picker,
+               only: %i[create new],
+               controller: "work_packages/date_picker",
+               as: "date_picker"
     end
 
     resources :relations_tab, only: %i[index], controller: "work_package_relations_tab"

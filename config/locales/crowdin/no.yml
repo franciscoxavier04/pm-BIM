@@ -1985,7 +1985,6 @@
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available only through the %{plan_name}."
-      link_title: "Mer informasjon"
       hide_banner: "Skjul banneret"
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
@@ -2255,7 +2254,6 @@
       community: "OpenProject fellesskap"
       upsale:
         title: "Oppgrader til Enterprise utgaven"
-        more_info: "Mer informasjon"
     links:
       upgrade_enterprise_edition: "Oppgrader til Enterprise utgaven"
       postgres_migration: "Overføre installasjonen til PostgreSQL"
@@ -2732,6 +2730,7 @@
   label_modules: "Moduler"
   label_months_from: "måneder fra"
   label_more: "Mer"
+  label_more_information: "More information"
   label_more_than_ago: "mer enn dager siden"
   label_move_column_left: "Flytt kolonne til venstre"
   label_move_column_right: "Flytt kolonne til høyre"

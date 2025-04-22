@@ -93,7 +93,8 @@ fa:
       button: "Export PDF timesheet"
       timesheet: "Timesheet"
       time: "زمان"
-      sum_hours: Sum
+      sums_hours: Sums
+      total_sum: Total sum
     cost_reports:
       title: "Your Cost Reports XLS export"
       start_time: "زمان شروع"

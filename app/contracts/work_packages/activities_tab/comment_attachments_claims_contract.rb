@@ -28,40 +28,6 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Storages
-  module Admin
-    class ConnectionValidationController < ApplicationController
-      include OpTurbo::ComponentStream
-
-      layout "admin"
-
-      before_action :require_admin
-
-      model_object Storage
-
-      before_action :find_model_object, only: %i[validate_connection]
-
-      def validate_connection
-        case @storage.provider_type
-        when ::Storages::Storage::PROVIDER_TYPE_NEXTCLOUD
-          validator = Peripherals::NextcloudConnectionValidator.new(storage: @storage)
-        when ::Storages::Storage::PROVIDER_TYPE_ONE_DRIVE
-          validator = Peripherals::OneDriveConnectionValidator.new(storage: @storage)
-        else
-          raise "Unsupported provider type: #{@storage.provider_type}"
-        end
-
-        @result = validator.validate
-        update_via_turbo_stream(component: SidePanel::ValidationResultComponent.new(result: @result))
-        respond_to_with_turbo_streams
-      end
-
-      private
-
-      def find_model_object(object_id = :storage_id)
-        super
-        @storage = @object
-      end
-    end
-  end
+class WorkPackages::ActivitiesTab::CommentAttachmentsClaimsContract < ModelContract
+  include ::Attachments::ValidateReplacements
 end

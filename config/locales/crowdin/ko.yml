@@ -1947,7 +1947,6 @@ ko:
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available only through the %{plan_name}."
-      link_title: "추가 정보"
       hide_banner: "Hide this banner"
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
@@ -2217,7 +2216,6 @@ ko:
       community: "OpenProject 커뮤니티"
       upsale:
         title: "Enterprise Edition으로 업그레이드"
-        more_info: "더보기"
     links:
       upgrade_enterprise_edition: "Enterprise Edition으로 업그레이드"
       postgres_migration: "설치를 PostgreSQL로 마이그레이션"
@@ -2694,6 +2692,7 @@ ko:
   label_modules: "모듈"
   label_months_from: "개월 동안 | 다음부터"
   label_more: "기타"
+  label_more_information: "More information"
   label_more_than_ago: "일 이상 전"
   label_move_column_left: "왼쪽으로 열 이동"
   label_move_column_right: "오른쪽으로 열 이동"

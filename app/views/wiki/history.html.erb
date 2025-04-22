@@ -31,7 +31,7 @@ See COPYRIGHT and LICENSE files for more details.
   render Primer::OpenProject::PageHeader.new do |header|
     header.with_title { t(:label_history) }
     header.with_breadcrumbs(
-      breadcrumb_for_page(@project, @page)
+      breadcrumb_for_page(@project, @page, t(:label_history))
     )
   end
 %>

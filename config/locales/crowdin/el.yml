@@ -1982,7 +1982,6 @@ el:
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available only through the %{plan_name}."
-      link_title: "Περισσότερες πληροφορίες"
       hide_banner: "Hide this banner"
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
@@ -2252,7 +2251,6 @@ el:
       community: "Κοινότητα OpenProject"
       upsale:
         title: "Upgrade to Enterprise edition"
-        more_info: "Περισσότερες πληροφορίες"
     links:
       upgrade_enterprise_edition: "Upgrade to Enterprise edition"
       postgres_migration: "Μεταφορά της εγκατάστασης σας σε PostgreSQL"
@@ -2729,6 +2727,7 @@ el:
   label_modules: "Ενότητες"
   label_months_from: "μήνες από"
   label_more: "Περισσότερα"
+  label_more_information: "More information"
   label_more_than_ago: "σε περισσότερο από ημέρες πριν"
   label_move_column_left: "Μετακίνηση στήλης αριστερά"
   label_move_column_right: "Μετακίνηση στήλης δεξιά"

@@ -1945,7 +1945,6 @@ ms:
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available only through the %{plan_name}."
-      link_title: "Maklumat lanjut"
       hide_banner: "Hide this banner"
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
@@ -2215,7 +2214,6 @@ ms:
       community: "Komuniti OpenProject"
       upsale:
         title: "Naik taraf ke edisi Enterprise"
-        more_info: "Maklumat lanjut"
     links:
       upgrade_enterprise_edition: "Naik taraf ke edisi Enterprise"
       postgres_migration: "Mengalihkan pemasangan anda ke PostgreSQL"
@@ -2692,6 +2690,7 @@ ms:
   label_modules: "Modul"
   label_months_from: "bulan dari"
   label_more: "Lagi"
+  label_more_information: "More information"
   label_more_than_ago: "lebih dari beberapa hari yang lalu"
   label_move_column_left: "Alihkan lajur ke kiri"
   label_move_column_right: "Alihkan lajur ke kanan"

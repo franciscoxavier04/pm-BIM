@@ -93,7 +93,8 @@ ca:
       button: "Export PDF timesheet"
       timesheet: "Timesheet"
       time: "Hora"
-      sum_hours: Suma
+      sums_hours: Sums
+      total_sum: Total sum
     cost_reports:
       title: "La teva exportació de l'informe de costos XLS"
       start_time: "Hora d'inici"

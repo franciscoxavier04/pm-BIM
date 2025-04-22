@@ -1985,7 +1985,6 @@ tr:
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available only through the %{plan_name}."
-      link_title: "Daha fazla bilgi"
       hide_banner: "Hide this banner"
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
@@ -2255,7 +2254,6 @@ tr:
       community: "OpenProject topluluğu"
       upsale:
         title: "Enterprise sürümüne yükseltin"
-        more_info: "Daha fazla bilgi"
     links:
       upgrade_enterprise_edition: "Enterprise sürümüne yükseltin"
       postgres_migration: "Kurulumunuzu PostgreSQL'e taşıyın"
@@ -2732,6 +2730,7 @@ tr:
   label_modules: "Modüller"
   label_months_from: "aydan itibaren"
   label_more: "Diğer"
+  label_more_information: "More information"
   label_more_than_ago: "günler önce"
   label_move_column_left: "Sütunu sola taşı"
   label_move_column_right: "Sütunu sağa taşı"

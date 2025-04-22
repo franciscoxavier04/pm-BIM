@@ -26,37 +26,26 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { HalResource } from 'core-app/features/hal/resources/hal-resource';
+import { Attachable } from 'core-app/features/hal/resources/mixins/attachable-mixin';
+import { WorkPackageResource } from 'core-app/features/hal/resources/work-package-resource';
+import { AttachmentCollectionResource } from './attachment-collection-resource';
 
-@Component({
-  selector: 'opce-opce-collapsible-section-augment',
-  templateUrl: './collapsible-section.html',
-})
-export class CollapsibleSectionComponent implements OnInit {
-  public expanded = false;
-
-  public sectionTitle:string;
-
-  @ViewChild('sectionBody', { static: true }) public sectionBody:ElementRef;
-
-  constructor(public elementRef:ElementRef) {
-  }
-
-  ngOnInit():void {
-    const element:HTMLElement = this.elementRef.nativeElement;
-
-    this.sectionTitle = element.getAttribute('section-title')!;
-    if (element.getAttribute('initially-expanded') === 'true') {
-      this.expanded = true;
-    }
-
-    const target:HTMLElement = element.nextElementSibling as HTMLElement;
-    this.sectionBody.nativeElement.appendChild(target);
-    target.removeAttribute('hidden');
-  }
-
-  public toggle(event:Event) {
-    this.expanded = !this.expanded;
-    event.preventDefault();
-  }
+interface ActivityCommentResourceEmbedded {
+  attachments:AttachmentCollectionResource;
+  workPackage:WorkPackageResource;
 }
+
+interface ActivityCommentResourceLinks extends ActivityCommentResourceEmbedded {
+  addAttachment(attachment:HalResource):Promise<unknown>;
+}
+
+class ActivityCommentBaseResource extends HalResource {
+  public $embedded:ActivityCommentResourceEmbedded;
+  public $links:ActivityCommentResourceLinks;
+}
+
+export const ActivityCommentResource = Attachable(ActivityCommentBaseResource);
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export interface ActivityCommentResource extends ActivityCommentBaseResource, ActivityCommentResourceLinks {}

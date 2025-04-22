@@ -1984,7 +1984,6 @@ es:
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available only through the %{plan_name}."
-      link_title: "Más información"
       hide_banner: "Hide this banner"
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
@@ -2254,7 +2253,6 @@ es:
       community: "OpenProject Community"
       upsale:
         title: "Actualizar a Enterprise"
-        more_info: "Más información"
     links:
       upgrade_enterprise_edition: "Actualizar a Enterprise"
       postgres_migration: "Migrando su instalación a PostgreSQL"
@@ -2731,6 +2729,7 @@ es:
   label_modules: "Módulos"
   label_months_from: "meses desde"
   label_more: "Más"
+  label_more_information: "More information"
   label_more_than_ago: "más días atrás"
   label_move_column_left: "Mover columna a la izquierda"
   label_move_column_right: "Mover columna a la derecha"
