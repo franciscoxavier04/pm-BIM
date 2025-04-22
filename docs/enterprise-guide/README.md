@@ -11,8 +11,8 @@ keywords: manage subscription, enterprise edition, cloud edition
 Welcome to the OpenProject **Enterprise guide**.
 
 > [!IMPORTANT]
-> **Changes in our Enterprise plans with OpenProject 16.0.0**: Starting with 16.0 (scheduled for 2025-05-21), we will be introducing new Enterprise plans that include the Enterprise add-ons. There are certain add-ons that will only be available on higher plans.
-> Customers who have already booked an Enterprise plan or will book before the release will not be affected by the changes. You can find a detailed [overview of our new plans on our pricing page](https://www.openproject.org/pricing/).
+> **Changes in our Enterprise plans with OpenProject 16.0.0**: Starting with 16.0 (scheduled for 2025-05-21), we will be introducing new Enterprise plans that include Enterprise add-ons. There are certain add-ons that will only be available on higher plans.
+> Customers who have already booked an Enterprise plan or will book before the release will not be affected by the changes. You will NOT lose any features with the update.
 
 The OpenProject Enterprise editions (both cloud and on-premises) include all OpenProject Community features plus, based on the selected Enterprise plan, additional Enterprise add-ons](https://www.openproject.org/enterprise-edition/#enterprise-add-ons), as well as professional [support](https://www.openproject.org/pricing/#support).
 
@@ -25,6 +25,30 @@ The OpenProject Enterprise editions (both cloud and on-premises) include all Ope
 Find out more about our different [support options](./support/).
 
 ## Enterprise add-ons
+
+### Preview of Enterprise plan changes (effective 2025-05-21)
+
+With the release OpenProject 16.0.0 on May 21st, 2025, we will update our Enterprise plans and with it the containing add-ons.
+Customers who have booked an Enterprise plan before or who will book a plan before the upcoming changes will not be effected by any changes and will keep the existing plans also after renewal.
+However, new add-ons that will be released with 16.0.0 and after in the higher Enterprise plans will not be available in theses old plans. You may test these new add-ons in a trial.
+
+The following changes to our Enterprise plans will become effective on 2025-05-21 and apply for new customers:
+
+| Community                                                    | Basic                                                        | Professional                                                 | Premium                                                      | Corporate                                                    |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **All [Community features](https://www.openproject-edge.com/pricing/#features)** | **All Community features +**<br />**Basic Enterprise add-ons**:<br />- Baseline comparison<br />- Team boards<br/>- Version boards<br/>- Subproject boards<br/>- Work Breakdown Structure<br/>- Kanban boards (Status)<br/>- Attribute highlighting<br/>- Intelligent workflows with custom action buttons<br/>- Custom fields of type hierarchy<br/>- Date alerts<br/>- Custom theme and logo<br/>- Configure work package forms<br/>- Gantt charts PDF export<br/>- Graphs on project overview page<br/>- Placeholder users<br/>- Read-only mode for work packages<br/>- Team planner<br/>- Display relations in the work package table | **All Basic +**<br />**Professional Enterprise add-ons**:<br />- Single sign-on<br />-  OneDrive/SharePoint integration<br/>- Share work packages with external users<br/>- Automatic work package subject generation (coming with 16.0.0)<br />- Internal work package comments (coming with 16.0.0) | **All Professional +**<br />**Premium Enterprise add-ons**:<br />- Share project lists (project portfolio)<br />- LDAP users and group sync<br />- Customize project life cycle (coming with 16.0.0) | **All Premium +**<br />**Corporate Enterprise add-ons**:<br/>- OIDC & JWTs (coming with 16.0.0) <br />- Nextcloud Hub integration<br/>- openDesk integration<br/>- Antivirus scanning |
+
+### Testing the new Enterprise add-ons
+
+**Enterprise on-premises**
+
+If you are currently on a lower plan for the Enterprise on-premises and want to test any of the new released Enterprise add-ons from the higher plans, please [get in touch with our Sales team](https://www.openproject.org/contact/) to get a new Enterprise trial token.
+
+**Enterprise cloud**
+
+If you are currently on a lower plan for the Enterprise cloud and want to test any of the new released Enterprise add-ons from a higher plan, please [create a new Cloud trial](https://start.openproject.com/) in order to test the new features.
+
+### Overview of Enterprise add-ons
 
 This video (English only) provides an overview of the OpenProject Enterprise add-ons.
 
