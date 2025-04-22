@@ -292,7 +292,7 @@ Rails.application.reloader.to_prepare do
                        # FIXME: Although the endpoint is removed, the code checking whether a user
                        # is eligible to add work packages through the API still seems to rely on this.
                        journals: [:new],
-                       "work_packages/activities_tab": %i[create toggle_reaction sanitize_restricted_mentions]
+                       "work_packages/activities_tab": %i[create toggle_reaction sanitize_internal_mentions]
                      },
                      permissible_on: %i[work_package project],
                      dependencies: :view_work_packages
@@ -318,28 +318,28 @@ Rails.application.reloader.to_prepare do
                      permissible_on: %i[project],
                      require: :loggedin,
                      dependencies: :view_work_packages,
-                     visible: -> { OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? }
+                     visible: -> { OpenProject::FeatureDecisions.internal_comments_active? }
 
       wpt.permission :add_internal_comments,
                      {},
                      permissible_on: %i[project],
                      require: :loggedin,
                      dependencies: %i[view_project view_internal_comments],
-                     visible: -> { OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? }
+                     visible: -> { OpenProject::FeatureDecisions.internal_comments_active? }
 
       wpt.permission :edit_own_internal_comments,
                      {},
                      permissible_on: %i[project],
                      require: :loggedin,
                      dependencies: %i[view_project view_internal_comments],
-                     visible: -> { OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? }
+                     visible: -> { OpenProject::FeatureDecisions.internal_comments_active? }
 
       wpt.permission :edit_others_internal_comments,
                      {},
                      permissible_on: %i[project],
                      require: :loggedin,
                      dependencies: %i[view_project view_internal_comments],
-                     visible: -> { OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? }
+                     visible: -> { OpenProject::FeatureDecisions.internal_comments_active? }
 
       # WP attachments can be added with :edit_work_packages, this permission allows it without Edit WP as well.
       wpt.permission :add_work_package_attachments,

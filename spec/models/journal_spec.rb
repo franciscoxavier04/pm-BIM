@@ -36,28 +36,28 @@ RSpec.describe Journal do
     let(:model_instance) { create(:work_package_journal, journable: work_package, version: 2) }
 
     describe "#attachments_visible?" do
-      context "with a restricted journal" do
-        let(:restricted_journal) { build_stubbed(:work_package_journal, journable: work_package, restricted: true) }
+      context "with a internal journal" do
+        let(:internal_journal) { build_stubbed(:work_package_journal, journable: work_package, internal: true) }
 
-        context "with the user having the restricted permission" do
-          let(:user_with_restricted_permission) do
+        context "with the user having the internal permission" do
+          let(:user_with_internal_permission) do
             create(:user, member_with_permissions: { project => %i[view_work_packages view_internal_comments] })
           end
 
-          let(:current_user) { user_with_restricted_permission }
+          let(:current_user) { user_with_internal_permission }
 
           before do
             login_as(current_user)
           end
 
           it "is visible" do
-            expect(restricted_journal).to be_attachments_visible
+            expect(internal_journal).to be_attachments_visible
           end
         end
 
-        context "with the user not having the restricted permission" do
+        context "with the user not having the internal permission" do
           it "returns false" do
-            expect(restricted_journal).not_to be_attachments_visible
+            expect(internal_journal).not_to be_attachments_visible
           end
         end
       end
@@ -68,7 +68,7 @@ RSpec.describe Journal do
     let(:work_package) { create(:work_package) }
     let(:journal) { create(:work_package_journal, journable: work_package, version: 2) }
 
-    let(:user_with_restricted_permission) do
+    let(:user_with_internal_permission) do
       create(:user,
              member_with_permissions: { work_package.project => %i[view_work_packages
                                                                    view_internal_comments] })
@@ -79,14 +79,14 @@ RSpec.describe Journal do
              member_with_permissions: { work_package.project => %i[view_work_packages] })
     end
 
-    context "with a restricted journal" do
+    context "with a internal journal" do
       before do
-        journal.update!(restricted: true)
+        journal.update!(internal: true)
       end
 
-      context "with the user having view permission for restricted journals" do
+      context "with the user having view permission for internal journals" do
         before do
-          login_as(user_with_restricted_permission)
+          login_as(user_with_internal_permission)
         end
 
         it "is visible" do
@@ -94,7 +94,7 @@ RSpec.describe Journal do
         end
       end
 
-      context "with the user not having view permission for restricted journals" do
+      context "with the user not having view permission for internal journals" do
         before do
           login_as(user_with_view_work_packages_permission)
         end
@@ -105,13 +105,13 @@ RSpec.describe Journal do
       end
     end
 
-    context "with a journal that is not restricted" do
+    context "with a journal that is not internal" do
       before do
-        journal.update!(restricted: false)
+        journal.update!(internal: false)
         login_as(user_with_view_work_packages_permission)
       end
 
-      context "and the user has permission to view unrestricted journals" do
+      context "and the user has permission to view public journals" do
         it "is visible" do
           expect(journal).to be_visible
         end

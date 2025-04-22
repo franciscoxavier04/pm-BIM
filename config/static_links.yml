@@ -153,7 +153,7 @@ enterprise_features:
     href: https://www.openproject.org/docs/user-guide/agile-boards/#action-boards-enterprise-add-on
   custom_field_hierarchies:
     href: https://www.openproject.org/docs/system-admin-guide/custom-fields/#hierarchy-custom-field-enterprise-add-on
-  comments_with_restricted_visibility:
+  internal_comments:
     href: https://www.openproject.org/docs/user-guide/activity/#work-package-activity
 sysadmin_docs:
   saml:

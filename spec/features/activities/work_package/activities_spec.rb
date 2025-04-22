@@ -34,7 +34,7 @@ require "support/flash/expectations"
 RSpec.describe "Work package activity", :js, :with_cuprite do
   include Flash::Expectations
 
-  let(:project) { create(:project, enabled_comments_with_restricted_visibility: true) }
+  let(:project) { create(:project, enabled_internal_comments: true) }
   let(:admin) { create(:admin) }
   let(:member_role) do
     create(:project_role,
@@ -236,8 +236,8 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       end
     end
 
-    context "when a user cannot see comments with restricted visibility",
-            with_flag: { comments_with_restricted_visibility: true } do
+    context "when a user cannot see internal comments",
+            with_flag: { internal_comments: true } do
       current_user { member }
 
       before do
@@ -245,7 +245,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
                user: admin,
                notes: "First comment by admin",
                journable: work_package,
-               restricted: true,
+               internal: true,
                version: 2)
       end
 
@@ -257,8 +257,8 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       end
     end
 
-    context "when a user can see comments with restricted visibility",
-            with_flag: { comments_with_restricted_visibility: true } do
+    context "when a user can see internal comments",
+            with_flag: { internal_comments: true } do
       current_user { admin }
 
       before do
@@ -266,7 +266,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
                user: admin,
                notes: "First comment by admin",
                journable: work_package,
-               restricted: true,
+               internal: true,
                version: 2)
       end
 
@@ -420,7 +420,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
   end
 
   context "when multiple users are commenting on a workpackage" do
-    context "when the user has permissions to see restricted comments" do
+    context "when the user has permissions to see internal comments" do
       current_user { admin }
       let(:work_package) { create(:work_package, project:, author: admin) }
 
@@ -475,7 +475,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       end
     end
 
-    context "when the user does not have permissions to see restricted comments" do
+    context "when the user does not have permissions to see internal comments" do
       current_user { member }
       let(:work_package) { create(:work_package, project:, author: admin) }
 
@@ -512,13 +512,13 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         create(:work_package_journal,
                user: admin,
                notes: "Second comment by admin",
-               restricted: true,
+               internal: true,
                journable: work_package,
                version: 3)
         create(:work_package_journal,
                user: admin,
                notes: "Third comment by admin",
-               restricted: true,
+               internal: true,
                journable: work_package,
                version: 4)
 

@@ -50,14 +50,14 @@ RSpec.describe "Activity comment attachments" do
     let(:update_permission) { :edit_own_work_package_comments }
   end
 
-  context "with a restricted journal" do
+  context "with a internal journal" do
     it_behaves_like "an APIv3 attachment resource" do
       let(:work_package) do
         create(:work_package, author: current_user, project:)
       end
 
       let(:activity) do
-        work_package.add_journal(user: current_user, notes: "Need to know!", restricted: true)
+        work_package.add_journal(user: current_user, notes: "Need to know!", internal: true)
         work_package.save(validate: false)
         work_package.journals.last
       end
