@@ -261,13 +261,14 @@ ar:
           storage_configured: Configuration complete
           tenant_id: Tenant ID
         failures:
-          zero: All checks passed
+          zero: "%{count} checks failed"
           one: "%{count} check failed"
           two: "%{count} checks failed"
           few: "%{count} checks failed"
           many: "%{count} checks failed"
           other: "%{count} checks failed"
         warnings:
+          zero: "%{count} checks returned a warning"
           one: "%{count} check returned a warning"
           two: "%{count} checks returned a warning"
           few: "%{count} checks returned a warning"
