@@ -91,6 +91,16 @@ module Components
         page.within_test_selector("op-wp-journal-entry-#{journal.id}", &)
       end
 
+      def expect_unrestrict_internal_comment_confirmation_dialog
+        page.within_test_selector("op-work-package-unrestrict-comment-confirmation-dialog") do
+          expect(page).to have_text("Make this comment public?")
+          expect(page).to have_text("Your comment will be visible to anyone who can access this work package. " \
+                                    "Are you sure you want to do this?")
+
+          yield if block_given?
+        end
+      end
+
       def expect_journal_changed_attribute(text:)
         expect(page).to have_test_selector("op-journal-detail-description", text:, wait: 10)
       end
@@ -309,6 +319,11 @@ module Components
       def check_restricted_visibility_comment_checkbox
         expect(page).to have_test_selector("op-work-package-journal-restricted-comment-checkbox")
         page.check("Restrict visibility")
+      end
+
+      def uncheck_internal_comment_checkbox
+        expect(page).to have_test_selector("op-work-package-journal-restricted-comment-checkbox")
+        page.uncheck("Restrict visibility")
       end
 
       def dismiss_comment_editor_with_esc

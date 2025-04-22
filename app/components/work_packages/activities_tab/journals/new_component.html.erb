@@ -36,6 +36,7 @@
           end
         end
       end
+
       new_form_container.with_row(
         display: form_row_display_value,
         data: { "work-packages--activities-tab--index-target": "formRow" }
@@ -93,6 +94,22 @@
                 end
               end
             end
+          end
+        end
+      end
+
+      new_form_container.with_row do
+        render(
+          Primer::OpenProject::DangerDialog.new(
+            title: I18n.t("activities.work_packages.activity_tab.unrestrict_comment_confirmation.title"),
+            confirm_button_text: I18n.t("activities.work_packages.activity_tab.unrestrict_comment_confirmation.confirm_button_text"),
+            data: confirm_dialog_data_attributes,
+            test_selector: "op-work-package-unrestrict-comment-confirmation-dialog"
+          )
+        ) do |dialog|
+          dialog.with_confirmation_message do |message|
+            message.with_heading(tag: :h2) { I18n.t("activities.work_packages.activity_tab.unrestrict_comment_confirmation.title") }
+            message.with_description_content(I18n.t("activities.work_packages.activity_tab.unrestrict_comment_confirmation.description"))
           end
         end
       end

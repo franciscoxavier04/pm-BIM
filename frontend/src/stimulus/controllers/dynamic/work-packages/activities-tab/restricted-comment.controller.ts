@@ -33,7 +33,7 @@ import { renderStreamMessage } from '@hotwired/turbo';
 import type IndexController from './index.controller';
 
 export default class RestrictedCommentController extends Controller {
-  static targets = ['restrictedCheckbox', 'formContainer', 'learnMoreLink'];
+  static targets = ['confirmationDialog', 'restrictedCheckbox', 'formContainer', 'learnMoreLink'];
   static outlets = ['work-packages--activities-tab--index'];
   static classes = ['highlight', 'hidden'];
 
@@ -41,6 +41,7 @@ export default class RestrictedCommentController extends Controller {
     isRestricted: { type: Boolean, default: false },
   };
 
+  declare readonly confirmationDialogTarget:HTMLDialogElement;
   declare readonly restrictedCheckboxTarget:HTMLInputElement;
   declare readonly formContainerTarget:HTMLElement;
   declare readonly learnMoreLinkTarget:HTMLAnchorElement;
@@ -56,14 +57,38 @@ export default class RestrictedCommentController extends Controller {
 
   toggleRestriction():void {
     const isChecked = this.restrictedCheckboxTarget.checked;
-
-    this.formContainerTarget.classList.toggle(this.highlightClass, isChecked);
-    this.toggleLearnMoreLink(isChecked);
-    this.isRestrictedValue = isChecked;
+    this.setRestrictionState(isChecked);
 
     if (isChecked) {
       void this.sanitizeRestrictedMentions();
     }
+  }
+
+  async isRestrictedValueChanged(currentValue:boolean, previousValue:boolean):Promise<void> {
+    if (currentValue === previousValue) return;
+
+    if (this.ckEditorInstance) {
+      const editorData = this.ckEditorInstance.getData({ trim: false });
+      if (editorData.length === 0) return;
+
+      if (!currentValue && previousValue) {
+        const confirmed = await this.askForConfirmation();
+
+        if (confirmed) {
+          this.workPackagesActivitiesTabIndexOutlet.focusEditor();
+        } else {
+          this.restrictedCheckboxTarget.checked = true;
+          this.setRestrictionState(this.restrictedCheckboxTarget.checked);
+          this.workPackagesActivitiesTabIndexOutlet.focusEditor();
+        }
+      }
+    }
+  }
+
+  private setRestrictionState(isChecked:boolean):void {
+    this.formContainerTarget.classList.toggle(this.highlightClass, isChecked);
+    this.toggleLearnMoreLink(isChecked);
+    this.isRestrictedValue = isChecked;
   }
 
   private toggleLearnMoreLink(isChecked:boolean):void {
@@ -102,6 +127,21 @@ export default class RestrictedCommentController extends Controller {
         console.error(error);
       }
     }
+  }
+
+  private askForConfirmation():Promise<boolean> {
+    this.confirmationDialogTarget.showModal();
+
+    return new Promise((resolve) => {
+      const confirmButton = this.confirmationDialogTarget.querySelector('[data-submit-dialog-id]');
+      confirmButton?.addEventListener('click', () => {
+        this.confirmationDialogTarget.returnValue = 'confirm';
+      }, { once: true });
+
+      this.confirmationDialogTarget.addEventListener('close', () => {
+        resolve(this.confirmationDialogTarget.returnValue === 'confirm');
+      }, { once: true });
+    });
   }
 
   private get ckEditorInstance() {

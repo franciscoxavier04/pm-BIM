@@ -287,4 +287,45 @@ RSpec.describe "Work package comments with restricted visibility",
       end
     end
   end
+
+  describe "making internal comments public" do
+    context "when the user unchecks the 'internal comment' checkbox" do
+      current_user { project_admin }
+
+      before do
+        wp_page.visit!
+        wp_page.wait_for_activity_tab
+      end
+
+      it "asks for explicit confirmation from the user" do
+        activity_tab.open_new_comment_editor
+        activity_tab.type_comment("This is an internal comment")
+        activity_tab.check_restricted_visibility_comment_checkbox
+
+        page.within_test_selector("op-work-package-journal-form-element") do
+          expect(page).to have_checked_field("Restrict visibility")
+        end
+
+        activity_tab.uncheck_internal_comment_checkbox
+
+        activity_tab.expect_unrestrict_internal_comment_confirmation_dialog do
+          click_on "Cancel"
+        end
+
+        page.within_test_selector("op-work-package-journal-form-element") do
+          expect(page).to have_checked_field("Restrict visibility")
+        end
+
+        activity_tab.uncheck_internal_comment_checkbox
+
+        activity_tab.expect_unrestrict_internal_comment_confirmation_dialog do
+          click_on "Make public"
+        end
+
+        page.within_test_selector("op-work-package-journal-form-element") do
+          expect(page).to have_no_checked_field("Restrict visibility")
+        end
+      end
+    end
+  end
 end
