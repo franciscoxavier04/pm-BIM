@@ -265,8 +265,8 @@ de:
           one: "%{count} Überprüfung fehlgeschlagen"
           other: "%{count} Überprüfungen fehlgeschlagen"
         warnings:
-          one: "%{count} check returned a warning"
-          other: "%{count} checks returned a warning"
+          one: "%{count} Überprüfung hat eine Warnung zurückgegeben"
+          other: "%{count} Überprüfungen haben eine Warnung zurückgegeben"
       connection_validation:
         app_version_mismatch: Die Integration OpenProject App-Version wird nicht unterstützt. Bitte aktualisieren Sie Ihren Nextcloud Server.
         client_id_wrong: Die konfigurierte OAuth 2-Client-ID ist ungültig. Bitte überprüfen Sie die Konfiguration.

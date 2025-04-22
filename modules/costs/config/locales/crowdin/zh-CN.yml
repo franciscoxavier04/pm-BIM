@@ -148,7 +148,7 @@ zh-CN:
   label_cost: "成本"
   label_costs: "成本"
   label_mandatory_fields: "必填字段"
-  label_my_time_tracking: "我的时间追踪"
+  label_my_time_tracking: "我的工时记录"
   label_no_time: "无时间追踪"
   label_next_day: "后一天"
   label_next_week: "下周"
