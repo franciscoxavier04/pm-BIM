@@ -52,7 +52,7 @@ module EnterpriseEdition
     # @param show_always [boolean] Always show the banner, regardless of the dismissed or feature state.
     # @param dismiss_key [String] Provide a string to identify this banner when being dismissed. Defaults to feature_key
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(feature_key,
+    def initialize(feature_key, # rubocop:disable Metrics/AbcSize
                    variant: DEFAULT_VARIANT,
                    image: nil,
                    i18n_scope: "ee.upsale.#{feature_key}",
@@ -69,9 +69,8 @@ module EnterpriseEdition
       self.feature_key = feature_key
       self.i18n_scope = i18n_scope
 
-      if @variant == :medium
-        raise ArgumentError, "The 'image' parameter is required when the variant is :medium." if @image.nil?
-        raise ArgumentError, "Banners with variant :medium can not be 'dismissable'." if @dismissable
+      if @variant == :medium && @image.nil?
+        raise ArgumentError, "The 'image' parameter is required when the variant is :medium."
       end
 
       @system_arguments = system_arguments

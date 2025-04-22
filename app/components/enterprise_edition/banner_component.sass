@@ -74,8 +74,15 @@
     color: var(--enterprise-upsale-color)
     margin-block: var(--base-size-2)
 
-  &--close-icon .Button-visual
-    color: var(--enterprise-upsale-color)
+  &--close-icon
+    .Button-visual
+      color: var(--enterprise-upsale-color)
+
+    &_hovering
+      position: absolute
+      top: var(--base-size-24)
+      right: var(--base-size-24)
+
 
   &--content
     padding: var(--base-size-6) var(--base-size-8)

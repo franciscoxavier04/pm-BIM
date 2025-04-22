@@ -47,7 +47,6 @@
         end
       end
 
-
       if medium?
         grid.with_area(:graphic) do
           image_tag @image,
@@ -57,9 +56,10 @@
 
       if @dismissable
         grid.with_area(:dismiss) do
+          classes = medium? ? "op-enterprise-banner--close-icon_hovering" : ""
           render(
             Primer::Beta::IconButton.new(
-              classes: "op-enterprise-banner--close-icon",
+              classes: class_names("op-enterprise-banner--close-icon", classes),
               scheme: :invisible,
               tag: :a,
               href: dismiss_enterprise_banner_path(feature_key: @dismiss_key),
