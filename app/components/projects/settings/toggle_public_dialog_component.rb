@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# -- copyright
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,18 +26,26 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
 
-class Projects::Settings::IndexPageHeaderComponent < ApplicationComponent
-  include OpPrimer::ComponentHelpers
+module Projects::Settings
+  class TogglePublicDialogComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpTurbo::Streamable
 
-  def initialize(project:)
-    super
+    def initialize(project, back_url: nil)
+      super
 
-    @project = project
+      @project = project
+      @back_url = back_url
+    end
+
+    def i18n_scope
+      if @project.public?
+        "projects.settings.private_confirmation"
+      else
+        "projects.settings.public_confirmation"
+      end
+    end
   end
-
-  attr_reader :project
-
-  delegate :public?, to: :project
 end
