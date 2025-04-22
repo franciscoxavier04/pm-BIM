@@ -118,4 +118,34 @@ RSpec.describe "Work package activity tab comment editor",
       end
     end
   end
+
+  describe "Attachments" do
+    let(:image_fixture) { UploadedFile.load_from("spec/fixtures/files/image.png") }
+    let(:editor) { Components::WysiwygEditor.new }
+
+    current_user { admin }
+
+    before do
+      wp_page.visit!
+      wp_page.wait_for_activity_tab
+    end
+
+    it "can upload an image to a comment as an inline attachment" do
+      activity_tab.add_comment(text: "Sample text", save: false)
+
+      activity_tab.expect_focus_on_editor
+
+      editor.drag_attachment(image_fixture.path, "An image caption")
+      editor.wait_until_upload_progress_toaster_cleared
+
+      attachment = Attachment.where(author: admin).last
+      expect(attachment.container).to be_nil
+
+      click_on "Submit"
+
+      expect(page).to have_content("An image caption")
+      journal = work_package.reload.journals.last
+      expect(journal.attachments).to contain_exactly(attachment)
+    end
+  end
 end

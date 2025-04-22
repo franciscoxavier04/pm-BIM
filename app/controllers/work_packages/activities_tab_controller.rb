@@ -111,6 +111,7 @@ class WorkPackages::ActivitiesTabController < ApplicationController
       call = create_journal_service_call
 
       if call.success? && call.result
+        claim_journal_attachments_for(call.result)
         set_last_server_timestamp_to_headers
         handle_successful_create_call(call)
       else
@@ -324,6 +325,12 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   def update_journal_service_call
     notes = @journal.restricted? ? sanitized_journal_notes : journal_params[:notes]
     Journals::UpdateService.new(model: @journal, user: User.current).call(notes:)
+  end
+
+  def claim_journal_attachments_for(journal)
+    WorkPackages::ActivitiesTab::CommentAttachmentsClaims::ClaimsService
+      .new(user: User.current, model: journal)
+      .call
   end
 
   def generate_time_based_update_streams(last_update_timestamp)

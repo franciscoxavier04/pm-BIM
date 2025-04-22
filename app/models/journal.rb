@@ -36,6 +36,12 @@ class Journal < ApplicationRecord
   include Journal::Timestamps
   include Reactable
 
+  # Inline attachments for Journal#notes aka comments
+  acts_as_attachable view_permission: :view_work_packages,
+                     add_on_new_permission: :add_work_package_notes,
+                     add_on_persisted_permission: :edit_own_work_package_notes,
+                     delete_permission: :edit_own_work_package_notes
+
   register_journal_formatter OpenProject::JournalFormatter::ActiveStatus
   register_journal_formatter OpenProject::JournalFormatter::AgendaItemDiff
   register_journal_formatter OpenProject::JournalFormatter::AgendaItemDuration
@@ -141,6 +147,22 @@ class Journal < ApplicationRecord
       journable.project
     elsif journable.is_a? Project
       journable
+    end
+  end
+
+  def attachments_visible?(user = User.current)
+    if restricted?
+      super && user.allowed_in_project?(:view_comments_with_restricted_visibility, project)
+    else
+      super
+    end
+  end
+
+  def visible?(user = User.current)
+    if restricted?
+      user.allowed_in_project?(:view_comments_with_restricted_visibility, project)
+    else
+      journable.visible?(user)
     end
   end
 

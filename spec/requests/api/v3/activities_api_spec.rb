@@ -134,6 +134,60 @@ RSpec.describe API::V3::Activities::ActivitiesAPI, content_type: :json do
 
       it_behaves_like "not found"
     end
+
+    context "for a restricted journal" do
+      let(:activity) do
+        work_package.add_journal(user: current_user, notes: "need to know basis", restricted: true)
+        work_package.save(validate: false)
+        work_package.journals.last
+      end
+
+      context "when editing OWN journals" do
+        context "and the user has permission to edit own restricted journals" do
+          let(:permissions) do
+            %i[view_work_packages view_comments_with_restricted_visibility edit_own_comments_with_restricted_visibility]
+          end
+
+          it_behaves_like "valid activity request", "Activity::Comment"
+
+          it_behaves_like "valid activity patch request"
+        end
+
+        context "and the user does not have permission to edit own restricted journals" do
+          let(:permissions) { %i[view_work_packages view_comments_with_restricted_visibility] }
+
+          it_behaves_like "unauthorized access"
+        end
+      end
+
+      context "when editing OTHERs restricted journals" do
+        let(:other_user) { create(:user, member_with_permissions: { project => permissions }) }
+
+        context "and the user has permission to edit others restricted journals" do
+          let(:permissions) do
+            %i[view_work_packages view_comments_with_restricted_visibility edit_others_comments_with_restricted_visibility]
+          end
+
+          before do
+            login_as(other_user)
+          end
+
+          it_behaves_like "valid activity request", "Activity::Comment"
+
+          it_behaves_like "valid activity patch request"
+        end
+
+        context "and the user does not have permission to edit others restricted journals" do
+          let(:permissions) { %i[view_work_packages view_comments_with_restricted_visibility] }
+
+          before do
+            login_as(other_user)
+          end
+
+          it_behaves_like "unauthorized access"
+        end
+      end
+    end
   end
 
   describe "#get api" do
@@ -160,6 +214,26 @@ RSpec.describe API::V3::Activities::ActivitiesAPI, content_type: :json do
         end
 
         it_behaves_like "valid activity request", "Activity::Comment"
+      end
+
+      context "for a restricted journal" do
+        let(:activity) do
+          work_package.add_journal(user: current_user, notes: "need to know basis", restricted: true)
+          work_package.save(validate: false)
+          work_package.journals.last
+        end
+
+        context "and the user has permission to view restricted journals" do
+          let(:permissions) { %i[view_work_packages view_comments_with_restricted_visibility] }
+
+          it_behaves_like "valid activity request", "Activity::Comment"
+        end
+
+        context "and the user does not have permission to view restricted journals" do
+          let(:permissions) { [:view_work_packages] }
+
+          it_behaves_like "not found"
+        end
       end
 
       context "requesting nonexistent activity" do
