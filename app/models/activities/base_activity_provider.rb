@@ -169,7 +169,7 @@ class Activities::BaseActivityProvider
 
     query.where(
       projects_table[:id]
-        .in(Project.allowed_to(user, :view_comments_with_restricted_visibility).select(:id).arel)
+        .in(Project.allowed_to(user, :view_internal_comments).select(:id).arel)
         .or(journals_table[:restricted].eq(false))
     )
   end

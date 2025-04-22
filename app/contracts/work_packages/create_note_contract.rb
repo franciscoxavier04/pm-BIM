@@ -43,7 +43,7 @@ module WorkPackages
       unless OpenProject::FeatureDecisions.comments_with_restricted_visibility_active?
         errors.add(:journal_restricted, :feature_disabled)
       end
-      unless allowed_in_project?(:add_comments_with_restricted_visibility)
+      unless allowed_in_project?(:add_internal_comments)
         errors.add(:journal_restricted, :error_unauthorized)
       end
     end
@@ -51,7 +51,7 @@ module WorkPackages
     private
 
     def adding_notes_allowed?
-      allowed_in_work_package?(:add_work_package_notes) || allowed_in_work_package?(:edit_work_packages)
+      allowed_in_work_package?(:add_work_package_comments) || allowed_in_work_package?(:edit_work_packages)
     end
 
     def allowed_in_work_package?(permission)

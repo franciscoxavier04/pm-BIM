@@ -88,8 +88,8 @@ properties:
               # Conditions
 
               **Permissions**: 
-              - `add_work_package_notes`
-              - for internal comments: `add_comments_with_restricted_visibility`
+              - `add_work_package_comments`
+              - for internal comments: `add_internal_comments`
 example:
   id: 1
   _type: Activity::Comment

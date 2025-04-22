@@ -95,7 +95,7 @@ RSpec.describe Queries::Principals::Filters::RestrictedMentionableOnWorkPackageF
         context "with users and groups" do
           let(:group_member1) { create(:user) }
           let(:group_member2) { create(:user) }
-          let(:group_role) { create(:project_role, permissions: %i[view_work_packages view_comments_with_restricted_visibility]) }
+          let(:group_role) { create(:project_role, permissions: %i[view_work_packages view_internal_comments]) }
           let(:group) do
             create(:group, members: [group_member1, group_member2]) do |group|
               Members::CreateService

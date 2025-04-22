@@ -62,7 +62,7 @@ class Queries::Principals::Filters::RestrictedMentionableOnWorkPackageFilter <
   end
 
   def permission
-    :view_comments_with_restricted_visibility
+    :view_internal_comments
   end
 
   private

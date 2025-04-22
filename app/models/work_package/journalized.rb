@@ -36,7 +36,7 @@ module WorkPackage::Journalized
       def restricted_visible
         if OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? &&
             proxy_association.owner.project.enabled_comments_with_restricted_visibility &&
-            User.current.allowed_in_project?(:view_comments_with_restricted_visibility, proxy_association.owner.project)
+            User.current.allowed_in_project?(:view_internal_comments, proxy_association.owner.project)
           all
         else
           where(restricted: false)

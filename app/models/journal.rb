@@ -38,9 +38,9 @@ class Journal < ApplicationRecord
 
   # Inline attachments for Journal#notes aka comments
   acts_as_attachable view_permission: :view_work_packages,
-                     add_on_new_permission: :add_work_package_notes,
-                     add_on_persisted_permission: :edit_own_work_package_notes,
-                     delete_permission: :edit_own_work_package_notes
+                     add_on_new_permission: :add_work_package_comments,
+                     add_on_persisted_permission: :edit_own_work_package_comments,
+                     delete_permission: :edit_own_work_package_comments
 
   register_journal_formatter OpenProject::JournalFormatter::ActiveStatus
   register_journal_formatter OpenProject::JournalFormatter::AgendaItemDiff
@@ -152,7 +152,7 @@ class Journal < ApplicationRecord
 
   def attachments_visible?(user = User.current)
     if restricted?
-      super && user.allowed_in_project?(:view_comments_with_restricted_visibility, project)
+      super && user.allowed_in_project?(:view_internal_comments, project)
     else
       super
     end
@@ -160,7 +160,7 @@ class Journal < ApplicationRecord
 
   def visible?(user = User.current)
     if restricted?
-      user.allowed_in_project?(:view_comments_with_restricted_visibility, project)
+      user.allowed_in_project?(:view_internal_comments, project)
     else
       journable.visible?(user)
     end

@@ -41,7 +41,7 @@ RSpec.describe Journal do
 
         context "with the user having the restricted permission" do
           let(:user_with_restricted_permission) do
-            create(:user, member_with_permissions: { project => %i[view_work_packages view_comments_with_restricted_visibility] })
+            create(:user, member_with_permissions: { project => %i[view_work_packages view_internal_comments] })
           end
 
           let(:current_user) { user_with_restricted_permission }
@@ -71,7 +71,7 @@ RSpec.describe Journal do
     let(:user_with_restricted_permission) do
       create(:user,
              member_with_permissions: { work_package.project => %i[view_work_packages
-                                                                   view_comments_with_restricted_visibility] })
+                                                                   view_internal_comments] })
     end
 
     let(:user_with_view_work_packages_permission) do
