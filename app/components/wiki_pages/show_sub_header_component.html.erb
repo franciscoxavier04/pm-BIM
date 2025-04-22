@@ -27,10 +27,18 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<%= toolbar title: t(:label_version) %>
-<% html_title t(:label_version) %>
-
-<%= labelled_tabular_form_with model: @version, url: project_version_path(@project, @version), html: { method: :put } do |f| %>
-  <%= render partial: "form", locals: { f: } %>
-  <%= styled_button_tag t(:button_save), class: "-primary -with-icon icon-checkmark" %>
-<% end %>
+<%=
+  render(Primer::OpenProject::SubHeader.new) do |subheader|
+    subheader.with_action_button(
+      scheme: :primary,
+      aria: { label: t("wiki.index.no_results_content_text") },
+      title: t("wiki.index.no_results_content_text"),
+      tag: :a,
+      test_selector: "wiki-new-child-button",
+      href: url_for({ controller: "/wiki", action: "new_child", project_id: @project.identifier, id: @page })
+    ) do |button|
+      button.with_leading_visual_icon(icon: :plus)
+      t(:create_wiki_page_button)
+    end
+  end
+%>

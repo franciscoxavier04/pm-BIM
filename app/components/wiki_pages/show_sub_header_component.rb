@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,16 +28,15 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class VersionSettingsController < RbApplicationController
-  def edit
-    @version = Version.find(params[:id])
-  end
+module WikiPages
+  class ShowSubHeaderComponent < ApplicationComponent
+    include OpPrimer::ComponentHelpers
+    include ApplicationHelper
 
-  private
-
-  def authorize
-    # Everyone with the right to edit versions has the right to edit version
-    # settings
-    super("versions", "edit")
+    def initialize(page:, project:)
+      super
+      @page = page
+      @project = project
+    end
   end
 end

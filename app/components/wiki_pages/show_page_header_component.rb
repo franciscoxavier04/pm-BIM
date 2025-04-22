@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,26 +28,32 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
-require "features/work_packages/work_packages_page"
+module WikiPages
+  class ShowPageHeaderComponent < ApplicationComponent
+    include OpPrimer::ComponentHelpers
+    include ApplicationHelper
 
-RSpec.describe "Work package query summary item", :js do
-  let(:project) { create(:project, identifier: "test_project", public: false) }
-  let(:role) { create(:project_role, permissions: [:view_work_packages]) }
-  let(:work_package) { create(:work_package, project:) }
-  let(:wp_page) { Pages::WorkPackagesTable.new project }
-  let(:current_user) do
-    create(:user, member_with_roles: { project => role })
-  end
+    def initialize(page:, project:, editable:)
+      super
+      @page = page
+      @project = project
+      @editable = editable
+    end
 
-  before do
-    login_as(current_user)
-    wp_page.visit!
-  end
+    def lock_data
+      if @page.protected?
+        { label: t(:button_unlock), icon: :unlock, protected: 0 }
+      else
+        { label: t(:button_lock), icon: :lock, protected: 1 }
+      end
+    end
 
-  it "allows users to visit the summary page" do
-    find(".op-submenu--item-action", text: "Summary", wait: 10).click
-    expect(page).to have_test_selector("summary-page-header-title", text: "Summary")
-    expect(page).to have_css("td", text: work_package.type.name)
+    def show_edit?
+      User.current.allowed_in_project?(:edit_wiki_pages, @project) && @page.current_version?
+    end
+
+    def show_rollback?
+      User.current.allowed_in_project?(:edit_wiki_pages, @project) && !@page.current_version?
+    end
   end
 end
