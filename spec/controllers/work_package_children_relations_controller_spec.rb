@@ -96,10 +96,13 @@ RSpec.describe WorkPackageChildrenRelationsController do
   end
 
   describe "DELETE /work_packages/:work_package_id/children/:id" do
+    let(:relation_type) { nil }
+
     def send_delete_request
       delete("destroy",
              params: { work_package_id: work_package.id,
-                       id: child_work_package.id },
+                       id: child_work_package.id,
+                       relation_type: },
              as: :turbo_stream)
     end
 
@@ -147,6 +150,22 @@ RSpec.describe WorkPackageChildrenRelationsController do
 
         expect(response).to have_http_status(:ok)
         expect(child_work_package.reload.parent).to be_nil
+      end
+    end
+
+    context "when the relation type is parent" do
+      let(:relation_type) { "parent" }
+
+      it "deletes the parent relationship too but renders the relations tab index component with the child" do
+        allow(WorkPackageRelationsTab::IndexComponent).to receive(:new).and_call_original
+        allow(controller).to receive(:replace_via_turbo_stream).and_call_original
+
+        send_delete_request
+
+        expect(WorkPackageRelationsTab::IndexComponent).to have_received(:new)
+          .with(work_package: child_work_package)
+        expect(controller).to have_received(:replace_via_turbo_stream)
+          .with(component: an_instance_of(WorkPackageRelationsTab::IndexComponent))
       end
     end
   end

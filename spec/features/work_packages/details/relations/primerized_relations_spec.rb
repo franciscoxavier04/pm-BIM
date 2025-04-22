@@ -205,6 +205,21 @@ RSpec.describe "Primerized work package relations tab",
       relations_tab.expect_ghost_relation(restricted_child_work_package)
     end
 
+    it "can delete parent" do
+      scroll_to_element relations_panel
+
+      wait_for_network_idle
+
+      relations_tab.remove_parent_relation(parent_work_package)
+      expect(work_package.reload.parent).to be_nil
+
+      tabs.expect_counter("relations", 7)
+
+      # Relations not visible due to lack of permissions on the project
+      relations_tab.expect_ghost_relation(restricted_relation_relates)
+      relations_tab.expect_ghost_relation(restricted_child_work_package)
+    end
+
     it "can delete children" do
       scroll_to_element relations_panel
 
@@ -256,7 +271,7 @@ RSpec.describe "Primerized work package relations tab",
       relations_tab.expect_ghost_relation(restricted_child_work_package)
     end
 
-    it "does not have an edit action for children" do
+    it "does not have an edit action for parent and children" do
       scroll_to_element relations_panel
 
       wait_for_network_idle
@@ -266,6 +281,13 @@ RSpec.describe "Primerized work package relations tab",
       within(child_row) do
         page.find("[data-test-selector='op-relation-row-#{child_wp.id}-action-menu']").click
         expect(page).to have_no_css("[data-test-selector='op-relation-row-#{child_wp.id}-edit-button']")
+      end
+
+      parent_row = relations_panel.find("[data-test-selector='op-relation-row-visible-#{parent_work_package.id}']")
+
+      within(parent_row) do
+        page.find("[data-test-selector='op-relation-row-#{parent_work_package.id}-action-menu']").click
+        expect(page).to have_no_css("[data-test-selector='op-relation-row-#{parent_work_package.id}-edit-button']")
       end
     end
 

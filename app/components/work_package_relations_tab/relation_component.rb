@@ -66,7 +66,7 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
     return false unless editable?
 
     if parent_child_relationship?
-      allowed_to_manage_subtasks? && relation_item.type.child?
+      allowed_to_manage_subtasks?
     else
       allowed_to_manage_relations?
     end
@@ -117,7 +117,13 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
 
   def destroy_path
     if parent_child_relationship?
-      work_package_children_relation_path(work_package, related_work_package)
+      parent, child =
+        if relation_item.type.child?
+          [work_package, related_work_package]
+        else
+          [related_work_package, work_package]
+        end
+      work_package_children_relation_path(parent, child, relation_type: relation_item.type)
     else
       work_package_relation_path(work_package, relation)
     end

@@ -135,18 +135,8 @@ module Components
 
       def remove_relation(relatable)
         actual_relatable = find_relatable(relatable)
-        relatable_row = find_row(actual_relatable)
 
-        retry_block do
-          SeleniumHubWaiter.wait
-          within(relatable_row) do
-            relatable_action_menu(actual_relatable).click
-            relatable_delete_button(actual_relatable).click
-          end
-
-          # Expect relation to be gone
-          expect_no_row(relatable)
-        end
+        remove_relation_with_work_package(actual_relatable)
       end
 
       def relatable_action_menu(relatable)
@@ -366,15 +356,13 @@ module Components
       end
 
       def remove_child(work_package)
-        retry_block do
-          child_wp_row = find_row(work_package)
-          within(child_wp_row) do
-            relatable_action_menu(work_package).click
-            relatable_delete_button(work_package).click
-          end
-        end
+        remove_relation_with_work_package(work_package)
+      end
 
-        expect_no_row(work_package)
+      # Removes the parent using the parent relation item (not using the cross
+      # button from hierarchy breadcrumb at the top)
+      def remove_parent_relation(work_package)
+        remove_relation_with_work_package(work_package)
       end
 
       private
@@ -382,6 +370,18 @@ module Components
       def within_new_relation_action_menu(&)
         open_new_relation_action_menu
         within(new_relation_action_menu, &)
+      end
+
+      def remove_relation_with_work_package(relatable)
+        retry_block do
+          relatable_row = find_row(relatable)
+          within(relatable_row) do
+            relatable_action_menu(relatable).click
+            relatable_delete_button(relatable).click
+          end
+        end
+
+        expect_no_row(relatable)
       end
     end
   end
