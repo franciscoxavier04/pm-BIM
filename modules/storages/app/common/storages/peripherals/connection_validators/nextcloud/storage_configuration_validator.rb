@@ -65,9 +65,10 @@ module Storages
           def version_mismatch
             min_app_version = SemanticVersion.parse(nextcloud_dependencies.dig("dependencies", "integration_app", "min_version"))
             capabilities_result = capabilities.result
+            app_name = I18n.t("storages.dependencies.nextcloud.integration_app")
 
             if capabilities_result.app_version < min_app_version
-              fail_check(:dependencies_versions, message(:app_version_mismatch))
+              fail_check(:dependencies_versions, message(:dependency_version_mismatch, dependency: app_name))
             else
               pass_check(:dependencies_versions)
             end

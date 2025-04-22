@@ -55,7 +55,7 @@ module Storages
         def skipped? = state == :skipped
 
         def to_h
-          { state: state.to_s, message:, timestamp: timestamp&.iso8601 }.compact
+          { state: state.to_s, message:, timestamp: timestamp&.iso8601 }
         end
       end
     end

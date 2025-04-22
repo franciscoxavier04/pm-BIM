@@ -52,8 +52,9 @@ module Storages
         respond_to do |format|
           format.html
           format.text do
-            filename = "#{@storage.name.underscore}_health_report_#{@report.latest_timestamp.iso8601}.txt"
-            send_data text_report, filename:, type: "text/plain", disposition: :attachment
+            timestamp = (@report&.latest_timestamp || Time.zone.now).iso8601
+            filename = "#{@storage.name.underscore}_health_report_#{timestamp}.txt"
+            send_data text_report(timestamp), filename:, type: "text/plain", disposition: :attachment
           end
         end
       end
@@ -73,12 +74,12 @@ module Storages
 
       private
 
-      def text_report
+      def text_report(timestamp)
         {
           storage: @storage.name,
           storage_type: @storage.to_s,
-          ran_at: @report&.latest_timestamp&.iso8601
-        }.merge(@report.to_h).deep_stringify_keys.to_yaml
+          ran_at: timestamp
+        }.merge(@report.to_h).to_yaml(stringify_names: true)
       end
 
       def find_model_object(object_id = :storage_id)
