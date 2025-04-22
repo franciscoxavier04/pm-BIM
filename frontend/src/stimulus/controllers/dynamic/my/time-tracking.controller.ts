@@ -106,7 +106,9 @@ export default class MyTimeTrackingController extends Controller {
         return {
           html: `
            <div class="fc-event-main-frame">
-             <div class="fc-event-time mb-1">${this.displayDuration(arg.event.extendedProps.hours as number)}</div>
+             <div class="fc-event-time mb-1" style="color: var(--fgColor-default)">
+               ${this.displayDuration(arg.event.extendedProps.hours as number)}
+             </div>
              <div class="fc-event-title-container">
                 <div class="fc-event-title mb-2" title="${arg.event.extendedProps.workPackageSubject}">
                   <a class="Link--primary Link" href="${this.pathHelper.workPackageShortPath(arg.event.extendedProps.workPackageId as string)}">
