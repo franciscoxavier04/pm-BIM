@@ -74,14 +74,14 @@ module WorkPackages
       def add_comment_wrapper_data_attributes
         {
           test_selector: "op-work-package-journal--new-comment-component",
-          controller: restricted_comment_stimulus_controller,
+          controller: internal_comment_stimulus_controller,
           "application-target": "dynamic",
-          restricted_comment_stimulus_controller("-target") => "formContainer",
-          action: index_stimulus_controller(":onSubmit-end@window->#{restricted_comment_stimulus_controller}#onSubmitEnd"),
-          restricted_comment_stimulus_controller("-highlight-class") => "work-packages-activities-tab-journals-new-component--journal-notes-body__restricted-comment", # rubocop:disable Layout/LineLength
-          restricted_comment_stimulus_controller("-hidden-class") => "d-none",
-          restricted_comment_stimulus_controller("-#{index_stimulus_controller}-outlet") => "##{wrapper_key}",
-          restricted_comment_stimulus_controller("-is-restricted-value") => false # Initial value
+          internal_comment_stimulus_controller("-target") => "formContainer",
+          action: index_stimulus_controller(":onSubmit-end@window->#{internal_comment_stimulus_controller}#onSubmitEnd"),
+          internal_comment_stimulus_controller("-highlight-class") => "work-packages-activities-tab-journals-new-component--journal-notes-body__internal-comment", # rubocop:disable Layout/LineLength
+          internal_comment_stimulus_controller("-hidden-class") => "d-none",
+          internal_comment_stimulus_controller("-#{index_stimulus_controller}-outlet") => "##{wrapper_key}",
+          internal_comment_stimulus_controller("-is-internal-value") => false # Initial value
         }
       end
 

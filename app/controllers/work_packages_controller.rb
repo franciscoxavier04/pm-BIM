@@ -226,7 +226,7 @@ class WorkPackagesController < ApplicationController
 
       work_package
         .journals
-        .restricted_visible
+        .internal_visible
         .changing
         .includes(:user)
         .order(order).to_a

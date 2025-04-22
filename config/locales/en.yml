@@ -50,7 +50,7 @@ en:
         created: "created"
         commented: "commented"
         restrict_visibility: Restrict visibility
-        restricted_journal: Restricted comments are visible to a limited group of members.
+        internal_journal: Internal comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
 
   admin:
@@ -1159,7 +1159,7 @@ en:
           title: "Working days"
           false: "working days only"
           true: "include non-working days"
-        journal_restricted: Restricted Journal
+        journal_internal: Internal Journal
         notify: "Notify" # used in custom actions
         parent: "Parent"
         parent_issue: "Parent"
@@ -1381,7 +1381,7 @@ en:
             values:
               inclusion: "filter has invalid values."
               format: "%{message}"
-        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+        queries/principals/filters/internal_mentionable_on_work_package_filter:
           attributes:
             values:
               single_value_requirement: "must be a single work package"
@@ -2048,7 +2048,7 @@ en:
       baseline_comparison: Baseline Comparisons
       board_view: Advanced Boards
       conditional_highlighting: Conditional Highlighting
-      comments_with_restricted_visibility: Comments With Restricted Visibility
+      internal_comments: Internal Comments
       custom_actions: Custom Actions
       custom_field_hierarchies: Custom fields of type hierarchy
       customize_life_cycle: Customize Life Cycle
@@ -2114,9 +2114,9 @@ en:
           Placeholder users are a way to assign work packages to users who are not part of your project.
           They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available,
           or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
-      comments_with_restricted_visibility:
+      internal_comments:
         title: "For your eyes only"
-        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Work package priorities"
   enumeration_reported_project_statuses: "Reported project status"
@@ -4065,8 +4065,8 @@ en:
     work_packages:
       not_allowed_text: "You do not have the necessary permissions to view this page."
       activities:
-        enable_comments_with_restricted_visibility: "Enable restricted visibility comments"
-        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_internal_comments: "Enable internal comments"
+        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
 
   text_formatting:
     markdown: "Markdown"

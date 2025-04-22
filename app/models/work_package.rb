@@ -382,7 +382,7 @@ class WorkPackage < ApplicationRecord
   # check if user is allowed to edit WorkPackage Journals.
   # see Acts::Journalized::Permissions#journal_editable_by
   def journal_editable_by?(journal, user)
-    if journal.restricted?
+    if journal.internal?
       user.allowed_in_project?(:edit_others_internal_comments, project) ||
         (user.allowed_in_project?(:edit_own_internal_comments, project) && journal.user_id == user.id)
     else
