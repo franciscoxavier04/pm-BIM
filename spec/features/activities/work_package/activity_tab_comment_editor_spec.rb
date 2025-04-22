@@ -147,5 +147,44 @@ RSpec.describe "Work package activity tab comment editor",
       journal = work_package.reload.journals.last
       expect(journal.attachments).to contain_exactly(attachment)
     end
+
+    context "when editing an existing comment" do
+      let(:comment) do
+        create(:work_package_journal,
+               user: admin,
+               notes: notes_with_attachment(existing_attachment),
+               journable: work_package,
+               version: 2).tap do |journal|
+                 journal.attachments << existing_attachment
+                 journal.save(validate: false)
+               end
+      end
+
+      let!(:existing_attachment) { create(:attachment, author: admin, container: nil) }
+
+      it "updates the comment with new attachments" do
+        expect(comment.reload.attachments).to contain_exactly(existing_attachment)
+
+        activity_tab.edit_comment(comment, text: "Some notes", save: false)
+
+        editor.drag_attachment(image_fixture.path, "An image caption")
+        editor.wait_until_upload_progress_toaster_cleared
+
+        click_on "Save"
+
+        expect(page).to have_content("An image caption")
+        newly_attached = Attachment.where(author: admin).last
+        expect(comment.reload.attachments).to contain_exactly(newly_attached)
+        expect(comment.reload.attachments).not_to include(existing_attachment)
+      end
+
+      def notes_with_attachment(attachment)
+        <<~HTML
+          <img class="op-uc-image op-uc-image_inline" src="/api/v3/attachments/#{attachment.id}/content">
+
+          First attachment
+        HTML
+      end
+    end
   end
 end
