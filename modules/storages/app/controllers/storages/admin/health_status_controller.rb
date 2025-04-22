@@ -48,6 +48,14 @@ module Storages
 
       def show
         @report = Rails.cache.read(validator.report_cache_key)
+
+        respond_to do |format|
+          format.html
+          format.text do
+            filename = "#{@storage.name.underscore}_health_report_#{@report.latest_timestamp.iso8601}.txt"
+            send_data text_report, filename:, type: "text/plain", disposition: :attachment
+          end
+        end
       end
 
       def create
@@ -64,6 +72,14 @@ module Storages
       end
 
       private
+
+      def text_report
+        {
+          storage: @storage.name,
+          storage_type: @storage.to_s,
+          ran_at: @report&.latest_timestamp&.iso8601
+        }.merge(@report.to_h).deep_stringify_keys.to_yaml
+      end
 
       def find_model_object(object_id = :storage_id)
         super

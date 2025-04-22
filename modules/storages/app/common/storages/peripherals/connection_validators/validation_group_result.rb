@@ -69,6 +69,10 @@ module Storages
         def timestamp
           @results.values.filter_map(&:timestamp).max
         end
+
+        def to_h
+          @results.transform_values(&:to_h)
+        end
       end
     end
   end

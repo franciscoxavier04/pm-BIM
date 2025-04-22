@@ -231,9 +231,10 @@ en:
       storage_provider: Storage provider
     health:
       actions:
+        download_report: Download
         rerun_checks: Re-run all checks
         run_checks: Run checks now
-      checked: Last checked %{datetime}
+      checked: "%{storage_name} - Last checked %{datetime}"
       checks:
         ampf_configuration:
           files_request: Fetching group folder files

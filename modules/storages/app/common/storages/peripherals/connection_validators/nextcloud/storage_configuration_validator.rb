@@ -36,12 +36,12 @@ module Storages
           private
 
           def validate
-            register_checks(:storage_configured, :capabilities_request,
-                            :host_url_accessible, :dependencies_check, :dependencies_versions)
+            register_checks(:storage_configured, :host_url_accessible, :capabilities_request,
+                            :dependencies_check, :dependencies_versions)
 
             storage_configuration_status
-            capabilities_request_status
             host_url_not_found
+            capabilities_request_status
             missing_dependencies
             version_mismatch
           end

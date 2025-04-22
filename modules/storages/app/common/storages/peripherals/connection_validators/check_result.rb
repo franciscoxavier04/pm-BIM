@@ -53,6 +53,10 @@ module Storages
         def failure? = state == :failure
         def warning? = state == :warning
         def skipped? = state == :skipped
+
+        def to_h
+          { state: state.to_s, message:, timestamp: timestamp&.iso8601 }.compact
+        end
       end
     end
   end
