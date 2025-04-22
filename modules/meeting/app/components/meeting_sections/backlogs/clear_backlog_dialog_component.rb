@@ -38,5 +38,23 @@ module MeetingSections
 
       @meeting = meeting
     end
+
+    private
+
+    def heading
+      if @meeting.recurring?
+        I18n.t(:label_series_backlog_clear_title)
+      else
+        I18n.t(:label_agenda_backlog_clear_title)
+      end
+    end
+
+    def description
+      if @meeting.recurring?
+        I18n.t(:text_series_backlog_clear_description)
+      else
+        I18n.t(:text_agenda_backlog_clear_description)
+      end
+    end
   end
 end

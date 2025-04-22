@@ -7,8 +7,8 @@
             box: @box, collapsed: @collapsed
           )
         ) do |header|
-          header.with_title(font_weight: :bold) { I18n.t("label_agenda_backlog") }
-          header.with_description { I18n.t("text_agenda_backlog") }
+          header.with_title(font_weight: :bold) { title }
+          header.with_description { description }
           header.with_count(count: @backlog.agenda_items.count)
         end
       end
