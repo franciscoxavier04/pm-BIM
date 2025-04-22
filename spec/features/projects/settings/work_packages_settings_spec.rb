@@ -91,7 +91,7 @@ RSpec.describe "Projects", "work packages settings menu", :js do
 
       it "shows the enterprise banner" do
         work_packages_settings_page.visit!
-        expect(page).to have_test_selector("op-enterprise-banner")
+        expect(page).to have_test_selector("op-enterprise-upsale-page")
       end
     end
 
