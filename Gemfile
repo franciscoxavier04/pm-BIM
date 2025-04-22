@@ -157,8 +157,8 @@ gem "structured_warnings", "~> 0.5.0"
 # don't require by default, instead load on-demand when actually configured
 gem "airbrake", "~> 13.0.0", require: false
 
-gem "markly", "~> 0.10" # another markdown parser like commonmarker, but with AST support used in PDF export
-gem "md_to_pdf", git: "https://github.com/opf/md-to-pdf", ref: "66893683b94a5fe8f1dc9a60600773307209cdd2"
+gem "markly", "~> 0.13" # another markdown parser like commonmarker, but with AST support used in PDF export
+gem "md_to_pdf", git: "https://github.com/opf/md-to-pdf", ref: "67d14c6c7a13f918d158bde1a51ef1067a8cf724"
 gem "prawn", "~> 2.4"
 gem "ttfunk", "~> 1.7.0" # remove after https://github.com/prawnpdf/prawn/issues/1346 resolved.
 
