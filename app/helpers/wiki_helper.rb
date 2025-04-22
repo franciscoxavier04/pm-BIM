@@ -45,6 +45,7 @@ module WikiHelper
     breadcrumbs << project_breadcrumb(project)
     breadcrumbs << wiki_module_breadcrumb(project, page)
     breadcrumbs += ancestor_breadcrumbs(page)
+    breadcrumbs << wiki_page_breadcrumb(page) if action
     breadcrumbs << h(page.breadcrumb_title) unless action
     breadcrumbs << action if action
     breadcrumbs
@@ -60,6 +61,13 @@ module WikiHelper
     {
       href: url_for({ controller: "/wiki", action: "index", project_id: project.identifier, id: page }),
       text: t("activerecord.models.wiki")
+    }
+  end
+
+  def wiki_page_breadcrumb(page)
+    {
+      href: project_wiki_path(page, page.project),
+      text: page.breadcrumb_title
     }
   end
 
