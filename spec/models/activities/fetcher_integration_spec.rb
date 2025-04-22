@@ -33,7 +33,7 @@ require "spec_helper"
 RSpec.describe Activities::Fetcher, "integration" do
   shared_let(:user) { create(:user) }
   shared_let(:permissions) do
-    %i[view_work_packages view_time_entries view_changesets view_wiki_edits view_comments_with_restricted_visibility]
+    %i[view_work_packages view_time_entries view_changesets view_wiki_edits view_internal_comments]
   end
   shared_let(:role) { create(:project_role, permissions:) }
   # execute as user so that the user is the author of the project, and the
@@ -161,7 +161,7 @@ RSpec.describe Activities::Fetcher, "integration" do
       context "if user cannot see restricted journals" do
         before do
           role.role_permissions
-            .find_by(permission: "view_comments_with_restricted_visibility")
+            .find_by(permission: "view_internal_comments")
             .destroy
 
           # reload otherwise permissions don't update
@@ -225,7 +225,7 @@ RSpec.describe Activities::Fetcher, "integration" do
       context "if user cannot see restricted journals" do
         before do
           role.role_permissions
-            .find_by(permission: "view_comments_with_restricted_visibility")
+            .find_by(permission: "view_internal_comments")
             .destroy
 
           # reload otherwise permissions don't update

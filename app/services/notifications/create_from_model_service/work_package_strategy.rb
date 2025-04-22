@@ -35,7 +35,7 @@ module Notifications::CreateFromModelService::WorkPackageStrategy
     if journal&.restricted?
       # we assume that if a journal is restricted it is a comment and respects the
       # view comments with restricted visibility permissions
-      :view_comments_with_restricted_visibility
+      :view_internal_comments
     else
       :view_work_packages
     end

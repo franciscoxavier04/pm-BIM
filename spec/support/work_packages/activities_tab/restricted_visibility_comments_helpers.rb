@@ -40,18 +40,18 @@ module RestrictedVisibilityCommentsHelpers
 
   def create_user_as_project_admin
     member_role = create(:project_role,
-                         permissions: %i[view_work_packages add_work_package_notes
-                                         edit_own_work_package_notes
-                                         view_comments_with_restricted_visibility
-                                         add_comments_with_restricted_visibility
-                                         edit_own_comments_with_restricted_visibility
-                                         edit_others_comments_with_restricted_visibility])
+                         permissions: %i[view_work_packages add_work_package_comments
+                                         edit_own_work_package_comments
+                                         view_internal_comments
+                                         add_internal_comments
+                                         edit_own_internal_comments
+                                         edit_others_internal_comments])
     create(:user, firstname: "Project", lastname: "Admin",
                   member_with_roles: { project => member_role })
   end
 
   def create_user_with_restricted_comments_view_permissions
-    viewer_role = create(:project_role, permissions: %i[view_work_packages view_comments_with_restricted_visibility])
+    viewer_role = create(:project_role, permissions: %i[view_work_packages view_internal_comments])
     create(:user,
            firstname: "Restricted",
            lastname: "Viewer",
@@ -60,11 +60,11 @@ module RestrictedVisibilityCommentsHelpers
 
   def create_user_with_restricted_comments_view_and_write_permissions
     viewer_role_with_commenting_permission = create(:project_role,
-                                                    permissions: %i[view_work_packages add_work_package_notes
-                                                                    edit_own_work_package_notes
-                                                                    view_comments_with_restricted_visibility
-                                                                    add_comments_with_restricted_visibility
-                                                                    edit_own_comments_with_restricted_visibility])
+                                                    permissions: %i[view_work_packages add_work_package_comments
+                                                                    edit_own_work_package_comments
+                                                                    view_internal_comments
+                                                                    add_internal_comments
+                                                                    edit_own_internal_comments])
     create(:user,
            firstname: "Restricted",
            lastname: "ViewerCommenter",

@@ -925,7 +925,7 @@ RSpec.describe WorkPackage do
         context "when the user can see restricted journals" do
           before do
             mock_permissions_for(user) do |mock|
-              mock.allow_in_project(:view_comments_with_restricted_visibility, project: work_package.project)
+              mock.allow_in_project(:view_internal_comments, project: work_package.project)
             end
           end
 
@@ -941,7 +941,7 @@ RSpec.describe WorkPackage do
           work_package.project.save!
 
           mock_permissions_for(user) do |mock|
-            mock.allow_in_project(:view_comments_with_restricted_visibility, project: work_package.project)
+            mock.allow_in_project(:view_internal_comments, project: work_package.project)
           end
         end
 
@@ -955,7 +955,7 @@ RSpec.describe WorkPackage do
     context "when comments_with_restricted_visibility is disabled", with_flag: { comments_with_restricted_visibility: false } do
       before do
         mock_permissions_for(user) do |mock|
-          mock.allow_in_project(:view_comments_with_restricted_visibility, project: work_package.project)
+          mock.allow_in_project(:view_internal_comments, project: work_package.project)
         end
       end
 

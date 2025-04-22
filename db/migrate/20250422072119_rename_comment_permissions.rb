@@ -1,4 +1,6 @@
-#-- copyright
+# frozen_string_literal: true
+
+#
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,47 +28,23 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
+class RenameCommentPermissions < ActiveRecord::Migration[8.0]
+  def change
+    rename_permissions("add_work_package_notes", "add_work_package_comments")
+    rename_permissions("edit_own_work_package_notes", "edit_own_work_package_comments")
+    rename_permissions("edit_work_package_notes", "edit_work_package_comments")
 
-RSpec.describe WorkPackages::UpdateContract do
-  let(:work_package) do
-    create(:work_package,
-           done_ratio: 50,
-           estimated_hours: 6.0,
-           project:)
-  end
-  let(:member) { create(:user, member_with_roles: { project => role }) }
-  let(:project) { create(:project) }
-  let(:current_user) { member }
-  let(:permissions) do
-    %i[
-      view_work_packages
-      view_work_package_watchers
-      edit_work_packages
-      add_work_package_watchers
-      delete_work_package_watchers
-      manage_work_package_relations
-      add_work_package_comments
-    ]
-  end
-  let(:role) { create(:project_role, permissions:) }
-  let(:changed_values) { [] }
-
-  subject(:contract) { described_class.new(work_package, current_user) }
-
-  before do
-    allow(work_package).to receive(:changed).and_return(changed_values)
+    rename_permissions("view_comments_with_restricted_visibility", "view_internal_comments")
+    rename_permissions("add_comments_with_restricted_visibility", "add_internal_comments")
+    rename_permissions("edit_own_comments_with_restricted_visibility", "edit_own_internal_comments")
+    rename_permissions("edit_others_comments_with_restricted_visibility", "edit_others_internal_comments")
   end
 
-  describe "story points" do
-    context "has not changed" do
-      it("is valid") { expect(contract.errors.empty?).to be true }
-    end
-
-    context "has changed" do
-      let(:changed_values) { ["story_points"] }
-
-      it("is valid") { expect(contract.errors.empty?).to be true }
-    end
+  def rename_permissions(old, new)
+    execute <<-SQL.squish
+      UPDATE role_permissions
+      SET permission = '#{new}'
+      WHERE permission = '#{old}'
+    SQL
   end
 end

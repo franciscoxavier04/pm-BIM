@@ -44,7 +44,7 @@ RSpec.describe API::V3::Activities::ActivitiesByWorkPackageAPI do # rubocop:disa
     let(:admin) { create(:admin) }
     let(:role) { create(:project_role, permissions:) }
     let(:permissions) do
-      %i(view_work_packages add_work_package_notes view_comments_with_restricted_visibility)
+      %i(view_work_packages add_work_package_comments view_internal_comments)
     end
 
     before do
@@ -95,7 +95,7 @@ RSpec.describe API::V3::Activities::ActivitiesByWorkPackageAPI do # rubocop:disa
         context "and user does not have the permission to see it" do
           before do
             role.role_permissions
-              .find_by(permission: "view_comments_with_restricted_visibility")
+              .find_by(permission: "view_internal_comments")
               .destroy
           end
 

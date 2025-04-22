@@ -3460,7 +3460,7 @@ cs:
   permission_edit_work_packages: "Upravit pracovní balíčky"
   permission_edit_messages: "Upravit zprávy"
   permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
-  permission_edit_own_work_package_notes: "Upravit vlastní komentáře"
+  permission_edit_own_work_package_comments: "Upravit vlastní komentáře"
   permission_edit_own_messages: "Upravit vlastní zprávy"
   permission_edit_own_time_entries: "Upravit vlastní časové záznamy"
   permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
