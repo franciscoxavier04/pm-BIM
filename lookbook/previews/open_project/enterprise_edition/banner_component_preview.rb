@@ -58,7 +58,18 @@ module OpenProject
       def default(dismissable: false)
         render(
           ::EnterpriseEdition::BannerComponent
-            .new(:customize_life_cycle, dismissable:)
+            .new(:customize_life_cycle, dismissable:, show_always: true)
+        )
+      end
+
+      # @display min_height 250px
+      def medium
+        render(
+          ::EnterpriseEdition::BannerComponent
+            .new(:customize_life_cycle,
+                 variant: :medium,
+                 image: "enterprise/internal-comments.png",
+                 show_always: true)
         )
       end
 
@@ -66,7 +77,7 @@ module OpenProject
       def dismissable
         render(
           ::EnterpriseEdition::BannerComponent
-            .new(:customize_life_cycle, dismiss_key: nil, dismissable: true)
+            .new(:customize_life_cycle, dismiss_key: nil, dismissable: true, show_always: true)
         )
       end
     end
