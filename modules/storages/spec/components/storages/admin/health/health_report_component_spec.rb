@@ -95,9 +95,9 @@ RSpec.describe Storages::Admin::Health::HealthReportComponent, type: :component 
                when :success
                  Storages::Peripherals::ConnectionValidators::CheckResult.success(key)
                when :warning
-                 Storages::Peripherals::ConnectionValidators::CheckResult.warning(key, "it is no moon")
+                 Storages::Peripherals::ConnectionValidators::CheckResult.warning(key, :"#{key}_warning")
                when :failure
-                 Storages::Peripherals::ConnectionValidators::CheckResult.failure(key, "it is really no moon")
+                 Storages::Peripherals::ConnectionValidators::CheckResult.failure(key, :"#{key}_failure")
                else
                  Storages::Peripherals::ConnectionValidators::CheckResult.skipped(key)
                end
@@ -105,6 +105,10 @@ RSpec.describe Storages::Admin::Health::HealthReportComponent, type: :component 
       group.register_check(key)
       group.update_result(key, result)
       allow(I18n).to receive(:t).with("storages.health.checks.#{group_key}.#{key}").and_return(key.to_s.humanize)
+      if result.code.present?
+        allow(I18n).to receive(:t).with("storages.health.connection_validation.#{result.code}")
+                                  .and_return(result.code.to_s.humanize)
+      end
     end
 
     group

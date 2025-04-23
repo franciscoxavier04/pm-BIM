@@ -45,6 +45,7 @@ RSpec.describe Storages::Admin::Health::CheckResultComponent, type: :component d
     it "renders the component" do
       expect(page).to have_text(I18n.t("storages.health.checks.#{group_key}.#{check_result.key}"))
       expect(page).to have_css(".color-fg-success", text: "Passed")
+      expect(page).to have_no_css(".Label")
       expect(page).to have_no_link("More information")
       expect(page).not_to have_test_selector("op-storages--health-status-check-information")
     end
@@ -56,40 +57,38 @@ RSpec.describe Storages::Admin::Health::CheckResultComponent, type: :component d
     it "renders the component" do
       expect(page).to have_text(I18n.t("storages.health.checks.#{group_key}.#{check_result.key}"))
       expect(page).to have_css(".color-fg-attention", text: "Skipped")
+      expect(page).to have_no_css(".Label")
       expect(page).to have_no_link("More information")
       expect(page).not_to have_test_selector("op-storages--health-status-check-information")
     end
   end
 
   context "if check result is a warning" do
+    let(:group_key) { :ampf_configuration }
     let(:check_result) do
-      Storages::Peripherals::ConnectionValidators::CheckResult.warning(
-        :capabilities_request,
-        "it is no moon"
-      )
+      Storages::Peripherals::ConnectionValidators::CheckResult.warning(:drive_contents, :od_unexpected_content)
     end
 
     it "renders the component" do
       expect(page).to have_text(I18n.t("storages.health.checks.#{group_key}.#{check_result.key}"))
       expect(page).to have_css(".color-fg-attention", text: "Warning")
+      expect(page).to have_css(".Label", text: "WRN_#{check_result.code.upcase}")
       expect(page).to have_link("More information")
-      expect(page).to have_test_selector("op-storages--health-status-check-information", text: check_result.message)
+      expect(page).to have_test_selector("op-storages--health-status-check-information")
     end
   end
 
   context "if check result is a failure" do
     let(:check_result) do
-      Storages::Peripherals::ConnectionValidators::CheckResult.failure(
-        :capabilities_request,
-        "it is really no moon"
-      )
+      Storages::Peripherals::ConnectionValidators::CheckResult.failure(:capabilities_request, :unknown_error)
     end
 
     it "renders the component" do
       expect(page).to have_text(I18n.t("storages.health.checks.#{group_key}.#{check_result.key}"))
       expect(page).to have_css(".color-fg-danger", text: "Failed")
+      expect(page).to have_css(".Label", text: "ERR_#{check_result.code.upcase}")
       expect(page).to have_link("More information")
-      expect(page).to have_test_selector("op-storages--health-status-check-information", text: check_result.message)
+      expect(page).to have_test_selector("op-storages--health-status-check-information")
     end
   end
 end
