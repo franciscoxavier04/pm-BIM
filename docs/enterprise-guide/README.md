@@ -42,7 +42,7 @@ The following changes to our Enterprise plans will become effective on 2025-05-2
 
 **Enterprise on-premises**
 
-If you are currently on a lower plan for the Enterprise on-premises and want to test any of the new released Enterprise add-ons from the higher plans, please [get in touch with our Sales team](https://www.openproject.org/contact/) to get a new Enterprise trial token.
+If you are currently on a lower plan for the Enterprise on-premises (e.g. Basic plan) and want to test any of the new released Enterprise add-ons from the higher plans (e.g. Professional plan), please [get in touch with our Sales team](https://www.openproject.org/contact/) to get a new Enterprise trial token.
 
 **Enterprise cloud**
 
