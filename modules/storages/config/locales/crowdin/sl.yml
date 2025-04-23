@@ -30,7 +30,7 @@ sl:
         tenant: Directory (tenant) ID
     errors:
       messages:
-        invalid_host_url: ni veljaven URL.
+        invalid_host_url: ni veljaven URL. 
         not_linked_to_project: is not linked to project.
       models:
         storages/file_link:
