@@ -1844,7 +1844,8 @@ cs:
     text:
       failed: 'Nebylo možné zkopírovat projekt "%{source_project_name}" do "%{target_project_name}".'
       succeeded: 'Projekt "%{source_project_name}" zkopírován do "%{target_project_name}".'
-  create_new_page: "Stránka wiki"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Wiki page"
   date:
     abbr_day_names:
       - "Ne"

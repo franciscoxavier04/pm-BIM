@@ -66,6 +66,7 @@ module EnterpriseEdition
 
     def free_trial_button
       return if EnterpriseToken.active?
+      return unless User.current.admin?
 
       helpers.angular_component_tag("opce-free-trial-button")
     end
