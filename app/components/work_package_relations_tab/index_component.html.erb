@@ -22,23 +22,7 @@
               t(:label_relation)
             end
 
-            render_child_menu_items(menu)
-
-            if should_render_add_relations?
-              Relation::TYPES.each do |relation_type, type_configuration_hash|
-                label_key = "#{I18N_NAMESPACE}.relations.#{type_configuration_hash[:name]}_singular"
-                menu.with_item(
-                  label: t(label_key).upcase_first,
-                  href: new_relation_path(relation_type:),
-                  test_selector: new_button_test_selector(relation_type:),
-                  content_arguments: {
-                    data: { turbo_stream: true }
-                  }
-                ) do |item|
-                  item.with_description.with_content(t("#{I18N_NAMESPACE}.relations.#{relation_type}_description"))
-                end
-              end
-            end
+            render_add_relations_menu_items(menu, ADD_RELATION_MENU_TYPES)
           end
         end
       end

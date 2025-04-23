@@ -812,7 +812,7 @@ en:
       label_child_singular: "child"
       label_child_plural: "children"
       new_child: "Create new child"
-      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
