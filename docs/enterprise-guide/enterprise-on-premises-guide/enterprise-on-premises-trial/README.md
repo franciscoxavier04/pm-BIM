@@ -13,7 +13,7 @@ You can start the trial period for OpenProject either via an already installed C
 
 A) To upgrade your Community installation, navigate to your system -> Administration -> Enterprise edition. Here, you can simply click the green **Start free trial button**.
 
-![start trial with community edition](start-trial-with-community-edition.png)
+![start trial with Community edition](start-trial-with-community-edition.png)
 
 B) To get a free trial from the website, please go to [the Enterprise site on our website](https://www.openproject.org/enterprise-edition/) and press the blue **Get a free on-premises trial license** button.
 
