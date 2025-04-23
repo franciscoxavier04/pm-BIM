@@ -14,6 +14,7 @@ module Primer
           @input = input
           @rich_text_data = rich_text_options.delete(:data) { {} }
           @rich_text_options = rich_text_options
+          @text_area_id = rich_text_options[:text_area_id] || SecureRandom.alphanumeric(16)
         end
       end
     end
