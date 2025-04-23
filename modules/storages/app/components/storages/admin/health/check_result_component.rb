@@ -47,7 +47,7 @@ module Storages
             status_color:,
             status_text:,
             error_code:,
-            error_text: model.message,
+            error_text:,
             docs_href: ::OpenProject::Static::Links.url_for(:storage_docs, :health_status)
           }
         end
@@ -58,6 +58,12 @@ module Storages
           elsif model.warning?
             "WRN_#{model.code.upcase}"
           end
+        end
+
+        def error_text
+          return nil if model.success? || model.skipped?
+
+          I18n.t("storages.health.connection_validation.#{model.code}")
         end
 
         def status_color

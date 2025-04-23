@@ -50,13 +50,13 @@ module Storages
             if @storage.configured?
               pass_check(:storage_configured)
             else
-              fail_check(:storage_configured, :not_configured, message(:not_configured))
+              fail_check(:storage_configured, :not_configured)
             end
           end
 
           def capabilities_request_status
             if capabilities.failure? && capabilities.result != :not_found
-              fail_check(:capabilities_request, :unknown_error, message(:unknown_error))
+              fail_check(:capabilities_request, :unknown_error)
             else
               pass_check(:capabilities_request)
             end
@@ -67,7 +67,7 @@ module Storages
             capabilities_result = capabilities.result
 
             if capabilities_result.app_version < min_app_version
-              fail_check(:dependencies_versions, :app_version_mismatch, message(:app_version_mismatch))
+              fail_check(:dependencies_versions, :nc_integration_app_version_mismatch)
             else
               pass_check(:dependencies_versions)
             end
@@ -75,11 +75,9 @@ module Storages
 
           def missing_dependencies
             capabilities_result = capabilities.result
-            app_name = I18n.t("storages.dependencies.nextcloud.integration_app")
 
             if capabilities_result.app_disabled?
-              message = message(:missing_dependencies, dependency: app_name)
-              fail_check(:dependencies_check, :missing_dependencies, message)
+              fail_check(:dependencies_check, :nc_integration_app_missing)
             else
               pass_check(:dependencies_check)
             end
@@ -87,7 +85,7 @@ module Storages
 
           def host_url_not_found
             if capabilities.result == :not_found
-              fail_check(:host_url_accessible, :host_not_found, message(:host_not_found))
+              fail_check(:host_url_accessible, :nc_host_not_found)
             else
               pass_check(:host_url_accessible)
             end

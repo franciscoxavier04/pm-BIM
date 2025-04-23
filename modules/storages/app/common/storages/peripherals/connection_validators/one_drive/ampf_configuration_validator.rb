@@ -33,7 +33,7 @@ module Storages
     module ConnectionValidators
       module OneDrive
         class AmpfConfigurationValidator < BaseValidatorGroup
-          TEST_FOLDER_NAME = "ConnectionValidatorFolder"
+          TEST_FOLDER_NAME = "OpenProjectConnectionValidationFolder"
 
           private
 
@@ -46,15 +46,14 @@ module Storages
 
           def unexpected_content
             unexpected_files = files_query
-                                 .on_failure { fail_check(:drive_contents, :unknown_error, message(:unknown_error)) }
+                                 .on_failure { fail_check(:drive_contents, :unknown_error) }
                                  .result.files.reject { managed_project_folder_ids.include?(it.id) }
 
             if unexpected_files.empty?
               pass_check(:drive_contents)
             else
               log_extraneous_files(unexpected_files)
-              code = :unexpected_content
-              warn_check(:drive_contents, code, message("one_drive.#{code}"))
+              warn_check(:drive_contents, :od_unexpected_content)
             end
           end
 
@@ -67,10 +66,9 @@ module Storages
           end
 
           def delete_folder(folder)
-            failure_message = message("one_drive.client_cant_delete_folder")
             Registry["one_drive.commands.delete_folder"]
               .call(storage: @storage, auth_strategy:, location: folder.id)
-              .on_failure { fail_check(:client_folder_removal, :client_cant_delete_folder, failure_message) }
+              .on_failure { fail_check(:client_folder_removal, :od_client_cant_delete_folder) }
               .on_success { pass_check(:client_folder_removal) }
           end
 
@@ -79,9 +77,8 @@ module Storages
               .call(storage: @storage, auth_strategy:, folder_name: TEST_FOLDER_NAME, parent_location: ParentFolder.root)
               .on_success { pass_check(:client_folder_creation) }
               .on_failure do
-              code = it.result == :already_exists ? :existing_test_folder : :client_write_permission_missing
-              message = message("one_drive.#{code}", folder_name: TEST_FOLDER_NAME)
-              fail_check(:client_folder_creation, code, message)
+              code = it.result == :already_exists ? :od_existing_test_folder : :od_client_write_permission_missing
+              fail_check(:client_folder_creation, code)
             end
           end
 

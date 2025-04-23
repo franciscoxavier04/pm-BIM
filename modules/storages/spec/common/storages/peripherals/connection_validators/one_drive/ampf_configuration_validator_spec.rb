@@ -54,7 +54,7 @@ module Storages
               results = validator.call
 
               expect(results[:drive_contents]).to be_a_warning
-              expect(results[:drive_contents].message).to eq(I18n.t(i18n_key("one_drive.unexpected_content")))
+              expect(results[:drive_contents].code).to eq(:od_unexpected_content)
             end
 
             it "fails when folders can't be created" do
@@ -68,8 +68,7 @@ module Storages
               results = validator.call
 
               expect(results[:client_folder_creation]).to be_a_failure
-              expect(results[:client_folder_creation].message)
-                .to eq(I18n.t(i18n_key("one_drive.client_write_permission_missing")))
+              expect(results[:client_folder_creation].code).to eq(:od_client_write_permission_missing)
             end
 
             it "fails when the test folder already exists on the remote", vcr: "one_drive/validator_test_folder_already_exists" do
@@ -78,8 +77,7 @@ module Storages
 
               result = validator.call
               expect(result[:client_folder_creation]).to be_a_failure
-              expect(result[:client_folder_creation].message)
-                .to eq(I18n.t(i18n_key("one_drive.existing_test_folder"), folder_name:))
+              expect(result[:client_folder_creation].code).to eq(:od_existing_test_folder)
             ensure
               StorageInteraction::OneDrive::DeleteFolderCommand.call(storage:, auth_strategy:, location: created_folder)
             end
@@ -94,7 +92,7 @@ module Storages
               results = validator.call
 
               expect(results[:client_folder_removal]).to be_a_failure
-              expect(results[:client_folder_removal].message).to eq(I18n.t(i18n_key("one_drive.client_cant_delete_folder")))
+              expect(results[:client_folder_removal].code).to eq(:od_client_cant_delete_folder)
             ensure
               StorageInteraction::OneDrive::DeleteFolderCommand.call(storage:, auth_strategy:, location: created_folder)
             end
@@ -109,8 +107,6 @@ module Storages
               return folder.id
             end
           end
-
-          def i18n_key(key) = "storages.health.connection_validation.#{key}"
         end
       end
     end

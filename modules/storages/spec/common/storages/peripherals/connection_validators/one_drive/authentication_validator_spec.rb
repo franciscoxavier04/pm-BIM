@@ -53,7 +53,7 @@ module Storages
               result = validator.call
 
               expect(result[:existing_token]).to be_a_warning
-              expect(result[:existing_token].message).to eq(I18n.t(i18n_key("one_drive.oauth_token_missing")))
+              expect(result[:existing_token].code).to eq(:od_oauth_token_missing)
               expect(result[:user_bound_request]).to be_skipped
             end
 
@@ -62,13 +62,9 @@ module Storages
 
               result = validator.call
               expect(result[:user_bound_request]).to be_a_failure
-              expect(result[:user_bound_request].message).to eq(I18n.t(i18n_key("one_drive.oauth_request_unauthorized")))
+              expect(result[:user_bound_request].code).to eq(:od_oauth_request_unauthorized)
             end
           end
-
-          private
-
-          def i18n_key(key) = "storages.health.connection_validation.#{key}"
         end
       end
     end

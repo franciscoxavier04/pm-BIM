@@ -67,18 +67,14 @@ module Storages
           update_result(key, CheckResult.success(key))
         end
 
-        def fail_check(key, code, message)
-          update_result(key, CheckResult.failure(key, code, message))
+        def fail_check(key, code)
+          update_result(key, CheckResult.failure(key, code))
           throw :interrupted
         end
 
-        def warn_check(key, code, message, halt_validation: false)
-          update_result(key, CheckResult.warning(key, code, message))
+        def warn_check(key, code, halt_validation: false)
+          update_result(key, CheckResult.warning(key, code))
           throw :interrupted if halt_validation
-        end
-
-        def message(key, context = {})
-          I18n.t("storages.health.connection_validation.#{key}", **context)
         end
       end
     end

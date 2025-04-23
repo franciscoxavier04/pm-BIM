@@ -59,8 +59,7 @@ module Storages
             return pass_check(:drive_id_format) if query_result.success?
 
             if error_payload.dig(:error, :code) == "invalidRequest"
-              code = :drive_id_wrong
-              fail_check(:drive_id_format, code, message("one_drive.#{code}"))
+              fail_check(:drive_id_format, :od_drive_id_invalid)
             else
               pass_check(:drive_id_format)
             end
@@ -68,8 +67,7 @@ module Storages
 
           def drive_not_found
             if query_result.result == :not_found
-              code = :drive_id_not_found
-              fail_check(:drive_id_exists, code, message("one_drive.#{code}"))
+              fail_check(:drive_id_exists, :od_drive_id_not_found)
             else
               pass_check(:drive_id_exists)
             end
@@ -81,7 +79,7 @@ module Storages
             tenant_id_regex = /tenant (?:identifier )?'#{@storage.tenant_id}' (?:not found|is neither)/i
 
             if error_payload[:error] == "invalid_request" && error_payload[:error_description].match?(tenant_id_regex)
-              fail_check(:tenant_id, :tenant_id_wrong, message(:tenant_id_wrong))
+              fail_check(:tenant_id, :od_tenant_id_invalid)
             else
               pass_check(:tenant_id)
             end
@@ -91,7 +89,7 @@ module Storages
             return pass_check(:client_id) if query_result.success?
 
             if error_payload[:error] == "unauthorized_client"
-              fail_check(:client_id, :client_id_wrong, message(:client_id_wrong))
+              fail_check(:client_id, :client_id_invalid)
             else
               pass_check(:client_id)
             end
@@ -101,7 +99,7 @@ module Storages
             return pass_check(:client_secret) if query_result.success?
 
             if error_payload[:error] == "invalid_client"
-              fail_check(:client_secret, :client_secret_wrong, message(:client_secret_wrong))
+              fail_check(:client_secret, :client_secret_invalid)
             else
               pass_check(:client_secret)
             end
@@ -114,7 +112,7 @@ module Storages
                     "\tstatus: #{query_result.result}\n" \
                     "\tresponse: #{query_result.error_payload}"
 
-              fail_check(:diagnostic_request, :unknown_error, message(:unknown_error))
+              fail_check(:diagnostic_request, :unknown_error)
             else
               pass_check :diagnostic_request
             end
@@ -124,7 +122,7 @@ module Storages
             if @storage.configured?
               pass_check(:storage_configured)
             else
-              fail_check(:storage_configured, :not_configured, message(:not_configured))
+              fail_check(:storage_configured, :not_configured)
             end
           end
 
