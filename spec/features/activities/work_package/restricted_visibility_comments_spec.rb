@@ -299,31 +299,35 @@ RSpec.describe "Work package comments with restricted visibility",
 
       it "asks for explicit confirmation from the user" do
         activity_tab.open_new_comment_editor
-        activity_tab.type_comment("This is an internal comment")
+
+        aggregate_failures "empty comments do not ask for confirmation" do
+          activity_tab.check_restricted_visibility_comment_checkbox
+          activity_tab.uncheck_internal_comment_checkbox
+
+          activity_tab.expect_internal_comment_unchecked
+          expect(page).not_to have_test_selector("op-work-package-unrestrict-comment-confirmation-dialog")
+        end
+
         activity_tab.check_restricted_visibility_comment_checkbox
+        activity_tab.refocus_editor
+        activity_tab.type_comment("This is an internal comment")
 
-        page.within_test_selector("op-work-package-journal-form-element") do
-          expect(page).to have_checked_field("Restrict visibility")
+        aggregate_failures "non-empty comments ask for confirmation, cancel retains current state" do
+          activity_tab.uncheck_internal_comment_checkbox
+          activity_tab.expect_unrestrict_internal_comment_confirmation_dialog do
+            click_on "Cancel"
+          end
+          activity_tab.expect_internal_comment_checked
         end
 
-        activity_tab.uncheck_internal_comment_checkbox
+        aggregate_failures "non-empty comments ask for confirmation, confirm changes the state" do
+          activity_tab.uncheck_internal_comment_checkbox
 
-        activity_tab.expect_unrestrict_internal_comment_confirmation_dialog do
-          click_on "Cancel"
-        end
+          activity_tab.expect_unrestrict_internal_comment_confirmation_dialog do
+            click_on "Make public"
+          end
 
-        page.within_test_selector("op-work-package-journal-form-element") do
-          expect(page).to have_checked_field("Restrict visibility")
-        end
-
-        activity_tab.uncheck_internal_comment_checkbox
-
-        activity_tab.expect_unrestrict_internal_comment_confirmation_dialog do
-          click_on "Make public"
-        end
-
-        page.within_test_selector("op-work-package-journal-form-element") do
-          expect(page).to have_no_checked_field("Restrict visibility")
+          activity_tab.expect_internal_comment_unchecked
         end
       end
     end

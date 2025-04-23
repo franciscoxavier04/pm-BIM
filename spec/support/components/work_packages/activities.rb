@@ -101,6 +101,18 @@ module Components
         end
       end
 
+      def expect_internal_comment_checked
+        page.within_test_selector("op-work-package-journal-form-element") do
+          expect(page).to have_checked_field("Restrict visibility")
+        end
+      end
+
+      def expect_internal_comment_unchecked
+        page.within_test_selector("op-work-package-journal-form-element") do
+          expect(page).to have_no_checked_field("Restrict visibility")
+        end
+      end
+
       def expect_journal_changed_attribute(text:)
         expect(page).to have_test_selector("op-journal-detail-description", text:, wait: 10)
       end
