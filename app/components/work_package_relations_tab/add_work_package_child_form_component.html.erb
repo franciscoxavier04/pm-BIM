@@ -1,5 +1,6 @@
 <%= component_wrapper do %>
-  <%= primer_form_with(
+  <%=
+  primer_form_with(
     id: FORM_ID,
     model: @child,
     **submit_url_options,
@@ -7,9 +8,11 @@
       turbo: true,
       update_work_package: true
     }
-    ) do |f| %>
+  ) do |f|
+  %>
     <%# Form fields section %>
-    <%= flex_layout(mb: 3) do |flex|
+    <%=
+      flex_layout(mb: 3) do |flex|
         flex.with_row do
           if @base_errors&.any?
             render(Primer::Alpha::Banner.new(mb: 3, icon: :stop, scheme: :danger)) { @base_errors.join("\n") }
@@ -26,18 +29,19 @@
               required: true,
               visually_hide_label: false,
               autocomplete_options: {
-                resource: 'work_packages',
-                searchKey: 'subjectOrId',
+                resource: "work_packages",
+                searchKey: "subjectOrId",
                 url:,
                 openDirectly: false,
                 focusDirectly: true,
-                dropdownPosition: 'bottom',
+                dropdownPosition: "bottom",
                 appendTo: "##{DIALOG_ID}",
                 data: { test_selector: ID_FIELD_TEST_SELECTOR }
               }
             )
           end
         end
-      end %>
+      end
+    %>
   <% end %>
 <% end %>
