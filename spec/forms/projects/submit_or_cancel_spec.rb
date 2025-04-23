@@ -27,40 +27,23 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-module Projects
-  module Settings
-    class RelationsForm < ApplicationForm
-      delegate :parent, to: :model
+#
+require "spec_helper"
 
-      form do |f|
-        f.project_autocompleter(
-          name: :parent_id,
-          label: attribute_name(:parent_id),
-          autocomplete_options: {
-            model: project_autocompleter_model,
-            focusDirectly: false,
-            dropdownPosition: "bottom",
-            url: project_autocompleter_url,
-            filters: [],
-            data: { qa_field_name: "parent" }
-          }
-        )
-      end
+RSpec.describe Projects::SubmitOrCancel, type: :forms do
+  include_context "with rendered form"
 
-      private
+  let(:model) { build_stubbed(:project) }
 
-      def project_autocompleter_model
-        return nil unless parent
-        return { id: parent.id, name: I18n.t(:"api_v3.undisclosed.parent") } unless parent.visible? || User.current.admin?
+  it "renders a horizontal group" do
+    expect(page).to have_css ".FormControl-horizontalGroup"
+  end
 
-        { id: parent.id, name: parent.name }
-      end
+  it "renders submit button" do
+    expect(page).to have_button "Create", class: "Button--primary"
+  end
 
-      def project_autocompleter_url
-        url_str = ::API::V3::Utilities::PathHelper::ApiV3Path.projects_available_parents
-        url_str << "?of=#{model.id}" unless model.new_record?
-        url_str
-      end
-    end
+  it "renders cancel link" do
+    expect(page).to have_link "Cancel", class: "Button--secondary"
   end
 end

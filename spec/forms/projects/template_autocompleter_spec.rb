@@ -27,40 +27,36 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-module Projects
-  module Settings
-    class RelationsForm < ApplicationForm
-      delegate :parent, to: :model
+#
+require "spec_helper"
 
-      form do |f|
-        f.project_autocompleter(
-          name: :parent_id,
-          label: attribute_name(:parent_id),
-          autocomplete_options: {
-            model: project_autocompleter_model,
-            focusDirectly: false,
-            dropdownPosition: "bottom",
-            url: project_autocompleter_url,
-            filters: [],
-            data: { qa_field_name: "parent" }
-          }
-        )
+RSpec.describe Projects::TemplateAutocompleter, type: :forms do
+  include ViewComponent::TestHelpers
+
+  def render_form
+    render_in_view_context(template_id, described_class) do |template_id, described_class|
+      primer_form_with(url: "/foo") do |f|
+        render(described_class.new(f, template_id:))
       end
+    end
+  end
 
-      private
+  before do
+    render_form
+  end
 
-      def project_autocompleter_model
-        return nil unless parent
-        return { id: parent.id, name: I18n.t(:"api_v3.undisclosed.parent") } unless parent.visible? || User.current.admin?
+  let(:template_id) { 1001 }
 
-        { id: parent.id, name: parent.name }
-      end
+  it "renders field" do
+    expect(page).to have_element "opce-project-autocompleter", "data-input-name": "\"template_id\"" do |element|
+      expect(element["data-input-value"]).to eq "1001"
+    end
+  end
 
-      def project_autocompleter_url
-        url_str = ::API::V3::Utilities::PathHelper::ApiV3Path.projects_available_parents
-        url_str << "?of=#{model.id}" unless model.new_record?
-        url_str
-      end
+  it "connects Stimulus controller actions" do
+    expect(page).to have_element "opce-project-autocompleter", "data-input-name": "\"template_id\"" do |element|
+      expect(element["data-action"]).to include "change->highlight-when-value-selected#itemSelected"
+      expect(element["data-action"]).to include "change->auto-submit#submit"
     end
   end
 end
