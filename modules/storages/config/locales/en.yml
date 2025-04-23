@@ -256,7 +256,7 @@ en:
           dependencies_versions: Dependencies (version)
           diagnostic_request: Diagnostic request
           drive_id_format: Drive ID format
-          drive_id_not_found: Drive exists
+          drive_id_exists: Drive exists
           header: Basic configuration
           host_url_accessible: Host URL accessible
           storage_configured: Configuration complete

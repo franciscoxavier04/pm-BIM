@@ -50,7 +50,7 @@ module Storages
 
           def userless_access_denied
             if files.result == :unauthorized
-              fail_check(:userless_access, message(:userless_access_denied))
+              fail_check(:userless_access, :userless_access_denied, message(:userless_access_denied))
             else
               pass_check(:userless_access)
             end
@@ -58,7 +58,7 @@ module Storages
 
           def group_folder_not_found
             if files.result == :not_found
-              fail_check(:group_folder_presence, message(:group_folder_not_found))
+              fail_check(:group_folder_presence, :group_folder_not_found, message(:group_folder_not_found))
             else
               pass_check(:group_folder_presence)
             end
@@ -72,7 +72,7 @@ module Storages
                     "\tstatus: #{files.result}\n" \
                     "\tresponse: #{files.error_payload}"
 
-              fail_check(:files_request, message(:unknown_error))
+              fail_check(:files_request, :unknown_error, message(:unknown_error))
             else
               pass_check(:files_request)
             end
@@ -83,7 +83,8 @@ module Storages
             return pass_check(:group_folder_contents) if unexpected_files.empty?
 
             log_extraneous_files(unexpected_files)
-            warn_check(:group_folder_contents, message("nextcloud.unexpected_content"))
+            code = :unexpected_content
+            warn_check(:group_folder_contents, code, message("nextcloud.#{code}"))
           end
 
           def log_extraneous_files(unexpected_files)
@@ -103,8 +104,8 @@ module Storages
 
           def files
             @files ||= Peripherals::Registry
-              .resolve("#{@storage}.queries.files")
-              .call(storage: @storage, auth_strategy:, folder: ParentFolder.new(@storage.group_folder))
+                         .resolve("#{@storage}.queries.files")
+                         .call(storage: @storage, auth_strategy:, folder: ParentFolder.new(@storage.group_folder))
           end
         end
       end

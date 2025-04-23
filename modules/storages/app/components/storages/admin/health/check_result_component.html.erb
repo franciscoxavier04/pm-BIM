@@ -38,6 +38,11 @@ See COPYRIGHT and LICENSE files for more details.
           text.with_column(ml: 2) do
             render(Primer::Beta::Text.new(font_size: :small, color: data[:status_color])) { data[:status_text] }
           end
+          if data[:error_code]
+            text.with_column(ml: 2) do
+              render(Primer::Beta::Label.new(scheme: data[:status_color])) { data[:error_code] }
+            end
+          end
         end
 
         if data[:error_text].present?

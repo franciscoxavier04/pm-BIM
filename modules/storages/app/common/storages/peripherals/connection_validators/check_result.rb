@@ -31,27 +31,31 @@
 module Storages
   module Peripherals
     module ConnectionValidators
-      CheckResult = Data.define(:key, :state, :message, :timestamp) do
+      CheckResult = Data.define(:key, :state, :code, :message, :timestamp) do
         private_class_method :new
+
         def self.skipped(key)
-          new(key:, state: :skipped, message: nil, timestamp: nil)
+          new(key:, state: :skipped, code: nil, message: nil, timestamp: nil)
         end
 
-        def self.failure(key, message)
-          new(key:, state: :failure, message:, timestamp: Time.zone.now)
+        def self.failure(key, code, message)
+          new(key:, state: :failure, code:, message:, timestamp: Time.zone.now)
         end
 
         def self.success(key)
-          new(key:, state: :success, message: nil, timestamp: Time.zone.now)
+          new(key:, state: :success, code: nil, message: nil, timestamp: Time.zone.now)
         end
 
-        def self.warning(key, message)
-          new(key:, state: :warning, message:, timestamp: Time.zone.now)
+        def self.warning(key, code, message)
+          new(key:, state: :warning, code:, message:, timestamp: Time.zone.now)
         end
 
         def success? = state == :success
+
         def failure? = state == :failure
+
         def warning? = state == :warning
+
         def skipped? = state == :skipped
       end
     end
