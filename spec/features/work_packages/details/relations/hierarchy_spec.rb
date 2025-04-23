@@ -64,23 +64,19 @@ RSpec.shared_examples "work package relations tab", :js, :with_cuprite do
       relations.add_parent(parent.id, parent)
       wp_page.expect_and_dismiss_toaster(message: "Successful update.")
       relations.expect_parent(parent)
+      tabs.expect_counter(relations_tab, 1)
 
       ##
       # Add child #1
       relations.add_existing_child(child)
       relations.expect_child(child)
+      tabs.expect_counter(relations_tab, 2)
 
       ##
       # Add child #2
       relations.add_existing_child(child2)
       relations.expect_child(child2)
-
-      # Count child relations in split view
-      # Marking as "visible: :all" because the counter
-      # is hidden by some weird white element only in TEST mode
-      # in the header.
-
-      tabs.expect_counter(relations_tab, 2)
+      tabs.expect_counter(relations_tab, 3)
     end
   end
 
