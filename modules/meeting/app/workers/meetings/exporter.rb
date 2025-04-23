@@ -33,6 +33,11 @@ module Meetings
     include WorkPackage::PDFExport::Common::Common
     include WorkPackage::PDFExport::Common::Logo
     include WorkPackage::PDFExport::Export::Page
+    include WorkPackage::PDFExport::Export::Cover
+    include WorkPackage::PDFExport::Export::Meetings::Styles
+    include WorkPackage::PDFExport::Export::Markdown
+    include WorkPackage::PDFExport::Common::Attachments
+    include Meetings::MeetingToPdf
 
     attr_accessor :pdf
 
@@ -52,6 +57,7 @@ module Meetings
 
     def setup_page!
       self.pdf = get_pdf
+      configure_page_size!(:portrait)
     end
 
     def export!
@@ -63,10 +69,32 @@ module Meetings
     end
 
     def render_doc
+      write_cover_page! if with_cover?
+      render_meeting!
+    end
+
+    def with_cover?
+      true
+    end
+
+    def cover_page_title
+      ""
+    end
+
+    def cover_page_heading
+      meeting.title
+    end
+
+    def cover_page_dates
+      "#{meeting.start_date} #{meeting.start_time_hour}".strip
+    end
+
+    def cover_page_subheading
+      meeting.location
     end
 
     def heading
-      "Meeting title"
+      meeting.title
     end
 
     def footer_title

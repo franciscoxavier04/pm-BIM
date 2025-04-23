@@ -100,10 +100,14 @@ module WorkPackage::PDFExport::Export::Markdown
     end
   end
 
-  def write_markdown!(work_package, markdown, styling_yml)
-    md2pdf = MD2PDFExport.new(styling_yml, pdf, hyphenation_language)
-    md2pdf.draw_markdown(markdown, pdf, ->(src) {
-      with_images? ? attachment_image_filepath(work_package, src) : nil
-    })
+  def markdown_writer(styling_yml)
+    @markdown_writer ||= MD2PDFExport.new(styling_yml, pdf, hyphenation_language)
+  end
+
+  def write_markdown!(markdown, styling_yml)
+    markdown_writer(styling_yml)
+      .draw_markdown(markdown, pdf, ->(src) {
+        with_images? ? attachment_image_filepath(src) : nil
+      })
   end
 end

@@ -28,32 +28,30 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module WorkPackage::PDFExport::Export::MarkdownField
-  include WorkPackage::PDFExport::Export::Markdown
-  include WorkPackage::PDFExport::Common::Macro
+module WorkPackage::PDFExport::Export::Meetings::Styles
+  class PDFStyles
+    include MarkdownToPDF::Common
+    include MarkdownToPDF::StyleHelper
+    include WorkPackage::PDFExport::Common::Styles
+    include WorkPackage::PDFExport::Common::StylesPage
+    include WorkPackage::PDFExport::Common::StylesCover
 
-  def write_markdown_field!(work_package, markdown, label)
-    return if markdown.blank?
+    def notes_markdown_margins
+      resolve_margin(@styles.dig(:work_package, :markdown_margin))
+    end
 
-    write_optional_page_break
-    write_markdown_field_label(label)
-    write_markdown_field_value(work_package, markdown)
+    def notes_markdown_styling_yml
+      resolve_markdown_styling(@styles.dig(:notes, :markdown) || {})
+    end
+  end
+
+  def styles
+    @styles ||= PDFStyles.new(styles_asset_path)
   end
 
   private
 
-  def write_markdown_field_label(label)
-    with_margin(styles.wp_markdown_label_margins) do
-      pdf.formatted_text([styles.wp_markdown_label.merge({ text: label })])
-    end
-  end
-
-  def write_markdown_field_value(work_package, markdown)
-    with_margin(styles.wp_markdown_margins) do
-      write_markdown!(
-        apply_markdown_field_macros(markdown, work_package),
-        styles.wp_markdown_styling_yml
-      )
-    end
+  def styles_asset_path
+    File.dirname(File.expand_path(__FILE__))
   end
 end
