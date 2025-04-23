@@ -31,6 +31,8 @@
 class Projects::Settings::IndexPageHeaderComponent < ApplicationComponent
   include OpPrimer::ComponentHelpers
 
+  def test
+
   def initialize(project:)
     super
 
