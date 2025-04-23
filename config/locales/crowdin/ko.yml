@@ -1784,7 +1784,8 @@ ko:
     text:
       failed: '프로젝트 "%{source_project_name}"을(를) 프로젝트 "%{target_project_name}"에 복사할 수 없습니다.'
       succeeded: '프로젝트 "%{source_project_name}"을(를) 프로젝트 "%{target_project_name}"에 복사했습니다.'
-  create_new_page: "위키 페이지"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Wiki page"
   date:
     abbr_day_names:
       - "일"

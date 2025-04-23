@@ -1782,7 +1782,8 @@ ms:
     text:
       failed: 'Tidak dapat menyalin projek "%{source_project_name}" ke projek "%{target_project_name}".'
       succeeded: 'Menyalin projek "%{source_project_name}" ke "%{target_project_name}".'
-  create_new_page: "Halaman wiki"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Wiki page"
   date:
     abbr_day_names:
       - "Aha"

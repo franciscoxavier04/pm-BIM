@@ -1802,7 +1802,8 @@ hi:
     text:
       failed: 'प्रोजेक्ट की प्रतिलिपि नहीं बना सका "%{source_project_name}" प्रोजेक्ट को "%{target_project_name}".'
       succeeded: '"%{source_project_name}" प्रोजेक्ट की प्रतिलिपि "%{target_project_name}" में बनाई.'
-  create_new_page: "विकी पृष्ठ"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Wiki page"
   date:
     abbr_day_names:
       - "रविवार"

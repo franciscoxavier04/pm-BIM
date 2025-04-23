@@ -1803,7 +1803,8 @@ hu:
     text:
       failed: 'Nem lehet másolni a  "%{source_project_name}" projektet a "%{target_project_name}" projektbe.'
       succeeded: 'A "%{source_project_name}" projekt átmásolva a "%{target_project_name}" projektbe.'
-  create_new_page: "Wiki oldal"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Wiki page"
   date:
     abbr_day_names:
       - "V"

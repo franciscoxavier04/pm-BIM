@@ -1803,7 +1803,8 @@
     text:
       failed: 'Kunne ikke kopiere prosjektet "%{source_project_name}" til prosjektetet "%{target_project_name}".'
       succeeded: 'Prosjektet "%{source_project_name}" ble kopiert til "%{target_project_name}".'
-  create_new_page: "Wiki-side"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Wiki page"
   date:
     abbr_day_names:
       - "Søn"
