@@ -32,7 +32,7 @@ With the release of OpenProject 16.0.0 on May 21st, 2025, we will update our Ent
 Customers who have booked an Enterprise plan before May 21, 2025, will not be effected by any changes and will keep the existing plans also after renewal.
 However, new add-ons that will be released with 16.0.0 and after in the higher Enterprise plans will not be available in these old plans. You can test these new add-ons in a trial.
 
-The following changes to our Enterprise plans will become effective on 2025-05-21 and apply for new customers:
+The following changes to our Enterprise plans will become effective on 2025-05-21 and **apply for new customers**:
 
 | Community                                                    | Basic                                                        | Professional                                                 | Premium                                                      | Corporate                                                    |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
