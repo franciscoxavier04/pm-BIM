@@ -33,7 +33,7 @@ ar:
         label_activity_show_only_changes: "Show changes only"
         label_sort_asc: "Newest at the bottom"
         label_sort_desc: "Newest on top"
-        label_type_to_comment: "Add a comment. Type @ to notify people."
+        label_type_to_comment: "أضف تعليقًا. اكتب @ لإشعار الأشخاص."
         label_submit_comment: "Submit comment"
         label_who: Who?
         changed_on: "changed on"
@@ -1884,7 +1884,8 @@ ar:
     text:
       failed: 'تعذّر نسخ مشروع "%{source_project_name}" لمشروع "%{target_project_name}".'
       succeeded: 'تمّ نسخ مشروع "%{source_project_name}" إلى "%{target_project_name}".'
-  create_new_page: "صفحة وِيكيبيديا"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Wiki page"
   date:
     abbr_day_names:
       - "الأحد"

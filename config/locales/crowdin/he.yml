@@ -1844,7 +1844,8 @@ he:
     text:
       failed: 'לא ניתן להעתיק את פרויקט "%{source_project_name}" לפרויקט "%{target_project_name}".'
       succeeded: 'הועתק הפרויקט "%{source_project_name}" ל "%{target_project_name}".'
-  create_new_page: "דף ויקי"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Wiki page"
   date:
     abbr_day_names:
       - "א׳"

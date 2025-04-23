@@ -1784,7 +1784,8 @@ vi:
     text:
       failed: 'Không thể chép dự án "%{source_project_name}" sang dự án "%{target_project_name}".'
       succeeded: 'Đã sao chép dự án "%{source_project_name}" sang "%{target_project_name}".'
-  create_new_page: "Trang Wiki"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Wiki page"
   date:
     abbr_day_names:
       - "Chủ nhật"

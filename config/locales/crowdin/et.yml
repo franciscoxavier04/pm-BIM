@@ -1804,7 +1804,8 @@ et:
     text:
       failed: 'Ei saanud kopeerida andmeid projektist "%{source_project_name}" projekti "%{target_project_name}".'
       succeeded: 'Projekti "%{source_project_name}" andmed kopeeriti projekti "%{target_project_name}".'
-  create_new_page: "Viki leht"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Wiki page"
   date:
     abbr_day_names:
       - "P"
