@@ -213,12 +213,6 @@ class Storages::Admin::StoragesController < ApplicationController
     end
   end
 
-  def default_breadcrumb; end
-
-  def show_local_breadcrumb
-    false
-  end
-
   private
 
   def prepare_storage_for_access_management_form

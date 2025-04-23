@@ -102,10 +102,4 @@ class CustomActionsController < ApplicationController
     params[:custom_action][:conditions] ||= {}
     params[:custom_action][:actions] ||= {}
   end
-
-  def show_local_breadcrumb
-    false
-  end
-
-  def default_breadcrumb; end
 end
