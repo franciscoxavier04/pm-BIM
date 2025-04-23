@@ -87,11 +87,5 @@ module LdapGroups
         .require(:synchronized_filter)
         .permit(:filter_string, :name, :ldap_auth_source_id, :group_name_attribute, :sync_users, :base_dn)
     end
-
-    def default_breadcrumb; end
-
-    def show_local_breadcrumb
-      false
-    end
   end
 end

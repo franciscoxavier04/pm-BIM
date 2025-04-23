@@ -146,6 +146,7 @@ class CostQuery::PDF::TimesheetGenerator
   def grouped_by_user_entries
     all_entries
       .group_by(&:user)
+      .sort_by { |user, _entries| user.name }
   end
 
   def all_users
