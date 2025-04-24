@@ -172,7 +172,7 @@ class CostQuery::PDF::TimesheetGenerator
   end
 
   def sum_time_entries(entries)
-    entries.sum(&:hours)
+    entries.map(&:hours).compact.sum
   end
 
   def build_table_row_comment(entry)
@@ -401,7 +401,7 @@ class CostQuery::PDF::TimesheetGenerator
       rows.push([user.name, format_sum_time_entries(entries)])
     end
 
-    total = groups.sum { |_user, entries| entries.sum(&:hours) }
+    total = groups.sum { |_user, entries| sum_time_entries(entries) }
     rows.push(["", { content: format_hours(total), font_style: :bold }])
     rows
   end
