@@ -41,7 +41,6 @@ export default class MyTimeTrackingController extends Controller {
 
   private calendar:Calendar;
   private DEFAULT_TIMED_EVENT_DURATION = '01:00';
-  private updatingDate:string|null = null;
   private boundListener = this.dialogCloseListener.bind(this);
 
   async connect() {
@@ -386,7 +385,6 @@ export default class MyTimeTrackingController extends Controller {
 
   newTimeEntry(event:ActionEvent) {
     const dialogParams = `onlyMe=true&date=${event.params.date}`;
-    this.updatingDate = event.params.date as string;
 
     void this.turboRequests.request(
       `${this.pathHelper.timeEntryDialog()}?${dialogParams}`,
@@ -395,7 +393,10 @@ export default class MyTimeTrackingController extends Controller {
   }
 
   dialogCloseListener(event:CustomEvent):void {
-    const { detail: { dialog, submitted } } = event as { detail:{ dialog:HTMLDialogElement; submitted:boolean } };
+    interface AdditionalDialogCloseData {
+      spent_on?:string;
+    }
+    const { detail: { dialog, additional, submitted } } = event as { detail:{ dialog:HTMLDialogElement; additional:AdditionalDialogCloseData|undefined; submitted:boolean } };
     if (dialog.id !== 'time-entry-dialog' || !submitted) { return; }
 
     // we simply refresh the calendar page
@@ -407,9 +408,8 @@ export default class MyTimeTrackingController extends Controller {
     // list view replaces only the updated date
     if (this.viewModeValue === 'list') {
       // we don't know what date we clicked, so we need to reload the whole page
-      if (this.updatingDate) {
-        void this.turboRequests.request(this.pathHelper.myTimeTrackingRefresh(this.updatingDate, this.viewModeValue, this.modeValue), { method: 'GET' });
-        this.updatingDate = null;
+      if (additional && additional.spent_on) {
+        void this.turboRequests.request(this.pathHelper.myTimeTrackingRefresh(additional.spent_on, this.viewModeValue, this.modeValue), { method: 'GET' });
       } else {
         window.location.reload();
       }

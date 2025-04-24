@@ -79,3 +79,16 @@ render EnterpriseEdition::BannerComponent.new(:enterprise_feature, dismissable: 
 ```
 
 <%= embed OpenProject::EnterpriseEdition::BannerComponentPreview, :dismissable, panels: %i[] %>
+
+
+Use when: You want to show content below the banners, e.g. in administrative setting pages.
+
+## Medium variant banners
+
+Use when: You want to show a feature with some more context, and an image on the right hand side
+
+```ruby
+render EnterpriseEdition::BannerComponent.new(:enterprise_feature, variant: :medium, image: "enterprise/some-image.png")
+```
+
+<%= embed OpenProject::EnterpriseEdition::BannerComponentPreview, :medium, panels: %i[] %>

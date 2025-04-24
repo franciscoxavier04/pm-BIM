@@ -261,7 +261,7 @@ lv:
           storage_configured: Configuration complete
           tenant_id: Tenant ID
         failures:
-          zero: "%{count} checks failed"
+          zero: "All checks passed"
           one: "%{count} check failed"
           other: "%{count} checks failed"
         warnings:

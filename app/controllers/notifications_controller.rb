@@ -73,8 +73,6 @@ class NotificationsController < ApplicationController
 
   def split_view_base_route = notifications_path(request.query_parameters)
 
-  def default_breadcrumb; end
-
   def render_notifications_layout
     # Frontend will handle rendering
     # but we will need to render with notification specific layout
