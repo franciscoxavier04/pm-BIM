@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-# -- copyright
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,36 +24,18 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
 
-module EnterpriseEdition
-  # A full page banner for the enterprise edition
-  class UpsalePageComponent < ApplicationComponent
-    include OpPrimer::ComponentHelpers
-    include PlanForFeature
+module Shares
+  module WorkPackages
+    class ModalUpsellComponent < ApplicationComponent # rubocop:disable OpenProject/AddPreviewForViewComponent
+      include ApplicationHelper
+      include OpTurbo::Streamable
+      include OpPrimer::ComponentHelpers
 
-    # @param feature_key [Symbol, NilClass] The key of the feature to show the upsale page for.
-    # @param i18n_scope [String] Provide the i18n scope to look for title, description, and features.
-    #                            Defaults to "ee.upsale.{feature_key}"
-    # @param image [String, NilClass] Path to the image to show on the upsale page, or nil.
-    # @param video [String, NilClass] Path to the video to show on the upsale page, or nil.
-    def initialize(feature_key, i18n_scope: "ee.upsale.#{feature_key}", image: nil, video: nil)
-      super
-
-      self.feature_key = feature_key
-      self.i18n_scope = i18n_scope
-      @image = image
-      @video = video
-    end
-
-    def more_info_text
-      I18n.t(:more_info, scope: i18n_scope, default: nil)
-    end
-
-    private
-
-    def render?
-      !EnterpriseToken.hide_banners?
+      def self.wrapper_key
+        "share_modal_body"
+      end
     end
   end
 end

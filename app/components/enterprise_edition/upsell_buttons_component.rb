@@ -29,7 +29,7 @@
 # ++
 
 module EnterpriseEdition
-  class UpsaleButtonsComponent < ApplicationComponent
+  class UpsellButtonsComponent < ApplicationComponent
     include OpPrimer::ComponentHelpers
 
     # @param feature_key [Symbol, NilClass] The key of the feature to show the banner for.
@@ -84,7 +84,7 @@ module EnterpriseEdition
     end
 
     def link_title
-      I18n.t("ee.upsale.#{feature_key}.link_title", default: I18n.t(:label_more_information))
+      I18n.t("ee.upsell.#{feature_key}.link_title", default: I18n.t(:label_more_information))
     end
 
     def enterprise_link

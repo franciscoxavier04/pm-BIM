@@ -484,7 +484,7 @@ en:
       description: Add a storage to see them here.
       heading: You don't have any storages yet.
     successful_storage_connection: Storage connected successfully! Remember to activate the storage in the Projects tab for each desired project to use it.
-    upsale:
+    upsell:
       description: |-
         Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
         work packages in a project.

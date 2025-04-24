@@ -17,7 +17,7 @@
                 title_flex.with_column do
                   render(Primer::Beta::Octicon.new(icon: :"op-enterprise-addons",
                                                    size: :medium,
-                                                   classes: "upsale-colored"))
+                                                   classes: "upsell-colored"))
                 end
 
                 title_flex.with_column(ml: 2) do
@@ -42,7 +42,7 @@
           end
 
           flex.with_row(mt: 2) do
-            render EnterpriseEdition::UpsaleButtonsComponent.new(feature_key)
+            render EnterpriseEdition::UpsellButtonsComponent.new(feature_key)
           end
         end
       end
@@ -65,7 +65,7 @@
               href: dismiss_enterprise_banner_path(feature_key: @dismiss_key),
               data: { turbo_stream: true, turbo_method: :post },
               icon: :x,
-              aria: { label: t("ee.upsale.hide_banner") }
+              aria: { label: t("ee.upsell.hide_banner") }
             )
           )
         end

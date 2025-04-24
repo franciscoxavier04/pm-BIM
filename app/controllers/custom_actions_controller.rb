@@ -86,7 +86,7 @@ class CustomActionsController < ApplicationController
     return if EnterpriseToken.allows_to?(:custom_actions)
 
     if request.get?
-      render template: "custom_actions/upsale"
+      render template: "custom_actions/upsell"
     else
       render_403
     end

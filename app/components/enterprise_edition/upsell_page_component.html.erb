@@ -3,13 +3,13 @@
   <% helpers.write_trial_key_to_gon if !EnterpriseToken.current.present? %>
  <% end %>
 
-<div class="op-enterprise-upsale-page" data-test-selector="op-enterprise-upsale-page">
+<div class="op-enterprise-upsell-page" data-test-selector="op-enterprise-upsell-page">
   <%=
     render(Primer::OpenProject::FlexLayout.new(justify_content: :center, align_items: :center)) do |flex|
       flex.with_column do
         render(Primer::Beta::Octicon.new(icon: :"op-enterprise-addons",
                                          size: :medium,
-                                         classes: "upsale-colored"))
+                                         classes: "upsell-colored"))
       end
 
       flex.with_column(ml: 2) do
@@ -18,7 +18,7 @@
     end
   %>
 
-  <p class="upsale--feature-reference">
+  <p class="upsell--feature-reference">
     <%= render(Primer::Beta::Text.new) { description } %>
     <%= render(Primer::Beta::Text.new) { plan_text } %>
   </p>
@@ -42,5 +42,5 @@
     <%= image_tag "enterprise-add-on.svg", class: "widget-box--teaser-image widget-box--teaser-image_default" %>
   <% end %>
 
-  <%= render EnterpriseEdition::UpsaleButtonsComponent.new(feature_key, justify_content: :center) %>
+  <%= render EnterpriseEdition::UpsellButtonsComponent.new(feature_key, justify_content: :center) %>
 </div>
