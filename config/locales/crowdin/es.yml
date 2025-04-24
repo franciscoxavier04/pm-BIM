@@ -344,6 +344,18 @@ es:
         heading: "¿Eliminar esta lista de proyectos?"
         text: "Esta acción no eliminará ningún proyecto que contenga la lista. ¿Seguro que desea eliminar esta lista de proyectos?"
     settings:
+      public_warning: >
+        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+      public_confirmation:
+        checkbox: "I understand that this will make the previously private content public"
+        title: "Make this project public?"
+        description: >
+          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+      private_confirmation:
+        checkbox: "I understand that this will make the previously public content private."
+        title: "Make this project private?"
+        description: >
+          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       change_identifier: Cambiar identificador
       actions:
         label_enable_all: "Activar todo"
@@ -3740,6 +3752,8 @@ es:
   setting_repository_truncate_at: "El número máximo de archivos mostrados en el navegador del repositorio"
   setting_rest_api_enabled: "Activar servicio web REST"
   setting_self_registration: "Auto-registro"
+  setting_self_registration_warning: >
+    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
   setting_session_ttl: "Tiempo de expiración de sesión por inactividad"
   setting_session_ttl_hint: "Valor por debajo de 5 peticiones como desactivadas"
   setting_session_ttl_enabled: "La sesión expira"
