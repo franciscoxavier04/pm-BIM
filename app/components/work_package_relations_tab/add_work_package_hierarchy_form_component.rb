@@ -28,31 +28,29 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class WorkPackageRelationsTab::AddWorkPackageChildDialogComponent < ApplicationComponent
+class WorkPackageRelationsTab::AddWorkPackageHierarchyFormComponent < ApplicationComponent
   include ApplicationHelper
   include OpTurbo::Streamable
   include OpPrimer::ComponentHelpers
 
+  DIALOG_ID = "add-work-package-hierarchy-dialog"
+  FORM_ID = "add-work-package-hierarchy-form"
+  ID_FIELD_TEST_SELECTOR = "work-package-hierarchy-form-id"
   I18N_NAMESPACE = "work_package_relations_tab"
-  DIALOG_ID = "add-work-package-child-dialog"
-  FORM_ID = "add-work-package-child-form"
 
-  attr_reader :work_package
+  attr_reader :work_package, :relation_type, :related, :base_errors
 
-  def initialize(work_package:)
+  def initialize(work_package:, relation_type:, related: nil, base_errors: nil)
     super()
 
     @work_package = work_package
+    @relation_type = relation_type
+    @related = related.presence || WorkPackage.new
+    @base_errors = base_errors || []
   end
 
-  private
-
-  def dialog_title
-    child_label = t("#{I18N_NAMESPACE}.relations.label_child_singular")
-    t("#{I18N_NAMESPACE}.label_add_x", x: child_label)
-  end
-
-  def body_classes
-    "Overlay-body_autocomplete_height"
+  def submit_url_options
+    { method: :post,
+      url: work_package_hierarchy_relations_path(work_package, relation_type:) }
   end
 end

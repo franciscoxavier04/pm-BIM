@@ -96,12 +96,6 @@ RSpec.describe "Primerized work package relations tab",
            type: type1,
            project: project)
   end
-  shared_let(:not_child_yet_wp) do
-    create(:work_package,
-           subject: "not_child_yet_wp",
-           type: type1,
-           project:)
-  end
 
   # The user should not be able to see any relations to work packages from this
   # project because the user does not have the permissions to view this project
@@ -406,6 +400,13 @@ RSpec.describe "Primerized work package relations tab",
   end
 
   describe "attaching a child" do
+    shared_let(:not_child_yet_wp) do
+      create(:work_package,
+             subject: "not_child_yet_wp",
+             type: type1,
+             project:)
+    end
+
     it "renders the new child form and creates the child relationship" do
       scroll_to_element relations_panel
 
@@ -432,8 +433,8 @@ RSpec.describe "Primerized work package relations tab",
 
       wait_for_reload
 
-      within "##{WorkPackageRelationsTab::AddWorkPackageChildFormComponent::DIALOG_ID}" do
-        autocomplete_field = page.find("[data-test-selector='work-package-child-form-id']")
+      within "##{WorkPackageRelationsTab::AddWorkPackageHierarchyFormComponent::DIALOG_ID}" do
+        autocomplete_field = page.find("[data-test-selector='work-package-hierarchy-form-id']")
 
         # It doesn't autocomplete children
         search_autocomplete(autocomplete_field,
@@ -462,6 +463,37 @@ RSpec.describe "Primerized work package relations tab",
                             work_package.subject,
                             results_selector: "body")
       end
+    end
+  end
+
+  describe "attaching a parent" do
+    shared_let(:not_parent_yet_wp) do
+      create(:work_package,
+             subject: "not_parent_yet_wp",
+             type: type1,
+             project:)
+    end
+
+    it "renders the new parent form and creates the parent relationship" do
+      scroll_to_element relations_panel
+
+      wait_for_network_idle
+
+      tabs.expect_counter("relations", 8)
+
+      relations_tab.add_parent_relation(not_parent_yet_wp)
+      relations_tab.expect_parent(not_parent_yet_wp) # breadcrumb
+      relations_tab.expect_parent_relation(not_parent_yet_wp) # relation group
+
+      # Did not change because there was already a parent relation
+      tabs.expect_counter("relations", 8)
+
+      # Parent relation is created
+      expect(work_package.reload.parent).to eq not_parent_yet_wp
+
+      # Ghost relations are shown here due to lack of permissions on the project
+      relations_tab.expect_ghost_relation(restricted_relation_relates)
+      relations_tab.expect_ghost_relation(restricted_child_work_package)
     end
   end
 

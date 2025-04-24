@@ -8,8 +8,8 @@
 # - Child work packages
 class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   FRAME_ID = "work-package-relations-tab-content"
-  NEW_RELATION_ACTION_MENU = "new-relation-action-menu"
-  NEW_CHILD_ACTION_MENU = "new-child-action-menu"
+  ADD_RELATION_ACTION_MENU = "add-relation-action-menu"
+  ADD_CHILD_ACTION_MENU = "add-child-action-menu"
   I18N_NAMESPACE = "work_package_relations_tab"
 
   ADD_CHILD_MENU_TYPES = [
@@ -22,6 +22,7 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
     Relation::TYPE_RELATES,
     Relation::TYPE_FOLLOWS,
     Relation::TYPE_PRECEDES,
+    Relation::TYPE_PARENT,
     Relation::TYPE_DUPLICATES,
     Relation::TYPE_DUPLICATED,
     Relation::TYPE_BLOCKS,
@@ -65,15 +66,23 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   def should_render_add_child?
     return false if work_package.milestone?
 
-    helpers.current_user.allowed_in_project?(:manage_subtasks, work_package.project)
+    allowed_to?(:manage_subtasks)
+  end
+
+  def should_render_add_parent?
+    allowed_to?(:manage_subtasks)
   end
 
   def should_render_add_relations?
-    helpers.current_user.allowed_in_project?(:manage_work_package_relations, work_package.project)
+    allowed_to?(:manage_work_package_relations)
+  end
+
+  def allowed_to?(permission)
+    helpers.current_user.allowed_in_project?(permission, work_package.project)
   end
 
   def should_render_create_button?
-    should_render_add_child? || should_render_add_relations?
+    should_render_add_child? || should_render_add_parent? || should_render_add_relations?
   end
 
   def render_relation_group(title:, relation_group:, &)
@@ -106,7 +115,7 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
           concat render(Primer::Beta::Counter.new(count:, round: true, scheme: :primary))
         end
         header.with_column do
-          render(Primer::Alpha::ActionMenu.new(menu_id: NEW_CHILD_ACTION_MENU)) do |menu|
+          render(Primer::Alpha::ActionMenu.new(menu_id: ADD_CHILD_ACTION_MENU)) do |menu|
             menu.with_show_button do |button|
               button.with_leading_visual_icon(icon: :plus)
               button.with_trailing_action_icon(icon: :"triangle-down")
@@ -146,9 +155,11 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   def can_add_relation?(relation_type)
     case relation_type
     when "new_child"
-      should_render_add_child? && helpers.current_user.allowed_in_project?(:add_work_packages, work_package.project)
+      should_render_add_child? && allowed_to?(:add_work_packages)
     when Relation::TYPE_CHILD
       should_render_add_child?
+    when Relation::TYPE_PARENT
+      should_render_add_parent?
     when *Relation::TYPES.keys
       should_render_add_relations?
     else
@@ -205,8 +216,8 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
     case relation_type
     when "new_child"
       new_project_work_packages_dialog_path(work_package.project, parent_id: work_package.id)
-    when Relation::TYPE_CHILD
-      new_work_package_children_relation_path(work_package)
+    when Relation::TYPE_CHILD, Relation::TYPE_PARENT
+      new_work_package_hierarchy_relation_path(work_package, relation_type:)
     when *Relation::TYPES.keys
       new_work_package_relation_path(work_package, relation_type:)
     else
