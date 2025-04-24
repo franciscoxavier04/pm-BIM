@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,33 +26,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-RSpec::Matchers.define :have_enterprise_upsale_page do |**args|
-  include TestSelectorFinders
+module Shares
+  module ProjectQueries
+    class UpsellComponent < ApplicationComponent # rubocop:disable OpenProject/AddPreviewForViewComponent
+      include OpPrimer::ComponentHelpers
 
-  match do |page|
-    if args[:plan]
-      expected_text = I18n.t("ee.upsale.plan_text_html", plan: args[:plan].capitalize)
-      page.find(test_selector("op-enterprise-upsale-page"), **args, text: expected_text)
-    else
-      page.find(test_selector("op-enterprise-upsale-page"), **args)
+      def initialize(modal_content:)
+        super
+
+        @modal_content = modal_content
+      end
+
+      attr_reader :modal_content
     end
-  end
-
-  match_when_negated do |page|
-    page.has_no_selector?(test_selector("op-enterprise-upsale-page"), **args)
-  end
-
-  failure_message do
-    <<~MESSAGE
-      Expected page to have Enterprise edition upsale page, but it does not:
-      #{@error}
-    MESSAGE
-  end
-
-  failure_message_when_negated do
-    <<~MESSAGE
-      Expected page not to have Enterprise edition upsale page, but it does:
-      #{@error}
-    MESSAGE
   end
 end

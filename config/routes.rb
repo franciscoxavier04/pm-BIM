@@ -482,7 +482,7 @@ Rails.application.routes.draw do
     delete "design/export_cover" => "custom_styles#export_cover_delete", as: "custom_style_export_cover_delete"
     delete "design/favicon" => "custom_styles#favicon_delete", as: "custom_style_favicon_delete"
     delete "design/touch_icon" => "custom_styles#touch_icon_delete", as: "custom_style_touch_icon_delete"
-    get "design/upsale" => "custom_styles#upsale", as: "custom_style_upsale"
+    get "design/upsell" => "custom_styles#upsell", as: "custom_style_upsell"
     post "design/colors" => "custom_styles#update_colors", as: "update_design_colors"
     post "design/themes" => "custom_styles#update_themes", as: "update_design_themes"
     post "design/export_cover_text_color" => "custom_styles#update_export_cover_text_color",
@@ -710,7 +710,7 @@ Rails.application.routes.draw do
     get "/new" => "work_packages#index", on: :collection, as: "new", state: "new"
     # We do not want to match the work package export routes
     get "(/*state)" => "work_packages#show", on: :member, as: "", constraints: { id: /\d+/, state: /(?!(shares|split_view)).+/ }
-    get "/share_upsale" => "work_packages#share_upsale", on: :collection, as: "share_upsale"
+    get "/share_upsell" => "work_packages#share_upsell", on: :collection, as: "share_upsell"
     get "/edit" => "work_packages#show", on: :member, as: "edit"
   end
 
@@ -868,8 +868,8 @@ Rails.application.routes.draw do
   end
 
   scope :notifications do
-    get "/share_upsale" => "notifications#share_upsale", as: "notifications_share_upsale"
-    get "/date_alerts" => "notifications#date_alerts", as: "notifications_date_alert_upsale"
+    get "/share_upsell" => "notifications#share_upsell", as: "notifications_share_upsell"
+    get "/date_alerts" => "notifications#date_alerts", as: "notifications_date_alert_upsell"
     get "/", to: "notifications#index", as: :notifications_center
   end
 

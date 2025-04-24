@@ -31,8 +31,8 @@
 module OpenProject
   module EnterpriseEdition
     # @logical_path OpenProject/EnterpriseEdition
-    class UpsalePageComponentPreview < Lookbook::Preview
-      # Render a full-screen upsale page, with optional video or image features.
+    class UpsellPageComponentPreview < Lookbook::Preview
+      # Render a full-screen upsell page, with optional video or image features.
       # The easiest way to render the banner component is to provide a feature key and
       # have the assorted data structures match the expectations.
       # The text will be fetched from the i18n files:
@@ -41,7 +41,7 @@ module OpenProject
       #   ee:
       #     # Title used unless it is overwritten for the specific feature
       #     title: "Enterprise add-on"
-      #     upsale:
+      #     upsell:
       #       [feature_key]:
       #         # Title used for this feature only. If this is missing, the default title is used.
       #         title: "A splendid feature"
@@ -61,12 +61,12 @@ module OpenProject
       # The href is inferred from `OpenProject::Static::Links.enterprise_features[feature_key][:href]`.
       # @display min_height 450px
       def default
-        render ::EnterpriseEdition::UpsalePageComponent.new(:customize_life_cycle)
+        render ::EnterpriseEdition::UpsellPageComponent.new(:customize_life_cycle)
       end
 
       def video
         render(
-          ::EnterpriseEdition::UpsalePageComponent
+          ::EnterpriseEdition::UpsellPageComponent
             .new(:date_alerts,
                  video: "enterprise/date-alert-notifications.mp4")
         )
@@ -74,7 +74,7 @@ module OpenProject
 
       def image
         render(
-          ::EnterpriseEdition::UpsalePageComponent
+          ::EnterpriseEdition::UpsellPageComponent
             .new(:ldap_groups, image: "enterprise/ldap-groups.jpg")
         )
       end

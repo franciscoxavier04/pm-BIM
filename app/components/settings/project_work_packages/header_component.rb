@@ -62,7 +62,7 @@ module Settings
       def activity_title
         label = t("label_activity").html_safe
         unless EnterpriseToken.allows_to?(:internal_comments)
-          label << render(Primer::Beta::Octicon.new(icon: "op-enterprise-addons", classes: "upsale-colored", ml: 2))
+          label << render(Primer::Beta::Octicon.new(icon: "op-enterprise-addons", classes: "upsell-colored", ml: 2))
         end
         label
       end
