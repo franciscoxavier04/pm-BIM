@@ -242,7 +242,7 @@ class CostQuery::PDF::TimesheetGenerator
   end
 
   def sum_time_entries(entries)
-    entries.sum(&:hours)
+    entries.filter_map(&:hours).sum
   end
 
   def build_table_row_comment(entry)

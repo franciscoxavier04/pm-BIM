@@ -75,12 +75,8 @@ export abstract class DialogPreviewController extends Controller {
     // assistive technologies. This is why morph cannot be used here.
     this.frameMorphRenderer = (event:CustomEvent<TurboBeforeFrameRenderEventDetail>) => {
       event.detail.render = (currentElement:HTMLElement, newElement:HTMLElement) => {
-        let ignoreActiveValue = false;
-        if (document.activeElement?.tagName === 'INPUT') {
-          ignoreActiveValue = true;
-        }
         Idiomorph.morph(currentElement, newElement, {
-          ignoreActiveValue,
+          ignoreActiveValue: this.ignoreActiveValueWhenMorphing(),
           callbacks: {
             beforeNodeMorphed: (oldNode:Element) => {
               // In case the element is an OpenProject custom dom element, morphing is prevented.
@@ -163,6 +159,9 @@ export abstract class DialogPreviewController extends Controller {
   }
 
   abstract afterRendering():void;
+
+  // Whether to ignore the active element value when morphing.
+  abstract ignoreActiveValueWhenMorphing():boolean;
 
   protected isBeingEdited(fieldName:string) {
     return fieldName === this.targetFieldName;
