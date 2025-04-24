@@ -10,7 +10,7 @@
       end
 
       grid.with_area(:content) do
-        flex_layout(classes: "op-enterprise-banner--content-wrapper") do |flex|
+        flex_layout do |flex|
           flex.with_row do
             if medium?
               flex_layout(align_items: :center, mb: 3) do |title_flex|
@@ -29,10 +29,9 @@
             end
           end
 
-          flex.with_row(mt: 1, classes: "op-enterprise-banner--description") do
-            concat render(Primer::Beta::Text.new) { description }
-            concat " "
-            concat render(Primer::Beta::Text.new) { plan_text }
+          flex.with_row(classes: "op-enterprise-banner--description") do
+            concat render(Primer::Beta::Text.new(tag: :p)) { description }
+            concat render(Primer::Beta::Text.new(tag: :p)) { plan_text }
           end
 
           if features.present?
@@ -41,7 +40,7 @@
             end
           end
 
-          flex.with_row(mt: 2) do
+          flex.with_row(mt: 1) do
             render EnterpriseEdition::UpsellButtonsComponent.new(feature_key)
           end
         end
