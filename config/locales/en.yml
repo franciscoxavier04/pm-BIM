@@ -49,7 +49,7 @@ en:
         changed: "changed"
         created: "created"
         commented: "commented"
-        restrict_visibility: Restrict visibility
+        internal_comment: Internal comment
         internal_journal: Internal comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
         internal_comment_confirmation:
@@ -392,7 +392,7 @@ en:
         checkbox: "I understand that this will make the previously private content public"
         title: "Make this project public?"
         description: >
-          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. 
+          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings.
           Sub-projects are not affected and have their own settings.
       private_confirmation:
         checkbox: "I understand that this will make the previously public content private."
@@ -3907,8 +3907,8 @@ en:
   setting_rest_api_enabled: "Enable REST web service"
   setting_self_registration: "Self-registration"
   setting_self_registration_warning: >
-    The user will be able to activate their own accounts. 
-    Please note that this will give them access to all public projects and their content. 
+    The user will be able to activate their own accounts.
+    Please note that this will give them access to all public projects and their content.
     Please make sure that no sensitive or private data is exposed in public projects.
   setting_session_ttl: "Session expiry time after inactivity"
   setting_session_ttl_hint: "Value below 5 works like disabled"

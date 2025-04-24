@@ -184,12 +184,12 @@ RSpec.describe "Work package internal comments",
 
       activity_tab.quote_comment(first_comment)
       page.within_test_selector("op-work-package-journal-form-element") do
-        expect(page).to have_checked_field("Restrict visibility")
+        expect(page).to have_checked_field("Internal comment")
       end
 
       activity_tab.quote_comment(external_comment)
       page.within_test_selector("op-work-package-journal-form-element") do
-        expect(page).to have_checked_field("Restrict visibility")
+        expect(page).to have_checked_field("Internal comment")
       end
     end
   end

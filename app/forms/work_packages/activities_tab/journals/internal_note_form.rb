@@ -32,7 +32,7 @@ module WorkPackages::ActivitiesTab::Journals
     form do |notes_form|
       notes_form.check_box(
         name: :internal,
-        label: I18n.t("activities.work_packages.activity_tab.restrict_visibility"),
+        label: I18n.t("activities.work_packages.activity_tab.internal_comment"),
         checked: false,
         data: {
           "work-packages--activities-tab--internal-comment-target": "internalCheckbox",
