@@ -103,13 +103,13 @@ module Components
 
       def expect_internal_comment_checked
         page.within_test_selector("op-work-package-journal-form-element") do
-          expect(page).to have_checked_field("Restrict visibility")
+          expect(page).to have_checked_field("Internal comment")
         end
       end
 
       def expect_internal_comment_unchecked
         page.within_test_selector("op-work-package-journal-form-element") do
-          expect(page).to have_no_checked_field("Restrict visibility")
+          expect(page).to have_no_checked_field("Internal comment")
         end
       end
 
@@ -330,7 +330,12 @@ module Components
 
       def check_internal_comment_checkbox
         expect(page).to have_test_selector("op-work-package-journal-internal-comment-checkbox")
-        page.check("Restrict visibility")
+        page.check("Internal comment")
+      end
+
+      def uncheck_internal_comment_checkbox
+        expect(page).to have_test_selector("op-work-package-journal-internal-comment-checkbox")
+        page.uncheck("Internal comment")
       end
 
       def uncheck_internal_comment_checkbox
