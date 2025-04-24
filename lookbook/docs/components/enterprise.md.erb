@@ -1,4 +1,6 @@
-OpenProject provides multiple ways to render upsell components. This document describes the different components and how to use them.
+OpenProject provides multiple ways to render upsell components. These adapt automatically to the user's current plan.
+
+This document describes the different components and how to use them.
 
 # Requirements
 
@@ -7,14 +9,19 @@ OpenProject provides multiple ways to render upsell components. This document de
 In order to add a new enterprise feature, you need to add it the [token gem](https://github.com/opf/openproject-token) `plans.rb` file,
 so it gets distributed and associated to the correct plan.
 
-## Translations
+## Anatomy
 
-To use the banners below, you need to add translations and links.
+There are three varieties of Enterprise upsell banners that all share the same general structure. To use them, you to provide the text (as translation strings) for each banner you call, along with a link to learn more about that feature.
 
-**Translations**
+For each banner, you can provide:
 
-You need to add translations for the feature and the upsell banner.
-The feature translation is used in the feature list, the upsell translation is used in the upsell banner.
+- A title of the feature (required, used in the feature list in the Pricing page, for example)
+- A title for the upsell banner (optional)
+- A feature description (required, the length varies for each type)
+
+If you don't provide a title for the upsell banner, it will simply use the name of the feature.
+
+### Defining the text
 
 This is the default convention:
 
@@ -24,12 +31,12 @@ en:
   ee:
     feature:
 	  # ...
-      your_feature_name: "Fancy EE feature!"
+      your_feature_name: "Fancy Enterprise feature!"
     upsell:
       # ...
       your_feature_name:
         title: "Title of the banner"
-        description: "My description"
+        description: "Description of the feature and its benefits"
         features:
           foo: "Has foo!"
           bar: "Has bar!"
@@ -38,17 +45,31 @@ en:
 You can optionally provide a `i18n_scope` parameter to the components below to customize the place to look
 for the upsell translation keys.
 
+### Plan information
+The last sentence of each banner indicates the lowest plan that includes the feature. The phrasing is: "Available starting with the Enterprise {Plan name} plan."
+
+This line is appende automatically with the correct information based on the users' current plan.
+
+#### Static links
+
 **docs/static_links.yml**
 
-Every feature has a "More information" link going to the website, an enterprise landing page, or a documentation page.
+Every feature has a "More information" link that poinst to to the website, an enterprise landing page or a documentation page.
+
 If you want to link to a specific page, add a link to the [`docs/static_links.yml`](https://github.com/opf/openproject/blob/dev/config/static_links.yml)
 file under the `enterprise_features` section.
 
-If none is provided, the link will go to the enterprise landing page.
+If none is provided, the link will go to the enterprise landing page on our website.
 
-## Full-page upsell pages
+## Variations
 
-Use when: You have a feature video / image and a full page to fill
+There are three varations of the Enterprise banner.
+
+### Full-page upsell banner
+
+The full-page upsell banner is used an entire page is inaccessible to the current user because their plan does not include that feature (vs. only a part of that feature not being available). The full page banner also allows us to provide a feature video or large illustration.
+
+For example: when a community user clicks on the 'Team planner' module (but it's not included in their plan), or if they go to the Project admin settings and navigate to the 'Internal comments' tab under Work packages.
 
 ```ruby
 render EnterpriseEdition::UpsellPageComponent.new(
@@ -60,9 +81,11 @@ render EnterpriseEdition::UpsellPageComponent.new(
 
 <%= embed OpenProject::EnterpriseEdition::UpsellPageComponentPreview, :default, panels: %i[] %>
 
-## Inline upsell banners
+### Inline upsell banners
 
-Use when: You want to show content below the banners, e.g. in administrative setting pages.
+Inline upsell banners are useful when you want to indicate that part of a functionality or a page isn't available in the current plan. This allows the banner to be placed within a page where other parts are functional.
+
+For example: in admin setting pages where certain settings require a higher plan.
 
 ```ruby
 render EnterpriseEdition::BannerComponent.new(:enterprise_feature)
@@ -70,9 +93,14 @@ render EnterpriseEdition::BannerComponent.new(:enterprise_feature)
 
 <%= embed OpenProject::EnterpriseEdition::BannerComponentPreview, :default, panels: %i[] %>
 
-## Dismissible upsell banners
+#### Dismissible variant
 
-Use when: You want to show a feature to regular users, but allow them to hide it for good.
+Use the dismissible variant if you want to show the banner also to regular non-admin users, in order to communicate about a new feature that exists but isn't available on their plan. Because most users can't act on the message in these banners (because they don't have the ability to upgrade their current OpenProject plan), this one is dismissible.
+
+Once dismissed, it is not shown again.
+
+Pleases note that admins will see an 'Upgrade' button but regular users will only see a 'More information' link.
+
 
 ```ruby
 render EnterpriseEdition::BannerComponent.new(:enterprise_feature, dismissable: true)
@@ -83,9 +111,16 @@ render EnterpriseEdition::BannerComponent.new(:enterprise_feature, dismissable: 
 
 Use when: You want to show content below the banners, e.g. in administrative setting pages.
 
-## Medium variant banners
+### Medium variant banners
 
-Use when: You want to show a feature with some more context, and an image on the right hand side
+The medium variant gives you of an opportunity to illustrate what the feature does and is more appealing than the inline variant. Use this when you want add additional context, and when the feature is not just a small setting.
+
+The medium variant banner has a fixed height of 220px and also also requires an image on the right side.
+
+**Tips:**
+
+- The maximum length of the description is 170 characters in order to limit it to 3 lines. There is a bit of margin but please make sure the description and translations respect this.
+- There will be an automatic paragraph break between the description and the 'Available with' line.
 
 ```ruby
 render EnterpriseEdition::BannerComponent.new(:enterprise_feature, variant: :medium, image: "enterprise/some-image.png")
