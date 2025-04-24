@@ -41,11 +41,10 @@ export default class AsyncJobDialogController extends ApplicationController {
       this.requestJob().then((job_id) => {
         if (job_id) {
           return this.showJobModal(job_id);
-        } else {
-          return this.handleError('No job ID returned from server.');
         }
+        return this.handleError('No job ID returned from server.');
       })
-        .catch(e => this.handleError(e))
+        .catch((error:HttpErrorResponse|string) => this.handleError(error))
         .finally(() => {
           TurboHelpers.hideProgressBar();
         });
