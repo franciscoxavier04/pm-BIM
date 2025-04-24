@@ -33,6 +33,7 @@ module WorkPackages
         include ApplicationHelper
         include OpPrimer::ComponentHelpers
         include OpTurbo::Streamable
+        include WorkPackages::ActivitiesTab::StimulusControllers
 
         def initialize(work_package:, journal: nil, form_hidden_initially: true)
           super
@@ -66,6 +67,12 @@ module WorkPackages
 
         def learn_more_static_link_url
           ::OpenProject::Static::Links.url_for(:user_guides_work_package_activity)
+        end
+
+        def confirm_dialog_data_attributes
+          {
+            internal_comment_stimulus_controller("-target") => "confirmationDialog"
+          }
         end
       end
     end
