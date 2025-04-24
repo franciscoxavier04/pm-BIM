@@ -342,6 +342,18 @@ uk:
         heading: "Видалити цей список проєктів?"
         text: "Ця дія не призведе до видалення жодного проєкту зі списку. Справді видалити цей список проєктів?"
     settings:
+      public_warning: >
+        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+      public_confirmation:
+        checkbox: "I understand that this will make the previously private content public"
+        title: "Make this project public?"
+        description: >
+          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+      private_confirmation:
+        checkbox: "I understand that this will make the previously public content private."
+        title: "Make this project private?"
+        description: >
+          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       change_identifier: Ідентифікатор змін
       actions:
         label_enable_all: "Увімкнути все"
@@ -3817,6 +3829,8 @@ uk:
   setting_repository_truncate_at: "Максимальна кількість файлів, відображених у переглядачі сховища"
   setting_rest_api_enabled: "Увімкніть веб-службу REST"
   setting_self_registration: "Самостійна реєстрація"
+  setting_self_registration_warning: >
+    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
   setting_session_ttl: "Сесії час після закінчення неактивність"
   setting_session_ttl_hint: "Значення нижче 5 працює як відключено"
   setting_session_ttl_enabled: "Сеанс закінчився"

@@ -343,6 +343,18 @@ de:
         heading: "Diese Projektliste löschen?"
         text: "Diese Aktion löscht keine Projekte, die in der Liste enthalten sind. Sind Sie sicher, dass Sie diese Projektliste löschen möchten?"
     settings:
+      public_warning: >
+        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+      public_confirmation:
+        checkbox: "I understand that this will make the previously private content public"
+        title: "Make this project public?"
+        description: >
+          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+      private_confirmation:
+        checkbox: "I understand that this will make the previously public content private."
+        title: "Make this project private?"
+        description: >
+          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       change_identifier: Kennung ändern
       actions:
         label_enable_all: "Alles aktivieren"
@@ -740,9 +752,9 @@ de:
       follows_description: "Das verknüpfte Arbeitspaket muss beendet sein bevor dieses Arbeitspaket starten kann"
       label_child_singular: "Untergeordnetes Arbeitspaket"
       label_child_plural: "Untergeordnete Arbeitspakete"
-      new_child: "Neues Unter-Arbeitspaket"
+      new_child: "Neues Kind"
       new_child_text: "Erstellt ein zugehöriges Arbeitspaket als Unterelement des aktuellen (übergeordneten) Arbeitspakets"
-      child: "Unteraufgabe"
+      child: "Kind"
       child_description: "Macht das zugehörige Arbeitspaket zu einem Unterelement des aktuellen (übergeordneten) Arbeitspakets"
       label_closest: "Am nächsten"
       label_blocks_singular: "Blockiert"
@@ -950,7 +962,7 @@ de:
         column_names: "Spalten"
         relations_to_type_column: "Beziehungen zu %{type}"
         relations_of_type_column: "Beziehungen der Art: %{type}"
-        child_work_packages: "Unter-Arbeitspakete"
+        child_work_packages: "Kinder"
         group_by: "Gruppiere Ergebnisse nach"
         sort_by: "Ergebnisse sortieren nach"
         filters: "Filter"
@@ -3736,6 +3748,8 @@ de:
   setting_repository_truncate_at: "Maximale Anzahl Dateien im Projektarchiv-Browser angezeigt"
   setting_rest_api_enabled: "REST-Schnittstelle aktivieren"
   setting_self_registration: "Selbstregistrierung"
+  setting_self_registration_warning: >
+    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
   setting_session_ttl: "Session-Ablaufzeit nach Inaktivität"
   setting_session_ttl_hint: "Wert kleiner 5 wirkt wie ausgeschaltet"
   setting_session_ttl_enabled: "Session läuft ab"

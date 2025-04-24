@@ -215,7 +215,7 @@
         setup_incomplete: Velg type behandling av brukertilgang og opprettelse av mappe.
         subtitle: Tilgangsstyring
       access_management_section: Tilgang og prosjektmapper
-      automatically_managed_folders: Automatisk administrerte mapper
+      automatically_managed_folders: Automatisk administrerte mapper 
       general_information: Generell informasjon
       oauth_configuration: OAuth configuration
       one_drive_oauth: Azure OAuth
@@ -387,7 +387,7 @@
     label_inactive: Inaktiv
     label_managed_project_folders:
       application_password: Applikasjonspassord
-      automatically_managed_folders: Automatisk administrerte mapper
+      automatically_managed_folders: Automatisk administrerte mapper 
     label_name: Navn
     label_new_file_storage: Ny %{provider} lagring
     label_new_storage: Ny lagring

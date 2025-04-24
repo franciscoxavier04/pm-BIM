@@ -38,7 +38,7 @@ module OpenProject
       #   ee:
       #     # Title used unless it is overwritten for the specific feature
       #     title: "Enterprise add-on"
-      #     upsale:
+      #     upsell:
       #       [feature_key]:
       #         # Title used for this feature only. If this is missing, the default feature key is used.
       #         title: "A splendid feature"

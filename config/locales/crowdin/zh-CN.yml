@@ -343,6 +343,18 @@ zh-CN:
         heading: "删除此项目列表？"
         text: "此操作不会删除列表中包含的任何项目。确定要删除此项目列表吗？"
     settings:
+      public_warning: >
+        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+      public_confirmation:
+        checkbox: "I understand that this will make the previously private content public"
+        title: "Make this project public?"
+        description: >
+          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+      private_confirmation:
+        checkbox: "I understand that this will make the previously public content private."
+        title: "Make this project private?"
+        description: >
+          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       change_identifier: 更改标识符
       actions:
         label_enable_all: "全部启用"
@@ -1780,8 +1792,8 @@ zh-CN:
     text:
       failed: '无法将项目"%{source_project_name}"复制到项目"%{target_project_name}"。'
       succeeded: '已复制项目"%{source_project_name}"到"%{target_project_name}"。'
-  create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page: "创建新的 Wiki 页面"
+  create_wiki_page_button: "Wiki页面"
   date:
     abbr_day_names:
       - "周日"
@@ -3693,6 +3705,8 @@ zh-CN:
   setting_repository_truncate_at: "存储库浏览器中显示的最多的文件个数"
   setting_rest_api_enabled: "启用 REST Web 服务"
   setting_self_registration: "自助注册"
+  setting_self_registration_warning: >
+    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
   setting_session_ttl: "在处于非活动状态后会话过期时间"
   setting_session_ttl_hint: "当设置的值低于5时，其作用类似于禁用。"
   setting_session_ttl_enabled: "会话过期"

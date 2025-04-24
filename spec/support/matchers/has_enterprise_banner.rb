@@ -33,7 +33,7 @@ RSpec::Matchers.define :have_enterprise_banner do |**args|
 
   match do |page|
     if args[:plan]
-      expected_text = I18n.t("ee.upsale.plan_text_html", plan: args[:plan].capitalize)
+      expected_text = I18n.t("ee.upsell.plan_text_html", plan: args[:plan].capitalize)
       page.find(test_selector("op-enterprise-banner"), **args, text: expected_text)
     else
       page.find(test_selector("op-enterprise-banner"), **args)

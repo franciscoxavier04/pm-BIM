@@ -343,6 +343,18 @@ pl:
         heading: "Usunąć tę listę projektów?"
         text: "To działanie nie spowoduje usunięcia żadnego projektu znajdującego się na liście. Czy na pewno chcesz usunąć tę listę projektów?"
     settings:
+      public_warning: >
+        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+      public_confirmation:
+        checkbox: "I understand that this will make the previously private content public"
+        title: "Make this project public?"
+        description: >
+          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+      private_confirmation:
+        checkbox: "I understand that this will make the previously public content private."
+        title: "Make this project private?"
+        description: >
+          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       change_identifier: Identyfikator zmiany
       actions:
         label_enable_all: "Włącz wszystkie"
@@ -3819,6 +3831,8 @@ pl:
   setting_repository_truncate_at: "Maksymalna liczba plików wyświetlanych w przeglądarce repozytorium"
   setting_rest_api_enabled: "Włącz usługi sieci web REST"
   setting_self_registration: "Samodzielna rejestracja"
+  setting_self_registration_warning: >
+    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
   setting_session_ttl: "Czas wygaśnięcia sesji po bezczynności"
   setting_session_ttl_hint: "Value below 5 works like disabled"
   setting_session_ttl_enabled: "Sesja wygasła"
