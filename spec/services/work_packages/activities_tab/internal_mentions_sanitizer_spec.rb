@@ -30,14 +30,14 @@
 
 require "spec_helper"
 
-RSpec.describe WorkPackages::ActivitiesTab::RestrictedMentionsSanitizer do
-  include RestrictedVisibilityCommentsHelpers
+RSpec.describe WorkPackages::ActivitiesTab::InternalMentionsSanitizer do
+  include InternalCommentsHelpers
 
   shared_let(:project) { create(:project) }
   shared_let(:admin_but_non_member) { create(:admin) }
-  shared_let(:viewer) { create_user_without_restricted_comments_view_permissions }
-  shared_let(:user_with_restricted_comments_view_and_write_permissions) do
-    create_user_with_restricted_comments_view_and_write_permissions
+  shared_let(:viewer) { create_user_without_internal_comments_view_permissions }
+  shared_let(:user_with_internal_comments_view_and_write_permissions) do
+    create_user_with_internal_comments_view_and_write_permissions
   end
   shared_let(:project_admin) { create_user_as_project_admin }
   shared_let(:work_package) { create(:work_package, project:) }
@@ -50,7 +50,7 @@ RSpec.describe WorkPackages::ActivitiesTab::RestrictedMentionsSanitizer do
 
       <mention class="mention" data-id="#{viewer.id}" data-type="user" data-text="@#{viewer.firstname}">@#{viewer.firstname}</mention> wrote:
 
-      > <mention class="mention" data-id="#{user_with_restricted_comments_view_and_write_permissions.id}" data-type="user" data-text="@#{user_with_restricted_comments_view_and_write_permissions.firstname}">@#{user_with_restricted_comments_view_and_write_permissions.firstname}</mention> wrote:
+      > <mention class="mention" data-id="#{user_with_internal_comments_view_and_write_permissions.id}" data-type="user" data-text="@#{user_with_internal_comments_view_and_write_permissions.firstname}">@#{user_with_internal_comments_view_and_write_permissions.firstname}</mention> wrote:
       >
       > > <mention class="mention" data-id="#{project_admin.id}" data-type="user" data-text="@#{project_admin.firstname}">@#{project_admin.firstname}</mention> wrote:
       > >
@@ -70,7 +70,7 @@ RSpec.describe WorkPackages::ActivitiesTab::RestrictedMentionsSanitizer do
 
       @#{viewer.firstname} wrote:
 
-      > <mention class="mention" data-id="#{user_with_restricted_comments_view_and_write_permissions.id}" data-type="user" data-text="@#{user_with_restricted_comments_view_and_write_permissions.firstname}">@#{user_with_restricted_comments_view_and_write_permissions.firstname}</mention> wrote:
+      > <mention class="mention" data-id="#{user_with_internal_comments_view_and_write_permissions.id}" data-type="user" data-text="@#{user_with_internal_comments_view_and_write_permissions.firstname}">@#{user_with_internal_comments_view_and_write_permissions.firstname}</mention> wrote:
       >
       > > <mention class="mention" data-id="#{project_admin.id}" data-type="user" data-text="@#{project_admin.firstname}">@#{project_admin.firstname}</mention> wrote:
       > >
@@ -84,7 +84,7 @@ RSpec.describe WorkPackages::ActivitiesTab::RestrictedMentionsSanitizer do
 
   subject { described_class.new(work_package, input).call }
 
-  before { allow(User).to receive(:current).and_return(user_with_restricted_comments_view_and_write_permissions) }
+  before { allow(User).to receive(:current).and_return(user_with_internal_comments_view_and_write_permissions) }
 
   it "sanitizes the notes" do
     expect(subject).to eq(expected_output)

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2012-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -25,48 +27,18 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-
-require "spec_helper"
-
-RSpec.describe WorkPackages::UpdateContract do
-  let(:work_package) do
-    create(:work_package,
-           done_ratio: 50,
-           estimated_hours: 6.0,
-           project:)
-  end
-  let(:member) { create(:user, member_with_roles: { project => role }) }
-  let(:project) { create(:project) }
-  let(:current_user) { member }
-  let(:permissions) do
-    %i[
-      view_work_packages
-      view_work_package_watchers
-      edit_work_packages
-      add_work_package_watchers
-      delete_work_package_watchers
-      manage_work_package_relations
-      add_work_package_comments
-    ]
-  end
-  let(:role) { create(:project_role, permissions:) }
-  let(:changed_values) { [] }
-
-  subject(:contract) { described_class.new(work_package, current_user) }
-
-  before do
-    allow(work_package).to receive(:changed).and_return(changed_values)
-  end
-
-  describe "story points" do
-    context "has not changed" do
-      it("is valid") { expect(contract.errors.empty?).to be true }
-    end
-
-    context "has changed" do
-      let(:changed_values) { ["story_points"] }
-
-      it("is valid") { expect(contract.errors.empty?).to be true }
+module WorkPackages::ActivitiesTab::Journals
+  class InternalNoteForm < ApplicationForm
+    form do |notes_form|
+      notes_form.check_box(
+        name: :internal,
+        label: I18n.t("activities.work_packages.activity_tab.restrict_visibility"),
+        checked: false,
+        data: {
+          "work-packages--activities-tab--internal-comment-target": "internalCheckbox",
+          action: "input->work-packages--activities-tab--internal-comment#toggleInternal"
+        }
+      )
     end
   end
 end

@@ -45,28 +45,28 @@ RSpec.describe "Activity comment attachments" do
 
     let(:attachment_type) { :activity }
 
-    let(:create_permission) { :add_work_package_notes }
+    let(:create_permission) { :add_work_package_comments }
     let(:read_permission) { :view_work_packages }
-    let(:update_permission) { :edit_own_work_package_notes }
+    let(:update_permission) { :edit_own_work_package_comments }
   end
 
-  context "with a restricted journal" do
+  context "with a internal journal" do
     it_behaves_like "an APIv3 attachment resource" do
       let(:work_package) do
         create(:work_package, author: current_user, project:)
       end
 
       let(:activity) do
-        work_package.add_journal(user: current_user, notes: "Need to know!", restricted: true)
+        work_package.add_journal(user: current_user, notes: "Need to know!", internal: true)
         work_package.save(validate: false)
         work_package.journals.last
       end
 
       let(:attachment_type) { :activity }
 
-      let(:create_permission) { %i[add_work_package_notes add_comments_with_restricted_visibility] }
-      let(:read_permission) { %i[view_work_packages view_comments_with_restricted_visibility] }
-      let(:update_permission) { %i[edit_own_work_package_notes edit_own_comments_with_restricted_visibility] }
+      let(:create_permission) { %i[add_work_package_comments add_internal_comments] }
+      let(:read_permission) { %i[view_work_packages view_internal_comments] }
+      let(:update_permission) { %i[edit_own_work_package_comments edit_own_internal_comments] }
     end
   end
 end

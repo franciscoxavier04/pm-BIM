@@ -50,7 +50,7 @@ en:
         created: "created"
         commented: "commented"
         restrict_visibility: Restrict visibility
-        restricted_journal: Restricted comments are visible to a limited group of members.
+        internal_journal: Internal comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
 
   admin:
@@ -1159,7 +1159,7 @@ en:
           title: "Working days"
           false: "working days only"
           true: "include non-working days"
-        journal_restricted: Restricted Journal
+        journal_internal: Internal Journal
         notify: "Notify" # used in custom actions
         parent: "Parent"
         parent_issue: "Parent"
@@ -1381,7 +1381,7 @@ en:
             values:
               inclusion: "filter has invalid values."
               format: "%{message}"
-        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+        queries/principals/filters/internal_mentionable_on_work_package_filter:
           attributes:
             values:
               single_value_requirement: "must be a single work package"
@@ -2048,7 +2048,7 @@ en:
       baseline_comparison: Baseline Comparisons
       board_view: Advanced Boards
       conditional_highlighting: Conditional Highlighting
-      comments_with_restricted_visibility: Comments With Restricted Visibility
+      internal_comments: Internal Comments
       custom_actions: Custom Actions
       custom_field_hierarchies: Custom fields of type hierarchy
       customize_life_cycle: Customize Life Cycle
@@ -2114,9 +2114,9 @@ en:
           Placeholder users are a way to assign work packages to users who are not part of your project.
           They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available,
           or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
-      comments_with_restricted_visibility:
+      internal_comments:
         title: "For your eyes only"
-        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Work package priorities"
   enumeration_reported_project_statuses: "Reported project status"
@@ -3450,13 +3450,13 @@ en:
     welcome: "Welcome to %{app_title}"
     select_language: "Please select your language"
 
-  permission_add_work_package_notes: "Add comments"
+  permission_add_work_package_comments: "Add comments"
   permission_add_work_packages: "Add work packages"
   permission_add_messages: "Post messages"
   permission_add_project: "Create projects"
   permission_add_work_package_attachments: "Add attachments"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
-  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
+  permission_add_internal_comments: "Write internal comments"
   permission_archive_project: "Archive project"
   permission_create_user: "Create users"
   permission_manage_user: "Edit users"
@@ -3481,16 +3481,16 @@ en:
   permission_delete_timelines: "Delete timelines"
   permission_delete_wiki_pages: "Delete wiki pages"
   permission_delete_wiki_pages_attachments: "Delete attachments"
-  permission_edit_work_package_notes: "Moderate comments"
-  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
+  permission_edit_work_package_comments: "Moderate comments"
+  permission_edit_work_package_comments_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Edit work packages"
   permission_edit_messages: "Edit messages"
-  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
-  permission_edit_own_work_package_notes: "Edit own comments"
+  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_work_package_comments: "Edit own comments"
   permission_edit_own_messages: "Edit own messages"
   permission_edit_own_time_entries: "Edit own time logs"
-  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
+  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "Edit project"
   permission_edit_project_attributes: "Edit project attributes"
   permission_edit_project_phases: "Edit project phases"
@@ -3531,7 +3531,7 @@ en:
   permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "View projects"
   permission_view_changesets: "View repository revisions in OpenProject"
-  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
+  permission_view_internal_comments: "View internal comments"
   permission_view_commit_author_statistics: "View commit author statistics"
   permission_view_dashboards: "View dashboards"
   permission_view_work_package_watchers: "View watchers list"
@@ -4065,8 +4065,8 @@ en:
     work_packages:
       not_allowed_text: "You do not have the necessary permissions to view this page."
       activities:
-        enable_comments_with_restricted_visibility: "Enable restricted visibility comments"
-        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_internal_comments: "Enable internal comments"
+        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
 
   text_formatting:
     markdown: "Markdown"

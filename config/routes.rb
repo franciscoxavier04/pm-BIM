@@ -661,7 +661,7 @@ Rails.application.routes.draw do
         get :update_streams
         get :update_filter # filter not persisted
         put :update_sorting # sorting is persisted
-        post :sanitize_restricted_mentions
+        post :sanitize_internal_mentions
       end
     end
 

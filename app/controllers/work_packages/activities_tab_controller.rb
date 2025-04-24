@@ -141,7 +141,7 @@ class WorkPackages::ActivitiesTabController < ApplicationController
     respond_with_turbo_streams
   end
 
-  def sanitize_restricted_mentions
+  def sanitize_internal_mentions
     render plain: sanitized_journal_notes
   rescue StandardError => e
     handle_internal_server_error(e)
@@ -231,11 +231,11 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def sanitized_journal_notes
-    WorkPackages::ActivitiesTab::RestrictedMentionsSanitizer.sanitize(@work_package, journal_params[:notes])
+    WorkPackages::ActivitiesTab::InternalMentionsSanitizer.sanitize(@work_package, journal_params[:notes])
   end
 
   def journal_params
-    params.expect(journal: %i[notes restricted])
+    params.expect(journal: %i[notes internal])
   end
 
   def handle_successful_create_call(call)
@@ -308,15 +308,15 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def create_journal_service_call
-    restricted = to_boolean(journal_params[:restricted], false)
-    notes = restricted ? sanitized_journal_notes : journal_params[:notes]
+    internal = to_boolean(journal_params[:internal], false)
+    notes = internal ? sanitized_journal_notes : journal_params[:notes]
 
     AddWorkPackageNoteService
       .new(user: User.current,
            work_package: @work_package)
       .call(notes,
             send_notifications: to_boolean(params[:notify], true),
-            restricted:)
+            internal:)
   end
 
   def to_boolean(value, default)
@@ -324,7 +324,7 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def update_journal_service_call
-    notes = @journal.restricted? ? sanitized_journal_notes : journal_params[:notes]
+    notes = @journal.internal? ? sanitized_journal_notes : journal_params[:notes]
     Journals::UpdateService.new(model: @journal, user: User.current).call(notes:)
   end
 
@@ -337,7 +337,7 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   def generate_time_based_update_streams(last_update_timestamp)
     journals = @work_package
                  .journals
-                 .restricted_visible
+                 .internal_visible
                  .with_sequence_version
 
     if @filter == :only_comments

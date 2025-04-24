@@ -32,37 +32,37 @@ import { Controller } from '@hotwired/stimulus';
 import { renderStreamMessage } from '@hotwired/turbo';
 import type IndexController from './index.controller';
 
-export default class RestrictedCommentController extends Controller {
-  static targets = ['restrictedCheckbox', 'formContainer', 'learnMoreLink'];
+export default class InternalCommentController extends Controller {
+  static targets = ['internalCheckbox', 'formContainer', 'learnMoreLink'];
   static outlets = ['work-packages--activities-tab--index'];
   static classes = ['highlight', 'hidden'];
 
   static values = {
-    isRestricted: { type: Boolean, default: false },
+    isInternal: { type: Boolean, default: false },
   };
 
-  declare readonly restrictedCheckboxTarget:HTMLInputElement;
+  declare readonly internalCheckboxTarget:HTMLInputElement;
   declare readonly formContainerTarget:HTMLElement;
   declare readonly learnMoreLinkTarget:HTMLAnchorElement;
   declare readonly workPackagesActivitiesTabIndexOutlet:IndexController;
   declare readonly highlightClass:string;
   declare readonly hiddenClass:string;
 
-  declare isRestrictedValue:boolean;
+  declare isInternalValue:boolean;
 
   onSubmitEnd(_event:CustomEvent):void {
-    this.toggleRestriction();
+    this.toggleInternal();
   }
 
-  toggleRestriction():void {
-    const isChecked = this.restrictedCheckboxTarget.checked;
+  toggleInternal():void {
+    const isChecked = this.internalCheckboxTarget.checked;
 
     this.formContainerTarget.classList.toggle(this.highlightClass, isChecked);
     this.toggleLearnMoreLink(isChecked);
-    this.isRestrictedValue = isChecked;
+    this.isInternalValue = isChecked;
 
     if (isChecked) {
-      void this.sanitizeRestrictedMentions();
+      void this.sanitizeInternalMentions();
     }
   }
 
@@ -72,12 +72,12 @@ export default class RestrictedCommentController extends Controller {
     this.learnMoreLinkTarget.classList.toggle(this.hiddenClass, !isChecked);
   }
 
-  private async sanitizeRestrictedMentions():Promise<void> {
+  private async sanitizeInternalMentions():Promise<void> {
     if (this.ckEditorInstance) {
       const editorData = this.ckEditorInstance.getData({ trim: false });
       if (editorData.length === 0) return;
 
-      const sanitizePath = `/work_packages/${this.workPackagesActivitiesTabIndexOutlet.workPackageIdValue}/activities/sanitize_restricted_mentions`;
+      const sanitizePath = `/work_packages/${this.workPackagesActivitiesTabIndexOutlet.workPackageIdValue}/activities/sanitize_internal_mentions`;
       const csrfToken = (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).content;
 
       try {
@@ -96,7 +96,7 @@ export default class RestrictedCommentController extends Controller {
           this.ckEditorInstance.setData(sanitizedNotesResponse);
         } else {
           renderStreamMessage(sanitizedNotesResponse);
-          throw new Error(`Failed to sanitize restricted mentions. Response status: ${response.status}`);
+          throw new Error(`Failed to sanitize internal mentions. Response status: ${response.status}`);
         }
       } catch (error) {
         console.error(error);

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,46 +26,13 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class WorkPackages::ActivitiesTab::RestrictedMentionsSanitizer
-  def self.sanitize(work_package, notes)
-    new(work_package, notes).call
-  end
+require "spec_helper"
+require "support/permission_specs"
 
-  def initialize(work_package, notes)
-    @work_package = work_package
-    @notes = notes
-  end
+RSpec.describe WorkPackages::ActivitiesTabController, "edit_own_work_package_comments permission", type: :controller do # rubocop:disable RSpec/EmptyExampleGroup
+  include PermissionSpecs
 
-  def call
-    return "" if notes.blank?
-
-    convert_unmentionable_principals_to_plain_text
-    CGI.unescapeHTML(parser.to_html)
-  end
-
-  private
-
-  attr_reader :work_package, :notes
-
-  def convert_unmentionable_principals_to_plain_text
-    mentionable_principals_ids = mentionable_principals.pluck(:id)
-
-    parser.css("mention").each do |mention|
-      unless mentionable_principals_ids.include?(mention["data-id"].to_i)
-        mention.replace(mention.content)
-      end
-    end
-  end
-
-  def parser
-    @parser ||= Nokogiri::HTML.fragment(notes)
-  end
-
-  def mentionable_principals
-    @mentionable_principals ||= Queries::Principals::PrincipalQuery.new(user: User.current)
-      .where(:restricted_mentionable_on_work_package, "=", [work_package.id])
-      .where(:status, "!", [Principal.statuses[:locked]])
-      .where(:type, "=", %w[User Group])
-      .results
-  end
+  check_permission_required_for("work_packages/activities_tab#edit", :edit_work_package_comments)
+  check_permission_required_for("work_packages/activities_tab#cancel_edit", :edit_work_package_comments)
+  check_permission_required_for("work_packages/activities_tab#update", :edit_work_package_comments)
 end

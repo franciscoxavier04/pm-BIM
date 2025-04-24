@@ -30,25 +30,25 @@
 
 require "spec_helper"
 
-RSpec.describe Queries::Principals::Filters::RestrictedMentionableOnWorkPackageFilter do
+RSpec.describe Queries::Principals::Filters::InternalMentionableOnWorkPackageFilter do
   it_behaves_like "basic query filter" do
-    include RestrictedVisibilityCommentsHelpers
+    include InternalCommentsHelpers
 
-    let(:class_key) { :restricted_mentionable_on_work_package }
+    let(:class_key) { :internal_mentionable_on_work_package }
     let(:type) { :list_optional }
-    let(:human_name) { "restricted mentionable" }
+    let(:human_name) { "internal mentionable" }
 
     shared_let(:project) { create(:project) }
     shared_let(:work_package) { create(:work_package, project:) }
     shared_let(:other_work_package) { create(:work_package, project:) }
 
-    shared_let(:user_without_restricted_comments_view_permissions) { create_user_without_restricted_comments_view_permissions }
-    shared_let(:user_with_restricted_comments_view_permissions) { create_user_with_restricted_comments_view_permissions }
-    shared_let(:user_with_restricted_comments_view_and_write_permissions) do
-      create_user_with_restricted_comments_view_and_write_permissions
+    shared_let(:user_without_internal_comments_view_permissions) { create_user_without_internal_comments_view_permissions }
+    shared_let(:user_with_internal_comments_view_permissions) { create_user_with_internal_comments_view_permissions }
+    shared_let(:user_with_internal_comments_view_and_write_permissions) do
+      create_user_with_internal_comments_view_and_write_permissions
     end
 
-    let(:user) { user_with_restricted_comments_view_permissions }
+    let(:user) { user_with_internal_comments_view_permissions }
 
     before { allow(User).to receive(:current).and_return(user) }
 
@@ -88,14 +88,14 @@ RSpec.describe Queries::Principals::Filters::RestrictedMentionableOnWorkPackageF
 
         it "returns all mentionable principals on the work package and its project" do
           expect(subject)
-            .to contain_exactly(user_with_restricted_comments_view_permissions,
-                                user_with_restricted_comments_view_and_write_permissions)
+            .to contain_exactly(user_with_internal_comments_view_permissions,
+                                user_with_internal_comments_view_and_write_permissions)
         end
 
         context "with users and groups" do
           let(:group_member1) { create(:user) }
           let(:group_member2) { create(:user) }
-          let(:group_role) { create(:project_role, permissions: %i[view_work_packages view_comments_with_restricted_visibility]) }
+          let(:group_role) { create(:project_role, permissions: %i[view_work_packages view_internal_comments]) }
           let(:group) do
             create(:group, members: [group_member1, group_member2]) do |group|
               Members::CreateService
@@ -106,8 +106,8 @@ RSpec.describe Queries::Principals::Filters::RestrictedMentionableOnWorkPackageF
 
           it "returns all mentionable principals including group and group members" do
             expect(subject)
-              .to contain_exactly(user_with_restricted_comments_view_permissions,
-                                  user_with_restricted_comments_view_and_write_permissions,
+              .to contain_exactly(user_with_internal_comments_view_permissions,
+                                  user_with_internal_comments_view_and_write_permissions,
                                   group,
                                   group_member1,
                                   group_member2)
@@ -120,7 +120,7 @@ RSpec.describe Queries::Principals::Filters::RestrictedMentionableOnWorkPackageF
 
         it "returns all non-mentionable users on the work package and its project" do
           expect(subject)
-            .to contain_exactly(user_without_restricted_comments_view_permissions)
+            .to contain_exactly(user_without_internal_comments_view_permissions)
         end
       end
     end

@@ -40,7 +40,7 @@ RSpec.describe API::V3::Activities::ActivitiesAPI, content_type: :json do
   let(:work_package) do
     create(:work_package, author: current_user, project:)
   end
-  let(:permissions) { %i[view_work_packages edit_work_package_notes] }
+  let(:permissions) { %i[view_work_packages edit_work_package_comments] }
   let(:activity) { work_package.journals.first }
   let(:comment) { "This is a new test comment!" }
 
@@ -109,14 +109,14 @@ RSpec.describe API::V3::Activities::ActivitiesAPI, content_type: :json do
       end
 
       context "when having only the edit own permission" do
-        let(:permissions) { %i[view_work_packages edit_own_work_package_notes] }
+        let(:permissions) { %i[view_work_packages edit_own_work_package_comments] }
 
         it_behaves_like "unauthorized access"
       end
     end
 
     context "when having only the edit own permission" do
-      let(:permissions) { %i[view_work_packages edit_own_work_package_notes] }
+      let(:permissions) { %i[view_work_packages edit_own_work_package_comments] }
 
       it_behaves_like "valid activity request", "Activity::Comment"
 
@@ -135,17 +135,17 @@ RSpec.describe API::V3::Activities::ActivitiesAPI, content_type: :json do
       it_behaves_like "not found"
     end
 
-    context "for a restricted journal" do
+    context "for a internal journal" do
       let(:activity) do
-        work_package.add_journal(user: current_user, notes: "need to know basis", restricted: true)
+        work_package.add_journal(user: current_user, notes: "need to know basis", internal: true)
         work_package.save(validate: false)
         work_package.journals.last
       end
 
       context "when editing OWN journals" do
-        context "and the user has permission to edit own restricted journals" do
+        context "and the user has permission to edit own internal journals" do
           let(:permissions) do
-            %i[view_work_packages view_comments_with_restricted_visibility edit_own_comments_with_restricted_visibility]
+            %i[view_work_packages view_internal_comments edit_own_internal_comments]
           end
 
           it_behaves_like "valid activity request", "Activity::Comment"
@@ -153,19 +153,19 @@ RSpec.describe API::V3::Activities::ActivitiesAPI, content_type: :json do
           it_behaves_like "valid activity patch request"
         end
 
-        context "and the user does not have permission to edit own restricted journals" do
-          let(:permissions) { %i[view_work_packages view_comments_with_restricted_visibility] }
+        context "and the user does not have permission to edit own internal journals" do
+          let(:permissions) { %i[view_work_packages view_internal_comments] }
 
           it_behaves_like "unauthorized access"
         end
       end
 
-      context "when editing OTHERs restricted journals" do
+      context "when editing OTHERs internal journals" do
         let(:other_user) { create(:user, member_with_permissions: { project => permissions }) }
 
-        context "and the user has permission to edit others restricted journals" do
+        context "and the user has permission to edit others internal journals" do
           let(:permissions) do
-            %i[view_work_packages view_comments_with_restricted_visibility edit_others_comments_with_restricted_visibility]
+            %i[view_work_packages view_internal_comments edit_others_internal_comments]
           end
 
           before do
@@ -177,8 +177,8 @@ RSpec.describe API::V3::Activities::ActivitiesAPI, content_type: :json do
           it_behaves_like "valid activity patch request"
         end
 
-        context "and the user does not have permission to edit others restricted journals" do
-          let(:permissions) { %i[view_work_packages view_comments_with_restricted_visibility] }
+        context "and the user does not have permission to edit others internal journals" do
+          let(:permissions) { %i[view_work_packages view_internal_comments] }
 
           before do
             login_as(other_user)
@@ -216,20 +216,20 @@ RSpec.describe API::V3::Activities::ActivitiesAPI, content_type: :json do
         it_behaves_like "valid activity request", "Activity::Comment"
       end
 
-      context "for a restricted journal" do
+      context "for a internal journal" do
         let(:activity) do
-          work_package.add_journal(user: current_user, notes: "need to know basis", restricted: true)
+          work_package.add_journal(user: current_user, notes: "need to know basis", internal: true)
           work_package.save(validate: false)
           work_package.journals.last
         end
 
-        context "and the user has permission to view restricted journals" do
-          let(:permissions) { %i[view_work_packages view_comments_with_restricted_visibility] }
+        context "and the user has permission to view internal journals" do
+          let(:permissions) { %i[view_work_packages view_internal_comments] }
 
           it_behaves_like "valid activity request", "Activity::Comment"
         end
 
-        context "and the user does not have permission to view restricted journals" do
+        context "and the user does not have permission to view internal journals" do
           let(:permissions) { [:view_work_packages] }
 
           it_behaves_like "not found"

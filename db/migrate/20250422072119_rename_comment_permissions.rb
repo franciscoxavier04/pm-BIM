@@ -1,4 +1,6 @@
-#-- copyright
+# frozen_string_literal: true
+
+#
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,13 +28,23 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
-require "support/permission_specs"
+class RenameCommentPermissions < ActiveRecord::Migration[8.0]
+  def change
+    rename_permissions("add_work_package_notes", "add_work_package_comments")
+    rename_permissions("edit_own_work_package_notes", "edit_own_work_package_comments")
+    rename_permissions("edit_work_package_notes", "edit_work_package_comments")
 
-RSpec.describe WorkPackages::ActivitiesTabController, "edit_own_work_package_notes permission", type: :controller do # rubocop:disable RSpec/EmptyExampleGroup
-  include PermissionSpecs
+    rename_permissions("view_comments_with_restricted_visibility", "view_internal_comments")
+    rename_permissions("add_comments_with_restricted_visibility", "add_internal_comments")
+    rename_permissions("edit_own_comments_with_restricted_visibility", "edit_own_internal_comments")
+    rename_permissions("edit_others_comments_with_restricted_visibility", "edit_others_internal_comments")
+  end
 
-  check_permission_required_for("work_packages/activities_tab#edit", :edit_work_package_notes)
-  check_permission_required_for("work_packages/activities_tab#cancel_edit", :edit_work_package_notes)
-  check_permission_required_for("work_packages/activities_tab#update", :edit_work_package_notes)
+  def rename_permissions(old, new)
+    execute <<-SQL.squish
+      UPDATE role_permissions
+      SET permission = '#{new}'
+      WHERE permission = '#{old}'
+    SQL
+  end
 end

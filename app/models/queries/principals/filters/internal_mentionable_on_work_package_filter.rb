@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-class Queries::Principals::Filters::RestrictedMentionableOnWorkPackageFilter <
+class Queries::Principals::Filters::InternalMentionableOnWorkPackageFilter <
     Queries::Principals::Filters::PrincipalFilter
   validate :values_are_a_single_work_package_id
 
@@ -45,11 +45,11 @@ class Queries::Principals::Filters::RestrictedMentionableOnWorkPackageFilter <
   end
 
   def key
-    :restricted_mentionable_on_work_package
+    :internal_mentionable_on_work_package
   end
 
   def human_name
-    "restricted mentionable" # Only for Internal use, not visible in the UI
+    "internal mentionable" # Only for Internal use, not visible in the UI
   end
 
   def apply_to(query_scope)
@@ -62,7 +62,7 @@ class Queries::Principals::Filters::RestrictedMentionableOnWorkPackageFilter <
   end
 
   def permission
-    :view_comments_with_restricted_visibility
+    :view_internal_comments
   end
 
   private
