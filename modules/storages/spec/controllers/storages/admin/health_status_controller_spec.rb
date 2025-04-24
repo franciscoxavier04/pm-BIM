@@ -66,6 +66,24 @@ RSpec.describe Storages::Admin::HealthStatusController do
       expect(response).to be_successful
       expect(response).to render_template "show"
     end
+
+    it "sends the text version of the report when requested" do
+      # Creating an actual report result and caching it so we can test the rendering of the response
+      validator = Storages::Peripherals::Registry["nextcloud.validators.connection"].new(storage)
+      result = validator.call
+      Rails.cache.write validator.report_cache_key, result
+
+      get :show, params: params.merge(format: :txt)
+
+      expect(response).to be_successful
+      expect(response.headers["Content-Type"]).to eq "text/plain"
+      expect(response.headers["Content-Disposition"]).to match(/attachment; filename=".+_health_report_.+.txt"/)
+
+      yaml = YAML.load(response.body)
+      expect(yaml["storage"]).to eq storage.name
+      expect(yaml["storage_type"]).to eq storage.to_s
+      expect(yaml.dig("base_configuration", "storage_configured", "state")).to eq("failure")
+    end
   end
 
   describe "#create" do
