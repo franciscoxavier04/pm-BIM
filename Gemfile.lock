@@ -19,16 +19,16 @@ GIT
 
 GIT
   remote: https://github.com/opf/md-to-pdf
-  revision: 66893683b94a5fe8f1dc9a60600773307209cdd2
-  ref: 66893683b94a5fe8f1dc9a60600773307209cdd2
+  revision: 67d14c6c7a13f918d158bde1a51ef1067a8cf724
+  ref: 67d14c6c7a13f918d158bde1a51ef1067a8cf724
   specs:
-    md_to_pdf (0.2.0)
+    md_to_pdf (0.2.1)
       base64 (~> 0.2)
       bigdecimal (~> 3.1)
       color_conversion (~> 0.1)
       front_matter_parser (~> 1.0)
       json-schema (~> 4.3)
-      markly (~> 0.10)
+      markly (~> 0.13)
       matrix (~> 0.4)
       nokogiri (~> 1.18)
       prawn (~> 2.4)
@@ -1166,7 +1166,7 @@ GEM
       activerecord (>= 6.1)
     stringex (2.8.6)
     stringio (3.1.6)
-    structured_warnings (0.4.0)
+    structured_warnings (0.5.0)
     svg-graph (2.2.2)
     swd (2.0.3)
       activesupport (>= 3)
@@ -1359,7 +1359,7 @@ DEPENDENCIES
   lograge (~> 0.14.0)
   lookbook (~> 2.3.4)
   mail (= 2.8.1)
-  markly (~> 0.10)
+  markly (~> 0.13)
   matrix (~> 0.4.2)
   md_to_pdf!
   meta-tags (~> 2.22.0)
@@ -1464,7 +1464,7 @@ DEPENDENCIES
   stackprof
   store_attribute (~> 2.0)
   stringex (~> 2.8.5)
-  structured_warnings (~> 0.4.0)
+  structured_warnings (~> 0.5.0)
   svg-graph (~> 2.2.0)
   sys-filesystem (~> 1.5.0)
   table_print (~> 1.5.6)
@@ -1699,7 +1699,7 @@ CHECKSUMS
   marcel (1.0.4) sha256=0d5649feb64b8f19f3d3468b96c680bae9746335d02194270287868a661516a4
   markly (0.13.0) sha256=326a232c876cd95093d110b8d184be8effeadd776c3ffcefd59bdc8de7f59e0d
   matrix (0.4.2) sha256=71083ccbd67a14a43bfa78d3e4dc0f4b503b9cc18e5b4b1d686dc0f9ef7c4cc0
-  md_to_pdf (0.2.0)
+  md_to_pdf (0.2.1)
   messagebird-rest (1.4.2) sha256=1501e16ad76c87558f20f3b26cb39d05f587b349b44b8bf8056b040e9b495301
   meta-tags (2.22.1) sha256=e5ae1febbd320d396c7226d7edb868e5d63466c14b9c8b06622a1a74e6dce354
   method_source (1.1.0) sha256=181301c9c45b731b4769bc81e8860e72f9161ad7d66dd99103c9ab84f560f5c5
@@ -1888,7 +1888,7 @@ CHECKSUMS
   store_attribute (2.0.0) sha256=3399d9baa20776ec9dcb266cff407aac82bf99791678d6266ea617703e4b0e28
   stringex (2.8.6) sha256=c7b382d2b2a47a1e1646f256df201c48d487d6296fbb289d76802f67f5e929c4
   stringio (3.1.6) sha256=292c495d1657adfcdf0a32eecf12a60e6691317a500c3112ad3b2e31068274f5
-  structured_warnings (0.4.0) sha256=ff9a59278e3ad8d18f742e677b764ce374f16e52c7993c0ff7d76900e93383ad
+  structured_warnings (0.5.0) sha256=864aca5a4d6b63cd3a948f9dcd7f5498af1cf42bcf4fd75e2c315b7d77a30583
   svg-graph (2.2.2) sha256=f928866403055e6539afdfdab5f6268d108b2abc9f002e0fc51b16511809513a
   swd (2.0.3) sha256=4cdbe2a4246c19f093fce22e967ec3ebdd4657d37673672e621bf0c7eb770655
   sys-filesystem (1.5.3) sha256=17b561d1be683c34bc53946461ea9d67012d8f395e7297db8c63b9018cb30ece
