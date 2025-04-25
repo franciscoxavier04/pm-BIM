@@ -174,18 +174,25 @@ class MeetingAgendaItemsController < ApplicationController
   end
 
   def drop # rubocop:disable Metrics/AbcSize
-    call = ::MeetingAgendaItems::DropService.new(
-      user: current_user, meeting_agenda_item: @meeting_agenda_item
-    ).call(
-      target_id: @target_id,
-      position: @position
-    )
+    meeting_agenda_item_section = @meeting_agenda_item.meeting_section
+
+    call = if @target_id.nil?
+             ::MeetingAgendaItems::UpdateService
+               .new(user: current_user, model: @meeting_agenda_item)
+               .call(meeting_id: params[:current_meeting_id], meeting_section: nil)
+           else
+             ::MeetingAgendaItems::DropService
+               .new(user: current_user, meeting_agenda_item: @meeting_agenda_item)
+               .call(target_id: @target_id, position: @position)
+           end
 
     if call.success?
-      if call.result[:section_changed]
+      old_section, current_section, section_changed = assign_drop_results(call, meeting_agenda_item_section)
+
+      if section_changed
         move_item_to_other_section_via_turbo_stream(
-          old_section: call.result[:old_section],
-          current_section: call.result[:current_section],
+          old_section:,
+          current_section:,
           collapsed: ActiveModel::Type::Boolean.new.cast(params[:collapsed])
         )
       else
@@ -316,5 +323,19 @@ class MeetingAgendaItemsController < ApplicationController
       else
         [params[:target_id], params[:position]]
       end
+  end
+
+  def assign_drop_results(call, meeting_agenda_item_section)
+    if @target_id.nil?
+      old_section     = meeting_agenda_item_section
+      current_section = call.result.meeting_section
+      section_changed = true
+    else
+      old_section     = call.result[:old_section]
+      current_section = call.result[:current_section]
+      section_changed = call.result[:section_changed]
+    end
+
+    [old_section, current_section, section_changed]
   end
 end

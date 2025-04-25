@@ -285,15 +285,17 @@ module Meetings
       # rubocop:disable Metrics/AbcSize, Metrics/PerceivedComplexity
       def move_item_to_other_section_via_turbo_stream(old_section:, current_section:, meeting_agenda_item: @meeting_agenda_item,
                                                       collapsed: nil)
-        move_item_via_turbo_stream(meeting_agenda_item:)
+        # old_section.meeting and current_section.meeting are different when items are moved to/from a series backlog
+        current_section_meeting = current_section.meeting
+        old_section_meeting = old_section.meeting
 
-        # Update the header for updated timestamp
-        update_header_component_via_turbo_stream
+        move_item_via_turbo_stream(meeting_agenda_item:)
 
         # update the old section
         if old_section.backlog?
-          update_backlog_via_turbo_stream(meeting: current_section.meeting, collapsed:)
+          update_backlog_via_turbo_stream(meeting: current_section_meeting, collapsed:)
         else
+          update_header_component_via_turbo_stream(meeting: old_section_meeting)
           update_section_header_via_turbo_stream(meeting_section: old_section)
 
           if old_section.agenda_items.empty?
@@ -305,8 +307,13 @@ module Meetings
 
         # update the new section
         if current_section.backlog?
-          update_backlog_via_turbo_stream(meeting: old_section.meeting, collapsed:)
+          update_backlog_via_turbo_stream(meeting: old_section_meeting, collapsed:)
+        elsif current_section_meeting.sections.count == 1 && current_section_meeting.agenda_items.count == 1
+          # Special case when first item is being moved from backlog to empty meeting
+          update_list_via_turbo_stream(meeting: current_section_meeting)
+          update_header_component_via_turbo_stream(meeting: current_section_meeting)
         else
+          update_header_component_via_turbo_stream(meeting: current_section_meeting)
           update_section_header_via_turbo_stream(meeting_section: current_section)
 
           if current_section.agenda_items.count == 1
