@@ -1078,7 +1078,30 @@ RSpec.describe WorkPackages::SetAttributesService,
         end
       end
 
-      context "when the work package has a soonest_start from a predecessor (Regression #63598)" do
+      context "when the work package has a soonest_start from a predecessor and a due date (Regression #63598)" do
+        before do
+          allow(instance).to receive(:new_start_date).and_return(Time.zone.yesterday)
+        end
+
+        it_behaves_like "service call" do
+          it "keeps the dates and duration values (error to be detected by contract)" do
+            subject
+
+            expect(work_package.start_date)
+              .to eq(Time.zone.yesterday)
+            expect(work_package.due_date)
+              .to eq(Time.zone.today + 5.days)
+            expect(work_package.duration)
+              .to eq(0)
+          end
+        end
+      end
+
+      context "when the work package has a soonest_start from a predecessor and no due date (Regression #63598)" do
+        let(:work_package) do
+          build_stubbed(:work_package, start_date: Time.zone.today, due_date: nil)
+        end
+
         before do
           allow(instance).to receive(:new_start_date).and_return(Time.zone.yesterday)
         end

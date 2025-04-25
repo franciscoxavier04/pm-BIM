@@ -507,7 +507,7 @@ module WorkPackages
     end
 
     def validate_duration_matches_dates
-      return unless calculated_duration && model.duration
+      return unless calculated_duration && model.duration && model.duration > 0
 
       if calculated_duration > model.duration
         errors.add :duration, :smaller_than_dates

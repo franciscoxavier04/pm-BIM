@@ -424,16 +424,16 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
     end
   end
 
-  def duration_assignable?
-    work_package&.duration.is_a?(Integer) && work_package.duration > 0
-  end
-
   def reuse_current_due_date?
     return false if work_package.due_date.nil?
     return true if work_package.ignore_non_working_days_came_from_user?
 
     # use due date only if duration cannot be used
-    work_package.duration.nil?
+    work_package.duration.nil? || !duration_assignable?
+  end
+
+  def duration_assignable?
+    work_package&.duration.is_a?(Integer) && work_package.duration > 0
   end
 
   def work_package
