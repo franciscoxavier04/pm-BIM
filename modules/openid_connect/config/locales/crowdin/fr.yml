@@ -91,9 +91,9 @@ fr:
         name: Microsoft Entra
       custom:
         name: Personnalisé
-      upsale:
+      upsell:
         title: "Single Sign-On (SSO) with OpenID connect"
-        description: Connecter OpenProject à un fournisseur d'identité OpenID Connect
+        description: Connect OpenProject to an OpenID connect identity provider
       label_add_new: Ajouter un nouveau fournisseur OpenID
       label_edit: Modifier le fournisseur OpenID %{name}
       label_empty_title: Aucun fournisseur OpenID n'a encore été configuré.

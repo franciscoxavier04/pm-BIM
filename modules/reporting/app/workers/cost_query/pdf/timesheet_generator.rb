@@ -146,6 +146,7 @@ class CostQuery::PDF::TimesheetGenerator
   def grouped_by_user_entries
     all_entries
       .group_by(&:user)
+      .sort_by { |user, _entries| user.name }
   end
 
   def all_users
@@ -241,7 +242,7 @@ class CostQuery::PDF::TimesheetGenerator
   end
 
   def sum_time_entries(entries)
-    entries.sum(&:hours)
+    entries.filter_map(&:hours).sum
   end
 
   def build_table_row_comment(entry)
@@ -546,7 +547,7 @@ class CostQuery::PDF::TimesheetGenerator
   end
 
   def calc_sum_for_user_on_day(user, date)
-    all_entries.select { |entry| entry.user == user && entry.spent_on == date }.sum(&:hours)
+    sum_time_entries(all_entries.select { |entry| entry.user == user && entry.spent_on == date })
   end
 
   def build_sum_table_rows(users, start_date, end_date)

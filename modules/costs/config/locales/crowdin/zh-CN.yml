@@ -206,6 +206,6 @@ zh-CN:
   ee:
     features:
       time_entry_time_restrictions: 需要准确的时间跟踪
-    upsale:
+    upsell:
       time_entry_time_restrictions:
-        description: "通过要求在记录时间时提供确切的开始和结束时间来改进你的时间跟踪。"
+        description: "Improve your time tracking by requiring exact start and finish times when logging time."

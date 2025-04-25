@@ -200,6 +200,7 @@ tr:
       storage_delete_result_3: In case this storage has automatically managed project folders, those and their contained files will be deleted forever.
     dependencies:
       nextcloud:
+        group_folders_app: Group Folders
         integration_app: OpenProject Bütünleşmesi
     enabled_in_projects:
       setup_incomplete_description: This storage has an incomplete setup. Please, complete the setup before enabling it in multiple projects.
@@ -230,12 +231,14 @@ tr:
       storage_provider: Depolama sağlayıcısı
     health:
       actions:
+        download_report: Download
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: Son kontrol %{datetime}
       checks:
         ampf_configuration:
           files_request: Fetching group folder files
+          group_folder_app: 'Dependency: Group Folders'
           group_folder_contents: Group folder has expected content
           group_folder_presence: Group folder exists
           header: Automatically managed project folder configuration
@@ -268,9 +271,9 @@ tr:
           one: "%{count} check returned a warning"
           other: "%{count} checks returned a warning"
       connection_validation:
-        app_version_mismatch: Entegrasyon OpenProject uygulama sürümü desteklenmiyor. Lütfen Nextcloud sunucunuzu güncelleyin.
         client_id_wrong: The configured OAuth 2 client id is invalid. Please check the configuration.
         client_secret_wrong: The configured OAuth 2 client secret is invalid. Please check the configuration.
+        dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
         drive_id_wrong: The configured drive id could not be found. Please check the configuration.
         group_folder_not_found: The group folder could not be found.
         group_folder_version_mismatch: The Group Folder version is not supported. Please update your Nextcloud server.
@@ -483,7 +486,8 @@ tr:
       description: Onları burada görmek için bir depolama ekleyin.
       heading: Henüz hiç depolamanız yok.
     successful_storage_connection: Depolama başarıyla bağlandı! Kullanmak istediğiniz her proje için Projeler sekmesinde depolamayı etkinleştirmeyi unutmayın.
-    upsale:
+    upsell:
       description: |-
-        OneDrive/SharePoint'inizi OpenProject ile bir dosya depolama alanı olarak entegre edin. Dosyaları yükleyin ve bunları doğrudan bir projedeki iş paketlerine bağlayın.
-      title: OneDrive/SharePoint entegrasyonu
+        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
+        work packages in a project.
+      title: OneDrive/SharePoint integration

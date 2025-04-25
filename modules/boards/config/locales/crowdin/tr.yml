@@ -7,9 +7,9 @@ tr:
   permission_manage_board_views: "Panoları yönetme"
   project_module_board_view: "Panolar"
   ee:
-    upsale:
+    upsell:
       board_view:
-        description: 'İş akışlarınızı Panolar ile otomatikleştirmek ister misiniz? Gelişmiş panolar Enterprise eklentidir. Lütfen ücretli bir plana yükseltin.'
+        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
   boards:
     label_board: "Pano"
     label_boards: "Panolar"

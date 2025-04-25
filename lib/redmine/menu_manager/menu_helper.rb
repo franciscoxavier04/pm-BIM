@@ -246,7 +246,7 @@ module Redmine::MenuManager::MenuHelper
       title_text = "".html_safe + content_tag(:span, caption, class: "ellipsis") + badge_for(item)
       if item.enterprise_feature.present? && !EnterpriseToken.allows_to?(item.enterprise_feature)
         title_text += ("".html_safe + render(Primer::Beta::Octicon.new(icon: "op-enterprise-addons",
-                                                                       classes: "upsale-colored",
+                                                                       classes: "upsell-colored",
                                                                        ml: 2)))
       end
       title_text

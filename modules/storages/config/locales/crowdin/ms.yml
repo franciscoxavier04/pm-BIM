@@ -200,6 +200,7 @@ ms:
       storage_delete_result_3: Sekiranya storan ini mempunyai folder projek yang dikendalikan secara automatik, folder tersebut serta fail yang terkandung akan dipadamkan selamanya.
     dependencies:
       nextcloud:
+        group_folders_app: Group Folders
         integration_app: Integrasi OpenProject
     enabled_in_projects:
       setup_incomplete_description: Storan ini mempunyai persediaan yang tidak lengkap. Sila lengkapkan persediaan sebelum mendayakannya dalam berbilang projek.
@@ -230,12 +231,14 @@ ms:
       storage_provider: Penyedia storan
     health:
       actions:
+        download_report: Download
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: Terakhir disemak %{datetime}
       checks:
         ampf_configuration:
           files_request: Fetching group folder files
+          group_folder_app: 'Dependency: Group Folders'
           group_folder_contents: Group folder has expected content
           group_folder_presence: Group folder exists
           header: Automatically managed project folder configuration
@@ -266,9 +269,9 @@ ms:
         warnings:
           other: "%{count} checks returned a warning"
       connection_validation:
-        app_version_mismatch: Versi apl Integration OpenProject tidak disokong. Sila kemas kini pelayan Nextcloud anda.
         client_id_wrong: Id klien OAuth 2 yang dikonfigurasikan adalah tidak sah. Sila semak konfigurasi.
         client_secret_wrong: Rahsia pelanggan OAuth 2 yang dikonfigurasikan adalah tidak sah. Sila semak konfigurasi.
+        dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
         drive_id_wrong: Id pemacu yang dikonfigurasikan tidak dapat ditemui. Sila semak konfigurasi.
         group_folder_not_found: Folder kumpulan tidak ditemui.
         group_folder_version_mismatch: Versi Folder Kumpulan tidak disokong. Sila kemas kini pelayan Nextcloud anda.
@@ -481,8 +484,8 @@ ms:
       description: Tambah storan untuk melihatnya di sini.
       heading: Anda masih belum ada sebarang storan.
     successful_storage_connection: Storan berjaya disambungkan! Ingat untuk mengaktifkan storan dalam tab Projek untuk setiap projek yang diingini untuk menggunakannya.
-    upsale:
+    upsell:
       description: |-
-        Integrasikan OneDrive/SharePoint anda sebagai storan fail dengan OpenProject. Muat naik fail dan pautkan terus ke
-        pakej kerja dalam projek.
-      title: Integrasi OneDrive/SharePoint
+        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
+        work packages in a project.
+      title: OneDrive/SharePoint integration

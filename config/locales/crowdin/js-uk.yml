@@ -239,32 +239,32 @@ uk:
           status_waiting: "Лист надіслано - очікуємо підтвердження"
           test_ee: "Отримайте версію Enterprise на 14 днів безкоштовно"
           quick_overview: "Отримайте стислий огляд управління проєктами й командної роботи у версії OpenProject Enterprise."
-        upsale:
-          become_hero: "Стань героєм!"
-          enterprise_info_html: "%{feature_title} – це доповнення версії Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
-          upgrade_info: "Перейдіть на платний план, щоб активувати його та почати використовувати його у своїй команді."
+        upsell:
+          become_hero: "Become a hero!"
+          enterprise_info_html: "%{feature_title} is an Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> add-on."
+          upgrade_info: "Please upgrade to a paid plan to activate and start using it in your team."
           benefits:
-            description: "Які переваги локальної версії Enterprise?"
-            high_security: "Функції безпеки"
-            high_security_text: "Єдиний вхід (SAML, OpenID Connect, CAS), групи LDAP."
-            installation: "Підтримка встановлення"
-            installation_text: "Досвідчені інженери програмного забезпечення допоможуть вам виконати повне встановлення та налаштувати процес у вашій інфраструктурі."
-            premium_features: "Доповнення версії Enterprise"
-            premium_features_text: "Дошки Agile, власні тема й логотип, діаграми, розумні робочі процеси з користувацькими діями, повнотекстовий пошук у вкладеннях пакетів робіт і можливість вибору кількість власних полів."
-            professional_support: "Професійна підтримка"
-            professional_support_text: "Отримайте надійну, комплексну підтримку від досвідчених інженерів, які знають усе про запуск OpenProject у критично важливих для бізнесу середовищах."
-          button_start_trial: "Розпочати безкоштовну пробну версію"
-          button_upgrade: "Оновити"
-          button_contact_us: "Зв’яжіться з нами, щоб отримати демоверсію"
-          button_book_now: "Забронювати зараз"
+            description: "What are the benefits of the Enterprise on-premises edition?"
+            high_security: "Security features"
+            high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+            installation: "Installation support"
+            installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+            premium_features: "Enterprise add-ons"
+            premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+            professional_support: "Professional support"
+            professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
+          button_start_trial: "Start free trial"
+          button_upgrade: "Upgrade now"
+          button_contact_us: "Contact us for a demo"
+          button_book_now: "Book now"
           confidence: >
-            Ми надаємо перевірене програмне забезпечення корпоративного класу з — з відкритим кодом і серцем — та забезпечуємо його підтримку.
-          link_quote: "Дізнатися ціну"
-          more_info: "Додаткові відомості"
+            We deliver the confidence of a tested and supported enterprise-class project management software - with Open Source and an open mind.
+          link_quote: "Get a quote"
+          more_info: "More information"
           text: >
-            Версію OpenProject Enterprise створено на основі версії Community. Вона включає доповнення версії Enterprise і професійну підтримку та призначена передусім для організацій із більш ніж 10 користувачами, які керують критично важливими для бізнесу проєктами в OpenProject.
-          unlimited: "Необмежено"
-          you_contribute: "Розробники теж повинні оплачувати свої рахунки. Перейшовши на версію Enterprise, ви суттєво допоможете спільноті Open Source і зробите свій внесок у її розвиток, підтримання та безперервне поліпшення."
+            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
+          unlimited: "Unlimited"
+          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
       working_days:
         calendar:
           empty_state_header: "Неробочі дні"
@@ -867,8 +867,8 @@ uk:
     tl_toolbar:
       zooms: "Рівень масштабування"
       outlines: "Рівень ієрархії"
-    upsale:
-      ee_only: "Доповнення версії Enterprise"
+    upsell:
+      ee_only: "Enterprise edition add-on"
     wiki_formatting:
       strong: "Жирний"
       italic: "Курсив"

@@ -9,10 +9,10 @@ uk:
   ee:
     feature_names:
       team_planner_view: "Командний планувальник"
-    upsale:
+    upsell:
       team_planner_view:
-        title: "Командний планувальник"
-        description: "Командний планувальник надає повний огляд планування вашої команди. Розтягуйте, скорочуйте й перетягуйте пакети робіт, щоб переміщувати їх, змінювати дати або перепризначати виконавців."
+        title: "Team planner"
+        description: "Get a complete overview of your team’s planning with Team Planner. Stretch, shorten and drag-and-drop work packages to modify dates, move them or change assignees."
   team_planner:
     label_team_planner: "Командний планувальник"
     label_new_team_planner: "Новий командний планувальник"

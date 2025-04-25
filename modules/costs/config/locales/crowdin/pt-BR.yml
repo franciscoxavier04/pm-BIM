@@ -210,6 +210,6 @@ pt-BR:
   ee:
     features:
       time_entry_time_restrictions: Exigir o rastreamento exato de tempo
-    upsale:
+    upsell:
       time_entry_time_restrictions:
-        description: "Melhore o rastreamento do seu tempo exigindo a hora exata de início e término do registro."
+        description: "Improve your time tracking by requiring exact start and finish times when logging time."

@@ -76,6 +76,10 @@ module Storages
             I18n.t("storages.health.checks.failures", count: 0)
           end
         end
+
+        def to_h
+          group_results.transform_values(&:to_h)
+        end
       end
     end
   end

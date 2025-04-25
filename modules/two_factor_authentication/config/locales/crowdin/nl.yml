@@ -82,9 +82,9 @@ nl:
       text_2fa_enabled: "Upon every login, this user will be requested to enter a OTP token from their default 2FA device."
       text_2fa_disabled: "The user did not set up a 2FA device through their 'My account page'"
       only_sms_allowed: "Only SMS delivery can be set up for other users."
-    upsale:
-      title: "Twee-staps authenticatie"
-      description: "Versterk de beveiliging van uw OpenProject door tweestapsauthentificatie aan alle projectdeelnemers aan te bieden (of af te dwingen)"
+    upsell:
+      title: "Two-factor authentication"
+      description: "Strenghten the security of your OpenProject instance by offering (or enforcing) two-factor authentification to all project members."
     backup_codes:
       none_found: Geen 2FA back-upcodes gevonden voor dit account.
       singular: Back-up code

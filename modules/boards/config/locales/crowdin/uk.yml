@@ -7,9 +7,9 @@ uk:
   permission_manage_board_views: "Керувати дошками"
   project_module_board_view: "Дошки"
   ee:
-    upsale:
+    upsell:
       board_view:
-        description: 'Хочете автоматизувати робочі процеси за допомогою Дощок? Поліпшені дошки – це доповнення версії Enterprise. Перейдіть на платний план.'
+        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
   boards:
     label_board: "Дошка"
     label_boards: "Дошки"

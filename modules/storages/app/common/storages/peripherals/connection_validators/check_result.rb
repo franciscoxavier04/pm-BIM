@@ -65,6 +65,10 @@ module Storages
 
           I18n.t("storages.health.connection_validation.#{code}", **context)
         end
+
+        def to_h
+          { state: state.to_s, message:, timestamp: timestamp&.iso8601 }
+        end
       end
     end
   end

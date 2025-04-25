@@ -218,6 +218,6 @@ uk:
   ee:
     features:
       time_entry_time_restrictions: Вимагати точного відстеження часу
-    upsale:
+    upsell:
       time_entry_time_restrictions:
-        description: "Удоскональте відстеження часу, вимагаючи введення точного часу початку й завершення робіт."
+        description: "Improve your time tracking by requiring exact start and finish times when logging time."

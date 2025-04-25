@@ -82,9 +82,9 @@ pt-BR:
       text_2fa_enabled: "A cada login, o usuário deverá inserir um token OTP do dispositivo padrão de A2F."
       text_2fa_disabled: "O usuário não configurou um dispositivo de A2F na página “Minha conta”"
       only_sms_allowed: "Apenas os usuários autorizados podem configurar a entrega de SMS."
-    upsale:
-      title: "Autenticação de dois fatores"
-      description: "Reforce a segurança da sua instância do OpenProject oferecendo (ou exigindo) a autenticação de dois fatores para todos os membros do projeto."
+    upsell:
+      title: "Two-factor authentication"
+      description: "Strenghten the security of your OpenProject instance by offering (or enforcing) two-factor authentification to all project members."
     backup_codes:
       none_found: Não existem códigos de backup para esta conta.
       singular: Código de backup

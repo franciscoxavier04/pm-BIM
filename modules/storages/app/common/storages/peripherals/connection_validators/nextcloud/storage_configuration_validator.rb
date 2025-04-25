@@ -38,12 +38,12 @@ module Storages
           private
 
           def validate
-            register_checks(:storage_configured, :capabilities_request,
-                            :host_url_accessible, :dependencies_check, :dependencies_versions)
+            register_checks(:storage_configured, :host_url_accessible, :capabilities_request,
+                            :dependencies_check, :dependencies_versions)
 
             storage_configuration_status
-            capabilities_request_status
             host_url_not_found
+            capabilities_request_status
             missing_dependencies
             version_mismatch
           end
@@ -67,9 +67,10 @@ module Storages
           def version_mismatch
             min_app_version = SemanticVersion.parse(nextcloud_dependencies.dig("dependencies", "integration_app", "min_version"))
             capabilities_result = capabilities.result
+            dependency = I18n.t("storages.dependencies.nextcloud.integration_app")
 
             if capabilities_result.app_version < min_app_version
-              fail_check(:dependencies_versions, :nc_integration_app_version_mismatch)
+              fail_check(:dependencies_versions, :nc_dependency_version_mismatch, context: { dependency: })
             else
               pass_check(:dependencies_versions)
             end
@@ -77,9 +78,10 @@ module Storages
 
           def missing_dependencies
             capabilities_result = capabilities.result
+            dependency = I18n.t("storages.dependencies.nextcloud.integration_app")
 
             if capabilities_result.app_disabled?
-              fail_check(:dependencies_check, :nc_integration_app_missing)
+              fail_check(:dependencies_check, :nc_dependency_missing, context: { dependency: })
             else
               pass_check(:dependencies_check)
             end

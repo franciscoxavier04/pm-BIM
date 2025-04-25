@@ -55,6 +55,12 @@ export default class PreviewController extends DialogPreviewController {
     super.disconnect();
   }
 
+  // Must be true to avoid adding the unit to the active input field value while
+  // typing a duration or pressing backspace.
+  ignoreActiveValueWhenMorphing():boolean {
+    return true;
+  }
+
   afterRendering():void {
     // Do nothing;
   }

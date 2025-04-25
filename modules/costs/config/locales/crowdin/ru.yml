@@ -218,6 +218,6 @@ ru:
   ee:
     features:
       time_entry_time_restrictions: Требует точного отслеживания времени
-    upsale:
+    upsell:
       time_entry_time_restrictions:
-        description: "Улучшите отслеживание времени, требуя точного времени начала и окончания при записи трудозатрат."
+        description: "Improve your time tracking by requiring exact start and finish times when logging time."

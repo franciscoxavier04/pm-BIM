@@ -28,6 +28,7 @@
  / ++
  /
 
+$op-enterprise-banner-fixed-height: 220px
 
 .op-enterprise-banner
   display: grid
@@ -44,6 +45,7 @@
     padding: 0
     grid-template-areas: "content graphic"
     grid-template-columns: 1fr 1fr
+    height: $op-enterprise-banner-fixed-height
 
   &_medium &
     padding: 0
@@ -51,16 +53,13 @@
     grid-template-columns: 1fr 1fr
 
     &--content
+      align-self: center
       padding: var(--base-size-16)
 
-    &--content-wrapper
-      height: 100%
-
-    &--description
-      flex: 1
-
   &--graphic
-    min-height: 240px
+    height: $op-enterprise-banner-fixed-height
+
+  &--image
     width: 100%
     height: 100%
     object-fit: cover
@@ -71,12 +70,12 @@
     padding: var(--base-size-6) var(--base-size-8)
 
   &--icon
-    color: var(--enterprise-upsale-color)
+    color: var(--enterprise-upsell-color)
     margin-block: var(--base-size-2)
 
   &--close-icon
     .Button-visual
-      color: var(--enterprise-upsale-color)
+      color: var(--enterprise-upsell-color)
 
     &_hovering
       position: absolute

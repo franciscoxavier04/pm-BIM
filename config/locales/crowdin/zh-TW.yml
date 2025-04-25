@@ -41,9 +41,14 @@ zh-TW:
         changed: "變更"
         created: "建立"
         commented: "已留言"
-        restrict_visibility: 限制可視性
-        restricted_journal: 受限留言僅對有限的群組成員可見。
+        internal_comment: Internal comment
+        internal_journal: Internal comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: 您有未儲存的變更。您確實要關閉編輯器嗎？
+        internal_comment_confirmation:
+          title: "Make this comment public?"
+          heading: "Make this comment public?"
+          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          confirm_button_text: "Make public"
   admin:
     plugins:
       no_results_title_text: 目前沒有安裝任何外掛程式
@@ -345,6 +350,18 @@ zh-TW:
         heading: "刪除此專案清單？"
         text: "此動作不會刪除清單中包含的任何專案。您確定要刪除此專案清單？"
     settings:
+      public_warning: >
+        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+      public_confirmation:
+        checkbox: "I understand that this will make the previously private content public"
+        title: "Make this project public?"
+        description: >
+          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+      private_confirmation:
+        checkbox: "I understand that this will make the previously public content private."
+        title: "Make this project private?"
+        description: >
+          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       change_identifier: 變更識別碼
       actions:
         label_enable_all: "全部啟用"
@@ -1060,7 +1077,7 @@ zh-TW:
           title: "工作日"
           false: "限工作日"
           true: "包含非工作日"
-        journal_restricted: 限制存取日誌
+        journal_internal: Internal Journal
         notify: "通知" #used in custom actions
         parent: "上層目錄："
         parent_issue: "上層工作項目："
@@ -1281,10 +1298,10 @@ zh-TW:
             values:
               inclusion: "過濾條件錯誤"
               format: "%{message}"
-        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+        queries/principals/filters/internal_mentionable_on_work_package_filter:
           attributes:
             values:
-              single_value_requirement: "必須是單一工作項目"
+              single_value_requirement: "must be a single work package"
         relation:
           typed_dag:
             circular_dependency: "無限迴圈的關聯。"
@@ -1920,7 +1937,7 @@ zh-TW:
       baseline_comparison: 比較差異
       board_view: 進階看板
       conditional_highlighting: 條件強調
-      comments_with_restricted_visibility: 可見性受限的留言
+      internal_comments: Internal Comments
       custom_actions: 自訂動作
       custom_field_hierarchies: 階層類型的自訂欄位
       customize_life_cycle: 自訂生命週期
@@ -1941,52 +1958,52 @@ zh-TW:
       work_package_query_relation_columns: 工作項目查詢關聯列
       work_package_sharing: 與外部使用者共用工作項目
       work_package_subject_generation: 工作項目標題產生
-    upsale:
-      title: "企業版附加元件"
-      plan_title: "企業版 %{plan} 外掛"
-      plan_name: "%{plan} 企業版計畫"
-      plan_text_html: "僅透過 %{plan_name} 提供。"
-      hide_banner: "隱藏此廣告"
+    upsell:
+      title: "Enterprise add-on"
+      plan_title: "Enterprise %{plan} add-on"
+      plan_name: "%{plan} enterprise plan"
+      plan_text_html: "Available starting with the %{plan_name}."
+      hide_banner: "Hide this banner"
       baseline_comparison:
-        description: 突顯自過去任一時間點以來對此清單所做的變更。
+        description: Highlight changes made to this list since any point in the past.
       work_package_subject_generation:
-        description: "使用參考的屬性和文字建立自動產生的主題。"
+        description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
-        description: "建立並組織不同於 PM2 專案週期規劃所提供的專案階段。"
+        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       conditional_highlighting:
-        description: "需要讓某些工作項目從大量項目中脫穎而出嗎？請在工作項目表格中使用條件突顯功能。"
+        description: "Need certain work packages to stand out from the mass? Use conditional highlighting in the work packages table."
       work_package_query_relation_columns:
-        description: "需要在工作項目清單中查看關聯或子項目嗎？"
+        description: "Need to see relations or child elements in the work package list?"
       edit_attribute_groups:
-        description: "使用以下額外附加元件自訂表單設定："
+        description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "加入新增群組屬性功能"
-          rename: "重新命名群组屬性"
-          related: "新增相關工作項目表"
+          groups: "Add new attribute groups"
+          rename: "Rename attribute groups"
+          related: "Add a table of related work packages"
       readonly_work_packages:
-        description: "將特定狀態的工作項目標記為唯讀。"
+        description: "Mark work packages as read-only for specific statuses."
       custom_field_hierarchies:
-        description: "階層自訂欄位允許透過多層選擇清單來組織工作項目中的階層結構。"
+        description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
       date_alerts:
-        description: "透過日期提醒，您將收到即將到來的開始或結束日期的通知，這樣您就不會錯過或忘記重要的截止日期。"
+        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
       work_package_sharing:
-        description: "與不是專案成員的使用者共同參與工作項目。"
+        description: "Share work packages with users who are not members of the project."
       define_custom_style:
-        title: "自訂布景主題顏色與logo"
-        more_info: "備註：Logo可被公開存取。"
-        description: 客製OpenProject中專屬您的標誌(logo)與顏色。
+        title: "Custom color theme and logo"
+        more_info: "Note: the used logo will be publicly accessible."
+        description: Customize your OpenProject installation with your own logo and colors.
       custom_actions:
-        title: "自訂動作"
-        description: "自訂動作是一系列預先定義動作的單鍵捷徑，您可以根據狀態、角色、類型或專案，在特定工作項目上使用這些動作。"
+        title: "Custom actions"
+        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
       virus_scanning:
-        description: "確保在其他使用者存取 OpenProject 中上傳的檔案前，對其進行病毒掃描。"
+        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
-        title: 占位使用者
+        title: Placeholder users
         description: >
-          「佔位使用者」是一種將工作項目分配給不屬於您專案成員的方法。它們在一系列場景中十分有用；例如，如果您需要追蹤尚未命名或可用的資源的任務，或者如果您不想讓該人員存取專案，但仍希望追蹤分配給他們的任務。
-      comments_with_restricted_visibility:
-        title: "僅供您查看"
-        description: "受限可見的留言可讓內部團隊成員之間進行私人溝通。這些留言僅對特定的專案角色可見，絕對不會對外公開。"
+          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
+      internal_comments:
+        title: "For your eyes only"
+        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "時間追蹤活動"
   enumeration_work_package_priorities: "工作項目優先等級"
   enumeration_reported_project_statuses: "報告的專案狀態"
@@ -2213,8 +2230,8 @@ zh-TW:
       users: "最新註冊的使用者"
     blocks:
       community: "OpenProject 社群"
-      upsale:
-        title: "升級到企業版"
+      upsell:
+        title: "Upgrade to Enterprise edition"
     links:
       upgrade_enterprise_edition: "升級到企業版"
       postgres_migration: "將您的安裝遷移到 PostgreSQL"
@@ -3286,13 +3303,13 @@ zh-TW:
     text_getting_started_description: "快速瞭解 OpenProject 的項目管理和團隊協作。您可以從幫助菜單重新啓動此視頻。"
     welcome: "歡迎使用 %{app_title}"
     select_language: "請選擇您的語言"
-  permission_add_work_package_notes: "增加留言"
+  permission_add_work_package_comments: "Add comments"
   permission_add_work_packages: "新增工作項目"
   permission_add_messages: "張貼訊息"
   permission_add_project: "建立專案"
   permission_add_work_package_attachments: "新增附件"
   permission_add_work_package_attachments_explanation: "允許在沒有編輯工作項目權限的情況下新增附件"
-  permission_add_comments_with_restricted_visibility: "寫下限制顯示的留言"
+  permission_add_internal_comments: "Write internal comments"
   permission_archive_project: "封存專案"
   permission_create_user: "新增使用者"
   permission_manage_user: "編輯使用者"
@@ -3317,16 +3334,16 @@ zh-TW:
   permission_delete_timelines: "刪除時間軸"
   permission_delete_wiki_pages: "刪除維基頁面"
   permission_delete_wiki_pages_attachments: "刪除附件"
-  permission_edit_work_package_notes: "審閱留言"
-  permission_edit_work_package_notes_explanation: "注意：擁有此權限的使用者可以編輯任何人的註解。"
+  permission_edit_work_package_comments: "Moderate comments"
+  permission_edit_work_package_comments_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "編輯工作項目"
   permission_edit_messages: "編輯訊息"
-  permission_edit_own_comments_with_restricted_visibility: "編輯擁有但限制顯示的留言"
-  permission_edit_own_work_package_notes: "編輯自己的留言"
+  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_work_package_comments: "Edit own comments"
   permission_edit_own_messages: "編輯自己張貼的訊息"
   permission_edit_own_time_entries: "編輯自己的時間日誌"
-  permission_edit_others_comments_with_restricted_visibility: "審核限制顯示的留言"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "警告：擁有此權限的使用者能夠編輯其他使用者限制顯示的留言。"
+  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "編輯專案"
   permission_edit_project_attributes: "編輯項目屬性"
   permission_edit_project_phases: "編輯專案階段"
@@ -3367,7 +3384,7 @@ zh-TW:
   permission_manage_own_reminders: "建立自己的提醒事項"
   permission_view_project: "檢視專案"
   permission_view_changesets: "在 OpenProject 檢視版本庫修訂"
-  permission_view_comments_with_restricted_visibility: "查看受限顯示的留言"
+  permission_view_internal_comments: "View internal comments"
   permission_view_commit_author_statistics: "檢視 Commit 的作者統計資訊"
   permission_view_dashboards: "檢視儀表板"
   permission_view_work_package_watchers: "檢視監看者清單"
@@ -3698,6 +3715,8 @@ zh-TW:
   setting_repository_truncate_at: "儲存庫瀏覽器中顯示的最大檔案數量"
   setting_rest_api_enabled: "啟用 REST 網路服務"
   setting_self_registration: "自助註冊"
+  setting_self_registration_warning: >
+    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
   setting_session_ttl: "非活躍使用後連線失效時間"
   setting_session_ttl_hint: "低於5個工作同於停用"
   setting_session_ttl_enabled: "連線逾時"
@@ -3828,8 +3847,8 @@ zh-TW:
     work_packages:
       not_allowed_text: "您沒有查看此頁面的必要權限。"
       activities:
-        enable_comments_with_restricted_visibility: "啟用受限可見留言"
-        helper_text: "受限留言可讓內部團隊進行私人溝通。這些留言僅對具備相應權限的指定角色可見，且不會對外公開。%{link}"
+        enable_internal_comments: "Enable internal comments"
+        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "純文字"
@@ -4177,8 +4196,8 @@ zh-TW:
         view_description: "可以查看此項目列表。"
         edit: "編輯"
         edit_description: "可以查看、分享和編輯此專案列表。"
-      upsale:
-        message: "與單個用戶共用專案列表是一項企業附加功能。"
+      upsell:
+        message: "Sharing project lists with individual users is an enterprise add-on."
   working_days:
     info: >
       在安排工作包時，未選擇的日期將被跳過(且不計入天數)。可以在工作包級別覆蓋這些選項。

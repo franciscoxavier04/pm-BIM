@@ -200,6 +200,7 @@ vi:
       storage_delete_result_3: Trong trường hợp lưu trữ này có các thư mục dự án được quản lý tự động, các thư mục này và các tệp chứa bên trong sẽ bị xóa vĩnh viễn.
     dependencies:
       nextcloud:
+        group_folders_app: Group Folders
         integration_app: Tích hợp OpenProject
     enabled_in_projects:
       setup_incomplete_description: Bộ lưu trữ này có thiết lập chưa hoàn chỉnh. Vui lòng hoàn tất thiết lập trước khi bật nó trong nhiều dự án.
@@ -230,12 +231,14 @@ vi:
       storage_provider: Nhà cung cấp lưu trữ
     health:
       actions:
+        download_report: Download
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: Đã kiểm tra lần cuối vào %{datetime}
       checks:
         ampf_configuration:
           files_request: Fetching group folder files
+          group_folder_app: 'Dependency: Group Folders'
           group_folder_contents: Group folder has expected content
           group_folder_presence: Group folder exists
           header: Automatically managed project folder configuration
@@ -266,9 +269,9 @@ vi:
         warnings:
           other: "%{count} checks returned a warning"
       connection_validation:
-        app_version_mismatch: Phiên bản ứng dụng Integration OpenProject không được hỗ trợ. Vui lòng cập nhật máy chủ Nextcloud của bạn.
         client_id_wrong: ID khách hàng OAuth 2 cấu hình không hợp lệ. Vui lòng kiểm tra cấu hình.
         client_secret_wrong: Bí mật khách hàng OAuth 2 cấu hình không hợp lệ. Vui lòng kiểm tra cấu hình.
+        dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
         drive_id_wrong: ID ổ đĩa cấu hình không tìm thấy. Vui lòng kiểm tra cấu hình.
         group_folder_not_found: The group folder could not be found.
         group_folder_version_mismatch: Phiên bản Thư mục nhóm không được hỗ trợ. Vui lòng cập nhật máy chủ Nextcloud của bạn.
@@ -480,7 +483,8 @@ vi:
       description: Thêm một lưu trữ để thấy chúng ở đây.
       heading: Bạn chưa có lưu trữ nào.
     successful_storage_connection: Storage connected successfully! Remember to activate the storage in the Projects tab for each desired project to use it.
-    upsale:
+    upsell:
       description: |-
-        Tích hợp OneDrive/SharePoint của bạn như một lưu trữ tệp với OpenProject. Tải lên các tệp và liên kết chúng trực tiếp đến các gói công việc trong một dự án.
-      title: Tích hợp OneDrive/SharePoint
+        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
+        work packages in a project.
+      title: OneDrive/SharePoint integration
