@@ -292,7 +292,7 @@ module Meetings
 
         # update the old section
         if old_section.backlog?
-          update_backlog_via_turbo_stream(collapsed:)
+          update_backlog_via_turbo_stream(meeting: current_section.meeting, collapsed:)
         else
           update_section_header_via_turbo_stream(meeting_section: old_section)
 
@@ -305,7 +305,7 @@ module Meetings
 
         # update the new section
         if current_section.backlog?
-          update_backlog_via_turbo_stream(collapsed:)
+          update_backlog_via_turbo_stream(meeting: old_section.meeting, collapsed:)
         else
           update_section_header_via_turbo_stream(meeting_section: current_section)
 
@@ -457,7 +457,6 @@ module Meetings
         update_sidebar_component_via_turbo_stream
         update_new_button_via_turbo_stream
         update_list_via_turbo_stream
-        # update_backlog_via_turbo_stream
       end
     end
   end

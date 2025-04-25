@@ -93,11 +93,13 @@ class MeetingAgendaItemsController < ApplicationController
     if call.success?
       reset_meeting_from_agenda_item
       # enable continue editing
-      add_item_via_turbo_stream(clear_slate: false)
       update_header_component_via_turbo_stream
       update_sidebar_details_component_via_turbo_stream
       if @meeting_agenda_item.meeting_section.backlog?
-        update_backlog_via_turbo_stream(collapsed: false)
+        update_section_via_turbo_stream(meeting_section: @meeting_agenda_item.meeting_section, collapsed: false)
+        update_new_button_via_turbo_stream(disabled: false)
+      else
+        add_item_via_turbo_stream(clear_slate: false)
       end
     else
       # show errors
@@ -156,12 +158,13 @@ class MeetingAgendaItemsController < ApplicationController
 
     if call.success?
       reset_meeting_from_agenda_item
-      remove_item_via_turbo_stream(clear_slate: @meeting.agenda_items.empty?)
       update_header_component_via_turbo_stream
-      update_section_header_via_turbo_stream(meeting_section: section) if section&.reload.present?
       update_sidebar_details_component_via_turbo_stream
       if section.backlog?
-        update_backlog_via_turbo_stream(collapsed: false)
+        update_section_via_turbo_stream(meeting_section: section, collapsed: false)
+      else
+        remove_item_via_turbo_stream(clear_slate: @meeting.agenda_items.empty?)
+        update_section_header_via_turbo_stream(meeting_section: section) if section&.reload.present?
       end
     else
       generic_call_failure_response(call)
@@ -305,7 +308,8 @@ class MeetingAgendaItemsController < ApplicationController
   def assign_drop_params # rubocop:disable Metrics/AbcSize
     @target_id, @position =
       if params[:type] == "to_current"
-        section = @meeting.sections.reorder(position: :desc).first
+        meeting = Meeting.find_by(id: params[:current_meeting_id])
+        section = meeting.sections.reorder(position: :desc).first
         [section&.id, section&.last_position]
       elsif params[:type] == "to_backlog"
         [@meeting.backlog.id, @meeting.backlog.last_position]

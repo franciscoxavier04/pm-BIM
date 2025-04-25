@@ -34,22 +34,27 @@ module MeetingSections
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(backlog:, collapsed:, box: nil)
+    def initialize(backlog:, collapsed:, current_meeting:, box: nil)
       super
 
       @backlog = backlog
       @meeting = backlog.meeting
       @box = box
+      @current_meeting = current_meeting
 
+      # When a specific collapsed state is needed, collapsed is passed in as either true or false
+      # When the collapsed state needs to be determined based on meeting status, collapsed is nil and set via default
       @collapsed = collapsed.nil? ? default : collapsed
     end
 
     private
 
     def default
-      if @meeting.open?
+      # For a series backlog, the status of the current occurrence needs to be checked instead of the template
+      # For a one-time backlog, @meeting == @current_meeting
+      if @current_meeting.open?
         false
-      elsif @meeting.in_progress?
+      elsif @current_meeting.in_progress?
         true
       end
     end

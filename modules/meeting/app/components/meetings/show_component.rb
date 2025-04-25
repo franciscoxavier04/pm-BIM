@@ -43,7 +43,7 @@ module Meetings
 
     def wrapper_data_attributes
       {
-        controller: "meetings-drag-and-drop keep-collapsed-state",
+        controller: "meetings-drag-and-drop add-meeting-params",
         "application-target": "dynamic"
       }
     end

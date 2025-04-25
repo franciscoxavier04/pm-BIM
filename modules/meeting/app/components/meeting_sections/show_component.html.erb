@@ -7,7 +7,7 @@
         end
       elsif render_backlog?
         component.with_header do
-          render(MeetingSections::Backlogs::HeaderComponent.new(backlog: @meeting_section, box: component, collapsed: @collapsed))
+          render(MeetingSections::Backlogs::HeaderComponent.new(backlog: @meeting_section, box: component, collapsed: @collapsed, current_meeting: @current_meeting))
         end
       end
       if render_new_button_in_section?

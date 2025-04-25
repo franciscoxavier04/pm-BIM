@@ -32,8 +32,11 @@ import { ApplicationController } from 'stimulus-use';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 import { appendCollapsedState } from '../helpers/collapsible-helper';
 
-export default class KeepCollapsedStateController extends ApplicationController {
+export default class AddMeetingParamsController extends ApplicationController {
   private turboRequests:TurboRequestsService;
+  static targets = ['container'];
+
+  declare readonly containerTarget:HTMLElement;
 
   async connect() {
     const context = await window.OpenProject.getPluginContext();
@@ -47,6 +50,7 @@ export default class KeepCollapsedStateController extends ApplicationController 
     const url = new URL(target.dataset.href!, window.location.origin);
 
     appendCollapsedState(url.searchParams);
+    url.searchParams.append('current_meeting_id', this.containerTarget.dataset.meeting!);
 
     void this
       .turboRequests

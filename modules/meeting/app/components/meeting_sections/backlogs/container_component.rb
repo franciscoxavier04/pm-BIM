@@ -49,5 +49,12 @@ module MeetingSections
         !@meeting.template? &&
         OpenProject::FeatureDecisions.meeting_backlogs_active?
     end
+
+    def wrapper_data_attributes
+      {
+        "add-meeting-params-target": "container",
+        meeting: @meeting.id
+      }
+    end
   end
 end
