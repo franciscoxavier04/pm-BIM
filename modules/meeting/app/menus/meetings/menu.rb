@@ -83,7 +83,7 @@ module Meetings
       end
 
       current_href = params[:current_href]
-      current_recurring_meeting_id = extracted_id(current_href)
+      current_recurring_meeting_id = extracted_series_id(current_href)
 
       all_series.all.map do |series|
         href = project_recurring_meeting_path(series.project, series)
@@ -146,10 +146,10 @@ module Meetings
       [{ type: { operator: "=", values: [RecurringMeeting.to_s] } }].to_json
     end
 
-    def extracted_id(current_href)
+    def extracted_series_id(current_href)
       current_meeting_id = current_href.split("/").last.to_i if current_href&.match(/\/meetings\/\d+$/)
 
-      Meeting.find(current_meeting_id).recurring_meeting_id if current_meeting_id
+      Meeting.find_by(id: current_meeting_id)&.recurring_meeting_id if current_meeting_id
     end
 
     def select_status(href, current_href, current_recurring_meeting_id = nil)
