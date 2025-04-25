@@ -81,7 +81,8 @@ module Storages
               results = validator.call
 
               expect(results[:dependencies_check]).to be_a_failure
-              expect(results[:dependencies_check].code).to eq(:nc_integration_app_missing)
+              expect(results[:dependencies_check].code).to eq(:nc_dependency_missing)
+              expect(results[:dependencies_check].context[:dependency]).to eq("Integration OpenProject")
             end
           end
         end

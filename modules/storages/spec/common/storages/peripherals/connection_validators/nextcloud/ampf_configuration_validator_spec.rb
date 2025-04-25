@@ -86,16 +86,16 @@ module Storages
 
               results = validator.call
               expect(results[:group_folder_app]).to be_a_failure
-              expect(results[:group_folder_app].message)
-                .to eq(i18n_message(:dependency_version_mismatch, dependency: "Group Folders"))
+              expect(results[:group_folder_app].code).to eq(:nc_dependency_version_mismatch)
+              expect(results[:group_folder_app].context[:dependency]).to eq("Group Folders")
             end
 
             it "integration app disabled / missing", vcr: "nextcloud/capabilities_success_group_folder_disabled" do
               results = validator.call
 
               expect(results[:group_folder_app]).to be_a_failure
-              expect(results[:group_folder_app].message)
-                .to eq(i18n_message(:missing_dependencies, dependency: "Group Folders"))
+              expect(results[:group_folder_app].code).to eq(:nc_dependency_missing)
+              expect(results[:group_folder_app].context[:dependency]).to eq("Group Folders")
             end
           end
 

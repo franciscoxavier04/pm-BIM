@@ -69,12 +69,12 @@ module Storages
           update_result(key, CheckResult.success(key))
         end
 
-        def fail_check(key, code, context: {})
+        def fail_check(key, code, context: nil)
           update_result(key, CheckResult.failure(key, code, context))
           throw :interrupted
         end
 
-        def warn_check(key, code, context: {}, halt_validation: false)
+        def warn_check(key, code, context: nil, halt_validation: false)
           update_result(key, CheckResult.warning(key, code, context))
           throw :interrupted if halt_validation
         end

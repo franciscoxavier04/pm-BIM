@@ -67,7 +67,7 @@ module Storages
         end
 
         def to_h
-          { state: state.to_s, message:, timestamp: timestamp&.iso8601 }
+          { state: state.to_s, code:, context:, timestamp: timestamp&.iso8601 }
         end
       end
     end

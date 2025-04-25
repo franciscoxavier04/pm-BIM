@@ -32,7 +32,6 @@ module Storages
   module Peripherals
     module ConnectionValidators
       class NextcloudValidator < BaseConnectionValidator
-
         register_group Nextcloud::StorageConfigurationValidator
         register_group Nextcloud::AuthenticationValidator,
                        precondition: ->(_, result) do
