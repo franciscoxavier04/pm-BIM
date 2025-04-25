@@ -200,6 +200,7 @@ ru:
       storage_delete_result_3: В случае, если хранилище имеет автоматически управляемые папки проектов, они и содержащиеся в них файлы будут удалены навсегда.
     dependencies:
       nextcloud:
+        group_folders_app: Group Folders
         integration_app: Интеграция OpenProject
     enabled_in_projects:
       setup_incomplete_description: Это хранилище имеет незавершенную настройку. Пожалуйста, завершите настройку, прежде чем включать его в нескольких проектах.
@@ -230,12 +231,14 @@ ru:
       storage_provider: Поставщик хранилища
     health:
       actions:
+        download_report: Download
         rerun_checks: Перезапустить все проверки
         run_checks: Выполнить проверку
       checked: Последняя проверка %{datetime}
       checks:
         ampf_configuration:
           files_request: Получение файлов групповых папок
+          group_folder_app: 'Dependency: Group Folders'
           group_folder_contents: Папка группы ожидала содержимое
           group_folder_presence: Папка группы существует
           header: Конфигурация автоматически управляемых папок проекта
@@ -272,9 +275,9 @@ ru:
           many: "%{count} проверок с предупреждениями"
           other: "%{count} проверок с предупреждениями"
       connection_validation:
-        app_version_mismatch: Версия приложения "Интеграция OpenProject" не поддерживается. Пожалуйста, обновите ваш сервер Nextcloud.
         client_id_wrong: Настроенный идентификатор клиента OAuth 2 недействителен. Пожалуйста, проверьте конфигурацию.
         client_secret_wrong: Настроенный ключ клиента OAuth 2 недействителен. Пожалуйста, проверьте конфигурацию.
+        dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
         drive_id_wrong: Настроенный идентификатор диска не найден. Пожалуйста, проверьте конфигурацию.
         group_folder_not_found: Папка группы не найдена.
         group_folder_version_mismatch: Версия групповой папки не поддерживается. Пожалуйста, обновите ваш сервер Nextcloud.
@@ -486,7 +489,8 @@ ru:
       description: Добавьте хранилище, чтобы увидеть его здесь.
       heading: У вас пока нет хранилищ.
     successful_storage_connection: Хранилище успешно подключено! Не забудьте активировать хранилище на вкладке Проекты для каждого желаемого проекта, чтобы использовать его.
-    upsale:
+    upsell:
       description: |-
-        Интегрируйте OneDrive / SharePoint как хранилище файлов OpenProject. Загружайте файлы и связывайте их напрямую с пакетами работ проекта.
-      title: Интеграция с OneDrive/SharePoint
+        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
+        work packages in a project.
+      title: OneDrive/SharePoint integration

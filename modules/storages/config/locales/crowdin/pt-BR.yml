@@ -200,6 +200,7 @@ pt-BR:
       storage_delete_result_3: Caso este armazenamento tenha pastas de projeto gerenciadas automaticamente, estas, e os seus arquivos, serão excluídos para sempre.
     dependencies:
       nextcloud:
+        group_folders_app: Group Folders
         integration_app: Integração OpenProject
     enabled_in_projects:
       setup_incomplete_description: Este armazenamento tem uma configuração incompleta. Conclua a configuração antes de habilitá-la em vários projetos.
@@ -230,12 +231,14 @@ pt-BR:
       storage_provider: Provedor de armazenamento
     health:
       actions:
+        download_report: Download
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: Última verificação em %{datetime}
       checks:
         ampf_configuration:
           files_request: Fetching group folder files
+          group_folder_app: 'Dependency: Group Folders'
           group_folder_contents: Group folder has expected content
           group_folder_presence: Group folder exists
           header: Automatically managed project folder configuration
@@ -268,9 +271,9 @@ pt-BR:
           one: "%{count} check returned a warning"
           other: "%{count} checks returned a warning"
       connection_validation:
-        app_version_mismatch: A versão do aplicativo de integração do OpenProject não é compatível. Atualize seu servidor Nextcloud.
         client_id_wrong: O ID do cliente OAuth 2 configurado é inválido. Verifique a configuração.
         client_secret_wrong: O segredo do cliente OAuth 2 configurado é inválido. Verifique a configuração.
+        dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
         drive_id_wrong: O drive ID configurado não foi encontrado. Verifique a configuração.
         group_folder_not_found: A pasta do grupo não pôde ser localizada.
         group_folder_version_mismatch: A versão da Pasta de Grupo não é compatível. Atualize seu servidor Nextcloud.
@@ -482,7 +485,8 @@ pt-BR:
       description: Adicione um armazenamento para vê-lo aqui.
       heading: Ainda não tem nenhum armazenamento.
     successful_storage_connection: Armazenamento conectado com sucesso! Não se esqueça de ativá-lo na aba Projetos para cada projeto em que deseja usá-lo.
-    upsale:
+    upsell:
       description: |-
-        Integre seu OneDrive/SharePoint como um armazenamento de arquivos com o OpenProject. Carregue arquivos e vincule-os diretamente aos pacotes de trabalho em um projeto.
-      title: Integração OneDrive/SharePoint
+        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
+        work packages in a project.
+      title: OneDrive/SharePoint integration

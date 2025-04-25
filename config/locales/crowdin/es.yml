@@ -41,9 +41,14 @@ es:
         changed: "cambiado"
         created: "creado"
         commented: "comentado"
-        restrict_visibility: Restringir visibilidad
-        restricted_journal: Los comentarios restringidos son visibles para un grupo limitado de miembros.
+        internal_comment: Internal comment
+        internal_journal: Internal comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: Tiene cambios sin guardar. ¿Seguro que desea cerrar el editor?
+        internal_comment_confirmation:
+          title: "Make this comment public?"
+          heading: "Make this comment public?"
+          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          confirm_button_text: "Make public"
   admin:
     plugins:
       no_results_title_text: Actualmente no hay ningún plugin instalado.
@@ -1081,7 +1086,7 @@ es:
           title: "Días laborables"
           false: "solo días laborables"
           true: "incluir días no laborables"
-        journal_restricted: Diario restringido
+        journal_internal: Internal Journal
         notify: "Notificar" #used in custom actions
         parent: "Padre"
         parent_issue: "Padre"
@@ -1302,10 +1307,10 @@ es:
             values:
               inclusion: "El filtro tiene valores inválidos."
               format: "%{message}"
-        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+        queries/principals/filters/internal_mentionable_on_work_package_filter:
           attributes:
             values:
-              single_value_requirement: "debe ser un único paquete de trabajo"
+              single_value_requirement: "must be a single work package"
         relation:
           typed_dag:
             circular_dependency: "La relación crea un bucle de relaciones."
@@ -1971,7 +1976,7 @@ es:
       baseline_comparison: Baseline Comparisons
       board_view: Advanced Boards
       conditional_highlighting: Conditional Highlighting
-      comments_with_restricted_visibility: Comments With Restricted Visibility
+      internal_comments: Internal Comments
       custom_actions: Custom Actions
       custom_field_hierarchies: Custom fields of type hierarchy
       customize_life_cycle: Customize Life Cycle
@@ -1992,11 +1997,11 @@ es:
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
-    upsale:
-      title: "Extensión Enterprise"
+    upsell:
+      title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
-      plan_text_html: "Available only through the %{plan_name}."
+      plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
@@ -2035,9 +2040,9 @@ es:
         title: Placeholder users
         description: >
           Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
-      comments_with_restricted_visibility:
+      internal_comments:
         title: "For your eyes only"
-        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "Actividades de seguimiento del tiempo"
   enumeration_work_package_priorities: "Prioridades del paquete de trabajo"
   enumeration_reported_project_statuses: "Estatus del proyecto reportado"
@@ -2264,8 +2269,8 @@ es:
       users: "Usuarios registrados mas recientes en esta instancia."
     blocks:
       community: "OpenProject Community"
-      upsale:
-        title: "Actualizar a Enterprise"
+      upsell:
+        title: "Upgrade to Enterprise edition"
     links:
       upgrade_enterprise_edition: "Actualizar a Enterprise"
       postgres_migration: "Migrando su instalación a PostgreSQL"
@@ -3340,13 +3345,13 @@ es:
     text_getting_started_description: "Obtenga un resumen rápido sobre la gestión de proyectos y la colaboración en equipo con OpenProject. Puedes volver a ver este video des del menú de ayuda."
     welcome: "Bienvenido a %{app_title}"
     select_language: "Seleccione su idioma"
-  permission_add_work_package_notes: "Añadir comentarios"
+  permission_add_work_package_comments: "Add comments"
   permission_add_work_packages: "Añadir paquetes de trabajo"
   permission_add_messages: "Publicar mensajes"
   permission_add_project: "Crear proyectos"
   permission_add_work_package_attachments: "Añadir archivos adjuntos"
   permission_add_work_package_attachments_explanation: "Permite añadir archivos adjuntos sin el permiso Editar paquetes de trabajo"
-  permission_add_comments_with_restricted_visibility: "Escriba comentarios con visibilidad restringida"
+  permission_add_internal_comments: "Write internal comments"
   permission_archive_project: "Archivar proyecto"
   permission_create_user: "Crear usuarios"
   permission_manage_user: "Editar usuarios"
@@ -3371,16 +3376,16 @@ es:
   permission_delete_timelines: "Eliminar cronogramas"
   permission_delete_wiki_pages: "Eliminar wiki página"
   permission_delete_wiki_pages_attachments: "Eliminar adjuntos"
-  permission_edit_work_package_notes: "Moderar comentarios"
-  permission_edit_work_package_notes_explanation: "Precaución: Los usuarios con este permiso pueden editar los comentarios de cualquier persona."
+  permission_edit_work_package_comments: "Moderate comments"
+  permission_edit_work_package_comments_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Editar paquetes de trabajo"
   permission_edit_messages: "Editar mensajes"
-  permission_edit_own_comments_with_restricted_visibility: "Editar sus propios comentarios con visibilidad restringida"
-  permission_edit_own_work_package_notes: "Editar comentarios propios"
+  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_work_package_comments: "Edit own comments"
   permission_edit_own_messages: "Editar mensajes propios"
   permission_edit_own_time_entries: "Editar registros de tiempo propios"
-  permission_edit_others_comments_with_restricted_visibility: "Moderar comentarios con visibilidad restringida"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "Precaución: Los usuarios con este permiso pueden editar los comentarios de otros usuarios con visibilidad restringida."
+  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "Editar proyecto"
   permission_edit_project_attributes: "Editar atributos del proyecto"
   permission_edit_project_phases: "Editar fases del proyecto"
@@ -3421,7 +3426,7 @@ es:
   permission_manage_own_reminders: "Crear recordatorios propios"
   permission_view_project: "Ver proyectos"
   permission_view_changesets: "Ver las revisiones del repositorio en OpenProject"
-  permission_view_comments_with_restricted_visibility: "Ver comentarios con visibilidad restringida"
+  permission_view_internal_comments: "View internal comments"
   permission_view_commit_author_statistics: "Ver estadísticas del commit del autor"
   permission_view_dashboards: "Ver paneles de control"
   permission_view_work_package_watchers: "Ver lista de observadores"
@@ -3884,8 +3889,8 @@ es:
     work_packages:
       not_allowed_text: "No tiene los permisos necesarios para ver esta página."
       activities:
-        enable_comments_with_restricted_visibility: "Activar comentarios de visibilidad restringida"
-        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_internal_comments: "Enable internal comments"
+        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Texto sin formato"
@@ -4233,8 +4238,8 @@ es:
         view_description: "Puede ver esta lista de proyectos."
         edit: "Editar"
         edit_description: "Puede ver, compartir y editar esta lista de proyectos."
-      upsale:
-        message: "Compartir listas de proyectos con usuarios individuales es una extensión Enterprise."
+      upsell:
+        message: "Sharing project lists with individual users is an enterprise add-on."
   working_days:
     info: >
       Los días no seleccionados se omiten al programar los paquetes de trabajo (y no se incluyen en el recuento de días). Esto puede anularse a nivel de paquete de trabajo.

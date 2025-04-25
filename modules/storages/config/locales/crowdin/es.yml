@@ -200,6 +200,7 @@ es:
       storage_delete_result_3: En caso de que este almacenamiento tenga gestión automática de carpetas de proyecto, aquellas y sus archivos contenidos serán eliminados para siempre.
     dependencies:
       nextcloud:
+        group_folders_app: Group Folders
         integration_app: Integración OpenProject
     enabled_in_projects:
       setup_incomplete_description: Este almacenamiento tiene una configuración incompleta. Complete la configuración antes de habilitarlo en varios proyectos.
@@ -230,12 +231,14 @@ es:
       storage_provider: Proveedor de almacenamiento
     health:
       actions:
+        download_report: Download
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: Última comprobación %{datetime}
       checks:
         ampf_configuration:
           files_request: Fetching group folder files
+          group_folder_app: 'Dependency: Group Folders'
           group_folder_contents: Group folder has expected content
           group_folder_presence: Group folder exists
           header: Automatically managed project folder configuration
@@ -268,9 +271,9 @@ es:
           one: "%{count} check returned a warning"
           other: "%{count} checks returned a warning"
       connection_validation:
-        app_version_mismatch: La versión de la aplicación Integración OpenProject no es compatible. Actualice su servidor Nextcloud.
         client_id_wrong: El id de cliente OAuth 2 configurado no es válido. Por favor, compruebe la configuración.
         client_secret_wrong: El secreto de cliente OAuth 2 configurado no es válido. Por favor, compruebe la configuración.
+        dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
         drive_id_wrong: No se ha podido encontrar el drive id configurado. Por favor, compruebe la configuración.
         group_folder_not_found: No se ha podido encontrar la carpeta del grupo.
         group_folder_version_mismatch: La versión de la Carpeta de grupo no es compatible. Actualice su servidor Nextcloud.
@@ -482,7 +485,8 @@ es:
       description: Añade un almacenamiento para verlos aquí.
       heading: Aún no tiene ningún almacenamiento.
     successful_storage_connection: '¡Almacenamiento conectado con éxito! Recuerda activar el almacenamiento en la pestaña Proyectos de cada proyecto deseado para usarlo.'
-    upsale:
+    upsell:
       description: |-
-        Integra tu OneDrive/SharePoint como almacenamiento de archivos con OpenProject. Sube archivos y vincúlalos directamente a paquetes de trabajo en un proyecto.
-      title: Integración con OneDrive/SharePoint
+        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
+        work packages in a project.
+      title: OneDrive/SharePoint integration

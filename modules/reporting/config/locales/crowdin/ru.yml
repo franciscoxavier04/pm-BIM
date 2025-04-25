@@ -94,8 +94,8 @@ ru:
       timesheet: "Табель учета рабочего времени"
       time: "Время"
       sums_hours: Сумма
-      overview_per_user_total: "Overview: Total hours per user"
-      overview_per_user_day: "Overview: Hours per user per day"
+      overview_per_user_total: "Обзор: Общее количество часов на пользователя"
+      overview_per_user_day: "Обзор: Количество часов на пользователя в день"
     cost_reports:
       title: "Экспорт ваших отчетов о затратах в XLS"
       start_time: "Время начала"

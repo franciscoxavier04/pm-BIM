@@ -206,6 +206,6 @@ zh-TW:
   ee:
     features:
       time_entry_time_restrictions: 需精確追蹤時間
-    upsale:
+    upsell:
       time_entry_time_restrictions:
-        description: "提升時間追蹤效率！記錄工時時輸入精確的開始與結束時間。"
+        description: "Improve your time tracking by requiring exact start and finish times when logging time."

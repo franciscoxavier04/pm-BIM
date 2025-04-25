@@ -1,6 +1,6 @@
 ca:
   ee:
-    upsale:
+    upsell:
       ldap_groups:
         title: 'LDAP group synchronization'
         description: 'Synchronize LDAP groups with OpenProject groups to manage users, change their permissions and facilitate user management across groups.'
@@ -76,5 +76,5 @@ ca:
           Si actives aquesta opció, trobar els usuaris serà activat automàticament a OpenProject. Si no està activat, només comptes existents a OpenProject seran afegits al grup.
         dn_text: 'Afegeix el DN del grup LDAP complet'
         group_text: 'Selecciona un grup d''OpenProject existent el qual els seus membres del grup LDAP estiguin sincronitzats amb'
-      upsale:
-        description: 'Beneficiat de la sincronització de grups LDAP per administrar usuaris, cambiar permisos i facilitar l''administració d''usuaris entre grups.'
+      upsell:
+        description: 'Take advantage of synchronised LDAP groups to manage users, change their permissions and facilitate user management across groups.'

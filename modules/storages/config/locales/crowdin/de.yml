@@ -200,6 +200,7 @@ de:
       storage_delete_result_3: Hat dieser Dateispeicher automatisch verwaltete Projektordner, so werden diese und die enthaltenen Dateien permanent gelöscht.
     dependencies:
       nextcloud:
+        group_folders_app: Group Folders
         integration_app: OpenProject Integration
     enabled_in_projects:
       setup_incomplete_description: Dieser Speicher ist nicht vollständig eingerichtet. Bitte schließen Sie die Einrichtung ab, bevor Sie ihn in mehreren Projekten aktivieren.
@@ -230,12 +231,14 @@ de:
       storage_provider: Speicheranbieter
     health:
       actions:
+        download_report: Download
         rerun_checks: Alle Überprüfungen erneut ausführen
         run_checks: Überprüfungen jetzt ausführen
       checked: Zuletzt geprüft %{datetime}
       checks:
         ampf_configuration:
           files_request: Gruppenordnerdateien werden abgerufen
+          group_folder_app: 'Dependency: Group Folders'
           group_folder_contents: Gruppenordner hat erwarteten Inhalt
           group_folder_presence: Gruppenordner existiert
           header: Automatisch verwaltete Projektordner-Konfiguration
@@ -268,9 +271,9 @@ de:
           one: "%{count} Überprüfung hat eine Warnung zurückgegeben"
           other: "%{count} Überprüfungen haben eine Warnung zurückgegeben"
       connection_validation:
-        app_version_mismatch: Die Integration OpenProject App-Version wird nicht unterstützt. Bitte aktualisieren Sie Ihren Nextcloud Server.
         client_id_wrong: Die konfigurierte OAuth 2-Client-ID ist ungültig. Bitte überprüfen Sie die Konfiguration.
         client_secret_wrong: Das konfigurierte OAuth 2-Client-Geheimnis ist ungültig. Bitte überprüfen Sie die Konfiguration.
+        dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
         drive_id_wrong: Die konfigurierte Laufwerks-ID konnte nicht gefunden werden. Bitte überprüfen Sie die Konfiguration.
         group_folder_not_found: Der Gruppenordner konnte nicht gefunden werden.
         group_folder_version_mismatch: Die Gruppenordner-Version wird nicht unterstützt. Bitte aktualisieren Sie Ihren Nextcloud Server.
@@ -482,7 +485,8 @@ de:
       description: Fügen Sie einen Dateispeicher hinzu, um ihn hier zu sehen.
       heading: Sie haben noch keine Dateispeicher.
     successful_storage_connection: Speicher erfolgreich verbunden! Denken Sie daran, den Speicher in der Projekt-Registerkarte für jedes gewünschte Projekt zu aktivieren.
-    upsale:
+    upsell:
       description: |-
-        Integrieren Sie Ihr OneDrive/SharePoint als Dateispeicher mit OpenProject. Laden Sie Dateien hoch und verknüpfen Sie diese direkt mit Arbeitspaketen in einem Projekt.
-      title: OneDrive/SharePoint-Integration
+        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
+        work packages in a project.
+      title: OneDrive/SharePoint integration

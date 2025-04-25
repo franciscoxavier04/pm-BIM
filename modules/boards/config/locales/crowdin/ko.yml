@@ -7,7 +7,7 @@ ko:
   permission_manage_board_views: "보드 관리"
   project_module_board_view: "보드"
   ee:
-    upsale:
+    upsell:
       board_view:
         description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
   boards:

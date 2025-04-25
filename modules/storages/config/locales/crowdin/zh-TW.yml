@@ -200,6 +200,7 @@ zh-TW:
       storage_delete_result_3: 如果此儲存空間具有自動管理的專案資料夾，則該資料夾及其檔案將永久刪除。
     dependencies:
       nextcloud:
+        group_folders_app: Group Folders
         integration_app: 整合 OpenProject
     enabled_in_projects:
       setup_incomplete_description: 此儲存的設定不完整。請先完成設定，再於多個專案中啟用。
@@ -230,12 +231,14 @@ zh-TW:
       storage_provider: 儲存空間提供商
     health:
       actions:
+        download_report: Download
         rerun_checks: 重新執行所有檢查
         run_checks: 立即執行檢查
       checked: 上次檢查時間：%{datetime}
       checks:
         ampf_configuration:
           files_request: 正在擷取群組資料夾檔案
+          group_folder_app: 'Dependency: Group Folders'
           group_folder_contents: 群組資料夾包含預期的內容
           group_folder_presence: 群組目錄已存在
           header: 自動管理專案資料夾設定
@@ -266,9 +269,9 @@ zh-TW:
         warnings:
           other: "%{count} 次檢查結果顯示警告"
       connection_validation:
-        app_version_mismatch: 不支援整合 OpenProject 應用程式版本。請更新您的 Nextcloud 伺服器。
         client_id_wrong: 設定的 OAuth 2 客戶端 ID 無效。請檢查設定。
         client_secret_wrong: 設定的 OAuth 2 用戶端密鑰無效。請檢查設定。
+        dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
         drive_id_wrong: 找不到設定的儲存空間id。請檢查設定。
         group_folder_not_found: 無法找到群組資料夾。
         group_folder_version_mismatch: 不支援群組資料夾版本。請更新您的 Nextcloud 伺服器。
@@ -481,8 +484,8 @@ zh-TW:
       description: 新增的儲存空間將在此顯示
       heading: 目前沒有任何儲存空間
     successful_storage_connection: 儲存已成功連接！請記住在每個所需專案的專案索引標籤中啟動儲存，以便使用。
-    upsale:
+    upsell:
       description: |-
-        整合您的 OneDrive/SharePoint 作為 OpenProject 的檔案儲存空間。上傳檔案並將其直接連結至專案中的
-        工作項目。
-      title: OneDrive/SharePoint 整合
+        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
+        work packages in a project.
+      title: OneDrive/SharePoint integration

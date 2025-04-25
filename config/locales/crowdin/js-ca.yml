@@ -239,32 +239,32 @@ ca:
           status_waiting: "correu electrònic enviat - esperant la confirmació"
           test_ee: "Prova l'edició Enterprise de forma gratuïta per 14 dies"
           quick_overview: "Obté una visió general ràpida de la gestió de projectes i col·laboració d'equips amb l'edició Enterprise d'OpenProject."
-        upsale:
-          become_hero: "Sigues un heroi!"
-          enterprise_info_html: "%{feature_title} és una extensió de l'edició Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'>."
-          upgrade_info: "Si us plau, actualitza a una versió de pagament per tal d'activar i començar a utilitzar-la en el teu equip."
+        upsell:
+          become_hero: "Become a hero!"
+          enterprise_info_html: "%{feature_title} is an Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> add-on."
+          upgrade_info: "Please upgrade to a paid plan to activate and start using it in your team."
           benefits:
-            description: "Quins són els beneficis de l'edició Enterprise on-premises?"
-            high_security: "Funcions de seguretat"
-            high_security_text: "Inici de sessió únic (SAML, OpenID Conenct, CAS), grups LDAP."
-            installation: "Suport d'instal·lació"
-            installation_text: "Enginyers de programari amb experiència et guien durant tot el procés d'instal·lació i configuració de la teva pròpia estructura."
-            premium_features: "Extensions Enterprise"
-            premium_features_text: "Taulells \"agile\", tema personalitzat i logotip, gràfiques, fluxos de treball amb accions personalitzades, cerca de text completa per a fitxers adjunt en paquets de treball i la selecció múltiple de camps personalitzats."
-            professional_support: "Suport professional"
-            professional_support_text: "Obté un suport de confiança i d'alt nivell dels nostres enginyers de suport sèniors amb experiència en manegar OpenProject en ambients empresarials crítics."
-          button_start_trial: "Inicia la prova gratuïta"
-          button_upgrade: "Actualitza ara"
-          button_contact_us: "Contacta amb nosaltres per una demostració"
-          button_book_now: "Reserva ara"
+            description: "What are the benefits of the Enterprise on-premises edition?"
+            high_security: "Security features"
+            high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+            installation: "Installation support"
+            installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+            premium_features: "Enterprise add-ons"
+            premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+            professional_support: "Professional support"
+            professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
+          button_start_trial: "Start free trial"
+          button_upgrade: "Upgrade now"
+          button_contact_us: "Contact us for a demo"
+          button_book_now: "Book now"
           confidence: >
-            Tenim la certesa i confiança d'una eina de gestió de projectes testejat i suportat en ambients empresarials - amb Codi Obert i amb una mentalitat oberta.
-          link_quote: "Obtenir un pressupost"
-          more_info: "Més informació"
+            We deliver the confidence of a tested and supported enterprise-class project management software - with Open Source and an open mind.
+          link_quote: "Get a quote"
+          more_info: "More information"
           text: >
-            L'edició Enterprise d'OpenProject es construeix a sobre de l'edició Community. Inclou extensions Enterprise i suport professional pensat especialment per a organitzacions de més de 10 usuaris que manegin projectes empresarialment crítics amb OpenProject.
-          unlimited: "Il·limitat"
-          you_contribute: "Els desenvolupadors també han de pagar les seves factures. Actualitzant a l'edició Enterprise, donaràs suport aquesta comunitat de codi obert i contribuiràs al seu desenvolupament, manteniment i millora continua."
+            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
+          unlimited: "Unlimited"
+          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
       working_days:
         calendar:
           empty_state_header: "Dies no laborables"
@@ -865,8 +865,8 @@ ca:
     tl_toolbar:
       zooms: "Nivell de zoom"
       outlines: "Nivell de jerarquia"
-    upsale:
-      ee_only: "Extensió de l'edició Enterprise"
+    upsell:
+      ee_only: "Enterprise edition add-on"
     wiki_formatting:
       strong: "Negreta"
       italic: "Cursiva"

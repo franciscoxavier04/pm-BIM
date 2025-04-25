@@ -1,9 +1,9 @@
 #English strings go here
 zh-TW:
   ee:
-    upsale:
+    upsell:
       board_view:
-        description: '想使用看板來自動化您的工作流程嗎？進階看板是企業版附加功能，請升級至付費方案以啟用此功能。'
+        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
   js:
     boards:
       create_new: '建立看板'

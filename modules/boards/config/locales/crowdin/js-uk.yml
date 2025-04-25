@@ -1,9 +1,9 @@
 #English strings go here
 uk:
   ee:
-    upsale:
+    upsell:
       board_view:
-        description: 'Хочете автоматизувати робочі процеси за допомогою Дощок? Поліпшені дошки – це доповнення версії Enterprise. Перейдіть на платний план.'
+        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
   js:
     boards:
       create_new: 'Створити нову дошку'

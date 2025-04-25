@@ -64,9 +64,9 @@ pl:
         Następujące pola kontroli atrybutów dostarczonych przez dostawcę tożsamości SAML są używane do dostarczania atrybutów użytkownika w OpenProject
       metadata:
         dialog: "To jest adres URL, gdzie dostępne są metadane OpenProject SAML. Opcjonalnie użyj go, aby skonfigurować swojego dostawcę tożsamości:"
-      upsale:
+      upsell:
         title: "Single Sign-On (SSO) with SAML"
-        description: Połącz OpenProject z dostawcą tożsamości SAML
+        description: Connect OpenProject to a SAML identity provider
       request_attributes:
         title: 'Wymagane atrybuty'
         legend: >

@@ -7,9 +7,9 @@ zh-TW:
   permission_manage_board_views: "管理看板"
   project_module_board_view: "看板"
   ee:
-    upsale:
+    upsell:
       board_view:
-        description: '想使用看板來自動化您的工作流程嗎？進階看板是企業版附加功能，請升級至付費方案以啟用此功能。'
+        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
   boards:
     label_board: "看板"
     label_boards: "看板"

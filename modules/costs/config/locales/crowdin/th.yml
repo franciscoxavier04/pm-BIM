@@ -206,6 +206,6 @@ th:
   ee:
     features:
       time_entry_time_restrictions: Require exact time tracking
-    upsale:
+    upsell:
       time_entry_time_restrictions:
         description: "Improve your time tracking by requiring exact start and finish times when logging time."

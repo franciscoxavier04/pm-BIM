@@ -9,10 +9,10 @@ pt-BR:
   ee:
     feature_names:
       team_planner_view: "Planejador de equipe"
-    upsale:
+    upsell:
       team_planner_view:
-        title: "Planejador de equipe"
-        description: "Obtenha uma visão geral completa do planejamento da sua equipe com o Planejador de Equipe. Estique, encurte, e arraste e solte pacotes de trabalho para modificar datas, movê-los ou alterar os responsáveis."
+        title: "Team planner"
+        description: "Get a complete overview of your team’s planning with Team Planner. Stretch, shorten and drag-and-drop work packages to modify dates, move them or change assignees."
   team_planner:
     label_team_planner: "Planejador de equipe"
     label_new_team_planner: "Novo planejador de equipe"

@@ -1,9 +1,9 @@
 #English strings go here
 tr:
   ee:
-    upsale:
+    upsell:
       board_view:
-        description: 'İş akışlarınızı Panolar ile otomatikleştirmek ister misiniz? Gelişmiş panolar Enterprise eklentidir. Lütfen ücretli bir plana yükseltin.'
+        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
   js:
     boards:
       create_new: 'Yeni pano oluştur'

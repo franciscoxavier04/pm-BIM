@@ -7,7 +7,7 @@ ar:
   permission_manage_board_views: "إدارة اللوحات"
   project_module_board_view: "اللوحات"
   ee:
-    upsale:
+    upsell:
       board_view:
         description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
   boards:

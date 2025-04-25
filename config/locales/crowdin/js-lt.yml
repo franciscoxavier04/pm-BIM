@@ -239,32 +239,32 @@ lt:
           status_waiting: "laiškas išsiųstas -- laukiame patvirtinimo"
           test_ee: "Išbandykite Enterprise versiją 14 dienų nemokamai"
           quick_overview: "Gaukite greitą apžvalgą apie projektų valdymą ir komandos bendradarbiavimą naudojant OpenProject Enterprise versiją."
-        upsale:
-          become_hero: "Tapkite didvyriu!"
-          enterprise_info_html: "%{feature_title} yra „Enterprise“ <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> priedas."
-          upgrade_info: "Prašome atsinaujinti į mokamą planą, kad aktyvuotumėte ir pradėtumėte ji naudoti savo komandoje."
+        upsell:
+          become_hero: "Become a hero!"
+          enterprise_info_html: "%{feature_title} is an Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> add-on."
+          upgrade_info: "Please upgrade to a paid plan to activate and start using it in your team."
           benefits:
-            description: "Kokie yra Enterprise vietinės versijos privalumai?"
-            high_security: "Saugumo funkcijos"
-            high_security_text: "Vienas prisijungimas (SAML, OpenID Connect, CAS), LDAP grupės."
-            installation: "Diegimo pagalba"
-            installation_text: "Patyręs programų inžinierius ves jus per visą diegimo ir nustatymo procesą naudojant jūsų pačių infrastruktūrą."
-            premium_features: "Enterprise priedai"
-            premium_features_text: "Agile lentos, savo tema ir logotipas, grafai, protingi darbo scenarijai su apibrėžtais veiksmais, pilna teksto paieška darbo paketų prieduose ir galimybė pasirinkti daugiau nei vieną reikšmę pritaikytuose laukuose."
-            professional_support: "Profesionali pagalba"
-            professional_support_text: "Gaukite patikimą, artimą pagalbą iš patyrusių pagalbos inžinierių su ekspertinėmis žiniomis apie OpenProject naudojimą verslui kritinėse aplinkose."
-          button_start_trial: "Pradėti bandomąjį laikotarpį"
-          button_upgrade: "Užsisakykite dabar"
-          button_contact_us: "Susisiekite su mumis dėl demonstracijos"
-          button_book_now: "Užsakyti dabar"
+            description: "What are the benefits of the Enterprise on-premises edition?"
+            high_security: "Security features"
+            high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+            installation: "Installation support"
+            installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+            premium_features: "Enterprise add-ons"
+            premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+            professional_support: "Professional support"
+            professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
+          button_start_trial: "Start free trial"
+          button_upgrade: "Upgrade now"
+          button_contact_us: "Contact us for a demo"
+          button_book_now: "Book now"
           confidence: >
-            Mes duodame patikrintos ir palaikomas korporacijos-lygio projektų valdymo programos užtikrintumą -- su atviru kodu ir plačiomis pažiūromis.
-          link_quote: "Gauti pasiūlymą"
-          more_info: "Daugiau informacijos"
+            We deliver the confidence of a tested and supported enterprise-class project management software - with Open Source and an open mind.
+          link_quote: "Get a quote"
+          more_info: "More information"
           text: >
-            OpenProject Enterprise versija yra pastatyta virš Bendruomenės versijos. Papildomai įdėti „premium“ priedai ir profesionalus aptarnavimas, pagrinde orientuotas į organizacijas su daugiau nei 10 vartotojų, kurie naudodami OpenProject valdo verslui kritinius projektus.
-          unlimited: "Neribota"
-          you_contribute: "Vystotojams taip pat reikia apmokėti sąskaitas. Pereidami į Enterprise versiją, jūs paremsite šį atviro kodo bendruomenės projektą ir prisidėsite prie jo vystymo, palaikymo ir pastovaus tobulinimo."
+            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
+          unlimited: "Unlimited"
+          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
       working_days:
         calendar:
           empty_state_header: "Nedarbo dienos"
@@ -867,8 +867,8 @@ lt:
     tl_toolbar:
       zooms: "Didinimo lygis"
       outlines: "Hierarchinis lygmuo"
-    upsale:
-      ee_only: "„Enterprise“ versijos priedas"
+    upsell:
+      ee_only: "Enterprise edition add-on"
     wiki_formatting:
       strong: "Paryškintas"
       italic: "Pasvirasis"
