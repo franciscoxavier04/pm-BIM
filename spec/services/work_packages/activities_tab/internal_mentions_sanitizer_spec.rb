@@ -43,7 +43,7 @@ RSpec.describe WorkPackages::ActivitiesTab::InternalMentionsSanitizer do
   shared_let(:project_admin) { create_user_as_project_admin }
   shared_let(:work_package) { create(:work_package, project:) }
 
-  let(:input) do
+  let(:comment) do
     <<~HTML
       <mention class="mention" data-id="#{admin_but_non_member.id}" data-type="user" data-text="@#{admin_but_non_member.firstname}">@#{admin_but_non_member.firstname}</mention> wrote:
 
@@ -63,7 +63,7 @@ RSpec.describe WorkPackages::ActivitiesTab::InternalMentionsSanitizer do
     HTML
   end
 
-  let(:expected_output) do
+  let(:expected_sanitized_comment) do
     <<~HTML
       @#{admin_but_non_member.firstname} wrote:
 
@@ -83,16 +83,16 @@ RSpec.describe WorkPackages::ActivitiesTab::InternalMentionsSanitizer do
     HTML
   end
 
-  subject { described_class.new(work_package, input).call }
+  subject { described_class.new(work_package, comment).call }
 
   before { allow(User).to receive(:current).and_return(user_with_internal_comments_view_and_write_permissions) }
 
-  it "sanitizes the notes" do
-    expect(subject).to eq(expected_output)
+  it "sanitizes the comment" do
+    expect(subject).to eq(expected_sanitized_comment)
   end
 
-  context "when the notes are empty" do
-    let(:input) { "" }
+  context "when the comment is empty" do
+    let(:comment) { "" }
 
     it "returns an empty string" do
       expect(subject).to eq("")
