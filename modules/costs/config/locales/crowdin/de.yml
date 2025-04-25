@@ -58,8 +58,8 @@ de:
         end_time: Endzeit
     models:
       time_entry:
-        one: "Zeitbuchung"
-        other: "Zeiterfassungen"
+        one: "Time entry"
+        other: "Zeitbuchungen"
       cost_entry:
         one: "Kosteneintrag"
         other: "Kosteneinträge"
