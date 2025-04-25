@@ -719,9 +719,9 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
 
   describe "setting duration of a work_package with a predecessor to zero (Regression #63598)" do
     let_work_packages(<<~TABLE)
-      hierarchy                         | MTWTFSS                          | scheduling mode | predecessors
-      predecessor                       | X                                | manual          |
-      follower                          |   X                              | automatic       | predecessor
+      hierarchy    | MTWTFSS | scheduling mode | predecessors
+      predecessor  | XX      | manual          |
+      work_package |   X     | automatic       | predecessor
     TABLE
     let(:attributes) do
       {
@@ -731,26 +731,10 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
 
     it "rejects the change" do
       expect(subject)
-        .to be_success
+        .to be_failure
 
-      # Returns changed work packages
-      expect(subject.all_results)
-        .to contain_exactly(work_package,
-                            following_parent_work_package, following_work_package,
-                            following2_parent_work_package, following2_work_package,
-                            following3_parent_work_package, following3_work_package)
-
-      expect_work_packages(subject.all_results + [following3_sibling_work_package], <<~TABLE)
-        subject                           | MTWTFSS                               |
-        work_package                      |      XXXXXX                           |
-        following_parent_work_package     |            XXXXXXXXXXXXXXX            |
-          following_work_package          |            XXXXXXXXXXXXXXX            |
-        following2_parent_work_package    |                           XXXXX       |
-          following2_work_package         |                           XXXXX       |
-        following3_parent_work_package    |                                XXXXXX |
-          following3_work_package         |                                XXXXX  |
-          following3_sibling_work_package |                                 XXXXX |
-      TABLE
+      expect(subject.errors.attribute_names).to contain_exactly(:duration)
+      expect(subject.errors.details).to include(duration: [{ count: 0, error: :greater_than, value: 0 }])
     end
   end
 
