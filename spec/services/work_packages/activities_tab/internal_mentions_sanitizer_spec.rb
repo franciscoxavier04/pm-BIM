@@ -39,6 +39,7 @@ RSpec.describe WorkPackages::ActivitiesTab::InternalMentionsSanitizer do
   shared_let(:user_with_internal_comments_view_and_write_permissions) do
     create_user_with_internal_comments_view_and_write_permissions
   end
+  shared_let(:some_user) { create(:user) }
   shared_let(:project_admin) { create_user_as_project_admin }
   shared_let(:work_package) { create(:work_package, project:) }
 
@@ -56,7 +57,7 @@ RSpec.describe WorkPackages::ActivitiesTab::InternalMentionsSanitizer do
       > >
       > > > FooBar
       > >
-      > > <mention class="mention" data-id="435" data-type="user" data-text="@Firstname">@Firstname</mention> wrote:
+      > > <mention class="mention" data-id="#{some_user.id}" data-type="user" data-text="@Firstname">@Firstname</mention> wrote:
       > >
       > > > BooBar
     HTML
