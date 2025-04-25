@@ -130,6 +130,7 @@ export default class InternalCommentController extends Controller {
   }
 
   private askForConfirmation():Promise<boolean> {
+    this.confirmationDialogTarget.returnValue = ''; // Reset the return value on every confirmation dialog
     this.confirmationDialogTarget.showModal();
 
     return new Promise((resolve) => {
