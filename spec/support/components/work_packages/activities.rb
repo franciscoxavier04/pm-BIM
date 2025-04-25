@@ -340,7 +340,7 @@ module Components
 
       def uncheck_internal_comment_checkbox
         expect(page).to have_test_selector("op-work-package-journal-internal-comment-checkbox")
-        page.uncheck("Restrict visibility")
+        page.uncheck("Internal comment")
       end
 
       def dismiss_comment_editor_with_esc
