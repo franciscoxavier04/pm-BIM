@@ -289,14 +289,14 @@ RSpec.describe "Work package internal comments",
   end
 
   describe "making internal comments public" do
+    current_user { project_admin }
+
+    before do
+      wp_page.visit!
+      wp_page.wait_for_activity_tab
+    end
+
     context "when the user unchecks the 'internal comment' checkbox" do
-      current_user { project_admin }
-
-      before do
-        wp_page.visit!
-        wp_page.wait_for_activity_tab
-      end
-
       it "asks for explicit confirmation from the user" do
         activity_tab.open_new_comment_editor
 
@@ -328,6 +328,33 @@ RSpec.describe "Work package internal comments",
           end
 
           activity_tab.expect_internal_comment_unchecked
+        end
+      end
+    end
+
+    context "when the user goes through multiple confirmations" do
+      it "retains the correct state" do
+        activity_tab.open_new_comment_editor
+        activity_tab.type_comment("This is an internal comment")
+        activity_tab.check_internal_comment_checkbox
+
+        aggregate_failures "check and confirm" do
+          activity_tab.uncheck_internal_comment_checkbox
+
+          activity_tab.expect_internal_comment_confirmation_dialog do
+            click_on "Make public"
+          end
+          activity_tab.expect_internal_comment_unchecked
+        end
+
+        aggregate_failures "check, uncheck then cancel" do
+          activity_tab.check_internal_comment_checkbox
+          activity_tab.uncheck_internal_comment_checkbox
+
+          activity_tab.expect_internal_comment_confirmation_dialog do
+            click_on "Cancel"
+          end
+          activity_tab.expect_internal_comment_checked
         end
       end
     end
