@@ -1,12 +1,12 @@
-# Admin Guide: Configuring Automatic Subjects
+# Configuring automatic subjects
 
-This guide explains how administrators configure **automatic subject patterns** for work packages in OpenProject. Subject patterns combine static text with dynamic attributes—such as dates, author names, or custom fields—to automatically generate consistent and informative work package titles.
+This guide explains how administrators configure **automatic subject patterns** for work packages in OpenProject. Subject patterns combine static text with dynamic attributes - such as dates, author names, or custom fields - to automatically generate consistent and informative work package titles.
 
 Automatic subject patterns help teams quickly identify tasks, reduce manual errors, and standardize naming conventions across your projects.
 
----
 
-## 1. How Subject Patterns Work
+
+## 1. How subject patterns work
 
 A subject pattern includes a combination of:
 
@@ -15,37 +15,37 @@ A subject pattern includes a combination of:
 
 When users create or edit work packages, OpenProject automatically replaces these placeholders with real attribute values, generating clear subjects.
 
----
 
-## 2. Adding, Changing, and Deleting Attributes
+
+## 2. Adding, changing, and deleting attributes
 
 Administrators configure subject patterns using a simple editor in the admin settings:
 
-### 2.1 Adding Attributes
+### 2.1 Adding attributes
 
 1. Navigate to **Administration → Work Package Types**, choose a type, then open **Subject configuration**.
 2. Type `/` in the input field to open attribute search.
 3. Search for and select an attribute from the dropdown. The chosen attribute appears as a placeholder (e.g., `[Start date]`).
 
-### 2.2 Changing Attributes
+### 2.2 Changing attributes
 
 - Click into an existing attribute placeholder to edit it. This triggers the attribute search again.
 - Type and select a different attribute from the dropdown. The placeholder updates automatically.
 
-### 2.3 Deleting Attributes
+### 2.3 Deleting attributes
 
 - Delete an attribute placeholder just like regular text (e.g., using backspace).
 
----
 
-## 3. Supported Attributes and Limitations
+
+## 3. Supported attributes and limitations
 
 ### 3.1 Work package attributes
 
 Subject patterns can include placeholders referencing the following work package attributes:
 
 | Attribute Name | Data Type         | Example    |
-| -------------- | ----------------- | ---------- |
+| -- | -- | - |
 | Accountable    | User name         | Jon Doe    |
 | Assignee       | User name         | Jon Doe    |
 | Author         | User name         | Jon Doe    |
@@ -64,13 +64,14 @@ Subject patterns can include placeholders referencing the following work package
 **Custom fields**: Supported custom fields include Text, Integer, Float, List, Date, Boolean, User, Version.
 **Unsupported attributes**: Long text and Link custom fields are excluded to keep subjects concise.
 
-> **Note:** Ensure selected attributes are activated and available in your project and work package types to avoid showing “N/A” in subjects.
+> [!NOTE] 
+> Ensure selected attributes are activated and available in your project and work package types to avoid showing “N/A” in subjects.
 
 
 ### 3.2 Supported project attribute
 
 | Attribute Name         | Data Type   | Example  |
-| ---------------------- | ----------- | -------- |
+| - | -- | -- |
 | Project: Active        | Boolean     | true     |
 | Project: Name          | String      | HR       |
 | Project: Status        | Status code | on_track |
@@ -81,29 +82,37 @@ Subject patterns can include placeholders referencing the following work package
 **Unsupported project attributes**: Long text and Link custom fields are excluded to keep subjects concise.
 
 
----
 
-## 4. Updating Automatic Subjects
+
+## 4. updating automatic subjects
 
 Automatic subjects update whenever an attribute referenced in the **current work package** changes and the work package is saved.
 
-**Important:** Attributes referencing parent work packages or project attributes won't trigger immediate updates. Changes in parent or project attributes appear only when the child work package itself is updated and saved again.
+> [!IMPORTANT] 
+> Attributes referencing parent work packages or project attributes won't trigger immediate updates. Changes in parent or project attributes appear only when the child work package itself is updated and saved again.
 
----
 
-## 5. Why "N/A" Appears in Subjects
 
-"N/A" indicates an empty or unavailable attribute referenced in the subject pattern. Typical causes:
+## 5. Why "N/A" appears in subjects
+
+"N/A" indicates an unavailable attribute referenced in the subject pattern. Typical causes:
+
+- The attribute isn't activated in the current project.
+- The attribute was removed from form configuration after creating the pattern.
+- A parent attribute is referenced, but the parent doesn't contain the attribute.
+
+
+
+## 5. Why [Attribute Name] appears in subjects
+
+[Attribute Name] indicates an empty attribute referenced in the subject pattern.
 
 - The attribute hasn't been filled by the user.
-- A parent attribute is referenced, but no parent is set, or the parent doesn't contain the attribute.
-- The attribute isn't activated in the current project.
+- A parent attribute is referenced, but no parent is set.
+- A project attribute is referenced, but hasn't been filled.
 
-Providing the missing attribute and saving the work package replaces **"N/A"** with the actual value.
 
----
-
-## 6. Tips for Effective Patterns
+## 6. Tips for effective patterns
 
 Good subject patterns should be:
 
@@ -113,14 +122,10 @@ Good subject patterns should be:
 
 Check our [Example Subject Patterns](#) for inspiration.
 
----
 
-## 7. Further Resources
+
+## 7. Further resources
 
 - [User Guide on Automatic Subjects](#)
 - [Tips for Writing Effective Patterns](#)
 
----
-
-**Summary:**  
-Automatic subjects simplify task management by combining dynamic attributes with descriptive text. Thoughtful, concise patterns help your team quickly identify tasks, reduce errors, and ensure consistency across projects.
