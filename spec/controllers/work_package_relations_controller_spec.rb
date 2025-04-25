@@ -36,7 +36,7 @@ RSpec.describe WorkPackageRelationsController do
   shared_let(:work_package) { create(:work_package, project:) }
   shared_let(:related_work_package) { create(:work_package, project:) }
   shared_let(:unrelated_work_package) { create(:work_package, project:) }
-  shared_let(:relation) do
+  shared_let(:relation, refind: true) do
     create(:relation,
            from: work_package,
            to: related_work_package,
