@@ -28,18 +28,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class WorkPackages::ActivitiesTab::InternalMentionsSanitizer
-  def self.sanitize(work_package, notes)
-    new(work_package, notes).call
+class WorkPackages::ActivitiesTab::InternalCommentMentionsSanitizer
+  def self.sanitize(work_package, comment)
+    new(work_package, comment).call
   end
 
-  def initialize(work_package, notes)
+  def initialize(work_package, comment)
     @work_package = work_package
-    @notes = notes
+    @comment = comment
   end
 
   def call
-    return "" if notes.blank?
+    return "" if comment.blank?
 
     convert_unmentionable_principals_to_plain_text
     CGI.unescapeHTML(parser.to_html)
@@ -47,7 +47,7 @@ class WorkPackages::ActivitiesTab::InternalMentionsSanitizer
 
   private
 
-  attr_reader :work_package, :notes
+  attr_reader :work_package, :comment
 
   def convert_unmentionable_principals_to_plain_text
     mentionable_principals_ids = mentionable_principals.pluck(:id)
@@ -60,7 +60,7 @@ class WorkPackages::ActivitiesTab::InternalMentionsSanitizer
   end
 
   def parser
-    @parser ||= Nokogiri::HTML.fragment(notes)
+    @parser ||= Nokogiri::HTML.fragment(comment)
   end
 
   def mentionable_principals
