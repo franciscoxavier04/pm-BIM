@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe WorkPackages::ActivitiesTab::InternalMentionsSanitizer do
+RSpec.describe WorkPackages::ActivitiesTab::InternalCommentMentionsSanitizer do
   include InternalCommentsHelpers
 
   shared_let(:project) { create(:project) }

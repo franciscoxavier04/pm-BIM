@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class WorkPackages::ActivitiesTab::InternalMentionsSanitizer
+class WorkPackages::ActivitiesTab::InternalCommentMentionsSanitizer
   def self.sanitize(work_package, comment)
     new(work_package, comment).call
   end

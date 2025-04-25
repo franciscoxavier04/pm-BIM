@@ -231,7 +231,7 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def sanitized_journal_notes
-    WorkPackages::ActivitiesTab::InternalMentionsSanitizer.sanitize(@work_package, journal_params[:notes])
+    WorkPackages::ActivitiesTab::InternalCommentMentionsSanitizer.sanitize(@work_package, journal_params[:notes])
   end
 
   def journal_params
