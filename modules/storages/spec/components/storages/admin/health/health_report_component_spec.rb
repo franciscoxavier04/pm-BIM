@@ -87,7 +87,7 @@ RSpec.describe Storages::Admin::Health::HealthReportComponent, type: :component 
   private
 
   def generate_test_group(group_key, checks)
-    group = Storages::Peripherals::ConnectionValidators::ValidationGroupResult.new
+    group = Storages::Peripherals::ConnectionValidators::ValidationGroupResult.new(group_key)
 
     checks.each_with_index do |check, idx|
       key = :"check_#{idx + 1}"
@@ -95,9 +95,9 @@ RSpec.describe Storages::Admin::Health::HealthReportComponent, type: :component 
                when :success
                  Storages::Peripherals::ConnectionValidators::CheckResult.success(key)
                when :warning
-                 Storages::Peripherals::ConnectionValidators::CheckResult.warning(key, :"#{key}_warning")
+                 Storages::Peripherals::ConnectionValidators::CheckResult.warning(key, :"#{key}_warning", nil)
                when :failure
-                 Storages::Peripherals::ConnectionValidators::CheckResult.failure(key, :"#{key}_failure")
+                 Storages::Peripherals::ConnectionValidators::CheckResult.failure(key, :"#{key}_failure", nil)
                else
                  Storages::Peripherals::ConnectionValidators::CheckResult.skipped(key)
                end

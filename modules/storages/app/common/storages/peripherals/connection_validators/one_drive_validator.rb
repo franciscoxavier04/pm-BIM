@@ -32,10 +32,10 @@ module Storages
   module Peripherals
     module ConnectionValidators
       class OneDriveValidator < BaseConnectionValidator
-        register_group :base_configuration, OneDrive::StorageConfigurationValidator
-        register_group :authentication, OneDrive::AuthenticationValidator,
+        register_group OneDrive::StorageConfigurationValidator
+        register_group OneDrive::AuthenticationValidator,
                        precondition: ->(_, result) { result.group(:base_configuration).non_failure? }
-        register_group :ampf_configuration, OneDrive::AmpfConfigurationValidator,
+        register_group OneDrive::AmpfConfigurationValidator,
                        precondition: ->(storage, result) {
                          result.group(:base_configuration).non_failure? && storage.automatic_management_enabled?
                        }

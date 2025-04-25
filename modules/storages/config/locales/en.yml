@@ -290,7 +290,7 @@ en:
         od_client_write_permission_missing: The client seems to have write permissions missing. Please check the setup documentation for your storage.
         od_drive_id_invalid: The configured drive id seems invalid. Please check the configuration.
         od_drive_id_not_found: The configured drive id could not be found. Please check the configuration.
-        od_existing_test_folder: The folder name needed for testing already exists. Please delete it and try again.
+        od_existing_test_folder: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
         od_oauth_request_not_found: OpenProject couldn't find the root folder in the drive using the current logged-in user. Please check the server logs for further information.
         od_oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive/SharePoint or we couldn't acquire a token. Please check the server logs for further information.
         od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.

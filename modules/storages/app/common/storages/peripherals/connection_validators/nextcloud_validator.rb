@@ -33,13 +33,16 @@ module Storages
     module ConnectionValidators
       class NextcloudValidator < BaseConnectionValidator
 
-        register_group :base_configuration, Nextcloud::StorageConfigurationValidator
-        register_group :authentication, Nextcloud::AuthenticationValidator,
-                       precondition: ->(_, result) { result.group(:base_configuration).non_failure? }
-        register_group :ampf_configuration, Nextcloud::AmpfConfigurationValidator,
-                       precondition: ->(storage, result) {
-                         result.group(:base_configuration).non_failure? && storage.automatic_management_enabled?
-                       }
+        register_group Nextcloud::StorageConfigurationValidator
+        register_group Nextcloud::AuthenticationValidator,
+                       precondition: ->(_, result) do
+                         result.group(Nextcloud::StorageConfigurationValidator.key).non_failure?
+                       end
+        register_group Nextcloud::AmpfConfigurationValidator,
+                       precondition: ->(storage, result) do
+                         result.group(Nextcloud::StorageConfigurationValidator.key).non_failure? &&
+                           storage.automatic_management_enabled?
+                       end
       end
     end
   end

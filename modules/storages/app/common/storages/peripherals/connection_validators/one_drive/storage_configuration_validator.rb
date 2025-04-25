@@ -35,6 +35,8 @@ module Storages
         class StorageConfigurationValidator < BaseValidatorGroup
           using ServiceResultRefinements
 
+          def self.key = :base_configuration
+
           private
 
           def validate

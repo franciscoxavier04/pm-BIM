@@ -43,11 +43,11 @@ module Storages
 
         def data
           @data ||= {
-            text: I18n.t("storages.health.checks.#{@group}.#{model.key}"),
+            text: model.humanize_title(@group),
             status_color:,
             status_text:,
             error_code:,
-            error_text:,
+            error_text: model.humanize_error_message,
             docs_href: ::OpenProject::Static::Links.url_for(:storage_docs, :health_status)
           }
         end
@@ -58,12 +58,6 @@ module Storages
           elsif model.warning?
             "WRN_#{model.code.upcase}"
           end
-        end
-
-        def error_text
-          return nil if model.success? || model.skipped?
-
-          I18n.t("storages.health.connection_validation.#{model.code}")
         end
 
         def status_color

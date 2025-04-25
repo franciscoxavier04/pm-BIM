@@ -33,6 +33,8 @@ module Storages
     module ConnectionValidators
       module Nextcloud
         class StorageConfigurationValidator < BaseValidatorGroup
+          def self.key = :base_configuration
+
           private
 
           def validate

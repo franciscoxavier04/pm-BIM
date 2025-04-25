@@ -66,7 +66,7 @@ RSpec.describe Storages::Admin::Health::CheckResultComponent, type: :component d
   context "if check result is a warning" do
     let(:group_key) { :ampf_configuration }
     let(:check_result) do
-      Storages::Peripherals::ConnectionValidators::CheckResult.warning(:drive_contents, :od_unexpected_content)
+      Storages::Peripherals::ConnectionValidators::CheckResult.warning(:drive_contents, :od_unexpected_content, nil)
     end
 
     it "renders the component" do
@@ -80,7 +80,7 @@ RSpec.describe Storages::Admin::Health::CheckResultComponent, type: :component d
 
   context "if check result is a failure" do
     let(:check_result) do
-      Storages::Peripherals::ConnectionValidators::CheckResult.failure(:capabilities_request, :unknown_error)
+      Storages::Peripherals::ConnectionValidators::CheckResult.failure(:capabilities_request, :unknown_error, nil)
     end
 
     it "renders the component" do

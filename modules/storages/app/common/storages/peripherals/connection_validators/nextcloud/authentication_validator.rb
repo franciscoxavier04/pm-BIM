@@ -33,6 +33,8 @@ module Storages
     module ConnectionValidators
       module Nextcloud
         class AuthenticationValidator < BaseValidatorGroup
+          def self.key = :authentication
+
           def initialize(storage)
             super
             @user = User.current

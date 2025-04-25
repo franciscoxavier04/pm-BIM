@@ -33,6 +33,8 @@ module Storages
     module ConnectionValidators
       module OneDrive
         class AuthenticationValidator < BaseValidatorGroup
+          def self.key = :authentication
+
           def initialize(storage)
             super
             @user = User.current

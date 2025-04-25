@@ -35,6 +35,8 @@ module Storages
         class AmpfConfigurationValidator < BaseValidatorGroup
           TEST_FOLDER_NAME = "OpenProjectConnectionValidationFolder"
 
+          def self.key = :ampf_configuration
+
           private
 
           def validate
@@ -78,7 +80,7 @@ module Storages
               .on_success { pass_check(:client_folder_creation) }
               .on_failure do
               code = it.result == :already_exists ? :od_existing_test_folder : :od_client_write_permission_missing
-              fail_check(:client_folder_creation, code)
+              fail_check(:client_folder_creation, code, context: { folder_name: TEST_FOLDER_NAME })
             end
           end
 

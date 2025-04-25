@@ -35,6 +35,8 @@ module Storages
         class AmpfConfigurationValidator < BaseValidatorGroup
           using ServiceResultRefinements
 
+          def self.key = :ampf_configuration
+
           private
 
           def validate
