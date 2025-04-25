@@ -1058,6 +1058,46 @@ RSpec.describe WorkPackages::SetAttributesService,
       end
     end
 
+    context "with zero duration" do
+      let(:work_package) do
+        build_stubbed(:work_package, start_date: Time.zone.today, due_date: Time.zone.today + 5.days)
+      end
+      let(:call_attributes) { { duration: 0 } }
+      let(:expected_attributes) { {} }
+
+      it_behaves_like "service call" do
+        it "keeps the dates and duration values (error to be detected by contract)" do
+          subject
+
+          expect(work_package.start_date)
+            .to eq(Time.zone.today)
+          expect(work_package.due_date)
+            .to eq(Time.zone.today + 5.days)
+          expect(work_package.duration)
+            .to eq(0)
+        end
+      end
+
+      context "when the work package has a soonest_start from a predecessor (Regression #63598)" do
+        before do
+          allow(instance).to receive(:new_start_date).and_return(Time.zone.yesterday)
+        end
+
+        it_behaves_like "service call" do
+          it "keeps the dates and duration values (error to be detected by contract)" do
+            subject
+
+            expect(work_package.start_date)
+              .to eq(Time.zone.yesterday)
+            expect(work_package.due_date)
+              .to be_nil
+            expect(work_package.duration)
+              .to eq(0)
+          end
+        end
+      end
+    end
+
     context "with invalid duration (when the duration is text)" do
       let(:work_package) do
         build_stubbed(:work_package, start_date: Time.zone.today, due_date: Time.zone.today + 5.days)
