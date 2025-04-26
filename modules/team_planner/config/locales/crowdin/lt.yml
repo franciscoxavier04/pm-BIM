@@ -8,11 +8,11 @@ lt:
   project_module_team_planner_view: "Komandos planai"
   ee:
     feature_names:
-      team_planner_view: "Team planner"
+      team_planner_view: "Komandos planas"
     upsell:
       team_planner_view:
-        title: "Team planner"
-        description: "Get a complete overview of your team’s planning with Team Planner. Stretch, shorten and drag-and-drop work packages to modify dates, move them or change assignees."
+        title: "Komandos planas"
+        description: "Gaukite pilną jūsų komandos plano vaizdą su Team Planner. Pakeiskite datas prailgindami, sutrumpindami ar nuvilkdami darbo paketus, perkelkite juos ar pakeiskite paskirtuosius."
   team_planner:
     label_team_planner: "Komandos planas"
     label_new_team_planner: "Naujas komandos planas"

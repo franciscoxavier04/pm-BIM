@@ -50,7 +50,7 @@ si:
         project: ව්යාපෘති
         user: පරිශීලක
         work_package: වැඩ පැකේජය
-        subject: Subject
+        subject: විෂය
         hours: පැය
         comments: අදහස් දක්වන්න
         activity: ක්‍රියාකාරකම
@@ -164,8 +164,8 @@ si:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "ලැයිස්තුව"
-  label_month: "Month"
-  label_day: "Day"
+  label_month: "මාසය"
+  label_day: "දවස"
   label_today_capitalized: "Today"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Something went wrong. Please try again."

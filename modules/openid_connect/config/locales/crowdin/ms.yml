@@ -93,7 +93,7 @@ ms:
         name: Adat
       upsell:
         title: "Single Sign-On (SSO) with OpenID connect"
-        description: Connect OpenProject to an OpenID connect identity provider
+        description: Sambungkan OpenProject kepada pembekal identiti sambungan OpenID
       label_add_new: Tambah penyedia OpenID baharu
       label_edit: Edit penyedia OpenID %{name}
       label_empty_title: Tiada pembekal OpenID dikonfigurasikan lagi.

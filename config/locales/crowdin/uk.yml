@@ -48,7 +48,7 @@ uk:
           title: "Make this comment public?"
           heading: "Make this comment public?"
           description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
-          confirm_button_text: "Make public"
+          confirm_button_text: "Зробити загальнодоступним"
   admin:
     plugins:
       no_results_title_text: Зараз немає встановлених плагінів.
@@ -293,7 +293,7 @@ uk:
   global_search:
     placeholder: "Пошук у додатку %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "Усі"
       messages: "Форум"
       wiki_pages: "Wiki"
   groups:
@@ -1324,7 +1324,7 @@ uk:
         queries/principals/filters/internal_mentionable_on_work_package_filter:
           attributes:
             values:
-              single_value_requirement: "must be a single work package"
+              single_value_requirement: "має бути одним пакетом робіт"
         relation:
           typed_dag:
             circular_dependency: "Відносини створюють коло відносин."
@@ -1856,7 +1856,7 @@ uk:
       failed: 'Не вдалося скопіювати проект "%{source_project_name}" до проекту "%{target_project_name}".'
       succeeded: 'Скопіював проект "%{source_project_name}" до "%{target_project_name}".'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "Сторінка Wiki"
   date:
     abbr_day_names:
       - "Нед"
@@ -2072,50 +2072,50 @@ uk:
       work_package_sharing: Діліться пакетами робіт із зовнішніми користувачами
       work_package_subject_generation: Створення теми пакета робіт
     upsell:
-      title: "Enterprise add-on"
-      plan_title: "Enterprise %{plan} add-on"
-      plan_name: "%{plan} enterprise plan"
+      title: "Доповнення версії Enterprise"
+      plan_title: "Доповнення версії Enterprise %{plan}"
+      plan_name: "Версія Enterprise %{plan}"
       plan_text_html: "Available starting with the %{plan_name}."
-      hide_banner: "Hide this banner"
+      hide_banner: "Приховати цей банер"
       baseline_comparison:
-        description: Highlight changes made to this list since any point in the past.
+        description: Виділяйте зміни, внесені в цей список із будь-якого моменту часу в минулому.
       work_package_subject_generation:
-        description: "Create automatically generated subjects using referenced attributes and text."
+        description: "Створюйте автоматично згенеровані теми на основі атрибутів і тексту."
       customize_life_cycle:
-        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
+        description: "Створюйте й упорядковуйте етапи й проєкту, відмінні від тих, що передбачено плануванням циклу проєкту PM2."
       conditional_highlighting:
-        description: "Need certain work packages to stand out from the mass? Use conditional highlighting in the work packages table."
+        description: "Потрібно, щоб виокремити певні пакети робіт? Скористайтесь умовним виділенням у таблиці пакетів робіт."
       work_package_query_relation_columns:
-        description: "Need to see relations or child elements in the work package list?"
+        description: "Хочете переглядати зв’язки або дочірні елементи в списку пакетів робіт?"
       edit_attribute_groups:
-        description: "Customize form configuration with these additional add-ons:"
+        description: "Налаштуйте конфігурацію форми за допомогою цих додаткових доповнень:"
         features:
-          groups: "Add new attribute groups"
-          rename: "Rename attribute groups"
-          related: "Add a table of related work packages"
+          groups: "Додати нові групи атрибутів"
+          rename: "Перейменувати групи атрибутів"
+          related: "Додати таблицю зв’язаних пакетів робіт"
       readonly_work_packages:
-        description: "Mark work packages as read-only for specific statuses."
+        description: "Позначайте пакети робіт як доступні лише для читання залежно від статусу."
       custom_field_hierarchies:
-        description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
+        description: "Користувацькі поля типу «Ієрархія» дають змогу впорядковувати ієрархічні структури в пакети роьіт, використовуючи багаторівневі списки."
       date_alerts:
-        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+        description: "Завдяки оповіщенням про дати ви завжди знатимете про заплановані дати початку або завершення, тож ніколи не пропускатимете важливі терміни й не забуватимете про них."
       work_package_sharing:
-        description: "Share work packages with users who are not members of the project."
+        description: "Діліться пакетами робіт із користувачами, які не належать до учасників проєкту."
       define_custom_style:
-        title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        title: "Користувацький колір теми й логотип"
+        more_info: "Примітка: вибраний логотип буде загальнодоступний."
+        description: Персоналізуйте свій екземпляр OpenProject за допомогою власного логотипа й кольорів.
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "Користувацькі дії"
+        description: "Користувацькі дії – це ярлики набору попередньо визначених дій, які ви можете включати в певні пакети робіт залежно від статусу, ролі, типу або проєкту."
       virus_scanning:
-        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
+        description: "Переконайтеся, що вивантажені в OpenProject файли перевіряються на віруси перед тим, як стають доступними для інших користувачів."
       placeholder_users:
-        title: Placeholder users
+        title: Прототипи користувачів
         description: >
-          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
+          Прототипи користувачів допомагають призначати пакети робіт користувачам, які не входять у ваш проєкт. Вони можуть бути корисні в різних сценаріях. Наприклад, якщо потрібно відстежувати завдання для ресурсу, який поки не доступний або не визначений. Або ж ви хочете відстежувати завдання, призначені особі, не надаючи їй доступу до OpenProject.
       internal_comments:
-        title: "For your eyes only"
+        title: "Лише для вас"
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "Дії щодо відстеження часу"
   enumeration_work_package_priorities: "Пріоритети робочого пакету"
@@ -2344,7 +2344,7 @@ uk:
     blocks:
       community: "Спільнота OpenProject"
       upsell:
-        title: "Upgrade to Enterprise edition"
+        title: "Оновлення до версії Enterprise"
     links:
       upgrade_enterprise_edition: "Оновлення до версії Enterprise"
       postgres_migration: "Міграція інсталяції в PostgreSQL"
@@ -2821,7 +2821,7 @@ uk:
   label_modules: "Модулі"
   label_months_from: "місяців(ця) з"
   label_more: "Більше"
-  label_more_information: "More information"
+  label_more_information: "Додаткові відомості"
   label_more_than_ago: "більш ніж днів(я) назад"
   label_move_column_left: "Перемістити стовпець ліворуч"
   label_move_column_right: "Перемістити стовпець праворуч"
@@ -3422,7 +3422,7 @@ uk:
     text_getting_started_description: "Отримайте стислий огляд управління проєктами та командної роботи в OpenProject. Це відео можна переглянути знову в меню довідки."
     welcome: "Вітаємо в додатку %{app_title}"
     select_language: "Будь ласка, виберіть мову"
-  permission_add_work_package_comments: "Add comments"
+  permission_add_work_package_comments: "Додати коментарі"
   permission_add_work_packages: "Додати робочі пакети"
   permission_add_messages: "Відправка повідомлень"
   permission_add_project: "Створення проєктів"
@@ -3453,12 +3453,12 @@ uk:
   permission_delete_timelines: "Видалити графіки"
   permission_delete_wiki_pages: "Видалення wiki-сторінок"
   permission_delete_wiki_pages_attachments: "Видалення прикріплених файлів"
-  permission_edit_work_package_comments: "Moderate comments"
-  permission_edit_work_package_comments_explanation: "Caution: Users with this permission are able to edit anyone's comment."
+  permission_edit_work_package_comments: "Модерувати коментарі"
+  permission_edit_work_package_comments_explanation: "Увага! Користувачі із цим дозволом можуть редагувати будь-чиї коментарі."
   permission_edit_work_packages: "Редагувати робочі пакети"
   permission_edit_messages: "Редагування повідомлень"
   permission_edit_own_internal_comments: "Edit own internal comments"
-  permission_edit_own_work_package_comments: "Edit own comments"
+  permission_edit_own_work_package_comments: "Редагувати власні коментарі"
   permission_edit_own_messages: "Редагування власних повідомлень"
   permission_edit_own_time_entries: "Редагування власного обліку часу"
   permission_edit_others_internal_comments: "Moderate internal comments"
@@ -4318,7 +4318,7 @@ uk:
         edit: "Редагування"
         edit_description: "Може переглядати, редагувати список проєктів і надавати спільний доступ до нього."
       upsell:
-        message: "Sharing project lists with individual users is an enterprise add-on."
+        message: "Надавати спільний доступ до списків проєктів окремим користувачам можна за допомогою доповнення версії Enterprise."
   working_days:
     info: >
       Під час планування пакетів робіт невибрані дні пропускаються й не включаються в кількість днів. Це налаштування можна змінити на рівні пакета робіт.

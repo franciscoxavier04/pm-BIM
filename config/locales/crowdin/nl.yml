@@ -294,7 +294,7 @@ nl:
   global_search:
     placeholder: "Zoeken in %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "Alle"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
@@ -411,7 +411,7 @@ nl:
   project_phase:
     working_days_count:
       one: "Duration: %{count} working day"
-      other: "Duration: %{count} working days"
+      other: "Duur: %{count} werkdagen"
   lists:
     create:
       success: "De gewijzigde lijst is opgeslagen als een nieuwe lijst"
@@ -624,8 +624,8 @@ nl:
           label: "Onderwerp patroon"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
+            work_package: "Werkpakket"
+            parent: "Bovenliggend werkpakket"
             project: "Project"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
@@ -760,9 +760,9 @@ nl:
       follows_description: "Het gerelateerde werkpakket moet noodzakelijkerwijs voltooid zijn voordat dit werkpakket kan beginnen"
       label_child_singular: "kind"
       label_child_plural: "kinderen"
-      new_child: "Create new child"
+      new_child: "Maak nieuw kind"
       new_child_text: "Creëert een gerelateerd werkpakket als subitem van het huidige (bovenliggende) werkpakket"
-      child: "Child"
+      child: "Kind"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
       label_blocks_singular: "blokkeert"
@@ -955,11 +955,11 @@ nl:
         is_required: "Vereist voor alle projecten"
         custom_field_section: Sectie
       project/phase:
-        date_range: "Date range"
+        date_range: "Datumbereik"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Naam"
+        color: "Kleur"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1270,7 +1270,7 @@ nl:
             date_range:
               start_date_must_be_before_finish_date: "start date must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+              incomplete: "is onvolledig."
         query:
           attributes:
             project:
@@ -1563,14 +1563,14 @@ nl:
       changeset: "Wijzigingensets"
       message: "Fora"
       news: "Nieuws"
-      project_details: "Project details"
+      project_details: "Projectdetails"
       subproject: "Inclusief subprojecten"
       time_entry: "Bestede tijd"
       wiki_edit: "Wiki"
       work_package: "Werkpakketten"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "geactiveerd"
+      deactivated: "gedeactiveerd"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -1818,7 +1818,7 @@ nl:
       failed: 'Kan project "%{target_project_name}" project "%{source_project_name}" niet kopiëren.'
       succeeded: 'Gekopieerde project "%{source_project_name}" naar "%{target_project_name}".'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "Wikipagina"
   date:
     abbr_day_names:
       - "Zo"
@@ -2002,9 +2002,9 @@ nl:
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
       baseline_comparison:
-        description: Highlight changes made to this list since any point in the past.
+        description: Markeer wijzigingen die sindsdien in deze lijst zijn aangebracht.
       work_package_subject_generation:
-        description: "Create automatically generated subjects using referenced attributes and text."
+        description: "Maak automatisch gegenereerde onderwerpen met behulp van kenmerken en tekst waarnaar verwezen wordt."
       customize_life_cycle:
         description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       conditional_highlighting:
@@ -2014,7 +2014,7 @@ nl:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "Toevoegen van nieuwe attribuutgroepen"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -2022,22 +2022,22 @@ nl:
       custom_field_hierarchies:
         description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
       date_alerts:
-        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+        description: "Met datummeldingen wordt u op de hoogte gebracht van de start- of einddatum, zodat u nooit een belangrijke deadline mist of vergeet."
       work_package_sharing:
-        description: "Share work packages with users who are not members of the project."
+        description: "Werkpakketten delen met gebruikers die geen lid zijn van het project."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "Opmerking: het gebruikte logo is openbaar toegankelijk."
+        description: Pas uw OpenProject installatie aan met uw eigen logo en kleuren.
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "Aangepaste acties"
+        description: "Aangepaste acties zijn met één klik snelkoppelingen naar een aantal vooraf gedefinieerde acties die u op bepaalde werkpakketten op basis van status beschikbaar kunt maken rol, type of project."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
-        title: Placeholder users
+        title: Tijdelijke gebruikers
         description: >
-          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
+          Tijdelijke gebruikers zijn een manier om werkpakketten toe te wijzen aan gebruikers die geen deel uitmaken van uw project. Ze kunnen nuttig zijn in een reeks van scenario's; Bijvoorbeeld, als u de taken wilt bijhouden van een bron die nog niet genoemd of beschikbaar is, of als je die persoon geen toegang wilt geven tot OpenProject maar toch de taken wilt bijhouden die aan hen zijn toegewezen.
       internal_comments:
         title: "For your eyes only"
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
@@ -2268,7 +2268,7 @@ nl:
     blocks:
       community: "OpenProject gemeenschap"
       upsell:
-        title: "Upgrade to Enterprise edition"
+        title: "Upgrade naar Enterprise-editie"
     links:
       upgrade_enterprise_edition: "Upgrade naar Enterprise-editie"
       postgres_migration: "Uw installatie overzetten naar PostgreSQL"
@@ -2745,7 +2745,7 @@ nl:
   label_modules: "Modules"
   label_months_from: "maanden vanaf"
   label_more: "Meer"
-  label_more_information: "More information"
+  label_more_information: "Meer informatie"
   label_more_than_ago: "meer dan dagen geleden"
   label_move_column_left: "Verplaats kolom naar links"
   label_move_column_right: "Verplaats kolom naar rechts"
@@ -3854,7 +3854,7 @@ nl:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Toevoegen"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"

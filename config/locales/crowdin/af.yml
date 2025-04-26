@@ -297,7 +297,7 @@ af:
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "Almal"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
@@ -628,9 +628,9 @@ af:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Werkspakket"
+            parent: "Ouer"
+            project: "Projek"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -959,11 +959,11 @@ af:
         is_required: "Required for all projects"
         custom_field_section: Section
       project/phase:
-        date_range: "Date range"
+        date_range: "Datum reeks"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Naam"
+        color: "Kleur"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1822,7 +1822,7 @@ af:
       failed: 'Kon nie projek "%{source_project_name}" kopieer na projek "%{target_project_name}".'
       succeeded: 'Projek "%{source_project_name}" gekopieer na projek "%{target_project_name}".'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "Wiki bladsy"
   date:
     abbr_day_names:
       - "So"
@@ -2034,7 +2034,7 @@ af:
         more_info: "Note: the used logo will be publicly accessible."
         description: Customize your OpenProject installation with your own logo and colors.
       custom_actions:
-        title: "Custom actions"
+        title: "Pasgemaakte aksies"
         description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
@@ -3859,7 +3859,7 @@ af:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Voeg by"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"

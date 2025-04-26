@@ -70,7 +70,7 @@ de:
         invalid_time_format: "ist keine gültige Zeit. Erforderliches Format: HH:MM"
     models:
       recurring_meeting: "Wiederkehrende Besprechung"
-      meeting: "One-time meeting"
+      meeting: "Einmalige Besprechung"
       meeting_agenda_item: "Tagesordnungspunkt"
       meeting_agenda: "Agenda"
       meeting_section: "Abschnitt"
@@ -134,7 +134,7 @@ de:
   label_recurring_meeting_no_end_date: "Es sind weitere Besprechungen geplant (%{schedule})."
   label_recurring_meeting_more:
     one: "There is one more scheduled meeting (%{schedule})."
-    other: "There are %{count} more scheduled meetings (%{schedule})."
+    other: "Es gibt %{count} folgende Besprechungen (%{schedule})."
   label_recurring_meeting_more_past:
     one: "Es gibt eine weitere vergangene Besprechung."
     other: "Es gibt %{count} weitere vergangene Besprechungen."

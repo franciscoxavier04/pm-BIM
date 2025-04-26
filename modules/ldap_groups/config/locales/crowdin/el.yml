@@ -2,7 +2,7 @@ el:
   ee:
     upsell:
       ldap_groups:
-        title: 'LDAP group synchronization'
+        title: 'Ομαδικός συγχρονισμός LDAP'
         description: 'Synchronize LDAP groups with OpenProject groups to manage users, change their permissions and facilitate user management across groups.'
   plugin_openproject_ldap_groups:
     name: "OpenProject LDAP groups"

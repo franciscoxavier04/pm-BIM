@@ -231,7 +231,7 @@ cs:
       storage_provider: Poskytovatel úložiště
     health:
       actions:
-        download_report: Download
+        download_report: Stáhnout
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: Poslední kontrola %{datetime}
@@ -245,16 +245,16 @@ cs:
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
-          header: Authentication
+          header: Ověření
           non_provisioned_user: User provisioned by IDP
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
         base_configuration:
           capabilities_request: Remote file storage capabilities
-          client_id: Client ID
-          client_secret: Client secret
-          dependencies_check: Dependencies
+          client_id: ID klienta
+          client_secret: Tajný klíč klienta
+          dependencies_check: Závislosti
           dependencies_versions: Dependencies (version)
           diagnostic_request: Diagnostic request
           drive_id_format: Drive ID format
@@ -303,7 +303,7 @@ cs:
           oauth_request_not_found: OpenProject couldn't find the root folder in the drive using the current logged-in user. Please check the server logs for further information.
           oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive or we couldn't acquire a token. Please check the server logs for further information.
           oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
-          unexpected_content: Unexpected content found in the drive.
+          unexpected_content: Nalezen neočekávaný obsah v jednotce.
         placeholder: Zkontrolujte připojení k serveru.
         subtitle: Ověřování připojení
         tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
@@ -314,7 +314,7 @@ cs:
       label_healthy: Zdravé
       label_passed: Passed
       label_pending: Nevyřízeno
-      label_skipped: Skipped
+      label_skipped: Přeskočeno
       label_warning: Varování
       no_report: No report available
       no_report_description: Run the checks now for a full health status report for this file storage.
@@ -491,6 +491,5 @@ cs:
     successful_storage_connection: Úložiště bylo úspěšně připojeno! Nezapomeňte aktivovat úložiště v záložce Projekty pro každý požadovaný projekt.
     upsell:
       description: |-
-        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
-        work packages in a project.
-      title: OneDrive/SharePoint integration
+        Integrujte OneDrive/SharePoint jako úložiště souborů s OpenProject. Nahrávejte soubory a propojte je přímo s pracovními balíčky v projektu.
+      title: Integrace OneDrive/SharePoint

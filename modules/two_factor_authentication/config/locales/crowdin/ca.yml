@@ -82,8 +82,8 @@ ca:
       text_2fa_disabled: "L'usuari no ha configurat cap dispositiu 2FA a través de la pàgina \"El meu compte\""
       only_sms_allowed: "Only SMS delivery can be set up for other users."
     upsell:
-      title: "Two-factor authentication"
-      description: "Strenghten the security of your OpenProject instance by offering (or enforcing) two-factor authentification to all project members."
+      title: "Autentificació en dos passos"
+      description: "Enforteix la seguretat de la teva instància d'OpenProject oferint (o forçant) l'autentificació en dos passos per a tots els membres del projecte."
     backup_codes:
       none_found: No existeix cap codi de còpies de seguretat per aquest compte.
       singular: Codi de còpia de seguretat

@@ -50,7 +50,7 @@ hi:
         project: परियोजना
         user: उपयोगकर्ता
         work_package: कार्य पैकेज
-        subject: Subject
+        subject: विषय
         hours: घंटे
         comments: टिप्पणी
         activity: गतिविधी
@@ -165,7 +165,7 @@ hi:
   label_specific_month: "Month %{month}"
   label_list: "सूची"
   label_month: "Month"
-  label_day: "Day"
+  label_day: "दिन"
   label_today_capitalized: "Today"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Something went wrong. Please try again."

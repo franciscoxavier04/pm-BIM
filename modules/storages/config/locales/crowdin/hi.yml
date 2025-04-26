@@ -231,7 +231,7 @@ hi:
       storage_provider: Storage provider
     health:
       actions:
-        download_report: Download
+        download_report: डाउनलोड
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: Last checked %{datetime}
@@ -245,7 +245,7 @@ hi:
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
-          header: Authentication
+          header: प्रमाणीकरण
           non_provisioned_user: User provisioned by IDP
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities

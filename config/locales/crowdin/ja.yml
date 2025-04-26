@@ -295,7 +295,7 @@ ja:
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "全て"
       messages: "フォーラム"
       wiki_pages: "Wiki"
   groups:
@@ -618,9 +618,9 @@ ja:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "ワーク パッケージ"
+            parent: "親項目"
+            project: "プロジェクト"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -753,7 +753,7 @@ ja:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      new_child: "Create new child"
+      new_child: "子関係を作成"
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "関連するワークパッケージを現在の(親)ワークパッケージのサブ項目にします。"
@@ -948,11 +948,11 @@ ja:
         is_required: "Required for all projects"
         custom_field_section: セクション
       project/phase:
-        date_range: "Date range"
+        date_range: "期間"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "名称"
+        color: "色"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1545,14 +1545,14 @@ ja:
       changeset: "更新履歴"
       message: "フォーラム"
       news: "ニュース"
-      project_details: "Project details"
+      project_details: "プロジェクトの詳細"
       subproject: "Include subprojects"
       time_entry: "作業時間の記録"
       wiki_edit: "Wiki"
       work_package: "ワークパッケージ"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "有効化"
+      deactivated: "無効化"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -1800,7 +1800,7 @@ ja:
       failed: 'プロジェクト「%{target_project_name}」にプロジェクト「%{source_project_name}」をコピーできませんでした。'
       succeeded: 'プロジェクト「%{target_project_name}」にプロジェクト「%{source_project_name}」をコピーしました。'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "Wiki ページ"
   date:
     abbr_day_names:
       - "（日）"
@@ -1977,7 +1977,7 @@ ja:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "新しい属性グループを追加"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -1993,14 +1993,14 @@ ja:
         more_info: "Note: the used logo will be publicly accessible."
         description: Customize your OpenProject installation with your own logo and colors.
       custom_actions:
-        title: "Custom actions"
+        title: "カスタムアクション"
         description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
-        title: Placeholder users
+        title: プレースホルダー ユーザー
         description: >
-          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
+          プレースホルダー・ユーザーは、プロジェクトに参加していないユーザーにワーク・パッケージを割り当てる方法です。例えば、まだ名前も決まっていない、利用可能でもないリソースのタスクを追跡する必要がある場合や、その人にOpenProjectへのアクセス権を与えたくないが、その人に割り当てられたタスクを追跡したい場合などです。
       internal_comments:
         title: "For your eyes only"
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
@@ -2231,7 +2231,7 @@ ja:
     blocks:
       community: "OpenProject コミュニティ"
       upsell:
-        title: "Upgrade to Enterprise edition"
+        title: "エンタープライズ版にアップグレード"
     links:
       upgrade_enterprise_edition: "エンタープライズ版にアップグレード"
       postgres_migration: "PostgreSQL にインストールを移行しています"
@@ -2708,7 +2708,7 @@ ja:
   label_modules: "モジュール"
   label_months_from: "ヶ月分"
   label_more: "続き"
-  label_more_information: "More information"
+  label_more_information: "詳細情報"
   label_more_than_ago: "今日より○日前以前"
   label_move_column_left: "列を左に移動"
   label_move_column_right: "列を右に移動"
@@ -3816,7 +3816,7 @@ ja:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "追加"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"
@@ -4198,7 +4198,7 @@ ja:
         edit: "編集"
         edit_description: "Can view, share and edit this project list."
       upsell:
-        message: "Sharing project lists with individual users is an enterprise add-on."
+        message: "個人ユーザーとのプロジェクトリストの共有は、エンタープライズアドオンです。"
   working_days:
     info: >
       Days that are not selected are skipped when scheduling work packages (and not included in the day count). These can be overridden at a work-package level.

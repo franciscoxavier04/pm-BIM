@@ -50,14 +50,14 @@ he:
         project: פרוייקט
         user: משתמש
         work_package: חבילת עבודה
-        subject: Subject
+        subject: נושא
         hours: שעות
         comments: תגובה
         activity: פעילות
         spent_on: תאריך
         start_time: Start time
         end_time: Finish time
-        time: Time
+        time: זמן
     models:
       time_entry:
         one: "Time entry"
@@ -65,7 +65,7 @@ he:
         many: "Time entries"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "עלות כניסה"
         two: "Cost entries"
         many: "Cost entries"
         other: "Cost entries"
@@ -172,8 +172,8 @@ he:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "רשימה"
-  label_month: "Month"
-  label_day: "Day"
+  label_month: "חודש"
+  label_day: "ימים"
   label_today_capitalized: "Today"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Something went wrong. Please try again."

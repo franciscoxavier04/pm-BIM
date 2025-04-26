@@ -50,22 +50,22 @@ sl:
         project: Projekt
         user: Uporabnik
         work_package: Delovni paket
-        subject: Subject
+        subject: Zadeva
         hours: Ure
         comments: Komentar
         activity: Aktivnost
         spent_on: Datum
         start_time: Start time
         end_time: Finish time
-        time: Time
+        time: Čas
     models:
       time_entry:
-        one: "Time entry"
+        one: "Vnos časa"
         two: "Time entries"
         few: "Time entries"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Vnos stroškov"
         two: "Cost entries"
         few: "Cost entries"
         other: "Cost entries"
@@ -172,9 +172,9 @@ sl:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Seznam"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "Mesec"
+  label_day: "Dan"
+  label_today_capitalized: "Danes"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "nekaj je šlo narobe. Prosim poskusite ponovno."
   notice_successful_restore: "Uspešna obnovitev."

@@ -231,7 +231,7 @@ ka:
       storage_provider: Storage provider
     health:
       actions:
-        download_report: Download
+        download_report: გადმოწერა
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: Last checked %{datetime}
@@ -245,15 +245,15 @@ ka:
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
-          header: Authentication
+          header: ავთენტიკაცია
           non_provisioned_user: User provisioned by IDP
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
         base_configuration:
           capabilities_request: Remote file storage capabilities
-          client_id: Client ID
-          client_secret: Client secret
+          client_id: კლიენტის ID
+          client_secret: კლიენტის კოდი
           dependencies_check: Dependencies
           dependencies_versions: Dependencies (version)
           diagnostic_request: Diagnostic request

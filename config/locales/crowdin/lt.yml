@@ -294,7 +294,7 @@ lt:
   global_search:
     placeholder: "Ieškoti %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "Visi"
       messages: "Forumas"
       wiki_pages: "Wiki"
   groups:
@@ -641,9 +641,9 @@ lt:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Darbų paketas"
+            parent: "Tėvas"
+            project: "Projektas"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -779,7 +779,7 @@ lt:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "vaikai"
-      new_child: "Create new child"
+      new_child: "Sukurti naują vaiką"
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
@@ -974,11 +974,11 @@ lt:
         is_required: "Required for all projects"
         custom_field_section: Skiltis
       project/phase:
-        date_range: "Date range"
+        date_range: "Laikotarpis"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Vardas"
+        color: "Spalva"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1604,14 +1604,14 @@ lt:
       changeset: "Pakeitimų paketai"
       message: "Forumai"
       news: "Naujienos"
-      project_details: "Project details"
+      project_details: "Projekto ypatybės"
       subproject: "Įtraukti subprojektus"
       time_entry: "Praleista laiko"
       wiki_edit: "Wiki"
       work_package: "Darbų paketai"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "aktyvus"
+      deactivated: "neaktyvus"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -1859,7 +1859,7 @@ lt:
       failed: 'Nepavyko nukopijuoti „%{source_project_name}“ projekto į „%{target_project_name}“ projektą.'
       succeeded: 'Projektas „%{source_project_name}“ sėkmingai nukopijuotas į „%{target_project_name}“.'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "Wiki puslapis"
   date:
     abbr_day_names:
       - "Sek"
@@ -2075,13 +2075,13 @@ lt:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
-      title: "Enterprise add-on"
+      title: "Enterprise priedas"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
       baseline_comparison:
-        description: Highlight changes made to this list since any point in the past.
+        description: Paryškinti pakeitimus, padarytus šiame sąraše, nuo bet kokio laiko momento praeityje.
       work_package_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2093,7 +2093,7 @@ lt:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "Pridėti naujas atributų grupes"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -2101,22 +2101,22 @@ lt:
       custom_field_hierarchies:
         description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
       date_alerts:
-        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+        description: "Su datos įspėjimais jus informuos apie ateinančias pradžios ir pabaigos datas, kad niekada nepraleistumėte ar nepamirštumėte svarbių terminų."
       work_package_sharing:
-        description: "Share work packages with users who are not members of the project."
+        description: "Bendrinkite darbo paketus su naudotojais, kurie nėra projekto nariai."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "Pastaba: panaudotas logotipas bus viešai prieinamas."
+        description: Tinkinkite jūsų OpenProject naudodami savo logotipą ir spalvas.
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "Pasirinktiniai veiksmai"
+        description: "Savo veiksmai yra vieno paspaudimo kombinacijos, leidžiančios nustatyti veiksmus, kuriuos galite padaryti preinamais kai kuriuose darbo paketuose pagal jų būseną, rolę, tipą ar projektą."
       virus_scanning:
-        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
+        description: "Užtikrinkite, kad į OpenProject įkelti failai būtų patikrinti nuo virusų prieš padarant juos prieinamus kitiems naudotojams."
       placeholder_users:
-        title: Placeholder users
+        title: Statytiniai naudotojai
         description: >
-          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
+          Statytiniai naudotojai leidžia paskirti darbo paketus naudotojams, kurių nėra jūsų projekte. Jie gali būti naudingi įvairiose situacijose. Pavyzdžiui jums reikia sekti užduotis resursų, kurie dar neįvardinti ar negalimi arba jūs nenorite duoti konkrečiam asmeniui prieigos prie OpenProject, bet vis tiek norite sekti jiems paskirtas užduotis.
       internal_comments:
         title: "For your eyes only"
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
@@ -2347,7 +2347,7 @@ lt:
     blocks:
       community: "OpenProject community"
       upsell:
-        title: "Upgrade to Enterprise edition"
+        title: "Pagerinti į Enterprise versiją"
     links:
       upgrade_enterprise_edition: "Pagerinti į Enterprise versiją"
       postgres_migration: "Migruojame jūsų instaliaciją į PostgreSQL"
@@ -2824,7 +2824,7 @@ lt:
   label_modules: "Moduliai"
   label_months_from: "mėnesiai nuo"
   label_more: "Daugiau"
-  label_more_information: "More information"
+  label_more_information: "Daugiau informacijos"
   label_more_than_ago: "daugiau nei prieš dieną"
   label_move_column_left: "Perkelti stulpelį į kairę"
   label_move_column_right: "Perkelti stulpelį į dešinę"
@@ -3935,7 +3935,7 @@ lt:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Pridėti"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"

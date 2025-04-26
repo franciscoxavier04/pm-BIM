@@ -297,7 +297,7 @@ eu:
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "Denak"
       messages: "Forum"
       wiki_pages: "Wikia"
   groups:

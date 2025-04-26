@@ -231,7 +231,7 @@ ms:
       storage_provider: Penyedia storan
     health:
       actions:
-        download_report: Download
+        download_report: Muat turun
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: Terakhir disemak %{datetime}
@@ -245,15 +245,15 @@ ms:
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
-          header: Authentication
+          header: Pengesahan
           non_provisioned_user: User provisioned by IDP
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
         base_configuration:
           capabilities_request: Remote file storage capabilities
-          client_id: Client ID
-          client_secret: Client secret
+          client_id: ID pelanggan
+          client_secret: Rahsia pelanggan
           dependencies_check: Dependencies
           dependencies_versions: Dependencies (version)
           diagnostic_request: Diagnostic request
@@ -281,7 +281,7 @@ ms:
           oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
           oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
           oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
-          unexpected_content: Unexpected content found in the managed group folder.
+          unexpected_content: Kandungan yang tidak dijangka ditemui dalam folder kumpulan terurus.
         not_configured: Sambungan tidak dapat disahkan. Sila selesaikan konfigurasi dahulu.
         oidc_cant_acquire_token: Your OpenID Connect setup doesn't provide the necessary audience, nor provides token exchange capabilities. Please check out our documentation for more information.
         oidc_cant_exchange_token: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
@@ -291,13 +291,13 @@ ms:
         one_drive:
           client_cant_delete_folder: The client is having trouble deleting folders. Please check the setup documentation for your storage.
           client_write_permission_missing: The client seems to have write permissions missing. Please check the setup documentation for your storage.
-          drive_id_not_found: The configured drive id could not be found. Please check the configuration.
+          drive_id_not_found: Id pemacu yang dikonfigurasikan tidak dapat ditemui. Sila semak konfigurasi.
           drive_id_wrong: The configured drive id seems invalid. Please check the configuration.
           existing_test_folder: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
           oauth_request_not_found: OpenProject couldn't find the root folder in the drive using the current logged-in user. Please check the server logs for further information.
           oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive or we couldn't acquire a token. Please check the server logs for further information.
           oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
-          unexpected_content: Unexpected content found in the drive.
+          unexpected_content: Kandungan yang tidak dijangka ditemui dalam pemacu.
         placeholder: Semak sambungan anda terhadap pelayan.
         subtitle: Pengesahan sambungan
         tenant_id_wrong: Id direktori (penyewa) yang dikonfigurasikan adalah tidak sah. Sila semak konfigurasi.
@@ -308,7 +308,7 @@ ms:
       label_healthy: Sihat
       label_passed: Passed
       label_pending: Dalam proses
-      label_skipped: Skipped
+      label_skipped: Dilangkau
       label_warning: Amaran
       no_report: No report available
       no_report_description: Run the checks now for a full health status report for this file storage.
@@ -486,6 +486,6 @@ ms:
     successful_storage_connection: Storan berjaya disambungkan! Ingat untuk mengaktifkan storan dalam tab Projek untuk setiap projek yang diingini untuk menggunakannya.
     upsell:
       description: |-
-        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
-        work packages in a project.
-      title: OneDrive/SharePoint integration
+        Integrasikan OneDrive/SharePoint anda sebagai storan fail dengan OpenProject. Muat naik fail dan pautkan terus ke
+        pakej kerja dalam projek.
+      title: Integrasi OneDrive/SharePoint

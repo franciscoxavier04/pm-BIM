@@ -12,12 +12,12 @@ et:
       ldap_groups/synchronized_group:
         dn: 'DN'
         auth_source: 'Auth source'
-        ldap_auth_source: 'LDAP connection'
+        ldap_auth_source: 'LDAP ühendus'
         sync_users: 'Sync users'
       ldap_groups/synchronized_filter:
         filter_string: 'LDAP filter'
         auth_source: 'Auth source'
-        ldap_auth_source: 'LDAP connection'
+        ldap_auth_source: 'LDAP ühendus'
         group_name_attribute: "Group name attribute"
         sync_users: 'Sync users'
         base_dn: "Search base DN"

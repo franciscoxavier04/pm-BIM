@@ -297,7 +297,7 @@ ka:
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "ყველა"
       messages: "ფორუმი"
       wiki_pages: "ვიკი"
   groups:
@@ -628,9 +628,9 @@ ka:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "სამუშაო პაკეტი"
+            parent: "მშობელი"
+            project: "პროექტი"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -962,8 +962,8 @@ ka:
         date_range: "Date range"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "სახელი"
+        color: "ფერი"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1573,8 +1573,8 @@ ka:
       wiki_edit: "ვიკი"
       work_package: "სამუშაო პაკეტები"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "გააქტიურებულია"
+      deactivated: "დეაქტივირებული"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -1822,7 +1822,7 @@ ka:
       failed: 'Could not copy project "%{source_project_name}" to project "%{target_project_name}".'
       succeeded: 'Copied project "%{source_project_name}" to "%{target_project_name}".'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "ვიკი გვერდი"
   date:
     abbr_day_names:
       - "კვ"
@@ -2034,7 +2034,7 @@ ka:
         more_info: "Note: the used logo will be publicly accessible."
         description: Customize your OpenProject installation with your own logo and colors.
       custom_actions:
-        title: "Custom actions"
+        title: "მორგებული ქმედებები"
         description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
@@ -3859,7 +3859,7 @@ ka:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "დამატება"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"

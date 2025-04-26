@@ -83,8 +83,8 @@ ms:
       text_2fa_disabled: "Pengguna ini tidak menyediakan peranti 2FA melalui 'Laman akaun saya' mereka"
       only_sms_allowed: "Hanya penghantaran SMS boleh disediakan untuk pengguna-pengguna lain."
     upsell:
-      title: "Two-factor authentication"
-      description: "Strenghten the security of your OpenProject instance by offering (or enforcing) two-factor authentification to all project members."
+      title: "Pengesahan dua faktor"
+      description: "Ketatkan keselamatan contoh OpenProject anda dengan menawarkan (atau kuatkuasakan) pengesahan dua faktor ke semua ahli projek."
     backup_codes:
       none_found: Tiada kod sandaran sedia ada bagi akaun ini.
       singular: Kod sandaran

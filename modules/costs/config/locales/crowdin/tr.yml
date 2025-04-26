@@ -50,14 +50,14 @@ tr:
         project: Proje
         user: Kullanıcı
         work_package: İş paketi
-        subject: Subject
+        subject: Konu
         hours: Saat
         comments: Yorum
         activity: Etkinlik
         spent_on: Tarih
         start_time: Başlama tarihi
         end_time: Bitiş zamanı
-        time: Time
+        time: Zaman
     models:
       time_entry:
         one: "Zaman girişleri"
@@ -164,9 +164,9 @@ tr:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Liste"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "Ay"
+  label_day: "Gün"
+  label_today_capitalized: "Bugün"
   placeholder_activity_select_work_package_first: Öncelikle iş paketi seçimi gereklidir
   notice_something_wrong: "Bir şeyler yanlış gitti. Lütfen tekrar deneyin."
   notice_successful_restore: "Başarılı bir geri yükleme."

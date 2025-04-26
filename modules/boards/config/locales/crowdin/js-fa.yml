@@ -3,7 +3,7 @@ fa:
   ee:
     upsell:
       board_view:
-        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
+        description: 'آیا می خواهید گردش کار خود را با تابلوها خودکار کنید؟ بردهای پیشرفته یک افزونه Enterprise هستند. لطفاً به یک طرح پولی ارتقا دهید.'
   js:
     boards:
       create_new: 'ایجاد تابلوی‌ اعلانات'

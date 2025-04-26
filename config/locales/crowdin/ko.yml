@@ -48,7 +48,7 @@ ko:
           title: "Make this comment public?"
           heading: "Make this comment public?"
           description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
-          confirm_button_text: "Make public"
+          confirm_button_text: "공개로 설정"
   admin:
     plugins:
       no_results_title_text: 현재 설치된 플러그인이 없습니다.
@@ -297,7 +297,7 @@ ko:
   global_search:
     placeholder: "%{app_title}에서 검색"
     overwritten_tabs:
-      all: "All"
+      all: "모두"
       messages: "포럼"
       wiki_pages: "위키"
   groups:
@@ -1303,7 +1303,7 @@ ko:
         queries/principals/filters/internal_mentionable_on_work_package_filter:
           attributes:
             values:
-              single_value_requirement: "must be a single work package"
+              single_value_requirement: "- 단일 작업 패키지여야 합니다"
         relation:
           typed_dag:
             circular_dependency: "이 관계는 관계의 원을 만듭니다."
@@ -1802,7 +1802,7 @@ ko:
       failed: '프로젝트 "%{source_project_name}"을(를) 프로젝트 "%{target_project_name}"에 복사할 수 없습니다.'
       succeeded: '프로젝트 "%{source_project_name}"을(를) 프로젝트 "%{target_project_name}"에 복사했습니다.'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "위키 페이지"
   date:
     abbr_day_names:
       - "일"
@@ -1938,38 +1938,38 @@ ko:
     features:
       baseline_comparison: Baseline Comparisons
       board_view: Advanced Boards
-      conditional_highlighting: Conditional Highlighting
+      conditional_highlighting: 조건부 강조 표시
       internal_comments: Internal Comments
-      custom_actions: Custom Actions
+      custom_actions: 사용자 지정 작업
       custom_field_hierarchies: Custom fields of type hierarchy
-      customize_life_cycle: Customize Life Cycle
-      date_alerts: Date Alerts
+      customize_life_cycle: 수명 주기 사용자 지정
+      date_alerts: 날짜 알림
       define_custom_style: Custom theme and logo
-      edit_attribute_groups: Edit Attribute Groups
-      gantt_pdf_export: Gantt PDF Export
-      grid_widget_wp_graph: Grid Widget Work Package Graph
+      edit_attribute_groups: 특성 그룹 편집
+      gantt_pdf_export: Gantt PDF 내보내기
+      grid_widget_wp_graph: 그리드 위젯 작업 패키지 그래프
       ldap_groups: LDAP users and group sync
-      one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
-      placeholder_users: Placeholder Users
-      project_list_sharing: Project List Sharing
-      readonly_work_packages: Readonly Work Packages
+      one_drive_sharepoint_file_storage: OneDrive/SharePoint 파일 저장소
+      placeholder_users: 플레이스홀더 사용자
+      project_list_sharing: 프로젝트 목록 공유
+      readonly_work_packages: 읽기 전용 작업 패키지
       sso_auth_providers: Single sign-on
-      team_planner_view: Team Planner View
+      team_planner_view: 팀 플래너 보기
       two_factor_authentication: 2FA Authentication
       virus_scanning: Antivirus Scanning
-      work_package_query_relation_columns: Work Package Query Relation Columns
+      work_package_query_relation_columns: 작업 패키지 쿼리 관계 열
       work_package_sharing: Share work packages with external users
-      work_package_subject_generation: Work Package Subject Generation
+      work_package_subject_generation: 작업 패키지 제목 생성
     upsell:
-      title: "Enterprise add-on"
+      title: "Enterprise 추가 기능"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
       baseline_comparison:
-        description: Highlight changes made to this list since any point in the past.
+        description: 과거 어느 시점 이후에 이 목록에서 변경된 사항을 강조 표시합니다.
       work_package_subject_generation:
-        description: "Create automatically generated subjects using referenced attributes and text."
+        description: "참조된 특성과 텍스트를 사용하여 자동으로 생성되는 제목을 만듭니다."
       customize_life_cycle:
         description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       conditional_highlighting:
@@ -1979,7 +1979,7 @@ ko:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "새로운 특성 그룹 추가"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -1987,22 +1987,22 @@ ko:
       custom_field_hierarchies:
         description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
       date_alerts:
-        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+        description: "날짜 경보를 사용하면, 중요 마감일을 놓치거나 잊지 않도록 향후 시작 날짜 또는 종료 날짜에 대한 알림을 받게 됩니다."
       work_package_sharing:
-        description: "Share work packages with users who are not members of the project."
+        description: "프로젝트 멤버가 아닌 사용자와 작업 패키지를 공유합니다."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "참고: 사용된 로그는 공개적으로 액세스 가능합니다."
+        description: 고유한 로고와 색상으로 OpenProject 설치를 사용자 지정하세요.
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "사용자 지정 작업"
+        description: "사용자 지정 작업은 상태, 역할, 유형 또는 프로젝트를 기반으로 특정 작업 패키지에서 사용할 수 있도록 미리 정의된 작업 세트에 대한 원클릭 바로 가기입니다."
       virus_scanning:
-        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
+        description: "OpenProject에서 업로드된 파일은 바이러스 검사를 수행한 후에 다른 사용자가 액세스해야 합니다."
       placeholder_users:
-        title: Placeholder users
+        title: 플레이스홀더 사용자
         description: >
-          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
+          플레이스홀더 사용자는 해당 프로젝트에 속하지 않은 사용자에게 작업 패키지를 할당하는 방법으로, 다양한 시나리오에서 유용할 수 있습니다. 예를 들어, 아직 명명되지 않았거나 사용 가능하지 않은 리소스에 대한 작업을 추적해야 하거나, 해당 개인에게 OpenProject에 대한 액세스 권한을 부여하고 싶지 않지만 이들에게 할당된 작업을 추적하려는 경우에 유용합니다.
       internal_comments:
         title: "For your eyes only"
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
@@ -2233,7 +2233,7 @@ ko:
     blocks:
       community: "OpenProject 커뮤니티"
       upsell:
-        title: "Upgrade to Enterprise edition"
+        title: "Enterprise Edition으로 업그레이드"
     links:
       upgrade_enterprise_edition: "Enterprise Edition으로 업그레이드"
       postgres_migration: "설치를 PostgreSQL로 마이그레이션"
@@ -2710,7 +2710,7 @@ ko:
   label_modules: "모듈"
   label_months_from: "개월 동안 | 다음부터"
   label_more: "기타"
-  label_more_information: "More information"
+  label_more_information: "더보기"
   label_more_than_ago: "일 이상 전"
   label_move_column_left: "왼쪽으로 열 이동"
   label_move_column_right: "오른쪽으로 열 이동"
@@ -3306,7 +3306,7 @@ ko:
     text_getting_started_description: "OpenProject로 프로젝트 관리 및 팀 공동 작업에 대한 간략한 개요를 가져올 수 있습니다. 도움말 메뉴에서 이 동영상을 다시 시작할 수 있습니다."
     welcome: "%{app_title}입니다."
     select_language: "언어를 선택하세요."
-  permission_add_work_package_comments: "Add comments"
+  permission_add_work_package_comments: "코멘트 추가"
   permission_add_work_packages: "작업 패키지 추가"
   permission_add_messages: "메시지 게시"
   permission_add_project: "프로젝트 만들기"
@@ -3337,12 +3337,12 @@ ko:
   permission_delete_timelines: "타임라인 삭제"
   permission_delete_wiki_pages: "위키 페이지 삭제"
   permission_delete_wiki_pages_attachments: "첨부 파일 삭제"
-  permission_edit_work_package_comments: "Moderate comments"
-  permission_edit_work_package_comments_explanation: "Caution: Users with this permission are able to edit anyone's comment."
+  permission_edit_work_package_comments: "코멘트 조정"
+  permission_edit_work_package_comments_explanation: "주의: 이 권한이 있는 사용자는 다른 사용자의 코멘트를 편집할 수 있습니다."
   permission_edit_work_packages: "작업 패키지 편집"
   permission_edit_messages: "메시지 편집"
   permission_edit_own_internal_comments: "Edit own internal comments"
-  permission_edit_own_work_package_comments: "Edit own comments"
+  permission_edit_own_work_package_comments: "내 코멘트 편집"
   permission_edit_own_messages: "내 메시지 편집"
   permission_edit_own_time_entries: "내 시간 로그 편집"
   permission_edit_others_internal_comments: "Moderate internal comments"
@@ -4198,7 +4198,7 @@ ko:
         edit: "편집"
         edit_description: "이 프로젝트 목록을 보고, 공유하고, 편집할 수 있습니다."
       upsell:
-        message: "Sharing project lists with individual users is an enterprise add-on."
+        message: "개별 사용자와의 프로젝트 목록 공유는 Enterprise 추가 기능입니다."
   working_days:
     info: >
       선택하지 않은 요일은 작업 패키지를 예약할 때 건너뜁니다(일 수에 포함되지 않음). 작업 패키지 수준에서 재정의할 수 있습니다.

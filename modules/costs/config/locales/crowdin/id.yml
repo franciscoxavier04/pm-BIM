@@ -50,14 +50,14 @@ id:
         project: Project
         user: User
         work_package: Paket-Penugasan
-        subject: Subject
+        subject: Perihal
         hours: Jam
         comments: Komentar
         activity: Activity
         spent_on: Tanggal
         start_time: Waktu mulai
         end_time: Finish time
-        time: Time
+        time: Waktu
     models:
       time_entry:
         other: "Time entries"
@@ -160,8 +160,8 @@ id:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "List"
-  label_month: "Month"
-  label_day: "Day"
+  label_month: "Bulan"
+  label_day: "Hari"
   label_today_capitalized: "Today"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Terjadi suatu kesalahan. Silahkan coba lagi."

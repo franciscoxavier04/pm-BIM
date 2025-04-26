@@ -50,14 +50,14 @@ es:
         project: Proyecto
         user: Usuario
         work_package: Paquete de trabajo
-        subject: Subject
+        subject: Asunto
         hours: Horas
         comments: Comentario
         activity: Actividad
         spent_on: Fecha
         start_time: Hora de inicio
         end_time: Hora de finalización
-        time: Time
+        time: Tiempo
     models:
       time_entry:
         one: "Entrada de tiempo"
@@ -164,9 +164,9 @@ es:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Lista"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "Mes"
+  label_day: "Día"
+  label_today_capitalized: "Hoy"
   placeholder_activity_select_work_package_first: Primero debe seleccionar el paquete de trabajo
   notice_something_wrong: "Algo salió mal. Por favor intentelo nuevamente."
   notice_successful_restore: "Restauración exitosa."

@@ -50,20 +50,20 @@ nl:
         project: Project
         user: Gebruiker
         work_package: Werkpakket
-        subject: Subject
+        subject: Onderwerp
         hours: Uren
         comments: Commentaar
         activity: Activiteit
         spent_on: Datum
         start_time: Starttijd
         end_time: Eindtijd
-        time: Time
+        time: Tijd
     models:
       time_entry:
-        one: "Time entry"
+        one: "Tijd invoer"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Kosteninvoer"
         other: "Cost entries"
       cost_type:
         one: "Soort kosten"
@@ -164,9 +164,9 @@ nl:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Lijst"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "Maand"
+  label_day: "Dag"
+  label_today_capitalized: "Vandaag"
   placeholder_activity_select_work_package_first: Eerst moet u een werkpakket selecteren
   notice_something_wrong: "Er is iets fout gegaan. Probeer het opnieuw."
   notice_successful_restore: "Herstel geslaagd."

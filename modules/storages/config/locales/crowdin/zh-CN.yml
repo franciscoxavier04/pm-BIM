@@ -200,7 +200,7 @@ zh-CN:
       storage_delete_result_3: 如果此存储具有自动托管的项目文件夹，这些文件夹及其包含的文件将被永久删除。
     dependencies:
       nextcloud:
-        group_folders_app: Group Folders
+        group_folders_app: 组文件夹
         integration_app: 集成 OpenProject
     enabled_in_projects:
       setup_incomplete_description: 这个存储设置不完整。请在多个项目中启用它之前完成设置。
@@ -231,14 +231,14 @@ zh-CN:
       storage_provider: 存储提供商
     health:
       actions:
-        download_report: Download
+        download_report: 下载
         rerun_checks: 重新运行所有检查
         run_checks: 现在运行检查
       checked: 上次检查于 %{datetime}
       checks:
         ampf_configuration:
           files_request: 正在获取组文件夹文件
-          group_folder_app: 'Dependency: Group Folders'
+          group_folder_app: '依赖：组文件夹'
           group_folder_contents: 群组文件夹有预期内容
           group_folder_presence: 组文件夹已存在
           header: 自动管理项目文件夹：配置
@@ -271,7 +271,7 @@ zh-CN:
       connection_validation:
         client_id_wrong: 已配置的 OAuth 2 客户端ID无效。请检查配置。
         client_secret_wrong: 已配置的 OAuth 2 客户端ID无效。请检查配置。
-        dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
+        dependency_version_mismatch: '%{dependency} 应用版本不受支持。请更新您的 Nextcloud 服务器。'
         drive_id_wrong: 已配置的 OAuth 2 客户端ID无效。请检查配置。
         group_folder_not_found: 无法找到组文件夹。
         group_folder_version_mismatch: 不受支持的组文件夹版本。请更新您的 Nextcloud 服务器。
@@ -485,6 +485,5 @@ zh-CN:
     successful_storage_connection: 存储连接成功！请记住，在每个所需项目的项目设置中激活模块和特定存储，以进行使用。
     upsell:
       description: |-
-        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
-        work packages in a project.
-      title: OneDrive/SharePoint integration
+        将 OneDrive/SharePoint 作为文件存储与 OpenProject 集成。上传文件并直接将其链接到项目中的工作包。
+      title: OneDrive/SharePoint 集成

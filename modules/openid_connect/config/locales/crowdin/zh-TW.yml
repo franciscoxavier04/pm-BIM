@@ -92,8 +92,8 @@ zh-TW:
       custom:
         name: 自訂
       upsell:
-        title: "Single Sign-On (SSO) with OpenID connect"
-        description: Connect OpenProject to an OpenID connect identity provider
+        title: "使用 OpenID 連線的單一登入 (SSO)"
+        description: 將 OpenProject 連接到 OpenID connect 身分提供者
       label_add_new: 新增 OpenID 提供商
       label_edit: 編輯 OpenID 提供商：%{name}
       label_empty_title: 尚未設定 Saml 提供商。

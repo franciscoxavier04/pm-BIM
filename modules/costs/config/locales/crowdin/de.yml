@@ -212,4 +212,4 @@ de:
       time_entry_time_restrictions: Genaue Zeiterfassung erforderlich
     upsell:
       time_entry_time_restrictions:
-        description: "Improve your time tracking by requiring exact start and finish times when logging time."
+        description: "Verbessern Sie Ihre Zeiterfassung, indem Sie genaue Start- und Endzeiten für jede Zeitbuchung erfordern."

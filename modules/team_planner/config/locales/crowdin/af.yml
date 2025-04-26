@@ -8,10 +8,10 @@ af:
   project_module_team_planner_view: "Team planners"
   ee:
     feature_names:
-      team_planner_view: "Team planner"
+      team_planner_view: "Spanbeplanner"
     upsell:
       team_planner_view:
-        title: "Team planner"
+        title: "Spanbeplanner"
         description: "Get a complete overview of your team’s planning with Team Planner. Stretch, shorten and drag-and-drop work packages to modify dates, move them or change assignees."
   team_planner:
     label_team_planner: "Spanbeplanner"

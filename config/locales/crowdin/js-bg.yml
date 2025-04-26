@@ -251,16 +251,16 @@ bg:
             installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
             premium_features: "Enterprise add-ons"
             premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
-            professional_support: "Professional support"
+            professional_support: "Професионална поддръжка"
             professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
           button_start_trial: "Start free trial"
-          button_upgrade: "Upgrade now"
+          button_upgrade: "Актуализирайте сега"
           button_contact_us: "Contact us for a demo"
           button_book_now: "Book now"
           confidence: >
             We deliver the confidence of a tested and supported enterprise-class project management software - with Open Source and an open mind.
           link_quote: "Get a quote"
-          more_info: "More information"
+          more_info: "Повече информация"
           text: >
             The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
           unlimited: "Unlimited"
@@ -826,7 +826,7 @@ bg:
       add_new_child: "Create new child"
       create_new: "Create new"
       add_existing: "Add existing"
-      add_existing_child: "Add child"
+      add_existing_child: "Добави подзадача"
       remove_child: "Remove child"
       add_new_relation: "Create new relation"
       add_existing_relation: "Add existing relation"

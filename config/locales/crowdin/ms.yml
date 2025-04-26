@@ -48,7 +48,7 @@ ms:
           title: "Make this comment public?"
           heading: "Make this comment public?"
           description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
-          confirm_button_text: "Make public"
+          confirm_button_text: "Jadikan umum"
   admin:
     plugins:
       no_results_title_text: Pada masa ini tiada sebarang plugin yang dipasang.
@@ -296,7 +296,7 @@ ms:
   global_search:
     placeholder: "Cari dalam %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "Semua"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
@@ -412,7 +412,7 @@ ms:
         new_label: "New priority"
   project_phase:
     working_days_count:
-      other: "Duration: %{count} working days"
+      other: "Tempoh: %{count} hari bekerja"
   lists:
     create:
       success: "Senarai yang diubah suai telah disimpan sebagai senarai baharu."
@@ -618,9 +618,9 @@ ms:
           label: "Corak subjek"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Pakej kerja"
+            parent: "Ibu bapa"
+            project: "Projek"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Hasilkan PDF"
@@ -753,7 +753,7 @@ ms:
       follows_description: "Pakej kerja yang berkaitan semestinya perlu diselesaikan sebelum yang ini boleh dimulakan"
       label_child_singular: "anak"
       label_child_plural: "kanak-kanak"
-      new_child: "Create new child"
+      new_child: "Cipta anak baru"
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Menjadikan pakej kerja berkaitan sub-item pakej kerja semasa (ibu bapa)."
@@ -951,8 +951,8 @@ ms:
         date_range: "Date range"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Nama"
+        color: "Warna"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1263,7 +1263,7 @@ ms:
             date_range:
               start_date_must_be_before_finish_date: "start date must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+              incomplete: "tidak lengkap."
         query:
           attributes:
             project:
@@ -1545,14 +1545,14 @@ ms:
       changeset: "Set ubah suai"
       message: "Forum-forum"
       news: "Berita"
-      project_details: "Project details"
+      project_details: "Butiran projek"
       subproject: "Termasuk subprojek"
       time_entry: "Masa yang dihabiskan"
       wiki_edit: "Wiki"
       work_package: "Pakej kerja"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "diaktifkan"
+      deactivated: "dinyahaktifkan"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -1800,7 +1800,7 @@ ms:
       failed: 'Tidak dapat menyalin projek "%{source_project_name}" ke projek "%{target_project_name}".'
       succeeded: 'Menyalin projek "%{source_project_name}" ke "%{target_project_name}".'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "Halaman wiki"
   date:
     abbr_day_names:
       - "Aha"
@@ -1959,13 +1959,13 @@ ms:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
-      title: "Enterprise add-on"
+      title: "Alat tambah perusahaan"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
       baseline_comparison:
-        description: Highlight changes made to this list since any point in the past.
+        description: Sorotkan perubahan yang dibuat ke senarai ini pada bila-bila masa lalu.
       work_package_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -1977,7 +1977,7 @@ ms:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "Tambah kumpulan atribut baharu"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -1985,22 +1985,22 @@ ms:
       custom_field_hierarchies:
         description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
       date_alerts:
-        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+        description: "Dengan peringatan tarikh, anda akan dimaklumkan tentang tarikh mula dan akhir yang akan datang supaya anda tidak pernah terlepas atau lupa tarikh akhir yang penting."
       work_package_sharing:
-        description: "Share work packages with users who are not members of the project."
+        description: "Kongsi pakej kerja dengan pengguna yang bukan ahli projek."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "Perhatian: logo yang digunakan akan boleh diakses secara umum."
+        description: Ubah suai pemasangan OpenProject dengan logo dan warna anda sendiri.
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "Tindakan tersuai"
+        description: "Tindakan tersuai adalah pintasan satu klik ke satu set tindakan yang telah ditetapkan yang anda boleh sediakan untuk pakej kerja tertentu berdasarkan status, peranan, jenis atau projek."
       virus_scanning:
-        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
+        description: "Pastikan fail yang dimuat naik dalam OpenProject diimbas untuk virus sebelum boleh diakses oleh pengguna lain."
       placeholder_users:
-        title: Placeholder users
+        title: Pengguna placeholder
         description: >
-          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
+          Pengguna placeholder ialah satu cara untuk memperuntukkan pakej kerja kepada pengguna yang bukan sebahagian daripada projek anda. Ianya berguna dalam pelbagai senario; contohnya, jika anda perlu menjejaki tugas untuk sumber yang masih belum dinamakan atau disediakan, atau jika anda tidak ingin memberikan akses kepada seseorang di OpenProject, tetapi masih hendak menjejaki tugas yang telah diperuntukkan ke mereka.
       internal_comments:
         title: "For your eyes only"
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
@@ -2231,7 +2231,7 @@ ms:
     blocks:
       community: "Komuniti OpenProject"
       upsell:
-        title: "Upgrade to Enterprise edition"
+        title: "Naik taraf ke edisi Enterprise"
     links:
       upgrade_enterprise_edition: "Naik taraf ke edisi Enterprise"
       postgres_migration: "Mengalihkan pemasangan anda ke PostgreSQL"
@@ -2708,7 +2708,7 @@ ms:
   label_modules: "Modul"
   label_months_from: "bulan dari"
   label_more: "Lagi"
-  label_more_information: "More information"
+  label_more_information: "Maklumat lanjut"
   label_more_than_ago: "lebih dari beberapa hari yang lalu"
   label_move_column_left: "Alihkan lajur ke kiri"
   label_move_column_right: "Alihkan lajur ke kanan"
@@ -3815,7 +3815,7 @@ ms:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Tambah"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"
@@ -4198,7 +4198,7 @@ ms:
         edit: "Edit"
         edit_description: "Boleh melihat, berkongsi dan mengedit senarai projek ini."
       upsell:
-        message: "Sharing project lists with individual users is an enterprise add-on."
+        message: "Berkongsi senarai projek dengan pengguna individu ialah alat tambah perusahaan."
   working_days:
     info: >
       Hari yang tidak dipilih akan dilangkau semasa penjadualan pakej kerja (dan tidak termasuk dalam kiraan hari). Ini boleh digantikan di peringkat pakej-kerja.

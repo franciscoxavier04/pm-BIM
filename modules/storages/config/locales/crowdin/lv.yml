@@ -254,7 +254,7 @@ lv:
           capabilities_request: Remote file storage capabilities
           client_id: Client ID
           client_secret: Client secret
-          dependencies_check: Dependencies
+          dependencies_check: Saistītie projekti
           dependencies_versions: Dependencies (version)
           diagnostic_request: Diagnostic request
           drive_id_format: Drive ID format

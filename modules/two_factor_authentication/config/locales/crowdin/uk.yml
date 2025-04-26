@@ -83,8 +83,8 @@ uk:
       text_2fa_disabled: "Користувач не налаштував пристрій 2FA на своїй сторінці «Мій обліковий запис»"
       only_sms_allowed: "Для інших користувачів можна налаштувати лише доставку SMS."
     upsell:
-      title: "Two-factor authentication"
-      description: "Strenghten the security of your OpenProject instance by offering (or enforcing) two-factor authentification to all project members."
+      title: "Двофакторна аутентифікація"
+      description: "Посильте безпеку свого екземпляра OpenProject, передбачивши можливість проходити двоетапну автентифікацію (добровільно або примусово) для всіх учасників проєкту."
     backup_codes:
       none_found: Для цього облікового запису не існує резервних кодів.
       singular: Резервний код

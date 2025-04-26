@@ -231,7 +231,7 @@ th:
       storage_provider: Storage provider
     health:
       actions:
-        download_report: Download
+        download_report: ดาวน์โหลด
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: Last checked %{datetime}
@@ -245,7 +245,7 @@ th:
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
-          header: Authentication
+          header: การระบุตัวตนผู้ใช้
           non_provisioned_user: User provisioned by IDP
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
@@ -254,7 +254,7 @@ th:
           capabilities_request: Remote file storage capabilities
           client_id: Client ID
           client_secret: Client secret
-          dependencies_check: Dependencies
+          dependencies_check: ส่วนที่อ้างอิง
           dependencies_versions: Dependencies (version)
           diagnostic_request: Diagnostic request
           drive_id_format: Drive ID format

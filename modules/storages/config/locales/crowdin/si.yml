@@ -231,7 +231,7 @@ si:
       storage_provider: Storage provider
     health:
       actions:
-        download_report: Download
+        download_report: බාගත කරන්න
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: Last checked %{datetime}
@@ -245,16 +245,16 @@ si:
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
-          header: Authentication
+          header: සත්යාපන
           non_provisioned_user: User provisioned by IDP
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
         base_configuration:
           capabilities_request: Remote file storage capabilities
-          client_id: Client ID
-          client_secret: Client secret
-          dependencies_check: Dependencies
+          client_id: සේවාලාභියා හැඳුනුම්පත
+          client_secret: සේවාලාභියා රහස්
+          dependencies_check: පරායත්තතා
           dependencies_versions: Dependencies (version)
           diagnostic_request: Diagnostic request
           drive_id_format: Drive ID format

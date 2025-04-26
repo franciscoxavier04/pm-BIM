@@ -82,8 +82,8 @@ cs:
       text_2fa_disabled: "Uživatel si nenastavil 2FA zařízení prostřednictvím stránky 'Můj účet'"
       only_sms_allowed: "Pro ostatní uživatele lze nastavit pouze doručení SMS."
     upsell:
-      title: "Two-factor authentication"
-      description: "Strenghten the security of your OpenProject instance by offering (or enforcing) two-factor authentification to all project members."
+      title: "Dvoufázové ověření"
+      description: "Posilte bezpečnost vaší OpenProject instance tím, že nabízíte (nebo vynucujte) dvoufaktorové ověřování všem členům projektu."
     backup_codes:
       none_found: Pro tento účet neexistují žádné záložní kódy.
       singular: Záložní kód

@@ -9,7 +9,7 @@ bg:
   ee:
     upsell:
       board_view:
-        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
+        description: 'Искате ли да автоматизирате работните си процеси с помощта на Табла? Усъвършенстваните табла са добавка само за Enterprise. Моля, преминете към платен план.'
   boards:
     label_board: "Board"
     label_boards: "Табла"

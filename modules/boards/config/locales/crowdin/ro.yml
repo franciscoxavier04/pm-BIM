@@ -9,7 +9,7 @@ ro:
   ee:
     upsell:
       board_view:
-        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
+        description: 'Doriți să vă automatizați fluxurile de lucru cu Boards? Tablourile avansate sunt un add-on pentru Enterprise. Vă rugăm să treceți la un plan plătit.'
   boards:
     label_board: "Panou"
     label_boards: "Panouri"

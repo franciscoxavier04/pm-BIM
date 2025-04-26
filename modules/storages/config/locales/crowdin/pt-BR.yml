@@ -231,7 +231,7 @@ pt-BR:
       storage_provider: Provedor de armazenamento
     health:
       actions:
-        download_report: Download
+        download_report: Baixar
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: Última verificação em %{datetime}
@@ -245,7 +245,7 @@ pt-BR:
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
-          header: Authentication
+          header: Autenticação
           non_provisioned_user: User provisioned by IDP
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
@@ -253,8 +253,8 @@ pt-BR:
         base_configuration:
           capabilities_request: Remote file storage capabilities
           client_id: Client ID
-          client_secret: Client secret
-          dependencies_check: Dependencies
+          client_secret: Client Secret
+          dependencies_check: Dependências
           dependencies_versions: Dependencies (version)
           diagnostic_request: Diagnostic request
           drive_id_format: Drive ID format
@@ -280,10 +280,10 @@ pt-BR:
         host_not_found: Nenhum servidor Nextcloud encontrado na URL de host configurada. Verifique a configuração.
         missing_dependencies: 'Uma dependência necessária está faltando no armazenamento de arquivos. Adicione a seguinte dependência: %{dependency}.'
         nextcloud:
-          oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
-          oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
+          oauth_request_not_found: OpenProject não conseguiu encontrar a pasta raiz da Nextcloud com o usuário atual. Por favor, verifique os 'logs' do servidor para mais informações.
+          oauth_request_unauthorized: O usuário atual não tem autorização para ver a pasta principal do Nextcloud ou nós não conseguimos recuperar um token. Por favor, verifique os 'logs' do servidor para mais informações.
           oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
-          unexpected_content: Unexpected content found in the managed group folder.
+          unexpected_content: Conteúdo inesperado encontrado na pasta do grupo gerenciado.
         not_configured: A conexão não pôde ser validada. Conclua a configuração primeiro.
         oidc_cant_acquire_token: A configuração do seu OpenID Connect não fornece o público necessário nem oferece recursos de troca de tokens. Consulte nossa documentação para mais informações.
         oidc_cant_exchange_token: Parece haver um problema na configuração da troca de tokens no seu provedor OpenID Connect. Verifique as configurações e tente novamente.
@@ -310,7 +310,7 @@ pt-BR:
       label_healthy: Saudável
       label_passed: Passed
       label_pending: Pendente
-      label_skipped: Skipped
+      label_skipped: Pulada
       label_warning: Aviso
       no_report: No report available
       no_report_description: Run the checks now for a full health status report for this file storage.
@@ -487,6 +487,5 @@ pt-BR:
     successful_storage_connection: Armazenamento conectado com sucesso! Não se esqueça de ativá-lo na aba Projetos para cada projeto em que deseja usá-lo.
     upsell:
       description: |-
-        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
-        work packages in a project.
-      title: OneDrive/SharePoint integration
+        Integre seu OneDrive/SharePoint como um armazenamento de arquivos com o OpenProject. Carregue arquivos e vincule-os diretamente aos pacotes de trabalho em um projeto.
+      title: Integração OneDrive/SharePoint

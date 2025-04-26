@@ -231,7 +231,7 @@ pl:
       storage_provider: Dostawca magazynu
     health:
       actions:
-        download_report: Download
+        download_report: Pobierz
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: Ostatnio sprawdzono %{datetime}
@@ -245,16 +245,16 @@ pl:
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
-          header: Authentication
+          header: Uwierzytelnianie
           non_provisioned_user: User provisioned by IDP
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
         base_configuration:
           capabilities_request: Remote file storage capabilities
-          client_id: Client ID
-          client_secret: Client secret
-          dependencies_check: Dependencies
+          client_id: Identyfikator klienta
+          client_secret: Klucz tajny klienta
+          dependencies_check: Zależności
           dependencies_versions: Dependencies (version)
           diagnostic_request: Diagnostic request
           drive_id_format: Drive ID format
@@ -284,10 +284,10 @@ pl:
         host_not_found: Nie znaleziono serwera Nextcloud pod skonfigurowanym adresem URL hosta. Sprawdź konfigurację.
         missing_dependencies: 'Brakuje wymaganej zależności magazynu plików. Dodaj następującą zależność: %{dependency}.'
         nextcloud:
-          oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
-          oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
+          oauth_request_not_found: Aplikacja OpenProject nie może znaleźć folderu głównego Nextcloud przy użyciu bieżącego zalogowanego użytkownika. Aby uzyskać dodatkowe informacje, sprawdź dzienniki serwera.
+          oauth_request_unauthorized: Bieżący użytkownik nie jest upoważniony do przeglądania głównego folderu Nextcloud lub nie mogliśmy uzyskać tokenu. W celu uzyskania dodatkowych informacji sprawdź dzienniki serwera.
           oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
-          unexpected_content: Unexpected content found in the managed group folder.
+          unexpected_content: W folderze zarządzanej grupy znaleziono nieoczekiwaną zawartość.
         not_configured: Nie można zweryfikować połączenia. Najpierw zakończ konfigurację.
         oidc_cant_acquire_token: Twoja konfiguracja OpenID Connect nie zapewnia niezbędnych odbiorców ani możliwości wymiany tokenów. Sprawdź naszą dokumentację, aby uzyskać więcej informacji.
         oidc_cant_exchange_token: Wygląda na to, że wystąpił problem z konfiguracją wymiany tokenów u Twojego dostawcy OpenID Connect. Sprawdź jego konfigurację i spróbuj ponownie.
@@ -314,7 +314,7 @@ pl:
       label_healthy: Zdrowe
       label_passed: Passed
       label_pending: Oczekujący
-      label_skipped: Skipped
+      label_skipped: Pominięto
       label_warning: Ostrzeżenie
       no_report: No report available
       no_report_description: Run the checks now for a full health status report for this file storage.
@@ -491,6 +491,5 @@ pl:
     successful_storage_connection: Magazyn został podłączony! Pamiętaj, aby aktywować magazyn na karcie Projekty każdego żądanego projektu, aby móc go użyć.
     upsell:
       description: |-
-        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
-        work packages in a project.
-      title: OneDrive/SharePoint integration
+        Zintegruj swoją usługę OneDrive/SharePoint z OpenProject jako magazyn plików. Prześlij pliki i powiąż je bezpośrednio z pakietami roboczymi w projekcie.
+      title: Integracja OneDrive/SharePoint

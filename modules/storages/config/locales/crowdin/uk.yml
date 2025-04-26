@@ -231,7 +231,7 @@ uk:
       storage_provider: Постачальник сховища
     health:
       actions:
-        download_report: Download
+        download_report: Завантажити
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: 'Востаннє перевірено: %{datetime}'
@@ -245,7 +245,7 @@ uk:
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
-          header: Authentication
+          header: Автентифікація
           non_provisioned_user: User provisioned by IDP
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
@@ -254,7 +254,7 @@ uk:
           capabilities_request: Remote file storage capabilities
           client_id: Client ID
           client_secret: Client secret
-          dependencies_check: Dependencies
+          dependencies_check: Залежності
           dependencies_versions: Dependencies (version)
           diagnostic_request: Diagnostic request
           drive_id_format: Drive ID format
@@ -284,10 +284,10 @@ uk:
         host_not_found: Сервер Nextcloud  не знайдено за вказаною URL-адресою. Перевірте конфігурацію.
         missing_dependencies: 'Відсутня обов’язкова залежність для файлового сховища. Додайте таку залежність: %{dependency}.'
         nextcloud:
-          oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
-          oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
+          oauth_request_not_found: OpenProject не вдалося знайти кореневу папку Nextcloud в обліковому записі поточного користувача. Щоб дізнатися більше, перевірте журнали сервера.
+          oauth_request_unauthorized: Поточний користувач не має дозволу на перегляд основної папки Nextcloud, або ми не змогли отримати маркер. Щоб дізнатися більше, перевірте журнали сервера.
           oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
-          unexpected_content: Unexpected content found in the managed group folder.
+          unexpected_content: У теці керованої групи знайдено неочікуваний вміст.
         not_configured: Не вдалося перевірити підключення. Спочатку налаштуйте конфігурацію.
         oidc_cant_acquire_token: Ваша конфігурація OpenID Connect не передбачає наявності необхідної аудиторії і можливостей обміну маркерами. Щоб дізнатися більше, ознайомтеся з нашою документацією.
         oidc_cant_exchange_token: Здається, виникла проблема з конфігурацією Token Exchange у вашого постачальника OpenID Connect. Перевірте конфігурацію і повторіть спробу.
@@ -314,7 +314,7 @@ uk:
       label_healthy: Справність
       label_passed: Passed
       label_pending: Очікування
-      label_skipped: Skipped
+      label_skipped: Пропущено
       label_warning: Попередження
       no_report: No report available
       no_report_description: Run the checks now for a full health status report for this file storage.
@@ -492,6 +492,6 @@ uk:
     successful_storage_connection: Сховище підключено. Щоб користуватися ним, активуйте модуль і визначене сховище в налаштуваннях кожного потрібного проєкту.
     upsell:
       description: |-
-        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
-        work packages in a project.
-      title: OneDrive/SharePoint integration
+        Інтегруйте OneDrive і/або SharePoint як файлове сховище в OpenProject. Додайте файли й прив’яжіть їх безпосередньо до
+        пакетів робіт у проєкті.
+      title: Інтеграція OneDrive / SharePoint

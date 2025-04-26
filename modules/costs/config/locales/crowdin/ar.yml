@@ -50,14 +50,14 @@ ar:
         project: مشروع
         user: المستخدم
         work_package: مجموعة العمل
-        subject: Subject
+        subject: الموضوع
         hours: الساعات
         comments: تعليق
         activity: النشاط
         spent_on: التاريخ
         start_time: Start time
         end_time: Finish time
-        time: Time
+        time: الوقت
     models:
       time_entry:
         zero: "Time entries"
@@ -68,7 +68,7 @@ ar:
         other: "Time entries"
       cost_entry:
         zero: "Cost entries"
-        one: "Cost entry"
+        one: "قيد التكلفة"
         two: "Cost entries"
         few: "Cost entries"
         many: "Cost entries"
@@ -180,8 +180,8 @@ ar:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "القائمة"
-  label_month: "Month"
-  label_day: "Day"
+  label_month: "شهر"
+  label_day: "اليوم"
   label_today_capitalized: "Today"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "حصل خطأ ما. من فضلك حاول مرة أخرى."

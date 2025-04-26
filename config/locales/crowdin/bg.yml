@@ -48,7 +48,7 @@ bg:
           title: "Make this comment public?"
           heading: "Make this comment public?"
           description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
-          confirm_button_text: "Make public"
+          confirm_button_text: "Направи публично"
   admin:
     plugins:
       no_results_title_text: В момента няма инсталирани приставки.
@@ -628,9 +628,9 @@ bg:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Работен пакет"
+            parent: "Горна категория"
+            project: "Проект"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -959,11 +959,11 @@ bg:
         is_required: "Required for all projects"
         custom_field_section: Раздел
       project/phase:
-        date_range: "Date range"
+        date_range: "Период"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Име"
+        color: "Цвят"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1567,14 +1567,14 @@ bg:
       changeset: "Набори от промени"
       message: "Форуми"
       news: "Новини"
-      project_details: "Project details"
+      project_details: "Подробности за проект"
       subproject: "Include subprojects"
       time_entry: "Отработено време"
       wiki_edit: "Wiki"
       work_package: "Работни пакети"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "активиран"
+      deactivated: "деактивиран"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -1822,7 +1822,7 @@ bg:
       failed: 'Не можа да се копира проект "%{source_project_name}" в проект "%{target_project_name}".'
       succeeded: 'Копиран проект "%{source_project_name}" в "%{target_project_name}".'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "Wiki страница"
   date:
     abbr_day_names:
       - "нд"
@@ -2000,7 +2000,7 @@ bg:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
-      title: "Enterprise add-on"
+      title: "Добавка за големи предприятия"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
@@ -2018,7 +2018,7 @@ bg:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "Добавяне на нови групи атрибути"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -2031,15 +2031,15 @@ bg:
         description: "Share work packages with users who are not members of the project."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "Забележка: използваното лого ще бъде публично достъпно."
+        description: Персонализирайте инсталацията на OpenProject със собственото си лого и цветове.
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "Персонализирани действия"
+        description: "Потребителските действия са преки пътища с едно кликване до набор от предварително дефинирани действия, които можете да направите достъпни за определени работни пакети въз основа на статус, роля, тип или проект."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
-        title: Placeholder users
+        title: Потребители на резервни части
         description: >
           Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
       internal_comments:
@@ -2749,7 +2749,7 @@ bg:
   label_modules: "Модули"
   label_months_from: "месеца от"
   label_more: "Повече"
-  label_more_information: "More information"
+  label_more_information: "Повече информация"
   label_more_than_ago: "повече от преди дни"
   label_move_column_left: "Преместване на колона наляво"
   label_move_column_right: "Преместете колона надясно"
@@ -3859,7 +3859,7 @@ bg:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Добави"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"

@@ -3,7 +3,7 @@ id:
   ee:
     upsell:
       board_view:
-        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
+        description: 'Apakah Anda ingin mengotomatiskan alur kerja Anda dengan Papan? Papan tingkat lanjut adalah add-on Enterprise. Tingkatkan ke paket berbayar.'
   js:
     boards:
       create_new: 'Buat papan baru'

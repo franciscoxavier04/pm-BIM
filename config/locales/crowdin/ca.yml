@@ -294,7 +294,7 @@ ca:
   global_search:
     placeholder: "Cerca a %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "Totes"
       messages: "Fòrum"
       wiki_pages: "Wiki"
   groups:
@@ -625,9 +625,9 @@ ca:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Paquet de treball"
+            parent: "Pare"
+            project: "Projecte"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -761,7 +761,7 @@ ca:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      new_child: "Create new child"
+      new_child: "Crear nou fill"
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
@@ -956,10 +956,10 @@ ca:
         is_required: "Required for all projects"
         custom_field_section: Secció
       project/phase:
-        date_range: "Date range"
+        date_range: "Interval de dates"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
+        name: "Nom"
         color: "Color"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
@@ -1564,14 +1564,14 @@ ca:
       changeset: "Conjunt de canvis"
       message: "Fòrums"
       news: "Notícies"
-      project_details: "Project details"
+      project_details: "Detalls del projecte"
       subproject: "Inclou subprojectes"
       time_entry: "Temps invertit"
       wiki_edit: "Wiki"
       work_package: "Paquets de treball"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "activat"
+      deactivated: "desactivat"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -1819,7 +1819,7 @@ ca:
       failed: 'No s''ha pogut copiar el projecte "%{source_project_name}" al projecte "%{target_project_name}".'
       succeeded: 'Projecte "%{source_project_name}" copiat a "%{target_project_name}".'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "Pàgina wiki"
   date:
     abbr_day_names:
       - "Dg"
@@ -2003,7 +2003,7 @@ ca:
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
       baseline_comparison:
-        description: Highlight changes made to this list since any point in the past.
+        description: Destaca canvis efectuats en aquesta llista des de qualsevol punt del passat.
       work_package_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2015,7 +2015,7 @@ ca:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "Afegir un nou atribut de grups"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -2023,22 +2023,22 @@ ca:
       custom_field_hierarchies:
         description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
       date_alerts:
-        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+        description: "Amb les alertes per dates, se't notificarà quan una data d'inici o finalització s'apropi de tal manera que no se't puguin oblidar o passar dates rellevants."
       work_package_sharing:
         description: "Share work packages with users who are not members of the project."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "Nota: el logotip utilitzat serà accessible públicament."
+        description: Personalitza la teva instal·lació d'OpenProject amb el teu propi logotip i colors.
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "Accions personalitzades"
+        description: "Les accions personalitzades són accessos ràpids d'un sol clic que et permeten crear accions predefinides en els paquets de treball que desitgis basat en estat, rol, estil o projecte."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
-        title: Placeholder users
+        title: Usuaris de marcador de posició
         description: >
-          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
+          Els usuaris de marcador de posició són una forma d'assignar paquets de treball a usuaris que no formen part del teu projecte. Poden ser útils en múltiples escenaris; com per exemple en cas que necessitis manejar tasques per a un recurs que encara no té nom o no està disponible, o en cas que no vulguis donar accés a OpenProject a una persona, però, tot i això, vulguis manejar les tasques que se li han assignat.
       internal_comments:
         title: "For your eyes only"
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
@@ -2269,7 +2269,7 @@ ca:
     blocks:
       community: "Comunitat OpenProject"
       upsell:
-        title: "Upgrade to Enterprise edition"
+        title: "Actualitza a l'edició Enterprise"
     links:
       upgrade_enterprise_edition: "Actualitza a l'edició Enterprise"
       postgres_migration: "Migrant la teva instal·lació a PostgreSQL"
@@ -2746,7 +2746,7 @@ ca:
   label_modules: "Mòduls"
   label_months_from: "mesos des de"
   label_more: "Més"
-  label_more_information: "More information"
+  label_more_information: "Més informació"
   label_more_than_ago: "fa més dies"
   label_move_column_left: "Moure la columna a l'esquerra"
   label_move_column_right: "Moure la columna a la dreta"
@@ -3850,7 +3850,7 @@ ca:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Afegir"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"

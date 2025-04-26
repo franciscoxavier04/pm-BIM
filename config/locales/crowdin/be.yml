@@ -980,7 +980,7 @@ be:
         date_range: "Date range"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
+        name: "Імя"
         color: "Color"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
@@ -2109,8 +2109,8 @@ be:
         description: "Share work packages with users who are not members of the project."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "Заўвага: выкарыстаны лагатып будзе агульнадаступным."
+        description: Наладзьце ваш OpenProject з вашым уласным лагатыпам і колерамі.
       custom_actions:
         title: "Custom actions"
         description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
@@ -2827,7 +2827,7 @@ be:
   label_modules: "Modules"
   label_months_from: "months from"
   label_more: "Яшчэ"
-  label_more_information: "More information"
+  label_more_information: "Дадатковыя звесткі"
   label_more_than_ago: "more than days ago"
   label_move_column_left: "Move column left"
   label_move_column_right: "Move column right"
@@ -3941,7 +3941,7 @@ be:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Дадаць"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"

@@ -50,14 +50,14 @@ ko:
         project: 프로젝트
         user: 사용자
         work_package: 작업 패키지
-        subject: Subject
+        subject: 제목
         hours: 시간
         comments: 코멘트
         activity: 활동
         spent_on: 날짜
         start_time: 시작 시간
         end_time: 완료 시간
-        time: Time
+        time: 시간
     models:
       time_entry:
         other: "시간 항목"
@@ -160,9 +160,9 @@ ko:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "목록"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "월"
+  label_day: "일"
+  label_today_capitalized: "오늘"
   placeholder_activity_select_work_package_first: 먼저 작업 패키지 선택이 필요합니다
   notice_something_wrong: "문제가 발생했습니다. 다시 시도해 주세요."
   notice_successful_restore: "성공적으로 복원되었습니다."

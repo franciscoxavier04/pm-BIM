@@ -3,7 +3,7 @@ fr:
   ee:
     upsell:
       board_view:
-        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
+        description: 'Voulez-vous automatiser vos flux de travail avec des tableaux ? Les tableaux avancés sont un module de la version Enterprise. Veuillez passer à un abonnement payant.'
   js:
     boards:
       create_new: 'Créer un nouveau tableau'

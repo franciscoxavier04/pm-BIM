@@ -2031,8 +2031,8 @@ ne:
         description: "Share work packages with users who are not members of the project."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "नोट: प्रयोग गरिएको लोगो सार्वजनिक रूपमा पहुँचयोग्य हुनेछ।"
+        description: तपाइँको आफ्नै लोगो र रङहरु संग तपाइँको OpenProject स्थापनालाई अनुकूलित गर्नुहोस्।
       custom_actions:
         title: "Custom actions"
         description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."

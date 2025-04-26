@@ -83,8 +83,8 @@ it:
       text_2fa_disabled: "L'utente non ha configurato un dispositivo A2F tramite la propria 'pagina Il Mio profilo'"
       only_sms_allowed: "Per altri utenti è possibile impostare solo l'invio di SMS."
     upsell:
-      title: "Two-factor authentication"
-      description: "Strenghten the security of your OpenProject instance by offering (or enforcing) two-factor authentification to all project members."
+      title: "Autenticazione a due fattori"
+      description: "Rafforza la sicurezza della tua istanza OpenProject offrendo (o implementando) l'autenticazione a due fattori a tutti i membri del progetto."
     backup_codes:
       none_found: Non esistono codici di backup per questo account.
       singular: Codice di backup

@@ -14,7 +14,7 @@ tr:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
           oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
-        storage_audience: Storage Audience
+        storage_audience: Depolama Kitlesi
       storages/project_storage:
         project_folder: Proje klasörü
         project_folder_mode: Proje klasör modu
@@ -103,7 +103,7 @@ tr:
         remove_user_from_group: 'Remove User from Group:'
         rename_project_folder: 'Yönetilen proje klasörü isimlendirmesi:'
       one_drive_sync_service:
-        create_folder: 'Managed Project Folder Creation:'
+        create_folder: 'Yönetilen Proje Klasörü Oluşturma:'
         ensure_root_folder_permissions: 'Temel Klasör İzinlerini Ayarlayın:'
         hide_inactive_folders: 'Hide Inactive Folders Step:'
         remote_folders: 'Read contents of the group folder:'
@@ -142,7 +142,7 @@ tr:
               forbidden: OpenProject user does not have access to %{current_path} folder.
               not_found: "%{current_path} bulunamadı."
             set_folders_permissions:
-              permission_not_set: could not set permissions on %{path}.
+              permission_not_set: '%{path} üzerinde izinler ayarlanamadı.'
           error: An unexpected error occurred. Please ensure that your Nextcloud instance is reachable and check OpenProject worker logs for more information
           group_does_not_exist: "%{group} mevcut değil. Nextcloud yapılandırmanızı kontrol edin."
           insufficient_privileges: OpenProject does not have enough privileges to add %{user} to %{group}. Check you group settings in Nextcloud.
@@ -155,7 +155,7 @@ tr:
               conflict: The %{folder_name} already exists on %{parent_location}.
               not_found: "%{parent_location} bulunamadı."
             hide_inactive_folders:
-              permission_not_set: could not set permissions on %{path}.
+              permission_not_set: '%{path} üzerinde izinler ayarlanamadı.'
             remote_folders:
               request_error: OpenProject could not access your drive %{drive_id}. Please check if your storage configuration is correct.
             rename_project_folder:
@@ -163,7 +163,7 @@ tr:
               forbidden: OpenProject does not have access to %{current_path} in order to rename it.
               not_found: "%{current_path} bulunamadı."
             set_folders_permissions:
-              permission_not_set: could not set permissions on %{path}.
+              permission_not_set: '%{path} üzerinde izinler ayarlanamadı.'
           error: An unexpected error occurred. Please ensure that OneDrive/SharePoint is reachable and check OpenProject worker logs for more information
           not_allowed: OpenProject'in OneDrive sürücünüze erişmesine izin verilmedi. Lütfen Azure Uygulamasında ayarlanan izinleri kontrol edin.
           unauthorized: OpenProject OneDrive ile eşitlenemedi. Lütfen depolama alanınızı ve Azure Uygulaması yapılandırmanızı kontrol edin.
@@ -231,7 +231,7 @@ tr:
       storage_provider: Depolama sağlayıcısı
     health:
       actions:
-        download_report: Download
+        download_report: İndir
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: Son kontrol %{datetime}
@@ -245,16 +245,16 @@ tr:
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
-          header: Authentication
+          header: Kimlik doğrulaması
           non_provisioned_user: User provisioned by IDP
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
         base_configuration:
           capabilities_request: Remote file storage capabilities
-          client_id: Client ID
-          client_secret: Client secret
-          dependencies_check: Dependencies
+          client_id: İstemci ID
+          client_secret: İstemci gizliliği
+          dependencies_check: Bağımlılıklar
           dependencies_versions: Dependencies (version)
           diagnostic_request: Diagnostic request
           drive_id_format: Drive ID format
@@ -299,7 +299,7 @@ tr:
           oauth_request_not_found: OpenProject couldn't find the root folder in the drive using the current logged-in user. Please check the server logs for further information.
           oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive or we couldn't acquire a token. Please check the server logs for further information.
           oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
-          unexpected_content: Unexpected content found in the drive.
+          unexpected_content: Sürücüde beklenmeyen içerik bulundu.
         placeholder: Sunucuyla olan bağlantıyı kontrol edin.
         subtitle: Bağlantı doğrulaması
         tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
@@ -310,7 +310,7 @@ tr:
       label_healthy: Sağlıklı
       label_passed: Passed
       label_pending: Bekliyor
-      label_skipped: Skipped
+      label_skipped: Atlandı
       label_warning: Uyarı
       no_report: No report available
       no_report_description: Run the checks now for a full health status report for this file storage.
@@ -450,7 +450,7 @@ tr:
           OpenProject'in her proje için klasörleri otomatik olarak oluşturmasına izin verin. Bu, her ekip
           üyesinin her zaman doğru erişim izinlerine sahip olmasını sağladığı için önerilir.
         subtitle_short: OpenProject'in her proje için otomatik olarak klasör oluşturmasına izin verin.
-        title: Automatically managed project folders
+        title: Otomatik olarak yönetilen proje klasörleri
       project_settings:
         delete: Dosya depolama alanını sil
         edit: Edit the file storage to this project
@@ -488,6 +488,5 @@ tr:
     successful_storage_connection: Depolama başarıyla bağlandı! Kullanmak istediğiniz her proje için Projeler sekmesinde depolamayı etkinleştirmeyi unutmayın.
     upsell:
       description: |-
-        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
-        work packages in a project.
-      title: OneDrive/SharePoint integration
+        OneDrive/SharePoint'inizi OpenProject ile bir dosya depolama alanı olarak entegre edin. Dosyaları yükleyin ve bunları doğrudan bir projedeki iş paketlerine bağlayın.
+      title: OneDrive/SharePoint entegrasyonu

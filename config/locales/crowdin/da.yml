@@ -295,7 +295,7 @@ da:
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "Alle"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
@@ -439,7 +439,7 @@ da:
     filters:
       all_shares: "All shares"
     menu:
-      all: "All"
+      all: "Alle"
       invited: "Invited"
       locked: "Låst"
       project_roles: "Project roles"
@@ -626,9 +626,9 @@ da:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Arbejdspakke"
+            parent: "Overordnet"
+            project: "Prjoekt"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -957,11 +957,11 @@ da:
         is_required: "Required for all projects"
         custom_field_section: Section
       project/phase:
-        date_range: "Date range"
+        date_range: "Datointerval"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Navn"
+        color: "Farve"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1094,8 +1094,8 @@ da:
         priority: "Prioritet"
         progress: "% Complete"
         readonly: "Read only"
-        remaining_hours: "Remaining work"
-        remaining_time: "Remaining work"
+        remaining_hours: "Resterende arbejde"
+        remaining_time: "Resterende arbejde"
         shared_with_users: "Shared with"
         schedule_manually: "Manual scheduling"
         spent_hours: "Anvendt tid"
@@ -1565,7 +1565,7 @@ da:
       changeset: "Pakker af ændringer"
       message: "Fora"
       news: "Nyheder"
-      project_details: "Project details"
+      project_details: "Projektdetaljer"
       subproject: "Include subprojects"
       time_entry: "Anvendt tid"
       wiki_edit: "Wiki"
@@ -1820,7 +1820,7 @@ da:
       failed: 'Kunne ikke kopiere projektet "%{source_project_name}" til projektet "%{target_project_name}".'
       succeeded: 'Kopierede projektet "%{source_project_name}" til "%{target_project_name}".'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "Wiki-side"
   date:
     abbr_day_names:
       - "Søn"
@@ -2032,12 +2032,12 @@ da:
         more_info: "Note: the used logo will be publicly accessible."
         description: Customize your OpenProject installation with your own logo and colors.
       custom_actions:
-        title: "Custom actions"
+        title: "Brugerdefinerede handlinger"
         description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
-        title: Placeholder users
+        title: Pladsholder brugere
         description: >
           Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
       internal_comments:
@@ -2393,7 +2393,7 @@ da:
     facets:
       unread: "Unread"
       unread_title: "Show unread"
-      all: "All"
+      all: "Alle"
       all_title: "Vis alt"
     menu:
       by_project: "Unread by project"
@@ -2877,7 +2877,7 @@ da:
   label_relation_edit: "Edit relation"
   label_relation_new: "Ny forbindelse"
   label_release_notes: "Udgivelsesnoter"
-  label_remaining_work: "Remaining work"
+  label_remaining_work: "Resterende arbejde"
   label_remove_column: "Remove column"
   label_remove_columns: "Fjern valgte kolonner"
   label_renamed: "omdøbt"
@@ -3367,7 +3367,7 @@ da:
   permission_comment_news: "Kommenter nyheder"
   permission_commit_access: "Read/write access to repository (commit)"
   permission_copy_projects: "Kopiér projekter"
-  permission_copy_work_packages: "Copy work packages"
+  permission_copy_work_packages: "Kopiér arbejdspakker"
   permission_create_backup: "Create backups"
   permission_delete_work_package_watchers: "Slet tilsynsførende"
   permission_delete_work_packages: "Slet arbejdspakker"
@@ -3855,7 +3855,7 @@ da:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Tilføj"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"
@@ -4060,7 +4060,7 @@ da:
           description: "Order the %{plural} by one or more sorting criteria. You will lose the previous sorting."
   top_menu:
     additional_resources: "Additional resources"
-    getting_started: "Getting started"
+    getting_started: "At komme gang"
     help_and_support: "Help and support"
   total_progress: "Samlet fremgang"
   user:

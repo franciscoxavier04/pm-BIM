@@ -50,20 +50,20 @@ fi:
         project: Projekti
         user: Käyttäjä
         work_package: Työpaketti
-        subject: Subject
+        subject: Aihe
         hours: Tunnit
         comments: Kommentti
         activity: Tapahtumat
         spent_on: Päivämäärä
         start_time: Start time
         end_time: Finish time
-        time: Time
+        time: Aika
     models:
       time_entry:
         one: "Time entry"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Kustannuskirjaus"
         other: "Cost entries"
       cost_type:
         one: "Kustannustyyppi"
@@ -164,9 +164,9 @@ fi:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Lista"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "Kuukausi"
+  label_day: "Päivä"
+  label_today_capitalized: "Tänään"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Jotain meni pieleen. Yritä uudelleen."
   notice_successful_restore: "Palautus onnistui."

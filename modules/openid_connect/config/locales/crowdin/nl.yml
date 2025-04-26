@@ -93,7 +93,7 @@ nl:
         name: Aangepast
       upsell:
         title: "Single Sign-On (SSO) with OpenID connect"
-        description: Connect OpenProject to an OpenID connect identity provider
+        description: OpenProject verbinden met een OpenID connect identity provider
       label_add_new: Voeg een nieuwe OpenID provider toe
       label_edit: OpenID provider %{name} bewerken
       label_empty_title: Er zijn nog geen OpenID providers geconfigureerd.

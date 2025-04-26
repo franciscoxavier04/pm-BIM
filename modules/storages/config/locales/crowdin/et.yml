@@ -231,7 +231,7 @@ et:
       storage_provider: Storage provider
     health:
       actions:
-        download_report: Download
+        download_report: Laadi alla
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: Last checked %{datetime}
@@ -245,16 +245,16 @@ et:
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
-          header: Authentication
+          header: Autentimine
           non_provisioned_user: User provisioned by IDP
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
         base_configuration:
           capabilities_request: Remote file storage capabilities
-          client_id: Client ID
-          client_secret: Client secret
-          dependencies_check: Dependencies
+          client_id: Kliendi ID
+          client_secret: Kliendi salasõna
+          dependencies_check: Sõltuvused
           dependencies_versions: Dependencies (version)
           diagnostic_request: Diagnostic request
           drive_id_format: Drive ID format
@@ -387,7 +387,7 @@ et:
     label_existing_manual_folder: Existing folder with manually managed permissions
     label_file_storage: File storage
     label_host: Host URL
-    label_inactive: Inactive
+    label_inactive: Mitteaktiivne
     label_managed_project_folders:
       application_password: Application password
       automatically_managed_folders: Automatically managed folders

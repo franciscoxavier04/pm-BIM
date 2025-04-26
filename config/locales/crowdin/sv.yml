@@ -297,7 +297,7 @@ sv:
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "Alla"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
@@ -628,9 +628,9 @@ sv:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Arbetspaket"
+            parent: "Överordnad"
+            project: "Projekt"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -764,7 +764,7 @@ sv:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      new_child: "Create new child"
+      new_child: "Skapa nytt barn"
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
@@ -959,11 +959,11 @@ sv:
         is_required: "Required for all projects"
         custom_field_section: Section
       project/phase:
-        date_range: "Date range"
+        date_range: "Datumintervall"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Namn"
+        color: "Färg"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1567,7 +1567,7 @@ sv:
       changeset: "Uppdateringar"
       message: "Forum"
       news: "Nyheter"
-      project_details: "Project details"
+      project_details: "Projektinformation"
       subproject: "Include subprojects"
       time_entry: "Förbrukad tid"
       wiki_edit: "Wiki"
@@ -1822,7 +1822,7 @@ sv:
       failed: 'Kunde inte kopiera projekt "%{source_project_name}" till projektet "%{target_project_name}".'
       succeeded: 'Kopierade projektet "%{source_project_name}" till "%{target_project_name}".'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "Wiki-sida"
   date:
     abbr_day_names:
       - "Sön"
@@ -2018,7 +2018,7 @@ sv:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "Lägg till nya attributgrupper"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -2031,10 +2031,10 @@ sv:
         description: "Share work packages with users who are not members of the project."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "Obs: logotypen som används kommer att vara allmänt tillgänglig."
+        description: Anpassa din OpenProject installation med din egen logotyp och färger.
       custom_actions:
-        title: "Custom actions"
+        title: "Anpassade åtgärder"
         description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
@@ -2749,7 +2749,7 @@ sv:
   label_modules: "Moduler"
   label_months_from: "månader från"
   label_more: "Mer"
-  label_more_information: "More information"
+  label_more_information: "Mer information"
   label_more_than_ago: "mer än dagar sedan"
   label_move_column_left: "Flytta kolumnen till vänster"
   label_move_column_right: "Flytta kolumnen till höger"
@@ -3857,7 +3857,7 @@ sv:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Lägg till"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"

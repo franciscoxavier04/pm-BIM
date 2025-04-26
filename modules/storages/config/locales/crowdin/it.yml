@@ -231,7 +231,7 @@ it:
       storage_provider: Fornitore di archiviazione
     health:
       actions:
-        download_report: Download
+        download_report: Scarica
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: Ultimo controllo %{datetime}
@@ -245,16 +245,16 @@ it:
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
-          header: Authentication
+          header: Autenticazione
           non_provisioned_user: User provisioned by IDP
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
         base_configuration:
           capabilities_request: Remote file storage capabilities
-          client_id: Client ID
-          client_secret: Client secret
-          dependencies_check: Dependencies
+          client_id: ID Client
+          client_secret: Chiave segreta del client
+          dependencies_check: Dipendenze
           dependencies_versions: Dependencies (version)
           diagnostic_request: Diagnostic request
           drive_id_format: Drive ID format
@@ -280,10 +280,10 @@ it:
         host_not_found: Non è stato trovato alcun server Nextcloud all'indirizzo host configurato. Controlla la configurazione.
         missing_dependencies: 'Manca una dipendenza necessaria per l''archiviazione dei file. Aggiungi la seguente dipendenza: %{dependency}.'
         nextcloud:
-          oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
-          oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
+          oauth_request_not_found: OpenProject non è riuscito a trovare la cartella principale di Nextcloud utilizzando l'utente attualmente connesso. Per ulteriori informazioni, consulta i log del server.
+          oauth_request_unauthorized: L'utente attuale non è autorizzato a visualizzare la cartella principale di Nextcloud oppure non siamo riusciti ad acquisire un token. Per ulteriori informazioni, consulta i log del server.
           oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
-          unexpected_content: Unexpected content found in the managed group folder.
+          unexpected_content: Contenuto inatteso trovato nella cartella di gruppo gestita.
         not_configured: Non è stato possibile verificare la connessione. Prima è necessario completare la configurazione.
         oidc_cant_acquire_token: La configurazione di OpenID Connect non fornisce il pubblico necessario, né fornisce capacità di scambio di token. Consulta la nostra documentazione per maggiori informazioni.
         oidc_cant_exchange_token: Sembra esserci un problema con la configurazione di Token Exchange sul tuo OpenID Connect Provider. Controlla la sua configurazione e riprova.
@@ -310,7 +310,7 @@ it:
       label_healthy: Tutto ok
       label_passed: Passed
       label_pending: In sospeso
-      label_skipped: Skipped
+      label_skipped: Saltato
       label_warning: Avviso
       no_report: No report available
       no_report_description: Run the checks now for a full health status report for this file storage.
@@ -488,6 +488,6 @@ it:
     successful_storage_connection: Spazio di archiviazione connesso correttamente! Ricordati di attivare l'archivio nella scheda Progetto di ciascun progetto in cui vuoi utilizzarlo.
     upsell:
       description: |-
-        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
-        work packages in a project.
-      title: OneDrive/SharePoint integration
+        Integra il tuo OneDrive/SharePoint come archivio file con OpenProject. Carica i file e collegali direttamente
+        a macro-attività in un progetto.
+      title: Integrazione OneDrive/SharePoint
