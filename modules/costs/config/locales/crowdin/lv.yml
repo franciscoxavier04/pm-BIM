@@ -63,7 +63,7 @@ lv:
         other: "Time entries"
       cost_entry:
         zero: "Cost entries"
-        one: "Cost entry"
+        one: "Izmaksu ieraksts"
         other: "Cost entries"
       cost_type:
         zero: "Izmaksu veids"

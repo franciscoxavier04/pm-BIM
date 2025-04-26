@@ -637,9 +637,9 @@ lt:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Darbų paketas"
+            parent: "Tėvas"
+            project: "Projektas"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -775,7 +775,7 @@ lt:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "vaikai"
-      new_child: "Create new child"
+      new_child: "Sukurti naują vaiką"
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
@@ -970,11 +970,11 @@ lt:
         is_required: "Required for all projects"
         custom_field_section: Skiltis
       project/phase:
-        date_range: "Date range"
+        date_range: "Laikotarpis"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Vardas"
+        color: "Spalva"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1595,14 +1595,14 @@ lt:
       changeset: "Pakeitimų paketai"
       message: "Forumai"
       news: "Naujienos"
-      project_details: "Project details"
+      project_details: "Projekto ypatybės"
       subproject: "Įtraukti subprojektus"
       time_entry: "Praleista laiko"
       wiki_edit: "Wiki"
       work_package: "Darbų paketai"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "aktyvus"
+      deactivated: "neaktyvus"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -3862,7 +3862,7 @@ lt:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Pridėti"
       label_add_description: "Add life cycle definition"
       filter:
         label: "Search project phase"

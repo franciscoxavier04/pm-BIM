@@ -639,9 +639,9 @@ sl:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Delovni paket"
+            parent: "Nadrejeni"
+            project: "Projekt"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -777,7 +777,7 @@ sl:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      new_child: "Create new child"
+      new_child: "Kreiraj podrejen zahtevek"
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
@@ -972,11 +972,11 @@ sl:
         is_required: "Required for all projects"
         custom_field_section: Section
       project/phase:
-        date_range: "Date range"
+        date_range: "Datumski obseg"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Ime"
+        color: "Barva"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1597,14 +1597,14 @@ sl:
       changeset: "Zapisi sprememb"
       message: "Forumi"
       news: "Novice"
-      project_details: "Project details"
+      project_details: "Podrobnosti projekta"
       subproject: "Include subprojects"
       time_entry: "Porabljen čas"
       wiki_edit: "Wiki"
       work_package: "Delovni paketi"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "aktivirano"
+      deactivated: "deaktivirano"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -3866,7 +3866,7 @@ sl:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Dodaj"
       label_add_description: "Add life cycle definition"
       filter:
         label: "Search project phase"

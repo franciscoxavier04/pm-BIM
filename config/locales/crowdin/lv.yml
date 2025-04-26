@@ -632,9 +632,9 @@ lv:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
+            work_package: "Darba pieteikums"
             parent: "Parent"
-            project: "Project"
+            project: "Projekts"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -967,8 +967,8 @@ lv:
         date_range: "Date range"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Nosaukums"
+        color: "Krāsa"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1578,7 +1578,7 @@ lv:
       changeset: "Changesets"
       message: "Forums"
       news: "Jaunumi"
-      project_details: "Project details"
+      project_details: "Detalizēta informācija par projektu"
       subproject: "Include subprojects"
       time_entry: "Pavadīts laiks"
       wiki_edit: "Wiki"
@@ -3827,7 +3827,7 @@ lv:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Pievienot"
       label_add_description: "Add life cycle definition"
       filter:
         label: "Search project phase"

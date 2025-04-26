@@ -330,7 +330,7 @@ et:
     label_existing_manual_folder: Existing folder with manually managed permissions
     label_file_storage: File storage
     label_host: Host URL
-    label_inactive: Inactive
+    label_inactive: Mitteaktiivne
     label_managed_project_folders:
       application_password: Application password
       automatically_managed_folders: Automatically managed folders

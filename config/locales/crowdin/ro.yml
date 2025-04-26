@@ -632,9 +632,9 @@ ro:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Pachet de lucru"
+            parent: "Părinte"
+            project: "Proiect"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -769,7 +769,7 @@ ro:
       follows_description: "Pachetul de lucru asociat trebuie neapărat să înceapă după finalizarea acestuia"
       label_child_singular: "copil"
       label_child_plural: "copii"
-      new_child: "Create new child"
+      new_child: "Creează copil nou"
       new_child_text: "Creează un pachet de lucru asociat ca sub-element al pachetului de lucru curent (părinte)"
       child: "Child"
       child_description: "Face din pachetul de lucru asociat un sub-element al pachetului de lucru actual (părinte)"
@@ -964,11 +964,11 @@ ro:
         is_required: "Obligatoriu în toate proiectele"
         custom_field_section: Secțiune
       project/phase:
-        date_range: "Date range"
+        date_range: "Interval calendaristic"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Nume"
+        color: "Culoare"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1398,7 +1398,7 @@ ro:
               smaller_than_dates: "este mai mică decât intervalul dintre data de început și data de sfârșit."
               not_available_for_milestones: "nu este disponibil pentru pachetele de lucru tipizate pe etape."
               cannot_be_null: "nu poate fi setat la null, deoarece data de început și data de sfârșit sunt cunoscute."
-              not_an_integer: "is not a valid duration."
+              not_an_integer: "nu este o durată validă."
             parent:
               cannot_be_milestone: "nu poate fi o etapă."
               cannot_be_self_assigned: "nu poate fi atribuit singur."
@@ -1578,14 +1578,14 @@ ro:
       changeset: "Seturi de modificări"
       message: "Forumuri"
       news: "Noutăţi"
-      project_details: "Project details"
+      project_details: "Arată detaliile proietului"
       subproject: "Include subproiecte"
       time_entry: "Timp consumat"
       wiki_edit: "Wiki"
       work_package: "Pachete de lucru"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "Activat"
+      deactivated: "Dezactivat"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -3826,7 +3826,7 @@ ro:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Adaugă"
       label_add_description: "Adaugă definiția ciclului de viață"
       filter:
         label: "Search project phase"

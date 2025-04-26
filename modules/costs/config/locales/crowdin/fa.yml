@@ -61,7 +61,7 @@ fa:
         one: "Time entry"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "ورودی هزینه"
         other: "Cost entries"
       cost_type:
         one: "نوع هزینه"

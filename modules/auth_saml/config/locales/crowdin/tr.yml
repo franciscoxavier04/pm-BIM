@@ -103,7 +103,7 @@ tr:
       metadata_xml: >
         Your identity provider provides a metadata XML download.
       limit_self_registration: >
-        If enabled users can only register using this provider if the self registration setting allows for it.
+        Etkinleştirilirse, kullanıcılar bu sağlayıcıyı kullanarak yalnızca kendi kendine kayıt ayarı buna izin veriyorsa kaydolabilir.
       sp_entity_id: >
         The entity ID of the service provider (SP). Sometimes also referred to as Audience. This is the unique client identifier of the OpenProject instance.
       idp_sso_service_url: >

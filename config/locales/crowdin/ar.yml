@@ -656,9 +656,9 @@ ar:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "مجموعة العمل"
+            parent: "الجذر"
+            project: "مشروع"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -796,7 +796,7 @@ ar:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      new_child: "Create new child"
+      new_child: "إنشاء طفل جديد"
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
@@ -991,11 +991,11 @@ ar:
         is_required: "Required for all projects"
         custom_field_section: Section
       project/phase:
-        date_range: "Date range"
+        date_range: "النطاق الزمني"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "الاسم"
+        color: "اللون"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1638,7 +1638,7 @@ ar:
       changeset: "مجموعة التغييرات"
       message: "منتديات"
       news: "الأخبار"
-      project_details: "Project details"
+      project_details: "تفاصيل المشروع"
       subproject: "Include subprojects"
       time_entry: "الوقت المستهلك"
       wiki_edit: "Wiki"
@@ -3948,7 +3948,7 @@ ar:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "أَضِفْ"
       label_add_description: "Add life cycle definition"
       filter:
         label: "Search project phase"

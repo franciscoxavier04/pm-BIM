@@ -58,10 +58,10 @@ hu:
         end_time: Finish time
     models:
       time_entry:
-        one: "Time entry"
+        one: "Belépési idő"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Költség tétel"
         other: "Cost entries"
       cost_type:
         one: "Költségtípus"

@@ -429,7 +429,7 @@ da:
     filters:
       all_shares: "All shares"
     menu:
-      all: "All"
+      all: "Alle"
       invited: "Invited"
       locked: "Låst"
       project_roles: "Project roles"
@@ -622,9 +622,9 @@ da:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Arbejdspakke"
+            parent: "Overordnet"
+            project: "Prjoekt"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -953,11 +953,11 @@ da:
         is_required: "Required for all projects"
         custom_field_section: Section
       project/phase:
-        date_range: "Date range"
+        date_range: "Datointerval"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Navn"
+        color: "Farve"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1089,8 +1089,8 @@ da:
         priority: "Prioritet"
         progress: "% Complete"
         readonly: "Read only"
-        remaining_hours: "Remaining work"
-        remaining_time: "Remaining work"
+        remaining_hours: "Resterende arbejde"
+        remaining_time: "Resterende arbejde"
         shared_with_users: "Shared with"
         schedule_manually: "Manual scheduling"
         spent_hours: "Anvendt tid"
@@ -1556,7 +1556,7 @@ da:
       changeset: "Pakker af ændringer"
       message: "Fora"
       news: "Nyheder"
-      project_details: "Project details"
+      project_details: "Projektdetaljer"
       subproject: "Include subprojects"
       time_entry: "Anvendt tid"
       wiki_edit: "Wiki"
@@ -2322,7 +2322,7 @@ da:
     facets:
       unread: "Unread"
       unread_title: "Show unread"
-      all: "All"
+      all: "Alle"
       all_title: "Vis alt"
     menu:
       by_project: "Unread by project"
@@ -2805,7 +2805,7 @@ da:
   label_relation_edit: "Edit relation"
   label_relation_new: "Ny forbindelse"
   label_release_notes: "Udgivelsesnoter"
-  label_remaining_work: "Remaining work"
+  label_remaining_work: "Resterende arbejde"
   label_remove_column: "Remove column"
   label_remove_columns: "Fjern valgte kolonner"
   label_renamed: "omdøbt"
@@ -3294,7 +3294,7 @@ da:
   permission_comment_news: "Kommenter nyheder"
   permission_commit_access: "Read/write access to repository (commit)"
   permission_copy_projects: "Kopiér projekter"
-  permission_copy_work_packages: "Copy work packages"
+  permission_copy_work_packages: "Kopiér arbejdspakker"
   permission_create_backup: "Create backups"
   permission_delete_work_package_watchers: "Slet tilsynsførende"
   permission_delete_work_packages: "Slet arbejdspakker"
@@ -3782,7 +3782,7 @@ da:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Tilføj"
       label_add_description: "Add life cycle definition"
       filter:
         label: "Search project phase"
@@ -3986,7 +3986,7 @@ da:
           description: "Order the %{plural} by one or more sorting criteria. You will lose the previous sorting."
   top_menu:
     additional_resources: "Additional resources"
-    getting_started: "Getting started"
+    getting_started: "At komme gang"
     help_and_support: "Help and support"
   total_progress: "Samlet fremgang"
   user:

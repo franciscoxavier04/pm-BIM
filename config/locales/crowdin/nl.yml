@@ -401,7 +401,7 @@ nl:
   project_phase:
     working_days_count:
       one: "Duration: %{count} working day"
-      other: "Duration: %{count} working days"
+      other: "Duur: %{count} werkdagen"
   lists:
     create:
       success: "De gewijzigde lijst is opgeslagen als een nieuwe lijst"
@@ -620,8 +620,8 @@ nl:
           label: "Onderwerp patroon"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
+            work_package: "Werkpakket"
+            parent: "Bovenliggend werkpakket"
             project: "Project"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
@@ -756,9 +756,9 @@ nl:
       follows_description: "Het gerelateerde werkpakket moet noodzakelijkerwijs voltooid zijn voordat dit werkpakket kan beginnen"
       label_child_singular: "kind"
       label_child_plural: "kinderen"
-      new_child: "Create new child"
+      new_child: "Maak nieuw kind"
       new_child_text: "Creëert een gerelateerd werkpakket als subitem van het huidige (bovenliggende) werkpakket"
-      child: "Child"
+      child: "Kind"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
       label_blocks_singular: "blokkeert"
@@ -951,11 +951,11 @@ nl:
         is_required: "Vereist voor alle projecten"
         custom_field_section: Sectie
       project/phase:
-        date_range: "Date range"
+        date_range: "Datumbereik"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Naam"
+        color: "Kleur"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1265,7 +1265,7 @@ nl:
             date_range:
               start_date_must_be_before_finish_date: "start date must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+              incomplete: "is onvolledig."
         query:
           attributes:
             project:
@@ -1554,14 +1554,14 @@ nl:
       changeset: "Wijzigingensets"
       message: "Fora"
       news: "Nieuws"
-      project_details: "Project details"
+      project_details: "Projectdetails"
       subproject: "Inclusief subprojecten"
       time_entry: "Bestede tijd"
       wiki_edit: "Wiki"
       work_package: "Werkpakketten"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "geactiveerd"
+      deactivated: "gedeactiveerd"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -3781,7 +3781,7 @@ nl:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Toevoegen"
       label_add_description: "Add life cycle definition"
       filter:
         label: "Search project phase"

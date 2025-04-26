@@ -54,8 +54,8 @@ et:
         frequency: "Sagedus"
         interval: "Intervall"
         start_date: "Algab"
-        start_time: "Start time"
-        start_time_hour: "Start time"
+        start_time: "Algusaeg"
+        start_time_hour: "Algusaeg"
         end_after: "Meeting series ends"
         end_date: "Lõppkuupäev"
         iterations: "Occurrences"
@@ -75,7 +75,7 @@ et:
       meeting_agenda_item: "Agenda item"
       meeting_agenda: "Päevakava"
       meeting_minutes: "Minutit"
-      meeting_section: "Section"
+      meeting_section: "Sektsioon"
   activity:
     filter:
       meeting: "Koosolekud"
@@ -140,7 +140,7 @@ et:
   label_recurring_meeting_more_past:
     one: "There is one more past meeting."
     other: "There are %{count} more past meetings."
-  label_recurring_meeting_show_more: "Show more"
+  label_recurring_meeting_show_more: "Näita rohkem"
   label_recurring_meeting_series_create: "Create meeting series"
   label_recurring_meeting_series_edit: "Edit meeting series"
   label_recurring_meeting_series_delete: "Delete meeting series"
@@ -228,7 +228,7 @@ et:
     copied: "Copied from Meeting #%{id}"
     delete_dialog:
       one_time:
-        title: "Delete meeting"
+        title: "Kustuta koosolek"
         heading: "Delete this meeting?"
         confirmation_message_html: >
           This action is not reversible. Please proceed with caution.

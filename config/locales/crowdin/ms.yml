@@ -402,7 +402,7 @@ ms:
         new_label: "New priority"
   project_phase:
     working_days_count:
-      other: "Duration: %{count} working days"
+      other: "Tempoh: %{count} hari bekerja"
   lists:
     create:
       success: "Senarai yang diubah suai telah disimpan sebagai senarai baharu."
@@ -614,9 +614,9 @@ ms:
           label: "Corak subjek"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Pakej kerja"
+            parent: "Ibu bapa"
+            project: "Projek"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Hasilkan PDF"
@@ -749,7 +749,7 @@ ms:
       follows_description: "Pakej kerja yang berkaitan semestinya perlu diselesaikan sebelum yang ini boleh dimulakan"
       label_child_singular: "anak"
       label_child_plural: "kanak-kanak"
-      new_child: "Create new child"
+      new_child: "Cipta anak baru"
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Menjadikan pakej kerja berkaitan sub-item pakej kerja semasa (ibu bapa)."
@@ -947,8 +947,8 @@ ms:
         date_range: "Date range"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Nama"
+        color: "Warna"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1258,7 +1258,7 @@ ms:
             date_range:
               start_date_must_be_before_finish_date: "start date must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+              incomplete: "tidak lengkap."
         query:
           attributes:
             project:
@@ -1536,14 +1536,14 @@ ms:
       changeset: "Set ubah suai"
       message: "Forum-forum"
       news: "Berita"
-      project_details: "Project details"
+      project_details: "Butiran projek"
       subproject: "Termasuk subprojek"
       time_entry: "Masa yang dihabiskan"
       wiki_edit: "Wiki"
       work_package: "Pakej kerja"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "diaktifkan"
+      deactivated: "dinyahaktifkan"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -3742,7 +3742,7 @@ ms:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Tambah"
       label_add_description: "Add life cycle definition"
       filter:
         label: "Search project phase"
