@@ -38,7 +38,7 @@ RSpec.describe "Meeting Outcomes CRUD", :js do
     create :user,
            lastname: "First",
            preferences: { time_zone: "Etc/UTC" },
-           member_with_permissions: { project => %i[view_meetings manage_agendas create_meeting_minutes] }
+           member_with_permissions: { project => %i[view_meetings manage_agendas manage_outcomes] }
   end
   shared_let(:other_user) do
     create :user,
@@ -64,7 +64,7 @@ RSpec.describe "Meeting Outcomes CRUD", :js do
     TextEditorField.new(page, "Outcome", selector: test_selector("meeting-outcome-input"))
   end
 
-  context "when a user has the necessary 'create_meeting_minutes' permission" do
+  context "when a user has the necessary 'manage_outcomes' permission" do
     before do
       meeting.update(state: state)
       login_as current_user

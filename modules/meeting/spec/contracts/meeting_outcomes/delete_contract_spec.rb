@@ -42,7 +42,7 @@ RSpec.describe MeetingOutcomes::DeleteContract do
 
   context "with permission" do
     let(:user) do
-      create(:user, member_with_permissions: { project => %i[view_meetings create_meeting_minutes] })
+      create(:user, member_with_permissions: { project => %i[view_meetings manage_outcomes] })
     end
 
     context "when :meeting is 'in_progress'" do

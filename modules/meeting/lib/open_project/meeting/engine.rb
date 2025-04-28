@@ -107,9 +107,8 @@ module OpenProject::Meeting
                    { meeting_agendas: [:icalendar] },
                    permissible_on: :project,
                    require: :member
-        permission :create_meeting_minutes,
+        permission :manage_outcomes,
                    {
-                     meeting_minutes: %i[update preview],
                      meeting_outcomes: %i[new cancel_new create edit cancel_edit update destroy]
                    },
                    permissible_on: :project,
