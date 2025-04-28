@@ -170,8 +170,10 @@ en:
   label_no_time: "No time tracked"
   label_next_day: "Next day"
   label_next_week: "Next week"
+  label_next_workweek: "Next work week"
   label_next_month: "Next month"
   label_previous_day: "Previous day"
+  label_previous_workweek: "Previous work week"
   label_previous_week: "Previous week"
   label_previous_month: "Previous month"
   label_specific_day: "Day %{day}"
@@ -179,6 +181,7 @@ en:
   label_specific_month: "Month %{month}"
   label_list: "List"
   label_month: "Month"
+  label_workweek: "Work week"
   label_day: "Day"
   label_today_capitalized: "Today"
 

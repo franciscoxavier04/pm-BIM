@@ -53,7 +53,8 @@ module My
         case mode
         when :day then [date]
         when :week then date.all_week
-        when :month then date.all_month.map(&:beginning_of_week).uniq
+        when :workweek then workweek_days
+        when :month then month_days
         end
       end
 
@@ -67,9 +68,26 @@ module My
 
       def date_title(date)
         if mode == :month
-          I18n.t(:label_specific_week, week: date.strftime("%W"))
+          I18n.t(:label_specific_week, week: week_number(date))
         else
           I18n.l(date, format: "%A %d")
+        end
+      end
+
+      def workweek_days
+        workdays_normalized  = Setting.working_days.map { |day| day % 7 }.sort
+        date.all_week.select { |d| workdays_normalized.include?(d.wday) }
+      end
+
+      def month_days
+        date.all_month.map(&:beginning_of_week).uniq
+      end
+
+      def week_number(date)
+        if Setting.start_of_week == 1 # monday
+          I18n.l(date, format: "%W")
+        else # 6 saturday, 7 sunday
+          I18n.l(date, format: "%U")
         end
       end
 

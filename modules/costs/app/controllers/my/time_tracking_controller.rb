@@ -45,6 +45,7 @@ module My
     def index
       case mode
       when :day then load_time_entries(date)
+      when :workweek then load_time_entries(workweek)
       when :week then load_time_entries(date.all_week)
       when :month then load_time_entries(date.all_month)
       end
@@ -71,6 +72,11 @@ module My
 
     def date
       @date ||= parsed_date || current_date
+    end
+
+    def workweek
+      workdays_normalized  = Setting.working_days.map { |day| day % 7 }.sort
+      date.all_week.select { |d| workdays_normalized.include?(d.wday) }
     end
 
     def parsed_date
@@ -110,7 +116,7 @@ module My
     def current_date
       case mode
       when :day then Time.zone.today
-      when :week then Time.zone.today.beginning_of_week
+      when :week, :workweek then Time.zone.today.beginning_of_week
       when :month then Time.zone.today.beginning_of_month
       end
     end

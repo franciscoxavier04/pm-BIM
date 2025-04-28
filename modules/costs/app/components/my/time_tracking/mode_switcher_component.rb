@@ -37,7 +37,7 @@ module My
 
       def call
         render(Primer::Alpha::SegmentedControl.new("aria-label": I18n.t(:label_meeting_date_time))) do |control|
-          %i[day week month].each do |mode|
+          %i[day week workweek month].each do |mode|
             control.with_item(
               tag: :a,
               href: my_time_tracking_path(date:, view_mode:, mode:),
@@ -56,6 +56,8 @@ module My
           "op-calendar-day"
         when :week
           "op-calendar-week"
+        when :workweek
+          "briefcase"
         else
           "calendar"
         end
