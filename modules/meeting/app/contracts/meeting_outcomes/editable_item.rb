@@ -34,6 +34,7 @@ module MeetingOutcomes
 
     included do
       validate :validate_editable, :validate_meeting_existence, :user_allowed_to_add
+      validate :validate_not_in_backlog
     end
 
     protected
@@ -59,6 +60,12 @@ module MeetingOutcomes
 
       unless user.allowed_in_project?(:manage_outcomes, model.meeting_agenda_item.project)
         errors.add :base, :error_unauthorized
+      end
+    end
+
+    def validate_not_in_backlog
+      if model.meeting_agenda_item.in_backlog?
+        errors.add :base, I18n.t(:text_outcome_not_editable_anymore)
       end
     end
 

@@ -28,39 +28,33 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
-  class CreateService < ::BaseServices::Create
-    protected
+module MeetingSections
+  class Backlogs::ClearBacklogDialogComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpTurbo::Streamable
 
-    def after_perform(call)
-      if call.success? && Journal::NotificationConfiguration.active?
-        meeting = call.result
+    def initialize(meeting)
+      super
 
-        meeting.participants.where(invited: true).each do |participant|
-          MeetingMailer
-            .invited(meeting, participant.user, User.current)
-            .deliver_later
-        end
-      end
-
-      if call.success?
-        backlog = create_backlog(call.result)
-        call.merge!(backlog)
-      end
-
-      call
+      @meeting = meeting
     end
 
-    def create_backlog(meeting)
-      MeetingSections::CreateService
-        .new(user: user)
-        .call(
-          {
-            meeting_id: meeting.id,
-            backlog: true,
-            title: I18n.t(:label_agenda_backlog)
-          }
-        )
+    private
+
+    def heading
+      if @meeting.recurring?
+        I18n.t(:label_series_backlog_clear_title)
+      else
+        I18n.t(:label_agenda_backlog_clear_title)
+      end
+    end
+
+    def description
+      if @meeting.recurring?
+        I18n.t(:text_series_backlog_clear_description)
+      else
+        I18n.t(:text_agenda_backlog_clear_description)
+      end
     end
   end
 end

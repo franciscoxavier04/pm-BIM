@@ -28,39 +28,28 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
-  class CreateService < ::BaseServices::Create
-    protected
+class AddBacklogsToOneTimeMeetings < ActiveRecord::Migration[8.0]
+  def up
+    execute <<~SQL.squish
+      INSERT INTO meeting_sections (meeting_id, backlog, title, position, created_at, updated_at)
+      SELECT m.id, true, '', 0, NOW(), NOW()
+      FROM meetings m
+      WHERE (
+        m.recurring_meeting_id IS NULL
+        OR m.template = true
+      )
+    SQL
+  end
 
-    def after_perform(call)
-      if call.success? && Journal::NotificationConfiguration.active?
-        meeting = call.result
+  def down
+    execute <<~SQL.squish
+      DELETE FROM meeting_agenda_items
+      WHERE meeting_section_id IN (SELECT id FROM meeting_sections WHERE backlog = true)
+    SQL
 
-        meeting.participants.where(invited: true).each do |participant|
-          MeetingMailer
-            .invited(meeting, participant.user, User.current)
-            .deliver_later
-        end
-      end
-
-      if call.success?
-        backlog = create_backlog(call.result)
-        call.merge!(backlog)
-      end
-
-      call
-    end
-
-    def create_backlog(meeting)
-      MeetingSections::CreateService
-        .new(user: user)
-        .call(
-          {
-            meeting_id: meeting.id,
-            backlog: true,
-            title: I18n.t(:label_agenda_backlog)
-          }
-        )
-    end
+    execute <<~SQL.squish
+      DELETE FROM meeting_sections
+      WHERE backlog = true
+    SQL
   end
 end

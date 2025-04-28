@@ -28,39 +28,31 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
-  class CreateService < ::BaseServices::Create
-    protected
+module MeetingSections
+  class Backlogs::ContainerComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpTurbo::Streamable
+    include OpPrimer::ComponentHelpers
 
-    def after_perform(call)
-      if call.success? && Journal::NotificationConfiguration.active?
-        meeting = call.result
+    def initialize(collapsed:, meeting:)
+      super
 
-        meeting.participants.where(invited: true).each do |participant|
-          MeetingMailer
-            .invited(meeting, participant.user, User.current)
-            .deliver_later
-        end
-      end
-
-      if call.success?
-        backlog = create_backlog(call.result)
-        call.merge!(backlog)
-      end
-
-      call
+      @collapsed = collapsed
+      @meeting = meeting
+      @backlog = meeting.backlog
     end
 
-    def create_backlog(meeting)
-      MeetingSections::CreateService
-        .new(user: user)
-        .call(
-          {
-            meeting_id: meeting.id,
-            backlog: true,
-            title: I18n.t(:label_agenda_backlog)
-          }
-        )
+    private
+
+    def show?
+      !@meeting.closed? && !@meeting.template?
+    end
+
+    def wrapper_data_attributes
+      {
+        "add-meeting-params-target": "container",
+        meeting: @meeting.id
+      }
     end
   end
 end
