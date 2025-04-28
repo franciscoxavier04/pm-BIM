@@ -323,6 +323,18 @@ module Pages::Meetings
       end
     end
 
+    def expect_series_backlog(collapsed:)
+      expect(page).to have_css(".CollapsibleHeader", text: I18n.t("label_series_backlog"))
+
+      if collapsed
+        expect(page).to have_css(".CollapsibleHeader.CollapsibleHeader--collapsed")
+        expect(page).to have_no_text(I18n.t("text_series_backlog"))
+      else
+        expect(page).to have_no_css(".CollapsibleHeader.CollapsibleHeader--collapsed")
+        expect(page).to have_text(I18n.t("text_series_backlog"))
+      end
+    end
+
     def expect_backlog_count(count)
       within("#meeting-sections-backlogs-container-component") do
         expect(page).to have_css(".Counter", text: count)
@@ -533,7 +545,7 @@ module Pages::Meetings
       end
     end
 
-    def expect_backlog_actions(item)
+    def expect_backlog_actions(item, series: false)
       open_menu(item) do
         expect(page).to have_css(".ActionListItem-label", text: "Edit")
         expect(page).to have_css(".ActionListItem-label", text: "Add notes")
@@ -542,6 +554,9 @@ module Pages::Meetings
 
         expect(page).to have_no_css(".ActionListItem-label", text: "Move to backlog")
         expect(page).to have_no_css(".ActionListItem-label", text: "Add outcome")
+        if series
+          expect(page).to have_no_css(".ActionListItem-label", text: "Move to next meeting")
+        end
       end
 
       page.within("#meeting-agenda-items-item-component-#{item.id}") do
@@ -549,10 +564,13 @@ module Pages::Meetings
       end
     end
 
-    def expect_non_backlog_actions(item)
+    def expect_non_backlog_actions(item, series: false)
       open_menu(item) do
         expect(page).to have_css(".ActionListItem-label", text: "Move to backlog")
         expect(page).to have_no_css(".ActionListItem-label", text: "Move to current meeting")
+        if series
+          expect(page).to have_css(".ActionListItem-label", text: "Move to next meeting")
+        end
       end
 
       page.within("#meeting-agenda-items-item-component-#{item.id}") do
