@@ -100,8 +100,6 @@ class WorkPackageMeetingsTabController < ApplicationController
   end
 
   def backlog_id
-    return unless OpenProject::FeatureDecisions.meeting_backlogs_active?
-
     meeting_id = add_work_package_to_meeting_params[:meeting_id]
     return if meeting_id.blank?
 

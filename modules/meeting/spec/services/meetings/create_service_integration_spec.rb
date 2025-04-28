@@ -63,7 +63,7 @@ RSpec.describe Meetings::CreateService, "integration", type: :model do
     end
   end
 
-  describe "backlog", with_flag: { meeting_backlogs: true } do
+  describe "backlog" do
     it "creates a backlog" do
       expect(subject).to be_success
       expect(subject.result.backlog).to be_present

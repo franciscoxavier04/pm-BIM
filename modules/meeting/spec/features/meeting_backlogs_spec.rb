@@ -33,7 +33,7 @@ require "spec_helper"
 require_relative "../support/pages/meetings/show"
 require_relative "../support/pages/recurring_meeting/show"
 
-RSpec.describe "Meeting Backlogs", :js, with_flag: { meeting_backlogs: true } do
+RSpec.describe "Meeting Backlogs", :js do
   shared_let(:project) { create(:project, enabled_module_names: %w[meetings]) }
   shared_let(:user) do
     create :user,

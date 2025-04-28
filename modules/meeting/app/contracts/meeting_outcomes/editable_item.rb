@@ -64,8 +64,6 @@ module MeetingOutcomes
     end
 
     def validate_not_in_backlog
-      return true unless OpenProject::FeatureDecisions.meeting_backlogs_active?
-
       if model.meeting_agenda_item.in_backlog?
         errors.add :base, I18n.t(:text_outcome_not_editable_anymore)
       end

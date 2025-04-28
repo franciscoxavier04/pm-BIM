@@ -64,8 +64,3 @@ OpenProject::FeatureDecisions.add :work_package_comment_id_url,
 OpenProject::FeatureDecisions.add :comments_with_restricted_visibility,
                                   description: "Enables submitting comments that are restricted " \
                                                "and only a subset of users can see"
-
-OpenProject::FeatureDecisions.add :meeting_backlogs,
-                                  description: "Enables backlogs for meetings. " \
-                                               "Note: Meetings created with this flag off and recurring " \
-                                               "meetings will not be accessible after activating it."

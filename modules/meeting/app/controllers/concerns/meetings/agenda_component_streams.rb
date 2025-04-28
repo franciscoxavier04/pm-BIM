@@ -144,8 +144,7 @@ module Meetings
 
       def render_agenda_item_form_via_turbo_stream(collapsed:, meeting: @meeting, meeting_section: @meeting_section,
                                                    type: :simple)
-        if meeting.sections.empty? &&
-          (!OpenProject::FeatureDecisions.meeting_backlogs_active? || meeting_section != meeting.backlog)
+        if meeting.sections.empty? && meeting_section != meeting.backlog
           render_agenda_item_form_for_empty_meeting_via_turbo_stream(type:)
         else
           render_agenda_item_form_in_section_via_turbo_stream(meeting:, meeting_section:, type:, collapsed:)
@@ -218,8 +217,7 @@ module Meetings
       def add_item_via_turbo_stream(meeting_agenda_item: @meeting_agenda_item, clear_slate: false) # rubocop:disable Metrics/AbcSize
         if clear_slate
           update_list_via_turbo_stream(form_hidden: false, form_type: @agenda_item_type)
-        elsif meeting_agenda_item.meeting.agenda_items.count == 1 &&
-          (!OpenProject::FeatureDecisions.meeting_backlogs_active? || meeting_agenda_item.meeting.sections.present?)
+        elsif meeting_agenda_item.meeting.agenda_items.count == 1 && meeting_agenda_item.meeting.sections.present?
           update_list_via_turbo_stream(form_hidden: true)
 
           update_new_component_via_turbo_stream(
@@ -372,14 +370,12 @@ module Meetings
       end
 
       def update_backlog_via_turbo_stream(collapsed:, meeting: @meeting)
-        if OpenProject::FeatureDecisions.meeting_backlogs_active?
-          update_via_turbo_stream(
-            component: MeetingSections::Backlogs::ContainerComponent.new(
-              meeting: meeting,
-              collapsed:
-            )
+        update_via_turbo_stream(
+          component: MeetingSections::Backlogs::ContainerComponent.new(
+            meeting: meeting,
+            collapsed:
           )
-        end
+        )
       end
 
       def update_section_via_turbo_stream(meeting_section: @meeting_section, form_hidden: true, form_type: :simple,

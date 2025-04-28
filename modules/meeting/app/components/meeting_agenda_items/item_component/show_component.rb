@@ -63,7 +63,7 @@ module MeetingAgendaItems
       @meeting_agenda_item.editable? &&
         @meeting.in_progress? &&
         !@meeting_agenda_item.outcomes.exists? &&
-        (!OpenProject::FeatureDecisions.meeting_backlogs_active? || !@meeting_agenda_item.in_backlog?)
+        !@meeting_agenda_item.in_backlog?
     end
 
     def first?
@@ -233,14 +233,6 @@ module MeetingAgendaItems
 
     def in_backlog?
       @meeting_agenda_item.meeting_section.backlog?
-    end
-
-    def move_to_current_meeting_action?
-      in_backlog? && OpenProject::FeatureDecisions.meeting_backlogs_active?
-    end
-
-    def move_to_backlog_action?
-      !in_backlog? && OpenProject::FeatureDecisions.meeting_backlogs_active?
     end
 
     def in_template?

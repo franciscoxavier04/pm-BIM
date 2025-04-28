@@ -45,9 +45,7 @@ module MeetingSections
     private
 
     def show?
-      !@meeting.closed? &&
-        !@meeting.template? &&
-        OpenProject::FeatureDecisions.meeting_backlogs_active?
+      !@meeting.closed? && !@meeting.template?
     end
 
     def wrapper_data_attributes

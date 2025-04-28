@@ -30,9 +30,7 @@
 require "spec_helper"
 require "services/base_services/behaves_like_create_service"
 
-RSpec.describe Meetings::CreateService,
-               type: :model,
-               with_flag: { meeting_backlogs: true } do
+RSpec.describe Meetings::CreateService, type: :model do
   let(:section_double) { instance_double(MeetingSections::CreateService) }
 
   before do

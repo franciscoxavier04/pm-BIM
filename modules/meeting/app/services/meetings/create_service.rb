@@ -43,7 +43,7 @@ module Meetings
         end
       end
 
-      if call.success? && OpenProject::FeatureDecisions.meeting_backlogs_active?
+      if call.success?
         backlog = create_backlog(call.result)
         call.merge!(backlog)
       end
