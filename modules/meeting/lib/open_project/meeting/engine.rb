@@ -44,8 +44,6 @@ module OpenProject::Meeting
         permission :view_meetings,
                    {
                      meetings: %i[index show check_for_updates download_ics participants_dialog history],
-                     meeting_agendas: %i[history show diff],
-                     meeting_minutes: %i[history show diff],
                      "meetings/menus": %i[show],
                      work_package_meetings_tab: %i[index count],
                      recurring_meetings: %i[index show new create download_ics]
