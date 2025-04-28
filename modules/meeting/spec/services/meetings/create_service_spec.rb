@@ -30,18 +30,30 @@
 require "spec_helper"
 require "services/base_services/behaves_like_create_service"
 
-RSpec.describe Meetings::CreateService, type: :model do
-  describe "The creation of backlogs in the service breaks these. Need new ones" do
-    it_behaves_like "BaseServices create service" do
-      let(:factory) { :meeting }
+RSpec.describe Meetings::CreateService,
+               type: :model,
+               with_flag: { meeting_backlogs: true } do
+  let(:section_double) { instance_double(MeetingSections::CreateService) }
 
-      context "when system user creates the meeting" do
-        let(:user) { User.system }
+  before do
+    allow(MeetingSections::CreateService)
+      .to receive(:new)
+      .and_return(section_double)
 
-        it "does not get assigned as the creator" do
-          expect(subject).to be_success
-          expect(subject.result.participants).to be_empty
-        end
+    allow(section_double)
+      .to receive(:call)
+      .and_return(ServiceResult.success)
+  end
+
+  it_behaves_like "BaseServices create service" do
+    let(:factory) { :meeting }
+
+    context "when system user creates the meeting" do
+      let(:user) { User.system }
+
+      it "does not get assigned as the creator" do
+        expect(subject).to be_success
+        expect(subject.result.participants).to be_empty
       end
     end
   end
