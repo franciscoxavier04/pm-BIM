@@ -81,12 +81,6 @@ module OpenProject::Meeting
                    { meetings: [:icalendar] },
                    permissible_on: :project,
                    require: :member
-        permission :create_meeting_agendas,
-                   {
-                     meeting_agendas: %i[update preview]
-                   },
-                   permissible_on: :project,
-                   require: :member
         permission :manage_agendas,
                    {
                      meetings: %i[change_state],
