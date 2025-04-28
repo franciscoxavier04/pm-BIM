@@ -28,28 +28,36 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class WorkPackageChildrenRelationsController < ApplicationController
+class WorkPackageHierarchyRelationsController < ApplicationController
   include OpTurbo::ComponentStream
   include OpTurbo::DialogStreamHelper
 
-  before_action :set_work_package
+  class InvalidRelationType < StandardError; end
 
+  before_action :set_work_package
   before_action :authorize # Short-circuit early if not authorized
 
+  rescue_from InvalidRelationType do |error|
+    render_error(message: error.message, status: 422)
+  end
+
   def new
-    component = WorkPackageRelationsTab::AddWorkPackageChildDialogComponent
-      .new(work_package: @work_package)
+    component = WorkPackageRelationsTab::AddWorkPackageHierarchyDialogComponent
+      .new(work_package: @work_package, relation_type:)
     respond_with_dialog(component)
   end
 
   def create
-    service_result = create_service_result
+    service_result = create_hierarchy_association
 
     if service_result.failure?
       update_via_turbo_stream(
-        component: WorkPackageRelationsTab::AddWorkPackageChildFormComponent.new(work_package: @work_package,
-                                                                                 child: service_result.result,
-                                                                                 base_errors: base_errors(service_result.errors)),
+        component: WorkPackageRelationsTab::AddWorkPackageHierarchyFormComponent.new(
+          work_package: @work_package,
+          relation_type:,
+          related: related_work_package,
+          base_errors: extract_base_errors(service_result.errors)
+        ),
         status: :bad_request
       )
     end
@@ -58,23 +66,46 @@ class WorkPackageChildrenRelationsController < ApplicationController
   end
 
   def destroy
-    child = WorkPackage.find(params[:id])
-    service_result = set_relation(child:, parent: nil)
-
+    related = WorkPackage.find(params[:id])
+    service_result =
+      if related.parent_id == @work_package.id
+        set_relation(child: related, parent: nil)
+      elsif @work_package.parent_id == related.id
+        set_relation(child: @work_package, parent: nil)
+      end
     respond_with_relations_tab_update(service_result)
   end
 
   private
 
-  def create_service_result
-    if params[:work_package][:id].present?
-      child = WorkPackage.find(params[:work_package][:id])
-      set_relation(child:, parent: @work_package)
-    else
-      child = WorkPackage.new
-      child.errors.add(:id, :blank)
-      ServiceResult.failure(result: child)
+  def create_hierarchy_association
+    if related_work_package.id.blank?
+      related_work_package.errors.add(:id, :blank)
+      return ServiceResult.failure(result: related_work_package)
     end
+
+    if relation_type == "child"
+      set_relation(parent: @work_package, child: related_work_package)
+    else
+      set_relation(child: @work_package, parent: related_work_package)
+    end
+  end
+
+  def relation_type
+    type = params[:relation_type]
+    raise InvalidRelationType, "Missing relation_type parameter" if type.blank?
+    raise InvalidRelationType, "Invalid relation type: #{type}" unless type.in?([Relation::TYPE_PARENT, Relation::TYPE_CHILD])
+
+    type
+  end
+
+  def related_work_package
+    @related_work_package ||=
+      if params[:work_package][:id].present?
+        WorkPackage.find(params[:work_package][:id])
+      else
+        WorkPackage.new
+      end
   end
 
   def set_relation(child:, parent:)
@@ -113,7 +144,7 @@ class WorkPackageChildrenRelationsController < ApplicationController
     @project = @work_package.project
   end
 
-  def base_errors(errors)
+  def extract_base_errors(errors)
     if errors[:base].present?
       errors[:base]
     elsif errors[:id].present?

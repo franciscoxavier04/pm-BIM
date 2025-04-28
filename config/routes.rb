@@ -665,7 +665,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :children_relations, only: %i[new create destroy], controller: "work_package_children_relations"
+    resources :hierarchy_relations, only: %i[new create destroy], controller: "work_package_hierarchy_relations"
 
     resource :progress, only: %i[edit update], controller: "work_packages/progress"
     collection do
