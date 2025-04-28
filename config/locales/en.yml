@@ -391,7 +391,7 @@ en:
       header_status: Project status
       header_relations: Project relations
       button_update_details: Update details
-      button_update_status: Update status
+      button_update_status_description: Update status description
       button_update_parent_project: Update parent project
       public_warning: >
         This project is public.
