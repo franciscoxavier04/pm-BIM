@@ -39,9 +39,10 @@ module Storages
 
           def validate
             register_checks(
-              :files_request, :userless_access, :group_folder_presence, :group_folder_contents
+              :group_folder_app, :files_request, :userless_access, :group_folder_presence, :group_folder_contents
             )
 
+            group_folder_app_checks
             files_request_failed_with_unknown_error
             userless_access_denied
             group_folder_not_found
@@ -53,6 +54,23 @@ module Storages
               fail_check(:userless_access, message(:userless_access_denied))
             else
               pass_check(:userless_access)
+            end
+          end
+
+          def group_folder_app_checks
+            required_version = SemanticVersion.parse(
+              nextcloud_dependencies.dig("dependencies", "group_folders_app", "min_version")
+            )
+
+            capabilities = Registry["nextcloud.queries.capabilities"].call(storage: @storage, auth_strategy: noop).result
+            dependency = I18n.t("storages.dependencies.nextcloud.group_folders_app")
+
+            if capabilities.group_folder_disabled?
+              fail_check(:group_folder_app, message(:missing_dependencies, dependency:))
+            elsif capabilities.group_folder_version < required_version
+              fail_check(:group_folder_app, message(:dependency_version_mismatch, dependency:))
+            else
+              pass_check(:group_folder_app)
             end
           end
 
@@ -83,7 +101,7 @@ module Storages
             return pass_check(:group_folder_contents) if unexpected_files.empty?
 
             log_extraneous_files(unexpected_files)
-            warn_check(:group_folder_contents, message(:unexpected_content))
+            warn_check(:group_folder_contents, message("nextcloud.unexpected_content"))
           end
 
           def log_extraneous_files(unexpected_files)
@@ -103,9 +121,17 @@ module Storages
 
           def files
             @files ||= Peripherals::Registry
-              .resolve("#{@storage}.queries.files")
-              .call(storage: @storage, auth_strategy:, folder: ParentFolder.new(@storage.group_folder))
+                       .resolve("#{@storage}.queries.files")
+                       .call(storage: @storage, auth_strategy:, folder: ParentFolder.new(@storage.group_folder))
           end
+
+          def noop = StorageInteraction::AuthenticationStrategies::Noop.strategy
+
+          def nextcloud_dependencies
+            @nextcloud_dependencies ||= YAML.load_file(path_to_config).deep_stringify_keys
+          end
+
+          def path_to_config = Rails.root.join("modules/storages/config/nextcloud_dependencies.yml")
         end
       end
     end

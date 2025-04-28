@@ -58,7 +58,7 @@ module MeetingOutcomes
     def user_allowed_to_add
       return unless visible?
 
-      unless user.allowed_in_project?(:create_meeting_minutes, model.meeting_agenda_item.project)
+      unless user.allowed_in_project?(:manage_outcomes, model.meeting_agenda_item.project)
         errors.add :base, :error_unauthorized
       end
     end

@@ -46,7 +46,7 @@ module MeetingAgendaItems
 
     def edit_enabled?
       @meeting.in_progress? &&
-        User.current.allowed_in_project?(:create_meeting_minutes, @meeting.project) &&
+        User.current.allowed_in_project?(:manage_outcomes, @meeting.project) &&
         !@agenda_item.in_backlog?
     end
 

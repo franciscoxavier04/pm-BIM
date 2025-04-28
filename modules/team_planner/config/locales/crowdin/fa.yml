@@ -8,11 +8,11 @@ fa:
   project_module_team_planner_view: "برنامه ریزهای تیم"
   ee:
     feature_names:
-      team_planner_view: "Team planner"
-    upsale:
+      team_planner_view: "برنامه ریز تیم"
+    upsell:
       team_planner_view:
-        title: "Team planner"
-        description: "Get a complete overview of your team’s planning with Team Planner. Stretch, shorten and drag-and-drop work packages to modify dates, move them or change assignees."
+        title: "برنامه ریز تیم"
+        description: "یک نمای کلی از برنامه ریزی تیم با استفاده از برنامه ریز تیم دریافت کنید. به منظور اصلاح تاریخ، جابه جا کردن بسته های کاری و یا تغییر نمایندگان از بسط دادن، کوتاه کردن و یا کشیدن و رها کردن آنها  استفاده کنید."
   team_planner:
     label_team_planner: "برنامه ریز تیم"
     label_new_team_planner: "برنامه ریز تیم جدید"

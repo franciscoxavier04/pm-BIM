@@ -239,7 +239,7 @@ lt:
           status_waiting: "laiškas išsiųstas -- laukiame patvirtinimo"
           test_ee: "Išbandykite Enterprise versiją 14 dienų nemokamai"
           quick_overview: "Gaukite greitą apžvalgą apie projektų valdymą ir komandos bendradarbiavimą naudojant OpenProject Enterprise versiją."
-        upsale:
+        upsell:
           become_hero: "Tapkite didvyriu!"
           enterprise_info_html: "%{feature_title} yra „Enterprise“ <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> priedas."
           upgrade_info: "Prašome atsinaujinti į mokamą planą, kad aktyvuotumėte ir pradėtumėte ji naudoti savo komandoje."
@@ -463,6 +463,7 @@ lt:
     label_menu_collapse: "suskleisti"
     label_menu_expand: "išskleisti"
     label_more_than_ago: "daugiau nei prieš dieną"
+    label_moderate_comment: "Moderate comment"
     label_next: "Kitas"
     label_no_color: "Be spalvų"
     label_no_data: "Nėra rodytinų duomenų"
@@ -827,7 +828,7 @@ lt:
       add_new_child: "Sukurti naują vaiką"
       create_new: "Sukurti naują"
       add_existing: "Pridėti esamą"
-      add_existing_child: "Add child"
+      add_existing_child: "Pridėti pasiekėją"
       remove_child: "Pašalinti vaiką"
       add_new_relation: "Sukurti naują ryšį"
       add_existing_relation: "Pridėti esamą sąryšį"
@@ -866,7 +867,7 @@ lt:
     tl_toolbar:
       zooms: "Didinimo lygis"
       outlines: "Hierarchinis lygmuo"
-    upsale:
+    upsell:
       ee_only: "„Enterprise“ versijos priedas"
     wiki_formatting:
       strong: "Paryškintas"

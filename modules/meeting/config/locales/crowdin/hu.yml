@@ -53,7 +53,7 @@ hu:
       recurring_meeting:
         frequency: "Gyakoriság"
         interval: "Időköz"
-        start_date: "Starts on"
+        start_date: "Kezdés ideje"
         start_time: "Kezdés"
         start_time_hour: "Kezdés"
         end_after: "Meeting series ends"
@@ -388,9 +388,7 @@ hu:
   label_meeting_details_edit: "Megbeszélés részleteinek szerkesztése"
   label_meeting_state: "A megbeszélés státusza"
   label_meeting_state_open: "Open"
-  label_meeting_state_open_html: "<i>Nyitva</i>"
   label_meeting_state_closed: "Lezárva"
-  label_meeting_state_closed_html: "<i>Lezárva</i>"
   label_meeting_state_agenda_created: "Agenda created"
   label_meeting_state_planned: "Tervezet"
   label_meeting_state_cancelled: "Cancelled"

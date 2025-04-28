@@ -239,7 +239,7 @@ cs:
           status_waiting: "e-mail odeslán - čeká na potvrzení"
           test_ee: "Vyzkoušejte Enterprise Edition 14 dní zdarma"
           quick_overview: "Získejte rychlý přehled o řízení projektu a týmové spolupráci s OpenProject Enterprise edion."
-        upsale:
+        upsell:
           become_hero: "Staň se hrdinou!"
           enterprise_info_html: "%{feature_title} je <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>  Enterprise   doplněk."
           upgrade_info: "Přejděte na placenou verzi a začněte ji používat ve vašem týmu."
@@ -462,6 +462,7 @@ cs:
     label_menu_collapse: "sbalit"
     label_menu_expand: "rozbalit"
     label_more_than_ago: "před více jak (dny)"
+    label_moderate_comment: "Moderate comment"
     label_next: "Další"
     label_no_color: "Bez barvy"
     label_no_data: "Žádná data k zobrazení"
@@ -796,7 +797,7 @@ cs:
       typeahead_placeholder: Hledání možných přihlížejících
     relation_labels:
       parent: "Nadřazený"
-      child: "Child"
+      child: "Potomek"
       children: "Potomci"
       relates: "Související s"
       duplicates: "Duplikáty"
@@ -826,7 +827,7 @@ cs:
       add_new_child: "Vytvořit nového potomka"
       create_new: "Vytvořit nový"
       add_existing: "Přidat existující"
-      add_existing_child: "Add child"
+      add_existing_child: "Přidat potomka"
       remove_child: "Odstranit potomka"
       add_new_relation: "Vytvořit nový vztah"
       add_existing_relation: "Přidat existující vztah"
@@ -865,7 +866,7 @@ cs:
     tl_toolbar:
       zooms: "Úroveň zvětšení"
       outlines: "Úroveň hierarchie"
-    upsale:
+    upsell:
       ee_only: "doplňek Enterprise Edice"
     wiki_formatting:
       strong: "Silný"

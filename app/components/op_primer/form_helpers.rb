@@ -55,6 +55,15 @@ module OpPrimer
     # @param blk [Proc] A block that defines the form structure.
     def render_inline_form(form_builder, &blk)
       form_class = Class.new(ApplicationForm) do
+        # This is a workaround to make the form class aware of the template path
+        # of the block that is passed to it.
+        #
+        # This avoids an annoying warning "Could not identify the template" from
+        # original `base_template_path` method.
+        define_singleton_method(:base_template_path) do
+          blk.source_location.first
+        end
+
         form(&blk)
       end
       render(form_class.new(form_builder))
@@ -89,6 +98,15 @@ module OpPrimer
     # @param blk [Proc] A block that defines the form structure.
     def render_inline_settings_form(form_builder, &blk)
       form_class = Class.new(ApplicationForm) do
+        # This is a workaround to make the form class aware of the template path
+        # of the block that is passed to it.
+        #
+        # This avoids an annoying warning "Could not identify the template" from
+        # original `base_template_path` method.
+        define_singleton_method(:base_template_path) do
+          blk.source_location.first
+        end
+
         settings_form(&blk)
       end
       render(form_class.new(form_builder))

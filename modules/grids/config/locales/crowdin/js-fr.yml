@@ -1,8 +1,8 @@
 fr:
   ee:
-    upsale:
+    upsell:
       grid_widget_wp_graph:
-        description: "Some widgets, like the work package graph widget, are only available in the Enterprise edition."
+        description: "Certains composants, comme le composant de graphique des lots de travaux, ne sont disponibles que dans l'édition Entreprise."
   js:
     grid:
       add_widget: 'Ajouter un widget'

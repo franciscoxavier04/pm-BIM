@@ -99,7 +99,7 @@ class Relation < ApplicationRecord
     }
   }.freeze
 
-  ORDERED_TYPES = [*TYPES.keys, TYPE_CHILD].freeze
+  ORDERED_TYPES = [*TYPES.keys, TYPE_PARENT, TYPE_CHILD].freeze
 
   include ::Scopes::Scoped
 

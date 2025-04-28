@@ -41,9 +41,14 @@ fr:
         changed: "modifié"
         created: "créé"
         commented: "commenté"
-        restrict_visibility: Restreindre la visibilité
-        restricted_journal: Les commentaires restreints sont visibles pour un groupe limité de membres.
+        internal_comment: Internal comment
+        internal_journal: Internal comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: Vous avez des modifications non enregistrées. Voulez-vous vraiment fermer l'éditeur ?
+        internal_comment_confirmation:
+          title: "Make this comment public?"
+          heading: "Make this comment public?"
+          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          confirm_button_text: "Passer en public"
   admin:
     plugins:
       no_results_title_text: Aucun plugin n'est actuellement installé.
@@ -292,8 +297,9 @@ fr:
   global_search:
     placeholder: "Rechercher dans %{app_title}"
     overwritten_tabs:
-      wiki_pages: "Wiki"
+      all: "Tous"
       messages: "Forum"
+      wiki_pages: "Wiki"
   groups:
     index:
       no_results_title_text: Il n'y a actuellement aucun groupe.
@@ -345,6 +351,18 @@ fr:
         heading: "Supprimer cette liste de projets ?"
         text: "Cette action ne supprimera aucun projet contenu dans la liste. Voulez-vous vraiment supprimer cette liste de projets ?"
     settings:
+      public_warning: >
+        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+      public_confirmation:
+        checkbox: "I understand that this will make the previously private content public"
+        title: "Make this project public?"
+        description: >
+          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+      private_confirmation:
+        checkbox: "I understand that this will make the previously public content private."
+        title: "Make this project private?"
+        description: >
+          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       change_identifier: Changer l'identifiant
       actions:
         label_enable_all: "Activer tout"
@@ -1068,7 +1086,7 @@ fr:
           title: "Jours ouvrés"
           false: "jours ouvrés seulement"
           true: "Inclure les jours non ouvrés"
-        journal_restricted: Journal restreint
+        journal_internal: Internal Journal
         notify: "Notifier" #used in custom actions
         parent: "Parent"
         parent_issue: "Parent"
@@ -1289,7 +1307,7 @@ fr:
             values:
               inclusion: "Les valeurs du filtre sont invalides."
               format: "%{message}"
-        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+        queries/principals/filters/internal_mentionable_on_work_package_filter:
           attributes:
             values:
               single_value_requirement: "doit être un lot de travaux unique"
@@ -1801,7 +1819,8 @@ fr:
     text:
       failed: 'Impossible de copier le projet "%{source_project_name}" vers "%{target_project_name}".'
       succeeded: 'Le projet "%{source_project_name}" a été copié vers "%{target_project_name}".'
-  create_new_page: "Page wiki"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Page wiki"
   date:
     abbr_day_names:
       - "Dim"
@@ -1956,39 +1975,38 @@ fr:
     features:
       baseline_comparison: Baseline Comparisons
       board_view: Advanced Boards
-      conditional_highlighting: Conditional Highlighting
-      comments_with_restricted_visibility: Comments With Restricted Visibility
-      custom_actions: Custom Actions
-      custom_field_hierarchies: Custom fields of type hierarchy
-      customize_life_cycle: Customize Life Cycle
-      date_alerts: Date Alerts
-      define_custom_style: Custom theme and logo
-      edit_attribute_groups: Edit Attribute Groups
-      gantt_pdf_export: Gantt PDF Export
-      grid_widget_wp_graph: Grid Widget Work Package Graph
-      ldap_groups: LDAP users and group sync
-      one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
-      placeholder_users: Placeholder Users
-      project_list_sharing: Project List Sharing
-      readonly_work_packages: Readonly Work Packages
-      sso_auth_providers: Single sign-on
-      team_planner_view: Team Planner View
+      conditional_highlighting: Mise en surbrillance conditionnelle
+      internal_comments: Internal Comments
+      custom_actions: Actions personnalisées
+      custom_field_hierarchies: Champs personnalisés de type hiérarchie
+      customize_life_cycle: Personnaliser le cycle de vie
+      date_alerts: Alertes de date
+      define_custom_style: Thème et logo personnalisés
+      edit_attribute_groups: Modifier les groupes d'attributs
+      gantt_pdf_export: Exportation PDF de diagramme de Gantt
+      grid_widget_wp_graph: Graphique du widget de grille de lot de travaux
+      ldap_groups: Synchronisation des utilisateurs LDAP et des groupes
+      one_drive_sharepoint_file_storage: Stockage de fichiers OneDrive/SharePoint
+      placeholder_users: Utilisateurs de remplacement
+      project_list_sharing: Partage de liste de projets
+      readonly_work_packages: Lots de travaux en lecture seule
+      sso_auth_providers: Authentification unique
+      team_planner_view: Vue du planificateur d'équipe
       two_factor_authentication: 2FA Authentication
       virus_scanning: Antivirus Scanning
-      work_package_query_relation_columns: Work Package Query Relation Columns
-      work_package_sharing: Share work packages with external users
-      work_package_subject_generation: Work Package Subject Generation
-    upsale:
+      work_package_query_relation_columns: Colonnes de relation de requête de lot de travaux
+      work_package_sharing: Partager les lots de travaux avec des utilisateurs
+      work_package_subject_generation: Génération du sujet du lot de travaux
+    upsell:
       title: "Add-on Enterprise"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
-      plan_text_html: "Available only through the %{plan_name}."
-      link_title: "Plus d'informations"
+      plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
       baseline_comparison:
-        description: Highlight changes made to this list since any point in the past.
+        description: Mettre en évidence les modifications apportées à cette liste depuis n'importe quel point dans le passé.
       work_package_subject_generation:
-        description: "Create automatically generated subjects using referenced attributes and text."
+        description: "Créez des sujets générés automatiquement à l'aide d'attributs et de textes référencés."
       customize_life_cycle:
         description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       conditional_highlighting:
@@ -1998,7 +2016,7 @@ fr:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "Ajouter de nouveaux groupes d’attributs"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -2006,25 +2024,25 @@ fr:
       custom_field_hierarchies:
         description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
       date_alerts:
-        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+        description: "Avec les alarmes, vous serez informé(e) à l'approche des dates de début ou de fin vous concernant afin de ne jamais manquer ou oublier une échéance importante."
       work_package_sharing:
-        description: "Share work packages with users who are not members of the project."
+        description: "Partagez les lots de travaux avec des utilisateurs qui ne sont pas membres du projet."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "Remarque : le logo utilisé sera accessible publiquement."
+        description: Personnalisez votre installation OpenProject avec votre propre logo et couleurs.
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "Actions personnalisées"
+        description: "Les actions personnalisées sont des raccourcis en un clic vers un ensemble d'actions prédéfinies que vous pouvez rendre disponibles sur certains lots de travaux en fonction de l'état, du rôle, du type ou du projet."
       virus_scanning:
-        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
+        description: "Assurez-vous que les fichiers téléversés dans OpenProject sont analysés pour détecter les virus avant d'être accessibles aux autres utilisateurs."
       placeholder_users:
-        title: Placeholder users
+        title: Utilisateurs de remplacement
         description: >
-          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
-      comments_with_restricted_visibility:
+          Les utilisateurs fictifs sont un moyen d'attribuer des lots de travaux à des utilisateurs qui ne font pas partie de votre projet. Ils peuvent être utiles dans une série de scénarios ; par exemple, si vous avez besoin de suivre des tâches pour une ressource qui n'est pas encore nommée ou disponible, ou si vous ne voulez pas donner à cette personne l'accès à OpenProject mais voulez quand même suivre les tâches qui lui sont assignées.
+      internal_comments:
         title: "For your eyes only"
-        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly. Available only through the enterprise professional plan."
+        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "Activités de suivi du temps"
   enumeration_work_package_priorities: "Priorités du Lot de Travaux"
   enumeration_reported_project_statuses: "Statuts de projet signalés"
@@ -2251,9 +2269,8 @@ fr:
       users: "Les utilisateurs enregistrés les plus récents de cette instance."
     blocks:
       community: "Communauté OpenProject"
-      upsale:
+      upsell:
         title: "Passer à la version Entreprise"
-        more_info: "Plus d'informations"
     links:
       upgrade_enterprise_edition: "Passer à la version Entreprise"
       postgres_migration: "Migration de votre installation vers PostgreSQL"
@@ -2730,6 +2747,7 @@ fr:
   label_modules: "Modules"
   label_months_from: "mois de"
   label_more: "Plus"
+  label_more_information: "Plus d'informations"
   label_more_than_ago: "il y a plus de quelques jours"
   label_move_column_left: "Déplacer la colonne à gauche"
   label_move_column_right: "Déplacer la colonne à droite"
@@ -3328,13 +3346,13 @@ fr:
     text_getting_started_description: "Obtenez un aperçu rapide de la gestion de projet et de la collaboration en équipe avec OpenProject. Vous pouvez redémarrer cette vidéo à partir du menu d'aide."
     welcome: "Bienvenue sur %{app_title}"
     select_language: "Veuillez sélectionner votre langue"
-  permission_add_work_package_notes: "Ajouter des commentaires"
+  permission_add_work_package_comments: "Ajouter des commentaires"
   permission_add_work_packages: "Ajouter des lots de travaux"
   permission_add_messages: "Poster des messages"
   permission_add_project: "Créer des projets"
   permission_add_work_package_attachments: "Ajouter pièces jointes"
   permission_add_work_package_attachments_explanation: "Permet d'ajouter des pièces jointes sans avoir le droit de modifier les lots de travaux"
-  permission_add_comments_with_restricted_visibility: "Écrire des commentaires avec une visibilité restreinte"
+  permission_add_internal_comments: "Write internal comments"
   permission_archive_project: "Archiver le projet"
   permission_create_user: "Créer des utilisateurs"
   permission_manage_user: "Modifier les utilisateurs"
@@ -3359,16 +3377,16 @@ fr:
   permission_delete_timelines: "Supprimer lignes du temps"
   permission_delete_wiki_pages: "Supprimer des pages wiki"
   permission_delete_wiki_pages_attachments: "Supprimer des pièces jointes"
-  permission_edit_work_package_notes: "Modérer les commentaires"
-  permission_edit_work_package_notes_explanation: "Attention : les utilisateurs disposant de cette autorisation peuvent modifier les commentaires de n'importe qui."
+  permission_edit_work_package_comments: "Modérer les commentaires"
+  permission_edit_work_package_comments_explanation: "Attention : les utilisateurs disposant de cette autorisation peuvent modifier les commentaires de n'importe qui."
   permission_edit_work_packages: "Éditer des lots de travaux"
   permission_edit_messages: "Éditer des messages"
-  permission_edit_own_comments_with_restricted_visibility: "Modifier les propres commentaires avec une visibilité restreinte"
-  permission_edit_own_work_package_notes: "Modifier ses propres commentaires"
+  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_work_package_comments: "Modifier ses propres commentaires"
   permission_edit_own_messages: "Éditer ses propres messages"
   permission_edit_own_time_entries: "Éditer mes propres enregistrements de temps"
-  permission_edit_others_comments_with_restricted_visibility: "Modérer les commentaires avec une visibilité restreinte"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "Attention : les utilisateurs ayant cette permission peuvent modifier les commentaires d'autres utilisateurs avec une visibilité restreinte."
+  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "Éditer le projet"
   permission_edit_project_attributes: "Modifier les attributs du projet"
   permission_edit_project_phases: "Modifier les phases du projet"
@@ -3409,7 +3427,7 @@ fr:
   permission_manage_own_reminders: "Créer des rappels personnalisés"
   permission_view_project: "Voir les projets"
   permission_view_changesets: "Voir révisions du dépôt dans OpenProject"
-  permission_view_comments_with_restricted_visibility: "Voir les commentaires avec une visibilité restreinte"
+  permission_view_internal_comments: "View internal comments"
   permission_view_commit_author_statistics: "Voir les statistiques des auteurs de «commit»"
   permission_view_dashboards: "Voir les tableaux de bord"
   permission_view_work_package_watchers: "Voir la liste des observateurs"
@@ -3740,6 +3758,8 @@ fr:
   setting_repository_truncate_at: "Le nombre maiximum de fichiers exposes au navigateur"
   setting_rest_api_enabled: "Autoriser service web REST"
   setting_self_registration: "Auto-enregistrement"
+  setting_self_registration_warning: >
+    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
   setting_session_ttl: "Délai d'expiration de session après inactivité"
   setting_session_ttl_hint: "Une valeur inférieur à 5 désactive cette fonction"
   setting_session_ttl_enabled: "Session expirée"
@@ -3870,8 +3890,8 @@ fr:
     work_packages:
       not_allowed_text: "Vous n'avez pas les autorisations nécessaires pour voir cette page."
       activities:
-        enable_comments_with_restricted_visibility: "Activer les commentaires de visibilité restreinte"
-        helper_text: "Les commentaires restreints permettent à une équipe interne de communiquer entre eux en privé. Ces commentaires ne sont visibles que pour sélectionner les rôles qui ont les autorisations nécessaires et ne seront pas visibles publiquement. %{link}"
+        enable_internal_comments: "Enable internal comments"
+        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Texte brut"
@@ -4219,7 +4239,7 @@ fr:
         view_description: "Peut consulter cette liste de projets."
         edit: "Éditer"
         edit_description: "Peut consulter, partager et éditer cette liste de projets."
-      upsale:
+      upsell:
         message: "Le partage des listes de projets avec des utilisateurs individuels est un module complémentaire pour les entreprises."
   working_days:
     info: >

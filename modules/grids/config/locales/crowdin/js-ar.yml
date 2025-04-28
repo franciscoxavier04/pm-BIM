@@ -1,8 +1,8 @@
 ar:
   ee:
-    upsale:
+    upsell:
       grid_widget_wp_graph:
-        description: "Some widgets, like the work package graph widget, are only available in the Enterprise edition."
+        description: "بعض الأدوات، مثل أداة الرسم البياني لحزمة العمل، متوفرة فقط في النسخة المدفوعة."
   js:
     grid:
       add_widget: 'Add widget'

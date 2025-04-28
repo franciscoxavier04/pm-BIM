@@ -239,7 +239,7 @@ it:
           status_waiting: "email inviata, in attesa di conferma"
           test_ee: "Prova l'Enterprise edition gratuitamente per 14 giorni"
           quick_overview: "Veloce panoramica sulla gestione dei progetti e il lavoro di squadra nell'edizione OpenProject Enterprise."
-        upsale:
+        upsell:
           become_hero: "Diventa un eroe!"
           enterprise_info_html: "%{feature_title} è un componente aggiuntivo per Imprese <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
           upgrade_info: "Esegui l'upgrade a un piano a pagamento per attivarlo e iniziare a usarlo nel tuo team."
@@ -254,13 +254,13 @@ it:
             professional_support: "Supporto professionale"
             professional_support_text: "Ottieni un supporto affidabile e di livello da esperti tecnici con conoscenze dettagliate sulla gestione di OpenProject in ambienti critici per le imprese."
           button_start_trial: "Inizia la prova gratuita"
-          button_upgrade: "Aggiorna ora"
+          button_upgrade: "Effettua l'upgrade ora"
           button_contact_us: "Contattaci per una demo"
           button_book_now: "Prenota ora"
           confidence: >
             Forniamo la sicurezza di un software di gestione di progetti di classe aziendale collaudato e supportato, con l'Open Source e una mente aperta.
           link_quote: "Richiedi un preventivo"
-          more_info: "Ulteriori informazioni"
+          more_info: "Altre informazioni"
           text: >
             L'edizione OpenProject Enterprise si basa sull'edizione Community. Include aggiunte premium e supporto professionale principalmente rivolto alle organizzazioni con più di 10 utenti che gestiscono progetti critici di business con OpenProject.
           unlimited: "Illimitato"
@@ -463,6 +463,7 @@ it:
     label_menu_collapse: "collassa"
     label_menu_expand: "espandi"
     label_more_than_ago: "più di qualche giorno fa"
+    label_moderate_comment: "Moderate comment"
     label_next: "Prossimo"
     label_no_color: "Nessun colore"
     label_no_data: "Nessun dato da visualizzare"
@@ -864,7 +865,7 @@ it:
     tl_toolbar:
       zooms: "Livello di zoom"
       outlines: "Livello della gerarchia"
-    upsale:
+    upsell:
       ee_only: "Addon dell'edizione per Imprese"
     wiki_formatting:
       strong: "Grassetto"

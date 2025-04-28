@@ -238,7 +238,7 @@ da:
           status_waiting: "e-mail sendt - venter på bekræftelse"
           test_ee: "Test the Enterprise edition 14 days for free"
           quick_overview: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
-        upsale:
+        upsell:
           become_hero: "Become a hero!"
           enterprise_info_html: "%{feature_title} is an Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> add-on."
           upgrade_info: "Please upgrade to a paid plan to activate and start using it in your team."
@@ -386,7 +386,7 @@ da:
     label_added_time_by: 'Added by <a href="%{authorLink}">%{author}</a> at %{age}'
     label_ago: "dage siden"
     label_all: "alle"
-    label_all_uppercase: "All"
+    label_all_uppercase: "Alle"
     label_all_work_packages: "alle arbejdspakker"
     label_and: "og"
     label_ascending: "Stigende"
@@ -462,6 +462,7 @@ da:
     label_menu_collapse: "Fold menu sammen"
     label_menu_expand: "Fold menu ud"
     label_more_than_ago: "mere end dage siden"
+    label_moderate_comment: "Moderate comment"
     label_next: "Næste"
     label_no_color: "Ingen farve"
     label_no_data: "Ingen data at vise"
@@ -516,7 +517,7 @@ da:
     label_this_week: "denne uge"
     label_today: "Today"
     label_time_entry_plural: "Anvendt tid"
-    label_up: "Up"
+    label_up: "Op"
     label_user_plural: "Brugere"
     label_activity_show_only_comments: "Show activities with comments only"
     label_activity_show_all: "Show all activities"
@@ -824,7 +825,7 @@ da:
       add_new_child: "Create new child"
       create_new: "Create new"
       add_existing: "Add existing"
-      add_existing_child: "Add child"
+      add_existing_child: "Tilføj underordnet"
       remove_child: "Remove child"
       add_new_relation: "Create new relation"
       add_existing_relation: "Add existing relation"
@@ -863,7 +864,7 @@ da:
     tl_toolbar:
       zooms: "Zoomniveau"
       outlines: "Niveau i hieraki"
-    upsale:
+    upsell:
       ee_only: "Enterprise edition add-on"
     wiki_formatting:
       strong: "Fed"
@@ -971,7 +972,7 @@ da:
         percentageDone: "Procentdel udført"
         priority: "Prioritet"
         projectName: "Projekt"
-        remainingWork: "Remaining work"
+        remainingWork: "Resterende arbejde"
         remainingWorkAlternative: "Resterende timer"
         responsible: "Ansvarlig"
         startDate: "Start dato"
@@ -985,7 +986,7 @@ da:
         version: "Version"
         work: "Work"
         workAlternative: "Anslået tid"
-        remainingTime: "Remaining work"
+        remainingTime: "Resterende arbejde"
       default_queries:
         manually_sorted: "New manually sorted query"
         latest_activity: "Latest activity"

@@ -36,13 +36,13 @@ pt-BR:
           name: Preto
       project_phase_colors:
         item_0:
-          name: PM2 Orange
+          name: PM2 Laranja
         item_1:
-          name: PM2 Red
+          name: PM2 Vermelho
         item_2:
           name: PM2 Magenta
         item_3:
-          name: PM2 Green Yellow
+          name: PM2 Verde amarelo
       document_categories:
         item_0:
           name: Documentação
@@ -81,16 +81,16 @@ pt-BR:
     standard:
       project_phases:
         item_0:
-          name: Initiating
+          name: Iniciando
         item_1:
-          name: Planning
-          start_gate: Ready for Planning
+          name: Planejando
+          start_gate: Pronto para o planejamento
         item_2:
-          name: Executing
-          start_gate: Ready for Executing
+          name: Execução
+          start_gate: Pronto para a execução
         item_3:
-          name: Closing
-          start_gate: Ready for Closing
+          name: Fechando
+          start_gate: Pronto para o fechamento
       priorities:
         item_0:
           name: Baixa
@@ -484,7 +484,7 @@ pt-BR:
         item_1:
           name: Marco
         item_2:
-          name: Summary task
+          name: Tarefa resumida
         item_3:
           name: Recurso
         item_4:

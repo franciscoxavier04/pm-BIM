@@ -8,11 +8,11 @@ ro:
   project_module_team_planner_view: "Planificare echipă"
   ee:
     feature_names:
-      team_planner_view: "Team planner"
-    upsale:
+      team_planner_view: "Planificator echipă"
+    upsell:
       team_planner_view:
-        title: "Team planner"
-        description: "Get a complete overview of your team’s planning with Team Planner. Stretch, shorten and drag-and-drop work packages to modify dates, move them or change assignees."
+        title: "Planificator echipă"
+        description: "Obțineți o imagine de ansamblu completă a planificării echipei dumneavoastră cu Team Planner. Întindeți, scurtați și glisați pachetele de lucru pentru a modifica datele, pentru a le muta sau pentru a schimba destinatarii."
   team_planner:
     label_team_planner: "Planificator echipă"
     label_new_team_planner: "Planificator echipă nou"

@@ -69,7 +69,7 @@ id:
         invalid_time_format: "bukanlah waktu yang valid. Format seharusnya; JJ:MM"
     models:
       recurring_meeting: "Rapat berulang"
-      meeting: "One-time meeting"
+      meeting: "Rapat satu waktu"
       meeting_agenda_item: "Item agenda"
       meeting_agenda: "Agenda"
       meeting_section: "Bagian"
@@ -382,9 +382,7 @@ id:
   label_meeting_details_edit: "Edit meeting details"
   label_meeting_state: "Meeting status"
   label_meeting_state_open: "Buka"
-  label_meeting_state_open_html: "<i>Open</i>"
   label_meeting_state_closed: "Closed"
-  label_meeting_state_closed_html: "<i>Closed</i>"
   label_meeting_state_agenda_created: "Agenda created"
   label_meeting_state_planned: "Terencana"
   label_meeting_state_cancelled: "Cancelled"

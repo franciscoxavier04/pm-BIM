@@ -1,9 +1,9 @@
 #English strings go here
 pt-BR:
   ee:
-    upsale:
+    upsell:
       board_view:
-        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
+        description: 'Gostaria de automatizar seu fluxo de trabalho com Quadros? Quadros avançados são um complemento do Enterprise. Atualize para um plano pago.'
   js:
     boards:
       create_new: 'Criar novo quadro'
@@ -43,9 +43,9 @@ pt-BR:
         action_text: >
           Um quadro com listas filtradas por atributo %{attribute} . Mover pacotes de trabalho para outras listas irá atualizar seu atributo.
         action_text_subprojects: >
-          Quadro com colunas automatizadas para subprojetos. Arrastar pacotes de trabalho para outras listas atualiza os (sub)projetos de acordo.
+          Quadro com colunas automatizadas para subprojetos. Arrastar pacotes de trabalho para outras listas atualiza os (sub)projetos de acordo. 
         action_text_subtasks: >
-          Quadro com colunas automatizadas para sub-elementos. Arrastar pacotes de trabalho para outras listas atualiza os pais de acordo.
+          Quadro com colunas automatizadas para sub-elementos. Arrastar pacotes de trabalho para outras listas atualiza os pais de acordo. 
         action_text_status: >
           Quadro de estilo kanban com colunas para estados como Afazeres, Em andamento, Pronto
         action_text_assignee: >

@@ -7,9 +7,9 @@ de:
   permission_manage_board_views: "Boards verwalten"
   project_module_board_view: "Boards"
   ee:
-    upsale:
+    upsell:
       board_view:
-        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
+        description: 'Möchten Sie Ihre Workflows mit Boards automatisieren? Erweiterte Boards sind ein Enterprise Add-on. Bitte upgraden Sie auf ein kostenpflichtiges Abonnement.'
   boards:
     label_board: "Board"
     label_boards: "Boards"
@@ -31,7 +31,7 @@ de:
       status: >
         Kanban-ähnliches Board mit dynamischen Spalten je Status für das Abbilden von Workflows.
       assignee: >
-        Board mit dynamischen Spalten auf zugewiesene Nutzer von Arbeitspaketen. Ideal für die Verteilung von Aufgaben.
+        Board mit dynamischen Spalten auf zugewiesene Nutzer von Arbeitspaketen. Ideal für die Verteilung von Aufgaben. 
       version: >
         Board mit dynamischen Spalten, das auf dem Versions-Attribut basiert. Ideal für die Planung der Produktentwicklung.
       subproject: >

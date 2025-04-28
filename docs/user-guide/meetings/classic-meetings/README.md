@@ -23,7 +23,7 @@ Meetings in OpenProject allow you to manage and document your project meetings, 
 > - All existing classic meetings will be converted into a one-time dynamic meetings. 
 > - Agenda text will be converted to agenda items. 
 > - Meeting minutes will be converted into meeting outcome. 
-> - Author informattion will be saved in the respective presenter fields. 
+> - Author information will be saved in the respective presenter fields. 
 
 | Topic                                                                     | Content                                     |
 |---------------------------------------------------------------------------|---------------------------------------------|

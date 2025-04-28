@@ -239,7 +239,7 @@ vi:
           status_waiting: "email đã được gửi - chờ xác nhận"
           test_ee: "Dùng thử phiên bản Enterprise miễn phí trong 14 ngày"
           quick_overview: "Nhận cái nhìn nhanh về quản lý dự án và hợp tác nhóm với phiên bản Enterprise của OpenProject."
-        upsale:
+        upsell:
           become_hero: "Trở thành anh hùng!"
           enterprise_info_html: "%{feature_title} là một phần mở rộng Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
           upgrade_info: "Vui lòng nâng cấp lên kế hoạch trả phí để kích hoạt và bắt đầu sử dụng nó trong nhóm của bạn."
@@ -260,7 +260,7 @@ vi:
           confidence: >
             Chúng tôi cung cấp sự tự tin với phần mềm quản lý dự án cấp doanh nghiệp đã được kiểm tra và hỗ trợ - với mã nguồn mở và tâm trí cởi mở.
           link_quote: "Nhận báo giá"
-          more_info: "Thêm thông tin"
+          more_info: "Thông tin thêm"
           text: >
             Phiên bản Enterprise của OpenProject xây dựng trên phiên bản Community. Nó bao gồm các phần mở rộng Enterprise và hỗ trợ chuyên nghiệp chủ yếu nhằm vào các tổ chức có hơn 10 người dùng quản lý các dự án quan trọng với OpenProject.
           unlimited: "Không giới hạn"
@@ -463,6 +463,7 @@ vi:
     label_menu_collapse: "thu gọn"
     label_menu_expand: "mở rộng"
     label_more_than_ago: "hơn ngày trước"
+    label_moderate_comment: "Moderate comment"
     label_next: "Tiếp theo"
     label_no_color: "Không có màu"
     label_no_data: "Không có dữ liệu để hiển thị"
@@ -863,7 +864,7 @@ vi:
     tl_toolbar:
       zooms: "Mức thu phóng"
       outlines: "Mức phân cấp"
-    upsale:
+    upsell:
       ee_only: "Bổ sung phiên bản Doanh nghiệp"
     wiki_formatting:
       strong: "In đậm"

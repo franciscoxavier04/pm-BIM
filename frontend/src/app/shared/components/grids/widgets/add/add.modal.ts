@@ -46,7 +46,6 @@ export class AddGridWidgetModalComponent extends OpModalComponent implements OnI
 
   ngOnInit() {
     super.ngOnInit();
-    this.eeShowBanners = this.bannerService.showBannerFor('grid_widget_wp_graph');
     this.fetchSchema();
   }
 

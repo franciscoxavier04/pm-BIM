@@ -239,28 +239,28 @@ pt-PT:
           status_waiting: "email enviado - a aguardar confirmação"
           test_ee: "Teste a edição Enterprise gratuitamente durante 14 dias"
           quick_overview: "Obter uma visão geral da gestão do projeto e colaboração em equipa com a edição OpenProject Enterprise."
-        upsale:
+        upsell:
           become_hero: "Torne-se um herói!"
           enterprise_info_html: "%{feature_title} é um complemento de Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
           upgrade_info: "Faça o upgrade para um plano pago para ativar e começar a usar na sua equipa."
           benefits:
             description: "Quais são os benefícios da edição Empresarial on-premises?"
-            high_security: "Recursos de segurança"
+            high_security: "Funcionalidades de segurança"
             high_security_text: "Início de sessão único (SAML, OpenID Connect, CAS), grupos LDAP."
-            installation: "Suporte à instalação"
+            installation: "Apoio à instalação"
             installation_text: "Engenheiros de software experientes darão orientações durante toda a instalação e processo de configuração na sua própria infraestrutura."
-            premium_features: "Complementos de Enterprise"
+            premium_features: "Complementos Enterprise"
             premium_features_text: "Agile boards, gráficos de temas e logótipos personalizados, fluxos de trabalho inteligentes com ações personalizadas, pesquisa de texto completo para anexos em pacotes de trabalho, e campos personalizados de multi-seleção."
             professional_support: "Suporte profissional"
             professional_support_text: "Receba apoio fiável e de alto nível de engenheiros séniores de suporte, com conhecimento especializado sobre a gestão do OpenProject em ambientes de negócios críticos."
-          button_start_trial: "Iniciar avaliação gratuita"
+          button_start_trial: "Iniciar o teste gratuito"
           button_upgrade: "Fazer o upgrade agora"
           button_contact_us: "Contacte-nos para obter uma demonstração"
-          button_book_now: "Reserve agora"
+          button_book_now: "Reservar agora"
           confidence: >
             Fornecemos toda a segurança de um software de gestão de projetos de classe empresarial, testado e com suporte - com Open Source e mente aberta.
           link_quote: "Fazer uma simulação"
-          more_info: "Mais informações"
+          more_info: "Mais informação"
           text: >
             O OpenProject Enterprise Edition é construído a partir da edição Community. Inclui complementos Enterprise e suporte profissional, dirigido sobretudo a organizações com mais de 10 utilizadores que gerem projetos de negócios críticos com o OpenProject.
           unlimited: "Ilimitado"
@@ -463,6 +463,7 @@ pt-PT:
     label_menu_collapse: "ocultar"
     label_menu_expand: "expandir"
     label_more_than_ago: "mais do que dias atrás"
+    label_moderate_comment: "Moderate comment"
     label_next: "Próxima"
     label_no_color: "Sem cor"
     label_no_data: "Sem dados para apresentar"
@@ -864,7 +865,7 @@ pt-PT:
     tl_toolbar:
       zooms: "Nível de zoom"
       outlines: "Nível da hierarquia"
-    upsale:
+    upsell:
       ee_only: "Complemento de edição empresarial"
     wiki_formatting:
       strong: "Negrito"

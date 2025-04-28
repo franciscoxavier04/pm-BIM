@@ -7,9 +7,9 @@ ja:
   permission_manage_board_views: "ボードの管理"
   project_module_board_view: "ボード"
   ee:
-    upsale:
+    upsell:
       board_view:
-        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
+        description: 'ボードでワークフローを自動化しませんか？アドバンスボードはエンタープライズアドオンです。有料プランにアップグレードしてください。'
   boards:
     label_board: "ボード"
     label_boards: "ボード"

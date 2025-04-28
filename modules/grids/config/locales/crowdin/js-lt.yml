@@ -1,8 +1,8 @@
 lt:
   ee:
-    upsale:
+    upsell:
       grid_widget_wp_graph:
-        description: "Some widgets, like the work package graph widget, are only available in the Enterprise edition."
+        description: "Kai kurie valdikliai, pavyzdžiui darbo paketų grafo valdiklis, galimi tik Enterprise versijoje."
   js:
     grid:
       add_widget: 'Pridėti valdiklį'

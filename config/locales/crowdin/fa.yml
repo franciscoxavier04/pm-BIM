@@ -41,9 +41,14 @@ fa:
         changed: "changed"
         created: "ایجاد شده"
         commented: "نظر داده شده"
-        restrict_visibility: Restrict visibility
-        restricted_journal: Restricted comments are visible to a limited group of members.
+        internal_comment: Internal comment
+        internal_journal: Internal comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
+        internal_comment_confirmation:
+          title: "Make this comment public?"
+          heading: "Make this comment public?"
+          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          confirm_button_text: "Make public"
   admin:
     plugins:
       no_results_title_text: There are currently no plugins installed.
@@ -292,8 +297,9 @@ fa:
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
-      wiki_pages: "دانشنامه"
+      all: "همه"
       messages: "تالار گفتگو"
+      wiki_pages: "دانشنامه"
   groups:
     index:
       no_results_title_text: There are currently no groups.
@@ -345,6 +351,18 @@ fa:
         heading: "Delete this project list?"
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
+      public_warning: >
+        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+      public_confirmation:
+        checkbox: "I understand that this will make the previously private content public"
+        title: "Make this project public?"
+        description: >
+          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+      private_confirmation:
+        checkbox: "I understand that this will make the previously public content private."
+        title: "Make this project private?"
+        description: >
+          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       change_identifier: تغییر شناسه
       actions:
         label_enable_all: "فعال کردن همه"
@@ -610,9 +628,9 @@ fa:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "کاربسته"
+            parent: "بالادستی"
+            project: "پروژه"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -944,8 +962,8 @@ fa:
         date_range: "Date range"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "نام"
+        color: "رنگ"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1070,7 +1088,7 @@ fa:
           title: "Working days"
           false: "working days only"
           true: "include non-working days"
-        journal_restricted: Restricted Journal
+        journal_internal: Internal Journal
         notify: "Notify" #used in custom actions
         parent: "بالادستی"
         parent_issue: "بالادستی"
@@ -1291,7 +1309,7 @@ fa:
             values:
               inclusion: "filter has invalid values."
               format: "%{message}"
-        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+        queries/principals/filters/internal_mentionable_on_work_package_filter:
           attributes:
             values:
               single_value_requirement: "must be a single work package"
@@ -1549,7 +1567,7 @@ fa:
       changeset: "Changesets"
       message: "Forums"
       news: "News"
-      project_details: "Project details"
+      project_details: "جزئیات پروژه"
       subproject: "Include subprojects"
       time_entry: "زمان صرف شده"
       wiki_edit: "دانشنامه"
@@ -1803,7 +1821,8 @@ fa:
     text:
       failed: 'Could not copy project "%{source_project_name}" to project "%{target_project_name}".'
       succeeded: 'Copied project "%{source_project_name}" to "%{target_project_name}".'
-  create_new_page: "Wiki page"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Wiki page"
   date:
     abbr_day_names:
       - "Sun"
@@ -1959,7 +1978,7 @@ fa:
       baseline_comparison: Baseline Comparisons
       board_view: Advanced Boards
       conditional_highlighting: Conditional Highlighting
-      comments_with_restricted_visibility: Comments With Restricted Visibility
+      internal_comments: Internal Comments
       custom_actions: Custom Actions
       custom_field_hierarchies: Custom fields of type hierarchy
       customize_life_cycle: Customize Life Cycle
@@ -1980,12 +1999,11 @@ fa:
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
-    upsale:
+    upsell:
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
-      plan_text_html: "Available only through the %{plan_name}."
-      link_title: "اطلاعات بیشتر"
+      plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
@@ -2016,7 +2034,7 @@ fa:
         more_info: "Note: the used logo will be publicly accessible."
         description: Customize your OpenProject installation with your own logo and colors.
       custom_actions:
-        title: "Custom actions"
+        title: "اقدامات سفارشی"
         description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
@@ -2024,9 +2042,9 @@ fa:
         title: Placeholder users
         description: >
           Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
-      comments_with_restricted_visibility:
+      internal_comments:
         title: "For your eyes only"
-        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly. Available only through the enterprise professional plan."
+        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Work package priorities"
   enumeration_reported_project_statuses: "Reported project status"
@@ -2253,9 +2271,8 @@ fa:
       users: "Newest registered users in this instance."
     blocks:
       community: "OpenProject community"
-      upsale:
+      upsell:
         title: "Upgrade to Enterprise edition"
-        more_info: "اطلاعات بیشتر"
     links:
       upgrade_enterprise_edition: "Upgrade to Enterprise edition"
       postgres_migration: "Migrating your installation to PostgreSQL"
@@ -2732,6 +2749,7 @@ fa:
   label_modules: "Modules"
   label_months_from: "months from"
   label_more: "بیشتر"
+  label_more_information: "اطلاعات بیشتر"
   label_more_than_ago: "more than days ago"
   label_move_column_left: "Move column left"
   label_move_column_right: "Move column right"
@@ -2777,8 +2795,8 @@ fa:
   label_operator_equals_all: "is (AND)"
   label_operator_shared_with_user_any: "any"
   label_open_menu: "باز کردن منو"
-  label_open_work_packages: "open"
-  label_open_work_packages_plural: "open"
+  label_open_work_packages: "باز"
+  label_open_work_packages_plural: "باز"
   label_openproject_website: "OpenProject website"
   label_optional_description: "توضیحات"
   label_options: "گزینه‌ها"
@@ -3330,13 +3348,13 @@ fa:
     text_getting_started_description: "Get a quick overview of project management and team collaboration with OpenProject. You can restart this video from the help menu."
     welcome: "Welcome to %{app_title}"
     select_language: "Please select your language"
-  permission_add_work_package_notes: "Add comments"
+  permission_add_work_package_comments: "Add comments"
   permission_add_work_packages: "Add work packages"
   permission_add_messages: "Post messages"
   permission_add_project: "Create projects"
   permission_add_work_package_attachments: "افزودن پیوست ها"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
-  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
+  permission_add_internal_comments: "Write internal comments"
   permission_archive_project: "Archive project"
   permission_create_user: "Create users"
   permission_manage_user: "Edit users"
@@ -3361,16 +3379,16 @@ fa:
   permission_delete_timelines: "Delete timelines"
   permission_delete_wiki_pages: "Delete wiki pages"
   permission_delete_wiki_pages_attachments: "Delete attachments"
-  permission_edit_work_package_notes: "Moderate comments"
-  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
+  permission_edit_work_package_comments: "Moderate comments"
+  permission_edit_work_package_comments_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Edit work packages"
   permission_edit_messages: "Edit messages"
-  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
-  permission_edit_own_work_package_notes: "Edit own comments"
+  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_work_package_comments: "Edit own comments"
   permission_edit_own_messages: "Edit own messages"
   permission_edit_own_time_entries: "Edit own time logs"
-  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
+  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "Edit project"
   permission_edit_project_attributes: "Edit project attributes"
   permission_edit_project_phases: "Edit project phases"
@@ -3411,7 +3429,7 @@ fa:
   permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "View projects"
   permission_view_changesets: "View repository revisions in OpenProject"
-  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
+  permission_view_internal_comments: "View internal comments"
   permission_view_commit_author_statistics: "View commit author statistics"
   permission_view_dashboards: "View dashboards"
   permission_view_work_package_watchers: "View watchers list"
@@ -3742,6 +3760,8 @@ fa:
   setting_repository_truncate_at: "Maximum number of files displayed in the repository browser"
   setting_rest_api_enabled: "Enable REST web service"
   setting_self_registration: "Self-registration"
+  setting_self_registration_warning: >
+    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
   setting_session_ttl: "Session expiry time after inactivity"
   setting_session_ttl_hint: "Value below 5 works like disabled"
   setting_session_ttl_enabled: "Session expires"
@@ -3839,7 +3859,7 @@ fa:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "ﺍﻓﺰﻭﺩﻥ"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"
@@ -3872,8 +3892,8 @@ fa:
     work_packages:
       not_allowed_text: "You do not have the necessary permissions to view this page."
       activities:
-        enable_comments_with_restricted_visibility: "Enable restricted visibility comments"
-        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to select roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_internal_comments: "Enable internal comments"
+        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Plain text"
@@ -4081,7 +4101,7 @@ fa:
     unlock_and_reset_failed_logins: "Unlock and reset failed logins"
   version_status_closed: "بسته"
   version_status_locked: "locked"
-  version_status_open: "open"
+  version_status_open: "باز"
   note: Note
   note_password_login_disabled: "Password login has been disabled by %{configuration}."
   warning: Warning
@@ -4222,7 +4242,7 @@ fa:
         view_description: "Can view this project list."
         edit: "ویرایش"
         edit_description: "Can view, share and edit this project list."
-      upsale:
+      upsell:
         message: "Sharing project lists with individual users is an enterprise add-on."
   working_days:
     info: >
