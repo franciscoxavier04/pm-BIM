@@ -89,18 +89,12 @@ module OpenProject::Meeting
                    require: :member
         permission :manage_agendas,
                    {
+                     meetings: %i[change_state],
                      meeting_agenda_items: %i[new cancel_new create edit cancel_edit update destroy drop move
                                               move_to_next_meeting],
                      meeting_sections: %i[new cancel_new create edit cancel_edit update destroy drop move]
                    },
                    permissible_on: :project, # TODO: Change this to :meeting when MeetingRoles are available
-                   require: :member
-        permission :close_meeting_agendas,
-                   {
-                     meetings: %i[change_state],
-                     meeting_agendas: %i[close open]
-                   },
-                   permissible_on: :project,
                    require: :member
         permission :send_meeting_agendas_notification,
                    {

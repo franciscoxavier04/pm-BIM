@@ -38,12 +38,12 @@ RSpec.describe "Meeting Outcomes CRUD", :js do
     create :user,
            lastname: "First",
            preferences: { time_zone: "Etc/UTC" },
-           member_with_permissions: { project => %i[view_meetings manage_agendas close_meeting_agendas create_meeting_minutes] }
+           member_with_permissions: { project => %i[view_meetings manage_agendas create_meeting_minutes] }
   end
   shared_let(:other_user) do
     create :user,
            lastname: "Second",
-           member_with_permissions: { project => %i[view_meetings manage_agendas close_meeting_agendas] }
+           member_with_permissions: { project => %i[view_meetings manage_agendas] }
   end
   shared_let(:meeting) do
     create :meeting,

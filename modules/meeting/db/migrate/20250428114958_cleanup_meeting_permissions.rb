@@ -28,27 +28,14 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
-  class SidePanel::StateComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpTurbo::Streamable
-    include OpPrimer::ComponentHelpers
-
-    def initialize(meeting:)
-      super
-
-      @meeting = meeting
-      @project = meeting.project
-    end
-
-    private
-
-    def edit_enabled?
-      User.current.allowed_in_project?(:manage_agendas, @project)
-    end
-
-    def status_button
-      render(Meetings::SidePanel::StatusButtonComponent.new(meeting: @meeting))
-    end
+class CleanupMeetingPermissions < ActiveRecord::Migration[7.1]
+  def up
+    execute <<-SQL.squish
+      DELETE FROM role_permissions
+      WHERE permission = 'close_meeting_agendas';
+    SQL
   end
+
+  # No-op
+  def down; end
 end

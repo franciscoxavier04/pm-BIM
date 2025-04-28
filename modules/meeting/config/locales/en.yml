@@ -371,7 +371,6 @@ en:
   permission_create_meeting_agendas_explanation: "Allows editing the Classic Meeting's agenda content."
   permission_manage_agendas: "Manage agendas"
   permission_manage_agendas_explanation: "Allows managing the Dynamic Meeting's agenda items."
-  permission_close_meeting_agendas: "Close agendas"
   permission_send_meeting_agendas_notification: "Send review notification for agendas"
   permission_create_meeting_minutes: "Manage minutes"
   permission_send_meeting_minutes_notification: "Send review notification for minutes"
