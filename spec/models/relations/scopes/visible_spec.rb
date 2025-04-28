@@ -104,9 +104,9 @@ RSpec.describe Relations::Scopes::Visible do
 
         admin = create(:admin)
         User.execute_as(admin) do
-          expect(red.relations.visible).to contain_exactly(red.relations)
-          expect(green.relations.visible).to contain_exactly(green.relations)
-          expect(blue.relations.visible).to contain_exactly(blue.relations)
+          expect(red.relations.visible).to match_array(red.relations)
+          expect(green.relations.visible).to match_array(green.relations)
+          expect(blue.relations.visible).to match_array(blue.relations)
         end
       end
     end
