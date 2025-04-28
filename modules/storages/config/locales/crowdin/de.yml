@@ -200,7 +200,7 @@ de:
       storage_delete_result_3: Hat dieser Dateispeicher automatisch verwaltete Projektordner, so werden diese und die enthaltenen Dateien permanent gelöscht.
     dependencies:
       nextcloud:
-        group_folders_app: Group Folders
+        group_folders_app: Gruppenordner
         integration_app: OpenProject Integration
     enabled_in_projects:
       setup_incomplete_description: Dieser Speicher ist nicht vollständig eingerichtet. Bitte schließen Sie die Einrichtung ab, bevor Sie ihn in mehreren Projekten aktivieren.
@@ -273,7 +273,7 @@ de:
       connection_validation:
         client_id_wrong: Die konfigurierte OAuth 2-Client-ID ist ungültig. Bitte überprüfen Sie die Konfiguration.
         client_secret_wrong: Das konfigurierte OAuth 2-Client-Geheimnis ist ungültig. Bitte überprüfen Sie die Konfiguration.
-        dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
+        dependency_version_mismatch: Die %{dependency} App-Version wird nicht unterstützt. Bitte aktualisieren Sie Ihren Nextcloud Server.
         drive_id_wrong: Die konfigurierte Laufwerks-ID konnte nicht gefunden werden. Bitte überprüfen Sie die Konfiguration.
         group_folder_not_found: Der Gruppenordner konnte nicht gefunden werden.
         group_folder_version_mismatch: Die Gruppenordner-Version wird nicht unterstützt. Bitte aktualisieren Sie Ihren Nextcloud Server.
