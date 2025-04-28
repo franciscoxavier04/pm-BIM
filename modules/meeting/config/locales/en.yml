@@ -367,16 +367,10 @@ en:
   permission_edit_meetings: "Edit meetings"
   permission_delete_meetings: "Delete meetings"
   permission_view_meetings: "View meetings"
-  permission_create_meeting_agendas: "Create meeting agendas"
-  permission_create_meeting_agendas_explanation: "Allows editing the Classic Meeting's agenda content."
   permission_manage_agendas: "Manage agendas"
   permission_manage_agendas_explanation: "Allows managing the Dynamic Meeting's agenda items."
-  permission_close_meeting_agendas: "Close agendas"
-  permission_send_meeting_agendas_notification: "Send review notification for agendas"
-  permission_create_meeting_minutes: "Manage minutes"
-  permission_send_meeting_minutes_notification: "Send review notification for minutes"
-  permission_meetings_send_invite: "Invite users to meetings"
-  permission_send_meeting_agendas_icalendar: "Send meeting agenda as calendar entry"
+  permission_manage_outcomes: "Manage outcomes"
+  permission_send_meeting_invites_and_outcomes: "Send meeting invites and outcomes to participants"
 
   project_module_meetings: "Meetings"
 

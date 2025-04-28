@@ -28,12 +28,25 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module MeetingOutcomes
-  class DeleteContract < ::DeleteContract
-    include EditableItem
+class CleanupMeetingPermissions < ActiveRecord::Migration[7.1]
+  def up
+    execute <<-SQL.squish
+      DELETE FROM role_permissions
+      WHERE permission IN (
+        'close_meeting_agendas',
+        'send_meeting_minutes_notification',
+        'send_meeting_agendas_icalendar',
+        'create_meeting_agendas'
+      );
+    SQL
 
-    delete_permission -> {
-      user.allowed_in_project?(:manage_outcomes, model.meeting_agenda_item.project)
-    }
+    execute <<-SQL.squish
+      UPDATE role_permissions
+      SET permission = 'send_meeting_invites_and_outcomes'
+      WHERE permission = 'meetings_send_invite'
+    SQL
   end
+
+  # No-op
+  def down; end
 end
