@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,24 +29,13 @@
 #++
 
 module ProjectStatusHelper
+  NOT_SET = "not_set"
+
   def project_status_css_class(status_code)
-    code = project_status_ensure_default_code(status_code)
-    "-#{code.dasherize}"
+    "-#{(status_code&.to_s || NOT_SET).dasherize}"
   end
 
   def project_status_name(status_code)
-    code = project_status_ensure_default_code(status_code)
-    project_status_name_for_code(code)
-  end
-
-  def project_status_name_for_code(code)
-    code ||= "not_set"
-    I18n.t("js.grid.widgets.project_status.#{code}")
-  end
-
-  private
-
-  def project_status_ensure_default_code(status_code)
-    status_code || "not_set"
+    I18n.t(status_code || NOT_SET, scope: "js.grid.widgets.project_status")
   end
 end
