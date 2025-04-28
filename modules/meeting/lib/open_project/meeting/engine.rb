@@ -90,13 +90,6 @@ module OpenProject::Meeting
                    },
                    permissible_on: :project, # TODO: Change this to :meeting when MeetingRoles are available
                    require: :member
-        permission :send_meeting_agendas_notification,
-                   {
-                     meetings: [:notify],
-                     meeting_agendas: [:notify]
-                   },
-                   permissible_on: :project,
-                   require: :member
         permission :manage_outcomes,
                    {
                      meeting_outcomes: %i[new cancel_new create edit cancel_edit update destroy]

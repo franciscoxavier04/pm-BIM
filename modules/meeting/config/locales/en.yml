@@ -369,7 +369,6 @@ en:
   permission_view_meetings: "View meetings"
   permission_manage_agendas: "Manage agendas"
   permission_manage_agendas_explanation: "Allows managing the Dynamic Meeting's agenda items."
-  permission_send_meeting_agendas_notification: "Send review notification for agendas"
   permission_manage_outcomes: "Manage outcomes"
   permission_send_meeting_invites_and_outcomes: "Send meeting invites and outcomes to participants"
 
