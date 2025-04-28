@@ -27,40 +27,34 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+module Projects
+  module Settings
+    class RelationsForm < ApplicationForm
+      delegate :parent, to: :model
 
-class Projects::Settings::GeneralController < Projects::SettingsController
-  include OpTurbo::DialogStreamHelper
+      form do |f|
+        f.project_autocompleter(
+          name: :parent_id,
+          label: attribute_name(:parent_id),
+          autocomplete_options: {
+            model: project_autocompleter_model,
+            focusDirectly: false,
+            dropdownPosition: "bottom",
+            url: ::API::V3::Utilities::PathHelper::ApiV3Path.projects_available_parents + "?of=#{model.id}",
+            filters: [],
+            data: { qa_field_name: "parent" }
+          }
+        )
+      end
 
-  menu_item :settings_general
+      private
 
-  def toggle_public_dialog
-    respond_with_dialog Projects::Settings::TogglePublicDialogComponent.new(@project)
-  end
+      def project_autocompleter_model
+        return nil unless parent
+        return { id: parent.id, name: I18n.t(:"api_v3.undisclosed.parent") } unless parent.visible? || User.current.admin?
 
-  def toggle_public
-    call = Projects::UpdateService
-      .new(model: @project, user: current_user)
-      .call(public: !@project.public?)
-
-    call.on_failure do
-      flash[:error] = call.message
-    end
-
-    redirect_to action: :show, status: :see_other
-  end
-
-  def update
-    call = Projects::UpdateService
-      .new(model: @project, user: current_user)
-      .call(permitted_params.project)
-
-    @project = call.result
-
-    if call.success?
-      flash[:notice] = I18n.t(:notice_successful_update)
-      redirect_to project_settings_general_path(@project)
-    else
-      render action: :show, status: :unprocessable_entity
+        { id: parent.id, name: parent.name }
+      end
     end
   end
 end
