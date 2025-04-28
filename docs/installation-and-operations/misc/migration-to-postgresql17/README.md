@@ -1,6 +1,6 @@
 # Migrating your OpenProject installation to PostgreSQL 17
 
-OpenProject version 12+ will default to PostgreSQL 17. If you have an existing OpenProject installation, please follow the guide below to upgrade your PostgreSQL version.
+OpenProject version 16+ will default to PostgreSQL 17. If you have an existing OpenProject installation, please follow the guide below to upgrade your PostgreSQL version.
 
 ## Package-based installation
 
@@ -24,20 +24,20 @@ In the following, we assume that you initially let OpenProject setup your Postgr
 NOTE: RedHat and CentOS are slightly different, depending on which PostgreSQL package/repository will be used.
 For the documentation parts titled RedHat/CentOS RedHat Enterprise Linux 8 was used.
 
-1. First, connect to your server and make sure your local version is PostgreSQL v10:
+1. First, connect to your server and make sure your local version is PostgreSQL v13:
 
 For Debian/Ubuntu:
 
 ```shell
-sudo cat /var/lib/postgresql/10/main/PG_VERSION
-10
+sudo cat /var/lib/postgresql/13/main/PG_VERSION
+13
 ```
 
 For RedHat/CentOS:
 
 ```shell
-sudo cat /var/lib/pgsql/10/data/PG_VERSION 
-10
+sudo cat /var/lib/pgsql/13/data/PG_VERSION 
+13
 ```
 
 2. Install the new version of PostgreSQL:
@@ -47,6 +47,7 @@ For Debian/Ubuntu:
 ```shell
 sudo apt-get update
 sudo apt-get install postgresql-17
+sudo pg_createcluster 17 main --start
 ```
 
 For RedHat/CentOS:
@@ -61,14 +62,14 @@ sudo /usr/bin/postgresql-17-setup initdb
 For Debian/Ubuntu:
 
 ```shell
-sudo su - postgres -c "/usr/lib/postgresql/10/bin/pg_ctl stop --wait --pgdata=/var/lib/postgresql/10/main"
+sudo su - postgres -c "/usr/lib/postgresql/13/bin/pg_ctl stop --wait --pgdata=/var/lib/postgresql/13/main"
 sudo su - postgres -c "/usr/lib/postgresql/17/bin/pg_ctl stop --wait --pgdata=/var/lib/postgresql/17/main"
 ```
 
 For RedHat/CentOS:
 
 ```shell
-sudo su - postgres -c "/usr/pgsql-10/bin/pg_ctl stop --wait --pgdata=/var/lib/pgsql/10/data"
+sudo su - postgres -c "/usr/pgsql-13/bin/pg_ctl stop --wait --pgdata=/var/lib/pgsql/13/data"
 sudo su - postgres -c "/usr/pgsql-17/bin/pg_ctl stop --wait --pgdata=/var/lib/pgsql/17/data"
 ```
 
@@ -79,11 +80,11 @@ For Debian/Ubuntu:
 ```shell
 sudo su - postgres <<CMD
 /usr/lib/postgresql/17/bin/pg_upgrade \
-  --old-bindir=/usr/lib/postgresql/10/bin \
+  --old-bindir=/usr/lib/postgresql/13/bin \
   --new-bindir=/usr/lib/postgresql/17/bin \
-  --old-datadir=/var/lib/postgresql/10/main \
+  --old-datadir=/var/lib/postgresql/13/main \
   --new-datadir=/var/lib/postgresql/17/main \
-  --old-options '-c config_file=/etc/postgresql/10/main/postgresql.conf' \
+  --old-options '-c config_file=/etc/postgresql/13/main/postgresql.conf' \
   --new-options '-c config_file=/etc/postgresql/17/main/postgresql.conf'
 CMD
 ```
@@ -93,11 +94,11 @@ For RedHat/CentOS:
 ```shell
 sudo su - postgres <<CMD
 /usr/pgsql-17/bin/pg_upgrade \
-  --old-bindir=/usr/pgsql-10/bin \
+  --old-bindir=/usr/pgsql-13/bin \
   --new-bindir=/usr/pgsql-17/bin \
-  --old-datadir=/var/lib/pgsql/10/data \
+  --old-datadir=/var/lib/pgsql/13/data \
   --new-datadir=/var/lib/pgsql/17/data \
-  --old-options '-c config_file=/var/lib/pgsql/10/data/postgresql.conf' \
+  --old-options '-c config_file=/var/lib/pgsql/13/data/postgresql.conf' \
   --new-options '-c config_file=/var/lib/pgsql/17/data/postgresql.conf'
 CMD
 ```
@@ -107,8 +108,9 @@ CMD
 For Debian/Ubuntu:
 
 ```shell
-sudo su - postgres -c "cp /etc/postgresql/{10,17}/main/conf.d/custom.conf"
-sudo su - postgres -c "sed -i 's|45432|45433|' /etc/postgresql/10/main/conf.d/custom.conf"
+sudo su - postgres -c "cp /etc/postgresql/{13,17}/main/conf.d/custom.conf"
+sudo su - postgres -c "sed -i 's|45432|45433|' /etc/postgresql/13/main/conf.d/custom.conf"
+sudo su - postgres -c "cp /etc/postgresql/13/main/pg_hba.conf /etc/postgresql/17/main/pg_hba.conf"
 sudo su - postgres -c "/usr/lib/postgresql/17/bin/pg_ctl start --wait --pgdata=/var/lib/postgresql/17/main -o '-c config_file=/etc/postgresql/17/main/postgresql.conf'"
 ```
 
@@ -121,8 +123,8 @@ sudo su - postgres -c "vi /var/lib/pgsql/17/data/postgresql.conf"
 # at the section CONFIG FILE INCLUDES, please add the include directory conf.d
 include_dir = 'conf.d'
 
-sudo su - postgres -c "cp -p /var/lib/pgsql/10/data/conf.d/custom.conf /var/lib/pgsql/17/data/conf.d/custom.conf"
-sudo su - postgres -c "sed -i 's|45432|45433|' /var/lib/pgsql/10/data/conf.d/custom.conf"
+sudo su - postgres -c "cp -p /var/lib/pgsql/13/data/conf.d/custom.conf /var/lib/pgsql/17/data/conf.d/custom.conf"
+sudo su - postgres -c "sed -i 's|45432|45433|' /var/lib/pgsql/13/data/conf.d/custom.conf"
 sudo su - postgres -c "/usr/pgsql-17/bin/pg_ctl start --wait --pgdata=/var/lib/pgsql/17/data -o '-c config_file=/etc/postgresql/17/main/postgresql.conf'"
 
 # Getting the password for the PostgreSQL database from the configuration
@@ -147,15 +149,15 @@ postgres=# \q
 For Debian/Ubuntu:
 
 ```shell
-sudo rm -rf /var/lib/postgresql/10/main
-sudo apt-get purge postgresql-10
+sudo rm -rf /var/lib/postgresql/13/main
+sudo apt-get purge postgresql-13
 ```
 
 For RedHat/CentOS:
 
 ```shell
-sudo rm -rf /var/lib/pgsql/10/data
-sudo yum remove pgsql10
+sudo rm -rf /var/lib/pgsql/13/data
+sudo yum remove pgsql13
 ```
 
 ## Compose-based docker installation
