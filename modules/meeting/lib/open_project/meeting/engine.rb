@@ -103,10 +103,6 @@ module OpenProject::Meeting
                    },
                    permissible_on: :project,
                    require: :member
-        permission :send_meeting_minutes_notification,
-                   { meeting_minutes: %i[notify] },
-                   permissible_on: :project,
-                   require: :member
       end
 
       Redmine::Search.map do |search|
