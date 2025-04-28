@@ -32,7 +32,12 @@ class CleanupMeetingPermissions < ActiveRecord::Migration[7.1]
   def up
     execute <<-SQL.squish
       DELETE FROM role_permissions
-      WHERE permission = 'close_meeting_agendas';
+      WHERE permission IN (
+        'close_meeting_agendas',
+        'send_meeting_minutes_notification',
+        'send_meeting_agendas_icalendar',
+        'create_meeting_agendas'
+      );
     SQL
   end
 
