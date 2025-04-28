@@ -1597,8 +1597,6 @@ en:
       project:
         one: "Project"
         other: "Projects"
-      project/gate_definition: "Gate"
-      project/stage_definition: "Stage"
       project_query:
         one: "Project list"
         other: "Project lists"
