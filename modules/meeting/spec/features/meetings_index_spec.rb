@@ -176,6 +176,19 @@ RSpec.describe "Meetings", "Index", :js do
         it "show all past meetings" do
           meetings_page.expect_meetings_listed_in_table(yesterdays_meeting, meeting, ongoing_meeting)
           meetings_page.expect_meetings_not_listed(tomorrows_meeting)
+
+          # keeps the past filter selected when changing advanced filters (Regression #61875)" do
+          meetings_page.open_filters
+          meetings_page.remove_filter "invited_user_id"
+          click_on "Apply"
+
+          wait_for_network_idle
+
+          if context == :global
+            expect(page).to have_current_path(meetings_path(upcoming: false, filters: "[]"))
+          else
+            expect(page).to have_current_path(project_meetings_path(project, upcoming: false, filters: "[]"))
+          end
         end
       end
 

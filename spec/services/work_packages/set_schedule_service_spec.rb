@@ -41,8 +41,9 @@ RSpec.describe WorkPackages::SetScheduleService do
   let(:work_package_start_date) { nil }
   let(:initiating_work_package) { work_package }
   let(:instance) do
-    described_class.new(user:, work_package:, initiated_by: initiating_work_package)
+    described_class.new(user:, work_package:, initiated_by: initiating_work_package, switching_to_automatic_mode:)
   end
+  let(:switching_to_automatic_mode) { [] }
   let!(:following) { [] }
 
   let(:follower1_start_date) { Time.zone.today + 1.day }
@@ -473,6 +474,25 @@ RSpec.describe WorkPackages::SetScheduleService do
             { following_work_package1 => [Time.zone.today - 4.days, Time.zone.today - 2.days] }
           end
         end
+      end
+    end
+
+    context "when switching the successor to automatic mode without moving dates (adding relation)" do
+      let(:switching_to_automatic_mode) { [following_work_package1] }
+
+      before do
+        following_work_package1.update_column(:schedule_manually, true)
+      end
+
+      it "does not reschedule but switches the successor to automatic mode" do
+        expect(subject).to be_success
+
+        # returns the original and the successor which did not changed dates,
+        # but changed scheduling mode
+        expect(subject.all_results)
+          .to contain_exactly(work_package, following_work_package1)
+
+        expect(subject.all_results.last.schedule_manually).to be(false)
       end
     end
   end

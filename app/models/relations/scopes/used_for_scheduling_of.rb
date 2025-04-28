@@ -33,12 +33,15 @@ module Relations::Scopes
     extend ActiveSupport::Concern
 
     class_methods do
-      # Returns all successor/predecessor relationships in which the work
-      # package or its automatically scheduled ancestors are a successor of. The
-      # automatically scheduled ancestors are the ancestors that are linked to
-      # the work package only through automatically scheduled parents. As soon
-      # as a parent is manually scheduled, its predecessors and ancestors are
-      # not involved in scheduling anymore.
+      # Returns all relations where:
+      # - either the work package is a successor (all direct predecessors)
+      # - or an automatically scheduled ancestor of the work package is a
+      #   successor (all indirect predecessors)
+      #
+      # The automatically scheduled ancestors are the ancestors that are linked
+      # to the work package only through automatically scheduled parents. As
+      # soon as a parent is manually scheduled, its predecessors and ancestors
+      # are not involved in scheduling anymore.
       def used_for_scheduling_of(work_package)
         automatically_scheduled_ancestors =
           WorkPackageHierarchy.where(descendant_id: work_package.id)

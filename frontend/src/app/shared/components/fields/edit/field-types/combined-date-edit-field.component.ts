@@ -57,13 +57,8 @@ export class CombinedDateEditFieldComponent extends DatePickerEditFieldComponent
     event.stopPropagation();
   }
 
-  public showDatePickerModal():void {
-    this.updateFrameSrc();
-    this.opened = true;
-  }
-
   public onModalClosed():void {
-    this.opened = false;
+    super.onModalClosed();
 
     if (!this.handler.inEditMode) {
       this.handler.deactivate(false);

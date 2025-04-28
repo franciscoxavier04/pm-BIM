@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,10 +28,9 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require_relative "new"
-
 module Pages::Meetings
   class Index < Pages::Page
+    include Components::Common::Filters
     include Components::Autocompleter::NgSelectAutocompleteHelpers
 
     attr_accessor :project
@@ -39,13 +39,6 @@ module Pages::Meetings
       super()
 
       self.project = project
-    end
-
-    def click_create_new
-      click_on("add-meeting-button")
-      click_on("Classic")
-
-      New.new(project)
     end
 
     def set_title(text)
@@ -86,16 +79,7 @@ module Pages::Meetings
 
     def click_create
       click_on "Create meeting"
-
       wait_for_network_idle
-
-      meeting = Meeting.last
-
-      if meeting
-        Pages::Meetings::Show.new(meeting)
-      else
-        self
-      end
     end
 
     def expect_no_main_menu
@@ -113,7 +97,7 @@ module Pages::Meetings
     def expect_create_new_types
       click_on("add-meeting-button")
 
-      expect(page).to have_link("Classic")
+      expect(page).to have_link("Recurring")
       expect(page).to have_link("One-time")
     end
 
@@ -193,7 +177,7 @@ module Pages::Meetings
 
     def meeting_group_key(meeting)
       start_date = meeting.start_time.to_date
-      next_week = Time.current.next_occurring(OpenProject::Internationalization::Date.beginning_of_week)
+      next_week = Time.current.next_occurring(OpenProject::Internationalization::Date.beginning_of_week).beginning_of_day
 
       if start_date == Time.zone.today
         :today

@@ -77,7 +77,7 @@ tr:
   backlogs_active: "etkin"
   backlogs_any: "herhangi bir"
   backlogs_inactive: "Proje hiçbir etkinlik göstermiyor"
-  backlogs_points_burn_direction: "Puanlar yukarı / aşağı yanar"
+  backlogs_points_burn_direction: "Puanların azalması / artması"
   backlogs_product_backlog: "Ürün iş listesi"
   backlogs_product_backlog_is_empty: "Ürün bekleme listesi boş"
   backlogs_product_backlog_unsized: "Ürün birikiminin tepesinde boyutsuz hikayeler var"

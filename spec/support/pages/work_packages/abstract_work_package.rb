@@ -53,6 +53,10 @@ module Pages
       visit path(tab)
     end
 
+    def relations_tab
+      Components::WorkPackages::Relations.new(work_package)
+    end
+
     def switch_to_tab(tab:)
       find(".op-tab-row--link", text: tab.upcase).click
     end

@@ -21,19 +21,19 @@
 #++
 pt-BR:
   attributes:
-    additions_count: "Number of additions"
-    deletions_count: "Number of deletions"
-    comments_count: "Comments count"
-    github_html_url: "Pull Request URL"
-    github_app_owner_avatar_url: "Owner avatar URL"
-    review_comments_count: "Review comments count"
-    github: "GitHub identifer"
-    github_avatar_url: "Avatar URL"
-    github_updated_at: "Updated at"
-    github_login: "GitHub login"
-    labels: "Labels"
-    repository: "Repository"
-    changed_files_count: "Changed files"
+    additions_count: "Número de adições"
+    deletions_count: "Número de exclusões"
+    comments_count: "Contagem de comentários"
+    github_html_url: "URL da solicitações de pull"
+    github_app_owner_avatar_url: "URL do avatar do proprietário"
+    review_comments_count: "Contagem de comentários revisados"
+    github: "Identificador do GitHub"
+    github_avatar_url: "URL da imagem de perfil"
+    github_updated_at: "Atualizado em"
+    github_login: "Login do GitHub"
+    labels: "Rótulos"
+    repository: "Repositório"
+    changed_files_count: "Arquivos alterados"
   button_add_deploy_target: Adicionar alvo de implantação
   label_deploy_target: Alvo de implantação
   label_deploy_target_new: Novo alvo de implantação

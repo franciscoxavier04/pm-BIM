@@ -37,8 +37,6 @@ import * as moment from 'moment-timezone';
   templateUrl: './days-duration-edit-field.component.html',
 })
 export class DaysDurationEditFieldComponent extends DatePickerEditFieldComponent implements OnInit {
-  opened = false;
-
   public get formattedValue():number {
     return Number(moment.duration(this.value).asDays().toFixed(0));
   }
@@ -51,14 +49,9 @@ export class DaysDurationEditFieldComponent extends DatePickerEditFieldComponent
     event.stopPropagation();
   }
 
-  showDatePickerModal():void {
-    this.updateFrameSrc();
-    this.opened = true;
-  }
-
   onModalClosed() {
+    super.onModalClosed();
     void this.handler.handleUserSubmit();
-    this.opened = false;
   }
 
   cancel():void {

@@ -30,7 +30,7 @@
         overridden_costs: "Overstyrte kostnader"
         spent: "Brukt"
         spent_on: "Dato"
-        logged_by: "Logged by"
+        logged_by: "Logget av"
       cost_type:
         unit: "Enhetsnavn"
         unit_plural: "Flertallsnavn på enhet"
@@ -47,22 +47,30 @@
       user:
         default_rates: "Standard satser"
       time_entry:
-        project: Project
-        user: User
-        work_package: Work package
+        project: Prosjekt
+        user: Bruker
+        work_package: Arbeidspakke
+        subject: Emne
         hours: Timer
-        comments: Comment
+        comments: Kommentar
         activity: Aktivitet
         spent_on: Dato
-        start_time: Start time
+        start_time: Starttid
         end_time: Finish time
+        time: Tidspunkt
     models:
+      time_entry:
+        one: "Timeføring"
+        other: "Time entries"
+      cost_entry:
+        one: "Kostnad"
+        other: "Cost entries"
       cost_type:
         one: "Kostnadstype"
         other: "Kostnadstyper"
       time_entry_activity:
         one: "Time tracking activity"
-        other: "Time tracking activities"
+        other: "Tidregistrering aktiviteter"
       rate: "Sats"
     errors:
       models:
@@ -84,7 +92,7 @@
   button_add_rate: "Legg til sats"
   button_log_costs: "Loggfør enhetskostnader"
   button_log_time: "Log"
-  button_add_activity: "Activity"
+  button_add_activity: "Aktivitet"
   caption_booked_on_project: "Bestilt i prosjektet"
   caption_default: "Standard"
   caption_default_rate_history_for: "Standardratehistorikk for %{user}"
@@ -96,7 +104,7 @@
   caption_save_rate: "Lagre sats"
   caption_set_rate: "Angi gjeldende sats"
   caption_show_locked: "Vis låste typer"
-  caption_log_time_dialog: "Log time"
+  caption_log_time_dialog: "Logg tid"
   description_date_for_new_rate: "Dato for ny sats"
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
@@ -140,16 +148,32 @@
   label_until: "fram til"
   label_valid_from: "Gyldig fra"
   label_yes: "Ja"
-  label_time: "Time"
+  label_time: "Tidspunkt"
   label_cost: "Cost"
-  label_costs: "Costs"
+  label_costs: "Kostnader"
   label_mandatory_fields: "Mandatory fields"
+  label_my_time_tracking: "My time tracking"
+  label_no_time: "No time tracked"
+  label_next_day: "Next day"
+  label_next_week: "Neste uke"
+  label_next_month: "Next month"
+  label_previous_day: "Previous day"
+  label_previous_week: "Forrige uke"
+  label_previous_month: "Previous month"
+  label_specific_day: "Day %{day}"
+  label_specific_week: "Calendar week %{week}"
+  label_specific_month: "Month %{month}"
+  label_list: "Liste"
+  label_month: "Måned"
+  label_day: "Dag"
+  label_today_capitalized: "I dag"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Noe gikk galt. Prøv på nytt."
   notice_successful_restore: "Vellykket gjenoppretting."
   notice_successful_lock: "Låst vellykket."
   notice_cost_logged_successfully: "Enhetskostnaden er logget."
   notice_different_time_zones: "This user has a different time zone (%{tz}). Time will be logged using their time zone."
+  notice_time_entry_update_failed: "Failed to update time entry. Errors: %{errors}"
   permission_edit_cost_entries: "Rediger bokførte enhetskostnader"
   permission_edit_own_cost_entries: "Rediger egne bokførte enhetskostnader"
   permission_edit_hourly_rates: "Rediger timesatser"
@@ -165,8 +189,8 @@
   permission_view_own_time_entries: "Vis egen tidsbruk"
   project_module_costs: "Tid og kostnader"
   setting_allow_tracking_start_and_end_times: "Allow users to track start and end time on time records"
-  setting_costs_currency: "Currency"
-  setting_costs_currency_format: "Format of currency"
+  setting_costs_currency: "Valuta"
+  setting_costs_currency_format: "Formatet på valuta"
   setting_enforce_tracking_start_and_end_times: "Force users to set start and end time on time records"
   text_assign_time_and_cost_entries_to_project: "Overfør rapporterte timer og kostnader til prosjektet"
   text_destroy_cost_entries_question: "%{cost_entries} ble rapportert på arbeidspakkene du er i ferd med å slette. Hva vil du gjøre ?"
@@ -175,9 +199,17 @@
   text_reassign_time_and_cost_entries: "Overfør rapporterte timer og kostnader til denne arbeidspakken:"
   text_warning_hidden_elements: "Noen oppføringer kan være utelatt fra aggregeringen."
   week: "uke"
-  js:
-    text_are_you_sure: "Er du sikker?"
+  total_times:
+    week: "Week Total: %{hours}"
+    month: "Month Total: %{hours}"
+    day: "Day Total: %{hours}"
   api_v3:
     errors:
       validation:
         start_time_different_date: "Date part of startTime (%{start_time}) must be the same as the spentOn (%{spent_on}) date."
+  ee:
+    features:
+      time_entry_time_restrictions: Require exact time tracking
+    upsell:
+      time_entry_time_restrictions:
+        description: "Improve your time tracking by requiring exact start and finish times when logging time."

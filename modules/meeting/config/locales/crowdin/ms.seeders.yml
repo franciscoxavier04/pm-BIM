@@ -9,7 +9,7 @@ ms:
         demo-project:
           meeting_series:
             item_0:
-              title: Weekly
+              title: Mingguan
           meeting_agenda_items:
             item_0:
               title: Berita baik
@@ -24,6 +24,6 @@ ms:
             item_6:
               title: Semakan semula matlamat suku tahunan
             item_7:
-              title: Maklum balas nilai teras
+              title: Maklum balas nilai teras 
             item_8:
               title: Topik umum

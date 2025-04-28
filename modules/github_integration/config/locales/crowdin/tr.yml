@@ -43,7 +43,7 @@ tr:
   notice_deploy_target_destroyed: Dağıtım hedefi silindi
   plugin_openproject_github_integration:
     name: "OpenProject GitHub Entegrasyonu"
-    description: "Integrates OpenProject and GitHub for a better workflow"
+    description: "OpenProject'i ve GitHub'ı daha iyi iş akışları için birleştirir"
   project_module_github: "GitHub"
   permission_show_github_content: "Github içeriğini göster"
   permission_introspection: Çalışan OpenProject çekirdek sürümünü okuyun ve SHA oluşturun
@@ -51,4 +51,4 @@ tr:
     Şimdiye kadar sadece OpenProject'in kendisini destekliyoruz.
   text_deploy_target_api_key_info: >
     Global iç gözlem iznine sahip bir kullanıcıya ait bir OpenProject [API anahtarı](docs_url).
-  text_pull_request_deployed_to: "%{pr_link} deployed to %{deploy_target_link}"
+  text_pull_request_deployed_to: "%{pr_link} %{deploy_target_link} adresine yüklendi"
