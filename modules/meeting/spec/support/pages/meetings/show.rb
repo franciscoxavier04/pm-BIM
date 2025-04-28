@@ -578,6 +578,12 @@ module Pages::Meetings
       end
     end
 
+    def expect_no_backlog_header_actions
+      within_backlog do
+        expect { page.find_test_selector("meeting-section-action-menu") }.to raise_error(Capybara::ElementNotFound)
+      end
+    end
+
     def expect_blankslate
       expect(page).to have_test_selector("meeting-blankslate")
     end

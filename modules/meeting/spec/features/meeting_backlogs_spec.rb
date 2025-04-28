@@ -41,6 +41,12 @@ RSpec.describe "Meeting Backlogs", :js, with_flag: { meeting_backlogs: true } do
            preferences: { time_zone: "Etc/UTC" },
            member_with_permissions: { project => %i[view_meetings manage_agendas close_meeting_agendas create_meeting_minutes] }
   end
+  shared_let(:reader) do
+    create :user,
+           lastname: "Reader",
+           preferences: { time_zone: "Etc/UTC" },
+           member_with_permissions: { project => %i[view_meetings] }
+  end
   shared_let(:meeting) do
     create :meeting,
            project:,
@@ -466,6 +472,18 @@ RSpec.describe "Meeting Backlogs", :js, with_flag: { meeting_backlogs: true } do
         show_page.expect_no_outcome_button
         show_page.expect_no_outcome_action(item)
       end
+    end
+  end
+
+  describe "a user without permissions" do
+    before do
+      login_as reader
+    end
+
+    it "cannot see the backlog header actions" do
+      show_page.visit!
+
+      show_page.expect_no_backlog_header_actions
     end
   end
 end

@@ -75,6 +75,10 @@ module MeetingSections
       end
     end
 
+    def edit_enabled?
+      !@meeting.closed? && User.current.allowed_in_project?(:manage_agendas, @meeting.project)
+    end
+
     def clear_action_item(menu)
       menu.with_item(
         label: I18n.t(:label_backlog_clear),
