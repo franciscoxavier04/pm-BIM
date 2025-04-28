@@ -43,6 +43,11 @@ class AddBacklogsToOneTimeMeetings < ActiveRecord::Migration[8.0]
 
   def down
     execute <<~SQL.squish
+      DELETE FROM meeting_agenda_items
+      WHERE meeting_section_id IN (SELECT id FROM meeting_sections WHERE backlog = true)
+    SQL
+
+    execute <<~SQL.squish
       DELETE FROM meeting_sections
       WHERE backlog = true
     SQL

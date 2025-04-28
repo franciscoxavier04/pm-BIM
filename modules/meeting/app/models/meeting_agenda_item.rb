@@ -92,8 +92,6 @@ class MeetingAgendaItem < ApplicationRecord
 
   def update_meeting_to_match_section
     # TODO - see #63561
-    return if meeting == meeting_section.meeting
-
     self.meeting = meeting_section.meeting
   end
 
