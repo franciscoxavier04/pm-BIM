@@ -36,7 +36,6 @@ modules_permissions:
     - :view_meetings
     - :manage_agendas
     - :send_meeting_agendas_notification
-    - :send_meeting_agendas_icalendar
     - :manage_outcomes
     - :send_meeting_minutes_notification
     - :meetings_send_invite
