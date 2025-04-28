@@ -1,6 +1,6 @@
 tr:
   ee:
-    upsale:
+    upsell:
       grid_widget_wp_graph:
         description: "İş paketi grafiği gibi bazı bileşenler yalnızca Enterprise sürümünde mevcuttur."
   js:

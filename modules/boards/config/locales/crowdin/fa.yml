@@ -7,9 +7,9 @@ fa:
   permission_manage_board_views: "مدیریت تابلو ها"
   project_module_board_view: "انجمن ها"
   ee:
-    upsale:
+    upsell:
       board_view:
-        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
+        description: 'آیا می خواهید گردش کار خود را با تابلوها خودکار کنید؟ بردهای پیشرفته یک افزونه Enterprise هستند. لطفاً به یک طرح پولی ارتقا دهید.'
   boards:
     label_board: "تابلو"
     label_boards: "تابلو"

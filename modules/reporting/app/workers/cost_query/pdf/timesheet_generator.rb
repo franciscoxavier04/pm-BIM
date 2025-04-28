@@ -40,7 +40,7 @@ class CostQuery::PDF::TimesheetGenerator
   H1_FONT_SIZE = 26
   H1_MARGIN_BOTTOM = 2
   HR_MARGIN_BOTTOM = 16
-  PARAGRAPH_MARGIN_BOTTOM = 16
+  PARAGRAPH_MARGIN_BOTTOM = 8
   TABLE_MARGIN_BOTTOM = 28
   TABLE_CELL_FONT_SIZE = 10
   TABLE_CELL_BORDER_COLOR = "BBBBBB"
@@ -50,6 +50,7 @@ class CostQuery::PDF::TimesheetGenerator
   H2_MARGIN_BOTTOM = 10
   SUM_TABLE_FIRST_COLUMN_WIDTH = 90
   SUM_TABLE_MAX_USER_COLUMNS = 6
+  OVERVIEW_HEADER_FONT_SIZE = 16
 
   COLUMN_DATE_WIDTH = 90
   COLUMN_ACTIVITY_WIDTH = 100
@@ -145,6 +146,7 @@ class CostQuery::PDF::TimesheetGenerator
   def grouped_by_user_entries
     all_entries
       .group_by(&:user)
+      .sort_by { |user, _entries| user.name }
   end
 
   def all_users
@@ -240,7 +242,7 @@ class CostQuery::PDF::TimesheetGenerator
   end
 
   def sum_time_entries(entries)
-    entries.sum(&:hours)
+    entries.filter_map(&:hours).sum
   end
 
   def build_table_row_comment(entry)
@@ -440,29 +442,77 @@ class CostQuery::PDF::TimesheetGenerator
 
     write_heading!
     write_hr!
-    write_total_sum!
+    write_overview_table!(users)
     write_sums_tables!(users)
     start_new_page_if_needed
   end
 
+  def write_overview_table!(users)
+    pdf.formatted_text([{ text: I18n.t("export.timesheet.overview_per_user_total"), size: OVERVIEW_HEADER_FONT_SIZE,
+                          style: :bold }])
+    pdf.move_down(PARAGRAPH_MARGIN_BOTTOM)
+    pdf.make_table(
+      overview_table_rows(users),
+      header: true,
+      width: pdf.bounds.width,
+      cell_style: {
+        size: TABLE_CELL_FONT_SIZE,
+        border_color: TABLE_CELL_BORDER_COLOR,
+        border_width: 0.5,
+        borders: %i[top bottom left right],
+        padding: [TABLE_CELL_PADDING, TABLE_CELL_PADDING, TABLE_CELL_PADDING + 2, TABLE_CELL_PADDING]
+      }
+    ) do |table|
+      adjust_overview_border_sum_row(table)
+    end.draw
+    pdf.move_down(TABLE_MARGIN_BOTTOM)
+  end
+
+  def overview_table_rows(users)
+    rows = [
+      [
+        { content: TimeEntry.human_attribute_name(:user), font_style: :bold },
+        { content: I18n.t("export.timesheet.sums_hours"), font_style: :bold, align: :right }
+      ]
+    ]
+    users.each do |user|
+      entries = all_entries.select { |entry| entry.user == user }
+      rows.push(
+        [
+          { content: make_link_anchor("user_#{user.id}", user.name), inline_format: true },
+          { content: format_sum_time_entries(entries), align: :right }
+        ]
+      )
+    end
+    rows.push(["", { content: format_sum_time_entries(all_entries), font_style: :bold, align: :right }])
+    rows
+  end
+
+  def adjust_overview_border_sum_row(table)
+    row = table.rows(-1)
+    row.columns(0).style { |c| c.borders = c.borders - [:right] }
+    row.columns(-1).style { |c| c.borders = c.borders - [:left] }
+  end
+
   def write_sums_tables!(users)
-    start_date, end_date = all_entries.map(&:spent_on).minmax
-    num_groups = (users.length / SUM_TABLE_MAX_USER_COLUMNS.to_f).ceil
-    users
-      .in_groups(num_groups, false) do |users_chunk|
-      write_sum_table!(users_chunk.compact, start_date, end_date)
+    sum_user_tables = build_sum_table_groups(users)
+    sum_user_tables.each_with_index do |user_rows_group, index|
+      write_sum_table!(user_rows_group[0], user_rows_group[1], index, sum_user_tables.length)
       pdf.move_down(TABLE_MARGIN_BOTTOM)
     end
   end
 
-  def write_total_sum!
-    pdf.formatted_text(
-      [
-        { text: "#{I18n.t('export.timesheet.total_sum')}: ", size: TABLE_CELL_FONT_SIZE },
-        { text: format_sum_time_entries(all_entries), size: TABLE_CELL_FONT_SIZE, styles: [:bold] }
-      ]
-    )
-    pdf.move_down(PARAGRAPH_MARGIN_BOTTOM)
+  def build_sum_table_groups(users)
+    start_date, end_date = all_entries.map(&:spent_on).minmax
+    num_groups = (users.length / SUM_TABLE_MAX_USER_COLUMNS.to_f).ceil
+    grouped_user_rows = []
+    users
+      .in_groups(num_groups, false) do |users_chunk|
+      group_users = users_chunk.compact
+      rows = build_sum_table_rows(group_users, start_date, end_date)
+      grouped_user_rows.push([group_users, rows]) unless rows.empty?
+    end
+    grouped_user_rows
   end
 
   def build_sum_table_footer_rows(users, users_sums)
@@ -497,7 +547,7 @@ class CostQuery::PDF::TimesheetGenerator
   end
 
   def calc_sum_for_user_on_day(user, date)
-    all_entries.select { |entry| entry.user == user && entry.spent_on == date }.sum(&:hours)
+    sum_time_entries(all_entries.select { |entry| entry.user == user && entry.spent_on == date })
   end
 
   def build_sum_table_rows(users, start_date, end_date)
@@ -521,10 +571,16 @@ class CostQuery::PDF::TimesheetGenerator
       end
   end
 
-  def write_sum_table!(users, start_date, end_date)
-    rows = build_sum_table_rows(users, start_date, end_date)
-    return if rows.empty?
+  def write_sum_table_headline(index, total_groups)
+    styling = { size: OVERVIEW_HEADER_FONT_SIZE, style: :bold }
+    headline = [styling.merge({ text: I18n.t("export.timesheet.overview_per_user_day") })]
+    headline += [styling.merge({ text: " (#{index + 1}/#{total_groups})" })] if total_groups > 1
+    pdf.formatted_text(headline)
+    pdf.move_down(PARAGRAPH_MARGIN_BOTTOM)
+  end
 
+  def write_sum_table!(users, rows, index, total_groups)
+    write_sum_table_headline(index, total_groups)
     rows.unshift(build_sum_table_header_row(users))
     pdf.table(
       rows,
@@ -545,12 +601,6 @@ class CostQuery::PDF::TimesheetGenerator
     [SUM_TABLE_FIRST_COLUMN_WIDTH].concat(
       [(pdf.bounds.width - SUM_TABLE_FIRST_COLUMN_WIDTH) / users.length] * users.length
     )
-  end
-
-  def adjust_overview_border_sum_row(table)
-    row = table.rows(-1)
-    row.columns(0).style { |c| c.borders = c.borders - [:right] }
-    row.columns(-1).style { |c| c.borders = c.borders - [:left] }
   end
 
   def write_heading!

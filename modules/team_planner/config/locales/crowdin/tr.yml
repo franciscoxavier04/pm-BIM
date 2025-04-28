@@ -9,7 +9,7 @@ tr:
   ee:
     feature_names:
       team_planner_view: "Takım planlayıcısı"
-    upsale:
+    upsell:
       team_planner_view:
         title: "Takım planlayıcısı"
         description: "Takım Planlayıcısı ile ekibinizin planlamasına ilişkin eksiksiz bir genel bakış elde edin. Tarihleri değiştirmek, taşımak veya atananları değiştirmek için iş paketlerini genişletin, kısaltın ve sürükleyip bırakın."

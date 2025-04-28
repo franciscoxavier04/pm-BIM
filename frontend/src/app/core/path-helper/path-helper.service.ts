@@ -298,7 +298,7 @@ export class PathHelperService {
 
   public workPackageProgressModalPath(workPackageId:string|number) {
     if (workPackageId === 'new') {
-      return `${this.workPackagePath(workPackageId)}/progress/new`;
+      return `${this.workPackagesPath()}/progress/new`;
     }
 
     return `${this.workPackagePath(workPackageId)}/progress/edit`;
@@ -314,10 +314,10 @@ export class PathHelperService {
 
   public workPackageDatepickerDialogContentPath(workPackageId:string|number):string {
     if (workPackageId === 'new') {
-      return `${this.workPackagePath(workPackageId)}/datepicker_dialog_content/new`;
+      return `${this.workPackagesPath()}/date_picker/new`;
     }
 
-    return `${this.workPackagePath(workPackageId)}/datepicker_dialog_content`;
+    return `${this.workPackagePath(workPackageId)}/date_picker`;
   }
 
   // Work Package Bulk paths

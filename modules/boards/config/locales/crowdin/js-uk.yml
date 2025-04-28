@@ -1,7 +1,7 @@
 #English strings go here
 uk:
   ee:
-    upsale:
+    upsell:
       board_view:
         description: 'Хочете автоматизувати робочі процеси за допомогою Дощок? Поліпшені дошки – це доповнення версії Enterprise. Перейдіть на платний план.'
   js:

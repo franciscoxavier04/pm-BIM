@@ -87,7 +87,7 @@ export class WorkPackageRelationsComponent extends UntilDestroyedMixin implement
       .events$
       .pipe(
         filter((e) => e.eventType === 'association' || e.eventType === 'updated'),
-        throttleTime(1000),
+        throttleTime(1000, undefined, { leading: true, trailing: true }),
         this.untilDestroyed(),
       )
       .subscribe(() => {

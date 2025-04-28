@@ -1,8 +1,8 @@
 pl:
   ee:
-    upsale:
+    upsell:
       grid_widget_wp_graph:
-        description: "Some widgets, like the work package graph widget, are only available in the Enterprise edition."
+        description: "Niektóre widżety, takie jak widżet wykresu pakietu roboczego, są dostępne jedynie w wersji Enterprise."
   js:
     grid:
       add_widget: 'Dodaj widżet'

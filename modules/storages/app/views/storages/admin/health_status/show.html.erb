@@ -56,8 +56,20 @@ See COPYRIGHT and LICENSE files for more details.
   <%=
     if @report.present?
       button_label = I18n.t("storages.health.actions.rerun_checks")
+      download_label = I18n.t("storages.health.actions.download_report")
 
       render(Primer::OpenProject::SubHeader.new) do |subheader|
+        subheader.with_action_button(
+          scheme: :secondary,
+          tag: :a,
+          href: admin_settings_storage_health_status_report_path(@storage, format: :txt),
+          data: { turbo: true },
+          aria: { label: download_label }
+        ) do |button|
+          button.with_leading_visual_icon(icon: :download)
+          download_label
+        end
+
         subheader.with_action_button(
           scheme: :primary,
           tag: :a,

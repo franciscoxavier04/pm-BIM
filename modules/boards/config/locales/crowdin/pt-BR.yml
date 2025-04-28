@@ -7,9 +7,9 @@ pt-BR:
   permission_manage_board_views: "Gerenciar quadros"
   project_module_board_view: "Quadros"
   ee:
-    upsale:
+    upsell:
       board_view:
-        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
+        description: 'Gostaria de automatizar seu fluxo de trabalho com Quadros? Quadros avançados são um complemento do Enterprise. Atualize para um plano pago.'
   boards:
     label_board: "Quadro"
     label_boards: "Quadros"

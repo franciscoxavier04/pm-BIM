@@ -8,11 +8,11 @@
   project_module_team_planner_view: "Teamplanleggere"
   ee:
     feature_names:
-      team_planner_view: "Team planner"
-    upsale:
+      team_planner_view: "Teamplanlegger"
+    upsell:
       team_planner_view:
-        title: "Team planner"
-        description: "Get a complete overview of your team’s planning with Team Planner. Stretch, shorten and drag-and-drop work packages to modify dates, move them or change assignees."
+        title: "Teamplanlegger"
+        description: "Få en fullstendig oversikt over ditt teams planlegging med Team Planner. Utvid, forkort og dra-og-slipp arbeidspakker for å endre datoer, flytte dem eller endre deltakere."
   team_planner:
     label_team_planner: "Teamplanlegger"
     label_new_team_planner: "Ny teamplanlegger"

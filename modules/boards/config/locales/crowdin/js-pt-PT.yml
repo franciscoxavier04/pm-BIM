@@ -1,9 +1,9 @@
 #English strings go here
 pt-PT:
   ee:
-    upsale:
+    upsell:
       board_view:
-        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
+        description: 'Gostaria de automatizar os seus fluxos de trabalho com Quadros? Os quadros avançados são um complemento Enterprise. Faça upgrade para um plano pago.'
   js:
     boards:
       create_new: 'Criar novo quadro'

@@ -239,22 +239,22 @@ es:
           status_waiting: "correo electrónico enviado - esperando confirmación"
           test_ee: "Pruebe Enterprise de forma gratuita durante 14 días"
           quick_overview: "Obtenga un resumen rápido sobre la gestión de proyectos y la colaboración en equipo con OpenProject Enterprise."
-        upsale:
-          become_hero: "¡Conviértete en un héroe!"
+        upsell:
+          become_hero: "¡Conviértete en héroe!"
           enterprise_info_html: "%{feature_title} es una extensión de la Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
           upgrade_info: "Actualice a un plan de pago para activarla y empiece a usarla en su equipo."
           benefits:
             description: "¿Cuáles son las ventajas de Enterprise On-Premises?"
             high_security: "Funciones de seguridad"
             high_security_text: "Inicio de sesión único (SAML, OpenID Connect, CAS), grupos LDAP."
-            installation: "Ayuda en la instalación"
+            installation: "Soporte de instalación"
             installation_text: "Nuestros ingenieros de software especializados le guiarán en todo el proceso de instalación y configuración en su propia infraestructura."
             premium_features: "Extensión Enterprise"
             premium_features_text: "Tableros Agile, tema y logotipo personalizados, gráficos, flujos de trabajo inteligentes con acciones personalizadas, búsqueda de texto completo en archivos adjuntos de paquetes de trabajo y campos personalizados de selección múltiple."
             professional_support: "Soporte profesional"
             professional_support_text: "Obtenga ayuda rápida y de confianza de nuestros agentes de asistencia con conocimientos especializados sobre cómo ejecutar OpenProject en entornos empresariales críticos."
           button_start_trial: "Iniciar prueba gratuita"
-          button_upgrade: "Actualizar ahora"
+          button_upgrade: "Mejorar ahora"
           button_contact_us: "Contacte con nosotros para solicitar una demostración"
           button_book_now: "Reservar ahora"
           confidence: >
@@ -865,7 +865,7 @@ es:
     tl_toolbar:
       zooms: "Nivel de zoom"
       outlines: "Nivel de jerarquía"
-    upsale:
+    upsell:
       ee_only: "Extensión Enterprise"
     wiki_formatting:
       strong: "Negrita"

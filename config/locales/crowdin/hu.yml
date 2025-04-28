@@ -41,9 +41,14 @@ hu:
         changed: "changed"
         created: "created"
         commented: "commented"
-        restrict_visibility: Restrict visibility
-        restricted_journal: Restricted comments are visible to a limited group of members.
+        internal_comment: Internal comment
+        internal_journal: Internal comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
+        internal_comment_confirmation:
+          title: "Make this comment public?"
+          heading: "Make this comment public?"
+          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          confirm_button_text: "Make public"
   admin:
     plugins:
       no_results_title_text: There are currently no plugins installed.
@@ -291,7 +296,7 @@ hu:
   global_search:
     placeholder: "Keresés:  %{app_title} oldalon"
     overwritten_tabs:
-      all: "All"
+      all: "Összes"
       messages: "Fórum"
       wiki_pages: "Wiki"
   groups:
@@ -345,6 +350,18 @@ hu:
         heading: "Delete this project list?"
         text: "Ez a művelet nem törli a listában szereplő projekteket. Biztos, hogy törölni szeretné ezt a projektlistát?"
     settings:
+      public_warning: >
+        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+      public_confirmation:
+        checkbox: "I understand that this will make the previously private content public"
+        title: "Make this project public?"
+        description: >
+          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+      private_confirmation:
+        checkbox: "I understand that this will make the previously public content private."
+        title: "Make this project private?"
+        description: >
+          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       change_identifier: Azonosító megváltoztatása
       actions:
         label_enable_all: "Enable all"
@@ -610,9 +627,9 @@ hu:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Feladatcsoport"
+            parent: "Szülő"
+            project: "Projekt"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -746,7 +763,7 @@ hu:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      new_child: "Create new child"
+      new_child: "Új gyermek kapcsolat hozzáadása"
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
@@ -941,11 +958,11 @@ hu:
         is_required: "Required for all projects"
         custom_field_section: Szekció
       project/phase:
-        date_range: "Date range"
+        date_range: "Dátum intervallum"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Név"
+        color: "Szín"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1070,7 +1087,7 @@ hu:
           title: "Munkanapok"
           false: "Csak munkanapok"
           true: "Munkaszüneti napok beleszámítva"
-        journal_restricted: Restricted Journal
+        journal_internal: Internal Journal
         notify: "Értesítés" #used in custom actions
         parent: "Szülő"
         parent_issue: "Szülő"
@@ -1291,7 +1308,7 @@ hu:
             values:
               inclusion: "A szűrő érvénytelen értékeket tartalmaz"
               format: "%{message}\n"
-        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+        queries/principals/filters/internal_mentionable_on_work_package_filter:
           attributes:
             values:
               single_value_requirement: "must be a single work package"
@@ -1549,14 +1566,14 @@ hu:
       changeset: "Commit-ok"
       message: "Fórumok"
       news: "Hírek"
-      project_details: "Project details"
+      project_details: "Projekt részletei"
       subproject: "Alprojektek bevonása"
       time_entry: "Eltöltött idő"
       wiki_edit: "Wiki"
       work_package: "Munkacsomagok"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "aktiválva"
+      deactivated: "deaktiválva"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -1803,7 +1820,8 @@ hu:
     text:
       failed: 'Nem lehet másolni a  "%{source_project_name}" projektet a "%{target_project_name}" projektbe.'
       succeeded: 'A "%{source_project_name}" projekt átmásolva a "%{target_project_name}" projektbe.'
-  create_new_page: "Wiki oldal"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Wiki oldal"
   date:
     abbr_day_names:
       - "V"
@@ -1959,7 +1977,7 @@ hu:
       baseline_comparison: Baseline Comparisons
       board_view: Advanced Boards
       conditional_highlighting: Conditional Highlighting
-      comments_with_restricted_visibility: Comments With Restricted Visibility
+      internal_comments: Internal Comments
       custom_actions: Custom Actions
       custom_field_hierarchies: Custom fields of type hierarchy
       customize_life_cycle: Customize Life Cycle
@@ -1980,12 +1998,11 @@ hu:
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
-    upsale:
+    upsell:
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
-      plan_text_html: "Available only through the %{plan_name}."
-      link_title: "További információ"
+      plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
@@ -2000,7 +2017,7 @@ hu:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "Attribútum-csoport hozzáadása"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -2013,20 +2030,20 @@ hu:
         description: "Share work packages with users who are not members of the project."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "Megjegyzés: a használt logó nyilvánosan elérhető lesz."
+        description: Testreszabhatja OpenProject telepítését saját logójával és színeivel.
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "Egyéni műveletek"
+        description: "Az egyéni műveletek egy kattintással elérhető parancsikonok előre meghatározott műveletek csoportjához, amelyeket állapot, szerep, típus vagy projekt alapján elérhetővé tehet bizonyos munkacsomagokon."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
-        title: Placeholder users
+        title: Teszt felhasználók
         description: >
           Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
-      comments_with_restricted_visibility:
+      internal_comments:
         title: "For your eyes only"
-        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "Időnyilvántartási tevékenységek"
   enumeration_work_package_priorities: "Feladatcsoport fontosság"
   enumeration_reported_project_statuses: "Projekt állapot beszámoló"
@@ -2253,9 +2270,8 @@ hu:
       users: "Legújabb regisztrált felhasználók ebben az esetben."
     blocks:
       community: "OpenProject Közösség"
-      upsale:
+      upsell:
         title: "Váltás Vállalati Verzióra"
-        more_info: "További információ"
     links:
       upgrade_enterprise_edition: "Váltás Vállalati Verzióra"
       postgres_migration: "A rendszer költöztetése PostreSQL-re"
@@ -2732,6 +2748,7 @@ hu:
   label_modules: "Modulok"
   label_months_from: "hónaptól"
   label_more: "További"
+  label_more_information: "További információ"
   label_more_than_ago: "több, nappal ezelőtt"
   label_move_column_left: "Oszlop mozgatása balra"
   label_move_column_right: "Oszlop mozgatása jobbra"
@@ -3329,13 +3346,13 @@ hu:
     text_getting_started_description: "Get a quick overview of project management and team collaboration with OpenProject. You can restart this video from the help menu."
     welcome: "Üdvözli a %{app_title}"
     select_language: "Kéjük válasszon nyelvet"
-  permission_add_work_package_notes: "Add comments"
+  permission_add_work_package_comments: "Add comments"
   permission_add_work_packages: "feladatcsoport hozzáadása"
   permission_add_messages: "Elküldött üzenetek"
   permission_add_project: "Projekt létrehozása"
   permission_add_work_package_attachments: "Melléklet hozzáadása"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
-  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
+  permission_add_internal_comments: "Write internal comments"
   permission_archive_project: "Projekt archiválása"
   permission_create_user: "Create users"
   permission_manage_user: "Edit users"
@@ -3360,16 +3377,16 @@ hu:
   permission_delete_timelines: "Idővonalak törlése"
   permission_delete_wiki_pages: "Wiki oldalak törlése"
   permission_delete_wiki_pages_attachments: "Mellékletek törlése"
-  permission_edit_work_package_notes: "Moderate comments"
-  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
+  permission_edit_work_package_comments: "Moderate comments"
+  permission_edit_work_package_comments_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "feladatcsoportok szerkesztése"
   permission_edit_messages: "Üzenetek szerkesztése"
-  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
-  permission_edit_own_work_package_notes: "Edit own comments"
+  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_work_package_comments: "Edit own comments"
   permission_edit_own_messages: "Saját üzenetek szerkesztése"
   permission_edit_own_time_entries: "Rögzített eltöltött időim szerkesztése"
-  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
+  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "Projekt szerkesztése"
   permission_edit_project_attributes: "Edit project attributes"
   permission_edit_project_phases: "Edit project phases"
@@ -3410,7 +3427,7 @@ hu:
   permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "View projects"
   permission_view_changesets: "Tároló verziók megtekintése az OpenProject-ben"
-  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
+  permission_view_internal_comments: "View internal comments"
   permission_view_commit_author_statistics: "Szerző,statisztika megtekintése"
   permission_view_dashboards: "View dashboards"
   permission_view_work_package_watchers: "A megfigyelők listájának megtekintése"
@@ -3741,6 +3758,8 @@ hu:
   setting_repository_truncate_at: "Megjelenített fájlok maximális száma a tároló böngészőben"
   setting_rest_api_enabled: "Engedélyezi a REST-alapú webszolgáltatást"
   setting_self_registration: "Önregisztráció"
+  setting_self_registration_warning: >
+    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
   setting_session_ttl: "Munkamenet lejárata ennyi tétlenség ideje után"
   setting_session_ttl_hint: "Érték alatt 5 működik, mint a letiltott"
   setting_session_ttl_enabled: "A munkamenet lejárt"
@@ -3838,7 +3857,7 @@ hu:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Hozzáadás"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"
@@ -3871,8 +3890,8 @@ hu:
     work_packages:
       not_allowed_text: "You do not have the necessary permissions to view this page."
       activities:
-        enable_comments_with_restricted_visibility: "Enable restricted visibility comments"
-        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_internal_comments: "Enable internal comments"
+        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Egyszerű szöveg"
@@ -4221,7 +4240,7 @@ hu:
         view_description: "Can view this project list."
         edit: "Szerkesztés"
         edit_description: "Can view, share and edit this project list."
-      upsale:
+      upsell:
         message: "Sharing project lists with individual users is an enterprise add-on."
   working_days:
     info: >

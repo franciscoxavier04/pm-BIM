@@ -27,7 +27,7 @@ ms:
         host: Hos
         name: Nama
         provider_type: Jenis penyedia
-        tenant: ID Direktori (penyewa) 
+        tenant: ID Direktori (penyewa)
     errors:
       messages:
         invalid_host_url: bukan URL yang sah.
@@ -50,7 +50,7 @@ ms:
             host:
               authorization_header_missing: belum disediakan sepenuhnya. Contoh Nextcloud tidak menerima pengepala "Dibenarkan" yang diperlukan untuk token Bearer berdasarkan kebenaran permintaan API. Sila periksa dua kali server konfigurasi HTTP anda dengan teliti.
               cannot_be_connected_to: tidak dapat dihubungi. Sila pastikan hos boleh dihubungi dan apl penyepaduan OpenProject dipasang.
-              minimal_nextcloud_version_unmet: tidak memenuhi keperluan versi minimum (haruslah Nextcloud 23 atau lebih tinggi) 
+              minimal_nextcloud_version_unmet: tidak memenuhi keperluan versi minimum (haruslah Nextcloud 23 atau lebih tinggi)
               not_nextcloud_server: ialah bukan server Nextcloud
               op_application_not_installed: kelihatan tidak mempunyai aplikasi "Integrasi OpenProject" yang terpasang. Sila pasangkannya terlebih dahulu dan cuba sekali lagi.
             password:
@@ -200,7 +200,7 @@ ms:
       storage_delete_result_3: Sekiranya storan ini mempunyai folder projek yang dikendalikan secara automatik, folder tersebut serta fail yang terkandung akan dipadamkan selamanya.
     dependencies:
       nextcloud:
-        group_folders_app: Folder kumpulan
+        group_folders_app: Group Folders
         integration_app: Integrasi OpenProject
     enabled_in_projects:
       setup_incomplete_description: Storan ini mempunyai persediaan yang tidak lengkap. Sila lengkapkan persediaan sebelum mendayakannya dalam berbilang projek.
@@ -214,7 +214,7 @@ ms:
         manual_management: Akses dan folder yang dikendalikan secara manual
         manual_management_description: Ciptakan dan uruskan folder mengikut projek sendiri secara manual. Anda perlu memastikan pengguna-pengguna berkaitan mempunyai akses secara manual.
         setup_incomplete: Pilih jenis pengurusan akses pengguna dan penciptaan folder.
-        subtitle: Pengurusan akses 
+        subtitle: Pengurusan akses
       access_management_section: Akses dan folder projek
       automatically_managed_folders: Folder yang dikendalikan secara automatik
       general_information: Maklumat umum
@@ -230,21 +230,59 @@ ms:
       storage_oauth: Nextcloud OAuth
       storage_provider: Penyedia storan
     health:
+      actions:
+        download_report: Muat turun
+        rerun_checks: Re-run all checks
+        run_checks: Run checks now
       checked: Terakhir disemak %{datetime}
+      checks:
+        ampf_configuration:
+          files_request: Fetching group folder files
+          group_folder_app: 'Dependency: Group Folders'
+          group_folder_contents: Group folder has expected content
+          group_folder_presence: Group folder exists
+          header: Automatically managed project folder configuration
+          userless_access: Server-side request authentication
+        authentication:
+          existing_token: User token
+          header: Pengesahan
+          non_provisioned_user: User provisioned by IDP
+          provisioned_user_provider: User provisioned by OIDC
+          token_negotiable: User token capabilities
+          user_bound_request: User-based request authentication
+        base_configuration:
+          capabilities_request: Remote file storage capabilities
+          client_id: ID pelanggan
+          client_secret: Rahsia pelanggan
+          dependencies_check: Dependencies
+          dependencies_versions: Dependencies (version)
+          diagnostic_request: Diagnostic request
+          drive_id_format: Drive ID format
+          drive_id_not_found: Drive exists
+          header: Basic configuration
+          host_url_accessible: Host URL accessible
+          storage_configured: Configuration complete
+          tenant_id: Tenant ID
+        failures:
+          zero: All checks passed
+          other: "%{count} checks failed"
+        warnings:
+          other: "%{count} checks returned a warning"
       connection_validation:
-        action: Semak semula sambungan
-        app_version_mismatch: Versi apl Integration OpenProject tidak disokong. Sila kemas kini pelayan Nextcloud anda.
         client_id_wrong: Id klien OAuth 2 yang dikonfigurasikan adalah tidak sah. Sila semak konfigurasi.
         client_secret_wrong: Rahsia pelanggan OAuth 2 yang dikonfigurasikan adalah tidak sah. Sila semak konfigurasi.
+        dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
         drive_id_wrong: Id pemacu yang dikonfigurasikan tidak dapat ditemui. Sila semak konfigurasi.
         group_folder_not_found: Folder kumpulan tidak ditemui.
         group_folder_version_mismatch: Versi Folder Kumpulan tidak disokong. Sila kemas kini pelayan Nextcloud anda.
         host_not_found: Tiada pelayan Nextcloud ditemui pada url hos yang dikonfigurasikan. Sila semak konfigurasi.
         missing_dependencies: 'Kebergantungan yang diperlukan tiada pada storan fail. Sila tambahkan kebergantungan berikut: %{dependency}.'
+        nextcloud:
+          oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
+          oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
+          oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
+          unexpected_content: Kandungan yang tidak dijangka ditemui dalam folder kumpulan terurus.
         not_configured: Sambungan tidak dapat disahkan. Sila selesaikan konfigurasi dahulu.
-        oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
-        oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
-        oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as there's no token for the current user.
         oidc_cant_acquire_token: Your OpenID Connect setup doesn't provide the necessary audience, nor provides token exchange capabilities. Please check out our documentation for more information.
         oidc_cant_exchange_token: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
         oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
@@ -253,26 +291,36 @@ ms:
         one_drive:
           client_cant_delete_folder: The client is having trouble deleting folders. Please check the setup documentation for your storage.
           client_write_permission_missing: The client seems to have write permissions missing. Please check the setup documentation for your storage.
-          drive_id_not_found: The configured drive id could not be found. Please check the configuration.
+          drive_id_not_found: Id pemacu yang dikonfigurasikan tidak dapat ditemui. Sila semak konfigurasi.
           drive_id_wrong: The configured drive id seems invalid. Please check the configuration.
           existing_test_folder: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
-          unexpected_content: Unexpected content found in the drive.
+          oauth_request_not_found: OpenProject couldn't find the root folder in the drive using the current logged-in user. Please check the server logs for further information.
+          oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive or we couldn't acquire a token. Please check the server logs for further information.
+          oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
+          unexpected_content: Kandungan yang tidak dijangka ditemui dalam pemacu.
         placeholder: Semak sambungan anda terhadap pelayan.
         subtitle: Pengesahan sambungan
         tenant_id_wrong: Id direktori (penyewa) yang dikonfigurasikan adalah tidak sah. Sila semak konfigurasi.
-        unexpected_content:
-          nextcloud: Kandungan yang tidak dijangka ditemui dalam folder kumpulan terurus.
-          one_drive: Kandungan yang tidak dijangka ditemui dalam pemacu.
         unknown_error: Sambungan tidak dapat disahkan. Ralat tidak diketahui berlaku. Sila semak log pelayan untuk maklumat lanjut.
         userless_access_denied: Kata laluan apl yang dikonfigurasikan adalah tidak sah.
       label_error: Ralat
+      label_failed: Failed
       label_healthy: Sihat
+      label_passed: Passed
       label_pending: Dalam proses
+      label_skipped: Dilangkau
       label_warning: Amaran
+      no_report: No report available
+      no_report_description: Run the checks now for a full health status report for this file storage.
+      open_report: Open full health report
       project_folders:
         subtitle: Folder projek yang dikendalikan secara automatik
       since: sejak %{datetime}
-      title: Status kesihatan
+      summary:
+        failure: Some checks failed and the system does not work as expected.
+        success: All connections and systems are working as expected.
+        warning: Some checks returned a warning. This can lead to unexpected behaviour.
+      title: Health status report
     health_email_notifications:
       description_subscribed: Semua pentadbir menerima pemberitahuan e-mel status kesihatan bagi storan ini.
       description_unsubscribed: Pemberitahuan e-mel status kesihatan bagi storan ini telah ditutup pada semua pentadbir.
@@ -313,7 +361,7 @@ ms:
         integration: OneDrive/SharePoint
         missing_client_id_for_redirect_uri: Sila isikan nilai-nilai OAuth untuk menjana URI
         oauth_client_redirect_uri: Sila salin nilai ini ke URI ubah hala Web baharu di bawah Ubah Hala URI.
-        oauth_client_secret: Sekiranya tiada aplikasi rahsia pelanggan di bawah kelayakan Pelanggan, sila cipta yang baharu. 
+        oauth_client_secret: Sekiranya tiada aplikasi rahsia pelanggan di bawah kelayakan Pelanggan, sila cipta yang baharu.
         oauth_configuration: Salin nilai-nilai ini dari aplikasi yang diingini di %{application_link_text}.
         provider_configuration: Sila pastikan anda mempunyai hak pentadbiran dalam %{application_link_text} atau hubungi pentadbir Microsoft anda sebelum membuat penyediaan. Anda juga perlu mendaftar aplikasi Azure atau menggunakan yang sedia ada untuk pengesahan di portal.
         tenant_id: Sila salin ID Direktori (penyewa) dari aplikasi yang diingini dan pendaftaran Aplikasi di %{application_link_text}.
@@ -397,7 +445,7 @@ ms:
         subtitle: Tambah storan fail luaran untuk memuat naik, pautkan dan uruskan fail di pakej kerja.
       managed_project_folders:
         subtitle: |-
-          Benarkan OpenProject ciptakan folder mengikut projek secara automatik. Ini dicadangkan kerana ia memastikan setiap ahli 
+          Benarkan OpenProject ciptakan folder mengikut projek secara automatik. Ini dicadangkan kerana ia memastikan setiap ahli
           pasukan sentiasa mempunyai kebenaran akses yang betul.
         subtitle_short: Benarkan OpenProject ciptakan folder mengikut projek secara automatik.
         title: Folder projek yang dikendalikan secara automatik
@@ -418,7 +466,7 @@ ms:
         name: Nextcloud
         name_placeholder: cth. Nextcloud
       one_drive:
-        label_oauth_client_id: ID Aplikasi (pelanggan) OAuth Azure 
+        label_oauth_client_id: ID Aplikasi (pelanggan) OAuth Azure
         label_oauth_client_secret: Nilai Pelanggan Rahsia OAuth Azure
         name: OneDrive/SharePoint
         name_placeholder: cth. OneDrive
@@ -436,8 +484,8 @@ ms:
       description: Tambah storan untuk melihatnya di sini.
       heading: Anda masih belum ada sebarang storan.
     successful_storage_connection: Storan berjaya disambungkan! Ingat untuk mengaktifkan storan dalam tab Projek untuk setiap projek yang diingini untuk menggunakannya.
-    upsale:
+    upsell:
       description: |-
-        Integrasikan OneDrive/SharePoint anda sebagai storan fail dengan OpenProject. Muat naik fail dan pautkan terus ke 
+        Integrasikan OneDrive/SharePoint anda sebagai storan fail dengan OpenProject. Muat naik fail dan pautkan terus ke
         pakej kerja dalam projek.
       title: Integrasi OneDrive/SharePoint

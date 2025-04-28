@@ -8,10 +8,10 @@ lv:
   project_module_team_planner_view: "Komandas plānotāji"
   ee:
     feature_names:
-      team_planner_view: "Team planner"
-    upsale:
+      team_planner_view: "Komandas plānotājs"
+    upsell:
       team_planner_view:
-        title: "Team planner"
+        title: "Komandas plānotājs"
         description: "Get a complete overview of your team’s planning with Team Planner. Stretch, shorten and drag-and-drop work packages to modify dates, move them or change assignees."
   team_planner:
     label_team_planner: "Komandas plānotājs"

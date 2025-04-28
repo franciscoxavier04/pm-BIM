@@ -36,13 +36,13 @@ cs:
           name: Černá
       project_phase_colors:
         item_0:
-          name: PM2 Orange
+          name: PM2 oranžová
         item_1:
-          name: PM2 Red
+          name: PM2 Červená
         item_2:
           name: PM2 Magenta
         item_3:
-          name: PM2 Green Yellow
+          name: PM2 Zelená Žlutá
       document_categories:
         item_0:
           name: Dokumentace
@@ -81,16 +81,16 @@ cs:
     standard:
       project_phases:
         item_0:
-          name: Initiating
+          name: Zahájení
         item_1:
-          name: Planning
-          start_gate: Ready for Planning
+          name: Plánování
+          start_gate: Připraveno k plánování
         item_2:
-          name: Executing
-          start_gate: Ready for Executing
+          name: Provádění
+          start_gate: Připraveno k provedení
         item_3:
-          name: Closing
-          start_gate: Ready for Closing
+          name: Uzavření
+          start_gate: Připraveno k uzavření
       priorities:
         item_0:
           name: Nízká
