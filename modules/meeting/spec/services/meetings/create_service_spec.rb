@@ -31,8 +31,7 @@ require "spec_helper"
 require "services/base_services/behaves_like_create_service"
 
 RSpec.describe Meetings::CreateService, type: :model do
-  # rubocop:disable RSpec/PendingWithoutReason
-  pending "The creation of backlogs in the service breaks these. Need new ones" do
+  describe "The creation of backlogs in the service breaks these. Need new ones" do
     it_behaves_like "BaseServices create service" do
       let(:factory) { :meeting }
 
@@ -46,5 +45,4 @@ RSpec.describe Meetings::CreateService, type: :model do
       end
     end
   end
-  # rubocop:enable RSpec/PendingWithoutReason
 end
