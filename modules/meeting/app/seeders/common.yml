@@ -37,7 +37,7 @@ modules_permissions:
     - :manage_agendas
     - :send_meeting_agendas_notification
     - :manage_outcomes
-    - :meetings_send_invite
+    - :send_meeting_invites_and_outcomes
   - role: :default_role_reader
     add:
     - :view_meetings

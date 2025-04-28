@@ -77,8 +77,8 @@ module OpenProject::Meeting
                    },
                    permissible_on: :project,
                    require: :member
-        permission :meetings_send_invite,
-                   { meetings: [:icalendar] },
+        permission :send_meeting_invites_and_outcomes,
+                   { meetings: %i[notify icalendar] },
                    permissible_on: :project,
                    require: :member
         permission :manage_agendas,

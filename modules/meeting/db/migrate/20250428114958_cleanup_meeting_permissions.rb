@@ -39,6 +39,12 @@ class CleanupMeetingPermissions < ActiveRecord::Migration[7.1]
         'create_meeting_agendas'
       );
     SQL
+
+    execute <<-SQL.squish
+      UPDATE role_permissions
+      SET permission = 'send_meeting_invites_and_outcomes'
+      WHERE permission = 'meetings_send_invite'
+    SQL
   end
 
   # No-op
