@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,25 +28,14 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ProjectStatusHelper
-  def project_status_css_class(status_code)
-    code = project_status_ensure_default_code(status_code)
-    "-#{code.dasherize}"
-  end
+require "spec_helper"
 
-  def project_status_name(status_code)
-    code = project_status_ensure_default_code(status_code)
-    project_status_name_for_code(code)
-  end
-
-  def project_status_name_for_code(code)
-    code ||= "not_set"
-    I18n.t("js.grid.widgets.project_status.#{code}")
-  end
-
-  private
-
-  def project_status_ensure_default_code(status_code)
-    status_code || "not_set"
+RSpec.describe Projects::StatusController do
+  describe "update" do
+    it do
+      expect(put("/projects/123/status")).to route_to(
+        controller: "projects/status", action: "update", project_id: "123"
+      )
+    end
   end
 end

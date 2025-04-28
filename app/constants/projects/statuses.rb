@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,25 +28,30 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ProjectStatusHelper
-  def project_status_css_class(status_code)
-    code = project_status_ensure_default_code(status_code)
-    "-#{code.dasherize}"
-  end
+module Projects
+  module Statuses
+    Status = Data.define(:code, :color, :icon) do
+      def id = code&.to_s || :none
+      def value = code.to_s
+    end
 
-  def project_status_name(status_code)
-    code = project_status_ensure_default_code(status_code)
-    project_status_name_for_code(code)
-  end
+    NOT_SET = Status.new(code: nil, color: Color.new(hexcode: "#24292F"), icon: "issue-draft")
+    ON_TRACK = Status.new(code: :on_track, color: Color.new(hexcode: "#1F883D"), icon: "issue-opened")
+    AT_RISK = Status.new(code: :at_risk, color: Color.new(hexcode: "#BC4C00"), icon: "alert")
+    OFF_TRACK = Status.new(code: :off_track, color: Color.new(hexcode: "#CF222E"), icon: "stop")
+    NOT_STARTED = Status.new(code: :not_started, color: Color.new(hexcode: "#0969DA"), icon: "circle")
+    FINISHED = Status.new(code: :finished, color: Color.new(hexcode: "#8250DF"), icon: "issue-closed")
+    DISCONTINUED = Status.new(code: :discontinued, color: Color.new(hexcode: "#9A6700"), icon: "no-entry")
 
-  def project_status_name_for_code(code)
-    code ||= "not_set"
-    I18n.t("js.grid.widgets.project_status.#{code}")
-  end
+    VALID = [
+      ON_TRACK,
+      AT_RISK,
+      OFF_TRACK,
+      NOT_STARTED,
+      FINISHED,
+      DISCONTINUED
+    ].freeze
 
-  private
-
-  def project_status_ensure_default_code(status_code)
-    status_code || "not_set"
+    AVAILABLE = [NOT_SET, *VALID].freeze
   end
 end

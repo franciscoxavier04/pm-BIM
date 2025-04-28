@@ -459,6 +459,8 @@ en:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
       work_package_priorities:
         new_label: "New priority"
+    status:
+      button_edit: Edit project status
   project_phase:
     working_days_count:
       one: "Duration: %{count} working day"
@@ -3429,6 +3431,7 @@ en:
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Successful update."
   notice_unsuccessful_update: "Update failed."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Successful update. The custom fields of the activated types are automatically activated
     on the work package form. <a href="%{url}" target="_blank">See more</a>.

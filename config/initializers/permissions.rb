@@ -103,7 +103,8 @@ Rails.application.reloader.to_prepare do
                        "projects/settings/work_packages": %i[show],
                        "projects/settings/work_packages/internal_comments": %i[show update],
                        "projects/templated": %i[create destroy],
-                       "projects/identifier": %i[show update]
+                       "projects/identifier": %i[show update],
+                       "projects/status": %i[update]
                      },
                      permissible_on: :project,
                      require: :member,

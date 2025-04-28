@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,25 +28,41 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ProjectStatusHelper
-  def project_status_css_class(status_code)
-    code = project_status_ensure_default_code(status_code)
-    "-#{code.dasherize}"
-  end
+class Projects::StatusController < ApplicationController
+  include OpTurbo::ComponentStream
+  include OpTurbo::FlashStreamHelper
 
-  def project_status_name(status_code)
-    code = project_status_ensure_default_code(status_code)
-    project_status_name_for_code(code)
-  end
+  before_action :find_project_by_project_id
+  before_action :authorize
 
-  def project_status_name_for_code(code)
-    code ||= "not_set"
-    I18n.t("js.grid.widgets.project_status.#{code}")
+  def update
+    call = Projects::UpdateService
+      .new(model: @project, user: current_user)
+      .call(status_code: params.fetch(:status_code).presence)
+
+    if call.success?
+      @project = call.result
+      respond_with_update_status_button
+    else
+      message = t(:notice_unsuccessful_update_with_reason, reason: call.message)
+      respond_with_flash_error(message:) do |format|
+        fallback_responses_for(format, flash: { error: message })
+      end
+    end
   end
 
   private
 
-  def project_status_ensure_default_code(status_code)
-    status_code || "not_set"
+  def respond_with_update_status_button
+    message = t(:notice_successful_update)
+    update_via_turbo_stream(component: Projects::StatusButtonComponent.new(project: @project, user: current_user))
+    render_success_flash_message_via_turbo_stream(message:)
+    respond_with_turbo_streams do |format|
+      fallback_responses_for(format, flash: { notice: message })
+    end
+  end
+
+  def fallback_responses_for(format, **)
+    format.html { redirect_back_or_to(project_path(@project), **) }
   end
 end
