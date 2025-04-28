@@ -1594,8 +1594,6 @@ en:
         other: "Notifications"
       placeholder_user: "Placeholder user"
       project:
-        few: "Projects"
-        many: "Projects"
         one: "Project"
         other: "Projects"
       project/gate_definition: "Gate"
