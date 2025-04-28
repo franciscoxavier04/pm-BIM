@@ -31,6 +31,7 @@
 module WorkPackages
   module Types
     class SubjectConfigurationComponent < ApplicationComponent
+      include ApplicationHelper
       include OpPrimer::ComponentHelpers
       include OpTurbo::Streamable
 

@@ -39,6 +39,7 @@ module WorkPackages
                      disabled:,
                      is_milestone:,
                      focused_field: :start_date,
+                     triggering_field: nil,
                      touched_field_map: nil,
                      date_mode: nil)
         super()
@@ -48,6 +49,7 @@ module WorkPackages
         @is_milestone = is_milestone
         @date_mode = date_mode
         @touched_field_map = touched_field_map
+        @triggering_field = triggering_field
         @focused_field = update_focused_field(focused_field)
         @disabled = disabled
       end
@@ -75,10 +77,11 @@ module WorkPackages
           value: field_value(name),
           disabled: disabled?(name),
           label:,
-          show_clear_button: !disabled?(name) && !duration_field?(name),
+          show_clear_button: show_clear_button?(name),
           classes: "op-datepicker-modal--date-field #{'op-datepicker-modal--date-field_current' if @focused_field == name}",
           validation_message: validation_message(name),
-          type: duration_field?(name) ? :number : :text
+          type: field_type(name),
+          placeholder: placeholder(name)
         )
 
         if duration_field?(name)
@@ -155,12 +158,8 @@ module WorkPackages
       end
 
       def disabled?(name)
-        if name == :duration
-          if !@schedule_manually && @work_package.children.any?
-            return true
-          end
-
-          return false
+        if name == :start_date && !@schedule_manually
+          return true
         end
 
         @disabled
@@ -168,11 +167,30 @@ module WorkPackages
 
       def field_value(name)
         errors = @work_package.errors.where(name)
-        if (user_value = errors.map { |error| error.options[:value] }.find { !_1.nil? })
+        if (user_value = errors.map { |error| error.options[:value] }.find { !it.nil? })
           user_value
         else
           @work_package.public_send(name)
         end
+      end
+
+      def field_type(name)
+        return :number if duration_field?(name)
+
+        # Do not show the native datepicker on iOS safari because it
+        # behaves totally different than all other browsers and destroys the behavior of the datepicker
+        # Given a date field with no value: When Safari opens its native datepicker, the first thing it does is to
+        # set the date to Today. And not only in the datepicker but directly in the field.
+        # This behaviour has however consequences:
+        # * The "reset" button in the datepicker does not clear the input (as the other browsers do it) but it resets
+        #   it to the original value it had when you opened it. So if the value was empty, it sets it back to empty.
+        #   If the value was set before, you cannot clear it, but only set it back to that value.
+        # * Since the input changes, the whole datepicker updates without the user even knowing about it,
+        #   since the form is hidden behind the datepicker. That leads to this:
+        #     when you enter a start date after today, and then open the datepicker for finish date,
+        #     it will reset the start date because the finish date is set automatically to today,
+        #     but the finish date can't be before the start date.
+        helpers.browser.device.mobile? && !helpers.browser.safari? ? :date : :text
       end
 
       def validation_message(name)
@@ -188,21 +206,24 @@ module WorkPackages
                          "focus->work-packages--date-picker--preview#onHighlightField",
                  test_selector: "op-datepicker-modal--#{name.to_s.dasherize}-field" }
 
-        if @focused_field == name
+        if @focused_field == name && !disabled?(name)
           data[:qa_highlighted] = "true"
           data[:focus] = "true"
         end
 
-        { data: }
+        {
+          data: data,
+          aria: { live: :polite, atomic: true }
+        }
       end
 
       def single_date_field_button_link(focused_field)
         permitted_params = params.merge(date_mode: "range", focused_field:).permit!
 
         if params[:action] == "new"
-          new_work_package_datepicker_dialog_content_path(permitted_params)
+          new_date_picker_path(permitted_params)
         else
-          work_package_datepicker_dialog_content_path(permitted_params)
+          work_package_date_picker_path(permitted_params)
         end
       end
 
@@ -217,6 +238,11 @@ module WorkPackages
       def show_text_field_in_single_date_mode?(name)
         return true if field_value_present_or_touched?(name)
 
+        # Special case, if the use explicitly clicks on start date, we want to show that field
+        if table_triggered_date_field?
+          return normalized_underscore_name(name) == normalized_underscore_name(@triggering_field)
+        end
+
         # Start date is only shown in the assertion above
         return false if name != :due_date
 
@@ -226,6 +252,22 @@ module WorkPackages
         # and suddenly hides the start date. That is why we check for the touched value.
         true if field_value(:start_date).nil? &&
           (@touched_field_map["start_date_touched"] == false || @touched_field_map["start_date_touched"].nil?)
+      end
+
+      def table_triggered_date_field?
+        ["start_date", "due_date"].include?(normalized_underscore_name(@triggering_field))
+      end
+
+      def normalized_underscore_name(name)
+        name.to_s.underscore
+      end
+
+      def show_clear_button?(name)
+        !disabled?(name) && !duration_field?(name)
+      end
+
+      def placeholder(name)
+        helpers.browser.device.mobile? && !duration_field?(name) ? "yyyy-mm-dd" : nil
       end
     end
   end

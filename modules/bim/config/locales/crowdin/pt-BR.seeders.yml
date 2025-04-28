@@ -252,32 +252,32 @@ pt-BR:
                 item_0:
                   subject: Primeiro rascunho em desenvolvimento
                   description: |-
-                    ## Goal
+                    ## Objetivo
 
-                    *   Create a useful overview of the results
-                    *   Check what has been done and summarize the results
-                    *   Communicate all the relevant results with the customer
-                    *   Identify the fundamental boundary conditions of the project
+                    *   Criar uma visão geral útil dos resultados
+                    *   Verificar o que foi realizado e resumir os resultados
+                    *   Comunicar todos os resultados relevantes ao cliente
+                    *   Identificar as condições fundamentais do projeto
 
-                    ## Description
+                    ## Descrição
 
-                    *   Each topic gets its own overview which will be used as a catalogue of results
-                    *   This overview informs all participants about the decisions made
+                    *   Cada tópico recebe sua própria visão geral, que será utilizada como um catálogo de resultados
+                    *   Essa visão geral informa todos os participantes sobre as decisões tomadas
                     *   ...
                 item_1:
                   subject: Resumir resultados
                   description: |-
-                    ## Goal
+                    ## Objetivo
 
-                    *   Create a useful overview of the results
-                    *   Check what has been done and summarize the results
-                    *   Communicate all the relevant results with the customer
-                    *   Identify the fundamental boundary conditions of the project
+                    *   Criar uma visão geral útil dos resultados
+                    *   Verificar o que foi realizado e resumir os resultados
+                    *   Comunicar todos os resultados relevantes ao cliente
+                    *   Identificar as condições fundamentais do projeto
 
-                    ## Description
+                    ## Descrição
 
-                    *   Each topic gets its own overview which will be used as a catalogue of results
-                    *   This overview informs all participants about the decisions made
+                    *   Cada tópico recebe sua própria visão geral, que será utilizada como um catálogo de resultados
+                    *   Essa visão geral informa todos os participantes sobre as decisões tomadas
                     *   ...
             item_3:
               subject: Passagem de planejamento preliminar

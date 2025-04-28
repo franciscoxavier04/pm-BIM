@@ -50,7 +50,7 @@ export class MultiSelectEditFieldComponent extends EditFieldComponent implements
   groupByFn = (item:HalResource):string|null => {
     if (!this.isVersionResource) return null;
     const project = item.definingProject as HalResource | undefined;
-    return project?.name ?? this.I18n.t('js.project.not_available');
+    return project?.name || this.I18n.t('js.project.not_available');
   };
 
   public availableOptions:any[] = [];

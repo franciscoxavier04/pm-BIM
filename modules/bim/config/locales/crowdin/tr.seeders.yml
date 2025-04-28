@@ -92,13 +92,13 @@ tr:
           description: Bu, bu demo inşaat projesinin hedeflerinin kısa bir özetidir.
           news:
             item_0:
-              title: Welcome to your demo project
+              title: Demo projenize hoş geldiniz
               summary: |
-                We are glad you joined.
-                In this module you can communicate project news to your team members.
-              description: The actual news
+                Katıldığınız için mutluyuz.
+                Bu modülde proje haberlerini ekip üyelerinize iletebilirsiniz.
+              description: Gerçek haberler
           categories:
-            item_0: Category 1 (to be changed in Project settings)
+            item_0: Kategori 1 (Proje ayarlarında değiştirilecektir)
           queries:
             item_0:
               name: Proje planı
@@ -115,7 +115,7 @@ tr:
             widgets:
               item_0:
                 options:
-                  name: Hoş geldiniz
+                  name: Hoş geldiniz 
               item_1:
                 options:
                   name: Başlarken
@@ -154,13 +154,13 @@ tr:
           description: Bu, bu demo planlama ve inşa projesinin hedeflerinin kısa bir özetidir.
           news:
             item_0:
-              title: Welcome to your demo project
+              title: Demo projenize hoş geldiniz
               summary: |
-                We are glad you joined.
-                In this module you can communicate project news to your team members.
-              description: The actual news
+                Katıldığınız için mutluyuz.
+                Bu modülde proje haberlerini ekip üyelerinize iletebilirsiniz.
+              description: Gerçek haberler
           categories:
-            item_0: Category 1 (to be changed in Project settings)
+            item_0: Kategori 1 (Proje ayarlarında değiştirilecektir)
           queries:
             item_0:
               name: Proje planı
@@ -174,7 +174,7 @@ tr:
             widgets:
               item_0:
                 options:
-                  name: Hoş geldiniz
+                  name: Hoş geldiniz 
               item_1:
                 options:
                   name: Başlarken
@@ -410,11 +410,11 @@ tr:
             item_0:
               title: Demo projenize hoş geldiniz
               summary: |
-                We are glad you joined.
-                In this module you can communicate project news to your team members.
-              description: The actual news
+                Katıldığınız için mutluyuz.
+                Bu modülde proje haberlerini ekip üyelerinize iletebilirsiniz.
+              description: Gerçek haberler
           categories:
-            item_0: Category 1 (to be changed in Project settings)
+            item_0: Kategori 1 (Proje ayarlarında değiştirilecektir)
           queries:
             item_0:
               name: Proje planı
@@ -428,7 +428,7 @@ tr:
             widgets:
               item_0:
                 options:
-                  name: Hoş geldiniz
+                  name: Hoş geldiniz 
               item_1:
                 options:
                   name: Başlarken
@@ -704,7 +704,7 @@ tr:
             widgets:
               item_0:
                 options:
-                  name: Hoş geldiniz
+                  name: Hoş geldiniz 
               item_1:
                 options:
                   name: Başlarken

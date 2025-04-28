@@ -35,7 +35,7 @@ el:
   documents:
     label_attachment_author: "Συγγραφέας συνημμένου"
     label_categories: "Categories"
-    new_category: "New category"
+    new_category: "Νέα κατηγορία"
   label_document_added: "Έγγραφο προστέθηκε"
   label_document_new: "Νέο έγγραφο"
   label_document_plural: "Έγγραφα"

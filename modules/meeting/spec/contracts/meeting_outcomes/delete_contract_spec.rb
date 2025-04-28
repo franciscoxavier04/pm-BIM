@@ -35,14 +35,14 @@ RSpec.describe MeetingOutcomes::DeleteContract do
   include_context "ModelContract shared context"
 
   shared_let(:project) { create(:project) }
-  shared_let(:meeting) { create(:structured_meeting, project:) }
+  shared_let(:meeting) { create(:meeting, project:) }
   let(:meeting_agenda_item) { create(:meeting_agenda_item, meeting:) }
   let(:outcome) { build_stubbed(:meeting_outcome, meeting_agenda_item:) }
   let(:contract) { described_class.new(outcome, user) }
 
   context "with permission" do
     let(:user) do
-      create(:user, member_with_permissions: { project => %i[view_meetings create_meeting_minutes] })
+      create(:user, member_with_permissions: { project => %i[view_meetings manage_outcomes] })
     end
 
     context "when :meeting is 'in_progress'" do

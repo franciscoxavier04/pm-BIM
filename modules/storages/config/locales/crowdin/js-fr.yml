@@ -2,7 +2,7 @@
 fr:
   js:
     storages:
-      authentication_error: "Authentication with %{storageType} failed"
+      authentication_error: "L'authentification avec %{storageType} a échoué"
       link_files_in_storage: "Lier des fichiers dans %{storageType}"
       link_existing_files: "Lier des fichiers existants"
       upload_files: "Charger des fichiers"
@@ -20,7 +20,7 @@ fr:
         one_drive: "OneDrive/SharePoint"
         default: "Stockage"
       information:
-        authentication_error: "The request to %{storageType} could not be authenticated, that's an error."
+        authentication_error: "Erreur : la requête à %{storageType} n'a pas pu être authentifiée."
         connection_error: >
           Certains paramètres de %{storageType} ne fonctionnent pas. Veuillez contacter votre administrateur %{storageType}.
         live_data_error: "Erreur lors de la récupération des détails du fichier"
@@ -29,8 +29,8 @@ fr:
         no_file_links: "Afin de lier des fichiers à ce lot de travaux, veuillez le faire via %{storageType}."
         not_logged_in: >
           Pour ajouter un lien, voir ou téléverser des fichiers liés à ce lot de travaux, veuillez vous connecter à %{storageType}.
-        suggest_logout: You can try whether logging out and back in fixes this problem.
-        suggest_relink: You can try whether re-linking your account via the login button below fixes this problem.
+        suggest_logout: Vous pouvez essayer de vous déconnecter et de revenir pour tenter de résoudre le problème.
+        suggest_relink: Vous pouvez essayer de réassocier votre compte via le bouton de connexion ci-dessous pour résoudre ce problème.
       files:
         already_existing_header: "Ce fichier existe déjà"
         already_existing_body: >

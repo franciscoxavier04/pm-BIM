@@ -48,7 +48,7 @@ export class CombinedDateDisplayField extends DateDisplayField {
       return;
     }
 
-    if (!this.startDate && !this.dueDate) {
+    if (!this.resource.scheduleManually && !this.startDate && !this.dueDate) {
       element.innerHTML = this.customPlaceholder(`${this.text.placeholder.startDate} - ${this.text.placeholder.dueDate}`);
 
       element.prepend(this.schedulingIcon());

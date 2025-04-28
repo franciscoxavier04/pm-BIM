@@ -35,6 +35,12 @@ module Storages
     class DeleteContract < ::DeleteContract
       # Check permissions to delete this FileLink
       delete_permission :manage_file_links
+
+      def authorized?
+        return super if model.container.present?
+
+        user == model.creator
+      end
     end
   end
 end

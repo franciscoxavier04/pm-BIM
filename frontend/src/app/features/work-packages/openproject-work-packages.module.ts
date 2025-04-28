@@ -138,7 +138,7 @@ import {
   WpTableConfigurationDisplaySettingsTabComponent,
 } from 'core-app/features/work-packages/components/wp-table/configuration-modal/tabs/display-settings-tab.component';
 import {
-  WpTableConfigurationFiltersTab,
+  WpTableConfigurationFiltersTabComponent,
 } from 'core-app/features/work-packages/components/wp-table/configuration-modal/tabs/filters-tab.component';
 import {
   WpTableConfigurationSortByTabComponent,
@@ -403,6 +403,8 @@ import {
 import {
   WorkPackageSplitViewEntryComponent,
 } from 'core-app/features/work-packages/routing/wp-split-view/wp-split-view-entry.component';
+import { OpWpDatePickerModalComponent } from 'core-app/shared/components/datepicker/wp-date-picker-modal/wp-date-picker.modal';
+import { OpenprojectEnterpriseModule } from 'core-app/features/enterprise/openproject-enterprise.module';
 
 @NgModule({
   imports: [
@@ -433,6 +435,7 @@ import {
     OpenprojectStoragesModule,
 
     WorkPackageIsolatedQuerySpaceDirective,
+    OpenprojectEnterpriseModule,
   ],
   providers: [
     // Notification service
@@ -603,7 +606,7 @@ import {
     WpTableConfigurationModalComponent,
     WpTableConfigurationColumnsTabComponent,
     WpTableConfigurationDisplaySettingsTabComponent,
-    WpTableConfigurationFiltersTab,
+    WpTableConfigurationFiltersTabComponent,
     WpTableConfigurationSortByTabComponent,
     WpTableConfigurationTimelinesTabComponent,
     WpTableConfigurationHighlightingTabComponent,
@@ -637,6 +640,8 @@ import {
     OpBaselineComponent,
     OpBaselineLoadingComponent,
     OpBaselineLegendsComponent,
+
+    OpWpDatePickerModalComponent,
   ],
   exports: [
     WorkPackagesTableComponent,
@@ -658,7 +663,7 @@ import {
 
     // Modals
     WpTableConfigurationModalComponent,
-    WpTableConfigurationFiltersTab,
+    WpTableConfigurationFiltersTabComponent,
 
     // Needed so that e.g. IFC can access it.
     WorkPackageCreateButtonComponent,
@@ -668,6 +673,7 @@ import {
     WorkPackageSingleViewComponent,
     WorkPackageSplitViewComponent,
     BackButtonComponent,
+    OpWpDatePickerModalComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

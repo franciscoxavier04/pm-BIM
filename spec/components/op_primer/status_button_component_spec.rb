@@ -85,36 +85,6 @@ RSpec.describe OpPrimer::StatusButtonComponent, type: :component do
     end
   end
 
-  context "when rendering with color status" do
-    let(:current_status) do
-      OpPrimer::StatusButtonOption.new(
-        name: "High Priority",
-        icon: nil,
-        color: Color.new(hexcode: "#FF0000")
-      )
-    end
-
-    let(:items) do
-      [
-        OpPrimer::StatusButtonOption.new(
-          name: "Low Priority",
-          icon: nil,
-          color: Color.new(hexcode: "#00FF00")
-        )
-      ]
-    end
-
-    it "renders the status with color styles" do
-      render_inline(component)
-
-      expect(page).to have_css("[style*='background-color: #FF0000']")
-      expect(page).to have_text("High Priority")
-
-      expect(page).to have_css("[style*='background-color: #00FF00']", visible: :all)
-      expect(page).to have_text("Low Priority")
-    end
-  end
-
   context "when readonly" do
     let(:readonly) { true }
 

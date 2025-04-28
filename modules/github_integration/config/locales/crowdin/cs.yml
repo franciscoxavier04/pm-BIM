@@ -31,8 +31,8 @@ cs:
     github_avatar_url: "Avatar URL"
     github_updated_at: "Updated at"
     github_login: "GitHub login"
-    labels: "Labels"
-    repository: "Repository"
+    labels: "Štítky"
+    repository: "Repozitář"
     changed_files_count: "Changed files"
   button_add_deploy_target: Přidání cíle nasazení
   label_deploy_target: Cíl nasazení
