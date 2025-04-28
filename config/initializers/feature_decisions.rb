@@ -60,7 +60,3 @@ OpenProject::FeatureDecisions.add :work_package_comment_id_url,
                                   description: "Introduced a new WP comment URL identifier structure " \
                                                "`#comment-<journal-id>` replacing the old " \
                                                "`#activity-<journal-sequence_number>`."
-
-OpenProject::FeatureDecisions.add :internal_comments,
-                                  description: "Enables submitting comments that are internal" \
-                                               "and only a subset of users can see"
