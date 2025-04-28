@@ -210,10 +210,10 @@ en:
 
   project_module_costs: "Time and costs"
 
-  setting_allow_tracking_start_and_end_times: "Allow users to track start and end time on time records"
+  setting_allow_tracking_start_and_end_times: "Allow exact times tracking"
   setting_costs_currency: "Currency"
   setting_costs_currency_format: "Format of currency"
-  setting_enforce_tracking_start_and_end_times: "Force users to set start and end time on time records"
+  setting_enforce_tracking_start_and_end_times: "Require exact times"
 
   text_assign_time_and_cost_entries_to_project: "Assign reported hours and costs to the project"
   text_destroy_cost_entries_question: "%{cost_entries} were reported on the work packages you are about to delete. What do you want to do ?"
