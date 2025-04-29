@@ -107,13 +107,15 @@ class TimeEntriesController < ApplicationController
     @time_entry = call.result
 
     if call.success?
-      close_dialog_via_turbo_stream("#time-entry-dialog", additional: { spent_on: @time_entry.spent_on })
-    elsif params[:no_dialog]
-      render_error_flash_message_via_turbo_stream(message: t("notice_time_entry_update_failed",
-                                                             errors: call.errors.full_messages.join(", ")))
-    else
+      if request_from_dialog?
+        close_dialog_via_turbo_stream("#time-entry-dialog", additional: { spent_on: @time_entry.spent_on })
+      end
+    elsif call.failure? && request_from_dialog?
       form_component = TimeEntries::TimeEntryFormComponent.new(time_entry: @time_entry, **form_config_options)
       update_via_turbo_stream(component: form_component, status: :bad_request)
+    else
+      render_error_flash_message_via_turbo_stream(message: t("notice_time_entry_update_failed",
+                                                             errors: call.errors.full_messages.join(", ")))
     end
 
     respond_with_turbo_streams(status: call.success? ? :ok : :bad_request)
@@ -133,6 +135,10 @@ class TimeEntriesController < ApplicationController
   end
 
   private
+
+  def request_from_dialog?
+    !ActiveModel::Type::Boolean.new.cast(params[:no_dialog])
+  end
 
   def prefill_time_entry_from_params # rubocop:disable Metrics/AbcSize, Metrics/PerceivedComplexity
     # correct time calcuation needs a time zone
