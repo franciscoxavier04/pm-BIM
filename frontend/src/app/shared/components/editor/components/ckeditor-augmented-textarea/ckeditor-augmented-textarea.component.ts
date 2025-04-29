@@ -66,7 +66,7 @@ import { uniqueId } from 'lodash';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin implements OnInit {
-  @Input() public textareaSelector:string;
+  @Input() public textAreaId:string;
 
   @Input() public previewContext:string;
 
@@ -144,7 +144,9 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
     this.halResource = this.resource ? this.halResourceService.createHalResource(this.resource, true) : undefined;
 
     this.formElement = this.element.closest<HTMLFormElement>('form') as HTMLFormElement;
-    this.wrappedTextArea = this.formElement.querySelector(this.textareaSelector) as HTMLTextAreaElement;
+
+    this.wrappedTextArea = document.getElementById(this.textAreaId) as HTMLTextAreaElement;
+
     this.wrappedTextArea.style.display = 'none';
     this.wrappedTextArea.required = false;
     this.initialContent = this.wrappedTextArea.value;
@@ -286,8 +288,7 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   }
 
   private setLabel() {
-    const textareaId = this.textareaSelector.substring(1);
-    const label = document.querySelector<HTMLLabelElement>(`label[for=${textareaId}]`)!;
+    const label = document.querySelector<HTMLLabelElement>(`label[for=${this.textAreaId}]`)!;
 
     const ckContent = this.element.querySelector<HTMLElement>('.ck-content')!;
 

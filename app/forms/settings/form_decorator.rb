@@ -113,7 +113,7 @@ module Settings
     # @param button_options [Hash] Options for individual radio buttons
     # @param options [Hash] Additional options for the radio button group
     # @return [Object] The radio button group
-    def radio_button_group(name:, values: [], disabled: false, button_options: {}, **options)
+    def radio_button_group(name:, values: [], disabled: false, button_options: {}, **options) # rubocop:disable Metrics/AbcSize
       values = values.presence || setting_allowed_values(name)
       radio_group_options = options.reverse_merge(
         label: setting_label(name),
