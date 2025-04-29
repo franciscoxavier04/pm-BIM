@@ -56,7 +56,7 @@ module Storages
               result = validator.call
 
               expect(result[:existing_token]).to be_a_warning
-              expect(result[:existing_token].message).to eq(I18n.t(i18n_key("nextcloud.oauth_token_missing")))
+              expect(result[:existing_token].code).to eq(:nc_oauth_token_missing)
               expect(result[:user_bound_request]).to be_skipped
             end
 
@@ -65,7 +65,7 @@ module Storages
 
               result = validator.call
               expect(result[:user_bound_request]).to be_a_failure
-              expect(result[:user_bound_request].message).to eq(I18n.t(i18n_key("nextcloud.oauth_request_unauthorized")))
+              expect(result[:user_bound_request].code).to eq(:nc_oauth_request_unauthorized)
             end
           end
 
@@ -94,7 +94,7 @@ module Storages
                 result = validator.call
 
                 expect(result[:non_provisioned_user]).to be_warning
-                expect(result[:non_provisioned_user].message).to eq(I18n.t(i18n_key(:oidc_non_provisioned_user)))
+                expect(result[:non_provisioned_user].code).to eq(:oidc_non_provisioned_user)
 
                 state_count = result.tally
                 expect(state_count).to eq({ skipped: 3, warning: 1 })
@@ -105,7 +105,7 @@ module Storages
                 result = validator.call
 
                 expect(result[:provisioned_user_provider]).to be_warning
-                expect(result[:provisioned_user_provider].message).to eq(I18n.t(i18n_key(:oidc_non_oidc_user)))
+                expect(result[:provisioned_user_provider].code).to eq(:oidc_non_oidc_user)
 
                 state_count = result.tally
                 expect(state_count).to eq({ success: 1, skipped: 2, warning: 1 })
@@ -119,7 +119,7 @@ module Storages
                   result = validator.call
 
                   expect(result[:token_negotiable]).to be_failure
-                  expect(result[:token_negotiable].message).to eq(I18n.t(i18n_key(:oidc_cant_acquire_token)))
+                  expect(result[:token_negotiable].code).to eq(:oidc_cant_acquire_token)
                 end
               end
 
@@ -146,7 +146,7 @@ module Storages
                   result = validator.call
 
                   expect(result[:token_negotiable]).to be_failure
-                  expect(result[:token_negotiable].message).to eq(I18n.t(i18n_key(:oidc_cant_refresh_token)))
+                  expect(result[:token_negotiable].code).to eq(:oidc_cant_refresh_token)
                 end
 
                 it "fails when refresh fails" do
@@ -157,7 +157,7 @@ module Storages
                   result = validator.call
 
                   expect(result[:token_negotiable]).to be_failure
-                  expect(result[:token_negotiable].message).to eq(I18n.t(i18n_key(:oidc_cant_refresh_token)))
+                  expect(result[:token_negotiable].code).to eq(:oidc_cant_refresh_token)
                 end
 
                 context "when the server supports token exchange" do
@@ -183,7 +183,7 @@ module Storages
                     result = validator.call
 
                     expect(result[:token_negotiable]).to be_failure
-                    expect(result[:token_negotiable].message).to eq(I18n.t(i18n_key(:oidc_cant_exchange_token)))
+                    expect(result[:token_negotiable].code).to eq(:oidc_cant_exchange_token)
                     expect(exchange_request).to have_been_requested.once
                   end
 
@@ -196,17 +196,13 @@ module Storages
                     result = validator.call
 
                     expect(result[:token_negotiable]).to be_failure
-                    expect(result[:token_negotiable].message).to eq(I18n.t(i18n_key(:oidc_cant_exchange_token)))
+                    expect(result[:token_negotiable].code).to eq(:oidc_cant_exchange_token)
                     expect(exchange_request).to have_been_requested.once
                   end
                 end
               end
             end
           end
-
-          private
-
-          def i18n_key(key) = "storages.health.connection_validation.#{key}"
         end
       end
     end
