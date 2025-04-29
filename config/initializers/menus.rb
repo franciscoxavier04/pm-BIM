@@ -502,7 +502,7 @@ Redmine::MenuManager.map :admin_menu do |menu|
   menu.push :authentication_settings,
             { controller: "/admin/settings/authentication_settings", action: :show },
             if: ->(_) { User.current.admin? },
-            caption: :label_authentication_settings,
+            caption: :"authentication.login_and_registration",
             parent: :authentication
 
   menu.push :ldap_authentication,
