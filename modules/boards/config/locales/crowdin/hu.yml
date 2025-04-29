@@ -6,6 +6,10 @@ hu:
   permission_show_board_views: "Táblák megtekintése"
   permission_manage_board_views: "Táblák kezelése"
   project_module_board_view: "Táblák"
+  ee:
+    upsell:
+      board_view:
+        description: 'Szeretné automatizálni a munkafolyamatait a Boards-szal? A fejlett táblák Enterprise funkció. Kérjük, frissítsen fizetős csomagra.'
   boards:
     label_board: "Tábla"
     label_boards: "Táblák"
@@ -40,6 +44,3 @@ hu:
       subtasks: >
         Tábla automatizált oszlopokkal az alelemekhez. A munkacsomagok más listákra húzása ennek megfelelően frissíti a szülőt.
 
-    upsale:
-      teaser_text: 'Szeretné automatizálni a munkafolyamatait a Boards-szal? A fejlett táblák Enterprise funkció. Kérjük, frissítsen fizetős csomagra.'
-      upgrade: 'Frissítés most'

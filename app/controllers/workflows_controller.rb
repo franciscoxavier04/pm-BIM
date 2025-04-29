@@ -93,10 +93,6 @@ class WorkflowsController < ApplicationController
     end
   end
 
-  def show_local_breadcrumb
-    false
-  end
-
   private
 
   def statuses_for_form

@@ -49,17 +49,18 @@ module Components
           close if close_after_yield
         end
 
-        def clear_date_for(step)
-          find("input[id^='project_available_phases_attributes_#{step.position - 1}']").set ""
+        def clear_date
+          find("input[id^='project_phase_date_range']").set ""
+          find_by_id("edit-project-life-cycles-dialog-title").click
         end
 
-        def set_date_for(step, values:)
-          dialog_selector = "##{::ProjectLifeCycles::Sections::EditDialogComponent::DIALOG_ID}"
+        def set_date_for(values:)
+          dialog_selector = "##{Overviews::ProjectPhases::EditDialogComponent::DIALOG_ID}"
 
           datepicker = Components::RangeDatepicker.new(dialog_selector)
 
           datepicker.open(
-            "input[id^='project_available_phases_attributes_#{step.position - 1}']"
+            "input[id^='project_phase_date_range']"
           )
 
           values.each do |date|
@@ -98,12 +99,12 @@ module Components
           expect(page).to have_css(async_content_container_css_selector)
         end
 
-        def expect_input(label, value:, position:)
+        def expect_input(label, value:)
           within_async_content do
             expect(page).to have_field(
               label,
               with: value,
-              name: "project[available_phases_attributes][#{position - 1}][date_range]"
+              name: "project_phase[date_range]"
             )
           end
         end
@@ -111,32 +112,32 @@ module Components
         def expect_input_for(step)
           value = "#{step.start_date.strftime('%Y-%m-%d')} - #{step.finish_date.strftime('%Y-%m-%d')}"
 
-          expect_input(step.name, value:, position: step.position)
+          expect_input(step.name, value:)
         end
 
-        def expect_caption(step, text: nil, present: true)
+        def expect_caption(text: nil, present: true)
           selector = 'span[id^="caption"]'
-          expect_selector_for(step, selector:, text:, present:)
+          expect_selector_for(selector:, text:, present:)
         end
 
-        def expect_no_caption(step)
-          expect_caption(step, present: false)
+        def expect_no_caption
+          expect_caption(present: false)
         end
 
-        def expect_validation_message(step, text: nil, present: true)
+        def expect_validation_message(text: nil, present: true)
           selector = 'div[id^="validation"]'
-          expect_selector_for(step, selector:, text:, present:)
+          expect_selector_for(selector:, text:, present:)
         end
 
-        def expect_no_validation_message(step)
-          expect_validation_message(step, present: false)
+        def expect_no_validation_message
+          expect_validation_message(present: false)
         end
 
         private
 
-        def expect_selector_for(step, selector:, text: nil, present: true)
+        def expect_selector_for(selector:, text: nil, present: true)
           within_async_content do
-            input_id = "#project_available_phases_attributes_#{step.position - 1}_date_range"
+            input_id = "#project_phase_date_range"
             parent = find(input_id).ancestor("primer-datepicker-field")
 
             if present

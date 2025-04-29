@@ -70,11 +70,9 @@ es:
         invalid_time_format: "no es una hora válida. Formato requerido: HH:MM"
     models:
       recurring_meeting: "Reunión periódica"
-      structured_meeting: "Reunión única"
-      meeting: "Reunión"
+      meeting: "Reunión única"
       meeting_agenda_item: "Puntos de Agenda"
       meeting_agenda: "Agenda"
-      meeting_minutes: "Minutas"
       meeting_section: "Sección"
   activity:
     filter:
@@ -217,9 +215,6 @@ es:
         new_date_time: "Fecha y hora nuevas"
     label_mail_all_participants: "Enviar email a todos los participantes"
     types:
-      classic: "Clásicas (sin soporte)"
-      classic_text: "Nota: Las reuniones clásicas se eliminarán en la próxima versión de OpenProject."
-      structured: "Estructurada"
       one_time: "Única"
       recurring: "Periódico"
       recurring_text: "Cree series de reuniones con una plantilla dinámica para cada repetición."
@@ -331,16 +326,10 @@ es:
   permission_edit_meetings: "Editar reuniones"
   permission_delete_meetings: "Eliminar reuniones"
   permission_view_meetings: "Ver reuniones"
-  permission_create_meeting_agendas: "Crear agendas de reuniones"
-  permission_create_meeting_agendas_explanation: "Permite editar el contenido de la agenda de la reunión clásica."
   permission_manage_agendas: "Gestionar agendas"
   permission_manage_agendas_explanation: "Permite editar el contenido de la agenda de la reunión dinámica."
-  permission_close_meeting_agendas: "Cerrar agendas"
-  permission_send_meeting_agendas_notification: "Enviar notificaciones de revisión para las agendas"
-  permission_create_meeting_minutes: "Gestionar minutas"
-  permission_send_meeting_minutes_notification: "Enviar notificaciones de revisión para los minutas"
-  permission_meetings_send_invite: "Invitar a usuarios a reuniones"
-  permission_send_meeting_agendas_icalendar: "Enviar agenda de reunión como entrada del calendario"
+  permission_manage_outcomes: "Manage outcomes"
+  permission_send_meeting_invites_and_outcomes: "Send meeting invites and outcomes to participants"
   project_module_meetings: "Reuniones"
   text_duration_in_hours: "Duración en horas"
   text_in_hours: "en horas"
@@ -352,8 +341,8 @@ es:
   text_meeting_minutes_for_meeting: 'minutas para la reunión "%{meeting}"'
   text_notificiation_invited: "El correo electrónico contiene una entrada ics para la reunión siguiente:"
   text_meeting_empty_heading: "Su reunión está vacía"
-  text_meeting_empty_description_1: "Comience añadiendo elementos de la agenda a continuación. Cada elemento puede ser tan simple como un título, pero también puede agregar detalles adicionales como duración, notas y una persona responsable."
-  text_meeting_empty_description_2: 'También puede añadir referencias a los paquetes de trabajo existentes. Cuando lo haga, las notas relacionadas serán automáticamente visibles en la pestaña "Reuniones" del paquete de trabajo.'
+  text_meeting_empty_description1: "Start by adding agenda items below. Each item can be as simple as just a title, but you can also add additional details like duration and notes."
+  text_meeting_empty_description2: 'You can also add references to existing work packages. When you do, related notes will automatically be visible in the work package''s "Meetings" tab.'
   label_meeting_empty_action: "Añadir punto a la agenda"
   label_meeting_actions: "Acciones de reunión"
   label_meeting_edit_title: "Editar título de la reunión"
@@ -372,6 +361,8 @@ es:
   label_agenda_item_deleted_wp: "Referencia de paquete de trabajo eliminada"
   label_agenda_item_actions: "Acciones de elementos de la agenda"
   label_agenda_item_move_to_next: "Mover a la próxima reunión"
+  label_agenda_item_move_to_backlog: "Move to backlog"
+  label_agenda_item_move_to_current_meeting: "Move to current meeting"
   label_agenda_item_move_to_top: "Arriba de todo"
   label_agenda_item_move_to_bottom: "Mover al final"
   label_agenda_item_move_up: "Mover hacia arriba"
@@ -384,6 +375,22 @@ es:
   label_agenda_outcome_edit: "Editar resultado"
   label_agenda_outcome_delete: "Eliminar resultado"
   text_outcome_not_editable_anymore: "Este resultado ya no se puede editar."
+  text_outcome_cannot_be_added: "An outcome can no longer be added."
+  label_backlog_clear: "Clear backlog"
+  label_backlog_clear_button: "Clear all"
+  text_backlog_clear_error: "One or more errors occurred while trying to clear the backlog."
+  label_agenda_backlog: "Agenda backlog"
+  text_agenda_backlog: >
+    This backlog is unique to this one-time meeting. You can drag items in and out to add or remove them from the meeting agenda.
+  label_agenda_backlog_clear_title: "Clear agenda backlog?"
+  text_agenda_backlog_clear_description: >
+    Are you sure you want to remove all items currently in the agenda items? This action is not reversible.
+  label_series_backlog: "Series backlog"
+  text_series_backlog: >
+    The backlog is shared with all occurrences of this series. You can drag items in and out to add or remove them from a particular meeting.
+  label_series_backlog_clear_title: "Clear series backlog?"
+  text_series_backlog_clear_description: >
+    This will remove all items in the series backlog, which is shared with all meetings in the series. Are you sure you want to continue? This action is not reversible.
   text_agenda_item_title: 'Punto del orden del día «%{title}»'
   text_agenda_work_package_deleted: 'Punto del orden del día relativo al paquete de trabajo eliminado'
   text_deleted_agenda_item: 'Punto del orden del día eliminado'

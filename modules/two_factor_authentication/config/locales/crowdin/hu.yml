@@ -82,7 +82,7 @@ hu:
       text_2fa_enabled: "Minden egyes belépésnél szüksége lesz az alapértelmezett 2FA eszközről beírt OTP tokenre."
       text_2fa_disabled: "A felhasználó nem állított be 2FA eszközt a „Saját fiókom” oldalon"
       only_sms_allowed: "Only SMS delivery can be set up for other users."
-    upsale:
+    upsell:
       title: "Kétlépcsős hitelesítés"
       description: "Erősítse meg OpenProject-példányának biztonságát kétlépcsős hitelesítés felajánlásával (vagy kényszerítésével) minden projekttag számára."
     backup_codes:

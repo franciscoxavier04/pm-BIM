@@ -73,7 +73,8 @@ module Storages
 
               results = validator.call
               expect(results[:dependencies_versions]).to be_a_failure
-              expect(results[:dependencies_versions].message).to eq(I18n.t(i18n_key(:app_version_mismatch)))
+              expect(results[:dependencies_versions].message)
+                .to eq(I18n.t(i18n_key(:dependency_version_mismatch), dependency: "Integration OpenProject"))
             end
 
             it "integration app disabled / missing", vcr: "nextcloud/capabilities_success_app_disabled" do

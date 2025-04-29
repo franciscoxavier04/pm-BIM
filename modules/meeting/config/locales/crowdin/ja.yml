@@ -69,11 +69,9 @@ ja:
         invalid_time_format: "有効な時間ではありません。必要なフォーマット: HH:MM"
     models:
       recurring_meeting: "Recurring meeting"
-      structured_meeting: "One-time meeting"
-      meeting: "会議"
+      meeting: "One-time meeting"
       meeting_agenda_item: "議題項目"
       meeting_agenda: "アジェンダ"
-      meeting_minutes: "議事録"
       meeting_section: "セクション"
   activity:
     filter:
@@ -213,9 +211,6 @@ ja:
         new_date_time: "新しい日付/時刻"
     label_mail_all_participants: "すべての参加者にメールを送信"
     types:
-      classic: "Classic (unsupported)"
-      classic_text: "Note: Classic meetings will be removed in the next version of OpenProject."
-      structured: "Structured"
       one_time: "One-time"
       recurring: "Recurring"
       recurring_text: "Create meeting series with dynamic template for each occurrence."
@@ -325,16 +320,10 @@ ja:
   permission_edit_meetings: "会議の編集"
   permission_delete_meetings: "会議の削除"
   permission_view_meetings: "会議を表示"
-  permission_create_meeting_agendas: "会議の議題を作成する"
-  permission_create_meeting_agendas_explanation: "クラシック会議の議題内容を編集することができます。"
   permission_manage_agendas: "議題を管理する"
   permission_manage_agendas_explanation: "ダイナミック会議の議題内容を編集することができます。"
-  permission_close_meeting_agendas: "議題を閉じる"
-  permission_send_meeting_agendas_notification: "議題のレビュー通知を送信する"
-  permission_create_meeting_minutes: "議事録の管理"
-  permission_send_meeting_minutes_notification: "議事録のレビュー通知を送信する"
-  permission_meetings_send_invite: "ユーザーを会議に招待する"
-  permission_send_meeting_agendas_icalendar: "カレンダーエントリとして議題を送信する"
+  permission_manage_outcomes: "Manage outcomes"
+  permission_send_meeting_invites_and_outcomes: "Send meeting invites and outcomes to participants"
   project_module_meetings: "会議"
   text_duration_in_hours: "期間（時間）"
   text_in_hours: "数時間以内"
@@ -346,8 +335,8 @@ ja:
   text_meeting_minutes_for_meeting: '会議の議事録 "%{meeting}"'
   text_notificiation_invited: "このメールには以下のミーティングのicsエントリーが含まれています:"
   text_meeting_empty_heading: "あなたの会議は空です。"
-  text_meeting_empty_description_1: "まず、以下に議題項目を追加してください。各項目はタイトルだけの簡単なものでも構いませんが、所要時間やメモなどの詳細を追加することもできます。"
-  text_meeting_empty_description_2: '既存のワークパッケージへの参照を追加することもできます。これを行うと、関連するメモがその作業パッケージの「会議」タブに自動的に表示されます。'
+  text_meeting_empty_description1: "Start by adding agenda items below. Each item can be as simple as just a title, but you can also add additional details like duration and notes."
+  text_meeting_empty_description2: 'You can also add references to existing work packages. When you do, related notes will automatically be visible in the work package''s "Meetings" tab.'
   label_meeting_empty_action: "議題項目を追加"
   label_meeting_actions: "会議の対応事項"
   label_meeting_edit_title: "会議タイトルを編集"
@@ -366,6 +355,8 @@ ja:
   label_agenda_item_deleted_wp: "削除されたワークパッケージの参照"
   label_agenda_item_actions: "議題項目のアクション"
   label_agenda_item_move_to_next: "Move to next meeting"
+  label_agenda_item_move_to_backlog: "Move to backlog"
+  label_agenda_item_move_to_current_meeting: "Move to current meeting"
   label_agenda_item_move_to_top: "一番上へ移動"
   label_agenda_item_move_to_bottom: "一番下へ移動"
   label_agenda_item_move_up: "上へ"
@@ -378,6 +369,22 @@ ja:
   label_agenda_outcome_edit: "Edit outcome"
   label_agenda_outcome_delete: "Remove outcome"
   text_outcome_not_editable_anymore: "This outcome is not editable anymore."
+  text_outcome_cannot_be_added: "An outcome can no longer be added."
+  label_backlog_clear: "Clear backlog"
+  label_backlog_clear_button: "Clear all"
+  text_backlog_clear_error: "One or more errors occurred while trying to clear the backlog."
+  label_agenda_backlog: "Agenda backlog"
+  text_agenda_backlog: >
+    This backlog is unique to this one-time meeting. You can drag items in and out to add or remove them from the meeting agenda.
+  label_agenda_backlog_clear_title: "Clear agenda backlog?"
+  text_agenda_backlog_clear_description: >
+    Are you sure you want to remove all items currently in the agenda items? This action is not reversible.
+  label_series_backlog: "Series backlog"
+  text_series_backlog: >
+    The backlog is shared with all occurrences of this series. You can drag items in and out to add or remove them from a particular meeting.
+  label_series_backlog_clear_title: "Clear series backlog?"
+  text_series_backlog_clear_description: >
+    This will remove all items in the series backlog, which is shared with all meetings in the series. Are you sure you want to continue? This action is not reversible.
   text_agenda_item_title: '議題項目 "%{title}"'
   text_agenda_work_package_deleted: '削除されたワークパッケージの議題項目'
   text_deleted_agenda_item: '削除された議題項目'

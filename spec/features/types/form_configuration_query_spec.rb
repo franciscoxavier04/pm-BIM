@@ -220,6 +220,7 @@ RSpec.describe "form query configuration", :js do
       expect(column_names).to eq %i[id]
 
       form.edit_query_group("Second query")
+
       modal.switch_to "Columns"
       columns.expect_checked "ID"
       columns.apply

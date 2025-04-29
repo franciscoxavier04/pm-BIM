@@ -82,7 +82,7 @@ ro:
       text_2fa_enabled: "Upon every login, this user will be requested to enter a OTP token from their default 2FA device."
       text_2fa_disabled: "The user did not set up a 2FA device through their 'My account page'"
       only_sms_allowed: "Only SMS delivery can be set up for other users."
-    upsale:
+    upsell:
       title: "Autentificare doi factori"
       description: "Consolidarea securității instanței OpenProject prin oferirea (sau impunerea) autentificării cu doi factori pentru toți membrii proiectului."
     backup_codes:
@@ -178,7 +178,7 @@ ro:
   label_expiration_hint: "%{date} sau la deconectare"
   label_actions: "Acțiuni"
   label_confirmed: "Confirmat"
-  button_continue: "Continuă"
+  button_continue: "Continuaţi"
   button_make_default: "Marcați ca implicit"
   label_unverified_phone: "Telefonul mobil nu a fost încă verificat"
   notice_phone_number_format: "Te rog să introduci numărul în următorul format: +XX XXXXXXXX."

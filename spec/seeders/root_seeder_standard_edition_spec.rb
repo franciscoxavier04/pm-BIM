@@ -94,16 +94,18 @@ RSpec.describe RootSeeder,
       expect(RecurringMeeting.count).to eq 1
 
       # The template is created.
-      expect(StructuredMeeting.where(template: true).count).to eq 1
-      expect(StructuredMeeting.where(template: true).first.duration).to eq 1.0
-      expect(StructuredMeeting.where(template: true).first.agenda_items.count).to eq 9
-      expect(StructuredMeeting.where(template: true).first.agenda_items.sum(:duration_in_minutes)).to eq 60
+      expect(Meeting.templated.count).to eq 1
+      template = Meeting.templated.first
+      expect(template.duration).to eq 1.0
+      expect(template.agenda_items.count).to eq 9
+      expect(template.agenda_items.sum(:duration_in_minutes)).to eq 60
 
       # The first instance from that template is also created with the same data.
-      expect(StructuredMeeting.where(template: false).count).to eq 1
-      expect(StructuredMeeting.where(template: false).first.duration).to eq 1.0
-      expect(StructuredMeeting.where(template: false).first.agenda_items.count).to eq 9
-      expect(StructuredMeeting.where(template: false).first.agenda_items.sum(:duration_in_minutes)).to eq 60
+      expect(Meeting.where(template: false).count).to eq 1
+      instance = Meeting.not_templated.first
+      expect(instance.duration).to eq 1.0
+      expect(instance.agenda_items.count).to eq 9
+      expect(instance.agenda_items.sum(:duration_in_minutes)).to eq 60
     end
 
     it "creates different types of queries" do

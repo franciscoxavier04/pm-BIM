@@ -134,15 +134,18 @@ export abstract class DialogPreviewController extends Controller {
       });
     }
 
-    const wpPath = this.ensureValidPathname(form.action);
-    const wpAction = this.ensureValidWpAction(wpPath);
-
-    const editUrl = `${wpPath}/${wpAction}?${new URLSearchParams(wpParams).toString()}`;
+    const wpAction = this.isUpdatingWorkPackage(form.action) ? 'edit' : 'new';
+    const previewUrl = `${form.action}/${wpAction}?${new URLSearchParams(wpParams).toString()}`;
     const turboFrame = this.formTarget.closest('turbo-frame') as HTMLTurboFrameElement;
 
     if (turboFrame) {
-      turboFrame.src = editUrl;
+      turboFrame.src = previewUrl;
     }
+  }
+
+  private isUpdatingWorkPackage(formPath:string):boolean {
+    const workPackagePathRegex = /\/work_packages\/\d+\//;
+    return workPackagePathRegex.test(formPath);
   }
 
   protected focusAndSetCursorPositionToEndOfInput(field:HTMLInputElement) {
@@ -154,10 +157,6 @@ export abstract class DialogPreviewController extends Controller {
       );
     }
   }
-
-  abstract ensureValidPathname(formAction:string):string;
-
-  abstract ensureValidWpAction(path:string):string;
 
   abstract afterRendering():void;
 

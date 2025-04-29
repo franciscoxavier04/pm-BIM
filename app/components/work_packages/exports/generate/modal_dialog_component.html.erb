@@ -130,9 +130,9 @@
     end %>
   <% end %>
   <% dialog.with_footer do %>
-    <%= render(Primer::ButtonComponent.new(data: { "close-dialog-id": MODAL_ID })) { I18n.t(:button_cancel) } %>
+    <%= render(Primer::Beta::Button.new(data: { "close-dialog-id": MODAL_ID })) { I18n.t(:button_cancel) } %>
     <%= render(
-          Primer::ButtonComponent.new(
+          Primer::Beta::Button.new(
             scheme: :primary,
             type: :submit,
             form: GENERATE_PDF_FORM_ID,

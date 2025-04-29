@@ -46,7 +46,7 @@ module ::Overviews
 
     def project_custom_field_section_dialog
       respond_with_dialog(
-        ProjectCustomFields::Sections::EditDialogComponent.new(
+        Overviews::ProjectCustomFields::EditDialogComponent.new(
           project: @project,
           project_custom_field_section: find_project_custom_field_section
         )
@@ -80,46 +80,6 @@ module ::Overviews
       render :project_life_cycles_sidebar, layout: false
     end
 
-    def project_life_cycles_dialog
-      respond_with_dialog(
-        ProjectLifeCycles::Sections::EditDialogComponent.new(@project)
-      )
-    end
-
-    def project_life_cycles_form
-      service_call = ::ProjectLifeCycleSteps::PreviewAttributesService
-                .new(user: current_user,
-                     model: @project,
-                     contract_class: ProjectLifeCycleSteps::UpdateContract)
-                .call(permitted_params.project_phases)
-
-      update_via_turbo_stream(
-        component: ProjectLifeCycles::Sections::EditComponent.new(service_call.result),
-        method: "morph"
-      )
-      # TODO: :unprocessable_entity is not nice, change the dialog logic to accept :ok
-      # without dismissing the dialog, alternatively use turbo frames instead of streams.
-      respond_to_with_turbo_streams(status: :unprocessable_entity)
-    end
-
-    def update_project_life_cycles
-      service_call = ::ProjectLifeCycleSteps::UpdateService
-                      .new(user: current_user, model: @project)
-                      .call(permitted_params.project_phases)
-
-      if service_call.success?
-        update_via_turbo_stream(
-          component: ProjectLifeCycles::SidePanelComponent.new(project: @project)
-        )
-      else
-        update_via_turbo_stream(
-          component: ProjectLifeCycles::Sections::EditComponent.new(service_call.result)
-        )
-      end
-
-      respond_to_with_turbo_streams(status: service_call.success? ? :ok : :unprocessable_entity)
-    end
-
     def jump_to_project_menu_item
       if params[:jump]
         # try to redirect to the requested menu item
@@ -145,7 +105,7 @@ module ::Overviews
 
     def handle_errors(project_with_errors, section)
       update_via_turbo_stream(
-        component: ProjectCustomFields::Sections::EditComponent.new(
+        component: Overviews::ProjectCustomFields::EditComponent.new(
           project: project_with_errors,
           project_custom_field_section: section
         )
@@ -154,7 +114,7 @@ module ::Overviews
 
     def update_sidebar_component
       update_via_turbo_stream(
-        component: ProjectCustomFields::SidePanelComponent.new(project: @project)
+        component: Overviews::ProjectCustomFields::SidePanelComponent.new(project: @project)
       )
     end
   end

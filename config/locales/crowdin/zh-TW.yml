@@ -41,9 +41,14 @@ zh-TW:
         changed: "變更"
         created: "建立"
         commented: "已留言"
-        restrict_visibility: 限制可視性
-        restricted_journal: 受限留言僅對有限的群組成員可見。
+        internal_comment: Internal comment
+        internal_journal: Internal comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: 您有未儲存的變更。您確實要關閉編輯器嗎？
+        internal_comment_confirmation:
+          title: "Make this comment public?"
+          heading: "Make this comment public?"
+          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          confirm_button_text: "設為公開"
   admin:
     plugins:
       no_results_title_text: 目前沒有安裝任何外掛程式
@@ -63,9 +68,6 @@ zh-TW:
         main-menu-bg-selected-background: "主畫面背景（當選擇時）"
         main-menu-bg-hover-background: "主要選單（滑鼠移入時）"
       custom_colors: "自訂顏色"
-      customize: "客製OpenProject中專屬您的標誌(logo)與顏色"
-      enterprise_notice: "這個插件僅對企業版支持訂閱者開放，以感謝他們對開發 OpenProject 的贊助。"
-      enterprise_more_info: "備註：Logo可被公開存取"
       manage_colors: "編輯顏色選擇選項"
       instructions:
         primary-button-color: "強烈的重點顏色，用於螢幕上最重要的按鈕。"
@@ -214,9 +216,6 @@ zh-TW:
     new: "新增自訂操作"
     edit: "編輯自訂操作 %{name}"
     execute: "執行 %{name}"
-    upsale:
-      title: "自訂動作"
-      description: "自訂動作是一系列預先定義動作的單鍵捷徑，您可以根據狀態、角色、類型或專案，在特定工作套件上使用這些動作。"
   custom_fields:
     admin:
       custom_field_projects:
@@ -246,8 +245,6 @@ zh-TW:
           zero: 無子項目
           one: 1 個子項目
           other: "%{count} 子項目"
-    upsale:
-      custom_field_format_hierarchy: "工作項目的自訂欄位需要分層嗎？"
     text_add_new_custom_field: >
       要加入客製欄位至一個專案，您必須先建立欄位才能將它們加入至此專案。
     is_enabled_globally: "已全域啟用"
@@ -299,8 +296,9 @@ zh-TW:
   global_search:
     placeholder: "在 %{app_title} 搜尋"
     overwritten_tabs:
-      wiki_pages: "維基"
+      all: "全部"
       messages: "討論區"
+      wiki_pages: "維基"
   groups:
     index:
       no_results_title_text: 目前沒有群組
@@ -352,6 +350,24 @@ zh-TW:
         heading: "刪除此專案清單？"
         text: "此動作不會刪除清單中包含的任何專案。您確定要刪除此專案清單？"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
+      public_warning: >
+        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+      public_confirmation:
+        checkbox: "I understand that this will make the previously private content public"
+        title: "Make this project public?"
+        description: >
+          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+      private_confirmation:
+        checkbox: "I understand that this will make the previously public content private."
+        title: "Make this project private?"
+        description: >
+          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       change_identifier: 變更識別碼
       actions:
         label_enable_all: "全部啟用"
@@ -536,10 +552,6 @@ zh-TW:
         出現的所有佔位符用戶(例如，作為受理人、負責人或其他用戶值) 將被重新分配給一個名為“已刪除用戶”的帳戶。 由於每個已刪除帳戶的數據都會被重新分配給此帳戶，因此無法將用戶創建的數據與另一個已刪除帳戶的數據區分。
       irreversible: "這一行動是不可還原的"
       confirmation: "輸入占位使用者名稱 %{name} 確認刪除。"
-    upsale:
-      title: 占位使用者
-      description: >
-        「佔位使用者」是一種將工作項目分配給不屬於您專案成員的方法。它們在一系列場景中十分有用；例如，如果您需要追蹤尚未命名或可用的資源的任務，或者如果您不想讓該人員存取專案，但仍希望追蹤分配給他們的任務。
   prioritiies:
     edit:
       priority_color_text: |
@@ -594,8 +606,6 @@ zh-TW:
     edit:
       form_configuration:
         tab: "表單設置"
-      more_info_text_html: >
-        企業版允許您使用以下附加組件自定義表單設定：<br> <ul class="%{list_styling_class}"> <li><b>添加新屬性組</b></li> <li><b>重命名屬性組</b></li> <li><b>添加相關工作項目表</b></li> </ul>
       projects:
         tab: "專案"
         enabled_projects: "已啟用專案"
@@ -750,9 +760,11 @@ zh-TW:
       label_child_singular: "子項目"
       label_child_plural: "子項目"
       new_child: "建立子項目"
-      new_child_text: "使相關工作成為目前（上層）工作項目的子項目"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "子項目"
       child_description: "使相關工作成為目前（父）工作項目的子項目"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "最近的"
       label_blocks_singular: "區塊"
       label_blocks_plural: "區塊"
@@ -1038,6 +1050,7 @@ zh-TW:
         consented_at: "同意在"
       user_preference:
         comments_sorting: "顯示留言"
+        dismissed_enterprise_banners: "隱藏的企業版廣告"
         impaired: "協助工具模式"
         auto_hide_popups: "提醒後自動隱藏"
         warn_on_leaving_unsaved: "離開尚未儲存的工作項目時提示我"
@@ -1072,7 +1085,7 @@ zh-TW:
           title: "工作日"
           false: "限工作日"
           true: "包含非工作日"
-        journal_restricted: 限制存取日誌
+        journal_internal: Internal Journal
         notify: "通知" #used in custom actions
         parent: "上層目錄："
         parent_issue: "上層工作項目："
@@ -1293,6 +1306,10 @@ zh-TW:
             values:
               inclusion: "過濾條件錯誤"
               format: "%{message}"
+        queries/principals/filters/internal_mentionable_on_work_package_filter:
+          attributes:
+            values:
+              single_value_requirement: "必須是單一工作項目"
         relation:
           typed_dag:
             circular_dependency: "無限迴圈的關聯。"
@@ -1790,7 +1807,8 @@ zh-TW:
     text:
       failed: '無法從 “%{source_project_name}” 複製專案到 "%{target_project_name}"'
       succeeded: '複製 "%{source_project_name}" 到 "%{target_project_name}"。'
-  create_new_page: "維基頁面"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "維基頁面"
   date:
     abbr_day_names:
       - "日"
@@ -1923,17 +1941,76 @@ zh-TW:
   #Text direction: Left-to-Right (ltr) or Right-to-Left (rtl)
   direction: 由左至右
   ee:
-    upsale:
+    features:
+      baseline_comparison: 比較差異
+      board_view: 進階看板
+      conditional_highlighting: 條件強調
+      internal_comments: Internal Comments
+      custom_actions: 自訂動作
+      custom_field_hierarchies: 階層類型的自訂欄位
+      customize_life_cycle: 自訂生命週期
+      date_alerts: 日期提醒
+      define_custom_style: 自訂布景主題與logo
+      edit_attribute_groups: 編輯群組屬性
+      gantt_pdf_export: 以PDF匯出甘特圖
+      ldap_groups: 同步LDAP使用者與群組
+      one_drive_sharepoint_file_storage: OneDrive/SharePoint 檔案儲存
+      placeholder_users: 占位使用者
+      project_list_sharing: 專案清單分享
+      readonly_work_packages: 唯讀工作項目
+      sso_auth_providers: 單一登入
+      team_planner_view: 團隊規劃檢視
+      two_factor_authentication: 雙重身份驗證
+      virus_scanning: 掃描病毒
+      work_package_query_relation_columns: 工作項目查詢關聯列
+      work_package_sharing: 與外部使用者共用工作項目
+      work_package_subject_generation: 工作項目標題產生
+    upsell:
       title: "企業版附加元件"
-      link_title: "更多資訊"
-      automatic_subject_generation:
+      plan_title: "企業版 %{plan} 外掛"
+      plan_name: "%{plan} 企業版計畫"
+      plan_text_html: "Available starting with the %{plan_name}."
+      hide_banner: "隱藏此廣告"
+      baseline_comparison:
+        description: 突顯自過去任一時間點以來對此清單所做的變更。
+      work_package_subject_generation:
         description: "使用參考的屬性和文字建立自動產生的主題。"
       customize_life_cycle:
         description: "建立並組織不同於 PM2 專案週期規劃所提供的專案階段。"
-      form_configuration:
-        description: "使用以下附加組件自定義表單配置："
-        add_groups: "增加新的屬性群組"
-        rename_groups: "重新命名屬性群组"
+      conditional_highlighting:
+        description: "需要讓某些工作項目從大量項目中脫穎而出嗎？請在工作項目表格中使用條件突顯功能。"
+      work_package_query_relation_columns:
+        description: "需要在工作項目清單中查看關聯或子項目嗎？"
+      edit_attribute_groups:
+        description: "使用以下額外附加元件自訂表單設定："
+        features:
+          groups: "增加新的屬性群組"
+          rename: "重新命名群组屬性"
+          related: "新增相關工作項目表"
+      readonly_work_packages:
+        description: "將特定狀態的工作項目標記為唯讀。"
+      custom_field_hierarchies:
+        description: "階層自訂欄位允許透過多層選擇清單來組織工作項目中的階層結構。"
+      date_alerts:
+        description: "透過日期提醒，您將收到即將到來的開始或結束日期的通知，這樣您就不會錯過或忘記重要的截止日期。"
+      work_package_sharing:
+        description: "與不是專案成員的使用者共同參與工作項目。"
+      define_custom_style:
+        title: "自訂布景主題顏色與logo"
+        more_info: "備註：Logo可被公開存取。"
+        description: 客製OpenProject中專屬您的標誌(logo)與顏色。
+      custom_actions:
+        title: "自訂動作"
+        description: "自訂動作是一系列預先定義動作的單鍵捷徑，您可以根據狀態、角色、類型或專案，在特定工作項目上使用這些動作。"
+      virus_scanning:
+        description: "確保在其他使用者存取 OpenProject 中上傳的檔案前，對其進行病毒掃描。"
+      placeholder_users:
+        title: 占位使用者
+        description: >
+          「佔位使用者」是一種將工作項目分配給不屬於您專案成員的方法。它們在一系列場景中十分有用；例如，如果您需要追蹤尚未命名或可用的資源的任務，或者如果您不想讓該人員存取專案，但仍希望追蹤分配給他們的任務。
+      internal_comments:
+        title: "僅供您查看"
+        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "時間追蹤活動"
   enumeration_work_package_priorities: "工作項目優先等級"
   enumeration_reported_project_statuses: "報告的專案狀態"
@@ -2015,6 +2092,8 @@ zh-TW:
     dialog:
       title: "匯出"
       submit: "匯出"
+      save_export_settings:
+        label: "儲存設定"
       format:
         label: "檔案格式"
         options:
@@ -2158,9 +2237,8 @@ zh-TW:
       users: "最新註冊的使用者"
     blocks:
       community: "OpenProject 社群"
-      upsale:
+      upsell:
         title: "升級到企業版"
-        more_info: "更多資訊"
     links:
       upgrade_enterprise_edition: "升級到企業版"
       postgres_migration: "將您的安裝遷移到 PostgreSQL"
@@ -2515,7 +2593,7 @@ zh-TW:
   label_filter_add: "新增條件"
   label_filter_by: "篩選條件："
   label_filter_any_name_attribute: "名稱屬性"
-  label_filter_plural: "篩選條件"
+  label_filter_plural: "篩選器"
   label_filters_toggle: "顯示/隱藏篩選條件"
   label_float: "浮點數"
   label_folder: "資料夾"
@@ -2528,7 +2606,7 @@ zh-TW:
   label_generate_key: "產生一個金鑰"
   label_git_path: ".git 目錄的路徑"
   label_greater_or_equal: ">="
-  label_group_by: "分類"
+  label_group_by: "分組依據"
   label_group_new: "新增群組"
   label_group: "群組"
   label_group_named: "群組名稱 %{name}"
@@ -2540,7 +2618,7 @@ zh-TW:
   label_hierarchy: "階層"
   label_hierarchy_leaf: "頁面結構頁"
   label_home: "Home"
-  label_subject_or_id: "名稱或 id"
+  label_subject_or_id: "主旨或 id"
   label_calendar_subscriptions: "訂閱行事曆"
   label_identifier: "識別碼"
   label_in: "在"
@@ -2586,7 +2664,7 @@ zh-TW:
   label_latest_revision_plural: "最新版本"
   label_ldap_authentication: "LDAP 認證"
   label_learn_more: "了解更多"
-  label_less_or_equal: "之後"
+  label_less_or_equal: "<="
   label_less_than_ago: "幾天內"
   label_link_url: "連結(URL)"
   label_list: "清單"
@@ -2637,6 +2715,7 @@ zh-TW:
   label_modules: "模組"
   label_months_from: "從幾個月"
   label_more: "更多"
+  label_more_information: "更多資訊"
   label_more_than_ago: "超過幾天"
   label_move_column_left: "欄位左移"
   label_move_column_right: "欄位右移"
@@ -3194,6 +3273,7 @@ zh-TW:
   notice_successful_delete: "刪除成功"
   notice_successful_cancel: "取消成功"
   notice_successful_update: "更新成功"
+  notice_unsuccessful_update: "更新失敗。"
   notice_successful_update_custom_fields_added_to_project: |
     更新成功。相關類型之專案，此客製欄位會自動啟動。<a href="%{url}" target="_blank">看更多</a>。
   notice_to_many_principals_to_display: "搜尋的結果太多。\n請透過輸入新成員 (群組) 的名稱來縮小搜尋的範圍。"
@@ -3230,13 +3310,13 @@ zh-TW:
     text_getting_started_description: "快速瞭解 OpenProject 的項目管理和團隊協作。您可以從幫助菜單重新啓動此視頻。"
     welcome: "歡迎使用 %{app_title}"
     select_language: "請選擇您的語言"
-  permission_add_work_package_notes: "增加留言"
+  permission_add_work_package_comments: "增加留言"
   permission_add_work_packages: "新增工作項目"
   permission_add_messages: "張貼訊息"
   permission_add_project: "建立專案"
   permission_add_work_package_attachments: "新增附件"
   permission_add_work_package_attachments_explanation: "允許在沒有編輯工作項目權限的情況下新增附件"
-  permission_add_comments_with_restricted_visibility: "寫下限制顯示的留言"
+  permission_add_internal_comments: "Write internal comments"
   permission_archive_project: "封存專案"
   permission_create_user: "新增使用者"
   permission_manage_user: "編輯使用者"
@@ -3261,16 +3341,16 @@ zh-TW:
   permission_delete_timelines: "刪除時間軸"
   permission_delete_wiki_pages: "刪除維基頁面"
   permission_delete_wiki_pages_attachments: "刪除附件"
-  permission_edit_work_package_notes: "審閱留言"
-  permission_edit_work_package_notes_explanation: "注意：擁有此權限的使用者可以編輯任何人的註解。"
+  permission_edit_work_package_comments: "審閱留言"
+  permission_edit_work_package_comments_explanation: "注意：擁有此權限的使用者可以編輯任何人的註解。"
   permission_edit_work_packages: "編輯工作項目"
   permission_edit_messages: "編輯訊息"
-  permission_edit_own_comments_with_restricted_visibility: "編輯擁有但限制顯示的留言"
-  permission_edit_own_work_package_notes: "編輯自己的留言"
+  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_work_package_comments: "編輯自己的留言"
   permission_edit_own_messages: "編輯自己張貼的訊息"
   permission_edit_own_time_entries: "編輯自己的時間日誌"
-  permission_edit_others_comments_with_restricted_visibility: "審核限制顯示的留言"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "警告：擁有此權限的使用者能夠編輯其他使用者限制顯示的留言。"
+  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "編輯專案"
   permission_edit_project_attributes: "編輯項目屬性"
   permission_edit_project_phases: "編輯專案階段"
@@ -3311,7 +3391,7 @@ zh-TW:
   permission_manage_own_reminders: "建立自己的提醒事項"
   permission_view_project: "檢視專案"
   permission_view_changesets: "在 OpenProject 檢視版本庫修訂"
-  permission_view_comments_with_restricted_visibility: "查看受限顯示的留言"
+  permission_view_internal_comments: "View internal comments"
   permission_view_commit_author_statistics: "檢視 Commit 的作者統計資訊"
   permission_view_dashboards: "檢視儀表板"
   permission_view_work_package_watchers: "檢視監看者清單"
@@ -3642,6 +3722,8 @@ zh-TW:
   setting_repository_truncate_at: "儲存庫瀏覽器中顯示的最大檔案數量"
   setting_rest_api_enabled: "啟用 REST 網路服務"
   setting_self_registration: "自助註冊"
+  setting_self_registration_warning: >
+    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
   setting_session_ttl: "非活躍使用後連線失效時間"
   setting_session_ttl_hint: "低於5個工作同於停用"
   setting_session_ttl_enabled: "連線逾時"
@@ -3686,8 +3768,6 @@ zh-TW:
         剩餘文件已掃描。%{file_count} 個文件位於隔離區。您將被重定向到隔離區頁面。使用此頁面可以刪除或覆蓋被隔離的文件。
       remaining_rescanned_files: >
         病毒掃描已成功啓用。之前上傳的 %{file_count} 仍需掃描。此過程已在後台安排。掃描期間，文件仍可訪問。
-      upsale:
-        description: "確保在其他使用者存取 OpenProject 中上傳的檔案前，對其進行病毒掃描。"
       actions:
         delete: "刪除檔案"
         quarantine: "隔離該檔案"
@@ -3742,7 +3822,7 @@ zh-TW:
       heading: "專案生命週期"
       heading_description: "專案生命週期定義了可用於專案規劃的階段，並將顯示在各專案的總覽頁面中。這些屬性可啟用或停用，但在單一專案中無法重新排序。"
       label_add: "增加"
-      label_add_description: "新增生命週期定義"
+      label_add_description: "增加專案階段定義"
       filter:
         label: "搜尋專案階段"
       section_header: "階段"
@@ -3773,6 +3853,9 @@ zh-TW:
       section_holidays_and_closures: "假日和休息日"
     work_packages:
       not_allowed_text: "您沒有查看此頁面的必要權限。"
+      activities:
+        enable_internal_comments: "Enable internal comments"
+        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "純文字"
@@ -3808,8 +3891,6 @@ zh-TW:
     當使用客製欄位：請留意欄位需要依專案個別啟用。
   text_custom_field_hint_activate_per_project_and_type: >
     客製欄位需要個別被工作項目類別和專案啟用。
-  text_wp_status_read_only_html: >
-    企業版將提供額外模組到工作項目：<br> <ul> <li><b>允許將特定狀態的工作項目設定為唯讀</b></li> </ul>
   text_project_custom_field_html: >
     企業版將為項目的自定義字段添加以下其他附加組件：<br> <ul> <li><b>在項目列表中添加項目自定義字段，以創建項目組合視圖</b></li> </ul>
   text_custom_logo_instructions: >
@@ -4122,7 +4203,7 @@ zh-TW:
         view_description: "可以查看此項目列表。"
         edit: "編輯"
         edit_description: "可以查看、分享和編輯此專案列表。"
-      upsale:
+      upsell:
         message: "與單個用戶共用專案列表是一項企業附加功能。"
   working_days:
     info: >
@@ -4352,27 +4433,3 @@ zh-TW:
     description: "將 OmniAuth SAML 提供商增加到 OpenProject"
   enterprise_plans:
     legacy_enterprise: "企業方案"
-  enterprise_features:
-    baseline_comparison: 差異線比較
-    board_view: 板面檢視
-    conditional_highlighting: 條件強調
-    custom_actions: 自訂動作
-    custom_field_hierarchies: 自訂欄位層級
-    customize_life_cycle: 自訂生命週期
-    date_alerts: 日期提醒
-    define_custom_style: 定義自訂樣式
-    edit_attribute_groups: 編輯屬性群組
-    gantt_pdf_export: 甘特圖以PDF匯出
-    grid_widget_wp_graph: 網格小工具工作項目圖形
-    ldap_groups: LDAP群組
-    one_drive_sharepoint_file_storage: OneDrive/SharePoint 檔案儲存
-    placeholder_users: 占位使用者
-    project_list_sharing: 專案清單分享
-    readonly_work_packages: 唯讀工作項目
-    sso_auth_providers: SSO 驗證提供者
-    team_planner_view: 團隊規劃檢視
-    two_factor_authentication: 雙重身分驗證
-    virus_scanning: 附件病毒掃描
-    work_package_query_relation_columns: 工作項目查詢關聯列
-    work_package_sharing: 工作項目分享
-    work_package_subject_generation: 工作項目標題產生

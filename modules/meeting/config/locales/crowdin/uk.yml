@@ -72,11 +72,9 @@ uk:
         invalid_time_format: "не є допустимим часом. Необхідний формат: HH:MM"
     models:
       recurring_meeting: "Повторювана нарада"
-      structured_meeting: "Одноразова нарада"
-      meeting: "Нарада"
+      meeting: "Одноразова нарада"
       meeting_agenda_item: "Порядок денний"
       meeting_agenda: "Порядок денний"
-      meeting_minutes: "Хвилини"
       meeting_section: "Розділ"
   activity:
     filter:
@@ -225,9 +223,6 @@ uk:
         new_date_time: "Нова дата/час"
     label_mail_all_participants: "Надіслати лист усім учасникам"
     types:
-      classic: "Класична (не підтримується)"
-      classic_text: "Примітка: класичні наради буде вилучено в наступній версії OpenProject."
-      structured: "Структурована"
       one_time: "Одноразова"
       recurring: "Повторювана"
       recurring_text: "Створюйте серії нарад на основі динамічного шаблона для кожної події."
@@ -343,16 +338,10 @@ uk:
   permission_edit_meetings: "Редагувати зустрічі"
   permission_delete_meetings: "Видалити зустрічі"
   permission_view_meetings: "Переглянути зустрічі"
-  permission_create_meeting_agendas: "Створити план зустрічі "
-  permission_create_meeting_agendas_explanation: "Дає змогу редагувати вміст порядку денного класичної наради."
   permission_manage_agendas: "Керувати програмами"
   permission_manage_agendas_explanation: "Дає змогу налаштовувати пункти порядку денного динамічної наради."
-  permission_close_meeting_agendas: "Закрити порядок денний"
-  permission_send_meeting_agendas_notification: "Надіслати повідомлення про перегляд для порядку денного"
-  permission_create_meeting_minutes: "Керування хвилинами"
-  permission_send_meeting_minutes_notification: "Надішліть повідомлення про перегляд за хвилини"
-  permission_meetings_send_invite: "Запросити користувачів до зустрічей"
-  permission_send_meeting_agendas_icalendar: "Позначити план зустрічі записом у календарі"
+  permission_manage_outcomes: "Manage outcomes"
+  permission_send_meeting_invites_and_outcomes: "Send meeting invites and outcomes to participants"
   project_module_meetings: "Зустрічі"
   text_duration_in_hours: "Тривалість у годинах"
   text_in_hours: "у годинах"
@@ -364,8 +353,8 @@ uk:
   text_meeting_minutes_for_meeting: 'протокол засідання %{meeting}'
   text_notificiation_invited: "У цьому листі міститься запис ics для зустрічі нижче:"
   text_meeting_empty_heading: "Ваша нарада пуста"
-  text_meeting_empty_description_1: "Почніть із додавання пунктів розкладу нижче. Кожен елемент може бути таким простим, як назва, але ви також можете додати додаткові деталі, як-от тривалість і примітки."
-  text_meeting_empty_description_2: 'Ви також можете додати посилання на наявні пакети робіт. У такому разі пов’язані примітки автоматично з’являться на вкладці «Наради» пакета робіт.'
+  text_meeting_empty_description1: "Start by adding agenda items below. Each item can be as simple as just a title, but you can also add additional details like duration and notes."
+  text_meeting_empty_description2: 'You can also add references to existing work packages. When you do, related notes will automatically be visible in the work package''s "Meetings" tab.'
   label_meeting_empty_action: "Додати пункт порядку денного"
   label_meeting_actions: "Дії з нарадою"
   label_meeting_edit_title: "Редагувати назву зустрічі"
@@ -384,6 +373,8 @@ uk:
   label_agenda_item_deleted_wp: "Посилання на видалений пакет робіт"
   label_agenda_item_actions: "Дії з пунктами порядку денного"
   label_agenda_item_move_to_next: "Перейти до наступної наради"
+  label_agenda_item_move_to_backlog: "Move to backlog"
+  label_agenda_item_move_to_current_meeting: "Move to current meeting"
   label_agenda_item_move_to_top: "Помістити на верх"
   label_agenda_item_move_to_bottom: "Помістити в кінець"
   label_agenda_item_move_up: "Рухатися вгору"
@@ -396,6 +387,22 @@ uk:
   label_agenda_outcome_edit: "Редагувати результат"
   label_agenda_outcome_delete: "Вилучити результат"
   text_outcome_not_editable_anymore: "Цей результат більше не можна редагувати."
+  text_outcome_cannot_be_added: "An outcome can no longer be added."
+  label_backlog_clear: "Clear backlog"
+  label_backlog_clear_button: "Clear all"
+  text_backlog_clear_error: "One or more errors occurred while trying to clear the backlog."
+  label_agenda_backlog: "Agenda backlog"
+  text_agenda_backlog: >
+    This backlog is unique to this one-time meeting. You can drag items in and out to add or remove them from the meeting agenda.
+  label_agenda_backlog_clear_title: "Clear agenda backlog?"
+  text_agenda_backlog_clear_description: >
+    Are you sure you want to remove all items currently in the agenda items? This action is not reversible.
+  label_series_backlog: "Series backlog"
+  text_series_backlog: >
+    The backlog is shared with all occurrences of this series. You can drag items in and out to add or remove them from a particular meeting.
+  label_series_backlog_clear_title: "Clear series backlog?"
+  text_series_backlog_clear_description: >
+    This will remove all items in the series backlog, which is shared with all meetings in the series. Are you sure you want to continue? This action is not reversible.
   text_agenda_item_title: 'Пункт порядку денного «%{title}»'
   text_agenda_work_package_deleted: 'Пункт порядку денного для видаленого пакета робіт'
   text_deleted_agenda_item: 'Видалений пункт порядку денного'

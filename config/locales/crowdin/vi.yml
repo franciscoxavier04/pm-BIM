@@ -41,9 +41,14 @@ vi:
         changed: "changed"
         created: "created"
         commented: "commented"
-        restrict_visibility: Restrict visibility
-        restricted_journal: Restricted comments are visible to a limited group of members.
+        internal_comment: Internal comment
+        internal_journal: Internal comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
+        internal_comment_confirmation:
+          title: "Make this comment public?"
+          heading: "Make this comment public?"
+          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          confirm_button_text: "Công khai"
   admin:
     plugins:
       no_results_title_text: Hiện tại không có plugin nào được cài đặt.
@@ -63,9 +68,6 @@ vi:
         main-menu-bg-selected-background: "Menu chính khi được chọn"
         main-menu-bg-hover-background: "Menu khi trỏ chuột"
       custom_colors: "Tùy chỉnh màu sắc"
-      customize: "Tùy chỉnh cài đặt OpenProject của bạn với logo và màu sắc riêng."
-      enterprise_notice: "Như một lời 'Cảm ơn!' đặc biệt cho sự đóng góp tài chính của họ để phát triển OpenProject, tiện ích nhỏ này chỉ có sẵn cho người đăng ký hỗ trợ phiên bản Enterprise."
-      enterprise_more_info: "Lưu ý: logo sử dụng sẽ được công khai truy cập."
       manage_colors: "Chỉnh sửa màu sắc trong select option"
       instructions:
         primary-button-color: "Màu nhấn mạnh mạnh, được sử dụng cho nút quan trọng nhất trên màn hình."
@@ -215,9 +217,6 @@ vi:
     new: "Hành động tùy chỉnh mới"
     edit: "Chỉnh sửa hành động tùy chỉnh %{name}"
     execute: "Thực hiện %{name}"
-    upsale:
-      title: "Hành động tùy chỉnh"
-      description: "Hành động tùy chỉnh là các phím tắt một lần để thực hiện một tập hợp các hành động đã được định trước mà bạn có thể làm cho sẵn có trên các gói công việc nhất định dựa trên trạng thái, vai trò, loại hoặc dự án."
   custom_fields:
     admin:
       custom_field_projects:
@@ -247,8 +246,6 @@ vi:
           zero: no sub-items
           one: 1 sub-item
           other: "%{count} sub-items"
-    upsale:
-      custom_field_format_hierarchy: "Need a hierarchy in your custom fields for work packages?"
     text_add_new_custom_field: >
       Để thêm các trường tùy chỉnh mới vào một dự án, trước tiên bạn cần tạo chúng trước khi có thể thêm vào dự án này.
     is_enabled_globally: "Được bật toàn cầu"
@@ -300,8 +297,9 @@ vi:
   global_search:
     placeholder: "Tìm kiếm trong %{app_title}"
     overwritten_tabs:
-      wiki_pages: "Wiki"
+      all: "Tất cả"
       messages: "Diễn đàn"
+      wiki_pages: "Wiki"
   groups:
     index:
       no_results_title_text: Hiện có không có nhóm.
@@ -353,6 +351,24 @@ vi:
         heading: "Delete this project list?"
         text: "Hành động này sẽ không xóa bất kỳ dự án nào có trong danh sách. Bạn có chắc chắn muốn xóa danh sách dự án này không?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
+      public_warning: >
+        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+      public_confirmation:
+        checkbox: "I understand that this will make the previously private content public"
+        title: "Make this project public?"
+        description: >
+          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+      private_confirmation:
+        checkbox: "I understand that this will make the previously public content private."
+        title: "Make this project private?"
+        description: >
+          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       change_identifier: Thay đổi định danh
       actions:
         label_enable_all: "Bật tất cả"
@@ -537,10 +553,6 @@ vi:
         Tất cả các trường hợp của người dùng giả định (ví dụ, làm người giao việc, người chịu trách nhiệm hoặc các giá trị người dùng khác) sẽ được chuyển nhượng cho một tài khoản có tên là "Người dùng đã xóa". Vì dữ liệu của mỗi tài khoản bị xóa được chuyển nhượng cho tài khoản này, nên sẽ không thể phân biệt dữ liệu mà người dùng đã tạo từ dữ liệu của một tài khoản đã xóa khác.
       irreversible: "Hành động này không thể đảo ngược"
       confirmation: "Nhập tên người dùng giả định %{name} để xác nhận việc xóa."
-    upsale:
-      title: Người dùng giả định
-      description: >
-        Người dùng giả định là cách để gán các gói công việc cho người dùng không thuộc dự án của bạn. Chúng có thể hữu ích trong nhiều tình huống; ví dụ, nếu bạn cần theo dõi các nhiệm vụ cho một nguồn lực chưa được đặt tên hoặc chưa có sẵn, hoặc nếu bạn không muốn cấp quyền truy cập cho người đó vào OpenProject nhưng vẫn muốn theo dõi các nhiệm vụ được gán cho họ.
   prioritiies:
     edit:
       priority_color_text: |
@@ -596,8 +608,6 @@ vi:
     edit:
       form_configuration:
         tab: "Mẫu cấu hình"
-      more_info_text_html: >
-        Phiên bản Doanh nghiệp cho phép bạn tùy chỉnh cấu hình biểu mẫu với các tiện ích bổ sung sau: <br> <ul class="%{list_styling_class}"> <li><b>Thêm nhóm thuộc tính mới</b></li> <li><b>Đổi tên nhóm thuộc tính</b></li> <li><b>Thêm bảng các gói công việc liên quan</b></li> </ul>
       projects:
         tab: "Các dự án"
         enabled_projects: "Các dự án được kích hoạt"
@@ -752,9 +762,11 @@ vi:
       label_child_singular: "child"
       label_child_plural: "children"
       new_child: "Tạo con mới"
-      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "các khối"
       label_blocks_plural: "các khối"
@@ -1040,6 +1052,7 @@ vi:
         consented_at: "Đồng ý tại"
       user_preference:
         comments_sorting: "Hiện bình luận"
+        dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Viet nam"
         auto_hide_popups: "Tự động ẩn thông báo thành công"
         warn_on_leaving_unsaved: "Cảnh báo tôi khi rời khỏi gói công việc với thay đổi chưa lưu"
@@ -1074,7 +1087,7 @@ vi:
           title: "Ngày làm việc"
           false: "chỉ ngày làm việc"
           true: "bao gồm ngày không làm việc"
-        journal_restricted: Restricted Journal
+        journal_internal: Internal Journal
         notify: "Thông báo" #used in custom actions
         parent: "Cha"
         parent_issue: "Cha"
@@ -1295,6 +1308,10 @@ vi:
             values:
               inclusion: "bộ lọc có các giá trị không hợp lệ."
               format: "%{message}"
+        queries/principals/filters/internal_mentionable_on_work_package_filter:
+          attributes:
+            values:
+              single_value_requirement: "must be a single work package"
         relation:
           typed_dag:
             circular_dependency: "Mối quan hệ tạo ra một vòng tròn các mối quan hệ."
@@ -1792,7 +1809,8 @@ vi:
     text:
       failed: 'Không thể chép dự án "%{source_project_name}" sang dự án "%{target_project_name}".'
       succeeded: 'Đã sao chép dự án "%{source_project_name}" sang "%{target_project_name}".'
-  create_new_page: "Trang Wiki"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Trang wiki"
   date:
     abbr_day_names:
       - "Chủ nhật"
@@ -1925,17 +1943,76 @@ vi:
   #Text direction: Left-to-Right (ltr) or Right-to-Left (rtl)
   direction: ltr
   ee:
-    upsale:
+    features:
+      baseline_comparison: Baseline Comparisons
+      board_view: Advanced Boards
+      conditional_highlighting: Conditional Highlighting
+      internal_comments: Internal Comments
+      custom_actions: Custom Actions
+      custom_field_hierarchies: Custom fields of type hierarchy
+      customize_life_cycle: Customize Life Cycle
+      date_alerts: Date Alerts
+      define_custom_style: Custom theme and logo
+      edit_attribute_groups: Edit Attribute Groups
+      gantt_pdf_export: Gantt PDF Export
+      ldap_groups: LDAP users and group sync
+      one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+      placeholder_users: Placeholder Users
+      project_list_sharing: Project List Sharing
+      readonly_work_packages: Readonly Work Packages
+      sso_auth_providers: Single sign-on
+      team_planner_view: Team Planner View
+      two_factor_authentication: 2FA Authentication
+      virus_scanning: Antivirus Scanning
+      work_package_query_relation_columns: Work Package Query Relation Columns
+      work_package_sharing: Share work packages with external users
+      work_package_subject_generation: Work Package Subject Generation
+    upsell:
       title: "Tiện ích mở rộng doanh nghiệp"
-      link_title: "Thông tin thêm"
-      automatic_subject_generation:
+      plan_title: "Enterprise %{plan} add-on"
+      plan_name: "%{plan} enterprise plan"
+      plan_text_html: "Available starting with the %{plan_name}."
+      hide_banner: "Hide this banner"
+      baseline_comparison:
+        description: Nổi bật các thay đổi đã thực hiện đối với danh sách này kể từ bất kỳ thời điểm nào trong quá khứ.
+      work_package_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
         description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
-      form_configuration:
-        description: "Tùy chỉnh cấu hình mẫu với các tiện ích bổ sung sau:"
-        add_groups: "Thêm 1 nhóm thuộc tính"
-        rename_groups: "Đổi tên nhóm thuộc tính"
+      conditional_highlighting:
+        description: "Need certain work packages to stand out from the mass? Use conditional highlighting in the work packages table."
+      work_package_query_relation_columns:
+        description: "Need to see relations or child elements in the work package list?"
+      edit_attribute_groups:
+        description: "Customize form configuration with these additional add-ons:"
+        features:
+          groups: "Thêm 1 nhóm thuộc tính"
+          rename: "Rename attribute groups"
+          related: "Add a table of related work packages"
+      readonly_work_packages:
+        description: "Mark work packages as read-only for specific statuses."
+      custom_field_hierarchies:
+        description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
+      date_alerts:
+        description: "Với cảnh báo ngày, bạn sẽ được thông báo về các ngày bắt đầu hoặc kết thúc sắp tới để không bao giờ bỏ lỡ hoặc quên hạn chót quan trọng."
+      work_package_sharing:
+        description: "Chia sẻ gói công việc với người dùng không phải là thành viên của dự án."
+      define_custom_style:
+        title: "Custom color theme and logo"
+        more_info: "Lưu ý: logo sử dụng sẽ được công khai truy cập."
+        description: Tùy chỉnh cài đặt OpenProject của bạn với logo và màu sắc riêng.
+      custom_actions:
+        title: "Tác vụ tùy chỉnh"
+        description: "Hành động tùy chỉnh là các phím tắt một lần để thực hiện một tập hợp các hành động đã được định trước mà bạn có thể làm cho sẵn có trên các gói công việc nhất định dựa trên trạng thái, vai trò, loại hoặc dự án."
+      virus_scanning:
+        description: "Đảm bảo các tệp tải lên trong OpenProject được quét virus trước khi được người dùng khác truy cập."
+      placeholder_users:
+        title: Người dùng giả lập
+        description: >
+          Người dùng giả định là cách để gán các gói công việc cho người dùng không thuộc dự án của bạn. Chúng có thể hữu ích trong nhiều tình huống; ví dụ, nếu bạn cần theo dõi các nhiệm vụ cho một nguồn lực chưa được đặt tên hoặc chưa có sẵn, hoặc nếu bạn không muốn cấp quyền truy cập cho người đó vào OpenProject nhưng vẫn muốn theo dõi các nhiệm vụ được gán cho họ.
+      internal_comments:
+        title: "For your eyes only"
+        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "Theo dõi hoạt động"
   enumeration_work_package_priorities: "Độ ưu tiên của work package"
   enumeration_reported_project_statuses: "Tình trạng dự án đã báo cáo"
@@ -2017,6 +2094,8 @@ vi:
     dialog:
       title: "Xuất"
       submit: "Xuất"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "Định dạng tệp tin"
         options:
@@ -2160,9 +2239,8 @@ vi:
       users: "Người dùng đã đăng ký mới nhất trong trường hợp này."
     blocks:
       community: "Cộng đồng OpenProject"
-      upsale:
+      upsell:
         title: "Nâng cấp lên phiên bản Enterprise"
-        more_info: "Thêm thông tin"
     links:
       upgrade_enterprise_edition: "Nâng cấp lên phiên bản Enterprise"
       postgres_migration: "Di chuyển cài đặt của bạn lên PostgreSQL"
@@ -2517,7 +2595,7 @@ vi:
   label_filter_add: "Thêm bộ lọc"
   label_filter_by: "Filter by"
   label_filter_any_name_attribute: "Name attributes"
-  label_filter_plural: "Các bộ lọc"
+  label_filter_plural: "Bộ lọc"
   label_filters_toggle: "Hiển thị/ẩn bộ lọc"
   label_float: "Số thực"
   label_folder: "Thư mục"
@@ -2639,6 +2717,7 @@ vi:
   label_modules: "Mô-đun"
   label_months_from: "tháng từ"
   label_more: "Xem thêm"
+  label_more_information: "Thông tin thêm"
   label_more_than_ago: "nhiều hơn mấy ngày trước"
   label_move_column_left: "Di chuyển cột sang trái"
   label_move_column_right: "Di chuyển cột sang phải"
@@ -3197,6 +3276,7 @@ vi:
   notice_successful_delete: "Xóa thành công."
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Cập nhật thành công."
+  notice_unsuccessful_update: "Update failed."
   notice_successful_update_custom_fields_added_to_project: |
     Cập nhật thành công. Các trường tùy chỉnh của các loại đã kích hoạt sẽ tự động được kích hoạt
     trên biểu mẫu gói công việc. <a href="%{url}" target="_blank">Xem thêm</a>.
@@ -3234,13 +3314,13 @@ vi:
     text_getting_started_description: "Nhận cái nhìn tổng quan nhanh về quản lý dự án và cộng tác nhóm với OpenProject. Bạn có thể khởi động lại video này từ menu trợ giúp."
     welcome: "Chào mừng đến với %{app_title}"
     select_language: "Vui lòng chọn ngôn ngữ của bạn"
-  permission_add_work_package_notes: "Add comments"
+  permission_add_work_package_comments: "Add comments"
   permission_add_work_packages: "Thêm mới Gói công việc"
   permission_add_messages: "Đăng tin nhắn"
   permission_add_project: "Tạo dự án"
   permission_add_work_package_attachments: "Thêm tệp đính kèm"
   permission_add_work_package_attachments_explanation: "Cho phép thêm tệp đính kèm mà không cần quyền chỉnh sửa gói công việc"
-  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
+  permission_add_internal_comments: "Write internal comments"
   permission_archive_project: "Lưu trữ dự án"
   permission_create_user: "Tạo người dùng"
   permission_manage_user: "Chỉnh sửa người dùng"
@@ -3265,16 +3345,16 @@ vi:
   permission_delete_timelines: "Xóa mốc thời gian"
   permission_delete_wiki_pages: "Xóa trang wiki"
   permission_delete_wiki_pages_attachments: "Xóa tệp đính kèm"
-  permission_edit_work_package_notes: "Moderate comments"
-  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
+  permission_edit_work_package_comments: "Moderate comments"
+  permission_edit_work_package_comments_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Chỉnh sửa gói công việc"
   permission_edit_messages: "Chỉnh sửa tin nhắn"
-  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
-  permission_edit_own_work_package_notes: "Edit own comments"
+  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_work_package_comments: "Edit own comments"
   permission_edit_own_messages: "Chỉnh sửa tin nhắn của riêng bạn"
   permission_edit_own_time_entries: "Chỉnh sửa nhật ký thời gian của riêng bạn"
-  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
+  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "Chỉnh sửa dự án"
   permission_edit_project_attributes: "Chỉnh sửa thuộc tính dự án"
   permission_edit_project_phases: "Edit project phases"
@@ -3315,7 +3395,7 @@ vi:
   permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "Xem dự án"
   permission_view_changesets: "Xem các sửa đổi kho trong OpenProject"
-  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
+  permission_view_internal_comments: "View internal comments"
   permission_view_commit_author_statistics: "Xem thống kê tác giả cam kết"
   permission_view_dashboards: "Xem bảng điều khiển"
   permission_view_work_package_watchers: "Xem danh sách người theo dõi"
@@ -3646,6 +3726,8 @@ vi:
   setting_repository_truncate_at: "Số lượng tệp tối đa hiển thị trong trình duyệt kho"
   setting_rest_api_enabled: "Kích hoạt dịch vụ web REST"
   setting_self_registration: "Đăng ký tự động"
+  setting_self_registration_warning: >
+    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
   setting_session_ttl: "Thời gian hết hạn phiên sau khi không hoạt động"
   setting_session_ttl_hint: "Giá trị dưới 5 hoạt động như bị vô hiệu hóa"
   setting_session_ttl_enabled: "Phiên hết hạn"
@@ -3690,8 +3772,6 @@ vi:
         Các tệp còn lại đã được quét. Có %{file_count} tệp trong cách ly. Bạn sẽ được chuyển hướng đến trang cách ly. Sử dụng trang này để xóa hoặc bỏ qua các tệp đã cách ly.
       remaining_rescanned_files: >
         Quét virus đã được kích hoạt thành công. Có %{file_count} tệp đã được tải lên trước đó và vẫn cần được quét. Quá trình này đã được lên lịch chạy nền. Các tệp sẽ vẫn có thể truy cập trong quá trình quét.
-      upsale:
-        description: "Đảm bảo các tệp tải lên trong OpenProject được quét virus trước khi được người dùng khác truy cập."
       actions:
         delete: "Xóa tệp"
         quarantine: "Cách ly tệp"
@@ -3746,7 +3826,7 @@ vi:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
       label_add: "Thêm"
-      label_add_description: "Add life cycle definition"
+      label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"
       section_header: "Phases"
@@ -3777,6 +3857,9 @@ vi:
       section_holidays_and_closures: "Ngày nghỉ và đóng cửa"
     work_packages:
       not_allowed_text: "You do not have the necessary permissions to view this page."
+      activities:
+        enable_internal_comments: "Enable internal comments"
+        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Gạch dưới"
     plain: "Văn bản thuần"
@@ -3812,8 +3895,6 @@ vi:
     Khi sử dụng các trường tùy chỉnh: Hãy nhớ rằng các trường tùy chỉnh cần được kích hoạt theo từng dự án.
   text_custom_field_hint_activate_per_project_and_type: >
     Các trường tùy chỉnh cần được kích hoạt theo loại gói công việc và theo từng dự án.
-  text_wp_status_read_only_html: >
-    Phiên bản Enterprise sẽ thêm các phần bổ sung cho các trường trạng thái của gói công việc: <br> <ul> <li><b>Cho phép đánh dấu gói công việc chỉ đọc cho các trạng thái cụ thể</b></li> </ul>
   text_project_custom_field_html: >
     Phiên bản Enterprise sẽ thêm các phần bổ sung cho các trường tùy chỉnh của dự án: <br> <ul> <li><b>Thêm các trường tùy chỉnh cho dự án vào danh sách Dự án của bạn để tạo cái nhìn tổng quan về danh mục dự án</b></li> </ul>
   text_custom_logo_instructions: >
@@ -4125,7 +4206,7 @@ vi:
         view_description: "Có thể xem danh sách dự án này."
         edit: "Chỉnh sửa"
         edit_description: "Có thể xem, chia sẻ và chỉnh sửa danh sách dự án này."
-      upsale:
+      upsell:
         message: "Chia sẻ danh sách dự án với người dùng cá nhân là một tiện ích bổ sung doanh nghiệp."
   working_days:
     info: >
@@ -4355,27 +4436,3 @@ vi:
     description: "Thêm nhà cung cấp OmniAuth SAML vào OpenProject"
   enterprise_plans:
     legacy_enterprise: "Enterprise Plan"
-  enterprise_features:
-    baseline_comparison: Baseline Comparison
-    board_view: Board View
-    conditional_highlighting: Conditional Highlighting
-    custom_actions: Custom Actions
-    custom_field_hierarchies: Custom Field Hierarchies
-    customize_life_cycle: Customize Life Cycle
-    date_alerts: Date Alerts
-    define_custom_style: Define Custom Style
-    edit_attribute_groups: Edit Attribute Groups
-    gantt_pdf_export: Gantt PDF Export
-    grid_widget_wp_graph: Grid Widget Work Package Graph
-    ldap_groups: LDAP Groups
-    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
-    placeholder_users: Placeholder Users
-    project_list_sharing: Project List Sharing
-    readonly_work_packages: Readonly Work Packages
-    sso_auth_providers: SSO Auth Providers
-    team_planner_view: Team Planner View
-    two_factor_authentication: Two-Factor Authentication
-    virus_scanning: Attachment Virus Scanning
-    work_package_query_relation_columns: Work Package Query Relation Columns
-    work_package_sharing: Work Package Sharing
-    work_package_subject_generation: Work Package Subject Generation

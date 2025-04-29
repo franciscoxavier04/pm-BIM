@@ -52,6 +52,20 @@ module Storages
 
           group_results[key] = result
         end
+
+        def tally
+          group_results.reduce({}) do |tally, (_, group)|
+            tally.merge(group.tally) { |_, v1, v2| v1 + v2 }
+          end
+        end
+
+        def latest_timestamp
+          group_results.values.filter_map(&:timestamp).max
+        end
+
+        def to_h
+          group_results.transform_values(&:to_h)
+        end
       end
     end
   end

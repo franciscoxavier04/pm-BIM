@@ -34,6 +34,10 @@ module Storages
       class BaseValidatorGroup
         include TaggedLogging
 
+        def self.call(storage)
+          new(storage).call
+        end
+
         def initialize(storage)
           @storage = storage
           @results = ValidationGroupResult.new
