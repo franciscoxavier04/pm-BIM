@@ -246,7 +246,7 @@ export default class MyTimeTrackingController extends Controller {
       if (!eventStart) return;
 
       // Format event date for comparison
-      const eventDateStr = eventStart.toISOString().slice(0, 10);
+      const eventDateStr = moment(eventStart).format('YYYY-MM-DD');
 
       if (eventDateStr === dayStr && event.extendedProps && event.extendedProps.hours) {
         totalHours += event.extendedProps.hours as number;
