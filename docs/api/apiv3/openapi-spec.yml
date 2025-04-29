@@ -294,6 +294,8 @@ paths:
     "$ref": "./paths/priorities.yml"
   "/api/v3/priorities/{id}":
     "$ref": "./paths/priority.yml"
+  "/api/v3/project_phase":
+    "$ref": "./paths/project_phase.yml"
   "/api/v3/project_storages":
     "$ref": "./paths/project_storages.yml"
   "/api/v3/project_storages/{id}":
@@ -775,6 +777,8 @@ components:
       "$ref": "./components/schemas/project_collection_model.yml"
     ProjectModel:
       "$ref": "./components/schemas/project_model.yml"
+    ProjectPhaseModel:
+      "$ref": "./components/schemas/project_phase_model.yml"
     ProjectStorageCollectionModel:
       "$ref": "./components/schemas/project_storage_collection_model.yml"
     ProjectStorageModel:
