@@ -184,6 +184,7 @@ en:
   label_workweek: "Work week"
   label_day: "Day"
   label_today_capitalized: "Today"
+  label_view_mode_switcher: "Change view"
 
   placeholder_activity_select_work_package_first: Work package selection is required first
 
