@@ -28,39 +28,41 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-module API
-  module V3
-    module ProjectPhases
-      class ProjectPhaseRepresenter < ::API::Decorators::Single
-        include API::Decorators::DateProperty
+require "spec_helper"
 
-        self_link
+RSpec.describe API::V3::ProjectPhases::ProjectPhasesAPI, "show", content_type: :json do # rubocop:disable RSpec/SpecFilePathFormat
+  include API::V3::Utilities::PathHelper
 
-        link :definition do
-          {
-            href: api_v3_paths.project_phase_definition(represented.definition_id),
-            title: represented.definition.name
-          }
-        end
+  shared_let(:user) { create(:user) }
+  shared_let(:role) { create(:project_role, permissions: %i(view_project_phases)) }
+  shared_let(:project) do
+    create(:project,
+           members: { user => role })
+  end
+  shared_let(:project_phase) { create(:project_phase, project:) }
 
-        link :project do
-          {
-            href: api_v3_paths.project(represented.project_id),
-            title: represented.project.name
-          }
-        end
+  let(:send_request) do
+    get api_v3_paths.project_phase(project_phase.id)
+  end
 
-        property :id
-        property :name
-        property :active
+  current_user { user }
 
-        date_time_property :created_at
-        date_time_property :updated_at
-
-        def _type
-          "ProjectPhase"
-        end
-      end
+  context "with an authorized user" do
+    before do
+      send_request
     end
+
+    it_behaves_like "successful response"
+  end
+
+  context "with an unauthorized user" do
+    before do
+      role.permissions = role.permissions - [:view_project_phases]
+      role.save!
+
+      send_request
+    end
+
+    it_behaves_like "not found"
   end
 end

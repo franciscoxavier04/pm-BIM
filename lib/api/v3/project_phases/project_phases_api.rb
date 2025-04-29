@@ -31,34 +31,18 @@
 module API
   module V3
     module ProjectPhases
-      class ProjectPhaseRepresenter < ::API::Decorators::Single
-        include API::Decorators::DateProperty
+      class ProjectPhasesAPI < ::API::OpenProjectAPI
+        resources :project_phases do
+          route_param :id do
+            after_validation do
+              @phase = ::Project::Phase.visible(current_user).find(params[:id])
+            end
 
-        self_link
-
-        link :definition do
-          {
-            href: api_v3_paths.project_phase_definition(represented.definition_id),
-            title: represented.definition.name
-          }
-        end
-
-        link :project do
-          {
-            href: api_v3_paths.project(represented.project_id),
-            title: represented.project.name
-          }
-        end
-
-        property :id
-        property :name
-        property :active
-
-        date_time_property :created_at
-        date_time_property :updated_at
-
-        def _type
-          "ProjectPhase"
+            get &::API::V3::Utilities::Endpoints::Show
+                   .new(model: ::Project::Phase,
+                        render_representer: API::V3::ProjectPhases::ProjectPhaseRepresenter)
+                   .mount
+          end
         end
       end
     end

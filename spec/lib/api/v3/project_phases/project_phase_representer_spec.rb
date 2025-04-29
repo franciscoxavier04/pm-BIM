@@ -59,6 +59,14 @@ RSpec.describe API::V3::ProjectPhases::ProjectPhaseRepresenter, "rendering" do
         let(:title) { definition.name }
       end
     end
+
+    describe "project" do
+      it_behaves_like "has a titled link" do
+        let(:link) { "project" }
+        let(:href) { api_v3_paths.project project.id }
+        let(:title) { project.name }
+      end
+    end
   end
 
   describe "properties" do
@@ -72,6 +80,10 @@ RSpec.describe API::V3::ProjectPhases::ProjectPhaseRepresenter, "rendering" do
 
     it_behaves_like "property", :name do
       let(:value) { phase.name }
+    end
+
+    it_behaves_like "property", :active do
+      let(:value) { phase.active }
     end
 
     describe "createdAt" do
