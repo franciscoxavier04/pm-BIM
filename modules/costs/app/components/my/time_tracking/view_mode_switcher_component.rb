@@ -36,7 +36,7 @@ module My
               :date
 
       def call
-        render(Primer::Alpha::TabNav.new(label: I18n.l(:label_view_mode_switcher))) do |component|
+        render(Primer::Alpha::TabNav.new(label: I18n.t(:label_view_mode_switcher))) do |component|
           component.with_tab(selected: view_mode == :calendar, href: link(:calendar)) do |tab|
             tab.with_text { I18n.t(:label_calendar) }
             tab.with_icon(icon: :calendar)
