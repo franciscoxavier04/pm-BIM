@@ -75,7 +75,7 @@ module CustomField::OrderStatements
   # Returns the expression to use in SELECT clause if it differs from one used
   # to group by
   def group_by_select_statement
-    return unless field_format == "list" || field_format == "hierarchy"
+    return unless ["list", "hierarchy"].include?(field_format)
 
     # MIN needed to not add this column to group by, ANY_VALUE can be used when
     # minimum required PostgreSQL becomes 16
@@ -153,19 +153,23 @@ module CustomField::OrderStatements
   end
 
   def join_for_order_by_user_sql
-    columns_array = "ARRAY[users.lastname, users.firstname, users.mail]"
+    columns_array = "ARRAY[users_for_ordering.lastname, users_for_ordering.firstname, users_for_ordering.mail]"
 
     join_for_order_sql(
       value: multi_value? ? "ARRAY_AGG(#{columns_array} ORDER BY #{columns_array})" : columns_array,
-      join: "INNER JOIN #{User.quoted_table_name} users ON users.id = cv.value::bigint",
+      join: "INNER JOIN #{User.quoted_table_name} users_for_ordering ON users_for_ordering.id = cv.value::bigint",
       multi_value:
     )
   end
 
   def join_for_order_by_version_sql
     join_for_order_sql(
-      value: multi_value? ? "array_agg(versions.name ORDER BY versions.name)" : "versions.name",
-      join: "INNER JOIN #{Version.quoted_table_name} versions ON versions.id = cv.value::bigint",
+      value: if multi_value?
+               "array_agg(versions_for_ordering.name ORDER BY versions_for_ordering.name)"
+             else
+               "versions_for_ordering.name"
+             end,
+      join: "INNER JOIN #{Version.quoted_table_name} versions_for_ordering ON versions_for_ordering.id = cv.value::bigint",
       multi_value:
     )
   end
