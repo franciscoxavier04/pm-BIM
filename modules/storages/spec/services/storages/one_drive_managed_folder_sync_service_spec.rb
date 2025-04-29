@@ -52,10 +52,7 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
   shared_let(:oidc_provider) { create(:oidc_provider) }
 
   # USER FACTORIES
-  shared_let(:oidc_user) do
-    identity_url = "#{oidc_provider.slug}:qweqweqweqwe"
-    create(:user, identity_url:)
-  end
+  shared_let(:oidc_user) { create(:user, authentication_provider: oidc_provider) }
   shared_let(:single_project_user) { oidc_user }
   shared_let(:single_project_user_remote_identity) do
     create(:remote_identity,

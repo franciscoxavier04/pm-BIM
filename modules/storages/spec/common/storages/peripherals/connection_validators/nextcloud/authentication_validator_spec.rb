@@ -72,7 +72,7 @@ module Storages
           context "when using OpenID Connect" do
             let(:storage) { create(:nextcloud_storage_configured, :oidc_sso_enabled) }
 
-            let(:user) { create(:user, identity_url: "#{oidc_provider.slug}:UNIVERSALLY-DUPLICATED-IDENTIFIER") }
+            let(:user) { create(:user, authentication_provider: oidc_provider) }
             let!(:oidc_provider) { create(:oidc_provider) }
 
             before do

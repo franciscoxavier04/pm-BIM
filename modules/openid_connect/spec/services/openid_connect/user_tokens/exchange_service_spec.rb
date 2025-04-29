@@ -31,7 +31,7 @@ require "spec_helper"
 
 RSpec.describe OpenIDConnect::UserTokens::ExchangeService, :webmock do
   let(:service) { described_class.new(user:) }
-  let(:user) { create(:user, identity_url: "#{provider.slug}:1337") }
+  let(:user) { create(:user, authentication_provider: provider) }
   let(:provider) { create(:oidc_provider, :token_exchange_capable) }
 
   let(:access_token) { "the-access-token" }
