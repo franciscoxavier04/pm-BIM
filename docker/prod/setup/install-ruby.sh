@@ -30,3 +30,4 @@ ruby-install --system ruby $1 -- --with-jemalloc --enable-yjit
 gem install bundler --no-document
 
 rm -rf ruby-install-$RUBYINSTALL_VERSION/ *.asc ruby-install-$RUBYINSTALL_VERSION.tar.gz /usr/local/bin/ruby-install /usr/local/share/ruby-install/ /usr/local/src/*
+echo "/usr/local/lib" > /etc/ld.so.conf.d/ruby.conf && ldconfig
