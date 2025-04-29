@@ -93,7 +93,7 @@ module My
       if mobile?
         "day"
       else
-        "week"
+        "workweek"
       end
     end
 
