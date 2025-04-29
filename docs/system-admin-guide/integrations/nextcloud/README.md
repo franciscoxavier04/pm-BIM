@@ -83,7 +83,7 @@ Click on the **Save** button.
 
 ## 2. Create a Nextcloud file storage in your OpenProject instance
 
-Navigate to your OpenProject administration settings page by clicking on *your avatar in the top right corner → Administration*. From the side menu on the left, click on **Files -> External file storages**.
+Navigate to your OpenProject administration settings page by clicking on *your avatar in the top right corner → Administration*. From the side menu on the left select *Files -> External file storages*.
 
 Click on **+ Storage** to add a new file storage.
 
@@ -101,19 +101,19 @@ Next, enter the **Host URL** of your Nextcloud instance. This is simply the addr
 
 After deciding on an authentication method (more details in the next step), click on **Save and continue setup**. Your new storage is now created, but before you can use it, you will need to configure the chosen authentication method.
 
-### 3. Configure Authentication method
+### 3. Configure authentication method
 
 The next part of the setup will vary depending on your chosen authentication method between OpenProject and Nextcloud.
 
-**Two-way OAuth 2.0 authorization code flow:** This way of authentication works with all deployments of OpenProject and Nextcloud. Requests between the two applications will act with the target application acting as OAuth 2.0 authorization server. For the users this means, that they will usually have to confirm a separate OAuth consent screen for both directions of communication.
+**Two-way OAuth 2.0 authorization code flow:** This way of authentication works with all deployments of OpenProject and Nextcloud. Requests between the two applications will act with the target application acting as OAuth 2.0 authorization server. For the users this means that they will usually have to confirm a separate OAuth consent screen for both directions of communication.
 
-**Single-Sign-On through OpenID Connect Identity Provider:** This authentication mode improves user experience by eliminating additional consent screens. Requests between OpenProject and Nextcloud are authenticated with access tokens obtained from a common Identity Provider. This requires both applications to use the same OpenID Connect Identity Provider and specific configurations at the provider level. This advanced feature is available for all installations under the Enterprise Corporate plan.
+**Single Sign-On through OpenID Connect Identity Provider:** This authentication mode improves user experience by eliminating additional consent screens. Requests between OpenProject and Nextcloud are authenticated with access tokens obtained from a common Identity Provider. This requires both applications to use the same OpenID Connect Identity Provider and specific configurations at the provider level. This advanced feature is available for all installations under the Enterprise Corporate plan.
 
 
 Instructions for both authentication methods can be found on the following pages:
 
 * [Setup Two-way OAuth 2.0 authorization code flow](./two-way-oauth2/)
-* [Setup Single-Sign-On through OpenID Connect Identity Provider](./oidc-sso/)
+* [Setup Single Sign-On through OpenID Connect Identity Provider](./oidc-sso/)
 
 After finishing the corresponding setup steps, continue with the following steps on this page.
 

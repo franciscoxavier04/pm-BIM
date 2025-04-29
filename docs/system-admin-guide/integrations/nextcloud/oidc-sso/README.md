@@ -1,12 +1,12 @@
 ---
 sidebar_navigation:
-  title: Setup Single-Sign-On through OpenID Connect Identity Provider
+  title: Setup Single Sign-On through OpenID Connect Identity Provider
   priority: 900
-description: Set up Single-Sign-On through OpenID Connect Identity Provider as the authentication method for your Nextcloud storage
+description: Set up Single Sign-On through OpenID Connect Identity Provider as the authentication method for your Nextcloud storage
 keywords: Nextcloud file storage integration
 ---
 
-# Setup Single-Sign-On through OpenID Connect Identity Provider
+# Setup Single Sign-On through OpenID Connect Identity Provider
 
 This authentication mode will use access tokens provided by an identity provider shared among Nextcloud and OpenProject to authenticate requests performed in the name of users.
 
@@ -24,39 +24,39 @@ These requirements are explained in more detail below.
 
 ### User authentication
 
-The requests between OpenProject and Nextcloud usually happen on behalf of a specific user. For example when OpenProject requests a file, Nextcloud will need to make sure that the user for whom we download the file had access to it in the first place.
+The requests between OpenProject and Nextcloud usually happen on behalf of a specific user. For example, when OpenProject requests a file, Nextcloud will need to make sure that the user for whom we download the file has access to it in the first place.
 
 For that to be possible, the user must authenticate in both applications through the same identity provider.
 
-Additionally the user account has to be created in both systems already at the time of the request. Right now this requires users to login to both systems at least once. In the future, the initial creations of accounts will also be automated.
+Additionally, the user account has to be created in both systems already at the time of the request. Right now this requires users to log in to both systems at least once. In the future, the initial creation of accounts will also be automated.
 
 ### Token compatibility
 
-The identity provider will need to hand out JWT encoded access tokens that can be validated according to the rules of [RFC 9068](https://www.rfc-editor.org/rfc/rfc9068). Such tokens indicate which application they are allowed to be used  in (the so-called Token _Audience_) and can be validated by an application mostly without performing additional web requests to the identity provider.
+The identity provider will need to hand out JWT-encoded access tokens that can be validated according to the rules of [RFC 9068](https://www.rfc-editor.org/rfc/rfc9068). Such tokens indicate which application they are allowed to be used  in (the so-called Token _Audience_) and can be validated by an application mostly without performing additional web requests to the identity provider.
 
-It must be possible for OpenProject to obtain an access token that includes the Nexcloud client in the audience and vice versa, to allow making requests between the two applications. This has to be supported in one of two ways by the identity provider:
+It must be possible for OpenProject to obtain an access token that includes the Nextcloud client in the audience and vice versa, to allow making requests between the two applications. This has to be supported in one of two ways by the identity provider:
 
-1. It allows to perform _OAuth 2.0 Token Exchange_ according to [RFC 8693](https://www.rfc-editor.org/rfc/rfc8693)
+1. It allows performing _OAuth 2.0 Token Exchange_ according to [RFC 8693](https://www.rfc-editor.org/rfc/rfc8693)
 2. Alternatively, it provides tokens with the necessary audience during initial SSO authentication of the user
 
-Token exchange is generally the more secure option, since it allows stricter control by the identity provider which application can obtain tokens to make requests to other applications. It's usually harder to use leaked access tokens of this kind for privilege escalation. However, depending on the provider, the latter option may be easier to set-up.
+Token exchange is generally the more secure option, since it allows stricter control by the identity provider which application can obtain tokens to make requests to other applications. It's usually harder to use leaked access tokens of this kind for privilege escalation. However, depending on the provider, the latter option may be easier to set up.
 
 ### Long-term access
 
-OpenProject relies on the ability to retain access to issued tokens over a long duration. That means issued refresh tokens should not expire under normal circumstances. This is usually achieved by requesting a scope called `offline_access` from the identity provider.
+OpenProject relies on the ability to retain access to issued tokens over a long duration. This means that issued refresh tokens should not expire under normal circumstances. This is usually achieved by requesting the `offline_access` scope from the identity provider.
 
 ## 2. Configuring supported identity providers
 
-The integration between OpenProject and Nextcloud has been tested with the following identity providers and we consider them officially supported:
+The integration between OpenProject and Nextcloud has been tested with the following identity providers, which we consider officially supported:
 
 * Keycloak
 * Nextcloud Hub
 
-Other identity providers might work as well, but we only have limited capabilities to help you in setting them up. The Keycloak instructions should explain all the general steps necessary to make it work, but the exact way to configure it for your identity provider will most likely be different.
+Other identity providers might work as well, but we have only limited capacity to assist with their setup. The Keycloak instructions should explain all the general steps necessary to make it work, but the exact way to configure it for your identity provider will likely differ.
 
 ### Keycloak
 
-Keycloak can provide tokens via Token Exchange, as well as immediately after user sign in. Using Token Exchange is preferred, but requires to enable two preview features in the Keycloak deployment:
+Keycloak can provide tokens via Token Exchange, as well as immediately after user sign-in. Using Token Exchange is preferred, but requires enabling two preview features in the Keycloak deployment:
 
 * `token-exchange`
 * `admin-fine-grained-authz`
@@ -65,14 +65,14 @@ If you prefer not to enable preview features on your production deployment, it's
 
 #### Common setup steps
 
-Regardless of the way that tokens are handed out, you need to configure the clients correctly. Assuming that users can already sign in
-to your OpenProject and Nextcloud instance via Keycloak, you should already have configured a client for both applications. For the rest of
-this guide we will assume that these clients exist with the client ID `openproject` and `nextcloud` respectively.
+Regardless of how tokens are handed out, you need to configure the clients correctly. Assuming that users can already sign in
+to your OpenProject and Nextcloud instances via Keycloak, you should already have configured a client for both applications. For the rest of
+this guide, we will assume that these clients exist with the client ID `openproject` and `nextcloud` respectively.
 
-To make requests to the API of OpenProject a client needs to obtain a token with the scope `api_v3`. We need to configure this client scope
+To make requests to the API of OpenProject, a client needs to obtain a token with the scope `api_v3`. We need to configure this client scope
 in Keycloak, so that the Nextcloud client can obtain it.
 
-First navigate to "Client scopes" and there press the button to "Create client scope" and give the scope a name of `api_v3`. Make sure
+First, navigate to "Client scopes", click the "Create client scope" button and name the scope `api_v3`. Make sure
 to enable the option "Include in token scope", then save the form.
 
 This makes the scope ready to use. How we will use it, depends on the way that tokens are handed out to clients.
@@ -81,13 +81,13 @@ This makes the scope ready to use. How we will use it, depends on the way that t
 
 ##### Configuring Keycloak
 
-First make sure that you enabled both required features in Keycloak: `token-exchange` and `admin-fine-grained-authz`. You can [follow the Keycloak documentation on how to do that](https://www.keycloak.org/server/features). Once they are enabled you can confirm them from the "Server Info" tab in your Keycloak installation:
+First, make sure that you enabled both required features in Keycloak: `token-exchange` and `admin-fine-grained-authz`. You can [follow the Keycloak documentation on how to do that](https://www.keycloak.org/server/features). Once they are enabled, you can confirm them from the "Server Info" tab in your Keycloak installation:
 
 ![The Keycloak UI that shows enabled features](keycloak_features.png)
 
 We will need to allow OpenProject to exchange tokens with `nextcloud` in the audience, as well as allowing Nextcloud to exchange tokens with `openproject` in the audience.
 
-To do this, we first create policies that will be used to control which clients are allowed to exchange tokens for a specific audience. Go to the `realm-management` client (in the default realm this client is called `master-realm`) and switch to the Tab "Authorization" and there to the "Policies" submenu. In case the "Authorization" tab is not visible, it might be necessary to make it visible by going to "Permissions" first and enabling fine-grained permissions there. Assuming you didn't create any other policies yet, your view should look similar to this:
+To do this, we first create policies that will be used to control which clients are allowed to exchange tokens for a specific audience. Go to the `realm-management` client (in the default realm this client is called `master-realm`) and switch to the "Authorization" tab and there to the "Policies" submenu. If the "Authorization" tab is not visible, it might be necessary to make it visible by going to "Permissions" first and enabling fine-grained permissions there. Assuming you didn't create any other policies yet, your view should look similar to this:
 
 ![An empty list of policies](keycloak_empty_policies.png)
 
@@ -95,13 +95,13 @@ Click the "Create client policy" button and select "Client" as the policy type. 
 
 ![One of the two exchange policies configured above](keycloak_exchange_policy.png)
 
-We will later use these policies to control who is allowed to perform a token exchange that results in a token usable for requests to the given client. For example if you have additional clients that need to obtain a token usable at OpenProject, you'd add those clients to the `allowed-to-exchange-openproject-token` client list. The names suggested here are proposals for readable policy names, but they have no practical impact.
+We will later use these policies to control who is allowed to perform a token exchange that results in a token usable for requests to the given client. For example, if you have additional clients that need to obtain a token usable at OpenProject, you'd add those clients to the `allowed-to-exchange-openproject-token` client list. The names suggested here are proposals for readable policy names, but they have no practical impact.
 
-Next we will need to use the policies, so that they actually do allow the token exchange for given clients. Navigate to the `openproject` client, go to the Tab "Permissions", enable the box "Permissions enabled" and select the permission with the name `token-exchange`. You should end up on a form similar to this one:
+Next, we need to apply the policies, so that they actually allow the token exchange for given clients. Navigate to the `openproject` client, go to the Tab "Permissions", enable the "Permissions enabled" checkbox and select the permission with the name `token-exchange`. You should end up on a form similar to this one:
 
 ![Empty view of the permission configuration dialog](keycloak_exchange_permission.png)
 
-In the field "Policies" you can now add the `allowed-to-exchange-openproject-token` we created earlier. This means that clients matching that policy will be allowed to exchange an access token that has the `openproject`.
+In the field "Policies" you can now add the `allowed-to-exchange-openproject-token` we created earlier. This means that clients matching that policy will be allowed to exchange an access token that includes the `openproject` audience.
 
 Afterwards repeat the previous steps to add the `allowed-to-exchange-nextcloud-token` policy to the `nextcloud` client.
 
