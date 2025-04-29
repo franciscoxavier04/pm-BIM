@@ -48,9 +48,9 @@ RSpec.describe My::TimeTrackingController do
           allow(TimeEntry).to receive(:can_track_start_and_end_time?).and_return(true)
         end
 
-        it "renders the calendar week view" do
+        it "renders the work week view" do
           get :index
-          expect(assigns(:mode)).to eq(:week)
+          expect(assigns(:mode)).to eq(:workweek)
           expect(assigns(:view_mode)).to eq(:calendar)
         end
       end
@@ -60,9 +60,9 @@ RSpec.describe My::TimeTrackingController do
           allow(TimeEntry).to receive(:can_track_start_and_end_time?).and_return(false)
         end
 
-        it "renders the week list view" do
+        it "renders the work week list view" do
           get :index
-          expect(assigns(:mode)).to eq(:week)
+          expect(assigns(:mode)).to eq(:workweek)
           expect(assigns(:view_mode)).to eq(:list)
         end
       end
