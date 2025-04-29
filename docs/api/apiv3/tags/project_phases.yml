@@ -23,11 +23,9 @@ description: |-
 
   | Property               | Description                                                                        | Type              | Constraints                          | Supported operations |
   | :---------------------:| -------------                                                                      | ----              | -----------                          | -------------------- |
-  | id                     | Project phase's id                                                                 | Integer           | x > 0                                | READ/WRITE           |
-  | name                   |                                                                                    | String            |                                      | READ/WRITE           |
-  | active                 | Indicates whether the project phase is currently active within the project         | Boolean           |                                      | READ/WRITE           |
+  | id                     | Project phase's id                                                                 | Integer           | x > 0                                | READ                 |
+  | name                   |                                                                                    | String            |                                      | READ                 |
+  | active                 | Indicates whether the project phase is currently active within the project         | Boolean           |                                      | READ                 |
   | createdAt              | Time of creation                                                                   | DateTime          |                                      | READ                 |
   | updatedAt              | Time of the most recent change to the project phase                                | DateTime          |                                      | READ                 |
-
-  Depending on custom fields defined for projects, additional properties might exist.
 name: Project Phases

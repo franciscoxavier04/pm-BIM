@@ -18,6 +18,8 @@ properties:
     description: The project phase's id
     minimum: 1
   name:
+    type: string
+  active:
     type: boolean
   createdAt:
     type: string
