@@ -43,7 +43,7 @@ module My
             t("label_#{current_mode}")
           end
 
-          %i[day week workweek month].each { menu_item_for_mode(menu, it) }
+          %i[day workweek week month].each { menu_item_for_mode(menu, it) }
         end
       end
 
