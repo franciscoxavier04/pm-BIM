@@ -25,6 +25,8 @@ export default class MyTimeTrackingController extends Controller {
     canEdit: Boolean,
     allowTimes: Boolean,
     forceTimes: Boolean,
+    workingDays: Array,
+    startOfWeek: Number,
   };
 
   declare readonly calendarTarget:HTMLElement;
@@ -38,6 +40,8 @@ export default class MyTimeTrackingController extends Controller {
   declare readonly forceTimesValue:boolean;
   declare readonly localeValue:string;
   declare readonly viewModeValue:string;
+  declare readonly workingDaysValue:number[];
+  declare readonly startOfWeekValue:number;
 
   private calendar:Calendar;
   private DEFAULT_TIMED_EVENT_DURATION = '01:00';
@@ -85,7 +89,9 @@ export default class MyTimeTrackingController extends Controller {
       eventMaxStack: 2,
       eventShortHeight: 31,
       nowIndicator: true,
-      businessHours: { daysOfWeek: [1, 2, 3, 4, 5], startTime: '00:00', endTime: '24:00' },
+      businessHours: { daysOfWeek: this.workingDaysValue, startTime: '00:00', endTime: '24:00' },
+      hiddenDays: this.hiddenDays(),
+      firstDay: this.startOfWeekValue,
       eventClassNames(arg) {
         return [
           'calendar-time-entry-event',
@@ -373,6 +379,7 @@ export default class MyTimeTrackingController extends Controller {
   calendarView():string {
     switch (this.modeValue) {
       case 'week':
+      case 'workweek':
         return 'timeGridWeek';
       case 'month':
         return 'dayGridMonth';
@@ -381,6 +388,23 @@ export default class MyTimeTrackingController extends Controller {
       default:
         return 'timeGridWeek';
     }
+  }
+
+  hiddenDays():number[] {
+    // if we are not in workweek mode we do not hide any days
+    if (this.modeValue !== 'workweek') {
+      return [];
+    }
+
+    const hiddenDays = [0, 1, 2, 3, 4, 5, 6];
+    this.workingDaysValue.forEach((day) => {
+      const index = hiddenDays.indexOf(day);
+      if (index > -1) {
+        hiddenDays.splice(index, 1);
+      }
+    });
+
+    return hiddenDays;
   }
 
   newTimeEntry(event:ActionEvent) {

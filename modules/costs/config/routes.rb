@@ -53,7 +53,7 @@ Rails.application.routes.draw do
     get "/time-tracking/(:mode-:view_mode)(/:date)" => "time_tracking#index",
         as: :time_tracking,
         constraints: {
-          mode: /day|week|month/,
+          mode: /day|week|workweek|month/,
           view_mode: /list|calendar/,
           date: /\d{4}-\d{2}-\d{2}/
         }

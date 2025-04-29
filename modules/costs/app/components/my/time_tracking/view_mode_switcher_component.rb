@@ -30,8 +30,28 @@
 
 module My
   module TimeTracking
-    class HeaderComponent < ApplicationComponent
-      options :date, :mode, :view_mode
+    class ViewModeSwitcherComponent < ApplicationComponent
+      options :mode,
+              :view_mode,
+              :date
+
+      def call
+        render(Primer::Alpha::TabNav.new(label: I18n.t(:label_view_mode_switcher))) do |component|
+          component.with_tab(selected: view_mode == :calendar, href: link(:calendar)) do |tab|
+            tab.with_text { I18n.t(:label_calendar) }
+            tab.with_icon(icon: :calendar)
+          end
+
+          component.with_tab(selected: view_mode == :list, href: link(:list)) do |tab|
+            tab.with_text { I18n.t(:label_list) }
+            tab.with_icon(icon: "op-view-list")
+          end
+        end
+      end
+
+      def link(new_view_mode)
+        my_time_tracking_path(date: date, mode: mode, view_mode: new_view_mode)
+      end
     end
   end
 end
