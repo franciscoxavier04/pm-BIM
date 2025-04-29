@@ -18,6 +18,7 @@ ENV APP_DATA_PATH=/var/openproject/assets
 ENV PGVERSION="13"
 ENV PGVERSION_CHOICES="13 15 17"
 ENV PGBIN="/usr/lib/postgresql/$PGVERSION/bin"
+ENV PATH="$PGBIN:$PATH"
 ENV BUNDLE_WITHOUT="development:test"
 
 # RAILS
