@@ -315,10 +315,10 @@ module Pages::Meetings
       expect(page).to have_css(".CollapsibleHeader", text: I18n.t("label_agenda_backlog"))
 
       if collapsed
-        expect(page).to have_css(".CollapsibleHeader.CollapsibleHeader--collapsed")
+        expect(page).to have_css(".CollapsibleHeader[data-collapsed]")
         expect(page).to have_no_text(I18n.t("text_agenda_backlog"))
       else
-        expect(page).to have_no_css(".CollapsibleHeader.CollapsibleHeader--collapsed")
+        expect(page).to have_no_css(".CollapsibleHeader[data-collapsed]")
         expect(page).to have_text(I18n.t("text_agenda_backlog"))
       end
     end
@@ -327,10 +327,10 @@ module Pages::Meetings
       expect(page).to have_css(".CollapsibleHeader", text: I18n.t("label_series_backlog"))
 
       if collapsed
-        expect(page).to have_css(".CollapsibleHeader.CollapsibleHeader--collapsed")
+        expect(page).to have_css(".CollapsibleHeader[data-collapsed]")
         expect(page).to have_no_text(I18n.t("text_series_backlog"))
       else
-        expect(page).to have_no_css(".CollapsibleHeader.CollapsibleHeader--collapsed")
+        expect(page).to have_no_css(".CollapsibleHeader[data-collapsed]")
         expect(page).to have_text(I18n.t("text_series_backlog"))
       end
     end
