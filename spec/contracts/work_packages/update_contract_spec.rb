@@ -185,7 +185,7 @@ RSpec.describe WorkPackages::UpdateContract do
 
     describe "journal_notes" do
       context "when only adding a comment and having only the comment permission permission" do
-        let(:permissions) { %i[view_work_packages add_work_package_notes] }
+        let(:permissions) { %i[view_work_packages add_work_package_comments] }
 
         before do
           work_package.attributes = { journal_notes: "some notes" }
@@ -195,7 +195,7 @@ RSpec.describe WorkPackages::UpdateContract do
       end
 
       context "when changing more than a comment and having only the comment permission permission" do
-        let(:permissions) { %i[view_work_packages add_work_package_notes] }
+        let(:permissions) { %i[view_work_packages add_work_package_comments] }
 
         before do
           work_package.attributes = { journal_notes: "some notes", subject: "blubs" }

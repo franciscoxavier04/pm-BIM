@@ -21,7 +21,7 @@
 #++
 et:
   plugin_budgets_engine:
-    name: 'Budgets'
+    name: 'Eelarved'
   activerecord:
     attributes:
       budget:
@@ -54,7 +54,7 @@ et:
   caption_labor: "Labor"
   caption_labor_costs: "Actual labor costs"
   caption_material_costs: "Actual unit costs"
-  budgets_title: "Budgets"
+  budgets_title: "Eelarved"
   events:
     budget: "Budget edited"
   help_click_to_edit: "Click here to edit."
@@ -72,7 +72,7 @@ et:
   notice_no_budgets_available: "Ühtegi eelarvet pole saadaval."
   permission_edit_budgets: "Eelarvete muutmine"
   permission_view_budgets: "View budgets"
-  project_module_budgets: "Budgets"
+  project_module_budgets: "Eelarved"
   text_budget_reassign_to: "Reassign them to this budget:"
   text_budget_delete: "Delete the budget from all work packages"
   text_budget_destroy_assigned_wp: "There are %{count} work packages assigned to this budget. What do you want to do?"

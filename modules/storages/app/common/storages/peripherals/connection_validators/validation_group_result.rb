@@ -32,15 +32,21 @@ module Storages
   module Peripherals
     module ConnectionValidators
       class ValidationGroupResult
-        delegate :[], to: :@results
+        delegate :[], :each_pair, to: :@results
 
-        def initialize
+        attr_reader :key
+
+        def initialize(key)
+          @key = key
           @results = {}
         end
 
         def success? = @results.values.all?(&:success?)
+
         def non_failure? = @results.values.none?(&:failure?)
+
         def failure? = @results.values.any?(&:failure?)
+
         def warning? = @results.values.any?(&:warning?)
 
         def tally
@@ -61,6 +67,27 @@ module Storages
           raise(ArgumentError, "Check #{key} not registered.") unless @results.key?(key)
 
           @results[key] = value
+        end
+
+        def timestamp
+          @results.values.filter_map(&:timestamp).max
+        end
+
+        def humanize_title = I18n.t("storages.health.checks.#{key}.header")
+
+        def humanize_summary
+          case tally
+          in { failure: 1.. }
+            I18n.t("storages.health.checks.failures", count: tally[:failure])
+          in { warning: 1.. }
+            I18n.t("storages.health.checks.warnings", count: tally[:warning])
+          else
+            I18n.t("storages.health.checks.failures", count: 0)
+          end
+        end
+
+        def to_h
+          @results.transform_values(&:to_h)
         end
       end
     end

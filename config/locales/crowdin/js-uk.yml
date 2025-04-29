@@ -239,7 +239,7 @@ uk:
           status_waiting: "Лист надіслано - очікуємо підтвердження"
           test_ee: "Отримайте версію Enterprise на 14 днів безкоштовно"
           quick_overview: "Отримайте стислий огляд управління проєктами й командної роботи у версії OpenProject Enterprise."
-        upsale:
+        upsell:
           become_hero: "Стань героєм!"
           enterprise_info_html: "%{feature_title} – це доповнення версії Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
           upgrade_info: "Перейдіть на платний план, щоб активувати його та почати використовувати його у своїй команді."
@@ -254,7 +254,7 @@ uk:
             professional_support: "Професійна підтримка"
             professional_support_text: "Отримайте надійну, комплексну підтримку від досвідчених інженерів, які знають усе про запуск OpenProject у критично важливих для бізнесу середовищах."
           button_start_trial: "Розпочати безкоштовну пробну версію"
-          button_upgrade: "Оновити"
+          button_upgrade: "Перейти"
           button_contact_us: "Зв’яжіться з нами, щоб отримати демоверсію"
           button_book_now: "Забронювати зараз"
           confidence: >
@@ -867,7 +867,7 @@ uk:
     tl_toolbar:
       zooms: "Рівень масштабування"
       outlines: "Рівень ієрархії"
-    upsale:
+    upsell:
       ee_only: "Доповнення версії Enterprise"
     wiki_formatting:
       strong: "Жирний"

@@ -103,6 +103,11 @@ module ChronicDuration
     if %i[hours_only hours_and_minutes].include?(opts[:format])
       hours = seconds / 3600.0
       seconds = 0
+    elsif opts[:format] == :hours_colon_minutes
+      hours = (seconds / hour).to_i
+      minutes = (seconds % hour / minute).to_i
+      minutes += 1 if (seconds % hour % minute) > 0
+      seconds = 0
     elsif seconds >= SECONDS_PER_YEAR && seconds % year < seconds % month
       years = seconds / year
       months = seconds % year / month
@@ -187,6 +192,19 @@ module ChronicDuration
 
       minutes = ((hours % 1) * 60).round
       hours = hours.floor
+    when :hours_colon_minutes
+      dividers = {
+        hours: ":", minutes: "", keep_zero: true
+      }
+      process = lambda do |str|
+        # Pad zeros on minutes
+        divider = ":"
+        result = str.split(divider).each_with_index.map do |n, index|
+          n.rjust(index > 0 ? 2 : 1, "0")
+        end.join(divider)
+        "#{result} h"
+      end
+      joiner = ""
     when :chrono
       dividers = {
         years: ":", months: ":", weeks: ":", days: ":", hours: ":", minutes: ":", seconds: ":", keep_zero: true

@@ -238,7 +238,7 @@ pt-BR:
           status_waiting: "e-mail enviado - aguardando confirmação"
           test_ee: "Teste a edição Enterprise gratuitamente por 14 dias"
           quick_overview: "Obtenha uma visão geral da gestão de projetos e colaboração entre equipes com o OpenProject edição Enterprise."
-        upsale:
+        upsell:
           become_hero: "Torne-se um herói!"
           enterprise_info_html: "%{feature_title} é um complemento do <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> Enterprise."
           upgrade_info: "Faça o upgrade para um plano pago para ativar e começar a usá-lo em sua equipe."
@@ -864,7 +864,7 @@ pt-BR:
     tl_toolbar:
       zooms: "Nível de zoom"
       outlines: "Nível de hierarquia"
-    upsale:
+    upsell:
       ee_only: "Complemento da edição Enterprise"
     wiki_formatting:
       strong: "Negrito"

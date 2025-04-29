@@ -41,9 +41,14 @@ ja:
         changed: "changed"
         created: "作成する"
         commented: "コメント"
-        restrict_visibility: Restrict visibility
-        restricted_journal: Restricted comments are visible to a limited group of members.
+        internal_comment: Internal comment
+        internal_journal: Internal comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
+        internal_comment_confirmation:
+          title: "Make this comment public?"
+          heading: "Make this comment public?"
+          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          confirm_button_text: "Make public"
   admin:
     plugins:
       no_results_title_text: There are currently no plugins installed.
@@ -290,7 +295,7 @@ ja:
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "全て"
       messages: "フォーラム"
       wiki_pages: "Wiki"
   groups:
@@ -344,6 +349,24 @@ ja:
         heading: "Delete this project list?"
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
+      public_warning: >
+        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+      public_confirmation:
+        checkbox: "I understand that this will make the previously private content public"
+        title: "Make this project public?"
+        description: >
+          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+      private_confirmation:
+        checkbox: "I understand that this will make the previously public content private."
+        title: "Make this project private?"
+        description: >
+          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       change_identifier: 識別子の変更
       actions:
         label_enable_all: "Enable all"
@@ -601,9 +624,9 @@ ja:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "ワーク パッケージ"
+            parent: "親項目"
+            project: "プロジェクト"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -736,10 +759,12 @@ ja:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      new_child: "Create new child"
-      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child: "子関係を作成"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "関連するワークパッケージを現在の(親)ワークパッケージのサブ項目にします。"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "ブロックしている"
       label_blocks_plural: "ブロックしている"
@@ -931,11 +956,11 @@ ja:
         is_required: "Required for all projects"
         custom_field_section: セクション
       project/phase:
-        date_range: "Date range"
+        date_range: "期間"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "名称"
+        color: "色"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1060,7 +1085,7 @@ ja:
           title: "Working days"
           false: "working days only"
           true: "include non-working days"
-        journal_restricted: Restricted Journal
+        journal_internal: Internal Journal
         notify: "Notify" #used in custom actions
         parent: "親項目"
         parent_issue: "親項目"
@@ -1281,7 +1306,7 @@ ja:
             values:
               inclusion: "フィルタの値が無効です"
               format: "%{message}"
-        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+        queries/principals/filters/internal_mentionable_on_work_package_filter:
           attributes:
             values:
               single_value_requirement: "must be a single work package"
@@ -1528,14 +1553,14 @@ ja:
       changeset: "更新履歴"
       message: "フォーラム"
       news: "ニュース"
-      project_details: "Project details"
+      project_details: "プロジェクトの詳細"
       subproject: "Include subprojects"
       time_entry: "作業時間の記録"
       wiki_edit: "Wiki"
       work_package: "ワークパッケージ"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "有効化"
+      deactivated: "無効化"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -1782,7 +1807,8 @@ ja:
     text:
       failed: 'プロジェクト「%{target_project_name}」にプロジェクト「%{source_project_name}」をコピーできませんでした。'
       succeeded: 'プロジェクト「%{target_project_name}」にプロジェクト「%{source_project_name}」をコピーしました。'
-  create_new_page: "Wiki ページ"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Wiki ページ"
   date:
     abbr_day_names:
       - "（日）"
@@ -1919,7 +1945,7 @@ ja:
       baseline_comparison: Baseline Comparisons
       board_view: Advanced Boards
       conditional_highlighting: Conditional Highlighting
-      comments_with_restricted_visibility: Comments With Restricted Visibility
+      internal_comments: Internal Comments
       custom_actions: Custom Actions
       custom_field_hierarchies: Custom fields of type hierarchy
       customize_life_cycle: Customize Life Cycle
@@ -1927,7 +1953,6 @@ ja:
       define_custom_style: Custom theme and logo
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
-      grid_widget_wp_graph: Grid Widget Work Package Graph
       ldap_groups: LDAP users and group sync
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
@@ -1940,12 +1965,11 @@ ja:
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
-    upsale:
+    upsell:
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
-      plan_text_html: "Available only through the %{plan_name}."
-      link_title: "詳細情報"
+      plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
@@ -1960,7 +1984,7 @@ ja:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "新しい属性グループを追加"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -1976,17 +2000,17 @@ ja:
         more_info: "Note: the used logo will be publicly accessible."
         description: Customize your OpenProject installation with your own logo and colors.
       custom_actions:
-        title: "Custom actions"
+        title: "カスタムアクション"
         description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
-        title: Placeholder users
+        title: プレースホルダー ユーザー
         description: >
-          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
-      comments_with_restricted_visibility:
+          プレースホルダー・ユーザーは、プロジェクトに参加していないユーザーにワーク・パッケージを割り当てる方法です。例えば、まだ名前も決まっていない、利用可能でもないリソースのタスクを追跡する必要がある場合や、その人にOpenProjectへのアクセス権を与えたくないが、その人に割り当てられたタスクを追跡したい場合などです。
+      internal_comments:
         title: "For your eyes only"
-        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "タイムトラッキングアクティビティ"
   enumeration_work_package_priorities: "ワークパッケージの優先度"
   enumeration_reported_project_statuses: "報告されるプロジェクト進捗状況"
@@ -2213,9 +2237,8 @@ ja:
       users: "このインスタンスの最新の登録ユーザー。"
     blocks:
       community: "OpenProject コミュニティ"
-      upsale:
+      upsell:
         title: "エンタープライズ版にアップグレード"
-        more_info: "詳細情報"
     links:
       upgrade_enterprise_edition: "エンタープライズ版にアップグレード"
       postgres_migration: "PostgreSQL にインストールを移行しています"
@@ -2692,6 +2715,7 @@ ja:
   label_modules: "モジュール"
   label_months_from: "ヶ月分"
   label_more: "続き"
+  label_more_information: "詳細情報"
   label_more_than_ago: "今日より○日前以前"
   label_move_column_left: "列を左に移動"
   label_move_column_right: "列を右に移動"
@@ -3288,13 +3312,13 @@ ja:
     text_getting_started_description: "Get a quick overview of project management and team collaboration with OpenProject. You can restart this video from the help menu."
     welcome: "Welcome to %{app_title}"
     select_language: "言語を選択してください"
-  permission_add_work_package_notes: "Add comments"
+  permission_add_work_package_comments: "Add comments"
   permission_add_work_packages: "ワークパッケージの追加"
   permission_add_messages: "メッセージの投稿"
   permission_add_project: "プロジェクトの作成"
   permission_add_work_package_attachments: "添付ファイルを追加する"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
-  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
+  permission_add_internal_comments: "Write internal comments"
   permission_archive_project: "プロジェクトをアーカイブ"
   permission_create_user: "Create users"
   permission_manage_user: "Edit users"
@@ -3319,16 +3343,16 @@ ja:
   permission_delete_timelines: "タイムラインの削除"
   permission_delete_wiki_pages: "Wikiページの削除"
   permission_delete_wiki_pages_attachments: "添付ファイルの削除"
-  permission_edit_work_package_notes: "Moderate comments"
-  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
+  permission_edit_work_package_comments: "Moderate comments"
+  permission_edit_work_package_comments_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "ワークパッケージの編集"
   permission_edit_messages: "メッセージの編集"
-  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
-  permission_edit_own_work_package_notes: "Edit own comments"
+  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_work_package_comments: "Edit own comments"
   permission_edit_own_messages: "自分の投稿したメッセージの編集"
   permission_edit_own_time_entries: "自分が記入した作業時間の編集"
-  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
+  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "プロジェクトの編集"
   permission_edit_project_attributes: "Edit project attributes"
   permission_edit_project_phases: "Edit project phases"
@@ -3369,7 +3393,7 @@ ja:
   permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "View projects"
   permission_view_changesets: "OpenProject にリポジトリのリビジョンを表示"
-  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
+  permission_view_internal_comments: "View internal comments"
   permission_view_commit_author_statistics: "コミット作成者の統計情報の閲覧"
   permission_view_dashboards: "View dashboards"
   permission_view_work_package_watchers: "ウォッチャー一覧の閲覧"
@@ -3700,6 +3724,8 @@ ja:
   setting_repository_truncate_at: "リポジトリブラウザーで表示するファイルの最大数"
   setting_rest_api_enabled: "RESTによるWebサービスを有効にする"
   setting_self_registration: "ユーザーよるアカウント登録"
+  setting_self_registration_warning: >
+    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
   setting_session_ttl: "無操作タイムアウト"
   setting_session_ttl_hint: "5未満の値は無効にすると同様"
   setting_session_ttl_enabled: "セッションの有効期限"
@@ -3797,7 +3823,7 @@ ja:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "追加"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"
@@ -3830,8 +3856,8 @@ ja:
     work_packages:
       not_allowed_text: "You do not have the necessary permissions to view this page."
       activities:
-        enable_comments_with_restricted_visibility: "Enable restricted visibility comments"
-        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_internal_comments: "Enable internal comments"
+        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "プレーンテキスト"
@@ -4178,7 +4204,7 @@ ja:
         view_description: "Can view this project list."
         edit: "編集"
         edit_description: "Can view, share and edit this project list."
-      upsale:
+      upsell:
         message: "個人ユーザーとのプロジェクトリストの共有は、エンタープライズアドオンです。"
   working_days:
     info: >

@@ -7,9 +7,9 @@ kk:
   permission_manage_board_views: "Manage boards"
   project_module_board_view: "Boards"
   ee:
-    upsale:
+    upsell:
       board_view:
-        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
+        description: 'Өзіңіздегі жұмыс ағымын автоматтандырғыңыз келеді ме? Жетілдірілген тақталар Enterprise қосымшасы болып келеді. Ақылы жоспарға өтуіңізді сұраймыз.'
   boards:
     label_board: "Board"
     label_boards: "Boards"

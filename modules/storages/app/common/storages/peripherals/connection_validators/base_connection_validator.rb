@@ -37,8 +37,8 @@ module Storages
             @validation_groups ||= {}
           end
 
-          def register_group(group_name, klass, precondition: ->(*) { true })
-            validation_groups[group_name] = { klass:, precondition: }
+          def register_group(klass, precondition: ->(*) { true })
+            validation_groups[klass.key] = { klass:, precondition: }
           end
         end
 
@@ -52,6 +52,10 @@ module Storages
               result.add_group_result(key, group_metadata[:klass].call(@storage))
             end
           end
+        end
+
+        def report_cache_key
+          "#{@storage}_storage_#{@storage.id}_health_status_report"
         end
 
         private

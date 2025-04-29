@@ -1,7 +1,7 @@
 #English strings go here
 sl:
   ee:
-    upsale:
+    upsell:
       board_view:
         description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
   js:
@@ -50,6 +50,7 @@ sl:
           Osnoven kanban stil odložišča s stolpci za stanja: Za narediti, V delu, Narejeno.
         action_text_assignee: >
           Tabla s samodejnimi stolpci glede na dodeljene člane. Popoln za odpošiljanje delovnih paketov
+
         action_text_version: >
           Tabla s samodejnimi stolpci glede na verzijo lastnosti. Popoln za načrtovanje razvoja projekta.
         action_type:

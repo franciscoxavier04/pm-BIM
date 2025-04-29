@@ -41,9 +41,14 @@
         changed: "changed"
         created: "opprettet"
         commented: "kommentert"
-        restrict_visibility: Restrict visibility
-        restricted_journal: Restricted comments are visible to a limited group of members.
+        internal_comment: Internal comment
+        internal_journal: Internal comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
+        internal_comment_confirmation:
+          title: "Make this comment public?"
+          heading: "Make this comment public?"
+          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          confirm_button_text: "Offentliggjør"
   admin:
     plugins:
       no_results_title_text: Det er for tiden ingen utvidelser installert.
@@ -292,7 +297,7 @@
   global_search:
     placeholder: "Søk i %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "Alle"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
@@ -346,6 +351,24 @@
         heading: "Delete this project list?"
         text: "Denne handlingen vil ikke slette noen av prosjektene på listen. Er du sikker på at du vil slette denne prosjektlisten?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
+      public_warning: >
+        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+      public_confirmation:
+        checkbox: "I understand that this will make the previously private content public"
+        title: "Make this project public?"
+        description: >
+          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+      private_confirmation:
+        checkbox: "I understand that this will make the previously public content private."
+        title: "Make this project private?"
+        description: >
+          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       change_identifier: Endre identifier
       actions:
         label_enable_all: "Aktiver alle"
@@ -610,8 +633,8 @@
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
+            work_package: "Arbeidspakke"
+            parent: "Overordnet"
             project: "Prosjekt"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
@@ -746,10 +769,12 @@
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      new_child: "Create new child"
-      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child: "Opprett ny underordnet"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "blokkeringer"
       label_blocks_plural: "blokkeringer"
@@ -941,11 +966,11 @@
         is_required: "Påkrevd for alle prosjekter"
         custom_field_section: Seksjon
       project/phase:
-        date_range: "Date range"
+        date_range: "Datointervall"
         definition: "Definisjon"
       project/phase_definition:
         name: "Navn"
-        color: "Color"
+        color: "Farge"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1070,7 +1095,7 @@
           title: "Arbeidsdager"
           false: "kun arbeidsdager"
           true: "Inkluder arbeidsfrie dager"
-        journal_restricted: Restricted Journal
+        journal_internal: Internal Journal
         notify: "Varsle" #used in custom actions
         parent: "Overordnet"
         parent_issue: "Overordnet"
@@ -1291,7 +1316,7 @@
             values:
               inclusion: "filteret har ugyldige verdier."
               format: "%{message}"
-        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+        queries/principals/filters/internal_mentionable_on_work_package_filter:
           attributes:
             values:
               single_value_requirement: "must be a single work package"
@@ -1549,14 +1574,14 @@
       changeset: "Endringssett"
       message: "Forum"
       news: "Nyheter"
-      project_details: "Project details"
+      project_details: "Prosjektdetaljer"
       subproject: "Inkluder underprosjekter"
       time_entry: "Tid brukt"
       wiki_edit: "Wiki"
       work_package: "Arbeidspakker"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "aktivert"
+      deactivated: "deaktivert"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -1803,7 +1828,8 @@
     text:
       failed: 'Kunne ikke kopiere prosjektet "%{source_project_name}" til prosjektetet "%{target_project_name}".'
       succeeded: 'Prosjektet "%{source_project_name}" ble kopiert til "%{target_project_name}".'
-  create_new_page: "Wiki-side"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Wiki-side"
   date:
     abbr_day_names:
       - "Søn"
@@ -1959,7 +1985,7 @@
       baseline_comparison: Baseline Comparisons
       board_view: Advanced Boards
       conditional_highlighting: Conditional Highlighting
-      comments_with_restricted_visibility: Comments With Restricted Visibility
+      internal_comments: Internal Comments
       custom_actions: Custom Actions
       custom_field_hierarchies: Custom fields of type hierarchy
       customize_life_cycle: Customize Life Cycle
@@ -1967,7 +1993,6 @@
       define_custom_style: Custom theme and logo
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
-      grid_widget_wp_graph: Grid Widget Work Package Graph
       ldap_groups: LDAP users and group sync
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
@@ -1980,15 +2005,14 @@
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
-    upsale:
+    upsell:
       title: "Enterprise programtillegg"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
-      plan_text_html: "Available only through the %{plan_name}."
-      link_title: "Mer informasjon"
+      plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Skjul banneret"
       baseline_comparison:
-        description: Highlight changes made to this list since any point in the past.
+        description: Marker endringer som er gjort på denne listen tidligere.
       work_package_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2000,7 +2024,7 @@
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "Legg til nye attributtgrupper"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -2008,25 +2032,25 @@
       custom_field_hierarchies:
         description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
       date_alerts:
-        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+        description: "Med datovarsler, vil du bli varslet om kommende start- eller sluttdatoer slik at du aldri går glipp av eller glemmer en viktig frist."
       work_package_sharing:
-        description: "Share work packages with users who are not members of the project."
+        description: "Del arbeidspakker med brukere som ikke er medlemmer i prosjektet."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "Merk: den brukte logoen vil være offentlig tilgjengelig."
+        description: Tilpass OpenProject-installasjonen med din egen logo og farger.
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "Tilpassede handlinger"
+        description: "Egendefinerte handlinger er snarveier med ett klikk til en rekke forhåndsdefinerte handlinger som du kan gjøre tilgjengelige på visse arbeidspakker basert på status, rolle, type eller prosjekt."
       virus_scanning:
-        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
+        description: "Sikre at opplastede filer i OpenProject blir skannet for virus før de er tilgjengelige for andre brukere."
       placeholder_users:
-        title: Placeholder users
+        title: Plassholder brukere
         description: >
-          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
-      comments_with_restricted_visibility:
+          Plassholderbrukere er en måte å tilknytte arbeidspakker til brukere som ikke er med i prosjektet. De kan være nyttige i en rekke scenarioer; for eksempel hvis du må spore oppgaver for en ressurs som ennå ikke er navngitt eller tilgjengelig, eller hvis du ikke vil gi den personen tilgang til OpenProject, men fortsatt vil spore oppgaver tilordnet dem.
+      internal_comments:
         title: "For your eyes only"
-        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "Tidregistrering aktiviteter"
   enumeration_work_package_priorities: "Prioritering av arbeidspakker"
   enumeration_reported_project_statuses: "Rapportert prosjektstatus"
@@ -2253,9 +2277,8 @@
       users: "Nyeste registrerte brukere i denne forekomsten."
     blocks:
       community: "OpenProject fellesskap"
-      upsale:
+      upsell:
         title: "Oppgrader til Enterprise utgaven"
-        more_info: "Mer informasjon"
     links:
       upgrade_enterprise_edition: "Oppgrader til Enterprise utgaven"
       postgres_migration: "Overføre installasjonen til PostgreSQL"
@@ -2732,6 +2755,7 @@
   label_modules: "Moduler"
   label_months_from: "måneder fra"
   label_more: "Mer"
+  label_more_information: "Mer informasjon"
   label_more_than_ago: "mer enn dager siden"
   label_move_column_left: "Flytt kolonne til venstre"
   label_move_column_right: "Flytt kolonne til høyre"
@@ -3330,13 +3354,13 @@
     text_getting_started_description: "Få en rask oversikt over prosjektledelse og teamsamarbeid med OpenProject. Du kan starte denne videoen på nytt fra hjelp-menyen."
     welcome: "Velkommen til %{app_title}"
     select_language: "Vennligst velg språk"
-  permission_add_work_package_notes: "Add comments"
+  permission_add_work_package_comments: "Add comments"
   permission_add_work_packages: "Legg til arbeidspakker"
   permission_add_messages: "Skriv meldinger"
   permission_add_project: "Opprett prosjekt"
   permission_add_work_package_attachments: "Legg til vedlegg"
   permission_add_work_package_attachments_explanation: "Tillater å legge til vedlegg uten å redigere arbeidspakke-tillatelse"
-  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
+  permission_add_internal_comments: "Write internal comments"
   permission_archive_project: "Arkiver prosjekt"
   permission_create_user: "Opprett brukere"
   permission_manage_user: "Rediger brukere"
@@ -3361,16 +3385,16 @@
   permission_delete_timelines: "Slett tidslinjer"
   permission_delete_wiki_pages: "Slett wiki-sider"
   permission_delete_wiki_pages_attachments: "Slett vedlegg"
-  permission_edit_work_package_notes: "Moderate comments"
-  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
+  permission_edit_work_package_comments: "Moderate comments"
+  permission_edit_work_package_comments_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Rediger arbeidspakker"
   permission_edit_messages: "Rediger meldinger"
-  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
-  permission_edit_own_work_package_notes: "Edit own comments"
+  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_work_package_comments: "Edit own comments"
   permission_edit_own_messages: "Rediger egne meldinger"
   permission_edit_own_time_entries: "Rediger egne tidsrapporter"
-  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
+  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "Rediger prosjekt"
   permission_edit_project_attributes: "Rediger prosjektattributter"
   permission_edit_project_phases: "Edit project phases"
@@ -3411,7 +3435,7 @@
   permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "Vis prosjekter"
   permission_view_changesets: "Se revideringer av lagringssteder i OpenProject"
-  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
+  permission_view_internal_comments: "View internal comments"
   permission_view_commit_author_statistics: "Vis statistikk over forfatterbidrag"
   permission_view_dashboards: "Vis dashbord"
   permission_view_work_package_watchers: "Vis liste over overvåkere"
@@ -3742,6 +3766,8 @@
   setting_repository_truncate_at: "Maksimalt antall filer som vises i depot nettleser"
   setting_rest_api_enabled: "Aktiver REST webservice"
   setting_self_registration: "Selv-registrering"
+  setting_self_registration_warning: >
+    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
   setting_session_ttl: "Tidsavbrudd for sesjon etter inaktivitet"
   setting_session_ttl_hint: "Verdi under 5 fungerer som deaktivering"
   setting_session_ttl_enabled: "Sesjonen utløper"
@@ -3839,12 +3865,12 @@
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Legg til"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"
-      section_header: "Phases"
-      non_defined: "No phases are currently defined."
+      section_header: "Faser"
+      non_defined: "Ingen faser definert."
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
@@ -3872,8 +3898,8 @@
     work_packages:
       not_allowed_text: "You do not have the necessary permissions to view this page."
       activities:
-        enable_comments_with_restricted_visibility: "Enable restricted visibility comments"
-        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_internal_comments: "Enable internal comments"
+        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Rabatt"
     plain: "Ren tekst"
@@ -4222,7 +4248,7 @@
         view_description: "Kan se denne prosjektlisten."
         edit: "Rediger"
         edit_description: "Kan vise, dele og redigere prosjektlisten."
-      upsale:
+      upsell:
         message: "Deling av prosjektlister med enkeltbrukere er et enterprise-tillegg."
   working_days:
     info: >

@@ -33,6 +33,8 @@ module Storages
     module ConnectionValidators
       module Nextcloud
         class AuthenticationValidator < BaseValidatorGroup
+          def self.key = :authentication
+
           def initialize(storage)
             super
             @user = User.current
@@ -55,13 +57,13 @@ module Storages
             if OAuthClientToken.for_user_and_client(@user, @storage.oauth_client).exists?
               pass_check(:existing_token)
             else
-              warn_check(:existing_token, message(:oauth_token_missing), halt_validation: true)
+              warn_check(:existing_token, :nc_oauth_token_missing, halt_validation: true)
             end
           end
 
           def user_bound_request
             Registry["nextcloud.queries.user"].call(storage: @storage, auth_strategy:).on_failure do
-              fail_check(:user_bound_request, message("oauth_request_#{it.result}"))
+              fail_check(:user_bound_request, :"nc_oauth_request_#{it.result}")
             end
 
             pass_check(:user_bound_request)
@@ -82,7 +84,7 @@ module Storages
             if @user.identity_url.present?
               pass_check(:non_provisioned_user)
             else
-              warn_check(:non_provisioned_user, message(:oidc_non_provisioned_user), halt_validation: true)
+              warn_check(:non_provisioned_user, :oidc_non_provisioned_user, halt_validation: true)
             end
           end
 
@@ -90,7 +92,7 @@ module Storages
             if @user.authentication_provider.is_a?(OpenIDConnect::Provider)
               pass_check(:provisioned_user_provider)
             else
-              warn_check(:provisioned_user_provider, message(:oidc_non_oidc_user), halt_validation: true)
+              warn_check(:provisioned_user_provider, :oidc_non_oidc_user, halt_validation: true)
             end
           end
 
@@ -100,18 +102,19 @@ module Storages
             result = service.access_token_for(audience: @storage.audience)
             return pass_check(:token_negotiable) if result.success?
 
-            error_code = case result.failure
-                         in { code: /token_exchange/ | :unable_to_exchange_token }
-                           :oidc_cant_exchange_token
-                         in { code: /token_refresh/ }
-                           :oidc_cant_refresh_token
-                         in { code: :no_token_for_audience }
-                           :oidc_cant_acquire_token
-                         else
-                           :unknown_error
-                         end
+            error_code =
+              case result.failure
+              in { code: /token_exchange/ | :unable_to_exchange_token }
+                :oidc_cant_exchange_token
+              in { code: /token_refresh/ }
+                :oidc_cant_refresh_token
+              in { code: :no_token_for_audience }
+                :oidc_cant_acquire_token
+              else
+                :unknown_error
+              end
 
-            fail_check(:token_negotiable, message(error_code))
+            fail_check(:token_negotiable, error_code)
           end
         end
       end

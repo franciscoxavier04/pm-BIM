@@ -8,11 +8,11 @@ ms:
   project_module_team_planner_view: "Perancang pasukan"
   ee:
     feature_names:
-      team_planner_view: "Team planner"
-    upsale:
+      team_planner_view: "Perancang pasukan"
+    upsell:
       team_planner_view:
-        title: "Team planner"
-        description: "Get a complete overview of your team’s planning with Team Planner. Stretch, shorten and drag-and-drop work packages to modify dates, move them or change assignees."
+        title: "Perancang pasukan"
+        description: "Dapatkan gambaran keseluruhan lengkap perancangan pasukan anda dengan Perancang Pasukan. Renggangkan, pendekkan, dan tarik dan lepas pakej kerja untuk mengubah tarikh, memindahkan mereka, atau menukar penerima tugasan."
   team_planner:
     label_team_planner: "Perancang pasukan"
     label_new_team_planner: "Perancang pasukan baharu"

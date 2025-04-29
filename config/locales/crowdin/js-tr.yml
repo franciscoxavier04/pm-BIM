@@ -239,7 +239,7 @@ tr:
           status_waiting: "e-posta gönderildi - onay bekleniyor"
           test_ee: "Kurumsal sürümü 14 gün ücretsiz deneyin"
           quick_overview: "OpenProject Kurumsal sürümü ile proje yönetimi ve ekip işbirliğine hızlı bir genel bakış elde edin."
-        upsale:
+        upsell:
           become_hero: "Kahraman olun!"
           enterprise_info_html: "%{feature_title} Kurumsal <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> bir eklentidir."
           upgrade_info: "Etkinleştirmek ve ekibinizde kullanmaya başlamak için lütfen ücretli bir plana yükseltin."
@@ -254,7 +254,7 @@ tr:
             professional_support: "Profesyonel destek"
             professional_support_text: "İş açısından kritik ortamlarda OpenProject çalıştırma konusunda uzman bilgiye sahip kıdemli destek mühendislerinden güvenilir, yüksek dokunuşlu destek alın."
           button_start_trial: "Deneme sürümüne başla"
-          button_upgrade: "Şimdi Yükselt"
+          button_upgrade: "Şimdi yükselt"
           button_contact_us: "Demo için bizimle iletişime geçin"
           button_book_now: "Şimdi rezervasyon yaptırın"
           confidence: >
@@ -864,7 +864,7 @@ tr:
     tl_toolbar:
       zooms: "Yakınlaştırma düzeyi"
       outlines: "Hiyerarşi düzeyi"
-    upsale:
+    upsell:
       ee_only: "Enterprise sürümü eklentisi"
     wiki_formatting:
       strong: "Kalın"

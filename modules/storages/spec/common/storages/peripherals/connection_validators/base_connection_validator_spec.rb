@@ -53,7 +53,7 @@ module Storages
 
         it "only runs a verification if the precondition evaluates as truthy" do
           test_group = class_spy(Nextcloud::StorageConfigurationValidator)
-          TestValidator.register_group :test_group, test_group, precondition: ->(_, _) { false }
+          TestValidator.register_group test_group, precondition: ->(_, _) { false }
 
           result = validator.call
           expect(result).to be_empty
@@ -61,15 +61,17 @@ module Storages
         end
 
         it "aggregates all the results from the tests", vcr: "nextcloud/capabilities_success" do
-          TestValidator.register_group :base_configuration, Nextcloud::StorageConfigurationValidator
-          TestValidator.register_group :authentication, Nextcloud::AuthenticationValidator,
-                                       precondition: ->(_, result) { result.group(:base_configuration).non_failure? }
+          TestValidator.register_group Nextcloud::StorageConfigurationValidator
+          TestValidator.register_group Nextcloud::AuthenticationValidator,
+                                       precondition: ->(_, result) do
+                                         result.group(Nextcloud::StorageConfigurationValidator.key).non_failure?
+                                       end
 
           results = TestValidator.new(create(:nextcloud_storage_with_local_connection)).call
 
           expect(results).to be_warning
-          expect(results.group(:base_configuration)).to be_success
-          expect(results.group(:authentication)).to be_warning
+          expect(results.group(Nextcloud::StorageConfigurationValidator.key)).to be_success
+          expect(results.group(Nextcloud::AuthenticationValidator.key)).to be_warning
         end
       end
     end

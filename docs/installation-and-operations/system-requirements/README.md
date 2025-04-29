@@ -176,10 +176,10 @@ Both the package and docker based installations will install and setup the follo
 * __Webserver:__ [Apache](https://httpd.apache.org/)
   or [nginx](https://nginx.org/en/docs/)
 * __Application server:__ [Puma](https://puma.io/)
-* __Database__: [PostgreSQL](https://www.postgresql.org/) Version >= 13
+* __Database__: [PostgreSQL](https://www.postgresql.org/) Version >= 16
 
-Starting in OpenProject 12.0, PostgreSQL 13.0 will be a minimum requirement.
-PostgreSQL versions 9.6. and up will continue to work, but may result in incompatibilities and degraded performance in the future. We have a [migration guide on how to upgrade to PostgreSQL 13](../../installation-and-operations/misc/migration-to-postgresql13/).
+Starting in OpenProject 16.0, PostgreSQL 16.0 will be a minimum requirement.
+PostgreSQL versions 13. and up will continue to work, but may result in incompatibilities and degraded performance in the future. We have a [migration guide on how to upgrade to PostgreSQL 17](../../installation-and-operations/misc/migration-to-postgresql17/).
 
 ## Client
 

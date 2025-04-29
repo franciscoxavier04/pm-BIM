@@ -7,9 +7,9 @@ vi:
   permission_manage_board_views: "Quản lý bảng"
   project_module_board_view: "Bảng"
   ee:
-    upsale:
+    upsell:
       board_view:
-        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
+        description: 'Bạn có muốn tự động hóa quy trình làm việc của mình với các bảng không? Các bảng nâng cao là một tiện ích bổ sung Enterprise. Vui lòng nâng cấp lên gói trả phí.'
   boards:
     label_board: "Bảng"
     label_boards: "Các bảng"

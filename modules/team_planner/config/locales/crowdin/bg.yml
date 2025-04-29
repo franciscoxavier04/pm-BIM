@@ -8,11 +8,11 @@ bg:
   project_module_team_planner_view: "Екипни плановици"
   ee:
     feature_names:
-      team_planner_view: "Team planner"
-    upsale:
+      team_planner_view: "Екипен плановик"
+    upsell:
       team_planner_view:
-        title: "Team planner"
-        description: "Get a complete overview of your team’s planning with Team Planner. Stretch, shorten and drag-and-drop work packages to modify dates, move them or change assignees."
+        title: "Екипен плановик"
+        description: "Получете пълен преглед на планирането на вашия екип с Team Planner. Разтягайте, съкращавайте и плъзгайте и пускайте работни пакети, за да промените датите, да ги преместите или да промените възложителите."
   team_planner:
     label_team_planner: "Екипен плановик"
     label_new_team_planner: "Нов екипен плановик"

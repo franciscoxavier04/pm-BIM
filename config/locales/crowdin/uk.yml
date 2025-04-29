@@ -41,9 +41,14 @@ uk:
         changed: "змінив(-ла)"
         created: "створив(-ла)"
         commented: "прокоментував(-ла)"
-        restrict_visibility: Обмежити видимість
-        restricted_journal: Обмежені коментарі видимі для визначеної групи учасників.
+        internal_comment: Internal comment
+        internal_journal: Internal comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: У вас є незбережені зміни. Справді закрити редактор?
+        internal_comment_confirmation:
+          title: "Make this comment public?"
+          heading: "Make this comment public?"
+          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          confirm_button_text: "Зробити загальнодоступним"
   admin:
     plugins:
       no_results_title_text: Зараз немає встановлених плагінів.
@@ -288,7 +293,7 @@ uk:
   global_search:
     placeholder: "Пошук у додатку %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "Усі"
       messages: "Форум"
       wiki_pages: "Wiki"
   groups:
@@ -342,6 +347,24 @@ uk:
         heading: "Видалити цей список проєктів?"
         text: "Ця дія не призведе до видалення жодного проєкту зі списку. Справді видалити цей список проєктів?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
+      public_warning: >
+        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+      public_confirmation:
+        checkbox: "I understand that this will make the previously private content public"
+        title: "Make this project public?"
+        description: >
+          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+      private_confirmation:
+        checkbox: "I understand that this will make the previously public content private."
+        title: "Make this project private?"
+        description: >
+          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       change_identifier: Ідентифікатор змін
       actions:
         label_enable_all: "Увімкнути все"
@@ -760,9 +783,11 @@ uk:
       label_child_singular: "дочірній елемент"
       label_child_plural: "дочірні елементи"
       new_child: "Створити новий дочірній елемент"
-      new_child_text: "Створює звʼязаний пакет робіт як піделемент поточного (батьківського) пакета робіт"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Дочірній"
       child_description: "Вкладає звʼязаний пакет робіт як піделемент поточного (батьківського) пакета робіт"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Найближчі"
       label_blocks_singular: "блоки"
       label_blocks_plural: "блоки"
@@ -1083,7 +1108,7 @@ uk:
           title: "Робочі дні"
           false: "лише робочі дні"
           true: "включати неробочі дні"
-        journal_restricted: Обмежений журнал
+        journal_internal: Internal Journal
         notify: "Сповіщати" #used in custom actions
         parent: "Джерело"
         parent_issue: "Джерело"
@@ -1304,7 +1329,7 @@ uk:
             values:
               inclusion: "фільтр має неприпустимі значення."
               format: "%{message}"
-        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+        queries/principals/filters/internal_mentionable_on_work_package_filter:
           attributes:
             values:
               single_value_requirement: "має бути одним пакетом робіт"
@@ -1838,7 +1863,8 @@ uk:
     text:
       failed: 'Не вдалося скопіювати проект "%{source_project_name}" до проекту "%{target_project_name}".'
       succeeded: 'Скопіював проект "%{source_project_name}" до "%{target_project_name}".'
-  create_new_page: "Сторінка Wiki"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Сторінка Wiki"
   date:
     abbr_day_names:
       - "Нед"
@@ -2032,7 +2058,7 @@ uk:
       baseline_comparison: Порівняння з вихідним рівнем
       board_view: Покращені Дошки
       conditional_highlighting: Умовне виділення
-      comments_with_restricted_visibility: Коментарі з обмеженою видимістю
+      internal_comments: Internal Comments
       custom_actions: Користувацькі дії
       custom_field_hierarchies: Користувацькі поля типу «Ієрархія»
       customize_life_cycle: Налаштування життєвого циклу
@@ -2040,7 +2066,6 @@ uk:
       define_custom_style: Користувацька тема й логотип
       edit_attribute_groups: Редагування груп атрибутів
       gantt_pdf_export: Експорт діаграми Ґантта в PDF
-      grid_widget_wp_graph: Графік пакета робіт у вигляді сітки
       ldap_groups: Синхронізація користувачів і груп LDAP
       one_drive_sharepoint_file_storage: Файлове сховище OneDrive / SharePoint
       placeholder_users: Прототипи користувачів
@@ -2053,12 +2078,11 @@ uk:
       work_package_query_relation_columns: Стовпці зв’язків запиту пакета робіт
       work_package_sharing: Діліться пакетами робіт із зовнішніми користувачами
       work_package_subject_generation: Створення теми пакета робіт
-    upsale:
+    upsell:
       title: "Доповнення версії Enterprise"
       plan_title: "Доповнення версії Enterprise %{plan}"
       plan_name: "Версія Enterprise %{plan}"
-      plan_text_html: "Доступно лише у версії %{plan_name}."
-      link_title: "Додаткові відомості"
+      plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Приховати цей банер"
       baseline_comparison:
         description: Виділяйте зміни, внесені в цей список із будь-якого моменту часу в минулому.
@@ -2097,9 +2121,9 @@ uk:
         title: Прототипи користувачів
         description: >
           Прототипи користувачів допомагають призначати пакети робіт користувачам, які не входять у ваш проєкт. Вони можуть бути корисні в різних сценаріях. Наприклад, якщо потрібно відстежувати завдання для ресурсу, який поки не доступний або не визначений. Або ж ви хочете відстежувати завдання, призначені особі, не надаючи їй доступу до OpenProject.
-      comments_with_restricted_visibility:
+      internal_comments:
         title: "Лише для вас"
-        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "Дії щодо відстеження часу"
   enumeration_work_package_priorities: "Пріоритети робочого пакету"
   enumeration_reported_project_statuses: "Повідомлення про статус проекту"
@@ -2326,9 +2350,8 @@ uk:
       users: "Нові зареєстровані користувачі в цьому екземплярі."
     blocks:
       community: "Спільнота OpenProject"
-      upsale:
+      upsell:
         title: "Оновлення до версії Enterprise"
-        more_info: "Більше інформації"
     links:
       upgrade_enterprise_edition: "Оновлення до версії Enterprise"
       postgres_migration: "Міграція інсталяції в PostgreSQL"
@@ -2805,6 +2828,7 @@ uk:
   label_modules: "Модулі"
   label_months_from: "місяців(ця) з"
   label_more: "Більше"
+  label_more_information: "Додаткові відомості"
   label_more_than_ago: "більш ніж днів(я) назад"
   label_move_column_left: "Перемістити стовпець ліворуч"
   label_move_column_right: "Перемістити стовпець праворуч"
@@ -3405,13 +3429,13 @@ uk:
     text_getting_started_description: "Отримайте стислий огляд управління проєктами та командної роботи в OpenProject. Це відео можна переглянути знову в меню довідки."
     welcome: "Вітаємо в додатку %{app_title}"
     select_language: "Будь ласка, виберіть мову"
-  permission_add_work_package_notes: "Додати коментарі"
+  permission_add_work_package_comments: "Додати коментарі"
   permission_add_work_packages: "Додати робочі пакети"
   permission_add_messages: "Відправка повідомлень"
   permission_add_project: "Створення проєктів"
   permission_add_work_package_attachments: "Додати вкладення"
   permission_add_work_package_attachments_explanation: "Дає змогу додавати вкладення без дозволу «Редагування пакетів робіт»"
-  permission_add_comments_with_restricted_visibility: "Створення коментарів з обмеженою видимістю"
+  permission_add_internal_comments: "Write internal comments"
   permission_archive_project: "Архівувати проєкт"
   permission_create_user: "Створення користувачів"
   permission_manage_user: "Редагування користувачів"
@@ -3436,16 +3460,16 @@ uk:
   permission_delete_timelines: "Видалити графіки"
   permission_delete_wiki_pages: "Видалення wiki-сторінок"
   permission_delete_wiki_pages_attachments: "Видалення прикріплених файлів"
-  permission_edit_work_package_notes: "Модерувати коментарі"
-  permission_edit_work_package_notes_explanation: "Увага! Користувачі із цим дозволом можуть редагувати будь-чиї коментарі."
+  permission_edit_work_package_comments: "Модерувати коментарі"
+  permission_edit_work_package_comments_explanation: "Увага! Користувачі із цим дозволом можуть редагувати будь-чиї коментарі."
   permission_edit_work_packages: "Редагувати робочі пакети"
   permission_edit_messages: "Редагування повідомлень"
-  permission_edit_own_comments_with_restricted_visibility: "Редагування власних коментарів з обмеженою видимістю"
-  permission_edit_own_work_package_notes: "Редагувати власні коментарі"
+  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_work_package_comments: "Редагувати власні коментарі"
   permission_edit_own_messages: "Редагування власних повідомлень"
   permission_edit_own_time_entries: "Редагування власного обліку часу"
-  permission_edit_others_comments_with_restricted_visibility: "Модерування коментарів з обмеженою видимістю"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "Увага: користувачі з таким дозволом можуть редагувати коментарі з обмеженою видимістю інших користувачів."
+  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "Редагувати проект"
   permission_edit_project_attributes: " Редагувати атрибути проєкту"
   permission_edit_project_phases: "Редагування етапів проєкту"
@@ -3486,7 +3510,7 @@ uk:
   permission_manage_own_reminders: "Створюйте власні нагадування"
   permission_view_project: "Перегляд проєктів"
   permission_view_changesets: "Перегляд змін репозиторію (сховища) в OpenProject"
-  permission_view_comments_with_restricted_visibility: "Перегляд коментарів з обмеженою видимістю"
+  permission_view_internal_comments: "View internal comments"
   permission_view_commit_author_statistics: "Перегляд статистики комітів автора"
   permission_view_dashboards: "Перегляд панелей керування"
   permission_view_work_package_watchers: "Перегляд списку спостерігачів"
@@ -3817,6 +3841,8 @@ uk:
   setting_repository_truncate_at: "Максимальна кількість файлів, відображених у переглядачі сховища"
   setting_rest_api_enabled: "Увімкніть веб-службу REST"
   setting_self_registration: "Самостійна реєстрація"
+  setting_self_registration_warning: >
+    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
   setting_session_ttl: "Сесії час після закінчення неактивність"
   setting_session_ttl_hint: "Значення нижче 5 працює як відключено"
   setting_session_ttl_enabled: "Сеанс закінчився"
@@ -3947,8 +3973,8 @@ uk:
     work_packages:
       not_allowed_text: "У вас немає дозволів для перегляду цієї сторінки."
       activities:
-        enable_comments_with_restricted_visibility: "Увімкнути коментарі з обмеженою видимістю"
-        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_internal_comments: "Enable internal comments"
+        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Простий текст"
@@ -4298,7 +4324,7 @@ uk:
         view_description: "Може переглядати цей список проєктів."
         edit: "Редагування"
         edit_description: "Може переглядати, редагувати список проєктів і надавати спільний доступ до нього."
-      upsale:
+      upsell:
         message: "Надавати спільний доступ до списків проєктів окремим користувачам можна за допомогою доповнення версії Enterprise."
   working_days:
     info: >

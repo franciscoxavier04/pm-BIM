@@ -1,9 +1,9 @@
 #English strings go here
 ka:
   ee:
-    upsale:
+    upsell:
       board_view:
-        description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
+        description: 'გნებავთ თქვენი საწარმოო პროცესების ავტომატიზაცია Boards-ით? დამატებითი დაფები საწარმოო ვერსიის მოდულია. გადადით ფასიან ვერსიაზე.'
   js:
     boards:
       create_new: 'Create new board'

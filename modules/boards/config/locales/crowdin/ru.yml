@@ -7,7 +7,7 @@ ru:
   permission_manage_board_views: "Управление досками"
   project_module_board_view: "Доски"
   ee:
-    upsale:
+    upsell:
       board_view:
         description: 'Хотите автоматизировать свои рабочие процессы с досками? Продвинутые доски являются корпоративной функцией. Пожалуйста, обновитесь до платного плана.'
   boards:
