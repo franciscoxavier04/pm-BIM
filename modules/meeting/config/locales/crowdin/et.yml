@@ -392,8 +392,8 @@ et:
   text_series_backlog_clear_description: >
     This will remove all items in the series backlog, which is shared with all meetings in the series. Are you sure you want to continue? This action is not reversible.
   text_agenda_item_title: 'Agenda item "%{title}"'
-  text_agenda_work_package_deleted: 'Agenda item for deleted work package'
-  text_deleted_agenda_item: 'Deleted agenda item'
+  text_agenda_work_package_deleted: "Agenda item for deleted work package"
+  text_deleted_agenda_item: "Deleted agenda item"
   label_initial_meeting_details: "Koosolek"
   label_meeting_details: "Meeting details"
   label_meeting_series_details: "Meeting series details"

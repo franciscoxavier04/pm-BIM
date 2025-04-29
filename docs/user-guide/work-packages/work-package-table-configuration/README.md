@@ -136,7 +136,7 @@ There are several options to filter for the assignee of a work package. You can 
 - Assignee's group: Filters for work packages assigned to a user from this group
 - Assignee's role: Filters for work packages assigned to users with the specified project role
 
-![!Filter a work package table by work package assignee](openproject_user_guide_wp_table_filter_by_assignee.png)
+![Filter a work package table by work package assignee](openproject_user_guide_wp_table_filter_by_assignee.png)
 
 ### Filter for attachment file name and content
 
