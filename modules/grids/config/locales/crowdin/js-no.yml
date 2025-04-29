@@ -1,8 +1,4 @@
 "no":
-  ee:
-    upsell:
-      grid_widget_wp_graph:
-        description: "Noen widgeter, som arbeidspakke-diagram-modulen, er bare tilgjengelig i Enterprise versjonen."
   js:
     grid:
       add_widget: 'Legg til widget'

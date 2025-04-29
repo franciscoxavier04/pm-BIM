@@ -326,16 +326,10 @@ pt-PT:
   permission_edit_meetings: "Editar reuniões"
   permission_delete_meetings: "Apagar reuniões"
   permission_view_meetings: "Ver reuniões"
-  permission_create_meeting_agendas: "Criar agendas de reuniões"
-  permission_create_meeting_agendas_explanation: "Permite editar o conteúdo da agenda da Reunião Clássica."
   permission_manage_agendas: "Gerir agendas"
   permission_manage_agendas_explanation: "Permite gerir os itens da agenda da Reunião Dinâmica."
-  permission_close_meeting_agendas: "Fechar agendas"
-  permission_send_meeting_agendas_notification: "Enviar notificação de revisão para as agendas"
-  permission_create_meeting_minutes: "Gerir minutos"
-  permission_send_meeting_minutes_notification: "Enviar notificação de revisão por minutos"
-  permission_meetings_send_invite: "Convidar utilizadores para reuniões"
-  permission_send_meeting_agendas_icalendar: "Enviar a ordem de trabalhos da reunião como entrada de calendário"
+  permission_manage_outcomes: "Manage outcomes"
+  permission_send_meeting_invites_and_outcomes: "Send meeting invites and outcomes to participants"
   project_module_meetings: "Reuniões"
   text_duration_in_hours: "Duração em horas"
   text_in_hours: "em horas"
@@ -347,8 +341,8 @@ pt-PT:
   text_meeting_minutes_for_meeting: 'minutos para a reunião "%{meeting}"'
   text_notificiation_invited: "Este e-mail contém uma entrada de ics para a reunião abaixo:"
   text_meeting_empty_heading: "A sua reunião está vazia"
-  text_meeting_empty_description_1: "Comece por adicionar os itens da agenda abaixo. Cada item pode ser tão simples como um título, mas também pode adicionar detalhes adicionais, como a duração e notas."
-  text_meeting_empty_description_2: 'Também pode adicionar referências a pacotes de trabalho existentes. Ao fazê-lo, as notas relacionadas ficarão automaticamente visíveis no separador "Reuniões" do pacote de trabalho.'
+  text_meeting_empty_description1: "Start by adding agenda items below. Each item can be as simple as just a title, but you can also add additional details like duration and notes."
+  text_meeting_empty_description2: 'You can also add references to existing work packages. When you do, related notes will automatically be visible in the work package''s "Meetings" tab.'
   label_meeting_empty_action: "Adicionar item da agenda"
   label_meeting_actions: "Ações da reunião"
   label_meeting_edit_title: "Editar título da reunião"
@@ -367,6 +361,8 @@ pt-PT:
   label_agenda_item_deleted_wp: "Referência do pacote de trabalho excluída"
   label_agenda_item_actions: "Ações dos itens da agenda"
   label_agenda_item_move_to_next: "Ir para a próxima reunião"
+  label_agenda_item_move_to_backlog: "Move to backlog"
+  label_agenda_item_move_to_current_meeting: "Move to current meeting"
   label_agenda_item_move_to_top: "Mover para o início"
   label_agenda_item_move_to_bottom: "Mover para o fim"
   label_agenda_item_move_up: "Mover para cima"
@@ -379,6 +375,22 @@ pt-PT:
   label_agenda_outcome_edit: "Editar resultado"
   label_agenda_outcome_delete: "Remover resultado"
   text_outcome_not_editable_anymore: "Este resultado já não pode ser editado."
+  text_outcome_cannot_be_added: "An outcome can no longer be added."
+  label_backlog_clear: "Clear backlog"
+  label_backlog_clear_button: "Clear all"
+  text_backlog_clear_error: "One or more errors occurred while trying to clear the backlog."
+  label_agenda_backlog: "Agenda backlog"
+  text_agenda_backlog: >
+    This backlog is unique to this one-time meeting. You can drag items in and out to add or remove them from the meeting agenda.
+  label_agenda_backlog_clear_title: "Clear agenda backlog?"
+  text_agenda_backlog_clear_description: >
+    Are you sure you want to remove all items currently in the agenda items? This action is not reversible.
+  label_series_backlog: "Series backlog"
+  text_series_backlog: >
+    The backlog is shared with all occurrences of this series. You can drag items in and out to add or remove them from a particular meeting.
+  label_series_backlog_clear_title: "Clear series backlog?"
+  text_series_backlog_clear_description: >
+    This will remove all items in the series backlog, which is shared with all meetings in the series. Are you sure you want to continue? This action is not reversible.
   text_agenda_item_title: 'Ponto da ordem de trabalhos "%{title}"'
   text_agenda_work_package_deleted: 'Ponto da ordem de trabalhos para pacote de trabalho eliminado'
   text_deleted_agenda_item: 'Ponto da ordem de trabalhos eliminado'

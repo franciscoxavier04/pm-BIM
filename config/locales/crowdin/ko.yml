@@ -351,6 +351,12 @@ ko:
         heading: "이 프로젝트 목록을 삭제하시겠습니까?"
         text: "이 작업을 수행해도 목록에 포함된 프로젝트는 삭제되지 않습니다. 이 프로젝트 목록을 삭제하시겠습니까?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -756,9 +762,11 @@ ko:
       label_child_singular: "자식"
       label_child_plural: "자식"
       new_child: "새 자식 만들기"
-      new_child_text: "관련 작업 패키지를 현재(부모) 작업 패키지의 하위 항목으로 만듭니다"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "자식"
       child_description: "관련 작업 패키지를 현재(부모) 작업 패키지의 하위 항목으로 만듭니다"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "가장 가까운 대상"
       label_blocks_singular: "블록"
       label_blocks_plural: "블록"
@@ -1947,7 +1955,6 @@ ko:
       define_custom_style: Custom theme and logo
       edit_attribute_groups: 특성 그룹 편집
       gantt_pdf_export: Gantt PDF 내보내기
-      grid_widget_wp_graph: 그리드 위젯 작업 패키지 그래프
       ldap_groups: LDAP users and group sync
       one_drive_sharepoint_file_storage: OneDrive/SharePoint 파일 저장소
       placeholder_users: 플레이스홀더 사용자

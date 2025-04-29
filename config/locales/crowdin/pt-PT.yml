@@ -349,6 +349,12 @@ pt-PT:
         heading: "Eliminar esta lista de projetos?"
         text: "Esta ação não eliminará qualquer projeto que a lista contenha. Tem a certeza de que pretende eliminar esta lista de projectos?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -762,9 +768,11 @@ pt-PT:
       label_child_singular: "secundário"
       label_child_plural: "secundários"
       new_child: "Criar novo secundário"
-      new_child_text: "Cria um pacote de trabalho relacionado como um subitem do pacote de trabalho atual (principal)"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Secundário"
       child_description: "Torna o pacote de trabalho relacionado num subitem do pacote de trabalho atual (principal)"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Mais próximo"
       label_blocks_singular: "bloqueia"
       label_blocks_plural: "bloqueia"
@@ -1983,7 +1991,6 @@ pt-PT:
       define_custom_style: Tema e logótipo personalizados
       edit_attribute_groups: Editar grupos de atributos
       gantt_pdf_export: Exportação de PDF de Gantt
-      grid_widget_wp_graph: Widget de grelha para gráficos de pacotes de trabalho
       ldap_groups: Sincronização de utilizadores e grupos LDAP
       one_drive_sharepoint_file_storage: Armazenamento de ficheiros no OneDrive/SharePoint
       placeholder_users: Utilizadores de marcador de posição
