@@ -75,8 +75,8 @@ module My
     end
 
     def workweek
-      workdays_normalized  = Setting.working_days.map { |day| day % 7 }.sort
-      date.all_week.select { |d| workdays_normalized.include?(d.wday) }
+      workdays_normalized = Setting.working_days.map { |day| day % 7 }.sort
+      date.all_week(week_start_day).select { |d| workdays_normalized.include?(d.wday) }
     end
 
     def parsed_date
@@ -116,7 +116,7 @@ module My
     def current_date
       case mode
       when :day then Time.zone.today
-      when :week, :workweek then Time.zone.today.beginning_of_week
+      when :week, :workweek then Time.zone.today.beginning_of_week(week_start_day)
       when :month then Time.zone.today.beginning_of_month
       end
     end
@@ -142,6 +142,14 @@ module My
           mode: mode,
           date: date
         )
+      end
+    end
+
+    def week_start_day
+      case Setting.start_of_week
+      when 6 then :saturday
+      when 7 then :sunday
+      else :monday
       end
     end
 

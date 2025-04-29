@@ -52,7 +52,7 @@ module My
       def range
         case mode
         when :day then [date]
-        when :week then date.all_week
+        when :week then date.all_week(week_start_day)
         when :workweek then workweek_days
         when :month then month_days
         end
@@ -60,7 +60,7 @@ module My
 
       def grouped_time_entries
         @grouped_time_entries ||= time_entries
-          .group_by { |entry| mode == :month ? entry.spent_on.beginning_of_week : entry.spent_on }
+          .group_by { |entry| mode == :month ? entry.spent_on.beginning_of_week(week_start_day) : entry.spent_on }
           .tap do |hash|
             hash.default_proc = ->(h, k) { h[k] = [] }
           end
@@ -75,8 +75,8 @@ module My
       end
 
       def workweek_days
-        workdays_normalized  = Setting.working_days.map { |day| day % 7 }.sort
-        date.all_week.select { |d| workdays_normalized.include?(d.wday) }
+        workdays_normalized = Setting.working_days.map { |day| day % 7 }.sort
+        date.all_week(week_start_day).select { |d| workdays_normalized.include?(d.wday) }
       end
 
       def month_days
@@ -91,15 +91,23 @@ module My
         end
       end
 
+      def week_start_day
+        case Setting.start_of_week
+        when 6 then :saturday
+        when 7 then :sunday
+        else :monday
+        end
+      end
+
       def collapsed?(date)
         date.past?
       end
 
       def date_caption(date)
         if mode == :month
-          if Date.current.beginning_of_week == date
+          if Date.current.beginning_of_week(week_start_day) == date
             t(:label_this_week)
-          elsif 1.week.ago.beginning_of_week == date
+          elsif 1.week.ago.beginning_of_week(week_start_day) == date
             t(:label_last_week)
           end
         elsif date.today?
