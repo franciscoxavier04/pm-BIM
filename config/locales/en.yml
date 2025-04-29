@@ -1594,7 +1594,9 @@ en:
         one: "Notification"
         other: "Notifications"
       placeholder_user: "Placeholder user"
-      project: "Project"
+      project:
+        one: "Project"
+        other: "Projects"
       project_query:
         one: "Project list"
         other: "Project lists"
