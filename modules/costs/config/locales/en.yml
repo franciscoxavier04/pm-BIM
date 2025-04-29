@@ -226,6 +226,7 @@ en:
   week: "week"
 
   total_times:
+    workweek: "Workweek Total: %{hours}"
     week: "Week Total: %{hours}"
     month: "Month Total: %{hours}"
     day: "Day Total: %{hours}"
