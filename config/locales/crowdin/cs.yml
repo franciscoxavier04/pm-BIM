@@ -351,6 +351,12 @@ cs:
         heading: "Smazat tento seznam projektů?"
         text: "Tato akce neodstraní žádný projekt, který seznam obsahuje. Opravdu chcete tento seznam projektů smazat?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -783,9 +789,11 @@ cs:
       label_child_singular: "dítě"
       label_child_plural: "Potomci"
       new_child: "Vytvořit nového potomka"
-      new_child_text: "Vytvoří související pracovní balíček jako podpoložku aktuálního (nadřazeného) pracovního balíčku"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Potomek"
       child_description: "Udělá související pracovní balíček podpoložkou aktuálního (nadřazeného) pracovního balíčku"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Nejbližší"
       label_blocks_singular: "bloky"
       label_blocks_plural: "bloky"
@@ -2064,7 +2072,6 @@ cs:
       define_custom_style: Custom theme and logo
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF export
-      grid_widget_wp_graph: Grid Widget Work Package Graph
       ldap_groups: LDAP users and group sync
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users

@@ -347,6 +347,12 @@ uk:
         heading: "Видалити цей список проєктів?"
         text: "Ця дія не призведе до видалення жодного проєкту зі списку. Справді видалити цей список проєктів?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -777,9 +783,11 @@ uk:
       label_child_singular: "дочірній елемент"
       label_child_plural: "дочірні елементи"
       new_child: "Створити новий дочірній елемент"
-      new_child_text: "Створює звʼязаний пакет робіт як піделемент поточного (батьківського) пакета робіт"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Дочірній"
       child_description: "Вкладає звʼязаний пакет робіт як піделемент поточного (батьківського) пакета робіт"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Найближчі"
       label_blocks_singular: "блоки"
       label_blocks_plural: "блоки"
@@ -2058,7 +2066,6 @@ uk:
       define_custom_style: Користувацька тема й логотип
       edit_attribute_groups: Редагування груп атрибутів
       gantt_pdf_export: Експорт діаграми Ґантта в PDF
-      grid_widget_wp_graph: Графік пакета робіт у вигляді сітки
       ldap_groups: Синхронізація користувачів і груп LDAP
       one_drive_sharepoint_file_storage: Файлове сховище OneDrive / SharePoint
       placeholder_users: Прототипи користувачів

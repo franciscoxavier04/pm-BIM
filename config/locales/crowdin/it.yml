@@ -349,6 +349,12 @@ it:
         heading: "Eliminare questo elenco di progetti?"
         text: "Questa azione non eliminerà alcun progetto contenuto nell'elenco. Vuoi davvero eliminare questo elenco di progetti?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -762,9 +768,11 @@ it:
       label_child_singular: "figlia"
       label_child_plural: "figlie"
       new_child: "Crea nuovo figlio"
-      new_child_text: "Crea una macro-attività correlata come sottovoce della macro-attività attuale (genitore)"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Figlio"
       child_description: "Rende la macro-attività correlata un sottoelemento della macro-attività corrente (genitore)"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Il più vicino"
       label_blocks_singular: "blocca"
       label_blocks_plural: "blocca"
@@ -1983,7 +1991,6 @@ it:
       define_custom_style: Custom theme and logo
       edit_attribute_groups: Modifica proprietà gruppo
       gantt_pdf_export: Esportazione PDF Gantt
-      grid_widget_wp_graph: Widget a griglia del grafico della macro-attività
       ldap_groups: LDAP users and group sync
       one_drive_sharepoint_file_storage: Archiviazione file OneDrive/SharePoint
       placeholder_users: Utenti segnaposto

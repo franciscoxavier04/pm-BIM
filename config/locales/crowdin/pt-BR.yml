@@ -350,6 +350,12 @@ pt-BR:
         heading: "Excluir esta lista de projeto?"
         text: "Esta ação não excluirá nenhum projeto contido na lista. Você tem certeza de que deseja excluir esta lista de projetos?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -762,9 +768,11 @@ pt-BR:
       label_child_singular: "filho"
       label_child_plural: "filhos"
       new_child: "Novo filho"
-      new_child_text: "Cria um pacote de trabalho relacionado como um subpacote do pacote de trabalho atual (pai)"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Filho"
       child_description: "Torna o pacote de trabalho relacionado uma subtarefa do pacote de trabalho atual (pai)"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Mais próximo"
       label_blocks_singular: "blocos"
       label_blocks_plural: "blocos"
@@ -1983,7 +1991,6 @@ pt-BR:
       define_custom_style: Custom theme and logo
       edit_attribute_groups: Editar atributo de grupos
       gantt_pdf_export: Exportar diagrama de Gantt para PDF
-      grid_widget_wp_graph: Widget de Grid para gráficos de pacotes de trabalho
       ldap_groups: LDAP users and group sync
       one_drive_sharepoint_file_storage: Armazenamento de Arquivos OneDrive/SharePoint
       placeholder_users: Usuários Genéricos

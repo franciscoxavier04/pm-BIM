@@ -348,6 +348,12 @@ pl:
         heading: "Usunąć tę listę projektów?"
         text: "To działanie nie spowoduje usunięcia żadnego projektu znajdującego się na liście. Czy na pewno chcesz usunąć tę listę projektów?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -780,9 +786,11 @@ pl:
       label_child_singular: "element podrzędny"
       label_child_plural: "elementy podrzędne"
       new_child: "Utwórz nowy element podrzędny"
-      new_child_text: "Tworzy powiązany pakiet roboczy jako element podrzędny bieżącego (nadrzędnego) pakietu roboczego"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Element podrzędny"
       child_description: "Ustawia powiązany pakiet roboczy jako element podrzędny bieżącego (nadrzędnego) pakietu roboczego"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Najbliższy"
       label_blocks_singular: "blok"
       label_blocks_plural: "bloki"
@@ -2061,7 +2069,6 @@ pl:
       define_custom_style: Custom theme and logo
       edit_attribute_groups: Edytuj grupy atrybutów
       gantt_pdf_export: Eksport wykresu Gantta w formacie PDF
-      grid_widget_wp_graph: Wykres pakietów roboczych widżetu siatki
       ldap_groups: LDAP users and group sync
       one_drive_sharepoint_file_storage: Magazyn plików OneDrive/SharePoint
       placeholder_users: Użytkownicy zastępczy

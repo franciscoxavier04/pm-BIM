@@ -1,8 +1,4 @@
 ar:
-  ee:
-    upsell:
-      grid_widget_wp_graph:
-        description: "بعض الأدوات، مثل أداة الرسم البياني لحزمة العمل، متوفرة فقط في النسخة المدفوعة."
   js:
     grid:
       add_widget: 'Add widget'

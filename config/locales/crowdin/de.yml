@@ -41,13 +41,13 @@ de:
         changed: "geändert"
         created: "erstellt"
         commented: "kommentiert"
-        internal_comment: Internal comment
-        internal_journal: Internal comments are visible to a limited group of members.
+        internal_comment: interner Kommentar
+        internal_journal: Interne Kommentare sind nur für eine einschränkbare Gruppe von Mitgliedern sichtbar.
         unsaved_changes_confirmation_message: Sie haben ungespeicherte Änderungen. Sind Sie sicher, dass Sie den Editor schließen möchten?
         internal_comment_confirmation:
-          title: "Make this comment public?"
-          heading: "Make this comment public?"
-          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          title: "Diesen Kommentar öffentlich machen?"
+          heading: "Diesen Kommentar öffentlich machen?"
+          description: "Ihr Kommentar wird für jeden sichtbar, der dieses Arbeitspaket sehen kann. Sind Sie sicher, dass Sie dies tun möchten?"
           confirm_button_text: "Veröffentlichen"
   admin:
     plugins:
@@ -348,18 +348,24 @@ de:
         heading: "Diese Projektliste löschen?"
         text: "Diese Aktion löscht keine Projekte, die in der Liste enthalten sind. Sind Sie sicher, dass Sie diese Projektliste löschen möchten?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
       public_warning: >
-        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+        Dieses Projekt ist öffentlich. Nutzer mit Zugriff auf diese Instanz können dieses Projekt sehen und abhängig der ihnen zugewiesenen Rollen und Berechtigungen damit interagieren. Unterprojekte haben ihre eigenen Einstellungen zur Sichtbarkeit und erben nicht diese Einstellung.
       public_confirmation:
-        checkbox: "I understand that this will make the previously private content public"
-        title: "Make this project public?"
+        checkbox: "Mir ist bewusst, dass diese Aktion bisher als privat markierte Inhalte öffentlich machen wird"
+        title: "Dieses Projekt öffentlich machen?"
         description: >
-          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+          Die Sichtbarkeit dieses Projekts wird auf öffentlich geändert. Nutzer mit Zugriff auf diese Instanz können dieses Projekt sehen und abhängig der ihnen zugewiesenen Rollen und Berechtigungen damit interagieren. Unterprojekte haben ihre eigenen Einstellungen zur Sichtbarkeit und erben nicht diese Einstellung.
       private_confirmation:
-        checkbox: "I understand that this will make the previously public content private."
-        title: "Make this project private?"
+        checkbox: "Mir ist bewusst, dass diese Aktion bisher als öffentlich markierte Inhalte privat machen wird."
+        title: "Dieses Projekt privat machen?"
         description: >
-          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+          Das Projekt wird nur für Projektmitglieder sichtbar sein, abhängig von ihrer Rolle und den zugehörigen Berechtigungen. Unterprojekte haben ihre eigenen Einstellungen zur Sichtbarkeit und erben nicht diese Einstellung.
       change_identifier: Kennung ändern
       actions:
         label_enable_all: "Alles aktivieren"
@@ -758,9 +764,11 @@ de:
       label_child_singular: "Untergeordnetes Arbeitspaket"
       label_child_plural: "Untergeordnete Arbeitspakete"
       new_child: "Neues Unter-Arbeitspaket"
-      new_child_text: "Erstellt ein zugehöriges Arbeitspaket als Unterelement des aktuellen (übergeordneten) Arbeitspakets"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Unteraufgabe"
       child_description: "Macht das zugehörige Arbeitspaket zu einem Unterelement des aktuellen (übergeordneten) Arbeitspakets"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Am nächsten"
       label_blocks_singular: "Blockiert"
       label_blocks_plural: "Blockiert"
@@ -1081,7 +1089,7 @@ de:
           title: "Werktage"
           false: "Nur Werktage"
           true: "Mit Wochenenden"
-        journal_internal: Internal Journal
+        journal_internal: Internes Journal
         notify: "Benachrichtigung" #used in custom actions
         parent: "Übergeordnetes Arbeitspaket"
         parent_issue: "Übergeordnetes Arbeitspaket"
@@ -1814,7 +1822,7 @@ de:
     text:
       failed: 'Das Projekt "%{source_project_name}" konnte nicht nach "%{target_project_name}" kopiert werden.'
       succeeded: 'Das Projekt "%{source_project_name}" wurde nach "%{target_project_name}" kopiert.'
-  create_wiki_page: "Create new wiki page"
+  create_wiki_page: "Neue Wikiseite anlegen"
   create_wiki_page_button: "Wiki-Seite"
   date:
     abbr_day_names:
@@ -1968,10 +1976,10 @@ de:
   direction: ltr
   ee:
     features:
-      baseline_comparison: Baseline Comparisons
-      board_view: Advanced Boards
+      baseline_comparison: Grundlinie (Planungsvergleich)
+      board_view: Erweiterte agile Boards
       conditional_highlighting: Bedingte Hervorhebung
-      internal_comments: Internal Comments
+      internal_comments: Interne Kommentare
       custom_actions: Benutzerdefinierte Aktionen
       custom_field_hierarchies: Selbstdefinierte Felder vom Typ Hierarchie
       customize_life_cycle: Projektlebenszyklus anpassen
@@ -1979,7 +1987,6 @@ de:
       define_custom_style: Selbstdefiniertes Thema und Logo
       edit_attribute_groups: Attributgruppen bearbeiten
       gantt_pdf_export: Gantt-PDF-Export
-      grid_widget_wp_graph: Arbeitspakete-Graphen Widget
       ldap_groups: LDAP-Benutzer- und Gruppensynchronisation
       one_drive_sharepoint_file_storage: OneDrive/SharePoint-Dateispeicherung
       placeholder_users: Platzhalter-Benutzer
@@ -1994,9 +2001,9 @@ de:
       work_package_subject_generation: Arbeitspaket-Betreff Generierung
     upsell:
       title: "Enterprise Add-on"
-      plan_title: "Enterprise %{plan} add-on"
-      plan_name: "%{plan} enterprise plan"
-      plan_text_html: "Available starting with the %{plan_name}."
+      plan_title: "Enterprise %{plan} Add-on"
+      plan_name: "%{plan} Enterprise Plan"
+      plan_text_html: "Beginnend mit dem %{plan_name} verfügbar."
       hide_banner: "Dieses Banner ausblenden"
       baseline_comparison:
         description: An dieser Liste vorgenommene Änderungen seit einem beliebigen Zeitpunkt in der Vergangenheit hervorheben.
@@ -2005,19 +2012,19 @@ de:
       customize_life_cycle:
         description: "Erstellen und organisieren Sie von PM2 abweichende Projektlebenszyklen."
       conditional_highlighting:
-        description: "Need certain work packages to stand out from the mass? Use conditional highlighting in the work packages table."
+        description: "Benötigen Sie bestimmte Arbeitspakete, um sich von der Masse abzuheben? Verwenden Sie die bedingte Hervorhebung in der Arbeitspaketstabelle."
       work_package_query_relation_columns:
-        description: "Need to see relations or child elements in the work package list?"
+        description: "Möchten Sie Beziehungen oder Kinder als Spalten in der Arbeitspaketliste sehen können?"
       edit_attribute_groups:
-        description: "Customize form configuration with these additional add-ons:"
+        description: "Anpassen der Form-Konfiguration mit diesen zusätzlichen Add-ons:"
         features:
           groups: "Neue Attributgruppen hinzufügen"
           rename: "Attributgruppen umbenennen"
           related: "Tabelle mit zugehörigen Arbeitspaketen hinzufügen"
       readonly_work_packages:
-        description: "Mark work packages as read-only for specific statuses."
+        description: "Arbeitspakete in bestimmten Status als schreibgeschützt markieren."
       custom_field_hierarchies:
-        description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
+        description: "Benutzerdefinierte Felder vom Typ Hierarchie erlauben es, hierarchische Strukturen in Arbeitspaketen zu organisieren, indem sie mehrstufige Auswahllisten nutzen."
       date_alerts:
         description: "Mit Datums-Erinnerungen werden Sie über bevorstehende Start- oder Endtermine informiert, so dass Sie nie einen wichtigen Termin verpassen oder übersehen."
       work_package_sharing:
@@ -2037,7 +2044,7 @@ de:
           Platzhalter-Benutzer bieten Ihnen die Möglichkeit, einem Arbeitspaket Nutzer zuzuweisen, die nicht Teil Ihres Projekts sind. Sie können in einer Reihe von Szenarien nützlich sein; zum Beispiel, wenn Sie Aufgaben für eine noch nicht benannte oder verfügbare Ressource verfolgen müssen oder wenn Sie dieser Person keinen Zugriff auf OpenProject gewähren wollen, aber trotzdem Aufgaben verfolgen wollen, die diesem Nutzer zugewiesen sind.
       internal_comments:
         title: "Nur für Sie"
-        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+        description: "Interne Kommentare erlauben es einem internen Team privat zu kommunizieren. Diese sind nur für bestimmte Projektrollen sichtbar und werden nie öffentlich sichtbar sein."
   enumeration_activities: "Aktivitäten für Zeiterfassung"
   enumeration_work_package_priorities: "Arbeitspaket-Prioritäten"
   enumeration_reported_project_statuses: "Gemeldeter Projekt-Status"
@@ -3347,7 +3354,7 @@ de:
   permission_add_project: "Projekte erstellen"
   permission_add_work_package_attachments: "Anhänge hinzufügen"
   permission_add_work_package_attachments_explanation: "Erlaubt das Hinzufügen von Anhängen ohne die Berechtigung, das Arbeitspaket selbst zu bearbeiten"
-  permission_add_internal_comments: "Write internal comments"
+  permission_add_internal_comments: "Interne Kommentare schreiben"
   permission_archive_project: "Projekt archivieren"
   permission_create_user: "Benutzer erstellen"
   permission_manage_user: "Benutzer bearbeiten"
@@ -3376,12 +3383,12 @@ de:
   permission_edit_work_package_comments_explanation: "Achtung: Benutzer mit dieser Berechtigung können den Kommentar eines anderen Benutzers bearbeiten."
   permission_edit_work_packages: "Arbeitspakete bearbeiten"
   permission_edit_messages: "Forenbeiträge bearbeiten"
-  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_internal_comments: "Eigene interne Kommentare bearbeiten"
   permission_edit_own_work_package_comments: "Eigene Kommentare bearbeiten"
   permission_edit_own_messages: "Eigene Forenbeiträge bearbeiten"
   permission_edit_own_time_entries: "Selbstgebuchte Aufwände bearbeiten"
-  permission_edit_others_internal_comments: "Moderate internal comments"
-  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
+  permission_edit_others_internal_comments: "Interne Kommentare moderieren"
+  permission_edit_others_internal_comments_explanation: "Achtung: Benutzer mit dieser Berechtigung können den Kommentar anderer Benutzer bearbeiten."
   permission_edit_project: "Projekt bearbeiten"
   permission_edit_project_attributes: "Projektattribute bearbeiten"
   permission_edit_project_phases: "Projektphasen bearbeiten"
@@ -3422,7 +3429,7 @@ de:
   permission_manage_own_reminders: "Eigene Erinnerungen erstellen"
   permission_view_project: "Projekt anzeigen"
   permission_view_changesets: "Revisionen des Projektarchivs in OpenProject ansehen"
-  permission_view_internal_comments: "View internal comments"
+  permission_view_internal_comments: "Interne Kommentare ansehen"
   permission_view_commit_author_statistics: "Commit Autor Statistiken ansehen"
   permission_view_dashboards: "Dashboard anzeigen"
   permission_view_work_package_watchers: "Liste der Beobachter ansehen"
@@ -3754,7 +3761,7 @@ de:
   setting_rest_api_enabled: "REST-Schnittstelle aktivieren"
   setting_self_registration: "Selbstregistrierung"
   setting_self_registration_warning: >
-    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+    Mit dieser Einstellung sind Benutzer in der Lage, eigene Konten zu erstellen und zu aktivieren. Bitte beachten Sie, dass diese dadurch Zugriff auf alle öffentlichen Projekte und deren Inhalte erhalten. Bitte stellen Sie sicher, dass in öffentlichen Projekten keine sensiblen oder privaten Daten gespeichert werden.
   setting_session_ttl: "Session-Ablaufzeit nach Inaktivität"
   setting_session_ttl_hint: "Wert kleiner 5 wirkt wie ausgeschaltet"
   setting_session_ttl_enabled: "Session läuft ab"
@@ -3885,8 +3892,8 @@ de:
     work_packages:
       not_allowed_text: "Sie haben nicht die notwendigen Rechte, um diese Seite zu sehen."
       activities:
-        enable_internal_comments: "Enable internal comments"
-        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_internal_comments: "Interne Kommentare aktivieren"
+        helper_text: "Interne Kommentare erlauben es einem internen Team privat zu kommunizieren. Diese sind nur für bestimmte Projektrollen sichtbar und werden nie öffentlich sichtbar sein. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Reiner Text"

@@ -1,8 +1,4 @@
 ca:
-  ee:
-    upsell:
-      grid_widget_wp_graph:
-        description: "Alguns widgets com la gràfica de paquet de treball només estan disponibles en l'edició Enterprise."
   js:
     grid:
       add_widget: 'Afegeix widget'

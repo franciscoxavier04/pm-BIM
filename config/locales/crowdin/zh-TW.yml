@@ -350,6 +350,12 @@ zh-TW:
         heading: "刪除此專案清單？"
         text: "此動作不會刪除清單中包含的任何專案。您確定要刪除此專案清單？"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -754,9 +760,11 @@ zh-TW:
       label_child_singular: "子項目"
       label_child_plural: "子項目"
       new_child: "建立子項目"
-      new_child_text: "使相關工作成為目前（上層）工作項目的子項目"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "子項目"
       child_description: "使相關工作成為目前（父）工作項目的子項目"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "最近的"
       label_blocks_singular: "區塊"
       label_blocks_plural: "區塊"
@@ -1945,7 +1953,6 @@ zh-TW:
       define_custom_style: 自訂布景主題與logo
       edit_attribute_groups: 編輯群組屬性
       gantt_pdf_export: 以PDF匯出甘特圖
-      grid_widget_wp_graph: 網格小工具工作項目圖形
       ldap_groups: 同步LDAP使用者與群組
       one_drive_sharepoint_file_storage: OneDrive/SharePoint 檔案儲存
       placeholder_users: 占位使用者

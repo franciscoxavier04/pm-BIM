@@ -1,8 +1,4 @@
 cs:
-  ee:
-    upsell:
-      grid_widget_wp_graph:
-        description: "Některé widgety, jako například widget s grafem pracovního balíčku, jsou dostupné pouze v Enterprise Edici."
   js:
     grid:
       add_widget: 'Přidat widget'

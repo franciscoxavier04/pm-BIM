@@ -351,6 +351,12 @@ fr:
         heading: "Supprimer cette liste de projets ?"
         text: "Cette action ne supprimera aucun projet contenu dans la liste. Voulez-vous vraiment supprimer cette liste de projets ?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -763,9 +769,11 @@ fr:
       label_child_singular: "enfant"
       label_child_plural: "enfants"
       new_child: "Créer un nouvel enfant"
-      new_child_text: "Crée un lot de travaux lié en tant que sous-élément du lot de travaux actuel (parent)"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Enfant"
       child_description: "Fait du lot de travaux lié un sous-élément du lot de travaux actuel (parent)"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Le plus proche"
       label_blocks_singular: "blocs"
       label_blocks_plural: "blocs"
@@ -1984,7 +1992,6 @@ fr:
       define_custom_style: Thème et logo personnalisés
       edit_attribute_groups: Modifier les groupes d'attributs
       gantt_pdf_export: Exportation PDF de diagramme de Gantt
-      grid_widget_wp_graph: Graphique du widget de grille de lot de travaux
       ldap_groups: Synchronisation des utilisateurs LDAP et des groupes
       one_drive_sharepoint_file_storage: Stockage de fichiers OneDrive/SharePoint
       placeholder_users: Utilisateurs de remplacement

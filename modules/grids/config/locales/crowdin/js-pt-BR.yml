@@ -1,8 +1,4 @@
 pt-BR:
-  ee:
-    upsell:
-      grid_widget_wp_graph:
-        description: "Alguns widgets, como o widget gráfico do pacote de trabalho, só estão disponíveis na edição Enterprise."
   js:
     grid:
       add_widget: 'Adicionar widget'

@@ -1,8 +1,4 @@
 ro:
-  ee:
-    upsell:
-      grid_widget_wp_graph:
-        description: "Unele widget-uri, cum ar fi widget-ul grafic pachet de lucru, sunt disponibile doar în Enterprise Edition."
   js:
     grid:
       add_widget: 'Adaugă widget'
