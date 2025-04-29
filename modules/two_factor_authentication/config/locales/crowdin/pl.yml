@@ -83,8 +83,8 @@ pl:
       text_2fa_disabled: "Użytkownik nie ustawił urządzenia 2FA na swojej stronie „Moje konto”"
       only_sms_allowed: "Dla innych użytkowników można skonfigurować tylko dostarczanie wiadomości SMS."
     upsell:
-      title: "Two-factor authentication"
-      description: "Strenghten the security of your OpenProject instance by offering (or enforcing) two-factor authentification to all project members."
+      title: "Uwierzytelnianie dwuskładnikowe"
+      description: "Potwierdź bezpieczeństwo twojej instancji OpenProject poprzez zaoferowanie (lub wyegzekwowanie) uwierzytelnienia dwuskładnikowego wszystkim członkom projektu."
     backup_codes:
       none_found: Na tym koncie nie ma kodów zapasowych.
       singular: Kod zapasowy

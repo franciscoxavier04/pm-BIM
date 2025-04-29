@@ -50,7 +50,7 @@ af:
         project: Projek
         user: Gebruiker
         work_package: Werkspakket
-        subject: Subject
+        subject: Onderwerp
         hours: Ure
         comments: Opmerking
         activity: Aktiwiteit
@@ -164,8 +164,8 @@ af:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Lys"
-  label_month: "Month"
-  label_day: "Day"
+  label_month: "Maand"
+  label_day: "Dag"
   label_today_capitalized: "Today"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Something went wrong. Please try again."

@@ -66,7 +66,7 @@ pt-PT:
         dialog: "Este é o URL onde os metadados SAML do OpenProject estão disponíveis. Opcionalmente, utilize-o para configurar o seu fornecedor de identidade:"
       upsell:
         title: "Single Sign-On (SSO) with SAML"
-        description: Connect OpenProject to a SAML identity provider
+        description: Associar o OpenProject a um fornecedor de identidade SAML
       request_attributes:
         title: 'Atributos solicitados'
         legend: >

@@ -28,31 +28,33 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class WorkPackageRelationsTab::AddWorkPackageChildDialogComponent < ApplicationComponent
-  include ApplicationHelper
-  include OpTurbo::Streamable
-  include OpPrimer::ComponentHelpers
+module MeetingSections
+  class Backlogs::ClearBacklogDialogComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpTurbo::Streamable
 
-  I18N_NAMESPACE = "work_package_relations_tab"
-  DIALOG_ID = "add-work-package-child-dialog"
-  FORM_ID = "add-work-package-child-form"
+    def initialize(meeting)
+      super
 
-  attr_reader :work_package
+      @meeting = meeting
+    end
 
-  def initialize(work_package:)
-    super()
+    private
 
-    @work_package = work_package
-  end
+    def heading
+      if @meeting.recurring?
+        I18n.t(:label_series_backlog_clear_title)
+      else
+        I18n.t(:label_agenda_backlog_clear_title)
+      end
+    end
 
-  private
-
-  def dialog_title
-    child_label = t("#{I18N_NAMESPACE}.relations.label_child_singular")
-    t("#{I18N_NAMESPACE}.label_add_x", x: child_label)
-  end
-
-  def body_classes
-    "Overlay-body_autocomplete_height"
+    def description
+      if @meeting.recurring?
+        I18n.t(:text_series_backlog_clear_description)
+      else
+        I18n.t(:text_agenda_backlog_clear_description)
+      end
+    end
   end
 end

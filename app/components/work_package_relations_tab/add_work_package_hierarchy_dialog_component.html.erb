@@ -9,8 +9,9 @@
     d.with_header(variant: :large)
     d.with_body(classes: body_classes) do
       render(
-        WorkPackageRelationsTab::AddWorkPackageChildFormComponent.new(
-          work_package: @work_package
+        WorkPackageRelationsTab::AddWorkPackageHierarchyFormComponent.new(
+          work_package:,
+          relation_type:
         )
       )
     end

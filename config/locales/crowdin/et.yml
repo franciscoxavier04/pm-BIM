@@ -276,7 +276,7 @@ et:
       int?: "must be an integer."
       filled?: "must be filled."
       greater_or_equal_zero: "must be greater or equal to 0."
-      not_found: "not found."
+      not_found: "ei leitud."
       rules:
         item:
           root_item: "cannot be a root item."
@@ -297,7 +297,7 @@ et:
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "Kõik"
       messages: "Foorum"
       wiki_pages: "Viki"
   groups:
@@ -351,6 +351,12 @@ et:
         heading: "Kas kustutada see projektide nimekiri?"
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -670,7 +676,7 @@ et:
           manual_mobile: "Manually scheduled."
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
-        title: "No predecessors"
+        title: "Eeltingimusi pole"
         description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
@@ -765,9 +771,11 @@ et:
       label_child_singular: "child"
       label_child_plural: "children"
       new_child: "Create new child"
-      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "blokeerib"
       label_blocks_plural: "blokeerib"
@@ -991,7 +999,7 @@ et:
         hidden: "Peidetud"
         manual_sorting: "Manual sort order"
         ordered_work_packages: "Work packages order"
-        include_subprojects: "Include subprojects"
+        include_subprojects: "Kaasa alamprojektid"
         results: "Tulemused"
       relation:
         lag: "Viivitus"
@@ -1038,7 +1046,7 @@ et:
       user:
         admin: "Administraator"
         auth_source: "Authentication source"
-        ldap_auth_source: "LDAP connection"
+        ldap_auth_source: "LDAP ühendus"
         identity_url: "Identity URL"
         current_password: "Praegune parool"
         force_password_change: "Sunni parooli vahetada järgmisel sisselogimisel"
@@ -1061,7 +1069,7 @@ et:
         time_zone: "Ajavöönd"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
-        workdays: "Working days"
+        workdays: "Tööpäevad"
       version:
         effective_date: "Lõpetamise kuupäev"
         sharing: "Jagamine"
@@ -1079,7 +1087,7 @@ et:
         derived_done_ratio: "Total % complete"
         derived_remaining_hours: "Total remaining work"
         derived_remaining_time: "Total remaining work"
-        done_ratio: "% Complete"
+        done_ratio: "% valmis"
         duration: "kestus"
         end_insertion: "End of the insertion"
         end_deletion: "End of the deletion"
@@ -1094,7 +1102,7 @@ et:
         parent_issue: "Pärineb teemast"
         parent_work_package: "Pärineb teemast"
         priority: "Prioriteet"
-        progress: "% Complete"
+        progress: "% valmis"
         readonly: "Kirjutuskaitstud"
         remaining_hours: "Remaining work"
         remaining_time: "Remaining work"
@@ -1505,7 +1513,7 @@ et:
       member: "Liige"
       news: "Uudised"
       notification:
-        one: "Notification"
+        one: "Märguanne"
         other: "Notifications"
       placeholder_user: "Placeholder user"
       project: "Projekt"
@@ -1513,7 +1521,7 @@ et:
         one: "Project list"
         other: "Project lists"
       query: "Kohandatud päring"
-      reminder: "Reminder"
+      reminder: "Meeldetuletus"
       role:
         one: "Roll"
         other: "Rollid"
@@ -1557,7 +1565,7 @@ et:
       time_entry:
         hour:
           one: "%{count} hour"
-          other: "%{count} hours"
+          other: "%{count} tundi"
         hour_html:
           one: "<i>%{count} hour</i>"
           other: "<i>%{count} hours</i>"
@@ -1786,7 +1794,7 @@ et:
   button_delete_menu_entry: "Kustuta menüükäsk"
   button_view_shared_work_packages: "View shared work packages"
   button_manage_roles: "Manage roles"
-  button_remove_member: "Remove member"
+  button_remove_member: "Eemalda liige"
   button_remove_member_and_shares: "Remove member and shares"
   button_revoke_work_package_shares: "Revoke work package shares"
   button_revoke_access: "Revoke access"
@@ -1822,7 +1830,7 @@ et:
       failed: 'Ei saanud kopeerida andmeid projektist "%{source_project_name}" projekti "%{target_project_name}".'
       succeeded: 'Projekti "%{source_project_name}" andmed kopeeriti projekti "%{target_project_name}".'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "Viki leht"
   date:
     abbr_day_names:
       - "P"
@@ -1986,7 +1994,6 @@ et:
       define_custom_style: Custom theme and logo
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
-      grid_widget_wp_graph: Grid Widget Work Package Graph
       ldap_groups: LDAP users and group sync
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
@@ -2034,7 +2041,7 @@ et:
         more_info: "Note: the used logo will be publicly accessible."
         description: Customize your OpenProject installation with your own logo and colors.
       custom_actions:
-        title: "Custom actions"
+        title: "Kohandatud toimingud"
         description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
@@ -2221,7 +2228,7 @@ et:
       label: "Leping"
       caption: Work package details formatted to the standard German contract form.
     dialog:
-      title: Generate PDF
+      title: Genereeri PDF
       submit: Laadi alla
       templates:
         label: "Template"
@@ -2749,7 +2756,7 @@ et:
   label_modules: "Moodulid"
   label_months_from: "kuu kaugusel"
   label_more: "Rohkem"
-  label_more_information: "More information"
+  label_more_information: "Lisainfo"
   label_more_than_ago: "vanem kui"
   label_move_column_left: "Liiguta veerg vasakule"
   label_move_column_right: "Liiguta veerg paremale"
@@ -2787,7 +2794,7 @@ et:
   label_none_parentheses: "(pole)"
   label_not_contains: "ei sisalda"
   label_not_equals: "ei ole"
-  label_life_cycle_step_plural: "Project life cycle"
+  label_life_cycle_step_plural: "Projekti elutsükkel"
   label_on: "on"
   label_operator_all: "is not empty"
   label_operator_none: "is empty"
@@ -2838,7 +2845,7 @@ et:
   label_progress_tracking: "Progress tracking"
   label_project: "Projekt"
   label_project_activity: "Project activity"
-  label_project_attribute_plural: "Project attributes"
+  label_project_attribute_plural: "Projekti omadused"
   label_project_attribute_manage_link: "Manage project attributes"
   label_project_count: "Total number of projects"
   label_project_copy_notifications: "Saada e-postiga teateid projekti kopeerimise ajal"
@@ -2849,9 +2856,9 @@ et:
   label_project_new: "Uus projekt"
   label_project_plural: "Projektid"
   label_project_list_plural: "Project lists"
-  label_project_life_cycle: "Project life cycle"
-  label_project_attributes_plural: "Project attributes"
-  label_project_custom_field_plural: "Project attributes"
+  label_project_life_cycle: "Projekti elutsükkel"
+  label_project_attributes_plural: "Projekti omadused"
+  label_project_custom_field_plural: "Projekti omadused"
   label_project_settings: "Projekti sätted"
   label_project_attributes_settings: "Project attributes settings"
   label_project_storage_plural: "File Storages"
@@ -2895,7 +2902,7 @@ et:
   label_repository_root: "Repository root"
   label_repository_plural: "Hoidlad"
   label_required: "required"
-  label_requires: "requires"
+  label_requires: "nõuab"
   label_result_plural: "Tulemused"
   label_revision: "Sissekanne"
   label_revision_id: "Sissekande kood %{value}"
@@ -3127,13 +3134,13 @@ et:
         watched: "Watched"
         assigned: "Assigned"
         responsible: "Accountable"
-        mentioned: "Mentioned"
-        shared: "Shared"
+        mentioned: "Mainitud"
+        shared: "Jagatud"
         subscribed: "kõik"
         prefix: "Received because of the notification setting: %{reason}"
         date_alert_start_date: "Date alert"
         date_alert_due_date: "Date alert"
-        reminder: "Reminder"
+        reminder: "Meeldetuletus"
       see_all: "Vaata kõiki"
       updated_at: "Updated at %{timestamp} by %{user}"
     reminder_notifications:
@@ -3348,7 +3355,7 @@ et:
     text_getting_started_description: "Get a quick overview of project management and team collaboration with OpenProject. You can restart this video from the help menu."
     welcome: "Welcome to %{app_title}"
     select_language: "Please select your language"
-  permission_add_work_package_comments: "Add comments"
+  permission_add_work_package_comments: "Lisa kommentaare"
   permission_add_work_packages: "Teemasid lisada"
   permission_add_messages: "Postitusi lisada"
   permission_add_project: "Create projects"
@@ -3786,7 +3793,7 @@ et:
   setting_welcome_on_homescreen: "Display welcome block on homescreen"
   setting_work_package_list_default_highlighting_mode: "Default highlighting mode"
   setting_work_package_list_default_highlighted_attributes: "Default inline highlighted attributes"
-  setting_working_days: "Working days"
+  setting_working_days: "Tööpäevad"
   settings:
     authentication:
       single_sign_on: "Single Sign-On"
@@ -3857,14 +3864,14 @@ et:
         heading: "Uus omadus"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
     project_phase_definitions:
-      heading: "Project life cycle"
+      heading: "Projekti elutsükkel"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
       label_add: "Lisa"
       label_add_description: "Add project phase definition"
       filter:
-        label: "Search project phase"
+        label: "Otsi projekti etappi"
       section_header: "Etapid"
-      non_defined: "No phases are currently defined."
+      non_defined: "Ühtegi etappi pole praegu määratud."
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
@@ -3898,7 +3905,7 @@ et:
     markdown: "Markdown"
     plain: "Lihttekst"
   status_active: "aktiivne"
-  status_archived: "archived"
+  status_archived: "arhiveeritud"
   status_blocked: "blocked"
   status_invited: ktsutud
   status_locked: lukustatud
@@ -4102,7 +4109,7 @@ et:
   version_status_closed: "suletud"
   version_status_locked: "lukustatud"
   version_status_open: "avatud"
-  note: Note
+  note: Märkus
   note_password_login_disabled: "Password login has been disabled by %{configuration}."
   warning: Hoiatus
   warning_attachments_not_saved: "%{count} faili ei saa salvestada."

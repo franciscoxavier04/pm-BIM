@@ -41,7 +41,7 @@ et:
         material_costs: "Ühiku kulud"
         overall_costs: "Üldised kulud"
         spent_costs: "Spent costs"
-        spent_units: "Spent units"
+        spent_units: "Kasutatud ühikuid"
       rate:
         rate: "Rate"
       user:
@@ -50,14 +50,14 @@ et:
         project: Projekt
         user: Kasutaja
         work_package: Teema
-        subject: Subject
+        subject: Teema
         hours: Tunnid
         comments: Kommentaar
         activity: Tegevus
         spent_on: Kuupäev
-        start_time: Start time
+        start_time: Algusaeg
         end_time: Finish time
-        time: Time
+        time: Aeg
     models:
       time_entry:
         one: "Time entry"
@@ -164,9 +164,9 @@ et:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Nimistu"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "Kuu"
+  label_day: "Päev"
+  label_today_capitalized: "Täna"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Something went wrong. Please try again."
   notice_successful_restore: "Successful restore."

@@ -50,20 +50,20 @@ sv:
         project: Projekt
         user: Användare
         work_package: Arbetspaket
-        subject: Subject
+        subject: Ämne
         hours: Timmar
         comments: Kommentar
         activity: Aktivitet
         spent_on: Datum
         start_time: Start time
         end_time: Finish time
-        time: Time
+        time: Tid
     models:
       time_entry:
-        one: "Time entry"
+        one: "Tidspost"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Kostnadspost"
         other: "Cost entries"
       cost_type:
         one: "Kostnadstyp"
@@ -164,8 +164,8 @@ sv:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Lista"
-  label_month: "Month"
-  label_day: "Day"
+  label_month: "Månad"
+  label_day: "Dag"
   label_today_capitalized: "Today"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Ett fel inträffade. Försök igen."

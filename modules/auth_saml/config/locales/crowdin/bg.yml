@@ -66,7 +66,7 @@ bg:
         dialog: "Това е URL адресът, на който са налични SAML метаданните на OpenProject. По желание го използвайте, за да конфигурирате вашия доставчик на идентичност:"
       upsell:
         title: "Single Sign-On (SSO) with SAML"
-        description: Connect OpenProject to a SAML identity provider
+        description: Свързване на OpenProject с доставчик на SAML идентичност
       request_attributes:
         title: 'Искани атрибути'
         legend: >

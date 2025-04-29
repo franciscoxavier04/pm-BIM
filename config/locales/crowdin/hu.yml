@@ -296,7 +296,7 @@ hu:
   global_search:
     placeholder: "Keresés:  %{app_title} oldalon"
     overwritten_tabs:
-      all: "All"
+      all: "Összes"
       messages: "Fórum"
       wiki_pages: "Wiki"
   groups:
@@ -350,6 +350,12 @@ hu:
         heading: "Delete this project list?"
         text: "Ez a művelet nem törli a listában szereplő projekteket. Biztos, hogy törölni szeretné ezt a projektlistát?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -627,9 +633,9 @@ hu:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Feladatcsoport"
+            parent: "Szülő"
+            project: "Projekt"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -763,10 +769,12 @@ hu:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      new_child: "Create new child"
-      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child: "Új gyermek kapcsolat hozzáadása"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "blokkolja"
       label_blocks_plural: "blokkolja"
@@ -958,11 +966,11 @@ hu:
         is_required: "Required for all projects"
         custom_field_section: Szekció
       project/phase:
-        date_range: "Date range"
+        date_range: "Dátum intervallum"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Név"
+        color: "Szín"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1566,14 +1574,14 @@ hu:
       changeset: "Commit-ok"
       message: "Fórumok"
       news: "Hírek"
-      project_details: "Project details"
+      project_details: "Projekt részletei"
       subproject: "Alprojektek bevonása"
       time_entry: "Eltöltött idő"
       wiki_edit: "Wiki"
       work_package: "Munkacsomagok"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "aktiválva"
+      deactivated: "deaktiválva"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -1821,7 +1829,7 @@ hu:
       failed: 'Nem lehet másolni a  "%{source_project_name}" projektet a "%{target_project_name}" projektbe.'
       succeeded: 'A "%{source_project_name}" projekt átmásolva a "%{target_project_name}" projektbe.'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "Wiki oldal"
   date:
     abbr_day_names:
       - "V"
@@ -1985,7 +1993,6 @@ hu:
       define_custom_style: Custom theme and logo
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
-      grid_widget_wp_graph: Grid Widget Work Package Graph
       ldap_groups: LDAP users and group sync
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
@@ -2017,7 +2024,7 @@ hu:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "Attribútum-csoport hozzáadása"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -2030,15 +2037,15 @@ hu:
         description: "Share work packages with users who are not members of the project."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "Megjegyzés: a használt logó nyilvánosan elérhető lesz."
+        description: Testreszabhatja OpenProject telepítését saját logójával és színeivel.
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "Egyéni műveletek"
+        description: "Az egyéni műveletek egy kattintással elérhető parancsikonok előre meghatározott műveletek csoportjához, amelyeket állapot, szerep, típus vagy projekt alapján elérhetővé tehet bizonyos munkacsomagokon."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
-        title: Placeholder users
+        title: Teszt felhasználók
         description: >
           Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
       internal_comments:
@@ -2271,7 +2278,7 @@ hu:
     blocks:
       community: "OpenProject Közösség"
       upsell:
-        title: "Upgrade to Enterprise edition"
+        title: "Váltás Vállalati Verzióra"
     links:
       upgrade_enterprise_edition: "Váltás Vállalati Verzióra"
       postgres_migration: "A rendszer költöztetése PostreSQL-re"
@@ -2748,7 +2755,7 @@ hu:
   label_modules: "Modulok"
   label_months_from: "hónaptól"
   label_more: "További"
-  label_more_information: "More information"
+  label_more_information: "További információ"
   label_more_than_ago: "több, nappal ezelőtt"
   label_move_column_left: "Oszlop mozgatása balra"
   label_move_column_right: "Oszlop mozgatása jobbra"
@@ -3857,7 +3864,7 @@ hu:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Hozzáadás"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"

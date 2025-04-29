@@ -50,20 +50,20 @@ bg:
         project: Проект
         user: Потребител
         work_package: Работен пакет
-        subject: Subject
+        subject: Заглавие
         hours: Часове
         comments: Коментар
         activity: Активност
         spent_on: Дата
         start_time: Начален час
         end_time: Finish time
-        time: Time
+        time: Час
     models:
       time_entry:
         one: "Time entry"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Въвеждане на разходи"
         other: "Cost entries"
       cost_type:
         one: "Тип разход"
@@ -164,9 +164,9 @@ bg:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Списък"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "Месец"
+  label_day: "Ден"
+  label_today_capitalized: "Днес"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Нещо се обърка. Моля, опитайте отново."
   notice_successful_restore: "Успешно възстановяване."

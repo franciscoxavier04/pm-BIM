@@ -66,12 +66,12 @@ module Components
       end
 
       def expect_add_relation_button
-        expect(page).to have_test_selector("new-relation-action-menu")
+        expect(page).to have_test_selector("add-relation-action-menu")
       end
 
       def expect_no_add_relation_button
         expect_tab_is_loaded # Make sure the tab is loaded before checking non existing elements
-        expect(page).not_to have_test_selector("new-relation-action-menu")
+        expect(page).not_to have_test_selector("add-relation-action-menu")
       end
 
       def find_row(relatable)
@@ -88,10 +88,6 @@ module Components
         page.find("[data-test-selector^='op-relation-row']", text:, wait: 5)
       end
 
-      def expect_row(work_package)
-        find_row(work_package)
-      end
-
       def expect_no_row(relatable)
         expect_tab_is_loaded # Make sure the tab is loaded before checking non existing elements
         actual_relatable = find_relatable(relatable)
@@ -101,52 +97,42 @@ module Components
       end
 
       def select_relation_type(relation_type)
-        within_new_relation_action_menu do
+        within_add_relation_action_menu do
           click_link_or_button relation_type
         end
       end
 
       def expect_new_relation_type(relation_type)
-        within_new_relation_action_menu do
+        within_add_relation_action_menu do
           expect(page).to have_link(relation_type, wait: 1)
         end
       end
 
       def expect_no_new_relation_type(relation_type)
-        within_new_relation_action_menu do
+        within_add_relation_action_menu do
           expect(page).to have_no_link(relation_type, wait: 1)
         end
       end
 
-      def open_new_relation_action_menu
-        return if new_relation_action_menu.visible?
+      def open_add_relation_action_menu
+        return if add_relation_action_menu.visible?
 
         new_relation_button.click
       end
 
-      def new_relation_action_menu
+      def add_relation_action_menu
         action_menu_id = new_relation_button["aria-controls"]
         page.find(id: action_menu_id, visible: :all)
       end
 
       def new_relation_button
-        page.find_test_selector("new-relation-action-menu").find_button
+        page.find_test_selector("add-relation-action-menu").find_button
       end
 
       def remove_relation(relatable)
         actual_relatable = find_relatable(relatable)
-        relatable_row = find_row(actual_relatable)
 
-        retry_block do
-          SeleniumHubWaiter.wait
-          within(relatable_row) do
-            relatable_action_menu(actual_relatable).click
-            relatable_delete_button(actual_relatable).click
-          end
-
-          # Expect relation to be gone
-          expect_no_row(relatable)
-        end
+        remove_relation_with_work_package(actual_relatable)
       end
 
       def relatable_action_menu(relatable)
@@ -162,6 +148,11 @@ module Components
       def expect_no_relatable_action_menu(relatable)
         actual_relatable = find_relatable(relatable)
         expect(page).not_to have_test_selector("op-relation-row-#{actual_relatable.id}-action-menu")
+      end
+
+      def relatable_edit_button(relatable)
+        actual_relatable = find_relatable(relatable)
+        page.find_test_selector("op-relation-row-#{actual_relatable.id}-edit-button")
       end
 
       def relatable_delete_button(relatable)
@@ -258,12 +249,8 @@ module Components
       end
 
       def open_relation_dialog(relatable)
-        actual_relatable = find_relatable(relatable)
-        relation_row = find_row(actual_relatable)
-
-        within relation_row do
-          page.find_test_selector("op-relation-row-#{actual_relatable.id}-action-menu").click
-          page.find_test_selector("op-relation-row-#{actual_relatable.id}-edit-button").click
+        open_action_menu_with_work_package(relatable) do
+          relatable_edit_button(relatable).click
         end
 
         wait_for_reload if using_cuprite?
@@ -338,8 +325,8 @@ module Components
           select_relation_type "Child"
         end
 
-        within "##{WorkPackageRelationsTab::AddWorkPackageChildFormComponent::DIALOG_ID}" do
-          autocomplete_field = page.find_test_selector("work-package-child-form-id")
+        within "##{WorkPackageRelationsTab::AddWorkPackageHierarchyFormComponent::DIALOG_ID}" do
+          autocomplete_field = page.find_test_selector("work-package-hierarchy-form-id")
           select_autocomplete(autocomplete_field,
                               query: work_package.subject,
                               results_selector: "body")
@@ -347,6 +334,29 @@ module Components
           click_link_or_button "Save"
         end
         expect_and_dismiss_flash(message: "Successful update.")
+      end
+
+      def add_parent_relation(work_package)
+        SeleniumHubWaiter.wait
+
+        retry_block do
+          select_relation_type "Parent"
+        end
+
+        within "##{WorkPackageRelationsTab::AddWorkPackageHierarchyFormComponent::DIALOG_ID}" do
+          autocomplete_field = page.find_test_selector("work-package-hierarchy-form-id")
+          select_autocomplete(autocomplete_field,
+                              query: work_package.subject,
+                              results_selector: "body")
+
+          click_link_or_button "Save"
+        end
+        expect_and_dismiss_flash(message: "Successful update.")
+      end
+
+      def expect_parent_relation(work_package)
+        expect_relation_group(Relation::TYPE_PARENT)
+        find_row(work_package)
       end
 
       def relations_group
@@ -358,7 +368,7 @@ module Components
       end
 
       def expect_child(work_package)
-        expect_row(work_package)
+        find_row(work_package)
       end
 
       def expect_not_child(work_package)
@@ -366,22 +376,38 @@ module Components
       end
 
       def remove_child(work_package)
-        retry_block do
-          child_wp_row = find_row(work_package)
-          within(child_wp_row) do
-            relatable_action_menu(work_package).click
-            relatable_delete_button(work_package).click
-          end
-        end
+        remove_relation_with_work_package(work_package)
+      end
 
-        expect_no_row(work_package)
+      # Removes the parent using the parent relation item (not using the cross
+      # button from hierarchy breadcrumb at the top)
+      def remove_parent_relation(work_package)
+        remove_relation_with_work_package(work_package)
       end
 
       private
 
-      def within_new_relation_action_menu(&)
-        open_new_relation_action_menu
-        within(new_relation_action_menu, &)
+      def within_add_relation_action_menu(&)
+        open_add_relation_action_menu
+        within(add_relation_action_menu, &)
+      end
+
+      def remove_relation_with_work_package(relatable)
+        open_action_menu_with_work_package(relatable) do
+          relatable_delete_button(relatable).click
+        end
+
+        expect_no_row(relatable)
+      end
+
+      def open_action_menu_with_work_package(relatable)
+        retry_block do
+          relatable_row = find_row(relatable)
+          within(relatable_row) do
+            relatable_action_menu(relatable).click
+            yield
+          end
+        end
       end
     end
   end

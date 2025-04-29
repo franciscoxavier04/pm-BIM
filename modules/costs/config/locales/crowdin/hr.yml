@@ -50,21 +50,21 @@ hr:
         project: Projekt
         user: Korisnik
         work_package: Radni paket
-        subject: Subject
+        subject: Predmet
         hours: Sati
         comments: Komentar
         activity: Aktivnost
         spent_on: Datum
         start_time: Start time
         end_time: Finish time
-        time: Time
+        time: Vrijeme
     models:
       time_entry:
         one: "Time entry"
         few: "Time entries"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Ulazni trošak"
         few: "Cost entries"
         other: "Cost entries"
       cost_type:
@@ -168,8 +168,8 @@ hr:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Popis"
-  label_month: "Month"
-  label_day: "Day"
+  label_month: "Mjesec"
+  label_day: "Dan"
   label_today_capitalized: "Today"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Nešto je pošlo po zlu. Molimo pokušajte ponovno."

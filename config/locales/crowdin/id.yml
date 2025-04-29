@@ -293,7 +293,7 @@ id:
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "Semua"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
@@ -347,6 +347,12 @@ id:
         heading: "Delete this project list?"
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -616,8 +622,8 @@ id:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
+            work_package: "Paket-Penugasan"
+            parent: "Induk"
             project: "Project"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
@@ -752,9 +758,11 @@ id:
       label_child_singular: "child"
       label_child_plural: "children"
       new_child: "Create new child"
-      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "blok"
       label_blocks_plural: "blok"
@@ -946,11 +954,11 @@ id:
         is_required: "Required for all projects"
         custom_field_section: Bagian
       project/phase:
-        date_range: "Date range"
+        date_range: "Kisaran tanggal"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Nama"
+        color: "Warna"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1543,14 +1551,14 @@ id:
       changeset: "Set perubahan"
       message: "Forum"
       news: "News"
-      project_details: "Project details"
+      project_details: "Rincian proyek"
       subproject: "Sertakan subproyek"
       time_entry: "Durasi"
       wiki_edit: "Wiki"
       work_package: "Paket-Penugasan"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "diaktifkan"
+      deactivated: "dinonaktifkan"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -1798,7 +1806,7 @@ id:
       failed: 'Tidak dapat meng-copy Project "%{source_project_name}" ke Project "%{target_project_name}".'
       succeeded: 'Project "%{source_project_name}" ke "%{target_project_name}" telah di-copy.'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "Halaman Wiki"
   date:
     abbr_day_names:
       - "Min"
@@ -1943,7 +1951,6 @@ id:
       define_custom_style: Custom theme and logo
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
-      grid_widget_wp_graph: Grid Widget Work Package Graph
       ldap_groups: LDAP users and group sync
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
@@ -1975,7 +1982,7 @@ id:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "Menambahkan atribut kelompok-kelompok baru"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -1988,17 +1995,17 @@ id:
         description: "Share work packages with users who are not members of the project."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "Catatan: logo yang digunakan akan dapat diakses publik."
+        description: Sesuaikan instalasi OpenProject Anda dengan logo dan warna Anda sendiri.
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "Tindakan khusus"
+        description: "Tindakan kustom adalah pintasan sekali klik ke serangkaian tindakan yang ditentukan sebelumnya yang dapat Anda sediakan pada paket kerja tertentu berdasarkan status, peran, jenis, atau proyek."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
-        title: Placeholder users
+        title: Pengguna placeholder
         description: >
-          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
+          Pengguna placeholder adalah cara untuk memberikan paket kerja kepada pengguna yang bukan bagian dari proyek Anda. Mereka dapat berguna dalam berbagai skenario; misalnya, jika Anda perlu melacak tugas untuk sumber daya yang belum diberi nama atau tersedia, atau jika Anda tidak ingin memberi orang tersebut akses ke OpenProject tetapi masih ingin melacak tugas yang ditugaskan kepada mereka.
       internal_comments:
         title: "For your eyes only"
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
@@ -2706,7 +2713,7 @@ id:
   label_modules: "Modul"
   label_months_from: "dari bulan"
   label_more: "Lanjut"
-  label_more_information: "More information"
+  label_more_information: "Informasi lebih lanjut"
   label_more_than_ago: "lusa yang lalu"
   label_move_column_left: "Pindahkan kolom ke kiri"
   label_move_column_right: "Pindahkan kolom ke kanan"
@@ -3811,7 +3818,7 @@ id:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Tambah"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"

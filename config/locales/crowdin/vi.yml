@@ -48,7 +48,7 @@ vi:
           title: "Make this comment public?"
           heading: "Make this comment public?"
           description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
-          confirm_button_text: "Make public"
+          confirm_button_text: "Công khai"
   admin:
     plugins:
       no_results_title_text: Hiện tại không có plugin nào được cài đặt.
@@ -297,7 +297,7 @@ vi:
   global_search:
     placeholder: "Tìm kiếm trong %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "Tất cả"
       messages: "Diễn đàn"
       wiki_pages: "Wiki"
   groups:
@@ -351,6 +351,12 @@ vi:
         heading: "Delete this project list?"
         text: "Hành động này sẽ không xóa bất kỳ dự án nào có trong danh sách. Bạn có chắc chắn muốn xóa danh sách dự án này không?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -620,9 +626,9 @@ vi:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Work Package"
+            parent: "Cha"
+            project: "Dự án"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -755,10 +761,12 @@ vi:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      new_child: "Create new child"
-      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child: "Tạo con mới"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "các khối"
       label_blocks_plural: "các khối"
@@ -950,11 +958,11 @@ vi:
         is_required: "Yêu cầu cho tất cả các dự án"
         custom_field_section: Mục tùy chỉnh
       project/phase:
-        date_range: "Date range"
+        date_range: "Khoảng thời gian"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Tên"
+        color: "Màu sắc"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1547,14 +1555,14 @@ vi:
       changeset: "Thay đổi"
       message: "Diễn đàn"
       news: "Tin tức"
-      project_details: "Project details"
+      project_details: "Chi tiết dự án"
       subproject: "Bao gồm dự án con"
       time_entry: "Thời gian đã sử dụng"
       wiki_edit: "Wiki"
       work_package: "Gói công việc"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "đã kích hoạt"
+      deactivated: "đã tắt"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -1802,7 +1810,7 @@ vi:
       failed: 'Không thể chép dự án "%{source_project_name}" sang dự án "%{target_project_name}".'
       succeeded: 'Đã sao chép dự án "%{source_project_name}" sang "%{target_project_name}".'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "Trang wiki"
   date:
     abbr_day_names:
       - "Chủ nhật"
@@ -1947,7 +1955,6 @@ vi:
       define_custom_style: Custom theme and logo
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
-      grid_widget_wp_graph: Grid Widget Work Package Graph
       ldap_groups: LDAP users and group sync
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
@@ -1961,13 +1968,13 @@ vi:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
-      title: "Enterprise add-on"
+      title: "Tiện ích mở rộng doanh nghiệp"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
       baseline_comparison:
-        description: Highlight changes made to this list since any point in the past.
+        description: Nổi bật các thay đổi đã thực hiện đối với danh sách này kể từ bất kỳ thời điểm nào trong quá khứ.
       work_package_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -1979,7 +1986,7 @@ vi:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "Thêm 1 nhóm thuộc tính"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -1987,22 +1994,22 @@ vi:
       custom_field_hierarchies:
         description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
       date_alerts:
-        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+        description: "Với cảnh báo ngày, bạn sẽ được thông báo về các ngày bắt đầu hoặc kết thúc sắp tới để không bao giờ bỏ lỡ hoặc quên hạn chót quan trọng."
       work_package_sharing:
-        description: "Share work packages with users who are not members of the project."
+        description: "Chia sẻ gói công việc với người dùng không phải là thành viên của dự án."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "Lưu ý: logo sử dụng sẽ được công khai truy cập."
+        description: Tùy chỉnh cài đặt OpenProject của bạn với logo và màu sắc riêng.
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "Tác vụ tùy chỉnh"
+        description: "Hành động tùy chỉnh là các phím tắt một lần để thực hiện một tập hợp các hành động đã được định trước mà bạn có thể làm cho sẵn có trên các gói công việc nhất định dựa trên trạng thái, vai trò, loại hoặc dự án."
       virus_scanning:
-        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
+        description: "Đảm bảo các tệp tải lên trong OpenProject được quét virus trước khi được người dùng khác truy cập."
       placeholder_users:
-        title: Placeholder users
+        title: Người dùng giả lập
         description: >
-          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
+          Người dùng giả định là cách để gán các gói công việc cho người dùng không thuộc dự án của bạn. Chúng có thể hữu ích trong nhiều tình huống; ví dụ, nếu bạn cần theo dõi các nhiệm vụ cho một nguồn lực chưa được đặt tên hoặc chưa có sẵn, hoặc nếu bạn không muốn cấp quyền truy cập cho người đó vào OpenProject nhưng vẫn muốn theo dõi các nhiệm vụ được gán cho họ.
       internal_comments:
         title: "For your eyes only"
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
@@ -2233,7 +2240,7 @@ vi:
     blocks:
       community: "Cộng đồng OpenProject"
       upsell:
-        title: "Upgrade to Enterprise edition"
+        title: "Nâng cấp lên phiên bản Enterprise"
     links:
       upgrade_enterprise_edition: "Nâng cấp lên phiên bản Enterprise"
       postgres_migration: "Di chuyển cài đặt của bạn lên PostgreSQL"
@@ -2710,7 +2717,7 @@ vi:
   label_modules: "Mô-đun"
   label_months_from: "tháng từ"
   label_more: "Xem thêm"
-  label_more_information: "More information"
+  label_more_information: "Thông tin thêm"
   label_more_than_ago: "nhiều hơn mấy ngày trước"
   label_move_column_left: "Di chuyển cột sang trái"
   label_move_column_right: "Di chuyển cột sang phải"
@@ -3818,7 +3825,7 @@ vi:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Thêm"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"
@@ -4200,7 +4207,7 @@ vi:
         edit: "Chỉnh sửa"
         edit_description: "Có thể xem, chia sẻ và chỉnh sửa danh sách dự án này."
       upsell:
-        message: "Sharing project lists with individual users is an enterprise add-on."
+        message: "Chia sẻ danh sách dự án với người dùng cá nhân là một tiện ích bổ sung doanh nghiệp."
   working_days:
     info: >
       Các ngày không được chọn sẽ bị bỏ qua khi lập kế hoạch gói công việc (và không được tính vào số ngày). Những điều này có thể bị ghi đè ở cấp gói công việc.

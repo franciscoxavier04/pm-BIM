@@ -241,30 +241,30 @@ ja:
           test_ee: "エンタープライズ版を14日間無料でテストする"
           quick_overview: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
         upsell:
-          become_hero: "Become a hero!"
+          become_hero: "ヒーローになろう!"
           enterprise_info_html: "%{feature_title} is an Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> add-on."
           upgrade_info: "Please upgrade to a paid plan to activate and start using it in your team."
           benefits:
             description: "What are the benefits of the Enterprise on-premises edition?"
-            high_security: "Security features"
+            high_security: "セキュリティ機能"
             high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
-            installation: "Installation support"
-            installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
-            premium_features: "Enterprise add-ons"
-            premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
-            professional_support: "Professional support"
-            professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
-          button_start_trial: "Start free trial"
-          button_upgrade: "Upgrade now"
-          button_contact_us: "Contact us for a demo"
-          button_book_now: "Book now"
+            installation: "インストールサポート"
+            installation_text: "経験豊富なソフトウェアエンジニアが、あなた独自のインフラストラクチャへの完全なインストールとセットアッププロセスをガイドします。"
+            premium_features: "エンタープライズアドオン"
+            premium_features_text: "アジャイルボード、カスタムテーマとロゴ、グラフ、カスタムアクションによるインテリジェントワークフロー、ワークパッケージの添付ファイルおよびマルチセレクトカスタムフィールドの全文検索。"
+            professional_support: "プロフェッショナルサポート"
+            professional_support_text: "ビジネスクリティカルな環境での OpenProject 利用に関する専門知識を持つ上級サポートエンジニアから、信頼性の高いハイタッチサポートを受けましょう。"
+          button_start_trial: "無料トライアルを開始"
+          button_upgrade: "今すぐアップグレード"
+          button_contact_us: "デモについてはお問い合わせください"
+          button_book_now: "今すぐ予約"
           confidence: >
-            We deliver the confidence of a tested and supported enterprise-class project management software - with Open Source and an open mind.
-          link_quote: "Get a quote"
-          more_info: "More information"
+            テストおよびサポートされているエンタープライズクラスのプロジェクト管理ソフトウェアの信頼性を提供します。オープンソースとオープンマインドとともに。
+          link_quote: "見積もりの入手"
+          more_info: "詳細情報"
           text: >
             The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
-          unlimited: "Unlimited"
+          unlimited: "無制限"
           you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
       working_days:
         calendar:
@@ -826,7 +826,7 @@ ja:
       add_new_child: "子関係を作成"
       create_new: "新規作成"
       add_existing: "既存を追加"
-      add_existing_child: "Add child"
+      add_existing_child: "子タスクを追加"
       remove_child: "子関係を削除"
       add_new_relation: "新しい関係を作成"
       add_existing_relation: "既存の関係を追加"

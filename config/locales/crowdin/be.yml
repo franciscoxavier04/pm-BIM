@@ -351,6 +351,12 @@ be:
         heading: "Delete this project list?"
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -380,7 +386,7 @@ be:
       life_cycle:
         header:
           title: "Project life cycle"
-          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
+          description_html: 'The active project phases define this project''s life cycle and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target="_blank">project overview</a>.'
         non_defined: "No phases are currently defined."
         section_header: "Phases"
         step:
@@ -647,7 +653,7 @@ be:
             work_package: "Work package"
             parent: "Parent"
             project: "Project"
-          insert_as_text: "No attributes found. Add as text: \"%{word}\""
+          insert_as_text: 'No attributes found. Add as text: "%{word}"'
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -783,9 +789,11 @@ be:
       label_child_singular: "child"
       label_child_plural: "children"
       new_child: "Create new child"
-      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
@@ -980,7 +988,7 @@ be:
         date_range: "Date range"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
+        name: "Імя"
         color: "Color"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
@@ -1444,7 +1452,8 @@ be:
               cant_exceed_work: "cannot be higher than Work."
               must_be_set_when_work_is_set: "required when Work is set."
               must_be_set_when_work_and_percent_complete_are_set: "required when Work and % Complete are set."
-              must_be_set_to_zero_hours_when_work_is_set_and_percent_complete_is_100p: >-
+              ? must_be_set_to_zero_hours_when_work_is_set_and_percent_complete_is_100p
+              : >-
                 must be 0h when Work is set and % Complete is 100%.
               must_be_empty_when_work_is_empty_and_percent_complete_is_100p: >-
                 must be empty when Work is empty and % Complete is 100%.
@@ -1903,7 +1912,7 @@ be:
       long: "%B %d, %Y"
       short: "%b %d"
     #Don't forget the nil at the beginning; there's no such thing as a 0th month
-    month_names:  #Used in date_select and datetime_select.
+    month_names: #Used in date_select and datetime_select.
       - null
       - "January"
       - "February"
@@ -2064,7 +2073,6 @@ be:
       define_custom_style: Custom theme and logo
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
-      grid_widget_wp_graph: Grid Widget Work Package Graph
       ldap_groups: LDAP users and group sync
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
@@ -2109,8 +2117,8 @@ be:
         description: "Share work packages with users who are not members of the project."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "Заўвага: выкарыстаны лагатып будзе агульнадаступным."
+        description: Наладзьце ваш OpenProject з вашым уласным лагатыпам і колерамі.
       custom_actions:
         title: "Custom actions"
         description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
@@ -2827,7 +2835,7 @@ be:
   label_modules: "Modules"
   label_months_from: "months from"
   label_more: "Яшчэ"
-  label_more_information: "More information"
+  label_more_information: "Дадатковыя звесткі"
   label_more_than_ago: "more than days ago"
   label_move_column_left: "Move column left"
   label_move_column_right: "Move column right"
@@ -3941,7 +3949,7 @@ be:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Дадаць"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"

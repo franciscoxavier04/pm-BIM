@@ -244,25 +244,25 @@ da:
           upgrade_info: "Please upgrade to a paid plan to activate and start using it in your team."
           benefits:
             description: "What are the benefits of the Enterprise on-premises edition?"
-            high_security: "Security features"
+            high_security: "Sikkerheds funktioner"
             high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
-            installation: "Installation support"
-            installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+            installation: "Installations support"
+            installation_text: "Erfarne software ingeniører guide dig gennem den komplette installation og setup proces i din egen infrastruktur."
             premium_features: "Enterprise add-ons"
-            premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
-            professional_support: "Professional support"
-            professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
-          button_start_trial: "Start free trial"
+            premium_features_text: "Agile tavler, brugerdefineret tema og logo, grafer, intelligente arbejdsgange med brugerdefinerede handlinger, fuld tekst søgning efter vedhæftede filer arbejde og multi-valgs brugerdefinerede felter."
+            professional_support: "Professionel support"
+            professional_support_text: "Få pålidelig, høj-touch support fra senior support ingeniører med ekspert viden om at køre OpenProject i forretningskritiske miljøer."
+          button_start_trial: "Start gratis prøveperiode"
           button_upgrade: "Upgrade now"
-          button_contact_us: "Contact us for a demo"
-          button_book_now: "Book now"
+          button_contact_us: "Kontakt os for en demo"
+          button_book_now: "Bestil nu"
           confidence: >
-            We deliver the confidence of a tested and supported enterprise-class project management software - with Open Source and an open mind.
-          link_quote: "Get a quote"
+            Vi leverer tillid til en testet og understøttet enterprise-klasse projektstyringssoftware - med Open Source og et åbent sind.
+          link_quote: "Få et tilbud"
           more_info: "More information"
           text: >
             The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
-          unlimited: "Unlimited"
+          unlimited: "Ubegrænset"
           you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
       working_days:
         calendar:
@@ -386,7 +386,7 @@ da:
     label_added_time_by: 'Added by <a href="%{authorLink}">%{author}</a> at %{age}'
     label_ago: "dage siden"
     label_all: "alle"
-    label_all_uppercase: "All"
+    label_all_uppercase: "Alle"
     label_all_work_packages: "alle arbejdspakker"
     label_and: "og"
     label_ascending: "Stigende"
@@ -517,7 +517,7 @@ da:
     label_this_week: "denne uge"
     label_today: "Today"
     label_time_entry_plural: "Anvendt tid"
-    label_up: "Up"
+    label_up: "Op"
     label_user_plural: "Brugere"
     label_activity_show_only_comments: "Show activities with comments only"
     label_activity_show_all: "Show all activities"
@@ -825,7 +825,7 @@ da:
       add_new_child: "Create new child"
       create_new: "Create new"
       add_existing: "Add existing"
-      add_existing_child: "Add child"
+      add_existing_child: "Tilføj underordnet"
       remove_child: "Remove child"
       add_new_relation: "Create new relation"
       add_existing_relation: "Add existing relation"
@@ -972,7 +972,7 @@ da:
         percentageDone: "Procentdel udført"
         priority: "Prioritet"
         projectName: "Projekt"
-        remainingWork: "Remaining work"
+        remainingWork: "Resterende arbejde"
         remainingWorkAlternative: "Resterende timer"
         responsible: "Ansvarlig"
         startDate: "Start dato"
@@ -986,7 +986,7 @@ da:
         version: "Version"
         work: "Work"
         workAlternative: "Anslået tid"
-        remainingTime: "Remaining work"
+        remainingTime: "Resterende arbejde"
       default_queries:
         manually_sorted: "New manually sorted query"
         latest_activity: "Latest activity"

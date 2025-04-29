@@ -50,14 +50,14 @@ fil:
         project: Proyekto
         user: Gumagamit
         work_package: Work package
-        subject: Subject
+        subject: Paksa
         hours: Mga oras
         comments: Komento
         activity: Aktibidad
         spent_on: Petsa
         start_time: Start time
         end_time: Finish time
-        time: Time
+        time: Oras
     models:
       time_entry:
         one: "Time entry"
@@ -164,7 +164,7 @@ fil:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Listahan"
-  label_month: "Month"
+  label_month: "Buwan"
   label_day: "Day"
   label_today_capitalized: "Today"
   placeholder_activity_select_work_package_first: Work package selection is required first

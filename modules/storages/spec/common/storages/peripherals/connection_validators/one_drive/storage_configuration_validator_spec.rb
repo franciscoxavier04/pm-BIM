@@ -62,7 +62,7 @@ module Storages
               it "the check fails" do
                 results = validator.call
                 expect(results[:storage_configured]).to be_a_failure
-                expect(results[:storage_configured].message).to eq(I18n.t(i18n_key(:not_configured)))
+                expect(results[:storage_configured].code).to eq(:not_configured)
               end
             end
 
@@ -75,7 +75,7 @@ module Storages
                 results = validator.call
 
                 expect(results[:diagnostic_request]).to be_a_failure
-                expect(results[:diagnostic_request].message).to eq(I18n.t(i18n_key(:unknown_error)))
+                expect(results[:diagnostic_request].code).to eq(:unknown_error)
               end
 
               it "logs an error" do
@@ -92,7 +92,7 @@ module Storages
                 results = described_class.new(storage).call
 
                 expect(results[:tenant_id]).to be_a_failure
-                expect(results[:tenant_id].message).to eq(I18n.t(i18n_key(:tenant_id_wrong)))
+                expect(results[:tenant_id].code).to eq(:od_tenant_id_invalid)
               end
 
               it "but is blatantly wrong", vcr: "one_drive/validation_absurd_tenant_id" do
@@ -100,7 +100,7 @@ module Storages
                 results = described_class.new(storage).call
 
                 expect(results[:tenant_id]).to be_a_failure
-                expect(results[:tenant_id].message).to eq(I18n.t(i18n_key(:tenant_id_wrong)))
+                expect(results[:tenant_id].code).to eq(:od_tenant_id_invalid)
               end
             end
 
@@ -110,7 +110,7 @@ module Storages
                 results = described_class.new(storage).call
 
                 expect(results[:client_secret]).to be_a_failure
-                expect(results[:client_secret].message).to eq(I18n.t(i18n_key(:client_secret_wrong)))
+                expect(results[:client_secret].code).to eq(:client_secret_invalid)
               end
             end
 
@@ -120,7 +120,7 @@ module Storages
                 results = described_class.new(storage).call
 
                 expect(results[:client_id]).to be_a_failure
-                expect(results[:client_id].message).to eq(I18n.t(i18n_key(:client_id_wrong)))
+                expect(results[:client_id].code).to eq(:client_id_invalid)
               end
             end
 
@@ -130,22 +130,18 @@ module Storages
                 results = described_class.new(storage).call
 
                 expect(results[:drive_id_format]).to be_a_failure
-                expect(results[:drive_id_format].message).to eq(I18n.t(i18n_key("one_drive.drive_id_wrong")))
+                expect(results[:drive_id_format].code).to eq(:od_drive_id_invalid)
               end
 
               it "fails when is not found", vcr: "one_drive/validation_drive_id_not_found" do
                 storage.drive_id = "#{storage.drive_id[0..-2]}0"
                 results = described_class.new(storage).call
 
-                expect(results[:drive_id_not_found]).to be_a_failure
-                expect(results[:drive_id_not_found].message).to eq(I18n.t(i18n_key("one_drive.drive_id_not_found")))
+                expect(results[:drive_id_exists]).to be_a_failure
+                expect(results[:drive_id_exists].code).to eq(:od_drive_id_not_found)
               end
             end
           end
-
-          private
-
-          def i18n_key(key) = "storages.health.connection_validation.#{key}"
         end
       end
     end

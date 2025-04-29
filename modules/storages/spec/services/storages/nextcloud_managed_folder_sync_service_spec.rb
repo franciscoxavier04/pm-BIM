@@ -52,14 +52,8 @@ module Storages
       shared_let(:multiple_projects_user) { create(:user) }
       shared_let(:single_project_user) { create(:user) }
       shared_let(:non_signed_on_user) { create(:user) }
-      shared_let(:oidc_user) do
-        identity_url = "#{oidc_provider.slug}:qweqweqweqwe"
-        create(:user, identity_url:)
-      end
-      shared_let(:oidc_admin) do
-        identity_url = "#{oidc_provider.slug}:zxczxczxczxc"
-        create(:admin, identity_url:)
-      end
+      shared_let(:oidc_user) { create(:user, authentication_provider: oidc_provider) }
+      shared_let(:oidc_admin) { create(:admin, authentication_provider: oidc_provider) }
       shared_let(:storage) { create(:nextcloud_storage_with_complete_configuration, :as_automatically_managed) }
 
       shared_let(:remote_identities) do

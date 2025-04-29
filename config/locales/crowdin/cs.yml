@@ -48,7 +48,7 @@ cs:
           title: "Make this comment public?"
           heading: "Make this comment public?"
           description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
-          confirm_button_text: "Make public"
+          confirm_button_text: "Zveřejnit"
   admin:
     plugins:
       no_results_title_text: V současné době nejsou nainstalovány žádné pluginy.
@@ -297,7 +297,7 @@ cs:
   global_search:
     placeholder: "Hledat v %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "Vše"
       messages: "Fórum"
       wiki_pages: "Wiki"
   groups:
@@ -351,6 +351,12 @@ cs:
         heading: "Smazat tento seznam projektů?"
         text: "Tato akce neodstraní žádný projekt, který seznam obsahuje. Opravdu chcete tento seznam projektů smazat?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -413,10 +419,10 @@ cs:
         new_label: "nová priorita"
   project_phase:
     working_days_count:
-      one: "Duration: %{count} working day"
-      few: "Duration: %{count} working days"
-      many: "Duration: %{count} working days"
-      other: "Duration: %{count} working days"
+      one: "Doba trvání: %{count} pracovní den"
+      few: "Doba trvání: %{count} pracovní dny"
+      many: "Doba trvání: %{count} pracovní dny"
+      other: "Doba trvání: %{count} pracovní dny"
   lists:
     create:
       success: "Upravený seznam byl uložen jako nový seznam."
@@ -644,9 +650,9 @@ cs:
           label: "Vzor předmětu"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Pracovní balíček"
+            parent: "Nadřazený"
+            project: "Projekt"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Vytvořit PDF"
@@ -782,10 +788,12 @@ cs:
       follows_description: "Související pracovní balíček musí být ukončen dříve, než bude možné začít tento"
       label_child_singular: "dítě"
       label_child_plural: "Potomci"
-      new_child: "Create new child"
-      new_child_text: "Vytvoří související pracovní balíček jako podpoložku aktuálního (nadřazeného) pracovního balíčku"
-      child: "Child"
+      new_child: "Vytvořit nového potomka"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
+      child: "Potomek"
       child_description: "Udělá související pracovní balíček podpoložkou aktuálního (nadřazeného) pracovního balíčku"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Nejbližší"
       label_blocks_singular: "bloky"
       label_blocks_plural: "bloky"
@@ -977,11 +985,11 @@ cs:
         is_required: "Vyžadováno pro všechny projekty"
         custom_field_section: Sekce
       project/phase:
-        date_range: "Date range"
-        definition: "Definition"
+        date_range: "Časový rozsah"
+        definition: "Definice"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Název:"
+        color: "Barva"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1292,7 +1300,7 @@ cs:
             date_range:
               start_date_must_be_before_finish_date: "start date must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+              incomplete: "je neúplný."
         query:
           attributes:
             project:
@@ -1607,14 +1615,14 @@ cs:
       changeset: "Změny"
       message: "Fóra"
       news: "Novinky"
-      project_details: "Project details"
+      project_details: "Detaily projektu"
       subproject: "Zahrnout podprojekty"
       time_entry: "Strávený čas"
       wiki_edit: "Wiki"
       work_package: "Pracovní balíčky"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "Aktivováno "
+      deactivated: "Deaktivováno"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -1862,7 +1870,7 @@ cs:
       failed: 'Nebylo možné zkopírovat projekt "%{source_project_name}" do "%{target_project_name}".'
       succeeded: 'Projekt "%{source_project_name}" zkopírován do "%{target_project_name}".'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "Stránka wiki"
   date:
     abbr_day_names:
       - "Ne"
@@ -2063,8 +2071,7 @@ cs:
       date_alerts: Date Alerts
       define_custom_style: Custom theme and logo
       edit_attribute_groups: Edit Attribute Groups
-      gantt_pdf_export: Gantt PDF Export
-      grid_widget_wp_graph: Grid Widget Work Package Graph
+      gantt_pdf_export: Gantt PDF export
       ldap_groups: LDAP users and group sync
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
@@ -2078,15 +2085,15 @@ cs:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
-      title: "Enterprise add-on"
+      title: "Doplňky Enterprise Edice"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
       baseline_comparison:
-        description: Highlight changes made to this list since any point in the past.
+        description: Zvýraznit změny provedené v tomto seznamu od té doby v minulosti.
       work_package_subject_generation:
-        description: "Create automatically generated subjects using referenced attributes and text."
+        description: "Vytváření automaticky generovaných předmětů pomocí odkazovaných atributů a textu."
       customize_life_cycle:
         description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       conditional_highlighting:
@@ -2096,7 +2103,7 @@ cs:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "Přidat nové skupiny atributů"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -2104,22 +2111,22 @@ cs:
       custom_field_hierarchies:
         description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
       date_alerts:
-        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+        description: "S upozorněním na datum budete upozorněni na blížící se datum zahájení nebo ukončení, abyste nikdy nezmeškali nebo nezapomněli na důležitou lhůtu."
       work_package_sharing:
-        description: "Share work packages with users who are not members of the project."
+        description: "Sdílejte pracovní balíčky s uživateli, kteří nejsou členy projektu."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "Poznámka: použité logo bude veřejně přístupné."
+        description: Přizpůsobte si instalaci OpenProject vlastním logem a barvami.
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "Vlastní akce"
+        description: "Vlastní akce jsou zkratky jedním kliknutím na sadu předem definovaných akcí, které můžete zpřístupnit na základě stavu některých pracovních balíčků. role, typ nebo projekt."
       virus_scanning:
-        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
+        description: "Zajistěte, aby nahrané soubory v OpenProjectu byly před zpřístupněním ostatním uživatelům zkontrolovány na přítomnost virů."
       placeholder_users:
-        title: Placeholder users
+        title: Placeholder uživatelé
         description: >
-          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
+          Placeholder uživatelé jsou způsob, jak přiřadit pracovní balíčky uživatelům, kteří nejsou součástí vašeho projektu. Mohou být užiteční v řadě scénářů; například, pokud potřebujete sledovat úkoly u zdroje, který ještě nejsou pojmenovány nebo dostupné, nebo pokud nechcete této osobě umožnit přístup k OpenProject ale stále chcete sledovat úkoly, které jim byly přiděleny.
       internal_comments:
         title: "For your eyes only"
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
@@ -2350,7 +2357,7 @@ cs:
     blocks:
       community: "OpenProject komunita"
       upsell:
-        title: "Upgrade to Enterprise edition"
+        title: "Upgradovat na Enterprise Edici"
     links:
       upgrade_enterprise_edition: "Upgradovat na Enterprise Edici"
       postgres_migration: "Migrujte vaši instalaci na PostgreSQL"
@@ -2827,7 +2834,7 @@ cs:
   label_modules: "Moduly"
   label_months_from: "měsíců od"
   label_more: "Více"
-  label_more_information: "More information"
+  label_more_information: "Více informací"
   label_more_than_ago: "před více jak (dny)"
   label_move_column_left: "Přesunout sloupec vlevo"
   label_move_column_right: "Přesunout sloupec vpravo"
@@ -3429,7 +3436,7 @@ cs:
     text_getting_started_description: "Získejte rychlý přehled o řízení projektu a spolupráci týmu s OpenProject. Toto video můžete restartovat z nabídky nápovědy."
     welcome: "Vítejte v %{app_title}"
     select_language: "Vyberte prosím svůj jazyk"
-  permission_add_work_package_comments: "Add comments"
+  permission_add_work_package_comments: "Přidat komentáře"
   permission_add_work_packages: "Přidat pracovní balíčky"
   permission_add_messages: "Odesílat zprávy"
   permission_add_project: "Vytvořit projekty"
@@ -3460,12 +3467,12 @@ cs:
   permission_delete_timelines: "Odstranit časové osy"
   permission_delete_wiki_pages: "Odstranit wiki stránky"
   permission_delete_wiki_pages_attachments: "Odstranit přílohy"
-  permission_edit_work_package_comments: "Moderate comments"
+  permission_edit_work_package_comments: "Moderovat komentáře"
   permission_edit_work_package_comments_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Upravit pracovní balíčky"
   permission_edit_messages: "Upravit zprávy"
   permission_edit_own_internal_comments: "Edit own internal comments"
-  permission_edit_own_work_package_comments: "Edit own comments"
+  permission_edit_own_work_package_comments: "Upravit vlastní komentáře"
   permission_edit_own_messages: "Upravit vlastní zprávy"
   permission_edit_own_time_entries: "Upravit vlastní časové záznamy"
   permission_edit_others_internal_comments: "Moderate internal comments"
@@ -3940,7 +3947,7 @@ cs:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Přidat"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"
@@ -4325,7 +4332,7 @@ cs:
         edit: "Upravit"
         edit_description: "Může zobrazovat, sdílet a upravovat tento seznam projektů."
       upsell:
-        message: "Sharing project lists with individual users is an enterprise add-on."
+        message: "Sdílení seznamů projektů s jednotlivými uživateli je enterprise doplňek."
   working_days:
     info: >
       Nevybrané dny jsou při plánování pracovních balíčků přeskočeny (a nejsou zahrnuty ve denním počtu). Ty mohou být přepsány na úrovni pracovního balíčku.

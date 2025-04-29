@@ -50,20 +50,20 @@ hu:
         project: Projekt
         user: Felhasználó
         work_package: Feladatcsoport
-        subject: Subject
+        subject: Tárgy
         hours: órák
         comments: Vélemény
         activity: Tevékenység
         spent_on: dátum
         start_time: Kezdés
         end_time: Finish time
-        time: Time
+        time: Idő
     models:
       time_entry:
-        one: "Time entry"
+        one: "Belépési idő"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Költség tétel"
         other: "Cost entries"
       cost_type:
         one: "Költségtípus"
@@ -164,9 +164,9 @@ hu:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Lista"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "Havi"
+  label_day: "Nap"
+  label_today_capitalized: "Ma"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Valami hiba történt. Kérlek próbáld újra."
   notice_successful_restore: "Sikeres visszaállítás."

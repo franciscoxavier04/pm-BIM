@@ -11,8 +11,8 @@ de:
       team_planner_view: "Teamplaner"
     upsell:
       team_planner_view:
-        title: "Team planner"
-        description: "Get a complete overview of your team’s planning with Team Planner. Stretch, shorten and drag-and-drop work packages to modify dates, move them or change assignees."
+        title: "Teamplaner"
+        description: "Erhalten Sie einen kompletten Überblick über die Planung Ihres Teams mit dem Teamplaner. Strecken, verkürzen und ziehen Sie Arbeitspakete zur Änderung von Terminen. Verschieben Sie Arbeitspakete oder ändern Sie die zugewiesenen Benutzer."
   team_planner:
     label_team_planner: "Teamplaner"
     label_new_team_planner: "Neuer Teamplaner"

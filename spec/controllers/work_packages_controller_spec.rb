@@ -313,7 +313,7 @@ RSpec.describe WorkPackagesController do
       end
     end
 
-    context "when there are internal comments", with_flag: { internal_comments: true } do
+    context "when there are internal comments" do
       render_views
 
       let(:admin) { create(:admin) }

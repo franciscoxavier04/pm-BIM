@@ -200,7 +200,7 @@ de:
       storage_delete_result_3: Hat dieser Dateispeicher automatisch verwaltete Projektordner, so werden diese und die enthaltenen Dateien permanent gelöscht.
     dependencies:
       nextcloud:
-        group_folders_app: Group Folders
+        group_folders_app: Gruppenordner
         integration_app: OpenProject Integration
     enabled_in_projects:
       setup_incomplete_description: Dieser Speicher ist nicht vollständig eingerichtet. Bitte schließen Sie die Einrichtung ab, bevor Sie ihn in mehreren Projekten aktivieren.
@@ -252,7 +252,7 @@ de:
           user_bound_request: Benutzerbasierte Anfrageauthentifizierung
         base_configuration:
           capabilities_request: Remote file storage capabilities
-          client_id: Client ID
+          client_id: Client-ID
           client_secret: Client-Geheimnis
           dependencies_check: Abhängigkeiten
           dependencies_versions: Abhängigkeiten (Version)
@@ -273,17 +273,17 @@ de:
       connection_validation:
         client_id_wrong: Die konfigurierte OAuth 2-Client-ID ist ungültig. Bitte überprüfen Sie die Konfiguration.
         client_secret_wrong: Das konfigurierte OAuth 2-Client-Geheimnis ist ungültig. Bitte überprüfen Sie die Konfiguration.
-        dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
+        dependency_version_mismatch: Die %{dependency} App-Version wird nicht unterstützt. Bitte aktualisieren Sie Ihren Nextcloud Server.
         drive_id_wrong: Die konfigurierte Laufwerks-ID konnte nicht gefunden werden. Bitte überprüfen Sie die Konfiguration.
         group_folder_not_found: Der Gruppenordner konnte nicht gefunden werden.
         group_folder_version_mismatch: Die Gruppenordner-Version wird nicht unterstützt. Bitte aktualisieren Sie Ihren Nextcloud Server.
         host_not_found: Kein Nextcloud-Server unter der konfigurierten Host-URL gefunden. Bitte überprüfen Sie die Konfiguration.
         missing_dependencies: 'Eine erforderliche Abhängigkeit fehlt auf dem Datei-Speicher. Bitte fügen Sie die folgende Abhängigkeit hinzu: %{dependency}.'
         nextcloud:
-          oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
-          oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
+          oauth_request_not_found: OpenProject konnte den Hauptordner von Nextcloud mit dem aktuellen eingeloggten Benutzer nicht finden. Bitte überprüfen Sie die Server-Logs für weitere Informationen.
+          oauth_request_unauthorized: Der aktuelle Benutzer ist nicht berechtigt, den Hauptordner von Nextcloud zu sehen, oder wir konnten keinen Token hierfür erhalten. Bitte überprüfen Sie die Serverprotokolle für weitere Informationen.
           oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
-          unexpected_content: Unexpected content found in the managed group folder.
+          unexpected_content: Unerwarteter Inhalt im verwalteten Gruppenordner gefunden.
         not_configured: Die Verbindung konnte nicht validiert werden. Bitte schließen Sie zuerst die Konfiguration ab.
         oidc_cant_acquire_token: Dein OpenID Connect Setup bietet weder die nötige Audience noch bietet es Tokenaustausch Möglichkeiten. Bitte lies unsere Dokumentation für weitere Informationen.
         oidc_cant_exchange_token: Es scheint ein Problem mit dem Token Exchange Setup auf Ihrem OpenID Connect Provider zu geben. Bitte überprüfen Sie die Konfiguration und versuchen Sie es erneut.
@@ -293,7 +293,7 @@ de:
         one_drive:
           client_cant_delete_folder: The client is having trouble deleting folders. Please check the setup documentation for your storage.
           client_write_permission_missing: The client seems to have write permissions missing. Please check the setup documentation for your storage.
-          drive_id_not_found: The configured drive id could not be found. Please check the configuration.
+          drive_id_not_found: Die konfigurierte Laufwerks-ID konnte nicht gefunden werden. Bitte überprüfen Sie die Konfiguration.
           drive_id_wrong: The configured drive id seems invalid. Please check the configuration.
           existing_test_folder: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
           oauth_request_not_found: OpenProject couldn't find the root folder in the drive using the current logged-in user. Please check the server logs for further information.
@@ -487,6 +487,5 @@ de:
     successful_storage_connection: Speicher erfolgreich verbunden! Denken Sie daran, den Speicher in der Projekt-Registerkarte für jedes gewünschte Projekt zu aktivieren.
     upsell:
       description: |-
-        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
-        work packages in a project.
-      title: OneDrive/SharePoint integration
+        Integrieren Sie Ihr OneDrive/SharePoint als Dateispeicher mit OpenProject. Laden Sie Dateien hoch und verknüpfen Sie diese direkt mit Arbeitspaketen in einem Projekt.
+      title: OneDrive/SharePoint-Integration

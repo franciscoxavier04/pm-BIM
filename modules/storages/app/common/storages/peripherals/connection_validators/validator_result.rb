@@ -41,10 +41,13 @@ module Storages
         end
 
         def healthy? = group_results.values.all?(&:success?)
+
         def unhealthy? = group_results.values.any?(&:failure?)
+
         def warning? = group_results.values.any?(&:warning?)
 
         def group(key) = group_results.fetch(key)
+
         alias_method :fetch, :group
 
         def add_group_result(key, result)
@@ -61,6 +64,17 @@ module Storages
 
         def latest_timestamp
           group_results.values.filter_map(&:timestamp).max
+        end
+
+        def humanize_summary
+          case tally
+          in { failure: 1.. }
+            I18n.t("storages.health.checks.failures", count: tally[:failure])
+          in { warning: 1.. }
+            I18n.t("storages.health.checks.warnings", count: tally[:warning])
+          else
+            I18n.t("storages.health.checks.failures", count: 0)
+          end
         end
 
         def to_h

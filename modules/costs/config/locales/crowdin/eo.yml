@@ -50,7 +50,7 @@ eo:
         project: Projekto
         user: Uzanto
         work_package: Laborpakaĵo
-        subject: Subject
+        subject: Temo
         hours: Horoj
         comments: Komento
         activity: Aktiveco
@@ -164,8 +164,8 @@ eo:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Listo"
-  label_month: "Month"
-  label_day: "Day"
+  label_month: "Monato"
+  label_day: "Tago"
   label_today_capitalized: "Today"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Something went wrong. Please try again."

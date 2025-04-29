@@ -48,7 +48,7 @@ zh-TW:
           title: "Make this comment public?"
           heading: "Make this comment public?"
           description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
-          confirm_button_text: "Make public"
+          confirm_button_text: "設為公開"
   admin:
     plugins:
       no_results_title_text: 目前沒有安裝任何外掛程式
@@ -350,6 +350,12 @@ zh-TW:
         heading: "刪除此專案清單？"
         text: "此動作不會刪除清單中包含的任何專案。您確定要刪除此專案清單？"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -754,9 +760,11 @@ zh-TW:
       label_child_singular: "子項目"
       label_child_plural: "子項目"
       new_child: "建立子項目"
-      new_child_text: "使相關工作成為目前（上層）工作項目的子項目"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "子項目"
       child_description: "使相關工作成為目前（父）工作項目的子項目"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "最近的"
       label_blocks_singular: "區塊"
       label_blocks_plural: "區塊"
@@ -1301,7 +1309,7 @@ zh-TW:
         queries/principals/filters/internal_mentionable_on_work_package_filter:
           attributes:
             values:
-              single_value_requirement: "must be a single work package"
+              single_value_requirement: "必須是單一工作項目"
         relation:
           typed_dag:
             circular_dependency: "無限迴圈的關聯。"
@@ -1800,7 +1808,7 @@ zh-TW:
       failed: '無法從 “%{source_project_name}” 複製專案到 "%{target_project_name}"'
       succeeded: '複製 "%{source_project_name}" 到 "%{target_project_name}"。'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "維基頁面"
   date:
     abbr_day_names:
       - "日"
@@ -1945,7 +1953,6 @@ zh-TW:
       define_custom_style: 自訂布景主題與logo
       edit_attribute_groups: 編輯群組屬性
       gantt_pdf_export: 以PDF匯出甘特圖
-      grid_widget_wp_graph: 網格小工具工作項目圖形
       ldap_groups: 同步LDAP使用者與群組
       one_drive_sharepoint_file_storage: OneDrive/SharePoint 檔案儲存
       placeholder_users: 占位使用者
@@ -1959,50 +1966,50 @@ zh-TW:
       work_package_sharing: 與外部使用者共用工作項目
       work_package_subject_generation: 工作項目標題產生
     upsell:
-      title: "Enterprise add-on"
-      plan_title: "Enterprise %{plan} add-on"
-      plan_name: "%{plan} enterprise plan"
+      title: "企業版附加元件"
+      plan_title: "企業版 %{plan} 外掛"
+      plan_name: "%{plan} 企業版計畫"
       plan_text_html: "Available starting with the %{plan_name}."
-      hide_banner: "Hide this banner"
+      hide_banner: "隱藏此廣告"
       baseline_comparison:
-        description: Highlight changes made to this list since any point in the past.
+        description: 突顯自過去任一時間點以來對此清單所做的變更。
       work_package_subject_generation:
-        description: "Create automatically generated subjects using referenced attributes and text."
+        description: "使用參考的屬性和文字建立自動產生的主題。"
       customize_life_cycle:
-        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
+        description: "建立並組織不同於 PM2 專案週期規劃所提供的專案階段。"
       conditional_highlighting:
-        description: "Need certain work packages to stand out from the mass? Use conditional highlighting in the work packages table."
+        description: "需要讓某些工作項目從大量項目中脫穎而出嗎？請在工作項目表格中使用條件突顯功能。"
       work_package_query_relation_columns:
-        description: "Need to see relations or child elements in the work package list?"
+        description: "需要在工作項目清單中查看關聯或子項目嗎？"
       edit_attribute_groups:
-        description: "Customize form configuration with these additional add-ons:"
+        description: "使用以下額外附加元件自訂表單設定："
         features:
-          groups: "Add new attribute groups"
-          rename: "Rename attribute groups"
-          related: "Add a table of related work packages"
+          groups: "增加新的屬性群組"
+          rename: "重新命名群组屬性"
+          related: "新增相關工作項目表"
       readonly_work_packages:
-        description: "Mark work packages as read-only for specific statuses."
+        description: "將特定狀態的工作項目標記為唯讀。"
       custom_field_hierarchies:
-        description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
+        description: "階層自訂欄位允許透過多層選擇清單來組織工作項目中的階層結構。"
       date_alerts:
-        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+        description: "透過日期提醒，您將收到即將到來的開始或結束日期的通知，這樣您就不會錯過或忘記重要的截止日期。"
       work_package_sharing:
-        description: "Share work packages with users who are not members of the project."
+        description: "與不是專案成員的使用者共同參與工作項目。"
       define_custom_style:
-        title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        title: "自訂布景主題顏色與logo"
+        more_info: "備註：Logo可被公開存取。"
+        description: 客製OpenProject中專屬您的標誌(logo)與顏色。
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "自訂動作"
+        description: "自訂動作是一系列預先定義動作的單鍵捷徑，您可以根據狀態、角色、類型或專案，在特定工作項目上使用這些動作。"
       virus_scanning:
-        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
+        description: "確保在其他使用者存取 OpenProject 中上傳的檔案前，對其進行病毒掃描。"
       placeholder_users:
-        title: Placeholder users
+        title: 占位使用者
         description: >
-          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
+          「佔位使用者」是一種將工作項目分配給不屬於您專案成員的方法。它們在一系列場景中十分有用；例如，如果您需要追蹤尚未命名或可用的資源的任務，或者如果您不想讓該人員存取專案，但仍希望追蹤分配給他們的任務。
       internal_comments:
-        title: "For your eyes only"
+        title: "僅供您查看"
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
   enumeration_activities: "時間追蹤活動"
   enumeration_work_package_priorities: "工作項目優先等級"
@@ -2231,7 +2238,7 @@ zh-TW:
     blocks:
       community: "OpenProject 社群"
       upsell:
-        title: "Upgrade to Enterprise edition"
+        title: "升級到企業版"
     links:
       upgrade_enterprise_edition: "升級到企業版"
       postgres_migration: "將您的安裝遷移到 PostgreSQL"
@@ -3303,7 +3310,7 @@ zh-TW:
     text_getting_started_description: "快速瞭解 OpenProject 的項目管理和團隊協作。您可以從幫助菜單重新啓動此視頻。"
     welcome: "歡迎使用 %{app_title}"
     select_language: "請選擇您的語言"
-  permission_add_work_package_comments: "Add comments"
+  permission_add_work_package_comments: "增加留言"
   permission_add_work_packages: "新增工作項目"
   permission_add_messages: "張貼訊息"
   permission_add_project: "建立專案"
@@ -3334,12 +3341,12 @@ zh-TW:
   permission_delete_timelines: "刪除時間軸"
   permission_delete_wiki_pages: "刪除維基頁面"
   permission_delete_wiki_pages_attachments: "刪除附件"
-  permission_edit_work_package_comments: "Moderate comments"
-  permission_edit_work_package_comments_explanation: "Caution: Users with this permission are able to edit anyone's comment."
+  permission_edit_work_package_comments: "審閱留言"
+  permission_edit_work_package_comments_explanation: "注意：擁有此權限的使用者可以編輯任何人的註解。"
   permission_edit_work_packages: "編輯工作項目"
   permission_edit_messages: "編輯訊息"
   permission_edit_own_internal_comments: "Edit own internal comments"
-  permission_edit_own_work_package_comments: "Edit own comments"
+  permission_edit_own_work_package_comments: "編輯自己的留言"
   permission_edit_own_messages: "編輯自己張貼的訊息"
   permission_edit_own_time_entries: "編輯自己的時間日誌"
   permission_edit_others_internal_comments: "Moderate internal comments"
@@ -4197,7 +4204,7 @@ zh-TW:
         edit: "編輯"
         edit_description: "可以查看、分享和編輯此專案列表。"
       upsell:
-        message: "Sharing project lists with individual users is an enterprise add-on."
+        message: "與單個用戶共用專案列表是一項企業附加功能。"
   working_days:
     info: >
       在安排工作包時，未選擇的日期將被跳過(且不計入天數)。可以在工作包級別覆蓋這些選項。

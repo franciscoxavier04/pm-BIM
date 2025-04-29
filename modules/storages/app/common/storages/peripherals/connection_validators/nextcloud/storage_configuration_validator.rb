@@ -33,6 +33,8 @@ module Storages
     module ConnectionValidators
       module Nextcloud
         class StorageConfigurationValidator < BaseValidatorGroup
+          def self.key = :base_configuration
+
           private
 
           def validate
@@ -50,13 +52,13 @@ module Storages
             if @storage.configured?
               pass_check(:storage_configured)
             else
-              fail_check(:storage_configured, message(:not_configured))
+              fail_check(:storage_configured, :not_configured)
             end
           end
 
           def capabilities_request_status
             if capabilities.failure? && capabilities.result != :not_found
-              fail_check(:capabilities_request, message(:unknown_error))
+              fail_check(:capabilities_request, :unknown_error)
             else
               pass_check(:capabilities_request)
             end
@@ -65,10 +67,10 @@ module Storages
           def version_mismatch
             min_app_version = SemanticVersion.parse(nextcloud_dependencies.dig("dependencies", "integration_app", "min_version"))
             capabilities_result = capabilities.result
-            app_name = I18n.t("storages.dependencies.nextcloud.integration_app")
+            dependency = I18n.t("storages.dependencies.nextcloud.integration_app")
 
             if capabilities_result.app_version < min_app_version
-              fail_check(:dependencies_versions, message(:dependency_version_mismatch, dependency: app_name))
+              fail_check(:dependencies_versions, :nc_dependency_version_mismatch, context: { dependency: })
             else
               pass_check(:dependencies_versions)
             end
@@ -76,10 +78,10 @@ module Storages
 
           def missing_dependencies
             capabilities_result = capabilities.result
-            app_name = I18n.t("storages.dependencies.nextcloud.integration_app")
+            dependency = I18n.t("storages.dependencies.nextcloud.integration_app")
 
             if capabilities_result.app_disabled?
-              fail_check(:dependencies_check, message(:missing_dependencies, dependency: app_name))
+              fail_check(:dependencies_check, :nc_dependency_missing, context: { dependency: })
             else
               pass_check(:dependencies_check)
             end
@@ -87,7 +89,7 @@ module Storages
 
           def host_url_not_found
             if capabilities.result == :not_found
-              fail_check(:host_url_accessible, message(:host_not_found))
+              fail_check(:host_url_accessible, :nc_host_not_found)
             else
               pass_check(:host_url_accessible)
             end

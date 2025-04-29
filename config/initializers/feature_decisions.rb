@@ -55,7 +55,3 @@ OpenProject::FeatureDecisions.add :oidc_token_exchange,
                                   description: "Enables the under construction OAuth2 token exchange, allowing " \
                                                "users to interact with storage providers without consenting " \
                                                "in OAuth screens before first use."
-
-OpenProject::FeatureDecisions.add :internal_comments,
-                                  description: "Enables submitting comments that are internal" \
-                                               "and only a subset of users can see"

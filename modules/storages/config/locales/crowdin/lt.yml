@@ -231,7 +231,7 @@ lt:
       storage_provider: Saugyklos tiekėjas
     health:
       actions:
-        download_report: Download
+        download_report: Atsiųsti
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: Paskutinį kartą tikrinta %{datetime}
@@ -245,16 +245,16 @@ lt:
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
-          header: Authentication
+          header: Autentifikacija
           non_provisioned_user: User provisioned by IDP
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
         base_configuration:
           capabilities_request: Remote file storage capabilities
-          client_id: Client ID
-          client_secret: Client secret
-          dependencies_check: Dependencies
+          client_id: Kliento ID
+          client_secret: Kliento paslaptis
+          dependencies_check: Priklausomybės
           dependencies_versions: Dependencies (version)
           diagnostic_request: Diagnostic request
           drive_id_format: Drive ID format
@@ -491,6 +491,5 @@ lt:
     successful_storage_connection: Storage connected successfully! Remember to activate the storage in the Projects tab for each desired project to use it.
     upsell:
       description: |-
-        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
-        work packages in a project.
-      title: OneDrive/SharePoint integration
+        Integruokite jūsų OneDrive/SharePoint kaip failų saugyklą su OpenProject. Įkelkite failus ir susiekite juos tiesiogiai su projekto darbo paketais.
+      title: OneDrive/SharePoint integracija

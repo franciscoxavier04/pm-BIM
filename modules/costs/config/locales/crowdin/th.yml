@@ -50,7 +50,7 @@ th:
         project: โครงการ
         user: ผู้ใช้
         work_package: ชุดภารกิจ
-        subject: Subject
+        subject: หัวข้อ
         hours: ชั่วโมง
         comments: ความคิดเห็น
         activity: กิจกรรม
@@ -160,8 +160,8 @@ th:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "รายการ"
-  label_month: "Month"
-  label_day: "Day"
+  label_month: "เดือน"
+  label_day: "วันที่"
   label_today_capitalized: "Today"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Something went wrong. Please try again."

@@ -50,14 +50,14 @@ ja:
         project: プロジェクト
         user: ユーザー
         work_package: ワークパッケージ
-        subject: Subject
+        subject: タイトル
         hours: ' 時間'
         comments: コメント
         activity: 活動
         spent_on: 日付
         start_time: 開始時間
         end_time: 終了時間
-        time: Time
+        time: 時間
     models:
       time_entry:
         other: "Time entries"
@@ -160,9 +160,9 @@ ja:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "リスト"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "月"
+  label_day: "日"
+  label_today_capitalized: "今日"
   placeholder_activity_select_work_package_first: まずワークパッケージを選択してください。
   notice_something_wrong: "エラーが発生しました。再試行してください。"
   notice_successful_restore: "復元処理が成功します。"

@@ -42,59 +42,14 @@ module Storages
 
         private
 
-        def data
-          @data ||= compute_display_data
-        end
-
-        def compute_display_data
-          return {} if @report.nil?
-
-          description = if @report.healthy?
-                          I18n.t("storages.health.summary.success")
-                        elsif @report.unhealthy?
-                          I18n.t("storages.health.summary.failure")
-                        else
-                          I18n.t("storages.health.summary.warning")
-                        end
-
-          {
-            summary: summary_with_icon(@report.tally),
-            description:
-          }
-        end
-
-        def group_summary(group)
-          icon = group.failure? || group.warning? ? :alert : "check-circle"
-          icon_color = if group.failure?
-                         :danger
-                       elsif group.warning?
-                         :attention
-                       else
-                         :success
-                       end
-
-          checks = group.tally
-          key = group.failure? || group.success? ? :failure : :warning
-
-          { icon:, icon_color:, text: I18n.t("storages.health.checks.#{key.to_s.pluralize}", count: checks[key]) }
-        end
-
-        def summary_with_icon(check_tally)
+        def summary_icon(check_tally)
           case check_tally
           in { failure: 1.. }
-            {
-              icon: :alert,
-              icon_color: :danger,
-              text: I18n.t("storages.health.checks.failures", count: check_tally[:failure])
-            }
+            { icon: :alert, color: :danger }
           in { warning: 1.. }
-            {
-              icon: :alert,
-              icon_color: :attention,
-              text: I18n.t("storages.health.checks.warnings", count: check_tally[:warning])
-            }
+            { icon: :alert, color: :attention }
           else
-            { icon: :"check-circle", icon_color: :success, text: I18n.t("storages.health.checks.failures", count: 0) }
+            { icon: :"check-circle", color: :success }
           end
         end
       end

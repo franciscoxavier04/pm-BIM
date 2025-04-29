@@ -50,22 +50,22 @@ lt:
         project: Projektas
         user: Naudotojas
         work_package: Darbų paketas
-        subject: Subject
+        subject: Tema
         hours: Valandų
         comments: Komentaras
         activity: Veikla
         spent_on: Data
         start_time: Pradžios laikas
         end_time: Finish time
-        time: Time
+        time: Laikas
     models:
       time_entry:
-        one: "Time entry"
+        one: "Laiko įrašas"
         few: "Time entries"
         many: "Time entries"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Kaštų įrašas"
         few: "Cost entries"
         many: "Cost entries"
         other: "Cost entries"
@@ -172,9 +172,9 @@ lt:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Sąrašas"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "Mėnuo"
+  label_day: "Diena"
+  label_today_capitalized: "Šiandien"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Įvyko klaida. Bandykite dar kartą."
   notice_successful_restore: "Sėkmingas atkūrimas."

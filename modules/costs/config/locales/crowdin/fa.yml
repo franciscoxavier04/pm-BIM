@@ -50,20 +50,20 @@ fa:
         project: پروژه
         user: کاربر
         work_package: بسته کاری
-        subject: Subject
+        subject: موضوع
         hours: ساعت‌‌‌‌‌‌
         comments: نظر
         activity: فعالیت
         spent_on: تاریخ
         start_time: زمان شروع
         end_time: Finish time
-        time: Time
+        time: زمان
     models:
       time_entry:
         one: "Time entry"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "ورودی هزینه"
         other: "Cost entries"
       cost_type:
         one: "نوع هزینه"

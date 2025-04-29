@@ -50,20 +50,20 @@ ka:
         project: პროექტი
         user: მომხმარებელი
         work_package: სამუშაო პაკეტი
-        subject: Subject
+        subject: თემა
         hours: საათი
         comments: კომენტარი
         activity: აქტივობა
         spent_on: თარიღი
         start_time: Start time
         end_time: Finish time
-        time: Time
+        time: დრო
     models:
       time_entry:
-        one: "Time entry"
+        one: "დროს ჩანაწერი"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "ფასის ჩანაწერი"
         other: "Cost entries"
       cost_type:
         one: "ღირებულების ტიპი"
@@ -165,8 +165,8 @@ ka:
   label_specific_month: "Month %{month}"
   label_list: "სია"
   label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_day: "დღე"
+  label_today_capitalized: "დღეს"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "მოხდა შეცდომა. სცადეთ თავიდან."
   notice_successful_restore: "Successful restore."

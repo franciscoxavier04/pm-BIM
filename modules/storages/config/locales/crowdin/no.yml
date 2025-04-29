@@ -231,7 +231,7 @@
       storage_provider: Lagringsleverandør
     health:
       actions:
-        download_report: Download
+        download_report: Last ned
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: Sist sjekket %{datetime}
@@ -245,16 +245,16 @@
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
-          header: Authentication
+          header: Autentisering
           non_provisioned_user: User provisioned by IDP
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
         base_configuration:
           capabilities_request: Remote file storage capabilities
-          client_id: Client ID
-          client_secret: Client secret
-          dependencies_check: Dependencies
+          client_id: Klient ID
+          client_secret: Klient hemmlighet
+          dependencies_check: Avhengigheter
           dependencies_versions: Dependencies (version)
           diagnostic_request: Diagnostic request
           drive_id_format: Drive ID format
@@ -488,6 +488,6 @@
     successful_storage_connection: Storage connected successfully! Remember to activate the storage in the Projects tab for each desired project to use it.
     upsell:
       description: |-
-        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
-        work packages in a project.
-      title: OneDrive/SharePoint integration
+        Integrer din OneDrive/SharePoint som en fillagring med OpenProject. Last opp filer og koble dem direkte til
+        arbeidspakker i et prosjekt.
+      title: OneDrive/SharePoint integrering

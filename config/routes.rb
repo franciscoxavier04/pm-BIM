@@ -252,7 +252,7 @@ Rails.application.routes.draw do
   resources :projects, except: %i[show edit create update] do
     scope module: "projects" do
       namespace "settings" do
-        resource :general, only: %i[show], controller: "general" do
+        resource :general, only: %i[show update], controller: "general" do
           get :toggle_public_dialog
           post :toggle_public
         end
@@ -665,7 +665,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :children_relations, only: %i[new create destroy], controller: "work_package_children_relations"
+    resources :hierarchy_relations, only: %i[new create destroy], controller: "work_package_hierarchy_relations"
 
     resource :progress, only: %i[edit update], controller: "work_packages/progress"
     collection do

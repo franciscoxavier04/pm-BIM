@@ -50,20 +50,20 @@ da:
         project: Prjoekt
         user: Bruger
         work_package: Arbejdspakke
-        subject: Subject
+        subject: Emne
         hours: Timer
         comments: Kommentér
         activity: Aktivivtet
         spent_on: Dato
         start_time: Start time
         end_time: Finish time
-        time: Time
+        time: Tidspunkt
     models:
       time_entry:
         one: "Time entry"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Omkostningspostering"
         other: "Cost entries"
       cost_type:
         one: "Omkostningstype"
@@ -164,8 +164,8 @@ da:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Liste"
-  label_month: "Month"
-  label_day: "Day"
+  label_month: "Måned"
+  label_day: "Dag"
   label_today_capitalized: "Today"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Noget gik galt. Forsøg venligst igen."

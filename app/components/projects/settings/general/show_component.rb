@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,28 +26,18 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-class WorkPackageRelationsTab::AddWorkPackageChildFormComponent < ApplicationComponent
-  include ApplicationHelper
-  include OpTurbo::Streamable
-  include OpPrimer::ComponentHelpers
+module Projects
+  module Settings
+    module General
+      class ShowComponent < ApplicationComponent
+        include ApplicationHelper
+        include OpPrimer::ComponentHelpers
+        include OpTurbo::Streamable
 
-  DIALOG_ID = "add-work-package-child-dialog"
-  FORM_ID = "add-work-package-child-form"
-  ID_FIELD_TEST_SELECTOR = "work-package-child-form-id"
-  I18N_NAMESPACE = "work_package_relations_tab"
-
-  def initialize(work_package:, child: nil, base_errors: nil)
-    super()
-
-    @work_package = work_package
-    @child = child.presence || WorkPackage.new
-    @base_errors = base_errors
-  end
-
-  def submit_url_options
-    { method: :post,
-      url: work_package_children_relations_path(@work_package) }
+        options :project
+      end
+    end
   end
 end

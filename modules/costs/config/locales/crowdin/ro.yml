@@ -50,21 +50,21 @@ ro:
         project: Proiect
         user: Utilizator
         work_package: Pachet de lucru
-        subject: Subject
+        subject: Subiect
         hours: Ore
         comments: Comentariu
         activity: Activitate
         spent_on: Dată
         start_time: Dată început
         end_time: Dată finalizare
-        time: Time
+        time: Timp
     models:
       time_entry:
-        one: "Time entry"
+        one: "Înregistrarea timpului"
         few: "Time entries"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Poziție cost"
         few: "Cost entries"
         other: "Cost entries"
       cost_type:
@@ -168,9 +168,9 @@ ro:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Listă"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "Luna"
+  label_day: "Zi"
+  label_today_capitalized: "Azi"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Ceva n-a mers bine. Vă rugăm să încercați din nou."
   notice_successful_restore: "Restaurare reușită."

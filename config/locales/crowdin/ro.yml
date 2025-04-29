@@ -48,7 +48,7 @@ ro:
           title: "Make this comment public?"
           heading: "Make this comment public?"
           description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
-          confirm_button_text: "Make public"
+          confirm_button_text: "Fă public"
   admin:
     plugins:
       no_results_title_text: There are currently no plugins installed.
@@ -297,7 +297,7 @@ ro:
   global_search:
     placeholder: "Caută în %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "Toate"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
@@ -351,6 +351,12 @@ ro:
         heading: "Delete this project list?"
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status: Update status
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -636,9 +642,9 @@ ro:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Pachet de lucru"
+            parent: "Părinte"
+            project: "Proiect"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -773,10 +779,12 @@ ro:
       follows_description: "Pachetul de lucru asociat trebuie neapărat să înceapă după finalizarea acestuia"
       label_child_singular: "copil"
       label_child_plural: "copii"
-      new_child: "Create new child"
-      new_child_text: "Creează un pachet de lucru asociat ca sub-element al pachetului de lucru curent (părinte)"
+      new_child: "Creează copil nou"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Face din pachetul de lucru asociat un sub-element al pachetului de lucru actual (părinte)"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "blochează"
       label_blocks_plural: "blochează"
@@ -968,11 +976,11 @@ ro:
         is_required: "Obligatoriu în toate proiectele"
         custom_field_section: Secțiune
       project/phase:
-        date_range: "Date range"
+        date_range: "Interval calendaristic"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Nume"
+        color: "Culoare"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1407,7 +1415,7 @@ ro:
               smaller_than_dates: "este mai mică decât intervalul dintre data de început și data de sfârșit."
               not_available_for_milestones: "nu este disponibil pentru pachetele de lucru tipizate pe etape."
               cannot_be_null: "nu poate fi setat la null, deoarece data de început și data de sfârșit sunt cunoscute."
-              not_an_integer: "is not a valid duration."
+              not_an_integer: "nu este o durată validă."
             parent:
               cannot_be_milestone: "nu poate fi o etapă."
               cannot_be_self_assigned: "nu poate fi atribuit singur."
@@ -1587,14 +1595,14 @@ ro:
       changeset: "Seturi de modificări"
       message: "Forumuri"
       news: "Noutăţi"
-      project_details: "Project details"
+      project_details: "Arată detaliile proietului"
       subproject: "Include subproiecte"
       time_entry: "Timp consumat"
       wiki_edit: "Wiki"
       work_package: "Pachete de lucru"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "Activat"
+      deactivated: "Dezactivat"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -1842,7 +1850,7 @@ ro:
       failed: 'Proiectul "%{source_project_name}" nu a putut fi copiat în proiectul "%{target_project_name}".'
       succeeded: 'Proiectul "%{source_project_name}" a fost copiat în proiectul "%{target_project_name}".'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "Pagină wiki"
   date:
     abbr_day_names:
       - "D"
@@ -2025,7 +2033,6 @@ ro:
       define_custom_style: Custom theme and logo
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
-      grid_widget_wp_graph: Grid Widget Work Package Graph
       ldap_groups: LDAP users and group sync
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
@@ -2045,7 +2052,7 @@ ro:
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
       baseline_comparison:
-        description: Highlight changes made to this list since any point in the past.
+        description: Evidențiază modificările făcute la această listă de la orice punct din trecut.
       work_package_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2057,7 +2064,7 @@ ro:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "Adaugă noi grupuri de atribut"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -2065,22 +2072,22 @@ ro:
       custom_field_hierarchies:
         description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
       date_alerts:
-        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+        description: "Cu alertele de date, veți fi notificat cu privire la următoarele date de început sau de sfârșit, astfel încât să nu ratați sau să uitați niciodată un termen limită important."
       work_package_sharing:
         description: "Share work packages with users who are not members of the project."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "Notă: logo-ul utilizat va fi accesibil publicului."
+        description: Personalizează-ți instalarea OpenProject cu propriul logo și culori.
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "Acțiuni personalizate"
+        description: "Acțiunile personalizate sunt comenzi rapide cu un singur clic către un set de acțiuni predefinite pe care le puteți face disponibile pentru anumite pachete de lucru în funcție de statut, rol, tip sau proiect."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
-        title: Placeholder users
+        title: Utilizatori Placeholder
         description: >
-          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
+          Utilizatorii de tip substituție sunt o modalitate de a atribui pachete de lucru utilizatorilor care nu fac parte din proiectul tău. Acesta poate fi utilă într-o serie de scenarii; de exemplu, dacă trebuie să urmărești sarcinile pentru o resursă care nu este încă numită sau disponibilă, sau dacă nu vrei să acorzi acestei persoane acces la OpenProject dar totuși vrei să urmărești sarcinile care le-au fost atribuite.
       internal_comments:
         title: "For your eyes only"
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
@@ -2311,7 +2318,7 @@ ro:
     blocks:
       community: "Comunitatea OpenProject"
       upsell:
-        title: "Upgrade to Enterprise edition"
+        title: "Actualizează la ediția Enterprise"
     links:
       upgrade_enterprise_edition: "Actualizează la ediția Enterprise"
       postgres_migration: "Migrarea instalației dvs. către PostgreSQL"
@@ -2788,7 +2795,7 @@ ro:
   label_modules: "Module"
   label_months_from: "luni de la"
   label_more: "Mai mult"
-  label_more_information: "More information"
+  label_more_information: "Mai multe informatii"
   label_more_than_ago: "acum mai mult de zile"
   label_move_column_left: "Mută coloana la stânga"
   label_move_column_right: "Mută coloana la dreapta"
@@ -3899,7 +3906,7 @@ ro:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Adaugă"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"
@@ -4284,7 +4291,7 @@ ro:
         edit: "Editează"
         edit_description: "Can view, share and edit this project list."
       upsell:
-        message: "Sharing project lists with individual users is an enterprise add-on."
+        message: "Partajarea listelor de proiecte cu utilizatorii individuali este un add-on Enterprise."
   working_days:
     info: >
       Days that are not selected are skipped when scheduling work packages (and not included in the day count). These can be overridden at a work-package level.

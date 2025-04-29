@@ -231,7 +231,7 @@ nl:
       storage_provider: Opslagdienst
     health:
       actions:
-        download_report: Download
+        download_report: Downloaden
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: Laatst gecontroleerd op %{datetime}
@@ -245,7 +245,7 @@ nl:
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
-          header: Authentication
+          header: Verificatie
           non_provisioned_user: User provisioned by IDP
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
@@ -254,7 +254,7 @@ nl:
           capabilities_request: Remote file storage capabilities
           client_id: Client ID
           client_secret: Client secret
-          dependencies_check: Dependencies
+          dependencies_check: Afhankelijkheden
           dependencies_versions: Dependencies (version)
           diagnostic_request: Diagnostic request
           drive_id_format: Drive ID format
@@ -310,7 +310,7 @@ nl:
       label_healthy: Gezond
       label_passed: Passed
       label_pending: Lopende
-      label_skipped: Skipped
+      label_skipped: Overgeslagen
       label_warning: Waarschuwing
       no_report: No report available
       no_report_description: Run the checks now for a full health status report for this file storage.
@@ -490,4 +490,4 @@ nl:
       description: |-
         Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
         work packages in a project.
-      title: OneDrive/SharePoint integration
+      title: OneDrive/SharePoint-integratie

@@ -50,14 +50,14 @@ ms:
         project: Projek
         user: Pengguna
         work_package: Pakej kerja
-        subject: Subject
+        subject: Subjek
         hours: Jam
         comments: Komen
         activity: Aktiviti
         spent_on: Tarikh
         start_time: Masa mula
         end_time: Finish time
-        time: Time
+        time: Masa
     models:
       time_entry:
         other: "Time entries"
@@ -161,8 +161,8 @@ ms:
   label_specific_month: "Month %{month}"
   label_list: "Senarai"
   label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_day: "Hari"
+  label_today_capitalized: "Hari ini"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Ada ralat berlaku. Sila cuba lagi."
   notice_successful_restore: "Pemulihan berjaya."

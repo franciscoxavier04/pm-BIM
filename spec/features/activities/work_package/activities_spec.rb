@@ -236,8 +236,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       end
     end
 
-    context "when a user cannot see internal comments",
-            with_flag: { internal_comments: true } do
+    context "when a user cannot see internal comments" do
       current_user { member }
 
       before do
@@ -257,8 +256,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       end
     end
 
-    context "when a user can see internal comments",
-            with_flag: { internal_comments: true } do
+    context "when a user can see internal comments" do
       current_user { admin }
 
       before do

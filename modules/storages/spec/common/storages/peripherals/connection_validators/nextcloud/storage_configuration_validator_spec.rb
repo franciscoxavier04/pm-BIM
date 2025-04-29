@@ -54,7 +54,7 @@ module Storages
               it "the check fails" do
                 results = validator.call
                 expect(results[:storage_configured]).to be_a_failure
-                expect(results[:storage_configured].message).to eq(I18n.t(i18n_key(:not_configured)))
+                expect(results[:storage_configured].code).to eq(:not_configured)
               end
             end
 
@@ -64,7 +64,7 @@ module Storages
 
               results = validator.call
               expect(results[:host_url_accessible]).to be_a_failure
-              expect(results[:host_url_accessible].message).to eq(I18n.t(i18n_key(:host_not_found)))
+              expect(results[:host_url_accessible].code).to eq(:nc_host_not_found)
             end
 
             it "integration app version mismatch", vcr: "nextcloud/capabilities_success" do
@@ -73,22 +73,18 @@ module Storages
 
               results = validator.call
               expect(results[:dependencies_versions]).to be_a_failure
-              expect(results[:dependencies_versions].message)
-                .to eq(I18n.t(i18n_key(:dependency_version_mismatch), dependency: "Integration OpenProject"))
+              expect(results[:dependencies_versions].code).to eq(:nc_dependency_version_mismatch)
+              expect(results[:dependencies_versions].context[:dependency]).to eq("Integration OpenProject")
             end
 
             it "integration app disabled / missing", vcr: "nextcloud/capabilities_success_app_disabled" do
               results = validator.call
 
               expect(results[:dependencies_check]).to be_a_failure
-              expect(results[:dependencies_check].message)
-                .to eq(I18n.t(i18n_key(:missing_dependencies), dependency: "Integration OpenProject"))
+              expect(results[:dependencies_check].code).to eq(:nc_dependency_missing)
+              expect(results[:dependencies_check].context[:dependency]).to eq("Integration OpenProject")
             end
           end
-
-          private
-
-          def i18n_key(key) = "storages.health.connection_validation.#{key}"
         end
       end
     end

@@ -50,20 +50,20 @@ el:
         project: Έργο
         user: Χρήστης
         work_package: Εργασία
-        subject: Subject
+        subject: Θέμα
         hours: Ώρες
         comments: Σχόλιο
         activity: Δραστηριότητα
         spent_on: Ημερομηνία
         start_time: Start time
         end_time: Finish time
-        time: Time
+        time: Ώρα
     models:
       time_entry:
-        one: "Time entry"
+        one: "Καταχώρηση χρόνου"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Καταχώρηση κόστους"
         other: "Cost entries"
       cost_type:
         one: "Τύπος κόστους"
@@ -164,9 +164,9 @@ el:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Προβολή λίστας"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "Μήνας"
+  label_day: "Ημέρα"
+  label_today_capitalized: "Σήμερα "
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Κάτι πήγε στραβά. Παρακαλούμε προσπαθήστε ξανά."
   notice_successful_restore: "Επιτυχής επαναφορά."

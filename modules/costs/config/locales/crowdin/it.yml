@@ -50,14 +50,14 @@ it:
         project: Progetto
         user: Utente
         work_package: Macro-attività
-        subject: Subject
+        subject: Soggetto
         hours: Ore
         comments: Commento
         activity: Attività
         spent_on: Data
         start_time: Ora di inizio
         end_time: Ora di fine
-        time: Time
+        time: Ora
     models:
       time_entry:
         one: "Voce tempo"
@@ -164,9 +164,9 @@ it:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Elenca"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "Mese"
+  label_day: "Giorno"
+  label_today_capitalized: "Oggi"
   placeholder_activity_select_work_package_first: Prima è necessario selezionare la macro-attività
   notice_something_wrong: "Qualcosa è andato storto. Si prega di riprovare."
   notice_successful_restore: "Ripristino eseguito con successo."

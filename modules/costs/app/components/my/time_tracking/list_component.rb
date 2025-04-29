@@ -69,7 +69,7 @@ module My
         if mode == :month
           I18n.t(:label_specific_week, week: date.strftime("%W"))
         else
-          date.strftime("%A %d")
+          I18n.l(date, format: "%A %d")
         end
       end
 

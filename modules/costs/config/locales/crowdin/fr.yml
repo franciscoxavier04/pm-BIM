@@ -50,14 +50,14 @@ fr:
         project: Projet
         user: Utilisateur
         work_package: Lot de Travaux
-        subject: Subject
+        subject: Sujet
         hours: Heures
         comments: Commentaire
         activity: Activité
         spent_on: date
         start_time: Heure de début
         end_time: Heure de fin
-        time: Time
+        time: Heure 
     models:
       time_entry:
         one: "Saisie du temps"
@@ -164,9 +164,9 @@ fr:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Liste"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "Mois"
+  label_day: "Jour"
+  label_today_capitalized: "Aujourd'hui"
   placeholder_activity_select_work_package_first: La sélection d'un paquet de travail est requise en premier
   notice_something_wrong: "Quelque chose s'est mal passé. Veuillez réessayer."
   notice_successful_restore: "Restauration réussie."

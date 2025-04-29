@@ -31,8 +31,7 @@
 require "spec_helper"
 
 RSpec.describe "Work package internal comments",
-               :js,
-               with_flag: { internal_comments: true } do
+               :js do
   include InternalCommentsHelpers
 
   shared_let(:project) { create(:project, enabled_internal_comments: true) }
@@ -59,7 +58,7 @@ RSpec.describe "Work package internal comments",
         wp_page.wait_for_activity_tab
       end
 
-      it "allows adding a comment with internal visibility" do
+      it "allows adding an internal comment" do
         activity_tab.expect_input_field
 
         activity_tab.add_comment(text: "First (internal) comment by admin", internal: true)
@@ -77,7 +76,7 @@ RSpec.describe "Work package internal comments",
         wp_page.wait_for_activity_tab
       end
 
-      it "allows adding a internal comment" do
+      it "does not allow adding an internal comment" do
         activity_tab.expect_input_field
 
         activity_tab.type_comment("This comment cannot be internal")
@@ -87,7 +86,7 @@ RSpec.describe "Work package internal comments",
     end
   end
 
-  context "with a user that is only allowed to view comments with internal visibility" do
+  context "with a user that is only allowed to view internal comments" do
     current_user { viewer }
 
     before do
@@ -218,7 +217,7 @@ RSpec.describe "Work package internal comments",
     end
 
     context "with internal comments initially enabled" do
-      it "restricts mentions to project members with view comments with internal visibility permission" do
+      it "restricts mentions to project members with view internal comments permission" do
         activity_tab.open_new_comment_editor
         expect(page).to have_test_selector("op-work-package-journal-form-element")
 
@@ -271,7 +270,7 @@ RSpec.describe "Work package internal comments",
 
     context "with a server error" do
       before do
-        allow(WorkPackages::ActivitiesTab::InternalMentionsSanitizer).to receive(:sanitize)
+        allow(WorkPackages::ActivitiesTab::InternalCommentMentionsSanitizer).to receive(:sanitize)
           .and_raise(RuntimeError, "Something went wrong!!!")
       end
 

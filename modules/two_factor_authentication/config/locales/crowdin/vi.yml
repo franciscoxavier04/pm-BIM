@@ -83,8 +83,8 @@ vi:
       text_2fa_disabled: "Người dùng chưa thiết lập thiết bị 2FA thông qua 'Trang tài khoản của họ'"
       only_sms_allowed: "Chỉ có chuyển tin SMS có thể được thiết lập cho các người dùng khác."
     upsell:
-      title: "Two-factor authentication"
-      description: "Strenghten the security of your OpenProject instance by offering (or enforcing) two-factor authentification to all project members."
+      title: "Xác thực hai yếu tố"
+      description: "Tăng cường bảo mật cho phiên bản OpenProject của bạn bằng cách cung cấp (hoặc áp dụng) xác thực hai yếu tố cho tất cả các thành viên dự án."
     backup_codes:
       none_found: Không có mã dự phòng nào cho tài khoản này.
       singular: Mã dự phòng

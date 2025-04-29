@@ -50,22 +50,22 @@ cs:
         project: Projekt
         user: Uživatel
         work_package: Pracovní balíček
-        subject: Subject
+        subject: Předmět
         hours: Hodiny
         comments: Komentář
         activity: Aktivita
         spent_on: Datum
         start_time: Čas zahájení
         end_time: Čas dokončení
-        time: Time
+        time: Čas
     models:
       time_entry:
-        one: "Time entry"
+        one: "Vstup času"
         few: "Time entries"
         many: "Time entries"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Nákladová položka"
         few: "Cost entries"
         many: "Cost entries"
         other: "Cost entries"
@@ -172,9 +172,9 @@ cs:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Seznam"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "Měsíc"
+  label_day: "Den"
+  label_today_capitalized: "Dnes"
   placeholder_activity_select_work_package_first: Nejprve je nutné vybrat pracovní balíček
   notice_something_wrong: "Něco se pokazilo. Zkuste to prosím znovu."
   notice_successful_restore: "Úspěšně obnoveno."

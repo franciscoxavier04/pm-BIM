@@ -231,7 +231,7 @@ fr:
       storage_provider: Fournisseur de stockage
     health:
       actions:
-        download_report: Download
+        download_report: Télécharger
         rerun_checks: Re-run all checks
         run_checks: Run checks now
       checked: Dernière vérification %{datetime}
@@ -245,16 +245,16 @@ fr:
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
-          header: Authentication
+          header: Authentification
           non_provisioned_user: User provisioned by IDP
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
         base_configuration:
           capabilities_request: Remote file storage capabilities
-          client_id: Client ID
-          client_secret: Client secret
-          dependencies_check: Dependencies
+          client_id: ID du client
+          client_secret: Clé secrète du client
+          dependencies_check: Dépendances
           dependencies_versions: Dependencies (version)
           diagnostic_request: Diagnostic request
           drive_id_format: Drive ID format
@@ -280,10 +280,10 @@ fr:
         host_not_found: Aucun serveur Nextcloud n'a été trouvé à l'adresse configurée. Veuillez vérifier la configuration.
         missing_dependencies: 'Une dépendance requise est manquante dans l''espace de stockage de fichiers. Veuillez ajouter la dépendance suivante : %{dependency}.'
         nextcloud:
-          oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
-          oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
+          oauth_request_not_found: OpenProject n'a pas pu trouver le dossier racine de Nextcloud en utilisant l'utilisateur connecté actuel. Veuillez vérifier les journaux du serveur pour en savoir plus.
+          oauth_request_unauthorized: L'utilisateur actuel n'est pas autorisé à voir le dossier principal de Nextcloud ou nous n'avons pas pu obtenir de jeton. Veuillez consulter les journaux du serveur pour en savoir plus.
           oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
-          unexpected_content: Unexpected content found in the managed group folder.
+          unexpected_content: Contenu inattendu trouvé dans le dossier du groupe géré.
         not_configured: La connexion n'a pas pu être validée. Veuillez d'abord terminer la configuration.
         oidc_cant_acquire_token: Votre configuration OpenID Connect ne fournit pas l'audience nécessaire, ni les capacités d'échange de jetons. Veuillez consulter notre documentation pour obtenir plus d'informations.
         oidc_cant_exchange_token: Il semble y avoir un problème avec la configuration de l'échange de jetons sur votre fournisseur OpenID Connect. Veuillez vérifier sa configuration et réessayer.
@@ -310,7 +310,7 @@ fr:
       label_healthy: Sain
       label_passed: Passed
       label_pending: En attente
-      label_skipped: Skipped
+      label_skipped: Ignorée
       label_warning: Avertissement
       no_report: No report available
       no_report_description: Run the checks now for a full health status report for this file storage.
@@ -487,6 +487,5 @@ fr:
     successful_storage_connection: Espace de stockage connecté avec succès ! N'oubliez pas d'activer le stockage dans l'onglet Projets des projets dans lesquels vous souhaitez l'utiliser.
     upsell:
       description: |-
-        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
-        work packages in a project.
-      title: OneDrive/SharePoint integration
+        Intégrez votre OneDrive/SharePoint en tant que espace de stockage de fichiers avec OpenProject. Téléchargez des fichiers et liez-les directement aux lots de travaux d'un projet.
+      title: L'intégration avec OneDrive/SharePoint

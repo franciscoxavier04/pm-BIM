@@ -50,14 +50,14 @@ uk:
         project: Проєкт
         user: Користувач
         work_package: Пакет робіт
-        subject: Subject
+        subject: Заголовок
         hours: Години
         comments: Коментар
         activity: Активність
         spent_on: Дата
         start_time: Час початку
         end_time: Час закінчення
-        time: Time
+        time: Час
     models:
       time_entry:
         one: "Запис часу"
@@ -172,9 +172,9 @@ uk:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Список"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "Місяць"
+  label_day: "День"
+  label_today_capitalized: "Сьогодні"
   placeholder_activity_select_work_package_first: Спочатку потрібно вибрати пакет робіт
   notice_something_wrong: "Щось пішло не так. Будь ласка спробуйте ще раз."
   notice_successful_restore: "Успішне відновлення."
@@ -220,4 +220,4 @@ uk:
       time_entry_time_restrictions: Вимагати точного відстеження часу
     upsell:
       time_entry_time_restrictions:
-        description: "Improve your time tracking by requiring exact start and finish times when logging time."
+        description: "Удоскональте відстеження часу, вимагаючи введення точного часу початку й завершення робіт."

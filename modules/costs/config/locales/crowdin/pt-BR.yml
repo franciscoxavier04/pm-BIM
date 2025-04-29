@@ -50,14 +50,14 @@ pt-BR:
         project: Projeto
         user: Usuário
         work_package: Pacote de trabalho
-        subject: Subject
+        subject: Assunto
         hours: horas
         comments: Comentário
         activity: Atividade
         spent_on: Data
         start_time: Hora de início
         end_time: Hora Final
-        time: Time
+        time: Hora
     models:
       time_entry:
         one: "Registro de tempo"
@@ -164,9 +164,9 @@ pt-BR:
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Lista"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "Mês"
+  label_day: "Dia"
+  label_today_capitalized: "Hoje"
   placeholder_activity_select_work_package_first: Primeiro é necessária a seleção do pacote de trabalho
   notice_something_wrong: "Algo deu errado. Por favor, tente novamente."
   notice_successful_restore: "Restauração bem-sucedida."
@@ -212,4 +212,4 @@ pt-BR:
       time_entry_time_restrictions: Exigir o rastreamento exato de tempo
     upsell:
       time_entry_time_restrictions:
-        description: "Improve your time tracking by requiring exact start and finish times when logging time."
+        description: "Melhore o rastreamento do seu tempo exigindo a hora exata de início e término do registro."

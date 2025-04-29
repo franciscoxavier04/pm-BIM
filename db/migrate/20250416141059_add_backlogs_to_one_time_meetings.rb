@@ -28,46 +28,28 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class WorkPackages::ActivitiesTab::InternalMentionsSanitizer
-  def self.sanitize(work_package, notes)
-    new(work_package, notes).call
+class AddBacklogsToOneTimeMeetings < ActiveRecord::Migration[8.0]
+  def up
+    execute <<~SQL.squish
+      INSERT INTO meeting_sections (meeting_id, backlog, title, position, created_at, updated_at)
+      SELECT m.id, true, '', 0, NOW(), NOW()
+      FROM meetings m
+      WHERE (
+        m.recurring_meeting_id IS NULL
+        OR m.template = true
+      )
+    SQL
   end
 
-  def initialize(work_package, notes)
-    @work_package = work_package
-    @notes = notes
-  end
+  def down
+    execute <<~SQL.squish
+      DELETE FROM meeting_agenda_items
+      WHERE meeting_section_id IN (SELECT id FROM meeting_sections WHERE backlog = true)
+    SQL
 
-  def call
-    return "" if notes.blank?
-
-    convert_unmentionable_principals_to_plain_text
-    CGI.unescapeHTML(parser.to_html)
-  end
-
-  private
-
-  attr_reader :work_package, :notes
-
-  def convert_unmentionable_principals_to_plain_text
-    mentionable_principals_ids = mentionable_principals.pluck(:id)
-
-    parser.css("mention").each do |mention|
-      unless mentionable_principals_ids.include?(mention["data-id"].to_i)
-        mention.replace(mention.content)
-      end
-    end
-  end
-
-  def parser
-    @parser ||= Nokogiri::HTML.fragment(notes)
-  end
-
-  def mentionable_principals
-    @mentionable_principals ||= Queries::Principals::PrincipalQuery.new(user: User.current)
-      .where(:internal_mentionable_on_work_package, "=", [work_package.id])
-      .where(:status, "!", [Principal.statuses[:locked]])
-      .where(:type, "=", %w[User Group])
-      .results
+    execute <<~SQL.squish
+      DELETE FROM meeting_sections
+      WHERE backlog = true
+    SQL
   end
 end
