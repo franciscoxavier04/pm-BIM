@@ -32,8 +32,7 @@ require "spec_helper"
 
 RSpec.describe "Work package activity tab comment editor",
                :js,
-               :with_cuprite,
-               with_flag: { internal_comments: true } do
+               :with_cuprite do
   let(:project) { create(:project) }
   let(:admin) { create(:admin) }
   let(:work_package) { create(:work_package, project:, author: admin) }

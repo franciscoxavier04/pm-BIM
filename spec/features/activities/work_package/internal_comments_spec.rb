@@ -31,8 +31,7 @@
 require "spec_helper"
 
 RSpec.describe "Work package internal comments",
-               :js,
-               with_flag: { internal_comments: true } do
+               :js do
   include InternalCommentsHelpers
 
   shared_let(:project) { create(:project, enabled_internal_comments: true) }
