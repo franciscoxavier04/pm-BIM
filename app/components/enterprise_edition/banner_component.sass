@@ -51,6 +51,10 @@ $op-enterprise-banner-fixed-height: 220px
     background-repeat: no-repeat
     background-position: center right
 
+    @media screen and (max-width: $breakpoint-md)
+      grid-template-columns: 1fr
+      background-image: none !important
+
   &_medium &
     padding: 0
     grid-template-areas: "content graphic"
