@@ -175,6 +175,8 @@ storage_docs:
     href: https://www.openproject.org/docs/system-admin-guide/integrations/one-drive/drive-guide/
   nextcloud_oauth_application:
     href: https://apps.nextcloud.com/apps/integration_openproject
+  nextcloud_sso:
+    href: https://www.openproject.org/docs/system-admin-guide/integrations/nextcloud/oidc-sso
   one_drive_oauth_application:
     href: https://portal.azure.com/
   troubleshooting:
