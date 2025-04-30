@@ -41,7 +41,7 @@ module Pages
 
       def mark_all_read
         accept_confirm do
-          click_link_or_button "Clear all"
+          click_on "Mark all as read"
         end
       end
 

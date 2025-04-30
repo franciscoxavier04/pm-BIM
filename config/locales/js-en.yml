@@ -695,7 +695,7 @@ en:
         no_results:
           at_all: "New notifications will appear here when there is activity that concerns you."
           with_current_filter: "There are no notifications in this view at the moment"
-        mark_all_read: "Clear all"
+        mark_all_read: "Mark all as read"
         mark_as_read: "Mark as read"
         mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
         text_update_date_by: "%{date} by"
