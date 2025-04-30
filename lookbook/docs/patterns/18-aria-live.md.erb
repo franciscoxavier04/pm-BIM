@@ -10,7 +10,7 @@ ARIA Live Regions rely on specific attributes to control how updates are announc
 ## Implementing ARIA Live Regions in Primer
 Primer provides a built-in component named live-region to implement ARIA Live Regions easily.
 We have decided to use a single global ARIA live region in base.html to ensure live regions are present in the DOM before updates occur. This approach is better than having multiple live regions because it ensures that announcements are delivered in a clear and consistent manner. By centralizing updates, we avoid potential conflicts between overlapping live regions and provide a more seamless experience for screen reader users.
-There is an exception for modal or dialog, especially if that dialog traps focus. When a dialog is open, screen readers often limit their reading and focus to within the dialog. If aria-live region is in base.html (outside the dialog), it becomes “invisible” to the screen reader while the modal is open — it's still updated in the DOM, but not announced until the dialog is closed, and the screen reader returns to the full DOM scope.
+There is an exception for modals or dialogs, especially if that dialog traps focus. When a dialog is open, screen readers often limit their reading and focus to the content of the dialog. Aria-live regions that are part of the base.html and thus outside of the dialog become “invisible” to the screen reader as long as the modal is open.
 In this case, we should add the live-region component to the dialog itself, like what we have implemented for primerized date picker.
 
 ### Live Region in `base.html`
