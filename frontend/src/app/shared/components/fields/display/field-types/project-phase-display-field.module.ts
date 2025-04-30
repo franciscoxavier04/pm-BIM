@@ -57,14 +57,21 @@ export class ProjectPhaseDisplayField extends DisplayField {
     const projectPhase = this.attribute as ProjectPhaseResource;
     const icon = document.createElement('span');
 
-    if (projectPhase && projectPhase.definition) {
-      icon.classList.add(`__hl_inline_project_phase_definition_${projectPhase.definition.id}`, 'mr-1');
+    if (projectPhase) {
+      icon.classList.add('mr-1');
 
       icon.innerHTML = toDOMString(
         opPhaseIconData,
         'small',
         { 'aria-hidden': 'true', class: 'octicon' },
       );
+
+      // Use a base64 encoded string of the project phase name to access the definition's color.
+      // That way the frontend does not have to load the definitions to get the color.
+      // The name is guaranteed to be unique.
+      // The = signs at the end of the base64 string are replaced with _ to make it a valid class name.
+      // This needs to be kept in sync with the ColorsHelper#project_phase_color_css method in the backend.
+      icon.classList.add(`__hl_inline_project_phase_definition_${btoa(projectPhase.name).replace(/=/g, '_')}`);
     }
 
     return icon;
