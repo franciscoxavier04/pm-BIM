@@ -1568,7 +1568,6 @@ RSpec.describe API::V3::WorkPackages::WorkPackageRepresenter do
     end
 
     describe "caching" do
-      # TODO: include project_phase and phase_definition into the cache key
       it "is based on the representer's cache_key" do
         allow(OpenProject::Cache)
           .to receive(:fetch)
