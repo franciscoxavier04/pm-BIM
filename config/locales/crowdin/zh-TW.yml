@@ -1501,7 +1501,8 @@ zh-TW:
       notification:
         other: "通知"
       placeholder_user: "占位使用者"
-      project: "專案"
+      project:
+        other: "Projects"
       project_query:
         other: "專案列表"
       query: "自訂查詢"
@@ -2009,8 +2010,11 @@ zh-TW:
         description: >
           「佔位使用者」是一種將工作項目分配給不屬於您專案成員的方法。它們在一系列場景中十分有用；例如，如果您需要追蹤尚未命名或可用的資源的任務，或者如果您不想讓該人員存取專案，但仍希望追蹤分配給他們的任務。
       internal_comments:
-        title: "僅供您查看"
+        title: Internal comments
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "時間追蹤活動"
   enumeration_work_package_priorities: "工作項目優先等級"
   enumeration_reported_project_statuses: "報告的專案狀態"

@@ -1513,7 +1513,9 @@ ca:
         one: "Notificació"
         other: "Notificacions"
       placeholder_user: "Usuari de marcador de posició"
-      project: "Projecte"
+      project:
+        one: "Project"
+        other: "Projects"
       project_query:
         one: "Project list"
         other: "Llistes de projectes"
@@ -2047,8 +2049,11 @@ ca:
         description: >
           Els usuaris de marcador de posició són una forma d'assignar paquets de treball a usuaris que no formen part del teu projecte. Poden ser útils en múltiples escenaris; com per exemple en cas que necessitis manejar tasques per a un recurs que encara no té nom o no està disponible, o en cas que no vulguis donar accés a OpenProject a una persona, però, tot i això, vulguis manejar les tasques que se li han assignat.
       internal_comments:
-        title: "For your eyes only"
+        title: Internal comments
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "Activitats de rastrejament del temps"
   enumeration_work_package_priorities: "Prioritats dels paquets de treball"
   enumeration_reported_project_statuses: "Estats de projecte notificats"

@@ -1513,7 +1513,9 @@ pt-PT:
         one: "Notificação"
         other: "Notificações"
       placeholder_user: "Utilizador de espaço reservado"
-      project: "Projecto"
+      project:
+        one: "Project"
+        other: "Projects"
       project_query:
         one: "Lista de projetos"
         other: "Listas de projetos"
@@ -2047,8 +2049,11 @@ pt-PT:
         description: >
           Utilizadores reservados são uma forma de atribuir pacotes de trabalho aos utilizadores que não fazem parte do seu projeto. Podem ser úteis numa série de cenários; por exemplo, se precisar acompanhar as tarefas de uma funcionalidade que ainda não tem nome ou não está disponível, ou se não quiser dar acesso a essa pessoa  ao OpenProject mas pretende acompanhar as tarefas atribuídas a ela.
       internal_comments:
-        title: "For your eyes only"
+        title: Internal comments
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "Atividades de controlo de tempo"
   enumeration_work_package_priorities: "Prioridades do pacote de trabalho"
   enumeration_reported_project_statuses: "Estado do projeto reportado"

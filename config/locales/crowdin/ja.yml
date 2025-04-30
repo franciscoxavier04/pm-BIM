@@ -1501,7 +1501,8 @@ ja:
       notification:
         other: "Notifications"
       placeholder_user: "プレースホルダー ユーザー"
-      project: "プロジェクト"
+      project:
+        other: "Projects"
       project_query:
         other: "プロジェクト一覧"
       query: "ユーザのクエリ"
@@ -2009,8 +2010,11 @@ ja:
         description: >
           プレースホルダー・ユーザーは、プロジェクトに参加していないユーザーにワーク・パッケージを割り当てる方法です。例えば、まだ名前も決まっていない、利用可能でもないリソースのタスクを追跡する必要がある場合や、その人にOpenProjectへのアクセス権を与えたくないが、その人に割り当てられたタスクを追跡したい場合などです。
       internal_comments:
-        title: "For your eyes only"
+        title: Internal comments
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "タイムトラッキングアクティビティ"
   enumeration_work_package_priorities: "ワークパッケージの優先度"
   enumeration_reported_project_statuses: "報告されるプロジェクト進捗状況"

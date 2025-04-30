@@ -1509,7 +1509,9 @@ de:
         one: "Benachrichtigung"
         other: "Benachrichtigungen"
       placeholder_user: "Platzhalter-Benutzer"
-      project: "Projekt"
+      project:
+        one: "Project"
+        other: "Projects"
       project_query:
         one: "Projektlisten"
         other: "Projektlisten"
@@ -2043,8 +2045,11 @@ de:
         description: >
           Platzhalter-Benutzer bieten Ihnen die Möglichkeit, einem Arbeitspaket Nutzer zuzuweisen, die nicht Teil Ihres Projekts sind. Sie können in einer Reihe von Szenarien nützlich sein; zum Beispiel, wenn Sie Aufgaben für eine noch nicht benannte oder verfügbare Ressource verfolgen müssen oder wenn Sie dieser Person keinen Zugriff auf OpenProject gewähren wollen, aber trotzdem Aufgaben verfolgen wollen, die diesem Nutzer zugewiesen sind.
       internal_comments:
-        title: "Nur für Sie"
+        title: Internal comments
         description: "Interne Kommentare erlauben es einem internen Team privat zu kommunizieren. Diese sind nur für bestimmte Projektrollen sichtbar und werden nie öffentlich sichtbar sein."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "Aktivitäten für Zeiterfassung"
   enumeration_work_package_priorities: "Arbeitspaket-Prioritäten"
   enumeration_reported_project_statuses: "Gemeldeter Projekt-Status"

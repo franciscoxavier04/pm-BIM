@@ -559,7 +559,7 @@ ro:
     text: "Text"
   placeholder_users:
     right_to_manage_members_missing: >
-      Nu aveți permisiunea de a șterge utilizatorul de tip placeholder. Nu aveți dreptul de a gestiona membrii pentru toate proiectele din care face parte utilizatorul de tip placeholder.
+      Nu ai permisiunea să ștergi utilizatorul de tip placeholder. Nu ai dreptul să gestionezi membrii pentru toate proiectele din care face parte utilizatorul de tip placeholder.
     delete_tooltip: "Șterge utilizator placeholder"
     deletion_info:
       heading: "Ștergeți utilizatorul de tip placeholder %{name}"
@@ -1529,7 +1529,10 @@ ro:
         few: "Notificări"
         other: "Notificări"
       placeholder_user: "Utilizator Placeholder"
-      project: "Proiect"
+      project:
+        one: "Project"
+        few: "Projects"
+        other: "Projects"
       project_query:
         one: "Listă proiecte"
         few: "Listă proiecte"
@@ -2089,8 +2092,11 @@ ro:
         description: >
           Utilizatorii de tip substituție sunt o modalitate de a atribui pachete de lucru utilizatorilor care nu fac parte din proiectul tău. Acesta poate fi utilă într-o serie de scenarii; de exemplu, dacă trebuie să urmărești sarcinile pentru o resursă care nu este încă numită sau disponibilă, sau dacă nu vrei să acorzi acestei persoane acces la OpenProject dar totuși vrei să urmărești sarcinile care le-au fost atribuite.
       internal_comments:
-        title: "For your eyes only"
+        title: Internal comments
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "Activități de urmărire timp activate"
   enumeration_work_package_priorities: "Priorități pentru pachetele de lucru"
   enumeration_reported_project_statuses: "Stările proiectului raportat"

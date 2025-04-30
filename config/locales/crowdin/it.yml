@@ -1513,7 +1513,9 @@ it:
         one: "Notifica"
         other: "Notifiche"
       placeholder_user: "Utente segnaposto"
-      project: "Progetto"
+      project:
+        one: "Project"
+        other: "Projects"
       project_query:
         one: "Elenco di progetti"
         other: "Elenchi di progetti"
@@ -2047,8 +2049,11 @@ it:
         description: >
           Gli utenti segnaposto sono un modo per assegnare macro-attività a utenti che non fanno parte del tuo progetto. Possono essere utili in una vasta gamma di scenari: ad esempio, quando occorre tenere traccia delle attività per una risorsa che non è ancora nominata o disponibile, o se non si desidera concedere a quella persona l'accesso a OpenProject ma si desidera comunque tenere traccia delle attività assegnate.
       internal_comments:
-        title: "For your eyes only"
+        title: Internal comments
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "Attività di monitoraggio dei tempi"
   enumeration_work_package_priorities: "Priorità della macro-attività"
   enumeration_reported_project_statuses: "Stato di progetto segnalato"

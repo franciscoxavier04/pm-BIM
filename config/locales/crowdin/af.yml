@@ -968,11 +968,8 @@ af:
         custom_field_section: Section
       project/phase:
         date_range: "Datum reeks"
-        date_range: "Datum reeks"
         definition: "Definition"
       project/phase_definition:
-        name: "Naam"
-        color: "Kleur"
         name: "Naam"
         color: "Kleur"
         start_gate: "Start phase gate"
@@ -1519,7 +1516,9 @@ af:
         one: "Notification"
         other: "Notifications"
       placeholder_user: "Placeholder user"
-      project: "Projek"
+      project:
+        one: "Project"
+        other: "Projects"
       project_query:
         one: "Project list"
         other: "Project lists"
@@ -2053,8 +2052,11 @@ af:
         description: >
           Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
       internal_comments:
-        title: "For your eyes only"
+        title: Internal comments
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Werkspakket prioriteite"
   enumeration_reported_project_statuses: "Gerapporteerde projekstatus"
@@ -3870,7 +3872,7 @@ af:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
       label_add: "Voeg by"
-      label_add_description: "Add life cycle definition"
+      label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"
       section_header: "Phases"
