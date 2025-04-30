@@ -697,6 +697,7 @@ en:
           with_current_filter: "There are no notifications in this view at the moment"
         mark_all_read: "Mark all as read"
         mark_as_read: "Mark as read"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
         text_update_date_by: "%{date} by"
         total_count_warning: "Showing the %{newest_count} most recent notifications. %{more_count} more are not displayed."
         empty_state:
