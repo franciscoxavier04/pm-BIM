@@ -543,7 +543,7 @@ ro:
     text: "Text"
   placeholder_users:
     right_to_manage_members_missing: >
-      Nu aveți permisiunea de a șterge utilizatorul de tip placeholder. Nu aveți dreptul de a gestiona membrii pentru toate proiectele din care face parte utilizatorul de tip placeholder.
+      Nu ai permisiunea să ștergi utilizatorul de tip placeholder. Nu ai dreptul să gestionezi membrii pentru toate proiectele din care face parte utilizatorul de tip placeholder.
     delete_tooltip: "Șterge utilizator placeholder"
     deletion_info:
       heading: "Ștergeți utilizatorul de tip placeholder %{name}"
