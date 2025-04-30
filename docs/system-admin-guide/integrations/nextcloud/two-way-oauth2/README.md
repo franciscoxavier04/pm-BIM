@@ -1,12 +1,12 @@
 ---
 sidebar_navigation:
-  title: Setup Two-way OAuth 2.0 authentication
+  title: Set up Two-way OAuth 2.0 authentication
   priority: 800
 description: Set up Two-way OAuth 2.0 authentication as the authentication method for your Nextcloud storage
 keywords: Nextcloud file storage integration
 ---
 
-# Setup Two-way OAuth 2.0 authentication
+# Set up Two-way OAuth 2.0 authentication
 
 This authentication mode uses access tokens provided by an OAuth application on either side of the integration between OpenProject and Nextcloud to authenticate requests performed in the name of users.
 

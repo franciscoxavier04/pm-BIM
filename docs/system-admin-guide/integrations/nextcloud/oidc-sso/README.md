@@ -1,12 +1,12 @@
 ---
 sidebar_navigation:
-  title: Setup Single Sign-On through OpenID Connect Identity Provider
+  title: Set up Single Sign-On through OpenID Connect Identity Provider
   priority: 900
 description: Set up Single Sign-On through OpenID Connect Identity Provider as the authentication method for your Nextcloud storage
 keywords: Nextcloud file storage integration
 ---
 
-# Setup Single Sign-On through OpenID Connect Identity Provider
+# Set up Single Sign-On through OpenID Connect Identity Provider
 
 This authentication mode will use access tokens provided by an identity provider shared among Nextcloud and OpenProject to authenticate requests performed in the name of users.
 
