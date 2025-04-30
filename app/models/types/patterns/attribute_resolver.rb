@@ -30,11 +30,14 @@
 
 module Types
   module Patterns
-    Token = Data.define(:pattern, :key) do
-      private_class_method :new
+    AttributeResolver = Data.define(:key, :label, :resolve_fn) do
+      def label_with_context
+        attribute_context = I18n.t("types.edit.subject_configuration.token.context.#{context}")
+        I18n.t("types.edit.subject_configuration.token.label_with_context", attribute_context:, attribute_label: label)
+      end
 
-      def self.build(pattern)
-        new(pattern, pattern.tr("{}", "").to_sym)
+      def call(*)
+        resolve_fn.call(*)
       end
 
       def context

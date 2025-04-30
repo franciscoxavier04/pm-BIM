@@ -68,35 +68,55 @@ RSpec.describe Types::Patterns::TokenPropertyMapper do
   end
 
   shared_let(:not_activated_custom_field) do
-    create(:boolean_wp_custom_field).tap do |custom_field|
+    create(:string_wp_custom_field).tap do |custom_field|
       work_package.type.custom_fields << custom_field
     end
   end
 
-  described_class::TOKEN_PROPERTY_MAP.each_pair do |key, details|
-    it "the token named #{key} resolves successfully" do
-      expect { details[:fn].call(work_package) }.not_to raise_error
-      expect(details[:fn].call(work_package)).not_to be_nil
+  described_class::BASE_ATTRIBUTE_TOKENS.each do |token|
+    it "the attribute token named #{token.key} resolves successfully" do
+      context = case token.key
+                when /^parent_/
+                  work_package_parent
+                when /^project_/
+                  project
+                else
+                  work_package
+                end
+
+      expect { token.call(context) }.not_to raise_error
+      expect(token.call(context)).not_to be_nil
     end
   end
 
   it "multi value fields are supported" do
-    function = described_class.new.fetch :"custom_field_#{mult_list_custom_field.id}"
-    expect(function.call(work_package)).to eq(%w[A B])
+    token = described_class.new.tokens_for_type(work_package.type).detect do |t|
+      t.key == :"custom_field_#{mult_list_custom_field.id}"
+    end
+    expect(token.call(work_package)).to eq(%w[A B])
   end
 
   it "must return nil if custom field is not activated in project" do
-    function = described_class.new.fetch :"custom_field_#{not_activated_custom_field.id}"
-    expect { function.call(work_package) }.not_to raise_error
-    expect(function.call(work_package)).to be_nil
+    token = described_class.new.tokens_for_type(work_package.type).detect do |t|
+      t.key == :"custom_field_#{not_activated_custom_field.id}"
+    end
+
+    expect { token.call(work_package) }.not_to raise_error
+    expect(token.call(work_package)).to eq(:attribute_not_available)
   end
 
   it "returns all possible tokens" do
     cf = string_custom_field
     tokens = described_class.new.tokens_for_type(work_package.type)
 
-    expect(tokens.keys).to match_array(%i[work_package project parent])
-    expect(tokens[:project][:project_status]).to eq(Project.human_attribute_name(:status_code))
-    expect(tokens[:work_package][:"custom_field_#{cf.id}"]).to eq(cf.name)
+    expect(tokens.first).to be_a(Types::Patterns::AttributeResolver)
+    expect(detect(tokens, :project_status).label).to eq(Project.human_attribute_name(:status_code))
+    expect(detect(tokens, :"custom_field_#{cf.id}").label).to eq(cf.name)
+  end
+
+  private
+
+  def detect(tokens, key)
+    tokens.detect { |t| t.key == key }
   end
 end
