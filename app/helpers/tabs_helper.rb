@@ -50,9 +50,17 @@ module TabsHelper
           if feature && !EnterpriseToken.allows_to?(feature)
             t.with_icon(icon: :"op-enterprise-addons", classes: "upsell-colored")
           end
-          t.with_text { I18n.t(tab[:label]) }
+          t.with_text { tab_label(tab) }
         end
       end
+    end
+  end
+
+  def tab_label(tab)
+    if tab[:label].is_a?(String)
+      tab[:label]
+    else
+      I18n.t(tab[:label])
     end
   end
 
