@@ -40,6 +40,8 @@ module TabsHelper
   end
 
   def render_tab_header_nav(header, tabs)
+    return if tabs.blank?
+
     header.with_tab_nav(label: nil) do |tab_nav|
       tabs.each do |tab|
         tab_nav.with_tab(selected: selected_tab(tabs) == tab, href: tab[:path]) do |t|
