@@ -30,7 +30,7 @@ announce('Example polite message', { politeness: 'polite' });
 ```
 
 ### Using Turbo Streams to Trigger ARIA Live Updates
-To use it in a Rails Turbo response, and send updates to the screen reader after any action, we create a new Turbo stream component that triggers an ARIA action:
+To use it in a Rails Turbo response, and send updates to the screen reader after any action, we created a new Turbo stream component that triggers an ARIA action:
 ```ruby
 OpTurbo::StreamComponent.new(action: :aria, message: "Form submission successful!", type: "polite", role: "status", target: "nil")
 ```
