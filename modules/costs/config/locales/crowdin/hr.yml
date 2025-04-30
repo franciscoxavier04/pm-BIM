@@ -50,19 +50,21 @@ hr:
         project: Projekt
         user: Korisnik
         work_package: Radni paket
+        subject: Predmet
         hours: Sati
         comments: Komentar
         activity: Aktivnost
         spent_on: Datum
         start_time: Start time
         end_time: Finish time
+        time: Vrijeme
     models:
       time_entry:
         one: "Time entry"
         few: "Time entries"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Ulazni trošak"
         few: "Cost entries"
         other: "Cost entries"
       cost_type:
@@ -154,12 +156,32 @@ hr:
   label_cost: "Cost"
   label_costs: "Troškovi"
   label_mandatory_fields: "Mandatory fields"
+  label_my_time_tracking: "My time tracking"
+  label_no_time: "No time tracked"
+  label_next_day: "Next day"
+  label_next_week: "Sljedeći tjedan"
+  label_next_workweek: "Next work week"
+  label_next_month: "Next month"
+  label_previous_day: "Previous day"
+  label_previous_workweek: "Previous work week"
+  label_previous_week: "Prethodni tjedan"
+  label_previous_month: "Previous month"
+  label_specific_day: "Day %{day}"
+  label_specific_week: "Calendar week %{week}"
+  label_specific_month: "Month %{month}"
+  label_list: "Popis"
+  label_month: "Mjesec"
+  label_workweek: "Work week"
+  label_day: "Dan"
+  label_today_capitalized: "Today"
+  label_view_mode_switcher: "Change view"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Nešto je pošlo po zlu. Molimo pokušajte ponovno."
   notice_successful_restore: "Uspješno vraćanje."
   notice_successful_lock: "Locked successfully."
   notice_cost_logged_successfully: "Jedinični trošak uspješno zabilježen."
   notice_different_time_zones: "This user has a different time zone (%{tz}). Time will be logged using their time zone."
+  notice_time_entry_update_failed: "Failed to update time entry. Errors: %{errors}"
   permission_edit_cost_entries: "Uredite zabilježene jedinične troškove"
   permission_edit_own_cost_entries: "Uredite vlastite zabilježene jedinične troškove"
   permission_edit_hourly_rates: "Uredite satnice"
@@ -174,10 +196,10 @@ hr:
   permission_view_own_hourly_rate: "Prikaži vlastite satnice"
   permission_view_own_time_entries: "Pogledaj vlastito utrošeno vrijeme"
   project_module_costs: "Time and costs"
-  setting_allow_tracking_start_and_end_times: "Allow users to track start and end time on time records"
+  setting_allow_tracking_start_and_end_times: "Allow exact times tracking"
   setting_costs_currency: "Valuta"
   setting_costs_currency_format: "Oblik valute"
-  setting_enforce_tracking_start_and_end_times: "Force users to set start and end time on time records"
+  setting_enforce_tracking_start_and_end_times: "Require exact times"
   text_assign_time_and_cost_entries_to_project: "Dodijeli prijavljene satnice i troškove na projektu"
   text_destroy_cost_entries_question: "%{cost_entries} su prikazani na radnim paketima koje želite izbrisati. Što zapravo želite napraviti?"
   text_destroy_time_and_cost_entries: "Izbriši prijavljene sate i troškove"
@@ -185,7 +207,18 @@ hr:
   text_reassign_time_and_cost_entries: "Dodijeli prijavljene sate i troškove ovom radnom paketu:"
   text_warning_hidden_elements: "Pojedine stavke su izuzete iz agregacije."
   week: "tjedan"
+  total_times:
+    workweek: "Workweek Total: %{hours}"
+    week: "Week Total: %{hours}"
+    month: "Month Total: %{hours}"
+    day: "Day Total: %{hours}"
   api_v3:
     errors:
       validation:
         start_time_different_date: "Date part of startTime (%{start_time}) must be the same as the spentOn (%{spent_on}) date."
+  ee:
+    features:
+      time_entry_time_restrictions: Require exact time tracking
+    upsell:
+      time_entry_time_restrictions:
+        description: "Improve your time tracking by requiring exact start and finish times when logging time."

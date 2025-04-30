@@ -7,9 +7,8 @@ module Components
     include MonthRangeSelection
 
     def clear!
-      super
-
       set_field(duration_field, "", wait_for_changes_to_be_applied: false)
+      super
     end
 
     def expect_banner_text(text, **)
@@ -99,6 +98,10 @@ module Components
       if container.has_link?("Start date", visible: true)
         enable_start_date
       end
+    end
+
+    def expect_add_start_date_button_visible
+      expect(container).to have_link("Start date")
     end
 
     def enable_due_date
@@ -236,7 +239,7 @@ module Components
     def input_aria_related_element(input_element, describedby:)
       input_element["aria-describedby"]
         .split
-        .find { _1.start_with?("#{describedby}-") }
+        .find { it.start_with?("#{describedby}-") }
         &.then { |id| find(id:, visible: :all) }
     end
   end

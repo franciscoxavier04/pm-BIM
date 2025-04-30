@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -40,7 +41,7 @@ module MeetingSections
              :validate_meeting_existence
 
     def self.assignable_meetings(user)
-      StructuredMeeting
+      Meeting
         .open
         .visible(user)
     end
@@ -57,7 +58,7 @@ module MeetingSections
       # the error is added by the models presence validation
       return unless visible?
 
-      unless user.allowed_in_project?(:manage_agendas, model.project)
+      unless user.allowed_in_project?(:manage_agendas, model.project) || model.backlog?
         errors.add :base, :error_unauthorized
       end
     end

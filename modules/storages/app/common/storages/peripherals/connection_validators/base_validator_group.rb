@@ -34,9 +34,15 @@ module Storages
       class BaseValidatorGroup
         include TaggedLogging
 
+        def self.call(storage)
+          new(storage).call
+        end
+
+        def self.key = raise Errors::SubclassResponsibility
+
         def initialize(storage)
           @storage = storage
-          @results = ValidationGroupResult.new
+          @results = ValidationGroupResult.new(self.class.key)
         end
 
         def call
@@ -63,18 +69,14 @@ module Storages
           update_result(key, CheckResult.success(key))
         end
 
-        def fail_check(key, message)
-          update_result(key, CheckResult.failure(key, message))
+        def fail_check(key, code, context: nil)
+          update_result(key, CheckResult.failure(key, code, context))
           throw :interrupted
         end
 
-        def warn_check(key, message, halt_validation: false)
-          update_result(key, CheckResult.warning(key, message))
+        def warn_check(key, code, context: nil, halt_validation: false)
+          update_result(key, CheckResult.warning(key, code, context))
           throw :interrupted if halt_validation
-        end
-
-        def message(key, context = {})
-          I18n.t("storages.health.connection_validation.#{key}", **context)
         end
       end
     end

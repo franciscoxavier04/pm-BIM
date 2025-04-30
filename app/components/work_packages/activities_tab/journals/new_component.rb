@@ -33,6 +33,7 @@ module WorkPackages
         include ApplicationHelper
         include OpPrimer::ComponentHelpers
         include OpTurbo::Streamable
+        include WorkPackages::ActivitiesTab::StimulusControllers
 
         def initialize(work_package:, journal: nil, form_hidden_initially: true)
           super
@@ -58,13 +59,19 @@ module WorkPackages
           form_hidden_initially ? :none : :block
         end
 
-        def adding_restricted_comment_allowed?
-          OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? &&
-            User.current.allowed_in_project?(:add_comments_with_restricted_visibility, work_package.project)
+        def adding_internal_comment_allowed?
+          work_package.project.enabled_internal_comments &&
+            User.current.allowed_in_project?(:add_internal_comments, work_package.project)
         end
 
         def learn_more_static_link_url
           ::OpenProject::Static::Links.url_for(:user_guides_work_package_activity)
+        end
+
+        def confirm_dialog_data_attributes
+          {
+            internal_comment_stimulus_controller("-target") => "confirmationDialog"
+          }
         end
       end
     end

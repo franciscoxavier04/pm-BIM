@@ -255,7 +255,15 @@ export class IanCenterService extends UntilDestroyedMixin {
           return;
         }
         if (notifications[0][0]._links.resource || notifications[this.selectedNotificationIndex][0]._links.resource) {
-          const wpId = idFromLink(notifications[this.selectedNotificationIndex >= notifications.length ? 0 : this.selectedNotificationIndex][0]._links.resource.href);
+          let index:number;
+          if (this.selectedNotificationIndex === notifications.length) {
+            // If the last notification is marked as read, we do not jump to the top, but rather show the new last notification
+            index = notifications.length - 1;
+          } else {
+            index = this.selectedNotificationIndex > notifications.length ? 0 : this.selectedNotificationIndex;
+          }
+
+          const wpId = idFromLink(notifications[index][0]._links.resource.href);
           this.openSplitScreen(wpId);
         }
       });

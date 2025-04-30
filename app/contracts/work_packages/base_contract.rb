@@ -162,12 +162,6 @@ module WorkPackages
 
     validate :validate_duration_and_dates_are_not_derivable
 
-    def initialize(work_package, user, options: {})
-      super
-
-      @can = WorkPackagePolicy.new(user)
-    end
-
     def assignable_statuses(include_default: false)
       # Do not allow skipping statuses without intermediately saving the work package.
       # We therefore take the original status of the work_package, while preserving all
@@ -225,8 +219,6 @@ module WorkPackages
     def valid?(context = :saving_custom_fields) = super
 
     private
-
-    attr_reader :can
 
     def validate_after_soonest_start(date_attribute)
       return if model.schedule_manually?
@@ -507,7 +499,7 @@ module WorkPackages
     end
 
     def validate_duration_matches_dates
-      return unless calculated_duration && model.duration
+      return unless calculated_duration && model.duration && model.duration > 0
 
       if calculated_duration > model.duration
         errors.add :duration, :smaller_than_dates

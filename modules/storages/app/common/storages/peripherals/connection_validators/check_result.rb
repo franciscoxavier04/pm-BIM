@@ -31,28 +31,44 @@
 module Storages
   module Peripherals
     module ConnectionValidators
-      CheckResult = Data.define(:key, :state, :message, :timestamp) do
+      CheckResult = Data.define(:key, :state, :code, :timestamp, :context) do
         private_class_method :new
+
         def self.skipped(key)
-          new(key:, state: :skipped, message: nil, timestamp: nil)
+          new(key:, state: :skipped, code: nil, timestamp: nil, context: nil)
         end
 
-        def self.failure(key, message)
-          new(key:, state: :failure, message:, timestamp: Time.zone.now)
+        def self.failure(key, code, context)
+          new(key:, state: :failure, code:, timestamp: Time.zone.now, context:)
         end
 
         def self.success(key)
-          new(key:, state: :success, message: nil, timestamp: Time.zone.now)
+          new(key:, state: :success, code: nil, timestamp: Time.zone.now, context: nil)
         end
 
-        def self.warning(key, message)
-          new(key:, state: :warning, message:, timestamp: Time.zone.now)
+        def self.warning(key, code, context)
+          new(key:, state: :warning, code:, timestamp: Time.zone.now, context:)
         end
 
         def success? = state == :success
+
         def failure? = state == :failure
+
         def warning? = state == :warning
+
         def skipped? = state == :skipped
+
+        def humanize_title(group) = I18n.t("storages.health.checks.#{group}.#{key}")
+
+        def humanize_error_message
+          return nil if code.nil?
+
+          I18n.t("storages.health.connection_validation.#{code}", **context)
+        end
+
+        def to_h
+          { state: state.to_s, code:, context:, timestamp: timestamp&.iso8601 }
+        end
       end
     end
   end

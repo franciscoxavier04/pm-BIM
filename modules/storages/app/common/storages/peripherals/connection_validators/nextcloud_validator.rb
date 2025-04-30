@@ -31,41 +31,17 @@
 module Storages
   module Peripherals
     module ConnectionValidators
-      class NextcloudValidator
-        # Class Level interface will be moved to a superclass/mixin once we do the OneDrive port
-        class << self
-          def validation_groups
-            @validation_groups ||= {}
-          end
-
-          def register_group(group_name, klass, when: ->(*) { true })
-            validation_groups[group_name] = { klass:, when: }
-          end
-        end
-
-        register_group :base_configuration, Nextcloud::StorageConfigurationValidator
-        register_group :authentication, Nextcloud::AuthenticationValidator,
-                       when: ->(_, result) { result.group(:base_configuration).non_failure? }
-        register_group :ampf_configuration, Nextcloud::AmpfConfigurationValidator,
-                       when: ->(storage, result) {
-                         result.group(:base_configuration).non_failure? && storage.automatic_management_enabled?
-                       }
-
-        def initialize(storage:)
-          @storage = storage
-        end
-
-        def validate
-          validation_groups.each_with_object(ValidatorResult.new) do |(key, group_metadata), result|
-            if group_metadata[:when].call(@storage, result)
-              result.add_group_result(key, group_metadata[:klass].new(@storage).call)
-            end
-          end
-        end
-
-        private
-
-        def validation_groups = self.class.validation_groups
+      class NextcloudValidator < BaseConnectionValidator
+        register_group Nextcloud::StorageConfigurationValidator
+        register_group Nextcloud::AuthenticationValidator,
+                       precondition: ->(_, result) do
+                         result.group(Nextcloud::StorageConfigurationValidator.key).non_failure?
+                       end
+        register_group Nextcloud::AmpfConfigurationValidator,
+                       precondition: ->(storage, result) do
+                         result.group(Nextcloud::StorageConfigurationValidator.key).non_failure? &&
+                           storage.automatic_management_enabled?
+                       end
       end
     end
   end

@@ -36,6 +36,7 @@
           end
         end
       end
+
       new_form_container.with_row(
         display: form_row_display_value,
         data: { "work-packages--activities-tab--index-target": "formRow" }
@@ -61,16 +62,16 @@
               render(WorkPackages::ActivitiesTab::Journals::NotesForm.new(f))
             end
 
-            form_container.with_row(flex_layout: true, justify_content: adding_restricted_comment_allowed? ? :space_between : :flex_end) do |form_container_row|
-              if adding_restricted_comment_allowed?
-                form_container_row.with_column(flex_layout: true, align_items: :center) do |restricted_comment_container|
-                  restricted_comment_container.with_column(mr: 2, test_selector: "op-work-package-journal-restricted-comment-checkbox") do
-                    render(WorkPackages::ActivitiesTab::Journals::RestrictedNoteForm.new(f))
+            form_container.with_row(flex_layout: true, justify_content: adding_internal_comment_allowed? ? :space_between : :flex_end) do |form_container_row|
+              if adding_internal_comment_allowed?
+                form_container_row.with_column(flex_layout: true, align_items: :center) do |internal_comment_container|
+                  internal_comment_container.with_column(mr: 2, test_selector: "op-work-package-journal-internal-comment-checkbox") do
+                    render(WorkPackages::ActivitiesTab::Journals::InternalNoteForm.new(f))
                   end
 
-                  restricted_comment_container.with_column(
+                  internal_comment_container.with_column(
                     display: :none,
-                    data: { "work-packages--activities-tab--restricted-comment-target": "learnMoreLink" },
+                    data: { "work-packages--activities-tab--internal-comment-target": "learnMoreLink" },
                     pb: 1
                   ) do
                     render(Primer::Beta::Link.new(href: learn_more_static_link_url, target: "_blank")) do |link|
@@ -93,9 +94,30 @@
                 end
               end
             end
+
+            form_container.with_row do
+              render(EnterpriseEdition::BannerComponent.new(:internal_comments, dismissable: true, i18n_scope: "ee.upsell.internal_comments_inline", mt: 4))
+            end
           end
         end
       end
     end
   end
 %>
+<% if adding_internal_comment_allowed? %>
+  <%=
+    render(
+      Primer::OpenProject::DangerDialog.new(
+        title: I18n.t("activities.work_packages.activity_tab.internal_comment_confirmation.title"),
+        confirm_button_text: I18n.t("activities.work_packages.activity_tab.internal_comment_confirmation.confirm_button_text"),
+        data: confirm_dialog_data_attributes,
+        test_selector: "op-work-package-internal-comment-confirmation-dialog"
+      )
+    ) do |dialog|
+      dialog.with_confirmation_message do |message|
+        message.with_heading(tag: :h2) { I18n.t("activities.work_packages.activity_tab.internal_comment_confirmation.title") }
+        message.with_description_content(I18n.t("activities.work_packages.activity_tab.internal_comment_confirmation.description"))
+      end
+    end
+  %>
+<% end %>

@@ -80,8 +80,6 @@ export default class PreviewController extends DialogPreviewController {
 
     document.addEventListener('date-picker:flatpickr-dates-changed', this.handleFlatpickrDatesChangedBound);
     this.focusOnOpen();
-
-    this.prepareInputFieldsForSafari();
   }
 
   disconnect() {
@@ -124,21 +122,21 @@ export default class PreviewController extends DialogPreviewController {
     }
   }
 
-  private get dueDateField():HTMLInputElement {
-    return document.getElementsByName('work_package[due_date]')[0] as HTMLInputElement;
+  private get dueDateField():HTMLInputElement|undefined {
+    return document.getElementsByName('work_package[due_date]')[0] as HTMLInputElement|undefined;
   }
 
-  private get startDateField():HTMLInputElement {
+  private get startDateField():HTMLInputElement|undefined {
     return document.getElementsByName('work_package[start_date]')[0] as HTMLInputElement;
   }
 
-  private get durationField():HTMLInputElement {
+  private get durationField():HTMLInputElement|undefined {
     return document.getElementsByName('work_package[duration]')[0] as HTMLInputElement;
   }
 
   handleFlatpickrDatesChanged(event:CustomEvent<{ dates:Date[] }>) {
     const dates = event.detail.dates;
-    let fieldUpdatedWithUserValue:HTMLInputElement|null = null;
+    let fieldUpdatedWithUserValue:HTMLInputElement|null|undefined = null;
 
     if (this.isMilestone) {
       this.currentStartDate = dates[0];
@@ -162,7 +160,7 @@ export default class PreviewController extends DialogPreviewController {
     }
   }
 
-  dateFieldToChange():HTMLInputElement {
+  dateFieldToChange():HTMLInputElement|undefined {
     if (this.isMilestone) {
       return this.startDateField;
     }
@@ -172,7 +170,7 @@ export default class PreviewController extends DialogPreviewController {
       this.highlightedField = currentlyHighledField as HTMLInputElement;
     }
 
-    let dateFieldToChange:HTMLInputElement;
+    let dateFieldToChange:HTMLInputElement|undefined;
     if (this.highlightedField === this.dueDateField
         || (this.highlightedField === this.durationField && !this.scheduleManuallyValue)
         || (this.highlightedField === this.durationField
@@ -185,7 +183,11 @@ export default class PreviewController extends DialogPreviewController {
     return dateFieldToChange;
   }
 
-  swapDateFieldsIfNeeded(selectedDate:Date, dateFieldToChange:HTMLInputElement) {
+  swapDateFieldsIfNeeded(selectedDate:Date, dateFieldToChange:HTMLInputElement|undefined) {
+    if (dateFieldToChange === undefined) {
+      return;
+    }
+
     // It needs to be swapped if the other field is set, the field to change is
     // unset, and setting it would make start and end be in the wrong order.
     if (
@@ -307,26 +309,13 @@ export default class PreviewController extends DialogPreviewController {
     this.updateFlatpickrCalendar();
   }
 
-  // Ensures that on create forms, there is an "id" for the un-persisted
-  // work package when sending requests to the edit action for previews.
-  ensureValidPathname(formAction:string):string {
-    const wpPath = new URL(formAction);
-
-    if (wpPath.pathname.endsWith('/work_packages/datepicker_dialog_content')) {
-      // Replace /work_packages/date_picker with /work_packages/new/date_picker
-      wpPath.pathname = wpPath.pathname.replace('/work_packages/datepicker_dialog_content', '/work_packages/new/datepicker_dialog_content');
-    }
-
-    return wpPath.toString();
-  }
-
-  ensureValidWpAction(wpPath:string):string {
-    return wpPath.endsWith('/work_packages/new/datepicker_dialog_content') ? 'new' : 'edit';
-  }
-
   afterRendering() {
     this.readCurrentValues();
     this.updateFlatpickrCalendar();
+  }
+
+  ignoreActiveValueWhenMorphing():boolean {
+    return false;
   }
 
   readInitialValues() {
@@ -368,6 +357,10 @@ export default class PreviewController extends DialogPreviewController {
     const fieldToHighlight = e.target as HTMLInputElement;
     if (fieldToHighlight) {
       this.highlightField(fieldToHighlight);
+      window.setTimeout(() => {
+        // For mobile, we have to make sure that the active field is scrolled into view after the keyboard is opened
+        fieldToHighlight.scrollIntoView(true);
+      }, 300);
       // Datepicker can need an update when the focused field changes. This
       // allows to switch between single and range mode in certain edge cases.
       this.readCurrentValues();
@@ -375,7 +368,11 @@ export default class PreviewController extends DialogPreviewController {
     }
   }
 
-  highlightField(newHighlightedField:HTMLInputElement) {
+  highlightField(newHighlightedField:HTMLInputElement|undefined) {
+    if (newHighlightedField === undefined) {
+      return;
+    }
+
     this.highlightedField = newHighlightedField;
     Array.from(document.getElementsByClassName('op-datepicker-modal--date-field_current')).forEach(
       (el) => {
@@ -448,11 +445,6 @@ export default class PreviewController extends DialogPreviewController {
     if (this.isInitialValueEmpty('start_date') && !this.isTouched('start_date')) {
       // let start date be derived
       return;
-    }
-
-    if (!this.scheduleManuallyValue) {
-      // Fix the start date to avoid that it gets changed accidentally
-      this.markTouched('start_date');
     }
 
     if (this.isBeingEdited('start_date')) {
@@ -543,21 +535,5 @@ export default class PreviewController extends DialogPreviewController {
       tabs.setAttribute('tabindex', '-1');
       tabs.focus();
     }
-  }
-
-  /*
-   * This method qualifies as the most stupid thing I had to do in a long time.
-   * Safari is the only browser which does not clear the input when using the native datepicker "clear" method.
-   * It rather resets it to the original value of the input.
-   * That is why we manually set the defaultValue to an empty string,
-   * but since the defaultValue is used for the value, we have to manually set this again.
-   * See: https://stackoverflow.com/a/64886383/8900797
-   */
-  private prepareInputFieldsForSafari() {
-    [this.startDateField, this.dueDateField].forEach((field:HTMLInputElement) => {
-      const value = field.value;
-      field.defaultValue = '';
-      field.value = value;
-    });
   }
 }

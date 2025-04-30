@@ -58,6 +58,22 @@ module Settings
       def show_custom_fields?
         User.current.allowed_in_project?(:select_custom_fields, @project)
       end
+
+      def internal_comments_title
+        unless EnterpriseToken.allows_to?(:internal_comments)
+          return render(Primer::Beta::Octicon.new(
+                          icon: "op-enterprise-addons",
+                          classes: "upsell-colored",
+                          ml: 2
+                        )) + internal_comments_translation
+        end
+
+        internal_comments_translation
+      end
+
+      private
+
+      def internal_comments_translation = t("ee.features.internal_comments").html_safe
     end
   end
 end

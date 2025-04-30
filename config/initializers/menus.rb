@@ -135,7 +135,8 @@ Redmine::MenuManager.map :global_menu do |menu|
   menu.push :my_page,
             { controller: "/my/page", action: "show" },
             after: :home,
-            icon: "person"
+            icon: "person",
+            caption: I18n.t("my_page.label")
 
   # Projects
   menu.push :projects,
@@ -653,7 +654,8 @@ Redmine::MenuManager.map :project_menu do |menu|
     work_packages: {
       caption: :label_work_package_plural,
       if: ->(project) {
-        User.current.allowed_in_project?(:manage_types, project) ||
+        User.current.allowed_in_project?(:edit_project, project) ||
+          User.current.allowed_in_project?(:manage_types, project) ||
           User.current.allowed_in_project?(:manage_categories, project) ||
           User.current.allowed_in_project?(:select_custom_fields, project)
       }

@@ -35,13 +35,16 @@ module Storages
         class AmpfConfigurationValidator < BaseValidatorGroup
           using ServiceResultRefinements
 
+          def self.key = :ampf_configuration
+
           private
 
           def validate
             register_checks(
-              :files_request, :userless_access, :group_folder_presence, :group_folder_contents
+              :group_folder_app, :files_request, :userless_access, :group_folder_presence, :group_folder_contents
             )
 
+            group_folder_app_checks
             files_request_failed_with_unknown_error
             userless_access_denied
             group_folder_not_found
@@ -50,15 +53,32 @@ module Storages
 
           def userless_access_denied
             if files.result == :unauthorized
-              fail_check(:userless_access, message(:userless_access_denied))
+              fail_check(:userless_access, :nc_userless_access_denied)
             else
               pass_check(:userless_access)
             end
           end
 
+          def group_folder_app_checks
+            required_version = SemanticVersion.parse(
+              nextcloud_dependencies.dig("dependencies", "group_folders_app", "min_version")
+            )
+
+            capabilities = Registry["nextcloud.queries.capabilities"].call(storage: @storage, auth_strategy: noop).result
+            dependency = I18n.t("storages.dependencies.nextcloud.group_folders_app")
+
+            if capabilities.group_folder_disabled?
+              fail_check(:group_folder_app, :nc_dependency_missing, context: { dependency: })
+            elsif capabilities.group_folder_version < required_version
+              fail_check(:group_folder_app, :nc_dependency_version_mismatch, context: { dependency: })
+            else
+              pass_check(:group_folder_app)
+            end
+          end
+
           def group_folder_not_found
             if files.result == :not_found
-              fail_check(:group_folder_presence, message(:group_folder_not_found))
+              fail_check(:group_folder_presence, :nc_group_folder_not_found)
             else
               pass_check(:group_folder_presence)
             end
@@ -72,7 +92,7 @@ module Storages
                     "\tstatus: #{files.result}\n" \
                     "\tresponse: #{files.error_payload}"
 
-              fail_check(:files_request, message(:unknown_error))
+              fail_check(:files_request, :unknown_error)
             else
               pass_check(:files_request)
             end
@@ -83,7 +103,7 @@ module Storages
             return pass_check(:group_folder_contents) if unexpected_files.empty?
 
             log_extraneous_files(unexpected_files)
-            warn_check(:group_folder_contents, message(:unexpected_content))
+            warn_check(:group_folder_contents, :nc_unexpected_content)
           end
 
           def log_extraneous_files(unexpected_files)
@@ -103,9 +123,17 @@ module Storages
 
           def files
             @files ||= Peripherals::Registry
-              .resolve("#{@storage}.queries.files")
-              .call(storage: @storage, auth_strategy:, folder: ParentFolder.new(@storage.group_folder))
+                         .resolve("#{@storage}.queries.files")
+                         .call(storage: @storage, auth_strategy:, folder: ParentFolder.new(@storage.group_folder))
           end
+
+          def noop = StorageInteraction::AuthenticationStrategies::Noop.strategy
+
+          def nextcloud_dependencies
+            @nextcloud_dependencies ||= YAML.load_file(path_to_config).deep_stringify_keys
+          end
+
+          def path_to_config = Rails.root.join("modules/storages/config/nextcloud_dependencies.yml")
         end
       end
     end

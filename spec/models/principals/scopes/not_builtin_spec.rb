@@ -36,6 +36,7 @@ RSpec.describe Principals::Scopes::NotBuiltin do
     let!(:group) { create(:group) }
     let!(:user) { create(:user) }
     let!(:placeholder_user) { create(:placeholder_user) }
+    let!(:service_account) { create(:service_account) }
 
     subject { Principal.not_builtin }
 

@@ -144,7 +144,6 @@ import {
 import { OpExclusionInfoComponent } from 'core-app/shared/components/fields/display/info/op-exclusion-info.component';
 import { NewProjectComponent } from 'core-app/features/projects/components/new-project/new-project.component';
 import { CopyProjectComponent } from 'core-app/features/projects/components/copy-project/copy-project.component';
-import { ProjectsComponent } from 'core-app/features/projects/components/projects/projects.component';
 import { OpenProjectJobStatusModule } from 'core-app/features/job-status/openproject-job-status.module';
 import {
   NotificationsSettingsPageComponent,
@@ -160,10 +159,6 @@ import {
 import {
   WorkPackageSplitViewEntryComponent,
 } from 'core-app/features/work-packages/routing/wp-split-view/wp-split-view-entry.component';
-import {
-  InAppNotificationsDateAlertsUpsaleComponent,
-} from 'core-app/features/in-app-notifications/date-alerts-upsale/ian-date-alerts-upsale.component';
-import { ShareUpsaleComponent } from 'core-app/features/enterprise/share-upsale/share-upsale.component';
 import {
   StorageLoginButtonComponent,
 } from 'core-app/shared/components/storages/storage-login-button/storage-login-button.component';
@@ -196,10 +191,6 @@ import { NoResultsComponent } from 'core-app/shared/components/no-results/no-res
 import {
   OpNonWorkingDaysListComponent,
 } from 'core-app/shared/components/op-non-working-days-list/op-non-working-days-list.component';
-import { EnterpriseBannerComponent } from 'core-app/shared/components/enterprise-banner/enterprise-banner.component';
-import {
-  CollapsibleSectionComponent,
-} from 'core-app/shared/components/collapsible-section/collapsible-section.component';
 import { CopyToClipboardComponent } from 'core-app/shared/components/copy-to-clipboard/copy-to-clipboard.component';
 import { GlobalSearchTitleComponent } from 'core-app/core/global_search/title/global-search-title.component';
 import { ContentTabsComponent } from 'core-app/shared/components/tabs/content-tabs/content-tabs.component';
@@ -439,13 +430,10 @@ export class OpenProjectModule implements DoBootstrap {
 
     // TODO: These elements are now registered custom elements, but are actually single-use components. They should be removed when we move these pages to Rails.
     registerCustomElement('opce-new-project', NewProjectComponent, { injector });
-    registerCustomElement('opce-project-settings', ProjectsComponent, { injector });
     registerCustomElement('opce-copy-project', CopyProjectComponent, { injector });
     registerCustomElement('opce-notification-settings', NotificationsSettingsPageComponent, { injector });
     registerCustomElement('opce-reminder-settings', ReminderSettingsPageComponent, { injector });
     registerCustomElement('opce-notification-center', InAppNotificationCenterComponent, { injector });
-    registerCustomElement('opce-ian-date-alerts-upsale', InAppNotificationsDateAlertsUpsaleComponent, { injector });
-    registerCustomElement('opce-share-upsale', ShareUpsaleComponent, { injector });
     registerCustomElement('opce-wp-split-view', WorkPackageSplitViewEntryComponent, { injector });
     registerCustomElement('opce-timer-account-menu', TimerAccountMenuComponent, { injector });
     registerCustomElement('opce-remote-field-updater', RemoteFieldUpdaterComponent, { injector });
@@ -464,8 +452,6 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-enterprise-base', EnterpriseBaseComponent, { injector });
     registerCustomElement('opce-no-results', NoResultsComponent, { injector });
     registerCustomElement('opce-non-working-days-list', OpNonWorkingDaysListComponent, { injector });
-    registerCustomElement('opce-enterprise-banner', EnterpriseBannerComponent, { injector });
-    registerCustomElement('opce-collapsible-section-augment', CollapsibleSectionComponent, { injector });
     registerCustomElement('opce-main-menu-toggle', MainMenuToggleComponent, { injector });
     registerCustomElement('opce-main-menu-resizer', MainMenuResizerComponent, { injector });
     registerCustomElement('opce-copy-to-clipboard', CopyToClipboardComponent, { injector });

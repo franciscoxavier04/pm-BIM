@@ -33,26 +33,30 @@ module WorkPackages
     def self.model = WorkPackage
 
     attribute :journal_notes do
-      errors.add(:journal_notes, :error_unauthorized) unless can?(:comment)
+      errors.add(:journal_notes, :error_unauthorized) unless adding_notes_allowed?
       errors.add(:journal_notes, :blank) if model.journal_notes.blank?
     end
 
-    attribute :journal_restricted do
-      if model.journal_restricted && !OpenProject::FeatureDecisions.comments_with_restricted_visibility_active?
-        errors.add(:journal_restricted, :feature_disabled)
+    attribute :journal_internal do
+      next unless model.journal_internal
+
+      unless allowed_in_project?(:add_internal_comments)
+        errors.add(:journal_internal, :error_unauthorized)
       end
     end
 
     private
 
-    def can?(permission)
-      policy.allowed?(model, permission)
+    def adding_notes_allowed?
+      allowed_in_work_package?(:add_work_package_comments) || allowed_in_work_package?(:edit_work_packages)
     end
 
-    attr_writer :policy
+    def allowed_in_work_package?(permission)
+      user.allowed_in_work_package?(permission, model)
+    end
 
-    def policy
-      @policy ||= WorkPackagePolicy.new(user)
+    def allowed_in_project?(permission)
+      user.allowed_in_project?(permission, model.project)
     end
   end
 end
