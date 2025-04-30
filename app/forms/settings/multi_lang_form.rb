@@ -1,4 +1,6 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -24,38 +26,44 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-require "spec_helper"
+module Settings
+  class MultiLangForm < ApplicationForm
+    include FormHelper
 
-RSpec.describe "admin/settings/authentication_settings/show" do
-  context "with password login enabled" do
-    before do
-      allow(OpenProject::Configuration).to receive(:disable_password_login?).and_return(false)
-      render
+    attr_reader :name, :current_language
+
+    def initialize(name:, current_language:)
+      super()
+
+      @name = name
+      @current_language = current_language
     end
 
-    it "shows password settings" do
-      expect(rendered).to have_text I18n.t("label_password_lost")
-    end
+    form do |f|
+      # Add hidden languages
+      Redmine::I18n.valid_languages.each do |lang|
+        f.hidden(
+          name: lang,
+          value: Setting.send(name)[lang],
+          id: "lang-for-#{name}-#{lang}"
+        )
+      end
 
-    it "shows automated user blocking options" do
-      expect(rendered).to have_text I18n.t("settings.brute_force_prevention")
-    end
-  end
-
-  context "with password login disabled" do
-    before do
-      allow(OpenProject::Configuration).to receive(:disable_password_login?).and_return(true)
-      render
-    end
-
-    it "does not show password settings" do
-      expect(rendered).to have_no_text I18n.t("label_password_lost")
-    end
-
-    it "does not show automated user blocking options" do
-      expect(rendered).to have_no_text I18n.t("settings.brute_force_prevention")
+      # Add WYSIWYG
+      f.rich_text_area(
+        name: current_language,
+        value: setting_value(name)[current_language],
+        label: setting_label(name),
+        disabled: setting_disabled?(name),
+        visually_hide_label: true,
+        rich_text_options: {
+          text_area_id: "settings-#{name}",
+          turboMode: true,
+          showAttachments: false
+        }
+      )
     end
   end
 end

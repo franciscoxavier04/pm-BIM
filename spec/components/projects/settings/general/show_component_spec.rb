@@ -60,7 +60,7 @@ RSpec.describe Projects::Settings::General::ShowComponent, type: :component do
     it "renders fields" do
       expect(render_component).to have_field "Name", required: true
       expect(render_component).to have_element "opce-ckeditor-augmented-textarea",
-                                               "data-textarea-selector": "\"#project_description\""
+                                               "data-test-selector": "augmented-text-area-description"
     end
   end
 
@@ -70,8 +70,9 @@ RSpec.describe Projects::Settings::General::ShowComponent, type: :component do
     it "renders fields" do
       expect(render_component).to have_element "opce-autocompleter",
                                                "data-input-name": "\"project[status_code]\""
+
       expect(render_component).to have_element "opce-ckeditor-augmented-textarea",
-                                               "data-textarea-selector": "\"#project_status_explanation\""
+                                               "data-test-selector": "augmented-text-area-description"
     end
   end
 
