@@ -53,7 +53,7 @@ Available arguments for this rake task that specify the email behavior are
 | `username` | `IMAP_USERNAME` | the name of the user that is used to connect to the email server |
 | `password` | `IMAP_PASSWORD` | the password of the user |
 | `port` | `IMAP_PORT` | the port that is used to connect to the email server |
-| `ssl` | `IMAP_SSL` and ``IMAP_SSL_VERIFICATION` | specifies if SSL should be used when connecting to the email server |
+| `ssl` | `IMAP_SSL` and `IMAP_SSL_VERIFICATION` | specifies if SSL should be used when connecting to the email server |
 | `folder` | `IMAP_FOLDER` | the folder to fetch emails from (default: INBOX) |
 | `move_on_success` | `IMAP_MOVE_ON_SUCCESS` | the folder emails that were successfully parsed are moved to (instead of deleted, example: INBOX.success) |
 | `move_on_failure` | `IMAP_MOVE_ON_FAILURE` | the folder emails that were ignored are moved to (example: INBOX.failed) |
@@ -69,7 +69,8 @@ Available arguments that change how the work packages are handled:
 | `version` | `IMAP_ATTR_VERSION` | name of the target version |
 | `type` | `IMAP_ATTR_TYPE` | name of the target type |
 | `assigned_to` | `IMAP_ATTR_ASSIGNED_TO` | name of the assigned user |
-| `unknown_user` | `IMAP_UNKNOWN_USER` | ignore: email is ignored (default), accept: accept as anonymous user, create: create a user account |
+| `unknown_user` | `IMAP_UNKNOWN_USER` | ignore: email is ignored (default), accept: accept as anonymous user, create: create a user account <br />Hint: You must also set `IMAP_NO_PERMISSION_CHECK=1` for sending mail by anonymous users to work as expected.|
+| `no_permission_check` | `IMAP_NO_PERMISSION_CHECK` | disable permission checking when receiving the email if set to 1 |
 | `allow_override` | `IMAP_ALLOW_OVERRIDE` | specifies which attributes may be overwritten though specified by previous options. Comma separated list |
 
 **Gmail API**
