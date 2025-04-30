@@ -4,7 +4,7 @@ get:
   summary: Get a project phase definition
   operationId: get_project_phase_definition
   tags:
-    - Project Phase Definition
+    - Project Phase Definitions
   description: |-
     Gets a project phase definition resource. This resource is part of the abstract definition of a project life
     cycle shaping the phases of a project. 

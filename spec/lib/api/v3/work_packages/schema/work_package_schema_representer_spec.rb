@@ -58,6 +58,9 @@ RSpec.describe API::V3::WorkPackages::Schema::WorkPackageSchemaRepresenter do
         .to receive(:assignable_values)
         .with(:version, current_user)
         .and_return([])
+      allow(schema)
+        .to receive(:assignable_project_phases)
+              .and_return(assignable_project_phases)
     end
   end
   let(:self_link) { "/a/self/link" }
@@ -72,6 +75,7 @@ RSpec.describe API::V3::WorkPackages::Schema::WorkPackageSchemaRepresenter do
                            current_user:)
   end
   let(:available_custom_fields) { [] }
+  let(:assignable_project_phases) { [build_stubbed(:project_phase, project:)] }
   let(:wp_type) { project.types.first }
   let(:custom_field) { build_stubbed(:custom_field) }
   let(:work_package) do
@@ -843,6 +847,15 @@ RSpec.describe API::V3::WorkPackages::Schema::WorkPackageSchemaRepresenter do
             let(:json_path) { "projectPhase" }
             let(:href_path) { "project_phases" }
             let(:factory) { :project_phase }
+          end
+        end
+
+        context "without any phases active in the project" do
+          let(:permissions) { %i[edit_work_packages view_project_phases] }
+          let(:assignable_project_phases) { [] }
+
+          it "has no projectPhase attribute" do
+            expect(subject).not_to have_json_path("projectPhase")
           end
         end
 

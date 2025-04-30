@@ -488,7 +488,7 @@ module API
         associated_resource :project
 
         resource :project_phase,
-                 link_cache_if: -> { view_project_phase_allowed? },
+                 link_cache_if: -> { any_phase_active_in_project? && view_project_phase_allowed? },
                  link: ->(*) {
                    if phase_set_and_active?
                      {
@@ -689,6 +689,10 @@ module API
 
         def phase_set_and_active?
           project_phase&.active?
+        end
+
+        def any_phase_active_in_project?
+          represented.project.phases.any?(&:active?)
         end
 
         def relations

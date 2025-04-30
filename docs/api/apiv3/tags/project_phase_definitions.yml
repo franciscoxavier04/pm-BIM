@@ -29,4 +29,4 @@ description: |-
   | finishGateName         | The name of the gate at the end of the phase                | String    |             | READ                 |
   | createdAt              | Time of creation                                            | DateTime  |             | READ                 |
   | updatedAt              | Time of the most recent change to the project phase         | DateTime  |             | READ                 |
-name: Project Phases
+name: Project Phase Definitions

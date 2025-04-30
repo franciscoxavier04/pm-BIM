@@ -101,8 +101,10 @@ RSpec.describe API::V3::WorkPackages::WorkPackageRepresenter do
     ]
   end
   let(:permissions) { all_permissions }
-  let(:project) { build_stubbed(:project_with_types, phases: project_phase.present? ? [project_phase] : []) }
+  let(:project) { build_stubbed(:project_with_types, phases: project_phases) }
   let(:project_phase) { build_stubbed(:project_phase, definition: project_phase_definition) }
+  let(:other_project_phase) { build_stubbed(:project_phase) }
+  let(:project_phases) { [project_phase, other_project_phase].compact }
   let(:project_phase_definition) { build_stubbed(:project_phase_definition) }
   let(:type) do
     type = project.types.first
@@ -712,6 +714,24 @@ RSpec.describe API::V3::WorkPackages::WorkPackageRepresenter do
 
           context "without the user being allowed to see the reference" do
             let(:permissions) { all_permissions - [:view_project_phases] }
+
+            it_behaves_like "has no link" do
+              let(:link) { "projectPhase" }
+            end
+          end
+
+          context "without any phase existing in the project" do
+            let(:project_phases) { [] }
+
+            it_behaves_like "has no link" do
+              let(:link) { "projectPhase" }
+            end
+          end
+
+          context "without any phase active in the project" do
+            before do
+              project_phases.each { |phase| phase.active = false }
+            end
 
             it_behaves_like "has no link" do
               let(:link) { "projectPhase" }
@@ -1370,7 +1390,7 @@ RSpec.describe API::V3::WorkPackages::WorkPackageRepresenter do
         end
       end
 
-      describe "projectPhaseDefinition" do
+      describe "projectPhase" do
         let(:embedded_path) { "_embedded/projectPhase" }
         let(:embedded_resource) { project_phase_definition }
         let(:embedded_resource_type) { "ProjectPhase" }
@@ -1389,7 +1409,7 @@ RSpec.describe API::V3::WorkPackages::WorkPackageRepresenter do
           end
 
           context "with the phase not existing in the project" do
-            let(:project_phase) { nil }
+            let(:project_phases) { [other_project_phase] }
 
             it_behaves_like "has the resource not embedded"
           end

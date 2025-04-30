@@ -4,7 +4,7 @@ get:
   summary: Get a project phase
   operationId: get_project_phase
   tags:
-    - Project Phase
+    - Project Phases
   description: |-
     Gets a project phase resource. This resource contains an instance of a ProjectPhaseDefinition within a project which can
     then have project specific dates.
