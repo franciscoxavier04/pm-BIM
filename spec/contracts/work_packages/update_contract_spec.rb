@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -259,7 +261,7 @@ RSpec.describe WorkPackages::UpdateContract do
           end
 
           context "when the subject does not extends OpenProject::ChangedBySystem" do
-            include_examples "custom_field readonly errors"
+            it_behaves_like "custom_field readonly errors"
           end
 
           context "when the subject extends OpenProject::ChangedBySystem" do
@@ -267,7 +269,7 @@ RSpec.describe WorkPackages::UpdateContract do
               work_package.extend(OpenProject::ChangedBySystem)
             end
 
-            include_examples "custom_field readonly errors"
+            it_behaves_like "custom_field readonly errors"
           end
         end
       end
