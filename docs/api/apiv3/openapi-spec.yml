@@ -294,9 +294,9 @@ paths:
     "$ref": "./paths/priorities.yml"
   "/api/v3/priorities/{id}":
     "$ref": "./paths/priority.yml"
-  "/api/v3/project_phase":
+  "/api/v3/project_phases/{id}":
     "$ref": "./paths/project_phase.yml"
-  "/api/v3/project_phase_definition":
+  "/api/v3/project_phase_definitions/{id}":
     "$ref": "./paths/project_phase_definition.yml"
   "/api/v3/project_storages":
     "$ref": "./paths/project_storages.yml"
