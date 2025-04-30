@@ -23,7 +23,9 @@
         href: mark_all_read_notifications_path(**current_filters),
         data: { method: :post, confirm: I18n.t("js.notifications.center.mark_all_read_confirmation") },
         size: :medium,
-        aria: { label: I18n.t("js.notifications.center.mark_all_read") }
+        aria: { label: I18n.t("js.notifications.center.mark_all_read") },
+        disabled: !unread_notifications?,
+        test_selector: "mark-all-as-read-button"
       ) do |button|
         button.with_leading_visual_icon(icon: :"op-read-all")
         I18n.t("js.notifications.center.mark_all_read")

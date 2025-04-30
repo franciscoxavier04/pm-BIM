@@ -140,6 +140,10 @@ module Pages
         end
       end
 
+      def expect_mark_all_as_read_button_disabled
+        expect(page).to have_css('[data-test-selector="mark-all-as-read-button"][disabled]', text: "Mark all as read")
+      end
+
       def bell_element
         page.find('opce-in-app-notification-bell [data-test-selector="op-ian-bell"]')
       end
