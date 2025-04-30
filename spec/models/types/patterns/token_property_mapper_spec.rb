@@ -109,7 +109,7 @@ RSpec.describe Types::Patterns::TokenPropertyMapper do
     cf = string_custom_field
     tokens = described_class.new.tokens_for_type(work_package.type)
 
-    expect(tokens.first).to be_a(Types::Patterns::AttributeResolver)
+    expect(tokens.first).to be_a(Types::Patterns::AttributeToken)
     expect(detect(tokens, :project_status).label).to eq(Project.human_attribute_name(:status_code))
     expect(detect(tokens, :"custom_field_#{cf.id}").label).to eq(cf.name)
   end

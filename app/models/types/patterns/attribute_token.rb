@@ -30,7 +30,7 @@
 
 module Types
   module Patterns
-    AttributeResolver = Data.define(:key, :label, :resolve_fn) do
+    AttributeToken = Data.define(:key, :label, :resolve_fn) do
       def label_with_context
         attribute_context = I18n.t("types.edit.subject_configuration.token.context.#{context}")
         I18n.t("types.edit.subject_configuration.token.label_with_context", attribute_context:, attribute_label: label)

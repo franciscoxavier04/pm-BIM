@@ -36,27 +36,27 @@ module Types
     def initialize(pattern)
       @mapper = Patterns::TokenPropertyMapper.new
       @pattern = pattern
-      @tokens = pattern.scan(TOKEN_REGEX).map { |token| Patterns::Token.build(token) }
+      @pattern_tokens = pattern.scan(TOKEN_REGEX).map { |token| Patterns::PatternToken.build(token) }
     end
 
     def resolve(work_package)
-      @token_resolver = @mapper.tokens_for_type(work_package.type)
+      @tokens = @mapper.tokens_for_type(work_package.type)
 
-      @tokens.inject(@pattern) do |pattern, token|
+      @pattern_tokens.inject(@pattern) do |pattern, token|
         pattern.gsub(token.pattern, get_value(work_package, token))
       end
     end
 
     private
 
-    def get_value(work_package, token)
-      context = token.context == :work_package ? work_package : work_package.public_send(token.context)
+    def get_value(work_package, pattern_token)
+      context = pattern_token.context == :work_package ? work_package : work_package.public_send(pattern_token.context)
       return ATTRIBUTE_PLACEHOLDER if context.nil?
 
-      attribute_resolver = @token_resolver.detect { |t| t.key == token.key }
-      return ATTRIBUTE_PLACEHOLDER if attribute_resolver.nil?
+      attribute_token = @tokens.detect { |t| t.key == pattern_token.key }
+      return ATTRIBUTE_PLACEHOLDER if attribute_token.nil?
 
-      stringify(attribute_resolver.call(context), nil_replacement(attribute_resolver))
+      stringify(attribute_token.call(context), nil_replacement(attribute_token))
     end
 
     def nil_replacement(attribute_resolver)

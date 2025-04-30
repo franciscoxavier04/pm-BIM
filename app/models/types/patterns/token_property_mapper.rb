@@ -33,35 +33,35 @@ module Types
     class TokenPropertyMapper
       # rubocop:disable Layout/LineLength
       BASE_ATTRIBUTE_TOKENS = [
-        AttributeResolver.new(:id, WorkPackage.human_attribute_name(:id), ->(wp) { wp.id }),
-        AttributeResolver.new(:accountable, WorkPackage.human_attribute_name(:responsible), ->(wp) { wp.responsible&.name }),
-        AttributeResolver.new(:assignee, WorkPackage.human_attribute_name(:assigned_to), ->(wp) { wp.assigned_to&.name }),
-        AttributeResolver.new(:author, WorkPackage.human_attribute_name(:author), ->(wp) { wp.author&.name }),
-        AttributeResolver.new(:category, WorkPackage.human_attribute_name(:category), ->(wp) { wp.category&.name }),
-        AttributeResolver.new(:creation_date, WorkPackage.human_attribute_name(:created_at), ->(wp) { wp.created_at }),
-        AttributeResolver.new(:estimated_time, WorkPackage.human_attribute_name(:estimated_hours), ->(wp) { wp.estimated_hours }),
-        AttributeResolver.new(:remaining_time, WorkPackage.human_attribute_name(:remaining_hours), ->(wp) { wp.remaining_hours }),
-        AttributeResolver.new(:finish_date, WorkPackage.human_attribute_name(:due_date), ->(wp) { wp.due_date }),
-        AttributeResolver.new(:parent_id, WorkPackage.human_attribute_name(:id), ->(parent) { parent.id }),
-        AttributeResolver.new(:parent_assignee, WorkPackage.human_attribute_name(:assigned_to), ->(parent) { parent.assigned_to&.name }),
-        AttributeResolver.new(:parent_author, WorkPackage.human_attribute_name(:author), ->(parent) { parent.author&.name }),
-        AttributeResolver.new(:parent_category, WorkPackage.human_attribute_name(:category), ->(parent) { parent.category&.name }),
-        AttributeResolver.new(:parent_creation_date, WorkPackage.human_attribute_name(:created_at), ->(parent) { parent.created_at }),
-        AttributeResolver.new(:parent_estimated_time, WorkPackage.human_attribute_name(:estimated_hours), ->(parent) { parent.estimated_hours }),
-        AttributeResolver.new(:parent_remaining_time, WorkPackage.human_attribute_name(:remaining_hours), ->(parent) { parent.remaining_hours }),
-        AttributeResolver.new(:parent_finish_date, WorkPackage.human_attribute_name(:due_date), ->(parent) { parent.due_date }),
-        AttributeResolver.new(:parent_priority, WorkPackage.human_attribute_name(:priority), ->(parent) { parent.priority }),
-        AttributeResolver.new(:parent_subject, WorkPackage.human_attribute_name(:subject), ->(parent) { parent.subject }),
-        AttributeResolver.new(:priority, WorkPackage.human_attribute_name(:priority), ->(wp) { wp.priority }),
-        AttributeResolver.new(:project, WorkPackage.human_attribute_name(:project_id), ->(wp) { wp.project }),
-        AttributeResolver.new(:project_active, Project.human_attribute_name(:active), ->(project) { project.active? }),
-        AttributeResolver.new(:project_name, Project.human_attribute_name(:name), ->(project) { project.name }),
-        AttributeResolver.new(:project_status, Project.human_attribute_name(:status_code), ->(project) { project.status_code }),
-        AttributeResolver.new(:project_parent, Project.human_attribute_name(:parent), ->(project) { project.parent_id }),
-        AttributeResolver.new(:project_public, Project.human_attribute_name(:public), ->(project) { project.public? }),
-        AttributeResolver.new(:start_date, WorkPackage.human_attribute_name(:start_date), ->(wp) { wp.start_date }),
-        AttributeResolver.new(:status, WorkPackage.human_attribute_name(:status), ->(wp) { wp.status&.name }),
-        AttributeResolver.new(:type, WorkPackage.human_attribute_name(:type), ->(wp) { wp.type&.name })
+        AttributeToken.new(:id, WorkPackage.human_attribute_name(:id), ->(wp) { wp.id }),
+        AttributeToken.new(:accountable, WorkPackage.human_attribute_name(:responsible), ->(wp) { wp.responsible&.name }),
+        AttributeToken.new(:assignee, WorkPackage.human_attribute_name(:assigned_to), ->(wp) { wp.assigned_to&.name }),
+        AttributeToken.new(:author, WorkPackage.human_attribute_name(:author), ->(wp) { wp.author&.name }),
+        AttributeToken.new(:category, WorkPackage.human_attribute_name(:category), ->(wp) { wp.category&.name }),
+        AttributeToken.new(:creation_date, WorkPackage.human_attribute_name(:created_at), ->(wp) { wp.created_at }),
+        AttributeToken.new(:estimated_time, WorkPackage.human_attribute_name(:estimated_hours), ->(wp) { wp.estimated_hours }),
+        AttributeToken.new(:remaining_time, WorkPackage.human_attribute_name(:remaining_hours), ->(wp) { wp.remaining_hours }),
+        AttributeToken.new(:finish_date, WorkPackage.human_attribute_name(:due_date), ->(wp) { wp.due_date }),
+        AttributeToken.new(:parent_id, WorkPackage.human_attribute_name(:id), ->(parent) { parent.id }),
+        AttributeToken.new(:parent_assignee, WorkPackage.human_attribute_name(:assigned_to), ->(parent) { parent.assigned_to&.name }),
+        AttributeToken.new(:parent_author, WorkPackage.human_attribute_name(:author), ->(parent) { parent.author&.name }),
+        AttributeToken.new(:parent_category, WorkPackage.human_attribute_name(:category), ->(parent) { parent.category&.name }),
+        AttributeToken.new(:parent_creation_date, WorkPackage.human_attribute_name(:created_at), ->(parent) { parent.created_at }),
+        AttributeToken.new(:parent_estimated_time, WorkPackage.human_attribute_name(:estimated_hours), ->(parent) { parent.estimated_hours }),
+        AttributeToken.new(:parent_remaining_time, WorkPackage.human_attribute_name(:remaining_hours), ->(parent) { parent.remaining_hours }),
+        AttributeToken.new(:parent_finish_date, WorkPackage.human_attribute_name(:due_date), ->(parent) { parent.due_date }),
+        AttributeToken.new(:parent_priority, WorkPackage.human_attribute_name(:priority), ->(parent) { parent.priority }),
+        AttributeToken.new(:parent_subject, WorkPackage.human_attribute_name(:subject), ->(parent) { parent.subject }),
+        AttributeToken.new(:priority, WorkPackage.human_attribute_name(:priority), ->(wp) { wp.priority }),
+        AttributeToken.new(:project, WorkPackage.human_attribute_name(:project_id), ->(wp) { wp.project }),
+        AttributeToken.new(:project_active, Project.human_attribute_name(:active), ->(project) { project.active? }),
+        AttributeToken.new(:project_name, Project.human_attribute_name(:name), ->(project) { project.name }),
+        AttributeToken.new(:project_status, Project.human_attribute_name(:status_code), ->(project) { project.status_code }),
+        AttributeToken.new(:project_parent, Project.human_attribute_name(:parent), ->(project) { project.parent_id }),
+        AttributeToken.new(:project_public, Project.human_attribute_name(:public), ->(project) { project.public? }),
+        AttributeToken.new(:start_date, WorkPackage.human_attribute_name(:start_date), ->(wp) { wp.start_date }),
+        AttributeToken.new(:status, WorkPackage.human_attribute_name(:status), ->(wp) { wp.status&.name }),
+        AttributeToken.new(:type, WorkPackage.human_attribute_name(:type), ->(wp) { wp.type&.name })
       ].freeze
       # rubocop:enable Layout/LineLength
 
@@ -69,7 +69,7 @@ module Types
         [
           *BASE_ATTRIBUTE_TOKENS,
           *tokenize(work_package_cfs_for(type)),
-          *tokenize(project_attributes, "project_"),
+          *tokenize(project_cfs, "project_"),
           *tokenize(all_work_package_cfs, "parent_")
         ]
       end
@@ -96,7 +96,7 @@ module Types
 
       def tokenize(custom_field_scope, prefix = nil)
         custom_field_scope.pluck(:name, :id).map do |name, id|
-          AttributeResolver.new(
+          AttributeToken.new(
             :"#{prefix}custom_field_#{id}",
             name,
             ->(context) do
@@ -117,7 +117,7 @@ module Types
         WorkPackageCustomField.where.not(field_format: %w[text bool link empty]).order(:name)
       end
 
-      def project_attributes
+      def project_cfs
         ProjectCustomField.where.not(field_format: %w[text bool link empty])
                           .where(admin_only: false, multi_value: false).order(:name)
       end

@@ -30,7 +30,7 @@
 
 module Types
   module Patterns
-    Token = Data.define(:pattern, :key) do
+    PatternToken = Data.define(:pattern, :key) do
       private_class_method :new
 
       def self.build(pattern)
