@@ -43,10 +43,6 @@ module Settings
          t(:label_work_package_plural)]
       end
 
-      def selected?(key)
-        @selected == key
-      end
-
       def show_types?
         User.current.allowed_in_project?(:manage_types, @project)
       end
@@ -69,6 +65,42 @@ module Settings
         end
 
         internal_comments_translation
+      end
+
+      def tabs
+        tabs = []
+
+        if show_types?
+          tabs << {
+            name: "types",
+            path: project_settings_work_packages_types_path,
+            label: t("label_type_plural")
+          }
+        end
+
+        if show_categories?
+          tabs << {
+            name: "categories",
+            path: project_settings_work_packages_categories_path,
+            label: t("documents.label_categories")
+          }
+        end
+
+        if show_custom_fields?
+          tabs << {
+            name: "custom_fields",
+            path: project_settings_work_packages_custom_fields_path,
+            label: t("attributes.custom_values")
+          }
+        end
+
+        tabs << {
+          name: "internal_comments",
+          path: project_settings_work_packages_internal_comments_path,
+          label: internal_comments_title
+        }
+
+        tabs
       end
 
       private

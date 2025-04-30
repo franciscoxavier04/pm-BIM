@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,38 +28,33 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Settings
-  module ProjectCustomFields
-    class EditFormHeaderComponent < ApplicationComponent
-      def initialize(custom_field:, selected:)
-        selected = selected.to_sym
-        raise "selected must be one of the following: #{TAB_NAVS.join(', ')}" unless TAB_NAVS.include?(selected)
-
+module Storages
+  module ProjectStorages
+    class HeaderComponent < ApplicationComponent
+      def initialize(project:)
         super
-        @custom_field = custom_field
-        @selected = selected
+        @project = project
+      end
+
+      def breadcrumbs_items
+        [{ href: project_overview_path(@project.id), text: @project.name },
+         { href: project_settings_general_path, text: t("label_project_settings") },
+         t("project_module_storages")]
       end
 
       def tabs
         [
           {
-            name: "project_custom_field_edit",
-            path: edit_admin_settings_project_custom_field_path(@custom_field),
-            label: t(:label_details)
+            name: "external",
+            path: external_file_storages_project_settings_project_storages_path,
+            label: t(:external_file_storages)
           },
           {
-            name: "project_custom_field_project_mappings",
-            path: project_mappings_admin_settings_project_custom_field_path(@custom_field),
-            label: t(:label_project_mappings)
+            name: "attachments",
+            path: attachments_project_settings_project_storages_path,
+            label: t(:"attributes.attachments")
           }
         ]
-      end
-
-      def breadcrumbs_items
-        [{ href: admin_index_path, text: t("label_administration") },
-         { href: admin_settings_project_custom_fields_path, text: t("label_project_plural") },
-         { href: admin_settings_project_custom_fields_path, text: t("settings.project_attributes.heading") },
-         @custom_field.name]
       end
     end
   end
