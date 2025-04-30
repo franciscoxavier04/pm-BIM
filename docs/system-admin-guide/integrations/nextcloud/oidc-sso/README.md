@@ -75,7 +75,7 @@ in Keycloak, so that the Nextcloud client can obtain it.
 First, navigate to "Client scopes", click the "Create client scope" button and name the scope `api_v3`. Make sure
 to enable the option "Include in token scope", then save the form.
 
-This makes the scope ready to use. How we will use it, depends on the way that tokens are handed out to clients.
+This makes the scope ready to use. How we use it depends on the way that tokens are handed out to clients.
 
 #### Keycloak using Token Exchange
 
@@ -159,14 +159,14 @@ In OpenProject configure the storage to "Use first access token obtained by iden
 
 ##### Configuring Nextcloud
 
-In Nextcloud we need to configure that we are using an "external provider" by selecting the corresponding radio button in the authentication settings of the OpenProject integration. Select the OIDC provider that we are using as a common identity provider from the dropdown.
+In Nextcloud, we need to configure that we are using an "external provider" by selecting the corresponding radio button in the authentication settings of the OpenProject integration. Select the OIDC provider we’re using as the common identity provider from the dropdown.
 Make sure to leave the toggle "enable token exchange" disabled:
 
 ![Nextcloud configured to use the login token](nextcloud_using_login_token.png)
 
-Additionally we need to configure the OpenID Connect provider in Nextcloud. Navigate to "Administration", and choose "OpenID Connect" from the sidebar. You should see a list of your configured OpenID Connect providers. At the top of that page enable the checkbox called "Store login tokens". This setting is required by Nextcloud to allow using tokens obtained during login for token exchange or requests to other services.
+Additionally, we need to configure the OpenID Connect provider in Nextcloud. Navigate to "Administration" and choose "OpenID Connect" from the sidebar. You should see a list of your configured OpenID Connect providers. At the top of that page enable the "Store login tokens" checkbox. This setting is required by Nextcloud to allow using tokens obtained during login for token exchange or requests to other services.
 
-Afterwards navigate to the OpenID Connect provider of the Keycloak and edit it. Make sure that the `api_v3` claim is part of the "Scope" text box. If it hasn't been added so far, you can append it to the existing text, ensuring that it is preceeded by a space, e.g., `openid email profile api_v3`. This ensures that Nextcloud will request the `api_v3` scope when a user logs in. Only then Keycloak will allow to exchange a token for OpenProject that carries the `api_v3` scope as well.
+Afterwards navigate to the OpenID Connect provider of the Keycloak and edit it. Make sure that the `api_v3` claim is part of the "Scope" text box. If it hasn't been added so far, you can append it to the existing text, ensuring that it is preceeded by a space, e.g., `openid email profile api_v3`. This ensures that Nextcloud will request the `api_v3` scope when a user logs in. Only then will Keycloak allow to exchange a token for OpenProject that carries the `api_v3` scope as well.
 
 This wraps up the configuration of this authentication method using Keycloak without token exchange. For details on the next step continue with the [general setup instructions](../#4-automatically-managed-project-folders).
 
@@ -177,19 +177,19 @@ In the Nextcloud Hub use case, Nextcloud fulfills two roles:
 * It acts as a storage provider, just as usual
 * It acts as the identity provider
 
-This deployment is simpler compared to running a dedicated identity provider, because it requires deployment and configuration of fewer applications.
+This deployment is simpler than running a dedicated identity provider, because it requires deployment and configuration of fewer applications.
 
 This guide will cover the setup related to using Nextcloud as a storage provider and will assume that it was already configured to be the OpenID Connect Provider of OpenProject.
 
 ##### Configuring OpenProject
 
-In OpenProject configure the storage to "Use first access token obtained by identity provider". This means OpenProject will not attempt to perform a token exchange, but simply use the first token returned by the identity provider for authentication against the storage as well:
+In OpenProject, configure the storage to "Use first access token obtained by identity provider". This means OpenProject will not attempt to perform a token exchange, but simply use the first token returned by the identity provider for authentication against the storage as well:
 
 ![OpenProject is configured to use the first access token obtained from the IDP](openproject_idp_storage_audience.png)
 
 ##### Configuring Nextcloud
 
-In Nextcloud we configure the OIDC provider to be "Nextcloud Hub". In the field "OpenProject client ID" you have to set the client ID of OpenProject as it's configured in Nextcloud (in the sidebar select "Security" and then scroll down to "OpenID Connect clients"):
+In Nextcloud, we configure the OIDC provider to be "Nextcloud Hub". In the field "OpenProject client ID" you have to set the client ID of OpenProject as it's configured in Nextcloud (in the sidebar select "Security" and then scroll down to "OpenID Connect clients"):
 
 ![Nextcloud configured to authenticate through Nextcloud Hub](nextcloud_hub_configuration.png)
 
@@ -204,7 +204,7 @@ This wraps up the configuration of this authentication method using Nextcloud Hu
 It is possible to migrate an existing storage to use SSO authentication. You can follow the steps outlined above for your specific setup, all of the relevant options
 in OpenProject and Nextcloud are also accessible from the views to edit your storage.
 
-Please note that all the [prerequisites](#1-prerequisites) mentioned above still apply, this means if your users don't already authenticate to OpenProject and Nextcloud through the same
+Please note that all the [prerequisites](#1-prerequisites) mentioned above still apply. This means if your users don't already authenticate to OpenProject and Nextcloud through the same
 identity provider, you will have to migrate them to a common identity provider first.
 
 If you want to go back to Two-way OAuth 2.0 authentication, this is possible as well, but will require you to reconfigure the integration, so your users will have to
