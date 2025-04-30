@@ -39,10 +39,10 @@ module TabsHelper
     end
   end
 
-  def render_tab_header_nav(header, tabs)
+  def render_tab_header_nav(header, tabs, test_selector: nil)
     return if tabs.blank?
 
-    header.with_tab_nav(label: nil) do |tab_nav|
+    header.with_tab_nav(label: nil, test_selector:) do |tab_nav|
       tabs.each do |tab|
         tab_nav.with_tab(selected: selected_tab(tabs) == tab, href: tab[:path]) do |t|
           feature = tab[:enterprise_feature]
