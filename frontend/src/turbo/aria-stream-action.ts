@@ -2,7 +2,7 @@ import { StreamActions, StreamElement } from '@hotwired/turbo';
 import { announce } from '@primer/live-region-element';
 
 export function registerAriaStreamAction() {
-  StreamActions.aria = function dialogStreamAction(this:StreamElement) {
+  StreamActions.aria = function ariaStreamAction(this:StreamElement) {
       const message = this.getAttribute('message') ?? '';
       const type = this.getAttribute('type') ?? 'polite';
       if (type === 'assertive') {

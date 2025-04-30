@@ -84,7 +84,7 @@ module OpTurbo
     end
 
     def render_aria_update_message(message:, type:, role: "alert")
-      turbo_streams << OpTurbo::StreamComponent.new(action: :aria, message:, type:, role:, target: "nil").render_in(view_context)
+      turbo_streams << OpTurbo::StreamComponent.new(action: :aria, message:, type:, role:, target: nil).render_in(view_context)
     end
 
     def render_flash_message_via_turbo_stream(message:, component: OpPrimer::FlashComponent, **)
