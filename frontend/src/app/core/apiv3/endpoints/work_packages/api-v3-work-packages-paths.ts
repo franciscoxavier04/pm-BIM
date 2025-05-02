@@ -31,6 +31,7 @@ import { ApiV3WorkPackagePaths } from 'core-app/core/apiv3/endpoints/work_packag
 import { WorkPackageResource } from 'core-app/features/hal/resources/work-package-resource';
 import { WorkPackageCollectionResource } from 'core-app/features/hal/resources/wp-collection-resource';
 import { ApiV3WorkPackageForm } from 'core-app/core/apiv3/endpoints/work_packages/apiv3-work-package-form';
+// import { ApiV3WorkPackageCopyForm } from 'core-app/core/apiv3/endpoints/work_packages/apiv3-work-package-copy-form';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { ApiV3Collection } from 'core-app/core/apiv3/cache/cachable-apiv3-collection';
 import { SchemaResource } from 'core-app/features/hal/resources/schema-resource';
@@ -47,15 +48,21 @@ export class ApiV3WorkPackagesPaths extends ApiV3Collection<WorkPackageResource,
   // Base path
   public readonly path:string;
 
-  constructor(readonly apiRoot:ApiV3Service,
-    protected basePath:string) {
+  constructor(
+    readonly apiRoot:ApiV3Service,
+    protected basePath:string,
+  ) {
     super(apiRoot, basePath, 'work_packages', ApiV3WorkPackagePaths);
   }
 
   // Static paths
 
   // /api/v3/(projects/:projectIdentifier)/work_packages/form
+
   public readonly form:ApiV3WorkPackageForm = this.subResource('form', ApiV3WorkPackageForm);
+
+  // /api/v3/(projects/:projectIdentifier)/work_packages/copy/form
+  public readonly copy_form:ApiV3WorkPackageForm = this.subResource('copy/form', ApiV3WorkPackageForm);
 
   /**
    *
