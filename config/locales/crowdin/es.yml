@@ -102,6 +102,8 @@ es:
       explanation:
         text: "Las acciones individuales de un usuario (como actualizar dos veces un paquete de trabajo) se combinan en una sola acción si la diferencia de antigüedad es inferior al intervalo de tiempo especificado. Se mostrarán como una sola acción en la aplicación. También se retrasarán las notificaciones por la misma cantidad de tiempo, lo que reducirá el número de correos electrónicos enviados y causará también que se retrase el %{webhook_link}."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Muestran hasta
     is_active: mostrado actualmente
@@ -672,7 +674,7 @@ es:
           automatic_with_children: "Fechas determinadas por paquetes de trabajo secundarios."
           automatic_with_predecessor: "La fecha de inicio la fija un predecesor."
           manual_mobile: "Programado manualmente."
-          manually_scheduled: "Programado manualmente. Fechas no afectadas por relaciones."
+          manually_scheduled: "Programado manualmente. No afectadas por relaciones."
       blankslate:
         title: "Sin predecesores"
         description: "Para activar la programación automática, este paquete de trabajo debe tener al menos un predecesor. Entonces se programará automáticamente para que comience después del predecesor más cercano."
@@ -1136,6 +1138,7 @@ es:
         error_conflict: "La información ha sido actualizada por al menos otro usuario mientras tanto."
         email: "no es una dirección de correo válida."
         empty: "No puede estar vacío."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "debe ser incluido."
         exclusion: "está reservado."
         feature_disabled: no está disponible.
@@ -1995,6 +1998,7 @@ es:
       edit_attribute_groups: Editar grupos de atributos
       gantt_pdf_export: Exportación de Gantt a PDF
       ldap_groups: Usuarios de LDAP y sincronización de grupos
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: Almacenamiento de archivos OneDrive/SharePoint
       placeholder_users: Usuarios de marcadores de posición
       project_list_sharing: Compartición de la lista de proyectos
@@ -2043,6 +2047,9 @@ es:
       custom_actions:
         title: "Acciones personalizadas"
         description: "Las acciones personalizadas son accesos directos con un solo clic a un conjunto de acciones predefinidas que puede mostrar en determinados paquetes de trabajo según el estado, rol, tipo o proyecto."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Asegúrese de que los archivos cargados en OpenProject se analizan en busca de virus antes de que otros usuarios puedan acceder a ellos."
       placeholder_users:
@@ -2474,7 +2481,6 @@ es:
   label_ldap_auth_source_plural: "Conexiones LDAP"
   label_attribute_expand_text: "El texto completo para «%{attribute}»"
   label_authentication: "Autentificación"
-  label_authentication_settings: "Ajustes de autenticación"
   label_available_custom_fields_projects: "Proyectos de campos personalizados disponibles"
   label_available_global_roles: "Roles globales disponibles"
   label_available_project_attributes: "Atributos del proyecto disponibles"
@@ -2877,9 +2883,6 @@ es:
   label_register: "Crear una nueva cuenta"
   label_register_with_developer: "Registrarse como desarrollador"
   label_registered_on: "Registrado en"
-  label_registration_activation_by_email: "activación de cuenta por correo electrónico"
-  label_registration_automatic_activation: "activación automática de la cuenta"
-  label_registration_manual_activation: "activación manual de la cuenta"
   label_related_work_packages: "Paquetes de trabajo relacionados"
   label_relates: "relacionado con"
   label_relates_to: "relacionado con"
@@ -3719,6 +3722,7 @@ es:
   setting_hours_per_day_explanation: >-
     Define lo que se considera un "día" cuando se muestra la duración en días y horas (por ejemplo, si un día tiene 8 horas, 32 horas serían 4 días).
   setting_invitation_expiration_days: "El correo electrónico de activación caduca después de"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Modo de cálculo del progreso"
   setting_work_package_done_ratio_field: "Basado en el trabajo"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3734,6 +3738,9 @@ es:
   setting_journal_aggregation_time_minutes: "Acciones de usuario agregadas dentro de"
   setting_log_requesting_user: "Registrar inicio de sesión de usuario, nombre, y dirección de correo para todas las solicitudes"
   setting_login_required: "Autentificación requerida"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Dirección de correo electrónico de emision"
   setting_mail_handler_api_key: "Clave API"
   setting_mail_handler_body_delimiters: "Truncar los correos electrónicos después de una de estas líneas"
@@ -3759,6 +3766,7 @@ es:
   setting_project_gantt_query_text: "Puede modificar la consulta usada para mostrar el diagrama de Gantt en la página de información general del proyecto."
   setting_security_badge_displayed: "Mostrar insignia de seguridad"
   setting_registration_footer: "Pié de página de registro"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Tipo de proveedor de repositorio automático"
   setting_repositories_encodings: "Codificación de Repositorios"
   setting_repository_storage_cache_minutes: "Tamaño de caché de disco del repositorio"
@@ -3769,8 +3777,22 @@ es:
   setting_repository_truncate_at: "El número máximo de archivos mostrados en el navegador del repositorio"
   setting_rest_api_enabled: "Activar servicio web REST"
   setting_self_registration: "Auto-registro"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Tiempo de expiración de sesión por inactividad"
   setting_session_ttl_hint: "Valor por debajo de 5 peticiones como desactivadas"
   setting_session_ttl_enabled: "La sesión expira"
@@ -3798,6 +3820,8 @@ es:
   setting_working_days: "Días laborables"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Inicio de sesión único (SSO)"
       omniauth_direct_login_hint_html: >
         Si esta opción está activa, las solicitudes de inicio de sesión se redirigirán al proveedor omniauth configurado. El menú desplegable de inicio de sesión y la página de inicio de sesión se desactivarán. <br/> <strong>Nota:</strong> A menos que también deshabilite los inicios de sesión con contraseña, con esta opción activada, los usuarios podrán seguir iniciando sesión internamente visitando la página de inicio de sesión <code>%{internal_path}</code>.

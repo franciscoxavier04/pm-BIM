@@ -252,6 +252,7 @@ ko:
           existing_token: User token
           header: 인증
           non_provisioned_user: User provisioned by IDP
+          offline_access: Configured OIDC offline_access scope
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
@@ -296,6 +297,7 @@ ko:
         od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
         od_tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
         od_unexpected_content: Unexpected content found in the drive.
+        offline_access_scope_missing: It is recommended to configure the OpenID Connect provider to request the offline_access scope. The integration may still work anyways, but make sure that refresh tokens do not expire.
         oidc_cant_acquire_token: 해당 OpenID Connect 설정은 필요한 오디언스를 제공하지 않으며, 토큰 교환 기능도 제공하지 않습니다. 자세한 내용은 설명서를 확인하세요.
         oidc_cant_exchange_token: OpenID Connect 공급자의 Token Exchange 설정에 문제가 있는 것 같습니다. 해당 구성을 확인하고 다시 시도하세요.
         oidc_cant_refresh_token: 저장소에 대한 액세스를 확인하는 동안 오류가 발생했습니다. 자세한 내용은 서버 로그를 확인하세요.
@@ -472,6 +474,7 @@ ko:
       description: 이 옵션을 비활성화하면 작업 패키지 파일 탭에서 첨부 파일 목록이 숨겨집니다. 작업 패키지 설명에 첨부된 파일은 내부 첨부 파일 저장소에 계속 업로드됩니다.
       label: 작업 패키지 파일 탭에 첨부 파일 표시
     storage_audience:
+      documentation_intro: Details on the following options and what needs to be configured in the identity provider can be found in our documentation.
       idp:
         helptext: OpenProject는 ID 공급자가 수신한 첫 번째 액세스 토큰을 사용하여 저장소에 대한 요청을 인증합니다. 다른 토큰을 얻으려고 시도하지 않습니다.
         label: ID 공급자가 얻은 첫 번째 액세스 토큰 사용

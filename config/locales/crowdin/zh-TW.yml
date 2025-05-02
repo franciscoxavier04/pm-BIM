@@ -102,6 +102,8 @@ zh-TW:
       explanation:
         text: "例如使用者\"更新\"工作項目兩次，如果時間間隔小於設定值，則將合併視為為單次操作。應用程序中亦會顯示為單個操作。這也會套用在電子郵件通知，以及 %{webhook_link} 。"
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: 只顯示到
     is_active: 當前已顯示
@@ -1127,6 +1129,7 @@ zh-TW:
         error_conflict: "在此同時，資訊已經被至少一個使用者更新"
         email: "不是一個有效的電子郵件地址。 "
         empty: "不可為空"
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "必須是偶數"
         exclusion: "已保留"
         feature_disabled: 不可用。
@@ -1955,6 +1958,7 @@ zh-TW:
       edit_attribute_groups: 編輯群組屬性
       gantt_pdf_export: 以PDF匯出甘特圖
       ldap_groups: 同步LDAP使用者與群組
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: OneDrive/SharePoint 檔案儲存
       placeholder_users: 占位使用者
       project_list_sharing: 專案清單分享
@@ -2003,6 +2007,9 @@ zh-TW:
       custom_actions:
         title: "自訂動作"
         description: "自訂動作是一系列預先定義動作的單鍵捷徑，您可以根據狀態、角色、類型或專案，在特定工作項目上使用這些動作。"
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "確保在其他使用者存取 OpenProject 中上傳的檔案前，對其進行病毒掃描。"
       placeholder_users:
@@ -2434,7 +2441,6 @@ zh-TW:
   label_ldap_auth_source_plural: "LDAP 連線"
   label_attribute_expand_text: "%{attribute} 的完整文本"
   label_authentication: "身份驗證"
-  label_authentication_settings: "認證設定"
   label_available_custom_fields_projects: "可用的專案自訂欄位"
   label_available_global_roles: "可用的角色"
   label_available_project_attributes: "可使用的專案屬性"
@@ -2597,7 +2603,7 @@ zh-TW:
   label_filter_add: "新增條件"
   label_filter_by: "篩選條件："
   label_filter_any_name_attribute: "名稱屬性"
-  label_filter_plural: "篩選器"
+  label_filter_plural: "篩選條件"
   label_filters_toggle: "顯示/隱藏篩選條件"
   label_float: "浮點數"
   label_folder: "資料夾"
@@ -2610,7 +2616,7 @@ zh-TW:
   label_generate_key: "產生一個金鑰"
   label_git_path: ".git 目錄的路徑"
   label_greater_or_equal: ">="
-  label_group_by: "分組依據"
+  label_group_by: "分類"
   label_group_new: "新增群組"
   label_group: "群組"
   label_group_named: "群組名稱 %{name}"
@@ -2622,7 +2628,7 @@ zh-TW:
   label_hierarchy: "階層"
   label_hierarchy_leaf: "頁面結構頁"
   label_home: "Home"
-  label_subject_or_id: "主旨或 id"
+  label_subject_or_id: "名稱或 id"
   label_calendar_subscriptions: "訂閱行事曆"
   label_identifier: "識別碼"
   label_in: "在"
@@ -2668,7 +2674,7 @@ zh-TW:
   label_latest_revision_plural: "最新版本"
   label_ldap_authentication: "LDAP 認證"
   label_learn_more: "了解更多"
-  label_less_or_equal: "<="
+  label_less_or_equal: "之後"
   label_less_than_ago: "幾天內"
   label_link_url: "連結(URL)"
   label_list: "清單"
@@ -2837,9 +2843,6 @@ zh-TW:
   label_register: "建立新帳號"
   label_register_with_developer: "註冊成開發者"
   label_registered_on: "註冊在"
-  label_registration_activation_by_email: "以電子郵件啟動帳號"
-  label_registration_automatic_activation: "自動啟用帳號"
-  label_registration_manual_activation: "手動啟用帳號"
   label_related_work_packages: "相關的工作項目"
   label_relates: "相關於"
   label_relates_to: "相關於"
@@ -3676,6 +3679,7 @@ zh-TW:
   setting_hours_per_day_explanation: >-
     這定義了在以天和小時為單位顯示持續時間時，什麼是一"天"(例如，如果一天是 8 小時，32 小時就是 4 天)。
   setting_invitation_expiration_days: "啟動信件在......天後過期"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "進度計算模式"
   setting_work_package_done_ratio_field: "基於工時"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3691,6 +3695,9 @@ zh-TW:
   setting_journal_aggregation_time_minutes: "合併使用者操作"
   setting_log_requesting_user: "記錄所有使用者登入、姓名和郵件地址等資料"
   setting_login_required: "需要身份驗證"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "發出的電子郵件地址"
   setting_mail_handler_api_key: "API 金鑰"
   setting_mail_handler_body_delimiters: "符合任一行資料即截斷電子郵件"
@@ -3716,6 +3723,7 @@ zh-TW:
   setting_project_gantt_query_text: "您可以從專案總覽頁面修改用於顯示甘特圖查詢條件。"
   setting_security_badge_displayed: "顯示安全徽章"
   setting_registration_footer: "註冊頁腳"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "自動版本控制類型"
   setting_repositories_encodings: "儲存庫編碼"
   setting_repository_storage_cache_minutes: "版本庫磁碟空間快取"
@@ -3726,8 +3734,22 @@ zh-TW:
   setting_repository_truncate_at: "儲存庫瀏覽器中顯示的最大檔案數量"
   setting_rest_api_enabled: "啟用 REST 網路服務"
   setting_self_registration: "自助註冊"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "非活躍使用後連線失效時間"
   setting_session_ttl_hint: "低於5個工作同於停用"
   setting_session_ttl_enabled: "連線逾時"
@@ -3755,6 +3777,8 @@ zh-TW:
   setting_working_days: "工作日"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "單一帳號登入"
       omniauth_direct_login_hint_html: >
         如果此選項處於活動狀態，登入請求將重新導向至已設定的omniauth 提供者。登入下拉選單和登入頁面將被停用。 <br/> <strong>注意：</strong>除非您也停用密碼登錄，否則啟用此選項後，使用者仍可透過造訪 <code>%{internal_path}</code> 登入頁面進行內部登入。

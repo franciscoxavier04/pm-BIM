@@ -80,7 +80,7 @@ ru:
     edit_project_folder:
       label: Изменить папку проекта
     open:
-      remote_identity_error: An unexpected error occured while connecting to the storage.
+      remote_identity_error: Произошла непредвиденная ошибка при подключении к хранилищу.
     project_folder_mode:
       automatic: Автоматическое управление
       inactive: Нет конкретной папки
@@ -239,9 +239,9 @@ ru:
       checked: Последняя проверка %{datetime}
       checks:
         ampf_configuration:
-          client_folder_creation: Automatic folder creation
-          client_folder_removal: Automatic folder deletion
-          drive_contents: Drive has expected content
+          client_folder_creation: Автоматическое создание папки
+          client_folder_removal: Автоматическое удаление папок
+          drive_contents: Диск ожидал контента
           files_request: Получение файлов групповых папок
           group_folder_app: 'Зависимость: Папки группы'
           group_folder_contents: Папка группы ожидала содержимое
@@ -252,6 +252,7 @@ ru:
           existing_token: Токен пользователя
           header: Аутентификация
           non_provisioned_user: Пользователь зарегистрирован через IDC
+          offline_access: Configured OIDC offline_access scope
           provisioned_user_provider: Пользователь зарегистрирован через OIDC
           token_negotiable: Права пользовательского токена
           user_bound_request: Пользовательский запрос аутентификации
@@ -262,7 +263,7 @@ ru:
           dependencies_check: Зависимости
           dependencies_versions: Зависимости (версия)
           diagnostic_request: Диагностический запрос
-          drive_id_exists: Drive exists
+          drive_id_exists: Диск существует
           drive_id_format: Формат ID диска
           header: Основные настройки
           host_url_accessible: Адрес хоста доступен
@@ -280,28 +281,29 @@ ru:
           many: "%{count} проверок с предупреждениями"
           other: "%{count} проверок с предупреждениями"
       connection_validation:
-        client_id_invalid: The configured OAuth 2 client id is invalid. Please check the configuration.
-        client_secret_invalid: The configured OAuth 2 client secret is invalid. Please check the configuration.
-        nc_dependency_missing: 'A required dependency is missing on the file storage. Please add the following dependency: %{dependency}.'
-        nc_dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
-        nc_group_folder_not_found: The group folder could not be found.
-        nc_host_not_found: No Nextcloud server found at the configured host url. Please check the configuration.
-        nc_oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
-        nc_oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
-        nc_oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
-        nc_unexpected_content: Unexpected content found in the managed group folder.
-        nc_userless_access_denied: The configured app password is invalid.
+        client_id_invalid: Сконфигурированный идентификатор клиента OAuth 2 неверен. Пожалуйста, проверьте конфигурацию.
+        client_secret_invalid: Конфигурированный ключ клиента OAuth 2 недействителен. Проверьте конфигурацию.
+        nc_dependency_missing: 'Необходимая зависимость отсутствует в хранилище. Пожалуйста, добавьте следующую зависимость: %{dependency}.'
+        nc_dependency_version_mismatch: Версия приложения %{dependency} не поддерживается. Пожалуйста, обновите ваш NextCloud сервер.
+        nc_group_folder_not_found: Папка группы не найдена.
+        nc_host_not_found: По настроенному адресу хоста не найден сервер Nextcloud. Пожалуйста, проверьте конфигурацию.
+        nc_oauth_request_not_found: OpenProject не смог найти корневую папку Nextcloud с использованием текущего зарегистрированного пользователя. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
+        nc_oauth_request_unauthorized: У текущего пользователя нет прав на просмотр основной папки Nextcloud или мы не смогли получить токен. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
+        nc_oauth_token_missing: OpenProject не может протестировать связь пользователя с Nextcloud, так как пользователь еще не связал свою учетную запись Nextcloud.
+        nc_unexpected_content: Непредвиденное содержимое найдено в управляемой папке группы.
+        nc_userless_access_denied: Указанный пароль приложения неверен.
         not_configured: Соединение не удалось подтвердить. Пожалуйста, сначала завершите настройку.
-        od_client_cant_delete_folder: The client is having trouble deleting folders. Please check the setup documentation for your storage.
-        od_client_write_permission_missing: The client seems to have write permissions missing. Please check the setup documentation for your storage.
-        od_drive_id_invalid: The configured drive id seems invalid. Please check the configuration.
-        od_drive_id_not_found: The configured drive id could not be found. Please check the configuration.
-        od_existing_test_folder: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
-        od_oauth_request_not_found: OpenProject couldn't find the root folder in the drive using the current logged-in user. Please check the server logs for further information.
-        od_oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive/SharePoint or we couldn't acquire a token. Please check the server logs for further information.
-        od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
-        od_tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
-        od_unexpected_content: Unexpected content found in the drive.
+        od_client_cant_delete_folder: У клиента возникли проблемы с удалением папок. Пожалуйста, проверьте конфигурационную документацию для вашего хранилища.
+        od_client_write_permission_missing: Клиент не имеет прав на запись. Пожалуйста, проверьте настройки вашего хранилища.
+        od_drive_id_invalid: Указанный идентификатор диска кажется недопустимым. Пожалуйста, проверьте конфигурацию.
+        od_drive_id_not_found: Указанный идентификатор диска не найден. Пожалуйста, проверьте конфигурацию.
+        od_existing_test_folder: Папка %{folder_name}, необходимая для тестирования уже существует. Удалите ее и повторите попытку.
+        od_oauth_request_not_found: OpenProject не смог найти корневую папку на диске с использованием текущего пользователя. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
+        od_oauth_request_unauthorized: У текущего пользователя нет прав для просмотра корневой папки OneDrive/SharePoint или мы не смогли получить токен. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
+        od_oauth_token_missing: OpenProject не может протестировать связь уровня пользователя с OneDrive/SharePoint, так как пользователь еще не связал свою учетную запись Майкрософт.
+        od_tenant_id_wrong: Указанный идентификатор каталога (арендатора) является недопустимым. Проверьте конфигурацию.
+        od_unexpected_content: На диске обнаружено неожиданное содержимое.
+        offline_access_scope_missing: It is recommended to configure the OpenID Connect provider to request the offline_access scope. The integration may still work anyways, but make sure that refresh tokens do not expire.
         oidc_cant_acquire_token: Ваша настройка OpenID Connect не предоставляет необходимой аудитории и не предоставляет возможности обмена токенами. Пожалуйста, ознакомьтесь с нашей документацией для получения дополнительной информации.
         oidc_cant_exchange_token: Похоже, возникла проблема с настройкой Exchange Token вашего провайдера OpenID Connect. Пожалуйста, проверьте его конфигурацию и повторите попытку.
         oidc_cant_refresh_token: Произошла ошибка во время проверки Вашего доступа к хранилищу. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
@@ -478,6 +480,7 @@ ru:
       description: Отключение этой опции скроет список вложений на вкладке "Файлы" у пакетов работ. Файлы, прикрепленные в описании пакета работ, по-прежнему будут загружаться во внутреннее хранилище вложений.
       label: Показывать вложения во вкладке "Файлы" пакетов работ
     storage_audience:
+      documentation_intro: Details on the following options and what needs to be configured in the identity provider can be found in our documentation.
       idp:
         helptext: OpenProject будет использовать первый токен доступа, полученный провайдером идентификации для аутентификации запросов на хранилище. Он не будет пытаться получить другой токен.
         label: Использовать первый токен доступа, полученный идентификатором провайдера

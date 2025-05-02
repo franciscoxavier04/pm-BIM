@@ -102,6 +102,8 @@ fil:
       explanation:
         text: "Individual actions of a user (e.g. updating a work package twice) are aggregated into a single action if their age difference is less than the specified timespan. They will be displayed as a single action within the application. This will also delay notifications by the same amount of time reducing the number of emails being sent and will also affect %{webhook_link} delay."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Ipakita hanggang
     is_active: kasalukuyang naka-displey
@@ -1138,6 +1140,7 @@ fil:
         error_conflict: "Ang impormasyon ay naka-update sa kahit hindi baba isa o."
         email: "is not a valid email address."
         empty: "hindi pwedeng blanko."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "dapat ay kapareho."
         exclusion: "ay nakareserba."
         feature_disabled: is not available.
@@ -1997,6 +2000,7 @@ fil:
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
       ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
       project_list_sharing: Project List Sharing
@@ -2045,6 +2049,9 @@ fil:
       custom_actions:
         title: "Mga custom aksyon"
         description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
@@ -2476,7 +2483,6 @@ fil:
   label_ldap_auth_source_plural: "LDAP connections"
   label_attribute_expand_text: "The complete text for '%{attribute}'"
   label_authentication: "Pagpapatunay"
-  label_authentication_settings: "Authentication settings"
   label_available_custom_fields_projects: "Available custom fields projects"
   label_available_global_roles: "Available global roles"
   label_available_project_attributes: "Available project attributes"
@@ -2879,9 +2885,6 @@ fil:
   label_register: "Gumawa ng bagong akwant"
   label_register_with_developer: "Pagrehistro bilang developer"
   label_registered_on: "Nakarehistro sa"
-  label_registration_activation_by_email: "aktibasyon ng akwant sa pamamagitan ng email"
-  label_registration_automatic_activation: "automatik akwant aktibasyon"
-  label_registration_manual_activation: "manu-manong akwant aktibasyon"
   label_related_work_packages: "Nauugnay sa mga work package"
   label_relates: "nauugnay sa"
   label_relates_to: "nauugnay sa"
@@ -3720,6 +3723,7 @@ fil:
   setting_hours_per_day_explanation: >-
     This defines what is considered a "day" when displaying duration in days and hours (for example, if a day is 8 hours, 32 hours would be 4 days).
   setting_invitation_expiration_days: "Activation email expires after"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Progress calculation mode"
   setting_work_package_done_ratio_field: "Work-based"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3735,6 +3739,9 @@ fil:
   setting_journal_aggregation_time_minutes: "User actions aggregated within"
   setting_log_requesting_user: "Log user login, pangalan at mga mail address para sa lahat na hiling"
   setting_login_required: "Kailangan ng pagpapatunay"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Emission ng email address"
   setting_mail_handler_api_key: "API key"
   setting_mail_handler_body_delimiters: "I-truncate ang mga email pagatapod ng mga linyang ito"
@@ -3760,6 +3767,7 @@ fil:
   setting_project_gantt_query_text: "You can modify the query that is used to display Gantt chart from the project overview page."
   setting_security_badge_displayed: "Display security badge"
   setting_registration_footer: "Footer ng pagrerehistro"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Awtomatiko na uri ng repository vendor"
   setting_repositories_encodings: "Pag-eencode ng repositoryo"
   setting_repository_storage_cache_minutes: "Ang laki ng repository disk cache"
@@ -3770,8 +3778,22 @@ fil:
   setting_repository_truncate_at: "Pinakamataas na bilang ng mga file naka-displey sa respository browser"
   setting_rest_api_enabled: "Paganahin ang serbisyo ng REST web"
   setting_self_registration: "Sariling-pagparehistro"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Oras ng pagkawalang -bisa pagkatapos ng hindi aktibo"
   setting_session_ttl_hint: "Ang halaga mababa sa 5 na trabaho ay tulad ng may kapansanan"
   setting_session_ttl_enabled: "Nag-expire na ang sesyon"
@@ -3799,6 +3821,8 @@ fil:
   setting_working_days: "Working days"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.

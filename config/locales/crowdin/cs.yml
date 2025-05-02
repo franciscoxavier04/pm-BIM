@@ -102,6 +102,8 @@ cs:
       explanation:
         text: "Individuální akce/úpravy uživatele (např. dvojnásobná aktualizace pracovního balíčku se sečtou do jediné akce, pokud je jejich časový rozdíl menší než stanovený čas. Budou zobrazeny jako jedna akce v rámci aplikace. Toto také zpozdí oznámení o stejný čas a sníží tak počet zasílaných e-mailů a ovlivní se také zpoždění na adrese %{webhook_link}."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Zobrazit do
     is_active: aktuálně zobrazené
@@ -959,7 +961,7 @@ cs:
         enabled_modules: "Povolené moduly"
         identifier: "Identifikátor"
         latest_activity_at: "Poslední aktivita"
-        parent: "Podprojekt"
+        parent: "Nadřazený projekt"
         public_value:
           title: "Viditelnost"
           true: "veřejný"
@@ -1156,6 +1158,7 @@ cs:
         error_conflict: "Informace mezitím aktualizoval alespoň jeden další uživatel."
         email: "není platná e-mailová adresa"
         empty: "nemůže být prázdné."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "musí být sudé."
         exclusion: "vyhrazeno."
         feature_disabled: is not available.
@@ -1259,7 +1262,7 @@ cs:
         meeting:
           error_conflict: "Nelze uložit, protože schůzku mezitím aktualizoval někdo jiný. Znovu načtěte stránku."
         notifications:
-          at_least_one_channel: "Alespoň jeden kanál pro odesílání oznámení musí být specifikován."
+          at_least_one_channel: "Pro odesílání notifikací musí být specifikován alespoň jeden kanál"
           attributes:
             read_ian:
               read_on_creation: "nelze nastavit na pravdivé při vytváření oznámení "
@@ -1537,11 +1540,11 @@ cs:
       member: "Člen"
       news: "Novinky"
       notification:
-        one: "Oznámení"
-        few: "Oznámení"
-        many: "Oznámení"
-        other: "Oznámení"
-      placeholder_user: "placeholder uživatel"
+        one: "Notifikace"
+        few: "Notifikací"
+        many: "Notifikací"
+        other: "Notifikace"
+      placeholder_user: "Placeholder uživatel"
       project:
         one: "Project"
         few: "Projects"
@@ -2077,6 +2080,7 @@ cs:
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF export
       ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
       project_list_sharing: Project List Sharing
@@ -2125,6 +2129,9 @@ cs:
       custom_actions:
         title: "Vlastní akce"
         description: "Vlastní akce jsou zkratky jedním kliknutím na sadu předem definovaných akcí, které můžete zpřístupnit na základě stavu některých pracovních balíčků. role, typ nebo projekt."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Zajistěte, aby nahrané soubory v OpenProjectu byly před zpřístupněním ostatním uživatelům zkontrolovány na přítomnost virů."
       placeholder_users:
@@ -2431,7 +2438,7 @@ cs:
   instructions_after_error: "Zkuste se znovu přihlásit kliknutím na %{signin}. Pokud chyba přetrvává, požádejte správce o pomoc."
   menus:
     admin:
-      mail_notification: "E-mailová upozornění"
+      mail_notification: "E-mailové notifikace"
       mails_and_notifications: "E-maily a oznámení"
       aggregation: "Agregace"
       api_and_webhooks: "API & Webhooky"
@@ -2493,7 +2500,7 @@ cs:
       by_project: "Nepřečteno dle projektu"
       by_reason: "Důvod"
       inbox: "Doručená pošta"
-    send_notifications: "Odeslat oznámení pro tuto akci"
+    send_notifications: "Pro tuto akci odeslat notifikaci"
     work_packages:
       subject:
         created: "Pracovní balíček byl vytvořen."
@@ -2556,7 +2563,6 @@ cs:
   label_ldap_auth_source_plural: "Připojení LDAP"
   label_attribute_expand_text: "Úplný text pro '%{attribute}'"
   label_authentication: "Ověření"
-  label_authentication_settings: "Nastavení ověření"
   label_available_custom_fields_projects: "Dostupné projekty s vlastními polemi"
   label_available_global_roles: "Dostupné globální role"
   label_available_project_attributes: "Dostupné atributy projektu"
@@ -2908,9 +2914,9 @@ cs:
   label_permissions: "Práva"
   label_permissions_report: "Přehled oprávnění"
   label_personalize_page: "Přizpůsobit tuto stránku"
-  label_placeholder_user: "placeholder uživatel"
+  label_placeholder_user: "Placeholder uživatel"
   label_placeholder_user_new: ""
-  label_placeholder_user_plural: "placeholder uživatelé"
+  label_placeholder_user_plural: "Placeholder uživatelé"
   label_planning: "Plánování"
   label_please_login: "Přihlaste se prosím"
   label_plugins: "Pluginy"
@@ -2933,7 +2939,7 @@ cs:
   label_project_attribute_plural: "Atributy projektu"
   label_project_attribute_manage_link: "Správa atributů produktu"
   label_project_count: "Celkový počet projektů"
-  label_project_copy_notifications: "Během kopie projektu odeslat oznámení e-mailem"
+  label_project_copy_notifications: "Během kopírování projektu odeslat notifikace e-mailem"
   label_project_latest: "Nejnovější projekty"
   label_project_default_type: "Povolit prázdný typ"
   label_project_hierarchy: "Hierarchie projektu"
@@ -2959,9 +2965,6 @@ cs:
   label_register: "Vytvořit nový účet"
   label_register_with_developer: "Zaregistrovat se jako vývojář"
   label_registered_on: "Registrován"
-  label_registration_activation_by_email: "aktivace účtu prostřednictvím e-mailu"
-  label_registration_automatic_activation: "automatická aktivace účtu"
-  label_registration_manual_activation: "ruční aktivace účtu"
   label_related_work_packages: "Související pracovní balíčky"
   label_relates: "související s"
   label_relates_to: "související s"
@@ -3089,7 +3092,7 @@ cs:
   label_version_new: "Nová verze"
   label_version_edit: "Upravit verzi"
   label_version_plural: "Verze"
-  label_version_sharing_descendants: "S Podprojekty"
+  label_version_sharing_descendants: "S podprojekty"
   label_version_sharing_hierarchy: "S hierarchií projektu"
   label_version_sharing_none: "Není sdíleno"
   label_version_sharing_system: "Se všemi projekty"
@@ -3194,28 +3197,28 @@ cs:
     digests:
       including_mention_singular: "včetně zmínky"
       including_mention_plural: "včetně %{number_mentioned} zmínění"
-      unread_notification_singular: "1 nepřečtené oznámení"
-      unread_notification_plural: "%{number_unread} nepřečtených oznámení"
+      unread_notification_singular: "1 nepřečtená notifikace"
+      unread_notification_plural: "%{number_unread} nepřečtených notifikací"
       you_have: "Máte"
     logo_alt_text: "Logo"
     mention:
       subject: "%{user_name} vás zmínil v #%{id} - %{subject}"
     notification:
-      center: "Centrum oznámení"
+      center: "Centrum notifikací"
       see_in_center: "Zobrazit komentář v oznamovacím centru"
       settings: "Změnit nastavení e-mailu"
     salutation: "Ahoj %{user}!"
     salutation_full_name: "Jméno a příjmení"
     work_packages:
       created_at: "Vytvořeno v %{timestamp} uživatelem %{user} "
-      login_to_see_all: "Přihlaste se pro zobrazení všech oznámení."
+      login_to_see_all: "Přihlaste se pro zobrazení všech notifikací."
       mentioned: "Byli jste <b>zmíněni v komentáři</b>"
       mentioned_by: "%{user} vás zmínil v komentáři OpenProject"
       more_to_see:
-        one: "Máte ještě 1 pracovní balíček s notifikací."
-        few: "Existuje ještě  %{count}  pracovních balíčků s oznámeními."
-        many: "Máte ještě  %{count}  pracovních balíčků s notifikacemi."
-        other: "Existuje ještě  %{count}  pracovních balíčků s oznámeními."
+        one: "Existuje ještě 1 pracovní balíček s notifikací."
+        few: "Existuje ještě %{count} pracovních balíčků s notifikacema."
+        many: "Existuje ještě %{count} pracovních balíčků s notifikacema."
+        other: "Existuje ještě %{count} pracovních balíčků s notifikacema."
       open_in_browser: "Otevřít v prohlížeči"
       reason:
         watched: "Sledováno"
@@ -3224,7 +3227,7 @@ cs:
         mentioned: "Zmíněné"
         shared: "Sdílené"
         subscribed: "vše"
-        prefix: "Obdrženo z důvodu nastavení oznámení: %{reason}"
+        prefix: "Obdrženo z důvodu nastavení notifikací: %{reason}"
         date_alert_start_date: "Upozornění na datum"
         date_alert_due_date: "Upozornění na datum"
         reminder: "Připomínka"
@@ -3512,7 +3515,7 @@ cs:
   permission_move_work_packages: "Přesun pracovních balíčků"
   permission_protect_wiki_pages: "Ochrana stránky wiki"
   permission_rename_wiki_pages: "Přejmenovat stránky wiki"
-  permission_save_queries: "Uložit pohled"
+  permission_save_queries: "Uložit zobrazení"
   permission_search_project: "Hledat projekt"
   permission_select_custom_fields: "Vybrat vlastní pole"
   permission_select_project_custom_fields: "Vyberte atributy projektu"
@@ -3805,6 +3808,7 @@ cs:
   setting_hours_per_day_explanation: >-
     This defines what is considered a "day" when displaying duration in days and hours (for example, if a day is 8 hours, 32 hours would be 4 days).
   setting_invitation_expiration_days: "Platnost aktivačního e-mailu vyprší po"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Režim výpočtu průběhu"
   setting_work_package_done_ratio_field: "Na základě práce"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3820,6 +3824,9 @@ cs:
   setting_journal_aggregation_time_minutes: "Uživatelské akce agregované v rámci"
   setting_log_requesting_user: "Logovat uživatelský login a emailovou adresu pro všechny požadavky"
   setting_login_required: "Vyžadována autentizace"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Odchozí emailová adresa"
   setting_mail_handler_api_key: "API klíč"
   setting_mail_handler_body_delimiters: "Zkrátit e-maily po jednom z těchto řádků"
@@ -3845,6 +3852,7 @@ cs:
   setting_project_gantt_query_text: "Můžete upravit dotaz, který se používá k zobrazení Gantt grafu ze stránky s přehledem projektu."
   setting_security_badge_displayed: "Zobrazit bezpečnostní odznak"
   setting_registration_footer: "Zápatí registrace"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Automatický typ dodavatele repozitáře"
   setting_repositories_encodings: "Kódování repozitářů"
   setting_repository_storage_cache_minutes: "Mezipaměť velikosti disku repositáře"
@@ -3855,8 +3863,22 @@ cs:
   setting_repository_truncate_at: "Maximální počet souborů zobrazených v prohlížeči repozitáře"
   setting_rest_api_enabled: "Povolit webové služby REST"
   setting_self_registration: "Povolit automatickou registraci"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Čas vypršení sezení při neaktivitě"
   setting_session_ttl_hint: "Hodnota menší než 5 funguje jako zakázáno"
   setting_session_ttl_enabled: "Platnost relace vyprší"
@@ -3884,6 +3906,8 @@ cs:
   setting_working_days: "Pracovní dny"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign On"
       omniauth_direct_login_hint_html: >
         If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.
@@ -3933,7 +3957,7 @@ cs:
       enable_subscriptions_text_html: Umožňuje uživatelům s nezbytnými oprávněními přihlásit se do OpenProject kalendářů a získat přístup k informacím o pracovním balíčku prostřednictvím externího klienta kalendáře. <strong>Poznámka:</strong> Před povolením si prosím přečtěte <a href="%{link}" target="_blank">podrobnosti o odběru</a>.
     language_name_being_default: "%{language_name} (výchozí)"
     notifications:
-      events_explanation: "Určuje, pro kterou událost je odeslán e-mail. Pracovní balíčky jsou z tohoto seznamu vyloučeny, protože oznámení pro ně mohou být nastavena speciálně pro každého uživatele."
+      events_explanation: "Určuje, pro kterou událost je odeslán e-mail. Pracovní balíčky jsou z tohoto seznamu vyloučeny, protože notifikace pro ně mohou být nastavena speciálně pro každého uživatele."
       delay_minutes_explanation: "Odesílání e-mailu může být pozdrženo, aby bylo uživatelům s nakonfigurovaným v oznámení aplikace před odesláním pošty potvrzeno oznámení. Uživatelé, kteří si přečtou oznámení v aplikaci, nedostanou e-mail pro již přečtené oznámení."
     other: "Ostatní"
     passwords: "Hesla"
@@ -4043,7 +4067,7 @@ cs:
   text_destroy_with_associated: "Existují další objekty, které jsou přiřazeny k pracovním balíčkům a které mají být odstraněny. Tyto objekty jsou následující typy:"
   text_destroy_what_to_do: "Co chcete udělat?"
   text_diff_truncated: "... Toto rozlišení bylo zkráceno, protože přesahuje maximální velikost, kterou lze zobrazit."
-  text_email_delivery_not_configured: "Doručení e-mailu není nakonfigurováno a oznámení jsou zakázána.\nNakonfigurujte váš SMTP server pro jejich povolení."
+  text_email_delivery_not_configured: "Doručení e-mailu není nakonfigurováno a notifikace jsou zakázány.\nNakonfigurujte váš SMTP server pro jejich povolení."
   text_enumeration_category_reassign_to: "Přiřadit je k této hodnotě:"
   text_enumeration_destroy_question: "%{count} objektů je přiřazeno k této hodnotě."
   text_file_repository_writable: "Do adresáře příloh lze zapisovat"

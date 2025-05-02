@@ -642,6 +642,7 @@ hu:
           with_current_filter: "Ebben a nézetben jelenleg nincsenek értesítések"
         mark_all_read: "Mindegyik megjelölése olvasottként"
         mark_as_read: "Megjelölés olvasottként"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
         text_update_date_by: "%{date} szerint"
         total_count_warning: "A %{newest_count} legfrissebb értesítések megjelenítése. %{more_count} több nem jelenik meg.\n"
         empty_state:

@@ -102,7 +102,7 @@ ru:
     button_save: "Сохранить"
     button_settings: "Настройки"
     button_uncheck_all: "Снять все отметки"
-    button_update: "Обновление"
+    button_update: "Обновить"
     button_export-atom: "Скачать Atom"
     button_generate_pdf: "Создать PDF"
     button_create: "Создать"
@@ -643,6 +643,7 @@ ru:
           with_current_filter: "На данный момент в этом представлении нет уведомлений"
         mark_all_read: "Отметить всё как прочитанное"
         mark_as_read: "Отметить как прочитанное"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
         text_update_date_by: "%{date}"
         total_count_warning: "Показаны %{newest_count} самые последние уведомления. Ещё %{more_count} не отображаются."
         empty_state:

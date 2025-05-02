@@ -82,11 +82,11 @@ it:
       upgrade_to_ee: "Aggiorna a Enterprise edition"
       add_token: "Carica un token di assistenza per Enterprise edition"
       delete_token_modal:
-        text: "Vuoi davvero rimuovere il token Enterprise edition attualmente utilizzato?"
+        text: "Vuoi davvero rimuovere il token Enterprise Edition attualmente utilizzato?"
         title: "Elimina token"
       replace_token: "Sostituisci il token di assistenza attuale"
       order: "Ordina l'edizione Enterprise on-premises"
-      paste: "Incolla il tuo token di assistenza per Enterprise edition"
+      paste: "Incolla il tuo token di assistenza per Enterprise Edition"
       required_for_feature: "Questa aggiunta è disponibile solo con un token di assistenza Enterprise Edition attivo."
       enterprise_link: "Per ulteriori informazioni, clicca qui."
       start_trial: "Inizia la prova gratuita"
@@ -102,6 +102,8 @@ it:
       explanation:
         text: "Le singole azioni di un utente (es. l'aggiornamento di una macro-attività due volte) vengono aggregate in un'unica azione se il tempo intercorso tra esse è inferiore al periodo minimo di tempo impostato. Verranno visualizzate quindi come un'unica azione all'interno dell'applicazione. Questo ritarderà anche le notifiche della stessa quantità di tempo, riducendo così il numero di email inviate, e influirà anche sul ritardo di %{webhook_link}."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Mostra fino a
     is_active: attualmente visualizzato
@@ -1129,12 +1131,13 @@ it:
         confirmation: "non coincide con %{attribute}."
         could_not_be_copied: "%{dependency} non può essere (completamente) copiato."
         does_not_exist: "non esiste."
-        error_enterprise_only: "%{action} è disponibile solo in OpenProject Enterprise edition"
+        error_enterprise_only: "%{action} è disponibile solo in OpenProject Enterprise Edition"
         error_unauthorized: "potrebbe non essere accessibile."
         error_readonly: "è in sola lettura, pertanto non è stato possibile modificarlo."
         error_conflict: "L'informazione è stata aggiornata da almeno un altro utente nel frattempo."
         email: "non è un indirizzo email valido"
         empty: "non può essere vuoto."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "deve essere pari."
         exclusion: "è riservato."
         feature_disabled: non disponibile.
@@ -1994,6 +1997,7 @@ it:
       edit_attribute_groups: Modifica proprietà gruppo
       gantt_pdf_export: Esportazione PDF Gantt
       ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: Archiviazione file OneDrive/SharePoint
       placeholder_users: Utenti segnaposto
       project_list_sharing: Condivisione elenco progetti
@@ -2042,6 +2046,9 @@ it:
       custom_actions:
         title: "Azioni personalizzate"
         description: "Le azioni personalizzate sono scorciatoie che con un clic ti consentono di eseguire una serie di azioni predefinite che è possibile rendere disponibili su determinate macro-attività in base a stato, ruolo, tipo o progetto."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Assicurati che i file caricati in OpenProject vengano scansionati alla ricerca di virus prima di renderli accessibili ad altri utenti."
       placeholder_users:
@@ -2079,7 +2086,7 @@ it:
   error_cookie_missing: "Il cookie di OpenProject è mancante. Prego, verifica che i cookie siano attivati, questa applicazione non funziona correttamente senza."
   error_custom_option_not_found: "L'opzione non esiste."
   error_enterprise_activation_user_limit: "Il tuo account potrebbe non essere attivo (raggiunto il limite utente). Si prega di contattare l'amministratore per ottenere l'accesso."
-  error_enterprise_token_invalid_domain: "L'Enterprise edition non è attiva. Il dominio del token Enterprise (%{actual}) non corrisponde al nome host del sistema (%{expected})."
+  error_enterprise_token_invalid_domain: "L'Enterprise Edition non è attiva. Il dominio del token Enterprise (%{actual}) non corrisponde al nome host del sistema (%{expected})."
   error_failed_to_delete_entry: "Cancellazione voce non riuscita."
   error_in_dependent: "Errore nel tentativo di modificare l'oggetto dipendente: %{dependent_class} #%{related_id} - %{related_subject}: %{error}"
   error_in_new_dependent: "Errore nel tentativo di creare un oggetto dipendente: %{dependent_class} - %{related_subject}: %{error}"
@@ -2283,7 +2290,7 @@ it:
       upsell:
         title: "Aggiorna ad Enterprise edition"
     links:
-      upgrade_enterprise_edition: "Aggiorna ad Enterprise edition"
+      upgrade_enterprise_edition: "Aggiorna ad Enterprise Edition"
       postgres_migration: "Migrazione dell'installazione su PostgreSQL"
       user_guides: "Guide utente"
       faq: "FAQ"
@@ -2473,7 +2480,6 @@ it:
   label_ldap_auth_source_plural: "Connessioni LDAP"
   label_attribute_expand_text: "Testo completo per \"%{attribute}\""
   label_authentication: "Autenticazione"
-  label_authentication_settings: "Impostazioni di autenticazione"
   label_available_custom_fields_projects: "Progetti di campi personalizzati disponibili"
   label_available_global_roles: "Ruoli globali disponibili"
   label_available_project_attributes: "Attributi del progetto disponibili"
@@ -2608,7 +2614,7 @@ it:
   label_enumerations: "Enumerazioni"
   label_enterprise: "Enterprise"
   label_enterprise_active_users: "%{current}/%{limit} utenti attivi riservati"
-  label_enterprise_edition: "Enterprise edition"
+  label_enterprise_edition: "Enterprise Edition"
   label_enterprise_support: "Supporto per Imprese"
   label_environment: "Ambiente"
   label_estimates_and_progress: "Stime e progressi"
@@ -2876,9 +2882,6 @@ it:
   label_register: "Registrati"
   label_register_with_developer: "Registrati come sviluppatore"
   label_registered_on: "Registrato su"
-  label_registration_activation_by_email: "attivazione account tramite email"
-  label_registration_automatic_activation: "attivazione automatica account"
-  label_registration_manual_activation: "attivazione account manuale"
   label_related_work_packages: "Macro-attività correlate"
   label_relates: "correlato con"
   label_relates_to: "correlato con"
@@ -3719,6 +3722,7 @@ it:
   setting_hours_per_day_explanation: >-
     Definisce ciò che viene considerato un "giorno" quando si visualizza la durata in giorni e ore (per esempio, se un giorno è di 8 ore, 32 ore sono 4 giorni).
   setting_invitation_expiration_days: "L'email di attivazione scade dopo"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Modalità di calcolo dei progressi"
   setting_work_package_done_ratio_field: "Basato sul lavoro"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3734,6 +3738,9 @@ it:
   setting_journal_aggregation_time_minutes: "Azioni utente aggregate all'interno"
   setting_log_requesting_user: "Registra il nome d'accesso, il nome utente, e l'indirizzo mail per tutte le richieste"
   setting_login_required: "Autenticazione richiesta"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Indirizzo e-mail di emissione"
   setting_mail_handler_api_key: "Chiave API"
   setting_mail_handler_body_delimiters: "Troncare le email dopo una di queste linee"
@@ -3759,6 +3766,7 @@ it:
   setting_project_gantt_query_text: "È possibile modificare la query utilizzata per visualizzare il grafico Gantt dalla pagina di panoramica del progetto."
   setting_security_badge_displayed: "Mostra badge di sicurezza"
   setting_registration_footer: "Piè di pagina registrazione"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Tipo automatico di gestore dell'archivio di progetto"
   setting_repositories_encodings: "Codifiche degli archivi di progetto (repository)"
   setting_repository_storage_cache_minutes: "Dimensione della cache dello spazio di archiviazione su disco"
@@ -3769,8 +3777,22 @@ it:
   setting_repository_truncate_at: "Numero massimo di file visualizzati nel browser dell'archivio"
   setting_rest_api_enabled: "Abilitare il servizio web REST"
   setting_self_registration: "Registrazione automatica"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Intervallo di tempo al termine del quale scade la sessione per inattività"
   setting_session_ttl_hint: "Per valori inferiori a 5 è pari a disabilitato"
   setting_session_ttl_enabled: "La sessione scade"
@@ -3798,6 +3820,8 @@ it:
   setting_working_days: "Giorni lavorativi"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         Se questa opzione è attiva, le richieste di accesso saranno reindirizzate al fornitore omniauth configurato. Il menu a tendina di accesso e la pagina di accesso saranno disabilitate. <br/> <strong>Nota:</strong> a meno che non si disabiliti anche l'accesso con password, con questa opzione abilitata, gli utenti possono ancora accedere internamente visitando la pagina di accesso <code>%{internal_path}</code>.
