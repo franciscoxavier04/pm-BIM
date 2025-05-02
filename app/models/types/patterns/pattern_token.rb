@@ -30,28 +30,22 @@
 
 module Types
   module Patterns
-    Token = Data.define(:pattern, :key) do
+    PatternToken = Data.define(:pattern, :key) do
       private_class_method :new
 
       def self.build(pattern)
         new(pattern, pattern.tr("{}", "").to_sym)
       end
 
-      def custom_field? = key.to_s.include?("custom_field")
-
-      def context_key
-        return key unless custom_field?
-
-        key.to_s.gsub("#{context}_", "").to_sym
-      end
-
       def context
-        return :work_package unless custom_field?
-
-        context = key.to_s.gsub(/_?custom_field_\d+/, "")
-        return :work_package if context.blank?
-
-        context.to_sym
+        case key.to_s
+        when /^project_/
+          :project
+        when /^parent_/
+          :parent
+        else
+          :work_package
+        end
       end
     end
   end
