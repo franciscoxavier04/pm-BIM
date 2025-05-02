@@ -30,6 +30,7 @@
 
 require "spec_helper"
 
+require_relative "update_flash_shared_examples"
 require_relative "../../support/pages/meetings/show"
 
 RSpec.describe "Meetings CRUD",
@@ -188,89 +189,154 @@ RSpec.describe "Meetings CRUD",
     end
 
     context "for backlog related actions" do
-      context "for one-time meetings" do
+      context "for one-time meetings" do # fails locally in headless mode, but passes in headful ???
+        it_behaves_like "no flash appears when interacting with backlog in multiple windows"
+      end
+
+      context "for meeting series, across the same occurrence" do
+        before_all do
+          travel_to(Date.new(2024, 12, 1))
+        end
+
+        after(:all) do # rubocop:disable RSpec/BeforeAfterAll
+          travel_back
+        end
+
+        let(:recurring_meeting) do
+          create :recurring_meeting,
+                 project:,
+                 start_time: "2024-12-31T13:30:00Z",
+                 duration: 1,
+                 frequency: "daily",
+                 end_after: "specific_date",
+                 end_date: "2025-01-03",
+                 author: user
+        end
+        let(:first_occurrence) { recurring_meeting.meetings.where(template: false).first }
+        let(:show_page) { Pages::Meetings::Show.new(first_occurrence) }
+
+        before do
+          travel_to(Date.new(2024, 12, 30))
+
+          # Assuming the first occurrence is open
+          first_occurrence_time = recurring_meeting.first_occurrence.to_time
+          RecurringMeetings::InitNextOccurrenceJob.perform_now(recurring_meeting, first_occurrence_time)
+        end
+
+        it_behaves_like "no flash appears when interacting with backlog in multiple windows"
+      end
+
+      context "for meeting series, across different occurrences" do
+        before_all do
+          travel_to(Date.new(2024, 12, 1))
+        end
+
+        after(:all) do # rubocop:disable RSpec/BeforeAfterAll
+          travel_back
+        end
+
+        let(:recurring_meeting) do
+          create :recurring_meeting,
+                 project:,
+                 start_time: "2024-12-20T13:30:00Z",
+                 duration: 1,
+                 frequency: "daily",
+                 end_after: "specific_date",
+                 end_date: "2024-12-25",
+                 author: user
+        end
+
+        let(:first_occurrence) { recurring_meeting.meetings.where(template: false).first }
+        let(:first_occurrence_page) { Pages::Meetings::Show.new(first_occurrence) }
+
+        let(:next_occurrence) { recurring_meeting.meetings.where(template: false).last }
+        let(:next_occurrence_page) { Pages::Meetings::Show.new(next_occurrence) }
+
+        before do
+          # Assuming the first and second occurrences are open
+          first_occurrence_time = recurring_meeting.first_occurrence.to_time
+          from_time = recurring_meeting.first_occurrence.to_time + 2.hours
+          next_occurrence_time = recurring_meeting.next_occurrence(from_time:)
+          RecurringMeetings::InitNextOccurrenceJob.perform_now(recurring_meeting, first_occurrence_time)
+          RecurringMeetings::InitNextOccurrenceJob.perform_now(recurring_meeting, next_occurrence_time)
+        end
+
         it do
-          show_page.visit!
+          first_occurrence_page.visit!
+
           first_window = current_window
           second_window = open_new_window
 
-          # Add item to backlog - expect no flash in both windows
           within_window(first_window) do
-            show_page.add_agenda_item_to_backlog do
+            first_occurrence_page.add_agenda_item_to_backlog do
               fill_in "Title", with: "Backlog agenda item"
             end
 
-            show_page.trigger_change_poll
+            first_occurrence_page.trigger_change_poll
             expect(page).to have_no_text I18n.t(:notice_meeting_updated)
           end
 
           within_window(second_window) do
-            show_page.visit!
-
-            show_page.trigger_change_poll
+            next_occurrence_page.visit!
+            next_occurrence_page.trigger_change_poll
             expect(page).to have_no_text I18n.t(:notice_meeting_updated)
 
-            # Edit item in backlog - expect no flash in both windows
             item = MeetingAgendaItem.find_by(title: "Backlog agenda item")
-            show_page.edit_agenda_item(item) do
+            next_occurrence_page.edit_agenda_item(item) do
               fill_in "Title", with: "Edited title"
               click_on "Save"
             end
 
-            show_page.trigger_change_poll
+            next_occurrence_page.trigger_change_poll
             expect(page).to have_no_text I18n.t(:notice_meeting_updated)
           end
 
           within_window(first_window) do
-            show_page.trigger_change_poll
+            first_occurrence_page.trigger_change_poll
             expect(page).to have_no_text I18n.t(:notice_meeting_updated)
-            show_page.reload!
+            first_occurrence_page.reload!
 
-            # Reorder items in backlog - expect no flash in both windows
-            show_page.add_agenda_item_to_backlog do
+            first_occurrence_page.add_agenda_item_to_backlog do
               fill_in "Title", with: "Second item"
             end
+
             item = MeetingAgendaItem.find_by(title: "Edited title")
             retry_block do
-              show_page.select_action(item, I18n.t(:label_agenda_item_move_to_bottom))
+              first_occurrence_page.select_action(item, I18n.t(:label_agenda_item_move_to_bottom))
             end
 
-            show_page.trigger_change_poll
+            first_occurrence_page.trigger_change_poll
             expect(page).to have_no_text I18n.t(:notice_meeting_updated)
           end
 
           within_window(second_window) do
-            show_page.trigger_change_poll
+            next_occurrence_page.trigger_change_poll
             expect(page).to have_no_text I18n.t(:notice_meeting_updated)
 
-            # Delete item in backlog - expect no flash in both windows
             item = MeetingAgendaItem.find_by(title: "Edited title")
-            show_page.remove_agenda_item(item)
+            next_occurrence_page.remove_agenda_item(item)
 
-            show_page.trigger_change_poll
+            next_occurrence_page.trigger_change_poll
             expect(page).to have_no_text I18n.t(:notice_meeting_updated)
           end
 
           within_window(first_window) do
-            show_page.trigger_change_poll
+            first_occurrence_page.trigger_change_poll
             expect(page).to have_no_text I18n.t(:notice_meeting_updated)
 
-            # Clear backlog - expect no flash in both windows
-            show_page.clear_backlog
-
-            show_page.trigger_change_poll
+            first_occurrence_page.clear_backlog
+            first_occurrence_page.trigger_change_poll
             expect(page).to have_no_text I18n.t(:notice_meeting_updated)
           end
 
           within_window(second_window) do
-            show_page.trigger_change_poll
+            next_occurrence_page.trigger_change_poll
             expect(page).to have_no_text I18n.t(:notice_meeting_updated)
           end
 
           second_window.close
         end
       end
-
     end
   end
 end
