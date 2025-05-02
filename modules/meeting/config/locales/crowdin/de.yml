@@ -381,16 +381,16 @@ de:
   text_backlog_clear_error: "Ein oder mehrere Fehler trat auf beim Versuch, den Backlog zu leeren."
   label_agenda_backlog: "Agenda-Backlog"
   text_agenda_backlog: >
-    This backlog is unique to this one-time meeting. You can drag items in and out to add or remove them from the meeting agenda.
-  label_agenda_backlog_clear_title: "Clear agenda backlog?"
+    Dieser Backlog gehört nur dieser einmaligen Besprechung. Sie können Elemente einfügen um sie aus der Besprechungsagenda hinzuzufügen oder zu entfernen.
+  label_agenda_backlog_clear_title: "Backlog leeren?"
   text_agenda_backlog_clear_description: >
-    Are you sure you want to remove all items currently in the agenda items? This action is not reversible.
-  label_series_backlog: "Series backlog"
+    Sind Sie sicher, dass Sie alle aktuellen Einträge entfernen möchten? Diese Aktion kann nicht rückgängig gemacht werden.
+  label_series_backlog: "Backlog der Terminserie"
   text_series_backlog: >
-    The backlog is shared with all occurrences of this series. You can drag items in and out to add or remove them from a particular meeting.
-  label_series_backlog_clear_title: "Clear series backlog?"
+    Der Backlog wird mit allen Vorkommnissen dieser Terminserie geteilt. Sie können Elemente hin- und herziehen um sie aus einer bestimmten Besprechung hinzuzufügen oder zu entfernen.
+  label_series_backlog_clear_title: "Backlog der Terminserie leeren?"
   text_series_backlog_clear_description: >
-    This will remove all items in the series backlog, which is shared with all meetings in the series. Are you sure you want to continue? This action is not reversible.
+    Dadurch werden alle Elemente des Backlogs entfernt, die mit allen Besprechungen in der Terminserie geteilt werden. Sind Sie sicher, dass Sie fortfahren möchten? Diese Aktion kann nicht rückgängig gemacht werden.
   text_agenda_item_title: 'Tagesordnungspunkt „%{title}“'
   text_agenda_work_package_deleted: 'Tagesordnungspunkt für gelöschtes Arbeitspaket'
   text_deleted_agenda_item: 'Gelöschter Tagesordnungspunkt'

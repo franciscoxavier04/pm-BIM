@@ -252,6 +252,7 @@ zh-TW:
           existing_token: 用戶權杖(token)
           header: 驗證
           non_provisioned_user: 使用者由身分提供者（IDP）佈建
+          offline_access: Configured OIDC offline_access scope
           provisioned_user_provider: 使用者由身分提供者（OIDC）佈建
           token_negotiable: 使用者權杖(token)功能
           user_bound_request: 依使用者身分進行請求驗證
@@ -296,6 +297,7 @@ zh-TW:
         od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
         od_tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
         od_unexpected_content: Unexpected content found in the drive.
+        offline_access_scope_missing: It is recommended to configure the OpenID Connect provider to request the offline_access scope. The integration may still work anyways, but make sure that refresh tokens do not expire.
         oidc_cant_acquire_token: 您的 OpenID Connect 設定未提供必要的受眾，也未提供權杖(token)交換功能。請查看我們的說明文件以瞭解更多資訊。
         oidc_cant_exchange_token: 您的 OpenID Connect 提供者的 Token Exchange 設定似乎有問題。請檢查其設定並再次嘗試。
         oidc_cant_refresh_token: 在嘗試檢查您存取儲存空間時發生錯誤。請檢查伺服器日誌以取得進一步資訊。
@@ -473,6 +475,7 @@ zh-TW:
       description: 停用此選項將隱藏工作項目檔案索引標籤上的附件清單。工作項目說明中附加的檔案仍會上傳至內部附件儲存區。
       label: 顯示與工作項目相關之附件
     storage_audience:
+      documentation_intro: Details on the following options and what needs to be configured in the identity provider can be found in our documentation.
       idp:
         helptext: OpenProject 將使用身份提供者收到的第一個存取權杖(token)來認證對儲存的請求。它不會嘗試取得另一個權杖(token)。
         label: 使用身分提供者取得的第一個存取權杖(token)

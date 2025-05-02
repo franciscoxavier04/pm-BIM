@@ -102,6 +102,8 @@ vi:
       explanation:
         text: "Các hành động cá nhân của người dùng (ví dụ: cập nhật một công việc hai lần) được gộp thành một hành động nếu thời gian chênh lệch giữa chúng nhỏ hơn khoảng thời gian được chỉ định. Chúng sẽ được hiển thị dưới dạng một hành động duy nhất trong ứng dụng. Điều này cũng sẽ trì hoãn thông báo cùng một khoảng thời gian giảm số lượng email được gửi và cũng sẽ ảnh hưởng đến độ trễ %{webhook_link}."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Xem đến khi
     is_active: Đang hiển thị
@@ -1129,6 +1131,7 @@ vi:
         error_conflict: "Thông tin đã được cập nhật bởi ít nhất một người dùng khác trong thời gian đó."
         email: "không phải là địa chỉ email hợp lệ."
         empty: "không thể để trống"
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "phải là số chẵn."
         exclusion: "được bảo lưu."
         feature_disabled: is not available.
@@ -1957,6 +1960,7 @@ vi:
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
       ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
       project_list_sharing: Project List Sharing
@@ -2005,6 +2009,9 @@ vi:
       custom_actions:
         title: "Tác vụ tùy chỉnh"
         description: "Hành động tùy chỉnh là các phím tắt một lần để thực hiện một tập hợp các hành động đã được định trước mà bạn có thể làm cho sẵn có trên các gói công việc nhất định dựa trên trạng thái, vai trò, loại hoặc dự án."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Đảm bảo các tệp tải lên trong OpenProject được quét virus trước khi được người dùng khác truy cập."
       placeholder_users:
@@ -2436,7 +2443,6 @@ vi:
   label_ldap_auth_source_plural: "Các kết nối LDAP"
   label_attribute_expand_text: "Văn bản đầy đủ cho '%{attribute}'"
   label_authentication: "Xác thực"
-  label_authentication_settings: "Cài đặt xác thực"
   label_available_custom_fields_projects: "Available custom fields projects"
   label_available_global_roles: "Các vai trò toàn cầu có sẵn"
   label_available_project_attributes: "Các thuộc tính dự án có sẵn"
@@ -2839,9 +2845,6 @@ vi:
   label_register: "Tạo tài khoản mới"
   label_register_with_developer: "Đăng ký là nhà phát triển"
   label_registered_on: "Ngày tham gia"
-  label_registration_activation_by_email: "kích hoạt tài khoản qua email"
-  label_registration_automatic_activation: "kích hoạt tài khoản tự động"
-  label_registration_manual_activation: "kích hoạt tài khoản thủ công"
   label_related_work_packages: "Work package liên quan"
   label_relates: "liên quan đến"
   label_relates_to: "liên quan đến"
@@ -3680,6 +3683,7 @@ vi:
   setting_hours_per_day_explanation: >-
     Điều này xác định cái gì được coi là một "ngày" khi hiển thị thời gian theo ngày và giờ (ví dụ, nếu một ngày là 8 giờ, 32 giờ sẽ là 4 ngày).
   setting_invitation_expiration_days: "Email kích hoạt hết hạn sau"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Progress calculation mode"
   setting_work_package_done_ratio_field: "Dựa trên công việc"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3695,6 +3699,9 @@ vi:
   setting_journal_aggregation_time_minutes: "Hành động của người dùng được tổng hợp trong"
   setting_log_requesting_user: "Ghi lại người dùng đăng nhập, tên, và địa chỉ email cho tất cả các yêu cầu"
   setting_login_required: "Yêu cầu xác thực"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Địa chỉ email phát hành"
   setting_mail_handler_api_key: "Khóa API"
   setting_mail_handler_body_delimiters: "Cắt ngắn email sau một trong những dòng này"
@@ -3720,6 +3727,7 @@ vi:
   setting_project_gantt_query_text: "Bạn có thể chỉnh sửa truy vấn được sử dụng để hiển thị biểu đồ Gantt từ trang tổng quan dự án."
   setting_security_badge_displayed: "Hiển thị huy hiệu bảo mật"
   setting_registration_footer: "Chân trang đăng ký"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Loại nhà cung cấp kho tự động"
   setting_repositories_encodings: "Mã hóa kho"
   setting_repository_storage_cache_minutes: "Bộ nhớ cache kích thước đĩa kho"
@@ -3730,8 +3738,22 @@ vi:
   setting_repository_truncate_at: "Số lượng tệp tối đa hiển thị trong trình duyệt kho"
   setting_rest_api_enabled: "Kích hoạt dịch vụ web REST"
   setting_self_registration: "Đăng ký tự động"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Thời gian hết hạn phiên sau khi không hoạt động"
   setting_session_ttl_hint: "Giá trị dưới 5 hoạt động như bị vô hiệu hóa"
   setting_session_ttl_enabled: "Phiên hết hạn"
@@ -3759,6 +3781,8 @@ vi:
   setting_working_days: "Ngày làm việc"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.

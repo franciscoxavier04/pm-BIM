@@ -102,6 +102,8 @@ ja:
       explanation:
         text: "Individual actions of a user (e.g. updating a work package twice) are aggregated into a single action if their age difference is less than the specified timespan. They will be displayed as a single action within the application. This will also delay notifications by the same amount of time reducing the number of emails being sent and will also affect %{webhook_link} delay."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: までを表示
     is_active: 現在表示されています
@@ -1127,6 +1129,7 @@ ja:
         error_conflict: "別のユーザーが同時にデータを更新しています。"
         email: "is not a valid email address."
         empty: "は空にすることができません。"
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "は偶数にしてください。"
         exclusion: "は予約されています。"
         feature_disabled: is not available.
@@ -1955,6 +1958,7 @@ ja:
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
       ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
       project_list_sharing: Project List Sharing
@@ -2003,6 +2007,9 @@ ja:
       custom_actions:
         title: "カスタムアクション"
         description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
@@ -2434,7 +2441,6 @@ ja:
   label_ldap_auth_source_plural: "LDAP connections"
   label_attribute_expand_text: "The complete text for '%{attribute}'"
   label_authentication: "認証"
-  label_authentication_settings: "Authentication settings"
   label_available_custom_fields_projects: "Available custom fields projects"
   label_available_global_roles: "Available global roles"
   label_available_project_attributes: "Available project attributes"
@@ -2837,9 +2843,6 @@ ja:
   label_register: "登録する"
   label_register_with_developer: "開発者として登録する"
   label_registered_on: "登録日"
-  label_registration_activation_by_email: "電子メールでアカウントの有効化"
-  label_registration_automatic_activation: "自動でアカウントの有効化"
-  label_registration_manual_activation: "手動でアカウントの有効化"
   label_related_work_packages: "関係するワークパッケージ"
   label_relates: "関係している"
   label_relates_to: "関連している"
@@ -3678,6 +3681,7 @@ ja:
   setting_hours_per_day_explanation: >-
     This defines what is considered a "day" when displaying duration in days and hours (for example, if a day is 8 hours, 32 hours would be 4 days).
   setting_invitation_expiration_days: "アクティベーションのメールは次で有効期限切れ"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Progress calculation mode"
   setting_work_package_done_ratio_field: "Work-based"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3693,6 +3697,9 @@ ja:
   setting_journal_aggregation_time_minutes: "User actions aggregated within"
   setting_log_requesting_user: "全てのリクエストに対し、ユーザのログイン名、名前、メールアドレスをログに記録する"
   setting_login_required: "認証が必要"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "送信元のメールアドレス"
   setting_mail_handler_api_key: "APIキー"
   setting_mail_handler_body_delimiters: "メール本文から一致する行以降を切り捨てる"
@@ -3718,6 +3725,7 @@ ja:
   setting_project_gantt_query_text: "プロジェクトの概要ページからガントチャートを表示するために使用するクエリを変更できます。"
   setting_security_badge_displayed: "セキュリティバッジを表示する"
   setting_registration_footer: "登録フッター"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "自動リポジトリ ベンダー種類"
   setting_repositories_encodings: "リポジトリのエンコーディング"
   setting_repository_storage_cache_minutes: "リポジトリ ディスクサイズのキャッシュ"
@@ -3728,8 +3736,22 @@ ja:
   setting_repository_truncate_at: "リポジトリブラウザーで表示するファイルの最大数"
   setting_rest_api_enabled: "RESTによるWebサービスを有効にする"
   setting_self_registration: "ユーザーよるアカウント登録"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "無操作タイムアウト"
   setting_session_ttl_hint: "5未満の値は無効にすると同様"
   setting_session_ttl_enabled: "セッションの有効期限"
@@ -3757,6 +3779,8 @@ ja:
   setting_working_days: "Working days"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.

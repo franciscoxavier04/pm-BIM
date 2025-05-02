@@ -641,6 +641,7 @@ ko:
           with_current_filter: "현재 이 보기에는 알림이 없습니다."
         mark_all_read: "모두 읽은 상태로 표시"
         mark_as_read: "읽음으로 표시"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
         text_update_date_by: "%{date} -"
         total_count_warning: "%{newest_count} 개의 가장 최근 알림을 표시합니다. %{more_count} 개의 알림은 표시되지 않습니다."
         empty_state:

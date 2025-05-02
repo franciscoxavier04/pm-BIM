@@ -102,6 +102,8 @@ de:
       explanation:
         text: "Individuelle Aktionen eines Benutzers (z.B. ein Arbeitspaket zweimal aktualisieren) werden zu einer einzigen Aktion zusammengefasst, wenn ihr Altersunterschied kleiner ist als der angegebene Zeitraum. Sie werden als eine einzige Aktion innerhalb der Anwendung angezeigt. Dadurch werden Benachrichtigungen um die gleiche Zeit verzögert, wodurch die Anzahl der gesendeten E-Mails verringert wird. Dies wirkt sich auch auf die Verzögerung von %{webhook_link} aus."
         link: "Webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Anzeigen bis
     is_active: derzeit angezeigt
@@ -348,12 +350,12 @@ de:
         heading: "Diese Projektliste löschen?"
         text: "Diese Aktion löscht keine Projekte, die in der Liste enthalten sind. Sind Sie sicher, dass Sie diese Projektliste löschen möchten?"
     settings:
-      header_details: Basic details
-      header_status: Project status
-      header_relations: Project relations
-      button_update_details: Update details
-      button_update_status: Update status
-      button_update_parent_project: Update parent project
+      header_details: Allgemeine Einstellungen
+      header_status: Projektstatus
+      header_relations: Projektbeziehungen
+      button_update_details: Einstellungen aktualisieren
+      button_update_status: Status aktualisieren
+      button_update_parent_project: Elternprojekt aktualisieren
       public_warning: >
         Dieses Projekt ist öffentlich. Nutzer mit Zugriff auf diese Instanz können dieses Projekt sehen und abhängig der ihnen zugewiesenen Rollen und Berechtigungen damit interagieren. Unterprojekte haben ihre eigenen Einstellungen zur Sichtbarkeit und erben nicht diese Einstellung.
       public_confirmation:
@@ -1131,6 +1133,7 @@ de:
         error_conflict: "Die Informationen wurde zwischenzeitlich durch andere Benutzer geändert."
         email: "ist keine gültige E-Mail-Adresse."
         empty: "muss ausgefüllt werden."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "muss gerade sein."
         exclusion: "ist nicht verfügbar."
         feature_disabled: ist nicht verfügbar.
@@ -1990,6 +1993,7 @@ de:
       edit_attribute_groups: Attributgruppen bearbeiten
       gantt_pdf_export: Gantt-PDF-Export
       ldap_groups: LDAP-Benutzer- und Gruppensynchronisation
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: OneDrive/SharePoint-Dateispeicherung
       placeholder_users: Platzhalter-Benutzer
       project_list_sharing: Projektlistenfreigabe
@@ -2038,6 +2042,9 @@ de:
       custom_actions:
         title: "Benutzerdefinierte Aktionen"
         description: "Selbstdefinierte Aktionen sind Verknüpfungen zu einer Reihe von vordefinierten Aktionen, die Sie für bestimmte Arbeitspakete je nach Status, Rolle, Typ oder Projekt mit nur einem Klick auf einen Button auslösen."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Stellen Sie sicher, dass hochgeladene Dateien in OpenProject auf Viren gescannt werden, bevor sie für andere Benutzer zugänglich sind."
       placeholder_users:
@@ -2469,7 +2476,6 @@ de:
   label_ldap_auth_source_plural: "LDAP-Verbindungen"
   label_attribute_expand_text: "Der vollständige Text für '%{attribute}'"
   label_authentication: "Authentifizierung"
-  label_authentication_settings: "Authentifizierungseinstellungen"
   label_available_custom_fields_projects: "Verfügbare benutzerdefinierte Felder in Projekten"
   label_available_global_roles: "Verfügbare globale Rollen"
   label_available_project_attributes: "Verfügbare Projektattribute"
@@ -2872,9 +2878,6 @@ de:
   label_register: "Neues Konto erstellen"
   label_register_with_developer: "Als Entwickler anmelden"
   label_registered_on: "Angemeldet am"
-  label_registration_activation_by_email: "Kontoaktivierung per E-Mail"
-  label_registration_automatic_activation: "Automatische Kontoaktivierung"
-  label_registration_manual_activation: "Manuelle Kontoaktivierung"
   label_related_work_packages: "Zugehörige Arbeitspakete"
   label_relates: "Verwandt mit"
   label_relates_to: "Verwandt mit"
@@ -3715,6 +3718,7 @@ de:
   setting_hours_per_day_explanation: >-
     Dies legt fest, was als "Tag" angesehen wird, wenn eine zeitliche Dauer angezeigt werden (zum Beispiel: Wenn die Länge eines Tages 8 Stunden beträgt, wird eine Eingabe von 32 Stunden als 4 Tage angezeigt).
   setting_invitation_expiration_days: "Aktivierungs-Mail läuft ab nach"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Modus der Fortschrittsberechnung"
   setting_work_package_done_ratio_field: "Aufwandsbezogen"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3730,6 +3734,9 @@ de:
   setting_journal_aggregation_time_minutes: "Benutzeraktionen aggregiert innerhalb"
   setting_log_requesting_user: "Logge Benutzer Login, Name und Mailadresse für alle Anfragen"
   setting_login_required: "Authentifizierung erforderlich"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "E-Mail-Absender"
   setting_mail_handler_api_key: "API-Schlüssel"
   setting_mail_handler_body_delimiters: "Schneide E-Mails nach einer dieser Zeilen ab"
@@ -3755,6 +3762,7 @@ de:
   setting_project_gantt_query_text: "Sie können die Ansicht konfigurieren, die verwendet wird, um Gantt-Diagramm von der Projektliste zu erzeugen."
   setting_security_badge_displayed: "Plakette zur Update-Sicherheit anzeigen"
   setting_registration_footer: "Fußzeile der Registrierung-Ansicht"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Automatisch genutzter Projektarchiv Anbieter-Typ"
   setting_repositories_encodings: "Codierungen der Projektarchive"
   setting_repository_storage_cache_minutes: "Speicher-Dauer der abgerufenen Festplattengröße"
@@ -3765,8 +3773,22 @@ de:
   setting_repository_truncate_at: "Maximale Anzahl Dateien im Projektarchiv-Browser angezeigt"
   setting_rest_api_enabled: "REST-Schnittstelle aktivieren"
   setting_self_registration: "Selbstregistrierung"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     Mit dieser Einstellung sind Benutzer in der Lage, eigene Konten zu erstellen und zu aktivieren. Bitte beachten Sie, dass diese dadurch Zugriff auf alle öffentlichen Projekte und deren Inhalte erhalten. Bitte stellen Sie sicher, dass in öffentlichen Projekten keine sensiblen oder privaten Daten gespeichert werden.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Session-Ablaufzeit nach Inaktivität"
   setting_session_ttl_hint: "Wert kleiner 5 wirkt wie ausgeschaltet"
   setting_session_ttl_enabled: "Session läuft ab"
@@ -3794,6 +3816,8 @@ de:
   setting_working_days: "Arbeitstage"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single-Sign-On"
       omniauth_direct_login_hint_html: >
         Wenn diese Option aktiviert ist, werden die Anmeldeanfragen an den konfigurierten SSO-Anbieter weitergeleitet. Das Login-Dropdown und die Anmeldeseite sind dann deaktiviert. <br/> <strong>Hinweis:</strong> Sofern Sie nicht auch die Passwortanmeldung deaktivieren, können sich Benutzer bei aktivierter Option immer noch intern anmelden, indem sie die interne Anmeldeseite <code>%{internal_path}</code> verwenden.

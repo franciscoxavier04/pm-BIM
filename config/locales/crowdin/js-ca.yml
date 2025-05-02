@@ -642,6 +642,7 @@ ca:
           with_current_filter: "En aquest moment no hi han notificacions en aquesta vista"
         mark_all_read: "Marca tot com a llegit"
         mark_as_read: "Marca com a llegit"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
         text_update_date_by: "%{date} per"
         total_count_warning: "Mostrant el %{newest_count} de notificacions recents. %{more_count} no s'estan mostrant."
         empty_state:

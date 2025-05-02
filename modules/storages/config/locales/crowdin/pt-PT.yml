@@ -252,6 +252,7 @@ pt-PT:
           existing_token: User token
           header: Autenticação
           non_provisioned_user: User provisioned by IDP
+          offline_access: Configured OIDC offline_access scope
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
@@ -298,6 +299,7 @@ pt-PT:
         od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
         od_tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
         od_unexpected_content: Unexpected content found in the drive.
+        offline_access_scope_missing: It is recommended to configure the OpenID Connect provider to request the offline_access scope. The integration may still work anyways, but make sure that refresh tokens do not expire.
         oidc_cant_acquire_token: A sua configuração do OpenID Connect não fornece o público necessário, nem fornece capacidades de troca de tokens. Consulte a nossa documentação para obter mais informações.
         oidc_cant_exchange_token: Parece haver um problema com a configuração do Token Exchange no seu fornecedor OpenID Connect. Verifique a sua configuração e tente novamente.
         oidc_cant_refresh_token: Ocorreu um erro ao tentar verificar o seu acesso ao armazenamento. Consulte os registos do servidor para obter mais informações.
@@ -474,6 +476,7 @@ pt-PT:
       description: Se desativar esta opção, irá ocultar a lista de anexos no separador de ficheiros dos pacotes de trabalho. Os ficheiros anexados na descrição de um pacote de trabalho irão continuar a ser carregados no armazenamento interno de anexos.
       label: Mostrar anexos no separador dos ficheiros dos pacotes de trabalho
     storage_audience:
+      documentation_intro: Details on the following options and what needs to be configured in the identity provider can be found in our documentation.
       idp:
         helptext: O OpenProject irá utilizar o primeiro token de acesso recebido pelo fornecedor de identidade para autenticar os pedidos ao armazenamento. Não tentará obter outro token.
         label: Use o primeiro token de acesso obtido pelo fornecedor de identidade

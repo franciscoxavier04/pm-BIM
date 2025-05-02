@@ -644,6 +644,7 @@ lt:
           with_current_filter: "Šiuo metu šiame vaizde pranešimų nėra"
         mark_all_read: "Pažymėti visus kaip perskaitytus"
         mark_as_read: "Žymėti kaip skaitytą"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
         text_update_date_by: "%{date} "
         total_count_warning: "Rodomi %{newest_count} paskutiniai pranešimai. Dar %{more_count} yra nerodomi."
         empty_state:

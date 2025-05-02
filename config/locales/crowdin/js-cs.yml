@@ -643,6 +643,7 @@ cs:
           with_current_filter: "V současné době nejsou v tomto zobrazení žádná oznámení"
         mark_all_read: "Označit vše jako přečtené"
         mark_as_read: "Označit jako přečtené"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
         text_update_date_by: "%{date} podle"
         total_count_warning: "Zobrazení posledních oznámení %{newest_count} . Nezobrazuje se ještě %{more_count}"
         empty_state:

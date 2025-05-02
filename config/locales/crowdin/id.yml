@@ -102,6 +102,8 @@ id:
       explanation:
         text: "Setiap tindakan pengguna (mis. memperbarui paket kerja dua kali) digabungkan menjadi satu tindakan jika perbedaan usianya kurang dari rentang waktu yang ditentukan.  Mereka akan ditampilkan sebagai tindakan tunggal dalam aplikasi.  Ini juga akan menunda pemberitahuan dengan jumlah waktu yang sama sehingga mengurangi jumlah email yang dikirim dan juga akan memengaruhi penundaan %{webhook_link}."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Show until
     is_active: currently displayed
@@ -1125,6 +1127,7 @@ id:
         error_conflict: "Informasi telah diperbarui oleh setidaknya satu user lain."
         email: "bukan alamat email yang valid."
         empty: "harus di isi."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "harus imbang."
         exclusion: "telah dipesan."
         feature_disabled: is not available.
@@ -1953,6 +1956,7 @@ id:
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
       ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
       project_list_sharing: Project List Sharing
@@ -2001,6 +2005,9 @@ id:
       custom_actions:
         title: "Tindakan khusus"
         description: "Tindakan kustom adalah pintasan sekali klik ke serangkaian tindakan yang ditentukan sebelumnya yang dapat Anda sediakan pada paket kerja tertentu berdasarkan status, peran, jenis, atau proyek."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
@@ -2432,7 +2439,6 @@ id:
   label_ldap_auth_source_plural: "LDAP connections"
   label_attribute_expand_text: "The complete text for '%{attribute}'"
   label_authentication: "Otentikasi"
-  label_authentication_settings: "Authentication settings"
   label_available_custom_fields_projects: "Available custom fields projects"
   label_available_global_roles: "Available global roles"
   label_available_project_attributes: "Available project attributes"
@@ -2835,9 +2841,6 @@ id:
   label_register: "Buat akun baru"
   label_register_with_developer: "Daftar sebagai pengembang"
   label_registered_on: "Terdaftar sejak"
-  label_registration_activation_by_email: "aktivasi akun melalui email"
-  label_registration_automatic_activation: "aktivasi account otomatis"
-  label_registration_manual_activation: "aktivasi akun manual"
   label_related_work_packages: "Paket-Penugasan terkait"
   label_relates: "terkait dengan"
   label_relates_to: "terkait dengan"
@@ -3673,6 +3676,7 @@ id:
   setting_hours_per_day_explanation: >-
     This defines what is considered a "day" when displaying duration in days and hours (for example, if a day is 8 hours, 32 hours would be 4 days).
   setting_invitation_expiration_days: "Activation email expires after"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Progress calculation mode"
   setting_work_package_done_ratio_field: "Work-based"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3688,6 +3692,9 @@ id:
   setting_journal_aggregation_time_minutes: "User actions aggregated within"
   setting_log_requesting_user: "Catat user login, nama dan email untuk semua permintaan"
   setting_login_required: "Diperlukan otentikasi"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Emisi alamat email"
   setting_mail_handler_api_key: "API key"
   setting_mail_handler_body_delimiters: "Potong email setelah baris ini"
@@ -3713,6 +3720,7 @@ id:
   setting_project_gantt_query_text: "You can modify the query that is used to display Gantt chart from the project overview page."
   setting_security_badge_displayed: "Display security badge"
   setting_registration_footer: "Footer pendaftaran"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Automatic repository vendor type"
   setting_repositories_encodings: "Encoding repositori"
   setting_repository_storage_cache_minutes: "Besar cache pada disk untuk repository"
@@ -3723,8 +3731,22 @@ id:
   setting_repository_truncate_at: "Jumlah maksimum file yang ditampilkan dalam browser tempat penyimpanan"
   setting_rest_api_enabled: "Aktifkan REST web service"
   setting_self_registration: "Registrasi mandiri"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Sesi kadaluwarsa ketika tidak aktif"
   setting_session_ttl_hint: "Nilai di bawah 5 akan didisable"
   setting_session_ttl_enabled: "Sesi telah berakhir"
@@ -3752,6 +3774,8 @@ id:
   setting_working_days: "Hari kerja"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.
