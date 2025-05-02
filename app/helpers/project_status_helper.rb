@@ -30,11 +30,24 @@
 
 module ProjectStatusHelper
   NOT_SET = "not_set"
+  private_constant :NOT_SET
 
+  ##
+  # Returns the CSS class (BEM modifier) for the Project Status.
+  # Can be used in conjunction with `.project-status--name` or
+  # `.project-status--bulb` (BEM element) classes.
+  #
+  # @param status_code [String | Symbol | nil] Project Status code
+  # @return [String] the CSS class.
   def project_status_css_class(status_code)
     "-#{(status_code&.to_s || NOT_SET).dasherize}"
   end
 
+  ##
+  # Returns the localized Project Status name.
+  #
+  # @param status_code [String | Symbol | nil] Project Status code
+  # @return [String] the localized name.
   def project_status_name(status_code)
     I18n.t(status_code || NOT_SET, scope: "js.grid.widgets.project_status")
   end
