@@ -625,13 +625,15 @@ de:
         automatically_generated_subjects:
           label: "Automatisch generierte Titel"
           caption: "Definieren Sie ein Schema aus referenzierten Attributen und Freitext für die automatische Generierung von Arbeitspakettiteln. Nutzer können diese nicht manuell editieren."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
         pattern:
           label: "Titel-Schema"
           caption: "Fügen Sie Text oder Typ / um nach einem Attribut zu suchen. Sie können Leerzeichen hinzufügen, um sie zu trennen."
-          headings:
-            work_package: "Arbeitspaket"
-            parent: "Eltern-Arbeitspaket"
-            project: "Projekt"
           insert_as_text: "Keine Attribute gefunden. Als Text hinzufügen: \"%{word}\""
       export_configuration:
         tab: "PDF generieren"

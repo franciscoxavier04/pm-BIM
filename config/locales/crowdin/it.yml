@@ -629,13 +629,15 @@ it:
         automatically_generated_subjects:
           label: "Oggetti generati automaticamente"
           caption: "Definisci uno schema utilizzando attributi e testo referenziati per generare automaticamente gli oggetti delle macro-attività. Gli utenti non saranno in grado di modificare manualmente gli oggetti."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
         pattern:
           label: "Schema dell'oggetto"
           caption: "Aggiungi del testo o digita \"/\" (senza virgolette) per cercare un attributo. Puoi aggiungere spazi per separarli."
-          headings:
-            work_package: "Macro-attività"
-            parent: "Genitore"
-            project: "Progetto"
           insert_as_text: "Nessun attributo trovato. Aggiungi come testo: \"%{word}\""
       export_configuration:
         tab: "Genera PDF"

@@ -642,13 +642,15 @@ uk:
         automatically_generated_subjects:
           label: "Автоматично згенеровані теми"
           caption: "Визначте шаблон, використовуючи атрибути й текст, щоб теми пакетів робіт створювались автоматично. Користувачі не зможуть редагувати теми."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
         pattern:
           label: "Шаблон теми"
           caption: "Додайте текст або введіть / щоб виконати пошук атрибута. Як роздільник можна додавати пробіли."
-          headings:
-            work_package: "Пакет робіт"
-            parent: "Батьківський"
-            project: "Проєкт"
           insert_as_text: "Атрибутів не знайдено. Додайте як текст: «%{word}»"
       export_configuration:
         tab: "Згенерувати PDF"

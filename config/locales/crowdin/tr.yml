@@ -41,13 +41,13 @@ tr:
         changed: "değişti"
         created: "oluşturuldu"
         commented: "yorumlandı"
-        internal_comment: Internal comment
-        internal_journal: Internal comments are visible to a limited group of members.
-        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
+        internal_comment: İç yorum
+        internal_journal: İç yorumlar sınırlı sayıda grup üyesine görünür.
+        unsaved_changes_confirmation_message: Kaydedilmemiş değişiklikleriniz var. Editörü kapatmak istediğinizden emin misiniz?
         internal_comment_confirmation:
-          title: "Make this comment public?"
-          heading: "Make this comment public?"
-          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          title: "Bu yorum görünür olsun mu?"
+          heading: "Bu yorum görünür olsun mu?"
+          description: "Bu iş paketine erişebilen herkes bu yorumunuzu görebilecek. Devam etmek istediğinizden emin misiniz?"
           confirm_button_text: "Herkese aç"
   admin:
     plugins:
@@ -103,7 +103,7 @@ tr:
         text: "Bir kullanıcının bireysel eylemleri (örneğin, bir iş paketini iki kez güncelleme), yaş farkı belirtilen zaman aralığından azsa tek bir eylemde toplanır. Uygulama içinde tek bir eylem olarak görüntülenecektir. Bu aynı zamanda gönderilen e-posta sayısını azaltarak bildirimleri aynı süre kadar geciktirecek ve ayrıca %{webhook_link} gecikmesini etkileyecektir."
         link: "webhook"
   authentication:
-    login_and_registration: "Login and registration"
+    login_and_registration: "Giriş ve kayıt"
   announcements:
     show_until: Son görüntülenme tarihi
     is_active: şu an görüntüleniyor
@@ -353,10 +353,10 @@ tr:
         heading: "Proje listesi silinsin mi?"
         text: "Bu eylem, listenin içerdiği hiçbir projeyi silmeyecektir. Bu proje listesini silmek istediğinizden emin misiniz?"
     settings:
-      header_details: Basic details
-      header_status: Project status
-      header_relations: Project relations
-      button_update_details: Update details
+      header_details: Temel bilgiler
+      header_status: Proje durumu
+      header_relations: Proje ilişkileri
+      button_update_details: Detayları güncelle
       button_update_status: Update status
       button_update_parent_project: Update parent project
       public_warning: >
@@ -387,7 +387,7 @@ tr:
         no_results_title_text: Şu anda kullanılabilir özel alan bulunmamakta.
       life_cycle:
         header:
-          title: "Project life cycle"
+          title: "Proje yaşam döngüsü"
           description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
         non_defined: "No phases are currently defined."
         section_header: "Phases"
@@ -514,7 +514,7 @@ tr:
       new_access_token_dialog_text: "This token will allow third-party applications to communicate with your instance. To differentiate the new API token, please give it a name."
       new_access_token_dialog_attention_text: "Treat API tokens like passwords. Anyone with this link will have access to information from this instance, share it only with trusted users."
       failed_to_reset_token: "Erişim anahtarı sıfırlaması başarısız oldu: %{error}"
-      failed_to_create_token: "Failed to create access token: %{error}"
+      failed_to_create_token: "Erişim anahtarı oluşturması başarısız oldu: %{error}"
       failed_to_revoke_token: "Failed to revoke access token: %{error}"
       notice_reset_token: "Yeni bir %{type} anahtar üretildi. Erişim anahtarınız:"
       token_value_warning: "Not: Bu anahtarı görebileceğiniz tek an bu, kopyaladığınıza emin olun."
@@ -631,13 +631,15 @@ tr:
         automatically_generated_subjects:
           label: "Otomatik oluşturulan konular"
           caption: "İş paketi konularını otomatik olarak oluşturmak için başvurulan öznitelikleri ve metni kullanarak bir kalıp tanımlayın. Kullanıcılar konuları elle düzenleyemeyecektir."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
         pattern:
           label: "Konu deseni"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
-          headings:
-            work_package: "İş paketi"
-            parent: "Üst"
-            project: "Proje"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "PDF oluşturma"

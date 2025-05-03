@@ -60,7 +60,7 @@ ja:
         time: 時間
     models:
       time_entry:
-        other: "Time entries"
+        other: ""
       cost_entry:
         other: "Cost entries"
       cost_type:
