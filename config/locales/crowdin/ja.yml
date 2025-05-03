@@ -1093,7 +1093,7 @@ ja:
         parent_issue: "親項目"
         parent_work_package: "親項目"
         priority: "優先度"
-        progress: "% Complete"
+        progress: "完成(%)"
         readonly: "読み取り専用"
         remaining_hours: "残りの作業"
         remaining_time: "残りの作業"
