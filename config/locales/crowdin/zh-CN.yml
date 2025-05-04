@@ -103,7 +103,7 @@ zh-CN:
         text: "如果用户的多项操作（例如，更新工作包两次）的时间间隔小于指定的时间跨度，则这些操作将被聚合为单个操作，并在应用程序中显示为单个操作。这也会将通知延迟同等的时间，从而减少电子邮件的发送数量，并且还会影响 %{webhook_link} 延迟。"
         link: "Webhook"
   authentication:
-    login_and_registration: "Login and registration"
+    login_and_registration: "登录和注册"
   announcements:
     show_until: 显示截至日期
     is_active: 当前已显示
@@ -1127,7 +1127,7 @@ zh-CN:
         error_conflict: "在此期间，至少有一位其他用户更新了信息。"
         email: "不是一个有效的电子邮件地址。"
         empty: "不能为空。"
-        enterprise_plan_required: "requires at least the %{plan_name}."
+        enterprise_plan_required: "至少需要 %{plan_name}。"
         even: "必须是偶数。"
         exclusion: "是保留关键字。"
         feature_disabled: 不可用。
@@ -1503,7 +1503,7 @@ zh-CN:
         other: "通知"
       placeholder_user: "占位符用户"
       project:
-        other: "Projects"
+        other: "项目"
       project_query:
         other: "项目列表"
       query: "自定义查询"
@@ -1956,7 +1956,7 @@ zh-CN:
       edit_attribute_groups: 编辑属性组
       gantt_pdf_export: 甘特图 PDF 导出
       ldap_groups: LDAP 用户和群组同步
-      nextcloud_sso: Single Sign-On for Nextcloud Storage
+      nextcloud_sso: Nextcloud存储的单点登录(SSO)
       one_drive_sharepoint_file_storage: OneDrive/SharePoint 文件存储
       placeholder_users: 占位符用户
       project_list_sharing: 项目列表共享
@@ -2006,8 +2006,8 @@ zh-CN:
         title: "自定义操作"
         description: "自定义操作是一键快捷方式，指向一组预定义的操作，您可以根据状态、角色、类型或项目在某些工作包上使用这些操作。"
       nextcloud_sso:
-        title: "Single Sign-On for Nextcloud Storage"
-        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
+        title: "Nextcloud存储的单点登录(SSO)"
+        description: "使用单点登录为您的 Nextcloud 存储启用无缝且安全的身份验证。简化访问管理并提升用户便利性。"
       virus_scanning:
         description: "确保在 OpenProject 中上传的文件在被其他用户访问之前进行病毒扫描。"
       placeholder_users:
@@ -2015,10 +2015,10 @@ zh-CN:
         description: >
           占位符用户是一种将工作包分配给不属于您项目的用户的方法。它们在一系列场景中十分有用；例如，如果您需要跟踪尚未命名或可用资源的任务，或者如果您不想让该人员访问 OpenProject 但仍希望跟踪分配给他们的任务。
       internal_comments:
-        title: Internal comments
+        title: 内部评论
         description: "内部评论允许内部团队相互私下沟通。这些只对某些项目角色可见，不会公开看到。"
       internal_comments_inline:
-        title: "Write internal comments only a small group can see"
+        title: "编写只有小部分群体能看见的内部评论"
         description: " "
   enumeration_activities: "时间跟踪活动"
   enumeration_work_package_priorities: "工作包优先级"
@@ -3733,16 +3733,16 @@ zh-CN:
     Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     用户将能够激活自己的帐户。注意，这将使他们能够访问所有公共项目及其内容。 请确保在公共项目中不会暴露任何敏感数据或私人数据。
-  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled: "已禁用"
   setting_self_registration_disabled_caption: >
     No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
-  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email: "通过电子邮件激活帐户"
   setting_self_registration_activation_by_email_caption: >
     Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
-  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation: "自动激活帐户"
   setting_self_registration_automatic_activation_caption: >
     Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
-  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation: "自动激活帐户"
   setting_self_registration_manual_activation_caption: >
     Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "在处于非活动状态后会话过期时间"
@@ -3772,8 +3772,8 @@ zh-CN:
   setting_working_days: "工作日"
   settings:
     authentication:
-      login_and_sso: "Login and SSO"
-      registration: "Registration"
+      login_and_sso: "登录和SSO"
+      registration: "注册"
       single_sign_on: "单点登录"
       omniauth_direct_login_hint_html: >
         如果激活该选项，登录请求将重定向到已配置的 omniauth 提供商。登录下拉菜单和登录页面将被禁用。 <br/> <strong>注意：</strong>除非同时禁用密码登录，否则启用此选项后，用户仍可通过访问 <code>%{internal_path}</code>登录页面。
