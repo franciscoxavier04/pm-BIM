@@ -239,9 +239,9 @@ zh-CN:
       checked: 上次检查于 %{datetime}
       checks:
         ampf_configuration:
-          client_folder_creation: Automatic folder creation
-          client_folder_removal: Automatic folder deletion
-          drive_contents: Drive has expected content
+          client_folder_creation: 自动创建文件夹
+          client_folder_removal: 自动删除文件夹
+          drive_contents: 驱动器有预期的内容
           files_request: 正在获取组文件夹文件
           group_folder_app: '依赖：组文件夹'
           group_folder_contents: 群组文件夹有预期内容
@@ -252,7 +252,7 @@ zh-CN:
           existing_token: 用户 token
           header: 认证
           non_provisioned_user: 由 IDP 提供的用户
-          offline_access: Configured OIDC offline_access scope
+          offline_access: 配置的 OIDC 离线访问范围
           provisioned_user_provider: 由 OIDC 提供的用户
           token_negotiable: 用户 token 能力
           user_bound_request: 基于用户的身份验证请求
@@ -263,7 +263,7 @@ zh-CN:
           dependencies_check: 依赖项
           dependencies_versions: 依赖项(版本)
           diagnostic_request: 诊断请求
-          drive_id_exists: Drive exists
+          drive_id_exists: 驱动器已存在
           drive_id_format: 驱动器 ID 格式
           header: 基础配置
           host_url_accessible: 主机 URL 可访问
@@ -296,7 +296,7 @@ zh-CN:
         od_oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive/SharePoint or we couldn't acquire a token. Please check the server logs for further information.
         od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
         od_tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
-        od_unexpected_content: Unexpected content found in the drive.
+        od_unexpected_content: 在驱动器中发现意外内容。
         offline_access_scope_missing: It is recommended to configure the OpenID Connect provider to request the offline_access scope. The integration may still work anyways, but make sure that refresh tokens do not expire.
         oidc_cant_acquire_token: 您的 OpenID Connect 设置未提供必要的受众，也不提供令牌交换功能。请查阅我们的文档以获取更多信息。
         oidc_cant_exchange_token: 似乎您的 OpenID Connect 提供商上的 Token Exchange 设置存在问题。请检查其配置并重试。
