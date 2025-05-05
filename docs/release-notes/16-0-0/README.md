@@ -48,16 +48,6 @@ With version 16.0, the 'classic’ option will no longer be offered when creatin
 
 No data will get lost with the update, apart from the Meeting history of your classic meetings. If you used classic meetings in the past, see [this blog article](https://www.openproject.org/blog/end-classic-meetings-may-2025/) to learn more about the change and the reasons behind it.
 
-## Release to Community: Graphs on project overview page
-
-From time to time an Enterprise add-on is released for the free Community version. We are happy to announce that with OpenProject 16.0, the **graphs on the project overview page are now available in all editions**. This means that Community users can now display graphs directly on the project overview page to visualize important project information and communicate project status to the team and management.
-
-The work package graph widgets display information about the work packages within a project and can be shown in different views, such as bar graphs or pie charts.
-
-[Learn more about this feature in our user guide]([../../user-guide/project-overview/#work-package-graph-widgets-enterprise-add-on](https://www.openproject.org/docs/user-guide/project-overview/#work-package-graph-widgets-enterprise-add-on).
-
-**Screenshot**
-
 ## Internal comments in work packages (Enterprise add-on)
 
 Users of the Enterprise Professional version are now able to communicate internally in the work package Activity tab. To use this feature, a project admin has to enable internal comments. By default, these are only visible to the project admin role, but administrators can grant a new set of permissions to any number of roles.
@@ -91,6 +81,16 @@ Before 16.0, time reports only included the duration of the logged time, not the
 ### Overview of time logged per day per user in PDF timesheet
 
 Exported PDF timesheets now include an overview of logged time per day and user. It is displayed in a table view at the beginning of the report. If the list contains more than five users, the view is split into several tables.
+
+**Screenshot**
+
+## Release to Community: Graphs on project overview page
+
+From time to time an Enterprise add-on is released for the free Community version. We are happy to announce that with OpenProject 16.0, the **graphs on the project overview page are now available in all editions**. This means that Community users can now display graphs directly on the project overview page to visualize important project information and communicate project status to the team and management.
+
+The work package graph widgets display information about the work packages within a project and can be shown in different views, such as bar graphs or pie charts.
+
+[Learn more about this feature in our user guide]([../../user-guide/project-overview/#work-package-graph-widgets-enterprise-add-on](https://www.openproject.org/docs/user-guide/project-overview/#work-package-graph-widgets-enterprise-add-on).
 
 **Screenshot**
 
