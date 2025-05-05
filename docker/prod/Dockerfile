@@ -2,7 +2,7 @@ ARG RUBY_VERSION="3.4.2"
 FROM ruby:${RUBY_VERSION}-bookworm AS base
 LABEL maintainer="operations@openproject.com"
 
-ARG NODE_VERSION="20.9.0"
+ARG NODE_VERSION="22.15.0"
 ARG BIM_SUPPORT=true
 ENV USE_JEMALLOC=false
 ENV DEBIAN_FRONTEND=noninteractive

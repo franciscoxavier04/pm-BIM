@@ -41,13 +41,13 @@ tr:
         changed: "değişti"
         created: "oluşturuldu"
         commented: "yorumlandı"
-        internal_comment: Internal comment
-        internal_journal: Internal comments are visible to a limited group of members.
-        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
+        internal_comment: İç yorum
+        internal_journal: İç yorumlar sınırlı sayıda grup üyesine görünür.
+        unsaved_changes_confirmation_message: Kaydedilmemiş değişiklikleriniz var. Editörü kapatmak istediğinizden emin misiniz?
         internal_comment_confirmation:
-          title: "Make this comment public?"
-          heading: "Make this comment public?"
-          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          title: "Bu yorum görünür olsun mu?"
+          heading: "Bu yorum görünür olsun mu?"
+          description: "Bu iş paketine erişebilen herkes bu yorumunuzu görebilecek. Devam etmek istediğinizden emin misiniz?"
           confirm_button_text: "Herkese aç"
   admin:
     plugins:
@@ -102,6 +102,8 @@ tr:
       explanation:
         text: "Bir kullanıcının bireysel eylemleri (örneğin, bir iş paketini iki kez güncelleme), yaş farkı belirtilen zaman aralığından azsa tek bir eylemde toplanır. Uygulama içinde tek bir eylem olarak görüntülenecektir. Bu aynı zamanda gönderilen e-posta sayısını azaltarak bildirimleri aynı süre kadar geciktirecek ve ayrıca %{webhook_link} gecikmesini etkileyecektir."
         link: "webhook"
+  authentication:
+    login_and_registration: "Giriş ve kayıt"
   announcements:
     show_until: Son görüntülenme tarihi
     is_active: şu an görüntüleniyor
@@ -351,10 +353,10 @@ tr:
         heading: "Proje listesi silinsin mi?"
         text: "Bu eylem, listenin içerdiği hiçbir projeyi silmeyecektir. Bu proje listesini silmek istediğinizden emin misiniz?"
     settings:
-      header_details: Basic details
-      header_status: Project status
-      header_relations: Project relations
-      button_update_details: Update details
+      header_details: Temel bilgiler
+      header_status: Proje durumu
+      header_relations: Proje ilişkileri
+      button_update_details: Detayları güncelle
       button_update_status: Update status
       button_update_parent_project: Update parent project
       public_warning: >
@@ -385,7 +387,7 @@ tr:
         no_results_title_text: Şu anda kullanılabilir özel alan bulunmamakta.
       life_cycle:
         header:
-          title: "Project life cycle"
+          title: "Proje yaşam döngüsü"
           description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
         non_defined: "No phases are currently defined."
         section_header: "Phases"
@@ -512,7 +514,7 @@ tr:
       new_access_token_dialog_text: "This token will allow third-party applications to communicate with your instance. To differentiate the new API token, please give it a name."
       new_access_token_dialog_attention_text: "Treat API tokens like passwords. Anyone with this link will have access to information from this instance, share it only with trusted users."
       failed_to_reset_token: "Erişim anahtarı sıfırlaması başarısız oldu: %{error}"
-      failed_to_create_token: "Failed to create access token: %{error}"
+      failed_to_create_token: "Erişim anahtarı oluşturması başarısız oldu: %{error}"
       failed_to_revoke_token: "Failed to revoke access token: %{error}"
       notice_reset_token: "Yeni bir %{type} anahtar üretildi. Erişim anahtarınız:"
       token_value_warning: "Not: Bu anahtarı görebileceğiniz tek an bu, kopyaladığınıza emin olun."
@@ -629,13 +631,15 @@ tr:
         automatically_generated_subjects:
           label: "Otomatik oluşturulan konular"
           caption: "İş paketi konularını otomatik olarak oluşturmak için başvurulan öznitelikleri ve metni kullanarak bir kalıp tanımlayın. Kullanıcılar konuları elle düzenleyemeyecektir."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
         pattern:
           label: "Konu deseni"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
-          headings:
-            work_package: "İş paketi"
-            parent: "Üst"
-            project: "Proje"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "PDF oluşturma"
@@ -1137,6 +1141,7 @@ tr:
         error_conflict: "Bu arada, bilgi en az bir başka kullanıcı tarafından güncellendi."
         email: "Geçerli bir e-posta adresi değil.\n"
         empty: "boş olamaz."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "çift olmalı."
         exclusion: "ayrılmıştır."
         feature_disabled: is not available.
@@ -1515,7 +1520,9 @@ tr:
         one: "Bildirim"
         other: "Bildirimler"
       placeholder_user: "Yer tutucu kullanıcı"
-      project: "Proje"
+      project:
+        one: "Project"
+        other: "Projects"
       project_query:
         one: "Proje listesi"
         other: "Proje listesi"
@@ -1994,6 +2001,7 @@ tr:
       edit_attribute_groups: Özellik Grubunu Düzenleme
       gantt_pdf_export: Gantt PDF Dışa Aktarma
       ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: OneDrive/SharePoint Dosya Depolama
       placeholder_users: Yer Tutucu Kullanıcılar
       project_list_sharing: Proje Listesi Paylaşımı
@@ -2042,6 +2050,9 @@ tr:
       custom_actions:
         title: "Özel eylemler"
         description: "Özel eylemler, duruma, role, türe veya projeye göre belirli iş paketlerinde kullanıma sunabileceğiniz bir dizi önceden tanımlanmış eylemin tek tıkla kısayollarıdır."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "OpenProject'te yüklenen dosyaların diğer kullanıcılar tarafından erişilmeden önce virüslere karşı tarandığından emin olun."
       placeholder_users:
@@ -2049,8 +2060,11 @@ tr:
         description: >
           Yer tutucu kullanıcılar, projenizin parçası olmayan kullanıcılara iş paketleri atamanın bir yoludur. Bir dizi senaryoda yararlı olabilirler; örneğin, henüz adlandırılmamış veya mevcut olmayan bir kaynak için görevleri izlemeniz gerekiyorsa veya o kişiye OpenProject'e erişim izni vermek istemiyorsanız ancak yine de kendilerine atanan görevleri izlemek istiyorsanız.
       internal_comments:
-        title: "For your eyes only"
+        title: Internal comments
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "Zaman izleme faaliyetleri"
   enumeration_work_package_priorities: "İş paketi öncelikleri"
   enumeration_reported_project_statuses: "Bildirilen proje durumları"
@@ -2470,7 +2484,6 @@ tr:
   label_ldap_auth_source_plural: "LDAP bağlantıları"
   label_attribute_expand_text: "The complete text for '%{attribute}'"
   label_authentication: "Kimlik doğrulaması"
-  label_authentication_settings: "Kimlik doğrulama ayarları"
   label_available_custom_fields_projects: "Available custom fields projects"
   label_available_global_roles: "Mevcut genel roller"
   label_available_project_attributes: "Mevcut proje öznitelikleri"
@@ -2873,9 +2886,6 @@ tr:
   label_register: "Yeni hesap oluştur"
   label_register_with_developer: "Geliştirici olarak kayıt ol"
   label_registered_on: "Kayıt tarihi"
-  label_registration_activation_by_email: "e-posta ile hesap etkinleştirme"
-  label_registration_automatic_activation: "otomatik hesap etkinleştirme"
-  label_registration_manual_activation: "elle hesap etkinleştirme"
   label_related_work_packages: "İlişkili iş paketleri"
   label_relates: "ile ilişkili"
   label_relates_to: "ile ilişkili"
@@ -3714,6 +3724,7 @@ tr:
   setting_hours_per_day_explanation: >-
     Bu, süreyi gün ve saat olarak görüntülerken neyin "gün" olarak kabul edildiğini tanımlar (örneğin, bir gün 8 saat ise, 32 saat 4 gün olacaktır).
   setting_invitation_expiration_days: "Etkinleştirme e-posta kullanım süresi sonu"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "İlerleme hesaplama modu"
   setting_work_package_done_ratio_field: "İş temelli"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3729,6 +3740,9 @@ tr:
   setting_journal_aggregation_time_minutes: "İçinde biriken kullanıcı işlemleri"
   setting_log_requesting_user: "Tüm istekler için kullanıcı oturum açma, ad ve posta adresini girme"
   setting_login_required: "Kimlik doğrulaması gerekli"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Gönderici e-posta adresi"
   setting_mail_handler_api_key: "API anahtarı"
   setting_mail_handler_body_delimiters: "Bu satırlardan birinden sonra e-postaları kısaltın"
@@ -3754,6 +3768,7 @@ tr:
   setting_project_gantt_query_text: "Gantt grafiğini görüntülemek için kullanılan sorguyu projeye genel bakış sayfasından değiştirebilirsiniz."
   setting_security_badge_displayed: "Güvenlik rozeti göster"
   setting_registration_footer: "Kayıt alt bilgisi"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Otomatik depo satıcısı türü"
   setting_repositories_encodings: "Depolar kodlamaları"
   setting_repository_storage_cache_minutes: "Depo disk boyutu önbelleği"
@@ -3764,8 +3779,22 @@ tr:
   setting_repository_truncate_at: "Depo tarayıcıda görüntülenen dosya sayısı üst sınırı"
   setting_rest_api_enabled: "REST web hizmetini etkinleştir"
   setting_self_registration: "Kendi kendine kayıt"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Hareketsizlikten sonra oturum son kullanma süresi"
   setting_session_ttl_hint: "5'in altındaki değer, devre dışı gibi"
   setting_session_ttl_enabled: "Oturum sona eriyor"
@@ -3793,6 +3822,8 @@ tr:
   setting_working_days: "İş Günleri"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Tek Oturum Açma"
       omniauth_direct_login_hint_html: >
         Bu seçenek etkinse, oturum açma istekleri yapılandırılmış omniauth sağlayıcısına yönlendirilir. Oturum açma açılır menüsü ve oturum açma sayfası devre dışı bırakılacaktır. <br/> <strong>Not:</strong> Parola girişlerini de devre dışı bırakmadığınız sürece, bu seçenek etkinleştirildiğinde kullanıcılar <code>%{internal_path}</code> giriş sayfasından giriş yapabilirler.

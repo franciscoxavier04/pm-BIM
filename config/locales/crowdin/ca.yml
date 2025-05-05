@@ -102,6 +102,8 @@ ca:
       explanation:
         text: "Les accions individuals d'un sol usuari (per exemple actualitzar dos cops un paquet de treball) seran agregades en una sola acció si la diferència temporal és menor a l'especificada. Aquests seran exposats com una acció individual dins l'aplicació. Això, també reduïra el número d'emails enviats i el retràs en el %{webhook_link} ja que les notificacións també seran retrasades."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Mostra fins
     is_active: actualment mostrant
@@ -627,13 +629,15 @@ ca:
         automatically_generated_subjects:
           label: "Automatically generated subjects"
           caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
         pattern:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
-          headings:
-            work_package: "Paquet de treball"
-            parent: "Pare"
-            project: "Projecte"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -1135,6 +1139,7 @@ ca:
         error_conflict: "La informació s'ha actualitzat per almenys un altre usuari mentrestant."
         email: "no és una adreça de correu electrònic vàlida."
         empty: "no pot estar buit."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "ha de ser parell."
         exclusion: "està reservat."
         feature_disabled: is not available.
@@ -1513,7 +1518,9 @@ ca:
         one: "Notificació"
         other: "Notificacions"
       placeholder_user: "Usuari de marcador de posició"
-      project: "Projecte"
+      project:
+        one: "Project"
+        other: "Projects"
       project_query:
         one: "Project list"
         other: "Llistes de projectes"
@@ -1992,6 +1999,7 @@ ca:
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
       ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
       project_list_sharing: Project List Sharing
@@ -2040,6 +2048,9 @@ ca:
       custom_actions:
         title: "Accions personalitzades"
         description: "Les accions personalitzades són accessos ràpids d'un sol clic que et permeten crear accions predefinides en els paquets de treball que desitgis basat en estat, rol, estil o projecte."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
@@ -2047,8 +2058,11 @@ ca:
         description: >
           Els usuaris de marcador de posició són una forma d'assignar paquets de treball a usuaris que no formen part del teu projecte. Poden ser útils en múltiples escenaris; com per exemple en cas que necessitis manejar tasques per a un recurs que encara no té nom o no està disponible, o en cas que no vulguis donar accés a OpenProject a una persona, però, tot i això, vulguis manejar les tasques que se li han assignat.
       internal_comments:
-        title: "For your eyes only"
+        title: Internal comments
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "Activitats de rastrejament del temps"
   enumeration_work_package_priorities: "Prioritats dels paquets de treball"
   enumeration_reported_project_statuses: "Estats de projecte notificats"
@@ -2468,7 +2482,6 @@ ca:
   label_ldap_auth_source_plural: "Connexions LDAP"
   label_attribute_expand_text: "The complete text for '%{attribute}'"
   label_authentication: "Autenticació"
-  label_authentication_settings: "Authentication settings"
   label_available_custom_fields_projects: "Available custom fields projects"
   label_available_global_roles: "Available global roles"
   label_available_project_attributes: "Available project attributes"
@@ -2871,9 +2884,6 @@ ca:
   label_register: "Crea un nou compte"
   label_register_with_developer: "Registrar com a desenvolupador"
   label_registered_on: "Registrat a"
-  label_registration_activation_by_email: "activació del compte per correu electrònic"
-  label_registration_automatic_activation: "activació del compte automàtica"
-  label_registration_manual_activation: "activació del compte manual"
   label_related_work_packages: "Paquets de treball relacionats"
   label_relates: "relacionat amb"
   label_relates_to: "relacionat amb"
@@ -3708,6 +3718,7 @@ ca:
   setting_hours_per_day_explanation: >-
     This defines what is considered a "day" when displaying duration in days and hours (for example, if a day is 8 hours, 32 hours would be 4 days).
   setting_invitation_expiration_days: "L'activació de correu electrònic caduca després de"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Progress calculation mode"
   setting_work_package_done_ratio_field: "Work-based"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3723,6 +3734,9 @@ ca:
   setting_journal_aggregation_time_minutes: "Accions de l'usuari agrupades en"
   setting_log_requesting_user: "Registrar login d'usuari, nom i adreça de correu electrònic de totes les sol·licituds"
   setting_login_required: "Es necessita autenticació"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Adreça de correu electrònic d'emissió"
   setting_mail_handler_api_key: "Clau API"
   setting_mail_handler_body_delimiters: "Trunca els missatges de correu electrònic després d'una d'aquestes línies"
@@ -3748,6 +3762,7 @@ ca:
   setting_project_gantt_query_text: "Pots modificar la consulta utilitzada per mostrar el diagrama de Gantt des de la pàgina de visió general del projecte."
   setting_security_badge_displayed: "Mostra la insígnia de seguretat"
   setting_registration_footer: "Peu de pàgina del registre"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Tipus de proveïdor de repositori automàtic"
   setting_repositories_encodings: "Codificacions dels repositoris"
   setting_repository_storage_cache_minutes: "Mida de la caché de disc del repositori"
@@ -3758,8 +3773,22 @@ ca:
   setting_repository_truncate_at: "Nombre màxim de filtres mostrats en el repositori del navegador"
   setting_rest_api_enabled: "Habilita el servei web REST"
   setting_self_registration: "Registre automàtic"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Temps d'expiració de la sessió per inactivitat"
   setting_session_ttl_hint: "Valor per sota de 5 funciona com a deshabilitat"
   setting_session_ttl_enabled: "La sessió expira"
@@ -3787,6 +3816,8 @@ ca:
   setting_working_days: "Dies laborals"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.

@@ -102,6 +102,8 @@ pl:
       explanation:
         text: "Indywidualne działania użytkownika (np. dwukrotna aktualizacja pakietu roboczego) są agregowane w jedno działanie, jeśli różnica czasowa między nimi jest mniejsza niż określony przedział czasowy. Będą one wyświetlane jako jedno działanie w aplikacji. Spowoduje to również opóźnienie powiadomień o tę samą ilość czasu, zmniejszając liczbę wysyłanych wiadomości e-mail i wpłynie też na opóźnienie %{webhook_link}."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Pokazuj do
     is_active: obecnie wyświetlane
@@ -643,13 +645,15 @@ pl:
         automatically_generated_subjects:
           label: "Automatycznie generowane tematy"
           caption: "Zdefiniuj wzorzec za pomocą wywoływanych atrybutów i tekstu, aby automatycznie generować tematy pakietów roboczych. Użytkownicy nie będą mogli ręcznie edytować tematów."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
         pattern:
           label: "Wzorzec tematu"
           caption: "Dodaj tekst lub typ, aby wyszukać atrybut. Możesz dodać spacje, aby je rozdzielić."
-          headings:
-            work_package: "Pakiet roboczy"
-            parent: "Element nadrzędny"
-            project: "Projekt"
           insert_as_text: "Nie znaleziono atrybutów. Dodaj jako tekst: „%{word}”"
       export_configuration:
         tab: "Wygeneruj PDF"
@@ -1153,6 +1157,7 @@ pl:
         error_conflict: "Information has been updated by at least one other user in the meantime."
         email: "nie jest poprawnym adresem e-mail."
         empty: "nie może być puste."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "musi być takie samo."
         exclusion: "jest już zajęte."
         feature_disabled: jest niedostępny.
@@ -1539,7 +1544,11 @@ pl:
         many: "Powiadomienia"
         other: "Powiadomień"
       placeholder_user: "Użytkownik zastępczy"
-      project: "Projekt"
+      project:
+        one: "Project"
+        few: "Projects"
+        many: "Projects"
+        other: "Projects"
       project_query:
         one: "Lista projektów"
         few: "Listy projektów"
@@ -2070,6 +2079,7 @@ pl:
       edit_attribute_groups: Edytuj grupy atrybutów
       gantt_pdf_export: Eksport wykresu Gantta w formacie PDF
       ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: Magazyn plików OneDrive/SharePoint
       placeholder_users: Użytkownicy zastępczy
       project_list_sharing: Udostępnianie listy projektów
@@ -2118,6 +2128,9 @@ pl:
       custom_actions:
         title: "Działania niestandardowe"
         description: "Akcje niestandardowe są skrótami do zestawu predefiniowanych akcji, które można udostępnić w określonych pakietach roboczych na podstawie statusu, roli, typu lub projektu."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Upewnij się, że przesłane do OpenProject pliki  są przeskanowane pod kątem wirusów, zanim będą dostępne dla innych użytkowników."
       placeholder_users:
@@ -2125,8 +2138,11 @@ pl:
         description: >
           Użytkownicy zastępczy to sposób na przypisanie pakietów pracy do użytkowników, którzy nie są częścią twojego projektu. Może to być przydatne w wielu scenariuszach; na przykład, jeśli potrzebujesz śledzić zadania dla zasobu, który nie jest jeszcze nazwany lub dostępny, lub jeśli nie chcesz dać tej osobie dostępu do OpenProject, ale nadal chcesz śledzić zadania przypisane do niej.
       internal_comments:
-        title: "For your eyes only"
+        title: Internal comments
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "Działania śledzenia czasu"
   enumeration_work_package_priorities: "Priorytety pakietów roboczych"
   enumeration_reported_project_statuses: "Status zgłoszonego projektu"
@@ -2546,7 +2562,6 @@ pl:
   label_ldap_auth_source_plural: "Połączenia LDAP"
   label_attribute_expand_text: "Pełny tekst atrybutu „%{attribute}”"
   label_authentication: "Uwierzytelnianie"
-  label_authentication_settings: "Ustawienia uwierzytelniania"
   label_available_custom_fields_projects: "Dostępne niestandardowe projekty pól"
   label_available_global_roles: "Dostępne role globalne"
   label_available_project_attributes: "Dostępne atrybuty projektu"
@@ -2949,9 +2964,6 @@ pl:
   label_register: "Utwórz nowe konto"
   label_register_with_developer: "Zarejestruj się jako programista"
   label_registered_on: "Zarejestrowany na"
-  label_registration_activation_by_email: "aktywacja konta przez e-mail"
-  label_registration_automatic_activation: "automatyczna aktywacja konta"
-  label_registration_manual_activation: "ręczna aktywacja konta"
   label_related_work_packages: "Powiązanie pakiety robocze"
   label_relates: "Powiązane z"
   label_relates_to: "Powiązane z"
@@ -3793,6 +3805,7 @@ pl:
   setting_hours_per_day_explanation: >-
     To definiuje, co jest uważane za „dzień” podczas wyświetlania czasu trwania w dniach i godzinach (na przykład, jeśli dzień ma 8 godzin, 32 godziny będą 4 dniami).
   setting_invitation_expiration_days: "Ważność aktywacyjnej waidomości e-mail wygasa po"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Tryb obliczania postępów"
   setting_work_package_done_ratio_field: "Oparte na pracy"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3808,6 +3821,9 @@ pl:
   setting_journal_aggregation_time_minutes: "Działania użytkownika agregowane w ciągu"
   setting_log_requesting_user: "Rejestrowanie loginu, nazwy i adresu e-mail użytkownika dla wszystkich żądań"
   setting_login_required: "Wymagane uwierzytelnienie"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Adres emisji"
   setting_mail_handler_api_key: "Klucz API"
   setting_mail_handler_body_delimiters: "Obcinanie e-mail po jednej z tych linii"
@@ -3833,6 +3849,7 @@ pl:
   setting_project_gantt_query_text: "Możesz zmodyfikować zapytanie, które jest używane do wyświetlania wykresu Gantta na stronie przeglądu projektu."
   setting_security_badge_displayed: "Wyświetl plakietkę bezpieczeństwa"
   setting_registration_footer: "Rejestracja stopki"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Typ automatycznego producenta repozytorium"
   setting_repositories_encodings: "Kodowanie repozytorium"
   setting_repository_storage_cache_minutes: "Rozmiar pamięci podręcznej dysku repozytorium"
@@ -3843,8 +3860,22 @@ pl:
   setting_repository_truncate_at: "Maksymalna liczba plików wyświetlanych w przeglądarce repozytorium"
   setting_rest_api_enabled: "Włącz usługi sieci web REST"
   setting_self_registration: "Samodzielna rejestracja"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Czas wygaśnięcia sesji po bezczynności"
   setting_session_ttl_hint: "Value below 5 works like disabled"
   setting_session_ttl_enabled: "Sesja wygasła"
@@ -3872,6 +3903,8 @@ pl:
   setting_working_days: "Dni robocze"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Logowanie jednokrotne"
       omniauth_direct_login_hint_html: >
         Jeśli ta opcja jest aktywna, żądania logowania będą przekierowywane do skonfigurowanego dostawcy omniauth. Lista rozwijana logowania i strona logowania zostaną wyłączone. <br/> <strong>Uwaga:</strong> o ile nie wyłączono również logowania hasłem, przy włączonej tej opcji użytkownicy mogą nadal logować się wewnętrznie, odwiedzając stronę logowania <code>%{internal_path}</code>.

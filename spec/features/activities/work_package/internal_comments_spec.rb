@@ -31,8 +31,7 @@
 require "spec_helper"
 
 RSpec.describe "Work package internal comments",
-               :js,
-               with_flag: { internal_comments: true } do
+               :js do
   include InternalCommentsHelpers
 
   shared_let(:project) { create(:project, enabled_internal_comments: true) }
@@ -191,6 +190,21 @@ RSpec.describe "Work package internal comments",
       page.within_test_selector("op-work-package-journal-form-element") do
         expect(page).to have_checked_field("Internal comment")
       end
+    end
+  end
+
+  describe "inline banner" do
+    current_user { project_admin }
+
+    before do
+      wp_page.visit!
+      wp_page.wait_for_activity_tab
+    end
+
+    it "shows the banner" do
+      activity_tab.open_new_comment_editor
+
+      expect(page).to have_test_selector("op-enterprise-banner", text: "Write internal comments only a small group can see")
     end
   end
 

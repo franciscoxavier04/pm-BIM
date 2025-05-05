@@ -102,6 +102,8 @@ bg:
       explanation:
         text: "Individual actions of a user (e.g. updating a work package twice) are aggregated into a single action if their age difference is less than the specified timespan. They will be displayed as a single action within the application. This will also delay notifications by the same amount of time reducing the number of emails being sent and will also affect %{webhook_link} delay."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Покажи до
     is_active: в момента е показан
@@ -386,7 +388,7 @@ bg:
       life_cycle:
         header:
           title: "Project life cycle"
-          description_html: 'The active project phases define this project''s life cycle and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target="_blank">project overview</a>.'
+          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
         non_defined: "No phases are currently defined."
         section_header: "Phases"
         step:
@@ -529,7 +531,7 @@ bg:
       prompt: "Останете в системата за %{num_days}"
     sessions:
       remembered_devices: "Запомнени устройства"
-      remembered_devices_caption: 'Списък на всички устройства, които са влезли в този акаунт, като са използвали опцията "Остани влязъл".'
+      remembered_devices_caption: "Списък на всички устройства, които са влезли в този акаунт, като са използвали опцията \"Остани влязъл\"."
       session_name: "%{browser_name} %{browser_version} на %{os_name}"
       browser: "Браузър"
       device: "Устройство / операционна система"
@@ -630,14 +632,16 @@ bg:
         automatically_generated_subjects:
           label: "Automatically generated subjects"
           caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
         pattern:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
-          headings:
-            work_package: "Работен пакет"
-            parent: "Горна категория"
-            project: "Проект"
-          insert_as_text: 'No attributes found. Add as text: "%{word}"'
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1138,6 +1142,7 @@ bg:
         error_conflict: "Информацията е актуализирана от поне един друг потребител в същото време."
         email: "е невалидна електронна поща."
         empty: "не може да бъде празно."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "трябва да бъде четно число."
         exclusion: "е запазено."
         feature_disabled: is not available.
@@ -1344,7 +1349,7 @@ bg:
         role:
           attributes:
             permissions:
-              dependency_missing: 'е необходимо да включите и "%{dependency}", тъй като е избран "%{permission}".'
+              dependency_missing: "е необходимо да включите и \"%{dependency}\", тъй като е избран \"%{permission}\"."
         setting:
           attributes:
             base:
@@ -1382,7 +1387,7 @@ bg:
           error_conflict: "Страницата в уикипедията е била актуализирана от някой друг, докато сте я редактирали."
           attributes:
             slug:
-              undeducible: 'не може да се заключи от заглавието "%{title}".'
+              undeducible: "не може да се заключи от заглавието \"%{title}\"."
         work_package:
           is_not_a_valid_target_for_time_entries: "Работен пакет #%{id} не е валидна цел за преразпределяне на времевите записи."
           attributes:
@@ -1434,8 +1439,7 @@ bg:
               cant_exceed_work: "cannot be higher than Work."
               must_be_set_when_work_is_set: "required when Work is set."
               must_be_set_when_work_and_percent_complete_are_set: "required when Work and % Complete are set."
-              ? must_be_set_to_zero_hours_when_work_is_set_and_percent_complete_is_100p
-              : >-
+              must_be_set_to_zero_hours_when_work_is_set_and_percent_complete_is_100p: >-
                 must be 0h when Work is set and % Complete is 100%.
               must_be_empty_when_work_is_empty_and_percent_complete_is_100p: >-
                 must be empty when Work is empty and % Complete is 100%.
@@ -1460,8 +1464,8 @@ bg:
               format: "%{message}"
             password:
               weak: "Трябва да съдържа знаци от следните класове (най-малко %{min_count} на %{all_count}): %{rules}"
-              lowercase: 'малки букви (например "а")'
-              uppercase: 'главни (например "А")'
+              lowercase: "малки букви (например \"а\")"
+              uppercase: "главни (например \"А\")"
               numeric: "цифрова (например ' 1')"
               special: "специални (например ' %')"
               reused:
@@ -1469,7 +1473,7 @@ bg:
                 other: "е бил използван преди. Моля изберете такъв, който е различен от последно използваните %{count}."
               match:
                 confirm: "Потвърдете новата парола."
-                description: '"Потвърждаване на паролата" трябва да съответства на въведеното в поле "нова парола".'
+                description: "\"Потвърждаване на паролата\" трябва да съответства на въведеното в поле \"нова парола\"."
             status:
               invalid_on_create: "не е валиден статус за нови потребители."
             ldap_auth_source:
@@ -1517,7 +1521,9 @@ bg:
         one: "Notification"
         other: "Notifications"
       placeholder_user: "Потребител на заместител"
-      project: "Проект"
+      project:
+        one: "Project"
+        other: "Projects"
       project_query:
         one: "Project list"
         other: "Project lists"
@@ -1872,7 +1878,7 @@ bg:
       long: "%B %d, %Y"
       short: "%b %d"
     #Don't forget the nil at the beginning; there's no such thing as a 0th month
-    month_names: #Used in date_select and datetime_select.
+    month_names:  #Used in date_select and datetime_select.
       - null
       - "Януари"
       - "Февруари"
@@ -1887,9 +1893,9 @@ bg:
       - "Ноември"
       - "Декември"
     order:
-      - ":година"
-      - ": месец"
-      - ": ден"
+      - ':година'
+      - ': месец'
+      - ': ден'
   datetime:
     distance_in_words:
       about_x_hours:
@@ -1996,6 +2002,7 @@ bg:
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
       ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
       project_list_sharing: Project List Sharing
@@ -2044,6 +2051,9 @@ bg:
       custom_actions:
         title: "Персонализирани действия"
         description: "Потребителските действия са преки пътища с едно кликване до набор от предварително дефинирани действия, които можете да направите достъпни за определени работни пакети въз основа на статус, роля, тип или проект."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
@@ -2051,8 +2061,11 @@ bg:
         description: >
           Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
       internal_comments:
-        title: "For your eyes only"
+        title: Internal comments
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "Дейности за проследяване на времето"
   enumeration_work_package_priorities: "Приоритети на работни пакети"
   enumeration_reported_project_statuses: "Докладвани статуси на проект"
@@ -2075,7 +2088,7 @@ bg:
   error_check_user_and_role: "Моля, изберете потребител и роля."
   error_code: "Error %{code}"
   error_color_could_not_be_saved: "Color could not be saved"
-  error_cookie_missing: '"Бисквитката" на OpenProject липсва. Моля уверете се че cookies са активирани, тъй като това приложение не функционира правилно без тях.'
+  error_cookie_missing: "\"Бисквитката\" на OpenProject липсва. Моля уверете се че cookies са активирани, тъй като това приложение не функционира правилно без тях."
   error_custom_option_not_found: "Опцията не съществува."
   error_enterprise_activation_user_limit: "Your account could not be activated (user limit reached). Please contact your administrator to gain access."
   error_enterprise_token_invalid_domain: "The Enterprise edition is not active. Your Enterprise token's domain (%{actual}) does not match the system's host name (%{expected})."
@@ -2093,7 +2106,7 @@ bg:
   error_must_be_project_member: "трябва да бъде член проекта"
   error_migrations_are_pending: "Your OpenProject installation has pending database migrations. You have likely missed running the migrations on your last upgrade. Please check the upgrade guide to properly upgrade your installation."
   error_migrations_visit_upgrade_guides: "Please visit our upgrade guide documentation"
-  error_no_default_work_package_status: "Не е дефиниран работен пакет по подразбиране. Моля проверете конфигурацията ( Отидете на Администрация -> Статуси на работни пакети)."
+  error_no_default_work_package_status: 'Не е дефиниран работен пакет по подразбиране. Моля проверете конфигурацията ( Отидете на Администрация -> Статуси на работни пакети).'
   error_no_type_in_project: "Няма тип свързан към този проект. Моля проверете проектните настройки."
   error_omniauth_registration_timed_out: "Изтече времето на изчакване за регистриране чрез удостоверяване на външен доставчик. Моля, опитайте отново."
   error_omniauth_invalid_auth: "Информацията за удостоверяване, върната от доставчика на идентичност, е невалидна. Моля, свържете се с вашия администратор за допълнителна помощ."
@@ -2472,7 +2485,6 @@ bg:
   label_ldap_auth_source_plural: "LDAP connections"
   label_attribute_expand_text: "The complete text for '%{attribute}'"
   label_authentication: "Оторизация"
-  label_authentication_settings: "Authentication settings"
   label_available_custom_fields_projects: "Available custom fields projects"
   label_available_global_roles: "Available global roles"
   label_available_project_attributes: "Available project attributes"
@@ -2875,9 +2887,6 @@ bg:
   label_register: "Регистрирайте нов профил"
   label_register_with_developer: "Регистрирайте се като разработчик"
   label_registered_on: "Регистриран на"
-  label_registration_activation_by_email: "активиране на профила по имейл"
-  label_registration_automatic_activation: "автоматично активиране на акаунт"
-  label_registration_manual_activation: "ръчно активиране на акаунт"
   label_related_work_packages: "Свързани работени пакети"
   label_relates: "свързани с"
   label_relates_to: "свързани с"
@@ -3029,9 +3038,9 @@ bg:
   label_wiki_navigation: "Wiki навигация"
   label_wiki_page: "Wiki страница"
   label_wiki_page_plural: "Wiki страници"
-  label_wiki_show_index_page_link: 'Показване на елемент от подменюто "Съдържание"'
+  label_wiki_show_index_page_link: "Показване на елемент от подменюто \"Съдържание\""
   label_wiki_show_menu_item: "Покажи като меню в проектната навигация"
-  label_wiki_show_new_page_link: 'Показване на елемент от подменю "Създай нова подстраница"'
+  label_wiki_show_new_page_link: "Показване на елемент от подменю \"Създай нова подстраница\""
   label_wiki_show_submenu_item: "Покажи като елемент от подменюто на "
   label_wiki_start: "Начална страница"
   label_work: "Работа"
@@ -3467,7 +3476,7 @@ bg:
     default: "-"
   project:
     archive:
-      are_you_sure: 'Наистина ли искате да архивирате на проекта "%{name}"?'
+      are_you_sure: "Наистина ли искате да архивирате на проекта \"%{name}\"?"
       archived: "Архивирано"
     count:
       zero: "0 projects"
@@ -3557,7 +3566,7 @@ bg:
     errors:
       build_failed: "Не може да създаде хранилище с избраната конфигурация. %{reason}"
       managed_delete: "Не може да изтриете управляваното хранилище."
-      managed_delete_local: 'Не може да изтрие местно хранилище на файловата система в "%{path}": %{error_message}'
+      managed_delete_local: "Не може да изтрие местно хранилище на файловата система в \"%{path}\": %{error_message}"
       empty_repository: "Хранилището съществува, но е празно. То не съдържа никакви корекции все още."
       exists_on_filesystem: "Директорията на хранилище вече съществува във файловата система."
       filesystem_access_failed: "Възникна грешка при достъп до хранилището в файловата система: %{message}"
@@ -3568,7 +3577,7 @@ bg:
       exception_title: "Няма достъп до хранилището: %{message}"
       disabled_or_unknown_type: "Избраният тип %{type} е забранен или вече не е наличен за SCM доставчик %{vendor}."
       disabled_or_unknown_vendor: "SCM доставчик %{vendor} е забранен или вече не е наличен."
-      remote_call_failed: 'Извикване на отдалеченото управление пропадна със съобщение "%{message}" (код: %{code})'
+      remote_call_failed: "Извикване на отдалеченото управление пропадна със съобщение \"%{message}\" (код: %{code})"
       remote_invalid_response: "Получил Невалиден отговор от отдалечено управление."
       remote_save_failed: "Не може да запише хранилище с параметри, получени от отдалеченото."
     git:
@@ -3718,6 +3727,7 @@ bg:
   setting_hours_per_day_explanation: >-
     This defines what is considered a "day" when displaying duration in days and hours (for example, if a day is 8 hours, 32 hours would be 4 days).
   setting_invitation_expiration_days: "Имейлът за активиране изтича след"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Progress calculation mode"
   setting_work_package_done_ratio_field: "Work-based"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3733,6 +3743,9 @@ bg:
   setting_journal_aggregation_time_minutes: "User actions aggregated within"
   setting_log_requesting_user: "Log user login, name, and mail address for all requests"
   setting_login_required: "Authentication required"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Emission email address"
   setting_mail_handler_api_key: "API ключ"
   setting_mail_handler_body_delimiters: "Truncate emails after one of these lines"
@@ -3758,6 +3771,7 @@ bg:
   setting_project_gantt_query_text: "Можете да промените заявката, която се използва за показване на диаграмата на Гант от страницата за преглед на проекта."
   setting_security_badge_displayed: "Display security badge"
   setting_registration_footer: "Registration footer"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Automatic repository vendor type"
   setting_repositories_encodings: "Repositories encodings"
   setting_repository_storage_cache_minutes: "Repository disk size cache"
@@ -3768,8 +3782,22 @@ bg:
   setting_repository_truncate_at: "Maximum number of files displayed in the repository browser"
   setting_rest_api_enabled: "Enable REST web service"
   setting_self_registration: "Self-registration"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Session expiry time after inactivity"
   setting_session_ttl_hint: "Value below 5 works like disabled"
   setting_session_ttl_enabled: "Session expires"
@@ -3797,6 +3825,8 @@ bg:
   setting_working_days: "Работни дни"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.

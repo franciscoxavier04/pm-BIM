@@ -902,7 +902,7 @@ RSpec.describe WorkPackage do
       login_as user
     end
 
-    context "when internal_comments is enabled", with_flag: { internal_comments: true } do
+    context "when internal_comments is enabled" do
       context "and setting is enabled for the project" do
         before do
           work_package.project.enabled_internal_comments = true
@@ -952,7 +952,7 @@ RSpec.describe WorkPackage do
       end
     end
 
-    context "when internal_comments is disabled", with_flag: { internal_comments: false } do
+    context "when internal_comments is disabled" do
       before do
         mock_permissions_for(user) do |mock|
           mock.allow_in_project(:view_internal_comments, project: work_package.project)

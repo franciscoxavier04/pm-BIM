@@ -102,6 +102,8 @@ fr:
       explanation:
         text: "Les actions individuelles d'un utilisateur (par ex. mis à jour un lot de travaux deux fois) sont agrégés en une seule action si leur différence d'âge est inférieure à la période spécifiée. Elles seront affichées en une seule action dans l'application. Cela retardera également les notifications du même temps réduisant donc le nombre d'e-mails envoyés et affectera également le délai %{webhook_link}."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Afficher jusqu'à
     is_active: actuellement affiché
@@ -628,13 +630,15 @@ fr:
         automatically_generated_subjects:
           label: "Sujets générés automatiquement"
           caption: "Définissez un modèle utilisant des attributs et du texte référencés pour générer automatiquement des sujets de lots de travaux. Les utilisateurs ne pourront pas modifier manuellement les sujets."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
         pattern:
           label: "Modèle de sujet"
           caption: "Ajouter du texte ou saisissez / pour rechercher un attribut. Vous pouvez ajouter des espaces pour les séparer."
-          headings:
-            work_package: "Lot de travaux"
-            parent: "Parent"
-            project: "Projet"
           insert_as_text: "Aucun attribut n'a été trouvé. Ajouter en tant que texte : « %{word} »"
       export_configuration:
         tab: "Générer un fichier PDF"
@@ -1136,6 +1140,7 @@ fr:
         error_conflict: "Cette information a été mise a jour par au moin un autre utilisateur pendant la même session"
         email: "n'est pas une adresse e-mail valide."
         empty: "ne peut pas être vide."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "doit être pair."
         exclusion: "est réservé."
         feature_disabled: n'est pas disponible.
@@ -1514,7 +1519,9 @@ fr:
         one: "Notification"
         other: "Notifications"
       placeholder_user: "Utilisateur de remplacement"
-      project: "Projet"
+      project:
+        one: "Project"
+        other: "Projects"
       project_query:
         one: "Liste de projets"
         other: "Listes de projets"
@@ -1993,6 +2000,7 @@ fr:
       edit_attribute_groups: Modifier les groupes d'attributs
       gantt_pdf_export: Exportation PDF de diagramme de Gantt
       ldap_groups: Synchronisation des utilisateurs LDAP et des groupes
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: Stockage de fichiers OneDrive/SharePoint
       placeholder_users: Utilisateurs de remplacement
       project_list_sharing: Partage de liste de projets
@@ -2041,6 +2049,9 @@ fr:
       custom_actions:
         title: "Actions personnalisées"
         description: "Les actions personnalisées sont des raccourcis en un clic vers un ensemble d'actions prédéfinies que vous pouvez rendre disponibles sur certains lots de travaux en fonction de l'état, du rôle, du type ou du projet."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Assurez-vous que les fichiers téléversés dans OpenProject sont analysés pour détecter les virus avant d'être accessibles aux autres utilisateurs."
       placeholder_users:
@@ -2048,8 +2059,11 @@ fr:
         description: >
           Les utilisateurs fictifs sont un moyen d'attribuer des lots de travaux à des utilisateurs qui ne font pas partie de votre projet. Ils peuvent être utiles dans une série de scénarios ; par exemple, si vous avez besoin de suivre des tâches pour une ressource qui n'est pas encore nommée ou disponible, ou si vous ne voulez pas donner à cette personne l'accès à OpenProject mais voulez quand même suivre les tâches qui lui sont assignées.
       internal_comments:
-        title: "For your eyes only"
+        title: Internal comments
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "Activités de suivi du temps"
   enumeration_work_package_priorities: "Priorités du Lot de Travaux"
   enumeration_reported_project_statuses: "Statuts de projet signalés"
@@ -2469,7 +2483,6 @@ fr:
   label_ldap_auth_source_plural: "Connexions LDAP"
   label_attribute_expand_text: "Le texte complet pour « %{attribute} »."
   label_authentication: "Authentification"
-  label_authentication_settings: "Paramètres d'authentification"
   label_available_custom_fields_projects: "Projets de champs personnalisés disponibles"
   label_available_global_roles: "Rôles globaux disponibles"
   label_available_project_attributes: "Attributs de projet disponibles"
@@ -2872,9 +2885,6 @@ fr:
   label_register: "Créer un compte"
   label_register_with_developer: "S'inscrire en tant que développeur"
   label_registered_on: "Enregistré sur"
-  label_registration_activation_by_email: "activation du compte par e-mail"
-  label_registration_automatic_activation: "activation automatique du compte"
-  label_registration_manual_activation: "activation manuelle du compte"
   label_related_work_packages: "Lots de Travaux associés"
   label_relates: "En relation avec"
   label_relates_to: "En relation avec"
@@ -3715,6 +3725,7 @@ fr:
   setting_hours_per_day_explanation: >-
     Cela définit ce qui est considéré comme un « jour » lors de l'affichage de la durée en jours et en heures (par exemple, si un jour dure 8 heures, 32 heures représentent 4 jours).
   setting_invitation_expiration_days: "L'émail d’activation expire après"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Mode de calcul de l'avancement"
   setting_work_package_done_ratio_field: "Basé sur le travail"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3730,6 +3741,9 @@ fr:
   setting_journal_aggregation_time_minutes: "Actions utilisateur agrégées dans"
   setting_log_requesting_user: "Enregister le login utilisateur, nom et adresse e-mail pour toutes les requêtes"
   setting_login_required: "Authentification requise"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Adresse expéditeur"
   setting_mail_handler_api_key: "Clé API"
   setting_mail_handler_body_delimiters: "Tronquer les e-mails à partir de l'une de ces lignes"
@@ -3755,6 +3769,7 @@ fr:
   setting_project_gantt_query_text: "Vous pouvez modifier la requête utilisée pour afficher le diagramme de Gantt à partir de la page d'aperçu du projet."
   setting_security_badge_displayed: "Afficher le badge de sécurité"
   setting_registration_footer: "Pied de page d’inscription"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Type de fournisseur de dépôt automatique"
   setting_repositories_encodings: "Encodages de référentiels"
   setting_repository_storage_cache_minutes: "Cache de l'espace disque du dépôt"
@@ -3765,8 +3780,22 @@ fr:
   setting_repository_truncate_at: "Le nombre maiximum de fichiers exposes au navigateur"
   setting_rest_api_enabled: "Autoriser service web REST"
   setting_self_registration: "Auto-enregistrement"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Délai d'expiration de session après inactivité"
   setting_session_ttl_hint: "Une valeur inférieur à 5 désactive cette fonction"
   setting_session_ttl_enabled: "Session expirée"
@@ -3794,6 +3823,8 @@ fr:
   setting_working_days: "Jours ouvrés"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Authentification unique"
       omniauth_direct_login_hint_html: >
         Si cette option est activée, les demandes de connexion seront redirigées vers le fournisseur omniauth configuré. La liste déroulante de connexion et la page de connexion seront désactivées. <br/> <strong>Remarque :</strong> lorsque cette option est activée, les utilisateurs peuvent toujours se connecter en interne en visitant la page de connexion <code>%{internal_path}</code>, sauf si vous désactivez également les connexions par mot de passe.

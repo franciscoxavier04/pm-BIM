@@ -101,9 +101,10 @@ Rails.application.reloader.to_prepare do
                        "projects/settings/general": %i[show update toggle_public toggle_public_dialog],
                        "projects/settings/storage": %i[show],
                        "projects/settings/work_packages": %i[show],
-                       "projects/settings/work_packages/activities": %i[show update],
+                       "projects/settings/work_packages/internal_comments": %i[show update],
                        "projects/templated": %i[create destroy],
-                       "projects/identifier": %i[show update]
+                       "projects/identifier": %i[show update],
+                       "projects/status": %i[update destroy]
                      },
                      permissible_on: :project,
                      require: :member,
@@ -318,29 +319,25 @@ Rails.application.reloader.to_prepare do
                      {},
                      permissible_on: %i[project],
                      require: :loggedin,
-                     dependencies: :view_work_packages,
-                     visible: -> { OpenProject::FeatureDecisions.internal_comments_active? }
+                     dependencies: :view_work_packages
 
       wpt.permission :add_internal_comments,
                      {},
                      permissible_on: %i[project],
                      require: :loggedin,
-                     dependencies: %i[view_project view_internal_comments],
-                     visible: -> { OpenProject::FeatureDecisions.internal_comments_active? }
+                     dependencies: %i[view_project view_internal_comments]
 
       wpt.permission :edit_own_internal_comments,
                      {},
                      permissible_on: %i[project],
                      require: :loggedin,
-                     dependencies: %i[view_project view_internal_comments],
-                     visible: -> { OpenProject::FeatureDecisions.internal_comments_active? }
+                     dependencies: %i[view_project view_internal_comments]
 
       wpt.permission :edit_others_internal_comments,
                      {},
                      permissible_on: %i[project],
                      require: :loggedin,
-                     dependencies: %i[view_project view_internal_comments],
-                     visible: -> { OpenProject::FeatureDecisions.internal_comments_active? }
+                     dependencies: %i[view_project view_internal_comments]
 
       # WP attachments can be added with :edit_work_packages, this permission allows it without Edit WP as well.
       wpt.permission :add_work_package_attachments,

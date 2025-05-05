@@ -39,8 +39,23 @@ module TabsHelper
     end
   end
 
+  def render_tab_header_nav(header, tabs)
+    header.with_tab_nav(label: nil) do |tab_nav|
+      tabs.each do |tab|
+        tab_nav.with_tab(selected: selected_tab(tabs) == tab, href: tab[:path]) do |t|
+          feature = tab[:enterprise_feature]
+
+          if feature && !EnterpriseToken.allows_to?(feature)
+            t.with_icon(icon: :"op-enterprise-addons", classes: "upsell-colored")
+          end
+          t.with_text { I18n.t(tab[:label]) }
+        end
+      end
+    end
+  end
+
   def selected_tab(tabs)
-    tabs.detect { |t| t[:name] == params[:tab] } || tabs.first
+    tabs.detect { |t| t[:name].to_s == params[:tab].to_s } || tabs.first
   end
 
   def tabs_for_key(key, params = {})

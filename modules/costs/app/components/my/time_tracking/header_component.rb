@@ -32,22 +32,6 @@ module My
   module TimeTracking
     class HeaderComponent < ApplicationComponent
       options :date, :mode, :view_mode
-
-      def view_mode_block
-        if view_mode == :list
-          lambda do |button|
-            button.with_leading_visual_icon(icon: "list-unordered")
-            button.with_trailing_action_icon(icon: "triangle-down")
-            t(:label_list)
-          end
-        else
-          lambda do |button|
-            button.with_leading_visual_icon(icon: :calendar)
-            button.with_trailing_action_icon(icon: "triangle-down")
-            t(:label_calendar)
-          end
-        end
-      end
     end
   end
 end

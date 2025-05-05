@@ -35,7 +35,7 @@ export function appendCollapsedState(
   const header = document.querySelector(headerSelector);
 
   if (header) {
-    const collapsed = header.classList.contains('CollapsibleHeader--collapsed');
+    const collapsed = header.hasAttribute('data-collapsed');
     target.append('collapsed', collapsed.toString());
   }
 }

@@ -644,6 +644,7 @@ pl:
           with_current_filter: "Obecnie brak powiadomień w tym widoku"
         mark_all_read: "Oznacz wszystko jako przeczytane"
         mark_as_read: "Oznacz jako przeczytane"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
         text_update_date_by: "%{date} przez"
         total_count_warning: "Wyświetlono najnowsze powiadomienia: %{newest_count}. Nie wyświetlono %{more_count}."
         empty_state:

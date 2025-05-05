@@ -641,6 +641,7 @@ de:
           with_current_filter: "Es gibt derzeit keine Benachrichtigungen in dieser Ansicht"
         mark_all_read: "Alles als gelesen markieren"
         mark_as_read: "Als gelesen markieren"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
         text_update_date_by: "%{date} von"
         total_count_warning: "Zeige die %{newest_count} neuesten Benachrichtigungen. %{more_count} weitere werden nicht angezeigt."
         empty_state:

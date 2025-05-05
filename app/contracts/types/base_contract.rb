@@ -109,7 +109,7 @@ module Types
       valid_tokens = flat_valid_token_list
       invalid_tokens = blueprint.scan(PatternResolver::TOKEN_REGEX)
                                 .reduce([]) do |acc, match|
-        token = Patterns::Token.build(match).key
+        token = Patterns::PatternToken.build(match).key
         valid_tokens.include?(token) ? acc : acc << token
       end
 

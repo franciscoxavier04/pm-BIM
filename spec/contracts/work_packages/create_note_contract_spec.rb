@@ -88,17 +88,7 @@ RSpec.describe WorkPackages::CreateNoteContract do
         work_package.journal_notes = "blubs"
       end
 
-      context "and journal_internal is true, and internal_comments_active? is disabled",
-              with_flag: { internal_comments_active: false } do
-        before do
-          work_package.journal_internal = true
-        end
-
-        it_behaves_like "contract is invalid", journal_internal: :feature_disabled
-      end
-
-      context "and journal_internal is true, and internal_comments_active? is enabled",
-              with_flag: { internal_comments_active: true } do
+      context "and journal_internal is true" do
         before do
           work_package.journal_internal = true
         end
@@ -106,8 +96,7 @@ RSpec.describe WorkPackages::CreateNoteContract do
         it_behaves_like "contract is valid"
       end
 
-      context "and journal_internal is false, and internal_comments_active? is disabled",
-              with_flag: { internal_comments_active: false } do
+      context "and journal_internal is false" do
         before do
           work_package.journal_internal = false
         end
@@ -115,8 +104,7 @@ RSpec.describe WorkPackages::CreateNoteContract do
         it_behaves_like "contract is valid"
       end
 
-      context "with journal_internal is true, internal_comments_active? is active but lacking permissions",
-              with_flag: { internal_comments_active: true } do
+      context "with journal_internal is true, but lacking permissions" do
         let(:permissions) { super() - [:add_internal_comments] }
 
         before do
@@ -126,8 +114,7 @@ RSpec.describe WorkPackages::CreateNoteContract do
         it_behaves_like "contract is invalid", journal_internal: :error_unauthorized
       end
 
-      context "with journal_internal is false, internal_comments_active? is active and lacking permissions",
-              with_flag: { internal_comments_active: true } do
+      context "with journal_internal is false and lacking permissions" do
         let(:permissions) { super() - [:add_internal_comments] }
 
         before do

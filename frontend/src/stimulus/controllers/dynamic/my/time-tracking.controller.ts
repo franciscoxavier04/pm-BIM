@@ -3,6 +3,8 @@ import { Calendar } from '@fullcalendar/core';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import momentTimezonePlugin from '@fullcalendar/moment-timezone';
+import { toMoment } from '@fullcalendar/moment';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 import moment from 'moment';
@@ -25,6 +27,9 @@ export default class MyTimeTrackingController extends Controller {
     canEdit: Boolean,
     allowTimes: Boolean,
     forceTimes: Boolean,
+    workingDays: Array,
+    startOfWeek: Number,
+    timeZone: String,
   };
 
   declare readonly calendarTarget:HTMLElement;
@@ -38,6 +43,9 @@ export default class MyTimeTrackingController extends Controller {
   declare readonly forceTimesValue:boolean;
   declare readonly localeValue:string;
   declare readonly viewModeValue:string;
+  declare readonly workingDaysValue:number[];
+  declare readonly startOfWeekValue:number;
+  declare readonly timeZoneValue:string;
 
   private calendar:Calendar;
   private DEFAULT_TIMED_EVENT_DURATION = '01:00';
@@ -67,10 +75,11 @@ export default class MyTimeTrackingController extends Controller {
 
   initializeCalendar() {
     this.calendar = new Calendar(this.calendarTarget, {
-      plugins: [timeGridPlugin, dayGridPlugin, interactionPlugin],
+      plugins: [timeGridPlugin, dayGridPlugin, interactionPlugin, momentTimezonePlugin],
       initialView: this.calendarView(),
       locales: allLocales,
       locale: this.localeValue,
+      timeZone: this.timeZoneValue,
       events: this.timeEntriesValue,
       headerToolbar: false,
       height: '100%',
@@ -85,7 +94,9 @@ export default class MyTimeTrackingController extends Controller {
       eventMaxStack: 2,
       eventShortHeight: 31,
       nowIndicator: true,
-      businessHours: { daysOfWeek: [1, 2, 3, 4, 5], startTime: '00:00', endTime: '24:00' },
+      businessHours: { daysOfWeek: this.workingDaysValue, startTime: '00:00', endTime: '24:00' },
+      hiddenDays: this.hiddenDays(),
+      firstDay: this.startOfWeekValue,
       eventClassNames(arg) {
         return [
           'calendar-time-entry-event',
@@ -98,7 +109,7 @@ export default class MyTimeTrackingController extends Controller {
         let timeDetails = '';
 
         if (!arg.event.allDay) {
-          const time = `${moment(arg.event.start).format('LT')} - ${moment(arg.event.end).format('LT')}`;
+          const time = `${toMoment(arg.event.start!, this.calendar).format('LT')} - ${toMoment(arg.event.end!, this.calendar).format('LT')}`;
           timeDetails = `<div class="color-fg-muted mt-2" title="${time}">${time}</div>`;
         }
 
@@ -136,13 +147,13 @@ export default class MyTimeTrackingController extends Controller {
         // it does not make sense to resize the events without start & end times
         // we cannot only disable resize, because we want to be able to drag the events
         // so we need to revert the event to its original size
-        if (info.event.allDay) {
+        if (info.event.allDay || !info.event.start || !info.event.end) {
           info.revert();
           return;
         }
 
-        const startMoment = moment(info.event.startStr);
-        const endMoment = moment(info.event.endStr);
+        const startMoment = toMoment(info.event.start, this.calendar);
+        const endMoment = toMoment(info.event.end, this.calendar);
 
         const newEventHours = moment.duration(endMoment.diff(startMoment)).asHours();
 
@@ -178,7 +189,7 @@ export default class MyTimeTrackingController extends Controller {
       },
 
       eventDrop: (info) => {
-        const startMoment = moment(info.event.startStr);
+        const startMoment = toMoment(info.event.start!, this.calendar);
 
         this.updateTimeEntry(
           info.event.id,
@@ -246,7 +257,7 @@ export default class MyTimeTrackingController extends Controller {
       if (!eventStart) return;
 
       // Format event date for comparison
-      const eventDateStr = eventStart.toISOString().slice(0, 10);
+      const eventDateStr = toMoment(eventStart, this.calendar).format('YYYY-MM-DD');
 
       if (eventDateStr === dayStr && event.extendedProps && event.extendedProps.hours) {
         totalHours += event.extendedProps.hours as number;
@@ -373,6 +384,7 @@ export default class MyTimeTrackingController extends Controller {
   calendarView():string {
     switch (this.modeValue) {
       case 'week':
+      case 'workweek':
         return 'timeGridWeek';
       case 'month':
         return 'dayGridMonth';
@@ -381,6 +393,23 @@ export default class MyTimeTrackingController extends Controller {
       default:
         return 'timeGridWeek';
     }
+  }
+
+  hiddenDays():number[] {
+    // if we are not in workweek mode we do not hide any days
+    if (this.modeValue !== 'workweek') {
+      return [];
+    }
+
+    const hiddenDays = [0, 1, 2, 3, 4, 5, 6];
+    this.workingDaysValue.forEach((day) => {
+      const index = hiddenDays.indexOf(day);
+      if (index > -1) {
+        hiddenDays.splice(index, 1);
+      }
+    });
+
+    return hiddenDays;
   }
 
   newTimeEntry(event:ActionEvent) {

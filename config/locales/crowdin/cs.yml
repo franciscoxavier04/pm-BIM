@@ -102,6 +102,8 @@ cs:
       explanation:
         text: "Individuální akce/úpravy uživatele (např. dvojnásobná aktualizace pracovního balíčku se sečtou do jediné akce, pokud je jejich časový rozdíl menší než stanovený čas. Budou zobrazeny jako jedna akce v rámci aplikace. Toto také zpozdí oznámení o stejný čas a sníží tak počet zasílaných e-mailů a ovlivní se také zpoždění na adrese %{webhook_link}."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Zobrazit do
     is_active: aktuálně zobrazené
@@ -646,13 +648,15 @@ cs:
         automatically_generated_subjects:
           label: "Automaticky generované předměty"
           caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
         pattern:
           label: "Vzor předmětu"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
-          headings:
-            work_package: "Pracovní balíček"
-            parent: "Nadřazený"
-            project: "Projekt"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Vytvořit PDF"
@@ -1156,6 +1160,7 @@ cs:
         error_conflict: "Informace mezitím aktualizoval alespoň jeden další uživatel."
         email: "není platná e-mailová adresa"
         empty: "nemůže být prázdné."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "musí být sudé."
         exclusion: "vyhrazeno."
         feature_disabled: is not available.
@@ -1542,7 +1547,11 @@ cs:
         many: "Oznámení"
         other: "Oznámení"
       placeholder_user: "placeholder uživatel"
-      project: "Projekt"
+      project:
+        one: "Project"
+        few: "Projects"
+        many: "Projects"
+        other: "Projects"
       project_query:
         one: "Seznam projektů"
         few: "Project lists"
@@ -2073,6 +2082,7 @@ cs:
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF export
       ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
       project_list_sharing: Project List Sharing
@@ -2121,6 +2131,9 @@ cs:
       custom_actions:
         title: "Vlastní akce"
         description: "Vlastní akce jsou zkratky jedním kliknutím na sadu předem definovaných akcí, které můžete zpřístupnit na základě stavu některých pracovních balíčků. role, typ nebo projekt."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Zajistěte, aby nahrané soubory v OpenProjectu byly před zpřístupněním ostatním uživatelům zkontrolovány na přítomnost virů."
       placeholder_users:
@@ -2128,8 +2141,11 @@ cs:
         description: >
           Placeholder uživatelé jsou způsob, jak přiřadit pracovní balíčky uživatelům, kteří nejsou součástí vašeho projektu. Mohou být užiteční v řadě scénářů; například, pokud potřebujete sledovat úkoly u zdroje, který ještě nejsou pojmenovány nebo dostupné, nebo pokud nechcete této osobě umožnit přístup k OpenProject ale stále chcete sledovat úkoly, které jim byly přiděleny.
       internal_comments:
-        title: "For your eyes only"
+        title: Internal comments
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "Sledování času"
   enumeration_work_package_priorities: "Priority pracovního balíčku"
   enumeration_reported_project_statuses: "Nahlášený stav projektu"
@@ -2549,7 +2565,6 @@ cs:
   label_ldap_auth_source_plural: "Připojení LDAP"
   label_attribute_expand_text: "Úplný text pro '%{attribute}'"
   label_authentication: "Ověření"
-  label_authentication_settings: "Nastavení ověření"
   label_available_custom_fields_projects: "Dostupné projekty s vlastními polemi"
   label_available_global_roles: "Dostupné globální role"
   label_available_project_attributes: "Dostupné atributy projektu"
@@ -2952,9 +2967,6 @@ cs:
   label_register: "Vytvořit nový účet"
   label_register_with_developer: "Zaregistrovat se jako vývojář"
   label_registered_on: "Registrován"
-  label_registration_activation_by_email: "aktivace účtu prostřednictvím e-mailu"
-  label_registration_automatic_activation: "automatická aktivace účtu"
-  label_registration_manual_activation: "ruční aktivace účtu"
   label_related_work_packages: "Související pracovní balíčky"
   label_relates: "související s"
   label_relates_to: "související s"
@@ -3798,6 +3810,7 @@ cs:
   setting_hours_per_day_explanation: >-
     This defines what is considered a "day" when displaying duration in days and hours (for example, if a day is 8 hours, 32 hours would be 4 days).
   setting_invitation_expiration_days: "Platnost aktivačního e-mailu vyprší po"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Režim výpočtu průběhu"
   setting_work_package_done_ratio_field: "Na základě práce"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3813,6 +3826,9 @@ cs:
   setting_journal_aggregation_time_minutes: "Uživatelské akce agregované v rámci"
   setting_log_requesting_user: "Logovat uživatelský login a emailovou adresu pro všechny požadavky"
   setting_login_required: "Vyžadována autentizace"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Odchozí emailová adresa"
   setting_mail_handler_api_key: "API klíč"
   setting_mail_handler_body_delimiters: "Zkrátit e-maily po jednom z těchto řádků"
@@ -3838,6 +3854,7 @@ cs:
   setting_project_gantt_query_text: "Můžete upravit dotaz, který se používá k zobrazení Gantt grafu ze stránky s přehledem projektu."
   setting_security_badge_displayed: "Zobrazit bezpečnostní odznak"
   setting_registration_footer: "Zápatí registrace"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Automatický typ dodavatele repozitáře"
   setting_repositories_encodings: "Kódování repozitářů"
   setting_repository_storage_cache_minutes: "Mezipaměť velikosti disku repositáře"
@@ -3848,8 +3865,22 @@ cs:
   setting_repository_truncate_at: "Maximální počet souborů zobrazených v prohlížeči repozitáře"
   setting_rest_api_enabled: "Povolit webové služby REST"
   setting_self_registration: "Povolit automatickou registraci"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Čas vypršení sezení při neaktivitě"
   setting_session_ttl_hint: "Hodnota menší než 5 funguje jako zakázáno"
   setting_session_ttl_enabled: "Platnost relace vyprší"
@@ -3877,6 +3908,8 @@ cs:
   setting_working_days: "Pracovní dny"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign On"
       omniauth_direct_login_hint_html: >
         If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.

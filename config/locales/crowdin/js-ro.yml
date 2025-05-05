@@ -642,6 +642,7 @@ ro:
           with_current_filter: "Nu există notificări în această vizualizare în acest moment"
         mark_all_read: "Marchează toate ca și citite"
         mark_as_read: "Marchează ca Citit"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
         text_update_date_by: "%{date} de"
         total_count_warning: "Se afișează %{newest_count} cele mai recente notificări. %{more_count} în plus nu sunt afișate."
         empty_state:

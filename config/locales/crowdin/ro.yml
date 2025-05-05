@@ -102,6 +102,8 @@ ro:
       explanation:
         text: "Acțiunile individuale ale unui utilizator (de exemplu, actualizarea de două ori a unui pachet de lucru) sunt agregate într-o singură acțiune dacă diferența de vechime dintre ele este mai mică decât intervalul de timp specificat. Acestea vor fi afișate ca o singură acțiune în cadrul aplicației. De asemenea, acest lucru va întârzia notificările cu aceeași perioadă de timp, reducând numărul de e-mailuri trimise și va afecta, de asemenea, întârzierea %{webhook_link}."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Afişare până la
     is_active: afișat acum
@@ -559,7 +561,7 @@ ro:
     text: "Text"
   placeholder_users:
     right_to_manage_members_missing: >
-      Nu aveți permisiunea de a șterge utilizatorul de tip placeholder. Nu aveți dreptul de a gestiona membrii pentru toate proiectele din care face parte utilizatorul de tip placeholder.
+      Nu ai permisiunea să ștergi utilizatorul de tip placeholder. Nu ai dreptul să gestionezi membrii pentru toate proiectele din care face parte utilizatorul de tip placeholder.
     delete_tooltip: "Șterge utilizator placeholder"
     deletion_info:
       heading: "Ștergeți utilizatorul de tip placeholder %{name}"
@@ -638,13 +640,15 @@ ro:
         automatically_generated_subjects:
           label: "Automatically generated subjects"
           caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
         pattern:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
-          headings:
-            work_package: "Pachet de lucru"
-            parent: "Părinte"
-            project: "Proiect"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -1147,6 +1151,7 @@ ro:
         error_conflict: "Informaţia a fost actualizată de cel puţin un alt utilizator între timp."
         email: "nu este o adresă de e-mail validă."
         empty: "nu poate fi gol."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "trebuie să fie par."
         exclusion: "este rezervat."
         feature_disabled: is not available.
@@ -1529,7 +1534,10 @@ ro:
         few: "Notificări"
         other: "Notificări"
       placeholder_user: "Utilizator Placeholder"
-      project: "Proiect"
+      project:
+        one: "Project"
+        few: "Projects"
+        other: "Projects"
       project_query:
         one: "Listă proiecte"
         few: "Listă proiecte"
@@ -2034,6 +2042,7 @@ ro:
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
       ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
       project_list_sharing: Project List Sharing
@@ -2082,6 +2091,9 @@ ro:
       custom_actions:
         title: "Acțiuni personalizate"
         description: "Acțiunile personalizate sunt comenzi rapide cu un singur clic către un set de acțiuni predefinite pe care le puteți face disponibile pentru anumite pachete de lucru în funcție de statut, rol, tip sau proiect."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
@@ -2089,8 +2101,11 @@ ro:
         description: >
           Utilizatorii de tip substituție sunt o modalitate de a atribui pachete de lucru utilizatorilor care nu fac parte din proiectul tău. Acesta poate fi utilă într-o serie de scenarii; de exemplu, dacă trebuie să urmărești sarcinile pentru o resursă care nu este încă numită sau disponibilă, sau dacă nu vrei să acorzi acestei persoane acces la OpenProject dar totuși vrei să urmărești sarcinile care le-au fost atribuite.
       internal_comments:
-        title: "For your eyes only"
+        title: Internal comments
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "Activități de urmărire timp activate"
   enumeration_work_package_priorities: "Priorități pentru pachetele de lucru"
   enumeration_reported_project_statuses: "Stările proiectului raportat"
@@ -2510,7 +2525,6 @@ ro:
   label_ldap_auth_source_plural: "LDAP connections"
   label_attribute_expand_text: "The complete text for '%{attribute}'"
   label_authentication: "Autentificare"
-  label_authentication_settings: "Setări autentificare"
   label_available_custom_fields_projects: "Available custom fields projects"
   label_available_global_roles: "Roluri globale disponibile"
   label_available_project_attributes: "Atribute proiect disponibile"
@@ -2913,9 +2927,6 @@ ro:
   label_register: "Creează cont nou"
   label_register_with_developer: "Înregistrare ca programator"
   label_registered_on: "Înregistrat pe"
-  label_registration_activation_by_email: "activare cont prin email"
-  label_registration_automatic_activation: "activare automată a contului"
-  label_registration_manual_activation: "activare manuală a contului"
   label_related_work_packages: "Pachete de lucru asociate"
   label_relates: "asociat cu"
   label_relates_to: "asociat cu"
@@ -3757,6 +3768,7 @@ ro:
   setting_hours_per_day_explanation: >-
     This defines what is considered a "day" when displaying duration in days and hours (for example, if a day is 8 hours, 32 hours would be 4 days).
   setting_invitation_expiration_days: "E-mailul de activare expiră după"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Progress calculation mode"
   setting_work_package_done_ratio_field: "Work-based"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3772,6 +3784,9 @@ ro:
   setting_journal_aggregation_time_minutes: "Acțiunile utilizatorilor agregate în cadrul"
   setting_log_requesting_user: "Auditare utilizator, nume și adresă de email pentru toate cererile"
   setting_login_required: "Autentificare obligatorie"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Adresa de e-mail a expeditorului"
   setting_mail_handler_api_key: "Cheie API"
   setting_mail_handler_body_delimiters: "Trunchiere e-mail-uri după una dintre aceste linii"
@@ -3797,6 +3812,7 @@ ro:
   setting_project_gantt_query_text: "Puteți modifica interogarea care este utilizată pentru a afișa diagrama Gantt din pagina de prezentare generală a proiectului."
   setting_security_badge_displayed: "Afișarea legitimației de securitate"
   setting_registration_footer: "Footer de înregistrare"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Tipul de furnizor pentru repo-urile automate"
   setting_repositories_encodings: "Codificări repo-uri"
   setting_repository_storage_cache_minutes: "Spațiul de disc rezervat pentru tampon (cache)"
@@ -3807,8 +3823,22 @@ ro:
   setting_repository_truncate_at: "Număr maxim de fișiere este afișat în exploratorul de repozitoriu"
   setting_rest_api_enabled: "Activare serviciu web REST"
   setting_self_registration: "Înregistrare individuală"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Durata de inactivitate pentru expirarea sesiunii"
   setting_session_ttl_hint: "O valoare sub 5 dezactivează expirarea sesiunii"
   setting_session_ttl_enabled: "Sesiunea expiră"
@@ -3836,6 +3866,8 @@ ro:
   setting_working_days: "Zile lucrătoare"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.

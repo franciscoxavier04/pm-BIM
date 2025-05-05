@@ -642,6 +642,7 @@ pt-PT:
           with_current_filter: "Não há notificações nesta visualização neste momento"
         mark_all_read: "Marcar tudo como lido"
         mark_as_read: "Marcar como lida"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
         text_update_date_by: "%{date} por"
         total_count_warning: "A mostrar as %{newest_count} notificações mais recentes. Mas %{more_count} não estão visíveis."
         empty_state:

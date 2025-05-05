@@ -50,7 +50,7 @@ RSpec.describe Activities::Fetcher, "integration" do
       .not_to include("budgets")
   end
 
-  describe "#events", with_flag: { internal_comments: true } do
+  describe "#events" do
     let(:event_user) { user }
     let(:work_package) { create(:work_package, project:, author: event_user) }
     let(:forum) { create(:forum, project:) }

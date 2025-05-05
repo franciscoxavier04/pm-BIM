@@ -158,7 +158,19 @@ RSpec.describe Storages::Storages::NextcloudContract, :storage_server_helpers, :
 
       before { storage.storage_audience = "valid_audience" }
 
-      it { is_expected.to be_valid }
+      it { is_expected.not_to be_valid }
+
+      context "and there is a valid enterprise token", with_ee: [:nextcloud_sso] do
+        it { is_expected.to be_valid }
+      end
+
+      context "and the authentication_method has been oauth2_sso before" do
+        before do
+          storage.save! # storage is already persisted with this auth method
+        end
+
+        it { is_expected.to be_valid }
+      end
     end
 
     context "when the authentication method is unknown" do
@@ -195,7 +207,7 @@ RSpec.describe Storages::Storages::NextcloudContract, :storage_server_helpers, :
       end
     end
 
-    context "when authentication happens through a common IDP" do
+    context "when authentication happens through a common IDP", with_ee: [:nextcloud_sso] do
       let(:authentication_method) { "oauth2_sso" }
 
       context "and there is no storage_audience" do

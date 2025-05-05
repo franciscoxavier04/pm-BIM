@@ -42,11 +42,11 @@ RSpec.describe Types::PatternResolver do
   end
 
   context "when the pattern has WorkPackage properties" do
-    let(:subject_pattern) { "{{id}} | {{done_ratio}} | {{creation_date}}" }
+    let(:subject_pattern) { "{{id}} | {{author}} | {{creation_date}}" }
 
     it "resolves the pattern" do
       expect(subject.resolve(work_package))
-        .to eq("#{work_package.id} | N/A | #{work_package.created_at.to_date.iso8601}")
+        .to eq("#{work_package.id} | #{work_package.author} | #{work_package.created_at.to_date.iso8601}")
     end
   end
 
@@ -59,9 +59,18 @@ RSpec.describe Types::PatternResolver do
     end
   end
 
+  context "when the pattern has attributes that do not resolve to a value" do
+    let(:subject_pattern) { "{{invalid_attribute}} | empty: {{assignee}} | without parent: {{parent_subject}}" }
+
+    it "resolves the pattern" do
+      expect(subject.resolve(work_package)).to eq("N/A | empty: [Assignee] | without parent: N/A")
+    end
+  end
+
   context "when the pattern has custom fields" do
     let(:custom_field) { create(:string_wp_custom_field) }
     let(:multi_value_field) { create(:multi_list_wp_custom_field) }
+    let(:custom_field_not_configured) { create(:string_wp_custom_field) }
     let(:type) { create(:type, custom_fields: [custom_field, multi_value_field]) }
     let(:project) { create(:project, types: [type], work_package_custom_fields: [custom_field, multi_value_field]) }
     let(:project_custom_field) { create(:project_custom_field, projects: [project], field_format: "string") }
@@ -91,6 +100,14 @@ RSpec.describe Types::PatternResolver do
       User.current = SystemUser.first
 
       expect(subject.resolve(work_package)).to eq("PROSPEC A custom field value: Important Information")
+    end
+
+    context "if the pattern contains custom fields that are not configured" do
+      let(:subject_pattern) { "pattern: {{invalid_attribute}}" }
+
+      it "resolves the pattern" do
+        expect(subject.resolve(work_package)).to eq("pattern: N/A")
+      end
     end
   end
 end

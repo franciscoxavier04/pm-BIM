@@ -201,7 +201,7 @@ gem "aws-sdk-core", "~> 3.107"
 # File upload via fog + screenshots on travis
 gem "aws-sdk-s3", "~> 1.91"
 
-gem "openproject-token", "~> 5.3.0"
+gem "openproject-token", "~> 5.4.0"
 
 gem "plaintext", "~> 0.3.2"
 
@@ -222,6 +222,12 @@ gem "store_attribute", "~> 2.0"
 
 # Appsignal integration
 gem "appsignal", "~> 3.10.0", require: false
+
+# Yabeda integration
+gem "yabeda-activerecord"
+gem "yabeda-prometheus-mmap"
+gem "yabeda-puma-plugin"
+gem "yabeda-rails"
 
 gem "view_component"
 # Lookbook
@@ -412,4 +418,4 @@ end
 
 gem "openproject-octicons", "~>19.25.0"
 gem "openproject-octicons_helper", "~>19.25.0"
-gem "openproject-primer_view_components", "~>0.63.0"
+gem "openproject-primer_view_components", "~>0.64.1"

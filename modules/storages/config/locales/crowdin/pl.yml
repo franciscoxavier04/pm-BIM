@@ -79,6 +79,8 @@ pl:
   project_storages:
     edit_project_folder:
       label: Edytuj folder projektu
+    open:
+      remote_identity_error: An unexpected error occured while connecting to the storage.
     project_folder_mode:
       automatic: Automatyczne zarządzanie
       inactive: Brak konkretnego folderu
@@ -237,6 +239,9 @@ pl:
       checked: Ostatnio sprawdzono %{datetime}
       checks:
         ampf_configuration:
+          client_folder_creation: Automatic folder creation
+          client_folder_removal: Automatic folder deletion
+          drive_contents: Drive has expected content
           files_request: Fetching group folder files
           group_folder_app: 'Dependency: Group Folders'
           group_folder_contents: Group folder has expected content
@@ -247,6 +252,7 @@ pl:
           existing_token: User token
           header: Uwierzytelnianie
           non_provisioned_user: User provisioned by IDP
+          offline_access: Configured OIDC offline_access scope
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
@@ -257,8 +263,8 @@ pl:
           dependencies_check: Zależności
           dependencies_versions: Dependencies (version)
           diagnostic_request: Diagnostic request
+          drive_id_exists: Drive exists
           drive_id_format: Drive ID format
-          drive_id_not_found: Drive exists
           header: Basic configuration
           host_url_accessible: Host URL accessible
           storage_configured: Configuration complete
@@ -275,40 +281,35 @@ pl:
           many: "%{count} checks returned a warning"
           other: "%{count} checks returned a warning"
       connection_validation:
-        client_id_wrong: Skonfigurowany identyfikator klienta OAuth 2 jest nieprawidłowy. Sprawdź konfigurację.
-        client_secret_wrong: Skonfigurowany klucz tajny klienta OAuth 2 jest nieprawidłowy. Sprawdź konfigurację.
-        dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
-        drive_id_wrong: Nie można znaleźć skonfigurowanego Drive ID. Sprawdź konfigurację.
-        group_folder_not_found: Folder grupy nie został znaleziony.
-        group_folder_version_mismatch: Wersja folderu grupy jest nieobsługiwana. Zaktualizuj swój serwer Nextcloud.
-        host_not_found: Nie znaleziono serwera Nextcloud pod skonfigurowanym adresem URL hosta. Sprawdź konfigurację.
-        missing_dependencies: 'Brakuje wymaganej zależności magazynu plików. Dodaj następującą zależność: %{dependency}.'
-        nextcloud:
-          oauth_request_not_found: Aplikacja OpenProject nie może znaleźć folderu głównego Nextcloud przy użyciu bieżącego zalogowanego użytkownika. Aby uzyskać dodatkowe informacje, sprawdź dzienniki serwera.
-          oauth_request_unauthorized: Bieżący użytkownik nie jest upoważniony do przeglądania głównego folderu Nextcloud lub nie mogliśmy uzyskać tokenu. W celu uzyskania dodatkowych informacji sprawdź dzienniki serwera.
-          oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
-          unexpected_content: W folderze zarządzanej grupy znaleziono nieoczekiwaną zawartość.
+        client_id_invalid: The configured OAuth 2 client id is invalid. Please check the configuration.
+        client_secret_invalid: The configured OAuth 2 client secret is invalid. Please check the configuration.
+        nc_dependency_missing: 'A required dependency is missing on the file storage. Please add the following dependency: %{dependency}.'
+        nc_dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
+        nc_group_folder_not_found: The group folder could not be found.
+        nc_host_not_found: No Nextcloud server found at the configured host url. Please check the configuration.
+        nc_oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
+        nc_oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
+        nc_oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
+        nc_unexpected_content: Unexpected content found in the managed group folder.
+        nc_userless_access_denied: The configured app password is invalid.
         not_configured: Nie można zweryfikować połączenia. Najpierw zakończ konfigurację.
+        od_client_cant_delete_folder: The client is having trouble deleting folders. Please check the setup documentation for your storage.
+        od_client_write_permission_missing: The client seems to have write permissions missing. Please check the setup documentation for your storage.
+        od_drive_id_invalid: The configured drive id seems invalid. Please check the configuration.
+        od_drive_id_not_found: The configured drive id could not be found. Please check the configuration.
+        od_existing_test_folder: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
+        od_oauth_request_not_found: OpenProject couldn't find the root folder in the drive using the current logged-in user. Please check the server logs for further information.
+        od_oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive/SharePoint or we couldn't acquire a token. Please check the server logs for further information.
+        od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
+        od_tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
+        od_unexpected_content: Unexpected content found in the drive.
+        offline_access_scope_missing: It is recommended to configure the OpenID Connect provider to request the offline_access scope. The integration may still work anyways, but make sure that refresh tokens do not expire.
         oidc_cant_acquire_token: Twoja konfiguracja OpenID Connect nie zapewnia niezbędnych odbiorców ani możliwości wymiany tokenów. Sprawdź naszą dokumentację, aby uzyskać więcej informacji.
         oidc_cant_exchange_token: Wygląda na to, że wystąpił problem z konfiguracją wymiany tokenów u Twojego dostawcy OpenID Connect. Sprawdź jego konfigurację i spróbuj ponownie.
         oidc_cant_refresh_token: Podczas próby sprawdzenia Twojego dostępu do magazynu wystąpił błąd. Aby uzyskać dalsze informacje, sprawdź dzienniki serwera.
         oidc_non_oidc_user: Bieżący użytkownik, choć otrzymał konfigurację, nie otrzymał konfiguracji od dostawcy tożsamości OpenID Connect (OIDC). Przeprowadź ponowne sprawdzenie z użytkownikiem, który otrzymał konfigurację od OIDC.
         oidc_non_provisioned_user: Bieżący użytkownik nie jest dostarczany przez dostawcę tożsamości OpenID Connect. Ponownie uruchom sprawdzanie z dostarczonym użytkownikiem.
-        one_drive:
-          client_cant_delete_folder: Klient ma problemy z usunięciem folderów. Sprawdź dokumentację konfiguracji swojej pamięci masowej.
-          client_write_permission_missing: Klient nie ma uprawnień zapisu. Sprawdź dokumentację konfiguracji swojej pamięci masowej.
-          drive_id_not_found: Nie można znaleźć skonfigurowanego Drive ID. Sprawdź konfigurację.
-          drive_id_wrong: Skonfigurowany Drive ID jest nieprawidłowy. Sprawdź konfigurację.
-          existing_test_folder: Wymagany do testowania folder %{folder_name} już istnieje. Usuń go i spróbuj ponownie.
-          oauth_request_not_found: OpenProject couldn't find the root folder in the drive using the current logged-in user. Please check the server logs for further information.
-          oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive or we couldn't acquire a token. Please check the server logs for further information.
-          oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
-          unexpected_content: Na dysku znaleziono nieoczekiwaną zawartość.
-        placeholder: Sprawdź połączenie z serwerem.
-        subtitle: Weryfikacja połączenia
-        tenant_id_wrong: Skonfigurowany katalog (dzierżawca) jest nieprawidłowy. Sprawdź konfigurację.
         unknown_error: Nie można zweryfikować połączenia. Wystąpił nieznany błąd. Aby uzyskać dalsze informacje, sprawdź dzienniki serwera.
-        userless_access_denied: Skonfigurowane hasło aplikacji jest nieprawidłowe.
       label_error: Błąd
       label_failed: Failed
       label_healthy: Zdrowe
@@ -479,6 +480,7 @@ pl:
       description: Wyłączenie tej opcji spowoduje ukrycie listy załączników na karcie plików pakietów roboczych. Pliki załączone w opisie pakietu roboczego będą nadal przesyłane do wewnętrznego magazynu załączników.
       label: Pokaż załączniki na karcie plików pakietów roboczych
     storage_audience:
+      documentation_intro: Details on the following options and what needs to be configured in the identity provider can be found in our documentation.
       idp:
         helptext: OpenProject użyje pierwszego tokena dostępu otrzymanego przez dostawcę tożsamości w celu uwierzytelnienia żądań do magazynu. Nie spowoduje to próby otrzymania kolejnego tokena.
         label: Użyj pierwszego tokena dostępu uzyskanego przez dostawcę tożsamości
