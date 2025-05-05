@@ -10,18 +10,123 @@ release_date: 2025-05-01
 
 Release date: 2025-05-01
 
-We released OpenProject [OpenProject 16.0.0](https://community.openproject.org/versions/1412).
-The release contains several bug fixes and we recommend updating to the newest version.
-In these Release Notes, we will give an overview of important feature changes.
-At the end, you will find a complete list of all changes and bug fixes.
+We released OpenProject [OpenProject 16.0.0](https://community.openproject.org/versions/1412). This major release contains many features and bug fixes and we recommend updating to the newest version. In these Release Notes, we will give an overview of important updates, important feature changes and important technical updates. At the end, you will find a complete list of all changes and bug fixes for 16.0.
+
+## Important updates
+
+The Enterprise plans (Basic, Professional, Premium, and Corporate) have been updated. Each plan now includes a specific set of Enterprise add-ons. Support levels and pricing remain unchanged.
+
+Current Enterprise customers retain their existing plans with access to all Enterprise add-ons available at that time. No features are removed.
+
+From this version onward, new Enterprise add-ons may be included only in higher-tier plans. For example, the new Internal comments feature (more information below) is part of the Professional plan.
+
+Customers on lower Enterprise plans who want to try out new add-ons from higher plans can do so by [requesting a new Enterprise trial token (on-premises)](https://www.openproject.org/contact/) or by starting a new Cloud trial instance.
+
+More details are available in the updated [Enterprise guide](https://www.openproject.org/docs/enterprise-guide/).
 
 ## Important feature changes
 
-<!-- Inform about the major features in this section -->
+## Meeting backlogs
 
-## Important updates and breaking changes
+Meeting organization becomes even easier with OpenProject 16.0: Meeting backlogs allow users to collect, manage, and prepare agenda items more flexibly — both for one-time meetings and for recurring meeting series.
 
-<!-- Remove this section if empty, add to it in pull requests linking to tickets and provide information -->
+In one-time meetings, the new **Agenda backlog** stores topics that are not yet assigned to the current meeting but may be added later.
+
+**Screenshot**
+
+In recurring meetings, the shared **Series backlog** helps track open points across all meeting occurrences and move items between them as priorities change.
+
+**Screenshot**
+
+Agenda items can easily be moved from the backlog to a meeting — or back to the backlog if an agenda item needs to be postponed. Work packages can also be added directly to the backlog. Even meetings without current agenda items can maintain a backlog of important topics.
+
+Meeting backlogs support better preparation, more flexibility, and a clearer structure for meeting management in OpenProject.
+
+### End of classic meetings
+
+With version 16.0, the 'classic’ option will no longer be offered when creating a new meeting in OpenProject. With the release of meeting outcomes and now also meeting backlogs, classic meetings are considered outdated.
+
+No data will get lost with the update, apart from the Meeting history of your classic meetings. If you used classic meetings in the past, see [this blog article](https://www.openproject.org/blog/end-classic-meetings-may-2025/) to learn more about the change and the reasons behind it.
+
+## Release to Community: Graphs on project overview page
+
+From time to time an Enterprise add-on is released for the free Community version. We are happy to announce that with OpenProject 16.0, the **graphs on the project overview page are now available in all editions**. This means that Community users can now display graphs directly on the project overview page to visualize important project information and communicate project status to the team and management.
+
+The work package graph widgets display information about the work packages within a project and can be shown in different views, such as bar graphs or pie charts.
+
+[Learn more about this feature in our user guide]([../../user-guide/project-overview/#work-package-graph-widgets-enterprise-add-on](https://www.openproject.org/docs/user-guide/project-overview/#work-package-graph-widgets-enterprise-add-on).
+
+**Screenshot**
+
+## Internal comments in work packages (Enterprise add-on)
+
+Users of the Enterprise Professional version are now able to communicate internally in the work package Activity tab. To use this feature, a project admin has to enable internal comments. By default, these are only visible to the project admin role, but administrators can grant a new set of permissions to any number of roles.
+
+Users with these permissions then see an "Internal comment" checkbox when adding a new comment. If they check this box, the comment will only be visible to other people with these permissions. The different background color indicates that a comment is internal. 
+
+**Screenshot**
+
+## Automatically generated work package subjects (Enterprise add-on)
+
+OpenProject now supports automatically generated subjects for work packages. This new Enterprise add-on, available in the Professional plan, allows administrators to define subject patterns for each work package type. When enabled, the subject field is filled automatically and becomes non-editable during work package creation and updates.
+
+This is especially useful for structured processes such as vacation requests, IT tickets, or maintenance reports, where consistent naming is required. Subject patterns can include static text as well as dynamic placeholders like project name, work package type, or custom field values.
+
+More details and examples can be found in our [blog article on automatically generated work package subjects](https://www.openproject.org/blog/automatically-generated-work-package-subjects/).
+
+Screenshot
+
+## Separate time tracking module with calendar view
+
+OpenProject 16.0 offers a separate time tracking module with a calendar view. It is accessible from the global view and listed in the left side bar navigation called 'My Time tracking'. There, users can view and edit their logged time with start and end times. The user can switch between daily, weekly, work weekly and monthly views and also log new time entries directly by clicking in the calendar.
+
+Each day shows the sum of the tracked time, and in the weekly and monthly views, the total tracked time is displayed in the lower right corner.
+
+**Screenshot**
+
+### Time entries with legally required mandatory fields: start time and finish time
+
+Before 16.0, time reports only included the duration of the logged time, not the explicit start and end time. Now, they also show start and finish time. This applies to the new time tracking module as well as PDF timesheets.
+
+### Overview of time logged per day per user in PDF timesheet
+
+Exported PDF timesheets now include an overview of logged time per day and user. It is displayed in a table view at the beginning of the report. If the list contains more than five users, the view is split into several tables.
+
+**Screenshot**
+
+## Add parent item to relations
+
+text https://community.openproject.org/wp/38030
+
+screenshot
+
+## Save work package export configuration
+
+When exporting a single work package, users can now save their configuration settings, e.g. the file format or the display and order of the columns. This saves time and allows users to share the export settings with their team (e.g. for a defects and approval report).
+
+Screenshot
+
+## Storage Health status: Multiple visible checks and download option (Enterprise add-on)
+
+The Health check for storages has been extended in OpenProject 16.0. Administrators can now view **multiple visible results**, grouped into base configuration, authentication, and automatically-managed folders. Each group displays a short summary indicating whether all checks passed, warnings occurred, or failures were detected. If issues are found, a link to detailed documentation is provided.
+
+The summary of the most recent health check remains visible in the sidebar. In addition, a new option allows administrators to open a **full detailed report** to review all individual checks directly.
+
+To make troubleshooting even easier, administrators can now also **download** the complete health check report as a text file, for example to include in a support request.
+
+## Option to select favorite project tab as default in project quick search
+
+small but helpful feature...
+
+## Important technical changes
+
+## Seamless integration of user sessions of Nextcloud and OpenProject using OIDC & JWTs (Enterprise add-on)
+
+OpenProject 16.0 introduces a major improvement for customers of the Enterprise Corporate plan that are using Nextcloud alongside OpenProject. Through a new configuration based on OpenID Connect (OIDC) and JSON Web Tokens (JWTs), OpenProject and Nextcloud can now integrate user sessions seamlessly without showing separate consent screens in each application.
+
+Instead of mutually acting as OAuth servers and clients, both OpenProject and Nextcloud can now authenticate against a common Identity Provider (IDP). This allows OpenProject to reuse the user session to call Nextcloud APIs directly — improving the user experience and reducing complexity in daily workflows.
+
+Please see our documentation to learn how to set up this integration.
 
 <!--more-->
 
@@ -156,12 +261,10 @@ At the end, you will find a complete list of all changes and bug fixes.
 <!-- Warning: Anything above this line will be automatically removed by the release script -->
 
 ## Contributions
-A very special thank you goes to our sponsors for this release.
-Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes.
-Special thanks for reporting and finding bugs go to alex e, Klaas vT, Daniel Elkeles, Marcel Carvalho, Regina Schikora, Çağlar Yeşilyurt, Александр Татаринцев.
+A very special thank you goes to City of Cologne, Deutsche Bahn and ZenDiS for sponsoring released or upcoming features. Your support, alongside the efforts of our amazing Community, helps drive these innovations. Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to alex e, Klaas vT, Daniel Elkeles, Marcel Carvalho, Regina Schikora, Çağlar Yeşilyurt, and Александр Татаринцев.
 
-Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings!
-Would you like to help out with translations yourself?
-Then take a look at our translation guide and find out exactly how you can contribute.
-It is very much appreciated!
+Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to particularly thank the following users:
+- [name](https://crowdin.com/profile/name), for a great number of translations into [language].
 
+
+Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
