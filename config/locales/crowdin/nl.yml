@@ -628,13 +628,15 @@ nl:
         automatically_generated_subjects:
           label: "Automatisch gegenereerde onderwerpen"
           caption: "Definieer een patroon met kenmerken en tekst waarnaar verwezen wordt om automatisch werkpakketonderwerpen te genereren. Gebruikers kunnen de onderwerpen niet handmatig bewerken."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
         pattern:
           label: "Onderwerp patroon"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
-          headings:
-            work_package: "Werkpakket"
-            parent: "Bovenliggend werkpakket"
-            project: "Project"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"

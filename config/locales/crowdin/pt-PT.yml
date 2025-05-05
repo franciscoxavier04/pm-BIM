@@ -629,13 +629,15 @@ pt-PT:
         automatically_generated_subjects:
           label: "Temas gerados automaticamente"
           caption: "Defina um padrão ao utilizar atributos referenciados e texto para gerar automaticamente temas dod pacotes de trabalho. Os utilizadores não poderão editar manualmente os temas."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
         pattern:
           label: "Padrão do tema"
           caption: "Adicione ou introduza texto / para pesquisar por um atributo. Pode adicionar espaços para separá-los."
-          headings:
-            work_package: "Pacote de trabalho"
-            parent: "Principal"
-            project: "Projeto"
           insert_as_text: "Não foram encontrados atributos. Adicionar como texto: \"%{word}\""
       export_configuration:
         tab: "Gerar PDF"

@@ -620,13 +620,15 @@ zh-CN:
         automatically_generated_subjects:
           label: "自动生成主题"
           caption: "使用引用属性和文本定义模式，自动生成工作包主题。用户将无法手动编辑主题。"
-        pattern:
-          label: "主题模式"
-          caption: "添加文本或输入斜杠“/”以搜索属性。你可以使用空格来分隔它们。"
-          headings:
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
             work_package: "工作包"
             parent: "父级"
             project: "项目"
+        pattern:
+          label: "主题模式"
+          caption: "添加文本或输入斜杠“/”以搜索属性。你可以使用空格来分隔它们。"
           insert_as_text: "未找到属性。以文本形式添加：“%{word}”"
       export_configuration:
         tab: "生成 PDF"

@@ -622,13 +622,15 @@ ms:
         automatically_generated_subjects:
           label: "Mata pelajaran yang dijana secara automatik"
           caption: "Tentukan corak menggunakan atribut dan teks yang dirujuk untuk menjana subjek pakej kerja secara automatik. Pengguna tidak akan dapat mengedit subjek secara manual."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
         pattern:
           label: "Corak subjek"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
-          headings:
-            work_package: "Pakej kerja"
-            parent: "Ibu bapa"
-            project: "Projek"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Hasilkan PDF"

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# -- copyright
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,33 +26,29 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
 
-module WorkPackages
-  module Types
-    class PatternInput < Primer::Forms::BaseComponent
-      prepend Primer::OpenProject::Forms::WrappedInput
-
-      delegate :name, to: :@input
-
-      def initialize(input:, value:, suggestions:)
-        super()
-        @input = input
-        @value = value
-        @suggestions = suggestions
+module Types
+  module Patterns
+    AttributeToken = Data.define(:key, :label, :resolve_fn) do
+      def label_with_context
+        attribute_context = I18n.t("types.edit.subject_configuration.token.context.#{context}")
+        I18n.t("types.edit.subject_configuration.token.label_with_context", attribute_context:, attribute_label: label)
       end
 
-      def suggestions_for_stimulus
-        @suggestions_for_stimulus ||= @suggestions.to_json
+      def call(*)
+        resolve_fn.call(*)
       end
 
-      def suggestions_list_component
-        @suggestions_list_component ||= Primer::Alpha::ActionList.new(
-          role: :list,
-          scheme: :inset,
-          ml: 0,
-          "data-pattern-input-target": "suggestions"
-        )
+      def context
+        case key.to_s
+        when /^project_/
+          :project
+        when /^parent_/
+          :parent
+        else
+          :work_package
+        end
       end
     end
   end

@@ -624,13 +624,15 @@ ko:
         automatically_generated_subjects:
           label: "자동으로 생성되는 제목"
           caption: "참조된 특성과 텍스트를 사용하여 패턴을 정의하고 작업 패키지 제목을 자동으로 생성하세요. 사용자는 제목을 수동으로 편집할 수 없습니다."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
         pattern:
           label: "제목 패턴"
           caption: "텍스트를 추가하거나 입력하여 / 특성을 검색하세요. 공백을 사용하여 특성을 구분할 수 있습니다."
-          headings:
-            work_package: "작업 패키지"
-            parent: "부모"
-            project: "프로젝트"
           insert_as_text: "특성을 찾지 못했습니다. 텍스트로 추가: \"%{word}\""
       export_configuration:
         tab: "PDF 생성"

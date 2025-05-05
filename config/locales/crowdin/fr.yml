@@ -630,13 +630,15 @@ fr:
         automatically_generated_subjects:
           label: "Sujets générés automatiquement"
           caption: "Définissez un modèle utilisant des attributs et du texte référencés pour générer automatiquement des sujets de lots de travaux. Les utilisateurs ne pourront pas modifier manuellement les sujets."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
         pattern:
           label: "Modèle de sujet"
           caption: "Ajouter du texte ou saisissez / pour rechercher un attribut. Vous pouvez ajouter des espaces pour les séparer."
-          headings:
-            work_package: "Lot de travaux"
-            parent: "Parent"
-            project: "Projet"
           insert_as_text: "Aucun attribut n'a été trouvé. Ajouter en tant que texte : « %{word} »"
       export_configuration:
         tab: "Générer un fichier PDF"
