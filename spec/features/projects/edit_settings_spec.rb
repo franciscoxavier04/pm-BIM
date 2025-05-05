@@ -40,7 +40,7 @@ RSpec.describe "Projects", "editing settings", :js do
   end
 
   shared_let(:project) do
-    create(:project, :with_status, name: "Foo project", identifier: "foo-project")
+    create(:project, name: "Foo project", identifier: "foo-project")
   end
 
   it "hides the field whose functionality is presented otherwise" do
@@ -117,39 +117,71 @@ RSpec.describe "Projects", "editing settings", :js do
   end
 
   describe "editing project status" do
-    let(:status_field) { FormFields::SelectFormField.new :status }
-
     before do
       Pages::Projects::Settings::General.new(project).visit!
     end
 
-    it "updates the project status and description" do
+    it "sets the project status" do
       within_section "Project status" do
-        status_field.select_option "At risk"
-        fill_in_rich_text "Project status description", with: "Light-years behind 🥺"
+        click_on "Edit project status"
 
-        click_on "Update status"
+        within :menu, "Not set" do
+          find(:menuitem, "Not started").click
+        end
       end
 
       expect_and_dismiss_flash type: :success, message: "Successful update."
 
       within_section "Project status" do
-        status_field.expect_selected "AT RISK"
-        expect(page).to have_selector :rich_text, "Project status description", text: "Light-years behind 🥺"
+        button = find_button("Edit project status")
+        expect(button).to have_text "Not started"
+        button.click
+
+        expect(find(:menu, "Not started")).to have_selector :menuitem, "Not started", aria: { current: true }
       end
     end
 
     it "unsets the project status" do
       within_section "Project status" do
-        status_field.select_option "Not set"
+        click_on "Edit project status"
 
-        click_on "Update status"
+        within :menu, "Not set" do
+          find(:menuitem, "Finished").click
+        end
       end
 
       expect_and_dismiss_flash type: :success, message: "Successful update."
 
       within_section "Project status" do
-        status_field.expect_selected "NOT SET"
+        click_on "Edit project status"
+
+        within :menu, "Finished" do
+          find(:menuitem, "Not set").click
+        end
+      end
+
+      expect_and_dismiss_flash type: :success, message: "Successful update."
+
+      within_section "Project status" do
+        button = find_button("Edit project status")
+        expect(button).to have_text "Not set"
+        button.click
+
+        expect(find(:menu, "Not set")).to have_selector :menuitem, "Not set", aria: { current: true }
+      end
+    end
+
+    it "updates the project status description" do
+      within_section "Project status" do
+        fill_in_rich_text "Project status description", with: "Light-years behind 🥺"
+
+        click_on "Update status description"
+      end
+
+      expect_and_dismiss_flash type: :success, message: "Successful update."
+
+      within_section "Project status" do
+        expect(page).to have_selector :rich_text, "Project status description", text: "Light-years behind 🥺"
       end
     end
   end

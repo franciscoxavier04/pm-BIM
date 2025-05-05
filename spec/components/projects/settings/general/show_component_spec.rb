@@ -32,9 +32,12 @@ require "rails_helper"
 
 RSpec.describe Projects::Settings::General::ShowComponent, type: :component do
   let(:project) { build_stubbed(:project) }
+  let(:user) { build_stubbed(:user) }
+
+  current_user { user }
 
   def render_component(**params)
-    render_inline(described_class.new(project:, **params))
+    render_inline(described_class.new(project:, current_user:, **params))
     page
   end
 
@@ -67,12 +70,9 @@ RSpec.describe Projects::Settings::General::ShowComponent, type: :component do
   describe "Project status" do
     it_behaves_like "section with heading", "Project status"
 
-    it "renders fields" do
-      expect(render_component).to have_element "opce-autocompleter",
-                                               "data-input-name": "\"project[status_code]\""
-
+    it "renders field" do
       expect(render_component).to have_element "opce-ckeditor-augmented-textarea",
-                                               "data-test-selector": "augmented-text-area-description"
+                                               "data-test-selector": "augmented-text-area-status_explanation"
     end
   end
 
