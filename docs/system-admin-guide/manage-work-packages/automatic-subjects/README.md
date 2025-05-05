@@ -120,6 +120,6 @@ Good subject patterns should be:
 - **Relevant**: Include only essential attributes needed for quick identification.
 - **Descriptive**: Use clear static text (e.g., `Invoice`, `Bug Report`) to define the work package type.
 
-Check our [Example Subject Patterns](../../../../blog/automatically-generated-work-package-subjects/) for inspiration.
+Check our [Example Subject Patterns](https://www.openproject.org/blog/automatically-generated-work-package-subjects/) for inspiration.
 
 
