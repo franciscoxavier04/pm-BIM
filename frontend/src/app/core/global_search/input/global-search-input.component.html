@@ -54,31 +54,29 @@
           class="global-search--option"
           [href]="wpPath(item.id)"
           (click)="redirectToWp(item.id, $event)"
-          style="line-height: 1"
         >
-          <op-principal
-            [hideName]="true"
-            [principal]="item.author"
-            [hoverCard]="true"
-            class="hidden-for-mobile global-search--principal"
-          ></op-principal>
           <div class="global-search--option-meta">
-            <span class="global-search--wp-subject">
+            <div class="global-search--wp-line">
+              <span [ngClass]="highlighting('type', item.type.id)">
+                {{ item.type.name }}
+              </span>
+              <span>#{{ item.id }}</span>
+              <span [ngClass]="statusHighlighting(item.status.id)">
+                {{ item.status.name }}
+              </span>
+              <span>-</span>
               <span
-                [ngClass]="highlighting('type', item.type.id)"
-                [textContent]="item.type.name"
-              ></span>
-              {{item.subject}}
-            </span>
-
-            <div class="global-search--wp-content">
-              <span [textContent]="item.project.name" class="global-search--wp-project"></span>
-              #{{item.id}}
-              <span
-                [textContent]="item.status.name"
-                [ngClass]="statusHighlighting(item.status.id)"
-                class="global-search--wp-status"
-              ></span>
+                class="global-search--wp-project"
+                [attr.title]="item.project.name"
+              >
+                {{ item.project.name }}
+              </span>
+            </div>
+            <div
+              class="global-search--wp-subject"
+              [attr.title]="item.subject"
+            >
+              {{ item.subject }}
             </div>
           </div>
         </a>
