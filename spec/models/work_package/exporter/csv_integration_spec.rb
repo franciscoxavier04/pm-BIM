@@ -86,7 +86,7 @@ RSpec.describe WorkPackage::Exports::CSV, "integration" do
         expect(data.last).to include(work_package.subject)
         expect(data.last).to include(work_package.description)
         expect(data.last).to include(user.name)
-        expect(data.last).to include(work_package.updated_at.localtime.strftime("%m/%d/%Y %I:%M %p"))
+        expect(data.last).to include(work_package.updated_at.in_time_zone(user.time_zone).strftime("%m/%d/%Y %I:%M %p"))
         expect(data.last).to include("· Σ 15h")
       end
     end
@@ -104,7 +104,7 @@ RSpec.describe WorkPackage::Exports::CSV, "integration" do
         expect(data.last).to include(work_package.subject)
         expect(data.last).not_to include(work_package.description)
         expect(data.last).to include(user.name)
-        expect(data.last).to include(work_package.updated_at.localtime.strftime("%m/%d/%Y %I:%M %p"))
+        expect(data.last).to include(work_package.updated_at.in_time_zone(user.time_zone).strftime("%m/%d/%Y %I:%M %p"))
         expect(data.last).to include("· Σ 15h")
       end
     end
