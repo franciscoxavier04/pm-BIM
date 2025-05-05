@@ -108,7 +108,7 @@ RSpec.describe "Search", :js, :selenium, with_settings: { per_page_options: "5" 
       global_search.search(query, submit: false)
 
       # Suggestions shall show latest WPs first.
-      global_search.expect_work_package_option(work_packages[11])
+      global_search.expect_work_package_option(work_packages[21])
       #  and show maximum 10 suggestions.
       global_search.expect_work_package_option(work_packages[2])
       global_search.expect_no_work_package_option(work_packages[1])
@@ -565,14 +565,14 @@ RSpec.describe "Search", :js, :selenium, with_settings: { per_page_options: "5" 
   describe "pagination" do
     context "for project wide search" do
       it "works" do
-        expect_range 3, 12
+        expect_range 13, 22
 
         click_on "Next", match: :first
-        expect_range 1, 2
+        expect_range 11, 12
         expect(page).to have_current_path /\/projects\/#{project.identifier}\/search/
 
         click_on "Previous", match: :first
-        expect_range 3, 12
+        expect_range 13, 22
         expect(page).to have_current_path /\/projects\/#{project.identifier}\/search/
       end
     end
@@ -585,13 +585,13 @@ RSpec.describe "Search", :js, :selenium, with_settings: { per_page_options: "5" 
       end
 
       it "works" do
-        expect_range 3, 12
+        expect_range 13, 22
 
         click_on "Next", match: :first
-        expect_range 1, 2
+        expect_range 11, 12
 
         click_on "Previous", match: :first
-        expect_range 3, 12
+        expect_range 13, 22
       end
     end
   end
