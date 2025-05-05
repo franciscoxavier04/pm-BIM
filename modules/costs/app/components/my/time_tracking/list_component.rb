@@ -100,6 +100,8 @@ module My
       end
 
       def collapsed?(date)
+        return false if mode == :day
+
         date.past?
       end
 
