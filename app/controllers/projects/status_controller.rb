@@ -28,39 +28,49 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
+class Projects::StatusController < ApplicationController
+  include OpTurbo::ComponentStream
+  include OpTurbo::FlashStreamHelper
 
-RSpec.describe "projects/settings/general/show" do
-  include TestSelectorFinders
+  before_action :find_project_by_project_id
+  before_action :authorize
 
-  let(:project) { build_stubbed(:project, public:) }
-  let(:user) { build_stubbed(:admin) }
-
-  before do
-    assign(:project, project)
-
-    without_partial_double_verification do
-      allow(view)
-        .to receive(:current_user)
-        .and_return(user)
-    end
-
-    render
+  def update
+    change_status_action(params.fetch(:status_code).presence)
   end
 
-  context "when project is not public" do
-    let(:public) { false }
+  def destroy
+    change_status_action(nil)
+  end
 
-    it "does not show warning banner" do
-      expect(rendered).not_to have_test_selector "op-projects-public-warning"
+  private
+
+  def change_status_action(status_code)
+    call = Projects::UpdateService
+      .new(model: @project, user: current_user)
+      .call(status_code:)
+
+    if call.success?
+      @project = call.result
+      respond_with_update_status_button
+    else
+      message = t(:notice_unsuccessful_update_with_reason, reason: call.message)
+      respond_with_flash_error(message:) do |format|
+        fallback_responses_for(format, flash: { error: message })
+      end
     end
   end
 
-  context "when project is public" do
-    let(:public) { true }
-
-    it "shows warning banner" do
-      expect(rendered).to have_test_selector "op-projects-public-warning"
+  def respond_with_update_status_button
+    message = t(:notice_successful_update)
+    update_via_turbo_stream(component: Projects::StatusButtonComponent.new(project: @project, user: current_user))
+    render_success_flash_message_via_turbo_stream(message:)
+    respond_with_turbo_streams do |format|
+      fallback_responses_for(format, flash: { notice: message })
     end
+  end
+
+  def fallback_responses_for(format, **)
+    format.html { redirect_back_or_to(project_path(@project), **) }
   end
 end

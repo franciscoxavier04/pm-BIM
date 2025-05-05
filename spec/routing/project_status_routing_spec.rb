@@ -27,19 +27,23 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-module Projects
-  module Settings
-    class StatusForm < ApplicationForm
-      form do |f|
-        f.rich_text_area(
-          name: :status_explanation,
-          label: attribute_name(:status_explanation),
-          rich_text_options: {
-            showAttachments: false,
-            data: { qa_field_name: "statusExplanation" }
-          }
-        )
-      end
+
+require "spec_helper"
+
+RSpec.describe Projects::StatusController do
+  describe "update" do
+    it do
+      expect(put("/projects/123/status")).to route_to(
+        controller: "projects/status", action: "update", project_id: "123"
+      )
+    end
+  end
+
+  describe "destroy" do
+    it do
+      expect(delete("/projects/123/status")).to route_to(
+        controller: "projects/status", action: "destroy", project_id: "123"
+      )
     end
   end
 end

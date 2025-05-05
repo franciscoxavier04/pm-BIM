@@ -27,19 +27,31 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+
 module Projects
-  module Settings
-    class StatusForm < ApplicationForm
-      form do |f|
-        f.rich_text_area(
-          name: :status_explanation,
-          label: attribute_name(:status_explanation),
-          rich_text_options: {
-            showAttachments: false,
-            data: { qa_field_name: "statusExplanation" }
-          }
-        )
-      end
+  module Statuses
+    Status = Data.define(:code, :color, :icon) do
+      def id = code&.to_s || :none
+      def value = code&.to_s
     end
+
+    NOT_SET = Status.new(code: nil, color: Color.new(hexcode: "#24292F"), icon: "issue-draft")
+    ON_TRACK = Status.new(code: :on_track, color: Color.new(hexcode: "#1F883D"), icon: "issue-opened")
+    AT_RISK = Status.new(code: :at_risk, color: Color.new(hexcode: "#BC4C00"), icon: "alert")
+    OFF_TRACK = Status.new(code: :off_track, color: Color.new(hexcode: "#CF222E"), icon: "stop")
+    NOT_STARTED = Status.new(code: :not_started, color: Color.new(hexcode: "#0969DA"), icon: "circle")
+    FINISHED = Status.new(code: :finished, color: Color.new(hexcode: "#8250DF"), icon: "issue-closed")
+    DISCONTINUED = Status.new(code: :discontinued, color: Color.new(hexcode: "#9A6700"), icon: "no-entry")
+
+    VALID = [
+      ON_TRACK,
+      AT_RISK,
+      OFF_TRACK,
+      NOT_STARTED,
+      FINISHED,
+      DISCONTINUED
+    ].freeze
+
+    AVAILABLE = [NOT_SET, *VALID].freeze
   end
 end

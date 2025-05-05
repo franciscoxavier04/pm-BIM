@@ -27,19 +27,22 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-module Projects
-  module Settings
-    class StatusForm < ApplicationForm
-      form do |f|
-        f.rich_text_area(
-          name: :status_explanation,
-          label: attribute_name(:status_explanation),
-          rich_text_options: {
-            showAttachments: false,
-            data: { qa_field_name: "statusExplanation" }
-          }
-        )
-      end
-    end
+
+# Adapted for RSpec from turbo-rails
+# See: https://github.com/hotwired/turbo-rails/blob/main/lib/turbo/test_assertions.rb
+#
+RSpec::Matchers.define :have_turbo_stream do |action:, target: nil, targets: nil, count: 1|
+  description { "contain a `<turbo-stream>` element" }
+  failure_message { rescued_exception.message }
+  failure_message_when_negated do
+    "Expected no elements matching #{@selector.inspect}, found at least 1."
+  end
+
+  match_unless_raises ActiveSupport::TestCase::Assertion do |_|
+    @selector =  %(turbo-stream[action="#{action}"])
+    @selector << %([target="#{target.respond_to?(:to_key) ? dom_id(target) : target}"]) if target
+    @selector << %([targets="#{targets}"]) if targets
+
+    assert_select(@selector, count:, &block_arg)
   end
 end

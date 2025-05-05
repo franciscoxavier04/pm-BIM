@@ -27,18 +27,36 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-module Projects
-  module Settings
-    class StatusForm < ApplicationForm
-      form do |f|
-        f.rich_text_area(
-          name: :status_explanation,
-          label: attribute_name(:status_explanation),
-          rich_text_options: {
-            showAttachments: false,
-            data: { qa_field_name: "statusExplanation" }
-          }
-        )
+
+require "spec_helper"
+
+RSpec.describe ProjectStatusHelper do
+  describe "#project_status_css_class" do
+    context "when status_code is nil" do
+      it "returns '-not-set' css class" do
+        expect(helper.project_status_css_class(nil)).to eq("-not-set")
+      end
+    end
+
+    context "when status_code is set" do
+      it "returns the css class", :aggregate_failures do
+        expect(helper.project_status_css_class(:off_track)).to eq("-off-track")
+        expect(helper.project_status_css_class("finished")).to eq("-finished")
+      end
+    end
+  end
+
+  describe "#project_status_name" do
+    context "when status_code is nil" do
+      it "returns 'not set' name" do
+        expect(helper.project_status_name(nil)).to eq I18n.t("js.grid.widgets.project_status.not_set")
+      end
+    end
+
+    context "when status_code is set" do
+      it "returns the localized name", :aggregate_failures do
+        expect(helper.project_status_name(:on_track)).to eq I18n.t("js.grid.widgets.project_status.on_track")
+        expect(helper.project_status_name("discontinued")).to eq I18n.t("js.grid.widgets.project_status.discontinued")
       end
     end
   end

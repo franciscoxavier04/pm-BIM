@@ -35,19 +35,6 @@ RSpec.describe Projects::Settings::StatusForm, type: :forms do
 
   let(:model) { build_stubbed(:project, status_explanation: "example status info") }
 
-  it "renders status field" do
-    expect(page).to have_element "opce-autocompleter", "data-input-name": "\"project[status_code]\""
-    expect(page).to have_element "opce-autocompleter", "data-qa-field-name": "status" do |elem|
-      expect(elem["data-items"]).to have_json_size(7)
-      expect(elem["data-items"]).to include_json(
-        %{{"id":null,"name":"Not set","classes":"project-status--name -not-set"}}
-      ).including(:id)
-      expect(elem["data-items"]).to include_json(
-        %{{"id":"on_track","name":"On track","classes":"project-status--name -on-track"}}
-      ).including(:id)
-    end
-  end
-
   it "renders status description field" do
     expect(page).to have_field "Project status description", with: "example status info", visible: :hidden
     expect(page).to have_element "opce-ckeditor-augmented-textarea",
