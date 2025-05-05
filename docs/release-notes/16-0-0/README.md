@@ -32,11 +32,11 @@ Meeting organization becomes even easier with OpenProject 16.0: Meeting backlogs
 
 In one-time meetings, the new **Agenda backlog** stores topics that are not yet assigned to the current meeting but may be added later.
 
-**Screenshot**
+![A one-time meeting in OpenProject with an Agenda backlog and info to 'Drag items here ore create a new one'.](openproject-16-0-meeting-backlogs-one-time-highlighted.png)
 
 In recurring meetings, the shared **Series backlog** helps track open points across all meeting occurrences and move items between them as priorities change.
 
-**Screenshot**
+![A recurring meeting in OpenProject with a Series backlog and and options to Edit, add notes, Move to current meeting or Remove from agenda.](openproject-16-0-meeting-backlogs-recurring-options.png)
 
 Agenda items can easily be moved from the backlog to a meeting — or back to the backlog if an agenda item needs to be postponed. Work packages can also be added directly to the backlog. Even meetings without current agenda items can maintain a backlog of important topics.
 
@@ -54,7 +54,7 @@ Users of the Enterprise Professional version are now able to communicate interna
 
 Users with these permissions then see an "Internal comment" checkbox when adding a new comment. If they check this box, the comment will only be visible to other people with these permissions. The different background color indicates that a comment is internal. 
 
-**Screenshot**
+![OpenProject work package with open Activity tab, a comment from a user and a not yet submitted comment with confidential content where the checkmark for Internal comment is activated.](openproject-16-0-internal-comment.png)
 
 ## Automatically generated work package subjects (Enterprise add-on)
 
@@ -68,11 +68,13 @@ Screenshot
 
 ## Separate time tracking module with calendar view
 
-OpenProject 16.0 offers a separate time tracking module with a calendar view. It is accessible from the global view and listed in the left side bar navigation called 'My Time tracking'. There, users can view and edit their logged time with start and end times. The user can switch between daily, weekly, work weekly and monthly views and also log new time entries directly by clicking in the calendar.
+OpenProject 16.0 offers a separate time tracking module with a calendar view. It is accessible from the global view and listed in the left side bar navigation called 'My time tracking'. There, users can view and edit their logged time with start and end times. The user can switch between daily, weekly, work weekly and monthly views and also log new time entries directly by clicking in the calendar.
 
 Each day shows the sum of the tracked time, and in the weekly and monthly views, the total tracked time is displayed in the lower right corner.
 
-**Screenshot**
+![OpenProject's My time tracking module in calendar view, showing a work week with different time entries.](openproject-16-0-my-time-tracking-calendar-view.png)
+
+Please note that this module has to be activated by an administrator first. Navigate to *administration → Time and costs → Defaults* and check the box next to 'Allow exact time tracking' to enable tracking start and finish dates. The calendar view is now the default view for the My time tracking module. If the checkmark for 'Require exact times' is set, users cannot log time without start and finish date. The list view is now the default view. In the calendar view, all entries are then displayed at the top of the respective day column.
 
 ### Time entries with legally required mandatory fields: start time and finish time
 
@@ -92,9 +94,9 @@ The work package graph widgets display information about the work packages withi
 
 [Learn more about this feature in our user guide]([../../user-guide/project-overview/#work-package-graph-widgets-enterprise-add-on](https://www.openproject.org/docs/user-guide/project-overview/#work-package-graph-widgets-enterprise-add-on).
 
-**Screenshot**
+![Different graphs displayed on a project overview page in OpenProject: Work package status in a pie chart, work packages progress in a graph with percentages, closed + open work packages sorted by type and number of assignees.](openproject-project-reports.png)
 
-## Add parent item to relations
+## Parent relation displayed in work package relations tab
 
 text https://community.openproject.org/wp/38030
 
