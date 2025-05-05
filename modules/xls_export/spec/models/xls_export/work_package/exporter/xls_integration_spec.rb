@@ -228,7 +228,17 @@ RSpec.describe XlsExport::WorkPackage::Exporter::XLS do
 
       # Check row after header row
       hours = sheet.rows[1].values_at(2)
-      expect(hours).to include("27.5h")
+      expect(hours).to include("27.5")
+    end
+
+    context "with duration format being set to 'days and hours'", with_settings: { duration_format: "days_and_hours" } do
+      it "includes estimated hours unformatted" do
+        expect(sheet.rows.size).to eq(4 + 1)
+
+        # Check row after header row
+        hours = sheet.rows[1].values_at(2)
+        expect(hours).to include("27.5")
+      end
     end
   end
 
@@ -306,7 +316,7 @@ RSpec.describe XlsExport::WorkPackage::Exporter::XLS do
     end
   end
 
-  describe "with derived estimated hours" do
+  describe "with derived estimated hours only" do
     let(:work_package) do
       create(:work_package,
              project:,
@@ -317,10 +327,29 @@ RSpec.describe XlsExport::WorkPackage::Exporter::XLS do
 
     let(:column_names) { %w[subject status updated_at estimated_hours] }
 
-    it "adapts the datetime fields to the user time zone" do
+    it "does not output anything" do
       work_package.reload
       estimated_cell = sheet.rows.last.to_a.last
-      expect(estimated_cell).to eq "· Σ 15h"
+      expect(estimated_cell).to be_nil
+    end
+  end
+
+  describe "with estimated hours and derived estimated hours" do
+    let(:work_package) do
+      create(:work_package,
+             project:,
+             estimated_hours: 10.0,
+             derived_estimated_hours: 15.0,
+             type: project.types.first)
+    end
+    let(:work_packages) { [work_package] }
+
+    let(:column_names) { %w[subject status updated_at estimated_hours] }
+
+    it "outputs only the unformatted estimated hours" do
+      work_package.reload
+      estimated_cell = sheet.rows.last.to_a.last
+      expect(estimated_cell).to eq "10.0"
     end
   end
 
@@ -338,11 +367,11 @@ RSpec.describe XlsExport::WorkPackage::Exporter::XLS do
 
     let(:column_names) { %w[subject status updated_at estimated_hours remaining_hours] }
 
-    it "outputs both values" do
+    it "outputs the unformatted values without the derived values" do
       work_package.reload
       estimated_cell, remaining_cell = sheet.rows.last.to_a.last(2)
-      expect(estimated_cell).to eq "0h · Σ 15h"
-      expect(remaining_cell).to eq "0h · Σ 8h"
+      expect(estimated_cell).to eq "0.0"
+      expect(remaining_cell).to eq "0.0"
     end
   end
 end
