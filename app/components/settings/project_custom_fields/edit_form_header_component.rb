@@ -30,12 +30,8 @@ module Settings
   module ProjectCustomFields
     class EditFormHeaderComponent < ApplicationComponent
       def initialize(custom_field:, selected:)
-        selected = selected.to_sym
-        raise "selected must be one of the following: #{TAB_NAVS.join(', ')}" unless TAB_NAVS.include?(selected)
-
         super
         @custom_field = custom_field
-        @selected = selected
       end
 
       def tabs
