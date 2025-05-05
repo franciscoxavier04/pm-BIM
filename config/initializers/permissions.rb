@@ -158,6 +158,7 @@ Rails.application.reloader.to_prepare do
                      },
                      permissible_on: :project,
                      require: :member,
+                     dependencies: :edit_project_phases,
                      visible: -> { OpenProject::FeatureDecisions.stages_and_gates_active? }
 
       map.permission :manage_members,
