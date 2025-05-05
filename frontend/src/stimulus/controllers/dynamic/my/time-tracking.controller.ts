@@ -90,9 +90,7 @@ export default class MyTimeTrackingController extends Controller {
       defaultTimedEventDuration: this.DEFAULT_TIMED_EVENT_DURATION,
       allDayContent: '',
       dayMaxEventRows: 4, // 3 + more link
-      // We want everything including 90 minutes to be short style ... If we set it to 90,
-      // 2 hours is also considered short ... So, magic number at 80 ... Don't ask me why
-      eventShortHeight: 80,
+      eventShortHeight: 60,
       eventMinHeight: 30,
       eventMaxStack: 2,
       nowIndicator: true,
@@ -117,20 +115,20 @@ export default class MyTimeTrackingController extends Controller {
 
         if (!info.event.allDay) {
           const time = `${toMoment(info.event.start!, this.calendar).format('LT')} - ${toMoment(info.event.end!, this.calendar).format('LT')}`;
-          timeDetails = `<div class="fc-entry-time color-fg-muted mt-2" title="${time}">${time}</div>`;
+          timeDetails = `<div class="fc-event-times" title="${time}">${time}</div>`;
         }
 
         return {
           html: `
            <div class="fc-event-main-frame">
-             <div class="fc-event-time mb-1">${this.displayDuration(duration)}</div>
+             <div class="fc-event-time">${this.displayDuration(duration)}</div>
              <div class="fc-event-title-container">
-                <div class="fc-event-title mb-2" title="${info.event.extendedProps.workPackageSubject}">
+                <div class="fc-event-title fc-event-wp" title="${info.event.extendedProps.workPackageSubject}">
                   <a class="Link--primary Link" href="${this.pathHelper.workPackageShortPath(info.event.extendedProps.workPackageId as string)}">
                     ${info.event.extendedProps.workPackageSubject}
                   </a>
                </div>
-               <div class="fc-project-name color-fg-muted" title="${info.event.extendedProps.projectName}">${info.event.extendedProps.projectName}</div>
+               <div class="fc-event-project" title="${info.event.extendedProps.projectName}">${info.event.extendedProps.projectName}</div>
                ${timeDetails}
              </div>
            </div>`,
