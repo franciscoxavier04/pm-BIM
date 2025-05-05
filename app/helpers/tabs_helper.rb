@@ -65,7 +65,11 @@ module TabsHelper
   end
 
   def selected_tab(tabs)
-    tabs.detect { |t| t[:name].to_s == params[:tab].to_s } || tabs.first
+    selected = tabs.detect { |t| t[:name].to_s == params[:tab].to_s } || tabs.detect { |t| current_page?(t[:path]) }
+
+    return selected unless selected.nil?
+
+    tabs.first
   end
 
   def tabs_for_key(key, params = {})

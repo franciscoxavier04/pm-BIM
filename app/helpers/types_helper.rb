@@ -29,7 +29,7 @@
 #++
 
 module ::TypesHelper
-  # rubocop:disable Rails/HelperInstanceVariable
+  # rubocop:disable Rails/HelperInstanceVariable, Metrics/AbcSize
   def types_tabs
     tabs = [
       {
@@ -73,7 +73,7 @@ module ::TypesHelper
     tabs
   end
 
-  # rubocop:enable Rails/HelperInstanceVariable
+  # rubocop:enable Rails/HelperInstanceVariable, Metrics/AbcSize
 
   def icon_for_type(type)
     return unless type

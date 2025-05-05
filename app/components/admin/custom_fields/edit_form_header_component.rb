@@ -36,23 +36,30 @@ module Admin
       end
 
       def tabs
-        [
+        tabs = [
           {
             name: "edit",
             path: edit_custom_field_path(@custom_field),
             label: t(:label_details)
-          },
-          {
+          }
+        ]
+
+        if @custom_field.field_format_hierarchy?
+          tabs << {
             name: "items",
             path: custom_field_items_path(@custom_field),
             label: t(:label_item_plural)
-          },
+          }
+        end
+
+        tabs <<
           {
             name: "custom_field_projects",
             path: custom_field_projects_path(@custom_field),
             label: t(:label_project_plural)
           }
-        ]
+
+        tabs
       end
 
       private
