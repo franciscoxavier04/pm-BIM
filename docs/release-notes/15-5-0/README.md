@@ -14,6 +14,10 @@ We released [OpenProject 15.5.0](https://community.openproject.org/versions/2171
 
 ## Important feature changes
 
+Take a look at our release video showing the most important features introduced in OpenProject 15.5.0:
+  
+![Release video of OpenProject 15.5](https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject_15_5_release.mp4)
+
 ### Filter for descendants (children and grandchildren) of work packages
 
 In OpenProject 15.5, you can now filter for all descendants of a work package — including children, grandchildren, and deeper levels. This is especially helpful when focusing on a specific part of a project that includes multiple levels of work packages.
@@ -109,7 +113,7 @@ To prepare for this transition, the **Classic option in the + Meeting dropdown i
 
 - Bugfix: Custom fields on global work package list can be added as column even when user has no access to it \[[#36559](https://community.openproject.org/wp/36559)\]
 - Bugfix: &quot;During the last days&quot; filter input in cost reports shows a calendar popup \[[#42811](https://community.openproject.org/wp/42811)\]
-- Bugfix: Autocompleter missing when using double or tripple hash notation for work package IDs \[[#47084](https://community.openproject.org/wp/47084)\]
+- Bugfix: Autocompleter missing when using double or triple hash notation for work package IDs \[[#47084](https://community.openproject.org/wp/47084)\]
 - Bugfix: Project attributes side panel is hidden on mobile \[[#58229](https://community.openproject.org/wp/58229)\]
 - Bugfix: The right-handle column content goes to the top of the page on mobile \[[#58241](https://community.openproject.org/wp/58241)\]
 - Bugfix: Misleading caption shown on project list table header \[[#59081](https://community.openproject.org/wp/59081)\]
@@ -127,7 +131,7 @@ To prepare for this transition, the **Classic option in the + Meeting dropdown i
 - Bugfix: UX/UI: Calendar Navigation Shifts Position, Causing Misclicks \[[#62212](https://community.openproject.org/wp/62212)\]
 - Bugfix: Meetings tab: Add work package to meeting modal has no toolbar in the notes editor \[[#62264](https://community.openproject.org/wp/62264)\]
 - Bugfix: Use correct scope for restricting custom field visibility in column selection \[[#62317](https://community.openproject.org/wp/62317)\]
-- Bugfix: The text colour of the &quot;Closed&quot; meeting status label in light mode is black instead of white \[[#62373](https://community.openproject.org/wp/62373)\]
+- Bugfix: The text color of the &quot;Closed&quot; meeting status label in light mode is black instead of white \[[#62373](https://community.openproject.org/wp/62373)\]
 - Bugfix: Webhook embedded resource custom fields are null \[[#62444](https://community.openproject.org/wp/62444)\]
 - Bugfix: Option to add &quot;Existing child&quot; does not make sense (the work package is only a child once added) \[[#62510](https://community.openproject.org/wp/62510)\]
 - Bugfix: Autocomplete not possible in project list filters in instances with many users \[[#62541](https://community.openproject.org/wp/62541)\]
@@ -155,7 +159,7 @@ To prepare for this transition, the **Classic option in the + Meeting dropdown i
 - Feature: Autofocus on text fields \[[#61916](https://community.openproject.org/wp/61916)\]
 - Feature: Display relations not visible to the user (ghost relations) in the same order as all the other relations \[[#61950](https://community.openproject.org/wp/61950)\]
 - Feature: Provide all the versions the user has access to on the Project and Global Work package list pages \[[#61967](https://community.openproject.org/wp/61967)\]
-- Feature: Project settings: Harmonise &quot;enabled in project&quot; for Types and Custom fields \[[#62291](https://community.openproject.org/wp/62291)\]
+- Feature: Project settings: Harmonize &quot;enabled in project&quot; for Types and Custom fields \[[#62291](https://community.openproject.org/wp/62291)\]
 - Feature: Always display relations in the relations tab in a fixed order \[[#62607](https://community.openproject.org/wp/62607)\]
 - Feature: Add note about imminent sunsetting of Classic meetings in create meeting dropdown \[[#62649](https://community.openproject.org/wp/62649)\]
 

@@ -623,8 +623,8 @@
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
+            work_package: "Arbeidspakke"
+            parent: "Overordnet"
             project: "Prosjekt"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
@@ -759,7 +759,7 @@
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      new_child: "Create new child"
+      new_child: "Opprett ny underordnet"
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
@@ -954,11 +954,11 @@
         is_required: "Påkrevd for alle prosjekter"
         custom_field_section: Seksjon
       project/phase:
-        date_range: "Date range"
+        date_range: "Datointervall"
         definition: "Definisjon"
       project/phase_definition:
         name: "Navn"
-        color: "Color"
+        color: "Farge"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1557,14 +1557,14 @@
       changeset: "Endringssett"
       message: "Forum"
       news: "Nyheter"
-      project_details: "Project details"
+      project_details: "Prosjektdetaljer"
       subproject: "Inkluder underprosjekter"
       time_entry: "Tid brukt"
       wiki_edit: "Wiki"
       work_package: "Arbeidspakker"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "aktivert"
+      deactivated: "deaktivert"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -3785,12 +3785,12 @@
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Legg til"
       label_add_description: "Add life cycle definition"
       filter:
         label: "Search project phase"
-      section_header: "Phases"
-      non_defined: "No phases are currently defined."
+      section_header: "Faser"
+      non_defined: "Ingen faser definert."
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."

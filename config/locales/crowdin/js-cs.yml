@@ -800,7 +800,7 @@ cs:
       typeahead_placeholder: Hledání možných přihlížejících
     relation_labels:
       parent: "Nadřazený"
-      child: "Child"
+      child: "Potomek"
       children: "Potomci"
       relates: "Související s"
       duplicates: "Duplikáty"
@@ -830,7 +830,7 @@ cs:
       add_new_child: "Vytvořit nového potomka"
       create_new: "Vytvořit nový"
       add_existing: "Přidat existující"
-      add_existing_child: "Add child"
+      add_existing_child: "Přidat potomka"
       remove_child: "Odstranit potomka"
       add_new_relation: "Vytvořit nový vztah"
       add_existing_relation: "Přidat existující vztah"

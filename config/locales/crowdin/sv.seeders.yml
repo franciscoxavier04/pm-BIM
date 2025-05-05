@@ -83,7 +83,7 @@ sv:
         item_0:
           name: Initiating
         item_1:
-          name: Planning
+          name: Planering
           start_gate: Ready for Planning
         item_2:
           name: Executing

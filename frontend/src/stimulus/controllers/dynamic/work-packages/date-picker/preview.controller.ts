@@ -331,6 +331,10 @@ export default class PreviewController extends DialogPreviewController {
     this.updateFlatpickrCalendar();
   }
 
+  ignoreActiveValueWhenMorphing():boolean {
+    return false;
+  }
+
   readInitialValues() {
     this.fieldInputTargets.forEach((inputField) => {
       this.assignReadValues(inputField);

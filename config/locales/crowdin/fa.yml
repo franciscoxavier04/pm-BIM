@@ -624,9 +624,9 @@ fa:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "کاربسته"
+            parent: "بالادستی"
+            project: "پروژه"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -958,8 +958,8 @@ fa:
         date_range: "Date range"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "نام"
+        color: "رنگ"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1558,7 +1558,7 @@ fa:
       changeset: "Changesets"
       message: "Forums"
       news: "News"
-      project_details: "Project details"
+      project_details: "جزئیات پروژه"
       subproject: "Include subprojects"
       time_entry: "زمان صرف شده"
       wiki_edit: "دانشنامه"
@@ -2723,8 +2723,8 @@ fa:
   label_operator_equals_all: "is (AND)"
   label_operator_shared_with_user_any: "any"
   label_open_menu: "باز کردن منو"
-  label_open_work_packages: "open"
-  label_open_work_packages_plural: "open"
+  label_open_work_packages: "باز"
+  label_open_work_packages_plural: "باز"
   label_openproject_website: "OpenProject website"
   label_optional_description: "توضیحات"
   label_options: "گزینه‌ها"
@@ -3786,7 +3786,7 @@ fa:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "ﺍﻓﺰﻭﺩﻥ"
       label_add_description: "Add life cycle definition"
       filter:
         label: "Search project phase"
@@ -4027,7 +4027,7 @@ fa:
     unlock_and_reset_failed_logins: "Unlock and reset failed logins"
   version_status_closed: "بسته"
   version_status_locked: "locked"
-  version_status_open: "open"
+  version_status_open: "باز"
   note: Note
   note_password_login_disabled: "Password login has been disabled by %{configuration}."
   warning: Warning

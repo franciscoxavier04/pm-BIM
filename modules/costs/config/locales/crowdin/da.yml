@@ -61,7 +61,7 @@ da:
         one: "Time entry"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Omkostningspostering"
         other: "Cost entries"
       cost_type:
         one: "Omkostningstype"

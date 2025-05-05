@@ -61,7 +61,7 @@ bg:
         one: "Time entry"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Въвеждане на разходи"
         other: "Cost entries"
       cost_type:
         one: "Тип разход"

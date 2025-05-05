@@ -40,8 +40,7 @@ There is a user-provided integration with Mattermost. Please note that it is not
 
 ## Microsoft Project
 
-There is an integration between MS Project and OpenProject. However, the synch plugin is not actively maintained at this time. If you wish to find out more, please [contact us](https://www.openproject.org/contact/).
-To synchronize tasks from MS Project to OpenProject, you can export your MS Project file to Excel and then [synchronize it with OpenProject]( ./excel-synchronization/).
+To move tasks from MS Project to OpenProject, you can export your MS Project file to Excel and then [synchronize it with OpenProject]( ./excel-synchronization/).
 
 ## Nextcloud
 

@@ -621,9 +621,9 @@ ca:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Paquet de treball"
+            parent: "Pare"
+            project: "Projecte"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -757,7 +757,7 @@ ca:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      new_child: "Create new child"
+      new_child: "Crear nou fill"
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
@@ -952,10 +952,10 @@ ca:
         is_required: "Required for all projects"
         custom_field_section: Secció
       project/phase:
-        date_range: "Date range"
+        date_range: "Interval de dates"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
+        name: "Nom"
         color: "Color"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
@@ -1555,14 +1555,14 @@ ca:
       changeset: "Conjunt de canvis"
       message: "Fòrums"
       news: "Notícies"
-      project_details: "Project details"
+      project_details: "Detalls del projecte"
       subproject: "Inclou subprojectes"
       time_entry: "Temps invertit"
       wiki_edit: "Wiki"
       work_package: "Paquets de treball"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "activat"
+      deactivated: "desactivat"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -3777,7 +3777,7 @@ ca:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Afegir"
       label_add_description: "Add life cycle definition"
       filter:
         label: "Search project phase"

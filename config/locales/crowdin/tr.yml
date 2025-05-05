@@ -403,8 +403,8 @@ tr:
         new_label: "Yeni öncelik"
   project_phase:
     working_days_count:
-      one: "Duration: %{count} working day"
-      other: "Duration: %{count} working days"
+      one: "Süre: %{count} iş günü"
+      other: "Süre: %{count} iş günü"
   lists:
     create:
       success: "Değiştirilen liste yeni bir liste olarak kaydedildi"
@@ -759,9 +759,9 @@ tr:
       follows_description: "Bu iş paketinin başlayabilmesi için ilgili iş paketinin mutlaka bitmesi gerekir"
       label_child_singular: "alt"
       label_child_plural: "alt"
-      new_child: "Create new child"
+      new_child: "Yeni alt birim oluştur"
       new_child_text: "Geçerli (ana) iş paketinin bir alt öğesi olarak ilgili bir iş paketi oluşturur"
-      child: "Child"
+      child: "Alt"
       child_description: "İlgili iş paketini geçerli (ana) iş paketinin bir alt öğesi yapar"
       label_closest: "En yakın"
       label_blocks_singular: "engelleyen"
@@ -954,11 +954,11 @@ tr:
         is_required: "Tüm projelerde zorunludur"
         custom_field_section: Bölüm
       project/phase:
-        date_range: "Date range"
-        definition: "Definition"
+        date_range: "Tarih aralığı"
+        definition: "Tanım"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "İsim"
+        color: "Renk"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1268,7 +1268,7 @@ tr:
             date_range:
               start_date_must_be_before_finish_date: "start date must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+              incomplete: "tamamlanmamıştır."
         query:
           attributes:
             project:
@@ -1557,15 +1557,15 @@ tr:
       changeset: "Değişiklik listeleri"
       message: "Forumlar"
       news: "Haberler"
-      project_details: "Project details"
+      project_details: "Proje detayları"
       subproject: "Alt projeleri dahil et"
       time_entry: "Harcanan zaman"
       wiki_edit: "Rehber"
       work_package: "İş paketleri"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
-      added_date: "set to %{date}"
+      activated: "etkinleştirildi"
+      deactivated: "devre dışı bırakmak"
+      added_date: "%{date} tarihine ayarlandı"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
       phase_and_one_gate: "%{phase_message}. %{gate_message}"
@@ -3783,7 +3783,7 @@ tr:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Ekle"
       label_add_description: "Yaşam döngüsü tanımı ekleyin"
       filter:
         label: "Search project phase"

@@ -299,7 +299,7 @@ fa:
         title: "No open meetings at the moment"
         desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
     planned:
-      title: "Planned"
+      title: "برنامه‌ریزی شده"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
       blankslate:
@@ -393,11 +393,9 @@ fa:
   label_meeting_details_edit: "Edit meeting details"
   label_meeting_state: "Meeting status"
   label_meeting_state_open: "باز"
-  label_meeting_state_open_html: "<i>Open</i>"
   label_meeting_state_closed: "بسته"
-  label_meeting_state_closed_html: "<i>Closed</i>"
   label_meeting_state_agenda_created: "Agenda created"
-  label_meeting_state_planned: "Planned"
+  label_meeting_state_planned: "برنامه‌ریزی شده"
   label_meeting_state_cancelled: "Cancelled"
   label_meeting_state_skipped: "Skipped"
   label_meeting_state_in_progress: "در حال انجام"

@@ -11,7 +11,7 @@ id:
         sync_users: 'Sinkronkan pengguna'
       ldap_groups/synchronized_filter:
         filter_string: 'penyaring LDAP'
-        auth_source: 'Auth source'
+        auth_source: 'Sumber Otentikasi'
         ldap_auth_source: 'koneksi LDAP'
         group_name_attribute: "Atribut nama grup"
         sync_users: 'Sinkronkan pengguna'

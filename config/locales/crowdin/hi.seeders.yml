@@ -83,7 +83,7 @@ hi:
         item_0:
           name: Initiating
         item_1:
-          name: Planning
+          name: विनियोजन
           start_gate: Ready for Planning
         item_2:
           name: Executing

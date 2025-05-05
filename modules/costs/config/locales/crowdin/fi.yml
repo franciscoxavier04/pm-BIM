@@ -61,7 +61,7 @@ fi:
         one: "Time entry"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Kustannuskirjaus"
         other: "Cost entries"
       cost_type:
         one: "Kustannustyyppi"

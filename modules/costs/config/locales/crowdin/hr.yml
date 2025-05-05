@@ -62,7 +62,7 @@ hr:
         few: "Time entries"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Ulazni trošak"
         few: "Cost entries"
         other: "Cost entries"
       cost_type:

@@ -624,9 +624,9 @@ af:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Werkspakket"
+            parent: "Ouer"
+            project: "Projek"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -955,11 +955,11 @@ af:
         is_required: "Required for all projects"
         custom_field_section: Section
       project/phase:
-        date_range: "Date range"
+        date_range: "Datum reeks"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Naam"
+        color: "Kleur"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -3786,7 +3786,7 @@ af:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Voeg by"
       label_add_description: "Add life cycle definition"
       filter:
         label: "Search project phase"

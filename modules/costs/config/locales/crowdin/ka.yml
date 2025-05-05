@@ -58,10 +58,10 @@ ka:
         end_time: Finish time
     models:
       time_entry:
-        one: "Time entry"
+        one: "დროს ჩანაწერი"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "ფასის ჩანაწერი"
         other: "Cost entries"
       cost_type:
         one: "ღირებულების ტიპი"

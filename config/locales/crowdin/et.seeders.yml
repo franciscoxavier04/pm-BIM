@@ -83,7 +83,7 @@ et:
         item_0:
           name: Initiating
         item_1:
-          name: Planning
+          name: Planeerimine
           start_gate: Ready for Planning
         item_2:
           name: Executing
@@ -118,7 +118,7 @@ et:
             item_0:
               name: Project plan
             item_1:
-              name: Milestones
+              name: Eesmärgid
             item_2:
               name: Tasks
             item_3:
@@ -168,7 +168,7 @@ et:
                   name: Teemad
               item_6:
                 options:
-                  name: Milestones
+                  name: Eesmärgid
           work_packages:
             item_0:
               subject: Start of project

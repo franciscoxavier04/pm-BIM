@@ -58,12 +58,12 @@ sl:
         end_time: Finish time
     models:
       time_entry:
-        one: "Time entry"
+        one: "Vnos časa"
         two: "Time entries"
         few: "Time entries"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Vnos stroškov"
         two: "Cost entries"
         few: "Cost entries"
         other: "Cost entries"

@@ -612,8 +612,8 @@ id:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
+            work_package: "Paket-Penugasan"
+            parent: "Induk"
             project: "Project"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
@@ -942,11 +942,11 @@ id:
         is_required: "Required for all projects"
         custom_field_section: Bagian
       project/phase:
-        date_range: "Date range"
+        date_range: "Kisaran tanggal"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Nama"
+        color: "Warna"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1534,14 +1534,14 @@ id:
       changeset: "Set perubahan"
       message: "Forum"
       news: "News"
-      project_details: "Project details"
+      project_details: "Rincian proyek"
       subproject: "Sertakan subproyek"
       time_entry: "Durasi"
       wiki_edit: "Wiki"
       work_package: "Paket-Penugasan"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "diaktifkan"
+      deactivated: "dinonaktifkan"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -3738,7 +3738,7 @@ id:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Tambah"
       label_add_description: "Add life cycle definition"
       filter:
         label: "Search project phase"

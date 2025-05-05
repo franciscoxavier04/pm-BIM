@@ -58,11 +58,11 @@ ro:
         end_time: Dată finalizare
     models:
       time_entry:
-        one: "Time entry"
+        one: "Înregistrarea timpului"
         few: "Time entries"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Poziție cost"
         few: "Cost entries"
         other: "Cost entries"
       cost_type:

@@ -227,7 +227,7 @@ fa:
       storage_audience_blank: No audience has been configured.
       storage_audience_description: Obtaining tokens for audience "%{audience}".
       storage_audience_idp: Using first access token received by identity provider, regardless of audience.
-      storage_oauth: احراز هویت (OAuth) Nextcloud
+      storage_oauth: احراز هویت (OAuth) Nextcloud 
       storage_provider: Storage provider
     health:
       checked: Last checked %{datetime}

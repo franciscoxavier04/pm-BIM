@@ -58,10 +58,10 @@ ca:
         end_time: Finish time
     models:
       time_entry:
-        one: "Time entry"
+        one: "Entrada de temps"
         other: "Time entries"
       cost_entry:
-        one: "Cost entry"
+        one: "Entrada de costs"
         other: "Cost entries"
       cost_type:
         one: "Estil de cost"

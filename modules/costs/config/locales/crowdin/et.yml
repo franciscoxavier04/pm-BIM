@@ -41,7 +41,7 @@ et:
         material_costs: "Ühiku kulud"
         overall_costs: "Üldised kulud"
         spent_costs: "Spent costs"
-        spent_units: "Spent units"
+        spent_units: "Kasutatud ühikuid"
       rate:
         rate: "Rate"
       user:
@@ -54,7 +54,7 @@ et:
         comments: Kommentaar
         activity: Tegevus
         spent_on: Kuupäev
-        start_time: Start time
+        start_time: Algusaeg
         end_time: Finish time
     models:
       time_entry:
