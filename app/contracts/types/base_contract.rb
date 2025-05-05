@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -60,7 +62,7 @@ module Types
 
       seen = Set.new
       model.attribute_groups.each do |group|
-        errors.add(:attribute_groups, :group_without_name) unless group.key.present?
+        errors.add(:attribute_groups, :group_without_name) if group.key.blank?
         errors.add(:attribute_groups, :duplicate_group, group: group.key) if seen.add?(group.key).nil?
       end
     end
@@ -118,6 +120,6 @@ module Types
       end
     end
 
-    def flat_valid_token_list = Patterns::TokenPropertyMapper.new.tokens_for_type(model).values.map(&:keys).flatten
+    def flat_valid_token_list = Patterns::TokenPropertyMapper.new.tokens_for_type(model).map(&:key)
   end
 end
