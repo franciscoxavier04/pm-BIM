@@ -53,7 +53,7 @@
   &--wp-line
     display: flex
     flex-wrap: nowrap
-    gap: 4px
+    gap: var(--base-size-8)
     font-size: 13px
     white-space: nowrap
     overflow: hidden
@@ -77,6 +77,7 @@
 
   &--wp-subject
     font-weight: var(--base-text-weight-bold)
-    display: block
+    display: inline-block
+    white-space: normal
+    overflow-wrap: break-word
     line-height: 1.5
-    @include text-shortener
