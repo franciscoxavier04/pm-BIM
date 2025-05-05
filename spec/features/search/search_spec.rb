@@ -34,7 +34,7 @@ RSpec.describe "Search", :js, :selenium, with_settings: { per_page_options: "5" 
   shared_let(:admin) { create(:admin) }
   shared_let(:project) { create(:project) }
   shared_let(:work_packages) do
-    (1..12).map do |n|
+    (1..22).map do |n|
       Timecop.freeze("2016-11-21 #{n}:00".to_datetime) do
         subject = "Subject No. #{n} WP"
         create(:work_package,
