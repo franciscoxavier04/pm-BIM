@@ -29,6 +29,12 @@
   background-repeat: no-repeat
   background-position: center right
 
+  @media screen and (max-width: $breakpoint-lg)
+    background-image: none !important
+
+  @media screen and (max-width: $breakpoint-xl)
+    background-size: cover
+
 .upsell-colored
   color: var(--enterprise-upsell-color) !important
 
@@ -44,6 +50,9 @@
 
 .widget-box--blocks--upsell-text
   width: 50%
+
+  @media screen and (max-width: $breakpoint-lg)
+    width: 100%
 
 .widget-box--blocks--upsell-description
   margin: 10px 0 10px 0
