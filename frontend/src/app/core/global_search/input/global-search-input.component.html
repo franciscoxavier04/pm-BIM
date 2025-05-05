@@ -44,8 +44,8 @@
     <ng-template op-autocompleter-option-tmp let-item let-index="index" let-search="searchTerm">
       <div *ngIf="!item.id; else workPackageItemTemplate">
         <div tabindex="-1" class="global-search--option" (click)="followItem(item)">
-          <div class="global-search--search-term"> {{currentValue}}</div>
-          <div class="global-search--project-scope" title="{{item.projectScope}}">{{item.text}} ↵</div>
+          <div class="global-search--search-term">{{ currentValue }}</div>
+          <div class="global-search--project-scope" title="{{ item.projectScope }}">{{ item.text }} ↵</div>
         </div>
       </div>
       <ng-template #workPackageItemTemplate>
@@ -54,30 +54,37 @@
           class="global-search--option"
           [href]="wpPath(item.id)"
           (click)="redirectToWp(item.id, $event)"
+          style="line-height: 1"
         >
+          <op-principal
+            [hideName]="true"
+            [principal]="item.author"
+            [hoverCard]="true"
+            class="hidden-for-mobile global-search--principal"
+          ></op-principal>
           <div class="global-search--option-meta">
             <div class="global-search--wp-line">
-              <span [ngClass]="highlighting('type', item.type.id)">
-                {{ item.type.name }}
-              </span>
+          <span [ngClass]="highlighting('type', item.type.id)">
+            {{ item.type.name }}
+          </span>
               <span>#{{ item.id }}</span>
               <span [ngClass]="statusHighlighting(item.status.id)">
-                {{ item.status.name }}
-              </span>
+            {{ item.status.name }}
+          </span>
               <span>-</span>
               <span
                 class="global-search--wp-project"
                 [attr.title]="item.project.name"
               >
-                {{ item.project.name }}
-              </span>
+            {{ item.project.name }}
+          </span>
             </div>
-            <div
+            <span
               class="global-search--wp-subject"
               [attr.title]="item.subject"
             >
-              {{ item.subject }}
-            </div>
+          {{ item.subject }}
+        </span>
           </div>
         </a>
       </ng-template>
