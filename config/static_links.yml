@@ -134,7 +134,7 @@ enterprise_features:
   default:
     href: https://www.openproject.org/enterprise-edition
   work_package_subject_generation:
-    href: https://www.openproject.org/docs/system-admin-guide/manage-work-packages/work-package-types/#work-package-subject-configuration-enterprise-add-on
+    href: https://www.openproject.org/docs/system-admin-guide/manage-work-packages/automatic-subjects/
   form_configuration:
     href: https://www.openproject.org/docs/system-admin-guide/manage-work-packages/work-package-types/#work-package-form-configuration-enterprise-add-on
   attribute_highlighting:
