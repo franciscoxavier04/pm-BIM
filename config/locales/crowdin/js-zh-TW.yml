@@ -353,13 +353,13 @@ zh-TW:
       blocks:
         new_features:
           text_new_features: "了解新功能和產品更新。"
-          learn_about: "瞭解更多新功能的資訊"
+          learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_5":
+          "16_0":
             standard:
               new_features_html: >
-                本次更新為您帶來多項新功能與改進，例如：<br><ul class="%{list_styling_class}"> <li>子工作項目與孫工作項目的篩選功能</li> <li>日期選擇器強化無障礙輔助功能</li> <li>工作項目表格總計顯示完成百分比（% Complete）</li> <li>工作項目表格新增子工作項專用欄位</li> <li>行動裝置日期選擇器操作體驗優化</li> <li>PDF 匯出格式支援自訂表單版面配置</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
     ical_sharing_modal:
       title: "訂閱日曆"
       inital_setup_error_message: "更新資料時發生錯誤"
@@ -432,7 +432,6 @@ zh-TW:
     label_filename: "檔案"
     label_filesize: "檔案大小"
     label_general: "一般"
-    label_global_roles: "全域角色"
     label_greater_or_equal: "之前"
     label_group: "群組"
     label_group_by: "分組依據"

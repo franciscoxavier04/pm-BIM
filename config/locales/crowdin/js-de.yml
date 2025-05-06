@@ -354,13 +354,13 @@ de:
       blocks:
         new_features:
           text_new_features: "Lesen Sie über neue Funktionen und Updates."
-          learn_about: "Erfahren Sie mehr über die neuen Funktionen"
+          learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_5":
+          "16_0":
             standard:
               new_features_html: >
-                Das Release bringt Ihnen verschiedene Funktionen und Verbesserungen, z. B. <br> <ul class="%{list_styling_class}"> <li>Filtern nach untergeordneten Arbeitspaketen (Kinder und Kindes-Kinder).</li> <li>Profitieren Sie von der verbesserten Barrierefreiheit im Datumswähler.</li> <li>"% Vollständig" als den Arbeitspaket-Tabellensumme auswählbar.</li> <li>Fügen Sie eine Spalte für Kinder in Arbeitspakettabellen ein.</li> <li>Benutzen Sie die native Datumsauswahl auf mobilen Endgeräten.</li> <li>PDF-Export gemäß des konfigurierten Formularlayouts.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
     ical_sharing_modal:
       title: "Kalender abonnieren"
       inital_setup_error_message: "Beim Abrufen der Daten ist ein Fehler aufgetreten."
@@ -433,7 +433,6 @@ de:
     label_filename: "Datei"
     label_filesize: "Größe"
     label_general: "Allgemein"
-    label_global_roles: "Globale Rollen"
     label_greater_or_equal: ">="
     label_group: "Gruppe"
     label_group_by: "Gruppieren nach"

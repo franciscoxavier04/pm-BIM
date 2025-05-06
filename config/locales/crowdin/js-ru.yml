@@ -354,13 +354,13 @@ ru:
       blocks:
         new_features:
           text_new_features: "Читайте о новых возможностях и обновлениях продуктов."
-          learn_about: "Подробнее о новых функциях"
+          learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_5":
+          "16_0":
             standard:
               new_features_html: >
-                Релиз содержит различные функции и улучшения, например <br> <ul class="%{list_styling_class}"> <li>Фильтр для потомков (детей и внуков) рабочих пакетов.</li> <li> Улучшенное средство для выбора дат.</li> <li>Просмотр суммарного процента выполненных работ.</li> <li>Столбец потомков в таблице пакетов работ.</li> <li>Улучшено отображение средства для выбора дат на мобильных экранах.</li><li>Экспорт PDF, с настройками, соответствующими формe.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
     ical_sharing_modal:
       title: "Подписаться на календарь"
       inital_setup_error_message: "Произошла ошибка при получении данных."
@@ -433,7 +433,6 @@ ru:
     label_filename: "Файл"
     label_filesize: "Размер"
     label_general: "Общее"
-    label_global_roles: "Глобальные роли"
     label_greater_or_equal: ">="
     label_group: "Группа"
     label_group_by: "Группировать по"
@@ -837,7 +836,7 @@ ru:
       update_relation: "Нажмите, чтобы изменить тип отношения"
       show_relations: "Показать взаимосвязи"
       add_predecessor: "Добавить предшественника"
-      add_successor: "Add successor"
+      add_successor: "Добавить преемника"
       remove: "Удалить связь"
       save: "Сохранить связь"
       abort: "Прервать"

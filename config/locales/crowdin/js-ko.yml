@@ -355,13 +355,13 @@ ko:
       blocks:
         new_features:
           text_new_features: "새로운 기능 및 제품 업데이트에 대해 읽어보십시오."
-          learn_about: "새로운 기능에 대해 자세히 알아보기"
+          learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_5":
+          "16_0":
             standard:
               new_features_html: >
-                이 릴리스에서는 사용자를 위한 다음과 같은 다양한 기능과 개선 사항이 제공됩니다. <br> <ul class="%{list_styling_class}"> <li>작업 패키지의 하위 항목(자식 및 손자)을 필터링합니다.</li> <li>날짜 선택기의 고급 접근성을 지원합니다.</li> <li>작업 패키지 테이블 합계에 포함된 완료 %가 표시됩니다.</li> <li>작업 패키지 테이블에 자식에 대한 열이 포함됩니다.</li> <li>모바일 화면에서 날짜 선택기를 보다 효율적으로 사용합니다.</li> <li>구성된 양식 레이아웃과 일치하는 PDF를 내보냅니다.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
     ical_sharing_modal:
       title: "캘린더 구독"
       inital_setup_error_message: "데이터를 가져오는 중에 오류가 발생했습니다."
@@ -434,7 +434,6 @@ ko:
     label_filename: "파일"
     label_filesize: "크기"
     label_general: "일반"
-    label_global_roles: "글로벌 역할"
     label_greater_or_equal: ">="
     label_group: "그룹"
     label_group_by: "그룹화 기준"

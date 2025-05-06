@@ -354,13 +354,13 @@ pt-BR:
       blocks:
         new_features:
           text_new_features: "Ler sobre os novos recursos e atualizações de produtos."
-          learn_about: "Saiba mais sobre os novos recursos"
+          learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_5":
+          "16_0":
             standard:
               new_features_html: >
-                A nova versão traz várias funcionalidades e melhorias para você, por ex.: <br> <ul class="%{list_styling_class}"> <li>Filtro para descendentes (filhos e netos) de pacotes de trabalho.</li> <li>Aproveite a acessibilidade avançada no seletor de datas.</li> <li>Veja a % de Conclusão incluída nas somas da tabela de pacotes de trabalho.</li> <li>Inclua uma coluna para filhos nas tabelas de pacotes de trabalho.</li> <li>Melhor uso do seletor de datas em telas móveis.</li> <li>Exportações em PDF com o layout do formulário configurado.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
     ical_sharing_modal:
       title: "Assinar calendário"
       inital_setup_error_message: "Ocorreu um erro ao buscar dados."
@@ -433,7 +433,6 @@ pt-BR:
     label_filename: "Arquivo"
     label_filesize: "Tamanho"
     label_general: "Geral"
-    label_global_roles: "Funções globais"
     label_greater_or_equal: ">="
     label_group: "Grupo"
     label_group_by: "Agrupar por"

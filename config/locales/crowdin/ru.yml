@@ -356,7 +356,7 @@ ru:
       header_status: Статус проекта
       header_relations: Отношения с проектом
       button_update_details: Обновить детали
-      button_update_status_description: Update status description
+      button_update_status_description: Обновить описание статуса
       button_update_parent_project: Обновить родительский проект
       public_warning: >
         Этот проект является общедоступным. Любой, у кого есть доступ к этому экземпляру, сможет просматривать этот проект и взаимодействовать с ним в зависимости от своей роли и соответствующих разрешений. Подпроекты не затрагиваются и имеют свои собственные настройки.
@@ -419,13 +419,13 @@ ru:
       work_package_priorities:
         new_label: "Новый приоритет"
     status:
-      button_edit: Edit project status
+      button_edit: Редактировать статус проекта
   project_phase:
     duration:
-      one: "Duration: %{count} working day"
-      few: "Duration: %{count} working days"
-      many: "Duration: %{count} working days"
-      other: "Duration: %{count} working days"
+      one: "Продолжительность: %{count} рабочих дня"
+      few: "Продолжительность: %{count} рабочих дней"
+      many: "Продолжительность: %{count} рабочих дней"
+      other: "Продолжительность: %{count} рабочих дней"
   lists:
     create:
       success: "Измененный список был сохранен как новый"
@@ -656,9 +656,9 @@ ru:
             project: "Проект"
         pattern:
           label: "Шаблон темы"
-          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          caption_with_supported_attributes_link: Создавайте шаблоны, добавляя текст, или наберите "/" для поиска %{link}.
           insert_as_text: "Атрибуты не найдены. Добавить как текст: \"%{word}\""
-          supported_attributes_link: "supported attributes"
+          supported_attributes_link: "поддерживаемые атрибуты"
       export_configuration:
         tab: "Создать PDF"
         intro: "Выберите, какие шаблоны из имеющихся Вы хотите активировать для этого типа. Шаблон задаёт дизайн и атрибуты в экспортированном PDF-файле пакета работ этого типа. Первый шаблон из списка выбирается по умолчанию."
@@ -1704,6 +1704,8 @@ ru:
     priority: "Приоритет"
     project: "Проект"
     project_ids: "ID проектов"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Причина"
     responsible: "Ответственный"
     required: "Обязательно"
@@ -2739,6 +2741,7 @@ ru:
   label_gantt_chart_plural: "Диаграммы Ганта"
   label_general: "Общие"
   label_generate_key: "Сгенерируйте ключ"
+  label_global_roles: "Global roles"
   label_git_path: "Путь к директории .git"
   label_greater_or_equal: ">="
   label_group_by: "Группировать по"
@@ -3409,7 +3412,7 @@ ru:
   notice_successful_cancel: "Отмена прошла успешно."
   notice_successful_update: "Обновление выполнено."
   notice_unsuccessful_update: "Ошибка обновления."
-  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
+  notice_unsuccessful_update_with_reason: "Не удалось обновить: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Успешное обновление. Пользовательские поля активированных типов автоматически активируются
     в форме пакета работ. <a href="%{url}" target="_blank">Подробнее</a>.

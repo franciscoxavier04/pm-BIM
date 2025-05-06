@@ -634,8 +634,8 @@ de:
             parent: "Parent"
             project: "Project"
         pattern:
-          label: "Titel-Schema"
-          caption: "Fügen Sie Text oder Typ / um nach einem Attribut zu suchen. Sie können Leerzeichen hinzufügen, um sie zu trennen."
+          label: "Thema-Schema"
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "Keine Attribute gefunden. Als Text hinzufügen: \"%{word}\""
           supported_attributes_link: "supported attributes"
       export_configuration:
@@ -1657,6 +1657,8 @@ de:
     priority: "Priorität"
     project: "Projekt"
     project_ids: "Projekt IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Grund"
     responsible: "Verantwortlich"
     required: "Erforderlich"
@@ -2654,6 +2656,7 @@ de:
   label_gantt_chart_plural: "Gantt Diagramme"
   label_general: "Allgemein"
   label_generate_key: "Schlüssel generieren"
+  label_global_roles: "Global roles"
   label_git_path: "Pfad zum .git-Verzeichnis"
   label_greater_or_equal: ">="
   label_group_by: "Gruppieren nach"
