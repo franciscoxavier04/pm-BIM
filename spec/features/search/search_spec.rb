@@ -311,8 +311,8 @@ RSpec.describe "Search", :js, :selenium, with_settings: { per_page_options: "5" 
         table = Pages::EmbeddedWorkPackagesTable.new(find(".work-packages-embedded-view--container"))
         table.expect_work_package_count(5) # because we set the page size to this
         # Expect order to be from newest to oldest.
-        table.expect_work_package_listed(*work_packages[7..12]) # This line ensures that the table is completely rendered.
-        table.expect_work_package_order(*work_packages[7..12].map { |wp| wp.id.to_s }.reverse)
+        table.expect_work_package_listed(*work_packages[17..22]) # This line ensures that the table is completely rendered.
+        table.expect_work_package_order(*work_packages[17..22].map { |wp| wp.id.to_s }.reverse)
 
         # Expect that "Advanced filters" can refine the search:
         filters.expect_closed
