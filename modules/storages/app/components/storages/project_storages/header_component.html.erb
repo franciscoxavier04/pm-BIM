@@ -26,9 +26,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
-<% gon.contentTabs = { tabs: tabs.to_json.html_safe, selected: selected_tab.to_json.html_safe } %>
 
-<%= content_tag "div",
-                render(partial: selected_tab[:partial], locals: local_assigns.merge(tab: selected_tab)),
-                id: "tab-content-#{selected_tab[:name]}",
-                class: "tab-content" %>
+<%=
+  render(Primer::OpenProject::PageHeader.new) do |header|
+    header.with_title { t("project_module_storages") }
+    header.with_breadcrumbs(breadcrumbs_items)
+
+    header.with_action_button(
+      tag: :a,
+      href: new_project_settings_project_storage_path,
+      scheme: :primary,
+      mobile_icon: :plus,
+      mobile_label: t(:"storages.label_storage"),
+      size: :medium,
+      aria: { label: t(:"storages.label_new_storage") },
+      title: t(:"storages.label_new_storage")
+    ) do |button|
+      button.with_leading_visual_icon(icon: :plus)
+      t(:"storages.label_storage")
+    end
+
+    helpers.render_tab_header_nav(header, tabs)
+  end
+%>

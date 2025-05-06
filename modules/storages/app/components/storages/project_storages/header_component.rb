@@ -28,39 +28,34 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Admin
-  class AttachmentsSettingsHeaderComponent < ApplicationComponent
-    def initialize(title:, selected:)
-      raise "selected must 1, 2 or 3" if [1, 2, 3].exclude?(selected)
-
-      @title = title
-      @selected = selected
-    end
-
-    def tabs
-      tabs = [
-        {
-          name: "general",
-          path: admin_settings_attachments_path,
-          label: t("settings.general")
-        },
-        {
-          name: "virus",
-          path: admin_settings_virus_scanning_path,
-          label: t(:"settings.antivirus.title"),
-          enterprise_feature: :virus_scanning
-        }
-      ]
-
-      if User.current.admin? && (EnterpriseToken.allows_to?(:virus_scanning) || Attachment.status_quarantined.any?)
-        tabs << {
-          name: "quarantined",
-          path: admin_quarantined_attachments_path,
-          label: t(:"antivirus_scan.quarantined_attachments.title")
-        }
+module Storages
+  module ProjectStorages
+    class HeaderComponent < ApplicationComponent
+      def initialize(project:)
+        super
+        @project = project
       end
 
-      tabs
+      def breadcrumbs_items
+        [{ href: project_overview_path(@project.id), text: @project.name },
+         { href: project_settings_general_path, text: t("label_project_settings") },
+         t("project_module_storages")]
+      end
+
+      def tabs
+        [
+          {
+            name: "external",
+            path: external_file_storages_project_settings_project_storages_path,
+            label: t(:external_file_storages)
+          },
+          {
+            name: "attachments",
+            path: attachments_project_settings_project_storages_path,
+            label: t(:"attributes.attachments")
+          }
+        ]
+      end
     end
   end
 end
