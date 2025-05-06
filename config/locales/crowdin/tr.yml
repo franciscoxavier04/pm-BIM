@@ -357,7 +357,7 @@ tr:
       header_status: Proje durumu
       header_relations: Proje ilişkileri
       button_update_details: Detayları güncelle
-      button_update_status: Update status
+      button_update_status_description: Update status description
       button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
@@ -419,10 +419,12 @@ tr:
         no_results_title_text: Bu proje tarafından tüketilen ek kayıtlı disk alanı yoktur.
       work_package_priorities:
         new_label: "Yeni öncelik"
+    status:
+      button_edit: Edit project status
   project_phase:
-    working_days_count:
-      one: "Süre: %{count} iş günü"
-      other: "Süre: %{count} iş günü"
+    duration:
+      one: "Duration: %{count} working day"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Değiştirilen liste yeni bir liste olarak kaydedildi"
@@ -3325,6 +3327,7 @@ tr:
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Güncelleme başarılı."
   notice_unsuccessful_update: "Update failed."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Başarılı güncelleme. Etkinleştirilen türlerin özel alanları, iş paketi formunda otomatik olarak etkinleştirilir. <a href="%{url}" target="_blank">Daha fazlasını görün</a>.
   notice_to_many_principals_to_display: "Çok fazla sonuç var. Yeni üyenin (veya grubun) adını yazarak aramayı daraltın."

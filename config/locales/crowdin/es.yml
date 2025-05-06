@@ -355,7 +355,7 @@ es:
       header_status: Project status
       header_relations: Project relations
       button_update_details: Update details
-      button_update_status: Update status
+      button_update_status_description: Update status description
       button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
@@ -417,10 +417,12 @@ es:
         no_results_title_text: No se ha registrado el uso de espacio en disco adicional por este proyecto.
       work_package_priorities:
         new_label: "Nueva prioridad"
+    status:
+      button_edit: Edit project status
   project_phase:
-    working_days_count:
-      one: "Duración: %{count} día laborable"
-      other: "Duración: %{count} días laborables"
+    duration:
+      one: "Duration: %{count} working day"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "La lista modificada se ha guardado como una nueva lista"
@@ -3325,6 +3327,7 @@ es:
   notice_successful_cancel: "Cancelación exitosa."
   notice_successful_update: "Actualización correcta."
   notice_unsuccessful_update: "Error al actualizar."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Actualización correcta. Los campos personalizados de los tipos ya activados se activan automáticamente en el formulario de paquete de trabajo. <a href="%{url}" target="_blank">Ver más</a>.
   notice_to_many_principals_to_display: "Hay demasiados resultados.\nAfine la búsqueda ingresando el nombre del nuevo miembro (o grupo)."

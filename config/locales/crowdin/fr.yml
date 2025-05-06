@@ -357,7 +357,7 @@ fr:
       header_status: Project status
       header_relations: Project relations
       button_update_details: Update details
-      button_update_status: Update status
+      button_update_status_description: Update status description
       button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
@@ -419,10 +419,12 @@ fr:
         no_results_title_text: Il n'y a pas d'espace disque supplémentaire utilisé par ce projet.
       work_package_priorities:
         new_label: "Nouvelle priorité"
+    status:
+      button_edit: Edit project status
   project_phase:
-    working_days_count:
-      one: "Durée : %{count} jour ouvrable"
-      other: "Durée : %{count} jours ouvrables"
+    duration:
+      one: "Duration: %{count} working day"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "La liste modifiée a été enregistrée en tant que nouvelle liste"
@@ -3325,6 +3327,7 @@ fr:
   notice_successful_cancel: "Annulation réussie."
   notice_successful_update: "Mise à jour réussie."
   notice_unsuccessful_update: "Mise à jour échouée."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Mise à jour réussie. Les champs personnalisés des types activés sont automatiquement activés
     sur le formulaire du lot de travaux. <a href="%{url}" target="_blank">Voir plus</a>.

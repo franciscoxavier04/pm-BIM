@@ -354,7 +354,7 @@ de:
       header_status: Projektstatus
       header_relations: Projektbeziehungen
       button_update_details: Einstellungen aktualisieren
-      button_update_status: Status aktualisieren
+      button_update_status_description: Update status description
       button_update_parent_project: Elternprojekt aktualisieren
       public_warning: >
         Dieses Projekt ist öffentlich. Nutzer mit Zugriff auf diese Instanz können dieses Projekt sehen und abhängig der ihnen zugewiesenen Rollen und Berechtigungen damit interagieren. Unterprojekte haben ihre eigenen Einstellungen zur Sichtbarkeit und erben nicht diese Einstellung.
@@ -416,10 +416,12 @@ de:
         no_results_title_text: Durch dieses Projekt wird kein zusätzlicher erfasster Speicherplatz verbraucht.
       work_package_priorities:
         new_label: "Neue Priorität"
+    status:
+      button_edit: Edit project status
   project_phase:
-    working_days_count:
-      one: "Dauer: %{count} Arbeitstag"
-      other: "Dauer: %{count} Arbeitstage"
+    duration:
+      one: "Duration: %{count} working day"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Die geänderte Liste wurde als neue Liste gespeichert"
@@ -3320,6 +3322,7 @@ de:
   notice_successful_cancel: "Erfolgreiche Absage."
   notice_successful_update: "Erfolgreich aktualisiert."
   notice_unsuccessful_update: "Aktualisierung fehlgeschlagen."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Erfolgreich aktualisiert. Die benutzerdefinierten Felder der aktivierten Typen werden automatisch
     im Arbeitspaket-Formular aktiviert. <a href="%{url}" target="_blank">Siehe mehr</a>.

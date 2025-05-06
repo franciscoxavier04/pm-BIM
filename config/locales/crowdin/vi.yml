@@ -357,7 +357,7 @@ vi:
       header_status: Project status
       header_relations: Project relations
       button_update_details: Update details
-      button_update_status: Update status
+      button_update_status_description: Update status description
       button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
@@ -419,8 +419,10 @@ vi:
         no_results_title_text: Không có không gian đĩa bổ sung nào được ghi nhận bởi dự án này.
       work_package_priorities:
         new_label: "New priority"
+    status:
+      button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       other: "Duration: %{count} working days"
   lists:
     create:
@@ -3286,6 +3288,7 @@ vi:
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Cập nhật thành công."
   notice_unsuccessful_update: "Update failed."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Cập nhật thành công. Các trường tùy chỉnh của các loại đã kích hoạt sẽ tự động được kích hoạt
     trên biểu mẫu gói công việc. <a href="%{url}" target="_blank">Xem thêm</a>.

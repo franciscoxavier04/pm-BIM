@@ -357,7 +357,7 @@ cs:
       header_status: Project status
       header_relations: Project relations
       button_update_details: Update details
-      button_update_status: Update status
+      button_update_status_description: Update status description
       button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
@@ -419,12 +419,14 @@ cs:
         no_results_title_text: Neexistuje žádné další diskové místo využívané tímto projektem.
       work_package_priorities:
         new_label: "nová priorita"
+    status:
+      button_edit: Edit project status
   project_phase:
-    working_days_count:
-      one: "Doba trvání: %{count} pracovní den"
-      few: "Doba trvání: %{count} pracovní dny"
-      many: "Doba trvání: %{count} pracovní dny"
-      other: "Doba trvání: %{count} pracovní dny"
+    duration:
+      one: "Duration: %{count} working day"
+      few: "Duration: %{count} working days"
+      many: "Duration: %{count} working days"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Upravený seznam byl uložen jako nový seznam."
@@ -3408,6 +3410,7 @@ cs:
   notice_successful_cancel: "Úspěšné zrušení."
   notice_successful_update: "Úspěšná aktualizace."
   notice_unsuccessful_update: "Update failed."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Úspěšná aktualizace. Vlastní pole aktivovaných typů jsou automaticky aktivována
     na formuláři pracovního balíčku. <a href="%{url}" target="_blank">Viz více</a>.

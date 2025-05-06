@@ -356,7 +356,7 @@ zh-TW:
       header_status: Project status
       header_relations: Project relations
       button_update_details: Update details
-      button_update_status: Update status
+      button_update_status_description: Update status description
       button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
@@ -418,9 +418,11 @@ zh-TW:
         no_results_title_text: 該專案沒有額外消耗磁碟空間。
       work_package_priorities:
         new_label: "新優先權"
+    status:
+      button_edit: Edit project status
   project_phase:
-    working_days_count:
-      other: "持續： %{count} 工作天"
+    duration:
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "修改後的清單已儲存為新清單"
@@ -3283,6 +3285,7 @@ zh-TW:
   notice_successful_cancel: "取消成功"
   notice_successful_update: "更新成功"
   notice_unsuccessful_update: "更新失敗。"
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     更新成功。相關類型之專案，此客製欄位會自動啟動。<a href="%{url}" target="_blank">看更多</a>。
   notice_to_many_principals_to_display: "搜尋的結果太多。\n請透過輸入新成員 (群組) 的名稱來縮小搜尋的範圍。"
