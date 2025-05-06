@@ -93,6 +93,7 @@ ka:
   button_log_costs: "ერთეულის ფასის ჟურნალი"
   button_log_time: "Log"
   button_add_activity: "აქტივობა"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Booked on project"
   caption_default: "ნაგულისხმევი"
   caption_default_rate_history_for: "Default rate history for %{user}"

@@ -101,6 +101,7 @@ sk:
   button_log_costs: "Zaúčtovať jednotkové náklady"
   button_log_time: "Log"
   button_add_activity: "Činnosť"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Rezervované na projekte"
   caption_default: "Predvolené"
   caption_default_rate_history_for: "História predvolenej sadzby pre %{user}"

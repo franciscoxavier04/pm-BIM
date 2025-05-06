@@ -93,6 +93,7 @@
   button_log_costs: "Loggfør enhetskostnader"
   button_log_time: "Log"
   button_add_activity: "Aktivitet"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Bestilt i prosjektet"
   caption_default: "Standard"
   caption_default_rate_history_for: "Standardratehistorikk for %{user}"

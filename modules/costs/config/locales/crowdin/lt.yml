@@ -101,6 +101,7 @@ lt:
   button_log_costs: "Vesti į žurnalą vieneto kaštus"
   button_log_time: "Log"
   button_add_activity: "Veikla"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Įrašytas projektui"
   caption_default: "Numatytasis"
   caption_default_rate_history_for: "%{user} numatytojo koeficiento istorija"

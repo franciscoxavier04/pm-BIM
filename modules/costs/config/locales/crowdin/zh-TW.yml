@@ -89,6 +89,7 @@ zh-TW:
   button_log_costs: "紀錄單位成本"
   button_log_time: "日誌"
   button_add_activity: "活動"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "已記錄在專案上"
   caption_default: "預設"
   caption_default_rate_history_for: "%{user} 的費率歷史記錄"

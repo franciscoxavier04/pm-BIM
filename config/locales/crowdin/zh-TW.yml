@@ -632,8 +632,9 @@ zh-TW:
             project: "Project"
         pattern:
           label: "主題模板"
-          caption: "新增文字或輸入 / 來搜尋屬性。您可以使用空格來分隔它們。"
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "未找到屬性。以文字新增：\"%{word}"
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "產生PDF檔案"
         intro: "從可用的範本中選擇您想要為此類型啟用的範本。範本決定了使用此類工作項目匯出的 PDF 中顯示的設計和屬性。預設為選定清單中的第一個模板。"

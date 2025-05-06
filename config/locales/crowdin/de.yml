@@ -634,9 +634,10 @@ de:
             parent: "Parent"
             project: "Project"
         pattern:
-          label: "Thema-Schema"
+          label: "Titel-Schema"
           caption: "Fügen Sie Text oder Typ / um nach einem Attribut zu suchen. Sie können Leerzeichen hinzufügen, um sie zu trennen."
           insert_as_text: "Keine Attribute gefunden. Als Text hinzufügen: \"%{word}\""
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "PDF generieren"
         intro: "Wählen Sie aus den verfügbaren Vorlagen diejenige aus, die Sie für diesen Typ aktivieren möchten. Die Vorlage bestimmt das Design und die Attribute, die in der exportierten PDF-Datei eines Arbeitspakets mit diesem Typ sichtbar sind. Die erste Vorlage in der Liste ist standardmäßig ausgewählt."

@@ -93,6 +93,7 @@ nl:
   button_log_costs: "Registreer kost per eenheid"
   button_log_time: "Registreer"
   button_add_activity: "Activiteit"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Gereserveerd op project"
   caption_default: "Standaard"
   caption_default_rate_history_for: "Standaard tarief geschiedenis voor %{user}"

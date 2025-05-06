@@ -93,6 +93,7 @@ el:
   button_log_costs: "Καταγραφή κόστους μονάδας"
   button_log_time: "Log"
   button_add_activity: "Δραστηριότητα"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Κλείστηκαν στο έργο"
   caption_default: "Προεπιλογή"
   caption_default_rate_history_for: "Προεπιλεγμένο ιστορικό αμοιβής για %{user}"

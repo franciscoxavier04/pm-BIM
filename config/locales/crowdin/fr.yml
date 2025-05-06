@@ -640,8 +640,9 @@ fr:
             project: "Project"
         pattern:
           label: "Modèle de sujet"
-          caption: "Ajouter du texte ou saisissez / pour rechercher un attribut. Vous pouvez ajouter des espaces pour les séparer."
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "Aucun attribut n'a été trouvé. Ajouter en tant que texte : « %{word} »"
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Générer un fichier PDF"
         intro: "Sélectionnez les modèles disponibles que vous souhaitez activer pour ce type. Le modèle détermine la conception et les attributs visibles dans le fichier PDF exporté d'un lot de travaux utilisant ce type. Le premier modèle de la liste est sélectionné par défaut."

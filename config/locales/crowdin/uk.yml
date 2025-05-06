@@ -652,8 +652,9 @@ uk:
             project: "Project"
         pattern:
           label: "Шаблон теми"
-          caption: "Додайте текст або введіть / щоб виконати пошук атрибута. Як роздільник можна додавати пробіли."
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "Атрибутів не знайдено. Додайте як текст: «%{word}»"
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Згенерувати PDF"
         intro: "Виберіть, які шаблони з доступних вам ви хочете ввімкнути для цього типу. Шаблон визначає дизайн і атрибути, що відображаються в експортованому PDF-файлі пакета робіт за допомогою цього типу. Перший шаблон у списку вибирається за замовчуванням."

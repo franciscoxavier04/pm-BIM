@@ -639,8 +639,9 @@ pt-PT:
             project: "Project"
         pattern:
           label: "Padrão do tema"
-          caption: "Adicione ou introduza texto / para pesquisar por um atributo. Pode adicionar espaços para separá-los."
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "Não foram encontrados atributos. Adicionar como texto: \"%{word}\""
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Gerar PDF"
         intro: "Selecione os modelos disponíveis que pretende ativar para este tipo. O modelo determina o design e os atributos visíveis no PDF exportado de um pacote de trabalho que utiliza este tipo. O primeiro modelo da lista é selecionado por predefinição."

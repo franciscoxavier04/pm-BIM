@@ -89,6 +89,7 @@ ms:
   button_log_costs: "Log kos unit"
   button_log_time: "Log"
   button_add_activity: "Aktiviti"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Ditempah pada projek"
   caption_default: "Default"
   caption_default_rate_history_for: "Sejarah kadar default untuk %{user}"

@@ -630,8 +630,9 @@ zh-CN:
             project: "项目"
         pattern:
           label: "主题模式"
-          caption: "添加文本或输入斜杠“/”以搜索属性。你可以使用空格来分隔它们。"
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "未找到属性。以文本形式添加：“%{word}”"
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "生成 PDF"
         intro: "为此类型选择模板。模板决定此类型工作包导出的PDF的设计和可见属性。默认选择列表上的第一个模板。"
@@ -3723,7 +3724,7 @@ zh-CN:
   setting_project_gantt_query_text: "您可以从项目概览页面修改用于显示甘特图的查询。"
   setting_security_badge_displayed: "显示安全徽章"
   setting_registration_footer: "注册页脚"
-  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
+  setting_registration_footer_caption: "此文本显示在注册页面的页脚。使用 HTML 编辑器为每个选定语言格式化文本。"
   setting_repositories_automatic_managed_vendor: "自动存储库提供商类型"
   setting_repositories_encodings: "存储库编码"
   setting_repository_storage_cache_minutes: "存储库磁盘大小缓存"

@@ -640,8 +640,9 @@ es:
             project: "Project"
         pattern:
           label: "Patrón del asunto"
-          caption: "Añada texto o escriba / para buscar un atributo. Puede añadir espacios para separarlos."
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "No se encontraron atributos. Añadir como texto: «%{word}»"
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Generar PDF"
         intro: "Seleccione qué plantillas de las disponibles desea habilitar para este tipo. La plantilla determina el diseño y los atributos visibles en el PDF exportado de un paquete de trabajo que utilice este tipo. La primera plantilla de la lista se selecciona por defecto."

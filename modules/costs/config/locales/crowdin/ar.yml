@@ -109,6 +109,7 @@ ar:
   button_log_costs: "سجل تكاليف الوحدة"
   button_log_time: "Log"
   button_add_activity: "النشاط"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "حُجِِز على المشروع"
   caption_default: "الافتراضي"
   caption_default_rate_history_for: "تاريخ المعدل الافتراضي ل %{user}"

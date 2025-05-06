@@ -93,6 +93,7 @@ fr:
   button_log_costs: "Consigner coûts unitaires"
   button_log_time: "Journal"
   button_add_activity: "Activité"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Réservé pour le projet"
   caption_default: "Défaut"
   caption_default_rate_history_for: "Historique des tarifs par défaut pour %{user}"

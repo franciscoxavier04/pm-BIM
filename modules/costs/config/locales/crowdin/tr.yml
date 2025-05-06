@@ -93,6 +93,7 @@ tr:
   button_log_costs: "Günlük birim maliyetleri"
   button_log_time: "Kayıt"
   button_add_activity: "Etkinlik"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Proje rezervasyonu yaptırdı"
   caption_default: "Varsayılan"
   caption_default_rate_history_for: "%{user} için varsayılan değerleme geçmişi"

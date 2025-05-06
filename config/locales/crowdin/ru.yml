@@ -656,8 +656,9 @@ ru:
             project: "Проект"
         pattern:
           label: "Шаблон темы"
-          caption: "Добавьте текст или введите / для поиска атрибута. Вы можете добавить пробелы, чтобы разделить их."
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "Атрибуты не найдены. Добавить как текст: \"%{word}\""
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Создать PDF"
         intro: "Выберите, какие шаблоны из имеющихся Вы хотите активировать для этого типа. Шаблон задаёт дизайн и атрибуты в экспортированном PDF-файле пакета работ этого типа. Первый шаблон из списка выбирается по умолчанию."

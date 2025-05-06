@@ -639,8 +639,9 @@ pt-BR:
             project: "Project"
         pattern:
           label: "Padrão de assunto"
-          caption: "Digite o texto ou aperte / para pesquisar um atributo. Você pode separá-los por espaço."
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "Nenhum atributo encontrado. Digite um texto como: \"%{word}\""
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Gerar PDF"
         intro: "Selecione quais modelos disponíveis você deseja ativar para este tipo. O modelo define o design e os atributos visíveis no PDF exportado de um pacote de trabalho desse tipo. O primeiro modelo da lista é selecionado por padrão."

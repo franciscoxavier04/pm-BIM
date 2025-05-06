@@ -89,6 +89,7 @@ ko:
   button_log_costs: "단위 비용 기록"
   button_log_time: "기록"
   button_add_activity: "활동"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "프로젝트에서 예약됨"
   caption_default: "기본값"
   caption_default_rate_history_for: "%{user}에 대한 기본 요금 기록"
