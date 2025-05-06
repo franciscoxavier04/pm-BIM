@@ -28,29 +28,34 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
-require "contracts/shared/model_contract_shared_context"
+module Storages
+  module ProjectStorages
+    class HeaderComponent < ApplicationComponent
+      def initialize(project:)
+        super
+        @project = project
+      end
 
-RSpec.describe ProjectLifeCycleSteps::BaseContract do
-  include_context "ModelContract shared context"
+      def breadcrumbs_items
+        [{ href: project_overview_path(@project.id), text: @project.name },
+         { href: project_settings_general_path, text: t("label_project_settings") },
+         t("project_module_storages")]
+      end
 
-  let(:contract) { described_class.new(phase, user) }
-  let(:user) { build_stubbed(:user) }
-  let(:project) { build_stubbed(:project) }
-  let(:phase) { build_stubbed(:project_phase, project:) }
-
-  context "with authorized user" do
-    before do
-      mock_permissions_for(user) do |mock|
-        mock.allow_in_project(:edit_project_phases, project:)
+      def tabs
+        [
+          {
+            name: "external",
+            path: external_file_storages_project_settings_project_storages_path,
+            label: t(:external_file_storages)
+          },
+          {
+            name: "attachments",
+            path: attachments_project_settings_project_storages_path,
+            label: t(:"attributes.attachments")
+          }
+        ]
       end
     end
-
-    it_behaves_like "contract is valid"
-    include_examples "contract reuses the model errors"
-  end
-
-  context "with unauthorized user" do
-    it_behaves_like "contract user is unauthorized"
   end
 end

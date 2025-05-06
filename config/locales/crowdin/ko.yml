@@ -422,8 +422,8 @@ ko:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
-      other: "기간: 근무일 %{count}일"
+    duration:
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "수정된 목록이 새 목록으로 저장되었습니다"

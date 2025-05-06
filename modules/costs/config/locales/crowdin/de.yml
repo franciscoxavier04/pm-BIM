@@ -60,7 +60,7 @@ de:
         time: Zeit
     models:
       time_entry:
-        one: "Time entry"
+        one: "Zeitbuchung"
         other: "Zeitbuchungen"
       cost_entry:
         one: "Kosteneintrag"

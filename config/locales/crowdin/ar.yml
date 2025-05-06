@@ -422,7 +422,7 @@ ar:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       zero: "Duration: %{count} working days"
       one: "Duration: %{count} working day"
       two: "Duration: %{count} working days"

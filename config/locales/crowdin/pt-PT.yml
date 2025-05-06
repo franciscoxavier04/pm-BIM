@@ -420,9 +420,9 @@ pt-PT:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
-      one: "Duração: %{count} dia útil"
-      other: "Duração: %{count} dias úteis"
+    duration:
+      one: "Duration: %{count} working day"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "A lista modificada foi guardada como uma nova lista"

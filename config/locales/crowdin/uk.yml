@@ -418,11 +418,11 @@ uk:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
-      one: "Тривалість: %{count} робочий день"
-      few: "Тривалість: %{count} робочі дні"
-      many: "Тривалість: %{count} робочих днів"
-      other: "Тривалість: %{count} робочого дня"
+    duration:
+      one: "Duration: %{count} working day"
+      few: "Duration: %{count} working days"
+      many: "Duration: %{count} working days"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Змінений список збережено як новий"
@@ -2764,7 +2764,7 @@ uk:
   label_index_by_title: "Індекс за назвою"
   label_information: "Інформація"
   label_information_plural: "Інформація"
-  label_installation_guides: "Інструкції із встановлення"
+  label_installation_guides: "Інструкції зі встановлення"
   label_integer: "Ціле число"
   label_internal: "Власне"
   label_introduction_video: "Введення відео"

@@ -419,9 +419,9 @@ nl:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Duration: %{count} working day"
-      other: "Duur: %{count} werkdagen"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "De gewijzigde lijst is opgeslagen als een nieuwe lijst"

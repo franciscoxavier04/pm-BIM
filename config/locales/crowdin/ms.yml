@@ -421,8 +421,8 @@ ms:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
-      other: "Tempoh: %{count} hari bekerja"
+    duration:
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Senarai yang diubah suai telah disimpan sebagai senarai baharu."

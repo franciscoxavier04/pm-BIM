@@ -421,7 +421,7 @@ sl:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Duration: %{count} working day"
       two: "Duration: %{count} working days"
       few: "Duration: %{count} working days"
@@ -1934,8 +1934,8 @@ sl:
       - "avgust"
       - "september"
       - "oktober"
-      - "november"
-      - "december"
+      - "November"
+      - "December"
     order:
       - :leto
       - :mesec

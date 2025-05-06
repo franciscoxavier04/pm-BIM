@@ -422,9 +422,9 @@ fr:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
-      one: "Durée : %{count} jour ouvrable"
-      other: "Durée : %{count} jours ouvrables"
+    duration:
+      one: "Duration: %{count} working day"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "La liste modifiée a été enregistrée en tant que nouvelle liste"

@@ -422,9 +422,9 @@ tr:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
-      one: "Süre: %{count} iş günü"
-      other: "Süre: %{count} iş günü"
+    duration:
+      one: "Duration: %{count} working day"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Değiştirilen liste yeni bir liste olarak kaydedildi"

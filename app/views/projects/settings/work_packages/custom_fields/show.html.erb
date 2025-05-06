@@ -27,7 +27,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<%= render(Settings::ProjectWorkPackages::HeaderComponent.new(@project, selected: :custom_fields)) %>
+<%= render(Settings::ProjectWorkPackages::HeaderComponent.new(@project)) %>
 
 <%=
   if current_user.admin?

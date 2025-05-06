@@ -422,7 +422,7 @@ sk:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Duration: %{count} working day"
       few: "Duration: %{count} working days"
       many: "Duration: %{count} working days"

@@ -421,11 +421,11 @@ ru:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
-      one: "Продолжительность: %{count} рабочий день"
-      few: "Продолжительность: %{count} рабочих дня"
-      many: "Продолжительность: %{count} рабочих дней"
-      other: "Продолжительность: %{count} рабочих дней"
+    duration:
+      one: "Duration: %{count} working day"
+      few: "Duration: %{count} working days"
+      many: "Duration: %{count} working days"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Измененный список был сохранен как новый"
