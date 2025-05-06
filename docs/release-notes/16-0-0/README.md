@@ -92,7 +92,7 @@ Time reports now include explicit start and end times, addressing common legal r
 
 Exported PDF timesheets now include an overview of logged time per day and user. It is displayed in a table view at the beginning of the report. If the list contains more than five users, the view is split into several tables.
 
-**Screenshot**
+![Example PDF timesheet showing different times logged by five different people in a table view](openproject-16-0-timesheet-hours-user-day.png)
 
 ## Release to Community: Graphs on project overview page
 
