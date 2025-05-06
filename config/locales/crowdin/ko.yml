@@ -357,7 +357,7 @@ ko:
       header_status: Project status
       header_relations: Project relations
       button_update_details: Update details
-      button_update_status: Update status
+      button_update_status_description: Update status description
       button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
@@ -419,6 +419,8 @@ ko:
         no_results_title_text: 이 프로젝트에서 사용하는 추가 기록 디스크 공간이 없습니다.
       work_package_priorities:
         new_label: "새로운 우선 순위"
+    status:
+      button_edit: Edit project status
   project_phase:
     working_days_count:
       other: "기간: 근무일 %{count}일"
@@ -632,8 +634,9 @@ ko:
             project: "Project"
         pattern:
           label: "제목 패턴"
-          caption: "텍스트를 추가하거나 입력하여 / 특성을 검색하세요. 공백을 사용하여 특성을 구분할 수 있습니다."
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "특성을 찾지 못했습니다. 텍스트로 추가: \"%{word}\""
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "PDF 생성"
         intro: "사용 가능한 템플릿 중에서 이 유형에 대해 활성화하려는 템플릿을 선택하세요. 템플릿은 이 유형을 사용하여 작업 패키지의 내보낸 PDF에서 표시되는 디자인과 특성을 결정합니다. 목록의 첫 번째 템플릿이 기본적으로 선택됩니다."
@@ -3286,6 +3289,7 @@ ko:
   notice_successful_cancel: "취소에 성공했습니다."
   notice_successful_update: "업데이트에 성공했습니다."
   notice_unsuccessful_update: "업데이트에 실패했습니다."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     업데이트 성공. 활성화된 유형의 사용자 지정 필드는 작업 패키지 양식에서 자동으로 활성화됩니다. <a href="%{url}" target="_blank">자세히 알아보세요</a>.
   notice_to_many_principals_to_display: "너무 많은 결과가 있습니다.\n새 멤버(또는 그룹)의 이름을 입력하여 검색 범위를 좁히세요."

@@ -89,6 +89,7 @@ vi:
   button_log_costs: "Ghi lại chi phí đơn vị"
   button_log_time: "Nhật ký"
   button_add_activity: "Hoạt động"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Đã ghi trên dự án"
   caption_default: "Mặc định"
   caption_default_rate_history_for: "Lịch sử tỷ lệ mặc định cho %{user}"

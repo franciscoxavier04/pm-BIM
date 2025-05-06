@@ -355,7 +355,7 @@ es:
       header_status: Project status
       header_relations: Project relations
       button_update_details: Update details
-      button_update_status: Update status
+      button_update_status_description: Update status description
       button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
@@ -417,6 +417,8 @@ es:
         no_results_title_text: No se ha registrado el uso de espacio en disco adicional por este proyecto.
       work_package_priorities:
         new_label: "Nueva prioridad"
+    status:
+      button_edit: Edit project status
   project_phase:
     working_days_count:
       one: "Duración: %{count} día laborable"
@@ -638,8 +640,9 @@ es:
             project: "Project"
         pattern:
           label: "Patrón del asunto"
-          caption: "Añada texto o escriba / para buscar un atributo. Puede añadir espacios para separarlos."
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "No se encontraron atributos. Añadir como texto: «%{word}»"
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Generar PDF"
         intro: "Seleccione qué plantillas de las disponibles desea habilitar para este tipo. La plantilla determina el diseño y los atributos visibles en el PDF exportado de un paquete de trabajo que utilice este tipo. La primera plantilla de la lista se selecciona por defecto."
@@ -3325,6 +3328,7 @@ es:
   notice_successful_cancel: "Cancelación exitosa."
   notice_successful_update: "Actualización correcta."
   notice_unsuccessful_update: "Error al actualizar."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Actualización correcta. Los campos personalizados de los tipos ya activados se activan automáticamente en el formulario de paquete de trabajo. <a href="%{url}" target="_blank">Ver más</a>.
   notice_to_many_principals_to_display: "Hay demasiados resultados.\nAfine la búsqueda ingresando el nombre del nuevo miembro (o grupo)."

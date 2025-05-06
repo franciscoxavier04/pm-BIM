@@ -93,6 +93,7 @@ ca:
   button_log_costs: "Registra unitat de costs"
   button_log_time: "Log"
   button_add_activity: "Activitat"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Registrat a un projecte"
   caption_default: "Per defecte"
   caption_default_rate_history_for: "Història de tarifa per defecte per %{user}"

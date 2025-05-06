@@ -355,7 +355,7 @@ da:
       header_status: Project status
       header_relations: Project relations
       button_update_details: Update details
-      button_update_status: Update status
+      button_update_status_description: Update status description
       button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
@@ -417,6 +417,8 @@ da:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
       work_package_priorities:
         new_label: "New priority"
+    status:
+      button_edit: Edit project status
   project_phase:
     working_days_count:
       one: "Duration: %{count} working day"
@@ -638,8 +640,9 @@ da:
             project: "Project"
         pattern:
           label: "Subject pattern"
-          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -3325,6 +3328,7 @@ da:
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Opdatering gennemført."
   notice_unsuccessful_update: "Update failed."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Successful update. The custom fields of the activated types are automatically activated
     on the work package form. <a href="%{url}" target="_blank">See more</a>.

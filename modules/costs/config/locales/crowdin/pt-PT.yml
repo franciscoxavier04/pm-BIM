@@ -93,6 +93,7 @@ pt-PT:
   button_log_costs: "Registar custos unitários"
   button_log_time: "Registo"
   button_add_activity: "Atividade"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Marcado no projeto"
   caption_default: "Predefinido"
   caption_default_rate_history_for: "História de taxa padrão para %{user}"

@@ -89,6 +89,7 @@ ja:
   button_log_costs: "単価を記録"
   button_log_time: "ログ"
   button_add_activity: "活動"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "プロジェクトの予約"
   caption_default: "デフォルト"
   caption_default_rate_history_for: "%{user} のデフォルト率の履歴"

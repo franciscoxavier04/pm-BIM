@@ -101,6 +101,7 @@ uk:
   button_log_costs: "Витрати лог-одиниць"
   button_log_time: "Записати"
   button_add_activity: "Дія"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Записаний на проект"
   caption_default: "За замовчуванням"
   caption_default_rate_history_for: "Історія ставок за умовчанням для %{user}"

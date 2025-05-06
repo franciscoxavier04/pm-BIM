@@ -93,6 +93,7 @@ fi:
   button_log_costs: "Kirjaa kustannuksia"
   button_log_time: "Log"
   button_add_activity: "Tapahtumat"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Kirjattu projektille"
   caption_default: "Oletus"
   caption_default_rate_history_for: "Oletushinnan historia käyttäjälle %{user}"

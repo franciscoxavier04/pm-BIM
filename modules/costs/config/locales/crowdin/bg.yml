@@ -93,6 +93,7 @@ bg:
   button_log_costs: "Разходи за единична регистрация"
   button_log_time: "Log"
   button_add_activity: "Активност"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Разходи за единична регистрация"
   caption_default: "По подразбиране"
   caption_default_rate_history_for: "История на тарифите по подразбиране за %{user}"

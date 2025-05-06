@@ -97,6 +97,7 @@ ro:
   button_log_costs: "Costurile unitare ale buștenilor"
   button_log_time: "Jurnal"
   button_add_activity: "Activitate"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Rezervat pe proiect"
   caption_default: "Implicit"
   caption_default_rate_history_for: "Istoricul ratei de neplată pentru %{user}"

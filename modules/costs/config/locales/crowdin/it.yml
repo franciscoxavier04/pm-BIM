@@ -93,6 +93,7 @@ it:
   button_log_costs: "Registra unità di costo"
   button_log_time: "Registra"
   button_add_activity: "Attività"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Prenotato su progetto"
   caption_default: "Predefinito"
   caption_default_rate_history_for: "Cronologia tariffe predefinite per %{user}"

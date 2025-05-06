@@ -93,6 +93,7 @@ fa:
   button_log_costs: "ثبت هزینه‌های واحد"
   button_log_time: "Log"
   button_add_activity: "فعالیت"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "رزرو شده در پروژه"
   caption_default: "پیش‌فرض"
   caption_default_rate_history_for: "تاریخچه ضریب (نرخ) پرداختی پیش‌فرض برای %{user}"

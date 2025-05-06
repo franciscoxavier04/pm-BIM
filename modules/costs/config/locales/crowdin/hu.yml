@@ -93,6 +93,7 @@ hu:
   button_log_costs: "Költségek naplózása"
   button_log_time: "Log"
   button_add_activity: "Tevékenység"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Foglalt projekt"
   caption_default: "Alapértelmezett"
   caption_default_rate_history_for: "Alapértelmezett díj történet %{user}-nek"

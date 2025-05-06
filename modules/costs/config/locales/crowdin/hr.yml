@@ -97,6 +97,7 @@ hr:
   button_log_costs: "Evidentiraj jedinice troškova"
   button_log_time: "Log"
   button_add_activity: "Aktivnost"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Na projektu"
   caption_default: "Zadana vrijednost"
   caption_default_rate_history_for: "Povijest uobičajene satnice za %{user}"

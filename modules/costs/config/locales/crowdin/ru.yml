@@ -101,6 +101,7 @@ ru:
   button_log_costs: "Журналировать расходы на единицу"
   button_log_time: "Журнал"
   button_add_activity: "Деятельность"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Заказано на проект"
   caption_default: "По умолчанию"
   caption_default_rate_history_for: "История тарифов по умолчанию для %{user}"

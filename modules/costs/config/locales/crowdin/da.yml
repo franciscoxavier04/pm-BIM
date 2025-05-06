@@ -93,6 +93,7 @@ da:
   button_log_costs: "Registrér enhedsomkostninger"
   button_log_time: "Log"
   button_add_activity: "Aktivivtet"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Reservationer til projekt"
   caption_default: "Forhåndsvalgt"
   caption_default_rate_history_for: "Standardsatshistorik for %{user}"

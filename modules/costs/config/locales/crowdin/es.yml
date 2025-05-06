@@ -93,6 +93,7 @@ es:
   button_log_costs: "Registrar costos unitarios"
   button_log_time: "Registro"
   button_add_activity: "Actividad"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Reservados en proyecto"
   caption_default: "Por defecto"
   caption_default_rate_history_for: "Historial de morosidad para %{user}"

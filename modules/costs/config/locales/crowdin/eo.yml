@@ -93,6 +93,7 @@ eo:
   button_log_costs: "Log unit costs"
   button_log_time: "Log"
   button_add_activity: "Aktiveco"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Booked on project"
   caption_default: "Defaŭlte"
   caption_default_rate_history_for: "Default rate history for %{user}"

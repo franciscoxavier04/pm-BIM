@@ -355,7 +355,7 @@ pt-PT:
       header_status: Project status
       header_relations: Project relations
       button_update_details: Update details
-      button_update_status: Update status
+      button_update_status_description: Update status description
       button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
@@ -417,6 +417,8 @@ pt-PT:
         no_results_title_text: Não há espaço adicional gravado em disco que seja consumido por este projeto.
       work_package_priorities:
         new_label: "Nova prioridade"
+    status:
+      button_edit: Edit project status
   project_phase:
     working_days_count:
       one: "Duração: %{count} dia útil"
@@ -637,8 +639,9 @@ pt-PT:
             project: "Project"
         pattern:
           label: "Padrão do tema"
-          caption: "Adicione ou introduza texto / para pesquisar por um atributo. Pode adicionar espaços para separá-los."
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "Não foram encontrados atributos. Adicionar como texto: \"%{word}\""
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Gerar PDF"
         intro: "Selecione os modelos disponíveis que pretende ativar para este tipo. O modelo determina o design e os atributos visíveis no PDF exportado de um pacote de trabalho que utiliza este tipo. O primeiro modelo da lista é selecionado por predefinição."
@@ -3323,6 +3326,7 @@ pt-PT:
   notice_successful_cancel: "Cancelamento bem-sucedido."
   notice_successful_update: "Actualizado com sucesso."
   notice_unsuccessful_update: "Falha na atualização."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Atualização bem-sucedida. Os campos personalizados dos tipos ativados são ativados automaticamente
     no formulário de pacote de trabalho. <a href="%{url}" target="_blank">Veja mais</a>.
