@@ -972,4 +972,33 @@ RSpec.describe Settings::Definition, :settings_reset do
       end
     end
   end
+
+  describe ".add" do
+    context "when overriding from ENV",
+            with_env: {
+              "OPENPROJECT_BOGUS_SETTING" => "true"
+            } do
+      it "allows overriding configuration" do
+        described_class.add "bogus_setting",
+                            default: false
+
+        expect(described_class.all[:bogus_setting].value)
+          .to be true
+      end
+    end
+
+    context "when overriding from ENV with disallow_override set to true",
+            with_env: {
+              "OPENPROJECT_BOGUS_SETTING" => "true"
+            } do
+      it "allows overriding configuration" do
+        described_class.add "bogus_setting",
+                            default: false,
+                            disallow_override: true
+
+        expect(described_class.all[:bogus_setting].value)
+          .to be false
+      end
+    end
+  end
 end
