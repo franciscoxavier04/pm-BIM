@@ -10,11 +10,11 @@ release_date: 2025-05-01
 
 Release date: 2025-05-01
 
-We released OpenProject [OpenProject 16.0.0](https://community.openproject.org/versions/1412). This major release contains many features and bug fixes and we recommend updating to the newest version. In these Release Notes, we will give an overview of important updates, important feature changes and important technical updates. At the end, you will find a complete list of all changes and bug fixes for 16.0.0.
+We released [OpenProject 16.0.0](https://community.openproject.org/versions/1412). This major release contains many features and bug fixes and we recommend updating to the newest version. In these Release Notes, we will give an overview of important updates, important feature changes and important technical updates. At the end, you will find a complete list of all changes and bug fixes for 16.0.0.
 
 ## Important updates
 
-The Enterprise plans (Basic, Professional, Premium, and Corporate) have been updated. Each plan now includes a specific set of Enterprise add-ons. Support levels and pricing remain unchanged.
+The Enterprise plans (Basic, Professional, Premium, and Corporate) have been updated. Each plan now includes a specific set of Enterprise add-ons. Support levels and pricing remain unchanged with version 16.0.
 
 Current Enterprise customers retain their existing plans with access to all Enterprise add-ons available at that time. No features are removed.
 
@@ -32,7 +32,7 @@ Meeting organization becomes even easier with OpenProject 16.0: Meeting backlogs
 
 In one-time meetings, the new **Agenda backlog** stores topics that are not yet assigned to the current meeting but may be added later.
 
-![A one-time meeting in OpenProject with an Agenda backlog and info to 'Drag items here ore create a new one'.](openproject-16-0-meeting-backlogs-one-time-highlighted.png)
+![A one-time meeting in OpenProject with an Agenda backlog and info to 'Drag items here or create a new one'.](openproject-16-0-meeting-backlogs-one-time-highlighted.png)
 
 In recurring meetings, the shared **Series backlog** helps track open points across all meeting occurrences and move items between them as priorities change.
 
@@ -74,19 +74,19 @@ Screenshot
 
 ## Separate time tracking module with calendar view
 
-OpenProject 16.0 offers a separate time tracking module with a calendar view. It is accessible from the global view and listed in the left side bar navigation called 'My time tracking'. There, users can view and edit their logged time with start and end times. The user can switch between daily, weekly, work weekly and monthly views and also log new time entries directly by clicking in the calendar.
+OpenProject 16.0 offers a separate time tracking module with a calendar view. It is accessible from the global view and listed in the left side bar navigation called 'My time tracking'. There, users can view and edit their logged time with start and end times. The user can switch between daily, weekly, work week and monthly views and also log new time entries directly by clicking in the calendar.
 
 Each day shows the sum of the tracked time, and in the weekly and monthly views, the total tracked time is displayed in the lower right corner.
 
 ![OpenProject's My time tracking module in calendar view, showing a work week with different time entries.](openproject-16-0-my-time-tracking-calendar-view.png)
 
-Please note that this module has to be activated by an administrator first. Navigate to *Administration → Time and costs → Defaults* and check the box next to 'Allow exact time tracking' to enable tracking start and finish dates. The calendar view is now the default view for the My time tracking module. If the checkmark for 'Require exact times' is set, users cannot log time without start and finish date. The list view is now the default view. In the calendar view, all entries are then displayed at the top of the respective day column.
+Please note that this module has to be activated by an administrator first. Navigate to *Administration → Time and costs → Defaults* and check the box next to 'Allow exact time tracking' to enable tracking start and finish dates. If 'Allow exact time tracking' is enabled, the calendar becomes the default view for the My time tracking module. If 'Require exact times' is checked, users must provide both start and end times when logging time. Otherwise, the list view remains the default. In the calendar view, all entries are then displayed at the top of the respective day column.
 
 [Learn more about how to use the My time tracking module in this blog article](https://www.openproject.org/blog/time-tracking-module/).
 
 ### Time entries with legally required mandatory fields: start time and finish time
 
-Before 16.0, time reports only included the duration of the logged time, not the explicit start and end time. Now, they also show start and finish time. This applies to the new time tracking module as well as PDF timesheets.
+Time reports now include explicit start and end times, addressing common legal requirements. Before 16.0, time reports showed only the total duration of logged time. Now, they also include start and end times for greater accuracy. This applies to all features where time tracking is possible, e.g. the new time tracking module, PDF timesheets, or the My spent time widget.
 
 ### Overview of time logged per day per user in PDF timesheet
 
@@ -126,7 +126,7 @@ To make troubleshooting even easier, administrators can now also **download** th
 
 ## Option to select favorite project tab as default in project quick search
 
-When selecting the **Favorites** tab in the Projects dropdown, OpenProject now remembers this preference and shows it by default the next time the dropdown is opened. This personal setting remains active until the user switches back to **All**. It’s a small usability improvement that saves time for users who frequently work with favorite projects.
+When selecting the **Favorites** tab in the Projects dropdown, OpenProject now remembers this preference and shows it by default the next time the dropdown is opened. It is a personal setting that remains active until the user switches back to **All**. This small usability improvement saves time for users who frequently work with favorite projects.
 
 ## Important technical changes
 
