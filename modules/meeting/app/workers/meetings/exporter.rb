@@ -37,7 +37,10 @@ module Meetings
     include WorkPackage::PDFExport::Export::Meetings::Styles
     include WorkPackage::PDFExport::Export::Markdown
     include WorkPackage::PDFExport::Common::Attachments
-    include Meetings::MeetingToPdf
+    include WorkPackage::PDFExport::Common::Badge
+    include Meetings::PDF::PageHead
+    include Meetings::PDF::Participants
+    include Meetings::PDF::Agenda
 
     attr_accessor :pdf
 
@@ -69,12 +72,26 @@ module Meetings
     end
 
     def render_doc
+      pdf.title = heading
       write_cover_page! if with_cover?
       render_meeting!
     end
 
+    def render_meeting!
+      write_page_head
+      write_hr
+      write_participants
+      write_hr
+      write_agenda
+    end
+
+    def write_hr
+      write_horizontal_line(pdf.cursor, 1, "6E7781")
+      pdf.move_down(10)
+    end
+
     def with_cover?
-      true
+      false# true
     end
 
     def cover_page_title

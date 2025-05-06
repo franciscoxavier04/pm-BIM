@@ -33,7 +33,7 @@ module Meetings
     self.model = ::Meeting
 
     def title
-      I18n.t("export.your_meeting_export")
+      I18n.t("meeting.export.your_meeting_export")
     end
 
     def prepare!; end
