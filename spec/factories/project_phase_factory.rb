@@ -46,6 +46,14 @@ FactoryBot.define do
       definition { association(:project_phase_definition, :with_start_gate, :with_finish_gate) }
     end
 
+    trait :active do
+      active { true }
+    end
+
+    trait :inactive do
+      active { false }
+    end
+
     # calculate duration taking weekdays and non working days into account
     trait :proper_duration do
       callback(:after_build, :after_stub, &:set_calculated_duration)

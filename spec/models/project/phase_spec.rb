@@ -38,7 +38,7 @@ RSpec.describe Project::Phase do
   describe "associations" do
     it { is_expected.to belong_to(:project).required }
     it { is_expected.to belong_to(:definition).required }
-    it { is_expected.to have_many(:work_packages) }
+    it { is_expected.to have_many(:work_packages).through(:definition) }
   end
 
   describe ".visible" do

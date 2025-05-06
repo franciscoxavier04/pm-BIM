@@ -27,11 +27,14 @@
 #++
 
 class Project::Phase < ApplicationRecord
+  include ::Scopes::Scoped
+
   belongs_to :project, optional: false, inverse_of: :available_phases
   belongs_to :definition,
              optional: false,
              class_name: "Project::PhaseDefinition"
-  has_many :work_packages, inverse_of: :project_phase, dependent: :nullify
+  has_many :work_packages,
+           through: :definition
 
   validate :validate_date_range
 
@@ -46,6 +49,7 @@ class Project::Phase < ApplicationRecord
   attr_readonly :definition_id
 
   scope :active, -> { where(active: true) }
+  scopes :order_by_position
 
   class << self
     def visible(user = User.current)
