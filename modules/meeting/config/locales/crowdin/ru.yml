@@ -338,16 +338,10 @@ ru:
   permission_edit_meetings: "Изменить совещания"
   permission_delete_meetings: "Удалить совещания"
   permission_view_meetings: "Просмотреть совещания"
-  permission_create_meeting_agendas: "Создать повестку совещания"
-  permission_create_meeting_agendas_explanation: "Позволяет редактировать содержимое повестки дня Классического Совещания."
   permission_manage_agendas: "Управление повестками"
   permission_manage_agendas_explanation: "Позволяет управлять пунктами повестки для Динамического совещания."
-  permission_close_meeting_agendas: "Закрыть повестки дня"
-  permission_send_meeting_agendas_notification: "Отправить уведомление о реценизии  повесток дня"
-  permission_create_meeting_minutes: "Управление протоколами"
-  permission_send_meeting_minutes_notification: "Отправить уведомление о рецензии протокола"
-  permission_meetings_send_invite: "Пригласить пользователей на совещания"
-  permission_send_meeting_agendas_icalendar: "Отправить повестку встречи как элемент календаря"
+  permission_manage_outcomes: "Управление результатами"
+  permission_send_meeting_invites_and_outcomes: "Рассылать приглашения на собрания и результаты их проведения участникам"
   project_module_meetings: "Совещания"
   text_duration_in_hours: "Длительность в часах"
   text_in_hours: "в часах"
@@ -359,8 +353,8 @@ ru:
   text_meeting_minutes_for_meeting: 'Протокол совещания «%{meeting}»'
   text_notificiation_invited: "Это сообщение содержит запись ics для совещания ниже:"
   text_meeting_empty_heading: "Совещание пусто"
-  text_meeting_empty_description_1: "Начните с добавления пунктов повестки ниже. Каждый пункт может быть простым, как заголовок, но вы также можете добавить дополнительные сведения, такие как продолжительность и примечания."
-  text_meeting_empty_description_2: 'Вы также можете добавить ссылки на существующие пакеты работ. Когда вы это сделаете, соответствующие заметки будут автоматически отображаться на вкладке «Совещания» пакета работ.'
+  text_meeting_empty_description1: "Начните с добавления пунктов повестки ниже. Каждый пункт может быть простым, как заголовок, но вы также можете добавить дополнительные сведения, такие как продолжительность и примечания."
+  text_meeting_empty_description2: 'Вы также можете добавить ссылки на существующие пакеты работ. Когда вы это сделаете, соответствующие заметки будут автоматически отображаться на вкладке «Совещания» пакета работ.'
   label_meeting_empty_action: "Добавить пункт повестки"
   label_meeting_actions: "Действия совещания"
   label_meeting_edit_title: "Изменить название совещания"
@@ -379,6 +373,8 @@ ru:
   label_agenda_item_deleted_wp: "Ссылка на удалённый пакет работ"
   label_agenda_item_actions: "Действия по пунктам повестки"
   label_agenda_item_move_to_next: "Переместить на следующее совещание"
+  label_agenda_item_move_to_backlog: "Переместить в бэклог"
+  label_agenda_item_move_to_current_meeting: "Переместить на текущую встречу"
   label_agenda_item_move_to_top: "В начало"
   label_agenda_item_move_to_bottom: "В конец"
   label_agenda_item_move_up: "Вверх"
@@ -391,6 +387,22 @@ ru:
   label_agenda_outcome_edit: "Редактировать результат"
   label_agenda_outcome_delete: "Удалить результат"
   text_outcome_not_editable_anymore: "Этот результат больше не редактируется."
+  text_outcome_cannot_be_added: "Результат больше нельзя добавить."
+  label_backlog_clear: "Очистить бэклог"
+  label_backlog_clear_button: "Очистить все"
+  text_backlog_clear_error: "При попытке очистить бэклог произошла одна или несколько ошибок."
+  label_agenda_backlog: "Накопившееся отставание в повестке дня"
+  text_agenda_backlog: >
+    Этот список невыполненных работ уникален для данного разового собрания. Вы можете перетаскивать элементы, чтобы добавлять или удалять их из повестки дня собрания.
+  label_agenda_backlog_clear_title: "Очистить бэклог по повестке дня?"
+  text_agenda_backlog_clear_description: >
+    Вы уверены, что хотите удалить все пункты повестки дня? Это действие необратимо.
+  label_series_backlog: "Журнал серий"
+  text_series_backlog: >
+    Бэклог используется для всех вхождений этой серии. Вы можете перетащить элементы из и обратно для их добавления или удаления с конкретной встречи.
+  label_series_backlog_clear_title: "Очистить бэклог серии?"
+  text_series_backlog_clear_description: >
+    Это приведет к удалению всех элементов в бэклоге серии, который разделен со всеми встречами в этой серии. Вы уверены, что хотите продолжить? Это действие необратимо.
   text_agenda_item_title: 'Пункт повестки "%{title}"'
   text_agenda_work_package_deleted: 'Пункт повестки для удаленного пакета работ'
   text_deleted_agenda_item: 'Удаленный пункт повестки'

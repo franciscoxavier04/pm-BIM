@@ -50,14 +50,14 @@ tr:
         project: Proje
         user: Kullanıcı
         work_package: İş paketi
-        subject: Subject
+        subject: Konu
         hours: Saat
         comments: Yorum
         activity: Etkinlik
         spent_on: Tarih
         start_time: Başlama tarihi
         end_time: Bitiş zamanı
-        time: Time
+        time: Zaman
     models:
       time_entry:
         one: "Zaman girişleri"
@@ -93,6 +93,7 @@ tr:
   button_log_costs: "Günlük birim maliyetleri"
   button_log_time: "Kayıt"
   button_add_activity: "Etkinlik"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Proje rezervasyonu yaptırdı"
   caption_default: "Varsayılan"
   caption_default_rate_history_for: "%{user} için varsayılan değerleme geçmişi"
@@ -154,19 +155,23 @@ tr:
   label_mandatory_fields: "Zorunlu alanlar"
   label_my_time_tracking: "My time tracking"
   label_no_time: "No time tracked"
-  label_next_day: "Next day"
+  label_next_day: "Sonraki gün"
   label_next_week: "Gelecek hafta"
-  label_next_month: "Next month"
-  label_previous_day: "Previous day"
+  label_next_workweek: "Sonraki çalışma haftası"
+  label_next_month: "Sonraki ay"
+  label_previous_day: "Önceki gün"
+  label_previous_workweek: "Önceki çalışma haftası"
   label_previous_week: "Geçen Hafta"
-  label_previous_month: "Previous month"
-  label_specific_day: "Day %{day}"
+  label_previous_month: "Önceki ay"
+  label_specific_day: "Gün %{day}"
   label_specific_week: "Calendar week %{week}"
-  label_specific_month: "Month %{month}"
+  label_specific_month: "Ay %{month}"
   label_list: "Liste"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "Ay"
+  label_workweek: "Çalışma haftası"
+  label_day: "Gün"
+  label_today_capitalized: "Bugün"
+  label_view_mode_switcher: "Change view"
   placeholder_activity_select_work_package_first: Öncelikle iş paketi seçimi gereklidir
   notice_something_wrong: "Bir şeyler yanlış gitti. Lütfen tekrar deneyin."
   notice_successful_restore: "Başarılı bir geri yükleme."
@@ -188,10 +193,10 @@ tr:
   permission_view_own_hourly_rate: "Kendi saatlik ücreti görüntüleyin"
   permission_view_own_time_entries: "Kendi harcanan zamanı görüntüleyin"
   project_module_costs: "Zaman ve maliyetler"
-  setting_allow_tracking_start_and_end_times: "Kullanıcıların zaman kayıtlarında başlangıç ve bitiş zamanını izlemelerine izin verin"
+  setting_allow_tracking_start_and_end_times: "Allow exact times tracking"
   setting_costs_currency: "Para birimi"
   setting_costs_currency_format: "Para birimi biçimi"
-  setting_enforce_tracking_start_and_end_times: "Kullanıcıları zaman kayıtlarında başlangıç ve bitiş zamanı belirlemeye zorlayın"
+  setting_enforce_tracking_start_and_end_times: "Require exact times"
   text_assign_time_and_cost_entries_to_project: "Raporlanan saatleri ve maliyetleri projeye tahsis edin"
   text_destroy_cost_entries_question: "%{cost_entries} silmek üzere olduğunuz iş paketleri hakkında rapor edildi. Ne yapmak istiyorsun ?"
   text_destroy_time_and_cost_entries: "Raporlanan saat ve masrafları sil"
@@ -200,6 +205,7 @@ tr:
   text_warning_hidden_elements: "Bazı girdiler toplama işleminden dışlanmış olabilir."
   week: "hafta"
   total_times:
+    workweek: "Workweek Total: %{hours}"
     week: "Week Total: %{hours}"
     month: "Month Total: %{hours}"
     day: "Day Total: %{hours}"
@@ -210,6 +216,6 @@ tr:
   ee:
     features:
       time_entry_time_restrictions: Require exact time tracking
-    upsale:
+    upsell:
       time_entry_time_restrictions:
         description: "Improve your time tracking by requiring exact start and finish times when logging time."

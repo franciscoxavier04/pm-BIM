@@ -50,14 +50,14 @@ fr:
         project: Projet
         user: Utilisateur
         work_package: Lot de Travaux
-        subject: Subject
+        subject: Sujet
         hours: Heures
         comments: Commentaire
         activity: Activité
         spent_on: date
         start_time: Heure de début
         end_time: Heure de fin
-        time: Time
+        time: Heure 
     models:
       time_entry:
         one: "Saisie du temps"
@@ -93,6 +93,7 @@ fr:
   button_log_costs: "Consigner coûts unitaires"
   button_log_time: "Journal"
   button_add_activity: "Activité"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Réservé pour le projet"
   caption_default: "Défaut"
   caption_default_rate_history_for: "Historique des tarifs par défaut pour %{user}"
@@ -152,21 +153,25 @@ fr:
   label_cost: "Coût"
   label_costs: "Coûts"
   label_mandatory_fields: "Champs obligatoires"
-  label_my_time_tracking: "My time tracking"
-  label_no_time: "No time tracked"
-  label_next_day: "Next day"
+  label_my_time_tracking: "Mon suivi du temps"
+  label_no_time: "Aucun suivi de temps"
+  label_next_day: "Jour suivant"
   label_next_week: "Semaine suivante"
-  label_next_month: "Next month"
-  label_previous_day: "Previous day"
+  label_next_workweek: "Next work week"
+  label_next_month: "Mois suivant"
+  label_previous_day: "Jour précédent"
+  label_previous_workweek: "Previous work week"
   label_previous_week: "Semaine précédente"
-  label_previous_month: "Previous month"
-  label_specific_day: "Day %{day}"
-  label_specific_week: "Calendar week %{week}"
-  label_specific_month: "Month %{month}"
+  label_previous_month: "Mois précédent"
+  label_specific_day: "Jour %{day}"
+  label_specific_week: "Numéro de semaine %{week}"
+  label_specific_month: "Mois %{month}"
   label_list: "Liste"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "Mois"
+  label_workweek: "Work week"
+  label_day: "Jour"
+  label_today_capitalized: "Aujourd'hui"
+  label_view_mode_switcher: "Change view"
   placeholder_activity_select_work_package_first: La sélection d'un paquet de travail est requise en premier
   notice_something_wrong: "Quelque chose s'est mal passé. Veuillez réessayer."
   notice_successful_restore: "Restauration réussie."
@@ -188,10 +193,10 @@ fr:
   permission_view_own_hourly_rate: "Voir son propre tarif horaire"
   permission_view_own_time_entries: "Voir son propre temps passé"
   project_module_costs: "Temps et coûts"
-  setting_allow_tracking_start_and_end_times: "Permettre aux utilisateurs de suivre l'heure de début et de fin sur les relevés de temps"
+  setting_allow_tracking_start_and_end_times: "Allow exact times tracking"
   setting_costs_currency: "Devise"
   setting_costs_currency_format: "Format de devise"
-  setting_enforce_tracking_start_and_end_times: "Obliger les utilisateurs à définir des heures de début et de fin pour les relevés de temps"
+  setting_enforce_tracking_start_and_end_times: "Require exact times"
   text_assign_time_and_cost_entries_to_project: "Assigner les heures et coûts consignés au projet"
   text_destroy_cost_entries_question: "%{cost_entries} ont été consignés sur les lots de travaux que vous êtes sur le point de supprimer. Que voulez-vous faire ?"
   text_destroy_time_and_cost_entries: "Supprimer les heures et coûts consignés"
@@ -200,9 +205,10 @@ fr:
   text_warning_hidden_elements: "Certaines entrées peuvent avoir été exclues de l'agrégation."
   week: "semaine"
   total_times:
-    week: "Week Total: %{hours}"
-    month: "Month Total: %{hours}"
-    day: "Day Total: %{hours}"
+    workweek: "Workweek Total: %{hours}"
+    week: "Total de la semaine : %{hours}"
+    month: "Total du mois : %{hours}"
+    day: "Total du jour : %{hours}"
   api_v3:
     errors:
       validation:
@@ -210,6 +216,6 @@ fr:
   ee:
     features:
       time_entry_time_restrictions: Require exact time tracking
-    upsale:
+    upsell:
       time_entry_time_restrictions:
         description: "Improve your time tracking by requiring exact start and finish times when logging time."

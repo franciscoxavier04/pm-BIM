@@ -239,7 +239,7 @@ it:
           status_waiting: "email inviata, in attesa di conferma"
           test_ee: "Prova l'Enterprise edition gratuitamente per 14 giorni"
           quick_overview: "Veloce panoramica sulla gestione dei progetti e il lavoro di squadra nell'edizione OpenProject Enterprise."
-        upsale:
+        upsell:
           become_hero: "Diventa un eroe!"
           enterprise_info_html: "%{feature_title} è un componente aggiuntivo per Imprese <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
           upgrade_info: "Esegui l'upgrade a un piano a pagamento per attivarlo e iniziare a usarlo nel tuo team."
@@ -254,13 +254,13 @@ it:
             professional_support: "Supporto professionale"
             professional_support_text: "Ottieni un supporto affidabile e di livello da esperti tecnici con conoscenze dettagliate sulla gestione di OpenProject in ambienti critici per le imprese."
           button_start_trial: "Inizia la prova gratuita"
-          button_upgrade: "Aggiorna ora"
+          button_upgrade: "Effettua l'upgrade ora"
           button_contact_us: "Contattaci per una demo"
           button_book_now: "Prenota ora"
           confidence: >
             Forniamo la sicurezza di un software di gestione di progetti di classe aziendale collaudato e supportato, con l'Open Source e una mente aperta.
           link_quote: "Richiedi un preventivo"
-          more_info: "Ulteriori informazioni"
+          more_info: "Altre informazioni"
           text: >
             L'edizione OpenProject Enterprise si basa sull'edizione Community. Include aggiunte premium e supporto professionale principalmente rivolto alle organizzazioni con più di 10 utenti che gestiscono progetti critici di business con OpenProject.
           unlimited: "Illimitato"
@@ -355,13 +355,13 @@ it:
       blocks:
         new_features:
           text_new_features: "Informati sulle nuove funzionalità e sugli aggiornamenti dei prodotti."
-          learn_about: "Scopri di più sulle nuove funzionalità"
+          learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_5":
+          "16_0":
             standard:
               new_features_html: >
-                Questa versione offre diverse funzionalità e miglioramenti, ad esempio <br> <ul class="%{list_styling_class}"> <li>Filtro per discendenti (figli e nipoti) della macro-attività.</li> <li>Approfitta dell'accessibilità avanzata nel selettore data.</li> <li>Visualizza la % di completamento inclusa nelle somme delle tabelle delle macro-attività.</li> <li>Includi una colonna per i figli nelle tabelle delle macro-attività.</li> <li>Utilizza meglio il selettore data nelle schermate dei dispositivi mobili.</li> <li>Esportazioni PDF corrispondenti al layout del modulo configurato.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
     ical_sharing_modal:
       title: "Iscriviti al calendario"
       inital_setup_error_message: "Si è verificato un errore recuperando i dati."
@@ -434,7 +434,6 @@ it:
     label_filename: "File"
     label_filesize: "Dimensione"
     label_general: "Generale"
-    label_global_roles: "Ruoli globali"
     label_greater_or_equal: ">="
     label_group: "Gruppo"
     label_group_by: "Raggruppa per"
@@ -642,6 +641,7 @@ it:
           with_current_filter: "Non ci sono notifiche in questa vista al momento"
         mark_all_read: "Segna tutti come letti"
         mark_as_read: "Segna come letto"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
         text_update_date_by: "%{date} da"
         total_count_warning: "Mostrando le %{newest_count} notifiche più recenti. %{more_count} altre non vengono visualizzate."
         empty_state:
@@ -833,9 +833,9 @@ it:
       update_description: "Inserisci o aggiorna la descrizione della relazione"
       toggle_description: "Attiva/disattiva descrizione della relazione"
       update_relation: "Clicca per modificare il tipo di relazione"
-      add_follower: "Aggiungi successore"
       show_relations: "Visualizza relazioni"
       add_predecessor: "Aggiungi predecessore"
+      add_successor: "Add successor"
       remove: "Rimuovi la relazione"
       save: "Salva la relazione"
       abort: "Interrompi"
@@ -865,7 +865,7 @@ it:
     tl_toolbar:
       zooms: "Livello di zoom"
       outlines: "Livello della gerarchia"
-    upsale:
+    upsell:
       ee_only: "Addon dell'edizione per Imprese"
     wiki_formatting:
       strong: "Grassetto"

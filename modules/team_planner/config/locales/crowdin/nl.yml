@@ -9,10 +9,10 @@ nl:
   ee:
     feature_names:
       team_planner_view: "Team planner"
-    upsale:
+    upsell:
       team_planner_view:
         title: "Team planner"
-        description: "Get a complete overview of your team’s planning with Team Planner. Stretch, shorten and drag-and-drop work packages to modify dates, move them or change assignees."
+        description: "Krijg een compleet overzicht van de planning van je team met Team Planner. Verleng, verkort en sleep-en-plaats werkpakketten om data te wijzigen, ze te verplaatsen of taakontvangers te veranderen."
   team_planner:
     label_team_planner: "Team planner"
     label_new_team_planner: "Nieuwe teamplanner"

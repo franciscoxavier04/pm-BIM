@@ -75,7 +75,7 @@ RSpec.describe "Work package table context menu",
         menu.expect_options "Open details view",
                             "Open fullscreen view",
                             "Add predecessor",
-                            "Add follower",
+                            "Add successor",
                             "Show relations"
         menu.expect_no_options "Log time"
 

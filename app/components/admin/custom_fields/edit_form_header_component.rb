@@ -29,20 +29,37 @@
 module Admin
   module CustomFields
     class EditFormHeaderComponent < ApplicationComponent
-      TAB_NAVS = %i[
-        edit
-        items
-        custom_field_projects
-      ].freeze
-
       def initialize(custom_field:, selected:, **)
         @custom_field = custom_field
         @selected = selected
         super(custom_field, **)
       end
 
-      def tab_selected?(tab_name)
-        TAB_NAVS.include?(tab_name) && tab_name == @selected
+      def tabs
+        tabs = [
+          {
+            name: "edit",
+            path: edit_custom_field_path(@custom_field),
+            label: t(:label_details)
+          }
+        ]
+
+        if @custom_field.field_format_hierarchy?
+          tabs << {
+            name: "items",
+            path: custom_field_items_path(@custom_field),
+            label: t(:label_item_plural)
+          }
+        end
+
+        tabs <<
+          {
+            name: "custom_field_projects",
+            path: custom_field_projects_path(@custom_field),
+            label: t(:label_project_plural)
+          }
+
+        tabs
       end
 
       private

@@ -37,7 +37,7 @@ module My
         case mode
         when :day
           I18n.l(date, format: :long)
-        when :week
+        when :week, :workweek
           bow = date.beginning_of_week
           eow = date.end_of_week
 
@@ -62,6 +62,9 @@ module My
         when :day
           { href: my_time_tracking_path(date: date - 1.day, view_mode:, mode:),
             aria: { label: I18n.t(:label_previous_day) } }
+        when :workweek
+          { href: my_time_tracking_path(date: date - 1.week, view_mode:, mode:),
+            aria: { label: I18n.t(:label_previous_workweek) } }
         when :week
           { href: my_time_tracking_path(date: date - 1.week, view_mode:, mode:),
             aria: { label: I18n.t(:label_previous_week) } }
@@ -76,6 +79,9 @@ module My
         when :day
           { href: my_time_tracking_path(date: date + 1.day, view_mode:, mode:),
             aria: { label: I18n.t(:label_next_day) } }
+        when :workweek
+          { href: my_time_tracking_path(date: date + 1.week, view_mode:, mode:),
+            aria: { label: I18n.t(:label_next_workweek) } }
         when :week
           { href: my_time_tracking_path(date: date + 1.week, view_mode:, mode:),
             aria: { label: I18n.t(:label_next_week) } }

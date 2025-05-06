@@ -48,10 +48,10 @@ module API
           end
 
           get &API::V3::Attachments::AttachmentsByContainerAPI.read
-          post &API::V3::Attachments::AttachmentsByContainerAPI.create(%i[add_work_package_notes])
+          post &API::V3::Attachments::AttachmentsByContainerAPI.create(%i[add_work_package_comments])
 
           namespace :prepare do
-            post &API::V3::Attachments::AttachmentsByContainerAPI.prepare(%i[add_work_package_notes])
+            post &API::V3::Attachments::AttachmentsByContainerAPI.prepare(%i[add_work_package_comments])
           end
         end
       end

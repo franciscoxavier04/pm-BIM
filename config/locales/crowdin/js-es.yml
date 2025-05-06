@@ -239,22 +239,22 @@ es:
           status_waiting: "correo electrónico enviado - esperando confirmación"
           test_ee: "Pruebe Enterprise de forma gratuita durante 14 días"
           quick_overview: "Obtenga un resumen rápido sobre la gestión de proyectos y la colaboración en equipo con OpenProject Enterprise."
-        upsale:
-          become_hero: "¡Conviértete en un héroe!"
+        upsell:
+          become_hero: "¡Conviértete en héroe!"
           enterprise_info_html: "%{feature_title} es una extensión de la Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
           upgrade_info: "Actualice a un plan de pago para activarla y empiece a usarla en su equipo."
           benefits:
             description: "¿Cuáles son las ventajas de Enterprise On-Premises?"
             high_security: "Funciones de seguridad"
             high_security_text: "Inicio de sesión único (SAML, OpenID Connect, CAS), grupos LDAP."
-            installation: "Ayuda en la instalación"
+            installation: "Soporte de instalación"
             installation_text: "Nuestros ingenieros de software especializados le guiarán en todo el proceso de instalación y configuración en su propia infraestructura."
             premium_features: "Extensión Enterprise"
             premium_features_text: "Tableros Agile, tema y logotipo personalizados, gráficos, flujos de trabajo inteligentes con acciones personalizadas, búsqueda de texto completo en archivos adjuntos de paquetes de trabajo y campos personalizados de selección múltiple."
             professional_support: "Soporte profesional"
             professional_support_text: "Obtenga ayuda rápida y de confianza de nuestros agentes de asistencia con conocimientos especializados sobre cómo ejecutar OpenProject en entornos empresariales críticos."
           button_start_trial: "Iniciar prueba gratuita"
-          button_upgrade: "Actualizar ahora"
+          button_upgrade: "Mejorar ahora"
           button_contact_us: "Contacte con nosotros para solicitar una demostración"
           button_book_now: "Reservar ahora"
           confidence: >
@@ -355,13 +355,13 @@ es:
       blocks:
         new_features:
           text_new_features: "Obtenga información sobre nuevas funciones y actualizaciones de productos."
-          learn_about: "Más información sobre las nuevas funciones"
+          learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_5":
+          "16_0":
             standard:
               new_features_html: >
-                La versión incluye varias funciones y mejoras para usted, por ejemplo: <br> <ul class="%{list_styling_class}"> <li>Filtro para descendientes (secundarios y subsecundarios) de paquetes de trabajo. </li> <li>Benefíciese de la accesibilidad avanzada en el selector de fechas.</li> <li>Vea el % completado incluido en las sumas de la tabla de paquetes de trabajo.</li> <li>Incluya una columna para los elementos secundarios en las tablas de paquetes de trabajo.</li> <li>Utilice mejor el selector de fechas en las pantallas móviles.</li> <li>Exportaciones en PDF que coinciden con el diseño de formulario configurado.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
     ical_sharing_modal:
       title: "Suscribirse al calendario"
       inital_setup_error_message: "Se ha producido un error al obtener los datos."
@@ -434,7 +434,6 @@ es:
     label_filename: "Archivo"
     label_filesize: "Tamaño"
     label_general: "General"
-    label_global_roles: "Roles globales"
     label_greater_or_equal: ">="
     label_group: "Grupo"
     label_group_by: "Agrupar por"
@@ -642,6 +641,7 @@ es:
           with_current_filter: "No hay notificaciones en esta vista actualmente"
         mark_all_read: "Marcar todas como leídas"
         mark_as_read: "Marcar como leída"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
         text_update_date_by: "%{date} por"
         total_count_warning: "Mostrando las %{newest_count} notificaciones más recientes. %{more_count} más no se muestran."
         empty_state:
@@ -833,9 +833,9 @@ es:
       update_description: "Establecer o actualizar la descripción de esta relación"
       toggle_description: "Activar descripción de la relación"
       update_relation: "Haga clic para cambiar el tipo de relación"
-      add_follower: "Añadir seguidor"
       show_relations: "Mostrar relaciones"
       add_predecessor: "Añadir predecesor"
+      add_successor: "Add successor"
       remove: "Eliminar la relación"
       save: "Guardar relación"
       abort: "Anular"
@@ -865,7 +865,7 @@ es:
     tl_toolbar:
       zooms: "Nivel de zoom"
       outlines: "Nivel de jerarquía"
-    upsale:
+    upsell:
       ee_only: "Extensión Enterprise"
     wiki_formatting:
       strong: "Negrita"

@@ -1,8 +1,4 @@
 uk:
-  ee:
-    upsale:
-      grid_widget_wp_graph:
-        description: "Деякі віджети, наприклад віджет графіка пакета робіт, доступні тільки у випуску Enterprise."
   js:
     grid:
       add_widget: 'Додати віджет'

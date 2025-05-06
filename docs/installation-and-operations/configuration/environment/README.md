@@ -275,6 +275,7 @@ OPENPROJECT_PLUGIN__OPENPROJECT__STORAGES (default=nil)
 OPENPROJECT_PLUGIN__OPENPROJECT__TEAM__PLANNER (default=nil)
 OPENPROJECT_PLUGIN__OPENPROJECT__TWO__FACTOR__AUTHENTICATION (default={"active_strategies"=>[], "enforced"=>false, "allow_remember_for_days"=>0})
 OPENPROJECT_PROJECT__GANTT__QUERY (default=nil) Project portfolio Gantt view
+OPENPROJECT_PROMETHEUS_EXPORT (default: nil) Enable Prometheus export endpoint
 OPENPROJECT_RAILS__ASSET__HOST (default=nil) Custom asset hostname for serving assets (e.g., Cloudfront)
 OPENPROJECT_RAILS__CACHE__STORE (default=:file_store) Set cache store implemenation to use with OpenProject
 OPENPROJECT_RAILS__RELATIVE__URL__ROOT (default="") Set a URL prefix / base path to run OpenProject under, e.g., host.tld/openproject

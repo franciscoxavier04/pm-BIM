@@ -1,8 +1,4 @@
 tr:
-  ee:
-    upsale:
-      grid_widget_wp_graph:
-        description: "İş paketi grafiği gibi bazı bileşenler yalnızca Enterprise sürümünde mevcuttur."
   js:
     grid:
       add_widget: 'Bileşen ekle'

@@ -58,6 +58,7 @@ import { fromEvent } from 'rxjs';
 import { AttachmentCollectionResource } from 'core-app/features/hal/resources/attachment-collection-resource';
 import { populateInputsFromDataset } from 'core-app/shared/components/dataset-inputs';
 import { navigator } from '@hotwired/turbo';
+import { uniqueId } from 'lodash';
 
 
 @Component({
@@ -65,7 +66,7 @@ import { navigator } from '@hotwired/turbo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin implements OnInit {
-  @Input() public textareaSelector:string;
+  @Input() public textAreaId:string;
 
   @Input() public previewContext:string;
 
@@ -143,7 +144,9 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
     this.halResource = this.resource ? this.halResourceService.createHalResource(this.resource, true) : undefined;
 
     this.formElement = this.element.closest<HTMLFormElement>('form') as HTMLFormElement;
-    this.wrappedTextArea = this.formElement.querySelector(this.textareaSelector) as HTMLTextAreaElement;
+
+    this.wrappedTextArea = document.getElementById(this.textAreaId) as HTMLTextAreaElement;
+
     this.wrappedTextArea.style.display = 'none';
     this.wrappedTextArea.required = false;
     this.initialContent = this.wrappedTextArea.value;
@@ -285,13 +288,20 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   }
 
   private setLabel() {
-    const textareaId = this.textareaSelector.substring(1);
-    const label = jQuery(`label[for=${textareaId}]`);
+    const label = document.querySelector<HTMLLabelElement>(`label[for=${this.textAreaId}]`)!;
 
-    const ckContent = this.element.querySelector('.ck-content') as HTMLElement;
+    const ckContent = this.element.querySelector<HTMLElement>('.ck-content')!;
+
+    let labelId;
+    if (label.hasAttribute('id')) {
+      labelId = label.getAttribute('id')!;
+    } else {
+      labelId = uniqueId('label-');
+      label.setAttribute('id', labelId);
+    }
 
     ckContent.removeAttribute('aria-label');
-    ckContent.setAttribute('aria-labelledby', textareaId);
+    ckContent.setAttribute('aria-labelledby', labelId);
 
     fromEvent(label, 'click')
       .pipe(this.untilDestroyed())

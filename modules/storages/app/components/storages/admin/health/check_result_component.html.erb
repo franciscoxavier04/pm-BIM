@@ -38,9 +38,14 @@ See COPYRIGHT and LICENSE files for more details.
           text.with_column(ml: 2) do
             render(Primer::Beta::Text.new(font_size: :small, color: data[:status_color])) { data[:status_text] }
           end
+          if data[:error_code].present?
+            text.with_column(ml: 2) do
+              render(Primer::Beta::Label.new(scheme: data[:status_color])) { data[:error_code] }
+            end
+          end
         end
 
-        if data[:error_text].present?
+        if data[:error_code].present?
           row.with_column do
             render(Primer::Beta::Link.new(href: data[:docs_href])) do |link|
               link.with_trailing_visual_icon(icon: :"link-external")

@@ -50,14 +50,14 @@ it:
         project: Progetto
         user: Utente
         work_package: Macro-attività
-        subject: Subject
+        subject: Soggetto
         hours: Ore
         comments: Commento
         activity: Attività
         spent_on: Data
         start_time: Ora di inizio
         end_time: Ora di fine
-        time: Time
+        time: Ora
     models:
       time_entry:
         one: "Voce tempo"
@@ -93,6 +93,7 @@ it:
   button_log_costs: "Registra unità di costo"
   button_log_time: "Registra"
   button_add_activity: "Attività"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Prenotato su progetto"
   caption_default: "Predefinito"
   caption_default_rate_history_for: "Cronologia tariffe predefinite per %{user}"
@@ -156,17 +157,21 @@ it:
   label_no_time: "No time tracked"
   label_next_day: "Next day"
   label_next_week: "Prossima settimana"
+  label_next_workweek: "Next work week"
   label_next_month: "Next month"
   label_previous_day: "Previous day"
+  label_previous_workweek: "Previous work week"
   label_previous_week: "Settimana precedente"
   label_previous_month: "Previous month"
   label_specific_day: "Day %{day}"
   label_specific_week: "Calendar week %{week}"
   label_specific_month: "Month %{month}"
   label_list: "Elenca"
-  label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_month: "Mese"
+  label_workweek: "Work week"
+  label_day: "Giorno"
+  label_today_capitalized: "Oggi"
+  label_view_mode_switcher: "Change view"
   placeholder_activity_select_work_package_first: Prima è necessario selezionare la macro-attività
   notice_something_wrong: "Qualcosa è andato storto. Si prega di riprovare."
   notice_successful_restore: "Ripristino eseguito con successo."
@@ -188,10 +193,10 @@ it:
   permission_view_own_hourly_rate: "Visualizza propria tariffa oraria"
   permission_view_own_time_entries: "Visualizzare il proprio tempo trascorso"
   project_module_costs: "Tempi e costi"
-  setting_allow_tracking_start_and_end_times: "Consentire agli utenti di tenere traccia dell'ora di inizio e di fine nelle registrazioni temporali"
+  setting_allow_tracking_start_and_end_times: "Allow exact times tracking"
   setting_costs_currency: "Valuta"
   setting_costs_currency_format: "Formato della valuta"
-  setting_enforce_tracking_start_and_end_times: "Forza gli utenti a impostare l'ora di inizio e di fine nelle registrazioni temporali"
+  setting_enforce_tracking_start_and_end_times: "Require exact times"
   text_assign_time_and_cost_entries_to_project: "Assegna orari e costi segnalati al progetto"
   text_destroy_cost_entries_question: "%{cost_entries} sono stati segnalati per la macro-attività (work package) che si sta per eliminare. Che cosa vuoi fare?"
   text_destroy_time_and_cost_entries: "Elimina orari e costi riportati"
@@ -200,6 +205,7 @@ it:
   text_warning_hidden_elements: "Alcune voci potrebbero essere state escluse dall'aggregazione."
   week: "settimana"
   total_times:
+    workweek: "Workweek Total: %{hours}"
     week: "Week Total: %{hours}"
     month: "Month Total: %{hours}"
     day: "Day Total: %{hours}"
@@ -210,6 +216,6 @@ it:
   ee:
     features:
       time_entry_time_restrictions: Require exact time tracking
-    upsale:
+    upsell:
       time_entry_time_restrictions:
         description: "Improve your time tracking by requiring exact start and finish times when logging time."

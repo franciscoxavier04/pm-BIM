@@ -41,9 +41,14 @@ nl:
         changed: "gewijzigd"
         created: "aangemaakt"
         commented: "gaf commentaar op"
-        restrict_visibility: Restrict visibility
-        restricted_journal: Restricted comments are visible to a limited group of members.
+        internal_comment: Internal comment
+        internal_journal: Internal comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
+        internal_comment_confirmation:
+          title: "Make this comment public?"
+          heading: "Make this comment public?"
+          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          confirm_button_text: "Make public"
   admin:
     plugins:
       no_results_title_text: Er zijn momenteel geen plugins geïnstalleerd.
@@ -97,6 +102,8 @@ nl:
       explanation:
         text: "Individuele acties van een gebruiker (bijv. het bijwerken van een werkpakket twee keer) wordt samengevoegd tot een enkele actie als hun leeftijdverschil minder is dan de aangegeven timespat. Ze worden weergegeven als een enkele actie binnen de applicatie. Dit zal ook meldingen vertragen met dezelfde tijd die het aantal verstuurde e-mails vermindert en zal ook %{webhook_link} vertraging beïnvloeden."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Toon tot
     is_active: momenteel getoond
@@ -289,7 +296,7 @@ nl:
   global_search:
     placeholder: "Zoeken in %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "Alle"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
@@ -343,6 +350,12 @@ nl:
         heading: "Delete this project list?"
         text: "Deze actie verwijdert geen enkel project dat de lijst bevat. Weet u zeker dat u deze projectlijst wilt verwijderen?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status_description: Update status description
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -403,8 +416,10 @@ nl:
         no_results_title_text: Er is geen extra opgenomen schijfruimte verbruikt door dit project.
       work_package_priorities:
         new_label: "New priority"
+    status:
+      button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Duration: %{count} working day"
       other: "Duration: %{count} working days"
   lists:
@@ -615,14 +630,17 @@ nl:
         automatically_generated_subjects:
           label: "Automatisch gegenereerde onderwerpen"
           caption: "Definieer een patroon met kenmerken en tekst waarnaar verwezen wordt om automatisch werkpakketonderwerpen te genereren. Gebruikers kunnen de onderwerpen niet handmatig bewerken."
-        pattern:
-          label: "Onderwerp patroon"
-          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
-          headings:
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
             work_package: "Work package"
             parent: "Parent"
             project: "Project"
+        pattern:
+          label: "Onderwerp patroon"
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -755,10 +773,12 @@ nl:
       follows_description: "Het gerelateerde werkpakket moet noodzakelijkerwijs voltooid zijn voordat dit werkpakket kan beginnen"
       label_child_singular: "kind"
       label_child_plural: "kinderen"
-      new_child: "Create new child"
-      new_child_text: "Creëert een gerelateerd werkpakket als subitem van het huidige (bovenliggende) werkpakket"
-      child: "Child"
+      new_child: "Maak nieuw kind"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
+      child: "Kind"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "blokkeert"
       label_blocks_plural: "blokkeren"
@@ -950,11 +970,11 @@ nl:
         is_required: "Vereist voor alle projecten"
         custom_field_section: Sectie
       project/phase:
-        date_range: "Date range"
+        date_range: "Datumbereik"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Naam"
+        color: "Kleur"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1079,7 +1099,7 @@ nl:
           title: "Werkdagen"
           false: "Alleen werkdagen"
           true: "inclusief niet-werkdagen"
-        journal_restricted: Restricted Journal
+        journal_internal: Internal Journal
         notify: "Melding" #used in custom actions
         parent: "Bovenliggend werkpakket"
         parent_issue: "Bovenliggend werkpakket"
@@ -1121,6 +1141,7 @@ nl:
         error_conflict: "Informatie is in de tussentijd door ten minste één andere gebruiker bijgewerkt."
         email: "is geen geldig e-mailadres."
         empty: "mag niet leeg zijn."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "moet gelijk zijn."
         exclusion: "is gereserveerd."
         feature_disabled: is not available.
@@ -1265,7 +1286,7 @@ nl:
             date_range:
               start_date_must_be_before_finish_date: "start date must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+              incomplete: "is onvolledig."
         query:
           attributes:
             project:
@@ -1300,7 +1321,7 @@ nl:
             values:
               inclusion: "filter heeft ongeldige waarden."
               format: "%{message}"
-        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+        queries/principals/filters/internal_mentionable_on_work_package_filter:
           attributes:
             values:
               single_value_requirement: "must be a single work package"
@@ -1499,7 +1520,9 @@ nl:
         one: "Melding"
         other: "Meldingen"
       placeholder_user: "Tijdelijke gebruiker"
-      project: "Project"
+      project:
+        one: "Project"
+        other: "Projects"
       project_query:
         one: "Projectlijst"
         other: "Projectlijsten"
@@ -1558,14 +1581,14 @@ nl:
       changeset: "Wijzigingensets"
       message: "Fora"
       news: "Nieuws"
-      project_details: "Project details"
+      project_details: "Projectdetails"
       subproject: "Inclusief subprojecten"
       time_entry: "Bestede tijd"
       wiki_edit: "Wiki"
       work_package: "Werkpakketten"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "geactiveerd"
+      deactivated: "gedeactiveerd"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -1637,6 +1660,8 @@ nl:
     priority: "Prioriteit"
     project: "Project"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reden"
     responsible: "Verantwoording afleggen"
     required: "Vereist"
@@ -1813,7 +1838,7 @@ nl:
       failed: 'Kan project "%{target_project_name}" project "%{source_project_name}" niet kopiëren.'
       succeeded: 'Gekopieerde project "%{source_project_name}" naar "%{target_project_name}".'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "Wikipagina"
   date:
     abbr_day_names:
       - "Zo"
@@ -1969,7 +1994,7 @@ nl:
       baseline_comparison: Baseline Comparisons
       board_view: Advanced Boards
       conditional_highlighting: Conditional Highlighting
-      comments_with_restricted_visibility: Comments With Restricted Visibility
+      internal_comments: Internal Comments
       custom_actions: Custom Actions
       custom_field_hierarchies: Custom fields of type hierarchy
       customize_life_cycle: Customize Life Cycle
@@ -1977,8 +2002,8 @@ nl:
       define_custom_style: Custom theme and logo
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
-      grid_widget_wp_graph: Grid Widget Work Package Graph
       ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
       project_list_sharing: Project List Sharing
@@ -1990,16 +2015,16 @@ nl:
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
-    upsale:
+    upsell:
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
-      plan_text_html: "Available only through the %{plan_name}."
+      plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
       baseline_comparison:
-        description: Highlight changes made to this list since any point in the past.
+        description: Markeer wijzigingen die sindsdien in deze lijst zijn aangebracht.
       work_package_subject_generation:
-        description: "Create automatically generated subjects using referenced attributes and text."
+        description: "Maak automatisch gegenereerde onderwerpen met behulp van kenmerken en tekst waarnaar verwezen wordt."
       customize_life_cycle:
         description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       conditional_highlighting:
@@ -2009,7 +2034,7 @@ nl:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "Toevoegen van nieuwe attribuutgroepen"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -2017,25 +2042,31 @@ nl:
       custom_field_hierarchies:
         description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
       date_alerts:
-        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+        description: "Met datummeldingen wordt u op de hoogte gebracht van de start- of einddatum, zodat u nooit een belangrijke deadline mist of vergeet."
       work_package_sharing:
-        description: "Share work packages with users who are not members of the project."
+        description: "Werkpakketten delen met gebruikers die geen lid zijn van het project."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "Opmerking: het gebruikte logo is openbaar toegankelijk."
+        description: Pas uw OpenProject installatie aan met uw eigen logo en kleuren.
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "Aangepaste acties"
+        description: "Aangepaste acties zijn met één klik snelkoppelingen naar een aantal vooraf gedefinieerde acties die u op bepaalde werkpakketten op basis van status beschikbaar kunt maken rol, type of project."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
-        title: Placeholder users
+        title: Tijdelijke gebruikers
         description: >
-          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
-      comments_with_restricted_visibility:
-        title: "For your eyes only"
-        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+          Tijdelijke gebruikers zijn een manier om werkpakketten toe te wijzen aan gebruikers die geen deel uitmaken van uw project. Ze kunnen nuttig zijn in een reeks van scenario's; Bijvoorbeeld, als u de taken wilt bijhouden van een bron die nog niet genoemd of beschikbaar is, of als je die persoon geen toegang wilt geven tot OpenProject maar toch de taken wilt bijhouden die aan hen zijn toegewezen.
+      internal_comments:
+        title: Internal comments
+        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "Activiteiten voor het bijhouden van tijd"
   enumeration_work_package_priorities: "Werkpakket prioriteiten"
   enumeration_reported_project_statuses: "Gerapporteerde projectstatus"
@@ -2262,7 +2293,7 @@ nl:
       users: "Nieuwste geregistreerde gebruikers in deze instantie."
     blocks:
       community: "OpenProject gemeenschap"
-      upsale:
+      upsell:
         title: "Upgrade naar Enterprise-editie"
     links:
       upgrade_enterprise_edition: "Upgrade naar Enterprise-editie"
@@ -2455,7 +2486,6 @@ nl:
   label_ldap_auth_source_plural: "LDAP connections"
   label_attribute_expand_text: "De volledige tekst voor '%{attribute}'"
   label_authentication: "Verificatie"
-  label_authentication_settings: "Authentication settings"
   label_available_custom_fields_projects: "Available custom fields projects"
   label_available_global_roles: "Available global roles"
   label_available_project_attributes: "Beschikbare projectattributen"
@@ -2629,6 +2659,7 @@ nl:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Algemeen"
   label_generate_key: "Genereren van een sleutel"
+  label_global_roles: "Global roles"
   label_git_path: "Pad naar .git map"
   label_greater_or_equal: ">="
   label_group_by: "Groeperen op"
@@ -2740,7 +2771,7 @@ nl:
   label_modules: "Modules"
   label_months_from: "maanden vanaf"
   label_more: "Meer"
-  label_more_information: "More information"
+  label_more_information: "Meer informatie"
   label_more_than_ago: "meer dan dagen geleden"
   label_move_column_left: "Verplaats kolom naar links"
   label_move_column_right: "Verplaats kolom naar rechts"
@@ -2858,9 +2889,6 @@ nl:
   label_register: "Een nieuw account aanmaken"
   label_register_with_developer: "Registreer als ontwikkelaar"
   label_registered_on: "Geregistreerd op"
-  label_registration_activation_by_email: "account activeren via e-mail"
-  label_registration_automatic_activation: "automatische account activatie"
-  label_registration_manual_activation: "handmatige account activatie"
   label_related_work_packages: "Verwante werkpakketten"
   label_relates: "Gerelateerd aan"
   label_relates_to: "Gerelateerd aan"
@@ -3300,6 +3328,7 @@ nl:
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Succesvolle wijziging."
   notice_unsuccessful_update: "Update failed."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Succesvolle update. Aangepaste velden van de geactiveerde types worden automatisch geactiveerd
     op het werkpakket formulier. <a href="%{url}" target="_blank">Meer</a>.
@@ -3338,13 +3367,13 @@ nl:
     text_getting_started_description: "Krijg een snel overzicht van projectbeheer en teamsamenwerking met OpenProject. U kunt deze video opnieuw starten vanuit het helpmenu."
     welcome: "Welkom bij %{app_title}"
     select_language: "Gelieve uw taal te kiezen"
-  permission_add_work_package_notes: "Add comments"
+  permission_add_work_package_comments: "Add comments"
   permission_add_work_packages: "Werkpakketten toevoegen"
   permission_add_messages: "Berichten posten"
   permission_add_project: "Projecten aanmaken"
   permission_add_work_package_attachments: "Bijlagen toevoegen"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
-  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
+  permission_add_internal_comments: "Write internal comments"
   permission_archive_project: "Project archiveren"
   permission_create_user: "Gebruikers aanmaken"
   permission_manage_user: "Gebruikers bewerken"
@@ -3369,16 +3398,16 @@ nl:
   permission_delete_timelines: "Tijdlijnen verwijderen"
   permission_delete_wiki_pages: "Wiki pagina's verwijderen"
   permission_delete_wiki_pages_attachments: "Bijlagen verwijderen"
-  permission_edit_work_package_notes: "Moderate comments"
-  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
+  permission_edit_work_package_comments: "Moderate comments"
+  permission_edit_work_package_comments_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Werkpakketten bewerken"
   permission_edit_messages: "Berichten bewerken"
-  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
-  permission_edit_own_work_package_notes: "Edit own comments"
+  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_work_package_comments: "Edit own comments"
   permission_edit_own_messages: "Eigen berichten bewerken"
   permission_edit_own_time_entries: "Bewerk de logboeken van de eigen tijd"
-  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
+  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "Project bewerken"
   permission_edit_project_attributes: "Bewerk project kenmerken"
   permission_edit_project_phases: "Edit project phases"
@@ -3419,7 +3448,7 @@ nl:
   permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "Bekijk projecten"
   permission_view_changesets: "Bekijk opslagplaats wijzigingen in OpenProject"
-  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
+  permission_view_internal_comments: "View internal comments"
   permission_view_commit_author_statistics: "Bekijk de commit auteur statistieken"
   permission_view_dashboards: "View dashboards"
   permission_view_work_package_watchers: "Lijst van de watchers weergave"
@@ -3700,6 +3729,7 @@ nl:
   setting_hours_per_day_explanation: >-
     This defines what is considered a "day" when displaying duration in days and hours (for example, if a day is 8 hours, 32 hours would be 4 days).
   setting_invitation_expiration_days: "Activatie e-mail verloopt na"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Progress calculation mode"
   setting_work_package_done_ratio_field: "Work-based"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3715,6 +3745,9 @@ nl:
   setting_journal_aggregation_time_minutes: "Gebruikersacties geaggregeerd binnen"
   setting_log_requesting_user: "Gebruikerslogin, naam en e-mailadres voor alle aanvragen vastleggen"
   setting_login_required: "Verificatie vereist"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Emissie e-mailadres"
   setting_mail_handler_api_key: "API-sleutel"
   setting_mail_handler_body_delimiters: "Afkappen e-mails na een van deze lijnen"
@@ -3740,6 +3773,7 @@ nl:
   setting_project_gantt_query_text: "U kunt de query wijzigen die wordt gebruikt om de Gantt-grafiek weer te geven vanaf de projectoverzichtspagina."
   setting_security_badge_displayed: "Toon beveiligingsbadge"
   setting_registration_footer: "Registratie voettekst"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Automatisch repostiroy leveranciers type"
   setting_repositories_encodings: "Repositories coderingen"
   setting_repository_storage_cache_minutes: "De schijfcache grootte van de repository"
@@ -3750,8 +3784,22 @@ nl:
   setting_repository_truncate_at: "Het maximaal aantal bestanden dat wordt weer gegeven in de reposity browser"
   setting_rest_api_enabled: "REST webservice inschakelen"
   setting_self_registration: "Zelfregistratie"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Tijd verstrijken sessie na inactiviteit"
   setting_session_ttl_hint: "Value below 5 works like disabled"
   setting_session_ttl_enabled: "Sessie verloopt"
@@ -3779,6 +3827,8 @@ nl:
   setting_working_days: "Werkdagen"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.
@@ -3849,7 +3899,7 @@ nl:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Toevoegen"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"
@@ -3882,8 +3932,8 @@ nl:
     work_packages:
       not_allowed_text: "You do not have the necessary permissions to view this page."
       activities:
-        enable_comments_with_restricted_visibility: "Enable restricted visibility comments"
-        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_internal_comments: "Enable internal comments"
+        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Onopgemaakte tekst"
@@ -4231,7 +4281,7 @@ nl:
         view_description: "Can view this project list."
         edit: "Bewerken"
         edit_description: "Kan deze projectlijst bekijken, delen en bewerken."
-      upsale:
+      upsell:
         message: "Sharing project lists with individual users is an enterprise add-on."
   working_days:
     info: >

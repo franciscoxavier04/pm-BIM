@@ -41,9 +41,14 @@ ko:
         changed: "- 변경함"
         created: "- 생성함"
         commented: "- 코멘트 작성함"
-        restrict_visibility: 표시 여부 제한
-        restricted_journal: 제한된 코멘트는 제한된 멤버 그룹에게만 표시됩니다.
+        internal_comment: Internal comment
+        internal_journal: Internal comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: 저장하지 않은 변경 사항이 있습니다. 편집기를 닫으시겠습니까?
+        internal_comment_confirmation:
+          title: "Make this comment public?"
+          heading: "Make this comment public?"
+          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          confirm_button_text: "공개로 설정"
   admin:
     plugins:
       no_results_title_text: 현재 설치된 플러그인이 없습니다.
@@ -97,6 +102,8 @@ ko:
       explanation:
         text: "사용자의 개별 작업(예: 작업 패키지를 두 번 업데이트)은 연령 차이가 지정된 기간 미만인 경우 단일 작업으로 집계됩니다. 애플리케이션 내에서 단일 작업으로 표시됩니다. 또한 이는 전송되는 이메일 수를 줄이는 동일한 시간만큼 알림을 지연시키고 %{webhook_link} 지연에도 영향을 미칩니다."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: 표시 기한
     is_active: 현재 표시됨
@@ -292,7 +299,7 @@ ko:
   global_search:
     placeholder: "%{app_title}에서 검색"
     overwritten_tabs:
-      all: "All"
+      all: "모두"
       messages: "포럼"
       wiki_pages: "위키"
   groups:
@@ -346,6 +353,12 @@ ko:
         heading: "이 프로젝트 목록을 삭제하시겠습니까?"
         text: "이 작업을 수행해도 목록에 포함된 프로젝트는 삭제되지 않습니다. 이 프로젝트 목록을 삭제하시겠습니까?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status_description: Update status description
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -406,9 +419,11 @@ ko:
         no_results_title_text: 이 프로젝트에서 사용하는 추가 기록 디스크 공간이 없습니다.
       work_package_priorities:
         new_label: "새로운 우선 순위"
+    status:
+      button_edit: Edit project status
   project_phase:
-    working_days_count:
-      other: "기간: 근무일 %{count}일"
+    duration:
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "수정된 목록이 새 목록으로 저장되었습니다"
@@ -611,14 +626,17 @@ ko:
         automatically_generated_subjects:
           label: "자동으로 생성되는 제목"
           caption: "참조된 특성과 텍스트를 사용하여 패턴을 정의하고 작업 패키지 제목을 자동으로 생성하세요. 사용자는 제목을 수동으로 편집할 수 없습니다."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
         pattern:
           label: "제목 패턴"
-          caption: "텍스트를 추가하거나 입력하여 / 특성을 검색하세요. 공백을 사용하여 특성을 구분할 수 있습니다."
-          headings:
-            work_package: "작업 패키지"
-            parent: "부모"
-            project: "프로젝트"
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "특성을 찾지 못했습니다. 텍스트로 추가: \"%{word}\""
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "PDF 생성"
         intro: "사용 가능한 템플릿 중에서 이 유형에 대해 활성화하려는 템플릿을 선택하세요. 템플릿은 이 유형을 사용하여 작업 패키지의 내보낸 PDF에서 표시되는 디자인과 특성을 결정합니다. 목록의 첫 번째 템플릿이 기본적으로 선택됩니다."
@@ -751,9 +769,11 @@ ko:
       label_child_singular: "자식"
       label_child_plural: "자식"
       new_child: "새 자식 만들기"
-      new_child_text: "관련 작업 패키지를 현재(부모) 작업 패키지의 하위 항목으로 만듭니다"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "자식"
       child_description: "관련 작업 패키지를 현재(부모) 작업 패키지의 하위 항목으로 만듭니다"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "가장 가까운 대상"
       label_blocks_singular: "블록"
       label_blocks_plural: "블록"
@@ -1074,7 +1094,7 @@ ko:
           title: "근무일"
           false: "근무일만"
           true: "휴무일 포함"
-        journal_restricted: 제한된 저널
+        journal_internal: Internal Journal
         notify: "알림" #used in custom actions
         parent: "부모"
         parent_issue: "부모"
@@ -1116,6 +1136,7 @@ ko:
         error_conflict: "그 사이에 정보가 한 명 이상의 다른 사용자에 의해 업데이트되었습니다."
         email: "- 유효한 이메일 주소가 아닙니다."
         empty: "비워둘 수 없습니다."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "에 짝수를 입력해 주세요"
         exclusion: "예약됨"
         feature_disabled: '- 사용할 수 없습니다.'
@@ -1295,7 +1316,7 @@ ko:
             values:
               inclusion: "필터에 잘못된 값이 있습니다."
               format: "%{message}"
-        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+        queries/principals/filters/internal_mentionable_on_work_package_filter:
           attributes:
             values:
               single_value_requirement: "- 단일 작업 패키지여야 합니다"
@@ -1490,7 +1511,8 @@ ko:
       notification:
         other: "알림"
       placeholder_user: "플레이스홀더 사용자"
-      project: "프로젝트"
+      project:
+        other: "Projects"
       project_query:
         other: "프로젝트 목록"
       query: "사용자 지정 쿼리"
@@ -1621,6 +1643,8 @@ ko:
     priority: "우선 순위"
     project: "프로젝트"
     project_ids: "프로젝트 ID"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "이유"
     responsible: "담당"
     required: "필수"
@@ -1797,7 +1821,7 @@ ko:
       failed: '프로젝트 "%{source_project_name}"을(를) 프로젝트 "%{target_project_name}"에 복사할 수 없습니다.'
       succeeded: '프로젝트 "%{source_project_name}"을(를) 프로젝트 "%{target_project_name}"에 복사했습니다.'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "위키 페이지"
   date:
     abbr_day_names:
       - "일"
@@ -1933,38 +1957,38 @@ ko:
     features:
       baseline_comparison: Baseline Comparisons
       board_view: Advanced Boards
-      conditional_highlighting: Conditional Highlighting
-      comments_with_restricted_visibility: Comments With Restricted Visibility
-      custom_actions: Custom Actions
+      conditional_highlighting: 조건부 강조 표시
+      internal_comments: Internal Comments
+      custom_actions: 사용자 지정 작업
       custom_field_hierarchies: Custom fields of type hierarchy
-      customize_life_cycle: Customize Life Cycle
-      date_alerts: Date Alerts
+      customize_life_cycle: 수명 주기 사용자 지정
+      date_alerts: 날짜 알림
       define_custom_style: Custom theme and logo
-      edit_attribute_groups: Edit Attribute Groups
-      gantt_pdf_export: Gantt PDF Export
-      grid_widget_wp_graph: Grid Widget Work Package Graph
+      edit_attribute_groups: 특성 그룹 편집
+      gantt_pdf_export: Gantt PDF 내보내기
       ldap_groups: LDAP users and group sync
-      one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
-      placeholder_users: Placeholder Users
-      project_list_sharing: Project List Sharing
-      readonly_work_packages: Readonly Work Packages
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
+      one_drive_sharepoint_file_storage: OneDrive/SharePoint 파일 저장소
+      placeholder_users: 플레이스홀더 사용자
+      project_list_sharing: 프로젝트 목록 공유
+      readonly_work_packages: 읽기 전용 작업 패키지
       sso_auth_providers: Single sign-on
-      team_planner_view: Team Planner View
+      team_planner_view: 팀 플래너 보기
       two_factor_authentication: 2FA Authentication
       virus_scanning: Antivirus Scanning
-      work_package_query_relation_columns: Work Package Query Relation Columns
+      work_package_query_relation_columns: 작업 패키지 쿼리 관계 열
       work_package_sharing: Share work packages with external users
-      work_package_subject_generation: Work Package Subject Generation
-    upsale:
+      work_package_subject_generation: 작업 패키지 제목 생성
+    upsell:
       title: "Enterprise 추가 기능"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
-      plan_text_html: "Available only through the %{plan_name}."
+      plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
       baseline_comparison:
-        description: Highlight changes made to this list since any point in the past.
+        description: 과거 어느 시점 이후에 이 목록에서 변경된 사항을 강조 표시합니다.
       work_package_subject_generation:
-        description: "Create automatically generated subjects using referenced attributes and text."
+        description: "참조된 특성과 텍스트를 사용하여 자동으로 생성되는 제목을 만듭니다."
       customize_life_cycle:
         description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       conditional_highlighting:
@@ -1974,7 +1998,7 @@ ko:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "새로운 특성 그룹 추가"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -1982,25 +2006,31 @@ ko:
       custom_field_hierarchies:
         description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
       date_alerts:
-        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+        description: "날짜 경보를 사용하면, 중요 마감일을 놓치거나 잊지 않도록 향후 시작 날짜 또는 종료 날짜에 대한 알림을 받게 됩니다."
       work_package_sharing:
-        description: "Share work packages with users who are not members of the project."
+        description: "프로젝트 멤버가 아닌 사용자와 작업 패키지를 공유합니다."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "참고: 사용된 로그는 공개적으로 액세스 가능합니다."
+        description: 고유한 로고와 색상으로 OpenProject 설치를 사용자 지정하세요.
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "사용자 지정 작업"
+        description: "사용자 지정 작업은 상태, 역할, 유형 또는 프로젝트를 기반으로 특정 작업 패키지에서 사용할 수 있도록 미리 정의된 작업 세트에 대한 원클릭 바로 가기입니다."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
-        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
+        description: "OpenProject에서 업로드된 파일은 바이러스 검사를 수행한 후에 다른 사용자가 액세스해야 합니다."
       placeholder_users:
-        title: Placeholder users
+        title: 플레이스홀더 사용자
         description: >
-          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
-      comments_with_restricted_visibility:
-        title: "For your eyes only"
-        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+          플레이스홀더 사용자는 해당 프로젝트에 속하지 않은 사용자에게 작업 패키지를 할당하는 방법으로, 다양한 시나리오에서 유용할 수 있습니다. 예를 들어, 아직 명명되지 않았거나 사용 가능하지 않은 리소스에 대한 작업을 추적해야 하거나, 해당 개인에게 OpenProject에 대한 액세스 권한을 부여하고 싶지 않지만 이들에게 할당된 작업을 추적하려는 경우에 유용합니다.
+      internal_comments:
+        title: Internal comments
+        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "시간 추적 활동"
   enumeration_work_package_priorities: "작업 패키지 우선 순위"
   enumeration_reported_project_statuses: "보고된 프로젝트 상태"
@@ -2227,7 +2257,7 @@ ko:
       users: "이 경우 최신 등록 된 사용자입니다."
     blocks:
       community: "OpenProject 커뮤니티"
-      upsale:
+      upsell:
         title: "Enterprise Edition으로 업그레이드"
     links:
       upgrade_enterprise_edition: "Enterprise Edition으로 업그레이드"
@@ -2420,7 +2450,6 @@ ko:
   label_ldap_auth_source_plural: "LDAP 연결"
   label_attribute_expand_text: "'%{attribute}'의 전체 텍스트"
   label_authentication: "인증"
-  label_authentication_settings: "인증 설정"
   label_available_custom_fields_projects: "사용 가능한 사용자 지정 필드 프로젝트"
   label_available_global_roles: "사용 가능한 글로벌 역할"
   label_available_project_attributes: "사용 가능한 프로젝트 특성"
@@ -2594,6 +2623,7 @@ ko:
   label_gantt_chart_plural: "Gantt 차트"
   label_general: "일반"
   label_generate_key: "키 생성"
+  label_global_roles: "Global roles"
   label_git_path: ".git 디렉터리의 경로"
   label_greater_or_equal: ">="
   label_group_by: "그룹화 기준"
@@ -2705,7 +2735,7 @@ ko:
   label_modules: "모듈"
   label_months_from: "개월 동안 | 다음부터"
   label_more: "기타"
-  label_more_information: "More information"
+  label_more_information: "더보기"
   label_more_than_ago: "일 이상 전"
   label_move_column_left: "왼쪽으로 열 이동"
   label_move_column_right: "오른쪽으로 열 이동"
@@ -2823,9 +2853,6 @@ ko:
   label_register: "새 계정 만들기"
   label_register_with_developer: "개발자로 등록"
   label_registered_on: "등록된 날짜"
-  label_registration_activation_by_email: "이메일로 계정 활성화"
-  label_registration_automatic_activation: "자동 계정 활성화"
-  label_registration_manual_activation: "수동 계정 활성화"
   label_related_work_packages: "관련 작업 패키지"
   label_relates: "관련 항목"
   label_relates_to: "관련 항목"
@@ -3265,6 +3292,7 @@ ko:
   notice_successful_cancel: "취소에 성공했습니다."
   notice_successful_update: "업데이트에 성공했습니다."
   notice_unsuccessful_update: "업데이트에 실패했습니다."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     업데이트 성공. 활성화된 유형의 사용자 지정 필드는 작업 패키지 양식에서 자동으로 활성화됩니다. <a href="%{url}" target="_blank">자세히 알아보세요</a>.
   notice_to_many_principals_to_display: "너무 많은 결과가 있습니다.\n새 멤버(또는 그룹)의 이름을 입력하여 검색 범위를 좁히세요."
@@ -3301,13 +3329,13 @@ ko:
     text_getting_started_description: "OpenProject로 프로젝트 관리 및 팀 공동 작업에 대한 간략한 개요를 가져올 수 있습니다. 도움말 메뉴에서 이 동영상을 다시 시작할 수 있습니다."
     welcome: "%{app_title}입니다."
     select_language: "언어를 선택하세요."
-  permission_add_work_package_notes: "코멘트 추가"
+  permission_add_work_package_comments: "코멘트 추가"
   permission_add_work_packages: "작업 패키지 추가"
   permission_add_messages: "메시지 게시"
   permission_add_project: "프로젝트 만들기"
   permission_add_work_package_attachments: "첨부 파일 추가"
   permission_add_work_package_attachments_explanation: "작업 패키지 편집 권한 없이 첨부 파일 추가를 허용합니다."
-  permission_add_comments_with_restricted_visibility: "표시 여부가 제한된 코멘트 작성"
+  permission_add_internal_comments: "Write internal comments"
   permission_archive_project: "프로젝트 보관"
   permission_create_user: "사용자 만들기"
   permission_manage_user: "사용자 편집"
@@ -3332,16 +3360,16 @@ ko:
   permission_delete_timelines: "타임라인 삭제"
   permission_delete_wiki_pages: "위키 페이지 삭제"
   permission_delete_wiki_pages_attachments: "첨부 파일 삭제"
-  permission_edit_work_package_notes: "코멘트 조정"
-  permission_edit_work_package_notes_explanation: "주의: 이 권한이 있는 사용자는 다른 사용자의 코멘트를 편집할 수 있습니다."
+  permission_edit_work_package_comments: "코멘트 조정"
+  permission_edit_work_package_comments_explanation: "주의: 이 권한이 있는 사용자는 다른 사용자의 코멘트를 편집할 수 있습니다."
   permission_edit_work_packages: "작업 패키지 편집"
   permission_edit_messages: "메시지 편집"
-  permission_edit_own_comments_with_restricted_visibility: "표시 여부가 제한된 고유한 코멘트 편집"
-  permission_edit_own_work_package_notes: "내 코멘트 편집"
+  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_work_package_comments: "내 코멘트 편집"
   permission_edit_own_messages: "내 메시지 편집"
   permission_edit_own_time_entries: "내 시간 로그 편집"
-  permission_edit_others_comments_with_restricted_visibility: "표시 여부가 제한된 코멘트 조정"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "주의: 이 권한이 있는 사용자는 표시 여부가 제한된 다른 사용자의 코멘트를 편집할 수 있습니다."
+  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "프로젝트 편집"
   permission_edit_project_attributes: "프로젝트 특성 편집"
   permission_edit_project_phases: "프로젝트 단계 편집"
@@ -3382,7 +3410,7 @@ ko:
   permission_manage_own_reminders: "고유한 미리 알림 만들기"
   permission_view_project: "프로젝트 보기"
   permission_view_changesets: "OpenProject에서 리포지토리 수정 사항 보기"
-  permission_view_comments_with_restricted_visibility: "표시 여부가 제한된 코멘트 보기"
+  permission_view_internal_comments: "View internal comments"
   permission_view_commit_author_statistics: "커밋 작성자 통계 보기"
   permission_view_dashboards: "대시보드 보기"
   permission_view_work_package_watchers: "주시자 목록 보기"
@@ -3661,6 +3689,7 @@ ko:
   setting_hours_per_day_explanation: >-
     일 및 시간으로 기간을 표시할 때 "하루"로 간주되는 시간을 정의합니다(예: 하루가 8시간이면 32시간은 4일이 됩니다).
   setting_invitation_expiration_days: "활성화 이메일 만료 기간:"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "진행률 계산 모드"
   setting_work_package_done_ratio_field: "작업 기반"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3676,6 +3705,9 @@ ko:
   setting_journal_aggregation_time_minutes: "집계된 사용자 작업"
   setting_log_requesting_user: "모든 요청에 대한 로그 사용자 로그인, 이름 및 메일 주소"
   setting_login_required: "인증이 필요함"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "발신 이메일 주소"
   setting_mail_handler_api_key: "API 키"
   setting_mail_handler_body_delimiters: "이러한 줄 중 하나 다음에 이메일 자르기"
@@ -3701,6 +3733,7 @@ ko:
   setting_project_gantt_query_text: "프로젝트 개요 페이지에서 Gantt 차트를 표시하는 데 사용되는 쿼리를 수정할 수 있습니다."
   setting_security_badge_displayed: "보안 배지 표시"
   setting_registration_footer: "등록 꼬리말"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "자동 리포지토리 공급업체 유형"
   setting_repositories_encodings: "리포지토리 인코딩"
   setting_repository_storage_cache_minutes: "리포지토리 디스크 크기 캐시"
@@ -3711,8 +3744,22 @@ ko:
   setting_repository_truncate_at: "리포지토리 브라우저에 표시되는 최대 파일 수"
   setting_rest_api_enabled: "REST 웹 서비스 사용"
   setting_self_registration: "자체 등록"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "비활성화된 후 세션 만료 시간"
   setting_session_ttl_hint: "5 아래 값은 사용 안함으로 작동합니다."
   setting_session_ttl_enabled: "세션 만료됨"
@@ -3740,6 +3787,8 @@ ko:
   setting_working_days: "근무일"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         이 옵션이 활성화된 경우, 로그인 요청은 구성된 omniauth 공급자로 리디렉션됩니다. 로그인 드롭다운 및 로그인 페이지가 비활성화됩니다. <br/> <strong>참고:</strong> 또한 암호 로그인을 비활성화하지 않는 경우에는 이 옵션이 활성화된 상태에서 사용자가 <code>%{internal_path}</code> 로그인 페이지를 방문하여 내부에서 계속 로그인할 수 있습니다.
@@ -3843,8 +3892,8 @@ ko:
     work_packages:
       not_allowed_text: "이 페이지를 보는 데 필요한 권한이 없습니다."
       activities:
-        enable_comments_with_restricted_visibility: "제한된 표시 여부 코멘트 활성화"
-        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_internal_comments: "Enable internal comments"
+        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "일반 텍스트"
@@ -4192,7 +4241,7 @@ ko:
         view_description: "이 프로젝트 목록을 볼 수 있습니다."
         edit: "편집"
         edit_description: "이 프로젝트 목록을 보고, 공유하고, 편집할 수 있습니다."
-      upsale:
+      upsell:
         message: "개별 사용자와의 프로젝트 목록 공유는 Enterprise 추가 기능입니다."
   working_days:
     info: >

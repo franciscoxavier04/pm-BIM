@@ -74,7 +74,7 @@ You can use any of the following options.
 - **Delete** - deletes a work package. You will need to confirm the deletion.
 - **Indent hierarchy** - creates a child-parent relationship with the work package directly above. The work package you selected becomes the child work package. The work package directly above becomes the parent work package.
 - **Add predecessor** - adds a predecessor (it will prompt you to select a work package in Gantt view).
-- **Add follower** - adds a follower (it will prompt you to select a work package in Gantt view).
+- **Add successor** - adds a successor (it will prompt you to select a work package in Gantt view).
 - **Show relations** - opens the details view of a work package and displays the **Relations** tab.
 - **Create new child** - opens a new work package on the right side of the screen. This new work package already has a child relationship to the work package you selected. **This option will not be available if the work package type is a milestone**.
 
@@ -105,7 +105,7 @@ You can track dependencies of work packages (e.g. phases, milestones, tasks) in 
 
 To add a dependency, right-click on an element in the Gantt chart, which will open a quick context menu.
 
-In the menu, choose **Add predecessor** or **Add follower**.
+In the menu, choose **Add predecessor** or **Add successor**.
 
 Select the item to which you want to create a dependency. The precede and follow relation is marked with a small blue line in the Gantt chart.
 

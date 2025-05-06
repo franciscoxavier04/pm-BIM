@@ -41,9 +41,14 @@ bg:
         changed: "changed"
         created: "created"
         commented: "commented"
-        restrict_visibility: Restrict visibility
-        restricted_journal: Restricted comments are visible to a limited group of members.
+        internal_comment: Internal comment
+        internal_journal: Internal comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
+        internal_comment_confirmation:
+          title: "Make this comment public?"
+          heading: "Make this comment public?"
+          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          confirm_button_text: "Направи публично"
   admin:
     plugins:
       no_results_title_text: В момента няма инсталирани приставки.
@@ -97,6 +102,8 @@ bg:
       explanation:
         text: "Individual actions of a user (e.g. updating a work package twice) are aggregated into a single action if their age difference is less than the specified timespan. They will be displayed as a single action within the application. This will also delay notifications by the same amount of time reducing the number of emails being sent and will also affect %{webhook_link} delay."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Покажи до
     is_active: в момента е показан
@@ -346,6 +353,12 @@ bg:
         heading: "Delete this project list?"
         text: "Това действие няма да изтрие нито един проект, който списъкът съдържа. Сигурни ли сте, че искате да изтриете този списък с проекти?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status_description: Update status description
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -406,8 +419,10 @@ bg:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
       work_package_priorities:
         new_label: "New priority"
+    status:
+      button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Duration: %{count} working day"
       other: "Duration: %{count} working days"
   lists:
@@ -619,14 +634,17 @@ bg:
         automatically_generated_subjects:
           label: "Automatically generated subjects"
           caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
-        pattern:
-          label: "Subject pattern"
-          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
-          headings:
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
             work_package: "Work package"
             parent: "Parent"
             project: "Project"
+        pattern:
+          label: "Subject pattern"
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -760,9 +778,11 @@ bg:
       label_child_singular: "child"
       label_child_plural: "children"
       new_child: "Create new child"
-      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "блокировки"
       label_blocks_plural: "блокировки"
@@ -954,11 +974,11 @@ bg:
         is_required: "Required for all projects"
         custom_field_section: Раздел
       project/phase:
-        date_range: "Date range"
+        date_range: "Период"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Име"
+        color: "Цвят"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1083,7 +1103,7 @@ bg:
           title: "Работни дни"
           false: "само в работни дни"
           true: "включват неработни дни"
-        journal_restricted: Restricted Journal
+        journal_internal: Internal Journal
         notify: "Уведомяване" #used in custom actions
         parent: "Горна категория"
         parent_issue: "Горна категория"
@@ -1125,6 +1145,7 @@ bg:
         error_conflict: "Информацията е актуализирана от поне един друг потребител в същото време."
         email: "е невалидна електронна поща."
         empty: "не може да бъде празно."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "трябва да бъде четно число."
         exclusion: "е запазено."
         feature_disabled: is not available.
@@ -1304,7 +1325,7 @@ bg:
             values:
               inclusion: "филтърът има невалидни стойности."
               format: "%{message}"
-        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+        queries/principals/filters/internal_mentionable_on_work_package_filter:
           attributes:
             values:
               single_value_requirement: "must be a single work package"
@@ -1503,7 +1524,9 @@ bg:
         one: "Notification"
         other: "Notifications"
       placeholder_user: "Потребител на заместител"
-      project: "Проект"
+      project:
+        one: "Project"
+        other: "Projects"
       project_query:
         one: "Project list"
         other: "Project lists"
@@ -1562,14 +1585,14 @@ bg:
       changeset: "Набори от промени"
       message: "Форуми"
       news: "Новини"
-      project_details: "Project details"
+      project_details: "Подробности за проект"
       subproject: "Include subprojects"
       time_entry: "Отработено време"
       wiki_edit: "Wiki"
       work_package: "Работни пакети"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "активиран"
+      deactivated: "деактивиран"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -1641,6 +1664,8 @@ bg:
     priority: "Приоритет"
     project: "Проект"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reason"
     responsible: "Accountable"
     required: "Задължително"
@@ -1817,7 +1842,7 @@ bg:
       failed: 'Не можа да се копира проект "%{source_project_name}" в проект "%{target_project_name}".'
       succeeded: 'Копиран проект "%{source_project_name}" в "%{target_project_name}".'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "Wiki страница"
   date:
     abbr_day_names:
       - "нд"
@@ -1973,7 +1998,7 @@ bg:
       baseline_comparison: Baseline Comparisons
       board_view: Advanced Boards
       conditional_highlighting: Conditional Highlighting
-      comments_with_restricted_visibility: Comments With Restricted Visibility
+      internal_comments: Internal Comments
       custom_actions: Custom Actions
       custom_field_hierarchies: Custom fields of type hierarchy
       customize_life_cycle: Customize Life Cycle
@@ -1981,8 +2006,8 @@ bg:
       define_custom_style: Custom theme and logo
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
-      grid_widget_wp_graph: Grid Widget Work Package Graph
       ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
       project_list_sharing: Project List Sharing
@@ -1994,11 +2019,11 @@ bg:
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
-    upsale:
+    upsell:
       title: "Добавка за големи предприятия"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
-      plan_text_html: "Available only through the %{plan_name}."
+      plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
@@ -2013,7 +2038,7 @@ bg:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "Добавяне на нови групи атрибути"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -2026,20 +2051,26 @@ bg:
         description: "Share work packages with users who are not members of the project."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "Забележка: използваното лого ще бъде публично достъпно."
+        description: Персонализирайте инсталацията на OpenProject със собственото си лого и цветове.
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "Персонализирани действия"
+        description: "Потребителските действия са преки пътища с едно кликване до набор от предварително дефинирани действия, които можете да направите достъпни за определени работни пакети въз основа на статус, роля, тип или проект."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
-        title: Placeholder users
+        title: Потребители на резервни части
         description: >
           Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
-      comments_with_restricted_visibility:
-        title: "For your eyes only"
-        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments:
+        title: Internal comments
+        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "Дейности за проследяване на времето"
   enumeration_work_package_priorities: "Приоритети на работни пакети"
   enumeration_reported_project_statuses: "Докладвани статуси на проект"
@@ -2266,7 +2297,7 @@ bg:
       users: "Най-новите регистрирани потребители в този случай."
     blocks:
       community: "OpenProject Общността"
-      upsale:
+      upsell:
         title: "Upgrade to Enterprise edition"
     links:
       upgrade_enterprise_edition: "Upgrade to Enterprise edition"
@@ -2459,7 +2490,6 @@ bg:
   label_ldap_auth_source_plural: "LDAP connections"
   label_attribute_expand_text: "The complete text for '%{attribute}'"
   label_authentication: "Оторизация"
-  label_authentication_settings: "Authentication settings"
   label_available_custom_fields_projects: "Available custom fields projects"
   label_available_global_roles: "Available global roles"
   label_available_project_attributes: "Available project attributes"
@@ -2633,6 +2663,7 @@ bg:
   label_gantt_chart_plural: "Диаграми на Гант"
   label_general: "Общ"
   label_generate_key: "Генериране на ключ"
+  label_global_roles: "Global roles"
   label_git_path: "Път до .git директория"
   label_greater_or_equal: ">="
   label_group_by: "Групиране по"
@@ -2744,7 +2775,7 @@ bg:
   label_modules: "Модули"
   label_months_from: "месеца от"
   label_more: "Повече"
-  label_more_information: "More information"
+  label_more_information: "Повече информация"
   label_more_than_ago: "повече от преди дни"
   label_move_column_left: "Преместване на колона наляво"
   label_move_column_right: "Преместете колона надясно"
@@ -2862,9 +2893,6 @@ bg:
   label_register: "Регистрирайте нов профил"
   label_register_with_developer: "Регистрирайте се като разработчик"
   label_registered_on: "Регистриран на"
-  label_registration_activation_by_email: "активиране на профила по имейл"
-  label_registration_automatic_activation: "автоматично активиране на акаунт"
-  label_registration_manual_activation: "ръчно активиране на акаунт"
   label_related_work_packages: "Свързани работени пакети"
   label_relates: "свързани с"
   label_relates_to: "свързани с"
@@ -3305,6 +3333,7 @@ bg:
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Успешно обновяване."
   notice_unsuccessful_update: "Update failed."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Успешна актуализация. Потребителските полета на активираните типове се активират автоматично
     във формуляра на работния пакет. <a href="%{url}" target="_blank">Вижте още.</a>
@@ -3343,13 +3372,13 @@ bg:
     text_getting_started_description: "Get a quick overview of project management and team collaboration with OpenProject. You can restart this video from the help menu."
     welcome: "Welcome to %{app_title}"
     select_language: "Изберете езика си"
-  permission_add_work_package_notes: "Add comments"
+  permission_add_work_package_comments: "Add comments"
   permission_add_work_packages: "Add work packages"
   permission_add_messages: "Post messages"
   permission_add_project: "Create projects"
   permission_add_work_package_attachments: "Add attachments"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
-  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
+  permission_add_internal_comments: "Write internal comments"
   permission_archive_project: "Archive project"
   permission_create_user: "Create users"
   permission_manage_user: "Edit users"
@@ -3374,16 +3403,16 @@ bg:
   permission_delete_timelines: "Delete timelines"
   permission_delete_wiki_pages: "Delete wiki pages"
   permission_delete_wiki_pages_attachments: "Delete attachments"
-  permission_edit_work_package_notes: "Moderate comments"
-  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
+  permission_edit_work_package_comments: "Moderate comments"
+  permission_edit_work_package_comments_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Edit work packages"
   permission_edit_messages: "Редактиране на съобщенията"
-  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
-  permission_edit_own_work_package_notes: "Edit own comments"
+  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_work_package_comments: "Edit own comments"
   permission_edit_own_messages: "Edit own messages"
   permission_edit_own_time_entries: "Edit own time logs"
-  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
+  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "Edit project"
   permission_edit_project_attributes: "Edit project attributes"
   permission_edit_project_phases: "Edit project phases"
@@ -3424,7 +3453,7 @@ bg:
   permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "Преглед на проекти"
   permission_view_changesets: "Преглед на ревизиите на хранилището в OpenProject"
-  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
+  permission_view_internal_comments: "View internal comments"
   permission_view_commit_author_statistics: "Преглед статистиката за авторите на ангажименти"
   permission_view_dashboards: "Преглед на табла за управление"
   permission_view_work_package_watchers: "Преглед на списъка с наблюдатели"
@@ -3705,6 +3734,7 @@ bg:
   setting_hours_per_day_explanation: >-
     This defines what is considered a "day" when displaying duration in days and hours (for example, if a day is 8 hours, 32 hours would be 4 days).
   setting_invitation_expiration_days: "Имейлът за активиране изтича след"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Progress calculation mode"
   setting_work_package_done_ratio_field: "Work-based"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3720,6 +3750,9 @@ bg:
   setting_journal_aggregation_time_minutes: "User actions aggregated within"
   setting_log_requesting_user: "Log user login, name, and mail address for all requests"
   setting_login_required: "Authentication required"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Emission email address"
   setting_mail_handler_api_key: "API ключ"
   setting_mail_handler_body_delimiters: "Truncate emails after one of these lines"
@@ -3745,6 +3778,7 @@ bg:
   setting_project_gantt_query_text: "Можете да промените заявката, която се използва за показване на диаграмата на Гант от страницата за преглед на проекта."
   setting_security_badge_displayed: "Display security badge"
   setting_registration_footer: "Registration footer"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Automatic repository vendor type"
   setting_repositories_encodings: "Repositories encodings"
   setting_repository_storage_cache_minutes: "Repository disk size cache"
@@ -3755,8 +3789,22 @@ bg:
   setting_repository_truncate_at: "Maximum number of files displayed in the repository browser"
   setting_rest_api_enabled: "Enable REST web service"
   setting_self_registration: "Self-registration"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Session expiry time after inactivity"
   setting_session_ttl_hint: "Value below 5 works like disabled"
   setting_session_ttl_enabled: "Session expires"
@@ -3784,6 +3832,8 @@ bg:
   setting_working_days: "Работни дни"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.
@@ -3854,7 +3904,7 @@ bg:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Добави"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"
@@ -3887,8 +3937,8 @@ bg:
     work_packages:
       not_allowed_text: "You do not have the necessary permissions to view this page."
       activities:
-        enable_comments_with_restricted_visibility: "Enable restricted visibility comments"
-        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_internal_comments: "Enable internal comments"
+        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Plain text"
@@ -4237,7 +4287,7 @@ bg:
         view_description: "Can view this project list."
         edit: "Редактиране"
         edit_description: "Can view, share and edit this project list."
-      upsale:
+      upsell:
         message: "Sharing project lists with individual users is an enterprise add-on."
   working_days:
     info: >

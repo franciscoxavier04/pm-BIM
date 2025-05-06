@@ -419,7 +419,7 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
     elsif reuse_current_due_date?
       # if due date is before start date, then start is used as due date.
       [min_start, work_package.due_date].max
-    elsif work_package.duration
+    elsif duration_assignable?
       days.due_date(min_start, work_package.duration)
     end
   end
@@ -429,7 +429,11 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
     return true if work_package.ignore_non_working_days_came_from_user?
 
     # use due date only if duration cannot be used
-    work_package.duration.nil?
+    work_package.duration.nil? || !duration_assignable?
+  end
+
+  def duration_assignable?
+    work_package&.duration.is_a?(Integer) && work_package.duration > 0
   end
 
   def work_package

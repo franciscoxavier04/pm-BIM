@@ -320,16 +320,10 @@ zh-TW:
   permission_edit_meetings: "編輯會議"
   permission_delete_meetings: "刪除會議"
   permission_view_meetings: "檢視會議"
-  permission_create_meeting_agendas: "創建會議議程"
-  permission_create_meeting_agendas_explanation: "允許編輯傳統會議的議程。"
   permission_manage_agendas: "管理議程"
   permission_manage_agendas_explanation: "允許編輯動態會議的議程項目。"
-  permission_close_meeting_agendas: "定案會議大綱"
-  permission_send_meeting_agendas_notification: "傳送會議大綱審閱通知"
-  permission_create_meeting_minutes: "管理會議記錄"
-  permission_send_meeting_minutes_notification: "傳送會議記錄審閱通知"
-  permission_meetings_send_invite: "邀請使用者加入會議"
-  permission_send_meeting_agendas_icalendar: "將議題大綱傳至行事曆"
+  permission_manage_outcomes: "Manage outcomes"
+  permission_send_meeting_invites_and_outcomes: "Send meeting invites and outcomes to participants"
   project_module_meetings: "會議"
   text_duration_in_hours: "持續時間 (小時)"
   text_in_hours: "小時數"
@@ -341,8 +335,8 @@ zh-TW:
   text_meeting_minutes_for_meeting: '%{meeting} 的會議記錄'
   text_notificiation_invited: "此郵件包含以下會議的 ics 條目:"
   text_meeting_empty_heading: "暫無會議資料(會議建立後，請記得點選右上角功能「發送電子郵件給所有參與者」)"
-  text_meeting_empty_description_1: "可以點選下幫「增加」來新增項目。 每個項目可以像標題一樣簡單，但您也可以加上其他詳細信息，例如開會時間與備註。"
-  text_meeting_empty_description_2: '你也可以引用到現有工作項目。當您這樣做時，相關的紀錄將自動呈現於於工作項目的「會議」標籤。'
+  text_meeting_empty_description1: "Start by adding agenda items below. Each item can be as simple as just a title, but you can also add additional details like duration and notes."
+  text_meeting_empty_description2: 'You can also add references to existing work packages. When you do, related notes will automatically be visible in the work package''s "Meetings" tab.'
   label_meeting_empty_action: "新增議程項目"
   label_meeting_actions: "會議行動"
   label_meeting_edit_title: "編輯會議標題"
@@ -361,6 +355,8 @@ zh-TW:
   label_agenda_item_deleted_wp: "已將引用的工作項目刪除"
   label_agenda_item_actions: "議程項目行動"
   label_agenda_item_move_to_next: "移至下次會議"
+  label_agenda_item_move_to_backlog: "Move to backlog"
+  label_agenda_item_move_to_current_meeting: "Move to current meeting"
   label_agenda_item_move_to_top: "移到頂部"
   label_agenda_item_move_to_bottom: "移到底部"
   label_agenda_item_move_up: "向上移 "
@@ -373,6 +369,22 @@ zh-TW:
   label_agenda_outcome_edit: "編輯結果"
   label_agenda_outcome_delete: "移除結果"
   text_outcome_not_editable_anymore: "此結果已不可編輯。"
+  text_outcome_cannot_be_added: "An outcome can no longer be added."
+  label_backlog_clear: "Clear backlog"
+  label_backlog_clear_button: "Clear all"
+  text_backlog_clear_error: "One or more errors occurred while trying to clear the backlog."
+  label_agenda_backlog: "Agenda backlog"
+  text_agenda_backlog: >
+    This backlog is unique to this one-time meeting. You can drag items in and out to add or remove them from the meeting agenda.
+  label_agenda_backlog_clear_title: "Clear agenda backlog?"
+  text_agenda_backlog_clear_description: >
+    Are you sure you want to remove all items currently in the agenda items? This action is not reversible.
+  label_series_backlog: "Series backlog"
+  text_series_backlog: >
+    The backlog is shared with all occurrences of this series. You can drag items in and out to add or remove them from a particular meeting.
+  label_series_backlog_clear_title: "Clear series backlog?"
+  text_series_backlog_clear_description: >
+    This will remove all items in the series backlog, which is shared with all meetings in the series. Are you sure you want to continue? This action is not reversible.
   text_agenda_item_title: '議程項目 "%{title}"'
   text_agenda_work_package_deleted: '已刪除工作項目議程'
   text_deleted_agenda_item: '已刪除的議程項目'

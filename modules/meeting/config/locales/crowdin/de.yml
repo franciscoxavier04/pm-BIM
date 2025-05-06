@@ -70,7 +70,7 @@ de:
         invalid_time_format: "ist keine gültige Zeit. Erforderliches Format: HH:MM"
     models:
       recurring_meeting: "Wiederkehrende Besprechung"
-      meeting: "One-time meeting"
+      meeting: "Einmalige Besprechung"
       meeting_agenda_item: "Tagesordnungspunkt"
       meeting_agenda: "Agenda"
       meeting_section: "Abschnitt"
@@ -133,8 +133,8 @@ de:
   label_recurring_meeting_next_occurrence: "Nächstes Ereignis"
   label_recurring_meeting_no_end_date: "Es sind weitere Besprechungen geplant (%{schedule})."
   label_recurring_meeting_more:
-    one: "There is one more scheduled meeting (%{schedule})."
-    other: "There are %{count} more scheduled meetings (%{schedule})."
+    one: "Es gibt eine weitere Besprechung (%{schedule})."
+    other: "Es gibt %{count} folgende Besprechungen (%{schedule})."
   label_recurring_meeting_more_past:
     one: "Es gibt eine weitere vergangene Besprechung."
     other: "Es gibt %{count} weitere vergangene Besprechungen."
@@ -326,16 +326,10 @@ de:
   permission_edit_meetings: "Besprechungen bearbeiten"
   permission_delete_meetings: "Besprechungen löschen"
   permission_view_meetings: "Besprechungen ansehen"
-  permission_create_meeting_agendas: "Agendapunkte erstellen"
-  permission_create_meeting_agendas_explanation: "Ermöglicht das Bearbeiten des Inhalts der klassischen Meetings."
   permission_manage_agendas: "Agenden anlegen/bearbeiten"
   permission_manage_agendas_explanation: "Ermöglicht das Bearbeiten des Inhalts der dynamischen Meetings."
-  permission_close_meeting_agendas: "Agenden schließen"
-  permission_send_meeting_agendas_notification: "Benachrichtigungen für Agenden verschicken"
-  permission_create_meeting_minutes: "Protokolle anlegen/bearbeiten"
-  permission_send_meeting_minutes_notification: "Benachrichtigungen für Protokolle verschicken"
-  permission_meetings_send_invite: "Benutzer zu Besprechungen einladen"
-  permission_send_meeting_agendas_icalendar: "Besprechungsagenda als Kalendereintrag senden"
+  permission_manage_outcomes: "Ergebnisse verwalten"
+  permission_send_meeting_invites_and_outcomes: "Besprechungseinladungen und -ergebnisse an Teilnehmer senden"
   project_module_meetings: "Besprechungen"
   text_duration_in_hours: "Dauer in Stunden"
   text_in_hours: "in Stunden"
@@ -347,8 +341,8 @@ de:
   text_meeting_minutes_for_meeting: 'das Protokoll für die Besprechung "%{meeting}"'
   text_notificiation_invited: "Diese Email enthält einen ics Eintrag für die untenstehende Besprechung:"
   text_meeting_empty_heading: "Ihre Besprechung ist leer"
-  text_meeting_empty_description_1: "Beginnen Sie unten mit dem Hinzufügen von Tagesordnungspunkten. Jeder Eintrag kann zunächst nur aus einem Titel bestehen. Optional können Sie zusätzliche Details wie Dauer und Notizen hinzufügen."
-  text_meeting_empty_description_2: 'Sie können auch Verweise auf bestehende Arbeitspakete hinzufügen. So werden angehängte Notizen automatisch auch im "Besprechungen"-Tab des Arbeitspakets angezeigt.'
+  text_meeting_empty_description1: "Beginnen Sie unten mit dem Hinzufügen von Tagesordnungspunkten. Jeder Punkt kann so einfach wie ein Titel sein, aber Sie können auch zusätzliche Details wie Dauer und Notizen hinzufügen."
+  text_meeting_empty_description2: 'Sie können auch Verweise auf bestehende Arbeitspakete hinzufügen. So werden angehängte Notizen automatisch auch im "Besprechungen"-Tab des Arbeitspakets angezeigt.'
   label_meeting_empty_action: "Tagesordnungspunkt hinzufügen"
   label_meeting_actions: "Aktionen der Besprechung"
   label_meeting_edit_title: "Besprechungstitel bearbeiten"
@@ -367,6 +361,8 @@ de:
   label_agenda_item_deleted_wp: "Referenz auf ein gelöschtes Arbeitspaket"
   label_agenda_item_actions: "Aktionen zu Tagesordnungspunkten"
   label_agenda_item_move_to_next: "Zur nächsten Besprechung verschieben"
+  label_agenda_item_move_to_backlog: "In Backlog verschieben"
+  label_agenda_item_move_to_current_meeting: "Zur aktuellen Besprechung verschieben"
   label_agenda_item_move_to_top: "Nach ganz oben verschieben"
   label_agenda_item_move_to_bottom: "Nach ganz unten verschieben"
   label_agenda_item_move_up: "Nach oben verschieben"
@@ -379,6 +375,22 @@ de:
   label_agenda_outcome_edit: "Ergebnis bearbeiten"
   label_agenda_outcome_delete: "Ergebnis entfernen"
   text_outcome_not_editable_anymore: "Dieses Ergebnis ist nicht mehr bearbeitbar."
+  text_outcome_cannot_be_added: "Ein Ergebnis kann nicht mehr hinzugefügt werden."
+  label_backlog_clear: "Backlog leeren"
+  label_backlog_clear_button: "Alles löschen"
+  text_backlog_clear_error: "Ein oder mehrere Fehler trat auf beim Versuch, den Backlog zu leeren."
+  label_agenda_backlog: "Agenda-Backlog"
+  text_agenda_backlog: >
+    Dieser Backlog gehört nur dieser einmaligen Besprechung. Sie können Elemente einfügen um sie aus der Besprechungsagenda hinzuzufügen oder zu entfernen.
+  label_agenda_backlog_clear_title: "Backlog leeren?"
+  text_agenda_backlog_clear_description: >
+    Sind Sie sicher, dass Sie alle aktuellen Einträge entfernen möchten? Diese Aktion kann nicht rückgängig gemacht werden.
+  label_series_backlog: "Backlog der Terminserie"
+  text_series_backlog: >
+    Der Backlog wird mit allen Vorkommnissen dieser Terminserie geteilt. Sie können Elemente hin- und herziehen um sie aus einer bestimmten Besprechung hinzuzufügen oder zu entfernen.
+  label_series_backlog_clear_title: "Backlog der Terminserie leeren?"
+  text_series_backlog_clear_description: >
+    Dadurch werden alle Elemente des Backlogs entfernt, die mit allen Besprechungen in der Terminserie geteilt werden. Sind Sie sicher, dass Sie fortfahren möchten? Diese Aktion kann nicht rückgängig gemacht werden.
   text_agenda_item_title: 'Tagesordnungspunkt „%{title}“'
   text_agenda_work_package_deleted: 'Tagesordnungspunkt für gelöschtes Arbeitspaket'
   text_deleted_agenda_item: 'Gelöschter Tagesordnungspunkt'

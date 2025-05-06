@@ -7,7 +7,7 @@ fi:
   permission_manage_board_views: "Hallitse tauluja"
   project_module_board_view: "Taulut"
   ee:
-    upsale:
+    upsell:
       board_view:
         description: 'Would you like to automate your workflows with Boards? Advanced boards are an Enterprise add-on. Please upgrade to a paid plan.'
   boards:

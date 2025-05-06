@@ -35,6 +35,7 @@ module EnterpriseEdition
   class BannerComponent < ApplicationComponent
     include Primer::FetchOrFallbackHelper
     include Primer::ClassNameHelper
+    include Primer::JoinStyleArgumentsHelper
     include OpPrimer::ComponentHelpers
     include OpTurbo::Streamable
     include PlanForFeature
@@ -47,7 +48,7 @@ module EnterpriseEdition
     # @param image [String, NilClass] Path to the image to show on the banner, or nil.
     #   Required when variant is :medium.
     # @param i18n_scope [String] Provide the i18n scope to look for title, description, and features.
-    #                            Defaults to "ee.upsale.{feature_key}"
+    #                            Defaults to "ee.upsell.{feature_key}"
     # @param dismissable [boolean] Allow this banner to be dismissed.
     # @param show_always [boolean] Always show the banner, regardless of the dismissed or feature state.
     # @param dismiss_key [String] Provide a string to identify this banner when being dismissed. Defaults to feature_key
@@ -55,7 +56,7 @@ module EnterpriseEdition
     def initialize(feature_key, # rubocop:disable Metrics/AbcSize
                    variant: DEFAULT_VARIANT,
                    image: nil,
-                   i18n_scope: "ee.upsale.#{feature_key}",
+                   i18n_scope: "ee.upsell.#{feature_key}",
                    dismissable: false,
                    show_always: false,
                    dismiss_key: feature_key,
@@ -85,6 +86,13 @@ module EnterpriseEdition
       )
 
       super
+    end
+
+    def before_render
+      @system_arguments[:style] = join_style_arguments(
+        @system_arguments[:style],
+        medium? ? "background-image: url(#{helpers.image_path(@image)})" : nil
+      )
     end
 
     def medium?

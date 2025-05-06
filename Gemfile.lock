@@ -343,6 +343,8 @@ GEM
     airbrake-ruby (6.2.2)
       rbtree3 (~> 0.6)
     android_key_attestation (0.3.0)
+    anyway_config (2.7.2)
+      ruby-next-core (~> 1.0)
     appsignal (3.10.0)
       rack
     ast (2.4.3)
@@ -352,18 +354,18 @@ GEM
     awesome_nested_set (3.8.0)
       activerecord (>= 4.0.0, < 8.1)
     aws-eventstream (1.3.2)
-    aws-partitions (1.1088.0)
-    aws-sdk-core (3.222.2)
+    aws-partitions (1.1097.0)
+    aws-sdk-core (3.223.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
       base64
       jmespath (~> 1, >= 1.6.1)
       logger
-    aws-sdk-kms (1.99.0)
+    aws-sdk-kms (1.100.0)
       aws-sdk-core (~> 3, >= 3.216.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.183.0)
+    aws-sdk-s3 (1.185.0)
       aws-sdk-core (~> 3, >= 3.216.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
@@ -448,7 +450,7 @@ GEM
     compare-xml (0.66)
       nokogiri (~> 1.8)
     concurrent-ruby (1.3.4)
-    connection_pool (2.5.1)
+    connection_pool (2.5.2)
     cookiejar (0.3.4)
     cose (1.3.1)
       cbor (~> 0.5.9)
@@ -707,7 +709,7 @@ GEM
       reline (>= 0.4.2)
     iso8601 (0.13.0)
     jmespath (1.6.2)
-    json (2.10.2)
+    json (2.11.3)
     json-jwt (1.16.7)
       activesupport (>= 4.2)
       aes_key_wrap
@@ -734,7 +736,7 @@ GEM
       addressable (~> 2.8)
       childprocess (~> 5.0)
       logger (~> 1.6)
-    lefthook (1.11.11)
+    lefthook (1.11.12)
     letter_opener (1.10.0)
       launchy (>= 2.2, < 4)
     letter_opener_web (3.0.0)
@@ -802,7 +804,7 @@ GEM
     mutex_m (0.3.0)
     net-http (0.6.0)
       uri
-    net-imap (0.5.6)
+    net-imap (0.5.7)
       date
       net-protocol
     net-ldap (0.19.0)
@@ -853,17 +855,17 @@ GEM
       validate_email
       validate_url
       webfinger (~> 2.0)
-    openproject-octicons (19.24.2)
-    openproject-octicons_helper (19.24.2)
+    openproject-octicons (19.25.0)
+    openproject-octicons_helper (19.25.0)
       actionview
-      openproject-octicons (= 19.24.2)
+      openproject-octicons (= 19.25.0)
       railties
-    openproject-primer_view_components (0.63.0)
+    openproject-primer_view_components (0.64.1)
       actionview (>= 7.1.0)
       activesupport (>= 7.1.0)
-      openproject-octicons (>= 19.23.0)
+      openproject-octicons (>= 19.25.0)
       view_component (>= 3.1, < 4.0)
-    openproject-token (5.2.1)
+    openproject-token (5.4.0)
       activemodel
     openssl (3.3.0)
     openssl-signature_algorithm (1.3.0)
@@ -905,6 +907,40 @@ GEM
       prawn (>= 1.3.0, < 3.0.0)
     prettyprint (0.2.0)
     prism (1.4.0)
+    prometheus-client-mmap (1.2.9)
+      base64
+      bigdecimal
+      logger
+      rb_sys (~> 0.9.109)
+    prometheus-client-mmap (1.2.9-aarch64-linux-gnu)
+      base64
+      bigdecimal
+      logger
+      rb_sys (~> 0.9.109)
+    prometheus-client-mmap (1.2.9-aarch64-linux-musl)
+      base64
+      bigdecimal
+      logger
+      rb_sys (~> 0.9.109)
+    prometheus-client-mmap (1.2.9-arm64-darwin)
+      base64
+      bigdecimal
+      logger
+      rb_sys (~> 0.9.109)
+    prometheus-client-mmap (1.2.9-x86_64-darwin)
+      base64
+      bigdecimal
+      logger
+      rb_sys (~> 0.9.109)
+    prometheus-client-mmap (1.2.9-x86_64-linux-gnu)
+      base64
+      bigdecimal
+      logger
+      rb_sys (~> 0.9.109)
+    prometheus-client-mmap (1.2.9-x86_64-linux-musl)
+      base64
+      bigdecimal
+      logger
     pry (0.15.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -1037,7 +1073,7 @@ GEM
     roar (1.2.0)
       representable (~> 3.1)
     rotp (6.3.0)
-    rouge (4.5.1)
+    rouge (4.5.2)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
@@ -1063,7 +1099,7 @@ GEM
     rspec-support (3.13.2)
     rspec-wait (1.0.1)
       rspec (>= 3.4)
-    rubocop (1.75.3)
+    rubocop (1.75.4)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -1106,6 +1142,7 @@ GEM
       activesupport (>= 3.0.0)
       i18n
       iso8601
+    ruby-next-core (1.1.1)
     ruby-ole (1.2.13.1)
     ruby-prof (1.7.1)
     ruby-progressbar (1.13.0)
@@ -1124,9 +1161,9 @@ GEM
       nokogiri (>= 1.16.8)
     secure_headers (7.1.0)
     securerandom (0.4.1)
-    selenium-devtools (0.135.0)
+    selenium-devtools (0.136.0)
       selenium-webdriver (~> 4.2)
-    selenium-webdriver (4.31.0)
+    selenium-webdriver (4.32.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -1134,7 +1171,7 @@ GEM
       websocket (~> 1.0)
     semantic (1.6.1)
     shoulda-context (2.0.0)
-    shoulda-matchers (6.4.0)
+    shoulda-matchers (6.5.0)
       activesupport (>= 5.2.0)
     signet (0.19.0)
       addressable (~> 2.8)
@@ -1256,6 +1293,25 @@ GEM
       zeitwerk (>= 2.6)
     xpath (3.2.0)
       nokogiri (~> 1.8)
+    yabeda (0.13.1)
+      anyway_config (>= 1.0, < 3)
+      concurrent-ruby
+      dry-initializer
+    yabeda-activerecord (0.1.1)
+      activerecord (>= 6.0)
+      yabeda (~> 0.6)
+    yabeda-prometheus-mmap (0.4.0)
+      prometheus-client-mmap
+      yabeda (~> 0.10)
+    yabeda-puma-plugin (0.7.1)
+      json
+      puma
+      yabeda (~> 0.5)
+    yabeda-rails (0.9.0)
+      activesupport
+      anyway_config (>= 1.3, < 3)
+      railties
+      yabeda (~> 0.8)
     yard (0.9.37)
     zeitwerk (2.7.2)
 
@@ -1388,15 +1444,15 @@ DEPENDENCIES
   openproject-job_status!
   openproject-ldap_groups!
   openproject-meeting!
-  openproject-octicons (~> 19.24.2)
-  openproject-octicons_helper (~> 19.24.2)
+  openproject-octicons (~> 19.25.0)
+  openproject-octicons_helper (~> 19.25.0)
   openproject-openid_connect!
-  openproject-primer_view_components (~> 0.63.0)
+  openproject-primer_view_components (~> 0.64.1)
   openproject-recaptcha!
   openproject-reporting!
   openproject-storages!
   openproject-team_planner!
-  openproject-token (~> 5.2.1)
+  openproject-token (~> 5.4.0)
   openproject-two_factor_authentication!
   openproject-webhooks!
   openproject-xls_export!
@@ -1485,6 +1541,10 @@ DEPENDENCIES
   webmock (~> 3.12)
   will_paginate (~> 4.0.0)
   with_advisory_lock (~> 5.1.0)
+  yabeda-activerecord
+  yabeda-prometheus-mmap
+  yabeda-puma-plugin
+  yabeda-rails
 
 CHECKSUMS
   Ascii85 (2.0.1) sha256=15cb5d941808543cbb9e7e6aea3c8ec3877f154c3461e8b3673e97f7ecedbe5a
@@ -1513,16 +1573,17 @@ CHECKSUMS
   airbrake (13.0.5) sha256=901f5074c25d5ef77ed87f5bde7a28400a7324f5d7013a8a12d07e0099cc31b6
   airbrake-ruby (6.2.2) sha256=293e34fb36e763e1b6d67ab584cce7c5b6fe9eea1a70c26d8c13c0f5d7de2fbc
   android_key_attestation (0.3.0) sha256=467eb01a99d2bb48ef9cf24cc13712669d7056cba5a52d009554ff037560570b
+  anyway_config (2.7.2) sha256=30f6b087c0b41afdd43fe46c81d65a16f052a8489dab453abaeb4ea67aa74bad
   appsignal (3.10.0) sha256=2a18f3253afdf2fc2d7f9e43d5118976c05a614934abcbb29bb84000d047b61b
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
   attr_required (1.0.2) sha256=f0ebfc56b35e874f4d0ae799066dbc1f81efefe2364ca3803dc9ea6a4de6cb99
   auto_strip_attributes (2.6.0) sha256=a7e2e0cf744de2bcd947fd68014220702bcc88c81274c1cd9ce6f7316aae39b0
   awesome_nested_set (3.8.0) sha256=469daff411d80291dbb80d1973133e498048a7afc2519c545f62d2cdebc60eda
   aws-eventstream (1.3.2) sha256=7e2c3a55ca70d7861d5d3c98e47daa463ed539c349caba22b48305b8919572d7
-  aws-partitions (1.1088.0) sha256=8535142a11dadebed7b87e68bb607031b972171472d7a4b55bfb409d2a22998a
-  aws-sdk-core (3.222.2) sha256=0639070595c6d123fc371d773a2a86f9fc208466ec88e9763d7af924a757c8d1
-  aws-sdk-kms (1.99.0) sha256=ba292fc3ffd672532aae2601fe55ff424eee78da8e23c23ba6ce4037138275a8
-  aws-sdk-s3 (1.183.0) sha256=8c06b0330c76fc57b4a04a94aec25a8474160b05b2436334d9f8e57ea2799f4c
+  aws-partitions (1.1097.0) sha256=6cf7b3bee41283a8e25d7891969e4811e20458af83f73310f67650961ac802c8
+  aws-sdk-core (3.223.0) sha256=d8c309116787cd24fb32095da4fa94d1f76e26baea705eabb66aa4585e8d8c77
+  aws-sdk-kms (1.100.0) sha256=b9abf0531c43272ed6f66032bf64c8c969dd07b5c27fc06b7e43411e39db2f15
+  aws-sdk-s3 (1.185.0) sha256=7e5ebb091b2a5dafe561786e0b7bfee7a2ae5959a02f302572a09e6b7178a5c7
   aws-sdk-sns (1.97.0) sha256=e0489eb11cc107496738c2b39628842df970f4534bdc81a2254d2b49f7d0b7f6
   aws-sigv4 (1.11.0) sha256=50a8796991a862324442036ad7a395920572b84bb6cd29b945e5e1800e8da1db
   axe-core-api (4.10.3) sha256=6e10f3ed1c031804f16e8154d9d5dc658564d10850cee860e125fe665c3f0148
@@ -1563,7 +1624,7 @@ CHECKSUMS
   commonmarker (2.3.0-x86_64-linux-musl) sha256=af895be1dfe723a1ae2671fd147d082e1be107be732b7a52e2e0d5daa1ae687a
   compare-xml (0.66) sha256=e21aa5c0f69ef1177eced997c688fd4df989084e74a1b612257af32e1dd05319
   concurrent-ruby (1.3.4) sha256=d4aa926339b0a86b5b5054a0a8c580163e6f5dcbdfd0f4bb916b1a2570731c32
-  connection_pool (2.5.1) sha256=ae802a90a4b5a081101b39d618e69921a9a50bea9ac3420a5b8c71f1befa3e9c
+  connection_pool (2.5.2) sha256=c121d090f8217911f960c7b628bf2bf1b1444f284fd854edc188821c4f602108
   cookiejar (0.3.4) sha256=11b16acfc4baf7a0f463c21a6212005e04e25f5554d4d9f24d97f3492dfda0df
   cose (1.3.1) sha256=d5d4dbcd6b035d513edc4e1ab9bc10e9ce13b4011c96e3d1b8fe5e6413fd6de5
   costs (1.0.0)
@@ -1676,7 +1737,7 @@ CHECKSUMS
   irb (1.15.2) sha256=222f32952e278da34b58ffe45e8634bf4afc2dc7aa9da23fed67e581aa50fdba
   iso8601 (0.13.0) sha256=298c2b15b7be5fa95a1372813d36a2257656cd8e906dfbc1f5cb409851425aa2
   jmespath (1.6.2) sha256=238d774a58723d6c090494c8879b5e9918c19485f7e840f2c1c7532cf84ebcb1
-  json (2.10.2) sha256=34e0eada93022b2a0a3345bb0b5efddb6e9ff5be7c48e409cfb54ff8a36a8b06
+  json (2.11.3) sha256=9a10f658a2de67c0eb837eb795dd48132ce797c403e52b5ebef87dcdc7f9ccc1
   json-jwt (1.16.7) sha256=ccabff4c6d1a14276b23178e8bebe513ef236399b72a0b886d7ed94800d172a5
   json-schema (4.3.1) sha256=d5e68dc32b94408d0b06ad04f9382ccbb6fe5a44910e066f8547f56c471a7825
   json_schemer (2.4.0) sha256=56cb6117bb5748d925b33ad3f415b513d41d25d0bbf57fe63c0a78ff05597c24
@@ -1685,7 +1746,7 @@ CHECKSUMS
   ladle (1.0.1) sha256=e8586964108c798d48bf57d2a65bd5602e8e5223a176b6602a0fb36c0bda90dc
   language_server-protocol (3.17.0.4) sha256=c484626478664fd13482d8180947c50a8590484b1258b99b7aedb3b69df89669
   launchy (3.1.1) sha256=72b847b5cc961589dde2c395af0108c86ff0119f42d4648d25b5440ebb10059e
-  lefthook (1.11.11) sha256=8603255f118484e049979cd1ad549c4f151108083437f03004aa538d18362f16
+  lefthook (1.11.12) sha256=7bcc883edeb03b01b109f802ed85c33f539b5d21fa64a838625f1ff2ff04edcf
   letter_opener (1.10.0) sha256=2ff33f2e3b5c3c26d1959be54b395c086ca6d44826e8bf41a14ff96fdf1bdbb2
   letter_opener_web (3.0.0) sha256=3f391efe0e8b9b24becfab5537dfb17a5cf5eb532038f947daab58cb4b749860
   lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
@@ -1716,7 +1777,7 @@ CHECKSUMS
   mutex_m (0.3.0) sha256=cfcb04ac16b69c4813777022fdceda24e9f798e48092a2b817eb4c0a782b0751
   my_page (1.0.0)
   net-http (0.6.0) sha256=9621b20c137898af9d890556848c93603716cab516dc2c89b01a38b894e259fb
-  net-imap (0.5.6) sha256=1ede8048ee688a14206060bf37a716d18cb6ea00855f6c9b15daee97ee51fbe5
+  net-imap (0.5.7) sha256=d5c0247832439b62298c0935ba67d8bc02fdb476d7a3e099d6f75b3daf498b91
   net-ldap (0.19.0) sha256=be2a379ccbd28fc75fb70a94af74e3a9a6866b84574247fc243e0abdd2f82f3d
   net-pop (0.1.2) sha256=848b4e982013c15b2f0382792268763b748cce91c9e91e36b0f27ed26420dff3
   net-protocol (0.2.2) sha256=aa73e0cba6a125369de9837b8d8ef82a61849360eba0521900e2c3713aa162a8
@@ -1754,15 +1815,15 @@ CHECKSUMS
   openproject-job_status (1.0.0)
   openproject-ldap_groups (1.0.0)
   openproject-meeting (1.0.0)
-  openproject-octicons (19.24.2) sha256=c4d63f4c16796c51e2a43cefae29e6042aa5cd418ea1bc11015add12e25c841e
-  openproject-octicons_helper (19.24.2) sha256=b7c8e7f4a22f60c8ac9ae70535e92a90121f28d58391aa21053bf751efc1c576
+  openproject-octicons (19.25.0) sha256=16fc221375e693f0e893b1c208286f2d7719ae4dfe080c5415642b221f51f550
+  openproject-octicons_helper (19.25.0) sha256=9b1778a67b0015ebe84ca0471f74e31004b985a8dcaaa443f7a2ac365b0a4e2d
   openproject-openid_connect (1.0.0)
-  openproject-primer_view_components (0.63.0) sha256=fa9d8b4e2ffc968d908c487c687f0eb380c7d02de50876aae92ba10ce42c0c57
+  openproject-primer_view_components (0.64.1) sha256=199c77097ffc7500b04a53f572ce4d09e9f70dc3130b5b121f6b99c938978255
   openproject-recaptcha (1.0.0)
   openproject-reporting (1.0.0)
   openproject-storages (1.0.0)
   openproject-team_planner (1.0.0)
-  openproject-token (5.2.1) sha256=4bd4b3228ceddafeddca057fe93088082f485c9b295af42ac28db6cf5f5a9bbb
+  openproject-token (5.4.0) sha256=0054e24adaaaa5d7e23cc09108d2c34f6a73c7687e300be23ffd970d509bde93
   openproject-two_factor_authentication (1.0.0)
   openproject-webhooks (1.0.0)
   openproject-xls_export (1.0.0)
@@ -1787,6 +1848,13 @@ CHECKSUMS
   prawn-table (0.2.2) sha256=336d46e39e003f77bf973337a958af6a68300b941c85cb22288872dc2b36addb
   prettyprint (0.2.0) sha256=2bc9e15581a94742064a3cc8b0fb9d45aae3d03a1baa6ef80922627a0766f193
   prism (1.4.0) sha256=dc0e3e00e93160213dc2a65519d9002a4a1e7b962db57d444cf1a71565bb703e
+  prometheus-client-mmap (1.2.9) sha256=20ff9ef443767bc45d338882fbc6a9a853cdae190ec68cfd9395a5ac44384004
+  prometheus-client-mmap (1.2.9-aarch64-linux-gnu) sha256=e2a52234bed534fbce8185b781f49e2a584808a3713fb77287fb3017ae4e8dad
+  prometheus-client-mmap (1.2.9-aarch64-linux-musl) sha256=4d09f7c011cba48ca119515988e1683c4a99fc4310fb33145817541043556f55
+  prometheus-client-mmap (1.2.9-arm64-darwin) sha256=2d5277fe916d76e92a2801685d02bb7da4c8d62ba32e9bb83eb1edc9ad8bb165
+  prometheus-client-mmap (1.2.9-x86_64-darwin) sha256=aab97474ccc96cc707af4be5b26f8d2fe89f4d67013ad996ae10f17712f527ff
+  prometheus-client-mmap (1.2.9-x86_64-linux-gnu) sha256=f17f2b069f73a976b421cf6730974d3addf196656b8437deca9c36845f658f9e
+  prometheus-client-mmap (1.2.9-x86_64-linux-musl) sha256=e2af29e954f40fda4c3acb5c3b9722dbfc724d8d67a28e01904233e558c4ce1d
   pry (0.15.2) sha256=12d54b8640d3fa29c9211dd4ffb08f3fd8bf7a4fd9b5a73ce5b59c8709385b6b
   pry-byebug (3.11.0) sha256=0b0abb7d309bc7f00044d512a3c8567274f7012b944b38becc8440439a1cea72
   pry-rails (0.3.11) sha256=a69e28e24a34d75d1f60bcf241192a54253f8f7ef8a62cba1e75750a9653593d
@@ -1838,7 +1906,7 @@ CHECKSUMS
   rinku (2.0.6) sha256=8b60670e3143f3db2b37efa262971ce3619ec23092045498ef9f077d82828d7d
   roar (1.2.0) sha256=8db4d1ca79c57a5fb746c16c0d5661d7c3e0de3d9553dc016a88d2dba2929d08
   rotp (6.3.0) sha256=75d40087e65ed0d8022c33055a6306c1c400d1c12261932533b5d6cbcd868854
-  rouge (4.5.1) sha256=2ac81c6dee7019bbc6600d4c2d641d730d65c165941400ebd924259067e690dd
+  rouge (4.5.2) sha256=034233fb8a69d0ad0e0476943184e04cb971b68e3c2239724e02f428878b68a3
   rspec (3.13.0) sha256=d490914ac1d5a5a64a0e1400c1d54ddd2a501324d703b8cfe83f458337bab993
   rspec-core (3.13.3) sha256=25136507f4f9cf2e8977a2851e64e438b4331646054e345998714108745cdfe4
   rspec-expectations (3.13.3) sha256=0e6b5af59b900147698ea0ff80456c4f2e69cac4394fbd392fbd1ca561f66c58
@@ -1847,7 +1915,7 @@ CHECKSUMS
   rspec-retry (0.6.2) sha256=6101ba23a38809811ae3484acde4ab481c54d846ac66d5037ccb40131a60d858
   rspec-support (3.13.2) sha256=cea3a2463fd9b84b9dcc9685efd80ea701aa8f7b3decb3b3ce795ed67737dbec
   rspec-wait (1.0.1) sha256=50ce9cc7cd20b8bb67b95a4ed56b59a16d4af7e86ae91b28dbf20eeaa2481d1f
-  rubocop (1.75.3) sha256=1860a1b571fe4a15dff79d6683642ebf3ea4b3f7ae7903743ab0885b4686a1d5
+  rubocop (1.75.4) sha256=e0656af44d0811bb40f6d0bd4ed6c8d80c0f05f3444f0e8f0839833dd46d18c6
   rubocop-ast (1.44.1) sha256=e3cc04203b2ef04f6d6cf5f85fe6d643f442b18cc3b23e3ada0ce5b6521b8e92
   rubocop-capybara (2.22.1) sha256=ced88caef23efea53f46e098ff352f8fc1068c649606ca75cb74650970f51c0c
   rubocop-factory_bot (2.27.1) sha256=9d744b5916778c1848e5fe6777cc69855bd96548853554ec239ba9961b8573fe
@@ -1857,6 +1925,7 @@ CHECKSUMS
   rubocop-rspec (3.6.0) sha256=c0e4205871776727e54dee9cc91af5fd74578001551ba40e1fe1a1ab4b404479
   rubocop-rspec_rails (2.31.0) sha256=775375e18a26a1184a812ef3054b79d218e85601b9ae897f38f8be24dddf1f45
   ruby-duration (3.2.3) sha256=eb3d13b1df85067a015a8fb2ed8f1eec842a3b721e47c9b6fd74d2f356069784
+  ruby-next-core (1.1.1) sha256=37886d41cf91072a0f14fa53b3e7e650adce1fe3b1227842bae32034dcce1d5f
   ruby-ole (1.2.13.1) sha256=578d10dd2a797a2b35a1286c6fb2c9525f67c24791346fc8015d39f0ffa3cb72
   ruby-prof (1.7.1) sha256=026393448cf92fd24a91739bf71ccd2bfe88fe8a1401ee8afc4948a16d62ea24
   ruby-progressbar (1.13.0) sha256=80fc9c47a9b640d6834e0dc7b3c94c9df37f08cb072b7761e4a71e22cff29b33
@@ -1869,11 +1938,11 @@ CHECKSUMS
   sanitize (7.0.0) sha256=269d1b9d7326e69307723af5643ec032ff86ad616e72a3b36d301ac75a273984
   secure_headers (7.1.0) sha256=6b1f9d5f9507af2948f4636452c41c09371927836396c2185438ffdf0a731124
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
-  selenium-devtools (0.135.0) sha256=3862ec1f3e940a030f492b3691d11af35544789f961fcd0633cb89e4ea4251ec
-  selenium-webdriver (4.31.0) sha256=ddb2d88eee23cddb5d6a9dadd909427a9e5163718338e11a91eef2fbead100e9
+  selenium-devtools (0.136.0) sha256=b197a93fb7f06217f53f63effae95282f54629aa8df56ef8863cea50efb30f7f
+  selenium-webdriver (4.32.0) sha256=20dbdf27b586beeac9e2791a22312b414d0a30192b6ce144779f7dfde8ae8afe
   semantic (1.6.1) sha256=3cdbb48f59198ebb782a3fdfb87b559e0822a311610db153bae22777a7d0c163
   shoulda-context (2.0.0) sha256=7adf45342cd800f507d2a053658cb1cce2884b616b26004d39684b912ea32c34
-  shoulda-matchers (6.4.0) sha256=9055bb7f4bb342125fb860809798855c630e05ef5e75837b3168b8e6ee1608b0
+  shoulda-matchers (6.5.0) sha256=ef6b572b2bed1ac4aba6ab2c5ff345a24b6d055a93a3d1c3bfc86d9d499e3f44
   signet (0.19.0) sha256=537f3939f57f141f691e6069a97ec40f34fadafc4c7e5ba94edb06cf4350dd31
   simpleidn (0.2.3) sha256=08ce96f03fa1605286be22651ba0fc9c0b2d6272c9b27a260bc88be05b0d2c29
   smart_properties (1.17.0) sha256=f9323f8122e932341756ddec8e0ac9ec6e238408a7661508be99439ca6d6384b
@@ -1932,6 +2001,11 @@ CHECKSUMS
   will_paginate (4.0.1) sha256=107b226ebe1d393d274575956a7c472e1eefdd97d8828e01b72d425d15a875b9
   with_advisory_lock (5.1.0) sha256=0692cd82013b271c59aa5e1f603b741ab94926dbce098990fbace5dd5412fed7
   xpath (3.2.0) sha256=6dfda79d91bb3b949b947ecc5919f042ef2f399b904013eb3ef6d20dd3a4082e
+  yabeda (0.13.1) sha256=3213025f22b7746602c8a4c41e2ed82d73a90bdc5489f6ef472142b06c1cf954
+  yabeda-activerecord (0.1.1) sha256=ae338213c264f20d8642e8bf47ac6058c49a6f7c8c00c892cd5765332914f45f
+  yabeda-prometheus-mmap (0.4.0) sha256=1a66120756d6f931f03a7784e08e79060d71681ff83a9f5287df2ff756e9e2c9
+  yabeda-puma-plugin (0.7.1) sha256=a41d72053b8eb5b9db92c59bfb4a95f1988bafd2fdc9f4f13836849af073b17b
+  yabeda-rails (0.9.0) sha256=6011bfa1e282456dbb4f0d6571267ad57108b54fab0de37ae3b70653fa9582da
   yard (0.9.37) sha256=a6e910399e78e613f80ba9add9ba7c394b1a935f083cccbef82903a3d2a26992
   zeitwerk (2.7.2) sha256=842e067cb11eb923d747249badfb5fcdc9652d6f20a1f06453317920fdcd4673
 

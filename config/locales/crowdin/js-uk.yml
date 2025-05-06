@@ -239,7 +239,7 @@ uk:
           status_waiting: "Лист надіслано - очікуємо підтвердження"
           test_ee: "Отримайте версію Enterprise на 14 днів безкоштовно"
           quick_overview: "Отримайте стислий огляд управління проєктами й командної роботи у версії OpenProject Enterprise."
-        upsale:
+        upsell:
           become_hero: "Стань героєм!"
           enterprise_info_html: "%{feature_title} – це доповнення версії Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
           upgrade_info: "Перейдіть на платний план, щоб активувати його та почати використовувати його у своїй команді."
@@ -254,7 +254,7 @@ uk:
             professional_support: "Професійна підтримка"
             professional_support_text: "Отримайте надійну, комплексну підтримку від досвідчених інженерів, які знають усе про запуск OpenProject у критично важливих для бізнесу середовищах."
           button_start_trial: "Розпочати безкоштовну пробну версію"
-          button_upgrade: "Оновити"
+          button_upgrade: "Перейти"
           button_contact_us: "Зв’яжіться з нами, щоб отримати демоверсію"
           button_book_now: "Забронювати зараз"
           confidence: >
@@ -355,13 +355,13 @@ uk:
       blocks:
         new_features:
           text_new_features: "Читайте про нові функції та оновлення продуктів."
-          learn_about: "Дізнатися більше про нові функції"
+          learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_5":
+          "16_0":
             standard:
               new_features_html: >
-                Цей випуск включає багато нових функцій і покращень. <br> <ul class="%{list_styling_class}"> <li>Фільтрування за нащадками (дочірніх і нижчого рівня) пакетів робіт.</li> <li>Покращені спеціальні можливості засобу вибору даних.</li> <li>Перегляд атрибута «% завершення» в підсумках таблиці пакета робіт.</li> <li>Додавання стовпця дочірніх елементів у таблиці пакетів робіт.</li> <li>Зручніше використання засобу вибору даних на екранах мобільних пристроїв.</li> <li>Експорт даних у форматі PDF відповідно до налаштувань макета форми.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
     ical_sharing_modal:
       title: "Підписатися на календар"
       inital_setup_error_message: "Під час отримання даних сталася помилка."
@@ -434,7 +434,6 @@ uk:
     label_filename: "Файл"
     label_filesize: "Розмір"
     label_general: "Загальні"
-    label_global_roles: "Глобальні ролі"
     label_greater_or_equal: ">="
     label_group: "Група"
     label_group_by: "Групувати за"
@@ -644,6 +643,7 @@ uk:
           with_current_filter: "Зараз у цьому поданні немає сповіщень"
         mark_all_read: "Позначити все як прочитане"
         mark_as_read: "Позначити як прочитане"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
         text_update_date_by: "%{date} за"
         total_count_warning: "Показано стільки останніх сповіщень: %{newest_count}. Ще %{more_count} не показано."
         empty_state:
@@ -835,9 +835,9 @@ uk:
       update_description: "Встановити або оновити опис цього відношення"
       toggle_description: "Переключити опис відносин"
       update_relation: "Натисніть, щоб змінити тип відносини"
-      add_follower: "Додати послідовника"
       show_relations: "Показати зв’язки"
       add_predecessor: "Додати попередника"
+      add_successor: "Add successor"
       remove: "Видалити зв'язок"
       save: "Зберегти відношення"
       abort: "Відмінити"
@@ -867,7 +867,7 @@ uk:
     tl_toolbar:
       zooms: "Рівень масштабування"
       outlines: "Рівень ієрархії"
-    upsale:
+    upsell:
       ee_only: "Доповнення версії Enterprise"
     wiki_formatting:
       strong: "Жирний"

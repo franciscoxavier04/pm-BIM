@@ -36,7 +36,7 @@ RSpec.describe WorkPackageRelationsController do
   shared_let(:work_package) { create(:work_package, project:) }
   shared_let(:related_work_package) { create(:work_package, project:) }
   shared_let(:unrelated_work_package) { create(:work_package, project:) }
-  shared_let(:relation) do
+  shared_let(:relation, refind: true) do
     create(:relation,
            from: work_package,
            to: related_work_package,
@@ -125,7 +125,7 @@ RSpec.describe WorkPackageRelationsController do
 
   describe "PATCH /work_packages/:work_package_id/relations/:id" do
     before do
-      relation.update!(description: "Old relation description")
+      relation.update_column(:description, "Old relation description")
       allow(WorkPackageRelationsTab::IndexComponent).to receive(:new).and_call_original
       allow(controller).to receive(:replace_via_turbo_stream).and_call_original
     end

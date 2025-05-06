@@ -98,12 +98,13 @@ Rails.application.reloader.to_prepare do
 
       map.permission :edit_project,
                      {
-                       "projects/settings/general": %i[show toggle_public toggle_public_dialog],
+                       "projects/settings/general": %i[show update toggle_public toggle_public_dialog],
                        "projects/settings/storage": %i[show],
                        "projects/settings/work_packages": %i[show],
-                       "projects/settings/work_packages/activities": %i[show update],
+                       "projects/settings/work_packages/internal_comments": %i[show update],
                        "projects/templated": %i[create destroy],
-                       "projects/identifier": %i[show update]
+                       "projects/identifier": %i[show update],
+                       "projects/status": %i[update destroy]
                      },
                      permissible_on: :project,
                      require: :member,
@@ -215,7 +216,7 @@ Rails.application.reloader.to_prepare do
       map.permission :edit_attribute_help_texts,
                      {
                        admin: %i[index],
-                       attribute_help_texts: %i[index new edit upsale create update destroy]
+                       attribute_help_texts: %i[index new edit upsell create update destroy]
                      },
                      permissible_on: :global,
                      require: :loggedin,
@@ -245,7 +246,7 @@ Rails.application.reloader.to_prepare do
                      {
                        versions: %i[index show status_by],
                        journals: %i[index],
-                       work_packages: %i[show index show_conflict_flash_message share_upsale],
+                       work_packages: %i[show index show_conflict_flash_message share_upsell],
                        work_packages_api: [:get],
                        "work_packages/reports": %i[report report_details],
                        "work_packages/activities_tab": %i[index update_streams update_sorting update_filter],
@@ -282,22 +283,23 @@ Rails.application.reloader.to_prepare do
                      contract_actions: { work_packages: %i[move] }
 
       wpt.permission :copy_work_packages,
-                     {},
+                     { "work_packages/moves": %i[new create] },
                      permissible_on: %i[work_package project],
                      require: :loggedin,
-                     dependencies: :view_work_packages
+                     dependencies: :view_work_packages,
+                     contract_actions: { work_packages: %i[copy] }
 
-      wpt.permission :add_work_package_notes,
+      wpt.permission :add_work_package_comments,
                      {
                        # FIXME: Although the endpoint is removed, the code checking whether a user
                        # is eligible to add work packages through the API still seems to rely on this.
                        journals: [:new],
-                       "work_packages/activities_tab": %i[create toggle_reaction sanitize_restricted_mentions]
+                       "work_packages/activities_tab": %i[create toggle_reaction sanitize_internal_mentions]
                      },
                      permissible_on: %i[work_package project],
                      dependencies: :view_work_packages
 
-      wpt.permission :edit_own_work_package_notes,
+      wpt.permission :edit_own_work_package_comments,
                      {
                        "work_packages/activities_tab": %i[edit cancel_edit update]
                      },
@@ -305,7 +307,7 @@ Rails.application.reloader.to_prepare do
                      require: :loggedin,
                      dependencies: :view_work_packages
 
-      wpt.permission :edit_work_package_notes,
+      wpt.permission :edit_work_package_comments,
                      {
                        "work_packages/activities_tab": %i[edit cancel_edit update]
                      },
@@ -313,33 +315,29 @@ Rails.application.reloader.to_prepare do
                      require: :loggedin,
                      dependencies: :view_work_packages
 
-      wpt.permission :view_comments_with_restricted_visibility,
+      wpt.permission :view_internal_comments,
                      {},
                      permissible_on: %i[project],
                      require: :loggedin,
-                     dependencies: :view_work_packages,
-                     visible: -> { OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? }
+                     dependencies: :view_work_packages
 
-      wpt.permission :add_comments_with_restricted_visibility,
+      wpt.permission :add_internal_comments,
                      {},
                      permissible_on: %i[project],
                      require: :loggedin,
-                     dependencies: %i[view_project view_comments_with_restricted_visibility],
-                     visible: -> { OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? }
+                     dependencies: %i[view_project view_internal_comments]
 
-      wpt.permission :edit_own_comments_with_restricted_visibility,
+      wpt.permission :edit_own_internal_comments,
                      {},
                      permissible_on: %i[project],
                      require: :loggedin,
-                     dependencies: %i[view_project view_comments_with_restricted_visibility],
-                     visible: -> { OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? }
+                     dependencies: %i[view_project view_internal_comments]
 
-      wpt.permission :edit_others_comments_with_restricted_visibility,
+      wpt.permission :edit_others_internal_comments,
                      {},
                      permissible_on: %i[project],
                      require: :loggedin,
-                     dependencies: %i[view_project view_comments_with_restricted_visibility],
-                     visible: -> { OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? }
+                     dependencies: %i[view_project view_internal_comments]
 
       # WP attachments can be added with :edit_work_packages, this permission allows it without Edit WP as well.
       wpt.permission :add_work_package_attachments,
@@ -381,7 +379,7 @@ Rails.application.reloader.to_prepare do
 
       wpt.permission :manage_subtasks,
                      {
-                       work_package_children_relations: %i[new create destroy]
+                       work_package_hierarchy_relations: %i[new create destroy]
                      },
                      permissible_on: :project,
                      dependencies: :view_work_packages

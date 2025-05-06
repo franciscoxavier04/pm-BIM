@@ -38,6 +38,13 @@ RSpec.describe Projects::SettingsController do
     end
 
     it do
+      expect(patch("/projects/123/settings/general"))
+        .to route_to(
+          controller: "projects/settings/general", action: "update", project_id: "123"
+        )
+    end
+
+    it do
       expect(get("/projects/123/settings/modules"))
         .to route_to(
           controller: "projects/settings/modules", action: "show", project_id: "123"
@@ -108,16 +115,16 @@ RSpec.describe Projects::SettingsController do
     end
 
     it do
-      expect(get("/projects/123/settings/work_packages/activities"))
+      expect(get("/projects/123/settings/work_packages/internal_comments"))
         .to route_to(
-          controller: "projects/settings/work_packages/activities", action: "show", project_id: "123"
+          controller: "projects/settings/work_packages/internal_comments", action: "show", project_id: "123"
         )
     end
 
     it do
-      expect(patch("/projects/123/settings/work_packages/activities"))
+      expect(patch("/projects/123/settings/work_packages/internal_comments"))
         .to route_to(
-          controller: "projects/settings/work_packages/activities", action: "update", project_id: "123"
+          controller: "projects/settings/work_packages/internal_comments", action: "update", project_id: "123"
         )
     end
   end

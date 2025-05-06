@@ -41,9 +41,14 @@ ms:
         changed: "berubah"
         created: "dicipta"
         commented: "mengulas"
-        restrict_visibility: Restrict visibility
-        restricted_journal: Restricted comments are visible to a limited group of members.
+        internal_comment: Internal comment
+        internal_journal: Internal comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
+        internal_comment_confirmation:
+          title: "Make this comment public?"
+          heading: "Make this comment public?"
+          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          confirm_button_text: "Jadikan umum"
   admin:
     plugins:
       no_results_title_text: Pada masa ini tiada sebarang plugin yang dipasang.
@@ -97,6 +102,8 @@ ms:
       explanation:
         text: "Tindakan individu pengguna (cth. mengemas kini pakej kerja dua kali) dikumpulkan ke dalam satu tindakan tunggal jika perbezaan umur mereka kurang daripada tempoh masa yang ditetapkan. Mereka akan dipaparkan sebagai tindakan tunggal dalam aplikasi. Ini juga akan menangguhkan pemberitahuan dengan jumlah masa yang sama, mengurangkan bilangan e-mel yang dihantar serta akan memberi kesan kepada penagguhan %{webhook_link}."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Paparkan sehingga
     is_active: kini dipaparkan
@@ -291,7 +298,7 @@ ms:
   global_search:
     placeholder: "Cari dalam %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "Semua"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
@@ -345,6 +352,12 @@ ms:
         heading: "Delete this project list?"
         text: "Tindakan ini tidak akan memadamkan sebarang projek yang terkandung di dalam senarai. Adakah anda pasti untuk memadamkan senarai projek ini?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status_description: Update status description
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -405,8 +418,10 @@ ms:
         no_results_title_text: Tiada ruang cakera terekod tambahan yang digunakan untuk projek ini.
       work_package_priorities:
         new_label: "New priority"
+    status:
+      button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       other: "Duration: %{count} working days"
   lists:
     create:
@@ -609,14 +624,17 @@ ms:
         automatically_generated_subjects:
           label: "Mata pelajaran yang dijana secara automatik"
           caption: "Tentukan corak menggunakan atribut dan teks yang dirujuk untuk menjana subjek pakej kerja secara automatik. Pengguna tidak akan dapat mengedit subjek secara manual."
-        pattern:
-          label: "Corak subjek"
-          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
-          headings:
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
             work_package: "Work package"
             parent: "Parent"
             project: "Project"
+        pattern:
+          label: "Corak subjek"
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Hasilkan PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -748,10 +766,12 @@ ms:
       follows_description: "Pakej kerja yang berkaitan semestinya perlu diselesaikan sebelum yang ini boleh dimulakan"
       label_child_singular: "anak"
       label_child_plural: "kanak-kanak"
-      new_child: "Create new child"
-      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child: "Cipta anak baru"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Menjadikan pakej kerja berkaitan sub-item pakej kerja semasa (ibu bapa)."
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "blok"
       label_blocks_plural: "blok"
@@ -946,8 +966,8 @@ ms:
         date_range: "Date range"
         definition: "Definition"
       project/phase_definition:
-        name: "Name"
-        color: "Color"
+        name: "Nama"
+        color: "Warna"
         start_gate: "Start phase gate"
         start_gate_name: "Start phase gate name"
         finish_gate: "Finish phase gate"
@@ -1072,7 +1092,7 @@ ms:
           title: "Hari bekerja"
           false: "hari bekerja sahaja"
           true: "termasuk hari tidak bekerja"
-        journal_restricted: Restricted Journal
+        journal_internal: Internal Journal
         notify: "Maklumkan" #used in custom actions
         parent: "Induk"
         parent_issue: "Induk"
@@ -1114,6 +1134,7 @@ ms:
         error_conflict: "Sementara itu, maklumat telah dikemas kini oleh sekurang-kurangnya salah satu pengguna lain."
         email: "adalah bukan alamat e-mel yang sah."
         empty: "tidak boleh kosong."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "perlu sama."
         exclusion: "sudah dikhaskan."
         feature_disabled: is not available.
@@ -1258,7 +1279,7 @@ ms:
             date_range:
               start_date_must_be_before_finish_date: "start date must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+              incomplete: "tidak lengkap."
         query:
           attributes:
             project:
@@ -1293,7 +1314,7 @@ ms:
             values:
               inclusion: "penyaring mempunyai nilai yang tidak sah."
               format: "%{message}"
-        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+        queries/principals/filters/internal_mentionable_on_work_package_filter:
           attributes:
             values:
               single_value_requirement: "must be a single work package"
@@ -1488,7 +1509,8 @@ ms:
       notification:
         other: "Pemberitahuan"
       placeholder_user: "Pengguna placeholder"
-      project: "Projek"
+      project:
+        other: "Projects"
       project_query:
         other: "Senarai projek"
       query: "Pertanyaan tersuai"
@@ -1540,14 +1562,14 @@ ms:
       changeset: "Set ubah suai"
       message: "Forum-forum"
       news: "Berita"
-      project_details: "Project details"
+      project_details: "Butiran projek"
       subproject: "Termasuk subprojek"
       time_entry: "Masa yang dihabiskan"
       wiki_edit: "Wiki"
       work_package: "Pakej kerja"
     project_phase:
-      activated: "activated"
-      deactivated: "deactivated"
+      activated: "diaktifkan"
+      deactivated: "dinyahaktifkan"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
       removed_date: "date deleted %{date}"
@@ -1619,6 +1641,8 @@ ms:
     priority: "Keutamaan"
     project: "Projek"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Sebab"
     responsible: "Bertanggungjawab"
     required: "Diperlukan"
@@ -1795,7 +1819,7 @@ ms:
       failed: 'Tidak dapat menyalin projek "%{source_project_name}" ke projek "%{target_project_name}".'
       succeeded: 'Menyalin projek "%{source_project_name}" ke "%{target_project_name}".'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "Halaman wiki"
   date:
     abbr_day_names:
       - "Aha"
@@ -1932,7 +1956,7 @@ ms:
       baseline_comparison: Baseline Comparisons
       board_view: Advanced Boards
       conditional_highlighting: Conditional Highlighting
-      comments_with_restricted_visibility: Comments With Restricted Visibility
+      internal_comments: Internal Comments
       custom_actions: Custom Actions
       custom_field_hierarchies: Custom fields of type hierarchy
       customize_life_cycle: Customize Life Cycle
@@ -1940,8 +1964,8 @@ ms:
       define_custom_style: Custom theme and logo
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
-      grid_widget_wp_graph: Grid Widget Work Package Graph
       ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
       project_list_sharing: Project List Sharing
@@ -1953,14 +1977,14 @@ ms:
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
-    upsale:
+    upsell:
       title: "Alat tambah perusahaan"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
-      plan_text_html: "Available only through the %{plan_name}."
+      plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
       baseline_comparison:
-        description: Highlight changes made to this list since any point in the past.
+        description: Sorotkan perubahan yang dibuat ke senarai ini pada bila-bila masa lalu.
       work_package_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -1972,7 +1996,7 @@ ms:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "Tambah kumpulan atribut baharu"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -1980,25 +2004,31 @@ ms:
       custom_field_hierarchies:
         description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
       date_alerts:
-        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+        description: "Dengan peringatan tarikh, anda akan dimaklumkan tentang tarikh mula dan akhir yang akan datang supaya anda tidak pernah terlepas atau lupa tarikh akhir yang penting."
       work_package_sharing:
-        description: "Share work packages with users who are not members of the project."
+        description: "Kongsi pakej kerja dengan pengguna yang bukan ahli projek."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "Perhatian: logo yang digunakan akan boleh diakses secara umum."
+        description: Ubah suai pemasangan OpenProject dengan logo dan warna anda sendiri.
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "Tindakan tersuai"
+        description: "Tindakan tersuai adalah pintasan satu klik ke satu set tindakan yang telah ditetapkan yang anda boleh sediakan untuk pakej kerja tertentu berdasarkan status, peranan, jenis atau projek."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
-        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
+        description: "Pastikan fail yang dimuat naik dalam OpenProject diimbas untuk virus sebelum boleh diakses oleh pengguna lain."
       placeholder_users:
-        title: Placeholder users
+        title: Pengguna placeholder
         description: >
-          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
-      comments_with_restricted_visibility:
-        title: "For your eyes only"
-        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+          Pengguna placeholder ialah satu cara untuk memperuntukkan pakej kerja kepada pengguna yang bukan sebahagian daripada projek anda. Ianya berguna dalam pelbagai senario; contohnya, jika anda perlu menjejaki tugas untuk sumber yang masih belum dinamakan atau disediakan, atau jika anda tidak ingin memberikan akses kepada seseorang di OpenProject, tetapi masih hendak menjejaki tugas yang telah diperuntukkan ke mereka.
+      internal_comments:
+        title: Internal comments
+        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "Aktiviti penjejakan masa"
   enumeration_work_package_priorities: "Keutamaan pakej kerja"
   enumeration_reported_project_statuses: "Status projek yang dilaporkan"
@@ -2225,7 +2255,7 @@ ms:
       users: "Pengguna berdaftar terbaru dalam contoh ini"
     blocks:
       community: "Komuniti OpenProject"
-      upsale:
+      upsell:
         title: "Naik taraf ke edisi Enterprise"
     links:
       upgrade_enterprise_edition: "Naik taraf ke edisi Enterprise"
@@ -2418,7 +2448,6 @@ ms:
   label_ldap_auth_source_plural: "Sambungan LDAP"
   label_attribute_expand_text: "Teks yang lengkap untuk '%{attribute}'"
   label_authentication: "Pengesahan"
-  label_authentication_settings: "Tetapan pengesahan"
   label_available_custom_fields_projects: "Projek medan tersuai tersedia"
   label_available_global_roles: "Peranan global yang tersedia"
   label_available_project_attributes: "Atribut projek yang tersedia"
@@ -2592,6 +2621,7 @@ ms:
   label_gantt_chart_plural: "Carta Gantt"
   label_general: "Umum"
   label_generate_key: "Jana kunci"
+  label_global_roles: "Global roles"
   label_git_path: "Laluan ke direktori .git"
   label_greater_or_equal: ">="
   label_group_by: "Kumpulkan mengikut"
@@ -2703,7 +2733,7 @@ ms:
   label_modules: "Modul"
   label_months_from: "bulan dari"
   label_more: "Lagi"
-  label_more_information: "More information"
+  label_more_information: "Maklumat lanjut"
   label_more_than_ago: "lebih dari beberapa hari yang lalu"
   label_move_column_left: "Alihkan lajur ke kiri"
   label_move_column_right: "Alihkan lajur ke kanan"
@@ -2821,9 +2851,6 @@ ms:
   label_register: "Cipta akaun baru"
   label_register_with_developer: "Daftar sebagai pembangun"
   label_registered_on: "Didaftar pada"
-  label_registration_activation_by_email: "Pengaktifan akaun melalui e-mel"
-  label_registration_automatic_activation: "Pengaktifan akaun secara automatik"
-  label_registration_manual_activation: "Pengaktifan akaun secara manual"
   label_related_work_packages: "Pakej kerja yang berkaitan"
   label_relates: "berkait dengan"
   label_relates_to: "berkait dengan"
@@ -3263,6 +3290,7 @@ ms:
   notice_successful_cancel: "Pembatalan yang berjaya."
   notice_successful_update: "Kemas kini berjaya."
   notice_unsuccessful_update: "Update failed."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Naik taraf berjaya. Jenis ruang tersuai yang aktif telah diaktifkan di borang pakej kerja secara automatik. <a href="%{url}" target="_blank">Lihat lebih lagi</a>.
   notice_to_many_principals_to_display: "Terlalu banyak hasil.\nSpesifikasikan pencarian dengan masukkan nama ahli baru (atau kumpulan)."
@@ -3299,13 +3327,13 @@ ms:
     text_getting_started_description: "Dapatkan gambaran ringkas pengurusan projek dan kolaborasi kumpulan dengan OpenProject. Anda boleh mula semula video ini di menu bantuan."
     welcome: "Selamat datang ke %{app_title}"
     select_language: "Sila pilih bahasa anda"
-  permission_add_work_package_notes: "Add comments"
+  permission_add_work_package_comments: "Add comments"
   permission_add_work_packages: "Tambah pakej kerja"
   permission_add_messages: "Pos mesej"
   permission_add_project: "Cipta projek"
   permission_add_work_package_attachments: "Tambah lampiran"
   permission_add_work_package_attachments_explanation: "Benarkan penambahan lampiran tanpa kebenaran Edit pakej kerja"
-  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
+  permission_add_internal_comments: "Write internal comments"
   permission_archive_project: "Arkib projek"
   permission_create_user: "Cipta pengguna"
   permission_manage_user: "Edit pengguna"
@@ -3330,16 +3358,16 @@ ms:
   permission_delete_timelines: "Padam garis masa"
   permission_delete_wiki_pages: "Padam halaman wiki"
   permission_delete_wiki_pages_attachments: "Padam lampiran"
-  permission_edit_work_package_notes: "Moderate comments"
-  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
+  permission_edit_work_package_comments: "Moderate comments"
+  permission_edit_work_package_comments_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Edit pakej kerja"
   permission_edit_messages: "Edit mesej"
-  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
-  permission_edit_own_work_package_notes: "Edit own comments"
+  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_work_package_comments: "Edit own comments"
   permission_edit_own_messages: "Edit mesej sendiri"
   permission_edit_own_time_entries: "Edit log masa sendiri"
-  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
+  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "Edit projek"
   permission_edit_project_attributes: "Edit atribut projek"
   permission_edit_project_phases: "Edit project phases"
@@ -3380,7 +3408,7 @@ ms:
   permission_manage_own_reminders: "Buat peringatan sendiri"
   permission_view_project: "Lihat projek"
   permission_view_changesets: "Lihat semakan repositori dalam OpenProject"
-  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
+  permission_view_internal_comments: "View internal comments"
   permission_view_commit_author_statistics: "Lihat statistik pengarang komit"
   permission_view_dashboards: "Lihat papan pemuka"
   permission_view_work_package_watchers: "Lihat senarai pemerhati"
@@ -3661,6 +3689,7 @@ ms:
   setting_hours_per_day_explanation: >-
     Ini mentakrifkan perkara yang dianggap sebagai "hari" apabila memaparkan tempoh dalam hari dan jam (contohnya, jika sehari ialah 8 jam, 32 jam ialah 4 hari).
   setting_invitation_expiration_days: "Pengaktifan e-mel tamat tempoh selepas"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Mod pengiraan kemajuan"
   setting_work_package_done_ratio_field: "Berasaskan kerja"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3676,6 +3705,9 @@ ms:
   setting_journal_aggregation_time_minutes: "Tindakan pengguna dikumpulkan dalam"
   setting_log_requesting_user: "Log masuk pengguna yang direkodkan, nama, dan alamat mel untuk semua permintaan"
   setting_login_required: "Pengesahan diperlukan"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Alamat e-mel pengeluaran"
   setting_mail_handler_api_key: "Kekunci API"
   setting_mail_handler_body_delimiters: "Memangkas e-mel selepas salah satu barisan ini"
@@ -3701,6 +3733,7 @@ ms:
   setting_project_gantt_query_text: "Anda boleh mengubah suai pertanyaan yang digunakan untuk memaparkan carta Gantt dari halaman gambaran keseluruhan projek."
   setting_security_badge_displayed: "Paparkan lambang sekuriti"
   setting_registration_footer: "Pengaki pendaftaran"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Jenis vendor repositori automatik"
   setting_repositories_encodings: "Pengekodan repositori"
   setting_repository_storage_cache_minutes: "Saiz cache cakera repositori"
@@ -3711,8 +3744,22 @@ ms:
   setting_repository_truncate_at: "Bilangan maksimum fail yang dipaparkan dalam pelayar repositori"
   setting_rest_api_enabled: "Benarkan perkhidmatan web REST"
   setting_self_registration: "Pendaftaran sendiri"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Masa tamat sesi selepas tidak aktif"
   setting_session_ttl_hint: "Nilai di bawah 5 berfungsi seperti dinyahaktifkan"
   setting_session_ttl_enabled: "Sesi tamat"
@@ -3740,6 +3787,8 @@ ms:
   setting_working_days: "Hari bekerja"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         Jika pilihan ini aktif, permintaan log masuk akan mengubah hala ke penyedia omniaut yang dikonfigurasikan. Halaman lungsur turun dan log masuk log masuk akan dilumpuhkan. <br/> <strong>Nota:</strong> Melainkan anda juga melumpuhkan log masuk kata laluan, dengan pilihan ini didayakan, pengguna masih boleh log masuk secara dalaman dengan melawati halaman log masuk <code>%{internal_path}</code>.
@@ -3810,7 +3859,7 @@ ms:
     project_phase_definitions:
       heading: "Project life cycle"
       heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_add: "Add"
+      label_add: "Tambah"
       label_add_description: "Add project phase definition"
       filter:
         label: "Search project phase"
@@ -3843,8 +3892,8 @@ ms:
     work_packages:
       not_allowed_text: "You do not have the necessary permissions to view this page."
       activities:
-        enable_comments_with_restricted_visibility: "Enable restricted visibility comments"
-        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_internal_comments: "Enable internal comments"
+        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Teks biasa"
@@ -4192,7 +4241,7 @@ ms:
         view_description: "Boleh lihat senarai projek ini."
         edit: "Edit"
         edit_description: "Boleh melihat, berkongsi dan mengedit senarai projek ini."
-      upsale:
+      upsell:
         message: "Berkongsi senarai projek dengan pengguna individu ialah alat tambah perusahaan."
   working_days:
     info: >

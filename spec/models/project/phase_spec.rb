@@ -38,7 +38,7 @@ RSpec.describe Project::Phase do
   describe "associations" do
     it { is_expected.to belong_to(:project).required }
     it { is_expected.to belong_to(:definition).required }
-    it { is_expected.to have_many(:work_packages) }
+    it { is_expected.to have_many(:work_packages).through(:definition) }
   end
 
   describe ".visible" do
@@ -84,6 +84,24 @@ RSpec.describe Project::Phase do
       expect(subject.start_date).to eq(Date.parse("2024-11-26"))
       expect(subject.finish_date).to eq(Date.parse("2024-11-26"))
     end
+
+    it "accepts a date range" do
+      subject.date_range = Date.parse("2024-12-26")..Date.parse("2024-12-27")
+      expect(subject.start_date).to eq(Date.parse("2024-12-26"))
+      expect(subject.finish_date).to eq(Date.parse("2024-12-27"))
+    end
+
+    it "errors on date range excluding end" do
+      expect do
+        subject.date_range = Date.parse("2024-12-26")...Date.parse("2024-12-27")
+      end.to raise_error(ArgumentError, "Only inclusive ranges expected")
+    end
+
+    it "accepts nil" do
+      subject.date_range = nil
+      expect(subject.start_date).to be_nil
+      expect(subject.finish_date).to be_nil
+    end
   end
 
   describe "#validate_date_range" do
@@ -107,42 +125,39 @@ RSpec.describe Project::Phase do
     end
   end
 
-  describe "#working_days_count" do
-    it "returns nil if not_set? is true" do
-      allow(Day).to receive(:working)
+  describe "duration calculation" do
+    shared_let(:week_days) { week_with_saturday_and_sunday_as_weekend }
 
-      subject.start_date = nil
-      subject.finish_date = nil
+    let(:date) { Time.zone.today }
 
-      expect(subject.working_days_count).to be_nil
-      expect(Day).not_to have_received(:working)
+    describe "#set_calculated_duration" do
+      it "sets duration to the number of working days in complete date range" do
+        subject.duration = 0
+        subject.date_range = date..date + 27
+
+        expect { subject.set_calculated_duration }.to change(subject, :duration).from(0).to(20)
+      end
+
+      it "sets duration to nil if date range is incomplete" do
+        subject.duration = 0
+        subject.start_date = nil
+
+        expect { subject.set_calculated_duration }.to change(subject, :duration).from(0).to(nil)
+      end
     end
 
-    it "returns the correct number of days if start_date and finish_date are the same" do
-      subject.start_date = Time.zone.today
-      subject.finish_date = Time.zone.today
-      expect(subject.working_days_count).to eq(1)
-    end
+    describe "#calculate_duration" do
+      it "returns number of working days in complete date range" do
+        subject.date_range = date..date + 27
 
-    it "returns the correct number of days for a valid date range" do
-      subject.start_date = Date.parse("2024-11-25")
-      subject.finish_date = Date.parse("2024-11-27")
-      expect(subject.working_days_count).to eq(3)
-    end
+        expect(subject.calculate_duration).to eq(20)
+      end
 
-    it "calls the Day.working.from_range method with the right arguments" do
-      subject.start_date = Date.parse("2024-11-25")
-      subject.finish_date = Date.parse("2024-11-27")
+      it "returns nil if date range is incomplete" do
+        subject.start_date = nil
 
-      allow(Day).to receive(:working).and_return(Day)
-      allow(Day).to receive(:from_range)
-                      .with(from: subject.start_date, to: subject.finish_date)
-                      .and_return([])
-
-      expect(subject.working_days_count).to eq(0)
-
-      expect(Day).to have_received(:working).with(no_args)
-      expect(Day).to have_received(:from_range).with(from: subject.start_date, to: subject.finish_date)
+        expect(subject.calculate_duration).to be_nil
+      end
     end
   end
 end

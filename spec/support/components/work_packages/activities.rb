@@ -91,6 +91,28 @@ module Components
         page.within_test_selector("op-wp-journal-entry-#{journal.id}", &)
       end
 
+      def expect_internal_comment_confirmation_dialog
+        page.within_test_selector("op-work-package-internal-comment-confirmation-dialog") do
+          expect(page).to have_text("Make this comment public?")
+          expect(page).to have_text("Your comment will be visible to anyone who can access this work package. " \
+                                    "Are you sure you want to do this?")
+
+          yield if block_given?
+        end
+      end
+
+      def expect_internal_comment_checked
+        page.within_test_selector("op-work-package-journal-form-element") do
+          expect(page).to have_checked_field("Internal comment")
+        end
+      end
+
+      def expect_internal_comment_unchecked
+        page.within_test_selector("op-work-package-journal-form-element") do
+          expect(page).to have_no_checked_field("Internal comment")
+        end
+      end
+
       def expect_journal_changed_attribute(text:)
         expect(page).to have_test_selector("op-journal-detail-description", text:, wait: 10)
       end
@@ -241,7 +263,7 @@ module Components
         page.find_test_selector("op-submit-work-package-journal-form").click
       end
 
-      def add_comment(text: nil, save: true, restricted: false)
+      def add_comment(text: nil, save: true, internal: false)
         if page.find_test_selector("op-open-work-package-journal-form-trigger")
           open_new_comment_editor
         else
@@ -251,7 +273,7 @@ module Components
         page.within_test_selector("op-work-package-journal-form-element") do
           get_editor_form_field_element.set_value(text)
 
-          check_restricted_visibility_comment_checkbox if restricted
+          check_internal_comment_checkbox if internal
 
           page.find_test_selector("op-submit-work-package-journal-form").click if save
         end
@@ -306,9 +328,19 @@ module Components
         expect(page).to have_test_selector("op-work-package-journal-form-element")
       end
 
-      def check_restricted_visibility_comment_checkbox
-        expect(page).to have_test_selector("op-work-package-journal-restricted-comment-checkbox")
-        page.check("Restrict visibility")
+      def check_internal_comment_checkbox
+        expect(page).to have_test_selector("op-work-package-journal-internal-comment-checkbox")
+        page.check("Internal comment")
+      end
+
+      def uncheck_internal_comment_checkbox
+        expect(page).to have_test_selector("op-work-package-journal-internal-comment-checkbox")
+        page.uncheck("Internal comment")
+      end
+
+      def uncheck_internal_comment_checkbox
+        expect(page).to have_test_selector("op-work-package-journal-internal-comment-checkbox")
+        page.uncheck("Internal comment")
       end
 
       def dismiss_comment_editor_with_esc
@@ -332,21 +364,23 @@ module Components
       end
 
       def filter_journals(filter, default_sorting: User.current.preference&.comments_sorting || "desc")
-        page.find_test_selector("op-wp-journals-filter-menu").click
+        retry_block do
+          page.find_test_selector("op-wp-journals-filter-menu").click
 
-        case filter
-        when :all
-          page.find_test_selector("op-wp-journals-filter-show-all").click
-        when :only_comments
-          page.find_test_selector("op-wp-journals-filter-show-only-comments").click
-        when :only_changes
-          page.find_test_selector("op-wp-journals-filter-show-only-changes").click
+          case filter
+          when :all
+            page.find_test_selector("op-wp-journals-filter-show-all").click
+          when :only_comments
+            page.find_test_selector("op-wp-journals-filter-show-only-comments").click
+          when :only_changes
+            page.find_test_selector("op-wp-journals-filter-show-only-changes").click
+          end
         end
 
         # Ensure the journals are reloaded
         wait_for { page }.to have_test_selector("op-wp-journals-#{filter}-#{default_sorting}")
-        # the wait_for will not work on it's own as the selector will be switched to the target filter before the page is updated
-        # so we still need to wait statically unfortuntately to avoid flakyness
+        # the wait_for will not work on its own as the selector will be switched to the target filter before the page is updated
+        # so we still need to wait statically unfortunately to avoid flakyness
         sleep 1
       end
 

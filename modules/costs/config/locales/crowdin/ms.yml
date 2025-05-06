@@ -50,14 +50,14 @@ ms:
         project: Projek
         user: Pengguna
         work_package: Pakej kerja
-        subject: Subject
+        subject: Subjek
         hours: Jam
         comments: Komen
         activity: Aktiviti
         spent_on: Tarikh
         start_time: Masa mula
         end_time: Finish time
-        time: Time
+        time: Masa
     models:
       time_entry:
         other: "Time entries"
@@ -89,6 +89,7 @@ ms:
   button_log_costs: "Log kos unit"
   button_log_time: "Log"
   button_add_activity: "Aktiviti"
+  button_add_time_entry: "Log time"
   caption_booked_on_project: "Ditempah pada projek"
   caption_default: "Default"
   caption_default_rate_history_for: "Sejarah kadar default untuk %{user}"
@@ -152,8 +153,10 @@ ms:
   label_no_time: "No time tracked"
   label_next_day: "Next day"
   label_next_week: "Minggu hadapan"
+  label_next_workweek: "Next work week"
   label_next_month: "Next month"
   label_previous_day: "Previous day"
+  label_previous_workweek: "Previous work week"
   label_previous_week: "Minggu sebelumnya"
   label_previous_month: "Previous month"
   label_specific_day: "Day %{day}"
@@ -161,8 +164,10 @@ ms:
   label_specific_month: "Month %{month}"
   label_list: "Senarai"
   label_month: "Month"
-  label_day: "Day"
-  label_today_capitalized: "Today"
+  label_workweek: "Work week"
+  label_day: "Hari"
+  label_today_capitalized: "Hari ini"
+  label_view_mode_switcher: "Change view"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Ada ralat berlaku. Sila cuba lagi."
   notice_successful_restore: "Pemulihan berjaya."
@@ -184,10 +189,10 @@ ms:
   permission_view_own_hourly_rate: "Lihat kadar jam sendiri"
   permission_view_own_time_entries: "Lihat masa yang digunakan sendiri"
   project_module_costs: "Masa dan kos"
-  setting_allow_tracking_start_and_end_times: "Benarkan pengguna menjejak masa mula dan tamat pada rekod masa"
+  setting_allow_tracking_start_and_end_times: "Allow exact times tracking"
   setting_costs_currency: "Mata wang"
   setting_costs_currency_format: "Format mata wang"
-  setting_enforce_tracking_start_and_end_times: "Paksa pengguna untuk menetapkan masa mula dan tamat pada rekod masa"
+  setting_enforce_tracking_start_and_end_times: "Require exact times"
   text_assign_time_and_cost_entries_to_project: "Tetapkan jam dan kos yang dilaporkan ke projek"
   text_destroy_cost_entries_question: "%{cost_entries} dilaporkan pada pakej kerja yang anda ingin padamkan. Apakah yang anda ingin lakukan ?"
   text_destroy_time_and_cost_entries: "Padam jam dan kos yang dilaporkan"
@@ -196,6 +201,7 @@ ms:
   text_warning_hidden_elements: "Beberapa entri mungkin telah dikecualikan daripada pengumpulan."
   week: "minggu"
   total_times:
+    workweek: "Workweek Total: %{hours}"
     week: "Week Total: %{hours}"
     month: "Month Total: %{hours}"
     day: "Day Total: %{hours}"
@@ -206,6 +212,6 @@ ms:
   ee:
     features:
       time_entry_time_restrictions: Require exact time tracking
-    upsale:
+    upsell:
       time_entry_time_restrictions:
         description: "Improve your time tracking by requiring exact start and finish times when logging time."

@@ -41,9 +41,14 @@ pl:
         changed: "zmieniono"
         created: "utworzono"
         commented: "skomentowano"
-        restrict_visibility: Ogranicz widoczność
-        restricted_journal: Ograniczone komentarze są widoczne dla ograniczonej grupy członków.
+        internal_comment: Internal comment
+        internal_journal: Internal comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: Masz niezapisane zmiany. Czy na pewno chcesz zamknąć edytor?
+        internal_comment_confirmation:
+          title: "Make this comment public?"
+          heading: "Make this comment public?"
+          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          confirm_button_text: "Ustaw jako publiczny"
   admin:
     plugins:
       no_results_title_text: Obecnie nie ma żadnych zainstalowanych wtyczek.
@@ -97,6 +102,8 @@ pl:
       explanation:
         text: "Indywidualne działania użytkownika (np. dwukrotna aktualizacja pakietu roboczego) są agregowane w jedno działanie, jeśli różnica czasowa między nimi jest mniejsza niż określony przedział czasowy. Będą one wyświetlane jako jedno działanie w aplikacji. Spowoduje to również opóźnienie powiadomień o tę samą ilość czasu, zmniejszając liczbę wysyłanych wiadomości e-mail i wpłynie też na opóźnienie %{webhook_link}."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Pokazuj do
     is_active: obecnie wyświetlane
@@ -289,7 +296,7 @@ pl:
   global_search:
     placeholder: "Wyszukaj w %{app_title}"
     overwritten_tabs:
-      all: "All"
+      all: "Wszystkie"
       messages: "Forum"
       wiki_pages: "Wiki"
   groups:
@@ -343,6 +350,12 @@ pl:
         heading: "Usunąć tę listę projektów?"
         text: "To działanie nie spowoduje usunięcia żadnego projektu znajdującego się na liście. Czy na pewno chcesz usunąć tę listę projektów?"
     settings:
+      header_details: Basic details
+      header_status: Project status
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status_description: Update status description
+      button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -403,12 +416,14 @@ pl:
         no_results_title_text: Nie ma dodatkowego zarejestrowanego miejsca na dysku zużytego przez ten projekt.
       work_package_priorities:
         new_label: "Nowy priorytet"
+    status:
+      button_edit: Edit project status
   project_phase:
-    working_days_count:
-      one: "Czas trwania: %{count} dzień roboczy"
-      few: "Czas trwania: %{count} dni robocze"
-      many: "Czas trwania: %{count} dni roboczych"
-      other: "Czas trwania: %{count} dnia roboczego"
+    duration:
+      one: "Duration: %{count} working day"
+      few: "Duration: %{count} working days"
+      many: "Duration: %{count} working days"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Zmodyfikowana lista została zapisana jako nowa lista"
@@ -632,14 +647,17 @@ pl:
         automatically_generated_subjects:
           label: "Automatycznie generowane tematy"
           caption: "Zdefiniuj wzorzec za pomocą wywoływanych atrybutów i tekstu, aby automatycznie generować tematy pakietów roboczych. Użytkownicy nie będą mogli ręcznie edytować tematów."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
         pattern:
           label: "Wzorzec tematu"
-          caption: "Dodaj tekst lub typ, aby wyszukać atrybut. Możesz dodać spacje, aby je rozdzielić."
-          headings:
-            work_package: "Pakiet roboczy"
-            parent: "Element nadrzędny"
-            project: "Projekt"
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "Nie znaleziono atrybutów. Dodaj jako tekst: „%{word}”"
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Wygeneruj PDF"
         intro: "Wybierz spośród dostępnych szablony, które chcesz włączyć dla tego typu. Szablon określa wygląd i atrybuty widoczne w wyeksportowanym pliku PDF pakietu roboczego używającego tego typu. Domyślnie wybrany jest pierwszy szablon z listy."
@@ -775,9 +793,11 @@ pl:
       label_child_singular: "element podrzędny"
       label_child_plural: "elementy podrzędne"
       new_child: "Utwórz nowy element podrzędny"
-      new_child_text: "Tworzy powiązany pakiet roboczy jako element podrzędny bieżącego (nadrzędnego) pakietu roboczego"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Element podrzędny"
       child_description: "Ustawia powiązany pakiet roboczy jako element podrzędny bieżącego (nadrzędnego) pakietu roboczego"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Najbliższy"
       label_blocks_singular: "blok"
       label_blocks_plural: "bloki"
@@ -1098,7 +1118,7 @@ pl:
           title: "Dni robocze"
           false: "tylko dni robocze"
           true: "włącz dni wolne od pracy"
-        journal_restricted: Dziennik z ograniczeniami
+        journal_internal: Internal Journal
         notify: "Powiadom" #used in custom actions
         parent: "Rodzic"
         parent_issue: "Rodzic"
@@ -1140,6 +1160,7 @@ pl:
         error_conflict: "Information has been updated by at least one other user in the meantime."
         email: "nie jest poprawnym adresem e-mail."
         empty: "nie może być puste."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "musi być takie samo."
         exclusion: "jest już zajęte."
         feature_disabled: jest niedostępny.
@@ -1319,7 +1340,7 @@ pl:
             values:
               inclusion: "filtr ma nieważne wartości."
               format: "%{message}"
-        queries/principals/filters/restricted_mentionable_on_work_package_filter:
+        queries/principals/filters/internal_mentionable_on_work_package_filter:
           attributes:
             values:
               single_value_requirement: "musi być pojedynczym pakietem roboczym"
@@ -1526,7 +1547,11 @@ pl:
         many: "Powiadomienia"
         other: "Powiadomień"
       placeholder_user: "Użytkownik zastępczy"
-      project: "Projekt"
+      project:
+        one: "Project"
+        few: "Projects"
+        many: "Projects"
+        other: "Projects"
       project_query:
         one: "Lista projektów"
         few: "Listy projektów"
@@ -1678,6 +1703,8 @@ pl:
     priority: "Priorytet"
     project: "Projekt"
     project_ids: "Identyfikatory projektów"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Powód"
     responsible: "Osoba odpowiedzialna"
     required: "Wymagane"
@@ -1854,7 +1881,7 @@ pl:
       failed: 'Nie można skopiować projektu "%{source_project_name}" do "%{target_project_name}".'
       succeeded: 'Skopiowano projekt "%{source_project_name}" do "%{target_project_name}".'
   create_wiki_page: "Create new wiki page"
-  create_wiki_page_button: "Wiki page"
+  create_wiki_page_button: "Strona wiki"
   date:
     abbr_day_names:
       - "Nie"
@@ -2047,38 +2074,38 @@ pl:
     features:
       baseline_comparison: Baseline Comparisons
       board_view: Advanced Boards
-      conditional_highlighting: Conditional Highlighting
-      comments_with_restricted_visibility: Comments With Restricted Visibility
-      custom_actions: Custom Actions
+      conditional_highlighting: Wyróżnianie warunkowe
+      internal_comments: Internal Comments
+      custom_actions: Działania niestandardowe
       custom_field_hierarchies: Custom fields of type hierarchy
-      customize_life_cycle: Customize Life Cycle
-      date_alerts: Date Alerts
+      customize_life_cycle: Dostosuj cykl życia
+      date_alerts: Alerty dotyczące dat
       define_custom_style: Custom theme and logo
-      edit_attribute_groups: Edit Attribute Groups
-      gantt_pdf_export: Gantt PDF Export
-      grid_widget_wp_graph: Grid Widget Work Package Graph
+      edit_attribute_groups: Edytuj grupy atrybutów
+      gantt_pdf_export: Eksport wykresu Gantta w formacie PDF
       ldap_groups: LDAP users and group sync
-      one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
-      placeholder_users: Placeholder Users
-      project_list_sharing: Project List Sharing
-      readonly_work_packages: Readonly Work Packages
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
+      one_drive_sharepoint_file_storage: Magazyn plików OneDrive/SharePoint
+      placeholder_users: Użytkownicy zastępczy
+      project_list_sharing: Udostępnianie listy projektów
+      readonly_work_packages: Pakiety robocze tylko do odczytu
       sso_auth_providers: Single sign-on
-      team_planner_view: Team Planner View
+      team_planner_view: Widok planisty zespołu
       two_factor_authentication: 2FA Authentication
       virus_scanning: Antivirus Scanning
-      work_package_query_relation_columns: Work Package Query Relation Columns
+      work_package_query_relation_columns: Kolumny relacji zapytań dotyczących pakietów roboczych
       work_package_sharing: Share work packages with external users
-      work_package_subject_generation: Work Package Subject Generation
-    upsale:
+      work_package_subject_generation: Generowanie tematu pakietu roboczego
+    upsell:
       title: "Dodatek wersji Enterprise"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
-      plan_text_html: "Available only through the %{plan_name}."
+      plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
       baseline_comparison:
-        description: Highlight changes made to this list since any point in the past.
+        description: Wyróżnij zmiany wprowadzone na tej liście od dowolnego momentu w przeszłości.
       work_package_subject_generation:
-        description: "Create automatically generated subjects using referenced attributes and text."
+        description: "Utwórz automatycznie generowane tematy za pomocą wywoływanych atrybutów i tekstu."
       customize_life_cycle:
         description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
       conditional_highlighting:
@@ -2088,7 +2115,7 @@ pl:
       edit_attribute_groups:
         description: "Customize form configuration with these additional add-ons:"
         features:
-          groups: "Add new attribute groups"
+          groups: "Dodaj nowe grupy atrybutów"
           rename: "Rename attribute groups"
           related: "Add a table of related work packages"
       readonly_work_packages:
@@ -2096,25 +2123,31 @@ pl:
       custom_field_hierarchies:
         description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
       date_alerts:
-        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+        description: "Dzięki alertom dotyczącym dat będziesz otrzymywać powiadomienia o zbliżających się terminach rozpoczęcia lub zakończenia pracy, dzięki czemu nigdy nie przegapisz ani nie zapomnisz ważnego terminu."
       work_package_sharing:
-        description: "Share work packages with users who are not members of the project."
+        description: "Udostępnij pakiety robocze użytkownikom, którzy nie są członkami projektu."
       define_custom_style:
         title: "Custom color theme and logo"
-        more_info: "Note: the used logo will be publicly accessible."
-        description: Customize your OpenProject installation with your own logo and colors.
+        more_info: "Uwaga: użyte logo będzie ogólnodostępne."
+        description: Dostosuj swoją instalację OpenProject do własnego logo i kolorów.
       custom_actions:
-        title: "Custom actions"
-        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+        title: "Działania niestandardowe"
+        description: "Akcje niestandardowe są skrótami do zestawu predefiniowanych akcji, które można udostępnić w określonych pakietach roboczych na podstawie statusu, roli, typu lub projektu."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
-        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
+        description: "Upewnij się, że przesłane do OpenProject pliki  są przeskanowane pod kątem wirusów, zanim będą dostępne dla innych użytkowników."
       placeholder_users:
-        title: Placeholder users
+        title: Użytkownicy zastępczy
         description: >
-          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
-      comments_with_restricted_visibility:
-        title: "For your eyes only"
-        description: "Restricted-visibilty comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+          Użytkownicy zastępczy to sposób na przypisanie pakietów pracy do użytkowników, którzy nie są częścią twojego projektu. Może to być przydatne w wielu scenariuszach; na przykład, jeśli potrzebujesz śledzić zadania dla zasobu, który nie jest jeszcze nazwany lub dostępny, lub jeśli nie chcesz dać tej osobie dostępu do OpenProject, ale nadal chcesz śledzić zadania przypisane do niej.
+      internal_comments:
+        title: Internal comments
+        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "Działania śledzenia czasu"
   enumeration_work_package_priorities: "Priorytety pakietów roboczych"
   enumeration_reported_project_statuses: "Status zgłoszonego projektu"
@@ -2341,7 +2374,7 @@ pl:
       users: "Nowi użytkownicy"
     blocks:
       community: "Społeczność OpenProject"
-      upsale:
+      upsell:
         title: "Aktualizuj do wersji Enterprise"
     links:
       upgrade_enterprise_edition: "Aktualizuj do wersji Enterprise"
@@ -2534,7 +2567,6 @@ pl:
   label_ldap_auth_source_plural: "Połączenia LDAP"
   label_attribute_expand_text: "Pełny tekst atrybutu „%{attribute}”"
   label_authentication: "Uwierzytelnianie"
-  label_authentication_settings: "Ustawienia uwierzytelniania"
   label_available_custom_fields_projects: "Dostępne niestandardowe projekty pól"
   label_available_global_roles: "Dostępne role globalne"
   label_available_project_attributes: "Dostępne atrybuty projektu"
@@ -2708,6 +2740,7 @@ pl:
   label_gantt_chart_plural: "Wykresy Gantta"
   label_general: "Ogólne"
   label_generate_key: "Generuj klucz"
+  label_global_roles: "Global roles"
   label_git_path: "Ścieżka do katalogu .git"
   label_greater_or_equal: "≥"
   label_group_by: "Grupuj według"
@@ -2819,7 +2852,7 @@ pl:
   label_modules: "Moduły"
   label_months_from: "miesięcy od"
   label_more: "Więcej"
-  label_more_information: "More information"
+  label_more_information: "Więcej informacji"
   label_more_than_ago: "Więcej niż dni temu"
   label_move_column_left: "Przenieś kolumnę w lewo"
   label_move_column_right: "Przenieś kolumnę w prawo"
@@ -2937,9 +2970,6 @@ pl:
   label_register: "Utwórz nowe konto"
   label_register_with_developer: "Zarejestruj się jako programista"
   label_registered_on: "Zarejestrowany na"
-  label_registration_activation_by_email: "aktywacja konta przez e-mail"
-  label_registration_automatic_activation: "automatyczna aktywacja konta"
-  label_registration_manual_activation: "ręczna aktywacja konta"
   label_related_work_packages: "Powiązanie pakiety robocze"
   label_relates: "Powiązane z"
   label_relates_to: "Powiązane z"
@@ -3381,6 +3411,7 @@ pl:
   notice_successful_cancel: "Anulowanie powiodło się."
   notice_successful_update: "Aktualizacja zakończona sukcesem."
   notice_unsuccessful_update: "Aktualizacja nie powiodła się."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Pomyślna aktualizacja. Pola własne aktywowanych typów są automatycznie włączane
     do formularza pakietu roboczego. <a href="%{url}" target="_blank">Zobacz więcej</a>.
@@ -3421,13 +3452,13 @@ pl:
     text_getting_started_description: "Uzyskaj szybki przegląd zarządzania projektem i współpracy zespołu w OpenProject. Możesz zrestartować ten film z menu pomocy."
     welcome: "Witamy w %{app_title}"
     select_language: "Wybierz język"
-  permission_add_work_package_notes: "Dodaj komentarze"
+  permission_add_work_package_comments: "Dodaj komentarze"
   permission_add_work_packages: "Dodawanie pakietów roboczych"
   permission_add_messages: "Wysyłanie wiadomości"
   permission_add_project: "Utwórz projekty"
   permission_add_work_package_attachments: "Dodaj Załączniki"
   permission_add_work_package_attachments_explanation: "Umożliwia dodawanie załączników bez uprawnienia Edycja pakietów roboczych."
-  permission_add_comments_with_restricted_visibility: "Napisz komentarze z ograniczoną widocznością"
+  permission_add_internal_comments: "Write internal comments"
   permission_archive_project: "Archiwizuj projekt"
   permission_create_user: "Utwórz użytkowników"
   permission_manage_user: "Edytuj użytkowników"
@@ -3452,16 +3483,16 @@ pl:
   permission_delete_timelines: "Usuwanie osi czasu"
   permission_delete_wiki_pages: "Usuwanie stron wiki"
   permission_delete_wiki_pages_attachments: "Usuwanie załączników"
-  permission_edit_work_package_notes: "Moderuj komentarze"
-  permission_edit_work_package_notes_explanation: "Przestroga: użytkownicy z tym uprawnieniem mogą edytować komentarze wszystkich innych osób."
+  permission_edit_work_package_comments: "Moderuj komentarze"
+  permission_edit_work_package_comments_explanation: "Przestroga: użytkownicy z tym uprawnieniem mogą edytować komentarze wszystkich innych osób."
   permission_edit_work_packages: "Edycja pakietów roboczych"
   permission_edit_messages: "Edycja wiadomości"
-  permission_edit_own_comments_with_restricted_visibility: "Edytuj własne komentarze z ograniczoną widocznością"
-  permission_edit_own_work_package_notes: "Edytuj własne komentarze"
+  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_work_package_comments: "Edytuj własne komentarze"
   permission_edit_own_messages: "Edycja własnych wiadomości"
   permission_edit_own_time_entries: "Edycja własnych wpisów dziennika"
-  permission_edit_others_comments_with_restricted_visibility: "Moderuj komentarze z ograniczoną widocznością"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "Przestroga: użytkownicy z tym uprawnieniem mogą edytować komentarze innych użytkowników z ograniczoną widocznością."
+  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "Edycja projektu"
   permission_edit_project_attributes: "Edytuj atrybuty projektu"
   permission_edit_project_phases: "Edytuj fazy projektu"
@@ -3502,7 +3533,7 @@ pl:
   permission_manage_own_reminders: "Tworzenie własnych przypomnień"
   permission_view_project: "Wyświetl projekty"
   permission_view_changesets: "Zobacz repozytorium poprawek OpenProject"
-  permission_view_comments_with_restricted_visibility: "Wyświetl komentarze z ograniczoną widocznością"
+  permission_view_internal_comments: "View internal comments"
   permission_view_commit_author_statistics: "Widok statystyk autorów"
   permission_view_dashboards: "Wyświetl pulpity nawigacyjne"
   permission_view_work_package_watchers: "Zobacz listę obserwatorów"
@@ -3781,6 +3812,7 @@ pl:
   setting_hours_per_day_explanation: >-
     To definiuje, co jest uważane za „dzień” podczas wyświetlania czasu trwania w dniach i godzinach (na przykład, jeśli dzień ma 8 godzin, 32 godziny będą 4 dniami).
   setting_invitation_expiration_days: "Ważność aktywacyjnej waidomości e-mail wygasa po"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Tryb obliczania postępów"
   setting_work_package_done_ratio_field: "Oparte na pracy"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3796,6 +3828,9 @@ pl:
   setting_journal_aggregation_time_minutes: "Działania użytkownika agregowane w ciągu"
   setting_log_requesting_user: "Rejestrowanie loginu, nazwy i adresu e-mail użytkownika dla wszystkich żądań"
   setting_login_required: "Wymagane uwierzytelnienie"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Adres emisji"
   setting_mail_handler_api_key: "Klucz API"
   setting_mail_handler_body_delimiters: "Obcinanie e-mail po jednej z tych linii"
@@ -3821,6 +3856,7 @@ pl:
   setting_project_gantt_query_text: "Możesz zmodyfikować zapytanie, które jest używane do wyświetlania wykresu Gantta na stronie przeglądu projektu."
   setting_security_badge_displayed: "Wyświetl plakietkę bezpieczeństwa"
   setting_registration_footer: "Rejestracja stopki"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Typ automatycznego producenta repozytorium"
   setting_repositories_encodings: "Kodowanie repozytorium"
   setting_repository_storage_cache_minutes: "Rozmiar pamięci podręcznej dysku repozytorium"
@@ -3831,8 +3867,22 @@ pl:
   setting_repository_truncate_at: "Maksymalna liczba plików wyświetlanych w przeglądarce repozytorium"
   setting_rest_api_enabled: "Włącz usługi sieci web REST"
   setting_self_registration: "Samodzielna rejestracja"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Czas wygaśnięcia sesji po bezczynności"
   setting_session_ttl_hint: "Value below 5 works like disabled"
   setting_session_ttl_enabled: "Sesja wygasła"
@@ -3860,6 +3910,8 @@ pl:
   setting_working_days: "Dni robocze"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Logowanie jednokrotne"
       omniauth_direct_login_hint_html: >
         Jeśli ta opcja jest aktywna, żądania logowania będą przekierowywane do skonfigurowanego dostawcy omniauth. Lista rozwijana logowania i strona logowania zostaną wyłączone. <br/> <strong>Uwaga:</strong> o ile nie wyłączono również logowania hasłem, przy włączonej tej opcji użytkownicy mogą nadal logować się wewnętrznie, odwiedzając stronę logowania <code>%{internal_path}</code>.
@@ -3963,8 +4015,8 @@ pl:
     work_packages:
       not_allowed_text: "Nie masz uprawnień niezbędnych do wyświetlenia tej strony."
       activities:
-        enable_comments_with_restricted_visibility: "Włącz komentarze o ograniczonej widoczności"
-        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_internal_comments: "Enable internal comments"
+        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Zwykły tekst"
@@ -4315,7 +4367,7 @@ pl:
         view_description: "Może wyświetlić tę listę projektów."
         edit: "Edycja"
         edit_description: "Może wyświetlać, udostępniać i edytować tę listę projektów."
-      upsale:
+      upsell:
         message: "Udostępnianie list projektów poszczególnym użytkownikom jest dodatkiem wersji Enterprise."
   working_days:
     info: >

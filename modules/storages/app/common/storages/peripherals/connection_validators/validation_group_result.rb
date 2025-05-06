@@ -34,7 +34,10 @@ module Storages
       class ValidationGroupResult
         delegate :[], :each_pair, to: :@results
 
-        def initialize
+        attr_reader :key
+
+        def initialize(key)
+          @key = key
           @results = {}
         end
 
@@ -68,6 +71,23 @@ module Storages
 
         def timestamp
           @results.values.filter_map(&:timestamp).max
+        end
+
+        def humanize_title = I18n.t("storages.health.checks.#{key}.header")
+
+        def humanize_summary
+          case tally
+          in { failure: 1.. }
+            I18n.t("storages.health.checks.failures", count: tally[:failure])
+          in { warning: 1.. }
+            I18n.t("storages.health.checks.warnings", count: tally[:warning])
+          else
+            I18n.t("storages.health.checks.failures", count: 0)
+          end
+        end
+
+        def to_h
+          @results.transform_values(&:to_h)
         end
       end
     end
