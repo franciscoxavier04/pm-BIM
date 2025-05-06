@@ -100,7 +100,7 @@ From time to time an Enterprise add-on is released for the free Community versio
 
 The work package graph widgets display information about the work packages within a project and can be shown in different views, such as bar graphs or pie charts.
 
-[Learn more about this feature in our user guide]([../../user-guide/project-overview/#work-package-graph-widgets-enterprise-add-on](../../user-guide/project-overview/#work-package-graph-widgets-enterprise-add-on).
+[Learn more about this feature in our user guide](../../user-guide/project-overview/#work-package-graph-widgets-enterprise-add-on).
 
 ![Different graphs displayed on a project overview page in OpenProject: Work package status in a pie chart, work packages progress in a graph with percentages, closed + open work packages sorted by type and number of assignees.](openproject-project-reports.png)
 
@@ -136,7 +136,7 @@ OpenProject 16.0 introduces a major improvement for customers of the Enterprise 
 
 Instead of mutually acting as OAuth servers and clients, both OpenProject and Nextcloud can now authenticate against a common Identity Provider (IDP). This allows OpenProject to reuse the user session to call Nextcloud APIs directly — improving the user experience and reducing complexity in daily workflows.
 
-Please see our documentation to learn how to set up this integration.
+Please see [our system admin guide](../../system-admin-guide/integrations/nextcloud/oidc-sso/) to learn how to set up this integration.
 
 <!--more-->
 
