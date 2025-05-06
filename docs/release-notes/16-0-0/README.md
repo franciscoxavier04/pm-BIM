@@ -10,7 +10,7 @@ release_date: 2025-05-01
 
 Release date: 2025-05-01
 
-We released OpenProject [OpenProject 16.0.0](https://community.openproject.org/versions/1412). This major release contains many features and bug fixes and we recommend updating to the newest version. In these Release Notes, we will give an overview of important updates, important feature changes and important technical updates. At the end, you will find a complete list of all changes and bug fixes for 16.0.
+We released OpenProject [OpenProject 16.0.0](https://community.openproject.org/versions/1412). This major release contains many features and bug fixes and we recommend updating to the newest version. In these Release Notes, we will give an overview of important updates, important feature changes and important technical updates. At the end, you will find a complete list of all changes and bug fixes for 16.0.0.
 
 ## Important updates
 
@@ -18,11 +18,11 @@ The Enterprise plans (Basic, Professional, Premium, and Corporate) have been upd
 
 Current Enterprise customers retain their existing plans with access to all Enterprise add-ons available at that time. No features are removed.
 
-From this version onward, new Enterprise add-ons may be included only in higher-tier plans. For example, the new Internal comments feature (more information below) is part of the Professional plan.
+From this version onward, new Enterprise add-ons may be included only in higher-tier plans. For example, the new [Internal comments feature](#internal-comments-in-work-packages-enterprise-add-on) is part of the Professional plan.
 
-Customers on lower Enterprise plans who want to try out new add-ons from higher plans can do so by [requesting a new Enterprise trial token (on-premises)](https://www.openproject.org/contact/) or by starting a new Cloud trial instance.
+Customers on lower Enterprise plans who want to try out new add-ons from higher plans can do so by [requesting a new Enterprise trial token (on-premises)](https://www.openproject.org/contact/) or by [starting a new Cloud trial instance](https://start.openproject.com/).
 
-More details are available in the updated [Enterprise guide](https://www.openproject.org/docs/enterprise-guide/).
+More details are available in our updated [Enterprise guide](https://www.openproject.org/docs/enterprise-guide/).
 
 ## Important feature changes
 
@@ -52,9 +52,15 @@ No data will get lost with the update, apart from the Meeting history of your cl
 
 Users of the Enterprise Professional version are now able to communicate internally in the work package Activity tab. To use this feature, a project admin has to enable internal comments. By default, these are only visible to the project admin role, but administrators can grant a new set of permissions to any number of roles.
 
-Users with these permissions then see an "Internal comment" checkbox when adding a new comment. If they check this box, the comment will only be visible to other people with these permissions. The different background color indicates that a comment is internal. 
+All users with these permissions then see an "Internal comment" checkbox when adding a new comment. If they check this box, the comment will only be visible to other people with these permissions. The different background color indicates that a comment is internal.
 
 ![OpenProject work package with open Activity tab, a comment from a user and a not yet submitted comment with confidential content where the checkmark for Internal comment is activated.](openproject-16-0-internal-comment.png)
+
+> [!TIP]
+> To check who is able to see your internal comment, type '@' and you will see a list of all users that have the permission to see internal comments. If a user is not in that list, you will not be able to @mention them.
+
+> [!NOTE]
+> Starting with 16.0, **files uploaded in the Activity tab will not be included in the Files tab**. Even though internal comments are the technical trigger for this change, it applies to both regular and internal comments.
 
 ## Automatically generated work package subjects (Enterprise add-on)
 
@@ -74,7 +80,9 @@ Each day shows the sum of the tracked time, and in the weekly and monthly views,
 
 ![OpenProject's My time tracking module in calendar view, showing a work week with different time entries.](openproject-16-0-my-time-tracking-calendar-view.png)
 
-Please note that this module has to be activated by an administrator first. Navigate to *administration → Time and costs → Defaults* and check the box next to 'Allow exact time tracking' to enable tracking start and finish dates. The calendar view is now the default view for the My time tracking module. If the checkmark for 'Require exact times' is set, users cannot log time without start and finish date. The list view is now the default view. In the calendar view, all entries are then displayed at the top of the respective day column.
+Please note that this module has to be activated by an administrator first. Navigate to *Administration → Time and costs → Defaults* and check the box next to 'Allow exact time tracking' to enable tracking start and finish dates. The calendar view is now the default view for the My time tracking module. If the checkmark for 'Require exact times' is set, users cannot log time without start and finish date. The list view is now the default view. In the calendar view, all entries are then displayed at the top of the respective day column.
+
+[Learn more about how to use the My time tracking module in this blog article](https://www.openproject.org/blog/time-tracking-module/).
 
 ### Time entries with legally required mandatory fields: start time and finish time
 
@@ -92,21 +100,21 @@ From time to time an Enterprise add-on is released for the free Community versio
 
 The work package graph widgets display information about the work packages within a project and can be shown in different views, such as bar graphs or pie charts.
 
-[Learn more about this feature in our user guide]([../../user-guide/project-overview/#work-package-graph-widgets-enterprise-add-on](https://www.openproject.org/docs/user-guide/project-overview/#work-package-graph-widgets-enterprise-add-on).
+[Learn more about this feature in our user guide]([../../user-guide/project-overview/#work-package-graph-widgets-enterprise-add-on](../../user-guide/project-overview/#work-package-graph-widgets-enterprise-add-on).
 
 ![Different graphs displayed on a project overview page in OpenProject: Work package status in a pie chart, work packages progress in a graph with percentages, closed + open work packages sorted by type and number of assignees.](openproject-project-reports.png)
 
 ## Parent relation displayed in work package relations tab
 
-text https://community.openproject.org/wp/38030
+As requested by our users, you can now add a parent work package relation by choosing it directly from the dropdown menu in the Relations tab. This is also still possible by clicking on **Set parent** on the top left corner of a work package. Both will make the related work package a parent of the current (child) work package.
 
-screenshot
+![Dropdown in work package Relations tab, showing highlighted Parent relation.](openproject-16-0-parent-relation.png)
 
 ## Save work package export configuration
 
-When exporting a single work package, users can now save their configuration settings, e.g. the file format or the display and order of the columns. This saves time and allows users to share the export settings with their team (e.g. for a defects and approval report).
+When exporting a (public or private) work package table, users can now save their configuration settings, e.g. a specific order and display of columns or long text fields. This saves time and allows users to share the export settings with their team (e.g. for a defects and approval report). Please note that this setting is not individual and will **change the default configuration for this specific format and type for everyone**.
 
-Screenshot
+![OpenProject work package table export modal with a highlighted checkbox to save settings.](openproject-16-0-save-export-settings-highlighted.png)
 
 ## Storage Health status: Multiple visible checks and download option (Enterprise add-on)
 
@@ -118,7 +126,7 @@ To make troubleshooting even easier, administrators can now also **download** th
 
 ## Option to select favorite project tab as default in project quick search
 
-small but helpful feature...
+When selecting the **Favorites** tab in the Projects dropdown, OpenProject now remembers this preference and shows it by default the next time the dropdown is opened. This personal setting remains active until the user switches back to **All**. It’s a small usability improvement that saves time for users who frequently work with favorite projects.
 
 ## Important technical changes
 
