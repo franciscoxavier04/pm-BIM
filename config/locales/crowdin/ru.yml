@@ -356,7 +356,7 @@ ru:
       header_status: Статус проекта
       header_relations: Отношения с проектом
       button_update_details: Обновить детали
-      button_update_status_description: Update status description
+      button_update_status_description: Обновить описание статуса
       button_update_parent_project: Обновить родительский проект
       public_warning: >
         Этот проект является общедоступным. Любой, у кого есть доступ к этому экземпляру, сможет просматривать этот проект и взаимодействовать с ним в зависимости от своей роли и соответствующих разрешений. Подпроекты не затрагиваются и имеют свои собственные настройки.
@@ -419,7 +419,7 @@ ru:
       work_package_priorities:
         new_label: "Новый приоритет"
     status:
-      button_edit: Edit project status
+      button_edit: Редактировать статус проекта
   project_phase:
     working_days_count:
       one: "Продолжительность: %{count} рабочий день"
@@ -656,9 +656,9 @@ ru:
             project: "Проект"
         pattern:
           label: "Шаблон темы"
-          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          caption_with_supported_attributes_link: Создавайте шаблоны, добавляя текст, или наберите "/" для поиска %{link}.
           insert_as_text: "Атрибуты не найдены. Добавить как текст: \"%{word}\""
-          supported_attributes_link: "supported attributes"
+          supported_attributes_link: "поддерживаемые атрибуты"
       export_configuration:
         tab: "Создать PDF"
         intro: "Выберите, какие шаблоны из имеющихся Вы хотите активировать для этого типа. Шаблон задаёт дизайн и атрибуты в экспортированном PDF-файле пакета работ этого типа. Первый шаблон из списка выбирается по умолчанию."
@@ -3409,7 +3409,7 @@ ru:
   notice_successful_cancel: "Отмена прошла успешно."
   notice_successful_update: "Обновление выполнено."
   notice_unsuccessful_update: "Ошибка обновления."
-  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
+  notice_unsuccessful_update_with_reason: "Не удалось обновить: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Успешное обновление. Пользовательские поля активированных типов автоматически активируются
     в форме пакета работ. <a href="%{url}" target="_blank">Подробнее</a>.
