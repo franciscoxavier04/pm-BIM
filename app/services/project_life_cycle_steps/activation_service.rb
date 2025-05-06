@@ -47,10 +47,8 @@ module ProjectLifeCycleSteps
 
       upsert(active:)
 
-      first_changed_phase = project.phases.find_by(definition_id: definitions.min_by(&:position)&.id)
-
-      if first_changed_phase
-        UpdateService.new(user:, model: first_changed_phase).call
+      if (first_phase = find_first_phase)
+        UpdateService.new(user:, model: first_phase).call
       else
         project.touch_and_save_journals
 
@@ -69,6 +67,13 @@ module ProjectLifeCycleSteps
         end,
         unique_by: %i[project_id definition_id]
       )
+    end
+
+    def find_first_phase
+      definition_id = definitions.min_by(&:position)&.id
+      return unless definition_id
+
+      project.phases.find_by(definition_id:)
     end
 
     def default_contract_class
