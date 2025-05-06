@@ -31,10 +31,9 @@
 module Settings
   module ProjectWorkPackages
     class HeaderComponent < ApplicationComponent
-      def initialize(project, selected:)
+      def initialize(project)
         super
         @project = project
-        @selected = selected
       end
 
       def breadcrumbs_items

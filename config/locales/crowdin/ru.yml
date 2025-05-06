@@ -102,6 +102,8 @@ ru:
       explanation:
         text: "Личные действия пользователя (например, обновление пакета работ дважды) агрегируются в одно действие, если их разница во времени не больше указанной. Они будут отображаться как одно действие внутри приложения. Это также задерживает уведомление на такое же количество времени, уменьшая количество отправляемых писем и также повлияет на %{webhook_link} задержки."
         link: "вебхук"
+  authentication:
+    login_and_registration: "Войти и зарегистрироваться"
   announcements:
     show_until: Показать до
     is_active: теперь отображается
@@ -354,7 +356,7 @@ ru:
       header_status: Статус проекта
       header_relations: Отношения с проектом
       button_update_details: Обновить детали
-      button_update_status: Обновить статус
+      button_update_status_description: Update status description
       button_update_parent_project: Обновить родительский проект
       public_warning: >
         Этот проект является общедоступным. Любой, у кого есть доступ к этому экземпляру, сможет просматривать этот проект и взаимодействовать с ним в зависимости от своей роли и соответствующих разрешений. Подпроекты не затрагиваются и имеют свои собственные настройки.
@@ -416,12 +418,14 @@ ru:
         no_results_title_text: Для этого проекта дополнительного дискового пространства не требуется.
       work_package_priorities:
         new_label: "Новый приоритет"
+    status:
+      button_edit: Edit project status
   project_phase:
-    working_days_count:
-      one: "Продолжительность: %{count} рабочий день"
-      few: "Продолжительность: %{count} рабочих дня"
-      many: "Продолжительность: %{count} рабочих дней"
-      other: "Продолжительность: %{count} рабочих дней"
+    duration:
+      one: "Duration: %{count} working day"
+      few: "Duration: %{count} working days"
+      many: "Duration: %{count} working days"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Измененный список был сохранен как новый"
@@ -644,13 +648,15 @@ ru:
         automatically_generated_subjects:
           label: "Автоматически созданные темы"
           caption: "Определите шаблон, используя атрибуты ссылок и текст, чтобы автоматически генерировать темы пакетов работ. Пользователи не смогут вручную редактировать темы."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Пакет работ"
+            parent: "Родитель"
+            project: "Проект"
         pattern:
           label: "Шаблон темы"
           caption: "Добавьте текст или введите / для поиска атрибута. Вы можете добавить пробелы, чтобы разделить их."
-          headings:
-            work_package: "Пакет работ"
-            parent: "Верхний уровень"
-            project: "Проект"
           insert_as_text: "Атрибуты не найдены. Добавить как текст: \"%{word}\""
       export_configuration:
         tab: "Создать PDF"
@@ -1154,6 +1160,7 @@ ru:
         error_conflict: "Информация была обновлена по крайней мере одним другим пользователем."
         email: "неверный адрес электронной почты."
         empty: "не может быть пустым."
+        enterprise_plan_required: "требует хотя бы %{plan_name}."
         even: "должно быть чётным."
         exclusion: "зарезервировано."
         feature_disabled: недоступно.
@@ -1541,10 +1548,10 @@ ru:
         other: "Уведомлений"
       placeholder_user: "Пользователь-заполнитель"
       project:
-        one: "Project"
-        few: "Projects"
-        many: "Projects"
-        other: "Projects"
+        one: "Проект"
+        few: "Проекты"
+        many: "Проекты"
+        other: "Проекты"
       project_query:
         one: "Список проектов"
         few: "Списки проектов"
@@ -2075,6 +2082,7 @@ ru:
       edit_attribute_groups: Редактировать группы атрибутов
       gantt_pdf_export: Экспорт диаграммы Ганта в PDF
       ldap_groups: Синхронизация пользователей LDAP и групп
+      nextcloud_sso: Единый вход для Nextcloud хранения
       one_drive_sharepoint_file_storage: Файловое хранилище OneDrive/SharePoint
       placeholder_users: Пользователи-заполнители
       project_list_sharing: Совместное использование списка проектов
@@ -2123,6 +2131,9 @@ ru:
       custom_actions:
         title: "Пользовательские действия"
         description: "Пользовательские действия являются ярлыками к набору заранее определенных действий, которые вы можете сделать доступными для определенных пакетов работ на основе статуса, роли, типа или проекта."
+      nextcloud_sso:
+        title: "Единый вход для Nextcloud хранения"
+        description: "Включите бесшовную и безопасную аутентификацию для вашего Nextcloud хранилища с помощью Single Sign-On. Упростите управление доступом и сделайте удобным для пользователя."
       virus_scanning:
         description: "Будьте уверены в том, что загруженные в OpenProject файлы проверены на наличие вирусов, прежде чем они станут доступны другим пользователям."
       placeholder_users:
@@ -2130,10 +2141,10 @@ ru:
         description: >
           Пользователи-заполнители — это способ назначить пакеты работ пользователям, которые не являются частью Вашего проекта. Они могут быть полезны в различных сценариях; например, если Вам нужно отслеживать задачи для ресурса, которые ещё не назван или недоступен, или если Вы не хотите дать доступ конкретному человеку доступ к OpenProject, но по-прежнему хотите отслеживать назначенные на него задачи.
       internal_comments:
-        title: Internal comments
+        title: Внутренние комментарии
         description: "Служебные комментарии позволяют команде общаться между собой. Эти комментарии видны только определённым ролям проекта и никогда не будут общедоступными."
       internal_comments_inline:
-        title: "Write internal comments only a small group can see"
+        title: "Напишите внутренние комментарии только небольшой группы"
         description: " "
   enumeration_activities: "Отслеживание времени"
   enumeration_work_package_priorities: "Приоритеты пакета работ"
@@ -2554,7 +2565,6 @@ ru:
   label_ldap_auth_source_plural: "Соединения LDAP"
   label_attribute_expand_text: "Полный текст для '%{attribute}'"
   label_authentication: "Аутентификация"
-  label_authentication_settings: "Параметры аутентификации"
   label_available_custom_fields_projects: "Доступные пользовательские поля проектов"
   label_available_global_roles: "Доступные глобальные роли"
   label_available_project_attributes: "Доступные атрибуты проекта"
@@ -2957,9 +2967,6 @@ ru:
   label_register: "Создайте новую учетную запись"
   label_register_with_developer: "Зарегистрируйтесь как разработчик"
   label_registered_on: "Зарегистрированы на"
-  label_registration_activation_by_email: "Активация учетной записи по электронной почте"
-  label_registration_automatic_activation: "Автоматическая активация учетной записи"
-  label_registration_manual_activation: "Ручная активация учетной записи"
   label_related_work_packages: "Связанные пакеты работ"
   label_relates: "Связан с"
   label_relates_to: "Связан с"
@@ -3401,6 +3408,7 @@ ru:
   notice_successful_cancel: "Отмена прошла успешно."
   notice_successful_update: "Обновление выполнено."
   notice_unsuccessful_update: "Ошибка обновления."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Успешное обновление. Пользовательские поля активированных типов автоматически активируются
     в форме пакета работ. <a href="%{url}" target="_blank">Подробнее</a>.
@@ -3801,6 +3809,7 @@ ru:
   setting_hours_per_day_explanation: >-
     Это определяет, что считается «днем» при более естественном отображении продолжительности (например, если день длится 8 часов, то 32 часа будет 4 дня).
   setting_invitation_expiration_days: "Действие письма активации истекает после"
+  setting_invitation_expiration_days_caption: "Количество дней, после которых срок действия письма активации истек."
   setting_work_package_done_ratio: "Режим расчета прогресса"
   setting_work_package_done_ratio_field: "На основе трудозатрат"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3816,6 +3825,9 @@ ru:
   setting_journal_aggregation_time_minutes: "Действия пользователя агрегированы в"
   setting_log_requesting_user: "Журналировать входное имя, имя и адрес электронной почты для всех запросов"
   setting_login_required: "Требуется аутентификация"
+  setting_login_required_caption: "Когда флажок установлен, все запросы к приложению должны быть аутентифицированы."
+  setting_lost_password: "Включить сброс пароля"
+  setting_lost_password_caption: "Если флажок установлен, разрешить пользователям сбросить свои пароли."
   setting_mail_from: "Адрес электронной почты выпуска"
   setting_mail_handler_api_key: "API-ключ"
   setting_mail_handler_body_delimiters: "Усечение сообщений после одной из этих линий"
@@ -3841,6 +3853,7 @@ ru:
   setting_project_gantt_query_text: "Вы можете изменить запрос, используемый для отображения графика Ганта на странице обзора проекта."
   setting_security_badge_displayed: "Отображать бейджик безопасности"
   setting_registration_footer: "Нижний колонтитул регистрации"
+  setting_registration_footer_caption: "Этот текст отображается в нижнем колонтитуле страницы регистрации. Используйте редактор HTML, чтобы отформатировать текст для каждого выбранного языка."
   setting_repositories_automatic_managed_vendor: "Автоматический тип поставщика репозитория"
   setting_repositories_encodings: "Кодировка репозиториев"
   setting_repository_storage_cache_minutes: "Размер кеша на диске репозитория"
@@ -3851,8 +3864,22 @@ ru:
   setting_repository_truncate_at: "Максимальное число файлов, отображаемых в браузере репозитория"
   setting_rest_api_enabled: "Включите веб-службы REST"
   setting_self_registration: "Самостоятельная регистрация"
+  setting_self_registration_caption: >
+    Выберите механизм саморегистрации для пользователей. Будьте осторожны с выбранной настройкой, так как некоторые опции позволяют пользователям активировать свои собственные учетные записи для этого экземпляра.
   setting_self_registration_warning: >
     Пользователь сможет активировать свои аккаунты. Пожалуйста, обратите внимание, что это даст им доступ ко всем публичным проектам и их контенту. Пожалуйста, убедитесь, что в публичных проектах нет никакой конфиденциальной или частной информации.
+  setting_self_registration_disabled: "Отключено"
+  setting_self_registration_disabled_caption: >
+    Ни один аккаунт не может быть зарегистрирован самостоятельно. Только администраторы и пользователи с глобальными правами на создание новых пользователей могут создавать новые учетные записи.
+  setting_self_registration_activation_by_email: "Активация учетной записи по электронной почте"
+  setting_self_registration_activation_by_email_caption: >
+    Пользователи могут самостоятельно регистрироваться и активировать свою учетную запись после подтверждения адреса электронной почты. Администраторы не имеют контроля над процессом активации.
+  setting_self_registration_automatic_activation: "Автоматическая активация учетных записей"
+  setting_self_registration_automatic_activation_caption: >
+    Пользователи могут самостоятельно регистрироваться. Их учетные записи активны без дальнейших действий. Администраторы не имеют контроля за процессом активации.
+  setting_self_registration_manual_activation: "Активация учётной записи вручную"
+  setting_self_registration_manual_activation_caption: >
+    Пользователи могут самостоятельно зарегистрироваться. Их учетные записи находятся в ожидании до тех пор, пока администратор или пользователь с общим разрешением на создание или управление пользователями не активирует их.
   setting_session_ttl: "Срок действия сеанса при неактивности"
   setting_session_ttl_hint: "При значении ниже 5-ти отключено"
   setting_session_ttl_enabled: "Сессия истекает"
@@ -3880,6 +3907,8 @@ ru:
   setting_working_days: "Рабочие дни"
   settings:
     authentication:
+      login_and_sso: "Логин и SSO"
+      registration: "Регистрация"
       single_sign_on: "Единый вход"
       omniauth_direct_login_hint_html: >
         Если эта опция включена, запросы на вход в систему будут перенаправлены на настроенный провайдер omniauth. Выпадающий список входа и страница входа будут отключены. <br/> <strong>Примечание:</strong> Если вы также не отключите вход по паролю, то пользователи все еще могут войти внутри системы, посетив страницу входа <code>%{internal_path}</code>.

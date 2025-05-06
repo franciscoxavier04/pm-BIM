@@ -102,6 +102,8 @@ uk:
       explanation:
         text: "Окремі дії користувача (напр., оновлення робочого пакета двічі) зводяться в одну дію, якщо відмінність у часі між ними менша за вказаний проміжок часу. Їх буде виведено як окремі дії в межах додатка. Крім того, це призведе до затримки сповіщень на такий самий проміжок часу, що зменшить кількість електронних листів, які надсилатимуться, а також вплине на затримку %{webhook_link}."
         link: "вебгука"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Показувати до
     is_active: наразі відображається
@@ -351,7 +353,7 @@ uk:
       header_status: Project status
       header_relations: Project relations
       button_update_details: Update details
-      button_update_status: Update status
+      button_update_status_description: Update status description
       button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
@@ -413,12 +415,14 @@ uk:
         no_results_title_text: Цей проєкт не потребує додаткового дискового простору.
       work_package_priorities:
         new_label: "Новий пріоритет"
+    status:
+      button_edit: Edit project status
   project_phase:
-    working_days_count:
-      one: "Тривалість: %{count} робочий день"
-      few: "Тривалість: %{count} робочі дні"
-      many: "Тривалість: %{count} робочих днів"
-      other: "Тривалість: %{count} робочого дня"
+    duration:
+      one: "Duration: %{count} working day"
+      few: "Duration: %{count} working days"
+      many: "Duration: %{count} working days"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Змінений список збережено як новий"
@@ -640,13 +644,15 @@ uk:
         automatically_generated_subjects:
           label: "Автоматично згенеровані теми"
           caption: "Визначте шаблон, використовуючи атрибути й текст, щоб теми пакетів робіт створювались автоматично. Користувачі не зможуть редагувати теми."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
         pattern:
           label: "Шаблон теми"
           caption: "Додайте текст або введіть / щоб виконати пошук атрибута. Як роздільник можна додавати пробіли."
-          headings:
-            work_package: "Пакет робіт"
-            parent: "Батьківський"
-            project: "Проєкт"
           insert_as_text: "Атрибутів не знайдено. Додайте як текст: «%{word}»"
       export_configuration:
         tab: "Згенерувати PDF"
@@ -1150,6 +1156,7 @@ uk:
         error_conflict: "Інформація була оновлена принаймні один інший користувач в той же час."
         email: "– це не дійсна електронна адреса."
         empty: "не може бути порожнім."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "має бути рівним."
         exclusion: "зарезервовано."
         feature_disabled: недоступна.
@@ -2071,6 +2078,7 @@ uk:
       edit_attribute_groups: Редагування груп атрибутів
       gantt_pdf_export: Експорт діаграми Ґантта в PDF
       ldap_groups: Синхронізація користувачів і груп LDAP
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: Файлове сховище OneDrive / SharePoint
       placeholder_users: Прототипи користувачів
       project_list_sharing: Спільне використання списку проєктів
@@ -2119,6 +2127,9 @@ uk:
       custom_actions:
         title: "Користувацькі дії"
         description: "Користувацькі дії – це ярлики набору попередньо визначених дій, які ви можете включати в певні пакети робіт залежно від статусу, ролі, типу або проєкту."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Переконайтеся, що вивантажені в OpenProject файли перевіряються на віруси перед тим, як стають доступними для інших користувачів."
       placeholder_users:
@@ -2550,7 +2561,6 @@ uk:
   label_ldap_auth_source_plural: "LDAP-підключення"
   label_attribute_expand_text: "Повний текст для атрибута «%{attribute}»"
   label_authentication: "Автентифікація"
-  label_authentication_settings: "Налаштування автентифікації"
   label_available_custom_fields_projects: "Доступні проєкти з користувацькими полями"
   label_available_global_roles: "Доступні глобальні ролі"
   label_available_project_attributes: "Доступні атрибути проєкту"
@@ -2953,9 +2963,6 @@ uk:
   label_register: "Створити новий акаунт"
   label_register_with_developer: "Зареєструйтеся як розробник"
   label_registered_on: "Зареєстровано на"
-  label_registration_activation_by_email: "активація облікового запису електронною поштою"
-  label_registration_automatic_activation: "автоматична активація облікового запису"
-  label_registration_manual_activation: "ручна активація облікового запису"
   label_related_work_packages: "Пов'язані робочі пакети"
   label_relates: "пов'язані з"
   label_relates_to: "пов'язані з"
@@ -3397,6 +3404,7 @@ uk:
   notice_successful_cancel: "Успішно видалено."
   notice_successful_update: "Успішно оновлено."
   notice_unsuccessful_update: "Не вдалось оновити."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Оновлення завершено. Користувацькі поля активованих типів автоматично активовано у формі пакета робіт. <a href="%{url}" target="_blank">Докладніше</a>.
   notice_to_many_principals_to_display: "Є занадто багато результатів.\nЗвузити пошук ввівши назву нового елемента (або групи)."
@@ -3798,6 +3806,7 @@ uk:
   setting_hours_per_day_explanation: >-
     Визначає, що вважати днем, якщо тривалість представлено в днях і годинах (наприклад, якщо день триває 8 годин, то 32 години – це 4 дні).
   setting_invitation_expiration_days: "Повідомлення про активацію закінчується"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Режим обчислення прогресу"
   setting_work_package_done_ratio_field: "На основі роботи"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3813,6 +3822,9 @@ uk:
   setting_journal_aggregation_time_minutes: "Дії користувача зведено протягом"
   setting_log_requesting_user: "Запишіть логін користувача, ім'я та поштову адресу для всіх запитів"
   setting_login_required: "Необхідна аутентифікація"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "email адреса для передачі інформації"
   setting_mail_handler_api_key: "Ключ API"
   setting_mail_handler_body_delimiters: "Усічення листи після однієї з цих ліній"
@@ -3838,6 +3850,7 @@ uk:
   setting_project_gantt_query_text: "Ви можете змінити запит, який слугує для показу діаграми Ґанта на сторінці огляду проєкту."
   setting_security_badge_displayed: "Показ значка безпеки"
   setting_registration_footer: "Реєстраційний колонтитул"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Тип автоматичного сховища"
   setting_repositories_encodings: "Кодування сховищ"
   setting_repository_storage_cache_minutes: "Кеш розміру диска в сховищі"
@@ -3848,8 +3861,22 @@ uk:
   setting_repository_truncate_at: "Максимальна кількість файлів, відображених у переглядачі сховища"
   setting_rest_api_enabled: "Увімкніть веб-службу REST"
   setting_self_registration: "Самостійна реєстрація"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Сесії час після закінчення неактивність"
   setting_session_ttl_hint: "Значення нижче 5 працює як відключено"
   setting_session_ttl_enabled: "Сеанс закінчився"
@@ -3877,6 +3904,8 @@ uk:
   setting_working_days: "Робочі дні"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         Якщо цей параметр увімкнено, запити на вхід переспрямовуватимуться налаштованому постачальнику omniauth. Спадний список і сторінку входу буде вимкнено. <br/> <strong>Примітка.</strong> Якщо цей параметр увімкнено й вхід за допомогою пароля дозволено, користувачі зможуть входити зі сторінки входу <code>%{internal_path}</code>.

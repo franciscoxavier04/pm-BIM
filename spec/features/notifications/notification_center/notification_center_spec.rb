@@ -152,6 +152,7 @@ RSpec.describe "Notification center",
         wait_for_network_idle
 
         center.expect_bell_count 0
+        center.expect_mark_all_as_read_button_disabled
         side_menu.expect_item_with_no_count "Inbox"
         side_menu.expect_item_with_no_count "Mentioned"
         side_menu.expect_item_with_no_count "Watcher"

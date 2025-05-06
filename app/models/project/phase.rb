@@ -54,15 +54,21 @@ class Project::Phase < ApplicationRecord
     end
   end
 
-  def working_days_count
-    return nil if not_set?
+  def date_range=(range)
+    case range
+    when String
+      self.start_date, self.finish_date = range.split(" - ")
+      self.finish_date ||= start_date # Allow single dates as range
+    when Range
+      fail ArgumentError, "Only inclusive ranges expected" if range.exclude_end?
 
-    Day.working.from_range(from: start_date, to: finish_date).count
-  end
-
-  def date_range=(param)
-    self.start_date, self.finish_date = param.split(" - ")
-    self.finish_date ||= start_date # Allow single dates as range
+      self.start_date = range.begin
+      self.finish_date = range.end
+    when nil
+      self.start_date = self.finish_date = nil
+    else
+      fail ArgumentError, "Expected String, Range or nil"
+    end
   end
 
   def range_set?
@@ -79,5 +85,15 @@ class Project::Phase < ApplicationRecord
 
   def validate_date_range
     errors.add(:date_range, :start_date_must_be_before_finish_date) if range_set? && (start_date > finish_date)
+  end
+
+  def set_calculated_duration
+    self.duration = calculate_duration
+  end
+
+  def calculate_duration
+    return nil unless range_set?
+
+    Day.working.from_range(from: start_date, to: finish_date).count
   end
 end

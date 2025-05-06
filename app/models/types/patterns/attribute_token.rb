@@ -30,28 +30,25 @@
 
 module Types
   module Patterns
-    Token = Data.define(:pattern, :key) do
-      private_class_method :new
-
-      def self.build(pattern)
-        new(pattern, pattern.tr("{}", "").to_sym)
+    AttributeToken = Data.define(:key, :label, :resolve_fn) do
+      def label_with_context
+        attribute_context = I18n.t("types.edit.subject_configuration.token.context.#{context}")
+        I18n.t("types.edit.subject_configuration.token.label_with_context", attribute_context:, attribute_label: label)
       end
 
-      def custom_field? = key.to_s.include?("custom_field")
-
-      def context_key
-        return key unless custom_field?
-
-        key.to_s.gsub("#{context}_", "").to_sym
+      def call(*)
+        resolve_fn.call(*)
       end
 
       def context
-        return :work_package unless custom_field?
-
-        context = key.to_s.gsub(/_?custom_field_\d+/, "")
-        return :work_package if context.blank?
-
-        context.to_sym
+        case key.to_s
+        when /^project_/
+          :project
+        when /^parent_/
+          :parent
+        else
+          :work_package
+        end
       end
     end
   end

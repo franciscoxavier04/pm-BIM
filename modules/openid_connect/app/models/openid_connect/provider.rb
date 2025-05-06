@@ -131,5 +131,9 @@ module OpenIDConnect
         super.presence || "openid_connect/auth_provider-custom.png"
       end
     end
+
+    def scopes
+      (scope || "").split
+    end
   end
 end

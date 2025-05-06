@@ -643,6 +643,7 @@ ru:
           with_current_filter: "На данный момент в этом представлении нет уведомлений"
         mark_all_read: "Отметить всё как прочитанное"
         mark_as_read: "Отметить как прочитанное"
+        mark_all_read_confirmation: "Это пометит все уведомления в этом виде как прочитанные. Вы уверены, что хотите это сделать?"
         text_update_date_by: "%{date}"
         total_count_warning: "Показаны %{newest_count} самые последние уведомления. Ещё %{more_count} не отображаются."
         empty_state:

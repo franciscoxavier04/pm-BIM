@@ -58,8 +58,9 @@ See COPYRIGHT and LICENSE files for more details.
         concat(
           render(
             Primer::Forms::FormList.new(
+              Projects::StatusButtonComponent.new(project:, user: current_user),
               Projects::Settings::StatusForm.new(f),
-              Projects::Settings::Submit.new(f, label: I18n.t("projects.settings.button_update_status"))
+              Projects::Settings::Submit.new(f, label: I18n.t("projects.settings.button_update_status_description"))
             )
           )
         )

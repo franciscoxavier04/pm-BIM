@@ -642,6 +642,7 @@
           with_current_filter: "Det er ingen varsler i denne visningen for øyeblikket"
         mark_all_read: "Merk alle som lest"
         mark_as_read: "Merk som lest"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
         text_update_date_by: "%{date} av"
         total_count_warning: "Viser de %{newest_count} nyeste varsler. %{more_count} flere er ikke vist."
         empty_state:

@@ -28,29 +28,25 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
-require "contracts/shared/model_contract_shared_context"
+module Types
+  module Patterns
+    PatternToken = Data.define(:pattern, :key) do
+      private_class_method :new
 
-RSpec.describe ProjectLifeCycleSteps::BaseContract do
-  include_context "ModelContract shared context"
+      def self.build(pattern)
+        new(pattern, pattern.tr("{}", "").to_sym)
+      end
 
-  let(:contract) { described_class.new(phase, user) }
-  let(:user) { build_stubbed(:user) }
-  let(:project) { build_stubbed(:project) }
-  let(:phase) { build_stubbed(:project_phase, project:) }
-
-  context "with authorized user" do
-    before do
-      mock_permissions_for(user) do |mock|
-        mock.allow_in_project(:edit_project_phases, project:)
+      def context
+        case key.to_s
+        when /^project_/
+          :project
+        when /^parent_/
+          :parent
+        else
+          :work_package
+        end
       end
     end
-
-    it_behaves_like "contract is valid"
-    include_examples "contract reuses the model errors"
-  end
-
-  context "with unauthorized user" do
-    it_behaves_like "contract user is unauthorized"
   end
 end
