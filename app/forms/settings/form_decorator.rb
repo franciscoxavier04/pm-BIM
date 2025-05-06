@@ -126,12 +126,14 @@ module Settings
         values.each do |value|
           args =
             if value.is_a?(Hash)
-              value.reverse_merge(
-                checked: setting_value(name) == value[:value],
-                autocomplete: "off",
-                label: setting_label(name, value[:name]),
-                caption: setting_caption(name, value[:name])
-              )
+              value
+                .except(:name) # Ensure to exclude name to not add another name input
+                .reverse_merge(
+                  checked: setting_value(name) == value[:value],
+                  autocomplete: "off",
+                  label: setting_label(name, value[:name]),
+                  caption: setting_caption(name, value[:name])
+                )
             else
               {
                 value:,
