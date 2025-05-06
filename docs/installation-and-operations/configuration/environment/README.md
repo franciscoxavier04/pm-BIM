@@ -11,14 +11,14 @@ sidebar_navigation:
 When using environment variables, you can set the options by setting environment variables with the name of the options below in uppercase. So for example, to configure email delivery via an SMTP server, you can set the following environment variables:
 
 ```shell
-EMAIL_DELIVERY_METHOD="smtp"
-SMTP_ADDRESS="smtp.example.net"
-SMTP_PORT="587"
-SMTP_DOMAIN="example.net"
-SMTP_AUTHENTICATION="plain"
-SMTP_USER_NAME="user"
-SMTP_PASSWORD="password"
-SMTP_ENABLE_STARTTLS_AUTO="true"
+OPENPROJECT_EMAIL__DELIVERY__METHOD="smtp"
+OPENPROJECT_SMTP__ADDRESS="smtp.example.net"
+OPENPROJECT_SMTP__PORT="587"
+OPENPROJECT_SMTP__DOMAIN="example.net"
+OPENPROJECT_SMTP__AUTHENTICATION="plain"
+OPENPROJECT_SMTP__USER__NAME="user"
+OPENPROJECT_SMTP__PASSWORD="password"
+OPENPROJECT_SMTP__ENABLE__STARTTLS__AUTO="true"
 ```
 
 In case you want to use environment variables, but you have no easy way to set them on a specific system, you can use the [dotenv](https://github.com/bkeepers/dotenv) gem. It automatically sets environment variables written to a .env file for a Rails application.
