@@ -91,7 +91,7 @@ module Meetings
     end
 
     def with_cover?
-      false# true
+      true
     end
 
     def cover_page_title
