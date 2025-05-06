@@ -31,7 +31,7 @@
 module ::TypesHelper
   # rubocop:disable Rails/HelperInstanceVariable
   def types_tabs
-    tabs = [
+    [
       {
         name: "settings",
         path: edit_tab_type_path(id: @type.id, tab: :settings),
@@ -43,6 +43,13 @@ module ::TypesHelper
         partial: "types/form/form_configuration",
         path: edit_tab_type_path(id: @type.id, tab: :form_configuration),
         label: "types.edit.form_configuration.tab"
+      },
+      {
+        name: "subject_configuration",
+        path: edit_tab_type_path(id: @type.id, tab: :subject_configuration),
+        label: "types.edit.subject_configuration.tab",
+        view_component: WorkPackages::Types::SubjectConfigurationComponent,
+        enterprise_feature: :work_package_subject_generation
       },
       {
         name: "projects",
@@ -57,20 +64,6 @@ module ::TypesHelper
         view_component: WorkPackages::Types::ExportConfigurationComponent
       }
     ]
-
-    if OpenProject::FeatureDecisions.generate_work_package_subjects_active?
-      subject_configuration_tab = {
-        name: "subject_configuration",
-        path: edit_tab_type_path(id: @type.id, tab: :subject_configuration),
-        label: "types.edit.subject_configuration.tab",
-        view_component: WorkPackages::Types::SubjectConfigurationComponent,
-        enterprise_feature: :work_package_subject_generation
-      }
-
-      tabs.insert(2, subject_configuration_tab)
-    end
-
-    tabs
   end
 
   # rubocop:enable Rails/HelperInstanceVariable
