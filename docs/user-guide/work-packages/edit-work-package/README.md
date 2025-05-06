@@ -11,6 +11,7 @@ keywords: edit work packages
 | Feature                                                      | Documentation for                                            |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Update a work package](#update-a-work-package)              | How to make a change to an existing work package.            |
+| [Add an internal comment (Enterprise add-on)](#internal-comments-enterprise-add-on) | How to leave work package comments with limited visibility.  |
 | [Update a work package in a table view](#update-a-work-package-in-a-work-package-table-view) | How to use the quick context menu in the work package table view. |
 | [Attach files to work packages](#attach-files-to-work-packages) | How to manually attach files to work packages.               |
 | [Set work package reminders](#work-package-reminders)        | How to set a reminder for a work package.                    |
@@ -96,9 +97,9 @@ You can copy a direct link to a specific work package comment in OpenProject. To
 
 ### Internal comments (Enterprise add-on)
 > [!NOTE]
-> Internal comments are an Enterprise add-on and can only be used with Enterprise cloud or Enterprise on-premises. An upgrade from the free Community edition is easily possible.
+> Internal comments are an Enterprise add-on and can only be used with [Enterprise cloud](../../../enterprise-guide/enterprise-cloud-guide/) or [Enterprise on-premises](../../../enterprise-guide/enterprise-on-premises-guide/). An upgrade from the free Community edition is easily possible.
 
-UPDATE TEXT
+It is possible to leave comments that are only visible to a certain group of people. These are referred to as internal comments. 
 
 ### @ notification (mention)
 

@@ -54,6 +54,11 @@ You can:
 - You can edit the comment if you are the author  
 - You can quote someone else's comment in a new comment. This is useful if you want to respond to a certain part of a comment.
 
+### Internal comments (Enterprise add-on)
+
+> [!NOTE]
+> Internal comments are an Enterprise add-on and can only be used with Enterprise cloud or Enterprise on-premises. An upgrade from the free Community edition is easily possible.
+
 ### Emoji reactions
 
 Starting with version 15.0, you can respond to comments with emoji reactions to quickly communicate basic messages without having to add a comment.
