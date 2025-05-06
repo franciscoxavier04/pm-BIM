@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eox pipefail
+set -euxo pipefail
 
 apt-get update -qq
 
@@ -31,9 +31,11 @@ done
 
 # remove any existing cluster
 service postgresql stop
-for version in $PG_VERSIONS ; do
+for version in $PGVERSION_CHOICES ; do
 	rm -rf /var/lib/postgresql/{$version}
 done
+
+echo "PGBIN: $PGBIN"
 
 # create schema_cache.yml and db/structure.sql
 su - postgres -c "$PGBIN/initdb -D /tmp/nulldb -E UTF8"

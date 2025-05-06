@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euxo pipefail
 
 get_architecture() {
 	if command -v uname > /dev/null; then
