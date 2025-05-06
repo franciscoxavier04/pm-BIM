@@ -83,21 +83,13 @@ module TimeEntries
     def start_time_in_local_time
       return if model.start_timestamp.blank?
 
-      if model.user == User.current
-        model.start_timestamp.in_time_zone(User.current.time_zone)
-      else
-        model.start_timestamp
-      end.strftime("%H:%M")
+      model.start_timestamp.in_time_zone(model.user.time_zone).strftime("%H:%M")
     end
 
     def end_time_in_local_time
       return if model.end_timestamp.blank?
 
-      if model.user == User.current
-        model.end_timestamp.in_time_zone(User.current.time_zone)
-      else
-        model.end_timestamp
-      end.strftime("%H:%M")
+      model.end_timestamp.in_time_zone(model.user.time_zone).strftime("%H:%M")
     end
 
     def show_start_and_end_time_fields?
