@@ -129,11 +129,13 @@ module WorkPackage::PDFExport::Common::Common
   end
 
   def draw_horizontal_line(top, left, right, height, color)
-    pdf.stroke do
+    previous_color = pdf.stroke_color
+    @pdf.stroke do
       pdf.stroke_color = color
       pdf.line_width = height
       pdf.horizontal_line left, right, at: top
     end
+    pdf.stroke_color = previous_color
   end
 
   def draw_styled_text(text, opts)
