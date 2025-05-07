@@ -30,21 +30,17 @@ require "mini_magick"
 
 module WorkPackage::PDFExport::Common::Attachments
   def resize_image(file_path)
-    tmp_file = Tempfile.new(["temp_image", File.extname(file_path)])
-    @resized_images = [] if @resized_images.nil?
-
-    @resized_images << tmp_file
-    resized_file_path = tmp_file.path
+    tmp_file = temp_image_file( File.extname(file_path))
 
     image = MiniMagick::Image.open(file_path)
     image.resize("x800>")
-    image.write(resized_file_path)
+    image.write(tmp_file)
 
-    resized_file_path
+    tmp_file
   end
 
   def pdf_embeddable?(content_type)
-    %w[image/jpeg image/png].include?(content_type)
+    %w[image/jpeg image/png image/gif].include?(content_type)
   end
 
   def delete_all_resized_images
@@ -67,7 +63,25 @@ module WorkPackage::PDFExport::Common::Attachments
     local_file = attachment_image_local_file(attachment)
     return nil if local_file.nil?
 
-    resize_image(local_file.path)
+    filename = local_file.path
+    filename = convert_gif_to_png(filename) if attachment.content_type == "image/gif"
+
+    resize_image(filename)
+  end
+
+  def temp_image_file(extension)
+    tmp_file = Tempfile.new(["temp_image", extension])
+    @resized_images = [] if @resized_images.nil?
+    @resized_images << tmp_file
+    tmp_file.path
+  end
+
+  def convert_gif_to_png(filename)
+    tmp_file = temp_image_file(".png")
+
+    image = MiniMagick::Image.open(filename)
+    image.frames.first.write(tmp_file)
+    tmp_file
   end
 
   def attachment_by_api_content_src(src)
