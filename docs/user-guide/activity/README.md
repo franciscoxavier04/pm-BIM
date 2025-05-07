@@ -66,7 +66,7 @@ You can add work packages with restricited visibility to better manage informati
 > [!TIP]
 > In order for internal comments feature to be used, correct permissions need to be granted to specific roles. We recommend creating a dedicated role. When a permission is removed, internal comments will no longer be visible. 
 > 
-> In addition, internal comments need to be activated under [project settings](../projects/project-settings/work-packages/#work-package-internal-comments-enterprise-add-on/). 
+> In addition, internal comments need to be activated under [project settings](../projects/project-settings/work-packages/#work-package-internal-comments-enterprise-add-on). 
 
 To add internal comments, proceed the same way you would when adding a regular comment, but make sure to check **Internal comment** checkbox before submitting.
 
