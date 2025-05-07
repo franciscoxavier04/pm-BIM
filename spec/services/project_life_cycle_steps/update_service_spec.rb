@@ -95,22 +95,23 @@ RSpec.describe ProjectLifeCycleSteps::UpdateService, type: :model do
 
   describe "#reschedule_following_phases" do
     let(:date) { Date.new(2025, 4, 9) }
-    let(:user) { build_stubbed(:user) }
+    let(:user) { create(:user) }
     let(:service) { described_class.new(user:, model: phase) }
     let(:project) { create(:project) }
+
+    current_user { user }
 
     before do
       mock_permissions_for(user) do |mock|
         mock.allow_in_project(:edit_project_phases, project:)
       end
 
-      allow(project).to receive(:available_phases).and_return(phases)
+      allow(Project).to receive(:allowed_to).with(user, :view_project_phases).and_return(Project.all)
     end
 
     context "for invalid date range" do
-      let(:phases) { [phase, following] }
-      let(:phase) { create(:project_phase, project:, date_range: date..date) }
-      let(:following) { build(:project_phase, project:, date_range: date - 10..date - 10, duration: 3) }
+      let!(:phase) { create(:project_phase, project:, date_range: date..date) }
+      let!(:following) { create(:project_phase, project:, date_range: date - 10..date - 10, duration: 3) }
 
       it "doesn't get rescheduled" do
         expect do
@@ -120,9 +121,8 @@ RSpec.describe ProjectLifeCycleSteps::UpdateService, type: :model do
     end
 
     context "for preceding phase" do
-      let(:phases) { [preceding, phase] }
-      let(:phase) { create(:project_phase, project:, date_range: date..date) }
-      let(:preceding) { create(:project_phase, project:, date_range: date - 7..date - 7, duration: 1) }
+      let!(:preceding) { create(:project_phase, project:, date_range: date - 7..date - 7, duration: 1) }
+      let!(:phase) { create(:project_phase, project:, date_range: date..date) }
 
       it "doesn't get rescheduled" do
         expect do
@@ -132,11 +132,10 @@ RSpec.describe ProjectLifeCycleSteps::UpdateService, type: :model do
     end
 
     context "for following phases" do
-      let(:phases) { [phase, following1, following2, following3] }
-      let(:phase) { create(:project_phase, project:, date_range: date..date) }
-      let(:following1) { create(:project_phase, project:, date_range: date + 6..date + 8, duration: 3) }
-      let(:following2) { create(:project_phase, project:, date_range: date + 6..date + 8, duration: 2) }
-      let(:following3) { create(:project_phase, project:, date_range: date + 6..date + 8, duration: 1) }
+      let!(:phase) { create(:project_phase, project:, date_range: date..date) }
+      let!(:following1) { create(:project_phase, project:, date_range: date + 6..date + 8, duration: 3) }
+      let!(:following2) { create(:project_phase, project:, date_range: date + 6..date + 8, duration: 2) }
+      let!(:following3) { create(:project_phase, project:, date_range: date + 6..date + 8, duration: 1) }
 
       it "reschedules all of them relying on duration" do
         expect(service.call(date_range: date..date + 1)).to be_success
@@ -148,9 +147,8 @@ RSpec.describe ProjectLifeCycleSteps::UpdateService, type: :model do
     end
 
     context "for following phase without duration" do
-      let(:phases) { [phase, following] }
-      let(:phase) { create(:project_phase, project:, date_range: date..date) }
-      let(:following) { build(:project_phase, project:, date_range: date + 6..date + 8, duration: nil) }
+      let!(:phase) { create(:project_phase, project:, date_range: date..date) }
+      let!(:following) { create(:project_phase, project:, date_range: date + 6..date + 8, duration: nil) }
 
       it "doesn't get rescheduled" do
         expect do
@@ -160,9 +158,8 @@ RSpec.describe ProjectLifeCycleSteps::UpdateService, type: :model do
     end
 
     context "for following phase without date range" do
-      let(:phases) { [phase, following] }
-      let(:phase) { create(:project_phase, project:, date_range: date..date) }
-      let(:following) { build(:project_phase, project:, date_range: nil, duration: 3) }
+      let!(:phase) { create(:project_phase, project:, date_range: date..date) }
+      let!(:following) { create(:project_phase, project:, date_range: nil, duration: 3) }
 
       it "doesn't get rescheduled" do
         expect do
@@ -172,9 +169,8 @@ RSpec.describe ProjectLifeCycleSteps::UpdateService, type: :model do
     end
 
     context "for following phase with date range in the past" do
-      let(:phases) { [phase, following] }
-      let(:phase) { create(:project_phase, project:, date_range: date..date) }
-      let(:following) { build(:project_phase, project:, date_range: date - 10..date - 10, duration: 3) }
+      let!(:phase) { create(:project_phase, project:, date_range: date..date) }
+      let!(:following) { create(:project_phase, project:, date_range: date - 10..date - 10, duration: 3) }
 
       it "reschedules it" do
         expect(service.call(date_range: date..date + 1)).to be_success
@@ -184,9 +180,8 @@ RSpec.describe ProjectLifeCycleSteps::UpdateService, type: :model do
     end
 
     context "for following phase with duration over a year" do
-      let(:phases) { [phase, following] }
-      let(:phase) { create(:project_phase, project:, date_range: date..date) }
-      let(:following) { build(:project_phase, project:, date_range: date..date, duration: 500) }
+      let!(:phase) { create(:project_phase, project:, date_range: date..date) }
+      let!(:following) { create(:project_phase, project:, date_range: date..date, duration: 500) }
 
       it "reschedules it" do
         expect(service.call(date_range: date..date + 1)).to be_success
@@ -196,9 +191,8 @@ RSpec.describe ProjectLifeCycleSteps::UpdateService, type: :model do
     end
 
     context "for following phase with duration over 10 years" do
-      let(:phases) { [phase, following] }
-      let(:phase) { create(:project_phase, project:, date_range: date..date) }
-      let(:following) { build(:project_phase, project:, date_range: date..date, duration: 3000) }
+      let!(:phase) { create(:project_phase, project:, date_range: date..date) }
+      let!(:following) { create(:project_phase, project:, date_range: date..date, duration: 3000) }
 
       it "reschedules it" do
         expect(service.call(date_range: date..date + 1)).to be_success
