@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_context "expected markdown modules" do
   include OpenProject::TextFormatting
   include ERB::Util

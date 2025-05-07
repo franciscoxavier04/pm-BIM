@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eox pipefail
+set -euxo pipefail
 
 apt-get update -qq
 
@@ -17,8 +17,6 @@ fi
 
 # embed all-in-one additional software
 apt-get install -y  \
-	postgresql-$CURRENT_PGVERSION \
-	postgresql-$NEXT_PGVERSION \
 	memcached \
 	postfix \
 	apache2 \
@@ -26,12 +24,20 @@ apt-get install -y  \
 	git subversion \
 	wget
 
+# Install postgres server versions
+for version in $PGVERSION_CHOICES ; do
+	apt-get install -yq --no-install-recommends postgresql-$version
+done
+
 # remove any existing cluster
 service postgresql stop
-rm -rf /var/lib/postgresql/{$CURRENT_PGVERSION,$NEXT_PGVERSION}
+for version in $PGVERSION_CHOICES ; do
+	rm -rf /var/lib/postgresql/{$version}
+done
+
+echo "PGBIN: $PGBIN"
 
 # create schema_cache.yml and db/structure.sql
-
 su - postgres -c "$PGBIN/initdb -D /tmp/nulldb -E UTF8"
 su - postgres -c "$PGBIN/pg_ctl -D /tmp/nulldb -l /dev/null -l /tmp/nulldb/log -w start"
 

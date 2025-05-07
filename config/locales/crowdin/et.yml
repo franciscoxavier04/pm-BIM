@@ -422,7 +422,7 @@ et:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Duration: %{count} working day"
       other: "Duration: %{count} working days"
   lists:
@@ -1664,6 +1664,8 @@ et:
     priority: "Prioriteet"
     project: "Projekt"
     project_ids: "Projekti ID-d"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Põhjus"
     responsible: "Accountable"
     required: "Nõutav"
@@ -2665,6 +2667,7 @@ et:
   label_gantt_chart_plural: "Gantt diagrammiid"
   label_general: "Üldine"
   label_generate_key: "Genereeri võti"
+  label_global_roles: "Global roles"
   label_git_path: "Tee .git kataloog"
   label_greater_or_equal: ">="
   label_group_by: "Grupeeri"

@@ -59,9 +59,9 @@ module Principals::Scopes
       private
 
       def resource_class(work_package_or_project)
-        if work_package_or_project.all? { _1.class <= WorkPackage }
+        if work_package_or_project.all? { it.class <= WorkPackage }
           WorkPackage
-        elsif work_package_or_project.all? { _1.instance_of?(Project) }
+        elsif work_package_or_project.all? { it.instance_of?(Project) }
           Project
         end
       end

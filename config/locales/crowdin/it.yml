@@ -420,7 +420,7 @@ it:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Durata: %{count} giorno lavorativo"
       other: "Durata: %{count} giorni lavorativi"
   lists:
@@ -1661,6 +1661,8 @@ it:
     priority: "Priorità"
     project: "Progetto"
     project_ids: "ID Progetto"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Motivo"
     responsible: "Responsabile"
     required: "Richiesto"
@@ -2662,6 +2664,7 @@ it:
   label_gantt_chart_plural: "Diagrammi di Gantt"
   label_general: "Generale"
   label_generate_key: "Genera chiave"
+  label_global_roles: "Ruoli globali"
   label_git_path: "Percorso per la cartella .git"
   label_greater_or_equal: ">="
   label_group_by: "Raggruppa per"

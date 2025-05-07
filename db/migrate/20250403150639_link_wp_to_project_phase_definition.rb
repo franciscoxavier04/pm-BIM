@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,31 +26,17 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-require "spec_helper"
-require "contracts/shared/model_contract_shared_context"
-
-RSpec.describe ProjectLifeCycleSteps::BaseContract do
-  include_context "ModelContract shared context"
-
-  let(:contract) { described_class.new(phase, user) }
-  let(:user) { build_stubbed(:user) }
-  let(:project) { build_stubbed(:project) }
-  let(:phase) { build_stubbed(:project_phase, project:) }
-
-  context "with authorized user" do
-    before do
-      mock_permissions_for(user) do |mock|
-        mock.allow_in_project(:edit_project_phases, project:)
-      end
+class LinkWpToProjectPhaseDefinition < ActiveRecord::Migration[8.0]
+  def change
+    change_table :work_packages do |t|
+      t.remove_references :project_phase, null: true
+      t.references :project_phase_definition, null: true, index: true
     end
 
-    it_behaves_like "contract is valid"
-    include_examples "contract reuses the model errors"
-  end
-
-  context "with unauthorized user" do
-    it_behaves_like "contract user is unauthorized"
+    change_table :work_package_journals do |t|
+      t.column :project_phase_definition_id, :bigint, null: true
+    end
   end
 end

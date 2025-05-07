@@ -422,7 +422,7 @@ ka:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Duration: %{count} working day"
       other: "Duration: %{count} working days"
   lists:
@@ -1664,6 +1664,8 @@ ka:
     priority: "პრიორიტეტი"
     project: "პროექტი"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "მიზეზი"
     responsible: "ანგარიშვალდებული"
     required: "აუცილებელია"
@@ -2665,6 +2667,7 @@ ka:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "ზოგადი"
   label_generate_key: "გასაღების გენერაცია"
+  label_global_roles: "გლობალური როლები"
   label_git_path: "Path to .git directory"
   label_greater_or_equal: ">="
   label_group_by: "დაჯგუფება"

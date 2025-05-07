@@ -418,11 +418,11 @@ uk:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Тривалість: %{count} робочий день"
-      few: "Тривалість: %{count} робочі дні"
-      many: "Тривалість: %{count} робочих днів"
-      other: "Тривалість: %{count} робочого дня"
+      few: "Тривалість: %{count} робочого дня"
+      many: "Тривалість: %{count} робочого дня"
+      other: "Тривалість: %{count} робочих днів"
   lists:
     create:
       success: "Змінений список збережено як новий"
@@ -1648,7 +1648,7 @@ uk:
     body: "Текст"
     blocks_ids: "Ідентифікатори заблокованих робочих пакетів"
     category: "Категорія"
-    comment: "Коментування"
+    comment: "Коментар"
     comments: "Коментування"
     content: "Контент"
     color: "Колір"
@@ -1700,6 +1700,8 @@ uk:
     priority: "Пріоритет"
     project: "Проєкт"
     project_ids: "ID проєктів"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Причина"
     responsible: "Відповідальний"
     required: "Обов'язкове поле"
@@ -2739,6 +2741,7 @@ uk:
   label_gantt_chart_plural: "Діаграми Ґанта"
   label_general: "Загальні"
   label_generate_key: "Згенерувати ключ"
+  label_global_roles: "Глобальні ролі"
   label_git_path: "Шлях до каталогу .git"
   label_greater_or_equal: ">="
   label_group_by: "Групувати за"
@@ -2768,7 +2771,7 @@ uk:
   label_index_by_title: "Індекс за назвою"
   label_information: "Інформація"
   label_information_plural: "Інформація"
-  label_installation_guides: "Інструкції із встановлення"
+  label_installation_guides: "Інструкції зі встановлення"
   label_integer: "Ціле число"
   label_internal: "Власне"
   label_introduction_video: "Введення відео"

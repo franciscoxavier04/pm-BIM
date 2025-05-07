@@ -421,11 +421,11 @@ ru:
     status:
       button_edit: Редактировать статус проекта
   project_phase:
-    working_days_count:
+    duration:
       one: "Продолжительность: %{count} рабочий день"
       few: "Продолжительность: %{count} рабочих дня"
       many: "Продолжительность: %{count} рабочих дня"
-      other: "Продолжительность: %{count} рабочих дней"
+      other: "Продолжительность: %{count} рабочих дня"
   lists:
     create:
       success: "Измененный список был сохранен как новый"
@@ -1704,6 +1704,8 @@ ru:
     priority: "Приоритет"
     project: "Проект"
     project_ids: "ID проектов"
+    project_phase: "Фаза проекта"
+    project_phase_definition: "Фаза проекта"
     reason: "Причина"
     responsible: "Ответственный"
     required: "Обязательно"
@@ -2743,6 +2745,7 @@ ru:
   label_gantt_chart_plural: "Диаграммы Ганта"
   label_general: "Общие"
   label_generate_key: "Сгенерируйте ключ"
+  label_global_roles: "Глобальные роли"
   label_git_path: "Путь к директории .git"
   label_greater_or_equal: ">="
   label_group_by: "Группировать по"

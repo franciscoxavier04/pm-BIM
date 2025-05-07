@@ -431,7 +431,6 @@ eo:
     label_filename: "Dosiero"
     label_filesize: "Dosiergrando"
     label_general: "General"
-    label_global_roles: "Global roles"
     label_greater_or_equal: ">="
     label_group: "Grupo"
     label_group_by: "Grupigi laŭ"
