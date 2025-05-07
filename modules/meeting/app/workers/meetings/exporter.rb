@@ -54,12 +54,15 @@ module Meetings
 
     def initialize(meeting, _options = {})
       super
+      @total_page_nr = nil
+      @page_count = 0
 
       setup_page!
     end
 
     def setup_page!
       self.pdf = get_pdf
+      pdf.title = heading
       configure_page_size!(:portrait)
     end
 
@@ -72,7 +75,6 @@ module Meetings
     end
 
     def render_doc
-      pdf.title = heading
       write_cover_page! if with_cover?
       render_meeting!
     end
@@ -83,10 +85,12 @@ module Meetings
       write_participants
       write_hr
       write_agenda
+      write_headers!
+      write_footers!
     end
 
     def write_hr
-      write_horizontal_line(pdf.cursor, 1, "6E7781")
+      write_horizontal_line(pdf.cursor, 1.5, "6E7781")
       pdf.move_down(10)
     end
 
@@ -115,7 +119,7 @@ module Meetings
     end
 
     def footer_title
-      "Footer title"
+      meeting.project&.name || ""
     end
 
     def title_datetime
