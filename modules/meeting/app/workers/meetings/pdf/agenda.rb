@@ -33,6 +33,7 @@ module Meetings::PDF
     def write_agenda
       write_agenda_title
       write_agenda_sections
+      pdf.move_down(10)
     end
 
     def write_agenda_sections

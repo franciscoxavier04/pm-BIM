@@ -41,6 +41,7 @@ module Meetings
     include Meetings::PDF::PageHead
     include Meetings::PDF::Participants
     include Meetings::PDF::Agenda
+    include Meetings::PDF::Attachments
 
     attr_accessor :pdf
 
@@ -85,6 +86,8 @@ module Meetings
       write_participants
       write_hr
       write_agenda
+      write_hr
+      write_attachments_list
       write_headers!
       write_footers!
     end
