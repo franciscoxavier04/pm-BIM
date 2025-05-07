@@ -167,6 +167,10 @@ RSpec.describe "Meeting Outcomes CRUD", :js do
       show_page.expect_outcome "Existing outcome"
       show_page.expect_no_outcome_actions
       show_page.expect_no_outcome_button
+
+      # Fixes #63535
+      item = MeetingAgendaItem.find_by(id: wp_agenda_item.id)
+      show_page.expect_no_outcome_action(item)
     end
   end
 end
