@@ -32,7 +32,9 @@ module Meetings::PDF
   module PageHead
     def write_page_head
       with_margin(styles.page_heading_margins) do
-        pdf.formatted_text([styles.page_heading.merge({ text: meeting_title })])
+        pdf.formatted_text([styles.page_heading.merge(
+          { text: meeting_title, link: url_helpers.meeting_url(meeting) }
+        )])
         pdf.move_down(2)
         write_meeting_subtitle
         pdf.move_down(3)
@@ -40,25 +42,21 @@ module Meetings::PDF
     end
 
     def write_meeting_subtitle
-      subtitle_font_size = 10
+      list = ["", "#{format_date(meeting.start_date)},", meeting_subtitle_dates]
+      list.push("-", meeting.recurring_meeting.base_schedule) if meeting.recurring?
       pdf.formatted_text(
         [
           prawn_badge(badge_text, badge_color, offset: 0, radius: 2),
-          { text: " ", size: subtitle_font_size },
-          { text: format_date(meeting.start_date), size: subtitle_font_size },
-          { text: ", ", size: subtitle_font_size },
-          { text: meeting_subtitle_dates, size: subtitle_font_size }
+          { text: list.join(" "), size: 10 }
         ]
       )
-
-      # meeting.recurring? ? write_meeting_subtitle_recurring :
     end
 
     def meeting_subtitle_dates
       [
         "#{format_date(meeting.start_date)},",
         format_time(meeting.start_time, include_date: false),
-        "-",
+        "–",
         format_time(meeting.end_time, include_date: false),
         "(#{OpenProject::Common::DurationComponent.new(meeting.duration, :hours, abbreviated: true).text})"
       ].join(" ")
