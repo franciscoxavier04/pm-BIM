@@ -3,8 +3,8 @@ import { announce } from '@primer/live-region-element';
 
 export function registerAriaStreamAction() {
   StreamActions.aria = function ariaStreamAction(this:StreamElement) {
-      const message = this.getAttribute('message') ?? '';
-      const type = this.getAttribute('type') ?? 'polite';
+      const message = this.getAttribute('message') || '';
+      const type = this.getAttribute('type') || 'polite';
       if (type === 'assertive') {
         void announce(message, {
           politeness: 'assertive',
