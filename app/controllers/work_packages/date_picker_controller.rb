@@ -158,7 +158,7 @@ class WorkPackages::DatePickerController < ApplicationController
                                                          triggering_field: params[:triggering_field],
                                                          touched_field_map:,
                                                          date_mode:,
-                                                         live_region_message: live_region_message)
+                                                         live_region_message:)
   end
 
   def live_region_message
