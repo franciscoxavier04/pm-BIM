@@ -16,7 +16,7 @@
             href: update_filter_work_package_activities_path(work_package),
             content_arguments: {
               data: {
-                turbo_stream: true, action: "click->work-packages--activities-tab--index#unsetFilter",
+                turbo_stream: true, action: "click->#{index_stimulus_controller}#unsetFilter",
                 test_selector: "op-wp-journals-filter-show-all"
               }
             },
@@ -27,7 +27,7 @@
             href: update_filter_work_package_activities_path(work_package, filter: :only_changes),
             content_arguments: {
               data: {
-                turbo_stream: true, action: "click->work-packages--activities-tab--index#setFilterToOnlyChanges",
+                turbo_stream: true, action: "click->#{index_stimulus_controller}#setFilterToOnlyChanges",
                 test_selector: "op-wp-journals-filter-show-only-changes"
               }
             },
@@ -38,7 +38,7 @@
             href: update_filter_work_package_activities_path(work_package, filter: :only_comments),
             content_arguments: {
               data: {
-                turbo_stream: true, action: "click->work-packages--activities-tab--index#setFilterToOnlyComments",
+                turbo_stream: true, action: "click->#{index_stimulus_controller}#setFilterToOnlyComments",
                 test_selector: "op-wp-journals-filter-show-only-comments"
               }
             },

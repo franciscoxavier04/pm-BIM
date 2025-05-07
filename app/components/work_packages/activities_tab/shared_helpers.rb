@@ -44,9 +44,9 @@ module WorkPackages
                  data: {
                    test_selector: "activity-anchor-link",
                    turbo: false,
-                   action: "click->work-packages--activities-tab--index#setAnchor:prevent",
-                   "work-packages--activities-tab--index-id-param": journal_activity_id(journal),
-                   "work-packages--activities-tab--index-anchor-name-param": activity_anchor_name
+                   action: "click->#{index_stimulus_controller}#setAnchor:prevent",
+                   index_stimulus_controller("-id-param") => journal_activity_id(journal),
+                   index_stimulus_controller("-anchor-name-param") => activity_anchor_name
                  }
                )) do
           journal_updated_at_formatted_time(journal)

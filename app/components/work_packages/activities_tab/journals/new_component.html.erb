@@ -4,7 +4,7 @@
       new_form_container.with_row(
         display: button_row_display_value,
         data: {
-          "work-packages--activities-tab--index-target": "buttonRow"
+          "#{index_stimulus_controller}-target": "buttonRow"
         }
       ) do
         flex_layout(justify_content: :space_between) do |button_row|
@@ -16,7 +16,7 @@
                 size: :medium,
                 block: true,
                 data: {
-                  action: "click->work-packages--activities-tab--index#showForm dragover->work-packages--activities-tab--index#showForm",
+                  action: "click->#{index_stimulus_controller}#showForm dragover->#{index_stimulus_controller}#showForm",
                   test_selector: "op-open-work-package-journal-form-trigger"
                 }
               )
@@ -39,7 +39,7 @@
 
       new_form_container.with_row(
         display: form_row_display_value,
-        data: { "work-packages--activities-tab--index-target": "formRow" }
+        data: { "#{index_stimulus_controller}-target": "formRow" }
       ) do
         primer_form_with(
           id: "work-package-journal-form-element", # required for specs
@@ -48,8 +48,8 @@
           data: {
             turbo: true,
             turbo_stream: true,
-            "work-packages--activities-tab--index-target": "form",
-            action: "submit->work-packages--activities-tab--index#onSubmit",
+            "#{index_stimulus_controller}-target": "form",
+            action: "submit->#{index_stimulus_controller}#onSubmit",
             test_selector: "op-work-package-journal-form-element"
           },
           url: work_package_activities_path(work_package_id: work_package.id)
@@ -84,7 +84,7 @@
 
               form_container_row.with_column(flex_layout: true, align_items: :center) do |submit_container|
                 submit_container.with_column(mr: 2) do
-                  render(Primer::Beta::Button.new(scheme: :secondary, size: :medium, data: { action: "click->work-packages--activities-tab--index#closeEditor" })) do
+                  render(Primer::Beta::Button.new(scheme: :secondary, size: :medium, data: { action: "click->#{index_stimulus_controller}#closeEditor" })) do
                     t("button_cancel")
                   end
                 end

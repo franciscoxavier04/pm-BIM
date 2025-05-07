@@ -36,6 +36,7 @@ module WorkPackages
         include OpPrimer::ComponentHelpers
         include OpTurbo::Streamable
         include WorkPackages::ActivitiesTab::SharedHelpers
+        include WorkPackages::ActivitiesTab::StimulusControllers
 
         def initialize(work_package:, filter: :all)
           super

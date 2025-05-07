@@ -26,6 +26,8 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 module WorkPackages::ActivitiesTab::Journals
+  include WorkPackages::ActivitiesTab::StimulusControllers
+
   class Submit < ApplicationForm
     form do |notes_form|
       notes_form.submit(
@@ -35,7 +37,7 @@ module WorkPackages::ActivitiesTab::Journals
         "aria-label": I18n.t("activities.work_packages.activity_tab.label_submit_comment"),
         data: {
           test_selector: "op-submit-work-package-journal-form",
-          "work-packages--activities-tab--index-target": "formSubmitButton"
+          index_stimulus_controller("-target") => "formSubmitButton"
         }
       )
     end

@@ -26,7 +26,7 @@
             activities_tab_container.with_row(flex_layout: true, classes: "work-packages-activities-tab-index-component--content-container", mt: 3) do |journals_wrapper_container|
               journals_wrapper_container.with_row(
                 classes: "work-packages-activities-tab-index-component--journals-container work-packages-activities-tab-index-component--journals-container_with-initial-input-compensation",
-                data: { "work-packages--activities-tab--index-target": "journalsContainer" }
+                data: { "#{index_stimulus_controller}-target": "journalsContainer" }
               ) do
                 render(
                   WorkPackages::ActivitiesTab::Journals::IndexComponent.new(work_package:, filter:)
