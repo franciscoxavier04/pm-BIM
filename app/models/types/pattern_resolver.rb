@@ -60,10 +60,12 @@ module Types
     end
 
     def nil_replacement(attribute_resolver)
-      if attribute_resolver.context == :work_package
-        "[#{attribute_resolver.label}]"
-      else
-        "[#{attribute_resolver.label_with_context}]"
+      I18n.with_locale(Setting.default_language) do
+        if attribute_resolver.context == :work_package
+          "[#{attribute_resolver.label}]"
+        else
+          "[#{attribute_resolver.label_with_context}]"
+        end
       end
     end
 

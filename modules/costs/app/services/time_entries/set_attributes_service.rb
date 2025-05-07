@@ -45,7 +45,7 @@ module TimeEntries
 
       # move the timezone from the user
       model.change_by_system do
-        model.time_zone = model.user.time_zone.name
+        model.time_zone = model.user.time_zone.name if model.user
       end
 
       # Set start time for ongoing time entries
