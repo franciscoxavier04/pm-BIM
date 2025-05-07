@@ -46,10 +46,10 @@ module WorkPackages
         @deferred = deferred
       end
 
+      def self.wrapper_key = "work-package-activities-tab-content"
+      def self.index_content_wrapper_key = WorkPackages::ActivitiesTab::StimulusControllers.index_stimulus_controller
       def self.add_comment_wrapper_key = "work-packages-activities-tab-add-comment-component"
-      delegate :add_comment_wrapper_key, to: :class
-
-      def wrapper_key = "work-package-activities-tab-content"
+      delegate :index_content_wrapper_key, :add_comment_wrapper_key, to: :class
 
       private
 

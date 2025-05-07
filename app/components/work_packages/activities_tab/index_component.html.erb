@@ -12,7 +12,7 @@
           )
         end
 
-        activities_tab_wrapper_container.with_row(data: wrapper_data_attributes) do
+        activities_tab_wrapper_container.with_row(id: index_content_wrapper_key, data: wrapper_data_attributes) do
           flex_layout do |activities_tab_container|
             activities_tab_container.with_row(mb: 2) do
               render(

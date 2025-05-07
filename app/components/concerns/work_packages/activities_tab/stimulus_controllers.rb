@@ -31,11 +31,13 @@
 module WorkPackages
   module ActivitiesTab
     module StimulusControllers
+      module_function
+
       def index_stimulus_controller(suffix = nil) = "work-packages--activities-tab--index#{suffix}"
       def internal_comment_stimulus_controller(suffix = nil) = "work-packages--activities-tab--internal-comment#{suffix}"
       def quote_comments_stimulus_controller(suffix = nil) = "work-packages--activities-tab--quote-comment#{suffix}"
 
-      def items_index_selector = "##{WorkPackages::ActivitiesTab::IndexComponent.wrapper_key}"
+      def index_stimulus_controller_outlet_selector = "##{WorkPackages::ActivitiesTab::IndexComponent.index_content_wrapper_key}"
 
       def add_comment_selector
         "##{WorkPackages::ActivitiesTab::IndexComponent.add_comment_wrapper_key}"
