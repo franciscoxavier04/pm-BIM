@@ -53,7 +53,7 @@ module Types
         AttributeToken.new(:parent_priority, -> { WorkPackage.human_attribute_name(:priority) }, ->(parent) { parent.priority }),
         AttributeToken.new(:parent_subject, -> { WorkPackage.human_attribute_name(:subject) }, ->(parent) { parent.subject }),
         AttributeToken.new(:priority, -> { WorkPackage.human_attribute_name(:priority) }, ->(wp) { wp.priority }),
-        AttributeToken.new(:project, -> { WorkPackage.human_attribute_name(:project_id) }, ->(wp) { wp.project }),
+        AttributeToken.new(:project_id, -> { Project.human_attribute_name(:id) }, ->(project) { project.id }),
         AttributeToken.new(:project_active, -> { Project.human_attribute_name(:active) }, ->(project) { project.active? }),
         AttributeToken.new(:project_name, -> { Project.human_attribute_name(:name) }, ->(project) { project.name }),
         AttributeToken.new(:project_status, -> { Project.human_attribute_name(:status_code) }, ->(project) { project.status_code }),

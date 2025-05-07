@@ -391,12 +391,10 @@ module Pages::Meetings
     end
 
     def clear_backlog
-      retry_block do
-        select_backlog_action(I18n.t("label_backlog_clear"))
-        expect(page).to have_modal(I18n.t("label_backlog_clear"))
-        page.within_modal(I18n.t("label_backlog_clear")) do
-          click_on "Clear all"
-        end
+      select_backlog_action(I18n.t("label_backlog_clear"))
+      expect(page).to have_modal(I18n.t("label_backlog_clear"), wait: 3)
+      page.within_modal(I18n.t("label_backlog_clear")) do
+        click_on "Clear all"
       end
     end
 
