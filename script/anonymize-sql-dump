@@ -45,6 +45,14 @@ fi
 
 
 
+echo_header "INSTALLING OpenProject DEPENDENCIES"
+
+cd "$OPENPROJECT_DEV_DIR"
+bundle check || bundle install
+cd -
+
+
+
 echo_header "IMPORTING DUMP FILE $DUMPFILE"
 
 dropdb --if-exists tmp
