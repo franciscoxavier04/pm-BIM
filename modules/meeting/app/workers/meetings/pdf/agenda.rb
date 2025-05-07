@@ -81,7 +81,14 @@ module Meetings::PDF
     end
 
     def write_agenda_items(section)
-      section.agenda_items.each { |item| write_agenda_item(item) }
+      section.agenda_items.each_with_index do |item, index|
+        if index > 0
+          pdf.move_down 6
+          write_horizontal_line(pdf.cursor, 1, "D0D7DE")
+          pdf.move_down(6)
+        end
+        write_agenda_item(item)
+      end
     end
 
     def write_agenda_item(agenda_item)
@@ -111,17 +118,18 @@ module Meetings::PDF
           padding: [5, 2, 2, 5]
         }
       )
+      pdf.move_down(3)
     end
 
     def agenda_title_wp(work_package)
       href = url_helpers.work_package_url(work_package)
-      make_link_href(href, "<u>##{work_package.id} #{work_package.subject}</u>")
+      make_link_href(href, "<u>#{work_package.type.name} ##{work_package.id} #{work_package.subject}</u>")
     end
 
     def write_agenda_title_item_wp(agenda_item)
       work_package = agenda_item.work_package
       write_agenda_item_title(
-        [work_package.type.name, agenda_title_wp(work_package), work_package.status.name].join(" "),
+        [agenda_title_wp(work_package), "(#{work_package.status.name})"].join(" "),
         agenda_item.duration_in_minutes || 0, agenda_item.presenter
       )
     end
@@ -131,12 +139,17 @@ module Meetings::PDF
     end
 
     def write_notes(agenda_item)
-      return if agenda_item.notes.blank?
+      if agenda_item.notes.blank?
+        pdf.move_down(10)
+        return
+      end
 
-      write_markdown!(
-        agenda_item.notes,
-        styles.notes_markdown_styling_yml
-      )
+      pdf.indent(5) do
+        write_markdown!(
+          agenda_item.notes,
+          styles.notes_markdown_styling_yml
+        )
+      end
     end
   end
 end
