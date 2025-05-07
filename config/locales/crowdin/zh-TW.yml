@@ -352,8 +352,8 @@ zh-TW:
         heading: "刪除此專案清單？"
         text: "此動作不會刪除清單中包含的任何專案。您確定要刪除此專案清單？"
     settings:
-      header_details: Basic details
-      header_status: Project status
+      header_details: 基本訊息
+      header_status: 專案狀態
       header_relations: Project relations
       button_update_details: Update details
       button_update_status_description: Update status description
@@ -422,7 +422,7 @@ zh-TW:
       button_edit: Edit project status
   project_phase:
     duration:
-      other: "Duration: %{count} working days"
+      other: "持續： %{count} 工作天"
   lists:
     create:
       success: "修改後的清單已儲存為新清單"
@@ -627,9 +627,9 @@ zh-TW:
         token:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "工作項目"
+            parent: "上層目錄："
+            project: "專案"
         pattern:
           label: "主題模板"
           caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
@@ -767,10 +767,10 @@ zh-TW:
       label_child_singular: "子項目"
       label_child_plural: "子項目"
       new_child: "建立子項目"
-      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child_description: "使相關工作成為目前（上層）工作項目的子項目"
       child: "子項目"
       child_description: "使相關工作成為目前（父）工作項目的子項目"
-      parent: "Parent"
+      parent: "上層目錄："
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "最近的"
       label_blocks_singular: "區塊"
@@ -1510,7 +1510,7 @@ zh-TW:
         other: "通知"
       placeholder_user: "占位使用者"
       project:
-        other: "Projects"
+        other: "專案"
       project_query:
         other: "專案列表"
       query: "自訂查詢"
@@ -1978,11 +1978,15 @@ zh-TW:
       work_package_sharing: 與外部使用者共用工作項目
       work_package_subject_generation: 工作項目標題產生
     upsell:
+      plans_title: "Enterprise plans"
       title: "企業版附加元件"
       plan_title: "企業版 %{plan} 外掛"
       plan_name: "%{plan} 企業版計畫"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "隱藏此廣告"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: 突顯自過去任一時間點以來對此清單所做的變更。
       work_package_subject_generation:
@@ -2621,7 +2625,7 @@ zh-TW:
   label_gantt_chart_plural: "甘特圖"
   label_general: "一般"
   label_generate_key: "產生一個金鑰"
-  label_global_roles: "Global roles"
+  label_global_roles: "全域角色"
   label_git_path: ".git 目錄的路徑"
   label_greater_or_equal: ">="
   label_group_by: "分組依據"
@@ -3747,7 +3751,7 @@ zh-TW:
     Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
-  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled: "關閉"
   setting_self_registration_disabled_caption: >
     No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
   setting_self_registration_activation_by_email: "Account activation by email"

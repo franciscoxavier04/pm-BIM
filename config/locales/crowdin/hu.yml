@@ -340,7 +340,7 @@ hu:
         placeholder: Search by project name
     lists:
       active: "Aktív projektek"
-      my: "Saját projekjeim"
+      my: "Az én projektjeim"
       favored: "Kedvenc projektek"
       archived: "Archivált projektek"
       shared: "Shared project lists"
@@ -353,7 +353,7 @@ hu:
         text: "Ez a művelet nem törli a listában szereplő projekteket. Biztos, hogy törölni szeretné ezt a projektlistát?"
     settings:
       header_details: Basic details
-      header_status: Project status
+      header_status: Projekt állapot
       header_relations: Project relations
       button_update_details: Update details
       button_update_status_description: Update status description
@@ -450,7 +450,7 @@ hu:
     filters:
       all_shares: "Minden megosztás"
     menu:
-      all: "Összes"
+      all: "Mind"
       invited: "Meghívott"
       locked: "Zárolt"
       project_roles: "Projekt szerepkörök"
@@ -636,9 +636,9 @@ hu:
         token:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Feladatcsoport"
+            parent: "Szülő"
+            project: "Projekt"
         pattern:
           label: "Subject pattern"
           caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
@@ -780,7 +780,7 @@ hu:
       new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
-      parent: "Parent"
+      parent: "Szülő"
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "blokkolja"
@@ -1110,8 +1110,8 @@ hu:
         priority: "Fontosság"
         progress: "%-ban kész"
         readonly: "Olvasható"
-        remaining_hours: "Hátralévő munka"
-        remaining_time: "Hátralévő munka"
+        remaining_hours: "Fennmaradó órák"
+        remaining_time: "Fennmaradó órák"
         shared_with_users: "Megosztva velük:"
         schedule_manually: "Kézi ütemezés\n"
         spent_hours: "Eltöltött idő"
@@ -1524,8 +1524,8 @@ hu:
         other: "Értesítések"
       placeholder_user: "Teszt felhasználó"
       project:
-        one: "Project"
-        other: "Projects"
+        one: "Projekt"
+        other: "Projektek"
       project_query:
         one: "Project list"
         other: "Project lists"
@@ -2019,11 +2019,15 @@ hu:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
       work_package_subject_generation:

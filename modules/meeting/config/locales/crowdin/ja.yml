@@ -39,8 +39,8 @@ ja:
         participants_invited: "招待者"
         project: "プロジェクト"
         start_date: "日付"
-        start_time: "開始時刻"
-        start_time_hour: "開始時刻"
+        start_time: "開始時間"
+        start_time_hour: "開始時間"
       meeting_agenda_item:
         title: "タイトル"
         author: "作成者"
@@ -53,8 +53,8 @@ ja:
         frequency: "頻度"
         interval: "インターバル"
         start_date: "開始:"
-        start_time: "開始時刻"
-        start_time_hour: "開始時刻"
+        start_time: "開始時間"
+        start_time_hour: "開始時間"
         end_after: "Meeting series ends"
         end_date: "完了日"
         iterations: "回数"
@@ -335,8 +335,8 @@ ja:
   text_meeting_minutes_for_meeting: '会議の議事録 "%{meeting}"'
   text_notificiation_invited: "このメールには以下のミーティングのicsエントリーが含まれています:"
   text_meeting_empty_heading: "あなたの会議は空です。"
-  text_meeting_empty_description1: "Start by adding agenda items below. Each item can be as simple as just a title, but you can also add additional details like duration and notes."
-  text_meeting_empty_description2: 'You can also add references to existing work packages. When you do, related notes will automatically be visible in the work package''s "Meetings" tab.'
+  text_meeting_empty_description1: "まず、以下に議題項目を追加してください。各項目はタイトルだけの簡単なものでも構いませんが、所要時間やメモなどの詳細を追加することもできます。"
+  text_meeting_empty_description2: '既存のワークパッケージへの参照を追加することもできます。これを行うと、関連するメモがその作業パッケージの「会議」タブに自動的に表示されます。'
   label_meeting_empty_action: "議題項目を追加"
   label_meeting_actions: "会議の対応事項"
   label_meeting_edit_title: "会議タイトルを編集"

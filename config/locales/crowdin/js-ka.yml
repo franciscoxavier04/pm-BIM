@@ -261,10 +261,7 @@ ka:
             We deliver the confidence of a tested and supported enterprise-class project management software - with Open Source and an open mind.
           link_quote: "ფასის შეთავაზების მიღება"
           more_info: "More information"
-          text: >
-            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
           unlimited: "შეუზღუდავი"
-          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
       working_days:
         calendar:
           empty_state_header: "Non-working days"
@@ -341,7 +338,7 @@ ka:
         description: >
           Select the initial zoom level that should be shown when autozoom is not available.
     general_text_no: "არა"
-    general_text_yes: "დია"
+    general_text_yes: "დიახ"
     general_text_No: "არა"
     general_text_Yes: "დიახ"
     hal:
@@ -374,7 +371,7 @@ ka:
       ical_generation_error_text: "An error occured while generating the calendar URL."
       success_message: 'The URL "%{name}" was successfully copied to your clipboard. Paste it in your calendar client to complete the subscription.'
     label_activate: "გააქტიურება"
-    label_assignee: "დამსაქმებელი"
+    label_assignee: "დასაქმებული"
     label_add_column_after: "Add column after"
     label_add_column_before: "Add column before"
     label_add_columns: "სვეტების დამატება"
@@ -401,7 +398,7 @@ ka:
     label_change: "შეცვლა"
     label_create: "შექმნა"
     label_create_work_package: "Create new work package"
-    label_created_by: "ავტორი"
+    label_created_by: "შექმნილია"
     label_current: "current"
     label_date: "თარიღი"
     label_date_with_format: "Enter the %{date_attribute} using the following format: %{format}"
@@ -435,7 +432,7 @@ ka:
     label_filesize: "ზომა"
     label_general: "ზოგადი"
     label_greater_or_equal: ">="
-    label_group: "ჯგუფი"
+    label_group: "ჯგუფები"
     label_group_by: "დაჯგუფება"
     label_group_plural: "ჯგუფები"
     label_hide_attributes: "ნაკლების ჩვენება"
@@ -504,7 +501,7 @@ ka:
     label_sort_by: "დალაგება"
     label_sorted_by: "დალაგებულია"
     label_sort_higher: "აწევა"
-    label_sort_lower: "ქვემოთ ჩატანა"
+    label_sort_lower: "ჩატანა"
     label_sorting: "დალაგება"
     label_spent_time: "დახარჯული დრო"
     label_star_query: "რჩეულია"
@@ -675,7 +672,7 @@ ka:
           mentioned:
             title: "მოხსენიებულები"
             description: "Receive a notification every time someone mentions me anywhere"
-          assignee: "დასაქმებული"
+          assignee: "დამსაქმებელი"
           responsible: "ანგარიშვალდებული"
           shared: "გაზიარებული"
           watched: "მეთვალყურე"
@@ -959,7 +956,7 @@ ka:
         estimatesAndTime: "Estimates & Time"
         other: "სხვა"
       properties:
-        assignee: "დასაქმებული"
+        assignee: "დამსაქმებელი"
         author: "ავტორი"
         createdAt: "შექმნის დრო"
         description: "აღწერა"
@@ -1221,7 +1218,7 @@ ka:
           title: "მომხმარებელი"
           description: "Permissions based on the assigned role in the selected project"
         group:
-          title: "ჯგუფები"
+          title: "ჯგუფი"
           description: "Permissions based on the assigned role in the selected project"
         placeholder:
           title: "Placeholder user"

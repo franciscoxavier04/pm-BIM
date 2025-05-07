@@ -22,7 +22,7 @@ cs:
         end_session_endpoint: Ukončení koncového bodu relace
         post_logout_redirect_uri: URI přesměrování po odhlášení
         jwks_uri: JWKS URI
-        issuer: Vydavatel
+        issuer: Emitent
         tenant: Tenant
         metadata_url: URL metadat
         icon: Vlastní ikona

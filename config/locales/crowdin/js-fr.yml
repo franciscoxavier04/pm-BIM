@@ -261,10 +261,7 @@ fr:
             Nous fournissons la confiance d'un logiciel de gestion de projet de classe entreprise testé et supporté - en Open Source et un avec esprit ouvert.
           link_quote: "Obtenir un devis"
           more_info: "Plus d'informations"
-          text: >
-            La version Entreprise d'OpenProject s'appuie sur la version Community. Elle comprend des add-ons Entreprise et un support professionnel principalement destiné aux organisations comptant plus de 10 utilisateurs gérant des projets critiques avec OpenProject.
           unlimited: "Illimité"
-          you_contribute: "Les développeurs aussi ont besoin de payer leurs factures. En passant à la version Entreprise, vous soutiendrez cet effort communautaire open source et contribuerez à son développement, sa maintenance et son amélioration continue."
       working_days:
         calendar:
           empty_state_header: "Jours non travaillés"
@@ -387,7 +384,7 @@ fr:
     label_added_time_by: 'Ajouté par <a href="%{authorLink}">%{author}</a> le %{age}'
     label_ago: "il y a"
     label_all: "tous"
-    label_all_uppercase: "Tout"
+    label_all_uppercase: "Tous"
     label_all_work_packages: "tous les lots de travaux"
     label_and: "et"
     label_ascending: "Croissant"
@@ -454,7 +451,7 @@ fr:
     label_less_or_equal: "<="
     label_less_than_ago: "il y a moins de quelques jours"
     label_loading: "Chargement…"
-    label_mail_notification: "Notifications par e-mail"
+    label_mail_notification: "Notifications par courriel"
     label_manage_columns: "Gérer et réorganiser les colonnes"
     label_me: "moi"
     label_meeting_agenda: "Ordre du jour"
@@ -654,7 +651,7 @@ fr:
           message: "Il y a de nouvelles notifications."
           link_text: "Cliquez ici pour les télécharger."
       reminders:
-        note: "Note : \"%{note}\""
+        note: "Note : « %{note} »"
       settings:
         change_notification_settings: 'Vous pouvez modifier vos <a target="_blank" href="%{url}">paramètres de notification</a> pour vous assurer de ne jamais manquer une mise à jour importante.'
         title: "Paramètres de notifications"
@@ -675,7 +672,7 @@ fr:
           mentioned:
             title: "Mentionné"
             description: "Recevoir une notification chaque fois que quelqu'un me mentionne n'importe où"
-          assignee: "Assigné"
+          assignee: "Assigné à"
           responsible: "Responsable"
           shared: "Partagé"
           watched: "Observateur"
@@ -689,10 +686,10 @@ fr:
             title: "Participant"
             description: "Notifications pour toute activité sur les lots de travaux vous concernant (assigné, responsable ou observateur)."
           delayed:
-            title: "Non participants"
+            title: "Non participant"
             description: "Notifications additionnelles lors d'activités sur tous les projets."
           date_alerts:
-            title: "Alarmes"
+            title: "Alertes de date"
             description: "Notifications automatiques lorsque des dates importantes approchent pour les lots de travaux ouverts vous concernant (assigné, responsable ou observateur)."
           overdue: En cas de retard
         project_specific:
@@ -762,7 +759,7 @@ fr:
           last_day: "Dernier jour"
     text_are_you_sure: "Êtes-vous sûr ?"
     text_data_lost: "Toutes les données saisies seront perdues."
-    text_user_wrote: "%{value} écrit :"
+    text_user_wrote: "%{value} écrit:"
     types:
       attribute_groups:
         error_duplicate_group_name: "Le nom %{group} est utilisé plus d’une fois. Les noms de groupe doivent être uniques."
@@ -1227,7 +1224,7 @@ fr:
           title: "Utilisateur de remplacement"
           title_no_ee: "Utilisateur fictif (add-on de la version Entreprise uniquement)"
           description: "N'a pas d'accès au projet et aucun e-mail n'est envoyé."
-          description_no_ee: 'N''a pas accès au projet et aucun e-mail n''est envoyé. <br>Consultez la <a href="%{eeHref}" target="_blank">version Entreprise</a>.'
+          description_no_ee: 'N''a pas accès au projet et aucun courriel n''est envoyé. <br>Consultez la <a href="%{eeHref}" target="_blank">version Entreprise</a>.'
       principal:
         label:
           name_or_email: "Nom ou adresse e-mail"

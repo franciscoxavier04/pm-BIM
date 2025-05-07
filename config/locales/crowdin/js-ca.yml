@@ -261,10 +261,7 @@ ca:
             Tenim la certesa i confiança d'una eina de gestió de projectes testejat i suportat en ambients empresarials - amb Codi Obert i amb una mentalitat oberta.
           link_quote: "Obtenir un pressupost"
           more_info: "Més informació"
-          text: >
-            L'edició Enterprise d'OpenProject es construeix a sobre de l'edició Community. Inclou extensions Enterprise i suport professional pensat especialment per a organitzacions de més de 10 usuaris que manegin projectes empresarialment crítics amb OpenProject.
           unlimited: "Il·limitat"
-          you_contribute: "Els desenvolupadors també han de pagar les seves factures. Actualitzant a l'edició Enterprise, donaràs suport aquesta comunitat de codi obert i contribuiràs al seu desenvolupament, manteniment i millora continua."
       working_days:
         calendar:
           empty_state_header: "Dies no laborables"

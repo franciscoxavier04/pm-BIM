@@ -23,7 +23,7 @@ uk:
       storages/storage:
         authentication_method: Метод автентифікації
         creator: Автор
-        drive: ID диску
+        drive: ID диска
         host: Хост
         name: Назва
         provider_type: Тип постачальника
@@ -112,7 +112,7 @@ uk:
         rename_project_folder: 'Перейменування папки керованого проекту:'
     errors:
       messages:
-        error: Сталася неочікувана помилка. Будь ласка, перевірте журнали OpenProject для отримання додаткової інформації або зверніться до адміністратора
+        error: Сталася неочікувана помилка. Щоб дізнатися більше, перегляньте журнали OpenProject або зверніться до адміністратора.
         unauthorized: OpenProject не вдалося автентифікуватись у постачальника сховища. Переконайтеся, що ви маєте до нього доступ.
       models:
         copy_project_folders_service:
@@ -281,28 +281,28 @@ uk:
           many: "%{count} checks returned a warning"
           other: "%{count} checks returned a warning"
       connection_validation:
-        client_id_invalid: The configured OAuth 2 client id is invalid. Please check the configuration.
-        client_secret_invalid: The configured OAuth 2 client secret is invalid. Please check the configuration.
-        nc_dependency_missing: 'A required dependency is missing on the file storage. Please add the following dependency: %{dependency}.'
+        client_id_invalid: Налаштований ідентифікатор клієнта OAuth 2 недійсний. Перевірте конфігурацію.
+        client_secret_invalid: Налаштований секретний ключ клієнта OAuth 2 недійсний. Перевірте конфігурацію.
+        nc_dependency_missing: 'Відсутня обов’язкова залежність для файлового сховища. Додайте таку залежність: %{dependency}.'
         nc_dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
-        nc_group_folder_not_found: The group folder could not be found.
-        nc_host_not_found: No Nextcloud server found at the configured host url. Please check the configuration.
-        nc_oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
-        nc_oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
+        nc_group_folder_not_found: Теку групи не знайдено.
+        nc_host_not_found: Сервер Nextcloud  не знайдено за вказаною URL-адресою. Перевірте конфігурацію.
+        nc_oauth_request_not_found: OpenProject не вдалося знайти кореневу папку Nextcloud в обліковому записі поточного користувача. Щоб дізнатися більше, перевірте журнали сервера.
+        nc_oauth_request_unauthorized: Поточний користувач не має дозволу на перегляд основної папки Nextcloud, або ми не змогли отримати маркер. Щоб дізнатися більше, перевірте журнали сервера.
         nc_oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
-        nc_unexpected_content: Unexpected content found in the managed group folder.
-        nc_userless_access_denied: The configured app password is invalid.
+        nc_unexpected_content: У теці керованої групи знайдено неочікуваний вміст.
+        nc_userless_access_denied: Налаштований пароль застосунку недійсний.
         not_configured: Не вдалося перевірити підключення. Спочатку налаштуйте конфігурацію.
-        od_client_cant_delete_folder: The client is having trouble deleting folders. Please check the setup documentation for your storage.
-        od_client_write_permission_missing: The client seems to have write permissions missing. Please check the setup documentation for your storage.
-        od_drive_id_invalid: The configured drive id seems invalid. Please check the configuration.
-        od_drive_id_not_found: The configured drive id could not be found. Please check the configuration.
-        od_existing_test_folder: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
+        od_client_cant_delete_folder: Клієнту не вдалося видалити папки. Ознайомтеся з документацією щодо конфігурації для свого сховища.
+        od_client_write_permission_missing: Схоже, у клієнта не має дозволів на записування. Ознайомтеся з документацією щодо конфігурації для свого сховища.
+        od_drive_id_invalid: Схоже, налаштований ідентифікатор Drive ID недійсний. Перевірте конфігурацію.
+        od_drive_id_not_found: Налаштований ідентифікатор Drive ID не знайдено. Перевірте конфігурацію.
+        od_existing_test_folder: Папка %{folder_name}, необхідна для тестування, уже існує. Видаліть її та повторіть спробу.
         od_oauth_request_not_found: OpenProject couldn't find the root folder in the drive using the current logged-in user. Please check the server logs for further information.
         od_oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive/SharePoint or we couldn't acquire a token. Please check the server logs for further information.
         od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
-        od_tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
-        od_unexpected_content: Unexpected content found in the drive.
+        od_tenant_id_wrong: Налаштований ідентифікатор каталогу (клієнта) недійсний. Перевірте конфігурацію.
+        od_unexpected_content: На диску знайдено неочікуваний контент.
         offline_access_scope_missing: It is recommended to configure the OpenID Connect provider to request the offline_access scope. The integration may still work anyways, but make sure that refresh tokens do not expire.
         oidc_cant_acquire_token: Ваша конфігурація OpenID Connect не передбачає наявності необхідної аудиторії і можливостей обміну маркерами. Щоб дізнатися більше, ознайомтеся з нашою документацією.
         oidc_cant_exchange_token: Здається, виникла проблема з конфігурацією Token Exchange у вашого постачальника OpenID Connect. Перевірте конфігурацію і повторіть спробу.
@@ -379,7 +379,7 @@ uk:
       setting_up_storages_non_admin: Адміністратори можуть створювати файлові сховища в розділі «Адміністрування» / «Файлові сховища».
       type: 'Перш ніж виконувати налаштування, переконайтеся, що маєте права адміністратора у своєму екземплярі Nextcloud і що встановлено цей додаток:'
       type_link_text: "«Інтеграція OpenProject»"
-    label_active: Активні
+    label_active: Активний
     label_add_new_storage: Додати нове сховище
     label_automatic_folder: Нова папка з автоматичним керуванням дозволами
     label_creation_time: Час створення
@@ -392,7 +392,7 @@ uk:
     label_existing_manual_folder: Наявна папка з ручним керуванням дозволами
     label_file_storage: Файлове сховище
     label_host: URL-адреса хосту
-    label_inactive: Неактивні
+    label_inactive: Неактивний
     label_managed_project_folders:
       application_password: Пароль додатка
       automatically_managed_folders: Папки з автоматичним керуванням

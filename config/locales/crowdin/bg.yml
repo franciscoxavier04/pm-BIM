@@ -176,7 +176,7 @@ bg:
       The following fields are related to how users are created in OpenProject from LDAP entries and
       what LDAP attributes are used to define the attributes of an OpenProject user (attribute mapping).
     tls_mode:
-      plain: "none"
+      plain: "никой"
       simple_tls: "LDAPS"
       start_tls: "STARTTLS"
       plain_description: "Opens an unencrypted connection to the LDAP server. Not recommended for production."
@@ -354,7 +354,7 @@ bg:
         text: "Това действие няма да изтрие нито един проект, който списъкът съдържа. Сигурни ли сте, че искате да изтриете този списък с проекти?"
     settings:
       header_details: Basic details
-      header_status: Project status
+      header_status: Статус на проекта
       header_relations: Project relations
       button_update_details: Update details
       button_update_status_description: Update status description
@@ -512,7 +512,7 @@ bg:
       new_access_token_dialog_show_button_text: "API токен"
       new_access_token_dialog_text_field_placeholder_text: "Моят API токен"
       new_access_token_dialog_text_field_label: "Име"
-      new_access_token_dialog_submit_button_text: "Създай"
+      new_access_token_dialog_submit_button_text: "Създаване"
       new_access_token_dialog_text: "Този токен ще позволи на приложенията на трети страни да комуникират с вашата инстанция. За да разграничите новия API токен, дайте му име."
       new_access_token_dialog_attention_text: "Отнасяйте се към токените на API като към пароли. Всеки, който има тази връзка, ще има достъп до информацията от този случай, споделяйте я само с доверени потребители."
       failed_to_reset_token: "Неуспешно нулиране на токена за достъп: %{error}"
@@ -637,9 +637,9 @@ bg:
         token:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Работен пакет"
+            parent: "Горна категория"
+            project: "Проект"
         pattern:
           label: "Subject pattern"
           caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
@@ -781,7 +781,7 @@ bg:
       new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
-      parent: "Parent"
+      parent: "Горна категория"
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "блокировки"
@@ -1525,8 +1525,8 @@ bg:
         other: "Notifications"
       placeholder_user: "Потребител на заместител"
       project:
-        one: "Project"
-        other: "Projects"
+        one: "Проект"
+        other: "Проекти"
       project_query:
         one: "Project list"
         other: "Project lists"
@@ -1743,7 +1743,7 @@ bg:
   button_check_all: "Избери всички"
   button_clear: "Изчистване"
   button_click_to_reveal: "Кликнете, за да разкриете"
-  button_close: "Close"
+  button_close: "Затворени"
   button_collapse_all: "Свиване на всички"
   button_configure: "Конфигуриране"
   button_continue: "Продължаване"
@@ -2020,11 +2020,15 @@ bg:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      plans_title: "Enterprise plans"
       title: "Добавка за големи предприятия"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
       work_package_subject_generation:
@@ -3942,7 +3946,7 @@ bg:
   text_formatting:
     markdown: "Markdown"
     plain: "Plain text"
-  status_active: "active"
+  status_active: "Активен"
   status_archived: "archived"
   status_blocked: "blocked"
   status_invited: Поканен
@@ -4114,7 +4118,7 @@ bg:
   total_progress: "Общ напредък"
   user:
     all: "всички"
-    active: "active"
+    active: "Активен"
     activate: "Активиране"
     activate_and_reset_failed_logins: "Activate and reset failed logins"
     authentication_provider: "Authentication Provider"

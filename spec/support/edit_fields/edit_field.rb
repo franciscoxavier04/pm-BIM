@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EditField
   include Capybara::DSL
   include Capybara::RSpecMatchers

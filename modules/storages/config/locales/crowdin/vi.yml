@@ -30,7 +30,7 @@ vi:
         tenant: ID Thư mục (người thuê)
     errors:
       messages:
-        invalid_host_url: không phải là URL hợp lệ.
+        invalid_host_url: không phải là một URL hợp lệ.
         not_linked_to_project: không được liên kết với dự án.
       models:
         storages/file_link:
@@ -67,7 +67,7 @@ vi:
   permission_create_files_explanation: Quyền này chỉ có sẵn cho các lưu trữ Nextcloud
   permission_delete_files: 'Thư mục dự án được quản lý tự động: Xóa tệp'
   permission_delete_files_explanation: Quyền này chỉ có sẵn cho các lưu trữ Nextcloud
-  permission_header_for_project_module_storages: Thư mục dự án được quản lý tự động
+  permission_header_for_project_module_storages: Các thư mục dự án được quản lý tự động
   permission_manage_file_links: Quản lý liên kết tệp
   permission_manage_files_in_project: Quản lý tệp trong dự án
   permission_read_files: 'Thư mục dự án được quản lý tự động: Đọc tệp'
@@ -75,7 +75,7 @@ vi:
   permission_share_files_explanation: Quyền này chỉ có sẵn cho các lưu trữ Nextcloud
   permission_view_file_links: Xem liên kết tệp
   permission_write_files: 'Thư mục dự án được quản lý tự động: Ghi tệp'
-  project_module_storages: Tệp
+  project_module_storages: Tập tin
   project_storages:
     edit_project_folder:
       label: Sửa thư mục dự án
@@ -275,12 +275,12 @@ vi:
         warnings:
           other: "%{count} checks returned a warning"
       connection_validation:
-        client_id_invalid: The configured OAuth 2 client id is invalid. Please check the configuration.
-        client_secret_invalid: The configured OAuth 2 client secret is invalid. Please check the configuration.
-        nc_dependency_missing: 'A required dependency is missing on the file storage. Please add the following dependency: %{dependency}.'
+        client_id_invalid: ID khách hàng OAuth 2 cấu hình không hợp lệ. Vui lòng kiểm tra cấu hình.
+        client_secret_invalid: Bí mật khách hàng OAuth 2 cấu hình không hợp lệ. Vui lòng kiểm tra cấu hình.
+        nc_dependency_missing: 'Thiếu sự phụ thuộc bắt buộc vào bộ lưu trữ tệp. Vui lòng thêm sự phụ thuộc sau: %{dependency}.'
         nc_dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
         nc_group_folder_not_found: The group folder could not be found.
-        nc_host_not_found: No Nextcloud server found at the configured host url. Please check the configuration.
+        nc_host_not_found: Không tìm thấy máy chủ Nextcloud tại url máy chủ được cấu hình. Vui lòng kiểm tra cấu hình.
         nc_oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
         nc_oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
         nc_oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
@@ -290,13 +290,13 @@ vi:
         od_client_cant_delete_folder: The client is having trouble deleting folders. Please check the setup documentation for your storage.
         od_client_write_permission_missing: The client seems to have write permissions missing. Please check the setup documentation for your storage.
         od_drive_id_invalid: The configured drive id seems invalid. Please check the configuration.
-        od_drive_id_not_found: The configured drive id could not be found. Please check the configuration.
+        od_drive_id_not_found: ID ổ đĩa cấu hình không tìm thấy. Vui lòng kiểm tra cấu hình.
         od_existing_test_folder: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
         od_oauth_request_not_found: OpenProject couldn't find the root folder in the drive using the current logged-in user. Please check the server logs for further information.
         od_oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive/SharePoint or we couldn't acquire a token. Please check the server logs for further information.
         od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
-        od_tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
-        od_unexpected_content: Unexpected content found in the drive.
+        od_tenant_id_wrong: ID thư mục (người thuê) cấu hình không hợp lệ. Vui lòng kiểm tra cấu hình.
+        od_unexpected_content: Nội dung không mong đợi được tìm thấy trong ổ đĩa.
         offline_access_scope_missing: It is recommended to configure the OpenID Connect provider to request the offline_access scope. The integration may still work anyways, but make sure that refresh tokens do not expire.
         oidc_cant_acquire_token: Your OpenID Connect setup doesn't provide the necessary audience, nor provides token exchange capabilities. Please check out our documentation for more information.
         oidc_cant_exchange_token: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
@@ -308,14 +308,14 @@ vi:
       label_failed: Failed
       label_healthy: Khỏe
       label_passed: Passed
-      label_pending: Đang chờ
+      label_pending: Chờ xử lý
       label_skipped: Đã bỏ qua
       label_warning: Cảnh báo
       no_report: No report available
       no_report_description: Run the checks now for a full health status report for this file storage.
       open_report: Open full health report
       project_folders:
-        subtitle: Thư mục dự án được quản lý tự động
+        subtitle: Các thư mục dự án được quản lý tự động
       since: kể từ %{datetime}
       summary:
         failure: Some checks failed and the system does not work as expected.
@@ -413,10 +413,10 @@ vi:
     members_no_results: Không có thành viên nào để hiển thị.
     no_results: Chưa có lưu trữ nào được thiết lập.
     oauth_access_granted_modal:
-      access_granted: Đã cấp quyền truy cập
+      access_granted: Quyền truy cập đã được cấp
       project_settings:
         access_granted_screen_reader: Đã cấp quyền truy cập. Bây giờ bạn đã sẵn sàng sử dụng %{storage}
-        storage_ready: Bây giờ bạn đã sẵn sàng sử dụng %{storage}
+        storage_ready: Bạn đã sẵn sàng sử dụng %{storage}
       storage_admin:
         access_granted_screen_reader: Đã cấp quyền truy cập. Bây giờ bạn đã sẵn sàng để thêm các dự án vào %{storage}
         storage_ready: Bây giờ bạn đã sẵn sàng để thêm dự án vào %{storage}
@@ -426,7 +426,7 @@ vi:
       login_button_aria_label: Đăng nhập vào %{storage}
       login_button_label: "%{provider_type} đăng nhập"
       project_settings:
-        description: Để truy cập vào thư mục dự án, bạn cần đăng nhập vào %{storage}.
+        description: Để có quyền truy cập vào thư mục dự án, bạn cần đăng nhập vào %{storage}.
       requesting_access_to: Đang yêu cầu quyền truy cập vào %{storage}
       storage_admin:
         description: Để thêm dự án vào kho lưu trữ này, bạn cần phải đăng nhập vào %{provider_type}. Vui lòng đăng nhập và thử lại.
@@ -448,7 +448,7 @@ vi:
         subtitle: |-
           Để OpenProject tạo các thư mục theo dự án tự động. Điều này được khuyến nghị vì nó đảm bảo rằng mọi thành viên trong nhóm luôn có quyền truy cập chính xác.
         subtitle_short: Để OpenProject tạo các thư mục theo dự án tự động.
-        title: Các thư mục dự án được quản lý tự động
+        title: Thư mục dự án được quản lý tự động
       project_settings:
         delete: Xóa lưu trữ tệp
         edit: Chỉnh sửa lưu trữ tệp cho dự án này

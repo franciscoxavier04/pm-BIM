@@ -28,8 +28,8 @@ vi:
       property_groups:
         costs: "Chi phí"
       properties:
-        overallCosts: "Tổng chi phí"
-        spentUnits: "Đơn vị chi phí"
+        overallCosts: "Chi phí tổng cộng"
+        spentUnits: "Các đơn vị đã chi"
     button_log_costs: "Ghi lại chi phí đơn vị"
     label_hour: "giờ"
     label_hours: "hours"

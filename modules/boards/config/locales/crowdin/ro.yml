@@ -27,7 +27,7 @@ ro:
       basic: De bază
     board_type_descriptions:
       basic: >
-        Începeți de la zero cu o planșă albă. Adăugați manual cărți și coloane pe această planșă.
+        Începe de la zero cu o planșă albă. Adaugă manual cărți și coloane pe această planșă.
       status: >
         Tablă de bază în stil Kanban cu coloane pentru statusuri precum "De făcut", "În curs", "Realizat".
       assignee: >

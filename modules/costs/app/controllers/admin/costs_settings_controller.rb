@@ -30,5 +30,24 @@
 module Admin
   class CostsSettingsController < SettingsController
     menu_item :costs_settings
+
+    before_action :validate_times_enabled_for_enforcement, only: :update
+
+    def update # rubocop:disable Lint/UselessMethodDefinition
+      super
+    end
+
+    private
+
+    def validate_times_enabled_for_enforcement
+      pp(settings_params)
+      allow_times =  ActiveRecord::Type::Boolean.new.cast(settings_params[:allow_tracking_start_and_end_times])
+      force_times =  ActiveRecord::Type::Boolean.new.cast(settings_params[:enforce_tracking_start_and_end_times])
+
+      if force_times && !allow_times
+        flash[:error] = I18n.t("setting_enforce_without_allow")
+        redirect_to action: :show
+      end
+    end
   end
 end

@@ -52,7 +52,7 @@ ro:
         item_0:
           form_configuration:
             item_0:
-              group_name: Fii
+              group_name: Copii
       groups:
         item_0:
           name: Architects
@@ -107,7 +107,7 @@ ro:
             item_2:
               name: Tasks
             item_3:
-              name: Planificator de echipă
+              name: Planificator echipă
           boards:
             bcf:
               name: Simple drag'n drop workflow
@@ -169,7 +169,7 @@ ro:
             item_2:
               name: Tasks
             item_3:
-              name: Planificator de echipă
+              name: Planificator echipă
           project-overview:
             widgets:
               item_0:
@@ -423,7 +423,7 @@ ro:
             item_2:
               name: Tasks
             item_3:
-              name: Planificator de echipă
+              name: Planificator echipă
           project-overview:
             widgets:
               item_0:
@@ -696,7 +696,7 @@ ro:
             item_6:
               name: Tasks
             item_7:
-              name: Planificator de echipă
+              name: Planificator echipă
           boards:
             bcf:
               name: BCF issues

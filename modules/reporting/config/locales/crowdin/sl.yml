@@ -34,7 +34,7 @@ sl:
   description_remove_filter: "Odstrani filter"
   information_restricted_depending_on_permission: "Glede na vaše dovoljenje, ta stran lahko vsebuje tajne informacije."
   label_click_to_edit: "Klikni za urejanje."
-  label_closed: "Zaprto"
+  label_closed: "zaprto"
   label_columns: "Stolpci"
   label_cost_entry_attributes: "Atributi za vnos stroškov"
   label_days_ago: "v času zadnjih dni"

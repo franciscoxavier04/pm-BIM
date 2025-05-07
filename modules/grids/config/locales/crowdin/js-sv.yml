@@ -31,7 +31,7 @@ sv:
           off_track: 'Urspårat'
           at_risk: 'I riskzonen'
           not_set: 'Ej inställd'
-          finished: 'Slutförd'
+          finished: 'Avslutad'
           discontinued: 'Discontinued'
         subprojects:
           title: 'Delprojekt'

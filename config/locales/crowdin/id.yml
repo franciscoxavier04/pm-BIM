@@ -93,7 +93,7 @@ id:
       book_now: "Pesan sekarang"
       get_quote: "Dapatkan penawaran"
       buttons:
-        upgrade: "Tingkatkan sekarang"
+        upgrade: "Upgrade sekarang"
         contact: "Hubungi kami untuk demo"
       enterprise_info_html: "adalah add-on <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> Perusahaan."
       upgrade_info: "Tingkatkan ke paket berbayar untuk mengaktifkan dan mulai menggunakannya di tim Anda."
@@ -625,8 +625,8 @@ id:
         token:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:
-            work_package: "Work package"
-            parent: "Parent"
+            work_package: "Paket-Penugasan"
+            parent: "Induk"
             project: "Project"
         pattern:
           label: "Subject pattern"
@@ -768,7 +768,7 @@ id:
       new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
-      parent: "Parent"
+      parent: "Induk"
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "blok"
@@ -1508,7 +1508,7 @@ id:
         other: "Notifications"
       placeholder_user: "Pengguna placeholder"
       project:
-        other: "Projects"
+        other: "Project"
       project_query:
         other: "Project lists"
       query: "Query kustom"
@@ -1976,11 +1976,15 @@ id:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
       work_package_subject_generation:

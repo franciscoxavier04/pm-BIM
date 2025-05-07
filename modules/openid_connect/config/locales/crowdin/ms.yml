@@ -84,7 +84,7 @@ ms:
       endpoint_url: URL titik akhir
     providers:
       label_providers: "Pembekal"
-      seeded_from_env: "Pembekal ini telah dipilih daripada konfigurasi persekitaran. Ia tidak boleh disunting."
+      seeded_from_env: "Pembekal ini telah dipilih daripada konfigurasi persekitaran. Ia tidak boleh diedit."
       google:
         name: Google
       microsoft_entra:
@@ -121,4 +121,4 @@ ms:
         claims: Minta tuntutan tambahan untuk token ID atau respons maklumat pengguna.
     setting_instructions:
       limit_self_registration: >
-        Jika pengguna yang dibenarkan hanya boleh mendaftar menggunakan penyediaan ini jika tetapan pendaftaran sendiri dibenarkan.
+        Jika didayakan pengguna hanya boleh mendaftar menggunakan pembekal ini jika tetapan pendaftaran sendiri membenarkannya.

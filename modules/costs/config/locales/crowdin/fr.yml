@@ -49,7 +49,7 @@ fr:
       time_entry:
         project: Projet
         user: Utilisateur
-        work_package: Lot de Travaux
+        work_package: Lot de travaux
         subject: Sujet
         hours: Heures
         comments: Commentaire
@@ -63,7 +63,7 @@ fr:
         one: "Saisie du temps"
         other: "Saisies du temps"
       cost_entry:
-        one: "Saisie du coût"
+        one: "Entrée de coût"
         other: "Saisies de coûts"
       cost_type:
         one: "Types de coût"
@@ -93,7 +93,7 @@ fr:
   button_log_costs: "Consigner coûts unitaires"
   button_log_time: "Journal"
   button_add_activity: "Activité"
-  button_add_time_entry: "Log time"
+  button_add_time_entry: "Consigner temps"
   caption_booked_on_project: "Réservé pour le projet"
   caption_default: "Défaut"
   caption_default_rate_history_for: "Historique des tarifs par défaut pour %{user}"
@@ -105,7 +105,7 @@ fr:
   caption_save_rate: "Enregistrer tarif"
   caption_set_rate: "Définir le tarif actuel"
   caption_show_locked: "Afficher les types verrouillés"
-  caption_log_time_dialog: "Enregistrer le temps"
+  caption_log_time_dialog: "Consigner temps"
   description_date_for_new_rate: "Date pour le nouveau tarif"
   description_costs_settings: "Définissez le format souhaité pour les coûts dans tous les projets."
   description_time_settings: "Définissez les champs à remplir obligatoirement lors de l'enregistrement du temps de travail dans tous les projets."
@@ -168,7 +168,7 @@ fr:
   label_specific_month: "Mois %{month}"
   label_list: "Liste"
   label_month: "Mois"
-  label_workweek: "Work week"
+  label_workweek: "Semaine de travail"
   label_day: "Jour"
   label_today_capitalized: "Aujourd'hui"
   label_view_mode_switcher: "Change view"
@@ -197,6 +197,7 @@ fr:
   setting_costs_currency: "Devise"
   setting_costs_currency_format: "Format de devise"
   setting_enforce_tracking_start_and_end_times: "Require exact times"
+  setting_enforce_without_allow: "Requiring exact times is not possible without allowing them"
   text_assign_time_and_cost_entries_to_project: "Assigner les heures et coûts consignés au projet"
   text_destroy_cost_entries_question: "%{cost_entries} ont été consignés sur les lots de travaux que vous êtes sur le point de supprimer. Que voulez-vous faire ?"
   text_destroy_time_and_cost_entries: "Supprimer les heures et coûts consignés"

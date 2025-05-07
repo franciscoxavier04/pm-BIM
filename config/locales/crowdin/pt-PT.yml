@@ -351,8 +351,8 @@ pt-PT:
         heading: "Eliminar esta lista de projetos?"
         text: "Esta ação não eliminará qualquer projeto que a lista contenha. Tem a certeza de que pretende eliminar esta lista de projectos?"
     settings:
-      header_details: Basic details
-      header_status: Project status
+      header_details: Detalhes básicos
+      header_status: Estado do Projeto
       header_relations: Project relations
       button_update_details: Update details
       button_update_status_description: Update status description
@@ -421,8 +421,8 @@ pt-PT:
       button_edit: Edit project status
   project_phase:
     duration:
-      one: "Duration: %{count} working day"
-      other: "Duration: %{count} working days"
+      one: "Duração: %{count} dia útil"
+      other: "Duração: %{count} dias úteis"
   lists:
     create:
       success: "A lista modificada foi guardada como uma nova lista"
@@ -634,9 +634,9 @@ pt-PT:
         token:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Pacote de trabalho"
+            parent: "Mãe"
+            project: "Projecto"
         pattern:
           label: "Padrão do tema"
           caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
@@ -775,10 +775,10 @@ pt-PT:
       label_child_singular: "secundário"
       label_child_plural: "secundários"
       new_child: "Criar novo secundário"
-      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child_description: "Cria um pacote de trabalho relacionado como um subitem do pacote de trabalho atual (principal)"
       child: "Secundário"
       child_description: "Torna o pacote de trabalho relacionado num subitem do pacote de trabalho atual (principal)"
-      parent: "Parent"
+      parent: "Mãe"
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Mais próximo"
       label_blocks_singular: "bloqueia"
@@ -1111,7 +1111,7 @@ pt-PT:
         remaining_hours: "Trabalho restante"
         remaining_time: "Trabalho restante"
         shared_with_users: "Partilhado com"
-        schedule_manually: "Agendamento manual"
+        schedule_manually: "Programação manual"
         spent_hours: "Tempo usado"
         spent_time: "Tempo usado"
         subproject: "Sub-projecto"
@@ -1522,8 +1522,8 @@ pt-PT:
         other: "Notificações"
       placeholder_user: "Utilizador de espaço reservado"
       project:
-        one: "Project"
-        other: "Projects"
+        one: "Projecto"
+        other: "Projetos"
       project_query:
         one: "Lista de projetos"
         other: "Listas de projetos"
@@ -1632,7 +1632,7 @@ pt-PT:
     estimated_time: "Trabalho"
     email: "E-mail"
     entity_type: "Entidade"
-    expires_at: "Expira em"
+    expires_at: "Expira a"
     firstname: "Primeiro nome"
     filter: "Filtro"
     group: "Grupo"
@@ -1661,8 +1661,8 @@ pt-PT:
     priority: "Prioridade"
     project: "Projecto"
     project_ids: "Identificações do Projeto"
-    project_phase: "Project phase"
-    project_phase_definition: "Project phase"
+    project_phase: "Fase do projeto"
+    project_phase_definition: "Fase do projeto"
     reason: "Motivo"
     responsible: "Responsável"
     required: "Obrigatório"
@@ -2017,11 +2017,15 @@ pt-PT:
       work_package_sharing: Partilhe pacotes de trabalho com utilizadores externos
       work_package_subject_generation: Geração de tema do pacote de trabalho
     upsell:
+      plans_title: "Enterprise plans"
       title: "Suplemento Enterprise"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Destacar as alterações introduzidas nesta lista desde qualquer ponto no passado.
       work_package_subject_generation:
@@ -2373,7 +2377,7 @@ pt-PT:
       no_results:
         title: "Sem tokens de acesso para exibir"
         description: "Todos foram desativados. Podem ser reativados no menu Administração."
-      access_tokens: "Tokens de Acesso"
+      access_tokens: "Tokens de acesso"
       headers:
         action: "Ação"
         expiration: "Expira"
@@ -2660,7 +2664,7 @@ pt-PT:
   label_gantt_chart_plural: "Gráficos de Gantt"
   label_general: "Geral"
   label_generate_key: "Gerar uma chave"
-  label_global_roles: "Global roles"
+  label_global_roles: "Funções globais"
   label_git_path: "Caminho para o diretório .git"
   label_greater_or_equal: ">="
   label_group_by: "Agrupar por"
@@ -3055,7 +3059,7 @@ pt-PT:
   label_work_package_new: "Novo pacote de trabalho"
   label_work_package_edit: "Editar pacote de trabalho %{name}"
   label_work_package_plural: "Pacotes de trabalho"
-  label_work_package_status: "Estado da tarefa"
+  label_work_package_status: "Estado do pacote de trabalho"
   label_work_package_status_new: "Novo estado"
   label_work_package_status_plural: "Estados dos pacotes de trabalho"
   label_work_package_types: "Tipos de pacote de trabalho"
@@ -3115,7 +3119,7 @@ pt-PT:
       errors:
         no_project_context: "A char a macro create_work_package_link fora do contexto do projeto."
         invalid_type: "Nenhum tipo com o nome '%{type}' encontrado no projeto '%{project}'."
-      link_name: "Nova tarefa"
+      link_name: "Novo pacote de trabalho"
       link_name_type: "Novo %{type_name}"
   mail:
     actions: "Ações"
@@ -3148,7 +3152,7 @@ pt-PT:
         assigned: "Atribuído"
         responsible: "Responsável"
         mentioned: "Mencionou"
-        shared: "Compartilhado"
+        shared: "Partilhado"
         subscribed: "todos"
         prefix: "Recebido devido à configuração de notificações: %{reason}"
         date_alert_start_date: "Alerta de data"
@@ -3166,7 +3170,7 @@ pt-PT:
         create_account: "Para aceder a este pacote de trabalho, terá de criar e ativar uma conta em %{instance}. "
         open_work_package: "Abrir pacote de trabalho"
         subject: "O pacote de trabalho #%{id} foi partilhado consigo"
-        enterprise_text: "Compartilhe pacotes de trabalho com usuários que não são membros do projeto."
+        enterprise_text: "Partilhe pacotes de trabalho com utilizadores que não são membros do projeto."
         summary:
           user: "%{user} compartilhou um pacote de trabalho com você com privilégios %{role_rights}"
           group: "%{user} compartilhou um pacote de trabalho com o grupo %{group} do qual você é membro"
@@ -3227,8 +3231,8 @@ pt-PT:
   mail_body_register_ending: "Fique atento(a)! Atenciosamente,"
   mail_body_reminder: "%{count} pacote(s) de trabalho que lhe estão atribuídos têm prazo de término nos próximos %{days} dias:"
   mail_body_group_reminder: '%{count} pacote(s) de trabalho que estão atribuídos ao grupo "%{group}" expiram nos próximos %{days} dias:'
-  mail_body_wiki_page_added: "A página wiki '%{id}' foi adicionada por %{author}."
-  mail_body_wiki_page_updated: "A página wiki '%{id}' foi atualizada por %{author}."
+  mail_body_wiki_page_added: "A página Wiki '%{id}' foi adicionada por %{author}."
+  mail_body_wiki_page_updated: "A página Wiki '%{id}' foi atualizada por %{author}."
   mail_subject_account_activation_request: "Pedido de ativação da conta %{value}"
   mail_subject_backup_ready: "A sua cópia de segurança está pronta"
   mail_subject_backup_token_reset: "Redefinir token de backup"
@@ -3444,7 +3448,7 @@ pt-PT:
   permission_select_project_phases: "Selecionar fases do projeto"
   permission_select_project_phases_explanation: "Ativar/desativar as fases de um projeto. Permite ao utilizador selecionar o ciclo de vida adequado para o projeto, uma vez que as fases inativas não serão visíveis na página de visão geral do projeto nem na lista de projetos."
   permission_select_project_modules: "Selecione módulos do projeto"
-  permission_share_work_packages: "Compartilhar pacotes de trabalho"
+  permission_share_work_packages: "Partilhar pacotes de trabalho"
   permission_manage_types: "Selecione tipos"
   permission_manage_own_reminders: "Crie os seus próprios lembretes"
   permission_view_project: "Ver projetos"
@@ -3510,7 +3514,7 @@ pt-PT:
       remove_from_templates: "Remover dos modelos"
   project_module_activity: "Atividade"
   project_module_forums: "Fórums"
-  project_module_work_package_tracking: "Tarefas"
+  project_module_work_package_tracking: "Pacotes de trabalho"
   project_module_news: "Noticias"
   project_module_repository: "Repositório"
   project_module_wiki: "Wiki"
@@ -3787,7 +3791,7 @@ pt-PT:
     Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
-  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled: "Desabilitado"
   setting_self_registration_disabled_caption: >
     No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
   setting_self_registration_activation_by_email: "Account activation by email"
@@ -3805,7 +3809,7 @@ pt-PT:
   setting_start_of_week: "A semana começa a"
   setting_sys_api_enabled: "Ativar o serviço web de gestão de repositórios"
   setting_sys_api_description: "O serviço de web de gestão de repositório fornece integração e autorização ao utilizador para aceder a repositórios."
-  setting_time_format: "Tempo"
+  setting_time_format: "Hora"
   setting_total_percent_complete_mode: "Cálculo dos totais da hierarquia da % de conclusão"
   setting_total_percent_complete_mode_work_weighted_average: "Ponderado pelo trabalho"
   setting_total_percent_complete_mode_work_weighted_average_caption_html: >-
@@ -4092,7 +4096,7 @@ pt-PT:
   queries:
     apply_filter: Aplicar filtro pré-configurado
     configure_view:
-      heading: Configurar vista
+      heading: Configurar a visualização
       columns:
         input_label: "Adicionar colunas"
         input_placeholder: "Selecione uma coluna"
@@ -4422,7 +4426,7 @@ pt-PT:
       builtin_applications: Aplicações OAuth incorporadas
       other_applications: Outras aplicações OAuth
     empty_application_lists: Não foram registadas aplicações OAuth.
-    client_id: "ID de cliente"
+    client_id: "ID do cliente"
     client_secret_notice: >
       Esta é a única vez que podemos imprimir o segredo do cliente, por favor anote-o e mantenha-o seguro. Deve ser tratado como uma palavra-passe e não pode ser recuperado mais tarde pelo OpenProject.
     authorization_dialog:

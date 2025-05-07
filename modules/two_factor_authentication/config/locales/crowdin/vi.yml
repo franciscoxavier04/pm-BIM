@@ -87,7 +87,7 @@ vi:
       description: "Tăng cường bảo mật cho phiên bản OpenProject của bạn bằng cách cung cấp (hoặc áp dụng) xác thực hai yếu tố cho tất cả các thành viên dự án."
     backup_codes:
       none_found: Không có mã dự phòng nào cho tài khoản này.
-      singular: Mã dự phòng
+      singular: Mã sao lưu
       plural: Các mã dự phòng
       your_codes: cho tài khoản %{app_name} của bạn %{login}
       overview_description: |

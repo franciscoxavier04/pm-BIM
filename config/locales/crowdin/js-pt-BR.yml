@@ -260,10 +260,7 @@ pt-BR:
             Fornecemos toda a segurança de um software de gestão de projetos de classe empresarial, testado e com suporte - com código aberto e mente aberta.
           link_quote: "Solicitar uma cotação"
           more_info: "Mais informações"
-          text: >
-            A edição OpenProject Enterprise foi desenvolvida a partir do edição Community. Ela conta com complementos Enterprise e suporte profissional, com foco principal em organizações com mais de 10 usuários que gerenciam projetos de negócios críticos com o OpenProject.
           unlimited: "Ilimitado"
-          you_contribute: "Os desenvolvedores também têm contas a pagar. Ao atualizar para a edição Entreprise, você dará suporte a este esforço da comunidade de código aberto e contribuirá para o seu desenvolvimento, manutenção e melhoria contínua."
       working_days:
         calendar:
           empty_state_header: "Dias não úteis"
