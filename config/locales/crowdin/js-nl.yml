@@ -1170,7 +1170,7 @@ nl:
         other: "%{count} u"
         zero: "0 uur"
       day:
-        one: "%{count} dag"
+        one: "1 dag"
         other: "%{count} dagen"
         zero: "0 dagen"
       word:
