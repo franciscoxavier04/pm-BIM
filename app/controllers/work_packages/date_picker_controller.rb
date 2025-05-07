@@ -167,8 +167,8 @@ class WorkPackages::DatePickerController < ApplicationController
       start_date: @work_package.start_date,
       due_date: @work_package.due_date,
       duration: @work_package.duration,
-      working_days_only: working_days_label,
-      scheduling: scheduling_label
+      working_days_label:,
+      scheduling_label:
     )
   end
 
