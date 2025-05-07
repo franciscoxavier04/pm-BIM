@@ -86,9 +86,9 @@ Press the **Save** button to apply your changes.
 
 ## Work package internal comments (Enterprise add-on)
 
-Under the **Internal comments** tab you can enable internal comments for the project. Simply check the **Enable internal comments** checkbox and **Save** your changes. Once enabled, users with necessary permissions will be able to [add internal comments](../../../activity/#internal-comments-enterprise-add-on/) under work package activity tab.
+Under the **Internal comments** tab you can enable internal comments for the project. Simply check the **Enable internal comments** checkbox and **Save** your changes. Once enabled, users with necessary permissions will be able to [add internal comments](../../../activity/#internal-comments-enterprise-add-on) under work package activity tab.
 
 ![Internal comments settings in OpenProject project settings](openproject_user_guide_project_settings_work_packages_internal_comments.png)
 
 > [!NOTE]
-> Internal comments are an Enterprise add-on and can only be used with [Enterprise cloud](../../enterprise-guide/enterprise-cloud-guide/) or [Enterprise on-premises](../../enterprise-guide/enterprise-cloud-guide/). An upgrade from the free Community edition is easily possible.
+> Internal comments are an Enterprise add-on and can only be used with [Enterprise cloud](../../../../enterprise-guide/enterprise-cloud-guide/) or [Enterprise on-premises](../../../../enterprise-guide/enterprise-cloud-guide/). An upgrade from the free Community edition is easily possible.
