@@ -65,7 +65,7 @@ module WorkPackages
         end
 
         def learn_more_static_link_url
-          ::OpenProject::Static::Links.url_for(:user_guides_work_package_internal_comments)
+          ::OpenProject::Static::Links.url_for(:enterprise_features, :internal_comments)
         end
 
         def confirm_dialog_data_attributes
