@@ -431,7 +431,6 @@ pl:
     label_filename: "Plik"
     label_filesize: "Rozmiar"
     label_general: "Ogólne"
-    label_global_roles: "Role globalne"
     label_greater_or_equal: "≥"
     label_group: "Grupa"
     label_group_by: "Grupuj według"

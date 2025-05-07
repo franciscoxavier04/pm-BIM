@@ -66,7 +66,7 @@ See COPYRIGHT and LICENSE files for more details.
             <div class="form--field-container">
               <%= angular_component_tag "opce-project-autocompleter",
                                         inputs: {
-                                          filters: [{ name: "user_action", operator: "=", values: ["work_packages/move"] }],
+                                          filters: [{ name: "user_action", operator: "=", values: ["work_packages/#{@copy ? 'copy' : 'move'}"] }],
                                           inputName: "new_project_id",
                                           model: @target_project,
                                           appendTo: "body",

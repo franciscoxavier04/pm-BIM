@@ -205,7 +205,7 @@ ru:
   setting_costs_currency: "Валюта"
   setting_costs_currency_format: "Формат валюты"
   setting_enforce_tracking_start_and_end_times: "Требуется точное время"
-  setting_enforce_without_allow: "Requiring exact times is not possible without allowing them"
+  setting_enforce_without_allow: "Требование точного времени невозможно без соответствующего разрешения"
   text_assign_time_and_cost_entries_to_project: "Связать сообщенные часы и расходы с проектом"
   text_destroy_cost_entries_question: "%{cost_entries} сообщили о рабочих пакетах, которые вы собираетесь удалить. Что вы собираетесь сделать?"
   text_destroy_time_and_cost_entries: "Удалить отчеты о часах и расходах"

@@ -419,11 +419,11 @@ pl:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Czas trwania: %{count} dzień roboczy"
-      few: "Czas trwania: %{count} dni robocze"
-      many: "Czas trwania: %{count} dni roboczych"
-      other: "Czas trwania: %{count} dnia roboczego"
+      few: "Czas trwania: %{count} dnia roboczego"
+      many: "Czas trwania: %{count} dnia roboczego"
+      other: "Czas trwania: %{count} dni roboczych"
   lists:
     create:
       success: "Zmodyfikowana lista została zapisana jako nowa lista"
@@ -1703,6 +1703,8 @@ pl:
     priority: "Priorytet"
     project: "Projekt"
     project_ids: "Identyfikatory projektów"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Powód"
     responsible: "Osoba odpowiedzialna"
     required: "Wymagane"
@@ -2742,6 +2744,7 @@ pl:
   label_gantt_chart_plural: "Wykresy Gantta"
   label_general: "Ogólne"
   label_generate_key: "Generuj klucz"
+  label_global_roles: "Role globalne"
   label_git_path: "Ścieżka do katalogu .git"
   label_greater_or_equal: "≥"
   label_group_by: "Grupuj według"

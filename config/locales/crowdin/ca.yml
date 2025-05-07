@@ -419,7 +419,7 @@ ca:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Duration: %{count} working day"
       other: "Duration: %{count} working days"
   lists:
@@ -1661,6 +1661,8 @@ ca:
     priority: "Prioritat"
     project: "Projecte"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Motiu"
     responsible: "Responsable"
     required: "Obligatori"
@@ -2662,6 +2664,7 @@ ca:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "General"
   label_generate_key: "Generar una clau"
+  label_global_roles: "Global roles"
   label_git_path: "Ruta del directori de .git"
   label_greater_or_equal: ">="
   label_group_by: "Agrupa per"

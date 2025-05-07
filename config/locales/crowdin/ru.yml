@@ -421,11 +421,11 @@ ru:
     status:
       button_edit: Редактировать статус проекта
   project_phase:
-    working_days_count:
+    duration:
       one: "Продолжительность: %{count} рабочий день"
       few: "Продолжительность: %{count} рабочих дня"
       many: "Продолжительность: %{count} рабочих дня"
-      other: "Продолжительность: %{count} рабочих дней"
+      other: "Продолжительность: %{count} рабочих дня"
   lists:
     create:
       success: "Измененный список был сохранен как новый"
@@ -1704,6 +1704,8 @@ ru:
     priority: "Приоритет"
     project: "Проект"
     project_ids: "ID проектов"
+    project_phase: "Фаза проекта"
+    project_phase_definition: "Фаза проекта"
     reason: "Причина"
     responsible: "Ответственный"
     required: "Обязательно"
@@ -2096,15 +2098,15 @@ ru:
       work_package_sharing: Поделиться пакетами работ с внешними пользователями
       work_package_subject_generation: Создание темы пакета работ
     upsell:
-      plans_title: "Enterprise plans"
+      plans_title: "Корпоративный план"
       title: "Корпоративное дополнение"
       plan_title: "Дополнение корпоративной версии %{plan}"
       plan_name: "Корпоративная версия %{plan}"
       plan_text_html: "Доступно начиная с %{plan_name}."
       hide_banner: "Скрыть этот баннер"
       homescreen_description: >
-        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
-      homescreen_subline: By upgrading, you will also be supporting an open source project.
+        Планы предприятия расширяют версию OpenProject Сообщества, которую вы сейчас используете. Они включают дополнения, дополнительные возможности и профессиональную поддержку, которые позволяют организациям всех размеров достигать больших успехов вместе.
+      homescreen_subline: При обновлении вы также поддержите проект с открытым исходным кодом.
       baseline_comparison:
         description: Выделите изменения, внесенные в этот список с любого момента в прошлом.
       work_package_subject_generation:
@@ -2743,6 +2745,7 @@ ru:
   label_gantt_chart_plural: "Диаграммы Ганта"
   label_general: "Общие"
   label_generate_key: "Сгенерируйте ключ"
+  label_global_roles: "Глобальные роли"
   label_git_path: "Путь к директории .git"
   label_greater_or_equal: ">="
   label_group_by: "Группировать по"

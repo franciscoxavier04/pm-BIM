@@ -422,7 +422,7 @@ tr:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Süre: %{count} iş günü"
       other: "Süre: %{count} iş günü"
   lists:
@@ -1663,6 +1663,8 @@ tr:
     priority: "Öncelik"
     project: "Proje"
     project_ids: "Proje Kimlikleri"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Sebep"
     responsible: "Sorumlu"
     required: "Gerekli"
@@ -2664,6 +2666,7 @@ tr:
   label_gantt_chart_plural: "Gantt grafikleri"
   label_general: "Genel"
   label_generate_key: "Anahtar oluştur"
+  label_global_roles: "Genel roller"
   label_git_path: ".git dizininin yolu"
   label_greater_or_equal: ">="
   label_group_by: "Grupla"
