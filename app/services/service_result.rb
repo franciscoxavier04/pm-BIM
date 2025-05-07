@@ -64,19 +64,32 @@ class ServiceResult
   attr_writer :message,
               :state
 
-  # Creates a successful ServiceResult.
+  # @!macro factory_params
+  #   @param errors [ActiveModel::Errors, nil] errors resulting from the service call.
+  #   @param message [String, nil] an error message associated with the service call.
+  #   @param message_type [#to_sym, nil] the type of error message when displayed as a Controller flash message.
+  #   @param state [Shared::ServiceState, nil] the Service State object.
+  #   @param dependent_results [Array<ServiceResult>] any dependent ServiceResults.
+  #   @param result [Object, nil] the result of the service call.
   #
-  # @param (see #initialize)
-  # @return (see #initialize)
+  # @!macro factory_method
+  #   @overload $0(errors: nil, message: nil, message_type: nil, state: nil, dependent_results: [], result: nil)
+  #     @macro factory_params
+
+  ##
+  # Creates a ServiceResult for a successful service call.
+  #
+  # @macro factory_method
+  # @return [ServiceResult] a new, successful instance of ServiceResult.
   def self.success(**)
     new(**, success: SUCCESS)
   end
 
   ##
-  # Creates a failed ServiceResult.
+  # Creates a ServiceResult for a failed service call.
   #
-  # @param (see #initialize)
-  # @return (see #initialize)
+  # @macro factory_method
+  # @return [ServiceResult] a new, failed instance of ServiceResult.
   def self.failure(**)
     new(**, success: FAILURE)
   end
@@ -86,17 +99,10 @@ class ServiceResult
   #   Prefer using {.success} or {.failure} factory methods to calling
   #   `ServiceResult.new(success: true)` or `ServiceResult.new(success: false)`.
   #
-  # @param errors [ActiveModel::Errors, nil] errors resulting from the service
-  #   call.
-  # @param message [String, nil] an error message associated with the service
-  #   call.
-  # @param message_type [#to_sym, nil] the type of error message when displayed
-  #   as a Controller flash message.
-  # @param state [Shared::ServiceState, nil] the Service State object.
-  # @param dependent_results [Array<ServiceResult>] any dependent
-  #   ServiceResults.
-  # @param result [Object, nil] the result of the service call.
-  # @return [ServiceResult] a new, successful instance of ServiceResult.
+  # Creates a ServiceResult for a service call.
+  #
+  # @param [Boolean] success whether the service call was successful.
+  # @macro factory_params
   def initialize(success: FAILURE,
                  errors: nil,
                  message: nil,
