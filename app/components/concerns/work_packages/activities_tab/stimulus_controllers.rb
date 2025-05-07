@@ -39,7 +39,7 @@ module WorkPackages
 
       def index_stimulus_controller_outlet_selector = "##{WorkPackages::ActivitiesTab::IndexComponent.index_content_wrapper_key}"
 
-      def add_comment_selector
+      def internal_comment_stimulus_controller_outlet_selector
         "##{WorkPackages::ActivitiesTab::IndexComponent.add_comment_wrapper_key}"
       end
     end
