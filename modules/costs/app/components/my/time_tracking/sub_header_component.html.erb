@@ -22,7 +22,7 @@
         data: { "turbo-stream" => true },
         aria: { "label" => t(:button_log_time) },
         tag: :a,
-        href: dialog_time_entries_path(onlyMe: true)
+        href: dialog_time_entries_path(onlyMe: true, date: date.iso8601)
       ) do |button|
         button.with_leading_visual_icon(icon: "plus")
         t(:button_add_time_entry)
