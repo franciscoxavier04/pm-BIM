@@ -57,7 +57,36 @@ You can:
 ### Internal comments (Enterprise add-on)
 
 > [!NOTE]
-> Internal comments are an Enterprise add-on and can only be used with Enterprise cloud or Enterprise on-premises. An upgrade from the free Community edition is easily possible.
+> Internal comments are an Enterprise add-on and can only be used with [Enterprise cloud](../../enterprise-guide/enterprise-cloud-guide/) or [Enterprise on-premises](../../enterprise-guide/enterprise-cloud-guide/). An upgrade from the free Community edition is easily possible.
+
+You can add work packages with restricited visibility to better manage information flow and share sensitive information on a need to know basis. Comments with restricted visibility are called **internal comments** in OpenProject. You will recognize internal comments by distinctinctly different color scheme and the lock icon. 
+
+![Example of an internal comment displayed under Activity tab of an OpenProject work package](openproject_user_guide_internal_comment_example.png)
+
+> [!TIP]
+> In order for internal comments feature to be used, correct permissions need to be granted to specific roles. We recommend creating a dedicated role. When a permission is removed, internal comments will no longer be visible. 
+> 
+> In addition, internal comments need to be activated under [project settings](../projects/project-settings/work-packages/#work-package-internal-comments-enterprise-add-on/). 
+
+To add internal comments, proceed the same way you would when adding a regular comment, but make sure to check **Internal comment** checkbox before submitting.
+
+> [!IMPORTANT]
+>
+> Once published, a comment can no longer be marked as internal. 
+
+![Internal comment checkbox selected when adding an internal comment on an OpenProject work package](openproject_user_guide_internal_comment_checkbox.png)
+
+Same as with public comments, you can:
+
+- Copy a link to an internal comment to your clipboard,
+- Edit an internal comment if you are the author or have sufficient rights to edit comments added by other users,
+- Quote someone else's internal comment in a new comment. This new comment will be an internal one by default.
+
+To use these options click the more (...) menu next to the lock icon on the right side of the comment.
+
+![Editing options for an internal comment shown in a dropdown menu](openproject_user_guide_internal_comment_edit_quote_copy.png)
+
+
 
 ### Emoji reactions
 
