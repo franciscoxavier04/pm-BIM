@@ -29,48 +29,48 @@
 module WorkPackage::PDFExport::Common::Macro
   PREFORMATTED_BLOCKS = %w(pre code).freeze
 
-  def apply_markdown_field_macros(markdown, work_package)
-    apply_macros(markdown, work_package, WorkPackage::Exports::Macros::Attributes)
+  def apply_markdown_field_macros(markdown, context)
+    apply_macros(markdown, context, WorkPackage::Exports::Macros::Attributes)
   end
 
   private
 
-  def apply_macros(markdown, work_package, formatter)
+  def apply_macros(markdown, context, formatter)
     return markdown unless formatter.applicable?(markdown)
 
     document = Markly.parse(markdown)
     document.walk do |node|
       if node.type == :html
-        node.string_content = apply_macro_html(node.string_content, work_package, formatter) || node.string_content
+        node.string_content = apply_macro_html(node.string_content, context, formatter) || node.string_content
       elsif node.type == :text
-        node.string_content = apply_macro_text(node.string_content, work_package, formatter) || node.string_content
+        node.string_content = apply_macro_text(node.string_content, context, formatter) || node.string_content
       end
     end
     document.to_markdown
   end
 
-  def apply_macro_text(text, work_package, formatter)
+  def apply_macro_text(text, context, formatter)
     return text unless formatter.applicable?(text)
 
     text.gsub!(formatter.regexp) do |matched_string|
       matchdata = Regexp.last_match
-      formatter.process_match(matchdata, matched_string, { user: User.current, work_package: })
+      formatter.process_match(matchdata, matched_string, context)
     end
   end
 
-  def apply_macro_html(html, work_package, formatter)
+  def apply_macro_html(html, context, formatter)
     return html unless formatter.applicable?(html)
 
     doc = Nokogiri::HTML.fragment(html)
-    apply_macro_html_node(doc, work_package, formatter)
+    apply_macro_html_node(doc, context, formatter)
     doc.to_html
   end
 
-  def apply_macro_html_node(node, work_package, formatter)
+  def apply_macro_html_node(node, context, formatter)
     if node.text?
-      node.content = apply_macro_text(node.content, work_package, formatter)
+      node.content = apply_macro_text(node.content, context, formatter)
     elsif PREFORMATTED_BLOCKS.exclude?(node.name)
-      node.children.each { |child| apply_macro_html_node(child, work_package, formatter) }
+      node.children.each { |child| apply_macro_html_node(child, context, formatter) }
     end
   end
 end

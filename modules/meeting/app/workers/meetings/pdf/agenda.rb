@@ -147,7 +147,7 @@ module Meetings::PDF
 
       pdf.indent(5) do
         write_markdown!(
-          agenda_item.notes,
+          apply_markdown_field_macros(agenda_item.notes, { project: meeting.project, user: User.current }),
           styles.notes_markdown_styling_yml
         )
       end

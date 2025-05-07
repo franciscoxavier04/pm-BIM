@@ -38,6 +38,7 @@ module Meetings
     include WorkPackage::PDFExport::Export::Markdown
     include WorkPackage::PDFExport::Common::Attachments
     include WorkPackage::PDFExport::Common::Badge
+    include WorkPackage::PDFExport::Common::Macro
     include Meetings::PDF::PageHead
     include Meetings::PDF::Participants
     include Meetings::PDF::Agenda
