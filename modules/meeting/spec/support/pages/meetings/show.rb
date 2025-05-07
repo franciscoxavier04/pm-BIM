@@ -587,5 +587,22 @@ module Pages::Meetings
     def expect_blankslate
       expect(page).to have_test_selector("meeting-blankslate")
     end
+
+    def expect_focused_input(input_id)
+      retry_block do
+        expect(page.evaluate_script("document.activeElement.id")).to eq(input_id)
+      end
+    end
+
+    # still a bit ambiguous, but better than nothing
+    def expect_focused_ckeditor
+      retry_block do
+        expect(page.evaluate_script("document.activeElement.classList.contains('ck-focused')")).to be true
+      end
+    end
+
+    def expect_notes(text)
+      expect(page).to have_css(".op-meeting-agenda-item--notes", text:)
+    end
   end
 end
