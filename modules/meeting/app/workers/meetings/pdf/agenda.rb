@@ -84,7 +84,7 @@ module Meetings::PDF
       section.agenda_items.each_with_index do |item, index|
         if index > 0
           pdf.move_down 6
-          write_horizontal_line(pdf.cursor, 1, "D0D7DE")
+          write_horizontal_line(pdf.cursor, 1, "D0D7DE", left_padding: 5)
           pdf.move_down(6)
         end
         write_agenda_item(item)
