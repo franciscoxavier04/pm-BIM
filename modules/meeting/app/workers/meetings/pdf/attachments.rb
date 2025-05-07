@@ -31,7 +31,7 @@
 module Meetings::PDF
   module Attachments
     def write_attachments_list
-      columns_count = [meeting_attachments.size, 3].min
+      columns_count = [meeting.attachments.size, 3].min
       rows = meeting_attachments_table_rows(columns_count)
       return if rows.empty?
 
@@ -51,12 +51,8 @@ module Meetings::PDF
       [width] * columns_count
     end
 
-    def meeting_attachments
-      meeting.attachments
-    end
-
     def meeting_attachments_table_rows(columns_count)
-      groups = meeting_attachments.in_groups(columns_count)
+      groups = meeting.attachments.in_groups(columns_count)
       return [] if groups.empty?
 
       Array.new(groups[0].size) do |row_index|
