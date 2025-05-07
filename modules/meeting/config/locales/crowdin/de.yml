@@ -287,7 +287,7 @@ de:
       full_past: "%{base} um %{time}, endet am %{end_date}"
       never_ending: "%{base} um %{time}"
     open:
-      title: "Tagesordnung geöffnet"
+      title: "Tagesordnung eröffnet"
       subtitle: >
         Offene Besprechungen haben Tagesordnungen, die bearbeitet werden können und im Bereich "Meine Meetings" der Teilnehmer angezeigt werden. Änderungen an der Vorlage für Besprechungsserien wirken sich nicht mehr auf diese bereits geöffneten Besprechungen aus.
       blankslate:
@@ -341,7 +341,7 @@ de:
   text_meeting_minutes_for_meeting: 'das Protokoll für die Besprechung "%{meeting}"'
   text_notificiation_invited: "Diese Email enthält einen ics Eintrag für die untenstehende Besprechung:"
   text_meeting_empty_heading: "Ihre Besprechung ist leer"
-  text_meeting_empty_description1: "Beginnen Sie unten mit dem Hinzufügen von Tagesordnungspunkten. Jeder Punkt kann so einfach wie ein Titel sein, aber Sie können auch zusätzliche Details wie Dauer und Notizen hinzufügen."
+  text_meeting_empty_description1: "Beginnen Sie unten mit dem Hinzufügen von Tagesordnungspunkten. Jeder Eintrag kann zunächst nur aus einem Titel bestehen. Optional können Sie zusätzliche Details wie Dauer und Notizen hinzufügen."
   text_meeting_empty_description2: 'Sie können auch Verweise auf bestehende Arbeitspakete hinzufügen. So werden angehängte Notizen automatisch auch im "Besprechungen"-Tab des Arbeitspakets angezeigt.'
   label_meeting_empty_action: "Tagesordnungspunkt hinzufügen"
   label_meeting_actions: "Aktionen der Besprechung"
@@ -377,7 +377,7 @@ de:
   text_outcome_not_editable_anymore: "Dieses Ergebnis ist nicht mehr bearbeitbar."
   text_outcome_cannot_be_added: "Ein Ergebnis kann nicht mehr hinzugefügt werden."
   label_backlog_clear: "Backlog leeren"
-  label_backlog_clear_button: "Alles löschen"
+  label_backlog_clear_button: "Eingabe löschen"
   text_backlog_clear_error: "Ein oder mehrere Fehler trat auf beim Versuch, den Backlog zu leeren."
   label_agenda_backlog: "Agenda-Backlog"
   text_agenda_backlog: >

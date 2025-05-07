@@ -162,7 +162,7 @@ pt-PT:
   label_created_by_me: "Criado por mim"
   label_notify: "Enviar para revisão"
   label_icalendar: "Enviar iCalendar"
-  label_icalendar_download: "Transferir evento iCalendar"
+  label_icalendar_download: "Transferir evento do iCalendar"
   label_view_meeting_series: "Ver séries de reuniões"
   label_meeting_series: "Séries de reuniões"
   label_version: "Versão"
@@ -341,8 +341,8 @@ pt-PT:
   text_meeting_minutes_for_meeting: 'minutos para a reunião "%{meeting}"'
   text_notificiation_invited: "Este e-mail contém uma entrada de ics para a reunião abaixo:"
   text_meeting_empty_heading: "A sua reunião está vazia"
-  text_meeting_empty_description1: "Start by adding agenda items below. Each item can be as simple as just a title, but you can also add additional details like duration and notes."
-  text_meeting_empty_description2: 'You can also add references to existing work packages. When you do, related notes will automatically be visible in the work package''s "Meetings" tab.'
+  text_meeting_empty_description1: "Comece por adicionar os itens da agenda abaixo. Cada item pode ser tão simples como um título, mas também pode adicionar detalhes adicionais, como a duração e notas."
+  text_meeting_empty_description2: 'Também pode adicionar referências a pacotes de trabalho existentes. Ao fazê-lo, as notas relacionadas ficarão automaticamente visíveis no separador "Reuniões" do pacote de trabalho.'
   label_meeting_empty_action: "Adicionar item da agenda"
   label_meeting_actions: "Ações da reunião"
   label_meeting_edit_title: "Editar título da reunião"
@@ -364,9 +364,9 @@ pt-PT:
   label_agenda_item_move_to_backlog: "Move to backlog"
   label_agenda_item_move_to_current_meeting: "Move to current meeting"
   label_agenda_item_move_to_top: "Mover para o início"
-  label_agenda_item_move_to_bottom: "Mover para o fim"
-  label_agenda_item_move_up: "Mover para cima"
-  label_agenda_item_move_down: "Mover para baixo"
+  label_agenda_item_move_to_bottom: "Mover para o último"
+  label_agenda_item_move_up: "Subir"
+  label_agenda_item_move_down: "Descer"
   label_agenda_item_add_notes: "Adicionar notas"
   label_agenda_item_add_outcome: "Adicionar resultado"
   label_agenda_item_work_package: "Pacote de trabalho do ponto da ordem de trabalhos"
@@ -377,7 +377,7 @@ pt-PT:
   text_outcome_not_editable_anymore: "Este resultado já não pode ser editado."
   text_outcome_cannot_be_added: "An outcome can no longer be added."
   label_backlog_clear: "Clear backlog"
-  label_backlog_clear_button: "Clear all"
+  label_backlog_clear_button: "Limpar tudo"
   text_backlog_clear_error: "One or more errors occurred while trying to clear the backlog."
   label_agenda_backlog: "Agenda backlog"
   text_agenda_backlog: >

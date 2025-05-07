@@ -261,10 +261,7 @@ fa:
             We deliver the confidence of a tested and supported enterprise-class project management software - with Open Source and an open mind.
           link_quote: "Get a quote"
           more_info: "اطلاعات بیشتر"
-          text: >
-            نسخه انترپرایز اوپن‌پروژه بر پایه نسخه جامعه سازگاری دارد. این نسخه شامل افزونه‌های انترپرایز و پشتیبانی حرفه‌ای است که به‌طور اصلی برای سازمان‌ها با بیش از 10 کاربر طراحی شده است و پروژه‌های حیاتی تجاری خود را با استفاده از اوپن‌پروژه مدیریت می‌کنند.
           unlimited: "Unlimited"
-          you_contribute: "توسعه‌دهندگان هم نیاز به پرداخت قبوض دارند. با ارتقاء به نسخه انترپرایز، شما این تلاش جامعه متن باز را حمایت کرده و به توسعه، نگهداری و بهبود مداوم آن کمک خواهید کرد."
       working_days:
         calendar:
           empty_state_header: "Non-working days"
@@ -355,13 +352,13 @@ fa:
       blocks:
         new_features:
           text_new_features: "Read about new features and product updates."
-          learn_about: "Learn more about the new features"
+          learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_5":
+          "16_0":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Filter for descendants (children and grandchildren) of work packages.</li> <li>Benefit from advanced accessibility in the date picker.</li> <li>See % Complete included in work package table sums.</li> <li>Include a column for children in work package tables.</li> <li>Better use the date picker in mobile screens.</li> <li>PDF exports matching configured form layout.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "An error occured while fetching data."
@@ -528,7 +525,7 @@ fa:
     label_value_derived_from_children: "(value derived from children)"
     label_children_derived_duration: "Work package's children derived duration"
     label_warning: "Warning"
-    label_work_package: "بسته کاری"
+    label_work_package: "کاربسته"
     label_work_package_parent: "Parent work package"
     label_work_package_plural: "بسته های کاری"
     label_watch: "نگاه کردن"
@@ -1109,7 +1106,7 @@ fa:
         page_settings: "Rename view"
         delete: "حذف"
       filter: "فیلتر"
-      unselected_title: "بسته کاری"
+      unselected_title: "کاربسته"
       search_query_label: "Search saved views"
     modals:
       label_name: "نام"
@@ -1148,7 +1145,7 @@ fa:
       button_save_all: "ذخیره"
       button_cancel_all: "لغو"
       link_formatting_help: "Text formatting help"
-      btn_preview_enable: "پيش نمايش"
+      btn_preview_enable: "پیش‌نمایش"
       btn_preview_disable: "غیر فعال کردن پیش نمایش"
       null_value_label: "No value"
       clear_value_label: "-"

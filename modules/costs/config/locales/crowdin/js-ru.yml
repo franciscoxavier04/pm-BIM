@@ -30,6 +30,6 @@ ru:
       properties:
         overallCosts: "Общие затраты"
         spentUnits: "Затраченное количество"
-    button_log_costs: "Регистрировать затраты"
+    button_log_costs: "Внести расходы на единицу"
     label_hour: "час"
     label_hours: "часы"

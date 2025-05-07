@@ -89,7 +89,7 @@ bg:
           updated: "пренаредени"
         work_package:
           updated: "променен от %{old_value} на %{value}"
-          updated_html: "променен от %{old_value} на %{value}"
+          updated_html: "се променя от <i>%{old_value}</i> на <i>%{value}</i>"
   description_attended: "присъства"
   description_invite: "Поканен"
   events:
@@ -110,7 +110,7 @@ bg:
   label_meeting_edit: "Редактиране на срещата"
   label_meeting_agenda: "Дневен ред"
   label_meeting_minutes: "Минути"
-  label_meeting_close: "Close"
+  label_meeting_close: "Затворени"
   label_meeting_open: "Open"
   label_meeting_index_delete: "Изтрий"
   label_meeting_open_this_meeting: "Open this meeting"

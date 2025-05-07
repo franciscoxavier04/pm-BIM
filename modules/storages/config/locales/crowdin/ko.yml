@@ -275,28 +275,28 @@ ko:
         warnings:
           other: "%{count} checks returned a warning"
       connection_validation:
-        client_id_invalid: The configured OAuth 2 client id is invalid. Please check the configuration.
-        client_secret_invalid: The configured OAuth 2 client secret is invalid. Please check the configuration.
-        nc_dependency_missing: 'A required dependency is missing on the file storage. Please add the following dependency: %{dependency}.'
+        client_id_invalid: 구성된 OAuth 2 클라이언트 ID가 잘못되었습니다. 구성을 확인하세요.
+        client_secret_invalid: 구성된 OAuth 2 클라이언트 비밀번호가 잘못되었습니다. 구성을 확인하세요.
+        nc_dependency_missing: '파일 저장소에 필수 종속성이 누락되었습니다. 다음 종속성을 추가하세요: %{dependency}.'
         nc_dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
-        nc_group_folder_not_found: The group folder could not be found.
-        nc_host_not_found: No Nextcloud server found at the configured host url. Please check the configuration.
-        nc_oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
-        nc_oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
+        nc_group_folder_not_found: 그룹 폴더를 찾을 수 없습니다.
+        nc_host_not_found: 구성된 호스트 URL에서 Nextcloud 서버를 찾을 수 없습니다. 구성을 확인하세요.
+        nc_oauth_request_not_found: OpenProject가 현재 로그인된 사용자로 Nextcloud의 루트 폴더를 찾을 수 없습니다. 자세한 내용은 서버 로그를 확인하세요.
+        nc_oauth_request_unauthorized: 현재 사용자에게 Nextcloud의 기본 폴더를 볼 수 있는 권한이 없거나, 토큰을 얻지 못했습니다. 자세한 내용은 서버 로그를 확인하세요.
         nc_oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
-        nc_unexpected_content: Unexpected content found in the managed group folder.
-        nc_userless_access_denied: The configured app password is invalid.
+        nc_unexpected_content: 관리되는 그룹 폴더에서 예기치 않은 콘텐츠가 발견되었습니다.
+        nc_userless_access_denied: 구성된 앱 암호가 잘못되었습니다.
         not_configured: 연결에 대한 유효성 검사를 할 수 없습니다. 먼저 구성을 완료하세요.
-        od_client_cant_delete_folder: The client is having trouble deleting folders. Please check the setup documentation for your storage.
-        od_client_write_permission_missing: The client seems to have write permissions missing. Please check the setup documentation for your storage.
-        od_drive_id_invalid: The configured drive id seems invalid. Please check the configuration.
-        od_drive_id_not_found: The configured drive id could not be found. Please check the configuration.
-        od_existing_test_folder: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
+        od_client_cant_delete_folder: 클라이언트에서 폴더를 삭제하는 중에 문제가 발생했습니다. 저장소에 대한 설정 설명서를 확인하세요.
+        od_client_write_permission_missing: 클라이언트에 쓰기 권한이 없는 것 같습니다. 저장소에 대한 설정 설명서를 확인하세요.
+        od_drive_id_invalid: 구성된 드라이브 ID가 유효하지 않은 것 같습니다. 구성을 확인하세요.
+        od_drive_id_not_found: 구성된 드라이브 ID를 찾을 수 없습니다. 구성을 확인하세요.
+        od_existing_test_folder: 테스트에 필요한 %{folder_name} 폴더가 이미 있습니다. 이 폴더를 삭제한 후에 다시 시도하세요.
         od_oauth_request_not_found: OpenProject couldn't find the root folder in the drive using the current logged-in user. Please check the server logs for further information.
         od_oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive/SharePoint or we couldn't acquire a token. Please check the server logs for further information.
         od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
-        od_tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
-        od_unexpected_content: Unexpected content found in the drive.
+        od_tenant_id_wrong: 구성된 디렉터리(테넌트) ID가 잘못되었습니다. 구성을 확인하세요.
+        od_unexpected_content: 드라이브에서 예기치 않은 콘텐츠가 발견되었습니다.
         offline_access_scope_missing: It is recommended to configure the OpenID Connect provider to request the offline_access scope. The integration may still work anyways, but make sure that refresh tokens do not expire.
         oidc_cant_acquire_token: 해당 OpenID Connect 설정은 필요한 오디언스를 제공하지 않으며, 토큰 교환 기능도 제공하지 않습니다. 자세한 내용은 설명서를 확인하세요.
         oidc_cant_exchange_token: OpenID Connect 공급자의 Token Exchange 설정에 문제가 있는 것 같습니다. 해당 구성을 확인하고 다시 시도하세요.

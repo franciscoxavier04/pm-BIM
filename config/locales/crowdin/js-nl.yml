@@ -112,7 +112,7 @@ nl:
         inline: "Markeer inline:"
         entire_card_by: "Gehele kaart door"
       remove_from_list: "Verwijder kaart uit lijst"
-    caption_rate_history: "Beoordeel geschiedenis"
+    caption_rate_history: "Tarief geschiedenis"
     clipboard:
       browser_error: "Uw browser ondersteunt kopiëren naar het klembord niet. Kopieer het handmatig: %{content}"
       copied_successful: "Succesvol gekopieerd naar klembord!"
@@ -261,10 +261,7 @@ nl:
             We bieden het vertrouwen van een geteste en ondersteunde software voor projectbeheer van enterprise-class - met Open Source en een open geest.
           link_quote: "Vraag een offerte aan"
           more_info: "Meer informatie"
-          text: >
-            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
           unlimited: "Onbeperkt"
-          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
       working_days:
         calendar:
           empty_state_header: "Vrije dagen"
@@ -316,10 +313,10 @@ nl:
       label: "Gantt-grafiek"
       quarter_label: "Q%{quarter_number}"
       labels:
-        title: "Labelconfiguratie"
+        title: "Label configuratie"
         bar: "Bar etiketten"
-        left: "Links"
-        right: "Rechts"
+        left: "Linkerkant"
+        right: "Rechterkant"
         farRight: "Uiterst rechts"
         description: >
           Selecteer de attributen die u te allen tijde wilt laten zien in de respectieve posities van het Gantt-diagram. Merk op dat wanneer de muis over een element beweegt, de datum labels worden getoond in plaats van deze eigenschappen.
@@ -332,7 +329,7 @@ nl:
       zoom:
         in: "Inzoomen"
         out: "Uitzoomen"
-        auto: "Automatisch inzoomen"
+        auto: "Auto-zoom"
         days: "Dagen"
         weeks: "Weken"
         months: "Maanden"
@@ -355,13 +352,13 @@ nl:
       blocks:
         new_features:
           text_new_features: "Lees over nieuwe functies en product-updates."
-          learn_about: "Meer informatie over de nieuwe functies"
+          learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_5":
+          "16_0":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Filter for descendants (children and grandchildren) of work packages.</li> <li>Benefit from advanced accessibility in the date picker.</li> <li>See % Complete included in work package table sums.</li> <li>Include a column for children in work package tables.</li> <li>Better use the date picker in mobile screens.</li> <li>PDF exports matching configured form layout.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
     ical_sharing_modal:
       title: "Abonneren op agenda"
       inital_setup_error_message: "Er is een fout opgetreden tijdens het ophalen van gegevens."
@@ -459,7 +456,7 @@ nl:
     label_manage_columns: "Manage and reorder columns"
     label_me: "ik"
     label_meeting_agenda: "Agenda"
-    label_meeting_minutes: "Minuten"
+    label_meeting_minutes: "Notulen"
     label_menu_collapse: "samenvouwen"
     label_menu_expand: "uitbreiden"
     label_more_than_ago: "meer dan dagen geleden"
@@ -497,7 +494,7 @@ nl:
     label_repository_plural: "Repositories"
     label_save_as: "Opslaan als"
     label_search_columns: "Search a column"
-    label_select_project: "Kies een project"
+    label_select_project: "Selecteer een project"
     label_select_watcher: "Kies een toezichter..."
     label_selected_filter_list: "Geselecteerde filters"
     label_show_attributes: "Toon alle kenmerken"
@@ -542,7 +539,7 @@ nl:
     label_uploaded_by: "Geüpload door"
     label_default_queries: "Standaard"
     label_starred_queries: "Favoriete"
-    label_global_queries: "Openbaar"
+    label_global_queries: "Publiek"
     label_custom_queries: "Privé"
     label_columns: "Kolommen"
     label_attachments: Bijlagen
@@ -787,7 +784,7 @@ nl:
       tracking_time: "Tracking time"
       button_stop: "Stop current timer"
     two_factor_authentication:
-      label_two_factor_authentication: "Twee-factor-authenticatie"
+      label_two_factor_authentication: "Twee-staps authenticatie"
     watchers:
       label_loading: volgers worden geladen...
       label_error_loading: Er is een fout opgetreden tijdens het laden van de volgers
@@ -885,7 +882,7 @@ nl:
       wiki_link: "Link naar een Wiki-pagina"
       image: "Afbeelding"
     sharing:
-      share: "Delen"
+      share: "Deel"
       selected_count: "%{count} geselecteerd"
       selection:
         mixed: "Gemengd"
@@ -1174,7 +1171,7 @@ nl:
         other: "%{count} u"
         zero: "0 uur"
       day:
-        one: "1 dag"
+        one: "%{count} dag"
         other: "%{count} dagen"
         zero: "0 dagen"
       word:

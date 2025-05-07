@@ -13,8 +13,8 @@ sv:
   boards:
     label_board: "Tavla"
     label_boards: "Tavlor"
-    label_create_new_board: "Skapa ny bräda"
-    label_board_type: "Brädstyp"
+    label_create_new_board: "Skapa ny tavla"
+    label_board_type: "Typ av tavla"
     board_types:
       free: Enkel
       action: "Åtgärdstavla (%{attribute})"

@@ -7,7 +7,7 @@ ms:
   activerecord:
     attributes:
       two_factor_authentication/device:
-        identifier: "Pengenal"
+        identifier: "Pengenalan"
         default: "Guna sebagai default"
         channel: "Channel"
       two_factor_authentication/device/sms:
@@ -178,7 +178,7 @@ ms:
   label_expiration_hint: "%{date} atau pada log keluar"
   label_actions: "Tindakan"
   label_confirmed: "Disahkan"
-  button_continue: "Seterusnya"
+  button_continue: "Teruskan"
   button_make_default: "Tandakan sebagai default"
   label_unverified_phone: "Telefon bimbit masih belum disahkan "
   notice_phone_number_format: "Sila masukkan nombor dalam format berikut: +XX XXXXXXXX."

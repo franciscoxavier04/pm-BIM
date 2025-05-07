@@ -352,7 +352,7 @@ ja:
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
       header_details: Basic details
-      header_status: Project status
+      header_status: プロジェクトの進捗状況
       header_relations: Project relations
       button_update_details: Update details
       button_update_status_description: Update status description
@@ -627,9 +627,9 @@ ja:
         token:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "ワーク パッケージ"
+            parent: "親項目"
+            project: "プロジェクト"
         pattern:
           label: "Subject pattern"
           caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
@@ -770,7 +770,7 @@ ja:
       new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "関連するワークパッケージを現在の(親)ワークパッケージのサブ項目にします。"
-      parent: "Parent"
+      parent: "親項目"
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "ブロックしている"
@@ -950,7 +950,7 @@ ja:
           on_track: "順調"
           at_risk: "リスクあり"
           off_track: "脱線"
-          finished: "完了しました"
+          finished: "完了"
           discontinued: "中止"
         templated: "テンプレートプロジェクト"
         templated_value:
@@ -973,7 +973,7 @@ ja:
         finish_gate: "Finish phase gate"
         finish_gate_name: "Finish phase gate name"
       query:
-        sums: "Sums"
+        sums: "合計"
         columns: "列"
         column_names: "列"
         relations_to_type_column: "%{type} との関連"
@@ -999,7 +999,7 @@ ja:
         results: "検索結果"
       relation:
         lag: "Lag"
-        from: "関連するワークパッケージ"
+        from: "関係するワークパッケージ"
         to: "関係するワークパッケージ"
         relation_type: "Relation type"
       reminder:
@@ -1083,7 +1083,7 @@ ja:
         derived_done_ratio: "完了率"
         derived_remaining_hours: "残りの作業"
         derived_remaining_time: "残りの作業"
-        done_ratio: "% Complete"
+        done_ratio: "完成(%)"
         duration: "期間"
         end_insertion: "挿入の終わり"
         end_deletion: "削除の終わり"
@@ -1423,11 +1423,11 @@ ja:
               only_same_project_categories_allowed: "ワークパッケージのカテゴリは、同じプロジェクト内にそのワークパッケージでなければなりません。"
               does_not_exist: "指定されたカテゴリは存在しません。"
             estimated_hours:
-              not_a_number: "は有効な日時ではありません。"
+              not_a_number: "は有効な日付ではありません。"
               cant_be_inferior_to_remaining_work: "cannot be lower than Remaining work."
               must_be_set_when_remaining_work_and_percent_complete_are_set: "required when Remaining work and % Complete are set."
             remaining_hours:
-              not_a_number: "は有効な日付ではありません。"
+              not_a_number: "は有効な日時ではありません。"
               cant_exceed_work: "cannot be higher than Work."
               must_be_set_when_work_is_set: "required when Work is set."
               must_be_set_when_work_and_percent_complete_are_set: "required when Work and % Complete are set."
@@ -1510,7 +1510,7 @@ ja:
         other: "Notifications"
       placeholder_user: "プレースホルダー ユーザー"
       project:
-        other: "Projects"
+        other: "プロジェクト"
       project_query:
         other: "プロジェクト一覧"
       query: "ユーザのクエリ"
@@ -1976,11 +1976,15 @@ ja:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
       work_package_subject_generation:
@@ -2206,7 +2210,7 @@ ja:
       title: Generate PDF
       submit: ダウンロード
       templates:
-        label: "Template"
+        label: "テンプレート"
         none_enabled: "No template has been enabled for this work package type"
       footer_center:
         label: Footer text
@@ -2815,7 +2819,7 @@ ja:
   label_privacy_policy: "データのプライバシーとセキュリティポリシー"
   label_product_version: "製品バージョ​​ン"
   label_profile: "プロファイル"
-  label_percent_complete: "% Complete"
+  label_percent_complete: "完成(%)"
   label_progress_tracking: "Progress tracking"
   label_project: "プロジェクト"
   label_project_activity: "Project activity"
@@ -3885,7 +3889,7 @@ ja:
       display_format: "Display format"
       deletion: "削除"
     working_days:
-      section_work_week: "Work week"
+      section_work_week: "作業週"
       section_holidays_and_closures: "Holidays and closures"
     work_packages:
       not_allowed_text: "You do not have the necessary permissions to view this page."

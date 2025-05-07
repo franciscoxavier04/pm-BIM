@@ -59,7 +59,7 @@ de:
       plural: SAML-Identitätsanbieter
       singular: SAML-Identitätsanbieter
       requested_attributes: Angeforderte Attribute
-      attribute_mapping: Attributzuordnung
+      attribute_mapping: Zuordnen von Attributen
       attribute_mapping_text: >
         Die folgenden Felder steuern, welche vom SAML-Identitätsanbieter bereitgestellten Attribute verwendet werden, um Benutzerattribute in OpenProject bereitzustellen
       metadata:

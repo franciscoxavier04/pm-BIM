@@ -261,10 +261,7 @@ ko:
             오픈 소스와 오픈 마인드로, 테스트를 거치고 지원이 제공되는 엔터프라이즈급 프로젝트 관리 소프트웨어에 대한 신뢰를 전해드립니다.
           link_quote: "견적 받기"
           more_info: "더보기"
-          text: >
-            OpenProject Enterprise Edition은 Community Edition 위에서 빌드됩니다. OpenProject로 비즈니스 크리티컬 프로젝트를 관리하는 사용자가 10명이 넘는 조직을 주로 타겟으로 하는 Enterprise 추가 기능과 전문 지원이 제공됩니다.
           unlimited: "무제한"
-          you_contribute: "개발자도 요금을 지불해야 합니다. Enterprise Edition으로 업그레이드하면 오픈 소스 커뮤니티의 이러한 노력을 지원하고 개발, 유지 관리 및 지속적인 개선에 기여할 수 있습니다."
       working_days:
         calendar:
           empty_state_header: "휴무일"
@@ -355,13 +352,13 @@ ko:
       blocks:
         new_features:
           text_new_features: "새로운 기능 및 제품 업데이트에 대해 읽어보십시오."
-          learn_about: "새로운 기능에 대해 자세히 알아보기"
+          learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_5":
+          "16_0":
             standard:
               new_features_html: >
-                이 릴리스에서는 사용자를 위한 다음과 같은 다양한 기능과 개선 사항이 제공됩니다. <br> <ul class="%{list_styling_class}"> <li>작업 패키지의 하위 항목(자식 및 손자)을 필터링합니다.</li> <li>날짜 선택기의 고급 접근성을 지원합니다.</li> <li>작업 패키지 테이블 합계에 포함된 완료 %가 표시됩니다.</li> <li>작업 패키지 테이블에 자식에 대한 열이 포함됩니다.</li> <li>모바일 화면에서 날짜 선택기를 보다 효율적으로 사용합니다.</li> <li>구성된 양식 레이아웃과 일치하는 PDF를 내보냅니다.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
     ical_sharing_modal:
       title: "캘린더 구독"
       inital_setup_error_message: "데이터를 가져오는 중에 오류가 발생했습니다."

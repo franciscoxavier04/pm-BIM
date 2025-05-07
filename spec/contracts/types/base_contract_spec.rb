@@ -38,14 +38,14 @@ RSpec.describe Types::BaseContract do
 
   describe "#validation" do
     context "if subject generation patterns contains invalid tokens" do
-      let(:valid_tokens_hash) { { work_package: { assignee: "Assignee" } } }
+      let(:valid_tokens) { [Types::Patterns::AttributeToken.new(:assignee, nil, nil)] }
       let(:work_package_type) do
         Type.new(patterns: { subject: { blueprint: "Vacation {{vaders_toy}}", enabled: true } })
       end
 
       before do
         token_mapper_double = instance_double(Types::Patterns::TokenPropertyMapper)
-        allow(token_mapper_double).to receive(:tokens_for_type).and_return(valid_tokens_hash)
+        allow(token_mapper_double).to receive(:tokens_for_type).and_return(valid_tokens)
         allow(Types::Patterns::TokenPropertyMapper).to receive(:new).and_return(token_mapper_double)
       end
 
