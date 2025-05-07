@@ -48,8 +48,8 @@ ja:
         default_rates: "デフォルト原価率"
       time_entry:
         project: プロジェクト
-        user: ユーザー
-        work_package: ワークパッケージ
+        user: ユーザ
+        work_package: ワーク パッケージ
         subject: タイトル
         hours: ' 時間'
         comments: コメント
@@ -89,7 +89,7 @@ ja:
   button_log_costs: "単価を記録"
   button_log_time: "ログ"
   button_add_activity: "活動"
-  button_add_time_entry: "Log time"
+  button_add_time_entry: "時間を記録"
   caption_booked_on_project: "プロジェクトの予約"
   caption_default: "デフォルト"
   caption_default_rate_history_for: "%{user} のデフォルト率の履歴"
@@ -191,8 +191,9 @@ ja:
   project_module_costs: "時間とコスト"
   setting_allow_tracking_start_and_end_times: "正確な作業時間の記録を許可する"
   setting_costs_currency: "通貨"
-  setting_costs_currency_format: "通貨の書式"
+  setting_costs_currency_format: "通貨の形式"
   setting_enforce_tracking_start_and_end_times: "正確な時間が必要"
+  setting_enforce_without_allow: "Requiring exact times is not possible without allowing them"
   text_assign_time_and_cost_entries_to_project: "報告された時間とコストをプロジェクトに割り当てる"
   text_destroy_cost_entries_question: "削除しようとしている作業項目が%{cost_entries} 件報告されました。どうしますか？"
   text_destroy_time_and_cost_entries: "報告された時間とコストを削除する"

@@ -200,7 +200,7 @@ ca:
       label_edit_color: "Edita el color"
     form:
       label_new_color: "Nou color"
-      label_edit_color: "Edita el color"
+      label_edit_color: "Editar el color"
     label_no_color: "Sense color"
     label_properties: "Propietats"
     label_really_delete_color: >
@@ -351,7 +351,7 @@ ca:
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
       header_details: Basic details
-      header_status: Project status
+      header_status: Estat del projecte
       header_relations: Project relations
       button_update_details: Update details
       button_update_status_description: Update status description
@@ -408,7 +408,7 @@ ca:
       types:
         no_results_title_text: Actualment no hi ha cap classe disponible.
         form:
-          enable_type_in_project: 'Activar tipus "%{type}"'
+          enable_type_in_project: 'Permetre classe "%{type}"'
       versions:
         no_results_title_text: Actualment no hi ha cap versió per al projecte.
         no_results_content_text: Crear una nova versió
@@ -634,9 +634,9 @@ ca:
         token:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Paquet de treball"
+            parent: "Pare"
+            project: "Projecte"
         pattern:
           label: "Subject pattern"
           caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
@@ -778,7 +778,7 @@ ca:
       new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
-      parent: "Parent"
+      parent: "Pare"
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "blocs"
@@ -1522,8 +1522,8 @@ ca:
         other: "Notificacions"
       placeholder_user: "Usuari de marcador de posició"
       project:
-        one: "Project"
-        other: "Projects"
+        one: "Projecte"
+        other: "Projectes"
       project_query:
         one: "Project list"
         other: "Llistes de projectes"
@@ -2017,11 +2017,15 @@ ca:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Destaca canvis efectuats en aquesta llista des de qualsevol punt del passat.
       work_package_subject_generation:

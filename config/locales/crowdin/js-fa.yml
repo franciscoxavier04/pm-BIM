@@ -261,10 +261,7 @@ fa:
             We deliver the confidence of a tested and supported enterprise-class project management software - with Open Source and an open mind.
           link_quote: "Get a quote"
           more_info: "اطلاعات بیشتر"
-          text: >
-            نسخه انترپرایز اوپن‌پروژه بر پایه نسخه جامعه سازگاری دارد. این نسخه شامل افزونه‌های انترپرایز و پشتیبانی حرفه‌ای است که به‌طور اصلی برای سازمان‌ها با بیش از 10 کاربر طراحی شده است و پروژه‌های حیاتی تجاری خود را با استفاده از اوپن‌پروژه مدیریت می‌کنند.
           unlimited: "Unlimited"
-          you_contribute: "توسعه‌دهندگان هم نیاز به پرداخت قبوض دارند. با ارتقاء به نسخه انترپرایز، شما این تلاش جامعه متن باز را حمایت کرده و به توسعه، نگهداری و بهبود مداوم آن کمک خواهید کرد."
       working_days:
         calendar:
           empty_state_header: "Non-working days"
@@ -527,7 +524,7 @@ fa:
     label_value_derived_from_children: "(value derived from children)"
     label_children_derived_duration: "Work package's children derived duration"
     label_warning: "Warning"
-    label_work_package: "بسته کاری"
+    label_work_package: "کاربسته"
     label_work_package_parent: "Parent work package"
     label_work_package_plural: "بسته های کاری"
     label_watch: "نگاه کردن"
@@ -1108,7 +1105,7 @@ fa:
         page_settings: "Rename view"
         delete: "حذف"
       filter: "فیلتر"
-      unselected_title: "بسته کاری"
+      unselected_title: "کاربسته"
       search_query_label: "Search saved views"
     modals:
       label_name: "نام"
@@ -1147,7 +1144,7 @@ fa:
       button_save_all: "ذخیره"
       button_cancel_all: "لغو"
       link_formatting_help: "Text formatting help"
-      btn_preview_enable: "پيش نمايش"
+      btn_preview_enable: "پیش‌نمایش"
       btn_preview_disable: "غیر فعال کردن پیش نمایش"
       null_value_label: "No value"
       clear_value_label: "-"

@@ -260,10 +260,7 @@ zh-TW:
             我們秉承開源和開放心態，有信心提供經得起考驗和充分支持的企業級項目管理軟件。
           link_quote: "獲取報價"
           more_info: "更多資訊"
-          text: >
-            OpenProject企業版是在社區版的基礎上構建的。它包括企業版外掛和專業支持，主要對象為使用OpenProject管理業務關鍵項目的具有10個以上用戶的組織。
           unlimited: "無限"
-          you_contribute: "開發者也需要支付他們的賬單。 通過升級到企業版，您將支持這個開放源碼社區的努力，並有助於其發展、維護和不斷改進。"
       working_days:
         calendar:
           empty_state_header: "非工作日"

@@ -354,7 +354,7 @@ fa:
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
       header_details: Basic details
-      header_status: Project status
+      header_status: وضعیت پروژه
       header_relations: Project relations
       button_update_details: Update details
       button_update_status_description: Update status description
@@ -637,9 +637,9 @@ fa:
         token:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "کاربسته"
+            parent: "بالادستی"
+            project: "پروژه"
         pattern:
           label: "Subject pattern"
           caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
@@ -781,7 +781,7 @@ fa:
       new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
-      parent: "Parent"
+      parent: "بالادستی"
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "blocks"
@@ -1525,8 +1525,8 @@ fa:
         other: "Notifications"
       placeholder_user: "Placeholder user"
       project:
-        one: "Project"
-        other: "Projects"
+        one: "پروژه"
+        other: "پروژه‌ها"
       project_query:
         one: "Project list"
         other: "Project lists"
@@ -1543,7 +1543,7 @@ fa:
       user: "کاربر"
       version: "نسخه"
       workflow: "Workflow"
-      work_package: "بسته کاری"
+      work_package: "کاربسته"
       wiki: "دانشنامه"
       wiki_page: "Wiki page"
   errors:
@@ -1647,7 +1647,7 @@ fa:
     public: "عمومی"
     principal: "User or group"
     #kept for backwards compatibility
-    issue: "بسته کاری"
+    issue: "کاربسته"
     journal: "Journal"
     journal_notes: "نظر"
     lastname: "نام خانوادگی"
@@ -1694,7 +1694,7 @@ fa:
     values: "Values"
     version: "نسخه"
     visible: "قابل مشاهده"
-    work_package: "بسته کاری"
+    work_package: "کاربسته"
     work_package_id: "کاربسته"
   backup:
     failed: "Backup failed"
@@ -2020,11 +2020,15 @@ fa:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
       work_package_subject_generation:
@@ -2517,7 +2521,7 @@ fa:
   label_browse: "Browse"
   label_bulk_edit_selected_work_packages: "Bulk edit selected work packages"
   label_bundled: "(Bundled)"
-  label_calendar: "تقویم"
+  label_calendar: "تقویم‌ها"
   label_calendars_and_dates: "Calendars and dates"
   label_calendar_show: "نمایش تقویم"
   label_category: "Category"
@@ -2663,7 +2667,7 @@ fa:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "General"
   label_generate_key: "Generate a key"
-  label_global_roles: "Global roles"
+  label_global_roles: "نقش‌های جهانی"
   label_git_path: "Path to .git directory"
   label_greater_or_equal: ">="
   label_group_by: "گروه‌بندی بر اساس"
@@ -2819,7 +2823,7 @@ fa:
   label_operator_none: "is empty"
   label_operator_equals_or: "is (OR)"
   label_operator_equals_all: "is (AND)"
-  label_operator_shared_with_user_any: "any"
+  label_operator_shared_with_user_any: "هرکدام"
   label_open_menu: "باز کردن منو"
   label_open_work_packages: "باز"
   label_open_work_packages_plural: "باز"
@@ -2851,7 +2855,7 @@ fa:
   label_modules_and_plugins: "Modules and Plugins"
   label_precedes: "precedes"
   label_preferences: "Preferences"
-  label_preview: "پيش نمايش"
+  label_preview: "پیش‌نمایش"
   label_preview_not_available: "Preview not available"
   label_previous: "Previous"
   label_previous_week: "Previous week"
@@ -3050,7 +3054,7 @@ fa:
   label_wiki_show_submenu_item: "Show as submenu item of "
   label_wiki_start: "صفحه‌ی شروع"
   label_work: "Work"
-  label_work_package: "بسته کاری"
+  label_work_package: "کاربسته"
   label_work_package_attachments: "پیوست بسته کاری"
   label_work_package_category_new: "New category"
   label_work_package_category_plural: "Work package categories"

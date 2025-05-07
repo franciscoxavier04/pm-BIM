@@ -354,7 +354,7 @@ af:
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
       header_details: Basic details
-      header_status: Project status
+      header_status: Projek status
       header_relations: Project relations
       button_update_details: Update details
       button_update_status_description: Update status description
@@ -637,9 +637,9 @@ af:
         token:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Werkspakket"
+            parent: "Ouer"
+            project: "Projek"
         pattern:
           label: "Subject pattern"
           caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
@@ -781,7 +781,7 @@ af:
       new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
-      parent: "Parent"
+      parent: "Ouer"
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "blokke"
@@ -1525,8 +1525,8 @@ af:
         other: "Notifications"
       placeholder_user: "Placeholder user"
       project:
-        one: "Project"
-        other: "Projects"
+        one: "Projek"
+        other: "Projekte"
       project_query:
         one: "Project list"
         other: "Project lists"
@@ -2020,11 +2020,15 @@ af:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
       work_package_subject_generation:

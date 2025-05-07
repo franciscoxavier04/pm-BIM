@@ -260,10 +260,7 @@ sl:
             Zagotavljamo zaupanje preizkušene in podprte programske opreme za upravljanje projektov v podjetniškem razredu - z odprto kodo in odprto miselnostjo.
           link_quote: "Pridobite ponudbo"
           more_info: "Več informacij"
-          text: >
-            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
           unlimited: "Neomejeno"
-          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
       working_days:
         calendar:
           empty_state_header: "Non-working days"
@@ -469,7 +466,7 @@ sl:
     label_no_start_date: "Brez začetnega datuma"
     label_no_date: "no date"
     label_no_value: "Brez vrednosti"
-    label_none: "Brez"
+    label_none: "brez"
     label_not_contains: "ne vsebuje"
     label_not_equals: "ni"
     label_on: "vključeno"
@@ -526,7 +523,7 @@ sl:
     label_value_derived_from_children: "(vrednost izpeljana iz podrejenih)"
     label_children_derived_duration: "Trajanje podrazredov delovnih paketov."
     label_warning: "Opozorilo"
-    label_work_package: "Zahtevek"
+    label_work_package: "Delovni paket"
     label_work_package_parent: "Nadrazred delovnega paketa"
     label_work_package_plural: "Delovni paketi"
     label_watch: "Glej"
@@ -1109,7 +1106,7 @@ sl:
         page_settings: "Preimenuj pogled"
         delete: "Izbriši"
       filter: "Filtriraj"
-      unselected_title: "Zahtevek"
+      unselected_title: "Delovni paket"
       search_query_label: "Išči shranjenje poglede"
     modals:
       label_name: "Ime"

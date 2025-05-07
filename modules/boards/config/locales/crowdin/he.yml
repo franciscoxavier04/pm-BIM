@@ -16,7 +16,7 @@ he:
     label_create_new_board: "ליצור לוח חדש"
     label_board_type: "סוג לוח"
     board_types:
-      free: בסיס
+      free: בסיסי
       action: "לוח פעולות (%{attribute})"
     board_type_attributes:
       assignee: משויך אל

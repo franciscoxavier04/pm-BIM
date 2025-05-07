@@ -261,10 +261,7 @@ pt-PT:
             Fornecemos toda a segurança de um software de gestão de projetos de classe empresarial, testado e com suporte - com Open Source e mente aberta.
           link_quote: "Fazer uma simulação"
           more_info: "Mais informação"
-          text: >
-            O OpenProject Enterprise Edition é construído a partir da edição Community. Inclui complementos Enterprise e suporte profissional, dirigido sobretudo a organizações com mais de 10 utilizadores que gerem projetos de negócios críticos com o OpenProject.
           unlimited: "Ilimitado"
-          you_contribute: "Os desenvolvedores também têm contas a pagar. Ao atualizar para a edição Enterprise, está a apoiar este esforço da comunidade de código aberto e a contribuir para o seu desenvolvimento, manutenção e melhoria contínuos."
       working_days:
         calendar:
           empty_state_header: "Dias não úteis"
@@ -295,7 +292,7 @@ pt-PT:
       embedded_table_loading: "Não foi possível carregar a vista incorporada: %{message}"
     enumeration_activities: "Actividades (tempo)"
     enumeration_doc_categories: "Categorias de documentos"
-    enumeration_work_package_priorities: "Prioridades de tarefas"
+    enumeration_work_package_priorities: "Prioridades do pacote de trabalho"
     filter:
       more_values_not_shown: "Há mais %{total} resultados, pesquise para filtrar resultados."
       description:
@@ -387,7 +384,7 @@ pt-PT:
     label_added_time_by: 'Adicionado por <a href="%{authorLink}">%{author}</a> a %{age}'
     label_ago: "dias atrás"
     label_all: "todos"
-    label_all_uppercase: "Todos"
+    label_all_uppercase: "Todas"
     label_all_work_packages: "todas as tarefas"
     label_and: "e"
     label_ascending: "Ascendente"
@@ -529,7 +526,7 @@ pt-PT:
     label_warning: "Aviso"
     label_work_package: "Pacote de trabalho"
     label_work_package_parent: "Pacote de trabalho pai"
-    label_work_package_plural: "Tarefas"
+    label_work_package_plural: "Pacotes de trabalho"
     label_watch: "Observar"
     label_watch_work_package: "Observar tarefa"
     label_watcher_added_successfully: "Observador adicionado com sucesso!"
@@ -677,7 +674,7 @@ pt-PT:
             description: "Receber uma notificação sempre que alguém me mencionar em qualquer lugar"
           assignee: "Responsável"
           responsible: "Responsável"
-          shared: "Compartilhado"
+          shared: "Partilhado"
           watched: "Observador"
           work_package_commented: "Todos os novos comentários"
           work_package_created: "Novos pacotes de trabalho"
@@ -932,7 +929,7 @@ pt-PT:
       inline_create:
         title: "Clique aqui para adicionar um novo pacote de trabalho a esta lista"
       create:
-        title: "Nova tarefa"
+        title: "Novo pacote de trabalho"
         header: "Nova %{type}"
         header_no_type: "Novo pacote de trabalho (tipo ainda não definido)"
         header_with_parent: "Nova %{type} (Filho de %{parent_type} #%{id})"
@@ -1173,7 +1170,7 @@ pt-PT:
         other: "%{count} h"
         zero: "0 h"
       day:
-        one: "1 dia"
+        one: "Um dia"
         other: "%{count} dias"
         zero: "0 dias"
       word:
@@ -1294,7 +1291,7 @@ pt-PT:
       show_changes_since: "Mostrar alterações desde"
       help_description: "Fuso horário de referência para a linha de base."
       time_description: "No seu horário local: %{datetime}"
-      time: "Tempo"
+      time: "Hora"
       from: "De"
       to: "Para"
       drop_down:
