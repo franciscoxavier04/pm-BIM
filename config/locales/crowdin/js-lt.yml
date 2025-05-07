@@ -261,10 +261,7 @@ lt:
             Mes duodame patikrintos ir palaikomas korporacijos-lygio projektų valdymo programos užtikrintumą -- su atviru kodu ir plačiomis pažiūromis.
           link_quote: "Gauti pasiūlymą"
           more_info: "Daugiau informacijos"
-          text: >
-            OpenProject Enterprise versija yra pastatyta virš Bendruomenės versijos. Papildomai įdėti „premium“ priedai ir profesionalus aptarnavimas, pagrinde orientuotas į organizacijas su daugiau nei 10 vartotojų, kurie naudodami OpenProject valdo verslui kritinius projektus.
           unlimited: "Neribota"
-          you_contribute: "Vystotojams taip pat reikia apmokėti sąskaitas. Pereidami į Enterprise versiją, jūs paremsite šį atviro kodo bendruomenės projektą ir prisidėsite prie jo vystymo, palaikymo ir pastovaus tobulinimo."
       working_days:
         calendar:
           empty_state_header: "Nedarbo dienos"

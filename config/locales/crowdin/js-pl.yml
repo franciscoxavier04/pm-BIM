@@ -261,10 +261,7 @@ pl:
             Dostarczamy sprawdzone i wspierane oprogramowanie klasy korporacyjnej do zarządzania projektami — z otwartym kodem źródłowym i otwartym umysłem.
           link_quote: "Uzyskaj wycenę"
           more_info: "Więcej informacji"
-          text: >
-            Edycja OpenProject Enterprise opiera się na edycji społecznośiowej. Zawiera dodatki dla Entrprise i profesjonalne wsparcie skierowane głównie do organizacji z ponad 10 użytkownikami, które zarządzają projektami o kluczowym znaczeniu dla biznesu za pomocą OpenProject.
           unlimited: "Bez ograniczeń"
-          you_contribute: "Deweloperzy również muszą płacić rachunki. Poprzez przejście na wersję Enterprise będziesz wspierać ten wysiłek społeczności open source i przyczyniać się do jej rozwoju, utrzymania i ciągłego doskonalenia."
       working_days:
         calendar:
           empty_state_header: "Dni nierobocze"
@@ -387,7 +384,7 @@ pl:
     label_added_time_by: 'Dodany przez <a href="%{authorLink}">%{author}</a> o %{age}'
     label_ago: "dni temu"
     label_all: "wszystkie"
-    label_all_uppercase: "Wszystko"
+    label_all_uppercase: "Wszystkie"
     label_all_work_packages: "wszystkie pakiety pracy"
     label_and: "i"
     label_ascending: "Rosnąco"
@@ -678,7 +675,7 @@ pl:
           mentioned:
             title: "Wzmianka"
             description: "Otrzymuj powiadomienie za każdym razem, gdy pojawi się o tobie wzmianka gdziekolwiek"
-          assignee: "Przypisana osoba"
+          assignee: "Przypisany do"
           responsible: "Osoba odpowiedzialna"
           shared: "Udostępniono"
           watched: "Obserwator"
@@ -695,7 +692,7 @@ pl:
             title: "Brak uczestnictwa"
             description: "Dodatkowe powiadomienia dotyczące działań we wszystkich projektach"
           date_alerts:
-            title: "Data ostrzeżeń"
+            title: "Alerty dotyczące dat"
             description: "Automatyczne powiadomienia, gdy zbliżają się ważne daty otwartych pakietów roboczych, do których Cię zaangażowano (jako osobę: przypisaną, odpowiedzialną lub obserwatora)"
           overdue: Po upływie terminu
         project_specific:
@@ -1303,7 +1300,7 @@ pl:
       show_changes_since: "Pokaż zmiany od"
       help_description: "Referencyjna strefa czasowa linii odniesienia."
       time_description: "W Twoim czasie lokalnym: %{datetime}"
-      time: "Czas"
+      time: "Godzina"
       from: "Od"
       to: "Do"
       drop_down:

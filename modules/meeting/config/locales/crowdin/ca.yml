@@ -341,8 +341,8 @@ ca:
   text_meeting_minutes_for_meeting: 'actes per la reunió "%{meeting}"'
   text_notificiation_invited: "Aquest correu compte una entrada ICS per a reunió següent:"
   text_meeting_empty_heading: "La reunió està buida"
-  text_meeting_empty_description1: "Start by adding agenda items below. Each item can be as simple as just a title, but you can also add additional details like duration and notes."
-  text_meeting_empty_description2: 'You can also add references to existing work packages. When you do, related notes will automatically be visible in the work package''s "Meetings" tab.'
+  text_meeting_empty_description1: "Comença afegint elements d'agenda a sota. Cada element pot ser tan simple com un títol, però també es pot afegir detalls extres com la duració o notes."
+  text_meeting_empty_description2: 'També pots referenciar paquets de treball existents. En fer-ho, les notes relacionades apareixeran automàticament a la pestanya "Reunions" del paquet de treball.'
   label_meeting_empty_action: "Afegeix element d'agenda"
   label_meeting_actions: "Accions de la reunió"
   label_meeting_edit_title: "Edita el títol de la reunió"
@@ -377,7 +377,7 @@ ca:
   text_outcome_not_editable_anymore: "This outcome is not editable anymore."
   text_outcome_cannot_be_added: "An outcome can no longer be added."
   label_backlog_clear: "Clear backlog"
-  label_backlog_clear_button: "Clear all"
+  label_backlog_clear_button: "Esborra-ho tot"
   text_backlog_clear_error: "One or more errors occurred while trying to clear the backlog."
   label_agenda_backlog: "Agenda backlog"
   text_agenda_backlog: >

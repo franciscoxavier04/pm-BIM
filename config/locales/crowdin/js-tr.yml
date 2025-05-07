@@ -261,10 +261,7 @@ tr:
             Açık Kaynak ve açık fikirli olmak üzere, test edilmiş ve desteklenen bir kurumsal sınıf proje yönetimi yazılımının güvenini sunuyoruz.
           link_quote: "Fiyat teklifi alın"
           more_info: "Daha fazla bilgi"
-          text: >
-            OpenProject Enterprise sürümü, Community sürümünün üzerine kuruludur. OpenProject ile iş açısından kritik projeleri yöneten 10'dan fazla kullanıcısı olan kuruluşlara yönelik Kurumsal eklentiler ve profesyonel destek içerir.
           unlimited: "Sınırsız"
-          you_contribute: "Geliştiricilerin de faturalarını ödemeleri gerekiyor. Enterprise sürümüne yükselterek, bu açık kaynak topluluk çabasını destekleyecek ve geliştirilmesine, sürdürülmesine ve sürekli iyileştirilmesine katkıda bulunacaksınız."
       working_days:
         calendar:
           empty_state_header: "Çalışılmayan günler"
@@ -322,7 +319,7 @@ tr:
         farRight: "Uzak sağ"
         description: >
           Her zaman Gantt şemasının ilgili konumlarında gösterilmesini istediğiniz nitelikleri seçin. Bir öğenin üzerine gelindiğinde, bu nitelikler yerine tarih etiketlerinin gösterileceğini unutmayın.
-      button_activate: "İş-Zaman çizelgesi göster"
+      button_activate: "Gantt grafiğini göster"
       button_deactivate: "İş-Zaman çizelgesi gizle."
       filter:
         noneSelection: "(yok)"
@@ -447,7 +444,7 @@ tr:
     label_incoming_emails: "Gelen e-postalar"
     label_information_plural: "Bilgi"
     label_invalid: "Geçersiz"
-    label_import: "İçeri Aktar"
+    label_import: "İçeri aktar"
     label_latest_activity: "En son etkinlik"
     label_last_updated_on: "Son güncelleme"
     label_learn_more_link: "Daha fazla bilgi edin"
@@ -455,10 +452,10 @@ tr:
     label_less_than_ago: "bir haftadan kısa bir süre önce"
     label_loading: "Yükleniyor..."
     label_mail_notification: "E-posta bildirimleri"
-    label_manage_columns: "Sütunları yeniden sırala ve yönet"
+    label_manage_columns: "Sütunları yönet ve yeniden sırala"
     label_me: "ben"
     label_meeting_agenda: "Gündem"
-    label_meeting_minutes: "Dakika"
+    label_meeting_minutes: "Notlar"
     label_menu_collapse: "çöküş"
     label_menu_expand: "genişlet"
     label_more_than_ago: "günler önce"
@@ -492,7 +489,7 @@ tr:
     label_remove_column: "Sütunu kaldır"
     label_remove_columns: "Seçili sütunları sil"
     label_remove_row: "Satırı kaldır"
-    label_report: "Rapor (bildiri)"
+    label_report: "Rapor"
     label_repository_plural: "Depolar"
     label_save_as: "Farklı Kaydet"
     label_search_columns: "Bir sütunda arama yap"
@@ -510,7 +507,7 @@ tr:
     label_star_query: "Favori"
     label_press_enter_to_save: "Kaydetmek için enter tuşuna basın."
     label_public_query: "Herkese Açık"
-    label_sum: "toplam\n"
+    label_sum: "Toplam"
     label_sum_for: "Toplam"
     label_total_sum: "Toplam miktar"
     label_subject: "Konu"
@@ -541,7 +538,7 @@ tr:
     label_uploaded_by: "Yükleyen"
     label_default_queries: "Varsayılan"
     label_starred_queries: "Sık Kullanılan"
-    label_global_queries: "Genel"
+    label_global_queries: "Herkese Açık"
     label_custom_queries: "Özel"
     label_columns: "Sütunlar"
     label_attachments: Ekler
@@ -621,7 +618,7 @@ tr:
         processed: "İşlendi"
         prioritized: "Öncelikli"
         dateAlert: "Tarih uyarısı"
-        shared: "Paylaşılan"
+        shared: "Paylaşıldı"
         reminder: "Hatırlatma"
       date_alerts:
         milestone_date: "Kilometre taşı tarihi"
@@ -634,15 +631,15 @@ tr:
       center:
         label_actor_and: "ve"
         and_more_users:
-          one: "ve 1 diğer"
-          other: "ve %{count} diğer"
+          one: "ve 1 diğeri"
+          other: "ve %{count} tane daha"
         no_results:
           at_all: "Sizi ilgilendiren bir etkinlik olduğunda yeni bildirimler burada görünecektir."
           with_current_filter: "Şu anda bu görünümde bildirim yok"
         mark_all_read: "Tümünü okundu olarak işaretle"
         mark_as_read: "Okundu olarak işaretle"
         mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
-        text_update_date_by: "%{date}"
+        text_update_date_by: "%{date} tarafından"
         total_count_warning: "En yeni %{newest_count} bildirim gösteriliyor. %{more_count} tane daha görüntülenmiyor."
         empty_state:
           no_notification: "Görünüşe göre yapacağınız bir şey kalmadı."
@@ -678,7 +675,7 @@ tr:
           assignee: "Atanan"
           responsible: "Sorumlu"
           shared: "Paylaşıldı"
-          watched: "Takip eden"
+          watched: "Takip edilen"
           work_package_commented: "Tüm yeni yorumlar"
           work_package_created: "Yeni iş paketleri"
           work_package_processed: "Tüm durum değişiklikleri"
@@ -786,7 +783,7 @@ tr:
       tracking_time: "Takip süresi"
       button_stop: "Geçerli zamanlayıcıyı durdur"
     two_factor_authentication:
-      label_two_factor_authentication: "İki faktörlü kimlik doğrulama"
+      label_two_factor_authentication: "İki aşamalı kimlik doğrulama"
     watchers:
       label_loading: takip edenler yükleniyor...
       label_error_loading: Takip edenleri yüklerken bir hata oluştu
@@ -843,7 +840,7 @@ tr:
       placeholder: "Aramak için metni yazın"
       parent_placeholder: "Yeni bir ebeveyn seçin veya iptal etmek için escape tuşuna basın."
     autocompleter:
-      placeholder: "Aramak için metni yazın"
+      placeholder: "Aramak için yazın"
       notFoundText: "Hiçbir öge bulunamadı"
       project:
         placeholder: "Proje seçin"
@@ -1294,7 +1291,7 @@ tr:
       show_changes_since: "Şu zamandan sonraki değişiklikleri göster"
       help_description: "Karşılaştırma için referans zaman dilimi."
       time_description: "Yerel saatinizle: %{datetime}"
-      time: "Saat"
+      time: "Zaman"
       from: "Başlangıç"
       to: "Bitiş"
       drop_down:

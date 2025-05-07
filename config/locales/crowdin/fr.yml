@@ -353,8 +353,8 @@ fr:
         heading: "Supprimer cette liste de projets ?"
         text: "Cette action ne supprimera aucun projet contenu dans la liste. Voulez-vous vraiment supprimer cette liste de projets ?"
     settings:
-      header_details: Basic details
-      header_status: Project status
+      header_details: Informations de base
+      header_status: État du projet
       header_relations: Project relations
       button_update_details: Update details
       button_update_status_description: Update status description
@@ -635,9 +635,9 @@ fr:
         token:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:
-            work_package: "Work package"
+            work_package: "Lot de travaux"
             parent: "Parent"
-            project: "Project"
+            project: "Projet"
         pattern:
           label: "Modèle de sujet"
           caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
@@ -776,7 +776,7 @@ fr:
       label_child_singular: "enfant"
       label_child_plural: "enfants"
       new_child: "Créer un nouvel enfant"
-      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child_description: "Crée un lot de travaux lié en tant que sous-élément du lot de travaux actuel (parent)"
       child: "Enfant"
       child_description: "Fait du lot de travaux lié un sous-élément du lot de travaux actuel (parent)"
       parent: "Parent"
@@ -1464,7 +1464,7 @@ fr:
               confirmation: "La confirmation du mot de passe ne correspond pas au mot de passe."
               format: "%{message}"
             password:
-              weak: "Doit contenir des caractères des classes suivantes (au moins %{min_count} sur %{all_count}) : %{rules}"
+              weak: "Doit contenir des caractères des classes suivantes (au moins %{min_count} de %{all_count}) : %{rules}"
               lowercase: "minuscules (par exemple, « a »)"
               uppercase: "majuscule (e.g. « A »)"
               numeric: "numérique (e.g. « 1 »)"
@@ -1523,8 +1523,8 @@ fr:
         other: "Notifications"
       placeholder_user: "Utilisateur de remplacement"
       project:
-        one: "Project"
-        other: "Projects"
+        one: "Projet"
+        other: "Projets"
       project_query:
         one: "Liste de projets"
         other: "Listes de projets"
@@ -2016,11 +2016,15 @@ fr:
       work_package_sharing: Partager les lots de travaux avec des utilisateurs
       work_package_subject_generation: Génération du sujet du lot de travaux
     upsell:
+      plans_title: "Enterprise plans"
       title: "Add-on Enterprise"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Mettre en évidence les modifications apportées à cette liste depuis n'importe quel point dans le passé.
       work_package_subject_generation:
@@ -2169,7 +2173,7 @@ fr:
           label: "Type d'export PDF"
           options:
             table:
-              label: "Table"
+              label: "Tableau"
               caption: "Exporter la liste des lots de travaux dans une table avec les colonnes souhaitées."
             report:
               label: "Rapport"
@@ -2620,7 +2624,7 @@ fr:
   label_enumerations: "Énumérations"
   label_enterprise: "Entreprise"
   label_enterprise_active_users: "%{current}/%{limit} utilisateurs actifs inscrits"
-  label_enterprise_edition: "Version Entreprise"
+  label_enterprise_edition: "édition Enterprise"
   label_enterprise_support: "Support Enterprise"
   label_environment: "Environement"
   label_estimates_and_progress: "Estimations et progression"
@@ -3788,7 +3792,7 @@ fr:
     Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
-  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled: "Désactivé"
   setting_self_registration_disabled_caption: >
     No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
   setting_self_registration_activation_by_email: "Account activation by email"

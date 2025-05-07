@@ -261,10 +261,7 @@ es:
             Ofrecemos la confianza de un software de gestión de proyectos de categoría empresarial probado y con asistencia: de código abierto y mente abierta.
           link_quote: "Solicitar presupuesto"
           more_info: "Más información"
-          text: >
-            OpenProject Enterprise esta basada en Community. Incluye extensiones Enterprise y soporte profesional dirigida principalmente a organizaciones con más de 10 usuarios que gestionen proyectos empresariales críticos con OpenProject.
           unlimited: "Ilimitado"
-          you_contribute: "Los desarrolladores también tienen que pagar sus facturas. Al actualizar a Enterprise, apoyará el esfuerzo de la comunidad de código abierto y contribuirá a su desarrollo, mantenimiento y mejora continua."
       working_days:
         calendar:
           empty_state_header: "Días no laborables"

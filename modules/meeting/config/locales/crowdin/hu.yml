@@ -341,8 +341,8 @@ hu:
   text_meeting_minutes_for_meeting: 'a "%{meeting}" megbeszélés jegyzőkönyve'
   text_notificiation_invited: "Ez a levél alább egy ics bejegyzést tartalmaz a megbeszélésről:"
   text_meeting_empty_heading: "A megbeszélésed üres."
-  text_meeting_empty_description1: "Start by adding agenda items below. Each item can be as simple as just a title, but you can also add additional details like duration and notes."
-  text_meeting_empty_description2: 'You can also add references to existing work packages. When you do, related notes will automatically be visible in the work package''s "Meetings" tab.'
+  text_meeting_empty_description1: "Kezdje az alábbi napirendi pontok hozzáadásával. Az egyes napirendi pontok lehetnek egyszerű címek, de további részleteket, például időtartamot és megjegyzéseket is hozzáadhat."
+  text_meeting_empty_description2: 'A meglévő munkacsomagokhoz is hozzáadhat hivatkozásokat. Ilyenkor a kapcsolódó jegyzetek automatikusan láthatóvá válnak a munkacsomag "Megbeszélések" lapján.'
   label_meeting_empty_action: "Napirendi pont hozzáadása"
   label_meeting_actions: "Megbeszélések intézkedései"
   label_meeting_edit_title: "Megbeszélés címének szerkesztése"

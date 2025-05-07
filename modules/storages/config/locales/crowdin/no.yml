@@ -58,7 +58,7 @@
               unknown_error: kunne ikke valideres. Vennligst sjekk din lagringskobling og prøv igjen.
     models:
       file_link: Fil
-      storages/storage: Lagring
+      storages/storage: Lagringssted
   api_v3:
     errors:
       too_many_elements_created_at_once: For mange elementer opprettet samtidig. Forventet %{max} som høyeste, fikk %{actual}.
@@ -405,7 +405,7 @@
     label_redirect_uri: Omdiriger URI
     label_show_storage_redirect_uri: Vis omadressering av URI
     label_status: Status
-    label_storage: Lagring
+    label_storage: Lagringssted
     label_uri: URI
     member_connection_status:
       connected: Tilkoblet

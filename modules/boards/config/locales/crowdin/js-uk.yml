@@ -21,8 +21,8 @@ uk:
         unlock_version: 'Розблокувати варіант'
         edit_version: 'Редагувати версію'
         show_version: 'Показати версію'
-        locked: 'Заблоковано'
-        closed: 'Зачинено'
+        locked: 'Заблоковані'
+        closed: 'Закрито'
       new_board: 'Нова дошка'
       add_list: 'Додати список на дошку'
       add_card: 'Додати картку'
@@ -59,10 +59,10 @@ uk:
           subproject: підпроєкт
           subtasks: батьківський-дочірній
         board_type_title:
-          assignee: Призначений
-          status: Статус
+          assignee: Виконавець
+          status: Стан
           version: Версія
-          subproject: Підпроект
+          subproject: Підпроєкт
           subtasks: Батьківські й дочірні елементи
           basic: Базовий
         select_attribute: "Атрибут дії"

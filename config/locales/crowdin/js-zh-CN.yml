@@ -261,10 +261,7 @@ zh-CN:
             我们秉承开源和开放心态，有信心提供经得起考验和充分支持的企业级项目管理软件。
           link_quote: "获取报价"
           more_info: "更多信息"
-          text: >
-            OpenProject 企业版是在社区版的基础上构建的。它包括企业版插件和专业支持，主要面向使用 OpenProject 管理业务关键项目的具有 10 个以上用户的组织。
           unlimited: "不受限制"
-          you_contribute: "开发者也需要支付他们的账单。 通过升级到企业版，您将支持这个开放源码社区的努力，并有助于其发展、维护和不断改进。"
       working_days:
         calendar:
           empty_state_header: "非工作日"

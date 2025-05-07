@@ -260,10 +260,7 @@ ro:
             Oferim încrederea unui software de gestionare a proiectelor de clasă enterprise testat și susținut - cu Open Source și o minte deschisă.
           link_quote: "Obține o ofertă"
           more_info: "Mai multe informatii"
-          text: >
-            Ediția OpenProject Enterprise se bazează pe ediția Community. Aceasta include add-on-uri Enterprise și asistență profesională, destinate în principal organizațiilor cu peste 10 utilizatori care gestionează proiecte esențiale pentru afaceri cu OpenProject.
           unlimited: "Nelimitat"
-          you_contribute: "Dezvoltatorii trebuie să își plătească și ei facturile. Prin actualizarea la Enterprise edition, veți sprijini acest efort al comunității open source și veți contribui la dezvoltarea, întreținerea și îmbunătățirea continuă a acestuia."
       working_days:
         calendar:
           empty_state_header: "Zile nelucrătoare"
@@ -272,7 +269,7 @@ ro:
         add_non_working_day: "Zi nelucrătoare"
         already_added_error: "O zi nelucrătoare pentru această dată există deja. Poate fi doar o zi nelucrătoare creată pentru fiecare dată unică."
         change_button: "Salvează și reprogramează"
-        change_title: "Modificarea zilelor lucrătoare"
+        change_title: "Modifică zilelor lucrătoare"
         removed_title: "Veţi elimina următoarele zile din lista de zile nelucrătoare:"
         change_description: "Schimbarea zilelor din săptămână care sunt considerate zile lucrătoare sau zile nelucrătoare poate afecta zilele de începere și sfârșit ale tuturor pachetelor de lucru în toate proiectele, în acest caz."
         warning: >
@@ -458,7 +455,7 @@ ro:
     label_manage_columns: "Manage and reorder columns"
     label_me: "eu"
     label_meeting_agenda: "Agendă"
-    label_meeting_minutes: "Concluzii"
+    label_meeting_minutes: "Minute"
     label_menu_collapse: "restrângere"
     label_menu_expand: "extindere"
     label_more_than_ago: "acum mai mult de zile"
@@ -761,7 +758,7 @@ ro:
           label: "Întrerupe temporar reamintirile zilnice prin e-mail"
           first_day: "Prima zi"
           last_day: "Ultima zi"
-    text_are_you_sure: "Sunteți sigur?"
+    text_are_you_sure: "Ești sigur?"
     text_data_lost: "Toate datele introduse vor fi pierdute."
     text_user_wrote: "%{value} a scris:"
     types:
@@ -787,7 +784,7 @@ ro:
       tracking_time: "Tracking time"
       button_stop: "Stop current timer"
     two_factor_authentication:
-      label_two_factor_authentication: "Autentificare cu doi factori"
+      label_two_factor_authentication: "Autentificare doi factori"
     watchers:
       label_loading: se încarcă observatorii...
       label_error_loading: A apărut o eroare în timpul încărcării observatorilor
@@ -1059,7 +1056,7 @@ ro:
         default: "implicit"
         display_settings: "Setări afișare"
         default_mode: "Listă"
-        hierarchy_mode: "Arată ierarhia"
+        hierarchy_mode: "Ierarhie"
         hierarchy_hint: "Toate rezultatele tabelelor filtrate vor fi completate cu strămoșii lor. Ierarhiile pot fi extinse și restrânse."
         display_sums_hint: "Afișarea sumelor tuturor atributelor însumabile pe un rând sub rezultatele tabelului."
         show_timeline_hint: "Afișați o diagramă Gantt interactivă în partea dreaptă a tabelului. Puteți modifica lățimea acestuia trăgând de separatorul dintre tabel și graficul gantt."
@@ -1176,7 +1173,7 @@ ro:
         other: "%{count} ora"
         zero: "0 ore"
       day:
-        one: "1 zi"
+        one: "o zi"
         other: "%{count} zile"
         zero: "0 zile"
       word:
@@ -1228,7 +1225,7 @@ ro:
           title: "Grup"
           description: "Permisiuni bazate pe rolul atribuit în proiectul selectat"
         placeholder:
-          title: "Utilizator Placeholder"
+          title: "Utilizator placeholder"
           title_no_ee: "Utilizator de tip Placeholder (add-on numai pentru ediția Enterprise)"
           description: "Nu are acces la proiect și nu se trimite niciun e-mail."
           description_no_ee: 'Nu are acces la proiect și nu se trimite niciun e-mail.  <br>Verificați<a href="%{eeHref}" ținta="_blank">ediția Enterprise</a>'
@@ -1257,7 +1254,7 @@ ro:
       message:
         label: "Mesaj invitație"
         description: "Vom trimite un e-mail utilizatorului, la care puteți adăuga un mesaj personal aici. Ar putea fi utilă o explicație pentru invitație sau poate câteva informații despre proiect pentru a-i ajuta să înceapă."
-        next_button: "Următorul"
+        next_button: "Înainte"
       summary:
         next_button: "Trimite invitație"
       success:
@@ -1266,7 +1263,7 @@ ro:
           user: "Utilizatorul se poate autentifica acum pentru a accesa %{project}. Între timp, puteți deja să planificați cu acel utilizator și să atribuiți pachete de lucru, de exemplu."
           placeholder: "Marca de poziție poate fi utilizată acum în %{project}. Între timp, puteți deja să planificați cu acel utilizator și să atribuiți pachete de lucru, de exemplu."
           group: "Grupul este acum o parte din %{project}. Între timp, puteți deja să planificați cu acest grup și să atribuiți pachete de lucru, de exemplu."
-        next_button: "Continuaţi"
+        next_button: "Continuă"
     exclusion_info:
       modal:
         title: "Status excluded from hierarchy totals"

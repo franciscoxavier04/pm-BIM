@@ -261,10 +261,7 @@
             Vi leverer sikkerheten til et testet og støttet program for styring av bedriftsklasse-prosjekter - med åpen kildekode og med et åpent sinn.
           link_quote: "Få tilbud"
           more_info: "Mer informasjon"
-          text: >
-            OpenProject Enterprise edition bygger på toppen av fellesskapets utgave. Det inkluderer Enterprise tillegg og profesjonell støtte som hovedsakelig retter seg mot organisasjoner med mer enn 10 brukere som håndterer forretningskritiske prosjekter med OpenProject.
           unlimited: "Ubegrenset"
-          you_contribute: "Utviklere må også betale regningene sine. Ved å oppgradere til Enterprise Edition, støtter du fellesskapets innsats med åpen kildekode og bidrar til dens utvikling, vedlikehold og kontinuerlig forbedring."
       working_days:
         calendar:
           empty_state_header: "Arbeidsfrie dager"
@@ -273,7 +270,7 @@
         add_non_working_day: "Arbeidsfri dag"
         already_added_error: "En arbeidsfri dag for denne datoen finnes allerede. Det kan bare være en arbeidsfri dag som er opprettet for hver unike dato."
         change_button: "Lagre og endre"
-        change_title: "Endre virkedager"
+        change_title: "Endre arbeidsdager"
         removed_title: "Du fjerner de følgende dagene fra listen over arbeidsfrie dager:"
         change_description: "Endring av hvilke ukedager som regnes som arbeidsdager eller arbeidsfrie dager kan påvirke start- og sluttdager for alle arbeidspakker i alle prosjekter i denne forekomsten."
         warning: >
@@ -467,7 +464,7 @@
     label_next: "Neste"
     label_no_color: "Ingen farge"
     label_no_data: "Ingen data å vise"
-    label_no_due_date: "ingen ferdigmeldingsdato"
+    label_no_due_date: "ingen ferdigdato"
     label_no_start_date: "ingen startdato"
     label_no_date: "ingen dato"
     label_no_value: "Ingen verdi"
@@ -987,7 +984,7 @@
         versionName: "Versjon"
         version: "Versjon"
         work: "Arbeid"
-        workAlternative: "Estimert tid"
+        workAlternative: "Tidsestimat"
         remainingTime: "Gjenstående arbeid"
       default_queries:
         manually_sorted: "New manually sorted query"
@@ -1027,7 +1024,7 @@
         rename_query_placeholder: "Navn for denne visningen"
         star_text: "Marker denne visningen som favoritt og legg til i visnings meny på venstre side."
         public_text: >
-          Publiser denne visningen, slik at andre brukere får tilgang til visningen din. Brukere med 'Administrere offentlige visninger' kan endre eller fjerne offentlig spørring. Dette påvirker ikke synligheten til resultatene i arbeidspakken  i denne oversikten og avhengig av tillatelser,  vil brukerne kunne se forskjellige resultater.
+          Publiser denne visningen, slik at andre brukere får tilgang til visningen din. Brukere med 'Administrere offentlige visninger' kan endre eller fjerne offentlig spørring. Dette påvirker ikke synligheten til arbeidspakken resultatene i denne oversikten og avhengig av tillatelser,  vil brukerne kunne se forskjellige resultater.
         errors:
           unretrievable_query: "Kan ikke hente visning fra URL"
           not_found: "Det finnes ingen slik visning."

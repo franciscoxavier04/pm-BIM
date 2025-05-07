@@ -350,8 +350,8 @@ pl:
         heading: "Usunąć tę listę projektów?"
         text: "To działanie nie spowoduje usunięcia żadnego projektu znajdującego się na liście. Czy na pewno chcesz usunąć tę listę projektów?"
     settings:
-      header_details: Basic details
-      header_status: Project status
+      header_details: Podstawowe szczegóły
+      header_status: Stan projektu
       header_relations: Project relations
       button_update_details: Update details
       button_update_status_description: Update status description
@@ -650,9 +650,9 @@ pl:
         token:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Zadanie"
+            parent: "Rodzic"
+            project: "Projekt"
         pattern:
           label: "Wzorzec tematu"
           caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
@@ -793,10 +793,10 @@ pl:
       label_child_singular: "element podrzędny"
       label_child_plural: "elementy podrzędne"
       new_child: "Utwórz nowy element podrzędny"
-      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child_description: "Tworzy powiązany pakiet roboczy jako element podrzędny bieżącego (nadrzędnego) pakietu roboczego"
       child: "Element podrzędny"
       child_description: "Ustawia powiązany pakiet roboczy jako element podrzędny bieżącego (nadrzędnego) pakietu roboczego"
-      parent: "Parent"
+      parent: "Rodzic"
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Najbliższy"
       label_blocks_singular: "blok"
@@ -958,7 +958,7 @@ pl:
       project:
         active_value:
           true: "niezarchiwizowane"
-          false: "zarchiwizowane"
+          false: "w archiwum"
         description: "Opis"
         enabled_modules: "Włączone moduły"
         identifier: "Identyfikator"
@@ -1154,7 +1154,7 @@ pl:
         confirmation: "nie pasuje do %{attribute}."
         could_not_be_copied: "Nie można było (w pełni) skopiować %{dependency}."
         does_not_exist: "nie istnieje."
-        error_enterprise_only: "%{action} jest dostępna tylko w OpenProject Enterprise Edition"
+        error_enterprise_only: "%{action} jest dostępna tylko w OpenProject Enterprise edition"
         error_unauthorized: "— nie można uzyskac dostępu."
         error_readonly: "— podjęto próbę zapisu, ale nie jest zapisywalny."
         error_conflict: "Information has been updated by at least one other user in the meantime."
@@ -1246,7 +1246,7 @@ pl:
               fragment_present: "nie może zawierać fragmentu."
               invalid_uri: "musi być prawidłowym adres URI."
               relative_uri: "musi być bezwzględnym identyfikatorem URI."
-              secured_uri: 'nie zapewnia "bezpiecznego kontekstu". Ewentualnie użyj HTTPS lub adresu pętli zwrotnej, takiej jak localhost.'
+              secured_uri: 'nie zapewnia „bezpiecznego kontekstu”. Użyj protokołu HTTPS albo adresu pętli zwrotnej, takiej jak localhost.'
               forbidden_uri: "jest zabroniony przez serwer."
             scopes:
               not_match_configured: "nie pasuje do dostępnych zakresów."
@@ -1548,10 +1548,10 @@ pl:
         other: "Powiadomień"
       placeholder_user: "Użytkownik zastępczy"
       project:
-        one: "Project"
-        few: "Projects"
-        many: "Projects"
-        other: "Projects"
+        one: "Projekt"
+        few: "Projekty"
+        many: "Projekty"
+        other: "Projekty"
       project_query:
         one: "Lista projektów"
         few: "Listy projektów"
@@ -1621,11 +1621,11 @@ pl:
         updated: "zmieniono z %{old_value} na %{value}"
         logged_for: "Zalogowano przez"
     filter:
-      changeset: "Zestawy zmian"
+      changeset: "Zmiany"
       message: "Fora"
-      news: "Wiadomości"
+      news: "Aktualności"
       project_details: "Szczegóły projektu"
-      subproject: "Zawiera podprojekty"
+      subproject: "Uwzględnij podprojekty"
       time_entry: "Poświęcony czas"
       wiki_edit: "Wiki"
       work_package: "Pakiety robocze"
@@ -1980,7 +1980,7 @@ pl:
         one: "1 dzień"
         few: "%{count} dni"
         many: "%{count} dni"
-        other: "%{count} dni"
+        other: "%{count} dnia"
       x_minutes:
         one: "1 minuta"
         few: "%{count} minut"
@@ -2095,11 +2095,15 @@ pl:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Generowanie tematu pakietu roboczego
     upsell:
+      plans_title: "Enterprise plans"
       title: "Dodatek wersji Enterprise"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Wyróżnij zmiany wprowadzone na tej liście od dowolnego momentu w przeszłości.
       work_package_subject_generation:
@@ -2451,7 +2455,7 @@ pl:
       no_results:
         title: "Brak tokenów dostępu"
         description: "Wszystkie elementy zostały wyłączone. Można je ponownie włączyć w menu administratora."
-      access_tokens: "Tokeny dostępu"
+      access_tokens: "Tokenu dostępu"
       headers:
         action: "Czynność"
         expiration: "Wygasa"
@@ -2550,7 +2554,7 @@ pl:
   label_ical_access_key_not_present: "Brak tokenów iCalendar."
   label_ical_access_key_generation_hint: "Automatycznie wygenerowano podczas subskrypcji kalendarza."
   label_ical_access_key_latest: "najnowszy"
-  label_ical_access_key_revoke: "Unieważnij"
+  label_ical_access_key_revoke: "Odwołaj"
   label_add_column: "Dodaj kolumnę"
   label_applied_status: "Nadaj status"
   label_archive_project: "Archiwum projektów"
@@ -2938,7 +2942,7 @@ pl:
   label_progress_tracking: "Śledzenie postępów"
   label_project: "Projekt"
   label_project_activity: "Aktywność projektu"
-  label_project_attribute_plural: "Cechy projektu"
+  label_project_attribute_plural: "Atrybuty projektu"
   label_project_attribute_manage_link: "Zarządzaj atrybutami projektu"
   label_project_count: "Całkowita liczba projektów"
   label_project_copy_notifications: "Wyślij powiadomienia e-mail podczas kopiowania projektów"
@@ -3165,7 +3169,7 @@ pl:
     zero: "brak projektów"
   label_x_files:
     one: "1 plik"
-    other: "%{count} plików"
+    other: "%{count} pliku"
     zero: "brak plików"
   label_yesterday: "wczoraj"
   label_zen_mode: "Tryb Zen"
@@ -3456,7 +3460,7 @@ pl:
   permission_add_work_package_attachments: "Dodaj Załączniki"
   permission_add_work_package_attachments_explanation: "Umożliwia dodawanie załączników bez uprawnienia Edycja pakietów roboczych."
   permission_add_internal_comments: "Write internal comments"
-  permission_archive_project: "Archiwizuj projekt"
+  permission_archive_project: "Archiwum projektów"
   permission_create_user: "Utwórz użytkowników"
   permission_manage_user: "Edytuj użytkowników"
   permission_manage_placeholder_user: "Twórz, edytuj i usuwaj użytkowników zastępczych"
@@ -3868,7 +3872,7 @@ pl:
     Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
-  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled: "Wyłączono"
   setting_self_registration_disabled_caption: >
     No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
   setting_self_registration_activation_by_email: "Account activation by email"
@@ -3886,7 +3890,7 @@ pl:
   setting_start_of_week: "Początek tygodnia"
   setting_sys_api_enabled: "Uaktywnij zarządzanie repozytoriami przez www"
   setting_sys_api_description: "Zarządzanie repozytoriami przez www umożliwia integrację i autoryzację użytkowników do dostępu do repozytoriów."
-  setting_time_format: "Czas"
+  setting_time_format: "Godzina"
   setting_total_percent_complete_mode: "Obliczenie % Ukończenia pełnej hierarchii"
   setting_total_percent_complete_mode_work_weighted_average: "Ważone według pracy"
   setting_total_percent_complete_mode_work_weighted_average_caption_html: >-
@@ -4505,7 +4509,7 @@ pl:
       builtin_applications: Wbudowane aplikacje OAuth
       other_applications: Inne aplikacje OAuth
     empty_application_lists: Nie zarejestrowano żadnych aplikacji OAuth.
-    client_id: "Numer klienta"
+    client_id: "Identyfikator klienta"
     client_secret_notice: >
       Jest to jedyny moment, w którym możemy wydrukować tajne hasło klienta, zanotuj je i przechowuj w bezpiecznym miejscu. Należy je traktować jak hasło i nie można go później odzyskać przez OpenProject.
     authorization_dialog:
@@ -4547,7 +4551,7 @@ pl:
       not_connected: "Nie podłączono"
     labels:
       label_oauth_integration: "Integracja OAuth2"
-      label_redirect_uri: "Przekieruj URI"
+      label_redirect_uri: "Identyfikator URI przekerowania"
       label_request_token: "Żądaj tokena"
       label_refresh_token: "Odśwież token"
     errors:

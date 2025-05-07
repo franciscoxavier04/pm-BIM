@@ -354,7 +354,7 @@ ka:
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
       header_details: Basic details
-      header_status: Project status
+      header_status: პროექტის სტატუსი
       header_relations: Project relations
       button_update_details: Update details
       button_update_status_description: Update status description
@@ -637,9 +637,9 @@ ka:
         token:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "სამუშაო პაკეტი"
+            parent: "მშობელი"
+            project: "პროექტი"
         pattern:
           label: "Subject pattern"
           caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
@@ -781,7 +781,7 @@ ka:
       new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
-      parent: "Parent"
+      parent: "მშობელი"
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "ბლოკავს"
@@ -1094,7 +1094,7 @@ ka:
         derived_done_ratio: "Total % complete"
         derived_remaining_hours: "Total remaining work"
         derived_remaining_time: "Total remaining work"
-        done_ratio: "დასრულებული %"
+        done_ratio: "% დასრულებულია"
         duration: "ხანგრძლივობა"
         end_insertion: "End of the insertion"
         end_deletion: "End of the deletion"
@@ -1109,7 +1109,7 @@ ka:
         parent_issue: "მშობელი"
         parent_work_package: "მშობელი"
         priority: "პრიორიტეტი"
-        progress: "% დასრულებულია"
+        progress: "დასრულებული %"
         readonly: "მხოლოდ წაკითხვისთვის"
         remaining_hours: "დარჩენილი სამუშაო"
         remaining_time: "დარჩენილი სამუშაო"
@@ -1514,7 +1514,7 @@ ka:
       "doorkeeper/application": "OAuth application"
       forum: "ფორუმი"
       global_role: "გლობალური როლი"
-      group: "ჯგუფი"
+      group: "ჯგუფები"
       issue_priority:
         one: "პრიორიტეტი"
         other: "Priorities"
@@ -1525,8 +1525,8 @@ ka:
         other: "შეტყობინებები"
       placeholder_user: "Placeholder user"
       project:
-        one: "Project"
-        other: "Projects"
+        one: "პროექტი"
+        other: "პროექტები"
       project_query:
         one: "Project list"
         other: "Project lists"
@@ -1534,7 +1534,7 @@ ka:
       reminder: "Reminder"
       role:
         one: "როლი"
-        other: "როლი"
+        other: "როლები"
       status: "Work package status"
       token/api:
         one: Access token
@@ -1601,8 +1601,8 @@ ka:
   #common attributes of all models
   attributes:
     active: "აქტიური"
-    assigned_to: "დასაქმებული"
-    assignee: "დასაქმებული"
+    assigned_to: "დამსაქმებელი"
+    assignee: "დამსაქმებელი"
     attachments: "მიმაგრებული ფაილები"
     actor: "Actor"
     action: "ქმედება"
@@ -1638,13 +1638,13 @@ ka:
     expires_at: "ვადა"
     firstname: "სახელი"
     filter: "ფილტრი"
-    group: "ჯგუფი"
+    group: "ჯგუფები"
     groups: "ჯგუფები"
     hexcode: "თექვსმეტობითი კოდი"
     id: "ID"
     is_default: "ნაგულისხმევი მნიშვნელობა"
     is_for_all: "For all projects"
-    public: "საზოგადო"
+    public: "საჯარო"
     principal: "User or group"
     #kept for backwards compatibility
     issue: "სამუშაო პაკეტი"
@@ -1674,7 +1674,7 @@ ka:
     start_date: "დაწყების თარიღი"
     status: "სტატუსი"
     state: "State"
-    subject: "საგანი"
+    subject: "თემა"
     slug: "Slug"
     summary: "შეჯამება"
     time_zone: "დროის სარტყელი"
@@ -1743,7 +1743,7 @@ ka:
   button_click_to_reveal: "Click to reveal"
   button_close: "დახურვა"
   button_collapse_all: "ყველას ჩაკეცვა"
-  button_configure: "გამართვა"
+  button_configure: "მორგება"
   button_continue: "გაგრძელება"
   button_copy: "კოპირება"
   button_copy_to_clipboard: "Copy to clipboard"
@@ -2018,11 +2018,15 @@ ka:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
       work_package_subject_generation:
@@ -2281,7 +2285,7 @@ ka:
   general_first_day_of_week: "7"
   general_pdf_encoding: "ISO-8859-1"
   general_text_no: "არა"
-  general_text_yes: "დიახ"
+  general_text_yes: "დია"
   general_text_No: "არა"
   general_text_Yes: "დიახ"
   general_text_true: "ჭეშმარიტი"
@@ -2665,7 +2669,7 @@ ka:
   label_greater_or_equal: ">="
   label_group_by: "დაჯგუფება"
   label_group_new: "ახალი ჯგუფი"
-  label_group: "ჯგუფი"
+  label_group: "ჯგუფები"
   label_group_named: "ჯგუფი %{name}"
   label_group_plural: "ჯგუფები"
   label_help: "დახმარება"
@@ -2811,7 +2815,7 @@ ka:
   label_not_contains: "doesn't contain"
   label_not_equals: "არაა"
   label_life_cycle_step_plural: "Project life cycle"
-  label_on: "რაზე"
+  label_on: "დრო"
   label_operator_all: "ცარიელი არაა"
   label_operator_none: "ცარიელია"
   label_operator_equals_or: "არის (ან)"
@@ -2928,7 +2932,7 @@ ka:
   label_role_and_permissions: "Roles and permissions"
   label_role_new: "ახალი როლი"
   label_role_grantable: "Grantable role"
-  label_role_plural: "როლი"
+  label_role_plural: "როლები"
   label_role_search: "Assign role to new members"
   label_scm: "SCM"
   label_scroll_left: "Scroll left"
@@ -2949,7 +2953,7 @@ ka:
   label_sort_descending: "Sort descending"
   label_sort_higher: "აწევა"
   label_sort_highest: "თავში ატანა"
-  label_sort_lower: "ქვემოთ ჩატანა"
+  label_sort_lower: "ჩატანა"
   label_sort_lowest: "ბოლოში გადატანა"
   label_spent_time: "დახარჯული დრო"
   label_start_to_end: "დასაწყისიდან დასასრულამდე"
@@ -2989,7 +2993,7 @@ ka:
   label_topic_plural: "თემები"
   label_total: "ჯამი"
   label_type_new: "ახალი ტიპი"
-  label_type_plural: "ტიპი"
+  label_type_plural: "ტიპები"
   label_ui: "მომხმარებლის ინტერფეისი"
   label_updated_time: "Updated %{value} ago"
   label_updated_time_at: "%{author} %{age}"
@@ -3148,7 +3152,7 @@ ka:
         assigned: "მინიჭებულია"
         responsible: "ანგარიშვალდებული"
         mentioned: "მოხსენიებულები"
-        shared: "გაზიარება"
+        shared: "გაზიარებული"
         subscribed: "ყველა"
         prefix: "Received because of the notification setting: %{reason}"
         date_alert_start_date: "გაფრთხილების თარიღი"

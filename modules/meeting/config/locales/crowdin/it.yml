@@ -341,8 +341,8 @@ it:
   text_meeting_minutes_for_meeting: 'verbali per l''incontro "%{meeting}"'
   text_notificiation_invited: "Questa mail contiene un elemento di riunione ics qui in seguito:"
   text_meeting_empty_heading: "La tua riunione è vuota"
-  text_meeting_empty_description1: "Start by adding agenda items below. Each item can be as simple as just a title, but you can also add additional details like duration and notes."
-  text_meeting_empty_description2: 'You can also add references to existing work packages. When you do, related notes will automatically be visible in the work package''s "Meetings" tab.'
+  text_meeting_empty_description1: "Inizia con l'aggiunta di elementi dell'ordine del giorno qui sotto. Ogni elemento può essere semplice come solo un titolo, ma è anche possibile aggiungere ulteriori dettagli come durata e note."
+  text_meeting_empty_description2: 'Puoi anche aggiungere riferimenti alle macro-attività esistenti. Quando lo fai, le note correlate saranno automaticamente visibili nella scheda "Riunioni" della macro-attività.'
   label_meeting_empty_action: "Aggiungi punto all'ordine del giorno"
   label_meeting_actions: "Azioni di riunione"
   label_meeting_edit_title: "Modifica titolo riunione"
@@ -377,7 +377,7 @@ it:
   text_outcome_not_editable_anymore: "Questo risultato non è più modificabile."
   text_outcome_cannot_be_added: "An outcome can no longer be added."
   label_backlog_clear: "Clear backlog"
-  label_backlog_clear_button: "Clear all"
+  label_backlog_clear_button: "Cancella tutto"
   text_backlog_clear_error: "One or more errors occurred while trying to clear the backlog."
   label_agenda_backlog: "Agenda backlog"
   text_agenda_backlog: >
@@ -399,7 +399,7 @@ it:
   label_meeting_series_details: "Dettagli della serie di riunioni"
   label_meeting_details_edit: "Modifica dettagli riunione"
   label_meeting_state: "Stato della riunione"
-  label_meeting_state_open: "Aperti"
+  label_meeting_state_open: "Aperte"
   label_meeting_state_closed: "Chiuso"
   label_meeting_state_agenda_created: "Ordine del giorno creato"
   label_meeting_state_planned: "Pianificata"

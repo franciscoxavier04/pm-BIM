@@ -354,7 +354,7 @@ ro:
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
       header_details: Basic details
-      header_status: Project status
+      header_status: Stare proiect
       header_relations: Project relations
       button_update_details: Update details
       button_update_status_description: Update status description
@@ -645,9 +645,9 @@ ro:
         token:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Pachet de lucru"
+            parent: "Părinte"
+            project: "Proiect"
         pattern:
           label: "Subject pattern"
           caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
@@ -787,10 +787,10 @@ ro:
       label_child_singular: "copil"
       label_child_plural: "copii"
       new_child: "Creează copil nou"
-      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child_description: "Creează un pachet de lucru asociat ca sub-element al pachetului de lucru curent (părinte)"
       child: "Child"
       child_description: "Face din pachetul de lucru asociat un sub-element al pachetului de lucru actual (părinte)"
-      parent: "Parent"
+      parent: "Părinte"
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "blochează"
@@ -1538,9 +1538,9 @@ ro:
         other: "Notificări"
       placeholder_user: "Utilizator Placeholder"
       project:
-        one: "Project"
-        few: "Projects"
-        other: "Projects"
+        one: "Proiect"
+        few: "Proiecte"
+        other: "Proiecte"
       project_query:
         one: "Listă proiecte"
         few: "Listă proiecte"
@@ -2058,11 +2058,15 @@ ro:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Evidențiază modificările făcute la această listă de la orice punct din trecut.
       work_package_subject_generation:
@@ -3831,7 +3835,7 @@ ro:
     Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
-  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled: "Dezactivat"
   setting_self_registration_disabled_caption: >
     No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
   setting_self_registration_activation_by_email: "Account activation by email"
@@ -3849,7 +3853,7 @@ ro:
   setting_start_of_week: "Săptămâna începe pe"
   setting_sys_api_enabled: "Activare serviciul web de administrare repo"
   setting_sys_api_description: "Serviciul web de administrare repo oferă integrare şi autorizare utilizatori pentru accesul la repo-uri."
-  setting_time_format: "Ora"
+  setting_time_format: "Timp"
   setting_total_percent_complete_mode: "Calculation of % Complete hierarchy totals"
   setting_total_percent_complete_mode_work_weighted_average: "Weighted by work"
   setting_total_percent_complete_mode_work_weighted_average_caption_html: >-
@@ -4339,11 +4343,11 @@ ro:
     journal_note:
       changed: _**Zile lucrătoare** schimbate (%{changes})._
       days:
-        working: "%{day} funcționează acum"
-        non_working: "%{day} este acum nefuncțională"
+        working: "%{day} este acum lucrătoare"
+        non_working: "%{day}  este acum nelucrătoare"
       dates:
-        working: "%{date} este acum în funcțiune"
-        non_working: "%{date} este acum nefuncțională"
+        working: "%{date} este acum lucrătoare"
+        non_working: "%{date}  este acum nelucrătoare"
   nothing_to_preview: "Nimic de previzualizat"
   api_v3:
     attributes:

@@ -63,7 +63,7 @@ ru:
           status: Статус
           version: Версия
           subproject: Подпроект
-          subtasks: Родитель-ребенок
+          subtasks: Родитель-Потомок
           basic: Базовый
         select_attribute: "Атрибут действия"
       add_list_modal:

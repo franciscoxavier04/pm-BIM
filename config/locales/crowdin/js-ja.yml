@@ -262,10 +262,7 @@ ja:
             テストおよびサポートされているエンタープライズクラスのプロジェクト管理ソフトウェアの信頼性を提供します。オープンソースとオープンマインドとともに。
           link_quote: "見積もりの入手"
           more_info: "詳細情報"
-          text: >
-            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
           unlimited: "無制限"
-          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
       working_days:
         calendar:
           empty_state_header: "Non-working days"
@@ -393,7 +390,7 @@ ja:
     label_and: "及び"
     label_ascending: "昇順"
     label_author: "作者: %{user}"
-    label_avatar: "Avatar"
+    label_avatar: "アバター"
     label_between: "次の範囲内"
     label_board: "ボード"
     label_board_locked: "ロックされている"
@@ -965,7 +962,7 @@ ja:
         createdAt: "作成日時"
         description: "説明"
         date: "日付"
-        percentComplete: "% Complete"
+        percentComplete: "完成(%)"
         percentCompleteAlternative: "Progress"
         dueDate: "終了日"
         duration: "期間"

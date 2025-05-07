@@ -353,8 +353,8 @@ ko:
         heading: "이 프로젝트 목록을 삭제하시겠습니까?"
         text: "이 작업을 수행해도 목록에 포함된 프로젝트는 삭제되지 않습니다. 이 프로젝트 목록을 삭제하시겠습니까?"
     settings:
-      header_details: Basic details
-      header_status: Project status
+      header_details: 기본 세부 정보
+      header_status: 프로젝트 상태
       header_relations: Project relations
       button_update_details: Update details
       button_update_status_description: Update status description
@@ -629,9 +629,9 @@ ko:
         token:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "작업 패키지"
+            parent: "부모"
+            project: "프로젝트"
         pattern:
           label: "제목 패턴"
           caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
@@ -769,10 +769,10 @@ ko:
       label_child_singular: "자식"
       label_child_plural: "자식"
       new_child: "새 자식 만들기"
-      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child_description: "관련 작업 패키지를 현재(부모) 작업 패키지의 하위 항목으로 만듭니다"
       child: "자식"
       child_description: "관련 작업 패키지를 현재(부모) 작업 패키지의 하위 항목으로 만듭니다"
-      parent: "Parent"
+      parent: "부모"
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "가장 가까운 대상"
       label_blocks_singular: "블록"
@@ -1512,7 +1512,7 @@ ko:
         other: "알림"
       placeholder_user: "플레이스홀더 사용자"
       project:
-        other: "Projects"
+        other: "프로젝트"
       project_query:
         other: "프로젝트 목록"
       query: "사용자 지정 쿼리"
@@ -1978,11 +1978,15 @@ ko:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: 작업 패키지 제목 생성
     upsell:
+      plans_title: "Enterprise plans"
       title: "Enterprise 추가 기능"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: 과거 어느 시점 이후에 이 목록에서 변경된 사항을 강조 표시합니다.
       work_package_subject_generation:
@@ -3745,7 +3749,7 @@ ko:
     Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
-  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled: "사용 안 함"
   setting_self_registration_disabled_caption: >
     No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
   setting_self_registration_activation_by_email: "Account activation by email"
@@ -4379,7 +4383,7 @@ ko:
       builtin_applications: 기본 제공 OAuth 애플리케이션
       other_applications: 기타 OAuth 애플리케이션
     empty_application_lists: 등록된 OAuth 애플리케이션이 없습니다.
-    client_id: "고객 ID"
+    client_id: "클라이언트 ID"
     client_secret_notice: >
       클라이언트 비밀번호를 인쇄할 수 있는 유일한 순간입니다. 이 비밀번호를 기록하고 안전하게 보관하십시오. 이 비밀번호는 암호로 취급해야 하며 나중에 OpenProject로 검색할 수 없습니다.
     authorization_dialog:

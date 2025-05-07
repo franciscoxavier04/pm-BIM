@@ -261,10 +261,7 @@ be:
             We deliver the confidence of a tested and supported enterprise-class project management software - with Open Source and an open mind.
           link_quote: "Get a quote"
           more_info: "Дадатковыя звесткі"
-          text: >
-            Карпаратыўнае выданне OpenProject пабудавана паверх Супольнай версіі. Яно ўключае Карпаратыўныя дадаткі, прафесійную падтрымку і накіравана на арганізацыі з больш чым 10 карыстальнікамі, якія кіруюць крытычнымі для бізнесу праектамі з дапамогай OpenProject.
           unlimited: "Unlimited"
-          you_contribute: "Распрацоўшчыкам таксама патрэбна плаціць па рахунках. Абнаўляючыся да Карпаратыўнай версіі, вы падтрымліваеце гэтыя высілкі адкрытай супольнасці і спрыяеце яе развіццю, абслугоўванню і пастаянным паляпшэнням."
       working_days:
         calendar:
           empty_state_header: "Non-working days"

@@ -22,7 +22,7 @@
 uk:
   js:
     ajax:
-      hide: "Приховати"
+      hide: "Сховати"
       loading: "Завантаження…"
       updating: "Оновлення..."
     attachments:
@@ -80,14 +80,14 @@ uk:
     button_delete_watcher: "Видалити спостерігача"
     button_details_view: "Докладне подання"
     button_duplicate: "Дублювати"
-    button_edit: "Редагувати"
+    button_edit: "Редагування"
     button_filter: "Фільтр"
     button_collapse_all: "Згорнути все"
     button_expand_all: "Розгорнути все"
     button_advanced_filter: "Розширений фільтр"
     button_list_view: "Подання списком"
     button_show_view: "Повноекранний режим"
-    button_log_time: "Час журналу"
+    button_log_time: "Записування часу"
     button_more: "Більше"
     button_open_details: "Відкрити докладне подання"
     button_close_details: "Закрити подання деталей"
@@ -195,7 +195,7 @@ uk:
     admin:
       type_form:
         custom_field: "Користувацьке поле"
-        inactive: "Неактивний"
+        inactive: "Неактивні"
         drag_to_activate: "Перетягніть поля звідти, щоб активувати їх"
         add_group: "Додати групу атрибутів"
         add_table: "Додати таблицю пов'язаних пакетів робіт"
@@ -214,7 +214,7 @@ uk:
               Я приймаю <a target="_blank" href="%{link_terms}">умови обслуговування</a> та <a target="_blank" href="%{link_privacy}">політику конфіденційності</a>.
             invalid_email: "Хибна адреса ел. пошти"
             label_company: "Компанія"
-            label_first_name: "Ім'я"
+            label_first_name: "Ім’я"
             label_last_name: "Прізвище"
             label_domain: "Домен"
             label_subscriber: "Абонент"
@@ -261,10 +261,7 @@ uk:
             Ми надаємо перевірене програмне забезпечення корпоративного класу з — з відкритим кодом і серцем — та забезпечуємо його підтримку.
           link_quote: "Дізнатися ціну"
           more_info: "Додаткові відомості"
-          text: >
-            Версію OpenProject Enterprise створено на основі версії Community. Вона включає доповнення версії Enterprise і професійну підтримку та призначена передусім для організацій із більш ніж 10 користувачами, які керують критично важливими для бізнесу проєктами в OpenProject.
           unlimited: "Необмежено"
-          you_contribute: "Розробники теж повинні оплачувати свої рахунки. Перейшовши на версію Enterprise, ви суттєво допоможете спільноті Open Source і зробите свій внесок у її розвиток, підтримання та безперервне поліпшення."
       working_days:
         calendar:
           empty_state_header: "Неробочі дні"
@@ -301,7 +298,7 @@ uk:
       description:
         text_open_filter: "Відкрийте цей фільтр за допомогою «ALT» і клавіш зі стрілками."
         text_close_filter: "Щоб вибрати запис - встановіть на ньому фокус, наприклад, натиснувши Enter. Щоб залишити без фільтру - виберіть перший (порожній) елемент."
-      noneElement: "(нічого)"
+      noneElement: "(немає)"
       time_zone_converted:
         two_values: "%{from} - %{to} у місцевий час."
         only_start: "From %{from} у місцевий час."
@@ -313,22 +310,22 @@ uk:
           two: "Другий критерій впорядкування"
           three: "Третій критерій впорядкування"
     gantt_chart:
-      label: "Діаграма Ганта"
+      label: "Діаграма Ґанта"
       quarter_label: "Q%{quarter_number}"
       labels:
         title: "Конфігурація мітки"
-        bar: "Панель міток"
+        bar: "смуга міток"
         left: "Зліва"
-        right: "Справа"
-        farRight: "У правому кінці"
+        right: "Зправа"
+        farRight: "Далі вправо"
         description: >
-          Виберіть атрибути, які потрібно постійно відображати у відповідних положеннях діаграми Ганта. Зверніть увагу, що під час наведення вказівника на елемент, замість цих атрибутів з’являтиметься його мітка.
+          Оберіть атрибути, які потрібно постійно відображати у відповідних положеннях діаграми Ганта. Зверніть увагу, що під час наведення на елемент, замість цих атрибутів буде відображено його мітки.
       button_activate: "Показати діаграму Ганта"
       button_deactivate: "Сховати діаграму Ганта"
       filter:
-        noneSelection: "(немає)"
+        noneSelection: "(нічого)"
       selection_mode:
-        notification: "Натисніть будь-який виділений пакет робіт, щоб створити зв’язок. Натисніть клавішу Escape, щоб скасувати."
+        notification: "Натисніть будь-який виділений робочий пакет, щоб створити відношення. Натисніть клавішу Escape, щоб скасувати."
       zoom:
         in: "Збільшити масштаб"
         out: "Зменшити масштаб"
@@ -395,7 +392,7 @@ uk:
     label_avatar: "Аватар"
     label_between: "між ними"
     label_board: "Дошка"
-    label_board_locked: "Заблоковано"
+    label_board_locked: "Заблоковані"
     label_board_plural: "Дошки"
     label_board_sticky: "Приліплена"
     label_change: "Змінити"
@@ -409,20 +406,20 @@ uk:
     label_descending: "За спаданням"
     label_description: "Опис"
     label_details: "Детальніше"
-    label_display: "Дисплей"
+    label_display: "Вигляд"
     label_cancel_comment: "Скасувати коментар"
-    label_closed_work_packages: "зачинено"
+    label_closed_work_packages: "закрито"
     label_collapse: "Згорнути"
     label_collapsed: "згорнуто"
     label_collapse_all: "Згорнути все"
-    label_comment: "Коментар"
+    label_comment: "Коментування"
     label_committed_at: "%{committed_revision_link}, %{date}"
     label_committed_link: "зафіксовано редакцію %{revision_identifier}"
     label_contains: "містить"
     label_created_on: "створено"
     label_edit_comment: "Редагувати цей коментар"
     label_edit_status: "Відредагуйте стан робочого пакету"
-    label_email: "Електронна пошта"
+    label_email: "Ел. адреса"
     label_equals: "є"
     label_expand: "Розгорнути"
     label_expanded: "розгорнуто"
@@ -451,7 +448,7 @@ uk:
     label_import: "Імпортувати"
     label_latest_activity: "Останні дії"
     label_last_updated_on: "Останнє оновлення"
-    label_learn_more_link: "Дізнатися більше"
+    label_learn_more_link: "Докладніше"
     label_less_or_equal: "<="
     label_less_than_ago: "менше, ніж день тому"
     label_loading: "Завантаження..."
@@ -484,12 +481,12 @@ uk:
     label_please_wait: "Будь ласка, зачекайте"
     label_project: "Проєкт"
     label_project_list: "Списки проєктів"
-    label_project_plural: "Проекти"
+    label_project_plural: "Проєкти"
     label_visibility_settings: "Налаштування видимості ..."
     label_quote_comment: "Цитувати цей коментар"
     label_recent: "Останні"
     label_reset: "Скинути"
-    label_remove: "Видалити"
+    label_remove: "Вилучити"
     label_remove_column: "Видалити стовпець"
     label_remove_columns: "Видалити вибрані стовпці"
     label_remove_row: "Видалити рядок"
@@ -507,17 +504,17 @@ uk:
     label_sort_higher: "Рухатися вгору"
     label_sort_lower: "Пересунути нижче"
     label_sorting: "Сортування"
-    label_spent_time: "Трудовитрати"
+    label_spent_time: "Витрачений час"
     label_star_query: "Улюблений"
     label_press_enter_to_save: "Натисніть enter, щоб зберегти."
-    label_public_query: "Публічний"
+    label_public_query: "Публічні"
     label_sum: "Сума"
     label_sum_for: "Сума для"
     label_total_sum: "Загальна сума"
-    label_subject: "Тема"
+    label_subject: "Заголовок"
     label_this_week: "цього тижня"
     label_today: "Сьогодні"
-    label_time_entry_plural: "Трудовитрати"
+    label_time_entry_plural: "Витрачений час"
     label_up: "Вгору"
     label_user_plural: "Користувачі"
     label_activity_show_only_comments: "Показувати заходи лише з коментарями"
@@ -528,9 +525,9 @@ uk:
     label_value_derived_from_children: "(значення, отримане від дітей)"
     label_children_derived_duration: "Тривалість похідних дочірніх елементів пакета робіт"
     label_warning: "Попередження"
-    label_work_package: "Пакет робіт"
+    label_work_package: "Робочий пакет"
     label_work_package_parent: "Батьківський пакет робіт"
-    label_work_package_plural: "Пакет робіт"
+    label_work_package_plural: "Пакети робіт"
     label_watch: "Спостерігати"
     label_watch_work_package: "Спостерігати за робочим пакетом"
     label_watcher_added_successfully: "Спостерігач успішно доданий!"
@@ -775,11 +772,11 @@ uk:
           Попередження: Справді скинути конфігурацію форми? Це призведе до скидання атрибутів до групи за замовчуванням і вимкнення всіх користувацьких полів.
         upgrade_to_ee: "Перейти на локальну версію Enterprise"
         upgrade_to_ee_text: "Оце так! Якщо вам потрібне це доповнення, ви справжній профі! Підтримайте розробників OpenSource, перейшовши на версію Enterprise!"
-        more_information: "Більше інформації"
+        more_information: "Додаткові відомості"
         nevermind: "Nevermind"
     time_entry:
       work_package_required: "Спочатку потрібно вибрати пакет робіт."
-      title: "Час журналу"
+      title: "Записування часу"
       tracking: "Відстеження часу"
       stop: "Зупинити"
     timer:
@@ -798,7 +795,7 @@ uk:
       label_discard: Скасувати вибір
       typeahead_placeholder: Пошук можливих спостерігачів
     relation_labels:
-      parent: "Джерело"
+      parent: "Батьківський"
       child: "Дочірній"
       children: "Дочірні елементи"
       relates: "Пов'язано з"
@@ -814,7 +811,7 @@ uk:
       required: "Необхідний для"
       relation_type: "Тип зв'язку"
     relations_hierarchy:
-      parent_headline: "Джерело"
+      parent_headline: "Батьківський"
       hierarchy_headline: "Ієрархія"
       children_headline: "Дочірні елементи"
     relation_buttons:
@@ -962,30 +959,30 @@ uk:
         estimatesAndTime: "Оцінки та час"
         other: "Інше"
       properties:
-        assignee: "Призначений"
+        assignee: "Виконавець"
         author: "Автор"
-        createdAt: "Створений"
+        createdAt: "Створено на"
         description: "Опис"
         date: "Дата"
         percentComplete: "% завершення"
         percentCompleteAlternative: "Прогрес"
         dueDate: "Дата закінчення"
         duration: "Тривалість"
-        spentTime: "Трудовитрати"
+        spentTime: "Витрачений час"
         category: "Категорія"
         percentageDone: "Процент виконання"
         priority: "Пріоритет"
-        projectName: "Проект"
+        projectName: "Проєкт"
         remainingWork: "Залишок роботи"
         remainingWorkAlternative: "Залишок годин"
-        responsible: "Надійний"
-        startDate: "Початок"
-        status: "Статус"
-        subject: "Тема"
-        subproject: "Підпроект"
-        title: "Назва"
+        responsible: "Відповідальний"
+        startDate: "Дата початку"
+        status: "Стан"
+        subject: "Заголовок"
+        subproject: "Підпроєкт"
+        title: "Назва "
         type: "Тип"
-        updatedAt: "Оновлене"
+        updatedAt: "Оновлено"
         versionName: "Версія"
         version: "Версія"
         work: "Робота"
@@ -997,7 +994,7 @@ uk:
         created_by_me: "Створений мною"
         assigned_to_me: "Призначено мені"
         recently_created: "Нещодавно створений"
-        all_open: "Всі відкрити"
+        all_open: "Усі відкриті"
         overdue: "Прострочені"
         summary: "Резюме"
         shared_with_users: "Надано доступ користувачам"
@@ -1012,7 +1009,7 @@ uk:
         date: "Виберіть дату"
       query:
         column_names: "Стовпці"
-        group_by: "Групувати результати по"
+        group_by: "Групування результатів:"
         group: "Групувати за"
         group_by_disabled_by_hierarchy: "У режимі ієрархії угруповання відключена."
         hierarchy_disabled_by_group_by: "Режим ієрархії вимкнено через групування результатів %{column}."
@@ -1072,7 +1069,7 @@ uk:
           inline: "Виділений атрибут(и)"
           inline_all: "Всі атрибути"
           entire_row_by: "Весь рядок по"
-          status: "Статус"
+          status: "Стан"
           priority: "Пріоритет"
           type: "Тип"
         sorting_mode:
@@ -1085,12 +1082,12 @@ uk:
           filter_work_packages_by_relation_type: "Фільтрувати пакети робіт за типом зв’язку"
       tabs:
         overview: Огляд
-        activity: Активність
+        activity: Дія
         relations: Зв'язки
         watchers: Спостерігачі
         files: Файли
       time_relative:
-        days: "днів"
+        days: "дня"
         weeks: "тижнів"
         months: "місяців"
     toolbar:
@@ -1111,10 +1108,10 @@ uk:
         page_settings: "Перейменувати режим перегляду"
         delete: "Видалити"
       filter: "Фільтр"
-      unselected_title: "Пакет робіт"
+      unselected_title: "Робочий пакет"
       search_query_label: "Пошук збережених переглядів"
     modals:
-      label_name: "Ім’я"
+      label_name: "Назва"
       label_delete_page: "Видалити поточну сторінку"
       button_apply: "Застосувати"
       button_save: "Зберегти"
@@ -1150,7 +1147,7 @@ uk:
       button_save_all: "Зберегти"
       button_cancel_all: "Скасувати"
       link_formatting_help: "Довідка щодо форматування тексту"
-      btn_preview_enable: "Попередній перегляд"
+      btn_preview_enable: "Переглянути знову"
       btn_preview_disable: "Відключити попередній перегляд"
       null_value_label: "Значення відсутнє"
       clear_value_label: "-"
@@ -1205,7 +1202,7 @@ uk:
     views:
       card: "Картки"
       list: "Таблиця"
-      timeline: "Гантт"
+      timeline: "Таблиця"
     invite_user_modal:
       back: "Назад"
       invite: "Запросити"
@@ -1217,7 +1214,7 @@ uk:
         PlaceholderUser: "прототип користувача"
         invite_principal_to_project: "Запросити користувача «%{principal}» у проєкт «%{project}»"
       project:
-        label: "Проект"
+        label: "Проєкт"
         required: "Виберіть проєкт"
         lacking_permission: "Виберіть інший проєкт, оскільки вам бракує прав, щоб призначати користувачам цей проєкт."
         lacking_permission_info: "У вас немає дозволу призначати користувачів проєкту, який зараз відкрито. Виберіть інший."
@@ -1240,7 +1237,7 @@ uk:
       principal:
         label:
           name_or_email: "Ім‘я або електронна адреса"
-          name: "Ім’я"
+          name: "Назва"
         already_member_message: "Уже учасник проєкту «%{project}»"
         no_results_user: "Користувачів не знайдено"
         invite_user: "Запросити:"
@@ -1282,11 +1279,11 @@ uk:
       no_results_subtext: "Додайте один або кілька проєктів в обране на відповідній сторінці огляду або в списку проєктів."
     include_projects:
       toggle_title: "Включити проєкти"
-      title: "Проекти"
+      title: "Проєкти"
       clear_selection: "Очистити вибране"
       apply: "Застосувати"
       selected_filter:
-        all: "Всі проекти"
+        all: "Усі проєкти"
         selected: "Тільки вибране"
       search_placeholder: "Пошук у проєкті…"
       include_subprojects: "Включити всі підпроєкти"
@@ -1332,7 +1329,7 @@ uk:
       advanced_settings: "Розширені налаштування"
     spot:
       filter_chip:
-        remove: "Видалити"
+        remove: "Вилучити"
       drop_modal:
         focus_grab: "Це якір фокуса для модальних вікон. Натисніть клавіші Shift + Tab, щоб повернутися до тригера модального вікна."
         close: "Закрити модальне вікно"

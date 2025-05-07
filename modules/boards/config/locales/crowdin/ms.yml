@@ -16,7 +16,7 @@ ms:
     label_create_new_board: "Cipta board baru"
     label_board_type: "Jenis board"
     board_types:
-      free: "Asas\n"
+      free: Asas
       action: "Board tindakan (%{attribute})"
     board_type_attributes:
       assignee: Penerima tugasan

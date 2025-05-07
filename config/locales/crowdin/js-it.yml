@@ -65,7 +65,7 @@ it:
     button_back: "Indietro"
     button_back_to_list_view: "Torna alla visualizzazione in lista"
     button_cancel: "Annulla"
-    button_close: "Chiuso"
+    button_close: "Chiudi"
     button_change_project: "Sposta su un altro progetto"
     button_check_all: "Seleziona tutti"
     button_configure-form: "Configura modulo"
@@ -261,10 +261,7 @@ it:
             Forniamo la sicurezza di un software di gestione di progetti di classe aziendale collaudato e supportato, con l'Open Source e una mente aperta.
           link_quote: "Richiedi un preventivo"
           more_info: "Altre informazioni"
-          text: >
-            L'edizione OpenProject Enterprise si basa sull'edizione Community. Include aggiunte premium e supporto professionale principalmente rivolto alle organizzazioni con più di 10 utenti che gestiscono progetti critici di business con OpenProject.
           unlimited: "Illimitato"
-          you_contribute: "Anche gli sviluppatori devono pagare le bollette. Con l'aggiornamento all'edizione Enterprise, sosterrai questo sforzo della comunità open source e contribuirai al suo sviluppo, manutenzione e miglioramento continuo."
       working_days:
         calendar:
           empty_state_header: "Giorni non lavorativi"
@@ -787,7 +784,7 @@ it:
       tracking_time: "Monitoraggio tempo"
       button_stop: "Interrompi il timer corrente"
     two_factor_authentication:
-      label_two_factor_authentication: "Autenticazione due fattori"
+      label_two_factor_authentication: "Autenticazione a due fattori"
     watchers:
       label_loading: caricamento osservatori in corso...
       label_error_loading: Si è verificato un errore nel caricamento degli osservatori
@@ -922,8 +919,8 @@ it:
       progress:
         title: "Stime e progressi del lavoro"
       baseline:
-        addition_label: "Aggiunto per la visualizzazione entro il periodo di confronto"
-        removal_label: "Rimosso dalla vista entro il periodo di confronto"
+        addition_label: "Aggiunto alla visualizzazione entro il periodo di confronto"
+        removal_label: "Rimosso dalla visualizzazione entro il periodo di confronto"
         modification_label: "Modificato entro il periodo di confronto"
         column_incompatible: "Questa colonna non mostra le modifiche nella modalità Base di riferimento."
       filters:
@@ -1295,7 +1292,7 @@ it:
       show_changes_since: "Mostra le modifiche da"
       help_description: "Fuso orario di riferimento per la base di riferimento."
       time_description: "Nella tua ora locale: %{datetime}"
-      time: "Tempo"
+      time: "Ora"
       from: "Da"
       to: "A"
       drop_down:
@@ -1314,8 +1311,8 @@ it:
         maintained_with_changes: "Mantenuto con le modifiche"
         in_your_timezone: "Nel tuo fuso orario locale:"
       icon_tooltip:
-        added: "Aggiunto alla visualizzazione entro il periodo di confronto"
-        removed: "Rimosso dalla visualizzazione entro il periodo di confronto"
+        added: "Aggiunto per la visualizzazione entro il periodo di confronto"
+        removed: "Rimosso dalla vista entro il periodo di confronto"
         changed: "Mantenuto con modifiche"
     forms:
       submit_success_message: "Il modulo è stato inviato correttamente"

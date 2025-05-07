@@ -158,7 +158,7 @@ eo:
           button: "Links to child pages"
           include_parent: "Include parent"
           text: "[Placeholder] Links to child pages of"
-          page: "Vikipaĝo"
+          page: "Vikia paĝo"
           this_page: "tiu ĉi paĝo"
           hint: |
             Leave this field empty to list all child pages of the current page. If you want to reference a different page, provide its title or slug.
@@ -175,7 +175,7 @@ eo:
         wiki_page_include:
           button: "Include content of another wiki page"
           text: "[Placeholder] Included wiki page of"
-          page: "Vikipaĝo"
+          page: "Vikia paĝo"
           not_set: "(Page not yet set)"
           hint: |
             Include the content of another wiki page by specifying its title or slug.
@@ -261,10 +261,7 @@ eo:
             We deliver the confidence of a tested and supported enterprise-class project management software - with Open Source and an open mind.
           link_quote: "Get a quote"
           more_info: "Pliaj informoj"
-          text: >
-            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
           unlimited: "Unlimited"
-          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
       working_days:
         calendar:
           empty_state_header: "Non-working days"
@@ -474,7 +471,7 @@ eo:
     label_none: "neniu"
     label_not_contains: "ne enhavas"
     label_not_equals: "ne estas"
-    label_on: "en"
+    label_on: "je"
     label_open_menu: "Malfermi menuon"
     label_open_context_menu: "Open context menu"
     label_open_work_packages: "malfermita"
