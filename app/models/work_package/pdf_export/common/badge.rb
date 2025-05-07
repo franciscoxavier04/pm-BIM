@@ -45,14 +45,23 @@ module WorkPackage::PDFExport::Common::Badge
     end
   end
 
+  def calc_grayscale_brightness(red, green, blue)
+    # The brightness is calculated using the formula:
+    # https://entropymine.com/imageworsener/grayscale/
+    Math.sqrt(
+      (0.2126 * (red**2)) +
+      (0.7152 * (green**2)) +
+      (0.0722 * (blue**2))
+    ).to_i
+  end
+
   def readable_color(pdf_background_color)
-    sum = [
+    brightness = calc_grayscale_brightness(*[
       pdf_background_color[0..1],
       pdf_background_color[2..3],
       pdf_background_color[4..5]
-    ].sum { |color_part| color_part.to_i(16) }
-    lightness = sum / 3
-    lightness < 150 ? "FFFFFF" : "000000"
+    ].map { |color_part| color_part.to_i(16) })
+    brightness < 130 ? "FFFFFF" : "000000"
   end
 
   def prawn_badge(text, color, offset: 0, radius: 8, font_size: 8)
