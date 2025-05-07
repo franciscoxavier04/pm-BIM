@@ -101,7 +101,7 @@ You can copy a direct link to a specific work package comment in OpenProject. To
 
 It is possible to leave comments that are only visible to a certain group of people. These are referred to as internal comments. 
 
-Please refer to [this part of the user guide](../../activity/#internal-comments-enterprise-add-on/) for more details. 
+Please refer to [this part of the user guide](../../activity/#internal-comments-enterprise-add-on) for more details. 
 
 
 ### @ notification (mention)
