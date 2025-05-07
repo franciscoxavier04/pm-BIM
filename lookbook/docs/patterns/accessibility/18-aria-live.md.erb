@@ -8,7 +8,7 @@ ARIA Live Regions rely on specific attributes to control how updates are announc
 - `aria-atomic="true"`: Ensures the entire content of the region is read when it changes.
 
 ## Implementing ARIA Live Regions in Primer
-Primer provides a built-in component named live-region to implement ARIA Live Regions easily.
+The Primer project provides a custom element (Web Component) to ease working with ARIA Live Regions.
 We have decided to use a single global ARIA live region in base.html to ensure live regions are present in the DOM before updates occur. This approach is better than having multiple live regions because it ensures that announcements are delivered in a clear and consistent manner. By centralizing updates, we avoid potential conflicts between overlapping live regions and provide a more seamless experience for screen reader users.
 
 ### Live Region in `base.html`
