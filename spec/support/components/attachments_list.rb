@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Handles attachments list generally found under the wysiwyg editor.
 module Components
   class AttachmentsList
