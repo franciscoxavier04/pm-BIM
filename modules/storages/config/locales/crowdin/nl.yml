@@ -26,7 +26,7 @@ nl:
         drive: Drive ID
         host: Host
         name: Naam
-        provider_type: Provider type
+        provider_type: Type provider
         tenant: Directory (tenant) ID
     errors:
       messages:
@@ -58,7 +58,7 @@ nl:
               unknown_error: kon niet worden gevalideerd. Controleer uw opslagverbinding en probeer het opnieuw.
     models:
       file_link: Bestand
-      storages/storage: Opslagruimte
+      storages/storage: Opslag
   api_v3:
     errors:
       too_many_elements_created_at_once: Te veel elementen gemaakt tegelijk. %{max} verwacht hoogstens %{actual}.
@@ -405,7 +405,7 @@ nl:
     label_redirect_uri: URI omleiden
     label_show_storage_redirect_uri: Show redirect URI
     label_status: Status
-    label_storage: Opslag
+    label_storage: Opslagruimte
     label_uri: URI
     member_connection_status:
       connected: Verbonden
@@ -462,7 +462,7 @@ nl:
         title: Verbindingsstatus leden
     permission_header_explanation: 'File permissions on external storages are applied only to folders and files within automatically managed project folders. Note that not all file permissions are supported by all storage providers. Please check the documentation on <a target=''_blank'' href=''https://www.openproject.org/docs/system-admin-guide/users-permissions/roles-permissions/#file-storages-permissions''>file storage permissions</a> for more information.'
     provider_types:
-      label: Type provider
+      label: Provider type
       nextcloud:
         label_oauth_client_id: Nextcloud OAuth Client ID
         label_oauth_client_secret: Nextcloud OAuth Client Secret

@@ -59,7 +59,7 @@ ru:
         start_time: "Время начала"
         start_time_hour: "Время начала"
         end_after: "Серия совещаний заканчивается"
-        end_date: "Дата окончания"
+        end_date: "Дате окончания"
         iterations: "События"
     errors:
       models:
@@ -136,15 +136,15 @@ ru:
   label_recurring_meeting_no_end_date: "Есть и другие запланированные совещания (%{schedule})."
   label_recurring_meeting_more:
     one: "Есть еще одно запланированное совещание (%{schedule})."
-    few: "Есть еще %{count} запланированное совещание (%{schedule})."
-    many: "Есть еще %{count} запланированное совещание (%{schedule})."
+    few: "Есть еще %{count} запланированных совещаний (%{schedule})."
+    many: "Есть еще %{count} запланированных совещаний (%{schedule})."
     other: "Есть еще %{count} запланированных совещаний (%{schedule})."
   label_recurring_meeting_more_past:
     one: "Есть еще одно прошедшее совещание."
-    few: "Есть еще %{count} прошедшее совещание."
-    many: "Есть еще %{count} прошедшее совещание."
+    few: "Есть еще %{count} прошедших совещаний."
+    many: "Есть еще %{count} прошедших совещаний."
     other: "Есть еще %{count} прошедших совещаний."
-  label_recurring_meeting_show_more: "Показать еще"
+  label_recurring_meeting_show_more: "Показать больше"
   label_recurring_meeting_series_create: "Создать серию совещаний"
   label_recurring_meeting_series_edit: "Изменить серию совещаний"
   label_recurring_meeting_series_delete: "Удалить серию совещаний"
@@ -161,7 +161,7 @@ ru:
   label_past_meetings: "Прошедшие совещания"
   label_upcoming_meetings_short: "Предстоящие"
   label_past_meetings_short: "Прошедшие"
-  label_involvement: "Вовлечение"
+  label_involvement: "Вовлеченность"
   label_invitations: "Приглашения"
   label_invited_user: "Приглашенный пользователь"
   label_past_invitations: "Прошлые приглашения"
@@ -306,7 +306,7 @@ ru:
         title: "В данный момент открытых совещаний нет"
         desc: "Вы можете вручную открыть запланированное совещание, нажав на кнопку Открыть"
     planned:
-      title: "Запланировано"
+      title: "Запланированно"
       subtitle: >
         Следующие совещания запланированы в расписании повторяющихся совещаний, но пока не открыты. Каждый раз, когда начинается запланированное совещание, для вас автоматически откроется следующее совещание. Вы также можете вручную открыть запланированные совещания, чтобы импортировать шаблон и начать редактировать повестку дня.
       blankslate:
@@ -414,9 +414,9 @@ ru:
   label_meeting_state_open: "Открыть"
   label_meeting_state_closed: "Закрыть"
   label_meeting_state_agenda_created: "Повестка дня создана"
-  label_meeting_state_planned: "Запланированно"
+  label_meeting_state_planned: "Запланировано"
   label_meeting_state_cancelled: "Отменено"
-  label_meeting_state_skipped: "Пропущено"
+  label_meeting_state_skipped: "Пропущен"
   label_meeting_state_in_progress: "В процессе"
   label_meeting_reopen_action: "Открыть совещание заново"
   label_meeting_close_action: "Закрыть совещание"

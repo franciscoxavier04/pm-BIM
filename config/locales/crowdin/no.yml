@@ -354,7 +354,7 @@
         text: "Denne handlingen vil ikke slette noen av prosjektene på listen. Er du sikker på at du vil slette denne prosjektlisten?"
     settings:
       header_details: Basic details
-      header_status: Project status
+      header_status: Prosjektstatus
       header_relations: Project relations
       button_update_details: Update details
       button_update_status_description: Update status description
@@ -509,7 +509,7 @@
         token_name_blank: "Vennligst oppgi navn på API-token"
         token_name_in_use: "Dette API-token-navnet er allerede i bruk, velg et annet"
       new_access_token_dialog_title: "Opprett nytt API-token"
-      new_access_token_dialog_show_button_text: "API-token"
+      new_access_token_dialog_show_button_text: "API-nøkkel"
       new_access_token_dialog_text_field_placeholder_text: "Mitt API-token"
       new_access_token_dialog_text_field_label: "Navn"
       new_access_token_dialog_submit_button_text: "Opprett"
@@ -605,7 +605,7 @@
       no_results_content_text: Legg til en ny status
       headers:
         is_default: "Standard"
-        is_closed: "Lukket"
+        is_closed: "Stengt"
         is_readonly: "Kun lesetilgang"
         excluded_from_totals: "Unntatt fra totaler"
   themes:
@@ -636,9 +636,9 @@
         token:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Arbeidspakke"
+            parent: "Overordnet"
+            project: "Prosjekt"
         pattern:
           label: "Subject pattern"
           caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
@@ -728,7 +728,7 @@
     sharing:
       missing_workflow_warning:
         title: "Arbeidsflyt mangler for deling av arbeidspakker"
-        message: "Ingen arbeidsflyt er konfigurert for rollen 'Arbeidspakke redaktør'. Uten en arbeidsflyt kan ikke brukeren endre status på arbeidspakken. Arbeidsflyt kan kopieres. Velg en kildetype (f.eks. 'oppgave') og en kilderolle (f.eks. 'medlem'). Velg så måltyper. Til å begynne med, kan du velge alle typene som mål. Til slutt velger du \"Redigeringsprogrammet for arbeidspakke\" som mål og klikk \"Kopier\". Etter å ha opprettet standardinnstillingene, kan du finjustere arbeidsflytene som du gjør for enhver annen rolle."
+        message: "Ingen arbeidsflyt er konfigurert for rollen 'Arbeidspakke redaktør'. Uten en arbeidsflyt kan ikke brukeren endre status på arbeidspakken. Arbeidsflyt kan kopieres. Velg en kildetype (f.eks. 'oppgave') og en kilderolle (f.eks. 'medlem'). Velg så måltyper. Til å begynne med, kan du velge alle typene som mål. Til slutt velger du \"Redigeringsprogrammet for arbeidspakke\" som mål og press \"Copy\". Etter å ha opprettet standardinnstillingene, kan du finjustere arbeidsflytene som du gjør for hver annen rolle."
         link_message: "Konfigurer arbeidsmetodene i administrasjonen."
     templated_subject_hint: Automatically generated through type %{type}
     summary:
@@ -780,7 +780,7 @@
       new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
-      parent: "Parent"
+      parent: "Overordnet"
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "blokkeringer"
@@ -1205,7 +1205,7 @@
               format: "%{message}"
         capability:
           context:
-            global: "Globalt"
+            global: "Global"
           query:
             filters:
               minimum: "må inkludere minst ett filter for prinsipp, kontekst eller id med '='-operatøren."
@@ -1524,8 +1524,8 @@
         other: "Varsler"
       placeholder_user: "Plassholder bruker"
       project:
-        one: "Project"
-        other: "Projects"
+        one: "Prosjekt"
+        other: "Prosjekter"
       project_query:
         one: "Project list"
         other: "Prosjektlister"
@@ -2017,11 +2017,15 @@
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      plans_title: "Enterprise plans"
       title: "Enterprise programtillegg"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Skjul banneret"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Marker endringer som er gjort på denne listen tidligere.
       work_package_subject_generation:
@@ -2147,8 +2151,8 @@
       subproject: "Underprosjekt: %{name}"
   export:
     dialog:
-      title: "Eksporter"
-      submit: "Eksporter"
+      title: "Eksportèr"
+      submit: "Eksportèr"
       save_export_settings:
         label: "Save settings"
       format:
@@ -2382,7 +2386,7 @@
       api:
         title: "API"
         text_hint: "API-tokens tillater tredjepartsapplikasjoner å kommunisere med denne OpenProject instansen via REST APIs."
-        static_token_name: "API-nøkkel"
+        static_token_name: "API-token"
         disabled_text: "API-nøkler er ikke aktivert av administratoren. Kontakt systemansvarlig for å bruke denne funksjonen."
       ical:
         title: "iCalendar"
@@ -2498,7 +2502,7 @@
   label_available_projects: "Tilgjengelige prosjekter"
   label_api_doc: "API dokumentasjon"
   label_backup: "Sikkerhetskopi"
-  label_backup_code: "Sikkerhetskopieringsnøkkel"
+  label_backup_code: "Sikkerhetskopieringskode"
   label_basic_details: "Basic details"
   label_between: "mellom"
   label_blocked_by: "blokkert av"
@@ -2570,7 +2574,7 @@
   label_custom_field_default_type: "Tom type"
   label_custom_style: "Design"
   label_custom_style_description: "Velg hvordan OpenProject ser ut med temaer, velg dine standardfarger som skal brukes i appen og hvordan eksporten ser ut."
-  label_dashboard: "Kontrollpanel"
+  label_dashboard: "Kontrollsenter"
   label_database_version: "PostgreSQL versjon"
   label_date: "Dato"
   label_date_and_time: "Dato og tid"
@@ -2621,7 +2625,7 @@
   label_enumerations: "Opplistinger"
   label_enterprise: "Bedrift"
   label_enterprise_active_users: "%{current}/%{limit} bookede brukere"
-  label_enterprise_edition: "Enterprise Edition"
+  label_enterprise_edition: "Enterprise-utgaven"
   label_enterprise_support: "Bedriftsstøtte"
   label_environment: "Miljø"
   label_estimates_and_progress: "Estimater og fremdrift"
@@ -2719,7 +2723,7 @@
   label_latest_revision: "Siste revisjon"
   label_latest_revision_plural: "Siste revideringer"
   label_ldap_authentication: "LDAP-autentisering"
-  label_learn_more: "Lær mer"
+  label_learn_more: "Mer informasjon"
   label_less_or_equal: "<="
   label_less_than_ago: "mindre enn dager siden"
   label_link_url: "Lenke (URL)"
@@ -2798,7 +2802,7 @@
   label_next_week: "Neste uke"
   label_no_change_option: "(Ingen endring)"
   label_no_data: "Ingen data å vise"
-  label_no_due_date: "ingen ferdigdato"
+  label_no_due_date: "ingen ferdigmeldingsdato"
   label_no_start_date: "ingen startdato"
   label_no_parent_page: "Ingen overordnet side"
   label_nothing_display: "Ingenting å vise"
@@ -2860,7 +2864,7 @@
   label_progress_tracking: "Sporing av fremdrift"
   label_project: "Prosjekt"
   label_project_activity: "Aktivitet i prosjektet"
-  label_project_attribute_plural: "Prosjekt egenskaper"
+  label_project_attribute_plural: "Prosjektegenskaper"
   label_project_attribute_manage_link: "Administrer prosjektegenskaper"
   label_project_count: "Antall prosjekter"
   label_project_copy_notifications: "Send e-postvarsler mens prosjektkopieringen pågår"
@@ -2936,7 +2940,7 @@
   label_search_by_name: "Søk på navn"
   label_send_information: "Send nye opplysninger til brukeren"
   label_send_test_email: "Send en testmail"
-  label_session: "Økt"
+  label_session: "Sesjon"
   label_setting_plural: "Innstillinger"
   label_system_settings: "Systeminnstillinger"
   label_show_completed_versions: "Vis fullførte versjoner"
@@ -3095,7 +3099,7 @@
   label_member_role: "Prosjektrolle"
   label_global_role: "Global rolle"
   label_not_changeable: "(ikke mulig å endre)"
-  label_global: "Global"
+  label_global: "Globalt"
   label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "Feil ved kjøring av makroen %{macro_name}"
   macro_unavailable: "Makroen %{macro_name} kan ikke vises."
@@ -3172,7 +3176,7 @@
     storages:
       health:
         plaintext:
-          storage: "Lagring"
+          storage: "Lagringssted"
           healthy:
             summary: 'Gode nyheter! Status for lagringen din, %{storage_name}, vises for øyeblikket som "Sunn".'
             error-solved-on: "Løst"
@@ -3789,7 +3793,7 @@
     Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
-  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled: "Deaktivert"
   setting_self_registration_disabled_caption: >
     No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
   setting_self_registration_activation_by_email: "Account activation by email"
@@ -4068,7 +4072,7 @@
     views:
       project: >
         %{plural} er alltid knyttet til et prosjekt. Du kan kun velge prosjekter der %{plural} -modulen er aktiv. Når du har opprettet en %{singular} kan du legge til arbeidspakker fra andre prosjekter til den.
-      public: "Publiser denne visningen, slik at andre brukere får tilgang til visningen din. Brukere med 'Administrere offentlige visninger' kan endre eller fjerne offentlig spørring. Dette påvirker ikke synligheten til arbeidspakken resultatene i denne oversikten og avhengig av tillatelser,  vil brukerne kunne se forskjellige resultater."
+      public: "Publiser denne visningen, slik at andre brukere får tilgang til visningen din. Brukere med 'Administrere offentlige visninger' kan endre eller fjerne offentlig spørring. Dette påvirker ikke synligheten til resultatene i arbeidspakken  i denne oversikten og avhengig av tillatelser,  vil brukerne kunne se forskjellige resultater."
       favoured: "Marker denne som favoritt og legg til den lagrede sidestolpen til venstre."
   time:
     am: "er"
@@ -4290,7 +4294,7 @@
       Hoppet over dager som ikke er valgt ved planlegging av arbeidspakker (og ikke inkludert i antall dager). Disse kan overstyres på arbeidspakkenivå.
     instance_wide_info: >
       Datoer som er lagt til i listen nedenfor regnes som arbeidsfrie og hoppet over når arbeidspakker planlegges.
-    change_button: "Endre arbeidsdager"
+    change_button: "Endre virkedager"
     warning: >
       Endring av hvilke ukedager som regnes som arbeidsdager eller arbeidsfrie dager kan påvirke start- og sluttdager for alle arbeidspakker i alle prosjekter i denne forekomsten.
     journal_note:

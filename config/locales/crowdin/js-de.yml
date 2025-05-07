@@ -260,10 +260,7 @@ de:
             OpenProject bietet eine bewährte und hoch-skalierbare Projektmanagement-Software für Unternehmen - mit Open Source und open mind.
           link_quote: "Angebot anfordern"
           more_info: "Weitere Informationen"
-          text: >
-            Die OpenProject Enterprise Edition baut auf der Community Edition auf. Sie umfasst Enterprise Add-ons und professionelle Unterstützung und richtet sich primär an Organisationen mit mehr als 10 Benutzern, die unternehmenskritische Projekte mit OpenProject verwalten.
           unlimited: "Unbegrenzt"
-          you_contribute: "Auch Software-Entwickler müssen ihre Rechnungen bezahlen. Durch ein Upgrade auf die Enterprise edition unterstützen Sie diese Open-Source-Community und tragen zur Entwicklung, Wartung und kontinuierlichen Verbesserung von OpenProject bei."
       working_days:
         calendar:
           empty_state_header: "Arbeitsfreie Tage"
@@ -357,10 +354,10 @@ de:
           learn_about: "Erfahren Sie mehr über die neuen Funktionen"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_5":
+          "16_0":
             standard:
               new_features_html: >
-                Das Release bringt Ihnen verschiedene Funktionen und Verbesserungen, z. B. <br> <ul class="%{list_styling_class}"> <li>Filtern nach untergeordneten Arbeitspaketen (Kinder und Kindes-Kinder).</li> <li>Profitieren Sie von der verbesserten Barrierefreiheit im Datumswähler.</li> <li>"% Vollständig" als den Arbeitspaket-Tabellensumme auswählbar.</li> <li>Fügen Sie eine Spalte für Kinder in Arbeitspakettabellen ein.</li> <li>Benutzen Sie die native Datumsauswahl auf mobilen Endgeräten.</li> <li>PDF-Export gemäß des konfigurierten Formularlayouts.</li> </ul>
+                Die Version enthält verschiedene neue Funktionen und Verbesserungen wie <br> <ul class="%{list_styling_class}"> <li>Meeting Backlogs und das Ende der klassischen Meetings.</li> <li>Aktualisierte Enterprise-Add-on-Pläne.</li> <li>Interne Kommentare in Arbeitspaketen (Enterprise-Add-on).</li> <li>Automatisch generierte Arbeitspaket-Themen (Enterprise-Add-on).</li> <li>Separates Zeiterfassungsmodul mit Kalenderansicht.</li> <li>Das "Beziehungen"-Tab zeigt übergeordnete Arbeitspakete an.</li> <li>Übergabe in die Community-Version: Graphen auf Projektübersichtsseite.</li> </ul>
     ical_sharing_modal:
       title: "Kalender abonnieren"
       inital_setup_error_message: "Beim Abrufen der Daten ist ein Fehler aufgetreten."
@@ -641,7 +638,7 @@ de:
           with_current_filter: "Es gibt derzeit keine Benachrichtigungen in dieser Ansicht"
         mark_all_read: "Alles als gelesen markieren"
         mark_as_read: "Als gelesen markieren"
-        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
+        mark_all_read_confirmation: "Dadurch werden alle Benachrichtigungen in dieser Ansicht als gelesen markiert. Sind Sie sicher, dass Sie dies tun möchten?"
         text_update_date_by: "%{date} von"
         total_count_warning: "Zeige die %{newest_count} neuesten Benachrichtigungen. %{more_count} weitere werden nicht angezeigt."
         empty_state:
@@ -654,7 +651,7 @@ de:
           message: "Es gibt neue Benachrichtigungen."
           link_text: "Hier klicken zum Aktualisieren."
       reminders:
-        note: "Anmerkung: „%{note}“"
+        note: "Anmerkung: “%{note}”"
       settings:
         change_notification_settings: 'Sie können Ihre <a target="_blank" href="%{url}">Benachrichtigungseinstellungen</a> ändern, um sicherzustellen, dass Sie keine wichtige Aktualisierung verpassen.'
         title: "Benachrichtigungseinstellungen"
@@ -796,7 +793,7 @@ de:
       typeahead_placeholder: Nach möglichen Beobachtern suchen
     relation_labels:
       parent: "Übergeordnetes Arbeitspaket"
-      child: "Kind"
+      child: "Unteraufgabe"
       children: "Untergeordnete Arbeitspakete"
       relates: "Verwandt mit"
       duplicates: "Dupliziert"
@@ -826,7 +823,7 @@ de:
       add_new_child: "Neue Unteraufgabe"
       create_new: "Neu erstellen"
       add_existing: "Bestehende hinzufügen"
-      add_existing_child: "Kind hinzufügen"
+      add_existing_child: "Untergeordnetes Arbeitspaket hinzufügen"
       remove_child: "Unteraufgabe entfernen"
       add_new_relation: "Neue Beziehung erstellen"
       add_existing_relation: "Bestehende Beziehung hinzufügen"
@@ -835,7 +832,7 @@ de:
       update_relation: "Klicken um den Beziehungstyp zu ändern"
       show_relations: "Beziehungen anzeigen"
       add_predecessor: "Vorgänger hinzufügen"
-      add_successor: "Add successor"
+      add_successor: "Nachfolger hinzufügen"
       remove: "Beziehung entfernen"
       save: "Beziehung speichern"
       abort: "Abbrechen"

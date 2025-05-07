@@ -44,9 +44,5 @@ require_relative "../../lib_static/open_project/feature_decisions"
 OpenProject::FeatureDecisions.add :built_in_oauth_applications,
                                   description: "Allows the display and use of built-in OAuth applications."
 
-OpenProject::FeatureDecisions.add :generate_work_package_subjects,
-                                  description: "Allows the configuration for work package types to have " \
-                                               "automatically generated work package subjects."
-
 OpenProject::FeatureDecisions.add :stages_and_gates,
                                   description: "Enables the under construction feature of phases."

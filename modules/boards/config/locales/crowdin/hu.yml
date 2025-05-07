@@ -16,15 +16,15 @@ hu:
     label_create_new_board: "Új tábla létrehozása"
     label_board_type: "Tábla típus"
     board_types:
-      free: Alap
-      action: "Feladattábla (%{attribute})"
+      free: Alapszintű
+      action: "Akció tábla (%{attribute})"
     board_type_attributes:
-      assignee: Felelős
+      assignee: Megbízott
       status: Állapot
       version: Verzió
       subproject: Alprojekt
       subtasks: Szülő-gyerek
-      basic: Alap
+      basic: Alapszintű
     board_type_descriptions:
       basic: >
         Kezdje a semmiből egy üres táblával. Kézzel adjon hozzá kártyákat és oszlopokat ehhez a táblához.

@@ -261,10 +261,7 @@ zh-CN:
             我们秉承开源和开放心态，有信心提供经得起考验和充分支持的企业级项目管理软件。
           link_quote: "获取报价"
           more_info: "更多信息"
-          text: >
-            OpenProject 企业版是在社区版的基础上构建的。它包括企业版插件和专业支持，主要面向使用 OpenProject 管理业务关键项目的具有 10 个以上用户的组织。
           unlimited: "不受限制"
-          you_contribute: "开发者也需要支付他们的账单。 通过升级到企业版，您将支持这个开放源码社区的努力，并有助于其发展、维护和不断改进。"
       working_days:
         calendar:
           empty_state_header: "非工作日"
@@ -354,13 +351,13 @@ zh-CN:
       blocks:
         new_features:
           text_new_features: "了解新功能和产品更新。"
-          learn_about: "详细了解新功能"
+          learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_5":
+          "16_0":
             standard:
               new_features_html: >
-                该版本为您带来了多项功能与改进，例如：<br> <ul class="%{list_styling_class}"> <li>筛选工作包后代（子级和孙级）。</li> <li>日期选择器支持高级无障碍功能。</li> <li>工作包表格汇总中显示完成百分比。</li> <li>工作包表格新增子级列。</li> <li>优化移动端屏幕的日期选择器使用体验。</li> <li>PDF 导出与配置的表单布局保持一致。</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
     ical_sharing_modal:
       title: "订阅日历"
       inital_setup_error_message: "获取数据时发生错误。"
@@ -640,7 +637,7 @@ zh-CN:
           with_current_filter: "目前此视图中没有通知"
         mark_all_read: "全部标记为已读"
         mark_as_read: "标记为已读"
-        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
+        mark_all_read_confirmation: "将把此视图中的所有通知标记为已读。确定吗？"
         text_update_date_by: "%{date}，"
         total_count_warning: "正在显示 %{newest_count} 条最新通知。还有 %{more_count} 条未显示。"
         empty_state:
@@ -834,7 +831,7 @@ zh-CN:
       update_relation: "点击以更改关系类型"
       show_relations: "显示关系"
       add_predecessor: "添加前置项"
-      add_successor: "Add successor"
+      add_successor: "添加后置项"
       remove: "删除关系"
       save: "保存关系"
       abort: "放弃"

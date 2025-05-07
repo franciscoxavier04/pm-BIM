@@ -31,7 +31,7 @@ uk:
         type: "Тип зустрічі"
         location: "Місцезнаходження"
         duration: "Тривалість"
-        notes: "Нотатки "
+        notes: "Нотатки"
         participants: "Учасники"
         participant:
           one: "1 учасник"
@@ -48,7 +48,7 @@ uk:
         title: "Назва "
         author: "Автор"
         duration_in_minutes: "хв"
-        description: "Примітки"
+        description: "Нотатки"
         presenter: "Доповідач"
       meeting_section:
         title: "Назва "
@@ -353,13 +353,13 @@ uk:
   text_meeting_minutes_for_meeting: 'протокол засідання %{meeting}'
   text_notificiation_invited: "У цьому листі міститься запис ics для зустрічі нижче:"
   text_meeting_empty_heading: "Ваша нарада пуста"
-  text_meeting_empty_description1: "Start by adding agenda items below. Each item can be as simple as just a title, but you can also add additional details like duration and notes."
-  text_meeting_empty_description2: 'You can also add references to existing work packages. When you do, related notes will automatically be visible in the work package''s "Meetings" tab.'
+  text_meeting_empty_description1: "Почніть із додавання пунктів розкладу нижче. Кожен елемент може бути таким простим, як назва, але ви також можете додати додаткові деталі, як-от тривалість і примітки."
+  text_meeting_empty_description2: 'Ви також можете додати посилання на наявні пакети робіт. У такому разі пов’язані примітки автоматично з’являться на вкладці «Наради» пакета робіт.'
   label_meeting_empty_action: "Додати пункт порядку денного"
   label_meeting_actions: "Дії з нарадою"
   label_meeting_edit_title: "Редагувати назву зустрічі"
-  label_meeting_delete: "Видалити зустріч"
-  label_meeting_created_by: "Створено "
+  label_meeting_delete: "Видалити нараду"
+  label_meeting_created_by: "Створено"
   label_meeting_last_updated: "Востаннє оновлено"
   label_meeting_reload: "Перезавантажити"
   label_meeting_index_today: "Сьогодні"
@@ -379,7 +379,7 @@ uk:
   label_agenda_item_move_to_bottom: "Помістити в кінець"
   label_agenda_item_move_up: "Рухатися вгору"
   label_agenda_item_move_down: "Пересунути нижче"
-  label_agenda_item_add_notes: "Додати примітку "
+  label_agenda_item_add_notes: "Додати нотатки"
   label_agenda_item_add_outcome: "Додати результат"
   label_agenda_item_work_package: "Пакет робіт пункту порядку денного"
   label_agenda_outcome: "Результат"
@@ -389,7 +389,7 @@ uk:
   text_outcome_not_editable_anymore: "Цей результат більше не можна редагувати."
   text_outcome_cannot_be_added: "An outcome can no longer be added."
   label_backlog_clear: "Clear backlog"
-  label_backlog_clear_button: "Clear all"
+  label_backlog_clear_button: "Очистити все"
   text_backlog_clear_error: "One or more errors occurred while trying to clear the backlog."
   label_agenda_backlog: "Agenda backlog"
   text_agenda_backlog: >
@@ -411,7 +411,7 @@ uk:
   label_meeting_series_details: "Деталі серії нарад"
   label_meeting_details_edit: "Редагувати інформацію про зустріч"
   label_meeting_state: "Статус наради"
-  label_meeting_state_open: "Відкрити"
+  label_meeting_state_open: "Відкриті"
   label_meeting_state_closed: "Закрито"
   label_meeting_state_agenda_created: "Порядок денний створено"
   label_meeting_state_planned: "Заплановані"

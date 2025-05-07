@@ -94,9 +94,9 @@ vi:
       get_quote: "Lấy trích dẫn"
       buttons:
         upgrade: "Nâng cấp ngay"
-        contact: "Liên hệ với chúng tôi để có buổi demo"
+        contact: "Liên hệ với chúng tôi để được trình diễn"
       enterprise_info_html: "là một tiện ích bổ sung Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
-      upgrade_info: "Vui lòng nâng cấp lên gói trả phí để kích hoạt và bắt đầu sử dụng nó trong nhóm của bạn."
+      upgrade_info: "Vui lòng nâng cấp lên kế hoạch trả phí để kích hoạt và bắt đầu sử dụng nó trong nhóm của bạn."
     jemalloc_allocator: Jemalloc memory allocator
     journal_aggregation:
       explanation:
@@ -354,7 +354,7 @@ vi:
         text: "Hành động này sẽ không xóa bất kỳ dự án nào có trong danh sách. Bạn có chắc chắn muốn xóa danh sách dự án này không?"
     settings:
       header_details: Basic details
-      header_status: Project status
+      header_status: Tình trạng dự án
       header_relations: Project relations
       button_update_details: Update details
       button_update_status_description: Update status description
@@ -397,7 +397,7 @@ vi:
           label: "Search project phase"
       project_custom_fields:
         header:
-          title: "Thuộc tính dự án"
+          title: "Các thuộc tính dự án"
           description_html: 'Các thuộc tính dự án này sẽ được hiển thị trên <a href=%{overview_url} target="_blank">trang tổng quan dự án</a> của bạn dưới các phần tương ứng của chúng. Bạn có thể bật hoặc tắt các thuộc tính cá nhân. Các thuộc tính và phần của dự án được xác định trong <a href=%{admin_settings_url} target="_blank">cài đặt quản trị</a> bởi quản trị viên của phiên bản.'
         filter:
           label: "Tìm kiếm thuộc tính dự án"
@@ -446,7 +446,7 @@ vi:
     invite_by_mail: "Gửi lời mời cho  %{mail}"
     send_invite_to: "Gửi lời mời đến"
     columns:
-      shared: "Chia sẻ"
+      shared: "Được chia sẻ"
     filters:
       all_shares: "Tất cả các chia sẻ"
     menu:
@@ -477,7 +477,7 @@ vi:
       cannot_delete_inherited_membership_note_admin_html: "Bạn có thể xóa nhóm khỏi dự án hoặc xóa thành viên cụ thể này khỏi nhóm trong %{administration_settings_link}."
       cannot_delete_inherited_membership_note_non_admin: "Bạn có thể xóa nhóm khỏi dự án hoặc liên hệ với quản trị viên để xóa thành viên cụ thể này khỏi nhóm."
     delete_work_package_shares_dialog:
-      title: "Thu hồi chia sẻ gói công việc"
+      title: "Thu hồi quyền chia sẻ gói công việc"
       shared_with_this_user_html:
         other: "Ngoài ra, %{all_shared_work_packages_link} đã được chia sẻ với người dùng này."
       shared_with_this_group_html:
@@ -502,10 +502,10 @@ vi:
         token_name_blank: "Vui lòng cung cấp tên API token"
         token_name_in_use: "Tên API token này đã được sử dụng, vui lòng chọn tên khác"
       new_access_token_dialog_title: "Tạo token API mới"
-      new_access_token_dialog_show_button_text: "Mã thông báo API"
+      new_access_token_dialog_show_button_text: "Mã API"
       new_access_token_dialog_text_field_placeholder_text: "Token API của tôi"
       new_access_token_dialog_text_field_label: "Tên"
-      new_access_token_dialog_submit_button_text: "Tạo"
+      new_access_token_dialog_submit_button_text: "Tạo mới"
       new_access_token_dialog_text: "Token này sẽ cho phép các ứng dụng bên thứ ba giao tiếp với hệ thống của bạn. Để phân biệt token API mới, vui lòng đặt tên cho nó."
       new_access_token_dialog_attention_text: "Xem token API như mật khẩu. Bất kỳ ai có liên kết này sẽ có quyền truy cập thông tin từ hệ thống của bạn, chỉ chia sẻ nó với người dùng đáng tin cậy."
       failed_to_reset_token: "Lỗi cập nhật mã truy cập: %{error}"
@@ -629,9 +629,9 @@ vi:
         token:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Work Package"
+            parent: "Cha"
+            project: "Dự án"
         pattern:
           label: "Subject pattern"
           caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
@@ -772,7 +772,7 @@ vi:
       new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
-      parent: "Parent"
+      parent: "Cha"
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "các khối"
@@ -930,7 +930,7 @@ vi:
         read_ian: "Read in-app"
         resource: "Resource"
       oauth_client:
-        client: "ID khách hàng"
+        client: "ID người dùng"
       project:
         active_value:
           true: "chưa lưu trữ"
@@ -941,7 +941,7 @@ vi:
         latest_activity_at: "Các hoạt động mới nhất tại"
         parent: "Dự án con của"
         public_value:
-          title: "Tính công khai"
+          title: "Hiển thị"
           true: "công khai"
           false: "riêng tư"
         queries: "Truy vấn"
@@ -949,11 +949,11 @@ vi:
         status_explanation: "Mô tả trạng thái dự án"
         status_codes:
           not_started: "Chưa bắt đầu"
-          on_track: "Đang theo dõi"
+          on_track: "Đang tiến triển"
           at_risk: "Có nguy cơ"
-          off_track: "Ra ngoài quỹ đạo"
+          off_track: "Bị lệch"
           finished: "Hoàn thành"
-          discontinued: "Ngừng"
+          discontinued: "Ngừng hoạt động"
         templated: "Dự án mẫu"
         templated_value:
           true: "được đánh dấu là mẫu"
@@ -963,7 +963,7 @@ vi:
         work_packages: "Work Packages"
       project_custom_field:
         is_required: "Yêu cầu cho tất cả các dự án"
-        custom_field_section: Mục tùy chỉnh
+        custom_field_section: Phần
       project/phase:
         date_range: "Khoảng thời gian"
         definition: "Definition"
@@ -1083,8 +1083,8 @@ vi:
         begin_deletion: "Bắt đầu xóa"
         children: "Subelements"
         derived_done_ratio: "Tổng % hoàn thành"
-        derived_remaining_hours: "Tổng số giờ còn lại"
-        derived_remaining_time: "Tổng thời gian còn lại"
+        derived_remaining_hours: "Tổng thời gian còn lại"
+        derived_remaining_time: "Tổng số giờ còn lại"
         done_ratio: "% Hoàn thành"
         duration: "Thời gian"
         end_insertion: "Kết thúc chèn"
@@ -1102,7 +1102,7 @@ vi:
         priority: "Độ ưu tiên"
         progress: "% Hoàn thành"
         readonly: "Chỉ đọc"
-        remaining_hours: "Số giờ còn lại"
+        remaining_hours: "Công việc còn lại"
         remaining_time: "Thời gian còn lại"
         shared_with_users: "Chia sẻ với"
         schedule_manually: "Lên lịch thủ công"
@@ -1133,7 +1133,7 @@ vi:
         error_enterprise_only: "%{action} chỉ có sẵn trong phiên bản OpenProject Enterprise"
         error_unauthorized: "Có thể không được truy cập."
         error_readonly: "đã bị ghi lại nhưng không thể ghi."
-        error_conflict: "Thông tin đã được cập nhật bởi ít nhất một người dùng khác trong thời gian đó."
+        error_conflict: "Thông tin đã được cập nhật bởi ít nhất một người dùng khác trong thời gian này."
         email: "không phải là địa chỉ email hợp lệ."
         empty: "không thể để trống"
         enterprise_plan_required: "requires at least the %{plan_name}."
@@ -1457,7 +1457,7 @@ vi:
               confirmation: "Xác nhận mật khẩu không khớp với mật khẩu."
               format: "%{message}"
             password:
-              weak: "Phải chứa các ký tự của các lớp sau (ít nhất %{min_count} trong số %{all_count}): %{rules}"
+              weak: "Phải chứa các ký tự của các lớp sau (tối thiểu là %{min_count} %{all_count}): %{rules}"
               lowercase: "chữ thường (ví dụ như 'a')"
               uppercase: "chữ hoa (ví dụ như ' A')"
               numeric: "số (ví dụ như ' 1')"
@@ -1510,9 +1510,9 @@ vi:
       news: "Tin tức"
       notification:
         other: "Thông báo"
-      placeholder_user: "Người dùng thay thế"
+      placeholder_user: "Người dùng tạm thời"
       project:
-        other: "Projects"
+        other: "Các dự án"
       project_query:
         other: "Danh sách dự án"
       query: "Truy vấn riêng"
@@ -1521,7 +1521,7 @@ vi:
         other: "Vai trò"
       status: "Tình trạng work package"
       token/api:
-        other: Token truy cập
+        other: Mã truy cập
       type: "Loại"
       user: "Người dùng"
       version: "Phiên bản"
@@ -1610,8 +1610,8 @@ vi:
     direction: "Direction"
     display_sums: "Hiển thị tổng"
     due_date: "Ngày kết thúc"
-    estimated_hours: "Thời gian ước tính"
-    estimated_time: "Thời gian ước tính"
+    estimated_hours: "Công việc"
+    estimated_time: "Công việc"
     email: "Thư điện tử"
     entity_type: "Entity"
     expires_at: "Hết hạn vào"
@@ -1726,7 +1726,7 @@ vi:
   button_continue: "Tiếp tục"
   button_copy: "Sao chép"
   button_copy_to_clipboard: "Sao chép vào bảng tạm"
-  button_copy_link_to_clipboard: "Sao chép liên kết vào bảng tạm"
+  button_copy_link_to_clipboard: "Sao chép liên kết vào clipboard"
   button_copy_and_follow: "Sao chép và làm theo"
   button_create: "Tạo mới"
   button_create_and_continue: "Tạo và tiếp tục"
@@ -1759,7 +1759,7 @@ vi:
   button_reset: "Reset"
   button_rollback: "Quay trở lại phiên bản này"
   button_save: "Lưu"
-  button_save_as: "Lưu thành"
+  button_save_as: "Lưu dưới dạng"
   button_apply_changes: "Áp dụng thay đổi"
   button_save_back: "Lưu và trở lại"
   button_set_reminder: "Set reminder"
@@ -1785,7 +1785,7 @@ vi:
   button_manage_roles: "Quản lý vai trò"
   button_remove_member: "Xóa thành viên"
   button_remove_member_and_shares: "Xóa thành viên và quyền chia sẻ"
-  button_revoke_work_package_shares: "Thu hồi quyền chia sẻ gói công việc"
+  button_revoke_work_package_shares: "Thu hồi chia sẻ gói công việc"
   button_revoke_access: "Thu hồi quyền truy cập"
   button_revoke_all: "Thu hồi tất cả"
   button_revoke_only: "Chỉ thu hồi %{shared_role_name}"
@@ -1978,11 +1978,15 @@ vi:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      plans_title: "Enterprise plans"
       title: "Tiện ích mở rộng doanh nghiệp"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Nổi bật các thay đổi đã thực hiện đối với danh sách này kể từ bất kỳ thời điểm nào trong quá khứ.
       work_package_subject_generation:
@@ -2131,7 +2135,7 @@ vi:
           label: "Loại xuất PDF"
           options:
             table:
-              label: "Bảng"
+              label: "Danh sách"
               caption: "Xuất danh sách các gói công việc thành một bảng có các cột mong muốn."
             report:
               label: "Báo cáo"
@@ -2154,11 +2158,11 @@ vi:
           label: "Chiều rộng cột bảng"
           options:
             narrow: "Hẹp"
-            medium: "Vừa"
+            medium: "Vừa phải"
             wide: "Rộng"
             very_wide: "Rất rộng"
         paper_size:
-          label: "Khổ giấy"
+          label: "Kích thước giấy"
           caption: "Tùy thuộc vào kích thước biểu đồ, có thể xuất nhiều hơn một trang."
         long_text_fields:
           input_caption: "Theo mặc định, tất cả các trường văn bản dài đều được chọn."
@@ -2245,7 +2249,7 @@ vi:
   general_text_No: "Không"
   general_text_Yes: "Có"
   general_text_true: "đúng"
-  general_text_false: "sai"
+  general_text_false: "false"
   gui_validation_error: "1 lỗi"
   gui_validation_error_plural: "%{count} lỗi"
   homescreen:
@@ -2292,10 +2296,10 @@ vi:
         changed: "bởi các thay đổi đối với ngày làm việc (%{changes})"
         days:
           working: "%{day} hiện là ngày làm việc"
-          non_working: "%{day} hiện không phải là ngày làm việc"
+          non_working: "%{day} hiện là ngày không làm việc"
         dates:
           working: "%{date} hiện là ngày làm việc"
-          non_working: "%{date} hiện không phải là ngày làm việc"
+          non_working: "%{date} hiện là ngày không làm việc"
       progress_mode_changed_to_status_based: Chế độ tính toán tiến độ đã được đặt thành chế độ dựa trên trạng thái
       status_excluded_from_totals_set_to_false_message: hiện được bao gồm trong tổng số phân cấp
       status_excluded_from_totals_set_to_true_message: hiện bị loại trừ khỏi tổng số phân cấp
@@ -2334,7 +2338,7 @@ vi:
       no_results:
         title: "Không có mã truy cập để hiển thị"
         description: "Tất cả đã bị vô hiệu hóa. Chúng có thể được kích hoạt lại trong menu quản trị."
-      access_tokens: "Mã truy cập"
+      access_tokens: "Token truy cập"
       headers:
         action: "Hành động"
         expiration: "Hết hạn"
@@ -2343,7 +2347,7 @@ vi:
       api:
         title: "API"
         text_hint: "Mã API cho phép các ứng dụng của bên thứ ba giao tiếp với phiên bản OpenProject này qua REST APIs."
-        static_token_name: "Mã API"
+        static_token_name: "Mã thông báo API"
         disabled_text: "Mã API không được kích hoạt bởi quản trị viên. Vui lòng liên hệ với quản trị viên của bạn để sử dụng tính năng này."
       ical:
         title: "iCalendar"
@@ -2360,7 +2364,7 @@ vi:
         static_token_name: "Mã RSS"
         disabled_text: "Mã RSS không được kích hoạt bởi quản trị viên. Vui lòng liên hệ với quản trị viên của bạn để sử dụng tính năng này."
       storages:
-        title: "Lưu trữ Tệp"
+        title: "Lưu trữ tệp"
         text_hint: "Mã Lưu trữ Tệp kết nối phiên bản OpenProject này với một lưu trữ tệp bên ngoài."
         empty_text_hint: "Không có quyền truy cập lưu trữ nào liên kết với tài khoản của bạn."
         revoke_token: "Bạn có thực sự muốn xóa mã truy cập này không? Bạn sẽ cần phải đăng nhập lại trên %{storage}"
@@ -2371,16 +2375,16 @@ vi:
     reasons:
       assigned: "Người được giao"
       dateAlert: "Cảnh báo ngày"
-      mentioned: "Được nhắc đến"
-      responsible: "Có trách nhiệm"
+      mentioned: "Nhắc đến"
+      responsible: "Trách nhiệm"
       shared: "Được chia sẻ"
-      watched: "Quan sát viên"
+      watched: "Người quan sát"
       reminder: "Reminder"
     facets:
       unread: "Chưa đọc"
-      unread_title: "Hiện chưa đọc"
+      unread_title: "Hiển thị chưa đọc"
       all: "Tất cả"
-      all_title: "Hiện tất cả"
+      all_title: "Hiển thị tất cả"
     menu:
       by_project: "Chưa đọc theo dự án"
       by_reason: "Lý do"
@@ -2459,7 +2463,7 @@ vi:
   label_available_projects: "Các dự án có sẵn"
   label_api_doc: "Tài liệu API"
   label_backup: "Sao lưu"
-  label_backup_code: "Mã sao lưu"
+  label_backup_code: "Mã dự phòng"
   label_basic_details: "Basic details"
   label_between: "giữa"
   label_blocked_by: "bị chặn bởi"
@@ -2470,7 +2474,7 @@ vi:
   label_forum_plural: "Diễn đàn"
   label_forum_sticky: "Ghim"
   label_boolean: "Boolean"
-  label_board_plural: "Bảng"
+  label_board_plural: "Các bảng"
   label_branch: "Nhánh"
   label_browse: "Duyệt"
   label_bulk_edit_selected_work_packages: "Chỉnh sửa các work package đã chọn"
@@ -2771,7 +2775,7 @@ vi:
   label_not_contains: "không chứa"
   label_not_equals: "không là"
   label_life_cycle_step_plural: "Project life cycle"
-  label_on: "bật"
+  label_on: "vào"
   label_operator_all: "không rỗng"
   label_operator_none: "rỗng"
   label_operator_equals_or: "là (HOẶC)"
@@ -2799,9 +2803,9 @@ vi:
   label_permissions: "Phân Quyền"
   label_permissions_report: "Báo cáo phân quyền"
   label_personalize_page: "Cá nhân hoá các trang này"
-  label_placeholder_user: "Người dùng giả lập"
+  label_placeholder_user: "Người dùng tạm thời"
   label_placeholder_user_new: "Người dùng giả lập mới"
-  label_placeholder_user_plural: "Người dùng giả lập"
+  label_placeholder_user_plural: "Người dùng giả định"
   label_planning: "Lập kế hoạch"
   label_please_login: "Vui lòng đăng nhập"
   label_plugins: "Plugins"
@@ -2837,7 +2841,7 @@ vi:
   label_project_custom_field_plural: "Các thuộc tính dự án"
   label_project_settings: "Thiết lập dự án"
   label_project_attributes_settings: "Cài đặt thuộc tính dự án"
-  label_project_storage_plural: "Lưu trữ tệp"
+  label_project_storage_plural: "Lưu trữ Tệp"
   label_project_storage_project_folder: "Lưu trữ tệp: Thư mục dự án"
   label_projects_disk_usage_information: "%{count} dự án đang sử dụng %{used_disk_space} dung lượng đĩa"
   label_project_view_all: "Xem tất cả các dự án"
@@ -3050,7 +3054,7 @@ vi:
     one: "1 tệp"
     other: "%{count} tệp"
     zero: "không có tệp"
-  label_yesterday: "hôm qua"
+  label_yesterday: "ngày hôm qua"
   label_zen_mode: "Chế độ Zen"
   label_role_type: "Loại"
   label_member_role: "Vai trò dự án"
@@ -3106,8 +3110,8 @@ vi:
         watched: "Đã theo dõi"
         assigned: "Được chỉ định"
         responsible: "Chịu trách nhiệm"
-        mentioned: "Được nhắc đến"
-        shared: "Chia sẻ"
+        mentioned: "Nhắc đến"
+        shared: "Được chia sẻ"
         subscribed: "tất cả"
         prefix: "Nhận được do cài đặt thông báo: %{reason}"
         date_alert_start_date: "Cảnh báo ngày"
@@ -3263,7 +3267,7 @@ vi:
   notice_file_not_found: "Trang bạn đang cố gắng truy cập không tồn tại hoặc đã bị xóa."
   notice_forced_logout: "Bạn đã bị đăng xuất tự động sau %{ttl_time} phút không hoạt động."
   notice_internal_server_error: "Đã xảy ra lỗi trên trang bạn đang cố gắng truy cập. Nếu bạn tiếp tục gặp vấn đề, vui lòng liên hệ với quản trị viên %{app_title} của bạn để được trợ giúp."
-  notice_locking_conflict: "Thông tin đã được cập nhật bởi ít nhất một người dùng khác trong thời gian này."
+  notice_locking_conflict: "Thông tin đã được cập nhật bởi ít nhất một người dùng khác trong thời gian đó."
   notice_locking_conflict_additional_information: "Bản cập nhật(s) này đến từ %{users}."
   notice_locking_conflict_reload_page: "Vui lòng tải lại trang, xem xét các thay đổi và áp dụng lại các cập nhật của bạn."
   notice_locking_conflict_warning: "This page has been updated by someone else. To not lose your edits, copy them locally and reload to view the updated version."
@@ -3748,7 +3752,7 @@ vi:
     Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
-  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled: "VÔ HIỆU"
   setting_self_registration_disabled_caption: >
     No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
   setting_self_registration_activation_by_email: "Account activation by email"
@@ -3830,7 +3834,7 @@ vi:
     highlighting:
       mode_long:
         inline: "Tô sáng thuộc tính (các) trực tiếp"
-        none: "Không tô sáng"
+        none: "Không có đánh dấu"
         status: "Toàn bộ hàng theo Trạng thái"
         type: "Toàn bộ hàng theo Loại"
         priority: "Toàn bộ hàng theo Mức độ ưu tiên"
@@ -3843,7 +3847,7 @@ vi:
     other: "Khác"
     passwords: "Mật khẩu"
     project_attributes:
-      heading: "Thuộc tính dự án"
+      heading: "Các thuộc tính dự án"
       label_new_attribute: "Thuộc tính dự án"
       label_new_section: "Phần"
       label_edit_section: "Chỉnh sửa tiêu đề"
@@ -3897,17 +3901,17 @@ vi:
   text_formatting:
     markdown: "Gạch dưới"
     plain: "Văn bản thuần"
-  status_active: "hoạt động"
+  status_active: "đang hoạt động"
   status_archived: "đã lưu trữ"
   status_blocked: "bị chặn"
-  status_invited: đã mời
-  status_locked: khóa
+  status_invited: được mời
+  status_locked: đã khóa
   status_registered: đã đăng ký
   #Used in array.to_sentence.
   support:
     array:
       sentence_connector: "và"
-      skip_last_comma: "false"
+      skip_last_comma: "sai"
   text_accessibility_hint: "Chế độ truy cập được thiết kế cho người dùng khiếm thị, khuyết tật vận động hoặc thị lực kém. Đối với những người có thị lực kém, các yếu tố được tập trung sẽ được làm nổi bật đặc biệt. Vui lòng lưu ý, mô-đun Backlogs không có sẵn trong chế độ này."
   text_access_token_hint: "Mã truy cập cho phép bạn cấp quyền cho các ứng dụng bên ngoài truy cập tài nguyên trong OpenProject."
   text_analyze: "Phân tích thêm: %{subject}"
@@ -3963,7 +3967,7 @@ vi:
   text_work_package_updated: "Gói công việc %{id} đã được cập nhật bởi %{author}."
   text_work_package_watcher_added: "Bạn đã được thêm vào danh sách theo dõi Gói công việc %{id} bởi %{watcher_changer}."
   text_work_package_watcher_removed: "Bạn đã bị xóa khỏi danh sách theo dõi Gói công việc %{id} bởi %{watcher_changer}."
-  text_work_packages_destroy_confirmation: "Bạn có chắc chắn muốn xóa gói công việc(s) đã chọn không?"
+  text_work_packages_destroy_confirmation: "Bạn có chắc chắn muốn xóa các gói công việc(s) đã chọn không?"
   text_work_packages_ref_in_commit_messages: "Tham chiếu và sửa các gói công việc trong các thông điệp cam kết"
   text_journal_added: "%{label} %{value} đã được thêm"
   text_journal_attachment_added: "%{label} %{value} đã được thêm dưới dạng đính kèm"
@@ -4027,7 +4031,7 @@ vi:
     views:
       project: >
         %{plural} luôn gắn liền với một dự án. Bạn chỉ có thể chọn các dự án ở đây mà mô-đun %{plural} đang hoạt động. Sau khi tạo một %{singular}, bạn có thể thêm các gói công việc từ các dự án khác vào nó.
-      public: "Công khai chế độ xem này, cho phép người dùng khác truy cập chế độ xem của bạn. Người dùng có quyền 'Quản lý chế độ xem công khai' có thể chỉnh sửa hoặc xóa truy vấn công khai. Điều này không ảnh hưởng đến khả năng nhìn thấy kết quả gói công việc trong chế độ xem đó và tùy thuộc vào quyền của họ, người dùng có thể thấy các kết quả khác nhau."
+      public: "Xuất bản chế độ xem này, cho phép người dùng khác truy cập chế độ xem của bạn. Người dùng có quyền 'Quản lý các chế độ xem công khai' có thể chỉnh sửa hoặc xóa truy vấn công khai. Điều này không ảnh hưởng đến khả năng hiển thị của kết quả gói công việc trong chế độ xem đó và tùy thuộc vào quyền của họ, người dùng có thể thấy các kết quả khác nhau."
       favoured: "Đánh dấu chế độ xem này là yêu thích và thêm vào thanh bên các chế độ xem đã lưu ở bên trái."
   time:
     am: "sáng"
@@ -4069,7 +4073,7 @@ vi:
   total_progress: "Tiến độ tổng thể"
   user:
     all: "tất cả"
-    active: "hoạt động"
+    active: "đang hoạt động"
     activate: "Kích hoạt"
     activate_and_reset_failed_logins: "Kích hoạt và đặt lại các lần đăng nhập không thành công"
     authentication_provider: "Nhà cung cấp xác thực"
@@ -4085,7 +4089,7 @@ vi:
     deleted: "Người dùng đã bị xóa"
     error_status_change_failed: "Thay đổi trạng thái người dùng không thành công do các lỗi sau: %{errors}"
     invite: Mời người dùng qua email
-    invited: đã mời
+    invited: được mời
     lock: "Khóa vĩnh viễn"
     locked: "khóa vĩnh viễn"
     no_login: "Người dùng này xác thực qua đăng nhập bằng mật khẩu. Vì nó đã bị vô hiệu hóa, họ không thể đăng nhập."
@@ -4099,7 +4103,7 @@ vi:
     unlock: "Mở khóa"
     unlock_and_reset_failed_logins: "Mở khóa và đặt lại các lần đăng nhập không thành công"
   version_status_closed: "đã đóng"
-  version_status_locked: "đã khóa"
+  version_status_locked: "khóa"
   version_status_open: "mở"
   note: Ghi chú
   note_password_login_disabled: "Đăng nhập bằng mật khẩu đã bị vô hiệu hóa bởi %{configuration}."
@@ -4167,7 +4171,7 @@ vi:
       comment_description: "Có thể xem và nhận xét gói công việc này."
       edit: "Chỉnh sửa"
       edit_description: "Có thể xem, nhận xét và chỉnh sửa gói công việc này."
-      view: "Xem"
+      view: "Khung nhìn"
       view_description: "Có thể xem gói công việc này."
     reminders:
       label_remind_at: "Ngày"
@@ -4188,7 +4192,7 @@ vi:
       user: "Người dùng"
       group: "Nhóm"
       role: "Vai trò"
-      type: "Loại"
+      type: "Kiểu"
     denied: "Bạn không có quyền chia sẻ %{entities}."
     label_search: "Tìm kiếm người dùng để mời"
     label_search_placeholder: "Tìm kiếm theo người dùng hoặc địa chỉ email"
@@ -4198,7 +4202,7 @@ vi:
     text_empty_search_description: "Không có người dùng nào với tiêu chí lọc hiện tại."
     text_empty_search_header: "Chúng tôi không tìm thấy kết quả phù hợp."
     text_empty_state_description: "Mới đây %{entity} chưa được chia sẻ với bất kỳ ai."
-    text_empty_state_header: "Chưa chia sẻ"
+    text_empty_state_header: "Không được chia sẻ"
     text_user_limit_reached: "Thêm người dùng bổ sung sẽ vượt quá giới hạn hiện tại. Vui lòng liên hệ với quản trị viên để tăng giới hạn người dùng để đảm bảo người dùng bên ngoài có thể truy cập vào %{entity} này."
     text_user_limit_reached_admins: 'Thêm người dùng bổ sung sẽ vượt quá giới hạn hiện tại. Vui lòng <a href="%{upgrade_url}">nâng cấp gói của bạn</a> để có thể thêm nhiều người dùng hơn.'
     warning_user_limit_reached: >
@@ -4236,7 +4240,7 @@ vi:
           header: "Chưa chia sẻ: Riêng tư"
           description: "Danh sách dự án này chưa được chia sẻ với bất kỳ ai. Chỉ bạn có thể truy cập danh sách này."
       permissions:
-        view: "Xem"
+        view: "Khung nhìn"
         view_description: "Có thể xem danh sách dự án này."
         edit: "Chỉnh sửa"
         edit_description: "Có thể xem, chia sẻ và chỉnh sửa danh sách dự án này."
@@ -4249,15 +4253,15 @@ vi:
       Các ngày được thêm vào danh sách dưới đây được coi là không làm việc và bị bỏ qua khi lập kế hoạch gói công việc.
     change_button: "Thay đổi ngày làm việc"
     warning: >
-      Thay đổi các ngày trong tuần được coi là ngày làm việc hoặc không làm việc có thể ảnh hưởng đến ngày bắt đầu và kết thúc của tất cả các gói công việc trong tất cả các dự án trong phiên bản này.
+      Thay đổi những ngày trong tuần được coi là ngày làm việc hoặc ngày không làm việc có thể ảnh hưởng đến ngày bắt đầu và kết thúc của tất cả các công việc trong tất cả các dự án trong trường hợp này.
     journal_note:
       changed: _**Ngày làm việc** đã thay đổi (%{changes})._
       days:
         working: "%{day} hiện là ngày làm việc"
-        non_working: "%{day} hiện là ngày không làm việc"
+        non_working: "%{day} hiện không phải là ngày làm việc"
       dates:
         working: "%{date} hiện là ngày làm việc"
-        non_working: "%{date} hiện là ngày không làm việc"
+        non_working: "%{date} hiện không phải là ngày làm việc"
   nothing_to_preview: "Không có gì để xem trước"
   api_v3:
     attributes:
@@ -4381,7 +4385,7 @@ vi:
       builtin_applications: Built-in OAuth applications
       other_applications: Other OAuth applications
     empty_application_lists: No OAuth applications have been registered.
-    client_id: "ID khách hàng"
+    client_id: "ID người dùng"
     client_secret_notice: >
       Đây là lần duy nhất chúng tôi có thể in bí mật của khách hàng, vui lòng ghi lại và giữ an toàn. Nó nên được đối xử như mật khẩu và không thể được OpenProject lấy lại sau này.
     authorization_dialog:

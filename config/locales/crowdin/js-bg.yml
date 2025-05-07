@@ -65,7 +65,7 @@ bg:
     button_back: "Назад"
     button_back_to_list_view: "Back to list view"
     button_cancel: "Отказ"
-    button_close: "Close"
+    button_close: "Затворени"
     button_change_project: "Move to another project"
     button_check_all: "Избери всички"
     button_configure-form: "Configure form"
@@ -261,10 +261,7 @@ bg:
             We deliver the confidence of a tested and supported enterprise-class project management software - with Open Source and an open mind.
           link_quote: "Get a quote"
           more_info: "Повече информация"
-          text: >
-            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
           unlimited: "Unlimited"
-          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
       working_days:
         calendar:
           empty_state_header: "Non-working days"
@@ -355,13 +352,13 @@ bg:
       blocks:
         new_features:
           text_new_features: "Read about new features and product updates."
-          learn_about: "Learn more about the new features"
+          learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_5":
+          "16_0":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Filter for descendants (children and grandchildren) of work packages.</li> <li>Benefit from advanced accessibility in the date picker.</li> <li>See % Complete included in work package table sums.</li> <li>Include a column for children in work package tables.</li> <li>Better use the date picker in mobile screens.</li> <li>PDF exports matching configured form layout.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "An error occured while fetching data."
@@ -471,7 +468,7 @@ bg:
     label_no_start_date: "няма начална дата"
     label_no_date: "no date"
     label_no_value: "Няма стойност"
-    label_none: "none"
+    label_none: "никой"
     label_not_contains: "doesn't contain"
     label_not_equals: "is not"
     label_on: "на"
@@ -518,7 +515,7 @@ bg:
     label_this_week: "тази седмица"
     label_today: "Днес"
     label_time_entry_plural: "Отработено време"
-    label_up: "Up"
+    label_up: "Нагоре"
     label_user_plural: "Потребители"
     label_activity_show_only_comments: "Show activities with comments only"
     label_activity_show_all: "Show all activities"

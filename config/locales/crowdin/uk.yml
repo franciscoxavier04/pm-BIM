@@ -349,8 +349,8 @@ uk:
         heading: "Видалити цей список проєктів?"
         text: "Ця дія не призведе до видалення жодного проєкту зі списку. Справді видалити цей список проєктів?"
     settings:
-      header_details: Basic details
-      header_status: Project status
+      header_details: Основна інформація
+      header_status: Статус Проекту
       header_relations: Project relations
       button_update_details: Update details
       button_update_status_description: Update status description
@@ -647,9 +647,9 @@ uk:
         token:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Робочий пакет"
+            parent: "Батьківський"
+            project: "Проєкт"
         pattern:
           label: "Шаблон теми"
           caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
@@ -790,10 +790,10 @@ uk:
       label_child_singular: "дочірній елемент"
       label_child_plural: "дочірні елементи"
       new_child: "Створити новий дочірній елемент"
-      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child_description: "Створює звʼязаний пакет робіт як піделемент поточного (батьківського) пакета робіт"
       child: "Дочірній"
       child_description: "Вкладає звʼязаний пакет робіт як піделемент поточного (батьківського) пакета робіт"
-      parent: "Parent"
+      parent: "Батьківський"
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Найближчі"
       label_blocks_singular: "блоки"
@@ -885,7 +885,7 @@ uk:
       changeset:
         repository: "Репозиторій"
       comment:
-        commented: "Коментар" #an object that this comment belongs to
+        commented: "Прокоментовано" #an object that this comment belongs to
       custom_action:
         actions: "Дії"
       custom_field:
@@ -911,7 +911,7 @@ uk:
         secret: "Секретний ключ клієнта"
         owner: "Власник"
         builtin: "Вбудований"
-        enabled: "Активний"
+        enabled: "Активні"
         redirect_uri: "Перенаправити URI (Automatic Translation)"
         client_credentials_user_id: "Ідентифікатор користувача для облікових даних клієнта"
         scopes: "Область дії"
@@ -1118,8 +1118,8 @@ uk:
         journal_internal: Internal Journal
         notify: "Сповіщати" #used in custom actions
         parent: "Джерело"
-        parent_issue: "Джерело"
-        parent_work_package: "Джерело"
+        parent_issue: "Батьківський"
+        parent_work_package: "Батьківський"
         priority: "Пріоритет"
         progress: "% завершення"
         readonly: "Лише читання"
@@ -1127,7 +1127,7 @@ uk:
         remaining_time: "Залишок роботи"
         shared_with_users: "Доступ мають"
         schedule_manually: "Ручне планування"
-        spent_hours: "Трудовитрати"
+        spent_hours: "Витрачений час"
         spent_time: "Трудовитрати"
         subproject: "Підпроект"
         time_entries: "Час журналу"
@@ -1227,7 +1227,7 @@ uk:
         custom_fields_project:
           attributes:
             project_ids:
-              blank: "Будь ласка, виберіть проєкт."
+              blank: "Виберіть проєкт."
         custom_actions:
           only_one_allowed: "(%{name}) дозволено лише одне значення."
           empty: "(%{name})  значення не може бути порожнім."
@@ -1507,7 +1507,7 @@ uk:
             principal:
               unassignable: "не можна призначити проекту."
         version:
-          undeletable_archived_projects: "Версію не можна видалити, оскільки до неї долучено пакети робіт."
+          undeletable_archived_projects: "Версію не можна видалити, оскільки до неї приєднані робочі пакети."
           undeletable_work_packages_attached: "Версію не можна видалити, оскільки до неї приєднані робочі пакети."
         token/api:
           attributes:
@@ -1545,10 +1545,10 @@ uk:
         other: "Сповіщення"
       placeholder_user: "Прототип користувача"
       project:
-        one: "Project"
-        few: "Projects"
-        many: "Projects"
-        other: "Projects"
+        one: "Проект"
+        few: "Проєкти"
+        many: "Проєкти"
+        other: "Проєкти"
       project_query:
         one: "Список проєктів"
         few: "Списки проєктів"
@@ -1638,7 +1638,7 @@ uk:
   attributes:
     active: "Активний"
     assigned_to: "Призначений"
-    assignee: "Призначений"
+    assignee: "Виконавець"
     attachments: "Вкладення"
     actor: "Виконавець"
     action: "Дія"
@@ -1648,8 +1648,8 @@ uk:
     body: "Текст"
     blocks_ids: "Ідентифікатори заблокованих робочих пакетів"
     category: "Категорія"
-    comment: "Коментар"
-    comments: "Коментар"
+    comment: "Коментування"
+    comments: "Коментування"
     content: "Контент"
     color: "Колір"
     creator: "Автор"
@@ -1658,7 +1658,7 @@ uk:
     custom_options: "Можливі значення"
     custom_values: "Індивідуальні поля"
     date: "Дата"
-    dates_interval: "Проміжок часу"
+    dates_interval: "Діапазон дат"
     default_columns: "Типові колонки"
     description: "Опис"
     derived_due_date: "Отримана дата завершення"
@@ -1680,17 +1680,17 @@ uk:
     id: "№"
     is_default: "Значення за замовчуванням"
     is_for_all: "Для усіх проектів"
-    public: "Публічний"
+    public: "Публічні"
     principal: "Користувач або група"
     #kept for backwards compatibility
-    issue: "Пакет робіт"
+    issue: "Робочий пакет"
     journal: "Журнал"
     journal_notes: "Коментування"
     lastname: "Прізвище"
     login: "Ім'я користувача"
     lock_version: "Заблокувати версію"
     mail: "Електронна пошта"
-    name: "Ім’я"
+    name: "Назва"
     note: "Примітка"
     notes: "Нотатки"
     number: "Число"
@@ -1698,7 +1698,7 @@ uk:
     operator: "Оператор"
     password: "Пароль"
     priority: "Пріоритет"
-    project: "Проект"
+    project: "Проєкт"
     project_ids: "ID проєктів"
     reason: "Причина"
     responsible: "Відповідальний"
@@ -1719,7 +1719,7 @@ uk:
     type: "Тип"
     typeahead: "Автозаповнення"
     updated_at: "Оновлене"
-    updated_on: "Оновлене"
+    updated_on: "Оновлено"
     uploader: "Завантажувач"
     user: "Користувач"
     username: "Ім’я користувача"
@@ -1728,7 +1728,7 @@ uk:
     values: "Значення"
     version: "Версія"
     visible: "Видиме"
-    work_package: "Пакет робіт"
+    work_package: "Робочий пакет"
     work_package_id: "Робочий пакет"
   backup:
     failed: "Помилка резервної копії"
@@ -2080,7 +2080,7 @@ uk:
       gantt_pdf_export: Експорт діаграми Ґантта в PDF
       ldap_groups: Синхронізація користувачів і груп LDAP
       nextcloud_sso: Single Sign-On for Nextcloud Storage
-      one_drive_sharepoint_file_storage: Файлове сховище OneDrive / SharePoint
+      one_drive_sharepoint_file_storage: Сховище файлів OneDrive / SharePoint
       placeholder_users: Прототипи користувачів
       project_list_sharing: Спільне використання списку проєктів
       readonly_work_packages: Пакети робіт лише для читання
@@ -2092,11 +2092,15 @@ uk:
       work_package_sharing: Діліться пакетами робіт із зовнішніми користувачами
       work_package_subject_generation: Створення теми пакета робіт
     upsell:
+      plans_title: "Enterprise plans"
       title: "Доповнення версії Enterprise"
       plan_title: "Доповнення версії Enterprise %{plan}"
       plan_name: "Версія Enterprise %{plan}"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Приховати цей банер"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Виділяйте зміни, внесені в цей список із будь-якого моменту часу в минулому.
       work_package_subject_generation:
@@ -2510,10 +2514,10 @@ uk:
         watched: "Ви переглядаєте %{work_package}"
   label_accessibility: "Розробникам також потрібно оплачувати свої рахунки. З доступністю"
   label_account: "Обліковий запис"
-  label_active: "Активний"
+  label_active: "Активні"
   label_activate_user: "Активні користувачі"
   label_active_in_new_projects: "Активна участь в нових проектах"
-  label_activity: "Активність"
+  label_activity: "Дія"
   label_add_edit_translations: "Додайте та редагуйте переклади"
   label_add_another_file: "Додати ще один файл"
   label_add_columns: "Додати вибрані стовпці"
@@ -2547,7 +2551,7 @@ uk:
   label_ical_access_key_not_present: "Немає маркерів iCalendar."
   label_ical_access_key_generation_hint: "Автоматично створено під час оформлення підписки на календар."
   label_ical_access_key_latest: "останні"
-  label_ical_access_key_revoke: "Скасувати"
+  label_ical_access_key_revoke: "Відкликати"
   label_add_column: "Додати стовпець"
   label_applied_status: "Застосовний статус"
   label_archive_project: "Архівний проект"
@@ -2579,7 +2583,7 @@ uk:
   label_blocked_by: "заблоковано"
   label_blocks: "блоки"
   label_blog: "Блог"
-  label_forums_locked: "Заблоковано"
+  label_forums_locked: "Заблоковані"
   label_forum_new: "Новий форум"
   label_forum_plural: "Форуми"
   label_forum_sticky: "Приліплена"
@@ -2731,7 +2735,7 @@ uk:
   label_follows: "слідкувати"
   label_force_user_language_to_default: "Встановити мову користувачів, які мають не підтримувану мову, за умовчанням"
   label_form_configuration: "Конфігурація форми"
-  label_gantt_chart: "Діаграма Ганта"
+  label_gantt_chart: "Діаграма Ґанта"
   label_gantt_chart_plural: "Діаграми Ґанта"
   label_general: "Загальні"
   label_generate_key: "Згенерувати ключ"
@@ -2856,9 +2860,9 @@ uk:
   label_my_account_data: "Мої дані облікового запису"
   label_my_avatar: "Мій аватар"
   label_my_queries: "Мої збережені запити"
-  label_name: "Ім’я"
+  label_name: "Назва"
   label_never: "Ніколи"
-  label_new: "Новий"
+  label_new: "Нові"
   label_new_features: "Нові можливості"
   label_new_statuses_allowed: "Дозволені нові статуси"
   label_news_singular: "Новини"
@@ -2881,7 +2885,7 @@ uk:
   label_not_configured: "Не налаштовано"
   label_not_found: "не знайдено"
   label_none: "нічого"
-  label_none_parentheses: "(нічого)"
+  label_none_parentheses: "(немає)"
   label_not_contains: "не містить"
   label_not_equals: "немає"
   label_life_cycle_step_plural: "Життєвий цикл проєкту"
@@ -2944,7 +2948,7 @@ uk:
   label_project_hierarchy: "Ієрархія проектів"
   label_project_mappings: "Проєкти"
   label_project_new: "Новий проект"
-  label_project_plural: "Проекти"
+  label_project_plural: "Проєкти"
   label_project_list_plural: "Списки проєкту"
   label_project_life_cycle: "Життєвий цикл проєкту"
   label_project_attributes_plural: "Атрибути проєкту"
@@ -2965,7 +2969,7 @@ uk:
   label_register_with_developer: "Зареєструйтеся як розробник"
   label_registered_on: "Зареєстровано на"
   label_related_work_packages: "Пов'язані робочі пакети"
-  label_relates: "пов'язані з"
+  label_relates: "зв’язано з"
   label_relates_to: "пов'язані з"
   label_relation: "Зв’язок"
   label_relation_actions: "Дії зі зв’язками"
@@ -3025,17 +3029,17 @@ uk:
   label_sort_highest: "Помістити на верх"
   label_sort_lower: "Пересунути нижче"
   label_sort_lowest: "Помістити в кінець"
-  label_spent_time: "Трудовитрати"
+  label_spent_time: "Витрачений час"
   label_start_to_end: "закінчення"
   label_start_to_start: "початок"
   label_statistics: "Статистика"
-  label_status: "Статус"
+  label_status: "Стан"
   label_storage_free_space: "Залишок на диску"
   label_storage_used_space: "Використовується дисковий простір"
   label_storage_group: "Зберігання файлової системи %{identifier}"
   label_storage_for: "Охоплює зберігання для"
   label_string: "Текст"
-  label_subproject: "Підпроект"
+  label_subproject: "Підпроєкт"
   label_subproject_new: "Новий підпроект"
   label_subproject_plural: "Підпроекти"
   label_subtask_plural: "Підзадачі"
@@ -3050,10 +3054,10 @@ uk:
   label_this_week: "цього тижня"
   label_this_year: "цей рік"
   label_time: "Час"
-  label_time_entry_plural: "Трудовитрати"
+  label_time_entry_plural: "Витрачений час"
   label_time_entry_activity_plural: "Завдання з обліком часу"
   label_title: "Назва"
-  label_projects_menu: "Проекти"
+  label_projects_menu: "Проєкти"
   label_today: "сьогодні"
   label_token_version: "Версія маркера"
   label_today_as_start_date: "Виберіть сьогодні як дату початку."
@@ -3076,7 +3080,7 @@ uk:
   label_user_and_permission: "Користувачі й дозволи"
   label_user_named: "User %{name}"
   label_user_activity: "Дії користувача %{value}"
-  label_user_anonymous: "Анонімний режим"
+  label_user_anonymous: "Невідомий"
   label_user_mail_option_all: "Для всіх подій у всіх моїх проектах"
   label_user_mail_option_none: "Ніяких подій"
   label_user_mail_option_only_assigned: "Тільки за те що я призначений"
@@ -3121,7 +3125,7 @@ uk:
   label_wiki_show_submenu_item: "Показати як пункт підменю "
   label_wiki_start: "Початкова сторінка"
   label_work: "Робота"
-  label_work_package: "Пакет робіт"
+  label_work_package: "Робочий пакет"
   label_work_package_attachments: "Додатки до робочого пакету"
   label_work_package_category_new: "Нова категорія"
   label_work_package_category_plural: "Категорії робочих пакетів"
@@ -3129,7 +3133,7 @@ uk:
   label_work_package_new: "Новий пакет робіт"
   label_work_package_edit: "Редагувати робочий пакет %{name}"
   label_work_package_plural: "Пакет робіт"
-  label_work_package_status: "Стан робочого пакета"
+  label_work_package_status: "Стан пакета робіт"
   label_work_package_status_new: "Новий статус"
   label_work_package_status_plural: "Статуси робочих пакетів"
   label_work_package_types: "Типи робочих пакетів"
@@ -3141,24 +3145,24 @@ uk:
   label_workflow_summary: "Резюме"
   label_working_days_and_hours: "Робочі дні й години"
   label_x_closed_work_packages_abbr:
-    one: "1 закрита"
-    other: "%{count} закритих"
+    one: "1 закрито"
+    other: "Закрито: %{count}"
     zero: "0 закрито"
   label_x_comments:
     one: "1 коментар"
     other: "Коментарів: %{count}"
     zero: "немає коментарів"
   label_x_open_work_packages_abbr:
-    one: "1 відкрита"
-    other: "%{count} відкритих"
+    one: "1 відкрито"
+    other: "Відкрито: %{count}"
     zero: "0 відкрито"
   label_x_work_packages:
     one: "1 пакет робіт"
     other: "Пакетів робіт: %{count}"
     zero: "Немає пакетів робіт"
   label_x_projects:
-    one: "1 проект"
-    other: "%{count} проектів"
+    one: "1 проєкт"
+    other: "Проєктів: %{count}"
     zero: "немає проєктів"
   label_x_files:
     one: "1 файл"
@@ -3585,7 +3589,7 @@ uk:
       use_template: "Використовувати шаблон"
       make_template: "Установити як шаблон"
       remove_from_templates: "Вилучити із шаблонів"
-  project_module_activity: "Активність"
+  project_module_activity: "Дія"
   project_module_forums: "Форуми"
   project_module_work_package_tracking: "Пакети робіт"
   project_module_news: "Новини"
@@ -3866,7 +3870,7 @@ uk:
     Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
-  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled: "Вимкнено"
   setting_self_registration_disabled_caption: >
     No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
   setting_self_registration_activation_by_email: "Account activation by email"
@@ -4219,7 +4223,7 @@ uk:
     text_change_disabled_for_ldap_login: "Назву й електронну адресу отримано за протоколом LDAP, тому їх не можна змінити. "
     unlock: "Розблокувати"
     unlock_and_reset_failed_logins: "Розблокувати та скинути помилки входу до системи"
-  version_status_closed: "зачинено"
+  version_status_closed: "закрито"
   version_status_locked: "Заблоковано"
   version_status_open: "відкрити"
   note: Замітка
@@ -4502,7 +4506,7 @@ uk:
       builtin_applications: Вбудовані застосунки OAuth
       other_applications: Інші застосунки OAuth
     empty_application_lists: Жодного застосунку OAuth не зареєстровано.
-    client_id: "Ідентифікатор клієнта"
+    client_id: "Client ID"
     client_secret_notice: >
       Це єдиний раз, коли ми можемо надати клієнтську таємницю, зауважте її та збережіть її в безпеці. Він повинен розглядатися як пароль і не може бути отриманий OpenProject пізніше.
     authorization_dialog:

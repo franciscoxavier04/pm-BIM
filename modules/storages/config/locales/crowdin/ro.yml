@@ -26,7 +26,7 @@ ro:
         drive: Drive ID
         host: Server gazdă
         name: Nume
-        provider_type: Tip flux
+        provider_type: Tip furnizor
         tenant: Directory (tenant) ID
     errors:
       messages:
@@ -224,7 +224,7 @@ ro:
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Project folders
-      redirect_uri: Redirecționați URI
+      redirect_uri: URI redirecționare
       storage_audience: Storage Audience
       storage_audience_blank: No audience has been configured.
       storage_audience_description: Obtaining tokens for audience "%{audience}".
@@ -404,7 +404,7 @@ ro:
     label_openproject_oauth_application_secret: OpenProject OAuth Client Secret
     label_project_folder: Project folder
     label_provider: Provider
-    label_redirect_uri: Redirecționați URI
+    label_redirect_uri: URI redirecționare
     label_show_storage_redirect_uri: Show redirect URI
     label_status: Stare
     label_storage: Depozitare
@@ -464,7 +464,7 @@ ro:
         title: Members connection status
     permission_header_explanation: 'File permissions on external storages are applied only to folders and files within automatically managed project folders. Note that not all file permissions are supported by all storage providers. Please check the documentation on <a target=''_blank'' href=''https://www.openproject.org/docs/system-admin-guide/users-permissions/roles-permissions/#file-storages-permissions''>file storage permissions</a> for more information.'
     provider_types:
-      label: Tip furnizor
+      label: Tip flux
       nextcloud:
         label_oauth_client_id: Nextcloud OAuth Client ID
         label_oauth_client_secret: Nextcloud OAuth Client Secret
