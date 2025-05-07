@@ -102,7 +102,7 @@ module Meetings
     end
 
     def cover_page_title
-      ""
+      meeting.project&.name || ""
     end
 
     def cover_page_heading
