@@ -30,7 +30,7 @@ require "mini_magick"
 
 module WorkPackage::PDFExport::Common::Attachments
   def resize_image(file_path)
-    tmp_file = temp_image_file( File.extname(file_path))
+    tmp_file = temp_image_file(File.extname(file_path))
 
     image = MiniMagick::Image.open(file_path)
     image.resize("x800>")
