@@ -173,8 +173,7 @@ class WorkPackages::DatePickerController < ApplicationController
   end
 
   def working_days_label
-    key = @work_package.ignore_non_working_days ? "true" : "false"
-    I18n.t("activerecord.attributes.work_package.include_non_working_days.#{key}")
+    I18n.t("activerecord.attributes.work_package.include_non_working_days.#{@work_package.ignore_non_working_days}")
   end
 
   def scheduling_label
