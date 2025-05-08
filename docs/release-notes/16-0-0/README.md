@@ -140,9 +140,9 @@ Please see [our system admin guide](../../system-admin-guide/integrations/nextcl
 
 ## Breaking: API requests with JWT issued by OpenID Connect provider require scope
 
-In OpenProject 14.4.0 we introduced the possibility to access the OpenProject API through a JSON Web Token created by an OpenID Connect
+In [OpenProject 14.4.0](../../release-notes/14/14-0-0/) we introduced the possibility to access the OpenProject API through a JSON Web Token created by an OpenID Connect
 provider. Back then we only intended them to be used in the context of our APIv3. However, as OpenProject evolves further, we want to
-be able to use them in additional contexts. Starting with OpenProject 16.0.0 we will therefore require all tokens to carry a scope called
+be able to use them in additional contexts. Starting with OpenProject 16.0.0, we will therefore require all tokens to carry a scope called
 `api_v3` for API requests to our APIv3. This is consistent with other tokens issued by OpenProject itself.
 
 <!--more-->
