@@ -164,24 +164,24 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
         context "with date range" do
           let!(:phase1) { create_phase(definition: definitions[1], date_range: date + 2..date + 3, active: false) }
 
-          it "reschedules following phases" do
+          it "reschedules that and following phases" do
             service.call(active: true)
 
             expect(phase0.reload).to have_attributes(start_date: date - 1, finish_date: date - 1, active: true)
-            expect(phase1.reload).to have_attributes(start_date: date + 2, finish_date: date + 3, active: true)
-            expect(phase2.reload).to have_attributes(start_date: date + 4, finish_date: date + 6, active: true)
+            expect(phase1.reload).to have_attributes(start_date: date, finish_date: date + 1, active: true)
+            expect(phase2.reload).to have_attributes(start_date: date + 2, finish_date: date + 4, active: true)
           end
         end
 
         context "when already activated" do
           let!(:phase1) { create_phase(definition: definitions[1], date_range: date + 2..date + 3, active: true) }
 
-          it "reschedules following phases" do
+          it "reschedules that and following phases" do
             service.call(active: true)
 
             expect(phase0.reload).to have_attributes(start_date: date - 1, finish_date: date - 1, active: true)
-            expect(phase1.reload).to have_attributes(start_date: date + 2, finish_date: date + 3, active: true)
-            expect(phase2.reload).to have_attributes(start_date: date + 4, finish_date: date + 6, active: true)
+            expect(phase1.reload).to have_attributes(start_date: date, finish_date: date + 1, active: true)
+            expect(phase2.reload).to have_attributes(start_date: date + 2, finish_date: date + 4, active: true)
           end
         end
 

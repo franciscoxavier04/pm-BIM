@@ -47,8 +47,8 @@ module ProjectLifeCycleSteps
 
       upsert(active:)
 
-      if (first_phase = find_first_phase)
-        UpdateService.new(user:, model: first_phase).call
+      if (phase = reschedule_from_phase)
+        UpdateService.new(user:, model: phase).call
       else
         project.touch_and_save_journals
 
@@ -69,11 +69,22 @@ module ProjectLifeCycleSteps
       )
     end
 
-    def find_first_phase
-      definition_id = definitions.min_by(&:position)&.id
-      return unless definition_id
+    def reschedule_from_phase
+      first_definition = definitions.min_by(&:position)
+      return unless first_definition
 
-      project.phases.find_by(definition_id:)
+      phase = project.phases.find_by(definition_id: first_definition.id)
+      return unless phase.range_set?
+
+      if phase.active?
+        preceding_active_phase(phase) || phase
+      else
+        phase
+      end
+    end
+
+    def preceding_active_phase(phase)
+      project.available_phases.reverse.find { it.range_set? && it.position < phase.position }
     end
 
     def default_contract_class
