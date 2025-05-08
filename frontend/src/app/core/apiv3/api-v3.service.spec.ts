@@ -67,7 +67,7 @@ describe('APIv3Service', () => {
         filters: '[{"typeahead":{"operator":"**","values":["bogus"]}}]',
         sortBy: '[["updatedAt","desc"]]',
         offset: '1',
-        pageSize: '20',
+        pageSize: '10',
       };
 
       expect(
@@ -78,7 +78,7 @@ describe('APIv3Service', () => {
         filters: '[{"id":{"operator":"=","values":["1234"]}}]',
         sortBy: '[["updatedAt","desc"]]',
         offset: '1',
-        pageSize: '20',
+        pageSize: '10',
       };
       expect(
         service.work_packages.filterByTypeaheadOrId('1234', true).path,
