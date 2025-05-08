@@ -94,8 +94,8 @@ uk:
       timesheet: "Табель обліку часу"
       time: "Час"
       sums_hours: Суми
-      overview_per_user_total: "Overview: Total hours per user"
-      overview_per_user_day: "Overview: Hours per user per day"
+      overview_per_user_total: "Огляд: «Усього годин на користувача»"
+      overview_per_user_day: "Огляд: «Годин на користувача в день»"
     cost_reports:
       title: "Експорт звітів про витрати у форматі XLS"
       start_time: "Час початку"

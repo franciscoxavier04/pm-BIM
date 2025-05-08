@@ -41,13 +41,13 @@ uk:
         changed: "змінив(-ла)"
         created: "створив(-ла)"
         commented: "прокоментував(-ла)"
-        internal_comment: Internal comment
-        internal_journal: Internal comments are visible to a limited group of members.
+        internal_comment: Внутрішній коментар
+        internal_journal: Внутрішні коментарі видимі для визначеної групи учасників.
         unsaved_changes_confirmation_message: У вас є незбережені зміни. Справді закрити редактор?
         internal_comment_confirmation:
-          title: "Make this comment public?"
-          heading: "Make this comment public?"
-          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          title: "Зробити цей коментар загальнодоступним?"
+          heading: "Зробити цей коментар загальнодоступним?"
+          description: "Ваш коментар буде видимий усім, хто має доступ до цього пакета робіт. Продовжити?"
           confirm_button_text: "Зробити загальнодоступним"
   admin:
     plugins:
@@ -103,7 +103,7 @@ uk:
         text: "Окремі дії користувача (напр., оновлення робочого пакета двічі) зводяться в одну дію, якщо відмінність у часі між ними менша за вказаний проміжок часу. Їх буде виведено як окремі дії в межах додатка. Крім того, це призведе до затримки сповіщень на такий самий проміжок часу, що зменшить кількість електронних листів, які надсилатимуться, а також вплине на затримку %{webhook_link}."
         link: "вебгука"
   authentication:
-    login_and_registration: "Login and registration"
+    login_and_registration: "Вхід і реєстрація"
   announcements:
     show_until: Показувати до
     is_active: наразі відображається
@@ -351,15 +351,15 @@ uk:
     settings:
       header_details: Основна інформація
       header_status: Статус Проекту
-      header_relations: Project relations
-      button_update_details: Update details
-      button_update_status_description: Update status description
-      button_update_parent_project: Update parent project
+      header_relations: Зв’язки проєкту
+      button_update_details: Оновити деталі
+      button_update_status_description: Оновити опис проєкту
+      button_update_parent_project: Оновити батьківський проєкт
       public_warning: >
-        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+        Цей проєкт загальнодоступний. Кожен, хто має доступ до цього екземпляра, також зможе переглянути цей проєкт і взаємодіяти з ними відповідно до своєї ролі й пов’язаних дозволів. Вкладені проєкти мають власні налаштування, тому це не вплине на них.
       public_confirmation:
-        checkbox: "I understand that this will make the previously private content public"
-        title: "Make this project public?"
+        checkbox: "Я розумію, що внаслідок цієї дії приватний контент стане загальнодоступним"
+        title: "Зробити цей проєкт загальнодоступним?"
         description: >
           Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
       private_confirmation:
@@ -654,7 +654,7 @@ uk:
           label: "Шаблон теми"
           caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "Атрибутів не знайдено. Додайте як текст: «%{word}»"
-          supported_attributes_link: "supported attributes"
+          supported_attributes_link: "підтримувані атрибути"
       export_configuration:
         tab: "Згенерувати PDF"
         intro: "Виберіть, які шаблони з доступних вам ви хочете ввімкнути для цього типу. Шаблон визначає дизайн і атрибути, що відображаються в експортованому PDF-файлі пакета робіт за допомогою цього типу. Перший шаблон у списку вибирається за замовчуванням."
@@ -1875,7 +1875,7 @@ uk:
     text:
       failed: 'Не вдалося скопіювати проект "%{source_project_name}" до проекту "%{target_project_name}".'
       succeeded: 'Скопіював проект "%{source_project_name}" до "%{target_project_name}".'
-  create_wiki_page: "Create new wiki page"
+  create_wiki_page: "Створити нову вікісторінку"
   create_wiki_page_button: "Сторінка Wiki"
   date:
     abbr_day_names:
@@ -2070,7 +2070,7 @@ uk:
       baseline_comparison: Порівняння з вихідним рівнем
       board_view: Покращені Дошки
       conditional_highlighting: Умовне виділення
-      internal_comments: Internal Comments
+      internal_comments: Внутрішні коментарі
       custom_actions: Користувацькі дії
       custom_field_hierarchies: Користувацькі поля типу «Ієрархія»
       customize_life_cycle: Налаштування життєвого циклу
@@ -2079,7 +2079,7 @@ uk:
       edit_attribute_groups: Редагування груп атрибутів
       gantt_pdf_export: Експорт діаграми Ґантта в PDF
       ldap_groups: Синхронізація користувачів і груп LDAP
-      nextcloud_sso: Single Sign-On for Nextcloud Storage
+      nextcloud_sso: Єдиний вхід для сховища Nextcloud
       one_drive_sharepoint_file_storage: Сховище файлів OneDrive / SharePoint
       placeholder_users: Прототипи користувачів
       project_list_sharing: Спільне використання списку проєктів
@@ -2092,15 +2092,15 @@ uk:
       work_package_sharing: Діліться пакетами робіт із зовнішніми користувачами
       work_package_subject_generation: Створення теми пакета робіт
     upsell:
-      plans_title: "Enterprise plans"
+      plans_title: "Плани Enterprise"
       title: "Доповнення версії Enterprise"
       plan_title: "Доповнення версії Enterprise %{plan}"
       plan_name: "Версія Enterprise %{plan}"
-      plan_text_html: "Available starting with the %{plan_name}."
+      plan_text_html: "Доступно, починаючи з версії %{plan_name}."
       hide_banner: "Приховати цей банер"
       homescreen_description: >
-        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
-      homescreen_subline: By upgrading, you will also be supporting an open source project.
+        Плани Enterprise розширюють можливлсті вашого випуску OpenProject Community. Вони включають розширення, додаткові функції і професійну підтримку, що дає організаціям усіх розмірів досягати кращих результатів разом.
+      homescreen_subline: Підвищивши рівень, ви також долучитеся до підтримки проєкту з відкритим кодом.
       baseline_comparison:
         description: Виділяйте зміни, внесені в цей список із будь-якого моменту часу в минулому.
       work_package_subject_generation:
@@ -2133,7 +2133,7 @@ uk:
         title: "Користувацькі дії"
         description: "Користувацькі дії – це ярлики набору попередньо визначених дій, які ви можете включати в певні пакети робіт залежно від статусу, ролі, типу або проєкту."
       nextcloud_sso:
-        title: "Single Sign-On for Nextcloud Storage"
+        title: "Єдиний вхід для сховища Nextcloud"
         description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Переконайтеся, що вивантажені в OpenProject файли перевіряються на віруси перед тим, як стають доступними для інших користувачів."
@@ -2142,10 +2142,10 @@ uk:
         description: >
           Прототипи користувачів допомагають призначати пакети робіт користувачам, які не входять у ваш проєкт. Вони можуть бути корисні в різних сценаріях. Наприклад, якщо потрібно відстежувати завдання для ресурсу, який поки не доступний або не визначений. Або ж ви хочете відстежувати завдання, призначені особі, не надаючи їй доступу до OpenProject.
       internal_comments:
-        title: Internal comments
-        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+        title: Внутрішні коментарі
+        description: "Завдяки внутрішнім коментарям учасники внутрішньої команди можуть спілкуватися приватно. Ці коментарі доступні лише користувачам із певними ролями в проєкті й ніколи не відображаються для всіх."
       internal_comments_inline:
-        title: "Write internal comments only a small group can see"
+        title: "Створюйте внутрішні коментарі лише для учасників невеликої групи"
         description: " "
   enumeration_activities: "Дії щодо відстеження часу"
   enumeration_work_package_priorities: "Пріоритети робочого пакету"
@@ -3409,7 +3409,7 @@ uk:
   notice_successful_cancel: "Успішно видалено."
   notice_successful_update: "Успішно оновлено."
   notice_unsuccessful_update: "Не вдалось оновити."
-  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
+  notice_unsuccessful_update_with_reason: "Помилка оновлення: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Оновлення завершено. Користувацькі поля активованих типів автоматично активовано у формі пакета робіт. <a href="%{url}" target="_blank">Докладніше</a>.
   notice_to_many_principals_to_display: "Є занадто багато результатів.\nЗвузити пошук ввівши назву нового елемента (або групи)."
@@ -3455,7 +3455,7 @@ uk:
   permission_add_project: "Створення проєктів"
   permission_add_work_package_attachments: "Додати вкладення"
   permission_add_work_package_attachments_explanation: "Дає змогу додавати вкладення без дозволу «Редагування пакетів робіт»"
-  permission_add_internal_comments: "Write internal comments"
+  permission_add_internal_comments: "Створення внутрішніх коментарів"
   permission_archive_project: "Архівувати проєкт"
   permission_create_user: "Створення користувачів"
   permission_manage_user: "Редагування користувачів"
@@ -3484,11 +3484,11 @@ uk:
   permission_edit_work_package_comments_explanation: "Увага! Користувачі із цим дозволом можуть редагувати будь-чиї коментарі."
   permission_edit_work_packages: "Редагувати робочі пакети"
   permission_edit_messages: "Редагування повідомлень"
-  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_internal_comments: "Редагування власних внутрішніх коментарів"
   permission_edit_own_work_package_comments: "Редагувати власні коментарі"
   permission_edit_own_messages: "Редагування власних повідомлень"
   permission_edit_own_time_entries: "Редагування власного обліку часу"
-  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments: "Модерування внутрішніх коментарів"
   permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "Редагувати проект"
   permission_edit_project_attributes: " Редагувати атрибути проєкту"
