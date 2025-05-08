@@ -56,11 +56,19 @@ Under the *Registration* tab you can adjust following settings:
 
 2. Select an option for **self-registration**. Self-registration can either be **disabled**, or it can be allowed with the following criteria:
 
-   a) **Account activation by email** means the user receives an email and needs to confirm the activation.
+   a) **Account activation by email** - users can register on their own. They will receive an activation email and will need to activate their account after confirming  their email address. 
 
-   b) **Manual account activation** means that a system administrator needs to manually activate the newly registered user.
-
-   c) **Automatic account activation** means that a newly registered user will automatically be active.
+   > [!WARNING]
+   >
+   > Administrators have no moderation control over this  activation process if this method is selected.
+   
+   b) **Manual account activation** - users can register on their own. However, an administrator (or a user with the global permission to create or manage  users) needs to activate them.
+   
+   c) **Automatic account activation** - users can register on their own. Their accounts are immediately active  without further action. 
+   
+   >  [!WARNING]
+   >
+   > Administrators have no moderation control over this  activation process if this method is selected.
 
 > [!NOTE]
 > By default, self-registration is only applied to internal users (logging in with username and password). If you have an identity provider such as LDAP, SAML or OpenID Connect, use the respective settings in their configuration to control which users are applicable for automatic user creation.
