@@ -42,7 +42,7 @@ OpTurbo::StreamComponent.new(action: :aria, message: "Form submission successful
   - `target: "nil"` → Ensures the update isn't inserted into the DOM but is handled as an announcement
 
 ### How to Trigger an ARIA Update from the Controller
-You can trigger a screen reader announcement from your Rails controller by calling the `render_aria_update_message` helper, which is already provided:
+You can trigger a screen reader announcement from your Rails controller by calling the provided `render_aria_update_message` helper:
 
 ```ruby
 render_aria_update_message(
