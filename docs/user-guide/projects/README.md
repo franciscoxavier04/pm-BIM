@@ -42,7 +42,7 @@ To create a subproject for an existing project, navigate to [*Project settings*]
 
 Then follow the instructions to [create a new project](../../getting-started/projects/#create-a-new-project).
 
-![project settings subproject](project-settings-subproject.png)
+![A button to create a subproject under project settings in OpenProject](openproject_user_guide_projects_subproject_button.png)
 
 ## Project structure
 
@@ -79,37 +79,35 @@ OpenProject, for example, uses the projects to structure the different modules/p
 
 ## Project Settings
 
-You can specify further advanced settings for your project. Navigate to your project settings by [selecting a project](../../getting-started/projects/#open-an-existing-project), and click -> *Project settings* -> *Information*.
+You can specify further advanced settings for your project. Navigate to your project settings by [selecting a project](../../getting-started/projects/#open-an-existing-project), and click -> *Project settings* -> *Information*. Here you can: 
 
-- You can define whether the project should have a parent by selecting **Subproject of**. This way, you can [change the project hierarchy](#change-the-project-hierarchy).
+- Define whether the project should have a parent by selecting **Subproject of**. This way, you can [change the project hierarchy](#change-the-project-hierarchy).
 
 - Enter a detailed description for your project.
 
-- You see the default project **Identifier**. The identifier will be shown in the URL.
+- Set the default project **Identifier**. The identifier will be shown in the URL.
 
 > [!NOTE]
 > Changing the project identifier while the project is already being worked on can have major effects and is therefore not recommended. For example, repositories may not be loaded correctly and deep links may no longer work (since the project URL changes when the project identifier is changed).
 
-- You can set a project to **Public**. This means it can be accessed without signing in to OpenProject.
-- Click the green **Save** button to save your changes.
-- If you like, use the autocompleter to fill in the project attributes.
+- Set a project to **Public**. This means it can be accessed without signing in to OpenProject.
 
-![project information description status](project-information-description-status.png)
+  
+
+![Project information under project settings in OpenProject](openproject_user_guide_projects_project_settings_info.png)
 
 Find out more detailed information about the Project settings [here](project-settings).
 
 ### Change the project hierarchy
 
-To change the project's hierarchy, navigate to the [project settings](project-settings) -> *Information* and change the **Subproject of** field.
+To change the project's hierarchy, navigate to the [project settings](project-settings) -> *Information* and change the **Subproject of** in *Project relations* section.
 
-Press the blue **Save** button to apply your changes.
-
-![project settings information change hierarchy](project-settings-information-change-hierarchy.png)
+![project settings information change hierarchy](openproject_user_guide_projects_subproject_of.png)
 
 
 ### Set a project to public
 
-If you want to set a project to public, you can do so by ticking the box next to "Public" in the [project settings](project-settings) *->Information*.
+If you want to set a project to be public, you can do so by ticking the box next to "Public" in the [project settings](project-settings) *->Information*.
 
 Setting a project to public will make it accessible to all people within your OpenProject instance.
 
