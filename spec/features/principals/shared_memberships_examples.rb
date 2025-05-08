@@ -19,6 +19,8 @@ RSpec.shared_examples "principal membership management flows" do
 
     principal_page.add_to_project! project.name, as: "Manager"
 
+    principal_page.expect_and_dismiss_flash message: "Successful creation."
+
     member = principal.memberships.where(project_id: project.id).first
     principal_page.edit_roles!(member, %w(Manager Developer))
 
