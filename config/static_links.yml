@@ -2,7 +2,7 @@ upsell:
   href: https://www.openproject.org/enterprise-edition
   label: homescreen.links.upgrade_enterprise_edition
 upsell_benefits_features:
-  href: https://www.openproject.org/enterprise-edition/#premium-features
+  href: https://www.openproject.org/enterprise-edition/#enterprise-add-ons
   label: noscript_learn_more
 upsell_benefits_installation:
   href: https://www.openproject.org/enterprise-edition/#installation
