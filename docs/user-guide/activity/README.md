@@ -59,7 +59,7 @@ You can:
 > [!NOTE]
 > Internal comments are an Enterprise add-on and can only be used with [Enterprise cloud](../../enterprise-guide/enterprise-cloud-guide/) or [Enterprise on-premises](../../enterprise-guide/enterprise-cloud-guide/). An upgrade from the free Community edition is easily possible.
 
-You can add work packages with restricited visibility to better manage information flow and share sensitive information on a need to know basis. Comments with restricted visibility are called **internal comments** in OpenProject. You will recognize internal comments by distinctinctly different color scheme and the lock icon. 
+You can add work package comments as internal to better manage information flow and share sensitive information to an authorized group of users. Internal comments are distinguished from other comments via a different color scheme and a lock icon. 
 
 ![Example of an internal comment displayed under Activity tab of an OpenProject work package](openproject_user_guide_internal_comment_example.png)
 
