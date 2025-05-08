@@ -242,6 +242,9 @@ pt-BR:
           become_hero: "Torne-se um herói!"
           enterprise_info_html: "%{feature_title} é um complemento do <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> Enterprise."
           upgrade_info: "Faça o upgrade para um plano pago para ativar e começar a usá-lo em sua equipe."
+          text: >
+            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
+          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
           benefits:
             description: "Quais os benefícios da edição Enterprise Edition local?"
             high_security: "Recursos de segurança"

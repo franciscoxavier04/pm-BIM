@@ -243,6 +243,9 @@ uk:
           become_hero: "Стань героєм!"
           enterprise_info_html: "%{feature_title} – це доповнення версії Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
           upgrade_info: "Перейдіть на платний план, щоб активувати його та почати використовувати його у своїй команді."
+          text: >
+            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
+          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
           benefits:
             description: "Які переваги локальної версії Enterprise?"
             high_security: "Функції безпеки"
@@ -352,7 +355,7 @@ uk:
       blocks:
         new_features:
           text_new_features: "Читайте про нові функції та оновлення продуктів."
-          learn_about: "Learn more about all new features"
+          learn_about: "Докладніше про всі нові функції"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
           "16_0":
@@ -459,7 +462,7 @@ uk:
     label_menu_collapse: "згорнути"
     label_menu_expand: "розгорнути"
     label_more_than_ago: "більш ніж днів(я) назад"
-    label_moderate_comment: "Moderate comment"
+    label_moderate_comment: "Модерувати коментар"
     label_next: "Далі"
     label_no_color: "Без кольору"
     label_no_data: "Немає даних для відображення"
@@ -640,7 +643,7 @@ uk:
           with_current_filter: "Зараз у цьому поданні немає сповіщень"
         mark_all_read: "Позначити все як прочитане"
         mark_as_read: "Позначити як прочитане"
-        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
+        mark_all_read_confirmation: "Усі сповіщення в цьому поданні буде позначено як прочитані. Продовжити?"
         text_update_date_by: "%{date} за"
         total_count_warning: "Показано стільки останніх сповіщень: %{newest_count}. Ще %{more_count} не показано."
         empty_state:
@@ -834,7 +837,7 @@ uk:
       update_relation: "Натисніть, щоб змінити тип відносини"
       show_relations: "Показати зв’язки"
       add_predecessor: "Додати попередника"
-      add_successor: "Add successor"
+      add_successor: "Додати наступника"
       remove: "Видалити зв'язок"
       save: "Зберегти відношення"
       abort: "Відмінити"

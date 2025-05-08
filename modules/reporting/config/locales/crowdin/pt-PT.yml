@@ -94,8 +94,8 @@ pt-PT:
       timesheet: "Registo horário"
       time: "Hora"
       sums_hours: Somas
-      overview_per_user_total: "Overview: Total hours per user"
-      overview_per_user_day: "Overview: Hours per user per day"
+      overview_per_user_total: "Visão geral: Total de horas por utilizador"
+      overview_per_user_day: "Visão geral: Horas por utilizador por dia"
     cost_reports:
       title: "A sua exportação dos Relatórios de Custo XLS"
       start_time: "Hora de início"

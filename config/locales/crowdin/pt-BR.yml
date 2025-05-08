@@ -639,7 +639,7 @@ pt-BR:
             project: "Projeto"
         pattern:
           label: "Padrão de assunto"
-          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          caption_with_supported_attributes_link: Crie padrões adicionando texto, ou digite "/" para pesquisar por %{link}.
           insert_as_text: "Nenhum atributo encontrado. Digite um texto como: \"%{word}\""
           supported_attributes_link: "supported attributes"
       export_configuration:
