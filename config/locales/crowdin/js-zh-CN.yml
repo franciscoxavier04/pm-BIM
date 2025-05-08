@@ -433,7 +433,6 @@ zh-CN:
     label_filename: "文件"
     label_filesize: "大小"
     label_general: "通用"
-    label_global_roles: "全局角色"
     label_greater_or_equal: ">="
     label_group: "组"
     label_group_by: "分组按照"

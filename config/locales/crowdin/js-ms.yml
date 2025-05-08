@@ -434,7 +434,6 @@ ms:
     label_filename: "Fail"
     label_filesize: "Saiz"
     label_general: "Umum"
-    label_global_roles: "Peranan global"
     label_greater_or_equal: ">="
     label_group: "Kumpulan"
     label_group_by: "Kumpulkan mengikut"

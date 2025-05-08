@@ -422,7 +422,7 @@ vi:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       other: "Duration: %{count} working days"
   lists:
     create:
@@ -1643,6 +1643,8 @@ vi:
     priority: "Ưu tiên"
     project: "Dự án"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Lý do"
     responsible: "Trách nhiệm"
     required: "Bắt buộc"
@@ -2614,7 +2616,7 @@ vi:
   label_filter_add: "Thêm bộ lọc"
   label_filter_by: "Filter by"
   label_filter_any_name_attribute: "Name attributes"
-  label_filter_plural: "Các bộ lọc"
+  label_filter_plural: "Bộ lọc"
   label_filters_toggle: "Hiển thị/ẩn bộ lọc"
   label_float: "Số thực"
   label_folder: "Thư mục"
@@ -2625,6 +2627,7 @@ vi:
   label_gantt_chart_plural: "Biểu đồ Gantt"
   label_general: "Tổng quan"
   label_generate_key: "Tạo khóa"
+  label_global_roles: "Vai trò toàn cầu"
   label_git_path: "Đường dẫn đến thư mục .git"
   label_greater_or_equal: ">="
   label_group_by: "Nhóm theo"

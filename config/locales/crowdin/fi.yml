@@ -422,7 +422,7 @@ fi:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Duration: %{count} working day"
       other: "Duration: %{count} working days"
   lists:
@@ -1664,6 +1664,8 @@ fi:
     priority: "Prioriteetti"
     project: "Projekti"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reason"
     responsible: "Vastuuhenkilö"
     required: "Pakollinen tieto"
@@ -2665,6 +2667,7 @@ fi:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Yleinen"
   label_generate_key: "Luo avain"
+  label_global_roles: "Global roles"
   label_git_path: "Polku .git hakemistoon"
   label_greater_or_equal: ">="
   label_group_by: "Ryhmittely"

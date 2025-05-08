@@ -420,7 +420,7 @@ ja:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       other: "Duration: %{count} working days"
   lists:
     create:
@@ -1641,6 +1641,8 @@ ja:
     priority: "優先度"
     project: "プロジェクト"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reason"
     responsible: "責任者"
     required: "必須"
@@ -2623,6 +2625,7 @@ ja:
   label_gantt_chart_plural: "ガントチャート"
   label_general: "概要"
   label_generate_key: "キーを生成する"
+  label_global_roles: "Global roles"
   label_git_path: ".gitディレクトリへのパス"
   label_greater_or_equal: ">="
   label_group_by: "グループ化"

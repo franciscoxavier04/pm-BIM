@@ -422,7 +422,7 @@
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Duration: %{count} working day"
       other: "Duration: %{count} working days"
   lists:
@@ -1663,6 +1663,8 @@
     priority: "Prioritet"
     project: "Prosjekt"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Grunn"
     responsible: "Ansvarlig"
     required: "Obligatorisk"
@@ -2664,6 +2666,7 @@
   label_gantt_chart_plural: "Gantt-diagrammer"
   label_general: "Generell"
   label_generate_key: "Genererer en nøkkel"
+  label_global_roles: "Globale roller"
   label_git_path: "Sti til .git-mappe"
   label_greater_or_equal: ">="
   label_group_by: "Grupper etter"
