@@ -45,8 +45,11 @@ export default class GenericDragAndDropController extends Controller {
 
   containerTargets:Element[];
 
+  observer:MutationObserver|null = null;
+
   connect() {
     this.initDrake();
+    this.startMutationObserver();
   }
 
   initDrake() {
@@ -65,8 +68,6 @@ export default class GenericDragAndDropController extends Controller {
         revertOnSpill: true, // enable reverting of elements if they are dropped outside of a valid target
       },
     )
-      // eslint-disable-next-line @typescript-eslint/no-misused-promises
-      .on('drag', this.drag.bind(this))
       // eslint-disable-next-line @typescript-eslint/no-misused-promises
       .on('drop', this.drop.bind(this));
 
@@ -109,7 +110,7 @@ export default class GenericDragAndDropController extends Controller {
       };
 
       // if the target has a container accessor, use that as the container instead of the element itself
-      // we need this e.g. in Primer's boderbox component as we cannot add required data attributes to the ul element there
+      // we need this e.g. in Primer's borderbox component as we cannot add required data attributes to the ul element there
       const containerAccessor = target.getAttribute('data-target-container-accessor');
 
       if (containerAccessor) {
@@ -141,11 +142,6 @@ export default class GenericDragAndDropController extends Controller {
     return true;
   }
 
-  drag(_:Element, _source:Element|null) {
-    // discover new target containers if they have been added to the DOM via Turbo streams
-    this.reInitDrakeContainers();
-  }
-
   async drop(el:Element, target:Element, _source:Element|null, _sibling:Element|null) {
     const dropUrl = el.getAttribute('data-drop-url');
     const data = this.buildData(el, target);
@@ -166,9 +162,6 @@ export default class GenericDragAndDropController extends Controller {
       } else {
         const text = await response.text();
         Turbo.renderStreamMessage(text);
-        // reinit drake containers as the DOM will be updated by Turbo streams
-        // otherwise the DOM references in the Drake instance will be outdated
-        setTimeout(() => this.reInitDrakeContainers(), 100);
       }
     }
 
@@ -181,6 +174,8 @@ export default class GenericDragAndDropController extends Controller {
     if (this.drake) {
       this.drake.destroy();
     }
+
+    this.stopMutationObserver();
   }
 
   protected buildData(el:Element, target:Element):FormData {
@@ -204,5 +199,34 @@ export default class GenericDragAndDropController extends Controller {
     }
 
     return data;
+  }
+
+  private startMutationObserver() {
+    this.observer = new MutationObserver((mutations) => {
+      const addedNodes = mutations
+        .filter((mutation:MutationRecord) => mutation.type === 'childList')
+        .map((mutation:MutationRecord) => Array.from(mutation.addedNodes))
+        .reduce((acc, val) => acc.concat(val), []);
+
+      const newTarget = addedNodes.some((node) =>
+        node instanceof Element
+        && node.matches('[data-is-drag-and-drop-target="true"], [data-is-drag-and-drop-target="true"] *'));
+
+      if (newTarget) {
+        this.reInitDrakeContainers();
+      }
+    });
+
+    this.observer.observe(this.element, {
+      childList: true,
+      subtree: true,
+    });
+  }
+
+  private stopMutationObserver() {
+    if (this.observer) {
+      this.observer.disconnect();
+      this.observer = null;
+    }
   }
 }
