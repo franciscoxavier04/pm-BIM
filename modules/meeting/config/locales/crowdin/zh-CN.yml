@@ -378,7 +378,7 @@ zh-CN:
     此待办事项是这个一次性会议独有的。您可以拖动议程以添加或从会议中移除。
   label_agenda_backlog_clear_title: "清除议程待办事项？"
   text_agenda_backlog_clear_description: >
-    Are you sure you want to remove all items currently in the agenda backlog? This action is not reversible.
+    您确定要删除当前议程中的所有待办吗？此操作不可逆。
   label_series_backlog: "系列待办事项"
   text_series_backlog: >
     此待办事项在该系列会议中共同存在。 您可以拖动以添加或从特定会议中移除。

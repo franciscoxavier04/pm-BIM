@@ -186,7 +186,7 @@ pl:
   notice_successful_lock: "Zablokowano."
   notice_cost_logged_successfully: "Koszt jednostkowy zarejestrowano pomyślnie."
   notice_different_time_zones: "Ten użytkownik ma inną strefę czasową (%{tz}). Godzina będzie rejestrowana przy użyciu tej strefy czasowej."
-  notice_time_entry_update_failed: "Failed to update time entry. Errors: %{errors}"
+  notice_time_entry_update_failed: "Nie można zaktualizować wpisu czasu. Błędy: %{errors}"
   permission_edit_cost_entries: "Edytuj zapisane koszty jednostkowe"
   permission_edit_own_cost_entries: "Edytuj zarejestrowane własne koszty jednostkowe"
   permission_edit_hourly_rates: "Edycja stawek godzinowych"
@@ -201,11 +201,11 @@ pl:
   permission_view_own_hourly_rate: "Zobacz własne stawki godzinowe"
   permission_view_own_time_entries: "Zobacz swój poświęcony czas"
   project_module_costs: "Czas i koszty"
-  setting_allow_tracking_start_and_end_times: "Allow exact times tracking"
+  setting_allow_tracking_start_and_end_times: "Zezwalaj na dokładne śledzenie czasu"
   setting_costs_currency: "Waluta"
   setting_costs_currency_format: "Format waluty"
-  setting_enforce_tracking_start_and_end_times: "Require exact times"
-  setting_enforce_without_allow: "Requiring exact times is not possible without allowing them"
+  setting_enforce_tracking_start_and_end_times: "Wymagaj dokładnych czasów"
+  setting_enforce_without_allow: "Nie można wymagać dokładnych czasów bez zezwolenia na nie"
   text_assign_time_and_cost_entries_to_project: "Przypisz zgłoszone godziny i koszty do projektu"
   text_destroy_cost_entries_question: "%{cost_entries} zostały zgłoszone do Zestawu zadań, który chcesz usunąć. Co chcesz zrobić?"
   text_destroy_time_and_cost_entries: "Usuń zgłoszone godziny i koszty"
@@ -214,17 +214,17 @@ pl:
   text_warning_hidden_elements: "Niektóre wpisy mogą zostać wyłączone ze zbioru."
   week: "tydzień"
   total_times:
-    workweek: "Workweek Total: %{hours}"
-    week: "Week Total: %{hours}"
-    month: "Month Total: %{hours}"
-    day: "Day Total: %{hours}"
+    workweek: "Łącznie tydzień pracy: %{hours}"
+    week: "Łącznie tydzień: %{hours}"
+    month: "Łącznie miesiąc: %{hours}"
+    day: "Łącznie dzień: %{hours}"
   api_v3:
     errors:
       validation:
         start_time_different_date: "Część daty startTime (%{start_time}) musi być taka sama jak data spentOn (%{spent_on})."
   ee:
     features:
-      time_entry_time_restrictions: Require exact time tracking
+      time_entry_time_restrictions: Wymagaj dokładnego śledzenia czasu
     upsell:
       time_entry_time_restrictions:
-        description: "Improve your time tracking by requiring exact start and finish times when logging time."
+        description: "Usprawnij śledzenie czasu pracy, wymagając rejestracji dokładnego czasu rozpoczęcia i czasu zakończenia pracy."

@@ -384,7 +384,7 @@ pt-PT:
     Este backlog é exclusivo para esta reunião única. Pode arrastar itens para dentro e para fora para adicioná-los ou removê-los da agenda da reunião.
   label_agenda_backlog_clear_title: "Limpar backlog da agenda?"
   text_agenda_backlog_clear_description: >
-    Tem certeza de que deseja remover todos os itens atualmente nos itens da agenda? Esta ação não é reversível.
+    Are you sure you want to remove all items currently in the agenda backlog? This action is not reversible.
   label_series_backlog: "Backlog da série"
   text_series_backlog: >
     O backlog é partilhado com todas as ocorrências desta série. Pode arrastar itens para dentro e fora para adicioná-los ou removê-los de uma reunião específica.

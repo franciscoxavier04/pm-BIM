@@ -23,7 +23,7 @@ fr:
   js:
     text_are_you_sure: "Êtes-vous sûr ?"
     myTimeTracking:
-      noSpecificTime: "No specific time"
+      noSpecificTime: "Aucune heure spécifique"
     work_packages:
       property_groups:
         costs: "Coûts"
