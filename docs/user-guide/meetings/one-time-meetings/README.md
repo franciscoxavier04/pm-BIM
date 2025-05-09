@@ -40,11 +40,11 @@ For information on setting up recurring meeting series and templates, please ref
 
 You can either create a meeting from within a project or from the global **Meetings** module.
 
-To create a new meeting, click the green **+ Meeting** button in the upper right corner and select what type of meeting you want to create. You can choose between **one-time, recurring or classic meetings**. 
+To create a new meeting, click the green **+ Meeting** button in the upper right corner and select what type of meeting you want to create. You can choose between **one-time and recurring meetings**. 
 
 ![Create new meeting in OpenProject](openproject_userguide_meetings_create_meeting_button.png)
 
-For steps on creating a classic meetings please consult [this page](../classic-meetings). For steps on setting up recurring meetings please consult [this page](../recurring-meetings).
+For steps on setting up recurring meetings please consult [this page](../recurring-meetings).
 
 If you choose the **one-time** option, enter your meeting's title, location, start date and time, and duration. 
 

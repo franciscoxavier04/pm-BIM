@@ -16,7 +16,7 @@ With OpenProject 15.3.0, dynamic meetings can either be [one-time meetings](../o
 
 ## How long will the classic meetings be available?
 
-[Classic meetings](../classic-meetings) were deprecated with 16.0 release. 
+Classic meetings were deprecated with 16.0 release. 
 
 - All existing classic meetings were converted into a one-time dynamic meetings. 
 - Agenda text was converted to agenda items. 

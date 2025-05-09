@@ -24,7 +24,7 @@ Recurring meetings are helpful to schedule and organize meetings that happen reg
 
 ## Create and edit recurring meetings
 
-You can either create a recurring meeting from within a project or from the global **Meetings** module. For steps on creating a classic meetings please consult [this page](../classic-meetings). For steps on setting up one-time meetings please consult [this page](../one-time-meetings).
+You can either create a recurring meeting from within a project or from the global **Meetings** module. For steps on setting up one-time meetings please consult [this page](../one-time-meetings).
 
 To create a new recurring meeting, click the green **+ Meeting** button in the upper right corner and select **Recurring**. 
 
