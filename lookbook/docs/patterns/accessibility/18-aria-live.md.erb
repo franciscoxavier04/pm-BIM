@@ -105,7 +105,7 @@ export function registerAriaStreamAction() {
 ## Live Regions in Dialogs and Modals
 There is an important exception to our use of the global ARIA Live Region in `base.html`.
 
-When a modal or dialog is open, screen readers often restrict focus and reading context to the content inside the dialog. In this case, ARIA live regions outside the dialog (such as those defined in base.html) become inaccessible to the screen reader.
+When a modal or dialog is open, screen readers often restrict focus and reading context to the content inside the dialog. In this case, live regions outside the dialog (such as those defined in `base.html`) become inaccessible to the screen reader.
 
 To ensure that announcements are still read aloud in this situation, we should include a live-region component within the dialog itself, like what we have implemented for primerized date picker.
 
