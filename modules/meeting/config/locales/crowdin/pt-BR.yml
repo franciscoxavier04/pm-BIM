@@ -328,8 +328,8 @@ pt-BR:
   permission_view_meetings: "Visualizar reuniões"
   permission_manage_agendas: "Gerenciar agendas"
   permission_manage_agendas_explanation: "Permite gerenciar os itens da agenda da Reunião Dinâmica."
-  permission_manage_outcomes: "Manage outcomes"
-  permission_send_meeting_invites_and_outcomes: "Send meeting invites and outcomes to participants"
+  permission_manage_outcomes: "Gerenciar resultados"
+  permission_send_meeting_invites_and_outcomes: "Enviar convites para a reunião e resultados aos participantes"
   project_module_meetings: "Reuniões"
   text_duration_in_hours: "Duração em horas"
   text_in_hours: "em horas"
@@ -361,8 +361,8 @@ pt-BR:
   label_agenda_item_deleted_wp: "Referência do pacote de trabalho excluída"
   label_agenda_item_actions: "Ações dos itens da agenda"
   label_agenda_item_move_to_next: "Mover para próxima reunião"
-  label_agenda_item_move_to_backlog: "Move to backlog"
-  label_agenda_item_move_to_current_meeting: "Move to current meeting"
+  label_agenda_item_move_to_backlog: "Mover para o backlog"
+  label_agenda_item_move_to_current_meeting: "Mover para reunião atual"
   label_agenda_item_move_to_top: "Mover para o inicio"
   label_agenda_item_move_to_bottom: "Mover para o final"
   label_agenda_item_move_up: "Mover para cima"
@@ -375,22 +375,22 @@ pt-BR:
   label_agenda_outcome_edit: "Editar resultado"
   label_agenda_outcome_delete: "Remover resultado"
   text_outcome_not_editable_anymore: "Este resultado não é mais editável."
-  text_outcome_cannot_be_added: "An outcome can no longer be added."
-  label_backlog_clear: "Clear backlog"
+  text_outcome_cannot_be_added: "Não é mais possível adicionar um resultado."
+  label_backlog_clear: "Limpar backlog"
   label_backlog_clear_button: "Remover tudo"
-  text_backlog_clear_error: "One or more errors occurred while trying to clear the backlog."
-  label_agenda_backlog: "Agenda backlog"
+  text_backlog_clear_error: "Um ou mais erros ocorreram ao tentar limpar o backlog."
+  label_agenda_backlog: "Backlog da agenda"
   text_agenda_backlog: >
-    This backlog is unique to this one-time meeting. You can drag items in and out to add or remove them from the meeting agenda.
-  label_agenda_backlog_clear_title: "Clear agenda backlog?"
+    Este backlog é exclusivo desta reunião única. Você pode arrastar os itens para dentro ou para fora para adicioná-los ou removê-los da agenda da reunião.
+  label_agenda_backlog_clear_title: "Limpar backlog da agenda?"
   text_agenda_backlog_clear_description: >
-    Are you sure you want to remove all items currently in the agenda backlog? This action is not reversible.
-  label_series_backlog: "Series backlog"
+    Tem certeza de que deseja remover todos os itens que estejam atualmente no backlog da agenda? Essa ação é irreversível.
+  label_series_backlog: "Backlog da série"
   text_series_backlog: >
-    The backlog is shared with all occurrences of this series. You can drag items in and out to add or remove them from a particular meeting.
-  label_series_backlog_clear_title: "Clear series backlog?"
+    O backlog é compartilhado entre todas as ocorrências desta série. Você pode arrastar itens para adicioná-los ou removê-los de uma reunião específica.
+  label_series_backlog_clear_title: "Limpar backlog da série?"
   text_series_backlog_clear_description: >
-    This will remove all items in the series backlog, which is shared with all meetings in the series. Are you sure you want to continue? This action is not reversible.
+    Isso removerá todos os itens do backlog da série, que é compartilhado com todas as reuniões desta série. Tem certeza de que deseja continuar? Essa ação é irreversível.
   text_agenda_item_title: 'Item da agenda "%{title}"'
   text_agenda_work_package_deleted: 'Item da agenda para o pacote de trabalho excluído'
   text_deleted_agenda_item: 'Item da agenda excluído'

@@ -356,17 +356,17 @@ uk:
       button_update_status_description: Оновити опис проєкту
       button_update_parent_project: Оновити батьківський проєкт
       public_warning: >
-        Цей проєкт загальнодоступний. Кожен, хто має доступ до цього екземпляра, також зможе переглянути цей проєкт і взаємодіяти з ними відповідно до своєї ролі й пов’язаних дозволів. Вкладені проєкти мають власні налаштування, тому це не вплине на них.
+        Цей проєкт загальнодоступний. Кожен, хто має доступ до цього екземпляра, зможе переглянути цей проєкт і взаємодіяти з ним відповідно до своєї ролі й пов’язаних дозволів. Вкладені проєкти мають власні налаштування, тому це не вплине на них.
       public_confirmation:
         checkbox: "Я розумію, що внаслідок цієї дії приватний контент стане загальнодоступним"
         title: "Зробити цей проєкт загальнодоступним?"
         description: >
-          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+          Кожен, хто має доступ до цього екземпляра, зможе переглянути цей проєкт і взаємодіяти з ним відповідно до своєї ролі й пов’язаних налаштувань автентифікації. Вкладені проєкти мають власні налаштування, тому це не вплине на них.
       private_confirmation:
-        checkbox: "I understand that this will make the previously public content private."
-        title: "Make this project private?"
+        checkbox: "Я розумію, що внаслідок цієї дії загальнодоступний контент стане приватним."
+        title: "Зробити цей проєкт приватним?"
         description: >
-          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+          Цей проєкт бачитимуть лише учасники проєкту відповідно до своїх ролей і пов’язаних дозволів. Вкладені проєкти мають власні налаштування, тому це не вплине на них.
       change_identifier: Ідентифікатор змін
       actions:
         label_enable_all: "Увімкнути все"
@@ -416,7 +416,7 @@ uk:
       work_package_priorities:
         new_label: "Новий пріоритет"
     status:
-      button_edit: Edit project status
+      button_edit: Змінити статус проєкту
   project_phase:
     working_days_count:
       one: "Тривалість: %{count} робочий день"
@@ -652,7 +652,7 @@ uk:
             project: "Проєкт"
         pattern:
           label: "Шаблон теми"
-          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          caption_with_supported_attributes_link: Створюйте шаблони, додаючи текст, або введіть «/», щоб знайти %{link}.
           insert_as_text: "Атрибутів не знайдено. Додайте як текст: «%{word}»"
           supported_attributes_link: "підтримувані атрибути"
       export_configuration:
@@ -794,7 +794,7 @@ uk:
       child: "Дочірній"
       child_description: "Вкладає звʼязаний пакет робіт як піделемент поточного (батьківського) пакета робіт"
       parent: "Батьківський"
-      parent_description: "Makes the related work package a parent of the current (child) work package"
+      parent_description: "Установлює звʼязаний пакет робіт батьківським відносно поточного (дочірнього) пакета робіт"
       label_closest: "Найближчі"
       label_blocks_singular: "блоки"
       label_blocks_plural: "блоки"
@@ -1115,7 +1115,7 @@ uk:
           title: "Робочі дні"
           false: "лише робочі дні"
           true: "включати неробочі дні"
-        journal_internal: Internal Journal
+        journal_internal: Внутрішній журнал
         notify: "Сповіщати" #used in custom actions
         parent: "Джерело"
         parent_issue: "Батьківський"
@@ -1157,7 +1157,7 @@ uk:
         error_conflict: "Інформація була оновлена принаймні один інший користувач в той же час."
         email: "– це не дійсна електронна адреса."
         empty: "не може бути порожнім."
-        enterprise_plan_required: "requires at least the %{plan_name}."
+        enterprise_plan_required: "потрібен принаймні план %{plan_name}."
         even: "має бути рівним."
         exclusion: "зарезервовано."
         feature_disabled: недоступна.
@@ -2099,7 +2099,7 @@ uk:
       plan_text_html: "Доступно, починаючи з версії %{plan_name}."
       hide_banner: "Приховати цей банер"
       homescreen_description: >
-        Плани Enterprise розширюють можливлсті вашого випуску OpenProject Community. Вони включають розширення, додаткові функції і професійну підтримку, що дає організаціям усіх розмірів досягати кращих результатів разом.
+        Плани Enterprise розширюють можливості вашого випуску OpenProject Community. Вони включають доповнення, додаткові функції та професійну підтримку, що дає організаціям усіх розмірів досягати кращих результатів разом.
       homescreen_subline: Підвищивши рівень, ви також долучитеся до підтримки проєкту з відкритим кодом.
       baseline_comparison:
         description: Виділяйте зміни, внесені в цей список із будь-якого моменту часу в минулому.
@@ -2134,7 +2134,7 @@ uk:
         description: "Користувацькі дії – це ярлики набору попередньо визначених дій, які ви можете включати в певні пакети робіт залежно від статусу, ролі, типу або проєкту."
       nextcloud_sso:
         title: "Єдиний вхід для сховища Nextcloud"
-        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
+        description: "Увімкніть швидку й безпечну автентифікацію для свого сховища Nextcloud завдяки технології єдиного входу. Спростіть керування доступом і покращте взаємодію користувачів зі своїм продуктом."
       virus_scanning:
         description: "Переконайтеся, що вивантажені в OpenProject файли перевіряються на віруси перед тим, як стають доступними для інших користувачів."
       placeholder_users:
@@ -3489,7 +3489,7 @@ uk:
   permission_edit_own_messages: "Редагування власних повідомлень"
   permission_edit_own_time_entries: "Редагування власного обліку часу"
   permission_edit_others_internal_comments: "Модерування внутрішніх коментарів"
-  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
+  permission_edit_others_internal_comments_explanation: "Увага! Користувачі із цим дозволом можуть редагувати будь-чиї внутрішні коментарі."
   permission_edit_project: "Редагувати проект"
   permission_edit_project_attributes: " Редагувати атрибути проєкту"
   permission_edit_project_phases: "Редагування етапів проєкту"
@@ -3530,7 +3530,7 @@ uk:
   permission_manage_own_reminders: "Створюйте власні нагадування"
   permission_view_project: "Перегляд проєктів"
   permission_view_changesets: "Перегляд змін репозиторію (сховища) в OpenProject"
-  permission_view_internal_comments: "View internal comments"
+  permission_view_internal_comments: "Перегляд внутрішніх коментарів"
   permission_view_commit_author_statistics: "Перегляд статистики комітів автора"
   permission_view_dashboards: "Перегляд панелей керування"
   permission_view_work_package_watchers: "Перегляд списку спостерігачів"
@@ -3811,7 +3811,7 @@ uk:
   setting_hours_per_day_explanation: >-
     Визначає, що вважати днем, якщо тривалість представлено в днях і годинах (наприклад, якщо день триває 8 годин, то 32 години – це 4 дні).
   setting_invitation_expiration_days: "Повідомлення про активацію закінчується"
-  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
+  setting_invitation_expiration_days_caption: "Кількість днів до завершення дії листа з посиланням для активації."
   setting_work_package_done_ratio: "Режим обчислення прогресу"
   setting_work_package_done_ratio_field: "На основі роботи"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3827,9 +3827,9 @@ uk:
   setting_journal_aggregation_time_minutes: "Дії користувача зведено протягом"
   setting_log_requesting_user: "Запишіть логін користувача, ім'я та поштову адресу для всіх запитів"
   setting_login_required: "Необхідна аутентифікація"
-  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
-  setting_lost_password: "Enable password reset"
-  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
+  setting_login_required_caption: "Якщо встановлено, усі запити до додатка мають проходити автентифікацію."
+  setting_lost_password: "Увімкнути скидання пароля"
+  setting_lost_password_caption: "Якщо встановлено, користувачі можуть скидати свої паролі."
   setting_mail_from: "email адреса для передачі інформації"
   setting_mail_handler_api_key: "Ключ API"
   setting_mail_handler_body_delimiters: "Усічення листи після однієї з цих ліній"
@@ -3855,7 +3855,7 @@ uk:
   setting_project_gantt_query_text: "Ви можете змінити запит, який слугує для показу діаграми Ґанта на сторінці огляду проєкту."
   setting_security_badge_displayed: "Показ значка безпеки"
   setting_registration_footer: "Реєстраційний колонтитул"
-  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
+  setting_registration_footer_caption: "Цей текст відображається в нижньому колонтитулі сторінки реєстрації. За допомогою редактора HTML відформатуйте текст для кожної вибраної мови."
   setting_repositories_automatic_managed_vendor: "Тип автоматичного сховища"
   setting_repositories_encodings: "Кодування сховищ"
   setting_repository_storage_cache_minutes: "Кеш розміру диска в сховищі"
@@ -3867,21 +3867,21 @@ uk:
   setting_rest_api_enabled: "Увімкніть веб-службу REST"
   setting_self_registration: "Самостійна реєстрація"
   setting_self_registration_caption: >
-    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
+    Виберіть механізм самостійної реєстрації користувачів. Зверніть увагу, що деякі варіанти дають змогу користувачам активувати свої облікові записи в цьому екземплярі.
   setting_self_registration_warning: >
-    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+    Користувачі зможуть активувати свої облікові записи. Зверніть увагу: вони отримають доступ до всіх загальнодоступних проєктів. Переконайтеся, що загальнодоступні проєкти не містять чутливих або персональних даних.
   setting_self_registration_disabled: "Вимкнено"
   setting_self_registration_disabled_caption: >
-    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
-  setting_self_registration_activation_by_email: "Account activation by email"
+    Самостійна реєстрація облікових записів заборонена. Нові облікові записи можуть створювати лише адміністратори й користувачі з глобальним дозволом на створення нових користувачів.
+  setting_self_registration_activation_by_email: "Активація облікового запису електронною поштою"
   setting_self_registration_activation_by_email_caption: >
-    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
-  setting_self_registration_automatic_activation: "Automatic account activation"
+    Користувачі можуть реєструватися самостійно й активувати свої облікові записи після підтвердження адреси електронної пошти. Адміністратори не мають контролю над процесом активації.
+  setting_self_registration_automatic_activation: "Автоматична активація облікового запису"
   setting_self_registration_automatic_activation_caption: >
-    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
-  setting_self_registration_manual_activation: "Manual account activation"
+    Користувачі можуть реєструватися самостійно. Їхні облікові записи активуються одразу без додаткових дій. Адміністратори не мають контролю над процесом активації.
+  setting_self_registration_manual_activation: "Ручна активація облікового запису"
   setting_self_registration_manual_activation_caption: >
-    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
+    Користувачі можуть реєструватися самостійно. Їхні облікові записи активує адміністратор або користувач із глобальними дозволами на створення користувачів чи керування ними.
   setting_session_ttl: "Сесії час після закінчення неактивність"
   setting_session_ttl_hint: "Значення нижче 5 працює як відключено"
   setting_session_ttl_enabled: "Сеанс закінчився"
@@ -3909,8 +3909,8 @@ uk:
   setting_working_days: "Робочі дні"
   settings:
     authentication:
-      login_and_sso: "Login and SSO"
-      registration: "Registration"
+      login_and_sso: "Вхід і SSO"
+      registration: "Реєстрація"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         Якщо цей параметр увімкнено, запити на вхід переспрямовуватимуться налаштованому постачальнику omniauth. Спадний список і сторінку входу буде вимкнено. <br/> <strong>Примітка.</strong> Якщо цей параметр увімкнено й вхід за допомогою пароля дозволено, користувачі зможуть входити зі сторінки входу <code>%{internal_path}</code>.
@@ -4014,8 +4014,8 @@ uk:
     work_packages:
       not_allowed_text: "У вас немає дозволів для перегляду цієї сторінки."
       activities:
-        enable_internal_comments: "Enable internal comments"
-        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_internal_comments: "Увімкнути внутрішні коментарі"
+        helper_text: "Завдяки внутрішнім коментарям учасники внутрішньої команди можуть спілкуватися приватно. Ці коментарі доступні лише користувачам із певними ролями й необхідними дозволами й ніколи не відображаються для всіх. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Простий текст"

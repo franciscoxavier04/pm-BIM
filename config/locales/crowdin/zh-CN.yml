@@ -1974,15 +1974,15 @@ zh-CN:
       work_package_sharing: 与外部用户共享工作包
       work_package_subject_generation: 工作包主题生成
     upsell:
-      plans_title: "Enterprise plans"
+      plans_title: "企业计划"
       title: "企业附加组件"
       plan_title: "企业 %{plan} 附加组件"
       plan_name: "%{plan} 企业计划"
       plan_text_html: "从 %{plan_name} 开始可用。"
       hide_banner: "隐藏此广告"
       homescreen_description: >
-        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
-      homescreen_subline: By upgrading, you will also be supporting an open source project.
+        企业计划将扩展您正在使用的 OpenProject 社区版本。 它们包括附加组件、额外功能和专业支持，使各种规模的组织能够一起取得巨大成就。
+      homescreen_subline: 通过升级，您也将支持一个开源项目。
       baseline_comparison:
         description: 高亮显示自从过去任意时间点以来对此列表所做的更改。
       work_package_subject_generation:

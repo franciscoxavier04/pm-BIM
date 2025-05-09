@@ -23,7 +23,7 @@ uk:
   js:
     text_are_you_sure: "Ви впевненені?"
     myTimeTracking:
-      noSpecificTime: "No specific time"
+      noSpecificTime: "Немає визначеного часу"
     work_packages:
       property_groups:
         costs: "Витрати"

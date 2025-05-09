@@ -94,8 +94,8 @@ pt-BR:
       timesheet: "Planilha de horas"
       time: "Hora"
       sums_hours: Somas
-      overview_per_user_total: "Overview: Total hours per user"
-      overview_per_user_day: "Overview: Hours per user per day"
+      overview_per_user_total: "Visão geral: Total de horas por usuário"
+      overview_per_user_day: "Visão geral: Horas por usuário por dia"
     cost_reports:
       title: "Exportação XLS dos seus relatórios de custos"
       start_time: "Hora de início"

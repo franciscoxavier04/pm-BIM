@@ -275,8 +275,8 @@ zh-CN:
         warnings:
           other: "%{count} 检查返回警告"
       connection_validation:
-        client_id_invalid: 已配置的 OAuth 2 客户端ID无效。请检查配置。
-        client_secret_invalid: 已配置的 OAuth 2 客户端ID无效。请检查配置。
+        client_id_invalid: 已配置的 OAuth 2 客户端 ID 无效。请检查配置。
+        client_secret_invalid: 已配置的 OAuth 2 客户端 ID 无效。请检查配置。
         nc_dependency_missing: '文件存储缺少一个必需的依赖项。请添加以下依赖项： %{dependency}.'
         nc_dependency_version_mismatch: '%{dependency} 应用版本不受支持。请更新您的 Nextcloud 服务器。'
         nc_group_folder_not_found: 无法找到组文件夹。

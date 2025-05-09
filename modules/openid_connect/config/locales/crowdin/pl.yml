@@ -92,7 +92,7 @@ pl:
       custom:
         name: Niestandardowy
       upsell:
-        title: "Single Sign-On (SSO) with OpenID connect"
+        title: "Logowanie jednokrotne (SSO) za pomocą OpenID Connect"
         description: Połącz OpenProject z dostawcą tożsamości OpenID Connect
       label_add_new: Dodaj nowego dostawcę OpenID
       label_edit: Edytuj dostawcę OpenID %{name}
