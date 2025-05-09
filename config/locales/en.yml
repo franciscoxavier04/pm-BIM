@@ -2102,7 +2102,7 @@ en:
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
-      homescreen_description: > 
+      homescreen_description: >
         Enterprise plans extend the Community edition of OpenProject you are currently using.
         They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
       homescreen_subline: By upgrading, you will also be supporting an open source project.
@@ -2536,6 +2536,8 @@ en:
         mentioned: "You have been mentioned in %{work_package}"
         responsible: "You have become accountable for %{work_package}"
         watched: "You are watching %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
 
   label_accessibility: "Accessibility"
   label_account: "Account"

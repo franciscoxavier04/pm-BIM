@@ -436,7 +436,7 @@ RSpec.describe "Meetings CRUD",
         show_page.expect_no_section(title: "Second section")
         show_page.expect_no_section(title: "Untitled section")
 
-        # TBD: remove the agenda item again, the untitle section is not rendered explicitly and will not be removed
+        # TBD: remove the agenda item again, the untitled section is not rendered explicitly and will not be removed
         first_item = MeetingAgendaItem.find_by!(title: "First item without explicit section")
         show_page.remove_agenda_item(first_item)
 
@@ -490,7 +490,7 @@ RSpec.describe "Meetings CRUD",
           show_page.select_section_action(second_section, "Delete")
         end
 
-        # only untitled secion is left -> will not be rendered explicitly as secion
+        # only untitled section is left -> will not be rendered explicitly as section
         show_page.expect_no_section(title: "Untitled section")
         show_page.expect_no_section(title: "Second section")
 
