@@ -60,12 +60,15 @@ import { populateInputsFromDataset } from 'core-app/shared/components/dataset-in
 import { navigator } from '@hotwired/turbo';
 import { uniqueId } from 'lodash';
 
-
 @Component({
   templateUrl: './ckeditor-augmented-textarea.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin implements OnInit {
+  // Track form submission "in-flight" state per form, to prevent multiple
+  // submissions from multiple CKEditor instances on the same form.
+  private static inFlight = new WeakMap<HTMLFormElement, boolean>();
+
   @Input() public textAreaId:string;
 
   @Input() public previewContext:string;
@@ -105,8 +108,6 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
 
   // Remember if the user changed
   public changed = false;
-
-  public inFlight = false;
 
   public initialContent:string;
 
@@ -171,7 +172,7 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   private registerFormSubmitListener():void {
     fromEvent(this.formElement, 'submit')
       .pipe(
-        filter(() => !this.inFlight),
+        filter(() => !CkeditorAugmentedTextareaComponent.inFlight.get(this.formElement)),
         this.untilDestroyed(),
       )
       .subscribe((evt:SubmitEvent) => {
@@ -182,7 +183,7 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
 
   public async saveForm(evt?:SubmitEvent):Promise<void> {
     this.saveRequested.emit(); // Provide a hook for the parent component to do something before the form is submitted
-    this.inFlight = true;
+    CkeditorAugmentedTextareaComponent.inFlight.set(this.formElement, true);
 
     this.syncToTextarea();
     window.OpenProject.pageIsSubmitted = true;
@@ -200,6 +201,8 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
       } else {
         this.formElement.requestSubmit(evt?.submitter);
       }
+
+      CkeditorAugmentedTextareaComponent.inFlight.delete(this.formElement);
     });
   }
 
