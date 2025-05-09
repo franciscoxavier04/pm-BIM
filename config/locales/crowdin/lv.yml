@@ -422,7 +422,7 @@ lv:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       zero: "Duration: %{count} working days"
       one: "Duration: %{count} working day"
       other: "Duration: %{count} working days"
@@ -1685,6 +1685,8 @@ lv:
     priority: "Prioritāte"
     project: "Projekts"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reason"
     responsible: "Accountable"
     required: "Obligāts"
@@ -2705,6 +2707,7 @@ lv:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "General"
   label_generate_key: "Generate a key"
+  label_global_roles: "Global roles"
   label_git_path: "Path to .git directory"
   label_greater_or_equal: ">="
   label_group_by: "Grupēt pēc"

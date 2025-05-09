@@ -421,7 +421,7 @@ ms:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       other: "Tempoh: %{count} hari bekerja"
   lists:
     create:
@@ -1641,6 +1641,8 @@ ms:
     priority: "Keutamaan"
     project: "Projek"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Sebab"
     responsible: "Bertanggungjawab"
     required: "Diperlukan"
@@ -2623,6 +2625,7 @@ ms:
   label_gantt_chart_plural: "Carta Gantt"
   label_general: "Umum"
   label_generate_key: "Jana kunci"
+  label_global_roles: "Peranan global"
   label_git_path: "Laluan ke direktori .git"
   label_greater_or_equal: ">="
   label_group_by: "Kumpulkan mengikut"

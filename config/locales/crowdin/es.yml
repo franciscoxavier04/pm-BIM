@@ -420,7 +420,7 @@ es:
     status:
       button_edit: Editar estado del proyecto
   project_phase:
-    working_days_count:
+    duration:
       one: "Duración: %{count} día laborable"
       other: "Duración: %{count} días laborables"
   lists:
@@ -679,7 +679,7 @@ es:
           automatic_with_children: "Fechas determinadas por paquetes de trabajo secundarios."
           automatic_with_predecessor: "La fecha de inicio la fija un predecesor."
           manual_mobile: "Programado manualmente."
-          manually_scheduled: "Programado manualmente. No afectadas por relaciones."
+          manually_scheduled: "Programado manualmente. Fechas no afectadas por relaciones."
       blankslate:
         title: "Sin predecesores"
         description: "Para activar la programación automática, este paquete de trabajo debe tener al menos un predecesor. Entonces se programará automáticamente para que comience después del predecesor más cercano."
@@ -1662,6 +1662,8 @@ es:
     priority: "Prioridad"
     project: "Proyecto"
     project_ids: "IDs de proyectos"
+    project_phase: "Fase del proyecto"
+    project_phase_definition: "Fase del proyecto"
     reason: "Motivo"
     responsible: "Responsable"
     required: "Obligatorio"
@@ -2663,6 +2665,7 @@ es:
   label_gantt_chart_plural: "Diagramas de Gantt"
   label_general: "General"
   label_generate_key: "Generar una contraseña"
+  label_global_roles: "Roles globales"
   label_git_path: "Ruta al directorio .git"
   label_greater_or_equal: ">="
   label_group_by: "Agrupar por"

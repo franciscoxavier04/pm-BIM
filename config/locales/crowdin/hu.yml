@@ -421,7 +421,7 @@ hu:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Duration: %{count} working day"
       other: "Duration: %{count} working days"
   lists:
@@ -1663,6 +1663,8 @@ hu:
     priority: "Fontosság"
     project: "Projekt"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reason"
     responsible: "Felelős"
     required: "Kötelező"
@@ -2664,6 +2666,7 @@ hu:
   label_gantt_chart_plural: "Gantt-diagram"
   label_general: "Általános"
   label_generate_key: "Létrehoz egy kulcsot"
+  label_global_roles: "Global roles"
   label_git_path: ".Git könyvtár elérési útja"
   label_greater_or_equal: ">="
   label_group_by: "Csoportosítás"

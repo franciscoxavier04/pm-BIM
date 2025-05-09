@@ -298,6 +298,10 @@ paths:
     "$ref": "./paths/priorities.yml"
   "/api/v3/priorities/{id}":
     "$ref": "./paths/priority.yml"
+  "/api/v3/project_phases/{id}":
+    "$ref": "./paths/project_phase.yml"
+  "/api/v3/project_phase_definitions/{id}":
+    "$ref": "./paths/project_phase_definition.yml"
   "/api/v3/project_storages":
     "$ref": "./paths/project_storages.yml"
   "/api/v3/project_storages/{id}":
@@ -779,6 +783,10 @@ components:
       "$ref": "./components/schemas/project_collection_model.yml"
     ProjectModel:
       "$ref": "./components/schemas/project_model.yml"
+    ProjectPhaseModel:
+      "$ref": "./components/schemas/project_phase_model.yml"
+    ProjectPhaseDefinitionModel:
+      "$ref": "./components/schemas/project_phase_definition_model.yml"
     ProjectStorageCollectionModel:
       "$ref": "./components/schemas/project_storage_collection_model.yml"
     ProjectStorageModel:
@@ -958,6 +966,8 @@ tags:
   - "$ref": "./tags/posts.yml"
   - "$ref": "./tags/principals.yml"
   - "$ref": "./tags/priorities.yml"
+  - "$ref": "./tags/project_phases.yml"
+  - "$ref": "./tags/project_phase_definitions.yml"
   - "$ref": "./tags/projects.yml"
   - "$ref": "./tags/queries.yml"
   - "$ref": "./tags/query_columns.yml"

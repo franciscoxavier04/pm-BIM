@@ -421,7 +421,7 @@ sl:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Duration: %{count} working day"
       two: "Duration: %{count} working days"
       few: "Duration: %{count} working days"
@@ -1705,6 +1705,8 @@ sl:
     priority: "Prioriteta"
     project: "Projekt"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reason"
     responsible: "Odgovorni"
     required: "Zahtevano"
@@ -1934,8 +1936,8 @@ sl:
       - "avgust"
       - "september"
       - "oktober"
-      - "november"
-      - "december"
+      - "November"
+      - "December"
     order:
       - :leto
       - :mesec
@@ -2744,6 +2746,7 @@ sl:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Splošno"
   label_generate_key: "Ustvari ključ"
+  label_global_roles: "Global roles"
   label_git_path: "Pot do datoteke ali mape"
   label_greater_or_equal: ">="
   label_group_by: "Razvrsti po"

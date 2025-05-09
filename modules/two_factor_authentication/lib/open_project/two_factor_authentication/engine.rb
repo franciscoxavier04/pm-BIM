@@ -44,7 +44,7 @@ module OpenProject::TwoFactorAuthentication
                   name: "two_factor_authentication",
                   partial: "users/two_factor_authentication",
                   path: ->(params) { edit_user_path(params[:user], tab: :two_factor_authentication) },
-                  label: "two_factor_authentication.label_two_factor_authentication",
+                  label: :"two_factor_authentication.label_two_factor_authentication",
                   only_if: ->(*) { User.current.admin? && OpenProject::TwoFactorAuthentication::TokenStrategyManager.enabled? }
 
     config.to_prepare do

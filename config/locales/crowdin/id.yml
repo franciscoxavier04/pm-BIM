@@ -418,7 +418,7 @@ id:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       other: "Duration: %{count} working days"
   lists:
     create:
@@ -1639,6 +1639,8 @@ id:
     priority: "Prioritas"
     project: "Project"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reason"
     responsible: "Akuntabel"
     required: "Harus diisi"
@@ -2610,7 +2612,7 @@ id:
   label_filter_add: "Tambah Filter"
   label_filter_by: "Filter by"
   label_filter_any_name_attribute: "Name attributes"
-  label_filter_plural: "Penyaring"
+  label_filter_plural: "Filter"
   label_filters_toggle: "Tampilkan/Sembunyikan penyaringan"
   label_float: "Float"
   label_folder: "Folder"
@@ -2621,6 +2623,7 @@ id:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Umum"
   label_generate_key: "Generate a key"
+  label_global_roles: "Global roles"
   label_git_path: "Path to .git directory"
   label_greater_or_equal: ">="
   label_group_by: "Pengelompokan"
