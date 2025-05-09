@@ -125,3 +125,30 @@ In addition to all the options available for [editing one-time meetings](../one-
 To do that click the **More** (three dots) icon next to an agenda item and select **Move to next meeting**.
 
 ![Move an agenda item to next meeting in OpenProject recurring meetings](openproject_userguide_meetings_recurring_meeting_move_agenda_item_to_next_meeting.png)
+
+## Meeting backlogs for recurring meetings
+
+### Series backlogs
+
+A **series backlog** is a dedicated section below the actual agenda, where additional agenda items are listed that can potentially be added to a current or future meetings within the meeting series. It can be collapsed or expanded by clicking the title (Series backlog). Agenda backlog for recurring meetings will be visible for all meetings in the series. 
+
+> [!TIP]
+> By default, the backlog is expanded when the meeting status is *open*, collapsed if the meeting status is *in progress*, and hidden if the meeting is *closed*.
+
+![Agenda backlog section title collapsed, in OpenProject recurring meetings](openproject_userguide_meetings_series_backlog_title.png)
+
+#### Add items to series backlogs
+You can add agenda items and link work packages in the same way as you would within the meeting agenda.
+
+![Agenda backlog in recurring meetings in OpenProject](openproject_userguide_meetings_series_backlog.png)
+
+#### Edit agenda backlogs
+You can add items from the series backlog either by dragging and dropping via the handle on the left, or using the dropdown options of the More (three dots) icon on the right.  That same *More* menu also allows editing, reordering, adding notes or deleting an item in the series backlog. 
+
+![Move agenda items from the series backlog to the agenda in OpenProject Meetings](openproject_userguide_meetings_move_series_backlog_items.png)
+
+#### Clear agenda backlogs
+
+You can either remove single items from a series backlog or clear an entire backlog by clicking the *Clear backlog* option under More (three dots) menu next to the backlog name. Use this option with caution, as the action cannot be undone.
+
+![An option to clear a series backlog in OpenProject recurring meetings](openproject_userguide_meetings_clear_series_backlog.png)
