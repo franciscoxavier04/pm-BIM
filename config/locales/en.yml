@@ -744,7 +744,7 @@ en:
         automatic: "Automatic"
         manual: "Manual"
       show_relations: "Show relations"
-      update_inputs_aria_live_message: "Date picker updated. Scheduling mode: %{scheduling}, %{working_days_only}, Start date: %{start_date}, Finish date: %{due_date}, Duration: %{duration} days."
+      update_inputs_aria_live_message: "Date picker updated. Scheduling mode: %{scheduling_label}, %{working_days_label}, Start date: %{start_date}, Finish date: %{due_date}, Duration: %{duration} days."
       tabs:
         aria_label: "Datepicker tabs"
         children: "Children"
