@@ -408,6 +408,7 @@ zh-CN:
     member_connection_status:
       connected: 已连接
       connected_no_permissions: 用户角色没有存储区权限
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: 未连接。用户应通过以下 %{link} 登录到存储。
       not_connected_sso: 尚未连接，在查看文件后 SSO 应自动连接。
     members_no_results: 没有要显示的成员。

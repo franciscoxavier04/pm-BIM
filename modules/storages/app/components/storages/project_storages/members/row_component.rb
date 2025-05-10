@@ -52,8 +52,8 @@ module Storages::ProjectStorages::Members
     def status
       connection_result = storage_connection_status
       case connection_result
-      when :not_connected
-        helpers.op_icon("icon-warning -warning") +
+      when :not_connected_oauth2
+        warning_icon +
           content_tag(
             :span,
             I18n.t("storages.member_connection_status.not_connected",
@@ -61,6 +61,8 @@ module Storages::ProjectStorages::Members
           )
       when :not_connected_sso
         content_tag(:span, I18n.t("storages.member_connection_status.not_connected_sso"))
+      when :not_connectable
+        warning_icon + content_tag(:span, I18n.t("storages.member_connection_status.not_connectable"))
       else
         I18n.t("storages.member_connection_status.#{connection_result}")
       end
@@ -94,8 +96,9 @@ module Storages::ProjectStorages::Members
 
       selector = Storages::Peripherals::StorageInteraction::AuthenticationMethodSelector.new(user: member.principal, storage:)
       return :not_connected_sso if selector.sso?
+      return :not_connected_oauth2 if selector.storage_oauth?
 
-      :not_connected
+      :not_connectable
     end
 
     def storage_connected?
@@ -111,6 +114,10 @@ module Storages::ProjectStorages::Members
         oauth_client_id: storage.oauth_client.client_id,
         storage_id: storage.id
       )
+    end
+
+    def warning_icon
+      helpers.op_icon("icon-warning -warning")
     end
   end
 end
