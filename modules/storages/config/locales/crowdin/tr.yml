@@ -410,6 +410,7 @@ tr:
     member_connection_status:
       connected: Bağlandı
       connected_no_permissions: Kullanıcı rolü depolama yetkisine sahip değil
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: Bağlanmadı. Kullanıcı depolamaya %{link} adresini takip ederek bağlanmalı.
       not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: Gösterilecek üye yok.

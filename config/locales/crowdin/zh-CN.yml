@@ -2394,6 +2394,8 @@ zh-CN:
         mentioned: "您在 %{work_package} 中被提及"
         responsible: "您已成为 %{work_package} 的负责人"
         watched: "您正在关注 %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "辅助功能"
   label_account: "帐户"
   label_active: "激活"

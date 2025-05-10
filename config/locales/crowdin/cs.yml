@@ -2518,6 +2518,8 @@ cs:
         mentioned: "Byli jste zmíněni v %{work_package}"
         responsible: "Stali jste se odpovědnými za %{work_package}"
         watched: "Sledujete %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Přístupnost"
   label_account: "Účet"
   label_active: "Aktivní"

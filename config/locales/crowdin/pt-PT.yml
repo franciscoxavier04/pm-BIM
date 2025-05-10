@@ -2435,6 +2435,8 @@ pt-PT:
         mentioned: "Foi mencionado em %{work_package}"
         responsible: "Tornou-se responsável por %{work_package}"
         watched: "Está a observar %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Accessibilidade"
   label_account: "Conta"
   label_active: "Ativo"

@@ -2434,6 +2434,8 @@ el:
         mentioned: "You have been mentioned in %{work_package}"
         responsible: "You have become accountable for %{work_package}"
         watched: "You are watching %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Προσβασιμότητα"
   label_account: "Λογαριασμός"
   label_active: "Ενεργό"

@@ -2396,6 +2396,8 @@ ms:
         mentioned: "Anda telah disebut di %{work_package}"
         responsible: "Anda telah bertanggungjawab untuk %{work_package}"
         watched: "Anda sedang melihat %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Kebolehcapaian"
   label_account: "Akaun"
   label_active: "Aktif"
