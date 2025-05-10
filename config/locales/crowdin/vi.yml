@@ -2400,6 +2400,8 @@ vi:
         mentioned: "Bạn đã được nhắc đến trong %{work_package}"
         responsible: "Bạn đã trở thành người chịu trách nhiệm cho %{work_package}"
         watched: "Bạn đang theo dõi %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Trợ năng"
   label_account: "Tài khoản"
   label_active: "Kích hoạt"

@@ -2438,6 +2438,8 @@ fr:
         mentioned: "Vous avez été mentionné dans %{work_package}"
         responsible: "Vous êtes devenu responsable de %{work_package}"
         watched: "Vous surveillez %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Accessibilité"
   label_account: "Compte"
   label_active: "Actif"

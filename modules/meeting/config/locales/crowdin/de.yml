@@ -384,7 +384,7 @@ de:
     Dieser Backlog gehört nur dieser einmaligen Besprechung. Sie können Elemente einfügen um sie aus der Besprechungsagenda hinzuzufügen oder zu entfernen.
   label_agenda_backlog_clear_title: "Backlog leeren?"
   text_agenda_backlog_clear_description: >
-    Are you sure you want to remove all items currently in the agenda backlog? This action is not reversible.
+    Sind Sie sicher, dass Sie alle aktuellen Einträge entfernen möchten? Diese Aktion kann nicht rückgängig gemacht werden.
   label_series_backlog: "Backlog der Terminserie"
   text_series_backlog: >
     Der Backlog wird mit allen Vorkommnissen dieser Terminserie geteilt. Sie können Elemente hin- und herziehen um sie aus einer bestimmten Besprechung hinzuzufügen oder zu entfernen.

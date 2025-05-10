@@ -2439,6 +2439,8 @@
         mentioned: "Du har blitt nevnt i %{work_package}"
         responsible: "Du har blitt ansvarlig for %{work_package}"
         watched: "Du ser på %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Tilgjengelighet"
   label_account: "Konto"
   label_active: "Aktiv"

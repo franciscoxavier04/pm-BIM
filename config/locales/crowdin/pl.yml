@@ -2517,6 +2517,8 @@ pl:
         mentioned: "Wspomniano o tobie w %{work_package}"
         responsible: "Odpowiadasz za %{work_package}"
         watched: "Obserwujesz %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Dostępność"
   label_account: "Konto"
   label_active: "Aktywne"

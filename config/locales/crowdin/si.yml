@@ -2440,6 +2440,8 @@ si:
         mentioned: "You have been mentioned in %{work_package}"
         responsible: "You have become accountable for %{work_package}"
         watched: "You are watching %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "ප්රවේශ්යතාව"
   label_account: "ගිණුම"
   label_active: "ක්රියාකාරී"

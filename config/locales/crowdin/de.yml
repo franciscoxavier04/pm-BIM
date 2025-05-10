@@ -2013,15 +2013,15 @@ de:
       work_package_sharing: Teilen von Arbeitspaketen mit externen Nutzer:innen
       work_package_subject_generation: Arbeitspaket-Betreff Generierung
     upsell:
-      plans_title: "Enterprise plans"
+      plans_title: "Enterprise-Plan"
       title: "Enterprise Add-on"
       plan_title: "Enterprise %{plan} Add-on"
       plan_name: "%{plan} Enterprise Plan"
       plan_text_html: "Beginnend mit dem %{plan_name} verfügbar."
       hide_banner: "Dieses Banner ausblenden"
       homescreen_description: >
-        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
-      homescreen_subline: By upgrading, you will also be supporting an open source project.
+        Enterprise-Pläne erweitern die Community Edition von OpenProject, welche Sie derzeit verwenden. Sie beinhalten Add-ons, zusätzliche Funktionen und professionelle Unterstützung, die es Organisationen aller Größenordnungen ermöglicht, gemeinsam Großartiges zu erreichen.
+      homescreen_subline: Durch ein Upgrade unterstützen Sie zudem ein Open-Source-Projekt.
       baseline_comparison:
         description: An dieser Liste vorgenommene Änderungen seit einem beliebigen Zeitpunkt in der Vergangenheit hervorheben.
       work_package_subject_generation:
@@ -2433,6 +2433,8 @@ de:
         mentioned: "Sie wurden in %{work_package} erwähnt"
         responsible: "Sie sind für %{work_package} verantwortlich"
         watched: "Du beobachtest %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Barrierefreiheit"
   label_account: "Konto"
   label_active: "Aktiv"

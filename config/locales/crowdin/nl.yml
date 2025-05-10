@@ -2436,6 +2436,8 @@ nl:
         mentioned: "U bent genoemd in %{work_package}"
         responsible: "Je bent verantwoordelijk geworden voor %{work_package}"
         watched: "Je volgt %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Toegankelijkheid"
   label_account: "Account"
   label_active: "Actief"
