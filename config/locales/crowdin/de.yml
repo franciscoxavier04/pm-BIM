@@ -637,7 +637,7 @@ de:
           label: "Titel-Schema"
           caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "Keine Attribute gefunden. Als Text hinzufügen: \"%{word}\""
-          supported_attributes_link: "supported attributes"
+          supported_attributes_link: "unterstützte Attribute"
       export_configuration:
         tab: "PDF generieren"
         intro: "Wählen Sie aus den verfügbaren Vorlagen diejenige aus, die Sie für diesen Typ aktivieren möchten. Die Vorlage bestimmt das Design und die Attribute, die in der exportierten PDF-Datei eines Arbeitspakets mit diesem Typ sichtbar sind. Die erste Vorlage in der Liste ist standardmäßig ausgewählt."
@@ -2432,7 +2432,7 @@ de:
         responsible: "Sie sind für %{work_package} verantwortlich"
         watched: "Du beobachtest %{work_package}"
     query:
-      invalid_filter: "Invalid notification filter"
+      invalid_filter: "Ungültiger Benachrichtigungsfilter"
   label_accessibility: "Barrierefreiheit"
   label_account: "Konto"
   label_active: "Aktiv"
