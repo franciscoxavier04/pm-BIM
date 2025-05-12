@@ -410,6 +410,7 @@ fr:
     member_connection_status:
       connected: Connecté
       connected_no_permissions: Le rôle d'utilisateur n'a pas d'autorisations de stockage
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: 'Non connecté. L''utilisateur doit se connecter au stockage via le lien suivant : %{link}'
       not_connected_sso: Pas encore connectés, l'authentification unique (SSO) devrait les connecter automatiquement une fois les fichiers examinés.
     members_no_results: Aucun membre à afficher.

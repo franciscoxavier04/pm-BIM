@@ -2396,6 +2396,8 @@ ja:
         mentioned: "You have been mentioned in %{work_package}"
         responsible: "You have become accountable for %{work_package}"
         watched: "You are watching %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "アクセシビリティ"
   label_account: "アカウント"
   label_active: "アクティブ"

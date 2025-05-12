@@ -27,6 +27,8 @@
 #++
 
 class CustomStylesController < ApplicationController
+  include EnterpriseHelper
+
   layout "admin"
   menu_item :custom_style
 
@@ -42,6 +44,7 @@ class CustomStylesController < ApplicationController
                 except: UNGUARDED_ACTIONS + %i[upsell]
   skip_before_action :check_if_login_required,
                      only: UNGUARDED_ACTIONS
+  before_action :write_augur_to_gon, only: %i[upsell]
   no_authorization_required! *UNGUARDED_ACTIONS
 
   def default_url_options

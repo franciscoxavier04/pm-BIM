@@ -414,6 +414,7 @@ uk:
     member_connection_status:
       connected: Підключено
       connected_no_permissions: Ролі користувача не надано дозволи на доступ до сховища
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: 'Не підключено. Користувач має ввійти в сховище за цим посиланням: %{link}.'
       not_connected_sso: Не підключено. SSO має виконувати підключення автоматично під час отримання доступу до файлів.
     members_no_results: Немає учасників.

@@ -34,6 +34,7 @@ class Storages::Admin::StoragesController < ApplicationController
 
   include FlashMessagesOutputSafetyHelper
   include OpTurbo::ComponentStream
+  include EnterpriseHelper
 
   # See https://guides.rubyonrails.org/layouts_and_rendering.html for reference on layout
   layout "admin"
@@ -49,6 +50,7 @@ class Storages::Admin::StoragesController < ApplicationController
                          change_health_notifications_enabled replace_oauth_application]
   before_action :ensure_valid_wizard_parameters, only: [:new]
   before_action :require_ee_token_for_one_drive, only: [:new]
+  before_action :write_augur_to_gon, only: %i[upsell]
 
   menu_item :external_file_storages
 

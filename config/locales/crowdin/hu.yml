@@ -2437,6 +2437,8 @@ hu:
         mentioned: "Megemlítettek a %{work_package}-ban"
         responsible: "Ön lett a %{work_package} felelőse"
         watched: "Megfigyeled a %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Kisegítő lehetőségek"
   label_account: "Felhasználói fiók"
   label_active: "aktív"

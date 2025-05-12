@@ -408,6 +408,7 @@ ms:
     member_connection_status:
       connected: Disambungkan
       connected_no_permissions: Peranan pengguna tidak mempunyai kebenaran storan
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: Tidak disambungkan. Pengguna perlu log masuk ke dalam storan melalui %{link}.
       not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: Tiada ahli untuk dipaparkan.

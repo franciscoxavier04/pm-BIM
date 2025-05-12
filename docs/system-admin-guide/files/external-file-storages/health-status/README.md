@@ -16,17 +16,29 @@ needed for file storages with automatically managed project folders.
 
 ## Connection validation
 
-Every file storage is able to run a connection test. This test is triggered manually by clicking on **Run checks now**
-in the sidebar on the right side of the file storage's details view. This check is available after the file storage is
-fully configured.
+Every file storage for OneDrive/SharePoint is able to run connection checks. This test is triggered manually by
+clicking on **Run checks now** in the sidebar on the right side of the file storage's details view. This check is
+available from the UI to edit the storage.
 
-![Check connection for a file storage in OpenProject administration](openproject_file_storages_recheck_connection.png)
+![Check connection for file storages in OpenProject administration](openproject_file_storages_onedrive_run_checks_button.png)
 
-After the check has run, a brief summary is displayed. For more details the administrator can open the full report by
-clicking on **Open full health report**.
+Once the check is finished, a full health report will be generated and a brief summary is displayed. Click **Open full
+health report** to see the report in full detail and to download it.
 
-> [!IMPORTANT]
-> INSERT SCREENSHOT WITH HEALTH REPORT SUMMARY (WITH ERROR) AND THE BUTTON TO FULL REPORT
+![Link to open full health report for OneDrive/SharePoint file storage in OpenProject administration](openproject_file_storages_onedrive_open_full_health_report.png)
+
+The full health status report will give an overview of all checks that were performed grouped into three categories: 
+
+- Basic configuration
+- Authentication
+- Automatically managed project folder configuration (if activated for this file storage)
+
+In the top right corner you can **Re-run all checks** or **Download** the health report in a text format by clicking the
+respective buttons.
+
+![Health status report for OneDrive/SharePoint integration in OpenProject administration](openproject_file_storages_onedrive_open_full_health_report_download_button.png)
+
+### Error codes 
 
 There are several possible errors that can occur during the connection test. While some errors can occur for all types
 of file storages, most errors are quite specific for the provider type. The following table lists the error codes
@@ -93,9 +105,9 @@ of setup. The following table contains the error codes of those checks.
 
 ## Health checks for automatically managed project folders
 
-File storages with the *Automatically managed project folders* option will have reoccurring synchronization
-runs, that update the user permissions on the external system and report possible errors. An additional section is
-displayed for those file storages in the side bar.
+File storages with the *Automatically managed project folders* option will have reoccurring synchronization runs, that
+update the user permissions on the external system and report possible errors. An additional section is displayed for
+those file storages in the sidebar.
 
 ![Health check for automatically managed folders in file storage integrations in OpenProject](openproject_file_storages_health_message.png)
 

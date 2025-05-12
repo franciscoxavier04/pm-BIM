@@ -51,8 +51,12 @@ export default class InternalCommentController extends Controller {
 
   declare isInternalValue:boolean;
 
+  declare hasInternalCheckboxTarget:boolean;
+
   onSubmitEnd(_event:CustomEvent):void {
-    this.toggleInternal();
+    if (this.hasInternalCheckboxTarget) {
+      this.toggleInternal();
+    }
   }
 
   toggleInternal():void {

@@ -133,10 +133,14 @@ RSpec.describe WorkPackages::DeleteService do
 
   context "with descendants" do
     let(:child) do
-      build_stubbed(:work_package)
+      build_stubbed(:work_package).tap do |wp|
+        allow(wp).to receive(:reload).and_return(wp)
+      end
     end
     let(:grandchild) do
-      build_stubbed(:work_package)
+      build_stubbed(:work_package).tap do |wp|
+        allow(wp).to receive(:reload).and_return(wp)
+      end
     end
     let(:descendants) do
       [child, grandchild]

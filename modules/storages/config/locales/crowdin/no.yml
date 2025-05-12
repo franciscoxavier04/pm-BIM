@@ -410,6 +410,7 @@
     member_connection_status:
       connected: Tilkoblet
       connected_no_permissions: Brukerrolle har ingen lagringsrettigheter
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: Ikke tilkoblet. Brukeren må logge inn på lagringsplassen via følgende %{link}.
       not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: Ingen medlemmer å vise.

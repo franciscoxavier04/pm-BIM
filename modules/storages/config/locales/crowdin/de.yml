@@ -239,9 +239,9 @@ de:
       checked: Zuletzt geprüft %{datetime}
       checks:
         ampf_configuration:
-          client_folder_creation: Automatic folder creation
-          client_folder_removal: Automatic folder deletion
-          drive_contents: Drive has expected content
+          client_folder_creation: Automatische Ordnererstellung
+          client_folder_removal: Automatische Ordnerlöschung
+          drive_contents: Laufwerk hat erwarteten Inhalt
           files_request: Gruppenordnerdateien werden abgerufen
           group_folder_app: 'Abhängigkeit: Gruppenordner'
           group_folder_contents: Gruppenordner hat erwarteten Inhalt
@@ -410,6 +410,7 @@ de:
     member_connection_status:
       connected: Verbunden
       connected_no_permissions: Benutzerrolle hat keine Speicherberechtigungen
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: Nicht verbunden. Der Benutzer sollte sich über diesen %{link} anmelden.
       not_connected_sso: Noch nicht verbunden, SSO sollte sie automatisch verbinden, wenn Sie sich die Dateien anschauen.
     members_no_results: Keine Mitglieder zum Anzeigen.

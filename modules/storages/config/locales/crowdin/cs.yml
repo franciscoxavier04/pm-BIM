@@ -414,6 +414,7 @@ cs:
     member_connection_status:
       connected: Připojeno
       connected_no_permissions: Uživatelská role nemá oprávnění k ukládání
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: Není připojeno. Uživatel by se měl přihlásit do úložiště přes následující %{link}.
       not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: Žádní členové k zobrazení.

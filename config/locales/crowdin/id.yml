@@ -2394,6 +2394,8 @@ id:
         mentioned: "Anda telah disebutkan di %{work_package}"
         responsible: "Anda telah bertanggung jawab atas %{work_package}"
         watched: "Anda sedang menonton %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Kemampuan akses"
   label_account: "Akun"
   label_active: "Aktif"

@@ -250,7 +250,7 @@ OPENPROJECT_SAML_SAML_SECURITY_DIGEST__METHOD="http://www.w3.org/2000/09/xmldsig
 
 #### Optional: Restrict who can automatically self-register
 
-You can configure OpenProject to restrict which users can register on the system with the [authentication self-registration setting](../authentication-settings)
+You can configure OpenProject to restrict which users can register on the system with the [authentication self-registration setting](../login-registration-settings/)
 
  By default, users returning from a SAML idP will be automatically created. If you'd like for the SAML integration to respect the configured self-registration option, please use this setting:
 
@@ -304,7 +304,7 @@ When you return from the authentication provider, you might be shown one of thes
 
 Once created, you can assign this SAML provider to become the direct login provider. Users will be directed to the login page of the provider without seeing a login form in OpenProject. [Read more](../../../installation-and-operations/configuration/#omniauth-direct-login-provider).
 
-In the user interface, you can assign this through [Administration > Authentication > Settings](../authentication-settings/).
+In the user interface, you can assign this through [Administration > Authentication > Settings](../login-registration-settings/).
 
 Using environment variables, you could also set this in the following way
 
