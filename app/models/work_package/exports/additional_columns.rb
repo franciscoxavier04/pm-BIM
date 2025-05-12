@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,41 +29,25 @@
 #++
 
 module WorkPackage::Exports
-  class CSV < QueryExporter
-    include ::Exports::Concerns::CSV
-    include AdditionalColumns
+  # Adds extra columns when some particular columns are present.
+  #
+  # For instance, adds a 'Total work' column when the 'Work' column is present.
+  module AdditionalColumns
+    ADDITIONAL_COLUMNS = {
+      estimated_hours: [:derived_estimated_hours],
+      remaining_hours: [:derived_remaining_hours]
+    }.freeze
 
-    alias :records :work_packages
-
-    private
-
-    def title
-      query.new_record? ? I18n.t(:label_work_package_plural) : query.name
+    def get_columns
+      super.flat_map { |column| [column] + additional_columns(column) }
     end
 
-    def csv_headers
-      return super unless with_descriptions
-
-      super + [WorkPackage.human_attribute_name(:description)]
-    end
-
-    def with_descriptions
-      ActiveModel::Type::Boolean.new.cast(options[:show_descriptions])
-    end
-
-    # fetch all row values
-    def csv_row(work_package)
-      return super unless with_descriptions
-
-      super.tap do |row|
-        if row.any?
-          row << if work_package.description
-                   work_package.description.squish
-                 else
-                   ""
-                 end
+    def additional_columns(column)
+      ADDITIONAL_COLUMNS
+        .fetch(column.name, [])
+        .map do |additional_column_name|
+          Queries::WorkPackages::Selects::PropertySelect.new(additional_column_name)
         end
-      end
     end
   end
 end

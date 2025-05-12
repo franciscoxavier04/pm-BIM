@@ -325,31 +325,45 @@ RSpec.describe XlsExport::WorkPackage::Exporter::XLS do
     end
     let(:work_packages) { [work_package] }
 
-    let(:column_names) { %w[subject status updated_at estimated_hours] }
+    let(:column_names) { %w[estimated_hours remaining_hours] }
 
-    it "does not output anything" do
-      work_package.reload
-      estimated_cell = sheet.rows.last.to_a.last
-      expect(estimated_cell).to be_nil
+    it "outputs its raw value in an additional 'Total work' column right after the 'Work' column" do
+      headers_row, values_row = sheet.rows
+      # why is there a nil at the end of the headers row?
+      headers_row.compact!
+      expect(headers_row.zip(values_row)).to eq [
+        ["Work", nil],
+        ["Total work", "15.0"],
+        ["Remaining work", nil],
+        ["Total remaining work", nil]
+      ]
     end
   end
 
-  describe "with estimated hours and derived estimated hours" do
+  describe "with estimated hours, derived estimated hours, remaining hours, and derived remaining hours" do
     let(:work_package) do
       create(:work_package,
              project:,
              estimated_hours: 10.0,
              derived_estimated_hours: 15.0,
+             remaining_hours: 5.0,
+             derived_remaining_hours: 8.0,
              type: project.types.first)
     end
     let(:work_packages) { [work_package] }
 
-    let(:column_names) { %w[subject status updated_at estimated_hours] }
+    let(:column_names) { %w[estimated_hours remaining_hours] }
 
-    it "outputs only the unformatted estimated hours" do
-      work_package.reload
-      estimated_cell = sheet.rows.last.to_a.last
-      expect(estimated_cell).to eq "10.0"
+    it "outputs all raw values in 4 distinct columns" do
+      headers_row, values_row = sheet.rows
+      # why is there a nil at the end of the headers row?
+      headers_row.compact!
+      expect(headers_row.zip(values_row)).to eq [
+        ["Work", "10.0"],
+        ["Total work", "15.0"],
+        ["Remaining work", "5.0"],
+        ["Total remaining work", "8.0"]
+      ]
     end
   end
 
@@ -365,13 +379,18 @@ RSpec.describe XlsExport::WorkPackage::Exporter::XLS do
     end
     let(:work_packages) { [work_package] }
 
-    let(:column_names) { %w[subject status updated_at estimated_hours remaining_hours] }
+    let(:column_names) { %w[estimated_hours remaining_hours] }
 
-    it "outputs the unformatted values without the derived values" do
-      work_package.reload
-      estimated_cell, remaining_cell = sheet.rows.last.to_a.last(2)
-      expect(estimated_cell).to eq "0.0"
-      expect(remaining_cell).to eq "0.0"
+    it "outputs raw values in 4 distinct columns" do
+      headers_row, values_row = sheet.rows
+      # why is there a nil at the end of the headers row?
+      headers_row.compact!
+      expect(headers_row.zip(values_row)).to eq [
+        ["Work", "0.0"],
+        ["Total work", "15.0"],
+        ["Remaining work", "0.0"],
+        ["Total remaining work", "8.0"]
+      ]
     end
   end
 end

@@ -50,6 +50,10 @@ RSpec.describe WorkPackage::Exports::CSV, "integration" do
     described_class.new(query, options)
   end
 
+  def byte_order_mark
+    "\uFEFF"
+  end
+
   context "when the query is default" do
     let(:query) do
       create(:query, project:, user:, column_names: %i(type subject assigned_to updated_at estimated_hours))
@@ -74,37 +78,38 @@ RSpec.describe WorkPackage::Exports::CSV, "integration" do
       )
     end
 
+    subject(:header_value_pairs) do
+      data = CSV.parse instance.export!.content
+      headers, values = data
+      headers.zip(values)
+    end
+
     context "when description is included" do
-      it "performs a successful export" do
-        work_package.reload
-
-        data = CSV.parse instance.export!.content
-
-        expect(data.size).to eq(2)
-        expect(data.last).to include(work_package.type.name)
-        expect(data.last).to include(work_package.subject)
-        expect(data.last).to include(work_package.description)
-        expect(data.last).to include(user.name)
-        expect(data.last).to include(work_package.updated_at.in_time_zone(user.time_zone).strftime("%m/%d/%Y %I:%M %p"))
-        expect(data.last).to include("10.0")
+      it "performs a successful export with description column" do
+        expect(header_value_pairs).to eq [
+          ["#{byte_order_mark}Type", work_package.type.name],
+          ["Subject", work_package.subject],
+          ["Assignee", user.name],
+          ["Updated on", work_package.updated_at.in_time_zone(user.time_zone).strftime("%m/%d/%Y %I:%M %p")],
+          ["Work", "10.0"],
+          ["Total work", "15.0"],
+          ["Description", work_package.description]
+        ]
       end
     end
 
     context "when description is not included" do
       let(:options) { { show_descriptions: false } }
 
-      it "performs a successful export" do
-        work_package.reload
-
-        data = CSV.parse instance.export!.content
-
-        expect(data.size).to eq(2)
-        expect(data.last).to include(work_package.type.name)
-        expect(data.last).to include(work_package.subject)
-        expect(data.last).not_to include(work_package.description)
-        expect(data.last).to include(user.name)
-        expect(data.last).to include(work_package.updated_at.in_time_zone(user.time_zone).strftime("%m/%d/%Y %I:%M %p"))
-        expect(data.last).to include("10.0")
+      it "performs a successful export without description column" do
+        expect(header_value_pairs).to eq [
+          ["#{byte_order_mark}Type", work_package.type.name],
+          ["Subject", work_package.subject],
+          ["Assignee", user.name],
+          ["Updated on", work_package.updated_at.in_time_zone(user.time_zone).strftime("%m/%d/%Y %I:%M %p")],
+          ["Work", "10.0"],
+          ["Total work", "15.0"]
+        ]
       end
     end
   end
@@ -128,7 +133,7 @@ RSpec.describe WorkPackage::Exports::CSV, "integration" do
         data = CSV.parse instance.export!.content
 
         expect(data.size).to eq(5)
-        expect(data.pluck(0)).to eq ["\xEF\xBB\xBFType", "Type A", "Type A", "Type A", "Type B"]
+        expect(data.pluck(0)).to eq ["#{byte_order_mark}Type", "Type A", "Type A", "Type A", "Type B"]
       end
     end
 
@@ -173,7 +178,7 @@ RSpec.describe WorkPackage::Exports::CSV, "integration" do
         data = CSV.parse instance.export!.content
 
         expect(data.size).to eq(5)
-        expect(data.pluck(0)).to eq %w[WP4 WP2 WP1 WP3].unshift("\xEF\xBB\xBFSubject")
+        expect(data.pluck(0)).to eq %w[WP4 WP2 WP1 WP3].unshift("#{byte_order_mark}Subject")
       end
     end
   end
