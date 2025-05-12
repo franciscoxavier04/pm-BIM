@@ -27,6 +27,7 @@
 #++
 
 require "spec_helper"
+require_relative "shared_upsell_examples"
 
 RSpec.describe CustomStylesController do
   before do
@@ -56,14 +57,7 @@ RSpec.describe CustomStylesController do
       end
     end
 
-    describe "#upsell" do
-      subject { get :upsell }
-
-      it "renders upsell" do
-        expect(subject).to be_successful
-        expect(subject).to render_template "upsell"
-      end
-    end
+    it_behaves_like "the upsell banner is shown"
 
     describe "#create", with_ee: %i[define_custom_style] do
       let(:custom_style) { CustomStyle.new }

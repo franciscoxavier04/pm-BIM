@@ -1,11 +1,13 @@
 module ::TeamPlanner
   class TeamPlannerController < BaseController
     include EnterpriseTrialHelper
+    include EnterpriseHelper
     include Layout
     before_action :load_and_authorize_in_optional_project
     before_action :build_plan_view, only: %i[new]
     before_action :require_ee_token, except: %i[upsell]
     before_action :find_plan_view, only: %i[destroy]
+    before_action :write_augur_to_gon, only: %i[upsell]
 
     menu_item :team_planner_view
 
