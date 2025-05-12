@@ -138,7 +138,7 @@ Instead of mutually acting as OAuth servers and clients, both OpenProject and Ne
 
 Please see [our system admin guide](../../system-admin-guide/integrations/nextcloud/oidc-sso/) to learn how to set up this integration.
 
-This is the first version of OpenProject to support this new way of integrating Nextcloud and OpenProject. Since this feature was not yet
+This is the first version of OpenProject to support this new integration method with Nextcloud. Since this feature was not yet
 exposed to large installations, we still consider it experimental. Please share your feedback regarding this new feature with us and stay tuned
 for further enhancements around it.
 
