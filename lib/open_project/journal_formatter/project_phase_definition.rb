@@ -32,7 +32,9 @@ class OpenProject::JournalFormatter::ProjectPhaseDefinition < JournalFormatter::
   private
 
   def associated_object_name(object)
-    if phase_active?(object)
+    if object.nil?
+      I18n.t(:"activity.project_phase.deleted_project_phase")
+    elsif phase_active?(object)
       super
     else
       "#{super} (#{I18n.t(:label_inactive)})"
@@ -40,8 +42,11 @@ class OpenProject::JournalFormatter::ProjectPhaseDefinition < JournalFormatter::
   end
 
   def phase_active?(definition)
-    phase = @journal.journable.project.phases.detect { |phase| phase.definition_id == definition.id } if definition
-
-    phase&.active
+    @journal
+      .journable
+      .project
+      .phases
+      .detect { |phase| phase.definition_id == definition.id }
+      &.active
   end
 end

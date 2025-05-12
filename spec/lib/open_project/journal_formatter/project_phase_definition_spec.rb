@@ -34,13 +34,17 @@ RSpec.describe OpenProject::JournalFormatter::ProjectPhaseDefinition do
   describe "#render" do
     let(:project_phase) { build_stubbed(:project_phase) }
     let(:other_project_phase) { build_stubbed(:project_phase) }
-    let(:project_phases) { [project_phase, other_project_phase] }
+    let(:project_phases) { [project_phase, other_project_phase].compact }
     let(:project) { build_stubbed(:project, phases: project_phases) }
     let(:work_package) { build_stubbed(:work_package, project:) }
     let(:journal) { build_stubbed(:work_package_journal, journable: work_package) }
     let(:instance) { described_class.new(journal) }
 
     before do
+      allow(Project::PhaseDefinition)
+        .to receive(:find_by)
+              .and_return(nil)
+
       project_phases.each do |phase|
         allow(Project::PhaseDefinition)
           .to receive(:find_by)
@@ -169,6 +173,89 @@ RSpec.describe OpenProject::JournalFormatter::ProjectPhaseDefinition do
         I18n.t(:text_journal_deleted,
                label: "<strong>Project phase</strong>",
                old: "<strike><i>#{project_phase.name} (Inactive)</i></strike>")
+      end
+
+      it_behaves_like "renders project phase definition change"
+    end
+
+    context "when setting a phase whose definition is deleted" do
+      let(:old_value) { nil }
+      let(:new_value) { "-1" }
+      let(:expected) do
+        I18n.t(:text_journal_set_to,
+               label: "<strong>Project phase</strong>",
+               value: "<i>#{I18n.t(:"activity.project_phase.deleted_project_phase")}</i>")
+      end
+
+      it_behaves_like "renders project phase definition change"
+    end
+
+    context "when changing between two phases whose definition is deleted" do
+      let(:old_value) { "-1" }
+      let(:new_value) { "-2" }
+      let(:expected) do
+        I18n.t(:text_journal_changed_plain,
+               label: "<strong>Project phase</strong>",
+               linebreak: nil,
+               old: "<i>#{I18n.t(:"activity.project_phase.deleted_project_phase")}</i>",
+               new: "<i>#{I18n.t(:"activity.project_phase.deleted_project_phase")}</i>")
+      end
+
+      it_behaves_like "renders project phase definition change"
+    end
+
+    context "when deleting a phase whose definition is deleted" do
+      let(:old_value) { "-1" }
+      let(:new_value) { nil }
+      let(:expected) do
+        I18n.t(:text_journal_deleted,
+               label: "<strong>Project phase</strong>",
+               old: "<strike><i>#{I18n.t(:"activity.project_phase.deleted_project_phase")}</i></strike>")
+      end
+
+      it_behaves_like "renders project phase definition change"
+    end
+
+    context "when changing between an active and an inactive phase" do
+      let(:project_phase) { build_stubbed(:project_phase, active: true) }
+      let(:other_project_phase) { build_stubbed(:project_phase, active: false) }
+      let(:old_value) { other_project_phase.definition_id.to_s }
+      let(:new_value) { project_phase.definition_id.to_s }
+      let(:expected) do
+        I18n.t(:text_journal_changed_plain,
+               label: "<strong>Project phase</strong>",
+               linebreak: nil,
+               old: "<i>#{other_project_phase.name} (Inactive)</i>",
+               new: "<i>#{project_phase.name}</i>")
+      end
+
+      it_behaves_like "renders project phase definition change"
+    end
+
+    context "when changing between an active and a phase not configured in the project" do
+      let(:project) { build_stubbed(:project, phases: [other_project_phase]) }
+      let(:old_value) { other_project_phase.definition_id.to_s }
+      let(:new_value) { project_phase.definition_id.to_s }
+      let(:expected) do
+        I18n.t(:text_journal_changed_plain,
+               label: "<strong>Project phase</strong>",
+               linebreak: nil,
+               old: "<i>#{other_project_phase.name}</i>",
+               new: "<i>#{project_phase.name} (Inactive)</i>")
+      end
+
+      it_behaves_like "renders project phase definition change"
+    end
+
+    context "when changing between an active and a deleted phase" do
+      let(:old_value) { other_project_phase.definition_id.to_s }
+      let(:new_value) { "-1" }
+      let(:expected) do
+        I18n.t(:text_journal_changed_plain,
+               label: "<strong>Project phase</strong>",
+               linebreak: nil,
+               old: "<i>#{other_project_phase.name}</i>",
+               new: "<i>#{I18n.t(:"activity.project_phase.deleted_project_phase")}</i>")
       end
 
       it_behaves_like "renders project phase definition change"
