@@ -38,7 +38,7 @@ The *Calendar* view opens by default if start and finish times for time entries 
 
 Existing time entries appear on the corresponding days they were logged. Entry colors reflect the type of work package associated with the logged time.
 
-You can log time by clicking anywhere on the calendar or by using the **+ Log time** button.
+You can log time by selecting a time range anywhere on the calendar or by using the **+ Log time** button.
 
 You can drag and drop time entries to reposition them within the same day or move them to a different day. To adjust the duration of an entry, drag the top or bottom edge of the time entry up or down.
 
