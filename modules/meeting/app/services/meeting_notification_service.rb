@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class MeetingNotificationService
   attr_reader :meeting, :content_type
 
