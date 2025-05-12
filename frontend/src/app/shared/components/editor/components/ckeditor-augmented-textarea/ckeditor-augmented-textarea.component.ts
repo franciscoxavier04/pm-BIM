@@ -54,12 +54,11 @@ import {
   ICKEditorContext,
   ICKEditorInstance,
 } from 'core-app/shared/components/editor/components/ckeditor/ckeditor.types';
-import { fromEvent } from 'rxjs';
+import { fromEvent, Subscription } from 'rxjs';
 import { AttachmentCollectionResource } from 'core-app/features/hal/resources/attachment-collection-resource';
 import { populateInputsFromDataset } from 'core-app/shared/components/dataset-inputs';
 import { navigator } from '@hotwired/turbo';
 import { uniqueId } from 'lodash';
-
 
 @Component({
   templateUrl: './ckeditor-augmented-textarea.html',
@@ -126,6 +125,8 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   @ViewChild(OpCkeditorComponent, { static: true }) private ckEditorInstance:OpCkeditorComponent;
 
   private attachments:HalResource[];
+
+  private labelClickSubscription:Subscription;
 
   constructor(
     readonly elementRef:ElementRef<HTMLElement>,
@@ -315,9 +316,11 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
       ckContent.removeAttribute('aria-label');
       ckContent.setAttribute('aria-labelledby', labelId);
 
-      fromEvent(label, 'click')
-        .pipe(this.untilDestroyed())
-        .subscribe(() => ckContent.focus());
+      if (!this.labelClickSubscription) {
+        this.labelClickSubscription = fromEvent(label, 'click')
+          .pipe(this.untilDestroyed())
+          .subscribe(() => ckContent.focus());
+      }
     } else if (this.textAreaAriaLabel) {
       ckContent.setAttribute('aria-label', this.textAreaAriaLabel);
     } else {
