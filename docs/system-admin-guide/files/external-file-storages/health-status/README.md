@@ -16,7 +16,7 @@ storages*.  In addition, administrator can manually trigger a connection validat
 
 ### Connection validation for OneDrive/SharePoint 
 
-Every file storage for OneDrive/SharePoint has the ability to run connection checks. This test is triggered manually by clicking on **Run checks now** in the sidebar on the right side of the file storage's details view. This check is available after the file storage is fully configured.
+Every file storage for OneDrive/SharePoint has the ability to run connection checks. This test is triggered manually by clicking on **Run checks now** in the sidebar on the right side of the file storage's details view. This check is available from the UI to edit the storage.
 
 ![Recheck connection for OneDrive/SharePoint in OpenProject administration](openproject_file_storages_onedrive_run_checks_button.png)
 
@@ -50,7 +50,7 @@ There are several possible errors that can occur during the connection test. The
 
 ### Connection validation for Nextcloud
 
-Same as OneDrive/SharePoint, every file storage for Nextcloud has the ability to run a connection test. This test is triggered manually by clicking on **Run checks now** in the sidebar on the right side of the file storage's details view. This check is available after the file storage is fully configured.
+Same as OneDrive/SharePoint, every file storage for Nextcloud has the ability to run a connection test. This test is triggered manually by clicking on **Run checks now** in the sidebar on the right side of the file storage's details view. This check is available from the UI to edit the storage.
 
 ![Recheck connection for Nextcloud in OpenProject administration](openproject_file_storages_nextcloud_run_checks_link.png)
 
