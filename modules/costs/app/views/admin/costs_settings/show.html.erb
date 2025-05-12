@@ -53,7 +53,7 @@ See COPYRIGHT and LICENSE files for more details.
                                                         dismissable: false))
       %>
       <%=
-        admin_settings_primer_form_with(scope: :settings, action: :update, method: :patch) do |time_form|
+        settings_primer_form_with(scope: :settings, action: :update, method: :patch) do |time_form|
           render_inline_settings_form(time_form) do |form|
             form.html_content do
               render(Primer::Beta::Subhead.new(hide_border: true)) do |subhead|
@@ -76,7 +76,7 @@ See COPYRIGHT and LICENSE files for more details.
   component.with_tab(id: "tab-costs") do |tab|
     tab.with_text { I18n.t(:label_costs) }
     tab.with_panel do
-      admin_settings_primer_form_with(scope: :settings, action: :update, method: :patch) do |time_form|
+      settings_primer_form_with(scope: :settings, action: :update, method: :patch) do |time_form|
         render_inline_settings_form(time_form) do |form|
           form.html_content do
             render(Primer::Beta::Subhead.new(hide_border: true)) do |subhead|
