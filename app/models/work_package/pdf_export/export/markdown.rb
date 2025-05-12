@@ -90,14 +90,11 @@ module WorkPackage::PDFExport::Export::Markdown
       return [] if id.blank?
 
       node.next.string_content = "" if node.next.respond_to?(:string_content) # clear the text content
-      link = url_helpers.work_package_url(id)
-      linked_opts = opts.merge({ link: })
+      wp_mention_macro(tag.attr("data-text") || "", id, opts)
+    end
 
-      text = tag.attr("data-text") || ""
-      count = text.count("#")
-
-      content = text
-
+    def wp_mention_macro(content, id, opts)
+      count = content.count("#")
       if count > 1
         work_package = WorkPackage.find_by(id: id)
         unless work_package.nil? || !work_package.visible?
@@ -109,8 +106,7 @@ module WorkPackage::PDFExport::Export::Markdown
           end
         end
       end
-
-      [text_hash(content, linked_opts)]
+      [text_hash(content, opts.merge({ link: url_helpers.work_package_url(id) }))]
     end
 
     def handle_mention_html_tag(tag, node, opts)
