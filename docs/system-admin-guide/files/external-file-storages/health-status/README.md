@@ -20,12 +20,12 @@ Every file storage for OneDrive/SharePoint is able to run connection checks. Thi
 clicking on **Run checks now** in the sidebar on the right side of the file storage's details view. This check is
 available from the UI to edit the storage.
 
-![Check connection for file storages in OpenProject administration](openproject_file_storages_onedrive_run_checks_button.png)
+![Check connection for a file storage in OpenProject administration](openproject_file_storages_onedrive_run_checks_button.png)
 
 Once the check is finished, a full health report will be generated and a brief summary is displayed. Click **Open full
 health report** to see the report in full detail and to download it.
 
-![Link to open full health report for OneDrive/SharePoint file storage in OpenProject administration](openproject_file_storages_onedrive_open_full_health_report.png)
+![Link to open full health report for a file storage in OpenProject administration](openproject_file_storages_onedrive_open_full_health_report.png)
 
 The full health status report will give an overview of all checks that were performed grouped into three categories: 
 
@@ -36,7 +36,7 @@ The full health status report will give an overview of all checks that were perf
 In the top right corner you can **Re-run all checks** or **Download** the health report in a text format by clicking the
 respective buttons.
 
-![Health status report for OneDrive/SharePoint integration in OpenProject administration](openproject_file_storages_onedrive_open_full_health_report_download_button.png)
+![Health status report for a file storage in OpenProject administration](openproject_file_storages_onedrive_open_full_health_report_download_button.png)
 
 ### Error codes 
 
@@ -69,7 +69,7 @@ possible reasons and suggested solutions.
 | WRN_OD_OAUTH_TOKEN_MISSING             | The current user has no authentication token.                                         | The current user probably never did a successful login from OpenProject to the file storage, or the token was deleted from the account details.                                                            | Visit any work package of a project, where the current file storage is used. Click on the **Login** button in the **Files** tab.                                                                                                                                                                                                                                                                                                                       |
 | WRN_OD_UNEXPECTED_CONTENT              | The connection request was successful, but unexpected content was found in the drive. | This warning is only shown, if the file storage is configured to automatically managed project folder permissions. There was data found in the drive, that is not a project folder created by OpenProject. | Go to your drive and migrate or delete the data from the drive root, that was not created by OpenProject. Further information about the unexpected data is found in the server logs. A drive configured for usage with the *Automatically managed project folders* option has a disrupted inheritance chain. Any data in here can only be seen by site owner. It is discouraged to use this drive for other purposes than the OpenProject integration. |
 
-### Connection validation for Nextcloud
+### Error codes specific for Nextcloud
 
 The following table lists the error codes of failures specific for Nextcloud, with a description of the possible reasons
 and suggested solutions.
