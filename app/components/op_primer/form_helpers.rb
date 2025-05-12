@@ -113,13 +113,14 @@ module OpPrimer
     end
 
     # An extension of primers default `primer_form_with`
-    # Renders a primer form with a special wrapper around to limit the width.
+    # Renders a primer form with a special wrapper around to limit the width for
+    # legibility.
     #
     # This method dynamically creates a container around the actual form.
     # All arguments and the content are simply passed through to the `primer_form_with` call
     #
-    # It is meant for settings pages within the administration to
-    # have a unified look and feel for our users.
+    # It is meant for any settings pages like in administration or project
+    # settings to have a unified look and feel for our users.
     #
     # @example
     #   settings_primer_form_with(scope: :settings, action: :update, method: :patch) do |form|
