@@ -58,7 +58,13 @@ module Meetings
       if recurring?
         helpers.format_time(model.start_time, include_date: false)
       else
-        safe_join([helpers.format_date(model.start_time), helpers.format_time(model.start_time, include_date: false)], " ")
+        safe_join(
+          [
+            helpers.format_time_as_date(model.start_time),
+            helpers.format_time(model.start_time, include_date: false)
+          ],
+          " "
+        )
       end
     end
 
