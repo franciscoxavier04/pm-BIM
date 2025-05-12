@@ -77,7 +77,7 @@ module Storages
 
               result = validator.call
               expect(result[:client_folder_creation]).to be_a_failure
-              expect(result[:client_folder_creation].code).to eq(:od_existing_test_folder)
+              expect(result[:client_folder_creation].code).to eq(:od_test_folder_exists)
               expect(result[:client_folder_creation].context[:folder_name]).to eq(folder_name)
             ensure
               StorageInteraction::OneDrive::DeleteFolderCommand.call(storage:, auth_strategy:, location: created_folder)
