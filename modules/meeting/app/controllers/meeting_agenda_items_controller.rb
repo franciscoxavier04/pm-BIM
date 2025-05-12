@@ -53,7 +53,9 @@ class MeetingAgendaItemsController < ApplicationController
           collapsed = false
         end
       end
-      render_agenda_item_form_via_turbo_stream(meeting_section:, collapsed:, type: @agenda_item_type)
+      add_above_id = params[:add_above_id] if params[:add_above_id].present?
+      add_below_id = params[:add_below_id] if params[:add_below_id].present?
+      render_agenda_item_form_via_turbo_stream(meeting_section:, collapsed:, add_above_id:, add_below_id:, type: @agenda_item_type)
     end
 
     respond_with_turbo_streams
@@ -79,12 +81,19 @@ class MeetingAgendaItemsController < ApplicationController
   end
 
   def create # rubocop:disable Metrics/AbcSize
+    if params[:add_above_id].present?
+      position = MeetingAgendaItem.find(params[:add_above_id]).position - 1
+    elsif params[:add_below_id].present?
+      position = MeetingAgendaItem.find(params[:add_below_id]).position + 1
+    end
+
     call = ::MeetingAgendaItems::CreateService
       .new(user: current_user)
       .call(
         meeting_agenda_item_params.merge(
           meeting_id: @meeting.id,
-          item_type: @agenda_item_type.presence || MeetingAgendaItem::ITEM_TYPES[:simple]
+          item_type: @agenda_item_type.presence || MeetingAgendaItem::ITEM_TYPES[:simple],
+          position:
         )
       )
 

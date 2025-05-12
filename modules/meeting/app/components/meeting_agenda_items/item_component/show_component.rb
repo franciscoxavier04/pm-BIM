@@ -212,6 +212,28 @@ module MeetingAgendaItems
       end
     end
 
+    def add_item_above(menu)
+      menu.with_item(label: I18n.t(:button_add_item_above),
+                     href: new_meeting_agenda_item_path(@meeting, type: "simple", meeting_section_id: @meeting_agenda_item&.meeting_section&.id, add_above_id: @meeting_agenda_item.id),
+                     content_arguments: {
+                       data: { "turbo-stream": true }
+                     }
+                     ) do |item|
+        item.with_leading_visual_icon(icon: "fold-up")
+      end
+    end
+
+    def add_item_below(menu)
+      menu.with_item(label: I18n.t(:button_add_item_below),
+                       href: new_meeting_agenda_item_path(@meeting, type: "simple", meeting_section_id: @meeting_agenda_item&.meeting_section&.id, add_below_id: @meeting_agenda_item.id),
+                     content_arguments: {
+                       data: { "turbo-stream": true }
+                     }
+                     ) do |item|
+        item.with_leading_visual_icon(icon: "fold-down")
+      end
+    end
+
     def duration_color_scheme
       if @meeting.end_time < @meeting_agenda_item.end_time
         :danger

@@ -110,7 +110,7 @@ module Meetings
       end
 
       def update_new_component_via_turbo_stream(hidden: false, meeting_section: @meeting_section, meeting_agenda_item: nil,
-                                                meeting: @meeting, type: :simple)
+                                                meeting: @meeting, type: :simple, add_above_id: nil, add_below_id: nil)
         if meeting_section.nil? && meeting_agenda_item.nil?
           meeting_section = meeting.sections.last
         end
@@ -119,15 +119,41 @@ module Meetings
           meeting_section = meeting_agenda_item.meeting_section
         end
 
-        update_via_turbo_stream(
-          component: MeetingAgendaItems::NewComponent.new(
-            hidden:,
-            meeting:,
-            meeting_section:,
-            meeting_agenda_item:,
-            type:
+        if add_above_id.present?
+          add_before_via_turbo_stream(
+            component: MeetingAgendaItems::NewComponent.new(
+              hidden:,
+              meeting:,
+              meeting_section:,
+              meeting_agenda_item:,
+              type:,
+              add_above_id:
+            ),
+            target_component: MeetingAgendaItems::ItemComponent::ShowComponent.new(meeting_agenda_item: MeetingAgendaItem.find(add_above_id))
           )
-        )
+        elsif add_below_id.present?
+          add_after_via_turbo_stream(
+            component: MeetingAgendaItems::NewComponent.new(
+              hidden:,
+              meeting:,
+              meeting_section:,
+              meeting_agenda_item:,
+              type:,
+              add_below_id:
+            ),
+            target_component: MeetingAgendaItems::ItemComponent::ShowComponent.new(meeting_agenda_item: MeetingAgendaItem.find(add_below_id))
+          )
+        else
+          update_via_turbo_stream(
+            component: MeetingAgendaItems::NewComponent.new(
+              hidden:,
+              meeting:,
+              meeting_section:,
+              meeting_agenda_item:,
+              type:
+            )
+          )
+        end
       end
 
       def update_new_button_via_turbo_stream(disabled: false, meeting: @meeting, meeting_section: nil)
@@ -143,11 +169,11 @@ module Meetings
       end
 
       def render_agenda_item_form_via_turbo_stream(collapsed:, meeting: @meeting, meeting_section: @meeting_section,
-                                                   type: :simple)
+                                                   type: :simple, add_above_id: nil, add_below_id: nil)
         if meeting.sections.empty? && meeting_section != meeting.backlog
           render_agenda_item_form_for_empty_meeting_via_turbo_stream(type:)
         else
-          render_agenda_item_form_in_section_via_turbo_stream(meeting:, meeting_section:, type:, collapsed:)
+          render_agenda_item_form_in_section_via_turbo_stream(meeting:, meeting_section:, type:, collapsed:, add_above_id:, add_below_id:)
         end
 
         update_new_button_via_turbo_stream(disabled: true)
@@ -161,8 +187,8 @@ module Meetings
         )
       end
 
-      def render_agenda_item_form_in_section_via_turbo_stream(collapsed:, meeting: @meeting, meeting_section: @meeting_section,
-                                                              type: :simple)
+      def render_agenda_item_form_in_section_via_turbo_stream(collapsed:,  meeting: @meeting, meeting_section: @meeting_section,
+                                                              type: :simple, add_above_id: nil, add_below_id: nil)
         if meeting_section.nil?
           meeting_section = meeting.sections.last
         end
@@ -172,7 +198,9 @@ module Meetings
           update_new_component_via_turbo_stream(
             hidden: false,
             meeting_section:,
-            type:
+            type:,
+            add_above_id:,
+            add_below_id:
           )
         end
       end

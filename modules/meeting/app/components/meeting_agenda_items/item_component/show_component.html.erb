@@ -83,6 +83,10 @@
               move_to_backlog_action_item(menu) if !in_backlog?
             end
 
+            menu.with_divider
+            add_item_above(menu)
+            add_item_below(menu)
+
             if move_to_next_meeting_enabled?
               menu.with_divider
               move_to_next_meeting_action_item(menu)

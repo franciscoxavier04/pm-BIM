@@ -33,7 +33,7 @@ module MeetingAgendaItems
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(meeting:, meeting_section: nil, meeting_agenda_item: nil, hidden: true, type: :simple)
+    def initialize(meeting:, meeting_section: nil, meeting_agenda_item: nil, hidden: true, type: :simple, add_above_id: nil, add_below_id: nil)
       super
 
       @meeting = meeting
@@ -41,6 +41,8 @@ module MeetingAgendaItems
       @meeting_agenda_item = meeting_agenda_item || build_agenda_item
       @hidden = hidden
       @type = type
+      @add_above_id = add_above_id if add_above_id.present?
+      @add_below_id = add_below_id if add_below_id.present?
     end
 
     private
