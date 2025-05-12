@@ -30,47 +30,85 @@ module WorkPackage::PDFExport::Common::Macro
   PREFORMATTED_BLOCKS = %w(pre code).freeze
 
   def apply_markdown_field_macros(markdown, context)
-    apply_macros(markdown, context, WorkPackage::Exports::Macros::Attributes)
+    return markdown if markdown.blank?
+
+    apply_macros(markdown, context)
+  end
+
+  def macros
+    [
+      WorkPackage::Exports::Macros::Links,
+      WorkPackage::Exports::Macros::Attributes
+    ]
   end
 
   private
 
-  def apply_macros(markdown, context, formatter)
-    return markdown unless formatter.applicable?(markdown)
+  def apply_macros(markdown, context)
+    return markdown unless macros.any? { |macro| macro.applicable?(markdown) }
 
     document = Markly.parse(markdown)
-    document.walk do |node|
-      if node.type == :html
-        node.string_content = apply_macro_html(node.string_content, context, formatter) || node.string_content
-      elsif node.type == :text
-        node.string_content = apply_macro_text(node.string_content, context, formatter) || node.string_content
-      end
-    end
+    document.walk { |node| apply_macros_node(node, context) }
     document.to_markdown
   end
 
-  def apply_macro_text(text, context, formatter)
-    return text unless formatter.applicable?(text)
-
-    text.gsub!(formatter.regexp) do |matched_string|
-      matchdata = Regexp.last_match
-      formatter.process_match(matchdata, matched_string, context)
+  def apply_macros_node(node, context)
+    if %i[html inline_html].include?(node.type)
+      apply_macros_node_html(node, context)
+    elsif node.type == :text
+      apply_macros_node_text(node, context)
     end
   end
 
-  def apply_macro_html(html, context, formatter)
-    return html unless formatter.applicable?(html)
+  def apply_macros_node_text(node, context)
+    formatted = apply_macro_text(node.string_content, context)
+    if formatted != node.string_content
+      if formatted.include?("<")
+        fragment = Markly::Node.new(:inline_html)
+        fragment.string_content = formatted
+        node.insert_before(fragment)
+        node.delete
+      else
+        node.string_content = formatted
+      end
+    end
+  end
+
+  def apply_macros_node_html(node, context)
+    formatted = apply_macro_html(node.string_content, context)
+    node.string_content = formatted if formatted != node.string_content
+  end
+
+  def applicable?(content)
+    macros.any? { |macro| macro.applicable?(content) }
+  end
+
+  def apply_macro_text(text, context)
+    applicable_macros = macros.select { |macro| macro.applicable?(text) }
+    return text if applicable_macros.empty?
+
+    applicable_macros.each do |macro|
+      text = text.gsub(macro.regexp) do |matched_string|
+        macro.process_match(Regexp.last_match, matched_string, context)
+      end
+    end
+    text
+  end
+
+  def apply_macro_html(html, context)
+    return html unless applicable?(html)
 
     doc = Nokogiri::HTML.fragment(html)
-    apply_macro_html_node(doc, context, formatter)
+    apply_macro_html_node(doc, context)
     doc.to_html
   end
 
-  def apply_macro_html_node(node, context, formatter)
+  def apply_macro_html_node(node, context)
     if node.text?
-      node.content = apply_macro_text(node.content, context, formatter)
+      formatted = apply_macro_text(node.content, context)
+      node.content = formatted if formatted != node.content
     elsif PREFORMATTED_BLOCKS.exclude?(node.name)
-      node.children.each { |child| apply_macro_html_node(child, context, formatter) }
+      node.children.each { |child| apply_macro_html_node(child, context) }
     end
   end
 end
