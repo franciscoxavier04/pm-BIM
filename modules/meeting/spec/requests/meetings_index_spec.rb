@@ -54,6 +54,15 @@ RSpec.describe "Meeting index",
            author: user)
   end
 
+  shared_let(:tonight) do
+    create(:meeting,
+           :author_participates,
+           title: "meeting starting tonight",
+           start_time: DateTime.parse("2025-01-29T22:00:00Z"),
+           project:,
+           author: user)
+  end
+
   shared_let(:tomorrow) do
     create(:meeting,
            :author_participates,
@@ -126,6 +135,7 @@ RSpec.describe "Meeting index",
 
       today = page.find("[data-test-selector='meetings-table-today']")
       expect(today).to have_text "meeting starting soon"
+      expect(today).to have_text "meeting starting tonight"
 
       tomorrow = page.find("[data-test-selector='meetings-table-tomorrow']")
       expect(tomorrow).to have_text "meeting starting tomorrow"
@@ -137,6 +147,31 @@ RSpec.describe "Meeting index",
       later = page.find("[data-test-selector='meetings-table-later']")
       expect(later).to have_text "meeting on next monday"
       expect(later).to have_text "meeting on next friday"
+    end
+
+    context "when we request as a user with different time zone" do
+      before do
+        user.pref.time_zone = "Asia/Tokyo"
+        user.save!
+      end
+
+      it "shows the meetings in the user's time zone" do
+        expect(subject).to have_http_status(:ok)
+
+        content = page.find_by_id("content")
+        expect(content).to have_text "Tomorrow"
+        expect(content).to have_text "Later this week"
+        expect(content).to have_text "Next week and later"
+        expect(content).to have_no_text "an earlier meeting"
+
+        today = page.find("[data-test-selector='meetings-table-today']")
+        expect(today).to have_text "meeting starting soon"
+        expect(today).to have_no_text "meeting starting tonight"
+
+        tomorrow = page.find("[data-test-selector='meetings-table-tomorrow']")
+        expect(tomorrow).to have_text "meeting starting tomorrow"
+        expect(tomorrow).to have_text "meeting starting tonight"
+      end
     end
 
     context "when we request after 10am" do
@@ -158,6 +193,7 @@ RSpec.describe "Meeting index",
     context "when some meeting groups are empty" do
       before do
         today.destroy!
+        tonight.destroy!
       end
 
       it "shows only the matching bucket" do
