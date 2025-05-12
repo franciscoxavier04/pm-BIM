@@ -66,7 +66,7 @@ Full health status report will give an overview of all checks that were performe
 - Authentication
 - Automatically managed project folder configuration (if activated for this file storage)
 
-In the top left corner you can **Re-run all checks** or **download the health (text format)** report by clicking respective buttons. 
+In the top right corner you can **Re-run all checks** or **download the health (text format)** report by clicking respective buttons. 
 
 ![Health status report for Nextcloud integration in OpenProject administration](openproject_file_storages_nextcloud_open_full_health_report_download_button.png)
 
