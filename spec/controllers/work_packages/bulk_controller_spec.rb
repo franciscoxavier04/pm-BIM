@@ -655,7 +655,7 @@ RSpec.describe WorkPackages::BulkController, with_settings: { journal_aggregatio
       let(:params) { { "ids" => [work_package1.id, work_package2.id, work_package3.id] } }
 
       it "deletes them all without errors" do
-        send_destroy_request
+        expect { send_destroy_request }.not_to raise_error
 
         expect(WorkPackage.count).to eq(0)
         expect(response).to redirect_to(project_work_packages_path(project1))
