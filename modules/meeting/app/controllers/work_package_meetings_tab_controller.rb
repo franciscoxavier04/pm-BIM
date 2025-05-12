@@ -54,7 +54,7 @@ class WorkPackageMeetingsTabController < ApplicationController
   end
 
   def count
-    count = Meeting.visible.where(id: @work_package.meetings.select(:id)).count
+    count = Meeting.visible.not_templated.where(id: @work_package.meetings.select(:id)).count
     render json: { count: }
   end
 
