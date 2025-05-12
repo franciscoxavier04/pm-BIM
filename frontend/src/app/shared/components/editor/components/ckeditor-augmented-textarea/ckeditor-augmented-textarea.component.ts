@@ -291,7 +291,10 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   }
 
   private setLabel() {
-    const label = document.querySelector<HTMLLabelElement>(`label[for=${this.textAreaId}]`)!;
+    const label = document.querySelector<HTMLLabelElement>(`label[for=${this.textAreaId}]`);
+    if (!label) {
+      return;
+    }
 
     const ckContent = this.element.querySelector<HTMLElement>('.ck-content')!;
 
