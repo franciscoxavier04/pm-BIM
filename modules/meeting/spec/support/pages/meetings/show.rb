@@ -226,9 +226,8 @@ module Pages::Meetings
           page.find_test_selector("op-meeting-agenda-actions").click
         end
         page.find(".Overlay")
+        page.within(".Overlay", &)
       end
-
-      page.within(".Overlay", &)
     end
 
     def select_outcome_action(action)
@@ -367,10 +366,9 @@ module Pages::Meetings
       retry_block do
         click_on_backlog_menu
         page.find(".Overlay")
-      end
-
-      page.within(".Overlay") do
-        click_on action
+        page.within(".Overlay") do
+          click_on action
+        end
       end
     end
 
