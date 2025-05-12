@@ -5,7 +5,7 @@
                           **@input.input_arguments) %>
   <% end %>
   <%= angular_component_tag "opce-ckeditor-augmented-textarea",
-                            inputs: @rich_text_options.reverse_merge(
+                            inputs: rich_text_options.reverse_merge(
                               {
                                 textAreaId: @text_area_id,
                                 macros: false,

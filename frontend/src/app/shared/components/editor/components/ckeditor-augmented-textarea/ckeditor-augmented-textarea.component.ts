@@ -68,6 +68,8 @@ import { uniqueId } from 'lodash';
 export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin implements OnInit {
   @Input() public textAreaId:string;
 
+  @Input() public textAreaAriaLabel:string;
+
   @Input() public previewContext:string;
 
   @Input() public macros:ICKEditorMacroType;
@@ -215,7 +217,17 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
       this.setupAttachmentRemovalSignal(editor);
     }
 
+    // Set initial label
     this.setLabel();
+
+    // Use focusTracker to maintain aria-label as CKEditor re-renders ARIA-label every time on focus/blur
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
+    editor.ui.focusTracker.on('change:isFocused', (_evt:unknown, _name:string, isFocused:boolean) => {
+      if (isFocused) {
+        this.setLabel();
+      }
+    });
+
     return editor;
   }
 
@@ -288,23 +300,28 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   }
 
   private setLabel() {
-    const label = document.querySelector<HTMLLabelElement>(`label[for=${this.textAreaId}]`)!;
-
     const ckContent = this.element.querySelector<HTMLElement>('.ck-content')!;
+    const label = document.querySelector<HTMLLabelElement>(`label[for=${this.textAreaId}]`);
 
-    let labelId;
-    if (label.hasAttribute('id')) {
-      labelId = label.getAttribute('id')!;
+    if (label) {
+      let labelId;
+      if (label.hasAttribute('id')) {
+        labelId = label.getAttribute('id')!;
+      } else {
+        labelId = uniqueId('label-');
+        label.setAttribute('id', labelId);
+      }
+
+      ckContent.removeAttribute('aria-label');
+      ckContent.setAttribute('aria-labelledby', labelId);
+
+      fromEvent(label, 'click')
+        .pipe(this.untilDestroyed())
+        .subscribe(() => ckContent.focus());
+    } else if (this.textAreaAriaLabel) {
+      ckContent.setAttribute('aria-label', this.textAreaAriaLabel);
     } else {
-      labelId = uniqueId('label-');
-      label.setAttribute('id', labelId);
+      throw new Error(`Please provide a label for the textarea with id ${this.textAreaId} or set the textAreaAriaLabel property.`);
     }
-
-    ckContent.removeAttribute('aria-label');
-    ckContent.setAttribute('aria-labelledby', labelId);
-
-    fromEvent(label, 'click')
-      .pipe(this.untilDestroyed())
-      .subscribe(() => ckContent.focus());
   }
 }
