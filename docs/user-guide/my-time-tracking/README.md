@@ -57,7 +57,12 @@ The *List* view opens by default if start and finish times for time entries are 
 In this view, time entries are grouped by day. Each day displays the total number of entries and their combined duration on the right side of the header line.
 
 - When the **Day** zoom is selected, the view is expanded by default.
+
 - When **Week** or **Month** zoom is selected, each day is collapsed by default but can be expanded to view details.
+
+  > [!TIP]
+  >
+  > If monthly level is chosen in the list view mode, time entries are aggregated by  week and not by day. This is especially useful to get an overview of your tracked hours for each week. 
 
 Expanded days display time entries in a table format with the following columns:
 
