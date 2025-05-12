@@ -5,7 +5,7 @@
     <div id="assertive" aria-live="assertive" aria-atomic="true" class="hidden-for-sighted"></div>
   </live-region>
   <% if @live_region_message %>
-    <%= render OpTurbo::StreamComponent.new(action: :aria, message: @live_region_message, politeness: "assertive", target: "nil") %>
+    <%= render OpTurbo::StreamComponent.new(action: :aria, message: @live_region_message, politeness: "assertive", delay: "150", target: nil) %>
   <% end %>
   <%=
     component_wrapper(
