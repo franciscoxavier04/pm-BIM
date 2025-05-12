@@ -50,6 +50,7 @@ module WorkPackage::PDFExport::Common::Macro
     document = Markly.parse(markdown)
     document.walk { |node| apply_macros_node(node, context) }
     document.to_markdown
+            .gsub("\\~", "~") # fix a bug in Markly that escapes tildes
   end
 
   def apply_macros_node(node, context)
@@ -62,21 +63,18 @@ module WorkPackage::PDFExport::Common::Macro
 
   def apply_macros_node_text(node, context)
     formatted = apply_macro_text(node.string_content, context)
-    if formatted != node.string_content
-      if formatted.include?("<")
-        fragment = Markly::Node.new(:inline_html)
-        fragment.string_content = formatted
-        node.insert_before(fragment)
-        node.delete
-      else
-        node.string_content = formatted
-      end
+    if formatted.include?("<")
+      fragment = Markly::Node.new(:inline_html)
+      fragment.string_content = formatted
+      node.insert_before(fragment)
+      node.delete
+    else
+      node.string_content = formatted
     end
   end
 
   def apply_macros_node_html(node, context)
-    formatted = apply_macro_html(node.string_content, context)
-    node.string_content = formatted if formatted != node.string_content
+    node.string_content = apply_macro_html(node.string_content, context)
   end
 
   def applicable?(content)
