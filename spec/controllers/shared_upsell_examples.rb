@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.shared_examples_for "the upsell banner is shown" do
+RSpec.shared_examples_for "it has an upsell action" do
   subject { get :upsell }
 
   it "renders the upsell page" do

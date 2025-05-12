@@ -57,7 +57,7 @@ RSpec.describe CustomStylesController do
       end
     end
 
-    it_behaves_like "the upsell banner is shown"
+    it_behaves_like "it has an upsell action"
 
     describe "#create", with_ee: %i[define_custom_style] do
       let(:custom_style) { CustomStyle.new }

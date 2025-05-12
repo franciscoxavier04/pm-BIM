@@ -38,8 +38,10 @@ RSpec.describe TeamPlanner::TeamPlannerController do
   before do
     login_as user
 
+    # We need to set this as the team planner controller needs to be used in the context of a project.
+    # Without a project, any action will result in a 403 forbidden response.
     controller.instance_variable_set(:@project, project)
   end
 
-  it_behaves_like "the upsell banner is shown"
+  it_behaves_like "it has an upsell action"
 end

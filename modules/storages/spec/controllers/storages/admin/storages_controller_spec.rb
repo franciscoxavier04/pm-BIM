@@ -38,5 +38,5 @@ RSpec.describe Storages::Admin::StoragesController do
     login_as user
   end
 
-  it_behaves_like "the upsell banner is shown"
+  it_behaves_like "it has an upsell action"
 end
