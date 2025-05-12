@@ -27,7 +27,7 @@ Under the *Login and SSO* tab you can adjust following settings:
 
    > [!NOTE]
    >
-   > Unless you also disable password logins, with this option enabled, users can still log in internally by visiting internal login page, for example https://yourinstancename.openproject.com/login/internal login page.
+   > Unless you also disable password logins, with this option enabled, users can still log in internally by visiting internal login page, for example `https://yourinstancename.openproject.com/login/internal` login page.
 
 2. Enable or disable the **autologin option**. This allows a user to remain logged in, even if they leave the site. If this option is activated, the “Stay signed in” option will appear on the login screen to be selected.
 
@@ -39,7 +39,7 @@ Under the *Login and SSO* tab you can adjust following settings:
 
 6. Define a path to **redirect users to after their first login**. If left empty, users are redirected to the homepage to see the onboarding tour.
 
-7. Set a **default path to redirect users to after login** (only if the login link is not a back link, i.e. www.example.openproject.com/login). If left empty, users are redirected to the homepage.
+7. Set a **default path to redirect users to after login** (only if the login link is not a back link, i.e. `www.example.openproject.com/login`). If left empty, users are redirected to the homepage.
 
    Do not forget to **save** your changes.
 
