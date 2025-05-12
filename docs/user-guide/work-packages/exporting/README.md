@@ -35,7 +35,7 @@ Some formats such as PDF will limit the number of columns available due to limit
 
 #### Save export format
 
-Export settings can be saved for private (all non default) work package queries. This allows you to easily share export settings with your team and save time in the future. 
+Export settings can be saved for custom (all non-default) work package queries. This allows you to easily share export settings with your team and save time in the future. 
 
 To save export settings adjust the export to your liking and check the **Save setting** checkbox before triggering an export. Clicking the **Export** button will trigger the adjustments to a work package query. The checkbox will remain checked for the next export.
 
