@@ -122,7 +122,7 @@ module OpPrimer
     # have a unified look and feel for our users.
     #
     # @example
-    #   admin_settings_primer_form_with(scope: :settings, action: :update, method: :patch) do |form|
+    #   settings_primer_form_with(scope: :settings, action: :update, method: :patch) do |form|
     #     render_inline_settings_form(form) do |f|
     #       f.check_box(name: :allow_tracking_start_and_end_times)
     #       f.check_box(name: :enforce_tracking_start_and_end_times)
@@ -133,7 +133,7 @@ module OpPrimer
     #
     # @param kwargs [Hash] The arguments for the form
     # @param block [Proc] A block that defines the form structure.
-    def admin_settings_primer_form_with(**, &)
+    def settings_primer_form_with(**, &)
       render(Primer::BaseComponent.new(tag: :div, classes: "op-admin-settings-form-wrapper")) do
         primer_form_with(**, &)
       end
