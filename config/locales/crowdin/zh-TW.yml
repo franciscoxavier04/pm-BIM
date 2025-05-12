@@ -2396,6 +2396,8 @@ zh-TW:
         mentioned: "您在工作項目「%{work_package}」中被提到"
         responsible: "您已對 %{work_package} 負責"
         watched: "您正在監看 %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "輔助功能"
   label_account: "帳號"
   label_active: "啟用"

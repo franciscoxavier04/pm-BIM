@@ -414,6 +414,7 @@ pl:
     member_connection_status:
       connected: Połączono
       connected_no_permissions: Rola użytkownika nie ma uprawnień do magazynów
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: Nie połączono. Użytkownik powinien zalogować się do magazynu za pomocą %{link}.
       not_connected_sso: Jeszcze nie powiązano, usługa SSO powinna je automatycznie powiązać po sprawdzeniu plików.
     members_no_results: Brak członków do wyświetlenia.

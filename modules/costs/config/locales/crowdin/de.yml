@@ -172,7 +172,7 @@ de:
   label_day: "Tag"
   label_today_capitalized: "Heute"
   label_view_mode_switcher: "Ansicht ändern"
-  placeholder_activity_select_work_package_first: Die Auswahl des Arbeitspakets ist zuerst erforderlich
+  placeholder_activity_select_work_package_first: Zunächst muss ein Arbeitspaket ausgewählt werden
   notice_something_wrong: "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
   notice_successful_restore: "Erfolgreich wiederhergestellt."
   notice_successful_lock: "Erfolgreich gesperrt."
@@ -196,8 +196,8 @@ de:
   setting_allow_tracking_start_and_end_times: "Genaue Zeiterfassung erlauben"
   setting_costs_currency: "Währung"
   setting_costs_currency_format: "Format der Währung"
-  setting_enforce_tracking_start_and_end_times: "Genaue Zeiterfassung erforderlich"
-  setting_enforce_without_allow: "Requiring exact times is not possible without allowing them"
+  setting_enforce_tracking_start_and_end_times: "Genaue Zeiterfassung erforderlich machen"
+  setting_enforce_without_allow: "Genaue Zeiterfassung kann nur erforderlich sein, wenn sie auch erlaubt ist"
   text_assign_time_and_cost_entries_to_project: "Gebuchte Aufwände dem Projekt zuweisen"
   text_destroy_cost_entries_question: "Es wurden bereits %{cost_entries} auf dieses Ticket gebucht. Was soll mit den Aufwänden geschehen?"
   text_destroy_time_and_cost_entries: "Gebuchte Aufwände löschen"
@@ -216,7 +216,7 @@ de:
         start_time_different_date: "Der Datumsteil von startTime (%{start_time}) muss mit dem Datum von spentOn (%{spent_on}) übereinstimmen."
   ee:
     features:
-      time_entry_time_restrictions: Genaue Zeiterfassung erforderlich
+      time_entry_time_restrictions: Genaue Zeiterfassung erforderlich machen
     upsell:
       time_entry_time_restrictions:
-        description: "Verbessern Sie Ihre Zeiterfassung, indem Sie genaue Start- und Endzeiten für jede Zeitbuchung erfordern."
+        description: "Verbessern Sie Ihre Zeiterfassung, indem Sie genaue Start- und Endzeiten für jede Zeitbuchung erforderlich machen."
