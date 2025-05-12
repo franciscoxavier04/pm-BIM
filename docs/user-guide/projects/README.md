@@ -113,7 +113,7 @@ If you want to set a project to public, you can do so by ticking the box next to
 
 Setting a project to public will make it accessible to all people within your OpenProject instance.
 
-(Should your instance be [accessible without authentication](../../system-admin-guide/authentication/authentication-settings) this option will make the project visible to the general public outside your registered users, too)
+(Should your instance be [accessible without authentication](../../system-admin-guide/authentication/login-registration-settings/) this option will make the project visible to the general public outside your registered users, too)
 
 ### Copy a project
 
