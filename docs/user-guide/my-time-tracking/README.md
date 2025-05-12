@@ -34,7 +34,7 @@ The *My time tracking* module offers a clear overview of your personal time entr
 
 ### Calendar view
 
-The *Calendar* view opens by default if start and finish times for time entries have been enabled in [System Administration](../../system-guide/time-and-costs). You can adjust the zoom level using the dropdown menu, with options for **Day**, **Work week**, **Week**, or **Month**.
+The *Calendar* view opens by default if start and finish times for time entries have been enabled in [System Administration](../../system-admin-guide/time-and-costs). You can adjust the zoom level using the dropdown menu, with options for **Day**, **Work week**, **Week**, or **Month**.
 
 Existing time entries appear on the corresponding days they were logged. Entry colors reflect the type of work package associated with the logged time.
 
@@ -52,7 +52,7 @@ At the bottom of each day a sum of hours per day is displayed. If week or month 
 
 ### List view
 
-The *List* view opens by default if start and finish times for time entries are **disabled** in [System Administration](../../system-guide/time-and-costs). Just like in the *Calendar* view, you can select the zoom level using the dropdown menu — options include **Day**, **Work week**, **Week**, or **Month**.
+The *List* view opens by default if start and finish times for time entries are **disabled** in [System Administration](../../system-admin-guide/time-and-costs). Just like in the *Calendar* view, you can select the zoom level using the dropdown menu — options include **Day**, **Work week**, **Week**, or **Month**.
 
 In this view, time entries are grouped by day. Each day displays the total number of entries and their combined duration on the right side of the header line.
 
