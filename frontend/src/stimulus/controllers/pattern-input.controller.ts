@@ -444,7 +444,7 @@ export default class PatternInputController extends Controller {
         key,
         label: group.title,
         values: group.tokens
-          .filter((token) => token.key.includes(word) || token.label.includes(word) || word === '*')
+          .filter((token) => token.key.includes(word) || token.label.toLowerCase().includes(word) || word === '*')
           .map((token) => ({ prop: token.key, value: token.label })),
       };
     }).filter((group) => group.values.length > 0);
