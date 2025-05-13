@@ -487,6 +487,10 @@ Rails.application.routes.draw do
           delete :delete_trial_key
         end
       end
+
+      resource :enterprise_trial, only: %i[show create destroy] do
+        get :trial_dialog
+      end
     end
 
     delete "design/logo" => "custom_styles#logo_delete", as: "custom_style_logo_delete"

@@ -37,6 +37,7 @@ class EnterpriseTokensController < ApplicationController
   before_action :require_admin
   before_action :check_user_limit, only: [:index]
   before_action :find_token, only: %i[destroy destroy_dialog]
+  before_action :get_trial_key, only: [:show]
 
   def index
     # TODO: delete next line. @current_token is used in the old angular thingy.
@@ -113,5 +114,9 @@ class EnterpriseTokensController < ApplicationController
         max: OpenProject::Enterprise.user_limit
       )
     end
+  end
+
+  def get_trial_key
+    @trial_key = Token::EnterpriseTrialKey.find_by(user_id: User.system.id)
   end
 end

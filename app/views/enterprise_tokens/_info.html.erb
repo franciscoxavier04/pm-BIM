@@ -32,12 +32,12 @@ See COPYRIGHT and LICENSE files for more details.
 <% end %>
 
 <div class="upsell--information-container">
-  <div class='upsell-information'>
-    <%= angular_component_tag(
-          "opce-enterprise-base",
-          inputs: enterprise_angular_trial_inputs
-        ) %>
-  </div>
+
+  <% if @trial_key.present? %>
+    <%= render EnterpriseTrials::StatusComponent.new(@trial_key) %>
+  <% else %>
+    <%= render EnterpriseTrials::TrialButtonComponent.new %>
+  <% end %>
 
   <div class='upsell-actions'>
     <a href="#"
