@@ -2519,7 +2519,7 @@ ru:
         responsible: "Вы стали ответственным в %{work_package}"
         watched: "Вы просматриваете %{work_package}"
     query:
-      invalid_filter: "Invalid notification filter"
+      invalid_filter: "Неверный фильтр уведомлений"
   label_accessibility: "Спец. возможности"
   label_account: "Учетная запись"
   label_active: "Активен"

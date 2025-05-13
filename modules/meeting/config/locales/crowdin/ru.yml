@@ -396,7 +396,7 @@ ru:
     Этот список невыполненных работ уникален для данного разового собрания. Вы можете перетаскивать элементы, чтобы добавлять или удалять их из повестки дня собрания.
   label_agenda_backlog_clear_title: "Очистить бэклог по повестке дня?"
   text_agenda_backlog_clear_description: >
-    Are you sure you want to remove all items currently in the agenda backlog? This action is not reversible.
+    Вы уверены, что хотите удалить все пункты повестки дня? Это действие необратимо.
   label_series_backlog: "Журнал серий"
   text_series_backlog: >
     Бэклог используется для всех вхождений этой серии. Вы можете перетащить элементы из и обратно для их добавления или удаления с конкретной встречи.
