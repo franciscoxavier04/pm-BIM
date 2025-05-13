@@ -126,14 +126,23 @@ RSpec.describe "Work package activity tab comment editor",
       wp_page.wait_for_activity_tab
     end
 
-    it "has an aria-label on the editor" do
+    it "has the rich text editor aria labelled" do
       activity_tab.add_comment(text: "Sample text", save: false)
 
       activity_tab.expect_focus_on_editor
+      expect_rich_text_to_be_aria_labelled
 
-      within_test_selector("augmented-text-area-notes") do
-        expect(page).to have_css(".ck-content[aria-label='Add a comment. Type @ to notify people.']")
-      end
+      activity_tab.clear_comment(blur: true)
+
+      activity_tab.expect_blur_on_editor
+      expect_rich_text_to_be_aria_labelled
+    end
+
+    def expect_rich_text_to_be_aria_labelled
+      expect(page).to have_selector(:label, for: "journal_notes", class: "sr-only",
+                                            text: "Add a comment. Type @ to notify people.")
+      label_id = page.find('label[for="journal_notes"]')["id"]
+      expect(page).to have_selector(:rich_text, aria: { labelledby: label_id })
     end
   end
 

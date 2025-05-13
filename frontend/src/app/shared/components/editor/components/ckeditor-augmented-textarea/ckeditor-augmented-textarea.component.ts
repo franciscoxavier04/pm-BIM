@@ -67,8 +67,6 @@ import { uniqueId } from 'lodash';
 export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin implements OnInit {
   @Input() public textAreaId:string;
 
-  @Input() public textAreaAriaLabel:string;
-
   @Input() public previewContext:string;
 
   @Input() public macros:ICKEditorMacroType;
@@ -221,12 +219,10 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
     // Set initial label
     this.setLabel();
 
-    // Use focusTracker to maintain aria-label as CKEditor re-renders ARIA-label every time on focus/blur
+    // Use focusTracker to maintain aria-labelledby as CKEditor re-renders aria-label on every focus/blur event
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-    editor.ui.focusTracker.on('change:isFocused', (_evt:unknown, _name:string, isFocused:boolean) => {
-      if (isFocused) {
-        this.setLabel();
-      }
+    editor.ui.focusTracker.on('change:isFocused', (_evt:unknown, _name:string, _isFocused:boolean) => {
+      this.setLabel();
     });
 
     return editor;
@@ -321,10 +317,8 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
           .pipe(this.untilDestroyed())
           .subscribe(() => ckContent.focus());
       }
-    } else if (this.textAreaAriaLabel) {
-      ckContent.setAttribute('aria-label', this.textAreaAriaLabel);
     } else {
-      throw new Error(`Please provide a label for the textarea with id ${this.textAreaId} or set the textAreaAriaLabel property.`);
+      console.error(`Please provide a label for the textarea with id ${this.textAreaId}`);
     }
   }
 }

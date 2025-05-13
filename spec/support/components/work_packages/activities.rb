@@ -216,6 +216,12 @@ module Components
         end
       end
 
+      def expect_blur_on_editor
+        page.within_test_selector("op-work-package-journal-form-element") do
+          expect(page).to have_css(".ck-content:not(:focus)", wait: 10)
+        end
+      end
+
       def expect_activity_anchor_link(text:)
         expect(page).to have_test_selector("activity-anchor-link", text:)
       end

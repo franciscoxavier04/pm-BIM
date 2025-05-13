@@ -17,14 +17,6 @@ module Primer
           @rich_text_options = rich_text_options
           @text_area_id = rich_text_options.delete(:text_area_id) || builder.field_id(@input.name)
         end
-
-        private
-
-        def rich_text_options
-          @rich_text_options.tap do |options|
-            options[:textAreaAriaLabel] = options.delete(:aria_label) if options.key?(:aria_label)
-          end
-        end
       end
     end
   end
