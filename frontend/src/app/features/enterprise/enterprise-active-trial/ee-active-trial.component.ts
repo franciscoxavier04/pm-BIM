@@ -31,7 +31,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  OnInit,
+  OnInit, Input,
 } from '@angular/core';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
@@ -52,6 +52,8 @@ import { IEnterpriseData } from 'core-app/features/enterprise/enterprise-trial.m
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EEActiveTrialComponent extends EEActiveTrialBase implements OnInit {
+  @Input() public trialKey:string|undefined;
+
   public subscriber:string;
 
   public email:string;
@@ -75,7 +77,6 @@ export class EEActiveTrialComponent extends EEActiveTrialBase implements OnInit 
     readonly cdRef:ChangeDetectorRef,
     readonly I18n:I18nService,
     readonly http:HttpClient,
-    readonly Gon:GonService,
     public eeTrialService:EnterpriseTrialService,
   ) {
     super(I18n);
@@ -98,12 +99,11 @@ export class EEActiveTrialComponent extends EEActiveTrialBase implements OnInit 
   }
 
   private initialize():void {
-    const eeTrialKey = this.Gon.get('ee_trial_key') as { value:string } | undefined;
     const { data } = this.eeTrialService.current;
 
-    if (eeTrialKey && !data) {
+    if (this.trialKey && !data) {
       // after reload: get data from Augur using the trial key saved in gon
-      const trialLink = `${this.eeTrialService.baseUrlAugur}/public/v1/trials/${eeTrialKey.value}`;
+      const trialLink = `${this.eeTrialService.baseUrlAugur}/public/v1/trials/${this.trialKey}`;
       this.eeTrialService.store.update({ trialLink });
       this.getUserDataFromAugur(trialLink);
     }

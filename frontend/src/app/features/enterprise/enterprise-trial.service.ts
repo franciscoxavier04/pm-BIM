@@ -46,6 +46,8 @@ export class EnterpriseTrialService {
 
   private query = new Query(this.store);
 
+  resendLink$ = this.query.select('resendLink');
+
   confirmed$ = this.query.select('confirmed');
 
   cancelled$ = this.query.select('cancelled');
@@ -90,9 +92,11 @@ export class EnterpriseTrialService {
       shareReplay(1),
     );
 
-  public readonly baseUrlAugur:string;
+  public baseUrlAugur:string;
 
-  public readonly tokenVersion:string;
+  public tokenVersion:string;
+
+  public trialKey:string|undefined;
 
   public text = {
     invalid_email: this.I18n.t('js.admin.enterprise.trial.form.invalid_email'),
@@ -105,12 +109,13 @@ export class EnterpriseTrialService {
     protected http:HttpClient,
     readonly pathHelper:PathHelperService,
     protected toastService:ToastService,
-    readonly Gon:GonService,
   ) {
-    this.baseUrlAugur = this.Gon.get('augur_url') as string;
-    this.tokenVersion = this.Gon.get('token_version') as string;
+  }
 
-    if (this.Gon.get('ee_trial_key')) {
+  public setTrialKey(trialKey:string|undefined):void {
+    this.trialKey = trialKey;
+
+    if (this.trialKey) {
       this.setMailSubmittedStatus();
     }
   }
