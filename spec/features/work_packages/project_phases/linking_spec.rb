@@ -50,6 +50,7 @@ RSpec.describe "Linking projects phases and work packages", :js, with_flag: { st
   current_user { user }
 
   let(:work_package_page) { Pages::FullWorkPackage.new(work_package) }
+  let(:activity_tab) { Components::WorkPackages::Activities.new(work_package) }
 
   it "allows seeing and editing linked phases" do
     work_package_page.visit!
@@ -57,6 +58,12 @@ RSpec.describe "Linking projects phases and work packages", :js, with_flag: { st
     work_package_page.expect_attributes(project_phase: executing_phase_definition.name)
 
     work_package_page.set_attributes({ projectPhase: initiating_phase_definition.name })
+
+    activity_tab.within_journal_entry(work_package.journals.last) do
+      activity_tab.expect_journal_changed_attribute(
+        text: "Project phase changed from #{executing_phase_definition.name} to #{initiating_phase_definition.name}"
+      )
+    end
 
     work_package_page.expect_and_dismiss_toaster(message: "Successful update.")
 
