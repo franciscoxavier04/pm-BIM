@@ -1,8 +1,9 @@
 <%=
   component_wrapper(tag: "turbo-frame") do
-    grid_layout("op-enterprise-banner",
-                **@system_arguments) do |grid|
-
+    grid_layout(
+      "op-enterprise-banner",
+      **@system_arguments
+    ) do |grid|
       if inline?
         grid.with_area(:visual) do
           render(Primer::Beta::Octicon.new(icon: :"op-enterprise-addons", classes: "op-enterprise-banner--icon"))
@@ -15,9 +16,13 @@
             if medium?
               flex_layout(align_items: :center, mb: 3) do |title_flex|
                 title_flex.with_column do
-                  render(Primer::Beta::Octicon.new(icon: :"op-enterprise-addons",
-                                                   size: :medium,
-                                                   classes: "upsell-colored"))
+                  render(
+                    Primer::Beta::Octicon.new(
+                      icon: :"op-enterprise-addons",
+                      size: :medium,
+                      classes: "upsell-colored"
+                    )
+                  )
                 end
 
                 title_flex.with_column(ml: 2) do
@@ -36,7 +41,7 @@
 
           if features.present?
             flex.with_row do
-              content_tag(:ul) { safe_join features.map { |text| render(Primer::Beta::Text.new(tag: :li)) { text } } }
+              content_tag(:ul) { safe_join(features.map { |text| render(Primer::Beta::Text.new(tag: :li)) { text } }) }
             end
           end
 
@@ -44,6 +49,10 @@
             render EnterpriseEdition::UpsellButtonsComponent.new(feature_key)
           end
         end
+      end
+
+      if medium?
+        grid.with_area(:image, **@image_arguments)
       end
 
       if @dismissable
