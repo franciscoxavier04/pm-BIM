@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -108,7 +110,8 @@ RSpec.describe "work package generate PDF dialog", :js do
         hyphenation: "false",
         hyphenation_language: "en",
         template: "attributes",
-        footer_text_right: project.name
+        footer_text_right: project.name,
+        page_orientation: "portrait"
       }
     end
 
@@ -134,7 +137,7 @@ RSpec.describe "work package generate PDF dialog", :js do
     end
   end
 
-  context "with custom parameters" do
+  context "with hyphenation" do
     let(:expected_params) do
       {
         footer_text_right: "Custom Footer Text",
@@ -148,6 +151,20 @@ RSpec.describe "work package generate PDF dialog", :js do
       check("Hyphenation")
       select "Deutsch", from: "hyphenation_language"
       fill_in "footer_text_right", with: "Custom Footer Text"
+      generate!
+    end
+  end
+
+  context "with page orientation" do
+    let(:expected_params) do
+      {
+        template: "attributes",
+        page_orientation: "landscape"
+      }
+    end
+
+    it "downloads with options" do
+      select "Landscape", from: "page_orientation"
       generate!
     end
   end

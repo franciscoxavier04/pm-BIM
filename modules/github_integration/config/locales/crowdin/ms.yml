@@ -32,7 +32,7 @@ ms:
     github_updated_at: "Updated at"
     github_login: "GitHub login"
     labels: "Labels"
-    repository: "Repository"
+    repository: "Repositori"
     changed_files_count: "Changed files"
   button_add_deploy_target: Tambah sasaran penyerahan
   label_deploy_target: Sasaran penyerahan

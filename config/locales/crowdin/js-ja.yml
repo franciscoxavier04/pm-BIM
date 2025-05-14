@@ -222,7 +222,7 @@ ja:
             label_maximum_users: "アクティブなユーザーの最大数"
             label_starts_at: "開始"
             label_expires_at: "有効期限"
-            label_plan: "Plan"
+            label_plan: "プラン"
             label_additional_features: "Additional features"
             receive_newsletter: OpenProject <a target="_blank" href="%{link}">ニュースレター</a> を受け取りたい。
             taken_domain: 有効なトライアルはドメインごとに1つしかありません。
@@ -240,10 +240,13 @@ ja:
           status_waiting: "メールが送信されました - 確認待ちです"
           test_ee: "エンタープライズ版を14日間無料でテストする"
           quick_overview: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
-        upsale:
+        upsell:
           become_hero: "ヒーローになろう!"
           enterprise_info_html: "%{feature_title} is an Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> add-on."
           upgrade_info: "Please upgrade to a paid plan to activate and start using it in your team."
+          text: >
+            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
+          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
           benefits:
             description: "What are the benefits of the Enterprise on-premises edition?"
             high_security: "セキュリティ機能"
@@ -262,10 +265,7 @@ ja:
             テストおよびサポートされているエンタープライズクラスのプロジェクト管理ソフトウェアの信頼性を提供します。オープンソースとオープンマインドとともに。
           link_quote: "見積もりの入手"
           more_info: "詳細情報"
-          text: >
-            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
           unlimited: "無制限"
-          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
       working_days:
         calendar:
           empty_state_header: "Non-working days"
@@ -356,13 +356,13 @@ ja:
       blocks:
         new_features:
           text_new_features: "新しい機能と製品の更新について紹介します。"
-          learn_about: "新機能の詳細はこちら"
+          learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_3":
+          "16_0":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Schedule recurring meetings to streamline your weekly, biweekly, or custom appointments.</li> <li>Create child work packages directly from the Relations tab.</li> <li>Include total sums in timesheet PDF exports for better insights.</li> <li>Include child work packages in cost reports for more accurate tracking.</li> <li>See dates of previously hidden, permission-restricted relations to make informed scheduling decisions.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "An error occured while fetching data."
@@ -393,7 +393,7 @@ ja:
     label_and: "及び"
     label_ascending: "昇順"
     label_author: "作者: %{user}"
-    label_avatar: "Avatar"
+    label_avatar: "アバター"
     label_between: "次の範囲内"
     label_board: "ボード"
     label_board_locked: "ロックされている"
@@ -435,7 +435,6 @@ ja:
     label_filename: "ファイル"
     label_filesize: "サイズ"
     label_general: "概要"
-    label_global_roles: "Global roles"
     label_greater_or_equal: ">="
     label_group: "グループ"
     label_group_by: "グループ化"
@@ -464,6 +463,7 @@ ja:
     label_menu_collapse: "折りたたむ"
     label_menu_expand: "展開する"
     label_more_than_ago: "今日より○日前以前"
+    label_moderate_comment: "Moderate comment"
     label_next: "次へ"
     label_no_color: "色なし"
     label_no_data: "表示できるデータがありません。"
@@ -483,7 +483,7 @@ ja:
     label_per_page: "1 ページあたり"
     label_please_wait: "しばらくお待ちください"
     label_project: "プロジェクト"
-    label_project_list: "Project lists"
+    label_project_list: "プロジェクト一覧"
     label_project_plural: "プロジェクト"
     label_visibility_settings: "表示の設定"
     label_quote_comment: "このコメントを引用"
@@ -615,7 +615,7 @@ ja:
         assigned: "担当者"
         #The enum value is named 'responsible' in the database and that is what is transported through the API
         #up to the frontend.
-        responsible: "Accountable"
+        responsible: "責任者"
         created: "作成日時"
         scheduled: "スケジュール済"
         commented: "コメントしました。"
@@ -632,9 +632,6 @@ ja:
         property_is: "は%{difference_in_days}後。"
         property_was: "は、 %{difference_in_days} 前です。"
         property_is_deleted: "は削除されました。"
-        upsale:
-          title: "Date alerts"
-          description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
       center:
         label_actor_and: "及び"
         and_more_users:
@@ -644,6 +641,7 @@ ja:
           with_current_filter: "There are no notifications in this view at the moment"
         mark_all_read: "Mark all as read"
         mark_as_read: "Mark as read"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
         text_update_date_by: "%{date} by"
         total_count_warning: "Showing the %{newest_count} most recent notifications. %{more_count} more are not displayed."
         empty_state:
@@ -696,7 +694,6 @@ ja:
           date_alerts:
             title: "Date alerts"
             description: "Automatic notifications when important dates are approaching for open work packages you are involved in (assignee, accountable or watcher)."
-            teaser_text: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
           overdue: When overdue
         project_specific:
           title: "Project-specific notification settings"
@@ -799,6 +796,7 @@ ja:
       typeahead_placeholder: ウォッチャーの選択肢を検索
     relation_labels:
       parent: "親項目"
+      child: "Child"
       children: "子"
       relates: "関連先"
       duplicates: "複製"
@@ -828,16 +826,16 @@ ja:
       add_new_child: "子関係を作成"
       create_new: "新規作成"
       add_existing: "既存を追加"
-      add_existing_child: "既存の子関係を追加"
+      add_existing_child: "子タスクを追加"
       remove_child: "子関係を削除"
       add_new_relation: "新しい関係を作成"
       add_existing_relation: "既存の関係を追加"
       update_description: "この関係の説明を設定または更新する"
       toggle_description: "関係の説明を切り替え"
       update_relation: "クリックして関係のタイプを変更"
-      add_follower: "後続を追加"
-      show_relations: "Show relations"
+      show_relations: "関連するタスクを表示"
       add_predecessor: "先行を追加"
+      add_successor: "Add successor"
       remove: "関係を削除"
       save: "関係を保存"
       abort: "中止"
@@ -867,7 +865,7 @@ ja:
     tl_toolbar:
       zooms: "ズームレベル"
       outlines: "階層レベル"
-    upsale:
+    upsell:
       ee_only: "Enterprise edition add-on"
     wiki_formatting:
       strong: "強調"
@@ -966,7 +964,7 @@ ja:
         createdAt: "作成日時"
         description: "説明"
         date: "日付"
-        percentComplete: "% Complete"
+        percentComplete: "完成(%)"
         percentCompleteAlternative: "Progress"
         dueDate: "終了日"
         duration: "期間"
@@ -999,7 +997,7 @@ ja:
         all_open: "未完了"
         overdue: "Overdue"
         summary: "サマリ"
-        shared_with_users: "Shared with users"
+        shared_with_users: "ユーザーと共有"
         shared_with_me: "Shared with me"
       jump_marks:
         pagination: "表のページ設定に移動する"
@@ -1046,8 +1044,6 @@ ja:
       sharing:
         title: "Share work package"
         show_all_users: "ワークパッケージが共有されたすべてのユーザーを表示"
-        upsale:
-          description: "Share work packages with users who are not members of the project."
       table:
         configure_button: "ワークパッケージテーブルを設定する"
         summary: "作業項目の行と、作業項目の属性の列から成る表。"
@@ -1082,10 +1078,6 @@ ja:
           manually: "手動"
           warning: "自動並び替えモードをアクティブにすると、以前のソートが失われます。"
         columns_help_text: "テーブルビューに列を追加するには、上の入力フィールドを使用します。列をドラッグアンドドロップして並べ替えることができます。"
-        upsale:
-          attribute_highlighting: "全体から目立つように特定の作業項目が必要ですか？"
-          relation_columns: "ワークパッケージリストに関係を表示する必要がありますか?"
-          check_out_link: "Check out the Enterprise edition."
         relation_filters:
           filter_work_packages_by_relation_type: "関係タイプでワークパッケージをフィルタ"
       tabs:
@@ -1296,9 +1288,7 @@ ja:
       clear: "クリア"
       apply: "適用"
       header_description: "Highlight changes made to this list since any point in the past."
-      enterprise_header_description: "Highlight changes made to this list since any point in the past with Enterprise edition."
       show_changes_since: "Show changes since"
-      baseline_comparison: "Baseline comparison"
       help_description: "Reference time zone for the baseline."
       time_description: "In your local time: %{datetime}"
       time: "時間"
@@ -1310,7 +1300,7 @@ ja:
         last_working_day: "last working day"
         last_week: "先週"
         last_month: "先月"
-        a_specific_date: "a specific date"
+        a_specific_date: "特定の日付"
         between_two_specific_dates: "between two specific dates"
       legends:
         changes_since: "Changes since"

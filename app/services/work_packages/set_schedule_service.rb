@@ -84,6 +84,7 @@ class WorkPackages::SetScheduleService
     WorkPackages::ScheduleDependency.new(moved_work_packages, switching_to_automatic_mode:)
                                     .in_schedule_order do |scheduled, dependency|
       changes_before = scheduled.changes
+      apply_switching_to_automatic_scheduling(scheduled)
       reschedule(scheduled, dependency)
       changes_after = scheduled.changes
 
@@ -91,6 +92,15 @@ class WorkPackages::SetScheduleService
     end
 
     altered
+  end
+
+  # Switches the scheduling mode of a work package to automatic if it is in the
+  # switching_to_automatic_mode array.
+  def apply_switching_to_automatic_scheduling(work_package)
+    switching_to_automatic_mode_ids = switching_to_automatic_mode.pluck(:id)
+    if switching_to_automatic_mode_ids.include?(work_package.id)
+      work_package.schedule_manually = false
+    end
   end
 
   # Schedules work packages based on either

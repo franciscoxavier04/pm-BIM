@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ::TwoFactorAuthentication
   class TwoFactorSettingsController < ApplicationController
     include EnterpriseTrialHelper
@@ -57,12 +59,6 @@ module ::TwoFactorAuthentication
 
     def manager
       ::OpenProject::TwoFactorAuthentication::TokenStrategyManager
-    end
-
-    def default_breadcrumb; end
-
-    def show_local_breadcrumb
-      false
     end
   end
 end

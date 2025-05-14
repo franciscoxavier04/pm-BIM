@@ -34,6 +34,7 @@ class Storages::Admin::StoragesController < ApplicationController
 
   include FlashMessagesOutputSafetyHelper
   include OpTurbo::ComponentStream
+  include EnterpriseHelper
 
   # See https://guides.rubyonrails.org/layouts_and_rendering.html for reference on layout
   layout "admin"
@@ -49,6 +50,7 @@ class Storages::Admin::StoragesController < ApplicationController
                          change_health_notifications_enabled replace_oauth_application]
   before_action :ensure_valid_wizard_parameters, only: [:new]
   before_action :require_ee_token_for_one_drive, only: [:new]
+  before_action :write_augur_to_gon, only: %i[upsell]
 
   menu_item :external_file_storages
 
@@ -79,7 +81,7 @@ class Storages::Admin::StoragesController < ApplicationController
     @target_step = @wizard.prepare_next_step
   end
 
-  def upsale; end
+  def upsell; end
 
   def create
     service_result = Storages::Storages::CreateService
@@ -213,12 +215,6 @@ class Storages::Admin::StoragesController < ApplicationController
     end
   end
 
-  def default_breadcrumb; end
-
-  def show_local_breadcrumb
-    false
-  end
-
   private
 
   def prepare_storage_for_access_management_form
@@ -274,7 +270,7 @@ class Storages::Admin::StoragesController < ApplicationController
 
   def require_ee_token_for_one_drive
     if ::Storages::Storage::one_drive_without_ee_token?(@provider_type)
-      redirect_to action: :upsale
+      redirect_to action: :upsell
     end
   end
 

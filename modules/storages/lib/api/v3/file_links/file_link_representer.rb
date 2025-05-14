@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -138,7 +140,11 @@ module API::V3::FileLinks
     private
 
     def user_allowed_to_manage?(model)
-      model.container.present? && current_user.allowed_in_project?(:manage_file_links, model.project)
+      if model.container.present?
+        current_user.allowed_in_project?(:manage_file_links, model.project)
+      else
+        current_user == model.creator
+      end
     end
 
     def make_origin_data(model)

@@ -56,6 +56,7 @@ module Storages
         .active
         .where(storage: Storage.automatic_management_enabled)
     end
+    scope :with_project_folder, -> { where.not(project_folder_id: [nil, ""]) }
 
     def project_folder_mode_possible?(project_folder_mode)
       storage.present? && storage.available_project_folder_modes&.include?(project_folder_mode)
@@ -95,27 +96,11 @@ module Storages
       end
     end
 
-    def open_with_connection_ensured
-      return unless storage.configured?
-      return open_project_storage_url if storage.authenticate_via_idp?
-
-      OpenProject::StaticRouting::StaticRouter.new.url_helpers.oauth_clients_ensure_connection_path(
-        oauth_client_id: storage.oauth_client.client_id,
-        storage_id: storage.id,
-        destination_url: open_project_storage_url
-      )
+    def open_project_storage_url
+      OpenProject::StaticRouting::StaticRouter.new.url_helpers.open_project_storage_url(project_id: project.identifier, id:)
     end
 
     private
-
-    def open_project_storage_url
-      OpenProject::StaticRouting::StaticRouter
-        .new
-        .url_helpers.open_project_storage_url(host: Setting.host_name,
-                                              protocol: "https",
-                                              project_id: project.identifier,
-                                              id:)
-    end
 
     def managed_folder_identifier
       @managed_folder_identifier ||=

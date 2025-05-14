@@ -31,79 +31,82 @@
 module Types
   module Patterns
     class TokenPropertyMapper
-      DEFAULT_FUNCTION = ->(key, context) do
-        return nil if context.nil?
-
-        context.public_send(key.to_sym)
-      end.curry
-
-      TOKEN_PROPERTY_MAP = IceNine.deep_freeze(
-        {
-          accountable: { fn: ->(wp) { wp.responsible&.name }, label: -> { WorkPackage.human_attribute_name(:responsible) } },
-          assignee: { fn: ->(wp) { wp.assigned_to&.name }, label: -> { WorkPackage.human_attribute_name(:assigned_to) } },
-          author: { fn: ->(wp) { wp.author&.name }, label: -> { WorkPackage.human_attribute_name(:author) } },
-          category: { fn: ->(wp) { wp.category&.name }, label: -> { WorkPackage.human_attribute_name(:category) } },
-          creation_date: { fn: ->(wp) { wp.created_at }, label: -> { WorkPackage.human_attribute_name(:created_at) } },
-          estimated_time: { fn: ->(wp) { wp.estimated_hours }, label: -> { WorkPackage.human_attribute_name(:estimated_hours) } },
-          finish_date: { fn: ->(wp) { wp.due_date }, label: -> { WorkPackage.human_attribute_name(:due_date) } },
-          parent: { fn: ->(wp) { wp.parent&.id }, label: -> { WorkPackage.human_attribute_name(:parent) } },
-          parent_author: { fn: ->(wp) { wp.parent&.author&.name }, label: -> { WorkPackage.human_attribute_name(:author) } },
-          parent_category: { fn: ->(wp) { wp.parent&.category&.name },
-                             label: -> { WorkPackage.human_attribute_name(:category) } },
-          parent_creation_date: { fn: ->(wp) { wp.parent&.created_at },
-                                  label: -> { WorkPackage.human_attribute_name(:created_at) } },
-          parent_estimated_time: { fn: ->(wp) { wp.parent&.estimated_hours },
-                                   label: -> { WorkPackage.human_attribute_name(:estimated_hours) } },
-          parent_finish_date: { fn: ->(wp) { wp.parent&.due_date },
-                                label: -> { WorkPackage.human_attribute_name(:due_date) } },
-          parent_priority: { fn: ->(wp) { wp.parent&.priority }, label: -> { WorkPackage.human_attribute_name(:priority) } },
-          priority: { fn: ->(wp) { wp.priority }, label: -> { WorkPackage.human_attribute_name(:priority) } },
-          project: { fn: ->(wp) { wp.project_id }, label: -> { WorkPackage.human_attribute_name(:project) } },
-          project_active: { fn: ->(wp) { wp.project&.active? }, label: -> { Project.human_attribute_name(:active) } },
-          project_name: { fn: ->(wp) { wp.project&.name }, label: -> { Project.human_attribute_name(:name) } },
-          project_status: { fn: ->(wp) { wp.project&.status_code }, label: -> { Project.human_attribute_name(:status_code) } },
-          project_parent: { fn: ->(wp) { wp.project&.parent_id }, label: -> { Project.human_attribute_name(:parent) } },
-          project_public: { fn: ->(wp) { wp.project&.public? }, label: -> { Project.human_attribute_name(:public) } },
-          start_date: { fn: ->(wp) { wp.start_date }, label: -> { WorkPackage.human_attribute_name(:start_date) } },
-          status: { fn: ->(wp) { wp.status&.name }, label: -> { WorkPackage.human_attribute_name(:status) } },
-          type: { fn: ->(wp) { wp.type&.name }, label: -> { WorkPackage.human_attribute_name(:type) } }
-        }
-      )
-
-      def fetch(key)
-        TOKEN_PROPERTY_MAP.dig(key, :fn) || DEFAULT_FUNCTION.call(key)
-      end
-
-      alias :[] :fetch
+      # rubocop:disable Layout/LineLength
+      BASE_ATTRIBUTE_TOKENS = [
+        AttributeToken.new(:id, -> { WorkPackage.human_attribute_name(:id) }, ->(wp) { wp.id }),
+        AttributeToken.new(:accountable, -> { WorkPackage.human_attribute_name(:responsible) }, ->(wp) { wp.responsible&.name }),
+        AttributeToken.new(:assignee, -> { WorkPackage.human_attribute_name(:assigned_to) }, ->(wp) { wp.assigned_to&.name }),
+        AttributeToken.new(:author, -> { WorkPackage.human_attribute_name(:author) }, ->(wp) { wp.author&.name }),
+        AttributeToken.new(:category, -> { WorkPackage.human_attribute_name(:category) }, ->(wp) { wp.category&.name }),
+        AttributeToken.new(:creation_date, -> { WorkPackage.human_attribute_name(:created_at) }, ->(wp) { wp.created_at }),
+        AttributeToken.new(:estimated_time, -> { WorkPackage.human_attribute_name(:estimated_hours) }, ->(wp) { wp.estimated_hours }),
+        AttributeToken.new(:remaining_time, -> { WorkPackage.human_attribute_name(:remaining_hours) }, ->(wp) { wp.remaining_hours }),
+        AttributeToken.new(:finish_date, -> { WorkPackage.human_attribute_name(:due_date) }, ->(wp) { wp.due_date }),
+        AttributeToken.new(:parent_id, -> { WorkPackage.human_attribute_name(:id) }, ->(parent) { parent.id }),
+        AttributeToken.new(:parent_assignee, -> { WorkPackage.human_attribute_name(:assigned_to) }, ->(parent) { parent.assigned_to&.name }),
+        AttributeToken.new(:parent_author, -> { WorkPackage.human_attribute_name(:author) }, ->(parent) { parent.author&.name }),
+        AttributeToken.new(:parent_category, -> { WorkPackage.human_attribute_name(:category) }, ->(parent) { parent.category&.name }),
+        AttributeToken.new(:parent_creation_date, -> { WorkPackage.human_attribute_name(:created_at) }, ->(parent) { parent.created_at }),
+        AttributeToken.new(:parent_estimated_time, -> { WorkPackage.human_attribute_name(:estimated_hours) }, ->(parent) { parent.estimated_hours }),
+        AttributeToken.new(:parent_remaining_time, -> { WorkPackage.human_attribute_name(:remaining_hours) }, ->(parent) { parent.remaining_hours }),
+        AttributeToken.new(:parent_finish_date, -> { WorkPackage.human_attribute_name(:due_date) }, ->(parent) { parent.due_date }),
+        AttributeToken.new(:parent_priority, -> { WorkPackage.human_attribute_name(:priority) }, ->(parent) { parent.priority }),
+        AttributeToken.new(:parent_subject, -> { WorkPackage.human_attribute_name(:subject) }, ->(parent) { parent.subject }),
+        AttributeToken.new(:priority, -> { WorkPackage.human_attribute_name(:priority) }, ->(wp) { wp.priority }),
+        AttributeToken.new(:project_id, -> { Project.human_attribute_name(:id) }, ->(project) { project.id }),
+        AttributeToken.new(:project_active, -> { Project.human_attribute_name(:active) }, ->(project) { project.active? }),
+        AttributeToken.new(:project_name, -> { Project.human_attribute_name(:name) }, ->(project) { project.name }),
+        AttributeToken.new(:project_status, -> { Project.human_attribute_name(:status_code) }, ->(project) { project.status_code }),
+        AttributeToken.new(:project_parent, -> { Project.human_attribute_name(:parent) }, ->(project) { project.parent_id }),
+        AttributeToken.new(:project_public, -> { Project.human_attribute_name(:public) }, ->(project) { project.public? }),
+        AttributeToken.new(:start_date, -> { WorkPackage.human_attribute_name(:start_date) }, ->(wp) { wp.start_date }),
+        AttributeToken.new(:status, -> { WorkPackage.human_attribute_name(:status) }, ->(wp) { wp.status&.name }),
+        AttributeToken.new(:type, -> { WorkPackage.human_attribute_name(:type) }, ->(wp) { wp.type&.name })
+      ].freeze
+      # rubocop:enable Layout/LineLength
 
       def tokens_for_type(type)
-        base = default_tokens
-        base[:work_package].merge!(tokenize(work_package_cfs_for(type)))
-        base[:project].merge!(tokenize(project_attributes, "project_"))
-        base[:parent].merge!(tokenize(all_work_package_cfs, "parent_"))
-
-        base.transform_values { _1.sort_by(&:last).to_h }
+        [
+          *BASE_ATTRIBUTE_TOKENS,
+          *tokenize(work_package_cfs_for(type)),
+          *tokenize(project_cfs, "project_"),
+          *tokenize(all_work_package_cfs, "parent_")
+        ]
       end
 
       private
 
       def default_tokens
-        TOKEN_PROPERTY_MAP.keys.each_with_object({ project: {}, work_package: {}, parent: {} }) do |key, obj|
-          label = TOKEN_PROPERTY_MAP.dig(key, :label).call
-
-          case key.to_s
+        BASE_ATTRIBUTE_TOKENS.each_with_object({ work_package: {}, project: {}, parent: {} }) do |token, obj|
+          case token.key.to_s
           when /^project_/
-            obj[:project][key] = label
+            obj[:project][token.key] = token
           when /^parent_/
-            obj[:parent][key] = label
+            obj[:parent][token.key] = token
           else
-            obj[:work_package][key] = label
+            obj[:work_package][token.key] = token
           end
         end
       end
 
+      def prefixed_label(context, attribute_label)
+        attribute_context = I18n.t("types.edit.subject_configuration.token.context.#{context}")
+        I18n.t("types.edit.subject_configuration.token.label_with_context", attribute_context:, attribute_label:)
+      end
+
       def tokenize(custom_field_scope, prefix = nil)
-        custom_field_scope.pluck(:name, :id).to_h { |name, id| [:"#{prefix}custom_field_#{id}", name] }
+        custom_field_scope.pluck(:name, :id).map do |name, id|
+          AttributeToken.new(
+            :"#{prefix}custom_field_#{id}",
+            -> { name },
+            ->(context) do
+              key = :"custom_field_#{id}"
+              return :attribute_not_available unless context.respond_to?(key)
+
+              context.public_send(key)
+            end
+          )
+        end
       end
 
       def work_package_cfs_for(type)
@@ -111,10 +114,10 @@ module Types
       end
 
       def all_work_package_cfs
-        WorkPackageCustomField.where(multi_value: false).where.not(field_format: %w[text bool link empty]).order(:name)
+        WorkPackageCustomField.where.not(field_format: %w[text bool link empty]).order(:name)
       end
 
-      def project_attributes
+      def project_cfs
         ProjectCustomField.where.not(field_format: %w[text bool link empty])
                           .where(admin_only: false, multi_value: false).order(:name)
       end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -68,7 +70,6 @@ RSpec.describe "Help menu items", :js do
     include_context "support links"
 
     def fake_an_enterprise_token
-      allow(EnterpriseToken).to receive(:show_banners?).and_return(false)
       allow(EnterpriseToken).to receive(:active?).and_return(true)
     end
 

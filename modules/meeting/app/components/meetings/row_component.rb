@@ -58,7 +58,13 @@ module Meetings
       if recurring?
         helpers.format_time(model.start_time, include_date: false)
       else
-        safe_join([helpers.format_date(model.start_time), helpers.format_time(model.start_time, include_date: false)], " ")
+        safe_join(
+          [
+            helpers.format_time_as_date(model.start_time),
+            helpers.format_time(model.start_time, include_date: false)
+          ],
+          " "
+        )
       end
     end
 
@@ -89,7 +95,7 @@ module Meetings
     def action_menu
       render(Primer::Alpha::ActionMenu.new) do |menu|
         menu.with_show_button(icon: "kebab-horizontal",
-                              "aria-label": "More",
+                              "aria-label": t(:label_more),
                               scheme: :invisible,
                               data: {
                                 "test-selector": "more-button"
@@ -122,7 +128,6 @@ module Meetings
                      href: copy_project_meeting_path(project, model),
                      content_arguments: {
                        data: {
-                         turbo: model.is_a?(StructuredMeeting),
                          turbo_stream: true
                        }
                      }) do |item|

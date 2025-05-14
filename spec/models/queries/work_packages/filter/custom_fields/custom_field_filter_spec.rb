@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -278,7 +280,7 @@ RSpec.describe Queries::WorkPackages::Filter::CustomFieldFilter do
         bogus_return_value = ["user1", "user2"]
         allow(user_wp_custom_field)
           .to receive(:possible_values_options)
-          .with(project)
+          .with(project, options: {})
           .and_return(bogus_return_value)
 
         instance.context = project
@@ -294,7 +296,7 @@ RSpec.describe Queries::WorkPackages::Filter::CustomFieldFilter do
         bogus_return_value = ["version1", "version2"]
         allow(version_wp_custom_field)
           .to receive(:possible_values_options)
-          .with(project)
+          .with(project, options: { scope: :visible })
           .and_return(bogus_return_value)
 
         instance.context = project

@@ -34,13 +34,15 @@ module WorkPackages
       include OpPrimer::ComponentHelpers
       include OpTurbo::Streamable
 
-      attr_accessor :form_id, :show_date_form, :work_package, :schedule_manually, :focused_field, :touched_field_map, :date_mode
+      attr_accessor :form_id, :show_date_form, :work_package, :schedule_manually, :focused_field, :triggering_field,
+                    :touched_field_map, :date_mode
 
       def initialize(form_id:,
                      show_date_form:,
                      work_package:,
                      schedule_manually: true,
                      focused_field: :start_date,
+                     triggering_field: nil,
                      touched_field_map: {},
                      date_mode: nil)
         super
@@ -50,6 +52,7 @@ module WorkPackages
         @work_package = work_package
         @schedule_manually = ActiveModel::Type::Boolean.new.cast(schedule_manually)
         @focused_field = focused_field
+        @triggering_field = triggering_field
         @touched_field_map = touched_field_map
         @date_mode = date_mode
       end
@@ -58,14 +61,27 @@ module WorkPackages
 
       def submit_path
         if work_package.new_record?
-          datepicker_dialog_content_path
+          # create: get json of selected dates
+          date_picker_path
         else
-          work_package_datepicker_dialog_content_path(work_package)
+          # update dates of work package
+          work_package_date_picker_path(work_package)
+        end
+      end
+
+      def dialog_content_with(schedule_manually:)
+        dialog_params = params.without(:on, :controller, :action)
+                              .merge(schedule_manually:)
+                              .permit!
+        if work_package.new_record?
+          new_date_picker_path(dialog_params)
+        else
+          work_package_date_picker_path(work_package, dialog_params)
         end
       end
 
       def disabled?
-        !schedule_manually
+        !schedule_manually && (milestone? || work_package.children.any?)
       end
 
       def milestone?

@@ -13,7 +13,7 @@ import { OpSpotModule } from 'core-app/spot/spot.module';
 import { OpenprojectModalModule } from '../modal/modal.module';
 import { OpDatePickerSheetComponent } from 'core-app/shared/components/datepicker/sheet/date-picker-sheet.component';
 import { OpenprojectContentLoaderModule } from 'core-app/shared/components/op-content-loader/openproject-content-loader.module';
-import { OpWpModalDatePickerComponent } from 'core-app/shared/components/datepicker/wp-modal-date-picker/wp-modal-date-picker.component';
+import { OpWpDatePickerInstanceComponent } from 'core-app/shared/components/datepicker/wp-date-picker-modal/wp-date-picker-instance.component';
 
 @NgModule({
   imports: [
@@ -34,14 +34,14 @@ import { OpWpModalDatePickerComponent } from 'core-app/shared/components/datepic
   declarations: [
     OpModalSingleDatePickerComponent,
     OpDatePickerSheetComponent,
-    OpWpModalDatePickerComponent,
+    OpWpDatePickerInstanceComponent,
   ],
 
   exports: [
     OpModalSingleDatePickerComponent,
     OpBasicDatePickerModule,
     OpDatePickerSheetComponent,
-    OpWpModalDatePickerComponent,
+    OpWpDatePickerInstanceComponent,
   ],
 })
 export class OpDatePickerModule { }

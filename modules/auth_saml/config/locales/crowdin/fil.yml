@@ -2,8 +2,8 @@ fil:
   activerecord:
     attributes:
       saml/provider:
-        display_name: Name
-        identifier: Identifier
+        display_name: Pangalan
+        identifier: Ang pagkakakilanlan
         secret: Secret
         scope: Scope
         assertion_consumer_service_url: ACS (Assertion consumer service) URL
@@ -64,7 +64,8 @@ fil:
         The following fields control which attributes provided by the SAML identity provider are used to provide user attributes in OpenProject
       metadata:
         dialog: "This is the URL where the OpenProject SAML metadata is available. Optionally use it to configure your identity provider:"
-      upsale:
+      upsell:
+        title: "Single Sign-On (SSO) with SAML"
         description: Connect OpenProject to a SAML identity provider
       request_attributes:
         title: 'Requested attributes'
@@ -74,7 +75,7 @@ fil:
         format: 'Attribute format'
       section_headers:
         configuration: "Primary configuration"
-        attributes: "Attributes"
+        attributes: "Mga katangian"
       section_texts:
         display_name: "Configure the display name of the SAML provider."
         metadata: "Pre-fill configuration using a metadata URL or by pasting metadata XML"

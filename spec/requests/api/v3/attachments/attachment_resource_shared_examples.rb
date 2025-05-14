@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -547,8 +549,8 @@ RSpec.shared_examples "an APIv3 attachment resource", content_type: :json, type:
 
   context "by container", if: include_by_container do
     it_behaves_like "it supports direct uploads" do
-      let(:request_path) { "/api/v3/#{attachment_type}s/#{container.id}/attachments/prepare" }
-      let(:container_href) { "/api/v3/#{attachment_type}s/#{container.id}" }
+      let(:request_path) { "/api/v3/#{attachment_type.to_s.pluralize}/#{container.id}/attachments/prepare" }
+      let(:container_href) { "/api/v3/#{attachment_type.to_s.pluralize}/#{container.id}" }
     end
 
     subject(:response) { last_response }

@@ -112,7 +112,7 @@ nl:
         inline: "Markeer inline:"
         entire_card_by: "Gehele kaart door"
       remove_from_list: "Verwijder kaart uit lijst"
-    caption_rate_history: "Beoordeel geschiedenis"
+    caption_rate_history: "Tarief geschiedenis"
     clipboard:
       browser_error: "Uw browser ondersteunt kopiëren naar het klembord niet. Kopieer het handmatig: %{content}"
       copied_successful: "Succesvol gekopieerd naar klembord!"
@@ -221,7 +221,7 @@ nl:
             label_maximum_users: "Maximum aantal actieve gebruikers"
             label_starts_at: "Start op"
             label_expires_at: "Verloopt op"
-            label_plan: "Plan"
+            label_plan: "Pakket"
             label_additional_features: "Additional features"
             receive_newsletter: Ik wil de OpenProject <a target="_blank" href="%{link}">nieuwsbrief</a> ontvangen.
             taken_domain: Er kan slechts één actieve proefperiode per domein zijn.
@@ -239,10 +239,13 @@ nl:
           status_waiting: "E-mail verzonden - wacht op bevestiging"
           test_ee: "Test de Enterprise-editie 14 dagen gratis"
           quick_overview: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
-        upsale:
+        upsell:
           become_hero: "Word een held!"
           enterprise_info_html: "%{feature_title} is an Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> add-on."
           upgrade_info: "Gelieve te upgraden naar een betaald abonnement om het te activeren en te beginnen met het gebruik ervan in uw team."
+          text: >
+            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
+          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
           benefits:
             description: "What are the benefits of the Enterprise on-premises edition?"
             high_security: "Beveiliging functies"
@@ -261,10 +264,7 @@ nl:
             We bieden het vertrouwen van een geteste en ondersteunde software voor projectbeheer van enterprise-class - met Open Source en een open geest.
           link_quote: "Vraag een offerte aan"
           more_info: "Meer informatie"
-          text: >
-            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
           unlimited: "Onbeperkt"
-          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
       working_days:
         calendar:
           empty_state_header: "Vrije dagen"
@@ -316,10 +316,10 @@ nl:
       label: "Gantt-grafiek"
       quarter_label: "Q%{quarter_number}"
       labels:
-        title: "Labelconfiguratie"
+        title: "Label configuratie"
         bar: "Bar etiketten"
-        left: "Links"
-        right: "Rechts"
+        left: "Linkerkant"
+        right: "Rechterkant"
         farRight: "Uiterst rechts"
         description: >
           Selecteer de attributen die u te allen tijde wilt laten zien in de respectieve posities van het Gantt-diagram. Merk op dat wanneer de muis over een element beweegt, de datum labels worden getoond in plaats van deze eigenschappen.
@@ -332,7 +332,7 @@ nl:
       zoom:
         in: "Inzoomen"
         out: "Uitzoomen"
-        auto: "Automatisch inzoomen"
+        auto: "Auto-zoom"
         days: "Dagen"
         weeks: "Weken"
         months: "Maanden"
@@ -355,13 +355,13 @@ nl:
       blocks:
         new_features:
           text_new_features: "Lees over nieuwe functies en product-updates."
-          learn_about: "Meer informatie over de nieuwe functies"
+          learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_3":
+          "16_0":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Schedule recurring meetings to streamline your weekly, biweekly, or custom appointments.</li> <li>Create child work packages directly from the Relations tab.</li> <li>Include total sums in timesheet PDF exports for better insights.</li> <li>Include child work packages in cost reports for more accurate tracking.</li> <li>See dates of previously hidden, permission-restricted relations to make informed scheduling decisions.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
     ical_sharing_modal:
       title: "Abonneren op agenda"
       inital_setup_error_message: "Er is een fout opgetreden tijdens het ophalen van gegevens."
@@ -434,7 +434,6 @@ nl:
     label_filename: "Bestand"
     label_filesize: "Grootte"
     label_general: "Algemeen"
-    label_global_roles: "Global roles"
     label_greater_or_equal: ">="
     label_group: "Groep"
     label_group_by: "Groeperen op"
@@ -459,10 +458,11 @@ nl:
     label_manage_columns: "Manage and reorder columns"
     label_me: "ik"
     label_meeting_agenda: "Agenda"
-    label_meeting_minutes: "Minuten"
+    label_meeting_minutes: "Notulen"
     label_menu_collapse: "samenvouwen"
     label_menu_expand: "uitbreiden"
     label_more_than_ago: "meer dan dagen geleden"
+    label_moderate_comment: "Moderate comment"
     label_next: "Volgende"
     label_no_color: "Geen kleur"
     label_no_data: "Geen gegevens om weer te geven"
@@ -496,7 +496,7 @@ nl:
     label_repository_plural: "Repositories"
     label_save_as: "Opslaan als"
     label_search_columns: "Search a column"
-    label_select_project: "Kies een project"
+    label_select_project: "Selecteer een project"
     label_select_watcher: "Kies een toezichter..."
     label_selected_filter_list: "Geselecteerde filters"
     label_show_attributes: "Toon alle kenmerken"
@@ -541,7 +541,7 @@ nl:
     label_uploaded_by: "Geüpload door"
     label_default_queries: "Standaard"
     label_starred_queries: "Favoriete"
-    label_global_queries: "Openbaar"
+    label_global_queries: "Publiek"
     label_custom_queries: "Privé"
     label_columns: "Kolommen"
     label_attachments: Bijlagen
@@ -614,7 +614,7 @@ nl:
         assigned: "Toegewezene"
         #The enum value is named 'responsible' in the database and that is what is transported through the API
         #up to the frontend.
-        responsible: "Accountable"
+        responsible: "Verantwoording afleggen"
         created: "Gemaakt"
         scheduled: "Gepland"
         commented: "Becommentarieerd"
@@ -631,9 +631,6 @@ nl:
         property_is: "is in %{difference_in_days}."
         property_was: "was %{difference_in_days} ago."
         property_is_deleted: "is deleted."
-        upsale:
-          title: "Date alerts"
-          description: "Met datummeldingen wordt u op de hoogte gebracht van de start- of einddatum, zodat u nooit een belangrijke deadline mist of vergeet."
       center:
         label_actor_and: "en"
         and_more_users:
@@ -644,7 +641,8 @@ nl:
           with_current_filter: "Er zijn geen meldingen in deze weergave op dit moment"
         mark_all_read: "Alles als gelezen markeren"
         mark_as_read: "Als gelezen markeren"
-        text_update_date_by: "%{date} by"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
+        text_update_date_by: "%{date} door"
         total_count_warning: "De %{newest_count} meest recente meldingen weergeven. %{more_count} meer worden niet weergegeven."
         empty_state:
           no_notification: "Het lijkt erop dat u helemaal bij bent."
@@ -696,7 +694,6 @@ nl:
           date_alerts:
             title: "Date alerts"
             description: "Automatic notifications when important dates are approaching for open work packages you are involved in (assignee, accountable or watcher)."
-            teaser_text: "Met datummeldingen wordt u op de hoogte gebracht van de start- of einddatum, zodat u nooit een belangrijke deadline mist of vergeet."
           overdue: Wanneer achterstallig
         project_specific:
           title: "Project-specifieke meldingsinstellingen"
@@ -789,7 +786,7 @@ nl:
       tracking_time: "Tracking time"
       button_stop: "Stop current timer"
     two_factor_authentication:
-      label_two_factor_authentication: "Twee-factor-authenticatie"
+      label_two_factor_authentication: "Twee-staps authenticatie"
     watchers:
       label_loading: volgers worden geladen...
       label_error_loading: Er is een fout opgetreden tijdens het laden van de volgers
@@ -799,6 +796,7 @@ nl:
       typeahead_placeholder: Zoek naar mogelijke toezichthouders
     relation_labels:
       parent: "Bovenliggend werkpakket"
+      child: "Kind"
       children: "Subdocumenten"
       relates: "Verwant Met"
       duplicates: "Kopies"
@@ -828,16 +826,16 @@ nl:
       add_new_child: "Maak nieuw kind"
       create_new: "Nieuwe aanmaken"
       add_existing: "Bestaande toevoegen"
-      add_existing_child: "Voeg bestaand kind toe"
+      add_existing_child: "Voeg subdocument toe"
       remove_child: "Verwijder kind"
       add_new_relation: "Maak nieuwe relatie"
       add_existing_relation: "Bestaande relatie toevoegen"
       update_description: "Kies of wijzig beschrijving van deze relatie"
       toggle_description: "Wissel de relatie beschrijving"
       update_relation: "Klik op het type relatie wijzigen"
-      add_follower: "Volgeling toevoegen"
       show_relations: "Relaties tonen"
       add_predecessor: "Toevoegen van de voorganger"
+      add_successor: "Add successor"
       remove: "Relatie verwijderen"
       save: "Sla relatie op"
       abort: "Annuleren"
@@ -867,7 +865,7 @@ nl:
     tl_toolbar:
       zooms: "Zoom niveau"
       outlines: "Niveau van de hiërarchie"
-    upsale:
+    upsell:
       ee_only: "Enterprise edition add-on"
     wiki_formatting:
       strong: "Vet"
@@ -886,7 +884,7 @@ nl:
       wiki_link: "Link naar een Wiki-pagina"
       image: "Afbeelding"
     sharing:
-      share: "Delen"
+      share: "Deel"
       selected_count: "%{count} geselecteerd"
       selection:
         mixed: "Gemengd"
@@ -1046,8 +1044,6 @@ nl:
       sharing:
         title: "Werkpakket delen"
         show_all_users: "Show all users with whom the work package has been shared with"
-        upsale:
-          description: "Werkpakketten delen met gebruikers die geen lid zijn van het project."
       table:
         configure_button: "Configureer werkpakkettabel"
         summary: "Tabel met rijen van werkpakket en kolommen werk pakket kenmerken."
@@ -1082,10 +1078,6 @@ nl:
           manually: "Handmatig"
           warning: "U verliest uw vorige sortering bij activeren van de automatische sorteringsmodus."
         columns_help_text: "Use the input field above to add columns to your table view. You can drag and drop the columns to reorder them."
-        upsale:
-          attribute_highlighting: "Moeten bepaalde werkpakketten te onderscheiden zijn van de massa?"
-          relation_columns: "Nodig om te zien van betrekkingen in de pakketlijst werk?"
-          check_out_link: "Check out the Enterprise edition."
         relation_filters:
           filter_work_packages_by_relation_type: "Filter werkpakketten op relatietype"
       tabs:
@@ -1299,9 +1291,7 @@ nl:
       clear: "Wissen"
       apply: "Toepassen"
       header_description: "Markeer wijzigingen die sindsdien in deze lijst zijn aangebracht."
-      enterprise_header_description: "Highlight changes made to this list since any point in the past with Enterprise edition."
       show_changes_since: "Toon wijzigingen sinds"
-      baseline_comparison: "Baseline comparison"
       help_description: "Reference time zone for the baseline."
       time_description: "In uw lokale tijd: %{datetime}"
       time: "Tijd"

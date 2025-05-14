@@ -34,16 +34,14 @@ ru:
           name: Темно-серый
         item_13:
           name: Чёрный
-      life_cycle_colors:
+      project_phase_colors:
         item_0:
           name: PM2 Оранжевый
         item_1:
-          name: PM2 Фиолетовый
-        item_2:
           name: PM2 Красный
-        item_3:
+        item_2:
           name: PM2 Пурпурный
-        item_4:
+        item_3:
           name: PM2 Зелено-жёлтый
       document_categories:
         item_0:
@@ -66,9 +64,9 @@ ru:
           name: Просмотрщик пакета работ
       project_roles:
         item_0:
-          name: Новый участник
+          name: Не участник
         item_1:
-          name: Аноним
+          name: Анонимно
         item_2:
           name: Участник
         item_3:
@@ -81,21 +79,18 @@ ru:
         item_1:
           name: Стандартная глобальная роль
     standard:
-      life_cycles:
+      project_phases:
         item_0:
           name: Запуск
         item_1:
-          name: Готов к планированию
-        item_2:
           name: Планирование
-        item_3:
-          name: Готово к выполнению
-        item_4:
+          start_gate: Готов к планированию
+        item_2:
           name: Выполнение
-        item_5:
-          name: Готов к закрытию
-        item_6:
+          start_gate: Готово к выполнению
+        item_3:
           name: Закрытие
+          start_gate: Готов к закрытию
       priorities:
         item_0:
           name: Низкий
@@ -115,7 +110,7 @@ ru:
               title: Добро пожаловать в демо-проект
               summary: |
                 Мы рады, что вы присоединились.
-                В этом модуле вы можете сообщать новости проекта членам вашей команды.
+                В этом модуле вы можете сообщать новости о проекте членам вашей команды.
               description: Текущие новости
           categories:
             item_0: Категория 1 (будет изменена в настройках проекта)
@@ -132,7 +127,7 @@ ru:
             kanban:
               name: Доска Канбана
             basic:
-              name: Основная доска
+              name: Базовая доска
               lists:
                 item_0:
                   name: Список пожеланий
@@ -170,7 +165,7 @@ ru:
                     Пожалуйста, сообщите нам, если у вас есть какие-либо вопросы или нужна поддержка. Свяжитесь с нами: [поддержка[at]openproject.com](mailto:support@openproject.com).
               item_5:
                 options:
-                  name: Пакеты работ
+                  name: Пакет работ
               item_6:
                 options:
                   name: Вехи
@@ -233,7 +228,7 @@ ru:
               title: Добро пожаловать в Ваш демо проект Scrum
               summary: |
                 Мы рады, что вы присоединились.
-                В этом модуле вы можете сообщать новости о проекте членам вашей команды.
+                В этом модуле вы можете сообщать новости проекта членам вашей команды.
           versions:
             item_0:
               name: Невыполненные задачи по исправлению ошибок
@@ -297,7 +292,7 @@ ru:
             item_0:
               name: План проекта
             item_1:
-              name: Невыполненные работы по продукту
+              name: бэклог продукта
             item_2:
               name: Спринт 1
             item_3:
@@ -341,7 +336,7 @@ ru:
                     Пожалуйста, сообщите нам, если у Вас возникнут вопросы или Вам понадобится поддержка. Свяжитесь с нами: [support[at]openproject.com](mailto:support@openproject.com).
               item_5:
                 options:
-                  name: Пакеты работ
+                  name: Пакет работ
               item_6:
                 options:
                   name: План проекта
@@ -490,7 +485,7 @@ ru:
         item_1:
           name: Веха
         item_2:
-          name: Фаза
+          name: Сводка задачи
         item_3:
           name: Функция
         item_4:

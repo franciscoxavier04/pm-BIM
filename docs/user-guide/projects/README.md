@@ -113,7 +113,7 @@ If you want to set a project to public, you can do so by ticking the box next to
 
 Setting a project to public will make it accessible to all people within your OpenProject instance.
 
-(Should your instance be [accessible without authentication](../../system-admin-guide/authentication/authentication-settings) this option will make the project visible to the general public outside your registered users, too)
+(Should your instance be [accessible without authentication](../../system-admin-guide/authentication/login-registration-settings/) this option will make the project visible to the general public outside your registered users, too)
 
 ### Copy a project
 
@@ -138,7 +138,7 @@ Under the **Copy options** section you can select what additional project data a
 ![Copy options when copying a project in OpenProject](project-settings-copy-project-copy-options.png)
 
 > [!NOTE]
-> The File storages options only apply if the template project had  [OneDrive/SharePoint](../../system-admin-guide/integrations/one-drive) with automatically managed folders activated.
+> The File storages options only apply if the template project had a file storage with automatically managed folders activated.
 
 If you select the **File Storages: Project folders** option, both the storage and the storage folders are copied into the new project if automatically managed project folders were selected for the original file storage. For storages with manually managed project folders setup the copied storage will be referencing the same folder as the original project.
 

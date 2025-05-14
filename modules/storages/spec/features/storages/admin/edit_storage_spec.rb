@@ -46,7 +46,7 @@ RSpec.describe "Admin Edit File storage",
     page.find_test_selector("storage-delete-button").click
 
     expect(page).to have_text("DELETE FILE STORAGE")
-    expect(page).to have_current_path("#{confirm_destroy_admin_settings_storage_path(storage)}?utf8=%E2%9C%93")
+    expect(page).to have_current_path(confirm_destroy_admin_settings_storage_path(storage))
     storage_delete_button = page.find_button("Delete", disabled: true)
 
     fill_in("delete_confirmation", with: "Foo Nextcloud")
@@ -112,6 +112,9 @@ RSpec.describe "Admin Edit File storage",
         # Update a storage - happy path
         find_test_selector("storage-edit-host-button").click
         within_test_selector("storage-general-info-form") do
+          expect(page).to have_enterprise_banner(:corporate)
+          expect(page).to have_css("option:disabled[value=oauth2_sso]") # expect SSO option to be disabled
+
           fill_in "Name", with: "My Nextcloud"
           click_on "Save and continue"
         end
@@ -222,12 +225,10 @@ RSpec.describe "Admin Edit File storage",
     it "renders a sidebar component" do
       visit edit_admin_settings_storage_path(storage)
 
-      aggregate_failures "Health status" do
-        expect(page).to have_test_selector("validation-result--subtitle", text: "Connection validation")
-        expect(page).to have_test_selector("storage-health-status", text: "Pending")
-      end
+      expect(page).to have_text("Health status report")
 
       aggregate_failures "Health notifications" do
+        expect(page).to have_test_selector("storage-health-status", text: "Pending")
         expect(page).to have_test_selector("storage-health-notifications-button", text: "Unsubscribe")
         expect(page).to have_test_selector("storage-health-notifications-description",
                                            text: "All administrators receive health status email notifications for this storage.")
@@ -290,6 +291,14 @@ RSpec.describe "Admin Edit File storage",
       # Only testing interaction with components not tested
       # in Two-Way OAuth 2.0 case
 
+      aggregate_failures "General information" do
+        find_test_selector("storage-edit-host-button").click
+        within_test_selector("storage-general-info-form") do
+          # We use a previously configured SSO storage, even though our current token does not support it
+          expect(page).to have_enterprise_banner(:corporate)
+        end
+      end
+
       aggregate_failures "Storage Audience" do
         find_test_selector("storage-edit-storage-audience-button").click
         within_test_selector("storage-audience-form") do
@@ -341,12 +350,10 @@ RSpec.describe "Admin Edit File storage",
     it "renders a sidebar component" do
       visit edit_admin_settings_storage_path(storage)
 
-      aggregate_failures "Health status" do
-        expect(page).to have_test_selector("validation-result--subtitle", text: "Connection validation")
-        expect(page).to have_test_selector("storage-health-status", text: "Pending")
-      end
+      expect(page).to have_text("Health status report")
 
       aggregate_failures "Health notifications" do
+        expect(page).to have_test_selector("storage-health-status", text: "Pending")
         expect(page).to have_test_selector("storage-health-notifications-button", text: "Unsubscribe")
         expect(page).to have_test_selector("storage-health-notifications-description",
                                            text: "All administrators receive health status email notifications for this storage.")
@@ -360,6 +367,17 @@ RSpec.describe "Admin Edit File storage",
         )
       end
     end
+
+    context "and when there is an appropriate enterprise token", with_ee: [:nextcloud_sso] do
+      it "shows no enterprise banner", :webmock do
+        visit edit_admin_settings_storage_path(storage)
+
+        find_test_selector("storage-edit-host-button").click
+        within_test_selector("storage-general-info-form") do
+          expect(page).not_to have_enterprise_banner
+        end
+      end
+    end
   end
 
   context "with Nextcloud Storage and not automatically managed" do
@@ -368,7 +386,7 @@ RSpec.describe "Admin Edit File storage",
     it "renders health status information but without health notifications for automatically managed folders" do
       visit edit_admin_settings_storage_path(storage)
 
-      expect(page).to have_test_selector("validation-result--subtitle", text: "Connection validation")
+      expect(page).to have_text("Health status report")
       expect(page).not_to have_test_selector("storage-health-status")
       expect(page).not_to have_test_selector("storage-health-notifications-button")
     end
@@ -467,12 +485,10 @@ RSpec.describe "Admin Edit File storage",
     it "renders a sidebar component" do
       visit edit_admin_settings_storage_path(storage)
 
-      aggregate_failures "Health status" do
-        expect(page).to have_test_selector("validation-result--subtitle", text: "Connection validation")
-        expect(page).to have_test_selector("storage-health-status", text: "Pending")
-      end
+      expect(page).to have_text("Health status report")
 
       aggregate_failures "Health notifications" do
+        expect(page).to have_test_selector("storage-health-status", text: "Pending")
         expect(page).to have_test_selector("storage-health-notifications-button", text: "Unsubscribe")
         expect(page).to have_test_selector("storage-health-notifications-description",
                                            text: "All administrators receive health status email notifications for this storage.")
@@ -492,7 +508,7 @@ RSpec.describe "Admin Edit File storage",
     it "renders health status information but without health notifications for automatically managed folders" do
       visit edit_admin_settings_storage_path(storage)
 
-      expect(page).to have_test_selector("validation-result--subtitle", text: "Connection validation")
+      expect(page).to have_text("Health status report")
       expect(page).not_to have_test_selector("storage-health-status")
       expect(page).not_to have_test_selector("storage-health-notifications-button")
     end

@@ -35,11 +35,20 @@ sv:
         label_sort_desc: "Newest on top"
         label_type_to_comment: "Add a comment. Type @ to notify people."
         label_submit_comment: "Submit comment"
+        label_who: Who?
         changed_on: "changed on"
         created_on: "created this on"
         changed: "changed"
         created: "created"
         commented: "commented"
+        internal_comment: Internal comment
+        internal_journal: Internal comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
+        internal_comment_confirmation:
+          title: "Make this comment public?"
+          heading: "Make this comment public?"
+          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          confirm_button_text: "Make public"
   admin:
     plugins:
       no_results_title_text: There are currently no plugins installed.
@@ -59,9 +68,6 @@ sv:
         main-menu-bg-selected-background: "Huvudmeny när vald"
         main-menu-bg-hover-background: "Huvudmeny vid hovring"
       custom_colors: "Anpassade färger"
-      customize: "Anpassa din OpenProject installation med din egen logotyp och färger."
-      enterprise_notice: "As a special 'Thank you!' for their financial contribution to develop OpenProject, this tiny add-on is only available for Enterprise edition support subscribers."
-      enterprise_more_info: "Obs: logotypen som används kommer att vara allmänt tillgänglig."
       manage_colors: "Redigera alternativ för valbara färger"
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
@@ -96,6 +102,8 @@ sv:
       explanation:
         text: "Individual actions of a user (e.g. updating a work package twice) are aggregated into a single action if their age difference is less than the specified timespan. They will be displayed as a single action within the application. This will also delay notifications by the same amount of time reducing the number of emails being sent and will also affect %{webhook_link} delay."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Visa fram till
     is_active: visas för tillfället
@@ -124,7 +132,7 @@ sv:
       cancelled_due_to: "Jobbet avbröts på grund av fel: %{message}"
   ldap_auth_sources:
     ldap_error: "LDAP-fel: %{error_message}"
-    ldap_auth_failed: "Kunde inte autentisera vid LDAP-servern."
+    ldap_auth_failed: "Kunde inte autentisera på LDAP-servern."
     sync_failed: "Failed to synchronize from LDAP: %{message}."
     back_to_index: "Click here to go back to the list of connection."
     technical_warning_html: |
@@ -211,14 +219,11 @@ sv:
     new: "Lägg till ny anpassad åtgärd"
     edit: "Redigera anpassad åtgärd %{name}"
     execute: "Verkställ %{name}"
-    upsale:
-      title: "Anpassade åtgärder"
-      description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
   custom_fields:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: För alla projekt
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -243,8 +248,6 @@ sv:
           zero: no sub-items
           one: 1 sub-item
           other: "%{count} sub-items"
-    upsale:
-      custom_field_format_hierarchy: "Need a hierarchy in your custom fields for work packages?"
     text_add_new_custom_field: >
       Innan du kan lägga till nya anpassade fält till ett projekt måste du skapa dessa.
     is_enabled_globally: "Är aktiverad globalt"
@@ -288,16 +291,17 @@ sv:
           not_descendant: "must be a descendant of the hierarchy root."
     rules:
       depth: "Depth"
-      item: "Item"
+      item: "Objekt"
       label: "Etikett"
       short: "Short name"
-      parent: "Parent"
+      parent: "Överordnad"
       blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
-      wiki_pages: "Wiki"
+      all: "Alla"
       messages: "Forum"
+      wiki_pages: "Wiki"
   groups:
     index:
       no_results_title_text: Det finns för närvarande inga grupper.
@@ -349,6 +353,24 @@ sv:
         heading: "Delete this project list?"
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
+      header_details: Basic details
+      header_status: Projektstatus
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status_description: Update status description
+      button_update_parent_project: Update parent project
+      public_warning: >
+        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+      public_confirmation:
+        checkbox: "I understand that this will make the previously private content public"
+        title: "Make this project public?"
+        description: >
+          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+      private_confirmation:
+        checkbox: "I understand that this will make the previously public content private."
+        title: "Make this project private?"
+        description: >
+          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       change_identifier: Change identifier
       actions:
         label_enable_all: "Enable all"
@@ -365,14 +387,14 @@ sv:
         no_results_title_text: Det finns för närvarande inga anpassade fält tillgängliga.
       life_cycle:
         header:
-          title: "Project lifecycle"
-          description_html: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
-        non_defined: "Neither stages nor gates are currently defined."
-        section_header: "Stages and gates"
+          title: "Project life cycle"
+          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
+        non_defined: "No phases are currently defined."
+        section_header: "Phases"
         step:
           use_in_project: "Use %{step} in this project"
         filter:
-          label: "Search project stage or gate"
+          label: "Search project phase"
       project_custom_fields:
         header:
           title: "Project attributes"
@@ -397,8 +419,10 @@ sv:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
       work_package_priorities:
         new_label: "New priority"
-  project_stage:
-    working_days_count:
+    status:
+      button_edit: Edit project status
+  project_phase:
+    duration:
       one: "Duration: %{count} working day"
       other: "Duration: %{count} working days"
   lists:
@@ -540,10 +564,6 @@ sv:
         All occurrences of the placeholder user (e.g., as assignee, responsible or other user values) will be reassigned to an account called "Deleted user". As the data of every deleted account is reassigned to this account it will not be possible to distinguish the data the user created from the data of another deleted account.
       irreversible: "This action is irreversible"
       confirmation: "Enter the placeholder user name %{name} to confirm the deletion."
-    upsale:
-      title: Placeholder users
-      description: >
-        Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
   prioritiies:
     edit:
       priority_color_text: |
@@ -599,14 +619,12 @@ sv:
       no_results_content_text: Skapa ny typ
     edit:
       form_configuration:
-        tab: "Form configuration"
-      more_info_text_html: >
-        Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
+        tab: "Ställ in formulär"
       projects:
-        tab: "Projects"
-        enabled_projects: "Enabled projects"
+        tab: "Projekt"
+        enabled_projects: "Aktiverade projekt"
       settings:
-        tab: "Settings"
+        tab: "Inställningar"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
       subject_configuration:
         tab: "Subject configuration"
@@ -616,10 +634,17 @@ sv:
         automatically_generated_subjects:
           label: "Automatically generated subjects"
           caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Arbetspaket"
+            parent: "Överordnad"
+            project: "Projekt"
         pattern:
           label: "Subject pattern"
-          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
-          insert_as_text: "Add as text: \"%{word}\""
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -664,13 +689,13 @@ sv:
         title: "Working days only"
       mode:
         title: "Scheduling mode"
-        automatic: "Automatic"
+        automatic: "Automatisk"
         manual: "Manual"
       show_relations: "Show relations"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
-        dates: "Dates"
+        children: "Barn"
+        dates: "Datum"
         predecessors: "Predecessors"
         successors: "Successors"
         blankslate:
@@ -738,10 +763,10 @@ sv:
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
-      label_relates_singular: "related to"
-      label_relates_plural: "related to"
-      label_relates_to_singular: "related to"
-      label_relates_to_plural: "related to"
+      label_relates_singular: "Relaterad till"
+      label_relates_plural: "Relaterad till"
+      label_relates_to_singular: "Relaterad till"
+      label_relates_to_plural: "Relaterad till"
       relates_description: "Creates a visible link between the two work packages with no additional effect"
       relates_to_description: "Creates a visible link between the two work packages with no additional effect"
       label_precedes_singular: "successor (after)"
@@ -752,47 +777,49 @@ sv:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      new_child: "New child"
-      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
-      existing_child: "Existing child"
+      new_child: "Skapa nytt barn"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
+      child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      parent: "Överordnad"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
-      label_blocks_singular: "blocks"
-      label_blocks_plural: "blocks"
+      label_blocks_singular: "blockerar"
+      label_blocks_plural: "blockerar"
       blocks_description: "The related work package cannot be closed until this one is closed first"
-      label_blocked_singular: "blocked by"
-      label_blocked_plural: "blocked by"
-      label_blocked_by_singular: "blocked by"
-      label_blocked__by_plural: "blocked by"
+      label_blocked_singular: "blockeras av"
+      label_blocked_plural: "blockeras av"
+      label_blocked_by_singular: "blockeras av"
+      label_blocked__by_plural: "blockeras av"
       blocked_description: "This work package cannot be closed until the related one is closed first"
       blocked_by_description: "This work package cannot be closed until the related one is closed first"
-      label_duplicates_singular: "duplicates"
-      label_duplicates_plural: "duplicates"
+      label_duplicates_singular: "dubblett av"
+      label_duplicates_plural: "dubblett av"
       duplicates_description: "This is a copy of the related work package"
-      label_duplicated_singular: "duplicated by"
-      label_duplicated_plural: "duplicated by"
-      label_duplicated_by_singular: "duplicated by"
-      label_duplicated_by_plural: "duplicated by"
+      label_duplicated_singular: "duplicerad genom"
+      label_duplicated_plural: "duplicerad genom"
+      label_duplicated_by_singular: "duplicerad genom"
+      label_duplicated_by_plural: "duplicerad genom"
       duplicated_by_description: "The related work package is a copy of this"
       duplicated_description: "The related work package is a copy of this"
-      label_includes_singular: "includes"
-      label_includes_plural: "includes"
+      label_includes_singular: "inkluderar"
+      label_includes_plural: "inkluderar"
       includes_description: "Marks the related work package as including this one with no additional effect"
-      label_partof_singular: "part of"
-      label_partof_plural: "part of"
-      label_part_of_singular: "part of"
-      label_part_of_plural: "part of"
+      label_partof_singular: "del av"
+      label_partof_plural: "del av"
+      label_part_of_singular: "del av"
+      label_part_of_plural: "del av"
       partof_description: "Marks the related work package as being part of this one with no additional effect"
       part_of_description: "Marks the related work package as being part of this one with no additional effect"
-      label_requires_singular: "requires"
-      label_requires_plural: "requires"
+      label_requires_singular: "kräver"
+      label_requires_plural: "kräver"
       requires_description: "Marks the related work package as a requirement to this one"
-      label_required_singular: "required by"
-      label_required_plural: "required by"
+      label_required_singular: "krävs av"
+      label_required_plural: "krävs av"
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
-      ghost_relation_title: "Related work package"
+      ghost_relation_title: "Relaterat arbetspaketet"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Inbjudan
   account:
@@ -855,7 +882,7 @@ sv:
         editable: "Redigerbar"
         field_format: "Format"
         is_filter: "Används som ett filter"
-        is_for_all: "For all projects"
+        is_for_all: "För alla projekt"
         is_required: "Krävs"
         max_length: "Maximal längd"
         min_length: "Minsta längd"
@@ -872,7 +899,7 @@ sv:
         secret: "Client secret"
         owner: "Ägare"
         builtin: "Builtin"
-        enabled: "Active"
+        enabled: "Aktiv"
         redirect_uri: "Omdirigerings-URI"
         client_credentials_user_id: "Användar-ID klientreferenser"
         scopes: "Omfattning"
@@ -900,7 +927,7 @@ sv:
         attr_login: "Attribut för användarnamn"
         attr_mail: "E-postattribut"
         filter_string: "Filter string"
-        admin: "Administrator"
+        admin: "Administratör"
         base_dn: "Base DN"
         host: "Host"
         onthefly: "Automatic user creation"
@@ -912,13 +939,13 @@ sv:
         read_ian: "Read in-app"
         resource: "Resource"
       oauth_client:
-        client: "Client ID"
+        client: "Klient-ID"
       project:
         active_value:
           true: "unarchived"
           false: "arkiverad"
         description: "Beskrivning"
-        enabled_modules: "Enabled modules"
+        enabled_modules: "Aktiverad Moduler"
         identifier: "Identifierare"
         latest_activity_at: "Senaste aktivitet vid"
         parent: "Delprojekt under"
@@ -946,22 +973,28 @@ sv:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
-      project/life_cycle_step:
+      project/phase:
+        date_range: "Datumintervall"
         definition: "Definition"
-      project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+      project/phase_definition:
+        name: "Namn"
+        color: "Färg"
+        start_gate: "Start phase gate"
+        start_gate_name: "Start phase gate name"
+        finish_gate: "Finish phase gate"
+        finish_gate_name: "Finish phase gate name"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "Kolumner"
         column_names: "Kolumner"
         relations_to_type_column: "Relationer till %{type}"
         relations_of_type_column: "relationer av typ %{type}"
+        child_work_packages: "Child work packages"
         group_by: "Gruppera resultat efter"
         sort_by: "Sort results by"
         filters: "Filter"
         timeline_labels: "Etiketter för tidslinje"
-        timeline_visible: "Show Gantt chart"
+        timeline_visible: "Visa Gantt-schema"
         timeline_zoom_level: "Gantt chart zoom level"
         timestamps: "Baseline timestamps"
         sort_criteria: "Sort criteria"
@@ -974,17 +1007,17 @@ sv:
         manual_sorting: "Manual sort order"
         ordered_work_packages: "Work packages order"
         include_subprojects: "Include subprojects"
-        results: "Results"
+        results: "Resultat"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "Relaterat arbetspaketet"
         to: "Relaterat arbetspaketet"
         relation_type: "Relation type"
       reminder:
         remindable: "Reminded object"
         remind_at: "Remind at"
-        remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_date: "Datum"
+        remind_at_time: "Tid"
       reminder_notification:
         notification: "Notification"
       repository:
@@ -997,7 +1030,7 @@ sv:
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Kalender"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Aktivitet"
@@ -1016,7 +1049,7 @@ sv:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "Användare"
       user:
         admin: "Administratör"
         auth_source: "Authentication source"
@@ -1027,19 +1060,20 @@ sv:
         language: "Språk"
         last_login_on: "Senaste inloggning"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "Förnamn"
+        last_name: "Efternamn"
         first_login: "First login"
         new_password: "Nytt lösenord"
         password_confirmation: "Bekräftelse"
         consented_at: "Samtyckte den"
       user_preference:
         comments_sorting: "Visa kommentarer"
+        dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Tillgänglighetsläge"
         auto_hide_popups: "Dölj automatiskt meddelanden om åtgärder som lyckats"
         warn_on_leaving_unsaved: "Varna mig när jag lämnar ett arbetspaket med osparade ändringar"
         theme: "Mode"
-        time_zone: "Time zone"
+        time_zone: "Tidszon"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1051,7 +1085,9 @@ sv:
       wiki_page:
         parent_title: "Överordnad sida"
         redirect_existing_links: "Omdirigera befintliga länkar"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Början av införandet"
         begin_deletion: "Början av raderingen"
         children: "Underelement"
@@ -1067,6 +1103,7 @@ sv:
           title: "Working days"
           false: "working days only"
           true: "include non-working days"
+        journal_internal: Internal Journal
         notify: "Notify" #used in custom actions
         parent: "Överordnad"
         parent_issue: "Överordnad"
@@ -1108,8 +1145,10 @@ sv:
         error_conflict: "Informationen har uppdaterats av minst en annan användare under tiden."
         email: "är inte en giltig e-postadress."
         empty: "kan inte vara tomt."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "måste vara jämn."
         exclusion: "är reserverat."
+        feature_disabled: is not available.
         file_too_large: "är för stor (största storleken är %{count} Bytes)."
         filter_does_not_exist: "filter does not exist."
         format: "does not match the expected format '%{expected}'."
@@ -1246,42 +1285,12 @@ sv:
           attributes:
             project_ids:
               blank: "Please select a project."
-        project/life_cycle_step_definition:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "must be either Project::StageDefinition or Project::GateDefinition"
-              type_and_class_name_mismatch: "must match the instantiated class name"
-        project/gate_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "must be a Project::GateDefinition"
-        project/stage_definition:
-          attributes:
-            type:
-              type_and_class_name_mismatch: "must be a Project::StageDefinition"
-        project/life_cycle_step:
-          attributes:
-            type:
-              must_be_a_stage_or_gate: "must be either Project::Stage or Project::Gate"
-              must_be_a_stage: "must be a Project::Stage"
-              must_be_a_gate: "must be a Project::Gate"
-              type_and_class_name_mismatch: "must match the instantiated class name"
-        project/gate:
-          attributes:
-            base:
-              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
-            type:
-              type_and_class_name_mismatch: "must be a Project::Gate"
-            date:
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
-        project/stage:
+        project/phase:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "start date must be before the end date."
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+              start_date_must_be_before_finish_date: "start date must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
               incomplete: "is incomplete."
-            type:
-              type_and_class_name_mismatch: "must be a Project::Stage"
         query:
           attributes:
             project:
@@ -1316,6 +1325,10 @@ sv:
             values:
               inclusion: "filter has invalid values."
               format: "%{message}"
+        queries/principals/filters/internal_mentionable_on_work_package_filter:
+          attributes:
+            values:
+              single_value_requirement: "must be a single work package"
         relation:
           typed_dag:
             circular_dependency: "Förhållandet skapar en cirkel av relationer."
@@ -1453,7 +1466,7 @@ sv:
               confirmation: "Password confirmation does not match password."
               format: "%{message}"
             password:
-              weak: "Must contain characters of the following classes (at least %{min_count} of %{all_count}): %{rules}"
+              weak: "Måste innehålla följande teckentyper (minst %{min_count} av %{all_count}): %{rules}"
               lowercase: "gemener (t.ex. \"a\")"
               uppercase: "versal (t.ex. \"A\")"
               numeric: "numeriska (t.ex. ' 1')"
@@ -1503,7 +1516,7 @@ sv:
       global_role: "Global role"
       group: "Grupp"
       issue_priority:
-        one: "Priority"
+        one: "Prioritet"
         other: "Priorities"
       member: "Medlem"
       news: "Nyheter"
@@ -1511,9 +1524,9 @@ sv:
         one: "Notification"
         other: "Notifications"
       placeholder_user: "Placeholder user"
-      project: "Projekt"
-      project/gate_definition: "Gate"
-      project/stage_definition: "Stage"
+      project:
+        one: "Projekt"
+        other: "Projekt"
       project_query:
         one: "Projektlista"
         other: "Projektlistor"
@@ -1524,7 +1537,7 @@ sv:
         other: "Roller"
       status: "Arbetspaketstatus"
       token/api:
-        one: Access token
+        one: Åtkomstnyckel
         other: Access tokens
       type: "Typ"
       user: "Användare"
@@ -1572,11 +1585,20 @@ sv:
       changeset: "Uppdateringar"
       message: "Forum"
       news: "Nyheter"
-      project_attribute: "Project attributes"
+      project_details: "Projektinformation"
       subproject: "Include subprojects"
       time_entry: "Förbrukad tid"
       wiki_edit: "Wiki"
       work_package: "Arbetspaket"
+    project_phase:
+      activated: "activated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      deactivated: "deactivated"
+      deleted_project_phase: "Deleted project phase"
+      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktiv"
@@ -1584,7 +1606,7 @@ sv:
     assignee: "Tilldelad till"
     attachments: "Bilagor"
     actor: "Actor"
-    action: "Action"
+    action: "Åtgärd"
     author: "Upphovsman"
     avatar: "Avatar"
     base: "Allmänt fel:"
@@ -1597,28 +1619,29 @@ sv:
     color: "Färg"
     creator: "Creator"
     created_at: "Skapat den"
-    custom_field: "Custom field"
+    custom_field: "Anpassat fält"
     custom_options: "Möjliga värden"
     custom_values: "Anpassade fält"
     date: "Datum"
-    dates_interval: "Date range"
+    dates_interval: "Datumintervall"
     default_columns: "Standardkolumnerna"
     description: "Beskrivning"
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "Visa summor"
     due_date: "Slutdatum"
     estimated_hours: "Work"
     estimated_time: "Work"
-    email: "Email"
+    email: "E-post"
     entity_type: "Entity"
     expires_at: "Förfaller den"
     firstname: "Förnamn"
     filter: "Filter"
     group: "Grupp"
     groups: "Grupper"
-    hexcode: "Hex code"
+    hexcode: "Hex-kod"
     id: "ID"
     is_default: "Standardvärde"
     is_for_all: "För alla projekt"
@@ -1627,35 +1650,37 @@ sv:
     #kept for backwards compatibility
     issue: "Arbetspaket"
     journal: "Journal"
-    journal_notes: "Comment"
+    journal_notes: "Kommentar"
     lastname: "Efternamn"
     login: "Användarnamn"
-    lock_version: "Lock version"
+    lock_version: "Lås version"
     mail: "E-post"
     name: "Namn"
-    note: "Note"
-    notes: "Notes"
+    note: "Observera"
+    notes: "Anteckningar"
     number: "Number"
-    options: "Options"
+    options: "Alternativ"
     operator: "Operator"
     password: "Lösenord"
     priority: "Prioritet"
     project: "Projekt"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reason"
     responsible: "Huvudansvarig"
-    required: "Required"
+    required: "Krävs"
     recipient: "Recipient"
     role: "Roll"
     roles: "Roll"
-    search: "Search"
+    search: "Sök"
     start_date: "Startdatum"
     status: "Status"
     state: "State"
     subject: "Ämne"
     slug: "Slug"
     summary: "Sammanfattning"
-    time_zone: "Time zone"
+    time_zone: "Tidszon"
     text: "Text"
     title: "Titel"
     type: "Typ"
@@ -1664,13 +1689,14 @@ sv:
     updated_on: "Uppdaterat den"
     uploader: "Uploader"
     user: "Användare"
-    username: "Username"
-    unit: "Unit"
+    username: "Användarnamn"
+    unit: "Enhet"
     value: "Värde"
     values: "Values"
     version: "Version"
-    visible: "Visible"
+    visible: "Synlig"
     work_package: "Arbetspaket"
+    work_package_id: "Arbetspaket"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"
@@ -1816,7 +1842,8 @@ sv:
     text:
       failed: 'Kunde inte kopiera projekt "%{source_project_name}" till projektet "%{target_project_name}".'
       succeeded: 'Kopierade projektet "%{source_project_name}" till "%{target_project_name}".'
-  create_new_page: "Wiki-sida"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Wiki-sida"
   date:
     abbr_day_names:
       - "Sön"
@@ -1935,7 +1962,7 @@ sv:
         other: "timmar"
       day:
         one: "day"
-        other: "days"
+        other: "dagar"
   description_active: "Aktiv?"
   description_attachment_toggle: "Visa/Dölj bilagor"
   description_autocomplete: >
@@ -1968,17 +1995,87 @@ sv:
   #Text direction: Left-to-Right (ltr) or Right-to-Left (rtl)
   direction: Från vänster till höger
   ee:
-    upsale:
+    features:
+      baseline_comparison: Baseline Comparisons
+      board_view: Advanced Boards
+      conditional_highlighting: Conditional Highlighting
+      internal_comments: Internal Comments
+      custom_actions: Custom Actions
+      custom_field_hierarchies: Custom fields of type hierarchy
+      customize_life_cycle: Customize Life Cycle
+      date_alerts: Date Alerts
+      define_custom_style: Custom theme and logo
+      edit_attribute_groups: Edit Attribute Groups
+      gantt_pdf_export: Gantt PDF Export
+      ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
+      one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+      placeholder_users: Placeholder Users
+      project_list_sharing: Project List Sharing
+      readonly_work_packages: Readonly Work Packages
+      sso_auth_providers: Single sign-on
+      team_planner_view: Team Planner View
+      two_factor_authentication: 2FA Authentication
+      virus_scanning: Antivirus Scanning
+      work_package_query_relation_columns: Work Package Query Relation Columns
+      work_package_sharing: Share work packages with external users
+      work_package_subject_generation: Work Package Subject Generation
+    upsell:
+      plans_title: "Enterprise plans"
       title: "Enterprise add-on"
-      link_title: "More information"
-      automatic_subject_generation:
+      plan_title: "Enterprise %{plan} add-on"
+      plan_name: "%{plan} enterprise plan"
+      plan_text_html: "Available starting with the %{plan_name}."
+      hide_banner: "Hide this banner"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
+      baseline_comparison:
+        description: Highlight changes made to this list since any point in the past.
+      work_package_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
-        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
-      form_configuration:
-        description: "Customize the form configuration with these additional add-ons:"
-        add_groups: "Lägg till nya attributgrupper"
-        rename_groups: "Byt namn på attributgrupper"
+        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
+      conditional_highlighting:
+        description: "Need certain work packages to stand out from the mass? Use conditional highlighting in the work packages table."
+      work_package_query_relation_columns:
+        description: "Need to see relations or child elements in the work package list?"
+      edit_attribute_groups:
+        description: "Customize form configuration with these additional add-ons:"
+        features:
+          groups: "Lägg till nya attributgrupper"
+          rename: "Rename attribute groups"
+          related: "Add a table of related work packages"
+      readonly_work_packages:
+        description: "Mark work packages as read-only for specific statuses."
+      custom_field_hierarchies:
+        description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
+      date_alerts:
+        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+      work_package_sharing:
+        description: "Share work packages with users who are not members of the project."
+      define_custom_style:
+        title: "Custom color theme and logo"
+        more_info: "Obs: logotypen som används kommer att vara allmänt tillgänglig."
+        description: Anpassa din OpenProject installation med din egen logotyp och färger.
+      custom_actions:
+        title: "Anpassade åtgärder"
+        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
+      virus_scanning:
+        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
+      placeholder_users:
+        title: Placeholder users
+        description: >
+          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
+      internal_comments:
+        title: Internal comments
+        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Arbetspaketsprioritering"
   enumeration_reported_project_statuses: "Rapporterad projektstatus"
@@ -2044,7 +2141,7 @@ sv:
     changeset: "Uppdatering redigerades"
     message: Meddelande redigerades
     news: Nyheter
-    project_attributes: "Project attributes edited"
+    project_details: "Project details edited"
     project: "Projektet redigerades"
     projects: "Projektet redigerades"
     reply: Svarade
@@ -2058,8 +2155,10 @@ sv:
       subproject: "Subproject: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "Exportera"
+      submit: "Exportera"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "Filformat"
         options:
@@ -2079,13 +2178,13 @@ sv:
           label: "PDF export type"
           options:
             table:
-              label: "Table"
+              label: "Tabell"
               caption: "Export the work packages list in a table with the desired columns."
             report:
-              label: "Report"
+              label: "Rapport"
               caption: "Export the work package on a detailed report of all work packages in the list."
             gantt:
-              label: "Gantt chart"
+              label: "Gantt-schema"
               caption: "Export the work packages list in a Gantt diagram view."
         include_images:
           label: "Include images"
@@ -2123,6 +2222,8 @@ sv:
     your_work_packages_export: "Work packages are being exported"
     succeeded: "Export completed"
     failed: "An error has occurred while trying to export the work packages: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2152,7 +2253,7 @@ sv:
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Download
+      submit: Ladda ner
       templates:
         label: "Template"
         none_enabled: "No template has been enabled for this work package type"
@@ -2167,6 +2268,12 @@ sv:
         caption: Break line between words for better layout and justification.
       hyphenation_language:
         label: Language and hyphenation
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext tillgängligt (tillval)"
@@ -2195,9 +2302,8 @@ sv:
       users: "De senast registrerade användarna just nu."
     blocks:
       community: "OpenProject community"
-      upsale:
+      upsell:
         title: "Upgrade to Enterprise edition"
-        more_info: "Mer information"
     links:
       upgrade_enterprise_edition: "Upgrade to Enterprise edition"
       postgres_migration: "Migrera din installation till PostgreSQL"
@@ -2335,6 +2441,8 @@ sv:
         mentioned: "You have been mentioned in %{work_package}"
         responsible: "You have become accountable for %{work_package}"
         watched: "You are watching %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Tillgänglighet"
   label_account: "Konto"
   label_active: "Aktiv"
@@ -2389,7 +2497,6 @@ sv:
   label_ldap_auth_source_plural: "LDAP connections"
   label_attribute_expand_text: "The complete text for '%{attribute}'"
   label_authentication: "Autentisering"
-  label_authentication_settings: "Authentication settings"
   label_available_custom_fields_projects: "Available custom fields projects"
   label_available_global_roles: "Available global roles"
   label_available_project_attributes: "Available project attributes"
@@ -2485,7 +2592,7 @@ sv:
   label_default: "Standard"
   label_delete_user: "Radera användare"
   label_delete_project: "Ta bort projekt"
-  label_delete: "Delete"
+  label_delete: "Ta bort"
   label_deleted: "raderad"
   label_deleted_custom_field: "(raderat anpassat fält)"
   label_deleted_custom_item: "(deleted item)"
@@ -2563,6 +2670,7 @@ sv:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Allmänt"
   label_generate_key: "Generera en nyckel"
+  label_global_roles: "Global roles"
   label_git_path: "Sökväg till .git katalog"
   label_greater_or_equal: ">="
   label_group_by: "Gruppera efter"
@@ -2674,9 +2782,10 @@ sv:
   label_modules: "Moduler"
   label_months_from: "månader från"
   label_more: "Mer"
+  label_more_information: "Mer information"
   label_more_than_ago: "mer än dagar sedan"
-  label_move_column_left: "Move column left"
-  label_move_column_right: "Move column right"
+  label_move_column_left: "Flytta kolumnen till vänster"
+  label_move_column_right: "Flytta kolumnen till höger"
   label_move_work_package: "Flytta arbetspaket"
   label_my_account: "Kontoinställningar"
   label_my_activity: "Min aktivitet"
@@ -2701,7 +2810,7 @@ sv:
   label_no_change_option: "(Ingen ändring)"
   label_no_data: "Ingen data att visa"
   label_no_due_date: "no finish date"
-  label_no_start_date: "no start date"
+  label_no_start_date: "inget startdatum"
   label_no_parent_page: "Ingen överordnad sida"
   label_nothing_display: "Inget att visa"
   label_nobody: "ingen"
@@ -2711,7 +2820,7 @@ sv:
   label_none_parentheses: "(ingen)"
   label_not_contains: "innehåller inte"
   label_not_equals: "är inte"
-  label_life_cycle_step_plural: "Project lifecycle"
+  label_life_cycle_step_plural: "Project life cycle"
   label_on: "på"
   label_operator_all: "is not empty"
   label_operator_none: "is empty"
@@ -2773,7 +2882,7 @@ sv:
   label_project_new: "Nytt projekt"
   label_project_plural: "Projekt"
   label_project_list_plural: "Projektlistor"
-  label_project_lifecycle: "Project lifecycle"
+  label_project_life_cycle: "Project life cycle"
   label_project_attributes_plural: "Project attributes"
   label_project_custom_field_plural: "Project attributes"
   label_project_settings: "Projektinställningar"
@@ -2791,9 +2900,6 @@ sv:
   label_register: "Skapa ett nytt konto"
   label_register_with_developer: "Registrera dig som utvecklare"
   label_registered_on: "Registrerad den"
-  label_registration_activation_by_email: "aktivering av konto via E-post"
-  label_registration_automatic_activation: "automatisk kontoaktivering"
-  label_registration_manual_activation: "manuell kontoaktivering"
   label_related_work_packages: "Relaterat arbetspaket"
   label_relates: "Relaterad till"
   label_relates_to: "Relaterad till"
@@ -2804,7 +2910,7 @@ sv:
   label_relation_new: "Ny relation"
   label_release_notes: "Versionsnoteringar"
   label_remaining_work: "Remaining work"
-  label_remove_column: "Remove column"
+  label_remove_column: "Ta bort kolumn"
   label_remove_columns: "Ta bort markerade kolumner"
   label_renamed: "ändrat namn"
   label_reply_plural: "Svar"
@@ -2847,10 +2953,10 @@ sv:
   label_show_completed_versions: "Visa slutförda versioner"
   label_columns: "Kolumner"
   label_sort: "Sortera"
-  label_sort_ascending: "Sort ascending"
+  label_sort_ascending: "Sortera stigande"
   label_sort_by: "Sortera efter %{value}"
   label_sorted_by: "sorterade efter %{value}"
-  label_sort_descending: "Sort descending"
+  label_sort_descending: "Sortera fallande"
   label_sort_higher: "Flytta upp"
   label_sort_highest: "Flytta till toppen"
   label_sort_lower: "Flytta ned"
@@ -2879,7 +2985,7 @@ sv:
   label_this_month: "denna månad"
   label_this_week: "denna vecka"
   label_this_year: "i år"
-  label_time: "Time"
+  label_time: "Tid"
   label_time_entry_plural: "Förbrukad tid"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Titel"
@@ -2919,7 +3025,7 @@ sv:
   label_user_settings: "Användarinställningar"
   label_users_settings: "Användarinställningar"
   label_version_new: "Ny version"
-  label_version_edit: "Edit version"
+  label_version_edit: "Redigera version"
   label_version_plural: "Versioner"
   label_version_sharing_descendants: "Med delprojekt"
   label_version_sharing_hierarchy: "Med projekthierarkin"
@@ -3233,6 +3339,8 @@ sv:
   notice_successful_delete: "Raderades utan problem."
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Uppdaterades utan problem."
+  notice_unsuccessful_update: "Update failed."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Successful update. The custom fields of the activated types are automatically activated
     on the work package form. <a href="%{url}" target="_blank">See more</a>.
@@ -3271,12 +3379,13 @@ sv:
     text_getting_started_description: "Get a quick overview of project management and team collaboration with OpenProject. You can restart this video from the help menu."
     welcome: "Welcome to %{app_title}"
     select_language: "Välj ditt språk"
-  permission_add_work_package_notes: "Add comments"
+  permission_add_work_package_comments: "Add comments"
   permission_add_work_packages: "Lägg till arbetspaket"
   permission_add_messages: "Publicera meddelanden"
   permission_add_project: "Skapa projekt"
   permission_add_work_package_attachments: "Lägg till bilagor"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
+  permission_add_internal_comments: "Write internal comments"
   permission_archive_project: "Arkivera projekt"
   permission_create_user: "Skapa användare"
   permission_manage_user: "Redigera användare"
@@ -3301,16 +3410,19 @@ sv:
   permission_delete_timelines: "Ta bort tidslinjer"
   permission_delete_wiki_pages: "Ta bort wikisidor"
   permission_delete_wiki_pages_attachments: "Ta bort bifogade filer"
-  permission_edit_work_package_notes: "Moderate comments"
-  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
+  permission_edit_work_package_comments: "Moderate comments"
+  permission_edit_work_package_comments_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Redigera arbetspaket"
   permission_edit_messages: "Redigera meddelanden"
-  permission_edit_own_work_package_notes: "Edit own comments"
+  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_work_package_comments: "Edit own comments"
   permission_edit_own_messages: "Redigera egna meddelanden"
   permission_edit_own_time_entries: "Redigera egna tidrapporter"
+  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "Redigera projekt"
   permission_edit_project_attributes: "Edit project attributes"
-  permission_edit_project_stages_and_gates: "Edit project stages and gates"
+  permission_edit_project_phases: "Edit project phases"
   permission_edit_reportings: "Redigera rapporter"
   permission_edit_time_entries: "Edit time logs for other users"
   permission_edit_timelines: "Redigera tidslinjer"
@@ -3340,14 +3452,15 @@ sv:
   permission_search_project: "Search project"
   permission_select_custom_fields: "Välj anpassade fält"
   permission_select_project_custom_fields: "Select project attributes"
-  permission_select_project_life_cycle: "Select project stages and gates"
-  permission_select_project_life_cycle_explanation: "Activate/Deactivate the stages and gates in a project. Enables the user to select the lifecycle appropriate for the project as inactive stages and gates will not be visible in the project overview page nor the project list."
+  permission_select_project_phases: "Select project phases"
+  permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the life cycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "Välj projektmoduler"
   permission_share_work_packages: "Share work packages"
   permission_manage_types: "Välj typer"
   permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "View projects"
   permission_view_changesets: "Visa databasrevisioner i OpenProject"
+  permission_view_internal_comments: "View internal comments"
   permission_view_commit_author_statistics: "Visa statistik över incheckningar per författare"
   permission_view_dashboards: "View dashboards"
   permission_view_work_package_watchers: "Visa lista med bevakare"
@@ -3366,7 +3479,7 @@ sv:
   permission_work_package_assigned_explanation: "Arbetspaket kan tilldelas användare och grupper som har denna roll i respektive projektet"
   permission_view_project_activity: "View project activity"
   permission_view_project_attributes: "View project attributes"
-  permission_view_project_stages_and_gates: "View project stages and gates"
+  permission_view_project_phases: "View project phases"
   permission_save_bcf_queries: "Save BCF queries"
   permission_manage_public_bcf_queries: "Manage public BCF queries"
   permission_edit_attribute_help_texts: "Edit attribute help texts"
@@ -3381,8 +3494,8 @@ sv:
       archived: "Arkiverad"
     count:
       zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
+      one: "Ett projekt"
+      other: "%{count} projekt"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3392,9 +3505,9 @@ sv:
       subprojects_confirmation: "Följande delprojekt kommer också raderas: %{value}."
       title: "Radera projektet %{name}"
     filters:
-      life_cycle_any: "Lifecycle: Any stage or gate"
-      life_cycle_stage: "Lifecycle stage: %{stage}"
-      life_cycle_gate: "Lifecycle gate: %{gate}"
+      project_phase: "Project phase: %{phase}"
+      project_phase_any: "Project phase: Any"
+      project_phase_gate: "Project phase gate: %{gate}"
     identifier:
       warning_one: Projektets medlemmar kommer att vara tvungna att flytta projektetdatabaserna.
       warning_two: Befintliga länkar till projektet kommer inte att fungera längre.
@@ -3534,9 +3647,12 @@ sv:
     warnings:
       cannot_annotate: "Den här filen kan inte kommenteras."
   scheduling:
-    activated: "activated"
-    deactivated: "deactivated"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Sök ..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
     Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
@@ -3623,6 +3739,7 @@ sv:
   setting_hours_per_day_explanation: >-
     This defines what is considered a "day" when displaying duration in days and hours (for example, if a day is 8 hours, 32 hours would be 4 days).
   setting_invitation_expiration_days: "Aktiveringsmail upphör efter"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Progress calculation mode"
   setting_work_package_done_ratio_field: "Work-based"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3638,6 +3755,9 @@ sv:
   setting_journal_aggregation_time_minutes: "User actions aggregated within"
   setting_log_requesting_user: "Logga användarnamn, namn och E-postadress för alla anrop"
   setting_login_required: "Autentisering krävs"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "E-post avsändaradress"
   setting_mail_handler_api_key: "API-nyckel"
   setting_mail_handler_body_delimiters: "Trunkera E-post efter en av dessa rader"
@@ -3663,6 +3783,7 @@ sv:
   setting_project_gantt_query_text: "You can modify the query that is used to display Gantt chart from the project overview page."
   setting_security_badge_displayed: "Visa säkerhetsmärke"
   setting_registration_footer: "Sidfot för registrering"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Automatisk leverantörstyp för databas"
   setting_repositories_encodings: "Teckenkodningar i versionsarkiv"
   setting_repository_storage_cache_minutes: "Cachning av databasens hårddiskstorlek"
@@ -3673,6 +3794,22 @@ sv:
   setting_repository_truncate_at: "Maximalt antal filer som visas i databasläsaren"
   setting_rest_api_enabled: "Aktivera REST webb tjänst"
   setting_self_registration: "Självregistrering"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
+  setting_self_registration_warning: >
+    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Tid innan session förfaller"
   setting_session_ttl_hint: "Värde under 5 fungerar som inaktivering"
   setting_session_ttl_enabled: "Sessionen upphör"
@@ -3700,6 +3837,8 @@ sv:
   setting_working_days: "Working days"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.
@@ -3717,8 +3856,6 @@ sv:
         Remaining files have been scanned. There are %{file_count} in quarantine. You are being redirected to the quarantine page. Use this page to delete or override quarantined files.
       remaining_rescanned_files: >
         Virus scanning has been enabled successfully. There are %{file_count} that were uploaded previously and still need to be scanned. This process has been scheduled in the background. The files will remain accessible during the scan.
-      upsale:
-        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       actions:
         delete: "Delete the file"
         quarantine: "Quarantine the file"
@@ -3769,27 +3906,27 @@ sv:
       new:
         heading: "New attribute"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
-    project_life_cycle_step_definitions:
-      heading: "Project lifecycle"
-      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
-      label_add_description: "Add lifecycle definition"
-      label_add_stage: "Stage"
-      label_add_gate: "Gate"
+    project_phase_definitions:
+      heading: "Project life cycle"
+      heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
+      label_add: "Lägg till"
+      label_add_description: "Add project phase definition"
       filter:
-        label: "Search project stage or gate"
-      section_header: "Stages and gates"
-      non_defined: "Neither stages nor gates are currently defined."
+        label: "Search project phase"
+      section_header: "Phases"
+      non_defined: "No phases are currently defined."
+      phase_gates: "Phase gates"
       new:
-        description: "Changes to this project step will be reflected in all projects where it is enabled."
-      new_stage:
-        heading: "New stage"
-      new_gate:
-        heading: "New gate"
-      edit_stage:
-        heading: "Edit stage"
-      edit_gate:
-        heading: "Edit gate"
+        description: "Changes to this project phase will be reflected in all projects where it is enabled."
+        heading: "New Phase"
+      edit:
+        heading: "Edit Phase"
+      both_gate: "Start and finish gate"
+      no_gate: "No gate"
+      start_gate: "Start gate"
+      start_gate_caption: "Add a gate with the start date of the phase"
+      finish_gate: "Finish gate"
+      finish_gate_caption: "Add a gate with the end date of the phase"
     projects:
       missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
       section_new_projects: "Settings for new projects"
@@ -3802,6 +3939,11 @@ sv:
     working_days:
       section_work_week: "Work week"
       section_holidays_and_closures: "Holidays and closures"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
+      activities:
+        enable_internal_comments: "Enable internal comments"
+        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Oformaterad text"
@@ -3823,7 +3965,7 @@ sv:
   text_are_you_sure_continue: "Are you sure you want to continue?"
   text_are_you_sure_with_children: "Ta bort arbetspaket och alla underarbetspaket?"
   text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
-  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this phase will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Tilldela till projektet"
   text_form_configuration: >
     Du kan anpassa vilka fält som ska visas i formulär för arbetspaket. Du kan fritt gruppera fälten för att återspegla behoven för din domän.
@@ -3837,8 +3979,6 @@ sv:
     När du använder anpassade fält: Kom ihåg att dessa även måste aktiveras för varje projekt.
   text_custom_field_hint_activate_per_project_and_type: >
     Anpassade fält behöver aktiveras per arbetspaketstyp och per projekt.
-  text_wp_status_read_only_html: >
-    The Enterprise edition will add these additional add-ons for work packages' statuses fields: <br> <ul> <li><b>Allow to mark work packages to read-only for specific statuses</b></li> </ul>
   text_project_custom_field_html: >
     The Enterprise edition will add these additional add-ons for projects' custom fields: <br> <ul> <li><b>Add custom fields for projects to your Project list to create a project portfolio view</b></li> </ul>
   text_custom_logo_instructions: >
@@ -3965,7 +4105,7 @@ sv:
     configure_view:
       heading: Configure view
       columns:
-        input_label: "Lägg till kolumner"
+        input_label: "Lägg till kolumn"
         input_placeholder: "Select a column"
         drag_area_label: "Manage and reorder columns"
       sort_by:
@@ -4081,7 +4221,7 @@ sv:
       view: "Vy"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "Datum"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."
@@ -4151,7 +4291,7 @@ sv:
         view_description: "Can view this project list."
         edit: "Redigera"
         edit_description: "Can view, share and edit this project list."
-      upsale:
+      upsell:
         message: "Sharing project lists with individual users is an enterprise add-on."
   working_days:
     info: >
@@ -4269,9 +4409,9 @@ sv:
   oauth:
     application:
       builtin: Built-in instance application
-      confidential: Confidential
+      confidential: Konfidentiellt
       singular: "OAuth-autentisering"
-      scopes: "Scopes"
+      scopes: "Omfattning"
       client_credentials: "Client credentials"
       plural: "OAuth applikationer"
       named: "OAuth applikationen '%{name}'"
@@ -4292,7 +4432,7 @@ sv:
       builtin_applications: Built-in OAuth applications
       other_applications: Other OAuth applications
     empty_application_lists: No OAuth applications have been registered.
-    client_id: "Client ID"
+    client_id: "Klient-ID"
     client_secret_notice: >
       Detta är den enda gången vi kan skriva ut klienten hemligt, notera det och hålla det säkert. Det bör behandlas som ett lösenord och kan inte hämtas av OpenProject vid ett senare tillfälle.
     authorization_dialog:
@@ -4382,27 +4522,3 @@ sv:
     description: "Adds the OmniAuth SAML provider to OpenProject"
   enterprise_plans:
     legacy_enterprise: "Enterprise Plan"
-  enterprise_features:
-    baseline_comparison: Baseline Comparison
-    board_view: Board View
-    conditional_highlighting: Conditional Highlighting
-    custom_actions: Custom Actions
-    custom_field_hierarchies: Custom Field Hierarchies
-    customize_life_cycle: Customize Life Cycle
-    date_alerts: Date Alerts
-    define_custom_style: Define Custom Style
-    edit_attribute_groups: Edit Attribute Groups
-    gantt_pdf_export: Gantt PDF Export
-    grid_widget_wp_graph: Grid Widget Work Package Graph
-    ldap_groups: LDAP Groups
-    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
-    placeholder_users: Placeholder Users
-    project_list_sharing: Project List Sharing
-    readonly_work_packages: Readonly Work Packages
-    sso_auth_providers: SSO Auth Providers
-    team_planner_view: Team Planner View
-    two_factor_authentication: Two-Factor Authentication
-    virus_scanning: Attachment Virus Scanning
-    work_package_query_relation_columns: Work Package Query Relation Columns
-    work_package_sharing: Work Package Sharing
-    work_package_subject_generation: Work Package Subject Generation

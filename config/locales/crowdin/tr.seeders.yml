@@ -34,16 +34,14 @@ tr:
           name: Gri (koyu)
         item_13:
           name: Siyah
-      life_cycle_colors:
+      project_phase_colors:
         item_0:
           name: PM2 Turuncu
         item_1:
-          name: PM2 Mor
-        item_2:
           name: PM2 Kırmızı
-        item_3:
+        item_2:
           name: PM2 Macenta
-        item_4:
+        item_3:
           name: PM2 Yeşil Sarı
       document_categories:
         item_0:
@@ -81,21 +79,18 @@ tr:
         item_1:
           name: Standart genel rol
     standard:
-      life_cycles:
+      project_phases:
         item_0:
           name: Başlatılıyor
         item_1:
-          name: Planlama için Hazır
-        item_2:
           name: Planlanıyor
-        item_3:
-          name: Yürütmeye Hazır
-        item_4:
+          start_gate: Planlama için Hazır
+        item_2:
           name: Yürütme
-        item_5:
-          name: Kapanışa Hazır
-        item_6:
+          start_gate: Yürütmeye Hazır
+        item_3:
           name: Kapatılıyor
+          start_gate: Kapanışa Hazır
       priorities:
         item_0:
           name: Düşük
@@ -148,7 +143,7 @@ tr:
             widgets:
               item_0:
                 options:
-                  name: Hoş geldiniz
+                  name: Hoş geldiniz 
               item_1:
                 options:
                   name: Başlarken
@@ -297,7 +292,7 @@ tr:
             item_0:
               name: Proje planı
             item_1:
-              name: Ürün bekleme süresi
+              name: Ürün iş listesi
             item_2:
               name: Koşu 1
             item_3:
@@ -320,7 +315,7 @@ tr:
             widgets:
               item_0:
                 options:
-                  name: Hoş geldiniz
+                  name: Hoş geldiniz 
               item_1:
                 options:
                   name: Başlarken
@@ -361,16 +356,16 @@ tr:
                   subject: Yeni açılış sayfası
                   children:
                     item_0:
-                      subject: Create wireframes for new landing page
+                      subject: Yeni açılış sayfası için taslak çizim oluşturma
             item_3:
               subject: İletişim formu
             item_4:
-              subject: Feature carousel
+              subject: Özellik döngüsü
               children:
                 item_0:
                   subject: Özellik turu için ekran görüntüleri alın
             item_5:
-              subject: Wrong hover color
+              subject: Yanlış hover rengi
             item_6:
               subject: SSL sertifikası
             item_7:
@@ -397,51 +392,51 @@ tr:
             item_16:
               subject: Sürüm v2.0
           wiki: |
-            ### Sprint planning meeting
+            ### Sprint planlama toplantısı
 
-            _Please document here topics to the Sprint planning meeting_
+            _Lütfen Sprint planlama toplantısının konularını burada belgeleyin_
 
-            * Time boxed (8 h)
-            * Input: Product Backlog
-            * Output: Sprint Backlog
+            * Zaman kutulu (8 saat)
+            * Girdi: Ürün İş Listesi
+            * Çıktı: Sprint Backlog
 
-            * Divided into two additional time boxes of 4 h:
+            * 4 saatlik iki ek zaman kutusuna bölünmüştür:
 
-                * The Product Owner presents the [Product Backlog]({{opSetting:base_url}}/projects/your-scrum-project/backlogs) and the priorities to the team and explains the Sprint Goal, to which the team must agree. Together, they prioritize the topics from the Product Backlog which the team will take care of in the next sprint. The team commits to the discussed delivery.
-                * The team plans autonomously (without the Product Owner) in detail and breaks down the tasks from the discussed requirements to consolidate a [Sprint Backlog]({{opSetting:base_url}}/projects/your-scrum-project/backlogs).
-
-
-            ### Daily Scrum meeting
-
-            _Please document here topics to the Daily Scrum meeting_
-
-            * Short, daily status meeting of the team.
-            * Time boxed (max. 15 min).
-            * Stand-up meeting to discuss the following topics from the Task board.
-                * What do I plan to do until the next Daily Scrum?
-                * What has blocked my work (Impediments)?
-            * Scrum Master moderates and notes down Sprint Impediments.
-            * Product Owner may participate may participate in order to stay informed.
-
-            ### Sprint Review meeting
-
-            _Please document here topics to the Sprint Review meeting_
-
-            * Time boxed (4 h).
-            * A maximum of one hour of preparation time per person.
-            * The team shows the product owner and other interested persons what has been achieved in this sprint.
-            * Important: no dummies and no PowerPoint! Just finished product functionality (Increments) should be demonstrated.
-            * Feedback from Product Owner, stakeholders and others is desired and will be included in further work.
-            * Based on the demonstrated functionalities, the Product Owner decides to go live with this increment or to develop it further. This possibility allows an early ROI.
+                * Ürün Sahibi [Product Backlog]({{opSetting:base_url}}/projects/your-scrum-project/backlogs) ve öncelikleri ekibe sunar ve ekibin kabul etmesi gereken Sprint Hedefini açıklar. Birlikte, ekibin bir sonraki sprintte ilgileneceği Ürün İş Listesindeki konuları önceliklendirirler. Ekip, tartışılan teslimatı taahhüt eder.
+                * Ekip otonom olarak (Ürün Sahibi olmadan) ayrıntılı bir şekilde planlar ve bir [Sprint Backlog] ({{opSetting:base_url}}/projects/your-scrum-project/backlogs) oluşturmak için tartışılan gereksinimlerden görevleri ayırır.
 
 
-            ### Sprint Retrospective
+            ### Günlük Scrum toplantısı
 
-            _Please document here topics to the Sprint Retrospective meeting_
+            _Lütfen burada Günlük Scrum toplantısının konularını belgeleyin_
 
-            * Time boxed (3 h).
-            * After Sprint Review, will be moderated by Scrum Master.
-            * The team discusses the sprint: what went well, what needs to be improved to be more productive for the next sprint or even have more fun.
+            * Ekibin kısa, günlük durum toplantısı.
+            * Zaman sınırlı (maks. 15 dakika).
+            * Görev panosundan aşağıdaki konuları tartışmak için ayakta toplantı.
+                * Bir sonraki Günlük Scrum'a kadar ne yapmayı planlıyorum?
+                * İşimi ne engelledi (Engeller)?
+            * Scrum Master moderatörlük yapar ve Sprint Engellerini not eder.
+            * Ürün Sahibi haberdar olmak için katılabilir.
+
+            ### Sprint Gözden Geçirme toplantısı
+
+            _Lütfen Sprint Gözden Geçirme toplantısının konularını burada belgeleyin_
+
+            * Zaman kutulu (4 saat).
+            * Kişi başına en fazla bir saatlik hazırlık süresi.
+            * Ekip, ürün sahibine ve diğer ilgili kişilere bu sprintte nelerin başarıldığını gösterir.
+            * Önemli: aptallar ve PowerPoint yok! Sadece bitmiş ürün işlevselliği (Artımlar) gösterilmelidir.
+            * Ürün sahibinden, paydaşlardan ve diğerlerinden geri bildirim istenir ve daha sonraki çalışmalara dahil edilir.
+            * Gösterilen işlevselliklere dayanarak, Ürün Sahibi bu artışla canlı yayına geçmeye veya daha da geliştirmeye karar verir. Bu olasılık erken bir ROI sağlar.
+
+
+            ### Sprint Retrospektifi
+
+            _Lütfen Sprint Retrospektifi toplantısına ilişkin konuları burada belgeleyin_
+
+            * Zaman sınırlı (3 saat).
+            * Sprint İncelemesinden sonra, Scrum Master tarafından yönetilecektir.
+            * Ekip sprinti tartışır: neler iyi gitti, bir sonraki sprint için daha üretken olmak ve hatta daha fazla eğlenmek için nelerin iyileştirilmesi gerekiyor.
       statuses:
         item_0:
           name: Yeni
@@ -490,7 +485,7 @@ tr:
         item_1:
           name: Kilometre taşı
         item_2:
-          name: Aşama
+          name: Görev özeti
         item_3:
           name: Özellik
         item_4:

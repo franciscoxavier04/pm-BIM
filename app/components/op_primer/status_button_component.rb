@@ -31,9 +31,15 @@
 module OpPrimer
   class StatusButtonComponent < ApplicationComponent
     include OpPrimer::ComponentHelpers
+    include Primer::ClassNameHelper
 
     def initialize(current_status:, items:, readonly: false, disabled: false, button_arguments: {}, menu_arguments: {})
       super
+
+      menu_arguments[:classes] = class_names(
+        menu_arguments[:classes],
+        "op-status-button"
+      )
 
       @current_status = current_status
       @items = items
@@ -67,12 +73,21 @@ module OpPrimer
 
       {
         title:,
+        classes: class_names(@button_arguments[:classes], highlight_class_name(@current_status, :background)),
         disabled: disabled?,
         aria: {
           label: title
-        },
-        style: @current_status.color&.color_styles_css
+        }
       }.compact.deep_merge(@button_arguments)
+    end
+
+    def highlight_class_name(status, style)
+      case style
+      when :inline
+        helpers.hl_inline_class(status.color_namespace, status.color_ref)
+      when :background
+        helpers.hl_background_class(status.color_namespace, status.color_ref)
+      end
     end
   end
 end

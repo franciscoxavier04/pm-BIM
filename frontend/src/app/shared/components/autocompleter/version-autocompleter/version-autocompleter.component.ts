@@ -56,7 +56,7 @@ export class VersionAutocompleterComponent extends CreateAutocompleterComponent 
   groupByFn = (item:HalResource):string|null => {
     if (!item.id) return null; // Do not group non version options
     const project = item.definingProject as HalResource | undefined;
-    return project?.name ?? this.I18n.t('js.project.not_available');
+    return project?.name || this.I18n.t('js.project.not_available');
   };
 
   constructor(

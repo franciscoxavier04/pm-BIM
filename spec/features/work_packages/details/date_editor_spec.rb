@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -86,8 +88,7 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
     start_date.expect_state_text "2016-01-02 - 2016-01-25"
   end
 
-  it 'can set "today" as a date via the provided link',
-     skip: "broken for now, will be fixed within #62125" do
+  it 'can set "today" as a date via the provided link' do
     start_date.activate!
     start_date.expect_active!
 
@@ -666,15 +667,20 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
       start_date.activate!
       start_date.expect_active!
 
-      start_date.datepicker.expect_year "2016"
-      start_date.datepicker.expect_month "January"
-      start_date.datepicker.select_day "25"
+      datepicker.expect_start_date("2016-01-02")
+      datepicker.expect_duration("")
+      datepicker.expect_year "2016"
+      datepicker.expect_month "January"
 
-      sleep 2
+      datepicker.enable_due_date
+      datepicker.select_day "25"
 
-      start_date.datepicker.expect_year "2016"
-      start_date.datepicker.expect_month "January"
-      start_date.datepicker.expect_day "25"
+      datepicker.expect_start_date("2016-01-02")
+      datepicker.expect_due_date("2016-01-25")
+      datepicker.expect_duration("24")
+      datepicker.expect_year "2016"
+      datepicker.expect_month "January"
+      datepicker.expect_day "25"
 
       start_date.save!
       start_date.expect_inactive!

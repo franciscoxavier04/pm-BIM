@@ -2,26 +2,26 @@ de:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: Client-ID
+        client_secret: Client-Secret
       project:
-        project_folder_type: Project folder type
+        project_folder_type: Projektordner-Typ
       storages/file_link:
-        origin: Origin
-        storage: Storage
+        origin: Ursprung
+        storage: Speicherung
       storages/nextcloud_storage:
         authentication_methods:
-          oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
-          oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
-          two_way_oauth2: Two-way OAuth 2.0 authorization code flow
-        storage_audience: Storage Audience
+          oauth2_sso: Single-Sign-On über OpenID Connect Identity Provider
+          oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On mit Zwei-Wege OAuth 2.0 als Fallback
+          two_way_oauth2: Zwei-Wege OAuth 2.0 Authorization-Code-Flow
+        storage_audience: Speicher-Audience
       storages/project_storage:
         project_folder: Projektordner
-        project_folder_mode: Project folder mode
+        project_folder_mode: Projektordnermodus
         storage: Speicherung
-        storage_url: Storage URL
+        storage_url: Speicher-URL
       storages/storage:
-        authentication_method: Authentication Method
+        authentication_method: Authentifizierungsmethode
         creator: Ersteller
         drive: Laufwerk ID
         host: Host
@@ -79,6 +79,8 @@ de:
   project_storages:
     edit_project_folder:
       label: Projektordner bearbeiten
+    open:
+      remote_identity_error: An unexpected error occured while connecting to the storage.
     project_folder_mode:
       automatic: Automatisch verwaltet
       inactive: Kein spezifischer Ordner
@@ -223,46 +225,105 @@ de:
       openproject_oauth: OpenProject OAuth
       project_folders: Projektordner
       redirect_uri: Umleitungs-URI
-      storage_audience: Storage Audience
-      storage_audience_blank: No audience has been configured.
-      storage_audience_description: Obtaining tokens for audience "%{audience}".
-      storage_audience_idp: Using first access token received by identity provider, regardless of audience.
+      storage_audience: Speicher-Audience
+      storage_audience_blank: Keine Audience wurde konfiguriert.
+      storage_audience_description: Erhalten von Token für die Audience "%{audience}".
+      storage_audience_idp: Verwendung des ersten vom Identitätsanbieter erhaltenen Zugriffstokens, unabhängig von der Zielgruppe.
       storage_oauth: Nextcloud OAuth
       storage_provider: Speicheranbieter
     health:
+      actions:
+        download_report: Download
+        rerun_checks: Alle Überprüfungen erneut ausführen
+        run_checks: Überprüfungen jetzt ausführen
       checked: Zuletzt geprüft %{datetime}
+      checks:
+        ampf_configuration:
+          client_folder_creation: Automatische Ordnererstellung
+          client_folder_removal: Automatische Ordnerlöschung
+          drive_contents: Laufwerk hat erwarteten Inhalt
+          files_request: Gruppenordnerdateien werden abgerufen
+          group_folder_app: 'Abhängigkeit: Gruppenordner'
+          group_folder_contents: Gruppenordner hat erwarteten Inhalt
+          group_folder_presence: Gruppenordner existiert
+          header: Automatisch verwaltete Projektordner-Konfiguration
+          userless_access: Serverseitige Anfrageauthentifizierung
+        authentication:
+          existing_token: Benutzer Token
+          header: Authentifizierung
+          non_provisioned_user: Durch IDP bereitgestellter Benutzer
+          offline_access: Configured OIDC offline_access scope
+          provisioned_user_provider: Durch OIDC bereitgestellter Benutzer
+          token_negotiable: Benutzer-Token-Fähigkeiten
+          user_bound_request: Benutzerbasierte Anfrageauthentifizierung
+        base_configuration:
+          capabilities_request: Funktionen des externen Dateispeichers
+          client_id: Client-ID
+          client_secret: Client-Secret
+          dependencies_check: Abhängigkeiten
+          dependencies_versions: Abhängigkeiten (Version)
+          diagnostic_request: Diagnoseanfrage
+          drive_id_exists: Laufwerk existiert
+          drive_id_format: Laufwerks-ID-Format
+          header: Basiskonfiguration
+          host_url_accessible: Host-URL erreichbar
+          storage_configured: Konfiguration abgeschlossen
+          tenant_id: Tenant ID
+        failures:
+          zero: Alle Überprüfungen bestanden
+          one: "%{count} Überprüfung fehlgeschlagen"
+          other: "%{count} Überprüfungen fehlgeschlagen"
+        warnings:
+          one: "%{count} Überprüfung hat eine Warnung zurückgegeben"
+          other: "%{count} Überprüfungen haben eine Warnung zurückgegeben"
       connection_validation:
-        action: Verbindung erneut überprüfen
-        app_version_mismatch: Die Integration OpenProject App-Version wird nicht unterstützt. Bitte aktualisieren Sie Ihren Nextcloud Server.
-        client_id_wrong: Die konfigurierte OAuth 2-Client-ID ist ungültig. Bitte überprüfen Sie die Konfiguration.
-        client_secret_wrong: Das konfigurierte OAuth 2-Client-Geheimnis ist ungültig. Bitte überprüfen Sie die Konfiguration.
-        drive_id_wrong: Die konfigurierte Laufwerks-ID konnte nicht gefunden werden. Bitte überprüfen Sie die Konfiguration.
-        group_folder_not_found: Der Gruppenordner konnte nicht gefunden werden.
-        group_folder_version_mismatch: Die Gruppenordner-Version wird nicht unterstützt. Bitte aktualisieren Sie Ihren Nextcloud Server.
-        host_not_found: Kein Nextcloud-Server unter der konfigurierten Host-URL gefunden. Bitte überprüfen Sie die Konfiguration.
-        missing_dependencies: 'Eine erforderliche Abhängigkeit fehlt auf dem Datei-Speicher. Bitte fügen Sie die folgende Abhängigkeit hinzu: %{dependency}.'
+        client_id_invalid: Die konfigurierte OAuth 2-Client-ID ist ungültig. Bitte überprüfen Sie die Konfiguration.
+        client_secret_invalid: Das konfigurierte OAuth 2-Client-Geheimnis ist ungültig. Bitte überprüfen Sie die Konfiguration.
+        nc_dependency_missing: 'Eine erforderliche Abhängigkeit fehlt auf dem Datei-Speicher. Bitte fügen Sie die folgende Abhängigkeit hinzu: %{dependency}.'
+        nc_dependency_version_mismatch: Die %{dependency} App-Version wird nicht unterstützt. Bitte aktualisieren Sie Ihren Nextcloud Server.
+        nc_group_folder_not_found: Der Gruppenordner konnte nicht gefunden werden.
+        nc_host_not_found: Kein Nextcloud-Server unter der konfigurierten Host-URL gefunden. Bitte überprüfen Sie die Konfiguration.
+        nc_oauth_request_not_found: OpenProject konnte den Hauptordner von Nextcloud mit dem aktuellen eingeloggten Benutzer nicht finden. Bitte überprüfen Sie die Server-Logs für weitere Informationen.
+        nc_oauth_request_unauthorized: Der aktuelle Benutzer ist nicht berechtigt, den Hauptordner von Nextcloud zu sehen, oder wir konnten keinen Token hierfür erhalten. Bitte überprüfen Sie die Serverprotokolle für weitere Informationen.
+        nc_oauth_token_missing: OpenProject kann die Kommunikation auf Benutzerebene mit Nextcloud nicht testen, da der Benutzer sein Nextcloud Konto noch nicht verknüpft hat.
+        nc_unexpected_content: Unerwarteter Inhalt im verwalteten Gruppenordner gefunden.
+        nc_userless_access_denied: Das konfigurierte App-Passwort ist ungültig.
         not_configured: Die Verbindung konnte nicht validiert werden. Bitte schließen Sie zuerst die Konfiguration ab.
-        oidc_cant_acquire_token: Your OpenID Connect setup doesn't provide the necessary audience, nor provides token exchange capabilities. Please check out our documentation for more information.
-        oidc_cant_exchange_token: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
-        oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
-        oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
+        od_client_cant_delete_folder: Der Client hat Probleme beim Löschen von Ordnern. Bitte überprüfen Sie die Setup-Dokumentation für Ihren Speicher.
+        od_client_write_permission_missing: Der Client hat anscheinend keine Schreibberechtigungen. Bitte überprüfen Sie die Setup-Dokumentation für Ihren Speicher.
+        od_drive_id_invalid: Die konfigurierte Laufwerks-ID scheint ungültig. Bitte überprüfen Sie die Konfiguration.
+        od_drive_id_not_found: Die konfigurierte Laufwerks-ID konnte nicht gefunden werden. Bitte überprüfen Sie die Konfiguration.
+        od_existing_test_folder: Der für den Test benötigte Ordner %{folder_name} existiert bereits. Bitte löschen Sie ihn und versuchen Sie es erneut.
+        od_oauth_request_not_found: OpenProject konnte den Hauptordner in OneDrive mit dem aktuellen eingeloggten Benutzer nicht finden. Bitte überprüfen Sie die Server-Logs für weitere Informationen.
+        od_oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive/SharePoint or we couldn't acquire a token. Please check the server logs for further information.
+        od_oauth_token_missing: OpenProject kann die Verbindung zu OneDrive/SharePoint auf Benutzerebene nicht testen, da das Microsoft-Konto noch nicht verknüpft wurde.
+        od_tenant_id_wrong: Die konfigurierte Verzeichnis-(Mandanten-)ID ist ungültig. Bitte überprüfen Sie die Konfiguration.
+        od_unexpected_content: Unerwarteter Inhalt auf dem Laufwerk gefunden.
+        offline_access_scope_missing: It is recommended to configure the OpenID Connect provider to request the offline_access scope. The integration may still work anyways, but make sure that refresh tokens do not expire.
+        oidc_cant_acquire_token: Dein OpenID Connect Setup bietet weder die nötige Audience noch bietet es Tokenaustausch Möglichkeiten. Bitte lies unsere Dokumentation für weitere Informationen.
+        oidc_cant_exchange_token: Es scheint ein Problem mit dem Token Exchange Setup auf Ihrem OpenID Connect Provider zu geben. Bitte überprüfen Sie die Konfiguration und versuchen Sie es erneut.
+        oidc_cant_refresh_token: Beim Versuch, Ihren Zugriff auf den Speicher zu überprüfen, ist ein Fehler aufgetreten. Bitte überprüfen Sie die Server-Protokolle auf weitere Informationen.
+        oidc_non_oidc_user: Der aktuelle Benutzer wurde zwar bereitgestellt, aber nicht von einem OpenID Connect (OIDC) Identity Provider. Bitte wiederholen Sie die Prüfung mit einem OIDC-bereitgestellten Benutzer.
         oidc_non_provisioned_user: Der aktuelle Benutzer wird nicht von einem OpenID Connect Identity Provider bereitgestellt. Bitte führen Sie die Prüfung mit einem bereitgestellten Benutzer erneut durch.
-        placeholder: Überprüfen Sie Ihre Verbindung mit dem Server.
-        subtitle: Verbindungsvalidierung
-        tenant_id_wrong: Die konfigurierte Verzeichnis-(Mandanten-)ID ist ungültig. Bitte überprüfen Sie die Konfiguration.
-        unexpected_content:
-          nextcloud: Unerwarteter Inhalt im verwalteten Gruppenordner gefunden.
-          one_drive: Unerwarteter Inhalt auf dem Laufwerk gefunden.
         unknown_error: Die Verbindung konnte nicht validiert werden. Es ist ein unbekannter Fehler aufgetreten. Bitte prüfen Sie die Serverprotokolle für weitere Informationen.
-        userless_access_denied: Das konfigurierte App-Passwort ist ungültig.
       label_error: Fehler
+      label_failed: Fehlgeschlagen
       label_healthy: Fehlerfrei
+      label_passed: Bestanden
       label_pending: Ausstehend
+      label_skipped: Übersprungen
       label_warning: Warnung
+      no_report: Kein Bericht verfügbar
+      no_report_description: Führen Sie jetzt die Prüfungen für einen vollständigen Gesundheitsbericht dieses Dateispeichers durch.
+      open_report: Vollständigen Gesundheitsbericht öffnen
       project_folders:
         subtitle: Automatisch verwaltete Projektordner
       since: seit %{datetime}
-      title: Verbindungsstatus
+      summary:
+        failure: Einige Überprüfungen sind fehlgeschlagen und das System funktioniert nicht wie erwartet.
+        success: Alle Verbindungen und Systeme funktionieren wie erwartet.
+        warning: Einige Überprüfungen ergaben eine Warnung. Dies kann zu unerwartetem Verhalten führen.
+      title: Gesundheitsstatusbericht
     health_email_notifications:
       description_subscribed: Alle Administratoren erhalten E-Mail-Benachrichtigungen über den Zustand dieses Dateispeichers.
       description_unsubscribed: Die E-Mail-Benachrichtigungen über den Zustand dieses Speichers wurden für alle Administratoren deaktiviert.
@@ -275,7 +336,7 @@ de:
       project_folder_bulk: Der Projektordner ist der Standardordner für Datei-Uploads für alle ausgewählten Projekte. Sie können dies in jeder Projekteinstellung individuell ändern. Benutzer können trotzdem Dateien an andere Orte hochladen.
     instructions:
       all_available_storages_already_added: Alle verfügbaren Speicher sind dem Projekt bereits hinzugefügt.
-      authentication_method: The way that requests between OpenProject and the Storage are authenticated.
+      authentication_method: Die Art und Weise, wie Anfragen zwischen OpenProject und dem Speicher authentifiziert werden.
       automatic_folder: Dies wird automatisch einen Stammordner für dieses Projekt erstellen und die Zugriffsberechtigungen für jedes Projektmitglied verwalten.
       empty_project_folder_validation: Die Auswahl eines Ordners ist zwingend erforderlich, um fortzufahren.
       existing_manual_folder: Sie können einen existierenden Ordner als Hauptordner für dieses Projekt definieren. Die Berechtigungen werden jedoch nicht automatisch verwaltet, der Administrator muss manuell sicherstellen, dass relevante Benutzer Zugriff haben. Der ausgewählte Ordner kann von mehreren Projekten verwendet werden.
@@ -288,7 +349,7 @@ de:
         integration: Nextcloud Administration / OpenProject
         oauth_configuration: Kopieren Sie diese Werte aus der %{application_link_text}.
         provider_configuration: Bitte stellen Sie sicher, dass Sie Administrationsrechte in Ihrer Nextcloud-Instanz haben und die %{application_link_text} vor dem Setup installiert wurde.
-        storage_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        storage_audience: Bitte geben Sie die Client-ID ein, die die Nextcloud-Instanz für die Kommunikation mit dem Identitätsanbieter verwendet.
         storage_audience_placeholder: z.B. Nextcloud
       no_specific_folder: Standardmäßig startet jeder Benutzer in seinem eigenen Home-Ordner, wenn er eine Datei hochlädt.
       no_storage_set_up: Es sind noch keine Dateispeicher eingerichtet.
@@ -321,7 +382,7 @@ de:
     label_creator: Ersteller
     label_delete_storage: Dateispeicher löschen
     label_edit_storage_access_management: Speicherzugriffsverwaltung bearbeiten
-    label_edit_storage_audience: Edit Storage Audience
+    label_edit_storage_audience: Speicher-Audience bearbeiten
     label_edit_storage_automatically_managed_folders: Automatisch verwaltete Projektordner des Dateispeichers bearbeiten
     label_edit_storage_host: Dateispeicher-Host bearbeiten
     label_existing_manual_folder: Vorhandener Ordner mit manuell verwalteten Berechtigungen
@@ -349,8 +410,9 @@ de:
     member_connection_status:
       connected: Verbunden
       connected_no_permissions: Benutzerrolle hat keine Speicherberechtigungen
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: Nicht verbunden. Der Benutzer sollte sich über diesen %{link} anmelden.
-      not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
+      not_connected_sso: Noch nicht verbunden, SSO sollte sie automatisch verbinden, wenn Sie sich die Dateien anschauen.
     members_no_results: Keine Mitglieder zum Anzeigen.
     no_results: Noch keine Dateispeicher eingerichtet.
     oauth_access_granted_modal:
@@ -412,20 +474,21 @@ de:
         name: OneDrive/SharePoint
         name_placeholder: z.B. OneDrive
     show_attachments_toggle:
-      description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
+      description: Beim Deaktivieren dieser Option wird die Liste der Anhänge auf der Registerkarte Arbeitspakete ausgeblendet. Die in der Beschreibung eines Arbeitspakets angehängten Dateien werden weiterhin im internen Anhang gespeichert.
       label: Anhänge auf dem Dateien-Tab der Arbeitspakete anzeigen
     storage_audience:
+      documentation_intro: Details on the following options and what needs to be configured in the identity provider can be found in our documentation.
       idp:
-        helptext: OpenProject will use the first access token received by the identity provider to authenticate requests to the storage. It will not try to obtain another token.
-        label: Use first access token obtained by identity provider
+        helptext: OpenProject verwendet das erste Zugangs-Token des Identity Providers, um Anfragen an den Speicher zu authentifizieren. Es wird nicht versuchen, ein neues Token zu erhalten.
+        label: Benutze den ersten Zugangs-Token des Identitätsanbieters
       manual:
-        helptext: Allows you to set the audience of the storage. OpenProject will try to obtain a token for the given audience from the identity provider.
-        label: Define storage audience manually
+        helptext: Ermöglicht es Ihnen, die Audience des Speichers festzulegen. OpenProject wird versuchen, ein Token für die angegebene Audience vom Identity Provider zu erhalten.
+        label: Speicher-Audience manuell definieren
     storage_list_blank_slate:
       description: Fügen Sie einen Dateispeicher hinzu, um ihn hier zu sehen.
       heading: Sie haben noch keine Dateispeicher.
     successful_storage_connection: Speicher erfolgreich verbunden! Denken Sie daran, den Speicher in der Projekt-Registerkarte für jedes gewünschte Projekt zu aktivieren.
-    upsale:
+    upsell:
       description: |-
         Integrieren Sie Ihr OneDrive/SharePoint als Dateispeicher mit OpenProject. Laden Sie Dateien hoch und verknüpfen Sie diese direkt mit Arbeitspaketen in einem Projekt.
       title: OneDrive/SharePoint-Integration

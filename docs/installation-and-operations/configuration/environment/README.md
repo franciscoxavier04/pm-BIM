@@ -186,6 +186,7 @@ OPENPROJECT_DROP__OLD__SESSIONS__ON__LOGIN (default=false) Destroy all sessions 
 OPENPROJECT_DROP__OLD__SESSIONS__ON__LOGOUT (default=true) Destroy all sessions for current_user on logout
 OPENPROJECT_EDITION (default="standard") OpenProject edition mode
 OPENPROJECT_EE__MANAGER__VISIBLE (default=true) Show or hide the Enterprise configuration page and enterprise banners
+OPENPROJECT_EE__HIDE__BANNERS (default=false) Hide the Enterprise enterprise banners
 OPENPROJECT_EMAIL__DELIVERY__CONFIGURATION (default="inapp")
 OPENPROJECT_EMAIL__DELIVERY__METHOD (default=nil) Email delivery method
 OPENPROJECT_EMAIL__LOGIN (default=false) Use email as login
@@ -274,6 +275,7 @@ OPENPROJECT_PLUGIN__OPENPROJECT__STORAGES (default=nil)
 OPENPROJECT_PLUGIN__OPENPROJECT__TEAM__PLANNER (default=nil)
 OPENPROJECT_PLUGIN__OPENPROJECT__TWO__FACTOR__AUTHENTICATION (default={"active_strategies"=>[], "enforced"=>false, "allow_remember_for_days"=>0})
 OPENPROJECT_PROJECT__GANTT__QUERY (default=nil) Project portfolio Gantt view
+OPENPROJECT_PROMETHEUS_EXPORT (default: nil) Enable Prometheus export endpoint
 OPENPROJECT_RAILS__ASSET__HOST (default=nil) Custom asset hostname for serving assets (e.g., Cloudfront)
 OPENPROJECT_RAILS__CACHE__STORE (default=:file_store) Set cache store implemenation to use with OpenProject
 OPENPROJECT_RAILS__RELATIVE__URL__ROOT (default="") Set a URL prefix / base path to run OpenProject under, e.g., host.tld/openproject

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -102,7 +104,7 @@ RSpec.describe "Enterprise token", :js do
         expect(EnterpriseToken.current.encoded_token).to eq("foobar")
 
         expect(page).to have_text("Successful update")
-        click_on "Replace your current support token"
+        find("h2", text: "Replace your current support token").click
         fill_in "enterprise_token_encoded_token", with: "blabla"
         submit_button.click
 

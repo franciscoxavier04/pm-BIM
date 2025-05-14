@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -69,7 +71,7 @@ RSpec.describe "Work package activity", :js do
       ENV.delete("WORK_PACKAGES_ACTIVITIES_TAB_POLLING_INTERVAL_IN_MS")
     end
 
-    it "displays changed attributes in the activity tab", :aggregate_failures do
+    it "displays changed attributes in the activity tab" do
       activity_tab.expect_journal_changed_attribute(text: "% Complete set to 95%")
       activity_tab.expect_journal_changed_attribute(text: "Work set to 100h")
       activity_tab.expect_journal_changed_attribute(text: "Remaining work set to 5h")

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -68,16 +70,6 @@ RSpec.describe API::V3::Activities::ActivityEagerLoadingWrapper, with_settings: 
 
     it "can wrap Meeting journals" do
       expect(meeting.journals).to be_wrappable
-    end
-
-    it "can wrap MeetingAgenda journals" do
-      meeting_agenda = create(:meeting_agenda, meeting:)
-      expect(meeting_agenda.journals).to be_wrappable
-    end
-
-    it "can wrap MeetingMinutes journals" do
-      meeting_minutes = create(:meeting_minutes, meeting:)
-      expect(meeting_minutes.journals).to be_wrappable
     end
 
     it "can wrap Budget journals" do

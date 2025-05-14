@@ -31,6 +31,7 @@
 module WorkPackages
   module Types
     class SubjectConfigurationComponent < ApplicationComponent
+      include ApplicationHelper
       include OpPrimer::ComponentHelpers
       include OpTurbo::Streamable
 
@@ -62,9 +63,38 @@ module WorkPackages
         ::Types::Forms::SubjectConfigurationFormModel.new(
           subject_configuration: values[:subject_configuration],
           pattern: values[:pattern],
-          suggestions: ::Types::Patterns::TokenPropertyMapper.new.tokens_for_type(model),
+          suggestions: sort_attributes(supported_attributes),
           validation_errors: model.errors
         )
+      end
+
+      def supported_attributes
+        attribute_tokens = ::Types::Patterns::TokenPropertyMapper.new.tokens_for_type(model)
+
+        result = {
+          work_package: {
+            title: I18n.t("types.edit.subject_configuration.token.context.work_package"),
+            tokens: []
+          },
+          parent: {
+            title: I18n.t("types.edit.subject_configuration.token.context.parent"),
+            tokens: []
+          },
+          project: {
+            title: I18n.t("types.edit.subject_configuration.token.context.project"),
+            tokens: []
+          }
+        }
+
+        attribute_tokens.each_with_object(result) do |token, obj|
+          token_hash = { key: token.key, label: token.label, label_with_context: token.label_with_context }
+          obj[token.context][:tokens] << token_hash
+        end
+      end
+
+      def sort_attributes(attributes)
+        attributes.each_value { |group| group[:tokens] = group[:tokens].sort_by { |a| a[:label] } }
+        attributes
       end
 
       def subject_configuration_form_values

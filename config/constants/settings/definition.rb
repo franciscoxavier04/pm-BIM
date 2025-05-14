@@ -44,6 +44,11 @@ module Settings
         format: :string,
         default: nil
       },
+      allowed_link_protocols: {
+        format: :array,
+        description: "Allowed protocols for links in the WYSIWYG editor and formatted texts",
+        default: []
+      },
       apiv3_cors_enabled: {
         description: "Enable CORS headers for APIv3 server responses",
         default: false
@@ -404,9 +409,13 @@ module Settings
         allowed: %w[standard bim]
       },
       ee_manager_visible: {
-        description: "Show or hide the Enterprise configuration page and enterprise banners",
+        description: "Show the Enterprise configuration page",
         default: true,
         writable: false
+      },
+      ee_hide_banners: {
+        description: "Hide the Enterprise enterprise banners",
+        default: false
       },
       enable_internal_assets_server: {
         description: "Serve assets through the Rails internal asset server",
@@ -970,7 +979,8 @@ module Settings
         default: nil
       },
       self_registration: {
-        default: 2
+        default: 2,
+        format: :integer
       },
       sendmail_arguments: {
         description: "Arguments to call sendmail with in case it is configured as outgoing email setup",
@@ -1324,6 +1334,8 @@ module Settings
       # @param [nil] env_alias Alternative for the default env name to also look up. E.g. with the alias set to
       #  `OPENPROJECT_2FA` for a definition with the name `two_factor_authentication`, the value is fetched
       #  from the ENV OPENPROJECT_2FA as well.
+      # @param [TrueClass|FalseClass] disallow_override Disables the usual possibility of overriding the value
+      #   from ENV or configuration file.
       def add(name,
               default:,
               default_by_env: {},
@@ -1332,7 +1344,8 @@ module Settings
               writable: true,
               allowed: nil,
               env_alias: nil,
-              string_values: false)
+              string_values: false,
+              disallow_override: false)
         name = name.to_sym
         return if exists?(name)
 
@@ -1345,7 +1358,7 @@ module Settings
                          allowed:,
                          env_alias:,
                          string_values:)
-        override_value(definition)
+        override_value(definition) unless disallow_override
         all[name] = definition
       end
 

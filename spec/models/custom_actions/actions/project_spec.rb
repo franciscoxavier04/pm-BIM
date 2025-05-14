@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -30,7 +32,7 @@ require_relative "../shared_expectations"
 
 RSpec.describe CustomActions::Actions::Project do
   let(:key) { :project }
-  let(:type) { :associated_property }
+  let(:type) { :project }
   let(:priority) { 10 }
 
   let(:allowed_values) do

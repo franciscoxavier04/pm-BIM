@@ -47,16 +47,32 @@ ar:
       user:
         default_rates: "المعدلات المفترضة"
       time_entry:
-        project: Project
-        user: User
-        work_package: Work package
+        project: مشروع
+        user: المستخدم
+        work_package: مجموعة العمل
+        subject: الموضوع
         hours: الساعات
-        comments: Comment
+        comments: تعليق
         activity: النشاط
         spent_on: التاريخ
         start_time: Start time
         end_time: Finish time
+        time: الوقت
     models:
+      time_entry:
+        zero: "Time entries"
+        one: "Time entry"
+        two: "Time entries"
+        few: "Time entries"
+        many: "Time entries"
+        other: "Time entries"
+      cost_entry:
+        zero: "Cost entries"
+        one: "قيد التكلفة"
+        two: "Cost entries"
+        few: "Cost entries"
+        many: "Cost entries"
+        other: "Cost entries"
       cost_type:
         zero: "أنواع التكلفة"
         one: "أنواع التكلفة"
@@ -92,7 +108,8 @@ ar:
   button_add_rate: "أضِف المعدل"
   button_log_costs: "سجل تكاليف الوحدة"
   button_log_time: "Log"
-  button_add_activity: "Activity"
+  button_add_activity: "النشاط"
+  button_add_time_entry: "وقت السجل"
   caption_booked_on_project: "حُجِِز على المشروع"
   caption_default: "الافتراضي"
   caption_default_rate_history_for: "تاريخ المعدل الافتراضي ل %{user}"
@@ -104,7 +121,7 @@ ar:
   caption_save_rate: "معدل التوفير"
   caption_set_rate: "ضبط المعدل الحالي"
   caption_show_locked: "إظهار الأنواع المغلقة"
-  caption_log_time_dialog: "Log time"
+  caption_log_time_dialog: "وقت السجل"
   description_date_for_new_rate: "تاريخ المعدل الجديد"
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
@@ -142,22 +159,42 @@ ar:
   label_rate: "المعدل"
   label_rate_plural: "الأسعار"
   label_status_finished: "مكتمل"
-  label_show: "Show"
+  label_show: "إظهار"
   label_units: "وحدات التكلفة"
   label_user: "المستخدم"
   label_until: "حتى"
   label_valid_from: "صالح من"
   label_yes: "نعم"
-  label_time: "Time"
+  label_time: "الوقت"
   label_cost: "Cost"
-  label_costs: "Costs"
+  label_costs: "التكاليف"
   label_mandatory_fields: "Mandatory fields"
+  label_my_time_tracking: "My time tracking"
+  label_no_time: "No time tracked"
+  label_next_day: "Next day"
+  label_next_week: "الأسبوع القادم"
+  label_next_workweek: "Next work week"
+  label_next_month: "Next month"
+  label_previous_day: "Previous day"
+  label_previous_workweek: "Previous work week"
+  label_previous_week: "الأسبوع الماضي"
+  label_previous_month: "Previous month"
+  label_specific_day: "Day %{day}"
+  label_specific_week: "Calendar week %{week}"
+  label_specific_month: "Month %{month}"
+  label_list: "القائمة"
+  label_month: "شهر"
+  label_workweek: "Work week"
+  label_day: "اليوم"
+  label_today_capitalized: "Today"
+  label_view_mode_switcher: "Change view"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "حصل خطأ ما. من فضلك حاول مرة أخرى."
   notice_successful_restore: "استعادة ناجحة."
   notice_successful_lock: "أغلِقت بنجاح."
   notice_cost_logged_successfully: "تمّ تسجيل تكلفة الوحدة بنجاح."
   notice_different_time_zones: "This user has a different time zone (%{tz}). Time will be logged using their time zone."
+  notice_time_entry_update_failed: "Failed to update time entry. Errors: %{errors}"
   permission_edit_cost_entries: "تحرير تكاليف الوحدة المحجوزة"
   permission_edit_own_cost_entries: "تحرير تكاليف الوحدة المحجوزة الخاصة"
   permission_edit_hourly_rates: "تحرير الأجور الساعيّة"
@@ -172,10 +209,11 @@ ar:
   permission_view_own_hourly_rate: "عرض الأجور الساعيّة الخاصة"
   permission_view_own_time_entries: "عرض الوقت الخاص الذي تم قضاؤه"
   project_module_costs: "الوقت والتكاليف"
-  setting_allow_tracking_start_and_end_times: "Allow users to track start and end time on time records"
-  setting_costs_currency: "Currency"
-  setting_costs_currency_format: "Format of currency"
-  setting_enforce_tracking_start_and_end_times: "Force users to set start and end time on time records"
+  setting_allow_tracking_start_and_end_times: "Allow exact times tracking"
+  setting_costs_currency: "العملة"
+  setting_costs_currency_format: "شكل العملة"
+  setting_enforce_tracking_start_and_end_times: "Require exact times"
+  setting_enforce_without_allow: "Requiring exact times is not possible without allowing them"
   text_assign_time_and_cost_entries_to_project: "تعيين الساعات والتكاليف التي تمّ الإبلاغ عنها للمشروع"
   text_destroy_cost_entries_question: "%{cost_entries} تم الإبلاغ عنها في مجموعات العمل التي توشك أن تلغيها. ماذا تريد أن تفعل؟"
   text_destroy_time_and_cost_entries: "إلغاء الساعات والتكاليف التي تم الإبلاغ عنها"
@@ -183,9 +221,18 @@ ar:
   text_reassign_time_and_cost_entries: "إعادة تعيين الساعات والتكاليف التي تم التبليغ عنها لمجموعة العمل هذه:"
   text_warning_hidden_elements: "من الممكن أنه تمّ استبعاد بعض الإدخالات من التجميع."
   week: "الأسبوع"
-  js:
-    text_are_you_sure: "هل أنت متأكد؟"
+  total_times:
+    workweek: "Workweek Total: %{hours}"
+    week: "Week Total: %{hours}"
+    month: "Month Total: %{hours}"
+    day: "Day Total: %{hours}"
   api_v3:
     errors:
       validation:
         start_time_different_date: "Date part of startTime (%{start_time}) must be the same as the spentOn (%{spent_on}) date."
+  ee:
+    features:
+      time_entry_time_restrictions: Require exact time tracking
+    upsell:
+      time_entry_time_restrictions:
+        description: "Improve your time tracking by requiring exact start and finish times when logging time."

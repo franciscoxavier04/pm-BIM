@@ -32,7 +32,7 @@ bg:
     github_updated_at: "Updated at"
     github_login: "GitHub login"
     labels: "Labels"
-    repository: "Repository"
+    repository: "Хранилище"
     changed_files_count: "Changed files"
   button_add_deploy_target: Add deploy target
   label_deploy_target: Deploy target
