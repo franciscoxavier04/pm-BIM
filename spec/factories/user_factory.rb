@@ -40,6 +40,8 @@ FactoryBot.define do
 
     transient do
       preferences { {} }
+      authentication_provider { nil }
+      external_id { SecureRandom.uuid }
     end
 
     language { "en" }
@@ -60,6 +62,10 @@ FactoryBot.define do
         user.notification_settings = [
           create(:notification_setting, user:)
         ]
+      end
+
+      if factory.authentication_provider.present?
+        user.update!(identity_url: "#{factory.authentication_provider.slug}:#{factory.external_id}")
       end
     end
 

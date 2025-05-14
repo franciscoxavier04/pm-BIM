@@ -102,6 +102,8 @@
       explanation:
         text: "Individuelle handlinger av en bruker (f.eks. oppdatering av en arbeidspakke to ganger) aggregeres til en enkelt handling hvis aldersforskjellen er mindre enn det spesifiserte tidsrommet. De vil bli vist som en enkelt handling i programmet. Dette vil også forsinke varslinger med samme tidsperiode som reduserer antall e-poster som sendes, og vil også påvirke %{webhook_link} forsinkelse."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Vis til
     is_active: vises nå
@@ -352,10 +354,10 @@
         text: "Denne handlingen vil ikke slette noen av prosjektene på listen. Er du sikker på at du vil slette denne prosjektlisten?"
     settings:
       header_details: Basic details
-      header_status: Project status
+      header_status: Prosjektstatus
       header_relations: Project relations
       button_update_details: Update details
-      button_update_status: Update status
+      button_update_status_description: Update status description
       button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
@@ -417,8 +419,10 @@
         no_results_title_text: Det er ingen ekstra registrert diskplass brukt av dette prosjektet.
       work_package_priorities:
         new_label: "Ny prioritet"
+    status:
+      button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Duration: %{count} working day"
       other: "Duration: %{count} working days"
   lists:
@@ -505,7 +509,7 @@
         token_name_blank: "Vennligst oppgi navn på API-token"
         token_name_in_use: "Dette API-token-navnet er allerede i bruk, velg et annet"
       new_access_token_dialog_title: "Opprett nytt API-token"
-      new_access_token_dialog_show_button_text: "API-token"
+      new_access_token_dialog_show_button_text: "API-nøkkel"
       new_access_token_dialog_text_field_placeholder_text: "Mitt API-token"
       new_access_token_dialog_text_field_label: "Navn"
       new_access_token_dialog_submit_button_text: "Opprett"
@@ -601,7 +605,7 @@
       no_results_content_text: Legg til en ny status
       headers:
         is_default: "Standard"
-        is_closed: "Lukket"
+        is_closed: "Stengt"
         is_readonly: "Kun lesetilgang"
         excluded_from_totals: "Unntatt fra totaler"
   themes:
@@ -629,14 +633,17 @@
         automatically_generated_subjects:
           label: "Automatically generated subjects"
           caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
-        pattern:
-          label: "Subject pattern"
-          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
-          headings:
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
             work_package: "Arbeidspakke"
             parent: "Overordnet"
             project: "Prosjekt"
+        pattern:
+          label: "Subject pattern"
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -721,7 +728,7 @@
     sharing:
       missing_workflow_warning:
         title: "Arbeidsflyt mangler for deling av arbeidspakker"
-        message: "Ingen arbeidsflyt er konfigurert for rollen 'Arbeidspakke redaktør'. Uten en arbeidsflyt kan ikke brukeren endre status på arbeidspakken. Arbeidsflyt kan kopieres. Velg en kildetype (f.eks. 'oppgave') og en kilderolle (f.eks. 'medlem'). Velg så måltyper. Til å begynne med, kan du velge alle typene som mål. Til slutt velger du \"Redigeringsprogrammet for arbeidspakke\" som mål og klikk \"Kopier\". Etter å ha opprettet standardinnstillingene, kan du finjustere arbeidsflytene som du gjør for enhver annen rolle."
+        message: "Ingen arbeidsflyt er konfigurert for rollen 'Arbeidspakke redaktør'. Uten en arbeidsflyt kan ikke brukeren endre status på arbeidspakken. Arbeidsflyt kan kopieres. Velg en kildetype (f.eks. 'oppgave') og en kilderolle (f.eks. 'medlem'). Velg så måltyper. Til å begynne med, kan du velge alle typene som mål. Til slutt velger du \"Redigeringsprogrammet for arbeidspakke\" som mål og press \"Copy\". Etter å ha opprettet standardinnstillingene, kan du finjustere arbeidsflytene som du gjør for hver annen rolle."
         link_message: "Konfigurer arbeidsmetodene i administrasjonen."
     templated_subject_hint: Automatically generated through type %{type}
     summary:
@@ -773,7 +780,7 @@
       new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
-      parent: "Parent"
+      parent: "Overordnet"
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "blokkeringer"
@@ -1137,6 +1144,7 @@
         error_conflict: "Informasjonen har blitt oppdatert av minst en annen bruker i mellomtiden."
         email: "er ikke en gyldig e-postadresse."
         empty: "kan ikke være tomt."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "må være partall"
         exclusion: "er reservert."
         feature_disabled: is not available.
@@ -1197,7 +1205,7 @@
               format: "%{message}"
         capability:
           context:
-            global: "Globalt"
+            global: "Global"
           query:
             filters:
               minimum: "må inkludere minst ett filter for prinsipp, kontekst eller id med '='-operatøren."
@@ -1515,7 +1523,9 @@
         one: "Varsling"
         other: "Varsler"
       placeholder_user: "Plassholder bruker"
-      project: "Prosjekt"
+      project:
+        one: "Prosjekt"
+        other: "Prosjekter"
       project_query:
         one: "Project list"
         other: "Prosjektlister"
@@ -1581,12 +1591,13 @@
       work_package: "Arbeidspakker"
     project_phase:
       activated: "aktivert"
-      deactivated: "deaktivert"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "deaktivert"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktiv"
@@ -1653,6 +1664,8 @@
     priority: "Prioritet"
     project: "Prosjekt"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Grunn"
     responsible: "Ansvarlig"
     required: "Obligatorisk"
@@ -1994,6 +2007,7 @@
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
       ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
       project_list_sharing: Project List Sharing
@@ -2006,11 +2020,15 @@
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      plans_title: "Enterprise plans"
       title: "Enterprise programtillegg"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Skjul banneret"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Marker endringer som er gjort på denne listen tidligere.
       work_package_subject_generation:
@@ -2042,6 +2060,9 @@
       custom_actions:
         title: "Tilpassede handlinger"
         description: "Egendefinerte handlinger er snarveier med ett klikk til en rekke forhåndsdefinerte handlinger som du kan gjøre tilgjengelige på visse arbeidspakker basert på status, rolle, type eller prosjekt."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Sikre at opplastede filer i OpenProject blir skannet for virus før de er tilgjengelige for andre brukere."
       placeholder_users:
@@ -2049,8 +2070,11 @@
         description: >
           Plassholderbrukere er en måte å tilknytte arbeidspakker til brukere som ikke er med i prosjektet. De kan være nyttige i en rekke scenarioer; for eksempel hvis du må spore oppgaver for en ressurs som ennå ikke er navngitt eller tilgjengelig, eller hvis du ikke vil gi den personen tilgang til OpenProject, men fortsatt vil spore oppgaver tilordnet dem.
       internal_comments:
-        title: "For your eyes only"
+        title: Internal comments
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "Tidregistrering aktiviteter"
   enumeration_work_package_priorities: "Prioritering av arbeidspakker"
   enumeration_reported_project_statuses: "Rapportert prosjektstatus"
@@ -2130,8 +2154,8 @@
       subproject: "Underprosjekt: %{name}"
   export:
     dialog:
-      title: "Eksporter"
-      submit: "Eksporter"
+      title: "Eksportèr"
+      submit: "Eksportèr"
       save_export_settings:
         label: "Save settings"
       format:
@@ -2365,7 +2389,7 @@
       api:
         title: "API"
         text_hint: "API-tokens tillater tredjepartsapplikasjoner å kommunisere med denne OpenProject instansen via REST APIs."
-        static_token_name: "API-nøkkel"
+        static_token_name: "API-token"
         disabled_text: "API-nøkler er ikke aktivert av administratoren. Kontakt systemansvarlig for å bruke denne funksjonen."
       ical:
         title: "iCalendar"
@@ -2416,6 +2440,8 @@
         mentioned: "Du har blitt nevnt i %{work_package}"
         responsible: "Du har blitt ansvarlig for %{work_package}"
         watched: "Du ser på %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Tilgjengelighet"
   label_account: "Konto"
   label_active: "Aktiv"
@@ -2470,7 +2496,6 @@
   label_ldap_auth_source_plural: "LDAP-forbindelser"
   label_attribute_expand_text: "Den fullstendige teksten for '%{attribute}'"
   label_authentication: "Autentisering"
-  label_authentication_settings: "Autentiseringsinnstillinger"
   label_available_custom_fields_projects: "Tilgjengelige egendefinerte felt i prosjekter"
   label_available_global_roles: "Tilgjengelige globale roller"
   label_available_project_attributes: "Tilgjengelige prosjektegenskaper"
@@ -2482,7 +2507,7 @@
   label_available_projects: "Tilgjengelige prosjekter"
   label_api_doc: "API dokumentasjon"
   label_backup: "Sikkerhetskopi"
-  label_backup_code: "Sikkerhetskopieringsnøkkel"
+  label_backup_code: "Sikkerhetskopieringskode"
   label_basic_details: "Basic details"
   label_between: "mellom"
   label_blocked_by: "blokkert av"
@@ -2554,7 +2579,7 @@
   label_custom_field_default_type: "Tom type"
   label_custom_style: "Design"
   label_custom_style_description: "Velg hvordan OpenProject ser ut med temaer, velg dine standardfarger som skal brukes i appen og hvordan eksporten ser ut."
-  label_dashboard: "Kontrollpanel"
+  label_dashboard: "Kontrollsenter"
   label_database_version: "PostgreSQL versjon"
   label_date: "Dato"
   label_date_and_time: "Dato og tid"
@@ -2605,7 +2630,7 @@
   label_enumerations: "Opplistinger"
   label_enterprise: "Bedrift"
   label_enterprise_active_users: "%{current}/%{limit} bookede brukere"
-  label_enterprise_edition: "Enterprise Edition"
+  label_enterprise_edition: "Enterprise-utgaven"
   label_enterprise_support: "Bedriftsstøtte"
   label_environment: "Miljø"
   label_estimates_and_progress: "Estimater og fremdrift"
@@ -2644,6 +2669,7 @@
   label_gantt_chart_plural: "Gantt-diagrammer"
   label_general: "Generell"
   label_generate_key: "Genererer en nøkkel"
+  label_global_roles: "Globale roller"
   label_git_path: "Sti til .git-mappe"
   label_greater_or_equal: ">="
   label_group_by: "Grupper etter"
@@ -2703,7 +2729,7 @@
   label_latest_revision: "Siste revisjon"
   label_latest_revision_plural: "Siste revideringer"
   label_ldap_authentication: "LDAP-autentisering"
-  label_learn_more: "Lær mer"
+  label_learn_more: "Mer informasjon"
   label_less_or_equal: "<="
   label_less_than_ago: "mindre enn dager siden"
   label_link_url: "Lenke (URL)"
@@ -2782,7 +2808,7 @@
   label_next_week: "Neste uke"
   label_no_change_option: "(Ingen endring)"
   label_no_data: "Ingen data å vise"
-  label_no_due_date: "ingen ferdigdato"
+  label_no_due_date: "ingen ferdigmeldingsdato"
   label_no_start_date: "ingen startdato"
   label_no_parent_page: "Ingen overordnet side"
   label_nothing_display: "Ingenting å vise"
@@ -2844,7 +2870,7 @@
   label_progress_tracking: "Sporing av fremdrift"
   label_project: "Prosjekt"
   label_project_activity: "Aktivitet i prosjektet"
-  label_project_attribute_plural: "Prosjekt egenskaper"
+  label_project_attribute_plural: "Prosjektegenskaper"
   label_project_attribute_manage_link: "Administrer prosjektegenskaper"
   label_project_count: "Antall prosjekter"
   label_project_copy_notifications: "Send e-postvarsler mens prosjektkopieringen pågår"
@@ -2873,9 +2899,6 @@
   label_register: "Opprett ny konto"
   label_register_with_developer: "Registrer som utvikler"
   label_registered_on: "Registrert den"
-  label_registration_activation_by_email: "konto aktivert via e-post"
-  label_registration_automatic_activation: "automatisk kontoaktivering"
-  label_registration_manual_activation: "manuell kontoaktivering"
   label_related_work_packages: "Relaterte arbeidspakker"
   label_relates: "relatert til"
   label_relates_to: "relatert til"
@@ -2923,7 +2946,7 @@
   label_search_by_name: "Søk på navn"
   label_send_information: "Send nye opplysninger til brukeren"
   label_send_test_email: "Send en testmail"
-  label_session: "Økt"
+  label_session: "Sesjon"
   label_setting_plural: "Innstillinger"
   label_system_settings: "Systeminnstillinger"
   label_show_completed_versions: "Vis fullførte versjoner"
@@ -3082,7 +3105,7 @@
   label_member_role: "Prosjektrolle"
   label_global_role: "Global rolle"
   label_not_changeable: "(ikke mulig å endre)"
-  label_global: "Global"
+  label_global: "Globalt"
   label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "Feil ved kjøring av makroen %{macro_name}"
   macro_unavailable: "Makroen %{macro_name} kan ikke vises."
@@ -3159,7 +3182,7 @@
     storages:
       health:
         plaintext:
-          storage: "Lagring"
+          storage: "Lagringssted"
           healthy:
             summary: 'Gode nyheter! Status for lagringen din, %{storage_name}, vises for øyeblikket som "Sunn".'
             error-solved-on: "Løst"
@@ -3316,6 +3339,7 @@
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Oppdateringen var vellykket."
   notice_unsuccessful_update: "Update failed."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Vellykket oppdatering. Spesifikke felter for aktiverte typer blir automatisk aktivert
     på arbeidspakkeskjema. <a href="%{url}" target="_blank">Se mer</a>.
@@ -3716,6 +3740,7 @@
   setting_hours_per_day_explanation: >-
     Dette vil definere hva som anses som en "dag" når varigheten vises i dager og timer (for eksempel hvis dagen er 8 timer, vil 32 timer være 4 dager).
   setting_invitation_expiration_days: "Aktiverings e-post utløper etter"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Beregning av fremdriftsmodus"
   setting_work_package_done_ratio_field: "Arbeidsbasert"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3731,6 +3756,9 @@
   setting_journal_aggregation_time_minutes: "Brukers handlinger aggregert innenfor"
   setting_log_requesting_user: "Logg brukernavn, navn og e-postadresse for alle forespørsler"
   setting_login_required: "Autentisering er påkrevd"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Utgående e-postadresse"
   setting_mail_handler_api_key: "API-nøkkel"
   setting_mail_handler_body_delimiters: "Avkort e-post etter en av disse linjene"
@@ -3756,6 +3784,7 @@
   setting_project_gantt_query_text: "Du kan endre spørringen som brukes for å vise Gantt-diagram fra oversiktssiden for prosjektet."
   setting_security_badge_displayed: "Vis sikkerhetsmerke"
   setting_registration_footer: "Registrerings bunntekst"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Automatisk kodelager leverandørtype"
   setting_repositories_encodings: "Koding av pakkebrønner"
   setting_repository_storage_cache_minutes: "Mellomlagring for lagringsplass"
@@ -3766,8 +3795,22 @@
   setting_repository_truncate_at: "Maksimalt antall filer som vises i depot nettleser"
   setting_rest_api_enabled: "Aktiver REST webservice"
   setting_self_registration: "Selv-registrering"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Deaktivert"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Tidsavbrudd for sesjon etter inaktivitet"
   setting_session_ttl_hint: "Verdi under 5 fungerer som deaktivering"
   setting_session_ttl_enabled: "Sesjonen utløper"
@@ -3795,6 +3838,8 @@
   setting_working_days: "Arbeidsdager"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.
@@ -4033,7 +4078,7 @@
     views:
       project: >
         %{plural} er alltid knyttet til et prosjekt. Du kan kun velge prosjekter der %{plural} -modulen er aktiv. Når du har opprettet en %{singular} kan du legge til arbeidspakker fra andre prosjekter til den.
-      public: "Publiser denne visningen, slik at andre brukere får tilgang til visningen din. Brukere med 'Administrere offentlige visninger' kan endre eller fjerne offentlig spørring. Dette påvirker ikke synligheten til arbeidspakken resultatene i denne oversikten og avhengig av tillatelser,  vil brukerne kunne se forskjellige resultater."
+      public: "Publiser denne visningen, slik at andre brukere får tilgang til visningen din. Brukere med 'Administrere offentlige visninger' kan endre eller fjerne offentlig spørring. Dette påvirker ikke synligheten til resultatene i arbeidspakken  i denne oversikten og avhengig av tillatelser,  vil brukerne kunne se forskjellige resultater."
       favoured: "Marker denne som favoritt og legg til den lagrede sidestolpen til venstre."
   time:
     am: "er"
@@ -4255,7 +4300,7 @@
       Hoppet over dager som ikke er valgt ved planlegging av arbeidspakker (og ikke inkludert i antall dager). Disse kan overstyres på arbeidspakkenivå.
     instance_wide_info: >
       Datoer som er lagt til i listen nedenfor regnes som arbeidsfrie og hoppet over når arbeidspakker planlegges.
-    change_button: "Endre arbeidsdager"
+    change_button: "Endre virkedager"
     warning: >
       Endring av hvilke ukedager som regnes som arbeidsdager eller arbeidsfrie dager kan påvirke start- og sluttdager for alle arbeidspakker i alle prosjekter i denne forekomsten.
     journal_note:

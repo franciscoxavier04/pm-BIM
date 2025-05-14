@@ -93,6 +93,7 @@ de:
   button_log_costs: "Stückkosten buchen"
   button_log_time: "Protokollieren"
   button_add_activity: "Aktivität"
+  button_add_time_entry: "Zeit buchen"
   caption_booked_on_project: "Auf das Projekt gebucht"
   caption_default: "Standard"
   caption_default_rate_history_for: "Standardsatz-Historie für %{user}"
@@ -156,8 +157,10 @@ de:
   label_no_time: "Keine Zeit erfasst"
   label_next_day: "Nächster Tag"
   label_next_week: "Woche vor"
+  label_next_workweek: "Nächste Arbeitswoche"
   label_next_month: "Nächster Monat"
   label_previous_day: "Vorheriger Tag"
+  label_previous_workweek: "Vorherige Arbeitswoche"
   label_previous_week: "Woche zurück"
   label_previous_month: "Vorheriger Monat"
   label_specific_day: "Tag %{day}"
@@ -165,9 +168,11 @@ de:
   label_specific_month: "Monat %{month}"
   label_list: "Liste"
   label_month: "Monat"
+  label_workweek: "Arbeitswoche"
   label_day: "Tag"
   label_today_capitalized: "Heute"
-  placeholder_activity_select_work_package_first: Die Auswahl des Arbeitspakets ist zuerst erforderlich
+  label_view_mode_switcher: "Ansicht ändern"
+  placeholder_activity_select_work_package_first: Zunächst muss ein Arbeitspaket ausgewählt werden
   notice_something_wrong: "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
   notice_successful_restore: "Erfolgreich wiederhergestellt."
   notice_successful_lock: "Erfolgreich gesperrt."
@@ -188,10 +193,11 @@ de:
   permission_view_own_hourly_rate: "Eigene Stundensätze ansehen"
   permission_view_own_time_entries: "Eigene gebuchte Aufwände ansehen"
   project_module_costs: "Zeit und Kosten"
-  setting_allow_tracking_start_and_end_times: "Nutzern erlauben Start- und Endzeiten bei Zeitbuchungen zu erfassen."
+  setting_allow_tracking_start_and_end_times: "Genaue Zeiterfassung erlauben"
   setting_costs_currency: "Währung"
   setting_costs_currency_format: "Format der Währung"
-  setting_enforce_tracking_start_and_end_times: "Das Setzen von Start- und Endzeiten bei Zeitbuchungen erzwingen."
+  setting_enforce_tracking_start_and_end_times: "Genaue Zeiterfassung erforderlich machen"
+  setting_enforce_without_allow: "Genaue Zeiterfassung kann nur erforderlich sein, wenn sie auch erlaubt ist"
   text_assign_time_and_cost_entries_to_project: "Gebuchte Aufwände dem Projekt zuweisen"
   text_destroy_cost_entries_question: "Es wurden bereits %{cost_entries} auf dieses Ticket gebucht. Was soll mit den Aufwänden geschehen?"
   text_destroy_time_and_cost_entries: "Gebuchte Aufwände löschen"
@@ -200,6 +206,7 @@ de:
   text_warning_hidden_elements: "Es wurden möglicherweise nicht alle Einträge berücksichtigt."
   week: "Woche"
   total_times:
+    workweek: "Gesamte Arbeitswoche: %{hours}"
     week: "Gesamte Woche: %{hours}"
     month: "Gesamter Monat: %{hours}"
     day: "Gesamter Tag: %{hours}"
@@ -209,7 +216,7 @@ de:
         start_time_different_date: "Der Datumsteil von startTime (%{start_time}) muss mit dem Datum von spentOn (%{spent_on}) übereinstimmen."
   ee:
     features:
-      time_entry_time_restrictions: Genaue Zeiterfassung erforderlich
+      time_entry_time_restrictions: Genaue Zeiterfassung erforderlich machen
     upsell:
       time_entry_time_restrictions:
-        description: "Verbessern Sie Ihre Zeiterfassung, indem Sie genaue Start- und Endzeiten für jede Zeitbuchung erfordern."
+        description: "Verbessern Sie Ihre Zeiterfassung, indem Sie genaue Start- und Endzeiten für jede Zeitbuchung erforderlich machen."

@@ -23,7 +23,7 @@ uk:
       storages/storage:
         authentication_method: Метод автентифікації
         creator: Автор
-        drive: ID диску
+        drive: ID диска
         host: Хост
         name: Назва
         provider_type: Тип постачальника
@@ -79,6 +79,8 @@ uk:
   project_storages:
     edit_project_folder:
       label: Редагувати папку проєкту
+    open:
+      remote_identity_error: Під час підключення до сховища сталася неочікувана помилка.
     project_folder_mode:
       automatic: Автоматичне керування
       inactive: Немає визначеної папки
@@ -110,7 +112,7 @@ uk:
         rename_project_folder: 'Перейменування папки керованого проекту:'
     errors:
       messages:
-        error: Сталася неочікувана помилка. Будь ласка, перевірте журнали OpenProject для отримання додаткової інформації або зверніться до адміністратора
+        error: Сталася неочікувана помилка. Щоб дізнатися більше, перегляньте журнали OpenProject або зверніться до адміністратора.
         unauthorized: OpenProject не вдалося автентифікуватись у постачальника сховища. Переконайтеся, що ви маєте до нього доступ.
       models:
         copy_project_folders_service:
@@ -200,7 +202,7 @@ uk:
       storage_delete_result_3: Якщо це сховище містить папки проєкту з автоматичним керуванням, цю папку й усі її файли буде остаточно видалено.
     dependencies:
       nextcloud:
-        group_folders_app: Group Folders
+        group_folders_app: Папки групи
         integration_app: Інтеграція OpenProject
     enabled_in_projects:
       setup_incomplete_description: Це сховище ще не налаштоване. Завершіть налаштування, перш ніж вмикати його в кількох проєктах.
@@ -232,101 +234,100 @@ uk:
     health:
       actions:
         download_report: Завантажити
-        rerun_checks: Re-run all checks
-        run_checks: Run checks now
+        rerun_checks: Перезапустити всі перевірки
+        run_checks: Запустити перевірку зараз
       checked: 'Востаннє перевірено: %{datetime}'
       checks:
         ampf_configuration:
-          files_request: Fetching group folder files
-          group_folder_app: 'Dependency: Group Folders'
-          group_folder_contents: Group folder has expected content
-          group_folder_presence: Group folder exists
-          header: Automatically managed project folder configuration
-          userless_access: Server-side request authentication
+          client_folder_creation: Автоматичне створення папки
+          client_folder_removal: Автоматичне видалення папки
+          drive_contents: Диск містить очікуваний контент
+          files_request: Отримання файлів із папок групи
+          group_folder_app: 'Залежність: папки групи'
+          group_folder_contents: Папка групи містить очікуваний контент
+          group_folder_presence: Папка групи вже існує
+          header: Конфігурація папки проєкту з автоматичним керуванням
+          userless_access: Автентифікація запиту на стороні сервера
         authentication:
-          existing_token: User token
+          existing_token: Маркер користувача
           header: Автентифікація
-          non_provisioned_user: User provisioned by IDP
-          provisioned_user_provider: User provisioned by OIDC
-          token_negotiable: User token capabilities
-          user_bound_request: User-based request authentication
+          non_provisioned_user: Користувач, створений постачальником IDP
+          offline_access: Налаштована область offline_access для OIDC
+          provisioned_user_provider: Користувач, створений постачальником OIDC
+          token_negotiable: Можливості маркерів користувачів
+          user_bound_request: Автентифікація запиту за користувачем
         base_configuration:
-          capabilities_request: Remote file storage capabilities
+          capabilities_request: Можливості віддаленого сховища
           client_id: Client ID
           client_secret: Client secret
           dependencies_check: Залежності
-          dependencies_versions: Dependencies (version)
-          diagnostic_request: Diagnostic request
-          drive_id_format: Drive ID format
-          drive_id_not_found: Drive exists
-          header: Basic configuration
-          host_url_accessible: Host URL accessible
-          storage_configured: Configuration complete
-          tenant_id: Tenant ID
+          dependencies_versions: Залежності (версія)
+          diagnostic_request: Діагностичний запит
+          drive_id_exists: Диск існує
+          drive_id_format: Формат ID Диска
+          header: Базова конфігурація
+          host_url_accessible: URL-адреса хосту доступна
+          storage_configured: Налаштування завершено
+          tenant_id: ID клієнта
         failures:
-          zero: All checks passed
-          one: "%{count} check failed"
-          few: "%{count} checks failed"
-          many: "%{count} checks failed"
-          other: "%{count} checks failed"
+          zero: Усі перевірки виконано
+          one: "%{count} перевірку виконано"
+          few: "%{count} перевірки виконано"
+          many: "%{count} перевірок виконано"
+          other: "%{count} перевірки виконано"
         warnings:
-          one: "%{count} check returned a warning"
-          few: "%{count} checks returned a warning"
-          many: "%{count} checks returned a warning"
-          other: "%{count} checks returned a warning"
+          one: "%{count} перевірка завершилася з попередженням"
+          few: "%{count} перевірки завершилися з попередженням"
+          many: "%{count} перевірок завершилося з попередженням"
+          other: "%{count} перевірки завершилися з попередженням"
       connection_validation:
-        client_id_wrong: Налаштований ідентифікатор клієнта OAuth 2 недійсний. Перевірте конфігурацію.
-        client_secret_wrong: Налаштований секретний ключ клієнта OAuth 2 недійсний. Перевірте конфігурацію.
-        dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
-        drive_id_wrong: Налаштований ідентифікатор Drive ID не знайдено. Перевірте конфігурацію.
-        group_folder_not_found: Теку групи не знайдено.
-        group_folder_version_mismatch: Версія папки групи не підтримується. Оновіть свій сервер Nextcloud.
-        host_not_found: Сервер Nextcloud  не знайдено за вказаною URL-адресою. Перевірте конфігурацію.
-        missing_dependencies: 'Відсутня обов’язкова залежність для файлового сховища. Додайте таку залежність: %{dependency}.'
-        nextcloud:
-          oauth_request_not_found: OpenProject не вдалося знайти кореневу папку Nextcloud в обліковому записі поточного користувача. Щоб дізнатися більше, перевірте журнали сервера.
-          oauth_request_unauthorized: Поточний користувач не має дозволу на перегляд основної папки Nextcloud, або ми не змогли отримати маркер. Щоб дізнатися більше, перевірте журнали сервера.
-          oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
-          unexpected_content: У теці керованої групи знайдено неочікуваний вміст.
+        client_id_invalid: Налаштований ідентифікатор клієнта OAuth 2 недійсний. Перевірте конфігурацію.
+        client_secret_invalid: Налаштований секретний ключ клієнта OAuth 2 недійсний. Перевірте конфігурацію.
+        nc_dependency_missing: 'Відсутня обов’язкова залежність для файлового сховища. Додайте таку залежність: %{dependency}.'
+        nc_dependency_version_mismatch: Версія додатка %{dependency} не підтримується. Оновіть свій сервер Nextcloud.
+        nc_group_folder_not_found: Теку групи не знайдено.
+        nc_host_not_found: Сервер Nextcloud  не знайдено за вказаною URL-адресою. Перевірте конфігурацію.
+        nc_oauth_request_not_found: OpenProject не вдалося знайти кореневу папку Nextcloud в обліковому записі поточного користувача. Щоб дізнатися більше, перевірте журнали сервера.
+        nc_oauth_request_unauthorized: Поточний користувач не має дозволу на перегляд основної папки Nextcloud, або ми не змогли отримати маркер. Щоб дізнатися більше, перевірте журнали сервера.
+        nc_oauth_token_missing: OpenProject не може перевірити з’єднання на рівні користувача з Nextcloud, оскільки користувач досі не зв’язав свій обліковий запис Nextcloud.
+        nc_unexpected_content: У теці керованої групи знайдено неочікуваний вміст.
+        nc_userless_access_denied: Налаштований пароль застосунку недійсний.
         not_configured: Не вдалося перевірити підключення. Спочатку налаштуйте конфігурацію.
+        od_client_cant_delete_folder: Клієнту не вдалося видалити папки. Ознайомтеся з документацією щодо конфігурації для свого сховища.
+        od_client_write_permission_missing: Схоже, у клієнта не має дозволів на записування. Ознайомтеся з документацією щодо конфігурації для свого сховища.
+        od_drive_id_invalid: Схоже, налаштований ідентифікатор Drive ID недійсний. Перевірте конфігурацію.
+        od_drive_id_not_found: Налаштований ідентифікатор Drive ID не знайдено. Перевірте конфігурацію.
+        od_existing_test_folder: Папка %{folder_name}, необхідна для тестування, уже існує. Видаліть її та повторіть спробу.
+        od_oauth_request_not_found: OpenProject не вдалося знайти кореневу папку на диску в обліковому записі поточного користувача. Щоб дізнатися більше, перевірте журнали сервера.
+        od_oauth_request_unauthorized: Поточний користувач не має дозволу на перегляд кореневої папки OneDrive / SharePoint, або ми не змогли отримати маркер. Щоб дізнатися більше, перевірте журнали сервера.
+        od_oauth_token_missing: OpenProject не може перевірити з’єднання на рівні користувача з OneDrive/SharePoint, оскільки користувач досі не зв’язав свій обліковий запис Microsoft.
+        od_tenant_id_wrong: Налаштований ідентифікатор каталогу (клієнта) недійсний. Перевірте конфігурацію.
+        od_unexpected_content: На диску знайдено неочікуваний контент.
+        offline_access_scope_missing: Радимо налаштувати постачальника OpenID Connect, щоб надсилати запити до області offline_acces. Інтеграція може працювати й без цього, але потрібно перевіряти термін дії маркерів оновлення.
         oidc_cant_acquire_token: Ваша конфігурація OpenID Connect не передбачає наявності необхідної аудиторії і можливостей обміну маркерами. Щоб дізнатися більше, ознайомтеся з нашою документацією.
         oidc_cant_exchange_token: Здається, виникла проблема з конфігурацією Token Exchange у вашого постачальника OpenID Connect. Перевірте конфігурацію і повторіть спробу.
         oidc_cant_refresh_token: Під час перевірки доступу до сховища сталася помилка. Щоб отримати додаткову інформацію, перевірте журнали сервера.
         oidc_non_oidc_user: Поточний користувач має доступ, але його надав не постачальник ідентифікаційних даних OpenID Connect (OIDC). Повторіть перевірку з користувачем, створеним через OIDC.
         oidc_non_provisioned_user: Поточного користувача не надано постачальником ідентифікаційних даних OpenID Connect. Повторіть перевірку з наданим користувачем.
-        one_drive:
-          client_cant_delete_folder: Клієнту не вдалося видалити папки. Ознайомтеся з документацією щодо конфігурації для свого сховища.
-          client_write_permission_missing: Схоже, у клієнта не має дозволів на записування. Ознайомтеся з документацією щодо конфігурації для свого сховища.
-          drive_id_not_found: Налаштований ідентифікатор Drive ID не знайдено. Перевірте конфігурацію.
-          drive_id_wrong: Схоже, налаштований ідентифікатор Drive ID недійсний. Перевірте конфігурацію.
-          existing_test_folder: Папка %{folder_name}, необхідна для тестування, уже існує. Видаліть її та повторіть спробу.
-          oauth_request_not_found: OpenProject couldn't find the root folder in the drive using the current logged-in user. Please check the server logs for further information.
-          oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive or we couldn't acquire a token. Please check the server logs for further information.
-          oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
-          unexpected_content: На диску знайдено неочікуваний контент.
-        placeholder: Перевірте підключення до сервера.
-        subtitle: Перевірка підключення
-        tenant_id_wrong: Налаштований ідентифікатор каталогу (клієнта) недійсний. Перевірте конфігурацію.
         unknown_error: Не вдалося перевірити підключення. Сталася невідома помилка. Щоб дізнатися більше, перегляньте журнали сервера.
-        userless_access_denied: Налаштований пароль застосунку недійсний.
       label_error: Помилка
-      label_failed: Failed
+      label_failed: Не пройдено
       label_healthy: Справність
-      label_passed: Passed
+      label_passed: Пройдено
       label_pending: Очікування
       label_skipped: Пропущено
       label_warning: Попередження
-      no_report: No report available
-      no_report_description: Run the checks now for a full health status report for this file storage.
-      open_report: Open full health report
+      no_report: Немає доступних звітів
+      no_report_description: Запустіть перевірки, щоб отримати комплексний звіт про справність цього файлового сховища.
+      open_report: Відкрити комплексний звіт про справність
       project_folders:
         subtitle: Папки проєкту з автоматичним керуванням
       since: з %{datetime}
       summary:
-        failure: Some checks failed and the system does not work as expected.
-        success: All connections and systems are working as expected.
-        warning: Some checks returned a warning. This can lead to unexpected behaviour.
-      title: Health status report
+        failure: Деякі перевірки не пройдено, і система працює неналежним чином.
+        success: Усі підключення й системи працють належним чином.
+        warning: Деякі перевірки завершилися з попередженням. Це може призвести до неочікуваної поведінки.
+      title: Звіт про стан справності
     health_email_notifications:
       description_subscribed: Усі адміністратори отримують сповіщення електронною поштою про стан справності цього сховища.
       description_unsubscribed: Сповіщення про стан справності цього сховища вимкнено для всіх адміністраторів.
@@ -378,7 +379,7 @@ uk:
       setting_up_storages_non_admin: Адміністратори можуть створювати файлові сховища в розділі «Адміністрування» / «Файлові сховища».
       type: 'Перш ніж виконувати налаштування, переконайтеся, що маєте права адміністратора у своєму екземплярі Nextcloud і що встановлено цей додаток:'
       type_link_text: "«Інтеграція OpenProject»"
-    label_active: Активні
+    label_active: Активний
     label_add_new_storage: Додати нове сховище
     label_automatic_folder: Нова папка з автоматичним керуванням дозволами
     label_creation_time: Час створення
@@ -391,7 +392,7 @@ uk:
     label_existing_manual_folder: Наявна папка з ручним керуванням дозволами
     label_file_storage: Файлове сховище
     label_host: URL-адреса хосту
-    label_inactive: Неактивні
+    label_inactive: Неактивний
     label_managed_project_folders:
       application_password: Пароль додатка
       automatically_managed_folders: Папки з автоматичним керуванням
@@ -413,6 +414,7 @@ uk:
     member_connection_status:
       connected: Підключено
       connected_no_permissions: Ролі користувача не надано дозволи на доступ до сховища
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: 'Не підключено. Користувач має ввійти в сховище за цим посиланням: %{link}.'
       not_connected_sso: Не підключено. SSO має виконувати підключення автоматично під час отримання доступу до файлів.
     members_no_results: Немає учасників.
@@ -480,6 +482,7 @@ uk:
       description: Якщо вимкнути цей параметр, список вкладень буде приховано на вкладці «Файли» пакетів робіт. Файли, вкладені в опис пакета робіт, усе одно буде додано у внутрішнє сховище вкладень.
       label: Показувати вкладення на вкладці «Файли» пакетів робіт
     storage_audience:
+      documentation_intro: Дізнатися більше про наведені нижче варіанти й потрібні налаштування постачальника ідентифікаційних даних можна в нашій документації.
       idp:
         helptext: OpenProject використовуватиме перший маркер доступу, отриманий від постачальника ідентифікаційних даних, для автентифікації запитів до сховища й не намагатиметься отримати інший маркер.
         label: Використовувати перший маркер доступу, отриманий від постачальника ідентифікаційних даних

@@ -13,8 +13,8 @@ ja:
   boards:
     label_board: "ボード"
     label_boards: "ボード"
-    label_create_new_board: "新しいボードを作成"
-    label_board_type: "ボードの種類"
+    label_create_new_board: "新しい掲示板を作成"
+    label_board_type: "ボードの形式"
     board_types:
       free: 基本
       action: "アクションボード (%{attribute})"

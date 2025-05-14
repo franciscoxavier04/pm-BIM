@@ -33,7 +33,7 @@ tr:
       text_hidden_list_warning: "Gerekli izniniz olmadığından tüm listeler gösterilemiyor. Daha çok bilgi için yöneticinizle görüşün."
       click_to_remove_list: "Bu listeyi kaldırmak için tıklayın"
       board_type:
-        text: 'Yazı tahtası tipi'
+        text: 'Pano türü'
         free: 'temel'
         select_board_type: 'Lütfen ihtiyacınız olan kart tipini seçin.'
         free_text: >
@@ -63,7 +63,7 @@ tr:
           status: Durum
           version: Sürüm
           subproject: Alt proje
-          subtasks: Ana-Yavru
+          subtasks: Üst-Alt
           basic: Temel
         select_attribute: "Eylem özelliği"
       add_list_modal:

@@ -89,7 +89,7 @@ bg:
           updated: "пренаредени"
         work_package:
           updated: "променен от %{old_value} на %{value}"
-          updated_html: "променен от %{old_value} на %{value}"
+          updated_html: "се променя от <i>%{old_value}</i> на <i>%{value}</i>"
   description_attended: "присъства"
   description_invite: "Поканен"
   events:
@@ -110,7 +110,7 @@ bg:
   label_meeting_edit: "Редактиране на срещата"
   label_meeting_agenda: "Дневен ред"
   label_meeting_minutes: "Минути"
-  label_meeting_close: "Close"
+  label_meeting_close: "Затворени"
   label_meeting_open: "Open"
   label_meeting_index_delete: "Изтрий"
   label_meeting_open_this_meeting: "Open this meeting"
@@ -384,7 +384,7 @@ bg:
     This backlog is unique to this one-time meeting. You can drag items in and out to add or remove them from the meeting agenda.
   label_agenda_backlog_clear_title: "Clear agenda backlog?"
   text_agenda_backlog_clear_description: >
-    Are you sure you want to remove all items currently in the agenda items? This action is not reversible.
+    Are you sure you want to remove all items currently in the agenda backlog? This action is not reversible.
   label_series_backlog: "Series backlog"
   text_series_backlog: >
     The backlog is shared with all occurrences of this series. You can drag items in and out to add or remove them from a particular meeting.

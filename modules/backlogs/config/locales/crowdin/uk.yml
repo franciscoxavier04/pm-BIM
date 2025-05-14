@@ -141,7 +141,7 @@ uk:
   points_resolved: "вирішено зафіксованих пунктів"
   points_to_accept: "пунктів не прийнято"
   points_to_resolve: "пункти не вирішені"
-  project_module_backlogs: "Відставання"
+  project_module_backlogs: "Невиконані завдання"
   rb_label_copy_tasks: "Копіювання робочих пакетів"
   rb_label_copy_tasks_all: "Всі"
   rb_label_copy_tasks_none: "Нічого"

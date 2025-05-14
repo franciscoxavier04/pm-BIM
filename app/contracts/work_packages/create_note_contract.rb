@@ -40,9 +40,6 @@ module WorkPackages
     attribute :journal_internal do
       next unless model.journal_internal
 
-      unless OpenProject::FeatureDecisions.internal_comments_active?
-        errors.add(:journal_internal, :feature_disabled)
-      end
       unless allowed_in_project?(:add_internal_comments)
         errors.add(:journal_internal, :error_unauthorized)
       end

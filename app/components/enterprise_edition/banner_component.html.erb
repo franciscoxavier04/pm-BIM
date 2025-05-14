@@ -46,13 +46,6 @@
         end
       end
 
-      if medium?
-        grid.with_area(:graphic) do
-          image_tag @image,
-                    class: "op-enterprise-banner--image"
-        end
-      end
-
       if @dismissable
         grid.with_area(:dismiss) do
           classes = medium? ? "op-enterprise-banner--close-icon_hovering" : ""

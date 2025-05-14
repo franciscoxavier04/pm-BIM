@@ -38,7 +38,7 @@ RSpec.describe(Storages::Peripherals::StorageInteraction::Nextcloud::Util) do
       oauth_client = create(:oauth_client)
       oidc_provider = create(:oidc_provider)
       integration = create(:nextcloud_storage, oauth_client:)
-      user = create(:user, identity_url: "#{oidc_provider.slug}:123123213")
+      user = create(:user, authentication_provider: oidc_provider)
       create(:remote_identity, user:, auth_source: oauth_client, integration:, origin_user_id: "456")
       create(:remote_identity, user:, auth_source: oidc_provider, integration:, origin_user_id: "123")
       sso_strategy = Storages::Peripherals::StorageInteraction::AuthenticationStrategies::SsoUserToken

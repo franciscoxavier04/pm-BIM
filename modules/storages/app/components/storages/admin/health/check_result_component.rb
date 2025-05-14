@@ -43,12 +43,21 @@ module Storages
 
         def data
           @data ||= {
-            text: I18n.t("storages.health.checks.#{@group}.#{model.key}"),
+            text: model.humanize_title(@group),
             status_color:,
             status_text:,
-            error_text: model.message,
+            error_code:,
+            error_text: model.humanize_error_message,
             docs_href: ::OpenProject::Static::Links.url_for(:storage_docs, :health_status)
           }
+        end
+
+        def error_code
+          if model.failure?
+            "ERR_#{model.code.upcase}"
+          elsif model.warning?
+            "WRN_#{model.code.upcase}"
+          end
         end
 
         def status_color

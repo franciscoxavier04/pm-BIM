@@ -86,16 +86,16 @@ module Storages
 
               results = validator.call
               expect(results[:group_folder_app]).to be_a_failure
-              expect(results[:group_folder_app].message)
-                .to eq(i18n_message(:dependency_version_mismatch, dependency: "Group Folders"))
+              expect(results[:group_folder_app].code).to eq(:nc_dependency_version_mismatch)
+              expect(results[:group_folder_app].context[:dependency]).to eq("Group Folders")
             end
 
             it "integration app disabled / missing", vcr: "nextcloud/capabilities_success_group_folder_disabled" do
               results = validator.call
 
               expect(results[:group_folder_app]).to be_a_failure
-              expect(results[:group_folder_app].message)
-                .to eq(i18n_message(:missing_dependencies, dependency: "Group Folders"))
+              expect(results[:group_folder_app].code).to eq(:nc_dependency_missing)
+              expect(results[:group_folder_app].context[:dependency]).to eq("Group Folders")
             end
           end
 
@@ -108,7 +108,7 @@ module Storages
               states = results.tally
               expect(states).to eq({ success: 2, failure: 1, skipped: 2 })
               expect(results[:userless_access]).to be_failure
-              expect(results[:userless_access].message).to eq(i18n_message(:userless_access_denied))
+              expect(results[:userless_access].code).to eq(:nc_userless_access_denied)
             end
           end
 
@@ -119,7 +119,7 @@ module Storages
               results = validator.call
 
               expect(results[:group_folder_presence]).to be_failure
-              expect(results[:group_folder_presence].message).to eq(i18n_message(:group_folder_not_found))
+              expect(results[:group_folder_presence].code).to eq(:nc_group_folder_not_found)
             end
           end
 
@@ -132,8 +132,7 @@ module Storages
               results = validator.call
 
               expect(results[:files_request]).to be_failure
-              expect(results[:files_request].message)
-                .to eq(i18n_message(:unknown_error))
+              expect(results[:files_request].code).to eq(:unknown_error)
 
               expect(Rails.logger).to have_received(:error).with(/Connection validation failed with unknown error/)
             end
@@ -155,13 +154,11 @@ module Storages
               results = validator.call
 
               expect(results[:group_folder_contents]).to be_a_warning
-              expect(results[:group_folder_contents].message).to eq(i18n_message("nextcloud.unexpected_content"))
+              expect(results[:group_folder_contents].code).to eq(:nc_unexpected_content)
             end
           end
 
           private
-
-          def i18n_message(key, context = {}) = I18n.t("storages.health.connection_validation.#{key}", **context)
 
           def build_failure(code:, payload:)
             data = StorageErrorData.new(source: "query", payload:)

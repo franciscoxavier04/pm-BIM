@@ -52,7 +52,10 @@ module My
           "my--time-tracking-can-edit-value" => User.current.allowed_in_any_project?(:edit_own_time_entries),
           "my--time-tracking-allow-times-value" => TimeEntry.can_track_start_and_end_time?,
           "my--time-tracking-force-times-value" => TimeEntry.must_track_start_and_end_time?,
-          "my--time-tracking-locale-value" => I18n.locale
+          "my--time-tracking-locale-value" => I18n.locale,
+          "my--time-tracking-start-of-week-value" => Setting.start_of_week,
+          "my--time-tracking-working-days-value" => working_days,
+          "my--time-tracking-time-zone-value" => User.current.time_zone.name
         }
       end
 
@@ -67,6 +70,13 @@ module My
         total_str = DurationConverter.output(total_hours, format: :hours_and_minutes).presence || t("label_no_time")
 
         I18n.t(mode, scope: "total_times", hours: total_str)
+      end
+
+      def working_days
+        # Setting.working_days is mo=1, tu=2, we=3, th=4, fr=5, sa=6, su=7
+        # hiddenDays in fullcalendar is su=0, mo=1, tu=2, we=3, th=4, fr=5, sa=6
+
+        Setting.working_days.map { |day| day % 7 }.sort
       end
     end
   end

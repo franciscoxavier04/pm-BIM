@@ -14,7 +14,7 @@ fr:
         idp_sso_service_url: Point de terminaison de connexion du fournisseur d'identité
         idp_slo_service_url: Point de terminaison de déconnexion du fournisseur d'identité
         idp_cert: Certificat public du fournisseur d'identité
-        authn_requests_signed: Signer les requêtes AuthnRequests SAML
+        authn_requests_signed: Signer les requêtes SAML AuthnRequests
         want_assertions_signed: Exiger des réponses signées
         want_assertions_encrypted: Exiger des réponses chiffrées
         certificate: Certificat utilisé par OpenProject pour les requêtes SAML
@@ -65,7 +65,7 @@ fr:
       metadata:
         dialog: "Il s'agit de l'URL où les métadonnées SAML d'OpenProject sont disponibles. Vous pouvez également l'utiliser pour configurer votre fournisseur d'identité :"
       upsell:
-        title: "Single Sign-On (SSO) with SAML"
+        title: "Authentification unique (SSO) avec SAML"
         description: Connecter OpenProject à un fournisseur d'identité SAML
       request_attributes:
         title: 'Attributs demandés'

@@ -193,7 +193,6 @@ import {
 } from 'core-app/shared/components/op-non-working-days-list/op-non-working-days-list.component';
 import { CopyToClipboardComponent } from 'core-app/shared/components/copy-to-clipboard/copy-to-clipboard.component';
 import { GlobalSearchTitleComponent } from 'core-app/core/global_search/title/global-search-title.component';
-import { ContentTabsComponent } from 'core-app/shared/components/tabs/content-tabs/content-tabs.component';
 import { PersistentToggleComponent } from 'core-app/shared/components/persistent-toggle/persistent-toggle.component';
 import { TypeFormConfigurationComponent } from 'core-app/features/admin/types/type-form-configuration.component';
 import { ToastsContainerComponent } from 'core-app/shared/components/toaster/toasts-container.component';
@@ -456,7 +455,6 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-main-menu-resizer', MainMenuResizerComponent, { injector });
     registerCustomElement('opce-copy-to-clipboard', CopyToClipboardComponent, { injector });
     registerCustomElement('opce-global-search-title', GlobalSearchTitleComponent, { injector });
-    registerCustomElement('opce-content-tabs', ContentTabsComponent, { injector });
     registerCustomElement('opce-persistent-toggle', PersistentToggleComponent, { injector });
     registerCustomElement('opce-admin-type-form-configuration', TypeFormConfigurationComponent, { injector });
     registerCustomElement('opce-toasts-container', ToastsContainerComponent, { injector });

@@ -22,7 +22,7 @@ ka:
         edit_version: 'ვერსიის ჩასწორება'
         show_version: 'ვერსიის ჩვენება'
         locked: 'ჩაკეტილია'
-        closed: 'დახურვა'
+        closed: 'დახურულია'
       new_board: 'ახალი დაფა'
       add_list: 'Add list to board'
       add_card: 'ბარათის დამატება'
@@ -59,7 +59,7 @@ ka:
           subproject: ქვეპროექტი
           subtasks: მშობელი-შვილი
         board_type_title:
-          assignee: დასაქმებული
+          assignee: დამსაქმებელი
           status: სტატუსი
           version: ვერსია
           subproject: ქვეპროექტი

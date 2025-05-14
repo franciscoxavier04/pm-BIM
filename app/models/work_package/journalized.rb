@@ -34,8 +34,7 @@ module WorkPackage::Journalized
   included do
     acts_as_journalized journals_association_extension: proc {
       def internal_visible
-        if OpenProject::FeatureDecisions.internal_comments_active? &&
-            proxy_association.owner.project.enabled_internal_comments &&
+        if proxy_association.owner.project.enabled_internal_comments &&
             User.current.allowed_in_project?(:view_internal_comments, proxy_association.owner.project)
           all
         else
@@ -101,6 +100,7 @@ module WorkPackage::Journalized
     register_journal_formatted_fields "ignore_non_working_days", formatter_key: :ignore_non_working_days
     register_journal_formatted_fields "cause", formatter_key: :cause
     register_journal_formatted_fields /file_links_?\d+/, formatter_key: :file_link
+    register_journal_formatted_fields "project_phase_definition_id", formatter_key: :project_phase_definition
 
     # Joined
     register_journal_formatted_fields :parent_id, :project_id,

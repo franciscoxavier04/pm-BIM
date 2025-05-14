@@ -163,10 +163,6 @@ class Activities::BaseActivityProvider
   end
 
   def filter_for_visibility(query, user)
-    unless OpenProject::FeatureDecisions.internal_comments_active?
-      return query.where(journals_table[:internal].eq(false))
-    end
-
     query.where(
       projects_table[:id]
         .in(Project.allowed_to(user, :view_internal_comments).select(:id).arel)

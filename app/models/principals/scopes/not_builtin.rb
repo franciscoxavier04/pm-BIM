@@ -40,7 +40,8 @@ module Principals::Scopes
       def not_builtin
         where.not(type: [SystemUser.name,
                          AnonymousUser.name,
-                         DeletedUser.name])
+                         DeletedUser.name,
+                         ServiceAccount.name])
       end
     end
   end

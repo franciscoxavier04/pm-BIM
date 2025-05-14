@@ -5,7 +5,7 @@ vi:
     description: "Cung cấp các chế độ xem bảng."
   permission_show_board_views: "Xem bảng"
   permission_manage_board_views: "Quản lý bảng"
-  project_module_board_view: "Bảng"
+  project_module_board_view: "Các bảng"
   ee:
     upsell:
       board_view:

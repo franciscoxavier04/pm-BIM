@@ -243,6 +243,9 @@ ca:
           become_hero: "Sigues un heroi!"
           enterprise_info_html: "%{feature_title} is an Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> add-on."
           upgrade_info: "Si us plau, actualitza a una versió de pagament per tal d'activar i començar a utilitzar-la en el teu equip."
+          text: >
+            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
+          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
           benefits:
             description: "Quins són els beneficis de l'edició Enterprise on-premises?"
             high_security: "Funcions de seguretat"
@@ -261,10 +264,7 @@ ca:
             Tenim la certesa i confiança d'una eina de gestió de projectes testejat i suportat en ambients empresarials - amb Codi Obert i amb una mentalitat oberta.
           link_quote: "Obtenir un pressupost"
           more_info: "Més informació"
-          text: >
-            L'edició Enterprise d'OpenProject es construeix a sobre de l'edició Community. Inclou extensions Enterprise i suport professional pensat especialment per a organitzacions de més de 10 usuaris que manegin projectes empresarialment crítics amb OpenProject.
           unlimited: "Il·limitat"
-          you_contribute: "Els desenvolupadors també han de pagar les seves factures. Actualitzant a l'edició Enterprise, donaràs suport aquesta comunitat de codi obert i contribuiràs al seu desenvolupament, manteniment i millora continua."
       working_days:
         calendar:
           empty_state_header: "Dies no laborables"
@@ -355,13 +355,13 @@ ca:
       blocks:
         new_features:
           text_new_features: "Llegeix sobre les noves funcions i actualitzacions del producte. "
-          learn_about: "Més informació sobre les noves funcions"
+          learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_5":
+          "16_0":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Filter for descendants (children and grandchildren) of work packages.</li> <li>Benefit from advanced accessibility in the date picker.</li> <li>See % Complete included in work package table sums.</li> <li>Include a column for children in work package tables.</li> <li>Better use the date picker in mobile screens.</li> <li>PDF exports matching configured form layout.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "S'ha produït un error en carregar les dades."
@@ -434,7 +434,6 @@ ca:
     label_filename: "Fitxer"
     label_filesize: "Mida"
     label_general: "General"
-    label_global_roles: "Global roles"
     label_greater_or_equal: ">="
     label_group: "Grup"
     label_group_by: "Agrupa per"
@@ -642,6 +641,7 @@ ca:
           with_current_filter: "En aquest moment no hi han notificacions en aquesta vista"
         mark_all_read: "Marca tot com a llegit"
         mark_as_read: "Marca com a llegit"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
         text_update_date_by: "%{date} per"
         total_count_warning: "Mostrant el %{newest_count} de notificacions recents. %{more_count} no s'estan mostrant."
         empty_state:
@@ -833,9 +833,9 @@ ca:
       update_description: "Establir o actualitzar la descripció d'aquesta relació"
       toggle_description: "Activar descripció de la relació"
       update_relation: "Faci clic per a canviar la classe de relació"
-      add_follower: "Afegir seguidor"
       show_relations: "Mostra les relacions"
       add_predecessor: "Afegir predecessor"
+      add_successor: "Add successor"
       remove: "Eliminar la relació"
       save: "Guardar la relació"
       abort: "Anul·la"

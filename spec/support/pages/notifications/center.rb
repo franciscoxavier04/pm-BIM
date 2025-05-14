@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -40,7 +42,9 @@ module Pages
       end
 
       def mark_all_read
-        click_link_or_button "Mark all as read"
+        accept_confirm do
+          click_on "Mark all as read"
+        end
       end
 
       def mark_notification_as_read(notification)
@@ -136,6 +140,10 @@ module Pages
         else
           expect(page).to have_css('[data-test-selector="op-ian-notifications-count"]', text: count, wait: 10)
         end
+      end
+
+      def expect_mark_all_as_read_button_disabled
+        expect(page).to have_css('[data-test-selector="mark-all-as-read-button"][disabled]', text: "Mark all as read")
       end
 
       def bell_element

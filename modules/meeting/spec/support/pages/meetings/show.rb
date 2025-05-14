@@ -315,10 +315,10 @@ module Pages::Meetings
       expect(page).to have_css(".CollapsibleHeader", text: I18n.t("label_agenda_backlog"))
 
       if collapsed
-        expect(page).to have_css(".CollapsibleHeader.CollapsibleHeader--collapsed")
+        expect(page).to have_css(".CollapsibleHeader[data-collapsed]")
         expect(page).to have_no_text(I18n.t("text_agenda_backlog"))
       else
-        expect(page).to have_no_css(".CollapsibleHeader.CollapsibleHeader--collapsed")
+        expect(page).to have_no_css(".CollapsibleHeader[data-collapsed]")
         expect(page).to have_text(I18n.t("text_agenda_backlog"))
       end
     end
@@ -327,10 +327,10 @@ module Pages::Meetings
       expect(page).to have_css(".CollapsibleHeader", text: I18n.t("label_series_backlog"))
 
       if collapsed
-        expect(page).to have_css(".CollapsibleHeader.CollapsibleHeader--collapsed")
+        expect(page).to have_css(".CollapsibleHeader[data-collapsed]")
         expect(page).to have_no_text(I18n.t("text_series_backlog"))
       else
-        expect(page).to have_no_css(".CollapsibleHeader.CollapsibleHeader--collapsed")
+        expect(page).to have_no_css(".CollapsibleHeader[data-collapsed]")
         expect(page).to have_text(I18n.t("text_series_backlog"))
       end
     end
@@ -391,12 +391,10 @@ module Pages::Meetings
     end
 
     def clear_backlog
-      retry_block do
-        select_backlog_action(I18n.t("label_backlog_clear"))
-        expect(page).to have_modal(I18n.t("label_backlog_clear"))
-        page.within_modal(I18n.t("label_backlog_clear")) do
-          click_on "Clear all"
-        end
+      select_backlog_action(I18n.t("label_backlog_clear"))
+      expect(page).to have_modal(I18n.t("label_backlog_clear"), wait: 3)
+      page.within_modal(I18n.t("label_backlog_clear")) do
+        click_on "Clear all"
       end
     end
 
@@ -586,6 +584,23 @@ module Pages::Meetings
 
     def expect_blankslate
       expect(page).to have_test_selector("meeting-blankslate")
+    end
+
+    def expect_focused_input(input_id)
+      retry_block do
+        expect(page.evaluate_script("document.activeElement.id")).to eq(input_id)
+      end
+    end
+
+    # still a bit ambiguous, but better than nothing
+    def expect_focused_ckeditor
+      retry_block do
+        expect(page.evaluate_script("document.activeElement.classList.contains('ck-focused')")).to be true
+      end
+    end
+
+    def expect_notes(text)
+      expect(page).to have_css(".op-meeting-agenda-item--notes", text:)
     end
   end
 end

@@ -151,7 +151,7 @@ RSpec.describe "Work package timeline navigation",
       retry_block do
         find(".wp-row-#{work_package2.id}-timeline").right_click
         find(".menu-item", text: "Add predecessor")
-        find(".menu-item", text: "Add follower")
+        find(".menu-item", text: "Add successor")
       end
     end
   end

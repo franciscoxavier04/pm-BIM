@@ -236,8 +236,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       end
     end
 
-    context "when a user cannot see internal comments",
-            with_flag: { internal_comments: true } do
+    context "when a user cannot see internal comments" do
       current_user { member }
 
       before do
@@ -257,8 +256,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       end
     end
 
-    context "when a user can see internal comments",
-            with_flag: { internal_comments: true } do
+    context "when a user can see internal comments" do
       current_user { admin }
 
       before do
@@ -1032,11 +1030,11 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
             wait_for_auto_scrolling_to_finish
             activity_tab.expect_journal_container_at_position(50) # would be at the bottom if no anchor would be provided
 
-            activity_tab.expect_activity_anchor_link(text: "#1")
+            activity_tab.expect_activity_anchor_link(text: format_time(comment_1.updated_at))
           end
         end
 
-        context "with #comment- anchor", with_flag: { work_package_comment_id_url: true } do
+        context "with #comment- anchor" do
           before do
             visit project_work_package_path(project, work_package.id, "activity", anchor: "comment-#{comment_1.id}")
             wp_page.wait_for_activity_tab
@@ -1054,7 +1052,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
           end
         end
 
-        context "when on mobile screen size", with_flag: { work_package_comment_id_url: true } do
+        context "when on mobile screen size" do
           before do
             page.current_window.resize_to(500, 1000)
 
@@ -1088,11 +1086,11 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
             wait_for_auto_scrolling_to_finish
             activity_tab.expect_journal_container_at_bottom # would be at the top if no anchor would be provided
 
-            activity_tab.expect_activity_anchor_link(text: "#2")
+            activity_tab.expect_activity_anchor_link(text: format_time(comment_2.updated_at))
           end
         end
 
-        context "with #comment- anchor", with_flag: { work_package_comment_id_url: true } do
+        context "with #comment- anchor" do
           before do
             visit project_work_package_path(project, work_package.id, "activity", anchor: "comment-#{comment_1.id}")
             wp_page.wait_for_activity_tab

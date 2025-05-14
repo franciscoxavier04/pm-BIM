@@ -41,13 +41,13 @@ uk:
         changed: "змінив(-ла)"
         created: "створив(-ла)"
         commented: "прокоментував(-ла)"
-        internal_comment: Internal comment
-        internal_journal: Internal comments are visible to a limited group of members.
+        internal_comment: Внутрішній коментар
+        internal_journal: Внутрішні коментарі видимі для визначеної групи учасників.
         unsaved_changes_confirmation_message: У вас є незбережені зміни. Справді закрити редактор?
         internal_comment_confirmation:
-          title: "Make this comment public?"
-          heading: "Make this comment public?"
-          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          title: "Зробити цей коментар загальнодоступним?"
+          heading: "Зробити цей коментар загальнодоступним?"
+          description: "Ваш коментар буде видимий усім, хто має доступ до цього пакета робіт. Продовжити?"
           confirm_button_text: "Зробити загальнодоступним"
   admin:
     plugins:
@@ -102,6 +102,8 @@ uk:
       explanation:
         text: "Окремі дії користувача (напр., оновлення робочого пакета двічі) зводяться в одну дію, якщо відмінність у часі між ними менша за вказаний проміжок часу. Їх буде виведено як окремі дії в межах додатка. Крім того, це призведе до затримки сповіщень на такий самий проміжок часу, що зменшить кількість електронних листів, які надсилатимуться, а також вплине на затримку %{webhook_link}."
         link: "вебгука"
+  authentication:
+    login_and_registration: "Вхід і реєстрація"
   announcements:
     show_until: Показувати до
     is_active: наразі відображається
@@ -347,24 +349,24 @@ uk:
         heading: "Видалити цей список проєктів?"
         text: "Ця дія не призведе до видалення жодного проєкту зі списку. Справді видалити цей список проєктів?"
     settings:
-      header_details: Basic details
-      header_status: Project status
-      header_relations: Project relations
-      button_update_details: Update details
-      button_update_status: Update status
-      button_update_parent_project: Update parent project
+      header_details: Основна інформація
+      header_status: Статус Проекту
+      header_relations: Зв’язки проєкту
+      button_update_details: Оновити деталі
+      button_update_status_description: Оновити опис проєкту
+      button_update_parent_project: Оновити батьківський проєкт
       public_warning: >
-        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+        Цей проєкт загальнодоступний. Кожен, хто має доступ до цього екземпляра, зможе переглянути цей проєкт і взаємодіяти з ним відповідно до своєї ролі й пов’язаних дозволів. Вкладені проєкти мають власні налаштування, тому це не вплине на них.
       public_confirmation:
-        checkbox: "I understand that this will make the previously private content public"
-        title: "Make this project public?"
+        checkbox: "Я розумію, що внаслідок цієї дії приватний контент стане загальнодоступним"
+        title: "Зробити цей проєкт загальнодоступним?"
         description: >
-          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+          Кожен, хто має доступ до цього екземпляра, зможе переглянути цей проєкт і взаємодіяти з ним відповідно до своєї ролі й пов’язаних налаштувань автентифікації. Вкладені проєкти мають власні налаштування, тому це не вплине на них.
       private_confirmation:
-        checkbox: "I understand that this will make the previously public content private."
-        title: "Make this project private?"
+        checkbox: "Я розумію, що внаслідок цієї дії загальнодоступний контент стане приватним."
+        title: "Зробити цей проєкт приватним?"
         description: >
-          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+          Цей проєкт бачитимуть лише учасники проєкту відповідно до своїх ролей і пов’язаних дозволів. Вкладені проєкти мають власні налаштування, тому це не вплине на них.
       change_identifier: Ідентифікатор змін
       actions:
         label_enable_all: "Увімкнути все"
@@ -413,12 +415,14 @@ uk:
         no_results_title_text: Цей проєкт не потребує додаткового дискового простору.
       work_package_priorities:
         new_label: "Новий пріоритет"
+    status:
+      button_edit: Змінити статус проєкту
   project_phase:
-    working_days_count:
+    duration:
       one: "Тривалість: %{count} робочий день"
-      few: "Тривалість: %{count} робочі дні"
-      many: "Тривалість: %{count} робочих днів"
-      other: "Тривалість: %{count} робочого дня"
+      few: "Тривалість: %{count} робочого дня"
+      many: "Тривалість: %{count} робочого дня"
+      other: "Тривалість: %{count} робочих днів"
   lists:
     create:
       success: "Змінений список збережено як новий"
@@ -640,14 +644,17 @@ uk:
         automatically_generated_subjects:
           label: "Автоматично згенеровані теми"
           caption: "Визначте шаблон, використовуючи атрибути й текст, щоб теми пакетів робіт створювались автоматично. Користувачі не зможуть редагувати теми."
-        pattern:
-          label: "Шаблон теми"
-          caption: "Додайте текст або введіть / щоб виконати пошук атрибута. Як роздільник можна додавати пробіли."
-          headings:
-            work_package: "Пакет робіт"
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Робочий пакет"
             parent: "Батьківський"
             project: "Проєкт"
+        pattern:
+          label: "Шаблон теми"
+          caption_with_supported_attributes_link: Створюйте шаблони, додаючи текст, або введіть «/», щоб знайти %{link}.
           insert_as_text: "Атрибутів не знайдено. Додайте як текст: «%{word}»"
+          supported_attributes_link: "підтримувані атрибути"
       export_configuration:
         tab: "Згенерувати PDF"
         intro: "Виберіть, які шаблони з доступних вам ви хочете ввімкнути для цього типу. Шаблон визначає дизайн і атрибути, що відображаються в експортованому PDF-файлі пакета робіт за допомогою цього типу. Перший шаблон у списку вибирається за замовчуванням."
@@ -783,11 +790,11 @@ uk:
       label_child_singular: "дочірній елемент"
       label_child_plural: "дочірні елементи"
       new_child: "Створити новий дочірній елемент"
-      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child_description: "Створює звʼязаний пакет робіт як піделемент поточного (батьківського) пакета робіт"
       child: "Дочірній"
       child_description: "Вкладає звʼязаний пакет робіт як піделемент поточного (батьківського) пакета робіт"
-      parent: "Parent"
-      parent_description: "Makes the related work package a parent of the current (child) work package"
+      parent: "Батьківський"
+      parent_description: "Установлює звʼязаний пакет робіт батьківським відносно поточного (дочірнього) пакета робіт"
       label_closest: "Найближчі"
       label_blocks_singular: "блоки"
       label_blocks_plural: "блоки"
@@ -878,7 +885,7 @@ uk:
       changeset:
         repository: "Репозиторій"
       comment:
-        commented: "Коментар" #an object that this comment belongs to
+        commented: "Прокоментовано" #an object that this comment belongs to
       custom_action:
         actions: "Дії"
       custom_field:
@@ -904,7 +911,7 @@ uk:
         secret: "Секретний ключ клієнта"
         owner: "Власник"
         builtin: "Вбудований"
-        enabled: "Активний"
+        enabled: "Активні"
         redirect_uri: "Перенаправити URI (Automatic Translation)"
         client_credentials_user_id: "Ідентифікатор користувача для облікових даних клієнта"
         scopes: "Область дії"
@@ -1108,11 +1115,11 @@ uk:
           title: "Робочі дні"
           false: "лише робочі дні"
           true: "включати неробочі дні"
-        journal_internal: Internal Journal
+        journal_internal: Внутрішній журнал
         notify: "Сповіщати" #used in custom actions
         parent: "Джерело"
-        parent_issue: "Джерело"
-        parent_work_package: "Джерело"
+        parent_issue: "Батьківський"
+        parent_work_package: "Батьківський"
         priority: "Пріоритет"
         progress: "% завершення"
         readonly: "Лише читання"
@@ -1120,7 +1127,7 @@ uk:
         remaining_time: "Залишок роботи"
         shared_with_users: "Доступ мають"
         schedule_manually: "Ручне планування"
-        spent_hours: "Трудовитрати"
+        spent_hours: "Витрачений час"
         spent_time: "Трудовитрати"
         subproject: "Підпроект"
         time_entries: "Час журналу"
@@ -1150,6 +1157,7 @@ uk:
         error_conflict: "Інформація була оновлена принаймні один інший користувач в той же час."
         email: "– це не дійсна електронна адреса."
         empty: "не може бути порожнім."
+        enterprise_plan_required: "потрібен принаймні план %{plan_name}."
         even: "має бути рівним."
         exclusion: "зарезервовано."
         feature_disabled: недоступна.
@@ -1219,7 +1227,7 @@ uk:
         custom_fields_project:
           attributes:
             project_ids:
-              blank: "Будь ласка, виберіть проєкт."
+              blank: "Виберіть проєкт."
         custom_actions:
           only_one_allowed: "(%{name}) дозволено лише одне значення."
           empty: "(%{name})  значення не може бути порожнім."
@@ -1499,7 +1507,7 @@ uk:
             principal:
               unassignable: "не можна призначити проекту."
         version:
-          undeletable_archived_projects: "Версію не можна видалити, оскільки до неї долучено пакети робіт."
+          undeletable_archived_projects: "Версію не можна видалити, оскільки до неї приєднані робочі пакети."
           undeletable_work_packages_attached: "Версію не можна видалити, оскільки до неї приєднані робочі пакети."
         token/api:
           attributes:
@@ -1536,7 +1544,11 @@ uk:
         many: "Сповіщення"
         other: "Сповіщення"
       placeholder_user: "Прототип користувача"
-      project: "Проект"
+      project:
+        one: "Проект"
+        few: "Проєкти"
+        many: "Проєкти"
+        other: "Проєкти"
       project_query:
         one: "Список проєктів"
         few: "Списки проєктів"
@@ -1616,17 +1628,18 @@ uk:
       work_package: "Пакети робіт"
     project_phase:
       activated: "активовано"
-      deactivated: "деактивовано"
       added_date: "визначено як %{date}"
       changed_date: "змінено з %{from} на %{to}"
-      removed_date: "видалено %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "деактивовано"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} і %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "видалено %{date}"
   #common attributes of all models
   attributes:
     active: "Активний"
     assigned_to: "Призначений"
-    assignee: "Призначений"
+    assignee: "Виконавець"
     attachments: "Вкладення"
     actor: "Виконавець"
     action: "Дія"
@@ -1637,7 +1650,7 @@ uk:
     blocks_ids: "Ідентифікатори заблокованих робочих пакетів"
     category: "Категорія"
     comment: "Коментар"
-    comments: "Коментар"
+    comments: "Коментування"
     content: "Контент"
     color: "Колір"
     creator: "Автор"
@@ -1646,7 +1659,7 @@ uk:
     custom_options: "Можливі значення"
     custom_values: "Індивідуальні поля"
     date: "Дата"
-    dates_interval: "Проміжок часу"
+    dates_interval: "Діапазон дат"
     default_columns: "Типові колонки"
     description: "Опис"
     derived_due_date: "Отримана дата завершення"
@@ -1668,17 +1681,17 @@ uk:
     id: "№"
     is_default: "Значення за замовчуванням"
     is_for_all: "Для усіх проектів"
-    public: "Публічний"
+    public: "Публічні"
     principal: "Користувач або група"
     #kept for backwards compatibility
-    issue: "Пакет робіт"
+    issue: "Робочий пакет"
     journal: "Журнал"
     journal_notes: "Коментування"
     lastname: "Прізвище"
     login: "Ім'я користувача"
     lock_version: "Заблокувати версію"
     mail: "Електронна пошта"
-    name: "Ім’я"
+    name: "Назва"
     note: "Примітка"
     notes: "Нотатки"
     number: "Число"
@@ -1686,8 +1699,10 @@ uk:
     operator: "Оператор"
     password: "Пароль"
     priority: "Пріоритет"
-    project: "Проект"
+    project: "Проєкт"
     project_ids: "ID проєктів"
+    project_phase: "Етап проєкту"
+    project_phase_definition: "Етап проєкту"
     reason: "Причина"
     responsible: "Відповідальний"
     required: "Обов'язкове поле"
@@ -1707,7 +1722,7 @@ uk:
     type: "Тип"
     typeahead: "Автозаповнення"
     updated_at: "Оновлене"
-    updated_on: "Оновлене"
+    updated_on: "Оновлено"
     uploader: "Завантажувач"
     user: "Користувач"
     username: "Ім’я користувача"
@@ -1716,7 +1731,7 @@ uk:
     values: "Значення"
     version: "Версія"
     visible: "Видиме"
-    work_package: "Пакет робіт"
+    work_package: "Робочий пакет"
     work_package_id: "Робочий пакет"
   backup:
     failed: "Помилка резервної копії"
@@ -1863,7 +1878,7 @@ uk:
     text:
       failed: 'Не вдалося скопіювати проект "%{source_project_name}" до проекту "%{target_project_name}".'
       succeeded: 'Скопіював проект "%{source_project_name}" до "%{target_project_name}".'
-  create_wiki_page: "Create new wiki page"
+  create_wiki_page: "Створити нову вікісторінку"
   create_wiki_page_button: "Сторінка Wiki"
   date:
     abbr_day_names:
@@ -2058,7 +2073,7 @@ uk:
       baseline_comparison: Порівняння з вихідним рівнем
       board_view: Покращені Дошки
       conditional_highlighting: Умовне виділення
-      internal_comments: Internal Comments
+      internal_comments: Внутрішні коментарі
       custom_actions: Користувацькі дії
       custom_field_hierarchies: Користувацькі поля типу «Ієрархія»
       customize_life_cycle: Налаштування життєвого циклу
@@ -2067,7 +2082,8 @@ uk:
       edit_attribute_groups: Редагування груп атрибутів
       gantt_pdf_export: Експорт діаграми Ґантта в PDF
       ldap_groups: Синхронізація користувачів і груп LDAP
-      one_drive_sharepoint_file_storage: Файлове сховище OneDrive / SharePoint
+      nextcloud_sso: Єдиний вхід для сховища Nextcloud
+      one_drive_sharepoint_file_storage: Сховище файлів OneDrive / SharePoint
       placeholder_users: Прототипи користувачів
       project_list_sharing: Спільне використання списку проєктів
       readonly_work_packages: Пакети робіт лише для читання
@@ -2079,11 +2095,15 @@ uk:
       work_package_sharing: Діліться пакетами робіт із зовнішніми користувачами
       work_package_subject_generation: Створення теми пакета робіт
     upsell:
+      plans_title: "Плани Enterprise"
       title: "Доповнення версії Enterprise"
       plan_title: "Доповнення версії Enterprise %{plan}"
       plan_name: "Версія Enterprise %{plan}"
-      plan_text_html: "Available starting with the %{plan_name}."
+      plan_text_html: "Доступно, починаючи з версії %{plan_name}."
       hide_banner: "Приховати цей банер"
+      homescreen_description: >
+        Плани Enterprise розширюють можливості вашого випуску OpenProject Community. Вони включають доповнення, додаткові функції та професійну підтримку, що дає організаціям усіх розмірів досягати кращих результатів разом.
+      homescreen_subline: Підвищивши рівень, ви також долучитеся до підтримки проєкту з відкритим кодом.
       baseline_comparison:
         description: Виділяйте зміни, внесені в цей список із будь-якого моменту часу в минулому.
       work_package_subject_generation:
@@ -2115,6 +2135,9 @@ uk:
       custom_actions:
         title: "Користувацькі дії"
         description: "Користувацькі дії – це ярлики набору попередньо визначених дій, які ви можете включати в певні пакети робіт залежно від статусу, ролі, типу або проєкту."
+      nextcloud_sso:
+        title: "Єдиний вхід для сховища Nextcloud"
+        description: "Увімкніть швидку й безпечну автентифікацію для свого сховища Nextcloud завдяки технології єдиного входу. Спростіть керування доступом і покращте взаємодію користувачів зі своїм продуктом."
       virus_scanning:
         description: "Переконайтеся, що вивантажені в OpenProject файли перевіряються на віруси перед тим, як стають доступними для інших користувачів."
       placeholder_users:
@@ -2122,8 +2145,11 @@ uk:
         description: >
           Прототипи користувачів допомагають призначати пакети робіт користувачам, які не входять у ваш проєкт. Вони можуть бути корисні в різних сценаріях. Наприклад, якщо потрібно відстежувати завдання для ресурсу, який поки не доступний або не визначений. Або ж ви хочете відстежувати завдання, призначені особі, не надаючи їй доступу до OpenProject.
       internal_comments:
-        title: "Лише для вас"
-        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+        title: Внутрішні коментарі
+        description: "Завдяки внутрішнім коментарям учасники внутрішньої команди можуть спілкуватися приватно. Ці коментарі доступні лише користувачам із певними ролями в проєкті й ніколи не відображаються для всіх."
+      internal_comments_inline:
+        title: "Створюйте внутрішні коментарі лише для учасників невеликої групи"
+        description: " "
   enumeration_activities: "Дії щодо відстеження часу"
   enumeration_work_package_priorities: "Пріоритети робочого пакету"
   enumeration_reported_project_statuses: "Повідомлення про статус проекту"
@@ -2489,12 +2515,14 @@ uk:
         mentioned: "Вас було згадано у %{work_package}"
         responsible: "Ви стали відповідальними за %{work_package}"
         watched: "Ви переглядаєте %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Розробникам також потрібно оплачувати свої рахунки. З доступністю"
   label_account: "Обліковий запис"
-  label_active: "Активний"
+  label_active: "Активні"
   label_activate_user: "Активні користувачі"
   label_active_in_new_projects: "Активна участь в нових проектах"
-  label_activity: "Активність"
+  label_activity: "Дія"
   label_add_edit_translations: "Додайте та редагуйте переклади"
   label_add_another_file: "Додати ще один файл"
   label_add_columns: "Додати вибрані стовпці"
@@ -2528,7 +2556,7 @@ uk:
   label_ical_access_key_not_present: "Немає маркерів iCalendar."
   label_ical_access_key_generation_hint: "Автоматично створено під час оформлення підписки на календар."
   label_ical_access_key_latest: "останні"
-  label_ical_access_key_revoke: "Скасувати"
+  label_ical_access_key_revoke: "Відкликати"
   label_add_column: "Додати стовпець"
   label_applied_status: "Застосовний статус"
   label_archive_project: "Архівний проект"
@@ -2543,7 +2571,6 @@ uk:
   label_ldap_auth_source_plural: "LDAP-підключення"
   label_attribute_expand_text: "Повний текст для атрибута «%{attribute}»"
   label_authentication: "Автентифікація"
-  label_authentication_settings: "Налаштування автентифікації"
   label_available_custom_fields_projects: "Доступні проєкти з користувацькими полями"
   label_available_global_roles: "Доступні глобальні ролі"
   label_available_project_attributes: "Доступні атрибути проєкту"
@@ -2561,7 +2588,7 @@ uk:
   label_blocked_by: "заблоковано"
   label_blocks: "блоки"
   label_blog: "Блог"
-  label_forums_locked: "Заблоковано"
+  label_forums_locked: "Заблоковані"
   label_forum_new: "Новий форум"
   label_forum_plural: "Форуми"
   label_forum_sticky: "Приліплена"
@@ -2713,10 +2740,11 @@ uk:
   label_follows: "слідкувати"
   label_force_user_language_to_default: "Встановити мову користувачів, які мають не підтримувану мову, за умовчанням"
   label_form_configuration: "Конфігурація форми"
-  label_gantt_chart: "Діаграма Ганта"
+  label_gantt_chart: "Діаграма Ґанта"
   label_gantt_chart_plural: "Діаграми Ґанта"
   label_general: "Загальні"
   label_generate_key: "Згенерувати ключ"
+  label_global_roles: "Глобальні ролі"
   label_git_path: "Шлях до каталогу .git"
   label_greater_or_equal: ">="
   label_group_by: "Групувати за"
@@ -2838,9 +2866,9 @@ uk:
   label_my_account_data: "Мої дані облікового запису"
   label_my_avatar: "Мій аватар"
   label_my_queries: "Мої збережені запити"
-  label_name: "Ім’я"
+  label_name: "Назва"
   label_never: "Ніколи"
-  label_new: "Новий"
+  label_new: "Нові"
   label_new_features: "Нові можливості"
   label_new_statuses_allowed: "Дозволені нові статуси"
   label_news_singular: "Новини"
@@ -2863,7 +2891,7 @@ uk:
   label_not_configured: "Не налаштовано"
   label_not_found: "не знайдено"
   label_none: "нічого"
-  label_none_parentheses: "(нічого)"
+  label_none_parentheses: "(немає)"
   label_not_contains: "не містить"
   label_not_equals: "немає"
   label_life_cycle_step_plural: "Життєвий цикл проєкту"
@@ -2926,7 +2954,7 @@ uk:
   label_project_hierarchy: "Ієрархія проектів"
   label_project_mappings: "Проєкти"
   label_project_new: "Новий проект"
-  label_project_plural: "Проекти"
+  label_project_plural: "Проєкти"
   label_project_list_plural: "Списки проєкту"
   label_project_life_cycle: "Життєвий цикл проєкту"
   label_project_attributes_plural: "Атрибути проєкту"
@@ -2946,11 +2974,8 @@ uk:
   label_register: "Створити новий акаунт"
   label_register_with_developer: "Зареєструйтеся як розробник"
   label_registered_on: "Зареєстровано на"
-  label_registration_activation_by_email: "активація облікового запису електронною поштою"
-  label_registration_automatic_activation: "автоматична активація облікового запису"
-  label_registration_manual_activation: "ручна активація облікового запису"
   label_related_work_packages: "Пов'язані робочі пакети"
-  label_relates: "пов'язані з"
+  label_relates: "зв’язано з"
   label_relates_to: "пов'язані з"
   label_relation: "Зв’язок"
   label_relation_actions: "Дії зі зв’язками"
@@ -3010,17 +3035,17 @@ uk:
   label_sort_highest: "Помістити на верх"
   label_sort_lower: "Пересунути нижче"
   label_sort_lowest: "Помістити в кінець"
-  label_spent_time: "Трудовитрати"
+  label_spent_time: "Витрачений час"
   label_start_to_end: "закінчення"
   label_start_to_start: "початок"
   label_statistics: "Статистика"
-  label_status: "Статус"
+  label_status: "Стан"
   label_storage_free_space: "Залишок на диску"
   label_storage_used_space: "Використовується дисковий простір"
   label_storage_group: "Зберігання файлової системи %{identifier}"
   label_storage_for: "Охоплює зберігання для"
   label_string: "Текст"
-  label_subproject: "Підпроект"
+  label_subproject: "Підпроєкт"
   label_subproject_new: "Новий підпроект"
   label_subproject_plural: "Підпроекти"
   label_subtask_plural: "Підзадачі"
@@ -3035,10 +3060,10 @@ uk:
   label_this_week: "цього тижня"
   label_this_year: "цей рік"
   label_time: "Час"
-  label_time_entry_plural: "Трудовитрати"
+  label_time_entry_plural: "Витрачений час"
   label_time_entry_activity_plural: "Завдання з обліком часу"
   label_title: "Назва"
-  label_projects_menu: "Проекти"
+  label_projects_menu: "Проєкти"
   label_today: "сьогодні"
   label_token_version: "Версія маркера"
   label_today_as_start_date: "Виберіть сьогодні як дату початку."
@@ -3061,7 +3086,7 @@ uk:
   label_user_and_permission: "Користувачі й дозволи"
   label_user_named: "User %{name}"
   label_user_activity: "Дії користувача %{value}"
-  label_user_anonymous: "Анонімний режим"
+  label_user_anonymous: "Невідомий"
   label_user_mail_option_all: "Для всіх подій у всіх моїх проектах"
   label_user_mail_option_none: "Ніяких подій"
   label_user_mail_option_only_assigned: "Тільки за те що я призначений"
@@ -3106,7 +3131,7 @@ uk:
   label_wiki_show_submenu_item: "Показати як пункт підменю "
   label_wiki_start: "Початкова сторінка"
   label_work: "Робота"
-  label_work_package: "Пакет робіт"
+  label_work_package: "Робочий пакет"
   label_work_package_attachments: "Додатки до робочого пакету"
   label_work_package_category_new: "Нова категорія"
   label_work_package_category_plural: "Категорії робочих пакетів"
@@ -3114,7 +3139,7 @@ uk:
   label_work_package_new: "Новий пакет робіт"
   label_work_package_edit: "Редагувати робочий пакет %{name}"
   label_work_package_plural: "Пакет робіт"
-  label_work_package_status: "Стан робочого пакета"
+  label_work_package_status: "Стан пакета робіт"
   label_work_package_status_new: "Новий статус"
   label_work_package_status_plural: "Статуси робочих пакетів"
   label_work_package_types: "Типи робочих пакетів"
@@ -3126,24 +3151,24 @@ uk:
   label_workflow_summary: "Резюме"
   label_working_days_and_hours: "Робочі дні й години"
   label_x_closed_work_packages_abbr:
-    one: "1 закрита"
-    other: "%{count} закритих"
+    one: "1 закрито"
+    other: "Закрито: %{count}"
     zero: "0 закрито"
   label_x_comments:
     one: "1 коментар"
     other: "Коментарів: %{count}"
     zero: "немає коментарів"
   label_x_open_work_packages_abbr:
-    one: "1 відкрита"
-    other: "%{count} відкритих"
+    one: "1 відкрито"
+    other: "Відкрито: %{count}"
     zero: "0 відкрито"
   label_x_work_packages:
     one: "1 пакет робіт"
     other: "Пакетів робіт: %{count}"
     zero: "Немає пакетів робіт"
   label_x_projects:
-    one: "1 проект"
-    other: "%{count} проектів"
+    one: "1 проєкт"
+    other: "Проєктів: %{count}"
     zero: "немає проєктів"
   label_x_files:
     one: "1 файл"
@@ -3390,6 +3415,7 @@ uk:
   notice_successful_cancel: "Успішно видалено."
   notice_successful_update: "Успішно оновлено."
   notice_unsuccessful_update: "Не вдалось оновити."
+  notice_unsuccessful_update_with_reason: "Помилка оновлення: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Оновлення завершено. Користувацькі поля активованих типів автоматично активовано у формі пакета робіт. <a href="%{url}" target="_blank">Докладніше</a>.
   notice_to_many_principals_to_display: "Є занадто багато результатів.\nЗвузити пошук ввівши назву нового елемента (або групи)."
@@ -3435,7 +3461,7 @@ uk:
   permission_add_project: "Створення проєктів"
   permission_add_work_package_attachments: "Додати вкладення"
   permission_add_work_package_attachments_explanation: "Дає змогу додавати вкладення без дозволу «Редагування пакетів робіт»"
-  permission_add_internal_comments: "Write internal comments"
+  permission_add_internal_comments: "Створення внутрішніх коментарів"
   permission_archive_project: "Архівувати проєкт"
   permission_create_user: "Створення користувачів"
   permission_manage_user: "Редагування користувачів"
@@ -3464,12 +3490,12 @@ uk:
   permission_edit_work_package_comments_explanation: "Увага! Користувачі із цим дозволом можуть редагувати будь-чиї коментарі."
   permission_edit_work_packages: "Редагувати робочі пакети"
   permission_edit_messages: "Редагування повідомлень"
-  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_internal_comments: "Редагування власних внутрішніх коментарів"
   permission_edit_own_work_package_comments: "Редагувати власні коментарі"
   permission_edit_own_messages: "Редагування власних повідомлень"
   permission_edit_own_time_entries: "Редагування власного обліку часу"
-  permission_edit_others_internal_comments: "Moderate internal comments"
-  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
+  permission_edit_others_internal_comments: "Модерування внутрішніх коментарів"
+  permission_edit_others_internal_comments_explanation: "Увага! Користувачі із цим дозволом можуть редагувати будь-чиї внутрішні коментарі."
   permission_edit_project: "Редагувати проект"
   permission_edit_project_attributes: " Редагувати атрибути проєкту"
   permission_edit_project_phases: "Редагування етапів проєкту"
@@ -3510,7 +3536,7 @@ uk:
   permission_manage_own_reminders: "Створюйте власні нагадування"
   permission_view_project: "Перегляд проєктів"
   permission_view_changesets: "Перегляд змін репозиторію (сховища) в OpenProject"
-  permission_view_internal_comments: "View internal comments"
+  permission_view_internal_comments: "Перегляд внутрішніх коментарів"
   permission_view_commit_author_statistics: "Перегляд статистики комітів автора"
   permission_view_dashboards: "Перегляд панелей керування"
   permission_view_work_package_watchers: "Перегляд списку спостерігачів"
@@ -3569,7 +3595,7 @@ uk:
       use_template: "Використовувати шаблон"
       make_template: "Установити як шаблон"
       remove_from_templates: "Вилучити із шаблонів"
-  project_module_activity: "Активність"
+  project_module_activity: "Дія"
   project_module_forums: "Форуми"
   project_module_work_package_tracking: "Пакети робіт"
   project_module_news: "Новини"
@@ -3791,6 +3817,7 @@ uk:
   setting_hours_per_day_explanation: >-
     Визначає, що вважати днем, якщо тривалість представлено в днях і годинах (наприклад, якщо день триває 8 годин, то 32 години – це 4 дні).
   setting_invitation_expiration_days: "Повідомлення про активацію закінчується"
+  setting_invitation_expiration_days_caption: "Кількість днів до завершення дії листа з посиланням для активації."
   setting_work_package_done_ratio: "Режим обчислення прогресу"
   setting_work_package_done_ratio_field: "На основі роботи"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3806,6 +3833,9 @@ uk:
   setting_journal_aggregation_time_minutes: "Дії користувача зведено протягом"
   setting_log_requesting_user: "Запишіть логін користувача, ім'я та поштову адресу для всіх запитів"
   setting_login_required: "Необхідна аутентифікація"
+  setting_login_required_caption: "Якщо встановлено, усі запити до додатка мають проходити автентифікацію."
+  setting_lost_password: "Увімкнути скидання пароля"
+  setting_lost_password_caption: "Якщо встановлено, користувачі можуть скидати свої паролі."
   setting_mail_from: "email адреса для передачі інформації"
   setting_mail_handler_api_key: "Ключ API"
   setting_mail_handler_body_delimiters: "Усічення листи після однієї з цих ліній"
@@ -3831,6 +3861,7 @@ uk:
   setting_project_gantt_query_text: "Ви можете змінити запит, який слугує для показу діаграми Ґанта на сторінці огляду проєкту."
   setting_security_badge_displayed: "Показ значка безпеки"
   setting_registration_footer: "Реєстраційний колонтитул"
+  setting_registration_footer_caption: "Цей текст відображається в нижньому колонтитулі сторінки реєстрації. За допомогою редактора HTML відформатуйте текст для кожної вибраної мови."
   setting_repositories_automatic_managed_vendor: "Тип автоматичного сховища"
   setting_repositories_encodings: "Кодування сховищ"
   setting_repository_storage_cache_minutes: "Кеш розміру диска в сховищі"
@@ -3841,8 +3872,22 @@ uk:
   setting_repository_truncate_at: "Максимальна кількість файлів, відображених у переглядачі сховища"
   setting_rest_api_enabled: "Увімкніть веб-службу REST"
   setting_self_registration: "Самостійна реєстрація"
+  setting_self_registration_caption: >
+    Виберіть механізм самостійної реєстрації користувачів. Зверніть увагу, що деякі варіанти дають змогу користувачам активувати свої облікові записи в цьому екземплярі.
   setting_self_registration_warning: >
-    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+    Користувачі зможуть активувати свої облікові записи. Зверніть увагу: вони отримають доступ до всіх загальнодоступних проєктів. Переконайтеся, що загальнодоступні проєкти не містять чутливих або персональних даних.
+  setting_self_registration_disabled: "Вимкнено"
+  setting_self_registration_disabled_caption: >
+    Самостійна реєстрація облікових записів заборонена. Нові облікові записи можуть створювати лише адміністратори й користувачі з глобальним дозволом на створення нових користувачів.
+  setting_self_registration_activation_by_email: "Активація облікового запису електронною поштою"
+  setting_self_registration_activation_by_email_caption: >
+    Користувачі можуть реєструватися самостійно й активувати свої облікові записи після підтвердження адреси електронної пошти. Адміністратори не мають контролю над процесом активації.
+  setting_self_registration_automatic_activation: "Автоматична активація облікового запису"
+  setting_self_registration_automatic_activation_caption: >
+    Користувачі можуть реєструватися самостійно. Їхні облікові записи активуються одразу без додаткових дій. Адміністратори не мають контролю над процесом активації.
+  setting_self_registration_manual_activation: "Ручна активація облікового запису"
+  setting_self_registration_manual_activation_caption: >
+    Користувачі можуть реєструватися самостійно. Їхні облікові записи активує адміністратор або користувач із глобальними дозволами на створення користувачів чи керування ними.
   setting_session_ttl: "Сесії час після закінчення неактивність"
   setting_session_ttl_hint: "Значення нижче 5 працює як відключено"
   setting_session_ttl_enabled: "Сеанс закінчився"
@@ -3870,6 +3915,8 @@ uk:
   setting_working_days: "Робочі дні"
   settings:
     authentication:
+      login_and_sso: "Вхід і SSO"
+      registration: "Реєстрація"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         Якщо цей параметр увімкнено, запити на вхід переспрямовуватимуться налаштованому постачальнику omniauth. Спадний список і сторінку входу буде вимкнено. <br/> <strong>Примітка.</strong> Якщо цей параметр увімкнено й вхід за допомогою пароля дозволено, користувачі зможуть входити зі сторінки входу <code>%{internal_path}</code>.
@@ -3973,8 +4020,8 @@ uk:
     work_packages:
       not_allowed_text: "У вас немає дозволів для перегляду цієї сторінки."
       activities:
-        enable_internal_comments: "Enable internal comments"
-        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_internal_comments: "Увімкнути внутрішні коментарі"
+        helper_text: "Завдяки внутрішнім коментарям учасники внутрішньої команди можуть спілкуватися приватно. Ці коментарі доступні лише користувачам із певними ролями й необхідними дозволами й ніколи не відображаються для всіх. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Простий текст"
@@ -4182,7 +4229,7 @@ uk:
     text_change_disabled_for_ldap_login: "Назву й електронну адресу отримано за протоколом LDAP, тому їх не можна змінити. "
     unlock: "Розблокувати"
     unlock_and_reset_failed_logins: "Розблокувати та скинути помилки входу до системи"
-  version_status_closed: "зачинено"
+  version_status_closed: "закрито"
   version_status_locked: "Заблоковано"
   version_status_open: "відкрити"
   note: Замітка
@@ -4465,7 +4512,7 @@ uk:
       builtin_applications: Вбудовані застосунки OAuth
       other_applications: Інші застосунки OAuth
     empty_application_lists: Жодного застосунку OAuth не зареєстровано.
-    client_id: "Ідентифікатор клієнта"
+    client_id: "Client ID"
     client_secret_notice: >
       Це єдиний раз, коли ми можемо надати клієнтську таємницю, зауважте її та збережіть її в безпеці. Він повинен розглядатися як пароль і не може бути отриманий OpenProject пізніше.
     authorization_dialog:

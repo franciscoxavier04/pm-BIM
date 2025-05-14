@@ -79,6 +79,8 @@ zh-TW:
   project_storages:
     edit_project_folder:
       label: 編輯專案資料夾
+    open:
+      remote_identity_error: An unexpected error occured while connecting to the storage.
     project_folder_mode:
       automatic: 自動管理
       inactive: 未指定文件夾
@@ -237,6 +239,9 @@ zh-TW:
       checked: 上次檢查時間：%{datetime}
       checks:
         ampf_configuration:
+          client_folder_creation: Automatic folder creation
+          client_folder_removal: Automatic folder deletion
+          drive_contents: Drive has expected content
           files_request: 正在擷取群組資料夾檔案
           group_folder_app: 'Dependency: Group Folders'
           group_folder_contents: 群組資料夾包含預期的內容
@@ -247,6 +252,7 @@ zh-TW:
           existing_token: 用戶權杖(token)
           header: 驗證
           non_provisioned_user: 使用者由身分提供者（IDP）佈建
+          offline_access: Configured OIDC offline_access scope
           provisioned_user_provider: 使用者由身分提供者（OIDC）佈建
           token_negotiable: 使用者權杖(token)功能
           user_bound_request: 依使用者身分進行請求驗證
@@ -257,8 +263,8 @@ zh-TW:
           dependencies_check: 依賴套件
           dependencies_versions: 依賴(版本)
           diagnostic_request: 檢查請求
+          drive_id_exists: 硬碟已存在
           drive_id_format: 硬碟ID格式
-          drive_id_not_found: 硬碟已存在
           header: 基本設定
           host_url_accessible: 主機URL可存取
           storage_configured: 設定完成
@@ -269,40 +275,35 @@ zh-TW:
         warnings:
           other: "%{count} 次檢查結果顯示警告"
       connection_validation:
-        client_id_wrong: 設定的 OAuth 2 客戶端 ID 無效。請檢查設定。
-        client_secret_wrong: 設定的 OAuth 2 用戶端密鑰無效。請檢查設定。
-        dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
-        drive_id_wrong: 找不到設定的儲存空間id。請檢查設定。
-        group_folder_not_found: 無法找到群組資料夾。
-        group_folder_version_mismatch: 不支援群組資料夾版本。請更新您的 Nextcloud 伺服器。
-        host_not_found: 在設定的主機網址未找到 Nextcloud 伺服器。請檢查設定。
-        missing_dependencies: '檔案儲存中缺少所需的相依性。請新增下列相依性： %{dependency}。'
-        nextcloud:
-          oauth_request_not_found: OpenProject 無法使用目前登入的使用者找到 Nextcloud 的根資料夾。請檢查伺服器日誌以獲取更多資訊。
-          oauth_request_unauthorized: 目前使用者無權查看 Nextcloud 的主資料夾，或者我們無法取得權杖(token)。請檢查伺服器日誌以獲取更多資訊。
-          oauth_token_missing: OpenProject 無法測試與 Nextcloud 的用戶級連線，因為沒有當前用戶的權杖(token)。
-          unexpected_content: 在管理的群組資料夾中發現非預期內容。
+        client_id_invalid: 設定的 OAuth 2 客戶端 ID 無效。請檢查設定。
+        client_secret_invalid: 設定的 OAuth 2 用戶端密鑰無效。請檢查設定。
+        nc_dependency_missing: '檔案儲存中缺少所需的相依性。請新增下列相依性： %{dependency}。'
+        nc_dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
+        nc_group_folder_not_found: 無法找到群組資料夾。
+        nc_host_not_found: 在設定的主機網址未找到 Nextcloud 伺服器。請檢查設定。
+        nc_oauth_request_not_found: OpenProject 無法使用目前登入的使用者找到 Nextcloud 的根資料夾。請檢查伺服器日誌以獲取更多資訊。
+        nc_oauth_request_unauthorized: 目前使用者無權查看 Nextcloud 的主資料夾，或者我們無法取得權杖(token)。請檢查伺服器日誌以獲取更多資訊。
+        nc_oauth_token_missing: OpenProject 無法測試與 Nextcloud 的用戶級連線，因為沒有當前用戶的權杖(token)。
+        nc_unexpected_content: 在管理的群組資料夾中發現非預期內容。
+        nc_userless_access_denied: 設定的應用程式密碼無效。
         not_configured: 連線無法驗證。請先完成設定。
+        od_client_cant_delete_folder: 用戶刪除資料夾失敗，請檢查儲存空間的文件設定。
+        od_client_write_permission_missing: 用戶似乎缺少寫入權限，請檢查儲存空間的文件設定。
+        od_drive_id_invalid: 設定的磁碟代碼似乎不對。請檢查相關設定。
+        od_drive_id_not_found: 找不到已設定的磁碟代碼。請檢查相關設定。
+        od_existing_test_folder: 測試所需的資料夾 %{folder_name} 已經存在。請刪除後再重試。
+        od_oauth_request_not_found: OpenProject 無法使用目前登入的使用者找到 Nextcloud 的根資料夾。請檢查伺服器日誌以獲取更多資訊。
+        od_oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive/SharePoint or we couldn't acquire a token. Please check the server logs for further information.
+        od_oauth_token_missing: OpenProject 無法測試使用者與 OneDrive/SharePoint 的連線，因為使用者尚未連結 Microsoft 帳號。
+        od_tenant_id_wrong: 設定的目錄 (租戶) id 無效。請檢查設定。
+        od_unexpected_content: 在磁碟中發現未預期的內容。
+        offline_access_scope_missing: It is recommended to configure the OpenID Connect provider to request the offline_access scope. The integration may still work anyways, but make sure that refresh tokens do not expire.
         oidc_cant_acquire_token: 您的 OpenID Connect 設定未提供必要的受眾，也未提供權杖(token)交換功能。請查看我們的說明文件以瞭解更多資訊。
         oidc_cant_exchange_token: 您的 OpenID Connect 提供者的 Token Exchange 設定似乎有問題。請檢查其設定並再次嘗試。
         oidc_cant_refresh_token: 在嘗試檢查您存取儲存空間時發生錯誤。請檢查伺服器日誌以取得進一步資訊。
         oidc_non_oidc_user: 目前使用者雖然已配置，但不是由 OpenID Connect (OIDC) 身分提供者配置的。請使用 OIDC 配置的使用者重新執行檢查。
         oidc_non_provisioned_user: 當前用戶不是由 OpenID Connect Identity Provider 提供。請使用提供的使用者重新執行檢查。
-        one_drive:
-          client_cant_delete_folder: 用戶刪除資料夾失敗，請檢查儲存空間的文件設定。
-          client_write_permission_missing: 用戶似乎缺少寫入權限，請檢查儲存空間的文件設定。
-          drive_id_not_found: 找不到已設定的磁碟代碼。請檢查相關設定。
-          drive_id_wrong: 設定的磁碟代碼似乎不對。請檢查相關設定。
-          existing_test_folder: 測試所需的資料夾 %{folder_name} 已經存在。請刪除後再重試。
-          oauth_request_not_found: OpenProject 無法使用目前登入的使用者找到 Nextcloud 的根資料夾。請檢查伺服器日誌以獲取更多資訊。
-          oauth_request_unauthorized: 目前使用者無權查看 Nextcloud 的主資料夾，或者我們無法取得權杖(token)。請檢查伺服器日誌以獲取更多資訊。
-          oauth_token_missing: OpenProject 無法測試使用者與 OneDrive/SharePoint 的連線，因為使用者尚未連結 Microsoft 帳號。
-          unexpected_content: 在磁碟中發現未預期的內容。
-        placeholder: 根據伺服器檢查您的連線。
-        subtitle: 連線驗證
-        tenant_id_wrong: 設定的目錄 (租戶) id 無效。請檢查設定。
         unknown_error: 連線無法驗證。發生未知錯誤。請檢查伺服器日誌以瞭解進一步資訊。
-        userless_access_denied: 設定的應用程式密碼無效。
       label_error: 錯誤
       label_failed: 損壞
       label_healthy: 健康的
@@ -407,6 +408,7 @@ zh-TW:
     member_connection_status:
       connected: 已連線
       connected_no_permissions: 使用者角色沒有儲存權限
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: 未連線。使用者應透過下列方式登入儲存設備 %{link}。
       not_connected_sso: 尚未連線，SSO 一旦查看檔案應該會自動連線，。
     members_no_results: 沒有可顯示的成員
@@ -474,6 +476,7 @@ zh-TW:
       description: 停用此選項將隱藏工作項目檔案索引標籤上的附件清單。工作項目說明中附加的檔案仍會上傳至內部附件儲存區。
       label: 顯示與工作項目相關之附件
     storage_audience:
+      documentation_intro: Details on the following options and what needs to be configured in the identity provider can be found in our documentation.
       idp:
         helptext: OpenProject 將使用身份提供者收到的第一個存取權杖(token)來認證對儲存的請求。它不會嘗試取得另一個權杖(token)。
         label: 使用身分提供者取得的第一個存取權杖(token)

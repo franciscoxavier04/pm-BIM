@@ -55,7 +55,7 @@ export class WidgetProjectFavoritesComponent extends AbstractWidgetComponent imp
     this.projects$ = this
       .apiV3Service
       .projects
-      .filtered(filters, { pageSize: '-1' })
+      .filtered(filters, { sortBy: '[["name","asc"]]', pageSize: '-1' })
       .getPaginatedResults();
   }
 

@@ -54,7 +54,7 @@ class WorkPackageMeetingsTabController < ApplicationController
   end
 
   def count
-    count = Meeting.visible.where(id: @work_package.meetings.select(:id)).count
+    count = Meeting.visible.not_templated.where(id: @work_package.meetings.select(:id)).count
     render json: { count: }
   end
 
@@ -103,7 +103,10 @@ class WorkPackageMeetingsTabController < ApplicationController
     meeting_id = add_work_package_to_meeting_params[:meeting_id]
     return if meeting_id.blank?
 
-    Meeting.find(meeting_id).backlog.id
+    meeting = Meeting.find(meeting_id)
+    return if meeting.recurring?
+
+    meeting.backlog.id
   end
 
   def set_agenda_items(direction)

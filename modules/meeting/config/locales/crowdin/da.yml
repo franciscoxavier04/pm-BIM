@@ -384,7 +384,7 @@ da:
     This backlog is unique to this one-time meeting. You can drag items in and out to add or remove them from the meeting agenda.
   label_agenda_backlog_clear_title: "Clear agenda backlog?"
   text_agenda_backlog_clear_description: >
-    Are you sure you want to remove all items currently in the agenda items? This action is not reversible.
+    Are you sure you want to remove all items currently in the agenda backlog? This action is not reversible.
   label_series_backlog: "Series backlog"
   text_series_backlog: >
     The backlog is shared with all occurrences of this series. You can drag items in and out to add or remove them from a particular meeting.
