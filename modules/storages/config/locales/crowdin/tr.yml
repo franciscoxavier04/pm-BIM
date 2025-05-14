@@ -252,6 +252,7 @@ tr:
           existing_token: User token
           header: Kimlik doğrulaması
           non_provisioned_user: User provisioned by IDP
+          offline_access: Configured OIDC offline_access scope
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
@@ -297,7 +298,8 @@ tr:
         od_oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive/SharePoint or we couldn't acquire a token. Please check the server logs for further information.
         od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
         od_tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
-        od_unexpected_content: Unexpected content found in the drive.
+        od_unexpected_content: Sürücüde beklenmeyen içerik bulundu.
+        offline_access_scope_missing: It is recommended to configure the OpenID Connect provider to request the offline_access scope. The integration may still work anyways, but make sure that refresh tokens do not expire.
         oidc_cant_acquire_token: Your OpenID Connect setup doesn't provide the necessary audience, nor provides token exchange capabilities. Please check out our documentation for more information.
         oidc_cant_exchange_token: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
         oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
@@ -408,6 +410,7 @@ tr:
     member_connection_status:
       connected: Bağlandı
       connected_no_permissions: Kullanıcı rolü depolama yetkisine sahip değil
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: Bağlanmadı. Kullanıcı depolamaya %{link} adresini takip ederek bağlanmalı.
       not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: Gösterilecek üye yok.
@@ -453,11 +456,11 @@ tr:
       project_settings:
         delete: Dosya depolama alanını sil
         edit: Edit the file storage to this project
-        members_connection_status: Üyü bağlantı durumu
+        members_connection_status: Üye bağlantı durumu
         new: Bu projeye bir dosya deposu ekle
       project_storage_members:
         subtitle: Check the connection status for the storage %{storage_name_link} of all project members.
-        title: Üye bağlantı durumu
+        title: Üyü bağlantı durumu
     permission_header_explanation: 'Harici depolardaki dosya izinleri yalnızca otomatik olarak yönetilen proje klasörlerindeki klasörlere ve dosyalara uygulanır. Tüm dosya izinlerinin tüm depolama sağlayıcıları tarafından desteklenmediğini unutmayın. Daha fazla bilgi için lütfen <a target=''_blank'' href=''https://www.openproject.org/docs/system-admin-guide/users-permissions/roles-permissions/#file-storages-permissions''>dosya depolama izinleriyle</a> ilgili belgeleri kontrol edin.'
     provider_types:
       label: Sağlayıcı türü
@@ -475,6 +478,7 @@ tr:
       description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
       label: İş paketleri dosyaları sekmesinde ekleri göster
     storage_audience:
+      documentation_intro: Details on the following options and what needs to be configured in the identity provider can be found in our documentation.
       idp:
         helptext: OpenProject will use the first access token received by the identity provider to authenticate requests to the storage. It will not try to obtain another token.
         label: Use first access token obtained by identity provider

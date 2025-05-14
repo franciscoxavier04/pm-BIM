@@ -34,7 +34,7 @@ ja:
   enumeration_doc_categories: "ドキュメントのカテゴリ"
   documents:
     label_attachment_author: "添付ファイルの作成者"
-    label_categories: "Categories"
+    label_categories: "カテゴリ"
     new_category: "新規カテゴリ"
   label_document_added: "追加されたドキュメント"
   label_document_new: "新しいドキュメント"

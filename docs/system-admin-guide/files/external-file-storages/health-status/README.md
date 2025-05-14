@@ -16,12 +16,27 @@ storages*.  In addition, administrator can manually trigger a connection validat
 
 ### Connection validation for OneDrive/SharePoint 
 
-Every file storage for OneDrive/SharePoint has the ability to run a connection test. This test is triggered manually by
-clicking on **Recheck connection** in the sidebar on the right side of the file storage's details view. This check is
-available after the file storage is fully configured.
+Every file storage for OneDrive/SharePoint has the ability to run connection checks. This test is triggered manually by clicking on **Run checks now** in the sidebar on the right side of the file storage's details view. This check is available from the UI to edit the storage.
 
-![Recheck connection for OneDrive/SharePoint in OpenProject administration](openproject_file_storages_recheck_connection.png)
+![Recheck connection for OneDrive/SharePoint in OpenProject administration](openproject_file_storages_onedrive_run_checks_button.png)
 
+### Health report for OneDrive/SharePoint
+
+Once the check is finished, a full health report will be generated. Click **open full health report** to see the report in full detail and to download it. 
+
+![Link to open full health report for OneDrive/SharePoint file storage in OpenProject administration](openproject_file_storages_onedrive_open_full_health_report.png)
+
+Full health status report will give an overview of all checks that were performed grouped into three categories: 
+
+- Basic configuration
+- Authentication
+- Automatically managed project folder configuration (if activated for this file storage)
+
+In the top right corner you can **Re-run all checks** or **download the health (text format)** report by clicking respective buttons. 
+
+![Health status report for OneDrive/SharePoint integration in OpenProject administration](openproject_file_storages_onedrive_open_full_health_report_download_button.png)
+
+### Error codes 
 There are several possible errors that can occur during the connection test. The following table lists the error codes with a description of the possible reasons and suggested solutions.
 
 | Error code             | Error description                                            | Possible reasons                                             | Next steps and solutions                                     |
@@ -35,11 +50,27 @@ There are several possible errors that can occur during the connection test. The
 
 ### Connection validation for Nextcloud
 
-Same as OneDrive/SharePoint, every file storage for Nextcloud has the ability to run a connection test. This test is
-triggered manually by clicking on **Recheck connection** in the sidebar on the right side of the file storage's details
-view. This check is available after the file storage is fully configured.
+Same as OneDrive/SharePoint, every file storage for Nextcloud has the ability to run a connection test. This test is triggered manually by clicking on **Run checks now** in the sidebar on the right side of the file storage's details view. This check is available from the UI to edit the storage.
 
-![Recheck connection for Nextcloud in OpenProject administration](openproject_file_storages_recheck_connection_nextcloud.png)
+![Recheck connection for Nextcloud in OpenProject administration](openproject_file_storages_nextcloud_run_checks_link.png)
+
+### Health report for Nextcloud
+
+Once the check is finished, a full health report will be generated. Click **open full health report** to see the report in full detail and to download it. 
+
+![Link to open full health report for Nexctloud file storage in OpenProject administration](openproject_file_storages_nextcloud_open_full_health_report_button.png)
+
+Full health status report will give an overview of all checks that were performed grouped into three categories: 
+
+- Basic configuration
+- Authentication
+- Automatically managed project folder configuration (if activated for this file storage)
+
+In the top right corner you can **Re-run all checks** or **download the health (text format)** report by clicking respective buttons. 
+
+![Health status report for Nextcloud integration in OpenProject administration](openproject_file_storages_nextcloud_open_full_health_report_download_button.png)
+
+### Nextcloud integration error codes 
 
 There are several possible errors that can occur during the connection test. The following table lists the error codes
 with a description of the possible reasons and suggested solutions.
@@ -57,9 +88,7 @@ the [system admin guide](../../../../system-admin-guide/integrations/nextcloud/#
 
 ## Health checks for automatically managed project folders
 
-File storages with the *Automatically managed project folders* option will have reoccurring synchronization
-runs, that update the user permissions on the external system and report possible errors. An additional section is
-displayed for those file storages in the side bar.
+File storages with the *Automatically managed project folders* option will have reoccurring synchronization runs, that update the user permissions on the external system and report possible errors. An additional section is displayed for those file storages in the side bar.
 
 ![Health check for automatically managed folders in file storage integrations in OpenProject](openproject_file_storages_health_message.png)
 

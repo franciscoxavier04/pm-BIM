@@ -243,6 +243,9 @@ pt-PT:
           become_hero: "Torne-se um herói!"
           enterprise_info_html: "%{feature_title} é um complemento de Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
           upgrade_info: "Faça o upgrade para um plano pago para ativar e começar a usar na sua equipa."
+          text: >
+            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
+          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
           benefits:
             description: "Quais são os benefícios da edição Empresarial on-premises?"
             high_security: "Funcionalidades de segurança"
@@ -261,10 +264,7 @@ pt-PT:
             Fornecemos toda a segurança de um software de gestão de projetos de classe empresarial, testado e com suporte - com Open Source e mente aberta.
           link_quote: "Fazer uma simulação"
           more_info: "Mais informação"
-          text: >
-            O OpenProject Enterprise Edition é construído a partir da edição Community. Inclui complementos Enterprise e suporte profissional, dirigido sobretudo a organizações com mais de 10 utilizadores que gerem projetos de negócios críticos com o OpenProject.
           unlimited: "Ilimitado"
-          you_contribute: "Os desenvolvedores também têm contas a pagar. Ao atualizar para a edição Enterprise, está a apoiar este esforço da comunidade de código aberto e a contribuir para o seu desenvolvimento, manutenção e melhoria contínuos."
       working_days:
         calendar:
           empty_state_header: "Dias não úteis"
@@ -295,7 +295,7 @@ pt-PT:
       embedded_table_loading: "Não foi possível carregar a vista incorporada: %{message}"
     enumeration_activities: "Actividades (tempo)"
     enumeration_doc_categories: "Categorias de documentos"
-    enumeration_work_package_priorities: "Prioridades de tarefas"
+    enumeration_work_package_priorities: "Prioridades do pacote de trabalho"
     filter:
       more_values_not_shown: "Há mais %{total} resultados, pesquise para filtrar resultados."
       description:
@@ -355,13 +355,13 @@ pt-PT:
       blocks:
         new_features:
           text_new_features: "Leia sobre novos recursos e atualizações de produtos."
-          learn_about: "Saiba mais sobre os novos recursos"
+          learn_about: "Saiba mais sobre todas as novas funcionalidades"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_5":
+          "16_0":
             standard:
               new_features_html: >
-                A versão inclui diversas funcionalidades e melhorias para si, como o <br> <ul class="%{list_styling_class}"> <li>Filtro para descendentes (filhos e netos) de pacotes de trabalho.</li> <li>Tire partido de uma acessibilidade avançada no seletor de datas.</li> <li>Veja a % de conclusão incluída nas somas da tabela do pacote de trabalho.</li> <li>Inclua uma coluna para filhos nas tabelas de pacotes de trabalho.</li> <li>Melhor utilização do seletor de datas em ecrãs de dispositivos móveis.</li> <li>Exportações de PDF que correspondem à disposição do formulário configurada.</li> </ul>
+                A versão inclui várias novas funcionalidades e melhorias, tais como <br> <ul class="%{list_styling_class}"> <li>Backlogs de reuniões e o final das reuniões clássicas.</li> <li>Planos Enterprise atualizados.</li> <li>Comentários internos em pacotes de trabalho (complemento Enterprise).</li> <li>Assuntos de pacotes de trabalho gerados automaticamente (complemento Enterprise).</li> <li>Módulo de controlo de tempo individual com vista de calendário.</li> <li>Relação de projeto principal exibida no separador de relações do pacote de trabalho.</li> <li>Versão para Community: gráficos na página de visão geral do projeto.</li> </ul>
     ical_sharing_modal:
       title: "Subscrever o calendário"
       inital_setup_error_message: "Ocorreu um erro ao recuperar os dados."
@@ -387,7 +387,7 @@ pt-PT:
     label_added_time_by: 'Adicionado por <a href="%{authorLink}">%{author}</a> a %{age}'
     label_ago: "dias atrás"
     label_all: "todos"
-    label_all_uppercase: "Todos"
+    label_all_uppercase: "Todas"
     label_all_work_packages: "todas as tarefas"
     label_and: "e"
     label_ascending: "Ascendente"
@@ -434,7 +434,6 @@ pt-PT:
     label_filename: "Ficheiro"
     label_filesize: "Tamanho"
     label_general: "Geral"
-    label_global_roles: "Funções globais"
     label_greater_or_equal: ">="
     label_group: "Grupo"
     label_group_by: "Agrupar por"
@@ -463,7 +462,7 @@ pt-PT:
     label_menu_collapse: "ocultar"
     label_menu_expand: "expandir"
     label_more_than_ago: "mais do que dias atrás"
-    label_moderate_comment: "Moderate comment"
+    label_moderate_comment: "Moderar comentário"
     label_next: "Próxima"
     label_no_color: "Sem cor"
     label_no_data: "Sem dados para apresentar"
@@ -530,7 +529,7 @@ pt-PT:
     label_warning: "Aviso"
     label_work_package: "Pacote de trabalho"
     label_work_package_parent: "Pacote de trabalho pai"
-    label_work_package_plural: "Tarefas"
+    label_work_package_plural: "Pacotes de trabalho"
     label_watch: "Observar"
     label_watch_work_package: "Observar tarefa"
     label_watcher_added_successfully: "Observador adicionado com sucesso!"
@@ -642,6 +641,7 @@ pt-PT:
           with_current_filter: "Não há notificações nesta visualização neste momento"
         mark_all_read: "Marcar tudo como lido"
         mark_as_read: "Marcar como lida"
+        mark_all_read_confirmation: "Isto marcará todas as notificações nesta vista como lidas. Tem certeza de que deseja fazer isto?"
         text_update_date_by: "%{date} por"
         total_count_warning: "A mostrar as %{newest_count} notificações mais recentes. Mas %{more_count} não estão visíveis."
         empty_state:
@@ -677,7 +677,7 @@ pt-PT:
             description: "Receber uma notificação sempre que alguém me mencionar em qualquer lugar"
           assignee: "Responsável"
           responsible: "Responsável"
-          shared: "Compartilhado"
+          shared: "Partilhado"
           watched: "Observador"
           work_package_commented: "Todos os novos comentários"
           work_package_created: "Novos pacotes de trabalho"
@@ -833,9 +833,9 @@ pt-PT:
       update_description: "Definir ou atualizar a descrição desta relação"
       toggle_description: "Alternar descrição da relação"
       update_relation: "Clique para alterar o tipo de relação"
-      add_follower: "Adicionar seguidor"
       show_relations: "Mostrar relações"
       add_predecessor: "Adicionar antecessor"
+      add_successor: "Adicionar sucessor"
       remove: "Remova a relação"
       save: "Guardar relação"
       abort: "Abortar"
@@ -932,7 +932,7 @@ pt-PT:
       inline_create:
         title: "Clique aqui para adicionar um novo pacote de trabalho a esta lista"
       create:
-        title: "Nova tarefa"
+        title: "Novo pacote de trabalho"
         header: "Nova %{type}"
         header_no_type: "Novo pacote de trabalho (tipo ainda não definido)"
         header_with_parent: "Nova %{type} (Filho de %{parent_type} #%{id})"
@@ -1173,7 +1173,7 @@ pt-PT:
         other: "%{count} h"
         zero: "0 h"
       day:
-        one: "1 dia"
+        one: "Um dia"
         other: "%{count} dias"
         zero: "0 dias"
       word:
@@ -1294,7 +1294,7 @@ pt-PT:
       show_changes_since: "Mostrar alterações desde"
       help_description: "Fuso horário de referência para a linha de base."
       time_description: "No seu horário local: %{datetime}"
-      time: "Tempo"
+      time: "Hora"
       from: "De"
       to: "Para"
       drop_down:

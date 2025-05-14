@@ -94,8 +94,8 @@ pl:
       timesheet: "Karta czasu pracy"
       time: "Czas"
       sums_hours: Sumy
-      overview_per_user_total: "Overview: Total hours per user"
-      overview_per_user_day: "Overview: Hours per user per day"
+      overview_per_user_total: "Przegląd: łączna liczba godzin na użytkownika"
+      overview_per_user_day: "Przegląd: liczba godzin na użytkownika dziennie"
     cost_reports:
       title: "Twój eksport raportów kosztów w formacie XLS"
       start_time: "Czas rozpoczęcia"

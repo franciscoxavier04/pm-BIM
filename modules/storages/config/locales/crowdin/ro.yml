@@ -26,7 +26,7 @@ ro:
         drive: Drive ID
         host: Server gazdă
         name: Nume
-        provider_type: Tip flux
+        provider_type: Tip furnizor
         tenant: Directory (tenant) ID
     errors:
       messages:
@@ -224,7 +224,7 @@ ro:
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Project folders
-      redirect_uri: Redirecționați URI
+      redirect_uri: URI redirecționare
       storage_audience: Storage Audience
       storage_audience_blank: No audience has been configured.
       storage_audience_description: Obtaining tokens for audience "%{audience}".
@@ -252,6 +252,7 @@ ro:
           existing_token: User token
           header: Autentificare
           non_provisioned_user: User provisioned by IDP
+          offline_access: Configured OIDC offline_access scope
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
@@ -300,6 +301,7 @@ ro:
         od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
         od_tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
         od_unexpected_content: Unexpected content found in the drive.
+        offline_access_scope_missing: It is recommended to configure the OpenID Connect provider to request the offline_access scope. The integration may still work anyways, but make sure that refresh tokens do not expire.
         oidc_cant_acquire_token: Your OpenID Connect setup doesn't provide the necessary audience, nor provides token exchange capabilities. Please check out our documentation for more information.
         oidc_cant_exchange_token: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
         oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
@@ -402,7 +404,7 @@ ro:
     label_openproject_oauth_application_secret: OpenProject OAuth Client Secret
     label_project_folder: Project folder
     label_provider: Provider
-    label_redirect_uri: Redirecționați URI
+    label_redirect_uri: URI redirecționare
     label_show_storage_redirect_uri: Show redirect URI
     label_status: Stare
     label_storage: Depozitare
@@ -410,6 +412,7 @@ ro:
     member_connection_status:
       connected: Conectat
       connected_no_permissions: User role has no storages permissions
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: Not connected. The user should login to the storage via the following %{link}.
       not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: No members to display.
@@ -462,7 +465,7 @@ ro:
         title: Members connection status
     permission_header_explanation: 'File permissions on external storages are applied only to folders and files within automatically managed project folders. Note that not all file permissions are supported by all storage providers. Please check the documentation on <a target=''_blank'' href=''https://www.openproject.org/docs/system-admin-guide/users-permissions/roles-permissions/#file-storages-permissions''>file storage permissions</a> for more information.'
     provider_types:
-      label: Tip furnizor
+      label: Tip flux
       nextcloud:
         label_oauth_client_id: Nextcloud OAuth Client ID
         label_oauth_client_secret: Nextcloud OAuth Client Secret
@@ -477,6 +480,7 @@ ro:
       description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
       label: Show attachments in the work packages files tab
     storage_audience:
+      documentation_intro: Details on the following options and what needs to be configured in the identity provider can be found in our documentation.
       idp:
         helptext: OpenProject will use the first access token received by the identity provider to authenticate requests to the storage. It will not try to obtain another token.
         label: Use first access token obtained by identity provider

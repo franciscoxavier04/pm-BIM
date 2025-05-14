@@ -68,6 +68,7 @@ import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service
 @Component({
   selector: 'op-wp-timer-button',
   templateUrl: './wp-timer-button.component.html',
+  styleUrls: ['./wp-timer-button.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WorkPackageTimerButtonComponent extends UntilDestroyedMixin implements AfterViewInit, OnDestroy {

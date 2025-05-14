@@ -338,11 +338,6 @@ module Components
         page.uncheck("Internal comment")
       end
 
-      def uncheck_internal_comment_checkbox
-        expect(page).to have_test_selector("op-work-package-journal-internal-comment-checkbox")
-        page.uncheck("Internal comment")
-      end
-
       def dismiss_comment_editor_with_esc
         page.find_test_selector("op-work-package-journal-form-element").send_keys(:escape)
       end
@@ -364,21 +359,23 @@ module Components
       end
 
       def filter_journals(filter, default_sorting: User.current.preference&.comments_sorting || "desc")
-        page.find_test_selector("op-wp-journals-filter-menu").click
+        retry_block do
+          page.find_test_selector("op-wp-journals-filter-menu").click
 
-        case filter
-        when :all
-          page.find_test_selector("op-wp-journals-filter-show-all").click
-        when :only_comments
-          page.find_test_selector("op-wp-journals-filter-show-only-comments").click
-        when :only_changes
-          page.find_test_selector("op-wp-journals-filter-show-only-changes").click
+          case filter
+          when :all
+            page.find_test_selector("op-wp-journals-filter-show-all").click
+          when :only_comments
+            page.find_test_selector("op-wp-journals-filter-show-only-comments").click
+          when :only_changes
+            page.find_test_selector("op-wp-journals-filter-show-only-changes").click
+          end
         end
 
         # Ensure the journals are reloaded
         wait_for { page }.to have_test_selector("op-wp-journals-#{filter}-#{default_sorting}")
-        # the wait_for will not work on it's own as the selector will be switched to the target filter before the page is updated
-        # so we still need to wait statically unfortuntately to avoid flakyness
+        # the wait_for will not work on its own as the selector will be switched to the target filter before the page is updated
+        # so we still need to wait statically unfortunately to avoid flakyness
         sleep 1
       end
 

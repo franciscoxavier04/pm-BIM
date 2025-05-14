@@ -36,30 +36,49 @@ module Types
     def initialize(pattern)
       @mapper = Patterns::TokenPropertyMapper.new
       @pattern = pattern
-      @tokens = pattern.scan(TOKEN_REGEX).map { |token| Patterns::Token.build(token) }
+      @pattern_tokens = pattern.scan(TOKEN_REGEX).map { |token| Patterns::PatternToken.build(token) }
     end
 
     def resolve(work_package)
-      @tokens.inject(@pattern) do |pattern, token|
+      @tokens = @mapper.tokens_for_type(work_package.type)
+
+      @pattern_tokens.inject(@pattern) do |pattern, token|
         pattern.gsub(token.pattern, get_value(work_package, token))
       end
     end
 
     private
 
-    def get_value(work_package, token)
-      context = token.context == :work_package ? work_package : work_package.public_send(token.context)
+    def get_value(work_package, pattern_token)
+      context = pattern_token.context == :work_package ? work_package : work_package.public_send(pattern_token.context)
+      return ATTRIBUTE_PLACEHOLDER if context.nil?
 
-      stringify(@mapper[token.context_key].call(context))
+      attribute_token = @tokens.detect { |t| t.key == pattern_token.key }
+      return ATTRIBUTE_PLACEHOLDER if attribute_token.nil?
+
+      stringify(attribute_token.call(context), nil_replacement(attribute_token))
     end
 
-    def stringify(value)
+    def nil_replacement(attribute_resolver)
+      I18n.with_locale(Setting.default_language) do
+        if attribute_resolver.context == :work_package
+          "[#{attribute_resolver.label}]"
+        else
+          "[#{attribute_resolver.label_with_context}]"
+        end
+      end
+    end
+
+    def stringify(value, nil_fallback)
       case value
       when Date, Time, DateTime
         value.strftime("%Y-%m-%d")
       when Array
-        value.join(", ")
+        compact = value.compact
+        compact.empty? ? nil_fallback : compact.join(", ")
       when NilClass
+        nil_fallback
+      when :attribute_not_available
         ATTRIBUTE_PLACEHOLDER
       else
         value.to_s

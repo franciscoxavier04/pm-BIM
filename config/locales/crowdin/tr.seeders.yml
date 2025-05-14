@@ -86,7 +86,7 @@ tr:
           name: Planlanıyor
           start_gate: Planlama için Hazır
         item_2:
-          name: Yürütülüyor
+          name: Yürütme
           start_gate: Yürütmeye Hazır
         item_3:
           name: Kapatılıyor
@@ -292,7 +292,7 @@ tr:
             item_0:
               name: Proje planı
             item_1:
-              name: Ürün bekleme süresi
+              name: Ürün iş listesi
             item_2:
               name: Koşu 1
             item_3:

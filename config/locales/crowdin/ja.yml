@@ -102,6 +102,8 @@ ja:
       explanation:
         text: "Individual actions of a user (e.g. updating a work package twice) are aggregated into a single action if their age difference is less than the specified timespan. They will be displayed as a single action within the application. This will also delay notifications by the same amount of time reducing the number of emails being sent and will also affect %{webhook_link} delay."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: までを表示
     is_active: 現在表示されています
@@ -350,10 +352,10 @@ ja:
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
       header_details: Basic details
-      header_status: Project status
+      header_status: プロジェクトの進捗状況
       header_relations: Project relations
       button_update_details: Update details
-      button_update_status: Update status
+      button_update_status_description: Update status description
       button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
@@ -415,8 +417,10 @@ ja:
         no_results_title_text: このプロジェクトによって使用される追加のディスク領域はありません。
       work_package_priorities:
         new_label: "New priority"
+    status:
+      button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       other: "Duration: %{count} working days"
   lists:
     create:
@@ -620,14 +624,17 @@ ja:
         automatically_generated_subjects:
           label: "Automatically generated subjects"
           caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
-        pattern:
-          label: "Subject pattern"
-          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
-          headings:
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
             work_package: "ワーク パッケージ"
             parent: "親項目"
             project: "プロジェクト"
+        pattern:
+          label: "Subject pattern"
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -763,7 +770,7 @@ ja:
       new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "関連するワークパッケージを現在の(親)ワークパッケージのサブ項目にします。"
-      parent: "Parent"
+      parent: "親項目"
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "ブロックしている"
@@ -943,7 +950,7 @@ ja:
           on_track: "順調"
           at_risk: "リスクあり"
           off_track: "脱線"
-          finished: "完了しました"
+          finished: "完了"
           discontinued: "中止"
         templated: "テンプレートプロジェクト"
         templated_value:
@@ -966,7 +973,7 @@ ja:
         finish_gate: "Finish phase gate"
         finish_gate_name: "Finish phase gate name"
       query:
-        sums: "Sums"
+        sums: "合計"
         columns: "列"
         column_names: "列"
         relations_to_type_column: "%{type} との関連"
@@ -992,7 +999,7 @@ ja:
         results: "検索結果"
       relation:
         lag: "Lag"
-        from: "関連するワークパッケージ"
+        from: "関係するワークパッケージ"
         to: "関係するワークパッケージ"
         relation_type: "Relation type"
       reminder:
@@ -1076,7 +1083,7 @@ ja:
         derived_done_ratio: "完了率"
         derived_remaining_hours: "残りの作業"
         derived_remaining_time: "残りの作業"
-        done_ratio: "% Complete"
+        done_ratio: "完成(%)"
         duration: "期間"
         end_insertion: "挿入の終わり"
         end_deletion: "削除の終わり"
@@ -1091,7 +1098,7 @@ ja:
         parent_issue: "親項目"
         parent_work_package: "親項目"
         priority: "優先度"
-        progress: "% Complete"
+        progress: "完成(%)"
         readonly: "読み取り専用"
         remaining_hours: "残りの作業"
         remaining_time: "残りの作業"
@@ -1127,6 +1134,7 @@ ja:
         error_conflict: "別のユーザーが同時にデータを更新しています。"
         email: "is not a valid email address."
         empty: "は空にすることができません。"
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "は偶数にしてください。"
         exclusion: "は予約されています。"
         feature_disabled: is not available.
@@ -1415,11 +1423,11 @@ ja:
               only_same_project_categories_allowed: "ワークパッケージのカテゴリは、同じプロジェクト内にそのワークパッケージでなければなりません。"
               does_not_exist: "指定されたカテゴリは存在しません。"
             estimated_hours:
-              not_a_number: "は有効な日時ではありません。"
+              not_a_number: "は有効な日付ではありません。"
               cant_be_inferior_to_remaining_work: "cannot be lower than Remaining work."
               must_be_set_when_remaining_work_and_percent_complete_are_set: "required when Remaining work and % Complete are set."
             remaining_hours:
-              not_a_number: "は有効な日付ではありません。"
+              not_a_number: "は有効な日時ではありません。"
               cant_exceed_work: "cannot be higher than Work."
               must_be_set_when_work_is_set: "required when Work is set."
               must_be_set_when_work_and_percent_complete_are_set: "required when Work and % Complete are set."
@@ -1502,7 +1510,7 @@ ja:
         other: "Notifications"
       placeholder_user: "プレースホルダー ユーザー"
       project:
-        other: "Projects"
+        other: "プロジェクト"
       project_query:
         other: "プロジェクト一覧"
       query: "ユーザのクエリ"
@@ -1561,12 +1569,13 @@ ja:
       work_package: "ワークパッケージ"
     project_phase:
       activated: "有効化"
-      deactivated: "無効化"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "無効化"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "アクティブ"
@@ -1633,6 +1642,8 @@ ja:
     priority: "優先度"
     project: "プロジェクト"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reason"
     responsible: "責任者"
     required: "必須"
@@ -1955,6 +1966,7 @@ ja:
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
       ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
       project_list_sharing: Project List Sharing
@@ -1967,11 +1979,15 @@ ja:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
       work_package_subject_generation:
@@ -2003,6 +2019,9 @@ ja:
       custom_actions:
         title: "カスタムアクション"
         description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
@@ -2194,7 +2213,7 @@ ja:
       title: Generate PDF
       submit: ダウンロード
       templates:
-        label: "Template"
+        label: "テンプレート"
         none_enabled: "No template has been enabled for this work package type"
       footer_center:
         label: Footer text
@@ -2380,6 +2399,8 @@ ja:
         mentioned: "You have been mentioned in %{work_package}"
         responsible: "You have become accountable for %{work_package}"
         watched: "You are watching %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "アクセシビリティ"
   label_account: "アカウント"
   label_active: "アクティブ"
@@ -2434,7 +2455,6 @@ ja:
   label_ldap_auth_source_plural: "LDAP connections"
   label_attribute_expand_text: "The complete text for '%{attribute}'"
   label_authentication: "認証"
-  label_authentication_settings: "Authentication settings"
   label_available_custom_fields_projects: "Available custom fields projects"
   label_available_global_roles: "Available global roles"
   label_available_project_attributes: "Available project attributes"
@@ -2608,6 +2628,7 @@ ja:
   label_gantt_chart_plural: "ガントチャート"
   label_general: "概要"
   label_generate_key: "キーを生成する"
+  label_global_roles: "Global roles"
   label_git_path: ".gitディレクトリへのパス"
   label_greater_or_equal: ">="
   label_group_by: "グループ化"
@@ -2804,7 +2825,7 @@ ja:
   label_privacy_policy: "データのプライバシーとセキュリティポリシー"
   label_product_version: "製品バージョ​​ン"
   label_profile: "プロファイル"
-  label_percent_complete: "% Complete"
+  label_percent_complete: "完成(%)"
   label_progress_tracking: "Progress tracking"
   label_project: "プロジェクト"
   label_project_activity: "Project activity"
@@ -2837,9 +2858,6 @@ ja:
   label_register: "登録する"
   label_register_with_developer: "開発者として登録する"
   label_registered_on: "登録日"
-  label_registration_activation_by_email: "電子メールでアカウントの有効化"
-  label_registration_automatic_activation: "自動でアカウントの有効化"
-  label_registration_manual_activation: "手動でアカウントの有効化"
   label_related_work_packages: "関係するワークパッケージ"
   label_relates: "関係している"
   label_relates_to: "関連している"
@@ -3279,6 +3297,7 @@ ja:
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "正常に更新しました。"
   notice_unsuccessful_update: "Update failed."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Successful update. The custom fields of the activated types are automatically activated
     on the work package form. <a href="%{url}" target="_blank">See more</a>.
@@ -3678,6 +3697,7 @@ ja:
   setting_hours_per_day_explanation: >-
     This defines what is considered a "day" when displaying duration in days and hours (for example, if a day is 8 hours, 32 hours would be 4 days).
   setting_invitation_expiration_days: "アクティベーションのメールは次で有効期限切れ"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Progress calculation mode"
   setting_work_package_done_ratio_field: "Work-based"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3693,6 +3713,9 @@ ja:
   setting_journal_aggregation_time_minutes: "User actions aggregated within"
   setting_log_requesting_user: "全てのリクエストに対し、ユーザのログイン名、名前、メールアドレスをログに記録する"
   setting_login_required: "認証が必要"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "送信元のメールアドレス"
   setting_mail_handler_api_key: "APIキー"
   setting_mail_handler_body_delimiters: "メール本文から一致する行以降を切り捨てる"
@@ -3718,6 +3741,7 @@ ja:
   setting_project_gantt_query_text: "プロジェクトの概要ページからガントチャートを表示するために使用するクエリを変更できます。"
   setting_security_badge_displayed: "セキュリティバッジを表示する"
   setting_registration_footer: "登録フッター"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "自動リポジトリ ベンダー種類"
   setting_repositories_encodings: "リポジトリのエンコーディング"
   setting_repository_storage_cache_minutes: "リポジトリ ディスクサイズのキャッシュ"
@@ -3728,8 +3752,22 @@ ja:
   setting_repository_truncate_at: "リポジトリブラウザーで表示するファイルの最大数"
   setting_rest_api_enabled: "RESTによるWebサービスを有効にする"
   setting_self_registration: "ユーザーよるアカウント登録"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "無操作タイムアウト"
   setting_session_ttl_hint: "5未満の値は無効にすると同様"
   setting_session_ttl_enabled: "セッションの有効期限"
@@ -3757,6 +3795,8 @@ ja:
   setting_working_days: "Working days"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.
@@ -3855,7 +3895,7 @@ ja:
       display_format: "Display format"
       deletion: "削除"
     working_days:
-      section_work_week: "Work week"
+      section_work_week: "作業週"
       section_holidays_and_closures: "Holidays and closures"
     work_packages:
       not_allowed_text: "You do not have the necessary permissions to view this page."

@@ -103,6 +103,7 @@ en:
   button_log_costs: "Log unit costs"
   button_log_time: "Log"
   button_add_activity: "Activity"
+  button_add_time_entry: "Log time"
 
   caption_booked_on_project: "Booked on project"
   caption_default: "Default"
@@ -215,6 +216,7 @@ en:
   setting_costs_currency: "Currency"
   setting_costs_currency_format: "Format of currency"
   setting_enforce_tracking_start_and_end_times: "Require exact times"
+  setting_enforce_without_allow: "Requiring exact times is not possible without allowing them"
 
   text_assign_time_and_cost_entries_to_project: "Assign reported hours and costs to the project"
   text_destroy_cost_entries_question: "%{cost_entries} were reported on the work packages you are about to delete. What do you want to do ?"

@@ -18,7 +18,7 @@ ms:
       storages/project_storage:
         project_folder: Folder projek
         project_folder_mode: Project folder mode
-        storage: Penyimpanan
+        storage: Storan
         storage_url: Storage URL
       storages/storage:
         authentication_method: Authentication Method
@@ -30,7 +30,7 @@ ms:
         tenant: ID Direktori (penyewa)
     errors:
       messages:
-        invalid_host_url: bukan URL yang sah.
+        invalid_host_url: adalah bukan URL yang sah.
         not_linked_to_project: tidak terpaut dengan projek.
       models:
         storages/file_link:
@@ -58,7 +58,7 @@ ms:
               unknown_error: tidak dapat disahkan. Sila periksa sambungan storan anda dan cuba lagi.
     models:
       file_link: Fail
-      storages/storage: Storan
+      storages/storage: Penyimpanan
   api_v3:
     errors:
       too_many_elements_created_at_once: Terlalu banyak elemen tercipta dalam satu masa. Dijangkakan %{max} paling banyak, mendapat %{actual}.
@@ -83,7 +83,7 @@ ms:
       remote_identity_error: An unexpected error occured while connecting to the storage.
     project_folder_mode:
       automatic: Dikendalikan secara automatik
-      inactive: Tiada folder khusus
+      inactive: Tiada folder spesifik
       manual: Folder yang tersedia dikendalikan secara manual
     remove_project:
       deletion_failure_flash: Gagal mengalih keluar projek daripada storan. %{error}
@@ -252,6 +252,7 @@ ms:
           existing_token: User token
           header: Pengesahan
           non_provisioned_user: User provisioned by IDP
+          offline_access: Configured OIDC offline_access scope
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
@@ -274,28 +275,29 @@ ms:
         warnings:
           other: "%{count} checks returned a warning"
       connection_validation:
-        client_id_invalid: The configured OAuth 2 client id is invalid. Please check the configuration.
-        client_secret_invalid: The configured OAuth 2 client secret is invalid. Please check the configuration.
-        nc_dependency_missing: 'A required dependency is missing on the file storage. Please add the following dependency: %{dependency}.'
+        client_id_invalid: Id klien OAuth 2 yang dikonfigurasikan adalah tidak sah. Sila semak konfigurasi.
+        client_secret_invalid: Rahsia pelanggan OAuth 2 yang dikonfigurasikan adalah tidak sah. Sila semak konfigurasi.
+        nc_dependency_missing: 'Kebergantungan yang diperlukan tiada pada storan fail. Sila tambahkan kebergantungan berikut: %{dependency}.'
         nc_dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
-        nc_group_folder_not_found: The group folder could not be found.
-        nc_host_not_found: No Nextcloud server found at the configured host url. Please check the configuration.
+        nc_group_folder_not_found: Folder kumpulan tidak ditemui.
+        nc_host_not_found: Tiada pelayan Nextcloud ditemui pada url hos yang dikonfigurasikan. Sila semak konfigurasi.
         nc_oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
         nc_oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
         nc_oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
-        nc_unexpected_content: Unexpected content found in the managed group folder.
-        nc_userless_access_denied: The configured app password is invalid.
+        nc_unexpected_content: Kandungan yang tidak dijangka ditemui dalam folder kumpulan terurus.
+        nc_userless_access_denied: Kata laluan apl yang dikonfigurasikan adalah tidak sah.
         not_configured: Sambungan tidak dapat disahkan. Sila selesaikan konfigurasi dahulu.
         od_client_cant_delete_folder: The client is having trouble deleting folders. Please check the setup documentation for your storage.
         od_client_write_permission_missing: The client seems to have write permissions missing. Please check the setup documentation for your storage.
         od_drive_id_invalid: The configured drive id seems invalid. Please check the configuration.
-        od_drive_id_not_found: The configured drive id could not be found. Please check the configuration.
+        od_drive_id_not_found: Id pemacu yang dikonfigurasikan tidak dapat ditemui. Sila semak konfigurasi.
         od_existing_test_folder: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
         od_oauth_request_not_found: OpenProject couldn't find the root folder in the drive using the current logged-in user. Please check the server logs for further information.
         od_oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive/SharePoint or we couldn't acquire a token. Please check the server logs for further information.
         od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
-        od_tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
-        od_unexpected_content: Unexpected content found in the drive.
+        od_tenant_id_wrong: Id direktori (penyewa) yang dikonfigurasikan adalah tidak sah. Sila semak konfigurasi.
+        od_unexpected_content: Kandungan yang tidak dijangka ditemui dalam pemacu.
+        offline_access_scope_missing: It is recommended to configure the OpenID Connect provider to request the offline_access scope. The integration may still work anyways, but make sure that refresh tokens do not expire.
         oidc_cant_acquire_token: Your OpenID Connect setup doesn't provide the necessary audience, nor provides token exchange capabilities. Please check out our documentation for more information.
         oidc_cant_exchange_token: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
         oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
@@ -392,13 +394,13 @@ ms:
     label_new_file_storage: Storan %{provider} baharu
     label_new_storage: Storan baharu
     label_no_selected_folder: Tiada folder yang dipilih
-    label_no_specific_folder: Tiada folder spesifik
+    label_no_specific_folder: Tiada folder khusus
     label_oauth_client_id: OAuth ID Pelanggan
     label_openproject_oauth_application_id: ID Pelanggan OAuth OpenProject
     label_openproject_oauth_application_secret: Rahsia Pelanggan OAuth OpenProject
     label_project_folder: Folder projek
     label_provider: Penyedia
-    label_redirect_uri: Ubah hala URI
+    label_redirect_uri: ' Pengubah hala URI'
     label_show_storage_redirect_uri: Paparkan ubah hala URI
     label_status: Status
     label_storage: Storan
@@ -406,6 +408,7 @@ ms:
     member_connection_status:
       connected: Disambungkan
       connected_no_permissions: Peranan pengguna tidak mempunyai kebenaran storan
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: Tidak disambungkan. Pengguna perlu log masuk ke dalam storan melalui %{link}.
       not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: Tiada ahli untuk dipaparkan.
@@ -424,7 +427,7 @@ ms:
       login_button_aria_label: Log masuk ke %{storage}
       login_button_label: "%{provider_type} log masuk"
       project_settings:
-        description: Untuk mendapatkan akses kepada folder projek anda perlu log masuk ke %{storage}.
+        description: Untuk dapatkan akses ke folder projek anda perlu log masuk ke %{storage}.
       requesting_access_to: Sedang meminta akses ke %{storage}
       storage_admin:
         description: Untuk menambah projek pada storan ini, anda perlu log masuk ke %{provider_type}. Sila log masuk dan cuba lagi.
@@ -473,6 +476,7 @@ ms:
       description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
       label: Paparkan lampiran di tab fail pakej kerja
     storage_audience:
+      documentation_intro: Details on the following options and what needs to be configured in the identity provider can be found in our documentation.
       idp:
         helptext: OpenProject will use the first access token received by the identity provider to authenticate requests to the storage. It will not try to obtain another token.
         label: Use first access token obtained by identity provider

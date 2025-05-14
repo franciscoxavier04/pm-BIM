@@ -339,6 +339,9 @@ module API
 
           resources :project
 
+          show :project_phase
+          show :project_phase_definition
+
           show :project_status
 
           def self.projects_available_parents

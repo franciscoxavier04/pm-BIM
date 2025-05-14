@@ -217,7 +217,7 @@ export class WorkPackageContextMenuHelperService {
       });
       allowedActions.push({
         key: 'relation-follows',
-        text: I18n.t('js.relation_buttons.add_follower'),
+        text: I18n.t('js.relation_buttons.add_successor'),
         link: 'addRelation',
       });
     }

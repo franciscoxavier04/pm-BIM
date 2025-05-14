@@ -40,7 +40,7 @@ nl:
         created_on: "creëerde dit op"
         changed: "gewijzigd"
         created: "aangemaakt"
-        commented: "gaf commentaar op"
+        commented: "Becommentarieerd"
         internal_comment: Internal comment
         internal_journal: Internal comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
@@ -90,7 +90,7 @@ nl:
       required_for_feature: "This add-on is only available with an active Enterprise edition support token."
       enterprise_link: "Klik hier voor meer informatie."
       start_trial: "Start gratis proefperiode"
-      book_now: "Boek nu"
+      book_now: "Direct boeken"
       get_quote: "Vraag een offerte aan"
       buttons:
         upgrade: "Nu upgraden"
@@ -102,6 +102,8 @@ nl:
       explanation:
         text: "Individuele acties van een gebruiker (bijv. het bijwerken van een werkpakket twee keer) wordt samengevoegd tot een enkele actie als hun leeftijdverschil minder is dan de aangegeven timespat. Ze worden weergegeven als een enkele actie binnen de applicatie. Dit zal ook meldingen vertragen met dezelfde tijd die het aantal verstuurde e-mails vermindert en zal ook %{webhook_link} vertraging beïnvloeden."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Toon tot
     is_active: momenteel getoond
@@ -289,7 +291,7 @@ nl:
       item: "Item"
       label: "Label"
       short: "Verkorte Naam"
-      parent: "Ouder"
+      parent: "Bovenliggend werkpakket"
       blueprint: "Patroonblauwdruk"
   global_search:
     placeholder: "Zoeken in %{app_title}"
@@ -349,10 +351,10 @@ nl:
         text: "Deze actie verwijdert geen enkel project dat de lijst bevat. Weet u zeker dat u deze projectlijst wilt verwijderen?"
     settings:
       header_details: Basic details
-      header_status: Project status
+      header_status: Projectstatus
       header_relations: Project relations
       button_update_details: Update details
-      button_update_status: Update status
+      button_update_status_description: Update status description
       button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
@@ -414,8 +416,10 @@ nl:
         no_results_title_text: Er is geen extra opgenomen schijfruimte verbruikt door dit project.
       work_package_priorities:
         new_label: "New priority"
+    status:
+      button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Duration: %{count} working day"
       other: "Duur: %{count} werkdagen"
   lists:
@@ -505,7 +509,7 @@ nl:
       new_access_token_dialog_show_button_text: "API-sleutel"
       new_access_token_dialog_text_field_placeholder_text: "Mijn API-sleutel"
       new_access_token_dialog_text_field_label: "Naam"
-      new_access_token_dialog_submit_button_text: "Aanmaken"
+      new_access_token_dialog_submit_button_text: "Maken"
       new_access_token_dialog_text: "Deze sleutel zal applicaties van derden in staat stellen om met uw instantie te communiceren. Geef het nieuwe API-sleutel een naam om deze te onderscheiden."
       new_access_token_dialog_attention_text: "Behandel API-sleutels als wachtwoorden. Iedereen met deze link heeft toegang tot informatie van deze instantie, deel het alleen met vertrouwde gebruikers."
       failed_to_reset_token: "Reset-toegangstoken mislukt: %{error}"
@@ -568,7 +572,7 @@ nl:
     react_with: "Reageren met %{reaction}"
     and_user: "en %{user}"
     and_others:
-      one: en 1 andere
+      one: en 1 ander
       other: en %{count} anderen
     reaction_by: "%{reaction} door"
   reportings:
@@ -626,14 +630,17 @@ nl:
         automatically_generated_subjects:
           label: "Automatisch gegenereerde onderwerpen"
           caption: "Definieer een patroon met kenmerken en tekst waarnaar verwezen wordt om automatisch werkpakketonderwerpen te genereren. Gebruikers kunnen de onderwerpen niet handmatig bewerken."
-        pattern:
-          label: "Onderwerp patroon"
-          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
-          headings:
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
             work_package: "Werkpakket"
             parent: "Bovenliggend werkpakket"
             project: "Project"
+        pattern:
+          label: "Onderwerp patroon"
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -752,10 +759,10 @@ nl:
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "Nieuw werkpakket aangemaakt en toegevoegd als kind"
-      label_relates_singular: "gerelateerd aan"
-      label_relates_plural: "gerelateerd aan"
-      label_relates_to_singular: "gerelateerd aan"
-      label_relates_to_plural: "gerelateerd aan"
+      label_relates_singular: "Gerelateerd aan"
+      label_relates_plural: "Gerelateerd aan"
+      label_relates_to_singular: "Gerelateerd aan"
+      label_relates_to_plural: "Gerelateerd aan"
       relates_description: "Creëert een zichtbare koppeling tussen de twee werkpakketten zonder extra effect"
       relates_to_description: "Creëert een zichtbare koppeling tussen de twee werkpakketten zonder extra effect"
       label_precedes_singular: "opvolger (na)"
@@ -767,22 +774,22 @@ nl:
       label_child_singular: "kind"
       label_child_plural: "kinderen"
       new_child: "Maak nieuw kind"
-      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child_description: "Creëert een gerelateerd werkpakket als subitem van het huidige (bovenliggende) werkpakket"
       child: "Kind"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
-      parent: "Parent"
+      parent: "Bovenliggend werkpakket"
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
-      label_blocks_singular: "blokkeert"
-      label_blocks_plural: "blokkeren"
+      label_blocks_singular: "vergrendelingen"
+      label_blocks_plural: "vergrendelingen"
       blocks_description: "Het gerelateerde werkpakket kan pas worden afgesloten als eerst dit werkpakket eerst is afgesloten"
-      label_blocked_singular: "geblokkeerd door"
-      label_blocked_plural: "geblokkeerd door"
-      label_blocked_by_singular: "geblokkeerd door"
-      label_blocked__by_plural: "geblokkeerd door"
+      label_blocked_singular: "vergrendeld door"
+      label_blocked_plural: "vergrendeld door"
+      label_blocked_by_singular: "vergrendeld door"
+      label_blocked__by_plural: "vergrendeld door"
       blocked_description: "Dit werkpakket kan pas worden afgesloten als eerst het gerelateerde werkpakket is afgesloten"
       blocked_by_description: "Dit werkpakket kan pas worden afgesloten als eerst het gerelateerde werkpakket is afgesloten"
-      label_duplicates_singular: "duplicaat"
+      label_duplicates_singular: "duplicaten"
       label_duplicates_plural: "duplicaten"
       duplicates_description: "Dit is een kopie van het gerelateerde werkpakket"
       label_duplicated_singular: "gedupliceerd door"
@@ -795,9 +802,9 @@ nl:
       label_includes_plural: "bevat"
       includes_description: "Markeert het gerelateerde werkpakket als inclusief met dit werkpakket zonder bijkomend effect"
       label_partof_singular: "onderdeel van"
-      label_partof_plural: "onderdelen van"
+      label_partof_plural: "onderdeel van"
       label_part_of_singular: "onderdeel van"
-      label_part_of_plural: "onderdelen van"
+      label_part_of_plural: "onderdeel van"
       partof_description: "Markeert het gerelateerde werkpakket als onderdeel van dit werkpakket zonder bijkomend effect"
       part_of_description: "Markeert het gerelateerde werkpakket als onderdeel van dit werkpakket zonder bijkomend effect"
       label_requires_singular: "vereist"
@@ -806,8 +813,8 @@ nl:
       label_required_singular: "vereist door"
       label_required_plural: "vereist door"
       required_description: "Markeert dit werkpakket als een vereiste voor het gerelateerde werkpakket"
-      label_parent_singular: "bovenliggend"
-      label_parent_plural: "bovenliggende"
+      label_parent_singular: "bovenliggende"
+      label_parent_plural: "bovenliggend"
       ghost_relation_title: "Verwante werkpakket"
       ghost_relation_description: "Dit is niet zichtbaar voor u vanwege rechten."
   label_invitation: Uitnodiging
@@ -912,11 +919,11 @@ nl:
       ldap_auth_source:
         account: "Account"
         attr_firstname: "Voornaam kenmerk"
-        attr_lastname: "Achternaam kenmerk"
+        attr_lastname: "Achternaam"
         attr_login: "Gebruikersnaam kenmerk"
-        attr_mail: "E-mail kenmerk"
+        attr_mail: "Emailadres"
         filter_string: "Tekenreeksen filteren"
-        admin: "Admininstrator"
+        admin: "Beheerder"
         base_dn: "Base DN"
         host: "Host"
         onthefly: "Automatische gebruiker aanmaken"
@@ -928,7 +935,7 @@ nl:
         read_ian: "Read in-app"
         resource: "Resource"
       oauth_client:
-        client: "Client-ID"
+        client: "Client ID"
       project:
         active_value:
           true: "Niet gearchiveerd"
@@ -1084,7 +1091,7 @@ nl:
         derived_remaining_hours: "Totaal resterend werk"
         derived_remaining_time: "Totaal resterend werk"
         done_ratio: "% Voltooid"
-        duration: "Tijdsduur"
+        duration: "Duur"
         end_insertion: "Einde van het invoegen"
         end_deletion: "Einde van de verwijdering"
         ignore_non_working_days: "Negeer niet-werkdagen"
@@ -1134,6 +1141,7 @@ nl:
         error_conflict: "Informatie is in de tussentijd door ten minste één andere gebruiker bijgewerkt."
         email: "is geen geldig e-mailadres."
         empty: "mag niet leeg zijn."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "moet gelijk zijn."
         exclusion: "is gereserveerd."
         feature_disabled: is not available.
@@ -1514,7 +1522,7 @@ nl:
       placeholder_user: "Tijdelijke gebruiker"
       project:
         one: "Project"
-        other: "Projects"
+        other: "Projecten"
       project_query:
         one: "Projectlijst"
         other: "Projectlijsten"
@@ -1580,12 +1588,13 @@ nl:
       work_package: "Werkpakketten"
     project_phase:
       activated: "geactiveerd"
-      deactivated: "gedeactiveerd"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "gedeactiveerd"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Actief"
@@ -1652,6 +1661,8 @@ nl:
     priority: "Prioriteit"
     project: "Project"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reden"
     responsible: "Verantwoording afleggen"
     required: "Vereist"
@@ -1676,7 +1687,7 @@ nl:
     user: "Gebruiker"
     username: "Gebruikersnaam"
     unit: "Eenheid"
-    value: "Waarde\n"
+    value: "Waarde"
     values: "Values"
     version: "Versie"
     visible: "zichtbaar"
@@ -1685,7 +1696,7 @@ nl:
   backup:
     failed: "Back-up mislukt"
     label_backup_token: "Back-up token"
-    label_create_token: "Back-up token maken"
+    label_create_token: "Creëer back-up token"
     label_delete_token: "Back-up token verwijderen"
     label_reset_token: "Reset back-up token"
     label_token_users: "De volgende gebruikers hebben actieve back-up tokens"
@@ -1693,7 +1704,7 @@ nl:
       action_create: Maken
       action_reset: Herstel
       heading_reset: "Reset back-up token"
-      heading_create: "Creëer back-up token"
+      heading_create: "Back-up token maken"
       implications: >
         Back-ups inschakelen zal elke gebruiker met de vereiste machtigingen en deze back-up token toestaan om een back-up te downloaden met alle gegevens van deze OpenProject installatie. Dit omvat de gegevens van alle andere gebruikers.
       info: >
@@ -1993,6 +2004,7 @@ nl:
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
       ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
       project_list_sharing: Project List Sharing
@@ -2005,11 +2017,15 @@ nl:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Markeer wijzigingen die sindsdien in deze lijst zijn aangebracht.
       work_package_subject_generation:
@@ -2041,6 +2057,9 @@ nl:
       custom_actions:
         title: "Aangepaste acties"
         description: "Aangepaste acties zijn met één klik snelkoppelingen naar een aantal vooraf gedefinieerde acties die u op bepaalde werkpakketten op basis van status beschikbaar kunt maken rol, type of project."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
@@ -2406,9 +2425,9 @@ nl:
       all: "Alle"
       all_title: "Toon alle"
     menu:
-      by_project: "Ongelezen door project"
+      by_project: "Ongelezen per project"
       by_reason: "Reden"
-      inbox: "Postvak in"
+      inbox: "Inkomend"
     send_notifications: "Stuur meldingen voor deze actie"
     work_packages:
       subject:
@@ -2418,6 +2437,8 @@ nl:
         mentioned: "U bent genoemd in %{work_package}"
         responsible: "Je bent verantwoordelijk geworden voor %{work_package}"
         watched: "Je volgt %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Toegankelijkheid"
   label_account: "Account"
   label_active: "Actief"
@@ -2472,7 +2493,6 @@ nl:
   label_ldap_auth_source_plural: "LDAP connections"
   label_attribute_expand_text: "De volledige tekst voor '%{attribute}'"
   label_authentication: "Verificatie"
-  label_authentication_settings: "Authentication settings"
   label_available_custom_fields_projects: "Available custom fields projects"
   label_available_global_roles: "Available global roles"
   label_available_project_attributes: "Beschikbare projectattributen"
@@ -2646,6 +2666,7 @@ nl:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Algemeen"
   label_generate_key: "Genereren van een sleutel"
+  label_global_roles: "Global roles"
   label_git_path: "Pad naar .git map"
   label_greater_or_equal: ">="
   label_group_by: "Groeperen op"
@@ -2875,9 +2896,6 @@ nl:
   label_register: "Een nieuw account aanmaken"
   label_register_with_developer: "Registreer als ontwikkelaar"
   label_registered_on: "Geregistreerd op"
-  label_registration_activation_by_email: "account activeren via e-mail"
-  label_registration_automatic_activation: "automatische account activatie"
-  label_registration_manual_activation: "handmatige account activatie"
   label_related_work_packages: "Verwante werkpakketten"
   label_relates: "Gerelateerd aan"
   label_relates_to: "Gerelateerd aan"
@@ -3317,6 +3335,7 @@ nl:
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Succesvolle wijziging."
   notice_unsuccessful_update: "Update failed."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Succesvolle update. Aangepaste velden van de geactiveerde types worden automatisch geactiveerd
     op het werkpakket formulier. <a href="%{url}" target="_blank">Meer</a>.
@@ -3717,6 +3736,7 @@ nl:
   setting_hours_per_day_explanation: >-
     This defines what is considered a "day" when displaying duration in days and hours (for example, if a day is 8 hours, 32 hours would be 4 days).
   setting_invitation_expiration_days: "Activatie e-mail verloopt na"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Progress calculation mode"
   setting_work_package_done_ratio_field: "Work-based"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3732,6 +3752,9 @@ nl:
   setting_journal_aggregation_time_minutes: "Gebruikersacties geaggregeerd binnen"
   setting_log_requesting_user: "Gebruikerslogin, naam en e-mailadres voor alle aanvragen vastleggen"
   setting_login_required: "Verificatie vereist"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Emissie e-mailadres"
   setting_mail_handler_api_key: "API-sleutel"
   setting_mail_handler_body_delimiters: "Afkappen e-mails na een van deze lijnen"
@@ -3757,6 +3780,7 @@ nl:
   setting_project_gantt_query_text: "U kunt de query wijzigen die wordt gebruikt om de Gantt-grafiek weer te geven vanaf de projectoverzichtspagina."
   setting_security_badge_displayed: "Toon beveiligingsbadge"
   setting_registration_footer: "Registratie voettekst"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Automatisch repostiroy leveranciers type"
   setting_repositories_encodings: "Repositories coderingen"
   setting_repository_storage_cache_minutes: "De schijfcache grootte van de repository"
@@ -3767,8 +3791,22 @@ nl:
   setting_repository_truncate_at: "Het maximaal aantal bestanden dat wordt weer gegeven in de reposity browser"
   setting_rest_api_enabled: "REST webservice inschakelen"
   setting_self_registration: "Zelfregistratie"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Tijd verstrijken sessie na inactiviteit"
   setting_session_ttl_hint: "Value below 5 works like disabled"
   setting_session_ttl_enabled: "Sessie verloopt"
@@ -3796,6 +3834,8 @@ nl:
   setting_working_days: "Werkdagen"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.
@@ -4173,9 +4213,9 @@ nl:
     permissions:
       comment: "Commentaar"
       comment_description: "Can view and comment this work package."
-      edit: "Bewerken"
+      edit: "Wijzig"
       edit_description: "Kan dit werkpakket bekijken, becommentariëren en bewerken."
-      view: "Weergeven"
+      view: "Toon"
       view_description: "Can view this work package."
     reminders:
       label_remind_at: "Datum"
@@ -4201,8 +4241,8 @@ nl:
     label_search: "Search for users to invite"
     label_search_placeholder: "Zoeken op gebruiker of e-mailadres"
     label_toggle_all: "Alle rechten inschakelen"
-    remove: "Verwijderen"
-    share: "Delen"
+    remove: "Verwijder"
+    share: "Deel"
     text_empty_search_description: "Er zijn geen gebruikers met de huidige filtercriteria."
     text_empty_search_header: "We couldn't find any matching results."
     text_empty_state_description: "De %{entity} is nog met niemand gedeeld."
@@ -4244,9 +4284,9 @@ nl:
           header: "Not shared: Private"
           description: "Deze projectlijst is nog met niemand gedeeld. Alleen u heeft toegang tot deze lijst."
       permissions:
-        view: "Weergeven"
+        view: "Toon"
         view_description: "Can view this project list."
-        edit: "Bewerken"
+        edit: "Wijzig"
         edit_description: "Kan deze projectlijst bekijken, delen en bewerken."
       upsell:
         message: "Sharing project lists with individual users is an enterprise add-on."
@@ -4332,7 +4372,7 @@ nl:
           unknown: "De aanvraag ontbreekt een vereiste parameter, bevat een niet-ondersteunde parameter waarde, of is anders niet geconfigureerd."
           missing_param: "Ontbrekende vereiste parameter: %{value}."
           request_not_authorized: "Verzoek moet worden geautoriseerd. Verplichte parameter voor het autoriseren van verzoek ontbreekt of is ongeldig."
-        invalid_redirect_uri: "De gevraagde omleidings-uri is ongeldig of komt niet overeen met omleidings-URI."
+        invalid_redirect_uri: "De gevraagde omleiding uri is ongeldig of komt niet overeen met client redirect URI."
         unauthorized_client: "De client is niet gemachtigd voor het uitvoeren van dit verzoek met behulp van deze methode."
         access_denied: "De resource eigenaar of autorisatie server heeft het verzoek geweigerd."
         invalid_scope: "De gevraagde reikwijdte is ongeldig, onbekend of ongeldig."
@@ -4389,7 +4429,7 @@ nl:
       builtin_applications: Built-in OAuth applications
       other_applications: Other OAuth applications
     empty_application_lists: No OAuth applications have been registered.
-    client_id: "Client-ID"
+    client_id: "Client ID"
     client_secret_notice: >
       Dit is de enige keer dat we het cliënt geheim kunnen drukken, let het op en houd het veilig. Het moet als wachtwoord worden behandeld en kan niet later door OpenProject worden opgehaald.
     authorization_dialog:

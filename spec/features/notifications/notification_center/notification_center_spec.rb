@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 RSpec.describe "Notification center",
@@ -421,6 +423,20 @@ RSpec.describe "Notification center",
 
         expect(notification2.reload.read_ian).to be_truthy
         expect(notification3.reload.read_ian).to be_truthy
+      end
+    end
+
+    context "with invalid filter parameters" do
+      it "shows error message and redirects for invalid reason" do
+        visit notifications_path(filter: "reason", name: "invalid_reason")
+        expect(page).to have_current_path(notifications_path)
+        expect(page).to have_text("Invalid notification filter")
+      end
+
+      it "shows error message and redirects for invalid filter type" do
+        visit notifications_path(filter: "invalid_filter", name: "something")
+        expect(page).to have_current_path(notifications_path)
+        expect(page).to have_text("Invalid notification filter")
       end
     end
   end

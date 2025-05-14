@@ -103,7 +103,8 @@ Rails.application.reloader.to_prepare do
                        "projects/settings/work_packages": %i[show],
                        "projects/settings/work_packages/internal_comments": %i[show update],
                        "projects/templated": %i[create destroy],
-                       "projects/identifier": %i[show update]
+                       "projects/identifier": %i[show update],
+                       "projects/status": %i[update destroy]
                      },
                      permissible_on: :project,
                      require: :member,
@@ -282,10 +283,11 @@ Rails.application.reloader.to_prepare do
                      contract_actions: { work_packages: %i[move] }
 
       wpt.permission :copy_work_packages,
-                     {},
+                     { "work_packages/moves": %i[new create] },
                      permissible_on: %i[work_package project],
                      require: :loggedin,
-                     dependencies: :view_work_packages
+                     dependencies: :view_work_packages,
+                     contract_actions: { work_packages: %i[copy] }
 
       wpt.permission :add_work_package_comments,
                      {

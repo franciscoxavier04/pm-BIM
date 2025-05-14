@@ -2,4 +2,4 @@ vi:
   js:
     work_packages:
       default_queries:
-        milestones: 'Cột mốc'
+        milestones: 'Các mốc thời gian'
