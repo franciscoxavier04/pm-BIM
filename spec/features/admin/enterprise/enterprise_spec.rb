@@ -52,6 +52,7 @@ RSpec.describe "Enterprise token", :js do
     end
 
     it "shows a teaser and token form without a token" do
+      pending "The 'Start free trial button was temporarily removed, see (#64031)'"
       expect(page).to have_css(".button", text: "Start free trial")
       expect(page).to have_css(".button", text: "Book now")
       expect(textarea.value).to be_empty

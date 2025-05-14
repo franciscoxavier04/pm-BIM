@@ -175,6 +175,7 @@ RSpec.describe "Enterprise trial management",
   end
 
   it "blocks the request assuming the mail was used" do
+    pending "The 'Start free trial button was temporarily removed, see (#64031)'"
     proxy.stub("https://start.openproject-edge.com:443/public/v1/trials", method: "post")
       .and_return(headers: { "Access-Control-Allow-Origin" => "*" }, code: 422, body: mail_in_use_body.to_json)
 
@@ -188,6 +189,7 @@ RSpec.describe "Enterprise trial management",
   end
 
   it "blocks the request assuming the domain was used" do
+    pending "The 'Start free trial button was temporarily removed, see (#64031)'"
     proxy.stub("https://start.openproject-edge.com:443/public/v1/trials", method: "post")
       .and_return(headers: { "Access-Control-Allow-Origin" => "*" }, code: 422, body: domain_in_use_body.to_json)
 
@@ -201,6 +203,7 @@ RSpec.describe "Enterprise trial management",
   end
 
   it "shows an error in case of other errors" do
+    pending "The 'Start free trial button was temporarily removed, see (#64031)'"
     proxy.stub("https://start.openproject-edge.com:443/public/v1/trials", method: "post")
       .and_return(headers: { "Access-Control-Allow-Origin" => "*" }, code: 409, body: other_error_body.to_json)
 
@@ -232,6 +235,7 @@ RSpec.describe "Enterprise trial management",
     end
 
     it "can get the trial if reloading the page" do
+      pending "The 'Start free trial button was temporarily removed, see (#64031)'"
       # We need to go to another page to stop the request cycle
       visit info_admin_index_path
 
@@ -256,6 +260,7 @@ RSpec.describe "Enterprise trial management",
     end
 
     it "can confirm that trial regularly" do
+      pending "The 'Start free trial button was temporarily removed, see (#64031)'"
       find_test_selector("op-ee-trial-waiting-resend-link", text: "Resend").click
       expect(page).to have_css(".op-toast", text: "Email has been resent.", wait: 20)
 
