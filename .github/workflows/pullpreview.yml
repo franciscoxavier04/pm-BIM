@@ -35,6 +35,7 @@ jobs:
         echo "OPENPROJECT_HSTS=false" >> .env.pullpreview
         echo "OPENPROJECT_NOTIFICATIONS_POLLING_INTERVAL=10000" >> .env.pullpreview
         echo "OPENPROJECT_ENTERPRISE__CHARGEBEE__SITE=openproject-enterprise-test" >> .env.pullpreview
+        echo "OPENPROJECT_ENTERPRISE__TRIAL__CREATION__HOST=start.openproject-edge.com" >> .env.pullpreview        
     - name: Boot as BIM edition
       if: contains(github.ref, 'bim/') || contains(github.head_ref, 'bim/')
       run: |
