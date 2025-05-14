@@ -1571,12 +1571,13 @@ ko:
       work_package: "작업 패키지"
     project_phase:
       activated: "활성화됨"
-      deactivated: "비활성화됨"
       added_date: "%{date}(으)로 설정됨"
       changed_date: "- %{from}에서 %{to}(으)로 변경되었습니다"
-      removed_date: "삭제된 날짜 %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "비활성화됨"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} 및 %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "삭제된 날짜 %{date}"
   #common attributes of all models
   attributes:
     active: "활성"

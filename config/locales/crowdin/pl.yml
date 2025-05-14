@@ -1631,12 +1631,13 @@ pl:
       work_package: "Pakiety robocze"
     project_phase:
       activated: "aktywowano"
-      deactivated: "dezaktywowano"
       added_date: "ustawiono na %{date}"
       changed_date: "zmieniono z %{from} na %{to}"
-      removed_date: "data usunięcia %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "dezaktywowano"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} i %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "data usunięcia %{date}"
   #common attributes of all models
   attributes:
     active: "Aktywne"
