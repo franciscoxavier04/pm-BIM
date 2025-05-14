@@ -2048,6 +2048,8 @@ ca:
         description: "Amb les alertes per dates, se't notificarà quan una data d'inici o finalització s'apropi de tal manera que no se't puguin oblidar o passar dates rellevants."
       work_package_sharing:
         description: "Share work packages with users who are not members of the project."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "Custom color theme and logo"
         more_info: "Nota: el logotip utilitzat serà accessible públicament."

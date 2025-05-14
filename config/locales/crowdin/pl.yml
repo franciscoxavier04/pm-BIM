@@ -2128,6 +2128,8 @@ pl:
         description: "Dzięki alertom dotyczącym dat będziesz otrzymywać powiadomienia o zbliżających się terminach rozpoczęcia lub zakończenia pracy, dzięki czemu nigdy nie przegapisz ani nie zapomnisz ważnego terminu."
       work_package_sharing:
         description: "Udostępnij pakiety robocze użytkownikom, którzy nie są członkami projektu."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "Niestandardowy motyw kolorystyczny i logotyp"
         more_info: "Uwaga: użyte logo będzie ogólnodostępne."

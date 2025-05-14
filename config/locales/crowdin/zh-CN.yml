@@ -2007,6 +2007,8 @@ zh-CN:
         description: "通过日期提醒，您将收到即将开始或完成日期的通知，以免错过或忘记重要截止日期。"
       work_package_sharing:
         description: "与非此项目成员的用户共享工作包。"
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "自定义颜色主题和 Logo"
         more_info: "注：使用的 Logo 将可公开访问。"

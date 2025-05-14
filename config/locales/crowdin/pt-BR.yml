@@ -2048,6 +2048,8 @@ pt-BR:
         description: "Com os alertas de data, você receberá uma notificação das futuras datas de início e conclusão, assim você nunca perderá ou esquecerá prazos importante. "
       work_package_sharing:
         description: "Compartilhe pacotes de trabalho com usuários que não são membros do projeto."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "Tema de cor e logotipo personalizados"
         more_info: "Obs.: o logotipo usado pode ser acessado publicamente."
