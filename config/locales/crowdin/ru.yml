@@ -2130,7 +2130,7 @@ ru:
       work_package_sharing:
         description: "Поделиться пакетом работ с пользователями, которые не являются участниками проекта."
       project_list_sharing:
-        description: "Share project lists with individual users."
+        description: "Делитесь списками проектов с отдельными пользователями."
       define_custom_style:
         title: "Пользовательская цветовая тема и логотип"
         more_info: "Примечание: используемый логотип будет общедоступным."
