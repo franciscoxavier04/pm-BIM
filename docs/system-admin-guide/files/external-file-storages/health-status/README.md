@@ -38,6 +38,9 @@ respective buttons.
 
 ![Health status report for a file storage in OpenProject administration](openproject_file_storages_onedrive_open_full_health_report_download_button.png)
 
+> [!TIP]
+> If you’re experiencing issues with the file storage, please download the **health status report** and include it in your support request. This will help us diagnose the problem more efficiently.
+
 ### Error codes
 
 There are several possible errors that can occur during the connection test. While some errors can occur for all types
