@@ -36,8 +36,12 @@ import { PathHelperService } from 'core-app/core/path-helper/path-helper.service
 import { ToastService } from 'core-app/shared/components/toaster/toast.service';
 import { EXTERNAL_REQUEST_HEADER } from 'core-app/features/hal/http/openproject-header-interceptor';
 import { EnterpriseTrialStore } from 'core-app/features/enterprise/enterprise-trial.store';
-import { GonService } from 'core-app/core/gon/gon.service';
-import { EnterpriseTrialErrorHalResource, EnterpriseTrialHalResource, IEnterpriseData, IEnterpriseTrial } from 'core-app/features/enterprise/enterprise-trial.model';
+import {
+  EnterpriseTrialErrorHalResource,
+  EnterpriseTrialHalResource,
+  IEnterpriseData,
+  IEnterpriseTrial,
+} from 'core-app/features/enterprise/enterprise-trial.model';
 import isDefinedEntity from 'core-app/core/state/is-defined-entity';
 
 @Injectable()
@@ -116,6 +120,9 @@ export class EnterpriseTrialService {
     this.trialKey = trialKey;
 
     if (this.trialKey) {
+      const trialLink = `${this.baseUrlAugur}/public/v1/trials/${this.trialKey}`;
+      this.store.update({ trialLink });
+      this.getUserDataFromAugur(trialLink);
       this.setMailSubmittedStatus();
     }
   }
@@ -156,6 +163,30 @@ export class EnterpriseTrialService {
           const description = (error.error as { description?:string }).description;
           this.toastService.addWarning(description || I18n.t('js.error.internal'));
         }
+      });
+  }
+
+  // use the trial key saved in the db
+  // to get the user data from Augur
+  public getUserDataFromAugur(trialLink:string) {
+    this
+      .http
+      .get(
+        `${trialLink}/details`,
+        {
+          headers: {
+            [EXTERNAL_REQUEST_HEADER]: 'true',
+          },
+        },
+      )
+      .toPromise()
+      .then((data:IEnterpriseData) => {
+        this.store.update({ data });
+        this.retryConfirmation();
+      })
+      .catch(() => {
+        // Check whether the mail has been confirmed by now
+        this.getToken();
       });
   }
 

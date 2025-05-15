@@ -26,23 +26,12 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  ChangeDetectorRef,
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  OnInit, Input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit } from '@angular/core';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { EnterpriseTrialService } from 'core-app/features/enterprise/enterprise-trial.service';
-import {
-  HttpClient,
-  HttpErrorResponse,
-} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { EEActiveTrialBase } from 'core-app/features/enterprise/enterprise-active-trial/ee-active-trial.base';
-import { GonService } from 'core-app/core/gon/gon.service';
-import { EXTERNAL_REQUEST_HEADER } from 'core-app/features/hal/http/openproject-header-interceptor';
 import { IEnterpriseData } from 'core-app/features/enterprise/enterprise-trial.model';
 
 @Component({
@@ -52,8 +41,6 @@ import { IEnterpriseData } from 'core-app/features/enterprise/enterprise-trial.m
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EEActiveTrialComponent extends EEActiveTrialBase implements OnInit {
-  @Input() public trialKey:string|undefined;
-
   public subscriber:string;
 
   public email:string;
@@ -93,44 +80,7 @@ export class EEActiveTrialComponent extends EEActiveTrialBase implements OnInit 
           this.formatUserData(data);
           this.cdRef.detectChanges();
         });
-
-      this.initialize();
     }
-  }
-
-  private initialize():void {
-    const { data } = this.eeTrialService.current;
-
-    if (this.trialKey && !data) {
-      // after reload: get data from Augur using the trial key saved in gon
-      const trialLink = `${this.eeTrialService.baseUrlAugur}/public/v1/trials/${this.trialKey}`;
-      this.eeTrialService.store.update({ trialLink });
-      this.getUserDataFromAugur(trialLink);
-    }
-  }
-
-  // use the trial key saved in the db
-  // to get the user data from Augur
-  private getUserDataFromAugur(trialLink:string) {
-    this
-      .http
-      .get(
-        `${trialLink}/details`,
-        {
-          headers: {
-            [EXTERNAL_REQUEST_HEADER]: 'true',
-          },
-        },
-      )
-      .toPromise()
-      .then((data:IEnterpriseData) => {
-        this.eeTrialService.store.update({ data });
-        this.eeTrialService.retryConfirmation();
-      })
-      .catch(() => {
-        // Check whether the mail has been confirmed by now
-        this.eeTrialService.getToken();
-      });
   }
 
   private formatUserData(userForm:IEnterpriseData) {

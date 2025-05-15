@@ -107,29 +107,7 @@ export class FreeTrialButtonComponent implements OnInit {
   private initialize():void {
     if (this.trialCreatedAt) {
       this.created = this.timezoneService.formattedDate(this.trialCreatedAt);
-
-      const { data } = this.eeTrialService.store.getValue();
-      if (data) {
-        // after reload: get data from Augur using the trial key saved in gon
-        const trialLink = `${this.eeTrialService.baseUrlAugur}/public/v1/trials/${this.trialKey}`;
-        this.eeTrialService.store.update({ trialLink });
-        this.getUserDataFromAugur(trialLink);
-      }
     }
-  }
-
-  private getUserDataFromAugur(trialLink:string):void {
-    this.http
-      .get<IEnterpriseData>(`${trialLink}/details`)
-      .toPromise()
-      .then((data:IEnterpriseData) => {
-        this.eeTrialService.store.update({ data });
-        this.eeTrialService.retryConfirmation();
-      })
-      .catch(() => {
-        // Check whether the mail has been confirmed by now
-        this.eeTrialService.getToken();
-      });
   }
 
   public openTrialModal():void {
