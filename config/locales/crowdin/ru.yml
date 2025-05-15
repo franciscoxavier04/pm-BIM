@@ -1635,7 +1635,7 @@ ru:
       added_date: "установлено на %{date}"
       changed_date: "изменено с %{from} to %{to}"
       deactivated: "деактивирован"
-      deleted_project_phase: "Deleted project phase"
+      deleted_project_phase: "Фаза проекта удалена"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} и %{finish_gate_message}"
       phase_and_one_gate: "%{phase_message}. %{gate_message}"
       removed_date: "дата удаления %{date}"
