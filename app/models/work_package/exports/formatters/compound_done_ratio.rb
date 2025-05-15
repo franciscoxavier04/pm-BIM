@@ -27,28 +27,24 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-
 module WorkPackage::Exports
-  # Adds extra columns when some particular columns are present.
-  #
-  # For instance, adds a 'Total work' column when the 'Work' column is present.
-  module AdditionalColumns
-    ADDITIONAL_COLUMNS = {
-      estimated_hours: [:derived_estimated_hours],
-      remaining_hours: [:derived_remaining_hours],
-      done_ratio: [:derived_done_ratio]
-    }.freeze
+  module Formatters
+    class CompoundDoneRatio < ::Exports::Formatters::Default
+      def self.apply?(name, export_format)
+        name.to_sym == :done_ratio && export_format == :pdf
+      end
 
-    def get_columns
-      super.flat_map { |column| [column] + additional_columns(column) }
-    end
+      def format(work_package, **)
+        derived_done_ratio = work_package.derived_done_ratio
+        derived = derived_done_ratio&.positive? ? " · Σ #{format_value(derived_done_ratio)}" : ""
+        "#{format_value(work_package.done_ratio)}#{derived}"
+      end
 
-    def additional_columns(column)
-      ADDITIONAL_COLUMNS
-        .fetch(column.name, [])
-        .map do |additional_column_name|
-          Queries::WorkPackages::Selects::PropertySelect.new(additional_column_name)
-        end
+      def format_value(value, _options = {})
+        return "" if value.nil?
+
+        "#{value}%"
+      end
     end
   end
 end

@@ -223,7 +223,7 @@ RSpec.describe XlsExport::WorkPackage::Exporter::XLS do
       end
     end
 
-    it "includes estimated hours" do
+    it "includes work" do
       expect(sheet.rows.size).to eq(4 + 1)
 
       # Check row after header row
@@ -232,7 +232,7 @@ RSpec.describe XlsExport::WorkPackage::Exporter::XLS do
     end
 
     context "with duration format being set to 'days and hours'", with_settings: { duration_format: "days_and_hours" } do
-      it "includes estimated hours unformatted" do
+      it "includes work unformatted" do
         expect(sheet.rows.size).to eq(4 + 1)
 
         # Check row after header row
@@ -316,7 +316,7 @@ RSpec.describe XlsExport::WorkPackage::Exporter::XLS do
     end
   end
 
-  describe "with derived estimated hours only" do
+  describe "with total work only" do
     let(:work_package) do
       create(:work_package,
              project:,
@@ -325,7 +325,7 @@ RSpec.describe XlsExport::WorkPackage::Exporter::XLS do
     end
     let(:work_packages) { [work_package] }
 
-    let(:column_names) { %w[estimated_hours remaining_hours] }
+    let(:column_names) { %w[estimated_hours remaining_hours done_ratio] }
 
     it "outputs its raw value in an additional 'Total work' column right after the 'Work' column" do
       headers_row, values_row = sheet.rows
@@ -335,12 +335,14 @@ RSpec.describe XlsExport::WorkPackage::Exporter::XLS do
         ["Work", nil],
         ["Total work", "15.0"],
         ["Remaining work", nil],
-        ["Total remaining work", nil]
+        ["Total remaining work", nil],
+        ["% Complete", nil],
+        ["Total % complete", nil]
       ]
     end
   end
 
-  describe "with estimated hours, derived estimated hours, remaining hours, and derived remaining hours" do
+  describe "with work, total work, remaining work, total remaining work, % complete, and total % complete" do
     let(:work_package) do
       create(:work_package,
              project:,
@@ -348,13 +350,15 @@ RSpec.describe XlsExport::WorkPackage::Exporter::XLS do
              derived_estimated_hours: 15.0,
              remaining_hours: 5.0,
              derived_remaining_hours: 8.0,
+             done_ratio: 50,
+             derived_done_ratio: 75,
              type: project.types.first)
     end
     let(:work_packages) { [work_package] }
 
-    let(:column_names) { %w[estimated_hours remaining_hours] }
+    let(:column_names) { %w[estimated_hours remaining_hours done_ratio] }
 
-    it "outputs all raw values in 4 distinct columns" do
+    it "outputs all raw values in distinct columns for own and total values" do
       headers_row, values_row = sheet.rows
       # why is there a nil at the end of the headers row?
       headers_row.compact!
@@ -362,12 +366,14 @@ RSpec.describe XlsExport::WorkPackage::Exporter::XLS do
         ["Work", "10.0"],
         ["Total work", "15.0"],
         ["Remaining work", "5.0"],
-        ["Total remaining work", "8.0"]
+        ["Total remaining work", "8.0"],
+        ["% Complete", "50%"],
+        ["Total % complete", "75%"]
       ]
     end
   end
 
-  describe "with estimated and remaining hours set to zero and their derived value set" do
+  describe "with work, remaining work, and % complete set to zero and their total values set" do
     let(:work_package) do
       create(:work_package,
              project:,
@@ -375,13 +381,15 @@ RSpec.describe XlsExport::WorkPackage::Exporter::XLS do
              derived_estimated_hours: 15.0,
              remaining_hours: 0.0,
              derived_remaining_hours: 8,
+             done_ratio: 0,
+             derived_done_ratio: 42,
              type: project.types.first)
     end
     let(:work_packages) { [work_package] }
 
-    let(:column_names) { %w[estimated_hours remaining_hours] }
+    let(:column_names) { %w[estimated_hours remaining_hours done_ratio] }
 
-    it "outputs raw values in 4 distinct columns" do
+    it "outputs raw values in distinct columns for own and total values" do
       headers_row, values_row = sheet.rows
       # why is there a nil at the end of the headers row?
       headers_row.compact!
@@ -389,7 +397,9 @@ RSpec.describe XlsExport::WorkPackage::Exporter::XLS do
         ["Work", "0.0"],
         ["Total work", "15.0"],
         ["Remaining work", "0.0"],
-        ["Total remaining work", "8.0"]
+        ["Total remaining work", "8.0"],
+        ["% Complete", "0%"],
+        ["Total % complete", "42%"]
       ]
     end
   end
