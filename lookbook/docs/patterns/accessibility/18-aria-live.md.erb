@@ -28,46 +28,46 @@ announce('Example polite message', { politeness: 'polite' });
 ```
 
 ### Using Turbo Streams to Trigger ARIA Live Updates
-To use it in a Rails Turbo response, and send updates to the assistive technology after any action, we created a new Turbo stream component that triggers an ARIA action:
+To use it in a Rails Turbo response, and send updates to the assistive technology after any action, we created a new Turbo stream component that triggers an liveRegion action:
 
 ```ruby
-OpTurbo::StreamComponent.new(action: :aria, message: "Form submission successful!", politeness: "polite", role: "status", target: nil)
+OpTurbo::StreamComponent.new(action: :liveRegion, message: "Form submission successful!", politeness: "polite", role: "status", target: nil)
 ```
 
 - This creates a **Turbo Stream update** with:
-  - `action: :aria` → Calls the `aria` action defined in `aria.stream.action.ts`
+  - `action: :liveRegion` → Calls the `liveRegion` action defined in `live-region-stream-action.ts`
   - `message: "Form submission successful!"` → The text to be announced to user
   - `politeness: "polite"` → Ensures the message is read when the user is idle
   - `target: nil` → Ensures the update isn't inserted into the DOM but is handled as an announcement
 
 ### How to Trigger an ARIA Update from the Controller
-You can trigger a assistive technology announcement from your Rails controller by calling the provided `render_aria_update_message` helper:
+You can trigger a assistive technology announcement from your Rails controller by calling the provided `render_live_region_update_message` helper:
 
 ```ruby
-render_aria_update_message(
+render_live_region_update_message(
   message: I18n.t("work_package_relations_tab.relations.create_child_aria_live_message"),
   politeness: "polite"
 )
 ```
 
-This helper internally renders a Turbo Stream using the aria action to announce the message via ARIA live regions.
+This helper internally renders a Turbo Stream using the liveRegion action to announce the message via ARIA live regions.
 For reference only — you do not need to define this yourself.
-Here is the internal implementation of `render_aria_update_message`:
+Here is the internal implementation of `render_live_region_update_message`:
 
 ```ruby
-    def render_aria_update_message(message:, politeness:, role: "alert")
-      turbo_streams << OpTurbo::StreamComponent.new(action: :aria, message:, politeness:, role:, target: nil).render_in(view_context)
+    def render_live_region_update_message(message:, politeness:, role: "alert")
+      turbo_streams << OpTurbo::StreamComponent.new(action: :liveRegion, message:, politeness:, role:, target: nil).render_in(view_context)
     end
 ```
 
 ### How to Trigger an ARIA Update from a Turbo Frame
-If you're using a Turbo Frame and want to announce dynamic content changes to assistive technologies, you can embed a Turbo Stream using the `aria` action directly inside the frame.
+If you're using a Turbo Frame and want to announce dynamic content changes to assistive technologies, you can embed a Turbo Stream using the `liveRegion` action directly inside the frame.
 
 ```erb
 <%= content_tag("turbo-frame", id: "frame-id") do %>
 ....
   <%= render OpTurbo::StreamComponent.new(
-    action: :aria,
+    action: :liveRegion,
     message: "Update!!",
     politeness: "polite",
     target: nil
@@ -77,28 +77,10 @@ If you're using a Turbo Frame and want to announce dynamic content changes to as
 ```
 
 ### How ARIA Live Messages Are Delivered via Turbo Streams
-The `registerAriaStreamAction` method defines a custom Turbo Stream action called `aria`. When triggered, it announces a message (using ARIA live regions) to assistive technologies, with a tone of either `"polite"` or `"assertive"`, depending on the `politeness` attribute in the stream element.
+The `registerLiveRegionStreamAction` method defines a custom Turbo Stream action called `liveRegion`. When triggered, it announces a message (using ARIA live regions) to assistive technologies, with a tone of either `"polite"` or `"assertive"`, depending on the `politeness` attribute in the stream element.
 
 ```ts
-import { StreamActions, StreamElement } from '@hotwired/turbo';
-import { announce } from '@primer/live-region-element';
-
-export function registerAriaStreamAction() {
-  StreamActions.aria = function ariaStreamAction(this:StreamElement) {
-      const message = this.getAttribute('message') ?? '';
-      const politeness = this.getAttribute('politeness') ?? 'polite';
-      if (politeness === 'assertive') {
-        void announce(message, {
-          politeness: 'assertive',
-        });
-      } else {
-        void announce(message, {
-          politeness: 'polite',
-          delayMs: 5000,
-        });
-      }
-  };
-}
+<%= render file: "frontend/src/turbo/live-region-stream-action.ts" %>
 ```
 
 ## Live Regions in Dialogs and Modals
@@ -110,7 +92,6 @@ To ensure that announcements are still read aloud in this situation, we should i
 
 ```erb
   <live-region>
-    <div id="assertive" aria-live="assertive" aria-atomic="true" class="hidden-for-sighted"></div>
   </live-region>
-  <%= render OpTurbo::StreamComponent.new(action: :aria, message: "Date picker is updated.", politeness: "assertive", target: "nil") %>
+  <%= render OpTurbo::StreamComponent.new(action: :liveRegion, message: "Date picker is updated.", politeness: "assertive", target: "nil") %>
 ```
