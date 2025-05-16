@@ -414,6 +414,7 @@ lt:
     member_connection_status:
       connected: Prisijungta
       connected_no_permissions: Naudotojo vaidmuo neturi saugyklos teisių
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: Neprisijungta. Naudotojas turi prisijungti prie saugyklos per šį %{link}.
       not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: Nėra narių rodymui.

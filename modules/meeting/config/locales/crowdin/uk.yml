@@ -341,7 +341,7 @@ uk:
   permission_manage_agendas: "Керувати програмами"
   permission_manage_agendas_explanation: "Дає змогу налаштовувати пункти порядку денного динамічної наради."
   permission_manage_outcomes: "Керування результатами"
-  permission_send_meeting_invites_and_outcomes: "Надсилайти запрошення на нараду й результати учасникам"
+  permission_send_meeting_invites_and_outcomes: "Надсилайте запрошення на нараду і її результати учасникам"
   project_module_meetings: "Зустрічі"
   text_duration_in_hours: "Тривалість у годинах"
   text_in_hours: "у годинах"
@@ -373,7 +373,7 @@ uk:
   label_agenda_item_deleted_wp: "Посилання на видалений пакет робіт"
   label_agenda_item_actions: "Дії з пунктами порядку денного"
   label_agenda_item_move_to_next: "Перейти до наступної наради"
-  label_agenda_item_move_to_backlog: "Перемістити в невиконане"
+  label_agenda_item_move_to_backlog: "Перемістити в чергу завдань"
   label_agenda_item_move_to_current_meeting: "Перемістити в поточну нараду"
   label_agenda_item_move_to_top: "Помістити на верх"
   label_agenda_item_move_to_bottom: "Помістити в кінець"
@@ -388,21 +388,21 @@ uk:
   label_agenda_outcome_delete: "Вилучити результат"
   text_outcome_not_editable_anymore: "Цей результат більше не можна редагувати."
   text_outcome_cannot_be_added: "Результат більше не можна додати."
-  label_backlog_clear: "Очистити невиконане"
+  label_backlog_clear: "Очистити чергу завдань"
   label_backlog_clear_button: "Очистити все"
-  text_backlog_clear_error: "Під час очищення невиконаних завдань сталася принаймні одна помилка."
-  label_agenda_backlog: "Невиконані завдання порядку денного"
+  text_backlog_clear_error: "Під час очищення черги завдань сталася принаймні одна помилка."
+  label_agenda_backlog: "Черга завдань порядку денного"
   text_agenda_backlog: >
-    Цей список невиконаних завдань стосується лише цієї одноразової наради. Ви можете додавати або вилучати елементи з порядку денного наради, перетягуючи їх.
-  label_agenda_backlog_clear_title: "Очистити невиконані завдання порядку денного?"
+    Ця черга завдань стосується лише цієї одноразової наради. Ви можете додавати або вилучати елементи з порядку денного наради, перетягуючи їх.
+  label_agenda_backlog_clear_title: "Очистити чергу завдань порядку денного?"
   text_agenda_backlog_clear_description: >
-    Are you sure you want to remove all items currently in the agenda backlog? This action is not reversible.
-  label_series_backlog: "Невиконані завдання серії"
+    Справді вилучити всі поточні елементи із черги завдань порядку денного? Цю дію не можна відмінити.
+  label_series_backlog: "Черга завдань серії"
   text_series_backlog: >
-    Список невиконаних завдань стосується всіх нарад цієї серії. Ви можете додавати або вилучати елементи з певної наради, перетягуючи їх.
-  label_series_backlog_clear_title: "Очистити невиконані завдання серії?"
+    Черга завдань стосується всіх нарад цієї серії. Ви можете додавати або вилучати елементи з певної наради, перетягуючи їх.
+  label_series_backlog_clear_title: "Очистити чергу завдань серії?"
   text_series_backlog_clear_description: >
-    Буде вилучено всі елементи цього списку невиконаних завдань серїі, який стосується всіх нарад серії. Справді продовжити? Цю дію не можна відмінити.
+    Буде вилучено всі елементи черги завдань цієї серії, спільної для всіх нарад серії. Справді продовжити? Цю дію не можна відмінити.
   text_agenda_item_title: 'Пункт порядку денного «%{title}»'
   text_agenda_work_package_deleted: 'Пункт порядку денного для видаленого пакета робіт'
   text_deleted_agenda_item: 'Видалений пункт порядку денного'

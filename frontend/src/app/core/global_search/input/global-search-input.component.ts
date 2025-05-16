@@ -357,7 +357,7 @@ export class GlobalSearchInputComponent implements AfterViewInit, OnDestroy {
     return this
       .apiV3Service
       .work_packages
-      .filterByTypeaheadOrId(query, idOnly);
+      .filterByTypeaheadOrId(query, idOnly, { pageSize: '20' });
   }
 
   private searchResultsToOptions(results:WorkPackageResource[], query:string) {

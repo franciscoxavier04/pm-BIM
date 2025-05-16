@@ -2091,6 +2091,8 @@ ro:
         description: "Cu alertele de date, veți fi notificat cu privire la următoarele date de început sau de sfârșit, astfel încât să nu ratați sau să uitați niciodată un termen limită important."
       work_package_sharing:
         description: "Share work packages with users who are not members of the project."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "Custom color theme and logo"
         more_info: "Notă: logo-ul utilizat va fi accesibil publicului."
@@ -2478,6 +2480,8 @@ ro:
         mentioned: "Ai fost menționat în %{work_package}"
         responsible: "Ați devenit responsabil pentru %{work_package}"
         watched: "Urmăriți %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Accesibilitate"
   label_account: "Cont"
   label_active: "Activ"

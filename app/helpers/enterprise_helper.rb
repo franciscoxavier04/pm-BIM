@@ -29,19 +29,25 @@
 #++
 
 module EnterpriseHelper
-  def write_augur_to_gon
-    gon.augur_url = OpenProject::Configuration.enterprise_trial_creation_host
-    gon.token_version = OpenProject::Token::VERSION
+  def enterprise_angular_trial_inputs
+    trial_key = Token::EnterpriseTrialKey.find_by(user_id: User.system.id)
+    token = EnterpriseToken.current
+
+    if token.present? || trial_key.blank?
+      enterprise_angular_static_inputs
+    else
+      enterprise_angular_static_inputs.merge(
+        trialKey: trial_key.value,
+        trialCreatedAt: trial_key.created_at.to_date.iso8601
+      )
+    end
   end
 
-  def write_trial_key_to_gon
-    trial_key = Token::EnterpriseTrialKey.find_by(user_id: User.system.id)
-    if trial_key
-      gon.ee_trial_key = {
-        value: trial_key.value,
-        created: trial_key.created_at
-      }
-    end
+  def enterprise_angular_static_inputs
+    {
+      augurUrl: OpenProject::Configuration.enterprise_trial_creation_host,
+      tokenVersion: OpenProject::Token::VERSION
+    }
   end
 
   def enterprise_token_plan_name(enterprise_token)

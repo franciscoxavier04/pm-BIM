@@ -2050,6 +2050,8 @@
         description: "Med datovarsler, vil du bli varslet om kommende start- eller sluttdatoer slik at du aldri går glipp av eller glemmer en viktig frist."
       work_package_sharing:
         description: "Del arbeidspakker med brukere som ikke er medlemmer i prosjektet."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "Custom color theme and logo"
         more_info: "Merk: den brukte logoen vil være offentlig tilgjengelig."
@@ -2437,6 +2439,8 @@
         mentioned: "Du har blitt nevnt i %{work_package}"
         responsible: "Du har blitt ansvarlig for %{work_package}"
         watched: "Du ser på %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Tilgjengelighet"
   label_account: "Konto"
   label_active: "Aktiv"

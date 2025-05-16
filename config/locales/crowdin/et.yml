@@ -2051,6 +2051,8 @@ et:
         description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
       work_package_sharing:
         description: "Share work packages with users who are not members of the project."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "Custom color theme and logo"
         more_info: "Note: the used logo will be publicly accessible."
@@ -2438,6 +2440,8 @@ et:
         mentioned: "You have been mentioned in %{work_package}"
         responsible: "You have become accountable for %{work_package}"
         watched: "You are watching %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Accessibility"
   label_account: "Konto"
   label_active: "Aktiivne"

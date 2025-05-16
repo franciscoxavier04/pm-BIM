@@ -408,6 +408,7 @@ zh-TW:
     member_connection_status:
       connected: 已連線
       connected_no_permissions: 使用者角色沒有儲存權限
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: 未連線。使用者應透過下列方式登入儲存設備 %{link}。
       not_connected_sso: 尚未連線，SSO 一旦查看檔案應該會自動連線，。
     members_no_results: 沒有可顯示的成員

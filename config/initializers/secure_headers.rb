@@ -51,11 +51,22 @@ Rails.application.config.after_initialize do
     assets_src << asset_host if asset_host.present?
 
     # Valid for iframes
-    frame_src = %w['self' https://player.vimeo.com]
+    frame_src = %w['self' https://player.vimeo.com https://www.youtube.com]
     frame_src << OpenProject::Configuration[:security_badge_url]
 
     # Default src
-    default_src = %w('self') + OpenProject::Configuration.remote_storage_hosts
+    default_src = %w('self')
+
+    # Attachment uploaders
+    default_src += OpenProject::Configuration.remote_storage_hosts
+
+    # Chargebee self-service
+    frame_src += [
+      "https://js.chargebee.com/",
+      "#{OpenProject::Configuration.enterprise_chargebee_site}.chargebee.com"
+    ]
+
+    default_src << "#{OpenProject::Configuration.enterprise_chargebee_site}.chargebee.com"
 
     # Allow requests to CLI in dev mode
     connect_src = default_src + [OpenProject::Configuration.enterprise_trial_creation_host]
@@ -78,7 +89,7 @@ Rails.application.config.after_initialize do
     end
 
     # Allow to extend the script-src in specific situations
-    script_src = assets_src
+    script_src = assets_src + %w(js.chargebee.com)
 
     # Allow unsafe-eval for rack-mini-profiler
     if Rails.env.development? && ENV.fetch("OPENPROJECT_RACK_PROFILER_ENABLED", false)

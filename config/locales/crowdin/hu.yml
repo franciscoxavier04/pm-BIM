@@ -344,7 +344,7 @@ hu:
       favored: "Kedvenc projektek"
       archived: "Archivált projektek"
       shared: "Shared project lists"
-      my_lists: "My project lists"
+      my_lists: "Projekt listáim"
       new:
         placeholder: "Új projektlista"
       delete_modal:
@@ -403,7 +403,7 @@ hu:
         actions:
           label_enable_single: "Active in this project, click to disable"
           label_disable_single: "Inactive in this project, click to enable"
-          remove_from_project: "Remove from project"
+          remove_from_project: "Eltávolítás a projektből"
         is_required_blank_slate:
           heading: Required in all projects
           description: This project attribute is activated in all projects since the "Required in all projects" option is checked. It cannot be deactivated for individual projects.
@@ -643,7 +643,7 @@ hu:
           label: "Subject pattern"
           caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
-          supported_attributes_link: "supported attributes"
+          supported_attributes_link: "támogatott attribútumok"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -2050,6 +2050,8 @@ hu:
         description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
       work_package_sharing:
         description: "Share work packages with users who are not members of the project."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "Custom color theme and logo"
         more_info: "Megjegyzés: a használt logó nyilvánosan elérhető lesz."
@@ -2437,6 +2439,8 @@ hu:
         mentioned: "Megemlítettek a %{work_package}-ban"
         responsible: "Ön lett a %{work_package} felelőse"
         watched: "Megfigyeled a %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Kisegítő lehetőségek"
   label_account: "Felhasználói fiók"
   label_active: "aktív"
@@ -3422,8 +3426,8 @@ hu:
   permission_export_work_packages: "feladatcsoportok exportálása"
   permission_export_wiki_pages: "Wiki oldalak exportálása"
   permission_list_attachments: "Mellékletek listája"
-  permission_log_own_time: "Log own time"
-  permission_log_time: "Log time for other users"
+  permission_log_own_time: "Saját idő naplózása"
+  permission_log_time: "Mások idejének naplózása"
   permission_manage_forums: "Fórum kezelése"
   permission_manage_categories: "feladatcsoport kategóriák kezelése"
   permission_manage_dashboards: "Manage dashboards"
@@ -3517,7 +3521,7 @@ hu:
   project_module_news: "Hírek"
   project_module_repository: "Csomagtároló"
   project_module_wiki: "Wiki"
-  permission_header_for_project_module_work_package_tracking: "Work packages and Gantt charts"
+  permission_header_for_project_module_work_package_tracking: "Munkcsomagok és Gantt ábrák"
   query:
     attribute_and_direction: "%{attribute} (%{direction})"
   #possible query parameters (e.g. issue queries),

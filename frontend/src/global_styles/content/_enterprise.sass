@@ -23,17 +23,9 @@
     background: var(--body-background)
 
 .widget-box--blocks--upsell-container
+  position: relative
   padding: 20px
   height: 250px
-  background-size: contain
-  background-repeat: no-repeat
-  background-position: center right
-
-  @media screen and (max-width: $breakpoint-lg)
-    background-image: none !important
-
-  @media screen and (max-width: $breakpoint-xl)
-    background-size: cover
 
 .upsell-colored
   color: var(--enterprise-upsell-color) !important
@@ -49,15 +41,16 @@
   display: flex
 
 .widget-box--blocks--upsell-text
-  width: 50%
+  width: 60%
+  position: relative
+  z-index: 1
 
   @media screen and (max-width: $breakpoint-lg)
     width: 100%
 
+.widget-box--blocks--upsell-image
+  @include upsell-image
+
 .widget-box--blocks--upsell-description
   margin: 10px 0 10px 0
   display: flex
-
-.widget-box--blocks--upsell-image
-  width: 200px
-  margin: auto

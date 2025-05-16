@@ -410,6 +410,7 @@ pt-PT:
     member_connection_status:
       connected: Ligado
       connected_no_permissions: A função de utilizador não tem permissões de armazenamento
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: Não ligado. O utilizador deve iniciar sessão no armazenamento através do seguinte %{link}.
       not_connected_sso: Ainda não está ligado, o SSO deve ligá-los automaticamente, quando estiver a olhar para os ficheiros.
     members_no_results: Nenhum membro a exibir.
