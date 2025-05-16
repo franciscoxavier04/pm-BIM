@@ -130,20 +130,21 @@ To do that click the **More** (three dots) icon next to an agenda item and selec
 
 ### Series backlogs
 
-A **series backlog** is a dedicated section below the actual agenda, where additional agenda items are listed that can potentially be added to a current or future meetings within the meeting series. It can be collapsed or expanded by clicking the title (Series backlog). Agenda backlog for recurring meetings will be visible for all meetings in the series. 
+A **series backlog** is a special pre-existing section below the actual agenda items of that occurence where additional agenda items maybe be 'parked' for consideration. These items may then be added to a particular occurrence by the meeting organiser either before or during a meeting. 
+
+The backlog can be collapsed or expanded by clicking on the the title. Agenda backlog for recurring meetings will be visible for all meetings in the series. 
 
 > [!TIP]
 > By default, the backlog is expanded when the meeting status is *open*, collapsed if the meeting status is *in progress*, and hidden if the meeting is *closed*.
 
 ![Agenda backlog section title collapsed, in OpenProject recurring meetings](openproject_userguide_meetings_series_backlog_title.png)
 
-#### Add items to series backlogs
-You can add agenda items and link work packages in the same way as you would within the meeting agenda.
+#### Add and edit items to series backlogs
+You can add agenda items and link work packages in the same way as you would within the meeting agenda: either by dragging and dropping via the handle on the left or by using the dropdown options of the More (three dots) icon on the right
 
 ![Agenda backlog in recurring meetings in OpenProject](openproject_userguide_meetings_series_backlog.png)
 
-#### Edit agenda backlogs
-You can add items from the series backlog either by dragging and dropping via the handle on the left, or using the dropdown options of the More (three dots) icon on the right.  That same *More* menu also allows editing, reordering, adding notes or deleting an item in the series backlog. 
+That same *More* menu also allows editing, reordering, adding notes or deleting an item in the series backlog. 
 
 ![Move agenda items from the series backlog to the agenda in OpenProject Meetings](openproject_userguide_meetings_move_series_backlog_items.png)
 
