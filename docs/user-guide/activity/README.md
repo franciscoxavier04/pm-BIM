@@ -90,7 +90,8 @@ To use these options click the more (...) menu next to the lock icon on the righ
 
 ![Editing options for an internal comment shown in a dropdown menu](openproject_user_guide_internal_comment_edit_quote_copy.png)
 
-
+> [!TIP]
+> It is currently not possible to view a list of all others users in a project who are able to read and add internal comments. We understand this is an important feature and plan to add this functionality in a future release.
 
 ### Emoji reactions
 
