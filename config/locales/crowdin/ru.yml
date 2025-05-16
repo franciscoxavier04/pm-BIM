@@ -3561,7 +3561,7 @@ ru:
   permission_view_project_phases: "Просмотр этапов проекта"
   permission_save_bcf_queries: "Сохранить запросы BCF"
   permission_manage_public_bcf_queries: "Управление публичными BCF запросами"
-  permission_edit_attribute_help_texts: "Редактировать атрибут справки"
+  permission_edit_attribute_help_texts: "Редактировать справки по атрибутам"
   permission_manage_public_project_queries: "Управление списками общедоступных проектов"
   permission_view_project_query: "Просмотр запроса проекта"
   permission_edit_project_query: "Редактирование запроса проекта"

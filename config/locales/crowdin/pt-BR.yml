@@ -2049,7 +2049,7 @@ pt-BR:
       work_package_sharing:
         description: "Compartilhe pacotes de trabalho com usuários que não são membros do projeto."
       project_list_sharing:
-        description: "Share project lists with individual users."
+        description: "Compartilhar listas de projetos com usuários individuais."
       define_custom_style:
         title: "Tema de cor e logotipo personalizados"
         more_info: "Obs.: o logotipo usado pode ser acessado publicamente."
@@ -2438,7 +2438,7 @@ pt-BR:
         responsible: "Você se tornou responsável por %{work_package}"
         watched: "Você está assistindo %{work_package}"
     query:
-      invalid_filter: "Invalid notification filter"
+      invalid_filter: "Filtro de notificação inválido"
   label_accessibility: "Acessibilidade"
   label_account: "Conta"
   label_active: "Ativo"
