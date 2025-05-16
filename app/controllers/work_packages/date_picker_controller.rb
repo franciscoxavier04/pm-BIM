@@ -162,13 +162,18 @@ class WorkPackages::DatePickerController < ApplicationController
   end
 
   def live_region_message
+    message_parts = [
+      "Scheduling mode: #{scheduling_label}",
+      working_days_label
+    ]
+
+    message_parts << "Start date: #{@work_package.start_date}" if @work_package.start_date.present?
+    message_parts << "Finish date: #{@work_package.due_date}" if @work_package.due_date.present?
+    message_parts << "Duration: #{@work_package.duration} days" if @work_package.duration.present?
+
     I18n.t(
       "work_packages.datepicker_modal.update_inputs_aria_live_message",
-      start_date: @work_package.start_date,
-      due_date: @work_package.due_date,
-      duration: @work_package.duration,
-      working_days_label:,
-      scheduling_label:
+      message: message_parts.join(", ")
     )
   end
 
