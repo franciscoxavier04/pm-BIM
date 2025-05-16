@@ -270,9 +270,9 @@ es:
           storage_configured: Configuración completada
           tenant_id: ID de inquilino
         failures:
-          zero: Todas las comprobaciones superadas
           one: "%{count} comprobación fallida"
           other: "%{count} comprobaciones fallidas"
+        success: All checks passed
         warnings:
           one: "%{count} comprobación devolvió una advertencia"
           other: "%{count} comprobaciones devolvieron una advertencia"
