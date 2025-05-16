@@ -20,11 +20,11 @@ To define default settings for logging time and costs navigate to *Administratio
 
 Under the *Time* tab you can define which fields are required to be fill out when logging time across all projects. 
 
-- **Allow exact times tracking**: enables start and finish time fields for time logging. If disabled, only the amount of time spent can be logged, but not the start or end times. 
+- **Allow exact times tracking**: enables entering start and finish times when logging time.  If disabled, only the amount of time spent can be logged, but not the start or end times. 
   
   If this option is activated, calendar mode is shown by default under My time tracking page. If not, list view will be shown by default.
   
-- **Require exact times**: makes it mandatory to specify start and finish times for time logging entries. 
+- **Require exact times**: makes entering start and finish times mandatory when logging time.
 
 ![Default settings for time logging in OpenProject administration](openproject_system_admin_guide_time_time_defaults.png)
 

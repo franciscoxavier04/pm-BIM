@@ -20,7 +20,7 @@ The *My time tracking* module offers a clear overview of your personal time entr
    2. **Tab selector** — switch between *Calendar* and *List* views.
    3. **Zoom level dropdown menu** — choose the time scale for the view. Following options are available:
       - Day
-      - Work Week
+      - Work week
       - Week
       - Month
    4. **Displayed date range** — shows the currently visible timeframe.
@@ -38,11 +38,13 @@ The *Calendar* view opens by default if start and finish times for time entries 
 
 Existing time entries appear on the corresponding days they were logged. Entry colors reflect the type of work package associated with the logged time.
 
+At the top section of each day in the calendar, there is a dedicated area that allows you to log time without specifying a start or finish time. This is useful for quick entries or for logging effort that isn't tied to a specific time range.
+
 You can log time by selecting a time range anywhere on the calendar or by using the **+ Log time** button.
 
 You can drag and drop time entries to reposition them within the same day or move them to a different day. To adjust the duration of an entry, drag the top or bottom edge of the time entry up or down.
 
-![Example of logging time in OpenProject My time tracking module](openproject-my-time-tracking-page.gif)
+![Example of logging time in OpenProject My time tracking module](openproject-my-time-tracking-page1.gif)
 
 To edit a time entry, click it in the calendar, make your changes, and save. You can also delete it from the same menu.
 
@@ -58,11 +60,12 @@ In this view, time entries are grouped by day. Each day displays the total numbe
 
 - When the **Day** zoom is selected, the view is expanded by default.
 
-- When **Week** or **Month** zoom is selected, each day is collapsed by default but can be expanded to view details.
+- When **Week** or **Month** zoom is selected, past days or weeks are collapsed by default. However, the current day (in Week view) or the current week (in Month view) is expanded, along with all future dates.
 
   > [!TIP]
   >
   > If monthly level is chosen in the list view mode, time entries are aggregated by  week and not by day. This is especially useful to get an overview of your tracked hours for each week. 
+  
 
 Expanded days display time entries in a table format with the following columns:
 
