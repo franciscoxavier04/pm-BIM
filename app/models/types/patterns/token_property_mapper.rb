@@ -114,12 +114,11 @@ module Types
       end
 
       def all_work_package_cfs
-        WorkPackageCustomField.where.not(field_format: %w[text bool link empty]).order(:name)
+        WorkPackageCustomField.where.not(field_format: %w[text link empty]).order(:name)
       end
 
       def project_cfs
-        ProjectCustomField.where.not(field_format: %w[text bool link empty])
-                          .where(admin_only: false, multi_value: false).order(:name)
+        ProjectCustomField.where.not(field_format: %w[text link empty]).where(admin_only: false, multi_value: false).order(:name)
       end
     end
   end
