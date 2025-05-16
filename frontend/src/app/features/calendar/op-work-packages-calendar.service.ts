@@ -432,16 +432,40 @@ export class OpWorkPackagesCalendarService extends UntilDestroyedMixin {
 
   updateDates(resizeInfo:EventResizeDoneArg|EventDropArg|EventReceiveArg, dragged?:boolean):ResourceChangeset<WorkPackageResource> {
     const workPackage = resizeInfo.event.extendedProps.workPackage as WorkPackageResource;
-    const changeset = this.halEditing.edit(workPackage);
-    if (!workPackage.ignoreNonWorkingDays && workPackage.duration && dragged) {
-      changeset.setValue('duration', workPackage.duration);
-    } else {
-      const due = moment(resizeInfo.event.endStr)
-        .subtract(1, 'day')
-        .format('YYYY-MM-DD');
-      changeset.setValue('dueDate', due);
+    const startDate = resizeInfo.event.startStr;
+    const endDate = moment(resizeInfo.event.endStr).subtract(1, 'day').format('YYYY-MM-DD');
+
+    if (dragged && !this.isMilestone(workPackage)) {
+      return this.moveToDates(workPackage, startDate, endDate);
     }
-    changeset.setValue('startDate', resizeInfo.event.startStr);
+    return this.changeToDates(workPackage, startDate, endDate);
+  }
+
+  private moveToDates(workPackage:WorkPackageResource, startDate:string, endDate:string):ResourceChangeset<WorkPackageResource> {
+    const changeset = this.halEditing.edit(workPackage);
+
+    // Due to non-working days, we can't directly set start and due date when
+    // drag-n-dropping work packages. Instead set duration (if present) and
+    // start date to get due date recomputed.
+    if (workPackage.duration) {
+      changeset.setValue('duration', workPackage.duration);
+    }
+
+    // Keep dates unset if they are not set
+    if (workPackage.startDate) {
+      changeset.setValue('startDate', startDate);
+    } else {
+      changeset.setValue('dueDate', endDate);
+    }
+
+    return changeset;
+  }
+
+  private changeToDates(workPackage:WorkPackageResource, startDate:string, endDate:string):ResourceChangeset<WorkPackageResource> {
+    const changeset = this.halEditing.edit(workPackage);
+    changeset.setValue('startDate', startDate);
+    changeset.setValue('dueDate', endDate);
+
     return changeset;
   }
 }
