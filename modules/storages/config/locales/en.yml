@@ -273,7 +273,7 @@ en:
         failures:
           one: "%{count} check failed"
           other: "%{count} checks failed"
-          zero: All checks passed
+        success: All checks passed
         warnings:
           one: "%{count} check returned a warning"
           other: "%{count} checks returned a warning"
