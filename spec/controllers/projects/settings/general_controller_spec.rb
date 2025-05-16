@@ -58,7 +58,7 @@ RSpec.describe Projects::Settings::GeneralController do
     context "when service call succeeds" do
       let(:service_result) { ServiceResult.success(result: project) }
 
-      it "redirects to show" do
+      it "redirects to show", :aggregate_failures do
         patch :update, params: { project_id: project.identifier, project: { name: "new name" } }
 
         expect(response).to redirect_to action: :show
@@ -73,7 +73,7 @@ RSpec.describe Projects::Settings::GeneralController do
         project.name = ""
       end
 
-      it "renders show template with errors" do
+      it "renders show template with errors", :aggregate_failures do
         patch :update, params: { project_id: project.identifier, project: { name: "" } }
 
         expect(response).not_to be_successful
