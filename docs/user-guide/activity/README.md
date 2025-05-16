@@ -59,24 +59,28 @@ You can:
 > [!NOTE]
 > Internal comments are an Enterprise add-on and can only be used with [Enterprise cloud](../../enterprise-guide/enterprise-cloud-guide/) or [Enterprise on-premises](../../enterprise-guide/enterprise-cloud-guide/). An upgrade from the free Community edition is easily possible.
 
-You can add work package comments as internal to better manage information flow and share sensitive information to an authorized group of users. Internal comments are distinguished from other comments via a different color scheme and a lock icon. 
+Projects often involve external clients or suppliers. They can be invited to a project or an individual work package with specific, limited roles, which reduces the need to organize outside the project context using different incompatible tools. However, the core project team might want to keep some of their conversation private and limited to a smaller group, for example when discussing rates, negotiations, sensitive financial information or contextual information. 
+
+With internal comments, the core team can have a meta-level conversation within work packages that external clients or suppliers cannot access. This reduces the need to have conversationsn about the same things in different places, allowing teams to better manage the flow of information and maintain a single source of truth.
+
+> [!TIP]
+> To use this feature, a project admin will first have to enable internal comments for their project. This can be done by navigating to [Project settings](../projects/project-settings/work-packages/#work-package-internal-comments-enterprise-add-on) → Work packages → Internal comments (tab). By default, these internal comments are only visible to the project admin role. To expand who can write and view these comments, instance administrators can grant a new set of permissions (to view, write and edit internal comments) to any number of roles.
+
+Internal comments are distinguished from other comments via a different color scheme and a lock icon. 
 
 ![Example of an internal comment displayed under Activity tab of an OpenProject work package](openproject_user_guide_internal_comment_example.png)
 
 > [!TIP]
-> In order for internal comments feature to be used, correct permissions need to be granted to specific roles. We recommend creating a dedicated role. When a permission is removed, internal comments will no longer be visible. 
-> 
-> In addition, internal comments need to be activated under [project settings](../projects/project-settings/work-packages/#work-package-internal-comments-enterprise-add-on). 
+> In order for internal comments feature to be used, the relevant permissions need to be granted to specific roles. By default, only the 'Project admin' have them but an instance administrator can add them to any existing or new role. When these permission are removed, internal comments will simply no longer be visible. 
 
-To add internal comments, proceed the same way you would when adding a regular comment, but make sure to check **Internal comment** checkbox before submitting.
+To write an internal comment, proceed the same way you would when writing a regular comment but make sure to check **Internal comment** checkbox before submitting.
 
 > [!IMPORTANT]
->
-> Once published, a comment can no longer be marked as internal. 
+> Once published, a regular comment can no longer be marked as internal, and an internal comment can no longer be made public.
 
 ![Internal comment checkbox selected when adding an internal comment on an OpenProject work package](openproject_user_guide_internal_comment_checkbox.png)
 
-Same as with public comments, you can:
+As is the case with public comments, you can:
 
 - Copy a link to an internal comment to your clipboard,
 - Edit an internal comment if you are the author or have sufficient rights to edit comments added by other users,
