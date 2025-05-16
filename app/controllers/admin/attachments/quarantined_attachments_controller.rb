@@ -31,6 +31,8 @@ module Admin
     class QuarantinedAttachmentsController < ApplicationController
       layout "admin"
       before_action :require_admin
+
+      before_action :check_available
       before_action :find_quarantined_attachments
 
       before_action :find_attachment, only: %i[destroy]
@@ -52,6 +54,12 @@ module Admin
       end
 
       private
+
+      def check_available
+        return if Setting.antivirus_scan_available?
+
+        render_404
+      end
 
       def create_journal(container, user, notes)
         ::Journals::CreateService

@@ -30,7 +30,7 @@ sl:
         tenant: Directory (tenant) ID
     errors:
       messages:
-        invalid_host_url: ni veljaven URL.
+        invalid_host_url: ni veljaven URL. 
         not_linked_to_project: is not linked to project.
       models:
         storages/file_link:
@@ -270,11 +270,11 @@ sl:
           storage_configured: Configuration complete
           tenant_id: Tenant ID
         failures:
-          zero: All checks passed
           one: "%{count} check failed"
           two: "%{count} checks failed"
           few: "%{count} checks failed"
           other: "%{count} checks failed"
+        success: All checks passed
         warnings:
           one: "%{count} check returned a warning"
           two: "%{count} checks returned a warning"

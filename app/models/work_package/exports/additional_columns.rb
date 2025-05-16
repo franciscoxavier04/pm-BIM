@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,9 +27,28 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+
 module WorkPackage::Exports
-  module Formatters
-    class EstimatedHours < ::WorkPackage::Exports::Formatters::CompoundHours
+  # Adds extra columns when some particular columns are present.
+  #
+  # For instance, adds a 'Total work' column when the 'Work' column is present.
+  module AdditionalColumns
+    ADDITIONAL_COLUMNS = {
+      estimated_hours: [:derived_estimated_hours],
+      remaining_hours: [:derived_remaining_hours],
+      done_ratio: [:derived_done_ratio]
+    }.freeze
+
+    def get_columns
+      super.flat_map { |column| [column] + additional_columns(column) }
+    end
+
+    def additional_columns(column)
+      ADDITIONAL_COLUMNS
+        .fetch(column.name, [])
+        .map do |additional_column_name|
+          Queries::WorkPackages::Selects::PropertySelect.new(additional_column_name)
+        end
     end
   end
 end

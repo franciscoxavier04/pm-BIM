@@ -270,9 +270,9 @@ it:
           storage_configured: Configurazione completa
           tenant_id: ID tenant
         failures:
-          zero: Tutti i controlli superati
           one: "%{count} controllo non superato"
           other: "%{count} controlli non superati"
+        success: All checks passed
         warnings:
           one: "%{count} controllo ha restituito un avviso"
           other: "%{count} controlli hanno restituito un avviso"
@@ -297,7 +297,7 @@ it:
         od_oauth_request_not_found: OpenProject non è riuscito a trovare la cartella principale nell'unità utilizzando l'utente attualmente connesso. Per ulteriori informazioni, consultare i log del server.
         od_oauth_request_unauthorized: L'utente attuale non è autorizzato a visualizzare la cartella principale di OneDrive/SharePoint oppure non siamo riusciti ad acquisire un token. Per ulteriori informazioni, consulta i log del server.
         od_oauth_token_missing: OpenProject non può testare la comunicazione a livello utente con OneDrive/SharePoint poiché l'utente non ha ancora collegato il proprio account Microsoft.
-        od_tenant_id_wrong: L'ID della directory non è valido. Verifica la configurazione.
+        od_tenant_id_wrong: L'ID della directory non è valido. Verifica la configurazione. 
         od_unexpected_content: Contenuto inatteso nello spazio di archiviazione.
         offline_access_scope_missing: Si consiglia di configurare il provider OpenID Connect per richiedere l'ambito offline_access. L'integrazione potrebbe comunque funzionare, ma è importante assicurarsi che i token di aggiornamento non scadano.
         oidc_cant_acquire_token: La configurazione di OpenID Connect non fornisce il pubblico necessario, né fornisce capacità di scambio di token. Consulta la nostra documentazione per maggiori informazioni.

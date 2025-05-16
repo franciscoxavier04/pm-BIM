@@ -270,9 +270,9 @@ pt-PT:
           storage_configured: Configuração concluída
           tenant_id: ID do Inquilino
         failures:
-          zero: Todas as verificações aprovadas
           one: "%{count} verificação não aprovada"
           other: "%{count} verificações não aprovadas"
+        success: All checks passed
         warnings:
           one: "%{count} verificação devolvida com um aviso"
           other: "%{count} verificações devolvidas com um aviso"

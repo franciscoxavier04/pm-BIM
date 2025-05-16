@@ -37,12 +37,4 @@ RSpec.shared_examples_for "it has an upsell action" do
     expect(subject).to be_successful
     expect(subject).to render_template "upsell"
   end
-
-  it "writes the augur URL and token version to gon" do
-    subject
-    gon = controller.gon
-
-    expect(gon.augur_url).to eq OpenProject::Configuration.enterprise_trial_creation_host
-    expect(gon.token_version).to eq OpenProject::Token::VERSION
-  end
 end

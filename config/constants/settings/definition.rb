@@ -102,6 +102,10 @@ module Settings
         description: "Time in minutes to wait before uploaded files not attached to any container are removed",
         default: 180
       },
+      antivirus_scan_available: {
+        description: "Virus scanning option selectable in the UI",
+        default: true
+      },
       antivirus_scan_mode: {
         description: "Virus scanning option for files uploaded to OpenProject",
         format: :symbol,

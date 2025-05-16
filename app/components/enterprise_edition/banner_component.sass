@@ -43,20 +43,15 @@ $op-enterprise-banner-fixed-height: 220px
   overflow: hidden
 
   &_medium
+    position: relative
     padding: 0
     grid-template-areas: "content graphic"
     grid-template-columns: 2fr 1fr
     height: $op-enterprise-banner-fixed-height
-    background-repeat: no-repeat
-    background-position: center right
 
     @media screen and (max-width: $breakpoint-lg)
       grid-template-columns: 1fr
-      background-image: none !important
       height: auto
-
-    @media screen and (max-width: $breakpoint-xl)
-      background-size: cover
 
   &_medium &
     padding: 0
@@ -64,13 +59,12 @@ $op-enterprise-banner-fixed-height: 220px
     grid-template-columns: 1fr 1fr
 
     &--content
+      z-index: 1
       align-self: center
       padding: var(--base-size-16)
 
   &--image
-    width: 100%
-    height: 100%
-    object-fit: cover
+    @include upsell-image
 
   &--visual
     display: grid
