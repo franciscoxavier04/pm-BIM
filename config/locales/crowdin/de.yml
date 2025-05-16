@@ -2047,6 +2047,8 @@ de:
         description: "Mit Datums-Erinnerungen werden Sie über bevorstehende Start- oder Endtermine informiert, so dass Sie nie einen wichtigen Termin verpassen oder übersehen."
       work_package_sharing:
         description: "Teilen Sie Arbeitspakete mit Benutzern, die nicht Mitglieder des Projekts sind."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "Selbstdefiniertes Farbthema und Logo"
         more_info: "Hinweis: Das verwendete Logo wird öffentlich zugänglich sein."

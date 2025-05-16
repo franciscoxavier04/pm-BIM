@@ -176,7 +176,7 @@ uk:
     buttons:
       complete_without_setup: Завершити без налаштування
       done_complete_setup: Готово – завершити налаштування
-      done_continue: Виконано, продовжити
+      done_continue: Виконано, продовжити 
       open_storage: Відкрити файлове сховище
       replace_oauth_application: Замінити OpenProject OAuth
       replace_oauth_client: Замінити %{provider_type} OAuth
@@ -270,11 +270,11 @@ uk:
           storage_configured: Налаштування завершено
           tenant_id: ID клієнта
         failures:
-          zero: Усі перевірки виконано
           one: "%{count} перевірку виконано"
           few: "%{count} перевірки виконано"
           many: "%{count} перевірок виконано"
           other: "%{count} перевірки виконано"
+        success: All checks passed
         warnings:
           one: "%{count} перевірка завершилася з попередженням"
           few: "%{count} перевірки завершилися з попередженням"

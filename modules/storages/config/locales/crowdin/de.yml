@@ -270,9 +270,9 @@ de:
           storage_configured: Konfiguration abgeschlossen
           tenant_id: Tenant ID
         failures:
-          zero: Alle Überprüfungen bestanden
           one: "%{count} Überprüfung fehlgeschlagen"
           other: "%{count} Überprüfungen fehlgeschlagen"
+        success: All checks passed
         warnings:
           one: "%{count} Überprüfung hat eine Warnung zurückgegeben"
           other: "%{count} Überprüfungen haben eine Warnung zurückgegeben"

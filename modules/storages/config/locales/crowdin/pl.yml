@@ -270,11 +270,11 @@ pl:
           storage_configured: Ukończono konfigurację
           tenant_id: Identyfikator dzierżawcy
         failures:
-          zero: Wszystkie kontrole powiodły się
           one: "%{count} kontrola nie powiodła się"
           few: "%{count} kontrole nie powiodły się"
           many: "%{count} kontroli nie powiodło się"
           other: "%{count} kontroli nie powiodło się"
+        success: All checks passed
         warnings:
           one: "%{count} kontrola zwróciła ostrzeżenie"
           few: "%{count} kontrole zwróciły ostrzeżenie"
@@ -391,7 +391,7 @@ pl:
     label_edit_storage_host: Edytuj hosta magazynu
     label_existing_manual_folder: Istniejący folder z ręcznie zarządzanymi uprawnieniami
     label_file_storage: Magazyn plików
-    label_host: Adres URL hosta
+    label_host: Adres URL hosta 
     label_inactive: Nieaktywny
     label_managed_project_folders:
       application_password: Hasło aplikacji

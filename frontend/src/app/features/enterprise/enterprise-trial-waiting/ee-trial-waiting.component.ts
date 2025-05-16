@@ -28,7 +28,7 @@
 
 import {
   Component,
-  ElementRef,
+  ElementRef, Input,
   OnInit,
 } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
@@ -46,7 +46,13 @@ import { IEnterpriseData } from 'core-app/features/enterprise/enterprise-trial.m
   styleUrls: ['./ee-trial-waiting.component.sass'],
 })
 export class EETrialWaitingComponent implements OnInit {
+  @Input() public trialKey:string|undefined;
+
+  @Input() public trialCreatedAt:string|undefined;
+
   created = this.timezoneService.formattedDate(new Date().toString());
+
+  resendLink$ = this.eeTrialService.resendLink$;
 
   email = '';
 
@@ -64,7 +70,8 @@ export class EETrialWaitingComponent implements OnInit {
     status_waiting: this.I18n.t('js.admin.enterprise.trial.status_waiting'),
   };
 
-  constructor(readonly elementRef:ElementRef,
+  constructor(
+    readonly elementRef:ElementRef,
     readonly I18n:I18nService,
     protected http:HttpClient,
     protected toastService:ToastService,
@@ -73,10 +80,8 @@ export class EETrialWaitingComponent implements OnInit {
   }
 
   ngOnInit():void {
-    const eeTrialKey = window.gon.ee_trial_key as { created:string }|undefined;
-    if (eeTrialKey) {
-      const savedDateStr = eeTrialKey.created.split(' ')[0];
-      this.created = this.timezoneService.formattedDate(savedDateStr);
+    if (this.trialCreatedAt) {
+      this.created = this.timezoneService.formattedDate(this.trialCreatedAt);
     }
 
     this.eeTrialService

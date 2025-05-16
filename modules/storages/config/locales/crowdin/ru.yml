@@ -270,11 +270,11 @@ ru:
           storage_configured: Настройка завершена
           tenant_id: Идентификатор арендатора
         failures:
-          zero: Проверка прошла успешна
           one: "%{count} проверка не удалась"
           few: "%{count} проверка не удалась"
           many: "%{count} проверка не удалась"
           other: "%{count} проверка не удалась"
+        success: All checks passed
         warnings:
           one: "%{count} проверка с предупреждением"
           few: "%{count} проверки с предупреждениями"

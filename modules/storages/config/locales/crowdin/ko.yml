@@ -270,8 +270,8 @@ ko:
           storage_configured: 구성 완료
           tenant_id: 테넌트 ID
         failures:
-          zero: 모든 검사 통과함
           other: "%{count}개 검사 실패함"
+        success: All checks passed
         warnings:
           other: "%{count}개 검사에서 경고가 반환되었습니다"
       connection_validation:

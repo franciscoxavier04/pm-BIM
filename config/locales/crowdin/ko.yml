@@ -2014,6 +2014,8 @@ ko:
         description: "날짜 경보를 사용하면, 중요 마감일을 놓치거나 잊지 않도록 향후 시작 날짜 또는 종료 날짜에 대한 알림을 받게 됩니다."
       work_package_sharing:
         description: "프로젝트 멤버가 아닌 사용자와 작업 패키지를 공유합니다."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "사용자 지정 색상 테마 및 로고"
         more_info: "참고: 사용된 로그는 공개적으로 액세스 가능합니다."

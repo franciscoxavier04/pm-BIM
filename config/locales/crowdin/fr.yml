@@ -2052,6 +2052,8 @@ fr:
         description: "Avec les alarmes, vous serez informé(e) à l'approche des dates de début ou de fin vous concernant afin de ne jamais manquer ou oublier une échéance importante."
       work_package_sharing:
         description: "Partagez les lots de travaux avec des utilisateurs qui ne sont pas membres du projet."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "Thème de couleur et logo personnalisés"
         more_info: "Remarque : le logo utilisé sera accessible publiquement."

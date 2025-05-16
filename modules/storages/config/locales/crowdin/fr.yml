@@ -270,9 +270,9 @@ fr:
           storage_configured: Configuration terminée
           tenant_id: ID du tenant
         failures:
-          zero: Toutes les vérifications ont été validées
           one: "%{count} vérification a échoué"
           other: "%{count} vérifications ont échoué"
+        success: All checks passed
         warnings:
           one: "%{count} vérification a renvoyé un avertissement"
           other: "%{count} vérifications ont renvoyé un avertissement"

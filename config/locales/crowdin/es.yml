@@ -2052,6 +2052,8 @@ es:
         description: "Con las alertas de fecha, recibirá notificaciones de próximas fechas de inicio o finalización para que nunca olvide una fecha límite importante."
       work_package_sharing:
         description: "Compartir paquetes de trabajo con usuarios que no son miembros del proyecto."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "Tema de color y logotipo personalizados"
         more_info: "Nota: el logotipo utilizado será de acceso público."
