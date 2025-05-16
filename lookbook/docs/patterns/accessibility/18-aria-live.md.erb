@@ -55,8 +55,8 @@ For reference only — you do not need to define this yourself.
 Here is the internal implementation of `render_live_region_update_message`:
 
 ```ruby
-    def render_live_region_update_message(message:, politeness:, role: "alert")
-      turbo_streams << OpTurbo::StreamComponent.new(action: :liveRegion, message:, politeness:, role:, target: nil).render_in(view_context)
+    def render_live_region_update_message(message:, politeness:)
+      turbo_streams << OpTurbo::StreamComponent.new(action: :liveRegion, message:, politeness:, target: nil).render_in(view_context)
     end
 ```
 
