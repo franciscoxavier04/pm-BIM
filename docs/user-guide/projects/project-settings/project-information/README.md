@@ -31,7 +31,7 @@ Project settings are grouped into three sections:
 ![project-information](openproject_user_guide_project_settings_information.png)
 
 > [!NOTE]
-> After 16.0 release, project attributes can be edited directly on the project start page.
+> After 16.0 release, project attributes can be edited directly on the project overview page.
 
 Further, in the top right corner you can [add a subproject](../../#create-a-subproject) and edit the **project identifier**. This is the part of the project name shown in the URL, e.g. /demo-project.
 
