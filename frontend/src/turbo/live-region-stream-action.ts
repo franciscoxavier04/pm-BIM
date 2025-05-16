@@ -1,8 +1,8 @@
 import { StreamActions, StreamElement } from '@hotwired/turbo';
 import { announce } from '@primer/live-region-element';
 
-export function registerAriaStreamAction() {
-  StreamActions.aria = function ariaStreamAction(this:StreamElement) {
+export function registerLiveRegionStreamAction() {
+  StreamActions.liveRegion = function liveRegionStreamAction(this:StreamElement) {
     const message = this.getAttribute('message') || '';
     const politeness = this.getAttribute('politeness') || 'polite';
     const delayAttr = this.getAttribute('delay');

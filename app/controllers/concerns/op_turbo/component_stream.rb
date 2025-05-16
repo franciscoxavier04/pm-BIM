@@ -85,7 +85,7 @@ module OpTurbo
 
     def render_aria_update_message(message:, politeness: "polite", delay: nil, role: "alert")
       turbo_streams << OpTurbo::StreamComponent
-        .new(action: :aria, message:, politeness:, delay:, role:, target: nil)
+        .new(action: :liveRegion, message:, politeness:, delay:, role:, target: nil)
         .render_in(view_context)
     end
 
