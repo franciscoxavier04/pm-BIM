@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,31 +27,20 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-module WorkPackages::ActivitiesTab::Journals
-  class NotesForm < ApplicationForm
-    delegate :object, to: :@builder
+#
+require "spec_helper"
 
-    form do |notes_form|
-      notes_form.rich_text_area(
-        classes: "ck-editor-primer-adjusted",
-        name: :notes,
-        label: I18n.t("activities.work_packages.activity_tab.label_type_to_comment"),
-        visually_hide_label: true,
-        rich_text_options: {
-          showAttachments: false,
-          resource:,
-          editor_type: "constrained"
-        }
-      )
-    end
+RSpec.describe WorkPackages::ActivitiesTab::Journals::NotesForm, type: :forms do
+  include_context "with rendered form"
 
-    private
+  let(:project) { create(:project) }
+  let(:work_package) { create(:work_package, project: project) }
+  let(:model) { create(:work_package_journal, journable: work_package, version: 2) }
 
-    def resource
-      return unless object
-
-      API::V3::Activities::ActivityRepresenter
-        .create(object, current_user: User.current, embed_links: true)
-    end
+  it "renders the rich text editor" do
+    expect(page).to have_element "opce-ckeditor-augmented-textarea",
+                                 "data-test-selector": "augmented-text-area-notes",
+                                 "data-text-area-id": "journal_notes".to_json,
+                                 "data-show-attachments": "false"
   end
 end
