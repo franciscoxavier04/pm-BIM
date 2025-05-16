@@ -106,7 +106,7 @@ RSpec.describe Types::Patterns::TokenPropertyMapper do
     expect(token.call(work_package)).to eq(%w[A B])
   end
 
-  it "support boolean custom fields" do
+  it "supports boolean custom fields" do
     token = described_class.new.tokens_for_type(work_package.type).detect do |t|
       t.key == :"custom_field_#{boolean_custom_field.id}"
     end
