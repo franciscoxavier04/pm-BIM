@@ -24,7 +24,7 @@ For information on setting up recurring meeting series and templates, please ref
 | [Edit a meeting](#edit-a-meeting)                            | How to edit an existing meeting.                           |
 | [Add a work package to the agenda](#add-a-work-package-to-the-agenda) | How to add a work package to a meeting agenda.             |
 | [Create or edit the meeting agenda](#create-or-edit-the-meeting-agenda) | How to create or edit the agenda.                          |
-| [Agenda backlog](#agenda-backlogs)                            | How to use an agenda backlog.                              |
+| [Agenda backlog](#agenda-backlogs)                            | How to use an agenda backlog to park items for later.     |
 | [Add meeting participants](#add-meeting-participants)        | How to invite people to a meeting.                         |
 | [Add meeting attachments](#meeting-attachments)              | How to add attachments to a meeting.                       |
 | [Send email to all participants](#send-email-to-all-participants) | How to send an email to all meeting participants.          |
@@ -162,20 +162,21 @@ This menu also allows you  to *Copy link to clipboard* and to *Remove the outcom
 
 ### Agenda backlogs
 
-An **agenda backlog** is a dedicated section below the actual agenda, where additional agenda items are listed that can potentially be added to that meeting. It can be collapsed or expanded by clicking the title (Agenda backlog). 
+An **agenda backlog** is a special pre-existing section below the actual meeting agenda where additional agenda items can be 'parked' before being added to that particular meeting. This allows users to propose topics that are then picked up by the meeting organiser either before or during the actual meeting. 
+
+The backlog can be expanded or collapsed by clicking on the title.
 
 > [!TIP]
 > By default, the backlog is expanded when the meeting status is *open*, collapsed if the meeting status is *in progress*, and hidden if the meeting is *closed*.
 
 ![Agenda backlog section title collapsed, in OpenProject one-time meeting](openproject_userguide_meetings_agenda_backlog_title.png)
 
-#### Add items to agenda backlogs
-You can add agenda items and link work packages in the same way as you would within the meeting agenda.
+#### Add and edit items to agenda backlogs
+You can add agenda items and link work packages in the same way as you would within the meeting agenda, by dragging and dropping agenda items elsewhere in the meeting or by using the dropdown options of the More (three dots) icon on the right. 
 
 ![Agenda backlog in a single meeting in OpenProject](openproject_userguide_meetings_agenda_backlog.png)
 
-#### Edit agenda backlogs
-You can add items from the agenda backlog either by dragging and dropping via the handle on the left, or using the dropdown options of the More (three dots) icon on the right.  That same *More* menu also allows editing, reordering, adding notes or deleting an item in the agenda backlog. 
+That same *More* menu also allows editing, reordering, adding notes or deleting an item in the agenda backlog. 
 
 ![Move agenda items from the agenda backlog to the agenda in OpenProject Meetings](openproject_userguide_meetings_move_agenda_backlog_items.png)
 
