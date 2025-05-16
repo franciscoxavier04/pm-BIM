@@ -297,28 +297,29 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   }
 
   private setLabel() {
-    const ckContent = this.element.querySelector<HTMLElement>('.ck-content')!;
     const label = document.querySelector<HTMLLabelElement>(`label[for=${this.textAreaId}]`);
-
-    if (label) {
-      let labelId;
-      if (label.hasAttribute('id')) {
-        labelId = label.getAttribute('id')!;
-      } else {
-        labelId = uniqueId('label-');
-        label.setAttribute('id', labelId);
-      }
-
-      ckContent.removeAttribute('aria-label');
-      ckContent.setAttribute('aria-labelledby', labelId);
-
-      if (!this.labelClickSubscription) {
-        this.labelClickSubscription = fromEvent(label, 'click')
-          .pipe(this.untilDestroyed())
-          .subscribe(() => ckContent.focus());
-      }
-    } else {
+    if (!label) {
       console.error(`Please provide a label for the textarea with id ${this.textAreaId}`);
+      return;
+    }
+
+    const ckContent = this.element.querySelector<HTMLElement>('.ck-content')!;
+
+    let labelId;
+    if (label.hasAttribute('id')) {
+      labelId = label.getAttribute('id')!;
+    } else {
+      labelId = uniqueId('label-');
+      label.setAttribute('id', labelId);
+    }
+
+    ckContent.removeAttribute('aria-label');
+    ckContent.setAttribute('aria-labelledby', labelId);
+
+    if (!this.labelClickSubscription) {
+      this.labelClickSubscription = fromEvent(label, 'click')
+        .pipe(this.untilDestroyed())
+        .subscribe(() => ckContent.focus());
     }
   }
 }
