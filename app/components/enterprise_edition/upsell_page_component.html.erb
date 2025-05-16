@@ -1,8 +1,3 @@
-<% if respond_to?(:gon) %>
-  <% helpers.write_augur_to_gon %>
-  <% helpers.write_trial_key_to_gon if !EnterpriseToken.current.present? %>
- <% end %>
-
 <div class="op-enterprise-upsell-page" data-test-selector="op-enterprise-upsell-page">
   <%=
     render(Primer::OpenProject::FlexLayout.new(justify_content: :center, align_items: :center)) do |flex|

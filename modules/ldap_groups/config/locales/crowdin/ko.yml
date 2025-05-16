@@ -3,7 +3,7 @@ ko:
     upsell:
       ldap_groups:
         title: 'LDAP 그룹 동기화'
-        description: 'Synchronize LDAP groups with OpenProject groups to manage users, change their permissions and facilitate user management across groups.'
+        description: 'LDAP 그룹을 OpenProject 그룹과 동기화하여 사용자를 관리하고 사용자의 권한을 변경하고 그룹 전반에서 사용자 관리를 용이하게 하세요.'
   plugin_openproject_ldap_groups:
     name: "OpenProject LDAP 그룹"
     description: "LDAP 그룹 멤버십 동기화."

@@ -68,7 +68,10 @@ module EnterpriseEdition
       return if EnterpriseToken.active?
       return unless User.current.admin?
 
-      helpers.angular_component_tag("opce-free-trial-button")
+      helpers.angular_component_tag(
+        "opce-free-trial-button",
+        inputs: helpers.enterprise_angular_trial_inputs
+      )
     end
 
     # Allow providing a custom upgrade now button

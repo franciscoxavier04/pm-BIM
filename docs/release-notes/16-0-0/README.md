@@ -3,12 +3,12 @@ title: OpenProject 16.0.0
 sidebar_navigation:
     title: 16.0.0
 release_version: 16.0.0
-release_date: 2025-05-01
+release_date: 2025-05-21
 ---
 
 # OpenProject 16.0.0
 
-Release date: 2025-05-01
+Release date: 2025-05-21
 
 We released [OpenProject 16.0.0](https://community.openproject.org/versions/1412). This major release contains many features and bug fixes and we recommend updating to the newest version. In these Release Notes, we will give an overview of important updates, important feature changes and important technical updates. At the end, you will find a complete list of all changes and bug fixes for 16.0.0.
 
@@ -137,6 +137,13 @@ OpenProject 16.0 introduces a major improvement for customers of the Enterprise 
 Instead of mutually acting as OAuth servers and clients, both OpenProject and Nextcloud can now authenticate against a common Identity Provider (IDP). This allows OpenProject to reuse the user session to call Nextcloud APIs directly — improving the user experience and reducing complexity in daily workflows.
 
 Please see [our system admin guide](../../system-admin-guide/integrations/nextcloud/oidc-sso/) to learn how to set up this integration.
+
+## Breaking: API requests with JWT issued by OpenID Connect provider require scope
+
+In [OpenProject 14.4.0](../../release-notes/14/14-0-0/) we introduced the possibility to access the OpenProject API through a JSON Web Token created by an OpenID Connect
+provider. Back then we only intended them to be used in the context of our APIv3. However, as OpenProject evolves further, we want to
+be able to use them in additional contexts. Starting with OpenProject 16.0.0, we will therefore require all tokens to carry a scope called
+`api_v3` for API requests to our APIv3. This is consistent with other tokens issued by OpenProject itself.
 
 <!--more-->
 

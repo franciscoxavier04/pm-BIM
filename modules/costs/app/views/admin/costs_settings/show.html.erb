@@ -47,10 +47,14 @@ See COPYRIGHT and LICENSE files for more details.
     <%= tab.with_text { I18n.t(:label_time) } %>
     <%= tab.with_panel do %>
       <%=
-        render(::EnterpriseEdition::BannerComponent.new(:time_entry_time_restrictions,
-                                                        variant: :medium,
-                                                        image: "enterprise/exact-time-tracking.png",
-                                                        dismissable: false))
+        render(
+          ::EnterpriseEdition::BannerComponent.new(
+            :time_entry_time_restrictions,
+            variant: :medium,
+            image: "enterprise/exact-time-tracking.png",
+            dismissable: false
+          )
+        )
       %>
       <%=
         admin_settings_primer_form_with(scope: :settings, action: :update, method: :patch) do |time_form|
@@ -62,8 +66,15 @@ See COPYRIGHT and LICENSE files for more details.
               end
             end
 
-            form.check_box(name: :allow_tracking_start_and_end_times)
-            form.check_box(name: :enforce_tracking_start_and_end_times, disabled: !EnterpriseToken.allows_to?(:time_entry_time_restrictions))
+            form.check_box(
+              name: :allow_tracking_start_and_end_times,
+              caption: I18n.t(:setting_allow_tracking_start_and_end_times_caption)
+            )
+            form.check_box(
+              name: :enforce_tracking_start_and_end_times,
+              caption: I18n.t(:setting_enforce_tracking_start_and_end_times_caption),
+              disabled: !EnterpriseToken.allows_to?(:time_entry_time_restrictions)
+            )
 
             form.submit
           end
@@ -72,7 +83,6 @@ See COPYRIGHT and LICENSE files for more details.
     <% end %>
   <% end %>
 <%
-
   component.with_tab(id: "tab-costs") do |tab|
     tab.with_text { I18n.t(:label_costs) }
     tab.with_panel do

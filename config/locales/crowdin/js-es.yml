@@ -244,8 +244,8 @@ es:
           enterprise_info_html: "%{feature_title} es una extensión de la Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
           upgrade_info: "Actualice a un plan de pago para activarla y empiece a usarla en su equipo."
           text: >
-            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
-          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
+            OpenProject Enterprise está basada en Community. Incluye extensiones Enterprise y soporte profesional dirigida principalmente a organizaciones con más de 10 usuarios que gestionen proyectos empresariales críticos con OpenProject.
+          you_contribute: "Los desarrolladores también tienen que pagar sus facturas. Al actualizar a Enterprise, apoyará el esfuerzo de la comunidad de código abierto y contribuirá a su desarrollo, mantenimiento y mejora continua."
           benefits:
             description: "¿Cuáles son las ventajas de Enterprise On-Premises?"
             high_security: "Funciones de seguridad"
@@ -355,13 +355,13 @@ es:
       blocks:
         new_features:
           text_new_features: "Obtenga información sobre nuevas funciones y actualizaciones de productos."
-          learn_about: "Learn more about all new features"
+          learn_about: "Más información sobre todas las nuevas funciones"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
           "16_0":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
+                La versión contiene varias funciones nuevas y mejoras, como <br> <ul class="%{list_styling_class}"> <li>Backlogs de reuniones y fin de las reuniones clásicas.</li> <li>Actualización de los planes Enterprise.</li> <li>Comentarios internos en los paquetes de trabajo (extensión Enterprise). </li> <li>Asuntos de paquetes de trabajo generados automáticamente (extensión Enterprise).</li> <li>Módulo de seguimiento del tiempo independiente con vista de calendario.</li> <li>Relación parental mostrada en la pestaña de relaciones de paquetes de trabajo.</li> <li>Lanzamiento a la Comunidad: Gráficos en la página de vista general del proyecto.</li> </ul>
     ical_sharing_modal:
       title: "Suscribirse al calendario"
       inital_setup_error_message: "Se ha producido un error al obtener los datos."
@@ -463,7 +463,7 @@ es:
     label_menu_collapse: "colapsar"
     label_menu_expand: "expandir"
     label_more_than_ago: "más que hace unos días"
-    label_moderate_comment: "Moderate comment"
+    label_moderate_comment: "Moderar comentario"
     label_next: "Siguiente"
     label_no_color: "Sin color"
     label_no_data: "No hay datos disponibles"
@@ -642,7 +642,7 @@ es:
           with_current_filter: "No hay notificaciones en esta vista actualmente"
         mark_all_read: "Marcar todas como leídas"
         mark_as_read: "Marcar como leída"
-        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
+        mark_all_read_confirmation: "Esto marcará todas las notificaciones de esta vista como leídas. ¿Seguro que desea hacer esto?"
         text_update_date_by: "%{date} por"
         total_count_warning: "Mostrando las %{newest_count} notificaciones más recientes. %{more_count} más no se muestran."
         empty_state:
@@ -836,7 +836,7 @@ es:
       update_relation: "Haga clic para cambiar el tipo de relación"
       show_relations: "Mostrar relaciones"
       add_predecessor: "Añadir predecesor"
-      add_successor: "Add successor"
+      add_successor: "Añadir sucesor"
       remove: "Eliminar la relación"
       save: "Guardar relación"
       abort: "Anular"

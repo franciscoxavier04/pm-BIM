@@ -41,13 +41,13 @@ fr:
         changed: "modifié"
         created: "créé"
         commented: "commenté"
-        internal_comment: Internal comment
-        internal_journal: Internal comments are visible to a limited group of members.
+        internal_comment: Commentaire interne
+        internal_journal: Les commentaires internes sont visibles pour un groupe limité de membres.
         unsaved_changes_confirmation_message: Vous avez des modifications non enregistrées. Voulez-vous vraiment fermer l'éditeur ?
         internal_comment_confirmation:
-          title: "Make this comment public?"
-          heading: "Make this comment public?"
-          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          title: "Rendre ce commentaire public ?"
+          heading: "Rendre ce commentaire public ?"
+          description: "Votre commentaire sera visible pour tous ceux qui peuvent accéder à ce lot de travaux. Voulez-vous continuer ?"
           confirm_button_text: "Passer en public"
   admin:
     plugins:
@@ -103,7 +103,7 @@ fr:
         text: "Les actions individuelles d'un utilisateur (par ex. mis à jour un lot de travaux deux fois) sont agrégés en une seule action si leur différence d'âge est inférieure à la période spécifiée. Elles seront affichées en une seule action dans l'application. Cela retardera également les notifications du même temps réduisant donc le nombre d'e-mails envoyés et affectera également le délai %{webhook_link}."
         link: "webhook"
   authentication:
-    login_and_registration: "Login and registration"
+    login_and_registration: "Connexion et inscription"
   announcements:
     show_until: Afficher jusqu'à
     is_active: actuellement affiché
@@ -355,22 +355,22 @@ fr:
     settings:
       header_details: Informations de base
       header_status: État du projet
-      header_relations: Project relations
-      button_update_details: Update details
-      button_update_status_description: Update status description
-      button_update_parent_project: Update parent project
+      header_relations: Relations du projet
+      button_update_details: Mettre à jour les informations
+      button_update_status_description: Mettre à jour la description du statut
+      button_update_parent_project: Mettre à jour le projet parent
       public_warning: >
-        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+        Ce projet est public. Quiconque a accès à cette instance sera en mesure de voir et d'interagir avec ce projet en fonction de son rôle et des autorisations associées. Les sous-projets ne sont pas affectés et ont leurs propres paramètres.
       public_confirmation:
-        checkbox: "I understand that this will make the previously private content public"
-        title: "Make this project public?"
+        checkbox: "Je comprends que cela rendra public le contenu précédemment privé"
+        title: "Rendre ce projet public ?"
         description: >
-          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+          Quiconque a accès à cette instance sera en mesure de voir et d'interagir avec ce projet en fonction de son rôle et des paramètres d'authentification. Les sous-projets ne sont pas affectés et ont leurs propres paramètres.
       private_confirmation:
-        checkbox: "I understand that this will make the previously public content private."
-        title: "Make this project private?"
+        checkbox: "Je comprends que cela rendra privé le contenu précédemment public."
+        title: "Rendre ce projet privé ?"
         description: >
-          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+          Le projet ne sera visible que par les membres du projet en fonction de leur rôle et des autorisations associées. Les sous-projets ne sont pas affectés et ont leurs propres paramètres.
       change_identifier: Changer l'identifiant
       actions:
         label_enable_all: "Activer tout"
@@ -420,7 +420,7 @@ fr:
       work_package_priorities:
         new_label: "Nouvelle priorité"
     status:
-      button_edit: Edit project status
+      button_edit: Modifier le statut du projet
   project_phase:
     working_days_count:
       one: "Durée : %{count} jour ouvrable"
@@ -633,16 +633,16 @@ fr:
           label: "Sujets générés automatiquement"
           caption: "Définissez un modèle utilisant des attributs et du texte référencés pour générer automatiquement des sujets de lots de travaux. Les utilisateurs ne pourront pas modifier manuellement les sujets."
         token:
-          label_with_context: "%{attribute_context}: %{attribute_label}"
+          label_with_context: "%{attribute_context} : %{attribute_label}"
           context:
             work_package: "Lot de travaux"
             parent: "Parent"
             project: "Projet"
         pattern:
           label: "Modèle de sujet"
-          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          caption_with_supported_attributes_link: Créez des modèles en ajoutant du texte, ou saisissez « / » pour rechercher %{link}.
           insert_as_text: "Aucun attribut n'a été trouvé. Ajouter en tant que texte : « %{word} »"
-          supported_attributes_link: "supported attributes"
+          supported_attributes_link: "attributs pris en charge"
       export_configuration:
         tab: "Générer un fichier PDF"
         intro: "Sélectionnez les modèles disponibles que vous souhaitez activer pour ce type. Le modèle détermine la conception et les attributs visibles dans le fichier PDF exporté d'un lot de travaux utilisant ce type. Le premier modèle de la liste est sélectionné par défaut."
@@ -780,7 +780,7 @@ fr:
       child: "Enfant"
       child_description: "Fait du lot de travaux lié un sous-élément du lot de travaux actuel (parent)"
       parent: "Parent"
-      parent_description: "Makes the related work package a parent of the current (child) work package"
+      parent_description: "Fait du lot de travaux lié un parent du lot de travaux actuel (enfant)"
       label_closest: "Le plus proche"
       label_blocks_singular: "blocs"
       label_blocks_plural: "blocs"
@@ -1101,7 +1101,7 @@ fr:
           title: "Jours ouvrés"
           false: "jours ouvrés seulement"
           true: "Inclure les jours non ouvrés"
-        journal_internal: Internal Journal
+        journal_internal: Journal interne
         notify: "Notifier" #used in custom actions
         parent: "Parent"
         parent_issue: "Parent"
@@ -1143,7 +1143,7 @@ fr:
         error_conflict: "Cette information a été mise a jour par au moin un autre utilisateur pendant la même session"
         email: "n'est pas une adresse e-mail valide."
         empty: "ne peut pas être vide."
-        enterprise_plan_required: "requires at least the %{plan_name}."
+        enterprise_plan_required: "nécessite au minimum l'abonnement %{plan_name}."
         even: "doit être pair."
         exclusion: "est réservé."
         feature_disabled: n'est pas disponible.
@@ -1837,7 +1837,7 @@ fr:
     text:
       failed: 'Impossible de copier le projet "%{source_project_name}" vers "%{target_project_name}".'
       succeeded: 'Le projet "%{source_project_name}" a été copié vers "%{target_project_name}".'
-  create_wiki_page: "Create new wiki page"
+  create_wiki_page: "Créer une nouvelle page wiki"
   create_wiki_page_button: "Page wiki"
   date:
     abbr_day_names:
@@ -1991,10 +1991,10 @@ fr:
   direction: de gauche à droite
   ee:
     features:
-      baseline_comparison: Baseline Comparisons
-      board_view: Advanced Boards
+      baseline_comparison: Comparaisons de référence
+      board_view: Tableaux avancés
       conditional_highlighting: Mise en surbrillance conditionnelle
-      internal_comments: Internal Comments
+      internal_comments: Commentaires internes
       custom_actions: Actions personnalisées
       custom_field_hierarchies: Champs personnalisés de type hiérarchie
       customize_life_cycle: Personnaliser le cycle de vie
@@ -2003,62 +2003,64 @@ fr:
       edit_attribute_groups: Modifier les groupes d'attributs
       gantt_pdf_export: Exportation PDF de diagramme de Gantt
       ldap_groups: Synchronisation des utilisateurs LDAP et des groupes
-      nextcloud_sso: Single Sign-On for Nextcloud Storage
+      nextcloud_sso: Authentification unique pour le stockage Nextcloud
       one_drive_sharepoint_file_storage: Stockage de fichiers OneDrive/SharePoint
       placeholder_users: Utilisateurs de remplacement
       project_list_sharing: Partage de liste de projets
       readonly_work_packages: Lots de travaux en lecture seule
       sso_auth_providers: Authentification unique
       team_planner_view: Vue du planificateur d'équipe
-      two_factor_authentication: 2FA Authentication
-      virus_scanning: Antivirus Scanning
+      two_factor_authentication: Authentification 2FA
+      virus_scanning: Analyse antivirus
       work_package_query_relation_columns: Colonnes de relation de requête de lot de travaux
       work_package_sharing: Partager les lots de travaux avec des utilisateurs
       work_package_subject_generation: Génération du sujet du lot de travaux
     upsell:
-      plans_title: "Enterprise plans"
+      plans_title: "Formules d'abonnement Enterprise"
       title: "Add-on Enterprise"
-      plan_title: "Enterprise %{plan} add-on"
-      plan_name: "%{plan} enterprise plan"
-      plan_text_html: "Available starting with the %{plan_name}."
-      hide_banner: "Hide this banner"
+      plan_title: "Add-on Enterprise %{plan}"
+      plan_name: "Abonnement Enterprise %{plan}"
+      plan_text_html: "Disponible à partir de l'abonnement %{plan_name}."
+      hide_banner: "Masquer cette bannière"
       homescreen_description: >
-        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
-      homescreen_subline: By upgrading, you will also be supporting an open source project.
+        Les abonnements Enterprise prolongent l'édition Community d'OpenProject que vous utilisez actuellement. Ils comprennent des add-ons, des fonctionnalités supplémentaires et une assistance professionnelle qui permet aux organisations de toutes tailles de réaliser de grandes choses ensemble.
+      homescreen_subline: En optant pour une formule d'abonnement supérieure, vous soutiendrez également un projet open source.
       baseline_comparison:
         description: Mettre en évidence les modifications apportées à cette liste depuis n'importe quel point dans le passé.
       work_package_subject_generation:
         description: "Créez des sujets générés automatiquement à l'aide d'attributs et de textes référencés."
       customize_life_cycle:
-        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
+        description: "Créez et organisez des phases de projet différentes de celles fournies par la planification du cycle de projet PM2."
       conditional_highlighting:
-        description: "Need certain work packages to stand out from the mass? Use conditional highlighting in the work packages table."
+        description: "Vous avez besoin que certains lots de travaux se démarquent de la masse ? Utilisez la mise en évidence conditionnelle dans le tableau des lots de travaux."
       work_package_query_relation_columns:
-        description: "Need to see relations or child elements in the work package list?"
+        description: "Vous avez besoin de voir les relations ou les éléments enfants dans la liste des lots de travaux ?"
       edit_attribute_groups:
-        description: "Customize form configuration with these additional add-ons:"
+        description: "Personnalisez la configuration du formulaire avec ces add-ons supplémentaires :"
         features:
           groups: "Ajouter de nouveaux groupes d’attributs"
-          rename: "Rename attribute groups"
-          related: "Add a table of related work packages"
+          rename: "Renommer les groupes d'attributs"
+          related: "Ajouter un tableau des lots de travaux associés"
       readonly_work_packages:
-        description: "Mark work packages as read-only for specific statuses."
+        description: "Marquer les lots de travaux comme étant en lecture seule pour des statuts spécifiques."
       custom_field_hierarchies:
-        description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
+        description: "Les champs personnalisés de hiérarchie permettent d'organiser des structures hiérarchiques dans les lots de travaux en utilisant des listes de sélection à plusieurs niveaux."
       date_alerts:
         description: "Avec les alarmes, vous serez informé(e) à l'approche des dates de début ou de fin vous concernant afin de ne jamais manquer ou oublier une échéance importante."
       work_package_sharing:
         description: "Partagez les lots de travaux avec des utilisateurs qui ne sont pas membres du projet."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
-        title: "Custom color theme and logo"
+        title: "Thème de couleur et logo personnalisés"
         more_info: "Remarque : le logo utilisé sera accessible publiquement."
         description: Personnalisez votre installation OpenProject avec votre propre logo et couleurs.
       custom_actions:
         title: "Actions personnalisées"
         description: "Les actions personnalisées sont des raccourcis en un clic vers un ensemble d'actions prédéfinies que vous pouvez rendre disponibles sur certains lots de travaux en fonction de l'état, du rôle, du type ou du projet."
       nextcloud_sso:
-        title: "Single Sign-On for Nextcloud Storage"
-        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
+        title: "Authentification unique pour le stockage Nextcloud"
+        description: "Activez l'authentification transparente et sécurisée pour votre stockage Nextcloud avec l'authentification unique. Simplifiez la gestion des accès et augmentez la commodité des utilisateurs."
       virus_scanning:
         description: "Assurez-vous que les fichiers téléversés dans OpenProject sont analysés pour détecter les virus avant d'être accessibles aux autres utilisateurs."
       placeholder_users:
@@ -2066,10 +2068,10 @@ fr:
         description: >
           Les utilisateurs fictifs sont un moyen d'attribuer des lots de travaux à des utilisateurs qui ne font pas partie de votre projet. Ils peuvent être utiles dans une série de scénarios ; par exemple, si vous avez besoin de suivre des tâches pour une ressource qui n'est pas encore nommée ou disponible, ou si vous ne voulez pas donner à cette personne l'accès à OpenProject mais voulez quand même suivre les tâches qui lui sont assignées.
       internal_comments:
-        title: Internal comments
-        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+        title: Commentaires internes
+        description: "Les commentaires internes permettent aux membres d'une équipe interne de communiquer entre eux en privé. Les commentaires ne sont visibles que pour certains rôles du projet et ne seront jamais visibles publiquement."
       internal_comments_inline:
-        title: "Write internal comments only a small group can see"
+        title: "Écrire des commentaires internes qu'un petit groupe peut voir"
         description: " "
   enumeration_activities: "Activités de suivi du temps"
   enumeration_work_package_priorities: "Priorités du Lot de Travaux"
@@ -2436,6 +2438,8 @@ fr:
         mentioned: "Vous avez été mentionné dans %{work_package}"
         responsible: "Vous êtes devenu responsable de %{work_package}"
         watched: "Vous surveillez %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Accessibilité"
   label_account: "Compte"
   label_active: "Actif"
@@ -3332,7 +3336,7 @@ fr:
   notice_successful_cancel: "Annulation réussie."
   notice_successful_update: "Mise à jour réussie."
   notice_unsuccessful_update: "Mise à jour échouée."
-  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
+  notice_unsuccessful_update_with_reason: "Échec de la mise à jour : %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Mise à jour réussie. Les champs personnalisés des types activés sont automatiquement activés
     sur le formulaire du lot de travaux. <a href="%{url}" target="_blank">Voir plus</a>.
@@ -3377,7 +3381,7 @@ fr:
   permission_add_project: "Créer des projets"
   permission_add_work_package_attachments: "Ajouter pièces jointes"
   permission_add_work_package_attachments_explanation: "Permet d'ajouter des pièces jointes sans avoir le droit de modifier les lots de travaux"
-  permission_add_internal_comments: "Write internal comments"
+  permission_add_internal_comments: "Écrire des commentaires internes"
   permission_archive_project: "Archiver le projet"
   permission_create_user: "Créer des utilisateurs"
   permission_manage_user: "Modifier les utilisateurs"
@@ -3406,12 +3410,12 @@ fr:
   permission_edit_work_package_comments_explanation: "Attention : les utilisateurs disposant de cette autorisation peuvent modifier les commentaires de n'importe qui."
   permission_edit_work_packages: "Éditer des lots de travaux"
   permission_edit_messages: "Éditer des messages"
-  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_internal_comments: "Modifier ses propres commentaires internes"
   permission_edit_own_work_package_comments: "Modifier ses propres commentaires"
   permission_edit_own_messages: "Éditer ses propres messages"
   permission_edit_own_time_entries: "Éditer mes propres enregistrements de temps"
-  permission_edit_others_internal_comments: "Moderate internal comments"
-  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
+  permission_edit_others_internal_comments: "Modérer les commentaires internes"
+  permission_edit_others_internal_comments_explanation: "Attention : les utilisateurs ayant cette autorisation peuvent modifier les commentaires internes des autres utilisateurs."
   permission_edit_project: "Éditer le projet"
   permission_edit_project_attributes: "Modifier les attributs du projet"
   permission_edit_project_phases: "Modifier les phases du projet"
@@ -3452,7 +3456,7 @@ fr:
   permission_manage_own_reminders: "Créer des rappels personnalisés"
   permission_view_project: "Voir les projets"
   permission_view_changesets: "Voir révisions du dépôt dans OpenProject"
-  permission_view_internal_comments: "View internal comments"
+  permission_view_internal_comments: "Voir les commentaires internes"
   permission_view_commit_author_statistics: "Voir les statistiques des auteurs de «commit»"
   permission_view_dashboards: "Voir les tableaux de bord"
   permission_view_work_package_watchers: "Voir la liste des observateurs"
@@ -3733,7 +3737,7 @@ fr:
   setting_hours_per_day_explanation: >-
     Cela définit ce qui est considéré comme un « jour » lors de l'affichage de la durée en jours et en heures (par exemple, si un jour dure 8 heures, 32 heures représentent 4 jours).
   setting_invitation_expiration_days: "L'émail d’activation expire après"
-  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
+  setting_invitation_expiration_days_caption: "Nombre de jours après l'expiration de l'e-mail d'activation."
   setting_work_package_done_ratio: "Mode de calcul de l'avancement"
   setting_work_package_done_ratio_field: "Basé sur le travail"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3749,9 +3753,9 @@ fr:
   setting_journal_aggregation_time_minutes: "Actions utilisateur agrégées dans"
   setting_log_requesting_user: "Enregister le login utilisateur, nom et adresse e-mail pour toutes les requêtes"
   setting_login_required: "Authentification requise"
-  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
-  setting_lost_password: "Enable password reset"
-  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
+  setting_login_required_caption: "Lorsque cette case est cochée, toutes les requêtes envoyées à l'application doivent être authentifiées."
+  setting_lost_password: "Activer la réinitialisation du mot de passe"
+  setting_lost_password_caption: "Lorsque cette case est cochée, les utilisateurs peuvent réinitialiser leurs propres mots de passe."
   setting_mail_from: "Adresse expéditeur"
   setting_mail_handler_api_key: "Clé API"
   setting_mail_handler_body_delimiters: "Tronquer les e-mails à partir de l'une de ces lignes"
@@ -3777,7 +3781,7 @@ fr:
   setting_project_gantt_query_text: "Vous pouvez modifier la requête utilisée pour afficher le diagramme de Gantt à partir de la page d'aperçu du projet."
   setting_security_badge_displayed: "Afficher le badge de sécurité"
   setting_registration_footer: "Pied de page d’inscription"
-  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
+  setting_registration_footer_caption: "Ce texte est affiché dans le pied de page de la page d'inscription. Utilisez l'éditeur HTML pour formater le texte pour chaque langue sélectionnée."
   setting_repositories_automatic_managed_vendor: "Type de fournisseur de dépôt automatique"
   setting_repositories_encodings: "Encodages de référentiels"
   setting_repository_storage_cache_minutes: "Cache de l'espace disque du dépôt"
@@ -3789,21 +3793,21 @@ fr:
   setting_rest_api_enabled: "Autoriser service web REST"
   setting_self_registration: "Auto-enregistrement"
   setting_self_registration_caption: >
-    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
+    Choisissez le mécanisme d'auto-inscription pour les utilisateurs. Faites attention au paramètre que vous choisissez, car certaines options permettent aux utilisateurs d'activer leurs propres comptes pour cette instance.
   setting_self_registration_warning: >
-    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+    L'utilisateur sera en mesure d'activer ses propres comptes. Veuillez noter que cela lui donnera accès à tous les projets publics et à leur contenu. Veuillez vous assurer qu'aucune donnée sensible ou privée n'est exposée dans des projets publics.
   setting_self_registration_disabled: "Désactivé"
   setting_self_registration_disabled_caption: >
-    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
-  setting_self_registration_activation_by_email: "Account activation by email"
+    Aucun compte ne peut être enregistré seul. Seuls les administrateurs et les utilisateurs ayant la permission globale de créer de nouveaux utilisateurs peuvent créer de nouveaux comptes.
+  setting_self_registration_activation_by_email: "Activation du compte par e-mail"
   setting_self_registration_activation_by_email_caption: >
-    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
-  setting_self_registration_automatic_activation: "Automatic account activation"
+    Les utilisateurs peuvent s'inscrire seuls et activer leur compte après avoir confirmé leur adresse e-mail. Les administrateurs n'ont aucun contrôle de modération sur le processus d'activation.
+  setting_self_registration_automatic_activation: "Activation automatique du compte"
   setting_self_registration_automatic_activation_caption: >
-    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
-  setting_self_registration_manual_activation: "Manual account activation"
+    Les utilisateurs peuvent s'inscrire seuls. Leurs comptes sont immédiatement actifs sans autre action. Les administrateurs n'ont aucun contrôle de modération sur le processus d'activation.
+  setting_self_registration_manual_activation: "Activation manuelle du compte"
   setting_self_registration_manual_activation_caption: >
-    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
+    Les utilisateurs peuvent s'inscrire eux-mêmes. Leurs comptes sont placés en attente jusqu'à ce qu'un administrateur ou un utilisateur ayant la permission globale de créer ou de gérer des utilisateurs les active.
   setting_session_ttl: "Délai d'expiration de session après inactivité"
   setting_session_ttl_hint: "Une valeur inférieur à 5 désactive cette fonction"
   setting_session_ttl_enabled: "Session expirée"
@@ -3831,8 +3835,8 @@ fr:
   setting_working_days: "Jours ouvrés"
   settings:
     authentication:
-      login_and_sso: "Login and SSO"
-      registration: "Registration"
+      login_and_sso: "Connexion et SSO"
+      registration: "Inscription"
       single_sign_on: "Authentification unique"
       omniauth_direct_login_hint_html: >
         Si cette option est activée, les demandes de connexion seront redirigées vers le fournisseur omniauth configuré. La liste déroulante de connexion et la page de connexion seront désactivées. <br/> <strong>Remarque :</strong> lorsque cette option est activée, les utilisateurs peuvent toujours se connecter en interne en visitant la page de connexion <code>%{internal_path}</code>, sauf si vous désactivez également les connexions par mot de passe.
@@ -3936,8 +3940,8 @@ fr:
     work_packages:
       not_allowed_text: "Vous n'avez pas les autorisations nécessaires pour voir cette page."
       activities:
-        enable_internal_comments: "Enable internal comments"
-        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_internal_comments: "Activer les commentaires internes"
+        helper_text: "Les commentaires internes permettent aux membres d'une équipe interne de communiquer entre eux en privé. Les commentaires ne sont visibles que pour les rôles sélectionnés qui ont les autorisations nécessaires et ne seront pas visibles publiquement. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Texte brut"

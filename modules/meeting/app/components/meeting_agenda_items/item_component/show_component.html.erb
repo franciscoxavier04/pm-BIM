@@ -31,7 +31,7 @@
             Primer::Beta::Link.new(
               href: work_package_path(@meeting_agenda_item.work_package), underline: false,
               test_selector: "op-meeting-agenda-title",
-              font_size: :normal, font_weight: :bold, target: "_blank"
+              font_size: :normal, font_weight: :bold
             )
           ) do
             @meeting_agenda_item.work_package.subject

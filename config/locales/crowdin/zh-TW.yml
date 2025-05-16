@@ -2009,6 +2009,8 @@ zh-TW:
         description: "透過日期提醒，您將收到即將到來的開始或結束日期的通知，這樣您就不會錯過或忘記重要的截止日期。"
       work_package_sharing:
         description: "與不是專案成員的使用者共同參與工作項目。"
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "自訂布景主題顏色與logo"
         more_info: "備註：Logo可被公開存取。"
@@ -2396,6 +2398,8 @@ zh-TW:
         mentioned: "您在工作項目「%{work_package}」中被提到"
         responsible: "您已對 %{work_package} 負責"
         watched: "您正在監看 %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "輔助功能"
   label_account: "帳號"
   label_active: "啟用"

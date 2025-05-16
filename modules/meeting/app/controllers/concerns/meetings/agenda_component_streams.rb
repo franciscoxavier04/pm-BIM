@@ -189,9 +189,7 @@ module Meetings
       end
 
       def update_list_via_turbo_stream(meeting: @meeting, form_hidden: true, form_type: :simple)
-        # replace needs to be called in order to mount the drag and drop handlers again
-        # update would not do that and drag and drop would stop working after the first update
-        replace_via_turbo_stream(
+        update_via_turbo_stream(
           component: MeetingAgendaItems::ListComponent.new(
             meeting:,
             form_hidden:,
@@ -204,7 +202,7 @@ module Meetings
       end
 
       def update_item_via_turbo_stream(state: :show, meeting_agenda_item: @meeting_agenda_item, display_notes_input: nil)
-        replace_via_turbo_stream(
+        update_via_turbo_stream(
           component: MeetingAgendaItems::ItemComponent.new(
             state:,
             meeting_agenda_item:,

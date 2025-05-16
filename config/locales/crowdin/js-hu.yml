@@ -434,7 +434,7 @@ hu:
     label_filename: "File"
     label_filesize: "Méret"
     label_general: "Általános"
-    label_global_roles: "Global roles"
+    label_global_roles: "Globális szerepek"
     label_greater_or_equal: ">="
     label_group: "Csoport"
     label_group_by: "Csoportosítás a következők szerint"
@@ -627,11 +627,11 @@ hu:
       date_alerts:
         milestone_date: "Milestone date"
         overdue: "Overdue"
-        overdue_since: "since %{difference_in_days}."
+        overdue_since: "%{difference_in_days} napja."
         property_today: "is today."
-        property_is: "is in %{difference_in_days}."
-        property_was: "was %{difference_in_days} ago."
-        property_is_deleted: "is deleted."
+        property_is: "%{difference_in_days} napon belül."
+        property_was: "%{difference_in_days} napja volt."
+        property_is_deleted: "törölve."
       center:
         label_actor_and: "és"
         and_more_users:
@@ -836,7 +836,7 @@ hu:
       update_relation: "Klikk a kapcsolat típus módosításához"
       show_relations: "Show relations"
       add_predecessor: "Előző hozzáadása"
-      add_successor: "Add successor"
+      add_successor: "Folyatató hozzáadása"
       remove: "Kapcsolat eltávolítása"
       save: "Kapcsolat mentése"
       abort: "Megszakít"
@@ -1044,7 +1044,7 @@ hu:
         is_switched_from_manual_to_automatic: "Ennek a munkacsomagnak a dátumait újra kell kalkulálni, miután a kézi üzemmódról az automatikus ütemezésre váltott, más munkacsomagokkal való kapcsolat miatt.\n"
       sharing:
         title: "Share work package"
-        show_all_users: "Show all users with whom the work package has been shared with"
+        show_all_users: "Minden felhasználó mutatása, akivel a munkacsomag megosztásra került"
       table:
         configure_button: "Feladatcsoport táblázat beállítása"
         summary: "Táblázat melynek sorai munkacsomagok és oszlopai munkacsomag attribútumok."
@@ -1330,7 +1330,7 @@ hu:
         close: "Close modal"
     open_project_storage_modal:
       waiting_title:
-        timeout: "Timeout"
+        timeout: "Időtúllépés"
       waiting_subtitle:
         network_off: "There is a network problem."
         network_on: "Network is back. We are trying."

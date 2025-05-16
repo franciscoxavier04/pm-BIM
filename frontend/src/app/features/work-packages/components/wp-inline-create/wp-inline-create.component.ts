@@ -140,7 +140,6 @@ export class WorkPackageInlineCreateComponent extends UntilDestroyedMixin implem
         this.showing.emit(this.canAdd || this.canReference);
       });
 
-
     // Register callback on newly created work packages
     this.registerCreationCallback();
 
@@ -240,9 +239,8 @@ export class WorkPackageInlineCreateComponent extends UntilDestroyedMixin implem
         change
           .state
           ?.values$()
-          .pipe(
-            filter(() => !!this.currentWorkPackage),
-          ).subscribe((form) => {
+          .pipe(filter(() => !!this.currentWorkPackage))
+          .subscribe((form) => {
             if (!this.isActive) {
               this.insertRow(wp);
             } else {
@@ -255,11 +253,16 @@ export class WorkPackageInlineCreateComponent extends UntilDestroyedMixin implem
 
   private insertRow(wp:WorkPackageResource) {
     // Actually render the row
-    const form = this.workPackageEditForm = this.renderInlineCreateRow(wp);
+    this.workPackageEditForm = this.renderInlineCreateRow(wp);
+    const form = this.workPackageEditForm;
 
     setTimeout(() => {
       // Activate any required fields
-      form.activateMissingFields();
+      void form.activateMissingFields().then((activeFields) => {
+        if (activeFields.length === 0) {
+          void form.submit();
+        }
+      });
 
       // Hide the button row
       this.hideRow();
