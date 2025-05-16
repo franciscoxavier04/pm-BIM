@@ -1,5 +1,5 @@
 ## What are ARIA Live Regions?
-ARIA Live Regions are a crucial accessibility feature that allow screen readers to announce dynamic content updates without requiring user focus changes.
+ARIA Live Regions are a crucial accessibility feature that allow assistive technologies to announce dynamic content updates without requiring user focus changes.
 
 ### ARIA Live Attributes
 ARIA Live Regions rely on specific attributes to control how updates are announced:
@@ -28,7 +28,7 @@ announce('Example polite message', { politeness: 'polite' });
 ```
 
 ### Using Turbo Streams to Trigger ARIA Live Updates
-To use it in a Rails Turbo response, and send updates to the screen reader after any action, we created a new Turbo stream component that triggers an ARIA action:
+To use it in a Rails Turbo response, and send updates to the assistive technology after any action, we created a new Turbo stream component that triggers an ARIA action:
 
 ```ruby
 OpTurbo::StreamComponent.new(action: :aria, message: "Form submission successful!", politeness: "polite", role: "status", target: nil)
@@ -41,7 +41,7 @@ OpTurbo::StreamComponent.new(action: :aria, message: "Form submission successful
   - `target: nil` → Ensures the update isn't inserted into the DOM but is handled as an announcement
 
 ### How to Trigger an ARIA Update from the Controller
-You can trigger a screen reader announcement from your Rails controller by calling the provided `render_aria_update_message` helper:
+You can trigger a assistive technology announcement from your Rails controller by calling the provided `render_aria_update_message` helper:
 
 ```ruby
 render_aria_update_message(
@@ -61,7 +61,7 @@ Here is the internal implementation of `render_aria_update_message`:
 ```
 
 ### How to Trigger an ARIA Update from a Turbo Frame
-If you're using a Turbo Frame and want to announce dynamic content changes to screen readers, you can embed a Turbo Stream using the `aria` action directly inside the frame.
+If you're using a Turbo Frame and want to announce dynamic content changes to assistive technologies, you can embed a Turbo Stream using the `aria` action directly inside the frame.
 
 ```erb
 <%= content_tag("turbo-frame", id: "frame-id") do %>
@@ -77,7 +77,7 @@ If you're using a Turbo Frame and want to announce dynamic content changes to sc
 ```
 
 ### How ARIA Live Messages Are Delivered via Turbo Streams
-The `registerAriaStreamAction` method defines a custom Turbo Stream action called `aria`. When triggered, it announces a message (using ARIA live regions) to screen readers, with a tone of either `"polite"` or `"assertive"`, depending on the `politeness` attribute in the stream element.
+The `registerAriaStreamAction` method defines a custom Turbo Stream action called `aria`. When triggered, it announces a message (using ARIA live regions) to assistive technologies, with a tone of either `"polite"` or `"assertive"`, depending on the `politeness` attribute in the stream element.
 
 ```ts
 import { StreamActions, StreamElement } from '@hotwired/turbo';
