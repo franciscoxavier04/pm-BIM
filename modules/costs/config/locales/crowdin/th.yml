@@ -33,7 +33,7 @@ th:
         logged_by: "Logged by"
       cost_type:
         unit: "Unit name"
-        unit_plural: "Pluralized unit name"
+        unit_plural: "ชื่อหน่วย"
         default: "Cost type by default"
       work_package:
         costs_by_type: "Spent units"
