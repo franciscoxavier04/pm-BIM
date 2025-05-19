@@ -52,6 +52,8 @@ module Types
         AttributeToken.new(:parent_finish_date, -> { WorkPackage.human_attribute_name(:due_date) }, ->(parent) { parent.due_date }),
         AttributeToken.new(:parent_priority, -> { WorkPackage.human_attribute_name(:priority) }, ->(parent) { parent.priority }),
         AttributeToken.new(:parent_subject, -> { WorkPackage.human_attribute_name(:subject) }, ->(parent) { parent.subject }),
+        AttributeToken.new(:parent_status, -> { WorkPackage.human_attribute_name(:status) }, ->(parent) { parent.status&.name }),
+        AttributeToken.new(:parent_type, -> { WorkPackage.human_attribute_name(:type) }, ->(parent) { parent.type&.name }),
         AttributeToken.new(:priority, -> { WorkPackage.human_attribute_name(:priority) }, ->(wp) { wp.priority }),
         AttributeToken.new(:project_id, -> { Project.human_attribute_name(:id) }, ->(project) { project.id }),
         AttributeToken.new(:project_active, -> { Project.human_attribute_name(:active) }, ->(project) { project.active? }),
