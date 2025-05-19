@@ -130,7 +130,7 @@ To do that click the **More** (three dots) icon next to an agenda item and selec
 
 ### Series backlogs
 
-A **series backlog** is a special pre-existing section below the actual agenda items of that occurence where additional agenda items maybe be 'parked' for consideration. These items may then be added to a particular occurrence by the meeting organiser either before or during a meeting. 
+A **series backlog** is a special pre-existing section below the actual agenda items of that occurrence where additional agenda items maybe be listed for consideration. These items may then be added to a particular occurrence by the meeting organiser either before or during a meeting. 
 
 The backlog can be collapsed or expanded by clicking on the the title. Agenda backlog for recurring meetings will be visible for all meetings in the series. 
 
