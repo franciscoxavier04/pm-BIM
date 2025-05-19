@@ -28,19 +28,38 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Overviews
-  module ProjectPhases
-    class ShowComponent < ApplicationComponent
-      include ApplicationHelper
-      include OpPrimer::ComponentHelpers
-      include OpTurbo::Streamable
+require "spec_helper"
+require "contracts/shared/model_contract_shared_context"
 
-      def initialize(project:)
-        super
+RSpec.describe ProjectLifeCycleSteps::ActivationContract do
+  include_context "ModelContract shared context"
 
-        @project = project
-        @phases = @project.available_phases.eager_load(:definition)
+  let(:user) { build_stubbed(:user) }
+
+  subject(:contract) { described_class.new(project, user) }
+
+  context "with authorized user" do
+    let(:project) { build_stubbed(:project) }
+
+    before do
+      mock_permissions_for(user) do |mock|
+        mock.allow_in_project(:select_project_phases, project:)
       end
     end
+
+    it_behaves_like "contract is valid"
+    it_behaves_like "contract reuses the model errors"
+
+    context "when project is invalid" do
+      let(:project) { build_stubbed(:project, name: "") }
+
+      it_behaves_like "contract is valid"
+    end
+  end
+
+  context "with unauthorized user" do
+    let(:project) { build_stubbed(:project) }
+
+    it_behaves_like "contract user is unauthorized"
   end
 end

@@ -28,19 +28,22 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Overviews
-  module ProjectPhases
-    class ShowComponent < ApplicationComponent
-      include ApplicationHelper
-      include OpPrimer::ComponentHelpers
-      include OpTurbo::Streamable
+module ProjectLifeCycleSteps
+  class ActivationContract < ::ModelContract
+    alias_method :project, :model
 
-      def initialize(project:)
-        super
+    validate :validate_select_project_phases_permission
 
-        @project = project
-        @phases = @project.available_phases.eager_load(:definition)
-      end
+    def validate_select_project_phases_permission
+      return if user.allowed_in_project?(:select_project_phases, project)
+
+      errors.add :base, :error_unauthorized
+    end
+
+    protected
+
+    def validate_model?
+      false
     end
   end
 end

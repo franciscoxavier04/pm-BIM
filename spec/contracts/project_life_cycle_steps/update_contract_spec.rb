@@ -39,7 +39,7 @@ RSpec.describe ProjectLifeCycleSteps::UpdateContract do
   subject(:contract) { described_class.new(phase, user) }
 
   context "with authorized user" do
-    let(:phase) { build_stubbed(:project_phase) }
+    let(:phase) { create(:project_phase) }
     let(:project) { phase.project }
     let(:date) { Date.current }
 
@@ -69,13 +69,13 @@ RSpec.describe ProjectLifeCycleSteps::UpdateContract do
     end
 
     describe "#validate_start_after_preceeding_phases" do
-      def build_phase(**) = build_stubbed(:project_phase, project:, **)
+      def create_phase(**) = create(:project_phase, project:, **)
 
-      let(:project) { build_stubbed(:project) }
+      let(:project) { create(:project) }
       let(:phases) { [preceding, phase, following] }
-      let(:phase) { build_phase(date_range:, active:) }
-      let(:preceding) { build_phase(date_range: preceding_date_range) }
-      let(:following) { build_phase(date_range: following_date_range) }
+      let(:phase) { create_phase(date_range:, active:) }
+      let(:preceding) { create_phase(date_range: preceding_date_range) }
+      let(:following) { create_phase(date_range: following_date_range) }
       let(:active) { true }
       let(:date_range) { date - 1..date + 1 }
       let(:preceding_date_range) { date - 6..date - 5 }
