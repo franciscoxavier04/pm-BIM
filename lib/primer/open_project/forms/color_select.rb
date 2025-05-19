@@ -5,7 +5,7 @@ module Primer
     module Forms
       # :nodoc:
       class ColorSelect < Primer::Forms::BaseComponent
-        include AngularHelper
+        include OpPrimer::ComponentHelpers
         include ColorsHelper
         prepend WrappedInput
 

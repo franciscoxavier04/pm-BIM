@@ -5,7 +5,7 @@ module Primer
     module Forms
       # :nodoc:
       class RichTextArea < Primer::Forms::BaseComponent
-        include AngularHelper
+        include OpPrimer::ComponentHelpers
 
         delegate :builder, :form, to: :@input
 

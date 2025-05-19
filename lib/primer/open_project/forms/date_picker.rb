@@ -33,7 +33,7 @@ module Primer
     module Forms
       # :nodoc:
       class DatePicker < Primer::Forms::TextField
-        include AngularHelper
+        include OpPrimer::ComponentHelpers
 
         def initialize(input:, datepicker_options:)
           super(input:)

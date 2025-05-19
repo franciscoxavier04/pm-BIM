@@ -68,7 +68,7 @@ module EnterpriseEdition
       return if EnterpriseToken.active?
       return unless User.current.admin?
 
-      helpers.angular_component_tag(
+      angular_component(
         "opce-free-trial-button",
         inputs: helpers.enterprise_angular_trial_inputs
       )

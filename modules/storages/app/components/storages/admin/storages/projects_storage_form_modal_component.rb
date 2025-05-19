@@ -35,7 +35,6 @@ module Storages
         include OpPrimer::ComponentHelpers
         include OpTurbo::Streamable
         include StimulusHelper
-        include AngularHelper
 
         def initialize(project_storage:, last_project_folders: {}, **)
           @project_storage = project_storage

@@ -1,9 +1,9 @@
 <%= render(FormControl.new(input: @input)) do %>
   <%= content_tag(:div, **@field_wrap_arguments) do %>
     <%= builder.hidden_field :color_id %>
-    <%= angular_component_tag(
+    <%= angular_component(
           "opce-colors-autocompleter",
-          class: "colors-autocomplete form--select-container",
+          classes: "colors-autocomplete form--select-container",
           data: {
             colors:,
             classes: "ng-select--primerized",
