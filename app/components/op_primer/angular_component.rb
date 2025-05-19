@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,32 +27,36 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+#
+module OpPrimer
+  class AngularComponent < Primer::Component # rubocop:disable OpenProject/AddPreviewForViewComponent
+    include AngularHelper
 
-module AngularHelper
-  ##
-  # Create a component element tag with the given attributes
-  #
-  # Allow setting dynamic inputs for components with the populateInputsFromDataset functionality
-  # by using inputs: { inputName: value }
-  def angular_component_tag(component, options = {})
-    inputs = angular_component_inputs(options.delete(:inputs) || {})
+    ##
+    # Creates a component element tag with the given attributes.
+    #
+    # @param tag [Symbol] the tag name of the Angular component.
+    # @param inputs [Hash{String=>Object}] a hash of input properties.
+    #   Keys will be converted to kebab-cased strings, prefixed with `data-`.
+    #   Values will be serialized as JSON.
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    def initialize(tag:, inputs: {}, **system_arguments)
+      @system_arguments = system_arguments
+      @system_arguments[:tag] = tag
+      @system_arguments[:classes] = class_names(
+        system_arguments[:classes],
+        "op-angular-component"
+      )
+      @system_arguments[:data] = merge_data(
+        system_arguments,
+        data: angular_component_inputs(inputs)
+      )
 
-    options[:data] = options.fetch(:data, {}).merge(inputs)
-    options[:class] ||= [options[:class], "op-angular-component"]
-                          .compact
-                          .join(" ")
+      super
+    end
 
-    content_tag(component, nil, options)
-  end
-
-  ##
-  # Transforms inputs to interop with the `populateInputsFromDataset`.
-  #
-  # @param inputs [Hash{String=>Object}] a hash of input properties.
-  #   Keys will be converted to kebab-cased strings, prefixed with `data-`.
-  #   Values will be serialized as JSON.
-  # @return [Hash{String=>String}] a new hash with transformed properties.
-  def angular_component_inputs(inputs)
-    inputs.each_with_object({}) { |(k, v), h| h[k.to_s.underscore.dasherize] = v.to_json }
+    def call
+      render(Primer::BaseComponent.new(**@system_arguments))
+    end
   end
 end

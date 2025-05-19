@@ -28,6 +28,10 @@
 
 module OpPrimer
   module ComponentHelpers
+    def angular_component(tag, **)
+      render(AngularComponent.new(tag:, **))
+    end
+
     def flex_layout(**, &)
       render(Primer::OpenProject::FlexLayout.new(**), &)
     end

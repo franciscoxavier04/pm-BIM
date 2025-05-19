@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,31 +28,41 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module AngularHelper
-  ##
-  # Create a component element tag with the given attributes
-  #
-  # Allow setting dynamic inputs for components with the populateInputsFromDataset functionality
-  # by using inputs: { inputName: value }
-  def angular_component_tag(component, options = {})
-    inputs = angular_component_inputs(options.delete(:inputs) || {})
+require "rails_helper"
 
-    options[:data] = options.fetch(:data, {}).merge(inputs)
-    options[:class] ||= [options[:class], "op-angular-component"]
-                          .compact
-                          .join(" ")
+RSpec.describe OpPrimer::AngularComponent, type: :component do
+  let(:data) { { "test-selector": "foo" } }
 
-    content_tag(component, nil, options)
+  subject do
+    render_inline(described_class.new(tag: "op-test", classes: "op-classname", inputs:, data:))
   end
 
-  ##
-  # Transforms inputs to interop with the `populateInputsFromDataset`.
-  #
-  # @param inputs [Hash{String=>Object}] a hash of input properties.
-  #   Keys will be converted to kebab-cased strings, prefixed with `data-`.
-  #   Values will be serialized as JSON.
-  # @return [Hash{String=>String}] a new hash with transformed properties.
-  def angular_component_inputs(inputs)
-    inputs.each_with_object({}) { |(k, v), h| h[k.to_s.underscore.dasherize] = v.to_json }
+  describe "inputs transformations" do
+    let(:inputs) do
+      {
+        key: "value",
+        number: 1,
+        anArray: [1, 2, 3],
+        someRandomObject: { complex: true, foo: "bar" }
+      }
+    end
+
+    let(:expected) do
+      <<~HTML.squish
+        <op-test
+          class="op-classname op-angular-component"
+          data-key='"value"'
+          data-number="1"
+          data-an-array="[1,2,3]"
+          data-some-random-object='{"complex":true,"foo":"bar"}'
+          data-test-selector="foo"
+          data-view-component="true"
+          ></op-test>
+      HTML
+    end
+
+    it "converts the inputs" do
+      expect(subject).to be_dom_eql(expected)
+    end
   end
 end
