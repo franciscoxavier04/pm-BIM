@@ -67,6 +67,10 @@ module MeetingAgendaItems
         User.current.allowed_in_project?(:manage_outcomes, @meeting.project)
     end
 
+    def add_note_action?
+      @meeting_agenda_item.editable? && @meeting_agenda_item.notes.blank?
+    end
+
     def first?
       @first ||=
         if @first_and_last.first
@@ -127,7 +131,7 @@ module MeetingAgendaItems
 
     def copy_action_item(menu)
       url = meeting_url(@meeting, anchor: "item-#{@meeting_agenda_item.id}")
-      menu.with_item(label: t("button_copy_link_to_clipboard"),
+      menu.with_item(label: t("meeting.copy.to_clipboard"),
                      tag: :"clipboard-copy",
                      content_arguments: { value: url }) do |item|
         item.with_leading_visual_icon(icon: :copy)
@@ -168,7 +172,7 @@ module MeetingAgendaItems
     end
 
     def delete_action_item(menu)
-      label = @meeting_agenda_item.work_package_id.present? ? t(:label_agenda_item_remove) : t(:text_destroy)
+      label = @meeting_agenda_item.work_package_id.present? ? wp_agenda_item_delete_label : t(:text_destroy)
       menu.with_item(label:,
                      scheme: :danger,
                      href: meeting_agenda_item_path(@meeting_agenda_item.meeting, @meeting_agenda_item),
@@ -177,6 +181,10 @@ module MeetingAgendaItems
                      }) do |item|
         item.with_leading_visual_icon(icon: :trash)
       end
+    end
+
+    def wp_agenda_item_delete_label
+      @meeting_agenda_item.in_backlog? ? t(:label_agenda_item_remove_from_backlog) : t(:label_agenda_item_remove_from_agenda)
     end
 
     def move_action_item(menu, move_to, label_text, icon)
@@ -238,6 +246,14 @@ module MeetingAgendaItems
 
     def in_template?
       @meeting.templated?
+    end
+
+    def note_or_outcome_action_added?
+      (@meeting_agenda_item.editable? && @meeting_agenda_item.notes.blank?) || add_outcome_action?
+    end
+
+    def move_to_different_section_or_meeting_action_added?
+      !in_template? || in_backlog? || move_to_next_meeting_enabled?
     end
   end
 end
