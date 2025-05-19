@@ -82,6 +82,12 @@ module API
                  if: ->(*) { embed_links },
                  uncacheable: true
 
+        property :emoji_reactions,
+                 embedded: true,
+                 exec_context: :decorator,
+                 if: ->(*) { embed_links },
+                 uncacheable: true
+
         date_time_property :created_at
         date_time_property :updated_at
 
@@ -100,6 +106,16 @@ module API
             .create(represented.journable,
                     current_user: current_user,
                     embed_links: false)
+        end
+
+        def emoji_reactions
+          return unless represented.journable.is_a?(WorkPackage)
+
+          emoji_reactions = Journal.grouped_emoji_reactions(reactable_id: represented.id, reactable_type: "Journal")
+          API::V3::EmojiReactions::EmojiReactionCollectionRepresenter
+            .new(emoji_reactions,
+                 self_link: api_v3_paths.emoji_reactions_by_activity_comment(represented.id),
+                 current_user:)
         end
 
         private
