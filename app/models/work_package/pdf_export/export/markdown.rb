@@ -89,7 +89,11 @@ module WorkPackage::PDFExport::Export::Markdown
       id = tag.attr("data-id")
       return [] if id.blank?
 
-      node.next.string_content = "" if node.next.respond_to?(:string_content) # clear the text content
+      next_node = node&.next # there is no markdown node in a html table
+      if next_node && next_node.type == :text && next_node.respond_to?(:string_content)
+        # clear the text content, so it does not get rendered
+        next_node.string_content = ""
+      end
       wp_mention_macro(tag.attr("data-text") || "", id, opts)
     end
 

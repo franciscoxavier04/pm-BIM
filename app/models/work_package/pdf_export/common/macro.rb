@@ -54,15 +54,25 @@ module WorkPackage::PDFExport::Common::Macro
   end
 
   def apply_macros_node(node, context)
-    if %i[html inline_html].include?(node.type)
+    if node.type == :html
       apply_macros_node_html(node, context)
-    elsif node.type == :text
+    elsif node.type == :text && not_in_mention?(node)
       apply_macros_node_text(node, context)
     end
   end
 
+  def not_in_mention?(node)
+    # Check if the text node is not inside a mention tag
+    # e.g. <mention ...>#1234</mention>
+    # We don't want to end up with
+    # <mention ...><mention ...>#1234</mention></mention>
+    node.previous.nil? || node.previous.type != :inline_html || node.previous.string_content.exclude?("<mention")
+  end
+
   def apply_macros_node_text(node, context)
     formatted = apply_macro_text(node.string_content, context)
+    return if formatted == node.string_content
+
     if formatted.include?("<")
       fragment = Markly::Node.new(:inline_html)
       fragment.string_content = formatted
@@ -96,7 +106,7 @@ module WorkPackage::PDFExport::Common::Macro
   def apply_macro_html(html, context)
     return html unless applicable?(html)
 
-    doc = Nokogiri::HTML.fragment(html)
+    doc = Nokogiri::HTML5.fragment(html)
     apply_macro_html_node(doc, context)
     doc.to_html
   end
