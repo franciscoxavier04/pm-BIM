@@ -59,19 +59,16 @@ You can:
 > [!NOTE]
 > Internal comments are an Enterprise add-on and can only be used with [Enterprise cloud](../../enterprise-guide/enterprise-cloud-guide/) or [Enterprise on-premises](../../enterprise-guide/enterprise-cloud-guide/). An upgrade from the free Community edition is easily possible.
 
-Projects often involve external clients or suppliers. They can be invited to a project or an individual work package with specific, limited roles, which reduces the need to organize outside the project context using different incompatible tools. However, the core project team might want to keep some of their conversation private and limited to a smaller group, for example when discussing rates, negotiations, sensitive financial information or contextual information. 
-
-With internal comments, the core team can have a meta-level conversation within work packages that external clients or suppliers cannot access. This reduces the need to have conversationsn about the same things in different places, allowing teams to better manage the flow of information and maintain a single source of truth.
+Projects may include external clients or suppliers, who can be invited to a project or individual work package with restricted roles. To keep sensitive discussions (for example rates, negotiations, or financial and contextual details) confined to the core team, internal comments can be used. These comments are only visible to authorized users and are not accessible to external participants. This allows teams to manage sensitive information directly within work packages and avoid using external tools, maintaining a single source of truth.
 
 > [!TIP]
-> To use this feature, a project admin will first have to enable internal comments for their project. This can be done by navigating to [Project settings](../projects/project-settings/work-packages/#work-package-internal-comments-enterprise-add-on) → Work packages → Internal comments (tab). By default, these internal comments are only visible to the project admin role. To expand who can write and view these comments, instance administrators can grant a new set of permissions (to view, write and edit internal comments) to any number of roles.
+> To use the internal comments feature, a project admin must first enable it by navigating to [Project settings → Work packages → Internal comments tab](../projects/project-settings/work-packages/#work-package-internal-comments-enterprise-add-on). 
+> By default, internal comments are only visible to the *Project admin* role. However, for broader access, an instance administrator can grant permissions to view, write, and edit internal comments to any existing or new role.
+> These permissions must be explicitly assigned for the feature to be usable. If the permissions are removed, the internal comments will no longer be visible to those roles.
 
 Internal comments are distinguished from other comments via a different color scheme and a lock icon. 
 
 ![Example of an internal comment displayed under Activity tab of an OpenProject work package](openproject_user_guide_internal_comment_example.png)
-
-> [!TIP]
-> In order for internal comments feature to be used, the relevant permissions need to be granted to specific roles. By default, only the 'Project admin' have them but an instance administrator can add them to any existing or new role. When these permission are removed, internal comments will simply no longer be visible. 
 
 To write an internal comment, proceed the same way you would when writing a regular comment but make sure to check **Internal comment** checkbox before submitting.
 
@@ -91,7 +88,7 @@ To use these options click the more (...) menu next to the lock icon on the righ
 ![Editing options for an internal comment shown in a dropdown menu](openproject_user_guide_internal_comment_edit_quote_copy.png)
 
 > [!TIP]
-> It is currently not possible to view a list of all others users in a project who are able to read and add internal comments. We understand this is an important feature and plan to add this functionality in a future release.
+> It is currently not possible to view a list of all other users in a project who are able to read and add internal comments. We understand this is an important feature and plan to add this functionality in a future release.
 
 ### Emoji reactions
 
