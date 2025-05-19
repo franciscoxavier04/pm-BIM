@@ -45,7 +45,7 @@ You can trigger a assistive technology announcement from your Rails controller b
 
 ```ruby
 render_live_region_update_message(
-  message: I18n.t("work_package_relations_tab.relations.create_child_aria_live_message"),
+  message: "A relation is added",
   politeness: "polite"
 )
 ```
@@ -93,5 +93,5 @@ To ensure that announcements are still read aloud in this situation, we should i
 ```erb
   <live-region>
   </live-region>
-  <%= render OpTurbo::StreamComponent.new(action: :liveRegion, message: "Date picker is updated.", politeness: "assertive", target: "nil") %>
+  <%= render OpTurbo::StreamComponent.new(action: :liveRegion, message: "Date picker is updated.", politeness: "polite", target: nil) %>
 ```
