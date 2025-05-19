@@ -53,7 +53,6 @@ module WorkPackage::Exports
         [WorkPackagesLinkHandler]
       end
 
-
       def self.regexp
         %r{
           ([[[:space:]](,~\-\[>]|^) # Leading string
