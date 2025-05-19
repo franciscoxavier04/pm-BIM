@@ -16,14 +16,14 @@ needed for file storages with automatically managed project folders.
 
 ## Connection validation
 
-Every file storage for OneDrive/SharePoint is able to run connection checks. This test is triggered manually by
-clicking on **Run checks now** in the sidebar on the right side of the file storage's details view. This check is
-available from the UI to edit the storage.
+Every file storage is able to run connection checks. This test is triggered manually by clicking on **Run checks now**
+in the sidebar on the right side of the file storage's details view. This check is available from the UI to edit the
+storage.
 
 ![Check connection for a file storage in OpenProject administration](openproject_file_storages_onedrive_run_checks_button.png)
 
-Once the check is finished, a full health report will be generated and a brief summary is displayed. Click **Open full
-health report** to see the report in full detail and to download it.
+Once the check is finished, a full health report will be generated and a brief summary will be displayed. Click **Open
+full health report** to see the report in full detail and to download it.
 
 ![Link to open full health report for a file storage in OpenProject administration](openproject_file_storages_onedrive_open_full_health_report.png)
 
@@ -39,7 +39,8 @@ respective buttons.
 ![Health status report for a file storage in OpenProject administration](openproject_file_storages_onedrive_open_full_health_report_download_button.png)
 
 > [!TIP]
-> If you’re experiencing issues with the file storage, please download the **health status report** and include it in your support request. This will help us diagnose the problem more efficiently.
+> If you’re experiencing issues with the file storage, please download the **health status report** and include it in
+> your support request. This will help us diagnose the problem more efficiently.
 
 ### Error codes
 
@@ -54,7 +55,7 @@ that can happen on all files storages.
 
 ### Error codes specific for OneDrive/SharePoint
 
-The following table lists the error codes of failures specific for OneDrive/SharePoint, with a description of the
+The following table lists the error codes of failures specific to OneDrive/SharePoint, with a description of the
 possible reasons and suggested solutions.
 
 | Error code                             | Error description                                                                     | Possible reasons                                                                                                                                                                                           | Next steps and solutions                                                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -74,7 +75,7 @@ possible reasons and suggested solutions.
 
 ### Error codes specific for Nextcloud
 
-The following table lists the error codes of failures specific for Nextcloud, with a description of the possible reasons
+The following table lists the error codes of failures specific to Nextcloud, with a description of the possible reasons
 and suggested solutions.
 
 | Error code                         | Error description                                                                            | Possible reasons                                                                                                                                                            | Next steps and solutions                                                                                                                                                                                    |
@@ -94,8 +95,8 @@ the [system admin guide](../../../../system-admin-guide/integrations/nextcloud/#
 
 ### Error codes specific for file storages with SSO configuration
 
-Some file storages can be configured to use SSO login methods. There are a couple of checks run explicitly for this kind
-of setup. The following table contains the error codes of those checks.
+Some file storages can be configured to use SSO login methods. There are a few checks run specifically for this type
+of setup. The following table lists the error codes related to those checks.
 
 | Error code                        | Error description                                          | Possible reasons                                                                                                                                                                                                      | Next steps and solutions                                                                                                     |
 |-----------------------------------|------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
