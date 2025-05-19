@@ -435,10 +435,33 @@ export class OpWorkPackagesCalendarService extends UntilDestroyedMixin {
     const startDate = resizeInfo.event.startStr;
     const endDate = moment(resizeInfo.event.endStr).subtract(1, 'day').format('YYYY-MM-DD');
 
-    if (dragged && !this.isMilestone(workPackage)) {
+    // When resizing an event, or if it's a milestone, set work package dates to
+    // event dates
+    if (!dragged || this.isMilestone(workPackage)) {
+      return this.changeToDates(workPackage, startDate, endDate);
+    }
+
+    // When drag&drop, adjust existing dates and duration of work package,
+    //
+    // In TeamPlanner, work packages can be moved from a work package list to
+    // the calendar. In this case, there is no `delta` property (EventReceiveArg
+    // event type) and dates need to set, even if not set initially.
+    //
+    // When moving inside the calendar, event is an EventDropArg and `delta`
+    // property is present. Dates must be changed only if they are already set.
+    const isMovingInSameCalendar = !!(resizeInfo as EventDropArg).delta;
+    if (isMovingInSameCalendar) {
       return this.moveToDates(workPackage, startDate, endDate);
     }
-    return this.changeToDates(workPackage, startDate, endDate);
+    return this.moveToStartDate(workPackage, startDate);
+  }
+
+  private changeToDates(workPackage:WorkPackageResource, startDate:string, endDate:string):ResourceChangeset<WorkPackageResource> {
+    const changeset = this.halEditing.edit(workPackage);
+    changeset.setValue('startDate', startDate);
+    changeset.setValue('dueDate', endDate);
+
+    return changeset;
   }
 
   private moveToDates(workPackage:WorkPackageResource, startDate:string, endDate:string):ResourceChangeset<WorkPackageResource> {
@@ -461,10 +484,12 @@ export class OpWorkPackagesCalendarService extends UntilDestroyedMixin {
     return changeset;
   }
 
-  private changeToDates(workPackage:WorkPackageResource, startDate:string, endDate:string):ResourceChangeset<WorkPackageResource> {
+  private moveToStartDate(workPackage:WorkPackageResource, startDate:string):ResourceChangeset<WorkPackageResource> {
     const changeset = this.halEditing.edit(workPackage);
+
     changeset.setValue('startDate', startDate);
-    changeset.setValue('dueDate', endDate);
+    // keep duration if present to deal with non-working days, or defaults to 1 day
+    changeset.setValue('duration', workPackage.duration || 'P1D');
 
     return changeset;
   }
