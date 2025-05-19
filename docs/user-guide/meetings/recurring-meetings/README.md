@@ -140,7 +140,7 @@ The backlog can be collapsed or expanded by clicking on the the title. Agenda ba
 ![Agenda backlog section title collapsed, in OpenProject recurring meetings](openproject_userguide_meetings_series_backlog_title.png)
 
 #### Add and edit items to series backlogs
-You can add agenda items and link work packages in the same way as you would within the meeting agenda: either by dragging and dropping via the handle on the left or by using the dropdown options of the More (three dots) icon on the right
+You can add agenda items and link work packages in the same way as you would within the meeting agenda: either by dragging and dropping via the handle on the left or by using the dropdown options of the More (three dots) icon on the right.
 
 ![Agenda backlog in recurring meetings in OpenProject](openproject_userguide_meetings_series_backlog.png)
 

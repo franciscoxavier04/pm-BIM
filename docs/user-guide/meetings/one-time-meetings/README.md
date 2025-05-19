@@ -24,7 +24,7 @@ For information on setting up recurring meeting series and templates, please ref
 | [Edit a meeting](#edit-a-meeting)                            | How to edit an existing meeting.                           |
 | [Add a work package to the agenda](#add-a-work-package-to-the-agenda) | How to add a work package to a meeting agenda.             |
 | [Create or edit the meeting agenda](#create-or-edit-the-meeting-agenda) | How to create or edit the agenda.                          |
-| [Agenda backlog](#agenda-backlogs)                            | How to use an agenda backlog to park items for later.     |
+| [Agenda backlog](#agenda-backlogs)                            | How to use an agenda backlog.    |
 | [Add meeting participants](#add-meeting-participants)        | How to invite people to a meeting.                         |
 | [Add meeting attachments](#meeting-attachments)              | How to add attachments to a meeting.                       |
 | [Send email to all participants](#send-email-to-all-participants) | How to send an email to all meeting participants.          |
@@ -162,7 +162,7 @@ This menu also allows you  to *Copy link to clipboard* and to *Remove the outcom
 
 ### Agenda backlogs
 
-An **agenda backlog** is a special pre-existing section below the actual meeting agenda where additional agenda items can be 'parked' before being added to that particular meeting. This allows users to propose topics that are then picked up by the meeting organiser either before or during the actual meeting. 
+An **agenda backlog** is a special pre-existing section below the actual meeting agenda where additional agenda items can be listed before being added to that particular meeting. This allows users to propose topics that are then picked up by the meeting organiser either before or during the actual meeting. 
 
 The backlog can be expanded or collapsed by clicking on the title.
 
