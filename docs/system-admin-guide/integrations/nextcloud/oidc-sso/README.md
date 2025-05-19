@@ -197,6 +197,15 @@ Additionally we need to make sure that the settings of the OIDC Identity Provide
 For the client of the OpenProject application make sure that the signing method is set to RS256 and the "Access Token Type" is "JWT Access Token (RFC 9068)". These two settings allow OpenProject to validate the tokens when it receives them in API requests. Afterwards scroll down to the
 section "Settings" and set the "Refresh Token Expire Time" to "Never". Non-expiring refresh tokens are a requirement by OpenProject right now.
 
+Furthermore we need to configure Nextcloud to accept the access tokens it issued to us itself. This can only be enabled via an OCC command
+on the command line:
+
+```
+occ config:system:set user_oidc --type boolean --value="true" oidc_provider_bearer_validation
+```
+
+General information about running OCC commands [can be found in the Nextcloud documentation](https://docs.nextcloud.com/server/stable/admin_manual/configuration_server/occ_command.html).
+
 This wraps up the configuration of this authentication method using Nextcloud Hub. For details on the next step continue with the [general setup instructions](../#4-automatically-managed-project-folders).
 
 ## 3. Migrating from Two-way OAuth 2.0 authentication

@@ -1589,12 +1589,13 @@ ca:
       work_package: "Paquets de treball"
     project_phase:
       activated: "activat"
-      deactivated: "desactivat"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "desactivat"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Actiu"
@@ -2050,6 +2051,8 @@ ca:
         description: "Amb les alertes per dates, se't notificarà quan una data d'inici o finalització s'apropi de tal manera que no se't puguin oblidar o passar dates rellevants."
       work_package_sharing:
         description: "Share work packages with users who are not members of the project."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "Custom color theme and logo"
         more_info: "Nota: el logotip utilitzat serà accessible públicament."
@@ -2437,6 +2440,8 @@ ca:
         mentioned: "Has sigut mencionat a %{work_package}"
         responsible: "Has esdevingut responsable de %{work_package}"
         watched: "Estàs observant %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Accessibilitat"
   label_account: "Compte"
   label_active: "Actiu"

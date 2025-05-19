@@ -88,7 +88,7 @@ class Project < ApplicationRecord
   has_many :storages, through: :project_storages
   has_many :phases, class_name: "Project::Phase", dependent: :destroy
   has_many :available_phases,
-           -> { visible.eager_load(:definition).order(position: :asc) },
+           -> { visible.order_by_position },
            class_name: "Project::Phase",
            inverse_of: :project
 

@@ -36,7 +36,7 @@ RSpec.describe "Search", :js, :selenium, with_settings: { per_page_options: "5" 
   shared_let(:admin) { create(:admin) }
   shared_let(:project) { create(:project) }
   shared_let(:work_packages) do
-    (1..12).map do |n|
+    (1..22).map do |n|
       Timecop.freeze("2016-11-21 #{n}:00".to_datetime) do
         subject = "Subject No. #{n} WP"
         create(:work_package,
@@ -110,7 +110,7 @@ RSpec.describe "Search", :js, :selenium, with_settings: { per_page_options: "5" 
       global_search.search(query, submit: false)
 
       # Suggestions shall show latest WPs first.
-      global_search.expect_work_package_option(work_packages[11])
+      global_search.expect_work_package_option(work_packages[21])
       #  and show maximum 10 suggestions.
       global_search.expect_work_package_option(work_packages[2])
       global_search.expect_no_work_package_option(work_packages[1])
@@ -313,8 +313,8 @@ RSpec.describe "Search", :js, :selenium, with_settings: { per_page_options: "5" 
         table = Pages::EmbeddedWorkPackagesTable.new(find(".work-packages-embedded-view--container"))
         table.expect_work_package_count(5) # because we set the page size to this
         # Expect order to be from newest to oldest.
-        table.expect_work_package_listed(*work_packages[7..12]) # This line ensures that the table is completely rendered.
-        table.expect_work_package_order(*work_packages[7..12].map { |wp| wp.id.to_s }.reverse)
+        table.expect_work_package_listed(*work_packages[17..22]) # This line ensures that the table is completely rendered.
+        table.expect_work_package_order(*work_packages[17..22].map { |wp| wp.id.to_s }.reverse)
 
         # Expect that "Advanced filters" can refine the search:
         filters.expect_closed
@@ -567,14 +567,14 @@ RSpec.describe "Search", :js, :selenium, with_settings: { per_page_options: "5" 
   describe "pagination" do
     context "for project wide search" do
       it "works" do
-        expect_range 3, 12
+        expect_range 13, 22
 
         click_on "Next", match: :first
-        expect_range 1, 2
+        expect_range 11, 12
         expect(page).to have_current_path /\/projects\/#{project.identifier}\/search/
 
         click_on "Previous", match: :first
-        expect_range 3, 12
+        expect_range 13, 22
         expect(page).to have_current_path /\/projects\/#{project.identifier}\/search/
       end
     end
@@ -587,13 +587,13 @@ RSpec.describe "Search", :js, :selenium, with_settings: { per_page_options: "5" 
       end
 
       it "works" do
-        expect_range 3, 12
+        expect_range 13, 22
 
         click_on "Next", match: :first
-        expect_range 1, 2
+        expect_range 11, 12
 
         click_on "Previous", match: :first
-        expect_range 3, 12
+        expect_range 13, 22
       end
     end
   end

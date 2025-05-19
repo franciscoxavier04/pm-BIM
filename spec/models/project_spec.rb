@@ -389,7 +389,7 @@ RSpec.describe Project do
                     .class_name("Project::Phase")
                     .inverse_of(:project)
                     .dependent(nil)
-                    .order(position: :asc)
+                    .order("project_phase_definitions.position ASC")
     end
 
     it "checks for active flag" do

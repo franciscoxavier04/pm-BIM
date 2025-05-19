@@ -1569,12 +1569,13 @@ zh-TW:
       work_package: "工作項目"
     project_phase:
       activated: "已啟用"
-      deactivated: "已停用"
       added_date: "設定為 %{date}"
       changed_date: "從 %{from} 改為 %{to}"
-      removed_date: "已刪除日期：%{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "已停用"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, 與%{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "已刪除日期：%{date}"
   #common attributes of all models
   attributes:
     active: "啟用"
@@ -2011,6 +2012,8 @@ zh-TW:
         description: "透過日期提醒，您將收到即將到來的開始或結束日期的通知，這樣您就不會錯過或忘記重要的截止日期。"
       work_package_sharing:
         description: "與不是專案成員的使用者共同參與工作項目。"
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "自訂布景主題顏色與logo"
         more_info: "備註：Logo可被公開存取。"
@@ -2398,6 +2401,8 @@ zh-TW:
         mentioned: "您在工作項目「%{work_package}」中被提到"
         responsible: "您已對 %{work_package} 負責"
         watched: "您正在監看 %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "輔助功能"
   label_account: "帳號"
   label_active: "啟用"

@@ -226,9 +226,8 @@ module Pages::Meetings
           page.find_test_selector("op-meeting-agenda-actions").click
         end
         page.find(".Overlay")
+        page.within(".Overlay", &)
       end
-
-      page.within(".Overlay", &)
     end
 
     def select_outcome_action(action)
@@ -367,10 +366,9 @@ module Pages::Meetings
       retry_block do
         click_on_backlog_menu
         page.find(".Overlay")
-      end
-
-      page.within(".Overlay") do
-        click_on action
+        page.within(".Overlay") do
+          click_on action
+        end
       end
     end
 
@@ -391,12 +389,10 @@ module Pages::Meetings
     end
 
     def clear_backlog
-      retry_block do
-        select_backlog_action(I18n.t("label_backlog_clear"))
-        expect(page).to have_modal(I18n.t("label_backlog_clear"))
-        page.within_modal(I18n.t("label_backlog_clear")) do
-          click_on "Clear all"
-        end
+      select_backlog_action(I18n.t("label_backlog_clear"))
+      expect(page).to have_modal(I18n.t("label_backlog_clear"), wait: 3)
+      page.within_modal(I18n.t("label_backlog_clear")) do
+        click_on "Clear all"
       end
     end
 
@@ -586,6 +582,23 @@ module Pages::Meetings
 
     def expect_blankslate
       expect(page).to have_test_selector("meeting-blankslate")
+    end
+
+    def expect_focused_input(input_id)
+      retry_block do
+        expect(page.evaluate_script("document.activeElement.id")).to eq(input_id)
+      end
+    end
+
+    # still a bit ambiguous, but better than nothing
+    def expect_focused_ckeditor
+      retry_block do
+        expect(page.evaluate_script("document.activeElement.classList.contains('ck-focused')")).to be true
+      end
+    end
+
+    def expect_notes(text)
+      expect(page).to have_css(".op-meeting-agenda-item--notes", text:)
     end
   end
 end

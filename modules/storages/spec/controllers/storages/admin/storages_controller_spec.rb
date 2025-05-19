@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,9 +27,16 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-module WorkPackage::Exports
-  module Formatters
-    class EstimatedHours < ::WorkPackage::Exports::Formatters::CompoundHours
-    end
+
+require "spec_helper"
+require_relative "../../../../../../spec/controllers/shared_upsell_examples"
+
+RSpec.describe Storages::Admin::StoragesController do
+  let(:user) { build(:admin) }
+
+  before do
+    login_as user
   end
+
+  it_behaves_like "it has an upsell action"
 end

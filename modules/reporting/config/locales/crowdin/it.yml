@@ -94,8 +94,8 @@ it:
       timesheet: "Foglio presenze"
       time: "Ora"
       sums_hours: Somme
-      overview_per_user_total: "Overview: Total hours per user"
-      overview_per_user_day: "Overview: Hours per user per day"
+      overview_per_user_total: "Panoramica: totale ore per utente"
+      overview_per_user_day: "Panoramica: ore per utente al giorno"
     cost_reports:
       title: "Esportazione XLS dei report sui costi"
       start_time: "Ora di inizio"

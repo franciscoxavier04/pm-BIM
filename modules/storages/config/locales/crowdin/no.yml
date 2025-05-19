@@ -218,7 +218,7 @@
         setup_incomplete: Velg type behandling av brukertilgang og opprettelse av mappe.
         subtitle: Tilgangsstyring
       access_management_section: Tilgang og prosjektmapper
-      automatically_managed_folders: Automatisk administrerte mapper
+      automatically_managed_folders: Automatisk administrerte mapper 
       general_information: Generell informasjon
       oauth_configuration: OAuth configuration
       one_drive_oauth: Azure OAuth
@@ -270,9 +270,9 @@
           storage_configured: Configuration complete
           tenant_id: Tenant ID
         failures:
-          zero: All checks passed
           one: "%{count} check failed"
           other: "%{count} checks failed"
+        success: All checks passed
         warnings:
           one: "%{count} check returned a warning"
           other: "%{count} checks returned a warning"
@@ -391,7 +391,7 @@
     label_inactive: Inaktiv
     label_managed_project_folders:
       application_password: Applikasjonspassord
-      automatically_managed_folders: Automatisk administrerte mapper
+      automatically_managed_folders: Automatisk administrerte mapper 
     label_name: Navn
     label_new_file_storage: Ny %{provider} lagring
     label_new_storage: Ny lagring
@@ -410,6 +410,7 @@
     member_connection_status:
       connected: Tilkoblet
       connected_no_permissions: Brukerrolle har ingen lagringsrettigheter
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: Ikke tilkoblet. Brukeren må logge inn på lagringsplassen via følgende %{link}.
       not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: Ingen medlemmer å vise.

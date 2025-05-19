@@ -270,8 +270,8 @@ vi:
           storage_configured: Configuration complete
           tenant_id: Tenant ID
         failures:
-          zero: All checks passed
           other: "%{count} checks failed"
+        success: All checks passed
         warnings:
           other: "%{count} checks returned a warning"
       connection_validation:
@@ -408,6 +408,7 @@ vi:
     member_connection_status:
       connected: Đã kết nối
       connected_no_permissions: Vai trò người dùng không có quyền lưu trữ
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: Chưa kết nối. Người dùng nên đăng nhập vào lưu trữ qua %{link}.
       not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: Không có thành viên nào để hiển thị.

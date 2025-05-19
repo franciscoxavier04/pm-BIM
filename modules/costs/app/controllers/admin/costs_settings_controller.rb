@@ -40,9 +40,8 @@ module Admin
     private
 
     def validate_times_enabled_for_enforcement
-      pp(settings_params)
-      allow_times =  ActiveRecord::Type::Boolean.new.cast(settings_params[:allow_tracking_start_and_end_times])
-      force_times =  ActiveRecord::Type::Boolean.new.cast(settings_params[:enforce_tracking_start_and_end_times])
+      allow_times = ActiveRecord::Type::Boolean.new.cast(settings_params[:allow_tracking_start_and_end_times])
+      force_times = ActiveRecord::Type::Boolean.new.cast(settings_params[:enforce_tracking_start_and_end_times])
 
       if force_times && !allow_times
         flash[:error] = I18n.t("setting_enforce_without_allow")

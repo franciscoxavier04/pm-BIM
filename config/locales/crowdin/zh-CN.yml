@@ -1567,12 +1567,13 @@ zh-CN:
       work_package: "工作包"
     project_phase:
       activated: "已激活"
-      deactivated: "已停用"
       added_date: "设为 %{date}"
       changed_date: "由 %{from} 变更为 %{to}"
-      removed_date: "删除日期%{date}"
-      phase_and_one_gate: "%{phase_message}。%{gate_message}"
+      deactivated: "已停用"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}。%{start_gate_message}，和%{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}。%{gate_message}"
+      removed_date: "删除日期%{date}"
   #common attributes of all models
   attributes:
     active: "激活"
@@ -1639,8 +1640,8 @@ zh-CN:
     priority: "优先级"
     project: "项目"
     project_ids: "项目 ID"
-    project_phase: "项目计划"
-    project_phase_definition: "项目计划"
+    project_phase: "项目阶段"
+    project_phase_definition: "项目阶段"
     reason: "原因"
     responsible: "负责人"
     required: "必填"
@@ -1976,15 +1977,15 @@ zh-CN:
       work_package_sharing: 与外部用户共享工作包
       work_package_subject_generation: 工作包主题生成
     upsell:
-      plans_title: "Enterprise plans"
+      plans_title: "企业计划"
       title: "企业附加组件"
       plan_title: "企业 %{plan} 附加组件"
       plan_name: "%{plan} 企业计划"
       plan_text_html: "从 %{plan_name} 开始可用。"
       hide_banner: "隐藏此广告"
       homescreen_description: >
-        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
-      homescreen_subline: By upgrading, you will also be supporting an open source project.
+        企业计划将扩展您正在使用的 OpenProject 社区版本。 它们包括附加组件、额外功能和专业支持，使各种规模的组织能够一起取得巨大成就。
+      homescreen_subline: 通过升级，您也将支持一个开源项目。
       baseline_comparison:
         description: 高亮显示自从过去任意时间点以来对此列表所做的更改。
       work_package_subject_generation:
@@ -2009,6 +2010,8 @@ zh-CN:
         description: "通过日期提醒，您将收到即将开始或完成日期的通知，以免错过或忘记重要截止日期。"
       work_package_sharing:
         description: "与非此项目成员的用户共享工作包。"
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "自定义颜色主题和 Logo"
         more_info: "注：使用的 Logo 将可公开访问。"
@@ -2396,6 +2399,8 @@ zh-CN:
         mentioned: "您在 %{work_package} 中被提及"
         responsible: "您已成为 %{work_package} 的负责人"
         watched: "您正在关注 %{work_package}"
+    query:
+      invalid_filter: "无效的通知过滤器"
   label_accessibility: "辅助功能"
   label_account: "帐户"
   label_active: "激活"

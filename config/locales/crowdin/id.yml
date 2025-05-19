@@ -1567,12 +1567,13 @@ id:
       work_package: "Paket-Penugasan"
     project_phase:
       activated: "diaktifkan"
-      deactivated: "dinonaktifkan"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "dinonaktifkan"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktif"
@@ -2009,6 +2010,8 @@ id:
         description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
       work_package_sharing:
         description: "Share work packages with users who are not members of the project."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "Custom color theme and logo"
         more_info: "Catatan: logo yang digunakan akan dapat diakses publik."
@@ -2396,6 +2399,8 @@ id:
         mentioned: "Anda telah disebutkan di %{work_package}"
         responsible: "Anda telah bertanggung jawab atas %{work_package}"
         watched: "Anda sedang menonton %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Kemampuan akses"
   label_account: "Akun"
   label_active: "Aktif"

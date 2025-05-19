@@ -1591,12 +1591,13 @@ tr:
       work_package: "İş paketleri"
     project_phase:
       activated: "etkinleştirildi"
-      deactivated: "devre dışı bırakmak"
       added_date: "%{date} tarihine ayarlandı"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "devre dışı bırakmak"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktif"
@@ -2052,6 +2053,8 @@ tr:
         description: "Tarih uyarıları ile yaklaşan başlangıç veya bitiş tarihleri hakkında bilgilendirileceksiniz, böylece önemli bir teslim tarihini asla kaçırmaz veya unutmazsınız."
       work_package_sharing:
         description: "İş paketlerini proje üyesi olmayan kullanıcılarla paylaşın."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "Custom color theme and logo"
         more_info: "Not: Kullanılan logo herkese açık olacaktır."
@@ -2439,6 +2442,8 @@ tr:
         mentioned: "%{work_package} içinde sizden bahsedildi"
         responsible: "%{work_package} için sorumlu hale geldiniz"
         watched: "%{work_package} izliyorsunuz"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Erişilebilirlik"
   label_account: "Hesap"
   label_active: "Aktif"

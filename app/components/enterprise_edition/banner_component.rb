@@ -89,10 +89,8 @@ module EnterpriseEdition
     end
 
     def before_render
-      @system_arguments[:style] = join_style_arguments(
-        @system_arguments[:style],
-        medium? ? "background-image: url(#{helpers.image_path(@image)})" : nil
-      )
+      @image_arguments = {}
+      @image_arguments[:style] = @image.present? ? "background-image: url(#{helpers.image_path(@image)})" : nil
     end
 
     def medium?

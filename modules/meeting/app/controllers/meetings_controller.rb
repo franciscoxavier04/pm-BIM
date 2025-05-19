@@ -398,7 +398,7 @@ class MeetingsController < ApplicationController
       .where(start_time: ...next_week)
       .order(start_time: :asc)
       .each do |meeting|
-      start_date = meeting.start_time.to_date
+      start_date = in_user_zone(meeting.start_time).to_date
 
       group_key =
         if start_date == Time.zone.today

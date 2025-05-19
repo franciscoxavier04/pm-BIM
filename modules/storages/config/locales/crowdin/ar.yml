@@ -270,12 +270,13 @@ ar:
           storage_configured: Configuration complete
           tenant_id: Tenant ID
         failures:
-          zero: "All checks passed"
+          zero: "%{count} checks failed"
           one: "%{count} check failed"
           two: "%{count} checks failed"
           few: "%{count} checks failed"
           many: "%{count} checks failed"
           other: "%{count} checks failed"
+        success: All checks passed
         warnings:
           zero: "%{count} checks returned a warning"
           one: "%{count} check returned a warning"
@@ -417,6 +418,7 @@ ar:
     member_connection_status:
       connected: Connected
       connected_no_permissions: User role has no storages permissions
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: Not connected. The user should login to the storage via the following %{link}.
       not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: No members to display.

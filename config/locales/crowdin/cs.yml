@@ -1634,12 +1634,13 @@ cs:
       work_package: "Pracovní balíčky"
     project_phase:
       activated: "Aktivováno "
-      deactivated: "Deaktivováno"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "Deaktivováno"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktivní"
@@ -2133,6 +2134,8 @@ cs:
         description: "S upozorněním na datum budete upozorněni na blížící se datum zahájení nebo ukončení, abyste nikdy nezmeškali nebo nezapomněli na důležitou lhůtu."
       work_package_sharing:
         description: "Sdílejte pracovní balíčky s uživateli, kteří nejsou členy projektu."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "Custom color theme and logo"
         more_info: "Poznámka: použité logo bude veřejně přístupné."
@@ -2520,6 +2523,8 @@ cs:
         mentioned: "Byli jste zmíněni v %{work_package}"
         responsible: "Stali jste se odpovědnými za %{work_package}"
         watched: "Sledujete %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Přístupnost"
   label_account: "Účet"
   label_active: "Aktivní"

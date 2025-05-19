@@ -439,7 +439,7 @@ en:
     You can drag items in and out to add or remove them from the meeting agenda.
   label_agenda_backlog_clear_title: "Clear agenda backlog?"
   text_agenda_backlog_clear_description: >
-    Are you sure you want to remove all items currently in the agenda items? This action is not reversible.
+    Are you sure you want to remove all items currently in the agenda backlog? This action is not reversible.
   label_series_backlog: "Series backlog"
   text_series_backlog: > 
     The backlog is shared with all occurrences of this series.
@@ -448,7 +448,6 @@ en:
   text_series_backlog_clear_description: >
     This will remove all items in the series backlog, which is shared with all meetings in the series.
     Are you sure you want to continue? This action is not reversible.
-
 
   text_agenda_item_title: 'Agenda item "%{title}"'
   text_agenda_work_package_deleted: 'Agenda item for deleted work package'
