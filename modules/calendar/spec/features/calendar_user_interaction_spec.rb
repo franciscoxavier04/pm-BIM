@@ -34,7 +34,7 @@ RSpec.describe "Calendar drag&dop and resizing",
                :selenium do
   include_context "with calendar full access"
 
-  shared_let(:monday) { Time.zone.today.beginning_of_week }
+  shared_let(:monday) { Date.current.beginning_of_week(:monday) }
   shared_let(:tuesday) { monday + 1.day }
   shared_let(:wednesday) { monday + 2.days }
   shared_let(:thursday) { monday + 3.days }
