@@ -59,6 +59,7 @@ export class TurboRequestsService {
         body: formData,
         headers: {
           'X-CSRF-Token': (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).content,
+          'X-Authentication-Scheme': 'Session',
         },
       },
       true,
@@ -68,7 +69,10 @@ export class TurboRequestsService {
   public requestStream(url:string):Promise<{ html:string, headers:Headers }> {
     return this.request(url, {
       method: 'GET',
-      headers: { Accept: 'text/vnd.turbo-stream.html' },
+      headers: {
+        Accept: 'text/vnd.turbo-stream.html',
+        'X-Authentication-Scheme': 'Session',
+      },
       credentials: 'same-origin',
     });
   }

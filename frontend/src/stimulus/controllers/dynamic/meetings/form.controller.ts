@@ -57,7 +57,10 @@ export default class OpMeetingsFormController extends ApplicationController {
       .request(
         `${this.pathHelper.staticBase}/meetings/fetch_timezone?${urlSearchParams.toString()}`,
         {
-          headers: { Accept: 'text/vnd.turbo-stream.html' },
+          headers: {
+            Accept: 'text/vnd.turbo-stream.html',
+            'X-Authentication-Scheme': 'Session',
+          },
         },
       );
   }
