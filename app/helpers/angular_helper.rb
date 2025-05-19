@@ -36,9 +36,7 @@ module AngularHelper
     inputs = angular_component_inputs(options.delete(:inputs) || {})
 
     options[:data] = options.fetch(:data, {}).merge(inputs)
-    options[:class] ||= [options[:class], "op-angular-component"]
-                          .compact
-                          .join(" ")
+    options[:class] ||= "op-angular-component"
 
     content_tag(component, nil, options)
   end
