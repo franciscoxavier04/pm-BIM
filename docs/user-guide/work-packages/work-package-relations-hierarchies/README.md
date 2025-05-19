@@ -43,6 +43,8 @@ You can select one of the following relations:
 
 - **Related to** - This option adds a link from the work package A to work package B, so that project members can immediately see the connection, even if the work packages are not members of the same hierarchy.
 
+- **Parent**  - This option makes the related work package a parent of the current (child) work package.
+
 - **Duplicates / Duplicated by** - This option indicates that the work package B duplicates a work package A in one way or another, for example both address the same task. This can be useful if you have the same work package that needs to be a part of a closed and public projects at the same time. The connection in this case is only semantic, the changes you make in work package A will need to be adapted in work package B manually.
 
 > [!NOTE]
@@ -139,15 +141,13 @@ For more information on the work package creation take a look at the guideline o
 
 To edit or remove the parent of a work package open the work package. At the top of the details view of the work package you will see the work package hierarchy. Click on the **edit icon** or **delete icon** to change the work package parent.
 
+Alternatively you can select the **Delete relation** option next to the parent relation under *Relations* tab.
+
 ![change parent work package](openproject_user_guide_relations_change_parent.png)
 
 ## Display work package hierarchies
 
 After adding the parent and child work packages they are listed in the *Relations* tab. Related work packages are grouped by the type of relation into respective sections. 
-
-> [!NOTE]
->
-> Only the children are shown in the *Relations* tab and the parent isn't.
 
 >  [!TIP]
 >
