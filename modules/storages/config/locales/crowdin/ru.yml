@@ -274,7 +274,7 @@ ru:
           few: "%{count} проверка не удалась"
           many: "%{count} проверка не удалась"
           other: "%{count} проверка не удалась"
-        success: All checks passed
+        success: Все проверки пройдены
         warnings:
           one: "%{count} проверка с предупреждением"
           few: "%{count} проверки с предупреждениями"
