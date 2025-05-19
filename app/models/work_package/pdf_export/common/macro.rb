@@ -114,7 +114,13 @@ module WorkPackage::PDFExport::Common::Macro
   def apply_macro_html_node(node, context)
     if node.text?
       formatted = apply_macro_text(node.content, context)
-      node.content = formatted if formatted != node.content
+      if formatted != node.content
+        if formatted.include?("<")
+          node.replace(formatted)
+        else
+          node.content = formatted
+        end
+      end
     elsif PREFORMATTED_BLOCKS.exclude?(node.name)
       node.children.each { |child| apply_macro_html_node(child, context) }
     end

@@ -88,16 +88,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
 
     it "contains correct data" do
       expect(formatted).to eq("<table><tr><td><p><s><mention class=\"mention\" data-id=\"185\" " +
-                              "data-type=\"work_package\" data-text=\"#185\">#185</mention></s></p></td></tr></table>\n")
-    end
-  end
-
-  describe "workPackageValue replacement" do
-    let(:markdown) { "<table><tr><td>workPackageValue:subject</td></tr></table>" }
-
-    it "contains correct data" do
-      expect(formatted).to eq("<table><tr><td><p><s><mention class=\"mention\" data-id=\"185\" " +
-                              "data-type=\"work_package\" data-text=\"#185\">#185</mention></s></p></td></tr></table>\n")
+                              "data-type=\"work_package\" data-text=\"##185\">##185</mention></s></p></td></tr></table>\n")
     end
   end
 end

@@ -36,14 +36,9 @@ module WorkPackage::Exports
       end
 
       def render_link(wp_id, matcher)
-        "<mention class=\"mention\" data-id=\"#{
-          wp_id
-        }\" data-type=\"work_package\" data-text=\"#{
-          matcher.sep
-        }#{
-          wp_id
-        }\">##{
-          wp_id
+        link = "#{matcher.sep}#{wp_id}"
+        "<mention class=\"mention\" data-id=\"#{wp_id}\" data-type=\"work_package\" data-text=\"#{link}\">#{
+          link
         }</mention>"
       end
     end
