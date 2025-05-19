@@ -137,24 +137,21 @@ RSpec.describe "Team planner add existing work packages",
       add_existing_pane.search "Task"
       add_existing_pane.expect_result second_wp
 
-      sleep 2
-
       # Drag it to the team planner...
       add_existing_pane.drag_wp_by_pixel second_wp, 800, 0
 
       team_planner.expect_and_dismiss_toaster(message: "Successful update.")
 
       # ... and thus update its attributes. Thereby the duration is maintained
-      second_wp.reload
-      expect(second_wp.start_date).to eq(start_of_week.next_occurring(:tuesday))
-      expect(second_wp.due_date).to eq(start_of_week.next_occurring(:thursday))
-      expect(second_wp.assigned_to_id).to eq(user.id)
+      expect(second_wp.reload).to have_attributes(
+        start_date: start_of_week.next_occurring(:tuesday),
+        due_date: start_of_week.next_occurring(:thursday),
+        assigned_to_id: user.id
+      )
 
       # Search for another work package
       add_existing_pane.search "Ta"
       add_existing_pane.expect_result third_wp
-
-      sleep 2
 
       # Drag it to the team planner...
       add_existing_pane.drag_wp_by_pixel third_wp, 800, 100
@@ -162,14 +159,41 @@ RSpec.describe "Team planner add existing work packages",
       team_planner.expect_and_dismiss_toaster(message: "Successful update.")
 
       # ... and thus update its attributes. Since no dates were set before, start and end date are set to the same day
-      third_wp.reload
-      expect(third_wp.start_date).to eq(start_of_week.next_occurring(:tuesday))
-      expect(third_wp.due_date).to eq(start_of_week.next_occurring(:tuesday))
-      expect(third_wp.assigned_to_id).to eq(user.id)
+      expect(third_wp.reload).to have_attributes(
+        start_date: start_of_week.next_occurring(:tuesday),
+        due_date: start_of_week.next_occurring(:tuesday),
+        assigned_to_id: user.id
+      )
 
       # New events are directly clickable
       split_view = team_planner.open_split_view_by_info_icon(third_wp)
       split_view.expect_open
+    end
+
+    context "with non-working days" do
+      shared_let(:working_days) { week_with_saturday_and_sunday_as_weekend }
+
+      it "keeps duration when adding work packages via drag&drop from the left hand shortlist" do
+        # add initial duration to task 3
+        third_wp.update!(duration: 11)
+
+        # Search for a work package
+        add_existing_pane.search third_wp.subject
+        add_existing_pane.expect_result third_wp
+
+        # Drag it to the team planner...
+        add_existing_pane.drag_wp_by_pixel third_wp, 800, 0
+        team_planner.expect_and_dismiss_toaster(message: "Successful update.")
+
+        # ... and thus update its attributes. Thereby the duration is maintained
+        # and the due date is set to 15 days from the start date (11 days of
+        # duration + 2x2 non-working days for the weekends)
+        expect(third_wp.reload).to have_attributes(
+          start_date: start_of_week.next_occurring(:tuesday),
+          due_date: start_of_week.next_occurring(:tuesday) + 14.days,
+          assigned_to_id: user.id
+        )
+      end
     end
 
     it "the search applies the filter from the team planner" do
