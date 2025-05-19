@@ -38,7 +38,7 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
   let(:formatter) { Class.new { extend WorkPackage::PDFExport::Common::Macro } }
 
   subject(:formatted) do
-    formatter.apply_markdown_field_macros(markdown, { work_package: work_package })
+    formatter.apply_markdown_field_macros(markdown, { work_package: work_package, user: User.current })
   end
 
   describe "empty text" do
@@ -51,8 +51,8 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
     let(:markdown) { '<mention class="mention" data-id="185" data-type="work_package" data-text="#185">#185</mention>' }
 
     it "ignores the tag" do
-      expect(formatted).to
-      eq("<mention class=\"mention\" data-id=\"185\" data-type=\"work_package\" data-text=\"#185\">\\#185</mention>\n")
+      expect(formatted).to eq("<mention class=\"mention\" data-id=\"185\" " +
+                              "data-type=\"work_package\" data-text=\"#185\">\\#185</mention>\n")
     end
   end
 
@@ -60,8 +60,8 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
     let(:markdown) { "#185" }
 
     it "contains correct data" do
-      expect(formatted).to
-      eq("<mention class=\"mention\" data-id=\"185\" data-type=\"work_package\" data-text=\"#185\">#185</mention>\n")
+      expect(formatted).to eq("<mention class=\"mention\" data-id=\"185\" " +
+                              "data-type=\"work_package\" data-text=\"#185\">#185</mention>\n")
     end
   end
 
@@ -69,8 +69,8 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
     let(:markdown) { "\n**#185**\n" }
 
     it "contains correct data" do
-      expect(formatted).to
-      eq("**<mention class=\"mention\" data-id=\"185\" data-type=\"work_package\" data-text=\"#185\">#185</mention>**\n")
+      expect(formatted).to eq("**<mention class=\"mention\" data-id=\"185\" " +
+                              "data-type=\"work_package\" data-text=\"#185\">#185</mention>**\n")
     end
   end
 
@@ -78,8 +78,26 @@ RSpec.describe WorkPackage::PDFExport::Common::Macro do
     let(:markdown) { "~~#185~~" }
 
     it "contains correct data" do
-      expect(formatted).to
-      eq("~~<mention class=\"mention\" data-id=\"185\" data-type=\"work_package\" data-text=\"#185\">#185</mention>~~\n")
+      expect(formatted).to eq("~~<mention class=\"mention\" data-id=\"185\" " +
+                              "data-type=\"work_package\" data-text=\"#185\">#185</mention>~~\n")
+    end
+  end
+
+  describe "wp mention with strikethrough in table" do
+    let(:markdown) { "<table><tr><td><p><s>##185</s></p></td></tr></table>" }
+
+    it "contains correct data" do
+      expect(formatted).to eq("<table><tr><td><p><s><mention class=\"mention\" data-id=\"185\" " +
+                              "data-type=\"work_package\" data-text=\"#185\">#185</mention></s></p></td></tr></table>\n")
+    end
+  end
+
+  describe "workPackageValue replacement" do
+    let(:markdown) { "<table><tr><td>workPackageValue:subject</td></tr></table>" }
+
+    it "contains correct data" do
+      expect(formatted).to eq("<table><tr><td><p><s><mention class=\"mention\" data-id=\"185\" " +
+                              "data-type=\"work_package\" data-text=\"#185\">#185</mention></s></p></td></tr></table>\n")
     end
   end
 end

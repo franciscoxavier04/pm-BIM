@@ -106,7 +106,7 @@ module WorkPackage::PDFExport::Common::Macro
   def apply_macro_html(html, context)
     return html unless applicable?(html)
 
-    doc = Nokogiri::HTML5.fragment(html)
+    doc = Nokogiri::HTML.fragment(html)
     apply_macro_html_node(doc, context)
     doc.to_html
   end
