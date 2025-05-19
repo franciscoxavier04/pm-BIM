@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,32 +26,13 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
-  class CombinedFilterComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpTurbo::Streamable
-    include OpPrimer::ComponentHelpers
-    include Redmine::I18n
+module Settings
+  module ProjectCustomFieldSections
+    class NewSectionDialogComponent < ApplicationComponent
+      include OpTurbo::Streamable
 
-    def initialize(query:, params:, project: nil)
-      super()
-
-      @query = query
-      @project = project
-      @params = params
-    end
-
-    def dynamic_path(upcoming: true)
-      polymorphic_path([@project, :meetings], current_params.merge(upcoming:))
-    end
-
-    def upcoming_query?
-      filter = @query.filters.find { |f| f.name == :time }
-      filter ? !filter.past? : true
-    end
-
-    def current_params
-      @current_params ||= params.slice(:filters, :page, :per_page).permit!
+      MODAL_ID = "project-custom-field-section-dialog"
+      FORM_ID = "project-custom-field-section-dialog-form"
     end
   end
 end
