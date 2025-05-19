@@ -635,7 +635,7 @@ de:
             project: "Projekt"
         pattern:
           label: "Titel-Schema"
-          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          caption_with_supported_attributes_link: Erstellen Sie Muster, indem Sie Text hinzufügen, oder geben Sie "/" ein, um nach %{link} zu suchen.
           insert_as_text: "Keine Attribute gefunden. Als Text hinzufügen: \"%{word}\""
           supported_attributes_link: "unterstützte Attribute"
       export_configuration:
@@ -1998,7 +1998,7 @@ de:
       edit_attribute_groups: Attributgruppen bearbeiten
       gantt_pdf_export: Gantt PDF Export
       ldap_groups: LDAP Konten und Gruppen Synchronisation
-      nextcloud_sso: Single Sign-On for Nextcloud Storage
+      nextcloud_sso: Single Sign-On für Nextcloud-Speicher
       one_drive_sharepoint_file_storage: OneDrive/SharePoint-Datei-Speicher
       placeholder_users: Platzhalter-Benutzer
       project_list_sharing: Projektlistenfreigabe
@@ -2045,7 +2045,7 @@ de:
       work_package_sharing:
         description: "Teilen Sie Arbeitspakete mit Benutzern, die nicht Mitglieder des Projekts sind."
       project_list_sharing:
-        description: "Share project lists with individual users."
+        description: "Projektlisten mit einzelnen Benutzern und Gruppen teilen."
       define_custom_style:
         title: "Selbstdefiniertes Farbthema und Logo"
         more_info: "Hinweis: Das verwendete Logo wird öffentlich zugänglich sein."
@@ -2054,8 +2054,8 @@ de:
         title: "Benutzerdefinierte Aktionen"
         description: "Selbstdefinierte Aktionen sind Verknüpfungen zu einer Reihe von vordefinierten Aktionen, die Sie für bestimmte Arbeitspakete je nach Status, Rolle, Typ oder Projekt mit nur einem Klick auf einen Button auslösen."
       nextcloud_sso:
-        title: "Single Sign-On for Nextcloud Storage"
-        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
+        title: "Single Sign-On für Nextcloud-Speicher"
+        description: "Aktivieren Sie nahtlose und sichere Authentifizierung für Ihren Nextcloud-Speicher mit Single Sign-On. Vereinfachen Sie das Zugriffsmanagement und erhöhen Sie den Benutzerkomfort."
       virus_scanning:
         description: "Stellen Sie sicher, dass hochgeladene Dateien in OpenProject auf Viren gescannt werden, bevor sie für andere Benutzer zugänglich sind."
       placeholder_users:

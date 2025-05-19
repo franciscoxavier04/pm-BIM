@@ -272,7 +272,7 @@ de:
         failures:
           one: "%{count} Überprüfung fehlgeschlagen"
           other: "%{count} Überprüfungen fehlgeschlagen"
-        success: All checks passed
+        success: Alle Prüfungen bestanden
         warnings:
           one: "%{count} Überprüfung hat eine Warnung zurückgegeben"
           other: "%{count} Überprüfungen haben eine Warnung zurückgegeben"
@@ -410,7 +410,7 @@ de:
     member_connection_status:
       connected: Verbunden
       connected_no_permissions: Benutzerrolle hat keine Speicherberechtigungen
-      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
+      not_connectable: Eine Verbindung kann nicht hergestellt werden. Der Speicher erfordert Login über einen SSO-Provider, aber der Benutzer verwendet kein SSO für die Anmeldung.
       not_connected: Nicht verbunden. Der Benutzer sollte sich über diesen %{link} anmelden.
       not_connected_sso: Noch nicht verbunden, SSO sollte sie automatisch verbinden, wenn Sie sich die Dateien anschauen.
     members_no_results: Keine Mitglieder zum Anzeigen.
