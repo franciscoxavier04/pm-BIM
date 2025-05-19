@@ -23,6 +23,9 @@
     },
     "notes" : {
       "$ref" : "#/$defs/notes"
+    },
+    "outcome" : {
+      "$ref" : "#/$defs/outcome"
     }
   },
   "required" : [],
@@ -1152,8 +1155,44 @@
       "properties" : {
         "markdown_margin" : {
           "type" : "object",
-          "title" : "Work package markdown margins",
-          "description" : "Margins for work package description and long text custom fields",
+          "title" : "Agenda item notes markdown margins",
+          "description" : "Margins for agenda item notes",
+          "x-example" : {
+            "markdown_margin" : {
+              "margin_bottom" : 16
+            }
+          },
+          "allOf" : [
+            {
+              "$ref" : "#/$defs/margin"
+            }
+          ]
+        },
+        "markdown" : {
+          "$ref" : "#/$defs/markdown"
+        }
+      },
+      "allOf" : [
+        {
+          "$ref" : "#/$defs/margin"
+        }
+      ]
+    },
+    "outcome" : {
+      "type" : "object",
+      "title" : "Agenda item outcome",
+      "description" : "Styling for Meeting agenda item outcome",
+      "x-example" : {
+        "outcome" : {
+          "markdown_margin" : {},
+          "markdown" : {}
+        }
+      },
+      "properties" : {
+        "markdown_margin" : {
+          "type" : "object",
+          "title" : "Agenda item outcome markdown margins",
+          "description" : "Margins for agenda item outcome",
           "x-example" : {
             "markdown_margin" : {
               "margin_bottom" : 16

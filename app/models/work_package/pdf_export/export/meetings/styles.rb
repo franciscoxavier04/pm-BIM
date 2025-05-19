@@ -43,6 +43,10 @@ module WorkPackage::PDFExport::Export::Meetings::Styles
     def notes_markdown_styling_yml
       resolve_markdown_styling(@styles.dig(:notes, :markdown) || {})
     end
+
+    def outcome_markdown_styling_yml
+      resolve_markdown_styling(@styles.dig(:outcome, :markdown) || {})
+    end
   end
 
   def styles

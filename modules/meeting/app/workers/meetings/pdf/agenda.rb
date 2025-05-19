@@ -100,6 +100,7 @@ module Meetings::PDF
         write_agenda_title_item_wp(agenda_item)
       end
       write_notes(agenda_item)
+      write_outcome(agenda_item)
     end
 
     def table_formatted_text(content, size, color)
@@ -151,6 +152,30 @@ module Meetings::PDF
           styles.notes_markdown_styling_yml
         )
       end
+    end
+
+    def write_outcome(agenda_item)
+      return unless agenda_item.outcomes.exists?
+
+      outcome = agenda_item.outcomes.information_kind.last
+      return if outcome.notes.blank?
+
+      pdf.indent(15) do
+        write_outcome_title
+        write_outcome_notes(outcome.notes)
+      end
+    end
+
+    def write_outcome_title
+      pdf.formatted_text([{ text: I18n.t("label_agenda_outcome"), size: 10, styles: [:bold] }])
+      pdf.move_down(5)
+    end
+
+    def write_outcome_notes(notes)
+      write_markdown!(
+        apply_markdown_field_macros(notes, { project: meeting.project, user: User.current }),
+        styles.outcome_markdown_styling_yml
+      )
     end
   end
 end

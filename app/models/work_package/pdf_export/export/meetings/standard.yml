@@ -221,3 +221,162 @@ notes:
         no_border_left: false
         no_border_bottom: true
         no_border_top: true
+
+outcome:
+  markdown_margin:
+    margin: 16
+  markdown:
+    font:
+      size: 10
+      leading: 3
+    header:
+      size: 8
+      styles: [ "bold" ]
+      padding_top: 4
+    header_1:
+      size: 10
+    header_2:
+      size: 10
+    header_3:
+      size: 9
+    paragraph:
+      align: "left"
+    unordered_list:
+      spacing: 1
+    unordered_list_point:
+      spacing: 4
+    ordered_list:
+      spacing: 1
+    ordered_list_point:
+      spacing: 4
+      spanning: true
+      list_style_type: decimal
+    ordered_list_point_2:
+      list_style_type: lower-latin
+    ordered_list_point_3:
+      list_style_type: lower-roman
+    ordered_list_point_4:
+      list_style_type: upper-latin
+    ordered_list_point_5:
+      list_style_type: upper-roman
+    task_list:
+      spacing: 1
+    task_list_point:
+      spacing: 4
+      checked: "☑"
+      unchecked: "☐"
+    link:
+      color: "175A8E"
+      styles: [ ]
+    code:
+      color: "880000"
+      size: 9
+      font: "SpaceMono"
+    blockquote:
+      background_color: "f4f9ff"
+      size: 10
+      styles: [ "italic" ]
+      color: "0f3b66"
+      border_color: "b8d6f4"
+      border_width: 1
+      padding: 4
+      padding_left: 6
+      margin_top: 4
+      margin_bottom: 4
+      no_border_left: false
+      no_border_right: true
+      no_border_bottom: true
+      no_border_top: true
+    image:
+      align: "center"
+      margin_bottom: 4
+      caption:
+        size: 8
+        align: "center"
+    codeblock:
+      background_color: "F5F5F5"
+      color: "880000"
+      padding: 10
+      size: 8
+      margin_top: 10
+      margin_bottom: 10
+      font: "SpaceMono"
+    table:
+      auto_width: true
+      margin_top: 4
+      margin_bottom: 4
+      header:
+        size: 9
+        styles: [ "bold" ]
+        background_color: "F0F0F0"
+      cell:
+        size: 8
+        border_width: 0.25
+        padding: 5
+    html_table:
+      auto_width: true
+      margin_top: 4
+      margin_bottom: 4
+      header:
+        size: 9
+        styles: [ "bold" ]
+      cell:
+        size: 8
+        border_width: 0.25
+        padding: 5
+    alerts:
+      NOTE:
+        border_color: '0969da'
+        alert_color: '0969da'
+        padding: '4mm'
+        size: 10
+        styles: [ ]
+        border_width: 2
+        no_border_right: true
+        no_border_left: false
+        no_border_bottom: true
+        no_border_top: true
+      TIP:
+        border_color: '1a7f37'
+        alert_color: '1a7f37'
+        padding: '4mm'
+        size: 10
+        styles: [ ]
+        border_width: 2
+        no_border_right: true
+        no_border_left: false
+        no_border_bottom: true
+        no_border_top: true
+      IMPORTANT:
+        border_color: '8250df'
+        alert_color: '8250df'
+        padding: '4mm'
+        size: 10
+        styles: [ ]
+        border_width: 2
+        no_border_right: true
+        no_border_left: false
+        no_border_bottom: true
+        no_border_top: true
+      WARNING:
+        border_color: 'bf8700'
+        alert_color: 'bf8700'
+        padding: '4mm'
+        size: 10
+        styles: [ ]
+        border_width: 2
+        no_border_right: true
+        no_border_left: false
+        no_border_bottom: true
+        no_border_top: true
+      CAUTION:
+        border_color: 'd1242f'
+        alert_color: 'd1242f'
+        size: 10
+        styles: [ ]
+        padding: '4mm'
+        border_width: 2
+        no_border_right: true
+        no_border_left: false
+        no_border_bottom: true
+        no_border_top: true
