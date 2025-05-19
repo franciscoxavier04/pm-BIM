@@ -23,10 +23,14 @@ export class TurboRequestsService {
         }));
       })
       .then((result) => {
-        // the result may contain a primer error banner if any server side error appeared
-        // thus we need to render the html even for non-ok responses
-        renderStreamMessage(result.html);
-        // after rendering the html, check if the response and throw an error if it's not ok
+        const contentType = result.response.headers.get('Content-Type') || '';
+        const isTurboStream = contentType.includes('text/vnd.turbo-stream.html');
+
+        // only render the stream message if we are in a turbo stream response
+        if (isTurboStream) {
+          renderStreamMessage(result.html);
+        }
+
         if (!result.response.ok) {
           throw new Error(result.response.statusText);
         } else {
