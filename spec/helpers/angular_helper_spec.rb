@@ -66,12 +66,12 @@ RSpec.describe AngularHelper do
           data-an-array="[1,2,3]"
           data-some-random-object="{&quot;complex&quot;:true,&quot;foo&quot;:&quot;bar&quot;}"
           data-test-selector="foo"
-        /></op-test>
+        ></op-test>
       HTML
     end
 
     it "converts the inputs" do
-      expect(subject).to be_html_eql(expected)
+      expect(subject).to be_dom_eql(expected)
     end
   end
 end
