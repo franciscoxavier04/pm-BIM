@@ -23,7 +23,7 @@ pl:
   js:
     text_are_you_sure: "Jesteś pewny?"
     myTimeTracking:
-      noSpecificTime: "No specific time"
+      noSpecificTime: "Brak określonego czasu"
     work_packages:
       property_groups:
         costs: "Koszty"

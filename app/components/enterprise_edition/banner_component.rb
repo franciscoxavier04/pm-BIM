@@ -35,6 +35,7 @@ module EnterpriseEdition
   class BannerComponent < ApplicationComponent
     include Primer::FetchOrFallbackHelper
     include Primer::ClassNameHelper
+    include Primer::JoinStyleArgumentsHelper
     include OpPrimer::ComponentHelpers
     include OpTurbo::Streamable
     include PlanForFeature
@@ -85,6 +86,11 @@ module EnterpriseEdition
       )
 
       super
+    end
+
+    def before_render
+      @image_arguments = {}
+      @image_arguments[:style] = @image.present? ? "background-image: url(#{helpers.image_path(@image)})" : nil
     end
 
     def medium?

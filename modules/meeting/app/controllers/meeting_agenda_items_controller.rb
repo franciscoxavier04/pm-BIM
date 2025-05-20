@@ -91,14 +91,14 @@ class MeetingAgendaItemsController < ApplicationController
     @meeting_agenda_item = call.result
 
     if call.success?
-      reset_meeting_from_agenda_item
-      # enable continue editing
-      update_header_component_via_turbo_stream
-      update_sidebar_details_component_via_turbo_stream
       if @meeting_agenda_item.meeting_section.backlog?
         update_section_via_turbo_stream(meeting_section: @meeting_agenda_item.meeting_section, collapsed: false)
         update_new_button_via_turbo_stream(disabled: false)
       else
+        reset_meeting_from_agenda_item
+        # enable continue editing
+        update_header_component_via_turbo_stream
+        update_sidebar_details_component_via_turbo_stream
         add_item_via_turbo_stream(clear_slate: false)
       end
     else
@@ -129,17 +129,19 @@ class MeetingAgendaItemsController < ApplicationController
     respond_with_turbo_streams
   end
 
-  def update
+  def update # rubocop:disable Metrics/AbcSize
     call = ::MeetingAgendaItems::UpdateService
       .new(user: current_user, model: @meeting_agenda_item)
       .call(meeting_agenda_item_params)
 
     if call.success?
-      reset_meeting_from_agenda_item
+      unless @meeting_agenda_item.meeting_section.backlog?
+        reset_meeting_from_agenda_item
+        update_header_component_via_turbo_stream
+        update_sidebar_details_component_via_turbo_stream
+      end
       update_item_via_turbo_stream
       update_section_header_via_turbo_stream(meeting_section: @meeting_agenda_item.meeting_section)
-      update_header_component_via_turbo_stream
-      update_sidebar_details_component_via_turbo_stream
     else
       # show errors
       update_item_via_turbo_stream(state: :edit)
@@ -157,12 +159,12 @@ class MeetingAgendaItemsController < ApplicationController
       .call
 
     if call.success?
-      reset_meeting_from_agenda_item
-      update_header_component_via_turbo_stream
-      update_sidebar_details_component_via_turbo_stream
       if section.backlog?
         update_section_via_turbo_stream(meeting_section: section, collapsed: false)
       else
+        reset_meeting_from_agenda_item
+        update_header_component_via_turbo_stream
+        update_sidebar_details_component_via_turbo_stream
         remove_item_via_turbo_stream(clear_slate: @meeting.agenda_items.empty?)
         update_section_header_via_turbo_stream(meeting_section: section) if section&.reload.present?
       end

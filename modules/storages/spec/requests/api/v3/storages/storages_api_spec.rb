@@ -190,7 +190,7 @@ RSpec.describe "API v3 storages resource", :storage_server_helpers, :webmock, co
         end
       end
 
-      context "when creating a storage for SSO authentication" do
+      context "when creating a storage for SSO authentication", with_ee: [:nextcloud_sso] do
         let(:params) do
           super().tap do |p|
             p[:storageAudience] = "the-audience"
@@ -205,6 +205,16 @@ RSpec.describe "API v3 storages resource", :storage_server_helpers, :webmock, co
 
           expect(Storages::NextcloudStorage.last.authentication_method).to eq("oauth2_sso")
           expect(Storages::NextcloudStorage.last.storage_audience).to eq("the-audience")
+        end
+
+        context "and when the instance lacks a valid enterprise token", with_ee: [] do
+          it "indicates an HTTP error" do
+            expect(last_response).to have_http_status(422)
+          end
+
+          it "creates no storage" do
+            expect { last_response }.not_to change(Storages::NextcloudStorage, :count)
+          end
         end
       end
     end

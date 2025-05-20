@@ -34,6 +34,7 @@ class Storages::Admin::StoragesController < ApplicationController
 
   include FlashMessagesOutputSafetyHelper
   include OpTurbo::ComponentStream
+  include EnterpriseHelper
 
   # See https://guides.rubyonrails.org/layouts_and_rendering.html for reference on layout
   layout "admin"

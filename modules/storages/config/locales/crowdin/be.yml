@@ -48,7 +48,7 @@ be:
         storages/storage:
           attributes:
             host:
-              authorization_header_missing: не ўсталявана поўнасцю. Сервер Nextcloud не атрымаў "Authorization" загаловак, які неабходны для аўтарызацыі запытаў з дапамогай Bearer токенаў. Калі ласка праверце налады вашага HTTP сервера.
+              authorization_header_missing: не ўсталявана поўнасцю. Сервер Nextcloud не атрымаў "Authorization" загаловак, які неабходны для аўтарызацыі запытаў з дапамогай Bearer токенаў. Калі ласка праверце налады вашага HTTP сервера. 
               cannot_be_connected_to: could not be reached. Please ensure the host is reachable and the OpenProject integration app is installed.
               minimal_nextcloud_version_unmet: не задавальняе мінімальным патрабаванням па версіі (Nextcloud павінен быць 23 ці вышэй)
               not_nextcloud_server: гэта не сервер Nextcloud
@@ -73,7 +73,7 @@ be:
   permission_read_files: 'Automatically managed project folders: Read files'
   permission_share_files: 'Automatically managed project folders: Share files'
   permission_share_files_explanation: This permission is only available for Nextcloud storages
-  permission_view_file_links: Праглядаць спасылкі на файлы
+  permission_view_file_links: Праглядаць спасылкі на файлы 
   permission_write_files: 'Automatically managed project folders: Write files'
   project_module_storages: Files
   project_storages:
@@ -252,6 +252,7 @@ be:
           existing_token: User token
           header: Authentication
           non_provisioned_user: User provisioned by IDP
+          offline_access: Configured OIDC offline_access scope
           provisioned_user_provider: User provisioned by OIDC
           token_negotiable: User token capabilities
           user_bound_request: User-based request authentication
@@ -269,11 +270,11 @@ be:
           storage_configured: Configuration complete
           tenant_id: Tenant ID
         failures:
-          zero: All checks passed
           one: "%{count} check failed"
           few: "%{count} checks failed"
           many: "%{count} checks failed"
           other: "%{count} checks failed"
+        success: All checks passed
         warnings:
           one: "%{count} check returned a warning"
           few: "%{count} checks returned a warning"
@@ -302,6 +303,7 @@ be:
         od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
         od_tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
         od_unexpected_content: Unexpected content found in the drive.
+        offline_access_scope_missing: It is recommended to configure the OpenID Connect provider to request the offline_access scope. The integration may still work anyways, but make sure that refresh tokens do not expire.
         oidc_cant_acquire_token: Your OpenID Connect setup doesn't provide the necessary audience, nor provides token exchange capabilities. Please check out our documentation for more information.
         oidc_cant_exchange_token: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
         oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
@@ -412,6 +414,7 @@ be:
     member_connection_status:
       connected: Connected
       connected_no_permissions: User role has no storages permissions
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: Not connected. The user should login to the storage via the following %{link}.
       not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: No members to display.
@@ -479,6 +482,7 @@ be:
       description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
       label: Show attachments in the work packages files tab
     storage_audience:
+      documentation_intro: Details on the following options and what needs to be configured in the identity provider can be found in our documentation.
       idp:
         helptext: OpenProject will use the first access token received by the identity provider to authenticate requests to the storage. It will not try to obtain another token.
         label: Use first access token obtained by identity provider

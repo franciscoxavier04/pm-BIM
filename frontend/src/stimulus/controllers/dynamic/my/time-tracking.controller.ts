@@ -1,8 +1,10 @@
 import { ActionEvent, Controller } from '@hotwired/stimulus';
-import { Calendar } from '@fullcalendar/core';
+import { Calendar, EventApi } from '@fullcalendar/core';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import momentTimezonePlugin from '@fullcalendar/moment-timezone';
+import { toMoment } from '@fullcalendar/moment';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 import moment from 'moment';
@@ -27,6 +29,7 @@ export default class MyTimeTrackingController extends Controller {
     forceTimes: Boolean,
     workingDays: Array,
     startOfWeek: Number,
+    timeZone: String,
   };
 
   declare readonly calendarTarget:HTMLElement;
@@ -42,6 +45,7 @@ export default class MyTimeTrackingController extends Controller {
   declare readonly viewModeValue:string;
   declare readonly workingDaysValue:number[];
   declare readonly startOfWeekValue:number;
+  declare readonly timeZoneValue:string;
 
   private calendar:Calendar;
   private DEFAULT_TIMED_EVENT_DURATION = '01:00';
@@ -71,10 +75,11 @@ export default class MyTimeTrackingController extends Controller {
 
   initializeCalendar() {
     this.calendar = new Calendar(this.calendarTarget, {
-      plugins: [timeGridPlugin, dayGridPlugin, interactionPlugin],
+      plugins: [timeGridPlugin, dayGridPlugin, interactionPlugin, momentTimezonePlugin],
       initialView: this.calendarView(),
       locales: allLocales,
       locale: this.localeValue,
+      timeZone: this.timeZoneValue,
       events: this.timeEntriesValue,
       headerToolbar: false,
       height: '100%',
@@ -85,40 +90,45 @@ export default class MyTimeTrackingController extends Controller {
       defaultTimedEventDuration: this.DEFAULT_TIMED_EVENT_DURATION,
       allDayContent: '',
       dayMaxEventRows: 4, // 3 + more link
+      eventShortHeight: 60,
       eventMinHeight: 30,
       eventMaxStack: 2,
-      eventShortHeight: 31,
       nowIndicator: true,
       businessHours: { daysOfWeek: this.workingDaysValue, startTime: '00:00', endTime: '24:00' },
       hiddenDays: this.hiddenDays(),
       firstDay: this.startOfWeekValue,
-      eventClassNames(arg) {
+      eventClassNames(info) {
         return [
           'calendar-time-entry-event',
-          `__hl_status_${arg.event.extendedProps.statusId}`,
+          `__hl_type_${info.event.extendedProps.typeId}`,
           '__hl_border_top',
           'ellipsis',
         ];
       },
-      eventContent: (arg) => {
+      eventContent: (info) => {
         let timeDetails = '';
+        let duration = info.event.extendedProps.hours as number;
 
-        if (!arg.event.allDay) {
-          const time = `${moment(arg.event.start).format('LT')} - ${moment(arg.event.end).format('LT')}`;
-          timeDetails = `<div class="color-fg-muted mt-2" title="${time}">${time}</div>`;
+        if (info.isResizing && info.event.start && info.event.end) {
+          duration = this.calculateHours(info.event);
+        }
+
+        if (!info.event.allDay) {
+          const time = `${toMoment(info.event.start!, this.calendar).format('LT')} - ${toMoment(info.event.end!, this.calendar).format('LT')}`;
+          timeDetails = `<div class="fc-event-times" title="${time}">${time}</div>`;
         }
 
         return {
           html: `
            <div class="fc-event-main-frame">
-             <div class="fc-event-time mb-1">${this.displayDuration(arg.event.extendedProps.hours as number)}</div>
+             <div class="fc-event-time">${this.displayDuration(duration)}</div>
              <div class="fc-event-title-container">
-                <div class="fc-event-title mb-2" title="${arg.event.extendedProps.workPackageSubject}">
-                  <a class="Link--primary Link" href="${this.pathHelper.workPackageShortPath(arg.event.extendedProps.workPackageId as string)}">
-                    ${arg.event.extendedProps.workPackageSubject}
+                <div class="fc-event-title fc-event-wp" title="${info.event.extendedProps.workPackageSubject}">
+                  <a class="Link--primary Link" href="${this.pathHelper.workPackageShortPath(info.event.extendedProps.workPackageId as string)}">
+                    ${info.event.extendedProps.workPackageSubject}
                   </a>
                </div>
-               <div class="color-fg-muted" title="${arg.event.extendedProps.projectName}">${arg.event.extendedProps.projectName}</div>
+               <div class="fc-event-project" title="${info.event.extendedProps.projectName}">${info.event.extendedProps.projectName}</div>
                ${timeDetails}
              </div>
            </div>`,
@@ -142,15 +152,13 @@ export default class MyTimeTrackingController extends Controller {
         // it does not make sense to resize the events without start & end times
         // we cannot only disable resize, because we want to be able to drag the events
         // so we need to revert the event to its original size
-        if (info.event.allDay) {
+        if (info.event.allDay || !info.event.start || !info.event.end) {
           info.revert();
           return;
         }
 
-        const startMoment = moment(info.event.startStr);
-        const endMoment = moment(info.event.endStr);
-
-        const newEventHours = moment.duration(endMoment.diff(startMoment)).asHours();
+        const startMoment = toMoment(info.event.start, this.calendar);
+        const newEventHours = this.calculateHours(info.event);
 
         info.event.setExtendedProp('hours', newEventHours);
 
@@ -184,7 +192,7 @@ export default class MyTimeTrackingController extends Controller {
       },
 
       eventDrop: (info) => {
-        const startMoment = moment(info.event.startStr);
+        const startMoment = toMoment(info.event.start!, this.calendar);
 
         this.updateTimeEntry(
           info.event.id,
@@ -252,7 +260,7 @@ export default class MyTimeTrackingController extends Controller {
       if (!eventStart) return;
 
       // Format event date for comparison
-      const eventDateStr = eventStart.toISOString().slice(0, 10);
+      const eventDateStr = toMoment(eventStart, this.calendar).format('YYYY-MM-DD');
 
       if (eventDateStr === dayStr && event.extendedProps && event.extendedProps.hours) {
         totalHours += event.extendedProps.hours as number;
@@ -374,6 +382,20 @@ export default class MyTimeTrackingController extends Controller {
       return `${minutes}m`;
     }
     return `${hours}h ${minutes}m`;
+  }
+
+  calculateHours(event:EventApi):number {
+    const start = event.start;
+    const end = event.end;
+
+    if (!start || !end) {
+      return 0;
+    }
+
+    const startMoment = toMoment(start, this.calendar);
+    const endMoment = toMoment(end, this.calendar);
+
+    return moment.duration(endMoment.diff(startMoment)).asHours();
   }
 
   calendarView():string {

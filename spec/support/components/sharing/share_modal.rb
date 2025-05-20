@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -380,7 +382,7 @@ module Components
       def expect_upsell_banner
         within_modal do
           expect(page)
-            .to have_text(I18n.t(:"ee.upsell.title"))
+            .to have_text(I18n.t(:"ee.upsell.work_package_sharing.description"))
         end
       end
 

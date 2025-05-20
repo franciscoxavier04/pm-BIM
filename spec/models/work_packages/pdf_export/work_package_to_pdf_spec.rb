@@ -226,6 +226,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
       "Priority", "Normal",
       "Version", work_package.version,
       "Category", work_package.category,
+      "Project phase",
       "Date", "05/30/2024 - 03/13/2025",
       "Other",
       "Work Package Custom Field Boolean", "Yes",
@@ -453,10 +454,10 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
             ), embed[1]]
           end,
           "Custom field boolean", I18n.t(:general_text_Yes),
-          "Custom field rich text", "[#{I18n.t('export.macro.rich_text_unsupported')}]",
 
           "1", export_time_formatted, project.name,
 
+          "Custom field rich text", "[#{I18n.t('export.macro.rich_text_unsupported')}]",
           "Custom field hidden",
           "No replacement of:",
           "projectValue:1:status",

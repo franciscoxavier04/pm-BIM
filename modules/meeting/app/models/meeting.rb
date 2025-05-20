@@ -130,16 +130,17 @@ class Meeting < ApplicationRecord
 
   ##
   # Cache key for detecting changes to be shown to the user
-  def changed_hash # rubocop:disable Metrics/AbcSize
+  def changed_hash
     parts = Meeting
-      .unscoped
-      .where(id:)
-      .left_joins(:agenda_items, :sections, agenda_items: :outcomes)
-      .pick(
-        MeetingAgendaItem.arel_table[:updated_at].maximum,
-        MeetingSection.arel_table[:updated_at].maximum,
-        MeetingOutcome.arel_table[:updated_at].maximum
-      )
+              .unscoped
+              .where(id:)
+              .joins("LEFT JOIN meeting_sections ON meeting_sections.meeting_id = meetings.id")
+              .left_joins(:agenda_items, agenda_items: %i[outcomes meeting_section])
+              .pick(
+                Arel.sql("MAX(CASE WHEN meeting_sections.backlog = FALSE THEN meeting_agenda_items.updated_at END)"),
+                Arel.sql("MAX(CASE WHEN meeting_sections.backlog = FALSE THEN meeting_sections.updated_at END)"),
+                Arel.sql("MAX(meeting_outcomes.updated_at)")
+              )
 
     parts << lock_version
 

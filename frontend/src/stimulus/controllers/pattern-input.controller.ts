@@ -33,11 +33,13 @@ import { Controller } from '@hotwired/stimulus';
 // internal type used to filter suggestions
 type FilteredSuggestions = Array<{
   key:string;
+  label:string;
   values:Array<{ prop:string; value:string; }>;
 }>;
 
 type TokenElement = HTMLElement&{ dataset:{ role:'token', prop:string } };
 type ListElement = HTMLElement&{ dataset:{ role:'list_item', prop:string } };
+type AttributeToken = { key:string, label:string, label_with_context:string };
 
 const COMPLETION_CHARACTER = '/';
 const TOKEN_REGEX = /{{([0-9A-Za-z_]+)}}/g;
@@ -73,21 +75,19 @@ export default class PatternInputController extends Controller {
 
   static values = {
     patternInitial: String,
-    headingLocales: Object,
     suggestionsInitial: Object,
     insertAsTextTemplate: String,
   };
 
   declare readonly patternInitialValue:string;
-  declare readonly suggestionsInitialValue:Record<string, Record<string, string>>;
-  declare readonly headingLocalesValue:Record<string, string>;
+  declare readonly suggestionsInitialValue:Record<string, { title:string, tokens:AttributeToken[] }>;
   declare readonly insertAsTextTemplateValue:string;
 
-  validTokenMap:Record<string, string> = {};
+  validTokenMap:Record<string, AttributeToken> = {};
   currentRange:Range|undefined = undefined;
 
   connect() {
-    this.validTokenMap = this.flatLocalizedTokenMap();
+    this.validTokenMap = this.flatTokensKeyToLabelWithContext();
     this.contentTarget.innerHTML = this.toHtml(this.patternInitialValue) || ' ';
     this.tagInvalidTokens();
     this.clearSuggestionsFilter();
@@ -212,17 +212,12 @@ export default class PatternInputController extends Controller {
     this.clearSuggestionsFilter();
   }
 
-  private flatLocalizedTokenMap():Record<string, string> {
+  private flatTokensKeyToLabelWithContext():Record<string, AttributeToken> {
     return Object.entries(this.suggestionsInitialValue)
-      .reduce((acc, [groupKey, attributes]) => {
-        if (groupKey !== 'work_package') {
-          Object.entries(attributes).forEach(([key, value]) => {
-            attributes[key] = `${this.tokenPrefix(groupKey)} ${value}`;
-          });
-        }
-
-        return { ...acc, ...attributes };
-      }, {});
+      .reduce((acc, [_, token_group]) => {
+        token_group.tokens.forEach((t) => { acc[t.key] = t; });
+        return acc;
+      }, {} as Record<string, AttributeToken>);
   }
 
   private updateFormInputValue():void {
@@ -361,9 +356,9 @@ export default class PatternInputController extends Controller {
     if (textContent === null) { return null; }
 
     if (this.isToken(parent)) {
-      const key = parent.dataset.prop;
-      const prefix = this.tokenPrefix(key.slice(0, key.indexOf('_')));
-      const start = prefix && textContent.startsWith(`${prefix} `) ? prefix.length + 1 : 0;
+      const token = this.validTokenMap[parent.dataset.prop];
+      const prefix = token.label_with_context.replace(token.label, '');
+      const start = prefix && textContent.startsWith(prefix) ? prefix.length : 0;
 
       return textContent.slice(start, selection.anchorOffset);
     }
@@ -393,7 +388,7 @@ export default class PatternInputController extends Controller {
       if (groupHeader) {
         const headerElement = groupHeader.querySelector('h2');
         if (headerElement) {
-          headerElement.innerText = this.headingLocalesValue[group.key];
+          headerElement.innerText = group.label;
         }
 
         this.suggestionsTarget.appendChild(groupHeader);
@@ -447,9 +442,10 @@ export default class PatternInputController extends Controller {
       const group = this.suggestionsInitialValue[key];
       return {
         key,
-        values: Object.entries(group).filter(([prop, value]) => {
-          return value.toLowerCase().includes(word.toLowerCase()) || prop.toLowerCase().includes(word.toLowerCase()) || word === '*';
-        }).map(([prop, value]) => ({ prop, value })),
+        label: group.title,
+        values: group.tokens
+          .filter((token) => token.key.includes(word) || token.label.toLowerCase().includes(word) || word === '*')
+          .map((token) => ({ prop: token.key, value: token.label })),
       };
     }).filter((group) => group.values.length > 0);
   }
@@ -485,11 +481,11 @@ export default class PatternInputController extends Controller {
     }
   }
 
-  private createToken(value:string):TokenElement {
+  private createToken(key:string):TokenElement {
     const templateTarget = this.tokenTemplateTarget.content?.cloneNode(true) as DocumentFragment;
     const contentElement = templateTarget.firstElementChild as TokenElement;
-    contentElement.dataset.prop = value;
-    contentElement.innerText = this.validTokenMap[value] || value;
+    contentElement.dataset.prop = key;
+    contentElement.innerText = this.tokenText(key);
     return contentElement;
   }
 
@@ -499,11 +495,11 @@ export default class PatternInputController extends Controller {
         this.setStyle(node, 'accent');
 
         const key = node.dataset.prop;
-        if (node.textContent !== this.validTokenMap[key]) {
+        if (node.textContent !== this.tokenText(key)) {
           if (this.containsCursor(node)) {
             this.setStyle(node, 'secondary');
           } else {
-            node.innerText = this.validTokenMap[key] || key;
+            node.innerText = this.tokenText(key);
           }
         }
 
@@ -521,6 +517,20 @@ export default class PatternInputController extends Controller {
         }
       }
     });
+  }
+
+  private tokenText(key:string):string {
+    const token = this.validTokenMap[key];
+
+    if (!token) {
+      return key;
+    }
+
+    if (token.key.startsWith('parent_') || token.key.startsWith('project_')) {
+      return token.label_with_context;
+    }
+
+    return token.label;
   }
 
   private toHtml(blueprint:string):string {
@@ -549,11 +559,6 @@ export default class PatternInputController extends Controller {
       .reduce((acc, index) => {
         return `${acc.slice(0, index)}${CONTROL_SPACE}${acc.slice(index)}`;
       }, blueprint);
-  }
-
-  private tokenPrefix(groupKey:string):string {
-    const locale = this.headingLocalesValue[groupKey];
-    return locale ? `${locale}:` : '';
   }
 
   private toBlueprint():string {

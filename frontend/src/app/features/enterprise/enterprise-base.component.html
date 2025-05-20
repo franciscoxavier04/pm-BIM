@@ -12,7 +12,10 @@
   </div>
 
   <ng-template #alreadyRequested>
-    <enterprise-trial-waiting></enterprise-trial-waiting>
+    <enterprise-trial-waiting
+      [trialKey]="trialKey"
+      [trialCreatedAt]="trialCreatedAt"
+    ></enterprise-trial-waiting>
     <p class="op-enterprise-base--confirmation-hint">{{ text.email_not_received }}
       <a (click)="openTrialModal()">{{ text.try_another_email }}</a>
     </p>

@@ -49,7 +49,7 @@ fa:
       time_entry:
         project: پروژه
         user: کاربر
-        work_package: بسته کاری
+        work_package: کاربسته
         subject: موضوع
         hours: ساعت‌‌‌‌‌‌
         comments: نظر
@@ -83,7 +83,7 @@ fa:
   attributes:
     comment: "نظر"
     cost_type: "نوع هزینه"
-    costs: "هزینه‌ها"
+    costs: "هزینه ها"
     current_rate: "نرخ فعلی"
     hours: "ساعت‌‌‌‌‌‌"
     units: "واحدها"
@@ -93,6 +93,7 @@ fa:
   button_log_costs: "ثبت هزینه‌های واحد"
   button_log_time: "Log"
   button_add_activity: "فعالیت"
+  button_add_time_entry: "پیگیری زمان"
   caption_booked_on_project: "رزرو شده در پروژه"
   caption_default: "پیش‌فرض"
   caption_default_rate_history_for: "تاریخچه ضریب (نرخ) پرداختی پیش‌فرض برای %{user}"
@@ -112,7 +113,7 @@ fa:
   label_between: "بین"
   label_cost_filter_add: "افزودن فیلتر ورودی هزینه"
   label_costlog: "هزینه‌های واحد ثبت‌شده"
-  label_cost_plural: "هزینه ها"
+  label_cost_plural: "هزینه‌ها"
   label_cost_type_plural: "انواع هزینه"
   label_cost_type_specific: "نوع هزینه #%{id}: %{name}"
   label_costs_per_page: "هزینه‌ها در هر صفحه"
@@ -142,7 +143,7 @@ fa:
   label_rate: "نرخ"
   label_rate_plural: "نرخ ها (ضرایب پرداخت)"
   label_status_finished: "پایان یافته"
-  label_show: ""
+  label_show: "نمایش"
   label_units: "واحدهای هزینه"
   label_user: "کاربر"
   label_until: "تا"
@@ -192,10 +193,13 @@ fa:
   permission_view_own_hourly_rate: "مشاهده نرخ ساعتی خود"
   permission_view_own_time_entries: "مشاهده زمان صرف‌شده خود"
   project_module_costs: "زمان و هزینه‌ها"
-  setting_allow_tracking_start_and_end_times: "Allow exact times tracking"
+  setting_allow_tracking_start_and_end_times: "Allow start and finish times"
   setting_costs_currency: "واحد پول"
   setting_costs_currency_format: "فرمت واحد پول"
-  setting_enforce_tracking_start_and_end_times: "Require exact times"
+  setting_enforce_tracking_start_and_end_times: "Require start and finish times"
+  setting_enforce_without_allow: "Requiring start and finish times is not possible without allowing them"
+  setting_allow_tracking_start_and_end_times_caption: "Enables entering start and finish times when logging time."
+  setting_enforce_tracking_start_and_end_times_caption: "Makes entering start and finish times mandatory when logging time."
   text_assign_time_and_cost_entries_to_project: "تخصیص ساعت‌ها و هزینه‌های گزارش شده به پروژه"
   text_destroy_cost_entries_question: "%{cost_entries} در بسته‌های کاری که می‌خواهید حذف کنید گزارش شده است. میخوای چیکار کنی؟"
   text_destroy_time_and_cost_entries: "ساعت ها و هزینه های گزارش شده را حذف کنید"

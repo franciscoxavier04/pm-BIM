@@ -102,6 +102,10 @@ module Settings
         description: "Time in minutes to wait before uploaded files not attached to any container are removed",
         default: 180
       },
+      antivirus_scan_available: {
+        description: "Virus scanning option selectable in the UI",
+        default: true
+      },
       antivirus_scan_mode: {
         description: "Virus scanning option for files uploaded to OpenProject",
         format: :symbol,
@@ -979,7 +983,8 @@ module Settings
         default: nil
       },
       self_registration: {
-        default: 2
+        default: 2,
+        format: :integer
       },
       sendmail_arguments: {
         description: "Arguments to call sendmail with in case it is configured as outgoing email setup",
@@ -1333,6 +1338,8 @@ module Settings
       # @param [nil] env_alias Alternative for the default env name to also look up. E.g. with the alias set to
       #  `OPENPROJECT_2FA` for a definition with the name `two_factor_authentication`, the value is fetched
       #  from the ENV OPENPROJECT_2FA as well.
+      # @param [TrueClass|FalseClass] disallow_override Disables the usual possibility of overriding the value
+      #   from ENV or configuration file.
       def add(name,
               default:,
               default_by_env: {},
@@ -1341,7 +1348,8 @@ module Settings
               writable: true,
               allowed: nil,
               env_alias: nil,
-              string_values: false)
+              string_values: false,
+              disallow_override: false)
         name = name.to_sym
         return if exists?(name)
 
@@ -1354,7 +1362,7 @@ module Settings
                          allowed:,
                          env_alias:,
                          string_values:)
-        override_value(definition)
+        override_value(definition) unless disallow_override
         all[name] = definition
       end
 

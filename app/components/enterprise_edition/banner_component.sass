@@ -40,12 +40,18 @@ $op-enterprise-banner-fixed-height: 220px
   border-radius: var(--borderRadius-medium)
   background: var(--body-background)
   padding: var(--base-size-8)
+  overflow: hidden
 
   &_medium
+    position: relative
     padding: 0
     grid-template-areas: "content graphic"
-    grid-template-columns: 1fr 1fr
+    grid-template-columns: 2fr 1fr
     height: $op-enterprise-banner-fixed-height
+
+    @media screen and (max-width: $breakpoint-lg)
+      grid-template-columns: 1fr
+      height: auto
 
   &_medium &
     padding: 0
@@ -53,16 +59,12 @@ $op-enterprise-banner-fixed-height: 220px
     grid-template-columns: 1fr 1fr
 
     &--content
+      z-index: 1
       align-self: center
       padding: var(--base-size-16)
 
-  &--graphic
-    height: $op-enterprise-banner-fixed-height
-
   &--image
-    width: 100%
-    height: 100%
-    object-fit: cover
+    @include upsell-image
 
   &--visual
     display: grid

@@ -79,7 +79,7 @@ pt-PT:
       mapping_admin: >
         Forneça um mapeamento personalizado na resposta userinfo a ser utilizado para o estado do administrador. Espera que seja devolvido um atributo booleano.
     settings:
-      metadata_none: Não tenho essa informação
+      metadata_none: Não tenho esta informação
       metadata_url: Tenho um URL de endpoint de descoberta
       endpoint_url: URL do Endpoint
     providers:
@@ -92,7 +92,7 @@ pt-PT:
       custom:
         name: Personalizado
       upsell:
-        title: "Single Sign-On (SSO) with OpenID connect"
+        title: "Início de sessão único (SSO) com OpenID Connect"
         description: Associar o OpenProject a um fornecedor de identidade OpenID Connect
       label_add_new: Adicionar um novo fornecedor OpenID
       label_edit: Editar fornecedor de OpenID %{name}

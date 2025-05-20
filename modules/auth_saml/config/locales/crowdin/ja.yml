@@ -22,7 +22,7 @@ ja:
         signature_method: Signature algorithm
         digest_method: Digest algorithm
         format: "書式"
-        icon: "カスタムアイコン"
+        icon: "カスタム アイコン"
     errors:
       models:
         saml/provider:

@@ -102,6 +102,8 @@ hu:
       explanation:
         text: "A felhasználó egyes műveletei (pl. egy munkacsomag kétszeri frissítése) egyetlen műveletté egyesülnek, ha korkülönbségük kisebb, mint a megadott időtartam. Ezek egyetlen műveletként jelennek meg az alkalmazásban. Ez ugyanannyi idővel késlelteti az értesítéseket, csökkenti az elküldött emailek számát, valamint befolyásolja a %{webhook_link} késleltetését is.\n"
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Mutassa eddig
     is_active: jelenleg látható
@@ -338,11 +340,11 @@ hu:
         placeholder: Search by project name
     lists:
       active: "Aktív projektek"
-      my: "Saját projekjeim"
+      my: "Az én projektjeim"
       favored: "Kedvenc projektek"
       archived: "Archivált projektek"
       shared: "Shared project lists"
-      my_lists: "My project lists"
+      my_lists: "Projekt listáim"
       new:
         placeholder: "Új projektlista"
       delete_modal:
@@ -351,10 +353,10 @@ hu:
         text: "Ez a művelet nem törli a listában szereplő projekteket. Biztos, hogy törölni szeretné ezt a projektlistát?"
     settings:
       header_details: Basic details
-      header_status: Project status
+      header_status: Projekt állapot
       header_relations: Project relations
       button_update_details: Update details
-      button_update_status: Update status
+      button_update_status_description: Update status description
       button_update_parent_project: Update parent project
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
@@ -401,7 +403,7 @@ hu:
         actions:
           label_enable_single: "Active in this project, click to disable"
           label_disable_single: "Inactive in this project, click to enable"
-          remove_from_project: "Remove from project"
+          remove_from_project: "Eltávolítás a projektből"
         is_required_blank_slate:
           heading: Required in all projects
           description: This project attribute is activated in all projects since the "Required in all projects" option is checked. It cannot be deactivated for individual projects.
@@ -416,8 +418,10 @@ hu:
         no_results_title_text: "Ebben a projektben nincs további rögzített lemezterület.\n"
       work_package_priorities:
         new_label: "New priority"
+    status:
+      button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Duration: %{count} working day"
       other: "Duration: %{count} working days"
   lists:
@@ -446,7 +450,7 @@ hu:
     filters:
       all_shares: "Minden megosztás"
     menu:
-      all: "Összes"
+      all: "Mind"
       invited: "Meghívott"
       locked: "Zárolt"
       project_roles: "Projekt szerepkörök"
@@ -629,14 +633,17 @@ hu:
         automatically_generated_subjects:
           label: "Automatically generated subjects"
           caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
-        pattern:
-          label: "Subject pattern"
-          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
-          headings:
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
             work_package: "Feladatcsoport"
             parent: "Szülő"
             project: "Projekt"
+        pattern:
+          label: "Subject pattern"
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
+          supported_attributes_link: "támogatott attribútumok"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -773,7 +780,7 @@ hu:
       new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
       child: "Child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
-      parent: "Parent"
+      parent: "Szülő"
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "Closest"
       label_blocks_singular: "blokkolja"
@@ -1103,8 +1110,8 @@ hu:
         priority: "Fontosság"
         progress: "%-ban kész"
         readonly: "Olvasható"
-        remaining_hours: "Hátralévő munka"
-        remaining_time: "Hátralévő munka"
+        remaining_hours: "Fennmaradó órák"
+        remaining_time: "Fennmaradó órák"
         shared_with_users: "Megosztva velük:"
         schedule_manually: "Kézi ütemezés\n"
         spent_hours: "Eltöltött idő"
@@ -1137,6 +1144,7 @@ hu:
         error_conflict: "Az adatokat frissítette egy másik felhasználó időközben."
         email: "nem valós e-mail cím"
         empty: "nem lehet üres."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "kell még."
         exclusion: "foglalt."
         feature_disabled: is not available.
@@ -1516,8 +1524,8 @@ hu:
         other: "Értesítések"
       placeholder_user: "Teszt felhasználó"
       project:
-        one: "Project"
-        other: "Projects"
+        one: "Projekt"
+        other: "Projektek"
       project_query:
         one: "Project list"
         other: "Project lists"
@@ -1583,12 +1591,13 @@ hu:
       work_package: "Munkacsomagok"
     project_phase:
       activated: "aktiválva"
-      deactivated: "deaktiválva"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "deaktiválva"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "aktív"
@@ -1655,6 +1664,8 @@ hu:
     priority: "Fontosság"
     project: "Projekt"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reason"
     responsible: "Felelős"
     required: "Kötelező"
@@ -1996,6 +2007,7 @@ hu:
       edit_attribute_groups: Edit Attribute Groups
       gantt_pdf_export: Gantt PDF Export
       ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
       placeholder_users: Placeholder Users
       project_list_sharing: Project List Sharing
@@ -2008,11 +2020,15 @@ hu:
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "Hide this banner"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
       work_package_subject_generation:
@@ -2037,6 +2053,8 @@ hu:
         description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
       work_package_sharing:
         description: "Share work packages with users who are not members of the project."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "Custom color theme and logo"
         more_info: "Megjegyzés: a használt logó nyilvánosan elérhető lesz."
@@ -2044,6 +2062,9 @@ hu:
       custom_actions:
         title: "Egyéni műveletek"
         description: "Az egyéni műveletek egy kattintással elérhető parancsikonok előre meghatározott műveletek csoportjához, amelyeket állapot, szerep, típus vagy projekt alapján elérhetővé tehet bizonyos munkacsomagokon."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       placeholder_users:
@@ -2421,6 +2442,8 @@ hu:
         mentioned: "Megemlítettek a %{work_package}-ban"
         responsible: "Ön lett a %{work_package} felelőse"
         watched: "Megfigyeled a %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Kisegítő lehetőségek"
   label_account: "Felhasználói fiók"
   label_active: "aktív"
@@ -2475,7 +2498,6 @@ hu:
   label_ldap_auth_source_plural: "LDAP connections"
   label_attribute_expand_text: "The complete text for '%{attribute}'"
   label_authentication: "Hitelesítés"
-  label_authentication_settings: "Authentication settings"
   label_available_custom_fields_projects: "Available custom fields projects"
   label_available_global_roles: "Available global roles"
   label_available_project_attributes: "Available project attributes"
@@ -2649,6 +2671,7 @@ hu:
   label_gantt_chart_plural: "Gantt-diagram"
   label_general: "Általános"
   label_generate_key: "Létrehoz egy kulcsot"
+  label_global_roles: "Global roles"
   label_git_path: ".Git könyvtár elérési útja"
   label_greater_or_equal: ">="
   label_group_by: "Csoportosítás"
@@ -2878,9 +2901,6 @@ hu:
   label_register: "Új fiók létrehozása"
   label_register_with_developer: "Regisztráljon mint fejlesztő"
   label_registered_on: "Regisztrált"
-  label_registration_activation_by_email: "fiók aktiválása e-mailen keresztül"
-  label_registration_automatic_activation: "automatikus fiók aktiválás"
-  label_registration_manual_activation: "fiók kézi aktiválása"
   label_related_work_packages: "Kapcsolódó munkacsomagok"
   label_relates: "Kapcsolódó"
   label_relates_to: "Kapcsolódó"
@@ -3320,6 +3340,7 @@ hu:
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Sikeres frissítés."
   notice_unsuccessful_update: "Update failed."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Sikeres frissítés. Az aktivált típusok egyéni mezői automatikusan aktiválódnak
     a munkacsomag űrlapon. <a href="%{url}" target="_blank">További információ</a>.
@@ -3409,8 +3430,8 @@ hu:
   permission_export_work_packages: "feladatcsoportok exportálása"
   permission_export_wiki_pages: "Wiki oldalak exportálása"
   permission_list_attachments: "Mellékletek listája"
-  permission_log_own_time: "Log own time"
-  permission_log_time: "Log time for other users"
+  permission_log_own_time: "Saját idő naplózása"
+  permission_log_time: "Mások idejének naplózása"
   permission_manage_forums: "Fórum kezelése"
   permission_manage_categories: "feladatcsoport kategóriák kezelése"
   permission_manage_dashboards: "Manage dashboards"
@@ -3504,7 +3525,7 @@ hu:
   project_module_news: "Hírek"
   project_module_repository: "Csomagtároló"
   project_module_wiki: "Wiki"
-  permission_header_for_project_module_work_package_tracking: "Work packages and Gantt charts"
+  permission_header_for_project_module_work_package_tracking: "Munkcsomagok és Gantt ábrák"
   query:
     attribute_and_direction: "%{attribute} (%{direction})"
   #possible query parameters (e.g. issue queries),
@@ -3720,6 +3741,7 @@ hu:
   setting_hours_per_day_explanation: >-
     This defines what is considered a "day" when displaying duration in days and hours (for example, if a day is 8 hours, 32 hours would be 4 days).
   setting_invitation_expiration_days: "Az aktivációs email lejár ekkor"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Progress calculation mode"
   setting_work_package_done_ratio_field: "Work-based"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3735,6 +3757,9 @@ hu:
   setting_journal_aggregation_time_minutes: "Felhasználói műveletek összevontan\n"
   setting_log_requesting_user: "Jelentkezzen be a felhasználóként, név és e-mail cím minden lekéréshez"
   setting_login_required: "Hitelesítés szükséges"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Értesítő e-mailek feladója"
   setting_mail_handler_api_key: "API-kulcs"
   setting_mail_handler_body_delimiters: "E-mailek csonkolása e sorok után"
@@ -3760,6 +3785,7 @@ hu:
   setting_project_gantt_query_text: "A projekt áttekintő oldalán módosíthatja a Gantt -diagram megjelenítésére használt lekérdezést.\n"
   setting_security_badge_displayed: "Biztonsági állapot kijelzés"
   setting_registration_footer: "Regisztráció lábléc"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Automatikus tároló típus"
   setting_repositories_encodings: "Tárolók kódolásai"
   setting_repository_storage_cache_minutes: "Tároló lemezgyorsítótár méret"
@@ -3770,8 +3796,22 @@ hu:
   setting_repository_truncate_at: "Megjelenített fájlok maximális száma a tároló böngészőben"
   setting_rest_api_enabled: "Engedélyezi a REST-alapú webszolgáltatást"
   setting_self_registration: "Önregisztráció"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Munkamenet lejárata ennyi tétlenség ideje után"
   setting_session_ttl_hint: "Érték alatt 5 működik, mint a letiltott"
   setting_session_ttl_enabled: "A munkamenet lejárt"
@@ -3799,6 +3839,8 @@ hu:
   setting_working_days: "Munkanapok"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.

@@ -114,13 +114,15 @@ To prepare the export, first filter and set up the report according to your pref
 
 ![Settings for timesheet PDF export in OpenProject](openproject_userguide_timeandcosts_timesheet_export_settings.png)
 
-A PDF file will be generated, containing the time entries specified by the report.
+A PDF file will be generated, containing the time entries specified by the report. 
+
+In the user details section, if there are several entries on the same day, the hours are combined and shown in one row. When entries span multiple days, a total for all days is also shown. Each row lists the work package IDs (with links), and the first column shows the date and abbreviated weekday.
 
 ![Timesheet PDF export in OpenProject](openproject_userguide_timesheet_pdf_export.png)
 
 > [!TIP]
 >
-> If the exported PDF includes multiple users, an additional page after the cover page will provide an overview table displaying the total hours worked by each user, as well as a sum per user.
+> If the exported PDF includes multiple users, an additional page after the cover page will provide an overview table displaying the total hours worked by each user, as well as a sum per user. It will also include an overview of hours worked per user per day.
 > 
 
 ![Timesheet PDF export for multiple users in OpenProject](openproject_userguide_timesheet_pdf_export_multiple_users.png)

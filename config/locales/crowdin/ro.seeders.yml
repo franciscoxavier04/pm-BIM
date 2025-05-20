@@ -122,7 +122,7 @@ ro:
             item_2:
               name: Tasks
             item_3:
-              name: Planificator de echipă
+              name: Planificator echipă
           boards:
             kanban:
               name: Kanban board

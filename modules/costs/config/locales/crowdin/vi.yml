@@ -36,12 +36,12 @@ vi:
         unit_plural: "Tên đơn vị đa năng"
         default: "Loại chi phí theo mặc định"
       work_package:
-        costs_by_type: "Các đơn vị đã chi"
+        costs_by_type: "Đơn vị đã chi"
         labor_costs: "Chi phí nhân công"
         material_costs: "Chi phí đơn vị"
         overall_costs: "Tổng chi phí"
         spent_costs: "Chi phí"
-        spent_units: "Đơn vị đã chi"
+        spent_units: "Các đơn vị đã chi"
       rate:
         rate: "Tỷ giá"
       user:
@@ -49,10 +49,10 @@ vi:
       time_entry:
         project: Dự án
         user: Người dùng
-        work_package: Gói công việc
+        work_package: Work Package
         subject: Chủ đề
         hours: Giờ
-        comments: Bình luận
+        comments: Nhận xét
         activity: Hoạt động
         spent_on: Ngày
         start_time: Thời gian bắt đầu
@@ -89,6 +89,7 @@ vi:
   button_log_costs: "Ghi lại chi phí đơn vị"
   button_log_time: "Nhật ký"
   button_add_activity: "Hoạt động"
+  button_add_time_entry: "Thời gian truy cập"
   caption_booked_on_project: "Đã ghi trên dự án"
   caption_default: "Mặc định"
   caption_default_rate_history_for: "Lịch sử tỷ lệ mặc định cho %{user}"
@@ -100,7 +101,7 @@ vi:
   caption_save_rate: "Lưu tỷ lệ"
   caption_set_rate: "Đặt tỷ lệ hiện tại"
   caption_show_locked: "Hiển thị các loại đã khóa"
-  caption_log_time_dialog: "Thời gian nhật ký"
+  caption_log_time_dialog: "Thời gian truy cập"
   description_date_for_new_rate: "Ngày cho tỷ lệ mới"
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
@@ -135,7 +136,7 @@ vi:
   label_no: "Không"
   label_option_plural: "Tùy chọn"
   label_overall_costs: "Chi phí tổng cộng"
-  label_rate: "Tỷ lệ"
+  label_rate: "Tỉ giá"
   label_rate_plural: "Các tỷ lệ"
   label_status_finished: "Hoàn thành"
   label_show: "Hiện"
@@ -163,7 +164,7 @@ vi:
   label_specific_month: "Month %{month}"
   label_list: "Danh sách"
   label_month: "Tháng"
-  label_workweek: "Work week"
+  label_workweek: "Tuần làm việc"
   label_day: "Ngày"
   label_today_capitalized: "Hôm nay"
   label_view_mode_switcher: "Change view"
@@ -188,10 +189,13 @@ vi:
   permission_view_own_hourly_rate: "Xem tỷ lệ theo giờ của chính mình"
   permission_view_own_time_entries: "Xem thời gian đã tiêu của chính mình"
   project_module_costs: "Thời gian và chi phí"
-  setting_allow_tracking_start_and_end_times: "Allow exact times tracking"
-  setting_costs_currency: "Đơn vị tiền tệ"
+  setting_allow_tracking_start_and_end_times: "Allow start and finish times"
+  setting_costs_currency: "Tiền tệ"
   setting_costs_currency_format: "Định dạng tiền tệ"
-  setting_enforce_tracking_start_and_end_times: "Require exact times"
+  setting_enforce_tracking_start_and_end_times: "Require start and finish times"
+  setting_enforce_without_allow: "Requiring start and finish times is not possible without allowing them"
+  setting_allow_tracking_start_and_end_times_caption: "Enables entering start and finish times when logging time."
+  setting_enforce_tracking_start_and_end_times_caption: "Makes entering start and finish times mandatory when logging time."
   text_assign_time_and_cost_entries_to_project: "Gán giờ và chi phí đã báo cáo cho dự án"
   text_destroy_cost_entries_question: "%{cost_entries} đã được báo cáo trên các gói công việc bạn sắp xóa. Bạn muốn làm gì?"
   text_destroy_time_and_cost_entries: "Xóa giờ và chi phí đã báo cáo"

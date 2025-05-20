@@ -58,7 +58,7 @@ fa:
         work_packages_graph:
           title: 'Work packages graph'
         work_packages_calendar:
-          title: 'تقویم'
+          title: 'تقویم‌ها'
         work_packages_overview:
           title: 'Work packages overview'
           placeholder: 'برای ویرایش کلیک کنید...'

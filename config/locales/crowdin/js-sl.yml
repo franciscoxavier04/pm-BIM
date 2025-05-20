@@ -242,6 +242,9 @@ sl:
           become_hero: "Bodite heroj!"
           enterprise_info_html: "%{feature_title} is an Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> add-on."
           upgrade_info: "Please upgrade to a paid plan to activate and start using it in your team."
+          text: >
+            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
+          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
           benefits:
             description: "What are the benefits of the Enterprise on-premises edition?"
             high_security: "Varnostne funkcije"
@@ -260,10 +263,7 @@ sl:
             Zagotavljamo zaupanje preizkušene in podprte programske opreme za upravljanje projektov v podjetniškem razredu - z odprto kodo in odprto miselnostjo.
           link_quote: "Pridobite ponudbo"
           more_info: "Več informacij"
-          text: >
-            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
           unlimited: "Neomejeno"
-          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
       working_days:
         calendar:
           empty_state_header: "Non-working days"
@@ -354,13 +354,13 @@ sl:
       blocks:
         new_features:
           text_new_features: "Preberite o novih funkcijah in posodobitvah izdelka."
-          learn_about: "Preberite več o novostih"
+          learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_5":
+          "16_0":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Filter for descendants (children and grandchildren) of work packages.</li> <li>Benefit from advanced accessibility in the date picker.</li> <li>See % Complete included in work package table sums.</li> <li>Include a column for children in work package tables.</li> <li>Better use the date picker in mobile screens.</li> <li>PDF exports matching configured form layout.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "An error occured while fetching data."
@@ -433,7 +433,6 @@ sl:
     label_filename: "Datoteka"
     label_filesize: "Velikost"
     label_general: "Splošno"
-    label_global_roles: "Global roles"
     label_greater_or_equal: ">="
     label_group: "Skupina"
     label_group_by: "Razvrsti po"
@@ -470,7 +469,7 @@ sl:
     label_no_start_date: "Brez začetnega datuma"
     label_no_date: "no date"
     label_no_value: "Brez vrednosti"
-    label_none: "Brez"
+    label_none: "brez"
     label_not_contains: "ne vsebuje"
     label_not_equals: "ni"
     label_on: "vključeno"
@@ -527,7 +526,7 @@ sl:
     label_value_derived_from_children: "(vrednost izpeljana iz podrejenih)"
     label_children_derived_duration: "Trajanje podrazredov delovnih paketov."
     label_warning: "Opozorilo"
-    label_work_package: "Zahtevek"
+    label_work_package: "Delovni paket"
     label_work_package_parent: "Nadrazred delovnega paketa"
     label_work_package_plural: "Delovni paketi"
     label_watch: "Glej"
@@ -643,6 +642,7 @@ sl:
           with_current_filter: "There are no notifications in this view at the moment"
         mark_all_read: "Označi vse kot prebrano"
         mark_as_read: "Označi kot prebrano"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
         text_update_date_by: "%{date} by"
         total_count_warning: "Showing the %{newest_count} most recent notifications. %{more_count} more are not displayed."
         empty_state:
@@ -834,9 +834,9 @@ sl:
       update_description: "Dodaj ali posodobi opis te povezave"
       toggle_description: "Preklopi opis razmerja"
       update_relation: "Za spremembo tipa povezave kliknite tukaj"
-      add_follower: "Dodaj naslednjika"
       show_relations: "Show relations"
       add_predecessor: "Dodaj prednika"
+      add_successor: "Add successor"
       remove: "Odstrani povezavo"
       save: "Shrani povezavo"
       abort: "Prekliči"
@@ -1109,7 +1109,7 @@ sl:
         page_settings: "Preimenuj pogled"
         delete: "Izbriši"
       filter: "Filtriraj"
-      unselected_title: "Zahtevek"
+      unselected_title: "Delovni paket"
       search_query_label: "Išči shranjenje poglede"
     modals:
       label_name: "Ime"

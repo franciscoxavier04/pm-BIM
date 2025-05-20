@@ -87,10 +87,10 @@ ms:
         encryption_form: "Anda mungkin mahu menyulitkan respons penegasan atau meminta permintaan daripada OpenProject ditandatangani."
         mapping: "Laraskan pemetaan secara manual antara respons SAML dan atribut pengguna dalam OpenProject."
         requested_attributes: "Tentukan set atribut yang akan diminta dalam permintaan SAML yang dihantar kepada pembekal identiti anda."
-      seeded_from_env: "Pembekal ini telah dipilih daripada konfigurasi persekitaran. Ia tidak boleh diedit."
+      seeded_from_env: "Pembekal ini telah dipilih daripada konfigurasi persekitaran. Ia tidak boleh disunting."
     settings:
       metadata_none: "Saya tidak mempunyai metadata"
-      metadata_url: "Metadata URL"
+      metadata_url: "URL metadata"
       metadata_xml: "Metadata XML"
     instructions:
       documentation_link: >
@@ -104,7 +104,7 @@ ms:
       metadata_xml: >
         Pembekal identiti anda menyediakan muat turun XML metadata.
       limit_self_registration: >
-        Jika didayakan pengguna hanya boleh mendaftar menggunakan pembekal ini jika tetapan pendaftaran sendiri membenarkannya.
+        Jika pengguna yang dibenarkan hanya boleh mendaftar menggunakan penyediaan ini jika tetapan pendaftaran sendiri dibenarkan.
       sp_entity_id: >
         ID entiti pembekal perkhidmatan (SP). Kadang-kadang juga dirujuk sebagai Khalayak. Ini ialah pengecam pelanggan unik bagi contoh OpenProject.
       idp_sso_service_url: >

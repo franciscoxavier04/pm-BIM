@@ -33,7 +33,7 @@
       text_hidden_list_warning: "Ikke alle lister vises fordi du ikke har tillatelse. Kontakt systemansvarlig for mer informasjon."
       click_to_remove_list: "Klikk for å fjerne denne listen"
       board_type:
-        text: 'Tavle type'
+        text: 'Tavletype'
         free: 'grunnleggende'
         select_board_type: 'Vennligst velg type tavle du trenger.'
         free_text: >
@@ -43,9 +43,9 @@
         action_text: >
           Et tavle med filtrerte lister på %{attribute} attributt. Flytting av arbeidspakker til andre lister vil oppdatere attributtet deres.
         action_text_subprojects: >
-          Tavle med automatiserte kolonner for underprosjekter. Dra arbeidspakker til andre lister opp oppdateringer av (under)prosjektet tilsvarende.
+          Tavle med automatiserte kolonner for underprosjekter. Å dra arbeidspakker til andre lister oppdaterer (under)prosjekter tilsvarende.
         action_text_subtasks: >
-          Tavle med automatiserte kolonner for underprosjekter. Dra oppgaver til andre lister opp oppdateringer av overordnet tilsvarende.
+          Tavle med automatiserte kolonner for underprosjekter. Å dra oppgaver til andre lister oppdaterer overordnet prosjekt tilsvarende.
         action_text_status: >
           Grunnleggende kanban-stil tavle med kolonner for status, slik som Å Gjøre, Underveis, Ferdig.
         action_text_assignee: >

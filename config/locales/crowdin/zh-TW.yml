@@ -41,13 +41,13 @@ zh-TW:
         changed: "變更"
         created: "建立"
         commented: "已留言"
-        internal_comment: Internal comment
-        internal_journal: Internal comments are visible to a limited group of members.
+        internal_comment: 內部備註
+        internal_journal: 內部留言僅對特定成員群組可見。
         unsaved_changes_confirmation_message: 您有未儲存的變更。您確實要關閉編輯器嗎？
         internal_comment_confirmation:
-          title: "Make this comment public?"
-          heading: "Make this comment public?"
-          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          title: "公開此評論？"
+          heading: "公開此評論？"
+          description: "您的評論將對任何可以存取此工作單元的人皆可見。您確定要這樣做嗎？"
           confirm_button_text: "設為公開"
   admin:
     plugins:
@@ -102,6 +102,8 @@ zh-TW:
       explanation:
         text: "例如使用者\"更新\"工作項目兩次，如果時間間隔小於設定值，則將合併視為為單次操作。應用程序中亦會顯示為單個操作。這也會套用在電子郵件通知，以及 %{webhook_link} 。"
         link: "webhook"
+  authentication:
+    login_and_registration: "登入及註冊"
   announcements:
     show_until: 只顯示到
     is_active: 當前已顯示
@@ -350,24 +352,24 @@ zh-TW:
         heading: "刪除此專案清單？"
         text: "此動作不會刪除清單中包含的任何專案。您確定要刪除此專案清單？"
     settings:
-      header_details: Basic details
-      header_status: Project status
-      header_relations: Project relations
-      button_update_details: Update details
-      button_update_status: Update status
-      button_update_parent_project: Update parent project
+      header_details: 基本訊息
+      header_status: 專案狀態
+      header_relations: 專案關係
+      button_update_details: 更新詳細資料
+      button_update_status_description: 更新狀態說明
+      button_update_parent_project: 更新父專案
       public_warning: >
-        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+        這個專案是公開的。任何有權訪問這個實例的人，都能依據其角色和相關權限來檢視和與這個專案互動。子專案不受影響，並且有其自己的設定。
       public_confirmation:
-        checkbox: "I understand that this will make the previously private content public"
-        title: "Make this project public?"
+        checkbox: "我了解這將使先前私密的内容公開"
+        title: "將這個專案公開嗎？"
         description: >
-          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+          任何可以存取此實例的人，將能夠依據其角色和驗證設定來檢視和與這個專案互動。子專案不受影響，並擁有其自己的設定。
       private_confirmation:
-        checkbox: "I understand that this will make the previously public content private."
-        title: "Make this project private?"
+        checkbox: "我了解這將使先前公開的內容變成私有內容。"
+        title: "將這個專案設為私有？"
         description: >
-          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+          這個專案只對依據其角色和相關權限的專案成員可见。子專案不受影響，並擁有其自己的設定。
       change_identifier: 變更識別碼
       actions:
         label_enable_all: "全部啟用"
@@ -416,8 +418,10 @@ zh-TW:
         no_results_title_text: 該專案沒有額外消耗磁碟空間。
       work_package_priorities:
         new_label: "新優先權"
+    status:
+      button_edit: 編輯專案狀態
   project_phase:
-    working_days_count:
+    duration:
       other: "持續： %{count} 工作天"
   lists:
     create:
@@ -620,14 +624,17 @@ zh-TW:
         automatically_generated_subjects:
           label: "自動產生的主題"
           caption: "使用參考屬性和文字定義模式，以自動產生工作項目主題。使用者將無法手動編輯主題。"
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "工作項目"
+            parent: "上層目錄："
+            project: "專案"
         pattern:
           label: "主題模板"
-          caption: "新增文字或輸入 / 來搜尋屬性。您可以使用空格來分隔它們。"
-          headings:
-            work_package: "工作項目"
-            parent: "上層"
-            project: "專案"
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
           insert_as_text: "未找到屬性。以文字新增：\"%{word}"
+          supported_attributes_link: "supported attributes"
       export_configuration:
         tab: "產生PDF檔案"
         intro: "從可用的範本中選擇您想要為此類型啟用的範本。範本決定了使用此類工作項目匯出的 PDF 中顯示的設計和屬性。預設為選定清單中的第一個模板。"
@@ -760,10 +767,10 @@ zh-TW:
       label_child_singular: "子項目"
       label_child_plural: "子項目"
       new_child: "建立子項目"
-      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child_description: "使相關工作成為目前（上層）工作項目的子項目"
       child: "子項目"
       child_description: "使相關工作成為目前（父）工作項目的子項目"
-      parent: "Parent"
+      parent: "上層目錄："
       parent_description: "Makes the related work package a parent of the current (child) work package"
       label_closest: "最近的"
       label_blocks_singular: "區塊"
@@ -1127,6 +1134,7 @@ zh-TW:
         error_conflict: "在此同時，資訊已經被至少一個使用者更新"
         email: "不是一個有效的電子郵件地址。 "
         empty: "不可為空"
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "必須是偶數"
         exclusion: "已保留"
         feature_disabled: 不可用。
@@ -1502,7 +1510,7 @@ zh-TW:
         other: "通知"
       placeholder_user: "占位使用者"
       project:
-        other: "Projects"
+        other: "專案"
       project_query:
         other: "專案列表"
       query: "自訂查詢"
@@ -1561,12 +1569,13 @@ zh-TW:
       work_package: "工作項目"
     project_phase:
       activated: "已啟用"
-      deactivated: "已停用"
       added_date: "設定為 %{date}"
       changed_date: "從 %{from} 改為 %{to}"
-      removed_date: "已刪除日期：%{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "已停用"
+      deleted_project_phase: "已刪除的專案階段"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, 與%{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "已刪除日期：%{date}"
   #common attributes of all models
   attributes:
     active: "啟用"
@@ -1633,6 +1642,8 @@ zh-TW:
     priority: "優先等級"
     project: "專案"
     project_ids: "專案IDs"
+    project_phase: "專案階段"
+    project_phase_definition: "專案階段"
     reason: "理由"
     responsible: "負責人"
     required: "必填"
@@ -1955,6 +1966,7 @@ zh-TW:
       edit_attribute_groups: 編輯群組屬性
       gantt_pdf_export: 以PDF匯出甘特圖
       ldap_groups: 同步LDAP使用者與群組
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
       one_drive_sharepoint_file_storage: OneDrive/SharePoint 檔案儲存
       placeholder_users: 占位使用者
       project_list_sharing: 專案清單分享
@@ -1967,11 +1979,15 @@ zh-TW:
       work_package_sharing: 與外部使用者共用工作項目
       work_package_subject_generation: 工作項目標題產生
     upsell:
+      plans_title: "Enterprise plans"
       title: "企業版附加元件"
       plan_title: "企業版 %{plan} 外掛"
       plan_name: "%{plan} 企業版計畫"
       plan_text_html: "Available starting with the %{plan_name}."
       hide_banner: "隱藏此廣告"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: 突顯自過去任一時間點以來對此清單所做的變更。
       work_package_subject_generation:
@@ -1996,6 +2012,8 @@ zh-TW:
         description: "透過日期提醒，您將收到即將到來的開始或結束日期的通知，這樣您就不會錯過或忘記重要的截止日期。"
       work_package_sharing:
         description: "與不是專案成員的使用者共同參與工作項目。"
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "自訂布景主題顏色與logo"
         more_info: "備註：Logo可被公開存取。"
@@ -2003,6 +2021,9 @@ zh-TW:
       custom_actions:
         title: "自訂動作"
         description: "自訂動作是一系列預先定義動作的單鍵捷徑，您可以根據狀態、角色、類型或專案，在特定工作項目上使用這些動作。"
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
       virus_scanning:
         description: "確保在其他使用者存取 OpenProject 中上傳的檔案前，對其進行病毒掃描。"
       placeholder_users:
@@ -2380,6 +2401,8 @@ zh-TW:
         mentioned: "您在工作項目「%{work_package}」中被提到"
         responsible: "您已對 %{work_package} 負責"
         watched: "您正在監看 %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "輔助功能"
   label_account: "帳號"
   label_active: "啟用"
@@ -2434,7 +2457,6 @@ zh-TW:
   label_ldap_auth_source_plural: "LDAP 連線"
   label_attribute_expand_text: "%{attribute} 的完整文本"
   label_authentication: "身份驗證"
-  label_authentication_settings: "認證設定"
   label_available_custom_fields_projects: "可用的專案自訂欄位"
   label_available_global_roles: "可用的角色"
   label_available_project_attributes: "可使用的專案屬性"
@@ -2608,6 +2630,7 @@ zh-TW:
   label_gantt_chart_plural: "甘特圖"
   label_general: "一般"
   label_generate_key: "產生一個金鑰"
+  label_global_roles: "全域角色"
   label_git_path: ".git 目錄的路徑"
   label_greater_or_equal: ">="
   label_group_by: "分組依據"
@@ -2837,9 +2860,6 @@ zh-TW:
   label_register: "建立新帳號"
   label_register_with_developer: "註冊成開發者"
   label_registered_on: "註冊在"
-  label_registration_activation_by_email: "以電子郵件啟動帳號"
-  label_registration_automatic_activation: "自動啟用帳號"
-  label_registration_manual_activation: "手動啟用帳號"
   label_related_work_packages: "相關的工作項目"
   label_relates: "相關於"
   label_relates_to: "相關於"
@@ -3278,6 +3298,7 @@ zh-TW:
   notice_successful_cancel: "取消成功"
   notice_successful_update: "更新成功"
   notice_unsuccessful_update: "更新失敗。"
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     更新成功。相關類型之專案，此客製欄位會自動啟動。<a href="%{url}" target="_blank">看更多</a>。
   notice_to_many_principals_to_display: "搜尋的結果太多。\n請透過輸入新成員 (群組) 的名稱來縮小搜尋的範圍。"
@@ -3676,6 +3697,7 @@ zh-TW:
   setting_hours_per_day_explanation: >-
     這定義了在以天和小時為單位顯示持續時間時，什麼是一"天"(例如，如果一天是 8 小時，32 小時就是 4 天)。
   setting_invitation_expiration_days: "啟動信件在......天後過期"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "進度計算模式"
   setting_work_package_done_ratio_field: "基於工時"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3691,6 +3713,9 @@ zh-TW:
   setting_journal_aggregation_time_minutes: "合併使用者操作"
   setting_log_requesting_user: "記錄所有使用者登入、姓名和郵件地址等資料"
   setting_login_required: "需要身份驗證"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "發出的電子郵件地址"
   setting_mail_handler_api_key: "API 金鑰"
   setting_mail_handler_body_delimiters: "符合任一行資料即截斷電子郵件"
@@ -3716,6 +3741,7 @@ zh-TW:
   setting_project_gantt_query_text: "您可以從專案總覽頁面修改用於顯示甘特圖查詢條件。"
   setting_security_badge_displayed: "顯示安全徽章"
   setting_registration_footer: "註冊頁腳"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "自動版本控制類型"
   setting_repositories_encodings: "儲存庫編碼"
   setting_repository_storage_cache_minutes: "版本庫磁碟空間快取"
@@ -3726,8 +3752,22 @@ zh-TW:
   setting_repository_truncate_at: "儲存庫瀏覽器中顯示的最大檔案數量"
   setting_rest_api_enabled: "啟用 REST 網路服務"
   setting_self_registration: "自助註冊"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
   setting_self_registration_warning: >
     The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "關閉"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "非活躍使用後連線失效時間"
   setting_session_ttl_hint: "低於5個工作同於停用"
   setting_session_ttl_enabled: "連線逾時"
@@ -3755,6 +3795,8 @@ zh-TW:
   setting_working_days: "工作日"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "單一帳號登入"
       omniauth_direct_login_hint_html: >
         如果此選項處於活動狀態，登入請求將重新導向至已設定的omniauth 提供者。登入下拉選單和登入頁面將被停用。 <br/> <strong>注意：</strong>除非您也停用密碼登錄，否則啟用此選項後，使用者仍可透過造訪 <code>%{internal_path}</code> 登入頁面進行內部登入。

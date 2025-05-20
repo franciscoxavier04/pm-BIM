@@ -60,7 +60,7 @@ de:
       client_id: Dies ist die Client-ID, die Sie von Ihrem OpenID Connect-Anbieter erhalten haben
       client_secret: Dies ist das Client-Secret, die Sie von Ihrem OpenID Connect-Anbieter erhalten haben
       limit_self_registration: Wenn diese Option aktiviert ist, können sich Benutzer nur dann über diesen Anbieter registrieren, wenn die Konfiguration aufseiten des Anbieters dies zulässt.
-      display_name: Der Name des Anbieters. Dieser wird als Anmeldeschaltfläche und in der Liste der Anbieter angezeigt.
+      display_name: Der Name des Anbieters. Dieser wird in der Login-Schaltfläche und in der Liste der Anbieter angezeigt.
       tenant: 'Bitte ersetzen Sie den vorgegebenen Mandanten durch Ihren eigenen, falls zutreffend. Siehe <a href="https://learn.microsoft.com/de-de/entra/identity-platform/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri">diese Dokumentation von Microsoft Entra</a>.'
       scope: Wenn Sie benutzerdefinierte Scopes anfordern möchten, können Sie hier einen oder mehrere durch Leerzeichen getrennte Werte hinzufügen. Weitere Informationen finden Sie in der [OpenID Connect Dokumentation](docs_url).
       post_logout_redirect_uri: Die URL, an die der OpenID Connect-Anbieter nach einer erfolgreichen Abmeldung weiterleiten soll.

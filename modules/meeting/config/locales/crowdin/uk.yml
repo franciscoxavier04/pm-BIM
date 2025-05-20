@@ -31,7 +31,7 @@ uk:
         type: "Тип зустрічі"
         location: "Місцезнаходження"
         duration: "Тривалість"
-        notes: "Нотатки "
+        notes: "Нотатки"
         participants: "Учасники"
         participant:
           one: "1 учасник"
@@ -48,7 +48,7 @@ uk:
         title: "Назва "
         author: "Автор"
         duration_in_minutes: "хв"
-        description: "Примітки"
+        description: "Нотатки"
         presenter: "Доповідач"
       meeting_section:
         title: "Назва "
@@ -340,8 +340,8 @@ uk:
   permission_view_meetings: "Переглянути зустрічі"
   permission_manage_agendas: "Керувати програмами"
   permission_manage_agendas_explanation: "Дає змогу налаштовувати пункти порядку денного динамічної наради."
-  permission_manage_outcomes: "Manage outcomes"
-  permission_send_meeting_invites_and_outcomes: "Send meeting invites and outcomes to participants"
+  permission_manage_outcomes: "Керування результатами"
+  permission_send_meeting_invites_and_outcomes: "Надсилайте запрошення на нараду і її результати учасникам"
   project_module_meetings: "Зустрічі"
   text_duration_in_hours: "Тривалість у годинах"
   text_in_hours: "у годинах"
@@ -353,13 +353,13 @@ uk:
   text_meeting_minutes_for_meeting: 'протокол засідання %{meeting}'
   text_notificiation_invited: "У цьому листі міститься запис ics для зустрічі нижче:"
   text_meeting_empty_heading: "Ваша нарада пуста"
-  text_meeting_empty_description1: "Start by adding agenda items below. Each item can be as simple as just a title, but you can also add additional details like duration and notes."
-  text_meeting_empty_description2: 'You can also add references to existing work packages. When you do, related notes will automatically be visible in the work package''s "Meetings" tab.'
+  text_meeting_empty_description1: "Почніть із додавання пунктів розкладу нижче. Кожен елемент може бути таким простим, як назва, але ви також можете додати додаткові деталі, як-от тривалість і примітки."
+  text_meeting_empty_description2: 'Ви також можете додати посилання на наявні пакети робіт. У такому разі пов’язані примітки автоматично з’являться на вкладці «Наради» пакета робіт.'
   label_meeting_empty_action: "Додати пункт порядку денного"
   label_meeting_actions: "Дії з нарадою"
   label_meeting_edit_title: "Редагувати назву зустрічі"
-  label_meeting_delete: "Видалити зустріч"
-  label_meeting_created_by: "Створено "
+  label_meeting_delete: "Видалити нараду"
+  label_meeting_created_by: "Створено"
   label_meeting_last_updated: "Востаннє оновлено"
   label_meeting_reload: "Перезавантажити"
   label_meeting_index_today: "Сьогодні"
@@ -373,13 +373,13 @@ uk:
   label_agenda_item_deleted_wp: "Посилання на видалений пакет робіт"
   label_agenda_item_actions: "Дії з пунктами порядку денного"
   label_agenda_item_move_to_next: "Перейти до наступної наради"
-  label_agenda_item_move_to_backlog: "Move to backlog"
-  label_agenda_item_move_to_current_meeting: "Move to current meeting"
+  label_agenda_item_move_to_backlog: "Перемістити в чергу завдань"
+  label_agenda_item_move_to_current_meeting: "Перемістити в поточну нараду"
   label_agenda_item_move_to_top: "Помістити на верх"
   label_agenda_item_move_to_bottom: "Помістити в кінець"
   label_agenda_item_move_up: "Рухатися вгору"
   label_agenda_item_move_down: "Пересунути нижче"
-  label_agenda_item_add_notes: "Додати примітку "
+  label_agenda_item_add_notes: "Додати нотатки"
   label_agenda_item_add_outcome: "Додати результат"
   label_agenda_item_work_package: "Пакет робіт пункту порядку денного"
   label_agenda_outcome: "Результат"
@@ -387,22 +387,22 @@ uk:
   label_agenda_outcome_edit: "Редагувати результат"
   label_agenda_outcome_delete: "Вилучити результат"
   text_outcome_not_editable_anymore: "Цей результат більше не можна редагувати."
-  text_outcome_cannot_be_added: "An outcome can no longer be added."
-  label_backlog_clear: "Clear backlog"
-  label_backlog_clear_button: "Clear all"
-  text_backlog_clear_error: "One or more errors occurred while trying to clear the backlog."
-  label_agenda_backlog: "Agenda backlog"
+  text_outcome_cannot_be_added: "Результат більше не можна додати."
+  label_backlog_clear: "Очистити чергу завдань"
+  label_backlog_clear_button: "Очистити все"
+  text_backlog_clear_error: "Під час очищення черги завдань сталася принаймні одна помилка."
+  label_agenda_backlog: "Черга завдань порядку денного"
   text_agenda_backlog: >
-    This backlog is unique to this one-time meeting. You can drag items in and out to add or remove them from the meeting agenda.
-  label_agenda_backlog_clear_title: "Clear agenda backlog?"
+    Ця черга завдань стосується лише цієї одноразової наради. Ви можете додавати або вилучати елементи з порядку денного наради, перетягуючи їх.
+  label_agenda_backlog_clear_title: "Очистити чергу завдань порядку денного?"
   text_agenda_backlog_clear_description: >
-    Are you sure you want to remove all items currently in the agenda items? This action is not reversible.
-  label_series_backlog: "Series backlog"
+    Справді вилучити всі поточні елементи із черги завдань порядку денного? Цю дію не можна відмінити.
+  label_series_backlog: "Черга завдань серії"
   text_series_backlog: >
-    The backlog is shared with all occurrences of this series. You can drag items in and out to add or remove them from a particular meeting.
-  label_series_backlog_clear_title: "Clear series backlog?"
+    Черга завдань стосується всіх нарад цієї серії. Ви можете додавати або вилучати елементи з певної наради, перетягуючи їх.
+  label_series_backlog_clear_title: "Очистити чергу завдань серії?"
   text_series_backlog_clear_description: >
-    This will remove all items in the series backlog, which is shared with all meetings in the series. Are you sure you want to continue? This action is not reversible.
+    Буде вилучено всі елементи черги завдань цієї серії, спільної для всіх нарад серії. Справді продовжити? Цю дію не можна відмінити.
   text_agenda_item_title: 'Пункт порядку денного «%{title}»'
   text_agenda_work_package_deleted: 'Пункт порядку денного для видаленого пакета робіт'
   text_deleted_agenda_item: 'Видалений пункт порядку денного'
@@ -411,7 +411,7 @@ uk:
   label_meeting_series_details: "Деталі серії нарад"
   label_meeting_details_edit: "Редагувати інформацію про зустріч"
   label_meeting_state: "Статус наради"
-  label_meeting_state_open: "Відкрити"
+  label_meeting_state_open: "Відкриті"
   label_meeting_state_closed: "Закрито"
   label_meeting_state_agenda_created: "Порядок денний створено"
   label_meeting_state_planned: "Заплановані"

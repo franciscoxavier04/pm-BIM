@@ -52,8 +52,10 @@ export default class extends Controller {
     const titleInput = this.element.querySelector('input[name="meeting_agenda_item[title]"]');
 
     if (titleInput && this.autofocusValue) {
-      (titleInput as HTMLInputElement).focus();
-      this.setCursorAtEnd(titleInput as HTMLInputElement);
+      setTimeout(() => {
+        (titleInput as HTMLInputElement).focus();
+        this.setCursorAtEnd(titleInput as HTMLInputElement);
+      }, 25); // Magic number - unsure why, but fixes the issue of focus sometimes not being on the input
     }
   }
 
