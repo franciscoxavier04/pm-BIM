@@ -476,7 +476,7 @@ Work package ID is defined as a unique ascending number assigned to a newly crea
 
 ### Work package subject
 
-Every work package in OpenProject has a subject that works as a title. It should contain all important terms in order to be found in filters and search functions. The possibility to automatically generate work packge subjects is available as an [Enterprise add-on](#enterprise-add-on).
+Every work package in OpenProject has a subject that works as a title. It should contain all important terms in order to be found in filters and search functions. The possibility to automatically generate work package subjects is available as an [Enterprise add-on](#enterprise-add-on).
 
 ### Work package table
 
