@@ -30,8 +30,7 @@ As a default, you will see two lists of all **work packages assigned to you** an
 
 ## Configure the My page
 
-
-<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Quick_guide-Widgets.mp4 " type="video/mp4" controls="" style="width:100%"></video>
+<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Quick_guide-Widgets.mp4"></video>
 
 ### Add widgets
 

@@ -54,7 +54,7 @@ features and prompt fixes for any potential bugs.
 > You need to have administrator privileges in both your Nextcloud and OpenProject instances to set up this integration.
 
 Watch this video to find out how to set up the Nextcloud integration as an Administrator and as a user.
-<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Nextcloud-Integration-Setup.mp4" type="video/mp4" controls="" style="width:100%"></video>
+<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Nextcloud-Integration-Setup.mp4"></video>
 
 ### 1. Add the "OpenProject Integration" app in Nextcloud and point it to your OpenProject instance
 
