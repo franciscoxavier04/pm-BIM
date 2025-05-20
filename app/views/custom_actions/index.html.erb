@@ -15,13 +15,12 @@
   render(Primer::OpenProject::SubHeader.new) do |subheader|
     subheader.with_action_button(
       scheme: :primary,
-      aria: { label: I18n.t("custom_actions.new") },
-      title: I18n.t("custom_actions.new"),
+      leading_icon: :plus,
+      label: t("custom_actions.new"),
       test_selector: "op-admin-custom-actions--button-new",
       tag: :a,
       href: new_custom_action_path
-    ) do |button|
-      button.with_leading_visual_icon(icon: :plus)
+    ) do
       CustomAction.model_name.human
     end
   end

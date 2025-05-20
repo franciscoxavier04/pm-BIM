@@ -28,7 +28,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Document categories" do
+RSpec.describe "Document categories", :js do
   shared_let(:admin) { create(:admin) }
 
   before do
