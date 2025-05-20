@@ -581,7 +581,7 @@ module API
           end
 
           def self.work_package_activities_emoji_reactions(id)
-            "#{work_package_activities(id)}/emoji_reactions"
+            "#{work_package_activities(id)}/activities_emoji_reactions"
           end
 
           def self.work_package_activities(id)
