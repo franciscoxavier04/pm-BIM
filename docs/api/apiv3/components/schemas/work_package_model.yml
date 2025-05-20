@@ -423,6 +423,13 @@ properties:
               The project to which the work package belongs
 
               **Resource**: Project
+      projectPhase:
+        allOf:
+          - $ref: "./link.yml"
+          - description: |-
+              The project phase to which the work package belongs
+
+              **Resource**: ProjectPhase
       responsible:
         allOf:
           - $ref: "./link.yml"

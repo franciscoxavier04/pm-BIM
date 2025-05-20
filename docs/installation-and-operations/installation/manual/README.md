@@ -149,7 +149,7 @@ time to finish.
 To check our Node installation we run `node --version`. It should output something very similar to:
 
 ```text
-v20.9.0
+v22.15.0
 ```
 
 ## Installation of OpenProject

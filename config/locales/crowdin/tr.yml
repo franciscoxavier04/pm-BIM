@@ -422,7 +422,7 @@ tr:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Süre: %{count} iş günü"
       other: "Süre: %{count} iş günü"
   lists:
@@ -1591,12 +1591,13 @@ tr:
       work_package: "İş paketleri"
     project_phase:
       activated: "etkinleştirildi"
-      deactivated: "devre dışı bırakmak"
       added_date: "%{date} tarihine ayarlandı"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "devre dışı bırakmak"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktif"
@@ -1663,6 +1664,8 @@ tr:
     priority: "Öncelik"
     project: "Proje"
     project_ids: "Proje Kimlikleri"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Sebep"
     responsible: "Sorumlu"
     required: "Gerekli"
@@ -2668,6 +2671,7 @@ tr:
   label_gantt_chart_plural: "Gantt grafikleri"
   label_general: "Genel"
   label_generate_key: "Anahtar oluştur"
+  label_global_roles: "Genel roller"
   label_git_path: ".git dizininin yolu"
   label_greater_or_equal: ">="
   label_group_by: "Grupla"

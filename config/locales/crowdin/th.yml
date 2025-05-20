@@ -422,7 +422,7 @@ th:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       other: "Duration: %{count} working days"
   lists:
     create:
@@ -1571,12 +1571,13 @@ th:
       work_package: "ชุดภารกิจ"
     project_phase:
       activated: "activated"
-      deactivated: "deactivated"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "deactivated"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "ใช้งานอยู่"
@@ -1643,6 +1644,8 @@ th:
     priority: "ระดับความสำคัญ"
     project: "โครงการ"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reason"
     responsible: "Accountable"
     required: "จำเป็นต้องระบุ"
@@ -2629,6 +2632,7 @@ th:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "ทั่วไป"
   label_generate_key: "สร้างคีย์"
+  label_global_roles: "Global roles"
   label_git_path: "เส้นทางไปยังไดเรคทอรี่ ของไฟล์ .git"
   label_greater_or_equal: ">="
   label_group_by: "Group by"

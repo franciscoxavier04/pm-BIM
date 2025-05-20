@@ -422,7 +422,7 @@ ro:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Duration: %{count} working day"
       few: "Duration: %{count} working days"
       other: "Duration: %{count} working days"
@@ -1613,12 +1613,13 @@ ro:
       work_package: "Pachete de lucru"
     project_phase:
       activated: "Activat"
-      deactivated: "Dezactivat"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "Dezactivat"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Activ"
@@ -1685,6 +1686,8 @@ ro:
     priority: "Prioritate"
     project: "Proiect"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Motiv"
     responsible: "Responsabil"
     required: "Obligatoriu"
@@ -2657,7 +2660,7 @@ ro:
   label_duplicated_by: "dublat de"
   label_duplicate: "duplicat"
   label_duplicates: "dublează"
-  label_edit: "Editează"
+  label_edit: "Editare"
   label_edit_x: "Editare: %{x}"
   label_enable_multi_select: "Comutare selecție multiplă"
   label_enabled_project_custom_fields: "Câmpuri personalizate activate"
@@ -2709,9 +2712,10 @@ ro:
   label_gantt_chart_plural: "Diagrame Gantt"
   label_general: "General"
   label_generate_key: "Generare cheie"
+  label_global_roles: "Global roles"
   label_git_path: "Calea catre directorul .git"
   label_greater_or_equal: ">="
-  label_group_by: "Grupează după"
+  label_group_by: "Grupare după"
   label_group_new: "Grupare nouă"
   label_group: "Grup"
   label_group_named: "Grup %{name}"

@@ -462,7 +462,7 @@ en:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Duration: %{count} working day"
       other: "Duration: %{count} working days"
   lists:
@@ -1673,12 +1673,13 @@ en:
       work_package: "Work packages"
     project_phase:
       activated: "activated"
-      deactivated: "deactivated"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "deactivated"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
 
   # common attributes of all models
   attributes:
@@ -1746,6 +1747,8 @@ en:
     priority: "Priority"
     project: "Project"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reason"
     responsible: "Accountable"
     required: "Required"
@@ -2766,6 +2769,7 @@ en:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "General"
   label_generate_key: "Generate a key"
+  label_global_roles: "Global roles"
   label_git_path: "Path to .git directory"
   label_greater_or_equal: ">="
   label_group_by: "Group by"

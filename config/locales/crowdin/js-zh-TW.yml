@@ -433,7 +433,6 @@ zh-TW:
     label_filename: "檔案"
     label_filesize: "檔案大小"
     label_general: "一般"
-    label_global_roles: "全域角色"
     label_greater_or_equal: "之前"
     label_group: "群組"
     label_group_by: "分組依據"

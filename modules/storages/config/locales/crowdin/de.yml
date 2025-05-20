@@ -80,7 +80,7 @@ de:
     edit_project_folder:
       label: Projektordner bearbeiten
     open:
-      remote_identity_error: An unexpected error occurred while connecting to the storage.
+      remote_identity_error: Ein unerwarteter Fehler trat während der Verbindung zum Speicher auf.
     project_folder_mode:
       automatic: Automatisch verwaltet
       inactive: Kein spezifischer Ordner
@@ -175,7 +175,7 @@ de:
   storages:
     buttons:
       complete_without_setup: Ohne fortfahren
-      done_complete_setup: Fertig, Einrichtung abschließen
+      done_complete_setup: Fertig, Einrichtung abgeschlossen
       done_continue: Fertig, Fortfahren
       open_storage: Dateispeicher öffnen
       replace_oauth_application: OpenProject OAuth ersetzen
@@ -300,6 +300,8 @@ de:
         od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
         od_unexpected_content: Unerwarteter Inhalt auf dem Laufwerk gefunden.
         offline_access_scope_missing: Es wird empfohlen, den OpenID Connect-Anbieter so zu konfigurieren, dass er den Scope offline_access anfordert. Die Integration kann trotzdem funktionieren, aber stellen Sie sicher, dass die Aktualisierungstoken nicht ablaufen.
+        oidc_cant_acquire_token: Dein OpenID Connect Setup bietet weder die nötige Audience noch bietet es Tokenaustausch Möglichkeiten. Bitte lies unsere Dokumentation für weitere Informationen.
+        oidc_cant_exchange_token: Es scheint ein Problem mit dem Token Exchange Setup auf Ihrem OpenID Connect Provider zu geben. Bitte überprüfen Sie die Konfiguration und versuchen Sie es erneut.
         oidc_cant_refresh_token: Beim Versuch, Ihren Zugriff auf den Speicher zu überprüfen, ist ein Fehler aufgetreten. Bitte überprüfen Sie die Server-Protokolle auf weitere Informationen.
         oidc_non_oidc_user: Der aktuelle Benutzer wurde zwar bereitgestellt, aber nicht von einem OpenID Connect (OIDC) Identity Provider. Bitte wiederholen Sie die Prüfung mit einem OIDC-bereitgestellten Benutzer.
         oidc_non_provisioned_user: Der aktuelle Benutzer wird nicht von einem OpenID Connect Identity Provider bereitgestellt. Bitte führen Sie die Prüfung mit einem bereitgestellten Benutzer erneut durch.

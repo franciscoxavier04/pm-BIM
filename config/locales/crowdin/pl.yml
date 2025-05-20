@@ -419,11 +419,11 @@ pl:
     status:
       button_edit: Edytuj status projektu
   project_phase:
-    working_days_count:
+    duration:
       one: "Czas trwania: %{count} dzień roboczy"
-      few: "Czas trwania: %{count} dni robocze"
-      many: "Czas trwania: %{count} dni roboczych"
-      other: "Czas trwania: %{count} dnia roboczego"
+      few: "Czas trwania: %{count} dnia roboczego"
+      many: "Czas trwania: %{count} dnia roboczego"
+      other: "Czas trwania: %{count} dni roboczych"
   lists:
     create:
       success: "Zmodyfikowana lista została zapisana jako nowa lista"
@@ -1631,12 +1631,13 @@ pl:
       work_package: "Pakiety robocze"
     project_phase:
       activated: "aktywowano"
-      deactivated: "dezaktywowano"
       added_date: "ustawiono na %{date}"
       changed_date: "zmieniono z %{from} na %{to}"
-      removed_date: "data usunięcia %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "dezaktywowano"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} i %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "data usunięcia %{date}"
   #common attributes of all models
   attributes:
     active: "Aktywne"
@@ -1703,6 +1704,8 @@ pl:
     priority: "Priorytet"
     project: "Projekt"
     project_ids: "Identyfikatory projektów"
+    project_phase: "Faza projektu"
+    project_phase_definition: "Faza projektu"
     reason: "Powód"
     responsible: "Osoba odpowiedzialna"
     required: "Wymagane"
@@ -2746,6 +2749,7 @@ pl:
   label_gantt_chart_plural: "Wykresy Gantta"
   label_general: "Ogólne"
   label_generate_key: "Generuj klucz"
+  label_global_roles: "Role globalne"
   label_git_path: "Ścieżka do katalogu .git"
   label_greater_or_equal: "≥"
   label_group_by: "Grupuj według"

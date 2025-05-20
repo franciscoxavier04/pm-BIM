@@ -113,16 +113,17 @@ module OpPrimer
     end
 
     # An extension of primers default `primer_form_with`
-    # Renders a primer form with a special wrapper around to limit the width.
+    # Renders a primer form with a special wrapper around to limit the width for
+    # legibility.
     #
     # This method dynamically creates a container around the actual form.
     # All arguments and the content are simply passed through to the `primer_form_with` call
     #
-    # It is meant for settings pages within the administration to
-    # have a unified look and feel for our users.
+    # It is meant for any settings pages like in administration or project
+    # settings to have a unified look and feel for our users.
     #
     # @example
-    #   admin_settings_primer_form_with(scope: :settings, action: :update, method: :patch) do |form|
+    #   settings_primer_form_with(scope: :settings, action: :update, method: :patch) do |form|
     #     render_inline_settings_form(form) do |f|
     #       f.check_box(name: :allow_tracking_start_and_end_times)
     #       f.check_box(name: :enforce_tracking_start_and_end_times)
@@ -133,7 +134,7 @@ module OpPrimer
     #
     # @param kwargs [Hash] The arguments for the form
     # @param block [Proc] A block that defines the form structure.
-    def admin_settings_primer_form_with(**, &)
+    def settings_primer_form_with(**, &)
       render(Primer::BaseComponent.new(tag: :div, classes: "op-admin-settings-form-wrapper")) do
         primer_form_with(**, &)
       end

@@ -50,5 +50,6 @@ RSpec.describe Project::PhaseDefinition do
 
     it { is_expected.to have_many(:projects).through(:phases) }
     it { is_expected.to belong_to(:color).required }
+    it { is_expected.to have_many(:work_packages) }
   end
 end

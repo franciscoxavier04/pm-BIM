@@ -96,19 +96,6 @@ module Storages
       end
     end
 
-    # TODO: This method should be removed, callers should refer to the project_storages_controller and its "open" action
-    #       directly, which already takes care of ensuring the connection when needed.
-    def open_with_connection_ensured
-      return unless storage.configured?
-      return open_project_storage_url if storage.authenticate_via_idp?
-
-      OpenProject::StaticRouting::StaticRouter.new.url_helpers.oauth_clients_ensure_connection_path(
-        oauth_client_id: storage.oauth_client.client_id,
-        storage_id: storage.id,
-        destination_url: open_project_storage_url
-      )
-    end
-
     def open_project_storage_url
       OpenProject::StaticRouting::StaticRouter.new.url_helpers.open_project_storage_url(project_id: project.identifier, id:)
     end
