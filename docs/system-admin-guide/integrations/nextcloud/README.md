@@ -71,7 +71,7 @@ Click on the **Save** button.
 > [!TIP]
 > If the OpenProject host cannot be added, you may check the [Troubleshooting](#troubleshooting) section at the bottom of this page.
 
-## 2. Create a Nextcloud file storage in your OpenProject instance
+### 2. Create a Nextcloud file storage in your OpenProject instance
 
 Navigate to your OpenProject administration settings page by clicking on *your avatar in the top right corner → Administration*. From the side menu on the left select *Files -> External file storages*.
 
