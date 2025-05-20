@@ -202,7 +202,7 @@ zh-TW:
       storage_delete_result_3: 如果此儲存空間具有自動管理的專案資料夾，則該資料夾及其檔案將永久刪除。
     dependencies:
       nextcloud:
-        group_folders_app: Group Folders
+        group_folders_app: 群組資料夾
         integration_app: 整合 OpenProject
     enabled_in_projects:
       setup_incomplete_description: 此儲存的設定不完整。請先完成設定，再於多個專案中啟用。
@@ -239,8 +239,8 @@ zh-TW:
       checked: 上次檢查時間：%{datetime}
       checks:
         ampf_configuration:
-          client_folder_creation: Automatic folder creation
-          client_folder_removal: Automatic folder deletion
+          client_folder_creation: 自動新增資料夾
+          client_folder_removal: 自動刪除資料夾
           drive_contents: Drive has expected content
           files_request: 正在擷取群組資料夾檔案
           group_folder_app: 'Dependency: Group Folders'
@@ -281,8 +281,8 @@ zh-TW:
         nc_dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
         nc_group_folder_not_found: 無法找到群組資料夾。
         nc_host_not_found: 在設定的主機網址未找到 Nextcloud 伺服器。請檢查設定。
-        nc_oauth_request_not_found: OpenProject 無法使用目前登入的使用者找到 Nextcloud 的根資料夾。請檢查伺服器日誌以獲取更多資訊。
-        nc_oauth_request_unauthorized: 目前使用者無權查看 Nextcloud 的主資料夾，或者我們無法取得權杖(token)。請檢查伺服器日誌以獲取更多資訊。
+        nc_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        nc_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
         nc_oauth_token_missing: OpenProject 無法測試與 Nextcloud 的用戶級連線，因為沒有當前用戶的權杖(token)。
         nc_unexpected_content: 在管理的群組資料夾中發現非預期內容。
         nc_userless_access_denied: 設定的應用程式密碼無效。
@@ -291,8 +291,8 @@ zh-TW:
         od_client_write_permission_missing: 用戶似乎缺少寫入權限，請檢查儲存空間的文件設定。
         od_drive_id_invalid: 設定的磁碟代碼似乎不對。請檢查相關設定。
         od_drive_id_not_found: 找不到已設定的磁碟代碼。請檢查相關設定。
-        od_oauth_request_not_found: OpenProject 無法使用目前登入的使用者找到 Nextcloud 的根資料夾。請檢查伺服器日誌以獲取更多資訊。
-        od_oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive/SharePoint or we couldn't acquire a token. Please check the server logs for further information.
+        od_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        od_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
         od_oauth_token_missing: OpenProject 無法測試使用者與 OneDrive/SharePoint 的連線，因為使用者尚未連結 Microsoft 帳號。
         od_tenant_id_wrong: 設定的目錄 (租戶) id 無效。請檢查設定。
         od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.

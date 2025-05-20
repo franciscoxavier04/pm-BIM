@@ -771,7 +771,7 @@ zh-TW:
       child: "子項目"
       child_description: "使相關工作成為目前（父）工作項目的子項目"
       parent: "上層目錄："
-      parent_description: "Makes the related work package a parent of the current (child) work package"
+      parent_description: "使相關工作成為當前（子）工作項目的上層項目"
       label_closest: "最近的"
       label_blocks_singular: "區塊"
       label_blocks_plural: "區塊"
@@ -1092,7 +1092,7 @@ zh-TW:
           title: "工作日"
           false: "限工作日"
           true: "包含非工作日"
-        journal_internal: Internal Journal
+        journal_internal: 內部日誌
         notify: "通知" #used in custom actions
         parent: "上層目錄："
         parent_issue: "上層工作項目："
@@ -1134,7 +1134,7 @@ zh-TW:
         error_conflict: "在此同時，資訊已經被至少一個使用者更新"
         email: "不是一個有效的電子郵件地址。 "
         empty: "不可為空"
-        enterprise_plan_required: "requires at least the %{plan_name}."
+        enterprise_plan_required: "最少需要 %{plan_name}。"
         even: "必須是偶數"
         exclusion: "已保留"
         feature_disabled: 不可用。
@@ -1816,7 +1816,7 @@ zh-TW:
     text:
       failed: '無法從 “%{source_project_name}” 複製專案到 "%{target_project_name}"'
       succeeded: '複製 "%{source_project_name}" 到 "%{target_project_name}"。'
-  create_wiki_page: "Create new wiki page"
+  create_wiki_page: "新增一個 wiki 頁面"
   create_wiki_page_button: "維基頁面"
   date:
     abbr_day_names:
@@ -1954,7 +1954,7 @@ zh-TW:
       baseline_comparison: 比較差異
       board_view: 進階看板
       conditional_highlighting: 條件強調
-      internal_comments: Internal Comments
+      internal_comments: 內部備註
       custom_actions: 自訂動作
       custom_field_hierarchies: 階層類型的自訂欄位
       customize_life_cycle: 自訂生命週期
@@ -1963,7 +1963,7 @@ zh-TW:
       edit_attribute_groups: 編輯群組屬性
       gantt_pdf_export: 以PDF匯出甘特圖
       ldap_groups: 同步LDAP使用者與群組
-      nextcloud_sso: Single Sign-On for Nextcloud Storage
+      nextcloud_sso: Nextcloud 儲存空間的單一登入(SSO)
       one_drive_sharepoint_file_storage: OneDrive/SharePoint 檔案儲存
       placeholder_users: 占位使用者
       project_list_sharing: 專案清單分享
@@ -1976,15 +1976,15 @@ zh-TW:
       work_package_sharing: 與外部使用者共用工作項目
       work_package_subject_generation: 工作項目標題產生
     upsell:
-      plans_title: "Enterprise plans"
+      plans_title: "企業方案"
       title: "企業版附加元件"
       plan_title: "企業版 %{plan} 外掛"
       plan_name: "%{plan} 企業版計畫"
-      plan_text_html: "Available starting with the %{plan_name}."
+      plan_text_html: "需 %{plan_name} 方案以上才可使用。"
       hide_banner: "隱藏此廣告"
       homescreen_description: >
-        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
-      homescreen_subline: By upgrading, you will also be supporting an open source project.
+        企業方案擴展您目前使用的 OpenProject 社群版，包含附加元件、額外功能和專業支援，讓各規模組織都能共同達成卓越目標。
+      homescreen_subline: 升級即是對開源專案的一種支持。
       baseline_comparison:
         description: 突顯自過去任一時間點以來對此清單所做的變更。
       work_package_subject_generation:
@@ -2019,8 +2019,8 @@ zh-TW:
         title: "自訂動作"
         description: "自訂動作是一系列預先定義動作的單鍵捷徑，您可以根據狀態、角色、類型或專案，在特定工作項目上使用這些動作。"
       nextcloud_sso:
-        title: "Single Sign-On for Nextcloud Storage"
-        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
+        title: "Nextcloud 儲存空間的單一登入(SSO)"
+        description: "使用單一登入為您的 Nextcloud 儲存空間啟用無縫且安全的驗證。簡化存取管理並提升使用者便利性。"
       virus_scanning:
         description: "確保在其他使用者存取 OpenProject 中上傳的檔案前，對其進行病毒掃描。"
       placeholder_users:
@@ -2028,10 +2028,10 @@ zh-TW:
         description: >
           「佔位使用者」是一種將工作項目分配給不屬於您專案成員的方法。它們在一系列場景中十分有用；例如，如果您需要追蹤尚未命名或可用的資源的任務，或者如果您不想讓該人員存取專案，但仍希望追蹤分配給他們的任務。
       internal_comments:
-        title: Internal comments
-        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+        title: 內部備註
+        description: "內部備註讓內部團隊可以私下溝通。這些僅對某些專案角色可见，永遠不會公開顯示。"
       internal_comments_inline:
-        title: "Write internal comments only a small group can see"
+        title: "只讓少數人能看到的內部備註"
         description: " "
   enumeration_activities: "時間追蹤活動"
   enumeration_work_package_priorities: "工作項目優先等級"
@@ -2399,7 +2399,7 @@ zh-TW:
         responsible: "您已對 %{work_package} 負責"
         watched: "您正在監看 %{work_package}"
     query:
-      invalid_filter: "Invalid notification filter"
+      invalid_filter: "無效的通知過濾器"
   label_accessibility: "輔助功能"
   label_account: "帳號"
   label_active: "啟用"
@@ -3294,7 +3294,7 @@ zh-TW:
   notice_successful_cancel: "取消成功"
   notice_successful_update: "更新成功"
   notice_unsuccessful_update: "更新失敗。"
-  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
+  notice_unsuccessful_update_with_reason: "更新失敗： %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     更新成功。相關類型之專案，此客製欄位會自動啟動。<a href="%{url}" target="_blank">看更多</a>。
   notice_to_many_principals_to_display: "搜尋的結果太多。\n請透過輸入新成員 (群組) 的名稱來縮小搜尋的範圍。"
@@ -3337,7 +3337,7 @@ zh-TW:
   permission_add_project: "建立專案"
   permission_add_work_package_attachments: "新增附件"
   permission_add_work_package_attachments_explanation: "允許在沒有編輯工作項目權限的情況下新增附件"
-  permission_add_internal_comments: "Write internal comments"
+  permission_add_internal_comments: "撰寫內部留言"
   permission_archive_project: "封存專案"
   permission_create_user: "新增使用者"
   permission_manage_user: "編輯使用者"
@@ -3366,11 +3366,11 @@ zh-TW:
   permission_edit_work_package_comments_explanation: "注意：擁有此權限的使用者可以編輯任何人的註解。"
   permission_edit_work_packages: "編輯工作項目"
   permission_edit_messages: "編輯訊息"
-  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_internal_comments: "編輯內部備註"
   permission_edit_own_work_package_comments: "編輯自己的留言"
   permission_edit_own_messages: "編輯自己張貼的訊息"
   permission_edit_own_time_entries: "編輯自己的時間日誌"
-  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments: "審核內部留言"
   permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "編輯專案"
   permission_edit_project_attributes: "編輯項目屬性"
@@ -3412,7 +3412,7 @@ zh-TW:
   permission_manage_own_reminders: "建立自己的提醒事項"
   permission_view_project: "檢視專案"
   permission_view_changesets: "在 OpenProject 檢視版本庫修訂"
-  permission_view_internal_comments: "View internal comments"
+  permission_view_internal_comments: "檢視內部留言"
   permission_view_commit_author_statistics: "檢視 Commit 的作者統計資訊"
   permission_view_dashboards: "檢視儀表板"
   permission_view_work_package_watchers: "檢視監看者清單"
@@ -3710,7 +3710,7 @@ zh-TW:
   setting_log_requesting_user: "記錄所有使用者登入、姓名和郵件地址等資料"
   setting_login_required: "需要身份驗證"
   setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
-  setting_lost_password: "Enable password reset"
+  setting_lost_password: "啟用密碼重設"
   setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "發出的電子郵件地址"
   setting_mail_handler_api_key: "API 金鑰"
@@ -3791,8 +3791,8 @@ zh-TW:
   setting_working_days: "工作日"
   settings:
     authentication:
-      login_and_sso: "Login and SSO"
-      registration: "Registration"
+      login_and_sso: "登入及單一登入"
+      registration: "註冊"
       single_sign_on: "單一帳號登入"
       omniauth_direct_login_hint_html: >
         如果此選項處於活動狀態，登入請求將重新導向至已設定的omniauth 提供者。登入下拉選單和登入頁面將被停用。 <br/> <strong>注意：</strong>除非您也停用密碼登錄，否則啟用此選項後，使用者仍可透過造訪 <code>%{internal_path}</code> 登入頁面進行內部登入。
@@ -3896,7 +3896,7 @@ zh-TW:
     work_packages:
       not_allowed_text: "您沒有查看此頁面的必要權限。"
       activities:
-        enable_internal_comments: "Enable internal comments"
+        enable_internal_comments: "啟用內部備註"
         helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"

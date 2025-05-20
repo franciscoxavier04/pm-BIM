@@ -287,8 +287,8 @@ ru:
         nc_dependency_version_mismatch: Версия %{dependency} не поддерживается. Пожалуйста, обновите Ваш сервер Nextcloud.
         nc_group_folder_not_found: Папка группы не найдена.
         nc_host_not_found: По настроенному адресу хоста сервер Nextcloud не найден. Пожалуйста, проверьте конфигурацию.
-        nc_oauth_request_not_found: OpenProject не смог найти корневую папку Nextcloud для текущего зарегистрированного пользователя. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
-        nc_oauth_request_unauthorized: У текущего пользователя нет прав на просмотр основной папки Nextcloud или мы не смогли получить токен. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
+        nc_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        nc_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
         nc_oauth_token_missing: OpenProject не может протестировать пользовательскую связь с Nextcloud, так как пользователь еще не связал свою учетную запись Nextcloud.
         nc_unexpected_content: В управляемой папке группы обнаружено неожиданное содержимое.
         nc_userless_access_denied: Указанный пароль приложения неверен.
@@ -297,8 +297,8 @@ ru:
         od_client_write_permission_missing: Возможно, клиент не имеет прав на запись. Пожалуйста, проверьте документацию по конфигурации для вашего хранилища.
         od_drive_id_invalid: Настроенный идентификатор диска не найден. Пожалуйста, проверьте конфигурацию.
         od_drive_id_not_found: Настроенный идентификатор диска не найден. Пожалуйста, проверьте конфигурацию.
-        od_oauth_request_not_found: OpenProject не смог найти корневую папку для текущего зарегистрированного пользователя. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
-        od_oauth_request_unauthorized: У текущего пользователя нет прав для просмотра корневой папки OneDrive/SharePoint или мы не смогли получить токен. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
+        od_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        od_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
         od_oauth_token_missing: OpenProject не может протестировать пользовательскую связь с OneDrive/SharePoint, так как пользователь еще не связал свою учетную запись Microsoft.
         od_tenant_id_wrong: Настроенный идентификатор каталога недействителен. Пожалуйста, проверьте конфигурацию.
         od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
