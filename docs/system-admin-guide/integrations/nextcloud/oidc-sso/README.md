@@ -56,8 +56,6 @@ Other identity providers might work as well, but we have only limited capacity t
 
 ### Keycloak
 
-OpenProject has been tested with **Keycloak 26.1**, which we consider to be the minimum required version.
-
 Keycloak can provide tokens via Token Exchange, as well as immediately after user sign-in. Using Token Exchange is preferred, but requires enabling two preview features in the Keycloak deployment:
 
 * `token-exchange`
