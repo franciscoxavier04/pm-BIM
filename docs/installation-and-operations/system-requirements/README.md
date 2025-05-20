@@ -203,9 +203,26 @@ OpenProject supports the latest versions of the major browsers.
 * [Nextcloud 30](https://nextcloud.com/changelog/#latest30)
 * [Nextcloud 31](https://nextcloud.com/changelog/#latest31)
 
-#### Nextcloud App "OpenProject Integration"
+> [!TIP]
+>
+> * If you run Nextcloud in the community edition be careful to not blindly follow the update hints in the
+>   administration area of a Nextcloud instance, as they nudge you to use the `latest` version, which might not be the
+>   latest `stable` version.
+> * If you installed Nextcloud via the [community](https://hub.docker.com/_/nextcloud) docker image, we advise you to
+>   pin it to the `stable` tag.
+> * Nextcloud company advises the use of their [all-in-one](https://hub.docker.com/r/nextcloud/all-in-one) docker image.
+
+#### Nextcloud Apps
+
+##### OpenProject Integration
 
 *  [2.8.1](https://github.com/nextcloud/integration_openproject/releases/tag/v2.8.1)
+
+#### Team folders
+
+If you want to use the feature of [automatically managed project folders](https://www.openproject.org/docs/system-admin-guide/integrations/nextcloud/#5-automatically-managed-project-folders) you need to install the [Team folders](https://apps.nextcloud.com/apps/groupfolders) app in Nextcloud (formerly Group folders).
+
+* [19.0.4](https://github.com/nextcloud/groupfolders/releases/tag/v19.0.4)
 
 ## Frequently asked questions (FAQ)
 
