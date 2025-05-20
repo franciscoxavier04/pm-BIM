@@ -56,6 +56,7 @@ module Reactable
       EmojiReaction
         .select(emoji_reactions_group_selection_sql)
         .joins(:user)
+        .includes(:reactable)
         .where(reactable_id:, reactable_type:)
         .group("emoji_reactions.reactable_type, emoji_reactions.reactable_id, emoji_reactions.reaction")
         .order("first_created_at ASC")
