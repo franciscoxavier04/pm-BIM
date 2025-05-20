@@ -54,16 +54,18 @@ module Types
         AttributeToken.new(:parent_subject, -> { WorkPackage.human_attribute_name(:subject) }, ->(parent) { parent.subject }),
         AttributeToken.new(:parent_status, -> { WorkPackage.human_attribute_name(:status) }, ->(parent) { parent.status&.name }),
         AttributeToken.new(:parent_type, -> { WorkPackage.human_attribute_name(:type) }, ->(parent) { parent.type&.name }),
+        AttributeToken.new(:parent_version, -> { WorkPackage.human_attribute_name(:version) }, ->(parent) { parent.version&.name }),
         AttributeToken.new(:priority, -> { WorkPackage.human_attribute_name(:priority) }, ->(wp) { wp.priority }),
         AttributeToken.new(:project_id, -> { Project.human_attribute_name(:id) }, ->(project) { project.id }),
         AttributeToken.new(:project_active, -> { Project.human_attribute_name(:active) }, ->(project) { project.active? }),
         AttributeToken.new(:project_name, -> { Project.human_attribute_name(:name) }, ->(project) { project.name }),
-        AttributeToken.new(:project_status, -> { Project.human_attribute_name(:status_code) }, ->(project) { project.status_code }),
+        AttributeToken.new(:project_status, -> { Project.human_attribute_name(:status_code) }, ->(project) { project.status_code.nil? ? nil : I18n.t("activerecord.attributes.project.status_codes.#{project.status_code}") }),
         AttributeToken.new(:project_parent, -> { Project.human_attribute_name(:parent) }, ->(project) { project.parent_id }),
         AttributeToken.new(:project_public, -> { Project.human_attribute_name(:public) }, ->(project) { project.public? }),
         AttributeToken.new(:start_date, -> { WorkPackage.human_attribute_name(:start_date) }, ->(wp) { wp.start_date }),
         AttributeToken.new(:status, -> { WorkPackage.human_attribute_name(:status) }, ->(wp) { wp.status&.name }),
-        AttributeToken.new(:type, -> { WorkPackage.human_attribute_name(:type) }, ->(wp) { wp.type&.name })
+        AttributeToken.new(:type, -> { WorkPackage.human_attribute_name(:type) }, ->(wp) { wp.type&.name }),
+        AttributeToken.new(:version, -> { WorkPackage.human_attribute_name(:version) }, ->(wp) { wp.version&.name })
       ].freeze
       # rubocop:enable Layout/LineLength
 
