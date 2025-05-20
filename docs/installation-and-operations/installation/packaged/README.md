@@ -83,7 +83,7 @@ sudo apt-get install openproject
 
 Then finish the installation by reading the [*Initial configuration*](#initial-configuration) section.
 
-<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/openproject-installation-ubuntu.mp4" type="video/mp4" controls="" style="width:100%"></video>
+<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/openproject-installation-ubuntu.mp4"></video>
 
 ### Ubuntu 20.04
 
