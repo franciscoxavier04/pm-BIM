@@ -84,9 +84,7 @@ module API
                  exec_context: :decorator,
                  getter: ->(*) { "#{represented.reactable_id}-#{represented.reaction}" }
         property :reaction
-        property :emoji,
-                 exec_context: :decorator,
-                 getter: ->(*) { ::EmojiReaction.emoji(represented.reaction) }
+        property :emoji
         property :reactions_count
 
         date_time_property :first_created_at, as: :firstReactionAt
