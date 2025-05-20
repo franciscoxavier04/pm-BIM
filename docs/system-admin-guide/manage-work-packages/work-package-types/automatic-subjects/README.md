@@ -146,8 +146,3 @@ Good subject patterns should be:
 - **Language choice**: Use the company-approved language for 
 
 Check our [Example Subject Patterns](https://www.openproject.org/blog/automatically-generated-work-package-subjects/) for inspiration.
-
-> [!TIP]
->
-> 
-
