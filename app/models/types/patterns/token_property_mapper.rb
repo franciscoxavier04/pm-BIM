@@ -59,7 +59,7 @@ module Types
         AttributeToken.new(:project_id, -> { Project.human_attribute_name(:id) }, ->(project) { project.id }),
         AttributeToken.new(:project_active, -> { Project.human_attribute_name(:active) }, ->(project) { project.active? }),
         AttributeToken.new(:project_name, -> { Project.human_attribute_name(:name) }, ->(project) { project.name }),
-        AttributeToken.new(:project_status, -> { Project.human_attribute_name(:status_code) }, ->(project) { project.status_code.nil? ? nil : I18n.t("activerecord.attributes.project.status_codes.#{project.status_code}") }),
+        AttributeToken.new(:project_status, -> { Project.human_attribute_name(:status_code) }, ->(project) { project.status_code && I18n.t("activerecord.attributes.project.status_codes.#{project.status_code}") }),
         AttributeToken.new(:project_parent, -> { Project.human_attribute_name(:parent) }, ->(project) { project.parent_id }),
         AttributeToken.new(:project_public, -> { Project.human_attribute_name(:public) }, ->(project) { project.public? }),
         AttributeToken.new(:start_date, -> { WorkPackage.human_attribute_name(:start_date) }, ->(wp) { wp.start_date }),
