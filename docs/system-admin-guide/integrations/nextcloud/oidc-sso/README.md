@@ -129,7 +129,7 @@ After enabling the toggle called "enable token exchange", you have to set the cl
 
 Additionally we need to configure the OpenID Connect provider in Nextcloud. Navigate to "Administration", and choose "OpenID Connect" from the sidebar. You should see a list of your configured OpenID Connect providers. At the top of that page enable the checkbox called "Store login tokens". This setting is required by Nextcloud to allow using tokens obtained during login for token exchange or requests to other services.
 
-Afterwards navigate to the OpenID Connect provider of the Keycloak and edit it. Make sure that the `api_v3` claim is part of the "Scope" text box. If it hasn't been added so far, you can append it to the existing text, ensuring that it is preceeded by a space, e.g., `openid email profile api_v3`. This ensures that Nextcloud will request the `api_v3` scope when a user logs in. Only then Keycloak will allow to exchange a token for OpenProject that carries the `api_v3` scope as well.
+Afterwards navigate to the OpenID Connect provider of the Keycloak and edit it. Make sure that the `api_v3` claim is part of the "Scope" text box. If it hasn't been added so far, you can append it to the existing text, ensuring that it is preceded by a space, e.g., `openid email profile api_v3`. This ensures that Nextcloud will request the `api_v3` scope when a user logs in. Only then Keycloak will allow to exchange a token for OpenProject that carries the `api_v3` scope as well.
 
 This wraps up the configuration of this authentication method using Keycloak and token exchange. For details on the next step continue with the [general setup instructions](../#4-automatically-managed-project-folders).
 
@@ -170,7 +170,7 @@ Make sure to leave the toggle "enable token exchange" disabled:
 
 Additionally, we need to configure the OpenID Connect provider in Nextcloud. Navigate to "Administration" and choose "OpenID Connect" from the sidebar. You should see a list of your configured OpenID Connect providers. At the top of that page enable the "Store login tokens" checkbox. This setting is required by Nextcloud to allow using tokens obtained during login for token exchange or requests to other services.
 
-Afterwards navigate to the OpenID Connect provider of the Keycloak and edit it. Make sure that the `api_v3` claim is part of the "Scope" text box. If it hasn't been added so far, you can append it to the existing text, ensuring that it is preceeded by a space, e.g., `openid email profile api_v3`. This ensures that Nextcloud will request the `api_v3` scope when a user logs in. Only then will Keycloak allow to exchange a token for OpenProject that carries the `api_v3` scope as well.
+Afterwards navigate to the OpenID Connect provider of the Keycloak and edit it. Make sure that the `api_v3` claim is part of the "Scope" text box. If it hasn't been added so far, you can append it to the existing text, ensuring that it is preceded by a space, e.g., `openid email profile api_v3`. This ensures that Nextcloud will request the `api_v3` scope when a user logs in. Only then will Keycloak allow to exchange a token for OpenProject that carries the `api_v3` scope as well.
 
 This wraps up the configuration of this authentication method using Keycloak without token exchange. For details on the next step continue with the [general setup instructions](../#4-automatically-managed-project-folders).
 
