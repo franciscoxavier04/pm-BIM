@@ -179,7 +179,7 @@ Both the package and docker based installations will install and setup the follo
 * __Database__: [PostgreSQL](https://www.postgresql.org/) Version >= 16
 
 Starting in OpenProject 16.0, PostgreSQL 16.0 will be a minimum requirement.
-PostgreSQL versions 13. and up will continue to work, but may result in incompatibilities and degraded performance in the future. We have a [migration guide on how to upgrade to PostgreSQL 17](../../installation-and-operations/misc/migration-to-postgresql17/).
+PostgreSQL versions 13. and up will continue to work, but may result in incompatibilities and degraded performance in the future. We have a [migration guide on how to upgrade to PostgreSQL 17](../misc/migration-to-postgresql17/).
 
 ## Client
 
@@ -220,7 +220,7 @@ OpenProject supports the latest versions of the major browsers.
 
 ##### Team folders
 
-If you want to use the feature of [automatically managed project folders](../system-admin-guide/integrations/nextcloud/#5-automatically-managed-project-folders) you need to install the [Team folders](https://apps.nextcloud.com/apps/groupfolders) app in Nextcloud (formerly Group folders).
+If you want to use the feature of [automatically managed project folders](../../system-admin-guide/integrations/nextcloud/#5-automatically-managed-project-folders) you need to install the [Team folders](https://apps.nextcloud.com/apps/groupfolders) app in Nextcloud (formerly Group folders).
 
 * [Team folders 19.0.4](https://github.com/nextcloud/groupfolders/releases/tag/v19.0.4)
 
