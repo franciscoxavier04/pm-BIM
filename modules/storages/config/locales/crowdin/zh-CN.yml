@@ -281,8 +281,8 @@ zh-CN:
         nc_dependency_version_mismatch: '%{dependency} 应用版本不受支持。请更新您的 Nextcloud 服务器。'
         nc_group_folder_not_found: 无法找到组文件夹。
         nc_host_not_found: 在配置的主机 URL 中找不到 Nextcloud 服务器。请检查配置。
-        nc_oauth_request_not_found: OpenProject 无法使用当前登录的用户找到 Nextcloud 的根文件夹。请检查服务器日志以获取更多信息。
-        nc_oauth_request_unauthorized: 当前用户未被授权查看 Nextcloud 的主文件夹，或我们无法获取 token。 请检查服务器日志以获取更多信息。
+        nc_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        nc_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
         nc_oauth_token_missing: OpenProject 无法测试用户与 Nextcloud 之间的通信，因为用户尚未链接他们的 Nextcloud 帐户。
         nc_unexpected_content: 在管理组文件夹中发现意外内容。
         nc_userless_access_denied: 已配置的应用密码无效。
@@ -291,8 +291,8 @@ zh-CN:
         od_client_write_permission_missing: 客户端似乎没有写入权限。请检查您的存储的设置文档。
         od_drive_id_invalid: 配置的驱动器 ID 似乎无效。请检查配置。
         od_drive_id_not_found: 找不到配置的驱动器 ID。请检查配置。
-        od_oauth_request_not_found: OpenProject 无法使用当前登录用户在驱动器中找到根文件夹。请检查服务器日志以获取更多信息。
-        od_oauth_request_unauthorized: 当前用户未被授权查看 OneDrive/SharePoint 的根文件夹，或我们无法获取令牌。请检查服务器日志以获取更多信息。
+        od_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        od_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
         od_oauth_token_missing: OpenProject 无法测试用户与 OneDrive/SharePoint 的用户级通信，因为用户尚未关联他们的 Microsoft 帐户。
         od_tenant_id_wrong: 配置的目录（租户）无效。请检查配置。
         od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.

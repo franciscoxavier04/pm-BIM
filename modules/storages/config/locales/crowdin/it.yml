@@ -283,8 +283,8 @@ it:
         nc_dependency_version_mismatch: La versione dell'app %{dependency} non è supportata. Aggiorna il server Nextcloud.
         nc_group_folder_not_found: Impossibile trovare la cartella del gruppo.
         nc_host_not_found: Non è stato trovato alcun server Nextcloud all'indirizzo host configurato. Controlla la configurazione.
-        nc_oauth_request_not_found: OpenProject non è riuscito a trovare la cartella principale di Nextcloud utilizzando l'utente attualmente connesso. Per ulteriori informazioni, consulta i log del server.
-        nc_oauth_request_unauthorized: L'utente attuale non è autorizzato a visualizzare la cartella principale di Nextcloud oppure non siamo riusciti ad acquisire un token. Per ulteriori informazioni, consulta i log del server.
+        nc_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        nc_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
         nc_oauth_token_missing: OpenProject non può testare la comunicazione a livello utente con Nextcloud poiché l'utente non ha ancora collegato il proprio account Nextcloud.
         nc_unexpected_content: Contenuto inatteso trovato nella cartella di gruppo gestita.
         nc_userless_access_denied: La password dell'app configurata non è valida.
@@ -293,8 +293,8 @@ it:
         od_client_write_permission_missing: Il client non ha i permessi di scrittura necessari. Consulta la documentazione di configurazione del tuo archivio.
         od_drive_id_invalid: L'ID dell'archivio configurato non è valido. Controlla la configurazione.
         od_drive_id_not_found: Impossibile trovare l'ID dell'archivio configurato. Controlla la configurazione.
-        od_oauth_request_not_found: OpenProject non è riuscito a trovare la cartella principale nell'unità utilizzando l'utente attualmente connesso. Per ulteriori informazioni, consultare i log del server.
-        od_oauth_request_unauthorized: L'utente attuale non è autorizzato a visualizzare la cartella principale di OneDrive/SharePoint oppure non siamo riusciti ad acquisire un token. Per ulteriori informazioni, consulta i log del server.
+        od_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        od_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
         od_oauth_token_missing: OpenProject non può testare la comunicazione a livello utente con OneDrive/SharePoint poiché l'utente non ha ancora collegato il proprio account Microsoft.
         od_tenant_id_wrong: L'ID della directory non è valido. Verifica la configurazione. 
         od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
