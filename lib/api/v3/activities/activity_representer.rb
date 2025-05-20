@@ -62,6 +62,12 @@ module API
           }
         end
 
+        link :emojiReactions do
+          {
+            href: api_v3_paths.emoji_reactions_by_activity_comment(represented.id)
+          }
+        end
+
         property :id,
                  render_nil: true
 
