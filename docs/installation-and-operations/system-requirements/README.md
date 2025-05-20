@@ -127,8 +127,6 @@ These values are **guidelines** and should be adjusted based on actual monitorin
 - **Background Workers**: 8 multithreaded workers with 4-6GiB RAM, depending on workload
 - **Disk Space**: 250 GB + additional disk space in case of internal attachment storage
 
-
-
 ### Additional scaling recommendations
 
 **Monitor Resource Usage**
@@ -148,8 +146,6 @@ Consider external PostgreSQL with performance tuning.
 **Load Balancing**
 
 For high-availability setups, distribute traffic across multiple servers and availability regions.
-
-
 
 ## Host operating system
 
