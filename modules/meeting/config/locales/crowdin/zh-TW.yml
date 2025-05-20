@@ -322,8 +322,8 @@ zh-TW:
   permission_view_meetings: "檢視會議"
   permission_manage_agendas: "管理議程"
   permission_manage_agendas_explanation: "允許編輯動態會議的議程項目。"
-  permission_manage_outcomes: "Manage outcomes"
-  permission_send_meeting_invites_and_outcomes: "Send meeting invites and outcomes to participants"
+  permission_manage_outcomes: "管理成果"
+  permission_send_meeting_invites_and_outcomes: "將會議邀請與結果發送給與會者"
   project_module_meetings: "會議"
   text_duration_in_hours: "持續時間 (小時)"
   text_in_hours: "小時數"
@@ -355,8 +355,8 @@ zh-TW:
   label_agenda_item_deleted_wp: "已將引用的工作項目刪除"
   label_agenda_item_actions: "議程項目行動"
   label_agenda_item_move_to_next: "移至下次會議"
-  label_agenda_item_move_to_backlog: "Move to backlog"
-  label_agenda_item_move_to_current_meeting: "Move to current meeting"
+  label_agenda_item_move_to_backlog: "移至待辦清單"
+  label_agenda_item_move_to_current_meeting: "移至目前會議"
   label_agenda_item_move_to_top: "移到頂部"
   label_agenda_item_move_to_bottom: "移到底部"
   label_agenda_item_move_up: "向上移 "
@@ -369,22 +369,22 @@ zh-TW:
   label_agenda_outcome_edit: "編輯結果"
   label_agenda_outcome_delete: "移除結果"
   text_outcome_not_editable_anymore: "此結果已不可編輯。"
-  text_outcome_cannot_be_added: "An outcome can no longer be added."
-  label_backlog_clear: "Clear backlog"
+  text_outcome_cannot_be_added: "無法再新增會議結果。"
+  label_backlog_clear: "清除待辦事項"
   label_backlog_clear_button: "清空"
-  text_backlog_clear_error: "One or more errors occurred while trying to clear the backlog."
-  label_agenda_backlog: "Agenda backlog"
+  text_backlog_clear_error: "在清理待辦事項時出現一或多個錯誤。"
+  label_agenda_backlog: "議程待辦清單"
   text_agenda_backlog: >
-    This backlog is unique to this one-time meeting. You can drag items in and out to add or remove them from the meeting agenda.
-  label_agenda_backlog_clear_title: "Clear agenda backlog?"
+    此待辦清單僅適用於這場一次性的會議。您可以拖曳項目以新增或移除會議議程中的內容。
+  label_agenda_backlog_clear_title: "清除議程待辦清單？"
   text_agenda_backlog_clear_description: >
     Are you sure you want to remove all items currently in the agenda backlog? This action is not reversible.
-  label_series_backlog: "Series backlog"
+  label_series_backlog: "系列待辦清單"
   text_series_backlog: >
-    The backlog is shared with all occurrences of this series. You can drag items in and out to add or remove them from a particular meeting.
-  label_series_backlog_clear_title: "Clear series backlog?"
+    此待辦清單為整個系列會議共用。您可以拖曳項目以新增或移除特定會議的議程內容。
+  label_series_backlog_clear_title: "清除系列待辦清單？"
   text_series_backlog_clear_description: >
-    This will remove all items in the series backlog, which is shared with all meetings in the series. Are you sure you want to continue? This action is not reversible.
+    這將移除系列待辦清單中的所有項目，該清單與此系列中的所有會議共用。您確定要繼續嗎？此操作無法復原。
   text_agenda_item_title: '議程項目 "%{title}"'
   text_agenda_work_package_deleted: '已刪除工作項目議程'
   text_deleted_agenda_item: '已刪除的議程項目'

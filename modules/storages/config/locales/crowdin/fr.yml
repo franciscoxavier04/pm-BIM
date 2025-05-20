@@ -80,7 +80,7 @@ fr:
     edit_project_folder:
       label: Modifier le dossier du projet
     open:
-      remote_identity_error: Une erreur inattendue s'est produite lors de la connexion à l'espace de stockage.
+      remote_identity_error: An unexpected error occurred while connecting to the storage.
     project_folder_mode:
       automatic: Géré automatiquement
       inactive: Aucun dossier spécifique
@@ -293,18 +293,19 @@ fr:
         od_client_write_permission_missing: Le client semble ne pas avoir les autorisations d'écriture. Veuillez vérifier la documentation d'installation de votre espace de stockage.
         od_drive_id_invalid: L'identifiant du lecteur configuré ne semble pas valide. Veuillez vérifier la configuration.
         od_drive_id_not_found: L'identifiant du lecteur configuré est introuvable. Veuillez vérifier la configuration.
-        od_existing_test_folder: Le dossier %{folder_name} requis pour le test existe déjà. Veuillez le supprimer et réessayer.
         od_oauth_request_not_found: OpenProject n'a pas pu trouver le dossier racine dans le lecteur en utilisant l'utilisateur connecté. Veuillez vérifier les journaux du serveur pour obtenir plus d'informations.
         od_oauth_request_unauthorized: L'utilisateur actuel n'est pas autorisé à voir le dossier racine de OneDrive/SharePoint ou nous n'avons pas pu obtenir de jeton. Veuillez consulter les journaux du serveur pour obtenir plus d'informations.
         od_oauth_token_missing: OpenProject ne peut pas tester la communication au niveau utilisateur avec OneDrive/SharePoint, car l'utilisateur n'a pas encore lié son compte Microsoft.
         od_tenant_id_wrong: L'identifiant du répertoire (locataire) configuré n'est pas valide. Veuillez vérifier la configuration.
+        od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
         od_unexpected_content: Contenu inattendu trouvé dans le lecteur.
         offline_access_scope_missing: Il est recommandé de configurer le fournisseur OpenID Connect pour demander la portée offline_access. L'intégration peut néanmoins fonctionner, mais assurez-vous que les jetons d'actualisation n'expirent pas.
-        oidc_cant_acquire_token: Votre configuration OpenID Connect ne fournit pas l'audience nécessaire, ni les capacités d'échange de jetons. Veuillez consulter notre documentation pour obtenir plus d'informations.
-        oidc_cant_exchange_token: Il semble y avoir un problème avec la configuration de l'échange de jetons sur votre fournisseur OpenID Connect. Veuillez vérifier sa configuration et réessayer.
         oidc_cant_refresh_token: Une erreur s'est produite lors de la vérification de votre accès au stockage. Veuillez consulter les journaux du serveur pour obtenir plus d'informations.
         oidc_non_oidc_user: L'utilisateur actuel, même s'il est provisionné, n'a pas été provisionné par un fournisseur d'identité OpenID Connect (OIDC). Veuillez refaire la vérification avec un utilisateur OIDC provisionné.
         oidc_non_provisioned_user: L'utilisateur actuel n'est pas fourni par un fournisseur d'identité OpenID Connect. Veuillez réexécuter la vérification avec un utilisateur fourni.
+        oidc_token_acquisition_failed: Your OpenID Connect setup doesn't provide the necessary audience, nor does it provide token exchange capabilities. Please check out our documentation for more information.
+        oidc_token_exchange_failed: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
+        oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         unknown_error: La connexion n'a pas pu être validée. Une erreur inconnue s'est produite. Veuillez consulter les journaux du serveur pour en savoir plus.
       label_error: Erreur
       label_failed: Échec
