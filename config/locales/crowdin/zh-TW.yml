@@ -41,13 +41,13 @@ zh-TW:
         changed: "變更"
         created: "建立"
         commented: "已留言"
-        internal_comment: Internal comment
-        internal_journal: Internal comments are visible to a limited group of members.
+        internal_comment: 內部備註
+        internal_journal: 內部留言僅對特定成員群組可見。
         unsaved_changes_confirmation_message: 您有未儲存的變更。您確實要關閉編輯器嗎？
         internal_comment_confirmation:
-          title: "Make this comment public?"
-          heading: "Make this comment public?"
-          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          title: "公開此評論？"
+          heading: "公開此評論？"
+          description: "您的評論將對任何可以存取此工作單元的人皆可見。您確定要這樣做嗎？"
           confirm_button_text: "設為公開"
   admin:
     plugins:
@@ -103,7 +103,7 @@ zh-TW:
         text: "例如使用者\"更新\"工作項目兩次，如果時間間隔小於設定值，則將合併視為為單次操作。應用程序中亦會顯示為單個操作。這也會套用在電子郵件通知，以及 %{webhook_link} 。"
         link: "webhook"
   authentication:
-    login_and_registration: "Login and registration"
+    login_and_registration: "登入及註冊"
   announcements:
     show_until: 只顯示到
     is_active: 當前已顯示
@@ -354,22 +354,22 @@ zh-TW:
     settings:
       header_details: 基本訊息
       header_status: 專案狀態
-      header_relations: Project relations
-      button_update_details: Update details
-      button_update_status_description: Update status description
-      button_update_parent_project: Update parent project
+      header_relations: 專案關係
+      button_update_details: 更新詳細資料
+      button_update_status_description: 更新狀態說明
+      button_update_parent_project: 更新父專案
       public_warning: >
-        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+        這個專案是公開的。任何有權訪問這個實例的人，都能依據其角色和相關權限來檢視和與這個專案互動。子專案不受影響，並且有其自己的設定。
       public_confirmation:
-        checkbox: "I understand that this will make the previously private content public"
-        title: "Make this project public?"
+        checkbox: "我了解這將使先前私密的内容公開"
+        title: "將這個專案公開嗎？"
         description: >
-          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+          任何可以存取此實例的人，將能夠依據其角色和驗證設定來檢視和與這個專案互動。子專案不受影響，並擁有其自己的設定。
       private_confirmation:
-        checkbox: "I understand that this will make the previously public content private."
-        title: "Make this project private?"
+        checkbox: "我了解這將使先前公開的內容變成私有內容。"
+        title: "將這個專案設為私有？"
         description: >
-          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+          這個專案只對依據其角色和相關權限的專案成員可见。子專案不受影響，並擁有其自己的設定。
       change_identifier: 變更識別碼
       actions:
         label_enable_all: "全部啟用"
@@ -419,7 +419,7 @@ zh-TW:
       work_package_priorities:
         new_label: "新優先權"
     status:
-      button_edit: Edit project status
+      button_edit: 編輯專案狀態
   project_phase:
     duration:
       other: "持續： %{count} 工作天"
@@ -1572,7 +1572,7 @@ zh-TW:
       added_date: "設定為 %{date}"
       changed_date: "從 %{from} 改為 %{to}"
       deactivated: "已停用"
-      deleted_project_phase: "Deleted project phase"
+      deleted_project_phase: "已刪除的專案階段"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, 與%{finish_gate_message}"
       phase_and_one_gate: "%{phase_message}. %{gate_message}"
       removed_date: "已刪除日期：%{date}"
@@ -1642,8 +1642,8 @@ zh-TW:
     priority: "優先等級"
     project: "專案"
     project_ids: "專案IDs"
-    project_phase: "Project phase"
-    project_phase_definition: "Project phase"
+    project_phase: "專案階段"
+    project_phase_definition: "專案階段"
     reason: "理由"
     responsible: "負責人"
     required: "必填"

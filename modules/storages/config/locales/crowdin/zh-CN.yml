@@ -271,7 +271,7 @@ zh-CN:
           tenant_id: 租户 ID
         failures:
           other: "%{count} 检查失败"
-        success: All checks passed
+        success: 所有检查已通过
         warnings:
           other: "%{count} 检查返回警告"
       connection_validation:
