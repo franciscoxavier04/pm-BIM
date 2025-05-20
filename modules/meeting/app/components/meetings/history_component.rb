@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Meetings
   class HistoryComponent < ApplicationComponent
     include ApplicationHelper
