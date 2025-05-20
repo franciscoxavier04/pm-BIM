@@ -16,9 +16,7 @@ We released [OpenProject 16.0.0](https://community.openproject.org/versions/1412
 
 The Enterprise plans (Basic, Professional, Premium, and Corporate) have been updated. Each plan now includes a specific set of Enterprise add-ons. Support levels and pricing remain unchanged with version 16.0.
 
-Current Enterprise customers retain their existing plans with access to all Enterprise add-ons available at that time. No features are removed.
-
-From this version onward, new Enterprise add-ons may be included only in higher-tier plans. For example, the new [Internal comments feature](#internal-comments-in-work-packages-enterprise-add-on) is part of the Professional plan.
+Current Enterprise customers retain their existing plans with access to all Enterprise add-ons available at that time. No features are removed. From this version onward, new Enterprise add-ons may be included only in higher-tier plans. For example, the new [Internal comments feature](#internal-comments-in-work-packages-enterprise-add-on) is part of the Professional plan.
 
 Customers on lower Enterprise plans who want to try out new add-ons from higher plans can do so by [requesting a new Enterprise trial token (on-premises)](https://www.openproject.org/contact/) or by [starting a new Cloud trial instance](https://start.openproject.com/).
 
@@ -66,7 +64,9 @@ Find out more about [internal comments in this user guide](../../user-guide/acti
 
 ## Automatically generated work package subjects (Enterprise add-on)
 
-OpenProject now supports automatically generated subjects for work packages. This new Enterprise add-on, available in the Professional plan, allows administrators to define subject patterns for each work package type. When enabled, the subject field is filled automatically and becomes non-editable during work package creation and updates.
+OpenProject now supports automatically generated subjects for work packages. This new Enterprise add-on, available in the Professional plan, allows administrators to define subject patterns for each work package type. When enabled, the subject field is **filled automatically and becomes non-editable during work package creation and updates**.
+
+![Two screenshots: One showing the administration for a work package type 'Candidate interview' with the subject pattern /Candidate with /Assignee on /Start date. One showing a work package of the type Candidate interview with an automatically generated work package subject following that pattern - "Lydia Schiffer with Cyril Dupont on 2025-05-26"](openproject-16-0-automatically-generated-work-package-subjects-candidate-interview-explained.png)
 
 This is especially useful for structured processes such as vacation requests, IT tickets, or maintenance reports, where consistent naming is required. Subject patterns can include static text as well as dynamic placeholders like project name, work package type, or custom field values.
 
@@ -80,7 +80,7 @@ OpenProject 16.0 offers a separate time tracking module with a calendar view. It
 
 Each day shows the sum of the tracked time, and in the weekly and monthly views, the total tracked time is displayed in the lower right corner.
 
-![OpenProject's My time tracking module in calendar view, showing a work week with different time entries.](openproject-16-0-my-time-tracking-calendar-view.png)
+![OpenProject's My time tracking module in calendar view, showing a work week with different time entries.](openproject-16-0-my-time-tracking-work-week-final.png)
 
 Please note that this module has to be activated by an administrator first. Navigate to *Administration → Time and costs → Defaults* and check the box next to 'Allow exact time tracking' to enable tracking start and finish dates. If 'Allow exact time tracking' is enabled, the calendar becomes the default view for the My time tracking module. If 'Require exact times' is checked, users must provide both start and end times when logging time. Otherwise, the list view remains the default. In the calendar view, all entries are then displayed at the top of the respective day column.
 
@@ -287,7 +287,8 @@ be able to use them in additional contexts. Starting with OpenProject 16.0.0, we
 A very special thank you goes to City of Cologne, Deutsche Bahn and ZenDiS for sponsoring released or upcoming features. Your support, alongside the efforts of our amazing Community, helps drive these innovations. Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to alex e, Klaas vT, Daniel Elkeles, Marcel Carvalho, Regina Schikora, Çağlar Yeşilyurt, and Александр Татаринцев.
 
 Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to particularly thank the following users:
-- [name](https://crowdin.com/profile/name), for a great number of translations into [language].
-
+- [Сергей Баранов](https://crowdin.com/profile/postbse), for a great number of translations into Russian.
+- [Gzyyy](https://crowdin.com/profile/gzyyy), for a great number of translations into Chinese simplified.
+- [rlmpereira](https://crowdin.com/profile/rlmpereira), for a great number of translations into Portuguese.
 
 Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
