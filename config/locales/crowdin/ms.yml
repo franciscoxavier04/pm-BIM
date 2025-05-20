@@ -2009,6 +2009,8 @@ ms:
         description: "Dengan peringatan tarikh, anda akan dimaklumkan tentang tarikh mula dan akhir yang akan datang supaya anda tidak pernah terlepas atau lupa tarikh akhir yang penting."
       work_package_sharing:
         description: "Kongsi pakej kerja dengan pengguna yang bukan ahli projek."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "Custom color theme and logo"
         more_info: "Perhatian: logo yang digunakan akan boleh diakses secara umum."
@@ -2396,6 +2398,8 @@ ms:
         mentioned: "Anda telah disebut di %{work_package}"
         responsible: "Anda telah bertanggungjawab untuk %{work_package}"
         watched: "Anda sedang melihat %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Kebolehcapaian"
   label_account: "Akaun"
   label_active: "Aktif"

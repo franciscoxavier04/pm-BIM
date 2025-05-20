@@ -27,6 +27,8 @@
 #++
 
 class CustomStylesController < ApplicationController
+  include EnterpriseHelper
+
   layout "admin"
   menu_item :custom_style
 

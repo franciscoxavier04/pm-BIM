@@ -2128,6 +2128,8 @@ lt:
         description: "Su datos įspėjimais jus informuos apie ateinančias pradžios ir pabaigos datas, kad niekada nepraleistumėte ar nepamirštumėte svarbių terminų."
       work_package_sharing:
         description: "Bendrinkite darbo paketus su naudotojais, kurie nėra projekto nariai."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "Custom color theme and logo"
         more_info: "Pastaba: panaudotas logotipas bus viešai prieinamas."
@@ -2515,6 +2517,8 @@ lt:
         mentioned: "Jūs buvote paminėtas %{work_package}"
         responsible: "Jūs tapote atsakingas už %{work_package}"
         watched: "Jūs stebite %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Prieinamumas"
   label_account: "Paskyra"
   label_active: "Aktyvus"

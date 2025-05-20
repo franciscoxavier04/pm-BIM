@@ -2049,6 +2049,8 @@ es:
         description: "Con las alertas de fecha, recibirá notificaciones de próximas fechas de inicio o finalización para que nunca olvide una fecha límite importante."
       work_package_sharing:
         description: "Compartir paquetes de trabajo con usuarios que no son miembros del proyecto."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "Tema de color y logotipo personalizados"
         more_info: "Nota: el logotipo utilizado será de acceso público."
@@ -2436,6 +2438,8 @@ es:
         mentioned: "Has sido mencionado en %{work_package}"
         responsible: "Ahora es responsable de %{work_package}"
         watched: "Estás viendo a %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Accesibilidad"
   label_account: "Cuenta"
   label_active: "Activo"

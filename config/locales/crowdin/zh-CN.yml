@@ -2007,6 +2007,8 @@ zh-CN:
         description: "通过日期提醒，您将收到即将开始或完成日期的通知，以免错过或忘记重要截止日期。"
       work_package_sharing:
         description: "与非此项目成员的用户共享工作包。"
+      project_list_sharing:
+        description: "与个人用户共享项目列表。"
       define_custom_style:
         title: "自定义颜色主题和 Logo"
         more_info: "注：使用的 Logo 将可公开访问。"
@@ -2394,6 +2396,8 @@ zh-CN:
         mentioned: "您在 %{work_package} 中被提及"
         responsible: "您已成为 %{work_package} 的负责人"
         watched: "您正在关注 %{work_package}"
+    query:
+      invalid_filter: "无效的通知过滤器"
   label_accessibility: "辅助功能"
   label_account: "帐户"
   label_active: "激活"

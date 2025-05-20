@@ -54,7 +54,7 @@ features and prompt fixes for any potential bugs.
 > You need to have administrator privileges in both your Nextcloud and OpenProject instances to set up this integration.
 
 Watch this video to find out how to set up the Nextcloud integration as an Administrator and as a user.
-<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Nextcloud-Integration-Setup.mp4" type="video/mp4" controls="" style="width:100%"></video>
+<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Nextcloud-Integration-Setup.mp4"></video>
 
 ### 1. Add the "OpenProject Integration" app in Nextcloud and point it to your OpenProject instance
 
@@ -107,7 +107,11 @@ The next part of the setup will vary depending on your chosen authentication met
 
 **Two-way OAuth 2.0 authorization code flow:** This way of authentication works with all deployments of OpenProject and Nextcloud. Requests between the two applications will act with the target application acting as OAuth 2.0 authorization server. For the users this means that they will usually have to confirm a separate OAuth consent screen for both directions of communication.
 
-**Single Sign-On through OpenID Connect Identity Provider:** This authentication mode improves user experience by eliminating additional consent screens. Requests between OpenProject and Nextcloud are authenticated with access tokens obtained from a common Identity Provider. This requires both applications to use the same OpenID Connect Identity Provider and specific configurations at the provider level. This advanced feature is available for all installations under the Enterprise Corporate plan.
+**Single Sign-On through OpenID Connect Identity Provider:** This authentication mode improves user experience by eliminating additional consent screens. Requests between OpenProject and Nextcloud are authenticated with access tokens obtained from a common Identity Provider. This requires both applications to use the same OpenID Connect Identity Provider and specific configurations at the provider level. 
+
+> [!NOTE]
+>
+> This advanced feature is is an Enterprise add-on and can only be used with [Enterprise cloud](https://www.openproject.org/docs/enterprise-guide/enterprise-cloud-guide) or [Enterprise on-premises](https://www.openproject.org/docs/enterprise-guide/enterprise-on-premises-guide). It is available for all installations under the Enterprise Corporate plan. An upgrade from the free community edition is easy and helps support OpenProject.
 
 
 Instructions for both authentication methods can be found on the following pages:

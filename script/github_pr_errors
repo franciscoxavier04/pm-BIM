@@ -667,7 +667,7 @@ class Formatter
     return unless tests_group
 
     warn "To run the tests group in the same order as CI, use this command:".white.dark
-    warn "CI=true bundle exec rspec --seed #{tests_group.seed} #{tests_group.files.join(' ')}".white.dark
+    warn "CI=true TZ=UTC bundle exec rspec --seed #{tests_group.seed} #{tests_group.files.join(' ')}".white.dark
     warn ""
   end
 

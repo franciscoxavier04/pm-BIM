@@ -1,6 +1,6 @@
 module ::TeamPlanner
   class TeamPlannerController < BaseController
-    include EnterpriseTrialHelper
+    include EnterpriseHelper
     include Layout
     before_action :load_and_authorize_in_optional_project
     before_action :build_plan_view, only: %i[new]

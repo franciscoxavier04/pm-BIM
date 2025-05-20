@@ -2,4 +2,4 @@ ru:
   js:
     work_packages:
       default_queries:
-        milestones: 'Вехи'
+        milestones: 'Контрольные точки'

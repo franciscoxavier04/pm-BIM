@@ -59,8 +59,8 @@ module My
                    action: "my--time-tracking#newTimeEntry",
                    "my--time-tracking-date-param" => options[:date]
                  },
-                 label: t("button_log_time"),
-                 aria: { label: t("button_log_time") }
+                 label: t(:button_add_time_entry),
+                 aria: { label: t(:button_add_time_entry) }
                ))
       end
 

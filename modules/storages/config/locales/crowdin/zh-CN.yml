@@ -80,7 +80,7 @@ zh-CN:
     edit_project_folder:
       label: 编辑项目文件夹
     open:
-      remote_identity_error: 连接存储时发生异常错误。
+      remote_identity_error: An unexpected error occurred while connecting to the storage.
     project_folder_mode:
       automatic: 自动托管
       inactive: 没有指定文件夹
@@ -236,7 +236,7 @@ zh-CN:
         download_report: 下载
         rerun_checks: 重新运行所有检查
         run_checks: 现在运行检查
-      checked: 上次检查于 %{datetime}
+      checked: 上次检查于 %{datetime} 
       checks:
         ampf_configuration:
           client_folder_creation: 自动创建文件夹
@@ -270,8 +270,8 @@ zh-CN:
           storage_configured: 配置完成
           tenant_id: 租户 ID
         failures:
-          zero: 全部检查通过
           other: "%{count} 检查失败"
+        success: 所有检查已通过
         warnings:
           other: "%{count} 检查返回警告"
       connection_validation:
@@ -291,18 +291,19 @@ zh-CN:
         od_client_write_permission_missing: 客户端似乎没有写入权限。请检查您的存储的设置文档。
         od_drive_id_invalid: 配置的驱动器 ID 似乎无效。请检查配置。
         od_drive_id_not_found: 找不到配置的驱动器 ID。请检查配置。
-        od_existing_test_folder: 测试所需的文件夹 %{folder_name} 已经存在。请将其删除并重试。
         od_oauth_request_not_found: OpenProject 无法使用当前登录用户在驱动器中找到根文件夹。请检查服务器日志以获取更多信息。
-        od_oauth_request_unauthorized: 当前用户未被授权查看OneDrive/SharePoint的根文件夹，或我们无法获取token。 请检查服务器日志以获取更多信息。
-        od_oauth_token_missing: OpenProject 无法测试用户与 OneDrive/SharePoint 的通信，因为用户尚未链接他们的微软帐户。
-        od_tenant_id_wrong: 已配置的 OAuth 2 客户端ID无效。请检查配置。
+        od_oauth_request_unauthorized: 当前用户未被授权查看 OneDrive/SharePoint 的根文件夹，或我们无法获取令牌。请检查服务器日志以获取更多信息。
+        od_oauth_token_missing: OpenProject 无法测试用户与 OneDrive/SharePoint 的用户级通信，因为用户尚未关联他们的 Microsoft 帐户。
+        od_tenant_id_wrong: 配置的目录（租户）无效。请检查配置。
+        od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
         od_unexpected_content: 在驱动器中找到意外内容。
-        offline_access_scope_missing: 建议配置 OpenID Connect 提供商请求离线访问范围。 集成仍然可以正常工作，但请确保刷新令牌不会过期。
-        oidc_cant_acquire_token: 您的 OpenID Connect 设置未提供必要的受众，也不提供令牌交换功能。请查阅我们的文档以获取更多信息。
-        oidc_cant_exchange_token: 似乎您的 OpenID Connect 提供商上的 Token Exchange 设置存在问题。请检查其配置并重试。
+        offline_access_scope_missing: 建议配置 OpenID Connect 提供商以请求 offline_access 范围。集成仍然可以正常工作，但请确保刷新令牌不会过期。
         oidc_cant_refresh_token: 尝试检查您对存储的访问时出错。请检查服务器日志以获取更多信息。
         oidc_non_oidc_user: 当前用户在预配的情况下，没有被 OpenID Connect (OIDC) 身份提供商预置。请重新运行与OIDC 预置用户的检查。
         oidc_non_provisioned_user: 当前用户并非由 OpenID Connect 身份提供商提供。请针对提供的用户重新运行检查。
+        oidc_token_acquisition_failed: Your OpenID Connect setup doesn't provide the necessary audience, nor does it provide token exchange capabilities. Please check out our documentation for more information.
+        oidc_token_exchange_failed: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
+        oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         unknown_error: 连接无法验证。出现未知错误。请查看服务器日志以获取更多信息。
       label_error: 错误
       label_failed: 失败
@@ -316,7 +317,7 @@ zh-CN:
       open_report: 打开完整的健康报告
       project_folders:
         subtitle: 自动托管项目文件夹
-      since: 自从 %{datetime}
+      since: 自从 %{datetime} 
       summary:
         failure: 有些检查失败，系统无法按预期运行。
         success: 所有连接和系统都按预期运行。
@@ -408,6 +409,7 @@ zh-CN:
     member_connection_status:
       connected: 已连接
       connected_no_permissions: 用户角色没有存储区权限
+      not_connectable: 无法连接。存储需要通过SSO提供商登录，但用户没有通过SSO登录。
       not_connected: 未连接。用户应通过以下 %{link} 登录到存储。
       not_connected_sso: 尚未连接，在查看文件后 SSO 应自动连接。
     members_no_results: 没有要显示的成员。
@@ -474,7 +476,7 @@ zh-CN:
       description: 禁用此选项将隐藏工作包文件选项卡上的附件列表。 工作包描述中的文件仍将上传到内部附件存储。
       label: 在工作包文件选项卡中显示附件
     storage_audience:
-      documentation_intro: 以下选项和身份提供者需要配置的细节可以在我们的文档中找到。
+      documentation_intro: 有关以下选项的详细信息以及在身份提供商中需要配置的内容，请参阅我们的文档。
       idp:
         helptext: OpenProject 将使用身份提供商收到的第一个访问令牌来验证对存储的请求。 它不会试图获取另一个令牌。
         label: 使用身份提供者获取的第一个访问令牌

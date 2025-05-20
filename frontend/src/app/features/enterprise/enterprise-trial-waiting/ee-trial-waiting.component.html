@@ -14,6 +14,7 @@
       <!-- <a id="op-ee-trial-waiting-resend-link"
       data-test-selector='op-ee-trial-waiting-resend-link' (click)="resendMail()">{{ text.resend }}</a> -->
       <button
+        *ngIf="resendLink$ | async"
         class="spot-link op-ee-trial-waiting-resend-link"
         data-test-selector='op-ee-trial-waiting-resend-link'
         (click)="resendMail()">

@@ -2048,6 +2048,8 @@ it:
         description: "Con gli avvisi sulle date, sarai avvisato delle prossime date di inizio o di fine in modo da non perdere mai o dimenticare una scadenza importante."
       work_package_sharing:
         description: "Condividi macro-attività con utenti che non sono membri del progetto."
+      project_list_sharing:
+        description: "Share project lists with individual users."
       define_custom_style:
         title: "Tema e logo a colori personalizzati"
         more_info: "Nota: il logo utilizzato sarà accessibile al pubblico."
@@ -2435,6 +2437,8 @@ it:
         mentioned: "Sei stato menzionato in %{work_package}"
         responsible: "Sei diventato responsabile per %{work_package}"
         watched: "Stai guardando il %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Accessibilità"
   label_account: "Account"
   label_active: "Attivo"

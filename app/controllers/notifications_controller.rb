@@ -34,6 +34,7 @@ class NotificationsController < ApplicationController
   no_authorization_required! :index, :split_view, :update_counter, :mark_all_read, :date_alerts, :share_upsell
 
   before_action :check_filter, only: %i[index]
+  before_action :validate_query, only: %i[index]
 
   def index
     render_notifications_layout
@@ -99,6 +100,15 @@ class NotificationsController < ApplicationController
 
     if params[:filter] == "reason" && params[:name] == "dateAlert"
       redirect_to notifications_date_alert_upsell_path
+    end
+  end
+
+  def validate_query
+    return if params[:filter].blank?
+
+    if %w[project reason].exclude?(params[:filter]) || !filtered_query.valid?
+      flash[:error] = I18n.t("notifications.query.invalid_filter")
+      redirect_to notifications_path
     end
   end
 end

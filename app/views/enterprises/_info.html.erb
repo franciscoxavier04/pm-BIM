@@ -33,7 +33,11 @@ See COPYRIGHT and LICENSE files for more details.
 
 <div class="upsell--information-container">
   <div class='upsell-information'>
-    <opce-enterprise-base></opce-enterprise-base>
+    <%= angular_component_tag(
+          "opce-enterprise-base",
+          inputs: enterprise_angular_trial_inputs
+        )
+    %>
   </div>
 
   <div class='upsell-actions'>

@@ -80,7 +80,7 @@ ru:
     edit_project_folder:
       label: Изменить папку проекта
     open:
-      remote_identity_error: Произошла непредвиденная ошибка при подключении к хранилищу.
+      remote_identity_error: An unexpected error occurred while connecting to the storage.
     project_folder_mode:
       automatic: Автоматическое управление
       inactive: Нет конкретной папки
@@ -270,11 +270,11 @@ ru:
           storage_configured: Настройка завершена
           tenant_id: Идентификатор арендатора
         failures:
-          zero: Проверка прошла успешна
           one: "%{count} проверка не удалась"
           few: "%{count} проверка не удалась"
           many: "%{count} проверка не удалась"
           other: "%{count} проверка не удалась"
+        success: Все проверки пройдены
         warnings:
           one: "%{count} проверка с предупреждением"
           few: "%{count} проверки с предупреждениями"
@@ -297,18 +297,19 @@ ru:
         od_client_write_permission_missing: Возможно, клиент не имеет прав на запись. Пожалуйста, проверьте документацию по конфигурации для вашего хранилища.
         od_drive_id_invalid: Настроенный идентификатор диска не найден. Пожалуйста, проверьте конфигурацию.
         od_drive_id_not_found: Настроенный идентификатор диска не найден. Пожалуйста, проверьте конфигурацию.
-        od_existing_test_folder: Папка %{folder_name}, необходимая для тестирования, уже существует. Удалите ее и повторите попытку.
         od_oauth_request_not_found: OpenProject не смог найти корневую папку для текущего зарегистрированного пользователя. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
         od_oauth_request_unauthorized: У текущего пользователя нет прав для просмотра корневой папки OneDrive/SharePoint или мы не смогли получить токен. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
         od_oauth_token_missing: OpenProject не может протестировать пользовательскую связь с OneDrive/SharePoint, так как пользователь еще не связал свою учетную запись Microsoft.
         od_tenant_id_wrong: Настроенный идентификатор каталога недействителен. Пожалуйста, проверьте конфигурацию.
+        od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
         od_unexpected_content: На диске обнаружено неожидаемое содержимое.
         offline_access_scope_missing: Рекомендуется настроить провайдера OpenID Connect для запроса области offline_access. Интеграция может работать в любом случае, но убедитесь, что токены обновления не истекают.
-        oidc_cant_acquire_token: Ваша настройка OpenID Connect не предоставляет необходимой аудитории и не предоставляет возможности обмена токенами. Пожалуйста, ознакомьтесь с нашей документацией для получения дополнительной информации.
-        oidc_cant_exchange_token: Похоже, возникла проблема с настройкой Exchange Token вашего провайдера OpenID Connect. Пожалуйста, проверьте его конфигурацию и повторите попытку.
         oidc_cant_refresh_token: Произошла ошибка во время проверки Вашего доступа к хранилищу. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
         oidc_non_oidc_user: Текущий пользователь не представлен провайдером идентификации OpenID Connect(OIDC). Пожалуйста, повторите проверку пользователя, идентифицированного через OIDC.
         oidc_non_provisioned_user: Текущий пользователь не представлен провайдером идентификации OpenID Connect. Пожалуйста, повторите проверку пользователя.
+        oidc_token_acquisition_failed: Your OpenID Connect setup doesn't provide the necessary audience, nor does it provide token exchange capabilities. Please check out our documentation for more information.
+        oidc_token_exchange_failed: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
+        oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         unknown_error: Соединение не удалось подтвердить. Произошла неизвестная ошибка. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
       label_error: Ошибка
       label_failed: Ошибка
@@ -414,6 +415,7 @@ ru:
     member_connection_status:
       connected: Подключено
       connected_no_permissions: Роль пользователя не имеет разрешения на хранение
+      not_connectable: Не подключена. Хранилище требует авторизации через SSO провайдера, но пользователь не входит в систему через SSO.
       not_connected: Не подключено. Пользователь должен войти в хранилище с помощью следующего %{link}.
       not_connected_sso: Ещё не подключен, SSO должен подключаться автоматически, при первом доступе к файлам.
     members_no_results: Нет участников для отображения.
