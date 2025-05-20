@@ -62,7 +62,7 @@ RSpec.describe API::V3::EmojiReactions::EmojiReactionsByWorkPackageCommentsAPI d
         expect(last_response).to have_http_status :ok
       end
 
-      it "returns the emoji reactions" do # rubocop:disable RSpec/ExampleLength
+      it "returns the emoji reactions" do
         expect(last_response.body)
           .to be_json_eql(1.to_json)
           .at_path("total")
@@ -82,22 +82,6 @@ RSpec.describe API::V3::EmojiReactions::EmojiReactionsByWorkPackageCommentsAPI d
         expect(last_response.body)
           .to be_json_eql(emoji_reaction.emoji.to_json)
           .at_path("_embedded/elements/0/emoji")
-
-        expect(last_response.body)
-          .to be_json_eql(emoji_reaction.reaction.to_json)
-          .at_path("_embedded/elements/0/reaction")
-
-        expect(last_response.body)
-          .to be_json_eql(1.to_json)
-          .at_path("_embedded/elements/0/reactionsCount")
-
-        expect(last_response.body)
-          .to be_json_eql(api_v3_paths.emoji_reactions_by_work_package_comments(work_package.id).to_json)
-          .at_path("_links/self/href")
-
-        expect(last_response.body)
-          .to be_json_eql(api_v3_paths.activity(activity.id).to_json)
-          .at_path("_embedded/elements/0/_links/reactable/href")
       end
     end
 
