@@ -40,4 +40,4 @@ Work packages can be displayed in a projects timeline, e.g. as a milestone or a 
 | [Export work packages](exporting)                            | How to export work packages for other tools such as Microsoft Excel. |
 | [Work package relations and hierarchies](work-package-relations-hierarchies) | How to create work package relations and hierarchies.        |
 
-<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Work-Packages.mp4" type="video/mp4" controls="" style="width:100%"></video>
+<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Work-Packages.mp4"></video>

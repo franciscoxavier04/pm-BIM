@@ -162,7 +162,7 @@ This menu also allows you  to *Copy link to clipboard* and to *Remove the outcom
 
 ### Agenda backlogs
 
-An **agenda backlog** is a special pre-existing section below the actual meeting agenda where additional agenda items can be listed before being added to that particular meeting. This allows users to propose topics that are then picked up by the meeting organiser either before or during the actual meeting. 
+An **agenda backlog** is a special pre-existing section below the actual meeting agenda where additional agenda items can be listed before being added to that particular meeting. This allows users to propose topics that are then picked up by the meeting organizer either before or during the actual meeting. 
 
 The backlog can be expanded or collapsed by clicking on the title.
 
