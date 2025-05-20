@@ -261,7 +261,7 @@ group :test do
   gem "rack_session_access"
   gem "rspec", "~> 3.13.0"
   # also add to development group, so 'spec' rake task gets loaded
-  gem "rspec-rails", "~> 7.1.0", group: :development
+  gem "rspec-rails", "~> 8.0.0", group: :development
 
   # Retry failures within the same environment
   gem "retriable", "~> 3.1.1"
@@ -285,8 +285,7 @@ group :test do
   gem "capybara", "~> 3.40.0"
   gem "capybara_accessible_selectors", git: "https://github.com/citizensadvice/capybara_accessible_selectors", tag: "v0.12.0"
   gem "capybara-screenshot", "~> 1.0.17"
-  gem "cuprite", "~> 0.15.0"
-  gem "ferrum", github: "opf/ferrum", ref: "mouse-events-buttons-property-0.15"
+  gem "cuprite", "~> 0.17.0"
   gem "rspec-wait"
   gem "selenium-devtools"
   gem "selenium-webdriver", "~> 4.20"
