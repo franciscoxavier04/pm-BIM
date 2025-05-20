@@ -14,7 +14,7 @@ provide any official support for them.
 
 The server hardware requirements should be roughly the same for both the packaged installation and docker (both all-in-one container and compose).
 
-### Minimum Hardware Requirements
+### Minimum hardware requirements
 
 * __CPU:__ Quad Core CPU (>= 2ghz)
 * __Memory:__ 4096 MB
@@ -22,7 +22,7 @@ The server hardware requirements should be roughly the same for both the package
 
 This is for a single server running OpenProject for up to 200 total users. Depending on your number of concurrent users,  these requirements might vary drastically.
 
-## Scaling Requirements
+## Scaling requirements
 
 Generally speaking you will need more CPUs (the faster the better) and more RAM with an increasing number of users.
 Technically this only really depends on the number of concurrent users. No matter if you have 1000 or only 100 total users, if there only ever 20 users working at the same time, the CPU & RAM required will be the same.
@@ -81,9 +81,9 @@ Extrapolating the general system requirements for different sets of users, you w
 
 These values are **guidelines** and should be adjusted based on actual monitoring of resource usage. Scaling should prioritize **CPU and RAM, prioritize scaling Web Workers** first, followed by **Background Workers and Disk Space** as needed.
 
-## Example Configurations
+## Example configurations
 
-### **Small Instance (≤ 200 users, low concurrent activity)**
+### **Small instance (≤ 200 users, low concurrent activity)**
 
 - **Database**: 2 CPU / 4 GiB RAM
 
@@ -97,7 +97,7 @@ These values are **guidelines** and should be adjusted based on actual monitorin
 
 - **Disk Space**: 20 GB + additional disk space in case of internal attachment storage
 
-### **Medium Instance (~500 users, moderate concurrent activity)**
+### **Medium instance (~500 users, moderate concurrent activity)**
 
 - **Database**: 2-4 CPU / 8 GiB RAM
 - **CPU**: 4 CPU
@@ -107,7 +107,7 @@ These values are **guidelines** and should be adjusted based on actual monitorin
 - **Background Workers**: 2 multithreaded workers with 4-6 GiB RAM
 - **Disk Space**: 50 GB + additional disk space in case of internal attachment storage
 
-### **Large Instance (~1500 users, medium to high concurrent activity)**
+### **Large instance (~1500 users, medium to high concurrent activity)**
 
 - **Database**: 4-8 CPU / 16 GiB RAM
 - **CPU**: 8 CPU
@@ -129,7 +129,7 @@ These values are **guidelines** and should be adjusted based on actual monitorin
 
 
 
-### Additional Scaling Recommendations
+### Additional scaling recommendations
 
 **Monitor Resource Usage**
 
@@ -151,7 +151,7 @@ For high-availability setups, distribute traffic across multiple servers and ava
 
 
 
-## Host Operating system
+## Host operating system
 
 The [package-based installation](../installation/packaged) requires one of the following Linux distributions:
 
@@ -189,6 +189,23 @@ OpenProject supports the latest versions of the major browsers.
 * [Microsoft Edge](https://www.microsoft.com/de-de/windows/microsoft-edge) (only MS Edge version based on Chromium is supported)
 * [Google Chrome](https://www.google.com/chrome/browser/desktop/)
 * [Apple Safari](https://www.apple.com/safari/)
+
+## Integrations (optional)
+
+### openDesk
+
+* [openDesk 1.4](https://gitlab.opencode.de/bmi/opendesk/deployment/opendesk/-/blob/main/CHANGELOG.md)
+
+### Nextcloud Hub
+
+#### Nextcloud Server
+
+* [Nextcloud 30](https://nextcloud.com/changelog/#latest30)
+* [Nextcloud 31](https://nextcloud.com/changelog/#latest31)
+
+#### Nextcloud App "OpenProject Integration"
+
+*  [2.8.1](https://github.com/nextcloud/integration_openproject/releases/tag/v2.8.1)
 
 ## Frequently asked questions (FAQ)
 
