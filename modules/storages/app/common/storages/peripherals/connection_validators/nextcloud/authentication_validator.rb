@@ -112,11 +112,11 @@ module Storages
             error_code =
               case result.failure
               in { code: /token_exchange/ | :unable_to_exchange_token }
-                :oidc_cant_exchange_token
+                :oidc_token_exchange_failed
               in { code: /token_refresh/ }
-                :oidc_cant_refresh_token
+                :oidc_token_refresh_failed
               in { code: :no_token_for_audience }
-                :oidc_cant_acquire_token
+                :oidc_token_acquisition_failed
               else
                 :unknown_error
               end

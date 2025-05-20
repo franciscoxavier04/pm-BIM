@@ -30,7 +30,8 @@ As a default, you will see two lists of all **work packages assigned to you** an
 
 ## Configure the My page
 
-![Configuring widgets on My page in OpenProject](openproject-mypage-widgets.gif)
+
+<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Quick_guide-Widgets.mp4 " type="video/mp4" controls="" style="width:100%"></video>
 
 ### Add widgets
 
@@ -80,6 +81,10 @@ To delete a widget from the dashboard, click on the three dots in the upper righ
 ![My page remove widget](my-page-remove-widget.png)
 
 ## My spent time widget
+
+> [!NOTE]
+>
+> Please note that this widget will be deprecated in an upcoming release. Instead of using it, we recommend logging time via [My time tracking module](../../user-guide/my-time-tracking/). 
 
 To track spent time, [add the **My spent time** widget](#add-widgets) in the My page.
 

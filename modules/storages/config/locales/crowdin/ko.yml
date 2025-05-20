@@ -80,7 +80,7 @@ ko:
     edit_project_folder:
       label: 프로젝트 폴더 편집
     open:
-      remote_identity_error: 저장소에 연결하는 동안 예기치 않은 오류가 발생했습니다.
+      remote_identity_error: An unexpected error occurred while connecting to the storage.
     project_folder_mode:
       automatic: 자동으로 관리됨
       inactive: 특정 폴더 없음
@@ -291,18 +291,19 @@ ko:
         od_client_write_permission_missing: 클라이언트에 쓰기 권한이 없는 것 같습니다. 저장소에 대한 설정 설명서를 확인하세요.
         od_drive_id_invalid: 구성된 드라이브 ID가 유효하지 않은 것 같습니다. 구성을 확인하세요.
         od_drive_id_not_found: 구성된 드라이브 ID를 찾을 수 없습니다. 구성을 확인하세요.
-        od_existing_test_folder: 테스트에 필요한 %{folder_name} 폴더가 이미 있습니다. 이 폴더를 삭제한 후에 다시 시도하세요.
         od_oauth_request_not_found: OpenProject가 현재 로그인된 사용자로 드라이브의 루트 폴더를 찾을 수 없습니다. 자세한 내용은 서버 로그를 확인하세요.
         od_oauth_request_unauthorized: 현재 사용자에게 OneDrive/SharePoint의 루트 폴더를 볼 수 있는 권한이 없거나, 토큰을 얻지 못했습니다. 자세한 내용은 서버 로그를 확인하세요.
         od_oauth_token_missing: 사용자가 아직 Microsoft 계정을 링크하지 않았기 때문에 OpenProject가 OneDrive/SharePoint와의 사용자 수준 통신을 테스트할 수 없습니다.
         od_tenant_id_wrong: 구성된 디렉터리(테넌트) ID가 잘못되었습니다. 구성을 확인하세요.
+        od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
         od_unexpected_content: 드라이브에서 예기치 않은 콘텐츠가 발견되었습니다.
         offline_access_scope_missing: offline_access 범위를 요청하도록 OpenID Connect 공급자를 구성하는 것이 좋습니다. 통합이 여전히 ​​작동될 수 있지만, 새로고침 토큰이 만료되지 않도록 해야 합니다.
-        oidc_cant_acquire_token: 해당 OpenID Connect 설정은 필요한 오디언스를 제공하지 않으며, 토큰 교환 기능도 제공하지 않습니다. 자세한 내용은 설명서를 확인하세요.
-        oidc_cant_exchange_token: OpenID Connect 공급자의 Token Exchange 설정에 문제가 있는 것 같습니다. 해당 구성을 확인하고 다시 시도하세요.
         oidc_cant_refresh_token: 저장소에 대한 액세스를 확인하는 동안 오류가 발생했습니다. 자세한 내용은 서버 로그를 확인하세요.
         oidc_non_oidc_user: 현재 사용자는 프로비저닝되는 동안, OpenID Connect(OIDC) ID 공급자에 의해 프로비저닝되지 않았습니다. OIDC 프로비저닝 사용자로 확인을 다시 실행하세요.
         oidc_non_provisioned_user: 현재 사용자는 OpenID Connect ID 공급자에 의해 제공되지 않았습니다. 제공된 사용자로 확인을 다시 실행하세요.
+        oidc_token_acquisition_failed: Your OpenID Connect setup doesn't provide the necessary audience, nor does it provide token exchange capabilities. Please check out our documentation for more information.
+        oidc_token_exchange_failed: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
+        oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         unknown_error: 연결에 대한 유효성 검사를 할 수 없습니다. 알 수 없는 오류가 발생했습니다. 자세한 내용은 서버 로그를 확인하세요.
       label_error: 오류
       label_failed: 실패함

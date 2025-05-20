@@ -80,7 +80,7 @@ it:
     edit_project_folder:
       label: Modifica la cartella del progetto
     open:
-      remote_identity_error: Si è verificato un errore durante la connessione all'archivio.
+      remote_identity_error: An unexpected error occurred while connecting to the storage.
     project_folder_mode:
       automatic: Gestione automatica
       inactive: Nessuna cartella specifica
@@ -293,18 +293,19 @@ it:
         od_client_write_permission_missing: Il client non ha i permessi di scrittura necessari. Consulta la documentazione di configurazione del tuo archivio.
         od_drive_id_invalid: L'ID dell'archivio configurato non è valido. Controlla la configurazione.
         od_drive_id_not_found: Impossibile trovare l'ID dell'archivio configurato. Controlla la configurazione.
-        od_existing_test_folder: La cartella %{folder_name} necessaria per il test esiste già. Eliminala e riprova.
         od_oauth_request_not_found: OpenProject non è riuscito a trovare la cartella principale nell'unità utilizzando l'utente attualmente connesso. Per ulteriori informazioni, consultare i log del server.
         od_oauth_request_unauthorized: L'utente attuale non è autorizzato a visualizzare la cartella principale di OneDrive/SharePoint oppure non siamo riusciti ad acquisire un token. Per ulteriori informazioni, consulta i log del server.
         od_oauth_token_missing: OpenProject non può testare la comunicazione a livello utente con OneDrive/SharePoint poiché l'utente non ha ancora collegato il proprio account Microsoft.
         od_tenant_id_wrong: L'ID della directory non è valido. Verifica la configurazione. 
+        od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
         od_unexpected_content: Contenuto inatteso nello spazio di archiviazione.
         offline_access_scope_missing: Si consiglia di configurare il provider OpenID Connect per richiedere l'ambito offline_access. L'integrazione potrebbe comunque funzionare, ma è importante assicurarsi che i token di aggiornamento non scadano.
-        oidc_cant_acquire_token: La configurazione di OpenID Connect non fornisce il pubblico necessario, né fornisce capacità di scambio di token. Consulta la nostra documentazione per maggiori informazioni.
-        oidc_cant_exchange_token: Sembra esserci un problema con la configurazione di Token Exchange sul tuo OpenID Connect Provider. Controlla la sua configurazione e riprova.
         oidc_cant_refresh_token: Si è verificato un errore durante il tentativo di verificare il tuo accesso all'archiviazione. Controlla i log del server per ulteriori informazioni.
         oidc_non_oidc_user: L'utente attuale, pur essendo stato registrato, non è stato fornito da un provider di identità OpenID Connect (OIDC). Esegui nuovamente il controllo con un utente fornito da OIDC.
         oidc_non_provisioned_user: L'utente attuale non è fornito da un provider di identità OpenID Connect. Esegui nuovamente il controllo con un utente fornito.
+        oidc_token_acquisition_failed: Your OpenID Connect setup doesn't provide the necessary audience, nor does it provide token exchange capabilities. Please check out our documentation for more information.
+        oidc_token_exchange_failed: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
+        oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         unknown_error: Non è stato possibile verificare la connessione. Si è verificato un errore sconosciuto. Per maggiori informazioni consulta i log del server.
       label_error: Errore
       label_failed: Non riuscito

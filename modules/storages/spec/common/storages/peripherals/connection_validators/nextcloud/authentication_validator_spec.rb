@@ -135,7 +135,7 @@ module Storages
                   result = validator.call
 
                   expect(result[:token_negotiable]).to be_failure
-                  expect(result[:token_negotiable].code).to eq(:oidc_cant_acquire_token)
+                  expect(result[:token_negotiable].code).to eq(:oidc_token_acquisition_failed)
                 end
               end
 
@@ -162,7 +162,7 @@ module Storages
                   result = validator.call
 
                   expect(result[:token_negotiable]).to be_failure
-                  expect(result[:token_negotiable].code).to eq(:oidc_cant_refresh_token)
+                  expect(result[:token_negotiable].code).to eq(:oidc_token_refresh_failed)
                 end
 
                 it "fails when refresh fails" do
@@ -173,7 +173,7 @@ module Storages
                   result = validator.call
 
                   expect(result[:token_negotiable]).to be_failure
-                  expect(result[:token_negotiable].code).to eq(:oidc_cant_refresh_token)
+                  expect(result[:token_negotiable].code).to eq(:oidc_token_refresh_failed)
                 end
 
                 context "when the server supports token exchange" do
@@ -199,7 +199,7 @@ module Storages
                     result = validator.call
 
                     expect(result[:token_negotiable]).to be_failure
-                    expect(result[:token_negotiable].code).to eq(:oidc_cant_exchange_token)
+                    expect(result[:token_negotiable].code).to eq(:oidc_token_exchange_failed)
                     expect(exchange_request).to have_been_requested.once
                   end
 
@@ -212,7 +212,7 @@ module Storages
                     result = validator.call
 
                     expect(result[:token_negotiable]).to be_failure
-                    expect(result[:token_negotiable].code).to eq(:oidc_cant_exchange_token)
+                    expect(result[:token_negotiable].code).to eq(:oidc_token_exchange_failed)
                     expect(exchange_request).to have_been_requested.once
                   end
                 end

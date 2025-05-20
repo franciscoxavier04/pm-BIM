@@ -11,6 +11,7 @@ keywords: edit work packages
 | Feature                                                      | Documentation for                                            |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Update a work package](#update-a-work-package)              | How to make a change to an existing work package.            |
+| [Add an internal comment (Enterprise add-on)](#internal-comments-enterprise-add-on) | How to leave work package comments with limited visibility.  |
 | [Update a work package in a table view](#update-a-work-package-in-a-work-package-table-view) | How to use the quick context menu in the work package table view. |
 | [Attach files to work packages](#attach-files-to-work-packages) | How to manually attach files to work packages.               |
 | [Set work package reminders](#work-package-reminders)        | How to set a reminder for a work package.                    |
@@ -94,6 +95,15 @@ You can copy a direct link to a specific work package comment in OpenProject. To
 
 ![Copy a link to a work package comment in OpenProject](openproject_user_guide_wp_edit_comment_copy_link.png)
 
+### Internal comments (Enterprise add-on)
+> [!NOTE]
+> Internal comments are an Enterprise add-on and can only be used with [Enterprise cloud](../../../enterprise-guide/enterprise-cloud-guide/) or [Enterprise on-premises](../../../enterprise-guide/enterprise-on-premises-guide/). An upgrade from the free Community edition is easily possible.
+
+It is possible to add comments that are only visible to a select group of people. These are referred to as internal comments. 
+
+Please refer to [this part of the user guide](../../activity/#internal-comments-enterprise-add-on) for more details. 
+
+
 ### @ notification (mention)
 
 You can mention and notify team members via [@notification](../../notifications/). They will receive a notification in OpenProject about the updates (according to their [notification settings](../../../user-guide/notifications/) in the **Account settings**).
@@ -117,9 +127,15 @@ You can manually upload files to work packages directly under the *Files* tab in
 
 Under the *Files* tab you will see the list of the all previously uploaded attachments, including file names, as well as which user uploaded an attachment and when. If no files were attached yet, the list will be empty.
 
+Attachments include files or images added to work package descriptions. 
+
 You can remove an attachment by hovering over it and clicking the **Delete** icon.
 
 ![Delete a work package attachment in OpenProject](openproject_user_guide_wp_file_delete.png)
+
+> [!TIP]
+>
+> Attachments within work package comments (e.g. screenshots) will not be displayed under Files tab. 
 
 ## Work package reminders
 

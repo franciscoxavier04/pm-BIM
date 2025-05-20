@@ -22,7 +22,7 @@ From this version onward, new Enterprise add-ons may be included only in higher-
 
 Customers on lower Enterprise plans who want to try out new add-ons from higher plans can do so by [requesting a new Enterprise trial token (on-premises)](https://www.openproject.org/contact/) or by [starting a new Cloud trial instance](https://start.openproject.com/).
 
-More details are available in our updated [Enterprise guide](https://www.openproject.org/docs/enterprise-guide/).
+More details are available in our updated [Pricing page](https://www.openproject.org/pricing).
 
 ## Important feature changes
 
@@ -30,11 +30,11 @@ More details are available in our updated [Enterprise guide](https://www.openpro
 
 Meeting organization becomes even easier with OpenProject 16.0: Meeting backlogs allow users to collect, manage, and prepare agenda items more flexibly — both for one-time meetings and for recurring meeting series.
 
-In one-time meetings, the new **Agenda backlog** stores topics that are not yet assigned to the current meeting but may be added later.
+In one-time meetings, the new [**Agenda backlog**](../../user-guide/meetings/one-time-meetings/#agenda-backlogs) stores topics that are not yet assigned to the current meeting but may be added later.
 
 ![A one-time meeting in OpenProject with an Agenda backlog and info to 'Drag items here or create a new one'.](openproject-16-0-meeting-backlogs-one-time-highlighted.png)
 
-In recurring meetings, the shared **Series backlog** helps track open points across all meeting occurrences and move items between them as priorities change.
+In recurring meetings, the shared [**Series backlog**](../../user-guide/meetings/recurring-meetings/#meeting-backlogs-for-recurring-meetings) helps track open points across all meeting occurrences and move items between them as priorities change.
 
 ![A recurring meeting in OpenProject with a Series backlog and and options to Edit, add notes, Move to current meeting or Remove from agenda.](openproject-16-0-meeting-backlogs-recurring-options.png)
 
@@ -62,19 +62,21 @@ All users with these permissions then see an "Internal comment" checkbox when ad
 > [!NOTE]
 > Starting with 16.0, **files uploaded in the Activity tab will not be included in the Files tab**. Even though internal comments are the technical trigger for this change, it applies to both regular and internal comments.
 
+Find out more about [internal comments in this user guide](../../user-guide/activity/#internal-comments-enterprise-add-on) and [this blog article](https://www.openproject.org/blog/internal-comments/).
+
 ## Automatically generated work package subjects (Enterprise add-on)
 
 OpenProject now supports automatically generated subjects for work packages. This new Enterprise add-on, available in the Professional plan, allows administrators to define subject patterns for each work package type. When enabled, the subject field is filled automatically and becomes non-editable during work package creation and updates.
 
 This is especially useful for structured processes such as vacation requests, IT tickets, or maintenance reports, where consistent naming is required. Subject patterns can include static text as well as dynamic placeholders like project name, work package type, or custom field values.
 
-More details and examples can be found in our [blog article on automatically generated work package subjects](https://www.openproject.org/blog/automatically-generated-work-package-subjects/).
+![OpenProject administration showing settings for automatically generated work package subjects](openproject-16-0-automatic-subjects-settings.png)
 
-Screenshot
+Get an [introduction in the user guide](../../user-guide/work-packages/automatic-subjects/), learn more about [configuring automatically generated work package subjects in OpenProject system administration guide](../../system-admin-guide/manage-work-packages/work-package-types/automatic-subjects/), or consult this [blog article](https://www.openproject.org/blog/automatically-generated-work-package-subjects/) for more use case examples. 
 
 ## Separate time tracking module with calendar view
 
-OpenProject 16.0 offers a separate time tracking module with a calendar view. It is accessible from the global view and listed in the left side bar navigation called 'My time tracking'. There, users can view and edit their logged time with start and end times. The user can switch between daily, weekly, work week and monthly views and also log new time entries directly by clicking in the calendar.
+OpenProject 16.0 offers a separate time tracking module with a calendar view. It is accessible from the global view and listed in the left side bar navigation called [My time tracking](../../user-guide/my-time-tracking/). There, users can view and edit their logged time with start and end times. The user can switch between daily, weekly, work week and monthly views and also log new time entries directly by clicking in the calendar.
 
 Each day shows the sum of the tracked time, and in the weekly and monthly views, the total tracked time is displayed in the lower right corner.
 
@@ -82,7 +84,7 @@ Each day shows the sum of the tracked time, and in the weekly and monthly views,
 
 Please note that this module has to be activated by an administrator first. Navigate to *Administration → Time and costs → Defaults* and check the box next to 'Allow exact time tracking' to enable tracking start and finish dates. If 'Allow exact time tracking' is enabled, the calendar becomes the default view for the My time tracking module. If 'Require exact times' is checked, users must provide both start and end times when logging time. Otherwise, the list view remains the default. In the calendar view, all entries are then displayed at the top of the respective day column.
 
-[Learn more about how to use the My time tracking module in this blog article](https://www.openproject.org/blog/time-tracking-module/).
+Learn more about My time tracking module in [this user guide](../../user-guide/my-time-tracking/) and [this blog article](https://www.openproject.org/blog/time-tracking-module/).
 
 ### Time entries with legally required mandatory fields: start time and finish time
 
@@ -112,13 +114,13 @@ As requested by our users, you can now add a parent work package relation by cho
 
 ## Save work package export configuration
 
-When exporting a (public or private) work package table, users can now save their configuration settings, e.g. a specific order and display of columns or long text fields. This saves time and allows users to share the export settings with their team (e.g. for a defects and approval report). Please note that this setting is not individual and will **change the default configuration for this specific format and type for everyone**.
+When [exporting a (public or private) work package table](../../user-guide/work-packages/exporting/), users can now save their configuration settings, e.g. a specific order and display of columns or long text fields. This saves time and allows users to share the export settings with their team (e.g. for a defects and approval report). Please note that this setting is not individual and will **change the default configuration for this specific format and type for everyone**.
 
 ![OpenProject work package table export modal with a highlighted checkbox to save settings.](openproject-16-0-save-export-settings-highlighted.png)
 
-## Storage Health status: Multiple visible checks and download option (Enterprise add-on)
+## Storage Health status: Multiple visible checks and download option
 
-The Health check for storages has been extended in OpenProject 16.0. Administrators can now view **multiple visible results**, grouped into base configuration, authentication, and automatically-managed folders. Each group displays a short summary indicating whether all checks passed, warnings occurred, or failures were detected. If issues are found, a link to detailed documentation is provided.
+The Health check for file storages has been extended in OpenProject 16.0. Administrators can now view **multiple visible results**, grouped into base configuration, authentication, and automatically-managed folders. Each group displays a short summary indicating whether all checks passed, warnings occurred, or failures were detected. If issues are found, a link to detailed documentation is provided.
 
 The summary of the most recent health check remains visible in the sidebar. In addition, a new option allows administrators to open a **full detailed report** to review all individual checks directly.
 

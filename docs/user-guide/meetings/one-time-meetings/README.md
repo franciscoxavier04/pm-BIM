@@ -8,7 +8,10 @@ keywords: meetings, dynamic meetings, agenda, minutes, one-time meeting
 
 # One-time meetings
 
-With OpenProject 15.3, meetings were enhanced by introducing a clear distinction between **one-time meetings** and **recurring meetings**. This page covers the features and functionalities of one-time meetings in OpenProject.
+> [!NOTE]
+> With OpenProject 13.1 we introduced dynamic meetings alongside classic meetings. 
+> With OpenProject 15.3 dynamic meetings are replaced by [one-time meetings](../one-time-meetings) and [recurring meetings](../recurring-meetings) to further improve meeting management.
+> With 16.0 classic meetings were removed from OpenProject. Read more about this change [in this blog article](https://www.openproject.org/blog/end-classic-meetings-may-2025/).
 
 For information on setting up recurring meeting series and templates, please refer to [this page](../recurring-meetings). Note that individual occurrences of a recurring meeting series are one-time meetings and have the same features as described here.
 
@@ -21,6 +24,7 @@ For information on setting up recurring meeting series and templates, please ref
 | [Edit a meeting](#edit-a-meeting)                            | How to edit an existing meeting.                           |
 | [Add a work package to the agenda](#add-a-work-package-to-the-agenda) | How to add a work package to a meeting agenda.             |
 | [Create or edit the meeting agenda](#create-or-edit-the-meeting-agenda) | How to create or edit the agenda.                          |
+| [Agenda backlog](#agenda-backlogs)                            | How to use an agenda backlog.    |
 | [Add meeting participants](#add-meeting-participants)        | How to invite people to a meeting.                         |
 | [Add meeting attachments](#meeting-attachments)              | How to add attachments to a meeting.                       |
 | [Send email to all participants](#send-email-to-all-participants) | How to send an email to all meeting participants.          |
@@ -36,11 +40,11 @@ For information on setting up recurring meeting series and templates, please ref
 
 You can either create a meeting from within a project or from the global **Meetings** module.
 
-To create a new meeting, click the green **+ Meeting** button in the upper right corner and select what type of meeting you want to create. You can choose between **one-time, recurring or classic meetings**. 
+To create a new meeting, click the green **+ Meeting** button in the upper right corner and select what type of meeting you want to create. You can choose between **one-time and recurring meetings**. 
 
 ![Create new meeting in OpenProject](openproject_userguide_meetings_create_meeting_button.png)
 
-For steps on creating a classic meetings please consult [this page](../classic-meetings). For steps on setting up recurring meetings please consult [this page](../recurring-meetings).
+For steps on setting up recurring meetings please consult [this page](../recurring-meetings).
 
 If you choose the **one-time** option, enter your meeting's title, location, start date and time, and duration. 
 
@@ -152,10 +156,35 @@ After saving an agenda item outcome, you can still edit it. Click the **More** (
 This menu also allows you  to *Copy link to clipboard* and to *Remove the outcome*.
 
 >  [!TIP]
->
 > Outcomes are also displayed in the Meetings tab of a work package in a read-only format.
 
 ![Agenda item outcomes displayed in Meetings tab in a work package in OpenProject](openproject_userguide_meetings_agenda_outcome_in_work_package.png)
+
+### Agenda backlogs
+
+An **agenda backlog** is a special pre-existing section below the actual meeting agenda where additional agenda items can be listed before being added to that particular meeting. This allows users to propose topics that are then picked up by the meeting organiser either before or during the actual meeting. 
+
+The backlog can be expanded or collapsed by clicking on the title.
+
+> [!TIP]
+> By default, the backlog is expanded when the meeting status is *open*, collapsed if the meeting status is *in progress*, and hidden if the meeting is *closed*.
+
+![Agenda backlog section title collapsed, in OpenProject one-time meeting](openproject_userguide_meetings_agenda_backlog_title.png)
+
+#### Add and edit items to agenda backlogs
+You can add agenda items and link work packages in the same way as you would within the meeting agenda, by dragging and dropping agenda items elsewhere in the meeting or by using the dropdown options of the More (three dots) icon on the right. 
+
+![Agenda backlog in a single meeting in OpenProject](openproject_userguide_meetings_agenda_backlog.png)
+
+That same *More* menu also allows editing, reordering, adding notes or deleting an item in the agenda backlog. 
+
+![Move agenda items from the agenda backlog to the agenda in OpenProject Meetings](openproject_userguide_meetings_move_agenda_backlog_items.png)
+
+#### Clear agenda backlogs
+
+You can either remove single items from an agenda backlog or clear an entire backlog by clicking the *Clear backlog* option under More (three dots) menu next to the backlog name. Use this option with caution, as the action cannot be undone.
+
+![An option to clear an agenda backlog in OpenProject meetings](openproject_userguide_meetings_clear_agenda_backlog.png)
 
 ### Add a work package to the agenda
 
@@ -193,7 +222,6 @@ Do not forget to save the changes by clicking the **Save** button. Cancel will b
 In order to edit the title of the meeting select the dropdown menu behind the three dots and select the **Edit meeting title**.
 
 ![Edit a meeting title in OpenProject](openproject_userguide_meetings_edit_meeting_title.png)
-
 
 ## Meeting participants
 

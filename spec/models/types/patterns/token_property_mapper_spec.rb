@@ -57,6 +57,16 @@ RSpec.describe Types::Patterns::TokenPropertyMapper do
     end
   end
 
+  shared_let(:boolean_custom_field) do
+    create(:boolean_wp_custom_field).tap do |custom_field|
+      project.work_package_custom_fields << custom_field
+      work_package.type.custom_fields << custom_field
+
+      work_package.send(:"custom_field_#{custom_field.id}=", true)
+      work_package.save
+    end
+  end
+
   shared_let(:mult_list_custom_field) do
     create(:multi_list_wp_custom_field).tap do
       project.work_package_custom_fields << it
@@ -94,6 +104,14 @@ RSpec.describe Types::Patterns::TokenPropertyMapper do
       t.key == :"custom_field_#{mult_list_custom_field.id}"
     end
     expect(token.call(work_package)).to eq(%w[A B])
+  end
+
+  it "supports boolean custom fields" do
+    token = described_class.new.tokens_for_type(work_package.type).detect do |t|
+      t.key == :"custom_field_#{boolean_custom_field.id}"
+    end
+
+    expect(token.call(work_package)).to be(true)
   end
 
   it "must return nil if custom field is not activated in project" do
