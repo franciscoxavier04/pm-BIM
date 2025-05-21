@@ -9,8 +9,12 @@ pt-BR:
       two_factor_authentication/device:
         identifier: "Identificador"
         default: "Usar como padrão"
+        channel: "Canal"
       two_factor_authentication/device/sms:
         phone_number: "Número de telefone"
+      two_factor_authentication/device/webauthn:
+        webauthn_external: "ID do WebAuthn"
+        webauthn_public_key: "Chave pública do WebAuthn"
     errors:
       models:
         two_factor_authentication/device:
@@ -78,7 +82,7 @@ pt-BR:
       text_2fa_enabled: "A cada login, o usuário deverá inserir um token OTP do dispositivo padrão de A2F."
       text_2fa_disabled: "O usuário não configurou um dispositivo de A2F na página “Minha conta”"
       only_sms_allowed: "Apenas os usuários autorizados podem configurar a entrega de SMS."
-    upsale:
+    upsell:
       title: "Autenticação de dois fatores"
       description: "Reforce a segurança da sua instância do OpenProject oferecendo (ou exigindo) a autenticação de dois fatores para todos os membros do projeto."
     backup_codes:

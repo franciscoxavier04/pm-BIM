@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -47,7 +49,7 @@ RSpec.describe "Authentication Stages" do
     )
   end
 
-  def expect_logged_in(path = my_page_path)
+  def expect_logged_in(path = home_path)
     expect(page).to have_current_path(path)
     visit my_account_path
     wait_for_network_idle
@@ -58,6 +60,10 @@ RSpec.describe "Authentication Stages" do
     visit my_account_path
     wait_for_netowrk_idle
     expect(page).to have_no_css(".form--field-container", text: user.login)
+  end
+
+  before do
+    allow(Rails.logger).to receive(:error)
   end
 
   context "when disabled", with_settings: { consent_required: false } do
@@ -87,11 +93,12 @@ RSpec.describe "Authentication Stages" do
             consent_required: true
           } do
     it "does not show consent" do
+      login_with user.login, user_password
+
       expect(Rails.logger)
-        .to receive(:error)
+        .to have_received(:error)
               .at_least(:once)
               .with("Instance is configured to require consent, but no consent_info has been set.")
-      login_with user.login, user_password
       expect(page).to have_no_css(".account-consent")
       expect_logged_in
     end
@@ -127,6 +134,7 @@ RSpec.describe "Authentication Stages" do
 
   context "when enabled, and consent exists",
           :js,
+          :selenium,
           with_settings: {
             consent_info: { en: "# Consent header!" },
             consent_required: true

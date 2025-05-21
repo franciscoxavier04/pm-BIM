@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Components
   class WysiwygEditor
     include Capybara::DSL
@@ -65,6 +67,10 @@ module Components
 
     def expect_value(value)
       expect(editor_element.text).to eq(value)
+    end
+
+    def expect_include_value(value)
+      expect(editor_element.text).to include(value)
     end
 
     def expect_supports_macros

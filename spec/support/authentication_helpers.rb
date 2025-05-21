@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -84,10 +86,6 @@ module AuthenticationHelpers
 
   def js_enabled?
     RSpec.current_example.metadata[:js]
-  end
-
-  def using_cuprite?
-    RSpec.current_example.metadata[:with_cuprite]
   end
 
   def session_value_for(user)

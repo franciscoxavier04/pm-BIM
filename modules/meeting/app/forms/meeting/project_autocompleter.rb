@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -32,17 +33,17 @@ class Meeting::ProjectAutocompleter < ApplicationForm
       name: "project_id",
       id: "project_id",
       label: Project.model_name.human,
-      data: {
-        "test-selector": "project_id"
-      },
+      required: true,
       autocomplete_options: {
         with_search_icon: true,
         openDirectly: false,
         focusDirectly: false,
         dropdownPosition: "bottom",
-        inputName: "project_id",
-        inputValue: @project&.id,
-        filters: [{ name: "user_action", operator: "=", values: ["meetings/create"] }]
+        appendTo: "#new-meeting-dialog",
+        filters: [{ name: "user_action", operator: "=", values: ["meetings/create"] }],
+        data: {
+          "test-selector": "project_id"
+        }
       }
     )
   end

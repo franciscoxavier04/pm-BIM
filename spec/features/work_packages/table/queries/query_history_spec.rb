@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Going back and forth through the browser history", :js do
+RSpec.describe "Going back and forth through the browser history", :js, :selenium do
   let(:user) do
     create(:user, member_with_roles: { project => role })
   end

@@ -32,7 +32,7 @@ module Storages
   module Peripherals
     NextcloudRegistry = Dry::Container::Namespace.new("nextcloud") do
       namespace("queries") do
-        register(:auth_check, StorageInteraction::Nextcloud::AuthCheckQuery)
+        register(:user, StorageInteraction::Nextcloud::UserQuery)
         register(:capabilities, StorageInteraction::Nextcloud::CapabilitiesQuery)
         register(:download_link, StorageInteraction::Nextcloud::DownloadLinkQuery)
         register(:file_info, StorageInteraction::Nextcloud::FileInfoQuery)
@@ -57,17 +57,47 @@ module Storages
         register(:set_permissions, StorageInteraction::Nextcloud::SetPermissionsCommand)
       end
 
+      namespace("components") do
+        namespace("forms") do
+          register(:automatically_managed_folders, Admin::Forms::AutomaticallyManagedProjectFoldersFormComponent)
+          register(:general_information, Admin::Forms::GeneralInfoFormComponent)
+          register(:storage_audience, Admin::Forms::StorageAudienceFormComponent)
+          register(:oauth_application, Admin::OAuthApplicationInfoCopyComponent)
+          register(:oauth_client, Admin::Forms::OAuthClientFormComponent)
+        end
+
+        register(:setup_wizard, NextcloudStorageWizard)
+
+        register(:automatically_managed_folders, Admin::AutomaticallyManagedProjectFoldersInfoComponent)
+        register(:general_information, Admin::GeneralInfoComponent)
+        register(:storage_audience, Admin::StorageAudienceInfoComponent)
+        register(:oauth_application, Admin::OAuthApplicationInfoComponent)
+        register(:oauth_client, Admin::OAuthClientInfoComponent)
+      end
+
       namespace("contracts") do
-        register(:storage, ::Storages::Storages::NextcloudContract)
+        register(:storage, Storages::NextcloudContract)
+        register(:general_information, Storages::NextcloudGeneralInformationContract)
+        register(:storage_audience, Storages::NextcloudAudienceContract)
       end
 
       namespace("models") do
         register(:managed_folder_identifier, ManagedFolderIdentifier::Nextcloud)
       end
 
+      namespace("services") do
+        register(:folder_create, ::Storages::NextcloudManagedFolderCreateService)
+        register(:folder_permissions, ::Storages::NextcloudManagedFolderPermissionsService)
+      end
+
+      namespace("validators") do
+        register(:connection, ConnectionValidators::NextcloudValidator)
+      end
+
       namespace("authentication") do
         register(:userless, StorageInteraction::AuthenticationStrategies::NextcloudStrategies::UserLess, call: false)
         register(:user_bound, StorageInteraction::AuthenticationStrategies::NextcloudStrategies::UserBound)
+        register(:specific_bearer_token, StorageInteraction::AuthenticationStrategies::NextcloudStrategies::SpecificBearerToken)
       end
     end
   end

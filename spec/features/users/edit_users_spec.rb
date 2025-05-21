@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "edit users", :js, :with_cuprite do
+RSpec.describe "edit users", :js do
   shared_let(:admin) { create(:admin) }
   let(:current_user) { admin }
   let(:user) { create(:user, mail: "foo@example.com") }

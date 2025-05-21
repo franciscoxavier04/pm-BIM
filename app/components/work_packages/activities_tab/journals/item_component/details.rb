@@ -1,6 +1,6 @@
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2023 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -53,12 +53,23 @@ module WorkPackages
           journal.id
         end
 
+        def journal_details
+          @journal_details ||= journal.details
+        end
+
+        def has_details?
+          @has_details ||= journal_details.any?
+        end
+
         def render_details_header(details_container)
           details_container.with_row(
             flex_layout: true,
             justify_content: :space_between,
             classes: "work-packages-activities-tab-journals-item-component-details--journal-details-header-container",
-            id: "activity-anchor-#{journal.sequence_version}"
+            data: {
+              "anchor-activity-id": journal.sequence_version,
+              "anchor-comment-id": journal.id
+            }
           ) do |header_container|
             render_header_start(header_container)
             render_header_end(header_container)
@@ -97,7 +108,7 @@ module WorkPackages
             mr: 1,
             classes: "work-packages-activities-tab-journals-item-component-details--user-name ellipsis hidden-for-mobile"
           ) do
-            truncated_user_name(journal.user)
+            truncated_user_name(journal.user, hover_card: true)
           end
         end
 
@@ -152,20 +163,19 @@ module WorkPackages
 
         def render_mobile_updated_time(container)
           container.with_column do
-            render(Primer::Beta::Text.new(font_size: :small, color: :subtle, mt: 1)) { format_time(journal.updated_at) }
+            activity_anchor_link(journal)
           end
         end
 
         def render_updated_time(container)
           container.with_column(mr: 1, classes: "hidden-for-mobile") do
-            render(Primer::Beta::Text.new(font_size: :small, color: :subtle, mt: 1)) { format_time(journal.updated_at) }
+            activity_anchor_link(journal)
           end
         end
 
         def render_header_end(header_container)
           header_container.with_column(flex_layout: true) do |header_end_container|
             render_notification_bubble(header_end_container) if has_unread_notifications
-            render_activity_link(header_end_container)
           end
         end
 
@@ -174,27 +184,9 @@ module WorkPackages
             render(Primer::Beta::Octicon.new(
                      :"dot-fill", # color is set via CSS as requested by UI/UX Team
                      classes: "work-packages-activities-tab-journals-item-component-details--notification-dot-icon",
-                     size: :medium,
+                     size: :small,
                      data: { test_selector: "op-journal-unread-notification", "op-ian-center-update-immediate": true }
                    ))
-          end
-        end
-
-        def render_activity_link(container)
-          container.with_column(
-            pr: 3,
-            classes: "work-packages-activities-tab-journals-item-component-details--activity-link-container"
-          ) do
-            render(Primer::Beta::Link.new(
-                     href: activity_url(journal),
-                     scheme: :secondary,
-                     underline: false,
-                     font_size: :small,
-                     data: { turbo: false, action: "click->work-packages--activities-tab--index#setAnchor:prevent",
-                             "work-packages--activities-tab--index-id-param": journal.sequence_version }
-                   )) do
-              "##{journal.sequence_version}"
-            end
           end
         end
 
@@ -223,7 +215,7 @@ module WorkPackages
         end
 
         def render_journal_details(details_container_inner)
-          journal.details.each do |detail|
+          journal_details.each do |detail|
             rendered_detail = journal.render_detail(detail)
             render_single_detail(details_container_inner, rendered_detail) if rendered_detail.present?
           end

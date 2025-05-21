@@ -63,7 +63,7 @@ module Notifications
     end
 
     def reason_filters
-      %w[mentioned assigned responsible watched dateAlert shared].map do |reason|
+      %w[mentioned assigned responsible watched dateAlert reminder shared].map do |reason|
         count = unread_by_reason[reason]
         menu_item(title: I18n.t("notifications.reasons.#{reason}"),
                   icon_key: reason,
@@ -113,9 +113,9 @@ module Notifications
 
     def query_path(query_params)
       if query_params[:name] == "shared" && show_enterprise_icon?("shared")
-        return notifications_share_upsale_path(query_params)
+        return notifications_share_upsell_path(query_params)
       elsif query_params[:name] == "dateAlert" && show_enterprise_icon?("dateAlert")
-        return notifications_date_alert_upsale_path(query_params)
+        return notifications_date_alert_upsell_path(query_params)
       end
 
       notifications_center_path(query_params)
@@ -128,7 +128,8 @@ module Notifications
         "responsible" => :"op-person-accountable",
         "watched" => :eye,
         "shared" => :"share-android",
-        "dateAlert" => :"op-calendar-alert"
+        "dateAlert" => :"op-calendar-alert",
+        "reminder" => :"op-alarm"
       }
     end
 

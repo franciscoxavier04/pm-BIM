@@ -103,8 +103,8 @@ hu:
     button_settings: "Beállítások"
     button_uncheck_all: "Az összes kijelölés megszüntetése"
     button_update: "Frissítés"
-    button_export-pdf: "PDF-fájl letöltése"
     button_export-atom: "Atom letöltés"
+    button_generate_pdf: "Generate PDF"
     button_create: "Létrehoz"
     card:
       add_new: "Új kártya hozzáadása"
@@ -221,6 +221,8 @@ hu:
             label_maximum_users: "Maximális aktív felhasználók"
             label_starts_at: "Kezdés ideje:"
             label_expires_at: "Lejárat ekkor"
+            label_plan: "Díjcsomag"
+            label_additional_features: "Additional features"
             receive_newsletter: Szeretném megkapni az OpenProject <a target="_blank" href="%{link}"> hírlevelét </a>.
             taken_domain: Csak egy próbaverzió lehet aktív egy domainen
             domain_mismatch: The current request host name does not match the configured host name. Please double check your system settings.
@@ -237,10 +239,13 @@ hu:
           status_waiting: "email kiküldve - megerősítésre vár"
           test_ee: "Test the Enterprise edition 14 days for free"
           quick_overview: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
-        upsale:
+        upsell:
           become_hero: "Legyél egy hős!"
           enterprise_info_html: "%{feature_title} is an Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> add-on."
           upgrade_info: "Kérjük, válasszon egy fizetős csomagot az aktiváláshoz, hogy mihamarabb használhassa a csapatában."
+          text: >
+            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
+          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
           benefits:
             description: "What are the benefits of the Enterprise on-premises edition?"
             high_security: "Biztonsági szolgáltatások"
@@ -259,10 +264,7 @@ hu:
             A tesztelt és támogatott vállalati szintű projektmenedzsment szoftver bizalmát nyújtjuk - nyílt forráskóddal és nyitott szemmel.
           link_quote: "Árajánlat kérése"
           more_info: "További információ"
-          text: >
-            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
           unlimited: "Korlátlan"
-          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
       working_days:
         calendar:
           empty_state_header: "Non-working days"
@@ -353,13 +355,13 @@ hu:
       blocks:
         new_features:
           text_new_features: "Itt találhatóak az új funkciók és a frissítések"
-          learn_about: "Tudjon meg többet az új funkciókról"
+          learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_0":
+          "16_0":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Boost your communication with a better structured Activity tab, real-time loading messages and notifications, emoji reactions, and more.</li> <li>Benefit from easy Single Sign-On authentication settings with SAML and OIDC in your Enterprise Cloud administration.</li> <li>Use the new 'Standard global role' and enable permissions to view email addresses.</li> <li>Enjoy easier navigation in project lists with quick action table headers.</li> <li>Experience simplified design settings with fewer sidebar design variables needed.</li> <li>Reduce manual cleanup when adding a custom field to a type – no more auto-applying to all projects.</li> <li>Benefit from improved navigation clarity – 'My account' is renamed to 'Account settings'.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "An error occured while fetching data."
@@ -432,7 +434,6 @@ hu:
     label_filename: "File"
     label_filesize: "Méret"
     label_general: "Általános"
-    label_global_roles: "Global roles"
     label_greater_or_equal: ">="
     label_group: "Csoport"
     label_group_by: "Csoportosítás a következők szerint"
@@ -461,6 +462,7 @@ hu:
     label_menu_collapse: "összecsuk"
     label_menu_expand: "kibont"
     label_more_than_ago: "több, nappal ezelőtt"
+    label_moderate_comment: "Moderate comment"
     label_next: " Következő"
     label_no_color: "Nincs szín"
     label_no_data: "Nincs megjelenítendő adat"
@@ -575,7 +577,7 @@ hu:
         members: "Új <b>tagok</b> meghívása, hogy a projekthez csatlakozzanak."
         quick_add_button: "Kattintson a fejlécben található (+) ikonra hogy   <b>create a new project</b> vagy  <b>invite coworkers</b>."
         sidebar_arrow: "Használja a vissza nyilat bal felül hogy visszatérjen a projektekhez <b>main menu</b>.."
-        welcome: "Áldozzon három percet erre a bemutatóra, hogy megismerje a <b>legfontosabb szolgáltatásokat</b><br> Javasoljuk, hogy végezze el a lépéseket egészen a végéig. A túra bármikor újraindítható."
+        welcome: "Take a three-minute introduction tour to learn the most <b>important features</b>. <br> We recommend completing the steps until the end. You can restart the tour any time."
         wiki: "A <b>Wiki</b> modulban tudását dokumentálhatja és megoszthatja a csapatával."
         backlogs:
           overview: "Munka kezelése a <b>backlogs</b>  nézetben"
@@ -612,7 +614,7 @@ hu:
         assigned: "Megbízott"
         #The enum value is named 'responsible' in the database and that is what is transported through the API
         #up to the frontend.
-        responsible: "Accountable"
+        responsible: "Felelős"
         created: "Létrehoz"
         scheduled: "Beütemezve"
         commented: "Hozzászólás"
@@ -620,17 +622,15 @@ hu:
         prioritized: "Prioritized"
         dateAlert: "Date alert"
         shared: "Megosztva"
+        reminder: "Reminder"
       date_alerts:
         milestone_date: "Milestone date"
         overdue: "Overdue"
-        overdue_since: "since %{difference_in_days}"
-        property_today: "is today"
-        property_is: "is in %{difference_in_days}"
-        property_was: "was %{difference_in_days} ago"
-        property_is_deleted: "is deleted"
-        upsale:
-          title: "Date alerts"
-          description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+        overdue_since: "%{difference_in_days} napja."
+        property_today: "is today."
+        property_is: "%{difference_in_days} napon belül."
+        property_was: "%{difference_in_days} napja volt."
+        property_is_deleted: "törölve."
       center:
         label_actor_and: "és"
         and_more_users:
@@ -641,7 +641,8 @@ hu:
           with_current_filter: "Ebben a nézetben jelenleg nincsenek értesítések"
         mark_all_read: "Mindegyik megjelölése olvasottként"
         mark_as_read: "Megjelölés olvasottként"
-        text_update_date_by: "%{date} by"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
+        text_update_date_by: "%{date} szerint"
         total_count_warning: "A %{newest_count} legfrissebb értesítések megjelenítése. %{more_count} több nem jelenik meg.\n"
         empty_state:
           no_notification: "Looks like you are all caught up."
@@ -652,6 +653,8 @@ hu:
         new_notifications:
           message: "Új értesítések érkeztek."
           link_text: "Click here to load them."
+      reminders:
+        note: "Note: “%{note}”"
       settings:
         change_notification_settings: 'You can modify your <a target="_blank" href="%{url}">notification settings</a> to ensure you never miss an important update.'
         title: "Értesítési beállítások"
@@ -691,7 +694,6 @@ hu:
           date_alerts:
             title: "Date alerts"
             description: "Automatic notifications when important dates are approaching for open work packages you are involved in (assignee, accountable or watcher)."
-            teaser_text: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
           overdue: When overdue
         project_specific:
           title: "Projekt-specifikus értesítések beállításai"
@@ -714,17 +716,18 @@ hu:
       description: "Description: Click to edit..."
       relation_description: "Kapcsolat leírásának hozzáadása ide kattintva"
     project:
-      required_outside_context: >
-        Kérjük, válasszon egy projektet a munkacsomag létrehozásához az összes attribútum megtekintéséhez. Csak olyan projekteket választhat ki, amelyek aktiválták a fenti típust.
-      context: "Projekt kontextus"
-      click_to_switch_to_project: "Project: %{projectname}"
-      confirm_template_load: "Ha megváltoztatja a sablont, az oldal újratöltődik, és elveszíti az összes űrlapon lévő adatot. Folytatni?\n"
-      use_template: "Sablon használata"
-      no_template_selected: "(Nincs)"
-      copy:
-        copy_options: "Másolási beállítás"
       autocompleter:
         label: "Projektnevek automatikus kiegészítése"
+      click_to_switch_to_project: "Project: %{projectname}"
+      confirm_template_load: "Ha megváltoztatja a sablont, az oldal újratöltődik, és elveszíti az összes űrlapon lévő adatot. Folytatni?\n"
+      context: "Projekt kontextus"
+      copy:
+        copy_options: "Másolási beállítás"
+      not_available: "Project N/A"
+      no_template_selected: "(Nincs)"
+      required_outside_context: >
+        Kérjük, válasszon egy projektet a munkacsomag létrehozásához az összes attribútum megtekintéséhez. Csak olyan projekteket választhat ki, amelyek aktiválták a fenti típust.
+      use_template: "Sablon használata"
     reminders:
       settings:
         daily:
@@ -739,6 +742,7 @@ hu:
         immediate:
           title: "Kérek email emlékeztetőt!"
           mentioned: "Amint valaki @megemlít engem"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "Email alerts for other items (that are not work packages)"
           explanation: >
@@ -770,10 +774,6 @@ hu:
         upgrade_to_ee_text: "Wow! If you need this add-on you are a super pro! Would you mind supporting us OpenSource developers by becoming an Enterprise edition client?"
         more_information: "További információ"
         nevermind: "Mindegy"
-      edit:
-        form_configuration: "Ürlap beállítása"
-        projects: "Projektek"
-        settings: "Beállítások"
     time_entry:
       work_package_required: "Először ki kell választania egy munkacsomagot."
       title: "Eltöltött idő rögzítése"
@@ -796,6 +796,7 @@ hu:
       typeahead_placeholder: Lehetséges megfigyelők keresése
     relation_labels:
       parent: "Szülő"
+      child: "Child"
       children: "Gyermekek"
       relates: "Kapcsolódóan"
       duplicates: "Duplikátumok"
@@ -825,16 +826,16 @@ hu:
       add_new_child: "Új gyermek kapcsolat hozzáadása"
       create_new: "Új létrehozása"
       add_existing: "Létező tartalom hozzáadása"
-      add_existing_child: "Meglévő gyermek kapcsolat hozzáadása"
+      add_existing_child: "Gyermek hozzáadása"
       remove_child: "Gyermek kapcsolat törlése"
       add_new_relation: "Új kapcsolat hozzáadása"
       add_existing_relation: "Létező kapcsolat hozzáadása"
       update_description: "Kapcsolat részleteinek beállítása vagy frissítése"
       toggle_description: "Kapcsolat leírás kapcsolása"
       update_relation: "Klikk a kapcsolat típus módosításához"
-      add_follower: "Követő hozzáadása"
       show_relations: "Show relations"
       add_predecessor: "Előző hozzáadása"
+      add_successor: "Folyatató hozzáadása"
       remove: "Kapcsolat eltávolítása"
       save: "Kapcsolat mentése"
       abort: "Megszakít"
@@ -851,8 +852,6 @@ hu:
       select_branch: "Branch kiválasztása"
     field_value_enter_prompt: "Adja meg az értéket a %{field} mezőhöz"
     project_menu_details: "Részletek"
-    scheduling:
-      manual: "Kézi ütemezés\n"
     sort:
       sorted_asc: "Növekvő sorrend alkalmazása, "
       sorted_dsc: "Csökkenő rendezés alkalmazva, "
@@ -866,7 +865,7 @@ hu:
     tl_toolbar:
       zooms: "Nagyítási szint"
       outlines: "Hierarchia szint"
-    upsale:
+    upsell:
       ee_only: "Enterprise edition add-on"
     wiki_formatting:
       strong: "Erős"
@@ -900,15 +899,6 @@ hu:
       comment_send_failed: "Hiba történt. A megjegyzés elküldése meghiúsult."
       comment_updated: "A megjegyzés sikeresen frissítve."
       confirm_edit_cancel: "Biztosan meg kívánja szakítani a munkacsomag szerkesztést?"
-      datepicker_modal:
-        automatically_scheduled_parent: "Automatically scheduled. Dates are derived from relations."
-        manually_scheduled: "Manual scheduling enabled, all relations ignored."
-        start_date_limited_by_relations: "Available start and finish dates are limited by relations."
-        changing_dates_affects_follow_relations: "Changing these dates will affect dates of related work packages."
-        click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for GANTT overview.'
-        show_relations: "Show relations"
-        ignore_non_working_days:
-          title: "Working days only"
       description_filter: "Szűrő"
       description_enter_text: "Írjon szöveget"
       description_options_hide: "Beállítások elrejtése"
@@ -1042,14 +1032,18 @@ hu:
           not_found: "Nincs ilyen nézet"
           duplicate_query_title: "A nézet neve már létezik. Biztos megváltoztatod?"
         text_no_results: "Nem található egyező nézet"
+      reminders:
+        button_label: "Set reminder"
+        title:
+          new: "Set reminder"
+          edit: "Edit reminder"
+        subtitle: "You will receive a notification for this work package at the chosen time."
       scheduling:
         is_parent: "A munkacsomag dátumait automatikusan levezetik a gyermekeiből. A dátumok beállításához aktiválja a „Kézi ütemezést”"
         is_switched_from_manual_to_automatic: "Ennek a munkacsomagnak a dátumait újra kell kalkulálni, miután a kézi üzemmódról az automatikus ütemezésre váltott, más munkacsomagokkal való kapcsolat miatt.\n"
       sharing:
         title: "Share work package"
-        show_all_users: "Show all users with whom the work package has been shared with"
-        upsale:
-          description: "Share work packages with users who are not members of the project."
+        show_all_users: "Minden felhasználó mutatása, akivel a munkacsomag megosztásra került"
       table:
         configure_button: "Feladatcsoport táblázat beállítása"
         summary: "Táblázat melynek sorai munkacsomagok és oszlopai munkacsomag attribútumok."
@@ -1084,10 +1078,6 @@ hu:
           manually: "Kézi"
           warning: "Az automatikus válogatás üzemmód aktiválásakor elveszíti korábbi rendezését."
         columns_help_text: "A fenti bevitellel oszlopokat adhat hozzá a táblázatnézethez. A \"Húzd és Dobd\" módszerrel újra rendezheti az oszlopokat"
-        upsale:
-          attribute_highlighting: "Szüksége van bizonyos munkacsomagokra, hogy kitűnjön a tömegből?"
-          relation_columns: "Szeretné látni a munkacsomag kapcsolatait?"
-          check_out_link: "Check out the Enterprise edition."
         relation_filters:
           filter_work_packages_by_relation_type: "A munkacsomagok szűrése relációs típus szerint"
       tabs:
@@ -1301,9 +1291,7 @@ hu:
       clear: "Törlés"
       apply: "Alkalmaz"
       header_description: "Highlight changes made to this list since any point in the past."
-      enterprise_header_description: "Highlight changes made to this list since any point in the past with Enterprise edition."
       show_changes_since: "Show changes since"
-      baseline_comparison: "Baseline comparison"
       help_description: "Reference time zone for the baseline."
       time_description: "In your local time: %{datetime}"
       time: "Idő"
@@ -1341,9 +1329,7 @@ hu:
         close: "Close modal"
     open_project_storage_modal:
       waiting_title:
-        timeout: "Timeout"
+        timeout: "Időtúllépés"
       waiting_subtitle:
         network_off: "There is a network problem."
         network_on: "Network is back. We are trying."
-        timeout: >
-          OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check the <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">health status of the file storage setup</a>.

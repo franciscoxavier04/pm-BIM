@@ -22,7 +22,7 @@ When you first access this tab, you will see the comments and list of changes in
 
 You can scroll up and down to go forwards or backwards in time.
 
-By default, the activity tab shows both comments and changes, but you can filter this to only show one or the other:
+By default, the Activity tab shows both comments and changes, but you can filter this to only show one or the other:
 
 ![Filter the activity tab](Activity-filter.png)
 
@@ -53,6 +53,42 @@ You can:
 - Copy a link to the comment on your clipboard if you want to paste a link to it elsewhere  
 - You can edit the comment if you are the author  
 - You can quote someone else's comment in a new comment. This is useful if you want to respond to a certain part of a comment.
+
+### Internal comments (Enterprise add-on)
+
+> [!NOTE]
+> Internal comments are an Enterprise add-on and can only be used with [Enterprise cloud](../../enterprise-guide/enterprise-cloud-guide/) or [Enterprise on-premises](../../enterprise-guide/enterprise-cloud-guide/). An upgrade from the free Community edition is easily possible.
+
+Projects may include external clients or suppliers, who can be invited to a project or individual work package with restricted roles. To keep sensitive discussions (for example rates, negotiations, or financial and contextual details) confined to the core team, internal comments can be used. These comments are only visible to authorized users and are not accessible to external participants. This allows teams to manage sensitive information directly within work packages and avoid using external tools, maintaining a single source of truth.
+
+> [!TIP]
+> To use the internal comments feature, a project admin must first enable it by navigating to [Project settings → Work packages → Internal comments tab](../projects/project-settings/work-packages/#work-package-internal-comments-enterprise-add-on). 
+> By default, internal comments are only visible to the *Project admin* role. However, for broader access, an instance administrator can grant permissions to view, write, and edit internal comments to any existing or new role.
+> These permissions must be explicitly assigned for the feature to be usable. If the permissions are removed, the internal comments will no longer be visible to those roles.
+
+Internal comments are distinguished from other comments via a different color scheme and a lock icon. 
+
+![Example of an internal comment displayed under Activity tab of an OpenProject work package](openproject_user_guide_internal_comment_example.png)
+
+To write an internal comment, proceed the same way you would when writing a regular comment but make sure to check **Internal comment** checkbox before submitting.
+
+> [!IMPORTANT]
+> Once published, a regular comment can no longer be marked as internal, and an internal comment can no longer be made public.
+
+![Internal comment checkbox selected when adding an internal comment on an OpenProject work package](openproject_user_guide_internal_comment_checkbox.png)
+
+As is the case with public comments, you can:
+
+- Copy a link to an internal comment to your clipboard,
+- Edit an internal comment if you are the author or have sufficient rights to edit comments added by other users,
+- Quote someone else's internal comment in a new comment. This new comment will be an internal one by default.
+
+To use these options click the more (...) menu next to the lock icon on the right side of the comment.
+
+![Editing options for an internal comment shown in a dropdown menu](openproject_user_guide_internal_comment_edit_quote_copy.png)
+
+> [!TIP]
+> It is currently not possible to view a list of all other users in a project who are able to read and add internal comments. We understand this is an important feature and plan to add this functionality in a future release.
 
 ### Emoji reactions
 

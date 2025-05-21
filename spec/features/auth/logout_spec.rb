@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,8 +31,7 @@
 require "spec_helper"
 
 RSpec.describe "Logout",
-               :js,
-               :with_cuprite do
+               :js do
   let(:user_password) { "b0B" * 4 }
   let(:user) do
     create(:user,

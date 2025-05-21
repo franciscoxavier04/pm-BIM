@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -159,7 +161,7 @@ RSpec.describe Reactable do
       end
     end
 
-    context "when user format is set to :lastname_coma_firstname", with_settings: { user_format: :lastname_coma_firstname } do
+    context "when user format is set to :lastname_comma_firstname", with_settings: { user_format: :lastname_comma_firstname } do
       it "returns grouped emoji reactions with last coma firstname" do
         result = Journal.grouped_emoji_reactions(reactable_id: wp_journal1.id, reactable_type: "Journal")
 

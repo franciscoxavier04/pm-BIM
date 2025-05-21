@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # --copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -39,16 +41,8 @@ require_relative "../../lib_static/open_project/feature_decisions"
 #     OpenProject::FeatureDecisions.add :some_flag
 #   end
 
-OpenProject::FeatureDecisions.add :primerized_work_package_activities
 OpenProject::FeatureDecisions.add :built_in_oauth_applications,
                                   description: "Allows the display and use of built-in OAuth applications."
 
-OpenProject::FeatureDecisions.add :custom_field_of_type_hierarchy,
-                                  description: "Allows the use of the custom field type 'Hierarchy'."
-
-# TODO: Remove once the feature flag primerized_work_package_activities is removed altogether
-OpenProject::FeatureDecisions.define_singleton_method(:primerized_work_package_activities_active?) do
-  Rails.env.production? ||
-    (Setting.exists?("feature_primerized_work_package_activities_active") &&
-      Setting.send(:feature_primerized_work_package_activities_active?))
-end
+OpenProject::FeatureDecisions.add :stages_and_gates,
+                                  description: "Enables the under construction feature of phases."

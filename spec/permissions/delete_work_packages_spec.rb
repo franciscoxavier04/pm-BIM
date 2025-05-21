@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,7 +29,7 @@
 #++
 
 require "spec_helper"
-require_relative "../support/permission_specs"
+require "support/permission_specs"
 
 RSpec.describe WorkPackages::BulkController, "delete_work_packages permission", type: :controller do
   include PermissionSpecs

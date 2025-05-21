@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euxo pipefail
 
 get_architecture() {
 	if command -v uname > /dev/null; then
@@ -40,8 +41,6 @@ echo 'deb http://apt.postgresql.org/pub/repos/apt/ bookworm-pgdg main' > /etc/ap
 apt-get update -qq
 apt-get install -yq --no-install-recommends \
 	libpq-dev \
-	postgresql-client-$CURRENT_PGVERSION \
-	postgresql-client-$NEXT_PGVERSION \
 	libpq5 \
 	libffi8 \
 	unrtf \
@@ -52,6 +51,10 @@ apt-get install -yq --no-install-recommends \
 	libclang-dev \
 	libjemalloc2 \
 	git
+
+for version in $PGVERSION_CHOICES ; do
+	apt-get install -yq --no-install-recommends postgresql-client-$version
+done
 
 # Specifics for BIM edition
 if [ ! "$BIM_SUPPORT" = "false" ]; then
@@ -77,8 +80,8 @@ if [ ! "$BIM_SUPPORT" = "false" ]; then
 	mv COLLADA2GLTF-bin "/usr/local/bin/COLLADA2GLTF"
 
 	# IFCconvert
-	wget --quiet https://s3.amazonaws.com/ifcopenshell-builds/IfcConvert-v0.6.0-517b819-linux64.zip
-	unzip -q IfcConvert-v0.6.0-517b819-linux64.zip
+	wget --quiet https://s3.amazonaws.com/ifcopenshell-builds/IfcConvert-v0.7.11-fea8e3a-linux64.zip
+	unzip -q IfcConvert-v0.7.11-fea8e3a-linux64.zip
 	mv IfcConvert "/usr/local/bin/IfcConvert"
 
 	wget --quiet https://github.com/bimspot/xeokit-metadata/releases/download/1.0.1/xeokit-metadata-linux-x64.tar.gz

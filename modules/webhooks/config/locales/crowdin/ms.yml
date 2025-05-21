@@ -8,6 +8,7 @@ ms:
         url: 'Muatan URL'
         secret: 'Rahsia tandatangan'
         events: 'Peristiwa'
+        enabled: 'Didayakan'
         projects: 'Projek yang didayakan'
       webhooks/log:
         event_name: 'Nama peristiwa'
@@ -55,7 +56,7 @@ ms:
         events:
           title: 'Peristiwa yang dibenarkan'
         project_ids:
-          title: 'Projek yang dibenarkan'
+          title: 'Projek yang didayakan'
           description: 'Pilih projek bagi melaksanakan webhook ini.'
           all: 'Semua projek'
           selected: 'Projek yang dipilih sahaja'

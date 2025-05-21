@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Enterprise token", :js, :with_cuprite do
+RSpec.describe "Enterprise token", :js do
   include Redmine::I18n
 
   shared_let(:admin) { create(:admin) }
@@ -81,9 +83,17 @@ RSpec.describe "Enterprise token", :js, :with_cuprite do
         expect(page).to have_test_selector("op-enterprise--active-token")
 
         expect(page.all(".attributes-key-value--key").map(&:text))
-          .to eq ["Subscriber", "Email", "Domain", "Maximum active users", "Starts at", "Expires at"]
+          .to eq ["Subscriber", "Email", "Domain", "Maximum active users", "Starts at", "Expires at", "Plan"]
         expect(page.all(".attributes-key-value--value").map(&:text))
-          .to eq ["Foobar", "foo@example.org", Setting.host_name, "Unlimited", format_date(Time.zone.today), "Unlimited"]
+          .to eq [
+            "Foobar",
+            "foo@example.org",
+            Setting.host_name,
+            "Unlimited",
+            format_date(Time.zone.today),
+            "Unlimited",
+            "Enterprise Plan (Token Version #{token_object.version})"
+          ]
 
         expect(page).to have_css(".button.icon-delete", text: I18n.t(:button_delete))
 
@@ -94,7 +104,7 @@ RSpec.describe "Enterprise token", :js, :with_cuprite do
         expect(EnterpriseToken.current.encoded_token).to eq("foobar")
 
         expect(page).to have_text("Successful update")
-        click_on "Replace your current support token"
+        find("h2", text: "Replace your current support token").click
         fill_in "enterprise_token_encoded_token", with: "blabla"
         submit_button.click
 

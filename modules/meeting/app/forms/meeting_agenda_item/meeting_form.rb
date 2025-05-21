@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -34,7 +35,7 @@ class MeetingAgendaItem::MeetingForm < ApplicationForm
       name: :meeting_id,
       required: true,
       include_blank: false,
-      label: Meeting.model_name.human,
+      label: I18n.t("label_meeting"),
       caption: I18n.t("label_meeting_selection_caption"),
       autocomplete_options: {
         multiple: false,
@@ -45,7 +46,7 @@ class MeetingAgendaItem::MeetingForm < ApplicationForm
       MeetingAgendaItems::CreateContract
         .assignable_meetings(User.current)
         .where("meetings.start_time + (interval '1 hour' * meetings.duration) >= ?", Time.zone.now)
-        .reorder("meetings.start_time ASC")
+        .order("meetings.start_time")
         .includes(:project)
         .each do |meeting|
           select.option(

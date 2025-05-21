@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -33,7 +35,7 @@ RSpec.describe Meetings::CopyService, "integration", type: :model do
   shared_let(:user) do
     create(:user, member_with_permissions: { project => %i(view_meetings create_meetings) })
   end
-  shared_let(:meeting) { create(:structured_meeting, project:, start_time: Time.parse("2013-03-27T15:35:00Z")) }
+  shared_let(:meeting) { create(:meeting, project:, start_time: Time.parse("2013-03-27T15:35:00Z")) }
 
   let(:instance) { described_class.new(model: meeting, user:) }
   let(:attributes) { {} }
@@ -89,6 +91,33 @@ RSpec.describe Meetings::CopyService, "integration", type: :model do
       expect(copy.participants.count).to eq(1)
       invited = copy.participants.find_by(user:)
       expect(invited).to be_invited
+    end
+  end
+
+  describe "copying a system's user meeting" do
+    it "sets the copier as participant when empty" do
+      meeting.participants.destroy_all
+      meeting.author = User.system
+      meeting.save!
+
+      expect(service_result).to be_success
+      expect(copy.participants.count).to eq(1)
+      expect(copy.author).to eq(user)
+      invited = copy.participants.find_by(user:)
+      expect(invited).to be_invited
+    end
+  end
+
+  describe "copying as the system user" do
+    let(:instance) { described_class.new(model: meeting, user: User.system) }
+
+    it "does not add it as a participant" do
+      meeting.participants.destroy_all
+      meeting.save!
+
+      expect(service_result).to be_success
+      expect(copy.participants.count).to eq(0)
+      expect(copy.author).to eq(User.system)
     end
   end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -32,6 +34,7 @@ RSpec.describe Queries::WorkPackages::Filter::AttachmentFileNameFilter do
   if OpenProject::Database.allows_tsv?
     it_behaves_like "basic query filter" do
       let(:type) { :text }
+      let(:name) { "Attachment file name" }
       let(:class_key) { :attachment_file_name }
 
       describe "#available?" do

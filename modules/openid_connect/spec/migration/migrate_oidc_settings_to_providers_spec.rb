@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -107,6 +109,7 @@ RSpec.describe MigrateOidcSettingsToProviders, type: :model do
                   host: "localhost",
                   port: "8080",
                   scheme: "http",
+                  scope: ["foo", "bar"],
                   identifier: "http://localhost:3000",
                   secret: "IVl6GxxujAQ3mt6thAXKxyYYvmyRr8jw",
                   issuer: "http://localhost:8080/realms/test",
@@ -129,6 +132,7 @@ RSpec.describe MigrateOidcSettingsToProviders, type: :model do
       expect(provider.host).to eq "localhost"
       expect(provider.port).to eq "8080"
       expect(provider.scheme).to eq "http"
+      expect(provider.scope).to eq "foo bar"
       expect(provider.client_id).to eq "http://localhost:3000"
       expect(provider.client_secret).to eq "IVl6GxxujAQ3mt6thAXKxyYYvmyRr8jw"
       expect(provider.issuer).to eq "http://localhost:8080/realms/test"

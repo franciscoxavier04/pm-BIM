@@ -34,6 +34,9 @@ class SysController < ActionController::Base
   before_action :check_enabled
   before_action :require_basic_auth, only: [:repo_auth]
 
+  # disable CSRF protection since the Sys API does not use sessions
+  skip_before_action :verify_authenticity_token
+
   def repo_auth
     project = Project.find_by(identifier: params[:repository])
     if project && authorized?(project, @authenticated_user)
@@ -41,6 +44,24 @@ class SysController < ActionController::Base
     else
       render plain: "Not allowed", status: :forbidden # default to deny
     end
+  end
+
+  def fetch_changesets
+    projects = []
+    if params[:id]
+      projects << Project.active.has_module(:repository).find_by!(identifier: params[:id])
+    else
+      projects = Project.active.has_module(:repository)
+                        .includes(:repository).references(:repositories)
+    end
+    projects.each do |project|
+      if project.repository
+        project.repository.fetch_changesets
+      end
+    end
+    head :ok
+  rescue ActiveRecord::RecordNotFound
+    head :not_found
   end
 
   private

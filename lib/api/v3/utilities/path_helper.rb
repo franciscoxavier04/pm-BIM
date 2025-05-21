@@ -84,7 +84,6 @@ module API
           def self.resources(name,
                              except: [],
                              only: %i[index show create_form update_form schema])
-
             (Array(only) - Array(except)).each do |method|
               send(method, name)
             end
@@ -122,6 +121,18 @@ module API
 
           def self.attachment_content(id)
             "#{root}/attachments/#{id}/content"
+          end
+
+          def self.attachments_by_activity_bcf_comment(id)
+            attachments_by_activity(id)
+          end
+
+          def self.attachments_by_activity_comment(id)
+            attachments_by_activity(id)
+          end
+
+          def self.attachments_by_activity(id)
+            "#{root}/activities/#{id}/attachments"
           end
 
           def self.attachments_by_post(id)
@@ -213,6 +224,11 @@ module API
 
           def self.custom_field_item(id)
             "#{root}/custom_field_items/#{id}"
+          end
+
+          # API::V3::Queries::Filters::QueryFilterInstanceRepresenter need a path derived from a class name.
+          def self.hierarchy_item_adapter(id)
+            custom_field_item(id)
           end
 
           def self.custom_field_item_branch(id)
@@ -322,6 +338,9 @@ module API
           show :oauth_client_credentials
 
           resources :project
+
+          show :project_phase
+          show :project_phase_definition
 
           show :project_status
 
@@ -449,6 +468,10 @@ module API
           index :shares
           show :share
 
+          def self.work_package_reminders(id)
+            "#{work_package(id)}/reminders"
+          end
+
           def self.show_user(user_id)
             user_path(user_id)
           end
@@ -539,7 +562,7 @@ module API
           resources :work_package, except: :schema
 
           def self.work_package(id, timestamps: nil)
-            "#{root}/work_packages/#{id}" + \
+            "#{root}/work_packages/#{id}" +
               if (param_value = timestamps_to_param_value(timestamps)).present? && Array(timestamps).any?(&:historic?)
                 "?#{{ timestamps: param_value }.to_query}"
               end.to_s

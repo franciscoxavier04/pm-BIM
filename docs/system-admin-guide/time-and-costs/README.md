@@ -7,19 +7,34 @@ keywords: cost type, currency, time and costs, budget
 ---
 # Time and costs
 
-You can configure costs in OpenProject and create cost types to track unit costs. Also, you can configure the currency you want to use for your cost reports.
+Navigate to *Administration* -> *Time and costs*. Here you can configure costs in OpenProject and create cost types to track unit costs. Also, you can configure the currency you want to use for your cost reports.
 
-Navigate to *Administration* -> *Time and costs*.
+## Default time and cost settings
 
-## Settings
+To define default settings for logging time and costs navigate to *Administration* -> *Time and costs* -> *Defaults* and select *Time* or *Costs* tab respectively.
 
-Navigate to *Administration* -> *Time and costs* -> *Settings* to define settings for costs in OpenProject.
+### Define default time settings (Enterprise add-on)
+
+> [!NOTE] 
+> Enforcing exact time entries for time logging is an Enterprise add-on and can only be used  with [Enterprise cloud](https://www.openproject.org/docs/enterprise-guide/enterprise-cloud-guide) or [Enterprise on-premises](https://www.openproject.org/docs/enterprise-guide/enterprise-on-premises-guide). An upgrade from the free Community edition is easily possible.
+
+Under the *Time* tab you can define which fields are required to be fill out when logging time across all projects. 
+
+- **Allow exact times tracking**: enables entering start and finish times when logging time.  If disabled, only the amount of time spent can be logged, but not the start or end times. 
+  
+  If this option is activated, calendar mode is shown by default under My time tracking page. If not, list view will be shown by default.
+  
+- **Require exact times**: makes entering start and finish times mandatory when logging time.
+
+![Default settings for time logging in OpenProject administration](openproject_system_admin_guide_time_time_defaults.png)
+
+### Define default cost settings
 
 1. Configure the **currency used in the system, e.g. EUR**.
 2. **Specify the format of the currency**, if the number should be before or after the currency, e.g. 10 EUR, or $ 10.
 3. Press the **Apply** button to save your changes.
 
-![Time and costs settings in OpenProject administration](openproject_system_admin_guide_time_costs_settings.png)
+![Time and costs settings in OpenProject administration](openproject_system_admin_guide_time_costs_defaults.png)
 
 ## Create and manage cost types
 
@@ -57,3 +72,32 @@ In the overview list of all cost types you can define the following.
 
 > [!NOTE]
 > With cost types you can also book any kind of units to work packages, e.g. vacation days, leaves, travel days, etc.. Just choose 1 as a unit. This way, you could e.g. track vacation days against a vacation budget and evaluate the days in the [cost reporting](../../user-guide/time-and-costs/reporting/).
+
+## Create and manage time tracking activities
+
+To get an overview of existing values for time tracking activities, navigate to *Administration -> Time and Costs -> Time tracking activities*. You can adjust the items within the list by using the options behind the **More (three dots)** menu on the right side. You can also re-arrange the order by using the drag-and-drop handle on the left. 
+
+![Overview of existing time tracking activities in OpenProject administration](openproject_system_admin_guide_time_costs_time_tracking_activities_overview.png)
+
+> [!NOTE]
+> To activate the [Activities for time tracking](../../user-guide/projects/project-settings/activities-time-tracking) in a certain project, navigate to *Project settings -> Time tracking activities*.
+
+### Create new time tracking activity
+
+To create a new value, select the **+ Add** button in the top right corner.
+
+You will then be able to name the value and activate it. Press the **Save** button to save your changes.
+
+![Create new time tracking activity in OpenProject](openproject_system_admin_guide_time_costs_time_tracking_activities_new.png)
+
+### Edit or remove time tracking activity
+
+To **edit** an existing configuration either click on the name of the activity directly or select the **Edit** option from the **More (three dots)** menu on the right end of the row.
+
+![Edit a time tracking activity in OpenProject administration](openproject_system_admin_guide_time_costs_time_tracking_activities_edit_icon.png)
+
+
+To remove a time tracking activity, open the **More (three dots)** menu on the right end of the row and click on the **delete icon**.
+
+> [!NOTE]
+> To activate the [Activities for time tracking](../../user-guide/projects/project-settings/activities-time-tracking) in a certain project, navigate to *Project settings -> Time tracking activities*.

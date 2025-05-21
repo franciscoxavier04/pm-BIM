@@ -103,8 +103,8 @@ zh-TW:
     button_settings: "設定"
     button_uncheck_all: "取消全選"
     button_update: "更新"
-    button_export-pdf: "下載 PDF"
     button_export-atom: "下載 Atom"
+    button_generate_pdf: "產生PDF檔案"
     button_create: "建立"
     card:
       add_new: "新增卡片"
@@ -220,6 +220,8 @@ zh-TW:
             label_maximum_users: "使用者帳號上限"
             label_starts_at: "開始於"
             label_expires_at: "過期於"
+            label_plan: "計畫"
+            label_additional_features: "附加功能"
             receive_newsletter: 我想要接收 OpenProject <a target="_blank" href="%{link}">簡報</a>。
             taken_domain: 每個域名只能有一個活動的試用。
             domain_mismatch: 當前請求的主機名與配置的主機名不匹配。請仔細檢查您的系統設置。
@@ -236,10 +238,13 @@ zh-TW:
           status_waiting: "電子郵件已寄發-等待確認"
           test_ee: "免費體驗企業版 14 天"
           quick_overview: "用 OpenProject 企業版，快速瞭解項目管理和團隊協作的概況。"
-        upsale:
+        upsell:
           become_hero: "成為英雄!"
           enterprise_info_html: "%{feature_title} 是一個企業版<span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>的附加功能。"
           upgrade_info: "請升級到付費版以啟用此功能"
+          text: >
+            OpenProject 企業版基於社群版，包含企業附加元件和專業支援，主要針對擁有超過 10 位使用者，並以 OpenProject 管理關鍵業務專案的組織。
+          you_contribute: "開發者也有生計需要。升級企業版可助力開源社群的發展，促進其維護與不斷優化。"
           benefits:
             description: "本地部署的 Enterprise edition 具有哪些優勢？"
             high_security: "安全功能"
@@ -251,17 +256,14 @@ zh-TW:
             professional_support: "專業支援"
             professional_support_text: "從高級支持工程師那裡獲得可靠的個性化支持，這些工程師擁有在業務關鍵型環境中運行 OpenProject 的專業知識。"
           button_start_trial: "開始免費試用"
-          button_upgrade: "立即更新"
+          button_upgrade: "立即升級"
           button_contact_us: "聯絡我們取得試用"
           button_book_now: "立即預約"
           confidence: >
             我們秉承開源和開放心態，有信心提供經得起考驗和充分支持的企業級項目管理軟件。
           link_quote: "獲取報價"
           more_info: "更多資訊"
-          text: >
-            OpenProject企業版是在社區版的基礎上構建的。它包括企業版外掛和專業支持，主要對象為使用OpenProject管理業務關鍵項目的具有10個以上用戶的組織。
           unlimited: "無限"
-          you_contribute: "開發者也需要支付他們的賬單。 通過升級到企業版，您將支持這個開放源碼社區的努力，並有助於其發展、維護和不斷改進。"
       working_days:
         calendar:
           empty_state_header: "非工作日"
@@ -354,10 +356,11 @@ zh-TW:
           learn_about: "瞭解更多新功能的資訊"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_0":
+          "16_0":
             standard:
               new_features_html: >
-                此版本為您帶來各種功能與改進，例如<br> <ul class="%{list_styling_class}"> <li>透過結構更完善的活動標籤、即時載入訊息與通知、表情符號反應等功能，提升您的溝通品質。</li> <li>在企業雲端管理中使用 SAML 和 OIDC 進行簡易的單一登入驗證設定，讓您獲益良多。</li> <li>使用新的「標準全局角色」並啟用檢視電子郵件地址的權限。</li> <li>使用快速行動表頭，享受專案清單中更簡易的導覽功能。</li> <li>使用更少的側邊欄設計變數，體驗簡化的設計設定。</li> <li>在類型中加入自訂欄位時減少手動清理 - 不再自動套用至所有專案。</li> <li>受益於更清晰的導覽 -「我的帳戶」更名為「帳戶設定」。</li> </ul>
+                此版本包含多項新功能與改進，例如： <br>
+                <ul class="%{list_styling_class}"> <li>會議待辦事項功能，以及經典會議的結束。</li> <li>企業方案更新。</li> <li>工作項目中的內部留言（企業附加功能）。</li> <li>自動產生的工作項目標題（企業附加功能）。</li> <li>獨立的時間追蹤模組，包含行事曆檢視。</li> <li>在工作項目的關聯分頁中顯示父階關係。</li> <li>開放給社群：專案總覽頁的圖表功能。</li> </ul>
     ical_sharing_modal:
       title: "訂閱日曆"
       inital_setup_error_message: "更新資料時發生錯誤"
@@ -430,7 +433,6 @@ zh-TW:
     label_filename: "檔案"
     label_filesize: "檔案大小"
     label_general: "一般"
-    label_global_roles: "全域角色"
     label_greater_or_equal: "之前"
     label_group: "群組"
     label_group_by: "分組依據"
@@ -459,6 +461,7 @@ zh-TW:
     label_menu_collapse: "收合"
     label_menu_expand: "展開"
     label_more_than_ago: "超過幾天"
+    label_moderate_comment: "審閱留言"
     label_next: "下一個"
     label_no_color: "無顏色"
     label_no_data: "沒有資料可顯示"
@@ -598,8 +601,8 @@ zh-TW:
         team_planner:
           overview: "小組工作企劃使您可以直觀地為小組成員分配任務，並全面瞭解哪些成員正在處理哪些工作。"
           calendar: "單周或雙周規劃面版，可以顯示分配給您的小組成員的所有工作項目。"
-          add_assignee: "首先，請將執行者新增到小組工作企劃。"
-          add_existing: "搜索現有工作項目並將其拖動到小組工作企劃中，立即將其分配給小組成員並規定開始日期和結束日期。"
+          add_assignee: "首先，請將執行者新增到團隊規劃。"
+          add_existing: "搜索現有工作項目並將其拖動到團隊規劃中，立即將其分配給小組成員並規定開始日期和結束日期。"
           card: "水平拖動工作項目前後移其時間，拖曳可更改開始日期和結束日期，甚至可以將其垂直拖動到不同的行以分配給其他成員。"
     notifications:
       title: "通知"
@@ -618,17 +621,15 @@ zh-TW:
         prioritized: "已優先"
         dateAlert: "日期提醒"
         shared: "參與"
+        reminder: "提醒"
       date_alerts:
         milestone_date: "里程碑日期"
         overdue: "逾期"
-        overdue_since: " %{difference_in_days}天前"
+        overdue_since: "自 %{difference_in_days} 天."
         property_today: "今天"
-        property_is: " %{difference_in_days}內"
+        property_is: "在 %{difference_in_days}中。"
         property_was: " %{difference_in_days}天前"
         property_is_deleted: "已刪除"
-        upsale:
-          title: "日期提醒"
-          description: "透過日期提醒，您將收到相關通知，這樣您就不會錯過或忘記重要的日期。"
       center:
         label_actor_and: "和"
         and_more_users:
@@ -638,6 +639,7 @@ zh-TW:
           with_current_filter: "目前此檢視中沒有任何通知"
         mark_all_read: "全部標示為已讀"
         mark_as_read: "標記為已讀"
+        mark_all_read_confirmation: "這會將此檢視中的所有通知標記為已讀。您確定要這麼做？"
         text_update_date_by: "%{date} 依"
         total_count_warning: "正在顯示 %{newest_count} 條最新通知。還有 %{more_count} 條未顯示。"
         empty_state:
@@ -649,6 +651,8 @@ zh-TW:
         new_notifications:
           message: "您有新的通知"
           link_text: "點擊此處加載。"
+      reminders:
+        note: "備註： \"%{note}\""
       settings:
         change_notification_settings: '您可以修改 <a target="_blank" href="%{url}">通知設定</a>，以確保您不會錯過重要更新。'
         title: "通知設定"
@@ -688,7 +692,6 @@ zh-TW:
           date_alerts:
             title: "日期提醒"
             description: "當「執行者、負責人或監看者」之開啟的工作項目，其重要日期臨近時，自動發出通知。"
-            teaser_text: "透過日期提醒，您將收到即將到來的開始或結束日期的通知，這樣您就不會錯過或忘記重要的截止日期。"
           overdue: 逾期
         project_specific:
           title: "特定專案通知設定"
@@ -711,17 +714,18 @@ zh-TW:
       description: "描述：點選可編輯"
       relation_description: "按一下以便為此關係添加描述"
     project:
-      required_outside_context: >
-        請選擇專案以便新增工作項目以及檢視屬性。您只能選擇啟用中的專案。
-      context: "專案內容"
-      click_to_switch_to_project: "專案: %{projectname}"
-      confirm_template_load: "切換模板將重新加載頁面，您將丟失此表單上的所有輸入。是否繼續？"
-      use_template: "使用範本"
-      no_template_selected: "(無)"
-      copy:
-        copy_options: "複製選項"
       autocompleter:
         label: "專案自動完成"
+      click_to_switch_to_project: "專案: %{projectname}"
+      confirm_template_load: "切換模板將重新加載頁面，您將丟失此表單上的所有輸入。是否繼續？"
+      context: "專案內容"
+      copy:
+        copy_options: "複製選項"
+      not_available: "無專案"
+      no_template_selected: "(無)"
+      required_outside_context: >
+        請選擇專案以便新增工作項目以及檢視屬性。您只能選擇啟用中的專案。
+      use_template: "使用範本"
     reminders:
       settings:
         daily:
@@ -736,6 +740,7 @@ zh-TW:
         immediate:
           title: "寄發提醒郵件給我"
           mentioned: "當有人使用「@帳號」提到我，系統立即發信通知我"
+          personal_reminder: "當我收到個人提醒時立即通知"
         alerts:
           title: "其他非工作項目之提醒"
           explanation: >
@@ -767,10 +772,6 @@ zh-TW:
         upgrade_to_ee_text: "哇！如果您需要使用此功能，說明您非常專業！您是否願意成為企業版客戶來支持 OpenSource 開發人員？"
         more_information: "更多資訊"
         nevermind: "無視"
-      edit:
-        form_configuration: "表單設定"
-        projects: "專案"
-        settings: "設定"
     time_entry:
       work_package_required: "需要先選擇一個工作項目。"
       title: "日誌的時間"
@@ -783,7 +784,7 @@ zh-TW:
       tracking_time: "跟蹤時間"
       button_stop: "停止當前計時器"
     two_factor_authentication:
-      label_two_factor_authentication: "兩階段驗證"
+      label_two_factor_authentication: "雙因素驗證"
     watchers:
       label_loading: 正在載入監看者...
       label_error_loading: 載入監看者時發生錯誤
@@ -793,14 +794,15 @@ zh-TW:
       typeahead_placeholder: 尋找可能的監看者
     relation_labels:
       parent: "上層目錄："
+      child: "子項目"
       children: "子項目"
       relates: "關聯"
       duplicates: "重複"
       duplicated: "重複於"
       blocks: "攔阻"
       blocked: "被阻擋"
-      precedes: "後置項目"
-      follows: "前置項目"
+      precedes: "優先"
+      follows: "次の項目に後続"
       includes: "包括"
       partof: "一部分"
       requires: "需要"
@@ -822,16 +824,16 @@ zh-TW:
       add_new_child: "建立子工作項目"
       create_new: "新增"
       add_existing: "添加現有的"
-      add_existing_child: "加入現有子項目"
+      add_existing_child: "增加子項目"
       remove_child: "移除子項目"
       add_new_relation: "建立新關聯"
       add_existing_relation: "增加現有關系"
       update_description: "設置或更新此關聯的說明"
       toggle_description: "切換關係描述"
       update_relation: "按一下此處以更改關聯類型"
-      add_follower: "增加後置項目"
       show_relations: "顯示關聯"
       add_predecessor: "增加前置項目"
+      add_successor: "新增後續任務"
       remove: "刪除關係"
       save: "儲存關聯"
       abort: "捨棄"
@@ -848,8 +850,6 @@ zh-TW:
       select_branch: "選擇分支"
     field_value_enter_prompt: "輸入'%{field}'的值"
     project_menu_details: "詳細資料"
-    scheduling:
-      manual: "手動排程"
     sort:
       sorted_asc: "已套用升冪排序， "
       sorted_dsc: "已套用降冪排序， "
@@ -863,7 +863,7 @@ zh-TW:
     tl_toolbar:
       zooms: "縮放等級"
       outlines: "層次結構級別"
-    upsale:
+    upsell:
       ee_only: "企業版"
     wiki_formatting:
       strong: "粗體"
@@ -897,15 +897,6 @@ zh-TW:
       comment_send_failed: "發生錯誤。無法留言。"
       comment_updated: "留言已成功更新。"
       confirm_edit_cancel: "是否確定取消編輯中的工作項目"
-      datepicker_modal:
-        automatically_scheduled_parent: "自動安排。日期來源於關係。"
-        manually_scheduled: "手動排程，忽略所有關聯。"
-        start_date_limited_by_relations: "因關聯工作項目原因，可選的起迄日期將被限制。"
-        changing_dates_affects_follow_relations: "更改這些日期將影響「關聯」的工作項目日期"
-        click_on_show_relations_to_open_gantt: '點選"%{button_name}" 依甘特圖查看'
-        show_relations: "顯示關聯"
-        ignore_non_working_days:
-          title: "工作日"
       description_filter: "篩選條件"
       description_enter_text: "輸入文字"
       description_options_hide: "隱藏選項"
@@ -974,7 +965,7 @@ zh-TW:
         percentComplete: "完成度(%)"
         percentCompleteAlternative: "進度"
         dueDate: "完成日期"
-        duration: "天數"
+        duration: "時長"
         spentTime: "耗時"
         category: "類別"
         percentageDone: "完成百分比"
@@ -1039,14 +1030,18 @@ zh-TW:
           not_found: "無此查詢"
           duplicate_query_title: "此版面的名稱已存在。確定改變？"
         text_no_results: "找不到符合的版面。"
+      reminders:
+        button_label: "設定提醒"
+        title:
+          new: "設定提醒"
+          edit: "編輯提醒"
+        subtitle: "您會在選擇的時間收到此工作項目的通知。"
       scheduling:
         is_parent: "此工作包的日期會自動從其子項推導出。可啟用“手動計劃”來設置日期。"
         is_switched_from_manual_to_automatic: "由於與其他工作包的關係，在從手動計劃切換為自動計劃後，此工作包的日期可能需要重新計算。"
       sharing:
         title: "參與工作項目"
         show_all_users: "顯示與之共同參與工作項目的所有用戶"
-        upsale:
-          description: "與不是專案成員的使用者共同參與工作項目。"
       table:
         configure_button: "設定工作項目"
         summary: "由工作項目和工作項目屬性列組成的表格。"
@@ -1081,10 +1076,6 @@ zh-TW:
           manually: "手動"
           warning: "啟動自動排序模式時，將清除先前的設定。"
         columns_help_text: "使用上面的輸入字段向表視圖中添加列。您可以拖放列來將它們重新排序。"
-        upsale:
-          attribute_highlighting: "需要強調某些工作項目嗎？"
-          relation_columns: "需要檢視工作項目清單的關係嗎"
-          check_out_link: "請查閱企業版"
         relation_filters:
           filter_work_packages_by_relation_type: "依關聯類型過濾工作項目"
       tabs:
@@ -1209,7 +1200,7 @@ zh-TW:
         invite_to_project: "邀請%{type} 加入 %{project}"
         User: "使用者"
         Group: "群組"
-        PlaceholderUser: "虛擬群組"
+        PlaceholderUser: "占位使用者"
         invite_principal_to_project: "邀請 %{principal} 加入 %{project}"
       project:
         label: "專案"
@@ -1228,8 +1219,8 @@ zh-TW:
           title: "群組"
           description: "基於所選專案中所分配角色的權限"
         placeholder:
-          title: "虛擬群組"
-          title_no_ee: "虛擬暫用群組（Enterprise edition 附加功能）"
+          title: "占位使用者"
+          title_no_ee: "佔位使用者（僅限企業版附加元件）"
           description: "無法訪問該專案並且未發送電子郵件。"
           description_no_ee: '由於沒有存取專案權限，所以不會發送電子郵件。<br>請查看<a href="%{eeHref}" target="_blank">企業版</a>。'
       principal:
@@ -1245,7 +1236,7 @@ zh-TW:
         next_button: "下一個"
         required:
           user: "請選擇一個使用者"
-          placeholder: "請選擇一個「虛擬群組」"
+          placeholder: "請選擇占位使用者"
           group: "請選擇一個群組"
       role:
         label: "%{project} 中的角色"
@@ -1295,9 +1286,7 @@ zh-TW:
       clear: "清除"
       apply: "套用"
       header_description: "從設定的差異點開始，將標示出修改過地方"
-      enterprise_header_description: "從設定的差異點開始，將標示出修改過地方(企業版功能)"
       show_changes_since: "差異起始"
-      baseline_comparison: "比較差異"
       help_description: "差異線參考時區。"
       time_description: "當地時間： %{datetime}"
       time: "時間"
@@ -1339,5 +1328,3 @@ zh-TW:
       waiting_subtitle:
         network_off: "網路有問題。"
         network_on: "網絡已恢復。我們正在努力。"
-        timeout: >
-          OpenProject 無法讓您在預期時間內訪問專案文件夾。請再試一次。<br><br> 如果問題仍然存在，請聯繫 OpenProject 管理員檢查<a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">文件存儲設置的健康狀態</a>。

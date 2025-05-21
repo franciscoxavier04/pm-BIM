@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -113,7 +115,7 @@ RSpec.describe API::V3::Queries::QueryRepresenter, "parsing" do
 
     it "sets ordered_work_packages" do
       expect(subject.ordered_work_packages)
-        .to eq({ "50" => 0, "38" => 1234, "102" => 81234123 })
+        .to eq({ 50 => 0, 38 => 1234, 102 => 81234123 })
     end
   end
 

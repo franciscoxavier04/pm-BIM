@@ -21,7 +21,7 @@
 #++
 tr:
   js:
-    label_meetings: 'Toplantılar'
+    label_meetings: 'Toplantı'
     work_packages:
       tabs:
-        meetings: 'Meetings'
+        meetings: 'Toplantılar'

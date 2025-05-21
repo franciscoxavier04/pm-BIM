@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require "support/edit_fields/edit_field"
 require "features/work_packages/work_packages_page"
 require "features/page_objects/notification"
 
-RSpec.describe "new work package", :js, :with_cuprite do
+RSpec.describe "new work package", :js do
   shared_let(:status) { create(:status, is_default: true) }
   shared_let(:priority) { create(:priority, is_default: true) }
   shared_let(:type_task) { create(:type_task) }
@@ -358,6 +360,8 @@ RSpec.describe "new work package", :js, :with_cuprite do
       date_field = wp_page.edit_field(:combinedDate)
       date_field.click_to_open_datepicker
 
+      date_field.enable_start_date
+
       # Select date
       start = (Time.zone.today - 1.day).iso8601
       date_field.set_start_date start
@@ -508,25 +512,6 @@ RSpec.describe "new work package", :js, :with_cuprite do
       expect(split_create_page).not_to have_alert_dialog
       subject_field = wp_page_create.edit_field(:subject)
       subject_field.expect_value "My subtask"
-    end
-
-    it "from the relations tab" do
-      wp_page.visit_tab!("relations")
-
-      click_button("Create new child")
-
-      subject = EditField.new wp_page, :subject
-      subject.set_value "Child"
-      subject.submit_by_enter
-
-      wp_page.expect_and_dismiss_toaster(message: I18n.t("js.notice_successful_create"))
-
-      # Move to the newly created child
-      wp_page.find("wp-children-query tbody.results-tbody tr").double_click
-
-      wp_page.expect_attributes(combinedDate: "#{parent.start_date.strftime('%m/%d/%Y')} - #{parent.due_date.strftime('%m/%d/%Y')}")
-
-      expect(wp_page).to have_test_selector("op-wp-breadcrumb", text: "Parent:\n#{parent.subject}")
     end
   end
 end

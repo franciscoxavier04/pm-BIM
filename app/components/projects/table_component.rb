@@ -195,6 +195,14 @@ module Projects
       @favored_project_ids ||= Favorite.where(user: current_user, favored_type: "Project").pluck(:favored_id)
     end
 
+    def project_phase_by_definition(definition, project)
+      @project_phases_by_definition ||= Project::Phase
+                                                    .visible
+                                                    .index_by { |s| [s.definition_id, s.project_id] }
+
+      @project_phases_by_definition[[definition.id, project.id]]
+    end
+
     def sorted_by_lft?
       query.orders.first&.attribute == :lft
     end

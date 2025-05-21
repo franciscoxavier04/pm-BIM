@@ -32,7 +32,7 @@ require_relative "support/board_page"
 
 RSpec.describe "Work Package boards spec",
                :js,
-               :with_cuprite,
+               :selenium,
                with_ee: %i[board_view] do
   let(:user) do
     create(:user,
@@ -129,6 +129,7 @@ RSpec.describe "Work Package boards spec",
 
     # Add a new WP on the board
     board_page = board_index.open_board board_view
+
     board_page.expect_query "List 1", editable: true
     board_page.add_card "List 1", "Task 1"
     board_page.expect_toast message: I18n.t(:notice_successful_create)
@@ -138,9 +139,9 @@ RSpec.describe "Work Package boards spec",
     # Open the details page with the info icon
     card = board_page.card_for(wp)
     split_view = card.open_details_view
-    split_view.ensure_page_loaded
     split_view.expect_subject
-    split_view.switch_to_tab tab: "Relations"
+    split_view.switch_to_tab tab: :relations
+    expect(page).to have_current_path /details\/#{wp.id}\/relations/
 
     # Go to full view of WP
     full_view = split_view.switch_to_fullscreen
@@ -159,6 +160,7 @@ RSpec.describe "Work Package boards spec",
 
     # Add a new WP on the board
     board_page = board_index.open_board board_view
+
     board_page.expect_query "List 1", editable: true
     board_page.add_card "List 1", "Task 1"
     board_page.expect_toast message: I18n.t(:notice_successful_create)
@@ -168,7 +170,6 @@ RSpec.describe "Work Package boards spec",
     # Open the details page with the info icon
     card = board_page.card_for(wp)
     split_view = card.open_details_view
-    split_view.ensure_page_loaded
     split_view.expect_subject
 
     page.driver.refresh
@@ -182,6 +183,9 @@ RSpec.describe "Work Package boards spec",
 
     # Add a new WP on the board
     board_page = board_index.open_board board_view
+
+    wait_for_network_idle
+
     board_page.expect_query "List 1", editable: true
     board_page.add_card "List 1", "Task 1"
     board_page.expect_toast message: I18n.t(:notice_successful_create)
@@ -202,7 +206,10 @@ RSpec.describe "Work Package boards spec",
     destroy_modal.expect_listed(wp)
     destroy_modal.confirm_deletion
 
-    board_page.expect_empty
+    wait_for_network_idle
+
+    board_page.expect_query "List 1", editable: true
+    board_page.expect_not_any_card
     board_page.expect_path
   end
 end

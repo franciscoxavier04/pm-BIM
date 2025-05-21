@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require "features/page_objects/notification"
 require "support/components/autocompleter/ng_select_autocomplete_helpers"
 
-RSpec.describe "Copy work packages through Rails view", :js, :with_cuprite do
+RSpec.describe "Copy work packages through Rails view", :js do
   include Components::Autocompleter::NgSelectAutocompleteHelpers
 
   shared_let(:type) { create(:type, name: "Bug") }
@@ -247,8 +249,8 @@ RSpec.describe "Copy work packages through Rails view", :js, :with_cuprite do
       let(:current_user) { dev }
 
       it "does not allow to copy" do
-        context_menu.open_for work_package
-        context_menu.expect_no_options "Bulk copy"
+        context_menu.open_for work_package, check_if_open: false
+        context_menu.expect_closed
       end
     end
   end

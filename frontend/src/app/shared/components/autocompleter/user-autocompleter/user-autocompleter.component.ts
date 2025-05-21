@@ -87,7 +87,12 @@ export interface IUserAutocompleteItem {
 export class UserAutocompleterComponent extends OpAutocompleterComponent<IUserAutocompleteItem> implements OnInit, ControlValueAccessor {
   @Input() public inviteUserToProject:string|undefined;
 
+  @Input() public isOpenedInModal:boolean = false;
+  @Input() public hoverCards:boolean = true;
+
   @Input() public url:string = this.apiV3Service.users.path;
+
+  @Input() public additionalOptions:IUserAutocompleteItem[]|null = null;
 
   @Output() public userInvited = new EventEmitter<HalResource>();
 
@@ -98,7 +103,11 @@ export class UserAutocompleterComponent extends OpAutocompleterComponent<IUserAu
   ngOnInit():void {
     super.ngOnInit();
 
-    this.applyTemplates(UserAutocompleterTemplateComponent, { inviteUserToProject: this.inviteUserToProject });
+    this.applyTemplates(UserAutocompleterTemplateComponent, {
+      inviteUserToProject: this.inviteUserToProject,
+      isOpenedInModal: this.isOpenedInModal,
+      hoverCards: this.hoverCards,
+    });
 
     this
       .opInviteUserModalService
@@ -124,9 +133,15 @@ export class UserAutocompleterComponent extends OpAutocompleterComponent<IUserAu
       .pipe(
         map((res) => _.uniqBy(res._embedded.elements, (el) => el._links.self?.href || el.id)),
         map((users) => {
-          return users.map((user) => {
+          const mapped:IUserAutocompleteItem[] = users.map((user) => {
               return { id: user.id, name: user.name, href: user._links.self?.href, email: user.email };
             });
+
+          if (this.additionalOptions) {
+            return this.additionalOptions.concat(mapped);
+          }
+
+          return mapped;
           }),
       );
   }

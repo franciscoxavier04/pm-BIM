@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "random password generation", :js, :with_cuprite do
+RSpec.describe "random password generation", :js do
   shared_let(:admin) { create(:admin) }
 
   let(:old_password) { "old_Password!123" }
@@ -113,23 +115,22 @@ RSpec.describe "random password generation", :js, :with_cuprite do
     end
 
     it "can configure and enforce password rules" do
-      visit admin_settings_authentication_path
-      expect_angular_frontend_initialized
+      visit admin_settings_authentication_path(tab: :passwords)
 
       # Enforce rules
       # 3 of 'lowercase, uppercase, special'
-      find(".form--check-box[value=uppercase]").set true
-      find(".form--check-box[value=lowercase]").set true
-      find(".form--check-box[value=numeric]").set false
-      find(".form--check-box[value=special]").set true
+      check "Lowercase"
+      check "Uppercase"
+      check "Special"
+      uncheck "Numeric"
 
       # Set min length to 4
-      find_by_id("settings_password_min_length").set 4
+      fill_in "Minimum length", with: 4
 
       # Set min classes to 3
-      find_by_id("settings_password_min_adhered_rules").set 3
+      fill_in "Minimum number of required classes", with: 3
 
-      scroll_to_and_click(find(".button", text: "Save"))
+      click_on "Save"
       expect_flash(message: "Successful update.")
 
       Setting.clear_cache

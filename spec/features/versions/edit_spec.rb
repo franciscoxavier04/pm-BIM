@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -44,9 +46,7 @@ RSpec.describe "version edit" do
     # from the version show page
     visit version_path(version)
 
-    within ".toolbar" do
-      click_link "Edit"
-    end
+    page.find_test_selector("version-edit-button").click
 
     fill_in "Name", with: new_version_name
 

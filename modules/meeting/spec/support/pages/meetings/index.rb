@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,10 +28,9 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require_relative "new"
-
 module Pages::Meetings
   class Index < Pages::Page
+    include Components::Common::Filters
     include Components::Autocompleter::NgSelectAutocompleteHelpers
 
     attr_accessor :project
@@ -40,24 +41,30 @@ module Pages::Meetings
       self.project = project
     end
 
-    def click_create_new
-      click_on("add-meeting-button")
-      click_on("Classic")
-
-      New.new(project)
-    end
-
     def set_title(text)
       fill_in "Title", with: text
     end
 
     def set_start_date(date)
-      fill_in "Date", with: date, fill_options: { clear: :backspace }
+      fill_in "Date", with: date
+    end
+
+    def set_starts_on(date)
+      fill_in "Starts on", with: date
     end
 
     def set_start_time(time)
       input = page.find_by_id("meeting_start_time_hour")
       page.execute_script("arguments[0].value = arguments[1]", input.native, time)
+      page.execute_script("arguments[0].dispatchEvent(new Event('input'))", input.native)
+    end
+
+    def set_end_after(value)
+      select value, from: "Meeting series ends"
+    end
+
+    def set_end_date(date)
+      fill_in "End date", with: date, fill_options: { clear: :backspace }
     end
 
     def set_project(project)
@@ -72,16 +79,7 @@ module Pages::Meetings
 
     def click_create
       click_on "Create meeting"
-
       wait_for_network_idle
-
-      meeting = Meeting.last
-
-      if meeting
-        Pages::Meetings::Show.new(meeting)
-      else
-        self
-      end
     end
 
     def expect_no_main_menu
@@ -99,8 +97,8 @@ module Pages::Meetings
     def expect_create_new_types
       click_on("add-meeting-button")
 
-      expect(page).to have_link("Classic")
-      expect(page).to have_link("Dynamic")
+      expect(page).to have_link("Recurring")
+      expect(page).to have_link("One-time")
     end
 
     def expect_copy_action(meeting)
@@ -117,7 +115,7 @@ module Pages::Meetings
 
     def expect_delete_action(meeting)
       within more_menu(meeting) do
-        expect(page).to have_button("Delete meeting")
+        expect(page).to have_link("Delete meeting")
       end
     end
 
@@ -137,27 +135,64 @@ module Pages::Meetings
       submenu.click_item(filter_name)
     end
 
+    def set_quick_filter(upcoming: true)
+      page.within("#content-body") do
+        if upcoming
+          click_link_or_button "Upcoming"
+        else
+          click_link_or_button "Past"
+        end
+      end
+
+      wait_for_network_idle
+    end
+
     def expect_no_meetings_listed
       within "#content-wrapper" do
         expect(page)
-          .to have_content I18n.t(:no_results_title_text)
+          .to have_content I18n.t("meeting.blankslate.title")
       end
     end
 
     def expect_meetings_listed_in_order(*meetings)
-      within "[data-test-selector='Meetings::TableComponent']" do
+      retry_block do
         listed_meeting_titles = all("li div.title").map(&:text)
-
         expect(listed_meeting_titles).to eq(meetings.map(&:title))
       end
     end
 
-    def expect_meetings_listed(*meetings)
+    def expect_meetings_listed_in_table(*meetings)
       within "[data-test-selector='Meetings::TableComponent']" do
         meetings.each do |meeting|
-          expect(page).to have_css("div.title",
-                                   text: meeting.title)
+          expect(page).to have_css("div.title", text: meeting.title)
         end
+      end
+    end
+
+    def expect_meeting_listed_in_group(meeting, key: meeting_group_key(meeting))
+      within "[data-test-selector='meetings-table-#{key}']" do
+        expect(page).to have_css("div.title", text: meeting.title)
+      end
+    end
+
+    def meeting_group_key(meeting)
+      start_date = meeting.start_time.to_date
+      next_week = Time.current.next_occurring(OpenProject::Internationalization::Date.beginning_of_week).beginning_of_day
+
+      if start_date == Time.zone.today
+        :today
+      elsif start_date == Time.zone.tomorrow
+        :tomorrow
+      elsif start_date < next_week
+        :this_week
+      else
+        :later
+      end
+    end
+
+    def expect_meetings_listed(*meetings)
+      meetings.each do |meeting|
+        expect(page).to have_css("div.title", text: meeting.title)
       end
     end
 

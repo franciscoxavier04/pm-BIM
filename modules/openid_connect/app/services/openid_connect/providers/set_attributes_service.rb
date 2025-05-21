@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -44,7 +46,17 @@ module OpenIDConnect
 
         super
 
+        update_grant_types_supported if params.key?(:grant_types_supported)
         update_available_state
+      end
+
+      # This is a workaround for a non-ideal UI
+      # We only offer users to edit the supported grant types in a text input field,
+      # though they are indeed editing a list of grants.
+      def update_grant_types_supported
+        return unless params[:grant_types_supported].is_a? String
+
+        model.grant_types_supported = params[:grant_types_supported].split
       end
 
       def update_available_state

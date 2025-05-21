@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require "support/pages/work_packages/abstract_work_package"
 
-RSpec.describe "multi select custom values", :js, :with_cuprite do
+RSpec.describe "multi select custom values", :js do
   shared_let(:admin) { create(:admin) }
   let(:current_user) { admin }
   let(:wp_page) { Pages::FullWorkPackage.new work_package }

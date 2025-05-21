@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -34,6 +36,7 @@ RSpec.describe Queries::Projects::Filters::UserActionFilter do
     let(:type) { :list_all }
     let(:model) { Project }
     let(:attribute) { :user_action }
+    let(:name) { "User action" }
     let(:values) { ["projects/view"] }
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -41,6 +43,7 @@ class Query < ApplicationRecord
   has_many :ical_tokens,
            through: :ical_token_query_assignments,
            class_name: "Token::ICal"
+  has_many :export_settings, dependent: :destroy
   # no `dependent: :destroy` as the ical_tokens are destroyed in the following before_destroy callback
   # dependent: :destroy is not possible as this would only delete the ical_token_query_assignments
   before_destroy :destroy_ical_tokens
@@ -115,7 +118,7 @@ class Query < ApplicationRecord
   end
 
   def validate_columns
-    available_names = displayable_columns.map(&:name).map(&:to_sym)
+    available_names = displayable_columns.map { |c| c.name.to_sym }
 
     (column_names - available_names).each do |name|
       errors.add :column_names,
@@ -135,7 +138,7 @@ class Query < ApplicationRecord
   end
 
   def validate_group_by
-    unless group_by.blank? || groupable_columns.map(&:name).map(&:to_s).include?(group_by.to_s)
+    unless group_by.blank? || groupable_columns.map { |c| c.name.to_s }.include?(group_by.to_s)
       errors.add :group_by, :invalid, value: group_by
     end
   end
@@ -215,11 +218,11 @@ class Query < ApplicationRecord
 
   def available_columns
     if @available_columns &&
-       (@available_columns_project == (project&.cache_key || 0))
+       (@available_columns_project == (project&.cache_key_with_version || 0))
       return @available_columns
     end
 
-    @available_columns_project = project&.cache_key || 0
+    @available_columns_project = project&.cache_key_with_version || 0
     @available_columns = ::Query.available_columns(project)
   end
 
@@ -333,10 +336,11 @@ class Query < ApplicationRecord
 
   def sort_criteria_columns
     sort_criteria
-      .map do |attribute, direction|
+      .filter_map do |attribute, direction|
         attribute = attribute.to_sym
+        col = sort_criteria_column(attribute)
 
-        [sort_criteria_column(attribute), direction]
+        [col, direction] if col
       end
   end
 
@@ -419,6 +423,10 @@ class Query < ApplicationRecord
                                    "!*"
                                  end
     subproject_filter
+  end
+
+  def export_settings_for(format)
+    export_settings.where(format:).first_or_initialize
   end
 
   private

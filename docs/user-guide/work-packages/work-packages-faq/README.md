@@ -69,7 +69,7 @@ You need to activate the module "Time and costs" in the project settings, first.
 
 One possible solution: If you receive this error message when trying to create a new work package: Please navigate to *Administration ->Work packages ->Status ->[status of the work package you were trying to change, e.g. "New"]* and un-check the box next to "Work package read-only". If this box was checked it could have caused these problems, as project attributes couldn't be changed.
 
-### How can I change the order of the activities/comments in the activity tab of a work package?
+### How can I change the order of the activities/comments in the Activity tab of a work package?
 
 You can change this in your account settings. Please find out more [here](../../../user-guide/account-settings/#change-the-order-to-display-comments).
 
@@ -131,7 +131,7 @@ Please navigate to *Administration ->Work packages ->Types*. The type that is at
 
 ### I added new work package types. Why can i not see them?
 
-Please make sure you [activated](../../projects/project-settings/work-package-types/) them in the project settings first. If you still can't see them (e.g. in the boards module) please upgrade OpenProject to the newest release.
+Please make sure you [activated](../../projects/project-settings/work-packages/#work-package-types) them in the project settings first. If you still can't see them (e.g. in the boards module) please upgrade OpenProject to the newest release.
 
 ### When I change the work package type of an existing work package, all attributes that are not part of the new work package type will be removed. What will happen to their values? Will the values be displayed again when I switch back to the original type?
 
@@ -195,7 +195,7 @@ In the details view of the work package: Click on **More** (button with three do
 
 ### Can I group tasks into folders?
 
-There are no folders for work packages. To group work packages, such as tasks, you can use the [filter and grouping options](../work-package-table-configuration/#work-package-table-configuration) and [save the filters](../work-package-table-configuration/#save-work-package-views). You can also define all related work packages as children of the same parent work package (e.g. a phase). You can indent the hierarchy for work packages in the work package tables (with a right mouse click -> *Indent hierarchy*) to add them as children to another work package, for example a phase. This will then also be displayed in the Gantt chart. Alternatively, you can use the [work package categories](../../projects/project-settings/work-package-categories/#manage-work-package-categories) or a custom field to filter and group work packages. Also, you can create multiple projects to group different topics.
+There are no folders for work packages. To group work packages, such as tasks, you can use the [filter and grouping options](../work-package-table-configuration/#work-package-table-configuration) and [save the filters](../work-package-table-configuration/#save-work-package-views). You can also define all related work packages as children of the same parent work package (e.g. a phase). You can indent the hierarchy for work packages in the work package tables (with a right mouse click -> *Indent hierarchy*) to add them as children to another work package, for example a phase. This will then also be displayed in the Gantt chart. Alternatively, you can use the [work package categories](../../projects/project-settings/work-packages/#work-package-categories) or a custom field to filter and group work packages. Also, you can create multiple projects to group different topics.
 
 ## Custom fields
 

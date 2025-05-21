@@ -35,4 +35,10 @@ class CustomField::Hierarchy::Item < ApplicationRecord
   has_closure_tree order: "sort_order", numeric_order: true, dont_order_roots: true, dependent: :destroy
 
   scope :including_children, -> { includes(children: :children) }
+
+  def to_s = short.nil? ? label : "#{label} (#{short})"
+
+  def ancestry_path
+    self_and_ancestors.filter_map(&:to_s).reverse.join(" / ")
+  end
 end

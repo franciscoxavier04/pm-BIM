@@ -31,13 +31,18 @@
 class ApplicationForm < Primer::Forms::Base
   def self.settings_form
     form do |f|
-      f = SettingsFormDecorator.new(f)
+      f = Settings::FormDecorator.new(f)
       yield f
     end
   end
 
   def url_helpers
     Rails.application.routes.url_helpers
+  end
+
+  # @return [ActionView::Base] the view helper instance
+  def helpers
+    @view_context.helpers
   end
 
   # @return [ActiveRecord::Base] the model instance given to the form builder

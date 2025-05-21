@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -45,5 +47,19 @@ RSpec::Matchers.define :equal_time_without_usec do |expected|
   match do |actual|
     actual_without_usec = actual.change(usec: 0)
     expected_without_usec == actual_without_usec
+  end
+end
+
+RSpec.shared_context "with default browser timezone" do
+  let(:_comment) do
+    "This context does not try to override the browser timezone. " \
+      "It will be the same as the system (positive offset for European devs, UTC for CI, etc.)."
+  end
+end
+
+RSpec.shared_context "with a negative browser timezone (New York)", driver: :chrome_new_york_time_zone do
+  let(:_comment) do
+    "This context overrides browser timezone to be America/New_York. " \
+      "Timezone offset is -4/-5 hours (EDT/EST)."
   end
 end

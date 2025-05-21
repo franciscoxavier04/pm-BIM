@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -74,7 +76,7 @@ FactoryBot.define do
     end
 
     callback(:after_build) do |work_package, evaluator|
-      work_package.type = work_package.project.types.first unless work_package.type
+      work_package.type ||= TestProf::FactoryBot.get_factory_default(:type) || work_package.project.types.first
 
       custom_values = evaluator.custom_values || {}
 

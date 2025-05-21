@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -31,6 +33,7 @@ require "spec_helper"
 RSpec.describe Queries::WorkPackages::Filter::BlockedFilter do
   it_behaves_like "filter by work package id" do
     let(:class_key) { :blocked }
+    let(:human_name) { "blocked by" }
 
     it_behaves_like "filter for relation" do
       let(:relation_type) { :blocked }

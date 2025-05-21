@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -37,7 +39,7 @@ module Pages::Messages
     end
 
     def expect_subject(subject)
-      expect(page).to have_css(".title-container", text: subject)
+      expect(page).to have_css(".PageHeader-title", text: subject)
     end
 
     def expect_content(content)
@@ -68,9 +70,7 @@ module Pages::Messages
           click_on "Quote"
         end
       else
-        within ".toolbar-items" do
-          click_on "Quote"
-        end
+        page.find_test_selector("message-quote-button").click
       end
 
       sleep 1

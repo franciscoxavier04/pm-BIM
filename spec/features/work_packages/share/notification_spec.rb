@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -30,7 +32,6 @@ require "spec_helper"
 
 RSpec.describe "Notifications sent on shared work packages",
                :js,
-               :with_cuprite,
                with_ee: %i[work_package_sharing] do
   # Notice that the setup in this file here is not following the normal rules as
   # it also tests notification creation.

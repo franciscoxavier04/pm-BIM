@@ -114,7 +114,7 @@ The default value is also visible for each variable in parenthesis. The followin
 ```shell
 OPENPROJECT_ACTIVITY__DAYS__DEFAULT (default=30) Days displayed on project activity
 OPENPROJECT_AFTER__FIRST__LOGIN__REDIRECT__URL (default=nil) URL users logging in for the first time will be redirected to (e.g., a help screen)
-OPENPROJECT_AFTER__LOGIN__DEFAULT__REDIRECT__URL (default=nil) Override URL to which logged in users are redirected instead of the My page
+OPENPROJECT_AFTER__LOGIN__DEFAULT__REDIRECT__URL (default=nil) Override URL to which logged in users are redirected instead of the home page, if no other redirect URL is set
 OPENPROJECT_APIV3__CORS__ENABLED (default=false) Enable CORS headers for APIv3 server responses
 OPENPROJECT_APIV3__CORS__ORIGINS (default=[]) API V3 Cross-Origin Resource Sharing (CORS) allowed origins
 OPENPROJECT_APIV3__DOCS__ENABLED (default=true) Enable interactive APIv3 documentation as part of the application
@@ -186,6 +186,7 @@ OPENPROJECT_DROP__OLD__SESSIONS__ON__LOGIN (default=false) Destroy all sessions 
 OPENPROJECT_DROP__OLD__SESSIONS__ON__LOGOUT (default=true) Destroy all sessions for current_user on logout
 OPENPROJECT_EDITION (default="standard") OpenProject edition mode
 OPENPROJECT_EE__MANAGER__VISIBLE (default=true) Show or hide the Enterprise configuration page and enterprise banners
+OPENPROJECT_EE__HIDE__BANNERS (default=false) Hide the Enterprise enterprise banners
 OPENPROJECT_EMAIL__DELIVERY__CONFIGURATION (default="inapp")
 OPENPROJECT_EMAIL__DELIVERY__METHOD (default=nil) Email delivery method
 OPENPROJECT_EMAIL__LOGIN (default=false) Use email as login
@@ -195,7 +196,7 @@ OPENPROJECT_ENABLE__INTERNAL__ASSETS__SERVER (default=false) Serve assets throug
 OPENPROJECT_ENABLED__PROJECTS__COLUMNS (default=["project_status", "public", "created_at", "latest_activity_at", "required_disk_space"]) Visible in project list
 OPENPROJECT_ENABLED__SCM (default=["subversion", "git"]) Enabled SCM
 OPENPROJECT_ENTERPRISE__CHARGEBEE__SITE (default="openproject-enterprise") Site name for EE trial service
-OPENPROJECT_ENTERPRISE__PLAN (default="enterprise-on-premises---euro---1-year") Default EE selected plan
+OPENPROJECT_ENTERPRISE__PLAN (default="enterprise-on-premises---basic---euro---1-year") Default EE selected plan
 OPENPROJECT_ENTERPRISE__TRIAL__CREATION__HOST (default="https://augur.openproject.com") Host for EE trial service
 OPENPROJECT_FEATURE__MANAGED__PROJECT__FOLDERS__ACTIVE (default=true)
 OPENPROJECT_FEATURE__MORE__GLOBAL__INDEX__PAGES__ACTIVE (default=true)
@@ -274,6 +275,7 @@ OPENPROJECT_PLUGIN__OPENPROJECT__STORAGES (default=nil)
 OPENPROJECT_PLUGIN__OPENPROJECT__TEAM__PLANNER (default=nil)
 OPENPROJECT_PLUGIN__OPENPROJECT__TWO__FACTOR__AUTHENTICATION (default={"active_strategies"=>[], "enforced"=>false, "allow_remember_for_days"=>0})
 OPENPROJECT_PROJECT__GANTT__QUERY (default=nil) Project portfolio Gantt view
+OPENPROJECT_PROMETHEUS_EXPORT (default: nil) Enable Prometheus export endpoint
 OPENPROJECT_RAILS__ASSET__HOST (default=nil) Custom asset hostname for serving assets (e.g., Cloudfront)
 OPENPROJECT_RAILS__CACHE__STORE (default=:file_store) Set cache store implemenation to use with OpenProject
 OPENPROJECT_RAILS__RELATIVE__URL__ROOT (default="") Set a URL prefix / base path to run OpenProject under, e.g., host.tld/openproject

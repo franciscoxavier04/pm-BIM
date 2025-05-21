@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Projects status administration", :js, :with_cuprite do
+RSpec.describe "Projects status administration", :js do
   include_context "ng-select-autocomplete helpers"
 
   let(:current_user) do
@@ -75,15 +77,12 @@ RSpec.describe "Projects status administration", :js, :with_cuprite do
     # Check that the status has been set correctly
     visit project_settings_general_path(project_id: "new-project")
 
-    status_field.expect_selected "ON TRACK"
     status_description.expect_value "Everything is fine at the start"
 
-    status_field.select_option "Off track"
     status_description.set_markdown "Oh no"
 
-    click_button "Save"
+    click_button "Update status description"
 
-    status_field.expect_selected "OFF TRACK"
     status_description.expect_value "Oh no"
   end
 end

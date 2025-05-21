@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -318,8 +320,7 @@ RSpec.describe "Edit project custom fields on project overview page", :js do
               overview_page.open_edit_dialog_for_section(section)
 
               field.search("Version 1")
-
-              field.expect_option(first_version.name)
+              field.expect_option(first_version.name, grouping: project.name)
               field.expect_no_option(version_in_other_project.name)
             end
           end
@@ -549,7 +550,7 @@ RSpec.describe "Edit project custom fields on project overview page", :js do
 
               field.search("Version 1")
 
-              field.expect_option(first_version.name)
+              field.expect_option(first_version.name, grouping: project.name)
               field.expect_no_option(version_in_other_project.name)
             end
           end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,7 +31,7 @@
 require "spec_helper"
 require_relative "../principals/shared_memberships_examples"
 
-RSpec.describe "user memberships through user page", :js, :with_cuprite do
+RSpec.describe "user memberships through user page", :js, :selenium do
   include_context "principal membership management context"
 
   shared_let(:principal) { create(:user, firstname: "Foobar", lastname: "Blabla") }

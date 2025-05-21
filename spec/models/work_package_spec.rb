@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -70,6 +72,7 @@ RSpec.describe WorkPackage do
     it { is_expected.to belong_to(:assigned_to).class_name("Principal").optional }
     it { is_expected.to belong_to(:responsible).class_name("Principal").optional }
     it { is_expected.to belong_to(:version).optional }
+    it { is_expected.to belong_to(:project_phase_definition).class_name("Project::PhaseDefinition").optional }
     it { is_expected.to belong_to(:priority).class_name("IssuePriority") }
     it { is_expected.to belong_to(:category).optional }
     it { is_expected.to have_many(:time_entries).dependent(:delete_all) }

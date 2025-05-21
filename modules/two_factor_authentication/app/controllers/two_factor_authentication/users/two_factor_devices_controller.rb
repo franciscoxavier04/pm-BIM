@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ::TwoFactorAuthentication
   module Users
     class TwoFactorDevicesController < ::TwoFactorAuthentication::BaseController
@@ -61,7 +63,7 @@ module ::TwoFactorAuthentication
       end
 
       ##
-      # Destroy the given device if its not the default
+      # Destroy the given device if it's not the default
       def destroy
         if @device.default && strategy_manager.enforced?
           render_400 message: t("two_factor_authentication.devices.is_default_cannot_delete")
@@ -105,8 +107,6 @@ module ::TwoFactorAuthentication
 
       def find_user
         @user = User.find(params[:id])
-      rescue ActiveRecord::RecordNotFound
-        render_404
       end
 
       def target_user

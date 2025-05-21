@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Cancel editing work package", :js do
+RSpec.describe "Cancel editing work package", :js, :selenium do
   let(:user) { create(:admin) }
   let(:project) { create(:project) }
   let(:work_package) { create(:work_package, project:) }

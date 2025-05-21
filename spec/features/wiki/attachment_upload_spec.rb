@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,7 +31,7 @@
 require "spec_helper"
 require "features/page_objects/notification"
 
-RSpec.describe "Upload attachment to wiki page", :js do
+RSpec.describe "Upload attachment to wiki page", :js, :selenium do
   let(:user) do
     create(:user,
            member_with_permissions: { project => %i[view_wiki_pages edit_wiki_pages] })
@@ -61,9 +63,7 @@ RSpec.describe "Upload attachment to wiki page", :js do
     expect(page).to have_content("Image uploaded the first time")
     attachments_list.expect_attached("image.png")
 
-    within ".toolbar-items" do
-      click_on "Edit"
-    end
+    page.find_test_selector("wiki-edit-action-button").click
 
     # Replace the image with a named attachment URL (Regression #28381)
     editor.wait_until_loaded
@@ -118,10 +118,7 @@ RSpec.describe "Upload attachment to wiki page", :js do
 
     # required sleep otherwise clicking on the Edit button doesn't do anything
     SeleniumHubWaiter.wait
-
-    within ".toolbar-items" do
-      click_on "Edit"
-    end
+    page.find_test_selector("wiki-edit-action-button").click
 
     # adding an image
     editor.attachments_list.drag_enter

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SharedTwoFactorExamples
   def first_login_step
     visit signin_path
@@ -24,8 +26,8 @@ module SharedTwoFactorExamples
   end
 
   def expect_logged_in
-    visit my_account_path
     wait_for_network_idle
+    visit my_account_path
     expect(page).to have_css(".form--field-container", text: user.login)
   end
 
@@ -84,7 +86,7 @@ RSpec.shared_examples "create enforced sms device" do
     expect_flash(type: :error, message: I18n.t("two_factor_authentication.devices.registration_failed_token_invalid"))
 
     SeleniumHubWaiter.wait
-    # Fill in wrong token
+    # Fill in correct token
     fill_in "otp", with: sms_token
     click_button I18n.t(:button_continue)
 

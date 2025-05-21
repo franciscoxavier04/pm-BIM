@@ -34,18 +34,7 @@ module Costs
 
     include OpenProject::Plugins::ActsAsOpEngine
 
-    register "costs",
-             author_url: "https://www.openproject.org",
-             bundled: true,
-             settings: {
-               default: { "costs_currency" => "EUR", "costs_currency_format" => "%n %u" },
-               partial: "settings/costs",
-               page_title_key: :label_setting_plural,
-               breadcrumb_elements: -> {
-                 [{ href: admin_settings_show_plugin_path(:costs), text: I18n.t(:project_module_costs) }]
-               },
-               menu_item: :costs_setting
-             } do
+    register "costs", author_url: "https://www.openproject.org", bundled: true, settings: { menu_item: :costs_settings } do
       project_module :costs do
         permission :view_time_entries,
                    {},
@@ -125,11 +114,47 @@ module Costs
 
       # Menu extensions
       menu :admin_menu,
+           :admin_costs,
+           { controller: "/admin/costs_settings", action: :show },
+           if: Proc.new { User.current.admin? },
+           caption: :project_module_costs,
+           after: :enterprise,
+           icon: "op-cost-reports"
+
+      menu :admin_menu,
+           :costs_settings,
+           { controller: "/admin/costs_settings", action: :show },
+           if: Proc.new { User.current.admin? },
+           caption: :label_defaults,
+           parent: :admin_costs
+
+      menu :admin_menu,
            :cost_types,
-           { controller: "/cost_types", action: "index" },
+           { controller: "/admin/cost_types", action: :index },
            if: ->(*) { User.current.admin? },
            parent: :admin_costs,
            caption: :label_cost_type_plural
+
+      menu :admin_menu,
+           :time_entry_activities,
+           { controller: "/admin/settings/time_entry_activities", action: :index },
+           if: ->(*) { User.current.admin? },
+           parent: :admin_costs,
+           caption: :enumeration_activities
+
+      menu :global_menu,
+           :my_time_tracking,
+           { controller: "/my/time_tracking", action: "index" },
+           after: :my_page,
+           caption: :label_my_time_tracking,
+           icon: :stopwatch
+    end
+
+    initializer "costs.settings" do
+      ::Settings::Definition.add "costs_currency", default: "EUR", format: :string
+      ::Settings::Definition.add "costs_currency_format", default: "%n %u", format: :string
+      ::Settings::Definition.add "allow_tracking_start_and_end_times", default: false, format: :boolean
+      ::Settings::Definition.add "enforce_tracking_start_and_end_times", default: false, format: :boolean
     end
 
     activity_provider :time_entries, class_name: "Activities::TimeEntryActivityProvider", default: false

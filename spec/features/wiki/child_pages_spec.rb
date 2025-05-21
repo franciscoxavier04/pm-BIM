@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "wiki child pages", :js do
+RSpec.describe "wiki child pages", :js, :selenium do
   let(:project) do
     create(:project)
   end
@@ -62,8 +64,9 @@ RSpec.describe "wiki child pages", :js do
     click_button "Save"
 
     # hierarchy displayed in the breadcrumb
-    expect(page).to have_css("#breadcrumb #{test_selector('op-breadcrumb')}",
-                             text: parent_page.title.to_s)
+    within('[data-test-selector="wiki-page-header-breadcrumbs"]') do
+      expect(page).to have_text(parent_page.title.to_s)
+    end
 
     # hierarchy displayed in the sidebar
     expect(page).to have_css(".pages-hierarchy",

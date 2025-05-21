@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,6 +29,7 @@
 #++
 
 require "spec_helper"
+require_relative "shared_upsell_examples"
 
 RSpec.describe CustomStylesController do
   before do
@@ -50,20 +53,13 @@ RSpec.describe CustomStylesController do
           allow(EnterpriseToken).to receive(:current).and_return(nil)
         end
 
-        it "redirects to #upsale" do
-          expect(subject).to redirect_to action: :upsale
+        it "redirects to #upsell" do
+          expect(subject).to redirect_to action: :upsell
         end
       end
     end
 
-    describe "#upsale" do
-      subject { get :upsale }
-
-      it "renders upsale" do
-        expect(subject).to be_successful
-        expect(subject).to render_template "upsale"
-      end
-    end
+    it_behaves_like "it has an upsell action"
 
     describe "#create", with_ee: %i[define_custom_style] do
       let(:custom_style) { CustomStyle.new }

@@ -41,7 +41,7 @@ module Meetings
       if current_item.present?
         current_item.title
       else
-        I18n.t(:label_meeting_plural)
+        I18n.t(:label_my_meetings)
       end
     end
 
@@ -62,7 +62,7 @@ module Meetings
 
     def current_breadcrumb_element
       if section_present?
-        I18n.t("menus.breadcrumb.nested_element", section_header: current_section.header, title: page_title).html_safe
+        helpers.nested_breadcrumb_element(current_section.header, page_title)
       else
         page_title
       end
@@ -84,7 +84,7 @@ module Meetings
       return @current_item if defined?(@current_item)
 
       @current_item = Meetings::Menu
-                        .new(project: @project, params:)
+                        .new(project: @project, params: params.merge(current_href: request.path))
                         .selected_menu_item
     end
   end

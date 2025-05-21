@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,14 +30,15 @@
 
 require "spec_helper"
 
-RSpec.describe "My account autologin tokens management", :js, :with_cuprite do
+RSpec.describe "My account autologin tokens management", :js do
   include Redmine::I18n
   shared_let(:user) { create(:user) }
-  shared_let(:old_token) { create(:autologin_token, user:, created_at: 1.year.ago) }
+  shared_let(:old_token) { create(:autologin_token, user:, created_at: 1.year.ago, expires_on: 1.year.ago + 1.day) }
   shared_let(:new_token) do
     create(:autologin_token,
            user:,
-           data: { browser: "Mozilla Firefox", browser_version: "12.3", platform: "Linux" })
+           data: { browser: "Mozilla Firefox", browser_version: "12.3", platform: "Linux" },
+           expires_on: 1.day.from_now)
   end
 
   before do

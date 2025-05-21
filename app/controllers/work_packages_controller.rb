@@ -38,11 +38,11 @@ class WorkPackagesController < ApplicationController
   accept_key_auth :index, :show
 
   before_action :authorize_on_work_package,
-                :project, only: :show
+                :project, only: %i[show generate_pdf_dialog generate_pdf]
   before_action :check_allowed_export,
                 :protect_from_unauthorized_export, only: %i[index export_dialog]
 
-  before_action :authorize, only: :show_conflict_flash_message
+  before_action :authorize, only: %i[show_conflict_flash_message share_upsell]
   before_action :find_optional_project,
                 only: %i[split_view split_create baseline_dialog include_projects_dialog configure_view_dialog]
   before_action :load_and_authorize_in_optional_project, only: %i[index export_dialog new copy]
@@ -135,6 +135,28 @@ class WorkPackagesController < ApplicationController
                                                                         title: params[:title])
   end
 
+  def generate_pdf_dialog
+    respond_with_dialog WorkPackages::Exports::Generate::ModalDialogComponent.new(work_package: work_package, params: params)
+  end
+
+  def generate_pdf
+    export = work_package_exporter.export!
+    send_data(export.content, type: export.mime_type, filename: export.title)
+  rescue ::Exports::ExportError => e
+    flash[:error] = e.message
+    redirect_back(fallback_location: work_package_path(work_package))
+  end
+
+  def work_package_exporter
+    case params[:template]
+    when "contract"
+      WorkPackage::PDFExport::DocumentGenerator.new(work_package, params)
+    else
+      # when "attributes"
+      WorkPackage::PDFExport::WorkPackageToPdf.new(work_package, params)
+    end
+  end
+
   def baseline_dialog
     respond_with_dialog WorkPackages::Baseline::ModalDialogComponent.new(query: @query,
                                                                          project: @project,
@@ -155,7 +177,7 @@ class WorkPackagesController < ApplicationController
   def show_conflict_flash_message
     scheme = params[:scheme]&.to_sym || :danger
 
-    update_flash_message_via_turbo_stream(
+    render_flash_message_via_turbo_stream(
       component: WorkPackages::UpdateConflictComponent,
       scheme:,
       message: I18n.t("notice_locking_conflict_#{scheme}"),
@@ -163,6 +185,11 @@ class WorkPackagesController < ApplicationController
     )
 
     respond_with_turbo_streams
+  end
+
+  def share_upsell
+    render :share_upsell,
+           locals: { menu_name: project_or_global_menu }
   end
 
   protected
@@ -180,6 +207,8 @@ class WorkPackagesController < ApplicationController
   end
 
   def export_list(mime_type)
+    save_export_settings if params[:save_export_settings]&.to_bool
+
     job_id = WorkPackages::Exports::ScheduleService
                .new(user: current_user)
                .call(query: @query, mime_type:, params:)
@@ -214,6 +243,24 @@ class WorkPackagesController < ApplicationController
 
   private
 
+  def save_export_settings
+    # Saving export settings is only allowed for saved queries
+    return false if @query.new_record?
+
+    relevant_keys = %i[format columns show_relations show_descriptions long_text_fields
+                       show_images gantt_mode gantt_width paper_size]
+
+    user_settings = params.slice(*relevant_keys)
+
+    if user_settings[:format] == "pdf"
+      user_settings[:format] = "pdf_#{params[:pdf_export_type]}"
+    end
+
+    export_settings = @query.export_settings_for(user_settings[:format])
+    export_settings.settings = user_settings
+    export_settings.save
+  end
+
   def authorize_on_work_package
     deny_access(not_found: true) unless work_package
   end
@@ -246,6 +293,7 @@ class WorkPackagesController < ApplicationController
 
       work_package
         .journals
+        .internal_visible
         .changing
         .includes(:user)
         .order(order).to_a

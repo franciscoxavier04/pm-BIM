@@ -292,12 +292,6 @@ fieldset.form--fieldset
   padding: 0 0.25rem
   background-color: inherit
 
-  &.-in-header
-    margin-left: 5px
-    margin-bottom: 5px
-    font-style: italic
-    line-height: 44px
-
 .form--section
   @extend %form--fieldset-or-section
 
@@ -973,3 +967,7 @@ input[type=date], input[type=time]
     display: inline-block
     width: 100%
     overflow: auto
+
+.form-autocompleter-container
+  display: grid
+  grid-template-columns: minmax(0, auto)

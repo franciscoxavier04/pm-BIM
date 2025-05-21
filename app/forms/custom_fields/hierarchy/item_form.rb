@@ -39,6 +39,7 @@ module CustomFields
             value: @target_item.label,
             visually_hide_label: true,
             required: true,
+            autofocus: true,
             placeholder: I18n.t("custom_fields.admin.items.placeholder.label"),
             validation_message: validation_message_for(:label)
           )
@@ -55,7 +56,7 @@ module CustomFields
           )
         end
 
-        item_form.group(layout: :horizontal) do |button_group|
+        item_form.group(layout: :horizontal, align_self: :end) do |button_group|
           button_group.button(name: :cancel,
                               tag: :a,
                               label: I18n.t(:button_cancel),

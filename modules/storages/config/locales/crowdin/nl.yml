@@ -1,14 +1,32 @@
 nl:
   activerecord:
     attributes:
+      oauth_client:
+        client_id: Client ID
+        client_secret: Client secret
+      project:
+        project_folder_type: Project folder type
       storages/file_link:
-        origin_id: Oorsprong ID
+        origin: Origin
+        storage: Opslag
+      storages/nextcloud_storage:
+        authentication_methods:
+          oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
+          oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
+          two_way_oauth2: Two-way OAuth 2.0 authorization code flow
+        storage_audience: Storage Audience
+      storages/project_storage:
+        project_folder: Projectmap
+        project_folder_mode: Project folder mode
+        storage: Opslag
+        storage_url: Storage URL
       storages/storage:
+        authentication_method: Authentication Method
         creator: Maker
         drive: Drive ID
         host: Host
         name: Naam
-        provider_type: Provider type
+        provider_type: Type provider
         tenant: Directory (tenant) ID
     errors:
       messages:
@@ -40,7 +58,7 @@ nl:
               unknown_error: kon niet worden gevalideerd. Controleer uw opslagverbinding en probeer het opnieuw.
     models:
       file_link: Bestand
-      storages/storage: Opslagruimte
+      storages/storage: Opslag
   api_v3:
     errors:
       too_many_elements_created_at_once: Te veel elementen gemaakt tegelijk. %{max} verwacht hoogstens %{actual}.
@@ -61,6 +79,8 @@ nl:
   project_storages:
     edit_project_folder:
       label: Edit project folder
+    open:
+      remote_identity_error: An unexpected error occurred while connecting to the storage.
     project_folder_mode:
       automatic: Automatisch beheerd
       inactive: Geen specifieke map
@@ -72,6 +92,7 @@ nl:
         confirmation_text: Please, confirm you understand and want to remove this file storage from this project
         heading_text: Remove project from %{storage}
         text: This action is irreversible and will remove all links from work packages of this project to files and folders of that storage.
+        title: Remove project from storage
       label: Remove project
   services:
     attributes:
@@ -124,7 +145,7 @@ nl:
               not_found: "%{current_path} is niet gevonden."
             set_folders_permissions:
               permission_not_set: Kan machtigingen niet instellen op %{path}.
-          error: An unexpected error occurred. Please ensure that you Nextcloud instance is reachable and check OpenProject worker logs for more information
+          error: An unexpected error occurred. Please ensure that your Nextcloud instance is reachable and check OpenProject worker logs for more information
           group_does_not_exist: "%{group} does not exist. Check your Nextcloud instance configuration."
           insufficient_privileges: OpenProject does not have enough privileges to add %{user} to %{group}. Check you group settings in Nextcloud.
           not_allowed: Nextcloud block the request.
@@ -145,7 +166,7 @@ nl:
               not_found: "%{current_path} is niet gevonden."
             set_folders_permissions:
               permission_not_set: Kan machtigingen niet instellen op %{path}.
-          error: An unexpected error occurred. Please ensure that you Nextcloud instance is reachable and check OpenProject worker logs for more information
+          error: An unexpected error occurred. Please ensure that OneDrive/SharePoint is reachable and check OpenProject worker logs for more information
           not_allowed: OpenProject wasn't allowed to access your OneDrive drive. Please check the permissions set on the Azure Application.
           unauthorized: OpenProject could not sync with OneDrive. Please check your storage and Azure Application configuration.
           user_does_not_exist: "%{user} bestaat niet in Nextcloud."
@@ -181,7 +202,7 @@ nl:
       storage_delete_result_3: In case this storage has automatically managed project folders, those and their contained files will be deleted forever.
     dependencies:
       nextcloud:
-        group_folders_app: Group folders
+        group_folders_app: Group Folders
         integration_app: Integratie OpenProject
     enabled_in_projects:
       setup_incomplete_description: This storage has an incomplete setup. Please, complete the setup before enabling it in multiple projects.
@@ -196,45 +217,114 @@ nl:
         manual_management_description: Create and manage folders per project manually on your own. You will need to manually ensure relevant users have access.
         setup_incomplete: Select the type of management of user access and folder creation.
         subtitle: Toegangsbeheer
-        title: Access and project folders
+      access_management_section: Access and project folders
       automatically_managed_folders: Automatisch beheerde mappen
       general_information: Algemene informatie
-      nextcloud_oauth: Nextcloud OAuth
-      oauth_applications: OAuth toepassingen
+      oauth_configuration: OAuth configuration
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Projectmappen
       redirect_uri: URI omleiden
+      storage_audience: Storage Audience
+      storage_audience_blank: No audience has been configured.
+      storage_audience_description: Obtaining tokens for audience "%{audience}".
+      storage_audience_idp: Using first access token received by identity provider, regardless of audience.
+      storage_oauth: Nextcloud OAuth
       storage_provider: Opslagdienst
     health:
+      actions:
+        download_report: Downloaden
+        rerun_checks: Re-run all checks
+        run_checks: Run checks now
       checked: Laatst gecontroleerd op %{datetime}
+      checks:
+        ampf_configuration:
+          client_folder_creation: Automatic folder creation
+          client_folder_removal: Automatic folder deletion
+          drive_contents: Drive has expected content
+          files_request: Fetching group folder files
+          group_folder_app: 'Dependency: Group Folders'
+          group_folder_contents: Group folder has expected content
+          group_folder_presence: Group folder exists
+          header: Automatically managed project folder configuration
+          userless_access: Server-side request authentication
+        authentication:
+          existing_token: User token
+          header: Verificatie
+          non_provisioned_user: User provisioned by IDP
+          offline_access: Configured OIDC offline_access scope
+          provisioned_user_provider: User provisioned by OIDC
+          token_negotiable: User token capabilities
+          user_bound_request: User-based request authentication
+        base_configuration:
+          capabilities_request: Remote file storage capabilities
+          client_id: Client ID
+          client_secret: Client secret
+          dependencies_check: Afhankelijkheden
+          dependencies_versions: Dependencies (version)
+          diagnostic_request: Diagnostic request
+          drive_id_exists: Drive exists
+          drive_id_format: Drive ID format
+          header: Basic configuration
+          host_url_accessible: Host URL accessible
+          storage_configured: Configuration complete
+          tenant_id: Tenant ID
+        failures:
+          one: "%{count} check failed"
+          other: "%{count} checks failed"
+        success: All checks passed
+        warnings:
+          one: "%{count} check returned a warning"
+          other: "%{count} checks returned a warning"
       connection_validation:
-        action: Recheck connection
-        app_version_mismatch: The Integration OpenProject app version is not supported. Please update your Nextcloud server.
-        client_id_wrong: The configured OAuth 2 client id is invalid. Please check the configuration.
-        client_secret_wrong: The configured OAuth 2 client secret is invalid. Please check the configuration.
-        drive_id_wrong: The configured drive id could not be found. Please check the configuration.
-        group_folder_not_found: The group folder could not be found.
-        group_folder_version_mismatch: The Group Folder version is not supported. Please update your Nextcloud server.
-        host_not_found: No Nextcloud server found at the configured host url. Please check the configuration.
-        missing_dependencies: 'A required dependency is missing on the file storage. Please add the following dependency: %{dependency}.'
+        client_id_invalid: The configured OAuth 2 client id is invalid. Please check the configuration.
+        client_secret_invalid: The configured OAuth 2 client secret is invalid. Please check the configuration.
+        nc_dependency_missing: 'A required dependency is missing on the file storage. Please add the following dependency: %{dependency}.'
+        nc_dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
+        nc_group_folder_not_found: The group folder could not be found.
+        nc_host_not_found: No Nextcloud server found at the configured host url. Please check the configuration.
+        nc_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        nc_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
+        nc_oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
+        nc_unexpected_content: Unexpected content found in the managed group folder.
+        nc_userless_access_denied: The configured app password is invalid.
         not_configured: De verbinding kon niet gevalideerd worden. Voltooi eerst de configuratie.
-        placeholder: Controleer uw verbinding met de server.
-        subtitle: Connection validation
-        tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
-        unexpected_content:
-          nextcloud: Unexpected content found in the managed group folder.
-          one_drive: Unexpected content found in the drive.
+        od_client_cant_delete_folder: The client is having trouble deleting folders. Please check the setup documentation for your storage.
+        od_client_write_permission_missing: The client seems to have write permissions missing. Please check the setup documentation for your storage.
+        od_drive_id_invalid: The configured drive id seems invalid. Please check the configuration.
+        od_drive_id_not_found: The configured drive id could not be found. Please check the configuration.
+        od_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        od_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
+        od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
+        od_tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
+        od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
+        od_unexpected_content: Unexpected content found in the drive.
+        offline_access_scope_missing: It is recommended to configure the OpenID Connect provider to request the offline_access scope. The integration may still work anyways, but make sure that refresh tokens do not expire.
+        oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
+        oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
+        oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
+        oidc_token_acquisition_failed: Your OpenID Connect setup doesn't provide the necessary audience, nor does it provide token exchange capabilities. Please check out our documentation for more information.
+        oidc_token_exchange_failed: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
+        oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         unknown_error: The connection could not be validated. An unknown error occurred. Please check the server logs for further information.
-        userless_access_denied: The configured app password is invalid.
       label_error: Fout
+      label_failed: Failed
       label_healthy: Gezond
+      label_passed: Passed
       label_pending: Lopende
+      label_skipped: Overgeslagen
       label_warning: Waarschuwing
+      no_report: No report available
+      no_report_description: Run the checks now for a full health status report for this file storage.
+      open_report: Open full health report
       project_folders:
         subtitle: Automatisch beheerde projectmappen
       since: sinds %{datetime}
-      title: Gezondheidsstatus
+      summary:
+        failure: Some checks failed and the system does not work as expected.
+        success: All connections and systems are working as expected.
+        warning: Some checks returned a warning. This can lead to unexpected behaviour.
+      title: Health status report
     health_email_notifications:
       description_subscribed: All administrators receive health status email notifications for this storage.
       description_unsubscribed: Health status email notifications for this storage have been turned off for all administrators.
@@ -247,6 +337,7 @@ nl:
       project_folder_bulk: The project folder is the default folder for file uploads for all the projects selected. You can modify this individually in each project settings. Users can nevertheless still upload files to other locations.
     instructions:
       all_available_storages_already_added: Alle beschikbare opslagplaatsen zijn al toegevoegd aan het project.
+      authentication_method: The way that requests between OpenProject and the Storage are authenticated.
       automatic_folder: This will automatically create a root folder for this project and manage the access permissions for each project member.
       empty_project_folder_validation: Het selecteren van een map is verplicht om door te gaan.
       existing_manual_folder: You can designate an existing folder as the root folder for this project. The permissions are however not automatically managed, the administrator needs to manually ensure relevant users have access. The selected folder can be used by multiple projects.
@@ -259,6 +350,8 @@ nl:
         integration: Nextcloud administratie / OpenProject
         oauth_configuration: Copy these values from %{application_link_text}.
         provider_configuration: Please make sure you have administration privileges in your Nextcloud instance and the %{application_link_text} is installed before doing the setup.
+        storage_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        storage_audience_placeholder: e.g. nextcloud
       no_specific_folder: By default, each user will start at their own home folder when they upload a file.
       no_storage_set_up: Er zijn nog geen bestandsopslagplaatsen ingesteld.
       not_logged_into_storage: Om een projectmap te selecteren, moet u eerst inloggen
@@ -289,8 +382,8 @@ nl:
     label_creation_time: Aanmaaktijd
     label_creator: Maker
     label_delete_storage: Opslag verwijderen
-    label_edit_storage: Opslag bewerken
     label_edit_storage_access_management: Beheer van toegang tot opslag bewerken
+    label_edit_storage_audience: Edit Storage Audience
     label_edit_storage_automatically_managed_folders: Bewerk automatisch beheerde opslagmappen
     label_edit_storage_host: Edit storage host
     label_existing_manual_folder: Bestaande map met handmatig beheerde machtigingen
@@ -313,29 +406,31 @@ nl:
     label_redirect_uri: URI omleiden
     label_show_storage_redirect_uri: Show redirect URI
     label_status: Status
-    label_storage: Opslag
+    label_storage: Opslagruimte
     label_uri: URI
     member_connection_status:
       connected: Verbonden
       connected_no_permissions: User role has no storages permissions
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: Not connected. The user should login to the storage via the following %{link}.
+      not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: Geen leden om weer te geven.
     no_results: Er zijn nog geen opslagplaatsen ingesteld.
     oauth_access_granted_modal:
       access_granted: Access granted
       project_settings:
         access_granted_screen_reader: Access granted. You are now ready to use %{storage}
-        storage_ready: You are now ready to use %{storage}
+        storage_ready: U bent nu klaar om %{storage}te gebruiken.
       storage_admin:
         access_granted_screen_reader: Access granted. You are now ready to add projects to %{storage}
         storage_ready: You are now ready to add projects to %{storage}
     oauth_grant_nudge_modal:
       cancel_button_label: Ik doe het later
       heading: Login to %{provider_type} required
-      login_button_aria_label: Login to %{storage}
+      login_button_aria_label: Aanmelden bij %{storage}
       login_button_label: "%{provider_type} log in"
       project_settings:
-        description: To get access to the project folder you need to login to %{storage}.
+        description: Om toegang te krijgen tot de projectmap moet u inloggen op %{storage}.
       requesting_access_to: Toegang aanvragen tot %{storage}
       storage_admin:
         description: In order to add projects to this storage you need to be logged into %{provider_type}. Please, log in and try again.
@@ -343,6 +438,9 @@ nl:
       success:
         subtitle: Je wordt omgeleid
         title: Integration setup completed
+      timeout:
+        link_text: health status of the file storage setup
+        subtitle: OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check %{storages_health_link}.
       waiting:
         subtitle: One moment please, this might take some time...
         title: We are setting up your permissions on the project folder.
@@ -366,7 +464,7 @@ nl:
         title: Verbindingsstatus leden
     permission_header_explanation: 'File permissions on external storages are applied only to folders and files within automatically managed project folders. Note that not all file permissions are supported by all storage providers. Please check the documentation on <a target=''_blank'' href=''https://www.openproject.org/docs/system-admin-guide/users-permissions/roles-permissions/#file-storages-permissions''>file storage permissions</a> for more information.'
     provider_types:
-      label: Type provider
+      label: Provider type
       nextcloud:
         label_oauth_client_id: Nextcloud OAuth Client ID
         label_oauth_client_secret: Nextcloud OAuth Client Secret
@@ -378,13 +476,21 @@ nl:
         name: OneDrive/SharePoint
         name_placeholder: bijv. OneDrive
     show_attachments_toggle:
-      description: 'Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage. '
+      description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
       label: Show attachments in the work packages files tab
+    storage_audience:
+      documentation_intro: Details on the following options and what needs to be configured in the identity provider can be found in our documentation.
+      idp:
+        helptext: OpenProject will use the first access token received by the identity provider to authenticate requests to the storage. It will not try to obtain another token.
+        label: Use first access token obtained by identity provider
+      manual:
+        helptext: Allows you to set the audience of the storage. OpenProject will try to obtain a token for the given audience from the identity provider.
+        label: Define storage audience manually
     storage_list_blank_slate:
       description: Add a storage to see them here.
       heading: You don't have any storages yet.
     successful_storage_connection: Storage connected successfully! Remember to activate the storage in the Projects tab for each desired project to use it.
-    upsale:
+    upsell:
       description: |-
         Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
         work packages in a project.

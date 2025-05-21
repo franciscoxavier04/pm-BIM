@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -33,14 +35,16 @@ class MeetingAgendaItem < ApplicationRecord
     work_package: 1
   }.freeze
 
-  enum item_type: ITEM_TYPES
+  enum :item_type, ITEM_TYPES
 
-  belongs_to :meeting, class_name: "StructuredMeeting"
+  belongs_to :meeting
   belongs_to :meeting_section, optional: false
   belongs_to :work_package, class_name: "::WorkPackage"
   has_one :project, through: :meeting
   belongs_to :author, class_name: "User", optional: false
   belongs_to :presenter, class_name: "User", optional: true
+
+  has_many :outcomes, class_name: "MeetingOutcome", dependent: :destroy
 
   acts_as_list scope: :meeting_section
   default_scope { order(:position) }
@@ -68,6 +72,7 @@ class MeetingAgendaItem < ApplicationRecord
   after_save :trigger_meeting_agenda_item_time_slots_calculation, if: Proc.new { |item|
     item.duration_in_minutes_previously_changed? || item.position_previously_changed?
   }
+  before_save :update_meeting_to_match_section
   after_destroy :trigger_meeting_agenda_item_time_slots_calculation
   # after_destroy :delete_meeting_section_if_empty
 
@@ -83,6 +88,11 @@ class MeetingAgendaItem < ApplicationRecord
 
       self.meeting_section = meeting_section
     end
+  end
+
+  def update_meeting_to_match_section
+    # TODO - see #63561
+    self.meeting = meeting_section.meeting
   end
 
   def trigger_meeting_agenda_item_time_slots_calculation
@@ -119,5 +129,9 @@ class MeetingAgendaItem < ApplicationRecord
 
   def copy_attributes
     attributes.except("id", "meeting_id")
+  end
+
+  def in_backlog?
+    meeting_section.backlog?
   end
 end

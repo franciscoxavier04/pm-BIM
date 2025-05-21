@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -30,8 +32,12 @@ module ActiveRecord
   class Base
     include Redmine::I18n
 
+    # @return [String] the attribute name in a more human format
     def self.human_attribute_name(attr, options = {})
       attr = attr.to_s.delete_suffix("_id")
+
+      options[:default] ||= :"activerecord.models.#{attr}"
+
       super
     end
   end

@@ -1,3 +1,33 @@
+# frozen_string_literal: true
+
+#-- copyright
+# OpenProject is an open source project management software.
+# Copyright (C) the OpenProject GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License version 3.
+#
+# OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+# Copyright (C) 2006-2013 Jean-Philippe Lang
+# Copyright (C) 2010-2013 the ChiliProject Team
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# See COPYRIGHT and LICENSE files for more details.
+#++
+
 # rubocop:disable Lint/PercentStringArray
 Rails.application.config.after_initialize do
   SecureHeaders::Configuration.default do |config|
@@ -16,16 +46,27 @@ Rails.application.config.after_initialize do
     config.referrer_policy = "origin-when-cross-origin"
 
     # Valid for assets
-    assets_src = []
+    assets_src = ["'self'"]
     asset_host = OpenProject::Configuration.rails_asset_host
     assets_src << asset_host if asset_host.present?
 
     # Valid for iframes
-    frame_src = %w['self' https://player.vimeo.com]
+    frame_src = %w['self' https://player.vimeo.com https://www.youtube.com]
     frame_src << OpenProject::Configuration[:security_badge_url]
 
     # Default src
-    default_src = %w('self') + OpenProject::Configuration.remote_storage_hosts
+    default_src = %w('self')
+
+    # Attachment uploaders
+    default_src += OpenProject::Configuration.remote_storage_hosts
+
+    # Chargebee self-service
+    frame_src += [
+      "https://js.chargebee.com/",
+      "#{OpenProject::Configuration.enterprise_chargebee_site}.chargebee.com"
+    ]
+
+    default_src << "#{OpenProject::Configuration.enterprise_chargebee_site}.chargebee.com"
 
     # Allow requests to CLI in dev mode
     connect_src = default_src + [OpenProject::Configuration.enterprise_trial_creation_host]
@@ -48,7 +89,7 @@ Rails.application.config.after_initialize do
     end
 
     # Allow to extend the script-src in specific situations
-    script_src = assets_src
+    script_src = assets_src + %w(js.chargebee.com)
 
     # Allow unsafe-eval for rack-mini-profiler
     if Rails.env.development? && ENV.fetch("OPENPROJECT_RACK_PROFILER_ENABLED", false)
@@ -64,6 +105,8 @@ Rails.application.config.after_initialize do
 
     config.csp = {
       preserve_schemes: true,
+      # Don't append unsafe-inline in CSP as a fallback
+      disable_nonce_backwards_compatibility: true,
 
       # Fallback when no value is defined
       default_src:,
@@ -80,9 +123,10 @@ Rails.application.config.after_initialize do
       # Allow images from anywhere including data urls and blobs (used in resizing)
       img_src: %w(* data: blob:),
       # Allow scripts from self
-      script_src: script_src + %w('strict-dynamic'),
+      script_src:,
+      script_src_attr: %w('none'),
       # Allow unsafe-inline styles
-      style_src: assets_src + %w('unsafe-inline' 'self'),
+      style_src: assets_src + %w('unsafe-inline'),
       # Allow object-src from Release API
       object_src: [OpenProject::Configuration[:security_badge_url]],
 

@@ -31,7 +31,7 @@ require "open3"
 
 module OpenProject
   module VERSION # :nodoc:
-    MAJOR = 15
+    MAJOR = 16
     MINOR = 1
     PATCH = 0
 

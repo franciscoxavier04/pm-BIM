@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -351,7 +353,7 @@ RSpec.describe Capabilities::Scopes::Default do
             # This complicated and programmatic way is chosen so that the test can deal with additional actions being defined
             item = ->(namespace, action, global, module_name) {
               # We only expect contract actions for project modules that are enabled by default. In the
-              # default edition the Bim module is not enabled by default for instance and thus it's contract
+              # default edition the Bim module is not enabled by default for instance and thus its contract
               # actions are not expected to be part of the default capabilities.
               return if module_name.present? && project.enabled_module_names.exclude?(module_name.to_s)
 

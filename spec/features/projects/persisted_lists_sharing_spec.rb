@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,8 +30,7 @@
 require "spec_helper"
 
 RSpec.describe "Project list sharing",
-               :js,
-               :with_cuprite do
+               :js do
   shared_let(:view_project_query_role) { create(:view_project_query_role) }
   shared_let(:edit_project_query_role) { create(:edit_project_query_role) }
 
@@ -77,7 +78,7 @@ RSpec.describe "Project list sharing",
   let(:share_dialog) { Components::Sharing::ProjectQueries::ShareModal.new(shared_projects_list) }
 
   describe "without the enterprise edition" do
-    it "renders an upsale modal" do
+    it "renders an upsell modal" do
       login_as(sharer)
 
       projects_index_page.visit!
@@ -85,7 +86,7 @@ RSpec.describe "Project list sharing",
       projects_index_page.open_share_dialog
 
       share_dialog.expect_open
-      share_dialog.expect_upsale_banner
+      share_dialog.expect_upsell_banner
     end
   end
 

@@ -34,10 +34,11 @@ module Meetings
     # rubocop:enable OpenProject/AddPreviewForViewComponent
     include ApplicationHelper
 
-    def initialize(query:, project: nil)
+    def initialize(query:, params:, project: nil)
       super
       @query = query
       @project = project
+      @params = params
     end
 
     def render_create_button?
@@ -46,10 +47,6 @@ module Meetings
       else
         User.current.allowed_in_any_project?(:create_meetings)
       end
-    end
-
-    def dynamic_path
-      polymorphic_path([:new, @project, :meeting])
     end
 
     def id
@@ -62,6 +59,19 @@ module Meetings
 
     def label_text
       I18n.t(:label_meeting)
+    end
+
+    def upcoming_query?
+      filter = @query.filters.find { |f| f.name == :time }
+      filter ? !filter.past? : true
+    end
+
+    def dynamic_path(upcoming: true)
+      polymorphic_path([@project, :meetings], current_params.merge(upcoming:))
+    end
+
+    def current_params
+      @current_params ||= params.slice(:filters, :page, :per_page).permit!
     end
   end
 end

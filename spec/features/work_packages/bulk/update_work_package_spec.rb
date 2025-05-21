@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require "features/page_objects/notification"
 
-RSpec.describe "Bulk update work packages through Rails view", :js, :with_cuprite do
+RSpec.describe "Bulk update work packages through Rails view", :js do
   shared_let(:type) { create(:type, name: "Bug") }
   shared_let(:project) { create(:project, name: "Source", types: [type]) }
   shared_let(:status) { create(:status) }
@@ -303,8 +305,8 @@ RSpec.describe "Bulk update work packages through Rails view", :js, :with_cuprit
     let(:current_user) { dev }
 
     it "does not allow to copy" do
-      context_menu.open_for work_package
-      context_menu.expect_no_options "Bulk edit"
+      context_menu.open_for work_package, check_if_open: false
+      context_menu.expect_closed
     end
   end
 end

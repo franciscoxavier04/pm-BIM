@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
-RSpec.describe "inline create work package", :js do
+RSpec.describe "inline create work package", :js, :selenium do
   let(:type) { create(:type) }
   let(:types) { [type] }
 

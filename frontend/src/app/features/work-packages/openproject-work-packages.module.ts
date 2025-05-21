@@ -89,9 +89,6 @@ import {
   WorkPackageReplacementLabelComponent,
 } from 'core-app/features/work-packages/components/wp-edit/wp-edit-field/wp-replacement-label.component';
 import {
-  NewestActivityOnOverviewComponent,
-} from 'core-app/features/work-packages/components/wp-single-view-tabs/activity-panel/activity-on-overview.component';
-import {
   WorkPackageActivityTabComponent,
 } from 'core-app/features/work-packages/components/wp-single-view-tabs/activity-panel/activity-tab.component';
 import { OpenprojectAttachmentsModule } from 'core-app/shared/components/attachments/openproject-attachments.module';
@@ -141,7 +138,7 @@ import {
   WpTableConfigurationDisplaySettingsTabComponent,
 } from 'core-app/features/work-packages/components/wp-table/configuration-modal/tabs/display-settings-tab.component';
 import {
-  WpTableConfigurationFiltersTab,
+  WpTableConfigurationFiltersTabComponent,
 } from 'core-app/features/work-packages/components/wp-table/configuration-modal/tabs/filters-tab.component';
 import {
   WpTableConfigurationSortByTabComponent,
@@ -294,33 +291,17 @@ import {
 } from 'core-app/features/work-packages/components/wp-breadcrumb/wp-breadcrumb.component';
 import { UserLinkComponent } from 'core-app/shared/components/user-link/user-link.component';
 import {
-  WorkPackageCommentComponent,
-} from 'core-app/features/work-packages/components/work-package-comment/work-package-comment.component';
-import {
   WorkPackageWatcherButtonComponent,
 } from 'core-app/features/work-packages/components/wp-watcher-button/wp-watcher-button.component';
-import {
-  WorkPackageCommentFieldComponent,
-} from 'core-app/features/work-packages/components/work-package-comment/wp-comment-field.component';
 import { WpResizerDirective } from 'core-app/shared/components/resizer/resizer/wp-resizer.component';
 import {
   GroupDescriptor,
   WorkPackageSingleViewComponent,
 } from 'core-app/features/work-packages/components/wp-single-view/wp-single-view.component';
 import {
-  RevisionActivityComponent,
-} from 'core-app/features/work-packages/components/wp-activity/revision/revision-activity.component';
-import {
   WorkPackageFormAttributeGroupComponent,
 } from 'core-app/features/work-packages/components/wp-form-group/wp-attribute-group.component';
 import { WorkPackagesGridComponent } from 'core-app/features/work-packages/components/wp-grid/wp-grid.component';
-import {
-  ActivityEntryComponent,
-} from 'core-app/features/work-packages/components/wp-activity/activity-entry.component';
-import { ActivityLinkComponent } from 'core-app/features/work-packages/components/wp-activity/activity-link.component';
-import {
-  UserActivityComponent,
-} from 'core-app/features/work-packages/components/wp-activity/user/user-activity.component';
 import {
   WorkPackageSplitViewToolbarComponent,
 } from 'core-app/features/work-packages/components/wp-details/wp-details-toolbar.component';
@@ -405,6 +386,12 @@ import {
 import { OpenprojectTimeEntriesModule } from 'core-app/shared/components/time_entries/openproject-time-entries.module';
 import { RecentItemsService } from 'core-app/core/recent-items.service';
 import {
+  WorkPackageReminderButtonComponent,
+} from 'core-app/features/work-packages/components/wp-buttons/wp-reminder-button/wp-reminder-button.component';
+import {
+  WorkPackageReminderModalComponent,
+} from 'core-app/features/work-packages/components/wp-reminder-modal/wp-reminder.modal';
+import {
   WorkPackageShareButtonComponent,
 } from 'core-app/features/work-packages/components/wp-buttons/wp-share-button/wp-share-button.component';
 import {
@@ -413,6 +400,8 @@ import {
 import {
   WorkPackageSplitViewEntryComponent,
 } from 'core-app/features/work-packages/routing/wp-split-view/wp-split-view-entry.component';
+import { OpWpDatePickerModalComponent } from 'core-app/shared/components/datepicker/wp-date-picker-modal/wp-date-picker.modal';
+import { OpenprojectEnterpriseModule } from 'core-app/features/enterprise/openproject-enterprise.module';
 import {
   WorkPackagePrimerizedListViewComponent,
 } from 'core-app/features/work-packages/routing/wp-list-view/wp-primerized-list-view.component';
@@ -452,6 +441,7 @@ import { WpTableConfigurationTabEntryComponent } from 'core-app/features/work-pa
     OpenprojectStoragesModule,
 
     WorkPackageIsolatedQuerySpaceDirective,
+    OpenprojectEnterpriseModule,
   ],
   providers: [
     // Notification service
@@ -584,13 +574,6 @@ import { WpTableConfigurationTabEntryComponent } from 'core-app/features/work-pa
     WorkPackageTimerButtonComponent,
 
     // Activity Tab
-    NewestActivityOnOverviewComponent,
-    WorkPackageCommentComponent,
-    WorkPackageCommentFieldComponent,
-    ActivityEntryComponent,
-    UserActivityComponent,
-    RevisionActivityComponent,
-    ActivityLinkComponent,
     WorkPackageActivityTabComponent,
 
     // Watchers wp-tab-wrapper
@@ -618,6 +601,7 @@ import { WpTableConfigurationTabEntryComponent } from 'core-app/features/work-pa
     WorkPackageBreadcrumbComponent,
     WorkPackageSplitViewToolbarComponent,
     WorkPackageWatcherButtonComponent,
+    WorkPackageReminderButtonComponent,
     WorkPackageShareButtonComponent,
     WorkPackageSubjectComponent,
 
@@ -631,7 +615,7 @@ import { WpTableConfigurationTabEntryComponent } from 'core-app/features/work-pa
     WpTableConfigurationModalComponent,
     WpTableConfigurationColumnsTabComponent,
     WpTableConfigurationDisplaySettingsTabComponent,
-    WpTableConfigurationFiltersTab,
+    WpTableConfigurationFiltersTabComponent,
     WpTableConfigurationSortByTabComponent,
     WpTableConfigurationTimelinesTabComponent,
     WpTableConfigurationHighlightingTabComponent,
@@ -642,6 +626,7 @@ import { WpTableConfigurationTabEntryComponent } from 'core-app/features/work-pa
     SaveQueryModalComponent,
     WpDestroyModalComponent,
     WorkPackageShareModalComponent,
+    WorkPackageReminderModalComponent,
 
     // CustomActions
     WpCustomActionComponent,
@@ -667,6 +652,8 @@ import { WpTableConfigurationTabEntryComponent } from 'core-app/features/work-pa
     OpBaselineLoadingComponent,
     OpBaselineLegendsComponent,
 
+    OpWpDatePickerModalComponent,
+
     // Primerized work packages list
     WorkPackagePrimerizedListViewComponent,
   ],
@@ -690,7 +677,7 @@ import { WpTableConfigurationTabEntryComponent } from 'core-app/features/work-pa
 
     // Modals
     WpTableConfigurationModalComponent,
-    WpTableConfigurationFiltersTab,
+    WpTableConfigurationFiltersTabComponent,
 
     // Needed so that e.g. IFC can access it.
     WorkPackageCreateButtonComponent,
@@ -700,6 +687,7 @@ import { WpTableConfigurationTabEntryComponent } from 'core-app/features/work-pa
     WorkPackageSingleViewComponent,
     WorkPackageSplitViewComponent,
     BackButtonComponent,
+    OpWpDatePickerModalComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

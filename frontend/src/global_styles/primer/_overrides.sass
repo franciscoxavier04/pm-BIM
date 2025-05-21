@@ -32,6 +32,15 @@
   input
     border-radius: var(--borderRadius-medium)
 
+  // Currently we cannot morph the angular datepicker input field, and we have no way to set the
+  // validation error border on the input. However we can morph the input's wrapper element, thus
+  // adding this parent wrapper rule we can display the red border on the input.
+  &-input-wrap[invalid='true'] input:not(:focus)
+    border-color: var(--control-borderColor-danger)
+
+  &-spacingWrapper > :empty
+    display: none
+
 .UnderlineNav
   @include no-visible-scroll-bar
   margin-bottom: 12px
@@ -40,10 +49,10 @@
     scroll-behavior: smooth
 
 /* Remove margin-left: 2rem from Breadcrumbs */
-#breadcrumb,
 page-header,
 sub-header,
 .op-work-package-details-tab-component,
+.UnderlineNav,
 .tabnav,
 .Box-header,
 action-menu anchored-position
@@ -54,11 +63,6 @@ ul.SegmentedControl,
 ul.UnderlineNav-body,
 .Box > ul:not(.op-uc-list)
   margin-left: 0
-
-#breadcrumb
-  .breadcrumb-item.breadcrumb-item-selected
-    a
-      pointer-events: none
 
 .op-primer-adjustments__toggle-switch--hidden-loading-indicator
   .ToggleSwitch-statusIcon

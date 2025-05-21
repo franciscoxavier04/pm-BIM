@@ -1,5 +1,5 @@
 fa:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
         display_name: نام
@@ -21,9 +21,8 @@ fa:
         private_key: کلید خصوصی مرتبط به احراز هویت های سخت افزاری
         signature_method: الگوریتم امضا
         digest_method: الگوریتم خلاصه سازی در رمزنگاری
-        format: "قالب"
+        format: "قالب‎بندی"
         icon: "نماد دلخواه"
-  activerecord:
     errors:
       models:
         saml/provider:
@@ -59,16 +58,17 @@ fa:
       no_results_table: هیچ ارائه دهنده سخت‌افزار احراز هویتی تعریف نشده است.
       plural: ارائه دهنده های سخت‌افزار احراز هویت
       singular: ارائه دهنده سخت‌افزار احراز هویت
-      requested_attributes: ویژگی های درخواست شده
+      requested_attributes: ویژگی های درخواستی
       attribute_mapping: نگاشت ویژگی ها
       attribute_mapping_text: >
         فیلدهای زیر کنترل می کنند که کدام ویژگی های ارائه شده توسط ارائه دهنده هویت SAML برای ارائه ویژگی های کاربر در OpenProject استفاده می شود
       metadata:
         dialog: "این نشانی اینترنتی است که فراداده SAML OpenProject در آن موجود است. به صورت اختیاری از آن برای پیکربندی ارائه دهنده هویت خود استفاده کنید:"
-      upsale:
+      upsell:
+        title: "Single Sign-On (SSO) with SAML"
         description: OpenProject را به یک ارائه دهنده هویت SAML متصل کنید
       request_attributes:
-        title: 'ویژگی های درخواستی'
+        title: 'ویژگی های درخواست شده'
         legend: >
           این ویژگی‌ها به فراداده SAML XML اضافه می‌شوند تا به ارائه‌دهنده شناسایی مشخص کنند که OpenProject به کدام ویژگی‌ها نیاز دارد. ممکن است همچنان نیاز باشد که ارائه دهنده هویت خود را برای ارسال این ویژگی ها به صراحت پیکربندی کنید. لطفاً به اسناد IdP خود مراجعه کنید.
         name: 'کلید ویژگی های درخواستی'
@@ -138,7 +138,7 @@ fa:
       authn_requests_signed: >
         اگر علامت زده شود، OpenProject SAML AuthnRequest را امضا خواهد کرد. باید گواهی امضا و کلید خصوصی را با استفاده از فیلدهای زیر ارائه دهید.
       want_assertions_signed: >
-        اگر علامت زده شود، OpenProject به پاسخ‌های امضا شده از ارائه‌دهنده هویت با استفاده از جفت کلید گواهی خود نیاز دارد. OpenProject امضای گواهی را از قسمت تنظیمات اولیه تأیید می کند.
+        If checked, OpenProject will required signed responses from the identity provider using its own certificate keypair. OpenProject will verify the signature against the certificate from the basic configuration section.
       want_assertions_encrypted: >
         در صورت فعال بودن، از ارائه‌دهنده هویت بخواهید که پاسخ ادعا را با استفاده از جفت گواهی ارائه شده رمزگذاری کند.
       certificate: >

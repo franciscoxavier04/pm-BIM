@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 require_relative "../../spec_helper"
 require_relative "../shared_two_factor_examples"
 
 RSpec.describe "Login after 2FA deleted 2FA was deleted (REGRESSION)",
                :js,
-               :with_cuprite,
                with_settings: {
                  plugin_openproject_two_factor_authentication: {
                    "active_strategies" => %i[developer totp]

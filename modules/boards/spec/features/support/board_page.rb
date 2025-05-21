@@ -217,6 +217,7 @@ module Pages
 
     def save
       page.find(".editable-toolbar-title--save").click
+      wait_for_lists_reload
       expect_and_dismiss_toaster message: "Successful update."
     end
 
@@ -238,6 +239,10 @@ module Pages
 
     def expect_empty
       expect(page).to have_no_css(".boards-list--item", wait: 10)
+    end
+
+    def expect_not_any_card
+      expect(page).to have_no_css('[data-test-selector="op-wp-single-card"]')
     end
 
     def remove_list(name)

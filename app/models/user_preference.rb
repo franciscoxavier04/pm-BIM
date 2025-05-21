@@ -140,11 +140,19 @@ class UserPreference < ApplicationRecord
   end
 
   def immediate_reminders
-    super.presence || { mentioned: true }.with_indifferent_access
+    super.presence || { mentioned: true, personal_reminder: true }.with_indifferent_access
   end
 
   def pause_reminders
     super.presence || { enabled: false }.with_indifferent_access
+  end
+
+  def dismissed_banner?(feature)
+    dismissed_enterprise_banners.key?(feature.to_s)
+  end
+
+  def dismiss_banner(feature)
+    dismissed_enterprise_banners[feature.to_s] = Time.zone.now.utc
   end
 
   def supported_settings_method?(method_name)

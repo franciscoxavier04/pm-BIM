@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -30,20 +32,28 @@ module OpenIDConnect
   module Providers
     class UpdateService < BaseServices::Update
       class AttributesContract < Dry::Validation::Contract
-        params do
-          OpenIDConnect::Provider::DISCOVERABLE_ATTRIBUTES_MANDATORY.each do |attribute|
+        json do
+          OpenIDConnect::Provider::DISCOVERABLE_STRING_ATTRIBUTES_MANDATORY.each do |attribute|
             required(attribute).filled(:string)
           end
-          OpenIDConnect::Provider::DISCOVERABLE_ATTRIBUTES_OPTIONAL.each do |attribute|
+          OpenIDConnect::Provider::DISCOVERABLE_STRING_ATTRIBUTES_OPTIONAL.each do |attribute|
             optional(attribute).filled(:string)
           end
+
+          optional(:grant_types_supported).array(:string)
         end
+      end
+
+      def initialize(*, fetch_metadata: false, **)
+        super(*, **)
+
+        @fetch_metadata = fetch_metadata
       end
 
       def after_validate(_params, call)
         model = call.result
         metadata_url = get_metadata_url(model)
-        return call if metadata_url.blank?
+        return call if metadata_url.blank? || !@fetch_metadata
 
         extract_metadata(call, metadata_url, model)
       end

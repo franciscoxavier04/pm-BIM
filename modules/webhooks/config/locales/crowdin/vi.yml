@@ -8,7 +8,8 @@ vi:
         url: 'URL Payload'
         secret: 'Chữ ký bí mật'
         events: 'Sự kiện'
-        projects: 'Dự án được kích hoạt'
+        enabled: 'Đã kích hoạt'
+        projects: 'Các dự án được kích hoạt'
       webhooks/log:
         event_name: 'Tên sự kiện'
         url: 'URL Payload'
@@ -55,7 +56,7 @@ vi:
         events:
           title: 'Các sự kiện được kích hoạt'
         project_ids:
-          title: 'Các dự án được kích hoạt'
+          title: 'Dự án được kích hoạt'
           description: 'Chọn dự án mà webhook này sẽ được thực thi.'
           all: 'Tất cả dự án'
           selected: 'Chỉ các dự án đã chọn'

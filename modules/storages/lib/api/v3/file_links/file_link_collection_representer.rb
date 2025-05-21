@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,7 +31,8 @@
 module API
   module V3
     module FileLinks
-      class FileLinkCollectionRepresenter < ::API::Decorators::UnpaginatedCollection
+      class FileLinkCollectionRepresenter < ::API::Decorators::OffsetPaginatedCollection
+        property :count, getter: ->(*) { count(:id) }
       end
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -245,7 +247,7 @@ RSpec.describe WorkflowsController do
   end
 
   describe "#update" do
-    let(:status_params) { { "1" => "2" } }
+    let(:status_params) { { "1" => { "2" => ["always"] } } }
     let(:service) do
       service = instance_double(Workflows::BulkUpdateService)
 

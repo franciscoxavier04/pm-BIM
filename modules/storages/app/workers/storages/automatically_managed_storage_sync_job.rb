@@ -55,16 +55,9 @@ module Storages
     def self.key(storage) = "sync-#{storage}-#{storage.id}"
 
     def perform(storage)
-      return unless storage.configured? && storage.automatically_managed?
+      return unless storage.configured? && storage.automatic_management_enabled?
 
-      sync_result = case storage.short_provider_type
-                    when "nextcloud"
-                      NextcloudManagedFolderSyncService.call(storage)
-                    when "one_drive"
-                      OneDriveManagedFolderSyncService.call(storage)
-                    else
-                      raise "Unknown Storage Type"
-                    end
+      sync_result = ManagedFolderSyncService.call(storage)
 
       sync_result.on_failure { raise Errors::IntegrationJobError, sync_result.errors.full_messages.join(", ") }
       sync_result.on_success { OpenProject::Notifications.send(OpenProject::Events::STORAGE_TURNED_HEALTHY, storage:) }

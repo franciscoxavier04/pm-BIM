@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
-RSpec.describe "Work package single context menu", :js do
+RSpec.describe "Work package single context menu", :js, :selenium do
   let(:user) { create(:admin) }
   let(:work_package) { create(:work_package) }
 

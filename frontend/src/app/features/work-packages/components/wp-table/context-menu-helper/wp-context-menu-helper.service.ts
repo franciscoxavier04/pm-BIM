@@ -91,7 +91,7 @@ export class WorkPackageContextMenuHelperService {
     // remove some actions on Gantt
     if (this.wpViewTimeline.isVisible) {
       allowedActions = allowedActions.filter((el) => {
-        const ganttNotAllowedActions = ['log_time', 'copy', 'copy_to_other_project', 'export-pdf', 'export-atom', 'log_costs'];
+        const ganttNotAllowedActions = ['log_time', 'copy', 'copy_to_other_project', 'export-pdf', 'generate_pdf', 'export-atom', 'log_costs'];
         return !(ganttNotAllowedActions.includes(el.key));
       });
     }
@@ -217,7 +217,7 @@ export class WorkPackageContextMenuHelperService {
       });
       allowedActions.push({
         key: 'relation-follows',
-        text: I18n.t('js.relation_buttons.add_follower'),
+        text: I18n.t('js.relation_buttons.add_successor'),
         link: 'addRelation',
       });
     }

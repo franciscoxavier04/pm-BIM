@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Shared users in the members table", :js, :with_cuprite do
+RSpec.describe "Shared users in the members table", :js do
   shared_let(:admin) { create(:admin) }
   shared_let(:project) { create(:project) }
   shared_let(:role) { create(:project_role, name: "Developer") }

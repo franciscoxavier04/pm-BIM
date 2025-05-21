@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -509,11 +511,12 @@ RSpec.describe API::V3::WorkPackages::WorkPackageCollectionRepresenter do
   end
 
   context "when passing sums" do
-    let(:total_sums) { OpenStruct.new(estimated_hours: 1) }
+    let(:total_sums) { API::ParserStruct.new(estimated_hours: 1) }
 
     it "renders the groups object as json" do
       expected = { "estimatedTime" => "PT1H",
                    "remainingTime" => nil,
+                   "percentageDone" => nil,
                    "storyPoints" => nil }
       expect(collection).to be_json_eql(expected.to_json).at_path("totalSums")
     end

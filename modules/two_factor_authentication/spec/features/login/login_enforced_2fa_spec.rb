@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 require_relative "../../spec_helper"
 require_relative "../shared_two_factor_examples"
 
 RSpec.describe "Login with enforced 2FA",
                :js,
-               :with_cuprite,
                with_settings: {
                  plugin_openproject_two_factor_authentication: {
                    "active_strategies" => [:developer],

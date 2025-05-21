@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
-RSpec.describe "Notification center", :js, :with_cuprite,
+RSpec.describe "Notification center",
+               :js,
                with_ee: %i[date_alerts],
                # We decrease the notification polling interval because some portions of the JS code rely on something triggering
                # the Angular change detection. This is usually done by the notification polling, but we don't want to wait
@@ -106,8 +109,8 @@ RSpec.describe "Notification center", :js, :with_cuprite,
 
         # rubocop:disable FactoryBot/ExcessiveCreateList
         create_list(:notification, 100, attributes.merge(reason: :mentioned)) +
-        create_list(:notification, 105, attributes.merge(reason: :watched)) +
-        create_list(:notification, 50, attributes_project2.merge(reason: :assigned))
+          create_list(:notification, 105, attributes.merge(reason: :watched)) +
+          create_list(:notification, 50, attributes_project2.merge(reason: :assigned))
         # rubocop:enable FactoryBot/ExcessiveCreateList
       end
 
@@ -151,6 +154,7 @@ RSpec.describe "Notification center", :js, :with_cuprite,
         wait_for_network_idle
 
         center.expect_bell_count 0
+        center.expect_mark_all_as_read_button_disabled
         side_menu.expect_item_with_no_count "Inbox"
         side_menu.expect_item_with_no_count "Mentioned"
         side_menu.expect_item_with_no_count "Watcher"
@@ -218,7 +222,7 @@ RSpec.describe "Notification center", :js, :with_cuprite,
                read_ian: true)
       end
 
-      it "opens a toaster if the notification is part of the current filters" do
+      it "auto updates the center when a new notification is created" do
         visit home_path
         center.open
         center.expect_bell_count 2
@@ -226,25 +230,10 @@ RSpec.describe "Notification center", :js, :with_cuprite,
         center.expect_work_package_item notification2
         center.expect_no_toaster
         notification3.update(read_ian: false)
-        center.expect_toast
-        center.update_via_toaster
         center.expect_no_toaster
         center.expect_work_package_item notification
         center.expect_work_package_item notification2
         center.expect_work_package_item notification3
-      end
-
-      it "does not open a toaster if the notification is not part of the current filters" do
-        visit home_path
-        center.open
-        center.expect_bell_count 2
-        side_menu.click_item "Mentioned"
-        side_menu.finished_loading
-        center.expect_no_toaster
-        notification3.update(read_ian: false)
-        # We need to wait for the bell to poll for updates
-        sleep 15
-        center.expect_no_toaster
       end
     end
 
@@ -434,6 +423,20 @@ RSpec.describe "Notification center", :js, :with_cuprite,
 
         expect(notification2.reload.read_ian).to be_truthy
         expect(notification3.reload.read_ian).to be_truthy
+      end
+    end
+
+    context "with invalid filter parameters" do
+      it "shows error message and redirects for invalid reason" do
+        visit notifications_path(filter: "reason", name: "invalid_reason")
+        expect(page).to have_current_path(notifications_path)
+        expect(page).to have_text("Invalid notification filter")
+      end
+
+      it "shows error message and redirects for invalid filter type" do
+        visit notifications_path(filter: "invalid_filter", name: "something")
+        expect(page).to have_current_path(notifications_path)
+        expect(page).to have_text("Invalid notification filter")
       end
     end
   end

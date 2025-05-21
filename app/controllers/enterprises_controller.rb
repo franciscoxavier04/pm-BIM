@@ -26,25 +26,16 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 class EnterprisesController < ApplicationController
-  include EnterpriseTrialHelper
-
   layout "admin"
   menu_item :enterprise
 
-  before_action :chargebee_content_security_policy
-  before_action :youtube_content_security_policy
   before_action :require_admin
   before_action :check_user_limit, only: [:show]
   before_action :check_domain, only: [:show]
-  before_action :render_gon
 
   def show
     @current_token = EnterpriseToken.current
     @token = @current_token || EnterpriseToken.new
-
-    if !@current_token.present?
-      helpers.write_trial_key_to_gon
-    end
   end
 
   def create # rubocop:disable Metrics/AbcSize
@@ -93,16 +84,6 @@ class EnterprisesController < ApplicationController
   end
 
   private
-
-  def render_gon
-    helpers.write_augur_to_gon
-  end
-
-  def default_breadcrumb; end
-
-  def show_local_breadcrumb
-    false
-  end
 
   def check_user_limit
     if OpenProject::Enterprise.user_limit_reached?

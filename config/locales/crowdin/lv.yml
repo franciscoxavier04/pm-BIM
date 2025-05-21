@@ -27,19 +27,28 @@ lv:
     work_packages:
       activity_tab:
         no_results_title_text: No activity to display
-        no_results_description_text: "Choose \"Show everything\" to show all activity and comments"
+        no_results_description_text: 'Choose "Show everything" to show all activity and comments'
         label_activity_show_all: "Show everything"
         label_activity_show_only_comments: "Show comments only"
         label_activity_show_only_changes: "Show changes only"
         label_sort_asc: "Newest at the bottom"
         label_sort_desc: "Newest on top"
-        label_type_to_comment: "Type here to comment"
+        label_type_to_comment: "Add a comment. Type @ to notify people."
         label_submit_comment: "Submit comment"
+        label_who: Who?
         changed_on: "changed on"
         created_on: "created this on"
         changed: "changed"
         created: "created"
         commented: "commented"
+        internal_comment: Internal comment
+        internal_journal: Internal comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
+        internal_comment_confirmation:
+          title: "Make this comment public?"
+          heading: "Make this comment public?"
+          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          confirm_button_text: "Make public"
   admin:
     plugins:
       no_results_title_text: There are currently no plugins installed.
@@ -59,9 +68,6 @@ lv:
         main-menu-bg-selected-background: "Main menu when selected"
         main-menu-bg-hover-background: "Main menu on hover"
       custom_colors: "Custom colors"
-      customize: "Customize your OpenProject installation with your own logo and colors."
-      enterprise_notice: "As a special 'Thank you!' for their financial contribution to develop OpenProject, this tiny add-on is only available for Enterprise edition support subscribers."
-      enterprise_more_info: "Note: the used logo will be publicly accessible."
       manage_colors: "Edit color select options"
       instructions:
         primary-button-color: "Strong accent color, used for the most important button on a screen."
@@ -96,6 +102,8 @@ lv:
       explanation:
         text: "Individual actions of a user (e.g. updating a work package twice) are aggregated into a single action if their age difference is less than the specified timespan. They will be displayed as a single action within the application. This will also delay notifications by the same amount of time reducing the number of emails being sent and will also affect %{webhook_link} delay."
         link: "webhook"
+  authentication:
+    login_and_registration: "Login and registration"
   announcements:
     show_until: Show until
     is_active: currently displayed
@@ -129,7 +137,7 @@ lv:
     back_to_index: "Click here to go back to the list of connection."
     technical_warning_html: |
       This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
-      <br/>
+      <br>
       <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
     attribute_texts:
       name: Arbitrary name of the LDAP connection
@@ -139,7 +147,7 @@ lv:
       admin_map_html: "Optional: The attribute key in LDAP that <strong>if present</strong> marks the OpenProject user an admin. Leave empty when in doubt."
       system_user_dn_html: |
         Enter the DN of the system user used for read-only access.
-        <br/>
+        <br>
         Example: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: Enter the bind password of the system user
       base_dn: |
@@ -179,7 +187,7 @@ lv:
     tls_options:
       verify_peer: "Verify SSL certificate"
       verify_peer_description_html: >
-        Enables strict SSL verification of the certificate trusted chain. <br/> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
+        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
       tls_certificate_description: "If the LDAP server certificate is not in the trust sources of this system, you can add it manually here. Enter a PEM X509 certifiate string."
   forums:
     show:
@@ -211,14 +219,11 @@ lv:
     new: "New custom action"
     edit: "Edit custom action %{name}"
     execute: "Execute %{name}"
-    upsale:
-      title: "Custom actions"
-      description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
   custom_fields:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: Visiem projektiem
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -229,6 +234,10 @@ lv:
           item:
             title: This item doesn't have any hierarchy level below
             description: Add items to this list to create sub-items inside another one
+        delete_dialog:
+          title: "Delete custom field item"
+          heading: "Delete custom field item?"
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Item label"
           short: "Short name"
@@ -247,6 +256,7 @@ lv:
     confirm_destroy_option: "Deleting an option will delete all of its occurrences (e.g. in work packages). Are you sure you want to delete it?"
     reorder_alphabetical: "Reorder values alphabetically"
     reorder_confirmation: "Warning: The current order of available values will be lost. Continue?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Mark the custom field as required. This will make it mandatory to fill in the field when creating new or updating existing resources."
       is_required_for_project: "Check to enable this attribute and make it required in all projects. It cannot be deactived for individual projects."
@@ -285,11 +295,13 @@ lv:
       label: "Label"
       short: "Short name"
       parent: "Parent"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
-      wiki_pages: "Wiki"
+      all: "Visi"
       messages: "Forum"
+      wiki_pages: "Wiki"
   groups:
     index:
       no_results_title_text: Pašlaik nav nevienu grupu.
@@ -338,9 +350,31 @@ lv:
         placeholder: "New project list"
       delete_modal:
         title: "Delete project list"
+        heading: "Delete this project list?"
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
+      header_details: Basic details
+      header_status: Projekta statuss
+      header_relations: Project relations
+      button_update_details: Update details
+      button_update_status_description: Update status description
+      button_update_parent_project: Update parent project
+      public_warning: >
+        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+      public_confirmation:
+        checkbox: "I understand that this will make the previously private content public"
+        title: "Make this project public?"
+        description: >
+          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+      private_confirmation:
+        checkbox: "I understand that this will make the previously public content private."
+        title: "Make this project private?"
+        description: >
+          The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       change_identifier: Change identifier
+      actions:
+        label_enable_all: "Enable all"
+        label_disable_all: "Disable all"
       activities:
         no_results_title_text: Pašlaik neviena aktivitāte nav pieejama.
       forums:
@@ -351,18 +385,26 @@ lv:
         no_results_content_text: Izveidot jaunu darba grupas kategoriju
       custom_fields:
         no_results_title_text: Pašlaik nav neviena pieejamā pielāgotā lauka.
+      life_cycle:
+        header:
+          title: "Project life cycle"
+          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
+        non_defined: "No phases are currently defined."
+        section_header: "Phases"
+        step:
+          use_in_project: "Use %{step} in this project"
+        filter:
+          label: "Search project phase"
       project_custom_fields:
         header:
           title: "Project attributes"
-          description: 'These project attributes will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> under their respective sections. You can enable or disable individual attributes. Project attributes and sections are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. '
+          description_html: 'These project attributes will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> under their respective sections. You can enable or disable individual attributes. Project attributes and sections are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. '
         filter:
           label: "Search project attribute"
         actions:
           label_enable_single: "Active in this project, click to disable"
           label_disable_single: "Inactive in this project, click to enable"
           remove_from_project: "Remove from project"
-          label_enable_all: "Enable all"
-          label_disable_all: "Disable all"
         is_required_blank_slate:
           heading: Required in all projects
           description: This project attribute is activated in all projects since the "Required in all projects" option is checked. It cannot be deactivated for individual projects.
@@ -375,6 +417,15 @@ lv:
         no_results_content_text: Izveidot jaunu versiju
       storage:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
+      work_package_priorities:
+        new_label: "New priority"
+    status:
+      button_edit: Edit project status
+  project_phase:
+    duration:
+      zero: "Duration: %{count} working days"
+      one: "Duration: %{count} working day"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "The modified list has been saved as a new list"
@@ -458,6 +509,7 @@ lv:
   my:
     access_token:
       create_dialog:
+        title: Token generated
         header: The %{type} token has been generated
         warning: Note that this is the only time you will see this token, make sure to copy it now.
       errors:
@@ -501,8 +553,12 @@ lv:
     groups:
       member_in_these_groups: "This user is currently a member of the following groups:"
       no_results_title_text: This user is currently not a member in any group.
+      summary_with_more: Member of %{names} and %{count_link}.
+      more: "%{count} more"
+      summary: Member of %{names}.
     memberships:
       no_results_title_text: Šis lietotājs pašlaik nav projektu dalībnieks.
+    open_profile: "Open profile"
   page:
     text: "Teksts"
   placeholder_users:
@@ -515,10 +571,6 @@ lv:
         All occurrences of the placeholder user (e.g., as assignee, responsible or other user values) will be reassigned to an account called "Deleted user". As the data of every deleted account is reassigned to this account it will not be possible to distinguish the data the user created from the data of another deleted account.
       irreversible: "This action is irreversible"
       confirmation: "Enter the placeholder user name %{name} to confirm the deletion."
-    upsale:
-      title: Placeholder users
-      description: >
-        Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
   prioritiies:
     edit:
       priority_color_text: |
@@ -555,14 +607,14 @@ lv:
       status_readonly_html: |
         Check this option to mark work packages with this status as read-only.
         No attributes can be changed with the exception of the status.
-        <br/>
+        <br>
         <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
     index:
       no_results_title_text: Pašlaik nav nevienas darba pakas statuss.
       no_results_content_text: Pievienot jaunu statusu
       headers:
         is_default: "Default"
-        is_closed: "Closed"
+        is_closed: "Aizvērts"
         is_readonly: "Tikai lasīšana"
         excluded_from_totals: "Excluded from totals"
   themes:
@@ -574,18 +626,41 @@ lv:
       no_results_title_text: Pašlaik nav neviena veida.
       no_results_content_text: Izveidot jaunu veidu
     edit:
-      settings: "Iestatījumi"
-      form_configuration: "Form configuration"
-      more_info_text_html: >
-        Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
-      projects: "Projekti"
-      enabled_projects: "Enabled projects"
-      edit_query: "Edit table"
-      query_group_placeholder: "Give the table a name"
-      reset: "Reset to defaults"
-      type_color_text: |
-        The selected color distinguishes different types
-        in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
+      form_configuration:
+        tab: "Form configuration"
+      projects:
+        tab: "Projekti"
+        enabled_projects: "Enabled projects"
+      settings:
+        tab: "Iestatījumi"
+        type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
+      subject_configuration:
+        tab: "Subject configuration"
+        manually_editable_subjects:
+          label: "Manually editable subjects"
+          caption: "Users can manually enter and edit work package subjects without restrictions."
+        automatically_generated_subjects:
+          label: "Automatically generated subjects"
+          caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
+        token:
+          label_with_context: "%{attribute_context}: %{attribute_label}"
+          context:
+            work_package: "Darba pieteikums"
+            parent: "Parent"
+            project: "Projekts"
+        pattern:
+          label: "Subject pattern"
+          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
+          supported_attributes_link: "supported attributes"
+      export_configuration:
+        tab: "Generate PDF"
+        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        pdf_export_templates:
+          label: "PDF Export templates"
+          actions:
+            label_enable_all: "Enable all"
+            label_disable_all: "Disable all"
   versions:
     overview:
       work_packages_in_archived_projects: "The version is shared with archived projects which still have work packages assigned to this version. These are counted, but will not appear in the linked views."
@@ -600,6 +675,47 @@ lv:
     index:
       no_results_title_text: Pašlaik nav neviena darbuplūsma.
   work_packages:
+    datepicker_modal:
+      banner:
+        description:
+          automatic_mobile: "Start date derived."
+          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
+          manual_mobile: "Ignoring relations."
+          manual_gap_between_predecessors: "There is a gap between this and all predecessors."
+          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
+          manual_with_children: "This has child work packages but their start dates are ignored."
+        title:
+          automatic_mobile: "Automatically scheduled."
+          automatic_with_children: "The dates are determined by child work packages."
+          automatic_with_predecessor: "The start date is set by a predecessor."
+          manual_mobile: "Manually scheduled."
+          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+      blankslate:
+        title: "No predecessors"
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
+      ignore_non_working_days:
+        title: "Working days only"
+      mode:
+        title: "Scheduling mode"
+        automatic: "Automatic"
+        manual: "Manual"
+      show_relations: "Show relations"
+      tabs:
+        aria_label: "Datepicker tabs"
+        children: "Bērni"
+        dates: "Dates"
+        predecessors: "Predecessors"
+        successors: "Successors"
+        blankslate:
+          predecessors:
+            title: "No predecessors"
+            description: "This work package does not have any predecessors."
+          successors:
+            title: "No successors"
+            description: "This work package does not have any successors."
+          children:
+            title: "No children"
+            description: "This work package does not have any children."
     x_descendants:
       zero: "%{count} work package descendants"
       one: "One descendant work package"
@@ -624,6 +740,7 @@ lv:
         title: "Workflow missing for work package sharing"
         message: "No workflow is configured for the 'Work package editor' role. Without a workflow, the shared with user cannot alter the status of the work package. Workflows can be copied. Select a source type (e.g. 'Task') and source role (e.g. 'Member'). Then select the target types. To start with, you could select all the types as targets. Finally, select the 'Work package editor' role as the target and press 'Copy'. After having thus created the defaults, fine tune the workflows as you do for every other role."
         link_message: "Configure the workflows in the administration."
+    templated_subject_hint: Automatically generated through type %{type}
     summary:
       reports:
         category:
@@ -640,6 +757,79 @@ lv:
           no_results_title_text: Pašlaik nav pieejams neviens veids.
         version:
           no_results_title_text: Pašlaik nav pieejamu versiju.
+  work_package_relations_tab:
+    index:
+      action_bar_title: "Add relations to other work packages to create a link between them."
+      no_results_title_text: There are currently no relations available.
+      blankslate_heading: "No relations"
+      blankslate_description: "This work package does not have any relations yet."
+    label_add_child_button: "Child"
+    label_add_x: "Add %{x}"
+    label_edit_x: "Edit %{x}"
+    label_add_description: "Add description"
+    lag:
+      subject: "Lag"
+      caption: "The minimum number of working days to keep in between the two work packages."
+    relations:
+      label_new_child_created: "New work package created and added as a child"
+      label_relates_singular: "related to"
+      label_relates_plural: "related to"
+      label_relates_to_singular: "related to"
+      label_relates_to_plural: "related to"
+      relates_description: "Creates a visible link between the two work packages with no additional effect"
+      relates_to_description: "Creates a visible link between the two work packages with no additional effect"
+      label_precedes_singular: "successor (after)"
+      label_precedes_plural: "successors (after)"
+      precedes_description: "The related work package necessarily needs to start after this one finishes"
+      label_follows_singular: "predecessor (before)"
+      label_follows_plural: "predecessors (before)"
+      follows_description: "The related work package necessarily needs to finish before this one can start"
+      label_child_singular: "child"
+      label_child_plural: "children"
+      new_child: "Create new child"
+      new_child_description: "Creates a related work package as a sub-item of the current (parent) work package"
+      child: "Child"
+      child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      parent: "Parent"
+      parent_description: "Makes the related work package a parent of the current (child) work package"
+      label_closest: "Closest"
+      label_blocks_singular: "blocks"
+      label_blocks_plural: "blocks"
+      blocks_description: "The related work package cannot be closed until this one is closed first"
+      label_blocked_singular: "blocked by"
+      label_blocked_plural: "blocked by"
+      label_blocked_by_singular: "blocked by"
+      label_blocked__by_plural: "blocked by"
+      blocked_description: "This work package cannot be closed until the related one is closed first"
+      blocked_by_description: "This work package cannot be closed until the related one is closed first"
+      label_duplicates_singular: "duplicates"
+      label_duplicates_plural: "duplicates"
+      duplicates_description: "This is a copy of the related work package"
+      label_duplicated_singular: "duplicated by"
+      label_duplicated_plural: "duplicated by"
+      label_duplicated_by_singular: "duplicated by"
+      label_duplicated_by_plural: "duplicated by"
+      duplicated_by_description: "The related work package is a copy of this"
+      duplicated_description: "The related work package is a copy of this"
+      label_includes_singular: "includes"
+      label_includes_plural: "includes"
+      includes_description: "Marks the related work package as including this one with no additional effect"
+      label_partof_singular: "part of"
+      label_partof_plural: "part of"
+      label_part_of_singular: "part of"
+      label_part_of_plural: "part of"
+      partof_description: "Marks the related work package as being part of this one with no additional effect"
+      part_of_description: "Marks the related work package as being part of this one with no additional effect"
+      label_requires_singular: "requires"
+      label_requires_plural: "requires"
+      requires_description: "Marks the related work package as a requirement to this one"
+      label_required_singular: "required by"
+      label_required_plural: "required by"
+      required_description: "Marks this work package as being a requirement to the related one"
+      label_parent_singular: "parent"
+      label_parent_plural: "parent"
+      ghost_relation_title: "Saistītie pieteikuma tipi"
+      ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Ielūgums
   account:
     delete: "Dzēst kontu"
@@ -679,6 +869,7 @@ lv:
       attachment:
         attachment_content: "Attachment content"
         attachment_file_name: "Attachment file name"
+        content_type: "Content-type"
         downloads: "Lejupielādes"
         file: "Fails"
         filename: "Fails"
@@ -686,10 +877,10 @@ lv:
       attribute_help_text:
         attribute_name: "Attribute"
         help_text: "Help text"
+      capability:
+        context: "Context"
       changeset:
         repository: "Repository"
-      color:
-        hexcode: "Hex code"
       comment:
         commented: "Komentēja" #an object that this comment belongs to
       custom_action:
@@ -700,10 +891,11 @@ lv:
         editable: "Rediģējams"
         field_format: "Formāts"
         is_filter: "Izmantot kā filtru"
-        is_for_all: "For all projects"
+        is_for_all: "Visiem projektiem"
         is_required: "Obligāts"
         max_length: "Maksimālais garums"
         min_length: "Minimālais garums"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Allow multi-select"
         possible_values: "Iespējamās vērtības"
         regexp: "Regulāra izteiksme"
@@ -716,12 +908,15 @@ lv:
         secret: "Client secret"
         owner: "Owner"
         builtin: "Builtin"
-        enabled: "Active"
+        enabled: "Aktīvs"
         redirect_uri: "Redirect URI"
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "Scopes"
         confidential: "Confidential"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Valid since"
         subscriber: "Subscriber"
         encoded_token: "Enterprise support token"
@@ -733,12 +928,15 @@ lv:
         widgets: "Logrīki"
       journal:
         notes: "Piezīmes"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "Konts"
         attr_firstname: "Atribūts FirstName"
         attr_lastname: "Atribūts LastName"
         attr_login: "Username attribute"
         attr_mail: "E-pasta atribūts"
+        filter_string: "Filter string"
+        admin: "Administrators"
         base_dn: "Pamata DN"
         host: "Serveris"
         onthefly: "Automatic user creation"
@@ -746,14 +944,17 @@ lv:
         tls_certificate_string: "LDAP server SSL certificate"
       member:
         roles: "Lomas"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "Client ID"
-      planning_element_type_color:
-        hexcode: Hex code
       project:
         active_value:
           true: "unarchived"
           false: "arhivēts"
+        description: "Apraksts"
+        enabled_modules: "Iespējotie moduļi"
         identifier: "Identifikators"
         latest_activity_at: "Latest activity at"
         parent: "Apakšprojekts"
@@ -763,7 +964,6 @@ lv:
           false: "private"
         queries: "Vaicājumi"
         status_code: "Projekta statuss"
-        description: "Apraksts"
         status_explanation: "Project status description"
         status_codes:
           not_started: "Not started"
@@ -782,17 +982,53 @@ lv:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
+      project/phase:
+        date_range: "Date range"
+        definition: "Definition"
+      project/phase_definition:
+        name: "Nosaukums"
+        color: "Krāsa"
+        start_gate: "Start phase gate"
+        start_gate_name: "Start phase gate name"
+        finish_gate: "Finish phase gate"
+        finish_gate_name: "Finish phase gate name"
       query:
+        sums: "Sums"
+        columns: "Kolonnas"
         column_names: "Kolonnas"
         relations_to_type_column: "Relations to %{type}"
         relations_of_type_column: "%{type} relations"
+        child_work_packages: "Child work packages"
         group_by: "Grupēt rezultātus pēc"
+        sort_by: "Sort results by"
         filters: "Filtri"
         timeline_labels: "Timeline labels"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Lag"
-        from: "Darba pieteikums"
+        from: "Saistītie pieteikuma tipi"
         to: "Saistītie pieteikuma tipi"
+        relation_type: "Relation type"
+      reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
+        remind_at_date: "Datums"
+        remind_at_time: "Laiks"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "URL"
       role:
@@ -802,6 +1038,9 @@ lv:
         is_readonly: "Work package read-only"
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
+      token/ical:
+        calendar: "Kalendārs"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Aktivitāte"
         hours: "Stundas"
@@ -815,6 +1054,11 @@ lv:
         is_default: "Activated for new projects by default"
         is_milestone: "Ir atskaites punkts"
         color: "Krāsa"
+        patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "Lietotāji"
       user:
         admin: "Administrators"
         auth_source: "Authentication source"
@@ -824,17 +1068,24 @@ lv:
         force_password_change: "Pieprasīt paroles nomaiņu pie nākamās ielogošanās"
         language: "Valoda"
         last_login_on: "Pēdējā pieslēgšanās"
+        failed_login_count: "Failed login attempts"
+        first_name: "Vārds"
+        last_name: "Uzvārds"
+        first_login: "First login"
         new_password: "Jaunā parole"
         password_confirmation: "Jaunā parole atkārtoti"
         consented_at: "Consented at"
       user_preference:
         comments_sorting: "Rādīt komentārus"
+        dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Pieejamības režīms"
-        time_zone: "Laika josla"
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
+        time_zone: "Laika josla"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Finish date"
         sharing: "Sharing"
@@ -843,7 +1094,9 @@ lv:
       wiki_page:
         parent_title: "Parent page"
         redirect_existing_links: "Redirect existing links"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Ievietošanas sākums"
         begin_deletion: "Dzēšanas sākums"
         children: "Subelements"
@@ -859,6 +1112,7 @@ lv:
           title: "Working days"
           false: "working days only"
           true: "include non-working days"
+        journal_internal: Internal Journal
         notify: "Notify" #used in custom actions
         parent: "Parent"
         parent_issue: "Parent"
@@ -881,6 +1135,7 @@ lv:
       messages:
         accepted: "ir jāapstiprina."
         after: "jābūt pēc %{date}."
+        after_today: "must be in the future."
         after_or_equal_to: "jābūt pēc vai vienādam ar %{date}."
         before: "jābūt pirms %{date}."
         before_or_equal_to: "jābūt pirms vai vienādam ar %{date}."
@@ -899,8 +1154,10 @@ lv:
         error_conflict: "Information has been updated by at least one other user in the meantime."
         email: "is not a valid email address."
         empty: "nedrīkst būt tukšs."
+        enterprise_plan_required: "requires at least the %{plan_name}."
         even: "jābūt vienlīdzīgiem."
         exclusion: "rezervēts."
+        feature_disabled: is not available.
         file_too_large: "ir pārāk liels (maksimālais lielums ir %{count} baiti)."
         filter_does_not_exist: "filter does not exist."
         format: "does not match the expected format '%{expected}'."
@@ -927,6 +1184,7 @@ lv:
         not_an_integer: "nav vesels skaitlis."
         not_an_iso_date: "is not a valid date. Required format: YYYY-MM-DD."
         not_same_project: "neietilpst vienā un tai pašā projektā."
+        datetime_must_be_in_future: "must be in the future."
         odd: "jābūt nepāra."
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "could not be validated with the associated regular expression."
@@ -1036,6 +1294,12 @@ lv:
           attributes:
             project_ids:
               blank: "Please select a project."
+        project/phase:
+          attributes:
+            date_range:
+              start_date_must_be_before_finish_date: "start date must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              incomplete: "is incomplete."
         query:
           attributes:
             project:
@@ -1070,16 +1334,24 @@ lv:
             values:
               inclusion: "filter has invalid values."
               format: "%{message}"
+        queries/principals/filters/internal_mentionable_on_work_package_filter:
+          attributes:
+            values:
+              single_value_requirement: "must be a single work package"
         relation:
           typed_dag:
             circular_dependency: "The relationship creates a circle of relationships."
           attributes:
-            to:
-              error_not_found: "work package in `to` position not found or not visible"
-              error_readonly: "an existing relation's `to` link is immutable"
-            from:
-              error_not_found: "work package in `from` position not found or not visible"
-              error_readonly: "an existing relation's `from` link is immutable"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM pārdevējs nav pieejams"
           not_whitelisted: "konfigurācija nepieļauj."
@@ -1131,6 +1403,10 @@ lv:
         work_package:
           is_not_a_valid_target_for_time_entries: "Work package #%{id} is not a valid target for reassigning the time entries."
           attributes:
+            id:
+              format: "%{message}"
+              cannot_add_child_because_of_lack_of_permission: "Cannot add child because you don't have permissions to edit the selected work package."
+              blank: "ID can't be blank."
             assigned_to:
               format: "%{message}"
             done_ratio:
@@ -1147,6 +1423,7 @@ lv:
               smaller_than_dates: "is smaller than the interval between the start and the finish date."
               not_available_for_milestones: "is not available for milestone typed work packages."
               cannot_be_null: "can not be set to null as start date and finish date are known."
+              not_an_integer: "is not a valid duration."
             parent:
               cannot_be_milestone: "nevar būt atskaites punkts."
               cannot_be_self_assigned: "cannot be assigned to itself."
@@ -1187,6 +1464,8 @@ lv:
               duplicate_group: "The group name '%{group}' is used more than once. Group names must be unique."
               query_invalid: "The embedded query '%{group}' is invalid: %{details}"
               group_without_name: "Unnamed groups are not allowed."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1196,7 +1475,7 @@ lv:
               confirmation: "Password confirmation does not match password."
               format: "%{message}"
             password:
-              weak: "Must contain characters of the following classes (at least %{min_count} of %{all_count}): %{rules}"
+              weak: "Jāatbilst šādiem nosacījumiem (vismaz %{min_count} no %{all_count}): %{rules}"
               lowercase: "mazaie burti (piemēram 'a')"
               uppercase: "lielaie burti (piemēram, ' A')"
               numeric: "cipari (piemēram, \"1\")"
@@ -1247,6 +1526,10 @@ lv:
       forum: "Forum"
       global_role: "Global role"
       group: "Group"
+      issue_priority:
+        zero: "Priorities"
+        one: "Prioritāte"
+        other: "Priorities"
       member: "Member"
       news: "Jaunumi"
       notification:
@@ -1254,12 +1537,16 @@ lv:
         one: "Notification"
         other: "Notifications"
       placeholder_user: "Placeholder user"
-      project: "Projekts"
+      project:
+        zero: "Projekti"
+        one: "Projekts"
+        other: "Projekti"
       project_query:
         zero: "Project lists"
         one: "Project list"
         other: "Project lists"
       query: "Custom query"
+      reminder: "Reminder"
       role:
         zero: "Lomas"
         one: "Loma"
@@ -1267,7 +1554,7 @@ lv:
       status: "Work package status"
       token/api:
         zero: Access tokens
-        one: Access token
+        one: Piekļuves pilnvara
         other: Access tokens
       type: "Veids"
       user: "Lietotāji"
@@ -1319,71 +1606,118 @@ lv:
       changeset: "Changesets"
       message: "Forums"
       news: "Jaunumi"
-      project_attribute: "Project attributes"
+      project_details: "Detalizēta informācija par projektu"
       subproject: "Include subprojects"
       time_entry: "Pavadīts laiks"
       wiki_edit: "Wiki"
       work_package: "Pieteikumi"
+    project_phase:
+      activated: "activated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      deactivated: "deactivated"
+      deleted_project_phase: "Deleted project phase"
+      phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktīvs"
     assigned_to: "Pašreizējais atbildīgais"
     assignee: "Pašreizējais atbildīgais"
     attachments: "Attachments"
+    actor: "Actor"
+    action: "Darbība"
     author: "Autors"
+    avatar: "Avatārs"
     base: "General Error:"
+    body: "Body"
     blocks_ids: "IDs of blocked work packages"
     category: "Sadaļa"
     comment: "Komentârs"
     comments: "Komentârs"
     content: "Content"
     color: "Krāsa"
+    creator: "Izveidotājs"
     created_at: "Izveidots"
+    custom_field: "Custom field"
     custom_options: "Iespējamās vērtības"
     custom_values: "Pielāgotie lauki"
     date: "Datums"
+    dates_interval: "Date range"
     default_columns: "Default columns"
     description: "Apraksts"
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "Display Sums"
     due_date: "Finish date"
     estimated_hours: "Work"
     estimated_time: "Work"
+    email: "E-Pasts"
+    entity_type: "Entity"
     expires_at: "Expires at"
     firstname: "Vārds"
+    filter: "Filtrēt"
     group: "Group"
     groups: "Groups"
+    hexcode: "Hex code"
     id: "Nr"
     is_default: "Noklusējuma vērtība"
     is_for_all: "Visiem projektiem"
     public: "Publisks"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "Darba pieteikums"
+    journal: "Journal"
+    journal_notes: "Komentârs"
     lastname: "Uzvārds"
     login: "Username"
+    lock_version: "Lock version"
     mail: "E-Pasts"
     name: "Nosaukums"
+    note: "Note"
+    notes: "Piezīmes"
+    number: "Number"
+    options: "Opcijas"
+    operator: "Operatori"
     password: "Parole"
     priority: "Prioritāte"
     project: "Projekts"
+    project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
+    reason: "Reason"
     responsible: "Accountable"
+    required: "Obligāts"
+    recipient: "Recipient"
     role: "Loma"
     roles: "Lomas"
+    search: "Meklēšana"
     start_date: "Sākuma datums"
     status: "Statuss"
+    state: "State"
     subject: "Nosaukums"
+    slug: "Slug"
     summary: "Kopsavilkums"
+    time_zone: "Laika josla"
+    text: "Teksts"
     title: "Virsraksts"
     type: "Veids"
+    typeahead: "Autocomplete"
     updated_at: "Labots"
     updated_on: "Labots"
     uploader: "Uploader"
     user: "Lietotāji"
+    username: "Username"
+    unit: "Vienība"
     value: "Vērtība"
+    values: "Values"
     version: "Versija"
+    visible: "Redzams"
     work_package: "Darba pieteikums"
+    work_package_id: "Darba pieteikums"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"
@@ -1441,8 +1775,9 @@ lv:
   button_copy_and_follow: "Copy and follow"
   button_create: "Izveidot"
   button_create_and_continue: "Create and continue"
-  button_delete: "Dzēst"
   button_decline: "Decline"
+  button_delete: "Dzēst"
+  button_delete_permanently: "Delete permanently"
   button_delete_watcher: "Dzēst sekotāju %{name}"
   button_download: "Download"
   button_duplicate: "Duplicate"
@@ -1461,6 +1796,7 @@ lv:
   button_print: "Drukāt"
   button_quote: "Citēt"
   button_remove: Noņemt
+  button_remove_reminder: "Remove reminder"
   button_rename: "Rename"
   button_replace: "Replace"
   button_revoke: "Revoke"
@@ -1471,6 +1807,7 @@ lv:
   button_save_as: "Saglabāt kā"
   button_apply_changes: "Apply changes"
   button_save_back: "Saglabāt un atpakaļ"
+  button_set_reminder: "Set reminder"
   button_show: "Rādīt"
   button_sort: "Sort"
   button_submit: "Publicēt"
@@ -1526,7 +1863,8 @@ lv:
     text:
       failed: 'Could not copy project "%{source_project_name}" to project "%{target_project_name}".'
       succeeded: 'Copied project "%{source_project_name}" to "%{target_project_name}".'
-  create_new_page: "Wiki page"
+  create_wiki_page: "Create new wiki page"
+  create_wiki_page_button: "Wiki page"
   date:
     abbr_day_names:
       - "Sun"
@@ -1661,6 +1999,10 @@ lv:
         zero: "stundas"
         one: "stunda"
         other: "stundas"
+      day:
+        zero: "dienas"
+        one: "day"
+        other: "dienas"
   description_active: "Active?"
   description_attachment_toggle: "Show/Hide attachments"
   description_autocomplete: >
@@ -1693,16 +2035,94 @@ lv:
   #Text direction: Left-to-Right (ltr) or Right-to-Left (rtl)
   direction: ltr
   ee:
-    upsale:
-      form_configuration:
-        description: "Customize the form configuration with these additional add-ons:"
-        add_groups: "Add new attribute groups"
-        rename_groups: "Rename attributes groups"
-      project_filters:
-        description_html: "Filtering and sorting on custom fields is an Enterprise edition add-on."
+    features:
+      baseline_comparison: Baseline Comparisons
+      board_view: Advanced Boards
+      conditional_highlighting: Conditional Highlighting
+      internal_comments: Internal Comments
+      custom_actions: Custom Actions
+      custom_field_hierarchies: Custom fields of type hierarchy
+      customize_life_cycle: Customize Life Cycle
+      date_alerts: Date Alerts
+      define_custom_style: Custom theme and logo
+      edit_attribute_groups: Edit Attribute Groups
+      gantt_pdf_export: Gantt PDF Export
+      ldap_groups: LDAP users and group sync
+      nextcloud_sso: Single Sign-On for Nextcloud Storage
+      one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+      placeholder_users: Placeholder Users
+      project_list_sharing: Project List Sharing
+      readonly_work_packages: Readonly Work Packages
+      sso_auth_providers: Single sign-on
+      team_planner_view: Team Planner View
+      two_factor_authentication: 2FA Authentication
+      virus_scanning: Antivirus Scanning
+      work_package_query_relation_columns: Work Package Query Relation Columns
+      work_package_sharing: Share work packages with external users
+      work_package_subject_generation: Work Package Subject Generation
+    upsell:
+      plans_title: "Enterprise plans"
+      title: "Enterprise add-on"
+      plan_title: "Enterprise %{plan} add-on"
+      plan_name: "%{plan} enterprise plan"
+      plan_text_html: "Available starting with the %{plan_name}."
+      hide_banner: "Hide this banner"
+      homescreen_description: >
+        Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
+      homescreen_subline: By upgrading, you will also be supporting an open source project.
+      baseline_comparison:
+        description: Highlight changes made to this list since any point in the past.
+      work_package_subject_generation:
+        description: "Create automatically generated subjects using referenced attributes and text."
+      customize_life_cycle:
+        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
+      conditional_highlighting:
+        description: "Need certain work packages to stand out from the mass? Use conditional highlighting in the work packages table."
+      work_package_query_relation_columns:
+        description: "Need to see relations or child elements in the work package list?"
+      edit_attribute_groups:
+        description: "Customize form configuration with these additional add-ons:"
+        features:
+          groups: "Add new attribute groups"
+          rename: "Rename attribute groups"
+          related: "Add a table of related work packages"
+      readonly_work_packages:
+        description: "Mark work packages as read-only for specific statuses."
+      custom_field_hierarchies:
+        description: "Hierarchy custom fields allow organizing hierarchical structures in work packages by making use of multi-level select lists."
+      date_alerts:
+        description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+      work_package_sharing:
+        description: "Share work packages with users who are not members of the project."
+      project_list_sharing:
+        description: "Share project lists with individual users."
+      define_custom_style:
+        title: "Custom color theme and logo"
+        more_info: "Note: the used logo will be publicly accessible."
+        description: Customize your OpenProject installation with your own logo and colors.
+      custom_actions:
+        title: "Custom actions"
+        description: "Custom actions are one-click shortcuts to a set of pre-defined actions that you can make available on certain work packages based on status, role, type or project."
+      nextcloud_sso:
+        title: "Single Sign-On for Nextcloud Storage"
+        description: "Enable seamless and secure authentication for your Nextcloud storage with Single Sign-On. Simplify access management and enhance user convenience."
+      virus_scanning:
+        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
+      placeholder_users:
+        title: Placeholder users
+        description: >
+          Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
+      internal_comments:
+        title: Internal comments
+        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+      internal_comments_inline:
+        title: "Write internal comments only a small group can see"
+        description: " "
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Pieteikumu prioritātes"
   enumeration_reported_project_statuses: "Reported project status"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Single Sign-On (SSO) for user '%{value}' failed"
   error_can_not_archive_project: "This project cannot be archived: %{errors}"
   error_can_not_delete_entry: "Unable to delete entry"
@@ -1732,6 +2152,7 @@ lv:
   error_pdf_export_too_many_columns: "Too many columns selected for the PDF export. Please reduce the number of columns."
   error_pdf_failed_to_export: "The PDF export could not be saved: %{error}"
   error_token_authenticity: "Unable to verify Cross-Site Request Forgery token. Did you try to submit data on multiple browsers or tabs? Please close all tabs and try again."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "The work package was not found or does not belong to this project"
   error_work_package_id_not_found: "The work package was not found."
   error_must_be_project_member: "must be project member"
@@ -1762,7 +2183,7 @@ lv:
     changeset: "Changeset edited"
     message: Ziņojums rediģēts
     news: Jaunumi
-    project_attributes: "Project attributes edited"
+    project_details: "Project details edited"
     project: "Project edited"
     projects: "Project edited"
     reply: Replied
@@ -1776,8 +2197,10 @@ lv:
       subproject: "Subproject: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "Eksportēt"
+      submit: "Eksportēt"
+      save_export_settings:
+        label: "Save settings"
       format:
         label: "File format"
         options:
@@ -1791,6 +2214,7 @@ lv:
         input_label_report: "Add columns to attribute table"
         input_caption_report: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in the attribute table, but can be displayed below it."
         input_caption_table: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in table based exports."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "PDF export type"
@@ -1811,10 +2235,10 @@ lv:
           label: "Zoom levels"
           caption: "Select what is the zoom level for dates displayed in the chart."
           options:
-            days: "Days"
-            weeks: "Weeks"
-            months: "Months"
-            quarters: "Quarters"
+            days: "Diena"
+            weeks: "Nedēļa"
+            months: "Mēnesis"
+            quarters: "Ceturksnis"
         column_width:
           label: "Table column width"
           options:
@@ -1840,6 +2264,8 @@ lv:
     your_work_packages_export: "Work packages are being exported"
     succeeded: "Export completed"
     failed: "An error has occurred while trying to export the work packages: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atoms"
       csv: "CSV"
@@ -1859,6 +2285,37 @@ lv:
     units:
       hours: h
       days: d
+  pdf_generator:
+    page_nr_footer: "Page %{page} of %{total}"
+    template_attributes:
+      label: "Attributes and description"
+      caption: All the attributes present in the current form configuration using the default template.
+    template_contract:
+      label: "Contract"
+      caption: Work package details formatted to the standard German contract form.
+    dialog:
+      title: Generate PDF
+      submit: Download
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
+      footer_center:
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
+      hyphenation:
+        label: Hyphenation
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext available (optional)"
@@ -1887,9 +2344,8 @@ lv:
       users: "Jaunākās reģistrētie lietotāji šajā instancē."
     blocks:
       community: "OpenProject community"
-      upsale:
+      upsell:
         title: "Upgrade to Enterprise edition"
-        more_info: "More information"
     links:
       upgrade_enterprise_edition: "Upgrade to Enterprise edition"
       postgres_migration: "Migrating your installation to PostgreSQL"
@@ -1940,6 +2396,8 @@ lv:
           Progress calculation automatically <a href="%{href}" target="_blank">set to work-based mode and adjusted with version update</a>.
         progress_calculation_adjusted: >-
           Progress calculation automatically <a href="%{href}" target="_blank">adjusted with version update</a>.
+        scheduling_mode_adjusted: >-
+          Scheduling mode automatically adjusted with version update.
         totals_removed_from_childless_work_packages: >-
           Work and progress totals automatically removed for non-parent work packages with <a href="%{href}" target="_blank">version update</a>. This is a maintenance task and can be safely ignored.
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -1960,8 +2418,6 @@ lv:
       api_and_webhooks: "API and webhooks"
     quick_add:
       label: "Open quick add menu"
-    breadcrumb:
-      nested_element: "%{section_header}: <b>%{title}</b>"
   my_account:
     access_tokens:
       no_results:
@@ -2008,6 +2464,7 @@ lv:
       responsible: "Accountable"
       shared: "Shared"
       watched: "Sekotājs"
+      reminder: "Reminder"
     facets:
       unread: "Unread"
       unread_title: "Show unread"
@@ -2026,6 +2483,8 @@ lv:
         mentioned: "You have been mentioned in %{work_package}"
         responsible: "You have become accountable for %{work_package}"
         watched: "You are watching %{work_package}"
+    query:
+      invalid_filter: "Invalid notification filter"
   label_accessibility: "Accessibility"
   label_account: "Konts"
   label_active: "Aktīvs"
@@ -2041,6 +2500,7 @@ lv:
   label_add_subtask: "Add subtask"
   label_added: "added"
   label_added_by: "Added by %{author}"
+  label_added_by_on: "Added by %{author} on %{date}"
   label_added_time_by: "Pievienoja %{author} pirms %{age}"
   label_additional_workflow_transitions_for_assignee: "Additional transitions allowed when the user is the assignee"
   label_additional_workflow_transitions_for_author: "Additional transitions allowed when the user is the author"
@@ -2079,7 +2539,6 @@ lv:
   label_ldap_auth_source_plural: "LDAP connections"
   label_attribute_expand_text: "The complete text for '%{attribute}'"
   label_authentication: "Authentication"
-  label_authentication_settings: "Authentication settings"
   label_available_custom_fields_projects: "Available custom fields projects"
   label_available_global_roles: "Available global roles"
   label_available_project_attributes: "Available project attributes"
@@ -2166,7 +2625,7 @@ lv:
   label_dashboard: "Informācijas panelis"
   label_database_version: "PostgreSQL version"
   label_date: "Datums"
-  label_date_and_time: "Date and time"
+  label_date_and_time: "Datums un laiks"
   label_date_format: "Date format"
   label_date_from: "From"
   label_date_from_to: "No %{start} līdz %{end}"
@@ -2175,13 +2634,16 @@ lv:
   label_default: "Default"
   label_delete_user: "Delete user"
   label_delete_project: "Delete project"
+  label_delete: "Dzēst"
   label_deleted: "deleted"
   label_deleted_custom_field: "(deleted custom field)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(empty)"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
   label_descending: "Descending"
   label_details: "Details"
+  label_defaults: "Defaults"
   label_development_roadmap: "Attīstības ceļvedis"
   label_diff: "diff"
   label_diff_inline: "inline"
@@ -2213,10 +2675,10 @@ lv:
   label_enterprise_active_users: "%{current}/%{limit} booked active users"
   label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Enterprise support"
-  label_enterprise_addon: "Enterprise add-on"
   label_environment: "Environment"
   label_estimates_and_progress: "Estimates and progress"
   label_equals: "is"
+  label_equals_with_descendants: "is any with descendants"
   label_everywhere: "everywhere"
   label_example: "Example"
   label_experimental: "Experimental"
@@ -2238,6 +2700,7 @@ lv:
   label_filter: "Filtri"
   label_filter_add: "Pievienot filtru"
   label_filter_by: "Filter by"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "Filtri"
   label_filters_toggle: "Show/hide filters"
   label_float: "Float"
@@ -2249,6 +2712,7 @@ lv:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "General"
   label_generate_key: "Generate a key"
+  label_global_roles: "Global roles"
   label_git_path: "Path to .git directory"
   label_greater_or_equal: ">="
   label_group_by: "Grupēt pēc"
@@ -2289,7 +2753,7 @@ lv:
   label_share_project_list: "Share project list"
   label_share_work_package: "Share work package"
   label_show_all_registered_users: "Show all registered users"
-  label_show_less: "Show less"
+  label_show_less: "Rādīt mazāk"
   label_show_more: "Show more"
   label_journal: "Journal"
   label_journal_diff: "Description Comparison"
@@ -2360,9 +2824,10 @@ lv:
   label_modules: "Moduļi"
   label_months_from: "months from"
   label_more: "More"
+  label_more_information: "More information"
   label_more_than_ago: "more than days ago"
-  label_move_column_left: "Move column left"
-  label_move_column_right: "Move column right"
+  label_move_column_left: "Pārvietot kolonnu pa kreisi"
+  label_move_column_right: "Pārvietot kolonnu pa labi"
   label_move_work_package: "Move work package"
   label_my_account: "Account settings"
   label_my_activity: "My activity"
@@ -2371,7 +2836,7 @@ lv:
   label_my_queries: "My custom queries"
   label_name: "Nosaukums"
   label_never: "Nekad"
-  label_new: "New"
+  label_new: "Jauns"
   label_new_features: "New features"
   label_new_statuses_allowed: "New statuses allowed"
   label_news_singular: "Jaunumi"
@@ -2387,7 +2852,7 @@ lv:
   label_no_change_option: "(No change)"
   label_no_data: "Nav dati"
   label_no_due_date: "no finish date"
-  label_no_start_date: "no start date"
+  label_no_start_date: "bez sākuma datuma"
   label_no_parent_page: "No parent page"
   label_nothing_display: "Nav nekas ko parādīt"
   label_nobody: "nobody"
@@ -2397,6 +2862,7 @@ lv:
   label_none_parentheses: "(none)"
   label_not_contains: "doesn't contain"
   label_not_equals: "is not"
+  label_life_cycle_step_plural: "Project life cycle"
   label_on: " "
   label_operator_all: "is not empty"
   label_operator_none: "is empty"
@@ -2409,7 +2875,7 @@ lv:
   label_openproject_website: "OpenProject website"
   label_optional_description: "Apraksts"
   label_options: "Opcijas"
-  label_other: "Other"
+  label_other: "Cits"
   label_overall_activity: "Kopējās darbības"
   label_overview: "Pārskats"
   label_page_title: "Page title"
@@ -2454,10 +2920,11 @@ lv:
   label_project_latest: "Jaunākie projekti"
   label_project_default_type: "Allow empty type"
   label_project_hierarchy: "Projektu hierarhija"
-  label_project_mappings: "Projects"
+  label_project_mappings: "Projekti"
   label_project_new: "Jauns projekts"
   label_project_plural: "Projekti"
   label_project_list_plural: "Project lists"
+  label_project_life_cycle: "Project life cycle"
   label_project_attributes_plural: "Project attributes"
   label_project_custom_field_plural: "Project attributes"
   label_project_settings: "Project settings"
@@ -2475,13 +2942,13 @@ lv:
   label_register: "Create a new account"
   label_register_with_developer: "Register as developer"
   label_registered_on: "Registered on"
-  label_registration_activation_by_email: "account activation by email"
-  label_registration_automatic_activation: "automatic account activation"
-  label_registration_manual_activation: "manual account activation"
   label_related_work_packages: "Saistītie pieteikumi"
   label_relates: "related to"
   label_relates_to: "related to"
+  label_relation: "Relation"
+  label_relation_actions: "Relation actions"
   label_relation_delete: "Delete relation"
+  label_relation_edit: "Edit relation"
   label_relation_new: "New relation"
   label_release_notes: "Informācija par laidienu"
   label_remaining_work: "Atlikušie darbi"
@@ -2496,6 +2963,7 @@ lv:
   label_reporting: "Reporting"
   label_reporting_plural: "Reportings"
   label_repository: "Repository"
+  label_repository_remove: "Remove repository"
   label_repository_root: "Krātuves sakne"
   label_repository_plural: "Repositories"
   label_required: "required"
@@ -2511,6 +2979,7 @@ lv:
   label_roadmap_overdue: "%{value} late"
   label_role_and_permissions: "Roles and permissions"
   label_role_new: "New role"
+  label_role_grantable: "Grantable role"
   label_role_plural: "Lomas"
   label_role_search: "Assign role to new members"
   label_scm: "SCM"
@@ -2526,10 +2995,10 @@ lv:
   label_show_completed_versions: "Rādīt pabeigtas versijas"
   label_columns: "Kolonnas"
   label_sort: "Sort"
-  label_sort_ascending: "Sort ascending"
+  label_sort_ascending: "Kārtot augošā secībā"
   label_sort_by: "Sort by %{value}"
   label_sorted_by: "sorted by %{value}"
-  label_sort_descending: "Sort descending"
+  label_sort_descending: "Kārtot dilstošā secībā"
   label_sort_higher: "Move up"
   label_sort_highest: "Move to top"
   label_sort_lower: "Move down"
@@ -2558,11 +3027,16 @@ lv:
   label_this_month: "this month"
   label_this_week: "this week"
   label_this_year: "this year"
+  label_time: "Laiks"
   label_time_entry_plural: "Pavadīts laiks"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Virsraksts"
   label_projects_menu: "Projekti"
   label_today: "šodien"
+  label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Augšējā izvēlne"
   label_topic_plural: "Tēmas"
   label_total: "Kopā"
@@ -2593,6 +3067,7 @@ lv:
   label_user_settings: "User settings"
   label_users_settings: "Users settings"
   label_version_new: "New version"
+  label_version_edit: "Edit version"
   label_version_plural: "Versijas"
   label_version_sharing_descendants: "Ar apakšprojektiem"
   label_version_sharing_hierarchy: "With project hierarchy"
@@ -2674,7 +3149,7 @@ lv:
   label_global_role: "Global role"
   label_not_changeable: "(not changeable)"
   label_global: "Global"
-  label_seeded_from_env_warning: This record has been created through a setting / environment variable. It is not editable through UI.
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "Error executing the macro %{macro_name}"
   macro_unavailable: "Macro %{macro_name} cannot be displayed."
   macros:
@@ -2731,8 +3206,13 @@ lv:
         prefix: "Received because of the notification setting: %{reason}"
         date_alert_start_date: "Date alert"
         date_alert_due_date: "Date alert"
+        reminder: "Reminder"
       see_all: "See all"
       updated_at: "Updated at %{timestamp} by %{user}"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "You may %{allowed_actions} this work package. This can change depending on your project role and permissions."
@@ -2891,6 +3371,7 @@ lv:
   notice_bad_request: "Bad Request."
   notice_not_authorized: "You are not authorized to access this page."
   notice_not_authorized_archived_project: "The project you're trying to access has been archived."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "Your password is not correct. Cannot continue."
   notice_principals_found_multiple: "There are %{number} results found. \n Tab to focus the first result."
   notice_principals_found_single: "There is one result. \n Tab to focus it."
@@ -2899,7 +3380,10 @@ lv:
   notice_successful_connection: "Successful connection."
   notice_successful_create: "Successful creation."
   notice_successful_delete: "Successful deletion."
+  notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Successful update."
+  notice_unsuccessful_update: "Update failed."
+  notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
     Successful update. The custom fields of the activated types are automatically activated
     on the work package form. <a href="%{url}" target="_blank">See more</a>.
@@ -2939,12 +3423,13 @@ lv:
     text_getting_started_description: "Get a quick overview of project management and team collaboration with OpenProject. You can restart this video from the help menu."
     welcome: "Welcome to %{app_title}"
     select_language: "Please select your language"
-  permission_add_work_package_notes: "Add notes"
+  permission_add_work_package_comments: "Add comments"
   permission_add_work_packages: "Add work packages"
   permission_add_messages: "Post messages"
   permission_add_project: "Create projects"
   permission_add_work_package_attachments: "Add attachments"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
+  permission_add_internal_comments: "Write internal comments"
   permission_archive_project: "Archive project"
   permission_create_user: "Create users"
   permission_manage_user: "Edit users"
@@ -2969,14 +3454,19 @@ lv:
   permission_delete_timelines: "Delete timelines"
   permission_delete_wiki_pages: "Delete wiki pages"
   permission_delete_wiki_pages_attachments: "Delete attachments"
-  permission_edit_work_package_notes: "Edit notes"
+  permission_edit_work_package_comments: "Moderate comments"
+  permission_edit_work_package_comments_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Edit work packages"
   permission_edit_messages: "Edit messages"
-  permission_edit_own_work_package_notes: "Edit own notes"
+  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_work_package_comments: "Edit own comments"
   permission_edit_own_messages: "Edit own messages"
   permission_edit_own_time_entries: "Edit own time logs"
+  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "Edit project"
   permission_edit_project_attributes: "Edit project attributes"
+  permission_edit_project_phases: "Edit project phases"
   permission_edit_reportings: "Edit reportings"
   permission_edit_time_entries: "Edit time logs for other users"
   permission_edit_timelines: "Edit timelines"
@@ -3006,11 +3496,15 @@ lv:
   permission_search_project: "Search project"
   permission_select_custom_fields: "Select custom fields"
   permission_select_project_custom_fields: "Select project attributes"
+  permission_select_project_phases: "Select project phases"
+  permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the life cycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "Atlasiet projekta moduļus"
   permission_share_work_packages: "Share work packages"
   permission_manage_types: "Select types"
+  permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "View projects"
   permission_view_changesets: "View repository revisions in OpenProject"
+  permission_view_internal_comments: "View internal comments"
   permission_view_commit_author_statistics: "View commit author statistics"
   permission_view_dashboards: "View dashboards"
   permission_view_work_package_watchers: "Skatīt sekotājus"
@@ -3029,6 +3523,7 @@ lv:
   permission_work_package_assigned_explanation: "Work packages can be assigned to users and groups in possession of this role in the respective project"
   permission_view_project_activity: "View project activity"
   permission_view_project_attributes: "View project attributes"
+  permission_view_project_phases: "View project phases"
   permission_save_bcf_queries: "Save BCF queries"
   permission_manage_public_bcf_queries: "Manage public BCF queries"
   permission_edit_attribute_help_texts: "Edit attribute help texts"
@@ -3038,6 +3533,13 @@ lv:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Are you sure you want to archive the project '%{name}'?"
+      archived: "Archived"
+    count:
+      zero: "0 projects"
+      one: "1 projekts"
+      other: "%{count} projekti"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3046,23 +3548,21 @@ lv:
       project_verification: "Enter the project's name %{name} to verify the deletion."
       subprojects_confirmation: "Its subproject(s): %{value} will also be deleted."
       title: "Dzēst projektu %{name}"
+    filters:
+      project_phase: "Project phase: %{phase}"
+      project_phase_any: "Project phase: Any"
+      project_phase_gate: "Project phase gate: %{gate}"
     identifier:
       warning_one: Members of the project will have to relocate the project's repositories.
       warning_two: Existing links to the project will no longer work.
       title: Mainīt projekta identifikatoru
+    not_available: "Project N/A"
     template:
       copying: >
         Your project is being created from the selected template project. You will be notified by mail as soon as the project is available.
       use_template: "Use template"
       make_template: "Set as template"
       remove_from_templates: "Remove from templates"
-    archive:
-      are_you_sure: "Are you sure you want to archive the project '%{name}'?"
-      archived: "Archived"
-    count:
-      zero: "0 Projects"
-      one: "1 Project"
-      other: "%{count} Projects"
   project_module_activity: "Aktivitāte"
   project_module_forums: "Forums"
   project_module_work_package_tracking: "Pieteikumi"
@@ -3193,9 +3693,19 @@ lv:
     warnings:
       cannot_annotate: "This file cannot be annotated."
   scheduling:
-    activated: "activated"
-    deactivated: "deactivated"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Search ..."
+  setting_allowed_link_protocols: "Allowed link protocols"
+  setting_allowed_link_protocols_text_html: >-
+    Allow these protocols to be rendered as links in work package descriptions, long text fields and comments. For example, %{tel_code} or %{element_code}. Enter one protocol per line. <br/> Protocols %{http_code}, %{https_code}, and %{mailto_code} are always allowed.
+  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url_text_html: >
+    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
+  setting_after_login_default_redirect_url: "After login redirect"
+  setting_after_login_default_redirect_url_text_html: >
+    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Enable CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) allowed origins"
   setting_apiv3_cors_origins_text_html: >
@@ -3275,6 +3785,7 @@ lv:
   setting_hours_per_day_explanation: >-
     This defines what is considered a "day" when displaying duration in days and hours (for example, if a day is 8 hours, 32 hours would be 4 days).
   setting_invitation_expiration_days: "Activation email expires after"
+  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
   setting_work_package_done_ratio: "Progress calculation mode"
   setting_work_package_done_ratio_field: "Work-based"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3290,6 +3801,9 @@ lv:
   setting_journal_aggregation_time_minutes: "User actions aggregated within"
   setting_log_requesting_user: "Log user login, name, and mail address for all requests"
   setting_login_required: "Authentication required"
+  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_lost_password: "Enable password reset"
+  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
   setting_mail_from: "Emission email address"
   setting_mail_handler_api_key: "API key"
   setting_mail_handler_body_delimiters: "Truncate emails after one of these lines"
@@ -3315,6 +3829,7 @@ lv:
   setting_project_gantt_query_text: "You can modify the query that is used to display Gantt chart from the project overview page."
   setting_security_badge_displayed: "Display security badge"
   setting_registration_footer: "Registration footer"
+  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
   setting_repositories_automatic_managed_vendor: "Automatic repository vendor type"
   setting_repositories_encodings: "Repositories encodings"
   setting_repository_storage_cache_minutes: "Repository disk size cache"
@@ -3325,6 +3840,22 @@ lv:
   setting_repository_truncate_at: "Maximum number of files displayed in the repository browser"
   setting_rest_api_enabled: "Enable REST web service"
   setting_self_registration: "Self-registration"
+  setting_self_registration_caption: >
+    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
+  setting_self_registration_warning: >
+    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+  setting_self_registration_disabled: "Disabled"
+  setting_self_registration_disabled_caption: >
+    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
+  setting_self_registration_activation_by_email: "Account activation by email"
+  setting_self_registration_activation_by_email_caption: >
+    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
+  setting_self_registration_automatic_activation: "Automatic account activation"
+  setting_self_registration_automatic_activation_caption: >
+    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
+  setting_self_registration_manual_activation: "Manual account activation"
+  setting_self_registration_manual_activation_caption: >
+    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
   setting_session_ttl: "Session expiry time after inactivity"
   setting_session_ttl_hint: "Value below 5 works like disabled"
   setting_session_ttl_enabled: "Session expires"
@@ -3352,6 +3883,8 @@ lv:
   setting_working_days: "Working days"
   settings:
     authentication:
+      login_and_sso: "Login and SSO"
+      registration: "Registration"
       single_sign_on: "Single Sign-On"
       omniauth_direct_login_hint_html: >
         If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.
@@ -3369,8 +3902,6 @@ lv:
         Remaining files have been scanned. There are %{file_count} in quarantine. You are being redirected to the quarantine page. Use this page to delete or override quarantined files.
       remaining_rescanned_files: >
         Virus scanning has been enabled successfully. There are %{file_count} that were uploaded previously and still need to be scanned. This process has been scheduled in the background. The files will remain accessible during the scan.
-      upsale:
-        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
       actions:
         delete: "Delete the file"
         quarantine: "Quarantine the file"
@@ -3405,7 +3936,7 @@ lv:
     notifications:
       events_explanation: "Governs for which event an email is sent out. Work packages are excluded from this list as the notifications for them can be configured specifically for every user."
       delay_minutes_explanation: "Email sending can be delayed to allow users with configured in app notification to confirm the notification within the application before a mail is sent out. Users who read a notification within the application will not receive an email for the already read notification."
-    other: "Other"
+    other: "Cits"
     passwords: "Passwords"
     project_attributes:
       heading: "Project attributes"
@@ -3421,6 +3952,27 @@ lv:
       new:
         heading: "New attribute"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
+    project_phase_definitions:
+      heading: "Project life cycle"
+      heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
+      label_add: "Pievienot"
+      label_add_description: "Add project phase definition"
+      filter:
+        label: "Search project phase"
+      section_header: "Phases"
+      non_defined: "No phases are currently defined."
+      phase_gates: "Phase gates"
+      new:
+        description: "Changes to this project phase will be reflected in all projects where it is enabled."
+        heading: "New Phase"
+      edit:
+        heading: "Edit Phase"
+      both_gate: "Start and finish gate"
+      no_gate: "No gate"
+      start_gate: "Start gate"
+      start_gate_caption: "Add a gate with the start date of the phase"
+      finish_gate: "Finish gate"
+      finish_gate_caption: "Add a gate with the end date of the phase"
     projects:
       missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
       section_new_projects: "Settings for new projects"
@@ -3433,6 +3985,11 @@ lv:
     working_days:
       section_work_week: "Work week"
       section_holidays_and_closures: "Holidays and closures"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
+      activities:
+        enable_internal_comments: "Enable internal comments"
+        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Plain text"
@@ -3454,6 +4011,7 @@ lv:
   text_are_you_sure_continue: "Are you sure you want to continue?"
   text_are_you_sure_with_children: "Delete work package and all child work packages?"
   text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this phase will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Assign to the project"
   text_form_configuration: >
     You can customize which fields will be displayed in work package forms. You can freely group the fields to reflect the needs for your domain.
@@ -3467,8 +4025,6 @@ lv:
     When using custom fields: Keep in mind that custom fields need to be activated per project, too.
   text_custom_field_hint_activate_per_project_and_type: >
     Custom fields need to be activated per work package type and per project.
-  text_wp_status_read_only_html: >
-    The Enterprise edition will add these additional add-ons for work packages' statuses fields: <br> <ul> <li><b>Allow to mark work packages to read-only for specific statuses</b></li> </ul>
   text_project_custom_field_html: >
     The Enterprise edition will add these additional add-ons for projects' custom fields: <br> <ul> <li><b>Add custom fields for projects to your Project list to create a project portfolio view</b></li> </ul>
   text_custom_logo_instructions: >
@@ -3533,6 +4089,7 @@ lv:
   text_notice_security_badge_displayed_html: >
     Note: if enabled, this will display a badge with your installation status in the <a href="%{information_panel_path}">%{information_panel_label}</a> administration panel, and on the home page. It is displayed to administrators only. <br/> The badge will check your current OpenProject version against the official OpenProject release database to alert you of any updates or known vulnerabilities. For more information on what the check provides, what data is needed to provide available updates, and how to disable this check, please visit <a href="%{more_info_url}">the configuration documentation</a>.
   text_own_membership_delete_confirmation: "You are about to remove some or all of your permissions and may no longer be able to edit this project after that.\nAre you sure you want to continue?"
+  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
   text_plugin_assets_writable: "Plugin assets directory writable"
   text_powered_by: "Darbojas uz %{link}"
   text_project_identifier_info: "Only lower case letters (a-z), numbers, dashes and underscores are allowed, must start with a lower case letter."
@@ -3550,6 +4107,7 @@ lv:
   text_unallowed_characters: "Unallowed characters"
   text_user_invited: The user has been invited and is pending registration.
   text_user_wrote: "%{value} wrote:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "The work package contains unsaved text that will be lost if you leave this page."
   text_what_did_you_change_click_to_add_comment: "What did you change? Click to add comment"
   text_wiki_destroy_confirmation: "Are you sure you want to delete this wiki and all its content?"
@@ -3602,7 +4160,7 @@ lv:
           description: "Order the %{plural} by one or more sorting criteria. You will lose the previous sorting."
   top_menu:
     additional_resources: "Additional resources"
-    getting_started: "Getting started"
+    getting_started: "Uzsākot darbu"
     help_and_support: "Help and support"
   total_progress: "Kopējais progress"
   user:
@@ -3710,6 +4268,12 @@ lv:
       edit_description: "Can view, comment and edit this work package."
       view: "View"
       view_description: "Can view this work package."
+    reminders:
+      label_remind_at: "Datums"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 users"
@@ -3775,7 +4339,7 @@ lv:
         view_description: "Can view this project list."
         edit: "Labot"
         edit_description: "Can view, share and edit this project list."
-      upsale:
+      upsell:
         message: "Sharing project lists with individual users is an enterprise add-on."
   working_days:
     info: >
@@ -3796,7 +4360,6 @@ lv:
   nothing_to_preview: "Nothing to preview"
   api_v3:
     attributes:
-      lock_version: "Lock Version"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"
@@ -3896,6 +4459,8 @@ lv:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAuth application"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth applications"
       named: "OAuth application '%{name}'"
       new: "New OAuth application"
@@ -3953,6 +4518,7 @@ lv:
       connected: "Connected"
       error: "Error"
       failed_authorization: "Authorization failed"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integration"
       label_redirect_uri: "Redirect URI"
@@ -4003,3 +4569,5 @@ lv:
   plugin_openproject_auth_saml:
     name: "OmniAuth SAML / Single-Sign On"
     description: "Adds the OmniAuth SAML provider to OpenProject"
+  enterprise_plans:
+    legacy_enterprise: "Enterprise Plan"

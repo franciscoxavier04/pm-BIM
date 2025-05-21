@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ::TwoFactorAuthentication
   class BaseController < ApplicationController
     include ::TwoFactorAuthentication::WebauthnRelyingParty
@@ -40,7 +42,7 @@ module ::TwoFactorAuthentication
     end
 
     ##
-    # Destroy the given device if its not the default
+    # Destroy the given device if it's not the default
     def destroy
       if @device.default && strategy_manager.enforced?
         render_400 message: t("two_factor_authentication.devices.is_default_cannot_delete")
@@ -229,8 +231,6 @@ module ::TwoFactorAuthentication
 
     def find_device
       @device = target_user.otp_devices.find(params[:device_id])
-    rescue ActiveRecord::RecordNotFound
-      render_404
     end
 
     def find_user
@@ -239,14 +239,6 @@ module ::TwoFactorAuthentication
 
     def target_user
       current_user
-    end
-
-    def show_local_breadcrumb
-      true
-    end
-
-    def default_breadcrumb
-      t("two_factor_authentication.label_devices")
     end
 
     def available_devices

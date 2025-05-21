@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "../../spec_helper"
 require_relative "authentication_controller_shared_examples"
 
@@ -61,7 +63,7 @@ RSpec.describe TwoFactorAuthentication::AuthenticationController, with_settings:
         get :request_otp
       end
 
-      # User can login without 2FA, since its not enforced
+      # User can login without 2FA, since it's not enforced
       it_behaves_like "immediate success login"
     end
 
@@ -73,7 +75,7 @@ RSpec.describe TwoFactorAuthentication::AuthenticationController, with_settings:
         get :request_otp
       end
 
-      # User can login without 2FA, since its not enforced
+      # User can login without 2FA, since it's not enforced
       it_behaves_like "immediate success login"
     end
 

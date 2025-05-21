@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "mobile date filter work packages", :js, :with_cuprite do
+RSpec.describe "mobile date filter work packages", :js do
   shared_let(:user) { create(:admin) }
   shared_let(:project) { create(:project) }
   shared_let(:wp_table) { Pages::WorkPackagesTable.new(project) }

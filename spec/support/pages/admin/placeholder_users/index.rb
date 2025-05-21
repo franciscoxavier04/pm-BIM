@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -37,8 +39,9 @@ module Pages
         end
 
         def expect_listed(*placeholder_users)
-          rows = page.all "td.name"
-          expect(rows.map(&:text)).to include(*placeholder_users.map(&:name))
+          placeholder_users.each do |user|
+            expect(page).to have_css("td.name", text: user.name)
+          end
         end
 
         def expect_ordered(*placeholder_users)
@@ -47,8 +50,9 @@ module Pages
         end
 
         def expect_not_listed(*users)
-          rows = page.all "td.name"
-          expect(rows.map(&:text)).not_to include(*users.map(&:name))
+          users.each do |user|
+            expect(page).to have_no_css("td.name", text: user.name)
+          end
         end
 
         def expect_non_listed

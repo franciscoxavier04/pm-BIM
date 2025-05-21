@@ -26,7 +26,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require File.expand_path(File.dirname(__FILE__) + "/../../spec_helper.rb")
+require_relative "../../spec_helper"
 
 RSpec.describe "adding a new budget", :js do
   let(:project) { create(:project_with_types, members: project_members) }
@@ -40,7 +40,7 @@ RSpec.describe "adding a new budget", :js do
   it "shows link to create a new budget" do
     visit projects_budgets_path(project)
 
-    click_on("Add budget")
+    page.find("[aria-label='Add budget']").click
 
     expect(page).to have_content "New budget"
     expect(page).to have_content "Description"
@@ -59,7 +59,7 @@ RSpec.describe "adding a new budget", :js do
     it "can switch between them" do
       visit projects_budgets_path(project)
 
-      click_on("Add budget")
+      page.find("[aria-label='Add budget']").click
       expect(page).to have_content "New budget"
 
       fill_in "Subject", with: "My subject"

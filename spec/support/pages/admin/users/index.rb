@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -37,12 +39,12 @@ module Pages
         end
 
         def expect_listed(*users)
-          rows = page.all "td.username a"
+          rows = page.all "td.username a", count: users.count
           expect(rows.map(&:text)).to include(*users.map(&:login))
         end
 
         def expect_order(*users)
-          rows = page.all "td.username a"
+          rows = page.all "td.username a", count: users.count
           expect(rows.map(&:text)).to eq(users.map(&:login))
         end
 

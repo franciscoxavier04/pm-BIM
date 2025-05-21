@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -30,7 +32,6 @@ require "spec_helper"
 
 RSpec.describe "index placeholder users",
                :js,
-               :with_cuprite,
                with_ee: %i[placeholder_users] do
   let!(:current_user) { create(:admin) }
   let!(:anonymous) { create(:anonymous) }

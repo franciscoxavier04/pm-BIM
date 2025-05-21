@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,11 +30,12 @@
 
 require "spec_helper"
 
-RSpec.describe "Homescreen", "index", :with_cuprite do
+RSpec.describe "Homescreen", "index" do
   let(:admin) { create(:admin) }
   let(:user) { build_stubbed(:user) }
   let!(:project) { create(:public_project, identifier: "public-project") }
   let(:general_settings_page) { Pages::Admin::SystemSettings::General.new }
+  let(:global_html_title) { Components::HtmlTitle.new }
 
   it "is reachable by the global menu" do
     login_as user

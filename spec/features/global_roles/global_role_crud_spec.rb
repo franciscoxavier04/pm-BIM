@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,7 +31,7 @@
 require "spec_helper"
 require_relative "mock_global_permissions"
 
-RSpec.describe "Global role: Global role CRUD", :js, :with_cuprite do
+RSpec.describe "Global role: Global role CRUD", :js do
   # Scenario: Global Role creation
   # Given there is the global permission "glob_test" of the module "global_group"
   include_context "with mocked global permissions", [["glob_test", { project_module: "global_group" }]]

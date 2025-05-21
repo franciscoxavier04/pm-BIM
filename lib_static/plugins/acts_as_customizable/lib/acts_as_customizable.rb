@@ -49,7 +49,9 @@ module Redmine
              dependent: :delete_all,
              validate: false,
              autosave: true
-          validate :validate_custom_values
+
+          validation_options = options[:validate_on] ? { on: options[:validate_on] } : {}
+          validate :validate_custom_values, **validation_options
           send :include, Redmine::Acts::Customizable::InstanceMethods
 
           before_save :ensure_custom_values_complete
@@ -276,6 +278,7 @@ module Redmine
 
             # Skip when the new value is the default value
             next cfv_changes if value_was.nil? && cfv.default?
+
             cfv_changes.merge("custom_field_#{cfv.custom_field_id}" => [value_was, cfv.value])
           end
         end

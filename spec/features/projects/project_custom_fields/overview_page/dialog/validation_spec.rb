@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,7 +31,7 @@
 require "spec_helper"
 require_relative "../shared_context"
 
-RSpec.describe "Edit project custom fields on project overview page", :js do
+RSpec.describe "Edit project custom fields on project overview page", :js, :selenium do
   include_context "with seeded projects, members and project custom fields"
 
   let(:overview_page) { Pages::Projects::Show.new(project) }

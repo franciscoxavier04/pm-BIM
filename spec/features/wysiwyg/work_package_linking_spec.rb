@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Wysiwyg work package linking", :js do
+RSpec.describe "Wysiwyg work package linking", :js, :selenium do
   let(:user) { create(:admin) }
   let(:project) { create(:project, enabled_module_names: %w[wiki work_package_tracking]) }
   let(:work_package) { create(:work_package, subject: "Foobar", project:) }

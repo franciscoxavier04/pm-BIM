@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -230,7 +232,7 @@ RSpec.describe VersionsController do
 
     it { expect(response).to be_successful }
     it { expect(response).to render_template("show") }
-    it { assert_select "h2", content: version2.name }
+    it { assert_select "h1", content: version2.name }
 
     subject { assigns(:version) }
 

@@ -141,7 +141,7 @@ bg:
   points_resolved: "points resolved"
   points_to_accept: "points not accepted"
   points_to_resolve: "points not resolved"
-  project_module_backlogs: "Опашка"
+  project_module_backlogs: "Назад"
   rb_label_copy_tasks: "Copy work packages"
   rb_label_copy_tasks_all: "All"
   rb_label_copy_tasks_none: "None"

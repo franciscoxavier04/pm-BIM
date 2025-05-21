@@ -21,7 +21,7 @@ This page will explain how in-app notifications work and how to use them.
 
 With in-app notifications, you will be notified about important changes that are relevant to you, whether they are new comments that mention you, updates to status, type or dates or new assignments. The in-app notifications can work as an alternative to email notifications or be used in parallel. This feature is enabled by default.
 
-<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-In-app-notifications.mp4" type="video/mp4" controls="" style="width:100%"></video>
+<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-In-app-notifications.mp4"></video>
 
 ## Access in-app notifications
 
@@ -34,6 +34,12 @@ To view the notifications, click the bell icon at the top right of the header.  
 Each row in Notification center is a work package that has generated a notification. It is possible that you have received multiple notifications for the same work package (if, for example, the date of a work package you are watching was changed by one person and then the status later change by another, that would generate two notifications). A blue badge on the right edge of each row displays the number of unread notifications concerning that particular work package.
 
 The work packages are listed in order of freshness. The work packages on top of the list have the "newest" notifications. This means if there is a new update to a work package that was further down in your notification list, it will be moved to the top since that is now the newest notification.
+
+> [!NOTE] 
+>
+> If multiple notifications exist for a single work package, the [work package reminder](../work-packages/edit-work-package/#work-package-reminders) will take precedence, showing the reminder note at the bottom of the page if one exists. 
+>
+> In case a work package has both a reminder and a date alert notification set up, then the date alert is combined with the reminder note such that that both are visible in the last line. If there are additional reasons for the notification (watcher, mentioned, assignee), those will continue to be displayed in first line of the notification.
 
 ## Manage notifications
 
@@ -51,7 +57,7 @@ The Activity tab will auto-scroll to the last event that generated a notificatio
 
 You can filter or group notifications by using the two sets of predefined filters on the left-hand menu:
 
-(Area 1) You can filter by the **reason** you were notified: because you were mentioned (*@mention*), because you are either the assignee or accountable for that work package, because it concerns a work package you are watching or because you have an active date alert.
+(Area 1) You can filter by the **reason** you were notified: because you were mentioned (*@mention*), because you are either the assignee or accountable for that work package, because it concerns a work package you are watching or because you have an active reminder or a date alert.
 
 (Area 2) You can filter by **project** (area 2), for example to filter for notifications that originated from a specific project.
 

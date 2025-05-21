@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,7 +29,7 @@
 #++
 
 require "spec_helper"
-require File.expand_path("../support/permission_specs", __dir__)
+require "support/permission_specs"
 
 RSpec.describe Projects::Settings::ProjectCustomFieldsController, "select_project_custom_fields mappings permission", # rubocop:disable RSpec/EmptyExampleGroup,RSpec/SpecFilePathFormat
                type: :controller do

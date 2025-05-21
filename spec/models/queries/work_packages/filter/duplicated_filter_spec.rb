@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -31,6 +33,7 @@ require "spec_helper"
 RSpec.describe Queries::WorkPackages::Filter::DuplicatedFilter do
   it_behaves_like "filter by work package id" do
     let(:class_key) { :duplicated }
+    let(:human_name) { "duplicated by" }
 
     it_behaves_like "filter for relation" do
       let(:relation_type) { :duplicated }

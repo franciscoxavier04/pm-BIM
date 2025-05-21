@@ -41,6 +41,7 @@ class WorkPackage < ApplicationRecord
   include WorkPackages::Relations
   include ::Scopes::Scoped
   include HasMembers
+  include Remindable
 
   include OpenProject::Journal::AttachmentHelper
 
@@ -54,6 +55,7 @@ class WorkPackage < ApplicationRecord
   belongs_to :assigned_to, class_name: "Principal", optional: true
   belongs_to :responsible, class_name: "Principal", optional: true
   belongs_to :version, optional: true
+  belongs_to :project_phase_definition, class_name: "Project::PhaseDefinition", optional: true
   belongs_to :priority, class_name: "IssuePriority"
   belongs_to :category, class_name: "Category", optional: true
 
@@ -145,7 +147,7 @@ class WorkPackage < ApplicationRecord
   # thus the associated agenda items will be available at the time the callback method is performed.
   around_destroy :save_agenda_item_journals, prepend: true, if: -> { meeting_agenda_items.any? }
 
-  acts_as_customizable
+  acts_as_customizable validate_on: :saving_custom_fields
 
   acts_as_searchable columns: ["subject",
                                "#{table_name}.description",
@@ -240,11 +242,6 @@ class WorkPackage < ApplicationRecord
       .exists?
   end
 
-  def visible_relations(user)
-    relations
-      .visible(user)
-  end
-
   def add_time_entry(attributes = {})
     attributes.reverse_merge!(
       project:,
@@ -302,7 +299,7 @@ class WorkPackage < ApplicationRecord
   end
 
   def done_ratio
-    if WorkPackage.status_based_mode? && status && status.default_done_ratio
+    if WorkPackage.status_based_mode? && status&.default_done_ratio
       status.default_done_ratio
     else
       read_attribute(:done_ratio)
@@ -377,7 +374,7 @@ class WorkPackage < ApplicationRecord
   # Set the done_ratio using the status if that setting is set.  This will keep the done_ratios
   # even if the user turns off the setting later
   def update_done_ratio_from_status
-    if WorkPackage.status_based_mode? && status && status.default_done_ratio
+    if WorkPackage.status_based_mode? && status&.default_done_ratio
       self.done_ratio = status.default_done_ratio
     end
   end
@@ -385,8 +382,13 @@ class WorkPackage < ApplicationRecord
   # check if user is allowed to edit WorkPackage Journals.
   # see Acts::Journalized::Permissions#journal_editable_by
   def journal_editable_by?(journal, user)
-    user.allowed_in_project?(:edit_work_package_notes, project) ||
-      (user.allowed_in_work_package?(:edit_own_work_package_notes, self) && journal.user_id == user.id)
+    if journal.internal?
+      user.allowed_in_project?(:edit_others_internal_comments, project) ||
+        (user.allowed_in_project?(:edit_own_internal_comments, project) && journal.user_id == user.id)
+    else
+      user.allowed_in_project?(:edit_work_package_comments, project) ||
+        (user.allowed_in_work_package?(:edit_own_work_package_comments, self) && journal.user_id == user.id)
+    end
   end
 
   # Returns a scope for the projects
@@ -631,7 +633,7 @@ class WorkPackage < ApplicationRecord
 
   # Default assignment based on category
   def default_assign
-    if assigned_to.nil? && category && category.assigned_to
+    if assigned_to.nil? && category&.assigned_to
       self.assigned_to = category.assigned_to
     end
   end

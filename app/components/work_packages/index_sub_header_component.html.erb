@@ -7,11 +7,12 @@
 
   <%=
     subheader.with_bottom_pane_component(mt: 0) do
-      render(WorkPackages::FiltersComponent.new(query: @query))
+      # TODO: render(WorkPackages::FiltersComponent.new(query: @query))
     end
   %>
 
-  <% subheader.with_action_component do %>
-    <%= render WorkPackages::Create::WpCreateButtonComponent.new(project: @project) %>
-  <% end %>
+
+  <%# TODO: subheader.with_action_component do %>
+    <%#= render WorkPackages::Create::WpCreateButtonComponent.new(project: @project) %>
+  <%# end %>
 <% end %>

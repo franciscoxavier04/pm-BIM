@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "socket"
 require "capybara/rspec"
 require "capybara-screenshot"
@@ -33,7 +35,6 @@ end
 
 RSpec.configure do |config|
   Capybara.default_max_wait_time = 4
-  Capybara.javascript_driver = :chrome_en
 
   port = ENV.fetch("CAPYBARA_SERVER_PORT", ParallelHelper.port_for_app).to_i
   if port > 0

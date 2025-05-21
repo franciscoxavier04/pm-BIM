@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,7 +31,7 @@
 require "spec_helper"
 require_relative "../principals/shared_memberships_examples"
 
-RSpec.describe "Finding users with accents", :js, :with_cuprite do
+RSpec.describe "Finding users with accents", :js do
   shared_let(:project) { create(:project) }
   shared_let(:principal) { create(:user, firstname: "Cécile", lastname: "Foobar") }
   shared_let(:admin) { create(:admin) }

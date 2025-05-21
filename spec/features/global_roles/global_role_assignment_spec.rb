@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,7 +31,7 @@
 require "spec_helper"
 require_relative "mock_global_permissions"
 
-RSpec.describe "Global role: Global role assignment", :js, :with_cuprite do
+RSpec.describe "Global role: Global role assignment", :js do
   before do
     login_as current_user
   end

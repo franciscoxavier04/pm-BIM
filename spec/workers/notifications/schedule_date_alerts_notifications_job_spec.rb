@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,10 @@
 
 require "spec_helper"
 
-RSpec.describe Notifications::ScheduleDateAlertsNotificationsJob, type: :job, with_ee: %i[date_alerts] do
+RSpec.describe Notifications::ScheduleDateAlertsNotificationsJob,
+               type: :job,
+               with_ee: %i[date_alerts],
+               with_good_job_batches: [Notifications::CreateDateAlertsNotificationsJob] do
   shared_let(:project) { create(:project, name: "main") }
   # Paris and Berlin are both UTC+01:00 (CET) or UTC+02:00 (CEST)
   shared_let(:timezone_paris) { ActiveSupport::TimeZone["Europe/Paris"] }
@@ -50,10 +55,6 @@ RSpec.describe Notifications::ScheduleDateAlertsNotificationsJob, type: :job, wi
     described_class.perform_later.tap do
       GoodJob.perform_inline
     end
-  end
-
-  before do
-    ActiveJob::Base.disable_test_adapter
   end
 
   def set_predecessor_cron_time(cron_at)

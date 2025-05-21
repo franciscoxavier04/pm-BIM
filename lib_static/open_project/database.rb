@@ -70,7 +70,7 @@ module OpenProject
       # Ensure cache is busted if result is positive or unset
       # and the value was cached
       if ensure_fresh || cached_result != false
-        fresh_result = connection.migration_context.needs_migration?
+        fresh_result = connection.pool.migration_context.needs_migration?
         Rails.cache.write(cache_key, expires_in: 1.hour)
         return fresh_result
       end
@@ -81,7 +81,7 @@ module OpenProject
     ##
     # Determine whether the current version is deprecated
     def self.version_deprecated?
-      !version_matches?(130000)
+      !version_matches?(160000)
     end
 
     ##
@@ -109,9 +109,9 @@ module OpenProject
 
         raise InsufficientVersionError.new message
       elsif version_deprecated?
-        message = "The next major release of OpenProject (v12) will require PostgreSQL 13 or later.\n" \
+        message = "OpenProject versions higher than 16.0 will require at least PostgreSQL 16.\n" \
                   "You can anticipate this upgrade by updating your database installation by following the guide at " \
-                  "https://www.openproject.org/docs/installation-and-operations/misc/migration-to-postgresql13/"
+                  "https://www.openproject.org/docs/installation-and-operations/misc/migration-to-postgresql16/"
 
         raise DeprecatedVersionWarning.new message
       end
@@ -160,7 +160,7 @@ module OpenProject
 
     def self.mysql?(_arg = nil)
       message = ".mysql? is no longer supported and will always return false. Remove the call."
-      ActiveSupport::Deprecation.warn message, caller
+      ActiveSupport::Deprecation.new.warn message, caller_locations
       false
     end
 

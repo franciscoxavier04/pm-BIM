@@ -23,11 +23,11 @@ vi:
   plugin_openproject_reporting:
     name: "OpenProject Reporting"
     description: "Mô-đun này cho phép tạo các báo cáo chi phí tùy chỉnh với việc lọc và nhóm dữ liệu do mô-đun Thời gian và chi phí của OpenProject tạo ra."
-  button_save_report_as: "Save report as..."
+  button_save_report_as: "Lưu báo cáo dưới dạng..."
   comments: "Nhận xét"
   cost_reports_title: "Thời gian và chi phí"
   label_cost_report: "Báo cáo chi phí"
-  label_cost_report_plural: "Các báo cáo chi phí"
+  label_cost_report_plural: "Báo cáo chi phí"
   description_drill_down: "Hiển thị chi tiết"
   description_filter_selection: "Lựa chọn"
   description_multi_select: "Hiển thị đa lựa chọn"
@@ -45,6 +45,8 @@ vi:
   label_greater: ">"
   label_is_not_project_with_subprojects: "không phải (bao gồm các dự án con)"
   label_is_project_with_subprojects: "là (bao gồm các dự án con)"
+  label_is_work_package_with_descendants: "là (bao gồm tập con)"
+  label_is_not_work_package_with_descendants: "không phải (kể cả tập con)"
   label_work_package_attributes: "Các thuộc tính gói công việc"
   label_less: "<"
   label_logged_by_reporting: "Đã ghi bởi"
@@ -79,15 +81,25 @@ vi:
   load_query_question: "Báo cáo sẽ có %{size} ô bảng và có thể mất một chút thời gian để tạo ra. Bạn có muốn thử tạo báo cáo không?"
   permission_save_cost_reports: "Lưu các báo cáo chi phí công khai"
   permission_save_private_cost_reports: "Lưu các báo cáo chi phí cá nhân"
-  project_module_reporting_module: "Báo cáo chi phí"
+  project_module_reporting_module: "Các báo cáo chi phí"
   text_costs_are_rounded_note: "Các giá trị hiển thị được làm tròn. Tất cả các phép tính dựa trên các giá trị chưa được làm tròn."
   toggle_multiselect: "kích hoạt/tắt đa lựa chọn"
   units: "Đơn vị"
   validation_failure_date: "không phải là một ngày hợp lệ"
   validation_failure_integer: "không phải là một số nguyên hợp lệ"
   export:
+    timesheet:
+      title: "Xuất bảng thời gian của bạn bằng PDF"
+      button: "Xuất bảng thời gian bằng PDF"
+      timesheet: "Bảng thời gian"
+      time: "Thời gian"
+      sums_hours: Sums
+      overview_per_user_total: "Overview: Total hours per user"
+      overview_per_user_day: "Overview: Hours per user per day"
     cost_reports:
       title: "Xuất báo cáo chi phí của bạn sang XLS"
+      start_time: "Thời gian bắt đầu"
+      end_time: "Thời gian kết thúc"
   reporting:
     group_by:
       selected_columns: "Các cột đã chọn"

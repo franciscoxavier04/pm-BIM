@@ -98,6 +98,28 @@ RSpec.describe OpenIDConnect::ConfigurationMapper, type: :model do
     end
   end
 
+  describe "scope" do
+    subject { result }
+
+    context "when provided" do
+      let(:configuration) { { scope: "custom" } }
+
+      it { is_expected.to include("scope" => "custom") }
+    end
+
+    context "when provided as array" do
+      let(:configuration) { { scope: ["foo", "bar"] } }
+
+      it { is_expected.to include("scope" => "foo bar") }
+    end
+
+    context "when not provided" do
+      let(:configuration) { { foo: "bar" } }
+
+      it { is_expected.not_to have_key("scope") }
+    end
+  end
+
   describe "issuer" do
     subject { result }
 
@@ -111,6 +133,45 @@ RSpec.describe OpenIDConnect::ConfigurationMapper, type: :model do
       let(:configuration) { { foo: "bar" } }
 
       it { is_expected.not_to have_key("issuer") }
+    end
+  end
+
+  describe "claims" do
+    subject { result["claims"] }
+
+    let(:parsed_hash) do
+      {
+        "id_token" => {
+          "roles" => {
+            "essential" => true,
+            "values" => ["openproject.login"]
+          }
+        }
+      }
+    end
+
+    context "when provided as string" do
+      let(:configuration) { { claims: parsed_hash.to_json } }
+
+      it "outputs as a string", :aggregate_failures do
+        expect(subject).to be_a String
+        expect(JSON.parse(subject)).to eq(parsed_hash)
+      end
+    end
+
+    context "when provided as Hash" do
+      let(:configuration) { { claims: parsed_hash } }
+
+      it "converts to string", :aggregate_failures do
+        expect(subject).to be_a String
+        expect(JSON.parse(subject)).to eq(parsed_hash)
+      end
+    end
+
+    context "when not provided" do
+      let(:configuration) { {} }
+
+      it { is_expected.to be_blank }
     end
   end
 

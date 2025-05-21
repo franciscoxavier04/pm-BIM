@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Custom actions link cf value", :js, :with_cuprite, with_ee: %i[custom_actions] do
+RSpec.describe "Custom actions link cf value", :js, with_ee: %i[custom_actions] do
   shared_let(:admin) { create(:admin) }
 
   let(:permissions) { %i(view_work_packages edit_work_packages) }

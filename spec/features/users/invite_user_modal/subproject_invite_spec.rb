@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Invite user modal subprojects", :js, :with_cuprite do
+RSpec.describe "Invite user modal subprojects", :js do
   shared_let(:standard) { create(:standard_global_role) }
   shared_let(:project) { create(:project, name: "Parent project") }
   shared_let(:subproject) { create(:project, name: "Subproject", parent: project) }

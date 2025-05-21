@@ -3,6 +3,9 @@
 .op-border-box-grid
   display: grid
 
+  &--row-item
+    word-break: break-word
+
   &--row-action
     align-items: center
     justify-content: flex-end
@@ -15,12 +18,25 @@
     justify-content: flex-start
     align-items: center
 
+    &--heading,
+    &--row-item
+      &:not(:first-child)
+        padding-left: 6px
+
+      &:not(:last-child)
+        padding-right: 6px
+
+      &:last-child
+        justify-content: flex-end !important
+        display: flex !important
+        flex-direction: row !important
+
     &--mobile-heading,
     &--row-label
       display: none
 
-    &--wide-column
-      grid-column: span 3
+    &--main-column
+      grid-column: span 2
 
 @media screen and (max-width: $breakpoint-md)
   .op-border-box-grid

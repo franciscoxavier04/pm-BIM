@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -47,12 +49,13 @@ module OpenIDConnect
         "host" => options["host"],
         "port" => options["port"],
         "scheme" => options["scheme"],
-        "claims" => options["claims"],
+        "claims" => extract_claims(options["claims"]),
         "tenant" => options["tenant"],
         "post_logout_redirect_uri" => options["post_logout_redirect_uri"],
         "limit_self_registration" => options["limit_self_registration"],
         "use_graph_api" => options["use_graph_api"],
         "acr_values" => options["acr_values"],
+        "scope" => extract_scope(options["scope"]),
         "authorization_endpoint" => extract_url(options, "authorization_endpoint"),
         "token_endpoint" => extract_url(options, "token_endpoint"),
         "userinfo_endpoint" => extract_url(options, "userinfo_endpoint"),
@@ -67,6 +70,26 @@ module OpenIDConnect
     end
 
     private
+
+    def extract_claims(claims_value)
+      case claims_value
+      when Hash
+        claims_value.to_json
+      else
+        claims_value.to_s
+      end
+    end
+
+    def extract_scope(value)
+      return if value.blank?
+
+      case value
+      when Array
+        value.join(" ")
+      else
+        value
+      end
+    end
 
     def oidc_provider(options)
       case options["name"]

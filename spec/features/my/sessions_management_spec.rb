@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "My account session management", :js do
+RSpec.describe "My account session management", :js, :selenium do
   include Redmine::I18n
   let(:user) { create(:user) }
 
