@@ -207,7 +207,7 @@ RSpec.describe WorkPackages::DatePickerController do
 
         expect(response.body).to include('<turbo-stream action="liveRegion"')
         expect(response.body).to include('politeness="polite"')
-        expect(response.body).to include('delay="150"')
+        expect(response.body).to include('delay="500"')
 
         expected_message = "Date picker updated. Scheduling mode: Manual, working days only, " +
           "Start date: 2025-04-15, Finish date: 2025-04-21, Duration: 5 days"
