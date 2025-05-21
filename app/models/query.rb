@@ -390,9 +390,11 @@ class Query < ApplicationRecord
 
   # Returns the journals
   # Valid options are :order, :offset, :limit
-  def work_package_journals(options = {})
+  # NOTE: Internal comments are NEVER included "FOR NOW". This is a stop gap measure before we
+  #       evaluate whether we want to maintain the journals atom export or not.
+  def work_package_journals(options = {}) # rubocop:disable Metrics/AbcSize
     Journal.includes(:user)
-           .where(journable_type: WorkPackage.to_s)
+           .where(journable_type: WorkPackage.to_s, restricted: false)
            .joins("INNER JOIN work_packages ON work_packages.id = journals.journable_id")
            .joins("INNER JOIN projects ON work_packages.project_id = projects.id")
            .joins("INNER JOIN users AS authors ON work_packages.author_id = authors.id")
