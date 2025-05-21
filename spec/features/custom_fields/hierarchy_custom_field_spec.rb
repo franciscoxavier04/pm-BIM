@@ -47,7 +47,7 @@ RSpec.describe "custom fields of type hierarchy", :js do
 
     custom_field_index_page.visit!
 
-    click_on "New custom field"
+    page.find("[aria-label='New custom field']").click
     new_custom_field_page.expect_current_path
 
     hierarchy_name = "Stormtrooper Organisation"

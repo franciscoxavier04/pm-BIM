@@ -351,7 +351,7 @@ de:
         text: "Diese Aktion löscht keine Projekte, die in der Liste enthalten sind. Sind Sie sicher, dass Sie diese Projektliste löschen möchten?"
     settings:
       header_details: Allgemeine Informationen
-      header_status: Projekt-Status
+      header_status: Projektstatus
       header_relations: Projektbeziehungen
       button_update_details: Einstellungen aktualisieren
       button_update_status_description: Statusbeschreibung aktualisieren
@@ -2073,7 +2073,7 @@ de:
         description: " "
   enumeration_activities: "Aktivitäten für Zeiterfassung"
   enumeration_work_package_priorities: "Arbeitspaket-Prioritäten"
-  enumeration_reported_project_statuses: "Gemeldeter Projekt-Status"
+  enumeration_reported_project_statuses: "Gemeldeter Projektstatus"
   enumeration_caption_order_changed: "Reihenfolge erfolgreich geändert."
   enumeration_could_not_be_moved: "Aufzählung konnte nicht verschoben werden."
   error_auth_source_sso_failed: "Single Sign-On (SSO) für Nutzer '%{value}' fehlgeschlagen"

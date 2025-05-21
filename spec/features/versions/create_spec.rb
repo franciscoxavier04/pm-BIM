@@ -55,7 +55,7 @@ RSpec.describe "version create", js: false do
 
     it "and redirect back to where you started" do
       visit project_roadmap_path(project)
-      click_on "New version"
+      page.find("[aria-label='New version']").click
 
       fill_in "Name", with: new_version_name
       click_on "Create"

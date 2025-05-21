@@ -157,7 +157,7 @@ Date alerts in OpenProject are an [Enterprise add-on](#enterprise-add-on) and de
 
 ### Enterprise add-on
 
-In OpenProject, some features are defined as an Enterprise add-on. This means, they are not part of the [Community edition](#community-edition) and therefore not free of charge. Enterprise add-ons are available as [cloud](#cloud) or [on-premises](#on-premises) versions. You can choose from the following plans to get access to all Enterprise add-ons: Basic, Professional, Premium and Corporate. [Read more about OpenProject plans and pricing](https://www.openproject.org/pricing/).
+In OpenProject, some features are defined as an Enterprise add-on. This means, they are not part of the [Community edition](#community-edition) and therefore not free of charge. Enterprise add-ons are available in both [cloud](#cloud) and [on-premises](#on-premises) versions. You can choose from the following plans to get access to different Enterprise add-ons: Basic, Professional, Premium and Corporate. [Read more about OpenProject plans and pricing](https://www.openproject.org/pricing/).
 
 ### Excel synchronization
 
@@ -211,6 +211,10 @@ Hybrid project management is an approach that combines elements of both classic 
 
 In OpenProject, you can choose from several integrations, such as the [Excel synchronization](#excel-synchronization) or the [Nextcloud integration](#nextcloud-integration). In contrast to a plugin, an integration refers to cross features between two software products (e.g., OpenProject and Nextcloud), where both pieces of software have code that is responsible for interacting with the other software, through e.g., an API. Whereas a [plugin](#plugin) is installed on top of / as part of the OpenProject installation. You'll need to actively install it. [See all available plugins and integrations for OpenProject](../system-admin-guide/integrations/).
 
+### Internal comment
+
+Internal comments are available as [Enterprise add-on](#enterprise-add-on) in OpenProject. If enabled, users can choose whether their comment in a work package Activity tab is visible to everyone that has access to the work package – or if it is internal. An internal comment is only visible to users with a dedicated permission – by default, those with a project admin role. [Learn more about internal comments for work packages in OpenProject in this blog article](https://www.openproject.org/blog/internal-comments/).
+
 ## M
 
 ### Macro
@@ -224,7 +228,7 @@ Macros in OpenProject are dynamic shortcuts that help automate repetitive tasks.
 
 ### Meetings
 
-OpenProject offers a Meetings [module](#module) that allows project members to organize and facilitate meetings. The module has to be activated in the [project settings](#project-settings) by a project admin in order to be displayed in the side navigation. You can choose between classic meetings, one-time meetings and recurring meetings. Please note that classic meetings will be deprecated in the long term. [See our user guide for more information on Meeting management in OpenProject](../user-guide/meetings/).
+OpenProject offers a Meetings [module](#module) that allows project members to organize and facilitate meetings. The module has to be activated in the [project settings](#project-settings) by a project admin in order to be displayed in the side navigation. You can choose between one-time meetings and recurring meetings. [See our user guide for more information on Meeting management in OpenProject](../user-guide/meetings/).
 
 ### Member
 
@@ -233,6 +237,10 @@ In OpenProject, a member is defined as a single person in a project. Project mem
 ### Module
 
 A module in OpenProject is defined as an independent unit of functionality that can be used to extend and improve the existing core functions. A project admin can activate and de-activate modules in the project settings. Some examples for modules in OpenProject are: Forums, Time and costs, Wiki or the Work packages module. [See our user guide for more information on all modules in OpenProject](../user-guide/#overview-of-modules-in-openproject).
+
+### My time tracking
+
+My time tracking is the name of an OpenProject [module](#module) that allows users to view, log and edit their personal time tracked on work packages. It can be displayed in a calendar or list view. A [system admin](#admin) can decide whether exact time tracking is allowed, which means users can add start and finish time to their entries. If administrators want to force their users to log start and finish time, an option to 'Require exact times' is available as an [Enterprise add-on](#enterprise-add-on). [Read more about time tracking with OpenProject in our user guide](../user-guide/time-and-costs/time-tracking/).
 
 ### My page
 
@@ -449,7 +457,7 @@ A workflow in OpenProject is defined as the allowed transitions between status f
 
 ### Work package
 
-In OpenProject, a [work package](../user-guide/work-packages/#overview) is defined as an item in a project. It is a subset of a project that can be assigned to users for execution, such as Tasks, Bugs, User Stories, Milestones, and more. Work packages have a [type](#work-package-types), an [ID](#work-package-id) and a subject and may have additional attributes, such as assignee, responsible, [story points](#story-points) or [version](#versions). Work packages are displayed in a project timeline (unless they are [filtered](#filters) out in the timeline configuration) - either as a milestone or as a [phase](#phase). In order to use the work packages, the work package module has to be activated in the [project settings](#project-settings) by a project admin.
+In OpenProject, a [work package](../user-guide/work-packages/#overview) is defined as an item in a project. It is a subset of a project that can be assigned to users for execution, such as Tasks, Bugs, User Stories, Milestones, and more. Work packages have a [type](#work-package-types), an [ID](#work-package-id) and a [subject](#work-package-subject) and may have additional attributes, such as assignee, responsible, [story points](#story-points) or [version](#versions). Work packages are displayed in a project timeline (unless they are [filtered](#filters) out in the timeline configuration) - either as a milestone or as a [phase](#phase). In order to use the work packages, the work package module has to be activated in the [project settings](#project-settings) by a project admin.
 
 ![A work package in OpenProject](glossary-openproject-work-package.png)
 
@@ -465,6 +473,10 @@ Work package categories are a functionality used to automatically assign a [memb
 ### Work package ID
 
 Work package ID is defined as a unique ascending number assigned to a newly created work package. Work package IDs cannot be changed and are numbered across all projects of an OpenProject instance (therefore, the numbering within a project may not be sequential).
+
+### Work package subject
+
+Every work package in OpenProject has a subject that works as a title. It should contain all important terms in order to be found in filters and search functions. The possibility to automatically generate work package subjects is available as an [Enterprise add-on](#enterprise-add-on).
 
 ### Work package table
 

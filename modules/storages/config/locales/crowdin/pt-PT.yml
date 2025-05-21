@@ -80,7 +80,7 @@ pt-PT:
     edit_project_folder:
       label: Editar pasta do projeto
     open:
-      remote_identity_error: Ocorreu um erro inesperado aquando da ligação ao armazenamento.
+      remote_identity_error: An unexpected error occurred while connecting to the storage.
     project_folder_mode:
       automatic: Gerido automaticamente
       inactive: Nenhuma pasta específica
@@ -283,8 +283,8 @@ pt-PT:
         nc_dependency_version_mismatch: A versão da aplicação %{dependency} não é suportada. Atualize o seu servidor do Nextcloud.
         nc_group_folder_not_found: Não foi possível encontrar a pasta do grupo.
         nc_host_not_found: Não foi encontrado nenhum servidor do Nextcloud no URL do anfitrião configurado. Verifique a configuração.
-        nc_oauth_request_not_found: O OpenProject não conseguiu encontrar a pasta raiz do Nextcloud usando o utilizador com sessão iniciada atualmente. Consulte os registos do servidor para obter mais informações.
-        nc_oauth_request_unauthorized: O utilizador atual não está autorizado a ver a pasta principal do Nextcloud ou não conseguirmos adquirir uma ficha. Consulte os registos do servidor para obter mais informações.
+        nc_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        nc_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
         nc_oauth_token_missing: O OpenProject não pode testar a comunicação de nível de utilizador com o Nextcloud uma vez que o utilizador ainda não associou a sua conta Nextcloud.
         nc_unexpected_content: Conteúdo inesperado encontrado na pasta do grupo gerido.
         nc_userless_access_denied: A palavra-passe da aplicação configurada é inválida.
@@ -293,18 +293,19 @@ pt-PT:
         od_client_write_permission_missing: O cliente parece estár ter permissões de escrita em falta. Consulte a documentação de configuração para o seu armazenamento.
         od_drive_id_invalid: O Drive ID configurado parece ser inválido. Verifique a configuração.
         od_drive_id_not_found: Não foi possível encontrar o Drive ID configurado. Verifique a configuração.
-        od_existing_test_folder: A pasta %{folder_name} necessária para teste já existe. Elimine a pasta e tente novamente.
-        od_oauth_request_not_found: O OpenProject não conseguiu encontrar a pasta raiz na unidade de armazenamento usando o utilizador com sessão iniciada atualmente. Consulte os registos do servidor para obter mais informações.
-        od_oauth_request_unauthorized: O utilizador atual não está autorizado a ver a pasta raiz do OneDrive/SharePoint ou não conseguirmos adquirir uma ficha. Consulte os registos do servidor para obter mais informações.
+        od_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        od_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
         od_oauth_token_missing: O OpenProject não pode testar a comunicação de nível de utilizador com o OneDrive/SharePoint uma vez que o utilizador ainda não associou a sua conta Microsoft.
         od_tenant_id_wrong: O ID do diretório (inquilino) configurado é inválido. Verifique a configuração.
+        od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
         od_unexpected_content: Conteúdo inesperado encontrado na unidade.
         offline_access_scope_missing: Recomenda-se configurar o fornecedor OpenID Connect para solicitar o âmbito offline_access. A integração ainda pode funcionar de qualquer forma, mas certifique-se de que as fichas de atualização não expiram.
-        oidc_cant_acquire_token: A sua configuração do OpenID Connect não fornece o público necessário, nem fornece capacidades de troca de tokens. Consulte a nossa documentação para obter mais informações.
-        oidc_cant_exchange_token: Parece haver um problema com a configuração do Token Exchange no seu fornecedor OpenID Connect. Verifique a sua configuração e tente novamente.
         oidc_cant_refresh_token: Ocorreu um erro ao tentar verificar o seu acesso ao armazenamento. Consulte os registos do servidor para obter mais informações.
         oidc_non_oidc_user: O utilizador atual, embora aprovisionado, não foi aprovisionado por um fornecedor de identidade OpenID Connect (OIDC). Volte a executar a verificação com um utilizador aprovisionado pelo OIDC.
         oidc_non_provisioned_user: O utilizador atual não é fornecido por um fornecedor de identidade OpenID Connect. Volte a executar a verificação com um utilizador fornecido.
+        oidc_token_acquisition_failed: Your OpenID Connect setup doesn't provide the necessary audience, nor does it provide token exchange capabilities. Please check out our documentation for more information.
+        oidc_token_exchange_failed: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
+        oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         unknown_error: Não foi possível validar a ligação. Ocorreu um erro desconhecido. Consulte os registos do servidor para obter mais informações.
       label_error: Erro
       label_failed: Não aprovado

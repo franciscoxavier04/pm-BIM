@@ -153,8 +153,8 @@ tr:
   label_cost: "Maliyet"
   label_costs: "Maliyetler"
   label_mandatory_fields: "Zorunlu alanlar"
-  label_my_time_tracking: "My time tracking"
-  label_no_time: "No time tracked"
+  label_my_time_tracking: "Zaman takibim"
+  label_no_time: "Zaman takibi yok"
   label_next_day: "Sonraki gün"
   label_next_week: "Gelecek hafta"
   label_next_workweek: "Sonraki çalışma haftası"
@@ -164,21 +164,21 @@ tr:
   label_previous_week: "Geçen Hafta"
   label_previous_month: "Önceki ay"
   label_specific_day: "Gün %{day}"
-  label_specific_week: "Calendar week %{week}"
+  label_specific_week: "Takvim haftası %{week}"
   label_specific_month: "Ay %{month}"
   label_list: "Liste"
   label_month: "Ay"
   label_workweek: "Çalışma haftası"
   label_day: "Gün"
   label_today_capitalized: "Bugün"
-  label_view_mode_switcher: "Change view"
+  label_view_mode_switcher: "Görünümü değiştir"
   placeholder_activity_select_work_package_first: Öncelikle iş paketi seçimi gereklidir
   notice_something_wrong: "Bir şeyler yanlış gitti. Lütfen tekrar deneyin."
   notice_successful_restore: "Başarılı bir geri yükleme."
   notice_successful_lock: "Başarıyla kilitlendi."
   notice_cost_logged_successfully: "Birim maliyet başarıyla kaydedildi."
   notice_different_time_zones: "Bu kullanıcı farklı bir saat dilimine sahiptir (%{tz}). Zaman, onun zaman dilimi kullanılarak kaydedilecektir."
-  notice_time_entry_update_failed: "Failed to update time entry. Errors: %{errors}"
+  notice_time_entry_update_failed: "Zaman girişi güncellenemedi. Hatalar: %{errors}"
   permission_edit_cost_entries: "Rezervasyon birimi maliyetlerini düzenle"
   permission_edit_own_cost_entries: "Kendi rezervasyonu birim maliyetlerini düzenleme"
   permission_edit_hourly_rates: "Saatlik oranları düzenleme"
@@ -193,11 +193,11 @@ tr:
   permission_view_own_hourly_rate: "Kendi saatlik ücreti görüntüleyin"
   permission_view_own_time_entries: "Kendi harcanan zamanı görüntüleyin"
   project_module_costs: "Zaman ve maliyetler"
-  setting_allow_tracking_start_and_end_times: "Allow start and finish times"
+  setting_allow_tracking_start_and_end_times: "Başlangıç ve bitiş saatlerine izin verin"
   setting_costs_currency: "Para birimi"
   setting_costs_currency_format: "Para biriminin biçimi"
-  setting_enforce_tracking_start_and_end_times: "Require start and finish times"
-  setting_enforce_without_allow: "Requiring start and finish times is not possible without allowing them"
+  setting_enforce_tracking_start_and_end_times: "Başlangıç ve bitiş saatleri gerektir"
+  setting_enforce_without_allow: "Başlangıç ve bitiş saatlerini zorunlu tutmak, bunlara izin vermeden mümkün değildir"
   setting_allow_tracking_start_and_end_times_caption: "Enables entering start and finish times when logging time."
   setting_enforce_tracking_start_and_end_times_caption: "Makes entering start and finish times mandatory when logging time."
   text_assign_time_and_cost_entries_to_project: "Raporlanan saatleri ve maliyetleri projeye tahsis edin"
@@ -208,17 +208,17 @@ tr:
   text_warning_hidden_elements: "Bazı girdiler toplama işleminden dışlanmış olabilir."
   week: "hafta"
   total_times:
-    workweek: "Workweek Total: %{hours}"
-    week: "Week Total: %{hours}"
-    month: "Month Total: %{hours}"
-    day: "Day Total: %{hours}"
+    workweek: "Çalışma Haftası Toplamı: %{hours}"
+    week: "Hafta Toplamı: %{hours}"
+    month: "Ay Toplamı: %{hours}"
+    day: "Gün Toplamı: %{hours}"
   api_v3:
     errors:
       validation:
         start_time_different_date: "StartTime (%{start_time}) öğesinin tarih kısmı, spentOn (%{spent_on}) tarihi ile aynı olmalıdır."
   ee:
     features:
-      time_entry_time_restrictions: Require exact time tracking
+      time_entry_time_restrictions: Tam zaman takibi gerektirir
     upsell:
       time_entry_time_restrictions:
         description: "Improve your time tracking by requiring exact start and finish times when logging time."

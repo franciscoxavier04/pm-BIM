@@ -56,16 +56,16 @@ module Types
       attribute_token = @tokens.detect { |t| t.key == pattern_token.key }
       return ATTRIBUTE_PLACEHOLDER if attribute_token.nil?
 
-      stringify(attribute_token.call(context), nil_replacement(attribute_token))
+      I18n.with_locale(Setting.default_language) do
+        stringify(attribute_token.call(context), nil_replacement(attribute_token))
+      end
     end
 
     def nil_replacement(attribute_resolver)
-      I18n.with_locale(Setting.default_language) do
-        if attribute_resolver.context == :work_package
-          "[#{attribute_resolver.label}]"
-        else
-          "[#{attribute_resolver.label_with_context}]"
-        end
+      if attribute_resolver.context == :work_package
+        "[#{attribute_resolver.label}]"
+      else
+        "[#{attribute_resolver.label_with_context}]"
       end
     end
 

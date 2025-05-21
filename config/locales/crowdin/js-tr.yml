@@ -796,7 +796,7 @@ tr:
     relation_labels:
       parent: "Üst"
       child: "Alt"
-      children: "Çocuk"
+      children: "Alt"
       relates: "İlişkili"
       duplicates: "Kopyalayan"
       duplicated: "Kopyalanan"
@@ -812,7 +812,7 @@ tr:
     relations_hierarchy:
       parent_headline: "Üst"
       hierarchy_headline: "Hiyerarşi"
-      children_headline: "Çocuk"
+      children_headline: "Alt"
     relation_buttons:
       set_parent: "Üstünü ayarla"
       change_parent: "Üstünü değiştir"

@@ -16,13 +16,11 @@ We released [OpenProject 16.0.0](https://community.openproject.org/versions/1412
 
 The Enterprise plans (Basic, Professional, Premium, and Corporate) have been updated. Each plan now includes a specific set of Enterprise add-ons. Support levels and pricing remain unchanged with version 16.0.
 
-Current Enterprise customers retain their existing plans with access to all Enterprise add-ons available at that time. No features are removed.
-
-From this version onward, new Enterprise add-ons may be included only in higher-tier plans. For example, the new [Internal comments feature](#internal-comments-in-work-packages-enterprise-add-on) is part of the Professional plan.
+Current Enterprise customers retain their existing plans with access to all Enterprise add-ons available at that time. No features are removed. From this version onward, new Enterprise add-ons may be included only in higher-tier plans. For example, the new [Internal comments feature](#internal-comments-in-work-packages-enterprise-add-on) is part of the Professional plan.
 
 Customers on lower Enterprise plans who want to try out new add-ons from higher plans can do so by [requesting a new Enterprise trial token (on-premises)](https://www.openproject.org/contact/) or by [starting a new Cloud trial instance](https://start.openproject.com/).
 
-More details are available in our updated [Enterprise guide](https://www.openproject.org/docs/enterprise-guide/).
+More details are available in our updated [Pricing page](https://www.openproject.org/pricing).
 
 ## Important feature changes
 
@@ -30,11 +28,11 @@ More details are available in our updated [Enterprise guide](https://www.openpro
 
 Meeting organization becomes even easier with OpenProject 16.0: Meeting backlogs allow users to collect, manage, and prepare agenda items more flexibly — both for one-time meetings and for recurring meeting series.
 
-In one-time meetings, the new **Agenda backlog** stores topics that are not yet assigned to the current meeting but may be added later.
+In one-time meetings, the new [**Agenda backlog**](../../user-guide/meetings/one-time-meetings/#agenda-backlogs) stores topics that are not yet assigned to the current meeting but may be added later.
 
 ![A one-time meeting in OpenProject with an Agenda backlog and info to 'Drag items here or create a new one'.](openproject-16-0-meeting-backlogs-one-time-highlighted.png)
 
-In recurring meetings, the shared **Series backlog** helps track open points across all meeting occurrences and move items between them as priorities change.
+In recurring meetings, the shared [**Series backlog**](../../user-guide/meetings/recurring-meetings/#meeting-backlogs-for-recurring-meetings) helps track open points across all meeting occurrences and move items between them as priorities change.
 
 ![A recurring meeting in OpenProject with a Series backlog and and options to Edit, add notes, Move to current meeting or Remove from agenda.](openproject-16-0-meeting-backlogs-recurring-options.png)
 
@@ -62,27 +60,29 @@ All users with these permissions then see an "Internal comment" checkbox when ad
 > [!NOTE]
 > Starting with 16.0, **files uploaded in the Activity tab will not be included in the Files tab**. Even though internal comments are the technical trigger for this change, it applies to both regular and internal comments.
 
+Find out more about [internal comments in this user guide](../../user-guide/activity/#internal-comments-enterprise-add-on) and [this blog article](https://www.openproject.org/blog/internal-comments/).
+
 ## Automatically generated work package subjects (Enterprise add-on)
 
-OpenProject now supports automatically generated subjects for work packages. This new Enterprise add-on, available in the Professional plan, allows administrators to define subject patterns for each work package type. When enabled, the subject field is filled automatically and becomes non-editable during work package creation and updates.
+OpenProject now supports automatically generated subjects for work packages. This new Enterprise add-on, available in the Professional plan, allows administrators to define subject patterns for each work package type. When enabled, the subject field is **filled automatically and becomes non-editable during work package creation and updates**.
+
+![Two screenshots: One showing the administration for a work package type 'Candidate interview' with the subject pattern /Candidate with /Assignee on /Start date. One showing a work package of the type Candidate interview with an automatically generated work package subject following that pattern - "Lydia Schiffer with Cyril Dupont on 2025-05-26"](openproject-16-0-automatically-generated-work-package-subjects-candidate-interview-explained.png)
 
 This is especially useful for structured processes such as vacation requests, IT tickets, or maintenance reports, where consistent naming is required. Subject patterns can include static text as well as dynamic placeholders like project name, work package type, or custom field values.
 
-More details and examples can be found in our [blog article on automatically generated work package subjects](https://www.openproject.org/blog/automatically-generated-work-package-subjects/).
-
-Screenshot
+Get an [introduction in the user guide](../../user-guide/work-packages/automatic-subjects/), learn more about [configuring automatically generated work package subjects in OpenProject system administration guide](../../system-admin-guide/manage-work-packages/work-package-types/automatic-subjects/), or consult this [blog article](https://www.openproject.org/blog/automatically-generated-work-package-subjects/) for more use case examples. 
 
 ## Separate time tracking module with calendar view
 
-OpenProject 16.0 offers a separate time tracking module with a calendar view. It is accessible from the global view and listed in the left side bar navigation called 'My time tracking'. There, users can view and edit their logged time with start and end times. The user can switch between daily, weekly, work week and monthly views and also log new time entries directly by clicking in the calendar.
+OpenProject 16.0 offers a separate time tracking module with a calendar view. It is accessible from the global view and listed in the left side bar navigation called [My time tracking](../../user-guide/my-time-tracking/). There, users can view and edit their logged time with start and end times. The user can switch between daily, weekly, work week and monthly views and also log new time entries directly by clicking in the calendar.
 
 Each day shows the sum of the tracked time, and in the weekly and monthly views, the total tracked time is displayed in the lower right corner.
 
-![OpenProject's My time tracking module in calendar view, showing a work week with different time entries.](openproject-16-0-my-time-tracking-calendar-view.png)
+![OpenProject's My time tracking module in calendar view, showing a work week with different time entries.](openproject-16-0-my-time-tracking-work-week-final.png)
 
 Please note that this module has to be activated by an administrator first. Navigate to *Administration → Time and costs → Defaults* and check the box next to 'Allow exact time tracking' to enable tracking start and finish dates. If 'Allow exact time tracking' is enabled, the calendar becomes the default view for the My time tracking module. If 'Require exact times' is checked, users must provide both start and end times when logging time. Otherwise, the list view remains the default. In the calendar view, all entries are then displayed at the top of the respective day column.
 
-[Learn more about how to use the My time tracking module in this blog article](https://www.openproject.org/blog/time-tracking-module/).
+Learn more about My time tracking module in [this user guide](../../user-guide/my-time-tracking/) and [this blog article](https://www.openproject.org/blog/time-tracking-module/).
 
 ### Time entries with legally required mandatory fields: start time and finish time
 
@@ -112,13 +112,13 @@ As requested by our users, you can now add a parent work package relation by cho
 
 ## Save work package export configuration
 
-When exporting a (public or private) work package table, users can now save their configuration settings, e.g. a specific order and display of columns or long text fields. This saves time and allows users to share the export settings with their team (e.g. for a defects and approval report). Please note that this setting is not individual and will **change the default configuration for this specific format and type for everyone**.
+When [exporting a (public or private) work package table](../../user-guide/work-packages/exporting/), users can now save their configuration settings, e.g. a specific order and display of columns or long text fields. This saves time and allows users to share the export settings with their team (e.g. for a defects and approval report). Please note that this setting is not individual and will **change the default configuration for this specific format and type for everyone**.
 
 ![OpenProject work package table export modal with a highlighted checkbox to save settings.](openproject-16-0-save-export-settings-highlighted.png)
 
-## Storage Health status: Multiple visible checks and download option (Enterprise add-on)
+## Storage Health status: Multiple visible checks and download option
 
-The Health check for storages has been extended in OpenProject 16.0. Administrators can now view **multiple visible results**, grouped into base configuration, authentication, and automatically-managed folders. Each group displays a short summary indicating whether all checks passed, warnings occurred, or failures were detected. If issues are found, a link to detailed documentation is provided.
+The Health check for file storages has been extended in OpenProject 16.0. Administrators can now view **multiple visible results**, grouped into base configuration, authentication, and automatically-managed folders. Each group displays a short summary indicating whether all checks passed, warnings occurred, or failures were detected. If issues are found, a link to detailed documentation is provided.
 
 The summary of the most recent health check remains visible in the sidebar. In addition, a new option allows administrators to open a **full detailed report** to review all individual checks directly.
 
@@ -184,7 +184,7 @@ be able to use them in additional contexts. Starting with OpenProject 16.0.0, we
 - Feature: Introduce internal comments \[[#60977](https://community.openproject.org/wp/60977)\]
 - Feature: Enterprise/Professional upsale banners for internal comments \[[#61061](https://community.openproject.org/wp/61061)\]
 - Feature: Trigger browser confirmation dialog when clicking on &#39;Mark all as read&#39; \[[#61309](https://community.openproject.org/wp/61309)\]
-- Feature: Cosmetic UI optimisations to the emoji reactions \[[#61402](https://community.openproject.org/wp/61402)\]
+- Feature: Cosmetic UI optimizations to the emoji reactions \[[#61402](https://community.openproject.org/wp/61402)\]
 - Feature: Allow to configure SSO authentication + two-way OAuth 2 \[[#61532](https://community.openproject.org/wp/61532)\]
 - Feature: Storage Health status: Multiple visible checks \[[#61556](https://community.openproject.org/wp/61556)\]
 - Feature: Audience selection for Nextcloud Hub scenario \[[#61623](https://community.openproject.org/wp/61623)\]
@@ -238,7 +238,7 @@ be able to use them in additional contexts. Starting with OpenProject 16.0.0, we
 - Bugfix: Inconsistently used red color for notification bell and ongoing time tracking \[[#59379](https://community.openproject.org/wp/59379)\]
 - Bugfix: Broken pages in lookbook \[[#59918](https://community.openproject.org/wp/59918)\]
 - Bugfix: Activity Tab renders the same turbo frame multiple times inside of itself \[[#61544](https://community.openproject.org/wp/61544)\]
-- Bugfix: Primer Dialog close button ARIA label is not localised \[[#61631](https://community.openproject.org/wp/61631)\]
+- Bugfix: Primer Dialog close button ARIA label is not localized \[[#61631](https://community.openproject.org/wp/61631)\]
 - Bugfix: Token Refresh and Exchange does not work when Client ID contains special characters \[[#61694](https://community.openproject.org/wp/61694)\]
 - Bugfix: Empty audience translation is missing \[[#61855](https://community.openproject.org/wp/61855)\]
 - Bugfix: SSO users storage connection does not work on project storage members page  \[[#61880](https://community.openproject.org/wp/61880)\]
@@ -285,7 +285,8 @@ be able to use them in additional contexts. Starting with OpenProject 16.0.0, we
 A very special thank you goes to City of Cologne, Deutsche Bahn and ZenDiS for sponsoring released or upcoming features. Your support, alongside the efforts of our amazing Community, helps drive these innovations. Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to alex e, Klaas vT, Daniel Elkeles, Marcel Carvalho, Regina Schikora, Çağlar Yeşilyurt, and Александр Татаринцев.
 
 Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to particularly thank the following users:
-- [name](https://crowdin.com/profile/name), for a great number of translations into [language].
-
+- [Сергей Баранов](https://crowdin.com/profile/postbse), for a great number of translations into Russian.
+- [Gzyyy](https://crowdin.com/profile/gzyyy), for a great number of translations into Chinese simplified.
+- [rlmpereira](https://crowdin.com/profile/rlmpereira), for a great number of translations into Portuguese.
 
 Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!

@@ -277,7 +277,7 @@ Restore the backup by running the following command:
 psql -U postgres -h localhost -f /bitnami/postgresql/backup.sql
 ```
 
-6. Restore Frontend Availability by starting the frontent or scaling it up again.
+6. Restore Frontend Availability by starting the frontend or scaling it up again.
 
 7. Verify the Upgrade by ensuring everything is working as expected by checking that the PostgreSQL instance is running correctly and the frontend is accessible.
 
