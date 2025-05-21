@@ -119,9 +119,7 @@ export default class ProjectLifeCyclesFormController extends FormPreviewControll
     } else {
       this.dateInputFields
         .forEach((field, index) => {
-          if (!field.disabled) {
-            field.value = this.dateToIso(dates[index]);
-          }
+          field.value = this.dateToIso(dates[index]);
         });
       this.clearHighLight();
     }
