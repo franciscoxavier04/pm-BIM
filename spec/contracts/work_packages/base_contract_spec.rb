@@ -1346,6 +1346,19 @@ RSpec.describe WorkPackages::BaseContract do
 
       it_behaves_like "contract is invalid", category: :only_same_project_categories_allowed
     end
+
+    context "when category is set but project isn't set" do
+      before do
+        allow(project)
+          .to receive(:categories)
+                .and_return [category]
+
+        work_package.category = category
+        work_package.project = nil
+      end
+
+      it_behaves_like "contract is invalid", category: :only_same_project_categories_allowed
+    end
   end
 
   describe "priority" do

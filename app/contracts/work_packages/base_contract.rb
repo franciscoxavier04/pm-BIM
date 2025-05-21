@@ -573,7 +573,7 @@ module WorkPackages
     end
 
     def category_not_of_project?
-      model.category && model.project.categories.exclude?(model.category)
+      model.category && (model.project.nil? || model.project.categories.exclude?(model.category))
     end
 
     def status_changed?
