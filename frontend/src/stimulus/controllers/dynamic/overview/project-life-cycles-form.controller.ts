@@ -48,6 +48,8 @@ export default class ProjectLifeCyclesFormController extends FormPreviewControll
   declare readonly finishDateTarget:HTMLInputElement;
   declare readonly durationTarget:HTMLInputElement;
 
+  private readonly CURRENT_FIELD_CLASS_NAME = 'op-datepicker-modal--date-field_current';
+
   async connect() {
     super.connect();
 
@@ -155,7 +157,7 @@ export default class ProjectLifeCyclesFormController extends FormPreviewControll
 
   private get highlightedField():HTMLInputElement|undefined {
     const field = this.dateInputFields.find(
-      (el) => el.classList.contains('op-datepicker-modal--date-field_current'),
+      (el) => el.classList.contains(this.CURRENT_FIELD_CLASS_NAME),
     );
 
     return field;
@@ -168,7 +170,7 @@ export default class ProjectLifeCyclesFormController extends FormPreviewControll
       return;
     }
 
-    field.classList.add('op-datepicker-modal--date-field_current');
+    field.classList.add(this.CURRENT_FIELD_CLASS_NAME);
     this.updateFlatpickrCalendar();
     window.setTimeout(() => {
       // For mobile, we have to make sure that the active field is scrolled into view after the keyboard is opened
@@ -178,7 +180,7 @@ export default class ProjectLifeCyclesFormController extends FormPreviewControll
 
   private clearHighLight() {
     this.dateInputFields
-        .forEach((el) => el.classList.remove('op-datepicker-modal--date-field_current'));
+        .forEach((el) => el.classList.remove(this.CURRENT_FIELD_CLASS_NAME));
   }
 
   private dateToIso(date:Date|null):string {
