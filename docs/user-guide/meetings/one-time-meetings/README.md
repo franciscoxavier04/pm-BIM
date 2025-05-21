@@ -11,7 +11,7 @@ keywords: meetings, dynamic meetings, agenda, minutes, one-time meeting
 > [!NOTE]
 > With OpenProject 13.1 we introduced dynamic meetings alongside classic meetings. 
 > With OpenProject 15.3 dynamic meetings are replaced by [one-time meetings](../one-time-meetings) and [recurring meetings](../recurring-meetings) to further improve meeting management.
-> With 16.0 classic meetings were removed from OpenProject. Read more about this change [in this blog article](https://www.openproject.org/blog/end-classic-meetings-may-2025/).
+> With OpenProject 16.0 classic meetings were removed from OpenProject. Read more about this change [in this blog article](https://www.openproject.org/blog/end-classic-meetings-may-2025/).
 
 For information on setting up recurring meeting series and templates, please refer to [this page](../recurring-meetings). Note that individual occurrences of a recurring meeting series are one-time meetings and have the same features as described here.
 
@@ -155,7 +155,7 @@ After saving an agenda item outcome, you can still edit it. Click the **More** (
 
 This menu also allows you  to *Copy link to clipboard* and to *Remove the outcome*.
 
->  [!TIP]
+> [!TIP]
 > Outcomes are also displayed in the Meetings tab of a work package in a read-only format.
 
 ![Agenda item outcomes displayed in Meetings tab in a work package in OpenProject](openproject_userguide_meetings_agenda_outcome_in_work_package.png)
