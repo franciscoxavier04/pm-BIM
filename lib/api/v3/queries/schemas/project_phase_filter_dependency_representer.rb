@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# -- copyright
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,28 +26,45 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
 
 module API
   module V3
-    module ProjectPhases
-      class ProjectPhasesAPI < ::API::OpenProjectAPI
-        resources :project_phases do
-          get &::API::V3::Utilities::Endpoints::Index
-                 .new(model: Project::Phase,
-                      scope: -> { Project::Phase.where(active: true) },
-                      api_name: "ProjectPhases")
-                 .mount
-
-          route_param :id do
-            after_validation do
-              @phase = ::Project::Phase.visible(current_user).find(params[:id])
+    module Queries
+      module Schemas
+        class ProjectPhaseFilterDependencyRepresenter < FilterDependencyRepresenter
+          def json_cache_key
+            if filter.project
+              super + [filter.project.id]
+            else
+              super
             end
+          end
 
-            get &::API::V3::Utilities::Endpoints::Show
-                   .new(model: Project::Phase,
-                        render_representer: API::V3::ProjectPhases::ProjectPhaseRepresenter)
-                   .mount
+          def href_callback
+            if filter.project.present?
+              api_v3_paths.project_phases_by_project(filter.project.identifier)
+            else
+              api_v3_paths.project_phases
+            end
+          end
+
+          # TODO: change!
+          # def filter_query
+          #   params = [{ status: { operator: "!",
+          #                         values: [Principal.statuses[:locked].to_s] } }]
+          #
+          #   params << if filter.project
+          #               { member: { operator: "=", values: [filter.project.id.to_s] } }
+          #             else
+          #               { member: { operator: "*", values: [] } }
+          #             end
+          #
+          #   params
+          # end
+
+          def type
+            "[]ProjectPhase"
           end
         end
       end

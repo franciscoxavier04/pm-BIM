@@ -28,6 +28,8 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
+require_relative "../../../app/models/queries/project_phases/phase_query"
+
 module Queries::WorkPackages
   ::Queries::Register.register(Query) do
     filter Filter::AncestorFilter
@@ -62,6 +64,7 @@ module Queries::WorkPackages
     filter Filter::DatesIntervalFilter
     filter Filter::ParentFilter
     filter Filter::PrecedesFilter
+    filter Filter::ProjectPhaseFilter
     filter Filter::FollowsFilter
     filter Filter::RelatesFilter
     filter Filter::DuplicatesFilter
@@ -91,4 +94,9 @@ module Queries::WorkPackages
     select Selects::ManualSortingSelect
     select Selects::TypeaheadSelect
   end
+
+  # rubocop:disable Lint/EmptyBlock
+  Queries::Register.register(Queries::Project::Phases::PhaseQuery) do
+  end
+  # rubocop:enable Lint/EmptyBlock
 end
