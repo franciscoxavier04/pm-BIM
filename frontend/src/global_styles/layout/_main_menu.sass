@@ -45,6 +45,7 @@ $arrow-left-width: 40px
   width: var(--main-menu-width)
   min-width: var(--main-menu-width)
   overflow-x: hidden
+  overflow-y: hidden
   border-right-style: solid
   border-right-width: var(--main-menu-border-width)
   border-right-color: var(--main-menu-border-color)
@@ -58,7 +59,13 @@ $arrow-left-width: 40px
     position: relative
     @include styled-scroll-bar
 
-  a:not(.Button):focus
+
+    .main-menu--projects-divider
+      background: var(--borderColor-muted)
+      margin: 0.75rem 0
+
+  a:not(.Button), .op-project-select--trigger-button
+    &:focus
     color: var(--main-menu-font-color)
 
   ul
@@ -96,7 +103,7 @@ $arrow-left-width: 40px
       // children have no icon so we need to push them right.
       padding-left: var(--main-menu-x-spacing)
 
-  a:not(.Button)
+  a:not(.Button), .op-project-select--trigger-button
     text-decoration: none
     line-height: var(--main-menu-item-height)
     position: relative
@@ -130,7 +137,7 @@ $arrow-left-width: 40px
   .toggler:hover
     @include main-menu-hover
 
-  a:not(.Button)
+  a:not(.Button), .op-project-select--trigger-button
     border: 1px solid transparent
 
     &.selected, &.selected + a
@@ -176,7 +183,7 @@ $arrow-left-width: 40px
 
 .main-menu--children-menu-header
   position: sticky
-  top: 0
+  top: 77px
   z-index: 1
   background: var(--main-menu-bg-color)
   padding: 10px 10px 0 4px
@@ -390,7 +397,6 @@ $badge_offset: 4px
   background: transparent
   color: var(--main-menu-font-color)
   border: none
-
 
 #main-menu-toggle
   .icon-close
