@@ -249,6 +249,7 @@ class Storages::Admin::StoragesController < ApplicationController
               "authentication_method",
               "audience_configuration",
               "storage_audience",
+              "storage_scope",
               "oauth_client_id",
               "oauth_client_secret",
               "tenant_id",
