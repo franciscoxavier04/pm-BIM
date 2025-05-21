@@ -59,6 +59,53 @@ RSpec.describe Reactable do
     it { expect(wp_journal1).to have_many(:emoji_reactions) }
   end
 
+  describe ".grouped_work_package_journals_emoji_reactions" do
+    it "returns grouped emoji reactions for work package journals" do
+      result = Journal.grouped_work_package_journals_emoji_reactions(work_package)
+
+      expect(result[0].reaction).to eq("thumbs_up")
+      expect(result[0].reactions_count).to eq(2)
+      expect(result[0].reacting_users).to eq([[user1.id, user1.name], [user2.id, user2.name]])
+
+      expect(result[1].reaction).to eq("thumbs_down")
+      expect(result[1].reactions_count).to eq(1)
+      expect(result[1].reacting_users).to eq([[user2.id, user2.name]])
+    end
+
+    context "when the current user is allowed to view internal comments" do
+      let(:current_user) do
+        create(:user, member_with_permissions: { work_package.project => %i[view_work_packages view_internal_comments] })
+      end
+
+      before do
+        allow(User).to receive(:current).and_return(current_user)
+      end
+
+      it "returns grouped emoji reactions for work package journals" do
+        result = Journal.grouped_work_package_journals_emoji_reactions(work_package)
+
+        result[0..1].each do |r|
+          expect(r.reaction).to eq("thumbs_up")
+          expect(r.reactions_count).to eq(2)
+          expect(r.reacting_users).to eq([[user1.id, user1.name], [user2.id, user2.name]])
+        end
+
+        expect(result[2].reaction).to eq("thumbs_down")
+        expect(result[2].reactions_count).to eq(1)
+        expect(result[2].reacting_users).to eq([[user2.id, user2.name]])
+      end
+    end
+
+    context "when no reactions exist" do
+      it "returns an empty hash" do
+        work_package = build_stubbed(:work_package)
+        result = Journal.grouped_work_package_journals_emoji_reactions(work_package)
+
+        expect(result).to eq([])
+      end
+    end
+  end
+
   describe ".grouped_work_package_journals_emoji_reactions_by_reactable" do
     it "returns grouped emoji reactions for work package journals" do
       result = Journal.grouped_work_package_journals_emoji_reactions_by_reactable(work_package)
