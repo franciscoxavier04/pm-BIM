@@ -41,10 +41,9 @@ export default class FormPreviewController extends Controller<HTMLFormElement> {
     }
 
     const form = this.element;
-    const submitUrl = form.action;
+    const defaultSubmitUrl = form.action;
     form.action = this.urlValue;
-    const submitter = document.querySelector(`button[form="${form.id}"][type="submit"]`) as HTMLElement;
-    form.requestSubmit(submitter);
-    form.action = submitUrl;
+    form.requestSubmit();
+    form.action = defaultSubmitUrl;
   }
 }
