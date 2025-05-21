@@ -128,10 +128,10 @@ RSpec.describe Reactable do
     end
   end
 
-  describe ".grouped_journal_emoji_reactions" do
+  describe ".grouped_journal_emoji_reactions_by_reactable" do
     context "with a single reactable" do
       it "returns grouped emoji reactions for that journal" do
-        result = Journal.grouped_journal_emoji_reactions(wp_journal1)
+        result = Journal.grouped_journal_emoji_reactions_by_reactable(wp_journal1)
 
         expect(result).to eq(
           wp_journal1.id => {
@@ -153,7 +153,7 @@ RSpec.describe Reactable do
       end
 
       it "groups emoji reactions and users in ascending order" do
-        result = Journal.grouped_journal_emoji_reactions(wp_journal1)
+        result = Journal.grouped_journal_emoji_reactions_by_reactable(wp_journal1)
 
         expect(result).to eq(
           wp_journal1.id => {

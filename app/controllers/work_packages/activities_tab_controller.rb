@@ -474,7 +474,7 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def grouped_emoji_reactions_for_journal
-    Journal.grouped_journal_emoji_reactions(@journal).fetch(@journal.id, {})
+    Journal.grouped_journal_emoji_reactions_by_reactable(@journal).fetch(@journal.id, {})
   end
 
   def allowed_to_edit?(journal)

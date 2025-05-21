@@ -36,7 +36,7 @@ module Reactable
   end
 
   class_methods do
-    def grouped_journal_emoji_reactions(journal)
+    def grouped_journal_emoji_reactions_by_reactable(journal)
       grouped_emoji_reactions_by_reactable(reactable_id: journal.id, reactable_type: "Journal")
     end
 
