@@ -378,7 +378,7 @@ zh-TW:
     此待辦清單僅適用於這場一次性的會議。您可以拖曳項目以新增或移除會議議程中的內容。
   label_agenda_backlog_clear_title: "清除議程待辦清單？"
   text_agenda_backlog_clear_description: >
-    Are you sure you want to remove all items currently in the agenda backlog? This action is not reversible.
+    您確定要移除目前議程待辦事項清單中的所有項目嗎？此動作不可逆轉。
   label_series_backlog: "系列待辦清單"
   text_series_backlog: >
     此待辦清單為整個系列會議共用。您可以拖曳項目以新增或移除特定會議的議程內容。
