@@ -3,10 +3,10 @@ import { announce } from '@primer/live-region-element';
 
 export function registerLiveRegionStreamAction() {
   StreamActions.liveRegion = function liveRegionStreamAction(this:StreamElement) {
-    const message = this.getAttribute('message') || '';
+    const message = this.getAttribute('message');
+    if (!message) return;
     const politeness = this.getAttribute('politeness') || 'polite';
-    const delayAttr = this.getAttribute('delay');
-    const delay = delayAttr !== null && !Number.isNaN(Number(delayAttr)) ? Number(delayAttr) : 0;
+    const delay = parseInt(this.getAttribute('delay') ?? '0', 10);
     if (politeness === 'assertive') {
       void announce(message, {
         politeness: 'assertive',
