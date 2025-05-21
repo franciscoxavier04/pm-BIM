@@ -632,9 +632,9 @@ zh-TW:
             project: "專案"
         pattern:
           label: "主題模板"
-          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          caption_with_supported_attributes_link: 輸入文字以建立樣式，或輸入「/」搜尋 %{link}。
           insert_as_text: "未找到屬性。以文字新增：\"%{word}"
-          supported_attributes_link: "supported attributes"
+          supported_attributes_link: "支援的屬性"
       export_configuration:
         tab: "產生PDF檔案"
         intro: "從可用的範本中選擇您想要為此類型啟用的範本。範本決定了使用此類工作項目匯出的 PDF 中顯示的設計和屬性。預設為選定清單中的第一個模板。"
@@ -2013,7 +2013,7 @@ zh-TW:
       work_package_sharing:
         description: "與不是專案成員的使用者共同參與工作項目。"
       project_list_sharing:
-        description: "Share project lists with individual users."
+        description: "分享專案清單給個別使用者。"
       define_custom_style:
         title: "自訂布景主題顏色與logo"
         more_info: "備註：Logo可被公開存取。"
@@ -3375,7 +3375,7 @@ zh-TW:
   permission_edit_own_messages: "編輯自己張貼的訊息"
   permission_edit_own_time_entries: "編輯自己的時間日誌"
   permission_edit_others_internal_comments: "審核內部留言"
-  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
+  permission_edit_others_internal_comments_explanation: "注意事項：具有此權限的使用者能夠編輯其他使用者內部備註。"
   permission_edit_project: "編輯專案"
   permission_edit_project_attributes: "編輯項目屬性"
   permission_edit_project_phases: "編輯專案階段"
@@ -3697,7 +3697,7 @@ zh-TW:
   setting_hours_per_day_explanation: >-
     這定義了在以天和小時為單位顯示持續時間時，什麼是一"天"(例如，如果一天是 8 小時，32 小時就是 4 天)。
   setting_invitation_expiration_days: "啟動信件在......天後過期"
-  setting_invitation_expiration_days_caption: "Number of days after which the activation email expires."
+  setting_invitation_expiration_days_caption: "啟用電子郵件的有效期限 (天數)。"
   setting_work_package_done_ratio: "進度計算模式"
   setting_work_package_done_ratio_field: "基於工時"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3713,9 +3713,9 @@ zh-TW:
   setting_journal_aggregation_time_minutes: "合併使用者操作"
   setting_log_requesting_user: "記錄所有使用者登入、姓名和郵件地址等資料"
   setting_login_required: "需要身份驗證"
-  setting_login_required_caption: "When checked, all requests to the application have to be authenticated."
+  setting_login_required_caption: "當啟用時，所有應用程式請求都必須經過驗證。"
   setting_lost_password: "啟用密碼重設"
-  setting_lost_password_caption: "When checked, allow users to reset their own passwords."
+  setting_lost_password_caption: "當勾選時，允許使用者自行重置密碼。"
   setting_mail_from: "發出的電子郵件地址"
   setting_mail_handler_api_key: "API 金鑰"
   setting_mail_handler_body_delimiters: "符合任一行資料即截斷電子郵件"
@@ -3741,7 +3741,7 @@ zh-TW:
   setting_project_gantt_query_text: "您可以從專案總覽頁面修改用於顯示甘特圖查詢條件。"
   setting_security_badge_displayed: "顯示安全徽章"
   setting_registration_footer: "註冊頁腳"
-  setting_registration_footer_caption: "This text is displayed in the footer of the registration page. Use the HTML editor to format the text for each selected language."
+  setting_registration_footer_caption: "此文字顯示於註冊頁腳。請使用 HTML 編輯器為每個選定的語言格式化文字。"
   setting_repositories_automatic_managed_vendor: "自動版本控制類型"
   setting_repositories_encodings: "儲存庫編碼"
   setting_repository_storage_cache_minutes: "版本庫磁碟空間快取"
@@ -3753,21 +3753,21 @@ zh-TW:
   setting_rest_api_enabled: "啟用 REST 網路服務"
   setting_self_registration: "自助註冊"
   setting_self_registration_caption: >
-    Choose the self-registration mechanism for users. Be careful with the setting you choose, as some options allow users to activate their own accounts to this instance.
+    請選擇使用者的自助註冊方式。請注意，某些設定會允許使用者自行啟用帳號並存取此系統。
   setting_self_registration_warning: >
-    The user will be able to activate their own accounts. Please note that this will give them access to all public projects and their content. Please make sure that no sensitive or private data is exposed in public projects.
+    使用者將能夠自行啟用帳戶。請注意，這將使他們可以存取所有公開專案及其內容。請確保在公開專案中沒有敏感或私密資料曝光。
   setting_self_registration_disabled: "關閉"
   setting_self_registration_disabled_caption: >
-    No accounts can be registered on their own. Only administrators and users with the global permission to create new users are able to create new accounts.
-  setting_self_registration_activation_by_email: "Account activation by email"
+    不允許使用者自行註冊帳號。僅有管理員及具備全域新增使用者權限的用戶可以建立新帳號。
+  setting_self_registration_activation_by_email: "透過電子郵件啟動帳戶"
   setting_self_registration_activation_by_email_caption: >
-    Users can register on their own and activate their account after confirming their email address. Administrators have no moderation control over the activation process.
-  setting_self_registration_automatic_activation: "Automatic account activation"
+    使用者可自行註冊，並於確認電子郵件地址後啟用帳戶。管理員對啟用流程沒有審核控制權。
+  setting_self_registration_automatic_activation: "自動啟動帳戶"
   setting_self_registration_automatic_activation_caption: >
-    Users can register on their own. Their accounts are immediately active without further action. Administrators have no moderation control over the activation process.
-  setting_self_registration_manual_activation: "Manual account activation"
+    使用者可自行註冊，帳戶立即生效，無需進一步動作。管理員對啟用流程無任何審核控制權。
+  setting_self_registration_manual_activation: "手動啟用帳號"
   setting_self_registration_manual_activation_caption: >
-    Users can register on their own. Their accounts are in a pending state until an administrator or user with the global permission to create or manage users activates them.
+    帳號註冊後為待審核，需由管理員或有權限的使用者進行啟用，方可生效。
   setting_session_ttl: "非活躍使用後連線失效時間"
   setting_session_ttl_hint: "低於5個工作同於停用"
   setting_session_ttl_enabled: "連線逾時"
@@ -3901,7 +3901,7 @@ zh-TW:
       not_allowed_text: "您沒有查看此頁面的必要權限。"
       activities:
         enable_internal_comments: "啟用內部備註"
-        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
+        helper_text: "內部留言讓團隊成員能私下互相溝通。僅對擁有相應權限的特定角色可見，且不會公開顯示。%{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "純文字"

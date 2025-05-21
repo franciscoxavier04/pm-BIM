@@ -693,7 +693,7 @@ tr:
       show_relations: "İlişkileri göster"
       tabs:
         aria_label: "Tarih seçme sekmesi"
-        children: "Çocuk"
+        children: "Alt"
         dates: "Tarih"
         predecessors: "Predecessors"
         successors: "Successors"
@@ -775,7 +775,7 @@ tr:
       label_follows_plural: "öncülü (önce)"
       follows_description: "Bu iş paketinin başlayabilmesi için ilgili iş paketinin mutlaka bitmesi gerekir"
       label_child_singular: "alt"
-      label_child_plural: "çocuklar"
+      label_child_plural: "alt"
       new_child: "Yeni alt birim oluştur"
       new_child_description: "Geçerli (ana) iş paketinin bir alt öğesi olarak ilgili bir iş paketi oluşturur"
       child: "Alt"
