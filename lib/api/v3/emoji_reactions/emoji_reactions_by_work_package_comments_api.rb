@@ -44,10 +44,7 @@ module API
           end
 
           get do
-            emoji_reactions = Journal.grouped_emoji_reactions(
-              reactable_id: reactable.journals.internal_visible.select(:id).pluck(:id),
-              reactable_type: "Journal"
-            )
+            emoji_reactions = Journal.grouped_work_package_journals_emoji_reactions(reactable)
             EmojiReactionCollectionRepresenter.new(emoji_reactions,
                                                    self_link: get_emoji_reactions_self_path,
                                                    current_user: User.current)
