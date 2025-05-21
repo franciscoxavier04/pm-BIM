@@ -30,23 +30,13 @@ OpenProject offers close integration with Nextcloud to allow users to:
 
 ## Required system versions
 
-OpenProject makes significant efforts to ensure that the integration works with all the latest stable versions. We
-strongly recommend continuously updating all systems to the current stable version. This ensures access to the latest
-features and prompt fixes for any potential bugs.
+Please see our [System requirements](../../../installation-and-operations/system-requirements/) overview which lists the supported versions. 
 
-- OpenProject [latest release](../../../release-notes/).
-- The officially minimal version of
-  the [OpenProject Integration Nextcloud app](https://apps.nextcloud.com/apps/integration_openproject) is `2.6.3`.
-- Nextcloud version in the latest `stable` version.
-  - If you run Nextcloud in the community edition be careful to not blindly follow the update hints in the
-    administration area of a Nextcloud instance, as they nudge you to use the `latest` version, which might not be the
-    latest `stable` version.
-  - If you installed Nextcloud via the [community](https://hub.docker.com/_/nextcloud) docker image, we advise you to
-    pin it to the `stable` tag.
-  - Nextcloud company advises the use of their [all-in-one](https://hub.docker.com/r/nextcloud/all-in-one) docker image.
-- If you want to use the feature of [automatically managed project folders](#4-automatically-managed-project-folders)
-  you need to install the officially minimal supported version `14.0.9` of
-  the [Group folders](https://apps.nextcloud.com/apps/groupfolders) app in Nextcloud.
+> [!IMPORTANT]
+>
+> OpenProject makes significant efforts to ensure that the integration works with all the latest stable versions. We
+> strongly recommend continuously updating all systems to the current stable version. This ensures access to the latest
+> features and prompt fixes for any potential bugs.
 
 ## Set up the integration
 
@@ -81,7 +71,7 @@ Click on the **Save** button.
 > [!TIP]
 > If the OpenProject host cannot be added, you may check the [Troubleshooting](#troubleshooting) section at the bottom of this page.
 
-## 2. Create a Nextcloud file storage in your OpenProject instance
+### 2. Create a Nextcloud file storage in your OpenProject instance
 
 Navigate to your OpenProject administration settings page by clicking on *your avatar in the top right corner → Administration*. From the side menu on the left select *Files -> External file storages*.
 

@@ -70,8 +70,6 @@ OpenProject now supports automatically generated subjects for work packages. Thi
 
 This is especially useful for structured processes such as vacation requests, IT tickets, or maintenance reports, where consistent naming is required. Subject patterns can include static text as well as dynamic placeholders like project name, work package type, or custom field values.
 
-![OpenProject administration showing settings for automatically generated work package subjects](openproject-16-0-automatic-subjects-settings.png)
-
 Get an [introduction in the user guide](../../user-guide/work-packages/automatic-subjects/), learn more about [configuring automatically generated work package subjects in OpenProject system administration guide](../../system-admin-guide/manage-work-packages/work-package-types/automatic-subjects/), or consult this [blog article](https://www.openproject.org/blog/automatically-generated-work-package-subjects/) for more use case examples. 
 
 ## Separate time tracking module with calendar view
