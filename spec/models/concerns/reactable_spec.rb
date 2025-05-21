@@ -34,9 +34,9 @@ RSpec.describe Reactable do
   shared_let(:project) { create(:project, enabled_internal_comments: true) }
   shared_let(:work_package) { create(:work_package, project:) }
 
-  let(:wp_journal1) { create(:work_package_journal, journable: work_package, version: 2) }
-  let(:wp_journal2) { create(:work_package_journal, journable: work_package, version: 3) }
-  let(:wp_internal_journal) { create(:work_package_journal, journable: work_package, version: 4, restricted: true) }
+  shared_let(:wp_journal1) { add_journal }
+  shared_let(:wp_journal2) { add_journal }
+  shared_let(:wp_internal_journal) { add_journal(internal: true) }
 
   let(:user1) { create(:user) }
   let(:user2) { create(:user) }
@@ -278,5 +278,11 @@ RSpec.describe Reactable do
         )
       end
     end
+  end
+
+  def add_journal(notes: "This is a test note", internal: false)
+    work_package.add_journal(user: work_package.author, notes:, internal:)
+    work_package.save(validate: false)
+    work_package.journals.last
   end
 end
