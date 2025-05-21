@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# -- copyright
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,29 +26,40 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
 
 module API
   module V3
-    module ProjectPhases
-      class ProjectPhasesAPI < ::API::OpenProjectAPI
-        resources :project_phases do
-          get &::API::V3::Utilities::Endpoints::Index
-                 .new(model: Project::Phase,
-                      # TODO: add visible-scope here:
-                      scope: -> { Project::Phase.where(active: true) },
-                      api_name: "ProjectPhases")
-                 .mount
-
-          route_param :id do
-            after_validation do
-              @phase = ::Project::Phase.visible(current_user).find(params[:id])
+    module Queries
+      module Schemas
+        class ProjectPhaseFilterDependencyRepresenter < FilterDependencyRepresenter
+          def json_cache_key
+            if filter.project
+              super + [filter.project.id]
+            else
+              super
             end
+          end
 
-            get &::API::V3::Utilities::Endpoints::Show
-                   .new(model: Project::Phase,
-                        render_representer: API::V3::ProjectPhases::ProjectPhaseRepresenter)
-                   .mount
+          def href_callback
+            params = CGI.escape(::JSON.dump(filter_query))
+
+            # if filter.project.present?
+            #   "#{api_v3_paths.project_phases_by_project(filter.project.identifier)}?filters=#{params}"
+            # else
+            "#{api_v3_paths.project_phase_definitions}?filters=#{params}"
+            # end
+          end
+
+          # FIXME only request the project phases that are actually used in the query!
+          # alternatively, fix the API query to return only active and visible project phase definitions
+          def filter_query
+            # [{ project_phase: { operator: "*", values: [] } }]
+            []
+          end
+
+          def type
+            "[]ProjectPhaseDefinition"
           end
         end
       end

@@ -61,6 +61,9 @@ module API
           "ProjectPhase"
         end
       end
+
+      class ProjectPhasesRepresenter < ProjectPhaseRepresenter
+      end
     end
   end
 end

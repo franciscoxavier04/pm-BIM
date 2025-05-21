@@ -28,6 +28,9 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
+# require_relative "../../../app/models/queries/project_phases/phase_query"
+require_relative "../../../app/models/queries/project_phase_definitions/phase_definition_query"
+
 module Queries::WorkPackages
   ::Queries::Register.register(Query) do
     filter Filter::AncestorFilter
@@ -62,6 +65,7 @@ module Queries::WorkPackages
     filter Filter::DatesIntervalFilter
     filter Filter::ParentFilter
     filter Filter::PrecedesFilter
+    filter Filter::ProjectPhaseFilter
     filter Filter::FollowsFilter
     filter Filter::RelatesFilter
     filter Filter::DuplicatesFilter
@@ -91,5 +95,14 @@ module Queries::WorkPackages
     select Selects::RelationChildSelect
     select Selects::ManualSortingSelect
     select Selects::TypeaheadSelect
+  end
+
+  # Queries::Register.register(Queries::Project::Phases::PhaseQuery) do
+  #   filter Filter::ProjectPhaseFilter
+  # end
+
+  #::Queries::Project::PhaseDefinitions::PhaseDefinitionQuery or ::PhaseDefinitionQuery
+  Queries::Register.register(Queries::Project::PhaseDefinitions::PhaseDefinitionQuery) do
+    filter Filter::ProjectPhaseFilter
   end
 end
