@@ -1314,40 +1314,25 @@ RSpec.describe WorkPackages::BaseContract do
           .and_return [category]
 
         work_package.category = category
-
-        contract.validate
       end
 
-      it "is valid" do
-        expect(contract.errors.symbols_for(:category))
-          .to be_empty
-      end
+      it_behaves_like "contract is valid"
     end
 
     context "when empty" do
       before do
         work_package.category = nil
-
-        contract.validate
       end
 
-      it "is valid" do
-        expect(contract.errors.symbols_for(:category))
-          .to be_empty
-      end
+      it_behaves_like "contract is valid"
     end
 
     context "for inexistent category (e.g. removed)" do
       before do
         work_package.category_id = 5
-
-        contract.validate
       end
 
-      it "is invalid" do
-        expect(contract.errors.symbols_for(:category))
-          .to contain_exactly(:does_not_exist)
-      end
+      it_behaves_like "contract is invalid", category: :does_not_exist
     end
 
     context "when not of the project" do
@@ -1357,14 +1342,9 @@ RSpec.describe WorkPackages::BaseContract do
           .and_return []
 
         work_package.category = category
-
-        contract.validate
       end
 
-      it "is invalid" do
-        expect(contract.errors.symbols_for(:category))
-          .to contain_exactly(:only_same_project_categories_allowed)
-      end
+      it_behaves_like "contract is invalid", category: :only_same_project_categories_allowed
     end
   end
 
