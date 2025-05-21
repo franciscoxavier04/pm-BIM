@@ -82,6 +82,10 @@ class Storages::Admin::StoragesController < ApplicationController
 
   def upsell; end
 
+  def edit
+    @wizard = storage_wizard(@storage)
+  end
+
   def create
     service_result = Storages::Storages::CreateService
                        .new(
@@ -110,10 +114,6 @@ class Storages::Admin::StoragesController < ApplicationController
     else
       redirect_to(edit_admin_settings_storage_path(@storage), status: :see_other)
     end
-  end
-
-  def edit
-    @wizard = storage_wizard(@storage)
   end
 
   def edit_host
@@ -242,20 +242,21 @@ class Storages::Admin::StoragesController < ApplicationController
   # update parameters are correctly set.
   def permitted_storage_params(model_parameter_name = storage_provider_parameter_name)
     params
-      .require(model_parameter_name)
-      .permit("name",
-              "provider_type",
-              "host",
-              "authentication_method",
-              "audience_configuration",
-              "storage_audience",
-              "storage_scope",
-              "oauth_client_id",
-              "oauth_client_secret",
-              "tenant_id",
-              "drive_id",
-              "automatic_management_enabled",
-              "health_notifications_enabled")
+      .expect(model_parameter_name => %i[
+                audience_configuration
+                authentication_method
+                automatic_management_enabled
+                drive_id
+                health_notifications_enabled
+                host
+                name
+                oauth_client_id
+                oauth_client_secret
+                provider_type
+                storage_audience
+                storage_scope
+                tenant_id
+              ])
   end
 
   def storage_provider_parameter_name
