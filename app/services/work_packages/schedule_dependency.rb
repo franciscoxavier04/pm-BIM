@@ -117,9 +117,23 @@ class WorkPackages::ScheduleDependency
     # All needed data is already loaded.
     @descendants ||= {}
     @descendants[work_package] ||= begin
-      children = children_by_parent_id(work_package.id)
+      work_packages_to_process = [work_package]
+      result = []
+      processed_ids = Set.new
 
-      children + children.flat_map { |child| descendants(child) }
+      while current = work_packages_to_process.shift
+        processed_ids.add(current.id)
+
+        children = children_by_parent_id(current.id)
+
+        # Avoid cycles by rejecting children that have already been processed
+        children.reject! { |child| processed_ids.include?(child.id) }
+
+        result.concat(children)
+        work_packages_to_process.concat(children)
+      end
+
+      result
     end
   end
 

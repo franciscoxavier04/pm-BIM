@@ -9,6 +9,7 @@ value:
     html: "<p class=\"op-uc-p\">I can give you a CR70 corvette, you have to make do, Leia...</p>"
   details: [ ]
   version: 4
+  internal: false
   createdAt: "2025-04-17T13:54:40.737Z"
   updatedAt: "2025-04-17T13:54:40.737Z"
   _embedded:

@@ -20,6 +20,9 @@ properties:
     type: array
     items:
       $ref: './formattable.yml'
+  internal:
+    type: boolean
+    description: Whether this activity is internal (only visible to users with view_internal_comments permission)
   createdAt:
     type: string
     format: date-time
