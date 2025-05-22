@@ -185,13 +185,13 @@ This deployment is simpler than running a dedicated identity provider, because i
 
 This guide will cover the setup related to using Nextcloud as a storage provider and will assume that it was already configured to be the OpenID Connect Provider of OpenProject.
 
-##### Configuring OpenProject
+#### Configuring OpenProject
 
 In OpenProject, configure the storage to "Use first access token obtained by identity provider". This means OpenProject will not attempt to perform a token exchange, but simply use the first token returned by the identity provider for authentication against the storage as well:
 
 ![OpenProject is configured to use the first access token obtained from the IDP](openproject_idp_storage_audience.png)
 
-##### Configuring Nextcloud
+#### Configuring Nextcloud
 
 In Nextcloud, we configure the OIDC provider to be "Nextcloud Hub". In the field "OpenProject client ID" you have to set the client ID of OpenProject as it's configured in Nextcloud (in the sidebar select "Security" and then scroll down to "OpenID Connect clients"):
 
