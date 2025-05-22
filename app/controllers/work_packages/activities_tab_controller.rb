@@ -359,7 +359,7 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def generate_work_package_journals_emoji_reactions_update_streams
-    wp_journal_emoji_reactions = Journal.grouped_work_package_journals_emoji_reactions(@work_package)
+    wp_journal_emoji_reactions = Journal.grouped_work_package_journals_emoji_reactions_by_reactable(@work_package)
     @work_package.journals.each do |journal|
       update_via_turbo_stream(
         component: WorkPackages::ActivitiesTab::Journals::ItemComponent::Reactions.new(
@@ -474,7 +474,7 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def grouped_emoji_reactions_for_journal
-    Journal.grouped_journal_emoji_reactions(@journal).fetch(@journal.id, {})
+    Journal.grouped_journal_emoji_reactions_by_reactable(@journal).fetch(@journal.id, {})
   end
 
   def allowed_to_edit?(journal)

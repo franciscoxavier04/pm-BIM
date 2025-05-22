@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -34,12 +36,16 @@ module Reactable
   end
 
   class_methods do
-    def grouped_journal_emoji_reactions(journal)
+    def grouped_journal_emoji_reactions_by_reactable(journal)
       grouped_emoji_reactions_by_reactable(reactable_id: journal.id, reactable_type: "Journal")
     end
 
     def grouped_work_package_journals_emoji_reactions(work_package)
-      grouped_emoji_reactions_by_reactable(reactable_id: work_package.journal_ids, reactable_type: "Journal")
+      grouped_emoji_reactions(reactable_id: journal_ids_for(work_package), reactable_type: "Journal")
+    end
+
+    def grouped_work_package_journals_emoji_reactions_by_reactable(work_package)
+      grouped_emoji_reactions_by_reactable(reactable_id: journal_ids_for(work_package), reactable_type: "Journal")
     end
 
     def grouped_emoji_reactions_by_reactable(reactable_id:, reactable_type:)
@@ -93,6 +99,10 @@ module Reactable
       else
         raise ArgumentError, "Unsupported user format: #{Setting.user_format}"
       end
+    end
+
+    def journal_ids_for(reactable)
+      reactable.journals.internal_visible.select(:id).pluck(:id)
     end
   end
 end
