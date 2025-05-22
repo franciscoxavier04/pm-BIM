@@ -210,7 +210,7 @@ module WorkPackagesHelper
   end
 
   def last_work_package_note(work_package)
-    note_journals = work_package.journals.select(&:notes?)
+    note_journals = work_package.journals.internal_visible.select(&:notes?)
     return t(:text_no_notes) if note_journals.empty?
 
     note_journals.last.notes
