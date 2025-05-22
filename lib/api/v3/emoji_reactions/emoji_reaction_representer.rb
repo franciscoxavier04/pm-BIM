@@ -34,7 +34,6 @@ module API
       class EmojiReactionRepresenter < ::API::Decorators::Single
         include API::Decorators::DateProperty
         include API::Decorators::LinkedResource
-        include API::Caching::CachedRepresenter
 
         def self.associated_reactable_getter
           ->(*) {
@@ -57,21 +56,7 @@ module API
           }
         end
 
-        def initialize(model, current_user:, embed_links: false)
-          raise "no represented object passed" if model_required? && model.nil?
-
-          # EmojiReaction#updated_at is set to the first created_at timestamp of the reaction.
-          #
-          # This is done to ensure that the updated_at timestamp is always present for caching purposes.
-          model.updated_at = model.first_created_at
-
-          super
-        end
-
-        cached_representer key_parts: %i[reactable]
-
-        links :reactingUsers,
-              uncacheable: true do
+        links :reactingUsers do
           represented.reacting_users.map do |(id, name)|
             {
               href: api_v3_paths.user(id),
