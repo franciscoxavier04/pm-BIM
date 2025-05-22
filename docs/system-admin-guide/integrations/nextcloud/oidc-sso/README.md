@@ -8,8 +8,7 @@ keywords: Nextcloud file storage integration
 
 # Set up Single Sign-On through OpenID Connect Identity Provider (Enterprise add-on)
 
->  [!NOTE]
->
+> [!NOTE]
 > This advanced feature is is an Enterprise add-on and can only be used with [Enterprise cloud](https://www.openproject.org/docs/enterprise-guide/enterprise-cloud-guide) or [Enterprise on-premises](https://www.openproject.org/docs/enterprise-guide/enterprise-on-premises-guide). It is available for all installations under the Enterprise Corporate plan. An upgrade from the free community edition is easy and helps support OpenProject.
 
 This authentication mode will use access tokens provided by an identity provider shared among Nextcloud and OpenProject to authenticate requests performed in the name of users.
@@ -185,13 +184,13 @@ This deployment is simpler than running a dedicated identity provider, because i
 
 This guide will cover the setup related to using Nextcloud as a storage provider and will assume that it was already configured to be the OpenID Connect Provider of OpenProject.
 
-##### Configuring OpenProject
+#### Configuring OpenProject
 
 In OpenProject, configure the storage to "Use first access token obtained by identity provider". This means OpenProject will not attempt to perform a token exchange, but simply use the first token returned by the identity provider for authentication against the storage as well:
 
 ![OpenProject is configured to use the first access token obtained from the IDP](openproject_idp_storage_audience.png)
 
-##### Configuring Nextcloud
+#### Configuring Nextcloud
 
 In Nextcloud, we configure the OIDC provider to be "Nextcloud Hub". In the field "OpenProject client ID" you have to set the client ID of OpenProject as it's configured in Nextcloud (in the sidebar select "Security" and then scroll down to "OpenID Connect clients"):
 
@@ -204,7 +203,7 @@ section "Settings" and set the "Refresh Token Expire Time" to "Never". Non-expir
 Furthermore we need to configure Nextcloud to accept the access tokens it issued to us itself. This can only be enabled via an OCC command
 on the command line:
 
-```
+```shell
 occ config:system:set user_oidc --type boolean --value="true" oidc_provider_bearer_validation
 ```
 

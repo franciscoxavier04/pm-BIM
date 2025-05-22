@@ -102,8 +102,7 @@ These values are **guidelines** and should be adjusted based on actual monitorin
 - **Database**: 2-4 CPU / 8 GiB RAM
 - **CPU**: 4 CPU
 - **RAM**: 8 GB
--  **Web Workers**: 4 Workers, each with 4-8 threads
-  •
+- **Web Workers**: 4 Workers, each with 4-8 threads
 - **Background Workers**: 2 multithreaded workers with 4-6 GiB RAM
 - **Disk Space**: 50 GB + additional disk space in case of internal attachment storage
 
@@ -212,7 +211,7 @@ OpenProject supports the latest versions of the major browsers.
 
 ##### OpenProject integration
 
-*  [OpenProject Integration 2.8.1](https://github.com/nextcloud/integration_openproject/releases/tag/v2.8.1)
+* [OpenProject Integration 2.8.1](https://github.com/nextcloud/integration_openproject/releases/tag/v2.8.1)
 
 ##### Team folders
 

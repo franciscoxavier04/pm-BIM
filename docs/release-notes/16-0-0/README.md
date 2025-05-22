@@ -230,14 +230,14 @@ be able to use them in additional contexts. Starting with OpenProject 16.0.0, we
 - Feature: Implement new homescreen enterprise banner style \[[#63727](https://community.openproject.org/wp/63727)\]
 - Feature: Use Chargebee custom field (Domain) for generation of new version 5 Enterprise token \[[#63845](https://community.openproject.org/wp/63845)\]
 - Feature: Combine legacy\_enterprise custom field with plan name \[[#63905](https://community.openproject.org/wp/63905)\]
-- Bugfix: Search shows browser autofil \[[#57836](https://community.openproject.org/wp/57836)\]
+- Bugfix: Search shows browser autofill \[[#57836](https://community.openproject.org/wp/57836)\]
 - Bugfix: User is able to edit someone else&#39;s comment \[[#58511](https://community.openproject.org/wp/58511)\]
 - Bugfix: Boards search for WorkPackages is too small \[[#58702](https://community.openproject.org/wp/58702)\]
 - Bugfix: Quick wins for top bar search \[[#58704](https://community.openproject.org/wp/58704)\]
 - Bugfix: String &quot;All&quot; within search cannot be translated \[[#59247](https://community.openproject.org/wp/59247)\]
 - Bugfix: Inconsistently used red color for notification bell and ongoing time tracking \[[#59379](https://community.openproject.org/wp/59379)\]
 - Bugfix: Error 500 when bulk editing work packages \[[#60580](https://community.openproject.org/wp/60580)\]
-- Bugfix: Primer Dialog close button ARIA label is not localised \[[#61631](https://community.openproject.org/wp/61631)\]
+- Bugfix: Primer Dialog close button ARIA label is not localized \[[#61631](https://community.openproject.org/wp/61631)\]
 - Bugfix: Token Refresh and Exchange does not work when Client ID contains special characters \[[#61694](https://community.openproject.org/wp/61694)\]
 - Bugfix: Empty audience translation is missing \[[#61855](https://community.openproject.org/wp/61855)\]
 - Bugfix: SSO users storage connection does not work on project storage members page  \[[#61880](https://community.openproject.org/wp/61880)\]
@@ -272,10 +272,10 @@ be able to use them in additional contexts. Starting with OpenProject 16.0.0, we
 - Bugfix: Users without the manage meeting minutes permission still see the &quot;Add outcome&quot; option \[[#63535](https://community.openproject.org/wp/63535)\]
 - Bugfix: My Time tracking calendar view, does not look properly in dark mode \[[#63548](https://community.openproject.org/wp/63548)\]
 - Bugfix: Bad translations of &quot;All checks passed&quot; for Arabic and Latvian languages \[[#63568](https://community.openproject.org/wp/63568)\]
-- Bugfix: Work package meetings tab has discrepency when work packages are added to a template \[[#63571](https://community.openproject.org/wp/63571)\]
+- Bugfix: Work package meetings tab has discrepancy when work packages are added to a template \[[#63571](https://community.openproject.org/wp/63571)\]
 - Bugfix: My sessions page takes forever to load \[[#63587](https://community.openproject.org/wp/63587)\]
 - Bugfix: SAML Setup with metadata URL does not fill IdP Cert \[[#63610](https://community.openproject.org/wp/63610)\]
-- Bugfix: SAML auth: Obsolete fingerprint is used despite presence of IdP certficate \[[#63612](https://community.openproject.org/wp/63612)\]
+- Bugfix: SAML auth: Obsolete fingerprint is used despite presence of IdP certificate \[[#63612](https://community.openproject.org/wp/63612)\]
 - Bugfix: Boolean custom fields in subject patterns are not supported \[[#63641](https://community.openproject.org/wp/63641)\]
 - Bugfix: &#39;Add work package to meeting&#39; dialog has incorrect meeting field label \[[#63692](https://community.openproject.org/wp/63692)\]
 - Bugfix: xls export of time fields work in wrong format (should be 10 h instead of 1 d 2h) \[[#63739](https://community.openproject.org/wp/63739)\]
@@ -287,9 +287,11 @@ be able to use them in additional contexts. Starting with OpenProject 16.0.0, we
 <!-- Warning: Anything above this line will be automatically removed by the release script -->
 
 ## Contributions
+
 A very special thank you goes to City of Cologne, Deutsche Bahn and ZenDiS for sponsoring released or upcoming features. Your support, alongside the efforts of our amazing Community, helps drive these innovations. Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to alex e, Klaas vT, Daniel Elkeles, Marcel Carvalho, Regina Schikora, Çağlar Yeşilyurt, and Александр Татаринцев.
 
 Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to particularly thank the following users:
+
 - [Сергей Баранов](https://crowdin.com/profile/postbse), for a great number of translations into Russian.
 - [Gzyyy](https://crowdin.com/profile/gzyyy), for a great number of translations into Chinese simplified.
 - [rlmpereira](https://crowdin.com/profile/rlmpereira), for a great number of translations into Portuguese.

@@ -11,7 +11,9 @@ keywords: Gantt chart, automatic scheduling, manual scheduling, start date, fini
 # Automatic and manual scheduling modes
 
 <div class="glossary">
+
 To schedule work packages in the Gantt chart, there is an **automatic scheduling mode** and a **manual scheduling mode (default)** (new in [release 15.4](../../../release-notes/15-4-0)). To add dependencies between work packages, you can set them as predecessor or successor in the Gantt chart. The automatic and manual scheduling modes determine how work packages behave when the dates of related work packages change.
+
 </div>
 
 

@@ -70,7 +70,8 @@ You can mark the project as a *Favorite* by clicking the **Favorite** (star) ico
 
 To remove a project from favorites click the **Favorite** icon again. 
 
-## Archive a project 
+## Archive a project
+
 You can archive a project directly from the project overview page. To do that click the **More** (three dots) icon and select *Archive project*.
 
 ![Archive a project on the project overview page in OpenProject](openproject_user_guide_project_overview_archive_project.png)

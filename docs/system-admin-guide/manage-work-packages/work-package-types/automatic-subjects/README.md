@@ -119,6 +119,7 @@ Automatic subjects update whenever an attribute referenced in the **current work
 > Attributes referencing parent work packages or project attributes won't trigger immediate updates. Changes in parent or project attributes appear only when the child work package itself is updated and saved again.
 
 ## FAQs
+
 ### Why "N/A" appears in subjects
 
 "N/A" indicates an unavailable attribute referenced in the subject pattern. Typical causes include:
@@ -127,9 +128,9 @@ Automatic subjects update whenever an attribute referenced in the **current work
 - The attribute was removed from form configuration after creating the pattern.
 - A parent attribute is referenced, but the parent doesn't contain the attribute.
 
-### Why [Attribute Name] appears in subjects
+### Why \[Attribute Name\] appears in subjects
 
-[Attribute Name] indicates an empty attribute referenced in the subject pattern.
+\[Attribute Name\] indicates an empty attribute referenced in the subject pattern.
 
 - The attribute hasn't been filled by the user.
 - A parent attribute is referenced, but no parent is set.
