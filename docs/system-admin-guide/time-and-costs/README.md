@@ -65,6 +65,7 @@ In the overview list of all cost types you can define the following.
 4. Click on the name of a cost type to **edit an existing cost type**.
 5. **Set a current rate** (for the current valid from period) and press the save icon to apply it.
 6. **Lock** a cost type.
+
 > [!TIP]
 > Please note that you **can only lock but not delete** cost types.
 

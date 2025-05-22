@@ -222,6 +222,7 @@ Internal comments are available as [Enterprise add-on](#enterprise-add-on) in Op
 Macros in OpenProject are dynamic shortcuts that help automate repetitive tasks. They work in editors like [work package](#work-package) descriptions, [wikis](#wiki) or [forums](#forum). For example, users can type 'workPackageValue:1234:subject' into a work package description and once saved, OpenProject will display the title of the work package with the ID 1234.
 
 **More information on macros in OpenProject**
+
 - [See a list of all possible work package attributes that can be used as macros in OpenProject](../user-guide/wysiwyg/#available-attributes-for-work-packages)
 - [Read a blog article with detailed descriptions and examples on how to use macros in OpenProject](https://www.openproject.org/blog/how-to-use-macros/)
 - [Learn about options for using macros in OpenProject's wikis](../user-guide/wiki/#macros)

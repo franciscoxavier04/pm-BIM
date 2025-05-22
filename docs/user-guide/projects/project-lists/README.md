@@ -60,7 +60,8 @@ There are several ways to configure the project lists view.
 
 You can choose the **columns displayed by default** in the [Project lists settings](../../../system-admin-guide/projects/project-lists) in the Administration or adjust the project lists view for specific projects.
 
-### Column headers 
+### Column headers
+
 You can adjust the project lists by using the options directly in the table header. To do that click the dropdown icon next to the column name and select a respective option. 
 ![Configure project lists view by using column header dropdown menu](openproject_project_list_column_header_dropdown.png)
 
@@ -229,6 +230,7 @@ You can reverse the action by unselecting the *Share with everyone* toggle. The 
 > Using this function requires a *Manage public project lists* permission. This permission is automatically activated for administrators. If you want to grant this permission to other users, we recommend creating a [global role](../../../system-admin-guide/users-permissions/roles-permissions/#global-role) to assign this permission.
 
 ### Share project lists with individual users and groups (Enterprise add-on)
+
 > [!NOTE] 
 > Sharing project lists with users and groups is an Enterprise add-on and will only be displayed here for Enterprise on-premises and Enterprise cloud.
 

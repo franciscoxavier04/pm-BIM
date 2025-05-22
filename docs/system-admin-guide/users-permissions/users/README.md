@@ -11,8 +11,11 @@ keywords: manage users, lock, unlock, invite, default language
 The user list provides an overview of all users in OpenProject. You can create new users, make changes to existing user accounts and block or delete users from the system.
 
 <div class="glossary">
+
 **User** is defined as a person (described by an identifier) who uses OpenProject. Users can become project members by assigning them a role and adding them via the project settings.
+
 </div>
+
 To manage users click on your avatar (top right corner) and select **Administration**. Select **Users and permissions -> Users**. The list of current users is shown.
 
 In the Community edition there is no limit to the number of users. In Enterprise editions (cloud and on-premises) the user limit is based on your subscription. The number of users for your subscription is thus not bound to names. For example, if you block a user you can add a new one without upgrading.

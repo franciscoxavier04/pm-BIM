@@ -79,7 +79,7 @@ In the first dropdown select the base branch you want your work to be merged in 
 
 ![comparing-changes.png](comparing-changes.png)
 
-In the description field of the pull request enter a summary for the changes you made. If there is already a work package on https://community.openproject.org you can also add this to the description. This adds a relation between your pull request and the work package.
+In the description field of the pull request enter a summary for the changes you made. If there is already a work package on [community.openproject.org](https://community.openproject.org) you can also add this to the description. This adds a relation between your pull request and the work package.
 
 ## Step 9: Request review
 

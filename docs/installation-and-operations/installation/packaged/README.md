@@ -7,9 +7,7 @@ sidebar_navigation:
 # Install OpenProject with DEB/RPM packages
 
 > [!IMPORTANT]
->
 > We will not build packages for new Linux versions, such as Ubuntu 24.04. We will, however, keep releasing new package versions for the currently supported Linux versions until their EOL (end of life).
->  
 
 The packaged installation of OpenProject is the recommended way to install and maintain OpenProject using DEB or RPM packages.
 
@@ -269,9 +267,8 @@ sudo openproject configure #non-interactive - using values stored in /etc/openpr
 ```
 
 > [!NOTE] 
-> * Every time you will run the OpenProject wizard, by using `sudo openproject reconfigure` your choices will be persisted in a configuration file at `/etc/openproject/installer.dat` and subsequent executions of `sudo openproject configure` will re-use these values, only showing you the wizard steps for options you have not yet been asked for.
->
-> * In the interactive way you can skip dialogs you do not want to change simply by confirming them with `ENTER`.
+> Every time you will run the OpenProject wizard, by using `sudo openproject reconfigure` your choices will be persisted in a configuration file at `/etc/openproject/installer.dat` and subsequent executions of `sudo openproject configure` will re-use these values, only showing you the wizard steps for options you have not yet been asked for.
+> In the interactive way you can skip dialogs you do not want to change simply by confirming them with `ENTER`.
 
 ## Step 1: Select your OpenProject edition
 
@@ -490,7 +487,7 @@ Also, this setting will control what is the default language for new users if th
 
 With this last step confirmed, the OpenProject wizard will complete, and apply all the configuration options that you have just selected. This might take a few minutes depending on your machine and internet connection, as OpenProject might need to install additional packages (such as the web server, database) depending on your selections.
 
-In case this process crashes or exits with an obvious error, please keep the output and send your configuration from `/etc/openproject/installer.dat` (removing any passwords from it) to us at support@openproject.com , or [reach out to the community forums](https://community.openproject.org/projects/openproject/forums).
+In case this process crashes or exits with an obvious error, please keep the output and send your configuration from `/etc/openproject/installer.dat` (removing any passwords from it) to us at [support@openproject.com](mailto:support@openproject.com), or [reach out to the community forums](https://community.openproject.org/projects/openproject/forums).
 
 When this process completes, it will have started the internal application and web servers, the background jobs to process work-intensive jobs, and set up the connection to the database.
 

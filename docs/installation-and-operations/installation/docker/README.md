@@ -470,7 +470,8 @@ After which you can access OpenProject under `http://localhost:8080`.
 
 If you want to connect OpenProject to an external server as example SMTP-Server or a Nextcloud-Server that uses a self-signed certificate, you need to import the root certificate that was used to create the self-signed certificate. There are two ways to archive this.
 
-The first way is to mount the root certificate via the ``` --mount``` option into the container and add the  certificate to the ```SSL_CERT_FILE``` variable.
+The first way is to mount the root certificate via the ```--mount``` option into the container and add the  certificate to the ```SSL_CERT_FILE``` variable.
+
 ```shell
 sudo docker run -it -p 8080:80 \
   -e OPENPROJECT_SECRET_KEY_BASE=secret \
@@ -489,6 +490,7 @@ The second way would be to build a new image of the ```openproject/openproject:1
 **2. Put your root SSL certificate** into the folder. In this example, we will name it ```my_root.crt```.
 
 **3. Create the `Dockerfile`** in the same folder. The contents have to look like this:
+
 ```dockerfile
 FROM openproject/openproject:15
 
@@ -497,6 +499,7 @@ RUN update-ca-certificates
 ```
 
 If you are using the -slim tag, you will need to do the following to import your root certificate:
+
 ```dockerfile
 FROM openproject/openproject:15-slim
 
@@ -507,6 +510,7 @@ USER $APP_USER
 ```
 
 **4. Build the image**
+
 ```shell
 docker build --pull -t openproject-with-custom-ca .
 ```
