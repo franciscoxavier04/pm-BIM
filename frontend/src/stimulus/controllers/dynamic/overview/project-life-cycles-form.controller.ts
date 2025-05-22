@@ -65,7 +65,7 @@ export default class ProjectLifeCyclesFormController extends FormPreviewControll
     document.addEventListener('turbo:before-morph-attribute', this.preventValueMorphingActiveElementBound);
 
     const activeElement = document.activeElement as HTMLInputElement;
-    if (activeElement && this.enabledDateInputFields.includes(activeElement)) {
+    if (activeElement) {
       this.highlightField(activeElement);
     }
   }
@@ -106,22 +106,15 @@ export default class ProjectLifeCyclesFormController extends FormPreviewControll
     if (dates.length === 1) {
       if ((this.highlightedField === this.finishDateTarget) || this.startDateTarget.disabled) {
         this.finishDateTarget.value = this.dateToIso(dates[0]);
-        if (!this.startDateTarget.value) {
-          this.highlightField(this.startDateTarget);
-        } else if (this.startDateTarget.value > this.finishDateTarget.value) {
-          this.startDateTarget.value = '';
-        }
+        this.highlightField(this.startDateTarget, true);
       } else {
         this.startDateTarget.value = this.dateToIso(dates[0]);
-        this.finishDateTarget.value = '';
-        this.highlightField(this.finishDateTarget);
+        this.highlightField(this.finishDateTarget, true);
       }
     } else {
-      this.dateInputFields
-        .forEach((field, index) => {
-          field.value = this.dateToIso(dates[index]);
-        });
-      this.clearHighLight();
+      this.startDateTarget.value = this.dateToIso(dates[0]);
+      this.finishDateTarget.value = this.dateToIso(dates[1]);
+      this.highlightField(this.startDateTarget);
     }
 
     this.updateFlatpickrCalendar();
@@ -161,11 +154,15 @@ export default class ProjectLifeCyclesFormController extends FormPreviewControll
     return field;
   }
 
-  private highlightField(field:HTMLInputElement) {
+  private highlightField(field:HTMLInputElement, clearIfInvalid:boolean=false) {
     this.clearHighLight();
 
-    if (field.disabled) {
+    if (field.disabled || !this.dateInputFields.includes(field)) {
       return;
+    }
+
+    if (clearIfInvalid && (this.startDateTarget.value > this.finishDateTarget.value)) {
+      field.value = '';
     }
 
     field.classList.add(this.CURRENT_FIELD_CLASS_NAME);
