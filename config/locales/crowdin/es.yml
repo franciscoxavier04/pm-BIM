@@ -690,6 +690,7 @@ es:
         automatic: "Automático"
         manual: "Manual"
       show_relations: "Mostrar relaciones"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Pestañas del selector de fechas"
         children: "Elementos secundarios"

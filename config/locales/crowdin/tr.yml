@@ -691,6 +691,7 @@ tr:
         automatic: "Otomatik"
         manual: "Elle"
       show_relations: "İlişkileri göster"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Tarih seçme sekmesi"
         children: "Alt"

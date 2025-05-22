@@ -692,6 +692,7 @@ ka:
         automatic: "ავტომატური"
         manual: "Manual"
       show_relations: "ურთიერთობის ჩვენება"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "შვილები"

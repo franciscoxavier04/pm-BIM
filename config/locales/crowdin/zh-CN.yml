@@ -680,6 +680,7 @@ zh-CN:
         automatic: "自动"
         manual: "手动"
       show_relations: "显示关系"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "日期选择器标签"
         children: "子项"

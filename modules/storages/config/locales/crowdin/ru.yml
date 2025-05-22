@@ -80,7 +80,7 @@ ru:
     edit_project_folder:
       label: Изменить папку проекта
     open:
-      remote_identity_error: An unexpected error occurred while connecting to the storage.
+      remote_identity_error: Произошла непредвиденная ошибка при подключении к хранилищу.
     project_folder_mode:
       automatic: Автоматическое управление
       inactive: Нет конкретной папки
@@ -288,7 +288,7 @@ ru:
         nc_group_folder_not_found: Папка группы не найдена.
         nc_host_not_found: По настроенному адресу хоста сервер Nextcloud не найден. Пожалуйста, проверьте конфигурацию.
         nc_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
-        nc_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
+        nc_oauth_request_unauthorized: Текущий пользователь не авторизован для доступа к удаленному файловому хранилищу. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
         nc_oauth_token_missing: OpenProject не может протестировать пользовательскую связь с Nextcloud, так как пользователь еще не связал свою учетную запись Nextcloud.
         nc_unexpected_content: В управляемой папке группы обнаружено неожиданное содержимое.
         nc_userless_access_denied: Указанный пароль приложения неверен.
@@ -298,10 +298,10 @@ ru:
         od_drive_id_invalid: Настроенный идентификатор диска не найден. Пожалуйста, проверьте конфигурацию.
         od_drive_id_not_found: Настроенный идентификатор диска не найден. Пожалуйста, проверьте конфигурацию.
         od_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
-        od_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
+        od_oauth_request_unauthorized: Текущий пользователь не авторизован для доступа к удаленному файловому хранилищу. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
         od_oauth_token_missing: OpenProject не может протестировать пользовательскую связь с OneDrive/SharePoint, так как пользователь еще не связал свою учетную запись Microsoft.
         od_tenant_id_wrong: Настроенный идентификатор каталога недействителен. Пожалуйста, проверьте конфигурацию.
-        od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
+        od_test_folder_exists: Папка %{folder_name}, необходимая для тестирования уже существует. Пожалуйста, удалите её и повторите попытку.
         od_unexpected_content: На диске обнаружено неожидаемое содержимое.
         offline_access_scope_missing: Рекомендуется настроить провайдера OpenID Connect для запроса области offline_access. Интеграция может работать в любом случае, но убедитесь, что токены обновления не истекают.
         oidc_cant_refresh_token: Произошла ошибка во время проверки Вашего доступа к хранилищу. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.

@@ -688,6 +688,7 @@ nl:
         automatic: "Automatisch"
         manual: "Manual"
       show_relations: "Relaties tonen"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Subdocumenten"

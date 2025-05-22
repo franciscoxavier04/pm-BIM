@@ -689,6 +689,7 @@ it:
         automatic: "Automatico"
         manual: "Manuale"
       show_relations: "Visualizza relazioni"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Schede di selezione data"
         children: "Figli"

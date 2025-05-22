@@ -682,6 +682,7 @@ zh-TW:
         automatic: "自動"
         manual: "手動"
       show_relations: "顯示關聯"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "日期選擇器標籤"
         children: "子項目"

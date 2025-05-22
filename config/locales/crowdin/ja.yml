@@ -682,6 +682,7 @@ ja:
         automatic: "自動"
         manual: "Manual"
       show_relations: "関連するタスクを表示"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "子"

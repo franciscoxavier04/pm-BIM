@@ -707,6 +707,7 @@ sl:
         automatic: "Avtomatično"
         manual: "Manual"
       show_relations: "Show relations"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Podrejeni"

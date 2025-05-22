@@ -706,6 +706,7 @@ ru:
         automatic: "Автоматически"
         manual: "Вручную"
       show_relations: "Показать взаимосвязи"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Выбор даты"
         children: "Дочерние пакеты работ"

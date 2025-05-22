@@ -705,6 +705,7 @@ lt:
         automatic: "Automatinis"
         manual: "Manual"
       show_relations: "Rodyti ryšius"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Pasekėjai"

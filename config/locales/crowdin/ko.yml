@@ -684,6 +684,7 @@ ko:
         automatic: "자동"
         manual: "수동"
       show_relations: "관계 표시"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "날짜 선택기 탭"
         children: "하위"

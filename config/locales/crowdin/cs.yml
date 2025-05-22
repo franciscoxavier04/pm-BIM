@@ -708,6 +708,7 @@ cs:
         automatic: "Automaticky"
         manual: "Manuálně"
       show_relations: "Zobrazit vztahy"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Potomci"

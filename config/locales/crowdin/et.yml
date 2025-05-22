@@ -692,6 +692,7 @@ et:
         automatic: "Automaatne"
         manual: "Käsitsi"
       show_relations: "Näita seoseid"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Kuupäeva valija vahekaardid"
         children: "Lapsed"

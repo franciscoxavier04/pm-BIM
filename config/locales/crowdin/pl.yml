@@ -705,6 +705,7 @@ pl:
         automatic: "Automatyczny"
         manual: "Ręczny"
       show_relations: "Pokaż relacje"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Karty wyboru dat"
         children: "Elementy podrzędne"

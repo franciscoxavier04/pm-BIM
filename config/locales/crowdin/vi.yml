@@ -684,6 +684,7 @@ vi:
         automatic: "Tự động"
         manual: "Manual"
       show_relations: "Hiển thị các mối quan hệ"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Con"
