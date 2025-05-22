@@ -434,7 +434,6 @@ pt-PT:
     label_filename: "Ficheiro"
     label_filesize: "Tamanho"
     label_general: "Geral"
-    label_global_roles: "Funções globais"
     label_greater_or_equal: ">="
     label_group: "Grupo"
     label_group_by: "Agrupar por"

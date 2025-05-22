@@ -31,26 +31,35 @@
 require "spec_helper"
 require "contracts/shared/model_contract_shared_context"
 
-RSpec.describe ProjectLifeCycleSteps::BaseContract do
+RSpec.describe ProjectLifeCycleSteps::ActivationContract do
   include_context "ModelContract shared context"
 
-  let(:contract) { described_class.new(phase, user) }
   let(:user) { build_stubbed(:user) }
-  let(:project) { build_stubbed(:project) }
-  let(:phase) { build_stubbed(:project_phase, project:) }
+
+  subject(:contract) { described_class.new(project, user) }
 
   context "with authorized user" do
+    let(:project) { build_stubbed(:project) }
+
     before do
       mock_permissions_for(user) do |mock|
-        mock.allow_in_project(:edit_project_phases, project:)
+        mock.allow_in_project(:select_project_phases, project:)
       end
     end
 
     it_behaves_like "contract is valid"
-    include_examples "contract reuses the model errors"
+    it_behaves_like "contract reuses the model errors"
+
+    context "when project is invalid" do
+      let(:project) { build_stubbed(:project, name: "") }
+
+      it_behaves_like "contract is valid"
+    end
   end
 
   context "with unauthorized user" do
+    let(:project) { build_stubbed(:project) }
+
     it_behaves_like "contract user is unauthorized"
   end
 end

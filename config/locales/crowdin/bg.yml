@@ -422,7 +422,7 @@ bg:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Duration: %{count} working day"
       other: "Duration: %{count} working days"
   lists:
@@ -692,6 +692,7 @@ bg:
         automatic: "Автоматично"
         manual: "Manual"
       show_relations: "Show relations"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Деца"
@@ -1592,12 +1593,13 @@ bg:
       work_package: "Работни пакети"
     project_phase:
       activated: "активиран"
-      deactivated: "деактивиран"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "деактивиран"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Активен"
@@ -1664,6 +1666,8 @@ bg:
     priority: "Приоритет"
     project: "Проект"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reason"
     responsible: "Accountable"
     required: "Задължително"
@@ -2669,6 +2673,7 @@ bg:
   label_gantt_chart_plural: "Диаграми на Гант"
   label_general: "Общ"
   label_generate_key: "Генериране на ключ"
+  label_global_roles: "Global roles"
   label_git_path: "Път до .git директория"
   label_greater_or_equal: ">="
   label_group_by: "Групиране по"

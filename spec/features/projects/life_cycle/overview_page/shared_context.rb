@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -56,22 +58,22 @@ RSpec.shared_context "with seeded projects and phases" do
   let(:life_cycle_planning) do
     create :project_phase,
            definition: life_cycle_planning_definition,
-           start_date: start_date + 4.days,
-           finish_date: start_date + 7.days,
+           start_date: start_date + 2.days,
+           finish_date: start_date + 5.days,
            project:
   end
   let(:life_cycle_executing) do
     create :project_phase,
            definition: life_cycle_executing_definition,
-           start_date: start_date + 9.days,
-           finish_date: start_date + 10.days,
+           start_date: start_date + 6.days,
+           finish_date: start_date + 7.days,
            project:
   end
   let(:life_cycle_closing) do
     create :project_phase,
            definition: life_cycle_closing_definition,
-           start_date: start_date + 14.days,
-           finish_date: start_date + 18.days,
+           start_date: start_date + 8.days,
+           finish_date: start_date + 12.days,
            project:
   end
 

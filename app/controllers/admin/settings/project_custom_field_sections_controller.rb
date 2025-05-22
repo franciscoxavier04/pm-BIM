@@ -30,6 +30,7 @@ module Admin::Settings
   class ProjectCustomFieldSectionsController < ::Admin::SettingsController
     include OpTurbo::ComponentStream
     include Admin::Settings::ProjectCustomFields::ComponentStreams
+    include OpTurbo::DialogStreamHelper
 
     before_action :set_project_custom_field_section, only: %i[update move drop destroy]
 
@@ -100,6 +101,10 @@ module Admin::Settings
         # TODO: show error message
       end
       respond_with_turbo_streams
+    end
+
+    def new_link
+      respond_with_dialog Settings::ProjectCustomFieldSections::NewSectionDialogComponent.new
     end
 
     private

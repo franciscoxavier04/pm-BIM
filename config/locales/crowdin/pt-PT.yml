@@ -420,7 +420,7 @@ pt-PT:
     status:
       button_edit: Editar estado do projeto
   project_phase:
-    working_days_count:
+    duration:
       one: "Duração: %{count} dia útil"
       other: "Duração: %{count} dias úteis"
   lists:
@@ -689,6 +689,7 @@ pt-PT:
         automatic: "Automático"
         manual: "Manual"
       show_relations: "Mostrar relações"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Separadores de seletor de datas"
         children: "Elementos secundários"
@@ -1589,12 +1590,13 @@ pt-PT:
       work_package: "Pacotes de trabalho"
     project_phase:
       activated: "ativada"
-      deactivated: "desativada"
       added_date: "definida para %{date}"
       changed_date: "alterada de %{from} para %{to}"
-      removed_date: "data eliminada %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "desativada"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, e %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "data eliminada %{date}"
   #common attributes of all models
   attributes:
     active: "Ativo"
@@ -1661,6 +1663,8 @@ pt-PT:
     priority: "Prioridade"
     project: "Projecto"
     project_ids: "Identificações do Projeto"
+    project_phase: "Fase do projeto"
+    project_phase_definition: "Fase do projeto"
     reason: "Motivo"
     responsible: "Responsável"
     required: "Obrigatório"
@@ -2666,6 +2670,7 @@ pt-PT:
   label_gantt_chart_plural: "Gráficos de Gantt"
   label_general: "Geral"
   label_generate_key: "Gerar uma chave"
+  label_global_roles: "Funções globais"
   label_git_path: "Caminho para o diretório .git"
   label_greater_or_equal: ">="
   label_group_by: "Agrupar por"

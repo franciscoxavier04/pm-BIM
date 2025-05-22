@@ -37,12 +37,32 @@ FactoryBot.define do
     start_date { Date.current - 2.days }
     finish_date { Date.current + 2.days }
 
+    # calculate duration by diffing start and finish dates unless duration is set explicitly
+    callback(:after_build, :after_stub) do |phase, context|
+      next if context.__override_names__.include?(:duration)
+
+      phase.duration = phase.range_set? ? phase.finish_date - phase.start_date + 1 : nil
+    end
+
     trait :skip_validate do
       to_create { |instance| instance.save(validate: false) }
     end
 
     trait :with_gated_definition do
       definition { association(:project_phase_definition, :with_start_gate, :with_finish_gate) }
+    end
+
+    trait :active do
+      active { true }
+    end
+
+    trait :inactive do
+      active { false }
+    end
+
+    # calculate duration taking weekdays and non working days into account
+    trait :proper_duration do
+      callback(:after_build, :after_stub, &:set_calculated_duration)
     end
   end
 end

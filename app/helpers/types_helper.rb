@@ -29,20 +29,20 @@
 #++
 
 module ::TypesHelper
-  # rubocop:disable Rails/HelperInstanceVariable
+  # rubocop:disable Rails/HelperInstanceVariable, Metrics/AbcSize
   def types_tabs
     [
       {
         name: "settings",
         path: edit_tab_type_path(id: @type.id, tab: :settings),
-        label: "types.edit.settings.tab",
+        label: I18n.t("types.edit.settings.tab"),
         view_component: WorkPackages::Types::SettingsComponent
       },
       {
         name: "form_configuration",
         partial: "types/form/form_configuration",
         path: edit_tab_type_path(id: @type.id, tab: :form_configuration),
-        label: "types.edit.form_configuration.tab"
+        label: I18n.t("types.edit.form_configuration.tab")
       },
       {
         name: "subject_configuration",
@@ -55,18 +55,18 @@ module ::TypesHelper
         name: "projects",
         partial: "types/form/projects",
         path: edit_tab_type_path(id: @type.id, tab: :projects),
-        label: "types.edit.projects.tab"
+        label: I18n.t("types.edit.projects.tab")
       },
       {
         name: "export_configuration",
         path: edit_tab_type_path(id: @type.id, tab: :export_configuration),
-        label: "types.edit.export_configuration.tab",
+        label: I18n.t("types.edit.export_configuration.tab"),
         view_component: WorkPackages::Types::ExportConfigurationComponent
       }
     ]
   end
 
-  # rubocop:enable Rails/HelperInstanceVariable
+  # rubocop:enable Rails/HelperInstanceVariable, Metrics/AbcSize
 
   def icon_for_type(type)
     return unless type

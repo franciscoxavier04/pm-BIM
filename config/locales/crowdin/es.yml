@@ -420,7 +420,7 @@ es:
     status:
       button_edit: Editar estado del proyecto
   project_phase:
-    working_days_count:
+    duration:
       one: "Duración: %{count} día laborable"
       other: "Duración: %{count} días laborables"
   lists:
@@ -679,7 +679,7 @@ es:
           automatic_with_children: "Fechas determinadas por paquetes de trabajo secundarios."
           automatic_with_predecessor: "La fecha de inicio la fija un predecesor."
           manual_mobile: "Programado manualmente."
-          manually_scheduled: "Programado manualmente. No afectadas por relaciones."
+          manually_scheduled: "Programado manualmente. Fechas no afectadas por relaciones."
       blankslate:
         title: "Sin predecesores"
         description: "Para activar la programación automática, este paquete de trabajo debe tener al menos un predecesor. Entonces se programará automáticamente para que comience después del predecesor más cercano."
@@ -690,6 +690,7 @@ es:
         automatic: "Automático"
         manual: "Manual"
       show_relations: "Mostrar relaciones"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Pestañas del selector de fechas"
         children: "Elementos secundarios"
@@ -1590,12 +1591,13 @@ es:
       work_package: "Paquetes de trabajo"
     project_phase:
       activated: "activado"
-      deactivated: "desactivado"
       added_date: "establecido en %{date}"
       changed_date: "cambiado de %{from} a %{to}"
-      removed_date: "fecha de eliminación %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "desactivado"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} y %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "fecha de eliminación %{date}"
   #common attributes of all models
   attributes:
     active: "Activo"
@@ -1662,6 +1664,8 @@ es:
     priority: "Prioridad"
     project: "Proyecto"
     project_ids: "IDs de proyectos"
+    project_phase: "Fase del proyecto"
+    project_phase_definition: "Fase del proyecto"
     reason: "Motivo"
     responsible: "Responsable"
     required: "Obligatorio"
@@ -2667,6 +2671,7 @@ es:
   label_gantt_chart_plural: "Diagramas de Gantt"
   label_general: "General"
   label_generate_key: "Generar una contraseña"
+  label_global_roles: "Roles globales"
   label_git_path: "Ruta al directorio .git"
   label_greater_or_equal: ">="
   label_group_by: "Agrupar por"

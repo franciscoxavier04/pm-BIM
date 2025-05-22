@@ -590,6 +590,9 @@ Rails.application.routes.draw do
           put :move
           put :drop
         end
+        collection do
+          get :new_link
+        end
       end
       resource :working_days_and_hours, controller: "/admin/settings/working_days_and_hours_settings", only: %i[show update]
       resource :users, controller: "/admin/settings/users_settings", only: %i[show update]
