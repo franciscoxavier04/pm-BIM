@@ -143,7 +143,7 @@ Your Draft Pull Request will be created in the browser **on github.com** (the "d
 
 ![create draft pull request](Create-draft-pull-request.png)
 
-In the description field of the pull request enter a summary for the changes you made. If there is already a work package on https://community.openproject.org you can also add this to the description with its complete URL. This adds a relation between your pull request and the work package.
+In the description field of the pull request enter a summary for the changes you made. If there is already a work package on [community.openproject.org](https://community.openproject.org) you can also add this to the description with its complete URL. This adds a relation between your pull request and the work package.
 
 Once you have made all the changed and are certain that these are final, you can request a review.
 
@@ -173,7 +173,7 @@ If a new release branch is generated on the upstream opf/openproject repository,
 
 ### A) Change Remote Repository to UPSTREAM
 
-In GitHub Desktop choose menu "Repository -> Repository settings". This will open a new window (screenshot below). Enter the URL of the upstream/original OpenProject repository (e.g. https://github.com/opf/openproject.git). Confirm with **Save**
+In GitHub Desktop choose menu "Repository -> Repository settings". This will open a new window (screenshot below). Enter the URL of the upstream/original OpenProject repository (e.g. `https://github.com/opf/openproject.git`). Confirm with **Save**
 
 ![rebase-your-fork-step-1](rebase-your-fork-step-1.png)
 
@@ -185,7 +185,7 @@ In GitHub Desktop **at Current branch the old branch is visible [1]** . After yo
 
 ### C) Change remote repository back to the forked repository (ORIGIN)
 
-In Github Desktop choose menu "Repository -> Repository settings". This will open a new window (screenshot below). Enter the URL of your forked OpenProject repository (e.g. https://github.com/adam-op/openproject.git). Confirm with **Save**
+In Github Desktop choose menu "Repository -> Repository settings". This will open a new window (screenshot below). Enter the URL of your forked OpenProject repository (e.g. `https://github.com/adam-op/openproject.git`). Confirm with **Save**
 
 ![rebase-your-fork-step-3](rebase-your-fork-step-3.png)
 

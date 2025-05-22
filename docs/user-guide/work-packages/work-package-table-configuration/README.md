@@ -161,8 +161,11 @@ It will then display the corresponding work package with the attachment.
 By default, the work package table will be sorted by work package ID.
 
 <div class="glossary">
+
 The **ID** is unique for a work package within OpenProject. It will be set automatically from the system. With the ID you can reference a specific work package in OpenProject.
+
 </div>
+
 To sort the work package table view, open the [work package table configuration](#work-package-table-configuration) and select the tab **Sort by**. You can sort by up to three attributes, either ascending or descending.
 
 ![Sorting criteria in work package configuration in OpenProject](openproject_user_guide_wp_wp_table_configuration_sort_by.png)
@@ -214,8 +217,8 @@ If you group the work package table, sums will be shown for each group.
 
 ## Attribute highlighting (Enterprise add-on)
 
->  [!NOTE]
->  Attribute highlighting is an Enterprise add-on and can only be used with [Enterprise cloud](https://www.openproject.org/docs/enterprise-guide/enterprise-cloud-guide) or [Enterprise on-premises](https://www.openproject.org/docs/enterprise-guide/enterprise-on-premises-guide). An upgrade from the free community edition is easy and helps support OpenProject.
+> [!NOTE]
+> Attribute highlighting is an Enterprise add-on and can only be used with [Enterprise cloud](https://www.openproject.org/docs/enterprise-guide/enterprise-cloud-guide) or [Enterprise on-premises](https://www.openproject.org/docs/enterprise-guide/enterprise-on-premises-guide). An upgrade from the free community edition is easy and helps support OpenProject.
 
 You can highlight attributes in the work package table to emphasize the importance of certain attributes and have important topics at a glance. To activate attribute highlighting open the work package configuration table and select the **Highlighting** tab.
 

@@ -9,6 +9,7 @@ keywords: time tracking, log time, time spent, calendar, time spent calendar, ti
 # My time tracking
 
 ## Overview
+
 The *My time tracking* module offers a clear overview of your personal time entries. You can quickly log time directly from this page. To access it, select **My time tracking** from the left-hand menu.
 
 ![My tracking page overview in OpenProject](openproject_user_guide_my_time_tracking_module_overview.png)
@@ -97,8 +98,8 @@ To log time on the *My time tracking* page, click the **+ Log time** button. A m
 - **Start time** and **Finish time** – When both are entered, the **Hours** field is calculated automatically.
 
   > [!TIP]
-  >  These fields are only visible if the **Allow exact times tracking** option is enabled by an administrator.
-  >  If the **Require exact times** option is also enabled, these fields become mandatory in order to save the time entry.
+  > These fields are only visible if the **Allow exact times tracking** option is enabled by an administrator.
+  > If the **Require exact times** option is also enabled, these fields become mandatory in order to save the time entry.
 
 - **Hours** – Enter the number of hours you want to log for a specific work package.
 

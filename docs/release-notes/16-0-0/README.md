@@ -287,9 +287,11 @@ be able to use them in additional contexts. Starting with OpenProject 16.0.0, we
 <!-- Warning: Anything above this line will be automatically removed by the release script -->
 
 ## Contributions
+
 A very special thank you goes to City of Cologne, Deutsche Bahn and ZenDiS for sponsoring released or upcoming features. Your support, alongside the efforts of our amazing Community, helps drive these innovations. Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to alex e, Klaas vT, Daniel Elkeles, Marcel Carvalho, Regina Schikora, Çağlar Yeşilyurt, and Александр Татаринцев.
 
 Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to particularly thank the following users:
+
 - [Сергей Баранов](https://crowdin.com/profile/postbse), for a great number of translations into Russian.
 - [Gzyyy](https://crowdin.com/profile/gzyyy), for a great number of translations into Chinese simplified.
 - [rlmpereira](https://crowdin.com/profile/rlmpereira), for a great number of translations into Portuguese.

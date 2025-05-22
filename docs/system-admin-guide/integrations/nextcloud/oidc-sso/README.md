@@ -8,8 +8,7 @@ keywords: Nextcloud file storage integration
 
 # Set up Single Sign-On through OpenID Connect Identity Provider (Enterprise add-on)
 
->  [!NOTE]
->
+> [!NOTE]
 > This advanced feature is is an Enterprise add-on and can only be used with [Enterprise cloud](https://www.openproject.org/docs/enterprise-guide/enterprise-cloud-guide) or [Enterprise on-premises](https://www.openproject.org/docs/enterprise-guide/enterprise-on-premises-guide). It is available for all installations under the Enterprise Corporate plan. An upgrade from the free community edition is easy and helps support OpenProject.
 
 This authentication mode will use access tokens provided by an identity provider shared among Nextcloud and OpenProject to authenticate requests performed in the name of users.
@@ -204,7 +203,7 @@ section "Settings" and set the "Refresh Token Expire Time" to "Never". Non-expir
 Furthermore we need to configure Nextcloud to accept the access tokens it issued to us itself. This can only be enabled via an OCC command
 on the command line:
 
-```
+```shell
 occ config:system:set user_oidc --type boolean --value="true" oidc_provider_bearer_validation
 ```
 

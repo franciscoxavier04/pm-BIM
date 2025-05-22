@@ -14,6 +14,7 @@ To manage the settings for progress tracking in work packages, navigate to  *Adm
 ![Progress tracking settings under OpenProject administration](openproject_system_guide_progress_tracking_settings.png)
 
 ## Progress calculation mode
+
 *Progress calculation mode* lets you select between *work-based* and *status-based* modes.
 
 - **Work-based mode**: *%&nbsp;Complete* is either set manually or is automatically calculated based on *Work* and *Remaining work*, if they exist. Please refer to [progress tracking user guide](../../../user-guide/time-and-costs/progress-tracking/#work-based-progress-reporting) for more details and calculation examples.

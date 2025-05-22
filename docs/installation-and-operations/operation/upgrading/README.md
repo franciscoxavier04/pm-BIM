@@ -39,14 +39,14 @@ sudo openproject configure
 
 On Ubuntu 22.04., you might see warnings like these:
 
-> W: https://dl.packager.io/srv/deb/opf/openproject/stable/15/ubuntu/dists/22.04/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+> W: `https://dl.packager.io/srv/deb/opf/openproject/stable/15/ubuntu/dists/22.04/InRelease`: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
 
 This message is due to Ubuntu 22.04 switching to a more secure way of adding repository sources, which is not yet supported by the repository provider. There is ongoing work on this item, the message is for information only.
 
 If you get an error like the following:
 
-> E: Repository 'https://dl.packager.io/srv/deb/opf/openproject/stable/15/ubuntu 22.04 InRelease' changed its 'Origin' value from '' to 'https://packager.io/gh/opf/openproject'
-> E: Repository 'https://dl.packager.io/srv/deb/opf/openproject/stable/15/ubuntu 22.04 InRelease' changed its 'Label' value from '' to 'Ubuntu 22.04 packages for opf/openproject'
+> E: Repository '`https://dl.packager.io/srv/deb/opf/openproject/stable/15/ubuntu` 22.04 InRelease' changed its 'Origin' value from '' to '`https://packager.io/gh/opf/openproject`'
+> E: Repository '`https://dl.packager.io/srv/deb/opf/openproject/stable/15/ubuntu` 22.04 InRelease' changed its 'Label' value from '' to 'Ubuntu 22.04 packages for opf/openproject'
 
 These two messages messages are expected, due to a change in Origin and Label repository metadata, to better explain what the repository is about. You should allow the change, and/or run `sudo apt-get update --allow-releaseinfo-change` for the update to go through.
 
@@ -97,7 +97,9 @@ If you want to perform changes to your configuration or are unsure what steps ar
 Note that this still takes previous values into consideration. Values that should not change from your previous configurations can be skipped by pressing `<Return>`. This also applies for steps with passwords, which are shown as empty even though they may have a value. Skipping those steps equals to re-use the existing value.
 
 ## Compose-based installation
-> **Note**: Please make sure the git repository with the docker-compose.yml file is up-to-date. If you're using an old version of the repository, the update might fail.
+
+> [!NOTE]
+> Please make sure the git repository with the docker-compose.yml file is up-to-date. If you're using an old version of the repository, the update might fail.
 
 When using the Compose-based docker installation, you can simply do the following:
 
@@ -195,21 +197,21 @@ you will need to adjust that package source.
 
 #### APT-based systems (Debian, Ubuntu)
 
- - Update the reference to `opf/openproject-ce` in `/etc/apt/sources.list.d/openproject.list` to `opf/openproject`.
- - Update the reference to `stable/8` in `/etc/apt/sources.list.d/openproject.list` to `stable/9`.
- - Perform the Upgrade steps as mentioned above in *Upgrading your OpenProject installation*
+- Update the reference to `opf/openproject-ce` in `/etc/apt/sources.list.d/openproject.list` to `opf/openproject`.
+- Update the reference to `stable/8` in `/etc/apt/sources.list.d/openproject.list` to `stable/9`.
+- Perform the Upgrade steps as mentioned above in *Upgrading your OpenProject installation*
 
 #### YUM-based systems (CentOS, RHEL)
 
- - Update the reference to `opf/openproject-ce` in `/etc/yum.repos.d/openproject.repo` to `opf/openproject`.
- - Update the reference to `stable/8` in `/etc/yum.repos.d/openproject.repo` to `stable/9`.
- - Perform the Upgrade steps as mentioned above in *Upgrading your OpenProject installation*
+- Update the reference to `opf/openproject-ce` in `/etc/yum.repos.d/openproject.repo` to `opf/openproject`.
+- Update the reference to `stable/8` in `/etc/yum.repos.d/openproject.repo` to `stable/9`.
+- Perform the Upgrade steps as mentioned above in *Upgrading your OpenProject installation*
 
 #### SUSE Linux Enterprise Server 12
 
- - Update the reference to `opf/openproject-ce` in `/etc/zypp/repos.d/openproject.repo` to `opf/openproject`.
- - Update the reference to `stable/8` in `/etc/zypp/repos.d/openproject.repo` to `stable/9`.
- - Perform the Upgrade steps as mentioned above in *Upgrading your OpenProject installation*
+- Update the reference to `opf/openproject-ce` in `/etc/zypp/repos.d/openproject.repo` to `opf/openproject`.
+- Update the reference to `stable/8` in `/etc/zypp/repos.d/openproject.repo` to `stable/9`.
+- Perform the Upgrade steps as mentioned above in *Upgrading your OpenProject installation*
 
 ## Upgrade notes for OpenProject 7.x to 8.x
 

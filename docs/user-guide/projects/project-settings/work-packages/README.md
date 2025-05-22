@@ -60,7 +60,9 @@ Press the **edit** button to make changes to a category. Press the **delete** bu
 Custom fields for work packages can be enabled or disabled in the Project settings of each project.
 
 <div class="glossary">
- **Custom fields** are additional attribute fields that can be added to extend existing data fields. They can be used in various sections, including work packages, spent time, projects, versions, users, groups, time tracking activities, and work package priorities.
+
+**Custom fields** are additional attribute fields that can be added to extend existing data fields. They can be used in various sections, including work packages, spent time, projects, versions, users, groups, time tracking activities, and work package priorities.
+
 </div>
 
 > [!NOTE]
