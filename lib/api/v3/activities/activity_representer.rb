@@ -76,6 +76,8 @@ module API
 
         property :version, render_nil: true
 
+        property :internal
+
         property :work_package,
                  embedded: true,
                  exec_context: :decorator,
