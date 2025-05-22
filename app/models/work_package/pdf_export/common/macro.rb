@@ -73,7 +73,7 @@ module WorkPackage::PDFExport::Common::Macro
     formatted, applied_macros = apply_macro_text(node.string_content, context)
     return if formatted == node.string_content
 
-    if applied_macros.any? { |macro| macro.respond_to?(:html_replacement?) && macro.html_replacement? }
+    if has_html_macro?(applied_macros)
       fragment = Markly::Node.new(:inline_html)
       fragment.string_content = formatted
       node.insert_before(fragment)
@@ -111,11 +111,15 @@ module WorkPackage::PDFExport::Common::Macro
     doc.to_html
   end
 
+  def has_html_macro?(macros)
+    macros.any? { |macro| macro.respond_to?(:html_replacement?) && macro.html_replacement? }
+  end
+
   def apply_macro_html_node(node, context)
     if node.text?
       formatted, applied_macros = apply_macro_text(node.content, context)
       if formatted != node.content
-        if applied_macros.any? { |macro| macro.respond_to?(:html_replacement?) && macro.html_replacement? }
+        if has_html_macro?(applied_macros)
           node.replace(formatted)
         else
           node.content = formatted

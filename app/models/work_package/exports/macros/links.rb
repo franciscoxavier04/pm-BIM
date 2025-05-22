@@ -35,10 +35,6 @@ module WorkPackage::Exports
         %w(# ## ###).include?(matcher.sep) && matcher.prefix.blank?
       end
 
-      def html_replacement?
-        true
-      end
-
       def render_link(wp_id, matcher)
         link = "#{matcher.sep}#{wp_id}"
         "<mention class=\"mention\" data-id=\"#{wp_id}\" data-type=\"work_package\" data-text=\"#{link}\">#{
@@ -50,6 +46,10 @@ module WorkPackage::Exports
     class Links < OpenProject::TextFormatting::Matchers::ResourceLinksMatcher
       def self.link_handlers
         [WorkPackagesLinkHandler]
+      end
+
+      def self.html_replacement?
+        true
       end
 
       # Faster inclusion check before the full regex is being applied
