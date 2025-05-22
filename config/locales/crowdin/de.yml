@@ -623,10 +623,10 @@ de:
         tab: "Titel konfigurieren"
         manually_editable_subjects:
           label: "Manuell bearbeitbare Titel"
-          caption: "Benutzer können die Titel der Arbeitspakete ohne Einschränkungen manuell eingeben und bearbeiten."
+          caption: "Nutzer:innen können die Titel der Arbeitspakete ohne Einschränkungen manuell eingeben und bearbeiten."
         automatically_generated_subjects:
           label: "Automatisch generierte Titel"
-          caption: "Definieren Sie ein Schema aus referenzierten Attributen und Freitext für die automatische Generierung von Arbeitspakettiteln. Nutzer können diese nicht manuell editieren."
+          caption: "Definieren Sie ein Schema aus referenzierten Attributen und Freitext für die automatische Generierung von Arbeitspakettiteln. Nutzer:innen können diese nicht manuell editieren."
         token:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:

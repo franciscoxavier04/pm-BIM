@@ -196,7 +196,7 @@ de:
   setting_allow_tracking_start_and_end_times: "Start- und Endzeiten erlaubt"
   setting_costs_currency: "Währung"
   setting_costs_currency_format: "Format der Währung"
-  setting_enforce_tracking_start_and_end_times: "Start und Endzeiten erforderlich"
+  setting_enforce_tracking_start_and_end_times: "Start- und Endzeiten erforderlich"
   setting_enforce_without_allow: "Start und Endzeiten können nur erforderlich sein, wenn ihre Angabe erlaubt ist"
   setting_allow_tracking_start_and_end_times_caption: "Erlaubt es bei der Zeitbuchung die genaue Start- und Endzeiten der Buchung zu erfassen."
   setting_enforce_tracking_start_and_end_times_caption: "Erfordert, dass bei Zeitbuchungen genaue Start- und Endzeiten erfasst werden."
