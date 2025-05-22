@@ -3,4 +3,14 @@
 type: object
 properties:
   comment:
-    type: string
+    type: object
+    properties:
+      raw:
+        type: string
+        description: The raw content of the comment
+  internal:
+    type: boolean
+    description: Whether this comment is internal (only available to users with add_internal_comments permission)
+example:
+  comment:
+    raw: I think this is awesome!
