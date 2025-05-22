@@ -36,13 +36,7 @@ FactoryBot.define do
 
     start_date { Date.current - 2.days }
     finish_date { Date.current + 2.days }
-
-    # calculate duration by diffing start and finish dates unless duration is set explicitly
-    callback(:after_build, :after_stub) do |phase, context|
-      next if context.__override_names__.include?(:duration)
-
-      phase.duration = phase.range_set? ? phase.finish_date - phase.start_date + 1 : nil
-    end
+    duration { range_set? ? finish_date - start_date + 1 : nil }
 
     trait :skip_validate do
       to_create { |instance| instance.save(validate: false) }
