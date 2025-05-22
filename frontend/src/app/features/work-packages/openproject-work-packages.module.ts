@@ -299,9 +299,6 @@ import {
   WorkPackageSingleViewComponent,
 } from 'core-app/features/work-packages/components/wp-single-view/wp-single-view.component';
 import {
-  WorkPackageCopySplitViewComponent,
-} from 'core-app/features/work-packages/components/wp-copy/wp-copy-split-view.component';
-import {
   WorkPackageFormAttributeGroupComponent,
 } from 'core-app/features/work-packages/components/wp-form-group/wp-attribute-group.component';
 import { WorkPackagesGridComponent } from 'core-app/features/work-packages/components/wp-grid/wp-grid.component';
@@ -405,6 +402,15 @@ import {
 } from 'core-app/features/work-packages/routing/wp-split-view/wp-split-view-entry.component';
 import { OpWpDatePickerModalComponent } from 'core-app/shared/components/datepicker/wp-date-picker-modal/wp-date-picker.modal';
 import { OpenprojectEnterpriseModule } from 'core-app/features/enterprise/openproject-enterprise.module';
+import {
+  WorkPackagePrimerizedListViewComponent,
+} from 'core-app/features/work-packages/routing/wp-list-view/wp-primerized-list-view.component';
+import { WorkPackageSplitCreateEntryComponent } from 'core-app/features/work-packages/routing/wp-split-create/wp-split-create-entry.component';
+import { WorkPackageFullCopyEntryComponent } from 'core-app/features/work-packages/routing/wp-full-copy/wp-full-copy-entry.component';
+import { WorkPackageFullCreateEntryComponent } from 'core-app/features/work-packages/routing/wp-full-create/wp-full-create-entry.component';
+import { WorkPackageFullViewEntryComponent } from 'core-app/features/work-packages/routing/wp-full-view/wp-full-view-entry.component';
+import { OpBaselineEntryComponent } from 'core-app/features/work-packages/components/wp-baseline/baseline/baseline-entry.component';
+import { WpTableConfigurationTabEntryComponent } from 'core-app/features/work-packages/components/wp-table/configuration-modal/tabs/tab-entry.component';
 
 @NgModule({
   imports: [
@@ -491,7 +497,6 @@ import { OpenprojectEnterpriseModule } from 'core-app/features/enterprise/openpr
 
     // WP Copy
     WorkPackageCopyFullViewComponent,
-    WorkPackageCopySplitViewComponent,
 
     // Embedded table
     WorkPackageEmbeddedTableComponent,
@@ -592,6 +597,7 @@ import { OpenprojectEnterpriseModule } from 'core-app/features/enterprise/openpr
     WorkPackageDetailsViewButtonComponent,
     WorkPackageSplitViewComponent,
     WorkPackageSplitViewEntryComponent,
+    WorkPackageSplitCreateEntryComponent,
     WorkPackageBreadcrumbComponent,
     WorkPackageSplitViewToolbarComponent,
     WorkPackageWatcherButtonComponent,
@@ -601,6 +607,9 @@ import { OpenprojectEnterpriseModule } from 'core-app/features/enterprise/openpr
 
     // Full view
     WorkPackagesFullViewComponent,
+    WorkPackageFullViewEntryComponent,
+    WorkPackageFullCopyEntryComponent,
+    WorkPackageFullCreateEntryComponent,
 
     // Modals
     WpTableConfigurationModalComponent,
@@ -610,6 +619,7 @@ import { OpenprojectEnterpriseModule } from 'core-app/features/enterprise/openpr
     WpTableConfigurationSortByTabComponent,
     WpTableConfigurationTimelinesTabComponent,
     WpTableConfigurationHighlightingTabComponent,
+    WpTableConfigurationTabEntryComponent,
     WpTableConfigurationRelationSelectorComponent,
     QuerySharingFormComponent,
     QuerySharingModalComponent,
@@ -638,10 +648,14 @@ import { OpenprojectEnterpriseModule } from 'core-app/features/enterprise/openpr
     // Timestamps
     OpBaselineModalComponent,
     OpBaselineComponent,
+    OpBaselineEntryComponent,
     OpBaselineLoadingComponent,
     OpBaselineLegendsComponent,
 
     OpWpDatePickerModalComponent,
+
+    // Primerized work packages list
+    WorkPackagePrimerizedListViewComponent,
   ],
   exports: [
     WorkPackagesTableComponent,

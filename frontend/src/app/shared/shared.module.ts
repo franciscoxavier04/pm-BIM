@@ -86,6 +86,8 @@ import {
 import { OpenprojectModalModule } from 'core-app/shared/components/modal/modal.module';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { OpDatePickerModule } from 'core-app/shared/components/datepicker/datepicker.module';
+import { OpProjectIncludeModalComponent } from 'core-app/shared/components/project-include/project-include-modal.component';
+import { OpIncludeProjectsEntryComponent } from 'core-app/shared/components/project-include/project-include-entry.component';
 
 export function bootstrapModule(injector:Injector):void {
   // Ensure error reporter is run
@@ -177,7 +179,7 @@ export function bootstrapModule(injector:Injector):void {
     DynamicModule,
 
     OpOptionListComponent,
-    OpProjectIncludeComponent,
+    OpProjectIncludeModalComponent,
     OpProjectIncludeListComponent,
     OpLoadingProjectListComponent,
 
@@ -221,6 +223,8 @@ export function bootstrapModule(injector:Injector):void {
     HomescreenNewFeaturesBlockComponent,
 
     OpOptionListComponent,
+    OpIncludeProjectsEntryComponent,
+    OpProjectIncludeModalComponent,
     OpProjectIncludeComponent,
     OpProjectIncludeListComponent,
     OpLoadingProjectListComponent,

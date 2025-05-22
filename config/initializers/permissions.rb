@@ -254,7 +254,8 @@ Rails.application.reloader.to_prepare do
                        "work_packages/menus": %i[show],
                        "work_packages/hover_card": %i[show],
                        work_package_relations_tab: %i[index],
-                       "work_packages/reminders": %i[modal_body create update destroy]
+                       "work_packages/reminders": %i[modal_body create update destroy],
+                       "work_packages/page_header": %i[index]
                      },
                      permissible_on: %i[work_package project],
                      contract_actions: { work_packages: %i[read] }
@@ -284,7 +285,10 @@ Rails.application.reloader.to_prepare do
                      contract_actions: { work_packages: %i[move] }
 
       wpt.permission :copy_work_packages,
-                     { "work_packages/moves": %i[new create] },
+                     {
+                       "work_packages/moves": %i[new create],
+                       work_packages: %i[copy]
+                     },
                      permissible_on: %i[work_package project],
                      require: :loggedin,
                      dependencies: :view_work_packages,
