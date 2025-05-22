@@ -35,6 +35,10 @@ module WorkPackage::Exports
         %w(# ## ###).include?(matcher.sep) && matcher.prefix.blank?
       end
 
+      def html_replacement?
+        true
+      end
+
       def render_link(wp_id, matcher)
         link = "#{matcher.sep}#{wp_id}"
         "<mention class=\"mention\" data-id=\"#{wp_id}\" data-type=\"work_package\" data-text=\"#{link}\">#{
@@ -46,38 +50,6 @@ module WorkPackage::Exports
     class Links < OpenProject::TextFormatting::Matchers::ResourceLinksMatcher
       def self.link_handlers
         [WorkPackagesLinkHandler]
-      end
-
-      def self.regexp
-        %r{
-          ([[[:space:]](,~\-\[>]|^) # Leading string
-          (!)? # Escaped marker
-          (([a-z0-9\-_]+):)? # Project identifier
-          (#{allowed_prefixes.join('|')})? # prefix
-          (
-            (\#+|r)(\d+) # separator and its identifier
-            |
-            (:) # or colon separator
-            (
-              [^"\s<>][^\s<>]*? # And a non-quoted value [10]
-              |
-              "([^"]+)" # Or a quoted value [11]
-            )
-          )
-          (?=
-            (?=
-              [[:punct:]]\W # Includes matches of, e.g., source:foo.ext
-            )
-            |\.\z # Allow matching when string ends with .
-            |, # or with ,
-            |~ # or with ~
-            |\) # or with )
-            |[[:space:]]
-            |\]
-            |<
-            |$
-           )
-        }x
       end
 
       # Faster inclusion check before the full regex is being applied

@@ -70,10 +70,10 @@ module WorkPackage::PDFExport::Common::Macro
   end
 
   def apply_macros_node_text(node, context)
-    formatted = apply_macro_text(node.string_content, context)
+    formatted, applied_macros = apply_macro_text(node.string_content, context)
     return if formatted == node.string_content
 
-    if formatted.include?("<")
+    if applied_macros.any? { |macro| macro.respond_to?(:html_replacement?) && macro.html_replacement? }
       fragment = Markly::Node.new(:inline_html)
       fragment.string_content = formatted
       node.insert_before(fragment)
@@ -100,7 +100,7 @@ module WorkPackage::PDFExport::Common::Macro
         macro.process_match(Regexp.last_match, matched_string, context)
       end
     end
-    text
+    [text, applicable_macros]
   end
 
   def apply_macro_html(html, context)
@@ -113,9 +113,9 @@ module WorkPackage::PDFExport::Common::Macro
 
   def apply_macro_html_node(node, context)
     if node.text?
-      formatted = apply_macro_text(node.content, context)
+      formatted, applied_macros = apply_macro_text(node.content, context)
       if formatted != node.content
-        if formatted.include?("<")
+        if applied_macros.any? { |macro| macro.respond_to?(:html_replacement?) && macro.html_replacement? }
           node.replace(formatted)
         else
           node.content = formatted
