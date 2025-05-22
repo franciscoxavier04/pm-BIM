@@ -172,6 +172,8 @@ paths:
     "$ref": "./paths/activity.yml"
   "/api/v3/activities/{id}/attachments":
     "$ref": "./paths/activity_attachments.yml"
+  "/api/v3/activities/{id}/emoji_reactions":
+    "$ref": "./paths/activity_emoji_reactions.yml"
   "/api/v3/attachments":
     "$ref": "./paths/attachments.yml"
   "/api/v3/attachments/{id}":
@@ -472,6 +474,8 @@ paths:
     "$ref": "./paths/work_package.yml"
   "/api/v3/work_packages/{id}/activities":
     "$ref": "./paths/work_package_activities.yml"
+  "/api/v3/work_packages/{id}/activities_emoji_reactions":
+    "$ref": "./paths/work_package_activities_emoji_reactions.yml"
   "/api/v3/work_packages/{id}/attachments":
     "$ref": "./paths/work_package_attachments.yml"
   "/api/v3/work_packages/{id}/available_assignees":
@@ -935,6 +939,10 @@ components:
       "$ref": "./components/schemas/work_package_activities_model.yml"
     Work_PackagesModel:
       "$ref": "./components/schemas/work_packages_model.yml"
+    EmojiReactionModel:
+      "$ref": "./components/schemas/emoji_reaction_model.yml"
+    EmojiReactions_Model:
+      "$ref": "./components/schemas/emoji_reactions_model.yml"
   securitySchemes:
     BasicAuth:
       type: http

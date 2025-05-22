@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,35 +28,29 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class EmojiReaction < ApplicationRecord
-  # See: https://unicode.org/Public/emoji/latest/emoji-test.txt
-  EMOJI_MAP = {
-    thumbs_up: "\u{1F44D}",
-    thumbs_down: "\u{1F44E}",
-    grinning_face_with_smiling_eyes: "\u{1F604}",
-    confused_face: "\u{1F615}",
-    heart: "\u{2764 FE0F}",
-    party_popper: "\u{1F389}",
-    rocket: "\u{1F680}",
-    eyes: "\u{1F440}"
-  }.freeze
+module API
+  module V3
+    module EmojiReactions
+      class EmojiReactionsByActivityCommentAPI < ::API::OpenProjectAPI
+        resource :emoji_reactions do
+          helpers do
+            def reactable
+              @activity
+            end
 
-  belongs_to :user
-  belongs_to :reactable, polymorphic: true
+            def get_emoji_reactions_self_path
+              api_v3_paths.emoji_reactions_by_activity_comment(reactable.id)
+            end
+          end
 
-  validates :user_id, uniqueness: { scope: %i[reactable_type reactable_id reaction] }
-
-  enum :reaction, EMOJI_MAP.each_with_object({}) { |(k, _v), h| h[k] = k.to_s }
-
-  def self.available_emoji_reactions
-    EMOJI_MAP.invert.sort
-  end
-
-  def self.emoji(reaction)
-    EMOJI_MAP[reaction.to_sym]
-  end
-
-  def emoji
-    self.class.emoji(reaction)
+          get do
+            emoji_reactions = Journal.grouped_emoji_reactions(reactable_id: reactable.id, reactable_type: "Journal")
+            EmojiReactionCollectionRepresenter.new(emoji_reactions,
+                                                   self_link: get_emoji_reactions_self_path,
+                                                   current_user: User.current)
+          end
+        end
+      end
+    end
   end
 end

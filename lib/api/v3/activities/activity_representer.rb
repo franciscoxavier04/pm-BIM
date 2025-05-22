@@ -62,6 +62,12 @@ module API
           }
         end
 
+        link :emojiReactions do
+          {
+            href: api_v3_paths.emoji_reactions_by_activity_comment(represented.id)
+          }
+        end
+
         property :id,
                  render_nil: true
 
@@ -77,6 +83,12 @@ module API
         property :version, render_nil: true
 
         property :work_package,
+                 embedded: true,
+                 exec_context: :decorator,
+                 if: ->(*) { embed_links },
+                 uncacheable: true
+
+        property :emoji_reactions,
                  embedded: true,
                  exec_context: :decorator,
                  if: ->(*) { embed_links },
@@ -100,6 +112,16 @@ module API
             .create(represented.journable,
                     current_user: current_user,
                     embed_links: false)
+        end
+
+        def emoji_reactions
+          return unless represented.journable.is_a?(WorkPackage)
+
+          emoji_reactions = Journal.grouped_emoji_reactions(reactable_id: represented.id, reactable_type: "Journal")
+          API::V3::EmojiReactions::EmojiReactionCollectionRepresenter
+            .new(emoji_reactions,
+                 self_link: api_v3_paths.emoji_reactions_by_activity_comment(represented.id),
+                 current_user:)
         end
 
         private

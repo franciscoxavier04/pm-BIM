@@ -56,8 +56,9 @@ module Reactable
       EmojiReaction
         .select(emoji_reactions_group_selection_sql)
         .joins(:user)
+        .includes(:reactable)
         .where(reactable_id:, reactable_type:)
-        .group("emoji_reactions.reactable_id, emoji_reactions.reaction")
+        .group("emoji_reactions.reactable_type, emoji_reactions.reactable_id, emoji_reactions.reaction")
         .order("first_created_at ASC")
     end
 
@@ -65,7 +66,7 @@ module Reactable
 
     def emoji_reactions_group_selection_sql
       <<~SQL.squish
-        emoji_reactions.reactable_id, emoji_reactions.reaction,
+        emoji_reactions.reactable_id, emoji_reactions.reactable_type, emoji_reactions.reaction,
         COUNT(emoji_reactions.id) as reactions_count,
         json_agg(
           json_build_array(users.id, #{user_name_concat_format_sql})
