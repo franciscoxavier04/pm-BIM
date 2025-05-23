@@ -28,25 +28,23 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-Rails.application.config.to_prepare do
-  Scimitar.service_provider_configuration = Scimitar::ServiceProviderConfiguration.new(
-    patch: Scimitar::Supportable.supported
-  )
-  Scimitar.engine_configuration = Scimitar::EngineConfiguration.new(
-    application_controller_mixin: ScimV2::ScimControllerMixins
-  )
-
-  module ScimitarSchemaExtension
-    def scim_attributes
-      super + [Scimitar::Schema::Attribute.new(name: "externalId", type: "string")]
+module ScimV2
+  module ScimControllerMixins
+    def self.included(base)
+      base.prepend(Overwrites)
     end
-  end
 
-  Scimitar::Schema::User.singleton_class.class_eval do
-    prepend ScimitarSchemaExtension
-  end
+    module Overwrites
+      # Completely overwriting authenticate method of Scimitar
+      def authenticate
+        return handle_scim_error(Scimitar::AuthenticationError.new) unless OpenProject::FeatureDecisions.scim_api_active?
 
-  Scimitar::Schema::Group.singleton_class.class_eval do
-    prepend ScimitarSchemaExtension
+        warden = request.env["warden"]
+        User.current = warden.authenticate! scope: :scim_v2
+
+        # Only admins are able to manage users, so that's the only permission we can check for it
+        handle_scim_error(Scimitar::AuthenticationError.new) unless User.current.admin?
+      end
+    end
   end
 end
