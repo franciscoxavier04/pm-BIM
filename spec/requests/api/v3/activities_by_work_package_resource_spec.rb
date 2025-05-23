@@ -180,6 +180,17 @@ RSpec.describe API::V3::Activities::ActivitiesByWorkPackageAPI do # rubocop:disa
               expect(last_response.body).to be_json_eql(false.to_json).at_path("internal")
             end
           end
+
+          it_behaves_like "valid activity request" do
+            let(:permissions) { %i(view_work_packages view_internal_comments add_internal_comments) }
+            let(:status_code) { 201 }
+
+            include_context "to create internal comment", internal: nil
+
+            it "creates an internal comment" do
+              expect(last_response.body).to be_json_eql(false.to_json).at_path("internal")
+            end
+          end
         end
 
         context "and the user does not have the permission to create internal comments" do

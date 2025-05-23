@@ -10,7 +10,10 @@ properties:
         description: The raw content of the comment
   internal:
     type: boolean
-    description: Whether this comment is internal (only available to users with add_internal_comments permission)
+    description: |-
+      Determines whether this comment is internal. This is only available to users
+      with `add_internal_comments` permission. It defaults to `false`, if unset.
+    default: false
 example:
   comment:
     raw: I think this is awesome!
