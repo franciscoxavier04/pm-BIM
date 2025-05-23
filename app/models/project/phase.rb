@@ -78,18 +78,10 @@ class Project::Phase < ApplicationRecord
     end
   end
 
-  def set_calculated_duration
-    self.duration = calculate_duration
-  end
-
   def calculate_duration
     return nil unless date_range_set?
 
     Day.working.from_range(from: start_date, to: finish_date).count
-  end
-
-  def set_default_start_date
-    self.start_date = default_start_date if default_start_date.present?
   end
 
   def default_start_date

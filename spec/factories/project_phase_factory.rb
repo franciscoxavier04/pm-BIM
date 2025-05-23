@@ -56,7 +56,7 @@ FactoryBot.define do
 
     # calculate duration taking weekdays and non working days into account
     trait :proper_duration do
-      callback(:after_build, :after_stub, &:set_calculated_duration)
+      duration { calculate_duration }
     end
   end
 end

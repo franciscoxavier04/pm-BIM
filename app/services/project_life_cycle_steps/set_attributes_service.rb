@@ -30,14 +30,18 @@ module ProjectLifeCycleSteps
   class SetAttributesService < ::BaseServices::SetAttributes
     def perform(*)
       super.tap do
-        model.set_calculated_duration
+        set_calculated_duration
       end
     end
 
-    def set_default_attributes(_params)
-      model.change_by_system do
-        model.set_default_start_date
-      end
+    private
+
+    def ensure_default_attributes(_params)
+      model.start_date = model.default_start_date if model.default_start_date.present?
+    end
+
+    def set_calculated_duration
+      model.duration = model.calculate_duration
     end
   end
 end
