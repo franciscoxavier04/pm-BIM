@@ -47,7 +47,7 @@ RSpec.describe "Edit project phases on project overview page", :js, with_flag: {
   end
 
   def formatted_date_range(life_cycle)
-    if life_cycle.range_set?
+    if life_cycle.date_range_set?
       [life_cycle.start_date, life_cycle.finish_date].map { I18n.l(it) }.join("\n-\n")
     else
       "-"

@@ -33,7 +33,7 @@ module ProjectLifeCycleSteps
     delegate :project, to: :model
 
     def after_perform(*)
-      reschedule_following_phases if model.range_set?
+      reschedule_following_phases if model.date_range_set?
 
       project.touch_and_save_journals
 
@@ -46,7 +46,7 @@ module ProjectLifeCycleSteps
       from = initial_reschedule_date
 
       following_phases.each do |phase|
-        next unless phase.range_set?
+        next unless phase.date_range_set?
         next unless phase.duration&.positive? # not updated using service that sets duration
 
         date_range = calculate_date_range(from, duration: phase.duration)

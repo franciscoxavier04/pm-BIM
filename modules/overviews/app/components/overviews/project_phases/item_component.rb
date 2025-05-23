@@ -36,8 +36,8 @@ module Overviews
 
       private
 
-      def not_set?
-        model.not_set?
+      def date_range_not_set?
+        model.date_range_not_set?
       end
 
       def icon

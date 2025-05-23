@@ -40,7 +40,7 @@ module ProjectLifeCycleSteps
 
     def validate_start_after_preceeding_phases
       return unless model.active?
-      return unless model.range_set?
+      return unless model.date_range_set?
       return if start_after_preceding_phases?
 
       model.errors.add(:start_date, :non_continuous_dates)
@@ -62,7 +62,7 @@ module ProjectLifeCycleSteps
 
     def start_after_preceding_phases?
       preceding_phases
-        .select(&:range_set?)
+        .select(&:date_range_set?)
         .all? { valid_dates?(current: model, previous: it) }
     end
 

@@ -60,12 +60,16 @@ class Project::Phase < ApplicationRecord
     end
   end
 
-  def range_set?
+  def date_range_set?
     start_date? && finish_date?
   end
 
+  def date_range_not_set?
+    !date_range_set?
+  end
+
   def validate_date_range
-    if range_set? && (start_date > finish_date)
+    if date_range_set? && (start_date > finish_date)
       if finish_date_changed?
         errors.add(:finish_date, :must_be_after_start_date)
       else
@@ -79,7 +83,7 @@ class Project::Phase < ApplicationRecord
   end
 
   def calculate_duration
-    return nil unless range_set?
+    return nil unless date_range_set?
 
     Day.working.from_range(from: start_date, to: finish_date).count
   end
