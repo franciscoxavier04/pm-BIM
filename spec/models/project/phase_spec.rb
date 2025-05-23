@@ -62,51 +62,7 @@ RSpec.describe Project::Phase do
     end
   end
 
-  describe "#not_set?" do
-    it "returns true if start_date or finish_date is blank" do
-      expect(subject.not_set?).to be(true)
-    end
-
-    it "returns false if both start_date and finish_date are present" do
-      subject.start_date = Time.zone.today
-      subject.finish_date = Date.tomorrow
-      expect(subject.not_set?).to be(false)
-    end
-  end
-
-  describe "#date_range=" do
-    it "splits a valid date range string into start_date and finish_date" do
-      subject.date_range = "2024-11-26 - 2024-11-27"
-      expect(subject.start_date).to eq(Date.parse("2024-11-26"))
-      expect(subject.finish_date).to eq(Date.parse("2024-11-27"))
-    end
-
-    it "sets finish_date to start_date if a single date is provided" do
-      subject.date_range = "2024-11-26"
-      expect(subject.start_date).to eq(Date.parse("2024-11-26"))
-      expect(subject.finish_date).to eq(Date.parse("2024-11-26"))
-    end
-
-    it "accepts a date range" do
-      subject.date_range = Date.parse("2024-12-26")..Date.parse("2024-12-27")
-      expect(subject.start_date).to eq(Date.parse("2024-12-26"))
-      expect(subject.finish_date).to eq(Date.parse("2024-12-27"))
-    end
-
-    it "errors on date range excluding end" do
-      expect do
-        subject.date_range = Date.parse("2024-12-26")...Date.parse("2024-12-27")
-      end.to raise_error(ArgumentError, "Only inclusive ranges expected")
-    end
-
-    it "accepts nil" do
-      subject.date_range = nil
-      expect(subject.start_date).to be_nil
-      expect(subject.finish_date).to be_nil
-    end
-  end
-
-  describe "#validate_date_range" do
+  describe "validations" do
     subject { create(:project_phase) }
 
     it "is valid when both dates are blank" do
@@ -140,7 +96,8 @@ RSpec.describe Project::Phase do
     describe "#set_calculated_duration" do
       it "sets duration to the number of working days in complete date range" do
         subject.duration = 0
-        subject.date_range = date..date + 27
+        subject.start_date = date
+        subject.finish_date = date + 27
 
         expect { subject.set_calculated_duration }.to change(subject, :duration).from(0).to(20)
       end
@@ -155,7 +112,8 @@ RSpec.describe Project::Phase do
 
     describe "#calculate_duration" do
       it "returns number of working days in complete date range" do
-        subject.date_range = date..date + 27
+        subject.start_date = date
+        subject.finish_date = date + 27
 
         expect(subject.calculate_duration).to eq(20)
       end

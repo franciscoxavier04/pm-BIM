@@ -60,33 +60,8 @@ class Project::Phase < ApplicationRecord
     end
   end
 
-  def date_range=(range)
-    case range
-    when String
-      self.start_date, self.finish_date = range.split(" - ")
-      self.finish_date ||= start_date # Allow single dates as range
-    when Range
-      fail ArgumentError, "Only inclusive ranges expected" if range.exclude_end?
-
-      self.start_date = range.begin
-      self.finish_date = range.end
-    when nil
-      self.start_date = self.finish_date = nil
-    else
-      fail ArgumentError, "Expected String, Range or nil"
-    end
-  end
-
   def range_set?
     start_date? && finish_date?
-  end
-
-  def not_set?
-    !range_set?
-  end
-
-  def range_incomplete?
-    start_date? ^ finish_date?
   end
 
   def validate_date_range

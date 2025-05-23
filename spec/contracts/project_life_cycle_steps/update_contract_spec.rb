@@ -74,9 +74,26 @@ RSpec.describe ProjectLifeCycleSteps::UpdateContract do
 
         let(:project) { create(:project) }
         let(:phases) { [preceding, phase, following] }
-        let(:phase) { create_phase(date_range:, active:) }
-        let(:preceding) { create_phase(date_range: preceding_date_range) }
-        let(:following) { create_phase(date_range: following_date_range) }
+        let(:phase) do
+          create_phase(
+            start_date: date_range&.begin,
+            finish_date: date_range&.end,
+            active:
+          )
+        end
+
+        let(:preceding) do
+          create_phase(
+            start_date: preceding_date_range&.begin,
+            finish_date: preceding_date_range&.end
+          )
+        end
+        let(:following) do
+          create_phase(
+            start_date: following_date_range.begin,
+            finish_date: following_date_range.end
+          )
+        end
         let(:active) { true }
         let(:date_range) { date - 1..date + 1 }
         let(:preceding_date_range) { date - 6..date - 5 }
