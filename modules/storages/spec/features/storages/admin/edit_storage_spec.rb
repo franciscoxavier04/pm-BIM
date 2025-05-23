@@ -302,7 +302,7 @@ RSpec.describe "Admin Edit File storage",
       aggregate_failures "Token Exchange" do
         find_test_selector("storage-edit-storage-audience-button").click
         within_test_selector("storage-audience-form") do
-          expect(page).to have_checked_field("Specify audience for which to exchange access token")
+          expect(page).to have_checked_field("Manually specify audience for which to exchange access token")
           expect(page).to have_field("Storage Audience")
 
           click_on "Save and continue"
@@ -310,9 +310,9 @@ RSpec.describe "Admin Edit File storage",
 
           fill_in "Storage Audience", with: "schmaudience"
 
-          choose("Use access token obtained during user's log in")
+          choose("Use access token obtained during user log in")
           expect(page).to have_no_field("Storage Audience")
-          choose("Specify audience for which to exchange access token")
+          choose("Manually specify audience for which to exchange access token")
           expect(page).to have_field("Storage Audience", with: "schmaudience")
 
           click_on "Save and continue"
@@ -326,10 +326,10 @@ RSpec.describe "Admin Edit File storage",
 
         find_test_selector("storage-edit-storage-audience-button").click
         within_test_selector("storage-audience-form") do
-          expect(page).to have_checked_field("Specify audience for which to exchange access token")
+          expect(page).to have_checked_field("Manually specify audience for which to exchange access token")
           expect(page).to have_field("Storage Audience", with: "schmaudience")
 
-          choose("Use access token obtained during user's log in")
+          choose("Use access token obtained during user log in")
           click_on "Save and continue"
         end
 
@@ -341,10 +341,10 @@ RSpec.describe "Admin Edit File storage",
 
         find_test_selector("storage-edit-storage-audience-button").click
         within_test_selector("storage-audience-form") do
-          expect(page).to have_checked_field("Use access token obtained during user's log in")
+          expect(page).to have_checked_field("Use access token obtained during user log in")
           expect(page).to have_no_field("Storage Audience")
 
-          choose("Specify audience for which to exchange access token")
+          choose("Manually specify audience for which to exchange access token")
           expect(page).to have_field("Storage Audience", with: "")
         end
       end

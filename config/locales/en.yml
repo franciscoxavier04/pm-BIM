@@ -2997,6 +2997,7 @@ en:
   label_query_new: "New query"
   label_query_plural: "Custom queries"
   label_read: "Read..."
+  label_read_documentation: "Read documentation"
   label_register: "Create a new account"
   label_register_with_developer: "Register as developer"
   label_registered_on: "Registered on"

@@ -352,9 +352,9 @@ en:
         integration: Nextcloud Administration / OpenProject
         oauth_configuration: Copy these values from %{application_link_text}.
         provider_configuration: Please make sure you have administration privileges in your Nextcloud instance and the %{application_link_text} is installed before doing the setup.
-        storage_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        storage_audience: The client ID that the Nextcloud instance uses to communicate with the identity provider.
         storage_audience_placeholder: e.g. nextcloud
-        storage_scope: Enter scopes that should be requested during token exchange. Multiple scopes can be separated by a space.
+        storage_scope: The scopes that should be requested during token exchange, each one separated by a space.
       no_specific_folder: By default, each user will start at their own home folder when they upload a file.
       no_storage_set_up: There are no file storages set up yet.
       not_logged_into_storage: To select a project folder, please first login
@@ -482,13 +482,13 @@ en:
       description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
       label: Show attachments in the work packages files tab
     storage_audience:
-      documentation_intro: Details on the following options and what needs to be configured in the identity provider can be found in our documentation.
+      documentation_intro: Please read our documentation for details on the following options and configuration of the identity provider.
       idp:
-        helptext: OpenProject will use the access token received by the identity provider during the user's log in to authenticate requests to the storage. It will not try to obtain another token.
-        label: Use access token obtained during user's log in
+        helptext: OpenProject will use the access token received by the identity provider during log in to authenticate requests to the storage. It will not try to obtain another token.
+        label: Use access token obtained during user log in
       manual:
-        helptext: Allows you to set the audience of the storage. OpenProject will try to exchange a token for the given audience from the identity provider.
-        label: Specify audience for which to exchange access token
+        helptext: OpenProject will exchange a token with the identity provider for the given audience.
+        label: Manually specify audience for which to exchange access token
     storage_list_blank_slate:
       description: Add a storage to see them here.
       heading: You don't have any storages yet.
