@@ -34,8 +34,8 @@ require "rack/test"
 RSpec.describe API::V3::EmojiReactions::EmojiReactionsByActivityCommentAPI do
   include API::V3::Utilities::PathHelper
 
-  let(:project) { work_package.project }
-  let(:work_package) { create(:work_package) }
+  let(:project) { create(:project, enabled_internal_comments: true) }
+  let(:work_package) { create(:work_package, project:) }
   let(:current_user) do
     create(:user, member_with_roles: { project => role })
   end
@@ -104,11 +104,6 @@ RSpec.describe API::V3::EmojiReactions::EmojiReactionsByActivityCommentAPI do
       end
       let!(:internal_emoji_reaction) { create(:emoji_reaction, reactable: internal_comment, user: current_user) }
 
-      before do
-        project.enabled_internal_comments = true
-        project.save!
-      end
-
       context "and user has permission to view internal comments" do
         before do
           get api_v3_paths.emoji_reactions_by_activity_comment(internal_comment.id)
@@ -143,6 +138,128 @@ RSpec.describe API::V3::EmojiReactions::EmojiReactionsByActivityCommentAPI do
 
         it "fails with HTTP Not Found" do
           expect(last_response).to have_http_status :not_found
+        end
+      end
+    end
+  end
+
+  describe "PATCH /api/v3/activities/:id/emoji_reactions" do
+    let(:path) { api_v3_paths.emoji_reactions_by_activity_comment(activity.id) }
+    let(:headers) { { "CONTENT_TYPE" => "application/json" } }
+    let(:reaction) { "heart" }
+
+    def make_request
+      patch path, { reaction: }.to_json, headers
+    end
+
+    def destroy_all_reactions
+      EmojiReaction.destroy_all
+    end
+
+    shared_examples "a successful reaction" do
+      before do
+        destroy_all_reactions
+        make_request
+      end
+
+      it "creates the reaction" do
+        expect(last_response).to have_http_status :ok
+
+        expect(last_response.body)
+          .to be_json_eql("#{activity.id}-#{reaction}".to_json)
+          .at_path("_embedded/elements/0/id")
+
+        expect(last_response.body)
+          .to be_json_eql(EmojiReaction.emoji(reaction).to_json)
+          .at_path("_embedded/elements/0/emoji")
+
+        expect(last_response.body)
+          .to be_json_eql([{ "href" => "/api/v3/users/#{current_user.id}", "title" => current_user.name }].to_json)
+          .at_path("_embedded/elements/0/_links/reactingUsers")
+      end
+    end
+
+    context "when user has permission to add work package comments" do
+      let(:permissions) { %i(view_work_packages add_work_package_comments) }
+
+      context "when adding a new reaction" do
+        let(:reaction) { "rocket" }
+
+        it_behaves_like "a successful reaction"
+      end
+
+      context "when removing an existing reaction" do
+        let(:reaction) { emoji_reaction.reaction }
+
+        it "succeeds" do
+          make_request
+
+          expect(last_response).to have_http_status :ok
+
+          expect(last_response.body)
+            .to be_json_eql([].to_json)
+            .at_path("_embedded/elements")
+        end
+      end
+
+      context "with an invalid reaction" do
+        let(:reaction) { "invalid_reaction" }
+
+        it "fails with HTTP Bad Request" do
+          make_request
+
+          expect(last_response).to have_http_status :bad_request
+
+          expect(last_response.body)
+            .to include_json("Bad request: reaction does not have a valid value".to_json)
+            .at_path("message")
+        end
+      end
+    end
+
+    context "when user does not have permission to add work package notes" do
+      let(:permissions) { %i(view_work_packages) }
+
+      it "fails with HTTP Not Found" do
+        make_request
+
+        expect(last_response).to have_http_status :forbidden
+
+        expect(last_response.body)
+          .to be_json_eql("You are not authorized to access this resource.".to_json)
+          .at_path("message")
+      end
+    end
+
+    context "when the activity is internal" do
+      let(:internal_comment) do
+        work_package.add_journal(user: current_user, notes: "Internal comment", internal: true)
+        work_package.save(validate: false)
+        work_package.journals.last
+      end
+      let(:path) { api_v3_paths.emoji_reactions_by_activity_comment(internal_comment.id) }
+      let(:reaction) { "thumbs_up" }
+
+      before do
+        project.enabled_internal_comments = true
+        project.save!
+      end
+
+      context "and user has permission to create internal comments" do
+        let(:reaction) { "rocket" }
+        let(:permissions) { %i(view_work_packages add_work_package_comments view_internal_comments add_internal_comments) }
+
+        it_behaves_like "a successful reaction" do
+          let(:activity) { internal_comment }
+        end
+      end
+
+      context "and user does not have permission to create internal comments" do
+        let(:permissions) { %i(view_work_packages view_internal_comments) }
+
+        it "fails with HTTP Forbidden" do
+          make_request
+          expect(last_response).to have_http_status :forbidden
         end
       end
     end
