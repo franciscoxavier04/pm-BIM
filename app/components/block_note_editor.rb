@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# --copyright
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,26 +26,14 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
 
-require_relative "../../lib_static/open_project/feature_decisions"
+class BlockNoteEditor < ApplicationComponent
+  attr_reader :input_name, :value
 
-# Add feature flags here via e.g.
-#
-#   OpenProject::FeatureDecisions.add :some_flag
-#
-# If the feature to be flag-guarded stems from a module, add an initializer
-# to that module's engine:
-#
-#   initializer 'the_engine.feature_decisions' do
-#     OpenProject::FeatureDecisions.add :some_flag
-#   end
-
-OpenProject::FeatureDecisions.add :built_in_oauth_applications,
-                                  description: "Allows the display and use of built-in OAuth applications."
-
-OpenProject::FeatureDecisions.add :calculated_value_project_attribute,
-                                  description: "Allows the use of calculated values as a project attribute."
-
-OpenProject::FeatureDecisions.add :block_note_editor,
-                                  description: "Enables the block note editor for rich text fields where available."
+  def initialize(input_name, value, **)
+    super(**)
+    @input_name = input_name
+    @value = value
+  end
+end

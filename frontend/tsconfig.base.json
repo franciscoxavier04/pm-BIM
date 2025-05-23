@@ -24,6 +24,11 @@
       "node_modules/@types",
       "src/types"
     ],
+    "types": [
+      "node",
+      "react"
+    ],
+    "jsx": "react-jsx",
     "lib": [
       "es2018",
       "dom"
