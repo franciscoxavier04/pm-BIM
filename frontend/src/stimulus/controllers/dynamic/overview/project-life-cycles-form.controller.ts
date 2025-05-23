@@ -29,6 +29,7 @@
  */
 
 import { TimezoneService } from 'core-app/core/datetime/timezone.service';
+import { DeviceService } from 'core-app/core/browser/device.service';
 import FormPreviewController from '../../form-preview.controller';
 import {
   debounce,
@@ -37,6 +38,7 @@ import {
 
 export default class ProjectLifeCyclesFormController extends FormPreviewController {
   private timezoneService:TimezoneService;
+  private deviceService:DeviceService;
   private handleFlatpickrDatesChangedBound = this.handleFlatpickrDatesChanged.bind(this);
   private updateFlatpickrCalendarBound = this.updateFlatpickrCalendar.bind(this);
   private preventValueMorphingActiveElementBound = this.preventValueMorphingActiveElement.bind(this);
@@ -59,6 +61,7 @@ export default class ProjectLifeCyclesFormController extends FormPreviewControll
 
     const context = await window.OpenProject.getPluginContext();
     this.timezoneService = context.services.timezone;
+    this.deviceService = new DeviceService();
 
     document.addEventListener('date-picker:flatpickr-dates-changed', this.handleFlatpickrDatesChangedBound);
     document.addEventListener('turbo:before-stream-render', this.updateFlatpickrCalendarBound);
@@ -167,10 +170,13 @@ export default class ProjectLifeCyclesFormController extends FormPreviewControll
 
     field.classList.add(this.CURRENT_FIELD_CLASS_NAME);
     this.updateFlatpickrCalendar();
-    window.setTimeout(() => {
-      // For mobile, we have to make sure that the active field is scrolled into view after the keyboard is opened
-      field.scrollIntoView(true);
-    }, 300);
+
+    if (this.deviceService.isMobile) {
+      window.setTimeout(() => {
+        // For mobile, we have to make sure that the active field is scrolled into view after the keyboard is opened
+        field.scrollIntoView(true);
+      }, 300);
+    }
   }
 
   private clearHighLight() {
