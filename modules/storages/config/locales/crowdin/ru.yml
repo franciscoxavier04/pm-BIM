@@ -287,7 +287,7 @@ ru:
         nc_dependency_version_mismatch: Версия %{dependency} не поддерживается. Пожалуйста, обновите Ваш сервер Nextcloud.
         nc_group_folder_not_found: Папка группы не найдена.
         nc_host_not_found: По настроенному адресу хоста сервер Nextcloud не найден. Пожалуйста, проверьте конфигурацию.
-        nc_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        nc_oauth_request_not_found: Конечная точка для получения данных о текущем подключенном пользователе не найдена. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
         nc_oauth_request_unauthorized: Текущий пользователь не авторизован для доступа к удаленному файловому хранилищу. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
         nc_oauth_token_missing: OpenProject не может протестировать пользовательскую связь с Nextcloud, так как пользователь еще не связал свою учетную запись Nextcloud.
         nc_unexpected_content: В управляемой папке группы обнаружено неожиданное содержимое.
@@ -297,7 +297,7 @@ ru:
         od_client_write_permission_missing: Возможно, клиент не имеет прав на запись. Пожалуйста, проверьте документацию по конфигурации для вашего хранилища.
         od_drive_id_invalid: Настроенный идентификатор диска не найден. Пожалуйста, проверьте конфигурацию.
         od_drive_id_not_found: Настроенный идентификатор диска не найден. Пожалуйста, проверьте конфигурацию.
-        od_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        od_oauth_request_not_found: Конечная точка для получения данных о текущем подключенном пользователе не найдена. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
         od_oauth_request_unauthorized: Текущий пользователь не авторизован для доступа к удаленному файловому хранилищу. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
         od_oauth_token_missing: OpenProject не может протестировать пользовательскую связь с OneDrive/SharePoint, так как пользователь еще не связал свою учетную запись Microsoft.
         od_tenant_id_wrong: Настроенный идентификатор каталога недействителен. Пожалуйста, проверьте конфигурацию.
@@ -307,9 +307,9 @@ ru:
         oidc_cant_refresh_token: Произошла ошибка во время проверки Вашего доступа к хранилищу. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
         oidc_non_oidc_user: Текущий пользователь не представлен провайдером идентификации OpenID Connect(OIDC). Пожалуйста, повторите проверку пользователя, идентифицированного через OIDC.
         oidc_non_provisioned_user: Текущий пользователь не представлен провайдером идентификации OpenID Connect. Пожалуйста, повторите проверку пользователя.
-        oidc_token_acquisition_failed: Your OpenID Connect setup doesn't provide the necessary audience, nor does it provide token exchange capabilities. Please check out our documentation for more information.
-        oidc_token_exchange_failed: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
-        oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
+        oidc_token_acquisition_failed: Ваша настройка OpenID Connect не обеспечивает необходимую аудиторию и не предоставляет возможности обмена токенами. Пожалуйста, ознакомьтесь с нашей документацией для получения дополнительной информации.
+        oidc_token_exchange_failed: Похоже, возникла проблема с настройкой Token Exchange вашего провайдера OpenID Connect. Пожалуйста, проверьте его конфигурацию и повторите попытку.
+        oidc_token_refresh_failed: Произошла ошибка во время проверки Вашего доступа к хранилищу. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
         unknown_error: Соединение не удалось подтвердить. Произошла неизвестная ошибка. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
       label_error: Ошибка
       label_failed: Ошибка

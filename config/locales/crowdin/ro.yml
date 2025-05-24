@@ -41,13 +41,13 @@ ro:
         changed: "changed"
         created: "creat"
         commented: "comentat"
-        internal_comment: Internal comment
-        internal_journal: Internal comments are visible to a limited group of members.
+        internal_comment: Comentariu intern
+        internal_journal: Comentariile interne sunt vizibile pentru un grup limitat de membri.
         unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
         internal_comment_confirmation:
-          title: "Make this comment public?"
-          heading: "Make this comment public?"
-          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
+          title: "Fă acest comentariu public?"
+          heading: "Fă acest comentariu public?"
+          description: "Comentariul tau va fi vizibil oricui poate accesa acest pachet de lucru. Esti sigur ca vrei sa faci asta?"
           confirm_button_text: "Fă public"
   admin:
     plugins:
@@ -714,7 +714,7 @@ ro:
             title: "No successors"
             description: "This work package does not have any successors."
           children:
-            title: "No children"
+            title: "Fără copii"
             description: "This work package does not have any children."
     x_descendants:
       one: "Un pachet de lucru descendent"
@@ -763,7 +763,7 @@ ro:
       no_results_title_text: Momentan nu există relaţii disponibile.
       blankslate_heading: "Fără relații"
       blankslate_description: "Acest pachet de lucru nu are încă o relație."
-    label_add_child_button: "Child"
+    label_add_child_button: "Copil"
     label_add_x: "Adaugă %{x}"
     label_edit_x: "Editează %{x}"
     label_add_description: "Adaugă descriere"
@@ -788,7 +788,7 @@ ro:
       label_child_plural: "copii"
       new_child: "Creează copil nou"
       new_child_description: "Creează un pachet de lucru asociat ca sub-element al pachetului de lucru curent (părinte)"
-      child: "Child"
+      child: "Copil"
       child_description: "Face din pachetul de lucru asociat un sub-element al pachetului de lucru actual (părinte)"
       parent: "Părinte"
       parent_description: "Makes the related work package a parent of the current (child) work package"
@@ -2036,7 +2036,7 @@ ro:
       baseline_comparison: Baseline Comparisons
       board_view: Advanced Boards
       conditional_highlighting: Conditional Highlighting
-      internal_comments: Internal Comments
+      internal_comments: Comentarii interne
       custom_actions: Custom Actions
       custom_field_hierarchies: Custom fields of type hierarchy
       customize_life_cycle: Customize Life Cycle
@@ -2110,10 +2110,10 @@ ro:
         description: >
           Utilizatorii de tip substituție sunt o modalitate de a atribui pachete de lucru utilizatorilor care nu fac parte din proiectul tău. Acesta poate fi utilă într-o serie de scenarii; de exemplu, dacă trebuie să urmărești sarcinile pentru o resursă care nu este încă numită sau disponibilă, sau dacă nu vrei să acorzi acestei persoane acces la OpenProject dar totuși vrei să urmărești sarcinile care le-au fost atribuite.
       internal_comments:
-        title: Internal comments
-        description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
+        title: Comentarii interne
+        description: "Comentariile interne permit unei echipe interne să comunice între ele în mod privat, acestea sunt vizibile doar pentru anumite roluri de proiect și nu vor fi niciodată vizibile public."
       internal_comments_inline:
-        title: "Write internal comments only a small group can see"
+        title: "Scrie comentarii interne pe care doar un grup restrâns le poate vedea"
         description: " "
   enumeration_activities: "Activități de urmărire timp activate"
   enumeration_work_package_priorities: "Priorități pentru pachetele de lucru"
@@ -3424,7 +3424,7 @@ ro:
   permission_add_project: "Creează proiecte"
   permission_add_work_package_attachments: "Adaugă fișiere"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
-  permission_add_internal_comments: "Write internal comments"
+  permission_add_internal_comments: "Scrie comentarii interne"
   permission_archive_project: "Arhivare proiect"
   permission_create_user: "Create users"
   permission_manage_user: "Editează utilizatori"
@@ -3453,12 +3453,12 @@ ro:
   permission_edit_work_package_comments_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Editare pachete de lucru"
   permission_edit_messages: "Editare mesaje"
-  permission_edit_own_internal_comments: "Edit own internal comments"
+  permission_edit_own_internal_comments: "Editează propriile comentarii interne"
   permission_edit_own_work_package_comments: "Edit own comments"
   permission_edit_own_messages: "Editare mesaje proprii"
   permission_edit_own_time_entries: "Editare jurnale de timp proprii"
-  permission_edit_others_internal_comments: "Moderate internal comments"
-  permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
+  permission_edit_others_internal_comments: "Moderează comentariile interne"
+  permission_edit_others_internal_comments_explanation: "Atenție: Utilizatorii cu această permisiune pot edita comentariile interne ale altor utilizatori."
   permission_edit_project: "Editare proiect"
   permission_edit_project_attributes: "Edit project attributes"
   permission_edit_project_phases: "Edit project phases"
@@ -3499,7 +3499,7 @@ ro:
   permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "Vezi proiecte"
   permission_view_changesets: "Vizualizare revizii repo în OpenProject"
-  permission_view_internal_comments: "View internal comments"
+  permission_view_internal_comments: "Vezi comentariile interne"
   permission_view_commit_author_statistics: "Vizualizare statistici autor înregistrări"
   permission_view_dashboards: "Vezi panouri"
   permission_view_work_package_watchers: "Vizualizare listă observatori"
@@ -3983,8 +3983,8 @@ ro:
     work_packages:
       not_allowed_text: "You do not have the necessary permissions to view this page."
       activities:
-        enable_internal_comments: "Enable internal comments"
-        helper_text: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to selected roles that have the necessary permissions and will not be visible publicly. %{link}"
+        enable_internal_comments: "Activează comentariile interne"
+        helper_text: "Comentariile interne permit unei echipe interne să comunice între ei în mod privat. Acestea sunt vizibile numai pentru rolurile selectate care au permisiunile necesare și nu vor fi vizibile public. %{link}"
   text_formatting:
     markdown: "Markdown"
     plain: "Text simplu"
