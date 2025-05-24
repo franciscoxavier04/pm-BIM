@@ -89,7 +89,7 @@ services:
       - backend
 
   db:
-    image: postgres:13
+    image: postgres:17
     <<: *restart_policy
     stop_grace_period: "3s"
     volumes:
@@ -110,7 +110,7 @@ services:
 ######### Testing stuff below ############
 
   db-test:
-    image: postgres:13
+    image: postgres:17
     stop_grace_period: "3s"
     volumes:
       - "pgdata-test:/var/lib/postgresql/data"

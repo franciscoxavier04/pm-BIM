@@ -1,7 +1,7 @@
 version: '3'
 services:
   database:
-    image: postgres:10
+    image: postgres:17
     environment:
       - POSTGRES_PASSWORD=p4ssw0rd
       - POSTGRES_DB=openproject
@@ -15,7 +15,7 @@ services:
   web: &openproject
     environment:
       - DATABASE_URL=postgres://postgres:p4ssw0rd@database/openproject
-    image: openproject/openproject:15
+    image: openproject/openproject:16
     command: ./docker/web
   worker:
     <<: *openproject
