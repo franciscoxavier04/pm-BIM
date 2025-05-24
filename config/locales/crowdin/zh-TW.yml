@@ -682,7 +682,7 @@ zh-TW:
         automatic: "自動"
         manual: "手動"
       show_relations: "顯示關聯"
-      update_inputs_aria_live_message: "Date picker updated. %{message}"
+      update_inputs_aria_live_message: "日期選擇器已更新。 %{message}"
       tabs:
         aria_label: "日期選擇器標籤"
         children: "子項目"
@@ -2180,7 +2180,7 @@ zh-TW:
         include_descriptions:
           label: "包含說明"
           caption: "此選項會在原始格式新增說明欄位。"
-    your_work_packages_export: "工作項目已匯出"
+    your_work_packages_export: "正在匯出工作項目"
     succeeded: "匯出完成"
     failed: "嘗試匯出工作項目時發生錯誤： %{message}"
     errors:
