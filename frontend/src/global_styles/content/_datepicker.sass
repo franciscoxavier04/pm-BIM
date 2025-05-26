@@ -30,7 +30,7 @@ $datepicker--selected-border-radius: 5px
 
 @mixin disabled-day
   background: var(--body-background)
-  color: var(--fgColor-muted)
+  color: var(--fgColor-disabled)
   pointer-events: none
   cursor: not-allowed
 
@@ -208,11 +208,11 @@ $datepicker--selected-border-radius: 5px
 
           &.flatpickr-non-working-day
             background: var(--bgColor-disabled)
-            color: var(--fgColor-muted)
+            color: var(--fgColor-disabled)
 
           &.flatpickr-non-working-day_enabled
             background: var(--bgColor-disabled)
-            color: var(--fgColor-muted)
+            color: var(--fgColor-disabled)
 
             &.inRange
               color: var(--fgColor-muted)
@@ -244,11 +244,11 @@ $datepicker--selected-border-radius: 5px
       border-color: transparent !important
       color: var(--body-font-color) !important
 
-    &.flatpickr-non-working-day:not(.today,.selected)
+    &.flatpickr-non-working-day:not(.today,.selected, .flatpickr-disabled)
       background: var(--bgColor-disabled) !important
       color: var(--fgColor-muted) !important
 
-    &.flatpickr-non-working-day_enabled:not(.today,.selected)
+    &.flatpickr-non-working-day_enabled:not(.today,.selected, .flatpickr-disabled)
       background: var(--bgColor-disabled) !important
       color: var(--body-font-color) !important
 
