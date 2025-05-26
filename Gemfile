@@ -89,7 +89,7 @@ gem "commonmarker", "~> 2.3.0"
 # such as sanitization or additional features
 gem "html-pipeline", "~> 3.2.3"
 # Tasklist parsing and renderer
-gem "deckar01-task_list", "~> 2.3.1"
+# gem "deckar01-task_list", "~> 2.3.1"
 # Requires escape-utils for faster escaping
 gem "escape_utils", "~> 1.3"
 # Syntax highlighting used in html-pipeline with rouge

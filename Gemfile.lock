@@ -460,8 +460,6 @@ GEM
     date_validator (0.12.0)
       activemodel (>= 3)
       activesupport (>= 3)
-    deckar01-task_list (2.3.3)
-      html-pipeline
     declarative (0.0.20)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
@@ -1375,7 +1373,6 @@ DEPENDENCIES
   dalli (~> 3.2.0)
   dashboards!
   date_validator (~> 0.12.0)
-  deckar01-task_list (~> 2.3.1)
   disposable (~> 0.6.2)
   doorkeeper (~> 5.8.0)
   dotenv-rails
@@ -1642,7 +1639,6 @@ CHECKSUMS
   dashboards (1.0.0)
   date (3.4.1) sha256=bf268e14ef7158009bfeaec40b5fa3c7271906e88b196d958a89d4b408abe64f
   date_validator (0.12.0) sha256=68c9834da240347b9c17441c553a183572508617ebfbe8c020020f3192ce3058
-  deckar01-task_list (2.3.3) sha256=918abaf3f81e6c0d224c2b7bef593d7f84ee5847a0692726d24e3fb272c2c758
   declarative (0.0.20) sha256=8021dd6cb17ab2b61233c56903d3f5a259c5cf43c80ff332d447d395b17d9ff9
   descendants_tracker (0.0.4) sha256=e9c41dd4cfbb85829a9301ea7e7c48c2a03b26f09319db230e6479ccdc780897
   diff-lcs (1.6.2) sha256=9ae0d2cba7d4df3075fe8cd8602a8604993efc0dfa934cff568969efb1909962

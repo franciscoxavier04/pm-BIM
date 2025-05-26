@@ -30,7 +30,7 @@
 
 module OpenProject::TextFormatting
   module Filters
-    class PlainFilter < HTML::Pipeline::TextFilter
+    class PlainFilter < HTMLPipeline::TextFilter
       include ERB::Util
       include ActionView::Helpers::TagHelper
       include ActionView::Helpers::TextHelper

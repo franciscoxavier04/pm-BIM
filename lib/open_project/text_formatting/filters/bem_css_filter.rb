@@ -30,7 +30,7 @@
 
 module OpenProject::TextFormatting
   module Filters
-    class BemCssFilter < HTML::Pipeline::Filter
+    class BemCssFilter < HTMLPipeline::NodeFilter
       BEM_CLASSES = {
         h1: "op-uc-h1",
         h2: "op-uc-h2",
@@ -64,27 +64,29 @@ module OpenProject::TextFormatting
         ul: "op-uc-toc--list"
       }.with_indifferent_access.freeze
 
-      def call
-        doc.search(*BEM_CLASSES.keys.map(&:to_s)).each do |element|
-          add_css_class(element, BEM_CLASSES[element.name]) unless not_to_be_modified?(element)
-        end
+      SELECTOR = Selma::Selector.new(match_element: BEM_CLASSES.keys.join(","))
 
-        doc
+      def selector
+        SELECTOR
+      end
+
+      def handle_element(element)
+        add_css_class(element, BEM_CLASSES[element.tag_name]) unless not_to_be_modified?(element)
       end
 
       private
 
       def not_to_be_modified?(element)
         element["class"].present? &&
-          UNMODIFIED[element.name] &&
-          element["class"].include?(UNMODIFIED[element.name])
+          UNMODIFIED[element.tag_name] &&
+          element["class"].include?(UNMODIFIED[element.tag_name])
       end
 
       def add_css_class(element, css_class)
         if element["class"].present?
           # Avoid using element['class'].include?(css_class) as css_class can be a substring
           # of an existing class
-          element["class"] += " #{css_class}" unless element["class"].split.any?(css_class)
+          element["class"] += " #{css_class}" # unless element["class"].split.any?(css_class)
         else
           element["class"] = css_class
         end

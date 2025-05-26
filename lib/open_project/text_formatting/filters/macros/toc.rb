@@ -39,7 +39,7 @@ module OpenProject::TextFormatting::Filters::Macros
     end
 
     def apply(macro, result:, context:)
-      raise "The HTML::Pipeline::TableOfContentsFilters needs to run before." unless result[:toc]
+      raise "The HTMLPipeline::NodeFilter::TableOfContentsFilters needs to run before." unless result[:toc]
 
       macro.replace(result[:toc])
     end

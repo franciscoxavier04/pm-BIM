@@ -30,8 +30,14 @@
 
 module OpenProject::TextFormatting
   module Filters
-    class MacroFilter < HTML::Pipeline::Filter
+    class MacroFilter < HTMLPipeline::NodeFilter
       cattr_accessor :registered
+
+      SELECTOR = Selma::Selector.new(match_element: "macro")
+
+      def selector
+        SELECTOR
+      end
 
       def self.register(*macros)
         self.registered ||= []
@@ -39,30 +45,26 @@ module OpenProject::TextFormatting
         macros.each { |macro| registered << macro }
       end
 
-      def call # rubocop:disable Metrics/AbcSize
-        doc.search("macro").each do |macro|
-          registered.each do |macro_class|
-            next unless macro_applies?(macro_class, macro)
+      def handle_element(element)
+        registered.each do |macro_class|
+          next unless macro_applies?(macro_class, element)
 
-            # If requested to skip macro expansion, do that
-            if context[:disable_macro_expansion]
-              macro.replace macro_placeholder(macro_class)
-              break
-            end
+          # If requested to skip macro expansion, do that
+          if context[:disable_macro_expansion]
+            element.replace macro_placeholder(macro_class)
+            break
+          end
 
-            begin
-              macro_class.apply(macro, result:, context:)
-            rescue StandardError => e
-              Rails.logger.error("Failed to insert macro #{macro_class}: #{e} - #{e.message}")
-              macro.replace macro_error_placeholder(macro_class, e.message)
-            ensure
-              # This macro should have applied, even when an error occurred.
-              break
-            end
+          begin
+            macro_class.apply(element, result:, context:)
+          rescue StandardError => e
+            Rails.logger.error("Failed to insert macro #{macro_class}: #{e} - #{e.message}")
+            element.replace macro_error_placeholder(macro_class, e.message)
+          ensure
+            # This macro should have applied, even when an error occurred.
+            break
           end
         end
-
-        doc
       end
 
       private

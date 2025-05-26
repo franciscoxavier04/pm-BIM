@@ -30,7 +30,7 @@
 
 module OpenProject::TextFormatting
   module Filters
-    class SanitizationFilter < HTML::Pipeline::SanitizationFilter
+    class SanitizationFilter < HTMLPipeline::SanitizationFilter
       def allowlist
         base = super
 

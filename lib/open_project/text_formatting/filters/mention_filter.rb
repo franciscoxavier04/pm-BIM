@@ -30,11 +30,17 @@
 
 module OpenProject::TextFormatting
   module Filters
-    class MentionFilter < HTML::Pipeline::Filter
+    class MentionFilter < HTMLPipeline::NodeFilter
       include ERB::Util
       include ActionView::Helpers::UrlHelper
       include OpenProject::ObjectLinking
       include OpenProject::StaticRouting::UrlHelpers
+
+      SELECTOR = Selma::Selector.new(match_element: "mention")
+
+      def selector
+        SELECTOR
+      end
 
       def call
         doc.search("mention").each do |mention|

@@ -28,11 +28,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
+require "html_pipeline/convert_filter/markdown_filter"
+
 module OpenProject::TextFormatting
   module Filters
-    class MarkdownFilter < HTML::Pipeline::MarkdownFilter
+    class MarkdownFilter < HTMLPipeline::ConvertFilter::MarkdownFilter
+      attr_accessor :context
+
       # Convert Markdown to HTML using CommonMarker
-      def call
+      def call(text, context: @context)
+        options = context.fetch(:markdown, {})
+        options.fetch(:plugins, {})
+
         Commonmarker.to_html(text, options: commonmarker_options, plugins: commonmarker_plugins)
                     .tap(&:rstrip!)
       end

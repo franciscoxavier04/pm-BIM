@@ -27,13 +27,13 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-require "task_list/filter"
+# require "task_list/filter"
 
 module OpenProject::TextFormatting::Formats::Markdown
   class Formatter < OpenProject::TextFormatting::Formats::BaseFormatter
     def to_html(text)
-      result = pipeline.call(text, context)
-      output = result[:output].to_s
+      result = pipeline.call(text, context:)
+      output = result[:output]
 
       output.html_safe
     end
@@ -42,24 +42,30 @@ module OpenProject::TextFormatting::Formats::Markdown
       pipeline.to_document text, context
     end
 
-    def filters
+    def text_filters
       [
-        OpenProject::TextFormatting::Filters::SettingMacrosFilter,
-        OpenProject::TextFormatting::Filters::MarkdownFilter,
-        OpenProject::TextFormatting::Filters::SanitizationFilter,
-        OpenProject::TextFormatting::Filters::TaskListFilter,
-        OpenProject::TextFormatting::Filters::TableOfContentsFilter,
-        OpenProject::TextFormatting::Filters::MacroFilter,
-        OpenProject::TextFormatting::Filters::MentionFilter,
-        OpenProject::TextFormatting::Filters::PatternMatcherFilter,
-        OpenProject::TextFormatting::Filters::SyntaxHighlightFilter,
-        OpenProject::TextFormatting::Filters::AttachmentFilter,
-        OpenProject::TextFormatting::Filters::AutolinkFilter,
-        OpenProject::TextFormatting::Filters::AutolinkCustomProtocolsFilter,
-        OpenProject::TextFormatting::Filters::RelativeLinkFilter,
-        OpenProject::TextFormatting::Filters::LinkAttributeFilter,
-        OpenProject::TextFormatting::Filters::FigureWrappedFilter,
-        OpenProject::TextFormatting::Filters::BemCssFilter
+        OpenProject::TextFormatting::Filters::SettingMacrosFilter.new,
+        OpenProject::TextFormatting::Filters::AutolinkFilter.new
+      ]
+    end
+
+    def convert_filter
+      OpenProject::TextFormatting::Filters::MarkdownFilter.new
+    end
+
+    def node_filters
+      [
+        OpenProject::TextFormatting::Filters::TableOfContentsFilter.new,
+        OpenProject::TextFormatting::Filters::SyntaxHighlightFilter.new,
+        OpenProject::TextFormatting::Filters::MacroFilter.new,
+        OpenProject::TextFormatting::Filters::MentionFilter.new,
+        OpenProject::TextFormatting::Filters::PatternMatcherFilter.new,
+        OpenProject::TextFormatting::Filters::AttachmentFilter.new,
+        OpenProject::TextFormatting::Filters::AutolinkCustomProtocolsFilter.new,
+        OpenProject::TextFormatting::Filters::RelativeLinkFilter.new,
+        OpenProject::TextFormatting::Filters::LinkAttributeFilter.new,
+        OpenProject::TextFormatting::Filters::FigureWrappedFilter.new,
+        OpenProject::TextFormatting::Filters::BemCssFilter.new
       ]
     end
 

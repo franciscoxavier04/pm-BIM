@@ -35,7 +35,7 @@ module OpenProject::TextFormatting::Formats
 
     def initialize(context)
       @context = context
-      @pipeline = HTML::Pipeline.new(filters, context)
+      @pipeline = HTMLPipeline.new(text_filters:, convert_filter:, node_filters:, default_context: context)
     end
 
     def to_html(text)
@@ -44,7 +44,15 @@ module OpenProject::TextFormatting::Formats
 
     protected
 
-    def filters
+    def text_filters
+      []
+    end
+
+    def convert_filter
+      nil
+    end
+
+    def node_filters
       []
     end
   end

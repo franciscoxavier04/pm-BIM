@@ -28,9 +28,11 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
+require "html_pipeline/node_filter/syntax_highlight_filter"
+
 module OpenProject::TextFormatting
   module Filters
-    class SyntaxHighlightFilter < HTML::Pipeline::SyntaxHighlightFilter
+    class SyntaxHighlightFilter < HTMLPipeline::NodeFilter::SyntaxHighlightFilter
       def initialize(*)
         super
 

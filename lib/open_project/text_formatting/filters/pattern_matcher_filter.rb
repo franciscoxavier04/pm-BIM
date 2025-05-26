@@ -30,9 +30,13 @@
 
 module OpenProject::TextFormatting
   module Filters
-    class PatternMatcherFilter < HTML::Pipeline::Filter
+    class PatternMatcherFilter < HTMLPipeline::NodeFilter
       # Skip text nodes that are within preformatted blocks
-      PREFORMATTED_BLOCKS = %w(pre code).to_set
+      SELECTOR = Selma::Selector.new(match_text_within: "*", ignore_text_within: %w(pre code))
+
+      def selector
+        SELECTOR
+      end
 
       def self.matchers
         [
@@ -40,6 +44,10 @@ module OpenProject::TextFormatting
           OpenProject::TextFormatting::Matchers::WikiLinksMatcher,
           OpenProject::TextFormatting::Matchers::AttributeMacros
         ]
+      end
+
+      def handle_text_chunk(text)
+        text
       end
 
       def call
