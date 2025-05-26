@@ -37,7 +37,7 @@ module ProjectLifeCycleSteps
     private
 
     def ensure_default_attributes(_params)
-      model.start_date = model.default_start_date if model.default_start_date.present?
+      model.start_date ||= model.default_start_date if model.default_start_date.present?
     end
 
     def set_calculated_duration

@@ -93,36 +93,17 @@ RSpec.describe Project::Phase do
 
     let(:date) { Time.zone.today }
 
-    describe "#set_calculated_duration" do
-      it "sets duration to the number of working days in complete date range" do
-        subject.duration = 0
-        subject.start_date = date
-        subject.finish_date = date + 27
+    it "returns number of working days in complete date range" do
+      subject.start_date = date
+      subject.finish_date = date + 27
 
-        expect { subject.set_calculated_duration }.to change(subject, :duration).from(0).to(20)
-      end
-
-      it "sets duration to nil if date range is incomplete" do
-        subject.duration = 0
-        subject.start_date = nil
-
-        expect { subject.set_calculated_duration }.to change(subject, :duration).from(0).to(nil)
-      end
+      expect(subject.calculate_duration).to eq(20)
     end
 
-    describe "#calculate_duration" do
-      it "returns number of working days in complete date range" do
-        subject.start_date = date
-        subject.finish_date = date + 27
+    it "returns nil if date range is incomplete" do
+      subject.start_date = nil
 
-        expect(subject.calculate_duration).to eq(20)
-      end
-
-      it "returns nil if date range is incomplete" do
-        subject.start_date = nil
-
-        expect(subject.calculate_duration).to be_nil
-      end
+      expect(subject.calculate_duration).to be_nil
     end
   end
 end
