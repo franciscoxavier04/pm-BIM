@@ -45,7 +45,9 @@ module API
             def ensure_emoji_reactions_enabled!
               return if activity_comment?
 
-              raise ::API::Errors::BadRequest.new("This activity type does not support emoji reactions.")
+              raise ::API::Errors::BadRequest.new(
+                I18n.t("api_v3.errors.bad_request.emoji_reactions_activity_type_not_supported")
+              )
             end
 
             def activity_comment?
