@@ -220,7 +220,8 @@ module Redmine::MenuManager::MenuHelper
       class: "main-menu--arrow-left-to-project",
       data: {
         action: "menus--main#ascend",
-        "tour-selector": "main-menu--arrow-left_#{node.name}"
+        "tour-selector": "main-menu--arrow-left_#{node.name}",
+        "test-selector": "main-menu--arrow-left-to-project"
       }
     )
   end
