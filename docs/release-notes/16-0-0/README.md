@@ -23,6 +23,9 @@ Customers on lower Enterprise plans who want to try out new add-ons from higher 
 More details are available in our updated [Pricing page](https://www.openproject.org/pricing).
 
 ## Important feature changes
+Take a look at our release video showing the most important features introduced in OpenProject 16.0.0:
+
+![Release video of OpenProject 16.0](https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject_16_0_release.mp4)
 
 ## Meeting backlogs
 
