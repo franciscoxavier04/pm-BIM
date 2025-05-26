@@ -53,13 +53,13 @@ module API
             call.result
           end
 
-          post &::API::V3::Utilities::Endpoints::Create.new(model: WorkPackage,
+          post(&::API::V3::Utilities::Endpoints::Create.new(model: WorkPackage,
                                                             parse_service: WorkPackages::ParseParamsService,
                                                             params_modifier: ->(attributes) {
                                                               attributes[:send_notifications] = notify_according_to_params
                                                               attributes
                                                             })
-                                                       .mount
+                                                       .mount)
 
           route_param :id, type: Integer, desc: "Work package ID" do
             helpers WorkPackagesSharedHelpers
