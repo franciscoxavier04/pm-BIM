@@ -83,10 +83,10 @@ module Meetings
 
     def render_meeting!
       write_page_head
-      write_participants
+      write_participants if with_participants?
       write_agenda
-      write_attachments_list
-      write_backlog
+      write_attachments_list if with_attachments_list?
+      write_backlog if with_backlog?
       write_headers!
       write_footers!
     end
@@ -99,10 +99,6 @@ module Meetings
     def write_hr
       write_horizontal_line(pdf.cursor, 1.5, "6E7781")
       pdf.move_down(10)
-    end
-
-    def with_cover?
-      true
     end
 
     def cover_page_title
@@ -135,6 +131,26 @@ module Meetings
 
     def title
       build_pdf_filename(meeting.title)
+    end
+
+    def with_participants?
+      true
+    end
+
+    def with_attachments_list?
+      true
+    end
+
+    def with_backlog?
+      true
+    end
+
+    def with_outcomes?
+      true
+    end
+
+    def with_cover?
+      true
     end
 
     def with_images?

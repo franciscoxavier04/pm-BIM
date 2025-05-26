@@ -40,7 +40,7 @@ module Meetings::PDF
     end
 
     def write_backlog
-      return if meeting.backlog.blank?
+      return if meeting.backlog.blank? || meeting.backlog.agenda_items.empty?
 
       write_hr
       write_pdf_section_title(meeting.recurring? ? I18n.t("label_series_backlog") : I18n.t("label_agenda_backlog"))
@@ -106,7 +106,7 @@ module Meetings::PDF
         write_agenda_title_item_wp(agenda_item)
       end
       write_notes(agenda_item)
-      write_outcome(agenda_item)
+      write_outcome(agenda_item) if with_outcomes?
     end
 
     def table_formatted_text(content, size, color)

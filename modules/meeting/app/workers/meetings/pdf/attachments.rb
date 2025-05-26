@@ -31,6 +31,8 @@
 module Meetings::PDF
   module Attachments
     def write_attachments_list
+      return if meeting.attachments.empty?
+
       columns_count = [meeting.attachments.size, 3].min
       rows = meeting_attachments_table_rows(columns_count)
       return if rows.empty?
