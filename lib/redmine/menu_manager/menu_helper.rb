@@ -215,6 +215,8 @@ module Redmine::MenuManager::MenuHelper
       :a,
       render(Primer::Beta::Octicon.new("arrow-left", size: :small)),
       title: I18n.t("js.label_up"),
+      href: "#",
+      "aria-label": I18n.t("js.label_go_back"),
       class: "main-menu--arrow-left-to-project",
       data: {
         action: "menus--main#ascend",
