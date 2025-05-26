@@ -23,7 +23,12 @@ page_logo:
 page_heading:
   size: 14
   styles: [ "bold" ]
+  margin_bottom: 2
+
+page_subtitle:
+  margin_top: 4
   margin_bottom: 10
+  size: 10
 
 cover:
   header:
@@ -380,3 +385,33 @@ outcome:
         no_border_left: false
         no_border_bottom: true
         no_border_top: true
+
+heading:
+  size: 12
+  styles: [ "bold" ]
+  margin_bottom: 8
+  hr:
+    color: "6E7781"
+    height: 1.5
+    margin_bottom: 10
+
+participants:
+  margin_bottom: 12
+  cell:
+    size: 10
+    padding_left: 0
+    no_border: true
+
+attachments:
+  margin_bottom: 12
+  cell:
+    size: 10
+    padding_left: 0
+    no_border: true
+
+agenda_item:
+  hr:
+    color: "D0D7DE"
+    height: 1
+    margin_top: 6
+    margin_bottom: 6

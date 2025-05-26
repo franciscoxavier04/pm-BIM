@@ -31,14 +31,18 @@
 module Meetings::PDF
   module PageHead
     def write_page_head
-      with_margin(styles.page_heading_margins) do
-        pdf.formatted_text([styles.page_heading.merge(
-          { text: meeting_title, link: url_helpers.meeting_url(meeting) }
-        )])
-        pdf.move_down(2)
-        write_meeting_subtitle
-        pdf.move_down(3)
+      with_vertical_margin(styles.page_heading_margins) do
+        write_page_title
       end
+      with_vertical_margin(styles.page_subtitle_margins) do
+        write_meeting_subtitle
+      end
+    end
+
+    def write_page_title
+      pdf.formatted_text([styles.page_heading.merge(
+        { text: meeting_title, link: url_helpers.meeting_url(meeting) }
+      )])
     end
 
     def write_meeting_subtitle
@@ -47,7 +51,7 @@ module Meetings::PDF
       pdf.formatted_text(
         [
           prawn_badge(badge_text, badge_color, offset: 0, radius: 2),
-          { text: list.join(" "), size: 10 }
+          styles.page_subtitle.merge({ text: list.join(" ") })
         ]
       )
     end

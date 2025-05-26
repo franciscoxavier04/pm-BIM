@@ -18,6 +18,9 @@
     "page_heading" : {
       "$ref" : "#/$defs/page_heading"
     },
+    "page_subtitle" : {
+      "$ref" : "#/$defs/page_heading"
+    },
     "cover" : {
       "$ref" : "#/$defs/cover"
     },
@@ -26,6 +29,147 @@
     },
     "outcome" : {
       "$ref" : "#/$defs/outcome"
+    },
+    "heading": {
+      "type": "object",
+      "title": "Heading",
+      "description": "Styling for the heading of the PDF meeting export",
+      "x-example": {
+        "heading": {
+          "size": 12,
+          "styles": [
+            "bold"
+          ],
+          "margin_bottom": 10
+        }
+      },
+      "properties": {
+        "hr": {
+          "type": "object",
+          "title": "Horizontal rule before headings",
+          "x-example": {
+            "border": {
+              "color": "6E7781",
+              "height": 1.5
+            }
+          },
+          "properties": {
+            "height": {
+              "title": "Line height of the horizontal rule",
+              "examples": [
+                1
+              ],
+              "$ref": "#/$defs/measurement"
+            },
+            "color": {
+              "title": "Line color of the horizontal rule",
+              "$ref": "#/$defs/color"
+            }
+          },
+          "allOf": [
+            {
+              "$ref": "#/$defs/margin"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/$defs/font"
+        },
+        {
+          "$ref": "#/$defs/margin"
+        }
+      ]
+    },
+    "agenda_item": {
+      "type": "object",
+      "title": "Agenda item",
+      "description": "Styling for a agenda item of the PDF meeting export",
+      "x-example": {
+        "agenda_item": {
+        }
+      },
+      "properties": {
+        "hr": {
+          "type": "object",
+          "title": "Horizontal rule between agenda items",
+          "x-example": {
+            "border": {
+              "color": "D0D7DE",
+              "height": 1
+            }
+          },
+          "properties": {
+            "height": {
+              "title": "Line height of the horizontal rule",
+              "examples": [
+                1
+              ],
+              "$ref": "#/$defs/measurement"
+            },
+            "color": {
+              "title": "Line color of the horizontal rule",
+              "$ref": "#/$defs/color"
+            }
+          },
+          "allOf": [
+            {
+              "$ref": "#/$defs/margin"
+            }
+          ]
+        }
+      }
+    },
+    "participants": {
+      "type": "object",
+      "title": "Participants",
+      "description": "Styling for the participants table",
+      "x-example": {
+        "margin_bottom": 12,
+        "cell": {
+          "size": 10,
+          "padding_left": 0,
+          "no_border": true
+        }
+      },
+      "properties": {
+        "cell" : {
+          "title" : "Participant table cell",
+          "description" : "Styling for a table cell with a participant name",
+          "$ref" : "#/$defs/table_cell"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/$defs/margin"
+        }
+      ]
+    },
+    "attachments": {
+      "type": "object",
+      "title": "Attachments",
+      "description": "Styling for the attachments table",
+      "x-example": {
+        "margin_bottom": 12,
+        "cell": {
+          "size": 10,
+          "padding_left": 0,
+          "no_border": true
+        }
+      },
+      "properties": {
+        "cell" : {
+          "title" : "Attachments table cell",
+          "description" : "Styling for a table cell with a attachment name",
+          "$ref" : "#/$defs/table_cell"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/$defs/margin"
+        }
+      ]
     }
   },
   "required" : [],

@@ -34,7 +34,7 @@ module Meetings::PDF
       return if participants.empty?
 
       write_hr
-      write_pdf_section_title(participants_title)
+      write_heading(participants_title)
       write_participants_table
     end
 
@@ -42,12 +42,13 @@ module Meetings::PDF
       columns_count = [participants.size, 3].min
 
       rows = participants_table_rows(columns_count)
-      return if rows.empty?
-
-      pdf.table(rows,
-                column_widths: participants_table_column_widths(columns_count),
-                cell_style: { borders: [], padding_left: 0, size: 10 })
-      pdf.move_down(8)
+      with_vertical_margin(styles.participants_margins) do
+        pdf.table(
+          rows,
+          column_widths: participants_table_column_widths(columns_count),
+          cell_style: styles.participants_table_cell
+        )
+      end
     end
 
     def participants_table_column_widths(columns_count)

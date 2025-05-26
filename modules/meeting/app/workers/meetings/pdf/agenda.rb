@@ -34,7 +34,7 @@ module Meetings::PDF
       return if meeting.sections.empty?
 
       write_hr
-      write_pdf_section_title(I18n.t("meeting.export.label_meeting_agenda"))
+      write_heading(I18n.t("meeting.export.label_meeting_agenda"))
       write_agenda_sections
       pdf.move_down(10)
     end
@@ -43,7 +43,7 @@ module Meetings::PDF
       return if meeting.backlog.blank? || meeting.backlog.agenda_items.empty?
 
       write_hr
-      write_pdf_section_title(meeting.recurring? ? I18n.t("label_series_backlog") : I18n.t("label_agenda_backlog"))
+      write_heading(meeting.recurring? ? I18n.t("label_series_backlog") : I18n.t("label_agenda_backlog"))
       write_agenda_items(meeting.backlog)
     end
 
@@ -57,26 +57,40 @@ module Meetings::PDF
     end
 
     def write_section_title(section)
-      content = ["<b>#{section_title(section)}</b>"]
+      content = [
+        cell_inline_formatting_styles(
+          { styles: [:bold] },
+          cell_inline_formatting_data(
+            {
+              text: section_title(section),
+              size: 12,
+              color: "000000"
+            }
+          )
+        )
+      ]
       if section.agenda_items_sum_duration_in_minutes > 0
         content.push(
-          table_formatted_text(
-            format_duration(section.agenda_items_sum_duration_in_minutes),
-            11, "636C76"
+          cell_inline_formatting_data(
+            {
+              text: format_duration(section.agenda_items_sum_duration_in_minutes),
+              size: 11,
+              color: "636C76"
+            }
           )
         )
       end
       pdf.table(
-        [[{ content: content.join("  "), size: 12 }]],
+        [[{ content: content.join("  ") }]],
         width: pdf.bounds.width,
         cell_style: {
-          borders: [],
           inline_format: true,
+          borders: [],
           background_color: "EAEAEA",
           padding: [5, 2, 10, 5]
         }
       )
-      pdf.move_down 10
+      pdf.move_down 5
     end
 
     def format_duration(duration)
@@ -89,12 +103,15 @@ module Meetings::PDF
 
     def write_agenda_items(section)
       section.agenda_items.each_with_index do |item, index|
-        if index > 0
-          pdf.move_down 6
-          write_horizontal_line(pdf.cursor, 1, "D0D7DE", left_padding: 5)
-          pdf.move_down(6)
-        end
+        write_agenda_item_hr if index > 0
         write_agenda_item(item)
+      end
+    end
+
+    def write_agenda_item_hr
+      hr_style = styles.agenda_item_hr
+      with_vertical_margin(styles.agenda_item_margins) do
+        write_horizontal_line(pdf.cursor, hr_style[:height], hr_style[:color], left_padding: 5)
       end
     end
 
@@ -109,16 +126,19 @@ module Meetings::PDF
       write_outcome(agenda_item) if with_outcomes?
     end
 
-    def table_formatted_text(content, size, color)
-      "<font size='#{size}'><color rgb='#{color}'>#{content}</color></font>"
-    end
-
     def write_agenda_item_title(title, duration, user)
-      content = ["<b>#{title}</b>"]
-      content.push(table_formatted_text(format_duration(duration), 10, "636C76")) if duration > 0
-      content.push(table_formatted_text(user.name, 10, "636C76")) unless user.nil?
+      content = [
+        cell_inline_formatting_data(
+          {
+            text: cell_inline_formatting_styles({ styles: [:bold] }, title),
+            size: 11
+          }
+        )
+      ]
+      content.push(cell_inline_formatting_data({ text: format_duration(duration), size: 10, color: "636C76" })) if duration > 0
+      content.push(cell_inline_formatting_data({ text: user.name, size: 10, color: "636C76" })) unless user.nil?
       pdf.table(
-        [[{ content: content.join("  "), size: 11 }]],
+        [[{ content: content.join("  ") }]],
         width: pdf.bounds.width,
         cell_style: {
           borders: [],

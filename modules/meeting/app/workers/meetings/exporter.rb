@@ -34,15 +34,16 @@ module Meetings
     include WorkPackage::PDFExport::Common::Logo
     include WorkPackage::PDFExport::Export::Page
     include WorkPackage::PDFExport::Export::Cover
-    include WorkPackage::PDFExport::Export::Meetings::Styles
     include WorkPackage::PDFExport::Export::Markdown
     include WorkPackage::PDFExport::Common::Attachments
     include WorkPackage::PDFExport::Common::Badge
     include WorkPackage::PDFExport::Common::Macro
+    include WorkPackage::PDFExport::Export::Meetings::Styles
     include Meetings::PDF::PageHead
     include Meetings::PDF::Participants
     include Meetings::PDF::Agenda
     include Meetings::PDF::Attachments
+    include MarkdownToPDF::HTML
 
     attr_accessor :pdf
 
@@ -91,14 +92,16 @@ module Meetings
       write_footers!
     end
 
-    def write_pdf_section_title(text)
-      pdf.formatted_text([{ text:, size: 12, styles: [:bold] }])
+    def write_heading(text)
+      pdf.formatted_text([styles.heading.merge({ text: })])
       pdf.move_down(10)
     end
 
     def write_hr
-      write_horizontal_line(pdf.cursor, 1.5, "6E7781")
-      pdf.move_down(10)
+      hr_style = styles.heading_hr
+      with_vertical_margin(styles.heading_hr_margins) do
+        write_horizontal_line(pdf.cursor, hr_style[:height], hr_style[:color])
+      end
     end
 
     def cover_page_title

@@ -36,6 +36,14 @@ module WorkPackage::PDFExport::Export::Meetings::Styles
     include WorkPackage::PDFExport::Common::StylesPage
     include WorkPackage::PDFExport::Common::StylesCover
 
+    def page_subtitle
+      resolve_font(@styles[:page_subtitle])
+    end
+
+    def page_subtitle_margins
+      resolve_margin(@styles[:page_subtitle])
+    end
+
     def notes_markdown_margins
       resolve_margin(@styles.dig(:work_package, :markdown_margin))
     end
@@ -46,6 +54,52 @@ module WorkPackage::PDFExport::Export::Meetings::Styles
 
     def outcome_markdown_styling_yml
       resolve_markdown_styling(@styles.dig(:outcome, :markdown) || {})
+    end
+
+    def heading
+      resolve_font(@styles[:heading])
+    end
+
+    def heading_hr
+      {
+        color: @styles.dig(:heading, :hr, :color),
+        height: resolve_pt(@styles.dig(:heading, :hr, :height), 1)
+      }
+    end
+
+    def heading_hr_margins
+      resolve_margin(@styles.dig(:heading, :hr))
+    end
+
+    def agenda_item_hr
+      {
+        color: @styles.dig(:agenda_item, :hr, :color),
+        height: resolve_pt(@styles.dig(:agenda_item, :hr, :height), 1)
+      }
+    end
+
+    def agenda_item_margins
+      resolve_margin(@styles.dig(:agenda_item, :hr))
+    end
+
+    def heading_margins
+      resolve_margin(@styles[:heading])
+    end
+
+    def participants_table_cell
+      resolve_table_cell(@styles.dig(:participants, :cell))
+    end
+
+    def participants_margins
+      resolve_margin(@styles[:participants])
+    end
+
+    def attachments_table_cell
+      resolve_table_cell(@styles.dig(:attachments, :cell))
+    end
+
+    def attachments_margins
+      resolve_margin(@styles[:attachments])
     end
   end
 

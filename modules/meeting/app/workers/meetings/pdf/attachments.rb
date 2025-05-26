@@ -38,15 +38,18 @@ module Meetings::PDF
       return if rows.empty?
 
       write_hr
-      write_pdf_section_title(attachments_list_title)
+      write_heading(attachments_list_title)
       write_attachments_list_table(rows, columns_count)
     end
 
     def write_attachments_list_table(rows, columns_count)
-      pdf.table(rows,
-                column_widths: attachments_list_table_column_widths(columns_count),
-                cell_style: { borders: [], padding_left: 0, size: 10 })
-      pdf.move_down(8)
+      with_vertical_margin(styles.attachments_margins) do
+        pdf.table(
+          rows,
+          column_widths: attachments_list_table_column_widths(columns_count),
+          cell_style: styles.attachments_table_cell
+        )
+      end
     end
 
     def attachments_list_table_column_widths(columns_count)
