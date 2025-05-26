@@ -32,6 +32,15 @@ module OpenProject::TextFormatting
   module Renderer
     module_function
 
+    # @note
+    #   Consider the {OpenProject::TextFormatting#format_text} convenience
+    #   method instead, particularly if you are formatting model attributes.
+    #
+    # @param [String] text the raw text to be formatted, typically Markdown.
+    # @param (see .formatter_for)
+    # @param [Hash] context context arguments to pass to underlying rendering
+    #   pipeline (see {Formats::BaseFormatter#initialize}).
+    # @return [String] the formatted text as an HTML-safe String.
     def format_text(text, format: :rich, **context)
       return "" if text.blank?
 
@@ -40,6 +49,8 @@ module OpenProject::TextFormatting
         .to_html(text)
     end
 
+    # @param [:plain, :rich] format the text format.
+    # @return [Formats::BaseFormatter] a formatter implementation.
     def formatter_for(format)
       case format.to_sym
       when :plain
