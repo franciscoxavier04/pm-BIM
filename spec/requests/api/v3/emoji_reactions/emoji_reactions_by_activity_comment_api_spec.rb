@@ -162,20 +162,26 @@ RSpec.describe API::V3::EmojiReactions::EmojiReactionsByActivityCommentAPI do
         make_request
       end
 
-      it "creates the reaction" do
-        expect(last_response).to have_http_status :ok
+      it_behaves_like "API V3 collection response", 1, 1, "EmojiReaction" do
+        let(:emoji_reaction) do
+          build_stubbed(:emoji_reaction, reactable: activity, user: current_user, reaction:)
+        end
 
-        expect(last_response.body)
-          .to be_json_eql("#{activity.id}-#{reaction}".to_json)
-          .at_path("_embedded/elements/0/id")
+        before do
+          allow(emoji_reaction).to receive(:id).and_return("#{activity.id}-#{reaction}")
+        end
 
-        expect(last_response.body)
-          .to be_json_eql(EmojiReaction.emoji(reaction).to_json)
-          .at_path("_embedded/elements/0/emoji")
+        let(:elements) { [emoji_reaction] }
 
-        expect(last_response.body)
-          .to be_json_eql([{ "href" => "/api/v3/users/#{current_user.id}", "title" => current_user.name }].to_json)
-          .at_path("_embedded/elements/0/_links/reactingUsers")
+        it "creates the reaction" do
+          expect(last_response.body)
+            .to be_json_eql(EmojiReaction.emoji(reaction).to_json)
+            .at_path("_embedded/elements/0/emoji")
+
+          expect(last_response.body)
+            .to be_json_eql([{ "href" => "/api/v3/users/#{current_user.id}", "title" => current_user.name }].to_json)
+            .at_path("_embedded/elements/0/_links/reactingUsers")
+        end
       end
     end
 
@@ -191,14 +197,16 @@ RSpec.describe API::V3::EmojiReactions::EmojiReactionsByActivityCommentAPI do
       context "when removing an existing reaction" do
         let(:reaction) { emoji_reaction.reaction }
 
-        it "succeeds" do
-          make_request
+        before { make_request }
 
-          expect(last_response).to have_http_status :ok
+        it_behaves_like "API V3 collection response", 0, 0, "EmojiReaction" do
+          let(:elements) { [] }
 
-          expect(last_response.body)
-            .to be_json_eql([].to_json)
-            .at_path("_embedded/elements")
+          it "succeeds" do
+            expect(last_response.body)
+              .to be_json_eql([].to_json)
+              .at_path("_embedded/elements")
+          end
         end
       end
 
@@ -215,12 +223,24 @@ RSpec.describe API::V3::EmojiReactions::EmojiReactionsByActivityCommentAPI do
             .at_path("message")
         end
       end
+
+      context "when the reaction is not provided" do
+        it "false with HTTP Bad Request" do
+          patch path, {}.to_json, headers
+
+          expect(last_response).to have_http_status :bad_request
+
+          expect(last_response.body)
+            .to include_json("Bad request: reaction is missing, reaction does not have a valid value".to_json)
+            .at_path("message")
+        end
+      end
     end
 
     context "when user does not have permission to add work package notes" do
       let(:permissions) { %i(view_work_packages) }
 
-      it "fails with HTTP Not Found" do
+      it "fails with HTTP Forbidden" do
         make_request
 
         expect(last_response).to have_http_status :forbidden
@@ -263,5 +283,7 @@ RSpec.describe API::V3::EmojiReactions::EmojiReactionsByActivityCommentAPI do
         end
       end
     end
+
+    it_behaves_like "handling anonymous user"
   end
 end
