@@ -51,6 +51,20 @@ RSpec.describe API::V3::EmojiReactions::EmojiReactionsByActivityCommentAPI do
     allow(User).to receive(:current).and_return(current_user)
   end
 
+  shared_examples "restricts API to activity comments" do
+    context "when the activity is not a comment" do
+      let(:non_comment_activity) { work_package.journals.first }
+
+      it "returns 422 Unprocessable Entity" do
+        expect(last_response).to have_http_status :bad_request
+
+        expect(last_response.body)
+          .to be_json_eql("Bad request: This activity type does not support emoji reactions.".to_json)
+          .at_path("message")
+      end
+    end
+  end
+
   describe "GET /api/v3/activities/:id/emoji_reactions" do
     context "when user has permission to view work package" do
       before do
@@ -139,6 +153,12 @@ RSpec.describe API::V3::EmojiReactions::EmojiReactionsByActivityCommentAPI do
         it "fails with HTTP Not Found" do
           expect(last_response).to have_http_status :not_found
         end
+      end
+    end
+
+    it_behaves_like "restricts API to activity comments" do
+      before do
+        get api_v3_paths.emoji_reactions_by_activity_comment(non_comment_activity.id)
       end
     end
   end
@@ -276,6 +296,13 @@ RSpec.describe API::V3::EmojiReactions::EmojiReactionsByActivityCommentAPI do
           make_request
           expect(last_response).to have_http_status :forbidden
         end
+      end
+    end
+
+    it_behaves_like "restricts API to activity comments" do
+      before do
+        patch api_v3_paths.emoji_reactions_by_activity_comment(non_comment_activity.id), { reaction: }.to_json,
+              headers
       end
     end
 

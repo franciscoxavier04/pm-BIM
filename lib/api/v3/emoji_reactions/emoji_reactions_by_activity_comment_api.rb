@@ -41,9 +41,21 @@ module API
             def get_emoji_reactions_self_path
               api_v3_paths.emoji_reactions_by_activity_comment(reactable.id)
             end
+
+            def ensure_emoji_reactions_enabled!
+              return if activity_comment?
+
+              raise ::API::Errors::BadRequest.new("This activity type does not support emoji reactions.")
+            end
+
+            def activity_comment?
+              reactable.notes.present?
+            end
           end
 
           get do
+            ensure_emoji_reactions_enabled!
+
             emoji_reactions = Journal.grouped_emoji_reactions(reactable_id: reactable.id, reactable_type: "Journal")
             EmojiReactionCollectionRepresenter.new(emoji_reactions,
                                                    self_link: get_emoji_reactions_self_path,
@@ -56,6 +68,8 @@ module API
           end
 
           patch do
+            ensure_emoji_reactions_enabled!
+
             toggle_service = ::EmojiReactions::ToggleEmojiReactionService.call(
               user: current_user,
               reactable: reactable,
