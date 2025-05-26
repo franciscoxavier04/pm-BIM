@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "doorkeeper/grape/authorization_decorator"
 
 module OpenProject
@@ -12,10 +14,10 @@ module OpenProject
           def valid?
             access_token = ::Doorkeeper::OAuth::Token
                              .from_request(decorated_request, *Doorkeeper.configuration.access_token_methods)
-            
+
             # No access token found, so invalid strategy.
             return false if access_token.blank?
-            
+
             # We don't want JWT as our OAuth Bearer token
             JWT.decode(access_token, nil, false)
             false
@@ -28,6 +30,7 @@ module OpenProject
                                                                    *Doorkeeper.configuration.access_token_methods)
             return fail_with_header!(error: "invalid_token") if access_token.blank?
             return fail_with_header!(error: "invalid_token") if access_token.expired? || access_token.revoked?
+            return fail_with_header!(error: "invalid_token") unless access_token.application.enabled?
             return fail_with_header!(error: "insufficient_scope") if !access_token.includes_scope?(scope)
 
             if access_token.resource_owner_id.nil?

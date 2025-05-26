@@ -83,6 +83,17 @@ RSpec.describe "API V3 Authentication" do
       end
     end
 
+    context "when the token's application is disabled" do
+      let(:token) { create(:oauth_access_token, resource_owner: user, application: create(:oauth_application, enabled: false)) }
+      let(:oauth_access_token) { token.plaintext_token }
+
+      it "returns unauthorized" do
+        expect(last_response).to have_http_status :unauthorized
+        expect(last_response.header["WWW-Authenticate"]).to eq('Bearer realm="OpenProject API", error="invalid_token"')
+        expect(JSON.parse(last_response.body)).to eq(error_response_body)
+      end
+    end
+
     context "with an expired access token" do
       let(:token) { create(:oauth_access_token, resource_owner: user) }
       let(:oauth_access_token) { token.plaintext_token }
