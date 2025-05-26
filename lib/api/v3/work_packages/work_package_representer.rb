@@ -689,10 +689,6 @@ module API
           @project_phase ||= represented.project_phase
         end
 
-        def project_phase_definition
-          @project_phase_definition ||= represented.project_phase_definition
-        end
-
         def phase_set_and_active?
           project_phase&.active?
         end
