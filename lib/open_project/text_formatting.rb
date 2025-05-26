@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -39,75 +41,72 @@ module OpenProject
   module TextFormatting
     include ::OpenProject::TextFormatting::Truncation
 
-    # @!macro format_text_options
-    #   @param [Hash] options a customizable set of options.
-    #   @option options [Project] :project (@project, object#project)
-    #     a Project context.
-    #   @option options [Boolean] :only_path (true)
-    #     whether to generate links with relative URLs.
-    #   @option options [User] :current_user (User.current)
-    #     the current user context.
-    #   @option options [:plain, :rich] :format (:rich)
-    #     the text format.
+    # @!macro format_text_params
+    #   @param [Project] project a Project context.
+    #   @param [Boolean] only_path whether to generate links with relative URLs.
+    #   @param [User] current_user the current user context.
+    #   @param [:plain, :rich] format the text format.
     #     `:plain` will return plain text.
     #     `:rich` will render raw Markdown as HTML.
+    #   @param ** [Hash] additional context to pass to the underlying rendering
+    #      pipeline.
+
+    # rubocop:disable Layout/LineLength
 
     ##
-    # Formats text according to system settings and provided options.
+    # Formats text according to system settings and provided params.
     #
-    # @overload format_text(text, options = {})
+    # @overload format_text(text, object: nil, project: @project || object.try(:project), only_path: true, current_user: User.current, format: :rich, **)
+    #
     #   @param [String] text the raw text to be formatted, typically Markdown.
-    #   @macro format_text_options
-    #   @option options [Object] :object an object context.
+    #   @param [Object] object an object context.
+    #   @macro format_text_params
     #
     #   @example Setting a project context explicitly
     #     format_text("## Hello world", project: current_project)
     #   @example Generating links with full URLs
     #     format_text("[Projects](/projects)", only_path: false)
     #
-    # @overload format_text(object, attribute, options = {})
+    # @overload format_text(object, attribute, project: @project || object.try(:project), only_path: true, current_user: User.current, format: :rich, **)
+    #
     #   @param [Object] object an object, typically a model
     #     (i.e. `ActiveRecord::Base` descendent).
     #   @param [Symbol] attribute the method on that object.
     #     `#to_s` will be called on the return value.
-    #   @macro format_text_options
+    #   @macro format_text_params
     #
     #   @example
     #     format_text(issue, :description, options)
     #
     # @return [String] the formatted text as an HTML-safe String.
-    def format_text(*args)
-      options = args.last.is_a?(Hash) ? args.pop : {}
+    def format_text(*args, object: nil, project: nil, only_path: true, current_user: User.current, format: :rich, **)
       case args.size
       when 1
         attribute = nil
-        object = options[:object]
-        text = args.shift
+        text = args.first
       when 2
-        object = args.shift
-        attribute = args.shift
-        text = object.send(attribute).to_s
+        object, attribute = args
+        text = object.public_send(attribute).to_s
       else
         raise ArgumentError, "invalid arguments to format_text"
       end
       return "" if text.blank?
 
-      project = options.delete(:project) { @project || object.try(:project) }
-      only_path = options.delete(:only_path) != false
-      current_user = options.delete(:current_user) { User.current }
+      project ||= @project || object.try(:project)
+      plain = Formats.plain?(format)
 
-      plain = ::OpenProject::TextFormatting::Formats.plain?(options.delete(:format))
-
-      Renderer.format_text text,
-                           options.merge(
-                             plain:,
-                             object:,
-                             request: try(:request),
-                             current_user:,
-                             attribute:,
-                             only_path:,
-                             project:
-                           )
+      Renderer.format_text(
+        text,
+        **,
+        plain:,
+        object:,
+        request: try(:request),
+        current_user:,
+        attribute:,
+        only_path:,
+        project:
+      )
     end
+    # rubocop:enable Layout/LineLength
   end
 end
