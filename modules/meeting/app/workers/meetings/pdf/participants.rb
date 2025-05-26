@@ -31,7 +31,10 @@
 module Meetings::PDF
   module Participants
     def write_participants
-      write_participants_title
+      return if participants.empty?
+
+      write_hr
+      write_pdf_section_title(participants_title)
       write_participants_table
     end
 
@@ -65,11 +68,6 @@ module Meetings::PDF
           { content: participant_name(groups.dig(group_nr, row_index)) }
         end
       end
-    end
-
-    def write_participants_title
-      pdf.formatted_text([{ text: participants_title, size: 12, styles: [:bold] }])
-      pdf.move_down(5)
     end
 
     def participant_name(participant)

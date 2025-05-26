@@ -83,14 +83,17 @@ module Meetings
 
     def render_meeting!
       write_page_head
-      write_hr
       write_participants
-      write_hr
       write_agenda
-      write_hr
       write_attachments_list
+      write_backlog
       write_headers!
       write_footers!
+    end
+
+    def write_pdf_section_title(text)
+      pdf.formatted_text([{ text:, size: 12, styles: [:bold] }])
+      pdf.move_down(10)
     end
 
     def write_hr

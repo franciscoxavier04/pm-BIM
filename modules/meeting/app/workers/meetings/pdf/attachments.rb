@@ -35,7 +35,8 @@ module Meetings::PDF
       rows = meeting_attachments_table_rows(columns_count)
       return if rows.empty?
 
-      write_attachments_list_title
+      write_hr
+      write_pdf_section_title(attachments_list_title)
       write_attachments_list_table(rows, columns_count)
     end
 
@@ -60,11 +61,6 @@ module Meetings::PDF
           { content: attachment_name(groups.dig(group_nr, row_index)), inline_format: true }
         end
       end
-    end
-
-    def write_attachments_list_title
-      pdf.formatted_text([{ text: attachments_list_title, size: 12, styles: [:bold] }])
-      pdf.move_down(5)
     end
 
     def attachment_name(attachment)

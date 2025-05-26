@@ -31,18 +31,24 @@
 module Meetings::PDF
   module Agenda
     def write_agenda
-      write_agenda_title
+      return if meeting.sections.empty?
+
+      write_hr
+      write_pdf_section_title(I18n.t("meeting.export.label_meeting_agenda"))
       write_agenda_sections
       pdf.move_down(10)
     end
 
-    def write_agenda_sections
-      meeting.sections.each { |section| write_section(section) }
+    def write_backlog
+      return if meeting.backlog.blank?
+
+      write_hr
+      write_pdf_section_title(meeting.recurring? ? I18n.t("label_series_backlog") : I18n.t("label_agenda_backlog"))
+      write_agenda_items(meeting.backlog)
     end
 
-    def write_agenda_title
-      pdf.formatted_text([{ text: I18n.t("meeting.export.label_meeting_agenda"), size: 12, styles: [:bold] }])
-      pdf.move_down(10)
+    def write_agenda_sections
+      meeting.sections.each { |section| write_section(section) }
     end
 
     def write_section(section)
