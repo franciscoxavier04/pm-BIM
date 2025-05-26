@@ -260,11 +260,6 @@ RSpec.describe API::V3::EmojiReactions::EmojiReactionsByActivityCommentAPI do
       let(:path) { api_v3_paths.emoji_reactions_by_activity_comment(internal_comment.id) }
       let(:reaction) { "thumbs_up" }
 
-      before do
-        project.enabled_internal_comments = true
-        project.save!
-      end
-
       context "and user has permission to create internal comments" do
         let(:reaction) { "rocket" }
         let(:permissions) { %i(view_work_packages add_work_package_comments view_internal_comments add_internal_comments) }
