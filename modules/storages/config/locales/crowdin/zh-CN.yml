@@ -80,7 +80,7 @@ zh-CN:
     edit_project_folder:
       label: 编辑项目文件夹
     open:
-      remote_identity_error: An unexpected error occurred while connecting to the storage.
+      remote_identity_error: 连接到存储时发生意外错误。
     project_folder_mode:
       automatic: 自动托管
       inactive: 没有指定文件夹
@@ -281,8 +281,8 @@ zh-CN:
         nc_dependency_version_mismatch: '%{dependency} 应用版本不受支持。请更新您的 Nextcloud 服务器。'
         nc_group_folder_not_found: 无法找到组文件夹。
         nc_host_not_found: 在配置的主机 URL 中找不到 Nextcloud 服务器。请检查配置。
-        nc_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
-        nc_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
+        nc_oauth_request_not_found: 未找到获取当前连接用户的端点。请检查服务器日志以获取更多信息。
+        nc_oauth_request_unauthorized: 当前用户无权访问远程文件存储。请检查服务器日志以获取更多信息。
         nc_oauth_token_missing: OpenProject 无法测试用户与 Nextcloud 之间的通信，因为用户尚未链接他们的 Nextcloud 帐户。
         nc_unexpected_content: 在管理组文件夹中发现意外内容。
         nc_userless_access_denied: 已配置的应用密码无效。
@@ -291,19 +291,19 @@ zh-CN:
         od_client_write_permission_missing: 客户端似乎没有写入权限。请检查您的存储的设置文档。
         od_drive_id_invalid: 配置的驱动器 ID 似乎无效。请检查配置。
         od_drive_id_not_found: 找不到配置的驱动器 ID。请检查配置。
-        od_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
-        od_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
+        od_oauth_request_not_found: 未找到获取当前连接用户的端点。请检查服务器日志以获取更多信息。
+        od_oauth_request_unauthorized: 当前用户无权访问远程文件存储。请检查服务器日志以获取更多信息。
         od_oauth_token_missing: OpenProject 无法测试用户与 OneDrive/SharePoint 的用户级通信，因为用户尚未关联他们的 Microsoft 帐户。
         od_tenant_id_wrong: 配置的目录（租户）无效。请检查配置。
-        od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
+        od_test_folder_exists: 测试所需的文件夹 %{folder_name} 已存在。请删除它并重试。
         od_unexpected_content: 在驱动器中找到意外内容。
         offline_access_scope_missing: 建议配置 OpenID Connect 提供商以请求 offline_access 范围。集成仍然可以正常工作，但请确保刷新令牌不会过期。
         oidc_cant_refresh_token: 尝试检查您对存储的访问时出错。请检查服务器日志以获取更多信息。
         oidc_non_oidc_user: 当前用户在预配的情况下，没有被 OpenID Connect (OIDC) 身份提供商预置。请重新运行与OIDC 预置用户的检查。
         oidc_non_provisioned_user: 当前用户并非由 OpenID Connect 身份提供商提供。请针对提供的用户重新运行检查。
-        oidc_token_acquisition_failed: Your OpenID Connect setup doesn't provide the necessary audience, nor does it provide token exchange capabilities. Please check out our documentation for more information.
-        oidc_token_exchange_failed: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
-        oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
+        oidc_token_acquisition_failed: 您的 OpenID Connect 设置中没有指明令牌的接收方，也没有提供令牌交换功能。请查看我们的文档以获取更多信息。
+        oidc_token_exchange_failed: 您的 OpenID Connect 提供商上的 Token Exchange 设置似乎存在问题。请检查其配置并重试。
+        oidc_token_refresh_failed: 当检查你对这个存储的访问权限时出现错误。详情请查看服务器日志。
         unknown_error: 连接无法验证。出现未知错误。请查看服务器日志以获取更多信息。
       label_error: 错误
       label_failed: 失败

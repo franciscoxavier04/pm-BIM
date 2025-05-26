@@ -1527,8 +1527,8 @@ hu:
         one: "Projekt"
         other: "Projektek"
       project_query:
-        one: "Project list"
-        other: "Project lists"
+        one: "Projekt lista"
+        other: "Projekt listák"
       query: "Egyéni lekérdezés"
       reminder: "Reminder"
       role:
@@ -3315,7 +3315,7 @@ hu:
   notice_locking_conflict_reload_page: "Töltse újra az oldalt, tekintse át a módosításokat, és a frissítse újra."
   notice_locking_conflict_warning: "This page has been updated by someone else. To not lose your edits, copy them locally and reload to view the updated version."
   notice_locking_conflict_danger: "Could not save your changes because of conflicting modifications. To not lose your edits, copy them locally and reload to view the updated version."
-  notice_locking_conflict_action_button: "Discard changes and reload"
+  notice_locking_conflict_action_button: "Módosítások elvetése és újratöltés"
   notice_member_added: Hozzáadva %{name} projekthez.
   notice_members_added: '%{number} felhasználó hozzáadva a projekthez.'
   notice_member_removed: "%{user} eltávolítva a projektből."
@@ -3420,7 +3420,7 @@ hu:
   permission_edit_project_attributes: "Edit project attributes"
   permission_edit_project_phases: "Edit project phases"
   permission_edit_reportings: "Jelentések szerkesztése"
-  permission_edit_time_entries: "Edit time logs for other users"
+  permission_edit_time_entries: "Időnaplók szerkesztése más felhasználóknál"
   permission_edit_timelines: "Idővonalak szerkesztése"
   permission_edit_wiki_pages: "Wiki lapok szerkesztése"
   permission_export_work_packages: "feladatcsoportok exportálása"
@@ -3533,7 +3533,7 @@ hu:
     member_of_group: "Hozzárendelt csoport"
     name_or_identifier: "Név vagy azonosító"
     only_subproject_id: "Csak alprojekt"
-    shared_with_user: "Shared with users"
+    shared_with_user: "Megosztás felhasználókkal"
     shared_with_me: "Shared with me"
     subproject_id: "Beleértve az alprojektet"
   repositories:
@@ -3645,8 +3645,8 @@ hu:
     warnings:
       cannot_annotate: "Ez a fájl nem annotálható."
   scheduling:
-    manual: "set to Manual"
-    automatic: "set to Automatic"
+    manual: "manuálisra állítás"
+    automatic: "automatára állítás"
   search_input_placeholder: "Keresés ..."
   setting_allowed_link_protocols: "Allowed link protocols"
   setting_allowed_link_protocols_text_html: >-
