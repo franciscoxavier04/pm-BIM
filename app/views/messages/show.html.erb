@@ -37,7 +37,7 @@ See COPYRIGHT and LICENSE files for more details.
 <div class="forum-message">
   <p class="author additional-information"><%= authoring @topic.created_at, @topic.author %></p>
   <div class="wiki op-uc-container">
-    <%= format_text(@topic.content, object: @topic, attachments: @topic.attachments) %>
+    <%= format_text(@topic, :content, attachments: @topic.attachments) %>
   </div>
 
   <% resource = message_attachment_representer(@topic) %>
