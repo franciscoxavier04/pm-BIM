@@ -38,7 +38,7 @@ RSpec.describe API::V3::EmojiReactions::EmojiReactionRepresenter do
            reactable: reactable,
            user: user,
            reaction: "thumbs_up")
-    Journal.grouped_emoji_reactions(reactable_id: reactable.id, reactable_type: "Journal").first
+    EmojiReactions::GroupedQueries.grouped_emoji_reactions(reactable:).first
   end
   let(:current_user) { user }
   let(:representer) { described_class.new(emoji_reaction, current_user: current_user) }

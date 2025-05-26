@@ -42,14 +42,17 @@ module API
               api_v3_paths.emoji_reactions_by_activity_comment(reactable.id)
             end
 
+            def grouped_emoji_reactions
+              ::EmojiReactions::GroupedQueries.grouped_emoji_reactions(reactable:)
+            end
+
             def activity_comment?
               reactable.notes.present?
             end
           end
 
           get do
-            emoji_reactions = Journal.grouped_emoji_reactions(reactable_id: reactable.id, reactable_type: "Journal")
-            EmojiReactionCollectionRepresenter.new(emoji_reactions,
+            EmojiReactionCollectionRepresenter.new(grouped_emoji_reactions,
                                                    self_link: get_emoji_reactions_self_path,
                                                    current_user: User.current)
           end
@@ -73,8 +76,7 @@ module API
             )
 
             if toggle_service.success?
-              emoji_reactions = Journal.grouped_emoji_reactions(reactable_id: reactable.id, reactable_type: "Journal")
-              EmojiReactionCollectionRepresenter.new(emoji_reactions,
+              EmojiReactionCollectionRepresenter.new(grouped_emoji_reactions,
                                                      self_link: get_emoji_reactions_self_path,
                                                      current_user:)
             else

@@ -119,7 +119,7 @@ module API
         def emoji_reactions
           return unless represented.journable.is_a?(WorkPackage)
 
-          emoji_reactions = Journal.grouped_emoji_reactions(reactable_id: represented.id, reactable_type: "Journal")
+          emoji_reactions = ::EmojiReactions::GroupedQueries.grouped_emoji_reactions(reactable: represented)
           API::V3::EmojiReactions::EmojiReactionCollectionRepresenter
             .new(emoji_reactions,
                  self_link: api_v3_paths.emoji_reactions_by_activity_comment(represented.id),

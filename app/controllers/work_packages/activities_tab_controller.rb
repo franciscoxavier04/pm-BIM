@@ -337,7 +337,7 @@ class WorkPackages::ActivitiesTabController < ApplicationController
       journals = journals.where.not(notes: "")
     end
 
-    grouped_emoji_reactions = Journal.grouped_emoji_reactions_by_reactable(
+    grouped_emoji_reactions = EmojiReactions::GroupedQueries.grouped_emoji_reactions_by_reactable(
       reactable_id: journals.pluck(:id), reactable_type: "Journal"
     )
 
@@ -352,7 +352,8 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def generate_work_package_journals_emoji_reactions_update_streams
-    wp_journal_emoji_reactions = Journal.grouped_work_package_journals_emoji_reactions_by_reactable(@work_package)
+    wp_journal_emoji_reactions =
+      EmojiReactions::GroupedQueries.grouped_work_package_journals_emoji_reactions_by_reactable(@work_package)
     @work_package.journals.each do |journal|
       update_via_turbo_stream(
         component: WorkPackages::ActivitiesTab::Journals::ItemComponent::Reactions.new(
@@ -467,7 +468,9 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def grouped_emoji_reactions_for_journal
-    Journal.grouped_journal_emoji_reactions_by_reactable(@journal).fetch(@journal.id, {})
+    EmojiReactions::GroupedQueries
+      .grouped_emoji_reactions_by_reactable(reactable: @journal)
+      .fetch(@journal.id, {})
   end
 
   def allowed_to_edit?(journal)
