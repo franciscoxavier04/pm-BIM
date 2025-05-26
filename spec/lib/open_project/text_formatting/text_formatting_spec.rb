@@ -66,7 +66,7 @@ RSpec.describe OpenProject::TextFormatting do
       end
 
       it "allows plain format of options, if specified" do
-        expect(format_text("*Stars!*", format: "plain")).to be_html_eql("<p>*Stars!*</p>")
+        expect(format_text("*Stars!*", format: :plain)).to be_html_eql("<p>*Stars!*</p>")
       end
     end
   end
