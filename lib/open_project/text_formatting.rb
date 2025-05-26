@@ -93,12 +93,11 @@ module OpenProject
       return "" if text.blank?
 
       project ||= @project || object.try(:project)
-      plain = Formats.plain?(format)
 
       Renderer.format_text(
         text,
         **,
-        plain:,
+        format:,
         object:,
         request: try(:request),
         current_user:,

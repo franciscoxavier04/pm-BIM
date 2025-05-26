@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -30,19 +32,20 @@ module OpenProject::TextFormatting
   module Renderer
     module_function
 
-    def format_text(text, options = {})
+    def format_text(text, format: :rich, **context)
       return "" if text.blank?
 
-      formatter(plain: options.delete(:plain))
-        .new(options)
+      formatter_for(format)
+        .new(context)
         .to_html(text)
     end
 
-    def formatter(plain: false)
-      if plain
-        OpenProject::TextFormatting::Formats.plain_formatter
+    def formatter_for(format)
+      case format.to_sym
+      when :plain
+        Formats.plain_formatter
       else
-        OpenProject::TextFormatting::Formats.rich_formatter
+        Formats.rich_formatter
       end
     end
   end

@@ -52,10 +52,6 @@ module OpenProject::TextFormatting
       def supported?(name)
         [plain, rich].map(&:format).include?(name.to_sym)
       end
-
-      def plain?(name)
-        name && plain.format == name.to_sym
-      end
     end
   end
 end
