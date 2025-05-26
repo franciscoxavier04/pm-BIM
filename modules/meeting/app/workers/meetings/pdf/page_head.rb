@@ -46,14 +46,18 @@ module Meetings::PDF
     end
 
     def write_meeting_subtitle
-      list = ["", "#{format_date(meeting.start_date)},", meeting_subtitle_dates]
-      list.push("-", meeting.recurring_meeting.base_schedule) if meeting.recurring?
       pdf.formatted_text(
         [
           prawn_badge(badge_text, badge_color, offset: 0, radius: 2),
-          styles.page_subtitle.merge({ text: list.join(" ") })
+          styles.page_subtitle.merge({ text: meeting_subtitle })
         ]
       )
+    end
+
+    def meeting_subtitle
+      list = ["", "#{format_date(meeting.start_date)},", meeting_subtitle_dates]
+      list.push("-", meeting.recurring_meeting.base_schedule) if meeting.recurring?
+      list.join(" ")
     end
 
     def meeting_subtitle_dates

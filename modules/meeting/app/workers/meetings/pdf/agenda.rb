@@ -127,16 +127,9 @@ module Meetings::PDF
     end
 
     def write_agenda_item_title(title, duration, user)
-      content = [
-        cell_inline_formatting_data(
-          {
-            text: cell_inline_formatting_styles({ styles: [:bold] }, title),
-            size: 11
-          }
-        )
-      ]
-      content.push(cell_inline_formatting_data({ text: format_duration(duration), size: 10, color: "636C76" })) if duration > 0
-      content.push(cell_inline_formatting_data({ text: user.name, size: 10, color: "636C76" })) unless user.nil?
+      content = [format_agenda_item_title(title)]
+      content.push(format_agenda_item_subtitle(format_duration(duration))) if duration > 0
+      content.push(format_agenda_item_subtitle(user.name)) unless user.nil?
       pdf.table(
         [[{ content: content.join("  ") }]],
         width: pdf.bounds.width,
@@ -147,6 +140,19 @@ module Meetings::PDF
         }
       )
       pdf.move_down(3)
+    end
+
+    def format_agenda_item_subtitle(text)
+      cell_inline_formatting_data({ text:, size: 10, color: "636C76" })
+    end
+
+    def format_agenda_item_title(title)
+      cell_inline_formatting_data(
+        {
+          text: cell_inline_formatting_styles({ styles: [:bold] }, title),
+          size: 11
+        }
+      )
     end
 
     def agenda_title_wp(work_package)
