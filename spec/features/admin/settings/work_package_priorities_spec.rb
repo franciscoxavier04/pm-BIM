@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Work package priorities" do
+RSpec.describe "Work package priorities", :js do
   shared_let(:admin) { create(:admin) }
 
   before do

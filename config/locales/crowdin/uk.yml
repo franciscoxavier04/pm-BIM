@@ -418,11 +418,11 @@ uk:
     status:
       button_edit: Змінити статус проєкту
   project_phase:
-    working_days_count:
+    duration:
       one: "Тривалість: %{count} робочий день"
-      few: "Тривалість: %{count} робочі дні"
-      many: "Тривалість: %{count} робочих днів"
-      other: "Тривалість: %{count} робочого дня"
+      few: "Тривалість: %{count} робочого дня"
+      many: "Тривалість: %{count} робочого дня"
+      other: "Тривалість: %{count} робочих днів"
   lists:
     create:
       success: "Змінений список збережено як новий"
@@ -702,6 +702,7 @@ uk:
         automatic: "Автоматично"
         manual: "Вручну"
       show_relations: "Показати зв’язки"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Вкладки вибору даних"
         children: "Дочірні елементи"
@@ -1628,12 +1629,13 @@ uk:
       work_package: "Пакети робіт"
     project_phase:
       activated: "активовано"
-      deactivated: "деактивовано"
       added_date: "визначено як %{date}"
       changed_date: "змінено з %{from} на %{to}"
-      removed_date: "видалено %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "деактивовано"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} і %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "видалено %{date}"
   #common attributes of all models
   attributes:
     active: "Активний"
@@ -1648,7 +1650,7 @@ uk:
     body: "Текст"
     blocks_ids: "Ідентифікатори заблокованих робочих пакетів"
     category: "Категорія"
-    comment: "Коментування"
+    comment: "Коментар"
     comments: "Коментування"
     content: "Контент"
     color: "Колір"
@@ -1700,6 +1702,8 @@ uk:
     priority: "Пріоритет"
     project: "Проєкт"
     project_ids: "ID проєктів"
+    project_phase: "Етап проєкту"
+    project_phase_definition: "Етап проєкту"
     reason: "Причина"
     responsible: "Відповідальний"
     required: "Обов'язкове поле"
@@ -2743,6 +2747,7 @@ uk:
   label_gantt_chart_plural: "Діаграми Ґанта"
   label_general: "Загальні"
   label_generate_key: "Згенерувати ключ"
+  label_global_roles: "Глобальні ролі"
   label_git_path: "Шлях до каталогу .git"
   label_greater_or_equal: ">="
   label_group_by: "Групувати за"
@@ -2772,7 +2777,7 @@ uk:
   label_index_by_title: "Індекс за назвою"
   label_information: "Інформація"
   label_information_plural: "Інформація"
-  label_installation_guides: "Інструкції із встановлення"
+  label_installation_guides: "Інструкції зі встановлення"
   label_integer: "Ціле число"
   label_internal: "Власне"
   label_introduction_video: "Введення відео"

@@ -422,7 +422,7 @@ et:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       one: "Duration: %{count} working day"
       other: "Duration: %{count} working days"
   lists:
@@ -692,6 +692,7 @@ et:
         automatic: "Automaatne"
         manual: "Käsitsi"
       show_relations: "Näita seoseid"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Kuupäeva valija vahekaardid"
         children: "Lapsed"
@@ -1592,12 +1593,13 @@ et:
       work_package: "Tööpaketid"
     project_phase:
       activated: "aktiveeritud"
-      deactivated: "deaktiveeritud"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "deaktiveeritud"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktiivne"
@@ -1664,6 +1666,8 @@ et:
     priority: "Prioriteet"
     project: "Projekt"
     project_ids: "Projekti ID-d"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Põhjus"
     responsible: "Accountable"
     required: "Nõutav"
@@ -2669,6 +2673,7 @@ et:
   label_gantt_chart_plural: "Gantt diagrammiid"
   label_general: "Üldine"
   label_generate_key: "Genereeri võti"
+  label_global_roles: "Global roles"
   label_git_path: "Tee .git kataloog"
   label_greater_or_equal: ">="
   label_group_by: "Grupeeri"

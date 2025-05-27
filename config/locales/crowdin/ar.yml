@@ -422,7 +422,7 @@ ar:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       zero: "Duration: %{count} working days"
       one: "Duration: %{count} working day"
       two: "Duration: %{count} working days"
@@ -724,6 +724,7 @@ ar:
         automatic: "Automatic"
         manual: "Manual"
       show_relations: "Show relations"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "الأطفال"
@@ -1676,12 +1677,13 @@ ar:
       work_package: "مجموعات العمل"
     project_phase:
       activated: "activated"
-      deactivated: "deactivated"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "deactivated"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "مفعّل"
@@ -1748,6 +1750,8 @@ ar:
     priority: "الأولوية"
     project: "مشروع"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reason"
     responsible: "Accountable"
     required: "مطلوب"
@@ -2829,6 +2833,7 @@ ar:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "عام"
   label_generate_key: "توليد مفتاح"
+  label_global_roles: "Global roles"
   label_git_path: "المسار إلى .دليل البوابة"
   label_greater_or_equal: "=<"
   label_group_by: "مجموعة بحسب"

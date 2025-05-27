@@ -48,18 +48,13 @@ See COPYRIGHT and LICENSE files for more details.
                 "projects--settings--border-box-filter-target": "filter"
               }
             )
-            subheader.with_action_component do
-              render(
-                Primer::Beta::Button.new(
-                  scheme: :primary,
-                  aria: { label: I18n.t("settings.project_phase_definitions.label_add_description") },
-                  tag: :a,
-                  href: new_admin_settings_project_phase_definition_path
-                )
-              ) do |button|
-                button.with_leading_visual_icon(icon: :plus)
-                I18n.t("settings.project_phase_definitions.label_add")
-              end
+
+            subheader.with_action_button(scheme: :primary,
+                                         leading_icon: :plus,
+                                         label: I18n.t("settings.project_phase_definitions.label_add_description"),
+                                         tag: :a,
+                                         href: new_admin_settings_project_phase_definition_path) do
+              I18n.t("settings.project_phase_definitions.label_add")
             end
           end
         else

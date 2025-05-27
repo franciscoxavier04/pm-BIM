@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -34,12 +36,16 @@ module Reactable
   end
 
   class_methods do
-    def grouped_journal_emoji_reactions(journal)
+    def grouped_journal_emoji_reactions_by_reactable(journal)
       grouped_emoji_reactions_by_reactable(reactable_id: journal.id, reactable_type: "Journal")
     end
 
     def grouped_work_package_journals_emoji_reactions(work_package)
-      grouped_emoji_reactions_by_reactable(reactable_id: work_package.journal_ids, reactable_type: "Journal")
+      grouped_emoji_reactions(reactable_id: journal_ids_for(work_package), reactable_type: "Journal")
+    end
+
+    def grouped_work_package_journals_emoji_reactions_by_reactable(work_package)
+      grouped_emoji_reactions_by_reactable(reactable_id: journal_ids_for(work_package), reactable_type: "Journal")
     end
 
     def grouped_emoji_reactions_by_reactable(reactable_id:, reactable_type:)
@@ -56,8 +62,9 @@ module Reactable
       EmojiReaction
         .select(emoji_reactions_group_selection_sql)
         .joins(:user)
+        .includes(:reactable)
         .where(reactable_id:, reactable_type:)
-        .group("emoji_reactions.reactable_id, emoji_reactions.reaction")
+        .group("emoji_reactions.reactable_type, emoji_reactions.reactable_id, emoji_reactions.reaction")
         .order("first_created_at ASC")
     end
 
@@ -65,7 +72,7 @@ module Reactable
 
     def emoji_reactions_group_selection_sql
       <<~SQL.squish
-        emoji_reactions.reactable_id, emoji_reactions.reaction,
+        emoji_reactions.reactable_id, emoji_reactions.reactable_type, emoji_reactions.reaction,
         COUNT(emoji_reactions.id) as reactions_count,
         json_agg(
           json_build_array(users.id, #{user_name_concat_format_sql})
@@ -92,6 +99,10 @@ module Reactable
       else
         raise ArgumentError, "Unsupported user format: #{Setting.user_format}"
       end
+    end
+
+    def journal_ids_for(reactable)
+      reactable.journals.internal_visible.select(:id).pluck(:id)
     end
   end
 end

@@ -83,6 +83,12 @@ module OpTurbo
       render_flash_message_via_turbo_stream(**, scheme: :danger, icon: :stop)
     end
 
+    def render_live_region_update_message(message:, politeness: "polite", delay: nil)
+      turbo_streams << OpTurbo::StreamComponent
+        .new(action: :liveRegion, message:, politeness:, delay:, target: nil)
+        .render_in(view_context)
+    end
+
     def render_flash_message_via_turbo_stream(message:, component: OpPrimer::FlashComponent, **)
       instance = component.new(**).with_content(message)
       turbo_streams << instance.render_as_turbo_stream(view_context:, action: :flash)

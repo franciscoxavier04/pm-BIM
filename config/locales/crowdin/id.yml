@@ -418,7 +418,7 @@ id:
     status:
       button_edit: Edit project status
   project_phase:
-    working_days_count:
+    duration:
       other: "Duration: %{count} working days"
   lists:
     create:
@@ -680,6 +680,7 @@ id:
         automatic: "Automatic"
         manual: "Manual"
       show_relations: "Show relations"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Sub"
@@ -1567,12 +1568,13 @@ id:
       work_package: "Paket-Penugasan"
     project_phase:
       activated: "diaktifkan"
-      deactivated: "dinonaktifkan"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "dinonaktifkan"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktif"
@@ -1639,6 +1641,8 @@ id:
     priority: "Prioritas"
     project: "Project"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reason"
     responsible: "Akuntabel"
     required: "Harus diisi"
@@ -2614,7 +2618,7 @@ id:
   label_filter_add: "Tambah Filter"
   label_filter_by: "Filter by"
   label_filter_any_name_attribute: "Name attributes"
-  label_filter_plural: "Penyaring"
+  label_filter_plural: "Filter"
   label_filters_toggle: "Tampilkan/Sembunyikan penyaringan"
   label_float: "Float"
   label_folder: "Folder"
@@ -2625,6 +2629,7 @@ id:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Umum"
   label_generate_key: "Generate a key"
+  label_global_roles: "Global roles"
   label_git_path: "Path to .git directory"
   label_greater_or_equal: ">="
   label_group_by: "Pengelompokan"

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,10 +31,12 @@
 require "spec_helper"
 
 RSpec.describe Reactable do
-  shared_let(:work_package) { create(:work_package) }
+  shared_let(:project) { create(:project, enabled_internal_comments: true) }
+  shared_let(:work_package) { create(:work_package, project:) }
 
-  let(:wp_journal1) { create(:work_package_journal, journable: work_package, version: 2) }
-  let(:wp_journal2) { create(:work_package_journal, journable: work_package, version: 3) }
+  shared_let(:wp_journal1) { add_journal }
+  shared_let(:wp_journal2) { add_journal }
+  shared_let(:wp_internal_journal) { add_journal(internal: true) }
 
   let(:user1) { create(:user) }
   let(:user2) { create(:user) }
@@ -40,6 +44,7 @@ RSpec.describe Reactable do
   let(:thumbs_up_reactions) do
     [user1, user2].each do |user|
       create(:emoji_reaction, reactable: wp_journal1, user: user, reaction: :thumbs_up)
+      create(:emoji_reaction, reactable: wp_internal_journal, user: user, reaction: :thumbs_up)
     end
   end
 
@@ -58,19 +63,37 @@ RSpec.describe Reactable do
     it "returns grouped emoji reactions for work package journals" do
       result = Journal.grouped_work_package_journals_emoji_reactions(work_package)
 
-      expect(result.size).to eq(2)
+      expect(result[0].reaction).to eq("thumbs_up")
+      expect(result[0].reactions_count).to eq(2)
+      expect(result[0].reacting_users).to eq([[user1.id, user1.name], [user2.id, user2.name]])
 
-      expect(result[wp_journal1.id].size).to eq(1)
-      expect(result[wp_journal1.id][:thumbs_up]).to eq(
-        count: 2,
-        users: [{ id: user1.id, name: user1.name }, { id: user2.id, name: user2.name }]
-      )
+      expect(result[1].reaction).to eq("thumbs_down")
+      expect(result[1].reactions_count).to eq(1)
+      expect(result[1].reacting_users).to eq([[user2.id, user2.name]])
+    end
 
-      expect(result[wp_journal2.id].size).to eq(1)
-      expect(result[wp_journal2.id][:thumbs_down]).to eq(
-        count: 1,
-        users: [{ id: user2.id, name: user2.name }]
-      )
+    context "when the current user is allowed to view internal comments" do
+      let(:current_user) do
+        create(:user, member_with_permissions: { work_package.project => %i[view_work_packages view_internal_comments] })
+      end
+
+      before do
+        allow(User).to receive(:current).and_return(current_user)
+      end
+
+      it "returns grouped emoji reactions for work package journals" do
+        result = Journal.grouped_work_package_journals_emoji_reactions(work_package)
+
+        result[0..1].each do |r|
+          expect(r.reaction).to eq("thumbs_up")
+          expect(r.reactions_count).to eq(2)
+          expect(r.reacting_users).to eq([[user1.id, user1.name], [user2.id, user2.name]])
+        end
+
+        expect(result[2].reaction).to eq("thumbs_down")
+        expect(result[2].reactions_count).to eq(1)
+        expect(result[2].reacting_users).to eq([[user2.id, user2.name]])
+      end
     end
 
     context "when no reactions exist" do
@@ -78,15 +101,84 @@ RSpec.describe Reactable do
         work_package = build_stubbed(:work_package)
         result = Journal.grouped_work_package_journals_emoji_reactions(work_package)
 
+        expect(result).to eq([])
+      end
+    end
+  end
+
+  describe ".grouped_work_package_journals_emoji_reactions_by_reactable" do
+    it "returns grouped emoji reactions for work package journals" do
+      result = Journal.grouped_work_package_journals_emoji_reactions_by_reactable(work_package)
+
+      expect(result.size).to eq(2)
+
+      expect(result).to eq(
+        wp_journal1.id => {
+          thumbs_up: {
+            count: 2,
+            users: [{ id: user1.id, name: user1.name }, { id: user2.id, name: user2.name }]
+          }
+        },
+        wp_journal2.id => {
+          thumbs_down: {
+            count: 1,
+            users: [{ id: user2.id, name: user2.name }]
+          }
+        }
+      )
+    end
+
+    context "when the current user is allowed to view internal comments" do
+      let(:current_user) do
+        create(:user, member_with_permissions: { work_package.project => %i[view_work_packages view_internal_comments] })
+      end
+
+      before do
+        allow(User).to receive(:current).and_return(current_user)
+      end
+
+      it "returns grouped emoji reactions for work package journals" do
+        result = Journal.grouped_work_package_journals_emoji_reactions_by_reactable(work_package)
+
+        expect(result.size).to eq(3)
+
+        expect(result).to eq(
+          wp_journal1.id => {
+            thumbs_up: {
+              count: 2,
+              users: [{ id: user1.id, name: user1.name }, { id: user2.id, name: user2.name }]
+            }
+          },
+          wp_journal2.id => {
+            thumbs_down: {
+              count: 1,
+              users: [{ id: user2.id, name: user2.name }]
+            }
+          },
+          wp_internal_journal.id => {
+            thumbs_up: {
+              count: 2,
+              users: [{ id: user1.id, name: user1.name }, { id: user2.id, name: user2.name }]
+            }
+          }
+        )
+      end
+    end
+
+    context "when no reactions exist" do
+      it "returns an empty hash" do
+        work_package = build_stubbed(:work_package)
+        result = Journal.grouped_work_package_journals_emoji_reactions_by_reactable(work_package)
+
         expect(result).to eq({})
       end
     end
   end
 
-  describe ".grouped_journal_emoji_reactions" do
+  describe ".grouped_journal_emoji_reactions_by_reactable" do
     context "with a single reactable" do
       it "returns grouped emoji reactions for that journal" do
-        result = Journal.grouped_journal_emoji_reactions(wp_journal1)
+        result = Journal.grouped_journal_emoji_reactions_by_reactable(wp_journal1)
 
         expect(result).to eq(
           wp_journal1.id => {
@@ -108,7 +200,7 @@ RSpec.describe Reactable do
       end
 
       it "groups emoji reactions and users in ascending order" do
-        result = Journal.grouped_journal_emoji_reactions(wp_journal1)
+        result = Journal.grouped_journal_emoji_reactions_by_reactable(wp_journal1)
 
         expect(result).to eq(
           wp_journal1.id => {
@@ -134,13 +226,15 @@ RSpec.describe Reactable do
     it "returns grouped emoji reactions" do
       result = Journal.grouped_emoji_reactions(reactable_id: work_package.journal_ids, reactable_type: "Journal")
 
-      expect(result[0].reaction).to eq("thumbs_up")
-      expect(result[0].reactions_count).to eq(2)
-      expect(result[0].reacting_users).to eq([[user1.id, user1.name], [user2.id, user2.name]])
+      result[0..1].each do |r|
+        expect(r.reaction).to eq("thumbs_up")
+        expect(r.reactions_count).to eq(2)
+        expect(r.reacting_users).to eq([[user1.id, user1.name], [user2.id, user2.name]])
+      end
 
-      expect(result[1].reaction).to eq("thumbs_down")
-      expect(result[1].reactions_count).to eq(1)
-      expect(result[1].reacting_users).to eq([[user2.id, user2.name]])
+      expect(result[2].reaction).to eq("thumbs_down")
+      expect(result[2].reactions_count).to eq(1)
+      expect(result[2].reacting_users).to eq([[user2.id, user2.name]])
     end
 
     context "when user format is set to :username", with_settings: { user_format: :username } do
@@ -184,5 +278,11 @@ RSpec.describe Reactable do
         )
       end
     end
+  end
+
+  def add_journal(notes: "This is a test note", internal: false)
+    work_package.add_journal(user: work_package.author, notes:, internal:)
+    work_package.save(validate: false)
+    work_package.journals.last
   end
 end

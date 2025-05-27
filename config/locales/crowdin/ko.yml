@@ -422,7 +422,7 @@ ko:
     status:
       button_edit: 프로젝트 상태 편집
   project_phase:
-    working_days_count:
+    duration:
       other: "기간: 근무일 %{count}일"
   lists:
     create:
@@ -684,6 +684,7 @@ ko:
         automatic: "자동"
         manual: "수동"
       show_relations: "관계 표시"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "날짜 선택기 탭"
         children: "하위"
@@ -1571,12 +1572,13 @@ ko:
       work_package: "작업 패키지"
     project_phase:
       activated: "활성화됨"
-      deactivated: "비활성화됨"
       added_date: "%{date}(으)로 설정됨"
       changed_date: "- %{from}에서 %{to}(으)로 변경되었습니다"
-      removed_date: "삭제된 날짜 %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "비활성화됨"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} 및 %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "삭제된 날짜 %{date}"
   #common attributes of all models
   attributes:
     active: "활성"
@@ -1643,6 +1645,8 @@ ko:
     priority: "우선 순위"
     project: "프로젝트"
     project_ids: "프로젝트 ID"
+    project_phase: "프로젝트 단계"
+    project_phase_definition: "프로젝트 단계"
     reason: "이유"
     responsible: "담당"
     required: "필수"
@@ -2629,6 +2633,7 @@ ko:
   label_gantt_chart_plural: "Gantt 차트"
   label_general: "일반"
   label_generate_key: "키 생성"
+  label_global_roles: "글로벌 역할"
   label_git_path: ".git 디렉터리의 경로"
   label_greater_or_equal: ">="
   label_group_by: "그룹화 기준"

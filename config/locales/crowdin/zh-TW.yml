@@ -421,7 +421,7 @@ zh-TW:
     status:
       button_edit: 編輯專案狀態
   project_phase:
-    working_days_count:
+    duration:
       other: "持續： %{count} 工作天"
   lists:
     create:
@@ -682,6 +682,7 @@ zh-TW:
         automatic: "自動"
         manual: "手動"
       show_relations: "顯示關聯"
+      update_inputs_aria_live_message: "日期選擇器已更新。 %{message}"
       tabs:
         aria_label: "日期選擇器標籤"
         children: "子項目"
@@ -1569,12 +1570,13 @@ zh-TW:
       work_package: "工作項目"
     project_phase:
       activated: "已啟用"
-      deactivated: "已停用"
       added_date: "設定為 %{date}"
       changed_date: "從 %{from} 改為 %{to}"
-      removed_date: "已刪除日期：%{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "已停用"
+      deleted_project_phase: "已刪除的專案階段"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, 與%{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "已刪除日期：%{date}"
   #common attributes of all models
   attributes:
     active: "啟用"
@@ -1641,6 +1643,8 @@ zh-TW:
     priority: "優先等級"
     project: "專案"
     project_ids: "專案IDs"
+    project_phase: "專案階段"
+    project_phase_definition: "專案階段"
     reason: "理由"
     responsible: "負責人"
     required: "必填"
@@ -2616,7 +2620,7 @@ zh-TW:
   label_filter_add: "新增條件"
   label_filter_by: "篩選條件："
   label_filter_any_name_attribute: "名稱屬性"
-  label_filter_plural: "篩選條件"
+  label_filter_plural: "篩選器"
   label_filters_toggle: "顯示/隱藏篩選條件"
   label_float: "浮點數"
   label_folder: "資料夾"
@@ -2627,9 +2631,10 @@ zh-TW:
   label_gantt_chart_plural: "甘特圖"
   label_general: "一般"
   label_generate_key: "產生一個金鑰"
+  label_global_roles: "全域角色"
   label_git_path: ".git 目錄的路徑"
   label_greater_or_equal: ">="
-  label_group_by: "分類"
+  label_group_by: "分組依據"
   label_group_new: "新增群組"
   label_group: "群組"
   label_group_named: "群組名稱 %{name}"
@@ -2641,7 +2646,7 @@ zh-TW:
   label_hierarchy: "階層"
   label_hierarchy_leaf: "頁面結構頁"
   label_home: "Home"
-  label_subject_or_id: "名稱或 id"
+  label_subject_or_id: "主旨或 id"
   label_calendar_subscriptions: "訂閱行事曆"
   label_identifier: "識別碼"
   label_in: "在"
@@ -2687,7 +2692,7 @@ zh-TW:
   label_latest_revision_plural: "最新版本"
   label_ldap_authentication: "LDAP 認證"
   label_learn_more: "了解更多"
-  label_less_or_equal: "之後"
+  label_less_or_equal: "<="
   label_less_than_ago: "幾天內"
   label_link_url: "連結(URL)"
   label_list: "清單"

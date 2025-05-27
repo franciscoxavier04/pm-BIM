@@ -105,6 +105,22 @@ class ModuleA::IndexPageHeaderComponent < ApplicationComponent
      "Bar"]
   end
 
+  def tabs
+   [
+      {
+        name: "id1",
+        path: "example_path",
+        label: "Tab 1"
+      },
+      {
+        name: "id2",
+        path: "another_example_path",
+        label: "Tab 1",
+        enterprise_feature: :some_key
+      }
+    ]
+  end
+
   def additional_logic
    # ...
   end
@@ -119,6 +135,8 @@ end
     render(Primer::OpenProject::PageHeader.new) do |header|
       header.with_title { 'Some title' }
       header.with_breadcrumbs(breadcrumb_items)
+
+      helpers.render_tab_header_nav(header, tabs)
 
       #... additional logic
     end

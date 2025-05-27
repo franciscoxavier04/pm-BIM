@@ -2,7 +2,7 @@
 ARG RUBY_VERSION
 FROM ruby:${RUBY_VERSION}-bookworm
 
-ENV NODE_VERSION="20.9.0"
+ENV NODE_VERSION="22.15.0"
 ENV DEBIAN_FRONTEND=noninteractive
 ENV BUNDLE_WITHOUT="development:production:docker"
 
