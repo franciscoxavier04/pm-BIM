@@ -204,6 +204,10 @@ RSpec/DescribeClass:
     - 'spec/features/**/*.rb'
     - 'modules/*/spec/features/**/*.rb'
 
+# Nothing wrong with `include_examples` when used properly.
+RSpec/IncludeExamples:
+  Enabled: false
+
 # Allow number HTTP status codes in specs
 RSpecRails/HttpStatus:
   Enabled: false
