@@ -58,11 +58,11 @@ module Meetings::PDF
 
     def write_section_title(section)
       content = [
-        cell_inline_formatting_data(section_title(section), { styles: [:bold], size: 12, color: "000000" })
+        prawn_table_cell_inline_formatting_data(section_title(section), { styles: [:bold], size: 12, color: "000000" })
       ]
       if section.agenda_items_sum_duration_in_minutes > 0
         content.push(
-          cell_inline_formatting_data(format_duration(section.agenda_items_sum_duration_in_minutes), { size: 11, color: "636C76" })
+          prawn_table_cell_inline_formatting_data(format_duration(section.agenda_items_sum_duration_in_minutes), { size: 11, color: "636C76" })
         )
       end
       pdf.table(
@@ -128,11 +128,11 @@ module Meetings::PDF
     end
 
     def format_agenda_item_subtitle(text)
-      cell_inline_formatting_data(text, { size: 10, color: "636C76" })
+      prawn_table_cell_inline_formatting_data(text, { size: 10, color: "636C76" })
     end
 
     def format_agenda_item_title(title)
-      cell_inline_formatting_data(title, { styles: [:bold], size: 11 })
+      prawn_table_cell_inline_formatting_data(title, { styles: [:bold], size: 11 })
     end
 
     def agenda_title_wp(work_package)
