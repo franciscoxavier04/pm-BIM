@@ -54,6 +54,8 @@ patch:
     Toggle an emoji reaction for a given activity. If the user has already reacted with the given emoji,
     the reaction will be removed. Otherwise, a new reaction will be created.
 
+    **Note:** The response contains the complete collection of all emoji reactions for this activity.
+
     **Required permission:**
     - `add_work_package_comments`
     - for internal comments: `add_internal_comments`
