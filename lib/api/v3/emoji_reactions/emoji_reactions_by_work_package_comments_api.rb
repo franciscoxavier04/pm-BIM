@@ -34,17 +34,13 @@ module API
       class EmojiReactionsByWorkPackageCommentsAPI < ::API::OpenProjectAPI
         resource :activities_emoji_reactions do
           helpers do
-            def reactable
-              @work_package
-            end
-
             def get_emoji_reactions_self_path
-              api_v3_paths.emoji_reactions_by_work_package_comments(reactable.id)
+              api_v3_paths.emoji_reactions_by_work_package_comments(@work_package.id)
             end
           end
 
           get do
-            emoji_reactions = Journal.grouped_work_package_journals_emoji_reactions(reactable)
+            emoji_reactions = ::EmojiReactions::GroupedQueries.grouped_work_package_journals_emoji_reactions(@work_package)
             EmojiReactionCollectionRepresenter.new(emoji_reactions,
                                                    self_link: get_emoji_reactions_self_path,
                                                    current_user: User.current)
