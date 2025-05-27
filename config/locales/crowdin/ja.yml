@@ -420,6 +420,8 @@ ja:
     status:
       button_edit: Edit project status
   project_phase:
+    working_days_count:
+      other: "期間： %{count} 営業日"
     duration:
       other: "Duration: %{count} working days"
   lists:
