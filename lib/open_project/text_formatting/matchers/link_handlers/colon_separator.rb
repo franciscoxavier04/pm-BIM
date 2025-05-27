@@ -166,7 +166,7 @@ module OpenProject::TextFormatting::Matchers
           .where(["LOWER(title) = :s", { s: oid.downcase }])
           .first
 
-        if meeting && meeting.visible?(User.current)
+        if meeting&.visible?(User.current)
           link_to meeting.title,
                   { only_path: context[:only_path], controller: "/meetings", action: "show", id: meeting.id },
                   class: "meeting"

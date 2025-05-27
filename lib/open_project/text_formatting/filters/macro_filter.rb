@@ -83,7 +83,7 @@ module OpenProject::TextFormatting
       end
 
       def macro_applies?(macro_class, element)
-        ((element["class"] || "").split & Array(macro_class.identifier)).any?
+        (element["class"] || "").split.intersect?(Array(macro_class.identifier))
       end
     end
   end

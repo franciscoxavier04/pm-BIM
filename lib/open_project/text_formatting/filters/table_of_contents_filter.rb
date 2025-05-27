@@ -68,7 +68,7 @@ module OpenProject::TextFormatting
       # that prefix is used if it matches the calculated number.
       def process_item(node, number)
         text = node.text
-        return "".html_safe unless text.present?
+        return "".html_safe if text.blank?
 
         id = get_unique_id(text)
         add_header_link_class_and_id(node, id)
@@ -86,9 +86,9 @@ module OpenProject::TextFormatting
         result = "".html_safe
         num_in_level = 0
 
-        while headings.length > 0
+        while !headings.empty?
           node = headings.first
-          node_level = node.name[1,].to_i
+          node_level = node.name[1].to_i
 
           if level == node_level
             # We will render this node

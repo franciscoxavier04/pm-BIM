@@ -45,7 +45,7 @@ module OpenProject::TextFormatting::Matchers
       # r11, r13
       def call
         # don't handle link unless repository exists
-        return nil unless project && project.repository
+        return nil unless project&.repository
 
         changeset = project.repository.find_changeset_by_name(matcher.identifier)
 
