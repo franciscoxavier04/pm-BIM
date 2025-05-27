@@ -297,6 +297,29 @@ module WorkPackage::PDFExport::Common::Common
     pdf.start_new_page unless is_first_on_page
   end
 
+  # Prawn table does support formatting other than inline HTML formatting, so we have to convert the styles
+  def cell_inline_formatting_data(text, style)
+    value = text || ""
+    value = "<link href=\"#{style[:link]}\">#{value}</link>" if style.key?(:link)
+    value = "<link anchor=\"#{style[:anchor]}\">#{value}</link>" if style.key?(:anchor)
+    value = "<color rgb=\"#{style[:color]}\">#{value}</color>" if style.include?(:color)
+    value = "<font size=\"#{style[:size]}\">#{value}</font>" if style.key?(:size)
+    if style.key?(:character_spacing)
+      value = "<font character_spacing=\"#{style[:character_spacing]}\">#{value}</font>"
+    end
+    value = "<font name=\"#{style[:font]}\">#{value}</font>" if style.key?(:font)
+    styles = style[:styles]
+    if styles
+      value = "<b>#{value}</b>" if styles.include?(:bold)
+      value = "<i>#{value}</i>" if styles.include?(:italic)
+      value = "<u>#{value}</u>" if styles.include?(:underline)
+      value = "<strikethrough>#{value}</strikethrough>" if styles.include?(:strikethrough)
+      value = "<sub>#{value}</sub>" if styles.include?(:sub)
+      value = "<sup>#{value}</sup>" if styles.include?(:sup)
+    end
+    value
+  end
+
   def write_optional_page_break
     space_from_bottom = pdf.y - pdf.bounds.bottom
     if space_from_bottom < styles.page_break_threshold

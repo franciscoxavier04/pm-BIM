@@ -43,7 +43,6 @@ module Meetings
     include Meetings::PDF::Participants
     include Meetings::PDF::Agenda
     include Meetings::PDF::Attachments
-    include MarkdownToPDF::HTML
 
     attr_accessor :pdf
 

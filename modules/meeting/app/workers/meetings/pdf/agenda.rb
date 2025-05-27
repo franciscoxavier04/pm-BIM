@@ -58,26 +58,11 @@ module Meetings::PDF
 
     def write_section_title(section)
       content = [
-        cell_inline_formatting_styles(
-          { styles: [:bold] },
-          cell_inline_formatting_data(
-            {
-              text: section_title(section),
-              size: 12,
-              color: "000000"
-            }
-          )
-        )
+        cell_inline_formatting_data(section_title(section), { styles: [:bold], size: 12, color: "000000" })
       ]
       if section.agenda_items_sum_duration_in_minutes > 0
         content.push(
-          cell_inline_formatting_data(
-            {
-              text: format_duration(section.agenda_items_sum_duration_in_minutes),
-              size: 11,
-              color: "636C76"
-            }
-          )
+          cell_inline_formatting_data(format_duration(section.agenda_items_sum_duration_in_minutes), { size: 11, color: "636C76" })
         )
       end
       pdf.table(
@@ -136,23 +121,18 @@ module Meetings::PDF
         cell_style: {
           borders: [],
           inline_format: true,
-          padding: [5, 2, 2, 5]
+          padding: [0, 5, 0, 5]
         }
       )
       pdf.move_down(3)
     end
 
     def format_agenda_item_subtitle(text)
-      cell_inline_formatting_data({ text:, size: 10, color: "636C76" })
+      cell_inline_formatting_data(text, { size: 10, color: "636C76" })
     end
 
     def format_agenda_item_title(title)
-      cell_inline_formatting_data(
-        {
-          text: cell_inline_formatting_styles({ styles: [:bold] }, title),
-          size: 11
-        }
-      )
+      cell_inline_formatting_data(title, { styles: [:bold], size: 11 })
     end
 
     def agenda_title_wp(work_package)
