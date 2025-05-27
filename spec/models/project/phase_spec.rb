@@ -86,38 +86,6 @@ RSpec.describe Project::Phase do
       subject.start_date = subject.finish_date
       expect(subject).to be_valid
     end
-
-    describe "date format validation" do
-      it "is valid with correct YYYY-MM-DD format" do
-        subject.start_date = "2025-06-17"
-        subject.finish_date = "2025-06-18"
-        expect(subject).to be_valid
-      end
-
-      it "is invalid with extra characters in date" do
-        subject.start_date = "2025-06-170"
-        expect(subject).not_to be_valid
-        expect(subject.errors.symbols_for(:start_date)).to include(:invalid)
-      end
-
-      it "is invalid with non-date string" do
-        subject.finish_date = "not-a-date"
-        expect(subject).not_to be_valid
-        expect(subject.errors.symbols_for(:finish_date)).to include(:invalid)
-      end
-
-      it "is invalid with wrong format (missing leading zero)" do
-        subject.start_date = "2025-6-17"
-        expect(subject).not_to be_valid
-        expect(subject.errors.symbols_for(:start_date)).to include(:invalid)
-      end
-
-      it "is valid when date is blank" do
-        subject.start_date = ""
-        subject.finish_date = nil
-        expect(subject).to be_valid
-      end
-    end
   end
 
   describe "duration calculation" do

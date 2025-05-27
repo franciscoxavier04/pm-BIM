@@ -33,6 +33,7 @@ module ProjectLifeCycleSteps
     validate :validate_start_after_preceeding_phases
     validate :validate_start_date_is_a_working_day
     validate :validate_finish_date_is_a_working_day
+    validate :validate_date_format
 
     delegate :project, to: :model
 
@@ -55,6 +56,15 @@ module ProjectLifeCycleSteps
     def validate_finish_date_is_a_working_day
       if model.finish_date.present? && !model.finish_date.in?(working_days)
         model.errors.add(:finish_date, :cannot_be_a_non_working_day)
+      end
+    end
+
+    def validate_date_format
+      %i[start_date finish_date].each do |attr|
+        raw_value = model.send("#{attr}_before_type_cast")
+        if raw_value.present? && raw_value.is_a?(String) && !raw_value.match?(/^\d{4}-\d{2}-\d{2}$/)
+          model.errors.add(attr, :invalid)
+        end
       end
     end
 

@@ -220,6 +220,52 @@ RSpec.describe ProjectLifeCycleSteps::UpdateContract do
           end
         end
       end
+
+      describe "date format validation" do
+        let(:phase) { build_stubbed(:project_phase) }
+        let(:start_date) { nil }
+        let(:finish_date) { nil }
+
+        before do
+          phase.start_date = start_date
+          phase.finish_date = finish_date
+        end
+
+        context "with correct YYYY-MM-DD format" do
+          let(:start_date) { "2025-06-17" }
+          let(:finish_date) { "2025-06-18" }
+
+          it_behaves_like "contract is valid"
+        end
+
+        context "with extra characters in date" do
+          let(:start_date) { "2025-06-170" }
+          let(:finish_date) { "2025-06-18" }
+
+          it_behaves_like "contract is invalid", start_date: :invalid
+        end
+
+        context "with non-date string" do
+          let(:start_date) { "2025-06-17" }
+          let(:finish_date) { "not-a-date" }
+
+          it_behaves_like "contract is invalid", finish_date: :invalid
+        end
+
+        context "with wrong format (missing leading zero)" do
+          let(:start_date) { "2025-6-17" }
+          let(:finish_date) { "2025-06-18" }
+
+          it_behaves_like "contract is invalid", start_date: :invalid
+        end
+
+        context "when date is blank" do
+          let(:start_date) { "" }
+          let(:finish_date) { nil }
+
+          it_behaves_like "contract is valid"
+        end
+      end
     end
   end
 
