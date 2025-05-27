@@ -35,10 +35,9 @@ RSpec.describe "Edit project phases on project overview page", :js, with_flag: {
   include_context "with seeded projects and phases"
 
   shared_let(:overview) { create :overview, project: }
-
   let(:overview_page) { Pages::Projects::Show.new(project) }
-
   let(:activity_page) { Pages::Projects::Activity.new(project) }
+  let(:datepicker) { Components::DatepickerModal.new }
 
   current_user { admin }
 
@@ -131,6 +130,9 @@ RSpec.describe "Edit project phases on project overview page", :js, with_flag: {
         dialog.expect_input("Start date", value: expected_start_date, disabled: true)
         dialog.expect_input("Finish date", value: expected_finish_date)
         dialog.expect_input("Duration", value: planning_duration, disabled: true)
+
+        datepicker.expect_disabled(expected_start_date - 1.day)
+        datepicker.expect_not_disabled(expected_start_date)
 
         # Set invalid range (finish date before start date) via input field
         fill_in("Finish date", with: (expected_start_date - 1.day).strftime("%Y-%m-%d"))
@@ -256,16 +258,34 @@ RSpec.describe "Edit project phases on project overview page", :js, with_flag: {
 
     context "when only the first Project::Phase has dates set" do
       it "shows updates the following Project::Phase correctly" do
-        # Opening the second phase with no dates
         life_cycle_planning.update!(start_date: nil, finish_date: nil, duration: nil)
+
+        # Open the Executing phase after the Planning phase with no dates
+        dialog = overview_page.open_edit_dialog_for_life_cycle(life_cycle_executing, wait_angular: true)
+
+        # Editing the start date should be allowed
+        dialog.expect_input("Start date", value: executing_start_date)
+        dialog.expect_input("Finish date", value: executing_finish_date)
+        dialog.expect_input("Duration", value: 2, disabled: true)
+
+        # The earliest enabled date should be after initiating date's finish date
+        initiating_finish_date_succesor = initiating_finish_date + 1.day
+
+        datepicker.expect_disabled(initiating_finish_date)
+        datepicker.expect_not_disabled(initiating_finish_date_succesor)
+
+        dialog.close
+
+        # Opening the Planning phase with no dates
         dialog = overview_page.open_edit_dialog_for_life_cycle(life_cycle_planning, wait_angular: true)
 
         # The start date automatically succeeds the life_cycle_initiating
-        initiating_finish_date_succesor = initiating_finish_date + 1.day
-
         dialog.expect_input("Start date", value: initiating_finish_date_succesor, disabled: true)
         dialog.expect_input("Finish date", value: "")
         dialog.expect_input("Duration", value: "", disabled: true)
+
+        datepicker.expect_disabled(initiating_finish_date)
+        datepicker.expect_not_disabled(initiating_finish_date_succesor)
 
         retry_block do
           # Set invalid range (finish date before start date) via input field
