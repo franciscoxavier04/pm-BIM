@@ -29,7 +29,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%=
   render(Primer::OpenProject::PageHeader.new) do |header|
-    header.with_title { t("project_module_storages") }
+    header.with_title(test_selector: "project-storages-page-header-title") { t("project_module_storages") }
     header.with_breadcrumbs(breadcrumbs_items)
 
     header.with_action_button(
