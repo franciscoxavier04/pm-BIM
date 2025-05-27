@@ -47,7 +47,7 @@ RSpec.describe "SAML administration CRUD",
       fill_in "Name", with: "My provider"
       click_link_or_button "Continue"
 
-      expect(page).to have_test_selector("saml-provider-page-header-title", text: "My provider")
+      expect(page).to have_heading text: "My provider"
 
       # Skip metadata
       click_link_or_button "Continue"
