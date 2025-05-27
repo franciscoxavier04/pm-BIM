@@ -87,11 +87,12 @@ class Project::Phase < ApplicationRecord
   def default_start_date
     return @default_start_date if defined?(@default_start_date)
 
-    @default_start_date = project
+    last_finish_date = project
      .available_phases
      .select { it.position < position }
      .filter_map(&:finish_date)
      .last
-     &.next_day
+
+    @default_start_date = last_finish_date && Day.next_working(from: last_finish_date).date
   end
 end

@@ -97,6 +97,12 @@ class Day < ApplicationRecord
       # Look up only from 8 days ago, because the Setting.working_days must have at least 1 working weekday.
       from_range(from: 8.days.ago, to: Time.zone.yesterday).where(working: true).last
     end
+
+    def next_working(from: Time.zone.today)
+      # Look up only the next 8 days, because the Setting.working_days must have at least 1 working weekday.
+      # Exclude the current day
+      from_range(from: from + 1.day, to: from + 9.days).where(working: true).first
+    end
   end
 
   def week_day
