@@ -41,12 +41,14 @@ module EnterpriseEdition
     include PlanForFeature
 
     DEFAULT_VARIANT = :inline
-    VARIANT_OPTIONS = %i[inline medium].freeze
+    VARIANT_OPTIONS = %i[inline medium large].freeze
 
     # @param feature_key [Symbol, NilClass] The key of the feature to show the banner for.
     # @param variant [Symbol, NilClass] The variant of the banner comopnent.
     # @param image [String, NilClass] Path to the image to show on the banner, or nil.
-    #   Required when variant is :medium.
+    #   Only applicable and required when variant is :medium.
+    # @param video [String, NilClass] Path to the video to show on the banner, or nil.
+    #   Only applicable and required when variant is :video.
     # @param i18n_scope [String] Provide the i18n scope to look for title, description, and features.
     #                            Defaults to "ee.upsell.{feature_key}"
     # @param dismissable [boolean] Allow this banner to be dismissed.
@@ -56,6 +58,7 @@ module EnterpriseEdition
     def initialize(feature_key, # rubocop:disable Metrics/AbcSize
                    variant: DEFAULT_VARIANT,
                    image: nil,
+                   video: nil,
                    i18n_scope: "ee.upsell.#{feature_key}",
                    dismissable: false,
                    show_always: false,
@@ -63,6 +66,7 @@ module EnterpriseEdition
                    **system_arguments)
       @variant = fetch_or_fallback(VARIANT_OPTIONS, variant, DEFAULT_VARIANT)
       @image = image
+      @video = video
       @dismissable = dismissable
       @dismiss_key = dismiss_key
       @show_always = show_always
@@ -74,6 +78,10 @@ module EnterpriseEdition
         raise ArgumentError, "The 'image' parameter is required when the variant is :medium."
       end
 
+      if @variant == :large && @video.nil?
+        raise ArgumentError, "The 'video' parameter is required when the variant is :large."
+      end
+
       @system_arguments = system_arguments
       @system_arguments[:tag] = :div
       @system_arguments[:mb] ||= 2
@@ -82,7 +90,8 @@ module EnterpriseEdition
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "op-enterprise-banner",
-        @variant == :medium ? "op-enterprise-banner_medium" : nil
+        @variant == :medium ? "op-enterprise-banner_medium" : nil,
+        @variant == :large ? "op-enterprise-banner_large" : nil
       )
 
       super
@@ -95,6 +104,10 @@ module EnterpriseEdition
 
     def medium?
       @variant == :medium
+    end
+
+    def large?
+      @variant == :large
     end
 
     def inline?
