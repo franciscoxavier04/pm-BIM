@@ -228,6 +228,11 @@ notes:
         no_border_top: true
 
 outcome:
+  indent: 15
+  title:
+    size: 10
+    styles: [ "bold" ]
+    margin_bottom: 5
   markdown_margin:
     margin: 16
   markdown:
@@ -409,7 +414,41 @@ attachments:
     padding_left: 0
     no_border: true
 
+agenda_section:
+  title:
+    size: 12
+    color: "000000"
+    styles: [ "bold" ]
+  subtitle:
+    size: 11
+    color: "636C76"
+  title_cell:
+    padding_top: 2
+    padding_bottom: 10
+    padding_left: 5
+    padding_right: 5
+    no_border: true
+    background_color: "EAEAEA"
+  title_margins:
+    margin_bottom: 5
+
 agenda_item:
+  indent: 5
+  empty_height: 10
+  title_margin:
+    margin_bottom: 3
+  title_cell:
+    padding_top: 0
+    padding_bottom: 0
+    padding_left: 5
+    padding_right: 5
+    no_border: true
+  title:
+    styles: [ "bold" ]
+    size: 11
+  subtitle:
+    color: "636C76"
+    size: 10
   hr:
     color: "D0D7DE"
     height: 1

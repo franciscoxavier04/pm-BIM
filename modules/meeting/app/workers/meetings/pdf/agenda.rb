@@ -36,7 +36,6 @@ module Meetings::PDF
       write_hr
       write_heading(I18n.t("meeting.export.label_meeting_agenda"))
       write_agenda_sections
-      pdf.move_down(10)
     end
 
     def write_backlog
@@ -57,25 +56,26 @@ module Meetings::PDF
     end
 
     def write_section_title(section)
-      content = [
-        prawn_table_cell_inline_formatting_data(section_title(section), { styles: [:bold], size: 12, color: "000000" })
-      ]
-      if section.agenda_items_sum_duration_in_minutes > 0
-        content.push(
-          prawn_table_cell_inline_formatting_data(format_duration(section.agenda_items_sum_duration_in_minutes), { size: 11, color: "636C76" })
+      with_vertical_margin(styles.agenda_section_title_table_margins) do
+        pdf.table(
+          [[{ content: format_agenda_section_title_cell(section) }]],
+          width: pdf.bounds.width,
+          cell_style: { inline_format: true }.merge(styles.agenda_section_title_cell)
         )
       end
-      pdf.table(
-        [[{ content: content.join("  ") }]],
-        width: pdf.bounds.width,
-        cell_style: {
-          inline_format: true,
-          borders: [],
-          background_color: "EAEAEA",
-          padding: [5, 2, 10, 5]
-        }
-      )
-      pdf.move_down 5
+    end
+
+    def format_agenda_section_title_cell(section)
+      content = [prawn_table_cell_inline_formatting_data(section_title(section), styles.agenda_section_title)]
+      if section.agenda_items_sum_duration_in_minutes > 0
+        content.push(
+          prawn_table_cell_inline_formatting_data(
+            format_duration(section.agenda_items_sum_duration_in_minutes),
+            styles.agenda_section_subtitle
+          )
+        )
+      end
+      content.join("  ")
     end
 
     def format_duration(duration)
@@ -96,7 +96,12 @@ module Meetings::PDF
     def write_agenda_item_hr
       hr_style = styles.agenda_item_hr
       with_vertical_margin(styles.agenda_item_margins) do
-        write_horizontal_line(pdf.cursor, hr_style[:height], hr_style[:color], left_padding: 5)
+        write_horizontal_line(
+          pdf.cursor,
+          hr_style[:height],
+          hr_style[:color],
+          left_padding: styles.agenda_item_indent
+        )
       end
     end
 
@@ -112,32 +117,39 @@ module Meetings::PDF
     end
 
     def write_agenda_item_title(title, duration, user)
-      content = [format_agenda_item_title(title)]
+      with_vertical_margin(styles.agenda_item_title_margins) do
+        pdf.table(
+          [[{ content: format_agenda_item_cell(title, duration, user) }]],
+          width: pdf.bounds.width,
+          cell_style: { inline_format: true }.merge(styles.agenda_item_title_cell)
+        )
+      end
+    end
+
+    def format_agenda_item_cell(text, duration, user)
+      content = [format_agenda_item_title(text)]
       content.push(format_agenda_item_subtitle(format_duration(duration))) if duration > 0
       content.push(format_agenda_item_subtitle(user.name)) unless user.nil?
-      pdf.table(
-        [[{ content: content.join("  ") }]],
-        width: pdf.bounds.width,
-        cell_style: {
-          borders: [],
-          inline_format: true,
-          padding: [0, 5, 0, 5]
-        }
-      )
-      pdf.move_down(3)
+      content.join("  ")
     end
 
     def format_agenda_item_subtitle(text)
-      prawn_table_cell_inline_formatting_data(text, { size: 10, color: "636C76" })
+      prawn_table_cell_inline_formatting_data(text, styles.agenda_item_subtitle)
     end
 
     def format_agenda_item_title(title)
-      prawn_table_cell_inline_formatting_data(title, { styles: [:bold], size: 11 })
+      prawn_table_cell_inline_formatting_data(title, styles.agenda_item_title)
     end
 
     def agenda_title_wp(work_package)
       href = url_helpers.work_package_url(work_package)
-      make_link_href(href, "<u>#{work_package.type.name} ##{work_package.id} #{work_package.subject}</u>")
+      make_link_href(
+        href,
+        prawn_table_cell_inline_formatting_data(
+          "#{work_package.type.name} ##{work_package.id} #{work_package.subject}",
+          { styles: [:underline] }
+        )
+      )
     end
 
     def write_agenda_title_item_wp(agenda_item)
@@ -154,11 +166,11 @@ module Meetings::PDF
 
     def write_notes(agenda_item)
       if agenda_item.notes.blank?
-        pdf.move_down(10)
+        pdf.move_down(styles.agenda_item_empty_height)
         return
       end
 
-      pdf.indent(5) do
+      pdf.indent(styles.agenda_item_indent) do
         write_markdown!(
           apply_markdown_field_macros(agenda_item.notes, { project: meeting.project, user: User.current }),
           styles.notes_markdown_styling_yml
@@ -172,15 +184,16 @@ module Meetings::PDF
       outcome = agenda_item.outcomes.information_kind.last
       return if outcome.notes.blank?
 
-      pdf.indent(15) do
+      pdf.indent(styles.outcome_indent) do
         write_outcome_title
         write_outcome_notes(outcome.notes)
       end
     end
 
     def write_outcome_title
-      pdf.formatted_text([{ text: I18n.t("label_agenda_outcome"), size: 10, styles: [:bold] }])
-      pdf.move_down(5)
+      with_vertical_margin(styles.outcome_title_margins) do
+        pdf.formatted_text([{ text: I18n.t("label_agenda_outcome") }.merge(styles.outcome_title)])
+      end
     end
 
     def write_outcome_notes(notes)

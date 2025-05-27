@@ -71,6 +71,38 @@ module WorkPackage::PDFExport::Export::Meetings::Styles
       resolve_margin(@styles.dig(:heading, :hr))
     end
 
+    def agenda_item_title_margins
+      resolve_margin(@styles.dig(:agenda_item, :title_margin))
+    end
+
+    def agenda_item_indent
+      @styles.dig(:agenda_item, :indent).presence || 5
+    end
+
+    def outcome_title
+      resolve_font(@styles.dig(:outcome, :title))
+    end
+
+    def outcome_title_margins
+      resolve_margin(@styles.dig(:outcome, :title))
+    end
+
+    def outcome_indent
+      @styles.dig(:outcome, :indent).presence || 15
+    end
+
+    def agenda_item_title
+      resolve_font(@styles.dig(:agenda_item, :title))
+    end
+
+    def agenda_item_title_cell
+      resolve_table_cell(@styles.dig(:agenda_item, :title_cell))
+    end
+
+    def agenda_item_subtitle
+      resolve_font(@styles.dig(:agenda_item, :subtitle))
+    end
+
     def agenda_item_hr
       {
         color: @styles.dig(:agenda_item, :hr, :color),
@@ -80,6 +112,10 @@ module WorkPackage::PDFExport::Export::Meetings::Styles
 
     def agenda_item_margins
       resolve_margin(@styles.dig(:agenda_item, :hr))
+    end
+
+    def agenda_item_empty_height
+      @styles.dig(:agenda_item, :empty_height).presence || 10
     end
 
     def heading_margins
@@ -100,6 +136,22 @@ module WorkPackage::PDFExport::Export::Meetings::Styles
 
     def attachments_margins
       resolve_margin(@styles[:attachments])
+    end
+
+    def agenda_section_title
+      resolve_font(@styles.dig(:agenda_section, :title))
+    end
+
+    def agenda_section_title_table_margins
+      resolve_margin(@styles.dig(:agenda_section, :title_margins))
+    end
+
+    def agenda_section_subtitle
+      resolve_font(@styles.dig(:agenda_section, :subtitle))
+    end
+
+    def agenda_section_title_cell
+      resolve_table_cell(@styles.dig(:agenda_section, :title_cell))
     end
   end
 
