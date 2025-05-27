@@ -56,7 +56,9 @@ export default class ProjectLifeCyclesFormController extends FormPreviewControll
     super.connect();
 
     this.previewForm = debounce(() => {
-      void this.submit();
+      if (this.dateInputFieldsAreValid) {
+        void this.submit();
+      }
     }, 300);
 
     const context = await window.OpenProject.getPluginContext();
@@ -132,6 +134,10 @@ export default class ProjectLifeCyclesFormController extends FormPreviewControll
     if (isActiveElement && ['value', 'class'].includes(attributeName)) {
       event.preventDefault();
     }
+  }
+
+  private get dateInputFieldsAreValid():boolean {
+    return this.dateInputFields.every((field) => field.value === '' || this.toDate(field.value));
   }
 
   private get dateInputFieldsToUpdate():HTMLInputElement[] {
