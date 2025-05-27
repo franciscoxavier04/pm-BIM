@@ -52,36 +52,32 @@ RSpec.describe API::V3::EmojiReactions::EmojiReactionsByActivityCommentAPI do
   end
 
   describe "GET /api/v3/activities/:id/emoji_reactions" do
-    context "when user has permission to view work package" do
+    shared_examples "an emoji reactions request" do
       before do
         get api_v3_paths.emoji_reactions_by_activity_comment(activity.id)
       end
 
-      it "succeeds" do
-        expect(last_response).to have_http_status :ok
+      it_behaves_like "API V3 collection response", 1, 1, "EmojiReaction" do
+        before do
+          allow(emoji_reaction).to receive(:id).and_return("#{activity.id}-#{emoji_reaction.reaction}")
+        end
+
+        let(:elements) { [emoji_reaction] }
+
+        it "returns the emoji reactions" do
+          expect(last_response.body)
+            .to be_json_eql(emoji_reaction.emoji.to_json)
+            .at_path("_embedded/elements/0/emoji")
+
+          expect(last_response.body)
+            .to be_json_eql([{ "href" => "/api/v3/users/#{current_user.id}", "title" => current_user.name }].to_json)
+            .at_path("_embedded/elements/0/_links/reactingUsers")
+        end
       end
+    end
 
-      it "returns the emoji reactions" do
-        expect(last_response.body)
-          .to be_json_eql(1.to_json)
-          .at_path("total")
-
-        expect(last_response.body)
-          .to be_json_eql(1.to_json)
-          .at_path("count")
-
-        expect(last_response.body)
-          .to be_json_eql("Collection".to_json)
-          .at_path("_type")
-
-        expect(last_response.body)
-          .to be_json_eql("#{activity.id}-#{emoji_reaction.reaction}".to_json)
-          .at_path("_embedded/elements/0/id")
-
-        expect(last_response.body)
-          .to be_json_eql(emoji_reaction.emoji.to_json)
-          .at_path("_embedded/elements/0/emoji")
-      end
+    context "when user has permission to view work package" do
+      it_behaves_like "an emoji reactions request"
     end
 
     context "when user does not have permission to view work package" do
@@ -105,26 +101,9 @@ RSpec.describe API::V3::EmojiReactions::EmojiReactionsByActivityCommentAPI do
       let!(:internal_emoji_reaction) { create(:emoji_reaction, reactable: internal_comment, user: current_user) }
 
       context "and user has permission to view internal comments" do
-        before do
-          get api_v3_paths.emoji_reactions_by_activity_comment(internal_comment.id)
-        end
-
-        it "succeeds" do
-          expect(last_response).to have_http_status :ok
-        end
-
-        it "returns the emoji reactions" do
-          expect(last_response.body)
-            .to be_json_eql(1.to_json)
-            .at_path("total")
-
-          expect(last_response.body)
-            .to be_json_eql(internal_emoji_reaction.emoji.to_json)
-            .at_path("_embedded/elements/0/emoji")
-
-          expect(last_response.body)
-            .to be_json_eql(internal_emoji_reaction.reaction.to_json)
-            .at_path("_embedded/elements/0/reaction")
+        it_behaves_like "an emoji reactions request" do
+          let(:activity) { internal_comment }
+          let(:emoji_reaction) { internal_emoji_reaction }
         end
       end
 
