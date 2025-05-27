@@ -1,7 +1,6 @@
 import { Controller } from '@hotwired/stimulus';
 import * as Turbo from '@hotwired/turbo';
 import { HttpErrorResponse } from '@angular/common/http';
-import { console_log } from 'turbo_power/dist/types/actions/debug';
 
 export default class FormController extends Controller<HTMLFormElement> {
   static values = {
