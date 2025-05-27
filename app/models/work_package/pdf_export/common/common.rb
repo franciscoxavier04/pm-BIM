@@ -298,7 +298,7 @@ module WorkPackage::PDFExport::Common::Common
   end
 
   # Prawn table does not support inline formatting other than inline HTML formatting, so we have to convert the styling
-  def prawn_table_cell_inline_formatting_data(text, style)
+  def prawn_table_cell_inline_formatting_data(text, style) # rubocop:disable Metrics/AbcSize, Metrics/PerceivedComplexity
     value = text || ""
     value = "<link href=\"#{style[:link]}\">#{value}</link>" if style.key?(:link)
     value = "<link anchor=\"#{style[:anchor]}\">#{value}</link>" if style.key?(:anchor)

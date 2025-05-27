@@ -164,7 +164,7 @@ module Meetings::PDF
       write_agenda_item_title(agenda_item.title, agenda_item.duration_in_minutes || 0, agenda_item.presenter)
     end
 
-    def write_notes(agenda_item)
+    def write_notes(agenda_item) # rubocop:disable Metrics/AbcSize
       if agenda_item.notes.blank?
         pdf.move_down(styles.agenda_item_empty_height)
         return

@@ -342,6 +342,13 @@ class MeetingsController < ApplicationController
     respond_with_turbo_streams
   end
 
+  def generate_pdf_dialog
+    respond_with_dialog Meetings::Exports::ModalDialogComponent.new(
+      meeting: @meeting,
+      project: @project
+    )
+  end
+
   private
 
   def load_query
@@ -545,7 +552,8 @@ class MeetingsController < ApplicationController
       export: MeetingExport.create,
       user: current_user,
       mime_type: :pdf,
-      query: @meeting
+      query: @meeting,
+      options: params.to_unsafe_h
     )
     if request.headers["Accept"]&.include?("application/json")
       render json: { job_id: job.job_id }

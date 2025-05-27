@@ -29,7 +29,7 @@
 #++
 
 module Meetings
-  class Exporter < Exports::Exporter
+  class Exporter < ::Exports::Exporter
     include WorkPackage::PDFExport::Common::Common
     include WorkPackage::PDFExport::Common::Logo
     include WorkPackage::PDFExport::Export::Page
@@ -54,8 +54,8 @@ module Meetings
       :pdf
     end
 
-    def initialize(meeting, _options = {})
-      super
+    def initialize(meeting, options = {})
+      super(meeting, options[:options] || options)
       @total_page_nr = nil
       @page_count = 0
 
@@ -104,7 +104,7 @@ module Meetings
     end
 
     def cover_page_title
-      meeting.project&.name || ""
+      project_title
     end
 
     def cover_page_heading
@@ -123,8 +123,12 @@ module Meetings
       meeting.title
     end
 
-    def footer_title
+    def project_title
       meeting.project&.name || ""
+    end
+
+    def footer_title
+      options[:footer_text_right] || project_title
     end
 
     def title_datetime
@@ -136,19 +140,19 @@ module Meetings
     end
 
     def with_participants?
-      true
+      ActiveModel::Type::Boolean.new.cast(options[:participants])
     end
 
     def with_attachments_list?
-      true
+      ActiveModel::Type::Boolean.new.cast(options[:attachments])
     end
 
     def with_backlog?
-      true
+      ActiveModel::Type::Boolean.new.cast(options[:backlog])
     end
 
     def with_outcomes?
-      true
+      ActiveModel::Type::Boolean.new.cast(options[:outcomes])
     end
 
     def with_cover?

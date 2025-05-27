@@ -99,10 +99,9 @@
           menu.with_item(
             label:  t("meeting.label_export_pdf"),
             tag: :a,
-            href: project_meeting_path(@project, @meeting, format: :pdf),
+            href: generate_pdf_dialog_project_meeting_path(@project, @meeting),
             content_arguments: {
-              "data-application-target": "dynamic",
-              "data-controller": "job-dialog"
+              "data-controller": "async-dialog"
             },
             value: ""
           ) do |item|
