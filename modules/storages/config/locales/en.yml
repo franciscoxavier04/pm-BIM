@@ -16,7 +16,7 @@ en:
           oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         storage_audience: Storage Audience
-        storage_scope: Storage Scope
+        token_exchange_scope: Storage Scope
       storages/project_storage:
         project_folder: Project folder
         project_folder_mode: Project folder mode
@@ -354,7 +354,7 @@ en:
         provider_configuration: Please make sure you have administration privileges in your Nextcloud instance and the %{application_link_text} is installed before doing the setup.
         storage_audience: The client ID that the Nextcloud instance uses to communicate with the identity provider.
         storage_audience_placeholder: e.g. nextcloud
-        storage_scope: The scopes that should be requested during token exchange, each one separated by a space.
+        token_exchange_scope: The scopes that should be requested during token exchange, each one separated by a space.
       no_specific_folder: By default, each user will start at their own home folder when they upload a file.
       no_storage_set_up: There are no file storages set up yet.
       not_logged_into_storage: To select a project folder, please first login

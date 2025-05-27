@@ -62,10 +62,10 @@ module Storages::Admin
         )
 
         toggleable_group.text_field(
-          name: :storage_scope,
-          label: I18n.t("activerecord.attributes.storages/nextcloud_storage.storage_scope"),
+          name: :token_exchange_scope,
+          label: I18n.t("activerecord.attributes.storages/nextcloud_storage.token_exchange_scope"),
           required: false,
-          caption: I18n.t("storages.instructions.nextcloud.storage_scope"),
+          caption: I18n.t("storages.instructions.nextcloud.token_exchange_scope"),
           input_width: :large
         )
       end

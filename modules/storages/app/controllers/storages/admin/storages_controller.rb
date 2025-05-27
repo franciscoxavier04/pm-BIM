@@ -254,8 +254,8 @@ class Storages::Admin::StoragesController < ApplicationController
                 oauth_client_secret
                 provider_type
                 storage_audience
-                storage_scope
                 tenant_id
+                token_exchange_scope
               ])
   end
 

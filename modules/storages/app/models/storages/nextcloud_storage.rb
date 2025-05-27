@@ -49,7 +49,7 @@ module Storages
     store_attribute :provider_fields, :group_folder, :string
     store_attribute :provider_fields, :authentication_method, :string, default: "two_way_oauth2"
     store_attribute :provider_fields, :storage_audience, :string
-    store_attribute :provider_fields, :storage_scope, :string
+    store_attribute :provider_fields, :token_exchange_scope, :string
 
     def oauth_configuration
       Peripherals::OAuthConfigurations::NextcloudConfiguration.new(self)
