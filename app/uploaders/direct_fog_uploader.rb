@@ -2,6 +2,8 @@ require_relative "fog_file_uploader"
 
 class DirectFogUploader < FogFileUploader
   include CarrierWaveDirect::Uploader
+  # CarrierWave 2.x may require additional configuration for direct upload
+  # Check the documentation for any changes in the direct upload process
 
   ##
   # This needs to be true so that the necessary condition is included

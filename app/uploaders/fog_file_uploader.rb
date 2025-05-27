@@ -27,6 +27,8 @@
 #++
 
 require "carrierwave/storage/fog"
+# CarrierWave 2.x has updated fog storage handling
+# Ensure any deprecated methods are updated
 
 class FogFileUploader < CarrierWave::Uploader::Base
   include FileUploader
