@@ -161,7 +161,7 @@ ru:
   label_cost: "Затраты"
   label_costs: "Затраты"
   label_mandatory_fields: "Обязательные поля"
-  label_my_time_tracking: "Отслеживание моего времени"
+  label_my_time_tracking: "Мои трудозатраты"
   label_no_time: "Нет учтённого времени"
   label_next_day: "След. день"
   label_next_week: "На следующей неделе"

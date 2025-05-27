@@ -62,7 +62,7 @@ ja:
       time_entry:
         other: ""
       cost_entry:
-        other: "Cost entries"
+        other: "コストを記録"
       cost_type:
         other: "コスト種類"
       time_entry_activity:
@@ -192,9 +192,9 @@ ja:
   setting_allow_tracking_start_and_end_times: "Allow start and finish times"
   setting_costs_currency: "通貨"
   setting_costs_currency_format: "通貨の形式"
-  setting_enforce_tracking_start_and_end_times: "Require start and finish times"
+  setting_enforce_tracking_start_and_end_times: "開始/終了時間を必須とする"
   setting_enforce_without_allow: "Requiring start and finish times is not possible without allowing them"
-  setting_allow_tracking_start_and_end_times_caption: "Enables entering start and finish times when logging time."
+  setting_allow_tracking_start_and_end_times_caption: "時間を記録する際に、開始時間と終了時間を入力できるようにする。"
   setting_enforce_tracking_start_and_end_times_caption: "Makes entering start and finish times mandatory when logging time."
   text_assign_time_and_cost_entries_to_project: "報告された時間とコストをプロジェクトに割り当てる"
   text_destroy_cost_entries_question: "削除しようとしている作業項目が%{cost_entries} 件報告されました。どうしますか？"
