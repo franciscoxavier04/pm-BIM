@@ -43,7 +43,7 @@ module Storages
 
           def call(storage:, http_options: {}, &)
             OpenIDConnect::UserTokens::FetchService
-              .new(user: @user)
+              .new(user: @user, exchange_scope: storage.token_exchange_scope)
               .access_token_for(audience: storage.audience)
               .either(
                 ->(token) do
