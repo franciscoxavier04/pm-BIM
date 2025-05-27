@@ -27,34 +27,18 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+require "spec_helper"
 
-module OpenProject
-  module TextFormatting
-    module Truncation
-      # Used for truncation
-      include ActionView::Helpers::TextHelper
+RSpec.describe OpenProject::TextFormatting::Truncation do
+  subject do
+    extend(described_class)
+  end
 
-      ##
-      # Truncates and returns the string as a single line
-      #
-      # @overload truncate_single_line(text, options = {}, &block)
-      #   @param [String] text the string to truncate.
-      #   @param [Hash] options
-      #   @option options [Number] :length (30)
-      #     The maximum number of characters that should be returned, excluding
-      #     any extra content from the block.
-      #   @option options [String] :omission ("...")
-      #     The string to append after truncating.
-      #   @option options [String, RegExp] :separator
-      #     A string or regexp used to find a breaking point at which to
-      #     truncate. By default, truncation can occur at any character in text.
-      #   @option options [Boolean] :escape (true)
-      #     Whether to escape the result.
-      #
-      # @see ActionView::Helpers::TextHelper#truncate
-      # @return [String] an HTML-safe safe string as single-line.
-      def truncate_single_line(text, *)
-        truncate(text, *).gsub(%r{[\r\n]+}m, " ").html_safe # rubocop:disable Rails/OutputSafety
+  describe "#truncate_single_line" do
+    describe "HTML safety" do
+      it "always returns HTML-safe strings" do
+        expect(subject.truncate_single_line("")).to be_html_safe
+        expect(subject.truncate_single_line("ABC" * 99)).to be_html_safe
       end
     end
   end
