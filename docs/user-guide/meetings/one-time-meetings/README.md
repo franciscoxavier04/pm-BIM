@@ -143,7 +143,7 @@ During a meeting, stakeholders will often take certain decisions, add useful inf
 
 > [!TIP]
 >
-> To be able to add *Agenda meeting outcomes*, **Manage outcomes** permission needs to be granted under [Roles and permissions](../../system-admin-guide/users-permissions/roles-permissions/) in system administration.
+> To be able to add *Agenda meeting outcomes*, **Manage outcomes** permission needs to be granted under [Roles and permissions](../../../system-admin-guide/users-permissions/roles-permissions/) in system administration.
 
 ![Button to add an agenda outcome in OpenProject meetings](openproject_userguide_meetings_agenda_outcome_button.png)
 
