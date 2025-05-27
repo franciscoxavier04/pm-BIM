@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -32,7 +34,7 @@ module OpenProject::TextFormatting::Filters::Macros
       include OpenProject::StaticRouting::UrlHelpers
     end
 
-    HTML_CLASS = "create_work_package_link".freeze
+    HTML_CLASS = "create_work_package_link"
 
     module_function
 
