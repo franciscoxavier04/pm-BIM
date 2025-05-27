@@ -44,7 +44,7 @@ RSpec.describe API::V3::EmojiReactions::EmojiReactionsByActivityCommentAPI do
   let(:permissions) do
     %i(view_work_packages add_work_package_comments view_internal_comments)
   end
-  let(:activity) { create(:work_package_journal, journable: work_package, user: admin, version: 2) }
+  let(:activity) { create(:work_package_journal, journable: work_package, user: admin, version: 2, notes: "Comment") }
   let!(:emoji_reaction) { create(:emoji_reaction, reactable: activity, user: current_user) }
 
   before do
@@ -255,6 +255,23 @@ RSpec.describe API::V3::EmojiReactions::EmojiReactionsByActivityCommentAPI do
           make_request
           expect(last_response).to have_http_status :forbidden
         end
+      end
+    end
+
+    context "when the activity is not a comment" do
+      let(:non_comment_activity) { work_package.journals.first }
+
+      before do
+        patch api_v3_paths.emoji_reactions_by_activity_comment(non_comment_activity.id), { reaction: }.to_json,
+              headers
+      end
+
+      it "returns 422 Unprocessable Entity" do
+        expect(last_response).to have_http_status :bad_request
+
+        expect(last_response.body)
+          .to be_json_eql("Bad request: This activity type does not support emoji reactions.".to_json)
+          .at_path("message")
       end
     end
 

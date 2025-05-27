@@ -41,6 +41,10 @@ module API
             def get_emoji_reactions_self_path
               api_v3_paths.emoji_reactions_by_activity_comment(reactable.id)
             end
+
+            def activity_comment?
+              reactable.notes.present?
+            end
           end
 
           get do
@@ -56,6 +60,12 @@ module API
           end
 
           patch do
+            unless activity_comment?
+              raise ::API::Errors::BadRequest.new(
+                I18n.t("api_v3.errors.bad_request.emoji_reactions_activity_type_not_supported")
+              )
+            end
+
             toggle_service = ::EmojiReactions::ToggleEmojiReactionService.call(
               user: current_user,
               reactable: reactable,
