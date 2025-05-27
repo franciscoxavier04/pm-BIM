@@ -65,7 +65,7 @@ ja:
     rebuild: "再構築"
     rebuild_positions: "位置情報を再構築"
     remaining_hours: "残りの作業"
-    remaining_hours_ideal: "残りの作業（理想的）"
+    remaining_hours_ideal: "残りの作業（計画）"
     show_burndown_chart: "バーンダウングラフ"
     story: "ストーリー"
     story_points: "ストーリーポイント"

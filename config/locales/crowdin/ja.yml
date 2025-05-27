@@ -28,31 +28,31 @@ ja:
       activity_tab:
         no_results_title_text: No activity to display
         no_results_description_text: 'Choose "Show everything" to show all activity and comments'
-        label_activity_show_all: "Show everything"
-        label_activity_show_only_comments: "Show comments only"
-        label_activity_show_only_changes: "Show changes only"
-        label_sort_asc: "Newest at the bottom"
-        label_sort_desc: "Newest on top"
+        label_activity_show_all: "すべてを表示"
+        label_activity_show_only_comments: "コメントのみ表示"
+        label_activity_show_only_changes: "変更のみを表示"
+        label_sort_asc: "昇順"
+        label_sort_desc: "降順"
         label_type_to_comment: "コメントを追加。メンバーをメンションするには@を入力してください。"
-        label_submit_comment: "Submit comment"
+        label_submit_comment: "コメントする"
         label_who: Who?
         changed_on: "changed on"
         created_on: "created this on"
         changed: "changed"
         created: "作成する"
         commented: "コメント"
-        internal_comment: Internal comment
-        internal_journal: Internal comments are visible to a limited group of members.
-        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
+        internal_comment: 内部コメント
+        internal_journal: 内部コメントは、限られたグループのメンバーにのみ公開されます。
+        unsaved_changes_confirmation_message: 未保存の変更があります。エディタを閉じてもいいですか？
         internal_comment_confirmation:
-          title: "Make this comment public?"
-          heading: "Make this comment public?"
-          description: "Your comment will be visible to anyone who can access this work package. Are you sure you want to do this?"
-          confirm_button_text: "Make public"
+          title: "このコメントを公開するか？"
+          heading: "このコメントを公開するか？"
+          description: "あなたのコメントは、このワークパッケージにアクセスできる人なら誰でも見ることができます。本当によろしいですか？"
+          confirm_button_text: "Public にする"
   admin:
     plugins:
-      no_results_title_text: There are currently no plugins installed.
-      no_results_content_text: See our integrations and plugins page for more information.
+      no_results_title_text: 現在、プラグインはインストールされていません。
+      no_results_content_text: 詳しくは統合とプラグインのページをご覧ください。
     custom_styles:
       color_theme: "カラーテーマ"
       color_theme_custom: "（カスタム）"
@@ -103,22 +103,22 @@ ja:
         text: "Individual actions of a user (e.g. updating a work package twice) are aggregated into a single action if their age difference is less than the specified timespan. They will be displayed as a single action within the application. This will also delay notifications by the same amount of time reducing the number of emails being sent and will also affect %{webhook_link} delay."
         link: "webhook"
   authentication:
-    login_and_registration: "Login and registration"
+    login_and_registration: "ログインと登録"
   announcements:
     show_until: までを表示
     is_active: 現在表示されています
     is_inactive: 現在表示されていません
   antivirus_scan:
-    not_processed_yet_message: "Downloading is blocked, as file was not scanned for viruses yet. Please try again later."
-    quarantined_message: "A virus was detected in file '%{filename}'. It has been quarantined and is not available for download."
-    deleted_message: "A virus was detected in file '%{filename}'. The file has been deleted."
-    deleted_by_admin: "The quarantined file '%{filename}' has been deleted by an administrator."
-    overridden_by_admin: "The quarantine for file '%{filename}' has been removed by %{user}. The file can now be acccessed."
+    not_processed_yet_message: "ファイルがウイルスをスキャンしていないため、ダウンロードはブロックされています。後でもう一度やり直してください。"
+    quarantined_message: "ファイル '%{filename}' でウイルスが検出されました。このファイルは隔離され、ダウンロードできません。"
+    deleted_message: "ファイル '%{filename}' でウイルスが検出されました。ファイルは削除されました。"
+    deleted_by_admin: "隔離されたファイル '%{filename}' は管理者によって削除されました。"
+    overridden_by_admin: "%{user}によって、ファイル '%{filename}' の隔離が解除されました。このファイルはアクセスできるようになりました。"
     quarantined_attachments:
-      container: "Container"
-      delete: "Delete the quarantined file"
-      title: "Quarantined attachments"
-      error_cannot_act_self: "Cannot perform actions on your own uploaded files."
+      container: "コンテナ"
+      delete: "隔離されたファイルを削除"
+      title: "隔離された添付ファイル"
+      error_cannot_act_self: "アップロードしたファイルに対してアクションを実行できません。"
   attribute_help_texts:
     note_public: "このフィールドに追加したテキストと画像は、ログインしているすべてのユーザーに公開されます！"
     text_overview: "このビューは、属性表示のカスタム ヘルプ テキストを作成できます。定義すると、このテキストはその属性の横にあるヘルプ アイコンをクリックして表示できます。"
@@ -133,12 +133,12 @@ ja:
   ldap_auth_sources:
     ldap_error: "LDAPエラー: %{error_message}"
     ldap_auth_failed: "LDAPサーバーで認証できませんでした。"
-    sync_failed: "Failed to synchronize from LDAP: %{message}."
-    back_to_index: "Click here to go back to the list of connection."
+    sync_failed: "LDAPとの同期に失敗しました： %{message}"
+    back_to_index: "ここをクリックして接続一覧に戻ります。"
     technical_warning_html: |
-      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      このLDAPフォームを使用するには、LDAP / Active Directoryの設定に関する技術的な知識が必要です。
       <br>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">詳細な手順については、ドキュメントをご覧ください</a>。
     attribute_texts:
       name: LDAP接続の任意の名称
       host: LDAPのホスト名または IP アドレス
@@ -185,7 +185,7 @@ ja:
     tls_options:
       verify_peer: "SSL 証明書の確認"
       verify_peer_description_html: >
-        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
+        証明書のTrusted Chainの厳密なSSL検証を有効にします。 <br> <strong>警告</strong>このオプションをオフにすると、LDAP サーバー証明書の SSL 検証が無効になります。これにより、接続が中間者攻撃 (Man in the Middle) にさらされることになります。
       tls_certificate_description: "LDAP サーバ証明書がこのシステムの信頼ソースにない場合は、ここで手動で追加できます。PEM X509証明書文字列を入力します。"
   forums:
     show:
@@ -196,9 +196,9 @@ ja:
       no_results_content_text: 新しい色を作成
       label_new_color: "新しい色"
     new:
-      label_new_color: "New Color"
+      label_new_color: "色を作成"
     edit:
-      label_edit_color: "Edit Color"
+      label_edit_color: "色の編集"
     form:
       label_new_color: "新しい色"
       label_edit_color: "色を編集する"
@@ -224,7 +224,7 @@ ja:
           heading: 全プロジェクト向け
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
-        actions: "Item actions"
+        actions: "アイテム操作"
         blankslate:
           root:
             title: "Your list of items is empty"
@@ -314,14 +314,14 @@ ja:
   projects:
     copy:
       #Contains custom strings for options when copying a project that cannot be found elsewhere.
-      members: "Project members"
-      overviews: "Project overview"
-      queries: "Work packages: saved views"
-      wiki_page_attachments: "Wiki pages: attachments"
-      work_package_attachments: "Work packages: attachments"
-      work_package_categories: "Work packages: categories"
-      work_package_file_links: "Work packages: file links"
-      work_package_shares: "Work packages: shares"
+      members: "プロジェクトメンバー"
+      overviews: "プロジェクト概要"
+      queries: "ワークパッケージ：保存されたビュー"
+      wiki_page_attachments: "Wikiページ: 添付ファイル"
+      work_package_attachments: "ワークパッケージ：添付書類"
+      work_package_categories: "ワークパッケージ：カテゴリー"
+      work_package_file_links: "ワークパッケージ：ファイルリンク"
+      work_package_shares: "ワークパッケージ：シェア"
     delete:
       scheduled: "削除がスケジュールされ、バックグラウンドで実行されます。結果は通知されます。"
       schedule_failed: "プロジェクトを削除できません: %{errors}"
@@ -335,35 +335,35 @@ ja:
       no_results_title_text: 現在、プロジェクトはありません
       no_results_content_text: プロジェクトを新規作成
       search:
-        label: Project name filter
-        placeholder: Search by project name
+        label: プロジェクト名フィルター
+        placeholder: プロジェクト名で検索
     lists:
-      active: "Active projects"
+      active: "アクティブなプロジェクト"
       my: "参加しているプロジェクト"
-      favored: "Favorite projects"
-      archived: "Archived projects"
-      shared: "Shared project lists"
+      favored: "お気に入りプロジェクト"
+      archived: "アーカイブされたプロジェクト"
+      shared: "共有されたプロジェクト"
       my_lists: "自分のプロジェクトリスト"
       new:
-        placeholder: "New project list"
+        placeholder: "新しいプロジェクトリスト"
       delete_modal:
-        title: "Delete project list"
-        heading: "Delete this project list?"
+        title: "プロジェクトリストの削除"
+        heading: "このプロジェクトリストを削除しますか？"
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
-      header_details: Basic details
+      header_details: 基本情報
       header_status: プロジェクトの進捗状況
-      header_relations: Project relations
-      button_update_details: Update details
-      button_update_status_description: Update status description
-      button_update_parent_project: Update parent project
+      header_relations: プロジェクトの関係
+      button_update_details: アップデートの詳細
+      button_update_status_description: ステータスの説明を更新
+      button_update_parent_project: 親プロジェクトを更新
       public_warning: >
-        This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
+        このプロジェクトは公開されています。このインスタンスにアクセスできる人は誰でも、自分の役割と関連する権限に応じて、このプロジェクトを表示し、操作することができます。サブプロジェクトは影響を受けず、独自の設定を持ちます。
       public_confirmation:
-        checkbox: "I understand that this will make the previously private content public"
-        title: "Make this project public?"
+        checkbox: "これにより、非公開だったコンテンツが公開されることを理解しています"
+        title: "このプロジェクトを公開しますか？"
         description: >
-          Anyone who has access to this instance will be able to view and interact with this project depending on their role and authentication settings. Sub-projects are not affected and have their own settings.
+          このプロジェクトは公開されています。このインスタンスにアクセスできる人は誰でも、自分の役割と関連する権限に応じて、このプロジェクトを表示し、操作することができます。サブプロジェクトは影響を受けず、独自の設定を持ちます。
       private_confirmation:
         checkbox: "I understand that this will make the previously public content private."
         title: "Make this project private?"
@@ -421,7 +421,7 @@ ja:
       button_edit: Edit project status
   project_phase:
     working_days_count:
-      other: "Duration: %{count} working days"
+      other: "期間： %{count} 営業日"
   lists:
     create:
       success: "The modified list has been saved as a new list"
@@ -632,9 +632,9 @@ ja:
             project: "プロジェクト"
         pattern:
           label: "Subject pattern"
-          caption_with_supported_attributes_link: Create patterns by adding text, or type "/" to search for %{link}.
+          caption_with_supported_attributes_link: テキストを追加してパターンを作成するか、 %{link} を検索するために "/" と入力します。
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
-          supported_attributes_link: "supported attributes"
+          supported_attributes_link: "サポートされている属性"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1323,15 +1323,15 @@ ja:
             circular_dependency: "関係が、関係のループを作ります。"
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
-              error_readonly: "cannot be changed for existing relations."
+              error_not_found: "見つからないか、非表示になっています。"
+              error_readonly: "既存のリレーションを変更することはできません。"
             from_id:
-              error_not_found: "not found or not visible."
-              error_readonly: "cannot be changed for existing relations."
+              error_not_found: "見つからないか、非表示になっています。"
+              error_readonly: "既存のリレーションを変更することはできません。"
             lag:
               greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
+                zero: "を否定することはできない。"
+              less_than_or_equal_to: "が大きすぎます。"
         repository:
           not_available: "SCMベンダーは使用できません。"
           not_whitelisted: "は設定で許可されていません。"
@@ -2010,7 +2010,7 @@ ja:
       work_package_sharing:
         description: "Share work packages with users who are not members of the project."
       project_list_sharing:
-        description: "Share project lists with individual users."
+        description: "プロジェクトリストを個々のユーザーと共有します。"
       define_custom_style:
         title: "Custom color theme and logo"
         more_info: "Note: the used logo will be publicly accessible."
@@ -3603,8 +3603,8 @@ ja:
     warnings:
       cannot_annotate: "このファイルに注釈を付けることはできません。"
   scheduling:
-    manual: "set to Manual"
-    automatic: "set to Automatic"
+    manual: "手動"
+    automatic: "自動"
   search_input_placeholder: "検索…"
   setting_allowed_link_protocols: "Allowed link protocols"
   setting_allowed_link_protocols_text_html: >-
