@@ -116,7 +116,7 @@ module OpenProject::TextFormatting
         link_from_match
       end
 
-      def link_from_match
+      def link_from_match # rubocop:disable Metrics/AbcSize
         # extract anchor
         anchor = nil
         if page =~ /\A(.+?)\#(.+)\z/

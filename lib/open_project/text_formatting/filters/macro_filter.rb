@@ -39,7 +39,7 @@ module OpenProject::TextFormatting
         macros.each { |macro| registered << macro }
       end
 
-      def call
+      def call # rubocop:disable Metrics/AbcSize
         doc.search("macro").each do |macro|
           registered.each do |macro_class|
             next unless macro_applies?(macro_class, macro)

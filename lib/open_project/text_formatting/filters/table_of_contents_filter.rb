@@ -82,7 +82,7 @@ module OpenProject::TextFormatting
         parent_number == "" ? num_in_level.to_s : "#{parent_number}.#{num_in_level}"
       end
 
-      def render_nested(level = 0, parent_number = "")
+      def render_nested(level = 0, parent_number = "") # rubocop:disable Metrics/AbcSize
         result = "".html_safe
         num_in_level = 0
 

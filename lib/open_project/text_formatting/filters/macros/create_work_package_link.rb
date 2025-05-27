@@ -46,7 +46,7 @@ module OpenProject::TextFormatting::Filters::Macros
       macro.replace work_package_link(macro, context)
     end
 
-    def work_package_link(macro, context)
+    def work_package_link(macro, context) # rubocop:disable Metrics/AbcSize
       project = context[:project]
       raise I18n.t("macros.create_work_package_link.errors.no_project_context") if project.nil?
 

@@ -43,7 +43,7 @@ module OpenProject::TextFormatting::Matchers
       # Examples:
       #
       # r11, r13
-      def call
+      def call # rubocop:disable Metrics/AbcSize
         # don't handle link unless repository exists
         return nil unless project&.repository
 

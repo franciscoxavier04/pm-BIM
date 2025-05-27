@@ -89,7 +89,7 @@ module OpenProject::TextFormatting::Matchers
         end
       end
 
-      def render_commit
+      def render_commit # rubocop:disable Metrics/AbcSize
         if project&.repository &&
            (changeset = Changeset.where(["repository_id = ? AND scmid LIKE ?", project.repository.id, "#{oid}%"]).first)
           link_to h("#{matcher.project_prefix}#{matcher.identifier}"),
@@ -100,7 +100,7 @@ module OpenProject::TextFormatting::Matchers
         end
       end
 
-      def render_source
+      def render_source # rubocop:disable Metrics/AbcSize
         if project&.repository
           matcher.identifier =~ %r{\A[/\\]*(.*?)(@([0-9a-f]+))?(#(L\d+))?\z}
           path = $1
