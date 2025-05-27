@@ -114,7 +114,7 @@ module Projects::LifeCycles
     def value(field_name)
       case field_name
       when :start_date
-        model.default_start_date || model.start_date_before_type_cast
+        model.start_date || model.default_start_date || model.start_date_before_type_cast
       when :finish_date
         model.finish_date_before_type_cast
       end
