@@ -90,7 +90,7 @@ module OpenProject
       else
         raise ArgumentError, "invalid arguments to format_text"
       end
-      return "" if text.blank?
+      return "".html_safe if text.blank?
 
       project ||= @project || object.try(:project)
 

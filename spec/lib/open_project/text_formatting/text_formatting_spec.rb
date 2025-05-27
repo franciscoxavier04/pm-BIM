@@ -59,6 +59,21 @@ RSpec.describe OpenProject::TextFormatting do
                                     ))
   end
 
+  describe "HTML safety" do
+    context "with blank strings" do
+      it "always returns HTML-safe strings" do
+        expect(format_text("")).to be_html_safe
+        expect(format_text(" ")).to be_html_safe
+      end
+    end
+
+    context "with non-blank strings" do
+      it "always returns HTML-safe strings" do
+        expect(format_text("abc")).to be_html_safe
+      end
+    end
+  end
+
   describe "options" do
     describe "#format" do
       it "uses format of Settings, if nothing is specified" do
