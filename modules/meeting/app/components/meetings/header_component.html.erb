@@ -15,7 +15,7 @@
         }
       )
     ) do |header|
-      header.with_title do |title|
+      header.with_title(test_selector: "meetings-page-header-title") do |title|
         title.with_editable_form(
           model: @meeting,
           update_path: update_title_project_meeting_path(@project, @meeting),
