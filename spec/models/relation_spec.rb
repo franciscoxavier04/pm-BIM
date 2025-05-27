@@ -38,17 +38,24 @@ RSpec.describe Relation do
   let(:relation) { build(:relation, from:, to:, relation_type: type) }
 
   it "validates lag numericality" do
+    relation.lag = nil
+    expect(relation).to be_valid
     relation.lag = -1
+    expect(relation).to be_valid
+    relation.lag = 2_000
+    expect(relation).to be_valid
+    relation.lag = -2_000
+    expect(relation).to be_valid
+
+    relation.lag = 2_001
     expect(relation).not_to be_valid
     expect(relation.errors[:lag])
-      .to include(I18n.t(:"activerecord.errors.models.relation.attributes.lag.greater_than_or_equal_to.zero"))
+      .to eq(["must be less than or equal to #{Relation::MAX_LAG}."])
 
-    relation.lag = 2_147_483_648
+    relation.lag = -2_001
     expect(relation).not_to be_valid
-    expect(relation.errors[:lag]).to include(I18n.t(:"activerecord.errors.models.relation.attributes.lag.less_than_or_equal_to"))
-
-    relation.lag = 1_000
-    expect(relation).to be_valid
+    expect(relation.errors[:lag])
+      .to eq(["must be greater than or equal to #{Relation::MIN_LAG}."])
   end
 
   it "validates relation uniqueness on both from_id and to_id" do
