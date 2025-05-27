@@ -49,6 +49,28 @@ module API
                                                    self_link: get_emoji_reactions_self_path,
                                                    current_user: User.current)
           end
+
+          params do
+            requires :reaction, type: String, desc: "The emoji reaction to add/remove",
+                                values: ::EmojiReaction::EMOJI_MAP.keys.map(&:to_s)
+          end
+
+          patch do
+            toggle_service = ::EmojiReactions::ToggleEmojiReactionService.call(
+              user: current_user,
+              reactable: reactable,
+              reaction: params[:reaction]
+            )
+
+            if toggle_service.success?
+              emoji_reactions = Journal.grouped_emoji_reactions(reactable_id: reactable.id, reactable_type: "Journal")
+              EmojiReactionCollectionRepresenter.new(emoji_reactions,
+                                                     self_link: get_emoji_reactions_self_path,
+                                                     current_user:)
+            else
+              fail ::API::Errors::ErrorBase.create_and_merge_errors(toggle_service.errors)
+            end
+          end
         end
       end
     end

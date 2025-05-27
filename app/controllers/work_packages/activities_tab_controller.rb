@@ -149,17 +149,10 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def toggle_reaction # rubocop:disable Metrics/AbcSize
-    emoji_reaction_service =
-      if @journal.emoji_reactions.exists?(user: User.current, reaction: params[:reaction])
-        EmojiReactions::DeleteService
-         .new(user: User.current,
-              model: @journal.emoji_reactions.find_by(user: User.current, reaction: params[:reaction]))
-         .call
-      else
-        EmojiReactions::CreateService
-         .new(user: User.current)
-         .call(user: User.current, reactable: @journal, reaction: params[:reaction])
-      end
+    emoji_reaction_service = EmojiReactions::ToggleEmojiReactionService
+      .call(user: User.current,
+            reactable: @journal,
+            reaction: params[:reaction])
 
     emoji_reaction_service.on_success do
       update_via_turbo_stream(
