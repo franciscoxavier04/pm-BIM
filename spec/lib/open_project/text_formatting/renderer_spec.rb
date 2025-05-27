@@ -27,36 +27,20 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+require "spec_helper"
 
-module OpenProject::TextFormatting
-  module Renderer
-    module_function
-
-    # @note
-    #   Consider the {OpenProject::TextFormatting#format_text} convenience
-    #   method instead, particularly if you are formatting model attributes.
-    #
-    # @param [String] text the raw text to be formatted, typically Markdown.
-    # @param (see .formatter_for)
-    # @param [Hash] context context arguments to pass to underlying rendering
-    #   pipeline (see {Formats::BaseFormatter#initialize}).
-    # @return [String] the formatted text as an HTML-safe String.
-    def format_text(text, format: :rich, **context)
-      return "".html_safe if text.blank?
-
-      formatter_for(format)
-        .new(context)
-        .to_html(text)
+RSpec.describe OpenProject::TextFormatting::Renderer do
+  describe "HTML safety" do
+    context "with blank strings" do
+      it "always returns HTML-safe strings" do
+        expect(described_class.format_text("")).to be_html_safe
+        expect(described_class.format_text(" ")).to be_html_safe
+      end
     end
 
-    # @param [:plain, :rich] format the text format.
-    # @return [Formats::BaseFormatter] a formatter implementation.
-    def formatter_for(format)
-      case format.to_sym
-      when :plain
-        Formats.plain_formatter
-      else
-        Formats.rich_formatter
+    context "with non-blank strings" do
+      it "always returns HTML-safe strings" do
+        expect(described_class.format_text("abc")).to be_html_safe
       end
     end
   end
