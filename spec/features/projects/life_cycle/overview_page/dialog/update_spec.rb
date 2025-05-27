@@ -212,8 +212,8 @@ RSpec.describe "Edit project phases on project overview page", :js, with_flag: {
           dialog.activate_field("Finish date")
           dialog.set_date_for(values: [new_finish_date])
 
-          dialog.expect_input("Start date", value: initiating_start_date)
-          dialog.expect_input("Finish date", value: new_finish_date, active: true)
+          dialog.expect_input("Start date", value: initiating_start_date, active: true)
+          dialog.expect_input("Finish date", value: new_finish_date)
           dialog.expect_input("Duration", value: 1, disabled: true)
 
           # Update start date via calendar (with start date field active)
@@ -221,8 +221,8 @@ RSpec.describe "Edit project phases on project overview page", :js, with_flag: {
           dialog.set_date_for(values: [new_start_date])
 
           dialog.expect_input("Start date", value: new_start_date)
-          dialog.expect_input("Finish date", value: "", active: true) # finish date cleared and activated
-          dialog.expect_input("Duration", value: "", disabled: true)
+          dialog.expect_input("Finish date", value: new_finish_date, active: true)
+          dialog.expect_input("Duration", value: 8, disabled: true)
 
           # Set finish date again via calendar
           dialog.activate_field("Finish date")
