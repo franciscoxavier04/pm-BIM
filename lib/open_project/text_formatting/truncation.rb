@@ -54,7 +54,7 @@ module OpenProject
       # @see ActionView::Helpers::TextHelper#truncate
       # @return [String] an HTML-safe safe string as single-line.
       def truncate_single_line(text, *)
-        truncate(text, *).gsub(%r{[\r\n]+}m, " ").html_safe
+        truncate(text, *).gsub(%r{[\r\n]+}m, " ").html_safe # rubocop:disable Rails/OutputSafety
       end
     end
   end
