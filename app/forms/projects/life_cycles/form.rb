@@ -121,7 +121,7 @@ module Projects::LifeCycles
     end
 
     def start_date_disabled?
-      model.default_start_date.present?
+      model.follows_previous_phase? && model.default_start_date.present?
     end
 
     def start_date_caption
