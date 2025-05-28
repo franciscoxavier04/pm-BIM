@@ -15,6 +15,7 @@ import { WorkPackageResource } from 'core-app/features/hal/resources/work-packag
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 import { ActionsService } from 'core-app/core/state/actions/actions.service';
 import { reminderModalUpdated } from 'core-app/features/work-packages/components/wp-reminder-modal/reminder.actions';
+import { ReminderPreset } from 'core-app/features/work-packages/components/wp-reminder-modal/reminder.types';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
@@ -33,6 +34,7 @@ export class WorkPackageReminderModalComponent extends OpModalComponent implemen
 
   private workPackage:WorkPackageResource;
   public frameSrc:string;
+  private preset:ReminderPreset | undefined;
 
   text = {
     new_title: this.I18n.t('js.work_packages.reminders.title.new'),
@@ -57,12 +59,13 @@ export class WorkPackageReminderModalComponent extends OpModalComponent implemen
     super(locals, cdRef, elementRef);
 
     this.workPackage = this.locals.workPackage as WorkPackageResource;
+    this.preset = this.locals.preset as ReminderPreset | undefined;
     this.title$ = this
       .isEditMode()
       .pipe(
         map((isEditMode) => (isEditMode ? this.text.edit_title : this.text.new_title)),
       );
-    this.frameSrc = this.pathHelper.workPackageReminderModalBodyPath(this.workPackage.id as string);
+    this.frameSrc = this.pathHelper.workPackageReminderModalBodyPath(this.workPackage.id as string) + (this.preset ? `?preset=${this.preset}` : '');
   }
 
   ngOnInit() {
