@@ -16,7 +16,7 @@ To define default settings for logging time and costs navigate to *Administratio
 ### Define default time settings (Enterprise add-on)
 
 > [!NOTE] 
-> Enforcing exact time entries for time logging is an Enterprise add-on and can only be used  with [Enterprise cloud](https://www.openproject.org/docs/enterprise-guide/enterprise-cloud-guide) or [Enterprise on-premises](https://www.openproject.org/docs/enterprise-guide/enterprise-on-premises-guide). An upgrade from the free Community edition is easily possible.
+> Enforcing exact time entries for time logging is an Enterprise add-on and can only be used with [Enterprise cloud](../../enterprise-guide/enterprise-cloud-guide) or [Enterprise on-premises](../../enterprise-guide/enterprise-on-premises-guide). An upgrade from the free Community edition is easily possible.
 
 Under the *Time* tab you can define which fields are required to be fill out when logging time across all projects. 
 
