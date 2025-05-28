@@ -28,9 +28,11 @@ You can configure general system settings in OpenProject. Under System settings 
    - tel://number
    - sms://number
    - facetime://number
+    
    One protocol should be entered per line.
-   > [!NOTE]
-   > Protocols http, https, and mailto are always allowed. 
+
+> [!NOTE]
+> Protocols http, https, and mailto are always allowed. 
 
 7. **Enable feeds** – enables RSS feeds on wiki pages, forums and news via RSS client.
 
