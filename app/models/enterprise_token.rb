@@ -45,6 +45,10 @@ class EnterpriseToken < ApplicationRecord
       current && !current.expired?
     end
 
+    def trialling?(feature)
+      allows_to?(feature) && EnterpriseToken.current.trial?
+    end
+
     def hide_banners?
       OpenProject::Configuration.ee_hide_banners?
     end
@@ -88,6 +92,7 @@ class EnterpriseToken < ApplicationRecord
            :plan,
            :features,
            :version,
+           :trial?,
            to: :token_object
 
   def token_object
