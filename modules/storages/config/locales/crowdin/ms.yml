@@ -15,6 +15,7 @@ ms:
           oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         storage_audience: Storage Audience
+        token_exchange_scope: Storage Scope
       storages/project_storage:
         project_folder: Folder projek
         project_folder_mode: Project folder mode
@@ -80,7 +81,7 @@ ms:
     edit_project_folder:
       label: Edit folder projek
     open:
-      remote_identity_error: An unexpected error occured while connecting to the storage.
+      remote_identity_error: An unexpected error occurred while connecting to the storage.
     project_folder_mode:
       automatic: Dikendalikan secara automatik
       inactive: Tiada folder spesifik
@@ -225,12 +226,12 @@ ms:
       openproject_oauth: OAuth OpenProject
       project_folders: Folder projek
       redirect_uri: ' Pengubah hala URI'
-      storage_audience: Storage Audience
       storage_audience_blank: No audience has been configured.
-      storage_audience_description: Obtaining tokens for audience "%{audience}".
-      storage_audience_idp: Using first access token received by identity provider, regardless of audience.
+      storage_audience_description: Exchanging tokens for audience "%{audience}".
+      storage_audience_idp: Using access token obtained by identity provider during login, regardless of audience.
       storage_oauth: Nextcloud OAuth
       storage_provider: Penyedia storan
+      token_exchange: Token Exchange
     health:
       actions:
         download_report: Muat turun
@@ -281,8 +282,8 @@ ms:
         nc_dependency_version_mismatch: The %{dependency} app version is not supported. Please update your Nextcloud server.
         nc_group_folder_not_found: Folder kumpulan tidak ditemui.
         nc_host_not_found: Tiada pelayan Nextcloud ditemui pada url hos yang dikonfigurasikan. Sila semak konfigurasi.
-        nc_oauth_request_not_found: OpenProject couldn't find the root folder of Nextcloud using the current logged-in user. Please check the server logs for further information.
-        nc_oauth_request_unauthorized: The current user isn't authorized to see the main folder of Nextcloud or we couldn't acquire a token. Please check the server logs for further information.
+        nc_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        nc_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
         nc_oauth_token_missing: OpenProject cannot test the user level communication with Nextcloud as the user did not yet link their Nextcloud account.
         nc_unexpected_content: Kandungan yang tidak dijangka ditemui dalam folder kumpulan terurus.
         nc_userless_access_denied: Kata laluan apl yang dikonfigurasikan adalah tidak sah.
@@ -291,18 +292,19 @@ ms:
         od_client_write_permission_missing: The client seems to have write permissions missing. Please check the setup documentation for your storage.
         od_drive_id_invalid: The configured drive id seems invalid. Please check the configuration.
         od_drive_id_not_found: Id pemacu yang dikonfigurasikan tidak dapat ditemui. Sila semak konfigurasi.
-        od_existing_test_folder: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
-        od_oauth_request_not_found: OpenProject couldn't find the root folder in the drive using the current logged-in user. Please check the server logs for further information.
-        od_oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive/SharePoint or we couldn't acquire a token. Please check the server logs for further information.
+        od_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        od_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
         od_oauth_token_missing: OpenProject cannot test the user level communication with OneDrive/SharePoint as the user did not yet link their Microsoft account.
         od_tenant_id_wrong: Id direktori (penyewa) yang dikonfigurasikan adalah tidak sah. Sila semak konfigurasi.
+        od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
         od_unexpected_content: Kandungan yang tidak dijangka ditemui dalam pemacu.
         offline_access_scope_missing: It is recommended to configure the OpenID Connect provider to request the offline_access scope. The integration may still work anyways, but make sure that refresh tokens do not expire.
-        oidc_cant_acquire_token: Your OpenID Connect setup doesn't provide the necessary audience, nor provides token exchange capabilities. Please check out our documentation for more information.
-        oidc_cant_exchange_token: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
         oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
+        oidc_token_acquisition_failed: Your OpenID Connect setup doesn't provide the necessary audience, nor does it provide token exchange capabilities. Please check out our documentation for more information.
+        oidc_token_exchange_failed: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
+        oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         unknown_error: Sambungan tidak dapat disahkan. Ralat tidak diketahui berlaku. Sila semak log pelayan untuk maklumat lanjut.
       label_error: Ralat
       label_failed: Failed
@@ -347,8 +349,9 @@ ms:
         integration: Pentadbiran Nextcloud / OpenProject
         oauth_configuration: Salin nilai-nilai ini daripada %{application_link_text}.
         provider_configuration: 'Sila pastikan anda mempunyai hak keistimewaan pentadbir di, contohnya, Nextcloud, dan mempunyai aplikasi berikut dipasang sebelum membuat penyediaan: %{application_link_text}'
-        storage_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        storage_audience: The client ID that the Nextcloud instance uses to communicate with the identity provider.
         storage_audience_placeholder: e.g. nextcloud
+        token_exchange_scope: The scopes that should be requested during token exchange, each one separated by a space.
       no_specific_folder: Secara default, setiap pengguna akan bermula di folder utama mereka apabila ingin memuat naik fail.
       no_storage_set_up: Tiada storan fail yang disediakan lagi.
       not_logged_into_storage: Untuk memilih folder projek, sila log masuk dahulu
@@ -380,9 +383,9 @@ ms:
     label_creator: Pencipta
     label_delete_storage: Padamkan storan
     label_edit_storage_access_management: Edit pengurusan akses storan
-    label_edit_storage_audience: Edit Storage Audience
     label_edit_storage_automatically_managed_folders: Edit storan folder yang dikendalikan secara automatik
     label_edit_storage_host: Edit hos storan
+    label_edit_token_exchange: Edit token exchange configuration
     label_existing_manual_folder: Folder sedia ada dengan kebenaran yang dikendalikan secara manual
     label_file_storage: Storan fail
     label_host: URL Hos
@@ -476,13 +479,13 @@ ms:
       description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
       label: Paparkan lampiran di tab fail pakej kerja
     storage_audience:
-      documentation_intro: Details on the following options and what needs to be configured in the identity provider can be found in our documentation.
+      documentation_intro: Please read our documentation for details on the following options and configuration of the identity provider.
       idp:
-        helptext: OpenProject will use the first access token received by the identity provider to authenticate requests to the storage. It will not try to obtain another token.
-        label: Use first access token obtained by identity provider
+        helptext: OpenProject will use the access token received by the identity provider during log in to authenticate requests to the storage. It will not try to obtain another token.
+        label: Use access token obtained during user log in
       manual:
-        helptext: Allows you to set the audience of the storage. OpenProject will try to obtain a token for the given audience from the identity provider.
-        label: Define storage audience manually
+        helptext: OpenProject will exchange a token with the identity provider for the given audience.
+        label: Manually specify audience for which to exchange access token
     storage_list_blank_slate:
       description: Tambah storan untuk melihatnya di sini.
       heading: Anda masih belum ada sebarang storan.

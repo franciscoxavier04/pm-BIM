@@ -15,6 +15,7 @@ es:
           oauth2_sso_with_two_way_oauth2_fallback: Inicio de sesión único con OAuth 2.0 bidireccional como reserva
           two_way_oauth2: Flujo de código de autorización bidireccional OAuth 2.0
         storage_audience: Audiencia de almacenamiento
+        token_exchange_scope: Storage Scope
       storages/project_storage:
         project_folder: Carpeta del proyecto
         project_folder_mode: Modo de carpeta del proyecto
@@ -80,7 +81,7 @@ es:
     edit_project_folder:
       label: Editar la carpeta del proyecto
     open:
-      remote_identity_error: Se ha producido un error inesperado al conectarse al almacenamiento.
+      remote_identity_error: An unexpected error occurred while connecting to the storage.
     project_folder_mode:
       automatic: Gestionado automáticamente
       inactive: Ninguna carpeta específica
@@ -225,12 +226,12 @@ es:
       openproject_oauth: OpenProject OAuth
       project_folders: Carpeta del proyecto
       redirect_uri: Redirigir URI
-      storage_audience: Audiencia de almacenamiento
       storage_audience_blank: No se ha configurado ninguna audiencia.
-      storage_audience_description: Obtención de tokens para la audiencia «%{audience}».
-      storage_audience_idp: Utilizando el primer token de acceso recibido por el proveedor de identidad, independientemente del público.
+      storage_audience_description: Exchanging tokens for audience "%{audience}".
+      storage_audience_idp: Using access token obtained by identity provider during login, regardless of audience.
       storage_oauth: Nextcloud OAuth
       storage_provider: Proveedor de almacenamiento
+      token_exchange: Token Exchange
     health:
       actions:
         download_report: Descargar
@@ -283,8 +284,8 @@ es:
         nc_dependency_version_mismatch: La versión de la aplicación %{dependency} no es compatible. Actualice su servidor Nextcloud.
         nc_group_folder_not_found: No se ha podido encontrar la carpeta del grupo.
         nc_host_not_found: No se ha encontrado ningún servidor Nextcloud en la URL de host configurada. Compruebe la configuración.
-        nc_oauth_request_not_found: OpenProject no pudo encontrar la carpeta raíz de Nextcloud con el usuario que ha iniciado sesión. Compruebe los registros del servidor para obtener más información.
-        nc_oauth_request_unauthorized: El usuario actual no está autorizado a ver la carpeta principal de Nextcloud o no hemos podido obtener un token. Compruebe los registros del servidor para obtener más información.
+        nc_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        nc_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
         nc_oauth_token_missing: OpenProject no puede probar la comunicación a nivel de usuario con Nextcloud, ya que el usuario aún no ha vinculado su cuenta de Nextcloud.
         nc_unexpected_content: Se ha encontrado contenido inesperado en la carpeta del grupo gestionado.
         nc_userless_access_denied: La contraseña configurada de la aplicación no es válida.
@@ -293,18 +294,19 @@ es:
         od_client_write_permission_missing: Parece que el cliente no tiene permisos de escritura. Consulte la documentación de configuración de su almacenamiento.
         od_drive_id_invalid: El ID de unidad configurada no parece válido. Compruebe la configuración.
         od_drive_id_not_found: No se ha podido encontrar el identificador de unidad configurado. Compruebe la configuración.
-        od_existing_test_folder: La carpeta %{folder_name} necesaria para la prueba ya existe. Elimínela e inténtelo de nuevo.
-        od_oauth_request_not_found: OpenProject no ha podido encontrar la carpeta raíz en la unidad utilizando el usuario conectado actualmente. Compruebe los registros del servidor para obtener más información.
-        od_oauth_request_unauthorized: El usuario actual no está autorizado a ver la carpeta raíz de OneDrive/SharePoint o no hemos podido adquirir un token. Compruebe los registros del servidor para obtener más información.
+        od_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        od_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
         od_oauth_token_missing: OpenProject no puede probar la comunicación a nivel de usuario con OneDrive/SharePoint, ya que el usuario aún no ha vinculado su cuenta de Microsoft.
         od_tenant_id_wrong: El id de directorio (tenant) configurado no es válido. Por favor, compruebe la configuración.
+        od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
         od_unexpected_content: Contenido inesperado encontrado dentro la unidad.
         offline_access_scope_missing: Se recomienda configurar el proveedor OpenID Connect para que solicite el ámbito offline_access. La integración puede seguir funcionando de todos modos, pero asegúrese de que los tokens de actualización no caducan.
-        oidc_cant_acquire_token: Su configuración de OpenID Connect no proporciona la audiencia necesaria, ni ofrece capacidades de intercambio de tokens. Consulte nuestra documentación para obtener más información.
-        oidc_cant_exchange_token: Parece que hay un problema con la configuración del intercambio de tokens en su proveedor de OpenID Connect. Compruebe su configuración e inténtelo de nuevo.
         oidc_cant_refresh_token: Se ha producido un error al intentar comprobar su acceso al almacenamiento. Compruebe los registros del servidor para más información.
         oidc_non_oidc_user: El usuario actual, aunque está aprovisionado, no fue aprovisionado por un proveedor de identidad OpenID Connect (OIDC). Vuelva a ejecutar la comprobación con un usuario aprovisionado por OIDC.
         oidc_non_provisioned_user: El usuario actual no ha sido proporcionado por un proveedor de identidad OpenID Connect. Vuelva a ejecutar la comprobación con un usuario proporcionado.
+        oidc_token_acquisition_failed: Your OpenID Connect setup doesn't provide the necessary audience, nor does it provide token exchange capabilities. Please check out our documentation for more information.
+        oidc_token_exchange_failed: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
+        oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         unknown_error: No se ha podido validar la conexión. Se ha producido un error desconocido. Compruebe los registros del servidor para obtener más información.
       label_error: Error
       label_failed: Fallido
@@ -349,8 +351,9 @@ es:
         integration: Administración de Nextcloud / OpenProject
         oauth_configuration: Copia estos valores de %{application_link_text}.
         provider_configuration: Por favor, asegúrate de tener privilegios de administración en tu instancia de Nextcloud y de que el %{application_link_text} esté instalado antes de realizar la configuración.
-        storage_audience: Introduzca el ID de cliente que la instancia Nextcloud utiliza para comunicarse con el proveedor de identidad.
+        storage_audience: The client ID that the Nextcloud instance uses to communicate with the identity provider.
         storage_audience_placeholder: por ejemplo, Nextcloud
+        token_exchange_scope: The scopes that should be requested during token exchange, each one separated by a space.
       no_specific_folder: Por defecto, cada usuario comenzará en su propia carpeta de inicio cuando cargue un archivo.
       no_storage_set_up: Aún no se han configurado los almacenamientos de archivos.
       not_logged_into_storage: Para seleccionar una carpeta de proyecto, inicie primero la sesión
@@ -382,9 +385,9 @@ es:
     label_creator: Autor
     label_delete_storage: Eliminar almacenamiento
     label_edit_storage_access_management: Editar la gestión de acceso al almacenamiento
-    label_edit_storage_audience: Editar audiencia de almacenamiento
     label_edit_storage_automatically_managed_folders: Editar carpetas gestionadas automáticamente
     label_edit_storage_host: Editar host del almacenamiento
+    label_edit_token_exchange: Edit token exchange configuration
     label_existing_manual_folder: Carpeta existente con permisos gestionados manualmente
     label_file_storage: Almacenamiento de archivos
     label_host: URL del host
@@ -410,7 +413,7 @@ es:
     member_connection_status:
       connected: Conectado
       connected_no_permissions: El rol de usuario no tiene permisos de almacenamiento
-      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
+      not_connectable: No conectable. El almacenamiento requiere iniciar sesión a través de un proveedor de SSO, pero el usuario no está iniciando sesión mediante SSO.
       not_connected: No conectado. El usuario debe iniciar sesión en el almacenamiento a través del siguiente %{link}.
       not_connected_sso: Aún no están conectados, el SSO debería conectarlos automáticamente, una vez consultados los archivos.
     members_no_results: No hay miembros para mostrar.
@@ -477,13 +480,13 @@ es:
       description: Al desactivar esta opción se ocultará la lista de archivos adjuntos en la pestaña de archivos de los paquetes de trabajo. Los archivos adjuntos en la descripción de un paquete de trabajo seguirán cargándose en el almacén interno de archivos adjuntos.
       label: Mostrar archivos adjuntos en la pestaña de archivos de los paquetes de trabajo
     storage_audience:
-      documentation_intro: Los detalles sobre las siguientes opciones y lo que hay que configurar en el proveedor de identidad se encuentran en nuestra documentación.
+      documentation_intro: Please read our documentation for details on the following options and configuration of the identity provider.
       idp:
-        helptext: OpenProject utilizará el primer token de acceso recibido por el proveedor de identidad para autenticar las solicitudes al almacenamiento. No intentará obtener otro token.
-        label: Utilizar el primer token de acceso obtenido por el proveedor de identidad
+        helptext: OpenProject will use the access token received by the identity provider during log in to authenticate requests to the storage. It will not try to obtain another token.
+        label: Use access token obtained during user log in
       manual:
-        helptext: Le permite establecer la audiencia del almacenamiento. OpenProject intentará obtener un token para el público dado del proveedor de identidad.
-        label: Definir manualmente el público del almacenamiento
+        helptext: OpenProject will exchange a token with the identity provider for the given audience.
+        label: Manually specify audience for which to exchange access token
     storage_list_blank_slate:
       description: Añade un almacenamiento para verlos aquí.
       heading: Aún no tiene ningún almacenamiento.

@@ -35,12 +35,11 @@ See COPYRIGHT and LICENSE files for more details.
   render(Primer::OpenProject::SubHeader.new) do |subheader|
     subheader.with_action_button(
       scheme: :primary,
-      aria: { label: I18n.t(:label_custom_field_new) },
-      title: I18n.t(:label_custom_field_new),
+      leading_icon: :plus,
+      label: t(:label_custom_field_new),
       tag: :a,
       href: new_custom_field_path(type: selected_tab(custom_fields_tabs)[:name])
-    ) do |button|
-      button.with_leading_visual_icon(icon: :plus)
+    ) do
       t("activerecord.models.custom_field")
     end
   end

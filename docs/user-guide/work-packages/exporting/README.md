@@ -177,9 +177,8 @@ If you select **Generate PDF**, a modal will open, where you can adjust the foll
 
 - **Template** is a dropdown menu showing all of the options currently enabled. At moment possible template options include:
 
-   - *Attributes and description* - this template lists all the work package attributes [configured in the work package form](../../../system-admin-guide/manage-work-packages/work-package-types/#work-package-form-configuration-enterprise-add-on), regardless whether they are filled out or not.
-   - *Contract* - this template includes work package details formatted to the standard German contract form.
-
+  - *Attributes and description* - this template lists all the work package attributes [configured in the work package form](../../../system-admin-guide/manage-work-packages/work-package-types/#work-package-form-configuration-enterprise-add-on), regardless whether they are filled out or not.
+  - *Contract* - this template includes work package details formatted to the standard German contract form.
     
 > [!TIP] 
 > You can define which templates are enabled for specific work package types in the [administration settings](../../../system-admin-guide/manage-work-packages/work-package-types).

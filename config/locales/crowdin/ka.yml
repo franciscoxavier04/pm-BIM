@@ -692,6 +692,7 @@ ka:
         automatic: "ავტომატური"
         manual: "Manual"
       show_relations: "ურთიერთობის ჩვენება"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "შვილები"
@@ -1420,6 +1421,8 @@ ka:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "cannot be in another project."
               not_a_valid_parent: "არასწორია."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "can only be set to %{soonest_start} or later so as not to violate the work package's relationships."
               cannot_be_null: "can not be set to null as finish date and duration are known."
@@ -2899,6 +2902,7 @@ ka:
   label_query_new: "ახალი მოთხოვნა"
   label_query_plural: "მომხმარებლის მოთხოვნები"
   label_read: "წაკითხვა..."
+  label_read_documentation: "Read documentation"
   label_register: "Create a new account"
   label_register_with_developer: "Register as developer"
   label_registered_on: "დარეგისტრირდა"
@@ -4329,6 +4333,8 @@ ka:
       code_500: "An internal error has occurred."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
       expected:

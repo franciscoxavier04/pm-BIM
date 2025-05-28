@@ -54,7 +54,7 @@ import {
   ICKEditorContext,
   ICKEditorInstance,
 } from 'core-app/shared/components/editor/components/ckeditor/ckeditor.types';
-import { fromEvent } from 'rxjs';
+import { fromEvent, Subscription } from 'rxjs';
 import { AttachmentCollectionResource } from 'core-app/features/hal/resources/attachment-collection-resource';
 import { populateInputsFromDataset } from 'core-app/shared/components/dataset-inputs';
 import { navigator } from '@hotwired/turbo';
@@ -125,6 +125,8 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   @ViewChild(OpCkeditorComponent, { static: true }) private ckEditorInstance:OpCkeditorComponent;
 
   private attachments:HalResource[];
+
+  private labelClickSubscription:Subscription;
 
   constructor(
     readonly elementRef:ElementRef<HTMLElement>,
@@ -218,7 +220,15 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
       this.setupAttachmentRemovalSignal(editor);
     }
 
+    // Set initial label
     this.setLabel();
+
+    // Use focusTracker to maintain aria-labelledby as CKEditor re-renders aria-label on every focus/blur event
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
+    editor.ui.focusTracker.on('change:isFocused', (_evt:unknown, _name:string, _isFocused:boolean) => {
+      this.setLabel();
+    });
+
     return editor;
   }
 
@@ -291,7 +301,11 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   }
 
   private setLabel() {
-    const label = document.querySelector<HTMLLabelElement>(`label[for=${this.textAreaId}]`)!;
+    const label = document.querySelector<HTMLLabelElement>(`label[for=${this.textAreaId}]`);
+    if (!label) {
+      console.error(`Please provide a label for the textarea with id ${this.textAreaId}`);
+      return;
+    }
 
     const ckContent = this.element.querySelector<HTMLElement>('.ck-content')!;
 
@@ -306,8 +320,10 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
     ckContent.removeAttribute('aria-label');
     ckContent.setAttribute('aria-labelledby', labelId);
 
-    fromEvent(label, 'click')
-      .pipe(this.untilDestroyed())
-      .subscribe(() => ckContent.focus());
+    if (!this.labelClickSubscription) {
+      this.labelClickSubscription = fromEvent(label, 'click')
+        .pipe(this.untilDestroyed())
+        .subscribe(() => ckContent.focus());
+    }
   }
 }

@@ -680,6 +680,7 @@ id:
         automatic: "Automatic"
         manual: "Manual"
       show_relations: "Show relations"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Sub"
@@ -1407,6 +1408,8 @@ id:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "tidak boleh dari proyek lain."
               not_a_valid_parent: "tidak valid."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "can only be set to %{soonest_start} or later so as not to violate the work package's relationships."
               cannot_be_null: "can not be set to null as finish date and duration are known."
@@ -2855,6 +2858,7 @@ id:
   label_query_new: "Queri baru"
   label_query_plural: "Kustom queri"
   label_read: "Baca..."
+  label_read_documentation: "Read documentation"
   label_register: "Buat akun baru"
   label_register_with_developer: "Daftar sebagai pengembang"
   label_registered_on: "Terdaftar sejak"
@@ -4279,6 +4283,8 @@ id:
       code_500: "An internal error has occurred."
       code_500_outbound_request_failure: "Permintaan keluar ke sumber daya lain telah gagal dengan kode status %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "Paket pekerjaan yang Anda cari tidak dapat ditemukan atau telah dihapus."
       expected:

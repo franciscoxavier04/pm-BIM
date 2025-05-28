@@ -45,6 +45,15 @@ module Storages::ProjectStorages::Members
       "member #{principal_class_name}".strip
     end
 
+    def column_css_class(column)
+      case column
+      when :status
+        "status -no-ellipsis"
+      else
+        super
+      end
+    end
+
     def name
       helpers.avatar principal, hide_name: false, size: :mini
     end

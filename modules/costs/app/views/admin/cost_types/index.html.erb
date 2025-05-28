@@ -45,12 +45,11 @@ See COPYRIGHT and LICENSE files for more details.
 <%= render(Primer::OpenProject::SubHeader.new) do |subheader| %>
   <% subheader.with_action_button(
        scheme: :primary,
-       aria: { label: I18n.t(:button_add_cost_type) },
-       title: I18n.t(:button_add_cost_type),
+       leading_icon: :plus,
+       label: I18n.t(:button_add_cost_type),
        tag: :a,
        href: new_admin_cost_type_path
-     ) do |button|
-       button.with_leading_visual_icon(icon: :plus)
+     ) do
        CostType.model_name.human
      end %>
 

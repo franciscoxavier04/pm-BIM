@@ -23,15 +23,13 @@ A subject pattern includes a combination of:
 
 - **Static text** (e.g., `Invoice`, `Vacation Request`)
 
-  > [!TIP]
-  >
-  > Use the company-approved language for static text, as it will not be translated into language users can specify for their personal accounts. 
+> [!TIP]
+> Use the company-approved language for static text, as it will not be translated into language users can specify for their personal accounts. 
 
 - **Dynamic attribute placeholders** (e.g., `[Author]`, `[Start date]`, `[Custom Field: Invoice ID]`)
 
-  > [!TIP]
-  >
-  > Dynamic attribute placeholders will be shown in the default language defined globally for all users in your organization (under Administration -> Users and permissions -> User settings). Users can still change language settings for their personal accounts, but this will have no bearing on the automatic work package subjects. 
+> [!TIP]
+> Dynamic attribute placeholders will be shown in the default language defined globally for all users in your organization (under Administration -> Users and permissions -> User settings). Users can still change language settings for their personal accounts, but this will have no bearing on the automatic work package subjects. 
 
 When users create or edit work packages, OpenProject automatically replaces these placeholders with real attribute values, generating clear subjects.
 
@@ -49,9 +47,8 @@ Administrators configure subject patterns using a simple editor in the administr
 
 3. Search for and select an attribute from the dropdown. The chosen attribute appears as a placeholder (e.g., `[Start date]`).
 
-   > [!TIP]
-   >
-   > Some attributes can be selected not only for the work package in question, but also for it's parent work package.
+> [!TIP]
+> Some attributes can be selected not only for the work package in question, but also for it's parent work package.
 
 4. Don't forget to *Save* your changes. 
 
@@ -119,6 +116,7 @@ Automatic subjects update whenever an attribute referenced in the **current work
 > Attributes referencing parent work packages or project attributes won't trigger immediate updates. Changes in parent or project attributes appear only when the child work package itself is updated and saved again.
 
 ## FAQs
+
 ### Why "N/A" appears in subjects
 
 "N/A" indicates an unavailable attribute referenced in the subject pattern. Typical causes include:
@@ -127,9 +125,9 @@ Automatic subjects update whenever an attribute referenced in the **current work
 - The attribute was removed from form configuration after creating the pattern.
 - A parent attribute is referenced, but the parent doesn't contain the attribute.
 
-### Why [Attribute Name] appears in subjects
+### Why \[Attribute Name\] appears in subjects
 
-[Attribute Name] indicates an empty attribute referenced in the subject pattern.
+\[Attribute Name\] indicates an empty attribute referenced in the subject pattern.
 
 - The attribute hasn't been filled by the user.
 - A parent attribute is referenced, but no parent is set.
@@ -146,8 +144,3 @@ Good subject patterns should be:
 - **Language choice**: Use the company-approved language for 
 
 Check our [Example Subject Patterns](https://www.openproject.org/blog/automatically-generated-work-package-subjects/) for inspiration.
-
-> [!TIP]
->
-> 
-

@@ -162,6 +162,14 @@ module API
             "#{root}/attachments/#{attachment_id}/uploaded"
           end
 
+          def self.emoji_reactions_by_activity_comment(id)
+            "#{root}/activities/#{id}/emoji_reactions"
+          end
+
+          def self.emoji_reactions_by_work_package_comments(work_package_id)
+            "#{work_package(work_package_id)}/activities_emoji_reactions"
+          end
+
           def self.available_assignees_in_project(project_id)
             "#{project(project_id)}/available_assignees"
           end
@@ -570,6 +578,10 @@ module API
 
           def self.work_package_schema(project_id, type_id)
             "#{root}/work_packages/schemas/#{project_id}-#{type_id}"
+          end
+
+          def self.work_package_activities_emoji_reactions(id)
+            "#{work_package_activities(id)}/activities_emoji_reactions"
           end
 
           def self.work_package_activities(id)

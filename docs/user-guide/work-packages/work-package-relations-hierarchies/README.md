@@ -43,6 +43,8 @@ You can select one of the following relations:
 
 - **Related to** - This option adds a link from the work package A to work package B, so that project members can immediately see the connection, even if the work packages are not members of the same hierarchy.
 
+- **Parent**  - This option makes the related work package a parent of the current (child) work package.
+
 - **Duplicates / Duplicated by** - This option indicates that the work package B duplicates a work package A in one way or another, for example both address the same task. This can be useful if you have the same work package that needs to be a part of a closed and public projects at the same time. The connection in this case is only semantic, the changes you make in work package A will need to be adapted in work package B manually.
 
 > [!NOTE]
@@ -109,7 +111,7 @@ There are **four ways to add or create a child work package**:
 
    ![Add a child in a work package table](openproject_user_guide_wp_table_add_child.png)
 
-4.  You can add a child work package directly under the table of related work packages. To do that you first need to [include a table of related work packages to work package forms (Enterprise add-on)](../../../system-admin-guide/manage-work-packages/work-package-types/#add-table-of-related-work-packages-to-a-work-package-form-enterprise-add-on). 
+4. You can add a child work package directly under the table of related work packages. To do that you first need to [include a table of related work packages to work package forms (Enterprise add-on)](../../../system-admin-guide/manage-work-packages/work-package-types/#add-table-of-related-work-packages-to-a-work-package-form-enterprise-add-on). 
 
    ![A table of related work packages in OpenProject](open_project_admin_related_wp_table.png)
 
@@ -139,24 +141,20 @@ For more information on the work package creation take a look at the guideline o
 
 To edit or remove the parent of a work package open the work package. At the top of the details view of the work package you will see the work package hierarchy. Click on the **edit icon** or **delete icon** to change the work package parent.
 
+Alternatively you can select the **Delete relation** option next to the parent relation under *Relations* tab.
+
 ![change parent work package](openproject_user_guide_relations_change_parent.png)
 
 ## Display work package hierarchies
 
 After adding the parent and child work packages they are listed in the *Relations* tab. Related work packages are grouped by the type of relation into respective sections. 
 
-> [!NOTE]
->
-> Only the children are shown in the *Relations* tab and the parent isn't.
-
->  [!TIP]
->
+> [!TIP]
 > Dates of the related work packages are only shown for date-based relations: children, predecessor and successor. 
 
 ![Work package relations displayed in the Relations tab in OpenProject](openproject_user_guide_wp_relations_tab_overview.png)
 
 > [!NOTE]
->
 > If you do not have necessary permissions (for example if only one specific work package was shared with you, but not the entire project), you will be able to see that a work package has a relation, and the dates of that related work package, but not other details of that related work package.
 
 ![Example of work package relations displayed under Relations tab for a user with limited permissions in OpenProject](openproject_user_guide_ghost_relations.png)

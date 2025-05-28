@@ -189,6 +189,31 @@ RSpec.describe WorkPackages::DatePickerController do
         end
       end
     end
+
+    context "when changing the start date" do
+      let(:params_after_changing_start_date) do
+        params_after_changing_values.deep_merge(
+          "work_package" => {
+            "start_date" => "2025-04-15",
+            "start_date_touched" => "true",
+            "due_date" => "2025-04-21",
+            "due_date_touched" => "true"
+          }
+        )
+      end
+
+      it "includes the live region turbo-stream with the correct message and attributes" do
+        get("new", params: params_after_changing_start_date)
+
+        expect(response.body).to include('<turbo-stream action="liveRegion"')
+        expect(response.body).to include('politeness="polite"')
+        expect(response.body).to include('delay="500"')
+
+        expected_message = "Date picker updated. Scheduling mode: Manual, working days only, " +
+          "Start date: 2025-04-15, Finish date: 2025-04-21, Duration: 5 days"
+        expect(response.body).to include("message=\"#{expected_message}\"")
+      end
+    end
   end
 
   describe "GET /work_packages/:id/progress" do

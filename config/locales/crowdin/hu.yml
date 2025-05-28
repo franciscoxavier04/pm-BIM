@@ -691,6 +691,7 @@ hu:
         automatic: "Automatikus"
         manual: "Manual"
       show_relations: "Show relations"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Gyermekek"
@@ -1419,6 +1420,8 @@ hu:
               cannot_be_self_assigned: "nem rendelhető önmagához.\n"
               cannot_be_in_another_project: "nem lehet egy másik projektben."
               not_a_valid_parent: "érvénytelen."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "csak %{soonest_start} vagy későbbre lehet állítani, hogy ne okozzon problémát a munkacsomag kapcsolataiban."
               cannot_be_null: "nem állítható nullára, mivel a befejezés dátuma és időtartama ismert."
@@ -1527,8 +1530,8 @@ hu:
         one: "Projekt"
         other: "Projektek"
       project_query:
-        one: "Project list"
-        other: "Project lists"
+        one: "Projekt lista"
+        other: "Projekt listák"
       query: "Egyéni lekérdezés"
       reminder: "Reminder"
       role:
@@ -2898,6 +2901,7 @@ hu:
   label_query_new: "Új lekérdezés"
   label_query_plural: "Egyéni lekérdezések"
   label_read: "Olvassa el..."
+  label_read_documentation: "Read documentation"
   label_register: "Új fiók létrehozása"
   label_register_with_developer: "Regisztráljon mint fejlesztő"
   label_registered_on: "Regisztrált"
@@ -3319,7 +3323,7 @@ hu:
   notice_locking_conflict_reload_page: "Töltse újra az oldalt, tekintse át a módosításokat, és a frissítse újra."
   notice_locking_conflict_warning: "This page has been updated by someone else. To not lose your edits, copy them locally and reload to view the updated version."
   notice_locking_conflict_danger: "Could not save your changes because of conflicting modifications. To not lose your edits, copy them locally and reload to view the updated version."
-  notice_locking_conflict_action_button: "Discard changes and reload"
+  notice_locking_conflict_action_button: "Módosítások elvetése és újratöltés"
   notice_member_added: Hozzáadva %{name} projekthez.
   notice_members_added: '%{number} felhasználó hozzáadva a projekthez.'
   notice_member_removed: "%{user} eltávolítva a projektből."
@@ -3424,7 +3428,7 @@ hu:
   permission_edit_project_attributes: "Edit project attributes"
   permission_edit_project_phases: "Edit project phases"
   permission_edit_reportings: "Jelentések szerkesztése"
-  permission_edit_time_entries: "Edit time logs for other users"
+  permission_edit_time_entries: "Időnaplók szerkesztése más felhasználóknál"
   permission_edit_timelines: "Idővonalak szerkesztése"
   permission_edit_wiki_pages: "Wiki lapok szerkesztése"
   permission_export_work_packages: "feladatcsoportok exportálása"
@@ -3537,7 +3541,7 @@ hu:
     member_of_group: "Hozzárendelt csoport"
     name_or_identifier: "Név vagy azonosító"
     only_subproject_id: "Csak alprojekt"
-    shared_with_user: "Shared with users"
+    shared_with_user: "Megosztás felhasználókkal"
     shared_with_me: "Shared with me"
     subproject_id: "Beleértve az alprojektet"
   repositories:
@@ -3649,8 +3653,8 @@ hu:
     warnings:
       cannot_annotate: "Ez a fájl nem annotálható."
   scheduling:
-    manual: "set to Manual"
-    automatic: "set to Automatic"
+    manual: "manuálisra állítás"
+    automatic: "automatára állítás"
   search_input_placeholder: "Keresés ..."
   setting_allowed_link_protocols: "Allowed link protocols"
   setting_allowed_link_protocols_text_html: >-
@@ -4327,6 +4331,8 @@ hu:
       code_500: "Belső hiba történt."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "A keresett munkacsomag nem található, vagy törölve lett."
       expected:

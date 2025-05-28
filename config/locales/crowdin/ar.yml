@@ -724,6 +724,7 @@ ar:
         automatic: "Automatic"
         manual: "Manual"
       show_relations: "Show relations"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "الأطفال"
@@ -1456,6 +1457,8 @@ ar:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "لا يمكن أن يكون في مشروع آخر."
               not_a_valid_parent: "غير صالح."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "يمكن فقط تعيينه إلى %{soonest_start} أو في وقت لاحق حتى لا يتعارض مع علاقات حزمة العمل."
               cannot_be_null: "can not be set to null as finish date and duration are known."
@@ -3059,6 +3062,7 @@ ar:
   label_query_new: "استعلام جديد"
   label_query_plural: "استعلامات مخصصة"
   label_read: "قراءة..."
+  label_read_documentation: "Read documentation"
   label_register: "إنشاء حساب جديد"
   label_register_with_developer: "التسجيل كمطور"
   label_registered_on: "مسجلة في"
@@ -4499,6 +4503,8 @@ ar:
       code_500: "حدث خطأ داخلي."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "لا يمكن معالجة الطلب بسبب أن رمز المؤسسة غير صالح أو مفقود."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
       expected:

@@ -30,7 +30,7 @@ As a default, you will see two lists of all **work packages assigned to you** an
 
 ## Configure the My page
 
-![Configuring widgets on My page in OpenProject](openproject-mypage-widgets.gif)
+<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Quick_guide-Widgets.mp4"></video>
 
 ### Add widgets
 
@@ -63,8 +63,11 @@ If you click the dots on the lower right hand corner in a widget you can change 
 You can configure the view of a work package widget to have the information included that you need.
 
 <div class="glossary">
+
 **Work package** is a subset of a project that can be assigned to users for execution, such as Tasks, Bugs, User Stories, Milestones, and more. Work packages have a type, an ID and a subject and may have additional attributes, such as assignee, responsible, story points or target version. Work packages are displayed in a project timeline (unless they are filtered out in the timeline configuration) - either as a milestone or as a phase. In order to use the work packages, the work package module has to be activated in the project settings.
+
 </div>
+
 ![change the size of a widget](change-size-of-widget.gif)
 
 On a work package widget, click on the button with the three dots and select **Configure view...**
@@ -80,6 +83,10 @@ To delete a widget from the dashboard, click on the three dots in the upper righ
 ![My page remove widget](my-page-remove-widget.png)
 
 ## My spent time widget
+
+> [!NOTE]
+>
+> Please note that this widget will be deprecated in an upcoming release. Instead of using it, we recommend logging time via [My time tracking module](../../user-guide/my-time-tracking/). 
 
 To track spent time, [add the **My spent time** widget](#add-widgets) in the My page.
 

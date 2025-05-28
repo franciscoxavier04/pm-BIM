@@ -692,6 +692,7 @@ bg:
         automatic: "Автоматично"
         manual: "Manual"
       show_relations: "Show relations"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Деца"
@@ -1420,6 +1421,8 @@ bg:
               cannot_be_self_assigned: "не може да бъде присвоен на себе си."
               cannot_be_in_another_project: "не може да бъде в друг проект."
               not_a_valid_parent: "е невалиден."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "може да се зададе само до %{soonest_start} или по-късно, за да не нарушават взаймоотношения на работни пакети."
               cannot_be_null: "не може да бъде зададена като нула, тъй като датата на завършване и продължителността са известни."
@@ -2899,6 +2902,7 @@ bg:
   label_query_new: "Ново търсене"
   label_query_plural: "Потребителско търсене"
   label_read: "Прочитане..."
+  label_read_documentation: "Read documentation"
   label_register: "Регистрирайте нов профил"
   label_register_with_developer: "Регистрирайте се като разработчик"
   label_registered_on: "Регистриран на"
@@ -4329,6 +4333,8 @@ bg:
       code_500: "Възникна вътрешна грешка."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
       expected:

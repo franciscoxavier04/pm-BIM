@@ -360,7 +360,7 @@ ro:
           "16_0":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
+                Versiunea conține diverse caracteristici noi și îmbunătățiri, cum ar fi <br> <ul class="%{list_styling_class}"> <li>Întâlniri în așteptare și sfârșitul întâlnirilor clasice.</li> <li>Planuri Enterprise actualizate.</li> <li>Comentarii interne în pachetele de lucru (add-on Enterprise).</li> <li>Subiecte generate automat pentru pachetele de lucru (add-on Enterprise).</li> <li>Modul separat de urmărire a timpului cu vedere calendaristică.</li> <li>Relația părinte afișată în fila relații pachet de lucru.</li> <li>Versiune pentru comunitate: Grafice pe pagina de prezentare generală a proiectului.</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "An error occured while fetching data."
@@ -1115,8 +1115,8 @@ ro:
       label_delete_page: "Șterge pagina curentă"
       button_apply: "Aplică"
       button_save: "Salvează"
-      button_submit: "Trimitere"
-      button_cancel: "Anulare"
+      button_submit: "Trimite"
+      button_cancel: "Anulează"
       button_delete: "Șterge"
       form_submit:
         title: "Confirmați pentru a continua"
@@ -1143,7 +1143,7 @@ ro:
     inplace:
       button_edit: "%{attribute}: Editare"
       button_save: "%{attribute}: Salvează"
-      button_cancel: "%{attribute}: Anulare"
+      button_cancel: "%{attribute}: Anulează"
       button_save_all: "Salvează"
       button_cancel_all: "Anulează"
       link_formatting_help: "Ajutor pentru formatarea textului"

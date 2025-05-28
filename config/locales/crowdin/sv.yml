@@ -692,6 +692,7 @@ sv:
         automatic: "Automatisk"
         manual: "Manual"
       show_relations: "Show relations"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Barn"
@@ -1420,6 +1421,8 @@ sv:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "kan inte vara i ett annat projekt."
               not_a_valid_parent: "är ogiltig."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "kan endast anges till %{soonest_start} eller senare för att inte skada arbetspaketets relationer."
               cannot_be_null: "can not be set to null as finish date and duration are known."
@@ -2899,6 +2902,7 @@ sv:
   label_query_new: "Ny fråga"
   label_query_plural: "Anpassade frågor"
   label_read: "Läs..."
+  label_read_documentation: "Read documentation"
   label_register: "Skapa ett nytt konto"
   label_register_with_developer: "Registrera dig som utvecklare"
   label_registered_on: "Registrerad den"
@@ -4326,6 +4330,8 @@ sv:
       code_500: "Ett internt fel har inträffat."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
       expected:

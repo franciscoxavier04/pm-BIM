@@ -680,6 +680,7 @@ zh-CN:
         automatic: "自动"
         manual: "手动"
       show_relations: "显示关系"
+      update_inputs_aria_live_message: "日期选择器已更新。 %{message}"
       tabs:
         aria_label: "日期选择器标签"
         children: "子项"
@@ -1407,6 +1408,8 @@ zh-CN:
               cannot_be_self_assigned: "不能分配给自己。"
               cannot_be_in_another_project: "不能在另一个项目中。"
               not_a_valid_parent: "是无效的。"
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "仅可以设置为 %{soonest_start} 或之后，以免违反工作包的关系。"
               cannot_be_null: "无法设置为 null，因为结束日期和持续时间已知。"
@@ -1570,7 +1573,7 @@ zh-CN:
       added_date: "设为 %{date}"
       changed_date: "由 %{from} 变更为 %{to}"
       deactivated: "已停用"
-      deleted_project_phase: "Deleted project phase"
+      deleted_project_phase: "删除项目阶段"
       phase_and_both_gates: "%{phase_message}。%{start_gate_message}，和%{finish_gate_message}"
       phase_and_one_gate: "%{phase_message}。%{gate_message}"
       removed_date: "删除日期%{date}"
@@ -2011,7 +2014,7 @@ zh-CN:
       work_package_sharing:
         description: "与非此项目成员的用户共享工作包。"
       project_list_sharing:
-        description: "Share project lists with individual users."
+        description: "与个人用户共享项目列表。"
       define_custom_style:
         title: "自定义颜色主题和 Logo"
         more_info: "注：使用的 Logo 将可公开访问。"
@@ -2855,6 +2858,7 @@ zh-CN:
   label_query_new: "新的查询"
   label_query_plural: "自定义查询"
   label_read: "阅读..."
+  label_read_documentation: "Read documentation"
   label_register: "创建一个新帐户"
   label_register_with_developer: "注册成为开发人员"
   label_registered_on: "注册于"
@@ -4276,6 +4280,8 @@ zh-CN:
       code_500: "发生了内部错误。"
       code_500_outbound_request_failure: "对另一个资源的出站请求存在失败状态代码 %{status_code} 。"
       code_500_missing_enterprise_token: "由于企业令牌是无效的或缺失的，故无法处理该请求。"
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "找不到您要查找的工作包或者它已被删除。"
       expected:

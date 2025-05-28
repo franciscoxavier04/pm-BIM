@@ -165,7 +165,7 @@ sudo yum remove pgsql13
 > Please follow this section only if you have installed OpenProject using [this procedure](../../installation/docker/).
 > Before attempting the upgrade, please ensure you have performed a backup of your installation by following the [backup guide](../../operation/backing-up/).
 
-You can find the upgrade instructions for your docker-compose setup in the [openproject-deploy](https://github.com/opf/openproject-deploy/blob/stable/15/compose/control/README.md#upgrade) repository.
+You can find the upgrade instructions for your docker-compose setup in the [openproject-deploy](https://github.com/opf/openproject-deploy/blob/stable/16/README.md#upgrade) repository.
 
 Remember that you need to have checked out that repository and work in the `compose` directory for the instructions to work.
 
@@ -238,7 +238,7 @@ And then restart OpenProject.
 
 ## Helm Chart installation
 
-> Please follow this section only if you have installed OpenProject using [this procedure](https://www.openproject.org/docs/installation-and-operations/installation/helm-chart/).
+> Please follow this section only if you have installed OpenProject using [this procedure](../../installation/helm-chart/).
 > Before attempting the upgrade, please ensure you have performed a backup of your installation by following the [backup guide](../../operation/backing-up/).
 
 1. Stop your frontend or scale it down to 0 to prevent frontend changes.
@@ -277,7 +277,7 @@ Restore the backup by running the following command:
 psql -U postgres -h localhost -f /bitnami/postgresql/backup.sql
 ```
 
-6. Restore Frontend Availability by starting the frontent or scaling it up again.
+6. Restore Frontend Availability by starting the frontend or scaling it up again.
 
 7. Verify the Upgrade by ensuring everything is working as expected by checking that the PostgreSQL instance is running correctly and the frontend is accessible.
 

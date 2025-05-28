@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -52,7 +54,7 @@ module OpenProject::TextFormatting::Matchers
       end
 
       def render_link(wp_id, matcher)
-        if matcher.sep == "##" || matcher.sep == "###"
+        if ["##", "###"].include?(matcher.sep)
           render_work_package_macro(wp_id, detailed: (matcher.sep === "###"))
         else
           render_work_package_link(wp_id)

@@ -33,6 +33,7 @@ require "spec_helper"
 RSpec.describe Types::Patterns::TokenPropertyMapper do
   shared_let(:responsible) { create(:user, firstname: "Responsible") }
   shared_let(:assignee) { create(:user, firstname: "Assignee") }
+  shared_let(:version) { create(:version) }
   shared_let(:parent_assignee) { create(:user, firstname: "Parent", lastname: "Assignee") }
 
   shared_let(:category) { create(:category) }
@@ -41,19 +42,29 @@ RSpec.describe Types::Patterns::TokenPropertyMapper do
 
   shared_let(:work_package_parent) do
     create(:work_package, project:, category:, start_date: Date.yesterday, estimated_hours: 120,
-                          remaining_hours: 80, due_date: 3.months.from_now, assigned_to: parent_assignee)
+                          remaining_hours: 80, due_date: 3.months.from_now, assigned_to: parent_assignee, version:)
   end
 
   shared_let(:work_package) do
     create(:work_package, responsible:, project:, category:, due_date: 1.month.from_now, assigned_to: assignee,
                           parent: work_package_parent, start_date: Time.zone.today, estimated_hours: 30,
-                          remaining_hours: 25)
+                          remaining_hours: 25, version:)
   end
 
   shared_let(:string_custom_field) do
     create(:string_wp_custom_field).tap do |custom_field|
       project.work_package_custom_fields << custom_field
       work_package.type.custom_fields << custom_field
+    end
+  end
+
+  shared_let(:boolean_custom_field) do
+    create(:boolean_wp_custom_field).tap do |custom_field|
+      project.work_package_custom_fields << custom_field
+      work_package.type.custom_fields << custom_field
+
+      work_package.send(:"custom_field_#{custom_field.id}=", true)
+      work_package.save
     end
   end
 
@@ -94,6 +105,14 @@ RSpec.describe Types::Patterns::TokenPropertyMapper do
       t.key == :"custom_field_#{mult_list_custom_field.id}"
     end
     expect(token.call(work_package)).to eq(%w[A B])
+  end
+
+  it "supports boolean custom fields" do
+    token = described_class.new.tokens_for_type(work_package.type).detect do |t|
+      t.key == :"custom_field_#{boolean_custom_field.id}"
+    end
+
+    expect(token.call(work_package)).to be(true)
   end
 
   it "must return nil if custom field is not activated in project" do

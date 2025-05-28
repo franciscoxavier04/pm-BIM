@@ -708,6 +708,7 @@ cs:
         automatic: "Automaticky"
         manual: "Manuálně"
       show_relations: "Zobrazit vztahy"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Potomci"
@@ -1438,6 +1439,8 @@ cs:
               cannot_be_self_assigned: "nemůže být přiřazeno k sobě."
               cannot_be_in_another_project: "nemůže být v jiném projektu."
               not_a_valid_parent: "je neplatné."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "lze nastavit pouze na %{soonest_start} nebo později, aby nedošlo k porušování vztahů pracovního balíčku."
               cannot_be_null: "nelze nastavit na null jako datum ukončení a doba trvání je známa."
@@ -2979,6 +2982,7 @@ cs:
   label_query_new: "Nový dotaz"
   label_query_plural: "Vlastní dotazy"
   label_read: "Číst..."
+  label_read_documentation: "Read documentation"
   label_register: "Vytvořit nový účet"
   label_register_with_developer: "Zaregistrovat se jako vývojář"
   label_registered_on: "Registrován"
@@ -4413,6 +4417,8 @@ cs:
       code_500: "Došlo k vnitřní chybě."
       code_500_outbound_request_failure: "Odchozí požadavek na jiný dokument selhal se stavovým kódem %{status_code}."
       code_500_missing_enterprise_token: "Požadavek nelze zpracovat kvůli neplatnému nebo chybějícímu tokenu Enterprise."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "Pracovní balíček, který hledáte, nebyl nalezen nebo byl odstraněn."
       expected:

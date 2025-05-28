@@ -15,6 +15,7 @@ de:
           oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On mit Zwei-Wege OAuth 2.0 als Fallback
           two_way_oauth2: Zwei-Wege OAuth 2.0 Authorization-Code-Flow
         storage_audience: Speicher-Audience
+        token_exchange_scope: Storage Scope
       storages/project_storage:
         project_folder: Projektordner
         project_folder_mode: Projektordnermodus
@@ -80,7 +81,7 @@ de:
     edit_project_folder:
       label: Projektordner bearbeiten
     open:
-      remote_identity_error: An unexpected error occured while connecting to the storage.
+      remote_identity_error: An unexpected error occurred while connecting to the storage.
     project_folder_mode:
       automatic: Automatisch verwaltet
       inactive: Kein spezifischer Ordner
@@ -225,12 +226,12 @@ de:
       openproject_oauth: OpenProject OAuth
       project_folders: Projektordner
       redirect_uri: Umleitungs-URI
-      storage_audience: Speicher-Audience
       storage_audience_blank: Keine Audience wurde konfiguriert.
-      storage_audience_description: Erhalten von Token für die Audience "%{audience}".
-      storage_audience_idp: Verwendung des ersten vom Identitätsanbieter erhaltenen Zugriffstokens, unabhängig von der Zielgruppe.
+      storage_audience_description: Exchanging tokens for audience "%{audience}".
+      storage_audience_idp: Using access token obtained by identity provider during login, regardless of audience.
       storage_oauth: Nextcloud OAuth
       storage_provider: Speicheranbieter
+      token_exchange: Token Exchange
     health:
       actions:
         download_report: Download
@@ -252,7 +253,7 @@ de:
           existing_token: Benutzer Token
           header: Authentifizierung
           non_provisioned_user: Durch IDP bereitgestellter Benutzer
-          offline_access: Configured OIDC offline_access scope
+          offline_access: Konfigurierter OIDC-Scope offline_access
           provisioned_user_provider: Durch OIDC bereitgestellter Benutzer
           token_negotiable: Benutzer-Token-Fähigkeiten
           user_bound_request: Benutzerbasierte Anfrageauthentifizierung
@@ -283,8 +284,8 @@ de:
         nc_dependency_version_mismatch: Die %{dependency} App-Version wird nicht unterstützt. Bitte aktualisieren Sie Ihren Nextcloud Server.
         nc_group_folder_not_found: Der Gruppenordner konnte nicht gefunden werden.
         nc_host_not_found: Kein Nextcloud-Server unter der konfigurierten Host-URL gefunden. Bitte überprüfen Sie die Konfiguration.
-        nc_oauth_request_not_found: OpenProject konnte den Hauptordner von Nextcloud mit dem aktuellen eingeloggten Benutzer nicht finden. Bitte überprüfen Sie die Server-Logs für weitere Informationen.
-        nc_oauth_request_unauthorized: Der aktuelle Benutzer ist nicht berechtigt, den Hauptordner von Nextcloud zu sehen, oder wir konnten keinen Token hierfür erhalten. Bitte überprüfen Sie die Serverprotokolle für weitere Informationen.
+        nc_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        nc_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
         nc_oauth_token_missing: OpenProject kann die Kommunikation auf Benutzerebene mit Nextcloud nicht testen, da der Benutzer sein Nextcloud Konto noch nicht verknüpft hat.
         nc_unexpected_content: Unerwarteter Inhalt im verwalteten Gruppenordner gefunden.
         nc_userless_access_denied: Das konfigurierte App-Passwort ist ungültig.
@@ -293,18 +294,19 @@ de:
         od_client_write_permission_missing: Der Client hat anscheinend keine Schreibberechtigungen. Bitte überprüfen Sie die Setup-Dokumentation für Ihren Speicher.
         od_drive_id_invalid: Die konfigurierte Laufwerks-ID scheint ungültig. Bitte überprüfen Sie die Konfiguration.
         od_drive_id_not_found: Die konfigurierte Laufwerks-ID konnte nicht gefunden werden. Bitte überprüfen Sie die Konfiguration.
-        od_existing_test_folder: Der für den Test benötigte Ordner %{folder_name} existiert bereits. Bitte löschen Sie ihn und versuchen Sie es erneut.
-        od_oauth_request_not_found: OpenProject konnte den Hauptordner in OneDrive mit dem aktuellen eingeloggten Benutzer nicht finden. Bitte überprüfen Sie die Server-Logs für weitere Informationen.
-        od_oauth_request_unauthorized: The current user isn't authorized to see the root folder of OneDrive/SharePoint or we couldn't acquire a token. Please check the server logs for further information.
+        od_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        od_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
         od_oauth_token_missing: OpenProject kann die Verbindung zu OneDrive/SharePoint auf Benutzerebene nicht testen, da das Microsoft-Konto noch nicht verknüpft wurde.
         od_tenant_id_wrong: Die konfigurierte Verzeichnis-(Mandanten-)ID ist ungültig. Bitte überprüfen Sie die Konfiguration.
+        od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
         od_unexpected_content: Unerwarteter Inhalt auf dem Laufwerk gefunden.
-        offline_access_scope_missing: It is recommended to configure the OpenID Connect provider to request the offline_access scope. The integration may still work anyways, but make sure that refresh tokens do not expire.
-        oidc_cant_acquire_token: Dein OpenID Connect Setup bietet weder die nötige Audience noch bietet es Tokenaustausch Möglichkeiten. Bitte lies unsere Dokumentation für weitere Informationen.
-        oidc_cant_exchange_token: Es scheint ein Problem mit dem Token Exchange Setup auf Ihrem OpenID Connect Provider zu geben. Bitte überprüfen Sie die Konfiguration und versuchen Sie es erneut.
+        offline_access_scope_missing: Es wird empfohlen, den OpenID Connect-Anbieter so zu konfigurieren, dass er den Scope offline_access anfordert. Die Integration kann trotzdem funktionieren, aber stellen Sie sicher, dass die Aktualisierungstoken nicht ablaufen.
         oidc_cant_refresh_token: Beim Versuch, Ihren Zugriff auf den Speicher zu überprüfen, ist ein Fehler aufgetreten. Bitte überprüfen Sie die Server-Protokolle auf weitere Informationen.
         oidc_non_oidc_user: Der aktuelle Benutzer wurde zwar bereitgestellt, aber nicht von einem OpenID Connect (OIDC) Identity Provider. Bitte wiederholen Sie die Prüfung mit einem OIDC-bereitgestellten Benutzer.
         oidc_non_provisioned_user: Der aktuelle Benutzer wird nicht von einem OpenID Connect Identity Provider bereitgestellt. Bitte führen Sie die Prüfung mit einem bereitgestellten Benutzer erneut durch.
+        oidc_token_acquisition_failed: Your OpenID Connect setup doesn't provide the necessary audience, nor does it provide token exchange capabilities. Please check out our documentation for more information.
+        oidc_token_exchange_failed: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
+        oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         unknown_error: Die Verbindung konnte nicht validiert werden. Es ist ein unbekannter Fehler aufgetreten. Bitte prüfen Sie die Serverprotokolle für weitere Informationen.
       label_error: Fehler
       label_failed: Fehlgeschlagen
@@ -349,8 +351,9 @@ de:
         integration: Nextcloud Administration / OpenProject
         oauth_configuration: Kopieren Sie diese Werte aus der %{application_link_text}.
         provider_configuration: Bitte stellen Sie sicher, dass Sie Administrationsrechte in Ihrer Nextcloud-Instanz haben und die %{application_link_text} vor dem Setup installiert wurde.
-        storage_audience: Bitte geben Sie die Client-ID ein, die die Nextcloud-Instanz für die Kommunikation mit dem Identitätsanbieter verwendet.
+        storage_audience: The client ID that the Nextcloud instance uses to communicate with the identity provider.
         storage_audience_placeholder: z.B. Nextcloud
+        token_exchange_scope: The scopes that should be requested during token exchange, each one separated by a space.
       no_specific_folder: Standardmäßig startet jeder Benutzer in seinem eigenen Home-Ordner, wenn er eine Datei hochlädt.
       no_storage_set_up: Es sind noch keine Dateispeicher eingerichtet.
       not_logged_into_storage: Bitte melden Sie sich zunächst an, um einen Projektordner auszuwählen
@@ -382,9 +385,9 @@ de:
     label_creator: Ersteller
     label_delete_storage: Dateispeicher löschen
     label_edit_storage_access_management: Speicherzugriffsverwaltung bearbeiten
-    label_edit_storage_audience: Speicher-Audience bearbeiten
     label_edit_storage_automatically_managed_folders: Automatisch verwaltete Projektordner des Dateispeichers bearbeiten
     label_edit_storage_host: Dateispeicher-Host bearbeiten
+    label_edit_token_exchange: Edit token exchange configuration
     label_existing_manual_folder: Vorhandener Ordner mit manuell verwalteten Berechtigungen
     label_file_storage: Dateispeicher
     label_host: Host-URL
@@ -477,13 +480,13 @@ de:
       description: Beim Deaktivieren dieser Option wird die Liste der Anhänge auf der Registerkarte Arbeitspakete ausgeblendet. Die in der Beschreibung eines Arbeitspakets angehängten Dateien werden weiterhin im internen Anhang gespeichert.
       label: Anhänge auf dem Dateien-Tab der Arbeitspakete anzeigen
     storage_audience:
-      documentation_intro: Details on the following options and what needs to be configured in the identity provider can be found in our documentation.
+      documentation_intro: Please read our documentation for details on the following options and configuration of the identity provider.
       idp:
-        helptext: OpenProject verwendet das erste Zugangs-Token des Identity Providers, um Anfragen an den Speicher zu authentifizieren. Es wird nicht versuchen, ein neues Token zu erhalten.
-        label: Benutze den ersten Zugangs-Token des Identitätsanbieters
+        helptext: OpenProject will use the access token received by the identity provider during log in to authenticate requests to the storage. It will not try to obtain another token.
+        label: Use access token obtained during user log in
       manual:
-        helptext: Ermöglicht es Ihnen, die Audience des Speichers festzulegen. OpenProject wird versuchen, ein Token für die angegebene Audience vom Identity Provider zu erhalten.
-        label: Speicher-Audience manuell definieren
+        helptext: OpenProject will exchange a token with the identity provider for the given audience.
+        label: Manually specify audience for which to exchange access token
     storage_list_blank_slate:
       description: Fügen Sie einen Dateispeicher hinzu, um ihn hier zu sehen.
       heading: Sie haben noch keine Dateispeicher.

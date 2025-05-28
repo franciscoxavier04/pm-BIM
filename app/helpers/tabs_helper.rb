@@ -65,7 +65,7 @@ module TabsHelper
   end
 
   def selected_tab(tabs)
-    selected = tabs.detect { |t| t[:name].to_s == params[:tab].to_s } || tabs.detect { |t| current_page?(t[:path]) }
+    selected = tabs.detect { |t| t[:name].to_s == params[:tab].to_s } || tabs.detect { |t| tab_route_shown?(t) }
 
     return selected unless selected.nil?
 
@@ -77,5 +77,11 @@ module TabsHelper
       path = tab[:path].respond_to?(:call) ? instance_exec(params, &tab[:path]) : tab[:path]
       tab.dup.merge(path:)
     end
+  end
+
+  def tab_route_shown?(tab)
+    # Check not only for exact matches but also for sub-routes, like
+    # /module_a/items and /module_a/items/:id
+    request&.path&.starts_with?(tab[:path])
   end
 end

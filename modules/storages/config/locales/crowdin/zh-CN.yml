@@ -15,6 +15,7 @@ zh-CN:
           oauth2_sso_with_two_way_oauth2_fallback: 以双向 OAuth 2.0 作为单点登录的备用方案
           two_way_oauth2: 双向 OAuth 2.0 授权代码流
         storage_audience: 存储受众
+        token_exchange_scope: Storage Scope
       storages/project_storage:
         project_folder: 项目文件夹
         project_folder_mode: 项目文件夹模式
@@ -80,7 +81,7 @@ zh-CN:
     edit_project_folder:
       label: 编辑项目文件夹
     open:
-      remote_identity_error: 连接存储时发生异常错误。
+      remote_identity_error: 连接到存储时发生意外错误。
     project_folder_mode:
       automatic: 自动托管
       inactive: 没有指定文件夹
@@ -225,12 +226,12 @@ zh-CN:
       openproject_oauth: OpenProject OAuth
       project_folders: 项目文件夹
       redirect_uri: 重定向 URI
-      storage_audience: 存储受众
       storage_audience_blank: 没有配置受众。
-      storage_audience_description: 为受众 “%{audience}” 获取令牌。
-      storage_audience_idp: 使用身份提供者收到的第一个访问令牌，不管受众如何。
+      storage_audience_description: Exchanging tokens for audience "%{audience}".
+      storage_audience_idp: Using access token obtained by identity provider during login, regardless of audience.
       storage_oauth: Nextcloud OAuth
       storage_provider: 存储提供商
+      token_exchange: Token Exchange
     health:
       actions:
         download_report: 下载
@@ -271,7 +272,7 @@ zh-CN:
           tenant_id: 租户 ID
         failures:
           other: "%{count} 检查失败"
-        success: All checks passed
+        success: 所有检查已通过
         warnings:
           other: "%{count} 检查返回警告"
       connection_validation:
@@ -281,8 +282,8 @@ zh-CN:
         nc_dependency_version_mismatch: '%{dependency} 应用版本不受支持。请更新您的 Nextcloud 服务器。'
         nc_group_folder_not_found: 无法找到组文件夹。
         nc_host_not_found: 在配置的主机 URL 中找不到 Nextcloud 服务器。请检查配置。
-        nc_oauth_request_not_found: OpenProject 无法使用当前登录的用户找到 Nextcloud 的根文件夹。请检查服务器日志以获取更多信息。
-        nc_oauth_request_unauthorized: 当前用户未被授权查看 Nextcloud 的主文件夹，或我们无法获取 token。 请检查服务器日志以获取更多信息。
+        nc_oauth_request_not_found: 未找到获取当前连接用户的端点。请检查服务器日志以获取更多信息。
+        nc_oauth_request_unauthorized: 当前用户无权访问远程文件存储。请检查服务器日志以获取更多信息。
         nc_oauth_token_missing: OpenProject 无法测试用户与 Nextcloud 之间的通信，因为用户尚未链接他们的 Nextcloud 帐户。
         nc_unexpected_content: 在管理组文件夹中发现意外内容。
         nc_userless_access_denied: 已配置的应用密码无效。
@@ -291,18 +292,19 @@ zh-CN:
         od_client_write_permission_missing: 客户端似乎没有写入权限。请检查您的存储的设置文档。
         od_drive_id_invalid: 配置的驱动器 ID 似乎无效。请检查配置。
         od_drive_id_not_found: 找不到配置的驱动器 ID。请检查配置。
-        od_existing_test_folder: 测试所需的文件夹 %{folder_name} 已经存在。请将其删除并重试。
-        od_oauth_request_not_found: OpenProject 无法使用当前登录用户在驱动器中找到根文件夹。请检查服务器日志以获取更多信息。
-        od_oauth_request_unauthorized: 当前用户未被授权查看 OneDrive/SharePoint 的根文件夹，或我们无法获取令牌。请检查服务器日志以获取更多信息。
+        od_oauth_request_not_found: 未找到获取当前连接用户的端点。请检查服务器日志以获取更多信息。
+        od_oauth_request_unauthorized: 当前用户无权访问远程文件存储。请检查服务器日志以获取更多信息。
         od_oauth_token_missing: OpenProject 无法测试用户与 OneDrive/SharePoint 的用户级通信，因为用户尚未关联他们的 Microsoft 帐户。
         od_tenant_id_wrong: 配置的目录（租户）无效。请检查配置。
+        od_test_folder_exists: 测试所需的文件夹 %{folder_name} 已存在。请删除它并重试。
         od_unexpected_content: 在驱动器中找到意外内容。
         offline_access_scope_missing: 建议配置 OpenID Connect 提供商以请求 offline_access 范围。集成仍然可以正常工作，但请确保刷新令牌不会过期。
-        oidc_cant_acquire_token: 您的 OpenID Connect 设置未提供必要的受众，也不提供令牌交换功能。请查阅我们的文档以获取更多信息。
-        oidc_cant_exchange_token: 似乎您的 OpenID Connect 提供商上的 Token Exchange 设置存在问题。请检查其配置并重试。
         oidc_cant_refresh_token: 尝试检查您对存储的访问时出错。请检查服务器日志以获取更多信息。
         oidc_non_oidc_user: 当前用户在预配的情况下，没有被 OpenID Connect (OIDC) 身份提供商预置。请重新运行与OIDC 预置用户的检查。
         oidc_non_provisioned_user: 当前用户并非由 OpenID Connect 身份提供商提供。请针对提供的用户重新运行检查。
+        oidc_token_acquisition_failed: 您的 OpenID Connect 设置中没有指明令牌的接收方，也没有提供令牌交换功能。请查看我们的文档以获取更多信息。
+        oidc_token_exchange_failed: 您的 OpenID Connect 提供商上的 Token Exchange 设置似乎存在问题。请检查其配置并重试。
+        oidc_token_refresh_failed: 当检查你对这个存储的访问权限时出现错误。详情请查看服务器日志。
         unknown_error: 连接无法验证。出现未知错误。请查看服务器日志以获取更多信息。
       label_error: 错误
       label_failed: 失败
@@ -347,8 +349,9 @@ zh-CN:
         integration: Nextcloud 管理/OpenProject
         oauth_configuration: 从 %{application_link_text} 复制这些值。
         provider_configuration: 在进行设置之前，请确保您在 Nextcloud 实例中具有管理员权限，并且已安装了 %{application_link_text}。
-        storage_audience: 请输入 Nextcloud 实例用于与身份提供商通信的客户 ID。
+        storage_audience: The client ID that the Nextcloud instance uses to communicate with the identity provider.
         storage_audience_placeholder: 例如 Nextcloud
+        token_exchange_scope: The scopes that should be requested during token exchange, each one separated by a space.
       no_specific_folder: 默认情况下，每个用户上传文件时将从自己的主文件夹开始。
       no_storage_set_up: 尚未设置文件存储。
       not_logged_into_storage: 要选择一个项目文件夹，请先登录
@@ -380,9 +383,9 @@ zh-CN:
     label_creator: 创建者
     label_delete_storage: 删除存储
     label_edit_storage_access_management: 编辑存储访问管理
-    label_edit_storage_audience: 编辑存储受众
     label_edit_storage_automatically_managed_folders: 编辑存储自动管理的文件夹
     label_edit_storage_host: 编辑存储主机
+    label_edit_token_exchange: Edit token exchange configuration
     label_existing_manual_folder: 具有手动管理权限的现有文件夹
     label_file_storage: 文件存储
     label_host: 主机 URL
@@ -475,13 +478,13 @@ zh-CN:
       description: 禁用此选项将隐藏工作包文件选项卡上的附件列表。 工作包描述中的文件仍将上传到内部附件存储。
       label: 在工作包文件选项卡中显示附件
     storage_audience:
-      documentation_intro: 有关以下选项的详细信息以及在身份提供商中需要配置的内容，请参阅我们的文档。
+      documentation_intro: Please read our documentation for details on the following options and configuration of the identity provider.
       idp:
-        helptext: OpenProject 将使用身份提供商收到的第一个访问令牌来验证对存储的请求。 它不会试图获取另一个令牌。
-        label: 使用身份提供者获取的第一个访问令牌
+        helptext: OpenProject will use the access token received by the identity provider during log in to authenticate requests to the storage. It will not try to obtain another token.
+        label: Use access token obtained during user log in
       manual:
-        helptext: 允许您设置存储的受众。OpenProject 将尝试从身份提供商获取给定受众的令牌。
-        label: 手动定义存储受众
+        helptext: OpenProject will exchange a token with the identity provider for the given audience.
+        label: Manually specify audience for which to exchange access token
     storage_list_blank_slate:
       description: 在这里添加一个存储以查看它们。
       heading: 您还没有任何存储。

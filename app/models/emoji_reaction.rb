@@ -53,4 +53,8 @@ class EmojiReaction < ApplicationRecord
   def self.emoji(reaction)
     EMOJI_MAP[reaction.to_sym]
   end
+
+  def emoji
+    self.class.emoji(reaction)
+  end
 end

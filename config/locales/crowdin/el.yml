@@ -688,6 +688,7 @@ el:
         automatic: "Αυτόματα"
         manual: "Manual"
       show_relations: "Show relations"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Παιδιά"
@@ -1416,6 +1417,8 @@ el:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "δεν μπορεί να είναι σε άλλο έργο."
               not_a_valid_parent: "δεν είναι έγκυρο."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "μπορεί μόνο να οριστεί στις %{soonest_start} ή αργότερα ώστε να μην παραβιάζει τις σχέσεις του πακέτου εργασίας."
               cannot_be_null: "can not be set to null as finish date and duration are known."
@@ -2895,6 +2898,7 @@ el:
   label_query_new: "Νέα αναζήτηση"
   label_query_plural: "Προσαρμοσμένες αναζητήσεις"
   label_read: "Ανάγνωση..."
+  label_read_documentation: "Read documentation"
   label_register: "Δημιουργία νέου λογαριασμού"
   label_register_with_developer: "Εγγεγραμμένος ως προγραμματιστής"
   label_registered_on: "Εγγράφηκε την"
@@ -4323,6 +4327,8 @@ el:
       code_500: "Παρουσιάστηκε ένα εσωτερικό σφάλμα."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
       expected:

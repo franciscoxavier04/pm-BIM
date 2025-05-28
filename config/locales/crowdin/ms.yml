@@ -682,6 +682,7 @@ ms:
         automatic: "Automatik"
         manual: "Manual"
       show_relations: "Paparkan hubungan"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Anak-anak"
@@ -1409,6 +1410,8 @@ ms:
               cannot_be_self_assigned: "tidak boleh ditugaskan pada dirinya."
               cannot_be_in_another_project: "tidak boleh berada dalam projek lain."
               not_a_valid_parent: "tidak sah."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "hanya boleh ditetapkan pada %{soonest_start} atau kemudian untuk tidak mengganggu hubungan pakej kerja."
               cannot_be_null: "tidak boleh ditetapkan kepada kosong kerana tarikh tamat dan tempoh masa telah diketahui."
@@ -2857,6 +2860,7 @@ ms:
   label_query_new: "Pertanyaan baharu"
   label_query_plural: "Pertanyaan tersuai"
   label_read: "Baca..."
+  label_read_documentation: "Read documentation"
   label_register: "Cipta akaun baru"
   label_register_with_developer: "Daftar sebagai pembangun"
   label_registered_on: "Didaftar pada"
@@ -4283,6 +4287,8 @@ ms:
       code_500: "Sebuah ralat dalaman telah berlaku."
       code_500_outbound_request_failure: "Satu permintaan outbound ke sumber lain telah gagal dengan kod status %{status_code}. "
       code_500_missing_enterprise_token: "Permintaan tidak boleh dikendalikan kerana token Enterprise yang tidak sah atau hilang."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "Pakej kerja yang anda cari tidak dapat ditemui atau telah dipadamkan."
       expected:

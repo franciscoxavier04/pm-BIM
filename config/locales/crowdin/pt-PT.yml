@@ -689,6 +689,7 @@ pt-PT:
         automatic: "Automático"
         manual: "Manual"
       show_relations: "Mostrar relações"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Separadores de seletor de datas"
         children: "Elementos secundários"
@@ -1417,6 +1418,8 @@ pt-PT:
               cannot_be_self_assigned: "não pode ser atribuído a ele mesmo."
               cannot_be_in_another_project: "não pode ser em outro projeto."
               not_a_valid_parent: "é inválido."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "só pode ser definida como %{soonest_start} ou posterior de modo a não violar as relações do pacote de trabalho."
               cannot_be_null: "não pode ser definido como nulo porque a data de término e a duração são conhecidas."
@@ -2896,6 +2899,7 @@ pt-PT:
   label_query_new: "Nova consulta"
   label_query_plural: "Consultas personalizadas"
   label_read: "Leia..."
+  label_read_documentation: "Read documentation"
   label_register: "Criar uma nova conta"
   label_register_with_developer: "Registe-se como programador"
   label_registered_on: "Registado em"
@@ -4323,6 +4327,8 @@ pt-PT:
       code_500: "Ocorreu um erro interno."
       code_500_outbound_request_failure: "Um pedido de saída para outro recurso falhou com o código de estado %{status_code}."
       code_500_missing_enterprise_token: "O pedido não pode ser tratado devido a um token empresarial inválido ou em falta."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "O pacote de trabalho que procura não foi encontrado ou foi eliminado."
       expected:

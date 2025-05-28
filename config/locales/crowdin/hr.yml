@@ -700,6 +700,7 @@ hr:
         automatic: "Automatic"
         manual: "Manual"
       show_relations: "Show relations"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Podređeni"
@@ -1429,6 +1430,8 @@ hr:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "ne može biti u još jednom projektu."
               not_a_valid_parent: "je nevažeće."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "can only be set to %{soonest_start} or later so as not to violate the work package's relationships."
               cannot_be_null: "can not be set to null as finish date and duration are known."
@@ -2939,6 +2942,7 @@ hr:
   label_query_new: "Novi upit"
   label_query_plural: "Prilagođeni upiti"
   label_read: "Pročitajte..."
+  label_read_documentation: "Read documentation"
   label_register: "Kreirajte novi račun"
   label_register_with_developer: "Registrirajte se kao developer"
   label_registered_on: "Registriran"
@@ -4372,6 +4376,8 @@ hr:
       code_500: "Dogodila se interna greška."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
       expected:

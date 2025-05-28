@@ -692,6 +692,7 @@ fil:
         automatic: "Automatic"
         manual: "Manual"
       show_relations: "Show relations"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Ang mga bata"
@@ -1420,6 +1421,8 @@ fil:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "hindi maaring sa iba pang proyekto."
               not_a_valid_parent: "ay hindi balido."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "nakatakda lamang sa %{soonest_start} o mamaya bilang hindi lumalabag sa relasyon ng mga work package."
               cannot_be_null: "can not be set to null as finish date and duration are known."
@@ -2899,6 +2902,7 @@ fil:
   label_query_new: "Bagong query"
   label_query_plural: "Ang mga custom query"
   label_read: "Basahin..."
+  label_read_documentation: "Read documentation"
   label_register: "Gumawa ng bagong akwant"
   label_register_with_developer: "Pagrehistro bilang developer"
   label_registered_on: "Nakarehistro sa"
@@ -4327,6 +4331,8 @@ fil:
       code_500: "Isang internal error ang naganap."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
       expected:

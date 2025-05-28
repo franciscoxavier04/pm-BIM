@@ -705,6 +705,7 @@ lt:
         automatic: "Automatinis"
         manual: "Manual"
       show_relations: "Rodyti ryšius"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Pasekėjai"
@@ -1435,6 +1436,8 @@ lt:
               cannot_be_self_assigned: "negalima priskirti sau pačiam"
               cannot_be_in_another_project: "negali būti kitame projekte."
               not_a_valid_parent: " netinkamas."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "negali būti nustatyta į %{soonest_start} ar vėliau, kad nepažeistų darbų paketo ryšių."
               cannot_be_null: "negalima nurodyti null, nes nežinoma nei pabaigos data, nei trukmė."
@@ -2976,6 +2979,7 @@ lt:
   label_query_new: "Nauja užklausa"
   label_query_plural: "Naudotojo užklausos"
   label_read: "Skaityti..."
+  label_read_documentation: "Read documentation"
   label_register: "Sukurti naują paskyrą"
   label_register_with_developer: "Registruotis kaip kūrėjas"
   label_registered_on: "Užregistruota"
@@ -4408,6 +4412,8 @@ lt:
       code_500: "Įvyko vidinė klaida."
       code_500_outbound_request_failure: "Išeinanti užklausą į išorinį resursą nepavyko su būsenos kodu %{status_code}."
       code_500_missing_enterprise_token: "Užklausos nepavyko apdoroti dėl netinkamo ar trūkstamo Enterprise žetono."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "Jūsų ieškomas darbo paketas nerastas arba ištrintas."
       expected:
