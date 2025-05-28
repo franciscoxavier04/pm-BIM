@@ -34,6 +34,7 @@ module Meetings::PDF
       return if meeting.sections.empty?
 
       write_hr
+      write_optional_page_break
       write_heading(I18n.t("meeting.export.label_meeting_agenda"))
       write_agenda_sections
     end
@@ -51,6 +52,7 @@ module Meetings::PDF
     end
 
     def write_section(section, section_index)
+      write_optional_page_break
       write_section_title(section, section_index)
       write_agenda_items(section)
     end
@@ -91,6 +93,7 @@ module Meetings::PDF
     def write_agenda_items(section)
       section.agenda_items.each_with_index do |item, index|
         write_agenda_item_hr if index > 0
+        write_optional_page_break
         write_agenda_item(item)
       end
     end
