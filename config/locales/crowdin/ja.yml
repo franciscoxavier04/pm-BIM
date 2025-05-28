@@ -1410,6 +1410,8 @@ ja:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "は別のプロジェクトに属することはできません。"
               not_a_valid_parent: "は不正な値です。"
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "は、ワークパッケージの関係に違反しないように %{soonest_start} またはそれ以降にのみ設定できます。"
               cannot_be_null: "can not be set to null as finish date and duration are known."

@@ -1421,6 +1421,8 @@ bg:
               cannot_be_self_assigned: "не може да бъде присвоен на себе си."
               cannot_be_in_another_project: "не може да бъде в друг проект."
               not_a_valid_parent: "е невалиден."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "може да се зададе само до %{soonest_start} или по-късно, за да не нарушават взаймоотношения на работни пакети."
               cannot_be_null: "не може да бъде зададена като нула, тъй като датата на завършване и продължителността са известни."

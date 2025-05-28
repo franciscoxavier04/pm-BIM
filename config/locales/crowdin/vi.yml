@@ -1412,6 +1412,8 @@ vi:
               cannot_be_self_assigned: "không thể tự phân bổ cho chính nó."
               cannot_be_in_another_project: "không thể có trong một dự án khác."
               not_a_valid_parent: "không hợp lệ."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "chỉ có thể được thiếp lập sang %{soonest_start} hoặc mới hơn để không làm vi phạm các mối quan hệ của work package."
               cannot_be_null: "không thể được đặt thành null vì ngày kết thúc và thời gian đã được biết."

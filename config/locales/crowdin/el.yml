@@ -1417,6 +1417,8 @@ el:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "δεν μπορεί να είναι σε άλλο έργο."
               not_a_valid_parent: "δεν είναι έγκυρο."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "μπορεί μόνο να οριστεί στις %{soonest_start} ή αργότερα ώστε να μην παραβιάζει τις σχέσεις του πακέτου εργασίας."
               cannot_be_null: "can not be set to null as finish date and duration are known."

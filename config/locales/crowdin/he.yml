@@ -1439,6 +1439,8 @@ he:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "cannot be in another project."
               not_a_valid_parent: "is invalid."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "can only be set to %{soonest_start} or later so as not to violate the work package's relationships."
               cannot_be_null: "can not be set to null as finish date and duration are known."

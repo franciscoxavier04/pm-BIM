@@ -1421,6 +1421,8 @@ fil:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "hindi maaring sa iba pang proyekto."
               not_a_valid_parent: "ay hindi balido."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "nakatakda lamang sa %{soonest_start} o mamaya bilang hindi lumalabag sa relasyon ng mga work package."
               cannot_be_null: "can not be set to null as finish date and duration are known."

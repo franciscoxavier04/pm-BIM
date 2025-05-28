@@ -1438,6 +1438,8 @@ sl:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "ne more biti v drugem projektu.\n"
               not_a_valid_parent: "ni pravo."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "lahko nastavite samo na %{soonest_start} ali pozneje, da ne bi kršili razmerij delovnih paketov."
               cannot_be_null: "ne more biti nastavljeno na null, ker sta znana končni datum in trajanje."

@@ -172,10 +172,9 @@ RSpec.describe "Projects copy", :js,
       end
 
       before do
-        Pages::Projects::Settings::General.new(project).visit!
-
-        page.find_test_selector("project-settings-more-menu").click
-        page.find_test_selector("project-settings--copy").click
+        general_settings_page = Pages::Projects::Settings::General.new(project)
+        general_settings_page.visit!
+        general_settings_page.click_copy_action
       end
 
       it "separates optional and required custom fields for new" do
@@ -194,10 +193,9 @@ RSpec.describe "Projects copy", :js,
 
     context "with correct project custom field activations" do
       before do
-        Pages::Projects::Settings::General.new(project).visit!
-
-        page.find_test_selector("project-settings-more-menu").click
-        page.find_test_selector("project-settings--copy").click
+        general_settings_page = Pages::Projects::Settings::General.new(project)
+        general_settings_page.visit!
+        general_settings_page.click_copy_action
 
         expect(page).to have_text "Copy project \"#{project.name}\""
 
@@ -259,10 +257,9 @@ RSpec.describe "Projects copy", :js,
           optional_project_custom_field_with_default.id
         )
 
-        Pages::Projects::Settings::General.new(project).visit!
-
-        page.find_test_selector("project-settings-more-menu").click
-        page.find_test_selector("project-settings--copy").click
+        general_settings_page = Pages::Projects::Settings::General.new(project)
+        general_settings_page.visit!
+        general_settings_page.click_copy_action
 
         expect(page).to have_text "Copy project \"#{project.name}\""
 
@@ -332,10 +329,9 @@ RSpec.describe "Projects copy", :js,
       end
 
       before do
-        Pages::Projects::Settings::General.new(project).visit!
-
-        page.find_test_selector("project-settings-more-menu").click
-        page.find_test_selector("project-settings--copy").click
+        general_settings_page = Pages::Projects::Settings::General.new(project)
+        general_settings_page.visit!
+        general_settings_page.click_copy_action
 
         expect(page).to have_text "Copy project \"#{project.name}\""
 
@@ -413,10 +409,9 @@ RSpec.describe "Projects copy", :js,
       let(:version_field) { FormFields::SelectFormField.new version_custom_field }
 
       before do
-        Pages::Projects::Settings::General.new(project).visit!
-
-        page.find_test_selector("project-settings-more-menu").click
-        page.find_test_selector("project-settings--copy").click
+        general_settings_page = Pages::Projects::Settings::General.new(project)
+        general_settings_page.visit!
+        general_settings_page.click_copy_action
 
         fill_in "Name", with: "Copied project"
         click_on "Advanced settings"
@@ -455,10 +450,9 @@ RSpec.describe "Projects copy", :js,
       end
 
       it "copies the project attributes" do
-        Pages::Projects::Settings::General.new(project).visit!
-
-        page.find_test_selector("project-settings-more-menu").click
-        page.find_test_selector("project-settings--copy").click
+        general_settings_page = Pages::Projects::Settings::General.new(project)
+        general_settings_page.visit!
+        general_settings_page.click_copy_action
 
         expect(page).to have_text "Copy project \"#{project.name}\""
 
@@ -488,10 +482,9 @@ RSpec.describe "Projects copy", :js,
     end
 
     it "copies projects and the associated objects" do
-      Pages::Projects::Settings::General.new(project).visit!
-
-      page.find_test_selector("project-settings-more-menu").click
-      page.find_test_selector("project-settings--copy").click
+      general_settings_page = Pages::Projects::Settings::General.new(project)
+      general_settings_page.visit!
+      general_settings_page.click_copy_action
 
       expect(page).to have_text "Copy project \"#{project.name}\""
 
@@ -577,6 +570,7 @@ RSpec.describe "Projects copy", :js,
   describe "copying a set of ordered work packages" do
     let(:user) { create(:admin) }
     let(:wp_table) { Pages::WorkPackagesTable.new project }
+    let(:general_settings_page) { Pages::Projects::Settings::General.new(project) }
     let(:copied_project) { Project.find_by(name: "Copied project") }
     let(:copy_wp_table) { Pages::WorkPackagesTable.new copied_project }
     let(:project) { create(:project, types: [type]) }
@@ -615,28 +609,91 @@ RSpec.describe "Projects copy", :js,
 
     it "copies them in the same order" do
       wp_table.visit!
-      wp_table.expect_work_package_listed *order
-      wp_table.expect_work_package_order *order
+      wp_table.expect_work_package_listed(*order)
+      wp_table.expect_work_package_order(*order)
 
-      Pages::Projects::Settings::General.new(project).visit!
-
-      page.find_test_selector("project-settings-more-menu").click
-      page.find_test_selector("project-settings--copy").click
+      general_settings_page.visit!
+      general_settings_page.click_copy_action
 
       fill_in "Name", with: "Copied project"
-
       click_on "Save"
 
-      expect(page).to have_text "The job has been queued and will be processed shortly."
-
-      GoodJob.perform_inline
+      wait_for_copy_to_finish
 
       expect(copied_project)
         .to be_present
 
       wp_table.visit!
-      wp_table.expect_work_package_listed *order
-      wp_table.expect_work_package_order *order
+      wp_table.expect_work_package_listed(*order)
+      wp_table.expect_work_package_order(*order)
+    end
+  end
+
+  describe "copying a project with relations and hierarchies" do
+    shared_let(:admin) { create(:admin) }
+    shared_let(:type) { create(:type) }
+    shared_let(:priority) { create(:priority) }
+    shared_let(:status) { create(:status) }
+    shared_let(:user) { create(:user) }
+    shared_let(:project) { create(:project_with_types, types: [type]) }
+
+    before_all do
+      set_factory_default(:priority, priority)
+      set_factory_default(:project_with_types, project)
+      set_factory_default(:status, status)
+      set_factory_default(:user, user)
+    end
+
+    let_work_packages(<<~TABLE)
+      | hierarchy               | MTWTFSS | scheduling mode | predecessors
+      | parent automatic        |   XX    | automatic       |
+      |   child                 |   XX    | manual          |
+      | parent manual           | XXX     | manual          |
+      |   child2                |    XX   | manual          |
+      | predecessor             |  X      | automatic       | predecessor_predecessor
+      | successor automatic     |   XX    | automatic       | predecessor
+      | successor manual        |    XX   | manual          | predecessor
+      | predecessor_predecessor | X       | manual          |
+    TABLE
+
+    let(:wp_table) { Pages::WorkPackagesTable.new(project) }
+
+    before do
+      # Clear all jobs that would later on to having emails send.
+      # The jobs are created as part of the object creation.
+      clear_enqueued_jobs
+      clear_performed_jobs
+
+      login_as admin
+    end
+
+    it "copies work packages preserving original dates and scheduling modes" do
+      general_settings_page = Pages::Projects::Settings::General.new(project)
+      general_settings_page.visit!
+      general_settings_page.click_copy_action
+
+      fill_in "Name", with: "Copied project"
+      click_on "Save"
+
+      wait_for_copy_to_finish
+
+      copied_project = Project.find_by(name: "Copied project")
+      expect(copied_project).to be_present
+
+      expect_work_packages(copied_project.work_packages, <<~TABLE)
+        | hierarchy               | MTWTFSS | scheduling mode | predecessors
+        | parent automatic        |   XX    | automatic       |
+        |   child                 |   XX    | manual          |
+        | parent manual           | XXX     | manual          |
+        |   child2                |    XX   | manual          |
+        | predecessor             |  X      | automatic       | predecessor_predecessor
+        | successor automatic     |   XX    | automatic       | predecessor
+        | successor manual        |    XX   | manual          | predecessor
+        | predecessor_predecessor | X       | manual          |
+      TABLE
+
+      copied_predecessor = copied_project.work_packages.find_by(subject: "predecessor")
+      expect(copied_predecessor.relations.count).to eq(3)
     end
   end
 
