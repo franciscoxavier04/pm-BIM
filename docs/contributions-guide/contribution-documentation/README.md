@@ -33,7 +33,7 @@ With this guide for contributing to the OpenProject documentation we followed an
 
 ## OpenProject documentation overview
 
-The OpenProject documentation provides comprehensive resources, including user guides, system administration, installation and operation instructions, API references, development guides, and release notes. It is available online at [OpenProject Documentation](https://www.openproject.org/docs/), and can also be accessed directly from your OpenProject application via the **Help** menu (question mark icon in the top-right corner).
+The OpenProject documentation provides comprehensive resources, including user guides, system administration, installation and operation instructions, API references, development guides, and release notes. It is available online at [OpenProject Documentation](https://www.openproject.org/docs), and can also be accessed directly from your OpenProject application via the **Help** menu (question mark icon in the top-right corner).
 
 The documentation supports current and future users by offering step-by-step instructions for setup, configuration, and integration of OpenProject. It also provides detailed use cases, feature guides, and instructions for using OpenProject alongside other applications.
 
