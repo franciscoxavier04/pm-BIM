@@ -232,6 +232,7 @@ outcome:
   title:
     size: 10
     styles: [ "bold" ]
+    margin_top: 5
     margin_bottom: 5
   markdown_margin:
     margin: 16
@@ -401,10 +402,11 @@ heading:
     margin_bottom: 10
 
 participants:
-  margin_bottom: 12
+  margin_bottom: 8
   cell:
     size: 10
     padding_left: 0
+    padding_bottom: 7
     no_border: true
 
 attachments:
@@ -430,13 +432,13 @@ agenda_section:
     no_border: true
     background_color: "EAEAEA"
   title_margins:
+    margin_top: 15
     margin_bottom: 5
 
 agenda_item:
   indent: 5
-  empty_height: 10
   title_margin:
-    margin_bottom: 3
+    margin_bottom: 10
   title_cell:
     padding_top: 0
     padding_bottom: 0

@@ -114,10 +114,6 @@ module WorkPackage::PDFExport::Export::Meetings::Styles
       resolve_margin(@styles.dig(:agenda_item, :hr))
     end
 
-    def agenda_item_empty_height
-      @styles.dig(:agenda_item, :empty_height).presence || 10
-    end
-
     def heading_margins
       resolve_margin(@styles[:heading])
     end

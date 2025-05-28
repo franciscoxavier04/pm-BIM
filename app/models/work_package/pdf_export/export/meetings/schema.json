@@ -105,11 +105,6 @@
         "title_margin": {
           "$ref": "#/$defs/margin"
         },
-        "empty_height": {
-          "title": "Empty height",
-          "description": "Height if there is no content in the agenda item",
-          "$ref": "#/$defs/measurement"
-        },
         "indent": {
           "title": "Indent width",
           "description": "Indent for agenda item notes",

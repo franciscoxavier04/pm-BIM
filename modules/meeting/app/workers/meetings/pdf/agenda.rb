@@ -47,16 +47,18 @@ module Meetings::PDF
     end
 
     def write_agenda_sections
-      meeting.sections.each { |section| write_section(section) }
+      meeting.sections.each_with_index { |section, index| write_section(section, index) }
     end
 
-    def write_section(section)
-      write_section_title(section)
+    def write_section(section, section_index)
+      write_section_title(section, section_index)
       write_agenda_items(section)
     end
 
-    def write_section_title(section)
-      with_vertical_margin(styles.agenda_section_title_table_margins) do
+    def write_section_title(section, section_index)
+      margins = styles.agenda_section_title_table_margins
+      margins = margins.merge({ top_margin: 0 }) if section_index == 0
+      with_vertical_margin(margins) do
         pdf.table(
           [[{ content: format_agenda_section_title_cell(section) }]],
           width: pdf.bounds.width,
@@ -164,11 +166,8 @@ module Meetings::PDF
       write_agenda_item_title(agenda_item.title, agenda_item.duration_in_minutes || 0, agenda_item.presenter)
     end
 
-    def write_notes(agenda_item) # rubocop:disable Metrics/AbcSize
-      if agenda_item.notes.blank?
-        pdf.move_down(styles.agenda_item_empty_height)
-        return
-      end
+    def write_notes(agenda_item)
+      return if agenda_item.notes.blank?
 
       pdf.indent(styles.agenda_item_indent) do
         write_markdown!(
