@@ -618,7 +618,6 @@ en:
     label_validation_error: "The work package could not be saved due to the following errors:"
     label_version_plural: "Versions"
     label_view_has_changed: "This view has unsaved changes. Click to save them."
-    label_go_back: "Go back"
 
     help_texts:
       show_modal: "Show attribute help text entry"

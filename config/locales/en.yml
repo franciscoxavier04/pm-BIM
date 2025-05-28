@@ -2698,6 +2698,8 @@ en:
   label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(empty)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
   label_descending: "Descending"
   label_details: "Details"
