@@ -41,16 +41,18 @@ module Admin
         end
 
         def hierarchy_items
-          @custom_field.hierarchy_root.children
+          @custom_field.hierarchy_root.hash_tree.first[1]
         end
 
-        def add_sub_tree(tree, item)
-          if item.children.empty?
-            tree.with_leaf(**item_options(item))
-          else
-            tree.with_sub_tree(expanded: expanded?(item), **item_options(item)) do |sub_tree|
-              item.children.each do |sub_item|
-                add_sub_tree(sub_tree, sub_item)
+        def add_sub_tree(tree, hierarchy_hash)
+          hierarchy_hash.each do |item, child_hash|
+            if child_hash.empty?
+              tree.with_leaf(**item_options(item))
+            else
+              expanded = child_hash.any? { |child, _| current?(child) }
+
+              tree.with_sub_tree(expanded: expanded, **item_options(item)) do |sub_tree|
+                add_sub_tree(sub_tree, child_hash)
               end
             end
           end
@@ -66,10 +68,6 @@ module Admin
 
         def current?(item)
           item.id == @active_item.id
-        end
-
-        def expanded?(item)
-          @hierarchy_service.descendant_of?(item: @active_item, parent: item).success?
         end
       end
     end

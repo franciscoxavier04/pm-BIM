@@ -30,8 +30,6 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%=
   render(Primer::OpenProject::TreeView.new(node_variant: :anchor)) do |tree_view|
-    hierarchy_items.each do |item|
-      add_sub_tree(tree_view, item)
-    end
+    add_sub_tree(tree_view, hierarchy_items)
   end
 %>
