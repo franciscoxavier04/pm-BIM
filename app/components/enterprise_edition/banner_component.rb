@@ -68,11 +68,14 @@ module EnterpriseEdition
       @image = image
       @video = video
       @dismissable = dismissable
-      @dismiss_key = dismiss_key
+      @dismiss_key = dismiss_key.to_s
+
       @show_always = show_always
 
       self.feature_key = feature_key
       self.i18n_scope = i18n_scope
+
+      trial_overrides! if trial_feature?
 
       if @variant == :medium && @image.nil?
         raise ArgumentError, "The 'image' parameter is required when the variant is :medium."
@@ -82,17 +85,7 @@ module EnterpriseEdition
         raise ArgumentError, "The 'video' parameter is required when the variant is :large."
       end
 
-      @system_arguments = system_arguments
-      @system_arguments[:tag] = :div
-      @system_arguments[:mb] ||= 2
-      @system_arguments[:id] = "op-enterprise-banner-#{feature_key.to_s.tr('_', '-')}"
-      @system_arguments[:test_selector] = "op-enterprise-banner"
-      @system_arguments[:classes] = class_names(
-        @system_arguments[:classes],
-        "op-enterprise-banner",
-        @variant == :medium ? "op-enterprise-banner_medium" : nil,
-        @variant == :large ? "op-enterprise-banner_large" : nil
-      )
+      set_system_arguments(system_arguments, feature_key)
 
       super
     end
@@ -115,15 +108,38 @@ module EnterpriseEdition
     end
 
     def wrapper_key
-      "enterprise_banner_#{feature_key}"
+      "enterprise_banner_#{@dismiss_key}"
     end
 
     private
 
+    def set_system_arguments(system_arguments, feature_key)
+      @system_arguments = system_arguments
+      @system_arguments[:tag] = :div
+      @system_arguments[:mb] ||= 2
+      @system_arguments[:id] = "op-enterprise-banner-#{feature_key.to_s.tr('_', '-')}"
+      @system_arguments[:test_selector] = "op-enterprise-banner"
+      @system_arguments[:classes] = class_names(
+        @system_arguments[:classes],
+        "op-enterprise-banner",
+        @variant == :medium ? "op-enterprise-banner_medium" : nil,
+        @variant == :large ? "op-enterprise-banner_large" : nil
+      )
+    end
+
+    def trial_overrides!
+      @dismissable = true
+      @dismiss_key += "_trial" unless @dismiss_key.end_with?("_trial")
+      @variant = :inline
+    end
+
     def render?
       return true if @show_always
 
-      !(EnterpriseToken.hide_banners? || feature_available? || dismissed?)
+      suppress_banner = EnterpriseToken.hide_banners? || feature_available? || dismissed?
+      allow_trial_exception = feature_available? && trial_feature? && !dismissed?
+
+      !suppress_banner || allow_trial_exception
     end
 
     def feature_available?
@@ -134,6 +150,10 @@ module EnterpriseEdition
       return false unless @dismissable
 
       User.current.pref.dismissed_banner?(@dismiss_key)
+    end
+
+    def trial_feature?
+      EnterpriseToken.trialling?(feature_key)
     end
   end
 end
