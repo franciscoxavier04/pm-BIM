@@ -410,10 +410,11 @@ participants:
     no_border: true
 
 attachments:
-  margin_bottom: 12
+  margin_bottom: 8
   cell:
     size: 10
     padding_left: 0
+    padding_bottom: 7
     no_border: true
 
 agenda_section:
