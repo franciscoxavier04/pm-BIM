@@ -150,7 +150,7 @@ For high-availability setups, distribute traffic across multiple servers and ava
 
 > [!IMPORTANT]
 >
-> Some future features will only be shipped with the docker-based installation. We will also don't plan to provide packaged-based installations for later versions, e.g. Ubuntu 24.04.  
+> Some features we plan for the future will only be shipped with the docker-based installation. We will also don't plan to provide packaged-based installations for later Linux versions, e.g. Ubuntu 24.04.  
 
 ### Docker-based installation (recommendation)
 
@@ -162,14 +162,14 @@ The [docker-based installation](../installation/docker) requires a system with D
 
 The [package-based installation](../installation/packaged) requires one of the following Linux distributions:
 
-| Distribution (__64 bits only__) | End of life                                                  |
+| Distribution (__64 bits only__) | End of life software package                                 |
 | ------------------------------- | ------------------------------------------------------------ |
-| Ubuntu 22.04 Jammy              | 2027 Q2                                                      |
+| Ubuntu 22.04 Jammy              | *≈ 2027 Q2*                                                  |
 | Ubuntu 20.04 Focal              | 2025 Q3 - [OpenProject 16.2](https://community.openproject.org/wp/64078) |
-| Debian 12 Bookworm              |                                                              |
-| Debian 11 Bullseye              |                                                              |
-| CentOS/RHEL 9.x                 |                                                              |
-| Suse Linux Enterprise Server 15 |                                                              |
+| Debian 12 Bookworm              | *≈ 2027 Q2*                                                  |
+| Debian 11 Bullseye              | *2026 Q3*                                                    |
+| CentOS/RHEL 9.x                 | *≈ 2027 Q2*                                                  |
+| Suse Linux Enterprise Server 15 | *≈ 2027 Q2*                                                  |
 
 ### Overview of dependencies
 
