@@ -211,7 +211,7 @@ OpenProject supports the latest versions of the major browsers.
 
 ##### OpenProject integration
 
-* [OpenProject Integration 2.8.1](https://github.com/nextcloud/integration_openproject/releases/tag/v2.8.1)
+* [OpenProject Integration 2.9.0](https://github.com/nextcloud/integration_openproject/releases/tag/v2.9.0)
 
 ##### Team folders
 
