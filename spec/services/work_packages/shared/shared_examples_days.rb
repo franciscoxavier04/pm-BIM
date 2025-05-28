@@ -136,7 +136,7 @@ RSpec.shared_examples "lag computation excluding non-working days" do
       end
     end
 
-    context "with weekend days (Saturday and Sunday)", :weekend_saturday_sunday do
+    context "with Saturday and Sunday being non-working days", :weekend_saturday_sunday do
       include_examples "it returns lag", 0, sunday_2022_07_31, monday_2022_08_01
       include_examples "it returns lag", 4, sunday_2022_07_31, Date.new(2022, 8, 5) # Friday
       include_examples "it returns lag", 5, sunday_2022_07_31, Date.new(2022, 8, 6) # Saturday
@@ -209,7 +209,7 @@ RSpec.shared_examples "add lag to a date" do
         .not_to raise_error
     end
 
-    context "with weekend days (Saturday and Sunday)", :weekend_saturday_sunday do
+    context "with Saturday and Sunday being non-working days", :weekend_saturday_sunday do
       include_examples "it adds lag", date: saturday_2022_07_30, lag: 0, expected_result: sunday_2022_07_31
       include_examples "it adds lag", date: saturday_2022_07_30, lag: 1, expected_result: Date.new(2022, 8, 2)
       include_examples "it adds lag", date: saturday_2022_07_30, lag: -1, expected_result: Date.new(2022, 7, 29) # previous Friday
