@@ -29,8 +29,10 @@ Depending on the module, for which the new custom field is being  created, sligh
 
 1. Custom field **Name**, which will appear as the attribute name on the work package form.
 2. Choose a **Format** of the custom field, e.g. text, list, date, boolean. In this example the format *Text* is selected.
-   > [!TIP]
-   > Depending on the format of the custom field, the fields to specify vary.
+   
+> [!TIP]
+> Depending on the format of the custom field, the fields to specify vary.
+
 3. Specify the **minimal and maximal length**. If a 0 is chosen, no restriction will be imposed on the length of the custom field.
 4. **Regular expression** specifying which values are allowed for the custom field.
 5. **Default value** will be used as a default value for the custom field.
