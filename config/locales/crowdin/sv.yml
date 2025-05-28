@@ -1420,6 +1420,8 @@ sv:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "kan inte vara i ett annat projekt."
               not_a_valid_parent: "är ogiltig."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "kan endast anges till %{soonest_start} eller senare för att inte skada arbetspaketets relationer."
               cannot_be_null: "can not be set to null as finish date and duration are known."

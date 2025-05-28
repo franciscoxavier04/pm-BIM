@@ -1419,6 +1419,8 @@ hu:
               cannot_be_self_assigned: "nem rendelhető önmagához.\n"
               cannot_be_in_another_project: "nem lehet egy másik projektben."
               not_a_valid_parent: "érvénytelen."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "csak %{soonest_start} vagy későbbre lehet állítani, hogy ne okozzon problémát a munkacsomag kapcsolataiban."
               cannot_be_null: "nem állítható nullára, mivel a befejezés dátuma és időtartama ismert."

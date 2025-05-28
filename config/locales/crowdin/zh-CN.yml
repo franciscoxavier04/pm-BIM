@@ -1407,6 +1407,8 @@ zh-CN:
               cannot_be_self_assigned: "不能分配给自己。"
               cannot_be_in_another_project: "不能在另一个项目中。"
               not_a_valid_parent: "是无效的。"
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "仅可以设置为 %{soonest_start} 或之后，以免违反工作包的关系。"
               cannot_be_null: "无法设置为 null，因为结束日期和持续时间已知。"

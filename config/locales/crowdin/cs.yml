@@ -1438,6 +1438,8 @@ cs:
               cannot_be_self_assigned: "nemůže být přiřazeno k sobě."
               cannot_be_in_another_project: "nemůže být v jiném projektu."
               not_a_valid_parent: "je neplatné."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "lze nastavit pouze na %{soonest_start} nebo později, aby nedošlo k porušování vztahů pracovního balíčku."
               cannot_be_null: "nelze nastavit na null jako datum ukončení a doba trvání je známa."

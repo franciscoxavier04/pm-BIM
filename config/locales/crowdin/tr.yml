@@ -1419,6 +1419,8 @@ tr:
               cannot_be_self_assigned: "kendisine atanamaz."
               cannot_be_in_another_project: "başka bir projede olamaz."
               not_a_valid_parent: "geçersizdir."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "yalnızca %{soonest_start} veya daha sonra iş paketi üst bağımlılık ilişkilerini ihlal etmediğinde ayarlanabilir."
               cannot_be_null: "başlangıç tarihi ve süresi bilindiğinden sıfır değerine ayarlanamaz."

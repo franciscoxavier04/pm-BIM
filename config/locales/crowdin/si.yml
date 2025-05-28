@@ -1420,6 +1420,8 @@ si:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "වෙනත් ව්යාපෘතියක සිටිය නොහැක."
               not_a_valid_parent: "අවලංගුයි."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "වැඩ පැකේජයේ සබඳතා උල්ලංඝනය නොකිරීමට %{soonest_start} හෝ පසුව පමණක් සැකසිය හැකිය."
               cannot_be_null: "can not be set to null as finish date and duration are known."

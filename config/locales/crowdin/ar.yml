@@ -1456,6 +1456,8 @@ ar:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "لا يمكن أن يكون في مشروع آخر."
               not_a_valid_parent: "غير صالح."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "يمكن فقط تعيينه إلى %{soonest_start} أو في وقت لاحق حتى لا يتعارض مع علاقات حزمة العمل."
               cannot_be_null: "can not be set to null as finish date and duration are known."

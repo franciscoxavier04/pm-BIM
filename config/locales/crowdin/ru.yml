@@ -1436,6 +1436,8 @@ ru:
               cannot_be_self_assigned: "не может быть присвоено самому себе."
               cannot_be_in_another_project: "не может быть в другом проекте."
               not_a_valid_parent: "имеет неверное значение."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "может быть установлено лишь в %{soonest_start} или позднее и без нарушения взаимосвязи рабочих пакетов."
               cannot_be_null: "не может быть нулевым, поскольку известны дата окончания и продолжительность."

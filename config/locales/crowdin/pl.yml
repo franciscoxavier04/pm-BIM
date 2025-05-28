@@ -1435,6 +1435,8 @@ pl:
               cannot_be_self_assigned: "nie może być przypisany do siebie."
               cannot_be_in_another_project: "nie może być w innym projekcie."
               not_a_valid_parent: "jest nieprawidłowe."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "aby nie naruszyć relacji pakietu pracy, należy ustawić datę %{soonest_start} lub późniejszą."
               cannot_be_null: "nie można ustawić na wartość zero, ponieważ data zakończenia i czas trwania są znane."

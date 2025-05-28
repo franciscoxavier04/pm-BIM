@@ -1435,6 +1435,8 @@ lt:
               cannot_be_self_assigned: "negalima priskirti sau pačiam"
               cannot_be_in_another_project: "negali būti kitame projekte."
               not_a_valid_parent: " netinkamas."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "negali būti nustatyta į %{soonest_start} ar vėliau, kad nepažeistų darbų paketo ryšių."
               cannot_be_null: "negalima nurodyti null, nes nežinoma nei pabaigos data, nei trukmė."
