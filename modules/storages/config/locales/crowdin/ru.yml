@@ -15,6 +15,7 @@ ru:
           oauth2_sso_with_two_way_oauth2_fallback: Аутентификация Single-Sign-On с двухсторонней OAuth 2.0 как резервная
           two_way_oauth2: Двусторонняя аутентификация OAuth 2.0
         storage_audience: Аудитория хранилища
+        token_exchange_scope: Storage Scope
       storages/project_storage:
         project_folder: Папка проекта
         project_folder_mode: Режим папки проекта
@@ -225,12 +226,12 @@ ru:
       openproject_oauth: OpenProject OAuth
       project_folders: Папки проекта
       redirect_uri: URI перенаправления
-      storage_audience: Аудитория хранилища
       storage_audience_blank: Аудитория не была настроена.
-      storage_audience_description: Получение токенов для аудитории "%{audience}".
-      storage_audience_idp: Использование ключа первого доступа, полученного от провайдера аутентификации независимо от аудитории.
+      storage_audience_description: Exchanging tokens for audience "%{audience}".
+      storage_audience_idp: Using access token obtained by identity provider during login, regardless of audience.
       storage_oauth: Nextcloud OAuth
       storage_provider: Поставщик хранилища
+      token_exchange: Token Exchange
     health:
       actions:
         download_report: Скачать
@@ -354,8 +355,9 @@ ru:
         integration: Администрирование Nextcloud / OpenProject
         oauth_configuration: Скопируйте эти значения из %{application_link_text}.
         provider_configuration: Пожалуйста, убедитесь, что у вас есть права администрирования в копии Nextcloud, и перед установкой настроен %{application_link_text}.
-        storage_audience: Пожалуйста, введите ID Клиента, с помощью которого Nextcloud связан с провайдером идентификации.
+        storage_audience: The client ID that the Nextcloud instance uses to communicate with the identity provider.
         storage_audience_placeholder: например, nextcloud
+        token_exchange_scope: The scopes that should be requested during token exchange, each one separated by a space.
       no_specific_folder: По умолчанию каждый пользователь при загрузке файла начинает работу со своей собственной домашней папки.
       no_storage_set_up: Нет настроенных хранилищ файлов.
       not_logged_into_storage: Чтобы выбрать папку проекта, сначала войдите
@@ -387,9 +389,9 @@ ru:
     label_creator: Автор
     label_delete_storage: Удалить хранилище
     label_edit_storage_access_management: Редактировать управление доступом к хранилищу
-    label_edit_storage_audience: Изменить аудиторию хранилища
     label_edit_storage_automatically_managed_folders: Редактирование хранилища автоматически управляемых папок
     label_edit_storage_host: Изменить узел хранения
+    label_edit_token_exchange: Edit token exchange configuration
     label_existing_manual_folder: Существующая папка с разрешениями, управляемыми вручную
     label_file_storage: Файловое хранилище
     label_host: URL хоста
@@ -482,13 +484,13 @@ ru:
       description: Отключение этой опции скроет список вложений на вкладке "Файлы" у пакетов работ. Файлы, прикрепленные в описании пакета работ, по-прежнему будут загружаться во внутреннее хранилище вложений.
       label: Показывать вложения во вкладке "Файлы" пакетов работ
     storage_audience:
-      documentation_intro: Детали о следующих опциях и о том, что нужно настроить в поставщике идентификации можно найти в нашей документации.
+      documentation_intro: Please read our documentation for details on the following options and configuration of the identity provider.
       idp:
-        helptext: OpenProject будет использовать первый токен доступа, полученный провайдером идентификации для аутентификации запросов на хранилище. Он не будет пытаться получить другой токен.
-        label: Использовать первый токен доступа, полученный идентификатором провайдера
+        helptext: OpenProject will use the access token received by the identity provider during log in to authenticate requests to the storage. It will not try to obtain another token.
+        label: Use access token obtained during user log in
       manual:
-        helptext: Позволяет задать аудиторию хранилища. OpenProject попытается получить токен для данной аудитории у поставщика аутентификации.
-        label: Определить аудиторию хранилища вручную
+        helptext: OpenProject will exchange a token with the identity provider for the given audience.
+        label: Manually specify audience for which to exchange access token
     storage_list_blank_slate:
       description: Добавьте хранилище, чтобы увидеть его здесь.
       heading: У вас пока нет хранилищ.

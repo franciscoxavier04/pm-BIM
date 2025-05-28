@@ -2940,6 +2940,7 @@ ro:
   label_query_new: "Interogare nouă"
   label_query_plural: "Interogări personalizate"
   label_read: "Citeşte..."
+  label_read_documentation: "Read documentation"
   label_register: "Creează cont nou"
   label_register_with_developer: "Înregistrare ca programator"
   label_registered_on: "Înregistrat pe"
@@ -4372,6 +4373,8 @@ ro:
       code_500: "A apărut o eroare internă."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "Cererea nu poate fi gestionată din cauza token-ului Enterprise invalid sau lipsă."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "Pachetul de lucru pe care îl căutați nu poate fi găsit sau a fost șters."
       expected:

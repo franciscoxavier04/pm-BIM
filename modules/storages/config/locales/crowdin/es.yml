@@ -15,6 +15,7 @@ es:
           oauth2_sso_with_two_way_oauth2_fallback: Inicio de sesión único con OAuth 2.0 bidireccional como reserva
           two_way_oauth2: Flujo de código de autorización bidireccional OAuth 2.0
         storage_audience: Audiencia de almacenamiento
+        token_exchange_scope: Storage Scope
       storages/project_storage:
         project_folder: Carpeta del proyecto
         project_folder_mode: Modo de carpeta del proyecto
@@ -225,12 +226,12 @@ es:
       openproject_oauth: OpenProject OAuth
       project_folders: Carpeta del proyecto
       redirect_uri: Redirigir URI
-      storage_audience: Audiencia de almacenamiento
       storage_audience_blank: No se ha configurado ninguna audiencia.
-      storage_audience_description: Obtención de tokens para la audiencia «%{audience}».
-      storage_audience_idp: Utilizando el primer token de acceso recibido por el proveedor de identidad, independientemente del público.
+      storage_audience_description: Exchanging tokens for audience "%{audience}".
+      storage_audience_idp: Using access token obtained by identity provider during login, regardless of audience.
       storage_oauth: Nextcloud OAuth
       storage_provider: Proveedor de almacenamiento
+      token_exchange: Token Exchange
     health:
       actions:
         download_report: Descargar
@@ -350,8 +351,9 @@ es:
         integration: Administración de Nextcloud / OpenProject
         oauth_configuration: Copia estos valores de %{application_link_text}.
         provider_configuration: Por favor, asegúrate de tener privilegios de administración en tu instancia de Nextcloud y de que el %{application_link_text} esté instalado antes de realizar la configuración.
-        storage_audience: Introduzca el ID de cliente que la instancia Nextcloud utiliza para comunicarse con el proveedor de identidad.
+        storage_audience: The client ID that the Nextcloud instance uses to communicate with the identity provider.
         storage_audience_placeholder: por ejemplo, Nextcloud
+        token_exchange_scope: The scopes that should be requested during token exchange, each one separated by a space.
       no_specific_folder: Por defecto, cada usuario comenzará en su propia carpeta de inicio cuando cargue un archivo.
       no_storage_set_up: Aún no se han configurado los almacenamientos de archivos.
       not_logged_into_storage: Para seleccionar una carpeta de proyecto, inicie primero la sesión
@@ -383,9 +385,9 @@ es:
     label_creator: Autor
     label_delete_storage: Eliminar almacenamiento
     label_edit_storage_access_management: Editar la gestión de acceso al almacenamiento
-    label_edit_storage_audience: Editar audiencia de almacenamiento
     label_edit_storage_automatically_managed_folders: Editar carpetas gestionadas automáticamente
     label_edit_storage_host: Editar host del almacenamiento
+    label_edit_token_exchange: Edit token exchange configuration
     label_existing_manual_folder: Carpeta existente con permisos gestionados manualmente
     label_file_storage: Almacenamiento de archivos
     label_host: URL del host
@@ -478,13 +480,13 @@ es:
       description: Al desactivar esta opción se ocultará la lista de archivos adjuntos en la pestaña de archivos de los paquetes de trabajo. Los archivos adjuntos en la descripción de un paquete de trabajo seguirán cargándose en el almacén interno de archivos adjuntos.
       label: Mostrar archivos adjuntos en la pestaña de archivos de los paquetes de trabajo
     storage_audience:
-      documentation_intro: Los detalles sobre las siguientes opciones y lo que hay que configurar en el proveedor de identidad se encuentran en nuestra documentación.
+      documentation_intro: Please read our documentation for details on the following options and configuration of the identity provider.
       idp:
-        helptext: OpenProject utilizará el primer token de acceso recibido por el proveedor de identidad para autenticar las solicitudes al almacenamiento. No intentará obtener otro token.
-        label: Utilizar el primer token de acceso obtenido por el proveedor de identidad
+        helptext: OpenProject will use the access token received by the identity provider during log in to authenticate requests to the storage. It will not try to obtain another token.
+        label: Use access token obtained during user log in
       manual:
-        helptext: Le permite establecer la audiencia del almacenamiento. OpenProject intentará obtener un token para el público dado del proveedor de identidad.
-        label: Definir manualmente el público del almacenamiento
+        helptext: OpenProject will exchange a token with the identity provider for the given audience.
+        label: Manually specify audience for which to exchange access token
     storage_list_blank_slate:
       description: Añade un almacenamiento para verlos aquí.
       heading: Aún no tiene ningún almacenamiento.

@@ -2860,6 +2860,7 @@ vi:
   label_query_new: "Truy vấn mới"
   label_query_plural: "Truy vấn tùy chỉnh"
   label_read: "Đọc..."
+  label_read_documentation: "Read documentation"
   label_register: "Tạo tài khoản mới"
   label_register_with_developer: "Đăng ký là nhà phát triển"
   label_registered_on: "Ngày tham gia"
@@ -4286,6 +4287,8 @@ vi:
       code_500: "Đã xảy ra lỗi nội bộ."
       code_500_outbound_request_failure: "Yêu cầu ra ngoài tới tài nguyên khác đã thất bại với mã trạng thái %{status_code}."
       code_500_missing_enterprise_token: "Yêu cầu không thể được xử lý do token Doanh nghiệp không hợp lệ hoặc bị thiếu."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "Gói công việc bạn tìm kiếm không thể tìm thấy hoặc đã bị xóa."
       expected:

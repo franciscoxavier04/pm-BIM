@@ -2977,6 +2977,7 @@ pl:
   label_query_new: "Nowe zapytanie"
   label_query_plural: "Zapytania niestandardowe"
   label_read: "Czytaj..."
+  label_read_documentation: "Read documentation"
   label_register: "Utwórz nowe konto"
   label_register_with_developer: "Zarejestruj się jako programista"
   label_registered_on: "Zarejestrowany na"
@@ -4410,6 +4411,8 @@ pl:
       code_500: "Wystąpił błąd wewnętrzny."
       code_500_outbound_request_failure: "Żądanie wychodzące do innego zasobu nie powiodło się z kodem statusu %{status_code}."
       code_500_missing_enterprise_token: "Żądania nie można obsłużyć z powodu nieprawidłowego lub brakującego tokena wersji Enterprise."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "Pakiet roboczy, którego szukasz nie został znaleziony lub został usunięty."
       expected:

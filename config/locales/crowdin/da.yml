@@ -2898,6 +2898,7 @@ da:
   label_query_new: "Ny forespørgsel"
   label_query_plural: "Selvvalgte forespørgsler"
   label_read: "Læs..."
+  label_read_documentation: "Read documentation"
   label_register: "Opret en ny konto"
   label_register_with_developer: "Registrer dig som udvikler"
   label_registered_on: "Registreret den"
@@ -4326,6 +4327,8 @@ da:
       code_500: "En intern fejl opstod."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
       expected:

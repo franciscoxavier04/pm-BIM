@@ -3060,6 +3060,7 @@ ar:
   label_query_new: "استعلام جديد"
   label_query_plural: "استعلامات مخصصة"
   label_read: "قراءة..."
+  label_read_documentation: "Read documentation"
   label_register: "إنشاء حساب جديد"
   label_register_with_developer: "التسجيل كمطور"
   label_registered_on: "مسجلة في"
@@ -4500,6 +4501,8 @@ ar:
       code_500: "حدث خطأ داخلي."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "لا يمكن معالجة الطلب بسبب أن رمز المؤسسة غير صالح أو مفقود."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
       expected:

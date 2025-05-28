@@ -2978,6 +2978,7 @@ ru:
   label_query_new: "Новый запрос"
   label_query_plural: "Пользовательские запросы"
   label_read: "Читать..."
+  label_read_documentation: "Read documentation"
   label_register: "Создайте новую учетную запись"
   label_register_with_developer: "Зарегистрируйтесь как разработчик"
   label_registered_on: "Зарегистрированы на"
@@ -4410,6 +4411,8 @@ ru:
       code_500: "Произошла внутренняя ошибка."
       code_500_outbound_request_failure: "Исходящий запрос к другому ресурсу не удался с кодом статуса %{status_code}."
       code_500_missing_enterprise_token: "Запрос не может быть обработан из-за недействительного или отсутствующего корпоративного токена."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "Пакет работ, который вы ищете, не найден или был удален."
       expected:

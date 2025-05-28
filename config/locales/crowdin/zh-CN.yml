@@ -2856,6 +2856,7 @@ zh-CN:
   label_query_new: "新的查询"
   label_query_plural: "自定义查询"
   label_read: "阅读..."
+  label_read_documentation: "Read documentation"
   label_register: "创建一个新帐户"
   label_register_with_developer: "注册成为开发人员"
   label_registered_on: "注册于"
@@ -4277,6 +4278,8 @@ zh-CN:
       code_500: "发生了内部错误。"
       code_500_outbound_request_failure: "对另一个资源的出站请求存在失败状态代码 %{status_code} 。"
       code_500_missing_enterprise_token: "由于企业令牌是无效的或缺失的，故无法处理该请求。"
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "找不到您要查找的工作包或者它已被删除。"
       expected:

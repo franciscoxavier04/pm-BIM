@@ -2900,6 +2900,7 @@ si:
   label_query_new: "නව විමසුම"
   label_query_plural: "අභිරුචි විමසුම්"
   label_read: "කියවන්න..."
+  label_read_documentation: "Read documentation"
   label_register: "නව ගිණුමක් සාදන්න"
   label_register_with_developer: "සංවර්ධක ලෙස ලියාපදිංචි වන්න"
   label_registered_on: "ලියාපදිංචි"
@@ -4330,6 +4331,8 @@ si:
       code_500: "අභ්යන්තර දෝෂයක් සිදුවී ඇත."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
       expected:

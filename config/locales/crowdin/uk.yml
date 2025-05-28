@@ -2974,6 +2974,7 @@ uk:
   label_query_new: "Новий запит"
   label_query_plural: "Спеціальні запити"
   label_read: "Читання..."
+  label_read_documentation: "Read documentation"
   label_register: "Створити новий акаунт"
   label_register_with_developer: "Зареєструйтеся як розробник"
   label_registered_on: "Зареєстровано на"
@@ -4407,6 +4408,8 @@ uk:
       code_500: "Сталася внутрішня помилка."
       code_500_outbound_request_failure: "Вихідний запит до іншого ресурсу завершився помилкою з кодом стану: %{status_code}."
       code_500_missing_enterprise_token: "Цей запит не можна обробити через недійсний або відсутній маркер версії Enterprise."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "Пакет робіт, який ви шукаєте, не можна знайти або його видалено."
       expected:

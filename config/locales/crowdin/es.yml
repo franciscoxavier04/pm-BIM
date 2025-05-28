@@ -1093,7 +1093,7 @@ es:
         derived_done_ratio: "% total completado"
         derived_remaining_hours: "Trabajo restante total"
         derived_remaining_time: "Trabajo restante total"
-        done_ratio: "% Compleado"
+        done_ratio: "% Completado"
         duration: "Duración"
         end_insertion: "Final de la inserción"
         end_deletion: "Final de la eliminación"
@@ -2898,6 +2898,7 @@ es:
   label_query_new: "Nueva consulta"
   label_query_plural: "Consultas personalizadas"
   label_read: "Leer..."
+  label_read_documentation: "Read documentation"
   label_register: "Crear una nueva cuenta"
   label_register_with_developer: "Registrarse como desarrollador"
   label_registered_on: "Registrado en"
@@ -4326,6 +4327,8 @@ es:
       code_500: "Ha ocurrido un error interno."
       code_500_outbound_request_failure: "Una solicitud de salida a otro recurso ha fallado con el código de estado %{status_code}."
       code_500_missing_enterprise_token: "La solicitud no puede ser manejada debido a un token Enterprise inválido o inexistente."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "No se encuentra el paquete de trabajo que busca, o bien se ha eliminado."
       expected:

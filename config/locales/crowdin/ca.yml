@@ -2897,6 +2897,7 @@ ca:
   label_query_new: "Nova consulta"
   label_query_plural: "Consultes personalitzades"
   label_read: "Llegir..."
+  label_read_documentation: "Read documentation"
   label_register: "Crea un nou compte"
   label_register_with_developer: "Registrar com a desenvolupador"
   label_registered_on: "Registrat a"
@@ -4321,6 +4322,8 @@ ca:
       code_500: "S'ha produït un error intern."
       code_500_outbound_request_failure: "Hi ha un error en una petició sortint a un altre recurs amb el codi d'estat %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "No s'ha pogut trobar o s'ha eliminat el paquet de treball que estàs buscant."
       expected:

@@ -2899,6 +2899,7 @@
   label_query_new: "Ny spørring"
   label_query_plural: "Egendefinerte spørringer"
   label_read: "Les..."
+  label_read_documentation: "Read documentation"
   label_register: "Opprett ny konto"
   label_register_with_developer: "Registrer som utvikler"
   label_registered_on: "Registrert den"
@@ -4329,6 +4330,8 @@
       code_500: "En intern feil har oppstått."
       code_500_outbound_request_failure: "En utgående forespørsel til en annen ressurs har mislyktes med statuskode %{status_code}."
       code_500_missing_enterprise_token: "Forespørselen kan ikke håndteres på grunn av ugyldig eller manglende Enterprise nøkkel."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "Arbeidspakken du leter etter kan ikke bli funnet eller den har blitt slettet."
       expected:

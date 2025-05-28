@@ -2977,6 +2977,7 @@ lt:
   label_query_new: "Nauja užklausa"
   label_query_plural: "Naudotojo užklausos"
   label_read: "Skaityti..."
+  label_read_documentation: "Read documentation"
   label_register: "Sukurti naują paskyrą"
   label_register_with_developer: "Registruotis kaip kūrėjas"
   label_registered_on: "Užregistruota"
@@ -4409,6 +4410,8 @@ lt:
       code_500: "Įvyko vidinė klaida."
       code_500_outbound_request_failure: "Išeinanti užklausą į išorinį resursą nepavyko su būsenos kodu %{status_code}."
       code_500_missing_enterprise_token: "Užklausos nepavyko apdoroti dėl netinkamo ar trūkstamo Enterprise žetono."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "Jūsų ieškomas darbo paketas nerastas arba ištrintas."
       expected:

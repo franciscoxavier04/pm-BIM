@@ -2858,6 +2858,7 @@ zh-TW:
   label_query_new: "新增查詢"
   label_query_plural: "自訂查詢"
   label_read: "讀取..."
+  label_read_documentation: "Read documentation"
   label_register: "建立新帳號"
   label_register_with_developer: "註冊成開發者"
   label_registered_on: "註冊在"
@@ -4283,6 +4284,8 @@ zh-TW:
       code_500: "發生內部錯誤。"
       code_500_outbound_request_failure: "對另一個資源的出站請求存在失敗狀態代碼 %{status_code} 。"
       code_500_missing_enterprise_token: "由於企業權杖是無效的或缺失的，故無法處理該請求。"
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "找不到您要查找的工作項目或者它已被刪除。"
       expected:

@@ -2900,6 +2900,7 @@ az:
   label_query_new: "New query"
   label_query_plural: "Custom queries"
   label_read: "Read..."
+  label_read_documentation: "Read documentation"
   label_register: "Create a new account"
   label_register_with_developer: "Register as developer"
   label_registered_on: "Registered on"
@@ -4330,6 +4331,8 @@ az:
       code_500: "An internal error has occurred."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
       expected:

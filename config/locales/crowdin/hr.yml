@@ -2940,6 +2940,7 @@ hr:
   label_query_new: "Novi upit"
   label_query_plural: "Prilagođeni upiti"
   label_read: "Pročitajte..."
+  label_read_documentation: "Read documentation"
   label_register: "Kreirajte novi račun"
   label_register_with_developer: "Registrirajte se kao developer"
   label_registered_on: "Registriran"
@@ -4373,6 +4374,8 @@ hr:
       code_500: "Dogodila se interna greška."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
       expected:

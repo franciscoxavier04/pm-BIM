@@ -2899,6 +2899,7 @@ hu:
   label_query_new: "Új lekérdezés"
   label_query_plural: "Egyéni lekérdezések"
   label_read: "Olvassa el..."
+  label_read_documentation: "Read documentation"
   label_register: "Új fiók létrehozása"
   label_register_with_developer: "Regisztráljon mint fejlesztő"
   label_registered_on: "Regisztrált"
@@ -4328,6 +4329,8 @@ hu:
       code_500: "Belső hiba történt."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "A keresett munkacsomag nem található, vagy törölve lett."
       expected:

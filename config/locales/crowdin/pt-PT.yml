@@ -2897,6 +2897,7 @@ pt-PT:
   label_query_new: "Nova consulta"
   label_query_plural: "Consultas personalizadas"
   label_read: "Leia..."
+  label_read_documentation: "Read documentation"
   label_register: "Criar uma nova conta"
   label_register_with_developer: "Registe-se como programador"
   label_registered_on: "Registado em"
@@ -4324,6 +4325,8 @@ pt-PT:
       code_500: "Ocorreu um erro interno."
       code_500_outbound_request_failure: "Um pedido de saída para outro recurso falhou com o código de estado %{status_code}."
       code_500_missing_enterprise_token: "O pedido não pode ser tratado devido a um token empresarial inválido ou em falta."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "O pacote de trabalho que procura não foi encontrado ou foi eliminado."
       expected:

@@ -2897,6 +2897,7 @@ it:
   label_query_new: "Nuova query"
   label_query_plural: "Query personalizzate"
   label_read: "Leggi..."
+  label_read_documentation: "Read documentation"
   label_register: "Registrati"
   label_register_with_developer: "Registrati come sviluppatore"
   label_registered_on: "Registrato su"
@@ -4327,6 +4328,8 @@ it:
       code_500: "Si è verificato un errore interno."
       code_500_outbound_request_failure: "Una richiesta in uscita a un'altra risorsa è fallita con codice di stato %{status_code}."
       code_500_missing_enterprise_token: "La richiesta non può essere gestita a causa di un token Enterprise non valido o mancante."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "La macro-attività che stai cercando non può essere trovata o è stata eliminata."
       expected:

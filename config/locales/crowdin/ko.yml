@@ -2860,6 +2860,7 @@ ko:
   label_query_new: "새 쿼리"
   label_query_plural: "사용자 지정 쿼리"
   label_read: "읽기..."
+  label_read_documentation: "Read documentation"
   label_register: "새 계정 만들기"
   label_register_with_developer: "개발자로 등록"
   label_registered_on: "등록된 날짜"
@@ -4284,6 +4285,8 @@ ko:
       code_500: "내부 오류가 발생하였습니다."
       code_500_outbound_request_failure: "다른 리소스에 대한 아웃바운드 요청이 실패했으며 상태 코드는 %{status_code}입니다."
       code_500_missing_enterprise_token: "Enterprise 토큰이 유효하지 않거나 누락되어 요청을 처리할 수 없습니다."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "원하는 작업 패키지를 찾을 수 없거나 삭제되었습니다."
       expected:

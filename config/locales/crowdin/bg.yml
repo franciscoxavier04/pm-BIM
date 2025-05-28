@@ -2900,6 +2900,7 @@ bg:
   label_query_new: "Ново търсене"
   label_query_plural: "Потребителско търсене"
   label_read: "Прочитане..."
+  label_read_documentation: "Read documentation"
   label_register: "Регистрирайте нов профил"
   label_register_with_developer: "Регистрирайте се като разработчик"
   label_registered_on: "Регистриран на"
@@ -4330,6 +4331,8 @@ bg:
       code_500: "Възникна вътрешна грешка."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
       expected:
