@@ -419,10 +419,6 @@ es:
         new_label: "Nueva prioridad"
     status:
       button_edit: Editar estado del proyecto
-  project_phase:
-    duration:
-      one: "Duración: %{count} día laborable"
-      other: "Duración: %{count} días laborables"
   lists:
     create:
       success: "La lista modificada se ha guardado como una nueva lista"
@@ -975,6 +971,10 @@ es:
       project/phase:
         date_range: "Intervalo de fechas"
         definition: "Definición"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Nombre"
         color: "Color"
@@ -1286,10 +1286,12 @@ es:
               blank: "Por favor, selecciona un proyecto."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "la fecha de inicio debe ser anterior a la fecha de finalización."
-              non_continuous_dates: "no puede ser anterior a la fecha de finalización de la fase anterior."
-              incomplete: "está incompleto."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:

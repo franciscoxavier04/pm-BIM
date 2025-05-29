@@ -418,10 +418,6 @@ de:
         new_label: "Neue Priorität"
     status:
       button_edit: Projektstatus bearbeiten
-  project_phase:
-    duration:
-      one: "Dauer: %{count} Arbeitstag"
-      other: "Dauer: %{count} Arbeitstage"
   lists:
     create:
       success: "Die geänderte Liste wurde als neue Liste gespeichert"
@@ -970,6 +966,10 @@ de:
       project/phase:
         date_range: "Zeitraum"
         definition: "Definition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Name"
         color: "Farbe"
@@ -1281,10 +1281,12 @@ de:
               blank: "Bitte wählen Sie ein Projekt aus."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "Startdatum muss vor dem Enddatum liegen."
-              non_continuous_dates: "kann nicht vor dem Enddatum der vorherigen Phase liegen."
-              incomplete: "ist unvollständig."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -2523,7 +2525,7 @@ de:
   label_bulk_edit_selected_work_packages: "Alle ausgewählten Arbeitspakete bearbeiten"
   label_bundled: "(Gebündelt)"
   label_calendar: "Kalender"
-  label_calendars_and_dates: "Kalendarien und Daten"
+  label_calendars_and_dates: "Kalender und Datum"
   label_calendar_show: "Kalender anzeigen"
   label_category: "Kategorie"
   label_completed: Abgeschlossen

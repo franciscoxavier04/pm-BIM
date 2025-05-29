@@ -421,9 +421,6 @@ ko:
         new_label: "새로운 우선 순위"
     status:
       button_edit: 프로젝트 상태 편집
-  project_phase:
-    duration:
-      other: "기간: 근무일 %{count}일"
   lists:
     create:
       success: "수정된 목록이 새 목록으로 저장되었습니다"
@@ -968,6 +965,10 @@ ko:
       project/phase:
         date_range: "날짜 범위"
         definition: "정의"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "이름"
         color: "색상"
@@ -1279,10 +1280,12 @@ ko:
               blank: "프로젝트를 선택하세요."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "시작 날짜는 완료 날짜 전이어야 합니다."
-              non_continuous_dates: "- 이전 단계의 종료일보다 빠를 수 없습니다."
-              incomplete: "- 미완료 상태입니다."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:

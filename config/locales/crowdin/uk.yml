@@ -417,12 +417,6 @@ uk:
         new_label: "Новий пріоритет"
     status:
       button_edit: Змінити статус проєкту
-  project_phase:
-    duration:
-      one: "Тривалість: %{count} робочий день"
-      few: "Тривалість: %{count} робочого дня"
-      many: "Тривалість: %{count} робочого дня"
-      other: "Тривалість: %{count} робочих днів"
   lists:
     create:
       success: "Змінений список збережено як новий"
@@ -989,6 +983,10 @@ uk:
       project/phase:
         date_range: "Діапазон дат"
         definition: "Визначення"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Назва"
         color: "Колір"
@@ -1300,10 +1298,12 @@ uk:
               blank: "Виберіть проєкт."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "дата початку має передувати даті закінчення."
-              non_continuous_dates: "не може передувати даті закінчення попереднього етапу."
-              incomplete: "неповний."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:

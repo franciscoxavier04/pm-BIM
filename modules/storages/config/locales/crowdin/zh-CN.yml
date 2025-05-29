@@ -15,7 +15,7 @@ zh-CN:
           oauth2_sso_with_two_way_oauth2_fallback: 以双向 OAuth 2.0 作为单点登录的备用方案
           two_way_oauth2: 双向 OAuth 2.0 授权代码流
         storage_audience: 存储受众
-        token_exchange_scope: Storage Scope
+        token_exchange_scope: 存储范围
       storages/project_storage:
         project_folder: 项目文件夹
         project_folder_mode: 项目文件夹模式
@@ -227,11 +227,11 @@ zh-CN:
       project_folders: 项目文件夹
       redirect_uri: 重定向 URI
       storage_audience_blank: 没有配置受众。
-      storage_audience_description: Exchanging tokens for audience "%{audience}".
-      storage_audience_idp: Using access token obtained by identity provider during login, regardless of audience.
+      storage_audience_description: 为受众 “%{audience}” 交换令牌。
+      storage_audience_idp: 使用身份提供者在登录时获得的访问令牌，不管受众如何。
       storage_oauth: Nextcloud OAuth
       storage_provider: 存储提供商
-      token_exchange: Token Exchange
+      token_exchange: 代币令牌
     health:
       actions:
         download_report: 下载
@@ -349,9 +349,9 @@ zh-CN:
         integration: Nextcloud 管理/OpenProject
         oauth_configuration: 从 %{application_link_text} 复制这些值。
         provider_configuration: 在进行设置之前，请确保您在 Nextcloud 实例中具有管理员权限，并且已安装了 %{application_link_text}。
-        storage_audience: The client ID that the Nextcloud instance uses to communicate with the identity provider.
+        storage_audience: Nextcloud 实例用于与身份提供者通信的客户端 ID。
         storage_audience_placeholder: 例如 Nextcloud
-        token_exchange_scope: The scopes that should be requested during token exchange, each one separated by a space.
+        token_exchange_scope: 应在令牌交换中申请的范围，每个范围用空格隔开。
       no_specific_folder: 默认情况下，每个用户上传文件时将从自己的主文件夹开始。
       no_storage_set_up: 尚未设置文件存储。
       not_logged_into_storage: 要选择一个项目文件夹，请先登录
@@ -385,7 +385,7 @@ zh-CN:
     label_edit_storage_access_management: 编辑存储访问管理
     label_edit_storage_automatically_managed_folders: 编辑存储自动管理的文件夹
     label_edit_storage_host: 编辑存储主机
-    label_edit_token_exchange: Edit token exchange configuration
+    label_edit_token_exchange: 编辑令牌交换配置
     label_existing_manual_folder: 具有手动管理权限的现有文件夹
     label_file_storage: 文件存储
     label_host: 主机 URL
@@ -478,13 +478,13 @@ zh-CN:
       description: 禁用此选项将隐藏工作包文件选项卡上的附件列表。 工作包描述中的文件仍将上传到内部附件存储。
       label: 在工作包文件选项卡中显示附件
     storage_audience:
-      documentation_intro: Please read our documentation for details on the following options and configuration of the identity provider.
+      documentation_intro: 请阅读我们的文档，了解有关以下选项和身份提供者配置的详细信息。
       idp:
-        helptext: OpenProject will use the access token received by the identity provider during log in to authenticate requests to the storage. It will not try to obtain another token.
-        label: Use access token obtained during user log in
+        helptext: OpenProject 将使用身份提供者在登录时收到的访问令牌来验证对存储的请求。它不会尝试获取其他令牌。
+        label: 使用用户登录时获得的访问令牌
       manual:
-        helptext: OpenProject will exchange a token with the identity provider for the given audience.
-        label: Manually specify audience for which to exchange access token
+        helptext: OpenProject 将与指定受众的身份提供者交换一个令牌。
+        label: 手动指定要交换访问令牌的受众
     storage_list_blank_slate:
       description: 在这里添加一个存储以查看它们。
       heading: 您还没有任何存储。

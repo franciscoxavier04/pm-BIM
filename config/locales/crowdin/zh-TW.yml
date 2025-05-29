@@ -420,9 +420,6 @@ zh-TW:
         new_label: "新優先權"
     status:
       button_edit: 編輯專案狀態
-  project_phase:
-    duration:
-      other: "持續： %{count} 工作天"
   lists:
     create:
       success: "修改後的清單已儲存為新清單"
@@ -966,6 +963,10 @@ zh-TW:
       project/phase:
         date_range: "日期範圍"
         definition: "定義"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "名稱"
         color: "顏色"
@@ -1277,10 +1278,12 @@ zh-TW:
               blank: "請選擇一個專案"
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "開始日期必須在結束日期之前。"
-              non_continuous_dates: "不能早於前一個階段的結束日期。"
-              incomplete: "未完成。"
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1411,7 +1414,7 @@ zh-TW:
               cannot_be_in_another_project: "不能在另一個專案中"
               not_a_valid_parent: "不正確。"
             schedule_manually:
-              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
+              cannot_be_automatically_scheduled: "無法設定為 false（自動排程），因為它沒有前置或後續項目。"
             start_date:
               violates_relationships: "只能設置為 %{soonest_start} 或更晚，才不會違反工作包的關聯。"
               cannot_be_null: "無法設置為 null，因為結束日期和持續時間已知。"
@@ -2860,7 +2863,7 @@ zh-TW:
   label_query_new: "新增查詢"
   label_query_plural: "自訂查詢"
   label_read: "讀取..."
-  label_read_documentation: "Read documentation"
+  label_read_documentation: "閱讀文件"
   label_register: "建立新帳號"
   label_register_with_developer: "註冊成開發者"
   label_registered_on: "註冊在"
@@ -4287,7 +4290,7 @@ zh-TW:
       code_500_outbound_request_failure: "對另一個資源的出站請求存在失敗狀態代碼 %{status_code} 。"
       code_500_missing_enterprise_token: "由於企業權杖是無效的或缺失的，故無法處理該請求。"
       bad_request:
-        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+        emoji_reactions_activity_type_not_supported: "此活動類型不支持表情符號反應。"
       not_found:
         work_package: "找不到您要查找的工作項目或者它已被刪除。"
       expected:
