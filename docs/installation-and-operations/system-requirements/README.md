@@ -63,7 +63,7 @@ In the _packaged installation_ you can have multiple servers running OpenProject
 
 > [!NOTE]
 >
-> We recommend to run OpenProject in a [Kubernetes deployment using our Helm charts](../installation/helm-chart), or in smaller environments, [docker compose](../installation/docker-compose) or [docker Swarm](../installation/docker/#docker-swarm). Kubernetes and Docker swarm are fully horizontally scalable
+> We recommend to run OpenProject in a [Kubernetes deployment using our Helm charts](../installation/helm-chart), or in smaller environments, [docker compose](../installation/docker-compose) or [docker Swarm](../installation/docker/#docker-swarm). Kubernetes and Docker swarm are fully horizontally scalable.
 
 [For more information on applying scaling options depending on your installation method, please see this document](../operation/scaling/).
 

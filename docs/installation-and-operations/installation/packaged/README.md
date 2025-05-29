@@ -7,9 +7,9 @@ sidebar_navigation:
 # Install OpenProject with DEB/RPM packages
 
 > [!IMPORTANT]
-> We will not build packages for new Linux versions, such as Ubuntu 24.04. We will, however, keep releasing new package versions for the currently supported Linux versions until their EOL (end of life).
+> We will not build packages for new Linux versions, such as Ubuntu 24.04. We will, however, keep releasing new package versions for the currently supported Linux versions until their EOL (end of life). We recommend to run OpenProject in a [Kubernetes deployment using our Helm charts](../../installation/helm-chart), or in smaller environments, [docker compose](../../installation/docker-compose) or [docker Swarm](../../installation/docker/#docker-swarm). Kubernetes and Docker swarm are fully horizontally scalable.
 
-The packaged installation of OpenProject is one of the ways to install and maintain OpenProject using DEB or RPM packages.
+The packaged installation of OpenProject is one of many ways to install and maintain OpenProject. It uses DEB or RPM packages.
 
 The package will:
 
