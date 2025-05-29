@@ -56,9 +56,9 @@ module WorkPackages
 
       def submit_path
         if @reminder.persisted?
-          work_package_reminder_path(@remindable, @reminder)
+          url_helpers.work_package_reminder_path(@remindable, @reminder)
         else
-          work_package_reminders_path(@remindable)
+          url_helpers.work_package_reminders_path(@remindable)
         end
       end
 
