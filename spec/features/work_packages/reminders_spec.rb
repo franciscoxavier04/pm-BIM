@@ -344,7 +344,13 @@ RSpec.describe "Work package reminder modal",
 
       specify "clicking on the reminder button opens the create reminder modal" do
         work_package_page.visit!
-        work_package_page.click_reminder_button_with_context_menu(menu_item: "Tomorrow")
+        work_package_page.click_reminder_button
+
+        within "#reminder-dropdown-menu" do
+          expect(page).to have_css(".dropdown-menu", aria: { label: "Set a reminder" })
+          click_link_or_button "Tomorrow"
+        end
+
         wait_for_network_idle
         within ".spot-modal" do
           expect(page)
