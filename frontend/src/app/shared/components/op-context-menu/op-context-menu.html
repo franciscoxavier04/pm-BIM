@@ -5,6 +5,14 @@
       role="menu"
       [attr.aria-label]="locals.label"
       [ngClass]="{'-empty': items.length === 0 }">
+    <li *ngIf="locals.visibleLabel && locals.label" role="none">
+      <span
+        role="presentation"
+        [attr.aria-hidden]="true"
+        [textContent]="locals.label"
+        class="op-menu--headline">
+      </span>
+    </li>
     <ng-container *ngFor="let item of items">
       <li *ngIf="item.divider" class="dropdown-divider" role="separator"></li>
       <li *ngIf="!item.divider">

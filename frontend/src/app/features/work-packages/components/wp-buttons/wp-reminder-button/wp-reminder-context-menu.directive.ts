@@ -36,6 +36,7 @@ export class WorkPackageReminderContextMenuDirective extends OpContextMenuTrigge
       items: this.items,
       contextMenuId: 'reminder-dropdown-menu',
       label: this.I18n.t('js.work_packages.reminders.title.new'),
+      visibleLabel: true,
     };
   }
 

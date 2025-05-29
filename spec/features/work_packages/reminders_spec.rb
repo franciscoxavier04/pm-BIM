@@ -348,6 +348,8 @@ RSpec.describe "Work package reminder modal",
 
         within "#reminder-dropdown-menu" do
           expect(page).to have_css(".dropdown-menu", aria: { label: "Set a reminder" })
+          expect(page).to have_css(".op-menu--headline", text: "SET A REMINDER", aria: { hidden: true })
+
           click_link_or_button "Tomorrow"
         end
 

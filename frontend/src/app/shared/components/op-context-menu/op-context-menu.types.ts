@@ -20,6 +20,7 @@ export interface OpContextMenuLocalsMap {
   showAnchorRight?:boolean;
   contextMenuId?:string;
   label?:string;
+  visibleLabel?:boolean;
   /* eslint-disable @typescript-eslint/no-explicit-any */
   [key:string]:any;
 }
