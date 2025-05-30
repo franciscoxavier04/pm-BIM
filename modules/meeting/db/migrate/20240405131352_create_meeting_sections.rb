@@ -25,12 +25,16 @@ class CreateMeetingSections < ActiveRecord::Migration[7.1]
   private
 
   def create_and_assign_default_section
-    Meeting.includes(:agenda_items).find_each do |meeting|
-      section = MeetingSection.create!(
-        meeting:,
-        title: "Untitled"
-      )
-      meeting.agenda_items.update_all(meeting_section_id: section.id)
-    end
+    execute <<~SQL.squish
+      INSERT INTO meeting_sections (meeting_id, title, created_at, updated_at)
+      SELECT id, 'Untitled', NOW(), NOW()
+      FROM meetings
+      WHERE meetings.type = 'StructuredMeeting';
+
+      UPDATE meeting_agenda_items
+      SET meeting_section_id = meeting_sections.id
+      FROM meeting_sections
+      WHERE meeting_agenda_items.meeting_id = meeting_sections.meeting_id;
+    SQL
   end
 end
