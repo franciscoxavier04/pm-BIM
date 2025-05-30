@@ -27,7 +27,6 @@ export default class OpRecurringMeetingsFormController extends ApplicationContro
         {
           headers: {
             Accept: 'text/vnd.turbo-stream.html',
-            'X-Authentication-Scheme': 'Session',
           },
         },
       );

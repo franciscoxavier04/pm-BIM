@@ -59,7 +59,6 @@ export default class OpMeetingsFormController extends ApplicationController {
         {
           headers: {
             Accept: 'text/vnd.turbo-stream.html',
-            'X-Authentication-Scheme': 'Session',
           },
         },
       );
