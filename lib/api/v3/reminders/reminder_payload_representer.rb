@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,27 +28,8 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module API
-  module V3
-    module Reminders
-      class ReminderRepresenter < ::API::Decorators::Single
-        include API::Decorators::DateProperty
-        include API::Decorators::LinkedResource
-
-        property :id
-
-        date_time_property :remind_at
-
-        property :note
-
-        associated_resource :creator,
-                            v3_path: :user,
-                            representer: ::API::V3::Users::UserRepresenter
-
-        def _type
-          "Reminder"
-        end
-      end
-    end
+module API::V3::Reminders
+  class ReminderPayloadRepresenter < ReminderRepresenter
+    include ::API::Utilities::PayloadRepresenter
   end
 end

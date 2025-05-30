@@ -126,4 +126,61 @@ RSpec.describe API::V3::Reminders::RemindersAPI do
       end
     end
   end
+
+  describe "POST /api/v3/work_packages/:work_package_id/reminders", :freeze_time do
+    let(:path) { api_v3_paths.work_package_reminders(work_package.id) }
+    let(:headers) { { "CONTENT_TYPE" => "application/json" } }
+    let(:remind_at) { 1.day.from_now }
+    let(:note) { "Remind me to do something" }
+    let(:params) { { remindAt: remind_at, note: } }
+
+    def make_request
+      post path, params.to_json, headers
+    end
+
+    context "with permissions" do
+      current_user { user_with_permissions }
+
+      before do
+        Reminder.destroy_all
+        make_request
+      end
+
+      it_behaves_like "successful response", 201, "Reminder" do
+        it "returns reminder attributes" do
+          expect(last_response.body)
+            .to be_json_eql(API::V3::Utilities::DateTimeFormatter.format_datetime(remind_at).to_json)
+            .at_path("remindAt")
+
+          expect(last_response.body)
+            .to be_json_eql(note.to_json)
+            .at_path("note")
+
+          expect(last_response.body)
+            .to be_json_eql({ "href" => "/api/v3/users/#{current_user.id}", "title" => current_user.name }.to_json)
+            .at_path("_links/creator")
+        end
+      end
+    end
+
+    context "with an existing reminder" do
+      current_user { user_with_permissions }
+
+      before { make_request }
+
+      it_behaves_like "error response",
+                      400, "BadRequest",
+                      "You can only set one reminder at a time for a work package. Please delete or update the existing reminder."
+    end
+
+    context "with no permissions" do
+      current_user { other_user_without_permissions }
+
+      before { make_request }
+
+      it_behaves_like "error response",
+                      404, "NotFound",
+                      "The work package you are looking for cannot be found or has been deleted."
+    end
+  end
 end

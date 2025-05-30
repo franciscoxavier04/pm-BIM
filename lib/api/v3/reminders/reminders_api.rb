@@ -39,6 +39,14 @@ module API
             def reminders
               @work_package.reminders.upcoming_and_visible_to(User.current)
             end
+
+            def restrict_multiple_reminders
+              if reminders.any?
+                raise ::API::Errors::BadRequest.new(
+                  I18n.t("api_v3.errors.bad_request.multiple_reminders_not_allowed")
+                )
+              end
+            end
           end
 
           get do
@@ -46,6 +54,13 @@ module API
                                               self_link: api_v3_paths.work_package_reminders(@work_package.id),
                                               current_user: User.current)
           end
+
+          post(&API::V3::Utilities::Endpoints::Create.new(model: Reminder,
+                                                          before_hook: ->(request:) { request.restrict_multiple_reminders },
+                                                          params_modifier: ->(params) do
+                                                            params.merge(remindable: @work_package,
+                                                                         creator: User.current)
+                                                          end).mount)
         end
       end
     end
