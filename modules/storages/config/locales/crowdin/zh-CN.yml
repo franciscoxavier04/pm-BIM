@@ -231,7 +231,7 @@ zh-CN:
       storage_audience_idp: 使用身份提供者在登录时获得的访问令牌，不管受众如何。
       storage_oauth: Nextcloud OAuth
       storage_provider: 存储提供商
-      token_exchange: 代币令牌
+      token_exchange: 令牌交换
     health:
       actions:
         download_report: 下载

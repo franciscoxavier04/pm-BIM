@@ -961,10 +961,10 @@ zh-CN:
       project/phase:
         date_range: "日期范围"
         definition: "定义"
-        duration: "Duration"
-        start_date: "Start date"
-        start_date_caption: "Follows the previous phase."
-        finish_date: "Finish date"
+        duration: "持续时间"
+        start_date: "开始日期"
+        start_date_caption: "跟随上一个阶段。"
+        finish_date: "完成日期"
       project/phase_definition:
         name: "名称"
         color: "颜色"
@@ -1277,11 +1277,11 @@ zh-CN:
         project/phase:
           attributes:
             start_date:
-              must_be_before_finish_date: "must be before the finish date."
-              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              must_be_before_finish_date: "必须早于完成日期。"
+              non_continuous_dates: "不能早于上一阶段的结束日期。"
             finish_date:
-              must_be_after_start_date: "must be after the start date."
-          cannot_be_a_non_working_day: "can't be a non-working day."
+              must_be_after_start_date: "必须在开始日期之后。"
+          cannot_be_a_non_working_day: "不能是非工作日。"
         query:
           attributes:
             project:
