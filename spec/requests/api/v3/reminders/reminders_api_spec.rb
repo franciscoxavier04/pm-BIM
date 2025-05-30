@@ -31,6 +31,8 @@
 require "spec_helper"
 
 RSpec.describe API::V3::Reminders::RemindersAPI do
+  include API::V3::Utilities::PathHelper
+
   let!(:project) { create(:project) }
 
   let!(:role_with_permissions) { create(:project_role, permissions: %i[view_work_packages]) }
@@ -96,31 +98,32 @@ RSpec.describe API::V3::Reminders::RemindersAPI do
                            .result
   end
 
-  let(:href) { "/api/v3/work_packages/#{work_package.id}/reminders" }
-  let(:request) { get href }
-  let(:result) do
-    request
-    JSON.parse last_response.body
-  end
-  let(:subjects) { reminders.pluck("id") }
-
-  def reminders
-    result["_embedded"]["elements"]
-  end
-
-  context "with no permissions" do
-    current_user { other_user_without_permissions }
-
-    it "responds with unprocessable entity" do
-      expect(result["errorIdentifier"]).to eq("urn:openproject-org:api:v3:errors:NotFound")
+  describe "GET /api/v3/work_packages/:work_package_id/reminders" do
+    let(:request) { get api_v3_paths.work_package_reminders(work_package.id) }
+    let(:result) do
+      request
+      JSON.parse last_response.body
     end
-  end
+    let(:subjects) { reminders.pluck("id") }
 
-  context "with permissions" do
-    current_user { user_with_permissions }
+    def reminders
+      result["_embedded"]["elements"]
+    end
 
-    it "returns the future reminders for the current user in the given work package" do
-      expect(subjects).to contain_exactly(user_with_permissions_future_reminder.id)
+    context "with no permissions" do
+      current_user { other_user_without_permissions }
+
+      it "responds with error not found" do
+        expect(result["errorIdentifier"]).to eq("urn:openproject-org:api:v3:errors:NotFound")
+      end
+    end
+
+    context "with permissions" do
+      current_user { user_with_permissions }
+
+      it "returns the future reminders for the current user in the given work package" do
+        expect(subjects).to contain_exactly(user_with_permissions_future_reminder.id)
+      end
     end
   end
 end

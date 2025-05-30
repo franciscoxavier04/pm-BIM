@@ -35,9 +35,13 @@ module API
             authorize_in_project(:view_work_packages, project: @work_package.project)
           end
 
+          helpers do
+            def reminders
+              @work_package.reminders.upcoming_and_visible_to(User.current)
+            end
+          end
+
           get do
-            reminders = @work_package.reminders
-                                     .upcoming_and_visible_to(User.current)
             ReminderCollectionRepresenter.new(reminders,
                                               self_link: api_v3_paths.work_package_reminders(@work_package.id),
                                               current_user: User.current)
