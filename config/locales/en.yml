@@ -4583,6 +4583,7 @@ en:
           You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "YYYY-MM-DD (ISO 8601 date only)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (any compatible ISO 8601 datetime)"

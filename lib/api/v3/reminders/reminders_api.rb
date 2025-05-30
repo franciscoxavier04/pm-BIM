@@ -61,6 +61,14 @@ module API
                                                             params.merge(remindable: @work_package,
                                                                          creator: User.current)
                                                           end).mount)
+
+          route_param :reminder_id, type: Integer, desc: "Reminder ID" do
+            after_validation do
+              @reminder = reminders.find(declared_params[:reminder_id])
+            end
+
+            patch(&API::V3::Utilities::Endpoints::Update.new(model: Reminder).mount)
+          end
         end
       end
     end
