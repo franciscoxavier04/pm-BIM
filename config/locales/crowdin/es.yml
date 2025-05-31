@@ -755,7 +755,9 @@ es:
     label_add_description: "Añadir descripción"
     lag:
       subject: "Retraso"
-      caption: "El número mínimo de días laborables que debe haber entre los dos paquetes de trabajo."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Nuevo paquete de trabajo creado y añadido como secundario"
       label_relates_singular: "relacionado con"
@@ -1340,10 +1342,6 @@ es:
             from_id:
               error_not_found: "no se encuentra o no es visible."
               error_readonly: "no se puede cambiar para las relaciones existentes."
-            lag:
-              greater_than_or_equal_to:
-                zero: "no puede ser negativo."
-              less_than_or_equal_to: "es demasiado alto."
         repository:
           not_available: "El proveedor SMC no está disponible"
           not_whitelisted: "no está permitido por la configuración."

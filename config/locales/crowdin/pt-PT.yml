@@ -754,7 +754,9 @@ pt-PT:
     label_add_description: "Adicionar descrição"
     lag:
       subject: "Desfasamento"
-      caption: "O número mínimo de dias úteis a manter entre os dois pacotes de trabalho."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Novo pacote de trabalho criado e adicionado como um elemento secundário"
       label_relates_singular: "relacionado com"
@@ -1339,10 +1341,6 @@ pt-PT:
             from_id:
               error_not_found: "não encontrado ou não visível."
               error_readonly: "não pode ser alterado para as relações existentes."
-            lag:
-              greater_than_or_equal_to:
-                zero: "não pode ser negativo."
-              less_than_or_equal_to: "é demasiado elevado."
         repository:
           not_available: "Fornecedor SCM não está disponível"
           not_whitelisted: "não é permitido pela configuração."

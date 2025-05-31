@@ -756,7 +756,9 @@ tr:
     label_add_description: "Açıklama ekle"
     lag:
       subject: "Gecikme"
-      caption: "İki iş paketi arasında beklenmesi gereken en az iş günü sayısı."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Yeni iş paketi oluşturuldu ve alt olarak eklendi"
       label_relates_singular: "ile ilişkili"
@@ -1341,10 +1343,6 @@ tr:
             from_id:
               error_not_found: "bulunamadı veya görünmüyor."
               error_readonly: "mevcut ilişkiler için değiştirilemez."
-            lag:
-              greater_than_or_equal_to:
-                zero: "negatif olamaz."
-              less_than_or_equal_to: "çok yüksek."
         repository:
           not_available: "SCM satıcısı yok"
           not_whitelisted: "yapılandırmasına izin verilmiyor."

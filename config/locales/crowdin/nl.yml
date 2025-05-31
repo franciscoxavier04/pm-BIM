@@ -753,7 +753,9 @@ nl:
     label_add_description: "Beschrijving toevoegen"
     lag:
       subject: "Vertraging"
-      caption: "The minimum number of working days to keep in between the two work packages."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Nieuw werkpakket aangemaakt en toegevoegd als kind"
       label_relates_singular: "Gerelateerd aan"
@@ -1338,10 +1340,6 @@ nl:
             from_id:
               error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
-            lag:
-              greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM-leverancier is niet beschikbaar"
           not_whitelisted: "is niet toegestaan door de configuratie."

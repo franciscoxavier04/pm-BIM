@@ -754,7 +754,9 @@ it:
     label_add_description: "Aggiungi descrizione"
     lag:
       subject: "Ritardo"
-      caption: "Il numero minimo di giorni lavorativi da far trascorrere tra le due macro-attività."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Nuova macro-attività creata e aggiunta come figlia"
       label_relates_singular: "correlata con"
@@ -1339,10 +1341,6 @@ it:
             from_id:
               error_not_found: "non trovato o non visibile."
               error_readonly: "non può essere modificato per le relazioni esistenti."
-            lag:
-              greater_than_or_equal_to:
-                zero: "non può essere negativo."
-              less_than_or_equal_to: "è troppo alto."
         repository:
           not_available: "Il gestore SCM non è disponibile"
           not_whitelisted: "non è consentito dalla configurazione."

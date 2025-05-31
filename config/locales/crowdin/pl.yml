@@ -770,7 +770,9 @@ pl:
     label_add_description: "Dodaj opis"
     lag:
       subject: "Opóźnienie"
-      caption: "Minimalna liczba dni roboczych wymagana między dwoma pakietami roboczymi."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Nowy pakiet roboczy utworzono i dodano jako element podrzędny"
       label_relates_singular: "ma relację z"
@@ -1355,10 +1357,6 @@ pl:
             from_id:
               error_not_found: "nie znaleziono lub niewidoczny."
               error_readonly: "nie można zmienić dla istniejących relacji."
-            lag:
-              greater_than_or_equal_to:
-                zero: "— wartość nie może być ujemna."
-              less_than_or_equal_to: "— wartość jest zbyt wysoka."
         repository:
           not_available: "Producent SCM nie jest dostępny"
           not_whitelisted: "nie jest dozwolone w tej konfiguracji."

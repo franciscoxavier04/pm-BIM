@@ -750,7 +750,9 @@ de:
     label_add_description: "Beschreibung hinzufügen"
     lag:
       subject: "Verzögerung"
-      caption: "Die minimale Anzahl von Arbeitstagen zwischen den zwei Arbeitspaketen."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Neues Arbeitspaket erstellt und als Kind hinzugefügt"
       label_relates_singular: "Beziehung mit"
@@ -1335,10 +1337,6 @@ de:
             from_id:
               error_not_found: "nicht gefunden oder nicht sichtbar."
               error_readonly: "kann für bestehende Beziehungen nicht geändert werden."
-            lag:
-              greater_than_or_equal_to:
-                zero: "darf nicht negativ sein."
-              less_than_or_equal_to: "ist zu hoch."
         repository:
           not_available: "SCM-Anbieter ist nicht verfügbar"
           not_whitelisted: "wird durch die Konfiguration nicht erlaubt."

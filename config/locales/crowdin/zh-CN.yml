@@ -745,7 +745,9 @@ zh-CN:
     label_add_description: "添加说明"
     lag:
       subject: "间隔"
-      caption: "两个工作包之间的最低工作日数。"
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "创建新工作包并将其添加为子项"
       label_relates_singular: "关联到"
@@ -1330,10 +1332,6 @@ zh-CN:
             from_id:
               error_not_found: "找不到或不可见。"
               error_readonly: "无法针对现有关系更改。"
-            lag:
-              greater_than_or_equal_to:
-                zero: "不能为负数。"
-              less_than_or_equal_to: "太高。"
         repository:
           not_available: "SCM提供商不可用"
           not_whitelisted: "配置所不允许的。"

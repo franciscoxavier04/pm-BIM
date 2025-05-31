@@ -765,7 +765,9 @@ ro:
     label_add_description: "Adaugă descriere"
     lag:
       subject: "Întârziere"
-      caption: "Numărul minim de zile lucrătoare care trebuie păstrate între cele două pachete de lucru."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Pachet de lucru nou creat și adăugat ca și copil"
       label_relates_singular: "asociat cu"
@@ -1350,10 +1352,6 @@ ro:
             from_id:
               error_not_found: "negăsit sau invizibil."
               error_readonly: "nu poate fi schimbat pentru relaţiile existente."
-            lag:
-              greater_than_or_equal_to:
-                zero: "nu poate fi negativ."
-              less_than_or_equal_to: "este prea mare."
         repository:
           not_available: "Nu este disponibil furnizorul de SCM"
           not_whitelisted: "nu este permisă de configurație."

@@ -771,7 +771,9 @@ ru:
     label_add_description: "Добавить описание"
     lag:
       subject: "Отставание"
-      caption: "Минимальное количество рабочих дней, которое должно быть между двумя пакетами работ."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Новый пакет работ создан и добавлен как дочерний"
       label_relates_singular: "Связан с"
@@ -1356,10 +1358,6 @@ ru:
             from_id:
               error_not_found: "не найден или невидим."
               error_readonly: "не может быть изменен для существующих отношений."
-            lag:
-              greater_than_or_equal_to:
-                zero: "не может быть отрицательным."
-              less_than_or_equal_to: "слишком высокий."
         repository:
           not_available: "SCM поставщик не доступен"
           not_whitelisted: "не допускается конфигурацией."

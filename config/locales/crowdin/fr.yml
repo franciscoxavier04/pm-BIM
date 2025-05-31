@@ -755,7 +755,9 @@ fr:
     label_add_description: "Ajouter une description"
     lag:
       subject: "Délai"
-      caption: "Le nombre minimum de jours ouvrables à respecter entre les deux lots de travaux."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Nouveau lot de travaux créé et ajouté en tant qu'enfant"
       label_relates_singular: "lié à"
@@ -1340,10 +1342,6 @@ fr:
             from_id:
               error_not_found: "introuvable ou non visible."
               error_readonly: "ne peut pas être modifié pour les relations existantes."
-            lag:
-              greater_than_or_equal_to:
-                zero: "ne peut pas être négatif."
-              less_than_or_equal_to: "est trop élevé."
         repository:
           not_available: "Le fournisseur de gestion de contrôle de sources n'est pas disponible"
           not_whitelisted: "n'est pas autorisé par la configuration."

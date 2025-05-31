@@ -767,7 +767,9 @@ uk:
     label_add_description: "Додати опис"
     lag:
       subject: "Затримка"
-      caption: "Мінімальна кількість робочих днів між двома пакетами робіт."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Новий пакет робіт створено й додано як дочірній"
       label_relates_singular: "зв’язано з"
@@ -1352,10 +1354,6 @@ uk:
             from_id:
               error_not_found: "не знайдено або приховано."
               error_readonly: "не можна змінити для наявних зв’язків."
-            lag:
-              greater_than_or_equal_to:
-                zero: "не може мати від’ємне значення."
-              less_than_or_equal_to: "має зависоке значення."
         repository:
           not_available: "Постачальник SCM недоступний"
           not_whitelisted: "не дозволяється конфігурацією."

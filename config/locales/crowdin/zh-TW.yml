@@ -747,7 +747,9 @@ zh-TW:
     label_add_description: "新增說明"
     lag:
       subject: "延遲"
-      caption: "兩個工作項目之間最少要相隔多少個工作天。"
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "建立新的工作項目，並以子項目新增"
       label_relates_singular: "相關於"
@@ -1332,10 +1334,6 @@ zh-TW:
             from_id:
               error_not_found: "未找到或不可見。"
               error_readonly: "無法變更現有的關係。"
-            lag:
-              greater_than_or_equal_to:
-                zero: "不能為負數。"
-              less_than_or_equal_to: "太高。"
         repository:
           not_available: "版本控制無法使用"
           not_whitelisted: "不被設定所允許"

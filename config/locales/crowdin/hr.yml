@@ -765,7 +765,9 @@ hr:
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      caption: "The minimum number of working days to keep in between the two work packages."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "se odnose na"
@@ -1350,10 +1352,6 @@ hr:
             from_id:
               error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
-            lag:
-              greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM dobavljač nije dostupn"
           not_whitelisted: "nije dopušteno postavljenom konfiguracijom."
