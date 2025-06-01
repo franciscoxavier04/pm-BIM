@@ -31,23 +31,23 @@ This setup is not a replacement for full-scale test automation or advanced lab m
 
 ### Core entities
 
-| Concept              | OpenProject entity                                |
-|----------------------|---------------------------------------------------|
-| Feature / User Story | Work package (e.g., type `Feature` or `Story`)    |
-| Test case            | Work package type `Test Case`                     |
-| Test run             | Work package type `Test Run` (child of test case) |
-| Test plan            | Project (created from a template)                 |
-| Version under test   | OpenProject *Version* field on test runs          |
-| Defect               | Work package (e.g., type `Bug`)                   |
+| Concept            | OpenProject entity                                  |
+| ------------------ | --------------------------------------------------- |
+| Requirements       | Work package (e.g., type `Feature` or `User Story`) |
+| Test case          | Work package type `Test Case`                       |
+| Test run           | Work package type `Test Run` (child of test case)   |
+| Test plan          | Project (created from a template)                   |
+| Version under test | OpenProject *Version* field on test runs            |
+| Defect             | Work package (e.g., type `Bug`)                     |
 
 ### Relationships
 
-- Each **feature** or **user story** may relate to one or more test cases.
-- Each **test case** defines a reusable test specification.
-- Each **test case** has one or more **test runs** (child work packages).
-- A **test run** is specific to one software version.
-- **Test plans** are realized as individual projects per version, created from a reusable template.
-- **Defects** can be linked to failed test runs.
+- Each `Feature` or `User Story` may relate to one or more test cases.
+- Each `Test Case` defines a reusable test specification.
+- Each `Test Case` has one or more Test Runs (child work packages).
+- A `Test Run` is specific to one software version.
+- `Test Plans` are realized as individual projects per version, created from a reusable template.
+- `Bugs` can be linked to failed `Test Runs`.
 
 This structure supports traceability from requirements to execution and defect reporting.
 
