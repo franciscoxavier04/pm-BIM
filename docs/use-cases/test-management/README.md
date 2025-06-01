@@ -55,7 +55,7 @@ This structure supports traceability from requirements to execution and defect r
 
 ### 1.1 Creating a test plan (project)
 
-A new test plan project is created based on a predefined template using the [create project form](https://testmanagement.openproject.com/projects/new?parent_id=6).
+A new test plan project is created based on a predefined template using the *create project form*.
 
 ![create test plan](create-test-plan.png)
 
@@ -81,7 +81,7 @@ For all test runs which are not planned the status should be adjusted to somethi
    - Status is updated (e.g., `Passed`, `Test failed`, `Blocked`)
 3. If failures occur, related defects (bugs) are created and linked.
 4. Boards, filters, or hierarchy views are used to monitor test progress and coverage.
-5. The test result can be document creating a pdf report of [all test runs](https://testmanagement.openproject.com/projects/regression-test-openproject-16-dot-1/work_packages?query_id=89).
+5. The test result can be document creating a pdf report of the [test status and results](https://testmanagement.openproject.com/projects/regression-test-openproject-16-dot-1/work_packages?query_id=89).
 
 ![create test report](create-test-report.png)
 
