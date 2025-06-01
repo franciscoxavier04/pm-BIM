@@ -115,11 +115,9 @@ The work package type `Test run` can be configured so it shows the relevant info
 
 Here you find an [example for a test run](https://testmanagement.openproject.com/wp/65).
 
+![test run configuration example](test-run-configuration-example.png)
 
-
-![test run configuration example](C:\Users\niels\GitHub\openproject\docs\use-cases\test-management\test-run-configuration-example.png)
-
-### 2.2 Workflow and statuses
+### 2.5 Workflow and statuses
 
 - Define custom statuses such as:
   - `New`,
