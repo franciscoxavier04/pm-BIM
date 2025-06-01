@@ -27,12 +27,14 @@ It is not intended to replace specialized test management tools where advanced t
 
 | Concept            | OpenProject entity                                |
 | ------------------ | ------------------------------------------------- |
-| Test plan          | Project (created from a template)                 |
+| Test plan          | Project (created from a test plan template)       |
 | Test case          | Work package type `Test Case`                     |
 | Test run           | Work package type `Test Run` (child of test case) |
 | Version under test | OpenProject *Version* field on test runs          |
 
-Each test plan is realized as a separate project, cloned from a template. Test cases are work packages that describe what to test. Test runs are child work packages, used to track execution results.
+Each test plan is realized as a separate project, created from a project template. Test cases are work packages that describe what to test. Test runs are child work packages, used to track execution results.
+
+![diagram showing the different entities of test management in OpenProject](test-management-entities.png)
 
 ## Setup
 
