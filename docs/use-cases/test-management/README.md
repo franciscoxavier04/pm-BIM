@@ -7,6 +7,10 @@ keywords: test plan, test case, test case, test management
 
 ---
 
+> [!IMPORTANT]
+>
+> This is use case description is a draft. It will be detailed and improved based on feedback from the community. If you have any feedback please contact us.
+
 # Test management in OpenProject
 
 ## Purpose
