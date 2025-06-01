@@ -2,121 +2,149 @@
 sidebar_navigation:
   title: Test Management with OpenProject 
   priority: 950
-description: OpenProject can be configured to support lightweight test management using custom work package types and project templates. This guide describes how to manage test cases and test runs in a reusable, scalable way.
+description: OpenProject can be configured to support lightweight test management using custom work package types, work packages and project templates. This guide describes how to manage test cases and test runs in a reusable, scalable way.
 keywords: test plan, test case, test case, test management
 
 ---
 
+# Test management in OpenProject
+
 ## Purpose
 
-This document describes a configuration approach for using OpenProject as a lightweight test management system. The goal is to support manual or semi-automated test processes directly within OpenProject by modeling test cases, test runs, and test planning using native features.
-
-The described setup assumes that OpenProject is already in use for project planning, task tracking, or requirements management, and extends it to cover testing activities without introducing an additional tool.
+This guide describes how OpenProject can be used for lightweight test management by modeling test plans, test cases, and test runs using built-in features such as work package types and project templates. It enables teams to manage and execute tests within the same environment they already use for project and requirements tracking.
 
 ## Scope and assumptions
 
-This setup is suitable for:
+This use case is intended for teams that:
 
-- Teams who want to track test definitions and test executions in OpenProject
-- Scenarios where manual test steps or external automated test triggers exist
-- Projects that benefit from structuring tests per release or version
+- Already use OpenProject for project planning and requirements tracking
+- Want to include manual or semi-automated testing workflows
+- Need traceability between requirements, test cases, executions, and defects
 
-It is not intended to replace specialized test management tools where advanced test parameterization, automated execution orchestration, or lab device control are required.
+This setup is not a replacement for full-scale test automation or advanced lab management tools, but rather a structured and integrated approach to test tracking.
 
-## Conceptual model
+## Structure and terminology
 
-| Concept            | OpenProject entity                                |
-| ------------------ | ------------------------------------------------- |
-| Test plan          | Project (created from a test plan template)       |
-| Test case          | Work package type `Test Case`                     |
-| Test run           | Work package type `Test Run` (child of test case) |
-| Version under test | OpenProject *Version* field on test runs          |
+![Test management entities](test-management-entities.png)
 
-Each test plan is realized as a separate project, created from a project template. Test cases are work packages that describe what to test. Test runs are child work packages, used to track execution results.
+*Illustration: Relationships between requirements, test cases, test runs, and defects across test plans and versions.*
 
-![diagram showing the different entities of test management in OpenProject](test-management-entities.png)
+### Core entities
 
-## Setup
+| Concept              | OpenProject entity                                |
+|----------------------|---------------------------------------------------|
+| Feature / User Story | Work package (e.g., type `Feature` or `Story`)    |
+| Test case            | Work package type `Test Case`                     |
+| Test run             | Work package type `Test Run` (child of test case) |
+| Test plan            | Project (created from a template)                 |
+| Version under test   | OpenProject *Version* field on test runs          |
+| Defect               | Work package (e.g., type `Bug`)                   |
 
-### Work package types
+### Relationships
 
-Define two types under *Administration → Work packages → Types*:
+- Each **feature** or **user story** may relate to one or more test cases.
+- Each **test case** defines a reusable test specification.
+- Each **test case** has one or more **test runs** (child work packages).
+- A **test run** is specific to one software version.
+- **Test plans** are realized as individual projects per version, created from a reusable template.
+- **Defects** can be linked to failed test runs.
 
-#### Test case
+This structure supports traceability from requirements to execution and defect reporting.
 
-- Describes a test scenario
-- Fields: title, description (steps, expected outcome)
-- May include custom fields such as category or priority
-- Acts as a parent for one or more `Test Run` work packages
+## 1. Test preparation and execution
 
-#### Test run
+### 1.1 Creating a test plan (project)
 
-- Documents a single execution of a test case
-- Fields: status, actual result, version under test
-- Related to its `Test Case` via parent-child relation
-- Status values may include: `New`, `In progress`, `Passed`, `Failed`, `Blocked`
+A new test plan project is created based on a predefined template using the [create project form](https://testmanagement.openproject.com/projects/new?parent_id=6).
 
-Optionally define a workflow limiting status transitions.
+![image-20250601170858132](C:\Users\niels\GitHub\openproject\docs\use-cases\test-management\create-test-plan.png)
 
-### Project template
+### 1.2 Adjusting the created test plan 
 
-Create a project that will act as a reusable test plan template:
+In the next step the [newly created test plan](https://testmanagement.openproject.com/projects/regression-test-openproject-16-dot-1/work_packages?query_id=90) is adjusted by specifying the test object. The easiest way is to select all work package (`CMD + A`) -> right click -> `bulk edit`.
 
-1. Create a new project and enable the modules:  
-   *Work packages*, *Wiki* (optional), *Boards* (optional)
+* Version of the test object (version ideally shared from the development project)
+* Tester
+* Environment 
 
-2. Add work packages of type `Test Case` and, under each, one or more `Test Run` entries
+For all test runs which are not planned the status should be adjusted to something like `Not planned`.
 
-3. Assign all test runs to a placeholder version (e.g., “X.Y”)
+![image-20250601174048401](C:\Users\niels\GitHub\openproject\docs\use-cases\test-management\adjust-test-plan.png)
 
-4. Enable “Use as template” in the project settings
+### 1.3 Test execution
 
-This project defines the reusable structure to be used for every test campaign.
+1. Testers open the project corresponding to the release version.
+2. Each test run is executed individually:
+   - Preconditions are verified
+   - Steps are performed
+   - Results are recorded
+   - Status is updated (e.g., `Passed`, `Test failed`, `Blocked`)
+3. If failures occur, related defects (bugs) are created and linked.
+4. Boards, filters, or hierarchy views are used to monitor test progress and coverage.
+5. The test result can be document creating a pdf report of [all test runs](https://testmanagement.openproject.com/projects/regression-test-openproject-16-dot-1/work_packages?query_id=89).
 
-## Test execution workflow
+![image-20250601174654778](C:\Users\niels\GitHub\openproject\docs\use-cases\test-management\create-test-report.png)
 
-1. Create a new project from the test plan template  
-   Example: `Test plan – release 2.0`
+## 2. Configuration guidance
 
-2. Rename or create the appropriate version (e.g., `2.0.0`) and assign it to the test runs
+This section provides guidance on how to configure OpenProject for test management. It assumes familiarity with OpenProject administration features.
 
-3. Testers execute the tests:  
-   - Update status (`Passed`, `Failed`, `Blocked`)  
-   - Enter actual results and optional attachments
+### 2.1 Configuration example: Test Cases (work package type)
 
-4. Link failed runs to defect work packages where applicable
+The work package type `Test case` can be configured so it shows the relevant information:
 
-## Tracking and queries
+* Test runs (related work packages table `children`)
+* Tested features (related work packages `requires`)
+* Priority
+* Tested module (custom field of type `Hierarchy`)
 
-Use the following views and filters to track test progress:
+Here you find an [example for a test case](https://testmanagement.openproject.com/wp/37).
 
-- Hierarchy view: show test runs nested under their test case
-- Filter by version: isolate one release
-- Group by status: see pass/fail distribution
-- Use the “% done” field on test runs to drive parent test case progress
-- Optionally use boards to visualize execution flow
 
-## Version handling
 
-- Use OpenProject's built-in *Version* entity to tag each test run with the relevant software version
-- When copying a template project, a placeholder version is cloned and can be renamed to match the actual release
-- Versions can also be managed centrally across subprojects if needed
+![image-20250601180132746](C:\Users\niels\GitHub\openproject\docs\use-cases\test-management\test-case-configuration-sample.png)
 
-## Optional: automation and CI integration
+### 2.2 Configuration example: Test Run (work package type)
 
-Test runs can be created or updated via the OpenProject REST API. Example use cases:
+The work package type `Test run` can be configured so it shows the relevant information:
 
-- CI pipeline triggers a test run and updates its result
-- External test tools push execution logs or artifacts into the work package
+* Test specification inlcuding preconditions, excecution steps and testresults: Description field  Tested features (related work packages `requires`)
+* Priority
+* Tester (custom field of type user)
+* Identified bugs (related work packages `related to`)
 
-OpenProject also supports integrations with GitHub and GitLab for pull request tracking and build status visibility, which can complement this setup.
+Here you find an [example for a test run](https://testmanagement.openproject.com/wp/65).
 
-## Summary
 
-This setup provides a structured way to manage manual and semi-automated tests using OpenProject:
 
-- Test definitions (test cases) and executions (test runs) are modeled as work packages
-- A project template serves as a reusable test plan
-- Execution status, version coverage, and defects are tracked in a unified system
+![image-20250601181345239](C:\Users\niels\GitHub\openproject\docs\use-cases\test-management\test-run-configuration-example.png)
 
-This approach is suitable for teams that require basic test tracking integrated into existing project structures with minimal additional tooling.
+### 2.2 Workflow and statuses
+
+- Define custom statuses such as:
+  - `New`,
+  - `In progress`
+  - `Test passed`
+  - `Test failed`
+  - ...
+- Create a simple workflow for test runs with allowed transitions
+- Optionally restrict who can move a test run to `Test passed`.
+
+![image-20250601181943679](C:\Users\niels\GitHub\openproject\docs\use-cases\test-management\test-run-workflow-configuration-example.png)
+
+### 2.3 Roles and permissions
+
+- Define useful roles such as:
+  - `Tester`
+  -  `Test Manager`
+
+- Add permissions such as:
+  - Edit work packages
+
+
+### 2.4 Custom fields
+
+Define custom fields that describe the test object such as:
+
+- Test environment (type `hierarchy`)
+- Tester (custom field type `user`)
