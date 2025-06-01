@@ -57,7 +57,7 @@ This structure supports traceability from requirements to execution and defect r
 
 A new test plan project is created based on a predefined template using the [create project form](https://testmanagement.openproject.com/projects/new?parent_id=6).
 
-![image-20250601170858132](C:\Users\niels\GitHub\openproject\docs\use-cases\test-management\create-test-plan.png)
+![create test plan](create-test-plan.png)
 
 ### 1.2 Adjusting the created test plan 
 
@@ -69,7 +69,7 @@ In the next step the [newly created test plan](https://testmanagement.openprojec
 
 For all test runs which are not planned the status should be adjusted to something like `Not planned`.
 
-![image-20250601174048401](C:\Users\niels\GitHub\openproject\docs\use-cases\test-management\adjust-test-plan.png)
+![adjust test plan](adjust-test-plan.png)
 
 ### 1.3 Test execution
 
@@ -83,7 +83,7 @@ For all test runs which are not planned the status should be adjusted to somethi
 4. Boards, filters, or hierarchy views are used to monitor test progress and coverage.
 5. The test result can be document creating a pdf report of [all test runs](https://testmanagement.openproject.com/projects/regression-test-openproject-16-dot-1/work_packages?query_id=89).
 
-![image-20250601174654778](C:\Users\niels\GitHub\openproject\docs\use-cases\test-management\create-test-report.png)
+![create test report](create-test-report.png)
 
 ## 2. Configuration guidance
 
@@ -102,7 +102,7 @@ Here you find an [example for a test case](https://testmanagement.openproject.co
 
 
 
-![image-20250601180132746](C:\Users\niels\GitHub\openproject\docs\use-cases\test-management\test-case-configuration-sample.png)
+![test case configuration example](test-case-configuration-example.png)
 
 ### 2.2 Configuration example: Test Run (work package type)
 
@@ -117,7 +117,7 @@ Here you find an [example for a test run](https://testmanagement.openproject.com
 
 
 
-![image-20250601181345239](C:\Users\niels\GitHub\openproject\docs\use-cases\test-management\test-run-configuration-example.png)
+![test run configuration example](C:\Users\niels\GitHub\openproject\docs\use-cases\test-management\test-run-configuration-example.png)
 
 ### 2.2 Workflow and statuses
 
@@ -130,7 +130,7 @@ Here you find an [example for a test run](https://testmanagement.openproject.com
 - Create a simple workflow for test runs with allowed transitions
 - Optionally restrict who can move a test run to `Test passed`.
 
-![image-20250601181943679](C:\Users\niels\GitHub\openproject\docs\use-cases\test-management\test-run-workflow-configuration-example.png)
+![test run workflow example](test-run-workflow-configuration-example.png)
 
 ### 2.3 Roles and permissions
 
