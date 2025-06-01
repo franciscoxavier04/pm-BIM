@@ -27,8 +27,6 @@ This setup is not a replacement for full-scale test automation or advanced lab m
 
 ![Test management entities](test-management-entities.png)
 
-*Illustration: Relationships between requirements, test cases, test runs, and defects across test plans and versions.*
-
 ### Core entities
 
 | Concept            | OpenProject entity                                  |
