@@ -272,12 +272,16 @@ module WorkPackage::PDFExport::Common::Common
     "#{truncate(sane_filename(base), length: 255 - suffix.length, escape: false)}#{suffix}".tr(" ", "-")
   end
 
+  def export_datetime
+    @export_datetime ||= Time.zone.now
+  end
+
   def title_datetime
-    DateTime.now.strftime("%Y-%m-%d_%H-%M")
+    export_datetime.strftime("%Y-%m-%d_%H-%M")
   end
 
   def footer_date
-    format_date(Time.zone.now)
+    format_date(export_datetime)
   end
 
   def current_page_nr
