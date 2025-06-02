@@ -7,15 +7,15 @@
                       linkClass="op-back-button_mobile-limited-width"
                       [customBackMethod]="backButtonCallback">
       </op-back-button>
-
-      <editable-toolbar-title [title]="selectedTitle"
-                              [inFlight]="toolbarDisabled"
-                              [showSaveCondition]="showToolbarSaveButton"
-                              (onSave)="changeChangesFromTitle($event)"
-                              (onEmptySubmit)="updateTitleName('')"
-                              [editable]="titleEditingEnabled">
-      </editable-toolbar-title>
-
+      <h2 class="toolbar-title--container">
+        <editable-toolbar-title [title]="selectedTitle"
+                                [inFlight]="toolbarDisabled"
+                                [showSaveCondition]="showToolbarSaveButton"
+                                (onSave)="changeChangesFromTitle($event)"
+                                (onEmptySubmit)="updateTitleName('')"
+                                [editable]="titleEditingEnabled">
+        </editable-toolbar-title>
+      </h2>
       <ul class="toolbar-items hide-when-print"
           *ngIf="showToolbar">
         <ng-container *ngFor="let definition of toolbarButtonComponents">

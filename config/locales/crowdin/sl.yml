@@ -420,12 +420,6 @@ sl:
         new_label: "New priority"
     status:
       button_edit: Edit project status
-  project_phase:
-    duration:
-      one: "Duration: %{count} working day"
-      two: "Duration: %{count} working days"
-      few: "Duration: %{count} working days"
-      other: "Duration: %{count} working days"
   lists:
     create:
       success: "The modified list has been saved as a new list"
@@ -778,7 +772,9 @@ sl:
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      caption: "The minimum number of working days to keep in between the two work packages."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "povezan z"
@@ -994,6 +990,10 @@ sl:
       project/phase:
         date_range: "Datumski obseg"
         definition: "Definition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Ime"
         color: "Barva"
@@ -1305,10 +1305,12 @@ sl:
               blank: "Please select a project."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1357,10 +1359,6 @@ sl:
             from_id:
               error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
-            lag:
-              greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM prodajalec ni na voljo"
           not_whitelisted: "konfiguracija ne dovoljuje"
@@ -1438,6 +1436,8 @@ sl:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "ne more biti v drugem projektu.\n"
               not_a_valid_parent: "ni pravo."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "lahko nastavite samo na %{soonest_start} ali pozneje, da ne bi kršili razmerij delovnih paketov."
               cannot_be_null: "ne more biti nastavljeno na null, ker sta znana končni datum in trajanje."
@@ -2979,6 +2979,7 @@ sl:
   label_query_new: "Nova poizvedba"
   label_query_plural: "Poizvedbe po meri"
   label_read: "Branje ..."
+  label_read_documentation: "Read documentation"
   label_register: "Ustvarite nov račun"
   label_register_with_developer: "Registrirajte se kot razvijalec"
   label_registered_on: "Registriran"
@@ -4414,6 +4415,8 @@ sl:
       code_500: "Prišlo je do notranje napake."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
       expected:

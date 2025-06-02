@@ -421,9 +421,6 @@ ko:
         new_label: "새로운 우선 순위"
     status:
       button_edit: 프로젝트 상태 편집
-  project_phase:
-    duration:
-      other: "기간: 근무일 %{count}일"
   lists:
     create:
       success: "수정된 목록이 새 목록으로 저장되었습니다"
@@ -752,7 +749,9 @@ ko:
     label_add_description: "설명 추가"
     lag:
       subject: "지연"
-      caption: "두 작업 패키지 간에 유지할 최소 근무일 수입니다."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "새로운 작업 패키지를 만들고 자식으로 추가함"
       label_relates_singular: "관련 항목"
@@ -968,6 +967,10 @@ ko:
       project/phase:
         date_range: "날짜 범위"
         definition: "정의"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "이름"
         color: "색상"
@@ -1279,10 +1282,12 @@ ko:
               blank: "프로젝트를 선택하세요."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "시작 날짜는 완료 날짜 전이어야 합니다."
-              non_continuous_dates: "- 이전 단계의 종료일보다 빠를 수 없습니다."
-              incomplete: "- 미완료 상태입니다."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1331,10 +1336,6 @@ ko:
             from_id:
               error_not_found: "- 찾을 수 없거나 표시되지 않습니다."
               error_readonly: "- 기존 관계에 대해서는 변경할 수 없습니다."
-            lag:
-              greater_than_or_equal_to:
-                zero: "- 음수일 수 없습니다."
-              less_than_or_equal_to: "- 너무 높습니다."
         repository:
           not_available: "SCM 업체가 가용하지 않습니다."
           not_whitelisted: "은(는) 설절에 허용되지 않습니다."
@@ -1412,6 +1413,8 @@ ko:
               cannot_be_self_assigned: "- 자신에게 할당할 수 없습니다."
               cannot_be_in_another_project: "다른 프로젝트에 포함될 수 없음"
               not_a_valid_parent: "은(는) 올바르지 않은 값입니다"
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "은(는) %{soonest_start} 이상으로만 설정할 수 있습니다. 작업 패키지의 관계를 위반하지 않도록 하기 위해서입니다."
               cannot_be_null: "완료 날짜와 기간을 알고 있으므로 null로 설정할 수 없습니다."
@@ -2860,6 +2863,7 @@ ko:
   label_query_new: "새 쿼리"
   label_query_plural: "사용자 지정 쿼리"
   label_read: "읽기..."
+  label_read_documentation: "Read documentation"
   label_register: "새 계정 만들기"
   label_register_with_developer: "개발자로 등록"
   label_registered_on: "등록된 날짜"
@@ -4284,6 +4288,8 @@ ko:
       code_500: "내부 오류가 발생하였습니다."
       code_500_outbound_request_failure: "다른 리소스에 대한 아웃바운드 요청이 실패했으며 상태 코드는 %{status_code}입니다."
       code_500_missing_enterprise_token: "Enterprise 토큰이 유효하지 않거나 누락되어 요청을 처리할 수 없습니다."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "원하는 작업 패키지를 찾을 수 없거나 삭제되었습니다."
       expected:

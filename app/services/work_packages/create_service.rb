@@ -85,7 +85,11 @@ class WorkPackages::CreateService < BaseServices::BaseCallable
   end
 
   def reschedule_related(work_package)
-    result = WorkPackages::SetScheduleService.new(user:, work_package:).call
+    # Force work package to keep its scheduling mode if it's automatic.
+    # This is necessary in bulk copy scenarios.
+    switching_to_automatic_mode = []
+    switching_to_automatic_mode << work_package if work_package.schedule_automatically?
+    result = WorkPackages::SetScheduleService.new(user:, work_package:, switching_to_automatic_mode:).call
 
     result.self_and_dependent.each do |r|
       unless r.result.save

@@ -125,7 +125,7 @@ module WorkPackages
 
         def wp_journals_grouped_emoji_reactions
           @wp_journals_grouped_emoji_reactions ||=
-            Journal.grouped_work_package_journals_emoji_reactions_by_reactable(work_package)
+            EmojiReactions::GroupedQueries.grouped_work_package_journals_emoji_reactions_by_reactable(work_package)
         end
 
         def empty_state?

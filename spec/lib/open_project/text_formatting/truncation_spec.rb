@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,33 +27,18 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+require "spec_helper"
 
-module WithReversibleState
-  extend ActiveSupport::Concern
+RSpec.describe OpenProject::TextFormatting::Truncation do
+  subject do
+    extend(described_class)
+  end
 
-  included do
-    attr_reader :state
-
-    around_call :assign_state
-
-    ##
-    # Reuse or append state to the service
-    def with_state(state = {})
-      @state = ::Shared::ServiceState.build(state)
-      self
-    end
-
-    ##
-    # Access to the shared service state
-    def state
-      @state ||= ::Shared::ServiceState.build
-    end
-
-    ##
-    # Assign state to the service result
-    def assign_state
-      yield.tap do |service_result|
-        service_result.state = state
+  describe "#truncate_single_line" do
+    describe "HTML safety" do
+      it "always returns HTML-safe strings" do
+        expect(subject.truncate_single_line("")).to be_html_safe
+        expect(subject.truncate_single_line("ABC" * 99)).to be_html_safe
       end
     end
   end

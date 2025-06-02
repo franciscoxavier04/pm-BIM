@@ -133,9 +133,9 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
     end
 
     context "when changing all" do
-      let!(:phase0) { create_phase(definition: definitions[0], date_range: date - 1..date + 1) }
-      let!(:phase1) { create_phase(definition: definitions[1], date_range: date + 1..date + 1) }
-      let!(:phase2) { create_phase(definition: definitions[2], date_range: date - 9..date - 1) }
+      let!(:phase0) { create_phase(definition: definitions[0], start_date: date - 1, finish_date: date + 1) }
+      let!(:phase1) { create_phase(definition: definitions[1], start_date: date + 1, finish_date: date + 1) }
+      let!(:phase2) { create_phase(definition: definitions[2], start_date: date - 9, finish_date: date - 1) }
 
       it "doesn't reschedule when deactivating" do
         service.call(active: false)
@@ -156,13 +156,13 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
 
     context "when activating one phase" do
       context "having preceding phases with date range" do
-        let!(:phase0) { create_phase(definition: definitions[0], active: true, date_range: date - 1..date - 1) }
-        let!(:phase2) { create_phase(definition: definitions[2], active: true, date_range: date + 7..date + 9) }
+        let!(:phase0) { create_phase(definition: definitions[0], active: true, start_date: date - 1, finish_date: date - 1) }
+        let!(:phase2) { create_phase(definition: definitions[2], active: true, start_date: date + 7, finish_date: date + 9) }
 
         let(:service) { described_class.new(user:, project:, definitions: [definitions[1]]) }
 
         context "with date range" do
-          let!(:phase1) { create_phase(definition: definitions[1], active: false, date_range: date + 2..date + 3) }
+          let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: date + 2, finish_date: date + 3) }
 
           it "reschedules that and following phases" do
             service.call(active: true)
@@ -174,7 +174,7 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
         end
 
         context "when already activated" do
-          let!(:phase1) { create_phase(definition: definitions[1], active: true, date_range: date + 2..date + 3) }
+          let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: date + 2, finish_date: date + 3) }
 
           it "reschedules that and following phases" do
             service.call(active: true)
@@ -186,7 +186,7 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
         end
 
         context "without date range" do
-          let!(:phase1) { create_phase(definition: definitions[1], active: false, date_range: nil) }
+          let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: nil, finish_date: nil) }
 
           it "doesn't reschedule" do
             service.call(active: true)
@@ -199,13 +199,13 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
       end
 
       context "having multiple preceding phases with date range" do
-        let!(:phase0) { create_phase(definition: definitions[0], active: true, date_range: date - 1..date - 1) }
-        let!(:phase1) { create_phase(definition: definitions[1], active: true, date_range: date + 2..date + 3) }
+        let!(:phase0) { create_phase(definition: definitions[0], active: true, start_date: date - 1, finish_date: date - 1) }
+        let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: date + 2, finish_date: date + 3) }
 
         let(:service) { described_class.new(user:, project:, definitions: [definitions[2]]) }
 
         context "with date range" do
-          let!(:phase2) { create_phase(definition: definitions[2], active: false, date_range: date + 7..date + 9) }
+          let!(:phase2) { create_phase(definition: definitions[2], active: false, start_date: date + 7, finish_date: date + 9) }
 
           it "reschedules starting from last preceding phase" do
             service.call(active: true)
@@ -217,7 +217,7 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
         end
 
         context "when already activated" do
-          let!(:phase2) { create_phase(definition: definitions[2], active: true, date_range: date + 7..date + 9) }
+          let!(:phase2) { create_phase(definition: definitions[2], active: true, start_date: date + 7, finish_date: date + 9) }
 
           it "reschedules starting from last preceding phase" do
             service.call(active: true)
@@ -230,13 +230,13 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
       end
 
       context "having multiple preceding phases with date range, some inactive" do
-        let!(:phase0) { create_phase(definition: definitions[0], active: true, date_range: date - 1..date - 1) }
-        let!(:phase1) { create_phase(definition: definitions[1], active: false, date_range: date + 2..date + 3) }
+        let!(:phase0) { create_phase(definition: definitions[0], active: true, start_date: date - 1, finish_date: date - 1) }
+        let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: date + 2, finish_date: date + 3) }
 
         let(:service) { described_class.new(user:, project:, definitions: [definitions[2]]) }
 
         context "with date range" do
-          let!(:phase2) { create_phase(definition: definitions[2], active: false, date_range: date + 7..date + 9) }
+          let!(:phase2) { create_phase(definition: definitions[2], active: false, start_date: date + 7, finish_date: date + 9) }
 
           it "reschedules starting from last preceding phase" do
             service.call(active: true)
@@ -248,7 +248,7 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
         end
 
         context "when already activated" do
-          let!(:phase2) { create_phase(definition: definitions[2], active: true, date_range: date + 7..date + 9) }
+          let!(:phase2) { create_phase(definition: definitions[2], active: true, start_date: date + 7, finish_date: date + 9) }
 
           it "reschedules starting from last preceding phase" do
             service.call(active: true)
@@ -261,13 +261,13 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
       end
 
       context "having inactive preceding phases with date range" do
-        let!(:phase0) { create_phase(definition: definitions[0], active: false, date_range: date - 1..date - 1) }
-        let!(:phase2) { create_phase(definition: definitions[2], active: true, date_range: date + 7..date + 9) }
+        let!(:phase0) { create_phase(definition: definitions[0], active: false, start_date: date - 1, finish_date: date - 1) }
+        let!(:phase2) { create_phase(definition: definitions[2], active: true, start_date: date + 7, finish_date: date + 9) }
 
         let(:service) { described_class.new(user:, project:, definitions: [definitions[1]]) }
 
         context "with date range" do
-          let!(:phase1) { create_phase(definition: definitions[1], active: false, date_range: date + 2..date + 3) }
+          let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: date + 2, finish_date: date + 3) }
 
           it "reschedules following phases" do
             service.call(active: true)
@@ -279,7 +279,7 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
         end
 
         context "when already activated" do
-          let!(:phase1) { create_phase(definition: definitions[1], active: true, date_range: date + 2..date + 3) }
+          let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: date + 2, finish_date: date + 3) }
 
           it "reschedules following phases" do
             service.call(active: true)
@@ -291,7 +291,7 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
         end
 
         context "without date range" do
-          let!(:phase1) { create_phase(definition: definitions[1], active: false, date_range: nil) }
+          let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: nil, finish_date: nil) }
 
           it "doesn't reschedule" do
             service.call(active: true)
@@ -304,13 +304,13 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
       end
 
       context "having preceding phases without date range" do
-        let!(:phase0) { create_phase(definition: definitions[0], active: true, date_range: nil) }
-        let!(:phase2) { create_phase(definition: definitions[2], active: true, date_range: date + 7..date + 9) }
+        let!(:phase0) { create_phase(definition: definitions[0], active: true, start_date: nil, finish_date: nil) }
+        let!(:phase2) { create_phase(definition: definitions[2], active: true, start_date: date + 7, finish_date: date + 9) }
 
         let(:service) { described_class.new(user:, project:, definitions: [definitions[1]]) }
 
         context "with date range" do
-          let!(:phase1) { create_phase(definition: definitions[1], active: false, date_range: date + 2..date + 3) }
+          let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: date + 2, finish_date: date + 3) }
 
           it "reschedules following phases" do
             service.call(active: true)
@@ -322,7 +322,7 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
         end
 
         context "when already activated" do
-          let!(:phase1) { create_phase(definition: definitions[1], active: true, date_range: date + 2..date + 3) }
+          let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: date + 2, finish_date: date + 3) }
 
           it "reschedules following phases" do
             service.call(active: true)
@@ -334,7 +334,7 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
         end
 
         context "without date range" do
-          let!(:phase1) { create_phase(definition: definitions[1], active: false, date_range: nil) }
+          let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: nil, finish_date: nil) }
 
           it "doesn't reschedule" do
             service.call(active: true)
@@ -347,13 +347,13 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
       end
 
       context "having no preceding phases" do
-        let!(:phase1) { create_phase(definition: definitions[1], active: true, date_range: date + 2..date + 3) }
-        let!(:phase2) { create_phase(definition: definitions[2], active: true, date_range: date + 7..date + 9) }
+        let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: date + 2, finish_date: date + 3) }
+        let!(:phase2) { create_phase(definition: definitions[2], active: true, start_date: date + 7, finish_date: date + 9) }
 
         let(:service) { described_class.new(user:, project:, definitions: [definitions[0]]) }
 
         context "with date range" do
-          let!(:phase0) { create_phase(definition: definitions[0], active: false, date_range: date - 1..date - 1) }
+          let!(:phase0) { create_phase(definition: definitions[0], active: false, start_date: date - 1, finish_date: date - 1) }
 
           it "reschedules following phases" do
             service.call(active: true)
@@ -365,7 +365,7 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
         end
 
         context "when already activated" do
-          let!(:phase0) { create_phase(definition: definitions[0], active: true, date_range: date - 1..date - 1) }
+          let!(:phase0) { create_phase(definition: definitions[0], active: true, start_date: date - 1, finish_date: date - 1) }
 
           it "reschedules following phases" do
             service.call(active: true)
@@ -377,7 +377,7 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
         end
 
         context "without date range" do
-          let!(:phase0) { create_phase(definition: definitions[0], active: false, date_range: nil) }
+          let!(:phase0) { create_phase(definition: definitions[0], active: false, start_date: nil, finish_date: nil) }
 
           it "doesn't reschedule" do
             service.call(active: true)
@@ -391,13 +391,13 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
     end
 
     context "when deactivating one phase" do
-      let!(:phase0) { create_phase(definition: definitions[0], active: true, date_range: date - 1..date - 1) }
-      let!(:phase2) { create_phase(definition: definitions[2], active: true, date_range: date + 7..date + 9) }
+      let!(:phase0) { create_phase(definition: definitions[0], active: true, start_date: date - 1, finish_date: date - 1) }
+      let!(:phase2) { create_phase(definition: definitions[2], active: true, start_date: date + 7, finish_date: date + 9) }
 
       let(:service) { described_class.new(user:, project:, definitions: [definitions[1]]) }
 
       context "with date range" do
-        let!(:phase1) { create_phase(definition: definitions[1], active: true, date_range: date + 2..date + 3) }
+        let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: date + 2, finish_date: date + 3) }
 
         it "reschedules following phases using dates of that phase" do
           service.call(active: false)
@@ -409,7 +409,7 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
       end
 
       context "when already deactivated" do
-        let!(:phase1) { create_phase(definition: definitions[1], active: false, date_range: date + 2..date + 3) }
+        let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: date + 2, finish_date: date + 3) }
 
         it "reschedules following phases using dates of that phase" do
           service.call(active: false)
@@ -421,7 +421,7 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
       end
 
       context "without date range" do
-        let!(:phase1) { create_phase(definition: definitions[1], active: true, date_range: nil) }
+        let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: nil, finish_date: nil) }
 
         it "doesn't reschedule" do
           service.call(active: false)

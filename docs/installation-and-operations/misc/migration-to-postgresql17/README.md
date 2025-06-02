@@ -238,7 +238,7 @@ And then restart OpenProject.
 
 ## Helm Chart installation
 
-> Please follow this section only if you have installed OpenProject using [this procedure](https://www.openproject.org/docs/installation-and-operations/installation/helm-chart/).
+> Please follow this section only if you have installed OpenProject using [this procedure](../../installation/helm-chart/).
 > Before attempting the upgrade, please ensure you have performed a backup of your installation by following the [backup guide](../../operation/backing-up/).
 
 1. Stop your frontend or scale it down to 0 to prevent frontend changes.

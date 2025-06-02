@@ -25,9 +25,8 @@ Under the *Login and SSO* tab you can adjust following settings:
 
 1. Select a **direct login SSO provider**. If this option is active, login requests will be redirected to the configured Omniauth provider. This will disable the login dropdown and sign-in page. 
 
-   > [!NOTE]
-   >
-   > Unless you also disable password logins, with this option enabled, users can still log in internally by visiting internal login page, for example `https://yourinstancename.openproject.com/login/internal` login page.
+> [!NOTE]
+> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting internal login page, for example `https://yourinstancename.openproject.com/login/internal` login page.
 
 2. Enable or disable the **autologin option**. This allows a user to remain logged in, even if they leave the site. If this option is activated, the “Stay signed in” option will appear on the login screen to be selected.
 
@@ -51,25 +50,25 @@ Under the *Registration* tab you can adjust following settings:
 
 1. Select if the **authentication is required** to access OpenProject. For versions 13.1 and higher of OpenProject, this setting will be checked by default
 
-   > [!IMPORTANT]
-   > If you uncheck this box, your OpenProject instance will be visible to the general public without logging in. The visibility of individual projects depends on [this setting](../../../user-guide/projects/#set-a-project-to-public).
+> [!IMPORTANT]
+> If you uncheck this box, your OpenProject instance will be visible to the general public without logging in. The visibility of individual projects depends on [this setting](../../../user-guide/projects/#set-a-project-to-public).
 
 2. Select an option for **self-registration**. Self-registration can either be **disabled**, or it can be allowed with the following criteria:
 
    a) **Account activation by email** - users can register on their own. They will receive an activation email and will need to activate their account after confirming  their email address. 
 
-   > [!WARNING]
-   > Administrators have no moderation control over this  activation process if this method is selected.
+> [!WARNING]
+> Administrators have no moderation control over this  activation process if this method is selected.
    
    b) **Manual account activation** - users can register on their own. However, an administrator (or a user with the global permission to create or manage  users) needs to activate them.
    
    c) **Automatic account activation** - users can register on their own. Their accounts are immediately active  without further action. 
    
-   > [!WARNING]
-   > Administrators have no moderation control over this  activation process if this method is selected.
+> [!WARNING]
+> Administrators have no moderation control over this  activation process if this method is selected.
 
-   > [!NOTE]
-   > By default, self-registration is only applied to internal users (logging in with username and password). If you have an identity provider such as LDAP, SAML or OpenID Connect, use the respective settings in their configuration to control which users are applicable for automatic user creation.
+> [!NOTE]
+> By default, self-registration is only applied to internal users (logging in with username and password). If you have an identity provider such as LDAP, SAML or OpenID Connect, use the respective settings in their configuration to control which users are applicable for automatic user creation.
 
 3. Define after how many days the **activation email sent to new users will expire**. Afterwards, you will have the possibility to [re-send the activation email](../../users-permissions/users/#resend-user-invitation-via-email) via the user settings.
 

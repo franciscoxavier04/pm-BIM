@@ -85,6 +85,22 @@ RSpec.describe OpenIDConnect::UserTokens::ExchangeService, :webmock do
         .with(body: hash_including(subject_token: idp_access_token))
     end
 
+    it "doesn't request any scopes" do
+      subject
+      expect(WebMock).to(have_requested(:post, provider.token_endpoint).with { |req| expect(req.body).not_to include("scope") })
+    end
+
+    context "when configuring a scope" do
+      let(:service) { described_class.new(user:, scope:) }
+      let(:scope) { "scope-a scope-b" }
+
+      it "requests the scopes during token exchange" do
+        subject
+        expect(WebMock).to have_requested(:post, provider.token_endpoint)
+          .with(body: hash_including(scope:))
+      end
+    end
+
     context "when the response has no expires_in" do
       let(:exchange_response) do
         {

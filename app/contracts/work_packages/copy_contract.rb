@@ -36,5 +36,11 @@ module WorkPackages
     # a scenario where this field must be writable
     attribute :done_ratio,
               writable: true
+
+    # Do not validate predecessors or children presence when copying: when
+    # copying, it's possible to create a work package in automatic scheduling
+    # mode even if it has no predecessors or children yet. They will be added
+    # later in the process.
+    def validate_has_predecessors_or_children; end
   end
 end

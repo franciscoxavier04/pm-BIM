@@ -15,6 +15,7 @@ uk:
           oauth2_sso_with_two_way_oauth2_fallback: Єдиний вхід через двосторонню авторизацію OAuth 2.0 як запасний варіант
           two_way_oauth2: Потік коду двосторонньої авторизації OAuth 2.0
         storage_audience: Аудиторія сховища
+        token_exchange_scope: Storage Scope
       storages/project_storage:
         project_folder: Папка проєкту
         project_folder_mode: Режим папки проєкту
@@ -225,12 +226,12 @@ uk:
       openproject_oauth: OpenProject OAuth
       project_folders: Папки проєкту
       redirect_uri: URI переспрямування
-      storage_audience: Аудиторія сховища
       storage_audience_blank: Аудиторію не налаштовано.
-      storage_audience_description: Отримання маркерів для аудиторії «%{audience}».
-      storage_audience_idp: Використання першого маркера доступу, отриманого від постачальника ідентифікаційних даних, незалежно від аудиторії.
+      storage_audience_description: Exchanging tokens for audience "%{audience}".
+      storage_audience_idp: Using access token obtained by identity provider during login, regardless of audience.
       storage_oauth: Nextcloud OAuth
       storage_provider: Постачальник сховища
+      token_exchange: Token Exchange
     health:
       actions:
         download_report: Завантажити
@@ -354,8 +355,9 @@ uk:
         integration: Адміністрування Nextcloud / OpenProject
         oauth_configuration: Скопіюйте ці значення з додатка %{application_link_text}.
         provider_configuration: Перш ніж виконувати налаштування, переконайтеся, що маєте права адміністратора у своєму екземплярі Nextcloud і що встановлено %{application_link_text}.
-        storage_audience: Введіть ID клієнта, який використовує екземпляр Nextcloud для обміну даними з постачальником ідентифікаційних даних.
+        storage_audience: The client ID that the Nextcloud instance uses to communicate with the identity provider.
         storage_audience_placeholder: напр., Nextcloud
+        token_exchange_scope: The scopes that should be requested during token exchange, each one separated by a space.
       no_specific_folder: За замовчуванням кожен користувач, який передасть файл, починатиме роботу у власній головній папці.
       no_storage_set_up: Файлові сховища поки не створено.
       not_logged_into_storage: Шоб вибрати папку проєкту, спочатку ввійдіть
@@ -387,9 +389,9 @@ uk:
     label_creator: Автор
     label_delete_storage: Видалити сховище
     label_edit_storage_access_management: Змінити керування доступом до сховища
-    label_edit_storage_audience: Редагування аудиторії сховища
     label_edit_storage_automatically_managed_folders: Редагувати папки сховища з автоматичним керуванням
     label_edit_storage_host: Редагувати хост сховища
+    label_edit_token_exchange: Edit token exchange configuration
     label_existing_manual_folder: Наявна папка з ручним керуванням дозволами
     label_file_storage: Файлове сховище
     label_host: URL-адреса хосту
@@ -483,13 +485,13 @@ uk:
       description: Якщо вимкнути цей параметр, список вкладень буде приховано на вкладці «Файли» пакетів робіт. Файли, вкладені в опис пакета робіт, усе одно буде додано у внутрішнє сховище вкладень.
       label: Показувати вкладення на вкладці «Файли» пакетів робіт
     storage_audience:
-      documentation_intro: Дізнатися більше про наведені нижче варіанти й потрібні налаштування постачальника ідентифікаційних даних можна в нашій документації.
+      documentation_intro: Please read our documentation for details on the following options and configuration of the identity provider.
       idp:
-        helptext: OpenProject використовуватиме перший маркер доступу, отриманий від постачальника ідентифікаційних даних, для автентифікації запитів до сховища й не намагатиметься отримати інший маркер.
-        label: Використовувати перший маркер доступу, отриманий від постачальника ідентифікаційних даних
+        helptext: OpenProject will use the access token received by the identity provider during log in to authenticate requests to the storage. It will not try to obtain another token.
+        label: Use access token obtained during user log in
       manual:
-        helptext: Дає змогу задати аудиторію сховища. OpenProject спробує отримати маркер для заданої аудиторії від постачальника ідентифікаційних даних.
-        label: Визначити аудиторію сховища вручну
+        helptext: OpenProject will exchange a token with the identity provider for the given audience.
+        label: Manually specify audience for which to exchange access token
     storage_list_blank_slate:
       description: Додайте сховище, щоб воно з’явилося тут.
       heading: У вас ще немає жодного сховища.

@@ -26,8 +26,8 @@ ja:
       no_results_title_text: この期間内にプロジェクトの活動はありませんでした。
     work_packages:
       activity_tab:
-        no_results_title_text: No activity to display
-        no_results_description_text: 'Choose "Show everything" to show all activity and comments'
+        no_results_title_text: 表示するアクティビティがありません
+        no_results_description_text: 'すべてのアクティビティとコメントを表示するには「すべてを表示」を選択してください'
         label_activity_show_all: "すべてを表示"
         label_activity_show_only_comments: "コメントのみ表示"
         label_activity_show_only_changes: "変更のみを表示"
@@ -35,8 +35,8 @@ ja:
         label_sort_desc: "降順"
         label_type_to_comment: "コメントを追加。メンバーをメンションするには@を入力してください。"
         label_submit_comment: "コメントする"
-        label_who: Who?
-        changed_on: "changed on"
+        label_who: 誰が？
+        changed_on: "を変更した"
         created_on: "created this on"
         changed: "changed"
         created: "作成する"
@@ -56,12 +56,12 @@ ja:
     custom_styles:
       color_theme: "カラーテーマ"
       color_theme_custom: "（カスタム）"
-      tab_interface: "Interface"
+      tab_interface: "インターフェース"
       tab_branding: "Branding"
       tab_pdf_export_styles: "PDF export styles"
       colors:
-        primary-button-color: "Primary button"
-        accent-color: "Accent"
+        primary-button-color: "プライマリボタン"
+        accent-color: "アクセント"
         header-bg-color: "ヘッダの背景"
         header-item-bg-hover-color: "ホバー時のヘッダの背景"
         main-menu-bg-color: "メインメニューの背景"
@@ -95,8 +95,8 @@ ja:
       buttons:
         upgrade: "今すぐアップグレード"
         contact: "デモについてはお問い合わせください"
-      enterprise_info_html: "is an Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> add-on."
-      upgrade_info: "Please upgrade to a paid plan to activate and start using it in your team."
+      enterprise_info_html: "は、Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> アドオンです。"
+      upgrade_info: "有料プランにアップグレードして、チームで使用を開始してください。"
     jemalloc_allocator: Jemalloc memory allocator
     journal_aggregation:
       explanation:
@@ -227,14 +227,14 @@ ja:
         actions: "アイテム操作"
         blankslate:
           root:
-            title: "Your list of items is empty"
+            title: "リストは空です"
             description: "Start by adding items to the custom field of type hierarchy. Each item can be used to create a hierarchy bellow it. To navigate and create sub-items inside a hierarchy click on the created item."
           item:
             title: This item doesn't have any hierarchy level below
             description: Add items to this list to create sub-items inside another one
         delete_dialog:
-          title: "Delete custom field item"
-          heading: "Delete custom field item?"
+          title: "カスタムフィールド項目の削除"
+          heading: "カスタムフィールド項目を削除しますか？"
           description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Item label"
@@ -244,17 +244,17 @@ ja:
       hierarchy:
         subitems:
           zero: no sub-items
-          one: 1 sub-item
-          other: "%{count} sub-items"
+          one: 1 つの子項目があります
+          other: "%{count} 個の子項目があります"
     text_add_new_custom_field: >
       新しいカスタムフィールドをプロジェクトに追加するには、それをこのプロジェクトに追加する前に、まず作成する必要があります。
     is_enabled_globally: "グローバルで有効"
     enabled_in_project: "プロジェクトで有効"
     contained_in_type: "タイプに含まれる"
     confirm_destroy_option: "オプションを削除すると、そのすべての派生 (例えばワークパッケージ) が削除されます。削除してもよろしいですか?"
-    reorder_alphabetical: "Reorder values alphabetically"
-    reorder_confirmation: "Warning: The current order of available values will be lost. Continue?"
-    placeholder_version_select: "Work package or project selection is required first"
+    reorder_alphabetical: "値をアルファベット順に並べ替える"
+    reorder_confirmation: "警告：利用可能な値の現在の順序は失われます。続行しますか？"
+    placeholder_version_select: "最初にワークパッケージまたはプロジェクトの選択が必要です"
     instructions:
       is_required: "必要に応じてカスタムフィールドをマークします。新規または既存のリソースを作成する際にフィールドを入力することが必須になります。"
       is_required_for_project: "Check to enable this attribute and make it required in all projects. It cannot be deactived for individual projects."
@@ -273,18 +273,18 @@ ja:
     single: "または"
   dry_validation:
     errors:
-      int?: "must be an integer."
-      filled?: "must be filled."
-      greater_or_equal_zero: "must be greater or equal to 0."
-      not_found: "not found."
+      int?: "は整数でなければなりません。"
+      filled?: "を入力する必要があります。"
+      greater_or_equal_zero: "は 0 以上でなければなりません。"
+      not_found: "見つかりません。"
       rules:
         item:
-          root_item: "cannot be a root item."
-          not_persisted: "must be an already existing item."
+          root_item: "をルート・アイテムにすることはできない。"
+          not_persisted: "は既存のアイテムである必要があります。"
         label:
-          not_unique: "must be unique within the same hierarchy level."
+          not_unique: "は、同じ階層レベル内で一意である必要があります。"
         short:
-          not_unique: "must be unique within the same hierarchy level."
+          not_unique: "は、同じ階層レベル内で一意である必要があります。"
         parent:
           not_descendant: "must be a descendant of the hierarchy root."
     rules:
@@ -419,54 +419,49 @@ ja:
         new_label: "New priority"
     status:
       button_edit: Edit project status
-  project_phase:
-    working_days_count:
-      other: "期間： %{count} 営業日"
-    duration:
-      other: "Duration: %{count} working days"
   lists:
     create:
-      success: "The modified list has been saved as a new list"
-      failure: "The modified list cannot be saved: %{errors}"
+      success: "変更されたリストは新しいリストとして保存されました"
+      failure: "変更されたリストを保存できません: %{errors}"
     update:
-      success: "The modified list has been saved"
-      failure: "The modified list cannot be saved: %{errors}"
+      success: "変更されたリストが保存されました"
+      failure: "変更されたリストを保存できません: %{errors}"
     publish:
-      success: "The list has been made public"
-      failure: "The list cannot be made public: %{errors}"
+      success: "リストは公開されました"
+      failure: "リストを公開できません: %{errors}"
     unpublish:
-      success: "The list has been made private"
-      failure: "The list cannot be made private: %{errors}"
-    can_be_saved: "List modified:"
+      success: "リストは非公開にされました"
+      failure: "リストを非公開にすることはできません： %{errors}"
+    can_be_saved: "更新日時："
     can_be_saved_as: "The modifications can only be saved in a new list:"
   members:
     index:
       no_results_title_text: 現在、このプロジェクトのメンバーはいません。
       no_results_content_text: プロジェクトにメンバーを追加
     invite_by_mail: "招待状を %{mail} に送信する"
-    send_invite_to: "Send invite to"
+    send_invite_to: "招待状を送信"
     columns:
-      shared: "Shared"
+      shared: "共有"
     filters:
-      all_shares: "All shares"
+      all_shares: "すべてのシェア"
     menu:
       all: "全て"
-      invited: "Invited"
+      invited: "招待済み"
       locked: "ロックされている"
-      project_roles: "Project roles"
-      wp_shares: "Work package shares"
+      project_roles: "プロジェクトロール"
+      wp_shares: "ワークパッケージの共有"
       groups: "グループ"
     delete_member_dialog:
-      title: "Remove member"
-      will_remove_the_users_role: "This will remove the user’s role from this project."
-      will_remove_the_groups_role: "This will remove the group role from this project."
+      title: "メンバーを削除"
+      will_remove_the_users_role: "これにより、このプロジェクトからユーザーのロールが削除されます。"
+      will_remove_the_groups_role: "これにより、このプロジェクトからグループのロールが削除されます。"
       however_work_packages_shared_with_user_html:
         other: "However, %{shared_work_packages_link} have also been shared with this user."
       however_work_packages_shared_with_group_html:
         other: "However, %{shared_work_packages_link} have also been shared with this group."
-      remove_work_packages_shared_with_user_too: "A user that has been removed as member can still access shared work packages. Would you like to remove the shares too?"
-      remove_work_packages_shared_with_group_too: "A group that has been removed as member can still access shared work packages. Would you like to remove the shares too?"
-      will_not_affect_inherited_shares: "(This will not affect work packages shared with their group)."
+      remove_work_packages_shared_with_user_too: "メンバーから削除されたユーザーは、まだ共有ワークパッケージにアクセスできます。共有も削除しますか？"
+      remove_work_packages_shared_with_group_too: "メンバーから削除されたグループは、まだ共有ワークパッケージにアクセスできます。共有も削除しますか？"
+      will_not_affect_inherited_shares: "(これはグループと共有されている作業項目には影響しません)。"
       can_remove_direct_but_not_shared_roles: "You can remove this user as a direct project member but a group they are in is also a member of this project, so they will continue being a member via the group."
       also_work_packages_shared_with_user_html:
         other: "Also, %{shared_work_packages_link} have been shared with this user."
@@ -643,8 +638,8 @@ ja:
         pdf_export_templates:
           label: "PDF Export templates"
           actions:
-            label_enable_all: "Enable all"
-            label_disable_all: "Disable all"
+            label_enable_all: "すべて有効"
+            label_disable_all: "すべて無効"
   versions:
     overview:
       work_packages_in_archived_projects: "The version is shared with archived projects which still have work packages assigned to this version. These are counted, but will not appear in the linked views."
@@ -747,12 +742,14 @@ ja:
       blankslate_heading: "No relations"
       blankslate_description: "This work package does not have any relations yet."
     label_add_child_button: "Child"
-    label_add_x: "Add %{x}"
-    label_edit_x: "Edit %{x}"
+    label_add_x: "%{x} を追加"
+    label_edit_x: "%{x} を編集"
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      caption: "2つの作業パッケージの間に空ける最低作業日数。"
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "関連している"
@@ -968,6 +965,10 @@ ja:
       project/phase:
         date_range: "期間"
         definition: "Definition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "名称"
         color: "色"
@@ -1276,13 +1277,15 @@ ja:
         project_custom_field_project_mapping:
           attributes:
             project_ids:
-              blank: "Please select a project."
+              blank: "プロジェクトを選択してください。"
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1331,10 +1334,6 @@ ja:
             from_id:
               error_not_found: "見つからないか、非表示になっています。"
               error_readonly: "既存のリレーションを変更することはできません。"
-            lag:
-              greater_than_or_equal_to:
-                zero: "を否定することはできない。"
-              less_than_or_equal_to: "が大きすぎます。"
         repository:
           not_available: "SCMベンダーは使用できません。"
           not_whitelisted: "は設定で許可されていません。"
@@ -1412,6 +1411,8 @@ ja:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "は別のプロジェクトに属することはできません。"
               not_a_valid_parent: "は不正な値です。"
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "は、ワークパッケージの関係に違反しないように %{soonest_start} またはそれ以降にのみ設定できます。"
               cannot_be_null: "can not be set to null as finish date and duration are known."
@@ -2860,6 +2861,7 @@ ja:
   label_query_new: "新しいクエリ"
   label_query_plural: "カスタムクエリ"
   label_read: "続いて読む..."
+  label_read_documentation: "Read documentation"
   label_register: "登録する"
   label_register_with_developer: "開発者として登録する"
   label_registered_on: "登録日"
@@ -4286,6 +4288,8 @@ ja:
       code_500: "内部エラーが発生しました。"
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "Enterprise トークンが無効または見つからないため、リクエストを処理できません。"
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
       expected:

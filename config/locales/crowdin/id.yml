@@ -417,9 +417,6 @@ id:
         new_label: "New priority"
     status:
       button_edit: Edit project status
-  project_phase:
-    duration:
-      other: "Duration: %{count} working days"
   lists:
     create:
       success: "The modified list has been saved as a new list"
@@ -748,7 +745,9 @@ id:
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      caption: "Jumlah hari kerja minimum yang harus dijaga di antara dua paket pekerjaan."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "terkait dengan"
@@ -964,6 +963,10 @@ id:
       project/phase:
         date_range: "Kisaran tanggal"
         definition: "Definition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Nama"
         color: "Warna"
@@ -1275,10 +1278,12 @@ id:
               blank: "Please select a project."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1327,10 +1332,6 @@ id:
             from_id:
               error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
-            lag:
-              greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Vendor SCM tidak tersedia"
           not_whitelisted: "konfigurasi tidak mengijinkan."
@@ -1408,6 +1409,8 @@ id:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "tidak boleh dari proyek lain."
               not_a_valid_parent: "tidak valid."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "can only be set to %{soonest_start} or later so as not to violate the work package's relationships."
               cannot_be_null: "can not be set to null as finish date and duration are known."
@@ -2856,6 +2859,7 @@ id:
   label_query_new: "Queri baru"
   label_query_plural: "Kustom queri"
   label_read: "Baca..."
+  label_read_documentation: "Read documentation"
   label_register: "Buat akun baru"
   label_register_with_developer: "Daftar sebagai pengembang"
   label_registered_on: "Terdaftar sejak"
@@ -4280,6 +4284,8 @@ id:
       code_500: "An internal error has occurred."
       code_500_outbound_request_failure: "Permintaan keluar ke sumber daya lain telah gagal dengan kode status %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "Paket pekerjaan yang Anda cari tidak dapat ditemukan atau telah dihapus."
       expected:
