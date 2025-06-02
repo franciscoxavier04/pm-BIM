@@ -254,4 +254,65 @@ RSpec.describe API::V3::Reminders::RemindersAPI do
                       "The work package you are looking for cannot be found or has been deleted."
     end
   end
+
+  describe "DELETE /api/v3/work_packages/:work_package_id/reminders/:reminder_id" do
+    let(:headers) { { "CONTENT_TYPE" => "application/json" } }
+
+    let(:reminder) { create(:reminder, remindable: work_package, creator: user_with_permissions) }
+    let(:other_user_reminder) { create(:reminder, remindable: work_package, creator: other_user_without_permissions) }
+
+    let(:completed_reminder) do
+      create(:reminder, :completed, remindable: work_package, creator: user_with_permissions)
+    end
+
+    def make_request
+      delete path, headers
+    end
+
+    context "with permissions deleting own reminder" do
+      let(:path) { api_v3_paths.work_package_reminder(work_package.id, reminder.id) }
+
+      current_user { user_with_permissions }
+
+      before { make_request }
+
+      it_behaves_like "successful no content response"
+    end
+
+    context "with permissions deleting completed reminder" do
+      let(:path) { api_v3_paths.work_package_reminder(work_package.id, completed_reminder.id) }
+
+      current_user { user_with_permissions }
+
+      before { make_request }
+
+      it_behaves_like "error response",
+                      404, "NotFound",
+                      "The reminder you are looking for cannot be found or has been deleted."
+    end
+
+    context "with permissions deleting other user's reminder" do
+      let(:path) { api_v3_paths.work_package_reminder(work_package.id, other_user_reminder.id) }
+
+      current_user { user_with_permissions }
+
+      before { make_request }
+
+      it_behaves_like "error response",
+                      404, "NotFound",
+                      "The reminder you are looking for cannot be found or has been deleted."
+    end
+
+    context "with no permissions deleting own reminder" do
+      let(:path) { api_v3_paths.work_package_reminder(work_package.id, other_user_reminder.id) }
+
+      current_user { other_user_without_permissions }
+
+      before { make_request }
+
+      it_behaves_like "error response",
+                      404, "NotFound",
+                      "The work package you are looking for cannot be found or has been deleted."
+    end
+  end
 end
