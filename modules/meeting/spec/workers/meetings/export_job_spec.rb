@@ -32,6 +32,7 @@ require "spec_helper"
 
 RSpec.describe Meetings::ExportJob do
   let(:user) { build_stubbed(:user) }
+  let(:project) { create(:project, enabled_module_names: %w[meetings]) }
   let(:meeting) do
     create :meeting,
            project:,
