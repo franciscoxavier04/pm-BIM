@@ -43,6 +43,7 @@ module Projects
         ::Projects::Copy::QueriesDependentService,
         ::Projects::Copy::BoardsDependentService,
         ::Projects::Copy::OverviewDependentService,
+        ::Projects::Copy::PhasesDependentService,
         ::Projects::Copy::StoragesDependentService
       ]
     end

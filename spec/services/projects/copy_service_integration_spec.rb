@@ -55,6 +55,12 @@ RSpec.describe(
   shared_let(:source_child_wiki_page) { create(:wiki_page, wiki: source.wiki, parent: source_wiki_page) }
   shared_let(:source_forum) { create(:forum, project: source) }
   shared_let(:source_topic) { create(:message, forum: source_forum) }
+  shared_let(:source_project_phase) do
+    create(:project_phase,
+           project: source,
+           start_date: Time.zone.today,
+           finish_date: Time.zone.today + 5.days)
+  end
 
   let(:current_user) do
     create(:user,
@@ -104,6 +110,7 @@ RSpec.describe(
           queries
           boards
           overview
+          phases
           storages
           storage_project_folders
           file_links
@@ -267,6 +274,7 @@ RSpec.describe(
         expect(project_copy.wiki.pages.root.text).to eq source_wiki_page.text
         expect(project_copy.wiki.pages.leaves.first.text).to eq source_child_wiki_page.text
         expect(project_copy.wiki.start_page).to eq "Wiki"
+        expect(project_copy.phases.count).to eq 1
 
         # Cleared attributes
         expect(project_copy).to be_persisted
@@ -381,7 +389,7 @@ RSpec.describe(
         end
       end
 
-      context "with memeber" do
+      context "with member" do
         let(:only_args) { %w[members] }
 
         let!(:user) { create(:user) }
@@ -920,6 +928,29 @@ RSpec.describe(
           end
         end
       end
+
+      context "with project phases" do
+        let(:only_args) { %i[phases] }
+
+        let!(:inactive_source_project_phase) do
+          create(:project_phase,
+                 project: source,
+                 active: false,
+                 start_date: Time.zone.today + 10.days,
+                 finish_date: Time.zone.today + 15.days)
+        end
+
+        it "copies the phases" do
+          expect(subject).to be_success
+          expect(project_copy.phases.count).to eq 2
+
+          [source_project_phase, inactive_source_project_phase].each do |source_phase|
+            copied_phase = project_copy.phases.find_by(definition_id: source_phase.definition_id)
+            expect(copied_phase.attributes.slice("definition_id", "active", "start_date", "finish_date", "duration"))
+              .to eql source_phase.attributes.slice("definition_id", "active", "start_date", "finish_date", "duration")
+          end
+        end
+      end
     end
 
     context "without anything selected" do
@@ -940,6 +971,7 @@ RSpec.describe(
         expect(project_copy.wiki.wiki_menu_items.count).to eq 1
         expect(project_copy.queries.count).to eq 0
         expect(project_copy.versions.count).to eq 0
+        expect(project_copy.phases.count).to eq 0
 
         # Cleared attributes
         expect(project_copy).to be_persisted
