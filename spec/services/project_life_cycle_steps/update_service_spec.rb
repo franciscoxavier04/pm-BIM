@@ -32,8 +32,6 @@ require "spec_helper"
 require "services/base_services/behaves_like_update_service"
 
 RSpec.describe ProjectLifeCycleSteps::UpdateService, type: :model do
-  shared_let(:week_days) { week_with_saturday_and_sunday_as_weekend }
-
   before do
     allow(project).to receive(:touch_and_save_journals)
   end
@@ -65,7 +63,7 @@ RSpec.describe ProjectLifeCycleSteps::UpdateService, type: :model do
   end
 
   describe "updating duration through SetAttributesService" do
-    shared_let(:phase) { create(:project_phase, duration: 0) }
+    shared_let(:phase) { create(:project_phase, duration: nil) }
 
     let(:user) { build_stubbed(:user) }
     let(:project) { phase.project }
@@ -76,24 +74,22 @@ RSpec.describe ProjectLifeCycleSteps::UpdateService, type: :model do
       mock_permissions_for(user) do |mock|
         mock.allow_in_project(:edit_project_phases, project:)
       end
-
-      allow(phase).to receive(:set_calculated_duration)
     end
 
     it "sets duration for valid model" do
-      expect(service.call(date_range: date - 1..date + 1)).to be_success
-
-      expect(phase).to have_received(:set_calculated_duration)
+      expect(service.call(start_date: date - 1, finish_date: date + 1)).to be_success
+      expect(phase.saved_change_to_duration).to eq([nil, 3]) # Changes are saved
     end
 
     it "sets duration for invalid model" do
-      expect(service.call(date_range: date + 1..date - 1)).to be_failure
-
-      expect(phase).to have_received(:set_calculated_duration)
+      expect(service.call(start_date: date + 1, finish_date: date - 1)).to be_failure
+      expect(phase.duration_change).to eq([nil, 0]) # Changes are not saved
     end
   end
 
   describe "#reschedule_following_phases" do
+    shared_let(:week_days) { week_with_saturday_and_sunday_as_weekend }
+
     let(:date) { Date.new(2025, 4, 9) }
     let(:user) { create(:user) }
     let(:service) { described_class.new(user:, model: phase) }
@@ -110,35 +106,35 @@ RSpec.describe ProjectLifeCycleSteps::UpdateService, type: :model do
     end
 
     context "for invalid date range" do
-      let!(:phase) { create(:project_phase, project:, date_range: date..date) }
-      let!(:following) { create(:project_phase, project:, date_range: date - 10..date - 10, duration: 3) }
+      let!(:phase) { create(:project_phase, project:, start_date: date, finish_date: date) }
+      let!(:following) { create(:project_phase, project:, start_date: date - 10, finish_date: date - 10, duration: 3) }
 
       it "doesn't get rescheduled" do
         expect do
-          expect(service.call(date_range: date..date - 1)).not_to be_success
+          expect(service.call(start_date: date, finish_date: date - 1)).not_to be_success
         end.not_to change(following, :attributes)
       end
     end
 
     context "for preceding phase" do
-      let!(:preceding) { create(:project_phase, project:, date_range: date - 7..date - 7, duration: 1) }
-      let!(:phase) { create(:project_phase, project:, date_range: date..date) }
+      let!(:preceding) { create(:project_phase, project:, start_date: date - 7, finish_date: date - 7, duration: 1) }
+      let!(:phase) { create(:project_phase, project:, start_date: date, finish_date: date) }
 
       it "doesn't get rescheduled" do
         expect do
-          expect(service.call(date_range: date..date + 1)).to be_success
+          expect(service.call(start_date: date, finish_date: date + 1)).to be_success
         end.not_to change(preceding, :attributes)
       end
     end
 
     context "for following phases" do
-      let!(:phase) { create(:project_phase, project:, date_range: date..date) }
-      let!(:following1) { create(:project_phase, project:, date_range: date + 6..date + 8, duration: 3) }
-      let!(:following2) { create(:project_phase, project:, date_range: date + 6..date + 8, duration: 2) }
-      let!(:following3) { create(:project_phase, project:, date_range: date + 6..date + 8, duration: 1) }
+      let!(:phase) { create(:project_phase, project:, start_date: date, finish_date: date) }
+      let!(:following1) { create(:project_phase, project:, start_date: date + 6, finish_date: date + 8, duration: 3) }
+      let!(:following2) { create(:project_phase, project:, start_date: date + 6, finish_date: date + 8, duration: 2) }
+      let!(:following3) { create(:project_phase, project:, start_date: date + 6, finish_date: date + 8, duration: 1) }
 
       it "reschedules all of them relying on duration" do
-        expect(service.call(date_range: date..date + 1)).to be_success
+        expect(service.call(start_date: date, finish_date: date + 1)).to be_success
 
         expect(following1).to have_attributes(start_date: date + 2, finish_date: date + 6, duration: 3)
         expect(following2).to have_attributes(start_date: date + 7, finish_date: date + 8, duration: 2)
@@ -147,55 +143,55 @@ RSpec.describe ProjectLifeCycleSteps::UpdateService, type: :model do
     end
 
     context "for following phase without duration" do
-      let!(:phase) { create(:project_phase, project:, date_range: date..date) }
-      let!(:following) { create(:project_phase, project:, date_range: date + 6..date + 8, duration: nil) }
+      let!(:phase) { create(:project_phase, project:, start_date: date, finish_date: date) }
+      let!(:following) { create(:project_phase, project:, start_date: date + 6, finish_date: date + 8, duration: nil) }
 
       it "doesn't get rescheduled" do
         expect do
-          expect(service.call(date_range: date..date + 1)).to be_success
+          expect(service.call(start_date: date, finish_date: date + 1)).to be_success
         end.not_to change(following, :attributes)
       end
     end
 
     context "for following phase without date range" do
-      let!(:phase) { create(:project_phase, project:, date_range: date..date) }
-      let!(:following) { create(:project_phase, project:, date_range: nil, duration: 3) }
+      let!(:phase) { create(:project_phase, project:, start_date: date, finish_date: date) }
+      let!(:following) { create(:project_phase, project:, start_date: nil, finish_date: nil, duration: 3) }
 
       it "doesn't get rescheduled" do
         expect do
-          expect(service.call(date_range: date..date + 1)).to be_success
+          expect(service.call(start_date: date, finish_date: date + 1)).to be_success
         end.not_to change(following, :attributes)
       end
     end
 
     context "for following phase with date range in the past" do
-      let!(:phase) { create(:project_phase, project:, date_range: date..date) }
-      let!(:following) { create(:project_phase, project:, date_range: date - 10..date - 10, duration: 3) }
+      let!(:phase) { create(:project_phase, project:, start_date: date, finish_date: date) }
+      let!(:following) { create(:project_phase, project:, start_date: date - 10, finish_date: date - 10, duration: 3) }
 
       it "reschedules it" do
-        expect(service.call(date_range: date..date + 1)).to be_success
+        expect(service.call(start_date: date, finish_date: date + 1)).to be_success
 
         expect(following).to have_attributes(start_date: date + 2, finish_date: date + 6, duration: 3)
       end
     end
 
     context "for following phase with duration over a year" do
-      let!(:phase) { create(:project_phase, project:, date_range: date..date) }
-      let!(:following) { create(:project_phase, project:, date_range: date..date, duration: 500) }
+      let!(:phase) { create(:project_phase, project:, start_date: date, finish_date: date) }
+      let!(:following) { create(:project_phase, project:, start_date: date, finish_date: date, duration: 500) }
 
       it "reschedules it" do
-        expect(service.call(date_range: date..date + 1)).to be_success
+        expect(service.call(start_date: date, finish_date: date + 1)).to be_success
 
         expect(following).to have_attributes(start_date: date + 2, finish_date: date + 701, duration: 500)
       end
     end
 
     context "for following phase with duration over 10 years" do
-      let!(:phase) { create(:project_phase, project:, date_range: date..date) }
-      let!(:following) { create(:project_phase, project:, date_range: date..date, duration: 3000) }
+      let!(:phase) { create(:project_phase, project:, start_date: date, finish_date: date) }
+      let!(:following) { create(:project_phase, project:, start_date: date, finish_date: date, duration: 3000) }
 
       it "reschedules it" do
-        expect(service.call(date_range: date..date + 1)).to be_success
+        expect(service.call(start_date: date, finish_date: date + 1)).to be_success
 
         expect(following).to have_attributes(start_date: date + 2, finish_date: date + 4201, duration: 3000)
       end

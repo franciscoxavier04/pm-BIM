@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -58,46 +60,49 @@ class Project::Phase < ApplicationRecord
     end
   end
 
-  def date_range=(range)
-    case range
-    when String
-      self.start_date, self.finish_date = range.split(" - ")
-      self.finish_date ||= start_date # Allow single dates as range
-    when Range
-      fail ArgumentError, "Only inclusive ranges expected" if range.exclude_end?
-
-      self.start_date = range.begin
-      self.finish_date = range.end
-    when nil
-      self.start_date = self.finish_date = nil
-    else
-      fail ArgumentError, "Expected String, Range or nil"
-    end
-  end
-
-  def range_set?
+  def date_range_set?
     start_date? && finish_date?
   end
 
-  def not_set?
-    !range_set?
-  end
-
-  def range_incomplete?
-    start_date? ^ finish_date?
+  def date_range_not_set?
+    !date_range_set?
   end
 
   def validate_date_range
-    errors.add(:date_range, :start_date_must_be_before_finish_date) if range_set? && (start_date > finish_date)
-  end
-
-  def set_calculated_duration
-    self.duration = calculate_duration
+    if date_range_set? && (start_date > finish_date)
+      if finish_date_changed?
+        errors.add(:finish_date, :must_be_after_start_date)
+      else
+        errors.add(:start_date, :must_be_before_finish_date)
+      end
+    end
   end
 
   def calculate_duration
-    return nil unless range_set?
+    return nil unless date_range_set?
 
     Day.working.from_range(from: start_date, to: finish_date).count
+  end
+
+  def follows_previous_phase?
+    previous_finish_dates.last.present?
+  end
+
+  def default_start_date
+    return @default_start_date if defined?(@default_start_date)
+
+    previous_finish_date = previous_finish_dates.compact.last
+    @default_start_date = previous_finish_date && Day.next_working(from: previous_finish_date).date
+  end
+
+  private
+
+  def previous_finish_dates
+    return @previous_finish_dates if defined?(@previous_finish_dates)
+
+    @previous_finish_dates = project
+     .available_phases
+     .select { it.position < position }
+     .map(&:finish_date)
   end
 end

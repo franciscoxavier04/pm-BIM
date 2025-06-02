@@ -421,10 +421,6 @@ tr:
         new_label: "Yeni öncelik"
     status:
       button_edit: Edit project status
-  project_phase:
-    duration:
-      one: "Süre: %{count} iş günü"
-      other: "Süre: %{count} iş günü"
   lists:
     create:
       success: "Değiştirilen liste yeni bir liste olarak kaydedildi"
@@ -760,7 +756,9 @@ tr:
     label_add_description: "Açıklama ekle"
     lag:
       subject: "Gecikme"
-      caption: "İki iş paketi arasında beklenmesi gereken en az iş günü sayısı."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Yeni iş paketi oluşturuldu ve alt olarak eklendi"
       label_relates_singular: "ile ilişkili"
@@ -976,6 +974,10 @@ tr:
       project/phase:
         date_range: "Tarih aralığı"
         definition: "Tanım"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "İsim"
         color: "Renk"
@@ -1287,10 +1289,12 @@ tr:
               blank: "Lütfen bir proje seçin."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "tamamlanmamıştır."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1339,10 +1343,6 @@ tr:
             from_id:
               error_not_found: "bulunamadı veya görünmüyor."
               error_readonly: "mevcut ilişkiler için değiştirilemez."
-            lag:
-              greater_than_or_equal_to:
-                zero: "negatif olamaz."
-              less_than_or_equal_to: "çok yüksek."
         repository:
           not_available: "SCM satıcısı yok"
           not_whitelisted: "yapılandırmasına izin verilmiyor."

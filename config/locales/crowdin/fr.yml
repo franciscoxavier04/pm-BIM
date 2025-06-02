@@ -421,10 +421,6 @@ fr:
         new_label: "Nouvelle priorité"
     status:
       button_edit: Modifier le statut du projet
-  project_phase:
-    duration:
-      one: "Durée : %{count} jour ouvrable"
-      other: "Durée : %{count} jours ouvrables"
   lists:
     create:
       success: "La liste modifiée a été enregistrée en tant que nouvelle liste"
@@ -759,7 +755,9 @@ fr:
     label_add_description: "Ajouter une description"
     lag:
       subject: "Délai"
-      caption: "Le nombre minimum de jours ouvrables à respecter entre les deux lots de travaux."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Nouveau lot de travaux créé et ajouté en tant qu'enfant"
       label_relates_singular: "lié à"
@@ -975,6 +973,10 @@ fr:
       project/phase:
         date_range: "Plage de dates"
         definition: "Définition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Nom"
         color: "Couleur"
@@ -1286,10 +1288,12 @@ fr:
               blank: "Veuillez sélectionner un projet."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "la date de début doit être antérieure à la date de fin."
-              non_continuous_dates: "ne peut pas être antérieure à la date de fin de la phase précédente."
-              incomplete: "est incomplet."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1338,10 +1342,6 @@ fr:
             from_id:
               error_not_found: "introuvable ou non visible."
               error_readonly: "ne peut pas être modifié pour les relations existantes."
-            lag:
-              greater_than_or_equal_to:
-                zero: "ne peut pas être négatif."
-              less_than_or_equal_to: "est trop élevé."
         repository:
           not_available: "Le fournisseur de gestion de contrôle de sources n'est pas disponible"
           not_whitelisted: "n'est pas autorisé par la configuration."

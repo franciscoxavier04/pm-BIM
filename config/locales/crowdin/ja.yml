@@ -419,9 +419,6 @@ ja:
         new_label: "New priority"
     status:
       button_edit: Edit project status
-  project_phase:
-    duration:
-      other: "Duration: %{count} working days"
   lists:
     create:
       success: "変更されたリストは新しいリストとして保存されました"
@@ -750,7 +747,9 @@ ja:
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      caption: "2つの作業パッケージの間に空ける最低作業日数。"
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "関連している"
@@ -966,6 +965,10 @@ ja:
       project/phase:
         date_range: "期間"
         definition: "Definition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "名称"
         color: "色"
@@ -1277,10 +1280,12 @@ ja:
               blank: "プロジェクトを選択してください。"
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "開始日は終了日より前でなければなりません。"
-              non_continuous_dates: "前のフェーズの終了日よりも早くすることはできません。"
-              incomplete: "is incomplete."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1329,10 +1334,6 @@ ja:
             from_id:
               error_not_found: "見つからないか、非表示になっています。"
               error_readonly: "既存のリレーションを変更することはできません。"
-            lag:
-              greater_than_or_equal_to:
-                zero: "を否定することはできない。"
-              less_than_or_equal_to: "が大きすぎます。"
         repository:
           not_available: "SCMベンダーは使用できません。"
           not_whitelisted: "は設定で許可されていません。"

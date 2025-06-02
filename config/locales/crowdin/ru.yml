@@ -420,12 +420,6 @@ ru:
         new_label: "Новый приоритет"
     status:
       button_edit: Редактировать статус проекта
-  project_phase:
-    duration:
-      one: "Продолжительность: %{count} рабочий день"
-      few: "Продолжительность: %{count} рабочих дня"
-      many: "Продолжительность: %{count} рабочих дня"
-      other: "Продолжительность: %{count} рабочих дня"
   lists:
     create:
       success: "Измененный список был сохранен как новый"
@@ -777,7 +771,9 @@ ru:
     label_add_description: "Добавить описание"
     lag:
       subject: "Отставание"
-      caption: "Минимальное количество рабочих дней, которое должно быть между двумя пакетами работ."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Новый пакет работ создан и добавлен как дочерний"
       label_relates_singular: "Связан с"
@@ -993,6 +989,10 @@ ru:
       project/phase:
         date_range: "Диапазон дат"
         definition: "Описание"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Имя"
         color: "Цвет"
@@ -1304,10 +1304,12 @@ ru:
               blank: "Пожалуйста, выберите проект."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "дата начала должна быть раньше даты окончания."
-              non_continuous_dates: "не может быть раньше, чем дата окончания предыдущего этапа."
-              incomplete: "неполный."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1356,10 +1358,6 @@ ru:
             from_id:
               error_not_found: "не найден или невидим."
               error_readonly: "не может быть изменен для существующих отношений."
-            lag:
-              greater_than_or_equal_to:
-                zero: "не может быть отрицательным."
-              less_than_or_equal_to: "слишком высокий."
         repository:
           not_available: "SCM поставщик не доступен"
           not_whitelisted: "не допускается конфигурацией."

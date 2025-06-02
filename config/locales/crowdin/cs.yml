@@ -421,12 +421,6 @@ cs:
         new_label: "nová priorita"
     status:
       button_edit: Edit project status
-  project_phase:
-    duration:
-      one: "Doba trvání: %{count} pracovní den"
-      few: "Doba trvání: %{count} pracovní dny"
-      many: "Doba trvání: %{count} pracovní dny"
-      other: "Doba trvání: %{count} pracovní dny"
   lists:
     create:
       success: "Upravený seznam byl uložen jako nový seznam."
@@ -779,7 +773,9 @@ cs:
     label_add_description: "Přidat popis"
     lag:
       subject: "Zpožďování"
-      caption: "Minimální počet pracovních dnů mezi oběma pracovními balíčky."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Nový pracovní balíček vytvořen a přidán jako potomek"
       label_relates_singular: "související s"
@@ -995,6 +991,10 @@ cs:
       project/phase:
         date_range: "Časový rozsah"
         definition: "Definice"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Název:"
         color: "Barva"
@@ -1306,10 +1306,12 @@ cs:
               blank: "Vyberte prosím projekt."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "je neúplný."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1358,10 +1360,6 @@ cs:
             from_id:
               error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
-            lag:
-              greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Prodejce SCM není k dispozici"
           not_whitelisted: "není povoleno konfigurací."
