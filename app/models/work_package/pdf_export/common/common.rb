@@ -269,7 +269,7 @@ module WorkPackage::PDFExport::Common::Common
   end
 
   def title_datetime
-    DateTime.now.strftime("%Y-%m-%d_%H-%M")
+    @title_datetime ||= Time.now.strftime("%Y-%m-%d_%H-%M")
   end
 
   def footer_date
