@@ -160,11 +160,11 @@ sysadmin_docs:
   saml:
     href: https://www.openproject.org/docs/system-admin-guide/authentication/saml/
   oidc:
-    href: https://www.openproject.org/docs/installation-and-operations/misc/custom-openid-connect-providers/
+    href: https://www.openproject.org/docs/system-admin-guide/authentication/openid-providers/
   oidc_claims:
-    href: https://www.openproject.org/docs/installation-and-operations/misc/custom-openid-connect-providers/#claims
+    href: https://www.openproject.org/docs/system-admin-guide/authentication/openid-providers/#step-7-claims
   oidc_acr_values:
-    href: https://www.openproject.org/docs/installation-and-operations/misc/custom-openid-connect-providers/#non-essential-claims
+    href: https://www.openproject.org/docs/system-admin-guide/authentication/openid-providers/#step-7-claims
 storage_docs:
   nextcloud_setup:
     href: https://www.openproject.org/docs/system-admin-guide/integrations/nextcloud/
