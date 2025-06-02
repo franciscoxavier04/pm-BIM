@@ -31,7 +31,7 @@
 require "spec_helper"
 require "rack/test"
 
-RSpec.describe API::V3::Activities::ActivitiesByWorkPackageAPI do # rubocop:disable RSpec/SpecFilePathFormat
+RSpec.describe API::V3::Activities::ActivitiesByWorkPackageAPI, with_ee: [:internal_comments] do # rubocop:disable RSpec/SpecFilePathFormat
   include API::V3::Utilities::PathHelper
 
   describe "activities" do
