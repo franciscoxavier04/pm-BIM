@@ -80,15 +80,11 @@ class EnterpriseToken < ApplicationRecord
     end
 
     def user_limit
-      non_trial_user_limit.presence || trial_user_limit
-    end
-
-    def non_trial_user_limit
-      active_non_trial_tokens.map { |token| Hash(token.restrictions)[:active_user_count] }.max
-    end
-
-    def trial_user_limit
-      active_trial_tokens.map { |token| Hash(token.restrictions)[:active_user_count] }.max
+      if active_non_trial_tokens.any?
+        get_user_limit_of(active_non_trial_tokens)
+      else
+        get_user_limit_of(active_trial_tokens)
+      end
     end
 
     def banner_type_for(feature:)
@@ -108,6 +104,13 @@ class EnterpriseToken < ApplicationRecord
 
     def clear_current_tokens_cache
       RequestStore.delete :current_ee_tokens
+    end
+
+    def get_user_limit_of(tokens)
+      tokens.partition(&:unlimited_users?)
+        .find(proc { [] }, &:present?)
+        .map(&:max_active_users)
+        .max
     end
   end
 
@@ -160,6 +163,14 @@ class EnterpriseToken < ApplicationRecord
     return false unless token_object&.validate_domain?
 
     !token_object.valid_domain?(Setting.host_name)
+  end
+
+  def unlimited_users?
+    max_active_users.nil?
+  end
+
+  def max_active_users
+    Hash(restrictions)[:active_user_count]
   end
 
   def sort_key

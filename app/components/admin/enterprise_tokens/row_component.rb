@@ -33,10 +33,6 @@ module Admin::EnterpriseTokens
     alias :token :model
     delegate :subscriber, :domain, to: :token
 
-    def token
-      model
-    end
-
     def email
       token.mail
     end
@@ -45,11 +41,11 @@ module Admin::EnterpriseTokens
       helpers.enterprise_token_plan_name(token)
     end
 
-    def active_users
-      if token.restrictions.nil? || token.restrictions[:active_user_count].blank?
+    def max_active_users
+      if token.unlimited_users?
         I18n.t("js.admin.enterprise.upsell.unlimited")
       else
-        token.restrictions[:active_user_count]
+        token.max_active_users
       end
     end
 

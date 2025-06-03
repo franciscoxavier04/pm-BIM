@@ -31,30 +31,7 @@
 require "spec_helper"
 
 RSpec.describe EnterpriseToken do
-  before do
-    described_class.clear_current_tokens_cache
-
-    # Calls are mocked in mock_token_object for enterprise tokens created by
-    # tests. This line is to call normal implementation when not mocked.
-    allow(OpenProject::Token).to receive(:import).and_call_original
-  end
-
-  def create_enterprise_token(encoded_token_name, **attributes)
-    mock_token_object(encoded_token_name, **attributes)
-    enterprise_token = described_class.new(encoded_token: encoded_token_name)
-    enterprise_token.save!(validate: false)
-    enterprise_token
-  end
-
-  def mock_token_object(encoded_token_name, **attributes)
-    token = OpenProject::Token.new(domain: Setting.host_name,
-                                   expires_at: 1.year.from_now,
-                                   **attributes)
-    allow(OpenProject::Token)
-      .to receive(:import).with(encoded_token_name)
-                          .and_return(token)
-    token
-  end
+  include EnterpriseTokenFactory
 
   describe ".active?" do
     context "without any tokens" do
@@ -110,6 +87,69 @@ RSpec.describe EnterpriseToken do
             with_config: { ee_hide_banners: false } do
       it "returns false" do
         expect(described_class).not_to be_hide_banners
+      end
+    end
+  end
+
+  describe ".user_limit" do
+    context "without any tokens" do
+      it "returns `nil` (unlimited)" do
+        expect(described_class.user_limit).to be_nil
+      end
+    end
+
+    context "when only trial tokens exist" do
+      before do
+        create_enterprise_token("trial_token_10_users", trial: true,
+                                                        restrictions: { active_user_count: 10 })
+        create_enterprise_token("trial_token_20_users", trial: true,
+                                                        restrictions: { active_user_count: 20 })
+        create_enterprise_token("trial_token_30_users_expired", trial: true,
+                                                                restrictions: { active_user_count: 30 },
+                                                                expires_at: Date.yesterday)
+        create_enterprise_token("trial_token_40_users_invalid", trial: true,
+                                                                restrictions: { active_user_count: 40 },
+                                                                domain: "invalid.domain")
+      end
+
+      it "returns the maximum seats value of active trial tokens" do
+        expect(described_class.user_limit).to eq(20)
+      end
+
+      it "returns `nil` (unlimited) if an active trial token has no seats limit" do
+        create_enterprise_token("trial_token_unlimited_users", trial: true)
+        expect(described_class.user_limit).to be_nil
+      end
+    end
+
+    context "when trial and non-trial tokens exist" do
+      before do
+        create_enterprise_token("non_trial_token_10_users", restrictions: { active_user_count: 10 })
+        create_enterprise_token("trial_token_50_users", trial: true,
+                                                        restrictions: { active_user_count: 50 })
+        create_enterprise_token("non_trial_token_20_users", restrictions: { active_user_count: 20 })
+      end
+
+      it "ignores trial tokens and returns the maximum seats value of active non-trial tokens" do
+        expect(described_class.user_limit).to eq(20)
+      end
+
+      it "returns `nil` (unlimited) if an active non-trial token has no seats limit" do
+        # unlimited token not taken into account: trial
+        create_enterprise_token("trial_token_unlimited_users", trial: true)
+        expect(described_class.user_limit).to eq(20)
+
+        # unlimited token not taken into account: invalid domain
+        create_enterprise_token("non_trial_token_unlimited_users_invalid", domain: "invalid.domain")
+        expect(described_class.user_limit).to eq(20)
+
+        # unlimited token not taken into account: expired
+        create_enterprise_token("non_trial_token_unlimited_users_expired", expires_at: Date.yesterday)
+        expect(described_class.user_limit).to eq(20)
+
+        # valid unlimited token
+        create_enterprise_token("non_trial_token_unlimited_users")
+        expect(described_class.user_limit).to be_nil
       end
     end
   end
@@ -409,6 +449,58 @@ RSpec.describe EnterpriseToken do
           with_config: { ee_hide_banners: false } do
     it "shows banners promoting Enterprise plans" do
       expect(described_class).not_to be_hide_banners
+    end
+  end
+
+  describe "#max_active_users" do
+    context "when token restrictions is nil" do
+      let(:token) { build_enterprise_token(restrictions: nil) }
+
+      it "returns nil" do
+        expect(token.max_active_users).to be_nil
+      end
+    end
+
+    context "when token restrictions does not have an active_user_count key" do
+      let(:token) { build_enterprise_token(restrictions: { foo: :bar }) }
+
+      it "returns nil" do
+        expect(token.max_active_users).to be_nil
+      end
+    end
+
+    context "when token restrictions has an active_user_count key" do
+      let(:token) { build_enterprise_token(restrictions: { active_user_count: 10 }) }
+
+      it "returns the active_user_count value" do
+        expect(token.max_active_users).to eq(10)
+      end
+    end
+  end
+
+  describe "#unlimited_users?" do
+    context "when token restrictions is nil" do
+      let(:token) { build_enterprise_token(restrictions: nil) }
+
+      it "is true" do
+        expect(token.unlimited_users?).to be true
+      end
+    end
+
+    context "when token restrictions does not have an active_user_count key" do
+      let(:token) { build_enterprise_token(restrictions: { foo: :bar }) }
+
+      it "is true" do
+        expect(token.unlimited_users?).to be true
+      end
+    end
+
+    context "when token restrictions has an active_user_count key" do
+      let(:token) { build_enterprise_token(restrictions: { active_user_count: 10 }) }
+
+      it "is false" do
+        expect(token.unlimited_users?).to be false
+      end
     end
   end
 end
