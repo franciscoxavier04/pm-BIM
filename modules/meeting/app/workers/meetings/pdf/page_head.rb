@@ -55,7 +55,7 @@ module Meetings::PDF
     end
 
     def meeting_subtitle
-      list = ["", "#{format_date(meeting.start_date)},", meeting_subtitle_dates]
+      list = ["", meeting_subtitle_dates]
       list.push("-", meeting.recurring_meeting.base_schedule) if meeting.recurring?
       list.join(" ")
     end
