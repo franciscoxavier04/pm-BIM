@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,18 +28,38 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module API
-  module V3
-    module Reminders
-      class RemindersAPI < ::API::OpenProjectAPI
-        resource :reminders do
-          get do
-            ReminderCollectionRepresenter.new(Reminder.upcoming_and_visible_to(User.current),
-                                              self_link: api_v3_paths.reminders,
-                                              current_user: User.current)
-          end
-        end
-      end
-    end
+require "spec_helper"
+
+RSpec.describe API::V3::Reminders::ReminderRepresenter do
+  let(:user) { build_stubbed(:user) }
+  let(:remindable) { build_stubbed(:work_package) }
+  let(:reminder) { build_stubbed(:reminder, remindable:, creator: user) }
+  let(:representer) { described_class.new(reminder, current_user: user) }
+  let(:parsed) { representer.to_hash }
+
+  it "renders the id" do
+    expect(parsed["id"]).to eq reminder.id
+  end
+
+  it "renders the remindAt" do
+    expect(parsed["remindAt"]).to eq reminder.remind_at.iso8601(3)
+  end
+
+  it "renders the note" do
+    expect(parsed["note"]).to eq reminder.note
+  end
+
+  it "renders the _type" do
+    expect(parsed["_type"]).to eq "Reminder"
+  end
+
+  it "renders the creator link" do
+    expect(parsed["_links"]).to have_key("creator")
+    expect(parsed["_links"]["creator"]["href"]).to include("/api/v3/users/#{user.id}")
+  end
+
+  it "renders the remindable link" do
+    expect(parsed["_links"]).to have_key("remindable")
+    expect(parsed["_links"]["remindable"]["href"]).to include("/api/v3/work_packages/#{remindable.id}")
   end
 end

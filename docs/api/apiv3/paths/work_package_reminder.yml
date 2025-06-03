@@ -2,7 +2,7 @@
 ---
 patch:
   summary: Update a work package reminder
-  operationId: update_reminder
+  operationId: update_work_package_reminder
   tags:
     - Work Packages
     - Reminders
@@ -58,7 +58,7 @@ patch:
 
 delete:
   summary: Delete a work package reminder
-  operationId: delete_reminder
+  operationId: delete_work_package_reminder
   tags:
     - Work Packages
     - Reminders

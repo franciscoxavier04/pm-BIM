@@ -388,6 +388,8 @@ paths:
     "$ref": "./paths/render_plain.yml"
   "/api/v3/revisions/{id}":
     "$ref": "./paths/revision.yml"
+  "/api/v3/reminders":
+    "$ref": "./paths/reminders.yml"
   "/api/v3/roles":
     "$ref": "./paths/roles.yml"
   "/api/v3/roles/{id}":

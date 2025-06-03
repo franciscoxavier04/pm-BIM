@@ -2,7 +2,7 @@
 ---
 get:
   summary: List work package reminders
-  operationId: list_reminders
+  operationId: list_work_package_reminders
   tags:
     - Work Packages
     - Reminders
@@ -73,7 +73,7 @@ get:
 
 post:
   summary: Create a work package reminder
-  operationId: create_reminder
+  operationId: create_work_package_reminder
   tags:
     - Work Packages
     - Reminders
