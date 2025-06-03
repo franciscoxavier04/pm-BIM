@@ -36,6 +36,7 @@ module WorkPackages
       include OpPrimer::ComponentHelpers
 
       FORM_ID = "reminder-form"
+      DEFAULT_TIME = "09:00"
 
       attr_reader :remindable, :reminder, :errors, :preset
 
@@ -92,7 +93,7 @@ module WorkPackages
       def remind_at_time_initial_value
         return format_time(@reminder.remind_at, include_date: false, format: "%H:%M") if @reminder.remind_at
 
-        "09:00"
+        DEFAULT_TIME
       end
 
       private
