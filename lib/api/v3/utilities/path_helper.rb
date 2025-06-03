@@ -476,6 +476,10 @@ module API
           index :shares
           show :share
 
+          def self.reminders
+            "#{root}/reminders"
+          end
+
           def self.work_package_reminder(work_package_id, reminder_id)
             "#{work_package_reminders(work_package_id)}/#{reminder_id}"
           end
