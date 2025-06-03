@@ -177,6 +177,26 @@ RSpec.describe "Project phase field in the work package table", :js do
         # permission missing, phase invisible:
         wp_table.expect_work_package_with_attributes(wp_from_another_project, { projectPhase: "" })
       end
+
+      context "when sorting by project phase ASC" do
+        let(:sort_criteria) { [%w[project_phase asc]] }
+
+        it "sorts work packages from projects you don't have permission to like work packages without a project phase" do
+          wp_table.expect_work_package_order(wp_from_another_project, wp_without_phase, other_wp, work_package)
+        end
+      end
+
+      context "when grouping" do
+        let(:group_by) { :project_phase }
+
+        it "groups work packages from projects you don't have permission to like work packages without a project phase" do
+          wp_table.expect_groups({
+                                   other_project_phase.name => 1,
+                                   project_phase.name => 1,
+                                   "-" => 2
+                                 })
+        end
+      end
     end
   end
 
