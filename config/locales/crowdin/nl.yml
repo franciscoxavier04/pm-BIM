@@ -2599,6 +2599,8 @@ nl:
   label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(verwijderde optie)"
   label_empty_element: "(leeg)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(ontbrekende waarde of ontbrekende machtigingen voor toegang)"
   label_descending: "Aflopend"
   label_details: "Details"

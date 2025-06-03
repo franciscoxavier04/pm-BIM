@@ -40,7 +40,7 @@ ja:
               response_misses_required_attributes: " は必須属性を返しません。欠けている属性は次のとおりです: %{missing_attributes}."
   provider:
     delete_warning:
-      input_delete_confirmation: 確認のため、削;除するフィルタ名 %{name} を入力します。
+      input_delete_confirmation: 確認のため、削除するフィルタ名 %{name} を入力します。
       irreversible_notice: ワークパッケージの削除は復元できない操作です。
       provider: 'SSO プロバイダー %{name}を削除してもよろしいですか？ このアクションを確認するには、以下のフィールドにプロバイダの名前を入力してください。'
       delete_result_1: 利用可能なプロバイダのリストからプロバイダを削除します。

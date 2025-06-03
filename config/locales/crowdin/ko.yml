@@ -2564,6 +2564,8 @@ ko:
   label_deleted_custom_item: "(삭제된 항목)"
   label_deleted_custom_option: "(삭제된 옵션)"
   label_empty_element: "(비어 있음)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(값이 없거나 액세스 권한이 없음)"
   label_descending: "내림차순"
   label_details: "세부 정보"
