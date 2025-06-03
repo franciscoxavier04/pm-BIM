@@ -15,17 +15,21 @@ keywords: test plan, test case, test case, test management
 
 ## Purpose
 
-This guide describes how OpenProject can be used for lightweight test management by modeling test plans, test cases, and test runs using built-in features such as work package types and project templates. It enables teams to manage and execute tests within the same environment they already use for project and requirements tracking.
+This guide describes how OpenProject can be used for lightweight test management by modeling test plans, test cases, and test runs using built-in features such as work package types, workflows, custom fields and project templates. It enables teams to manage and execute tests within the same environment they already use for project and requirements tracking.
 
 ## Scope and assumptions
 
 This use case is intended for teams that:
 
-- Already use OpenProject for project planning and requirements tracking
+- Already use OpenProject for project planning and requirements management
 - Want to include manual or semi-automated testing workflows
 - Need traceability between requirements, test cases, executions, and defects
 
 This setup is not a replacement for full-scale test automation or advanced lab management tools, but rather a structured and integrated approach to test tracking.
+
+> [!NOTE]
+>
+> At OpenProject, automated testing is a key part of our development process. It helps us detect bugs early and avoid regressions, especially as the codebase grows. We use continuous integration and deployment (CI/CD) to ensure that changes are tested and released quickly and reliably. You can see our automated test runs on [GitHub Actions](https://github.com/opf/openproject/actions). In addition to automated tests, we also perform smoke tests and exploratory testing to cover areas that are harder to automate and to validate the overall user experience. 
 
 ## Structure and terminology
 
@@ -49,7 +53,7 @@ This setup is not a replacement for full-scale test automation or advanced lab m
 - Each `Test Case` has one or more Test Runs (child work packages).
 - A `Test Run` is specific to one software version.
 - `Test Plans` are realized as individual projects per version, created from a reusable template.
-- `Bugs` can be linked to failed `Test Runs`.
+- `Bugs` can be linked to failed Test Runs.
 
 This structure supports traceability from requirements to execution and defect reporting.
 
@@ -148,3 +152,4 @@ Define custom fields that describe the test object such as:
 
 - Test environment (type `hierarchy`)
 - Tester (custom field type `user`)
+
