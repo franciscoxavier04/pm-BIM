@@ -38,10 +38,11 @@ class Projects::Phases::ApplyWorkingDaysChangeJob < ApplyWorkingDaysChangeJobBas
       project = Project.find_by(id: project_id)
       next unless project
 
-      phases = project.available_phases
+      phases = project.available_phases.to_a
       next if phases.empty?
 
-      from = phases.first.start_date
+      from = phases.filter_map(&:start_date).first
+      next unless from
 
       ProjectLifeCycleSteps::RescheduleService.new(user:, project:).call(phases:, from:)
 
