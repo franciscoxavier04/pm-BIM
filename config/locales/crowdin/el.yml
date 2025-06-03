@@ -2599,6 +2599,8 @@ el:
   label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(διαγραμμένη επιλογή)"
   label_empty_element: "(άδειο)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
   label_descending: "Φθίνουσα"
   label_details: "Λεπτομέρειες"
