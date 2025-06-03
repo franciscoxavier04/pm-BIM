@@ -65,11 +65,11 @@ export class WorkPackageReminderModalComponent extends OpModalComponent implemen
       .pipe(
         map((isEditMode) => (isEditMode ? this.text.edit_title : this.text.new_title)),
       );
-    this.frameSrc = this.pathHelper.workPackageReminderModalBodyPath(this.workPackage.id as string) + (this.preset ? `?preset=${this.preset}` : '');
   }
 
   ngOnInit() {
     super.ngOnInit();
+    this.updateFrameSrc();
   }
 
   ngAfterViewInit() {
@@ -87,6 +87,17 @@ export class WorkPackageReminderModalComponent extends OpModalComponent implemen
     this.actions$.dispatch(reminderModalUpdated({ workPackageId: this.workPackage.id as string }));
 
     return super.onClose();
+  }
+
+  private updateFrameSrc():void {
+    const url = new URL(
+      this.pathHelper.workPackageReminderModalBodyPath(this.workPackage.id as string),
+      window.location.origin,
+    );
+    if (this.preset) {
+      url.searchParams.set('preset', this.preset);
+    }
+    this.frameSrc = url.toString();
   }
 
   private turboSubmitEndListener(event:CustomEvent) {
