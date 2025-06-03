@@ -99,31 +99,43 @@ RSpec.describe API::V3::Reminders::RemindersAPI do
   end
 
   describe "GET /api/v3/work_packages/:work_package_id/reminders" do
-    let(:request) { get api_v3_paths.work_package_reminders(work_package.id) }
-    let(:result) do
-      request
-      JSON.parse last_response.body
-    end
-    let(:subjects) { reminders.pluck("id") }
+    let(:make_request) { get api_v3_paths.work_package_reminders(work_package.id) }
 
-    def reminders
-      result["_embedded"]["elements"]
+    context "with permissions" do
+      current_user { user_with_permissions }
+
+      before { make_request }
+
+      it_behaves_like "API V3 collection response", 1, 1, "Reminder" do
+        let(:elements) { [user_with_permissions_future_reminder] }
+
+        it "returns the future reminders for the current user in the given work package" do
+          expect(last_response.body)
+            .to be_json_eql("I'm the user with permissions and my reminder is in the future".to_json)
+            .at_path("_embedded/elements/0/note")
+
+          expect(last_response.body)
+            .to be_json_eql(
+              API::V3::Utilities::DateTimeFormatter.format_datetime(user_with_permissions_future_reminder.remind_at).to_json
+            )
+            .at_path("_embedded/elements/0/remindAt")
+
+          expect(last_response.body)
+            .to be_json_eql({ "href" => "/api/v3/users/#{user_with_permissions.id}",
+                              "title" => user_with_permissions.name }.to_json)
+            .at_path("_embedded/elements/0/_links/creator")
+        end
+      end
     end
 
     context "with no permissions" do
       current_user { other_user_without_permissions }
 
-      it "responds with error not found" do
-        expect(result["errorIdentifier"]).to eq("urn:openproject-org:api:v3:errors:NotFound")
-      end
-    end
+      before { make_request }
 
-    context "with permissions" do
-      current_user { user_with_permissions }
-
-      it "returns the future reminders for the current user in the given work package" do
-        expect(subjects).to contain_exactly(user_with_permissions_future_reminder.id)
-      end
+      it_behaves_like "error response",
+                      404, "NotFound",
+                      "The work package you are looking for cannot be found or has been deleted."
     end
   end
 
