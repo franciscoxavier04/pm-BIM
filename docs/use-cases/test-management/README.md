@@ -9,7 +9,7 @@ keywords: test plan, test case, test case, test management
 
 > [!IMPORTANT]
 >
-> This is use case description is a draft. It will be detailed and improved based on feedback from the community. If you have any feedback please contact us.
+> This use case description is a draft. It will be detailed and improved based on feedback from the community. If you have any feedback please contact us.
 
 # Test management in OpenProject
 
@@ -63,7 +63,7 @@ A new test plan project is created based on a predefined template using the *cre
 
 ### 1.2 Adjusting the created test plan 
 
-In the next step the [newly created test plan](https://testmanagement.openproject.com/projects/regression-test-openproject-16-dot-1/work_packages?query_id=90) is adjusted by specifying the test object. The easiest way is to select all work package (`CMD + A`) -> right click -> `bulk edit`.
+In the next step the [newly created test plan](https://testmanagement.openproject.com/projects/regression-test-openproject-16-dot-1/work_packages?query_id=90) is adjusted by specifying the test object. The easiest way is to select all work packages (`CMD + A`) -> right click -> `bulk edit`.
 
 * Version of the test object (version ideally shared from the development project)
 * Tester
@@ -83,7 +83,7 @@ For all test runs which are not planned the status should be adjusted to somethi
    - Status is updated (e.g., `Passed`, `Test failed`, `Blocked`)
 3. If failures occur, related defects (bugs) are created and linked.
 4. Boards, filters, or hierarchy views are used to monitor test progress and coverage.
-5. The test result can be document creating a pdf report of the [test status and results](https://testmanagement.openproject.com/projects/regression-test-openproject-16-dot-1/work_packages?query_id=89).
+5. The test result can be documented by creating a pdf report of the [test status and results](https://testmanagement.openproject.com/projects/regression-test-openproject-16-dot-1/work_packages?query_id=89).
 
 ![create test report](create-test-report.png)
 
@@ -110,7 +110,8 @@ Here you find an [example for a test case](https://testmanagement.openproject.co
 
 The work package type `Test run` can be configured so it shows the relevant information:
 
-* Test specification inlcuding preconditions, excecution steps and testresults: Description field  Tested features (related work packages `requires`)
+* Test specification including preconditions, excecution steps and test results: Description field
+* Tested features (related work packages `requires`)
 * Priority
 * Tester (custom field of type user)
 * Identified bugs (related work packages `related to`)
