@@ -390,6 +390,8 @@ paths:
     "$ref": "./paths/revision.yml"
   "/api/v3/reminders":
     "$ref": "./paths/reminders.yml"
+  "/api/v3/reminders/{id}":
+    "$ref": "./paths/reminder.yml"
   "/api/v3/roles":
     "$ref": "./paths/roles.yml"
   "/api/v3/roles/{id}":
@@ -498,8 +500,6 @@ paths:
     "$ref": "./paths/work_package_relations.yml"
   "/api/v3/work_packages/{work_package_id}/reminders":
     "$ref": "./paths/work_package_reminders.yml"
-  "/api/v3/work_packages/{work_package_id}/reminders/{reminder_id}":
-    "$ref": "./paths/work_package_reminder.yml"
   "/api/v3/work_packages/{id}/watchers":
     "$ref": "./paths/work_package_watchers.yml"
   "/api/v3/work_packages/{id}/watchers/{user_id}":

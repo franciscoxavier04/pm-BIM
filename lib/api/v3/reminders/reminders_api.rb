@@ -31,10 +31,29 @@ module API
     module Reminders
       class RemindersAPI < ::API::OpenProjectAPI
         resource :reminders do
+          helpers do
+            def reminders
+              Reminder.upcoming_and_visible_to(User.current)
+            end
+          end
+
           get do
-            ReminderCollectionRepresenter.new(Reminder.upcoming_and_visible_to(User.current),
+            ReminderCollectionRepresenter.new(reminders,
                                               self_link: api_v3_paths.reminders,
                                               current_user: User.current)
+          end
+
+          route_param :id, type: Integer, desc: "Reminder ID" do
+            after_validation do
+              @reminder = reminders.find(declared_params[:id])
+
+              authorize_by_with_raise @reminder.visible?(current_user) do
+                raise API::Errors::NotFound
+              end
+            end
+
+            patch(&API::V3::Utilities::Endpoints::Update.new(model: Reminder).mount)
+            delete(&API::V3::Utilities::Endpoints::Delete.new(model: Reminder).mount)
           end
         end
       end

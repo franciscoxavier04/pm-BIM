@@ -1,28 +1,20 @@
-# /api/v3/work_packages/{work_package_id}/reminders/{reminder_id}
+# /api/v3/reminders/{id}
 ---
 patch:
-  summary: Update a work package reminder
-  operationId: update_work_package_reminder
+  summary: Update a reminder
+  operationId: update_reminder
   tags:
-    - Work Packages
     - Reminders
   description: |-
-    Updates an existing reminder for the specified work package.
+    Updates an existing reminder.
 
     A user can only update their own active reminder.
 
-    **Required permission:** view work packages for the project the work package is contained in.
+    **Required permission:** view work packages for the project the reminder is contained in.
   parameters:
-    - name: work_package_id
+    - name: id
       in: path
-      description: Work package id
-      example: '1'
-      required: true
-      schema:
-        type: integer
-    - name: reminder_id
-      in: path
-      description: Reminder id
+      description: Reminder ID
       example: '1'
       required: true
       schema:
@@ -50,33 +42,27 @@ patch:
             $ref: '../components/schemas/reminder_model.yml'
     '404':
       description: |-
-        Returned if the work package does not exist or the client does not have sufficient permissions to see it.
+        Returned if the reminder does not exist or the client does not have sufficient permissions to see it.
       content:
         application/hal+json:
           schema:
             $ref: '../components/schemas/error_response.yml'
 
 delete:
-  summary: Delete a work package reminder
-  operationId: delete_work_package_reminder
+  summary: Delete a reminder
+  operationId: delete_reminder
   tags:
-    - Work Packages
     - Reminders
   description: |-
-    Deletes an existing reminder for the specified work package.
+    Deletes an existing reminder.
 
     A user can only delete their own active reminder.
+
+    **Required permission:** view work packages for the project the reminder is contained in.
   parameters:
-    - name: work_package_id
+    - name: id
       in: path
-      description: Work package id
-      example: '1'
-      required: true
-      schema:
-        type: integer
-    - name: reminder_id
-      in: path
-      description: Reminder id
+      description: Reminder ID
       example: '1'
       required: true
       schema:
@@ -86,7 +72,7 @@ delete:
       description: Reminder deleted successfully
     '404':
       description: |-
-        Returned if the work package does not exist or the client does not have sufficient permissions to see it.
+        Returned if the reminder does not exist or the client does not have sufficient permissions to see it.
       content:
         application/hal+json:
           schema:
