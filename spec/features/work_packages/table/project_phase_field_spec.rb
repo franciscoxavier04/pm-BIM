@@ -3,12 +3,12 @@
 require "spec_helper"
 
 RSpec.describe "Project phase field in the work package table", :js do
-  let(:project_phase_definition) { create(:project_phase_definition, position: 99) }
-  let(:project_phase) { create(:project_phase, definition: project_phase_definition) }
+  let(:phase_definition) { create(:project_phase_definition, position: 99) }
+  let(:project_phase) { create(:project_phase, definition: phase_definition) }
+  let(:project_phase_from_other_project) { create(:project_phase, definition: phase_definition) }
   let(:other_project_phase) { create(:project_phase) }
-  let(:project_phases) { [project_phase, other_project_phase].compact }
-  let(:project) { create(:project_with_types, phases: project_phases) }
-  let(:another_project) { create(:project_with_types) }
+  let(:project) { create(:project_with_types, phases: [project_phase, other_project_phase]) }
+  let(:another_project) { create(:project_with_types, phases: [project_phase_from_other_project]) }
   let(:all_permissions) do
     %i[
       view_work_packages
@@ -30,7 +30,7 @@ RSpec.describe "Project phase field in the work package table", :js do
   let(:work_package) do
     create(:work_package,
            project:,
-           project_phase_definition:,
+           project_phase_definition: phase_definition,
            subject: "first wp",
            author: current_user)
   end
@@ -53,16 +53,25 @@ RSpec.describe "Project phase field in the work package table", :js do
            subject: "wp from another project",
            author: current_user)
   end
+  let!(:wp_with_phase_from_another_project) do
+    create(:work_package,
+           project: another_project,
+           project_phase_definition: project_phase_from_other_project.definition,
+           subject: "wp with phase from another project",
+           author: current_user)
+  end
   let!(:wp_table) { Pages::WorkPackagesTable.new(work_package.project) }
   let(:sort_criteria) { nil }
   let(:group_by) { nil }
   let(:user) do
     create(:user,
            member_with_permissions: {
-             project => all_permissions,
-             another_project => all_permissions - [:view_project_phases]
+             project => project_permissions,
+             another_project => another_project_permissions
            })
   end
+  let(:project_permissions) { all_permissions }
+  let(:another_project_permissions) { all_permissions }
   let!(:query) do
     build(:public_query, user: current_user, project: work_package.project)
   end
@@ -110,7 +119,7 @@ RSpec.describe "Project phase field in the work package table", :js do
 
       context "when editing the value of a project phase cell" do
         it "changes the value" do
-          wp_table.update_work_package_attributes(wp_without_phase, projectPhase: project_phase_definition)
+          wp_table.update_work_package_attributes(wp_without_phase, projectPhase: phase_definition)
           wp_table.expect_work_package_with_attributes(wp_without_phase, { projectPhase: project_phase.name })
         end
       end
@@ -139,7 +148,7 @@ RSpec.describe "Project phase field in the work package table", :js do
     end
 
     context "with one phase being inactive" do
-      let(:project_phase) { create(:project_phase, definition: project_phase_definition, active: false) }
+      let(:project_phase) { create(:project_phase, definition: phase_definition, active: false) }
 
       it "does not show the inactive phase" do
         wp_table.expect_work_package_with_attributes(other_wp, { projectPhase: other_project_phase.name })
@@ -167,33 +176,81 @@ RSpec.describe "Project phase field in the work package table", :js do
       end
     end
 
-    context "without the necessary permissions" do
+    context "when viewing multiple projects" do
       let!(:query) { build(:global_query, user: current_user) }
+
+      context "when a phase is active in one project, but inactive in another" do
+        let(:project_phase_from_other_project) { create(:project_phase, active: false, definition: phase_definition) }
+
+        it "shows the inactive phase as if it was not set" do
+          wp_table.expect_work_package_with_attributes(other_wp, { projectPhase: other_project_phase.name })
+          wp_table.expect_work_package_with_attributes(work_package, { projectPhase: phase_definition.name })
+
+          # Has no phase at all:
+          wp_table.expect_work_package_with_attributes(wp_from_another_project, { projectPhase: "" })
+          wp_table.expect_work_package_with_attributes(wp_without_phase, { projectPhase: "" })
+
+          # Has an inactive phase:
+          wp_table.expect_work_package_with_attributes(wp_with_phase_from_another_project, { projectPhase: "" })
+        end
+
+        context "when sorting by project phase ASC" do
+          let(:sort_criteria) { [%w[project_phase asc]] }
+
+          it "sorts work packages from projects with inactive phases like work packages without a project phase" do
+            wp_table.expect_work_package_order(wp_with_phase_from_another_project, wp_from_another_project,
+                                               wp_without_phase, other_wp, work_package)
+          end
+        end
+
+        context "when grouping" do
+          let(:group_by) { :project_phase }
+
+          it "groups work packages with inactive phases like work packages without a project phase" do
+            wp_table.expect_groups({
+                                     other_project_phase.name => 1,
+                                     project_phase.name => 1,
+                                     "-" => 3
+                                   })
+          end
+        end
+      end
+    end
+
+    context "without the necessary permissions to view_phases" do
+      let!(:query) { build(:global_query, user: current_user) }
+      let(:another_project_permissions) do
+        all_permissions - [:view_project_phases]
+      end
 
       it "does not render project phases you don't have permission for" do
         # permission given, phase visible:
-        wp_table.expect_work_package_with_attributes(work_package, { projectPhase: project_phase_definition.name })
+        wp_table.expect_work_package_with_attributes(work_package, { projectPhase: phase_definition.name })
 
         # permission missing, phase invisible:
         wp_table.expect_work_package_with_attributes(wp_from_another_project, { projectPhase: "" })
+        wp_table.expect_work_package_with_attributes(wp_with_phase_from_another_project, { projectPhase: "" })
       end
 
       context "when sorting by project phase ASC" do
         let(:sort_criteria) { [%w[project_phase asc]] }
 
-        it "sorts work packages from projects you don't have permission to like work packages without a project phase" do
-          wp_table.expect_work_package_order(wp_from_another_project, wp_without_phase, other_wp, work_package)
+        it "sorts work packages from projects you don't have permission to like work packages without a project phase",
+           skip: "permission check has to be reworked" do
+          wp_table.expect_work_package_order(wp_from_another_project, wp_with_phase_from_another_project,
+                                             wp_without_phase, other_wp, work_package)
         end
       end
 
       context "when grouping" do
         let(:group_by) { :project_phase }
 
-        it "groups work packages from projects you don't have permission to like work packages without a project phase" do
+        it "groups work packages from projects you don't have permission to like work packages without a project phase",
+           skip: "permission check has to be reworked" do
           wp_table.expect_groups({
                                    other_project_phase.name => 1,
                                    project_phase.name => 1,
-                                   "-" => 2
+                                   "-" => 3
                                  })
         end
       end

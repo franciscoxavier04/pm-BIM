@@ -41,15 +41,11 @@ class Queries::WorkPackages::Selects::ProjectPhaseSelect < Queries::WorkPackages
   end
 
   def groupable_select
-    Arel.sql(
-      <<~SQL.squish
-        CASE WHEN COALESCE(pd.id, 0) = 0 THEN NULL ELSE COALESCE(pd.id, 0) END AS project_phase_definition_id
-      SQL
-    )
+    "pd.id as project_phase_definition_id"
   end
 
   def group_by_statement
-    "COALESCE(pd.id, 0)"
+    "pd.id"
   end
 
   def order_for_count
@@ -64,15 +60,17 @@ class Queries::WorkPackages::Selects::ProjectPhaseSelect < Queries::WorkPackages
   # We ensure that only active project phases are considered.
   def group_by_join_statement
     <<~SQL.squish
-      LEFT OUTER JOIN (
-        SELECT d.id, d.position
-        FROM project_phase_definitions d
-        JOIN project_phases ph ON ph.definition_id = d.id
-        JOIN projects p ON ph.project_id = p.id
-        WHERE ph.active = true
-        GROUP BY d.id
-      ) pd
-      ON project_phase_definition_id = pd.id
+      LEFT JOIN (
+        SELECT
+          wp.id AS wp_id,
+          MAX(CASE WHEN ph.active THEN ph.definition_id ELSE NULL END) AS active_phase_definition_id
+        FROM work_packages wp
+        LEFT JOIN project_phases ph
+        ON ph.project_id = wp.project_id AND ph.definition_id = wp.project_phase_definition_id
+        GROUP BY
+          wp.id
+      ) AS active_phases ON active_phases.wp_id = work_packages.id
+      LEFT JOIN project_phase_definitions pd ON pd.id = active_phases.active_phase_definition_id
     SQL
   end
 
