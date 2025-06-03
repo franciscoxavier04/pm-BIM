@@ -77,7 +77,7 @@ module Pages
       expect(page).not_to have_test_selector("op-wp-reminder-button")
     end
 
-    def click_reminder_button_with_context_menu(menu_item: "Custom date/time")
+    def click_reminder_button_with_context_menu(menu_item: "At a particular date/time")
       click_reminder_button
 
       within "#reminder-dropdown-menu" do
