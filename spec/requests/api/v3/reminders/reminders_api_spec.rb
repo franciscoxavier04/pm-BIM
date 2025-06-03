@@ -181,7 +181,7 @@ RSpec.describe API::V3::Reminders::RemindersAPI do
       before { make_request }
 
       it_behaves_like "error response",
-                      400, "BadRequest",
+                      409, "UpdateConflict",
                       "You can only set one reminder at a time for a work package. Please delete or update the existing reminder."
     end
 
