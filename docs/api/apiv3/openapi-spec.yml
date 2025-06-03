@@ -172,6 +172,8 @@ paths:
     "$ref": "./paths/activity.yml"
   "/api/v3/activities/{id}/attachments":
     "$ref": "./paths/activity_attachments.yml"
+  "/api/v3/activities/{id}/emoji_reactions":
+    "$ref": "./paths/activity_emoji_reactions.yml"
   "/api/v3/attachments":
     "$ref": "./paths/attachments.yml"
   "/api/v3/attachments/{id}":
@@ -298,6 +300,10 @@ paths:
     "$ref": "./paths/priorities.yml"
   "/api/v3/priorities/{id}":
     "$ref": "./paths/priority.yml"
+  "/api/v3/project_phases/{id}":
+    "$ref": "./paths/project_phase.yml"
+  "/api/v3/project_phase_definitions/{id}":
+    "$ref": "./paths/project_phase_definition.yml"
   "/api/v3/project_storages":
     "$ref": "./paths/project_storages.yml"
   "/api/v3/project_storages/{id}":
@@ -468,6 +474,8 @@ paths:
     "$ref": "./paths/work_package.yml"
   "/api/v3/work_packages/{id}/activities":
     "$ref": "./paths/work_package_activities.yml"
+  "/api/v3/work_packages/{id}/activities_emoji_reactions":
+    "$ref": "./paths/work_package_activities_emoji_reactions.yml"
   "/api/v3/work_packages/{id}/attachments":
     "$ref": "./paths/work_package_attachments.yml"
   "/api/v3/work_packages/{id}/available_assignees":
@@ -779,6 +787,10 @@ components:
       "$ref": "./components/schemas/project_collection_model.yml"
     ProjectModel:
       "$ref": "./components/schemas/project_model.yml"
+    ProjectPhaseModel:
+      "$ref": "./components/schemas/project_phase_model.yml"
+    ProjectPhaseDefinitionModel:
+      "$ref": "./components/schemas/project_phase_definition_model.yml"
     ProjectStorageCollectionModel:
       "$ref": "./components/schemas/project_storage_collection_model.yml"
     ProjectStorageModel:
@@ -927,6 +939,10 @@ components:
       "$ref": "./components/schemas/work_package_activities_model.yml"
     Work_PackagesModel:
       "$ref": "./components/schemas/work_packages_model.yml"
+    EmojiReactionModel:
+      "$ref": "./components/schemas/emoji_reaction_model.yml"
+    EmojiReactions_Model:
+      "$ref": "./components/schemas/emoji_reactions_model.yml"
   securitySchemes:
     BasicAuth:
       type: http
@@ -958,6 +974,8 @@ tags:
   - "$ref": "./tags/posts.yml"
   - "$ref": "./tags/principals.yml"
   - "$ref": "./tags/priorities.yml"
+  - "$ref": "./tags/project_phases.yml"
+  - "$ref": "./tags/project_phase_definitions.yml"
   - "$ref": "./tags/projects.yml"
   - "$ref": "./tags/queries.yml"
   - "$ref": "./tags/query_columns.yml"

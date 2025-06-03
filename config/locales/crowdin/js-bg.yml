@@ -434,7 +434,6 @@ bg:
     label_filename: "Файл"
     label_filesize: "Размер"
     label_general: "Общ"
-    label_global_roles: "Global roles"
     label_greater_or_equal: ">="
     label_group: "Група"
     label_group_by: "Групиране по"

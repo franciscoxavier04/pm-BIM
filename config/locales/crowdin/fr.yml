@@ -421,10 +421,6 @@ fr:
         new_label: "Nouvelle priorité"
     status:
       button_edit: Modifier le statut du projet
-  project_phase:
-    working_days_count:
-      one: "Durée : %{count} jour ouvrable"
-      other: "Durée : %{count} jours ouvrables"
   lists:
     create:
       success: "La liste modifiée a été enregistrée en tant que nouvelle liste"
@@ -690,6 +686,7 @@ fr:
         automatic: "Automatique"
         manual: "Manuel"
       show_relations: "Afficher les relations"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Onglets de sélection de date"
         children: "Enfants"
@@ -758,7 +755,9 @@ fr:
     label_add_description: "Ajouter une description"
     lag:
       subject: "Délai"
-      caption: "Le nombre minimum de jours ouvrables à respecter entre les deux lots de travaux."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Nouveau lot de travaux créé et ajouté en tant qu'enfant"
       label_relates_singular: "lié à"
@@ -974,6 +973,10 @@ fr:
       project/phase:
         date_range: "Plage de dates"
         definition: "Définition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Nom"
         color: "Couleur"
@@ -1285,10 +1288,12 @@ fr:
               blank: "Veuillez sélectionner un projet."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "la date de début doit être antérieure à la date de fin."
-              non_continuous_dates: "ne peut pas être antérieure à la date de fin de la phase précédente."
-              incomplete: "est incomplet."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1337,10 +1342,6 @@ fr:
             from_id:
               error_not_found: "introuvable ou non visible."
               error_readonly: "ne peut pas être modifié pour les relations existantes."
-            lag:
-              greater_than_or_equal_to:
-                zero: "ne peut pas être négatif."
-              less_than_or_equal_to: "est trop élevé."
         repository:
           not_available: "Le fournisseur de gestion de contrôle de sources n'est pas disponible"
           not_whitelisted: "n'est pas autorisé par la configuration."
@@ -1592,12 +1593,13 @@ fr:
       work_package: "Lots de travaux"
     project_phase:
       activated: "activée"
-      deactivated: "désactivée"
       added_date: "définie sur %{date}"
       changed_date: "changée du %{from} au %{to}"
-      removed_date: "date de suppression %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "désactivée"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} et %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date de suppression %{date}"
   #common attributes of all models
   attributes:
     active: "Actif"
@@ -1664,6 +1666,8 @@ fr:
     priority: "Priorité"
     project: "Projet"
     project_ids: "ID de projet"
+    project_phase: "Étape du projet"
+    project_phase_definition: "Étape du projet"
     reason: "Raison"
     responsible: "Responsable"
     required: "Obligatoire"
@@ -2597,6 +2601,8 @@ fr:
   label_deleted_custom_item: "(élément supprimé)"
   label_deleted_custom_option: "(option supprimée)"
   label_empty_element: "(vide)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(valeur manquante ou manque d'autorisations d'accès)"
   label_descending: "Décroissant"
   label_details: "Détails"
@@ -2669,6 +2675,7 @@ fr:
   label_gantt_chart_plural: "Diagrammes de Gantt"
   label_general: "Général"
   label_generate_key: "Générer une clé"
+  label_global_roles: "Rôles globaux"
   label_git_path: "Chemin d'accès au répertoire .git"
   label_greater_or_equal: ">="
   label_group_by: "Grouper par"
@@ -2895,6 +2902,7 @@ fr:
   label_query_new: "Nouvelle requête"
   label_query_plural: "Requêtes personnalisées"
   label_read: "Lire…"
+  label_read_documentation: "Read documentation"
   label_register: "Créer un compte"
   label_register_with_developer: "S'inscrire en tant que développeur"
   label_registered_on: "Enregistré sur"
@@ -4324,6 +4332,8 @@ fr:
       code_500: "Une erreur interne s'est produite."
       code_500_outbound_request_failure: "Une requête sortante vers une autre ressource a échoué avec le code de statut %{status_code}."
       code_500_missing_enterprise_token: "La requête ne peut pas être traitée en raison d'un jeton Entreprise invalide ou manquant."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "Le lot de travaux que vous cherchez est introuvable ou a été supprimé."
       expected:

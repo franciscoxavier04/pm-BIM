@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SharedTwoFactorExamples
   def first_login_step
     visit signin_path

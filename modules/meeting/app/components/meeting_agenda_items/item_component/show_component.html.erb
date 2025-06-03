@@ -67,9 +67,13 @@
             )
 
             edit_action_item(menu) if @meeting_agenda_item.editable?
-            add_note_action_item(menu) if @meeting_agenda_item.editable? && @meeting_agenda_item.notes.blank?
+            if !in_backlog?
+              copy_action_item(menu)
+            end
 
-            menu.with_divider if add_outcome_action?
+            menu.with_divider if note_or_outcome_action_added?
+
+            add_note_action_item(menu) if add_note_action?
             add_outcome_action_item(menu) if add_outcome_action?
 
             unless first? && last?
@@ -77,20 +81,14 @@
               move_actions(menu)
             end
 
-            if !in_template? || (in_template? && in_backlog?)
-              menu.with_divider
+            menu.with_divider if move_to_different_section_or_meeting_action_added?
+
+            if !in_template? || in_backlog?
               move_to_current_meeting_action_item(menu) if in_backlog?
               move_to_backlog_action_item(menu) if !in_backlog?
             end
-
             if move_to_next_meeting_enabled?
-              menu.with_divider
               move_to_next_meeting_action_item(menu)
-            end
-
-            if !in_backlog?
-              menu.with_divider
-              copy_action_item(menu)
             end
 
             menu.with_divider

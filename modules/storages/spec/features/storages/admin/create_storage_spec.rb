@@ -225,7 +225,7 @@ RSpec.describe "Admin Create a new file storage",
         end
 
         expect(page).to have_test_selector("label-storage_audience_configured-status", text: "Completed")
-        expect(page).to have_test_selector("storage-audience-description", text: "Obtaining tokens for audience \"nextcloud\"")
+        expect(page).to have_test_selector("storage-audience-description", text: "Exchanging tokens for audience \"nextcloud\"")
       end
 
       aggregate_failures "Automatically managed project folders" do

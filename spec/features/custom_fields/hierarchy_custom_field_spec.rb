@@ -38,16 +38,15 @@ RSpec.describe "custom fields of type hierarchy", :js do
 
   before do
     allow(EnterpriseToken).to receive(:allows_to?).and_return(true)
+    login_as admin
   end
 
   it "lets you create, update and delete a custom field of type hierarchy" do
-    login_as admin
-
     # region CustomField creation
 
     custom_field_index_page.visit!
 
-    click_on "New custom field"
+    page.find("[aria-label='New custom field']").click
     new_custom_field_page.expect_current_path
 
     hierarchy_name = "Stormtrooper Organisation"
@@ -77,7 +76,7 @@ RSpec.describe "custom fields of type hierarchy", :js do
     fill_in "Name", with: "", fill_options: { clear: :backspace }
     fill_in "Name", with: hierarchy_name
     click_on "Save"
-    expect(page).to have_css(".PageHeader-title", text: hierarchy_name)
+    expect(page).to have_heading(hierarchy_name)
 
     # endregion
 
@@ -157,5 +156,33 @@ RSpec.describe "custom fields of type hierarchy", :js do
     expect(page).to have_no_text(hierarchy_name)
 
     # endregion
+  end
+
+  context "when navigating the hierarchy" do
+    let(:service) { CustomFields::Hierarchy::HierarchicalItemService.new }
+    let(:custom_field) { create(:wp_custom_field, field_format: "hierarchy", hierarchy_root: nil) }
+    let!(:root) { service.generate_root(custom_field).value! }
+    let!(:luke) { service.insert_item(parent: root, label: "Luke", short: "LS").value! }
+    let!(:r2d2) { service.insert_item(parent: luke, label: "R2-D2", short: "R2").value! }
+    let!(:mouse) { service.insert_item(parent: r2d2, label: "Mouse Droid", short: "MD").value! }
+    let!(:c3po) { service.insert_item(parent: luke, label: "C-3PO", short: "3PO").value! }
+    let!(:mara) { service.insert_item(parent: root, label: "Mara", short: "MJ").value! }
+
+    before do
+      custom_field.reload
+      hierarchy_page.add_custom_field_state(custom_field)
+
+      visit custom_field_item_path(root.custom_field_id, luke)
+    end
+
+    it "can navigate and keep the tab selection (regression #63921)" do
+      # Expect items to be loaded and the tab nav to be selected correctly
+      expect(page).to have_test_selector("op-custom-fields--hierarchy-item", count: 2)
+      hierarchy_page.expect_tab "Items"
+
+      # Navigating to an item will keep the tab nav selection
+      page.find_test_selector("op-custom-fields--hierarchy-item", text: "C-3PO").click
+      hierarchy_page.expect_tab "Items"
+    end
   end
 end

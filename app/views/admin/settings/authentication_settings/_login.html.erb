@@ -28,7 +28,7 @@ See COPYRIGHT and LICENSE files for more details.
 ++#%>
 
 <%=
-  admin_settings_primer_form_with(scope: :settings,
+  settings_primer_form_with(scope: :settings,
                                   url: admin_settings_authentication_path(tab: params[:tab]),
                                   method: :patch) do |f|
     render_inline_settings_form(f) do |form|

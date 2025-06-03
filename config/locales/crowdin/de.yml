@@ -79,15 +79,15 @@ de:
         main-menu-bg-color: "Hintergrundfarbe des Menüs in der linken Seitenleiste."
       theme_warning: Das Ändern des Themes wird Ihr benutzerdefiniertes Design überschreiben. Alle Änderungen werden dann verloren gehen. Sind Sie sicher, dass Sie fortfahren möchten?
     enterprise:
-      upgrade_to_ee: "Auf Enterprise-Edition upgraden"
-      add_token: "Enterprise-Edition Support Token hochladen"
+      upgrade_to_ee: "Auf Enterprise edition upgraden"
+      add_token: "Enterprise edition Support Token hochladen"
       delete_token_modal:
-        text: "Sind Sie sicher, dass Sie das aktuelle Enterprise Edition-Token entfernen möchten?"
+        text: "Sind Sie sicher, dass Sie das aktuelle Enterprise edition token entfernen möchten?"
         title: "Token löschen"
       replace_token: "Aktuellen Enterprise edition Support Token ersetzen"
       order: "Enterprise on-premises bestellen"
-      paste: "Enterprise-Edition Support Token hier einfügen"
-      required_for_feature: "Dieses Add-on ist nur mit einem aktiven Enterprise-Edition Support-Token verfügbar."
+      paste: "Enterprise edition Support Token hier einfügen"
+      required_for_feature: "Dieses Add-on ist nur mit einem aktiven Enterprise edition Support-Token verfügbar."
       enterprise_link: "Klicken Sie hier für weitere Informationen."
       start_trial: "Kostenlose Testversion starten"
       book_now: "Jetzt buchen"
@@ -418,10 +418,6 @@ de:
         new_label: "Neue Priorität"
     status:
       button_edit: Projektstatus bearbeiten
-  project_phase:
-    working_days_count:
-      one: "Dauer: %{count} Arbeitstag"
-      other: "Dauer: %{count} Arbeitstage"
   lists:
     create:
       success: "Die geänderte Liste wurde als neue Liste gespeichert"
@@ -685,6 +681,7 @@ de:
         automatic: "Automatisch"
         manual: "Manuell"
       show_relations: "Beziehungen anzeigen"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datumsauswahl Reiter"
         children: "Untergeordnete Arbeitspakete"
@@ -753,7 +750,9 @@ de:
     label_add_description: "Beschreibung hinzufügen"
     lag:
       subject: "Verzögerung"
-      caption: "Die minimale Anzahl von Arbeitstagen zwischen den zwei Arbeitspaketen."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Neues Arbeitspaket erstellt und als Kind hinzugefügt"
       label_relates_singular: "Beziehung mit"
@@ -772,7 +771,7 @@ de:
       label_child_plural: "Untergeordnete Arbeitspakete"
       new_child: "Neues Kind"
       new_child_description: "Erstellt ein zugehöriges Arbeitspaket als Unterelement des aktuellen (übergeordneten) Arbeitspakets"
-      child: "Kind"
+      child: "Unteraufgabe"
       child_description: "Macht das zugehörige Arbeitspaket zu einem Unterelement des aktuellen (übergeordneten) Arbeitspakets"
       parent: "Übergeordnetes Arbeitspaket"
       parent_description: "Wandelt das verknüpfte in ein übergeordnetes Arbeitspaket dieses Arbeitspakets um"
@@ -969,6 +968,10 @@ de:
       project/phase:
         date_range: "Zeitraum"
         definition: "Definition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Name"
         color: "Farbe"
@@ -1280,10 +1283,12 @@ de:
               blank: "Bitte wählen Sie ein Projekt aus."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "Startdatum muss vor dem Enddatum liegen."
-              non_continuous_dates: "kann nicht vor dem Enddatum der vorherigen Phase liegen."
-              incomplete: "ist unvollständig."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1332,10 +1337,6 @@ de:
             from_id:
               error_not_found: "nicht gefunden oder nicht sichtbar."
               error_readonly: "kann für bestehende Beziehungen nicht geändert werden."
-            lag:
-              greater_than_or_equal_to:
-                zero: "darf nicht negativ sein."
-              less_than_or_equal_to: "ist zu hoch."
         repository:
           not_available: "SCM-Anbieter ist nicht verfügbar"
           not_whitelisted: "wird durch die Konfiguration nicht erlaubt."
@@ -1587,12 +1588,13 @@ de:
       work_package: "Arbeitspakete"
     project_phase:
       activated: "aktiviert"
-      deactivated: "deaktiviert"
       added_date: "auf %{date} festlegen"
       changed_date: "von %{from} zu %{to} geändert"
-      removed_date: "Datum gelöscht %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "deaktiviert"
+      deleted_project_phase: "Gelöschte Projektphase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} und %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "Datum gelöscht %{date}"
   #common attributes of all models
   attributes:
     active: "Aktiv"
@@ -1659,6 +1661,8 @@ de:
     priority: "Priorität"
     project: "Projekt"
     project_ids: "Projekt IDs"
+    project_phase: "Projektphase"
+    project_phase_definition: "Projektphase"
     reason: "Grund"
     responsible: "Verantwortlich"
     required: "Erforderlich"
@@ -2095,7 +2099,7 @@ de:
   error_cookie_missing: "Das OpenProject Cookie fehlt. Bitte stellen Sie sicher, dass Cookies aktiviert sind, da diese Applikation ohne aktivierte Cookies nicht korrekt funktioniert."
   error_custom_option_not_found: "Option ist nicht vorhanden."
   error_enterprise_activation_user_limit: "Ihr Konto konnte nicht aktiviert werden (Nutzerlimit erreicht). Bitte kontaktieren Sie Ihren Administrator um Zugriff zu erhalten."
-  error_enterprise_token_invalid_domain: "Die Enterprise-Edition ist nicht aktiv. Die aktuelle Domain (%{actual}) entspricht nicht dem erwarteten Hostnamen (%{expected})."
+  error_enterprise_token_invalid_domain: "Die Enterprise edition ist nicht aktiv. Die aktuelle Domain (%{actual}) entspricht nicht dem erwarteten Hostnamen (%{expected})."
   error_failed_to_delete_entry: "Fehler beim Löschen dieses Eintrags."
   error_in_dependent: "Fehler beim Versuch, abhängiges Objekt zu ändern: %{dependent_class} #%{related_id} - %{related_subject}: %{error}"
   error_in_new_dependent: "Fehler beim Versuch, abhängiges Objekt zu erstellen: %{dependent_class} - %{related_subject}: %{error}"
@@ -2299,7 +2303,7 @@ de:
       upsell:
         title: "Auf Enterprise edition upgraden"
     links:
-      upgrade_enterprise_edition: "Auf Enterprise-Edition upgraden"
+      upgrade_enterprise_edition: "Auf Enterprise edition upgraden"
       postgres_migration: "Migration Ihrer Installation zu PostgreSQL"
       user_guides: "Benutzerhandbuch"
       faq: "Häufig gestellte Fragen"
@@ -2337,7 +2341,7 @@ de:
         dates:
           working: "%{date} ist jetzt ein Arbeitstag"
           non_working: "%{date} ist jetzt ein arbeitsfreier Tag"
-      progress_mode_changed_to_status_based: Fortschrittberechnung wurde auf Status-bezogen gesetzt
+      progress_mode_changed_to_status_based: Fortschrittberechnung wurde auf Status-basiert gesetzt
       status_excluded_from_totals_set_to_false_message: jetzt in den Gesamtwerten der Hierarchie enthalten
       status_excluded_from_totals_set_to_true_message: jetzt von den Hierarchie-Gesamtwerten ausgeschlossen
       status_percent_complete_changed: "% abgeschlossen von %{old_value}% auf %{new_value} % geändert"
@@ -2592,6 +2596,8 @@ de:
   label_deleted_custom_item: "(gelöschter Eintrag)"
   label_deleted_custom_option: "(gelöschte Option)"
   label_empty_element: "(leer)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(Fehlender Wert oder fehlende Zugriffsberechtigungen)"
   label_descending: "Absteigend"
   label_details: "Details"
@@ -2625,7 +2631,7 @@ de:
   label_enumerations: "Aufzählungen"
   label_enterprise: "Enterprise"
   label_enterprise_active_users: "%{current}/%{limit} gebuchte aktive Nutzer"
-  label_enterprise_edition: "Enterprise Edition"
+  label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Enterprise Support"
   label_environment: "Umgebung"
   label_estimates_and_progress: "Schätzungen und Fortschritt"
@@ -2664,6 +2670,7 @@ de:
   label_gantt_chart_plural: "Gantt Diagramme"
   label_general: "Allgemein"
   label_generate_key: "Schlüssel generieren"
+  label_global_roles: "Globale Rollen"
   label_git_path: "Pfad zum .git-Verzeichnis"
   label_greater_or_equal: ">="
   label_group_by: "Gruppieren nach"
@@ -2890,6 +2897,7 @@ de:
   label_query_new: "Neuer Bericht"
   label_query_plural: "Benutzerdefinierte Berichte"
   label_read: "Lesen ..."
+  label_read_documentation: "Read documentation"
   label_register: "Neues Konto erstellen"
   label_register_with_developer: "Als Entwickler anmelden"
   label_registered_on: "Angemeldet am"
@@ -3620,8 +3628,8 @@ de:
       update_timeout: "Speichere die Informationen bzgl. des genutzten Festplattenspeichers eines Projektarchivs für N Minuten.\nErhöhen Sie diesen Wert zur Verbesserung der Performance, da die Erfassung des genutzten Festplattenspeichers Ressourcen-intensiv ist."
       oauth_application_details: "Der Client Geheimcode wird nach dem Schließen dieses Fensters nicht mehr zugänglich sein. Bitte kopieren Sie diese Werte in die Nextcloud OpenProject Integrationseinstellungen:"
       oauth_application_details_link_text: "Zu den Einstellungen gehen"
-      setup_documentation_details: "Wenn Sie Hilfe bei der Konfiguration eines neuen Dateispeichers benötigen, konsultieren Sie bitte die Dokumentation: "
-      setup_documentation_details_link_text: "Dateispeicher einrichten"
+      setup_documentation_details: "Wenn Sie Hilfe bei der Konfiguration eines neuen Datei-Speichers benötigen, konsultieren Sie bitte die Dokumentation: "
+      setup_documentation_details_link_text: "Datei-Speicher einrichten"
       show_warning_details: "Um diesen Dateispeicher nutzen zu können, müssen Sie das Modul und den spezifischen Speicher in den Projekteinstellungen jedes gewünschten Projekts aktivieren."
     subversion:
       existing_title: "Vorhandenes Subversion Projektarchiv"
@@ -4160,7 +4168,7 @@ de:
   warning_user_limit_reached_admin: >
     Das Hinzufügen zusätzlicher Benutzer überschreitet das aktuelle Benutzerlimit. Bitte <a href="%{upgrade_url}">aktualisieren Sie Ihr Abonnement</a> um sicherzustellen, dass externe Benutzer auf diese Instanz zugreifen können.
   warning_user_limit_reached_instructions: >
-    Du hast dein Nutzerlimit erreicht (%{current}/%{max} active users). Bitte kontaktiere sales@openproject.com um deinen Enterprise Edition Plan upzugraden und weitere Nutzer hinzuzufügen.
+    Du hast dein Nutzerlimit erreicht (%{current}/%{max} active users). Bitte kontaktiere sales@openproject.com um deinen Enterprise edition Plan upzugraden und weitere Nutzer hinzuzufügen.
   warning_protocol_mismatch_html: >
 
   warning_bar:
@@ -4319,6 +4327,8 @@ de:
       code_500: "Ein interner Fehler ist aufgetreten."
       code_500_outbound_request_failure: "Eine ausgehende Anfrage an eine andere Ressource ist mit dem Statuscode %{status_code} fehlgeschlagen."
       code_500_missing_enterprise_token: "Die Anfrage kann wegen ungültigem oder fehlenden Enterprise Token nicht bearbeitet werden."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "Das von Ihnen gesuchte Arbeitspaket konnte nicht gefunden werden oder wurde gelöscht."
       expected:

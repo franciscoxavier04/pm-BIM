@@ -178,6 +178,7 @@ zh-CN:
       agenda_items: "复制议程项目"
       agenda_text: "复制之前会议的议程"
       participants: "复制与会者列表"
+      to_clipboard: "复制到剪贴板"
     email:
       send_emails: "电子邮件参与者"
       send_invitation_emails: >
@@ -350,7 +351,9 @@ zh-CN:
   label_meeting_index_later: "下周及以后"
   label_agenda_items: "议程项目"
   label_agenda_items_reordered: "重新排序"
-  label_agenda_item_remove: "从议程中移除"
+  label_agenda_item_add: "添加议程项"
+  label_agenda_item_remove_from_agenda: "从议程中移除"
+  label_agenda_item_remove_from_backlog: "从待办中移除"
   label_agenda_item_undisclosed_wp: "工作包 #%{id} 不可见"
   label_agenda_item_deleted_wp: "已删除工作包引用"
   label_agenda_item_actions: "议程项目行动"
@@ -363,7 +366,9 @@ zh-CN:
   label_agenda_item_move_down: "向下移动"
   label_agenda_item_add_notes: "添加备注"
   label_agenda_item_add_outcome: "添加成果"
+  label_agenda_item_work_package_add: "添加工作包"
   label_agenda_item_work_package: "议程项目工作包"
+  label_section_rename: "重命名章节"
   label_agenda_outcome: "成果"
   label_agenda_outcome_actions: "议程成果行动"
   label_agenda_outcome_edit: "编辑成果"

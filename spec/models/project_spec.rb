@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -386,8 +388,8 @@ RSpec.describe Project do
       expect(subject).to have_many(:available_phases)
                     .class_name("Project::Phase")
                     .inverse_of(:project)
-                    .dependent(:destroy)
-                    .order(position: :asc)
+                    .dependent(nil)
+                    .order("project_phase_definitions.position ASC")
     end
 
     it "checks for active flag" do
