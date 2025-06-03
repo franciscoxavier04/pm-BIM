@@ -47,6 +47,7 @@ module ProjectLifeCycleSteps
 
     def reschedule_phases(phases:, from:)
       phases.each do |phase|
+        next unless phase.active?
         next unless phase.date_range_set?
         next unless phase.duration&.positive? # not updated using service that sets duration
 

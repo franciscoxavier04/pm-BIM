@@ -125,6 +125,22 @@ RSpec.describe ProjectLifeCycleSteps::RescheduleService, type: :model do
       end
     end
 
+    context "for inactive phases" do
+      let(:phases) do
+        [
+          create(:project_phase, project:, start_date: date, finish_date: date, duration: 5, active: false),
+          create(:project_phase, project:, start_date: date, finish_date: date, duration: 10)
+        ]
+      end
+
+      it "skips them" do
+        expect(service.call(phases:, from:)).to be_success
+
+        expect(phases[0]).to have_attributes(start_date: date, finish_date: date, duration: 5, active: false)
+        expect(phases[1]).to have_attributes(start_date: from, finish_date: from + 13, duration: 10)
+      end
+    end
+
     context "for phases without complete date range" do
       let(:phases) do
         [
