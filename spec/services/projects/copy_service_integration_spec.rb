@@ -887,6 +887,25 @@ RSpec.describe(
             expect(duplicates_relation.to_id).to eq other_wp.id
           end
         end
+
+        context "with project phases associated", with_flag: { stages_and_gates: true } do
+          before do
+            source_wp.update_column(:project_phase_definition_id, source_project_phase.definition_id)
+          end
+
+          it "copies the project phase (regardless of the phase not being copied itself)" do
+            expect(subject).to be_success
+            expect(project_copy.work_packages.count).to eq(2)
+
+            copied_wp = project_copy.work_packages.find_by(subject: source_wp.subject)
+            expect(copied_wp.project_phase_definition_id).to eq(source_project_phase.definition_id)
+
+            [source_wp, source_wp_locked].each do |wp|
+              copied_wp = project_copy.work_packages.find_by(subject: wp.subject)
+              expect(copied_wp.project_phase_definition_id).to eq(wp.project_phase_definition_id)
+            end
+          end
+        end
       end
 
       context "with wiki" do
