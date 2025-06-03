@@ -201,7 +201,7 @@ To enter a new hourly rate, click on the **Update** icon next to the rate histor
 
 The **Avatar** tab shows the default icon to be shown for this user. A custom image can be uploaded as the avatar. In addition, users can also use their [Gravatar](https://en.wikipedia.org/wiki/Gravatar). User can manage this under their [profile settings](../../../user-guide/account-settings/#set-an-avatar). These features can be disabled in the [avatar settings](../avatars).
 
-> ![TIP]
+> [!TIP]
 >
 > Hovering over a user's avatar or name, for example on the Members page or the Activity page, will display their information. 
 
