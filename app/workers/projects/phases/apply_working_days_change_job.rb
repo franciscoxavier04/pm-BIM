@@ -56,7 +56,7 @@ class Projects::Phases::ApplyWorkingDaysChangeJob < ApplyWorkingDaysChangeJobBas
     dates = changed_non_working_dates.keys
 
     Project::Phase
-      .active # TODO: should visible be used?
+      .active
       .covering_dates_and_days_of_week(days_of_week:, dates:)
   end
 end
