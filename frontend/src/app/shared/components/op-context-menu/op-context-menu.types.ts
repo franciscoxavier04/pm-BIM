@@ -12,6 +12,7 @@ export interface OpContextMenuItem {
   linkText?:string;
   title?:string;
   divider?:boolean;
+  isHeader?:boolean;
   onClick?:($event:JQuery.TriggeredEvent|MouseEvent) => boolean;
 }
 
@@ -20,7 +21,6 @@ export interface OpContextMenuLocalsMap {
   showAnchorRight?:boolean;
   contextMenuId?:string;
   label?:string;
-  visibleLabel?:boolean;
   /* eslint-disable @typescript-eslint/no-explicit-any */
   [key:string]:any;
 }
