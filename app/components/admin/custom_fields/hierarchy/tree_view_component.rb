@@ -41,7 +41,8 @@ module Admin
         end
 
         def hierarchy_items
-          @custom_field.hierarchy_root.hash_tree.first[1]
+          hashed_hierarchy = @custom_field.hierarchy_root.hash_tree
+          hashed_hierarchy.nil? ? {} : hashed_hierarchy.first[1]
         end
 
         def add_sub_tree(tree, hierarchy_hash)
