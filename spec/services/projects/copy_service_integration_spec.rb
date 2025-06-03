@@ -95,27 +95,53 @@ RSpec.describe(
   end
 
   describe ".copyable_dependencies" do
-    it "includes the list of dependencies" do
-      expect(described_class.copyable_dependencies.pluck(:identifier)).to eq(
-        %w(
-          members
-          versions
-          categories
-          work_packages
-          work_package_attachments
-          work_package_shares
-          wiki
-          wiki_page_attachments
-          forums
-          queries
-          boards
-          overview
-          phases
-          storages
-          storage_project_folders
-          file_links
+    context "with project phases inactive", with_flag: { stages_and_gates: false } do
+      it "includes the list of dependencies" do
+        expect(described_class.copyable_dependencies.pluck(:identifier)).to eq(
+          %w(
+            members
+            versions
+            categories
+            work_packages
+            work_package_attachments
+            work_package_shares
+            wiki
+            wiki_page_attachments
+            forums
+            queries
+            boards
+            overview
+            storages
+            storage_project_folders
+            file_links
+          )
         )
-      )
+      end
+    end
+
+    context "with project phases active", with_flag: { stages_and_gates: true } do
+      it "includes the list of dependencies" do
+        expect(described_class.copyable_dependencies.pluck(:identifier)).to eq(
+          %w(
+            members
+            versions
+            categories
+            work_packages
+            work_package_attachments
+            work_package_shares
+            wiki
+            wiki_page_attachments
+            forums
+            queries
+            boards
+            overview
+            phases
+            storages
+            storage_project_folders
+            file_links
+          )
+        )
+      end
     end
   end
 
@@ -257,7 +283,7 @@ RSpec.describe(
 
       # rubocop:disable RSpec/ExampleLength
       # rubocop:disable RSpec/MultipleExpectations
-      it "copies all dependencies and set attributes" do
+      it "copies all dependencies and set attributes", with_flag: { stages_and_gates: true } do
         expect(subject).to be_success
 
         expect(project_copy.members.count).to eq 1
@@ -948,7 +974,7 @@ RSpec.describe(
         end
       end
 
-      context "with project phases" do
+      context "with project phases", with_flag: { stages_and_gates: true } do
         let(:only_args) { %i[phases] }
 
         let!(:inactive_source_project_phase) do
