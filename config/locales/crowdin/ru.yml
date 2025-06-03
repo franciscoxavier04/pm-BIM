@@ -420,12 +420,6 @@ ru:
         new_label: "Новый приоритет"
     status:
       button_edit: Редактировать статус проекта
-  project_phase:
-    duration:
-      one: "Продолжительность: %{count} рабочий день"
-      few: "Продолжительность: %{count} рабочих дня"
-      many: "Продолжительность: %{count} рабочих дня"
-      other: "Продолжительность: %{count} рабочих дня"
   lists:
     create:
       success: "Измененный список был сохранен как новый"
@@ -777,7 +771,9 @@ ru:
     label_add_description: "Добавить описание"
     lag:
       subject: "Отставание"
-      caption: "Минимальное количество рабочих дней, которое должно быть между двумя пакетами работ."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Новый пакет работ создан и добавлен как дочерний"
       label_relates_singular: "Связан с"
@@ -993,6 +989,10 @@ ru:
       project/phase:
         date_range: "Диапазон дат"
         definition: "Описание"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Имя"
         color: "Цвет"
@@ -1304,10 +1304,12 @@ ru:
               blank: "Пожалуйста, выберите проект."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "дата начала должна быть раньше даты окончания."
-              non_continuous_dates: "не может быть раньше, чем дата окончания предыдущего этапа."
-              incomplete: "неполный."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1356,10 +1358,6 @@ ru:
             from_id:
               error_not_found: "не найден или невидим."
               error_readonly: "не может быть изменен для существующих отношений."
-            lag:
-              greater_than_or_equal_to:
-                zero: "не может быть отрицательным."
-              less_than_or_equal_to: "слишком высокий."
         repository:
           not_available: "SCM поставщик не доступен"
           not_whitelisted: "не допускается конфигурацией."
@@ -1437,6 +1435,8 @@ ru:
               cannot_be_self_assigned: "не может быть присвоено самому себе."
               cannot_be_in_another_project: "не может быть в другом проекте."
               not_a_valid_parent: "имеет неверное значение."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "может быть установлено лишь в %{soonest_start} или позднее и без нарушения взаимосвязи рабочих пакетов."
               cannot_be_null: "не может быть нулевым, поскольку известны дата окончания и продолжительность."
@@ -2679,6 +2679,8 @@ ru:
   label_deleted_custom_item: "(удалено)"
   label_deleted_custom_option: "(удалённая опция)"
   label_empty_element: "(пусто)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(отсутствует значение или недостаточно прав для доступа)"
   label_descending: "По убыванию"
   label_details: "Детали"
@@ -2978,6 +2980,7 @@ ru:
   label_query_new: "Новый запрос"
   label_query_plural: "Пользовательские запросы"
   label_read: "Читать..."
+  label_read_documentation: "Read documentation"
   label_register: "Создайте новую учетную запись"
   label_register_with_developer: "Зарегистрируйтесь как разработчик"
   label_registered_on: "Зарегистрированы на"
@@ -4410,6 +4413,8 @@ ru:
       code_500: "Произошла внутренняя ошибка."
       code_500_outbound_request_failure: "Исходящий запрос к другому ресурсу не удался с кодом статуса %{status_code}."
       code_500_missing_enterprise_token: "Запрос не может быть обработан из-за недействительного или отсутствующего корпоративного токена."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "Пакет работ, который вы ищете, не найден или был удален."
       expected:

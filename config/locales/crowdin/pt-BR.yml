@@ -420,10 +420,6 @@ pt-BR:
         new_label: "Nova prioridade"
     status:
       button_edit: Editar o status do projeto
-  project_phase:
-    duration:
-      one: "Duração: %{count} dia útil"
-      other: "Duração: %{count} dias úteis"
   lists:
     create:
       success: "A lista modificada foi salva como uma nova lista"
@@ -758,7 +754,9 @@ pt-BR:
     label_add_description: "Adicionar descrição"
     lag:
       subject: "Atraso"
-      caption: "O número mínimo de dias úteis a ser mantido entre os dois pacotes de trabalho."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Novo pacote de trabalho criado e adicionado como subpacote"
       label_relates_singular: "relacionado a"
@@ -974,6 +972,10 @@ pt-BR:
       project/phase:
         date_range: "Período"
         definition: "Definição"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Nome"
         color: "Cor"
@@ -1285,10 +1287,12 @@ pt-BR:
               blank: "Selecione um projeto."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "a data inicial deve ser anterior à data final."
-              non_continuous_dates: "não pode ser anterior à data final da fase anterior."
-              incomplete: "não foi concluído."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1337,10 +1341,6 @@ pt-BR:
             from_id:
               error_not_found: "não encontrado ou não visível."
               error_readonly: "não pode ser alterado para relações existentes."
-            lag:
-              greater_than_or_equal_to:
-                zero: "não pode ser negativo."
-              less_than_or_equal_to: "é muito alto."
         repository:
           not_available: "Fornecedor SCM não está disponível"
           not_whitelisted: "não é permitido pela configuração."
@@ -1418,6 +1418,8 @@ pt-BR:
               cannot_be_self_assigned: "não pode ser atribuído a ele mesmo."
               cannot_be_in_another_project: "não pode ser em outro projeto."
               not_a_valid_parent: "é inválido."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "somente pode ser definida como %{soonest_start} ou posterior para não violar as relações de trabalho do pacote."
               cannot_be_null: "não pode ser definido como nulo já que a data de conclusão e a duração são conhecidas. "
@@ -2598,6 +2600,8 @@ pt-BR:
   label_deleted_custom_item: "(item excluído)"
   label_deleted_custom_option: "(opção excluída)"
   label_empty_element: "(vazio)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(algum valor faltando ou falta permissões para acessar)"
   label_descending: "Decrescente"
   label_details: "Detalhes"
@@ -2897,6 +2901,7 @@ pt-BR:
   label_query_new: "Nova consulta"
   label_query_plural: "Consultas personalizadas"
   label_read: "Leia..."
+  label_read_documentation: "Read documentation"
   label_register: "Criar uma nova conta"
   label_register_with_developer: "Registre-se como desenvolvedor"
   label_registered_on: "Registrado em"
@@ -4325,6 +4330,8 @@ pt-BR:
       code_500: "Ocorreu um erro interno."
       code_500_outbound_request_failure: "Uma solicitação de saída para outro recurso falhou com o código de status %{status_code}."
       code_500_missing_enterprise_token: "O pedido não pode ser manipulado devido a um token Enterprise inválido ou ausente."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "O pacote de trabalho que você está procurando não pode ser encontrado ou foi excluído."
       expected:

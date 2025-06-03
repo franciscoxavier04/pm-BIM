@@ -87,8 +87,8 @@ RSpec.describe EnterpriseEdition::BannerComponent, type: :component do
 
     allow(OpenProject::Token)
       .to receive(:lowest_plan_for)
-      .with(:some_enterprise_feature)
-      .and_return(plan)
+            .with(:some_enterprise_feature)
+            .and_return(plan)
 
     I18n.config.enforce_available_locales = !enforce_available_locales
 
@@ -267,6 +267,32 @@ RSpec.describe EnterpriseEdition::BannerComponent, type: :component do
       expect(component).to have_text(expected_title)
       expect(component).to have_text(expected_description)
       expect(component).to have_link("More information", href: "https://example.com")
+    end
+  end
+
+  context "with large variant" do
+    context "with video parameter" do
+      let(:component_args) { { variant: :large, video: "enterprise/date-alert-notifications.mp4" } }
+
+      it_behaves_like "renders the component"
+
+      it "renders with large variant class" do
+        render_component_in_mo
+
+        component = find_test_selector(component_test_selector)
+
+        expect(component[:class]).to include("op-enterprise-banner_large")
+      end
+    end
+
+    context "without video parameter" do
+      let(:component_args) { { variant: :large } }
+
+      it "raises an error" do
+        expect do
+          render_component_in_mo
+        end.to raise_error(ArgumentError, "The 'video' parameter is required when the variant is :large.")
+      end
     end
   end
 end

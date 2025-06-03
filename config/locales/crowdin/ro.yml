@@ -421,11 +421,6 @@ ro:
         new_label: "New priority"
     status:
       button_edit: Edit project status
-  project_phase:
-    duration:
-      one: "Duration: %{count} working day"
-      few: "Duration: %{count} working days"
-      other: "Duration: %{count} working days"
   lists:
     create:
       success: "The modified list has been saved as a new list"
@@ -770,7 +765,9 @@ ro:
     label_add_description: "Adaugă descriere"
     lag:
       subject: "Întârziere"
-      caption: "Numărul minim de zile lucrătoare care trebuie păstrate între cele două pachete de lucru."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Pachet de lucru nou creat și adăugat ca și copil"
       label_relates_singular: "asociat cu"
@@ -986,6 +983,10 @@ ro:
       project/phase:
         date_range: "Interval calendaristic"
         definition: "Definition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Nume"
         color: "Culoare"
@@ -1297,10 +1298,12 @@ ro:
               blank: "Te rog selectează un proiect."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1349,10 +1352,6 @@ ro:
             from_id:
               error_not_found: "negăsit sau invizibil."
               error_readonly: "nu poate fi schimbat pentru relaţiile existente."
-            lag:
-              greater_than_or_equal_to:
-                zero: "nu poate fi negativ."
-              less_than_or_equal_to: "este prea mare."
         repository:
           not_available: "Nu este disponibil furnizorul de SCM"
           not_whitelisted: "nu este permisă de configurație."
@@ -1430,6 +1429,8 @@ ro:
               cannot_be_self_assigned: "nu poate fi atribuit singur."
               cannot_be_in_another_project: "nu poate fi într-un alt proiect."
               not_a_valid_parent: "este invalid."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "poate fi setată doar pe %{soonest_start} sau mai târziu pentru a nu viola relațiile între pachetele de lucru."
               cannot_be_null: "nu poate fi setat la null, deoarece data și durata de finalizare sunt cunoscute."
@@ -2641,6 +2642,8 @@ ro:
   label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(opțiune eliminată)"
   label_empty_element: "(gol)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(valoare lipsă sau lipsă permisiunilor de acces)"
   label_descending: "Descrescător"
   label_details: "Detalii"
@@ -2940,6 +2943,7 @@ ro:
   label_query_new: "Interogare nouă"
   label_query_plural: "Interogări personalizate"
   label_read: "Citeşte..."
+  label_read_documentation: "Read documentation"
   label_register: "Creează cont nou"
   label_register_with_developer: "Înregistrare ca programator"
   label_registered_on: "Înregistrat pe"
@@ -4372,6 +4376,8 @@ ro:
       code_500: "A apărut o eroare internă."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "Cererea nu poate fi gestionată din cauza token-ului Enterprise invalid sau lipsă."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "Pachetul de lucru pe care îl căutați nu poate fi găsit sau a fost șters."
       expected:

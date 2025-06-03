@@ -421,9 +421,6 @@ vi:
         new_label: "New priority"
     status:
       button_edit: Edit project status
-  project_phase:
-    duration:
-      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Danh sách đã sửa đổi đã được lưu thành danh sách mới"
@@ -752,7 +749,9 @@ vi:
     label_add_description: "Add description"
     lag:
       subject: "Kết quả chậm"
-      caption: "The minimum number of working days to keep in between the two work packages."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "liên quan đến"
@@ -968,6 +967,10 @@ vi:
       project/phase:
         date_range: "Khoảng thời gian"
         definition: "Definition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Tên"
         color: "Màu sắc"
@@ -1279,10 +1282,12 @@ vi:
               blank: "Vui lòng chọn một dự án."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1331,10 +1336,6 @@ vi:
             from_id:
               error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
-            lag:
-              greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Nhà cung cấp SCM không có sẵn"
           not_whitelisted: "không được cấu hình cho phép."
@@ -1412,6 +1413,8 @@ vi:
               cannot_be_self_assigned: "không thể tự phân bổ cho chính nó."
               cannot_be_in_another_project: "không thể có trong một dự án khác."
               not_a_valid_parent: "không hợp lệ."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "chỉ có thể được thiếp lập sang %{soonest_start} hoặc mới hơn để không làm vi phạm các mối quan hệ của work package."
               cannot_be_null: "không thể được đặt thành null vì ngày kết thúc và thời gian đã được biết."
@@ -2561,6 +2564,8 @@ vi:
   label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(tùy chọn đã xóa)"
   label_empty_element: "(rỗng)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(giá trị thiếu hoặc không có quyền truy cập)"
   label_descending: "Giảm dần"
   label_details: "Chi tiết"
@@ -2860,6 +2865,7 @@ vi:
   label_query_new: "Truy vấn mới"
   label_query_plural: "Truy vấn tùy chỉnh"
   label_read: "Đọc..."
+  label_read_documentation: "Read documentation"
   label_register: "Tạo tài khoản mới"
   label_register_with_developer: "Đăng ký là nhà phát triển"
   label_registered_on: "Ngày tham gia"
@@ -4286,6 +4292,8 @@ vi:
       code_500: "Đã xảy ra lỗi nội bộ."
       code_500_outbound_request_failure: "Yêu cầu ra ngoài tới tài nguyên khác đã thất bại với mã trạng thái %{status_code}."
       code_500_missing_enterprise_token: "Yêu cầu không thể được xử lý do token Doanh nghiệp không hợp lệ hoặc bị thiếu."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "Gói công việc bạn tìm kiếm không thể tìm thấy hoặc đã bị xóa."
       expected:

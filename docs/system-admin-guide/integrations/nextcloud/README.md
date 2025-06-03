@@ -13,8 +13,7 @@ keywords: Nextcloud file storage integration
 >  [!IMPORTANT]
 >
 > The integration between OpenProject and Nextcloud is part of the open source and free of charge **Community edition**, including all file management functionalities. 
->
-> However, please note that setting up the Single Sign-on via OpenID Connect Identity Provider is an Enterprise Add-on and can only be used with [Enterprise cloud](https://www.openproject.org/docs/enterprise-guide/enterprise-cloud-guide) or [Enterprise on-premises](https://www.openproject.org/docs/enterprise-guide/enterprise-on-premises-guide). This Add-On is available for all installations under the [Enterprise Corporate plan](https://www.openproject.org/pricing/). 
+> However, please note that setting up the Single Sign-on via OpenID Connect Identity Provider is an Enterprise Add-on and can only be used with [Enterprise cloud](../../../enterprise-guide/enterprise-cloud-guide) or [Enterprise on-premises](../../../enterprise-guide/enterprise-on-premises-guide). This Add-On is available for all installations under the [Enterprise Corporate plan](https://www.openproject.org/pricing/). 
 
 | Topic                                                               | Description                                                          |
 |---------------------------------------------------------------------|:---------------------------------------------------------------------|
@@ -107,7 +106,7 @@ The next part of the setup will vary depending on your chosen authentication met
 
 > [!NOTE]
 >
-> This advanced feature is is an Enterprise add-on and can only be used with [Enterprise cloud](https://www.openproject.org/docs/enterprise-guide/enterprise-cloud-guide) or [Enterprise on-premises](https://www.openproject.org/docs/enterprise-guide/enterprise-on-premises-guide). It is available for all installations under the Enterprise Corporate plan. An upgrade from the free community edition is easy and helps support OpenProject.
+> This advanced feature is an Enterprise add-on and can only be used with [Enterprise cloud](../../../enterprise-guide/enterprise-cloud-guide) or [Enterprise on-premises](../../../enterprise-guide/enterprise-on-premises-guide). It is available for all installations under the Enterprise Corporate plan. An upgrade from the free community edition is easy and helps support OpenProject.
 
 
 Instructions for both authentication methods can be found on the following pages:
@@ -287,13 +286,17 @@ If you do care about the `OpenProject` user/group/folder data then the condition
 If you face an error while trying to delete or disable user/group "OpenProject" then that's because user/group is protected by the _OpenProject Integration_ App. If you really need to delete the user or group follow these steps:
 
 1. Disable the _OpenProject Integration_ App
-   > [!NOTE]
-   > Disabling and enabling the app is safe. No app data will be deleted.
+
+> [!NOTE]
+> Disabling and enabling the app is safe. No app data will be deleted.
+
 2. Remove user `OpenProject`
 3. Remove group `OpenProject`
 4. Inside the _Group folders_ App (*Administration settings → Administration → Group folders*), remove group folder `OpenProject`.
-   > [!WARNING]
-   > This step will delete all files in that folder. Make sure to make a copy if you want to keep these files!**
+   
+> [!WARNING]
+> This step will delete all files in that folder. Make sure to make a copy if you want to keep these files!**
+
 5. Enable the _OpenProject Integration_ App
 
 ### Setting up Nextcloud in OpenProject

@@ -421,10 +421,6 @@
         new_label: "Ny prioritet"
     status:
       button_edit: Edit project status
-  project_phase:
-    duration:
-      one: "Duration: %{count} working day"
-      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Den endrede listen er lagret som en ny liste"
@@ -760,7 +756,9 @@
     label_add_description: "Add description"
     lag:
       subject: "Forsinkelse"
-      caption: "The minimum number of working days to keep in between the two work packages."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "relatert til"
@@ -976,6 +974,10 @@
       project/phase:
         date_range: "Datointervall"
         definition: "Definisjon"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Navn"
         color: "Farge"
@@ -1287,10 +1289,12 @@
               blank: "Velg et prosjekt."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1339,10 +1343,6 @@
             from_id:
               error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
-            lag:
-              greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM leverandør er ikke tilgjengelig"
           not_whitelisted: "er ikke tillatt av konfigurasjonen."
@@ -1420,6 +1420,8 @@
               cannot_be_self_assigned: "kan ikke tilordnes seg selv."
               cannot_be_in_another_project: "kan ikke være i et annet prosjekt."
               not_a_valid_parent: "er ugyldig."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "kan bare settes til %{soonest_start} eller senere, slik at den ikke bryter arbeidspakkens relasjoner."
               cannot_be_null: "kan ikke settes til null da sluttdato og varighet er kjent."
@@ -2600,6 +2602,8 @@
   label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(slettet alternativ)"
   label_empty_element: "(tom)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(manglende verdi eller manglende rettigheter)"
   label_descending: "Synkende"
   label_details: "Detaljer"
@@ -2899,6 +2903,7 @@
   label_query_new: "Ny spørring"
   label_query_plural: "Egendefinerte spørringer"
   label_read: "Les..."
+  label_read_documentation: "Read documentation"
   label_register: "Opprett ny konto"
   label_register_with_developer: "Registrer som utvikler"
   label_registered_on: "Registrert den"
@@ -4329,6 +4334,8 @@
       code_500: "En intern feil har oppstått."
       code_500_outbound_request_failure: "En utgående forespørsel til en annen ressurs har mislyktes med statuskode %{status_code}."
       code_500_missing_enterprise_token: "Forespørselen kan ikke håndteres på grunn av ugyldig eller manglende Enterprise nøkkel."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "Arbeidspakken du leter etter kan ikke bli funnet eller den har blitt slettet."
       expected:

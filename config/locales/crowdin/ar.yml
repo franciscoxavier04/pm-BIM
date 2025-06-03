@@ -421,14 +421,6 @@ ar:
         new_label: "New priority"
     status:
       button_edit: Edit project status
-  project_phase:
-    duration:
-      zero: "Duration: %{count} working days"
-      one: "Duration: %{count} working day"
-      two: "Duration: %{count} working days"
-      few: "Duration: %{count} working days"
-      many: "Duration: %{count} working days"
-      other: "Duration: %{count} working days"
   lists:
     create:
       success: "The modified list has been saved as a new list"
@@ -797,7 +789,9 @@ ar:
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      caption: "The minimum number of working days to keep in between the two work packages."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "المتعلقة ب"
@@ -1013,6 +1007,10 @@ ar:
       project/phase:
         date_range: "النطاق الزمني"
         definition: "Definition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "الاسم"
         color: "اللون"
@@ -1324,10 +1322,12 @@ ar:
               blank: "Please select a project."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1376,10 +1376,6 @@ ar:
             from_id:
               error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
-            lag:
-              greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
         repository:
           not_available: "بائع SCM غير متاح"
           not_whitelisted: "غير مسموح بالتكوين."
@@ -1457,6 +1453,8 @@ ar:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "لا يمكن أن يكون في مشروع آخر."
               not_a_valid_parent: "غير صالح."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "يمكن فقط تعيينه إلى %{soonest_start} أو في وقت لاحق حتى لا يتعارض مع علاقات حزمة العمل."
               cannot_be_null: "can not be set to null as finish date and duration are known."
@@ -2761,6 +2759,8 @@ ar:
   label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(فارغ)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
   label_descending: "ترتيب تنازلي"
   label_details: "تفاصيل"
@@ -3060,6 +3060,7 @@ ar:
   label_query_new: "استعلام جديد"
   label_query_plural: "استعلامات مخصصة"
   label_read: "قراءة..."
+  label_read_documentation: "Read documentation"
   label_register: "إنشاء حساب جديد"
   label_register_with_developer: "التسجيل كمطور"
   label_registered_on: "مسجلة في"
@@ -4500,6 +4501,8 @@ ar:
       code_500: "حدث خطأ داخلي."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "لا يمكن معالجة الطلب بسبب أن رمز المؤسسة غير صالح أو مفقود."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
       expected:

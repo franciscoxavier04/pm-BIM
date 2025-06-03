@@ -74,7 +74,7 @@ module ProjectLifeCycleSteps
       return unless first_definition
 
       phase = project.phases.find_by(definition_id: first_definition.id)
-      return unless phase.range_set?
+      return unless phase.date_range_set?
 
       if phase.active?
         preceding_active_phase(phase) || phase
@@ -84,7 +84,7 @@ module ProjectLifeCycleSteps
     end
 
     def preceding_active_phase(phase)
-      project.available_phases.reverse.find { it.range_set? && it.position < phase.position }
+      project.available_phases.reverse.find { it.date_range_set? && it.position < phase.position }
     end
 
     def default_contract_class

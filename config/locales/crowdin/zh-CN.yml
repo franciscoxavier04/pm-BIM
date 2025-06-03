@@ -418,9 +418,6 @@ zh-CN:
         new_label: "新优先级"
     status:
       button_edit: 编辑项目状态
-  project_phase:
-    duration:
-      other: "时长： %{count} 个工作日"
   lists:
     create:
       success: "已将修改后的列表保存为新列表"
@@ -748,7 +745,9 @@ zh-CN:
     label_add_description: "添加说明"
     lag:
       subject: "间隔"
-      caption: "两个工作包之间的最低工作日数。"
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "创建新工作包并将其添加为子项"
       label_relates_singular: "关联到"
@@ -964,6 +963,10 @@ zh-CN:
       project/phase:
         date_range: "日期范围"
         definition: "定义"
+        duration: "持续时间"
+        start_date: "开始日期"
+        start_date_caption: "跟随上一个阶段。"
+        finish_date: "完成日期"
       project/phase_definition:
         name: "名称"
         color: "颜色"
@@ -1275,10 +1278,12 @@ zh-CN:
               blank: "请选择一个项目。"
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "开始日期必须早于结束日期。"
+            start_date:
+              must_be_before_finish_date: "必须早于完成日期。"
               non_continuous_dates: "不能早于上一阶段的结束日期。"
-              incomplete: "不完整。"
+            finish_date:
+              must_be_after_start_date: "必须在开始日期之后。"
+          cannot_be_a_non_working_day: "不能是非工作日。"
         query:
           attributes:
             project:
@@ -1327,10 +1332,6 @@ zh-CN:
             from_id:
               error_not_found: "找不到或不可见。"
               error_readonly: "无法针对现有关系更改。"
-            lag:
-              greater_than_or_equal_to:
-                zero: "不能为负数。"
-              less_than_or_equal_to: "太高。"
         repository:
           not_available: "SCM提供商不可用"
           not_whitelisted: "配置所不允许的。"
@@ -1408,6 +1409,8 @@ zh-CN:
               cannot_be_self_assigned: "不能分配给自己。"
               cannot_be_in_another_project: "不能在另一个项目中。"
               not_a_valid_parent: "是无效的。"
+            schedule_manually:
+              cannot_be_automatically_scheduled: "不能设置为 false（自动调度），因为它没有父项或子项。"
             start_date:
               violates_relationships: "仅可以设置为 %{soonest_start} 或之后，以免违反工作包的关系。"
               cannot_be_null: "无法设置为 null，因为结束日期和持续时间已知。"
@@ -2557,6 +2560,8 @@ zh-CN:
   label_deleted_custom_item: "(删除项目)"
   label_deleted_custom_option: "（删除的选项）"
   label_empty_element: "（空）"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "（缺少值或缺少访问权限）"
   label_descending: "降序"
   label_details: "详细信息"
@@ -2856,6 +2861,7 @@ zh-CN:
   label_query_new: "新的查询"
   label_query_plural: "自定义查询"
   label_read: "阅读..."
+  label_read_documentation: "阅读帮助"
   label_register: "创建一个新帐户"
   label_register_with_developer: "注册成为开发人员"
   label_registered_on: "注册于"
@@ -4277,6 +4283,8 @@ zh-CN:
       code_500: "发生了内部错误。"
       code_500_outbound_request_failure: "对另一个资源的出站请求存在失败状态代码 %{status_code} 。"
       code_500_missing_enterprise_token: "由于企业令牌是无效的或缺失的，故无法处理该请求。"
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "此活动类型不支持表情符号反应。"
       not_found:
         work_package: "找不到您要查找的工作包或者它已被删除。"
       expected:

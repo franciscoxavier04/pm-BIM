@@ -62,68 +62,29 @@ RSpec.describe Project::Phase do
     end
   end
 
-  describe "#not_set?" do
-    it "returns true if start_date or finish_date is blank" do
-      expect(subject.not_set?).to be(true)
-    end
+  describe "validations" do
+    subject { create(:project_phase) }
 
-    it "returns false if both start_date and finish_date are present" do
-      subject.start_date = Time.zone.today
-      subject.finish_date = Date.tomorrow
-      expect(subject.not_set?).to be(false)
-    end
-  end
-
-  describe "#date_range=" do
-    it "splits a valid date range string into start_date and finish_date" do
-      subject.date_range = "2024-11-26 - 2024-11-27"
-      expect(subject.start_date).to eq(Date.parse("2024-11-26"))
-      expect(subject.finish_date).to eq(Date.parse("2024-11-27"))
-    end
-
-    it "sets finish_date to start_date if a single date is provided" do
-      subject.date_range = "2024-11-26"
-      expect(subject.start_date).to eq(Date.parse("2024-11-26"))
-      expect(subject.finish_date).to eq(Date.parse("2024-11-26"))
-    end
-
-    it "accepts a date range" do
-      subject.date_range = Date.parse("2024-12-26")..Date.parse("2024-12-27")
-      expect(subject.start_date).to eq(Date.parse("2024-12-26"))
-      expect(subject.finish_date).to eq(Date.parse("2024-12-27"))
-    end
-
-    it "errors on date range excluding end" do
-      expect do
-        subject.date_range = Date.parse("2024-12-26")...Date.parse("2024-12-27")
-      end.to raise_error(ArgumentError, "Only inclusive ranges expected")
-    end
-
-    it "accepts nil" do
-      subject.date_range = nil
-      expect(subject.start_date).to be_nil
-      expect(subject.finish_date).to be_nil
-    end
-  end
-
-  describe "#validate_date_range" do
     it "is valid when both dates are blank" do
-      stage = build(:project_phase, start_date: nil, finish_date: nil)
-      expect(stage).to be_valid
+      subject.assign_attributes(start_date: nil, finish_date: nil)
+      expect(subject).to be_valid
     end
 
-    it "adds error if start_date is after finish_date" do
-      subject.start_date = Date.tomorrow
-      subject.finish_date = Time.zone.today
+    it "adds error if start_date is after finish_date (start date is changed)" do
+      subject.start_date = subject.finish_date + 1.day
       expect(subject).not_to be_valid
-      expect(subject.errors.symbols_for(:date_range)).to include(:start_date_must_be_before_finish_date)
+      expect(subject.errors.symbols_for(:start_date)).to include(:must_be_before_finish_date)
+    end
+
+    it "adds error if finish_date is before start_date (finish date is changed)" do
+      subject.finish_date = subject.start_date - 1.day
+      expect(subject).not_to be_valid
+      expect(subject.errors.symbols_for(:finish_date)).to include(:must_be_after_start_date)
     end
 
     it "does not add errors if start_date is before or equal to finish_date" do
-      subject.start_date = Time.zone.today
-      subject.finish_date = Time.zone.today
-      expect(subject).not_to be_valid
-      expect(subject.errors[:date_range]).to be_empty
+      subject.start_date = subject.finish_date
+      expect(subject).to be_valid
     end
   end
 
@@ -132,34 +93,17 @@ RSpec.describe Project::Phase do
 
     let(:date) { Time.zone.today }
 
-    describe "#set_calculated_duration" do
-      it "sets duration to the number of working days in complete date range" do
-        subject.duration = 0
-        subject.date_range = date..date + 27
+    it "returns number of working days in complete date range" do
+      subject.start_date = date
+      subject.finish_date = date + 27
 
-        expect { subject.set_calculated_duration }.to change(subject, :duration).from(0).to(20)
-      end
-
-      it "sets duration to nil if date range is incomplete" do
-        subject.duration = 0
-        subject.start_date = nil
-
-        expect { subject.set_calculated_duration }.to change(subject, :duration).from(0).to(nil)
-      end
+      expect(subject.calculate_duration).to eq(20)
     end
 
-    describe "#calculate_duration" do
-      it "returns number of working days in complete date range" do
-        subject.date_range = date..date + 27
+    it "returns nil if date range is incomplete" do
+      subject.start_date = nil
 
-        expect(subject.calculate_duration).to eq(20)
-      end
-
-      it "returns nil if date range is incomplete" do
-        subject.start_date = nil
-
-        expect(subject.calculate_duration).to be_nil
-      end
+      expect(subject.calculate_duration).to be_nil
     end
   end
 end

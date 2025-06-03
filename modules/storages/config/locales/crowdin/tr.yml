@@ -15,6 +15,7 @@ tr:
           oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         storage_audience: Depolama Kitlesi
+        token_exchange_scope: Storage Scope
       storages/project_storage:
         project_folder: Proje klasörü
         project_folder_mode: Proje klasör modu
@@ -225,12 +226,12 @@ tr:
       openproject_oauth: OpenProject OAuth
       project_folders: Proje klasörleri
       redirect_uri: Yönlendirme URL'si
-      storage_audience: Depolama Kitlesi
       storage_audience_blank: Kitle yapılandırılmadı.
-      storage_audience_description: Obtaining tokens for audience "%{audience}".
-      storage_audience_idp: Using first access token received by identity provider, regardless of audience.
+      storage_audience_description: Exchanging tokens for audience "%{audience}".
+      storage_audience_idp: Using access token obtained by identity provider during login, regardless of audience.
       storage_oauth: Nextcloud OAuth
       storage_provider: Depolama sağlayıcısı
+      token_exchange: Token Exchange
     health:
       actions:
         download_report: İndir
@@ -350,8 +351,9 @@ tr:
         integration: Nextcloud Yönetimi / OpenProject
         oauth_configuration: Copy these values from %{application_link_text}.
         provider_configuration: Please make sure you have administration privileges in your Nextcloud instance and the %{application_link_text} is installed before doing the setup.
-        storage_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        storage_audience: The client ID that the Nextcloud instance uses to communicate with the identity provider.
         storage_audience_placeholder: örneğin nextcloud
+        token_exchange_scope: The scopes that should be requested during token exchange, each one separated by a space.
       no_specific_folder: Varsayılan olarak, her kullanıcı bir dosya yüklediğinde kendi ana klasöründen başlayacaktır.
       no_storage_set_up: Henüz ayarlanmış dosya deposu yok.
       not_logged_into_storage: To select a project folder, please first login
@@ -383,9 +385,9 @@ tr:
     label_creator: Oluşturan
     label_delete_storage: Depolamayı sil
     label_edit_storage_access_management: Depolama erişim yönetimini düzenleme
-    label_edit_storage_audience: Depolama Kitlesini Düzenle
     label_edit_storage_automatically_managed_folders: Edit storage automatically managed folders
     label_edit_storage_host: Edit storage host
+    label_edit_token_exchange: Edit token exchange configuration
     label_existing_manual_folder: Elle yönetilen izinlere sahip mevcut klasör
     label_file_storage: File storage
     label_host: Barındırıcı URL'si
@@ -479,13 +481,13 @@ tr:
       description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
       label: İş paketleri dosyaları sekmesinde ekleri göster
     storage_audience:
-      documentation_intro: Details on the following options and what needs to be configured in the identity provider can be found in our documentation.
+      documentation_intro: Please read our documentation for details on the following options and configuration of the identity provider.
       idp:
-        helptext: OpenProject will use the first access token received by the identity provider to authenticate requests to the storage. It will not try to obtain another token.
-        label: Use first access token obtained by identity provider
+        helptext: OpenProject will use the access token received by the identity provider during log in to authenticate requests to the storage. It will not try to obtain another token.
+        label: Use access token obtained during user log in
       manual:
-        helptext: Allows you to set the audience of the storage. OpenProject will try to obtain a token for the given audience from the identity provider.
-        label: Define storage audience manually
+        helptext: OpenProject will exchange a token with the identity provider for the given audience.
+        label: Manually specify audience for which to exchange access token
     storage_list_blank_slate:
       description: Onları burada görmek için bir depolama ekleyin.
       heading: Henüz hiç depolamanız yok.

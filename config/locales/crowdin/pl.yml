@@ -418,12 +418,6 @@ pl:
         new_label: "Nowy priorytet"
     status:
       button_edit: Edytuj status projektu
-  project_phase:
-    duration:
-      one: "Czas trwania: %{count} dzień roboczy"
-      few: "Czas trwania: %{count} dnia roboczego"
-      many: "Czas trwania: %{count} dnia roboczego"
-      other: "Czas trwania: %{count} dni roboczych"
   lists:
     create:
       success: "Zmodyfikowana lista została zapisana jako nowa lista"
@@ -776,7 +770,9 @@ pl:
     label_add_description: "Dodaj opis"
     lag:
       subject: "Opóźnienie"
-      caption: "Minimalna liczba dni roboczych wymagana między dwoma pakietami roboczymi."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Nowy pakiet roboczy utworzono i dodano jako element podrzędny"
       label_relates_singular: "ma relację z"
@@ -992,6 +988,10 @@ pl:
       project/phase:
         date_range: "Zakres dat"
         definition: "Definicja"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Nazwa"
         color: "Kolor"
@@ -1303,10 +1303,12 @@ pl:
               blank: "Wybierz projekt."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "data rozpoczęcia musi być wcześniejsza niż data zakończenia."
-              non_continuous_dates: "nie może być wcześniejsza niż data zakończenia poprzedniej fazy."
-              incomplete: "jest niekompletny."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1355,10 +1357,6 @@ pl:
             from_id:
               error_not_found: "nie znaleziono lub niewidoczny."
               error_readonly: "nie można zmienić dla istniejących relacji."
-            lag:
-              greater_than_or_equal_to:
-                zero: "— wartość nie może być ujemna."
-              less_than_or_equal_to: "— wartość jest zbyt wysoka."
         repository:
           not_available: "Producent SCM nie jest dostępny"
           not_whitelisted: "nie jest dozwolone w tej konfiguracji."
@@ -1436,6 +1434,8 @@ pl:
               cannot_be_self_assigned: "nie może być przypisany do siebie."
               cannot_be_in_another_project: "nie może być w innym projekcie."
               not_a_valid_parent: "jest nieprawidłowe."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "aby nie naruszyć relacji pakietu pracy, należy ustawić datę %{soonest_start} lub późniejszą."
               cannot_be_null: "nie można ustawić na wartość zero, ponieważ data zakończenia i czas trwania są znane."
@@ -2678,6 +2678,8 @@ pl:
   label_deleted_custom_item: "(usunięty element)"
   label_deleted_custom_option: "(opcja usunięta)"
   label_empty_element: "(pusty)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(brakująca wartość lub brak uprawnień do dostępu)"
   label_descending: "Malejąco"
   label_details: "Szczegóły"
@@ -2977,6 +2979,7 @@ pl:
   label_query_new: "Nowe zapytanie"
   label_query_plural: "Zapytania niestandardowe"
   label_read: "Czytaj..."
+  label_read_documentation: "Read documentation"
   label_register: "Utwórz nowe konto"
   label_register_with_developer: "Zarejestruj się jako programista"
   label_registered_on: "Zarejestrowany na"
@@ -4410,6 +4413,8 @@ pl:
       code_500: "Wystąpił błąd wewnętrzny."
       code_500_outbound_request_failure: "Żądanie wychodzące do innego zasobu nie powiodło się z kodem statusu %{status_code}."
       code_500_missing_enterprise_token: "Żądania nie można obsłużyć z powodu nieprawidłowego lub brakującego tokena wersji Enterprise."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "Pakiet roboczy, którego szukasz nie został znaleziony lub został usunięty."
       expected:
