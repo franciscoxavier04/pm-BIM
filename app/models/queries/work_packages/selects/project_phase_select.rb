@@ -56,22 +56,24 @@ class Queries::WorkPackages::Selects::ProjectPhaseSelect < Queries::WorkPackages
     )
   end
 
-  # Is called when the query is grouped by project phase definition.
-  # We ensure that only active project phases are considered.
+  # Is called when the query is grouped by project phase definition. We ensure that only active project phases are considered.
+  # Note that one project might have an active phase while another project has set the phase with the same definition to inactive.
+  # Additionally, the permissions to view project phases are considered on a project level, too.
   def group_by_join_statement
-    <<~SQL.squish
-      LEFT JOIN (
-        SELECT
-          wp.id AS wp_id,
-          MAX(CASE WHEN ph.active THEN ph.definition_id ELSE NULL END) AS active_phase_definition_id
-        FROM work_packages wp
-        LEFT JOIN project_phases ph
-        ON ph.project_id = wp.project_id AND ph.definition_id = wp.project_phase_definition_id
-        GROUP BY
-          wp.id
-      ) AS active_phases ON active_phases.wp_id = work_packages.id
-      LEFT JOIN project_phase_definitions pd ON pd.id = active_phases.active_phase_definition_id
-    SQL
+    Arel.sql(
+      <<~SQL.squish
+        LEFT JOIN (
+          SELECT
+            wp.id AS wp_id,
+            MAX(CASE WHEN ph.active THEN ph.definition_id ELSE NULL END) AS active_phase_definition_id
+          FROM work_packages wp
+          LEFT JOIN project_phases ph ON ph.project_id = wp.project_id AND ph.definition_id = wp.project_phase_definition_id
+          WHERE wp.project_id IN (#{project_with_view_phases_permissions.to_sql})
+          GROUP BY wp.id
+        ) AS active_phases ON active_phases.wp_id = work_packages.id
+        LEFT JOIN project_phase_definitions pd ON pd.id = active_phases.active_phase_definition_id
+      SQL
+    )
   end
 
   def sortable_join_statement(_query)
@@ -100,5 +102,11 @@ class Queries::WorkPackages::Selects::ProjectPhaseSelect < Queries::WorkPackages
     else
       []
     end
+  end
+
+  private
+
+  def project_with_view_phases_permissions
+    Project.allowed_to(User.current, :view_project_phases).select(:id)
   end
 end
