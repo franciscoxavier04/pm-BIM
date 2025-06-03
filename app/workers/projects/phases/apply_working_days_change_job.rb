@@ -39,8 +39,6 @@ class Projects::Phases::ApplyWorkingDaysChangeJob < ApplyWorkingDaysChangeJobBas
       next unless project
 
       phases = project.available_phases.to_a
-      next if phases.empty?
-
       from = phases.filter_map(&:start_date).first
       next unless from
 
