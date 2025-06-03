@@ -54,7 +54,10 @@ RSpec.describe Meetings::Exporter do
   end
   let(:exporter) { described_class.new(meeting, options) }
   let(:meeting_agenda_item) { create(:meeting_agenda_item, meeting:) }
-  let(:meeting) { create(:meeting, project:, title: "Awesome meeting!", location: "Moon Base") }
+  let(:meeting) do
+    create(:meeting, :author_participates,
+           project:, title: "Awesome meeting!", location: "Moon Base")
+  end
 
   subject(:pdf) do
     result = Timecop.freeze(export_time) do
@@ -102,7 +105,9 @@ RSpec.describe Meetings::Exporter do
   end
 
   context "with an empty recurring meeting" do
-    let!(:meeting) { create(:meeting, recurring_meeting:, project:, title: "Awesome meeting!", location: "Moon Base") }
+    let!(:meeting) do
+      create(:meeting, :author_participates, recurring_meeting:, project:, title: "Awesome meeting!", location: "Moon Base")
+    end
 
     it "renders the expected document" do
       expected_document = [
@@ -123,44 +128,103 @@ RSpec.describe Meetings::Exporter do
     let(:work_package) { create(:work_package, project:, status:, subject: "Important task", type: type_task) }
     let(:meeting_section) { create(:meeting_section, meeting:, title: "Section Work in Progress") }
     let(:meeting_agenda_item) do
-      create(:meeting_agenda_item, meeting_section:, duration_in_minutes: 15, title: "Agenda Item TOP 1", notes: "**foo**")
+      create(:meeting_agenda_item, meeting_section:, duration_in_minutes: 15, title: "Agenda Item TOP 1", presenter: user,
+                                   notes: "**foo**")
     end
     let(:wp_agenda_item) { create(:wp_meeting_agenda_item, meeting:, work_package:, duration_in_minutes: 10, notes: "*bar*") }
     let(:outcome) { create(:meeting_outcome, meeting_agenda_item:, notes: "An outcome") }
-    let(:options) do
-      {
-        participants: "1",
-        outcomes: "1",
-        backlog: "1"
-      }
+    let(:attachment) { create(:attachment, container: meeting) }
+    let(:meeting_backlog_item) do
+      create(:meeting_agenda_item, meeting_section: meeting.backlog,
+                                   duration_in_minutes: 1,
+                                   title: "Agenda Item in Backlog", presenter: user, notes: "# yeah")
     end
 
-    it "renders the expected document" do
+    before do
       meeting_agenda_item # create the agenda item
       wp_agenda_item # create the wp agenda item
       outcome # create the outcome
+      attachment # create the attachment
+      meeting_backlog_item # create the backlog item
+    end
 
-      expected_document = [
-        *expected_cover_page,
-        *single_meeting_head,
-        "Meeting agenda",
+    context "with bells and whistles options" do
+      let(:options) do
+        {
+          participants: "1",
+          outcomes: "1",
+          backlog: "1",
+          attachments: "1",
+          footer_text_right: "Custom Footer Text"
+        }
+      end
 
-        "Section Work in Progress", "  ", "25 mins",
+      it "renders the expected document" do
+        expected_document = [
+          *expected_cover_page,
+          *single_meeting_head,
+          "Participants (1)",
+          meeting.author.name,
 
-        "Agenda Item TOP 1", "  ", "15 mins",
-        "foo",
-        "Outcome",
-        "An outcome",
+          "Meeting agenda",
 
-        "Task", "##{work_package.id}", "Important task", " (Workin' on it)", "  ", "10 mins",
-        "bar",
+          "Section Work in Progress", "  ", "25 mins",
 
-        "1", # Page number
-        export_time_formatted,
-        project.name
-      ].join(" ")
+          "Agenda Item TOP 1", "  ", "15 mins", "  ", "Export User",
+          "foo",
+          "Outcome",
+          "An outcome",
 
-      expect(subject).to eq expected_document
+          "Task", "##{work_package.id}", "Important task", " (Workin' on it)", "  ", "10 mins",
+          "bar",
+
+          "Attachments",
+          attachment.filename,
+
+          "Agenda backlog",
+          "Agenda Item in Backlog", "  ", "1 min", "  ", "Export User",
+          "yeah",
+
+          "1", # Page number
+          export_time_formatted,
+          "Custom Footer Text"
+        ].join(" ")
+
+        expect(subject).to eq expected_document
+      end
+    end
+
+    context "with minimal options" do
+      let(:options) do
+        {
+          participants: "0",
+          outcomes: "0",
+          backlog: "0",
+          attachments: "0"
+        }
+      end
+
+      it "renders the expected document" do
+        expected_document = [
+          *expected_cover_page,
+          *single_meeting_head,
+          "Meeting agenda",
+
+          "Section Work in Progress", "  ", "25 mins",
+
+          "Agenda Item TOP 1", "  ", "15 mins", "  ", "Export User",
+          "foo",
+
+          "Task", "##{work_package.id}", "Important task", " (Workin' on it)", "  ", "10 mins",
+          "bar",
+
+          "1", # Page number
+          export_time_formatted,
+          project.name
+        ].join(" ")
+
+        expect(subject).to eq expected_document
+      end
     end
   end
 end
