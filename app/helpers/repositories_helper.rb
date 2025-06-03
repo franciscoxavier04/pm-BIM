@@ -291,7 +291,7 @@ module RepositoriesHelper
       link_path = File.join(link_path, dir)
 
       breadcrumb_items << if index == dirs.size - 1
-                            { text: dir }
+                            dir
                           else
                             {
                               href: url_for(action: "show", project_id: project, repo_path: to_path_param(link_path), rev: rev),
