@@ -86,7 +86,7 @@ ja:
         attachments: "IFCファイル"
       bim/bcf/issue:
         bcf_comment: "BCF コメント"
-        bim_snippet: "BIMスニペット（BIM）"
+        bim_snippet: "BIMスニペット"
         reference_links: "参照リンク"
         stage: "ステージ"
         viewpoint: "ビューポイント"
@@ -128,7 +128,7 @@ ja:
       pending: '保留中'
       processing: '処理中'
       completed: '完了しました'
-      error: 'エラー！'
+      error: 'エラー'
     processing_notice:
       processing_default: '以下のデフォルトIFCモデルは処理中のため利用できません。'
     flash_messages:

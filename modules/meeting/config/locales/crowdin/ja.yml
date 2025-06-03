@@ -28,7 +28,7 @@ ja:
   activerecord:
     attributes:
       meeting:
-        type: ""
+        type: "会議の種類"
         location: "場所"
         duration: "期間"
         notes: "注記"
@@ -166,9 +166,9 @@ ja:
   label_start_date: "開始日"
   meeting:
     participants:
-      template: "これらの参加者は、今後作成されたすべてのミーティングに自動的に招待されます"
+      template: "これらの参加者は、今後作成されたすべてのミーティングに自動的に招待されます。"
     attachments:
-      template: "これらの添付ファイルは、今後の一連の会議に含まれます"
+      template: "これらの添付ファイルは、今後の一連の会議に含まれます。"
       text: "添付ファイルはすべての会議参加者が利用可能です。また、これらのファイルを議題項目のノートにドラッグアンドドロップすることもできます。"
     copy:
       title: "会議をコピー：%{title}"
@@ -230,7 +230,7 @@ ja:
           Any meeting information not in the template will be lost. Do you want to continue?
         confirm_button: "Cancel occurrence"
     blankslate:
-      title: "表示する会議がありません。"
+      title: "表示する会議がありません"
       desc: "条件を満たす会議はありません。"
   meeting_section:
     untitled_title: "タイトルなしセクション"
