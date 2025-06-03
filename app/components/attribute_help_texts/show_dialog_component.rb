@@ -1,4 +1,6 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -24,33 +26,32 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-class AttributeHelpText::Project < AttributeHelpText
-  def self.available_attributes
-    skip = %w[_type links _dependencies id created_at updated_at]
+class AttributeHelpTexts::ShowDialogComponent < ApplicationComponent
+  include OpTurbo::Streamable
 
-    attributes = API::V3::Projects::Schemas::ProjectSchemaRepresenter
-      .representable_definitions
-      .reject { |key, _| skip.include?(key.to_s) }
-      .transform_values { |definition| definition[:name_source].call }
+  DIALOG_ID = "attribute-help-text-show-modal"
 
-    ProjectCustomField.find_each do |field|
-      attributes[field.attribute_name] = field.name
-    end
-
-    attributes["members"] = I18n.t(:label_member_plural)
-
-    attributes
+  def initialize(attribute_help_text:, current_user: User.current)
+    super
+    @attribute_help_text = attribute_help_text
+    @current_user = current_user
   end
 
-  validates :attribute_name, inclusion: { in: ->(*) { available_attributes.keys } }
+  private
 
-  def type_caption
-    ::Project.model_name.human
-  end
+  def dialog_id = DIALOG_ID
 
-  def self.visible_condition(_user)
-    ::AttributeHelpText.where(attribute_name: available_attributes.keys)
+  def title = @attribute_help_text.attribute_caption
+
+  def has_attachments? = @attribute_help_text.attachments.any?
+
+  def allowed_to_edit? = @current_user.allowed_globally?(:edit_attribute_help_texts)
+
+  def edit_button_href = url_helpers.edit_attribute_help_text_path(@attribute_help_text)
+
+  def resource_representer
+    ::API::V3::HelpTexts::HelpTextRepresenter.new(@attribute_help_text, current_user: @current_user, embed_links: false)
   end
 end

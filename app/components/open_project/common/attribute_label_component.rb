@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,31 +28,30 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class AttributeHelpText::Project < AttributeHelpText
-  def self.available_attributes
-    skip = %w[_type links _dependencies id created_at updated_at]
+module OpenProject
+  module Common
+    class AttributeLabelComponent < ApplicationComponent
+      def initialize(
+        attribute:,
+        model:,
+        tag: :span,
+        current_user: User.current,
+        **system_arguments
+      )
+        super()
 
-    attributes = API::V3::Projects::Schemas::ProjectSchemaRepresenter
-      .representable_definitions
-      .reject { |key, _| skip.include?(key.to_s) }
-      .transform_values { |definition| definition[:name_source].call }
+        @tag = tag
+        @system_arguments = system_arguments
+        @system_arguments[:tag] = @tag
+        @system_arguments[:classes] = class_names(
+          @system_arguments[:classes],
+          "op-attribute-label"
+        )
 
-    ProjectCustomField.find_each do |field|
-      attributes[field.attribute_name] = field.name
+        @help_text = ::AttributeHelpText.for(model)
+          &.cached(current_user)
+          &.[](attribute.to_s)
+      end
     end
-
-    attributes["members"] = I18n.t(:label_member_plural)
-
-    attributes
-  end
-
-  validates :attribute_name, inclusion: { in: ->(*) { available_attributes.keys } }
-
-  def type_caption
-    ::Project.model_name.human
-  end
-
-  def self.visible_condition(_user)
-    ::AttributeHelpText.where(attribute_name: available_attributes.keys)
   end
 end

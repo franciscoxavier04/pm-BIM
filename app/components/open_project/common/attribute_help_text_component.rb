@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,31 +28,45 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class AttributeHelpText::Project < AttributeHelpText
-  def self.available_attributes
-    skip = %w[_type links _dependencies id created_at updated_at]
+module OpenProject
+  module Common
+    class AttributeHelpTextComponent < ApplicationComponent
+      def initialize(help_text:, **system_arguments) # rubocop:disable Metrics/AbcSize
+        super()
 
-    attributes = API::V3::Projects::Schemas::ProjectSchemaRepresenter
-      .representable_definitions
-      .reject { |key, _| skip.include?(key.to_s) }
-      .transform_values { |definition| definition[:name_source].call }
+        @help_text = help_text
 
-    ProjectCustomField.find_each do |field|
-      attributes[field.attribute_name] = field.name
+        @system_arguments = system_arguments
+        @system_arguments[:id] ||= self.class.generate_id(help_text)
+        @system_arguments[:muted] = true
+        @system_arguments[:classes] = class_names(
+          @system_arguments[:classes],
+          "op-attribute-help-text"
+        )
+        @system_arguments[:data] ||= {}
+        @system_arguments[:data][:controller] = "async-dialog"
+
+        @tooltip = Primer::Alpha::Tooltip.new(
+          for_id: @system_arguments[:id],
+          type: :label,
+          text: I18n.t("js.help_texts.show_modal"),
+          direction: :e
+        )
+        @system_arguments[:aria] ||= {}
+        @system_arguments[:aria][:labelledby] = @tooltip.id
+      end
+
+      private
+
+      def render?
+        @help_text.present?
+      end
+
+      def before_render
+        return unless @help_text
+
+        @system_arguments[:href] = show_dialog_attribute_help_text_path(@help_text)
+      end
     end
-
-    attributes["members"] = I18n.t(:label_member_plural)
-
-    attributes
-  end
-
-  validates :attribute_name, inclusion: { in: ->(*) { available_attributes.keys } }
-
-  def type_caption
-    ::Project.model_name.human
-  end
-
-  def self.visible_condition(_user)
-    ::AttributeHelpText.where(attribute_name: available_attributes.keys)
   end
 end
