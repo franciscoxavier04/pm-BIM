@@ -30,9 +30,9 @@
 
 <%= error_messages_for "token" if @token %>
 
-<% if @current_token.present? %>
+<% if EnterpriseToken.all_tokens.any? %>
   <%= render Admin::EnterpriseTokens::TableComponent.new(rows: EnterpriseToken.all_tokens) %>
-  <%= render partial: "current" %>
+  <%= render partial: "current" if @current_token.present? %>
 <% else %>
   <%= render partial: "info" %>
 <% end %>

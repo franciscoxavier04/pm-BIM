@@ -102,7 +102,7 @@ class EnterpriseTokensController < ApplicationController
   private
 
   def find_token
-    EnterpriseToken.find(params[:id])
+    @token = EnterpriseToken.find(params[:id])
   end
 
   def check_user_limit

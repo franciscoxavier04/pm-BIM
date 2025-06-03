@@ -10,9 +10,12 @@
       }
     ) do |f|
       flex_layout(mb: 3) do |modal_body|
-        if @token.errors[:base].present?
+        errors_outside_fields = @token.errors.reject { |error| error.attribute == :encoded_token }
+        if errors_outside_fields.any?
           modal_body.with_row do
-            render(Primer::Alpha::Banner.new(mb: 3, icon: :stop, scheme: :danger)) { @token.errors[:base].join("\n") }
+            render(Primer::Alpha::Banner.new(mb: 3, icon: :stop, scheme: :danger)) do
+              errors_outside_fields.map(&:full_message).join("\n")
+            end
           end
         end
 
