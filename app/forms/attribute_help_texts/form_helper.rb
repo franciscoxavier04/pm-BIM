@@ -28,32 +28,15 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class ApplicationForm < Primer::Forms::Base
-  include AttributeHelpTexts::FormHelper
-
-  def self.settings_form
-    form do |f|
-      f = Settings::FormDecorator.new(f)
-      yield f
+module AttributeHelpTexts
+  module FormHelper
+    def wrap_attribute_label_with_help_text(label, attribute)
+      render OpenProject::Common::AttributeLabelComponent.new(
+        model:,
+        attribute:,
+        tag: nil,
+        current_user: User.current
+      ).with_content(label)
     end
-  end
-
-  def url_helpers
-    Rails.application.routes.url_helpers
-  end
-
-  # @return [ActionView::Base] the view helper instance
-  delegate :helpers, to: :@view_context
-
-  # @return [ActiveRecord::Base] the model instance given to the form builder
-  def model
-    @builder.object
-  end
-
-  # @param field_name [Symbol] the name of the attribute for which to retrieve
-  #  the human-readable name
-  # @return [String] the human-readable name of the specified attribute
-  def attribute_name(field_name)
-    model.class.human_attribute_name(field_name)
   end
 end
