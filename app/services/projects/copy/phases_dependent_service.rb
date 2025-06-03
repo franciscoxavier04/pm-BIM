@@ -40,7 +40,6 @@ module Projects
       end
 
       def copy_dependency(_params)
-        # TODO: check if upsert can be used here
         source.phases.each do |source_phase|
           target.phases.create! **source_phase.attributes.slice(
             "definition_id",
