@@ -2678,6 +2678,8 @@ lt:
   label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(panaikintas nustatymas)"
   label_empty_element: "(tuščia)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(trūksta reikšmės arba prieigos teisių)"
   label_descending: "Mažėjančiai"
   label_details: "Detali informacija"

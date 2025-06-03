@@ -2600,6 +2600,8 @@ pt-PT:
   label_deleted_custom_item: "(item eliminado)"
   label_deleted_custom_option: "(opção eliminada)"
   label_empty_element: "(vazio)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(faltam valores ou permissões para acessar)"
   label_descending: "Descendente"
   label_details: "Detalhes"

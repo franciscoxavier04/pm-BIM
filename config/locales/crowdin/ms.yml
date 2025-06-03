@@ -2562,6 +2562,8 @@ ms:
   label_deleted_custom_item: "(item dipadamkan)"
   label_deleted_custom_option: "(pilihan yang telah dipadam)"
   label_empty_element: "(kosong)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(nilai yang hilang atau kurang kebenaran untuk mengakses)"
   label_descending: "Menurun"
   label_details: "Butiran-butiran"
