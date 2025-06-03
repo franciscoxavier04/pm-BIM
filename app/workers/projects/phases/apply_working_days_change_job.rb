@@ -58,6 +58,6 @@ class Projects::Phases::ApplyWorkingDaysChangeJob < ApplyWorkingDaysChangeJobBas
 
     Project::Phase
       .active
-      .covering_dates_and_days_of_week(days_of_week:, dates:)
+      .covering_dates_or_days_of_week(days_of_week:, dates:)
   end
 end

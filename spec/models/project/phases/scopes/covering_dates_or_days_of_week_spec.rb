@@ -30,8 +30,8 @@
 
 require "rails_helper"
 
-RSpec.describe Project::Phases::Scopes::CoveringDatesAndDaysOfWeek do
-  # Constructs the keyword arguments for the `#covering_dates_and_days_of_week` method.
+RSpec.describe Project::Phases::Scopes::CoveringDatesOrDaysOfWeek do
+  # Constructs the keyword arguments for the `#covering_dates_or_days_of_week` method.
   # It's a `{ days_of_week:, dates: }` hash for given days of week built differently
   # depending on the `days_args_strategy` value.
   #
@@ -91,7 +91,7 @@ RSpec.describe Project::Phases::Scopes::CoveringDatesAndDaysOfWeek do
   for_each_context "with the days of week",
                    "with specific dates",
                    "with days of week and specific dates mixed" do
-    describe "#covering_dates_and_days_of_week" do
+    describe "#covering_dates_or_days_of_week" do
       it "returns phases having start date or due date being in the given days of week" do
         table =
           create_phases_from_table(<<~TABLE)
@@ -107,7 +107,7 @@ RSpec.describe Project::Phases::Scopes::CoveringDatesAndDaysOfWeek do
             not_covered4 |         |
           TABLE
 
-        expect(Project::Phase.covering_dates_and_days_of_week(**day_args(:tuesday)))
+        expect(Project::Phase.covering_dates_or_days_of_week(**day_args(:tuesday)))
           .to contain_exactly(
             table["covered1"],
             table["covered2"],
@@ -127,7 +127,7 @@ RSpec.describe Project::Phases::Scopes::CoveringDatesAndDaysOfWeek do
             not_covered2 | X       |
           TABLE
 
-        expect(Project::Phase.covering_dates_and_days_of_week(**day_args(:tuesday, :wednesday)))
+        expect(Project::Phase.covering_dates_or_days_of_week(**day_args(:tuesday, :wednesday)))
           .to contain_exactly(
             table["covered1"],
             table["covered2"]
@@ -144,11 +144,11 @@ RSpec.describe Project::Phases::Scopes::CoveringDatesAndDaysOfWeek do
 
         single_value = day_args(:tuesday).transform_values { |v| Array(v).first }
 
-        expect(Project::Phase.covering_dates_and_days_of_week(**single_value))
+        expect(Project::Phase.covering_dates_or_days_of_week(**single_value))
           .to eq([table["covered"]])
-        expect(Project::Phase.covering_dates_and_days_of_week(**day_args(:tuesday)))
+        expect(Project::Phase.covering_dates_or_days_of_week(**day_args(:tuesday)))
           .to eq([table["covered"]])
-        expect(Project::Phase.covering_dates_and_days_of_week(**day_args(:tuesday, :wednesday)))
+        expect(Project::Phase.covering_dates_or_days_of_week(**day_args(:tuesday, :wednesday)))
           .to eq([table["covered"]])
       end
     end

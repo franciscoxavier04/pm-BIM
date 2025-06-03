@@ -26,7 +26,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module WorkPackages::Scopes::CoveringDatesAndDaysOfWeek
+module WorkPackages::Scopes::CoveringDatesOrDaysOfWeek
   extend ActiveSupport::Concern
   using CoreExtensions::SquishSql
 
@@ -38,7 +38,7 @@ module WorkPackages::Scopes::CoveringDatesAndDaysOfWeek
     # @param dates Date[] An array of the Date objects.
     # @param days_of_week number[] An array of the ISO days of the week to
     #   consider. 1 is Monday, 7 is Sunday.
-    def covering_dates_and_days_of_week(days_of_week: [], dates: [])
+    def covering_dates_or_days_of_week(days_of_week: [], dates: [])
       work_packages_periods_cte = work_packages_periods_cte_for_covering_work_packages
       where_covers_periods(work_packages_periods_cte, days_of_week, dates)
     end

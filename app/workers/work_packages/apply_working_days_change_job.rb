@@ -59,7 +59,7 @@ class WorkPackages::ApplyWorkingDaysChangeJob < ApplyWorkingDaysChangeJobBase
     days_of_week = changed_days.keys
     dates = changed_non_working_dates.keys
     WorkPackage
-      .covering_dates_and_days_of_week(days_of_week:, dates:)
+      .covering_dates_or_days_of_week(days_of_week:, dates:)
       .order(WorkPackage.arel_table[:start_date].asc.nulls_first,
              WorkPackage.arel_table[:due_date].asc)
   end

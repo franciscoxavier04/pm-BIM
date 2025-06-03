@@ -52,7 +52,7 @@ class Project::Phase < ApplicationRecord
 
   scope :active, -> { where(active: true) }
   scopes :order_by_position,
-         :covering_dates_and_days_of_week
+         :covering_dates_or_days_of_week
 
   class << self
     def visible(user = User.current)

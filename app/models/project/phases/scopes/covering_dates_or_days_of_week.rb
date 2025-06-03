@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Project::Phases::Scopes::CoveringDatesAndDaysOfWeek
+module Project::Phases::Scopes::CoveringDatesOrDaysOfWeek
   extend ActiveSupport::Concern
   using CoreExtensions::SquishSql
 
@@ -40,7 +40,7 @@ module Project::Phases::Scopes::CoveringDatesAndDaysOfWeek
     # @param dates Date[] An array of the Date objects.
     # @param days_of_week number[] An array of the ISO days of the week to
     #   consider. 1 is Monday, 7 is Sunday.
-    def covering_dates_and_days_of_week(days_of_week: [], dates: [])
+    def covering_dates_or_days_of_week(days_of_week: [], dates: [])
       days_of_week = Array(days_of_week)
       dates = Array(dates)
       return none if days_of_week.empty? && dates.empty?
