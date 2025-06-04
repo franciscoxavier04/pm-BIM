@@ -708,7 +708,7 @@ RSpec.describe WorkPackage do
   describe "#duration" do
     context "when not setting a value" do
       it "is nil" do
-        expect(work_package.duration).to be_nil
+        expect(work_package).to have_attributes(duration: nil)
       end
     end
 
@@ -718,7 +718,25 @@ RSpec.describe WorkPackage do
       end
 
       it "is the value" do
-        expect(work_package.duration).to eq(5)
+        expect(work_package).to have_attributes(duration: 5)
+      end
+    end
+  end
+
+  describe "#duration_in_hours" do
+    context "when not setting duration" do
+      it "is nil" do
+        expect(work_package).to have_attributes(duration_in_hours: nil)
+      end
+    end
+
+    context "when setting duration value" do
+      before do
+        work_package.duration = 5
+      end
+
+      it "is the value" do
+        expect(work_package).to have_attributes(duration_in_hours: 120)
       end
     end
   end

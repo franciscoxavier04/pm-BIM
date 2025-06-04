@@ -28,36 +28,29 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-FactoryBot.define do
-  factory :project_phase, class: "Project::Phase" do
-    project
-    definition factory: :project_phase_definition
-    active { true }
+class Projects::Phases::ApplyWorkingDaysChangeJob < ApplyWorkingDaysChangeJobBase
+  private
 
-    start_date { Date.current - 2.days }
-    finish_date { Date.current + 2.days }
-    # use :calculate_duration trait if duration needs to take weekends and non working days into account
-    duration { date_range_set? ? finish_date - start_date + 1 : nil }
+  def apply_working_days_change
+    Project.where(id: applicable_phases.select(:project_id)).find_each do |project|
+      phases = project.available_phases.to_a
+      from = phases.filter_map(&:start_date).first
+      next unless from
 
-    trait :skip_validate do
-      to_create { |instance| instance.save(validate: false) }
+      ProjectLifeCycleSteps::RescheduleService.new(user: User.current, project:).call(phases:, from:)
+
+      project.journal_cause = journal_cause
+
+      project.touch_and_save_journals
     end
+  end
 
-    trait :with_gated_definition do
-      definition { association(:project_phase_definition, :with_start_gate, :with_finish_gate) }
-    end
+  def applicable_phases
+    days_of_week = changed_days.keys
+    dates = changed_non_working_dates.keys
 
-    trait :active do
-      active { true }
-    end
-
-    trait :inactive do
-      active { false }
-    end
-
-    # calculate duration taking weekdays and non working days into account
-    trait :calculate_duration do
-      duration { calculate_duration }
-    end
+    Project::Phase
+      .active
+      .covering_dates_or_days_of_week(days_of_week:, dates:)
   end
 end

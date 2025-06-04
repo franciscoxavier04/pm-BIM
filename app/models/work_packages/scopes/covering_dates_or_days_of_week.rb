@@ -26,7 +26,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module WorkPackages::Scopes::CoveringDatesAndDaysOfWeek
+module WorkPackages::Scopes::CoveringDatesOrDaysOfWeek
   extend ActiveSupport::Concern
   using CoreExtensions::SquishSql
 
@@ -38,7 +38,7 @@ module WorkPackages::Scopes::CoveringDatesAndDaysOfWeek
     # @param dates Date[] An array of the Date objects.
     # @param days_of_week number[] An array of the ISO days of the week to
     #   consider. 1 is Monday, 7 is Sunday.
-    def covering_dates_and_days_of_week(days_of_week: [], dates: [])
+    def covering_dates_or_days_of_week(days_of_week: [], dates: [])
       work_packages_periods_cte = work_packages_periods_cte_for_covering_work_packages
       where_covers_periods(work_packages_periods_cte, days_of_week, dates)
     end
@@ -59,30 +59,28 @@ module WorkPackages::Scopes::CoveringDatesAndDaysOfWeek
         -- select work packages dates
         WITH
           -- cte returning a table with work package id, period start_date and end_date
-          #{work_packages_periods_cte},
-
-          -- All days between the start date of a work package and its due date
-          covered_dates AS (
-            SELECT
-            id,
-            generate_series(work_packages_periods.start_date,
-                            work_packages_periods.end_date,
-                            '1 day')          AS date
-            FROM work_packages_periods
-          ),
-
-          -- All days between the start date of a work package and its due date including the day of the week for each date
-          covered_dates_and_wday AS (
-            SELECT
-              id,
-              date,
-              EXTRACT(isodow FROM date) dow
-            FROM covered_dates
-          )
+          #{work_packages_periods_cte}
 
         -- select id of work packages covering the given days
-        SELECT id FROM covered_dates_and_wday
-        WHERE dow IN (:days_of_week) OR date IN (:dates)
+        SELECT id
+        FROM work_packages_periods
+        WHERE
+          -- Check if the range covers any of the provided days of week. It is
+          -- done by comparing number of days from start_date to first target
+          -- day of week with number of days in range. If number is less or
+          -- eqal, then the range covers the target day of week
+          EXISTS (
+            SELECT 1
+            FROM UNNEST(ARRAY[:days_of_week]::INT[]) AS target_dow
+            WHERE (target_dow + 7 - EXTRACT(ISODOW FROM start_date)::INT) % 7 <= (end_date - start_date)
+          )
+          OR
+          -- Check if the range covers any of the provided dates
+          EXISTS (
+            SELECT 1
+            FROM unnest(Array[:dates]::DATE[]) AS target_date
+            WHERE target_date BETWEEN start_date AND end_date
+          )
       SQL
 
       covering_work_packages_query_sql = sanitize_sql([covering_work_packages_query_sql, { days_of_week:, dates: }])
@@ -146,8 +144,8 @@ module WorkPackages::Scopes::CoveringDatesAndDaysOfWeek
         work_packages_periods AS (
           SELECT DISTINCT ON (succ_id)
             pred_id as id,
-            pred_date as start_date,
-            succ_date as end_date
+            pred_date::DATE as start_date,
+            succ_date::DATE as end_date
           FROM automatic_follows_relations
           ORDER BY succ_id, pred_date ASC
         )

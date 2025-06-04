@@ -30,10 +30,10 @@
 
 require "rails_helper"
 
-RSpec.describe WorkPackages::Scopes::CoveringDatesAndDaysOfWeek do
+RSpec.describe WorkPackages::Scopes::CoveringDatesOrDaysOfWeek do
   create_shared_association_defaults_for_work_package_factory
 
-  # Constructs the keyword arguments for the `#covering_dates_and_days_of_week` method.
+  # Constructs the keyword arguments for the `#covering_dates_or_days_of_week` method.
   # It's a `{ days_of_week:, dates: }` hash for given days of week built differently
   # depending on the `days_args_strategy` value.
   #
@@ -82,7 +82,7 @@ RSpec.describe WorkPackages::Scopes::CoveringDatesAndDaysOfWeek do
   for_each_context "with the days of week",
                    "with specific dates",
                    "with days of week and specific dates mixed" do
-    describe "#covering_dates_and_days_of_week" do
+    describe "#covering_dates_or_days_of_week" do
       it "returns work packages having start date or due date being in the given days of week" do
         table =
           create_table(<<~TABLE)
@@ -98,7 +98,7 @@ RSpec.describe WorkPackages::Scopes::CoveringDatesAndDaysOfWeek do
             not_covered4 |         |
           TABLE
 
-        expect(WorkPackage.covering_dates_and_days_of_week(**day_args(:tuesday)))
+        expect(WorkPackage.covering_dates_or_days_of_week(**day_args(:tuesday)))
           .to contain_exactly(
             table.work_package("covered1"),
             table.work_package("covered2"),
@@ -118,7 +118,7 @@ RSpec.describe WorkPackages::Scopes::CoveringDatesAndDaysOfWeek do
             not_covered2 | X       |
           TABLE
 
-        expect(WorkPackage.covering_dates_and_days_of_week(**day_args(:tuesday, :wednesday)))
+        expect(WorkPackage.covering_dates_or_days_of_week(**day_args(:tuesday, :wednesday)))
           .to contain_exactly(
             table.work_package("covered1"),
             table.work_package("covered2")
@@ -132,7 +132,7 @@ RSpec.describe WorkPackages::Scopes::CoveringDatesAndDaysOfWeek do
             not_covered  | XXXXXXX | all days
           TABLE
 
-          expect(WorkPackage.covering_dates_and_days_of_week(**day_args(:wednesday)))
+          expect(WorkPackage.covering_dates_or_days_of_week(**day_args(:wednesday)))
             .to eq([])
         end
       end
@@ -146,7 +146,7 @@ RSpec.describe WorkPackages::Scopes::CoveringDatesAndDaysOfWeek do
           follower2    |   X     | not_covered2
         TABLE
 
-        expect(WorkPackage.covering_dates_and_days_of_week(**day_args(:tuesday, :thursday)))
+        expect(WorkPackage.covering_dates_or_days_of_week(**day_args(:tuesday, :thursday)))
           .to eq([])
       end
 
@@ -159,7 +159,7 @@ RSpec.describe WorkPackages::Scopes::CoveringDatesAndDaysOfWeek do
           follower2    |   X     | not_covered2 with lag 1
         TABLE
 
-        expect(WorkPackage.covering_dates_and_days_of_week(**day_args(:tuesday, :thursday)))
+        expect(WorkPackage.covering_dates_or_days_of_week(**day_args(:tuesday, :thursday)))
           .to eq([])
       end
 
@@ -173,11 +173,11 @@ RSpec.describe WorkPackages::Scopes::CoveringDatesAndDaysOfWeek do
 
         single_value = day_args(:tuesday).transform_values { |v| Array(v).first }
 
-        expect(WorkPackage.covering_dates_and_days_of_week(**single_value))
+        expect(WorkPackage.covering_dates_or_days_of_week(**single_value))
           .to eq([table.work_package("covered")])
-        expect(WorkPackage.covering_dates_and_days_of_week(**day_args(:tuesday)))
+        expect(WorkPackage.covering_dates_or_days_of_week(**day_args(:tuesday)))
           .to eq([table.work_package("covered")])
-        expect(WorkPackage.covering_dates_and_days_of_week(**day_args(:tuesday, :wednesday)))
+        expect(WorkPackage.covering_dates_or_days_of_week(**day_args(:tuesday, :wednesday)))
           .to eq([table.work_package("covered")])
       end
     end

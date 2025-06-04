@@ -28,36 +28,38 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-FactoryBot.define do
-  factory :project_phase, class: "Project::Phase" do
-    project
-    definition factory: :project_phase_definition
-    active { true }
+require "spec_helper"
+require "contracts/shared/model_contract_shared_context"
 
-    start_date { Date.current - 2.days }
-    finish_date { Date.current + 2.days }
-    # use :calculate_duration trait if duration needs to take weekends and non working days into account
-    duration { date_range_set? ? finish_date - start_date + 1 : nil }
+RSpec.describe ProjectLifeCycleSteps::RescheduleContract do
+  include_context "ModelContract shared context"
 
-    trait :skip_validate do
-      to_create { |instance| instance.save(validate: false) }
+  let(:user) { build_stubbed(:user) }
+
+  subject(:contract) { described_class.new(project, user) }
+
+  context "with authorized user" do
+    let(:project) { build_stubbed(:project) }
+
+    before do
+      mock_permissions_for(user) do |mock|
+        mock.allow_in_project(:edit_project_phases, project:)
+      end
     end
 
-    trait :with_gated_definition do
-      definition { association(:project_phase_definition, :with_start_gate, :with_finish_gate) }
-    end
+    it_behaves_like "contract is valid"
+    it_behaves_like "contract reuses the model errors"
 
-    trait :active do
-      active { true }
-    end
+    context "when project is invalid" do
+      let(:project) { build_stubbed(:project, name: "") }
 
-    trait :inactive do
-      active { false }
+      it_behaves_like "contract is valid"
     end
+  end
 
-    # calculate duration taking weekdays and non working days into account
-    trait :calculate_duration do
-      duration { calculate_duration }
-    end
+  context "with unauthorized user" do
+    let(:project) { build_stubbed(:project) }
+
+    it_behaves_like "contract user is unauthorized"
   end
 end
