@@ -28,41 +28,33 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
-
-RSpec.describe WorkPackage::PDFExport::Common::Badge do
-  let(:badge) { Class.new { extend WorkPackage::PDFExport::Common::Badge } }
-
-  describe "#readable_color" do
-    describe "returns white for dark colors" do
-      it "black" do
-        expect(badge.readable_color("000000")).to eq("FFFFFF")
+module WorkPackage::Exports
+  module Macros
+    class WorkPackagesLinkHandler < OpenProject::TextFormatting::Matchers::LinkHandlers::WorkPackages
+      def applicable?
+        %w(# ## ###).include?(matcher.sep) && matcher.prefix.blank?
       end
 
-      it "dark blue" do
-        expect(badge.readable_color("1864AB")).to eq("FFFFFF")
-      end
-
-      it "purple" do
-        expect(badge.readable_color("894CEB")).to eq("FFFFFF")
+      def render_link(wp_id, matcher)
+        link = "#{matcher.sep}#{wp_id}"
+        "<mention class=\"mention\" data-id=\"#{wp_id}\" data-type=\"work_package\" data-text=\"#{link}\">#{
+          link
+        }</mention>"
       end
     end
 
-    describe "returns black for light colors" do
-      it "blue-6" do
-        expect(badge.readable_color("228BE6")).to eq("000000")
+    class Links < OpenProject::TextFormatting::Matchers::ResourceLinksMatcher
+      def self.link_handlers
+        [WorkPackagesLinkHandler]
       end
 
-      it "orange-2" do
-        expect(badge.readable_color("FFD8A8")).to eq("000000")
+      def self.html_replacement?
+        true
       end
 
-      it "cyan-0" do
-        expect(badge.readable_color("E3FAFC")).to eq("000000")
-      end
-
-      it "white" do
-        expect(badge.readable_color("FFFFFF")).to eq("000000")
+      # Faster inclusion check before the full regex is being applied
+      def self.applicable?(content)
+        /#\d/.match(content)
       end
     end
   end

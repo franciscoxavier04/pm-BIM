@@ -34,6 +34,7 @@ module WorkPackage::PDFExport::Export::Markdown
   class MD2PDFExport
     include MarkdownToPDF::Core
     include MarkdownToPDF::Parser
+    include WorkPackage::PDFExport::Common::Common
 
     def initialize(styling_yml, pdf, hyphenation_language)
       @styles = MarkdownToPDF::Styles.new(styling_yml)
@@ -68,9 +69,8 @@ module WorkPackage::PDFExport::Export::Markdown
       @hyphens.hyphenate(text)
     end
 
-    def handle_mention_html_tag(tag, node, opts)
+    def handle_user_mention_html_tag(tag, node, opts)
       if tag.text.blank?
-        # <mention class="mention" data-id="46012" data-type="work_package" data-text="#46012"></mention>
         # <mention class="mention" data-id="3" data-type="user" data-text="@Some User">
         text = tag.attr("data-text")
         if text.present? && !node.next.respond_to?(:string_content) && node.next.string_content != text
@@ -78,7 +78,50 @@ module WorkPackage::PDFExport::Export::Markdown
         end
       end
       # <mention class="mention" data-id="3" data-type="user" data-text="@Some User">@Some User</mention>
+      # the node text is used.
       []
+    end
+
+    def handle_wp_mention_html_tag(tag, node, opts)
+      # <mention class="mention" data-id="185" data-type="work_package" data-text="#185">#185</mention>
+      # <mention class="mention" data-id="185" data-type="work_package" data-text="##185">##185</mention>
+      # <mention class="mention" data-id="185" data-type="work_package" data-text="###185">###185</mention>
+      id = tag.attr("data-id")
+      return [] if id.blank?
+
+      next_node = node&.next # there is no markdown node in a html table
+      if next_node && next_node.type == :text && next_node.respond_to?(:string_content)
+        # clear the text content, so it does not get rendered
+        next_node.string_content = ""
+      end
+      wp_mention_macro(tag.attr("data-text") || "", id, opts)
+    end
+
+    def wp_mention_macro(content, id, opts)
+      count = content.count("#")
+      if count > 1
+        work_package = WorkPackage.find_by(id: id)
+        unless work_package.nil? || !work_package.visible?
+          # ##1234: {Type} #{ID}: {Subject}
+          content = "#{work_package.type} ##{work_package.id}: #{work_package.subject}"
+          if count == 3
+            # ###1234: {Status} {Type} #{ID}: {Subject}
+            content = "#{work_package.status.name} #{content}"
+          end
+        end
+      end
+      [text_hash(content, opts.merge({ link: url_helpers.work_package_url(id) }))]
+    end
+
+    def handle_mention_html_tag(tag, node, opts)
+      type = tag.attr("data-type")
+      if type == "work_package"
+        handle_wp_mention_html_tag(tag, node, opts)
+      elsif type == "user"
+        handle_user_mention_html_tag(tag, node, opts)
+      else
+        []
+      end
     end
 
     def handle_unknown_inline_html_tag(tag, node, opts)
@@ -93,9 +136,13 @@ module WorkPackage::PDFExport::Export::Markdown
     end
 
     def handle_unknown_html_tag(_tag, _node, opts)
-      # unknown/unsupported html tags eg. <foo>hi</foo> are ignored
-      # but scanned for supported or text children [true, ...]
-      [true, opts]
+      if tag.name == "mention"
+        handle_mention_html_tag(tag, node, opts)
+      else
+        # unknown/unsupported html tags eg. <foo>hi</foo> are ignored
+        # but scanned for supported or text children [true, ...]
+        [true, opts]
+      end
     end
 
     def warn(text, element, node)
@@ -103,10 +150,14 @@ module WorkPackage::PDFExport::Export::Markdown
     end
   end
 
-  def write_markdown!(work_package, markdown, styling_yml)
-    md2pdf = MD2PDFExport.new(styling_yml, pdf, hyphenation_language)
-    md2pdf.draw_markdown(markdown, pdf, ->(src) {
-      with_images? ? attachment_image_filepath(work_package, src) : nil
-    })
+  def markdown_writer(styling_yml)
+    @markdown_writer ||= MD2PDFExport.new(styling_yml, pdf, hyphenation_language)
+  end
+
+  def write_markdown!(markdown, styling_yml)
+    markdown_writer(styling_yml)
+      .draw_markdown(markdown, pdf, ->(src) {
+        with_images? ? attachment_image_filepath(src) : nil
+      })
   end
 end

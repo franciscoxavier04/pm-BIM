@@ -64,7 +64,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
            member_with_permissions: { project => %w[view_work_packages export_work_packages] })
   end
   shared_let(:export_time) { DateTime.new(2023, 6, 30, 23, 59) }
-  shared_let(:export_time_formatted) { format_time(export_time, include_date: true) }
+  shared_let(:export_date_formatted) { format_date(export_time) }
   shared_let(:work_package_parent) do
     create(:work_package,
            project:,
@@ -164,7 +164,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
   end
 
   def cover_page_content
-    [project.name, query.name, user.name, export_time_formatted]
+    [project.name, query.name, user.name, export_date_formatted]
   end
 
   def show
@@ -191,7 +191,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
           *column_titles,
           *work_package_columns(work_package_parent),
           *work_package_columns(work_package_child),
-          "1/1", export_time_formatted, query.name
+          "1/1", export_date_formatted, query.name
         ].join(" ")
       end
     end
@@ -208,7 +208,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
           work_package_child.type.name,
           *column_titles,
           *work_package_columns(work_package_child),
-          "1/1", export_time_formatted, query.name
+          "1/1", export_date_formatted, query.name
         ].join(" ")
       end
     end
@@ -227,7 +227,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
           *column_titles,
           *work_package_columns(work_package_child),
           I18n.t("js.label_sum"), work_package_child.story_points.to_s, "50%",
-          "1/1", export_time_formatted, query.name
+          "1/1", export_date_formatted, query.name
         ].join(" ")
       end
     end
@@ -246,7 +246,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
           *column_titles,
           *work_package_columns(work_package_parent),
           I18n.t("js.label_sum"), work_package_parent.story_points.to_s, "25%",
-          "1/1", export_time_formatted, query.name
+          "1/1", export_date_formatted, query.name
         ].join(" ")
       end
     end
@@ -265,10 +265,10 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
           query.name,
           "1.", "2", work_package_parent.subject,
           "2.", "2", work_package_child.subject,
-          "1/2", export_time_formatted, query.name,
+          "1/2", export_date_formatted, query.name,
           *work_package_details(work_package_parent, "1", long_text_fields),
           *work_package_details(work_package_child, "2", long_text_fields),
-          "2/2", export_time_formatted, query.name
+          "2/2", export_date_formatted, query.name
         ].join(" ")
       end
     end
@@ -283,10 +283,10 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
           query.name,
           "1.", "2", work_package_parent.subject,
           "2.", "2", work_package_child.subject,
-          "1/2", export_time_formatted, query.name,
+          "1/2", export_date_formatted, query.name,
           *work_package_details(work_package_parent, "1", long_text_fields),
           *work_package_details(work_package_child, "2", long_text_fields),
-          "2/2", export_time_formatted, query.name
+          "2/2", export_date_formatted, query.name
         ].join(" ")
       end
     end
@@ -301,10 +301,10 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
           query.name,
           "1.", "2", work_package_parent.subject,
           "2.", "2", work_package_child.subject,
-          "1/2", export_time_formatted, query.name,
+          "1/2", export_date_formatted, query.name,
           *work_package_details(work_package_parent, "1", long_text_fields),
           *work_package_details(work_package_child, "2", long_text_fields),
-          "2/2", export_time_formatted, query.name
+          "2/2", export_date_formatted, query.name
         ].join(" ")
       end
     end
@@ -318,10 +318,10 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
           query.name,
           "1.", "2", work_package_parent.subject,
           "1.1.", "2", work_package_child.subject,
-          "1/2", export_time_formatted, query.name,
+          "1/2", export_date_formatted, query.name,
           *work_package_details(work_package_parent, "1", long_text_fields),
           *work_package_details(work_package_child, "1.1", long_text_fields),
-          "2/2", export_time_formatted, query.name
+          "2/2", export_date_formatted, query.name
         ].join(" ")
       end
     end
@@ -335,14 +335,14 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
           query.name,
           "1.", "2", work_package_parent.subject,
           "2.", "2", work_package_child.subject,
-          "1/2", export_time_formatted, query.name,
+          "1/2", export_date_formatted, query.name,
           I18n.t("js.work_packages.tabs.overview"),
           column_title(:story_points),
           column_title(:done_ratio),
           I18n.t("js.label_sum"), work_packages_sum.to_s, "38%",
           *work_package_details(work_package_parent, "1", long_text_fields),
           *work_package_details(work_package_child, "2", long_text_fields),
-          "2/2", export_time_formatted, query.name
+          "2/2", export_date_formatted, query.name
         ].join(" ")
       end
     end
@@ -356,7 +356,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
           query.name,
           "1.", "2", work_package_parent.subject,
           "2.", "2", work_package_child.subject,
-          "1/2", export_time_formatted, query.name,
+          "1/2", export_date_formatted, query.name,
           I18n.t("js.work_packages.tabs.overview"),
           column_title(:type), column_title(:story_points), column_title(:done_ratio),
           work_package_parent.type.name, work_package_parent.story_points.to_s, "25%",
@@ -364,7 +364,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
           I18n.t("js.label_sum"), work_packages_sum.to_s, "38%",
           *work_package_details(work_package_parent, "1", long_text_fields),
           *work_package_details(work_package_child, "2", long_text_fields),
-          "2/2", export_time_formatted, query.name
+          "2/2", export_date_formatted, query.name
         ].join(" ")
       end
     end
@@ -378,7 +378,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
           query.name,
           "1.", "2", work_package_child.subject,
           "2.", "2", work_package_parent.subject,
-          "1/2", export_time_formatted, query.name,
+          "1/2", export_date_formatted, query.name,
           I18n.t("js.work_packages.tabs.overview"),
           list_custom_field.name, column_title(:story_points), column_title(:done_ratio),
 
@@ -388,7 +388,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageListToPdf do
 
           *work_package_details(work_package_child, "1", long_text_fields),
           *work_package_details(work_package_parent, "2", long_text_fields),
-          "2/2", export_time_formatted, query.name
+          "2/2", export_date_formatted, query.name
         ].join(" ")
       end
     end

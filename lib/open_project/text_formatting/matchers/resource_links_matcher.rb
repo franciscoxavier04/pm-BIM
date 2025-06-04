@@ -78,7 +78,7 @@ module OpenProject::TextFormatting
 
       def self.regexp
         %r{
-          ([[[:space:]](,\-\[>]|^) # Leading string
+          ([[[:space:]](,~\-\[>]|^) # Leading string
           (!)? # Escaped marker
           (([a-z0-9\-_]+):)? # Project identifier
           (#{allowed_prefixes.join('|')})? # prefix
@@ -98,6 +98,7 @@ module OpenProject::TextFormatting
             )
             |\.\z # Allow matching when string ends with .
             |, # or with ,
+            |~ # or with ~
             |\) # or with )
             |[[:space:]]
             |\]

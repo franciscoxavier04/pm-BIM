@@ -129,11 +129,15 @@ module WorkPackage::PDFExport::Common::Common
   end
 
   def draw_horizontal_line(top, left, right, height, color)
-    pdf.stroke do
+    previous_color = pdf.stroke_color
+    previous_line_width = pdf.line_width
+    @pdf.stroke do
       pdf.stroke_color = color
       pdf.line_width = height
       pdf.horizontal_line left, right, at: top
     end
+    pdf.stroke_color = previous_color
+    pdf.line_width = previous_line_width
   end
 
   def draw_styled_text(text, opts)
@@ -277,17 +281,17 @@ module WorkPackage::PDFExport::Common::Common
   end
 
   def footer_date
-    format_time(export_datetime)
+    format_date(export_datetime)
   end
 
   def current_page_nr
     pdf.page_number + @page_count - (with_cover? ? 1 : 0)
   end
 
-  def write_horizontal_line(y_position, height, color)
+  def write_horizontal_line(y_position, height, color, left_padding: 0)
     draw_horizontal_line(
       y_position,
-      pdf.bounds.left, pdf.bounds.right,
+      pdf.bounds.left + left_padding, pdf.bounds.right,
       height, color
     )
   end
@@ -295,6 +299,30 @@ module WorkPackage::PDFExport::Common::Common
   def start_new_page_if_needed
     is_first_on_page = pdf.bounds.absolute_top - pdf.y < 10
     pdf.start_new_page unless is_first_on_page
+  end
+
+  # Prawn table does not support inline formatting other than inline HTML formatting, so we have to convert the styling
+  def prawn_table_cell_inline_formatting_data(text, style) # rubocop:disable Metrics/AbcSize, Metrics/PerceivedComplexity
+    value = text || ""
+    value = "<link href=\"#{style[:link]}\">#{value}</link>" if style.key?(:link)
+    value = "<link anchor=\"#{style[:anchor]}\">#{value}</link>" if style.key?(:anchor)
+    value = "<color rgb=\"#{style[:color]}\">#{value}</color>" if style.include?(:color)
+    value = "<font size=\"#{style[:size]}\">#{value}</font>" if style.key?(:size)
+    value = "<font character_spacing=\"#{style[:character_spacing]}\">#{value}</font>" if style.key?(:character_spacing)
+    value = "<font name=\"#{style[:font]}\">#{value}</font>" if style.key?(:font)
+    prawn_table_cell_inline_font_styles(value, style[:styles] || [])
+  end
+
+  # Prawn table does not support inline formatting other than inline HTML formatting, so we have to convert the styles
+  def prawn_table_cell_inline_font_styles(text, styles)
+    value = text || ""
+    value = "<b>#{value}</b>" if styles.include?(:bold)
+    value = "<i>#{value}</i>" if styles.include?(:italic)
+    value = "<u>#{value}</u>" if styles.include?(:underline)
+    value = "<strikethrough>#{value}</strikethrough>" if styles.include?(:strikethrough)
+    value = "<sub>#{value}</sub>" if styles.include?(:sub)
+    value = "<sup>#{value}</sup>" if styles.include?(:sup)
+    value
   end
 
   def write_optional_page_break
