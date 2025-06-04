@@ -32,8 +32,6 @@ class Projects::Phases::ApplyWorkingDaysChangeJob < ApplyWorkingDaysChangeJobBas
   private
 
   def apply_working_days_change
-    user = User.current
-
     applicable_phases.distinct.pluck(:project_id).each do |project_id|
       project = Project.find_by(id: project_id)
       next unless project
@@ -42,7 +40,7 @@ class Projects::Phases::ApplyWorkingDaysChangeJob < ApplyWorkingDaysChangeJobBas
       from = phases.filter_map(&:start_date).first
       next unless from
 
-      ProjectLifeCycleSteps::RescheduleService.new(user:, project:).call(phases:, from:)
+      ProjectLifeCycleSteps::RescheduleService.new(user: User.current, project:).call(phases:, from:)
 
       project.journal_cause = journal_cause
 
