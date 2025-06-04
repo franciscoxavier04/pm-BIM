@@ -32,10 +32,7 @@ class Projects::Phases::ApplyWorkingDaysChangeJob < ApplyWorkingDaysChangeJobBas
   private
 
   def apply_working_days_change
-    applicable_phases.distinct.pluck(:project_id).each do |project_id|
-      project = Project.find_by(id: project_id)
-      next unless project
-
+    Project.where(id: applicable_phases.select(:project_id)).find_each do |project|
       phases = project.available_phases.to_a
       from = phases.filter_map(&:start_date).first
       next unless from
