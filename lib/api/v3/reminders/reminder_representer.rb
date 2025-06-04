@@ -54,6 +54,10 @@ module API
           }
         end
 
+        link :self do
+          { href: api_v3_paths.reminder(represented.id) }
+        end
+
         property :id
 
         date_time_property :remind_at

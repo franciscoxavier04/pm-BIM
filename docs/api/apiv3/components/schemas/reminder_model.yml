@@ -20,6 +20,13 @@ properties:
       - remindable
     type: object
     properties:
+      self:
+        allOf:
+          - $ref: "./link.yml"
+          - description: |-
+              This reminder
+
+              **Resource**: Reminder
       creator:
         allOf:
           - $ref: "./link.yml"

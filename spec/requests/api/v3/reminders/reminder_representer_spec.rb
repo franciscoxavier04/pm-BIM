@@ -53,6 +53,11 @@ RSpec.describe API::V3::Reminders::ReminderRepresenter do
     expect(parsed["_type"]).to eq "Reminder"
   end
 
+  it "renders the self link" do
+    expect(parsed["_links"]).to have_key("self")
+    expect(parsed["_links"]["self"]["href"]).to include("/api/v3/reminders/#{reminder.id}")
+  end
+
   it "renders the creator link" do
     expect(parsed["_links"]).to have_key("creator")
     expect(parsed["_links"]["creator"]["href"]).to include("/api/v3/users/#{user.id}")
