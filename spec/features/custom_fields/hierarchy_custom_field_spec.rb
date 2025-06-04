@@ -158,6 +158,41 @@ RSpec.describe "custom fields of type hierarchy", :js do
     # endregion
   end
 
+  it "lets you add sub-items through the context menu" do
+    custom_field = create(:hierarchy_wp_custom_field, name: "Imperial Organization")
+    root = custom_field.hierarchy_root
+
+    root.children.create(label: "Stormtroopers", short: "ST")
+    root.children.create(label: "Imperial Navy", short: "IN")
+
+    login_as admin
+    custom_field_index_page.visit!
+
+    hierarchy_page.add_custom_field_state(custom_field)
+    click_on custom_field.name
+
+    hierarchy_page.switch_tab "Items"
+    hierarchy_page.expect_current_path
+    expect(page).not_to have_test_selector("op-custom-fields--hierarchy-items-blankslate")
+    expect(page).to have_test_selector("op-custom-fields--hierarchy-item", count: 2)
+
+    hierarchy_page.open_action_menu_for("Stormtroopers")
+    click_on "Add sub-item"
+
+    expect(page).to have_test_selector("op-custom-fields--new-item-form")
+    fill_in "Label", with: "Snowtroopers"
+    fill_in "Short", with: "SnT"
+    click_on "Save"
+
+    expect(page).to have_test_selector("op-custom-fields--hierarchy-item", count: 1)
+    expect(page).to have_test_selector("op-custom-fields--hierarchy-item", text: "Snowtroopers")
+
+    within('[data-test-selector="hierarchy-breadcrumbs"]') { click_on "Imperial Organization" }
+    expect(page).to have_test_selector("op-custom-fields--hierarchy-item", count: 2)
+    expect(page).to have_test_selector("op-custom-fields--hierarchy-item", text: "Imperial Navy")
+    expect(page).to have_test_selector("op-custom-fields--hierarchy-item", text: "Stormtroopers\n(ST)\n1 sub-item")
+  end
+
   context "when navigating the hierarchy" do
     let(:service) { CustomFields::Hierarchy::HierarchicalItemService.new }
     let(:custom_field) { create(:wp_custom_field, name: "Hogwarts", field_format: "hierarchy", hierarchy_root: nil) }
