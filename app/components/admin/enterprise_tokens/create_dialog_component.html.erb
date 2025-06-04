@@ -28,10 +28,11 @@
           Primer::Beta::Button.new(
             scheme: :primary,
             form: "enterprise-token-form",
+            data: { turbo: true },
             type: :submit
           )
         ) do
-          I18n.t(:button_create)
+          I18n.t(:button_add)
         end
       end
     end
