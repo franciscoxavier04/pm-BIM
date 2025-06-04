@@ -46,4 +46,4 @@ OpenProject::FeatureDecisions.add :built_in_oauth_applications,
 
 OpenProject::FeatureDecisions.add :stages_and_gates,
                                   description: "Enables the project phases feature.",
-                                  force_active: true
+                                  force_active: Rails.env.production? || Rails.env.development?
