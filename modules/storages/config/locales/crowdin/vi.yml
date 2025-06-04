@@ -15,6 +15,7 @@ vi:
           oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         storage_audience: Storage Audience
+        token_exchange_scope: Storage Scope
       storages/project_storage:
         project_folder: Thư mục dự án
         project_folder_mode: Project folder mode
@@ -225,12 +226,12 @@ vi:
       openproject_oauth: OpenProject OAuth
       project_folders: Thư mục dự án
       redirect_uri: URI chuyển hướng
-      storage_audience: Storage Audience
       storage_audience_blank: No audience has been configured.
-      storage_audience_description: Obtaining tokens for audience "%{audience}".
-      storage_audience_idp: Using first access token received by identity provider, regardless of audience.
+      storage_audience_description: Exchanging tokens for audience "%{audience}".
+      storage_audience_idp: Using access token obtained by identity provider during login, regardless of audience.
       storage_oauth: Nextcloud OAuth
       storage_provider: Nhà cung cấp lưu trữ
+      token_exchange: Token Exchange
     health:
       actions:
         download_report: Tải
@@ -348,8 +349,9 @@ vi:
         integration: Quản trị Nextcloud / OpenProject
         oauth_configuration: Sao chép các giá trị này từ %{application_link_text}.
         provider_configuration: Vui lòng đảm bảo bạn có quyền quản trị trong phiên bản Nextcloud của bạn và ứng dụng %{application_link_text} đã được cài đặt trước khi thực hiện cấu hình.
-        storage_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        storage_audience: The client ID that the Nextcloud instance uses to communicate with the identity provider.
         storage_audience_placeholder: e.g. nextcloud
+        token_exchange_scope: The scopes that should be requested during token exchange, each one separated by a space.
       no_specific_folder: Theo mặc định, mỗi người dùng sẽ bắt đầu tại thư mục cá nhân của họ khi tải lên tệp.
       no_storage_set_up: Chưa có lưu trữ tệp nào được thiết lập.
       not_logged_into_storage: Để chọn thư mục dự án, vui lòng đăng nhập trước
@@ -381,9 +383,9 @@ vi:
     label_creator: Người tạo
     label_delete_storage: Xóa lưu trữ
     label_edit_storage_access_management: Chỉnh sửa quản lý quyền truy cập lưu trữ
-    label_edit_storage_audience: Edit Storage Audience
     label_edit_storage_automatically_managed_folders: Chỉnh sửa thư mục được quản lý tự động của lưu trữ
     label_edit_storage_host: Chỉnh sửa máy chủ lưu trữ
+    label_edit_token_exchange: Edit token exchange configuration
     label_existing_manual_folder: Thư mục hiện có với quyền quản lý thủ công
     label_file_storage: Lưu trữ tệp
     label_host: URL máy chủ
@@ -476,13 +478,13 @@ vi:
       description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
       label: Hiển thị tệp đính kèm trong tab tệp các gói công việc
     storage_audience:
-      documentation_intro: Details on the following options and what needs to be configured in the identity provider can be found in our documentation.
+      documentation_intro: Please read our documentation for details on the following options and configuration of the identity provider.
       idp:
-        helptext: OpenProject will use the first access token received by the identity provider to authenticate requests to the storage. It will not try to obtain another token.
-        label: Use first access token obtained by identity provider
+        helptext: OpenProject will use the access token received by the identity provider during log in to authenticate requests to the storage. It will not try to obtain another token.
+        label: Use access token obtained during user log in
       manual:
-        helptext: Allows you to set the audience of the storage. OpenProject will try to obtain a token for the given audience from the identity provider.
-        label: Define storage audience manually
+        helptext: OpenProject will exchange a token with the identity provider for the given audience.
+        label: Manually specify audience for which to exchange access token
     storage_list_blank_slate:
       description: Thêm một lưu trữ để thấy chúng ở đây.
       heading: Bạn chưa có lưu trữ nào.

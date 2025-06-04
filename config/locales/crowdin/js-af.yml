@@ -434,7 +434,6 @@ af:
     label_filename: "Lêer"
     label_filesize: "Grootte"
     label_general: "Algemeen"
-    label_global_roles: "Global roles"
     label_greater_or_equal: ">="
     label_group: "Groep"
     label_group_by: "Groepeer volgens"

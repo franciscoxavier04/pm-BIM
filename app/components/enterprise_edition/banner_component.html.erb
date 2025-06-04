@@ -13,8 +13,11 @@
       grid.with_area(:content) do
         flex_layout do |flex|
           flex.with_row do
-            if medium?
-              flex_layout(align_items: :center, mb: 3) do |title_flex|
+            if medium? || large?
+              flex_layout(
+                classes: "op-enterprise-banner--title-wrapper",
+                align_items: :center,
+                mb: 3) do |title_flex|
                 title_flex.with_column do
                   render(
                     Primer::Beta::Octicon.new(
@@ -36,7 +39,10 @@
 
           flex.with_row(classes: "op-enterprise-banner--description") do
             concat render(Primer::Beta::Text.new(tag: :p)) { description }
-            concat render(Primer::Beta::Text.new(tag: :p)) { plan_text }
+
+            unless large?
+              concat render(Primer::Beta::Text.new(tag: :p)) { plan_text }
+            end
           end
 
           if features.present?
@@ -45,8 +51,26 @@
             end
           end
 
+          if large?
+            flex.with_row(my: 2) do
+              video_tag @video,
+                        controls: false,
+                        class: "op-enterprise-banner--video-control",
+                        autoplay: true,
+                        loop: true,
+                        muted: true
+            end
+
+            flex.with_row do
+              render(Primer::Beta::Text.new(tag: :p, text_align: :center)) { plan_text }
+            end
+          end
+
           flex.with_row(mt: 1) do
-            render EnterpriseEdition::UpsellButtonsComponent.new(feature_key)
+            render EnterpriseEdition::UpsellButtonsComponent.new(
+              feature_key,
+              justify_content: (large? ? :center : :flex_start)
+            )
           end
         end
       end

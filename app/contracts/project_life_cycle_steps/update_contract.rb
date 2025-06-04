@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,5 +30,69 @@
 
 module ProjectLifeCycleSteps
   class UpdateContract < BaseContract
+    validate :validate_start_after_preceeding_phases
+    validate :validate_start_date_is_a_working_day
+    validate :validate_finish_date_is_a_working_day
+    validate :validate_date_format
+
+    delegate :project, to: :model
+
+    def writable_attributes = %w[start_date finish_date]
+
+    def validate_start_after_preceeding_phases
+      return unless model.active?
+      return unless model.date_range_set?
+      return if start_after_preceding_phases?
+
+      model.errors.add(:start_date, :non_continuous_dates)
+    end
+
+    def validate_start_date_is_a_working_day
+      if model.start_date.present? && !model.start_date.in?(working_days)
+        model.errors.add(:start_date, :cannot_be_a_non_working_day)
+      end
+    end
+
+    def validate_finish_date_is_a_working_day
+      if model.finish_date.present? && !model.finish_date.in?(working_days)
+        model.errors.add(:finish_date, :cannot_be_a_non_working_day)
+      end
+    end
+
+    def validate_date_format
+      %i[start_date finish_date].each do |attr|
+        raw_value = model.send("#{attr}_before_type_cast")
+        if raw_value.present? && raw_value.is_a?(String) && !raw_value.match?(/^\d{4}-\d{2}-\d{2}$/)
+          model.errors.add(attr, :invalid)
+        end
+      end
+    end
+
+    private
+
+    def start_after_preceding_phases?
+      preceding_phases
+        .select(&:date_range_set?)
+        .all? { valid_dates?(current: model, previous: it) }
+    end
+
+    def valid_dates?(current:, previous:)
+      current.start_date > previous.finish_date
+    end
+
+    def preceding_phases
+      project.available_phases.select { it.position < model.position }
+    end
+
+    def working_days
+      return @working_days if defined?(@working_days)
+
+      dates = [model.start_date, model.finish_date].compact
+      @working_days = if dates.any?
+                        Day.from_range(from: dates.min, to: dates.max).working.pluck("days.date")
+                      else
+                        []
+                      end
+    end
   end
 end

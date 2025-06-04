@@ -419,10 +419,6 @@ es:
         new_label: "Nueva prioridad"
     status:
       button_edit: Editar estado del proyecto
-  project_phase:
-    working_days_count:
-      one: "Duración: %{count} día laborable"
-      other: "Duración: %{count} días laborables"
   lists:
     create:
       success: "La lista modificada se ha guardado como una nueva lista"
@@ -679,7 +675,7 @@ es:
           automatic_with_children: "Fechas determinadas por paquetes de trabajo secundarios."
           automatic_with_predecessor: "La fecha de inicio la fija un predecesor."
           manual_mobile: "Programado manualmente."
-          manually_scheduled: "Programado manualmente. No afectadas por relaciones."
+          manually_scheduled: "Programado manualmente. Fechas no afectadas por relaciones."
       blankslate:
         title: "Sin predecesores"
         description: "Para activar la programación automática, este paquete de trabajo debe tener al menos un predecesor. Entonces se programará automáticamente para que comience después del predecesor más cercano."
@@ -690,6 +686,7 @@ es:
         automatic: "Automático"
         manual: "Manual"
       show_relations: "Mostrar relaciones"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Pestañas del selector de fechas"
         children: "Elementos secundarios"
@@ -758,7 +755,9 @@ es:
     label_add_description: "Añadir descripción"
     lag:
       subject: "Retraso"
-      caption: "El número mínimo de días laborables que debe haber entre los dos paquetes de trabajo."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Nuevo paquete de trabajo creado y añadido como secundario"
       label_relates_singular: "relacionado con"
@@ -974,6 +973,10 @@ es:
       project/phase:
         date_range: "Intervalo de fechas"
         definition: "Definición"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Nombre"
         color: "Color"
@@ -1285,10 +1288,12 @@ es:
               blank: "Por favor, selecciona un proyecto."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "la fecha de inicio debe ser anterior a la fecha de finalización."
-              non_continuous_dates: "no puede ser anterior a la fecha de finalización de la fase anterior."
-              incomplete: "está incompleto."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1337,10 +1342,6 @@ es:
             from_id:
               error_not_found: "no se encuentra o no es visible."
               error_readonly: "no se puede cambiar para las relaciones existentes."
-            lag:
-              greater_than_or_equal_to:
-                zero: "no puede ser negativo."
-              less_than_or_equal_to: "es demasiado alto."
         repository:
           not_available: "El proveedor SMC no está disponible"
           not_whitelisted: "no está permitido por la configuración."
@@ -1592,12 +1593,13 @@ es:
       work_package: "Paquetes de trabajo"
     project_phase:
       activated: "activado"
-      deactivated: "desactivado"
       added_date: "establecido en %{date}"
       changed_date: "cambiado de %{from} a %{to}"
-      removed_date: "fecha de eliminación %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "desactivado"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} y %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "fecha de eliminación %{date}"
   #common attributes of all models
   attributes:
     active: "Activo"
@@ -1664,6 +1666,8 @@ es:
     priority: "Prioridad"
     project: "Proyecto"
     project_ids: "IDs de proyectos"
+    project_phase: "Fase del proyecto"
+    project_phase_definition: "Fase del proyecto"
     reason: "Motivo"
     responsible: "Responsable"
     required: "Obligatorio"
@@ -2597,6 +2601,8 @@ es:
   label_deleted_custom_item: "(elemento eliminado)"
   label_deleted_custom_option: "(opción eliminada)"
   label_empty_element: "(vacío)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(faltan valores o permisos de acceso)"
   label_descending: "Descendente"
   label_details: "Detalles"
@@ -2669,6 +2675,7 @@ es:
   label_gantt_chart_plural: "Diagramas de Gantt"
   label_general: "General"
   label_generate_key: "Generar una contraseña"
+  label_global_roles: "Roles globales"
   label_git_path: "Ruta al directorio .git"
   label_greater_or_equal: ">="
   label_group_by: "Agrupar por"
@@ -2895,6 +2902,7 @@ es:
   label_query_new: "Nueva consulta"
   label_query_plural: "Consultas personalizadas"
   label_read: "Leer..."
+  label_read_documentation: "Read documentation"
   label_register: "Crear una nueva cuenta"
   label_register_with_developer: "Registrarse como desarrollador"
   label_registered_on: "Registrado en"
@@ -4323,6 +4331,8 @@ es:
       code_500: "Ha ocurrido un error interno."
       code_500_outbound_request_failure: "Una solicitud de salida a otro recurso ha fallado con el código de estado %{status_code}."
       code_500_missing_enterprise_token: "La solicitud no puede ser manejada debido a un token Enterprise inválido o inexistente."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "No se encuentra el paquete de trabajo que busca, o bien se ha eliminado."
       expected:

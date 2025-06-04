@@ -91,7 +91,7 @@ module MeetingSections
 
     def add_agenda_item_action(menu)
       menu.with_item(
-        label: t("activerecord.models.meeting_agenda_item", count: 1),
+        label: t("label_agenda_item_add", count: 1),
         href: new_meeting_agenda_item_path(@meeting, type: "simple", meeting_section_id: @backlog.id),
         content_arguments: {
           data: { "turbo-stream": true, "test-selector": "meeting-backlog-add-agenda-item-from-menu" }
@@ -103,7 +103,7 @@ module MeetingSections
 
     def add_work_package_action(menu)
       menu.with_item(
-        label: t("activerecord.models.work_package", count: 1),
+        label: t("label_agenda_item_work_package_add", count: 1),
         href: new_meeting_agenda_item_path(@meeting, type: "work_package", meeting_section_id: @backlog.id),
         content_arguments: {
           data: { "turbo-stream": true, "test-selector": "meeting-backlog-add-work-package-from-menu" }

@@ -65,22 +65,6 @@ If none is provided, the link will go to the enterprise landing page on our webs
 
 There are three varations of the Enterprise banner.
 
-### Full-page upsell banner
-
-The full-page upsell banner is used an entire page is inaccessible to the current user because their plan does not include that feature (vs. only a part of that feature not being available). The full page banner also allows us to provide a feature video or large illustration.
-
-For example: when a community user clicks on the 'Team planner' module (but it's not included in their plan), or if they go to the Project admin settings and navigate to the 'Internal comments' tab under Work packages.
-
-```ruby
-render EnterpriseEdition::UpsellPageComponent.new(
-  :enterprise_feature,
-  video: "enterprise/some-video.mp4",
-  # or image: "enterprise/some-image.png"
-)
-```
-
-<%= embed OpenProject::EnterpriseEdition::UpsellPageComponentPreview, :default, panels: %i[] %>
-
 ### Inline upsell banners
 
 Inline upsell banners are useful when you want to indicate that part of a functionality or a page isn't available in the current plan. This allows the banner to be placed within a page where other parts are functional.
@@ -127,3 +111,20 @@ render EnterpriseEdition::BannerComponent.new(:enterprise_feature, variant: :med
 ```
 
 <%= embed OpenProject::EnterpriseEdition::BannerComponentPreview, :medium, panels: %i[] %>
+
+## Large variant banners
+
+The large variant upsell banner is used an entire page is inaccessible to the current user because their plan does not include that feature (vs. only a part of that feature not being available).
+This banner is used when there is an illustration video present that requires this amount of space.
+
+For example: when a community user clicks on the 'Team planner' module (but it's not included in their plan)
+
+```ruby
+render EnterpriseEdition::BannerComponent.new(
+  :enterprise_feature,
+  variant: :large,
+  video: "enterprise/some-video.mp4",
+)
+```
+
+<%= embed OpenProject::EnterpriseEdition::BannerComponentPreview, :large, panels: %i[] %>

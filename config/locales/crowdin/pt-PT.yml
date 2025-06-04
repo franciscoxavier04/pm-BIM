@@ -419,10 +419,6 @@ pt-PT:
         new_label: "Nova prioridade"
     status:
       button_edit: Editar estado do projeto
-  project_phase:
-    working_days_count:
-      one: "Duração: %{count} dia útil"
-      other: "Duração: %{count} dias úteis"
   lists:
     create:
       success: "A lista modificada foi guardada como uma nova lista"
@@ -689,6 +685,7 @@ pt-PT:
         automatic: "Automático"
         manual: "Manual"
       show_relations: "Mostrar relações"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Separadores de seletor de datas"
         children: "Elementos secundários"
@@ -757,7 +754,9 @@ pt-PT:
     label_add_description: "Adicionar descrição"
     lag:
       subject: "Desfasamento"
-      caption: "O número mínimo de dias úteis a manter entre os dois pacotes de trabalho."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Novo pacote de trabalho criado e adicionado como um elemento secundário"
       label_relates_singular: "relacionado com"
@@ -973,6 +972,10 @@ pt-PT:
       project/phase:
         date_range: "Intervalo de datas"
         definition: "Definição"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Nome"
         color: "Cor"
@@ -1284,10 +1287,12 @@ pt-PT:
               blank: "Selecione um projeto."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "a data de início tem de ser anterior à data de conclusão."
-              non_continuous_dates: "não pode ser anterior à data de conclusão da fase anterior."
-              incomplete: "está incompleto."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1336,10 +1341,6 @@ pt-PT:
             from_id:
               error_not_found: "não encontrado ou não visível."
               error_readonly: "não pode ser alterado para as relações existentes."
-            lag:
-              greater_than_or_equal_to:
-                zero: "não pode ser negativo."
-              less_than_or_equal_to: "é demasiado elevado."
         repository:
           not_available: "Fornecedor SCM não está disponível"
           not_whitelisted: "não é permitido pela configuração."
@@ -1591,12 +1592,13 @@ pt-PT:
       work_package: "Pacotes de trabalho"
     project_phase:
       activated: "ativada"
-      deactivated: "desativada"
       added_date: "definida para %{date}"
       changed_date: "alterada de %{from} para %{to}"
-      removed_date: "data eliminada %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "desativada"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, e %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "data eliminada %{date}"
   #common attributes of all models
   attributes:
     active: "Ativo"
@@ -1663,6 +1665,8 @@ pt-PT:
     priority: "Prioridade"
     project: "Projecto"
     project_ids: "Identificações do Projeto"
+    project_phase: "Fase do projeto"
+    project_phase_definition: "Fase do projeto"
     reason: "Motivo"
     responsible: "Responsável"
     required: "Obrigatório"
@@ -2596,6 +2600,8 @@ pt-PT:
   label_deleted_custom_item: "(item eliminado)"
   label_deleted_custom_option: "(opção eliminada)"
   label_empty_element: "(vazio)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(faltam valores ou permissões para acessar)"
   label_descending: "Descendente"
   label_details: "Detalhes"
@@ -2668,6 +2674,7 @@ pt-PT:
   label_gantt_chart_plural: "Gráficos de Gantt"
   label_general: "Geral"
   label_generate_key: "Gerar uma chave"
+  label_global_roles: "Funções globais"
   label_git_path: "Caminho para o diretório .git"
   label_greater_or_equal: ">="
   label_group_by: "Agrupar por"
@@ -2894,6 +2901,7 @@ pt-PT:
   label_query_new: "Nova consulta"
   label_query_plural: "Consultas personalizadas"
   label_read: "Leia..."
+  label_read_documentation: "Read documentation"
   label_register: "Criar uma nova conta"
   label_register_with_developer: "Registe-se como programador"
   label_registered_on: "Registado em"
@@ -4321,6 +4329,8 @@ pt-PT:
       code_500: "Ocorreu um erro interno."
       code_500_outbound_request_failure: "Um pedido de saída para outro recurso falhou com o código de estado %{status_code}."
       code_500_missing_enterprise_token: "O pedido não pode ser tratado devido a um token empresarial inválido ou em falta."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
       not_found:
         work_package: "O pacote de trabalho que procura não foi encontrado ou foi eliminado."
       expected:

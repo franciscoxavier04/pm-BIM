@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -106,6 +108,7 @@ RSpec.describe "List project custom fields", :js do
 
     it "allows to create a new section" do
       within "#settings-project-custom-fields-header-component" do
+        page.find_test_selector("project-attributes-add-menu-button").click
         click_on("dialog-show-project-custom-field-section-dialog")
       end
 
@@ -209,14 +212,15 @@ RSpec.describe "List project custom fields", :js do
       end
 
       it "redirects to the custom field new page via header menu button" do
-        page.find("[data-test-selector='new-project-custom-field-button']").click
+        page.find_test_selector("project-attributes-add-menu-button").click
+        page.find_test_selector("new-project-custom-field-button").click
 
         expect(page).to have_current_path(new_admin_settings_project_custom_field_path(type: "ProjectCustomField"))
       end
 
       it "redirects to the custom field new page via button in empty sections" do
         within_project_custom_field_section_container(section_for_multi_select_fields) do
-          expect(page).to have_no_css("[data-test-selector='new-project-custom-field-button']")
+          expect(page).not_to have_test_selector("new-project-custom-field-button")
         end
 
         multi_list_project_custom_field.destroy
@@ -226,7 +230,7 @@ RSpec.describe "List project custom fields", :js do
         visit admin_settings_project_custom_fields_path
 
         within_project_custom_field_section_container(section_for_multi_select_fields) do
-          page.find("[data-test-selector='new-project-custom-field-button']").click
+          page.find_test_selector("new-project-custom-field-button").click
         end
 
         expect(page).to have_current_path(new_admin_settings_project_custom_field_path(
@@ -239,14 +243,14 @@ RSpec.describe "List project custom fields", :js do
 
   # helper methods:
 
-  def within_project_custom_field_section_container(section, &block)
-    within("[data-test-selector='project-custom-field-section-container-#{section.id}']", &block)
+  def within_project_custom_field_section_container(section, &)
+    within_test_selector("project-custom-field-section-container-#{section.id}", &)
   end
 
-  def within_project_custom_field_section_menu(section, &block)
+  def within_project_custom_field_section_menu(section, &)
     within_project_custom_field_section_container(section) do
-      page.find("[data-test-selector='project-custom-field-section-action-menu']").click
-      within("anchored-position", &block)
+      page.find_test_selector("project-custom-field-section-action-menu").click
+      within("anchored-position", &)
     end
   end
 
@@ -257,14 +261,14 @@ RSpec.describe "List project custom fields", :js do
     sleep 0.5 # quick fix: allow the brower to process the action
   end
 
-  def within_project_custom_field_container(custom_field, &block)
-    within("[data-test-selector='project-custom-field-container-#{custom_field.id}']", &block)
+  def within_project_custom_field_container(custom_field, &)
+    within_test_selector("project-custom-field-container-#{custom_field.id}", &)
   end
 
-  def within_project_custom_field_menu(section, &block)
+  def within_project_custom_field_menu(section, &)
     within_project_custom_field_container(section) do
-      page.find("[data-test-selector='project-custom-field-action-menu']").click
-      within("anchored-position", &block)
+      page.find_test_selector("project-custom-field-action-menu").click
+      within("anchored-position", &)
     end
   end
 
