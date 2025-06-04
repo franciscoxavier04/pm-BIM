@@ -32,6 +32,6 @@ module Queries::Project::PhaseDefinitions
   # This is needed for the phase definition filter to work, even though it is referenced in the
   # WorkPackages::Query
   ::Queries::Register.register(PhaseDefinitionQuery) do
-    pass
+    # intentionally left empty
   end
 end
