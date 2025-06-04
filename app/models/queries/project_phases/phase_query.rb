@@ -28,19 +28,17 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Queries::Project
-  module Phases
-    class PhaseQuery
-      include Queries::BaseQuery
-      include Queries::UnpersistedQuery
+module Queries::ProjectPhases
+  class PhaseQuery
+    include Queries::BaseQuery
+    include Queries::UnpersistedQuery
 
-      def self.model
-        Project::Phase
-      end
+    def self.model
+      Project::Phase
+    end
 
-      def default_scope
-        Project::Phase.visible(User.current)
-      end
+    def default_scope
+      Project::Phase.visible(User.current)
     end
   end
 end

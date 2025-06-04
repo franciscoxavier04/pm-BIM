@@ -28,10 +28,16 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Queries::Project::PhaseDefinitions
-  # This is needed for the phase definition filter to work, even though it is referenced in the
-  # WorkPackages::Query
-  ::Queries::Register.register(PhaseDefinitionQuery) do
-    # intentionally left empty
+module Queries
+  module PhaseDefinitions
+    # intentionally left empty, just exists to satisfy the autoloader
+  end
+
+  module Project::PhaseDefinitions
+    # This is needed for the phase definition filter to work, even though it is referenced in the
+    # WorkPackages::Query
+    ::Queries::Register.register(PhaseDefinitionQuery) do
+      # intentionally left empty
+    end
   end
 end
