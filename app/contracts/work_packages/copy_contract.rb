@@ -37,13 +37,8 @@ module WorkPackages
     attribute :done_ratio,
               writable: true
 
-    # Overriding the definition in the CreateContract to allow copying based on the default
-    # permission of :add_work_packages.
-    attribute :project_phase_definition_id,
-              writable: ->(*) {
-                OpenProject::FeatureDecisions.stages_and_gates_active?
-              },
-              permission: :add_work_packages
+    # Use the default permission for the create contract, which is :add_work_packages.
+    attribute_permission :project_phase_definition_id, :add_work_packages
 
     # Do not validate predecessors or children presence when copying: when
     # copying, it's possible to create a work package in automatic scheduling
