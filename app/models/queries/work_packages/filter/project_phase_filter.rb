@@ -79,23 +79,21 @@ class Queries::WorkPackages::Filter::ProjectPhaseFilter < Queries::WorkPackages:
   end
 
   def where
-    if operator_strategy.to_sym == :"="
-      Arel.sql(
-        <<~SQL.squish
-          active_phases.active_phase_definition_id IS NOT NULL AND
-            active_phases.active_phase_definition_id IN (#{values.join(',')})
-        SQL
-      )
-    elsif operator_strategy.to_sym == :!
-      Arel.sql(
-        <<~SQL.squish
-          active_phases.active_phase_definition_id IS NULL OR
-            active_phases.active_phase_definition_id NOT IN (#{values.join(',')})
-        SQL
-      )
-    else
-      ""
-    end
+    placeholders = values.map { "?" }.join(",")
+
+    sql = if operator_strategy.to_sym == :"="
+            <<~SQL.squish
+              active_phases.active_phase_definition_id IS NOT NULL AND
+                active_phases.active_phase_definition_id IN (#{placeholders})
+            SQL
+          else
+            <<~SQL.squish
+              active_phases.active_phase_definition_id IS NULL OR
+                active_phases.active_phase_definition_id NOT IN (#{placeholders})
+            SQL
+          end
+
+    ActiveRecord::Base.sanitize_sql_array([sql, *values])
   end
 
   private
