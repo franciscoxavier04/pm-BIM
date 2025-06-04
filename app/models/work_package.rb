@@ -335,7 +335,7 @@ class WorkPackage < ApplicationRecord
   end
 
   def duration_in_hours
-    duration ? duration * 24 : nil
+    duration * 24 if duration
   end
 
   def project_phase
