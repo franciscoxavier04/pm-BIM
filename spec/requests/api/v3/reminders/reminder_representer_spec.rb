@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,42 +28,43 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Reminder < ApplicationRecord
-  belongs_to :remindable, polymorphic: true
-  belongs_to :creator, class_name: "User"
+require "spec_helper"
 
-  has_many :reminder_notifications, dependent: :destroy
-  has_many :notifications, through: :reminder_notifications
+RSpec.describe API::V3::Reminders::ReminderRepresenter do
+  let(:user) { build_stubbed(:user) }
+  let(:remindable) { build_stubbed(:work_package) }
+  let(:reminder) { build_stubbed(:reminder, remindable:, creator: user) }
+  let(:representer) { described_class.new(reminder, current_user: user) }
+  let(:parsed) { representer.to_hash }
 
-  # Currently, reminders are personal, meaning
-  # they are only visible to the user who created them.
-  def self.visible(user)
-    where(creator: user)
+  it "renders the id" do
+    expect(parsed["id"]).to eq reminder.id
   end
 
-  def self.upcoming_and_visible_to(user)
-    visible(user)
-      .where(completed_at: nil)
-      .where.missing(:reminder_notifications)
+  it "renders the remindAt" do
+    expect(parsed["remindAt"]).to eq reminder.remind_at.iso8601(3)
   end
 
-  def visible?(user = User.current)
-    creator == user && remindable.visible?(user)
+  it "renders the note" do
+    expect(parsed["note"]).to eq reminder.note
   end
 
-  def unread_notifications?
-    unread_notifications.exists?
+  it "renders the _type" do
+    expect(parsed["_type"]).to eq "Reminder"
   end
 
-  def unread_notifications
-    notifications.where(read_ian: [false, nil])
+  it "renders the self link" do
+    expect(parsed["_links"]).to have_key("self")
+    expect(parsed["_links"]["self"]["href"]).to include("/api/v3/reminders/#{reminder.id}")
   end
 
-  def completed?
-    completed_at.present?
+  it "renders the creator link" do
+    expect(parsed["_links"]).to have_key("creator")
+    expect(parsed["_links"]["creator"]["href"]).to include("/api/v3/users/#{user.id}")
   end
 
-  def scheduled?
-    job_id.present? && !completed?
+  it "renders the remindable link" do
+    expect(parsed["_links"]).to have_key("remindable")
+    expect(parsed["_links"]["remindable"]["href"]).to include("/api/v3/work_packages/#{remindable.id}")
   end
 end

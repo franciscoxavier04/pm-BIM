@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,32 +31,38 @@
 module API
   module V3
     module Reminders
-      class RemindersAPI < ::API::OpenProjectAPI
+      class RemindersByWorkPackageAPI < ::API::OpenProjectAPI
         resource :reminders do
+          after_validation do
+            authorize_in_project(:view_work_packages, project: @work_package.project)
+          end
+
           helpers do
             def reminders
-              Reminder.upcoming_and_visible_to(User.current)
+              @work_package.reminders.upcoming_and_visible_to(User.current)
+            end
+
+            def restrict_multiple_reminders
+              if reminders.any?
+                raise ::API::Errors::Conflict.new(
+                  message: I18n.t("api_v3.errors.conflict.multiple_reminders_not_allowed")
+                )
+              end
             end
           end
 
           get do
             ReminderCollectionRepresenter.new(reminders,
-                                              self_link: api_v3_paths.reminders,
+                                              self_link: api_v3_paths.work_package_reminders(@work_package.id),
                                               current_user: User.current)
           end
 
-          route_param :id, type: Integer, desc: "Reminder ID" do
-            after_validation do
-              @reminder = reminders.find(declared_params[:id])
-
-              authorize_by_with_raise @reminder.visible?(current_user) do
-                raise API::Errors::NotFound
-              end
-            end
-
-            patch(&API::V3::Utilities::Endpoints::Update.new(model: Reminder).mount)
-            delete(&API::V3::Utilities::Endpoints::Delete.new(model: Reminder).mount)
-          end
+          post(&API::V3::Utilities::Endpoints::Create.new(model: Reminder,
+                                                          before_hook: ->(request:) { request.restrict_multiple_reminders },
+                                                          params_modifier: ->(params) do
+                                                            params.merge(remindable: @work_package,
+                                                                         creator: User.current)
+                                                          end).mount)
         end
       end
     end
