@@ -523,6 +523,20 @@ module API
                                                                .to_s
                  end
 
+        link :projectPhaseDefinition do
+          if phase_set_and_active? && view_project_phase_allowed?
+            {
+              href: api_v3_paths.project_phase_definition(represented.project_phase_definition_id),
+              title: project_phase.name
+            }
+          else
+            {
+              href: nil,
+              title: nil
+            }
+          end
+        end
+
         associated_resource :status
 
         associated_resource :author,
