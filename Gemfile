@@ -400,7 +400,7 @@ platforms :mri, :mingw, :x64_mingw do
 
   # Have application level locks on the database to have a mutex shared between workers/hosts.
   # We e.g. employ this to safeguard the creation of journals.
-  gem "with_advisory_lock", "~> 5.1.0"
+  gem "with_advisory_lock", "~> 5.3.0"
 end
 
 # Load Gemfile.modules explicitly to allow dependabot to work
