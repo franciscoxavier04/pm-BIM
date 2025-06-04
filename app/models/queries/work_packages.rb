@@ -28,9 +28,6 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-# require_relative "../../../app/models/queries/project_phases/phase_query"
-require_relative "../../../app/models/queries/project_phase_definitions/phase_definition_query"
-
 module Queries::WorkPackages
   ::Queries::Register.register(Query) do
     filter Filter::AncestorFilter

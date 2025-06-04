@@ -55,9 +55,35 @@ class Queries::WorkPackages::Filter::ProjectPhaseFilter < Queries::WorkPackages:
     values.filter_map { |id| available_definitions[id.to_i] }
   end
 
+  def joins
+    Arel.sql(
+      <<~SQL.squish
+        LEFT JOIN (
+          SELECT
+            wp.id AS wp_id,
+            MAX(CASE WHEN ph.active THEN ph.definition_id ELSE NULL END) AS active_phase_definition_id
+          FROM work_packages wp
+          LEFT JOIN project_phases ph ON ph.project_id = wp.project_id AND ph.definition_id = wp.project_phase_definition_id
+          WHERE wp.project_id IN (#{project_with_view_phases_permissions.to_sql})
+          GROUP BY wp.id
+        ) AS active_phases ON active_phases.wp_id = work_packages.id
+        LEFT JOIN project_phase_definitions pd ON pd.id = active_phases.active_phase_definition_id
+      SQL
+    )
+  end
+
+  def project_with_view_phases_permissions
+    Project.allowed_to(User.current, :view_project_phases).select(:id)
+  end
+
   def where
     if operator_strategy.to_sym == :"="
-      "active_phases.active_phase_definition_id IS NOT NULL"
+      Arel.sql(
+        <<~SQL.squish
+          active_phases.active_phase_definition_id IS NOT NULL AND
+            active_phases.active_phase_definition_id IN (#{values.join(',')})
+        SQL
+      )
     elsif operator_strategy.to_sym == :!
       Arel.sql(
         <<~SQL.squish

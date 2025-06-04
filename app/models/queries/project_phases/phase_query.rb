@@ -38,11 +38,6 @@ module Queries::Project
         Project::Phase
       end
 
-      # def results
-      #   super
-      #     # .includes(:roles, { principal: :preference }, :member_roles)
-      # end
-
       def default_scope
         Project::Phase.visible(User.current)
       end
