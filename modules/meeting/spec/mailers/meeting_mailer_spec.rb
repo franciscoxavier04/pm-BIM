@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -43,9 +44,6 @@ RSpec.describe MeetingMailer do
     create(:meeting,
            author:,
            project:)
-  end
-  let(:meeting_agenda) do
-    create(:meeting_agenda, meeting:)
   end
   let(:tokyo_offset) { "UTC#{ActiveSupport::TimeZone['Asia/Tokyo'].now.formatted_offset}" }
   let(:berlin_offset) { "UTC#{ActiveSupport::TimeZone['Europe/Berlin'].now.formatted_offset}" }

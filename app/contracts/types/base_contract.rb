@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -42,10 +44,12 @@ module Types
     attribute :project_ids
     attribute :description
     attribute :attribute_groups
+    attribute :patterns
 
     validate :validate_current_user_is_admin
     validate :validate_attribute_group_names
     validate :validate_attribute_groups
+    validate :validate_subject_generation_pattern
 
     def validate_current_user_is_admin
       unless user.admin?
@@ -58,7 +62,7 @@ module Types
 
       seen = Set.new
       model.attribute_groups.each do |group|
-        errors.add(:attribute_groups, :group_without_name) unless group.key.present?
+        errors.add(:attribute_groups, :group_without_name) if group.key.blank?
         errors.add(:attribute_groups, :duplicate_group, group: group.key) if seen.add?(group.key).nil?
       end
     end
@@ -99,5 +103,23 @@ module Types
         end
       end
     end
+
+    def validate_subject_generation_pattern
+      blueprint = model.patterns.subject&.blueprint
+      return if blueprint.nil?
+
+      valid_tokens = flat_valid_token_list
+      invalid_tokens = blueprint.scan(PatternResolver::TOKEN_REGEX)
+                                .reduce([]) do |acc, match|
+        token = Patterns::PatternToken.build(match).key
+        valid_tokens.include?(token) ? acc : acc << token
+      end
+
+      if invalid_tokens.any?
+        errors.add(:patterns, :invalid_tokens)
+      end
+    end
+
+    def flat_valid_token_list = Patterns::TokenPropertyMapper.new.tokens_for_type(model).map(&:key)
   end
 end

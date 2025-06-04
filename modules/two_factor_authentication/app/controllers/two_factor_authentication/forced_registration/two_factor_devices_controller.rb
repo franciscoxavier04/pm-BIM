@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ::TwoFactorAuthentication
   module ForcedRegistration
     class TwoFactorDevicesController < ::TwoFactorAuthentication::BaseController
@@ -54,7 +56,7 @@ module ::TwoFactorAuthentication
           end
         else
           Rails.logger.warn { "User ##{target_user.id} forced to register failed for #{@device_type}." }
-          render "two_factor_authentication/two_factor_devices/new"
+          render "two_factor_authentication/two_factor_devices/new", status: :unprocessable_entity
         end
       end
 
@@ -62,10 +64,6 @@ module ::TwoFactorAuthentication
 
       def target_user
         @authenticated_user
-      end
-
-      def show_local_breadcrumb
-        false
       end
 
       def index_path

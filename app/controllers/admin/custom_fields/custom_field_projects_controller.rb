@@ -58,7 +58,7 @@ class Admin::CustomFields::CustomFieldProjectsController < ApplicationController
 
   def create
     create_service = ::CustomFields::CustomFieldProjects::BulkCreateService
-                         .new(user: current_user, projects: @projects, custom_field: @custom_field,
+                         .new(user: current_user, projects: @projects, model: @custom_field,
                               include_sub_projects: include_sub_projects?)
                          .call
 
@@ -87,12 +87,6 @@ class Admin::CustomFields::CustomFieldProjectsController < ApplicationController
     end
 
     respond_to_with_turbo_streams(status: delete_service.success? ? :ok : :unprocessable_entity)
-  end
-
-  def default_breadcrumb; end
-
-  def show_local_breadcrumb
-    false
   end
 
   private

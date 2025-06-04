@@ -32,8 +32,12 @@ require_relative "migration_utils/utils"
 class AggregateJournals < ActiveRecord::Migration[6.1]
   include ::Migration::Utils
 
-  # Class has been removed by now
+  # Classes have been removed by now
   class WikiContent < ApplicationRecord; end
+
+  # Class has been changed in the meantime.
+  # It received a status enum which's column does not yet exist when this migration runs.
+  class Attachment < ApplicationRecord; end
 
   def up
     [Attachment,

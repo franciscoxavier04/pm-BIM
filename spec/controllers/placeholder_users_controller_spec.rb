@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -103,7 +105,7 @@ RSpec.describe PlaceholderUsersController do
       context "without ee" do
         it "returns with an error" do
           expect { post :create, params: }.not_to change { PlaceholderUser.count }
-          expect(response).to be_successful
+          expect(response).to have_http_status(:unprocessable_entity)
 
           expect(assigns(:placeholder_user).errors.details[:base])
             .to eq([error: :error_enterprise_only, action: "Placeholder Users"])

@@ -275,7 +275,7 @@ $scrollbar-size: 10px
   text-align: inherit
 
 @mixin hide-button-texts
-  .button--text:not(.button--text_without_icon)
+  .button--text
     display: none
 
 @mixin board-header-editable-toolbar-title
@@ -346,3 +346,32 @@ $scrollbar-size: 10px
 @mixin op-uc-table-header-styles
   border-color: var(--borderColor-default)
   background-color: var(--bgColor-muted)
+
+@mixin upsell-image
+  position: absolute
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  background-repeat: no-repeat
+  background-position: center right
+  background-size: contain
+
+  @media screen and (max-width: $breakpoint-lg)
+    background-image: none !important
+
+  @media screen and (max-width: $breakpoint-xl)
+    background-size: cover
+
+  &:after
+    content: ""
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    height: 100%
+    background: linear-gradient(to left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%)
+
+  body[data-color-mode="dark"] &
+    filter: invert(100%)
+    -webkit-filter: invert(100%)

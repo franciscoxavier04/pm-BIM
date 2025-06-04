@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Wysiwyg bold behavior", :js, :with_cuprite do
+RSpec.describe "Wysiwyg bold behavior", :js do
   current_user { create(:admin) }
 
   let(:project) { create(:project, enabled_module_names: %w[wiki]) }

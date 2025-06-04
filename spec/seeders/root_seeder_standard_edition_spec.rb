@@ -36,6 +36,12 @@ RSpec.describe RootSeeder,
                with_config: { edition: "standard" } do
   include RootSeederTestHelpers
 
+  before_all do
+    week_with_saturday_and_sunday_as_weekend
+    clear_enqueued_jobs
+    clear_performed_jobs
+  end
+
   shared_examples "creates standard demo data" do
     it "creates the system user" do
       expect(SystemUser.where(admin: true).count).to eq 1
@@ -57,12 +63,13 @@ RSpec.describe RootSeeder,
       expect(Query.count).to eq 26
       expect(ProjectRole.count).to eq 5
       expect(WorkPackageRole.count).to eq 3
-      expect(GlobalRole.count).to eq 1
+      expect(GlobalRole.count).to eq 2
       expect(Grids::Overview.count).to eq 2
       expect(Version.count).to eq 4
       expect(VersionSetting.count).to eq 4
       expect(Boards::Grid.count).to eq 5
       expect(Boards::Grid.count { |grid| grid.options.has_key?(:filters) }).to eq 1
+      expect(Project::PhaseDefinition.count).to eq 4
     end
 
     it "links work packages to their version" do
@@ -83,11 +90,22 @@ RSpec.describe RootSeeder,
       expect(default_modules).to include("reporting_module")
     end
 
-    it "creates a structured meeting of 1h duration" do
-      expect(StructuredMeeting.count).to eq 1
-      expect(StructuredMeeting.last.duration).to eq 1.0
-      expect(MeetingAgendaItem.count).to eq 9
-      expect(MeetingAgendaItem.sum(:duration_in_minutes)).to eq 60
+    it "creates a weekly recurring meeting with one instance" do
+      expect(RecurringMeeting.count).to eq 1
+
+      # The template is created.
+      expect(Meeting.templated.count).to eq 1
+      template = Meeting.templated.first
+      expect(template.duration).to eq 1.0
+      expect(template.agenda_items.count).to eq 9
+      expect(template.agenda_items.sum(:duration_in_minutes)).to eq 60
+
+      # The first instance from that template is also created with the same data.
+      expect(Meeting.where(template: false).count).to eq 1
+      instance = Meeting.not_templated.first
+      expect(instance.duration).to eq 1.0
+      expect(instance.agenda_items.count).to eq 9
+      expect(instance.agenda_items.sum(:duration_in_minutes)).to eq 60
     end
 
     it "creates different types of queries" do
@@ -124,9 +142,9 @@ RSpec.describe RootSeeder,
       )
     end
 
-    include_examples "it creates records", model: Color, expected_count: 144
+    include_examples "it creates records", model: Color, expected_count: 148
     include_examples "it creates records", model: DocumentCategory, expected_count: 3
-    include_examples "it creates records", model: GlobalRole, expected_count: 1
+    include_examples "it creates records", model: GlobalRole, expected_count: 2
     include_examples "it creates records", model: WorkPackageRole, expected_count: 3
     include_examples "it creates records", model: ProjectRole, expected_count: 5
     include_examples "it creates records", model: ProjectQueryRole, expected_count: 2
@@ -134,7 +152,8 @@ RSpec.describe RootSeeder,
     include_examples "it creates records", model: Status, expected_count: 14
     include_examples "it creates records", model: TimeEntryActivity, expected_count: 6
     include_examples "it creates records", model: Workflow, expected_count: 1758
-    include_examples "it creates records", model: Meeting, expected_count: 1
+    include_examples "it creates records", model: RecurringMeeting, expected_count: 1
+    include_examples "it is compatible with the automatic scheduling mode"
   end
 
   describe "demo data" do
@@ -143,6 +162,10 @@ RSpec.describe RootSeeder,
     before_all do
       with_edition("standard") do
         root_seeder.seed_data!
+
+        # Run background jobs as those are also triggered by seeding.
+        # But since those background jobs retrigger themselves, don't wrap the seeding inside a block.
+        perform_enqueued_jobs
       end
     end
 
@@ -166,11 +189,12 @@ RSpec.describe RootSeeder,
         expect(Query.count).to eq 26
         expect(ProjectRole.count).to eq 5
         expect(WorkPackageRole.count).to eq 3
-        expect(GlobalRole.count).to eq 1
+        expect(GlobalRole.count).to eq 2
         expect(Grids::Overview.count).to eq 2
         expect(Version.count).to eq 4
         expect(VersionSetting.count).to eq 4
         expect(Boards::Grid.count).to eq 5
+        expect(Project::PhaseDefinition.count).to eq 4
       end
     end
   end
@@ -187,6 +211,10 @@ RSpec.describe RootSeeder,
 
       with_edition("standard") do
         root_seeder.seed_data!
+
+        # Run background jobs as those are also triggered by seeding.
+        # But since those background jobs retrigger themselves, don't wrap the seeding inside a block.
+        perform_enqueued_jobs
       end
     end
 
@@ -204,6 +232,10 @@ RSpec.describe RootSeeder,
           "tr: #{original_translation}"
         end
         root_seeder.seed_data!
+
+        # Run background jobs as those are also triggered by seeding.
+        # But since those background jobs retrigger themselves, don't wrap the seeding inside a block.
+        perform_enqueued_jobs
       end
     end
 
@@ -227,6 +259,10 @@ RSpec.describe RootSeeder,
           with_edition("standard") do
             reset(:default_language) # Settings are a pain to reset
             root_seeder.seed_data!
+
+            # Run background jobs as those are also triggered by seeding.
+            # But since those background jobs retrigger themselves, don't wrap the seeding inside a block.
+            perform_enqueued_jobs
           ensure
             reset(:default_language)
           end
@@ -281,5 +317,28 @@ RSpec.describe RootSeeder,
     end
 
     include_examples "no email deliveries"
+  end
+
+  context "when admin user creation is locked with OPENPROJECT_SEED_ADMIN_USER_LOCKED=true",
+          :settings_reset do
+    shared_let(:root_seeder) { described_class.new }
+
+    before_all do
+      with_env("OPENPROJECT_SEED_ADMIN_USER_LOCKED" => "true") do
+        with_edition("standard") do
+          reset(:seed_admin_user_locked)
+          root_seeder.seed_data!
+        end
+      end
+    ensure
+      reset(:seed_admin_user_locked)
+      RequestStore.clear! # resets `User.current` cached result
+    end
+
+    it "seeds without any errors, but locks the admin user", :aggregate_failures do
+      expect(Project.count).to eq 2
+      expect(WorkPackage.count).to eq 36
+      expect(root_seeder.admin_user).to be_locked
+    end
   end
 end

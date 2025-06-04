@@ -2,7 +2,7 @@
 
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -41,7 +41,7 @@ class OAuthApplicationsSeeder < Seeder
   end
 
   def applicable?
-    Doorkeeper::Application.find_by(id: OPENPROJECT_MOBILE_APP_UID).nil?
+    Doorkeeper::Application.find_by(uid: OPENPROJECT_MOBILE_APP_UID).nil?
   end
 
   def not_applicable_message

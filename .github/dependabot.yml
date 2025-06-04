@@ -14,6 +14,9 @@ updates:
       fullcalendar:
         patterns:
           - '@fullcalendar*'
+    ignore:
+      - dependency-name: "@angular*"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: "bundler"
     directory: "/"
     schedule:
@@ -21,6 +24,10 @@ updates:
     target-branch: "dev"
     open-pull-requests-limit: 3
     versioning-strategy: lockfile-only
+    groups:
+      aws-gems:
+        patterns:
+          - "aws-*"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

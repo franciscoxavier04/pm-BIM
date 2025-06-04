@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -32,6 +34,7 @@ RSpec.describe Queries::Members::Filters::BlockedFilter do
   it_behaves_like "basic query filter" do
     let(:class_key) { :blocked }
     let(:type) { :list }
+    let(:human_name) { "blocked" }
 
     describe "#allowed_values" do
       it "is a list of the possible values" do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,7 +31,6 @@
 FactoryBot.define do
   factory :user_preference do
     user
-    hide_mail { true }
     transient do
       others { {} }
     end

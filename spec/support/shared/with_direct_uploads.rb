@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -65,17 +67,17 @@ class WithDirectUploads
 
     csp_config = SecureHeaders::Configuration.instance_variable_get(:@default_config).csp
 
-    connect_src = csp_config.connect_src.dup
-    form_action = csp_config.form_action.dup
+    connect_src = csp_config[:connect_src].dup
+    form_action = csp_config[:form_action].dup
 
     begin
-      csp_config.connect_src << "test-bucket.s3.amazonaws.com"
-      csp_config.form_action << "test-bucket.s3.amazonaws.com"
+      csp_config[:connect_src] << "test-bucket.s3.amazonaws.com"
+      csp_config[:form_action] << "test-bucket.s3.amazonaws.com"
 
       example.run
     ensure
-      csp_config.connect_src = connect_src
-      csp_config.form_action = form_action
+      csp_config[:connect_src] = connect_src
+      csp_config[:form_action] = form_action
     end
   end
 

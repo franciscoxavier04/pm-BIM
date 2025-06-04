@@ -29,9 +29,8 @@ module WorkPackages
   class Menu < Submenu
     attr_reader :view_type, :project, :params
 
-    def initialize(project: nil, params: nil, request: nil)
+    def initialize(project: nil, params: nil)
       @view_type = "work_packages_table"
-      @request = request
 
       super(view_type:, project:, params:)
     end
@@ -52,7 +51,7 @@ module WorkPackages
 
     def query_path(query_params)
       if query_params[:show_enterprise_icon].present?
-        return ee_upsale_path(query_params)
+        return ee_upsell_path(query_params)
       end
 
       if project.present?
@@ -66,18 +65,19 @@ module WorkPackages
 
     def selected?(query_params)
       return true if check_for_redirected_urls(query_params)
-
-      if query_params[:work_package_default] &&
-        (%i[filters query_props query_id name].none? { |k| params.key? k }) &&
-        @request.referer.include?("work_packages")
-        return true
-      end
+      return true if highlight_on_work_packages?(query_params)
 
       super
     end
 
-    def ee_upsale_path(query_params)
-      share_upsale_work_packages_path({ name: query_params[:name] })
+    def highlight_on_work_packages?(query_params)
+      query_params[:work_package_default] &&
+        (%i[filters query_props query_id name].none? { |k| params.key? k }) &&
+        params[:on_work_package_path] == "true"
+    end
+
+    def ee_upsell_path(query_params)
+      share_upsell_work_packages_path({ name: query_params[:name] })
     end
 
     def check_for_redirected_urls(query_params)

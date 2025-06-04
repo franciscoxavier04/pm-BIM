@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "invitations", :js, :with_cuprite do
+RSpec.describe "invitations", :js do
   let(:user) { create(:invited_user, mail: "holly@openproject.com") }
 
   shared_examples "resending invitations" do |redirect_to_edit_page: true|

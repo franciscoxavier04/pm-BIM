@@ -211,7 +211,6 @@ class PermittedParams
   def user_create_as_admin(external_authentication,
                            change_password_allowed,
                            additional_params = [])
-
     additional_params << :ldap_auth_source_id unless external_authentication
 
     if current_user.admin?
@@ -263,7 +262,7 @@ class PermittedParams
   end
 
   def pref
-    params.fetch(:pref, {}).permit(:hide_mail, :time_zone, :theme,
+    params.fetch(:pref, {}).permit(:time_zone, :theme,
                                    :comments_sorting, :warn_on_leaving_unsaved,
                                    :auto_hide_popups)
   end
@@ -277,17 +276,22 @@ class PermittedParams
                                                 :project_type_id,
                                                 :parent_id,
                                                 :templated,
-                                                status: %i(code explanation),
+                                                :status_code,
+                                                :status_explanation,
                                                 custom_fields: [],
                                                 work_package_custom_field_ids: [],
                                                 type_ids: [],
                                                 enabled_module_names: [])
 
-    if whitelist[:status] && whitelist[:status][:code] && whitelist[:status][:code].blank?
-      whitelist[:status][:code] = nil
+    if whitelist.has_key?(:status_code) && whitelist[:status_code].blank?
+      whitelist[:status_code] = nil
     end
 
     whitelist.merge(custom_field_values(:project))
+  end
+
+  def project_phase
+    params.require(:project_phase).permit(%i[start_date finish_date])
   end
 
   def project_custom_field_project_mapping
@@ -474,7 +478,6 @@ class PermittedParams
           :searchable,
           :admin_only,
           :default_value,
-          :possible_values,
           :multi_value,
           :content_right_to_left,
           :custom_field_section_id,

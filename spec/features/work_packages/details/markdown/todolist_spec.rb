@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Todolists in CKEditor", :js do
+RSpec.describe "Todolists in CKEditor", :js, :selenium do
   let(:user) { create(:admin) }
 
   before do

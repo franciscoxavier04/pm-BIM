@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -97,8 +99,8 @@ RSpec.describe PermittedParams do
     let(:attribute) { :pref }
 
     let(:hash) do
-      acceptable_params = %w(hide_mail time_zone
-                             comments_sorting warn_on_leaving_unsaved)
+      acceptable_params = %w(time_zone comments_sorting
+                             warn_on_leaving_unsaved)
 
       acceptable_params.index_with { |_x| "value" }
     end

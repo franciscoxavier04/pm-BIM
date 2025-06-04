@@ -144,6 +144,15 @@ export class AttachmentsResourceService extends ResourceStoreService<IAttachment
       );
   }
 
+  public static getAttachmentsSelfLink(resource:HalResource):string | null {
+    if (isNewResource(resource)) {
+      return null;
+    }
+
+    const attachments = resource.attachments as { href?:string };
+    return attachments?.href || null;
+  }
+
   private uploadAttachments(href:string, files:IUploadFile[]):Observable<IAttachment[]> {
     const observables = this.uploadService.upload<IAttachment>(href, files);
     const uploads = files.map((f, i):[File, Observable<HttpEvent<unknown>>] => [f.file, observables[i]]);
@@ -175,12 +184,12 @@ export class AttachmentsResourceService extends ResourceStoreService<IAttachment
    */
   private getUploadTarget(resource:HalResource):string {
     return this.getDirectUploadLink(resource)
-      || AttachmentsResourceService.getAttachmentsSelfLink(resource)
+      || AttachmentsResourceService.getAddAttachmentsLink(resource)
       || this.apiV3Service.attachments.path;
   }
 
   private getDirectUploadLink(resource:HalResource):string|null {
-    const links = resource.$links as unknown&{ prepareAttachment:HalLink };
+    const links = resource.$links as { prepareAttachment:HalLink };
 
     if (links.prepareAttachment) {
       return links.prepareAttachment.href as string;
@@ -193,9 +202,13 @@ export class AttachmentsResourceService extends ResourceStoreService<IAttachment
     return null;
   }
 
-  private static getAttachmentsSelfLink(resource:HalResource):string|null {
-    const attachments = resource.attachments as unknown&{ href?:string };
-    return attachments?.href || null;
+  private static getAddAttachmentsLink(resource:HalResource):string|null {
+    if (isNewResource(resource)) {
+      return null;
+    }
+
+    const link = resource.addAttachment as { href?:string };
+    return link?.href || null;
   }
 
   protected createStore():ResourceStore<IAttachment> {

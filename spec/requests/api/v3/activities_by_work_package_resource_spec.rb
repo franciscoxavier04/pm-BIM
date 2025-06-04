@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,7 +31,7 @@
 require "spec_helper"
 require "rack/test"
 
-RSpec.describe API::V3::Activities::ActivitiesByWorkPackageAPI do
+RSpec.describe API::V3::Activities::ActivitiesByWorkPackageAPI, with_ee: [:internal_comments] do # rubocop:disable RSpec/SpecFilePathFormat
   include API::V3::Utilities::PathHelper
 
   describe "activities" do
@@ -39,27 +41,68 @@ RSpec.describe API::V3::Activities::ActivitiesByWorkPackageAPI do
     let(:current_user) do
       create(:user, member_with_roles: { project => role })
     end
+    let(:admin) { create(:admin) }
     let(:role) { create(:project_role, permissions:) }
-    let(:permissions) { %i(view_work_packages add_work_package_notes) }
+    let(:permissions) do
+      %i(view_work_packages add_work_package_comments view_internal_comments)
+    end
 
     before do
       allow(User).to receive(:current).and_return(current_user)
     end
 
     describe "GET /api/v3/work_packages/:id/activities" do
-      before do
-        get api_v3_paths.work_package_activities work_package.id
+      context "when activities do not include internal journals" do
+        before do
+          get api_v3_paths.work_package_activities work_package.id
+        end
+
+        it "succeeds" do
+          expect(last_response).to have_http_status :ok
+        end
+
+        context "when not allowed to see work package" do
+          let(:current_user) { create(:user) }
+
+          it "fails with HTTP Not Found" do
+            expect(last_response).to have_http_status :not_found
+          end
+        end
       end
 
-      it "succeeds" do
-        expect(last_response).to have_http_status :ok
-      end
+      context "when activities include internal journals" do
+        let!(:internal_note) do
+          create(:work_package_journal,
+                 journable: work_package,
+                 user: admin,
+                 notes: "Internal comment",
+                 internal: true,
+                 version: 2)
+        end
 
-      context "not allowed to see work package" do
-        let(:current_user) { create(:user) }
+        before do
+          project.enabled_internal_comments = true
+          project.save!
+        end
 
-        it "fails with HTTP Not Found" do
-          expect(last_response).to have_http_status :not_found
+        context "and user has the permission to see it" do
+          it "includes internal activities" do
+            get api_v3_paths.work_package_activities work_package.id
+            expect(last_response.body).to include("Internal comment")
+          end
+        end
+
+        context "and user does not have the permission to see it" do
+          before do
+            role.role_permissions
+              .find_by(permission: "view_internal_comments")
+              .destroy
+          end
+
+          it "does not include internal activities" do
+            get api_v3_paths.work_package_activities work_package.id
+            expect(last_response.body).not_to include("Internal comment")
+          end
         end
       end
     end
@@ -67,7 +110,7 @@ RSpec.describe API::V3::Activities::ActivitiesByWorkPackageAPI do
     describe "POST /api/v3/work_packages/:id/activities" do
       let(:work_package) { create(:work_package) }
 
-      shared_context "create activity" do
+      shared_context "create activity" do # rubocop:disable RSpec/ContextWording
         before do
           header "Content-Type", "application/json"
           post api_v3_paths.work_package_activities(work_package.id),
@@ -103,6 +146,67 @@ RSpec.describe API::V3::Activities::ActivitiesByWorkPackageAPI do
           expect(last_response.body)
             .to be_json_eql("Subject can't be blank.".to_json)
             .at_path("message")
+        end
+      end
+
+      context "when creating an internal comment" do
+        shared_context "to create internal comment" do |internal: false|
+          before do
+            header "Content-Type", "application/json"
+            post api_v3_paths.work_package_activities(work_package.id),
+                 { comment: { raw: comment }, internal: }.to_json
+          end
+        end
+
+        context "and the user has the permission to create internal comments" do
+          it_behaves_like "valid activity request" do
+            let(:permissions) { %i(view_work_packages view_internal_comments add_internal_comments) }
+            let(:status_code) { 201 }
+
+            include_context "to create internal comment", internal: true
+
+            it "creates an internal comment" do
+              expect(last_response.body).to be_json_eql(true.to_json).at_path("internal")
+            end
+          end
+
+          it_behaves_like "valid activity request" do
+            let(:permissions) { %i(view_work_packages view_internal_comments add_internal_comments) }
+            let(:status_code) { 201 }
+
+            include_context "to create internal comment", internal: false
+
+            it "creates an internal comment" do
+              expect(last_response.body).to be_json_eql(false.to_json).at_path("internal")
+            end
+          end
+
+          it_behaves_like "valid activity request" do
+            let(:permissions) { %i(view_work_packages view_internal_comments add_internal_comments) }
+            let(:status_code) { 201 }
+
+            include_context "to create internal comment", internal: nil
+
+            it "creates an internal comment" do
+              expect(last_response.body).to be_json_eql(false.to_json).at_path("internal")
+            end
+          end
+        end
+
+        context "and the user does not have the permission to create internal comments" do
+          let(:permissions) { %i(view_work_packages add_work_package_comments view_internal_comments) }
+
+          include_context "to create internal comment", internal: true
+
+          it "fails with HTTP Unprocessable Entity" do
+            expect(last_response).to have_http_status :unprocessable_entity
+          end
+
+          it "notes the error" do
+            expect(last_response.body)
+              .to be_json_eql("Internal Journal may not be accessed.".to_json)
+              .at_path("message")
+          end
         end
       end
     end

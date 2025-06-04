@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -649,14 +651,14 @@ RSpec.describe Timestamp do
     let(:timestamp) { described_class.new("PT10S") }
 
     it "raises an error because the query interface requires a Time type" do
-      expect { subject }.to raise_error TypeError
+      expect { subject.to_a }.to raise_error TypeError
     end
 
     describe "when converting the timestamp to_time" do
       subject { Query.where("updated_at < ?", timestamp.to_time) }
 
       it "raises no error" do
-        expect { subject }.not_to raise_error
+        expect { subject.to_a }.not_to raise_error
       end
     end
   end

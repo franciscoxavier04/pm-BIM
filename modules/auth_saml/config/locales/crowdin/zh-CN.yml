@@ -1,29 +1,28 @@
 zh-CN:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
         display_name: 名称
         identifier: 标识符
         secret: 密钥
         scope: 范围
-        assertion_consumer_service_url: ACS (断言消费服务) URL
-        limit_self_registration: 限制自注册
+        assertion_consumer_service_url: ACS（断言消费者服务）URL
+        limit_self_registration: 限制自行注册
         sp_entity_id: 服务实体 ID
         metadata_url: 身份提供商元数据URL
         name_identifier_format: 名称标识符格式
-        idp_sso_service_url: 身份供应商登录终端
-        idp_slo_service_url: 身份供应商注销终端
+        idp_sso_service_url: 身份供应商登录端点
+        idp_slo_service_url: 身份供应商注销端点
         idp_cert: 身份提供商公共证书
-        authn_requests_signed: 签名 SAML 认证请求
+        authn_requests_signed: 签署 SAML AuthnRequests
         want_assertions_signed: 需要签名回复
-        want_assertions_encrypted: 需要加密响应
-        certificate: OpenProject 用于 SAML 请求的证书
+        want_assertions_encrypted: 需要加密回复
+        certificate: OpenProject 为 SAML 请求使用的证书
         private_key: OpenProject SAML 请求的相应私钥
         signature_method: 签名算法
         digest_method: 摘要算法
         format: "格式"
         icon: "自定义图标"
-  activerecord:
     errors:
       models:
         saml/provider:
@@ -33,6 +32,7 @@ zh-CN:
           unmatched_private_key: "不属于给定证书"
   saml:
     menu_title: SAML 提供商
+    delete_title: 删除 SAML 提供商
     info:
       title: "SAML 协议配置参数"
       description: >
@@ -54,7 +54,6 @@ zh-CN:
       label_edit: 编辑 SAML 身份提供商 %{name}
       label_uid: 内部用户ID
       label_mapping: 映射
-      label_mapping_for: "映射： %{attribute}"
       label_requested_attribute_for: "请求属性： %{attribute}"
       no_results_table: 尚未定义 SAML 身份提供商。
       plural: SAML 身份供应商
@@ -65,7 +64,8 @@ zh-CN:
         以下字段控制由 SAML 身份提供商提供的属性以在 OpenProject 中提供用户属性
       metadata:
         dialog: "这是可用的 OpenProject SAML 元数据的 URL。可选使用它来配置您的身份提供商："
-      upsale:
+      upsell:
+        title: "使用 SAML 的单点登录 (SSO)"
         description: 将 OpenProject 连接到 SAML 身份提供商
       request_attributes:
         title: '请求的属性'
@@ -98,7 +98,7 @@ zh-CN:
       display_name: >
         提供商的名称。这将作为登录按钮和供应商列表显示。
       metadata_none: >
-        Your identity provider does not have a metadata endpoint or XML download option. You can configure it manually.
+        您的身份提供商没有元数据端点或 XML 下载选项。您可以手动配置它。
       metadata_url: >
         您的身份提供商提供了一个元数据 URL 。
       metadata_xml: >

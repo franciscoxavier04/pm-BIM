@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -63,8 +65,7 @@ RSpec.describe WorkPackages::Progress::ApplyTotalPercentCompleteModeChangeJob do
 
     job.perform_now(cause_type:, mode:)
 
-    table.work_packages.map(&:reload)
-    expect_work_packages(table.work_packages, to)
+    expect_work_packages_after_reload(table.work_packages, to)
 
     table.work_packages
   end

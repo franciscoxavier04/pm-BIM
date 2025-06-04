@@ -12,7 +12,8 @@ sidebar_navigation:
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Package-based installation](#package-based-installation-debrpm) | How to upgrade a package-based installation of OpenProject.  |
 | [Docker-based installation](#compose-based-installation)     | How to upgrade a Docker-based installation of OpenProject.   |
-| [Upgrade notes from 9.x](#upgrade-notes-from-9x)             | How to upgrade from OpenProject 9.x or greater to OpenProject 13.x and higher |
+| [Upgrade notes from 10.5.x](#upgrade-notes-from-105x)        | How to upgrade from OpenProject 10.5.x or greater to OpenProject 13.x and higher |
+| [Upgrade notes from 9.x to 10.4.x](#upgrade-notes-from-9x-to-104x)             | How to upgrade from OpenProject 9.x or to OpenProject 10.4.x|
 | [Upgrade notes for 8.x to 9.x](#upgrade-notes-for-8x-to-9x)  | How to upgrade from OpenProject 8.x to OpenProject 9.x.      |
 | [Upgrade notes for 7.x to 8.x](#upgrade-notes-for-openproject-7x-to-8x) | How to upgrade from OpenProject 7.x to OpenProject 8.x.      |
 
@@ -38,14 +39,14 @@ sudo openproject configure
 
 On Ubuntu 22.04., you might see warnings like these:
 
-> W: https://dl.packager.io/srv/deb/opf/openproject/stable/14/ubuntu/dists/22.04/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+> W: `https://dl.packager.io/srv/deb/opf/openproject/stable/15/ubuntu/dists/22.04/InRelease`: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
 
 This message is due to Ubuntu 22.04 switching to a more secure way of adding repository sources, which is not yet supported by the repository provider. There is ongoing work on this item, the message is for information only.
 
 If you get an error like the following:
 
-> E: Repository 'https://dl.packager.io/srv/deb/opf/openproject/stable/14/ubuntu 22.04 InRelease' changed its 'Origin' value from '' to 'https://packager.io/gh/opf/openproject'
-> E: Repository 'https://dl.packager.io/srv/deb/opf/openproject/stable/14/ubuntu 22.04 InRelease' changed its 'Label' value from '' to 'Ubuntu 22.04 packages for opf/openproject'
+> E: Repository '`https://dl.packager.io/srv/deb/opf/openproject/stable/15/ubuntu` 22.04 InRelease' changed its 'Origin' value from '' to '`https://packager.io/gh/opf/openproject`'
+> E: Repository '`https://dl.packager.io/srv/deb/opf/openproject/stable/15/ubuntu` 22.04 InRelease' changed its 'Label' value from '' to 'Ubuntu 22.04 packages for opf/openproject'
 
 These two messages messages are expected, due to a change in Origin and Label repository metadata, to better explain what the repository is about. You should allow the change, and/or run `sudo apt-get update --allow-releaseinfo-change` for the update to go through.
 
@@ -79,7 +80,6 @@ The necessary steps are the same as setting up the package source for the first 
 | [Debian 12 Bookworm](../../installation/packaged/#debian-12)             |
 | [Debian 11 Bullseye](../../installation/packaged/#debian-11)             |
 | [CentOS/RHEL 9.x](../../installation/packaged/#centos-9--rhel-9)         |
-| [CentOS/RHEL 8.x](../../installation/packaged/#centos-8--rhel-8)         |
 | [Suse Linux Enterprise Server 15](../../installation/packaged/#sles-15)  |
 
 After following the steps to update the package source, updating the openproject package and running `openproject configure`, your system will be up to date.
@@ -97,7 +97,9 @@ If you want to perform changes to your configuration or are unsure what steps ar
 Note that this still takes previous values into consideration. Values that should not change from your previous configurations can be skipped by pressing `<Return>`. This also applies for steps with passwords, which are shown as empty even though they may have a value. Skipping those steps equals to re-use the existing value.
 
 ## Compose-based installation
-> **Note**: Please make sure the git repository with the docker-compose.yml file is up-to-date. If you're using an old version of the repository, the update might fail.
+
+> [!NOTE]
+> Please make sure the git repository with the docker-compose.yml file is up-to-date. If you're using an old version of the repository, the update might fail.
 
 When using the Compose-based docker installation, you can simply do the following:
 
@@ -117,7 +119,7 @@ When using the all-in-one docker container, you need to perform the following st
 
 ```shell
 docker pull openproject/openproject:VERSION
-# e.g. docker pull openproject/openproject:14
+# e.g. docker pull openproject/openproject:15
 ```
 
 Then stop and remove your existing container (we assume that you are running with the recommended production setup here):
@@ -161,11 +163,16 @@ sudo chown -R 102 /volume1/openproject/*
 After that it's simply a matter of launching the new container mounted with the copied `pgdata` and `assets` folders
 as described in the [installation section](../../installation/docker/).
 
-## Upgrade notes from 9.x
+## Upgrade notes from 10.5.x
 
-Generally, there are no special steps or caveats when upgrading to OpenProject 13.x or higher from any version greater than 9.x. Simply follow the upgrade steps outlined above for your type of installation.
+Generally, there are no special steps or caveats when upgrading to OpenProject 13.x or higher from any version greater than 10.5.x. Simply follow the upgrade steps outlined above for your type of installation.
 
 If you are using Docker, you should mount your OpenProject volume at `/var/openproject/assets` instead of `/var/db/openproject`
+
+## Upgrade notes from 9.x to 10.4.x
+
+When upgrading from OpenProject <= 10.4.x to a newer version, you might need to remove the old cron jobs from ```/etc/cron.d/```.  
+You can list all OpenProject related cronjobs by using the ```sudo ls  /etc/cron.d/openproject-*``` command.
 
 ## Upgrade notes for 8.x to 9.x
 
@@ -190,21 +197,21 @@ you will need to adjust that package source.
 
 #### APT-based systems (Debian, Ubuntu)
 
- - Update the reference to `opf/openproject-ce` in `/etc/apt/sources.list.d/openproject.list` to `opf/openproject`.
- - Update the reference to `stable/8` in `/etc/apt/sources.list.d/openproject.list` to `stable/9`.
- - Perform the Upgrade steps as mentioned above in *Upgrading your OpenProject installation*
+- Update the reference to `opf/openproject-ce` in `/etc/apt/sources.list.d/openproject.list` to `opf/openproject`.
+- Update the reference to `stable/8` in `/etc/apt/sources.list.d/openproject.list` to `stable/9`.
+- Perform the Upgrade steps as mentioned above in *Upgrading your OpenProject installation*
 
 #### YUM-based systems (CentOS, RHEL)
 
- - Update the reference to `opf/openproject-ce` in `/etc/yum.repos.d/openproject.repo` to `opf/openproject`.
- - Update the reference to `stable/8` in `/etc/yum.repos.d/openproject.repo` to `stable/9`.
- - Perform the Upgrade steps as mentioned above in *Upgrading your OpenProject installation*
+- Update the reference to `opf/openproject-ce` in `/etc/yum.repos.d/openproject.repo` to `opf/openproject`.
+- Update the reference to `stable/8` in `/etc/yum.repos.d/openproject.repo` to `stable/9`.
+- Perform the Upgrade steps as mentioned above in *Upgrading your OpenProject installation*
 
 #### SUSE Linux Enterprise Server 12
 
- - Update the reference to `opf/openproject-ce` in `/etc/zypp/repos.d/openproject.repo` to `opf/openproject`.
- - Update the reference to `stable/8` in `/etc/zypp/repos.d/openproject.repo` to `stable/9`.
- - Perform the Upgrade steps as mentioned above in *Upgrading your OpenProject installation*
+- Update the reference to `opf/openproject-ce` in `/etc/zypp/repos.d/openproject.repo` to `opf/openproject`.
+- Update the reference to `stable/8` in `/etc/zypp/repos.d/openproject.repo` to `stable/9`.
+- Perform the Upgrade steps as mentioned above in *Upgrading your OpenProject installation*
 
 ## Upgrade notes for OpenProject 7.x to 8.x
 

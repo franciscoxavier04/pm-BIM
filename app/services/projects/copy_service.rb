@@ -33,7 +33,7 @@ module Projects
     include Projects::Concerns::NewProjectService
 
     def self.copy_dependencies
-      [
+      dependencies = [
         ::Projects::Copy::MembersDependentService,
         ::Projects::Copy::VersionsDependentService,
         ::Projects::Copy::CategoriesDependentService,
@@ -43,8 +43,15 @@ module Projects
         ::Projects::Copy::QueriesDependentService,
         ::Projects::Copy::BoardsDependentService,
         ::Projects::Copy::OverviewDependentService,
+        ::Projects::Copy::PhasesDependentService,
         ::Projects::Copy::StoragesDependentService
       ]
+
+      if OpenProject::FeatureDecisions.stages_and_gates_active?
+        dependencies
+      else
+        dependencies - [::Projects::Copy::PhasesDependentService]
+      end
     end
 
     # Project Folders and File Links aren't dependent services anymore,

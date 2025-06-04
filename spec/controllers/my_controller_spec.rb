@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -69,7 +71,7 @@ RSpec.describe MyController do
       end
 
       it "shows an error message" do
-        assert_response :success
+        expect(response).to have_http_status :unprocessable_entity
         assert_template "password"
         expect(user.errors.attribute_names).to eq([:password_confirmation])
         expect(user.errors.map(&:message).flatten)
@@ -90,7 +92,7 @@ RSpec.describe MyController do
       end
 
       it "shows an error message" do
-        assert_response :success
+        expect(response).to have_http_status :unprocessable_entity
         assert_template "password"
         expect(flash[:error]).to eq("Wrong password")
       end

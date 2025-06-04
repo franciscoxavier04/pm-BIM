@@ -61,24 +61,24 @@ module Admin
     def show_plugin
       @partial = @plugin.settings[:partial]
       @settings = Setting["plugin_#{@plugin.id}"]
+
+      page_title_key = @plugin.settings[:page_title_key]
+      @page_title = page_title_key ? I18n.t(page_title_key) : @plugin.name
+
+      additional_breadcrumb_elements = @plugin.settings[:breadcrumb_elements]
+      if additional_breadcrumb_elements.present?
+        @breadcrumb_elements = if additional_breadcrumb_elements.respond_to?(:call)
+                                 instance_exec(&additional_breadcrumb_elements)
+                               else
+                                 additional_breadcrumb_elements
+                               end
+      end
     end
 
     def update_plugin
       Setting["plugin_#{@plugin.id}"] = params[:settings].permit!.to_h
       flash[:notice] = I18n.t(:notice_successful_update)
       redirect_to action: :show_plugin, id: @plugin.id
-    end
-
-    def show_local_breadcrumb
-      false
-    end
-
-    def default_breadcrumb
-      if @plugin
-        @plugin.name
-      else
-        I18n.t(:label_setting_plural)
-      end
     end
 
     protected

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -34,6 +36,7 @@ RSpec.shared_context "with seeded projects, members and project custom fields" d
   let!(:second_version) { create(:version, name: "Version 2", project:) }
   let!(:third_version) { create(:version, name: "Version 3", project:) }
 
+  shared_let(:standard) { create(:standard_global_role) }
   shared_let(:reader_role_without_project_attributes) do
     create(:project_role, permissions: %i[view_work_packages])
   end

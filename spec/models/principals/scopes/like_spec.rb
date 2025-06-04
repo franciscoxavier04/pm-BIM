@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -73,6 +75,11 @@ RSpec.describe Principals::Scopes::Like do
     it "finds by mail" do
       expect(Principal.like("mail"))
         .to contain_exactly(mail, mail2)
+    end
+
+    it "does not finds by mail when mail disabled" do
+      expect(Principal.like("mail", email: false))
+        .to be_empty
     end
   end
 end

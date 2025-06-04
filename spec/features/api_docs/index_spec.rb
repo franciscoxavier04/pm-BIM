@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "REST API docs index page", :js do
+RSpec.describe "REST API docs index page", :js, :selenium do
   subject(:visit_docs_page) { visit(api_docs_path) }
 
   context "with anonymous user" do

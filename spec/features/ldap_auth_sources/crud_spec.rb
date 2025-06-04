@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "CRUD LDAP connections", :js, :with_cuprite do
+RSpec.describe "CRUD LDAP connections", :js do
   shared_let(:admin) { create(:admin) }
   let(:ldap_page) { Pages::Admin::LdapAuthSources::Index.new }
 

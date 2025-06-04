@@ -30,7 +30,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Work Package Sharing Enterprise Restriction", :js, :with_cuprite do
+RSpec.describe "Work Package Sharing Enterprise Restriction", :js do
   shared_let(:view_work_package_role)    { create(:view_work_package_role)    }
   shared_let(:comment_work_package_role) { create(:comment_work_package_role) }
   shared_let(:edit_work_package_role)    { create(:edit_work_package_role)    }
@@ -59,8 +59,8 @@ RSpec.describe "Work Package Sharing Enterprise Restriction", :js, :with_cuprite
   end
 
   context "without an enterprise token" do
-    it "renders an upsale banner" do
-      share_modal.expect_upsale_banner
+    it "renders an upsell banner" do
+      share_modal.expect_upsell_banner
     end
   end
 

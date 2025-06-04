@@ -33,6 +33,7 @@ require_module_spec_helper
 
 RSpec.describe "OAuth Access Grant Nudge upon adding a storage to a project",
                :js,
+               :selenium,
                :webmock do
   shared_let(:user) { create(:user, preferences: { time_zone: "Etc/UTC" }) }
 
@@ -75,7 +76,7 @@ RSpec.describe "OAuth Access Grant Nudge upon adding a storage to a project",
     expect(page).to have_checked_field("New folder with automatically managed permissions")
     click_on("Add")
 
-    expect(page).to have_css("h1", text: "Files")
+    expect(page).to have_heading "Files"
     expect(page).to have_text(storage.name)
 
     within_test_selector("oauth-access-grant-nudge-modal") do

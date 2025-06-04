@@ -1,6 +1,6 @@
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -63,6 +63,8 @@ module Saml
 
       attribute :authn_requests_signed
       validate :valid_certificate_key_pair
+
+      attribute :limit_self_registration
 
       %i[mapping_mail mapping_login mapping_firstname mapping_lastname].each do |attr|
         attribute attr

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -70,9 +72,9 @@ RSpec.describe "Login" do
         # first login
         login_with(" #{user.login} ", user_password)
 
-        # on the my page
+        # on the home path
         expect(page)
-          .to have_current_path my_page_path
+          .to have_current_path home_path
       end
     end
 
@@ -126,7 +128,7 @@ RSpec.describe "Login" do
       login_with(user.login, user_password)
 
       expect(page)
-        .to have_current_path my_page_path
+        .to have_current_path home_path
     end
 
     context "autologin",

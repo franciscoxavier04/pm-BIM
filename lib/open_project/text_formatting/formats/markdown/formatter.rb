@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -53,6 +55,7 @@ module OpenProject::TextFormatting::Formats::Markdown
         OpenProject::TextFormatting::Filters::SyntaxHighlightFilter,
         OpenProject::TextFormatting::Filters::AttachmentFilter,
         OpenProject::TextFormatting::Filters::AutolinkFilter,
+        OpenProject::TextFormatting::Filters::AutolinkCustomProtocolsFilter,
         OpenProject::TextFormatting::Filters::RelativeLinkFilter,
         OpenProject::TextFormatting::Filters::LinkAttributeFilter,
         OpenProject::TextFormatting::Filters::FigureWrappedFilter,

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #  OpenProject is an open source project management software.
 #  Copyright (C) the OpenProject GmbH
 #
@@ -57,6 +59,7 @@ RSpec.describe API::V3::PlaceholderUsers::PlaceholderUserSqlRepresenter, "render
         _type: "PlaceholderUser",
         id: placeholder_user.id,
         name: placeholder_user.name,
+        email: "",
         _links: {
           self: {
             href: api_v3_paths.placeholder_user(placeholder_user.id),

@@ -28,7 +28,7 @@ module LdapGroups
         flash[:notice] = I18n.t(:notice_successful_create)
         redirect_to action: :index
       else
-        render action: :new
+        render action: :new, status: :unprocessable_entity
       end
     rescue ActionController::ParameterMissing
       render_400
@@ -52,13 +52,11 @@ module LdapGroups
 
     def find_group
       @group = SynchronizedGroup.find(params[:ldap_group_id])
-    rescue ActiveRecord::RecordNotFound
-      render_404
     end
 
     def check_ee
       unless EnterpriseToken.allows_to?(:ldap_groups)
-        render template: "ldap_groups/synchronized_groups/upsale"
+        render template: "ldap_groups/synchronized_groups/upsell"
         false
       end
     end
@@ -67,12 +65,6 @@ module LdapGroups
       params
         .require(:synchronized_group)
         .permit(:dn, :group_id, :ldap_auth_source_id, :sync_users)
-    end
-
-    def default_breadcrumb; end
-
-    def show_local_breadcrumb
-      false
     end
   end
 end

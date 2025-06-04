@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -245,8 +247,8 @@ RSpec.describe Token::ICal do
     end
 
     # TODO: following code is copy pasted from hashed_token_spec
-    # in order to make sure the token behaves in the same way in it's basics
-    # cheching for inheritance does not safely check if the basic behaviour is the same
+    # in order to make sure the token behaves in the same way in its basic
+    # checking for inheritance does not safely check if the basic behaviour is the same
     # is there a better way of reusing the specs from hashed_token_spec?
     describe "token value" do
       it "is generated on a new instance" do

@@ -28,16 +28,15 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-# OAuthClientToken stores the OAuth2 Bearer+Refresh tokens that
-# an OAuth2 server (Nextcloud or similar) provides after a user
-# has granted access.
 class OAuthClientToken < ApplicationRecord
-  # OAuthClientToken sits between User and OAuthClient
   belongs_to :user, optional: false
   belongs_to :oauth_client, optional: false
+  alias_method :auth_source, :oauth_client
 
   validates :user, uniqueness: { scope: :oauth_client }
 
   validates :access_token, presence: true
   validates :refresh_token, presence: true
+
+  scope :for_user_and_client, ->(user, client) { where(user:, oauth_client: client) }
 end

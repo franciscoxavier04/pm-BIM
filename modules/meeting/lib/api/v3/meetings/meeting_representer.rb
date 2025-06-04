@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -46,10 +47,6 @@ module API
                  getter: ->(*) {
                    lock_version.to_i
                  }
-
-        property :type,
-                 as: :meeting_type,
-                 getter: ->(*) { type }
 
         date_time_property :start_time
         date_time_property :end_time

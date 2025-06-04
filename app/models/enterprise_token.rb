@@ -37,16 +37,24 @@ class EnterpriseToken < ApplicationRecord
       connection.data_source_exists? table_name
     end
 
-    def allows_to?(action)
-      Authorization::EnterpriseService.new(current).call(action).result
+    def allows_to?(feature)
+      Authorization::EnterpriseService.new(current).call(feature).result
     end
 
     def active?
       current && !current.expired?
     end
 
-    def show_banners?
-      OpenProject::Configuration.ee_manager_visible? && !active?
+    def hide_banners?
+      OpenProject::Configuration.ee_hide_banners?
+    end
+
+    def banner_type_for(feature:)
+      if !active?
+        :no_token
+      elsif !allows_to?(feature)
+        :upsell
+      end
     end
 
     def set_current_token
@@ -76,6 +84,10 @@ class EnterpriseToken < ApplicationRecord
            :reprieve_days,
            :reprieve_days_left,
            :restrictions,
+           :available_features,
+           :plan,
+           :features,
+           :version,
            to: :token_object
 
   def token_object

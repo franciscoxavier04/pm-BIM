@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -40,70 +42,59 @@ module OpenProject::Meeting
              bundled: true do
       project_module :meetings do
         permission :view_meetings,
-                   { meetings: %i[index show check_for_updates download_ics participants_dialog history],
-                     meeting_agendas: %i[history show diff],
-                     meeting_minutes: %i[history show diff],
+                   {
+                     meetings: %i[index show check_for_updates download_ics participants_dialog
+                                  generate_pdf_dialog history],
                      "meetings/menus": %i[show],
-                     work_package_meetings_tab: %i[index count] },
+                     work_package_meetings_tab: %i[index count],
+                     recurring_meetings: %i[index show new create download_ics]
+                   },
                    permissible_on: :project
         permission :create_meetings,
-                   { meetings: %i[new create copy],
-                     "meetings/menus": %i[show] },
+                   {
+                     meetings: %i[new create copy new_dialog fetch_timezone],
+                     recurring_meetings: %i[new create copy init template_completed],
+                     "recurring_meetings/schedule": %i[update_text],
+                     "meetings/menus": %i[show]
+                   },
                    permissible_on: :project,
                    require: :member,
                    contract_actions: { meetings: %i[create] }
         permission :edit_meetings,
                    {
-                     meetings: %i[edit cancel_edit update update_title details_dialog update_details update_participants],
+                     meetings: %i[edit cancel_edit update update_title change_state
+                                  details_dialog update_details update_participants],
+                     recurring_meetings: %i[edit cancel_edit update update_title details_dialog update_details
+                                            notify end_series end_series_dialog],
                      work_package_meetings_tab: %i[add_work_package_to_meeting_dialog add_work_package_to_meeting]
                    },
                    permissible_on: :project,
                    require: :member
         permission :delete_meetings,
-                   { meetings: [:destroy] },
-                   permissible_on: :project,
-                   require: :member
-        permission :meetings_send_invite,
-                   { meetings: [:icalendar] },
-                   permissible_on: :project,
-                   require: :member
-        permission :create_meeting_agendas,
                    {
-                     meeting_agendas: %i[update preview]
+                     meetings: %i[delete_dialog destroy],
+                     recurring_meetings: %i[delete_dialog destroy delete_scheduled_dialog destroy_scheduled]
                    },
+                   permissible_on: :project,
+                   require: :member
+        permission :send_meeting_invites_and_outcomes,
+                   { meetings: %i[notify icalendar] },
                    permissible_on: :project,
                    require: :member
         permission :manage_agendas,
                    {
-                     meeting_agenda_items: %i[new cancel_new create edit cancel_edit update destroy drop move],
-                     meeting_sections: %i[new cancel_new create edit cancel_edit update destroy drop move]
+                     meetings: %i[change_state],
+                     meeting_agenda_items: %i[new cancel_new create edit cancel_edit update destroy drop move
+                                              move_to_next_meeting],
+                     meeting_sections: %i[new cancel_new create edit cancel_edit update destroy drop move
+                                          clear_backlog clear_backlog_dialog]
                    },
                    permissible_on: :project, # TODO: Change this to :meeting when MeetingRoles are available
                    require: :member
-        permission :close_meeting_agendas,
+        permission :manage_outcomes,
                    {
-                     meetings: %i[change_state],
-                     meeting_agendas: %i[close open]
+                     meeting_outcomes: %i[new cancel_new create edit cancel_edit update destroy]
                    },
-                   permissible_on: :project,
-                   require: :member
-        permission :send_meeting_agendas_notification,
-                   {
-                     meetings: [:notify],
-                     meeting_agendas: [:notify]
-                   },
-                   permissible_on: :project,
-                   require: :member
-        permission :send_meeting_agendas_icalendar,
-                   { meeting_agendas: [:icalendar] },
-                   permissible_on: :project,
-                   require: :member
-        permission :create_meeting_minutes,
-                   { meeting_minutes: %i[update preview] },
-                   permissible_on: :project,
-                   require: :member
-        permission :send_meeting_minutes_notification,
-                   { meeting_minutes: %i[notify] },
                    permissible_on: :project,
                    require: :member
       end
@@ -115,8 +106,7 @@ module OpenProject::Meeting
       menu :project_menu,
            :meetings, { controller: "/meetings", action: "index" },
            caption: :project_module_meetings,
-           after: :wiki,
-           before: :members,
+           after: :boards,
            icon: "comment-discussion"
 
       menu :project_menu,
@@ -145,14 +135,14 @@ module OpenProject::Meeting
            :meetings, { controller: "/meetings", action: "index", project_id: nil },
            context: :modules,
            caption: :label_meeting_plural,
-           last: true,
+           after: :boards,
            icon: "comment-discussion",
            if: should_render_global_menu_item
 
       menu :global_menu,
            :meetings, { controller: "/meetings", action: "index", project_id: nil },
            caption: :label_meeting_plural,
-           last: true,
+           after: :boards,
            icon: "comment-discussion",
            if: should_render_global_menu_item
 
@@ -172,6 +162,13 @@ module OpenProject::Meeting
     patches [:Project]
     patch_with_namespace :BasicData, :SettingSeeder
 
+    replace_principal_references "Meeting" => %i[author_id],
+                                 "MeetingAgenda" => %i[author_id],
+                                 "MeetingMinutes" => %i[author_id],
+                                 "MeetingAgendaItem" => %i[author_id presenter_id],
+                                 "MeetingParticipant" => :user_id,
+                                 "MeetingOutcome" => :author_id
+
     extend_api_response(:v3, :work_packages, :work_package,
                         &::OpenProject::Meeting::Patches::API::WorkPackageRepresenter.extension)
 
@@ -184,6 +181,10 @@ module OpenProject::Meeting
       OpenProject::ProjectLatestActivity.register on: "Meeting"
 
       PermittedParams.permit(:search, :meetings)
+
+      ::Exports::Register.register do
+        single(::Meeting, Meetings::Exporter)
+      end
     end
 
     add_api_path :meetings do

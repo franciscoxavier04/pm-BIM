@@ -46,11 +46,13 @@ module API
       mount ::API::V3::Actions::ActionsAPI
       mount ::API::V3::Activities::ActivitiesAPI
       mount ::API::V3::Attachments::AttachmentsAPI
-      mount ::API::V3::Capabilities::CapabilitiesAPI
       mount ::API::V3::Backups::BackupsAPI
+      mount ::API::V3::Capabilities::CapabilitiesAPI
       mount ::API::V3::Categories::CategoriesAPI
       mount ::API::V3::Configuration::ConfigurationAPI
       mount ::API::V3::CustomActions::CustomActionsAPI
+      mount ::API::V3::CustomFields::CustomFieldsAPI
+      mount ::API::V3::CustomFields::Hierarchy::ItemAPI
       mount ::API::V3::CustomOptions::CustomOptionsAPI
       mount ::API::V3::Days::DaysAPI
       mount ::API::V3::Grids::GridsAPI
@@ -64,10 +66,13 @@ module API
       mount ::API::V3::Principals::PrincipalsAPI
       mount ::API::V3::Priorities::PrioritiesAPI
       mount ::API::V3::Projects::ProjectsAPI
+      mount ::API::V3::ProjectPhaseDefinitions::ProjectPhaseDefinitionsAPI
+      mount ::API::V3::ProjectPhases::ProjectPhasesAPI
       mount ::API::V3::Projects::Statuses::StatusesAPI
       mount ::API::V3::Queries::QueriesAPI
       mount ::API::V3::Render::RenderAPI
       mount ::API::V3::Relations::RelationsAPI
+      mount ::API::V3::Reminders::RemindersAPI
       mount ::API::V3::Repositories::RevisionsAPI
       mount ::API::V3::Roles::RolesAPI
       mount ::API::V3::Shares::SharesAPI

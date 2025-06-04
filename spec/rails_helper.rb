@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 
 ENV["RAILS_ENV"] ||= "test"
-require File.expand_path("../config/environment", __dir__)
+require_relative "../config/environment"
 require "factory_bot"
 require "factory_bot_rails"
 require "rspec/rails"
@@ -93,5 +95,5 @@ RSpec.configure do |config|
   config.include ActiveSupport::Testing::Assertions
   config.include ActiveJob::TestHelper
 
-  OpenProject::Configuration["attachments_storage_path"] = "tmp/files"
+  OpenProject::Configuration["attachments_storage_path"] = "tmp/files#{ENV.fetch('TEST_ENV_NUMBER', nil)}"
 end

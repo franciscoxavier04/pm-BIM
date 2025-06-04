@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -60,7 +62,7 @@ module Components
     def close!
       # make backdrop click an the pixel x:10,y:10
       page.find(".spot-modal-overlay").tap do |element|
-        if RSpec.current_example.metadata[:with_cuprite]
+        if using_cuprite?
           width = element.style("width")["width"].to_i
           height = element.style("height")["height"].to_i
         else

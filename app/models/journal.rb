@@ -34,6 +34,13 @@ class Journal < ApplicationRecord
   include ::JournalFormatter
   include ::Acts::Journalized::FormatHooks
   include Journal::Timestamps
+  include Reactable
+
+  # Inline attachments for Journal#notes aka comments
+  acts_as_attachable view_permission: :view_work_packages,
+                     add_on_new_permission: :add_work_package_comments,
+                     add_on_persisted_permission: :edit_own_work_package_comments,
+                     delete_permission: :edit_own_work_package_comments
 
   register_journal_formatter OpenProject::JournalFormatter::ActiveStatus
   register_journal_formatter OpenProject::JournalFormatter::AgendaItemDiff
@@ -49,6 +56,9 @@ class Journal < ApplicationRecord
   register_journal_formatter OpenProject::JournalFormatter::MeetingStartTime
   register_journal_formatter OpenProject::JournalFormatter::MeetingState
   register_journal_formatter OpenProject::JournalFormatter::MeetingWorkPackageId
+  register_journal_formatter OpenProject::JournalFormatter::ProjectPhaseActive
+  register_journal_formatter OpenProject::JournalFormatter::ProjectPhaseDates
+  register_journal_formatter OpenProject::JournalFormatter::ProjectPhaseDefinition
   register_journal_formatter OpenProject::JournalFormatter::ProjectStatusCode
   register_journal_formatter OpenProject::JournalFormatter::ScheduleManually
   register_journal_formatter OpenProject::JournalFormatter::SubprojectNamedAssociation
@@ -82,6 +92,7 @@ class Journal < ApplicationRecord
     work_package_parent_changed_times
     work_package_predecessor_changed_times
     work_package_related_changed_times
+    work_package_duplicate_closed
     working_days_changed
   ].freeze
 
@@ -93,12 +104,17 @@ class Journal < ApplicationRecord
   belongs_to :journable, polymorphic: true
   belongs_to :data, polymorphic: true, dependent: :destroy
 
+  has_many :agenda_item_journals, class_name: "Journal::MeetingAgendaItemJournal", dependent: :delete_all
   has_many :attachable_journals, class_name: "Journal::AttachableJournal", dependent: :delete_all
   has_many :customizable_journals, class_name: "Journal::CustomizableJournal", dependent: :delete_all
+  has_many :project_phase_journals, class_name: "Journal::ProjectPhaseJournal", dependent: :delete_all
   has_many :storable_journals, class_name: "Journal::StorableJournal", dependent: :delete_all
-  has_many :agenda_item_journals, class_name: "Journal::MeetingAgendaItemJournal", dependent: :delete_all
 
   has_many :notifications, dependent: :destroy
+
+  include ::Scopes::Scoped
+
+  scopes :with_sequence_version
 
   # Scopes to all journals excluding the initial journal - useful for change
   # logs like the history on issue#show
@@ -107,6 +123,8 @@ class Journal < ApplicationRecord
   scope :for_wiki_page, -> { where(journable_type: "WikiPage") }
   scope :for_work_package, -> { where(journable_type: "WorkPackage") }
   scope :for_meeting, -> { where(journable_type: "Meeting") }
+
+  alias_attribute :internal, :restricted
 
   # In conjunction with the included Comparable module, allows comparison of journal records
   # based on their corresponding version numbers, creation timestamps and IDs.
@@ -135,6 +153,22 @@ class Journal < ApplicationRecord
     end
   end
 
+  def attachments_visible?(user = User.current)
+    if internal?
+      super && user.allowed_in_project?(:view_internal_comments, project)
+    else
+      super
+    end
+  end
+
+  def visible?(user = User.current)
+    if internal?
+      user.allowed_in_project?(:view_internal_comments, project)
+    else
+      journable.visible?(user)
+    end
+  end
+
   def editable_by?(user)
     journable.journal_editable_by?(self, user)
   end
@@ -156,11 +190,13 @@ class Journal < ApplicationRecord
   end
 
   def successor
-    @successor ||= self.class
-                       .where(journable_type:, journable_id:)
-                       .where("#{self.class.table_name}.version > ?", version)
-                       .order(version: :asc)
-                       .first
+    return @successor if defined?(@successor)
+
+    @successor = self.class
+                     .where(journable_type:, journable_id:)
+                     .where("#{self.class.table_name}.version > ?", version)
+                     .order(version: :asc)
+                     .first
   end
 
   def noop?
@@ -171,6 +207,16 @@ class Journal < ApplicationRecord
     cause_type.present?
   end
 
+  def has_unread_notifications_for_user?(user)
+    # we optionally set the instance variable @unread_notifications in the ActivityEagerLoadingWrapper
+    # in order to avoid N+1 queries
+    if instance_variable_defined?(:@unread_notifications)
+      @unread_notifications&.any? { |notification| notification.recipient_id == user.id }
+    else
+      notifications.where(read_ian: false, recipient_id: user.id).any?
+    end
+  end
+
   private
 
   def has_file_links?
@@ -178,14 +224,16 @@ class Journal < ApplicationRecord
   end
 
   def predecessor
-    @predecessor ||= if initial?
-                       nil
-                     else
-                       self.class
-                         .where(journable_type:, journable_id:)
-                         .where("#{self.class.table_name}.version < ?", version)
-                         .order(version: :desc)
-                         .first
-                     end
+    return @predecessor if defined?(@predecessor)
+
+    @predecessor = if initial?
+                     nil
+                   else
+                     self.class
+                       .where(journable_type:, journable_id:)
+                       .where("#{self.class.table_name}.version < ?", version)
+                       .order(version: :desc)
+                       .first
+                   end
   end
 end

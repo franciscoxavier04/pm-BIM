@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require "spec_helper"
-require "support/pages/custom_fields"
+require "support/pages/custom_fields/index_page"
 
 def get_possible_values(amount)
   (1..amount).to_a.map { |x| "PREFIX #{x}" }
@@ -13,9 +15,9 @@ def get_possible_values_reordered(amount)
   get_possible_values(amount).sort
 end
 
-RSpec.describe "Reordering custom options of a list custom field", :js do
+RSpec.describe "Reordering custom options of a list custom field", :js, :selenium do
   let(:user) { create(:admin) }
-  let(:cf_page) { Pages::CustomFields.new }
+  let(:cf_page) { Pages::CustomFields::IndexPage.new }
 
   let!(:custom_field) do
     create(

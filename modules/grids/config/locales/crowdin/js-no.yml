@@ -4,9 +4,6 @@
       add_widget: 'Legg til widget'
       remove: 'Fjern widget'
       configure: 'Konfigurer widget'
-      upsale:
-        text: "Noen widgeter, som arbeidspakke-diagram-modulen, er bare tilgjengelig i Enterprise versjonen."
-        link: 'Enterprise edition.'
       widgets:
         missing_permission: "Du har ikke nødvendige tillatelser til å se denne widgeten."
         custom_text:
@@ -27,9 +24,6 @@
         project_description:
           title: 'Prosjektbeskrivelse'
           no_results: "Ingen beskrivelse har blitt skrevet ennå. Den kan oppgis i \"Prosjektinnstillinger\"."
-        project_details:
-          title: 'Prosjektdetaljer'
-          no_results: 'Ingen egendefinerte felt for prosjekter er definert'
         project_status:
           title: 'Prosjektstatus'
           not_started: 'Ikke påbegynt'

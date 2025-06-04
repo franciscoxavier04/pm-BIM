@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -260,6 +262,61 @@ RSpec.describe API::V3::Notifications::NotificationRepresenter, "rendering" do
     context "for a mention when embedding" do
       let(:reason) { :mentioned }
       let(:embed_links) { true }
+
+      it "has an empty details array" do
+        expect(generated)
+          .to have_json_size(0)
+                .at_path("_embedded/details")
+      end
+    end
+
+    shared_examples_for "embeds a Values::Property for reminder note" do
+      it "embeds a Values::Property" do
+        expect(generated)
+          .to be_json_eql("Values::Property".to_json)
+                .at_path("_embedded/details/0/_type")
+      end
+
+      it "has a note value for the `property` property" do
+        expect(generated)
+          .to be_json_eql("note".to_json)
+                .at_path("_embedded/details/0/property")
+      end
+
+      it "has a reminder`s note for the value" do
+        expect(generated)
+          .to be_json_eql(notification.reminder.note.to_json)
+                .at_path("_embedded/details/0/value")
+      end
+    end
+
+    context "for a reminder when embedding" do
+      let(:reminder) { build_stubbed(:reminder) }
+      let(:reason) { :reminder }
+      let(:embed_links) { true }
+
+      before do
+        allow(notification).to receive(:reminder).and_return(reminder)
+      end
+
+      it_behaves_like "embeds a Values::Property for reminder note"
+    end
+
+    context "for a reminder when not embedding" do
+      let(:reminder) { build_stubbed(:reminder) }
+      let(:reason) { :reminder }
+      let(:embed_links) { false }
+
+      before do
+        allow(notification).to receive(:reminder).and_return(reminder)
+      end
+
+      it_behaves_like "embeds a Values::Property for reminder note"
+    end
+
+    context "for a reminder with no notification" do
+      let(:reminder) { nil }
+      let(:reason) { :reminder }
 
       it "has an empty details array" do
         expect(generated)

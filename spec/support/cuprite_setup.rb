@@ -86,7 +86,17 @@ def register_better_cuprite(language, name: :"better_cuprite_#{language}")
       lang: language,
       "accept-lang": language,
       "no-sandbox": nil,
-      "disable-smooth-scrolling": true
+      "disable-smooth-scrolling": true,
+      # Disable timers being throttled in background pages/tabs. Useful for
+      # parallel test runs.
+      "disable-background-timer-throttling": nil,
+      # Normally, Chrome will treat a 'foreground' tab instead as backgrounded
+      # if the surrounding window is occluded (aka visually covered) by another
+      # window. This flag disables that. Useful for parallel test runs.
+      "disable-backgrounding-occluded-windows": nil,
+      # This disables non-foreground tabs from getting a lower process priority.
+      # Useful for parallel test runs.
+      "disable-renderer-backgrounding": nil
     }
 
     if ENV["OPENPROJECT_TESTING_AUTO_DEVTOOLS"].present?
@@ -105,24 +115,24 @@ end
 
 register_better_cuprite "en"
 
-MODULES_WITH_CUPRITE_ENABLED = %w[
-  avatars
-  backlogs
-  job_status
-  meeting
-].freeze
-
 RSpec.configure do |config|
-  config.define_derived_metadata(file_path: %r{/(#{MODULES_WITH_CUPRITE_ENABLED.join('|')})/spec/features/}) do |meta|
-    if meta[:js] && !meta.key?(:with_cuprite)
-      meta[:with_cuprite] = true
+  config.around(:each, :js, type: :feature) do |example|
+    # Skip if driver is explicitly requested
+    if example.metadata[:driver]
+      example.run
+      next
     end
-  end
 
-  config.around(:each, :with_cuprite, type: :feature) do |example|
     original_driver = Capybara.javascript_driver
+
     begin
-      Capybara.javascript_driver = :better_cuprite_en
+      Capybara.javascript_driver =
+        if example.metadata[:selenium]
+          :chrome_en
+        else
+          :better_cuprite_en
+        end
+
       example.run
     ensure
       Capybara.javascript_driver = original_driver

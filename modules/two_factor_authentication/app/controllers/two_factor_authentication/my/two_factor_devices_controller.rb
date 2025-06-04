@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ::TwoFactorAuthentication
   module My
     class TwoFactorDevicesController < ::TwoFactorAuthentication::BaseController
@@ -67,7 +69,7 @@ module ::TwoFactorAuthentication
           end
         else
           Rails.logger.warn { "User ##{current_user.id} failed to register a device #{@device_type}." }
-          render "two_factor_authentication/two_factor_devices/new"
+          render "two_factor_authentication/two_factor_devices/new", status: :unprocessable_entity
         end
       end
 
@@ -88,12 +90,7 @@ module ::TwoFactorAuthentication
       ##
       # Request (if needed) the token for entering
       def request_device_confirmation_token
-        request_token_for_device(
-          @device,
-          confirm_path: url_for(action: :confirm, device_id: @device.id),
-          title: I18n.t("two_factor_authentication.devices.confirm_device"),
-          message: I18n.t("two_factor_authentication.devices.text_confirm_to_complete_html", identifier: @device.identifier)
-        )
+        request_token_for_device(@device, confirm_path: url_for(action: :confirm, device_id: @device.id))
       end
 
       def request_token_for_device(device, locals)
@@ -115,10 +112,6 @@ module ::TwoFactorAuthentication
 
       def index_path
         url_for action: :index
-      end
-
-      def show_local_breadcrumb
-        false
       end
 
       def registration_success_path

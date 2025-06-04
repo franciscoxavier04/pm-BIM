@@ -54,7 +54,7 @@ class StatusesController < ApplicationController
       flash[:notice] = I18n.t(:notice_successful_create)
       redirect_to action: "index"
     else
-      render action: "new"
+      render action: :new, status: :unprocessable_entity
     end
   end
 
@@ -65,7 +65,7 @@ class StatusesController < ApplicationController
       flash[:notice] = I18n.t(:notice_successful_update)
       redirect_to action: "index"
     else
-      render action: "edit"
+      render action: :edit, status: :unprocessable_entity
     end
   end
 
@@ -84,10 +84,6 @@ class StatusesController < ApplicationController
   end
 
   protected
-
-  def show_local_breadcrumb
-    false
-  end
 
   def recompute_progress_values
     attributes_triggering_recomputing = ["excluded_from_totals"]

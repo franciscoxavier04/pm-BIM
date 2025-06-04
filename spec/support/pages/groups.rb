@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -69,7 +71,7 @@ module Pages
     end
   end
 
-  class Group < Pages::Page
+  class Group < Page
     include ::Components::Autocompleter::NgSelectAutocompleteHelpers
     attr_reader :id
 

@@ -53,11 +53,10 @@ class Version < ApplicationRecord
   scope :visible, ->(*args) {
     joins(:project)
       .merge(Project.allowed_to(args.first || User.current, :view_work_packages))
+      .or(Version.systemwide)
   }
 
   scope :systemwide, -> { where(sharing: "system") }
-
-  scope :order_by_name, -> { order(Arel.sql("LOWER(#{Version.table_name}.name) ASC")) }
 
   def self.with_status_open
     where(status: "open")

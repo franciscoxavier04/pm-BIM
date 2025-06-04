@@ -1,6 +1,6 @@
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -39,8 +39,9 @@ module Saml
       {
         "options" => options,
         "slug" => options.delete("name"),
+        "limit_self_registration" => ActiveModel::Type::Boolean.new.cast(options.delete("limit_self_registration")),
         "display_name" => options.delete("display_name") || "SAML"
-      }
+      }.compact
     end
 
     private

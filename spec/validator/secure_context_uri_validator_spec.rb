@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,8 +27,6 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-
-# require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 require "spec_helper"
 

@@ -26,28 +26,19 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit } from '@angular/core';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { EnterpriseTrialService } from 'core-app/features/enterprise/enterprise-trial.service';
-import {
-  HttpClient,
-  HttpErrorResponse,
-} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { EEActiveTrialBase } from 'core-app/features/enterprise/enterprise-active-trial/ee-active-trial.base';
-import { GonService } from 'core-app/core/gon/gon.service';
-import { EXTERNAL_REQUEST_HEADER } from 'core-app/features/hal/http/openproject-header-interceptor';
 import { IEnterpriseData } from 'core-app/features/enterprise/enterprise-trial.model';
 
 @Component({
   selector: 'enterprise-active-trial',
   templateUrl: './ee-active-trial.component.html',
   styleUrls: ['./ee-active-trial.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EEActiveTrialComponent extends EEActiveTrialBase implements OnInit {
   public subscriber:string;
@@ -64,12 +55,17 @@ export class EEActiveTrialComponent extends EEActiveTrialBase implements OnInit 
 
   public expiresAt:string;
 
-  constructor(readonly elementRef:ElementRef,
+  public plan:string;
+
+  public additionalFeatures:string;
+
+  constructor(
+    readonly elementRef:ElementRef,
     readonly cdRef:ChangeDetectorRef,
     readonly I18n:I18nService,
     readonly http:HttpClient,
-    readonly Gon:GonService,
-    public eeTrialService:EnterpriseTrialService) {
+    public eeTrialService:EnterpriseTrialService,
+  ) {
     super(I18n);
   }
 
@@ -84,45 +80,7 @@ export class EEActiveTrialComponent extends EEActiveTrialBase implements OnInit 
           this.formatUserData(data);
           this.cdRef.detectChanges();
         });
-
-      this.initialize();
     }
-  }
-
-  private initialize():void {
-    const eeTrialKey = this.Gon.get('ee_trial_key') as { value:string }|undefined;
-    const { data } = this.eeTrialService.current;
-
-    if (eeTrialKey && !data) {
-      // after reload: get data from Augur using the trial key saved in gon
-      const trialLink = `${this.eeTrialService.baseUrlAugur}/public/v1/trials/${eeTrialKey.value}`;
-      this.eeTrialService.store.update({ trialLink });
-      this.getUserDataFromAugur(trialLink);
-    }
-  }
-
-  // use the trial key saved in the db
-  // to get the user data from Augur
-  private getUserDataFromAugur(trialLink:string) {
-    this
-      .http
-      .get(
-        `${trialLink}/details`,
-        {
-          headers: {
-            [EXTERNAL_REQUEST_HEADER]: 'true',
-          },
-        },
-      )
-      .toPromise()
-      .then((data:IEnterpriseData) => {
-        this.eeTrialService.store.update({ data });
-        this.eeTrialService.retryConfirmation();
-      })
-      .catch(() => {
-        // Check whether the mail has been confirmed by now
-        this.eeTrialService.getToken();
-      });
   }
 
   private formatUserData(userForm:IEnterpriseData) {

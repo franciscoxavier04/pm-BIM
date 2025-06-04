@@ -1,5 +1,5 @@
 pt-BR:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
         display_name: Nome
@@ -7,7 +7,7 @@ pt-BR:
         secret: Segredo
         scope: Escopo
         assertion_consumer_service_url: URL do ACS (Serviço Consumidor de Aserção)
-        limit_self_registration: Limitar o registro automático
+        limit_self_registration: Restringir auto-registro
         sp_entity_id: ID da entidade do serviço
         metadata_url: URL de metadados do provedor de identidade
         name_identifier_format: Formato do identificador de nome
@@ -23,7 +23,6 @@ pt-BR:
         digest_method: Algoritmo de resumo
         format: "Formato"
         icon: "Ícone personalizado"
-  activerecord:
     errors:
       models:
         saml/provider:
@@ -33,6 +32,7 @@ pt-BR:
           unmatched_private_key: "não pertence ao certificado fornecido"
   saml:
     menu_title: Provedores SAML
+    delete_title: Excluir provedor SAML
     info:
       title: "Parâmetros de configuração do protocolo SAML"
       description: >
@@ -54,7 +54,6 @@ pt-BR:
       label_edit: Editar provedor de identidade SAML %{name}
       label_uid: Id do usuário interno
       label_mapping: Mapeamento
-      label_mapping_for: "Mapeamento para: %{attribute}"
       label_requested_attribute_for: "Atributo solicitado para: %{attribute}"
       no_results_table: Nenhum provedor de identidade SAML foi definido até o momento.
       plural: Provedores de identidade SAML
@@ -65,7 +64,8 @@ pt-BR:
         Os seguintes campos controlam quais atributos fornecidos pelo provedor de identidade SAML são usados para fornecer atributos de usuário no OpenProject
       metadata:
         dialog: "Este é o URL onde os metadados SAML do OpenProject estão disponíveis. Use-o opcionalmente para configurar seu provedor de identidade:"
-      upsale:
+      upsell:
+        title: "Autenticação única (SSO) com SAML"
         description: Conecte o OpenProject a um provedor de identidade SAML
       request_attributes:
         title: 'Atributos solicitados'
@@ -98,7 +98,7 @@ pt-BR:
       display_name: >
         O nome do provedor. Isso será exibido como o botão de login e na lista de provedores.
       metadata_none: >
-        Your identity provider does not have a metadata endpoint or XML download option. You can configure it manually.
+        Seu provedor de identidade não oferece um endpoint de metadados nem uma opção para download em XML. A configuração pode ser feita manualmente.
       metadata_url: >
         Seu provedor de identidade fornece uma URL de metadados.
       metadata_xml: >
@@ -138,7 +138,7 @@ pt-BR:
       authn_requests_signed: >
         Se esta opção estiver marcada, o OpenProject assinará a SAML AuthnRequest. Você precisará fornecer um certificado de assinatura e uma chave privada nos campos abaixo.
       want_assertions_signed: >
-        Se esta opção estiver marcada, o OpenProject exigirá que o provedor de identidade envie respostas assinadas usando seu próprio par de chaves de certificado. O OpenProject verificará a assinatura com o certificado da seção de configuração básica.
+        Se esta opção estiver ativada, o OpenProject exigirá que o provedor de identidade envie respostas assinadas com seu próprio par de chaves. A assinatura será verificada pelo OpenProject usando o certificado da seção de configuração básica.
       want_assertions_encrypted: >
         Se ativado, será necessário que o provedor de identidade criptografe a resposta da asserção usando o par de certificados que você fornecer.
       certificate: >

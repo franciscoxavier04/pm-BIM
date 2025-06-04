@@ -82,7 +82,7 @@ class NewsController < ApplicationController
       redirect_to controller: "/news", action: "index", project_id: @project
     else
       @news = call.result
-      render action: "new"
+      render action: :new, status: :unprocessable_entity
     end
   end
 
@@ -96,7 +96,7 @@ class NewsController < ApplicationController
       redirect_to action: "show", id: @news
     else
       @news = call.result
-      render action: "edit"
+      render action: :edit, status: :unprocessable_entity
     end
   end
 
@@ -118,13 +118,9 @@ class NewsController < ApplicationController
 
   def find_news_object
     @news = @object = News.find(params[:id].to_i)
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   def find_project
     @project = Project.find(params[:project_id])
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 end

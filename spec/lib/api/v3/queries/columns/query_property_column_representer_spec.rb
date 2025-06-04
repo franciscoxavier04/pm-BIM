@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -113,6 +115,11 @@ RSpec.describe API::V3::Queries::Columns::QueryPropertyColumnRepresenter do
     end
 
     it "busts the cache on changes to the name" do
+      allow(WorkPackage)
+        .to receive(:human_attribute_name)
+        .with("blubs")
+        .and_return("humanized_blubs")
+
       allow(column)
         .to receive(:name)
         .and_return("blubs")

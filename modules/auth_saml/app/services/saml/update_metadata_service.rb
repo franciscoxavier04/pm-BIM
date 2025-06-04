@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -36,7 +38,7 @@ module Saml
     end
 
     def call
-      apply_metadata(fetch_metadata)
+      apply_metadata(merge_certificates(fetch_metadata))
     rescue StandardError => e
       OpenProject.logger.error(e)
       ServiceResult.failure(result: provider,
@@ -74,6 +76,19 @@ module Saml
 
     def parser_instance
       OneLogin::RubySaml::IdpMetadataParser.new
+    end
+
+    # Support reading multiple certificates from idp_cert_multi, instead of just a single one passed via idp_cert.
+    # Saml::Provider does not yet support storing "use" (signing vs. encryption).
+    def merge_certificates(metadata)
+      return metadata if metadata[:idp_cert].present?
+
+      certs = Array(metadata.dig(:idp_cert_multi, :signing)) + Array(metadata.dig(:idp_cert_multi, :encryption))
+      if certs.present?
+        metadata[:idp_cert] = certs.map { |cert| OneLogin::RubySaml::Utils.format_cert(cert) }.uniq.join("\n")
+      end
+
+      metadata
     end
   end
 end

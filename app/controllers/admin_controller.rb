@@ -43,7 +43,7 @@ class AdminController < ApplicationController
       condition = node.condition
 
       name === :admin_overview ||
-        (condition && !condition.call) ||
+        (condition && !condition.call(nil)) ||
         hidden_admin_menu_items.include?(name.to_s)
     end
 
@@ -88,12 +88,6 @@ class AdminController < ApplicationController
     @checklist += jemalloc_active_checks
 
     @storage_information = OpenProject::Storage.mount_information
-  end
-
-  def default_breadcrumb; end
-
-  def show_local_breadcrumb
-    false
   end
 
   private

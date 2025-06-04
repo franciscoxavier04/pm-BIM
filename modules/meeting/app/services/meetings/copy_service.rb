@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -74,7 +76,7 @@ module Meetings
       meeting
         .attributes
         .slice(*writable_meeting_attributes(meeting))
-        .merge("start_time" => meeting.start_time + 1.week)
+        .merge("start_time" => meeting.start_time + 1.day)
         .merge("author" => user)
         .merge("state" => "open")
         .merge("participants_attributes" => copied_participants)
@@ -82,10 +84,12 @@ module Meetings
     end
 
     def copied_participants
-      if meeting.allowed_participants.empty?
+      if meeting.allowed_participants.present?
+        meeting.allowed_participants.collect(&:copy_attributes)
+      elsif !user.builtin?
         [{ "user_id" => user.id, "invited" => true }]
       else
-        meeting.allowed_participants.collect(&:copy_attributes)
+        []
       end
     end
 
@@ -110,23 +114,14 @@ module Meetings
     end
 
     def copy_meeting_agenda(copy)
-      if meeting.is_a?(StructuredMeeting)
-        meeting.sections.each do |section|
-          copy.sections << section.dup
-          copied_section = copy.reload.sections.last
-          section.agenda_items.each do |agenda_item|
-            copied_agenda_item = agenda_item.dup
-            copied_agenda_item.meeting_id = copy.id
-            copied_section.agenda_items << copied_agenda_item
-          end
+      meeting.sections.each do |section|
+        copy.sections << section.dup
+        copied_section = copy.reload.sections.last
+        section.agenda_items.each do |agenda_item|
+          copied_agenda_item = agenda_item.dup
+          copied_agenda_item.meeting_id = copy.id
+          copied_section.agenda_items << copied_agenda_item
         end
-      else
-        MeetingAgenda.create!(
-          meeting: copy,
-          author: user,
-          text: meeting.agenda&.text,
-          journal_notes: I18n.t("meeting.copied", id: meeting.id)
-        )
       end
     end
   end

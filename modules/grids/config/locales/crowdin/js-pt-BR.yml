@@ -4,9 +4,6 @@ pt-BR:
       add_widget: 'Adicionar widget'
       remove: 'Remover widget'
       configure: 'Configurar widget'
-      upsale:
-        text: "Alguns widgets, como o widget gráfico do pacote de trabalho, só estão disponíveis na edição Enterprise."
-        link: 'Edição Enterprise.'
       widgets:
         missing_permission: "Você não tem as permissões necessárias para visualizar este widget."
         custom_text:
@@ -27,9 +24,6 @@ pt-BR:
         project_description:
           title: 'Descrição do projeto'
           no_results: "Nenhuma descrição foi escrita. Uma pode ser fornecida nas 'Configurações do Projeto'."
-        project_details:
-          title: 'Detalhes do projeto'
-          no_results: 'Nenhum campo personalizado foi definido para projetos.'
         project_status:
           title: 'Situação do projeto'
           not_started: 'Não iniciado'

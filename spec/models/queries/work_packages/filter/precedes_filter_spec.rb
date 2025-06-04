@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -31,6 +33,7 @@ require "spec_helper"
 RSpec.describe Queries::WorkPackages::Filter::PrecedesFilter do
   it_behaves_like "filter by work package id" do
     let(:class_key) { :precedes }
+    let(:human_name) { "precedes" }
 
     it_behaves_like "filter for relation" do
       let(:relation_type) { :precedes }

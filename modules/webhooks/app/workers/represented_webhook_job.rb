@@ -68,14 +68,23 @@ class RepresentedWebhookJob < WebhookJob
     raise NotImplementedError
   end
 
-  def payload_representer
+  def represented_payload
+    payload_representer_class
+      .create(resource, current_user: User.current, embed_links: true)
+  end
+
+  def payload_representer_class
     raise NotImplementedError
   end
 
   def request_body
-    {
-      :action => event_name,
-      payload_key => payload_representer
-    }.to_json
+    # to_json needs to be called within the system user block in order to
+    # have all the custom field visibility permissions set up correctly.
+    User.system.run_given do
+      {
+        action: event_name,
+        payload_key => represented_payload
+      }.to_json
+    end
   end
 end

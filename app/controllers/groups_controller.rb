@@ -64,7 +64,7 @@ class GroupsController < ApplicationController
       flash[:notice] = I18n.t(:notice_successful_create)
       redirect_to(groups_path)
     else
-      render action: :new
+      render action: :new, status: :unprocessable_entity
     end
   end
 
@@ -77,7 +77,7 @@ class GroupsController < ApplicationController
       flash[:notice] = I18n.t(:notice_successful_update)
       redirect_to(groups_path)
     else
-      render action: "edit"
+      render action: :edit, status: :unprocessable_entity
     end
   end
 
@@ -158,10 +158,6 @@ class GroupsController < ApplicationController
     current_user.admin? ||
       current_user.allowed_in_any_project?(:manage_members) ||
       Group.in_project(Project.allowed_to(current_user, :view_members)).exists?
-  end
-
-  def show_local_breadcrumb
-    false
   end
 
   def respond_membership_altered(service_call)

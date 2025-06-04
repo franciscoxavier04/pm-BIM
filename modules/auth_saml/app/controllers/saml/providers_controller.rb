@@ -6,8 +6,8 @@ module Saml
     menu_item :plugin_saml
 
     before_action :require_admin
-    before_action :check_ee
-    before_action :find_provider, only: %i[show edit import_metadata update destroy]
+    before_action :check_ee, except: %i[index]
+    before_action :find_provider, only: %i[show edit import_metadata update confirm_destroy destroy]
     before_action :check_provider_writable, only: %i[update import_metadata]
     before_action :set_edit_state, only: %i[create edit update import_metadata]
 
@@ -63,7 +63,7 @@ module Saml
         @edit_state = :metadata
 
         flash.now[:error] = call.message
-        render action: :edit
+        render action: :edit, status: :unprocessable_entity
       end
     end
 
@@ -78,23 +78,25 @@ module Saml
         successful_save_response
       else
         flash.now[:error] = call.message
-        render action: :new
+        render action: :new, status: :unprocessable_entity
       end
     end
 
     def update
       call = Saml::Providers::UpdateService
         .new(model: @provider, user: User.current)
-        .call(options: update_params)
+        .call(update_params)
 
       if call.success?
         flash[:notice] = I18n.t(:notice_successful_update) unless @edit_mode
         successful_save_response
       else
         @provider = call.result
-        render action: :edit
+        render action: :edit, status: :unprocessable_entity
       end
     end
+
+    def confirm_destroy; end
 
     def destroy
       call = ::Saml::Providers::DeleteService
@@ -139,16 +141,7 @@ module Saml
     end
 
     def check_ee
-      unless EnterpriseToken.allows_to?(:sso_auth_providers)
-        render template: "/saml/providers/upsale"
-        false
-      end
-    end
-
-    def default_breadcrumb; end
-
-    def show_local_breadcrumb
-      false
+      redirect_to action: :index unless EnterpriseToken.allows_to?(:sso_auth_providers)
     end
 
     def update_provider_metadata_call
@@ -176,13 +169,11 @@ module Saml
     def update_params
       params
         .require(:saml_provider)
-        .permit(:display_name, *Saml::Provider.stored_attributes[:options])
+        .permit(:display_name, :limit_self_registration, *Saml::Provider.stored_attributes[:options])
     end
 
     def find_provider
       @provider = Saml::Provider.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      render_404
     end
 
     def check_provider_writable

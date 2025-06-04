@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -292,6 +294,17 @@ RSpec.describe Attachment do
           attachment.content_type = content_type
           expect(attachment).to be_inlineable, "#{content_type} should be inlineable"
         end
+      end
+    end
+
+    describe "for an HTML file" do
+      let(:attachment) { described_class.new }
+
+      it "assumes it not to be inlineable" do
+        attachment.content_type = "text/html"
+        expect(attachment).to be_is_html
+        expect(attachment).not_to be_is_text
+        expect(attachment).not_to be_inlineable
       end
     end
 

@@ -57,8 +57,6 @@ import {
 import { OPContextMenuComponent } from 'core-app/shared/components/op-context-menu/op-context-menu.component';
 import { OpenprojectPrincipalRenderingModule } from 'core-app/shared/components/principal/principal-rendering.module';
 import { FocusModule } from 'core-app/shared/directives/focus/focus.module';
-import { EnterpriseBannerComponent } from 'core-app/shared/components/enterprise-banner/enterprise-banner.component';
-import { EnterprisePageComponent } from 'core-app/shared/components/enterprise-page/enterprise-page.component';
 import { FreeTrialButtonComponent } from 'core-app/features/enterprise/free-trial-button/free-trial-button.component';
 import { HomescreenNewFeaturesBlockComponent } from 'core-app/features/homescreen/blocks/new-features.component';
 import { TablePaginationComponent } from 'core-app/shared/components/table-pagination/table-pagination.component';
@@ -67,23 +65,12 @@ import { CopyToClipboardService } from './components/copy-to-clipboard/copy-to-c
 import { CopyToClipboardComponent } from './components/copy-to-clipboard/copy-to-clipboard.component';
 import { OpDateTimeComponent } from './components/date/op-date-time.component';
 import { ToastComponent } from './components/toaster/toast.component';
-
-// Old datepickers
-import {
-  OpMultiDatePickerComponent,
-} from 'core-app/shared/components/datepicker/multi-date-picker/multi-date-picker.component';
-
 import { ToastsContainerComponent } from './components/toaster/toasts-container.component';
 import { UploadProgressComponent } from './components/toaster/upload-progress.component';
 import { ResizerComponent } from './components/resizer/resizer.component';
-import { CollapsibleSectionComponent } from './components/collapsible-section/collapsible-section.component';
 import { NoResultsComponent } from './components/no-results/no-results.component';
 import { EditableToolbarTitleComponent } from './components/editable-toolbar-title/editable-toolbar-title.component';
 import { PersistentToggleComponent } from './components/persistent-toggle/persistent-toggle.component';
-import {
-  AddSectionDropdownComponent,
-} from './components/hide-section/add-section-dropdown/add-section-dropdown.component';
-import { HideSectionLinkComponent } from './components/hide-section/hide-section-link/hide-section-link.component';
 import { RemoteFieldUpdaterComponent } from './components/remote-field-updater/remote-field-updater.component';
 import { OpOptionListComponent } from './components/option-list/option-list.component';
 import { OpProjectIncludeComponent } from './components/project-include/project-include.component';
@@ -99,7 +86,6 @@ import {
 import { OpenprojectModalModule } from 'core-app/shared/components/modal/modal.module';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { OpDatePickerModule } from 'core-app/shared/components/datepicker/datepicker.module';
-import { ShareUpsaleComponent } from 'core-app/features/enterprise/share-upsale/share-upsale.component';
 
 export function bootstrapModule(injector:Injector):void {
   // Ensure error reporter is run
@@ -186,8 +172,6 @@ export function bootstrapModule(injector:Injector):void {
     EditableToolbarTitleComponent,
 
     // Enterprise Edition
-    EnterpriseBannerComponent,
-    EnterprisePageComponent,
     FreeTrialButtonComponent,
 
     DynamicModule,
@@ -196,9 +180,6 @@ export function bootstrapModule(injector:Injector):void {
     OpProjectIncludeComponent,
     OpProjectIncludeListComponent,
     OpLoadingProjectListComponent,
-
-    // Old datepickers
-    OpMultiDatePickerComponent,
 
     OpNonWorkingDaysListComponent,
   ],
@@ -218,7 +199,6 @@ export function bootstrapModule(injector:Injector):void {
 
     // Add functionality to rails rendered templates
     CopyToClipboardComponent,
-    CollapsibleSectionComponent,
 
     ResizerComponent,
 
@@ -233,13 +213,9 @@ export function bootstrapModule(injector:Injector):void {
     EditableToolbarTitleComponent,
 
     PersistentToggleComponent,
-    HideSectionLinkComponent,
-    AddSectionDropdownComponent,
     RemoteFieldUpdaterComponent,
 
     // Enterprise Edition
-    EnterpriseBannerComponent,
-    EnterprisePageComponent,
     FreeTrialButtonComponent,
 
     HomescreenNewFeaturesBlockComponent,
@@ -250,11 +226,6 @@ export function bootstrapModule(injector:Injector):void {
     OpLoadingProjectListComponent,
 
     OpNonWorkingDaysListComponent,
-
-    // Old datepickers
-    OpMultiDatePickerComponent,
-
-    ShareUpsaleComponent,
   ],
 })
 export class OpSharedModule {

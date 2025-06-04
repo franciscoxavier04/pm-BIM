@@ -58,17 +58,13 @@ class Storages::Admin::AccessManagementController < ApplicationController
     service_result = call_update_service
 
     service_result.on_success do
-      update_via_turbo_stream(component: Storages::Admin::AccessManagementComponent.new(@storage))
-      update_via_turbo_stream(component: Storages::Admin::Forms::OAuthClientFormComponent.new(
-        oauth_client: @storage.build_oauth_client, storage: @storage
-      ))
+      redirect_to(new_admin_settings_storage_path(continue_wizard: @storage.id), status: :see_other)
     end
 
     service_result.on_failure do
-      update_via_turbo_stream(component: Storages::Admin::Forms::AccessManagementFormComponent.new(@storage))
+      update_via_turbo_stream(component: Storages::Admin::Forms::AccessManagementFormComponent.new(@storage, in_wizard: true))
+      respond_with_turbo_streams
     end
-
-    respond_with_turbo_streams
   end
 
   def update
@@ -88,14 +84,6 @@ class Storages::Admin::AccessManagementController < ApplicationController
   def edit
     update_via_turbo_stream(component: Storages::Admin::Forms::AccessManagementFormComponent.new(@storage))
     respond_with_turbo_streams
-  end
-
-  def default_breadcrumb
-    ActionController::Base.helpers.link_to(t(:project_module_storages), admin_settings_storages_path)
-  end
-
-  def show_local_breadcrumb
-    true
   end
 
   private

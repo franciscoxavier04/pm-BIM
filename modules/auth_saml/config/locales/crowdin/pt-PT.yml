@@ -1,5 +1,5 @@
 pt-PT:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
         display_name: Nome
@@ -23,7 +23,6 @@ pt-PT:
         digest_method: Algoritmo de resumo
         format: "Formato"
         icon: "Ícone personalizado"
-  activerecord:
     errors:
       models:
         saml/provider:
@@ -33,6 +32,7 @@ pt-PT:
           unmatched_private_key: "não pertence ao certificado fornecido"
   saml:
     menu_title: Fornecedores SAML
+    delete_title: Eliminar fornecedor SAML
     info:
       title: "Parâmetros de configuração do protocolo SAML"
       description: >
@@ -54,7 +54,6 @@ pt-PT:
       label_edit: Edite o fornecedor de identidade SAML %{name}
       label_uid: ID do utilizador interno
       label_mapping: Mapeamento
-      label_mapping_for: "Mapeamento para: %{attribute}"
       label_requested_attribute_for: "Atributo solicitado para: %{attribute}"
       no_results_table: Ainda não foram definidos fornecedores de identidade SAML.
       plural: Fornecedores de identidade SAML
@@ -65,7 +64,8 @@ pt-PT:
         Os seguintes campos controlam os atributos fornecidos pelo fornecedor de identidade SAML que são utilizados para fornecer atributos de utilizador no OpenProject
       metadata:
         dialog: "Este é o URL onde os metadados SAML do OpenProject estão disponíveis. Opcionalmente, utilize-o para configurar o seu fornecedor de identidade:"
-      upsale:
+      upsell:
+        title: "Início de sessão único (SSO) com SAML"
         description: Associar o OpenProject a um fornecedor de identidade SAML
       request_attributes:
         title: 'Atributos solicitados'
@@ -98,7 +98,7 @@ pt-PT:
       display_name: >
         O nome do fornecedor. Este nome será apresentado no botão de início de sessão e na lista de fornecedores.
       metadata_none: >
-        Your identity provider does not have a metadata endpoint or XML download option. You can configure it manually.
+        O seu fornecedor de identidade não tem um ponto final de metadados ou uma opção de transferência de XML. Pode efetuar a configuração manualmente.
       metadata_url: >
         O seu fornecedor de identidade fornece um URL de metadados.
       metadata_xml: >
@@ -122,7 +122,8 @@ pt-PT:
       mapping_login: >
         Atributos SAML da resposta utilizados para o início de sessão.
       mapping_mail: >
-        Atributos SAML da resposta utilizados para o e-mail do utilizador.
+        Atributos SAML da resposta utilizados
+        para o e-mail do utilizador.
       mapping_firstname: >
         Atributos SAML da resposta utilizados para o nome indicado.
       mapping_lastname: >

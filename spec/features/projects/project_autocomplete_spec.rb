@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Projects autocomplete page", :js, :with_cuprite do
+RSpec.describe "Projects autocomplete page", :js do
   let!(:user) { create(:user) }
   let(:top_menu) { Components::Projects::TopMenu.new }
 

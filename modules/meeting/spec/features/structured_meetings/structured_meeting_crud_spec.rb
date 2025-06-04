@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,12 +30,11 @@
 
 require "spec_helper"
 
-require_relative "../../support/pages/meetings/new"
-require_relative "../../support/pages/structured_meeting/show"
+require_relative "../../support/pages/meetings/show"
+require_relative "../../support/pages/meetings/index"
 
-RSpec.describe "Structured meetings CRUD",
-               :js,
-               :with_cuprite do
+RSpec.describe "Meetings CRUD",
+               :js do
   include Components::Autocompleter::NgSelectAutocompleteHelpers
 
   shared_let(:project) { create(:project, enabled_module_names: %w[meetings work_package_tracking]) }
@@ -61,32 +62,32 @@ RSpec.describe "Structured meetings CRUD",
   end
 
   let(:current_user) { user }
-  let(:new_page) { Pages::Meetings::New.new(project) }
-  let(:meeting) { StructuredMeeting.order(id: :asc).last }
-  let(:show_page) { Pages::StructuredMeeting::Show.new(meeting) }
+  let(:meeting) { Meeting.last }
+  let(:show_page) { Pages::Meetings::Show.new(meeting) }
+  let(:meetings_page) { Pages::Meetings::Index.new(project:) }
 
   before do |test|
     login_as current_user
-    new_page.visit!
-    expect(page).to have_current_path(new_page.path) # rubocop:disable RSpec/ExpectInHook
-    new_page.set_title "Some title"
-    new_page.set_type "Dynamic"
+    meetings_page.visit!
+    expect(page).to have_current_path(meetings_page.path) # rubocop:disable RSpec/ExpectInHook
+    meetings_page.click_on "add-meeting-button"
+    meetings_page.click_on "One-time"
+    meetings_page.set_title "Some title"
 
-    new_page.set_start_date "2013-03-28"
-    new_page.set_start_time "13:30"
-    new_page.set_duration "1.5"
-    new_page.invite(other_user)
+    meetings_page.set_start_date "2013-03-28"
+    meetings_page.set_start_time "13:30"
+    meetings_page.set_duration "1.5"
 
     if test.metadata[:checked]
       expect(page).to have_unchecked_field "send_notifications" # rubocop:disable RSpec/ExpectInHook
       check "send_notifications"
     end
 
-    new_page.click_create
+    meetings_page.click_create
   end
 
-  it "can create a structured meeting and add agenda items" do
-    expect_flash(type: :success, message: "Successful creation")
+  it "can create a meeting and add agenda items" do
+    expect_and_dismiss_flash(type: :success, message: "Successful creation")
 
     # Does not send invitation mails by default
     perform_enqueued_jobs
@@ -145,6 +146,7 @@ RSpec.describe "Structured meetings CRUD",
       find_field("Title").send_keys :escape
     end
     show_page.expect_item_edit_form(first, visible: false)
+
     # Can remove
     show_page.remove_agenda_item first
     show_page.assert_agenda_order! "Updated title", "Second"
@@ -175,6 +177,7 @@ RSpec.describe "Structured meetings CRUD",
     end
 
     show_page.select_action(item, I18n.t(:label_sort_lowest))
+    show_page.assert_agenda_order! "Important task", "Updated title"
 
     show_page.add_agenda_item do
       fill_in "Title", with: "My agenda item"
@@ -208,13 +211,25 @@ RSpec.describe "Structured meetings CRUD",
   end
 
   it "can delete a meeting and get back to the index page" do
-    click_on("op-meetings-header-action-trigger")
+    show_page.trigger_dropdown_menu_item "Delete meeting"
+    show_page.expect_modal "Delete meeting"
 
-    accept_confirm(I18n.t("text_are_you_sure")) do
-      click_on "Delete meeting"
+    show_page.within_modal "Delete meeting" do
+      click_on "Delete"
     end
 
     expect(page).to have_current_path project_meetings_path(project)
+
+    expect_flash(type: :success, message: "Successful deletion.")
+  end
+
+  it "can open the export dialog" do
+    show_page.trigger_dropdown_menu_item "Export PDF"
+    show_page.expect_modal "Export PDF"
+
+    show_page.within_modal "Export PDF" do
+      expect(page).to have_button("Download")
+    end
   end
 
   context "when exporting as ICS" do
@@ -270,38 +285,66 @@ RSpec.describe "Structured meetings CRUD",
     expect(page).to have_css(".flash", text: I18n.t("activerecord.errors.messages.error_conflict"))
   end
 
-  it "can copy the meeting" do
+  it "can copy the meeting via the dialog form" do
     expect_flash(type: :success, message: "Successful creation")
 
-    # Can add and edit a single item
     show_page.add_agenda_item do
       fill_in "Title", with: "My agenda item"
       fill_in "min", with: "25"
     end
 
     show_page.expect_agenda_item title: "My agenda item"
-    item = MeetingAgendaItem.find_by!(title: "My agenda item")
 
-    click_on("op-meetings-header-action-trigger")
-    click_on "Copy"
+    show_page.open_participant_form
+    show_page.in_participant_form do
+      check(id: "checkbox_invited_#{other_user.id}")
+      check(id: "checkbox_attended_#{other_user.id}")
 
-    expect(page).to have_current_path "/meetings/#{meeting.id}/copy"
+      click_on("Save")
+    end
 
-    click_on "Create"
+    wait_for_network_idle
+    retry_block do
+      click_on("op-meetings-header-action-trigger")
+      click_on "Copy"
+      # dynamically wait for the modal to be loaded
+      expect(page).to have_text("Copy meeting")
+    end
 
-    show_page.expect_agenda_item title: "My agenda item"
-    new_meeting = StructuredMeeting.reorder(id: :asc).last
+    check "Email participants"
+    fill_in "Title", with: ""
+    click_on "Create meeting"
+
+    # check for dialog form validations
+    expect(page).to have_content "Title can't be blank."
+    fill_in "Title", with: "Some title"
+    click_on "Create meeting"
+
+    new_meeting = Meeting.last
     expect(page).to have_current_path "/projects/#{project.identifier}/meetings/#{new_meeting.id}"
+
+    # check for copied agenda items
+    expect(page).to have_content "My agenda item"
+
+    # check for copied participants with attended status reset
+    page.find_test_selector("manage-participants-button").click
+    expect(page).to have_modal("Participants")
+    expect(page).to have_field(id: "checkbox_invited_#{other_user.id}", checked: true)
+    expect(page).to have_field(id: "checkbox_attended_#{other_user.id}", checked: false)
+
+    # check for email notifications
+    perform_enqueued_jobs
+    expect(ActionMailer::Base.deliveries.size).to eq 1
   end
 
   context "with a work package reference to another" do
-    let!(:meeting) { create(:structured_meeting, project:, author: current_user) }
+    let!(:meeting) { create(:meeting, project:, author: current_user) }
     let!(:other_project) { create(:project) }
     let!(:other_wp) { create(:work_package, project: other_project, author: current_user, subject: "Private task") }
     let!(:role) { create(:project_role, permissions: %w[view_work_packages]) }
     let!(:membership) { create(:member, principal: user, project: other_project, roles: [role]) }
     let!(:agenda_item) { create(:wp_meeting_agenda_item, meeting:, author: current_user, work_package: other_wp) }
-    let(:show_page) { Pages::StructuredMeeting::Show.new(meeting) }
+    let(:show_page) { Pages::Meetings::Show.new(meeting) }
 
     it "shows correctly for author, but returns an unresolved reference for the second user" do
       show_page.visit!
@@ -316,14 +359,9 @@ RSpec.describe "Structured meetings CRUD",
     end
   end
 
-  it "sends emails on creation when 'Send emails' is checked", :checked do
-    perform_enqueued_jobs
-    expect(ActionMailer::Base.deliveries.size).to eq 2
-  end
-
   context "with sections" do
-    let!(:meeting) { create(:structured_meeting, project:, author: current_user) }
-    let(:show_page) { Pages::StructuredMeeting::Show.new(meeting) }
+    let!(:meeting) { create(:meeting, project:, author: current_user) }
+    let(:show_page) { Pages::Meetings::Show.new(meeting) }
 
     context "when starting with empty sections" do
       it "can add, edit and delete sections" do
@@ -372,13 +410,15 @@ RSpec.describe "Structured meetings CRUD",
         show_page.add_section do
           click_on "Save"
           expect(page).to have_text "Title can't be blank"
+          click_on "Cancel"
         end
 
         # remove the first section
         show_page.remove_section first_section
         show_page.expect_no_section(title: "Updated first section title")
 
-        # now the meeting completely empty again
+        # now the meeting is completely empty again
+        show_page.expect_blankslate
 
         # add an item to the meeting
         show_page.add_agenda_item do
@@ -404,13 +444,14 @@ RSpec.describe "Structured meetings CRUD",
         show_page.remove_section second_section
 
         ## the last existing section is not explicitly rendered as a section as no name was specified for this section
-        ## -> back to "no section mode"
+        ## it goes back to "no section mode"
         show_page.expect_no_section(title: "Second section")
         show_page.expect_no_section(title: "Untitled section")
 
-        # TBD: remove the agenda item again, the untitle section is not rendered explicitly and will not be removed
+        # removing the last agenda item will automatically remove the hidden first section as well
         first_item = MeetingAgendaItem.find_by!(title: "First item without explicit section")
         show_page.remove_agenda_item(first_item)
+        show_page.expect_blankslate
 
         # add a second section again
         show_page.add_section do
@@ -418,8 +459,8 @@ RSpec.describe "Structured meetings CRUD",
           click_on "Save"
         end
 
-        ## the first section without a name is now again explicitly rendered as "Untitled"
-        show_page.expect_section(title: "Untitled section")
+        ## as there is no agenda item, the first section is not automatically created and thus
+        ## there is only the explicitly created section
         show_page.expect_section(title: "Second section")
 
         second_section = MeetingSection.find_by!(title: "Second section")
@@ -432,21 +473,9 @@ RSpec.describe "Structured meetings CRUD",
 
         show_page.expect_agenda_item_in_section title: "First item", section: second_section
 
-        first_section = meeting.sections.first
-
-        # add an item to the first section explicitly
-        show_page.add_agenda_item_to_section(section: first_section) do
-          fill_in "Title", with: "Second item"
-          fill_in "min", with: "30"
-        end
-
-        show_page.expect_agenda_item_in_section title: "Second item", section: first_section
-
-        # duration per section is shown
-        show_page.expect_section_duration(section: first_section, duration_text: "30 min")
+        # duration for the section is shown
         show_page.expect_section_duration(section: second_section, duration_text: "25 min")
 
-        item_in_first_section = MeetingAgendaItem.find_by!(title: "Second item")
         item_in_second_section = MeetingAgendaItem.find_by!(title: "First item")
 
         show_page.edit_agenda_item(item_in_second_section) do
@@ -457,19 +486,15 @@ RSpec.describe "Structured meetings CRUD",
         # duration gets updated
         show_page.expect_section_duration(section: second_section, duration_text: "15 min")
 
-        # deleting a section with agenda items is not possible
+        # deleting a section with agenda items is possible with a confirmation
         accept_confirm do
           show_page.select_section_action(second_section, "Delete")
         end
 
-        # only untitled secion is left -> will not be rendered explicitly as secion
-        show_page.expect_no_section(title: "Untitled section")
-        show_page.expect_no_section(title: "Second section")
-
         expect { item_in_second_section.reload }.to raise_error(ActiveRecord::RecordNotFound)
 
-        # the agenda items of the "untitled" section are still visible in "no-section mode"
-        show_page.expect_agenda_item(title: item_in_first_section.title)
+        # no sections are left, and so the blankslate will be rendered
+        show_page.expect_blankslate
       end
     end
   end

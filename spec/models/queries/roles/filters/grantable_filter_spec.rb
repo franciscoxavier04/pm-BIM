@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -33,6 +35,7 @@ RSpec.describe Queries::Roles::Filters::GrantableFilter do
     let(:class_key) { :grantable }
     let(:type) { :list }
     let(:model) { Role }
+    let(:human_name) { "Grantable role" }
   end
 
   it_behaves_like "boolean query filter", scope: false do

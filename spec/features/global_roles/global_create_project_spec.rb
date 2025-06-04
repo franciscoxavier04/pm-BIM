@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,8 +31,7 @@
 require "spec_helper"
 
 RSpec.describe "Global role: Global Create project",
-               :js,
-               :with_cuprite do
+               :js do
   shared_let(:admin) { create(:admin) }
   shared_let(:user) { create(:user) }
   shared_let(:project) { create(:project) }

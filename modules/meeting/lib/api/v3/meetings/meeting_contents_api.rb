@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -31,20 +32,10 @@ module API
     module Meetings
       class MeetingContentsAPI < ::API::OpenProjectAPI
         resources :meeting_contents do
-          helpers do
-            def meeting_content
-              MeetingContent.find params[:id]
-            end
-          end
-
           route_param :id do
             get do
-              ::API::V3::MeetingContents::MeetingContentRepresenter.new(
-                meeting_content, current_user:, embed_links: true
-              )
+              status :gone
             end
-
-            mount ::API::V3::Attachments::AttachmentsByMeetingContentAPI
           end
         end
       end

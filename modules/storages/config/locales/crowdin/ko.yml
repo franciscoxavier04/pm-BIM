@@ -1,9 +1,28 @@
 ko:
   activerecord:
     attributes:
+      oauth_client:
+        client_id: 클라이언트 ID
+        client_secret: 클라이언트 비밀번호
+      project:
+        project_folder_type: 프로젝트 폴더 유형
       storages/file_link:
-        origin_id: 원본 ID
+        origin: 원본
+        storage: 저장소
+      storages/nextcloud_storage:
+        authentication_methods:
+          oauth2_sso: OpenID Connect ID 공급자를 통한 Single-Sign-On
+          oauth2_sso_with_two_way_oauth2_fallback: 폴백으로 양방향 OAuth 2.0을 사용하는 Single-Sign-On
+          two_way_oauth2: 양방향 OAuth 2.0 인증 코드 흐름
+        storage_audience: 저장소 오디언스
+        token_exchange_scope: Storage Scope
+      storages/project_storage:
+        project_folder: 프로젝트 폴더
+        project_folder_mode: 프로젝트 폴더 모드
+        storage: 저장소
+        storage_url: 저장소 URL
       storages/storage:
+        authentication_method: 인증 방법
         creator: 생성자
         drive: 드라이브 ID
         host: 호스트
@@ -61,6 +80,8 @@ ko:
   project_storages:
     edit_project_folder:
       label: 프로젝트 폴더 편집
+    open:
+      remote_identity_error: An unexpected error occurred while connecting to the storage.
     project_folder_mode:
       automatic: 자동으로 관리됨
       inactive: 특정 폴더 없음
@@ -72,6 +93,7 @@ ko:
         confirmation_text: 해당 사항을 이해하며 이 프로젝트에서 이 파일 저장소를 제거할 것인지 확인해 주세요
         heading_text: '%{storage}에서 프로젝트 제거'
         text: 이 작업은 되돌릴 수 없으며 이 프로젝트의 작업 패키지에서 해당 저장소의 파일 및 폴더에 대한 모든 링크를 제거합니다.
+        title: 저장소에서 프로젝트 제거
       label: 프로젝트 제거
   services:
     attributes:
@@ -114,8 +136,8 @@ ko:
             hide_inactive_folders:
               permission_not_set: '- %{path}에 대한 권한을 설정할 수 없습니다.'
             remote_folders:
-              not_allowed: '%{username}에게는 %{group_folder}에 대한 액세스 권한이 없습니다. Nextcloud의 폴더 권한을 확인하세요.'
-              not_found: "%{group_folder}을(를) 찾을 수 없습니다. Nextcloud 설정을 확인하세요."
+              not_allowed: '%{username}에게는 %{group_folder} 폴더에 대한 액세스 권한이 없습니다. Nextcloud의 폴더 권한을 확인하세요.'
+              not_found: "%{group_folder} 폴더를 찾을 수 없습니다. Nextcloud 설정을 확인하세요."
             remove_user_from_group:
               conflict: '다음과 같은 이유로 %{user} 사용자를 %{group} 그룹에서 제거할 수 없습니다: %{reason}'
               failed_to_remove: '다음과 같은 이유로 %{user} 사용자를 %{group} 그룹에서 제거할 수 없습니다: %{reason}'
@@ -145,7 +167,7 @@ ko:
               not_found: "%{current_path}을(를) 찾을 수 없습니다."
             set_folders_permissions:
               permission_not_set: '- %{path}에 대한 권한을 설정할 수 없습니다.'
-          error: 예기치 않은 오류가 발생했습니다. Nextcloud 인스턴스에 연결할 수 있는지 확인하고 OpenProject 작업자 로그에서 자세한 내용을 확인하세요
+          error: 예기치 않은 오류가 발생했습니다. OneDrive/SharePoint에 연결할 수 있는지 확인하고 OpenProject 작업자 로그에서 자세한 내용을 확인하세요
           not_allowed: OpenProject가 OneDrive 드라이브에 액세스하도록 허용되지 않았습니다. Azure 애플리케이션에 설정된 권한을 확인하세요.
           unauthorized: OpenProject가 OneDrive와 동기화할 수 없습니다. 저장소 및 Azure 애플리케이션 구성을 확인하세요.
           user_does_not_exist: "%{user}이(가) Nextcloud에 없습니다."
@@ -196,45 +218,112 @@ ko:
         manual_management_description: 프로젝트별 폴더를 직접 수동으로 만들고 관리하세요. 관련 사용자에게 액세스 권한이 있는지 수동으로 확인해야 합니다.
         setup_incomplete: 사용자 액세스 및 폴더 생성의 관리 유형을 선택합니다.
         subtitle: 액세스 관리
-        title: 액세스 및 프로젝트 폴더
+      access_management_section: 액세스 및 프로젝트 폴더
       automatically_managed_folders: 자동으로 관리되는 폴더
       general_information: 일반 정보
-      nextcloud_oauth: Nextcloud OAuth
-      oauth_applications: OAuth 애플리케이션
+      oauth_configuration: OAuth 구성
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: 프로젝트 폴더
       redirect_uri: 리디렉션 URI
+      storage_audience_blank: 오디언스가 구성되지 않았습니다.
+      storage_audience_description: Exchanging tokens for audience "%{audience}".
+      storage_audience_idp: Using access token obtained by identity provider during login, regardless of audience.
+      storage_oauth: Nextcloud OAuth
       storage_provider: 저장소 공급자
+      token_exchange: Token Exchange
     health:
+      actions:
+        download_report: 다운로드
+        rerun_checks: 모든 검사 다시 실행
+        run_checks: 지금 검사 실행
       checked: '마지막 확인: %{datetime}'
+      checks:
+        ampf_configuration:
+          client_folder_creation: 자동 폴더 생성
+          client_folder_removal: 자동 폴더 삭제
+          drive_contents: 드라이브에 예상 콘텐츠가 있습니다
+          files_request: 그룹 폴더 파일 가져오기
+          group_folder_app: '종속성: 그룹 폴더'
+          group_folder_contents: 그룹 폴더에 예상 콘텐츠가 있습니다
+          group_folder_presence: 그룹 폴더가 존재합니다
+          header: 자동으로 관리되는 프로젝트 폴더 구성
+          userless_access: 서버 측 요청 인증
+        authentication:
+          existing_token: 사용자 토큰
+          header: 인증
+          non_provisioned_user: IDP에 의해 프로비저닝되는 사용자
+          offline_access: OIDC offline_access 범위 구성됨
+          provisioned_user_provider: OIDC에 의해 프로비저닝되는 사용자
+          token_negotiable: 사용자 토큰 기능
+          user_bound_request: 사용자 기반 요청 인증
+        base_configuration:
+          capabilities_request: 원격 파일 저장소 기능
+          client_id: 클라이언트 ID
+          client_secret: 클라이언트 비밀번호
+          dependencies_check: 종속성
+          dependencies_versions: 종속성(버전)
+          diagnostic_request: 진단 요청
+          drive_id_exists: 드라이브가 존재합니다
+          drive_id_format: 드라이브 ID 형식
+          header: 기본 구성
+          host_url_accessible: 호스트 URL 액세스 가능
+          storage_configured: 구성 완료
+          tenant_id: 테넌트 ID
+        failures:
+          other: "%{count}개 검사 실패함"
+        success: All checks passed
+        warnings:
+          other: "%{count}개 검사에서 경고가 반환되었습니다"
       connection_validation:
-        action: 연결 다시 확인
-        app_version_mismatch: Integration OpenProject 앱 버전은 지원되지 않습니다. Nextcloud 서버를 업데이트하세요.
-        client_id_wrong: 구성된 OAuth 2 클라이언트 ID가 잘못되었습니다. 구성을 확인하세요.
-        client_secret_wrong: 구성된 OAuth 2 클라이언트 비밀번호가 잘못되었습니다. 구성을 확인하세요.
-        drive_id_wrong: 구성된 Drive ID를 찾을 수 없습니다. 구성을 확인하세요.
-        group_folder_not_found: 그룹 폴더를 찾을 수 없습니다.
-        group_folder_version_mismatch: 그룹 폴더 버전은 지원되지 않습니다. Nextcloud 서버를 업데이트하세요.
-        host_not_found: 구성된 호스트 URL에서 Nextcloud 서버를 찾을 수 없습니다. 구성을 확인하세요.
-        missing_dependencies: '파일 저장소에 필수 종속성이 누락되었습니다. 다음 종속성을 추가하세요: %{dependency}.'
+        client_id_invalid: 구성된 OAuth 2 클라이언트 ID가 잘못되었습니다. 구성을 확인하세요.
+        client_secret_invalid: 구성된 OAuth 2 클라이언트 비밀번호가 잘못되었습니다. 구성을 확인하세요.
+        nc_dependency_missing: '파일 저장소에 필수 종속성이 누락되었습니다. 다음 종속성을 추가하세요: %{dependency}.'
+        nc_dependency_version_mismatch: '%{dependency} 앱 버전은 지원되지 않습니다. Nextcloud 서버를 업데이트하세요.'
+        nc_group_folder_not_found: 그룹 폴더를 찾을 수 없습니다.
+        nc_host_not_found: 구성된 호스트 URL에서 Nextcloud 서버를 찾을 수 없습니다. 구성을 확인하세요.
+        nc_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        nc_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
+        nc_oauth_token_missing: 사용자가 아직 Nextcloud 계정을 링크하지 않았기 때문에 OpenProject가 Nextcloud와의 사용자 수준 통신을 테스트할 수 없습니다.
+        nc_unexpected_content: 관리되는 그룹 폴더에서 예기치 않은 콘텐츠가 발견되었습니다.
+        nc_userless_access_denied: 구성된 앱 암호가 잘못되었습니다.
         not_configured: 연결에 대한 유효성 검사를 할 수 없습니다. 먼저 구성을 완료하세요.
-        placeholder: 서버에 대한 연결을 확인하세요.
-        subtitle: 연결 유효성 검사
-        tenant_id_wrong: 구성된 디렉터리(테넌트) ID가 잘못되었습니다. 구성을 확인하세요.
-        unexpected_content:
-          nextcloud: 관리되는 그룹 폴더에서 예기치 않은 콘텐츠가 발견되었습니다.
-          one_drive: 드라이브에서 예기치 않은 콘텐츠가 발견되었습니다.
+        od_client_cant_delete_folder: 클라이언트에서 폴더를 삭제하는 중에 문제가 발생했습니다. 저장소에 대한 설정 설명서를 확인하세요.
+        od_client_write_permission_missing: 클라이언트에 쓰기 권한이 없는 것 같습니다. 저장소에 대한 설정 설명서를 확인하세요.
+        od_drive_id_invalid: 구성된 드라이브 ID가 유효하지 않은 것 같습니다. 구성을 확인하세요.
+        od_drive_id_not_found: 구성된 드라이브 ID를 찾을 수 없습니다. 구성을 확인하세요.
+        od_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
+        od_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
+        od_oauth_token_missing: 사용자가 아직 Microsoft 계정을 링크하지 않았기 때문에 OpenProject가 OneDrive/SharePoint와의 사용자 수준 통신을 테스트할 수 없습니다.
+        od_tenant_id_wrong: 구성된 디렉터리(테넌트) ID가 잘못되었습니다. 구성을 확인하세요.
+        od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
+        od_unexpected_content: 드라이브에서 예기치 않은 콘텐츠가 발견되었습니다.
+        offline_access_scope_missing: offline_access 범위를 요청하도록 OpenID Connect 공급자를 구성하는 것이 좋습니다. 통합이 여전히 ​​작동될 수 있지만, 새로고침 토큰이 만료되지 않도록 해야 합니다.
+        oidc_cant_refresh_token: 저장소에 대한 액세스를 확인하는 동안 오류가 발생했습니다. 자세한 내용은 서버 로그를 확인하세요.
+        oidc_non_oidc_user: 현재 사용자는 프로비저닝되는 동안, OpenID Connect(OIDC) ID 공급자에 의해 프로비저닝되지 않았습니다. OIDC 프로비저닝 사용자로 확인을 다시 실행하세요.
+        oidc_non_provisioned_user: 현재 사용자는 OpenID Connect ID 공급자에 의해 제공되지 않았습니다. 제공된 사용자로 확인을 다시 실행하세요.
+        oidc_token_acquisition_failed: Your OpenID Connect setup doesn't provide the necessary audience, nor does it provide token exchange capabilities. Please check out our documentation for more information.
+        oidc_token_exchange_failed: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
+        oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         unknown_error: 연결에 대한 유효성 검사를 할 수 없습니다. 알 수 없는 오류가 발생했습니다. 자세한 내용은 서버 로그를 확인하세요.
-        userless_access_denied: 구성된 앱 암호가 잘못되었습니다.
       label_error: 오류
+      label_failed: 실패함
       label_healthy: 정상
+      label_passed: 통과함
       label_pending: 대기 중
+      label_skipped: 건너뜀
       label_warning: 경고
+      no_report: 사용 가능한 보고서 없음
+      no_report_description: 이 파일 저장소에 대한 전체 상태 보고서를 보려면 지금 검사를 실행하세요.
+      open_report: 전체 상태 보고서 열기
       project_folders:
         subtitle: 자동으로 관리되는 프로젝트 폴더
       since: '%{datetime} 이후'
-      title: 상태
+      summary:
+        failure: 일부 검사가 실패하여 시스템이 예상대로 작동되지 않습니다.
+        success: 모든 연결과 시스템이 예상대로 작동 중입니다.
+        warning: 일부 검사에서 경고가 반환되었습니다. 이로 인해 예상치 못한 동작이 발생할 수 있습니다.
+      title: 상태 보고서
     health_email_notifications:
       description_subscribed: 모든 관리자는 이 저장소의 상태 이메일 알림을 받습니다.
       description_unsubscribed: 이 저장소에 대한 상태 이메일 알림이 모든 관리자에 대해 꺼져 있습니다.
@@ -247,6 +336,7 @@ ko:
       project_folder_bulk: 프로젝트 폴더는 선택된 모든 프로젝트의 파일 업로드를 위한 기본 폴더입니다. 각 프로젝트 설정에서 이 폴더를 개별적으로 수정할 수 있습니다. 그렇지만 사용자는 다른 위치에 파일을 계속 업로드할 수 있습니다.
     instructions:
       all_available_storages_already_added: 사용 가능한 모든 저장소가 이미 프로젝트에 추가되었습니다.
+      authentication_method: OpenProject와 저장소 간의 요청을 인증하는 방법입니다.
       automatic_folder: 이렇게 하면 이 프로젝트의 루트 폴더가 자동으로 생성되고 각 프로젝트 멤버의 액세스 권한이 관리됩니다.
       empty_project_folder_validation: 계속하려면 폴더 선택이 필수적입니다.
       existing_manual_folder: 기존 폴더를 이 프로젝트의 루트 폴더로 지정할 수 있습니다. 그러나 권한은 자동으로 관리되지 않으며, 관리자는 관련 사용자에게 액세스 권한이 있는지 수동으로 확인해야 합니다. 선택한 폴더는 여러 프로젝트에서 사용할 수 있습니다.
@@ -259,6 +349,9 @@ ko:
         integration: Nextcloud 관리/OpenProject
         oauth_configuration: '%{application_link_text}에서 이러한 값을 복사합니다.'
         provider_configuration: 설정을 수행하기 전에 Nextcloud 인스턴스에서 관리 권한이 있고 %{application_link_text}이(가) 설치되어 있는지 확인하세요.
+        storage_audience: The client ID that the Nextcloud instance uses to communicate with the identity provider.
+        storage_audience_placeholder: '예: nextcloud'
+        token_exchange_scope: The scopes that should be requested during token exchange, each one separated by a space.
       no_specific_folder: 기본적으로 각 사용자는 파일을 업로드할 때 고유한 홈 폴더에서 시작합니다.
       no_storage_set_up: 아직 파일 저장소가 설정되지 않았습니다.
       not_logged_into_storage: 프로젝트 폴더를 선택하려면 먼저 로그인하세요
@@ -289,10 +382,10 @@ ko:
     label_creation_time: 생성 시간
     label_creator: 생성자
     label_delete_storage: 저장소 삭제
-    label_edit_storage: 저장소 편집
     label_edit_storage_access_management: 저장소 액세스 관리 편집
     label_edit_storage_automatically_managed_folders: 저장소 자동 관리 폴더 편집
     label_edit_storage_host: 저장소 호스트 편집
+    label_edit_token_exchange: Edit token exchange configuration
     label_existing_manual_folder: 수동으로 관리되는 권한이 있는 기존 폴더
     label_file_storage: 파일 저장소
     label_host: 호스트 URL
@@ -318,11 +411,11 @@ ko:
     member_connection_status:
       connected: 연결됨
       connected_no_permissions: 사용자 역할에 저장소 권한이 없습니다
+      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
       not_connected: 연결되지 않았습니다. 사용자는 다음 %{link}을(를) 통해 저장소에 로그인해야 합니다.
+      not_connected_sso: 아직 연결되지 않았습니다. 파일을 살펴본 후 자동으로 연결될 것입니다.
     members_no_results: 표시할 멤버가 없습니다.
     no_results: 아직 저장소가 설정되지 않았습니다.
-    notice_successful_storage_connection: |-
-      저장소가 연결되었습니다! 이 저장소를 사용하려면 원하는 각 프로젝트의 프로젝트 설정에서 모듈과 특정 저장소를 활성화해야 합니다.
     oauth_access_granted_modal:
       access_granted: 엑세스 권한 부여됨
       project_settings:
@@ -345,6 +438,9 @@ ko:
       success:
         subtitle: 리디렉션 중입니다
         title: 통합 설정 완료됨
+      timeout:
+        link_text: 파일 저장소 설정 상태
+        subtitle: 예상 시간 내에 OpenProject에서 프로젝트 폴더에 대한 액세스를 제공하지 못했습니다. 다시 한번 시도해 보세요.<br><br> 문제가 지속되면 OpenProject 관리자에게 문의하여 %{storages_health_link}를 확인하세요.
       waiting:
         subtitle: 잠시 기다려 주세요. 시간이 좀 걸릴 수 있습니다.
         title: 프로젝트 폴더에 대한 권한을 설정하는 중입니다.
@@ -379,12 +475,21 @@ ko:
         name: OneDrive/SharePoint
         name_placeholder: '예: OneDrive'
     show_attachments_toggle:
-      description: '이 옵션을 비활성화하면 작업 패키지 파일 탭에서 첨부 파일 목록이 숨겨집니다. 작업 패키지 설명에 첨부된 파일은 내부 첨부 파일 저장소에 계속 업로드됩니다. '
+      description: 이 옵션을 비활성화하면 작업 패키지 파일 탭에서 첨부 파일 목록이 숨겨집니다. 작업 패키지 설명에 첨부된 파일은 내부 첨부 파일 저장소에 계속 업로드됩니다.
       label: 작업 패키지 파일 탭에 첨부 파일 표시
+    storage_audience:
+      documentation_intro: Please read our documentation for details on the following options and configuration of the identity provider.
+      idp:
+        helptext: OpenProject will use the access token received by the identity provider during log in to authenticate requests to the storage. It will not try to obtain another token.
+        label: Use access token obtained during user log in
+      manual:
+        helptext: OpenProject will exchange a token with the identity provider for the given audience.
+        label: Manually specify audience for which to exchange access token
     storage_list_blank_slate:
       description: 여기에서 보려면 저장소를 추가합니다.
       heading: 아직 저장소가 없습니다.
-    upsale:
+    successful_storage_connection: 저장소가 연결되었습니다! 이 저장소를 사용하려면 원하는 각 프로젝트의 프로젝트 탭에서 저장소를 활성화해야 합니다.
+    upsell:
       description: |-
         OpenProject를 사용하여 OneDrive/SharePoint를 파일 저장소로 통합합니다. 파일을 업로드하고 프로젝트의 작업 패키지에 직접 링크합니다.
       title: OneDrive/SharePoint 통합

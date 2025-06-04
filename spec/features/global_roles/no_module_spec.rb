@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,7 +31,7 @@
 require "spec_helper"
 require_relative "mock_global_permissions"
 
-RSpec.describe "Global role: No module", :js, :with_cuprite do
+RSpec.describe "Global role: No module", :js do
   let(:admin) { create(:admin) }
   let(:project) { create(:project) }
   let!(:role) { create(:project_role) }

@@ -6,8 +6,16 @@
       [attr.aria-label]="locals.label"
       [ngClass]="{'-empty': items.length === 0 }">
     <ng-container *ngFor="let item of items">
+      <li *ngIf="item.isHeader" role="none">
+        <span
+          role="presentation"
+          [attr.aria-hidden]="true"
+          [textContent]="item.linkText"
+          class="op-menu--headline">
+        </span>
+      </li>
       <li *ngIf="item.divider" class="dropdown-divider" role="separator"></li>
-      <li *ngIf="!item.divider">
+      <li *ngIf="!item.divider && !item.isHeader">
         <a
           *ngIf="item.href"
           class="menu-item"
@@ -15,6 +23,7 @@
           [ngClass]="item.class"
           [class.inactive]="item.disabled"
           [attr.href]="item.href"
+          data-turbo="false"
           [attr.aria-disabled]="item.disabled"
           [attr.aria-label]="item.ariaLabel || item.linkText"
           [attr.title]="item.title || undefined"

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -46,8 +48,7 @@ RSpec.describe CustomActionsController, with_ee: %i[custom_actions] do
       end
 
       it "renders enterprise_token" do
-        expect(response)
-          .to render_template "common/upsale"
+        expect(response).to render_template "custom_actions/upsell"
       end
     end
   end

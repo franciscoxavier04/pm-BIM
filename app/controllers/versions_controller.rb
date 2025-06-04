@@ -136,8 +136,6 @@ class VersionsController < ApplicationController
 
   def find_project
     @project = Project.find(params[:project_id])
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   def retrieve_selected_type_ids(selectable_types, default_types = nil)
@@ -159,7 +157,7 @@ class VersionsController < ApplicationController
       flash[:notice] = t(success_message)
       redirect_back_or_version_settings
     else
-      render action: failure_action
+      render action: failure_action, status: :unprocessable_entity
     end
   end
 

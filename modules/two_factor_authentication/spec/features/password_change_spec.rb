@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "../spec_helper"
 
 RSpec.describe "Password change with OTP", :js, with_settings: {
@@ -13,7 +15,7 @@ RSpec.describe "Password change with OTP", :js, with_settings: {
            password: user_password,
            password_confirmation: user_password)
   end
-  let(:expected_path_after_login) { my_page_path }
+  let(:expected_path_after_login) { home_path }
 
   def handle_password_change(requires_otp: true)
     visit signin_path

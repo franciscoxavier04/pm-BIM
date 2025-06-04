@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -33,8 +34,6 @@ RSpec.describe "Meetings", :js do
   let(:user) { create(:admin) }
 
   let!(:meeting) { create(:meeting, project:, title: "Awesome meeting!") }
-  let!(:agenda) { create(:meeting_agenda, meeting:, text: "foo") }
-  let!(:minutes) { create(:meeting_minutes, meeting:, text: "minutes") }
 
   before do
     login_as(user)
@@ -46,9 +45,6 @@ RSpec.describe "Meetings", :js do
 
       check "Meetings"
       click_on "Apply"
-
-      expect(page).to have_css(".op-activity-list--item-title", text: "Minutes: Awesome meeting!")
-      expect(page).to have_css(".op-activity-list--item-title", text: "Agenda: Awesome meeting!")
       expect(page).to have_css(".op-activity-list--item-title", text: "Meeting: Awesome meeting!")
     end
   end

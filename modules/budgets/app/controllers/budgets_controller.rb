@@ -111,7 +111,7 @@ class BudgetsController < ApplicationController
       flash[:notice] = t(:notice_successful_create)
       redirect_to(params[:continue] ? { action: "new" } : { action: "show", id: @budget })
     else
-      render action: "new", layout: !request.xhr?
+      render action: "new", status: :unprocessable_entity, layout: !request.xhr?
     end
   end
 
@@ -129,7 +129,7 @@ class BudgetsController < ApplicationController
       redirect_to(@budget)
     else
       @budget = call.result
-      render action: "edit"
+      render action: :edit, status: :unprocessable_entity
     end
   rescue ActiveRecord::StaleObjectError
     # Optimistic locking exception
@@ -199,8 +199,6 @@ class BudgetsController < ApplicationController
     # This function comes directly from issues_controller.rb (Redmine 0.8.4)
     @budget = Budget.includes(:project, :author).find_by(id: params[:id])
     @project = @budget.project if @budget
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   def find_budgets
@@ -216,20 +214,16 @@ class BudgetsController < ApplicationController
       # TODO: let users bulk edit/move/destroy budgets from different projects
       render_error "Can not bulk edit/move/destroy cost objects from different projects" and return false
     end
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   def find_optional_project
     @project = Project.find(params[:project_id]) if params[:project_id].present?
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   def render_item_as_json(element_id, costs, unit, project, permission)
     response = {
       "#{element_id}_unit_name" => ActionController::Base.helpers.sanitize(unit),
-      "#{element_id}_currency" => Setting.plugin_costs["costs_currency"]
+      "#{element_id}_currency" => Setting.costs_currency
     }
 
     if current_user.allowed_in_project?(permission, project)

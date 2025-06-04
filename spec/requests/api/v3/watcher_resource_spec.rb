@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -318,6 +320,7 @@ RSpec.describe "API v3 Watcher resource", content_type: :json do
                 name: current_user.name,
                 firstname: current_user.firstname,
                 lastname: current_user.lastname,
+                email: current_user.mail,
                 _links: {
                   self: {
                     href: api_v3_paths.user(current_user.id),

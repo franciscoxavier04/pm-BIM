@@ -103,8 +103,8 @@ fi:
     button_settings: "Asetukset"
     button_uncheck_all: "Poista valinnat"
     button_update: "Päivitä"
-    button_export-pdf: "Lataa PDF"
     button_export-atom: "Lataa Atom"
+    button_generate_pdf: "Generate PDF"
     button_create: "Uusi"
     card:
       add_new: "Uusi kortti"
@@ -221,6 +221,8 @@ fi:
             label_maximum_users: "Maximum active users"
             label_starts_at: "Starts at"
             label_expires_at: "Vanhentuu"
+            label_plan: "Plan"
+            label_additional_features: "Additional features"
             receive_newsletter: I want to receive the OpenProject <a target="_blank" href="%{link}">newsletter</a>.
             taken_domain: There can only be one active trial per domain.
             domain_mismatch: The current request host name does not match the configured host name. Please double check your system settings.
@@ -237,10 +239,13 @@ fi:
           status_waiting: "email sent - waiting for confirmation"
           test_ee: "Test the Enterprise edition 14 days for free"
           quick_overview: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
-        upsale:
+        upsell:
           become_hero: "Ryhdy sankariksi!"
           enterprise_info_html: "%{feature_title} is an Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> add-on."
           upgrade_info: "Please upgrade to a paid plan to activate and start using it in your team."
+          text: >
+            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
+          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
           benefits:
             description: "What are the benefits of the Enterprise on-premises edition?"
             high_security: "Security features"
@@ -259,10 +264,7 @@ fi:
             We deliver the confidence of a tested and supported enterprise-class project management software - with Open Source and an open mind.
           link_quote: "Get a quote"
           more_info: "Lisätietoja"
-          text: >
-            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
           unlimited: "Rajoittamaton"
-          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
       working_days:
         calendar:
           empty_state_header: "Non-working days"
@@ -353,13 +355,13 @@ fi:
       blocks:
         new_features:
           text_new_features: "Tietoa uusista ominaisuuksista ja tuotepäivityksistä."
-          learn_about: "Lisätietoja uusista ominaisuuksista"
+          learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "14_6":
+          "16_0":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Benefit from more flexible progress reporting – thanks to user feedback.</li> <li>Receive an update notification with reload option for meetings.</li> <li>Enable a custom field for multiple projects at once.</li> <li>Use relative work package attribute macros.</li> <li>Show empty lines in saved rich text.</li> <li>See past meetings included in the number next to the Meetings tab.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "An error occured while fetching data."
@@ -432,7 +434,6 @@ fi:
     label_filename: "Tiedosto"
     label_filesize: "Koko"
     label_general: "Yleinen"
-    label_global_roles: "Global roles"
     label_greater_or_equal: ">="
     label_group: "Ryhmä"
     label_group_by: "Ryhmittely"
@@ -461,6 +462,7 @@ fi:
     label_menu_collapse: "pienennä"
     label_menu_expand: "laajenna"
     label_more_than_ago: "enemän kuin päivää sitten"
+    label_moderate_comment: "Moderate comment"
     label_next: "Seuraava"
     label_no_color: "Ei väriä"
     label_no_data: "Ei tietoja"
@@ -575,7 +577,7 @@ fi:
         members: "Invite new <b>members</b> to join your project."
         quick_add_button: "Click on the plus (+) icon in the header navigation to <b>create a new project</b> or to <b>invite coworkers</b>."
         sidebar_arrow: "Use the return arrow in the top left corner to return to the project’s <b>main menu</b>."
-        welcome: "Take a three minutes introduction tour to learn the most <b>important features</b>. <br> We recommend completing the steps until the end. You can restart the tour any time."
+        welcome: "Take a three-minute introduction tour to learn the most <b>important features</b>. <br> We recommend completing the steps until the end. You can restart the tour any time."
         wiki: "Within the <b>wiki</b> you can document and share knowledge together with your team."
         backlogs:
           overview: "Manage your work in the <b>backlogs</b> view."
@@ -612,7 +614,7 @@ fi:
         assigned: "Työn suorittaja"
         #The enum value is named 'responsible' in the database and that is what is transported through the API
         #up to the frontend.
-        responsible: "Accountable"
+        responsible: "Vastuuhenkilö"
         created: "Luotu"
         scheduled: "Ajoitettu"
         commented: "Kommentoitu"
@@ -620,17 +622,15 @@ fi:
         prioritized: "Prioritized"
         dateAlert: "Date alert"
         shared: "Shared"
+        reminder: "Reminder"
       date_alerts:
         milestone_date: "Milestone date"
         overdue: "Overdue"
-        overdue_since: "since %{difference_in_days}"
-        property_today: "is today"
-        property_is: "is in %{difference_in_days}"
-        property_was: "was %{difference_in_days} ago"
-        property_is_deleted: "is deleted"
-        upsale:
-          title: "Date alerts"
-          description: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
+        overdue_since: "since %{difference_in_days}."
+        property_today: "is today."
+        property_is: "is in %{difference_in_days}."
+        property_was: "was %{difference_in_days} ago."
+        property_is_deleted: "is deleted."
       center:
         label_actor_and: "and"
         and_more_users:
@@ -641,6 +641,7 @@ fi:
           with_current_filter: "There are no notifications in this view at the moment"
         mark_all_read: "Mark all as read"
         mark_as_read: "Mark as read"
+        mark_all_read_confirmation: "This will mark all notifications in this view as read. Are you sure you want to do this?"
         text_update_date_by: "%{date} by"
         total_count_warning: "Showing the %{newest_count} most recent notifications. %{more_count} more are not displayed."
         empty_state:
@@ -652,6 +653,8 @@ fi:
         new_notifications:
           message: "There are new notifications."
           link_text: "Click here to load them."
+      reminders:
+        note: "Note: “%{note}”"
       settings:
         change_notification_settings: 'You can modify your <a target="_blank" href="%{url}">notification settings</a> to ensure you never miss an important update.'
         title: "Notification settings"
@@ -691,7 +694,6 @@ fi:
           date_alerts:
             title: "Date alerts"
             description: "Automatic notifications when important dates are approaching for open work packages you are involved in (assignee, accountable or watcher)."
-            teaser_text: "With date alerts, you will be notified of upcoming start or finish dates so that you never miss or forget an important deadline."
           overdue: When overdue
         project_specific:
           title: "Project-specific notification settings"
@@ -714,18 +716,18 @@ fi:
       description: "Description: Click to edit..."
       relation_description: "Painamalla tästä voit lisätä kuvauksen tälle suhteelle"
     project:
-      required_outside_context: >
-        Please choose a project to create the work package in to see all attributes. You can only select projects which have the type above activated.
-      details_activity: "Project details activity"
-      context: "Project context"
-      click_to_switch_to_project: "Project: %{projectname}"
-      confirm_template_load: "Switching the template will reload the page and you will lose all input to this form. Continue?"
-      use_template: "Use template"
-      no_template_selected: "(None)"
-      copy:
-        copy_options: "Copy options"
       autocompleter:
         label: "Project autocompletion"
+      click_to_switch_to_project: "Project: %{projectname}"
+      confirm_template_load: "Switching the template will reload the page and you will lose all input to this form. Continue?"
+      context: "Project context"
+      copy:
+        copy_options: "Copy options"
+      not_available: "Project N/A"
+      no_template_selected: "(None)"
+      required_outside_context: >
+        Please choose a project to create the work package in to see all attributes. You can only select projects which have the type above activated.
+      use_template: "Use template"
     reminders:
       settings:
         daily:
@@ -740,6 +742,7 @@ fi:
         immediate:
           title: "Send me an email reminder"
           mentioned: "Immediately when someone @mentions me"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "Email alerts for other items (that are not work packages)"
           explanation: >
@@ -771,10 +774,6 @@ fi:
         upgrade_to_ee_text: "Wow! If you need this add-on you are a super pro! Would you mind supporting us OpenSource developers by becoming an Enterprise edition client?"
         more_information: "Lisätietoja"
         nevermind: "Nevermind"
-      edit:
-        form_configuration: "Lomakkeen muokkaus"
-        projects: "Projektit"
-        settings: "Asetukset"
     time_entry:
       work_package_required: "Requires selecting a work package first."
       title: "Kirjaa työaika"
@@ -797,6 +796,7 @@ fi:
       typeahead_placeholder: Etsi mahdollisia seuraajia
     relation_labels:
       parent: "Ylätaso"
+      child: "Child"
       children: "Alitehtävä"
       relates: "Liittyy"
       duplicates: "Alkuperäinen"
@@ -826,16 +826,16 @@ fi:
       add_new_child: "Luo uusi alitehtävä"
       create_new: "Create new"
       add_existing: "Lisää olemassaoleva"
-      add_existing_child: "Lisää alitehtävä"
+      add_existing_child: "Lisää alikohde"
       remove_child: "Poista alitehtävä"
       add_new_relation: "Luo uusi riippuvuus"
       add_existing_relation: "Lisää olemassa oleva suhde"
       update_description: "Määritä tai päivitä tämän suhteen kuvaus"
       toggle_description: "Toggle relation description"
       update_relation: "Click to change the relation type"
-      add_follower: "Add follower"
       show_relations: "Show relations"
       add_predecessor: "Add predecessor"
+      add_successor: "Add successor"
       remove: "Remove relation"
       save: "Tallenna riippuvuus"
       abort: "Keskeytä"
@@ -852,8 +852,6 @@ fi:
       select_branch: "Valitse haara"
     field_value_enter_prompt: "Syötä arvo kenttään \"%{field}\""
     project_menu_details: "Yksityiskohdat"
-    scheduling:
-      manual: "Manual scheduling"
     sort:
       sorted_asc: "Ascending sort applied, "
       sorted_dsc: "Descending sort applied, "
@@ -867,7 +865,7 @@ fi:
     tl_toolbar:
       zooms: "Lähennyksen taso"
       outlines: "Hierarkian taso"
-    upsale:
+    upsell:
       ee_only: "Enterprise edition add-on"
     wiki_formatting:
       strong: "Lihavoitu"
@@ -901,15 +899,6 @@ fi:
       comment_send_failed: "On tapahtunut virhe. Kommenttia ei voitu lähettää."
       comment_updated: "Kommentti päivitettiin onnistuneesti."
       confirm_edit_cancel: "Oletko varma, että haluat peruuttaa tehtävän muokkauksen?"
-      datepicker_modal:
-        automatically_scheduled_parent: "Automatically scheduled. Dates are derived from relations."
-        manually_scheduled: "Manual scheduling enabled, all relations ignored."
-        start_date_limited_by_relations: "Available start and finish dates are limited by relations."
-        changing_dates_affects_follow_relations: "Changing these dates will affect dates of related work packages."
-        click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for GANTT overview.'
-        show_relations: "Show relations"
-        ignore_non_working_days:
-          title: "Working days only"
       description_filter: "Suodata"
       description_enter_text: "Enter text"
       description_options_hide: "Piilota valinnat"
@@ -1043,14 +1032,18 @@ fi:
           not_found: "There is no such view"
           duplicate_query_title: "Name of this view already exists. Change anyway?"
         text_no_results: "No matching views were found."
+      reminders:
+        button_label: "Set reminder"
+        title:
+          new: "Set reminder"
+          edit: "Edit reminder"
+        subtitle: "You will receive a notification for this work package at the chosen time."
       scheduling:
         is_parent: "The dates of this work package are automatically deduced from its children. Activate 'Manual scheduling' to set the dates."
         is_switched_from_manual_to_automatic: "The dates of this work package may need to be recalculated after switching from manual to automatic scheduling due to relationships with other work packages."
       sharing:
         title: "Share work package"
         show_all_users: "Show all users with whom the work package has been shared with"
-        upsale:
-          description: "Share work packages with users who are not members of the project."
       table:
         configure_button: "Configure work package table"
         summary: "Taulukko jossa tehtävät riveinä ja ominaisuudet sarakkeina."
@@ -1085,10 +1078,6 @@ fi:
           manually: "Käsin"
           warning: "Automaattinen lajittelutapa korvaa nykyiset asetukset"
         columns_help_text: "Use the input field above to add columns to your table view. You can drag and drop the columns to reorder them."
-        upsale:
-          attribute_highlighting: "Need certain work packages to stand out from the mass?"
-          relation_columns: "Täytyy nähdä riippuvuudet tehtävälistassa?"
-          check_out_link: "Check out the Enterprise edition."
         relation_filters:
           filter_work_packages_by_relation_type: "Filter work packages by relation type"
       tabs:
@@ -1302,9 +1291,7 @@ fi:
       clear: "Tyhjennä"
       apply: "Ota käyttöön"
       header_description: "Highlight changes made to this list since any point in the past."
-      enterprise_header_description: "Highlight changes made to this list since any point in the past with Enterprise edition."
       show_changes_since: "Show changes since"
-      baseline_comparison: "Baseline comparison"
       help_description: "Reference time zone for the baseline."
       time_description: "In your local time: %{datetime}"
       time: "Aika"
@@ -1346,5 +1333,3 @@ fi:
       waiting_subtitle:
         network_off: "There is a network problem."
         network_on: "Network is back. We are trying."
-        timeout: >
-          OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check the <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">health status of the file storage setup</a>.

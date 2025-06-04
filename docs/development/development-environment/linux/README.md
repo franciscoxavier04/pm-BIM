@@ -40,10 +40,10 @@ sudo apt-get install git curl build-essential zlib1g-dev libyaml-dev libssl-dev 
 Use [rbenv](https://github.com/rbenv/rbenv) and [ruby-build](https://github.com/rbenv/ruby-build#readme) to install
 Ruby.
 You can check available ruby versions with `rbenv install --list`.
-At the time of this writing, the latest stable version is `3.3.4`, which we also require.
+At the time of this writing, the latest stable version is `3.4.4`, which we also require.
 
 We suggest you install the version we require in [.ruby-version](https://github.com/opf/openproject/blob/dev/.ruby-version).
-Read the first line e.g. `3.3.4` and install that version.
+Read the first line e.g. `3.4.4` and install that version.
 
 #### Install rbenv and ruby-build
 
@@ -76,22 +76,22 @@ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
 #### Installing ruby
 
-With both installed, we can now install ruby. 
+With both installed, we can now install ruby.
 You can check available ruby versions with `rbenv install --list`.
 
 We suggest you install the version we require in [.ruby-version](https://github.com/opf/openproject/blob/dev/.ruby-version).
-Read the first line e.g. `3.3.4` and install that version.
+Read the first line e.g. `3.4.4` and install that version.
 
 ```shell
 # Install the required version as read from the .ruby-version file
-rbenv install 3.3.4
+rbenv install 3.4.4
 ```
 
 This might take a while depending on whether ruby is built from source. After it is complete, you need to tell rbenv to
 globally activate this version
 
 ```shell
-rbenv global 3.3.4
+rbenv global 3.4.4
 rbenv rehash
 ```
 
@@ -161,11 +161,11 @@ git clone https://github.com/nodenv/node-build.git $(nodenv root)/plugins/node-b
 
 You can find the latest LTS version here: [nodejs.org/en/download/](https://nodejs.org/en/download/)
 
-At the time of writing this is v20.9.0 Install and activate it with:
+At the time of writing this is v22.15.0 Install and activate it with:
 
 ```shell
-nodenv install 20.9.0
-nodenv global 20.9.0
+nodenv install 22.15.0
+nodenv global 22.15.0
 nodenv rehash
 ```
 
@@ -181,13 +181,13 @@ You should now have an active ruby and node installation. Verify that it works w
 
 ```shell
 ruby --version
-ruby 3.3.4 (2024-07-09 revision be1089c8ec) [arm64-darwin23]
+ruby 3.4.4 (2025-05-14 revision a38531fd3f) +PRISM [arm64-darwin24]
 
 bundler --version
-Bundler version 2.5.13
+Bundler version 2.6.9
 
 node --version
-v20.9.0
+v22.15.0
 
 npm --version
 10.5.0

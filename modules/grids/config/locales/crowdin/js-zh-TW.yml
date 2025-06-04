@@ -4,9 +4,6 @@ zh-TW:
       add_widget: '新增小工具'
       remove: '移除小工具'
       configure: '設定小工具'
-      upsale:
-        text: "某些組件，如工作包圖組件，只在企業版提供。"
-        link: '企業版。'
       widgets:
         missing_permission: "您沒有必要的權限來檢視小工具。"
         custom_text:
@@ -27,9 +24,6 @@ zh-TW:
         project_description:
           title: '專案描述'
           no_results: "尚未寫入任何描述。可以在「項目設置」中新增。"
-        project_details:
-          title: '專案詳細資訊'
-          no_results: '尚未為項目定義自訂欄位。'
         project_status:
           title: '專案狀態'
           not_started: '未開始'

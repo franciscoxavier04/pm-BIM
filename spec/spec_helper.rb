@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -54,4 +56,5 @@ RSpec.configure do |config|
   # Have the FactoryBot methods like #create and #build_stubbed without
   # having to call it on FactoryBot.
   config.include FactoryBot::Syntax::Methods
+  config.include Dry::Monads[:result]
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe ProjectQuery, "#allowed to" do # rubocop:disable RSpec/RSpec/SpecFilePathFormat
+RSpec.describe ProjectQuery, "#allowed to" do # rubocop:disable RSpec/SpecFilePathFormat
   shared_let(:user) { create(:user) }
   shared_let(:other_user) { create(:user) }
 

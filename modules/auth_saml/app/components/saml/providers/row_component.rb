@@ -5,14 +5,6 @@ module Saml
         model
       end
 
-      def column_args(column)
-        if column == :name
-          { style: "grid-column: span 3" }
-        else
-          super
-        end
-      end
-
       def name
         concat render(Primer::Beta::Link.new(
                         font_weight: :bold,
@@ -20,23 +12,11 @@ module Saml
                       )) { provider.display_name || provider.name }
 
         render_availability_label
-        render_idp_sso_service_url
       end
 
       def render_availability_label
         unless provider.available?
-          concat render(Primer::Beta::Label.new(ml: 2, scheme: :attention, size: :medium)) { t(:label_incomplete) }
-        end
-      end
-
-      def render_idp_sso_service_url
-        if provider.idp_sso_service_url
-          concat render(Primer::Beta::Text.new(
-                          tag: :p,
-                          classes: "-break-word",
-                          font_size: :small,
-                          color: :subtle
-                        )) { provider.idp_sso_service_url }
+          render(Primer::Beta::Label.new(ml: 2, scheme: :attention, size: :medium)) { t(:label_incomplete) }
         end
       end
 
@@ -53,7 +33,7 @@ module Saml
       end
 
       def users
-        User.where("identity_url LIKE ?", "#{provider.slug}%").count.to_s
+        provider.user_count.to_s
       end
 
       def creator

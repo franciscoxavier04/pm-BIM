@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -70,6 +72,7 @@ RSpec.describe WorkPackage do
     it { is_expected.to belong_to(:assigned_to).class_name("Principal").optional }
     it { is_expected.to belong_to(:responsible).class_name("Principal").optional }
     it { is_expected.to belong_to(:version).optional }
+    it { is_expected.to belong_to(:project_phase_definition).class_name("Project::PhaseDefinition").optional }
     it { is_expected.to belong_to(:priority).class_name("IssuePriority") }
     it { is_expected.to belong_to(:category).optional }
     it { is_expected.to have_many(:time_entries).dependent(:delete_all) }
@@ -873,6 +876,32 @@ RSpec.describe WorkPackage do
       work_package.remaining_hours = "3d 1h 30m"
       expect(work_package).to be_valid
       expect(work_package.remaining_hours).to eq((3 * 8) + 1.5)
+    end
+  end
+
+  describe "#project_phase" do
+    let(:project_phase) { build_stubbed(:project_phase, definition: project_phase_definition) }
+    let(:project_phase_definition) { build_stubbed(:project_phase_definition) }
+    let(:project) { build_stubbed(:project, phases: [project_phase]) }
+    let(:work_package) do
+      build_stubbed(:work_package,
+                    project:,
+                    project_phase_definition: project_phase_definition)
+    end
+
+    describe "when the project phase exists in the project" do
+      it "returns the project phase definition" do
+        expect(work_package.project_phase).to eq(project_phase)
+      end
+    end
+
+    describe "when the project phase does not exist in the project (e.g. moved into the project)" do
+      # There is now only another project phase active in the project
+      let(:project_phase) { build_stubbed(:project_phase, definition: build_stubbed(:project_phase_definition)) }
+
+      it "returns nil" do
+        expect(work_package.project_phase).to be_nil
+      end
     end
   end
 end

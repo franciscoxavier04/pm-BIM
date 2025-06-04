@@ -21,7 +21,7 @@ This page will give you an overview of how to register or sign in to an existing
 | [Choose your language](#choose-your-language)                                 | How to select your language in OpenProject.                        |
 | [Reset your password](#reset-your-password)                                   | If you forgot your password find out how to reset it.              |
 
-<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Sign-in-and-Registration-2.mp4" type="video/mp4" controls="" style="width:100%"></video>
+<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Sign-in-and-Registration-2.mp4"></video>
 
 ## Sign in with an existing account
 
@@ -88,7 +88,7 @@ After the creation of your account you are logged into the system. You will then
 
 ![select language](20191202171349241.png)
 
-If you have already logged in before, you can [set your language in your user profile](../../user-guide/my-account/#profile-settings).
+If you have already logged in before, you can [set your language in your user profile](../../user-guide/account-settings/#profile-settings).
 
 ## Reset your password
 

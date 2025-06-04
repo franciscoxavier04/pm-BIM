@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,18 +30,16 @@
 
 require "spec_helper"
 
-require_relative "../../support/pages/meetings/new"
-require_relative "../../support/pages/structured_meeting/show"
-require_relative "../../support/pages/structured_meeting/history"
+require_relative "../../support/pages/meetings/show"
+require_relative "../../support/pages/meetings/history"
 
 RSpec.describe "history",
-               :js,
-               :with_cuprite do
+               :js do
   include Components::Autocompleter::NgSelectAutocompleteHelpers
   include Redmine::I18n
 
-  shared_let(:project) { create(:project, enabled_module_names: %w[meetings work_package_tracking]) }
-  shared_let(:other_project) { create(:project, enabled_module_names: %w[work_package_tracking]) }
+  shared_let(:project) { create(:project, enabled_module_names: %w[meetings work_package_tracking activities]) }
+  shared_let(:other_project) { create(:project, enabled_module_names: %w[work_package_tracking activites]) }
   shared_let(:user) do
     create(:user,
            lastname: "First",
@@ -72,7 +72,7 @@ RSpec.describe "history",
   end
   shared_let(:meeting) do
     User.execute_as(user) do
-      create(:structured_meeting,
+      create(:meeting,
              project:,
              start_time: DateTime.parse("2024-03-28T13:30:00Z"),
              title: "Some title",
@@ -82,8 +82,8 @@ RSpec.describe "history",
     end
   end
 
-  let(:show_page) { Pages::StructuredMeeting::Show.new(meeting) }
-  let(:history_page) { Pages::StructuredMeeting::History.new(meeting) }
+  let(:show_page) { Pages::Meetings::Show.new(meeting) }
+  let(:history_page) { Pages::Meeting::History.new(meeting) }
   let(:editor) { Components::WysiwygEditor.new "#content", "opce-ckeditor-augmented-textarea" }
 
   it "allows browsing the history", with_settings: { journal_aggregation_time_minutes: 0 } do
@@ -340,19 +340,23 @@ RSpec.describe "history",
     end
 
     history_page.open_history_modal
-    within("li.op-activity-list--item", match: :first) do
-      expect(page).to have_css("li", text: "Notes set")
-      click_link_or_button "Details"
-    end
 
-    expect(page).to have_current_path /\/journals\/\d+\/diff\/agenda_items_\d+_notes/
-    expect(page).to have_css("ins.diffmod", text: "# Hello there")
+    retry_block do
+      within("li.op-activity-list--item", match: :first) do
+        expect(page).to have_css("li", text: "Notes set")
+        click_link_or_button "Details"
+      end
+
+      wait_for_network_idle
+      expect(page).to have_current_path /\/journals\/\d+\/diff\/agenda_items_\d+_notes/
+      expect(page).to have_css("ins.diffmod", text: "# Hello there")
+    end
   end
 
   it "for a user with no permissions, renders an error", with_settings: { journal_aggregation_time_minutes: 0 } do
     login_as no_member_user
 
-    visit history_meeting_path(meeting)
+    visit history_project_meeting_path(project, meeting)
 
     expected = "[Error 403] You are not authorized to access this page."
     expect_flash(type: :error, message: expected)

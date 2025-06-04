@@ -26,7 +26,15 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Injector,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { EnterpriseTrialModalComponent } from 'core-app/features/enterprise/enterprise-modal/enterprise-trial.modal';
 import { OpModalService } from 'core-app/shared/components/modal/modal.service';
@@ -36,11 +44,7 @@ import { distinctUntilChanged } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { GonService } from 'core-app/core/gon/gon.service';
 import { IEnterpriseData } from 'core-app/features/enterprise/enterprise-trial.model';
-
-export interface EETrialKey {
-  created:string;
-  value:string;
-}
+import { populateInputsFromDataset } from 'core-app/shared/components/dataset-inputs';
 
 @Component({
   selector: 'opce-free-trial-button',
@@ -48,12 +52,20 @@ export interface EETrialKey {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FreeTrialButtonComponent implements OnInit {
+  @Input() public trialKey:string|undefined;
+
+  @Input() public trialCreatedAt:string|undefined;
+
+  @Input() public augurUrl:string;
+
+  @Input() public tokenVersion:string;
+
   created = this.timezoneService.formattedDate(new Date().toString());
 
   email = '';
 
   public text = {
-    button_trial: this.I18n.t('js.admin.enterprise.upsale.button_start_trial'),
+    button_trial: this.I18n.t('js.admin.enterprise.upsell.button_start_trial'),
     confirmation_info: (date:string, email:string):string => this.I18n.t('js.admin.enterprise.trial.confirmation_info', {
       date,
       email,
@@ -61,6 +73,7 @@ export class FreeTrialButtonComponent implements OnInit {
   };
 
   constructor(
+    readonly elementRef:ElementRef<HTMLElement>,
     protected I18n:I18nService,
     protected opModalService:OpModalService,
     readonly injector:Injector,
@@ -70,9 +83,14 @@ export class FreeTrialButtonComponent implements OnInit {
     public eeTrialService:EnterpriseTrialService,
     readonly timezoneService:TimezoneService,
   ) {
+    populateInputsFromDataset(this);
   }
 
   ngOnInit():void {
+    this.eeTrialService.baseUrlAugur = this.augurUrl;
+    this.eeTrialService.tokenVersion = this.tokenVersion;
+    this.eeTrialService.setTrialKey(this.trialKey);
+
     this.eeTrialService
       .userData$
       .pipe(
@@ -87,33 +105,9 @@ export class FreeTrialButtonComponent implements OnInit {
   }
 
   private initialize():void {
-    const eeTrialKey = this.Gon.get('ee_trial_key') as EETrialKey;
-    if (eeTrialKey) {
-      const savedDateStr = eeTrialKey.created.split(' ')[0];
-      this.created = this.timezoneService.formattedDate(savedDateStr);
-
-      const { data } = this.eeTrialService.store.getValue();
-      if (data) {
-        // after reload: get data from Augur using the trial key saved in gon
-        const trialLink = `${this.eeTrialService.baseUrlAugur}/public/v1/trials/${eeTrialKey.value}`;
-        this.eeTrialService.store.update({ trialLink });
-        this.getUserDataFromAugur(trialLink);
-      }
+    if (this.trialCreatedAt) {
+      this.created = this.timezoneService.formattedDate(this.trialCreatedAt);
     }
-  }
-
-  private getUserDataFromAugur(trialLink:string):void {
-    this.http
-      .get<IEnterpriseData>(`${trialLink}/details`)
-      .toPromise()
-      .then((data:IEnterpriseData) => {
-        this.eeTrialService.store.update({ data });
-        this.eeTrialService.retryConfirmation();
-      })
-      .catch(() => {
-        // Check whether the mail has been confirmed by now
-        this.eeTrialService.getToken();
-      });
   }
 
   public openTrialModal():void {
@@ -123,7 +117,6 @@ export class FreeTrialButtonComponent implements OnInit {
   }
 
   public get trialRequested():boolean {
-    const eeTrialKey = this.Gon.get('ee_trial_key') as EETrialKey|undefined;
-    return !!eeTrialKey;
+    return !!this.trialKey;
   }
 }

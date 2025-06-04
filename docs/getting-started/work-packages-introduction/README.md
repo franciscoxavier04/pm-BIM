@@ -19,7 +19,7 @@ For further documentation, please visit our [user guide for work packages](../..
 | [Open and edit a work package](#open-and-edit-a-work-package) | How to open and make changes to an existing work package. |
 | [Activity of work packages](#activity-of-work-packages)       | See all changes in a work package.                        |
 
-<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Work-Packages.mp4" type="video/mp4" controls="" style="width:100%"></video>
+<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Work-Packages.mp4"></video>
 
 ## What is a work package?
 
@@ -47,7 +47,7 @@ The work package will the be displayed in the table view:
 
  ![create work package define project](create-work-package-define-project-6669224.png)
 
-Another option to create a work package is to do it from the header menu. The [work package types](../../user-guide/projects/project-settings/work-package-types/#work-package-types) that are activated, will be shown and you can select the relevant work package type to be created.
+Another option to create a work package is to do it from the header menu. The [work package types](../../user-guide/projects/project-settings/work-packages/#work-package-types) that are activated, will be shown and you can select the relevant work package type to be created.
 
 ![create-work-package-header](create-work-package-header.png)
 
@@ -75,7 +75,7 @@ To **update the status**, click on the highlighted displayed status on top of th
 
 ## Activity of work packages
 
-To keep informed about all changes to a work package, open the **ACTIVITY** tab in the details view.
+To keep informed about all changes to a work package, open the *Activity* tab in the details view.
 
 Here you will see all changes which have been made to this work package.
 

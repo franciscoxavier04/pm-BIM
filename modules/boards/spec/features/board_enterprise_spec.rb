@@ -30,7 +30,7 @@ require "spec_helper"
 require_relative "support/board_index_page"
 require_relative "support/board_page"
 
-RSpec.describe "Boards enterprise spec", :js, :with_cuprite do
+RSpec.describe "Boards enterprise spec", :js do
   shared_let(:admin) { create(:admin) }
 
   shared_let(:project) { create(:project, enabled_module_names: %i[work_package_tracking board_view]) }
@@ -67,12 +67,12 @@ RSpec.describe "Boards enterprise spec", :js, :with_cuprite do
 
       board_page = board_index.open_board(manual_board)
       board_page.expect_query "My board"
-      expect(page).not_to have_test_selector "op-enterprise-banner"
+      expect(page).not_to have_enterprise_banner
 
       board_index.visit!
       board_page = board_index.open_board(action_board)
       board_page.expect_query "Subproject board"
-      expect(page).to have_test_selector "op-enterprise-banner"
+      expect(page).to have_enterprise_banner
     end
   end
 
@@ -95,12 +95,12 @@ RSpec.describe "Boards enterprise spec", :js, :with_cuprite do
 
       board_page = board_index.open_board(manual_board)
       board_page.expect_query "My board"
-      expect(page).not_to have_test_selector "op-enterprise-banner"
+      expect(page).not_to have_enterprise_banner
 
       board_index.visit!
       board_page = board_index.open_board(action_board)
       board_page.expect_query "Subproject board"
-      expect(page).not_to have_test_selector "op-enterprise-banner"
+      expect(page).not_to have_enterprise_banner
     end
   end
 end

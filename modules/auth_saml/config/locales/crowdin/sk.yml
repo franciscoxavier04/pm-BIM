@@ -1,9 +1,9 @@
 sk:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
-        display_name: Name
-        identifier: Identifier
+        display_name: Názov
+        identifier: Identifikátor
         secret: Secret
         scope: Scope
         assertion_consumer_service_url: ACS (Assertion consumer service) URL
@@ -21,9 +21,8 @@ sk:
         private_key: Corresponding private key for OpenProject SAML requests
         signature_method: Signature algorithm
         digest_method: Digest algorithm
-        format: "Format"
+        format: "Formát"
         icon: "Custom icon"
-  activerecord:
     errors:
       models:
         saml/provider:
@@ -33,6 +32,7 @@ sk:
           unmatched_private_key: "does not belong to the given certificate"
   saml:
     menu_title: SAML providers
+    delete_title: Delete SAML provider
     info:
       title: "SAML Protocol Configuration Parameters"
       description: >
@@ -54,7 +54,6 @@ sk:
       label_edit: Edit SAML identity provider %{name}
       label_uid: Internal user id
       label_mapping: Mapping
-      label_mapping_for: "Mapping for: %{attribute}"
       label_requested_attribute_for: "Requested attribute for: %{attribute}"
       no_results_table: No SAML identity providers have been defined yet.
       plural: SAML identity providers
@@ -65,7 +64,8 @@ sk:
         The following fields control which attributes provided by the SAML identity provider are used to provide user attributes in OpenProject
       metadata:
         dialog: "This is the URL where the OpenProject SAML metadata is available. Optionally use it to configure your identity provider:"
-      upsale:
+      upsell:
+        title: "Single Sign-On (SSO) with SAML"
         description: Connect OpenProject to a SAML identity provider
       request_attributes:
         title: 'Requested attributes'
@@ -75,7 +75,7 @@ sk:
         format: 'Attribute format'
       section_headers:
         configuration: "Primary configuration"
-        attributes: "Attributes"
+        attributes: "Atribúty"
       section_texts:
         display_name: "Configure the display name of the SAML provider."
         metadata: "Pre-fill configuration using a metadata URL or by pasting metadata XML"
@@ -138,7 +138,7 @@ sk:
       authn_requests_signed: >
         If checked, OpenProject will sign the SAML AuthnRequest. You will have to provide a signing certificate and private key using the fields below.
       want_assertions_signed: >
-        If checked, OpenProject will required signed responses from the identity provider using it's own certificate keypair. OpenProject will verify the signature against the certificate from the basic configuration section.
+        If checked, OpenProject will required signed responses from the identity provider using its own certificate keypair. OpenProject will verify the signature against the certificate from the basic configuration section.
       want_assertions_encrypted: >
         If enabled, require the identity provider to encrypt the assertion response using the certificate pair that you provide.
       certificate: >

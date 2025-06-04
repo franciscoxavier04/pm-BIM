@@ -1,10 +1,10 @@
 uk:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
-        display_name: Ім’я
+        display_name: Назва
         identifier: Ідентифікатор
-        secret: Секрет
+        secret: Секретний ключ
         scope: Область
         assertion_consumer_service_url: URL-адреса ACS (Служба підтримки споживачів)
         limit_self_registration: Обмежити самостійну реєстрацію
@@ -23,7 +23,6 @@ uk:
         digest_method: Алгоритм зведення
         format: "Формат"
         icon: "Користувацький значок"
-  activerecord:
     errors:
       models:
         saml/provider:
@@ -33,6 +32,7 @@ uk:
           unmatched_private_key: "не належить до даного сертифікату"
   saml:
     menu_title: Постачальники SAML
+    delete_title: Видалити постачальника SAML
     info:
       title: "Параметри конфігурації протоколу SAML"
       description: >
@@ -54,7 +54,6 @@ uk:
       label_edit: Редагувати постачальника ідентифікаційних даних SAML %{name}
       label_uid: Внутрішній ID користувача
       label_mapping: Зіставлення
-      label_mapping_for: "Зіставлення для: %{attribute}"
       label_requested_attribute_for: "Запитаний атрибут для: %{attribute}"
       no_results_table: Поки не визначеного жодного постачальника ідентифікаційних даних SAML.
       plural: Постачальники ідентифікаційних даних SAML
@@ -65,7 +64,8 @@ uk:
         Наведені нижче поля визначають, які атрибути, надані постачальником ідентифікаційних даних SAML, використовуються для надання атрибутів користувача в OpenProject
       metadata:
         dialog: "Це URL-адреса, за якою доступні метадані SAML OpenProject. Ви можете використовувати її для налаштування свого постачальника ідентифікаційних даних:"
-      upsale:
+      upsell:
+        title: "Єдиний вхід (SSO) із SAML"
         description: Підключіть OpenProject до постачальника ідентифікаційних даних SAML
       request_attributes:
         title: 'Запитувані атрибути'
@@ -98,7 +98,7 @@ uk:
       display_name: >
         Ім’я постачальника послуг. Відображатиметься як кнопка входу й пункт у списку постачальників послуг.
       metadata_none: >
-        Your identity provider does not have a metadata endpoint or XML download option. You can configure it manually.
+        Ваш постачальник ідентифікаційних даних не має кінцевої точки метаданих або не надає можливість завантаження XML. Ви можете налаштувати це вручну.
       metadata_url: >
         Ваш постачальник ідентифікаційних надає URL-адресу метаданих.
       metadata_xml: >

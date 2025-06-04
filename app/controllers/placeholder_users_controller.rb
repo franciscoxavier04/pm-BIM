@@ -27,7 +27,6 @@
 #++
 
 class PlaceholderUsersController < ApplicationController
-  include EnterpriseTrialHelper
   layout "admin"
   before_action :authorize_global, except: %i[show]
   no_authorization_required! :show
@@ -79,7 +78,7 @@ class PlaceholderUsersController < ApplicationController
     @individual_principal = @placeholder_user
   end
 
-  def create
+  def create # rubocop:disable Metrics/AbcSize
     service = PlaceholderUsers::CreateService.new(user: User.current)
     service_result = service.call(permitted_params.placeholder_user)
     @placeholder_user = service_result.result
@@ -94,13 +93,13 @@ class PlaceholderUsersController < ApplicationController
     else
       respond_to do |format|
         format.html do
-          render action: :new
+          render action: :new, status: :unprocessable_entity
         end
       end
     end
   end
 
-  def update
+  def update # rubocop:disable Metrics/AbcSize
     service_result = PlaceholderUsers::UpdateService
       .new(user: User.current,
            model: @placeholder_user)
@@ -118,7 +117,7 @@ class PlaceholderUsersController < ApplicationController
 
       respond_to do |format|
         format.html do
-          render action: :edit
+          render action: :edit, status: :unprocessable_entity
         end
       end
     end
@@ -146,8 +145,6 @@ class PlaceholderUsersController < ApplicationController
 
   def find_placeholder_user
     @placeholder_user = PlaceholderUser.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   protected
@@ -156,9 +153,5 @@ class PlaceholderUsersController < ApplicationController
     unless helpers.can_delete_placeholder_user?(@placeholder_user, current_user)
       render_403 message: I18n.t("placeholder_users.right_to_manage_members_missing")
     end
-  end
-
-  def show_local_breadcrumb
-    false
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # --copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -38,8 +40,10 @@ require_relative "../../lib_static/open_project/feature_decisions"
 #   initializer 'the_engine.feature_decisions' do
 #     OpenProject::FeatureDecisions.add :some_flag
 #   end
+
 OpenProject::FeatureDecisions.add :built_in_oauth_applications,
                                   description: "Allows the display and use of built-in OAuth applications."
 
-OpenProject::FeatureDecisions.add :custom_field_of_type_hierarchy,
-                                  description: "Allows the use of the custom field type 'Hierarchy'."
+OpenProject::FeatureDecisions.add :stages_and_gates,
+                                  description: "Enables the project phases feature.",
+                                  force_active: Rails.env.production? || Rails.env.development?

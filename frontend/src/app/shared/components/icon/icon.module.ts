@@ -4,8 +4,11 @@ import { OpIconComponent } from './icon.component';
 import {
   ChevronLeftIconComponent,
   ChevronRightIconComponent,
+  ClockIconComponent,
   HomeIconComponent,
   InfoIconComponent,
+  OpAlarmIconComponent,
+  OpAlarmSetIconComponent,
   OpCursorRectangleSelectIconComponent,
   OpCursorSelectIconComponent,
   OpEnterpriseAddonsIconComponent,
@@ -24,6 +27,7 @@ import {
   OpViewThreedIconComponent,
   PackageIconComponent,
   PersonIconComponent,
+  QuestionIconComponent,
   ScreenFullIconComponent,
   ShareAndroidIconComponent,
   StarFillIconComponent,
@@ -49,6 +53,10 @@ import {
   OpGitlabPipelineStatusSuccessIconComponent,
   OpGitlabPipelineStatusWaitingIconComponent,
   XCircleIconComponent,
+  KebabHorizontalIconComponent,
+  ReadIconComponent,
+  EyeIconComponent,
+  EyeClosedIconComponent,
 } from '@openproject/octicons-angular';
 
 @NgModule({
@@ -57,8 +65,11 @@ import {
 
     ChevronLeftIconComponent,
     ChevronRightIconComponent,
+    ClockIconComponent,
     HomeIconComponent,
     InfoIconComponent,
+    OpAlarmIconComponent,
+    OpAlarmSetIconComponent,
     OpCursorRectangleSelectIconComponent,
     OpCursorSelectIconComponent,
     OpEnterpriseAddonsIconComponent,
@@ -77,6 +88,7 @@ import {
     OpViewThreedIconComponent,
     PackageIconComponent,
     PersonIconComponent,
+    QuestionIconComponent,
     ScreenFullIconComponent,
     ShareAndroidIconComponent,
     StarFillIconComponent,
@@ -102,7 +114,13 @@ import {
     OpGitlabPipelineStatusSkippedIconComponent,
     OpGitlabPipelineStatusSuccessIconComponent,
     OpGitlabPipelineStatusWaitingIconComponent,
+
     XCircleIconComponent,
+
+    KebabHorizontalIconComponent,
+    ReadIconComponent,
+    EyeIconComponent,
+    EyeClosedIconComponent,
   ],
   declarations: [
     OpIconComponent,
@@ -113,8 +131,11 @@ import {
 
     ChevronLeftIconComponent,
     ChevronRightIconComponent,
+    ClockIconComponent,
     HomeIconComponent,
     InfoIconComponent,
+    OpAlarmIconComponent,
+    OpAlarmSetIconComponent,
     OpCursorRectangleSelectIconComponent,
     OpCursorSelectIconComponent,
     OpEnterpriseAddonsIconComponent,
@@ -133,6 +154,7 @@ import {
     OpViewThreedIconComponent,
     PackageIconComponent,
     PersonIconComponent,
+    QuestionIconComponent,
     ScreenFullIconComponent,
     ShareAndroidIconComponent,
     StarFillIconComponent,
@@ -159,6 +181,11 @@ import {
     OpGitlabPipelineStatusSuccessIconComponent,
     OpGitlabPipelineStatusWaitingIconComponent,
     XCircleIconComponent,
+
+    KebabHorizontalIconComponent,
+    ReadIconComponent,
+    EyeIconComponent,
+    EyeClosedIconComponent,
   ],
 })
 export class IconModule {}

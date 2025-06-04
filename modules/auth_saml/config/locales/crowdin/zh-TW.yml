@@ -1,5 +1,5 @@
 zh-TW:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
         display_name: 名稱
@@ -23,7 +23,6 @@ zh-TW:
         digest_method: 摘要演算法
         format: "格式"
         icon: "自訂圖示"
-  activerecord:
     errors:
       models:
         saml/provider:
@@ -33,6 +32,7 @@ zh-TW:
           unmatched_private_key: "不屬於指定的憑證"
   saml:
     menu_title: SAML 提供商
+    delete_title: 刪除 SAML 提供者
     info:
       title: "SAML 通訊協定組態參數"
       description: >
@@ -54,7 +54,6 @@ zh-TW:
       label_edit: 編輯 SAML 身分提供者 %{name}
       label_uid: 內部使用者 id
       label_mapping: 對應
-      label_mapping_for: "對應為： %{attribute}"
       label_requested_attribute_for: "要求的屬性為： %{attribute}"
       no_results_table: 目前尚未定義 SAML 身分提供者。
       plural: SAML 身分提供商
@@ -65,7 +64,8 @@ zh-TW:
         下列欄位控制 SAML 身分提供者所提供的哪些屬性會被用來在 OpenProject 中提供使用者屬性
       metadata:
         dialog: "這是 OpenProject SAML 元資料可用的 URL。可選擇使用它來設定您的身分提供者："
-      upsale:
+      upsell:
+        title: "使用 SAML 的單一登入 (SSO)"
         description: 將 OpenProject 連接到 SAML 身分提供者
       request_attributes:
         title: '要求的屬性'
@@ -98,7 +98,7 @@ zh-TW:
       display_name: >
         提供商的名稱。這將會顯示在登入按鈕及提供者清單中。
       metadata_none: >
-        Your identity provider does not have a metadata endpoint or XML download option. You can configure it manually.
+        您的身分提供者沒有後設資料端點或 XML 下載選項。您可以手動設定。
       metadata_url: >
         您的身分提供者會提供一個 metadata URL。
       metadata_xml: >
@@ -138,7 +138,7 @@ zh-TW:
       authn_requests_signed: >
         如果啟用，OpenProject 將簽署 SAML AuthnRequest。您必須使用以下欄位提供簽名憑證和私鑰。
       want_assertions_signed: >
-        如果啟用，OpenProject 將要求身分提供者使用自己的憑證金鑰對簽署回應。 OpenProject 將根據基本設定的憑證驗證簽章。
+        如果勾選，OpenProject 將要求身分提供者使用自己的憑證金鑰對簽署回應。OpenProject 將根據基本組態部分的憑證驗證簽章。
       want_assertions_encrypted: >
         如果啟用，會要求身分提供商使用您提供的證書，對斷言回應加密。
       certificate: >

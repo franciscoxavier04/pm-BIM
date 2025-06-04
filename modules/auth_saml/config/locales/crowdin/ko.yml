@@ -1,5 +1,5 @@
 ko:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
         display_name: 이름
@@ -23,7 +23,6 @@ ko:
         digest_method: 다이제스트 알고리즘
         format: "형식"
         icon: "사용자 지정 아이콘"
-  activerecord:
     errors:
       models:
         saml/provider:
@@ -33,6 +32,7 @@ ko:
           unmatched_private_key: "- 지정된 인증서에 속하지 않습니다."
   saml:
     menu_title: SAML 공급자
+    delete_title: SAML 공급자 삭제
     info:
       title: "SAML 프로토콜 구성 매개 변수"
       description: >
@@ -54,7 +54,6 @@ ko:
       label_edit: SAML ID 공급자 %{name} 편집
       label_uid: 내부 사용자 ID
       label_mapping: 매핑
-      label_mapping_for: "매핑 대상: %{attribute}"
       label_requested_attribute_for: "요청된 특성 대상: %{attribute}"
       no_results_table: 아직 정의된 SAML ID 공급자가 없습니다.
       plural: SAML ID 공급자
@@ -65,7 +64,8 @@ ko:
         다음 필드는 OpenProject에 사용자 특성을 제공하는 데 사용되는 SAML ID 공급자 제공 특성을 제어합니다.
       metadata:
         dialog: "OpenProject SAML 메타데이터를 사용할 수 있는 URL입니다. 선택적으로 이 URL을 사용하여 ID 공급자를 구성합니다:"
-      upsale:
+      upsell:
+        title: "SSO(Single Sign-On)와 SAML"
         description: SAML ID 공급자에 OpenProject 연결
       request_attributes:
         title: '요청된 특성'
@@ -98,7 +98,7 @@ ko:
       display_name: >
         공급자 이름입니다. 로그인 버튼으로 표시되며 공급자 목록에 표시됩니다.
       metadata_none: >
-        Your identity provider does not have a metadata endpoint or XML download option. You can configure it manually.
+        ID 공급자에 메타데이터 엔드포인트 또는 XML 다운로드 옵션이 없습니다. 수동으로 구성할 수 있습니다.
       metadata_url: >
         ID 공급자가 메타데이터 URL을 제공합니다.
       metadata_xml: >

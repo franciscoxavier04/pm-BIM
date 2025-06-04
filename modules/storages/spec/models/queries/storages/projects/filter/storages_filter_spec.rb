@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -33,6 +35,7 @@ RSpec.describe Queries::Storages::Projects::Filter::StoragesFilter do
     let(:model) { Project }
     let(:class_key) { :storages }
     let(:type) { :list }
+    let(:human_name) { "Storage" }
   end
 
   it_behaves_like "list query filter", scope: false do

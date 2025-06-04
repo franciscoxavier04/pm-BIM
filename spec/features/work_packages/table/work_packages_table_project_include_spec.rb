@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,7 +31,7 @@
 require "spec_helper"
 require_relative "../project_include/project_include_shared_examples"
 
-RSpec.describe "Work package project include", :js do
+RSpec.describe "Work package project include", :js, :selenium do
   shared_let(:enabled_modules) { %w[work_package_tracking] }
   shared_let(:status) { create(:default_status) }
   shared_let(:priority) { create(:default_priority) }

@@ -1,9 +1,11 @@
-require "spec_helper"
-require "support/pages/custom_fields"
+# frozen_string_literal: true
 
-RSpec.describe "custom fields", :js, :with_cuprite do
+require "spec_helper"
+require "support/pages/custom_fields/index_page"
+
+RSpec.describe "custom fields", :js do
   let(:user) { create(:admin) }
-  let(:cf_page) { Pages::CustomFields.new }
+  let(:cf_page) { Pages::CustomFields::IndexPage.new }
 
   before do
     login_as user

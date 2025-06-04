@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -74,7 +76,7 @@ module Pages
     end
 
     def create_page(args)
-      args.merge!(project: project || work_package.project)
+      args[:project] = project || work_package.project
       SplitWorkPackageCreate.new(**args)
     end
   end

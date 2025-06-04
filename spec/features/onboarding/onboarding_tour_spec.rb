@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,7 +31,7 @@
 require "spec_helper"
 
 RSpec.describe "onboarding tour for new users",
-               :js do
+               :js, :selenium do
   let(:user) { create(:admin) }
   let(:project) do
     create(:project, name: "Demo project", identifier: "demo-project", public: true,

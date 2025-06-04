@@ -61,7 +61,7 @@ module OAuth
         redirect_to action: :show, id: result.id
       else
         @application = result
-        render action: :new
+        render action: :new, status: :unprocessable_entity
       end
     end
 
@@ -79,7 +79,7 @@ module OAuth
         redirect_to action: :index
       else
         flash[:error] = call.errors.full_messages.join('\n')
-        render action: :edit
+        render action: :edit, status: :unprocessable_entity
       end
     end
 
@@ -97,14 +97,6 @@ module OAuth
       redirect_to action: :index
     end
 
-    protected
-
-    def default_breadcrumb; end
-
-    def show_local_breadcrumb
-      false
-    end
-
     private
 
     def prevent_builtin_edits
@@ -115,8 +107,6 @@ module OAuth
 
     def find_app
       @application = ::Doorkeeper::Application.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      render_404
     end
   end
 end

@@ -82,6 +82,15 @@ module WorkPackages
     attribute :parent_id,
               permission: :manage_subtasks
 
+    attribute :project_phase_definition_id,
+              permission: :view_project_phases,
+              writable: ->(*) {
+                OpenProject::FeatureDecisions.stages_and_gates_active?
+              } do
+      validate_phase_active_in_project
+    end
+    attribute_alias :project_phase_definition_id, :project_phase_id
+
     attribute :assigned_to_id do
       next unless model.project
 
@@ -101,19 +110,19 @@ module WorkPackages
     attribute :schedule_manually
     attribute :ignore_non_working_days,
               writable: ->(*) {
-                !automatically_scheduled_parent?
+                leaf_or_manually_scheduled?
               }
 
     attribute :start_date,
               writable: ->(*) {
-                !automatically_scheduled_parent?
+                leaf_or_manually_scheduled?
               } do
       validate_after_soonest_start(:start_date)
     end
 
     attribute :due_date,
               writable: ->(*) {
-                !automatically_scheduled_parent?
+                leaf_or_manually_scheduled?
               } do
       validate_after_soonest_start(:due_date)
     end
@@ -162,12 +171,6 @@ module WorkPackages
 
     validate :validate_duration_and_dates_are_not_derivable
 
-    def initialize(work_package, user, options: {})
-      super
-
-      @can = WorkPackagePolicy.new(user)
-    end
-
     def assignable_statuses(include_default: false)
       # Do not allow skipping statuses without intermediately saving the work package.
       # We therefore take the original status of the work_package, while preserving all
@@ -203,6 +206,18 @@ module WorkPackages
       IssuePriority.active
     end
 
+    def assignable_project_phases
+      if model.project
+        model
+          .project
+          .phases
+          .active
+          .order_by_position
+      else
+        Project::Phase.none
+      end
+    end
+
     def assignable_versions(only_open: true)
       model.try(:assignable_versions, only_open:) if model.project
     end
@@ -222,12 +237,15 @@ module WorkPackages
     end
     alias_method :assignable_responsibles, :assignable_assignees
 
+    def valid?(context = :saving_custom_fields) = super
+
     private
 
-    attr_reader :can
-
     def validate_after_soonest_start(date_attribute)
-      if !model.schedule_manually? && before_soonest_start?(date_attribute)
+      return if model.schedule_manually?
+      return if model.children.any?
+
+      if before_soonest_start?(date_attribute)
         message = I18n.t("activerecord.errors.models.work_package.attributes.start_date.violates_relationships",
                          soonest_start: model.soonest_start)
 
@@ -480,11 +498,29 @@ module WorkPackages
     end
 
     def validate_duration_integer
-      errors.add :duration, :not_an_integer if model.duration_before_type_cast != model.duration
+      unless valid_duration?(model.duration_before_type_cast, model.duration)
+        errors.delete(:duration) # delete :greater_than error, because it's not relevant anymore
+        errors.add :duration, :not_an_integer
+      end
+    end
+
+    def valid_duration?(value, duration)
+      # the values don't match (e.g because a float was passed)
+      return false if !value.is_a?(String) && value != duration
+
+      if value.is_a?(String)
+        return true if value == "" && duration.nil?
+
+        # A string is passed, put the transformed value does not match
+        return false if value.to_i.to_s != value.strip
+      end
+
+      # duration is valid
+      true
     end
 
     def validate_duration_matches_dates
-      return unless calculated_duration && model.duration
+      return unless calculated_duration && model.duration && model.duration > 0
 
       if calculated_duration > model.duration
         errors.add :duration, :smaller_than_dates
@@ -500,11 +536,26 @@ module WorkPackages
     end
 
     def validate_duration_and_dates_are_not_derivable
+      return if dates_derivation_impossible?
+
       %i[start_date due_date duration].each do |field|
         if not_set_but_others_are_present?(field)
           errors.add field, :cannot_be_null
         end
       end
+    end
+
+    def validate_phase_active_in_project
+      if model.project.present? &&
+        model.project_phase_definition_id.present? &&
+        !(model.project_changed? && !model.project_phase_definition_changed?) &&
+        !project_definition_assignable?
+        errors.add :project_phase_id, :inclusion
+      end
+    end
+
+    def dates_derivation_impossible?
+      model.errors[:duration].any?
     end
 
     def not_set_but_others_are_present?(field)
@@ -552,7 +603,7 @@ module WorkPackages
     end
 
     def category_not_of_project?
-      model.category && model.project.categories.exclude?(model.category)
+      model.category && (model.project.nil? || model.project.categories.exclude?(model.category))
     end
 
     def status_changed?
@@ -573,6 +624,10 @@ module WorkPackages
 
     def type_inexistent?
       model.type.is_a?(Type::InexistentType)
+    end
+
+    def project_definition_assignable?
+      assignable_project_phases.exists?(definition_id: model.project_phase_definition_id)
     end
 
     # Returns a scope of status the user is able to apply
@@ -627,8 +682,8 @@ module WorkPackages
       @calculated_duration ||= WorkPackages::Shared::Days.for(model).duration(model.start_date, model.due_date)
     end
 
-    def automatically_scheduled_parent?
-      !model.leaf? && !model.schedule_manually?
+    def leaf_or_manually_scheduled?
+      model.leaf? || model.schedule_manually?
     end
   end
 end

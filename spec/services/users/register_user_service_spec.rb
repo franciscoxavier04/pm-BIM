@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,7 +29,7 @@
 
 require "spec_helper"
 
-RSpec.describe Users::RegisterUserService do
+RSpec.describe Users::RegisterUserService, with_ee: %i[sso_auth_providers] do
   let(:user) { build(:user) }
   let(:instance) { described_class.new(user) }
   let(:call) { instance.call }
@@ -83,9 +85,6 @@ RSpec.describe Users::RegisterUserService do
     before do
       allow(user).to receive(:activate)
       allow(user).to receive(:save).and_return true
-
-      # required so that the azure provider is visible (ee feature)
-      allow(EnterpriseToken).to receive(:show_banners?).and_return false
     end
 
     it "tries to activate that user regardless of settings" do
@@ -100,13 +99,9 @@ RSpec.describe Users::RegisterUserService do
     context "with limit_self_registration enabled and self_registration disabled",
             with_settings: {
               self_registration: 0,
-              plugin_openproject_openid_connect: {
-                providers: {
-                  azure: { identifier: "foo", secret: "bar", limit_self_registration: true }
-                }
-              }
             } do
       it "fails to activate due to disabled self registration" do
+        create(:oidc_provider, slug: "azure")
         call = instance.call
         expect(call).not_to be_success
         expect(call.result).to eq user
@@ -117,13 +112,9 @@ RSpec.describe Users::RegisterUserService do
     context "with limit_self_registration enabled and self_registration manual",
             with_settings: {
               self_registration: 2,
-              plugin_openproject_openid_connect: {
-                providers: {
-                  azure: { identifier: "foo", secret: "bar", limit_self_registration: true }
-                }
-              }
             } do
       it "registers the user, but does not activate it" do
+        create(:oidc_provider, slug: "azure")
         call = instance.call
         expect(call).to be_success
         expect(call.result).to eq user
@@ -136,13 +127,10 @@ RSpec.describe Users::RegisterUserService do
     context "with limit_self_registration enabled and self_registration email",
             with_settings: {
               self_registration: 1,
-              plugin_openproject_openid_connect: {
-                providers: {
-                  azure: { identifier: "foo", secret: "bar", limit_self_registration: true }
-                }
-              }
             } do
       it "registers the user, but does not activate it" do
+        create(:oidc_provider, slug: "azure")
+
         call = instance.call
         expect(call).to be_success
         expect(call.result).to eq user
@@ -155,13 +143,9 @@ RSpec.describe Users::RegisterUserService do
     context "with limit_self_registration enabled and self_registration automatic",
             with_settings: {
               self_registration: 3,
-              plugin_openproject_openid_connect: {
-                providers: {
-                  azure: { identifier: "foo", secret: "bar", limit_self_registration: true }
-                }
-              }
             } do
       it "activates the user" do
+        create(:oidc_provider, slug: "azure")
         call = instance.call
         expect(call).to be_success
         expect(call.result).to eq user

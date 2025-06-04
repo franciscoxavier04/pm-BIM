@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # When test is finished, Capybara calls `Capybara.reset!` which in turn calls
 # `driver.reset!`. This one is responsible for stopping the browser by
 # navigating to about:blank page and waiting for pending requests to complete.

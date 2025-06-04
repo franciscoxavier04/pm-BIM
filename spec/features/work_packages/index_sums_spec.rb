@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -123,22 +125,17 @@ RSpec.describe "Work package index sums", :js do
     visit project_work_packages_path(project)
     wp_table.expect_work_package_listed work_package1, work_package2
 
-    # Add work column
-    columns.add "Work"
-    # Add remaining work column
-    columns.add "Remaining work"
-    # Add int cf column
-    columns.add int_cf.name
-    # Add float cf column
-    columns.add float_cf.name
-    # Add labor costs column
-    columns.add "Labor costs"
-    # Add unit costs column
-    columns.add "Unit costs"
-    # Add overall costs column
-    columns.add "Overall costs"
+    # Add summable columns, without saving changes to save time
+    columns.add "Work", save_changes: false
+    columns.add "Remaining work", save_changes: false
+    columns.add "% Complete", save_changes: false
+    columns.add int_cf.name, save_changes: false
+    columns.add float_cf.name, save_changes: false
+    columns.add "Labor costs", save_changes: false
+    columns.add "Unit costs", save_changes: false
+    columns.add "Overall costs", save_changes: false
 
-    # Trigger action from action menu dropdown
+    # Activate the display of sums, and save the changes
     modal.set_display_sums enable: true
 
     wp_table.expect_work_package_listed work_package1, work_package2
@@ -148,6 +145,7 @@ RSpec.describe "Work package index sums", :js do
       within(:row, "Total sum") do |row|
         expect(row).to have_css(".estimatedTime", text: "25h")
         expect(row).to have_css(".remainingTime", text: "12.5h")
+        expect(row).to have_css(".percentageDone", text: "50%")
         expect(row).to have_css(".#{int_cf.attribute_name(:camel_case)}", text: "12")
         expect(row).to have_css(".#{float_cf.attribute_name(:camel_case)}", text: "13.2")
         expect(row).to have_css(".laborCosts", text: "15.00 EUR")
@@ -156,16 +154,17 @@ RSpec.describe "Work package index sums", :js do
       end
     end
 
-    # Update the sum
-    wp_table.edit_field(work_package1, :estimatedTime)
-            .update "20"
-    wp_table.edit_field(work_package1, :remainingTime)
-            .update "12"
+    # Change some progress values to test that sums are recalculated
+    progress_popover = wp_table.progress_popover(work_package1)
+    progress_popover.open
+    progress_popover.set_values(work: "20h", remaining_work: "12h")
+    progress_popover.save
 
     aggregate_failures do
       within(:row, "Total sum") do |row|
         expect(row).to have_css(".estimatedTime", text: "35h")
         expect(row).to have_css(".remainingTime", text: "19.5h")
+        expect(row).to have_css(".percentageDone", text: "44%")
         expect(row).to have_css(".#{int_cf.attribute_name(:camel_case)}", text: "12")
         expect(row).to have_css(".#{float_cf.attribute_name(:camel_case)}", text: "13.2")
         expect(row).to have_css(".laborCosts", text: "15.00 EUR")
@@ -186,6 +185,7 @@ RSpec.describe "Work package index sums", :js do
     aggregate_failures do
       expect(first_sum_row).to have_css(".estimatedTime", text: "20h")
       expect(first_sum_row).to have_css(".remainingTime", text: "12h")
+      expect(first_sum_row).to have_css(".percentageDone", text: "40%")
       expect(first_sum_row).to have_css(".#{int_cf.attribute_name(:camel_case)}", text: "5")
       expect(first_sum_row).to have_css(".#{float_cf.attribute_name(:camel_case)}", text: "5.5")
       expect(first_sum_row).to have_css(".laborCosts", text: "15.00 EUR")
@@ -197,6 +197,7 @@ RSpec.describe "Work package index sums", :js do
     aggregate_failures do
       expect(second_sum_row).to have_css(".estimatedTime", text: "15h")
       expect(second_sum_row).to have_css(".remainingTime", text: "7.5h")
+      expect(second_sum_row).to have_css(".percentageDone", text: "50%")
       expect(second_sum_row).to have_css(".#{int_cf.attribute_name(:camel_case)}", text: "7")
       expect(second_sum_row).to have_css(".#{float_cf.attribute_name(:camel_case)}", text: "7.7")
       expect(second_sum_row).to have_css(".laborCosts", text: "", exact_text: true)
@@ -209,6 +210,7 @@ RSpec.describe "Work package index sums", :js do
       within(:row, "Total sum") do |row|
         expect(row).to have_css(".estimatedTime", text: "35h")
         expect(row).to have_css(".remainingTime", text: "19.5h")
+        expect(row).to have_css(".percentageDone", text: "44%")
         expect(row).to have_css(".#{int_cf.attribute_name(:camel_case)}", text: "12")
         expect(row).to have_css(".#{float_cf.attribute_name(:camel_case)}", text: "13.2")
         expect(row).to have_css(".laborCosts", text: "15.00 EUR")
@@ -218,9 +220,9 @@ RSpec.describe "Work package index sums", :js do
     end
 
     # Collapsing groups will also hide the sums row
-    page.find(".expander.icon-minus2", match: :first).click
+    first(".expander.icon-minus2").click
     sleep 1
-    page.find(".expander.icon-minus2", match: :first).click
+    first(".expander.icon-minus2").click
 
     # Expect to have only the final sums
     expect(page).not_to have_row("Sum")
@@ -273,7 +275,7 @@ RSpec.describe "Work package index sums", :js do
                      project:,
                      user:,
                      display_sums: true,
-                     column_names: [:id, :subject, :type, :status, :estimated_hours, :remaining_hours,
+                     column_names: [:id, :subject, :type, :status, :estimated_hours, :remaining_hours, :done_ratio,
                                     :"#{int_cf.column_name}", :"#{float_cf.column_name}",
                                     :labor_costs, :material_costs, :overall_costs])
       wp_table.visit_query query
@@ -284,6 +286,7 @@ RSpec.describe "Work package index sums", :js do
         within(:row, "Total sum") do |row|
           expect(row).to have_css(".estimatedTime", text: "50h")
           expect(row).to have_css(".remainingTime", text: "25h")
+          expect(row).to have_css(".percentageDone", text: "50%")
           expect(row).to have_css(".#{int_cf.attribute_name(:camel_case)}", text: "24")
           expect(row).to have_css(".#{float_cf.attribute_name(:camel_case)}", text: "26.4")
           expect(row).to have_css(".laborCosts", text: "40.00 EUR")
@@ -304,6 +307,7 @@ RSpec.describe "Work package index sums", :js do
         within(:row, "Total sum") do |row|
           expect(row).to have_css(".estimatedTime", text: "30h")
           expect(row).to have_css(".remainingTime", text: "15h")
+          expect(row).to have_css(".percentageDone", text: "50%")
           expect(row).to have_css(".#{int_cf.attribute_name(:camel_case)}", text: "14")
           expect(row).to have_css(".#{float_cf.attribute_name(:camel_case)}", text: "15.4")
           expect(row).to have_css(".laborCosts", text: "", exact_text: true)
@@ -329,6 +333,7 @@ RSpec.describe "Work package index sums", :js do
       aggregate_failures do
         expect(first_sum_row).to have_css(".estimatedTime", text: "10h")
         expect(first_sum_row).to have_css(".remainingTime", text: "5h")
+        expect(first_sum_row).to have_css(".percentageDone", text: "50%")
         expect(first_sum_row).to have_css(".#{int_cf.attribute_name(:camel_case)}", text: "5")
         expect(first_sum_row).to have_css(".#{float_cf.attribute_name(:camel_case)}", text: "5.5")
         expect(first_sum_row).to have_css(".laborCosts", text: "15.00 EUR")
@@ -340,6 +345,7 @@ RSpec.describe "Work package index sums", :js do
       aggregate_failures do
         expect(second_sum_row).to have_css(".estimatedTime", text: "15h")
         expect(second_sum_row).to have_css(".remainingTime", text: "7.5h")
+        expect(second_sum_row).to have_css(".percentageDone", text: "50%")
         expect(second_sum_row).to have_css(".#{int_cf.attribute_name(:camel_case)}", text: "7")
         expect(second_sum_row).to have_css(".#{float_cf.attribute_name(:camel_case)}", text: "7.7")
         expect(second_sum_row).to have_css(".laborCosts", text: "", exact_text: true)
@@ -352,6 +358,7 @@ RSpec.describe "Work package index sums", :js do
         within(:row, "Total sum") do |row|
           expect(row).to have_css(".estimatedTime", text: "25h")
           expect(row).to have_css(".remainingTime", text: "12.5h")
+          expect(row).to have_css(".percentageDone", text: "50%")
           expect(row).to have_css(".#{int_cf.attribute_name(:camel_case)}", text: "12")
           expect(row).to have_css(".#{float_cf.attribute_name(:camel_case)}", text: "13.2")
           expect(row).to have_css(".laborCosts", text: "15.00 EUR")

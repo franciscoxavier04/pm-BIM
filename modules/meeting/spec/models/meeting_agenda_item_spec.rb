@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -30,7 +32,7 @@ require_relative "../spec_helper"
 
 RSpec.describe MeetingAgendaItem do
   let(:meeting_attributes) { {} }
-  let(:meeting) { build_stubbed(:structured_meeting, **meeting_attributes) }
+  let(:meeting) { build_stubbed(:meeting, **meeting_attributes) }
   let(:attributes) { {} }
   let(:meeting_agenda_item) { described_class.new(meeting:, **attributes) }
 

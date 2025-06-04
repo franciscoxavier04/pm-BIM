@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -74,7 +76,7 @@ FactoryBot.define do
     end
 
     callback(:after_build) do |work_package, evaluator|
-      work_package.type = work_package.project.types.first unless work_package.type
+      work_package.type ||= TestProf::FactoryBot.get_factory_default(:type) || work_package.project.types.first
 
       custom_values = evaluator.custom_values || {}
 
@@ -127,7 +129,7 @@ FactoryBot.define do
       end
     end
 
-    set_done_ratios = ->(work_package, _evaluator) do
+    callback(:after_stub, :after_build) do |work_package, _evaluator|
       if work_package.estimated_hours.present? &&
           work_package.remaining_hours.present? &&
           work_package.done_ratio.nil? &&
@@ -144,8 +146,6 @@ FactoryBot.define do
       end
     end
 
-    callback(:after_build, &set_done_ratios)
-    callback(:after_stub, &set_done_ratios)
 
     # force done_ratio in status-based mode if given done_ratio is different from status default
     callback(:after_create) do |work_package, evaluator|

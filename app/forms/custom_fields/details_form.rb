@@ -39,11 +39,12 @@ module CustomFields
 
       details_form.check_box(
         name: :multi_value,
-        label: I18n.t("activerecord.attributes.custom_field.multi_value")
+        label: I18n.t("activerecord.attributes.custom_field.multi_value"),
+        caption: I18n.t("custom_fields.instructions.multi_select")
       )
 
       details_form.check_box(
-        name: :required,
+        name: :is_required,
         label: I18n.t("activerecord.attributes.custom_field.is_required"),
         caption: I18n.t("custom_fields.instructions.is_required")
       )
@@ -58,12 +59,6 @@ module CustomFields
         name: :is_filter,
         label: I18n.t("activerecord.attributes.custom_field.is_filter"),
         caption: I18n.t("custom_fields.instructions.is_filter")
-      )
-
-      details_form.check_box(
-        name: :searchable,
-        label: I18n.t("activerecord.attributes.custom_field.searchable"),
-        caption: I18n.t("custom_fields.instructions.searchable")
       )
 
       details_form.submit(name: :submit, label: I18n.t(:button_save), scheme: :default)

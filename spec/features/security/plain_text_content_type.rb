@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Plain text content type XSS prevention", :js, :with_cuprite do
+RSpec.describe "Plain text content type XSS prevention", :js do
   shared_let(:admin) { create(:admin) }
   shared_let(:work_package) { create(:work_package) }
 

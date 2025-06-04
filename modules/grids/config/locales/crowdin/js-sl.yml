@@ -4,9 +4,6 @@ sl:
       add_widget: 'Dodaj gradnik'
       remove: 'Odstrani gradnik'
       configure: 'Oblikuj gradnik'
-      upsale:
-        text: "Some widgets, like the work package graph widget, are only available in the Enterprise edition."
-        link: 'Enterprise edition.'
       widgets:
         missing_permission: "You don't have the necessary permissions to view this widget."
         custom_text:
@@ -27,9 +24,6 @@ sl:
         project_description:
           title: 'Opis projekta'
           no_results: "Opis še ni bil napisan. Lahko ga dodate v 'Projektnih nastavitvah'. "
-        project_details:
-          title: 'Podrobnosti projekta'
-          no_results: 'Za projekte niso bila definirana nobena polja po meri. '
         project_status:
           title: 'Status projekta'
           not_started: 'Ni začeto'

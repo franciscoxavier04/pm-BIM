@@ -1,11 +1,11 @@
 ru:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
         display_name: Имя
         identifier: Идентификатор
-        secret: Ключ
-        scope: Область применения
+        secret: Закрытый ключ
+        scope: Масштаб
         assertion_consumer_service_url: URL-адрес ACS (Служба Поддержки Потребителей)
         limit_self_registration: Ограничение самостоятельной регистрации
         sp_entity_id: Идентификатор объекта обслуживания
@@ -23,7 +23,6 @@ ru:
         digest_method: Алгоритм дайджеста
         format: "Формат"
         icon: "Пользовательская иконка"
-  activerecord:
     errors:
       models:
         saml/provider:
@@ -33,6 +32,7 @@ ru:
           unmatched_private_key: "не принадлежит данному сертификату"
   saml:
     menu_title: Провайдеры SAML
+    delete_title: Удалить провайдера SAML
     info:
       title: "Параметры конфигурации протокола SAML"
       description: >
@@ -43,7 +43,7 @@ ru:
       error: "Не удалось получить метаданные провайдера идентификации: %{error}"
     providers:
       label_empty_title: "Провайдеры SAML еще не настроены."
-      label_empty_description: "Добавьте провайдера, чтобы увидеть их здесь."
+      label_empty_description: "Добавьте провайдера, чтобы увидеть его здесь."
       label_automatic_configuration: Автоматическая настройка
       label_metadata: Метаданные
       label_metadata_endpoint: Конечная точка метаданных OpenProject
@@ -54,7 +54,6 @@ ru:
       label_edit: Редактировать провайдер SAML %{name}
       label_uid: Внутренний идентификатор пользователя
       label_mapping: Привязки
-      label_mapping_for: "Привязки для: %{attribute}"
       label_requested_attribute_for: "Запрошенный атрибут для: %{attribute}"
       no_results_table: Провайдеры SAML еще не определены.
       plural: Провайдеры SAML
@@ -65,7 +64,8 @@ ru:
         Следующие поля определяют, какие атрибуты, предоставляемые провайдером SAML, используются для предоставления атрибутов пользователя в OpenProject.
       metadata:
         dialog: "Это URL-адрес, по которому доступны метаданные OpenProject SAML. При необходимости используйте его для настройки провайдера идентификации:"
-      upsale:
+      upsell:
+        title: "Single Sign-On (SSO) с помощью SAML"
         description: Подключите OpenProject к провайдеру SAML
       request_attributes:
         title: 'Запрошенные атрибуты'
@@ -90,21 +90,21 @@ ru:
       seeded_from_env: "Этот провайдер был инициализирован из конфигурации среды. Он не может быть отредактирован."
     settings:
       metadata_none: "У меня нет метаданных"
-      metadata_url: "URL-адрес метаданных"
+      metadata_url: "URL метаданных"
       metadata_xml: "Метаданные XML"
     instructions:
       documentation_link: >
         Обратитесь к [документации по настройке провайдеров SAML](docs_url) для получения дополнительной информации об этих параметрах.
       display_name: >
-        Имя провайдера. Оно будет отображаться как кнопка входа и в списке провайдеров.
+        Это имя провайдера. Оно будет отображаться как кнопка входа и в списке провайдеров.
       metadata_none: >
-        Your identity provider does not have a metadata endpoint or XML download option. You can configure it manually.
+        Ваш провайдер идентификации не имеет конечной точки метаданных или возможности загрузки XML. Вы можете настроить это вручную.
       metadata_url: >
         Ваш провайдер идентификации предоставляет URL-адрес метаданных.
       metadata_xml: >
         Ваш провайдер идентификации предоставляет XML-загрузку метаданных.
       limit_self_registration: >
-        Если эта опция включена, пользователи могут регистрироваться с помощью этого провайдера только в том случае, если настройка саморегистрации позволяет это сделать.
+        Если включено, пользователи могут зарегистрироваться только с помощью данного провайдера, если это позволяет сама регистрация.
       sp_entity_id: >
         Идентификатор объекта у провайдера идентификации (SP). Иногда также обозначается как Audience. Это уникальный клиентский идентификатор экземпляра OpenProject.
       idp_sso_service_url: >

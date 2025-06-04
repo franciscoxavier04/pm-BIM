@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "../../../spec_helper"
 require_relative "../authentication_controller_shared_examples"
 
@@ -108,7 +110,7 @@ RSpec.describe TwoFactorAuthentication::Users::TwoFactorDevicesController do
         it "renders action new" do
           post :register, params: { id: user.id, key: :sms, device: params }
 
-          expect(response).to be_successful
+          expect(response).to have_http_status :unprocessable_entity
           expect(response).to render_template "new"
           expect(assigns[:device]).to be_invalid
         end

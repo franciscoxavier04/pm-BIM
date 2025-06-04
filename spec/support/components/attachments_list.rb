@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Handles attachments list generally found under the wysiwyg editor.
 module Components
   class AttachmentsList
@@ -32,6 +34,12 @@ module Components
 
     def expect_attached(name, count: 1)
       expect(page).to have_css("#{context_selector} [data-test-selector='op-attachment-list-item']", text: name, count:)
+    end
+
+    def expect_attached!(name, count: 1)
+      unless page.has_css?("#{context_selector} [data-test-selector='op-attachment-list-item']", text: name, count:)
+        raise "Expected to have #{name} attached with a count of #{count}"
+      end
     end
 
     def wait_until_visible

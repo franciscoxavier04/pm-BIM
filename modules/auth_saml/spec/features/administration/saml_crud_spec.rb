@@ -30,9 +30,9 @@ require "spec_helper"
 require_module_spec_helper
 
 RSpec.describe "SAML administration CRUD",
-               :js,
-               :with_cuprite do
+               :js do
   shared_let(:user) { create(:admin) }
+  let(:danger_zone) { DangerZone.new(page) }
 
   before do
     login_as(user)
@@ -47,7 +47,7 @@ RSpec.describe "SAML administration CRUD",
       fill_in "Name", with: "My provider"
       click_link_or_button "Continue"
 
-      expect(page).to have_css("h1", text: "My provider")
+      expect(page).to have_heading text: "My provider"
 
       # Skip metadata
       click_link_or_button "Continue"
@@ -56,6 +56,7 @@ RSpec.describe "SAML administration CRUD",
       fill_in "Identity provider login endpoint", with: "https://example.com/sso"
       fill_in "Identity provider logout endpoint", with: "https://example.com/slo"
       fill_in "Public certificate of identity provider", with: CertificateHelper.valid_certificate.to_pem
+      check "Limit self registration"
 
       click_link_or_button "Continue"
 
@@ -67,11 +68,11 @@ RSpec.describe "SAML administration CRUD",
       click_link_or_button "Continue"
 
       # Mapping form
-      fill_in "Mapping for: Username", with: "login\nmail", fill_options: { clear: :backspace }
-      fill_in "Mapping for: Email", with: "mail", fill_options: { clear: :backspace }
-      fill_in "Mapping for: First name", with: "myName", fill_options: { clear: :backspace }
-      fill_in "Mapping for: Last name", with: "myLastName", fill_options: { clear: :backspace }
-      fill_in "Mapping for: Internal user id", with: "uid", fill_options: { clear: :backspace }
+      fill_in "Mapping for: Username", with: "login\nmail"
+      fill_in "Mapping for: Email", with: "mail"
+      fill_in "Mapping for: First name", with: "myName"
+      fill_in "Mapping for: Last name", with: "myLastName"
+      fill_in "Mapping for: Internal user id", with: "uid"
 
       click_link_or_button "Continue"
 
@@ -98,18 +99,32 @@ RSpec.describe "SAML administration CRUD",
       expect(provider.private_key.strip.gsub("\r\n", "\n")).to eq CertificateHelper.private_key.private_to_pem.strip
       expect(provider.idp_sso_service_url).to eq "https://example.com/sso"
       expect(provider.idp_slo_service_url).to eq "https://example.com/slo"
-      expect(provider.mapping_login).to eq "login\nmail"
+      expect(provider.mapping_login.gsub("\r\n", "\n")).to eq "login\nmail"
       expect(provider.mapping_mail).to eq "mail"
       expect(provider.mapping_firstname).to eq "myName"
       expect(provider.mapping_lastname).to eq "myLastName"
       expect(provider.mapping_uid).to eq "uid"
       expect(provider.authn_requests_signed).to be true
+      expect(provider.limit_self_registration).to be true
 
-      accept_confirm do
-        click_link_or_button "Delete"
-      end
+      click_link_or_button "Delete"
+      # Confirm the deletion
+      # Without confirmation, the button is disabled
+      expect(danger_zone).to be_disabled
+
+      # With wrong confirmation, the button is disabled
+      danger_zone.confirm_with("foo")
+
+      expect(danger_zone).to be_disabled
+
+      # With correct confirmation, the button is enabled
+      # and the project can be deleted
+      danger_zone.confirm_with(provider.display_name)
+      expect(danger_zone).not_to be_disabled
+      danger_zone.danger_button.click
 
       expect(page).to have_text "No SAML providers configured yet."
+      expect { provider.reload }.to raise_error ActiveRecord::RecordNotFound
     end
 
     it "can import metadata from XML" do
@@ -159,15 +174,28 @@ RSpec.describe "SAML administration CRUD",
         fill_in "Name", with: "My provider"
         click_link_or_button "Continue"
 
-        expect(page).to have_text "Display name has already been taken."
+        expect(page).to have_text "Name has already been taken."
+      end
+
+      it "can toggle limit_self_registration (Regression #59370)" do
+        visit "/admin/saml/providers"
+        click_link_or_button "My provider"
+
+        page.find_test_selector("saml_provider_configuration_edit").click
+        check "Limit self registration"
+        click_link_or_button "Update"
+        wait_for_network_idle
+
+        provider.reload
+        expect(provider.limit_self_registration).to be true
       end
     end
   end
 
   context "without EE", without_ee: %i[sso_auth_providers] do
-    it "renders the upsale page" do
+    it "renders the upsell page" do
       visit "/admin/saml/providers"
-      expect(page).to have_text "SAML identity providers is an Enterprise  add-on"
+      expect(page).to have_enterprise_banner(:professional)
     end
   end
 end

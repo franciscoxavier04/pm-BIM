@@ -1,7 +1,7 @@
 require "spec_helper"
 require_relative "../../support/pages/ifc_models/show_default"
 
-RSpec.describe "Copy work packages through Rails view", :js, :with_cuprite, with_config: { edition: "bim" } do
+RSpec.describe "Copy work packages through Rails view", :js, with_config: { edition: "bim" } do
   shared_let(:project) { create(:project, name: "Source", enabled_module_names: %i[bim work_package_tracking]) }
 
   shared_let(:dev) do
@@ -59,8 +59,8 @@ RSpec.describe "Copy work packages through Rails view", :js, :with_cuprite, with
       let(:current_user) { dev }
 
       it "does not allow to copy" do
-        context_menu.open_for work_package, card_view: true
-        context_menu.expect_no_options "Bulk copy"
+        context_menu.open_for work_package, card_view: true, check_if_open: false
+        context_menu.expect_closed
       end
     end
   end
@@ -79,8 +79,8 @@ RSpec.describe "Copy work packages through Rails view", :js, :with_cuprite, with
       let(:current_user) { dev }
 
       it "does not allow to move" do
-        context_menu.open_for work_package, card_view: true
-        context_menu.expect_no_options "Bulk change of project"
+        context_menu.open_for work_package, card_view: true, check_if_open: false
+        context_menu.expect_closed
       end
     end
   end
@@ -102,6 +102,8 @@ RSpec.describe "Copy work packages through Rails view", :js, :with_cuprite, with
           context_menu.choose "Bulk edit"
 
           select budget.subject, from: "work_package_budget_id"
+          wait_for_network_idle
+
           click_on "Submit"
           expect_and_dismiss_flash message: "Successful update."
 
@@ -115,8 +117,8 @@ RSpec.describe "Copy work packages through Rails view", :js, :with_cuprite, with
       let(:current_user) { dev }
 
       it "does not allow to edit" do
-        context_menu.open_for work_package, card_view: true
-        context_menu.expect_no_options "Bulk edit"
+        context_menu.open_for work_package, card_view: true, check_if_open: false
+        context_menu.expect_closed
       end
     end
   end

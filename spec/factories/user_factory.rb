@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -34,9 +36,12 @@ FactoryBot.define do
     sequence(:mail) { |n| "bobmail#{n}.bobbit@bob.com" }
     password { "adminADMIN!" }
     password_confirmation { "adminADMIN!" }
+    identity_url { nil }
 
     transient do
       preferences { {} }
+      authentication_provider { nil }
+      external_id { SecureRandom.uuid }
     end
 
     language { "en" }
@@ -57,6 +62,10 @@ FactoryBot.define do
         user.notification_settings = [
           create(:notification_setting, user:)
         ]
+      end
+
+      if factory.authentication_provider.present?
+        user.update!(identity_url: "#{factory.authentication_provider.slug}:#{factory.external_id}")
       end
     end
 

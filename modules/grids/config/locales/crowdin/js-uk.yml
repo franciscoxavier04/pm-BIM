@@ -4,9 +4,6 @@ uk:
       add_widget: 'Додати віджет'
       remove: 'Видалити віджет'
       configure: 'Налаштувати віджет'
-      upsale:
-        text: "Деякі віджети, наприклад віджет графіку пакет робіт, доступні тільки у версії Enterprise."
-        link: 'Версія Enterprise.'
       widgets:
         missing_permission: "У вас немає дозволів для перегляду цього віджета."
         custom_text:
@@ -27,9 +24,6 @@ uk:
         project_description:
           title: 'Опис проекту'
           no_results: "Опис ще не створено. Можна вказати в налаштуваннях проекту."
-        project_details:
-          title: 'Деталі проекту'
-          no_results: 'У проектів немає жодних власних полів.'
         project_status:
           title: 'Статус Проекту'
           not_started: 'Не почато'

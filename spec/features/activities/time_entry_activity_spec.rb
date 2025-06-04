@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -30,7 +32,6 @@ require "spec_helper"
 
 RSpec.describe "TimeEntry activity",
                :js,
-               :with_cuprite,
                with_settings: { journal_aggregation_time_minutes: 0 } do
   let(:user) do
     create(:user,
@@ -79,7 +80,7 @@ RSpec.describe "TimeEntry activity",
 
     wait_for_reload
 
-    expect(find_field("work_package_id_arg_1_val").value).to eq(work_package.id.to_s)
+    expect(page).to have_field("Work package Value", with: work_package.id)
 
     old_comments = time_entry.comments
     old_spent_on = time_entry.spent_on
@@ -115,6 +116,6 @@ RSpec.describe "TimeEntry activity",
 
     wait_for_reload
 
-    expect(find_field("work_package_id_arg_1_val").value).to eq(work_package2.id.to_s)
+    expect(page).to have_field("Work package Value", with: work_package2.id)
   end
 end

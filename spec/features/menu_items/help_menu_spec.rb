@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Help menu items", :js, :with_cuprite do
+RSpec.describe "Help menu items", :js do
   let(:user) { create(:admin) }
   let(:help_item) { find(".op-app-help .op-app-menu--item-action") }
   let(:help_menu_dropdown_selector) { ".op-app-menu--dropdown.op-menu" }
@@ -68,7 +70,6 @@ RSpec.describe "Help menu items", :js, :with_cuprite do
     include_context "support links"
 
     def fake_an_enterprise_token
-      allow(EnterpriseToken).to receive(:show_banners?).and_return(false)
       allow(EnterpriseToken).to receive(:active?).and_return(true)
     end
 

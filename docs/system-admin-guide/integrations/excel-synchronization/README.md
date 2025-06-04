@@ -13,19 +13,19 @@ keywords: Excel
 
 See how to set up the synchronization between OpenProject work packages and MS Excel.
 
-<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Excel-synchronization-1.-download-and-upload.mp4" type="video/mp4" controls="" style="width:100%"></video>
+<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Excel-synchronization-1.-download-and-upload.mp4"></video>
 
 ### Synchronize custom queries (views)
 
 See how to synchronize custom work package queries from OpenProject in MS Excel.
 
-<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Excel-Synchronization-2.-custom-queries.mp4" type="video/mp4" controls="" style="width:100%"></video>
+<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Excel-Synchronization-2.-custom-queries.mp4"></video>
 
 ### Synchronize hierarchies
 
 See how to synchronize work package hierarchies in OpenProject with MS Excel.
 
-<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Excel-synchronization-3.-hierarchies.mp4" type="video/mp4" controls="" style="width:100%"></video>
+<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Excel-synchronization-3.-hierarchies.mp4"></video>
 
 ### Synchronize relations
 
@@ -59,7 +59,7 @@ terms instead, defined in the [relations model](https://github.com/opf/openproje
 - requires
 - required
 
-<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Excel-Relations.mp4" type="video/mp4" controls="" style="width:100%"></video>
+<video src="https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject-Excel-Relations.mp4"></video>
 
 ## Step-by-step guide
 
@@ -88,7 +88,7 @@ terms instead, defined in the [relations model](https://github.com/opf/openproje
 ![Choose-project-900x479@2x](Choose-project-900x479@2x.png)
 
 **URL**: the URL of your OpenProject instance.
- **API-Token**: can be generated within your OpenProject installation ->*My Account* -> *Access token*. Generate a new API token and copy & paste it to this form.
+ **API-Token**: can be generated within your OpenProject installation ->*Account settings* -> *Access token*. Generate a new API token and copy & paste it to this form.
  **Project**: this is the project identifier which can be found within the project you want to synchronize -> *Project settings* -> *Information*. It is also shown in the URL if you open a project.
  Query ID (this field is optional): enter the ID of a work package query  within a project with that you want to synchronize your Excel list.
 

@@ -45,6 +45,10 @@ module Saml
 
     def self.slug_fragment = "saml"
 
+    def human_type
+      "SAML"
+    end
+
     def seeded_from_env?
       (Setting.seed_saml_provider || {}).key?(slug)
     end
@@ -93,7 +97,7 @@ module Saml
     end
 
     def idp_certificate_configured?
-      idp_cert.present?
+      idp_cert.present? || idp_cert_fingerprint.present?
     end
 
     def idp_certificate_valid?

@@ -2,7 +2,7 @@
 
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -30,7 +30,7 @@
 
 module Saml
   module Defaults
-    NAME_IDENTIFIER_FORMAT = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
+    NAME_IDENTIFIER_FORMAT = "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
 
     SIGNATURE_METHODS = {
       "RSA SHA-1" => XMLSecurity::Document::RSA_SHA1,

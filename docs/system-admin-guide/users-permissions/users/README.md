@@ -11,9 +11,12 @@ keywords: manage users, lock, unlock, invite, default language
 The user list provides an overview of all users in OpenProject. You can create new users, make changes to existing user accounts and block or delete users from the system.
 
 <div class="glossary">
+
 **User** is defined as a person (described by an identifier) who uses OpenProject. Users can become project members by assigning them a role and adding them via the project settings.
+
 </div>
-To manage users click on your avatar (top right corner) and select **Administration**. Select ***Users and permissions -> Users**. The list of current users is shown.
+
+To manage users click on your avatar (top right corner) and select **Administration**. Select **Users and permissions -> Users**. The list of current users is shown.
 
 In the Community edition there is no limit to the number of users. In Enterprise editions (cloud and on-premises) the user limit is based on your subscription. The number of users for your subscription is thus not bound to names. For example, if you block a user you can add a new one without upgrading.
 
@@ -55,7 +58,7 @@ If you are using [Enterprise cloud](../../../enterprise-guide/enterprise-cloud-g
 
 ![Lock users in OpenProject](open_project_system_admin_lock_user_permanently.png)
 
-If a user has repeated failed logins the user will be locked temporarily and a **Reset failed logins** link will be shown in the user list. Click the link to unlock it right away, or wait and it will be unlocked automatically. Have a look at the section [Other authentication settings](../../authentication/authentication-settings/#other-authentication-settings) for failed attempts and time blocked.
+If a user has repeated failed logins the user will be locked temporarily and a **Reset failed logins** link will be shown in the user list. Click the link to unlock it right away, or wait and it will be unlocked automatically. Have a look at the section [Other authentication settings](../../authentication/login-registration-settings/) for failed attempts and time blocked.
 
 ## Create users
 
@@ -76,9 +79,9 @@ When adding the last of multiple users you can click on **Create** or click the 
 
 ### Create user (via self-registration)
 
-To allow users to create their own user accounts enable self-registration in the [authentication settings](../../authentication/authentication-settings). A person can then create their own user from the home page by clicking on the **Sign in** button (top right), then on the **Create a new account** link in the sign in box.
+To allow users to create their own user accounts enable self-registration in the [authentication settings](../../authentication/login-registration-settings/). A person can then create their own user from the home page by clicking on the **Sign in** button (top right), then on the **Create a new account** link in the sign in box.
 
-Enter values in all fields (they cannot be left blank). The email field must be a valid email address that is not used in this system. Click the **Create** button. Depending on the [settings](../../authentication/authentication-settings) the account is created but it could be that it still needs to be activated by an administrator.
+Enter values in all fields (they cannot be left blank). The email field must be a valid email address that is not used in this system. Click the **Create** button. Depending on the [settings](../../authentication/login-registration-settings/) the account is created but it could be that it still needs to be activated by an administrator.
 
 #### Activate users
 
@@ -112,7 +115,7 @@ Please note: this only works for users who haven't logged in yet. If the user is
 
 ## Manage user settings
 
-You can manage individual user details if you click on the user name in the list. These settings will overwrite the individual user's settings set in their **My Account** settings.
+You can manage individual user details if you click on the user name in the list. These settings will overwrite the individual user's settings set in their **Account settings**.
 
 ### General settings
 
@@ -168,11 +171,11 @@ On the **Global roles** tab, select or de-select the global role(s) for this use
 
 ### Notification settings
 
-Under **Notification settings** tab you can edit the [notification settings](../../../user-guide/notifications/notification-settings/) for the user. Each user can adjust these settings under [My account](../../../user-guide/my-account) on their own.
+Under **Notification settings** tab you can edit the [notification settings](../../../user-guide/notifications/notification-settings/) for the user. Each user can adjust these settings under [Account settings](../../../user-guide/account-settings) on their own.
 
 ### Email reminders
 
-Under **Email reminders** tab you can edit the [email reminders settings](../../../user-guide/my-account/#email-reminders). Each user can adjust these settings under [My account](../../../user-guide/my-account) on their own.
+Under **Email reminders** tab you can edit the [email reminders settings](../../../user-guide/account-settings/#email-reminders). Each user can adjust these settings under [Account settings](../../../user-guide/account-settings) on their own.
 
 ### Rate history
 
@@ -196,7 +199,11 @@ To enter a new hourly rate, click on the **Update** icon next to the rate histor
 
 ### Avatar
 
-The **Avatar** tab shows the default icon to be shown for this user. A custom image can be uploaded as the avatar. In addition, the users can also use their [Gravatar](https://en.wikipedia.org/wiki/Gravatar). The user can manage this in their Profile. These features can be disabled in the [avatar settings](../avatars).
+The **Avatar** tab shows the default icon to be shown for this user. A custom image can be uploaded as the avatar. In addition, users can also use their [Gravatar](https://en.wikipedia.org/wiki/Gravatar). User can manage this under their [profile settings](../../../user-guide/account-settings/#set-an-avatar). These features can be disabled in the [avatar settings](../avatars).
+
+> [!TIP]
+>
+> Hovering over a user's avatar or name, for example on the Members page or the Activity page, will display their information. 
 
 ### Two-factor authentication (2FA)
 
@@ -225,7 +232,7 @@ Leave all fields blank. When the details are saved OpenProject will send an emai
 Two [settings](../settings/#user-deletion) allow users to be deleted from the system:
 
 * **User accounts deletable by admins** - if ticked, a **Delete** button is shown on the user details page.
-* **Users allowed to delete their accounts** - if ticked, a **Delete account** menu entry is shown in the **My Account** page.
+* **Users allowed to delete their accounts** - if ticked, a **Delete account** menu entry is shown in the **Account settings** page.
 
 To delete another user's account open the [user list](#user-list). Click on the **user name** of the user which you want to delete. Click the **Delete** button at the top right.
 

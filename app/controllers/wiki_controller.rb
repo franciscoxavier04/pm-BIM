@@ -98,6 +98,7 @@ class WikiController < ApplicationController
     end
 
     @editable = editable?
+    @show_create = show_create?
   end
 
   def new; end
@@ -144,12 +145,12 @@ class WikiController < ApplicationController
       flash[:notice] = I18n.t(:notice_successful_create)
       redirect_to_show
     else
-      render action: "new"
+      render action: :new, status: :unprocessable_entity
     end
   end
 
   # Creates a new page or updates an existing one
-  def update
+  def update # rubocop:disable Metrics/AbcSize
     @old_title = params[:id]
     @page = @wiki.find_or_new_page(@old_title)
     if @page.nil?
@@ -170,12 +171,12 @@ class WikiController < ApplicationController
       flash[:notice] = I18n.t(:notice_successful_update)
       redirect_to_show
     else
-      render action: "edit"
+      render action: :edit, status: :unprocessable_entity
     end
   rescue ActiveRecord::StaleObjectError
     # Optimistic locking exception
     flash.now[:error] = I18n.t(:notice_locking_conflict)
-    render action: "edit"
+    render action: :edit, status: :unprocessable_entity
   end
 
   # rename a page
@@ -339,6 +340,9 @@ class WikiController < ApplicationController
     :"no-menu-item-#{default_item.menu_identifier}"
   end
 
+  def show_create?
+    @editable && @page && User.current.allowed_in_project?(:edit_wiki_pages, @project)
+  end
   private
 
   def locked?
@@ -367,8 +371,6 @@ class WikiController < ApplicationController
     @project = Project.find(params[:project_id])
     @wiki = @project.wiki
     render_404 unless @wiki
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   # Finds or created the wiki page associated
@@ -410,14 +412,6 @@ class WikiController < ApplicationController
   # Returns true if the current user is allowed to edit the page, otherwise false
   def editable?(page = @page)
     page.editable_by?(User.current)
-  end
-
-  def default_breadcrumb
-    Wiki.model_name.human
-  end
-
-  def show_local_breadcrumb
-    @page&.ancestors&.any?
   end
 
   def redirect_to_show

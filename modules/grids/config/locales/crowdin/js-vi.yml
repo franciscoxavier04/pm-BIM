@@ -4,9 +4,6 @@ vi:
       add_widget: 'Thêm widget'
       remove: 'Xóa widget'
       configure: 'Cấu hình widget'
-      upsale:
-        text: "Một số tiện ích, như tiện ích biểu đồ gói công việc, chỉ khả dụng trong phiên bản Enterprise."
-        link: 'Phiên bản doanh nghiệp.'
       widgets:
         missing_permission: "Bạn không có quyền cần thiết để xem widget này."
         custom_text:
@@ -27,18 +24,15 @@ vi:
         project_description:
           title: 'Mô tả dự án'
           no_results: "Chưa có mô tả nào được viết. Có thể cung cấp trong 'Cài đặt dự án'."
-        project_details:
-          title: 'Chi tiết dự án'
-          no_results: 'Chưa có trường tùy chỉnh nào được định nghĩa cho các dự án.'
         project_status:
           title: 'Tình trạng dự án'
           not_started: 'Chưa bắt đầu'
-          on_track: 'Đang tiến triển'
-          off_track: 'Bị lệch'
+          on_track: 'Đang theo dõi'
+          off_track: 'Ra ngoài quỹ đạo'
           at_risk: 'Có nguy cơ'
           not_set: 'Không được thiết lập'
           finished: 'Hoàn thành'
-          discontinued: 'Ngừng hoạt động'
+          discontinued: 'Ngừng'
         subprojects:
           title: 'Các dự án con'
           no_results: 'Không có dự án con.'

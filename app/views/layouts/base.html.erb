@@ -38,17 +38,12 @@ See COPYRIGHT and LICENSE files for more details.
   <!-- page specific tags -->
   <%= content_for(:header_tags) if content_for?(:header_tags) %>
   <meta name="current_menu_item" content="<%= current_menu_item %>"/>
-  <%# Disable prefetching while we have data-turbo=false on body %>
+  <%# Disable prefetching for now %>
   <meta name="turbo-prefetch" content="false">
 </head>
-<body
-  class="<%= body_css_classes %> __overflowing_element_container __overflowing_body"
-  data-relative_url_root="<%= root_path %>"
-  data-overflowing-identifier=".__overflowing_body"
-  data-rendered-at="<%= Time.zone.now.iso8601 %>"
-  data-controller="application"
-  <%= user_theme_data_attributes %>
->
+<%= content_tag :body,
+                class: "#{body_css_classes}  __overflowing_element_container __overflowing_body",
+                data: body_data_attributes(local_assigns) do  %>
 <%= render partial: 'warning_bar/warning_bar' %>
 <noscript>
   <div class="top-shelf">
@@ -64,6 +59,10 @@ See COPYRIGHT and LICENSE files for more details.
 </noscript>
 <opce-toasts-container></opce-toasts-container>
 <opce-modal-overlay></opce-modal-overlay>
+<live-region>
+  <div id="polite" aria-live="polite" aria-atomic="true" class="hidden-for-sighted"></div>
+  <div id="assertive" aria-live="assertive" aria-atomic="true" class="hidden-for-sighted"></div>
+</live-region>
 <opce-spot-drop-modal-portal></opce-spot-drop-modal-portal>
 <% main_menu = render_main_menu(local_assigns.fetch(:menu_name, nil), @project) %>
 <% side_displayed = content_for?(:sidebar) || content_for?(:main_menu) || !main_menu.blank? %>
@@ -136,15 +135,6 @@ See COPYRIGHT and LICENSE files for more details.
         <% end %>
 
         <div id="content-body">
-          <% if show_decoration %>
-            <div id="breadcrumb" class="<%= show_breadcrumb ? ' -show' : '' %>">
-              <%= you_are_here_info %>
-              <div id="full_breadcrumbs">
-                <%= full_breadcrumbs %>
-              </div>
-              <%= call_hook :view_layouts_base_breadcrumb %>
-            </div>
-          <% end %>
           <%= content_for :content_body %>
           <% unless local_assigns[:no_layout_yield] %>
             <%= yield %>
@@ -190,5 +180,5 @@ See COPYRIGHT and LICENSE files for more details.
 <% end %>
 <div class="op-wide-autocomplete-wrapper"></div>
 <%= call_hook :view_layouts_base_body_bottom %>
-</body>
+<% end %>
 </html>
