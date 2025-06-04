@@ -60,6 +60,8 @@ class Queries::WorkPackages::Selects::ProjectPhaseSelect < Queries::WorkPackages
   # Note that one project might have an active phase while another project has set the phase with the same definition to inactive.
   # Additionally, the permissions to view project phases are considered on a project level, too.
   def group_by_join_statement
+    # FIXME: the last line (join on projects) is only necessary because the specs break otherwise (invalid statement).
+    # I have no idea why yet. Remove this hacky fix and investigate.
     Arel.sql(
       <<~SQL.squish
         LEFT JOIN (
@@ -72,6 +74,7 @@ class Queries::WorkPackages::Selects::ProjectPhaseSelect < Queries::WorkPackages
           GROUP BY wp.id
         ) AS active_phases ON active_phases.wp_id = work_packages.id
         LEFT JOIN project_phase_definitions pd ON pd.id = active_phases.active_phase_definition_id
+        JOIN projects on projects.id = work_packages.project_id
       SQL
     )
   end
