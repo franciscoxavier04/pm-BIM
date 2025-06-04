@@ -55,6 +55,7 @@ class Queries::WorkPackages::Filter::ProjectPhaseFilter < Queries::WorkPackages:
     values.filter_map { |id| available_definitions[id.to_i] }
   end
 
+  # TODO: copied over from ProjectPhaseSelect, refactor to use the same truth
   def joins
     Arel.sql(
       <<~SQL.squish
@@ -68,6 +69,7 @@ class Queries::WorkPackages::Filter::ProjectPhaseFilter < Queries::WorkPackages:
           GROUP BY wp.id
         ) AS active_phases ON active_phases.wp_id = work_packages.id
         LEFT JOIN project_phase_definitions pd ON pd.id = active_phases.active_phase_definition_id
+        JOIN projects on projects.id = work_packages.project_id
       SQL
     )
   end
