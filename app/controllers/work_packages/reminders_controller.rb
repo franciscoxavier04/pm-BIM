@@ -40,7 +40,8 @@ class WorkPackages::RemindersController < ApplicationController
   def modal_body
     render modal_component_class.new(
       remindable: @work_package,
-      reminder: @reminder
+      reminder: @reminder,
+      preset: params[:preset]
     )
   end
 
