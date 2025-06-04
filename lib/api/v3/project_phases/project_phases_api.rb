@@ -35,8 +35,7 @@ module API
         resources :project_phases do
           get &::API::V3::Utilities::Endpoints::Index
                  .new(model: Project::Phase,
-                      # TODO: add visible-scope here:
-                      scope: -> { Project::Phase.where(active: true) },
+                      scope: -> { Project::Phase.visible(current_user).where(active: true) },
                       api_name: "ProjectPhases")
                  .mount
 

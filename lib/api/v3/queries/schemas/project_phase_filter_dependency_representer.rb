@@ -42,20 +42,7 @@ module API
           end
 
           def href_callback
-            params = CGI.escape(::JSON.dump(filter_query))
-
-            # if filter.project.present?
-            #   "#{api_v3_paths.project_phases_by_project(filter.project.identifier)}?filters=#{params}"
-            # else
-            "#{api_v3_paths.project_phase_definitions}?filters=#{params}"
-            # end
-          end
-
-          # FIXME only request the project phases that are actually used in the query!
-          # alternatively, fix the API query to return only active and visible project phase definitions
-          def filter_query
-            # [{ project_phase: { operator: "*", values: [] } }]
-            []
+            api_v3_paths.project_phase_definitions
           end
 
           def type
