@@ -96,13 +96,4 @@ module Queries::WorkPackages
     select Selects::ManualSortingSelect
     select Selects::TypeaheadSelect
   end
-
-  # Queries::Register.register(Queries::Project::Phases::PhaseQuery) do
-  #   filter Filter::ProjectPhaseFilter
-  # end
-
-  #::Queries::Project::PhaseDefinitions::PhaseDefinitionQuery or ::PhaseDefinitionQuery
-  Queries::Register.register(Queries::Project::PhaseDefinitions::PhaseDefinitionQuery) do
-    filter Filter::ProjectPhaseFilter
-  end
 end

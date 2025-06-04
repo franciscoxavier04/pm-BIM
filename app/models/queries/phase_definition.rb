@@ -28,19 +28,10 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Queries::Project
-  module PhaseDefinitions
-    class PhaseDefinitionQuery
-      include Queries::BaseQuery
-      include Queries::UnpersistedQuery
-
-      def self.model
-        Project::PhaseDefinition
-      end
-
-      def default_scope
-        Project::PhaseDefinition.order(:position)
-      end
-    end
+module Queries::Project::PhaseDefinitions
+  # This is needed for the phase definition filter to work, even though it is referenced in the
+  # WorkPackages::Query
+  ::Queries::Register.register(PhaseDefinitionQuery) do
+    pass
   end
 end

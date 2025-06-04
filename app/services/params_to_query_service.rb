@@ -123,8 +123,6 @@ class ParamsToQueryService
                        else
                          model_name = model.name
 
-                         puts "FOOBAR searching for query class: ::Queries::#{model_name.pluralize}::#{model_name.demodulize}Query or ::#{model_name.demodulize}Query"
-
                          # Some queries exist as Queries::Models::ModelQuery others as ModelQuery
                          "::Queries::#{model_name.pluralize}::#{model_name.demodulize}Query".safe_constantize ||
                           "::#{model_name.demodulize}Query".constantize
