@@ -62,6 +62,7 @@ module Queries::WorkPackages
     filter Filter::DatesIntervalFilter
     filter Filter::ParentFilter
     filter Filter::PrecedesFilter
+    filter Filter::ProjectPhaseFilter
     filter Filter::FollowsFilter
     filter Filter::RelatesFilter
     filter Filter::DuplicatesFilter

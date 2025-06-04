@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# -- copyright
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,31 +26,18 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
 
-module API
-  module V3
-    module ProjectPhases
-      class ProjectPhasesAPI < ::API::OpenProjectAPI
-        resources :project_phases do
-          get &::API::V3::Utilities::Endpoints::Index
-                 .new(model: Project::Phase,
-                      scope: -> { Project::Phase.visible(current_user).where(active: true) },
-                      api_name: "ProjectPhases")
-                 .mount
+module Queries
+  module PhaseDefinitions
+    # intentionally left empty, just exists to satisfy the autoloader
+  end
 
-          route_param :id do
-            after_validation do
-              @phase = ::Project::Phase.visible(current_user).find(params[:id])
-            end
-
-            get &::API::V3::Utilities::Endpoints::Show
-                   .new(model: Project::Phase,
-                        render_representer: API::V3::ProjectPhases::ProjectPhaseRepresenter)
-                   .mount
-          end
-        end
-      end
+  module Project::PhaseDefinitions
+    # This is needed for the phase definition filter to work, even though it is referenced in the
+    # WorkPackages::Query
+    ::Queries::Register.register(PhaseDefinitionQuery) do
+      # intentionally left empty
     end
   end
 end
