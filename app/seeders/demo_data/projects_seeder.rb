@@ -73,7 +73,8 @@ module DemoData
     private
 
     def project_seeders
-      @project_seeders ||= seed_data.each_data("projects").map { |project_data| ProjectSeeder.new(project_data) }
+      @project_seeders ||= seed_data.each_data("projects")
+                                    .map { |project_data| ProjectSeeder.new(project_data) }
     end
   end
 end
