@@ -79,11 +79,8 @@ module Meetings::PDF
     end
 
     def meetings_state_color
-      state_color = Meetings::Statuses::AVAILABLE.find { |it| it.id == meeting.state }
-      return state_color.color if state_color
-
-      # Fallback to the default color if the state is not found
-      Meetings::Statuses::OPEN.color
+      status = Meetings::Statuses.find_by_id(meeting.state)
+      (status || Meetings::Statuses::OPEN).color
     end
 
     def meeting_title
