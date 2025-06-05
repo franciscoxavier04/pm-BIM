@@ -894,6 +894,7 @@ Rails.application.routes.draw do
   end
 
   if OpenProject::Configuration.lookbook_enabled?
+    mount Primer::ViewComponents::Engine, at: "/"
     mount Lookbook::Engine, at: "/lookbook"
   end
 
