@@ -105,12 +105,30 @@ module WorkPackage::PDFExport::Export::Markdown
           # ##1234: {Type} #{ID}: {Subject}
           content = "#{work_package.type} ##{work_package.id}: #{work_package.subject}"
           if count == 3
-            # ###1234: {Status} {Type} #{ID}: {Subject}
-            content = "#{work_package.status.name} #{content}"
+            # ###1234: {Status} {Type} #{ID}: {Subject} ({Start Date} - {End Date})
+            content = "#{work_package.status.name} #{content}#{work_package_dates(work_package)}"
           end
         end
       end
       [text_hash(content, opts.merge({ link: url_helpers.work_package_url(id) }))]
+    end
+
+    def work_package_dates(work_package)
+      return "" if work_package.start_date.blank? && work_package.due_date.blank?
+
+      if work_package.due_date.present? && work_package.start_date == work_package.due_date
+        return " (#{format_date(work_package.due_date)})"
+      end
+
+      work_package_date_range(work_package)
+    end
+
+    def work_package_date_range(work_package)
+      content = [
+        work_package.start_date.present? ? format_date(work_package.start_date) : I18n.t("label_no_start_date"),
+        work_package.due_date.present? ? format_date(work_package.due_date) : I18n.t("label_no_due_date")
+      ].join(" - ")
+      " (#{content})"
     end
 
     def handle_mention_html_tag(tag, node, opts)

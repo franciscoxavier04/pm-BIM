@@ -71,16 +71,7 @@ module Meetings::PDF
     end
 
     def badge_text
-      case meeting.state
-      when "open"
-        I18n.t("label_meeting_state_open")
-      when "in_progress"
-        I18n.t("label_meeting_state_in_progress")
-      when "closed"
-        I18n.t("label_meeting_state_closed")
-      else
-        meeting.state
-      end
+      I18n.t("label_meeting_state_#{meeting.state}")
     end
 
     def badge_color

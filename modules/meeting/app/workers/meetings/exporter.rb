@@ -113,9 +113,9 @@ module Meetings
 
     def cover_page_dates
       ["#{format_date(meeting.start_date)},",
-        format_time(meeting.start_time, include_date: false),
-        "–",
-        format_time(meeting.end_time, include_date: false)].join(' ')
+       format_time(meeting.start_time, include_date: false),
+       "–",
+       format_time(meeting.end_time, include_date: false)].join(" ")
     end
 
     def cover_page_subheading

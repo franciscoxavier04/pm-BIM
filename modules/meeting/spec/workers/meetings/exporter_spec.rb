@@ -133,15 +133,15 @@ RSpec.describe Meetings::Exporter do
     let(:meeting_section) { create(:meeting_section, meeting:, title: "Section Work in Progress") }
     let(:meeting_agenda_item) do
       create(:meeting_agenda_item, meeting_section:, duration_in_minutes: 15, title: "Agenda Item TOP 1", presenter: user,
-             notes: "**foo**")
+                                   notes: "**foo**")
     end
     let(:wp_agenda_item) { create(:wp_meeting_agenda_item, meeting:, work_package:, duration_in_minutes: 10, notes: "*bar*") }
     let(:outcome) { create(:meeting_outcome, meeting_agenda_item:, notes: "An outcome") }
     let(:attachment) { create(:attachment, container: meeting) }
     let(:meeting_backlog_item) do
       create(:meeting_agenda_item, meeting_section: meeting.backlog,
-             duration_in_minutes: 1,
-             title: "Agenda Item in Backlog", presenter: user, notes: "# yeah")
+                                   duration_in_minutes: 1,
+                                   title: "Agenda Item in Backlog", presenter: user, notes: "# yeah")
     end
 
     before do
@@ -239,7 +239,7 @@ RSpec.describe Meetings::Exporter do
     let(:secret_work_package) { create(:work_package, project: secret_project) }
     let(:wp_agenda_item) do
       create(:wp_meeting_agenda_item, meeting:, work_package: secret_work_package, duration_in_minutes: 10,
-             notes: "title of the work package should not be visible")
+                                      notes: "title of the work package should not be visible")
     end
 
     before do
@@ -247,7 +247,7 @@ RSpec.describe Meetings::Exporter do
       wp_agenda_item # create the wp agenda item
     end
 
-    context "does not show the non visible work package" do
+    context "and with a non visible work package" do
       let(:options) do
         { participants: "0" }
       end
@@ -270,7 +270,7 @@ RSpec.describe Meetings::Exporter do
       end
     end
 
-    context "does not show the a deleted work package" do
+    context "and with a deleted work package" do
       let(:options) do
         { participants: "0" }
       end
@@ -296,9 +296,5 @@ RSpec.describe Meetings::Exporter do
         expect(subject).to eq expected_document
       end
     end
-
-
-
   end
-
 end
