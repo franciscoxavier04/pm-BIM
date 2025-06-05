@@ -71,16 +71,7 @@ module Meetings::PDF
     end
 
     def badge_text
-      case meeting.state
-      when "open"
-        I18n.t("label_meeting_state_open")
-      when "in_progress"
-        I18n.t("label_meeting_state_in_progress")
-      when "closed"
-        I18n.t("label_meeting_state_closed")
-      else
-        meeting.state
-      end
+      I18n.t("label_meeting_state_#{meeting.state}")
     end
 
     def badge_color
@@ -88,14 +79,8 @@ module Meetings::PDF
     end
 
     def meetings_state_color
-      case meeting.state
-      when "in_progress"
-        Meetings::Statuses::IN_PROGRESS.color
-      when "closed"
-        Meetings::Statuses::CLOSED.color
-      else
-        Meetings::Statuses::OPEN.color
-      end
+      status = Meetings::Statuses.find_by_id(meeting.state) # rubocop:disable Rails/DynamicFindBy
+      (status || Meetings::Statuses::OPEN).color
     end
 
     def meeting_title

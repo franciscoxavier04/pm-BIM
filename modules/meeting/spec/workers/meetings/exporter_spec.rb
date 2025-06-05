@@ -33,8 +33,13 @@ require "pdf/inspector"
 
 RSpec.describe Meetings::Exporter do
   include Redmine::I18n
+  shared_let(:role) { create(:project_role, permissions: [:view_work_packages]) }
   shared_let(:user) { create(:user, firstname: "Export", lastname: "User") }
-  shared_let(:project) { create(:project, enabled_module_names: %w[meetings]) }
+  shared_let(:project) do
+    project = create(:project, enabled_module_names: Setting.default_projects_modules + %w[meetings])
+    create(:member, principal: user, project:, roles: [role])
+    project
+  end
   shared_let(:export_time) { DateTime.new(2025, 6, 3, 13, 37) }
   shared_let(:export_time_formatted) { format_date(export_time) }
   shared_let(:recurring_meeting) do
@@ -44,7 +49,7 @@ RSpec.describe Meetings::Exporter do
            start_time: DateTime.parse("2024-12-05T10:00:00Z"),
            frequency: "daily"
   end
-  shared_let(:work_package) { create(:work_package) }
+  shared_let(:work_package) { create(:work_package, project:) }
   let(:options) do
     {
       participants: "0",
@@ -53,7 +58,6 @@ RSpec.describe Meetings::Exporter do
     }
   end
   let(:exporter) { described_class.new(meeting, options) }
-  let(:meeting_agenda_item) { create(:meeting_agenda_item, meeting:) }
   let(:meeting) do
     create(:meeting, :author_participates,
            project:, title: "Awesome meeting!", location: "Moon Base")
@@ -72,7 +76,7 @@ RSpec.describe Meetings::Exporter do
   def expected_cover_page
     [project.name,
      meeting.title,
-     "#{meeting.start_date} #{meeting.start_time_hour}",
+     exporter.cover_page_dates,
      meeting.location,
      export_time_formatted]
   end
@@ -141,6 +145,7 @@ RSpec.describe Meetings::Exporter do
     end
 
     before do
+      User.current = user
       meeting_agenda_item # create the agenda item
       wp_agenda_item # create the wp agenda item
       outcome # create the outcome
@@ -217,6 +222,71 @@ RSpec.describe Meetings::Exporter do
 
           "Task", "##{work_package.id}", "Important task", " (Workin' on it)", "  ", "10 mins",
           "bar",
+
+          "1", # Page number
+          export_time_formatted,
+          project.name
+        ].join(" ")
+
+        expect(subject).to eq expected_document
+      end
+    end
+  end
+
+  context "with a meeting with special work package agenda item" do
+    let!(:other_user) { create(:user) }
+    let!(:secret_project) { create(:project, members: [other_user]) }
+    let(:secret_work_package) { create(:work_package, project: secret_project) }
+    let(:wp_agenda_item) do
+      create(:wp_meeting_agenda_item, meeting:, work_package: secret_work_package, duration_in_minutes: 10,
+                                      notes: "title of the work package should not be visible")
+    end
+
+    before do
+      secret_work_package # create the work_package
+      wp_agenda_item # create the wp agenda item
+    end
+
+    context "and with a non visible work package" do
+      let(:options) do
+        { participants: "0" }
+      end
+
+      it "renders the expected document" do
+        expected_document = [
+          *expected_cover_page,
+          *single_meeting_head,
+          "Meeting agenda",
+
+          "Work package ##{secret_work_package.id} not visible", "  ", "10 mins",
+          "title of the work package should not be visible",
+
+          "1", # Page number
+          export_time_formatted,
+          project.name
+        ].join(" ")
+
+        expect(subject).to eq expected_document
+      end
+    end
+
+    context "and with a deleted work package" do
+      let(:options) do
+        { participants: "0" }
+      end
+
+      before do
+        secret_work_package.destroy
+      end
+
+      it "renders the expected document" do
+        expected_document = [
+          *expected_cover_page,
+          *single_meeting_head,
+          "Meeting agenda",
+
+          "Deleted work package reference", "  ", "10 mins",
+          "title of the work package should not be visible",
 
           "1", # Page number
           export_time_formatted,

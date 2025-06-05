@@ -53,7 +53,7 @@ module Meetings::PDF
 
     def write_section(section, section_index)
       write_optional_page_break
-      write_section_title(section, section_index)
+      write_section_title(section, section_index) unless section.title.empty?
       write_agenda_items(section)
     end
 
@@ -158,11 +158,24 @@ module Meetings::PDF
     end
 
     def write_agenda_title_item_wp(agenda_item)
-      work_package = agenda_item.work_package
       write_agenda_item_title(
-        [agenda_title_wp(work_package), "(#{work_package.status.name})"].join(" "),
-        agenda_item.duration_in_minutes || 0, agenda_item.presenter
+        agenda_wp_title_row(agenda_item),
+        agenda_item.duration_in_minutes || 0,
+        agenda_item.presenter
       )
+    end
+
+    def agenda_wp_title_row(agenda_item)
+      if agenda_item.visible_work_package?
+        work_package = agenda_item.work_package
+        [agenda_title_wp(work_package), "(#{work_package.status.name})"].join(" ")
+      elsif agenda_item.linked_work_package?
+        I18n.t(:label_agenda_item_undisclosed_wp, id: agenda_item.work_package_id)
+      elsif agenda_item.deleted_work_package?
+        I18n.t(:label_agenda_item_deleted_wp)
+      else
+        agenda_item.title
+      end
     end
 
     def write_agenda_title_item_simple(agenda_item)
