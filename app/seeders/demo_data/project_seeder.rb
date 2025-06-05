@@ -61,10 +61,8 @@ module DemoData
     end
 
     def applicable?
-      types = seed_data.lookup("types")
-
       seed_data.reference_exists?(:default_role_project_admin) &&
-        (types.nil? || types.all? { |type_reference| seed_data.reference_exists?(type_reference) })
+        types_seed_data.all? { |type_reference| seed_data.reference_exists?(type_reference) }
     end
 
     private
@@ -101,7 +99,7 @@ module DemoData
     def set_types
       print_status "   -Assigning types."
 
-      project.types = seed_data.find_references(project_data.lookup("types"))
+      project.types = seed_data.find_references(types_seed_data)
     end
 
     def seed_categories
@@ -147,6 +145,10 @@ module DemoData
         seeder = seeder_class.new(project, project_data)
         seeder.seed!
       end
+    end
+
+    def types_seed_data
+      seed_data.lookup("types") || []
     end
 
     def project_attributes
