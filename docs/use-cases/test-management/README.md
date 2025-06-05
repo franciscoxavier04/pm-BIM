@@ -91,6 +91,29 @@ For all test runs which are not planned the status should be adjusted to somethi
 
 ![create test report](create-test-report.png)
 
+### 1.4 Progress tracking and reporting
+
+As previously stated, agile boards (Kanban or Scrum) can help us track the test execution progress, i.e. visualize `Test Runs` by status (e.g., `To Do` , `In Progress` , `Failed` , `Passed`).
+
+![board-for-test-case-tracking](board-for-test-case-tracking.png)
+
+Comments and activity log (`Activity` tab) complement custom fields in the sense that they can also be used to record:
+* Time and date of the execution
+* Environment details (e.g., Browser, OS, Build version)
+* Qualitative data and detailed explanations, as well as communication and collaboration between testers, developers and other stakeholders around a specific test case.  
+
+Activity tab is especially beneficial during the *static testing* phase. As a reminder, static testing is, among other things, verification of the test cases themselves (sort of testing of test case). Testers review the test cases/test runs searching for inconsistencies, errors, unclarity. Activity tab is a good place to discuss their findings, as well as track the complete and chronological history of a test.
+
+Further tools can be used for reporting and metrics purposes with OpenProject:
+* Saved filters: Create and save filters for "Failed Test Cases," "Tests for Feature X," "Tests due this week."
+* Export data: Apart from PDF, XLS and CSV are also supported.
+* Custom dashboards: On Overview page of your Test plan project, you can create graphs to:
+  * Count test cases by status (Passed, Failed, Blocked)
+  * Show tests assigned to each tester
+  * Track the number of open vs. closed defects, or simply have an overview of the bugs by priority.
+ 
+![graph-for-bugs-overview](graph-for-bugs-overview.png)
+
 ## 2. Configuration guidance
 
 This section provides guidance on how to configure OpenProject for test management. It assumes familiarity with OpenProject administration features.
