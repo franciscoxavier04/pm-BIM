@@ -43,7 +43,7 @@ RSpec.describe CustomFields::Inputs::MultiSelectList, type: :forms do
   end
   let(:value) { custom_field.possible_values.last(2).pluck(:id) }
 
-  it_behaves_like "rendering label", "Multi-list field"
+  it_behaves_like "rendering label with help text", "Multi-list field"
   it_behaves_like "rendering autocompleter", "Multi-list field", multiple: true do
     it "sets correct autocompleter inputs" do
       expect(autocompleter["data-items"]).to have_json_size(4)

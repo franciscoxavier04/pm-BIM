@@ -36,7 +36,7 @@ RSpec.describe CustomFields::Inputs::SingleVersionSelectList, type: :forms do
   let(:custom_field) { create(:version_project_custom_field, name: "Version field") }
   let(:value) { create(:version, name: "Version 26", project: model) }
 
-  it_behaves_like "rendering label", "Version field"
+  it_behaves_like "rendering label with help text", "Version field"
   it_behaves_like "rendering autocompleter", "Version field" do
     it "sets correct autocompleter inputs" do
       expect(autocompleter["data-items"]).to have_json_size(1)

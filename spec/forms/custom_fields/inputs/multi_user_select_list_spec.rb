@@ -36,7 +36,7 @@ RSpec.describe CustomFields::Inputs::MultiUserSelectList, type: :forms do
   let(:custom_field) { create(:user_project_custom_field, name: "Users field", multi_value: true) }
   let(:value) { create_list(:user, 2) }
 
-  it_behaves_like "rendering label", "Users field"
+  it_behaves_like "rendering label with help text", "Users field"
   it_behaves_like "rendering autocompleter", "Users field", tag_name: "opce-user-autocompleter", multiple: true do
     it "sets correct autocompleter inputs" do
       expect(autocompleter["data-resource"]).to be_json_eql(%{"principals"})

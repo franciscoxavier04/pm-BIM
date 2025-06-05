@@ -35,7 +35,7 @@ RSpec.describe CustomFields::Inputs::Float, type: :forms do
 
   let(:custom_field) { create(:float_project_custom_field, name: "Float field") }
 
-  it_behaves_like "rendering label", "Float field"
+  it_behaves_like "rendering label with help text", "Float field"
 
   context "without a value" do
     it "renders field" do

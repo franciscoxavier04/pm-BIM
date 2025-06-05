@@ -76,4 +76,24 @@ RSpec.shared_context "with rendered custom field input form" do
       end
     end
   end
+
+  shared_examples "rendering label with help text" do |label_text|
+    let(:label) { rendered_form.find(:element, :label, text: label_text) }
+
+    include_examples "rendering label", label_text
+
+    context "without attribute help text" do
+      it "does not render help text link" do
+        expect(label).to have_no_link class: "op-attribute-help-text"
+      end
+    end
+
+    context "with attribute help text" do
+      let!(:attribute_help_text) { create(:project_help_text, attribute_name: custom_field.attribute_name) }
+
+      it "renders help text link" do
+        expect(label).to have_link class: "op-attribute-help-text"
+      end
+    end
+  end
 end

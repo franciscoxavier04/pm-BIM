@@ -35,7 +35,7 @@ RSpec.describe CustomFields::Inputs::Int, type: :forms do
 
   let(:custom_field) { create(:integer_project_custom_field, name: "Integer field") }
 
-  it_behaves_like "rendering label", "Integer field"
+  it_behaves_like "rendering label with help text", "Integer field"
 
   context "without a value" do
     it "renders field" do

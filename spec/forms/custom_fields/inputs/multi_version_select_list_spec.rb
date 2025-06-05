@@ -37,7 +37,7 @@ RSpec.describe CustomFields::Inputs::MultiVersionSelectList, type: :forms do
   let(:value) { create_list(:version, 2, project: model) }
   let!(:other_versions) { create_list(:version, 3, project: model) }
 
-  it_behaves_like "rendering label", "Versions field"
+  it_behaves_like "rendering label with help text", "Versions field"
   it_behaves_like "rendering autocompleter", "Versions field", multiple: true do
     it "sets correct autocompleter inputs" do
       expect(autocompleter["data-items"]).to have_json_size(5)

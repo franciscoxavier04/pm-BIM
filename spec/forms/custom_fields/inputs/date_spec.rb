@@ -35,7 +35,7 @@ RSpec.describe CustomFields::Inputs::Date, type: :forms do
 
   let(:custom_field) { create(:date_project_custom_field, name: "Date field") }
 
-  it_behaves_like "rendering label", "Date field"
+  it_behaves_like "rendering label with help text", "Date field"
 
   context "without a value" do
     it "renders field" do

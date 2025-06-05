@@ -36,7 +36,7 @@ RSpec.describe CustomFields::Inputs::String, type: :forms do
   context "with a string custom field" do
     let(:custom_field) { create(:string_project_custom_field, name: "String field") }
 
-    it_behaves_like "rendering label", "String field"
+    it_behaves_like "rendering label with help text", "String field"
 
     context "without a value" do
       it "renders field" do
@@ -64,7 +64,7 @@ RSpec.describe CustomFields::Inputs::String, type: :forms do
   context "with a link custom field" do
     let(:custom_field) { create(:link_project_custom_field, name: "Link field") }
 
-    it_behaves_like "rendering label", "Link field"
+    it_behaves_like "rendering label with help text", "Link field"
 
     context "when value is invalid" do
       let(:value) { "!@£$ NOT A LINK" }

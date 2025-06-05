@@ -45,9 +45,9 @@ RSpec.describe Primer::OpenProject::Forms::Dsl::InputMethods, type: :forms do
   subject(:field) { field_group.first }
 
   before do
-    allow(form).to receive(:wrap_attribute_label_with_help_text)
-      .with(label, name)
-      .and_return "wrapped #{label}"
+    allow(form).to receive(:wrap_attribute_label_with_help_text) do |label, name|
+      "#{label} <fake-attribute-help-text for='#{name}'/>"
+    end
   end
 
   shared_examples_for "input class" do |input_class|
@@ -58,8 +58,21 @@ RSpec.describe Primer::OpenProject::Forms::Dsl::InputMethods, type: :forms do
 
   shared_examples_for "supporting help texts" do
     context "when include_help_text: option is true (default)" do
-      it "wraps the label" do
-        expect(field.label).to eq "wrapped #{label}"
+      context "when no additional help_text_options: are passed" do
+        it "wraps the label with help text" do
+          expect(field.label).to start_with(label)
+            .and end_with("<fake-attribute-help-text for='#{name}'/>")
+        end
+      end
+
+      context "when additional help_text_options: are passed" do
+        let(:attribute_name) { :subject_attribute }
+        let(:options) { { help_text_options: { attribute_name: } } }
+
+        it "wraps the label with help text" do
+          expect(field.label).to start_with(label)
+            .and end_with("<fake-attribute-help-text for='#{attribute_name}'/>")
+        end
       end
     end
 

@@ -36,7 +36,7 @@ RSpec.describe CustomFields::Inputs::SingleSelectList, type: :forms do
   let(:custom_field) { create(:list_project_custom_field, name: "List field", possible_values: ["eins", "zwei", "drei"]) }
   let(:value) { custom_field.possible_values.first.id }
 
-  it_behaves_like "rendering label", "List field"
+  it_behaves_like "rendering label with help text", "List field"
   it_behaves_like "rendering autocompleter", "List field" do
     it "sets correct autocompleter inputs" do
       expect(autocompleter["data-items"]).to have_json_size(3)

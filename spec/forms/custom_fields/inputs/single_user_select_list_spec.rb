@@ -36,7 +36,7 @@ RSpec.describe CustomFields::Inputs::SingleUserSelectList, type: :forms do
   let(:custom_field) { create(:user_project_custom_field, name: "User field") }
   let(:value) { create(:user) }
 
-  it_behaves_like "rendering label", "User field"
+  it_behaves_like "rendering label with help text", "User field"
   it_behaves_like "rendering autocompleter", "User field", tag_name: "opce-user-autocompleter" do
     it "sets correct autocompleter inputs" do
       expect(autocompleter["data-resource"]).to be_json_eql(%{"principals"})

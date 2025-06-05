@@ -35,7 +35,7 @@ RSpec.describe CustomFields::Inputs::Text, type: :forms do
 
   let(:custom_field) { create(:text_project_custom_field, name: "Text field") }
 
-  it_behaves_like "rendering label", "Text field"
+  it_behaves_like "rendering label with help text", "Text field"
 
   context "without a value" do
     it "renders field" do
