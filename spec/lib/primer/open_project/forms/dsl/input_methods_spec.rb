@@ -85,6 +85,36 @@ RSpec.describe Primer::OpenProject::Forms::Dsl::InputMethods, type: :forms do
     end
   end
 
+  describe "multi input methods" do
+    describe "#multi" do
+      let(:field_group) { form_dsl.multi(name:, label:, **options) }
+
+      include_examples "input class", Primer::Forms::Dsl::MultiInput
+      it_behaves_like "supporting help texts"
+    end
+
+    describe "#check_box" do
+      let(:field_group) { form_dsl.check_box(name:, label:, **options) }
+
+      include_examples "input class", Primer::Forms::Dsl::CheckBoxInput
+      it_behaves_like "supporting help texts"
+    end
+
+    describe "#radio_button_group" do
+      let(:field_group) { form_dsl.radio_button_group(name:, label:, **options) }
+
+      include_examples "input class", Primer::Forms::Dsl::RadioButtonGroupInput
+      it_behaves_like "supporting help texts"
+    end
+
+    describe "#check_box_group" do
+      let(:field_group) { form_dsl.check_box_group(name:, label:, **options) }
+
+      include_examples "input class", Primer::Forms::Dsl::CheckBoxGroupInput
+      it_behaves_like "supporting help texts"
+    end
+  end
+
   describe "#separator" do
     let(:field_group) { form_dsl.separator }
 

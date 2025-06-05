@@ -35,7 +35,7 @@ RSpec.describe CustomFields::Inputs::Bool, type: :forms do
 
   let(:custom_field) { create(:boolean_project_custom_field, name: "Boolean field") }
 
-  it_behaves_like "rendering label", "Boolean field"
+  it_behaves_like "rendering label with help text", "Boolean field"
 
   context "without a value" do
     it "renders field" do

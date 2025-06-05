@@ -5,6 +5,22 @@ module Primer
     module Forms
       module Dsl
         module InputMethods
+          def multi(**, &)
+            super(**decorate_options(**), &)
+          end
+
+          def check_box(**, &)
+            super(**decorate_options(**), &)
+          end
+
+          def radio_button_group(**, &)
+            super(**decorate_options(**), &)
+          end
+
+          def check_box_group(**, &)
+            super(**decorate_options(**), &)
+          end
+
           def autocompleter(**, &)
             add_input AutocompleterInput.new(builder:, form:, **decorate_options(**), &)
           end
