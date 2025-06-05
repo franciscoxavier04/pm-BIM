@@ -62,7 +62,7 @@ module Meetings::PDF
 
     def meeting_subtitle_dates
       [
-        "#{format_date(meeting.start_date)},",
+        "#{format_date(meeting.start_time)},",
         format_time(meeting.start_time, include_date: false),
         "–",
         format_time(meeting.end_time, include_date: false),
@@ -85,7 +85,7 @@ module Meetings::PDF
 
     def meeting_title
       if meeting.recurring?
-        "#{format_date(meeting.start_date)} - #{meeting.title}"
+        "#{format_date(meeting.start_time)} - #{meeting.title}"
       else
         meeting.title
       end
