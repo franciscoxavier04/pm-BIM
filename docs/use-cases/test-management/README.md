@@ -129,7 +129,7 @@ The subject pattern can incorporate dynamic attributes from the test case/test r
 
 Such subject is created upon save and is not manually editable.
 
-![Automatically generated subject after saving](automatically-generated-subject-after-saving.png)
+![Automatically generated subject after saving](automatically-generated-subject-after-saving2.png)
 
 Automatically generated subjects reduce manual effort and ensure that the name remains accurate and up-to-date if an attribute referenced in the subject pattern changes.
 
