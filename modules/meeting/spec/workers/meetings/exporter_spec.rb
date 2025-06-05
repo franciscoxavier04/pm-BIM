@@ -88,7 +88,7 @@ RSpec.describe Meetings::Exporter do
   end
 
   def recurring_meeting_head
-    [format_date(meeting.start_date), "-", meeting.title,
+    [format_date(meeting.start_time), "-", meeting.title,
      "   #{exporter.badge_text}    ",
      exporter.meeting_subtitle_dates,
      "-", meeting.recurring_meeting.base_schedule]
