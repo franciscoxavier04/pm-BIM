@@ -3357,7 +3357,7 @@ ja:
   permission_commit_access: "リポジトリに読み取り/書き込みアクセス (コミット)"
   permission_copy_projects: "プロジェクトのコピー"
   permission_copy_work_packages: "作業項目をコピー"
-  permission_create_backup: "バックアップを作成する"
+  permission_create_backup: "バックアップの作成"
   permission_delete_work_package_watchers: "ウォッチャーの削除"
   permission_delete_work_packages: "ワークパッケージの削除"
   permission_delete_messages: "メッセージの削除"
@@ -4475,6 +4475,6 @@ ja:
     description: "Integration of OmniAuth strategy providers for authentication in OpenProject."
   plugin_openproject_auth_saml:
     name: "OmniAuth SAML / シングルサインオン"
-    description: "OmniAuthSAMLプロバイダをOpenProjectに追加します"
+    description: "OmniAuthSAMLプロバイダをOpenProjectに追加"
   enterprise_plans:
     legacy_enterprise: "Enterprise Plan"

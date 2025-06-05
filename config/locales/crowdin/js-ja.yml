@@ -324,7 +324,7 @@ ja:
         farRight: "右端"
         description: >
           Select the attributes you want to be shown in the respective positions of the Gantt chart at all times. Note that when hovering over an element, its date labels will be shown instead of these attributes.
-      button_activate: "ガントチャートの表示"
+      button_activate: "ガントチャートを表示"
       button_deactivate: "ガントチャートを隠す"
       filter:
         noneSelection: "(なし)"
@@ -1074,7 +1074,7 @@ ja:
           priority: "優先度"
           type: "タイプ"
         sorting_mode:
-          description: "ワークパッケージを並び替えるモードを選択:"
+          description: "並び替えモードを選択："
           automatic: "自動"
           manually: "手動"
           warning: "自動並び替えモードをアクティブにすると、以前のソートが失われます。"
@@ -1103,7 +1103,7 @@ ja:
         hide_sums: "合計の非表示"
         save: "保存"
         save_as: "名前をつけて保存"
-        export: "外部出力"
+        export: "エクスポート"
         visibility_settings: "表示の設定"
         share_calendar: "Subscribe to calendar"
         page_settings: "ビューの名前を変更..."
@@ -1214,7 +1214,7 @@ ja:
         no_results: "プロジェクトが見つかりませんでした"
         no_invite_rights: "このプロジェクトにメンバーを招待することは許可されていません"
       type:
-        required: "招待するタイプを選択してください "
+        required: "招待するタイプを選択してください"
         user:
           title: "ユーザ"
           description: "選択したプロジェクトで割り当てられたロールに基づく権限"
@@ -1293,8 +1293,8 @@ ja:
       help_description: "Reference time zone for the baseline."
       time_description: "In your local time: %{datetime}"
       time: "時間"
-      from: "日付指定: "
-      to: "から"
+      from: "From"
+      to: "To"
       drop_down:
         none: "-"
         yesterday: "昨日"
