@@ -79,7 +79,7 @@ module Meetings::PDF
     end
 
     def meetings_state_color
-      status = Meetings::Statuses.find_by_id(meeting.state)
+      status = Meetings::Statuses.find_by_id(meeting.state) # rubocop:disable Rails/DynamicFindBy
       (status || Meetings::Statuses::OPEN).color
     end
 
