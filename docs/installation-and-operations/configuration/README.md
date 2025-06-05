@@ -9,7 +9,7 @@ sidebar_navigation:
 OpenProject can be configured via environment variables. These are often helpful for automatically deploying production systems.
 
 > [!NOTE]
-> This documentation is for OpenProject on-premises Installations only, if you would like to setup similar in your OpenProject cloud instance, please contact us at support@openproject.com
+> This documentation is for OpenProject on-premises Installations only, if you would like to setup similar in your OpenProject cloud instance, please contact us at [support@openproject.com](mailto:support@openproject.com)
 
 > [!IMPORTANT]
 > Using the configuration file `config/configuration.yml` is deprecated and is **NOT** recommended anymore
@@ -38,7 +38,7 @@ Configuring OpenProject through environment variables is described in detail [in
 
 ### One container per process installation
 
-Create a file `docker-compose.override.yml` next to `docker-compose.yml` file. Docker Compose will automatically merge those files, for more information, see https://docs.docker.com/compose/multiple-compose-files/merge/.
+Create a file `docker-compose.override.yml` next to `docker-compose.yml` file. Docker Compose will automatically merge those files, for more information, [see](https://docs.docker.com/compose/multiple-compose-files/merge/).
 Add your custom configuration to `docker-compose.override.yml`.
 
 In the compose folder you will also find the file `docker-compose.yml` which shall **NOT** be edited.
@@ -320,8 +320,8 @@ OPENPROJECT_SEED_DESIGN_EXPORT__COVER="..."
 
 ### Allowing public access
 
-By default, any request to the OpenProject application needs to be authenticated. If you want to enable public unauthenticated access like we do for https://community.openproject.org, you can set the `login_required` to `false`. If not provided through environment variables, this setting is also accessible in the administrative UI. Please see the [authentication settings guide](../../system-admin-guide/authentication/login-registration-settings/) for more details.
-
+By default, any request to the OpenProject application needs to be authenticated. If you want to enable public unauthenticated access like we do for community.openproject.org, you can set the `login_required` to `false`. If not provided through environment variables, this setting is also accessible in the administrative UI. Please see the [authentication settings guide](../../system-admin-guide/authentication/login-registration-settings/) for more details.
+å
 *default: true*
 
 To disable, set the configuration option:
@@ -460,7 +460,7 @@ OPENPROJECT_DISABLE__PASSWORD__LOGIN="true"
 
 ### Omniauth direct login provider
 
-Per default the user may choose the usual password login as well as <u>several</u> omniauth providers on the login page and in the login drop down menu. With this configuration option you can set a specific omniauth provider to be used for direct login. Meaning that the login provider selection is skipped and the configured provider is used directly (non-interactive) instead.
+Per default the user may choose the usual password login as well as **several** omniauth providers on the login page and in the login drop down menu. With this configuration option you can set a specific omniauth provider to be used for direct login. Meaning that the login provider selection is skipped and the configured provider is used directly (non-interactive) instead.
 
 If this option is active, a login will lead directly to the configured omniauth provider and so will a click on 'Sign in' (the drop down menu will not open).
 
@@ -713,7 +713,7 @@ OPENPROJECT_SECURITY__BADGE__DISPLAYED="false"
 
 Example: 
 
-```bash
+```shell
 OPENPROJECT_AFTER__LOGIN__DEFAULT__REDIRECT__URL="/my/page"
 ```
 

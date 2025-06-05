@@ -11,8 +11,8 @@ In OpenProject you can customize your project settings. To do this, open a proje
 
 ![Project settings module selected in left-hand project menu in OpenProject](openproject_user_guide_project_settings_module.png)
 
->  [!NOTE]
->  You need to be a project administrator in order to see and access the project settings.
+> [!NOTE]
+> You need to be a project administrator in order to see and access the project settings.
 
 ## Overview
 

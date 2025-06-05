@@ -1432,6 +1432,8 @@ uk:
               cannot_be_self_assigned: "– не можна призначити собі."
               cannot_be_in_another_project: "не може бути в іншому проекті."
               not_a_valid_parent: "зазначено невірно"
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "може бути встановлено лише для %{soonest_start} або пізнішої версії, щоб не порушувати зв'язки робочого пакету."
               cannot_be_null: "не може мати нульове значення, оскільки задано дату початку й тривалість."

@@ -38,17 +38,17 @@ You can create different kinds of providers with a different set of properties. 
 
 ### Step 1: Create the OAuth consent screen
 
-1. Navigate to your GCP console.  (https://console.cloud.google.com/)
+1. Navigate to your [GCP console](https://console.cloud.google.com/).
 2. Go to **APIs & Services** > OAuth consent screen.
 
 ![APIs and services OAuth consent screen](g1-apis-and-services-oauth-consent-screen.png)
 
 3. Create a new project and a new app or edit an existing project and an existing app, setting the following fields (should be internal):
    1. **App name** (e.g. EXAMPLE.COM SSO)
-   2. **User support email** (e.g. user-support@example.com)
+   2. **User support email** (e.g. `user-support@example.com`)
    3. **App domains** (at minimum, you must provide the Application home page - e.g. `https://example.openproject.com`)
    4. **Authorized domains** (e.g. openproject.com)
-   5. **Developer Contact information** (e.g.  developer@example.com)
+   5. **Developer Contact information** (e.g. `developer@example.com`)
    6. Click **SAVE AND CONTINUE** to proceed.
 
 ![Edit app registration](g2-edit-app-registration.png)
@@ -127,7 +127,7 @@ The steps are as follows:
 
 * For **Name**, enter *OpenProject*.
 * For **Supported account types**, select *Accounts in this organization directory only*.
-* For **Redirect URI**, select the *Web* type, and enter the URL to your OpenProject installation, followed by */auth/oidc-microsoft-entra/callback*. For instance: "https://myserver.com/auth/oidc-microsoft-entra/callback".
+* For **Redirect URI**, select the *Web* type, and enter the URL to your OpenProject installation, followed by */auth/oidc-microsoft-entra/callback*. For instance: `https://myserver.com/auth/oidc-microsoft-entra/callback`.
 
 > [!NOTE]
 >
@@ -211,8 +211,8 @@ To start creating a custom provider, please follow these steps:
 - Unless the metadata endpoint provided these values, you will have to fill out some required endpoint URLs, such as **Authorization endpoint**, **User information endpoint**, and **Token endpoint**.
 - Fill out the **Issuer** field which depends on the provider. For Keycloak, this value would be the realm URL: `http://keycloak.example.com:443/realms/{realm}`
 - Optionally fill out:
-  -  **End session endpoint**, an URL where OpenProject should redirect to terminate a user's session.
-  -  **JWKS URI**. This is the URL of the provider's  JSON Web Key Set document containing e.g., signing keys and certificates.
+  - **End session endpoint**, an URL where OpenProject should redirect to terminate a user's session.
+  - **JWKS URI**. This is the URL of the provider's  JSON Web Key Set document containing e.g., signing keys and certificates.
   - A custom icon by using a publicly available URL to fetch the logo from.
 - Click **Continue** to validate this form and move to the next step. If there are any errors in this form, they will turn red and inform you about what you need to change.
 
@@ -253,7 +253,7 @@ In the following example we request a list of ACR values. One of which must be s
 
 To specify these, you can provide a JSON. Use the following template as a starting point:
 
-```
+```json
 {
   "id_token": {
     "acr": {
@@ -274,8 +274,8 @@ You may also request non-essential claims. In the example above this indicates t
 
 For non-essential ACR claims you can also use the shorthand form of the option like this:
 
-```
-options = { ... }
+```ruby
+options = { … }
 
 options["acr_values"] = "phr phrh Multi_Factor"
 ```
@@ -386,7 +386,7 @@ Use the following configuration as a template for your configuration.
 
 
 
-```bash
+```shell
 # The name of the login button in OpenProject, you can freely set this to anything you like
 OPENPROJECT_OPENID__CONNECT_KEYCLOAK_DISPLAY__NAME="Keycloak"
 
@@ -448,7 +448,7 @@ A: This can happen if you previously created user accounts in OpenProject with t
 
 Spawn an interactive console in OpenProject. The following example shows the command for the packaged installation. See [our process control guide](https://github.com/opf/openproject/blob/dev/docs/installation-and-operations/operation/control) for information on other installation types.
 
-```
+```shell
 sudo openproject run console
 # or if using docker:
 # docker-compose run --rm web bundle exec rails console
@@ -458,7 +458,7 @@ sudo openproject run console
 
 Once in the console you can then enter the following to enable the setting and leave the console.
 
-```
+```shell
 Setting.oauth_allow_remapping_of_existing_users = true
 exit
 ```

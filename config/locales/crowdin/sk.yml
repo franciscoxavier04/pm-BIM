@@ -1438,6 +1438,8 @@ sk:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "nemôže byť previazaný na pracovný balíček nachádzajúci sa v inom projekte (musí byť povolené správcom systému)."
               not_a_valid_parent: "je neplatný."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "možno nastaviť na %{soonest_start} alebo neskôr, aby neboli narušené väzby v pracovnom balíčku."
               cannot_be_null: "can not be set to null as finish date and duration are known."

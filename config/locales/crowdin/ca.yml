@@ -1417,6 +1417,8 @@ ca:
               cannot_be_self_assigned: "no pot ser assignat a si mateix."
               cannot_be_in_another_project: "no pot estar en un altre projecte."
               not_a_valid_parent: "no és vàlid."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "només es pot posar a %{soonest_start} o més tard per tal de no es violar les relacions del paquet de treball."
               cannot_be_null: "no es pot assignar com a nul, ja que la data final i la duració són conegudes."

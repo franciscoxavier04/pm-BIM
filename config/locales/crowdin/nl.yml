@@ -1416,6 +1416,8 @@ nl:
               cannot_be_self_assigned: "kan niet aan zichzelf worden toegewezen."
               cannot_be_in_another_project: "kan niet in een ander project zijn."
               not_a_valid_parent: "is ongeldig."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "kan enkel naar %{soonest_start} worden gezet of later met de bedoeling de relaties van het werkpakket niet te schenden."
               cannot_be_null: "kan niet worden ingesteld op nul omdat de einddatum en duur bekend zijn."

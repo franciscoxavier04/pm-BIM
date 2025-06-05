@@ -1418,6 +1418,8 @@ fr:
               cannot_be_self_assigned: "ne peut pas être assigné à lui-même."
               cannot_be_in_another_project: "ne peut pas être dans un autre projet."
               not_a_valid_parent: "est invalide."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "peut uniquement valoir %{soonest_start} ou une date ultérieure afin de ne pas violer les relations du lot de travaux."
               cannot_be_null: "ne peut pas être définie à NULL car la date de fin et la durée sont connues."

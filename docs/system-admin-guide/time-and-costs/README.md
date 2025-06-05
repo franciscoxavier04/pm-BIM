@@ -16,7 +16,7 @@ To define default settings for logging time and costs navigate to *Administratio
 ### Define default time settings (Enterprise add-on)
 
 > [!NOTE] 
-> Enforcing exact time entries for time logging is an Enterprise add-on and can only be used  with [Enterprise cloud](https://www.openproject.org/docs/enterprise-guide/enterprise-cloud-guide) or [Enterprise on-premises](https://www.openproject.org/docs/enterprise-guide/enterprise-on-premises-guide). An upgrade from the free Community edition is easily possible.
+> Enforcing exact time entries for time logging is an Enterprise add-on and can only be used with [Enterprise cloud](../../enterprise-guide/enterprise-cloud-guide) or [Enterprise on-premises](../../enterprise-guide/enterprise-on-premises-guide). An upgrade from the free Community edition is easily possible.
 
 Under the *Time* tab you can define which fields are required to be fill out when logging time across all projects. 
 
@@ -65,6 +65,7 @@ In the overview list of all cost types you can define the following.
 4. Click on the name of a cost type to **edit an existing cost type**.
 5. **Set a current rate** (for the current valid from period) and press the save icon to apply it.
 6. **Lock** a cost type.
+
 > [!TIP]
 > Please note that you **can only lock but not delete** cost types.
 

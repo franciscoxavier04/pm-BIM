@@ -53,8 +53,8 @@ Enter your meeting's title, location, start and end date and time, duration, fre
 - Daily, Interval = 2 → The meeting occurs every two days.
 - Weekly, Interval = 4 → The meeting occurs every four weeks.
 
->  [!TIP]
->  For **working day-based recurrence**, the **Interval field is hidden** and always set to 1, meaning the meeting occurs on every working day without customization.
+> [!TIP]
+> For **working day-based recurrence**, the **Interval field is hidden** and always set to 1, meaning the meeting occurs on every working day without customization.
 
 **Meeting series ends** field is a select dropdown field that defines when a recurring meeting series should come to an end. The following options are possible:
 
@@ -76,18 +76,17 @@ You can always adjust the template at a later date by selecting the meeting seri
 
 ![Edit template button for recurring meetings in OpenProject](openproject_userguide_meetings_recurring_meeting_edit_template_button.png)
 
-
-
 ## Edit recurring meetings
+
 ### Edit recurring meeting series
 
 The left side menu displays all existing meeting series. Click on one will open the index page for this particular series, displaying all meeting occurrences planned for this series, and are grouped into:
 
--  **Open**: lists all meetings within the series that have been opened and can be edited. All open meetings will also be displayed under *My Meetings* section. 
+- **Open**: lists all meetings within the series that have been opened and can be edited. All open meetings will also be displayed under *My Meetings* section. 
 - **Planned**: lists all meetings within the selected meeting series that are scheduled, but not yet open.  Every time a planned meeting starts, the next one will open automatically. You can also open any of the planned  meetings manually to import the template and start editing the agenda.
 
->  [!TIP]
->  Once a meeting is open, changes to the template do not affect it. 
+> [!TIP]
+> Once a meeting is open, changes to the template do not affect it. 
 
 To edit the meeting series, select the **More** (three dots) icon on the far right side of the meeting series name and select *Edit meeting series*.
 
@@ -140,6 +139,7 @@ The backlog can be collapsed or expanded by clicking on the the title. Agenda ba
 ![Agenda backlog section title collapsed, in OpenProject recurring meetings](openproject_userguide_meetings_series_backlog_title.png)
 
 #### Add and edit items to series backlogs
+
 You can add agenda items and link work packages in the same way as you would within the meeting agenda: either by dragging and dropping via the handle on the left or by using the dropdown options of the More (three dots) icon on the right.
 
 ![Agenda backlog in recurring meetings in OpenProject](openproject_userguide_meetings_series_backlog.png)

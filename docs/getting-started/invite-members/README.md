@@ -11,7 +11,9 @@ keywords: invite members, add users
 In order to see a project and work in it, you have to be a member of a project. Therefore, you have to **add team members to a project**.
 
 <div class="glossary">
+
 **Member** is defined as a project member in a project. Project members are added in the Members module in the project menu.
+
 </div>
 
 > **Note**: If you are not a member of a project, you do not see the project in the Project selection nor in the project list.

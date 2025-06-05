@@ -94,7 +94,6 @@ You can also add agenda items to specific sections by either dragging and droppi
 This menu also lets you rename a section, move it or delete the entire section by selecting the respective option from the dropdown menu behind the **More** (⋯) icon on the right side. If a section is moved, the agenda items will move along with it. 
 
 > [!TIP]
->
 > You can also re-arrange sections by dragging and dropping sections up and down.
 
 > [!IMPORTANT]
@@ -138,8 +137,13 @@ The durations of each agenda item are automatically summed up. If that sum excee
 
 ![Meeting agenda items duration sum is greater than the meeting duration set in OpenProject](openproject_userguide_meetings_agenda_too_long.png)
 
-#### Add agenda item outcomes
+### Add agenda item outcomes
+
 During a meeting, stakeholders will often take certain decisions, add useful information or note down follow-up points. In OpenProject, these can be added as outcomes to each agenda item. To note outcomes, the meeting status has to first be set to [in progress](#mark-meeting-in-progress). Once in progress, there will be a **+ Outcome** button at the end of each agenda item. To add an outcome, simply click this button.
+
+> [!TIP]
+>
+> To be able to add *Agenda meeting outcomes*, **Manage outcomes** permission needs to be granted under [Roles and permissions](../../../system-admin-guide/users-permissions/roles-permissions/) in system administration.
 
 ![Button to add an agenda outcome in OpenProject meetings](openproject_userguide_meetings_agenda_outcome_button.png)
 
@@ -172,6 +176,7 @@ The backlog can be expanded or collapsed by clicking on the title.
 ![Agenda backlog section title collapsed, in OpenProject one-time meeting](openproject_userguide_meetings_agenda_backlog_title.png)
 
 #### Add and edit items to agenda backlogs
+
 You can add agenda items and link work packages in the same way as you would within the meeting agenda, by dragging and dropping agenda items elsewhere in the meeting or by using the dropdown options of the More (three dots) icon on the right. 
 
 ![Agenda backlog in a single meeting in OpenProject](openproject_userguide_meetings_agenda_backlog.png)
@@ -303,8 +308,7 @@ Once all outcomes are documented, you can close the meeting. To do that use the 
 
 Once all outcomes are documented, you can close the meeting. To do that use the dropdown status menu on the right side or under the meeting name. 
 
->  [!TIP]
->
+> [!TIP]
 > In a meeting marked *in progress* in addition to the status menu, you will directly see the **Close meeting** link on the right. 
 
 Closing a meeting locks the current state and makes it read-only.

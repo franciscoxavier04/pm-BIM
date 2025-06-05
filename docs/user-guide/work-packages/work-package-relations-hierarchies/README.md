@@ -111,7 +111,7 @@ There are **four ways to add or create a child work package**:
 
    ![Add a child in a work package table](openproject_user_guide_wp_table_add_child.png)
 
-4.  You can add a child work package directly under the table of related work packages. To do that you first need to [include a table of related work packages to work package forms (Enterprise add-on)](../../../system-admin-guide/manage-work-packages/work-package-types/#add-table-of-related-work-packages-to-a-work-package-form-enterprise-add-on). 
+4. You can add a child work package directly under the table of related work packages. To do that you first need to [include a table of related work packages to work package forms (Enterprise add-on)](../../../system-admin-guide/manage-work-packages/work-package-types/#add-table-of-related-work-packages-to-a-work-package-form-enterprise-add-on). 
 
    ![A table of related work packages in OpenProject](open_project_admin_related_wp_table.png)
 
@@ -149,14 +149,12 @@ Alternatively you can select the **Delete relation** option next to the parent r
 
 After adding the parent and child work packages they are listed in the *Relations* tab. Related work packages are grouped by the type of relation into respective sections. 
 
->  [!TIP]
->
+> [!TIP]
 > Dates of the related work packages are only shown for date-based relations: children, predecessor and successor. 
 
 ![Work package relations displayed in the Relations tab in OpenProject](openproject_user_guide_wp_relations_tab_overview.png)
 
 > [!NOTE]
->
 > If you do not have necessary permissions (for example if only one specific work package was shared with you, but not the entire project), you will be able to see that a work package has a relation, and the dates of that related work package, but not other details of that related work package.
 
 ![Example of work package relations displayed under Relations tab for a user with limited permissions in OpenProject](openproject_user_guide_ghost_relations.png)

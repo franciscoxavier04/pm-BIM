@@ -96,6 +96,7 @@ You can copy a direct link to a specific work package comment in OpenProject. To
 ![Copy a link to a work package comment in OpenProject](openproject_user_guide_wp_edit_comment_copy_link.png)
 
 ### Internal comments (Enterprise add-on)
+
 > [!NOTE]
 > Internal comments are an Enterprise add-on and can only be used with [Enterprise cloud](../../../enterprise-guide/enterprise-cloud-guide/) or [Enterprise on-premises](../../../enterprise-guide/enterprise-on-premises-guide/). An upgrade from the free Community edition is easily possible.
 
@@ -155,14 +156,11 @@ At the configured date and time, you will receive the reminder in [Notification 
 
 ![Work package reminder in OpenProject notification center](openproject_user_guide_wp_set_reminder_notification.png)
 
->  [!NOTE] 
->
+> [!NOTE] 
 > If multiple notifications exist for a single work package, the reminder will take precedence, showing the reminder note at the bottom of the  page. 
->
 > In case a work package has both a reminder and date alert  notification set up, then the date alert is combined with the reminder note, so that both are visible.
 
 > [!TIP]
->
 > You can set to receive immediate notifications via e-mail for personal reminders. To do that, adjust your [account settings](../../account-settings/#email-reminders) accordingly.
 
 ## Watchers
@@ -170,7 +168,9 @@ At the configured date and time, you will receive the reminder in [Notification 
 ### How to add watchers to a work package
 
 <div class="glossary">
+
 **Watchers** can be added to a work package in order to notify members about changes. They will receive notifications according to their notification settings if changes are made to the respective work package.
+
 </div>
 
 To add watchers, open the work package [detailed view](../../work-packages/work-package-views/#full-screen-view), select the *Watchers* tab on the right hand side and choose the members you want to add with the drop-down menu or by starting to type their name.

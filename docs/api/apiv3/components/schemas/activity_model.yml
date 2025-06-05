@@ -20,6 +20,9 @@ properties:
     type: array
     items:
       $ref: './formattable.yml'
+  internal:
+    type: boolean
+    description: Whether this activity is internal (only visible to users with view_internal_comments permission)
   createdAt:
     type: string
     format: date-time
@@ -40,9 +43,9 @@ properties:
           - $ref: './work_package_model.yml'
           - description: |-
               The work package this activity belongs to
-              
+
               # Conditions
-              
+
               Only embedded when the `journable` of the activity is a work package
   _links:
     type: object
@@ -87,7 +90,7 @@ properties:
 
               # Conditions
 
-              **Permissions**: 
+              **Permissions**:
               - `add_work_package_comments`
               - for internal comments: `add_internal_comments`
 example:

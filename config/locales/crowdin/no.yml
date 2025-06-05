@@ -1419,6 +1419,8 @@
               cannot_be_self_assigned: "kan ikke tilordnes seg selv."
               cannot_be_in_another_project: "kan ikke være i et annet prosjekt."
               not_a_valid_parent: "er ugyldig."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "kan bare settes til %{soonest_start} eller senere, slik at den ikke bryter arbeidspakkens relasjoner."
               cannot_be_null: "kan ikke settes til null da sluttdato og varighet er kjent."

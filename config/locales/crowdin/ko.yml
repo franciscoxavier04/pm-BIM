@@ -1411,6 +1411,8 @@ ko:
               cannot_be_self_assigned: "- 자신에게 할당할 수 없습니다."
               cannot_be_in_another_project: "다른 프로젝트에 포함될 수 없음"
               not_a_valid_parent: "은(는) 올바르지 않은 값입니다"
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "은(는) %{soonest_start} 이상으로만 설정할 수 있습니다. 작업 패키지의 관계를 위반하지 않도록 하기 위해서입니다."
               cannot_be_null: "완료 날짜와 기간을 알고 있으므로 null로 설정할 수 없습니다."

@@ -1417,6 +1417,8 @@ pt-PT:
               cannot_be_self_assigned: "não pode ser atribuído a ele mesmo."
               cannot_be_in_another_project: "não pode ser em outro projeto."
               not_a_valid_parent: "é inválido."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "só pode ser definida como %{soonest_start} ou posterior de modo a não violar as relações do pacote de trabalho."
               cannot_be_null: "não pode ser definido como nulo porque a data de término e a duração são conhecidas."

@@ -121,7 +121,12 @@ RSpec.describe OpenIDConnect::UserTokens::TokenRequest, :webmock do
     it "uses a properly formatted request body" do
       subject
       expect(WebMock).to have_requested(:post, provider.token_endpoint)
-        .with(body: { grant_type: OpenIDConnect::Provider::TOKEN_EXCHANGE_GRANT_TYPE, subject_token: token, audience: })
+        .with(body: {
+                grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+                subject_token: token,
+                subject_token_type: "urn:ietf:params:oauth:token-type:access_token",
+                audience:
+              })
     end
 
     it "authenticates the request via HTTP Basic auth using Client ID and Client Secret" do

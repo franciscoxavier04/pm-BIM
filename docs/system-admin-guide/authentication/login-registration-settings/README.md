@@ -25,9 +25,8 @@ Under the *Login and SSO* tab you can adjust following settings:
 
 1. Select a **direct login SSO provider**. If this option is active, login requests will be redirected to the configured Omniauth provider. This will disable the login dropdown and sign-in page. 
 
-   > [!NOTE]
-   >
-   > Unless you also disable password logins, with this option enabled, users can still log in internally by visiting internal login page, for example `https://yourinstancename.openproject.com/login/internal` login page.
+> [!NOTE]
+> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting internal login page, for example `https://yourinstancename.openproject.com/login/internal` login page.
 
 2. Enable or disable the **autologin option**. This allows a user to remain logged in, even if they leave the site. If this option is activated, the “Stay signed in” option will appear on the login screen to be selected.
 
@@ -58,24 +57,22 @@ Under the *Registration* tab you can adjust following settings:
 
    a) **Account activation by email** - users can register on their own. They will receive an activation email and will need to activate their account after confirming  their email address. 
 
-   > [!WARNING]
-   >
-   > Administrators have no moderation control over this  activation process if this method is selected.
+> [!WARNING]
+> Administrators have no moderation control over this  activation process if this method is selected.
    
    b) **Manual account activation** - users can register on their own. However, an administrator (or a user with the global permission to create or manage  users) needs to activate them.
    
    c) **Automatic account activation** - users can register on their own. Their accounts are immediately active  without further action. 
    
-   >  [!WARNING]
-   >
-   > Administrators have no moderation control over this  activation process if this method is selected.
+> [!WARNING]
+> Administrators have no moderation control over this  activation process if this method is selected.
 
 > [!NOTE]
 > By default, self-registration is only applied to internal users (logging in with username and password). If you have an identity provider such as LDAP, SAML or OpenID Connect, use the respective settings in their configuration to control which users are applicable for automatic user creation.
 
 3. Define after how many days the **activation email sent to new users will expire**. Afterwards, you will have the possibility to [re-send the activation email](../../users-permissions/users/#resend-user-invitation-via-email) via the user settings.
 
-3. Choose for which **language** you want to define **the footer displayed at the bottom of the registration page** and formulate that footer text.
+4. Choose for which **language** you want to define **the footer displayed at the bottom of the registration page** and formulate that footer text.
 
 
 ![Registration tab under Login and Registration section of authentication settings in OpenProject administration](openproject_system_admin_guide_authentication_settings_registration_tab.png)

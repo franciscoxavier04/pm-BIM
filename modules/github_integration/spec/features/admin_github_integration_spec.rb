@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,33 +28,14 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module WithReversibleState
-  extend ActiveSupport::Concern
+require "spec_helper"
 
-  included do
-    attr_reader :state
+RSpec.describe "Admin GitHub Integration page" do
+  current_user { create(:admin) }
 
-    around_call :assign_state
+  it "renders the page" do
+    visit deploy_targets_path
 
-    ##
-    # Reuse or append state to the service
-    def with_state(state = {})
-      @state = ::Shared::ServiceState.build(state)
-      self
-    end
-
-    ##
-    # Access to the shared service state
-    def state
-      @state ||= ::Shared::ServiceState.build
-    end
-
-    ##
-    # Assign state to the service result
-    def assign_state
-      yield.tap do |service_result|
-        service_result.state = state
-      end
-    end
+    expect(page).to have_content("GitHub Integration")
   end
 end
