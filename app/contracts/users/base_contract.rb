@@ -62,6 +62,9 @@ module Users
 
     def reduce_writable_attributes(attributes)
       super.tap do |writable|
+        # `password` and `identity_url` are not regular attributes so they bypass
+        # attribute writable checks. therewore they must be added to the list
+        # of writable attributes under certain conditions.
         writable << "password" if password_writable?
         writable << "identity_url" if identity_url_writable?
       end
@@ -69,9 +72,6 @@ module Users
 
     private
 
-    ##
-    # Password is not a regular attribute so it bypasses
-    # attribute writable checks
     def password_writable?
       user.admin? || user.id == model.id
     end

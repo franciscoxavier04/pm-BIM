@@ -36,6 +36,7 @@ class MoveUsersIdentityUrlToUserAuthProviderLinks < ActiveRecord::Migration[8.0]
       t.string :external_id, null: false
       t.timestamps null: false
       t.index %i[user_id auth_provider_id], unique: true
+      t.index %i[auth_provider_id external_id], unique: true
     end
 
     reversible do |direction|
@@ -67,6 +68,5 @@ class MoveUsersIdentityUrlToUserAuthProviderLinks < ActiveRecord::Migration[8.0]
         end
       end
     end
-    remove_column :users, :identity_url, :string
   end
 end

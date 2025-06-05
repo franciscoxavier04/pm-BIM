@@ -73,9 +73,7 @@ FactoryBot.define do
         raise "slug or external_id is blank" if slug.blank? || external_id.blank?
 
         auth_provider = AuthProvider.find_by(slug:) || create(:oidc_provider, slug:)
-        user.user_auth_provider_links.create!(auth_provider:,
-                                              external_id: external_id)
-
+        user.user_auth_provider_links.create!(auth_provider:, external_id:)
       end
     end
 

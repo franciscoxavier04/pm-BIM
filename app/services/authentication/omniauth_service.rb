@@ -37,7 +37,6 @@ module Authentication
                   :controller,
                   :contract,
                   :user_attributes,
-                  :identity_url,
                   :user
 
     delegate :session, to: :controller
@@ -122,7 +121,6 @@ module Authentication
     def update_user_from_omniauth!(additional_user_params)
       # Find or create the user from the auth hash
       self.user_attributes = build_omniauth_hash_to_user_attributes.merge(additional_user_params)
-      self.identity_url = user_attributes[:identity_url]
       self.user = lookup_or_initialize_user
 
       # Assign or update the user with the omniauth attributes
@@ -153,8 +151,8 @@ module Authentication
       return unless token
 
       token.user.tap do |user|
-        if identity_url.present?
-          slug, external_id = identity_url.split(":", 2)
+        if user_attributes[:identity_url].present?
+          slug, external_id = user_attributes[:identity_url].split(":", 2)
           link = user.user_auth_provider_links.find_or_initialize_by(auth_provider: AuthProvider.find_by!(slug:))
           link.external_id = external_id
           link.save!
@@ -170,7 +168,7 @@ module Authentication
       if developer_provider?
         User.find_by(mail: auth_hash[:uid])
       else
-        UserAuthProviderLink.with_identity_url(identity_url).first&.user
+        UserAuthProviderLink.with_identity_url(user_attributes[:identity_url]).first&.user
       end
     end
 
@@ -294,7 +292,7 @@ module Authentication
     # Indicates whether OmniAuth::Strategies::Delevoper strategy is used.
     # https://github.com/omniauth/omniauth/blob/0bcfd5b25bf946422cd4d9c40c4f514121ac04d6/lib/omniauth/strategies/developer.rb
     # if true:
-    #   identity_url should no be set i
+    #   identity_url should not be set and
     #   user should be found by mail, because mail plays uid role in developer strategy
     def developer_provider?
       Rails.env.local? && auth_hash[:provider] == "developer"

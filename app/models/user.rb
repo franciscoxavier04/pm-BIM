@@ -97,6 +97,7 @@ class User < Principal
   has_many :reminders, foreign_key: "creator_id", dependent: :destroy, inverse_of: :creator
   has_many :remote_identities, dependent: :destroy
   has_many :user_auth_provider_links, dependent: :destroy
+  has_many :auth_providers, through: :user_auth_provider_links
 
   # Users blocked via brute force prevention
   # use lambda here, so time is evaluated on each query
@@ -109,6 +110,8 @@ class User < Principal
          :watcher_recipients,
          :with_time_zone,
          :having_reminder_mail_to_send
+
+  self.ignored_columns += [:identity_url]
 
   def self.create_blocked_scope(scope, blocked)
     scope.where(blocked_condition(blocked))

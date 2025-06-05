@@ -83,7 +83,7 @@ allOf:
           - 'null'
         description: |-
           User's identity_url for OmniAuth authentication.
-          **Deprecated:** It will be removed in the near future. Use `UserAuthProviderLink` API instead.
+          **Deprecated:** It will be removed in the near future.
     
           # Conditions
     

@@ -30,6 +30,7 @@ class AuthProvider < ApplicationRecord
   belongs_to :creator, class_name: "User"
 
   has_many :user_auth_provider_links, dependent: :destroy
+  has_many :users, through: :user_auth_provider_links
 
   validates :display_name, presence: true
   validates :display_name, uniqueness: true
@@ -55,10 +56,6 @@ class AuthProvider < ApplicationRecord
 
   def callback_url
     URI.join(auth_url, "callback").to_s
-  end
-
-  def to_s
-    slug
   end
 
   protected
