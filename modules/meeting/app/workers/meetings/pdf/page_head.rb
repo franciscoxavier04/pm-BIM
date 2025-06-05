@@ -79,14 +79,11 @@ module Meetings::PDF
     end
 
     def meetings_state_color
-      case meeting.state
-      when "in_progress"
-        Meetings::Statuses::IN_PROGRESS.color
-      when "closed"
-        Meetings::Statuses::CLOSED.color
-      else
-        Meetings::Statuses::OPEN.color
-      end
+      state_color = Meetings::Statuses::AVAILABLE.find { |it| it.id == meeting.state }
+      return state_color.color if state_color
+
+      # Fallback to the default color if the state is not found
+      Meetings::Statuses::OPEN.color
     end
 
     def meeting_title
