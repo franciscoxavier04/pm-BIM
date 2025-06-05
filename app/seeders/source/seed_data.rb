@@ -36,7 +36,7 @@ class Source::SeedData
 
   def store_reference(reference, record)
     return if reference.nil?
-    if registry.key?(reference)
+    if reference_exists?(reference)
       raise ArgumentError, "an object with reference #{reference.inspect} is already registered"
     end
 
