@@ -114,6 +114,25 @@ Further tools can be used for reporting and metrics purposes with OpenProject:
  
 ![graph-for-bugs-overview](graph-for-bugs-overview.png)
 
+### 1.5 Test case evolution: reusability and standardization
+
+As test cases evolve, we need to track changes and reuse them across different cycles. There are several possibilities to achieve this:
+* Duplicating work packages, copying projects, creating projects from template, moving work packages to another projects are all good methods for reusing test cases for new test cycles or for creating variations.
+* Manual history can be tracked on the activity/comment log for any manual changes to test case steps.
+* Naming conventions can be implemented (e.g., "TC-Login-ValidCredentials-v1.0") to help manage variations.
+
+Speaking of naming conventions, there is a way to enforce consistency and standardization within OpenProject through `automatically generated subjects`. Administrators can define specific patterns for the subject (name) of work packages, including those designated as `Test Case` / `Test Run` types. This means every new test case/test run created will automatically follow a predefined structure. This way of working eliminates manual errors, enhances searchability and improves filtering. 
+
+The subject pattern can incorporate dynamic attributes from the test case/test run itself (or its parent). In this example, `Test run`'s subject is derived from 2 fields: `Parent's subject` and `Version`.
+
+![Automatically generated subject before saving](automatically-generated-subject-before-saving.png)
+
+Such subject is created upon save and is not manually editable.
+
+![Automatically generated subject after saving](automatically-generated-subject-after-saving.png)
+
+Automatically generated subjects reduce manual effort and ensure that the name remains accurate and up-to-date if an attribute referenced in the subject pattern changes.
+
 ## 2. Configuration guidance
 
 This section provides guidance on how to configure OpenProject for test management. It assumes familiarity with OpenProject administration features.
