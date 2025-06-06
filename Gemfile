@@ -225,7 +225,7 @@ gem "appsignal", "~> 3.10.0", require: false
 
 # Yabeda integration
 gem "yabeda-activerecord"
-gem "yabeda-prometheus-mmap"
+gem "yabeda-prometheus-mmap", require: false
 gem "yabeda-puma-plugin"
 gem "yabeda-rails"
 
