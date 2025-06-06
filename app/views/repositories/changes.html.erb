@@ -27,7 +27,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<%= call_hook(:view_repositories_show_contextual, { repository: @repository, project: @project }) %>
+<%= call_hook(:view_repositories_show_contextual, { repository: @repository, project: @project.id }) %>
 <%= render partial: "repository_header", locals: { empty: false } %>
 
 <p><%= render partial: "link_to_functions" %></p>
