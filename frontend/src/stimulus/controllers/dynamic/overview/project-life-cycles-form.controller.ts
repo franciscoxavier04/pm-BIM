@@ -109,17 +109,19 @@ export default class ProjectLifeCyclesFormController extends FormPreviewControll
     const dates = event.detail.dates;
 
     if (dates.length === 1) {
-      if ((this.highlightedField === this.finishDateTarget) || this.startDateTarget.disabled) {
-        this.finishDateTarget.value = this.dateToIso(dates[0]);
-        this.highlightField(this.startDateTarget, true);
-      } else {
-        this.startDateTarget.value = this.dateToIso(dates[0]);
-        this.highlightField(this.finishDateTarget, true);
-      }
+      const assignFinish = (this.highlightedField === this.finishDateTarget) || this.startDateTarget.disabled;
+
+      const assignTarget = assignFinish ? this.finishDateTarget : this.startDateTarget;
+      assignTarget.value = this.dateToIso(dates[0]);
+
+      const highlightTarget = assignFinish && !this.startDateTarget.disabled ? this.startDateTarget : this.finishDateTarget;
+      this.highlightField(highlightTarget, true);
     } else {
       this.startDateTarget.value = this.dateToIso(dates[0]);
       this.finishDateTarget.value = this.dateToIso(dates[1]);
-      this.highlightField(this.startDateTarget);
+
+      const highlightTarget = this.startDateTarget.disabled ? this.finishDateTarget : this.startDateTarget;
+      this.highlightField(highlightTarget, true);
     }
 
     this.updateFlatpickrCalendar();
