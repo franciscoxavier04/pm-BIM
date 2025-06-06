@@ -48,15 +48,19 @@ module ProjectPhases
     def reschedule_phases(phases:, from:)
       phases.each do |phase|
         next unless phase.active?
-        next unless phase.date_range_set?
-        next unless phase.duration&.positive? # not updated using service that sets duration
 
-        date_range = calculate_date_range(from, duration: phase.duration)
-        next unless date_range
+        if phase.date_range_set?
+          next unless phase.duration&.positive? # not updated using service that sets duration
 
-        next unless phase.update(start_date: date_range[0], finish_date: date_range[1])
+          date_range = calculate_date_range(from, duration: phase.duration)
+          next unless date_range
 
-        from = date_range[1] + 1
+          next unless phase.update(start_date: date_range[0], finish_date: date_range[1])
+
+          from = date_range[1] + 1
+        elsif phase.start_date.present?
+          phase.update(start_date: from)
+        end
       end
     end
 

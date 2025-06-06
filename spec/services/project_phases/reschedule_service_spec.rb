@@ -151,11 +151,11 @@ RSpec.describe ProjectPhases::RescheduleService, type: :model do
         ]
       end
 
-      it "skips them" do
+      it "reschedules only the ones with a start_date present" do
         expect(service.call(phases:, from:)).to be_success
 
         expect(phases[0]).to have_attributes(start_date: nil, finish_date: date, duration: 5)
-        expect(phases[1]).to have_attributes(start_date: date, finish_date: nil, duration: 5)
+        expect(phases[1]).to have_attributes(start_date: from, finish_date: nil, duration: 5)
         expect(phases[2]).to have_attributes(start_date: nil, finish_date: nil, duration: 5)
         expect(phases[3]).to have_attributes(start_date: from, finish_date: from + 13, duration: 10)
       end
