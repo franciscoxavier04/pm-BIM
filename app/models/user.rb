@@ -111,8 +111,6 @@ class User < Principal
          :with_time_zone,
          :having_reminder_mail_to_send
 
-  self.ignored_columns += [:identity_url]
-
   def self.create_blocked_scope(scope, blocked)
     scope.where(blocked_condition(blocked))
   end
