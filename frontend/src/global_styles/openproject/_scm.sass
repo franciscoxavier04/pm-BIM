@@ -97,12 +97,39 @@ li.change
 
 .repository-checkout-container
   width: 50%
+  display: flex
+
+.repository-checkout-input-group
+  display: flex
+
+.repository-checkout-input-group--affix
+  background: var(--button-default-bgColor-rest)
+  border: 1px solid var(--button-default-borderColor-rest)
+  color: var(--body-font-color)
+  border-radius: 2px
+  white-space: nowrap
+  display: flex
+  align-items: center
+  padding: 0 5px
+  height: 36px
+
+  &.-prepend
+    border-right: none !important
+
+  &.-append
+    border-left: none !important
 
 .revisions-toolbar-container
   display: flex
   gap: 0.5rem
   list-style: none
   margin: 0
+
+.repository--checkout-instructions-toggle
+  margin-left: 0.5rem
+  display: block
+  a
+    height: 36px
 
 table.filecontent
   border: 1px solid var(--borderColor-default)
