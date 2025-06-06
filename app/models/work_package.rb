@@ -55,7 +55,7 @@ class WorkPackage < ApplicationRecord
   belongs_to :assigned_to, class_name: "Principal", optional: true
   belongs_to :responsible, class_name: "Principal", optional: true
   belongs_to :version, optional: true
-  belongs_to :project_phase, class_name: "Project::Phase", optional: true
+  belongs_to :project_phase_definition, class_name: "Project::PhaseDefinition", optional: true
   belongs_to :priority, class_name: "IssuePriority"
   belongs_to :category, class_name: "Category", optional: true
 
@@ -127,7 +127,7 @@ class WorkPackage < ApplicationRecord
     where(author_id: author.id)
   }
 
-  scopes :covering_dates_and_days_of_week,
+  scopes :covering_dates_or_days_of_week,
          :allowed_to,
          :for_scheduling,
          :include_derived_dates,
@@ -335,7 +335,16 @@ class WorkPackage < ApplicationRecord
   end
 
   def duration_in_hours
-    duration ? duration * 24 : nil
+    duration * 24 if duration
+  end
+
+  def project_phase
+    # This might look less efficient than using
+    # ProjectPhase.find_by(definition_id: project_phase_definition_id, project_id: project_id)
+    # as more phases are loaded.
+    # However, the expected number of phases per project is rather small and this way, a project
+    # loaded for multiple work packages can be reused.
+    project&.phases&.detect { |phase| phase.definition_id == project_phase_definition_id }
   end
 
   # aliasing subject to name

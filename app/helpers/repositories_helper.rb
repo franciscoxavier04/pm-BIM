@@ -40,7 +40,7 @@ module RepositoriesHelper
   ##
   # Format revision commits with plain formatter
   def format_revision_text(commit_message)
-    format_text(commit_message, format: "plain")
+    format_text(commit_message, format: :plain)
   end
 
   def truncate_at_line_break(text, length = 255)
@@ -116,9 +116,9 @@ module RepositoriesHelper
   def render_changes_tree(tree)
     return "" if tree.nil?
 
-    output = "<ul>"
+    output = +"<ul>"
     tree.keys.sort.each do |file|
-      style = "change"
+      style = +"change"
       text = File.basename(file)
       if s = tree[file][:s]
         style << " folder"

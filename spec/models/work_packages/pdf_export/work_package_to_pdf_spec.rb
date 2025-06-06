@@ -96,6 +96,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
   let(:version) { create(:version, project:) }
   let(:export_time) { DateTime.new(2023, 6, 30, 23, 59) }
   let(:export_time_formatted) { format_time(export_time, include_date: true) }
+  let(:export_date_formatted) { format_date(export_time) }
   let(:image_path) { Rails.root.join("spec/fixtures/files/image.png") }
   let(:priority) { create(:priority_normal) }
   let(:image_attachment) { Attachment.new author: user, file: File.open(image_path) }
@@ -226,6 +227,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
       "Priority", "Normal",
       "Version", work_package.version,
       "Category", work_package.category,
+      "Project phase",
       "Date", "05/30/2024 - 03/13/2025",
       "Other",
       "Work Package Custom Field Boolean", "Yes",
@@ -277,7 +279,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
           "amet", ", consetetur sadipscing elitr.", " ", "@OpenProject Admin",
           "Image Caption",
           "Foo",
-          "1", export_time_formatted, project.name
+          "1", export_date_formatted, project.name
         ].flatten.join(" ")
         expect(result).to eq(expected_result)
         expect(result).not_to include("DisabledCustomField")
@@ -363,7 +365,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
         expected_result = [
           *expected_details,
           label_title(:description),
-          "1", export_time_formatted, project.name,
+          "1", export_date_formatted, project.name,
           "Work package attributes and labels",
           supported_work_package_embeds.map do |embed|
             [WorkPackage.human_attribute_name(
@@ -381,7 +383,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
           "Access denied:  ",
           "[#{I18n.t('export.macro.error', message:
             I18n.t('export.macro.resource_not_found', resource: "WorkPackage #{forbidden_work_package.id}"))}]",
-          "2", export_time_formatted, project.name
+          "2", export_date_formatted, project.name
         ].flatten.join(" ")
         expect(result).to eq(expected_result)
       end
@@ -453,10 +455,10 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
             ), embed[1]]
           end,
           "Custom field boolean", I18n.t(:general_text_Yes),
+
+          "1", export_date_formatted, project.name,
+
           "Custom field rich text", "[#{I18n.t('export.macro.rich_text_unsupported')}]",
-
-          "1", export_time_formatted, project.name,
-
           "Custom field hidden",
           "No replacement of:",
           "projectValue:1:status",
@@ -472,7 +474,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
             I18n.t('export.macro.resource_not_found', resource: "Project #{forbidden_project.id}"))}]  ",
           "Access denied by identifier:", " ", "[Macro error, resource not found: Project", "forbidden-project]",
 
-          "2", export_time_formatted, project.name
+          "2", export_date_formatted, project.name
         ].flatten.join(" ")
       end
 

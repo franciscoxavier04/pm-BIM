@@ -274,8 +274,8 @@ RSpec.describe "Admin Edit File storage",
         expect(page).to have_test_selector("label-host_name_configured-status", text: "Completed")
         expect(page).to have_test_selector("storage-description", text: "Nextcloud - #{storage.name} - #{storage.host}")
 
-        # Storage audience
-        expect(page).to have_test_selector("storage-audience-label", text: "Storage Audience")
+        # Token Exchange
+        expect(page).to have_test_selector("storage-audience-label", text: "Token Exchange")
         expect(page).to have_test_selector("label-storage_audience_configured-status", text: "Incomplete")
         expect(page).to have_test_selector("storage-audience-description", text: "No audience has been configured")
 
@@ -299,10 +299,10 @@ RSpec.describe "Admin Edit File storage",
         end
       end
 
-      aggregate_failures "Storage Audience" do
+      aggregate_failures "Token Exchange" do
         find_test_selector("storage-edit-storage-audience-button").click
         within_test_selector("storage-audience-form") do
-          expect(page).to have_checked_field("Define storage audience manually")
+          expect(page).to have_checked_field("Manually specify audience for which to exchange access token")
           expect(page).to have_field("Storage Audience")
 
           click_on "Save and continue"
@@ -310,38 +310,41 @@ RSpec.describe "Admin Edit File storage",
 
           fill_in "Storage Audience", with: "schmaudience"
 
-          choose("Use first access token obtained by identity provider")
+          choose("Use access token obtained during user log in")
           expect(page).to have_no_field("Storage Audience")
-          choose("Define storage audience manually")
+          choose("Manually specify audience for which to exchange access token")
           expect(page).to have_field("Storage Audience", with: "schmaudience")
 
-          click_on "Save and continue"
-        end
-
-        expect(page).to have_test_selector("label-storage_audience_configured-status", text: "Completed")
-        expect(page).to have_test_selector("storage-audience-description", text: "Obtaining tokens for audience \"schmaudience\"")
-
-        find_test_selector("storage-edit-storage-audience-button").click
-        within_test_selector("storage-audience-form") do
-          expect(page).to have_checked_field("Define storage audience manually")
-          expect(page).to have_field("Storage Audience", with: "schmaudience")
-
-          choose("Use first access token obtained by identity provider")
           click_on "Save and continue"
         end
 
         expect(page).to have_test_selector("label-storage_audience_configured-status", text: "Completed")
         expect(page).to have_test_selector(
           "storage-audience-description",
-          text: "Using first access token received by identity provider, regardless of audience."
+          text: "Exchanging tokens for audience \"schmaudience\""
         )
 
         find_test_selector("storage-edit-storage-audience-button").click
         within_test_selector("storage-audience-form") do
-          expect(page).to have_checked_field("Use first access token obtained by identity provider")
+          expect(page).to have_checked_field("Manually specify audience for which to exchange access token")
+          expect(page).to have_field("Storage Audience", with: "schmaudience")
+
+          choose("Use access token obtained during user log in")
+          click_on "Save and continue"
+        end
+
+        expect(page).to have_test_selector("label-storage_audience_configured-status", text: "Completed")
+        expect(page).to have_test_selector(
+          "storage-audience-description",
+          text: "Using access token obtained by identity provider during login, regardless of audience."
+        )
+
+        find_test_selector("storage-edit-storage-audience-button").click
+        within_test_selector("storage-audience-form") do
+          expect(page).to have_checked_field("Use access token obtained during user log in")
           expect(page).to have_no_field("Storage Audience")
 
-          choose("Define storage audience manually")
+          choose("Manually specify audience for which to exchange access token")
           expect(page).to have_field("Storage Audience", with: "")
         end
       end

@@ -433,7 +433,6 @@ zh-CN:
     label_filename: "文件"
     label_filesize: "大小"
     label_general: "通用"
-    label_global_roles: "全局角色"
     label_greater_or_equal: ">="
     label_group: "组"
     label_group_by: "分组按照"
@@ -1037,6 +1036,12 @@ zh-CN:
           new: "设置提醒"
           edit: "编辑提醒"
         subtitle: "您将在所选时间收到此工作包的通知。"
+        presets:
+          tomorrow: "明天"
+          three_days: "3天内"
+          week: "一周内"
+          month: "一个月内"
+          custom: "在某个特定日期/时间"
       scheduling:
         is_parent: "此工作包的日期会自动从其子项推导出。可激活“手动计划”来设置日期。"
         is_switched_from_manual_to_automatic: "由于与其他工作包的关系，在从手动计划切换为自动计划后，此工作包的日期可能需要重新计算。"

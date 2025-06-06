@@ -211,10 +211,7 @@ module WorkPackages
           data[:focus] = "true"
         end
 
-        {
-          data: data,
-          aria: { live: :polite, atomic: true }
-        }
+        { data: data }
       end
 
       def single_date_field_button_link(focused_field)

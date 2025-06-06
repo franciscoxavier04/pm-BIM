@@ -53,6 +53,13 @@ module Pages
       visit path(tab)
     end
 
+    def select_from_context_menu(item)
+      find("button[wpsinglecontextmenu]").click
+      within(".op-context-menu--overlay") do
+        click_link item
+      end
+    end
+
     def relations_tab
       Components::WorkPackages::Relations.new(work_package)
     end

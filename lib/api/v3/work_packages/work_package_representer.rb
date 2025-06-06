@@ -487,6 +487,56 @@ module API
 
         associated_resource :project
 
+        resource :project_phase,
+                 link_cache_if: -> { any_phase_active_in_project? && view_project_phase_allowed? },
+                 link: ->(*) {
+                   if phase_set_and_active?
+                     {
+                       href: api_v3_paths.project_phase(project_phase.id),
+                       title: project_phase.name
+                     }
+                   else
+                     {
+                       href: nil,
+                       title: nil
+                     }
+                   end
+                 },
+                 getter: ->(*) do
+                   if embed_links && phase_set_and_active? && view_project_phase_allowed?
+                     API::V3::ProjectPhases::ProjectPhaseRepresenter.create(
+                       project_phase, current_user:
+                     )
+                   end
+                 end,
+                 setter: ->(fragment:, **) do
+                   link = ::API::Decorators::LinkObject.new(represented,
+                                                            path: :project_phases,
+                                                            property_name: :project_phase,
+                                                            setter: :project_phase_id=)
+
+                   link.from_hash(fragment)
+
+                   represented.project_phase_definition_id = Project::Phase
+                                                               .where(id: represented.project_phase_id)
+                                                               .pick(:definition_id)
+                                                               .to_s
+                 end
+
+        link :projectPhaseDefinition do
+          if phase_set_and_active? && view_project_phase_allowed?
+            {
+              href: api_v3_paths.project_phase_definition(represented.project_phase_definition_id),
+              title: project_phase.name
+            }
+          else
+            {
+              href: nil,
+              title: nil
+            }
+          end
+        end
+
         associated_resource :status
 
         associated_resource :author,
@@ -630,6 +680,11 @@ module API
           @view_budgets_allowed ||= current_user.allowed_in_project?(:view_budgets, represented.project)
         end
 
+        def view_project_phase_allowed?
+          @view_project_phase_allowed ||= current_user.allowed_in_project?(:view_project_phases, represented.project) &&
+            OpenProject::FeatureDecisions.stages_and_gates_active?
+        end
+
         def export_work_packages_allowed?
           @export_work_packages_allowed ||=
             current_user.allowed_in_work_package?(:export_work_packages, represented)
@@ -638,6 +693,18 @@ module API
         def add_work_packages_allowed?
           @add_work_packages_allowed ||=
             current_user.allowed_in_project?(:add_work_packages, represented.project)
+        end
+
+        def project_phase
+          @project_phase ||= represented.project_phase
+        end
+
+        def phase_set_and_active?
+          project_phase&.active?
+        end
+
+        def any_phase_active_in_project?
+          represented.project.phases.any?(&:active?)
         end
 
         def relations

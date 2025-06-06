@@ -417,12 +417,6 @@ uk:
         new_label: "Новий пріоритет"
     status:
       button_edit: Змінити статус проєкту
-  project_phase:
-    working_days_count:
-      one: "Тривалість: %{count} робочий день"
-      few: "Тривалість: %{count} робочі дні"
-      many: "Тривалість: %{count} робочих днів"
-      other: "Тривалість: %{count} робочого дня"
   lists:
     create:
       success: "Змінений список збережено як новий"
@@ -702,6 +696,7 @@ uk:
         automatic: "Автоматично"
         manual: "Вручну"
       show_relations: "Показати зв’язки"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Вкладки вибору даних"
         children: "Дочірні елементи"
@@ -772,7 +767,9 @@ uk:
     label_add_description: "Додати опис"
     lag:
       subject: "Затримка"
-      caption: "Мінімальна кількість робочих днів між двома пакетами робіт."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Новий пакет робіт створено й додано як дочірній"
       label_relates_singular: "зв’язано з"
@@ -988,6 +985,10 @@ uk:
       project/phase:
         date_range: "Діапазон дат"
         definition: "Визначення"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Назва"
         color: "Колір"
@@ -1299,10 +1300,12 @@ uk:
               blank: "Виберіть проєкт."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "дата початку має передувати даті закінчення."
-              non_continuous_dates: "не може передувати даті закінчення попереднього етапу."
-              incomplete: "неповний."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1351,10 +1354,6 @@ uk:
             from_id:
               error_not_found: "не знайдено або приховано."
               error_readonly: "не можна змінити для наявних зв’язків."
-            lag:
-              greater_than_or_equal_to:
-                zero: "не може мати від’ємне значення."
-              less_than_or_equal_to: "має зависоке значення."
         repository:
           not_available: "Постачальник SCM недоступний"
           not_whitelisted: "не дозволяється конфігурацією."
@@ -1432,6 +1431,8 @@ uk:
               cannot_be_self_assigned: "– не можна призначити собі."
               cannot_be_in_another_project: "не може бути в іншому проекті."
               not_a_valid_parent: "зазначено невірно"
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "може бути встановлено лише для %{soonest_start} або пізнішої версії, щоб не порушувати зв'язки робочого пакету."
               cannot_be_null: "не може мати нульове значення, оскільки задано дату початку й тривалість."
@@ -1628,12 +1629,13 @@ uk:
       work_package: "Пакети робіт"
     project_phase:
       activated: "активовано"
-      deactivated: "деактивовано"
       added_date: "визначено як %{date}"
       changed_date: "змінено з %{from} на %{to}"
-      removed_date: "видалено %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "деактивовано"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} і %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "видалено %{date}"
   #common attributes of all models
   attributes:
     active: "Активний"
@@ -1700,6 +1702,8 @@ uk:
     priority: "Пріоритет"
     project: "Проєкт"
     project_ids: "ID проєктів"
+    project_phase: "Етап проєкту"
+    project_phase_definition: "Етап проєкту"
     reason: "Причина"
     responsible: "Відповідальний"
     required: "Обов'язкове поле"
@@ -2671,6 +2675,8 @@ uk:
   label_deleted_custom_item: "(видалений елемент)"
   label_deleted_custom_option: "(параметр видалення)"
   label_empty_element: "(пусто)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(відсутнє значення або бракує дозволів для доступу)"
   label_descending: "За спаданням"
   label_details: "Детальніше"
@@ -2743,6 +2749,7 @@ uk:
   label_gantt_chart_plural: "Діаграми Ґанта"
   label_general: "Загальні"
   label_generate_key: "Згенерувати ключ"
+  label_global_roles: "Глобальні ролі"
   label_git_path: "Шлях до каталогу .git"
   label_greater_or_equal: ">="
   label_group_by: "Групувати за"
@@ -2969,6 +2976,7 @@ uk:
   label_query_new: "Новий запит"
   label_query_plural: "Спеціальні запити"
   label_read: "Читання..."
+  label_read_documentation: "Read documentation"
   label_register: "Створити новий акаунт"
   label_register_with_developer: "Зареєструйтеся як розробник"
   label_registered_on: "Зареєстровано на"
@@ -4402,8 +4410,14 @@ uk:
       code_500: "Сталася внутрішня помилка."
       code_500_outbound_request_failure: "Вихідний запит до іншого ресурсу завершився помилкою з кодом стану: %{status_code}."
       code_500_missing_enterprise_token: "Цей запит не можна обробити через недійсний або відсутній маркер версії Enterprise."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "Пакет робіт, який ви шукаєте, не можна знайти або його видалено."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "YYYY-MM-DD (ISO 8601 date only)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (будь-який сумісний формат ISO 8601 дати й часу)"

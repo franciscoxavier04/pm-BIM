@@ -421,12 +421,6 @@ cs:
         new_label: "nová priorita"
     status:
       button_edit: Edit project status
-  project_phase:
-    working_days_count:
-      one: "Doba trvání: %{count} pracovní den"
-      few: "Doba trvání: %{count} pracovní dny"
-      many: "Doba trvání: %{count} pracovní dny"
-      other: "Doba trvání: %{count} pracovní dny"
   lists:
     create:
       success: "Upravený seznam byl uložen jako nový seznam."
@@ -708,6 +702,7 @@ cs:
         automatic: "Automaticky"
         manual: "Manuálně"
       show_relations: "Zobrazit vztahy"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Potomci"
@@ -778,7 +773,9 @@ cs:
     label_add_description: "Přidat popis"
     lag:
       subject: "Zpožďování"
-      caption: "Minimální počet pracovních dnů mezi oběma pracovními balíčky."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Nový pracovní balíček vytvořen a přidán jako potomek"
       label_relates_singular: "související s"
@@ -994,6 +991,10 @@ cs:
       project/phase:
         date_range: "Časový rozsah"
         definition: "Definice"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Název:"
         color: "Barva"
@@ -1305,10 +1306,12 @@ cs:
               blank: "Vyberte prosím projekt."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "je neúplný."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1357,10 +1360,6 @@ cs:
             from_id:
               error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
-            lag:
-              greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Prodejce SCM není k dispozici"
           not_whitelisted: "není povoleno konfigurací."
@@ -1438,6 +1437,8 @@ cs:
               cannot_be_self_assigned: "nemůže být přiřazeno k sobě."
               cannot_be_in_another_project: "nemůže být v jiném projektu."
               not_a_valid_parent: "je neplatné."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "lze nastavit pouze na %{soonest_start} nebo později, aby nedošlo k porušování vztahů pracovního balíčku."
               cannot_be_null: "nelze nastavit na null jako datum ukončení a doba trvání je známa."
@@ -1634,12 +1635,13 @@ cs:
       work_package: "Pracovní balíčky"
     project_phase:
       activated: "Aktivováno "
-      deactivated: "Deaktivováno"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "Deaktivováno"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktivní"
@@ -1706,6 +1708,8 @@ cs:
     priority: "Priorita"
     project: "Projekt"
     project_ids: "ID Projektu"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Důvod"
     responsible: "Odpovědný"
     required: "Požadováno"
@@ -2677,6 +2681,8 @@ cs:
   label_deleted_custom_item: "(smazaná položka)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(prázdný)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(chybí hodnota nebo chybí oprávnění k přístupu)"
   label_descending: "Sestupně"
   label_details: "Podrobnosti"
@@ -2749,6 +2755,7 @@ cs:
   label_gantt_chart_plural: "Ganttovy diagramy"
   label_general: "Obecné"
   label_generate_key: "Generovat klíč"
+  label_global_roles: "Globální role"
   label_git_path: "Cesta ke složce .git"
   label_greater_or_equal: ">="
   label_group_by: "Seskupit podle"
@@ -2975,6 +2982,7 @@ cs:
   label_query_new: "Nový dotaz"
   label_query_plural: "Vlastní dotazy"
   label_read: "Číst..."
+  label_read_documentation: "Read documentation"
   label_register: "Vytvořit nový účet"
   label_register_with_developer: "Zaregistrovat se jako vývojář"
   label_registered_on: "Registrován"
@@ -4409,8 +4417,14 @@ cs:
       code_500: "Došlo k vnitřní chybě."
       code_500_outbound_request_failure: "Odchozí požadavek na jiný dokument selhal se stavovým kódem %{status_code}."
       code_500_missing_enterprise_token: "Požadavek nelze zpracovat kvůli neplatnému nebo chybějícímu tokenu Enterprise."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "Pracovní balíček, který hledáte, nebyl nalezen nebo byl odstraněn."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "RRRR-MM-DD (pouze ISO 8601 datum)"
         datetime: "RRRR-MM-DDThh:mm:ss[.lll][+hh:mm] (jakýkoli kompatibilní datový prvek podle ISO 8601)"

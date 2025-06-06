@@ -45,7 +45,7 @@ module OpTurbo
     end
 
     included do
-      def render_as_turbo_stream(view_context:, action: :update, method: nil)
+      def render_as_turbo_stream(view_context:, action: :update, method: nil, **attributes)
         case action
         when :update, *INLINE_ACTIONS
           @inner_html_only = true
@@ -73,7 +73,8 @@ module OpTurbo
           action:,
           method:,
           target: wrapper_key,
-          template:
+          template:,
+          **attributes
         ).render_in(view_context)
       end
 

@@ -420,12 +420,6 @@ ru:
         new_label: "Новый приоритет"
     status:
       button_edit: Редактировать статус проекта
-  project_phase:
-    working_days_count:
-      one: "Продолжительность: %{count} рабочий день"
-      few: "Продолжительность: %{count} рабочих дня"
-      many: "Продолжительность: %{count} рабочих дня"
-      other: "Продолжительность: %{count} рабочих дней"
   lists:
     create:
       success: "Измененный список был сохранен как новый"
@@ -706,6 +700,7 @@ ru:
         automatic: "Автоматически"
         manual: "Вручную"
       show_relations: "Показать взаимосвязи"
+      update_inputs_aria_live_message: "Система выбора даты обновлена. %{message}"
       tabs:
         aria_label: "Выбор даты"
         children: "Дочерние пакеты работ"
@@ -776,7 +771,9 @@ ru:
     label_add_description: "Добавить описание"
     lag:
       subject: "Отставание"
-      caption: "Минимальное количество рабочих дней, которое должно быть между двумя пакетами работ."
+      caption: |-
+        Минимальное количество рабочих дней, которое должно быть между двумя пакетами работ.
+        Оно также может быть отрицательным.
     relations:
       label_new_child_created: "Новый пакет работ создан и добавлен как дочерний"
       label_relates_singular: "Связан с"
@@ -992,6 +989,10 @@ ru:
       project/phase:
         date_range: "Диапазон дат"
         definition: "Описание"
+        duration: "Продолжительность"
+        start_date: "Дата начала"
+        start_date_caption: "Следует предыдущей фазе."
+        finish_date: "Дата окончания"
       project/phase_definition:
         name: "Имя"
         color: "Цвет"
@@ -1303,10 +1304,12 @@ ru:
               blank: "Пожалуйста, выберите проект."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "дата начала должна быть раньше даты окончания."
-              non_continuous_dates: "не может быть раньше, чем дата окончания предыдущего этапа."
-              incomplete: "неполный."
+            start_date:
+              must_be_before_finish_date: "должно быть до даты окончания."
+              non_continuous_dates: "не может быть раньше, чем дата окончания предыдущей фазы."
+            finish_date:
+              must_be_after_start_date: "должно быть после даты начала."
+          cannot_be_a_non_working_day: "не может быть нерабочим днем."
         query:
           attributes:
             project:
@@ -1355,10 +1358,6 @@ ru:
             from_id:
               error_not_found: "не найден или невидим."
               error_readonly: "не может быть изменен для существующих отношений."
-            lag:
-              greater_than_or_equal_to:
-                zero: "не может быть отрицательным."
-              less_than_or_equal_to: "слишком высокий."
         repository:
           not_available: "SCM поставщик не доступен"
           not_whitelisted: "не допускается конфигурацией."
@@ -1436,6 +1435,8 @@ ru:
               cannot_be_self_assigned: "не может быть присвоено самому себе."
               cannot_be_in_another_project: "не может быть в другом проекте."
               not_a_valid_parent: "имеет неверное значение."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "не может быть установлено значение false (автоматическое планирование), так как у него нет предшественников или дочерних элементов."
             start_date:
               violates_relationships: "может быть установлено лишь в %{soonest_start} или позднее и без нарушения взаимосвязи рабочих пакетов."
               cannot_be_null: "не может быть нулевым, поскольку известны дата окончания и продолжительность."
@@ -1632,12 +1633,13 @@ ru:
       work_package: "Пакеты работ"
     project_phase:
       activated: "активирован"
-      deactivated: "деактивирован"
       added_date: "установлено на %{date}"
       changed_date: "изменено с %{from} to %{to}"
-      removed_date: "дата удаления %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "деактивирован"
+      deleted_project_phase: "Фаза проекта удалена"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} и %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "дата удаления %{date}"
   #common attributes of all models
   attributes:
     active: "Активно"
@@ -1704,6 +1706,8 @@ ru:
     priority: "Приоритет"
     project: "Проект"
     project_ids: "ID проектов"
+    project_phase: "Фаза проекта"
+    project_phase_definition: "Фаза проекта"
     reason: "Причина"
     responsible: "Ответственный"
     required: "Обязательно"
@@ -2675,6 +2679,8 @@ ru:
   label_deleted_custom_item: "(удалено)"
   label_deleted_custom_option: "(удалённая опция)"
   label_empty_element: "(пусто)"
+  label_go_back: "Вернуться на один уровень меню назад"
+  label_go_forward: "Открыть подменю %{module}"
   label_missing_or_hidden_custom_option: "(отсутствует значение или недостаточно прав для доступа)"
   label_descending: "По убыванию"
   label_details: "Детали"
@@ -2747,6 +2753,7 @@ ru:
   label_gantt_chart_plural: "Диаграммы Ганта"
   label_general: "Общие"
   label_generate_key: "Сгенерируйте ключ"
+  label_global_roles: "Глобальные роли"
   label_git_path: "Путь к директории .git"
   label_greater_or_equal: ">="
   label_group_by: "Группировать по"
@@ -2973,6 +2980,7 @@ ru:
   label_query_new: "Новый запрос"
   label_query_plural: "Пользовательские запросы"
   label_read: "Читать..."
+  label_read_documentation: "Читать документацию"
   label_register: "Создайте новую учетную запись"
   label_register_with_developer: "Зарегистрируйтесь как разработчик"
   label_registered_on: "Зарегистрированы на"
@@ -4405,8 +4413,14 @@ ru:
       code_500: "Произошла внутренняя ошибка."
       code_500_outbound_request_failure: "Исходящий запрос к другому ресурсу не удался с кодом статуса %{status_code}."
       code_500_missing_enterprise_token: "Запрос не может быть обработан из-за недействительного или отсутствующего корпоративного токена."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "Этот тип деятельности не поддерживает реакции эмодзи."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          Вы можете установить только одно напоминание для пакета работ. Пожалуйста, удалите или обновите напоминание.
       not_found:
         work_package: "Пакет работ, который вы ищете, не найден или был удален."
+        reminder: "Напоминание, которое вы ищете, не найдено или было удалено."
       expected:
         date: "ГГГГ-мм-дд (только для даты ISO 8601)"
         datetime: "ГГГГ-ММ-Дтч:мм:сс[.lll][+чч:мм] (любой совместимый ISO 8601 формат времени)"

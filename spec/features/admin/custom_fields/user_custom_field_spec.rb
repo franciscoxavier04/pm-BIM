@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -40,7 +42,7 @@ RSpec.describe "User custom fields edit", :js do
 
   it "can create and edit user custom fields (#48725)" do
     # Create CF
-    click_on "New custom field"
+    page.find("[aria-label='New custom field']").click
     new_cf_page.expect_current_path
 
     fill_in "Name", with: "My User CF"

@@ -88,10 +88,9 @@ class Project < ApplicationRecord
   has_many :storages, through: :project_storages
   has_many :phases, class_name: "Project::Phase", dependent: :destroy
   has_many :available_phases,
-           -> { visible.eager_load(:definition).order(position: :asc) },
+           -> { visible.order_by_position },
            class_name: "Project::Phase",
-           inverse_of: :project,
-           dependent: :destroy
+           inverse_of: :project
 
   has_many :recurring_meetings, dependent: :destroy
 
@@ -140,6 +139,7 @@ class Project < ApplicationRecord
                 datetime: :created_at
 
   register_journal_formatted_fields "active", formatter_key: :active_status
+  register_journal_formatted_fields "cause", formatter_key: :cause
   register_journal_formatted_fields "templated", formatter_key: :template
   register_journal_formatted_fields "identifier", "name", formatter_key: :plaintext
   register_journal_formatted_fields "status_explanation", "description", formatter_key: :diff

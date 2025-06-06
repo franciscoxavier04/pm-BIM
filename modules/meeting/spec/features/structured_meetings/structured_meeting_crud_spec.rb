@@ -223,6 +223,15 @@ RSpec.describe "Meetings CRUD",
     expect_flash(type: :success, message: "Successful deletion.")
   end
 
+  it "can open the export dialog" do
+    show_page.trigger_dropdown_menu_item "Export PDF"
+    show_page.expect_modal "Export PDF"
+
+    show_page.within_modal "Export PDF" do
+      expect(page).to have_button("Download")
+    end
+  end
+
   context "when exporting as ICS" do
     before do
       @download_list = DownloadList.new

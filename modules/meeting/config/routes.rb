@@ -50,6 +50,7 @@ Rails.application.routes.draw do
         post :notify
         get :history
         get :delete_dialog
+        get :generate_pdf_dialog
       end
     end
 

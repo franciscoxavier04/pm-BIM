@@ -63,10 +63,8 @@ In this view, time entries are grouped by day. Each day displays the total numbe
 
 - When **Week** or **Month** zoom is selected, past days or weeks are collapsed by default. However, the current day (in Week view) or the current week (in Month view) is expanded, along with all future dates.
 
-  > [!TIP]
-  >
-  > If monthly level is chosen in the list view mode, time entries are aggregated by  week and not by day. This is especially useful to get an overview of your tracked hours for each week. 
-  
+> [!TIP]
+> If monthly level is chosen in the list view mode, time entries are aggregated by  week and not by day. This is especially useful to get an overview of your tracked hours for each week. 
 
 Expanded days display time entries in a table format with the following columns:
 
@@ -97,9 +95,9 @@ To log time on the *My time tracking* page, click the **+ Log time** button. A m
 
 - **Start time** and **Finish time** – When both are entered, the **Hours** field is calculated automatically.
 
-  > [!TIP]
-  > These fields are only visible if the **Allow exact times tracking** option is enabled by an administrator.
-  > If the **Require exact times** option is also enabled, these fields become mandatory in order to save the time entry.
+> [!TIP]
+> These fields are only visible if the **Allow exact times tracking** option is enabled by an administrator.
+> If the **Require exact times** option is also enabled, these fields become mandatory in order to save the time entry.
 
 - **Hours** – Enter the number of hours you want to log for a specific work package.
 

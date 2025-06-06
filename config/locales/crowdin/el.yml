@@ -417,10 +417,6 @@ el:
         new_label: "New priority"
     status:
       button_edit: Edit project status
-  project_phase:
-    working_days_count:
-      one: "Duration: %{count} working day"
-      other: "Duration: %{count} working days"
   lists:
     create:
       success: "The modified list has been saved as a new list"
@@ -688,6 +684,7 @@ el:
         automatic: "Αυτόματα"
         manual: "Manual"
       show_relations: "Show relations"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Παιδιά"
@@ -756,7 +753,9 @@ el:
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      caption: "The minimum number of working days to keep in between the two work packages."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "σχετίζεται με"
@@ -972,6 +971,10 @@ el:
       project/phase:
         date_range: "Εύρος ημερομηνίας"
         definition: "Definition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Όνομα"
         color: "Χρώμα"
@@ -1283,10 +1286,12 @@ el:
               blank: "Please select a project."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1335,10 +1340,6 @@ el:
             from_id:
               error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
-            lag:
-              greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Ο προμηθευτής SCM δεν είναι διαθέσιμος"
           not_whitelisted: "δεν επιτρέπεται από την διαμόρφωση."
@@ -1416,6 +1417,8 @@ el:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "δεν μπορεί να είναι σε άλλο έργο."
               not_a_valid_parent: "δεν είναι έγκυρο."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "μπορεί μόνο να οριστεί στις %{soonest_start} ή αργότερα ώστε να μην παραβιάζει τις σχέσεις του πακέτου εργασίας."
               cannot_be_null: "can not be set to null as finish date and duration are known."
@@ -1588,12 +1591,13 @@ el:
       work_package: "Πακέτα εργασίας"
     project_phase:
       activated: "ενεργοποιημένο"
-      deactivated: "απενεργοποιημένο"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "απενεργοποιημένο"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Ενεργό"
@@ -1660,6 +1664,8 @@ el:
     priority: "Προτεραιότητα"
     project: "Έργο"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reason"
     responsible: "Υπόλογος"
     required: "Απαιτείται"
@@ -2593,6 +2599,8 @@ el:
   label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(διαγραμμένη επιλογή)"
   label_empty_element: "(άδειο)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
   label_descending: "Φθίνουσα"
   label_details: "Λεπτομέρειες"
@@ -2665,6 +2673,7 @@ el:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Γενικά"
   label_generate_key: "Δημιουργία κλειδιού"
+  label_global_roles: "Global roles"
   label_git_path: "Μονοπάτι προς το ευρετήριο .git"
   label_greater_or_equal: ">="
   label_group_by: "Ομαδοποίηση κατά"
@@ -2891,6 +2900,7 @@ el:
   label_query_new: "Νέα αναζήτηση"
   label_query_plural: "Προσαρμοσμένες αναζητήσεις"
   label_read: "Ανάγνωση..."
+  label_read_documentation: "Read documentation"
   label_register: "Δημιουργία νέου λογαριασμού"
   label_register_with_developer: "Εγγεγραμμένος ως προγραμματιστής"
   label_registered_on: "Εγγράφηκε την"
@@ -4319,8 +4329,14 @@ el:
       code_500: "Παρουσιάστηκε ένα εσωτερικό σφάλμα."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "ΕΕΕΕ-ΜΜ-ΗΗ (ISO 8601 ημερομηνία μόνο)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (any compatible ISO 8601 datetime)"

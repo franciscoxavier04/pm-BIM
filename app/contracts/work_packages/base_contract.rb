@@ -82,6 +82,15 @@ module WorkPackages
     attribute :parent_id,
               permission: :manage_subtasks
 
+    attribute :project_phase_definition_id,
+              permission: :view_project_phases,
+              writable: ->(*) {
+                OpenProject::FeatureDecisions.stages_and_gates_active?
+              } do
+      validate_phase_active_in_project
+    end
+    attribute_alias :project_phase_definition_id, :project_phase_id
+
     attribute :assigned_to_id do
       next unless model.project
 
@@ -195,6 +204,18 @@ module WorkPackages
 
     def assignable_priorities
       IssuePriority.active
+    end
+
+    def assignable_project_phases
+      if model.project
+        model
+          .project
+          .phases
+          .active
+          .order_by_position
+      else
+        Project::Phase.none
+      end
     end
 
     def assignable_versions(only_open: true)
@@ -524,6 +545,15 @@ module WorkPackages
       end
     end
 
+    def validate_phase_active_in_project
+      if model.project.present? &&
+        model.project_phase_definition_id.present? &&
+        !(model.project_changed? && !model.project_phase_definition_changed?) &&
+        !project_definition_assignable?
+        errors.add :project_phase_id, :inclusion
+      end
+    end
+
     def dates_derivation_impossible?
       model.errors[:duration].any?
     end
@@ -594,6 +624,10 @@ module WorkPackages
 
     def type_inexistent?
       model.type.is_a?(Type::InexistentType)
+    end
+
+    def project_definition_assignable?
+      assignable_project_phases.exists?(definition_id: model.project_phase_definition_id)
     end
 
     # Returns a scope of status the user is able to apply

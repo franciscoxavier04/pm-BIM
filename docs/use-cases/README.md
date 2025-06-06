@@ -6,7 +6,7 @@ description: Step-by-step instruction about various use cases
 keywords: use-cases
 ---
 
-# OpenProject Use Cases
+# OpenProject use cases
 
 | Use Case                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

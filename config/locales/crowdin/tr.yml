@@ -421,10 +421,6 @@ tr:
         new_label: "Yeni öncelik"
     status:
       button_edit: Edit project status
-  project_phase:
-    working_days_count:
-      one: "Süre: %{count} iş günü"
-      other: "Süre: %{count} iş günü"
   lists:
     create:
       success: "Değiştirilen liste yeni bir liste olarak kaydedildi"
@@ -691,6 +687,7 @@ tr:
         automatic: "Otomatik"
         manual: "Elle"
       show_relations: "İlişkileri göster"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Tarih seçme sekmesi"
         children: "Alt"
@@ -759,7 +756,9 @@ tr:
     label_add_description: "Açıklama ekle"
     lag:
       subject: "Gecikme"
-      caption: "İki iş paketi arasında beklenmesi gereken en az iş günü sayısı."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Yeni iş paketi oluşturuldu ve alt olarak eklendi"
       label_relates_singular: "ile ilişkili"
@@ -975,6 +974,10 @@ tr:
       project/phase:
         date_range: "Tarih aralığı"
         definition: "Tanım"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "İsim"
         color: "Renk"
@@ -1286,10 +1289,12 @@ tr:
               blank: "Lütfen bir proje seçin."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "tamamlanmamıştır."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1338,10 +1343,6 @@ tr:
             from_id:
               error_not_found: "bulunamadı veya görünmüyor."
               error_readonly: "mevcut ilişkiler için değiştirilemez."
-            lag:
-              greater_than_or_equal_to:
-                zero: "negatif olamaz."
-              less_than_or_equal_to: "çok yüksek."
         repository:
           not_available: "SCM satıcısı yok"
           not_whitelisted: "yapılandırmasına izin verilmiyor."
@@ -1419,6 +1420,8 @@ tr:
               cannot_be_self_assigned: "kendisine atanamaz."
               cannot_be_in_another_project: "başka bir projede olamaz."
               not_a_valid_parent: "geçersizdir."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "yalnızca %{soonest_start} veya daha sonra iş paketi üst bağımlılık ilişkilerini ihlal etmediğinde ayarlanabilir."
               cannot_be_null: "başlangıç tarihi ve süresi bilindiğinden sıfır değerine ayarlanamaz."
@@ -1591,12 +1594,13 @@ tr:
       work_package: "İş paketleri"
     project_phase:
       activated: "etkinleştirildi"
-      deactivated: "devre dışı bırakmak"
       added_date: "%{date} tarihine ayarlandı"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "devre dışı bırakmak"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktif"
@@ -1663,6 +1667,8 @@ tr:
     priority: "Öncelik"
     project: "Proje"
     project_ids: "Proje Kimlikleri"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Sebep"
     responsible: "Sorumlu"
     required: "Gerekli"
@@ -2596,6 +2602,8 @@ tr:
   label_deleted_custom_item: "(silinmiş öğe)"
   label_deleted_custom_option: "(silinen seçenek)"
   label_empty_element: "(boş)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(eksik değer veya erişim izinleri eksik)"
   label_descending: "Azalan"
   label_details: "Detaylar"
@@ -2668,6 +2676,7 @@ tr:
   label_gantt_chart_plural: "Gantt grafikleri"
   label_general: "Genel"
   label_generate_key: "Anahtar oluştur"
+  label_global_roles: "Genel roller"
   label_git_path: ".git dizininin yolu"
   label_greater_or_equal: ">="
   label_group_by: "Grupla"
@@ -2894,6 +2903,7 @@ tr:
   label_query_new: "Yeni Sorgu"
   label_query_plural: "Özel Sorgular"
   label_read: "Oku..."
+  label_read_documentation: "Read documentation"
   label_register: "Yeni hesap oluştur"
   label_register_with_developer: "Geliştirici olarak kayıt ol"
   label_registered_on: "Kayıt tarihi"
@@ -4321,8 +4331,14 @@ tr:
       code_500: "İç hata oluştu."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "Geçersiz veya eksik Enterprise belirteci nedeniyle istek işlenemiyor."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "Aradığınız çalışma paketi bulunamadı veya silinmiş."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "YYYY-AA-GG (ISO 8601 sadece tarih)"
         datetime: "YYYY-AA-GGThs:dd:ss[.lll][+ss:dd] (uyumlu herhangi bir ISO 8601 tarih/saat)"

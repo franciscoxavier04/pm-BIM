@@ -115,10 +115,14 @@ RSpec.describe "Projects life cycle settings", :js, with_flag: { stages_and_gate
       definitions_page.select_color("Azure")
       click_on "Create"
 
+      definitions_page.expect_and_dismiss_flash(message: "Successful creation.")
+
       definitions_page.add
       fill_in "Name", with: "Initiating"
       definitions_page.select_color("Gold")
       click_on "Create"
+
+      definitions_page.expect_and_dismiss_flash(message: "Successful creation.")
 
       definitions_page.expect_listed(["Starting", "Processing", "Imagining", "Initiating"])
 
@@ -139,11 +143,13 @@ RSpec.describe "Projects life cycle settings", :js, with_flag: { stages_and_gate
       wait_for_network_idle
       definitions_page.expect_listed(["Initiating", "Starting", "Imagining", "Processing"])
 
-      definitions_page.drag_and_drop_list(from: 0, to: 3,
-                                          elements: "[data-test-selector=project-life-cycle-step-definition]",
-                                          handler: ".DragHandle")
-      wait_for_network_idle
-      definitions_page.expect_listed(["Starting", "Imagining", "Processing", "Initiating"])
+      retry_block do
+        definitions_page.drag_and_drop_list(from: 0, to: 3,
+                                            elements: "[data-test-selector=project-life-cycle-step-definition]",
+                                            handler: ".DragHandle")
+        wait_for_network_idle
+        definitions_page.expect_listed(["Starting", "Imagining", "Processing", "Initiating"])
+      end
 
       definitions_page.reload!
       definitions_page.expect_listed(["Starting", "Imagining", "Processing", "Initiating"])

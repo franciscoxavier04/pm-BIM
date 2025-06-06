@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,11 +30,29 @@
 
 module ProjectLifeCycleSteps
   class UpdateService < ::BaseServices::Update
-    def after_perform(call)
-      project = call.result.project
+    delegate :project, to: :model
+
+    def after_perform(*)
+      reschedule_following_phases if model.date_range_set?
+
       project.touch_and_save_journals
 
-      call
+      super
+    end
+
+    private
+
+    def reschedule_following_phases
+      RescheduleService.new(user:, project:)
+        .call(phases: following_phases, from: initial_reschedule_date)
+    end
+
+    def initial_reschedule_date
+      model.active? ? model.finish_date + 1 : model.start_date
+    end
+
+    def following_phases
+      project.available_phases.select { it.position > model.position }
     end
   end
 end

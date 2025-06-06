@@ -45,4 +45,5 @@ OpenProject::FeatureDecisions.add :built_in_oauth_applications,
                                   description: "Allows the display and use of built-in OAuth applications."
 
 OpenProject::FeatureDecisions.add :stages_and_gates,
-                                  description: "Enables the under construction feature of phases."
+                                  description: "Enables the project phases feature.",
+                                  force_active: true

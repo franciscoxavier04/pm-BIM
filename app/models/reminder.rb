@@ -45,6 +45,10 @@ class Reminder < ApplicationRecord
       .where.missing(:reminder_notifications)
   end
 
+  def visible?(user = User.current)
+    creator == user && remindable.visible?(user)
+  end
+
   def unread_notifications?
     unread_notifications.exists?
   end

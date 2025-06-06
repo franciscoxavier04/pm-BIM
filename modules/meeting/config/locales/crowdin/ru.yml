@@ -190,6 +190,7 @@ ru:
       agenda_items: "Копировать пункты повестки дня"
       agenda_text: "Копировать повестку старого совещания"
       participants: "Копировать список участников"
+      to_clipboard: "Копировать в буфер обмена"
     email:
       send_emails: "Отправить email участникам"
       send_invitation_emails: >
@@ -244,6 +245,29 @@ ru:
     blankslate:
       title: "Нет совещаний для отображения"
       desc: "Нет совещаний, удовлетворяющих критериям активного фильтра."
+    label_export_pdf: "Экспорт в PDF"
+    export:
+      your_meeting_export: "Совещание экспортируется"
+      label_meeting_agenda: "Повестка дня совещания"
+    export_pdf_dialog:
+      title: Экспорт в PDF
+      description: Generate a printable PDF file of this meeting at the current state.
+      include_participants:
+        label: Включить список участников
+        caption: A list of participants will be preset above the meeting agenda.
+      include_attachments:
+        label: Включить список вложений
+        caption: A list containing the filenames of attachments will be appended at the end.
+      include_backlog:
+        label: Включить бэклог
+        caption: Backlog elements are not normally considered part of a meeting occurrence but you can choose to include them.
+      include_outcomes:
+        label: Включить итоги повестки дня
+        caption: If your agenda outcomes contain confidential information, you can choose to not include them in the export.
+      footer_text:
+        label: Текст нижнего колонтитула
+        caption: Этот текст появится на каждой странице с правой стороны нижнего колонтитула.
+      submit_button: Скачать
   meeting_section:
     untitled_title: "Раздел без названия"
     delete_confirmation: "Удаление раздела также удалит все пункты его повестки дня. Вы уверены, что хотите это сделать?"
@@ -368,7 +392,9 @@ ru:
   label_meeting_index_later: "На следующей неделе и позже"
   label_agenda_items: "Пункты повестки"
   label_agenda_items_reordered: "переупорядочено"
-  label_agenda_item_remove: "Удалить из повестки"
+  label_agenda_item_add: "Добавить пункт повестки"
+  label_agenda_item_remove_from_agenda: "Исключить из повестки"
+  label_agenda_item_remove_from_backlog: "Удалить из бэклога"
   label_agenda_item_undisclosed_wp: "Пакет работ #%{id} невидим"
   label_agenda_item_deleted_wp: "Ссылка на удалённый пакет работ"
   label_agenda_item_actions: "Действия по пунктам повестки"
@@ -381,7 +407,9 @@ ru:
   label_agenda_item_move_down: "Вниз"
   label_agenda_item_add_notes: "Добавить заметки"
   label_agenda_item_add_outcome: "Добавить расход"
+  label_agenda_item_work_package_add: "Добавить пакет работ"
   label_agenda_item_work_package: "Пакет работ по пунктам повестки"
+  label_section_rename: "Переименовать раздел"
   label_agenda_outcome: "Расход"
   label_agenda_outcome_actions: "Действия по расходам"
   label_agenda_outcome_edit: "Редактировать результат"

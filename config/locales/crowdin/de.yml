@@ -418,10 +418,6 @@ de:
         new_label: "Neue Priorität"
     status:
       button_edit: Projektstatus bearbeiten
-  project_phase:
-    working_days_count:
-      one: "Dauer: %{count} Arbeitstag"
-      other: "Dauer: %{count} Arbeitstage"
   lists:
     create:
       success: "Die geänderte Liste wurde als neue Liste gespeichert"
@@ -685,6 +681,7 @@ de:
         automatic: "Automatisch"
         manual: "Manuell"
       show_relations: "Beziehungen anzeigen"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datumsauswahl Reiter"
         children: "Untergeordnete Arbeitspakete"
@@ -753,7 +750,9 @@ de:
     label_add_description: "Beschreibung hinzufügen"
     lag:
       subject: "Verzögerung"
-      caption: "Die minimale Anzahl von Arbeitstagen zwischen den zwei Arbeitspaketen."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Neues Arbeitspaket erstellt und als Kind hinzugefügt"
       label_relates_singular: "Beziehung mit"
@@ -969,6 +968,10 @@ de:
       project/phase:
         date_range: "Zeitraum"
         definition: "Definition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Name"
         color: "Farbe"
@@ -1280,10 +1283,12 @@ de:
               blank: "Bitte wählen Sie ein Projekt aus."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "Startdatum muss vor dem Enddatum liegen."
-              non_continuous_dates: "kann nicht vor dem Enddatum der vorherigen Phase liegen."
-              incomplete: "ist unvollständig."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1332,10 +1337,6 @@ de:
             from_id:
               error_not_found: "nicht gefunden oder nicht sichtbar."
               error_readonly: "kann für bestehende Beziehungen nicht geändert werden."
-            lag:
-              greater_than_or_equal_to:
-                zero: "darf nicht negativ sein."
-              less_than_or_equal_to: "ist zu hoch."
         repository:
           not_available: "SCM-Anbieter ist nicht verfügbar"
           not_whitelisted: "wird durch die Konfiguration nicht erlaubt."
@@ -1413,6 +1414,8 @@ de:
               cannot_be_self_assigned: "kann nicht selbst zugewiesen werden."
               cannot_be_in_another_project: "darf nicht in einem anderen Projekt sein."
               not_a_valid_parent: "ist ungültig."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "muss mindestens auf %{soonest_start} gesetzt werden, um Beziehungen zu anderen Arbeitspaketen nicht zu verletzten."
               cannot_be_null: "kann nicht auf Null gesetzt werden, als Enddatum und Dauer bekannt sind."
@@ -1585,12 +1588,13 @@ de:
       work_package: "Arbeitspakete"
     project_phase:
       activated: "aktiviert"
-      deactivated: "deaktiviert"
       added_date: "auf %{date} festlegen"
       changed_date: "von %{from} zu %{to} geändert"
-      removed_date: "Datum gelöscht %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "deaktiviert"
+      deleted_project_phase: "Gelöschte Projektphase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} und %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "Datum gelöscht %{date}"
   #common attributes of all models
   attributes:
     active: "Aktiv"
@@ -1657,6 +1661,8 @@ de:
     priority: "Priorität"
     project: "Projekt"
     project_ids: "Projekt IDs"
+    project_phase: "Projektphase"
+    project_phase_definition: "Projektphase"
     reason: "Grund"
     responsible: "Verantwortlich"
     required: "Erforderlich"
@@ -2517,7 +2523,7 @@ de:
   label_bulk_edit_selected_work_packages: "Alle ausgewählten Arbeitspakete bearbeiten"
   label_bundled: "(Gebündelt)"
   label_calendar: "Kalender"
-  label_calendars_and_dates: "Kalendarien und Daten"
+  label_calendars_and_dates: "Kalender und Datum"
   label_calendar_show: "Kalender anzeigen"
   label_category: "Kategorie"
   label_completed: Abgeschlossen
@@ -2590,6 +2596,8 @@ de:
   label_deleted_custom_item: "(gelöschter Eintrag)"
   label_deleted_custom_option: "(gelöschte Option)"
   label_empty_element: "(leer)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(Fehlender Wert oder fehlende Zugriffsberechtigungen)"
   label_descending: "Absteigend"
   label_details: "Details"
@@ -2662,6 +2670,7 @@ de:
   label_gantt_chart_plural: "Gantt Diagramme"
   label_general: "Allgemein"
   label_generate_key: "Schlüssel generieren"
+  label_global_roles: "Globale Rollen"
   label_git_path: "Pfad zum .git-Verzeichnis"
   label_greater_or_equal: ">="
   label_group_by: "Gruppieren nach"
@@ -2888,6 +2897,7 @@ de:
   label_query_new: "Neuer Bericht"
   label_query_plural: "Benutzerdefinierte Berichte"
   label_read: "Lesen ..."
+  label_read_documentation: "Read documentation"
   label_register: "Neues Konto erstellen"
   label_register_with_developer: "Als Entwickler anmelden"
   label_registered_on: "Angemeldet am"
@@ -4317,8 +4327,14 @@ de:
       code_500: "Ein interner Fehler ist aufgetreten."
       code_500_outbound_request_failure: "Eine ausgehende Anfrage an eine andere Ressource ist mit dem Statuscode %{status_code} fehlgeschlagen."
       code_500_missing_enterprise_token: "Die Anfrage kann wegen ungültigem oder fehlenden Enterprise Token nicht bearbeitet werden."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "Das von Ihnen gesuchte Arbeitspaket konnte nicht gefunden werden oder wurde gelöscht."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "YYYY-MM-DD (Datum nach ISO 8601)"
         datetime: "JJJJ-MM-TTThh:mm:ss[.lll][+hh:mm] (kompatible ISO 8601-Datum)"
