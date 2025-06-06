@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-module Projects::Settings::LifeCycleSteps
+module Projects::Settings::LifeCycle
   class IndexPageHeaderComponent < ApplicationComponent
     include ApplicationHelper
 
