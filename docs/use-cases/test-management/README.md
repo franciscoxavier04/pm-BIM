@@ -37,23 +37,23 @@ This setup is not a replacement for full-scale test automation or advanced lab m
 
 ### Core entities
 
-| Concept            | OpenProject entity                                  |
-| ------------------ | --------------------------------------------------- |
-| Requirements       | Work package (e.g., type `Feature` or `User Story`) |
-| Test case          | Work package type `Test Case`                       |
-| Test run           | Work package type `Test Run` (child of test case)   |
-| Test plan          | Project (created from a template)                   |
-| Version under test | OpenProject *Version* field on test runs            |
-| Defect             | Work package (e.g., type `Bug`)                     |
+| Concept            | OpenProject entity                                           |
+| ------------------ | ------------------------------------------------------------ |
+| Requirements       | Work package (e.g., type `Feature` or `User Story`)          |
+| Test case          | Work package type `Test Case`                                |
+| Test run           | Work package type `Test Run` (child of test case)            |
+| Test plan          | Project (created from a [template](../../user-guide/projects/project-templates/)) |
+| Version under test | OpenProject [Version](../../user-guide/projects/project-settings/versions/) field on test runs |
+| Defect             | Work package (e.g., type `Bug`)                              |
 
 ### Relationships
 
-- Each `Feature` or `User Story` may relate to one or more test cases.
+- Each `Feature` or `User Story` may relate to one or more `Test Cases`.
 - Each `Test Case` defines a reusable test specification.
-- Each `Test Case` has one or more Test Runs (child work packages).
+- Each `Test Case` has one or more `Test Runs` (child work packages).
 - A `Test Run` is specific to one software version.
 - `Test Plans` are realized as individual projects per version, created from a reusable template.
-- `Bugs` can be linked to failed Test Runs.
+- `Bugs` can be linked to failed `Test Runs`.
 
 This structure supports traceability from requirements to execution and defect reporting.
 
@@ -61,7 +61,7 @@ This structure supports traceability from requirements to execution and defect r
 
 ### 1.1 Creating a test plan (project)
 
-A new test plan project is created based on a predefined template using the *create project form*.
+A new test plan project is created based on a predefined template using the [create project form](../../getting-started/projects/#create-a-new-project).
 
 ![create test plan](create-test-plan.png)
 
@@ -111,7 +111,7 @@ Further tools can be used for reporting and metrics purposes with OpenProject:
   * Count test cases by status (Passed, Failed, Blocked)
   * Show tests assigned to each tester
   * Track the number of open vs. closed defects, or simply have an overview of the bugs by priority.
- 
+
 ![graph-for-bugs-overview](graph-for-bugs-overview.png)
 
 ### 1.5 Test case evolution: reusability and standardization
