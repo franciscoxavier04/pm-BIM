@@ -4417,10 +4417,10 @@ ru:
         emoji_reactions_activity_type_not_supported: "Этот тип деятельности не поддерживает реакции эмодзи."
       conflict:
         multiple_reminders_not_allowed: |-
-          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
+          Вы можете установить только одно напоминание для пакета работ. Пожалуйста, удалите или обновите напоминание.
       not_found:
         work_package: "Пакет работ, который вы ищете, не найден или был удален."
-        reminder: "The reminder you are looking for cannot be found or has been deleted."
+        reminder: "Напоминание, которое вы ищете, не найдено или было удалено."
       expected:
         date: "ГГГГ-мм-дд (только для даты ISO 8601)"
         datetime: "ГГГГ-ММ-Дтч:мм:сс[.lll][+чч:мм] (любой совместимый ISO 8601 формат времени)"

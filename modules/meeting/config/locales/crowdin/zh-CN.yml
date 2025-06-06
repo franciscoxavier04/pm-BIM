@@ -233,29 +233,29 @@ zh-CN:
     blankslate:
       title: "无会议显示"
       desc: "没有符合主动筛选条件的会议。"
-    label_export_pdf: "Export PDF"
+    label_export_pdf: "导出PDF"
     export:
-      your_meeting_export: "Meeting is being exported"
-      label_meeting_agenda: "Meeting agenda"
+      your_meeting_export: "会议正在导出"
+      label_meeting_agenda: "会议议程"
     export_pdf_dialog:
-      title: Export PDF
-      description: Generate a printable PDF file of this meeting at the current state
+      title: 导出PDF
+      description: 在当前状态下生成一个可打印的 PDF 文件
       include_participants:
-        label: Include list of participants
-        caption: A list of participants will be preset above the meeting agenda
+        label: 包含与会者列表
+        caption: 与会者名单将置于会议议程上方
       include_attachments:
-        label: Include list of attachments
-        caption: A list containing the filenames of attachments will be appended at the end
+        label: 包含附件列表
+        caption: 附件名称列表将添加在末尾
       include_backlog:
-        label: Include backlog
-        caption: Backlog elements are not normally considered part of a meeting occurrence but you can choose to include them
+        label: 包含待办事项
+        caption: 待办通常不被视为会议事件的一部分，但您可以选择包含这些元素
       include_outcomes:
-        label: Include agenda outcomes
-        caption: If your agenda outcomes contain confidential information, you can choose to not include them in the export
+        label: 包含议程成果
+        caption: 如果您的日程结果包含保密信息，您可以选择不将其包含在导出中
       footer_text:
-        label: Footer text
-        caption: This text will appear on every page on the right of the footer.
-      submit_button: Download
+        label: 页脚文本
+        caption: 此文本将出现在每一页的页脚右侧。
+      submit_button: 下载
   meeting_section:
     untitled_title: "无标题章节"
     delete_confirmation: "删除该属性也会删除其在所有项目中的值。您确定要这样做吗？"

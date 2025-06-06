@@ -1036,15 +1036,15 @@ ru:
       reminders:
         button_label: "Установить напоминание"
         title:
-          new: "Set a reminder"
+          new: "Установить напоминание"
           edit: "Редактировать напоминание"
         subtitle: "Вы получите уведомление о данном пакете работ в выбранное время."
         presets:
-          tomorrow: "Tomorrow"
-          three_days: "In 3 days"
-          week: "In a week"
-          month: "In a month"
-          custom: "At a particular date/time"
+          tomorrow: "Завтра"
+          three_days: "Через 3 дня"
+          week: "Через неделю"
+          month: "Через месяц"
+          custom: "На определенную дату/время"
       scheduling:
         is_parent: "Даты этого пакета работ выводятся автоматически из дочерних пакетов работ. Используйте «Ручной планировщик», чтобы установить даты."
         is_switched_from_manual_to_automatic: "Даты этого пакета работ могут быть пересчитаны после переключения с ручного на автоматическое планирование из-за связей с другими пакетами работ."
