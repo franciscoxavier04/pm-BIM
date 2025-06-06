@@ -121,7 +121,7 @@ As test cases evolve, we need to track changes and reuse them across different c
 * Manual history can be tracked on the activity/comment log for any manual changes to test case steps.
 * Naming conventions can be implemented (e.g., "TC-Login-ValidCredentials-v1.0") to help manage variations.
 
-Speaking of naming conventions, there is a way to enforce consistency and standardization within OpenProject through `automatically generated subjects`. Administrators can define specific patterns for the subject (name) of work packages, including those designated as `Test Case` / `Test Run` types. This means every new test case/test run created will automatically follow a predefined structure. This way of working eliminates manual errors, enhances searchability and improves filtering. 
+To support consistency and standardization, OpenProject allows administrators to define **automatically generated subjects** for work packages. This feature enables the use of predefined patterns for naming, including for work package types such as `Test Case` and `Test Run`. As a result, newly created test cases and test runs automatically follow a consistent naming structure. This approach helps eliminate manual errors, improves searchability, and enhances filtering capabilities.
 
 The subject pattern can incorporate dynamic attributes from the test case/test run itself (or its parent). In this example, `Test run`'s subject is derived from 2 fields: `Parent's subject` and `Version`.
 
@@ -133,11 +133,33 @@ Such subject is created upon save and is not manually editable.
 
 Automatically generated subjects reduce manual effort and ensure that the name remains accurate and up-to-date if an attribute referenced in the subject pattern changes.
 
-## 2. Configuration guidance
+## 2. Test automation with GitHub and GitLab
+
+### 2.1 Integration concept
+
+OpenProject enables seamless integration between software development and test automation workflows in GitHub and GitLab with planning and specification in OpenProject. Work packages can display information from [GitHub pull requests](../../system-admin-guide/integrations/github-integration/) and [GitLab merge requests](../../system-admin-guide/integrations/gitlab-integration) in a dedicated tab.
+
+This tab lists all pull or merge requests linked to a work package, showing their status (e.g., *Ready* or *Merged*) as well as the current state (e.g., *success* or *queued*) of the actions configured to run for each request—whether in GitHub or GitLab. The results of these actions are also displayed within the tab.
+
+The relationship between work packages and pull/merge requests is many-to-many: a single work package can be linked to multiple pull or merge requests, and a single pull or merge request can be associated with multiple work packages.
+
+![test automation integration](test-automation-integration.png)
+
+### 2.2 Benefits of the integration
+
+Integrating GitHub and GitLab with OpenProject offers several advantages for software development teams:
+
+- **Enhanced traceability**: By linking code changes directly to work packages, teams can easily trace the origin of each change, facilitating better understanding and accountability throughout the development process.
+- **Improved collaboration**: Real-time visibility into the status of pull and merge requests fosters collaboration between developers, testers, and project managers, ensuring everyone stays informed and aligned.
+- **Streamlined workflows**: Automated updates from GitHub and GitLab reduce manual tracking efforts, allowing teams to focus on development tasks and reducing the likelihood of oversight.
+- **Accelerated delivery**: By integrating continuous integration and deployment (CI/CD) pipelines, teams can automate testing and deployment processes, leading to faster and more reliable software releases.
+- **Comprehensive reporting**: Consolidated data from development and project management tools enables more comprehensive reporting and analytics, supporting informed decision-making and continuous improvement.
+
+## 3. Configuration guidance
 
 This section provides guidance on how to configure OpenProject for test management. It assumes familiarity with OpenProject administration features.
 
-### 2.1 Configuration example: Test Cases (work package type)
+### 3.1 Configuration example: Test Cases (work package type)
 
 The work package type `Test case` can be configured so it shows the relevant information:
 
@@ -152,7 +174,7 @@ Here you find an [example for a test case](https://testmanagement.openproject.co
 
 ![test case configuration example](test-case-configuration-example.png)
 
-### 2.2 Configuration example: Test Run (work package type)
+### 3.2 Configuration example: Test Run (work package type)
 
 The work package type `Test run` can be configured so it shows the relevant information:
 
@@ -167,7 +189,7 @@ Here you find an [example for a test run](https://testmanagement.openproject.com
 ![test run configuration example](test-run-configuration-example.png)
 
 
-### 2.3 Roles and permissions
+### 3.3 Roles and permissions
 
 - Define useful roles such as:
   - `Tester`
@@ -176,14 +198,14 @@ Here you find an [example for a test run](https://testmanagement.openproject.com
 - Add permissions such as:
   - Edit work packages
 
-### 2.4 Custom fields
+### 3.4 Custom fields
 
 Define custom fields that describe the test object such as:
 
 - Test environment (type `hierarchy`)
 - Tester (custom field type `user`)
 
-### 2.5 Workflow and statuses
+### 3.5 Workflow and statuses
 
 - Define custom statuses such as:
   - `New`,
