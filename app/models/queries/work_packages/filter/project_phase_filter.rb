@@ -57,21 +57,20 @@ class Queries::WorkPackages::Filter::ProjectPhaseFilter < Queries::WorkPackages:
 
   # TODO: copied over from ProjectPhaseSelect, refactor to use the same truth
   def joins
-    Arel.sql(
-      <<~SQL.squish
-        LEFT JOIN (
-          SELECT
-            wp.id AS wp_id,
-            MAX(CASE WHEN ph.active THEN ph.definition_id ELSE NULL END) AS active_phase_definition_id
-          FROM work_packages wp
-          LEFT JOIN project_phases ph ON ph.project_id = wp.project_id AND ph.definition_id = wp.project_phase_definition_id
-          WHERE wp.project_id IN (#{project_with_view_phases_permissions.to_sql})
-          GROUP BY wp.id
-        ) AS active_phases ON active_phases.wp_id = work_packages.id
-        LEFT JOIN project_phase_definitions pd ON pd.id = active_phases.active_phase_definition_id
-        JOIN projects on projects.id = work_packages.project_id
-      SQL
-    )
+    <<~SQL.squish
+      LEFT OUTER JOIN "projects" ON "projects"."id" = "work_packages"."project_id"
+      LEFT OUTER JOIN (
+        SELECT
+          ph.id,
+          ph.project_id,
+          ph.definition_id AS active_phase_definition_id
+        FROM project_phases ph
+        WHERE ph.project_id IN (#{project_with_view_phases_permissions.to_sql})
+        AND ph.active = true
+      ) AS active_phases
+      ON active_phases.active_phase_definition_id = work_packages.project_phase_definition_id
+        AND active_phases.project_id = work_packages.project_id
+    SQL
   end
 
   def project_with_view_phases_permissions
