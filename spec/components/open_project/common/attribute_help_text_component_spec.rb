@@ -45,7 +45,7 @@ RSpec.describe OpenProject::Common::AttributeHelpTextComponent, type: :component
     end
 
     it "renders a tooltip" do
-      expect(subject).to have_element "tool-tip", text: "Show attribute help text entry",
+      expect(subject).to have_element "tool-tip", text: "Show help text",
                                                   for: /attribute-help-text-component-\d+/,
                                                   popover: "manual",
                                                   "data-direction": "sw",
