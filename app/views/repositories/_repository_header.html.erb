@@ -29,42 +29,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 <opce-persistent-toggle data-identifier="repository.checkout_instructions"></opce-persistent-toggle>
 
-<%=
-  render Primer::OpenProject::PageHeader.new do |header|
-    header.with_title { t(
-      "repositories.named_repository",
-      vendor_name: @repository.class.vendor_name
-    ) }
-    header.with_breadcrumbs(breadcrumb_items(project: @project, path: @path, rev: @rev))
-    if !empty && User.current.allowed_in_project?(:browse_repository, @project)
-      header.with_action_icon_button(
-        tag: :a,
-        icon: :graph,
-        label: t(:label_statistics),
-        mobile_icon: :graph,
-        mobile_label: t(:label_statistics),
-        size: :medium,
-        href: stats_project_repository_path(@project),
-        aria: { label: t(:label_statistics) },
-        title: t(:label_statistics)
-      )
-    end
-    if User.current.allowed_in_project?(:manage_repository, @project)
-      header.with_action_icon_button(
-        tag: :a,
-        icon: :gear,
-        label: t(:label_setting_plural),
-        mobile_icon: :gear,
-        mobile_label: t(:label_setting_plural),
-        size: :medium,
-        href: project_settings_repository_path(@project),
-        aria: { label: t(:label_setting_plural) },
-        title: t(:label_setting_plural)
-      )
-    end
-  end
-%>
-
+<%= render(Repositories::PageHeaderComponent.new(repository: @repository, empty: empty, path: @path, rev: @rev, project: @project))  %>
 <% if @instructions && @instructions.available? %>
   <div class="repository-checkout-container">
     <div class="repository-checkout-input-group hidden-for-mobile">
@@ -98,7 +63,7 @@ See COPYRIGHT and LICENSE files for more details.
   # @rev is revision or git branch or tag.
   rev_text = @changeset.nil? ? @rev : format_revision(@changeset)
 %>
-<span class="repository-bradcrumbs--identifier">
+<span>
   <%= "(#{t('repositories.at_identifier', identifier: rev_text)})" if rev_text.present? %>
 </span>
 <% if @instructions %>

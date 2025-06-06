@@ -271,50 +271,6 @@ module RepositoriesHelper
       !@repository.managed?
   end
 
-  def breadcrumb_items(project:, path:, rev:)
-    [
-      project_breadcrumb(project),
-      repository_breadcrumb(project, rev),
-      *path_breadcrumbs(project, path, rev)
-    ]
-  end
-
-  def project_breadcrumb(project)
-    {
-      href: project_overview_path(project.id),
-      text: project.name
-    }
-  end
-
-  def repository_breadcrumb(project, rev)
-    {
-      href: url_for(action: "show", project_id: project.id, repo_path: nil, rev: rev),
-      text: t("repositories.named_repository", vendor_name: @repository.class.vendor_name)
-    }
-  end
-
-  def path_breadcrumbs(project, path, rev)
-    dirs = path.to_s.split("/").compact_blank
-    link_path = ""
-    dirs.each_with_index.map do |dir, index|
-      link_path = File.join(link_path, dir)
-
-      if index == dirs.size - 1
-        dir
-      else
-        {
-          href: url_for(
-            action: "show",
-            project_id: project,
-            repo_path: to_path_param(link_path),
-            rev: rev
-          ),
-          text: dir
-        }
-      end
-    end
-  end
-
   def with_leading_slash(path)
     path.to_s.starts_with?("/") ? path : "/#{path}"
   end
