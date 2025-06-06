@@ -50,7 +50,7 @@ module OpenProject
           for_id: @system_arguments[:id],
           type: :label,
           text: I18n.t("js.help_texts.show_modal"),
-          direction: :e
+          direction: :sw
         )
         @system_arguments[:aria] ||= {}
         @system_arguments[:aria][:labelledby] = @tooltip.id

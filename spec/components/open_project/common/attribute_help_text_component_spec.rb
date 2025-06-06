@@ -48,7 +48,7 @@ RSpec.describe OpenProject::Common::AttributeHelpTextComponent, type: :component
       expect(subject).to have_element "tool-tip", text: "Show attribute help text entry",
                                                   for: /attribute-help-text-component-\d+/,
                                                   popover: "manual",
-                                                  "data-direction": "e",
+                                                  "data-direction": "sw",
                                                   "data-type": "label"
     end
 
