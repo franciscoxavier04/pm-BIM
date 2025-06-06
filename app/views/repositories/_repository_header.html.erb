@@ -32,7 +32,7 @@ See COPYRIGHT and LICENSE files for more details.
 <%= render(Repositories::PageHeaderComponent.new(repository: @repository, empty: empty, path: @path, rev: @rev, project: @project))  %>
 <% if @instructions && @instructions.available? %>
   <div class="repository-checkout-container">
-    <div class="repository-checkout-input-group hidden-for-mobile">
+    <div class="repository-input-group hidden-for-mobile">
       <div class="repository-checkout-input-group--affix -prepend">
         <span><%= @instructions.checkout_command %></span>
       </div>

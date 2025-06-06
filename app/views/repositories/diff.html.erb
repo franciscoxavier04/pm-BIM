@@ -53,7 +53,7 @@ See COPYRIGHT and LICENSE files for more details.
                             ])
   end
 %>
-<div class="toolbar-input-group">
+<div class="repository-input-group">
   <%= form_tag({repo_path: to_path_param(@path)}, method: :get) do %>
     <%= hidden_field_tag('rev', params[:rev]) if params[:rev] %>
     <%= hidden_field_tag('rev_to', params[:rev_to]) if params[:rev_to] %>

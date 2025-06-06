@@ -47,15 +47,11 @@ See COPYRIGHT and LICENSE files for more details.
 %>
 
 <%= form_tag({ action: "revision", id: @project }, { method: :get }) do %>
-  <ul class="revisions-toolbar-container">
-    <li class="toolbar-item">
-      <%= label_tag :rev, t(:label_revision), class: "hidden-for-sighted" %>
-      <%= text_field_tag :rev, @rev, size: 8, placeholder: t(:label_revision) %>
-    </li>
-    <li class="toolbar-item">
-      <%= submit_tag "OK", class: "button -primary" %>
-    </li>
-  </ul>
+  <div class="revisions-toolbar-container">
+    <%= label_tag :rev, t(:label_revision), class: "hidden-for-sighted" %>
+    <%= text_field_tag :rev, @rev, size: 8, placeholder: t(:label_revision) %>
+    <%= submit_tag "OK", class: "button -primary" %>
+  </div>
 <% end %>
 <%= render partial: "revisions", locals: { project: @project, path: "", revisions: @changesets, entry: nil } %>
 <%= pagination_links_full @changesets %>
