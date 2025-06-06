@@ -33,12 +33,17 @@ module Projects
         include ApplicationHelper
         include OpPrimer::ComponentHelpers
         include OpTurbo::Streamable
+        include Projects::LifeCycleDefinitionHelper
 
         options :definition,
                 :active?
 
         def toggle_aria_label
           I18n.t("projects.settings.life_cycle.step.use_in_project", step: definition.name)
+        end
+
+        def definition_editable?
+          User.current.admin? && allowed_to_customize_life_cycle?
         end
       end
     end
