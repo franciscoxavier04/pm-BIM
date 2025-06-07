@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# --copyright
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,24 +26,27 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
 
-require_relative "../../lib_static/open_project/feature_decisions"
+require "spec_helper"
 
-# Add feature flags here via e.g.
-#
-#   OpenProject::FeatureDecisions.add :some_flag
-#
-# If the feature to be flag-guarded stems from a module, add an initializer
-# to that module's engine:
-#
-#   initializer 'the_engine.feature_decisions' do
-#     OpenProject::FeatureDecisions.add :some_flag
-#   end
+RSpec.describe "repositories/revision" do
+  let(:user) { create(:admin) }
+  let(:project) { create(:project) }
+  let(:repository) { create(:repository_git, project:) }
+  let(:changeset) { create(:changeset, repository:) }
 
-OpenProject::FeatureDecisions.add :built_in_oauth_applications,
-                                  description: "Allows the display and use of built-in OAuth applications."
+  before do
+    login_as(user)
+    assign(:project, project)
+    assign(:repository, repository)
+    assign(:changeset, changeset)
+  end
 
-OpenProject::FeatureDecisions.add :stages_and_gates,
-                                  description: "Enables the project phases feature.",
-                                  force_active: true
+  it "renders the revision with file changes without frozen string errors (Bug #64508)" do
+    changeset.file_changes.create!(action: "A", path: "/foo/bar/test.txt")
+
+    render
+    expect(rendered).to include("/foo/bar/test.txt")
+  end
+end

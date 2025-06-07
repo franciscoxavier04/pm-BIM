@@ -92,12 +92,17 @@ module Projects::LifeCycles
     end
 
     def autofocus?(field_name)
-      start_date_blank = model.start_date.blank? && model.default_start_date.blank?
-      case field_name
-      when :start_date
-        start_date_blank
-      when :finish_date
-        !start_date_blank && model.finish_date.blank?
+      # let javascipt handle focusing when rendering for preview
+      return false if model.changed?
+
+      field_name == autofocus_field_name
+    end
+
+    def autofocus_field_name
+      if start_date_disabled? || (model.start_date? && !model.finish_date?)
+        :finish_date
+      else
+        :start_date
       end
     end
 
