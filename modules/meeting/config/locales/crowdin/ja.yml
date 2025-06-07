@@ -155,7 +155,7 @@ ja:
   label_past_invitations: "過去の招待状"
   label_attended: "出席済み"
   label_attended_user: "出席したユーザー"
-  label_created_by_me: "私が作成した"
+  label_created_by_me: "自分が作成したもの"
   label_notify: "レビュー用に送信"
   label_icalendar: "iCalendar を送信"
   label_icalendar_download: "iCalendarイベントをダウンロード"
@@ -297,7 +297,7 @@ ja:
     starts: "Starts"
     in_words:
       daily_interval: "Every %{interval} days"
-      working_days: "Every working day"
+      working_days: "稼働日"
       weekly: "Every week on %{weekday}"
       weekly_interval: "Every %{interval} weeks on %{weekday}"
       frequency: "%{base} at %{time}"

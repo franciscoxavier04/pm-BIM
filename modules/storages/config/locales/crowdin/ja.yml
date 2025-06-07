@@ -41,11 +41,11 @@ ja:
         storages/project_storage:
           attributes:
             project_folder_id:
-              blank: Please select a folder.
+              blank: フォルダーを選択してください。
             project_folder_mode:
               mode_unavailable: is not available for this storage.
             project_ids:
-              blank: Please select a project.
+              blank: プロジェクトを選択してください。
         storages/storage:
           attributes:
             host:
@@ -69,12 +69,12 @@ ja:
   permission_delete_files: '自動的に管理されたプロジェクトフォルダ: ファイルの削除'
   permission_delete_files_explanation: この権限はNextcloudストレージでのみ利用できます
   permission_header_for_project_module_storages: Automatically managed project folders
-  permission_manage_file_links: Manage file links
-  permission_manage_files_in_project: Manage files in project
+  permission_manage_file_links: ファイルへのリンク管理
+  permission_manage_files_in_project: プロジェクト内のファイル管理
   permission_read_files: '自動的に管理されたプロジェクトフォルダ: ファイルの読み込み'
   permission_share_files: '自動的に管理されたプロジェクトフォルダ: ファイルを共有'
   permission_share_files_explanation: この権限はNextcloudストレージでのみ利用できます
-  permission_view_file_links: View file links
+  permission_view_file_links: ファイルへのリンク閲覧
   permission_write_files: '自動的に管理されたプロジェクトフォルダ: ファイルの書き込み'
   project_module_storages: ファイルを添付する
   project_storages:

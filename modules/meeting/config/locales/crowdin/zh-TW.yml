@@ -233,7 +233,7 @@ zh-TW:
     blankslate:
       title: "沒有可顯示的會議"
       desc: "沒有符合篩選條件的會議。"
-    label_export_pdf: "Export PDF"
+    label_export_pdf: "匯出 PDF"
     export:
       your_meeting_export: "Meeting is being exported"
       label_meeting_agenda: "Meeting agenda"

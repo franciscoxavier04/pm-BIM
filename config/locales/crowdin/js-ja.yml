@@ -546,8 +546,8 @@ ja:
     label_custom_queries: "非公開"
     label_columns: "列"
     label_attachments: 添付ファイル
-    label_drop_files: "Drop files here to attach files."
-    label_drop_or_click_files: "Drop files here or click to attach files."
+    label_drop_files: "ここにファイルをドロップして添付。"
+    label_drop_or_click_files: "ここにファイルをドロップするかクリックしてファイルを添付。"
     label_drop_folders_hint: フォルダを添付ファイルとしてアップロードすることはできません。 単一のファイルを選択してください。
     label_add_attachments: "ファイルを添付"
     label_formattable_attachment_hint: "このフィールドにドロップ、またはクリップボードから貼り付けて、ファイルを添付およびリンクします。"
@@ -626,7 +626,7 @@ ja:
         reminder: "Reminder"
       date_alerts:
         milestone_date: "Milestone date"
-        overdue: "Overdue"
+        overdue: "期限切れ"
         overdue_since: "%{difference_in_days}以降。"
         property_today: "は今日です。"
         property_is: "は%{difference_in_days}後。"
@@ -919,7 +919,7 @@ ja:
       message_work_package_status_blocked: "ステータスがクローズでクローズされたバージョンが割り当てられているため、ワークパッケージのステータスは書き込みできません。"
       placeholder_filter_by_text: "タイトル、説明、コメント、..."
       progress:
-        title: "Work estimates and progress"
+        title: "作業見積もりと進捗"
       baseline:
         addition_label: "Added to view within the comparison time period"
         removal_label: "Removed from view within the comparison time period"
@@ -991,11 +991,11 @@ ja:
       default_queries:
         manually_sorted: "New manually sorted query"
         latest_activity: "最新の活動"
-        created_by_me: "私が作成した"
-        assigned_to_me: "私に割り当てられた"
-        recently_created: "最近作成された"
+        created_by_me: "自分が作成したもの"
+        assigned_to_me: "自分の担当するもの"
+        recently_created: "最近作成されたもの"
         all_open: "未完了"
-        overdue: "Overdue"
+        overdue: "期限の過ぎたもの"
         summary: "サマリ"
         shared_with_users: "ユーザーと共有"
         shared_with_me: "Shared with me"
@@ -1275,15 +1275,15 @@ ja:
       no_results: "You have no favorite projects"
       no_results_subtext: "Add one or multiple projects as favorite through their overview or in a project list."
     include_projects:
-      toggle_title: "Include projects"
+      toggle_title: "対象プロジェクト"
       title: "プロジェクト"
-      clear_selection: "Clear selection"
+      clear_selection: "選択をクリア"
       apply: "適用"
       selected_filter:
         all: "すべてのプロジェクト"
-        selected: "Only selected"
-      search_placeholder: "Search project..."
-      include_subprojects: "Include all sub-projects"
+        selected: "選択したもののみ"
+      search_placeholder: "プロジェクトを検索…"
+      include_subprojects: "すべてのサブプロジェクトを含む"
       tooltip:
         include_all_selected: "Project already included since Include all sub-projects is enabled."
         current_project: "This is the current project you are in."
