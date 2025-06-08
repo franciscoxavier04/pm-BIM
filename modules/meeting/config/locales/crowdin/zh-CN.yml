@@ -238,20 +238,20 @@ zh-CN:
       your_meeting_export: "会议正在导出"
       label_meeting_agenda: "会议议程"
     export_pdf_dialog:
-      title: 导出PDF
-      description: Generate a printable PDF file of this meeting at the current state.
+      title: 导出 PDF
+      description: 生成当前会议的可打印PDF文件。
       include_participants:
         label: 包含与会者列表
-        caption: A list of participants will be preset above the meeting agenda.
+        caption: 与会者名单将在会议议程上排列。
       include_attachments:
         label: 包含附件列表
-        caption: A list containing the filenames of attachments will be appended at the end.
+        caption: 附件的文件名清单将在结尾处添加。
       include_backlog:
         label: 包含待办事项
-        caption: Backlog elements are not normally considered part of a meeting occurrence but you can choose to include them.
+        caption: Backlog 的元素通常不被认为是会议事件的一部分，但您可以选择将它们包含在内。
       include_outcomes:
         label: 包含议程成果
-        caption: If your agenda outcomes contain confidential information, you can choose to not include them in the export.
+        caption: 如果你的议程结果包含机密信息，你可以选择不在导出内容中包括它们。
       footer_text:
         label: 页脚文本
         caption: 此文本将出现在每一页的页脚右侧。
