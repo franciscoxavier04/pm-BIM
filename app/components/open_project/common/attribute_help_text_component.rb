@@ -31,6 +31,10 @@
 module OpenProject
   module Common
     class AttributeHelpTextComponent < ApplicationComponent
+      renders_one :additional_label, lambda { |**system_arguments|
+        Primer::Beta::Text.new(**system_arguments)
+      }
+
       def initialize(help_text:, **system_arguments) # rubocop:disable Metrics/AbcSize
         super()
 
