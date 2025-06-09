@@ -33,8 +33,10 @@ require "rails_helper"
 RSpec.describe OpenProject::Common::AttributeHelpTextComponent, type: :component do
   include Rails.application.routes.url_helpers
 
+  let(:block) { nil }
+
   subject do
-    render_inline(described_class.new(help_text:))
+    render_inline(described_class.new(help_text:), &block)
     page
   end
 
@@ -75,6 +77,31 @@ RSpec.describe OpenProject::Common::AttributeHelpTextComponent, type: :component
     context "without an additional label" do
       it "does not render additional label content" do
         expect(subject).to have_no_css ".Link-content"
+      end
+    end
+
+    context "with an additional label" do
+      let(:block) do
+        proc do |help_text|
+          help_text.with_additional_label_content "Normal Help Text Link"
+        end
+      end
+
+      it "renders additional label content" do
+        expect(subject).to have_css ".Link-content", text: "Normal Help Text Link"
+      end
+    end
+
+    context "with an additional styled label" do
+      let(:block) do
+        proc do |help_text|
+          help_text.with_additional_label(font_weight: :bold) { "Bold Help Text Link" }
+        end
+      end
+
+      it "renders additional label content" do
+        expect(subject).to have_css ".Link-content", text: "Bold Help Text Link"
+        expect(subject).to have_css ".text-bold", text: "Bold Help Text Link"
       end
     end
   end
