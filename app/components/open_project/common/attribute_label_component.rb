@@ -50,7 +50,7 @@ module OpenProject
 
         @help_text = ::AttributeHelpText.for(model)
           &.cached(current_user)
-          &.[](attribute.to_s)
+          &.[](AttributeHelpText.normalize_value_for(:attribute_name, attribute))
       end
     end
   end
