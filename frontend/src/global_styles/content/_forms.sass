@@ -423,6 +423,9 @@ fieldset.form--fieldset
   .form--label.-error &
     color: var(--content-form-error-color)
 
+  &:has(.op-attribute-help-text)
+    @extend .op-attribute-label
+
 .form--field-container
   @include grid-content(10)
   // override max-width set by including grid-content
