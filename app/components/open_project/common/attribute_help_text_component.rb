@@ -66,6 +66,7 @@ module OpenProject
         return unless @help_text
 
         @system_arguments[:href] = show_dialog_attribute_help_text_path(@help_text)
+        @system_arguments[:data][:qa_help_text_for] = @help_text.attribute_name.camelize(:lower)
       end
     end
   end
