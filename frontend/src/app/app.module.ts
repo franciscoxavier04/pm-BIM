@@ -138,9 +138,6 @@ import {
 import {
   DraggableAutocompleteComponent,
 } from 'core-app/shared/components/autocompleter/draggable-autocomplete/draggable-autocomplete.component';
-import {
-  AttributeHelpTextComponent,
-} from 'core-app/shared/components/attribute-help-texts/attribute-help-text.component';
 import { OpExclusionInfoComponent } from 'core-app/shared/components/fields/display/info/op-exclusion-info.component';
 import { NewProjectComponent } from 'core-app/features/projects/components/new-project/new-project.component';
 import { CopyProjectComponent } from 'core-app/features/projects/components/copy-project/copy-project.component';
@@ -421,7 +418,6 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-macro-wp-quickinfo', WorkPackageQuickinfoMacroComponent, { injector });
     registerCustomElement('opce-ckeditor-augmented-textarea', CkeditorAugmentedTextareaComponent, { injector });
     registerCustomElement('opce-draggable-autocompleter', DraggableAutocompleteComponent, { injector });
-    registerCustomElement('opce-attribute-help-text', AttributeHelpTextComponent, { injector });
     registerCustomElement('opce-static-attribute-help-text', StaticAttributeHelpTextComponent, { injector });
     registerCustomElement('opce-exclusion-info', OpExclusionInfoComponent, { injector });
     registerCustomElement('opce-attachments', OpAttachmentsComponent, { injector });
