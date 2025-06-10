@@ -97,12 +97,13 @@ class Queries::WorkPackages::Filter::ProjectPhaseFilter < Queries::WorkPackages:
 
   private
 
-  def project_phase_feature_flag_enabled?
-    OpenProject::FeatureDecisions.stages_and_gates_active?
+  def project_phase_feature_available?
+    OpenProject::FeatureDecisions.stages_and_gates_active? &&
+      User.current.allowed_in_any_project?(:view_project_phases)
   end
 
   def project_phase_definitions
-    return Project::PhaseDefinition.none unless project_phase_feature_flag_enabled?
+    return Project::PhaseDefinition.none unless project_phase_feature_available?
 
     Project::PhaseDefinition.order(position: :asc)
   end
