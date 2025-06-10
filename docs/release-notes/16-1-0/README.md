@@ -3,12 +3,12 @@ title: OpenProject 16.1.0
 sidebar_navigation:
     title: 16.1.0
 release_version: 16.1.0
-release_date: 2025-06-05
+release_date: 2025-06-18
 ---
 
 # OpenProject 16.1.0
 
-Release date: 2025-06-05
+Release date: 2025-06-18
 
 We released OpenProject [OpenProject 16.1.0](https://community.openproject.org/versions/2194).
 The release contains several bug fixes and we recommend updating to the newest version.
