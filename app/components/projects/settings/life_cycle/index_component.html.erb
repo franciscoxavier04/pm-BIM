@@ -78,7 +78,7 @@
               data: { "projects--settings--border-box-filter-target": "searchItem" },
               test_selector: "project-life-cycle-step-#{definition.id}"
             ) do
-              render(Projects::Settings::LifeCycleSteps::StepComponent.new(definition:, active?: active))
+              render(Projects::Settings::LifeCycle::PhaseComponent.new(definition:, active?: active))
             end
           end
         end

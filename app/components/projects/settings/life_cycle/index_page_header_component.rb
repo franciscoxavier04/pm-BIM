@@ -2,7 +2,7 @@
 
 # -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -28,30 +28,16 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-module My
-  module TimeTracking
-    class ViewModeSwitcherComponent < ApplicationComponent
-      options :mode,
-              :view_mode,
-              :date
+module Projects::Settings::LifeCycle
+  class IndexPageHeaderComponent < ApplicationComponent
+    include ApplicationHelper
 
-      def call
-        render(Primer::Alpha::TabNav.new(label: I18n.t(:label_view_mode_switcher))) do |component|
-          component.with_tab(selected: view_mode == :calendar, href: link(:calendar)) do |tab|
-            tab.with_text { I18n.t(:label_calendar) }
-            tab.with_icon(icon: :calendar)
-          end
+    options :project
 
-          component.with_tab(selected: view_mode == :list, href: link(:list)) do |tab|
-            tab.with_text { I18n.t(:label_list) }
-            tab.with_icon(icon: "op-view-list")
-          end
-        end
-      end
-
-      def link(new_view_mode)
-        my_time_tracking_path(date: date, mode: mode, view_mode: new_view_mode)
-      end
+    def breadcrumb_items
+      [{ href: project_overview_path(project), text: project.name },
+       { href: project_settings_general_path(project), text: I18n.t("label_project_settings") },
+       t("projects.settings.life_cycle.header.title")]
     end
   end
 end

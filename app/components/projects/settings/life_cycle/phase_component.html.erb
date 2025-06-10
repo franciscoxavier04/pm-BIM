@@ -7,7 +7,7 @@
       render(
         Projects::PhaseDefinitionComponent.new(
           definition,
-          edit_link: User.current.admin?,
+          edit_link: definition_editable?,
           phase_text_options: { classes: "filter-target-visible-text" }
         )
       )
