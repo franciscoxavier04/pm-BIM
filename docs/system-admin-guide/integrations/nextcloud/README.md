@@ -12,8 +12,8 @@ keywords: Nextcloud file storage integration
 
 >  [!IMPORTANT]
 >
-> The integration between OpenProject and Nextcloud is part of the open source and free of charge **Community edition**, including all file management functionalities. 
-> However, please note that setting up the Single Sign-on via OpenID Connect Identity Provider is an Enterprise Add-on and can only be used with [Enterprise cloud](../../../enterprise-guide/enterprise-cloud-guide) or [Enterprise on-premises](../../../enterprise-guide/enterprise-on-premises-guide). This Add-On is available for all installations under the [Enterprise Corporate plan](https://www.openproject.org/pricing/). 
+> The integration between OpenProject and Nextcloud is part of the open source and free of charge **Community edition**, including all file management functionalities.
+> However, please note that setting up the Single Sign-on via OpenID Connect Identity Provider is an Enterprise Add-on and can only be used with [Enterprise cloud](../../../enterprise-guide/enterprise-cloud-guide) or [Enterprise on-premises](../../../enterprise-guide/enterprise-on-premises-guide). This Add-On is available for all installations under the [Enterprise Corporate plan](https://www.openproject.org/pricing/).
 
 | Topic                                                               | Description                                                          |
 |---------------------------------------------------------------------|:---------------------------------------------------------------------|
@@ -35,7 +35,7 @@ OpenProject offers close integration with Nextcloud to allow users to:
 
 ## Required system versions
 
-Please see our [System requirements](../../../installation-and-operations/system-requirements/) overview which lists the supported versions. 
+Please see our [System requirements](../../../installation-and-operations/system-requirements/) overview which lists the supported versions.
 
 > [!IMPORTANT]
 >
@@ -102,7 +102,7 @@ The next part of the setup will vary depending on your chosen authentication met
 
 **Two-way OAuth 2.0 authorization code flow:** This way of authentication works with all deployments of OpenProject and Nextcloud. Requests between the two applications will act with the target application acting as OAuth 2.0 authorization server. For the users this means that they will usually have to confirm a separate OAuth consent screen for both directions of communication.
 
-**Single Sign-On through OpenID Connect Identity Provider:** This authentication mode improves user experience by eliminating additional consent screens. Requests between OpenProject and Nextcloud are authenticated with access tokens obtained from a common Identity Provider. This requires both applications to use the same OpenID Connect Identity Provider and specific configurations at the provider level. 
+**Single Sign-On through OpenID Connect Identity Provider:** This authentication mode improves user experience by eliminating additional consent screens. Requests between OpenProject and Nextcloud are authenticated with access tokens obtained from a common Identity Provider. This requires both applications to use the same OpenID Connect Identity Provider and specific configurations at the provider level.
 
 > [!NOTE]
 >
@@ -222,9 +222,17 @@ On Nextcloud inside the _OpenProject Integration_ App, when adding the OpenProje
   ```
   In case the `curl` command above results in an error pay attention what it is telling you. Typical reasons for connection issues are misconfigured firewalls, proxies, or a bad TLS/SSL setup.
 
-##### While using a self signed TLS/SSL certificate you receive "certificate verify failed"
+##### While using a self-signed TLS/SSL certificate you receive "certificate verify failed"
 
-Some administrators setup OpenProject using a self signed TLS/SSL certificate with their own CA (certificate authority). That CA needs to be known on the Nextcloud server. On a Debian/Ubuntu based server, make sure you add the CA certificate for your OpenProject certificate to `/usr/local/share/ca-certificates` and run `sudo update-ca-certificates` afterwards. Then Nextcloud's PHP code should be able to verify your OpenProject TLS/SSL certificate when emitting HTTPS requests to your Nextcloud server.
+Some administrators setup OpenProject using a self-signed TLS/SSL certificate with their own CA (certificate authority). That CA needs to be known on the Nextcloud server. On a Debian/Ubuntu based server, make sure you add the CA certificate for your OpenProject certificate to `/usr/local/share/ca-certificates` and run `sudo update-ca-certificates` afterwards.
+
+Next, import that new bundled file into Nextcloud:
+
+  ```shell
+  occ security:certificates:import /etc/ssl/certs/ca-certificates.crt
+  ```
+
+Now, Nextcloud's PHP code should be able to verify your OpenProject TLS/SSL certificate when emitting HTTPS requests to your Nextcloud server.
 
 Attention: Please do not confuse the CA for the Nextcloud server's certificate with the CA of the OpenProject server's certificate which you might have provided in the OpenProject installation wizard. They do not necessarily need to be the same.
 
@@ -293,7 +301,7 @@ If you face an error while trying to delete or disable user/group "OpenProject" 
 2. Remove user `OpenProject`
 3. Remove group `OpenProject`
 4. Inside the _Group folders_ App (*Administration settings → Administration → Group folders*), remove group folder `OpenProject`.
-   
+
 > [!WARNING]
 > This step will delete all files in that folder. Make sure to make a copy if you want to keep these files!**
 
@@ -320,9 +328,19 @@ On OpenProject inside the storage administration (*Administration → File stora
 
   If you do not get such a response check out what the `curl` command above is telling you. Typical reasons for connection issues are misconfigured firewalls, proxies, or a bad TLS/SSL setup.
 
-##### While using a self signed TLS/SSL certificate you receive "certificate verify failed"
+##### While using a self-signed TLS/SSL certificate you receive "certificate verify failed"
 
-Some administrators setup Nextcloud using a self signed TLS/SSL certificate with their own CA (certificate authority). The CA needs to be known on the OpenProject server. On a Debian/Ubuntu based server, make sure you add the CA certificate for your Nextcloud certificate to `/usr/local/share/ca-certificates` and run `sudo update-ca-certificates` afterwards. Then OpenProject's Ruby code should be able to verify your Nextcloud TLS/SSL certificate when emitting HTTPS requests to your Nextcloud server.
+Some administrators setup Nextcloud using a self-signed TLS/SSL certificate with their own CA (certificate authority). The CA needs to be known on the OpenProject server. On a Debian/Ubuntu based server, make sure you add the CA certificate for your Nextcloud certificate to `/usr/local/share/ca-certificates` and run `sudo update-ca-certificates` afterwards.
+
+Add the following environment variable to the OpenProject server and restart it:
+
+```
+SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+```
+
+In docker compose based installations, this can be usually achieved by editing the `.env` file that's next to your `docker-compose.yml`.
+
+Afterwards OpenProject's Ruby code should be able to verify your Nextcloud TLS/SSL certificate when emitting HTTPS requests to your Nextcloud server.
 
 Attention: Please do not confuse the CA for the Nextcloud server's certificate with the CA of the OpenProject server's certificate which you might have provided in the OpenProject installation wizard. They do not necessarily need to be the same.
 
