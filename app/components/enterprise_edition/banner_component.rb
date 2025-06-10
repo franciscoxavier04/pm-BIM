@@ -55,7 +55,7 @@ module EnterpriseEdition
     # @param show_always [boolean] Always show the banner, regardless of the dismissed or feature state.
     # @param dismiss_key [String] Provide a string to identify this banner when being dismissed. Defaults to feature_key
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(feature_key, # rubocop:disable Metrics/AbcSize
+    def initialize(feature_key,
                    variant: DEFAULT_VARIANT,
                    image: nil,
                    video: nil,
@@ -122,9 +122,9 @@ module EnterpriseEdition
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "op-enterprise-banner",
-        @variant == :medium ? "op-enterprise-banner_medium" : nil,
-        @variant == :large ? "op-enterprise-banner_large" : nil,
-        trial_feature? ? "op-enterprise-banner_trial" : nil
+        "op-enterprise-banner_medium" => @variant == :medium,
+        "op-enterprise-banner_large" => @variant == :large,
+        "op-enterprise-banner_trial" => trial_feature?
       )
     end
 
@@ -136,11 +136,11 @@ module EnterpriseEdition
 
     def render?
       return true if @show_always
+      return false if dismissed?
+      return true if feature_available? && trial_feature?
+      return false if EnterpriseToken.hide_banners?
 
-      suppress_banner = EnterpriseToken.hide_banners? || feature_available? || dismissed?
-      allow_trial_exception = feature_available? && trial_feature? && !dismissed?
-
-      !suppress_banner || allow_trial_exception
+      !feature_available?
     end
 
     def feature_available?

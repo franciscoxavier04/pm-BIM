@@ -71,10 +71,10 @@ export class BannersService {
     return url.toString();
   }
 
-  public async conditional(feature:string, featureAvailable?:() => void, featureNotAvailable?:() => void) {
+  public async conditional(feature:string, featureNotAvailable?:() => void, featureAvailable?:() => void) {
     await this.configuration.initialize();
 
-    if (!this.allowsTo(feature)) {
+    if (this.allowsTo(feature)) {
       this.callMaybe(featureAvailable);
     } else {
       this.callMaybe(featureNotAvailable);
