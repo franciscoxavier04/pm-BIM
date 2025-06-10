@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,22 +28,22 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ProjectLifeCycleSteps
-  class SetAttributesService < ::BaseServices::SetAttributes
-    def perform(*)
-      super.tap do
-        set_calculated_duration
-      end
+module ProjectPhases
+  class ActivationContract < ::ModelContract
+    alias_method :project, :model
+
+    validate :validate_select_project_phases_permission
+
+    def validate_select_project_phases_permission
+      return if user.allowed_in_project?(:select_project_phases, project)
+
+      errors.add :base, :error_unauthorized
     end
 
-    private
+    protected
 
-    def ensure_default_attributes(_params)
-      model.start_date ||= model.default_start_date if model.default_start_date.present?
-    end
-
-    def set_calculated_duration
-      model.duration = model.calculate_duration
+    def validate_model?
+      false
     end
   end
 end

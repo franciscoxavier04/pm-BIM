@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe ProjectLifeCycleSteps::RescheduleService, type: :model do
+RSpec.describe ProjectPhases::RescheduleService, type: :model do
   shared_let(:user) { create(:user) }
   shared_let(:project) { create(:project) }
 
@@ -43,8 +43,8 @@ RSpec.describe ProjectLifeCycleSteps::RescheduleService, type: :model do
       expect(service.user).to eq(user)
     end
 
-    it "uses ProjectLifeCycleSteps::RescheduleContract as the default contract" do
-      expect(service.contract_class).to eq(ProjectLifeCycleSteps::RescheduleContract)
+    it "uses ProjectPhases::RescheduleContract as the default contract" do
+      expect(service.contract_class).to eq(ProjectPhases::RescheduleContract)
     end
   end
 

@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ProjectLifeCycleSteps
+module ProjectPhases
   class ActivationService < ::BaseServices::BaseContracted
     alias_method :project, :model
 
@@ -88,7 +88,7 @@ module ProjectLifeCycleSteps
     end
 
     def default_contract_class
-      ProjectLifeCycleSteps::ActivationContract
+      ProjectPhases::ActivationContract
     end
   end
 end

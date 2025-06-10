@@ -28,17 +28,9 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ProjectLifeCycleSteps
-  class ActivationContract < ::ModelContract
+module ProjectPhases
+  class RescheduleContract < BaseContract
     alias_method :project, :model
-
-    validate :validate_select_project_phases_permission
-
-    def validate_select_project_phases_permission
-      return if user.allowed_in_project?(:select_project_phases, project)
-
-      errors.add :base, :error_unauthorized
-    end
 
     protected
 

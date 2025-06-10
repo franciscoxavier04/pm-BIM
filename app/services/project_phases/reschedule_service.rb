@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ProjectLifeCycleSteps
+module ProjectPhases
   class RescheduleService < ::BaseServices::BaseContracted
     alias_method :project, :model
 
@@ -76,7 +76,7 @@ module ProjectLifeCycleSteps
     end
 
     def default_contract_class
-      ProjectLifeCycleSteps::RescheduleContract
+      ProjectPhases::RescheduleContract
     end
   end
 end

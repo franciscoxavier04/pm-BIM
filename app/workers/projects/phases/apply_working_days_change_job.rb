@@ -37,7 +37,7 @@ class Projects::Phases::ApplyWorkingDaysChangeJob < ApplyWorkingDaysChangeJobBas
       from = phases.filter_map(&:start_date).first
       next unless from
 
-      ProjectLifeCycleSteps::RescheduleService.new(user: User.current, project:).call(phases:, from:)
+      ProjectPhases::RescheduleService.new(user: User.current, project:).call(phases:, from:)
 
       project.journal_cause = journal_cause
 

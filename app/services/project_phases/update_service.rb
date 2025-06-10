@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,14 +28,31 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ProjectLifeCycleSteps
-  class BaseContract < ::ModelContract
-    validate :validate_edit_project_phases_permission
+module ProjectPhases
+  class UpdateService < ::BaseServices::Update
+    delegate :project, to: :model
 
-    def validate_edit_project_phases_permission
-      return if user.allowed_in_project?(:edit_project_phases, project)
+    def after_perform(*)
+      reschedule_following_phases if model.date_range_set?
 
-      errors.add :base, :error_unauthorized
+      project.touch_and_save_journals
+
+      super
+    end
+
+    private
+
+    def reschedule_following_phases
+      RescheduleService.new(user:, project:)
+        .call(phases: following_phases, from: initial_reschedule_date)
+    end
+
+    def initial_reschedule_date
+      model.active? ? model.finish_date + 1 : model.start_date
+    end
+
+    def following_phases
+      project.available_phases.select { it.position > model.position }
     end
   end
 end

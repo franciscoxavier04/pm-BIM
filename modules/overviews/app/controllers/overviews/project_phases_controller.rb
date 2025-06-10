@@ -41,10 +41,10 @@ module ::Overviews
     end
 
     def preview
-      service_call = ::ProjectLifeCycleSteps::SetAttributesService
+      service_call = ::ProjectPhases::SetAttributesService
                 .new(user: current_user,
                      model: @project_phase,
-                     contract_class: ProjectLifeCycleSteps::UpdateContract)
+                     contract_class: ::ProjectPhases::UpdateContract)
                 .call(permitted_params.project_phase)
 
       update_via_turbo_stream(
@@ -57,7 +57,7 @@ module ::Overviews
     end
 
     def update
-      service_call = ::ProjectLifeCycleSteps::UpdateService
+      service_call = ::ProjectPhases::UpdateService
                       .new(user: current_user, model: @project_phase)
                       .call(permitted_params.project_phase)
 
