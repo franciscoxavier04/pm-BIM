@@ -25,9 +25,21 @@ Screenshot
 
 ### Export meetings in PDF format
 
-Text 
+One of the most upvoted Community requests is now available: You can now **export meetings as PDF documents** in OpenProject.
 
-Screenshot
+Meeting organizers and participants can generate a printable PDF that includes the agenda, outcomes, participants, and more. This makes it ideal for sharing with colleagues, archiving meeting records, or informing stakeholders who could not attend.
+
+The export is available via the More (⋯) menu for both one-time meetings and individual occurrences of recurring meetings. You can **customize the PDF** before download by choosing wheather to include:
+
+- the list of participants,
+- the list of attachements,
+- the backlog,
+- the agenda outcomes,
+- a customized footer text (e.g. project name), which appears on each page.
+
+The PDF is generated in A4 format and includes a professional layout. 
+
+![Overlay of Export PDF options for OpenProject meetings](openproject-16-1-export-meeting-to-pdf.png)
 
 ### Set smart default options for reminders
 
