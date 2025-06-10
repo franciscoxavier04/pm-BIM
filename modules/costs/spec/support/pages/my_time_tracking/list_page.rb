@@ -33,6 +33,10 @@ require "support/pages/page"
 module Pages
   module MyTimeTracking
     class ListPage < Page
+      def expect_no_display_day_section(date)
+        expect(page).to have_no_css("collapsible-section[data-test-selector='section-#{date.to_date.iso8601}']")
+      end
+
       def expect_displays_day_section(date, collapsed: false)
         selector = if collapsed
                      "collapsible-section[data-test-selector='section-#{date.to_date.iso8601}'][data-collapsed=true]"

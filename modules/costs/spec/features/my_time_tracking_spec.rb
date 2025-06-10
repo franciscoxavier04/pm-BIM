@@ -80,16 +80,36 @@ RSpec.describe "my time tracking", :js do
   end
 
   context "when requesting list view" do
-    before do
-      visit my_time_tracking_path(date: "2025-04-09", view_mode: "list", mode: "workweek")
+    context "for a defined work week", with_settings: { working_days: [1, 3, 4, 5] } do
+      before do
+        visit my_time_tracking_path(date: "2025-04-09", view_mode: "list", mode: "workweek")
+      end
+
+      it "shows all dates of the current work week" do
+        list_page.expect_displays_day_section("2025-04-07", collapsed: true)
+        list_page.expect_no_display_day_section("2025-04-08")
+        list_page.expect_displays_day_section("2025-04-09", collapsed: false)
+        list_page.expect_displays_day_section("2025-04-10", collapsed: false)
+        list_page.expect_displays_day_section("2025-04-11", collapsed: false)
+        list_page.expect_no_display_day_section("2025-04-12")
+        list_page.expect_no_display_day_section("2025-04-13")
+      end
     end
 
-    it "shows all dates of the current work week" do
-      list_page.expect_displays_day_section("2025-04-07", collapsed: true)
-      list_page.expect_displays_day_section("2025-04-08", collapsed: true)
-      list_page.expect_displays_day_section("2025-04-09", collapsed: false)
-      list_page.expect_displays_day_section("2025-04-10", collapsed: false)
-      list_page.expect_displays_day_section("2025-04-11", collapsed: false)
+    context "for a full week" do
+      before do
+        visit my_time_tracking_path(date: "2025-04-09", view_mode: "list", mode: "week")
+      end
+
+      it "shows all dates of the current week" do
+        list_page.expect_displays_day_section("2025-04-07", collapsed: true)
+        list_page.expect_displays_day_section("2025-04-08", collapsed: true)
+        list_page.expect_displays_day_section("2025-04-09", collapsed: false)
+        list_page.expect_displays_day_section("2025-04-10", collapsed: false)
+        list_page.expect_displays_day_section("2025-04-11", collapsed: false)
+        list_page.expect_displays_day_section("2025-04-12", collapsed: false)
+        list_page.expect_displays_day_section("2025-04-13", collapsed: false)
+      end
     end
   end
 
