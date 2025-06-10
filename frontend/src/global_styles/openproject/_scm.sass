@@ -97,13 +97,43 @@ li.change
   &.-append
     border-left: none !important
 
-.revisions-toolbar-container
+.revisions-action-container
   display: flex
   gap: 0.5rem
   width: 50%
   .button
     height: 36px
 
+.revisions-toolbar-container
+  display: flex
+
+.revisions-title-container
+  flex: 1 1
+  white-space: nowrap
+  max-width: 100%
+
+.revisions-items
+  display: flex
+
+  .revisions-item
+    margin-right: 0.5rem
+    display: flex
+    &:last-of-type
+      margin-right: 0
+    input
+      flex: 1
+      flex-basis: 150px
+
+    > div
+      height: 36px
+      display: flex
+      align-items: center
+      padding: 0 5px
+
+    label
+      font-size: 1rem
+    .button
+      margin-right: 0
 .repository--checkout-instructions-toggle
   margin-left: 0.5rem
   display: block

@@ -44,9 +44,9 @@ module Repositories
 
     def breadcrumb_items
       [
-        project_breadcrumb(),
-        repository_breadcrumb(),
-        *path_breadcrumbs()
+        project_breadcrumb,
+        repository_breadcrumb,
+        *path_breadcrumbs
       ]
     end
 
