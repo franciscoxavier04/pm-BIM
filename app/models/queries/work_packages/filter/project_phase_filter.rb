@@ -29,6 +29,8 @@
 #++
 
 class Queries::WorkPackages::Filter::ProjectPhaseFilter < Queries::WorkPackages::Filter::WorkPackageFilter
+  include Queries::ProjectPhaseDefinitions::DatabaseQueries
+
   def allowed_values
     @allowed_values ||= project_phase_definitions.map { |s| [s.name, s.id.to_s] }
   end
@@ -55,26 +57,8 @@ class Queries::WorkPackages::Filter::ProjectPhaseFilter < Queries::WorkPackages:
     values.filter_map { |id| available_definitions[id.to_i] }
   end
 
-  # TODO: copied over from ProjectPhaseSelect, refactor to use the same truth
   def joins
-    <<~SQL.squish
-      LEFT OUTER JOIN "projects" ON "projects"."id" = "work_packages"."project_id"
-      LEFT OUTER JOIN (
-        SELECT
-          ph.id,
-          ph.project_id,
-          ph.definition_id AS active_phase_definition_id
-        FROM project_phases ph
-        WHERE ph.project_id IN (#{project_with_view_phases_permissions.to_sql})
-        AND ph.active = true
-      ) AS active_phases
-      ON active_phases.active_phase_definition_id = work_packages.project_phase_definition_id
-        AND active_phases.project_id = work_packages.project_id
-    SQL
-  end
-
-  def project_with_view_phases_permissions
-    Project.allowed_to(User.current, :view_project_phases).select(:id)
+    join_project_phase_definitions_based_on_permissions_and_active_phases
   end
 
   def where
