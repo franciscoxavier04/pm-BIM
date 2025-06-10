@@ -147,14 +147,12 @@ If you want to be reminded about a work package at a later point in time, you ca
 A list with helpful pre-defined options will open, from which you can select: 
 
 - tomorrow
-
 - in 3 days
-
 - in a week
-
 - in a month
+- at a particular date/time
 
-- at a particular date/time (clicking this option will open a modal to specify the time and date for the reminder). 
+Selecting any of these options will display a modal. The time will be set to 9 am for the date you selected (apart from the last option). This modal allows you to adjust the pre-filled date and time if you'd like and, notably, to add a note. This note will be visible when the reminder is triggered in Notification center.
 
 > [!TIP]
 > All the pre-defined reminder options will be set to 9 am of the selected date.
