@@ -377,9 +377,9 @@ cs:
         tenant_id: Kopírujte ID adresáře (nájemce) z požadované aplikace a registrace aplikací v %{application_link_text}.
         tenant_id_placeholder: Jméno nebo UUID
       setting_up_additional_storages: Pro nastavení dalších úložišť souborů navštivte prosím
-      setting_up_additional_storages_non_admin: Administrátoři mohou nastavit další úložiště souborů v administraci / Úložiště souborů.
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: Pro nastavení úložišť souborů navštivte prosím
-      setting_up_storages_non_admin: Administrátoři mohou nastavit další úložiště souborů v administraci / Úložiště souborů.
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: 'Ujistěte se prosím, že máte oprávnění administrace v Nextcloud instanci a máte nainstalovanou následující aplikaci:'
       type_link_text: "„Integration OpenProject“"
     label_active: Aktivní

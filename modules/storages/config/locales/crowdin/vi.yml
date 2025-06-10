@@ -371,9 +371,9 @@ vi:
         tenant_id: Vui lòng sao chép ID Thư mục (người thuê) từ ứng dụng mong muốn và Đăng ký ứng dụng trong %{application_link_text}.
         tenant_id_placeholder: Tên hoặc UUID
       setting_up_additional_storages: Để thiết lập các lưu trữ tệp bổ sung, vui lòng truy cập
-      setting_up_additional_storages_non_admin: Các quản trị viên có thể thiết lập các lưu trữ tệp bổ sung trong Quản trị / Lưu trữ tệp.
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: Để thiết lập lưu trữ tệp, vui lòng truy cập
-      setting_up_storages_non_admin: Các quản trị viên có thể thiết lập lưu trữ tệp trong Quản trị / Lưu trữ tệp.
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: 'Vui lòng đảm bảo bạn có quyền quản trị trong phiên bản Nextcloud của bạn và đã cài đặt ứng dụng sau đây trước khi thực hiện cấu hình:'
       type_link_text: "“Tích hợp OpenProject”"
     label_active: Đang hoạt động

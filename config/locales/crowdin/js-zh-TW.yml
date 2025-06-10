@@ -356,11 +356,10 @@ zh-TW:
           learn_about: "瞭解更多新功能的資訊"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_0":
+          "16_1":
             standard:
               new_features_html: >
-                此版本包含多項新功能與改進，例如： <br>
-                <ul class="%{list_styling_class}"> <li>會議待辦事項功能，以及經典會議的結束。</li> <li>企業方案更新。</li> <li>工作項目中的內部留言（企業附加功能）。</li> <li>自動產生的工作項目標題（企業附加功能）。</li> <li>獨立的時間追蹤模組，包含行事曆檢視。</li> <li>在工作項目的關聯分頁中顯示父階關係。</li> <li>開放給社群：專案總覽頁的圖表功能。</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
     ical_sharing_modal:
       title: "訂閱日曆"
       inital_setup_error_message: "更新資料時發生錯誤"
@@ -565,7 +564,7 @@ zh-TW:
     label_version_plural: "版本"
     label_view_has_changed: "變動未儲存，請點按儲存。"
     help_texts:
-      show_modal: "顯示屬性說明文字項目"
+      show_modal: "Show help text"
     onboarding:
       buttons:
         skip: "略過"

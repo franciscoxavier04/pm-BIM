@@ -2405,7 +2405,7 @@ de:
         static_token_name: "RSS-Token"
         disabled_text: "RSS-Token sind vom Administrator nicht aktiviert. Bitte kontaktieren Sie Ihren Administrator, um diese Funktion zu nutzen."
       storages:
-        title: "Dateispeicher"
+        title: "File storages"
         text_hint: "Dateispeicher-Tokens verbinden diese OpenProject Instanz mit einem externen Dateispeicher."
         empty_text_hint: "Es gibt keinen Dateispeicher, der mit Ihrem Konto verknüpft ist."
         revoke_token: "Möchten Sie dieses Token wirklich entfernen? Sie müssen sich erneut bei %{storage} anmelden"
@@ -2414,7 +2414,7 @@ de:
         unknown_storage: "Unbekannter Speicher"
   notifications:
     reasons:
-      assigned: "Beauftragter"
+      assigned: "Zugewiesen an"
       dateAlert: "Datumsalarm"
       mentioned: "Erwähnt"
       responsible: "Verantwortlich"
@@ -2887,8 +2887,8 @@ de:
   label_project_custom_field_plural: "Projektattribute"
   label_project_settings: "Projektkonfiguration"
   label_project_attributes_settings: "Einstellungen für Projektattribute"
-  label_project_storage_plural: "Dateispeicher"
-  label_project_storage_project_folder: "Dateispeicher: Projektordner"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} Projekte, die %{used_disk_space} Speicherplatz belegen"
   label_project_view_all: "Alle Projekte anzeigen"
   label_project_show_details: "Projektdetails anzeigen"
@@ -3629,7 +3629,7 @@ de:
       oauth_application_details: "Der Client Geheimcode wird nach dem Schließen dieses Fensters nicht mehr zugänglich sein. Bitte kopieren Sie diese Werte in die Nextcloud OpenProject Integrationseinstellungen:"
       oauth_application_details_link_text: "Zu den Einstellungen gehen"
       setup_documentation_details: "Wenn Sie Hilfe bei der Konfiguration eines neuen Datei-Speichers benötigen, konsultieren Sie bitte die Dokumentation: "
-      setup_documentation_details_link_text: "Datei-Speicher einrichten"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Um diesen Dateispeicher nutzen zu können, müssen Sie das Modul und den spezifischen Speicher in den Projekteinstellungen jedes gewünschten Projekts aktivieren."
     subversion:
       existing_title: "Vorhandenes Subversion Projektarchiv"

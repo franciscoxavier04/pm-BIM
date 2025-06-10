@@ -371,9 +371,9 @@ zh-CN:
         tenant_id: 请从所需应用程序和应用注册中复制目录（租户）ID，链接文本为 %{application_link_text}。
         tenant_id_placeholder: 名称或 UUID
       setting_up_additional_storages: 如需设置额外的文件存储，请访问
-      setting_up_additional_storages_non_admin: 管理员可以在“管理/文件存储”中设置额外的文件存储。
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: 如需设置文件存储，请访问
-      setting_up_storages_non_admin: 管理员可以在“管理/文件存储”中设置文件存储。
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: '请确保您在 Nextcloud 实例中具有管理权限，并在进行设置之前安装了以下应用程序：'
       type_link_text: "“集成 OpenProject”"
     label_active: 有效

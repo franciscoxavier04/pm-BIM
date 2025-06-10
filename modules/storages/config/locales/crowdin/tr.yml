@@ -373,9 +373,9 @@ tr:
         tenant_id: Lütfen %{application_link_text} adresindeki istenen uygulama ve Uygulama kayıtlarından Dizin (kiracı) Kimliğini kopyalayın.
         tenant_id_placeholder: Ad veya UUID
       setting_up_additional_storages: Ek dosya depoları ayarlamak için lütfen adresi ziyaret edin.
-      setting_up_additional_storages_non_admin: Yöneticiler, Yönetim'de ek dosya depoları kurabilir
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: Dosya depolarını ayarlamak için lütfen adresi ziyaret edin.
-      setting_up_storages_non_admin: Yöneticiler, Yönetim'de dosya depoları kurabilir
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: 'Lütfen Nextcloud bulut sunucunuzda yönetici ayrıcalıklarına sahip olduğunuzdan ve kurulumu yapmadan önce aşağıdaki uygulamanın kurulu olduğundan emin olun:'
       type_link_text: "“Entegrasyon OpenProject”"
     label_active: Aktif

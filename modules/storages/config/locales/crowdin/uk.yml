@@ -377,9 +377,9 @@ uk:
         tenant_id: Скопіюйте ідентифікатор каталога (клієнта) з потрібного додатка й розділу «Реєстрації додатка» в %{application_link_text}.
         tenant_id_placeholder: Назва або UUID
       setting_up_additional_storages: Щоб створити додаткові файлові сховища, перейдіть у
-      setting_up_additional_storages_non_admin: Адміністратори можуть створювати додаткові файлові сховища в розділі «Адміністрування» / «Файлові сховища».
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: Щоб створити файлові сховища, перейдіть у
-      setting_up_storages_non_admin: Адміністратори можуть створювати файлові сховища в розділі «Адміністрування» / «Файлові сховища».
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: 'Перш ніж виконувати налаштування, переконайтеся, що маєте права адміністратора у своєму екземплярі Nextcloud і що встановлено цей додаток:'
       type_link_text: "«Інтеграція OpenProject»"
     label_active: Активний

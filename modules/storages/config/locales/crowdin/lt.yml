@@ -377,9 +377,9 @@ lt:
         tenant_id: Prašome nukopijuoti direktorijos (tiekėjo) ID iš norimos aplikacijos ir App registracijas %{application_link_text}.
         tenant_id_placeholder: Vardas ar UUID
       setting_up_additional_storages: Norėdami sukurti papildomas failų saugyklas, prašome aplankyti
-      setting_up_additional_storages_non_admin: 'Administratoriai gali sukurti papildomas failų saugyklas: Administravimas / Failų saugyklos.'
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: Norėdami nustatyti failų saugyklas aplankykite
-      setting_up_storages_non_admin: 'Administratoriai gali nustatyti failų saugyklas: Administravimas / Failų saugyklos'
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: 'Prašome įsitikinti, kad turite administratoriaus teises jūsų Nextcloud egzemplioriuje bei kad įdiegtos šios aplikacijos, prieš tęsiant nustatymą:'
       type_link_text: "„Integration OpenProject“"
     label_active: Aktyvus

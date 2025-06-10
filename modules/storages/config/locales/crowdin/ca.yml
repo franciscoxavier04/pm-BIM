@@ -373,9 +373,9 @@ ca:
         tenant_id: Please copy the Directory (tenant) ID from the desired application and App registrations in the %{application_link_text}.
         tenant_id_placeholder: Name or UUID
       setting_up_additional_storages: Per configurar emmagatzematges de fitxers addicionals, si us plau, visita
-      setting_up_additional_storages_non_admin: Els administradors poden configurar emmagatzematges de fitxers addicionals a través d'Administració / Emmagatzematges de fitxers.
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: Per configurar emmagatzematges de fitxers, si us plau, visita
-      setting_up_storages_non_admin: Els administradors poden configurar emmagatzematges de fitxers a través d'Administració / Emmagatzematges de fitxers.
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: 'Si us plau, assegura''t que tens privilegis d''administrador a la instància Nextcloud i tens la següent aplicació instal·lada abans de fer la configuració:'
       type_link_text: "\"Integració d'OpenProject\""
     label_active: Actiu

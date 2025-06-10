@@ -373,9 +373,9 @@ pt-BR:
         tenant_id: Copie o ID do diretório (inquilino) do aplicativo desejado e dos registros de aplicativos no %{application_link_text}.
         tenant_id_placeholder: Nome ou UUID
       setting_up_additional_storages: Para configurar armazenamentos de arquivos adicionais, por favor visite
-      setting_up_additional_storages_non_admin: Os administradores podem configurar armazenamentos adicionais em Administração/Armazenamento de arquivos.
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: Para configurar armazenamentos de arquivos, visite
-      setting_up_storages_non_admin: Administradores podem configurar armazenamentos de arquivos em Administração / Armazenamento de arquivos.
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: 'Certifique-se de ter privilégios de administração em sua instância Nextcloud e de ter o seguinte aplicativo instalado antes de realizar a configuração:'
       type_link_text: "“Integração OpenProject”"
     label_active: Ativo

@@ -357,10 +357,10 @@ zh-CN:
           learn_about: "详细了解所有新功能"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_0":
+          "16_1":
             standard:
               new_features_html: >
-                此版本包含各种新功能和改进，例如 <br> <ul class="%{list_styling_class}"> <li>会议待办和经典会议结束。</li><li>更新了企业计划。</li><li>工作文件包中的内部评论（企业附加组件）。</li><li>自动生成的工作文件包主题（企业附加组件）。</li><li>带有日历视图的单独时间跟踪模块。</li><li>工作文件包关系选项卡中显示的父关系。</li> <li>发布到社区：项目概述页面上的图表。</li></ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
     ical_sharing_modal:
       title: "订阅日历"
       inital_setup_error_message: "获取数据时发生错误。"
@@ -565,7 +565,7 @@ zh-CN:
     label_version_plural: "版本"
     label_view_has_changed: "此视图有未保存的更改。单击以保存。"
     help_texts:
-      show_modal: "显示属性帮助文本项"
+      show_modal: "Show help text"
     onboarding:
       buttons:
         skip: "跳过"

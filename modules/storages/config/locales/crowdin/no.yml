@@ -373,9 +373,9 @@
         tenant_id: Kopier Katalogen (leietaker) ID fra ønsket program og App-registreringer i %{application_link_text}.
         tenant_id_placeholder: Navn eller UUID
       setting_up_additional_storages: For å sette opp ekstra fillagre, vennligst besøk
-      setting_up_additional_storages_non_admin: Administratorer kan sette opp flere fillagre i Administrasjon/fillagre.
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: For å sette opp fillagre, vennligst besøk
-      setting_up_storages_non_admin: Administratorer kan sette opp fillagring i Administrasjon-/fillagre.
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: 'Sørg for at du har administrasjonsrettigheter i din Nextcloud-instans og har følgende applikasjon installert før du utfører oppsettet:'
       type_link_text: "«Integrasjon OpenProject»"
     label_active: Aktiv
