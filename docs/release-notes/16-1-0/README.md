@@ -57,9 +57,13 @@ Please note that negative lags can be counterintuitive:
 
 ### Display hierarchy trees for hierarchy custom fields
 
-Text 
+Hierarchy custom fields are now easier to explore and use. When viewing such a custom field, a **hierarchical tree is displayed next to the details section**, showing the entire structure at a glance.
 
-Screenshot
+This tree helps you understand the position of the current item in the overall hierarchy and makes it easier to add or navigate related items. The currently selected item is highlighted, and all its parent nodes are automatically expanded, while unrelated branches remain collapsed by default.
+
+Clicking on any entry in the tree opens that item in the same view, making it easy to move through even complex hierarchies without losing context. 
+
+![Example of a hierarchy custom field with the new visualization, the hierarchical tree](openproject-hierarchy-custom-field-tree.png)
 
 ### Benefit from improved accessibility with ARIA live regions
 
