@@ -147,10 +147,17 @@ If you want to be reminded about a work package at a later point in time, you ca
 A list with helpful pre-defined options will open, from which you can select: 
 
 - tomorrow
+
 - in 3 days
+
 - in a week
+
 - in a month
+
 - at a particular date/time (clicking this option will open a modal to specify the time and date for the reminder). 
+
+> [!TIP]
+> All the pre-defined reminder options will be set to 9 am of the selected date.
 
 ![Pre-defined options for a work package reminder in OpenProject](openproject_user_guide_wp_reminder_quick_options.png) 
 
