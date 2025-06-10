@@ -28,7 +28,7 @@
 
 module Projects
   module Settings
-    module LifeCycleSteps
+    module LifeCycle
       class IndexComponent < ApplicationComponent
         include ApplicationHelper
         include OpPrimer::ComponentHelpers
