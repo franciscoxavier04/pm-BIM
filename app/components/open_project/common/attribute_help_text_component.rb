@@ -38,7 +38,6 @@ module OpenProject
 
         @system_arguments = system_arguments
         @system_arguments[:id] ||= self.class.generate_id(help_text)
-        @system_arguments[:muted] = true
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
           "op-attribute-help-text"
@@ -50,7 +49,7 @@ module OpenProject
           for_id: @system_arguments[:id],
           type: :label,
           text: I18n.t("js.help_texts.show_modal"),
-          direction: :e
+          direction: :sw
         )
         @system_arguments[:aria] ||= {}
         @system_arguments[:aria][:labelledby] = @tooltip.id

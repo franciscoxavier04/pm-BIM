@@ -620,7 +620,7 @@ en:
     label_view_has_changed: "This view has unsaved changes. Click to save them."
 
     help_texts:
-      show_modal: "Show attribute help text entry"
+      show_modal: "Show help text"
 
     onboarding:
       buttons:
