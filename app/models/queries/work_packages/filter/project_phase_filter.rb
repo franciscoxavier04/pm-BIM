@@ -62,21 +62,7 @@ class Queries::WorkPackages::Filter::ProjectPhaseFilter < Queries::WorkPackages:
   end
 
   def where
-    placeholders = values.map { "?" }.join(",")
-
-    sql = if operator_strategy.to_sym == :"="
-            <<~SQL.squish
-              active_phases.active_phase_definition_id IS NOT NULL AND
-                active_phases.active_phase_definition_id IN (#{placeholders})
-            SQL
-          else
-            <<~SQL.squish
-              active_phases.active_phase_definition_id IS NULL OR
-                active_phases.active_phase_definition_id NOT IN (#{placeholders})
-            SQL
-          end
-
-    ActiveRecord::Base.sanitize_sql_array([sql, *values])
+    operator_strategy.sql_for_field(values, :active_phases, :active_phase_definition_id)
   end
 
   private
