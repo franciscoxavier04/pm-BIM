@@ -39,7 +39,6 @@ module API
 
           get &::API::V3::Utilities::Endpoints::Index
                  .new(model: Project::PhaseDefinition,
-                      scope: -> { Project::PhaseDefinition.order(:position) },
                       api_name: "ProjectPhaseDefinitions")
                  .mount
 
