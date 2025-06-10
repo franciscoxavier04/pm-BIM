@@ -32,7 +32,7 @@ require "spec_helper"
 
 RSpec.describe Queries::WorkPackages::Filter::ProjectPhaseFilter do
   it_behaves_like "basic query filter" do
-    let(:type) { :list }
+    let(:type) { :list_optional }
     let(:class_key) { :project_phase_definition_id }
     current_user { build_stubbed(:user) }
 
