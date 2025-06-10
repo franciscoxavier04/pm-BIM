@@ -373,9 +373,9 @@ nl:
         tenant_id: Please copy the Directory (tenant) ID from the desired application and App registrations in the %{application_link_text}.
         tenant_id_placeholder: Name or UUID
       setting_up_additional_storages: Voor het opzetten van extra bestandsopslag, bezoek a.u.b.
-      setting_up_additional_storages_non_admin: Beheerders kunnen extra bestandsopslag instellen in Administratie / Bestandsopslag.
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: Voor het opzetten van extra bestandsopslag, bezoek a.u.b.
-      setting_up_storages_non_admin: Beheerders kunnen bestandsopslag in Administratie / Bestandsopslag instellen.
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: 'Zorg ervoor dat u beheerrechten heeft in uw Nextcloud en dat de volgende applicatie geïnstalleerd is voordat u de installatie uitvoert:'
       type_link_text: "Integratie met OpenProject\""
     label_active: Actief

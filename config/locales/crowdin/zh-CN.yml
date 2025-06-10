@@ -2369,7 +2369,7 @@ zh-CN:
         static_token_name: "RSS 令牌"
         disabled_text: "管理员未启用 RSS 令牌。请联系管理员以使用此功能。"
       storages:
-        title: "文件存储区"
+        title: "File storages"
         text_hint: "文件存储区令牌将此 OpenProject 实例与外部文件存储区连接。"
         empty_text_hint: "没有与您的帐户相关联的存储区访问权限。"
         revoke_token: "是否确实要移除此令牌？您需要再次登录 %{storage}"
@@ -2851,8 +2851,8 @@ zh-CN:
   label_project_custom_field_plural: "项目属性"
   label_project_settings: "项目设置"
   label_project_attributes_settings: "项目属性设置"
-  label_project_storage_plural: "文件存储区"
-  label_project_storage_project_folder: "文件存储区：项目文件夹"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} 个项目正在使用 %{used_disk_space} 磁盘空间"
   label_project_view_all: "查看所有项目"
   label_project_show_details: "显示项目详细信息"
@@ -3586,7 +3586,7 @@ zh-CN:
       oauth_application_details: "关闭此窗口后，将无法再次访问客户端密钥值。请将这些值复制到 Nextcloud OpenProject 集成设置中："
       oauth_application_details_link_text: "转到设置页面"
       setup_documentation_details: "如果您在配置新文件存储方面需要帮助，请查看文档："
-      setup_documentation_details_link_text: "文件存储设置"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "要使用此文件存储，请记得在每个所需项目的项目设置中激活模块和特定存储。"
     subversion:
       existing_title: "现有的 Subversion 存储库"

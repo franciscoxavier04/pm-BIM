@@ -373,9 +373,9 @@ de:
         tenant_id: Bitte kopieren Sie die Verzeichnis-ID (Mandant) der gewünschten Anwendung aus den App-Registrierungen im %{application_link_text}.
         tenant_id_placeholder: Name oder UUID
       setting_up_additional_storages: Um zusätzliche Dateispeicher einzurichten, besuchen Sie bitte
-      setting_up_additional_storages_non_admin: Administratoren können zusätzliche Dateispeicher in Administration / Dateispeicher einrichten.
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: Zum Einrichten von Dateispeichern besuchen Sie bitte
-      setting_up_storages_non_admin: Administratoren können Dateispeicher in Administration / Dateispeicher einrichten.
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: 'Bitte stellen Sie sicher, dass Sie Administrationsrechte in Ihrer Nextcloud-Instanz haben und die folgende Anwendung vor dem Setup installiert wurde:'
       type_link_text: "„OpenProject Integration“"
     label_active: Aktiv

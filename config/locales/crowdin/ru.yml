@@ -2488,7 +2488,7 @@ ru:
         static_token_name: "Токен RSS"
         disabled_text: "Токены RSS не включены администратором. Пожалуйста, обратитесь к администратору, чтобы использовать эту функцию."
       storages:
-        title: "Файловые хранилища"
+        title: "File storages"
         text_hint: "Токены хранения файлов подключают этот экземпляр OpenProject к внешнему хранилищу файлов."
         empty_text_hint: "Нет доступа к хранилищу, связанному с вашей учетной записью."
         revoke_token: "Вы действительно хотите удалить этот токен?  Вам нужно будет снова войти в систему на %{storage}"
@@ -2970,8 +2970,8 @@ ru:
   label_project_custom_field_plural: "Атрибуты проекта"
   label_project_settings: "Настройки проекта"
   label_project_attributes_settings: "Настройки атрибутов проекта"
-  label_project_storage_plural: "Файловые хранилища"
-  label_project_storage_project_folder: "Файловые хранилища: Папки проекта"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} проектов, использующих %{used_disk_space} дискового пространства"
   label_project_view_all: "Просмотреть все проекты"
   label_project_show_details: "Показать детали проекта"
@@ -3713,7 +3713,7 @@ ru:
       oauth_application_details: "Секретное значение клиента не будет доступно после закрытия этого окна. Пожалуйста, скопируйте это значение в настройки интеграции Nextcloud OpenProject:"
       oauth_application_details_link_text: "Перейти на страницу настроек"
       setup_documentation_details: "Если вам нужна помощь в настройке нового хранилища файлов, пожалуйста, проверьте документацию: "
-      setup_documentation_details_link_text: "Настройка файловых хранилищ"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Для использования этого хранилища файлов не забудьте активировать модуль и конкретное хранилище в настройках проекта каждого желаемого проекта."
     subversion:
       existing_title: "Существующий репозиторий Subversion"

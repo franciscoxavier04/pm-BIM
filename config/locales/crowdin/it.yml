@@ -2409,7 +2409,7 @@ it:
         static_token_name: "Token RSS"
         disabled_text: "I token RSS non sono abilitati dall'amministratore. Contatta il tuo amministratore per utilizzare questa funzione."
       storages:
-        title: "Archiviazione dei file"
+        title: "File storages"
         text_hint: "I token di archiviazione dei file connettono questa istanza OpenProject con un sistema di archiviazione file esterno."
         empty_text_hint: "Non esiste alcun accesso allo spazio di archiviazione collegato al tuo account."
         revoke_token: "Vuoi davvero rimuovere questo token? Dovrai effettuare nuovamente l'accesso su %{storage}"
@@ -2891,8 +2891,8 @@ it:
   label_project_custom_field_plural: "Attributi del progetto"
   label_project_settings: "Impostazioni progetto"
   label_project_attributes_settings: "Impostazioni degli attributi del progetto"
-  label_project_storage_plural: "Archiviazione dei file"
-  label_project_storage_project_folder: "Archiviazione dei file: cartelle di progetto"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} progetti occupano uno spazio su disco di %{used_disk_space}"
   label_project_view_all: "Vedi tutti i progetti"
   label_project_show_details: "Mostra dettagli progetto"
@@ -3633,7 +3633,7 @@ it:
       oauth_application_details: "Il valore segreto del client non sarà nuovamente accessibile dopo aver chiuso questa finestra. Copia questi valori nelle impostazioni d'integrazione di Nextcloud OpenProject:"
       oauth_application_details_link_text: "Vai alla pagina delle impostazioni"
       setup_documentation_details: "Se hai bisogno di aiuto per configurare un nuovo archivio file, controlla la documentazione: "
-      setup_documentation_details_link_text: "Configurazione archivi file"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Per utilizzare questo archivio di file ricordarsi di attivare il modulo e l'archivio specifico nelle impostazioni del progetto di ogni progetto desiderato."
     subversion:
       existing_title: "Archivio Subversion preesistente"

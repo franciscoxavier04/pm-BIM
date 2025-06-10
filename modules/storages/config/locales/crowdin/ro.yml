@@ -375,9 +375,9 @@ ro:
         tenant_id: Please copy the Directory (tenant) ID from the desired application and App registrations in the %{application_link_text}.
         tenant_id_placeholder: Name or UUID
       setting_up_additional_storages: Pentru a configura fişiere de stocare suplimentare, vă rugăm să vizitaţi
-      setting_up_additional_storages_non_admin: Administratorii pot configura fişiere de stocare suplimentare în Administrare / Stocare fişiere.
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: Pentru configurarea fișierelor, vă rugăm să vizitați
-      setting_up_storages_non_admin: Administratorii pot configura spațiul de stocare în Administrare / Stocare fișiere.
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: 'Asigurați-vă că aveți drepturi de administrare în instanța Nextcloud și că aveți următoarea aplicație instalată înainte de a face configurarea:'
       type_link_text: "Integrare OpenProject”"
     label_active: Activ

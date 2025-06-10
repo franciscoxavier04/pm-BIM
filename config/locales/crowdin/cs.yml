@@ -2490,7 +2490,7 @@ cs:
         static_token_name: "RSS token"
         disabled_text: "API tokeny nejsou administrátorem povoleny. Pro použití této funkce kontaktujte svého správce."
       storages:
-        title: "Úložiště souborů"
+        title: "File storages"
         text_hint: "Tokeny úložiště souborů připojují tuto OpenProject instanci s externím úložištěm souborů."
         empty_text_hint: "K vašemu účtu není připojen žádný přístup k úložišti."
         revoke_token: "Opravdu chcete odstranit tento token? Budete se muset znovu přihlásit na %{storage}"
@@ -2972,8 +2972,8 @@ cs:
   label_project_custom_field_plural: "Atributy projektu"
   label_project_settings: "Nastavení projektu"
   label_project_attributes_settings: ""
-  label_project_storage_plural: "Úložiště souborů"
-  label_project_storage_project_folder: "Úložiště souborů: Složky projektů"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} projekty využívající diskový prostor %{used_disk_space}"
   label_project_view_all: "Zobrazit všechny projekty - seznam"
   label_project_show_details: "Zobrazit detail projektu"
@@ -3717,7 +3717,7 @@ cs:
       oauth_application_details: "Tajná hodnota klienta nebude po zavření tohoto okna přístupná. Zkopírujte tyto hodnoty do Nextcloud OpenProject Integration nastavení:"
       oauth_application_details_link_text: "Přejít na stránku nastavení"
       setup_documentation_details: "Pokud potřebujete pomoci s nastavením nového úložiště souborů, prosím zkonzultujte dokumentaci: "
-      setup_documentation_details_link_text: "Nastavení úložiště souborů"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Pro použití tohoto úložiště souborů nezapomeňte aktivovat modul a konkrétní úložiště v nastavení projektu každého požadovaného projektu."
     subversion:
       existing_title: "Existující repozitář Subversion"

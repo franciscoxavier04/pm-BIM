@@ -377,9 +377,9 @@ pl:
         tenant_id: Skopiuj identyfikator katalogu (dzierżawcy) z żądanej aplikacji i rejestracje aplikacji w %{application_link_text}.
         tenant_id_placeholder: Nazwa lub identyfikator UUID
       setting_up_additional_storages: Aby skonfigurować dodatkowe magazyny plików, odwiedź
-      setting_up_additional_storages_non_admin: Administratorzy mogą skonfigurować dodatkowe magazyny plików w obszarze Administracja / Magazyny plików.
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: Aby skonfigurować magazyny plików, odwiedź
-      setting_up_storages_non_admin: Administratorzy mogą skonfigurować magazyny plików w obszarze Administracja / Magazyny plików.
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: 'Upewnij się, że masz uprawnienia administracyjne w swojej instancji Nextcloud oraz zainstalowaną następującą aplikację, przed wykonaniem konfiguracji:'
       type_link_text: "“Integration OpenProject”"
     label_active: Aktywny

@@ -358,10 +358,10 @@ es:
           learn_about: "Más información sobre todas las nuevas funciones"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_0":
+          "16_1":
             standard:
               new_features_html: >
-                La versión contiene varias funciones nuevas y mejoras, como <br> <ul class="%{list_styling_class}"> <li>Backlogs de reuniones y fin de las reuniones clásicas.</li> <li>Actualización de los planes Enterprise.</li> <li>Comentarios internos en los paquetes de trabajo (extensión Enterprise). </li> <li>Asuntos de paquetes de trabajo generados automáticamente (extensión Enterprise).</li> <li>Módulo de seguimiento del tiempo independiente con vista de calendario.</li> <li>Relación parental mostrada en la pestaña de relaciones de paquetes de trabajo.</li> <li>Lanzamiento a la Comunidad: Gráficos en la página de vista general del proyecto.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
     ical_sharing_modal:
       title: "Suscribirse al calendario"
       inital_setup_error_message: "Se ha producido un error al obtener los datos."
@@ -566,7 +566,7 @@ es:
     label_version_plural: "Versiones"
     label_view_has_changed: "Esta vista tiene cambios sin guardar. Haga clic para guardarlos."
     help_texts:
-      show_modal: "Mostrar texto de ayuda de atributo"
+      show_modal: "Show help text"
     onboarding:
       buttons:
         skip: "Saltar"

@@ -2370,7 +2370,7 @@ zh-TW:
         static_token_name: "RSS 權杖(Token)"
         disabled_text: "尚未啟用 RSS 權杖(Token)功能。 請聯絡您的管理員。"
       storages:
-        title: "文件儲存空間"
+        title: "File storages"
         text_hint: "檔案儲存區權杖(Token)，可將本專案管理系統與外部檔案儲存系統連接。"
         empty_text_hint: "沒有與您帳戶連動的儲存裝置存取權限。"
         revoke_token: "是否確實要移除此權杖？您需要再次登錄 %{storage}"
@@ -2852,8 +2852,8 @@ zh-TW:
   label_project_custom_field_plural: "專案屬性"
   label_project_settings: "專案設定"
   label_project_attributes_settings: "專案屬性設置"
-  label_project_storage_plural: "文件儲存空間"
-  label_project_storage_project_folder: "文件存儲區：項目文件夾"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} 專案，使用 %{used_disk_space} 磁碟空間"
   label_project_view_all: "檢視所有專案"
   label_project_show_details: "顯示專案詳細資訊"
@@ -3590,7 +3590,7 @@ zh-TW:
       oauth_application_details: "關閉此窗口後，將無法再次訪問客戶端密鑰值。請將這些值複製到 Nextcloud OpenProject 集成設置中："
       oauth_application_details_link_text: "前往設定"
       setup_documentation_details: "如果您在配置新文件存儲方面需要幫助，請查看文檔： "
-      setup_documentation_details_link_text: "設定文件儲存區"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "無法在應用程序中更改外部帳戶的密碼。請使用您的身份驗證服務提供商的密碼丟失功能。"
     subversion:
       existing_title: "現有的 Subversion 版本庫"

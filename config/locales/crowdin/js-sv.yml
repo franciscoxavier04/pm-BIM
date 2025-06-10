@@ -357,10 +357,10 @@ sv:
           learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_0":
+          "16_1":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "An error occured while fetching data."
@@ -565,7 +565,7 @@ sv:
     label_version_plural: "Versioner"
     label_view_has_changed: "Denna vy har osparade ändringar. Klicka för att spara dem."
     help_texts:
-      show_modal: "Visa attribut hjälp textinmatning"
+      show_modal: "Show help text"
     onboarding:
       buttons:
         skip: "Hoppa över"

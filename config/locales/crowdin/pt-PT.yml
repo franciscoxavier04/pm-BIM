@@ -2409,7 +2409,7 @@ pt-PT:
         static_token_name: "Token RSS"
         disabled_text: "Os tokens RSS não são ativados pelo administrador. Contacte o seu administrador para utilizar esta funcionalidade."
       storages:
-        title: "Armazenamentos de ficheiros"
+        title: "File storages"
         text_hint: "Os tokens de armazenamento de ficheiros ligam esta instância do OpenProject a um armazenamento de ficheiros externo."
         empty_text_hint: "Não existe um acesso ao armazenamento associado à sua conta."
         revoke_token: "Tem a certeza de que deseja remover este token? Terá de iniciar sessão novamente em %{storage}"
@@ -2891,8 +2891,8 @@ pt-PT:
   label_project_custom_field_plural: "Atributos do projeto"
   label_project_settings: "Configurações do projeto"
   label_project_attributes_settings: "Definições dos atributos do projeto"
-  label_project_storage_plural: "Armazenamentos de ficheiros"
-  label_project_storage_project_folder: "Armazenamentos de ficheiros: pastas do projeto"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} projetos utilizam %{used_disk_space} espaço no disco"
   label_project_view_all: "Ver todos os projetos"
   label_project_show_details: "Mostrar detalhes do projeto"
@@ -3630,7 +3630,7 @@ pt-PT:
       oauth_application_details: "O valor secreto do cliente não estará acessível novamente após fechar esta janela. Copie esses valores para as definições de integração do OpenProject da Nextcloud:"
       oauth_application_details_link_text: "Ir para a página de definições"
       setup_documentation_details: "Se precisar de ajuda para configurar um novo armazenamento de ficheiros, verifique a documentação: "
-      setup_documentation_details_link_text: "Definição de armazenamentos"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Para usar esse armazenamento de ficheiros, lembre-se de ativar o módulo e o armazenamento específico nas definições do projeto de cada projeto desejado."
     subversion:
       existing_title: "Repositório Subversion existente"
