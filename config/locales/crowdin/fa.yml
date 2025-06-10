@@ -997,7 +997,7 @@ fa:
         sort_by: "Sort results by"
         filters: "فیلترها"
         timeline_labels: "برچسب های خط زمان"
-        timeline_visible: "نمایش Gant chart"
+        timeline_visible: "نمایش نمودار گانت"
         timeline_zoom_level: "Gantt chart zoom level"
         timestamps: "Baseline timestamps"
         sort_criteria: "Sort criteria"
