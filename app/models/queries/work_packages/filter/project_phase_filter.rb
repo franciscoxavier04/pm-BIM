@@ -40,7 +40,7 @@ class Queries::WorkPackages::Filter::ProjectPhaseFilter < Queries::WorkPackages:
   end
 
   def type
-    :list
+    :list_optional
   end
 
   def self.key
