@@ -31,7 +31,7 @@
 require "spec_helper"
 require "contracts/shared/model_contract_shared_context"
 
-RSpec.describe ProjectLifeCycleSteps::UpdateContract do
+RSpec.describe ProjectPhases::UpdateContract do
   include_context "ModelContract shared context"
 
   let(:user) { build_stubbed(:user) }

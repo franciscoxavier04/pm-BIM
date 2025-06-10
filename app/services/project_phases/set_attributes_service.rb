@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,14 +26,22 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ProjectLifeCycleSteps
-  class RescheduleContract < BaseContract
-    alias_method :project, :model
+module ProjectPhases
+  class SetAttributesService < ::BaseServices::SetAttributes
+    def perform(*)
+      super.tap do
+        set_calculated_duration
+      end
+    end
 
-    protected
+    private
 
-    def validate_model?
-      false
+    def ensure_default_attributes(_params)
+      model.start_date ||= model.default_start_date if model.default_start_date.present?
+    end
+
+    def set_calculated_duration
+      model.duration = model.calculate_duration
     end
   end
 end

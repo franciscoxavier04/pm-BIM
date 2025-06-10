@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
+RSpec.describe ProjectPhases::ActivationService, type: :model do
   shared_let(:user) { create(:user) }
   shared_let(:project) { create(:project) }
   shared_let(:definitions) { create_list(:project_phase_definition, 3) }
@@ -48,8 +48,8 @@ RSpec.describe ProjectLifeCycleSteps::ActivationService, type: :model do
       expect(service.user).to eq(user)
     end
 
-    it "uses ProjectLifeCycleSteps::ActivationContract as the default contract" do
-      expect(service.contract_class).to eq(ProjectLifeCycleSteps::ActivationContract)
+    it "uses ProjectPhases::ActivationContract as the default contract" do
+      expect(service.contract_class).to eq(ProjectPhases::ActivationContract)
     end
   end
 

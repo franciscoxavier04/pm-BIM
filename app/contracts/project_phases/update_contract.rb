@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ProjectLifeCycleSteps
+module ProjectPhases
   class UpdateContract < BaseContract
     validate :validate_start_after_preceeding_phases
     validate :validate_start_date_is_a_working_day
