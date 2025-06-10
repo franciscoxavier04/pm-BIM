@@ -228,6 +228,8 @@ RSpec.describe "Projects", "creation",
 
         click_on "Create"
 
+        expect_and_dismiss_flash type: :error, message: /^Creation failed/
+
         expect(page).to have_field "Required Foo", validation_error: "can't be blank."
       end
     end

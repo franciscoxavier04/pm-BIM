@@ -33,6 +33,7 @@ module Projects
     include ApplicationHelper
     include OpPrimer::ComponentHelpers
     include OpTurbo::Streamable
+    include FlashMessagesHelper
 
     options :project, :template, :copy_options
   end
