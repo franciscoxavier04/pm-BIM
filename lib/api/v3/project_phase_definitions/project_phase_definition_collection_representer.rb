@@ -31,7 +31,7 @@
 module API
   module V3
     module ProjectPhaseDefinitions
-      class ProjectPhaseDefinitionsCollectionRepresenter < ::API::Decorators::OffsetPaginatedCollection
+      class ProjectPhaseDefinitionCollectionRepresenter < ::API::Decorators::OffsetPaginatedCollection
       end
     end
   end
