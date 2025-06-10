@@ -31,36 +31,36 @@
 require "spec_helper"
 
 RSpec.describe FlashMessagesHelper do
+  shared_examples "rendering a banner" do |css_class, icon, text|
+    it "applies the correct classes" do
+      expect(subject).to have_css ".flash", class: css_class
+    end
+
+    it "renders an icon" do
+      expect(subject).to have_octicon icon
+    end
+
+    it "renders banner text" do
+      expect(subject).to have_text text
+    end
+
+    it "always returns HTML-safe strings" do
+      expect(subject).to be_html_safe
+    end
+  end
+
+  shared_examples "rendering nothing" do
+    it "renders nothing" do
+      expect(subject).to be_blank
+    end
+
+    it "always returns HTML-safe strings" do
+      expect(subject).to be_html_safe
+    end
+  end
+
   describe "#render_flash_messages" do
     subject { helper.render_flash_messages }
-
-    shared_examples "rendering a banner" do |css_class, icon, text|
-      it "applies the correct classes" do
-        expect(subject).to have_css ".flash", class: css_class
-      end
-
-      it "renders an icon" do
-        expect(subject).to have_octicon(icon)
-      end
-
-      it "renders banner text" do
-        expect(subject).to have_text(text)
-      end
-
-      it "always returns HTML-safe strings" do
-        expect(subject).to be_html_safe
-      end
-    end
-
-    shared_examples "rendering nothing" do
-      it "renders nothing" do
-        expect(subject).to be_blank
-      end
-
-      it "always returns HTML-safe strings" do
-        expect(subject).to be_html_safe
-      end
-    end
 
     context "with no flash messages" do
       it_behaves_like "rendering nothing"
@@ -120,6 +120,33 @@ RSpec.describe FlashMessagesHelper do
       end
 
       it_behaves_like "rendering a banner", "flash-error", :stop, "A Moderat(ely) New Error"
+    end
+  end
+
+  describe "#render_flash_messages_as_turbo_streams" do
+    subject { helper.render_flash_messages_as_turbo_streams }
+
+    context "with no flash messages" do
+      it_behaves_like "rendering nothing"
+    end
+
+    context "with an :info flash message" do
+      before do
+        flash[:info] = "zu deiner Information" # rubocop:disable Rails/I18nLocaleTexts
+      end
+
+      it "renders turbo streams" do
+        expect(subject).to have_element "turbo-stream", action: "flash", target: "op-primer-flash-component" do |element|
+          expect(element).to have_css "template", visible: :all
+        end
+      end
+
+      # N.B. Capybara does not consider <template> contents as part of the document.
+      # As such, the following is not possible:
+      #
+      # it_behaves_like "rendering a banner", "flash", :bell, "zu deiner Information"
+      #
+      # See https://github.com/teamcapybara/capybara/issues/2510
     end
   end
 
