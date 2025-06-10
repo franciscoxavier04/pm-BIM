@@ -47,13 +47,16 @@ module ProjectPhases
 
       upsert(active:)
 
-      if (phase = reschedule_from_phase)
-        UpdateService.new(user:, model: phase).call
-      else
-        project.touch_and_save_journals
+      if (phase = reschedule_from_phase) && phase.date_range_set?
+        from = phase.active? ? Day.next_working(from: phase.finish_date).date : phase.start_date
 
-        service_call
+        service_call = RescheduleService.new(user:, project:)
+          .call(phases: phase.following_phases, from:)
       end
+
+      project.touch_and_save_journals
+
+      service_call
     end
 
     def upsert(active:)
