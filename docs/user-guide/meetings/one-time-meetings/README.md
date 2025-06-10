@@ -344,7 +344,7 @@ You can also specify the **Footer text**, which will appear on the bottom of eve
 
 
 
-Click the **Download** button to generated a PDF. First page of the PDF is the title page. The generated PDF will include all the meeting details, participants and agenda. Meeting agenda outcomes, a list of attachments and backlog items will only be included if selected for the export. 
+Click the **Download** button to generated a PDF. First page of the PDF is the title page. The generated PDF will include all the meeting details and agenda. Meeting participants, agenda outcomes, a list of attachments and backlog items will only be included if selected for the export. 
 
 ![An example of a meeting exported as a PDF file in OpenProject meetings module](openproject_userguide_meetings_pdf_export_file.png)
 
