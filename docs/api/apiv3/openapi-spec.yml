@@ -302,6 +302,8 @@ paths:
     "$ref": "./paths/priority.yml"
   "/api/v3/project_phases/{id}":
     "$ref": "./paths/project_phase.yml"
+  "/api/v3/project_phase_definitions":
+    "$ref": "./paths/project_phase_definitions.yml"
   "/api/v3/project_phase_definitions/{id}":
     "$ref": "./paths/project_phase_definition.yml"
   "/api/v3/project_storages":
@@ -795,6 +797,8 @@ components:
       "$ref": "./components/schemas/project_phase_model.yml"
     ProjectPhaseDefinitionModel:
       "$ref": "./components/schemas/project_phase_definition_model.yml"
+    ProjectPhaseDefinitionCollectionModel:
+      "$ref": "./components/schemas/project_phase_definition_collection_model.yml"
     ProjectStorageCollectionModel:
       "$ref": "./components/schemas/project_storage_collection_model.yml"
     ProjectStorageModel:
