@@ -55,12 +55,10 @@ export default class CustomFieldsController extends Controller {
 
   static values = {
     formatConfig: Array,
-    enterpriseEdition: Boolean,
     hierarchyEnabled: Boolean,
   };
 
   declare readonly formatConfigValue:[string, string, string[]][];
-  declare readonly enterpriseEditionValue:boolean;
   declare readonly hierarchyEnabledValue:boolean;
 
   declare readonly formatTarget:HTMLInputElement;
@@ -258,10 +256,7 @@ export default class CustomFieldsController extends Controller {
     }
 
     this.formatConfigValue.forEach(([targetsName, operator, formats]) => {
-      let active = operator === 'only' ? formats.includes(format) : !formats.includes(format);
-      if (targetsName === 'enterpriseBanner') {
-        active = this.enterpriseEditionValue;
-      }
+      const active = operator === 'only' ? formats.includes(format) : !formats.includes(format);
 
       const targets = this[`${targetsName}Targets` as keyof typeof this] as HTMLElement[];
       if (targets) {

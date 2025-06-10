@@ -47,7 +47,7 @@ end
 RSpec.configure do |config|
   config.before do |example|
     allowed = ee_actions(example)
-    if allowed.present?
+    if allowed.present? || example.metadata[:with_ee_trial]
       allowed = aggregate_parent_array(example, allowed.to_set)
 
       token_double = instance_double(EnterpriseToken)
@@ -65,7 +65,7 @@ RSpec.configure do |config|
         .to receive_messages(token_object: token_object_double,
                              available_features: allowed.to_a,
                              expired?: false,
-                             trial?: false,
+                             trial?: !!example.metadata[:with_ee_trial],
                              restrictions: {})
     end
   end
