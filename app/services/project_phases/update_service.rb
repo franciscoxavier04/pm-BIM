@@ -44,15 +44,11 @@ module ProjectPhases
 
     def reschedule_following_phases
       RescheduleService.new(user:, project:)
-        .call(phases: following_phases, from: initial_reschedule_date)
+        .call(phases: model.following_phases, from: initial_reschedule_date)
     end
 
     def initial_reschedule_date
       model.active? ? Day.next_working(from: model.finish_date).date : model.start_date
-    end
-
-    def following_phases
-      project.available_phases.select { it.position > model.position }
     end
   end
 end
