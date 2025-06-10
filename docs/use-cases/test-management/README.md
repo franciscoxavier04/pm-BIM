@@ -1,6 +1,6 @@
 ---
 sidebar_navigation:
-  title: Test Management with OpenProject 
+  title: Test Management with OpenProject
   priority: 950
 description: OpenProject can be configured to support lightweight test management using custom work package types, work packages and project templates. This guide describes how to manage test cases and test runs in a reusable, scalable way.
 keywords: test plan, test case, test case, test management
@@ -29,7 +29,7 @@ This setup is not a replacement for full-scale test automation or advanced lab m
 
 > [!NOTE]
 >
-> At OpenProject, automated testing is a key part of our development process. It helps us detect bugs early and avoid regressions, especially as the codebase grows. We use continuous integration and deployment (CI/CD) to ensure that changes are tested and released quickly and reliably. You can see our automated test runs on [GitHub Actions](https://github.com/opf/openproject/actions). In addition to automated tests, we also perform smoke tests and exploratory testing to cover areas that are harder to automate and to validate the overall user experience. 
+> At OpenProject, automated testing is a key part of our development process. It helps us detect bugs early and avoid regressions, especially as the codebase grows. We use continuous integration and deployment (CI/CD) to ensure that changes are tested and released quickly and reliably. You can see our automated test runs on [GitHub Actions](https://github.com/opf/openproject/actions). In addition to automated tests, we also perform smoke tests and exploratory testing to cover areas that are harder to automate and to validate the overall user experience.
 
 ## Structure and terminology
 
@@ -65,13 +65,13 @@ A new test plan project is created based on a predefined template using the [cre
 
 ![create test plan](create-test-plan.png)
 
-### 1.2 Adjusting the created test plan 
+### 1.2 Adjusting the created test plan
 
 In the next step the [newly created test plan](https://testmanagement.openproject.com/projects/regression-test-openproject-16-dot-1/work_packages?query_id=90) is adjusted by specifying the test object. The easiest way is to select all work packages (`CMD + A`) -> right click -> `bulk edit`.
 
 * Version of the test object (version ideally shared from the development project)
 * Tester
-* Environment 
+* Environment
 
 For all test runs which are not planned the status should be adjusted to something like `Not planned`.
 
@@ -100,7 +100,7 @@ As previously stated, agile boards (Kanban or Scrum) can help us track the test 
 Comments and activity log (`Activity` tab) complement custom fields in the sense that they can also be used to record:
 * Time and date of the execution
 * Environment details (e.g., Browser, OS, Build version)
-* Qualitative data and detailed explanations, as well as communication and collaboration between testers, developers and other stakeholders around a specific test case.  
+* Qualitative data and detailed explanations, as well as communication and collaboration between testers, developers and other stakeholders around a specific test case.
 
 Activity tab is especially beneficial during the *static testing* phase. As a reminder, static testing is, among other things, verification of the test cases themselves (sort of testing of test case). Testers review the test cases/test runs searching for inconsistencies, errors, unclarity. Activity tab is a good place to discuss their findings, as well as track the complete and chronological history of a test.
 
@@ -178,7 +178,7 @@ Here you find an [example for a test case](https://testmanagement.openproject.co
 
 The work package type `Test run` can be configured so it shows the relevant information:
 
-* Test specification including preconditions, excecution steps and test results: Description field
+* Test specification including preconditions, execution steps and test results: Description field
 * Tested features (related work packages `requires`)
 * Priority
 * Tester (custom field of type user)
@@ -217,4 +217,3 @@ Define custom fields that describe the test object such as:
 - Optionally restrict who can move a test run to `Test passed`.
 
 ![test run workflow example](test-run-workflow-configuration-example.png)
-
