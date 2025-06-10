@@ -104,6 +104,6 @@ class Queries::WorkPackages::Filter::ProjectPhaseFilter < Queries::WorkPackages:
   def project_phase_definitions
     return Project::PhaseDefinition.none unless project_phase_feature_flag_enabled?
 
-    Project::PhaseDefinition.order(Arel.sql("position"))
+    Project::PhaseDefinition.order(position: :asc)
   end
 end
