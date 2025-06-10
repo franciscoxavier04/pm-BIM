@@ -53,11 +53,13 @@ module Meetings::PDF
 
     def write_section(section, section_index)
       write_optional_page_break
-      write_section_title(section, section_index) unless section.title.empty?
+      write_section_title(section, section_index)
       write_agenda_items(section)
     end
 
     def write_section_title(section, section_index)
+      return if section.title.blank? && section_index == 0 && meeting.sections.count == 1
+
       margins = styles.agenda_section_title_table_margins
       margins = margins.merge({ top_margin: 0 }) if section_index == 0
       with_vertical_margin(margins) do
