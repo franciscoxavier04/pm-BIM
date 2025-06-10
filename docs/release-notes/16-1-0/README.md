@@ -17,11 +17,47 @@ At the end, you will find a complete list of all changes and bug fixes.
 
 ## Important feature changes
 
-<!-- Inform about the major features in this section -->
+### Define phases and phase gates with a project life cycle (Enterprise add-on)
 
-## Important updates and breaking changes
+Text 
 
-<!-- Remove this section if empty, add to it in pull requests linking to tickets and provide information -->
+Screenshot
+
+### Export meetings in PDF format
+
+Text 
+
+Screenshot
+
+### Set smart default options for reminders
+
+Text 
+
+Screenshot
+
+### Use negative lag for work package dates
+
+Text 
+
+Screenshot
+
+### Display hierarchy trees for hierarchy custom fields
+
+Text 
+
+Screenshot
+
+### Benefit from improved accessibility with ARIA live regions
+
+Text 
+
+Screenshot
+
+## Important technical changes
+
+### Added API for Emoji reactions, Reminders, and Internal Comments
+
+text
 
 <!--more-->
 
