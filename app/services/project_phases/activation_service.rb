@@ -47,12 +47,7 @@ module ProjectPhases
 
       upsert(active:)
 
-      if (phase = reschedule_from_phase) && phase.date_range_set?
-        from = phase.active? ? Day.next_working(from: phase.finish_date).date : phase.start_date
-
-        service_call = RescheduleService.new(user:, project:)
-          .call(phases: phase.following_phases, from:)
-      end
+      service_call = reschedule_phases_if_needed(service_call)
 
       project.touch_and_save_journals
 
@@ -72,6 +67,16 @@ module ProjectPhases
       )
     end
 
+    def reschedule_phases_if_needed(service_call)
+      phase = reschedule_from_phase
+      return service_call unless phase&.date_range_set?
+
+      from = initial_reschedule_date(phase)
+
+      RescheduleService.new(user:, project:)
+        .call(phases: phase.following_phases, from:)
+    end
+
     def reschedule_from_phase
       first_definition = definitions.min_by(&:position)
       return unless first_definition
@@ -82,6 +87,10 @@ module ProjectPhases
 
     def preceding_active_phase(phase)
       project.available_phases.reverse.find { it.date_range_set? && it.position < phase.position }
+    end
+
+    def initial_reschedule_date(phase)
+      phase.active? ? Day.next_working(from: phase.finish_date).date : phase.start_date
     end
 
     def default_contract_class
