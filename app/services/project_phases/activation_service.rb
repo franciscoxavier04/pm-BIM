@@ -47,7 +47,9 @@ module ProjectPhases
 
       upsert(active:)
 
-      service_call = reschedule_phases_if_needed(service_call)
+      if (phase = reschedule_from_phase)
+        service_call = reschedule_following_phases(phase)
+      end
 
       project.touch_and_save_journals
 
@@ -67,10 +69,7 @@ module ProjectPhases
       )
     end
 
-    def reschedule_phases_if_needed(service_call)
-      phase = reschedule_from_phase
-      return service_call unless phase&.date_range_set?
-
+    def reschedule_following_phases(phase)
       from = initial_reschedule_date(phase)
 
       RescheduleService.new(user:, project:)
@@ -82,7 +81,9 @@ module ProjectPhases
       return unless first_definition
 
       phase = project.phases.find_by(definition_id: first_definition.id)
-      preceding_active_phase(phase) || phase
+      preceding_phase = preceding_active_phase(phase)
+
+      preceding_phase || (phase.date_range_set? && phase)
     end
 
     def preceding_active_phase(phase)
