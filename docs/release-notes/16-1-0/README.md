@@ -37,9 +37,23 @@ Screenshot
 
 ### Use negative lag for work package dates
 
-Text 
+### Use negative lag to start work packages earlier
 
-Screenshot
+You can now define **negative lag** when setting up relations between work packages. This allows you to specify that a work package should start a few days before its **predecessor** finishes.
+
+When adding or editing a successor or predecessor relation, the Lag field now accepts negative values. The updated help text reads: “The minimum number of working days in between the two work packages. It can also be negative.”
+
+This makes it easier to represent overlapping tasks and more flexible schedules in your project plan. For example, you may want the review of a document to begin two days before the final draft is complete. You will then have to enter a lag of -3 days for the (review) Successor work package.
+
+![Overlay of editing a successor (after) with a lag of -3 days](openproject-16-1-negative-lag.png)
+
+Please note that negative lags can be counterintuitive:
+- A lag of 0 schedules the Successor one day after the Predecessor’s finish date.
+- A lag of -1 schedules it on the same day.
+- A lag of -2 schedules it one day before, and so on.
+
+> [!NOTE]
+> **Only working days** are taken into account. For example: If work package A finishes on a Tuesday and Saturday/Sunday are non-working days, then a lag of -3 will schedule its successor (work package B) to start on the previous Friday.
 
 ### Display hierarchy trees for hierarchy custom fields
 
