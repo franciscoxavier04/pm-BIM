@@ -17,7 +17,7 @@ At the end, you will find a complete list of all changes and bug fixes.
 
 ## Important feature changes
 
-### Define phases and phase gates with a project life cycle (Enterprise add-on)
+### Structure the project life cycle with phases and phase gates
 
 Text 
 
@@ -43,9 +43,19 @@ The PDF is generated in A4 format and includes a professional layout.
 
 ### Set smart default options for reminders
 
-Text 
+To make setting reminders even quicker, OpenProject now offers pre-filled options when clicking the reminder icon on a work package. Instead of entering details manually, you can now choose one of the following defaults:
 
-Screenshot
+- Tomorrow
+- In 3 days
+- In a week
+- In a month
+- At a particular date/time
+
+Selecting one of the quick options will open the reminder dialog with a pre-filled date and time – typically at 9:00 local time on the selected future day. You can still adjust the date, time, and add a note before saving the reminder.
+
+We released Reminders with OpenProject 15.2 in January 2025. With this update, it’s easier than ever to use them to stay organized and keep your notification center clean.
+
+![Dropdown menu on a work package when clicking on the reminder icon, with options to quickly choose a date to be reminded](openproject-16-1-reminder-options.png)
 
 ### Use negative lag for work package dates
 
@@ -77,7 +87,7 @@ Clicking on any entry in the tree opens that item in the same view, making it ea
 
 ![Example of a hierarchy custom field with the new visualization, the hierarchical tree](openproject-hierarchy-custom-field-tree.png)
 
-### Benefit from improved accessibility with ARIA live regions
+### Benefit from improved accessibility for the date picker with ARIA live regions
 
 Text 
 
