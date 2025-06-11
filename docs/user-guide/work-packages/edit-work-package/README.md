@@ -152,7 +152,7 @@ A list with helpful pre-defined options will open, from which you can select:
 - in a month
 - at a particular date/time
 
-Selecting any of these options will display a modal. The time will be set to 9 am for the date you selected (apart from the last option). This modal allows you to adjust the pre-filled date and time if you'd like and, notably, to add a note. This note will be visible when the reminder is triggered in Notification center.
+Selecting any of these options will display a modal. The time will be set to 9 am for the date you selected (apart from the last option). This modal allows you to adjust the pre-filled date and time and to add a note. This note will be visible when the reminder is triggered in Notification center.
 
 > [!TIP]
 > All the pre-defined reminder options will be set to 9 am of the selected date.
