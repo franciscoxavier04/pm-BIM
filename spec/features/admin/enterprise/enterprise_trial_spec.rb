@@ -164,7 +164,7 @@ RSpec.describe "Enterprise trial management",
 
   before do
     login_as(admin)
-    visit enterprise_path
+    visit enterprise_tokens_path
   end
 
   def fill_out_modal(mail: "foo@foocorp.example")
@@ -247,14 +247,14 @@ RSpec.describe "Enterprise trial management",
       proxy.stub("https://start.openproject-edge.com:443/public/v1/trials/#{trial_id}/details")
         .and_return(headers: { "Access-Control-Allow-Origin" => "*" }, code: 403)
 
-      visit enterprise_path
+      visit enterprise_tokens_path
 
-      expect(page).to have_css(".attributes-key-value--value-container", text: "OpenProject Test", wait: 20)
-      expect(page).to have_css(".attributes-key-value--value-container", text: "01/01/2020")
-      expect(page).to have_css(".attributes-key-value--value-container", text: "01/02/2020")
-      expect(page).to have_css(".attributes-key-value--value-container", text: "5")
-      # Generated expired token has different mail
-      expect(page).to have_css(".attributes-key-value--value-container", text: "info@openproject.com")
+      expect_and_dismiss_flash(message: "Successful update.")
+      expect(page).to have_text("Enterprise Plan (Token Version 1)")
+      expect(page).to have_text("OpenProject Test")
+      expect(page).to have_text("5")
+      expect(page).to have_text("info@openproject.com") # Generated token has different mail than the one used for trial
+      expect(page).to have_text("01/01/2020 – 01/02/2020")
     end
 
     it "can confirm that trial regularly" do
@@ -279,12 +279,11 @@ RSpec.describe "Enterprise trial management",
       click_on "Continue"
 
       expect_and_dismiss_flash(message: "Successful update.")
-      expect(page).to have_css(".attributes-key-value--value-container", text: "OpenProject Test")
-      expect(page).to have_css(".attributes-key-value--value-container", text: "01/01/2020")
-      expect(page).to have_css(".attributes-key-value--value-container", text: "01/02/2020")
-      expect(page).to have_css(".attributes-key-value--value-container", text: "5")
-      # Generated expired token has different mail
-      expect(page).to have_css(".attributes-key-value--value-container", text: "info@openproject.com")
+      expect(page).to have_text("Enterprise Plan (Token Version 1)")
+      expect(page).to have_text("OpenProject Test")
+      expect(page).to have_text("5")
+      expect(page).to have_text("info@openproject.com") # Generated token has different mail than the one used for trial
+      expect(page).to have_text("01/01/2020 – 01/02/2020")
     end
   end
 end

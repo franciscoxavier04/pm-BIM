@@ -29,6 +29,9 @@
 class AuthProvider < ApplicationRecord
   belongs_to :creator, class_name: "User"
 
+  has_many :user_auth_provider_links, dependent: :destroy
+  has_many :users, through: :user_auth_provider_links
+
   validates :display_name, presence: true
   validates :display_name, uniqueness: true
 
@@ -39,7 +42,7 @@ class AuthProvider < ApplicationRecord
   end
 
   def user_count
-    @user_count ||= User.where("identity_url LIKE ?", "#{slug}%").count
+    @user_count ||= user_auth_provider_links.count
   end
 
   def human_type

@@ -191,7 +191,6 @@ import { NoResultsComponent } from 'core-app/shared/components/no-results/no-res
 import {
   OpNonWorkingDaysListComponent,
 } from 'core-app/shared/components/op-non-working-days-list/op-non-working-days-list.component';
-import { CopyToClipboardComponent } from 'core-app/shared/components/copy-to-clipboard/copy-to-clipboard.component';
 import { GlobalSearchTitleComponent } from 'core-app/core/global_search/title/global-search-title.component';
 import { PersistentToggleComponent } from 'core-app/shared/components/persistent-toggle/persistent-toggle.component';
 import { TypeFormConfigurationComponent } from 'core-app/features/admin/types/type-form-configuration.component';
@@ -219,6 +218,7 @@ import {
 import {
   OpWpDatePickerInstanceComponent,
 } from 'core-app/shared/components/datepicker/wp-date-picker-modal/wp-date-picker-instance.component';
+import { ReportingPageComponent } from 'core-app/features/reporting/reporting-page/reporting-page.component';
 
 export function initializeServices(injector:Injector) {
   return () => {
@@ -453,7 +453,6 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-non-working-days-list', OpNonWorkingDaysListComponent, { injector });
     registerCustomElement('opce-main-menu-toggle', MainMenuToggleComponent, { injector });
     registerCustomElement('opce-main-menu-resizer', MainMenuResizerComponent, { injector });
-    registerCustomElement('opce-copy-to-clipboard', CopyToClipboardComponent, { injector });
     registerCustomElement('opce-global-search-title', GlobalSearchTitleComponent, { injector });
     registerCustomElement('opce-persistent-toggle', PersistentToggleComponent, { injector });
     registerCustomElement('opce-admin-type-form-configuration', TypeFormConfigurationComponent, { injector });
@@ -464,5 +463,6 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-global-search-tabs', GlobalSearchTabsComponent, { injector });
     registerCustomElement('opce-zen-mode-toggle-button', ZenModeButtonComponent, { injector });
     registerCustomElement('opce-colors-autocompleter', ColorsAutocompleterComponent, { injector });
+    registerCustomElement('opce-reporting-page', ReportingPageComponent, { injector });
   }
 }

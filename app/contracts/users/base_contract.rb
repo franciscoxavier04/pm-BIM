@@ -47,9 +47,6 @@ module Users
     attribute :status,
               writable: ->(*) { can_create_or_manage_users? }
 
-    attribute :identity_url,
-              writable: ->(*) { user.admin? }
-
     attribute :force_password_change,
               writable: ->(*) { user.admin? }
 
@@ -58,23 +55,29 @@ module Users
     end
 
     validate :validate_password_writable
+    validate :validate_identity_url_writable
     validate :existing_auth_source
 
     delegate :available_custom_fields, to: :model
 
     def reduce_writable_attributes(attributes)
       super.tap do |writable|
+        # `password` and `identity_url` are not regular attributes so they bypass
+        # attribute writable checks. therewore they must be added to the list
+        # of writable attributes under certain conditions.
         writable << "password" if password_writable?
+        writable << "identity_url" if identity_url_writable?
       end
     end
 
     private
 
-    ##
-    # Password is not a regular attribute so it bypasses
-    # attribute writable checks
     def password_writable?
       user.admin? || user.id == model.id
+    end
+
+    def identity_url_writable?
+      user.admin?
     end
 
     ##
@@ -86,6 +89,12 @@ module Users
       return if password_writable?
 
       errors.add :password, :error_readonly if model.password.present?
+    end
+
+    def validate_identity_url_writable
+      return if identity_url_writable?
+
+      errors.add(:identity_url, :error_readonly) if model.user_auth_provider_links.any?(&:changed?)
     end
 
     # rubocop:disable Rails/DynamicFindBy

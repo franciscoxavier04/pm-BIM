@@ -30,7 +30,8 @@
 
 require "spec_helper"
 
-RSpec.describe "admin/enterprises/_current" do
+# TODO: delete this file once the partial "current" is removed
+RSpec.describe "enterprise_tokens/current" do
   let(:current_user) { create(:admin) }
   let(:ee_token) { "v1_expired_with_7_days_reprieve_at_2021_09_01.token" }
   let(:current_time) { DateTime.now }
@@ -38,13 +39,13 @@ RSpec.describe "admin/enterprises/_current" do
   before do
     allow(User).to receive(:current).and_return current_user
 
-    encoded = File.read Rails.root.join("spec/fixtures/ee_tokens/#{ee_token}")
-    token = EnterpriseToken.new(encoded_token: encoded)
+    encoded = Rails.root.join("spec/fixtures/ee_tokens/#{ee_token}").read
+    token = EnterpriseToken.new(id: 42, encoded_token: encoded)
 
     assign :current_token, token
 
     Timecop.travel(current_date) do
-      render partial: "enterprises/current"
+      render partial: "enterprise_tokens/current"
     end
   end
 

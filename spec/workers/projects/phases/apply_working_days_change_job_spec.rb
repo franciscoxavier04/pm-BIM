@@ -155,8 +155,8 @@ RSpec.describe Projects::Phases::ApplyWorkingDaysChangeJob do
             create(:project_phase, project: project_b, start_date: date + 6, finish_date: date + 7)
           ]
         end
-        let(:reschedule_service_a) { instance_double(ProjectLifeCycleSteps::RescheduleService, call: nil) }
-        let(:reschedule_service_b) { instance_double(ProjectLifeCycleSteps::RescheduleService, call: nil) }
+        let(:reschedule_service_a) { instance_double(ProjectPhases::RescheduleService, call: nil) }
+        let(:reschedule_service_b) { instance_double(ProjectPhases::RescheduleService, call: nil) }
 
         before do
           where = double
@@ -167,7 +167,7 @@ RSpec.describe Projects::Phases::ApplyWorkingDaysChangeJob do
             project_a => reschedule_service_a,
             project_b => reschedule_service_b
           }.each do |project, reschedule_service|
-            allow(ProjectLifeCycleSteps::RescheduleService)
+            allow(ProjectPhases::RescheduleService)
               .to receive(:new).with(user:, project:).and_return(reschedule_service)
             allow(project).to receive(:touch_and_save_journals)
           end
@@ -176,12 +176,12 @@ RSpec.describe Projects::Phases::ApplyWorkingDaysChangeJob do
         it "calls RescheduleService once per project" do
           subject
 
-          expect(ProjectLifeCycleSteps::RescheduleService)
+          expect(ProjectPhases::RescheduleService)
             .to have_received(:new).with(user:, project: project_a).once
           expect(reschedule_service_a)
             .to have_received(:call).with(phases: phases_a, from: date).once
 
-          expect(ProjectLifeCycleSteps::RescheduleService)
+          expect(ProjectPhases::RescheduleService)
             .to have_received(:new).with(user:, project: project_b).once
           expect(reschedule_service_b)
             .to have_received(:call).with(phases: phases_b, from: date + 4).once
@@ -207,14 +207,14 @@ RSpec.describe Projects::Phases::ApplyWorkingDaysChangeJob do
           allow(Project).to receive(:where).with(id: Project::Phase.select(:project_id)).and_return(where)
           allow(where).to receive(:find_each)
 
-          allow(ProjectLifeCycleSteps::RescheduleService).to receive(:new)
+          allow(ProjectPhases::RescheduleService).to receive(:new)
           allow(project).to receive(:touch_and_save_journals)
         end
 
         it "doesn't cause exception" do
           subject
 
-          expect(ProjectLifeCycleSteps::RescheduleService).not_to have_received(:new)
+          expect(ProjectPhases::RescheduleService).not_to have_received(:new)
         end
 
         it "doesn't journal" do
@@ -234,14 +234,14 @@ RSpec.describe Projects::Phases::ApplyWorkingDaysChangeJob do
             create(:project_phase, project:, start_date: date + 2, finish_date: date + 3)
           ]
         end
-        let(:reschedule_service) { instance_double(ProjectLifeCycleSteps::RescheduleService, call: nil) }
+        let(:reschedule_service) { instance_double(ProjectPhases::RescheduleService, call: nil) }
 
         before do
           where = double
           allow(Project).to receive(:where).with(id: Project::Phase.select(:project_id)).and_return(where)
           allow(where).to receive(:find_each).and_yield(project)
 
-          allow(ProjectLifeCycleSteps::RescheduleService)
+          allow(ProjectPhases::RescheduleService)
             .to receive(:new).and_return(reschedule_service)
           allow(project).to receive(:touch_and_save_journals)
         end
@@ -249,7 +249,7 @@ RSpec.describe Projects::Phases::ApplyWorkingDaysChangeJob do
         it "calls RescheduleService with first start_date" do
           subject
 
-          expect(ProjectLifeCycleSteps::RescheduleService)
+          expect(ProjectPhases::RescheduleService)
             .to have_received(:new).with(user:, project:).once
           expect(reschedule_service)
             .to have_received(:call).with(phases: phases, from: date + 1).once
@@ -277,14 +277,14 @@ RSpec.describe Projects::Phases::ApplyWorkingDaysChangeJob do
           allow(Project).to receive(:where).with(id: Project::Phase.select(:project_id)).and_return(where)
           allow(where).to receive(:find_each).and_yield(project)
 
-          allow(ProjectLifeCycleSteps::RescheduleService).to receive(:new)
+          allow(ProjectPhases::RescheduleService).to receive(:new)
           allow(project).to receive(:touch_and_save_journals)
         end
 
         it "no call RescheduleService is done" do
           subject
 
-          expect(ProjectLifeCycleSteps::RescheduleService).not_to have_received(:new)
+          expect(ProjectPhases::RescheduleService).not_to have_received(:new)
         end
 
         it "doesn't journal" do

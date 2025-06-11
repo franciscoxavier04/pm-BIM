@@ -77,7 +77,18 @@ RSpec.describe OpenProject::Common::AttributeLabelComponent, type: :component do
     end
   end
 
-  context "with help text" do
+  context "with help text on an attribute" do
+    let!(:help_text) { create(:project_help_text, attribute_name: attribute) }
+
+    it_behaves_like "component renders"
+
+    it "renders help text" do
+      expect(subject).to have_element class: "op-attribute-help-text"
+    end
+  end
+
+  context "with help text on an association" do
+    let(:attribute) { "parent_id" }
     let!(:help_text) { create(:project_help_text, attribute_name: attribute) }
 
     it_behaves_like "component renders"
