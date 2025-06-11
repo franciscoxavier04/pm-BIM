@@ -96,6 +96,8 @@ class EnterpriseToken < ApplicationRecord
     end
 
     def set_active_tokens
+      # although we use the `active` scope here, we still need to filter out expired tokens
+      # as not all token validity period is extracted into the DB
       EnterpriseToken
         .active
         .order(Arel.sql("created_at DESC"))
@@ -122,7 +124,7 @@ class EnterpriseToken < ApplicationRecord
   validate :valid_token_object
   validate :valid_domain
 
-  before_validation :extract_validity_from_token
+  before_save :extract_validity_from_token
   before_save :clear_current_tokens_cache
   before_destroy :clear_current_tokens_cache
 
