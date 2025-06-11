@@ -178,6 +178,11 @@
         }
       },
       "properties": {
+        "status": {
+          "title": "Status",
+          "description": "Styling for the status text in the participants table",
+          "$ref": "#/$defs/font"
+        },
         "cell": {
           "title": "Participant table cell",
           "description": "Styling for a table cell with a participant name",
