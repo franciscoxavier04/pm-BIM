@@ -178,11 +178,6 @@ import {
 import {
   WorkPackageOverviewGraphComponent,
 } from 'core-app/shared/components/work-package-graphs/overview/wp-overview-graph.component';
-import {
-  EEActiveSavedTrialComponent,
-} from 'core-app/features/enterprise/enterprise-active-trial/ee-active-saved-trial.component';
-import { FreeTrialButtonComponent } from 'core-app/features/enterprise/free-trial-button/free-trial-button.component';
-import { EnterpriseBaseComponent } from 'core-app/features/enterprise/enterprise-base.component';
 import { NoResultsComponent } from 'core-app/shared/components/no-results/no-results.component';
 import {
   OpNonWorkingDaysListComponent,
@@ -440,9 +435,6 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-time-entry-trigger-actions', TriggerActionsEntryComponent, { injector });
     registerCustomElement('opce-wp-overview-graph', WorkPackageOverviewGraphComponent, { injector });
     registerCustomElement('opce-header-project-select', OpHeaderProjectSelectComponent, { injector });
-    registerCustomElement('opce-enterprise-active-saved-trial', EEActiveSavedTrialComponent, { injector });
-    registerCustomElement('opce-free-trial-button', FreeTrialButtonComponent, { injector });
-    registerCustomElement('opce-enterprise-base', EnterpriseBaseComponent, { injector });
     registerCustomElement('opce-no-results', NoResultsComponent, { injector });
     registerCustomElement('opce-non-working-days-list', OpNonWorkingDaysListComponent, { injector });
     registerCustomElement('opce-main-menu-toggle', MainMenuToggleComponent, { injector });
