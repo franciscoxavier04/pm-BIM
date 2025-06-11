@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,5 +30,23 @@
 
 module Reminders
   class SetAttributesService < ::BaseServices::SetAttributes
+    private
+
+    def set_attributes(params)
+      remind_at_date = params.delete(:remind_at_date)
+      remind_at_time = params.delete(:remind_at_time)
+
+      if (remind_at_date && remind_at_time).present?
+        params[:remind_at] = build_remind_at_from_params(remind_at_date, remind_at_time)
+      end
+
+      super
+    end
+
+    def build_remind_at_from_params(remind_at_date, remind_at_time)
+      if remind_at_date.present? && remind_at_time.present?
+        User.current.time_zone.parse("#{remind_at_date} #{remind_at_time}")
+      end
+    end
   end
 end

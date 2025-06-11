@@ -1,0 +1,84 @@
+# frozen_string_literal: true
+
+#-- copyright
+# OpenProject is an open source project management software.
+# Copyright (C) the OpenProject GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License version 3.
+#
+# OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+# Copyright (C) 2006-2013 Jean-Philippe Lang
+# Copyright (C) 2010-2013 the ChiliProject Team
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# See COPYRIGHT and LICENSE files for more details.
+#++
+
+require "spec_helper"
+
+RSpec.describe Reminders::SetAttributesService do
+  let(:user) { build_stubbed(:user) }
+  let(:model_instance) { Reminder.new }
+  let(:remindable) { build_stubbed(:work_package) }
+  let(:contract_class) { EmptyContract }
+
+  current_user { user }
+
+  subject(:service) do
+    described_class.new(user: user,
+                        model: model_instance,
+                        contract_class:)
+  end
+
+  it "sets the remind_at attribute from date and time params" do
+    params = {
+      remind_at_date: "2023-10-01",
+      remind_at_time: "12:00",
+      note: "Some notes",
+      remindable:,
+      creator: user
+    }
+
+    service.perform(params)
+
+    expect(model_instance).to have_attributes(
+      remind_at: current_user.time_zone.parse("2023-10-01 12:00"),
+      note: "Some notes",
+      remindable:,
+      creator: user
+    )
+  end
+
+  context "when remind_at_date or remind_at_time is not provided" do
+    it "does not set the remind_at attribute" do
+      aggregate_failures "one is nil" do
+        service.perform(remind_at_date: nil, remind_at_time: "12:00")
+        expect(model_instance.remind_at).to be_nil
+      end
+
+      aggregate_failures "both are nil" do
+        service.perform(remind_at_date: nil, remind_at_time: nil)
+        expect(model_instance.remind_at).to be_nil
+      end
+
+      aggregate_failures "none provided" do
+        service.perform({})
+        expect(model_instance.remind_at).to be_nil
+      end
+    end
+  end
+end

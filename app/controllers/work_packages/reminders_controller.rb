@@ -175,22 +175,8 @@ class WorkPackages::RemindersController < ApplicationController
   end
 
   def reminder_params
-    params.require(:reminder)
-          .permit(%i[remind_at_date remind_at_time note])
-          .tap do |initial_params|
-      date = initial_params.delete(:remind_at_date)
-      time = initial_params.delete(:remind_at_time)
-
-      initial_params[:remind_at] = build_remind_at_from_params(date, time)
-      initial_params[:remindable] = @work_package
-      initial_params[:creator] = User.current
-    end
-  end
-
-  def build_remind_at_from_params(remind_at_date, remind_at_time)
-    if remind_at_date.present? && remind_at_time.present?
-      User.current.time_zone.parse("#{remind_at_date} #{remind_at_time}")
-    end
+    params.expect(reminder: %i[remind_at_date remind_at_time note])
+          .merge(remindable: @work_package, creator: User.current)
   end
 
   def remind_at_date
