@@ -170,7 +170,7 @@ class ProjectsController < ApplicationController
   def create_blank
     service_call = Projects::CreateService
       .new(user: current_user)
-      .call(permitted_params.project)
+      .call(permitted_params.new_project)
 
     @new_project = service_call.result
 
@@ -183,12 +183,12 @@ class ProjectsController < ApplicationController
   end
 
   def create_from_template # rubocop:disable Metrics/AbcSize
-    @copy_options = Projects::CopyOptions.new(copy_options_params)
+    @copy_options = Projects::CopyOptions.new(permitted_params.copy_project_options)
 
     service_call = Projects::EnqueueCopyService
       .new(user: current_user, model: @template)
       .call(
-        target_project_params: permitted_params.project.to_h,
+        target_project_params: permitted_params.new_project.to_h,
         only: @copy_options.dependencies,
         send_notifications: @copy_options.send_notifications
       )
@@ -236,10 +236,6 @@ class ProjectsController < ApplicationController
 
   def supported_export_formats
     ::Exports::Register.list_formats(Project).map(&:to_s)
-  end
-
-  def copy_options_params
-    params.expect(copy_options: [[dependencies: []], :send_notifications])
   end
 
   helper_method :supported_export_formats

@@ -292,6 +292,16 @@ class PermittedParams
     whitelist.merge(custom_field_values(:project))
   end
 
+  def new_project
+    params
+      .expect(project: %i[name parent_id])
+      .merge(custom_field_values(:project))
+  end
+
+  def copy_project_options
+    params.expect(copy_options: [[dependencies: []], :send_notifications])
+  end
+
   def project_phase
     params.require(:project_phase).permit(%i[start_date finish_date])
   end
