@@ -336,6 +336,26 @@ RSpec.describe EnterpriseToken do
     end
   end
 
+  describe ".active" do
+    it "builds the correct query with today if no date is provided" do
+      travel_to("2025-01-01T12:00:00Z") do
+        expect(described_class.active.to_sql).to include(<<~SQL.squish)
+          WHERE ((valid_from IS NULL OR valid_from <= '2025-01-01')
+          AND
+          (valid_until IS NULL OR valid_until >= '2025-01-01'))
+        SQL
+      end
+    end
+
+    it "builds the correct query with the given date" do
+      expect(described_class.active(Date.parse("2026-06-01")).to_sql).to include(<<~SQL.squish)
+        WHERE ((valid_from IS NULL OR valid_from <= '2026-06-01')
+        AND
+        (valid_until IS NULL OR valid_until >= '2026-06-01'))
+      SQL
+    end
+  end
+
   describe ".available_features" do
     context "with no tokens" do
       it "returns an empty array" do
@@ -500,6 +520,43 @@ RSpec.describe EnterpriseToken do
 
       it "is false" do
         expect(token.unlimited_users?).to be false
+      end
+    end
+  end
+
+  describe "extract validity from token" do
+    let(:starts_at) { Date.parse("2025-01-01") }
+    let(:expires_at) { Date.parse("2025-01-31") }
+    let(:reprieve_days) { 0 }
+
+    let!(:token) do
+      create_enterprise_token(plan: :basic, starts_at: starts_at, expires_at: expires_at, reprieve_days: reprieve_days)
+    end
+
+    context "without a starts_at date" do
+      let(:starts_at) { nil }
+
+      it "extracts the dates" do
+        expect(token.valid_from).to be_nil
+        expect(token.valid_until).to eq(expires_at)
+      end
+    end
+
+    context "with a starts_at date & expires_at date without reprieve_days" do
+      let(:reprieve_days) { 0 }
+
+      it "extracts the dates" do
+        expect(token.valid_from).to eq(starts_at)
+        expect(token.valid_until).to eq(expires_at)
+      end
+    end
+
+    context "with a starts_at date & expires_at date with reprieve_days" do
+      let(:reprieve_days) { 5 }
+
+      it "extracts the dates" do
+        expect(token.valid_from).to eq(starts_at)
+        expect(token.valid_until).to eq(expires_at + reprieve_days.days)
       end
     end
   end
