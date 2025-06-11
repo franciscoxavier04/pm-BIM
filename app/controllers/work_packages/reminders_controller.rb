@@ -59,7 +59,9 @@ class WorkPackages::RemindersController < ApplicationController
         component: modal_component_class.new(
           remindable: @work_package,
           reminder: @reminder,
-          errors: @errors
+          errors: @errors,
+          remind_at_date:,
+          remind_at_time:
         )
       )
 
@@ -82,7 +84,9 @@ class WorkPackages::RemindersController < ApplicationController
         component: modal_component_class.new(
           remindable: @work_package,
           reminder: @reminder,
-          errors: @errors
+          errors: @errors,
+          remind_at_date:,
+          remind_at_time:
         )
       )
 

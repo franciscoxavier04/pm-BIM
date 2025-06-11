@@ -259,8 +259,9 @@ RSpec.describe "Work package reminder modal",
           expect(page).to have_css(".FormControl-inlineValidation", text: "Date can't be blank")
           expect(page).to have_field("Time", with: "09:00")
 
+          one_week_from_now = 1.week.from_now
           # Fill in the date and unset the time
-          fill_in "Date", with: 1.week.from_now.to_date
+          fill_in "Date", with: one_week_from_now.to_date
           fill_in "Time", with: ""
           click_link_or_button "Set reminder"
 
@@ -268,15 +269,19 @@ RSpec.describe "Work package reminder modal",
           # The error message is only on the time field
           expect(page).to have_css(".FormControl-inlineValidation", text: "Time can't be blank")
           expect(page).to have_no_css(".FormControl-inlineValidation", text: "Date can't be blank", wait: 0)
+          expect(page).to have_field("Date", with: one_week_from_now.to_date)
 
           # Fill in the time but not the date
           fill_in "Date", with: ""
-          fill_in "Time", with: Time.zone.parse("05:00")
+          fill_in "Time", with: Time.use_zone(current_user.time_zone) { Time.zone.parse("05:00") }
           click_link_or_button "Set reminder"
 
           wait_for_network_idle
           expect(page).to have_css(".FormControl-inlineValidation", text: "Date can't be blank.")
           expect(page).to have_no_css(".FormControl-inlineValidation", text: "Time can't be blank.", wait: 0)
+          expect(page).to have_field("Time", with: Time.use_zone(current_user.time_zone) {
+            Time.zone.parse("05:00").localtime.strftime("%H:%M:%S")
+          })
         end
       end
 
