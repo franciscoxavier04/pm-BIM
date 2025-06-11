@@ -59,6 +59,12 @@ See COPYRIGHT and LICENSE files for more details.
     </div>
   </div>
 <% end %>
+
+<%= call_hook(
+      :repositories_navigation_toolbar,
+      { repository: @repository, project: @project, repository_empty: empty }
+    ) %>
+
 <%
   # @rev is revision or git branch or tag.
   rev_text = @changeset.nil? ? @rev : format_revision(@changeset)
