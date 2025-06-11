@@ -36,11 +36,9 @@ See COPYRIGHT and LICENSE files for more details.
       turbo_action: :replace,
       autoscroll_block: :start,
       autoscroll_behavior: :smooth
-    }
+    },
+    target: "_top"
   ) do
-%>
-  <%= render_flash_messages_as_turbo_streams %>
-  <%=
     settings_primer_form_with(model: project) do |f|
       flex_layout do |container|
         container.with_row(mb: 3) do
@@ -68,5 +66,5 @@ See COPYRIGHT and LICENSE files for more details.
         end
       end
     end
-  %>
-<% end %>
+  end
+%>

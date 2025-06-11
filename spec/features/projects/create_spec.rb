@@ -62,6 +62,8 @@ RSpec.describe "Projects", "creation",
     fill_in "Name", with: "Foo bar"
     click_on "Create"
 
+    expect_and_dismiss_flash type: :success, message: "Successful creation."
+
     expect(page).to have_current_path /\/projects\/foo-bar\/?/
     expect(page).to have_content "Foo bar"
   end
@@ -73,6 +75,8 @@ RSpec.describe "Projects", "creation",
 
     fill_in "Name", with: "Foo project"
     click_on "Create"
+
+    expect_and_dismiss_flash type: :success, message: "Successful creation."
 
     expect(page).to have_current_path /\/projects\/foo-project-1\/?/
 
@@ -106,6 +110,8 @@ RSpec.describe "Projects", "creation",
       list_field.select_option "A", "B"
 
       click_on "Create"
+
+      expect_and_dismiss_flash type: :success, message: "Successful creation."
 
       expect(page).to have_current_path /\/projects\/foo-bar\/?/
       expect(page).to have_content "Foo bar"
@@ -163,6 +169,8 @@ RSpec.describe "Projects", "creation",
       version_field.select_option(versions.first.name, versions.last.name)
 
       click_on "Create"
+
+      expect_and_dismiss_flash type: :success, message: "Successful creation."
 
       expect(page).to have_current_path /\/projects\/foo-bar\/?/
       expect(page).to have_content "Foo bar"
@@ -253,6 +261,8 @@ RSpec.describe "Projects", "creation",
       it "enables custom fields with provided values for this project" do
         click_on "Create"
 
+        expect_and_dismiss_flash type: :success, message: "Successful creation."
+
         expect(page).to have_current_path /\/projects\/foo-bar\/?/
 
         project = Project.last
@@ -276,6 +286,8 @@ RSpec.describe "Projects", "creation",
           # don't touch the default value
           click_on "Create"
 
+          expect_and_dismiss_flash type: :success, message: "Successful creation."
+
           expect(page).to have_current_path /\/projects\/foo-bar\/?/
 
           project = Project.last
@@ -294,6 +306,8 @@ RSpec.describe "Projects", "creation",
           click_on "Create"
 
           expect(page).to have_current_path /\/projects\/foo-bar\/?/
+
+          expect_and_dismiss_flash type: :success, message: "Successful creation."
 
           project = Project.last
 
@@ -322,6 +336,8 @@ RSpec.describe "Projects", "creation",
 
             click_on "Create"
 
+            expect_and_dismiss_flash type: :success, message: "Successful creation."
+
             expect(page).to have_current_path /\/projects\/foo-bar\/?/
 
             project = Project.last
@@ -343,6 +359,8 @@ RSpec.describe "Projects", "creation",
             expect(page).to have_no_content "Text for Admins only"
 
             click_on "Create"
+
+            expect_and_dismiss_flash type: :success, message: "Successful creation."
 
             expect(page).to have_current_path /\/projects\/foo-bar\/?/
 

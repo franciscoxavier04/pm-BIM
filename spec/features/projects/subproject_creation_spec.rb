@@ -69,6 +69,8 @@ RSpec.describe "Subproject creation", :js do
 
     click_on "Create"
 
+    expect_and_dismiss_flash type: :success, message: "Successful creation."
+
     expect(page).to have_current_path /\/projects\/foo-child\/?/
 
     child = Project.last
