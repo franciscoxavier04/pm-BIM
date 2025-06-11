@@ -53,13 +53,11 @@ class WorkPackages::RemindersController < ApplicationController
       render_success_flash_message_via_turbo_stream(message: I18n.t("work_package.reminders.success_creation_message"))
       respond_with_turbo_streams
     else
-      prepare_errors_from_result(service_result)
-
       replace_via_turbo_stream(
         component: modal_component_class.new(
           remindable: @work_package,
-          reminder: @reminder,
-          errors: @errors,
+          reminder: service_result.result,
+          errors: service_result.errors,
           remind_at_date:,
           remind_at_time:
         )
@@ -78,13 +76,11 @@ class WorkPackages::RemindersController < ApplicationController
       render_success_flash_message_via_turbo_stream(message: I18n.t("work_package.reminders.success_update_message"))
       respond_with_turbo_streams
     else
-      prepare_errors_from_result(service_result)
-
       replace_via_turbo_stream(
         component: modal_component_class.new(
           remindable: @work_package,
-          reminder: @reminder,
-          errors: @errors,
+          reminder: service_result.result,
+          errors: service_result.errors,
           remind_at_date:,
           remind_at_time:
         )
@@ -116,45 +112,6 @@ class WorkPackages::RemindersController < ApplicationController
 
   def find_work_package
     @work_package = WorkPackage.visible.find(params[:work_package_id])
-  end
-
-  # At the form level, we split the date and time into two form fields.
-  # In order to be a bit more informative of which field is causing
-  # the remind_at attribute to be in the past/invalid, we need to
-  # remap the error attribute to the appropriate field.
-  def prepare_errors_from_result(service_result)
-    # We set the reminder here for "create" case
-    # as the record comes from the service.
-    @reminder = service_result.result
-    @errors = service_result.errors
-
-    case @errors.find { |error| error.attribute == :remind_at }&.type
-    when :blank
-      handle_blank_error
-    when :datetime_must_be_in_future
-      handle_future_error
-    end
-
-    @errors.delete(:remind_at)
-  end
-
-  def handle_blank_error
-    @errors.add(:remind_at_date, :blank) if remind_at_date.blank?
-    @errors.add(:remind_at_time, :blank) if remind_at_time.blank?
-  end
-
-  def handle_future_error
-    @errors.add(:remind_at_date, :datetime_must_be_in_future) if @reminder.remind_at.to_date < today_in_user_time_zone
-    @errors.add(:remind_at_time, :datetime_must_be_in_future) if @reminder.remind_at < now_in_user_time_zone
-  end
-
-  def now_in_user_time_zone
-    @now_in_user_time_zone ||= Time.current
-                                   .in_time_zone(User.current.time_zone)
-  end
-
-  def today_in_user_time_zone
-    @today_in_user_time_zone ||= now_in_user_time_zone.to_date
   end
 
   # We assume for now that there is only one reminder per work package

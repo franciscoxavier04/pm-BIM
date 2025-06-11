@@ -44,40 +44,73 @@ RSpec.describe Reminders::SetAttributesService do
                         contract_class:)
   end
 
-  it "sets the remind_at attribute from date and time params" do
-    params = {
-      remind_at_date: "2023-10-01",
-      remind_at_time: "12:00",
-      note: "Some notes",
-      remindable:,
-      creator: user
-    }
+  describe "building remind_at timestamp" do
+    it "sets the remind_at attribute from date and time params" do
+      params = {
+        remind_at_date: "2023-10-01",
+        remind_at_time: "12:00",
+        note: "Some notes",
+        remindable:,
+        creator: user
+      }
 
-    service.perform(params)
+      service.perform(params)
 
-    expect(model_instance).to have_attributes(
-      remind_at: current_user.time_zone.parse("2023-10-01 12:00"),
-      note: "Some notes",
-      remindable:,
-      creator: user
-    )
+      expect(model_instance).to have_attributes(
+        remind_at: current_user.time_zone.parse("2023-10-01 12:00"),
+        note: "Some notes",
+        remindable:,
+        creator: user
+      )
+    end
+
+    context "when remind_at_date or remind_at_time is not provided" do
+      it "does not set the remind_at attribute" do
+        aggregate_failures "one is nil" do
+          service.perform(remind_at_date: nil, remind_at_time: "12:00")
+          expect(model_instance.remind_at).to be_nil
+        end
+
+        aggregate_failures "both are nil" do
+          service.perform(remind_at_date: nil, remind_at_time: nil)
+          expect(model_instance.remind_at).to be_nil
+        end
+
+        aggregate_failures "none provided" do
+          service.perform({})
+          expect(model_instance.remind_at).to be_nil
+        end
+      end
+    end
   end
 
-  context "when remind_at_date or remind_at_time is not provided" do
-    it "does not set the remind_at attribute" do
-      aggregate_failures "one is nil" do
-        service.perform(remind_at_date: nil, remind_at_time: "12:00")
-        expect(model_instance.remind_at).to be_nil
-      end
+  describe "Error results handling" do
+    let(:contract_class) { Reminders::BaseContract }
 
-      aggregate_failures "both are nil" do
-        service.perform(remind_at_date: nil, remind_at_time: nil)
-        expect(model_instance.remind_at).to be_nil
-      end
+    context "with remind_at blank active model error" do
+      it "adds blank errors for `remind_at_date` and `remind_at_time` attributes" do
+        result = service.perform({})
 
-      aggregate_failures "none provided" do
-        service.perform({})
-        expect(model_instance.remind_at).to be_nil
+        expect(result).to be_failure
+        expect(result.errors.messages).to include(
+          remind_at_date: ["can't be blank."],
+          remind_at_time: ["can't be blank."]
+        )
+      end
+    end
+
+    context "with remind_at in the past active model error" do
+      let(:remind_at_date) { 1.day.ago.to_date }
+      let(:remind_at_time) { 1.hour.ago.strftime("%H:%M") }
+
+      it "adds errors for `remind_at_date` and `remind_at_time` attributes" do
+        result = service.perform(remind_at_date:, remind_at_time:)
+
+        expect(result).to be_failure
+        expect(result.errors.messages).to include(
+          remind_at_date: ["must be in the future."],
+          remind_at_time: ["must be in the future."]
+        )
       end
     end
   end
