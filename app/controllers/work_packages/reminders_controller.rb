@@ -32,13 +32,13 @@ class WorkPackages::RemindersController < ApplicationController
   include OpTurbo::ComponentStream
   layout false
   before_action :find_work_package
-  before_action :build_or_find_reminder, only: %i[modal_body create]
+  before_action :find_or_build_reminder, only: %i[modal_body create]
   before_action :find_reminder, only: %i[update destroy]
 
   before_action :authorize
 
   def modal_body
-    render modal_component_class.new(
+    render WorkPackages::Reminder::ModalBodyComponent.new(
       remindable: @work_package,
       reminder: @reminder,
       preset: params[:preset]
@@ -50,20 +50,9 @@ class WorkPackages::RemindersController < ApplicationController
                                              .call(reminder_params)
 
     if service_result.success?
-      render_success_flash_message_via_turbo_stream(message: I18n.t("work_package.reminders.success_creation_message"))
-      respond_with_turbo_streams
+      respond_with_success_flash_message(message: I18n.t("work_package.reminders.success_creation_message"))
     else
-      replace_via_turbo_stream(
-        component: modal_component_class.new(
-          remindable: @work_package,
-          reminder: service_result.result,
-          errors: service_result.errors,
-          remind_at_date:,
-          remind_at_time:
-        )
-      )
-
-      respond_with_turbo_streams(status: :unprocessable_entity)
+      respond_with_error_modal_component(service_result)
     end
   end
 
@@ -73,20 +62,9 @@ class WorkPackages::RemindersController < ApplicationController
                                              .call(reminder_params)
 
     if service_result.success?
-      render_success_flash_message_via_turbo_stream(message: I18n.t("work_package.reminders.success_update_message"))
-      respond_with_turbo_streams
+      respond_with_success_flash_message(message: I18n.t("work_package.reminders.success_update_message"))
     else
-      replace_via_turbo_stream(
-        component: modal_component_class.new(
-          remindable: @work_package,
-          reminder: service_result.result,
-          errors: service_result.errors,
-          remind_at_date:,
-          remind_at_time:
-        )
-      )
-
-      respond_with_turbo_streams(status: :unprocessable_entity)
+      respond_with_error_modal_component(service_result)
     end
   end
 
@@ -96,8 +74,7 @@ class WorkPackages::RemindersController < ApplicationController
                                              .call
 
     if service_result.success?
-      render_success_flash_message_via_turbo_stream(message: I18n.t("work_package.reminders.success_deletion_message"))
-      respond_with_turbo_streams
+      respond_with_success_flash_message(message: I18n.t("work_package.reminders.success_deletion_message"))
     else
       render_error_flash_message_via_turbo_stream(message: service_result.errors.full_messages)
       respond_with_turbo_streams(status: :unprocessable_entity)
@@ -106,8 +83,23 @@ class WorkPackages::RemindersController < ApplicationController
 
   private
 
-  def modal_component_class
-    WorkPackages::Reminder::ModalBodyComponent
+  def respond_with_success_flash_message(message:)
+    render_success_flash_message_via_turbo_stream(message:)
+    respond_with_turbo_streams
+  end
+
+  def respond_with_error_modal_component(service_result)
+    replace_via_turbo_stream(
+      component: WorkPackages::Reminder::ModalBodyComponent.new(
+        remindable: @work_package,
+        reminder: service_result.result,
+        errors: service_result.errors,
+        remind_at_date: reminder_params[:remind_at_date],
+        remind_at_time: reminder_params[:remind_at_time]
+      )
+    )
+
+    respond_with_turbo_streams(status: :unprocessable_entity)
   end
 
   def find_work_package
@@ -115,32 +107,24 @@ class WorkPackages::RemindersController < ApplicationController
   end
 
   # We assume for now that there is only one reminder per work package
-  def build_or_find_reminder
-    @reminder = @work_package.reminders
-                             .upcoming_and_visible_to(User.current)
-                             .last || @work_package.reminders.build
+  def find_or_build_reminder
+    @reminder = reminders.last || @work_package.reminders.build
   end
 
   def find_reminder
-    @reminder = @work_package.reminders
-                             .upcoming_and_visible_to(User.current)
-                             .find(params[:id])
+    @reminder = reminders.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     render_error_flash_message_via_turbo_stream(message: I18n.t(:error_reminder_not_found))
     respond_with_turbo_streams(status: :not_found)
     false
   end
 
+  def reminders
+    @work_package.reminders.upcoming_and_visible_to(User.current)
+  end
+
   def reminder_params
     params.expect(reminder: %i[remind_at_date remind_at_time note])
           .merge(remindable: @work_package, creator: User.current)
-  end
-
-  def remind_at_date
-    params[:reminder][:remind_at_date]
-  end
-
-  def remind_at_time
-    params[:reminder][:remind_at_time]
   end
 end
