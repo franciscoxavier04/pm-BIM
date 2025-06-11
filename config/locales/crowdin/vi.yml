@@ -2373,7 +2373,7 @@ vi:
         static_token_name: "Mã RSS"
         disabled_text: "Mã RSS không được kích hoạt bởi quản trị viên. Vui lòng liên hệ với quản trị viên của bạn để sử dụng tính năng này."
       storages:
-        title: "Lưu trữ tệp"
+        title: "File storages"
         text_hint: "Mã Lưu trữ Tệp kết nối phiên bản OpenProject này với một lưu trữ tệp bên ngoài."
         empty_text_hint: "Không có quyền truy cập lưu trữ nào liên kết với tài khoản của bạn."
         revoke_token: "Bạn có thực sự muốn xóa mã truy cập này không? Bạn sẽ cần phải đăng nhập lại trên %{storage}"
@@ -2855,8 +2855,8 @@ vi:
   label_project_custom_field_plural: "Các thuộc tính dự án"
   label_project_settings: "Thiết lập dự án"
   label_project_attributes_settings: "Cài đặt thuộc tính dự án"
-  label_project_storage_plural: "Lưu trữ Tệp"
-  label_project_storage_project_folder: "Lưu trữ tệp: Thư mục dự án"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} dự án đang sử dụng %{used_disk_space} dung lượng đĩa"
   label_project_view_all: "Xem tất cả các dự án"
   label_project_show_details: "Hiển thị chi tiết dự án"
@@ -3595,7 +3595,7 @@ vi:
       oauth_application_details: "Giá trị bí mật của khách hàng sẽ không còn khả dụng sau khi bạn đóng cửa sổ này. Vui lòng sao chép các giá trị này vào cài đặt tích hợp OpenProject của Nextcloud:"
       oauth_application_details_link_text: "Đi đến trang cài đặt"
       setup_documentation_details: "Nếu bạn cần trợ giúp để cấu hình một lưu trữ tệp mới, vui lòng kiểm tra tài liệu: "
-      setup_documentation_details_link_text: "Cấu hình lưu trữ tệp"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Để sử dụng lưu trữ tệp này, hãy nhớ kích hoạt mô-đun và lưu trữ cụ thể trong cài đặt dự án của từng dự án mong muốn."
     subversion:
       existing_title: "Kho Subversion hiện có"
@@ -4294,8 +4294,12 @@ vi:
       code_500_missing_enterprise_token: "Yêu cầu không thể được xử lý do token Doanh nghiệp không hợp lệ hoặc bị thiếu."
       bad_request:
         emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "Gói công việc bạn tìm kiếm không thể tìm thấy hoặc đã bị xóa."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "YYYY-MM-DD (chỉ nhận ISO 8601)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (bất kỳ ngày giờ ISO 8601 nào)"

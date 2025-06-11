@@ -2410,7 +2410,7 @@ es:
         static_token_name: "Token RSS"
         disabled_text: "Los tokens RSS no están habilitados por el administrador. Póngase en contacto con su administrador para utilizar esta función."
       storages:
-        title: "Almacenamiento de archivos"
+        title: "File storages"
         text_hint: "Los tokens de Almacenamiento de archivos conectan esta instancia de OpenProject con un Almacenamiento de archivos externo."
         empty_text_hint: "No hay acceso de almacenamiento vinculado a su cuenta."
         revoke_token: "¿Realmente desea eliminar este token? Tendrá que volver a iniciar sesión en %{storage}"
@@ -2892,8 +2892,8 @@ es:
   label_project_custom_field_plural: "Atributos del proyecto"
   label_project_settings: "Configuración del proyecto"
   label_project_attributes_settings: "Ajustes de los atributos del proyecto"
-  label_project_storage_plural: "Almacenes de archivos"
-  label_project_storage_project_folder: "Almacenes de archivos: Carpetas de proyectos"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} proyectos utilizando %{used_disk_space} espacio de disco"
   label_project_view_all: "Ver todos los proyectos"
   label_project_show_details: "Mostrar los detalles del proyecto"
@@ -3633,7 +3633,7 @@ es:
       oauth_application_details: "La clave secreta de cliente no será accesible una vez se cierre esta ventana. Por favor, copie estos valores en la configuración de la integración de OpenProject en Nextcloud:"
       oauth_application_details_link_text: "Ir a la página de configuración"
       setup_documentation_details: "Si necesita ayuda para configurar un nuevo almacenamiento de archivos, compruebe la documentación: "
-      setup_documentation_details_link_text: "Configuración de almacenamiento de archivos"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Para utilizar este almacenamiento recuerde activar el módulo y el almacenamiento específico en la configuración de cada proyecto deseado."
     subversion:
       existing_title: "Subversion existentes de repositorio"
@@ -4333,8 +4333,12 @@ es:
       code_500_missing_enterprise_token: "La solicitud no puede ser manejada debido a un token Enterprise inválido o inexistente."
       bad_request:
         emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "No se encuentra el paquete de trabajo que busca, o bien se ha eliminado."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "AAAA-MM-DD (ISO 8601 fecha solamente)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (cualquier valor de fecha/hora compatible con el formato ISO 8601)"

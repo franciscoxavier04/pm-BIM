@@ -50,6 +50,10 @@ module OpenProject::TextFormatting::Matchers
         # prohibits links to things like #0123
         return if wp_id.to_s != matcher.identifier
 
+        render_link(wp_id, matcher)
+      end
+
+      def render_link(wp_id, matcher)
         if ["##", "###"].include?(matcher.sep)
           render_work_package_macro(wp_id, detailed: (matcher.sep === "###"))
         else

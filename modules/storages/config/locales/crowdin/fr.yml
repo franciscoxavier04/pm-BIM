@@ -373,9 +373,9 @@ fr:
         tenant_id: Veuillez copier l'identifiant du répertoire (locataire) de l'application concernée et les enregistrements de l'application dans %{application_link_text}.
         tenant_id_placeholder: Nom ou UUID
       setting_up_additional_storages: Pour configurer des stockages de fichiers supplémentaires, veuillez visiter
-      setting_up_additional_storages_non_admin: Les administrateurs peuvent configurer des stockages de fichiers supplémentaires dans Administration / Stockages de fichiers.
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: Pour configurer des stockages de fichiers, veuillez visiter
-      setting_up_storages_non_admin: Les administrateurs peuvent configurer des stockages de fichiers dans Administration / Stockages de fichiers.
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: 'Veuillez vous assurer que vous avez les privilèges d''administration dans votre instance Nextcloud et que l''application suivante est installée avant de procéder à l''installation :'
       type_link_text: "« Intégration OpenProject »"
     label_active: Actif

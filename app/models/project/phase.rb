@@ -51,7 +51,8 @@ class Project::Phase < ApplicationRecord
   attr_readonly :definition_id
 
   scope :active, -> { where(active: true) }
-  scopes :order_by_position
+  scopes :order_by_position,
+         :covering_dates_or_days_of_week
 
   class << self
     def visible(user = User.current)
@@ -85,24 +86,24 @@ class Project::Phase < ApplicationRecord
   end
 
   def follows_previous_phase?
-    previous_finish_dates.last.present?
+    !!previous_phase&.date_range_set?
   end
 
   def default_start_date
     return @default_start_date if defined?(@default_start_date)
 
-    previous_finish_date = previous_finish_dates.compact.last
+    previous_finish_date = previous_phase&.finish_date
     @default_start_date = previous_finish_date && Day.next_working(from: previous_finish_date).date
   end
 
   private
 
-  def previous_finish_dates
-    return @previous_finish_dates if defined?(@previous_finish_dates)
+  def previous_phase
+    return @previous_phase if defined?(@previous_phase)
 
-    @previous_finish_dates = project
+    @previous_phase = project
      .available_phases
      .select { it.position < position }
-     .map(&:finish_date)
+     .last
   end
 end

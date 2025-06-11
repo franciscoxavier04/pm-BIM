@@ -358,10 +358,10 @@ uk:
           learn_about: "Докладніше про всі нові функції"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_0":
+          "16_1":
             standard:
               new_features_html: >
-                Цей випуск містить кілька нових і поліпшених функцій. <br> <ul class="%{list_styling_class}"> <li>Можливість перегляду черги завдань наприкінці класичної наради.</li> <li>Оновлені плани Enterprise.</li> <li>Внутрішні коментарі в пакетах робіт (надбудова Enterprise).</li> <li>Автоматичне створення тем пакетів робіт (надбудова Enterprise).</li> <li>Окремий модуль обліку часу з поданням календаря.</li> <li>Відображення зв’язку з батьківським елементом на вкладці зв’язків пакета робіт.</li> <li>Оновлення в Community: графіки на сторінці огляду проєкту.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
     ical_sharing_modal:
       title: "Підписатися на календар"
       inital_setup_error_message: "Під час отримання даних сталася помилка."
@@ -566,7 +566,7 @@ uk:
     label_version_plural: "Версії"
     label_view_has_changed: "Це подання містить незбережені зміни. Натисніть, щоб переглянути їх."
     help_texts:
-      show_modal: "Показати вміст атрибута тексту довідки"
+      show_modal: "Show help text"
     onboarding:
       buttons:
         skip: "Пропустити"
@@ -1037,9 +1037,15 @@ uk:
       reminders:
         button_label: "Установити нагадування"
         title:
-          new: "Установити нагадування"
+          new: "Set a reminder"
           edit: "Редагувати нагадування"
         subtitle: "Ви отримаєте сповіщення про цей пакет робіт у вибраний час."
+        presets:
+          tomorrow: "Tomorrow"
+          three_days: "In 3 days"
+          week: "In a week"
+          month: "In a month"
+          custom: "At a particular date/time"
       scheduling:
         is_parent: "Дати цього пакета робіт автоматично виводяться з його дочірніх елементів. Активуйте «Ручне планування», щоб установити ці дати."
         is_switched_from_manual_to_automatic: "Можливо, дати цього пакета робіт знадобиться перерахувати після переходу з ручного на автоматичне планування через зв’язок з іншими пакетами робіт."

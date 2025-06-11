@@ -58,6 +58,7 @@ module EnterpriseEdition
 
     def buttons
       [
+        buy_now_button,
         free_trial_button,
         upgrade_now_button,
         more_info_button
@@ -72,6 +73,20 @@ module EnterpriseEdition
         "opce-free-trial-button",
         inputs: helpers.enterprise_angular_trial_inputs
       )
+    end
+
+    def buy_now_button
+      return unless EnterpriseToken.active?
+      return unless User.current.admin?
+
+      render(Primer::Beta::Button.new(
+               classes: "upsell-colored-background",
+               tag: :a,
+               href: OpenProject::Enterprise.upgrade_path,
+               align_self: :center
+             )) do
+        I18n.t("ee.upsell.buy_now_button")
+      end
     end
 
     # Allow providing a custom upgrade now button

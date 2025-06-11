@@ -2484,7 +2484,7 @@ uk:
         static_token_name: "Маркер RSS"
         disabled_text: "Маркери API не дозволено адміністратором. Зверніться до нього, якщо вам потрібна ця функція."
       storages:
-        title: "Файлові сховища"
+        title: "File storages"
         text_hint: "Маркери файлових сховищ підключають цей екземпляр OpenProject до зовнішнього файлового сховища."
         empty_text_hint: "Немає доступу до сховища, пов’язаного з вашим обліковим записом."
         revoke_token: "Справді вилучити цей маркер? Вам знадобиться знову ввійти в %{storage}"
@@ -2966,8 +2966,8 @@ uk:
   label_project_custom_field_plural: "Атрибути проєкту"
   label_project_settings: "Налаштування проекту"
   label_project_attributes_settings: "Налаштування атрибутів проєкту"
-  label_project_storage_plural: "Файлові сховища"
-  label_project_storage_project_folder: "Файлові сховища: папки проєкту"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "Проєктів, що використовують %{used_disk_space} місця на диску: %{count}"
   label_project_view_all: "Переглянути всi проекти"
   label_project_show_details: "Показати деталі проекту"
@@ -3710,7 +3710,7 @@ uk:
       oauth_application_details: "Секретний ключ клієнта стане недоступним, коли ви закриєте це вікно. Скопіюйте це значення в налаштування інтеграції Nextcloud OpenProject:"
       oauth_application_details_link_text: "Перейти на сторінку налаштувань"
       setup_documentation_details: "Якщо потрібна допомога з налаштуванням сховища нових файлів, ознайомтеся з документацією: "
-      setup_documentation_details_link_text: "Налаштування файлових сховищ"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Щоб користуватися цим файловим сховищем, активуйте модуль і визначене сховище в налаштуваннях кожного потрібного проєкту."
     subversion:
       existing_title: "Існуюче сховище Subversion"
@@ -4412,8 +4412,12 @@ uk:
       code_500_missing_enterprise_token: "Цей запит не можна обробити через недійсний або відсутній маркер версії Enterprise."
       bad_request:
         emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "Пакет робіт, який ви шукаєте, не можна знайти або його видалено."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "YYYY-MM-DD (ISO 8601 date only)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (будь-який сумісний формат ISO 8601 дати й часу)"

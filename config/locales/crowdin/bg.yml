@@ -2412,7 +2412,7 @@ bg:
         static_token_name: "RSS токен"
         disabled_text: "RSS токените не са разрешени от администратора. Моля, свържете се с администратора си, за да използвате тази функция."
       storages:
-        title: "Файлови Хранилища"
+        title: "File storages"
         text_hint: "Токените за файловите хранилища свързват тази инстанция на OpenProject с външно хранилище на файлове."
         empty_text_hint: "С акаунта ви не е свързан достъп до хранилище."
         revoke_token: "Наистина ли искате да премахнете този символ? Ще трябва да влезете отново на %{storage}"
@@ -2894,8 +2894,8 @@ bg:
   label_project_custom_field_plural: "Атрибути на проекта"
   label_project_settings: "Настройки на проекта"
   label_project_attributes_settings: "Project attributes settings"
-  label_project_storage_plural: "Файлови Хранилища"
-  label_project_storage_project_folder: "File Storages: Project folders"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} projects using %{used_disk_space} disk space"
   label_project_view_all: "Покажи всички проекти"
   label_project_show_details: "Show project details"
@@ -3636,7 +3636,7 @@ bg:
       oauth_application_details: "The client secret value will not be accessible again after you close this window. Please copy these values into the Nextcloud OpenProject Integration settings:"
       oauth_application_details_link_text: "Go to settings page"
       setup_documentation_details: "If you need help configuring a new file storage please check the documentation: "
-      setup_documentation_details_link_text: "Настройка на хранилища за файлове"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "To use this file storage remember to activate the module and the specific storage in the project settings of each desired project."
     subversion:
       existing_title: "Съществуващо хранилище за подверсии"
@@ -4337,8 +4337,12 @@ bg:
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
       bad_request:
         emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "ГГГГ-ММ-ДД (само за дата ISO 8601)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (any compatible ISO 8601 datetime)"

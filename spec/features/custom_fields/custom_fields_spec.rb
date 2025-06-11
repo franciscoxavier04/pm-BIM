@@ -80,6 +80,7 @@ RSpec.describe "custom fields", :js do
       label_possible_values = I18n.t("activerecord.attributes.custom_field.possible_values").upcase # Possible values, capitalized on UI
       label_default_value = I18n.t("activerecord.attributes.custom_field.default_value") # Default value
       label_is_required = I18n.t("activerecord.attributes.custom_field.is_required") # Required
+      label_ee_banner_hierarchy = I18n.t("ee.upsell.custom_field_hierarchies.description") # Hierarchy Enterprise banner
       # Spent time SFs don't show "Searchable". Not tested here.
       # Project CFs don't show "For all projects" and "Used as a filter". Not tested here.
       # Content right to left is not shown for Project CFs Long text. Strange. Not tested.
@@ -101,7 +102,7 @@ RSpec.describe "custom fields", :js do
         label_min_length, label_max_length, label_regexp, label_default_value, label_is_required
       )
       expect_page_not_to_have_texts(
-        label_multi_value, label_allow_non_open_versions, label_possible_values
+        label_multi_value, label_allow_non_open_versions, label_possible_values, label_ee_banner_hierarchy
       )
 
       select "Long text", from: "custom_field_field_format"
@@ -109,7 +110,7 @@ RSpec.describe "custom fields", :js do
         label_min_length, label_max_length, label_regexp, label_default_value, label_is_required
       )
       expect_page_not_to_have_texts(
-        label_multi_value, label_allow_non_open_versions, label_possible_values
+        label_multi_value, label_allow_non_open_versions, label_possible_values, label_ee_banner_hierarchy
       )
 
       # Both Integer and Float have min/max_len and regex as well which seems strange.
@@ -118,7 +119,7 @@ RSpec.describe "custom fields", :js do
         label_min_length, label_max_length, label_regexp, label_default_value, label_is_required
       )
       expect_page_not_to_have_texts(
-        label_multi_value, label_allow_non_open_versions, label_possible_values
+        label_multi_value, label_allow_non_open_versions, label_possible_values, label_ee_banner_hierarchy
       )
 
       select "Float", from: "custom_field_field_format"
@@ -126,7 +127,7 @@ RSpec.describe "custom fields", :js do
         label_min_length, label_max_length, label_regexp, label_default_value, label_is_required
       )
       expect_page_not_to_have_texts(
-        label_multi_value, label_allow_non_open_versions, label_possible_values
+        label_multi_value, label_allow_non_open_versions, label_possible_values, label_ee_banner_hierarchy
       )
 
       select "List", from: "custom_field_field_format"
@@ -134,14 +135,16 @@ RSpec.describe "custom fields", :js do
         label_multi_value, label_possible_values, label_is_required
       )
       expect_page_not_to_have_texts(
-        label_min_length, label_max_length, label_regexp, label_allow_non_open_versions, label_default_value
+        label_min_length, label_max_length, label_regexp, label_allow_non_open_versions,
+        label_default_value, label_ee_banner_hierarchy
       )
 
       select "Date", from: "custom_field_field_format"
       expect_page_to_have_texts(label_is_required)
       expect_page_not_to_have_texts(
         label_min_length, label_max_length, label_regexp, label_multi_value,
-        label_allow_non_open_versions, label_possible_values, label_default_value
+        label_allow_non_open_versions, label_possible_values, label_default_value,
+        label_ee_banner_hierarchy
       )
 
       select "Boolean", from: "custom_field_field_format"
@@ -150,7 +153,7 @@ RSpec.describe "custom fields", :js do
       )
       expect_page_not_to_have_texts(
         label_min_length, label_max_length, label_regexp, label_multi_value,
-        label_allow_non_open_versions, label_possible_values
+        label_allow_non_open_versions, label_possible_values, label_ee_banner_hierarchy
       )
 
       select "User", from: "custom_field_field_format"
@@ -159,7 +162,7 @@ RSpec.describe "custom fields", :js do
       )
       expect_page_not_to_have_texts(
         label_min_length, label_max_length, label_regexp, label_allow_non_open_versions,
-        label_possible_values, label_default_value
+        label_possible_values, label_default_value, label_ee_banner_hierarchy
       )
 
       select "Version", from: "custom_field_field_format"
@@ -168,8 +171,20 @@ RSpec.describe "custom fields", :js do
       )
       expect_page_not_to_have_texts(
         label_min_length, label_max_length, label_regexp,
-        label_possible_values, label_default_value
+        label_possible_values, label_default_value, label_ee_banner_hierarchy
       )
+
+      if hierarchy_type_available
+        select "Hierarchy", from: "custom_field_field_format"
+        expect_page_to_have_texts(
+          label_multi_value, label_is_required, label_ee_banner_hierarchy
+        )
+        expect_page_not_to_have_texts(
+          label_min_length, label_max_length, label_regexp, label_allow_non_open_versions,
+          label_possible_values, label_default_value
+        )
+        expect(page).to have_button("Save", disabled: true)
+      end
     end
 
     it "shows the correct breadcrumbs" do
@@ -186,14 +201,53 @@ RSpec.describe "custom fields", :js do
   end
 
   describe "work packages" do
+    let(:hierarchy_type_available) { true }
+
     it_behaves_like "creating a new custom field", "Work packages"
+
+    context "for hierarchy type" do
+      before do
+        cf_page.visit_tab "Work packages"
+
+        click_on "Create a new custom field"
+        wait_for_reload
+        cf_page.set_name "Ignored"
+
+        select "Hierarchy", from: "custom_field_field_format"
+      end
+
+      context "with an active enterprise token with custom_field_hierarchies feature", with_ee: [:custom_field_hierarchies] do
+        it "does not show the enterprise upsell banner and can save" do
+          expect(page).to have_no_text(I18n.t("ee.upsell.custom_field_hierarchies.description"))
+          expect(page).to have_button("Save", disabled: false)
+        end
+      end
+
+      context "with an active enterprise token without custom_field_hierarchies feature", with_ee: [:another_feature] do
+        it "shows the enterprise upsell banner and cannot save" do
+          expect(page).to have_text(I18n.t("ee.upsell.custom_field_hierarchies.description"))
+          expect(page).to have_button("Save", disabled: true)
+        end
+      end
+
+      context "with a trial enterprise token", :with_ee_trial, with_ee: [:custom_field_hierarchies] do
+        it "shows the enterprise upsell banner and can save" do
+          expect(page).to have_text(I18n.t("ee.upsell.custom_field_hierarchies.description"))
+          expect(page).to have_button("Save", disabled: false)
+        end
+      end
+    end
   end
 
   describe "time entries" do
+    let(:hierarchy_type_available) { false }
+
     it_behaves_like "creating a new custom field", "Spent time"
   end
 
   describe "versions" do
+    let(:hierarchy_type_available) { false }
+
     it_behaves_like "creating a new custom field", "Versions"
   end
 
@@ -255,7 +309,7 @@ RSpec.describe "custom fields", :js do
       check("custom_field_multi_value")
       check("custom_field_custom_options_attributes_0_default_value")
       check("custom_field_custom_options_attributes_2_default_value")
-      within all(".custom-option-row").first do
+      within first(".custom-option-row") do
         click_on "Move to bottom"
       end
       click_on "Save"

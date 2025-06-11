@@ -388,6 +388,10 @@ paths:
     "$ref": "./paths/render_plain.yml"
   "/api/v3/revisions/{id}":
     "$ref": "./paths/revision.yml"
+  "/api/v3/reminders":
+    "$ref": "./paths/reminders.yml"
+  "/api/v3/reminders/{id}":
+    "$ref": "./paths/reminder.yml"
   "/api/v3/roles":
     "$ref": "./paths/roles.yml"
   "/api/v3/roles/{id}":
@@ -494,7 +498,7 @@ paths:
     "$ref": "./paths/work_package_revisions.yml"
   "/api/v3/work_packages/{id}/relations":
     "$ref": "./paths/work_package_relations.yml"
-  "/api/v3/work_packages/{id}/reminders":
+  "/api/v3/work_packages/{work_package_id}/reminders":
     "$ref": "./paths/work_package_reminders.yml"
   "/api/v3/work_packages/{id}/watchers":
     "$ref": "./paths/work_package_watchers.yml"

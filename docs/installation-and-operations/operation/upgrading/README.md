@@ -39,14 +39,14 @@ sudo openproject configure
 
 On Ubuntu 22.04., you might see warnings like these:
 
-> W: `https://dl.packager.io/srv/deb/opf/openproject/stable/15/ubuntu/dists/22.04/InRelease`: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+> W: `https://dl.packager.io/srv/deb/opf/openproject/stable/16/ubuntu/dists/22.04/InRelease`: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
 
 This message is due to Ubuntu 22.04 switching to a more secure way of adding repository sources, which is not yet supported by the repository provider. There is ongoing work on this item, the message is for information only.
 
 If you get an error like the following:
 
-> E: Repository '`https://dl.packager.io/srv/deb/opf/openproject/stable/15/ubuntu` 22.04 InRelease' changed its 'Origin' value from '' to '`https://packager.io/gh/opf/openproject`'
-> E: Repository '`https://dl.packager.io/srv/deb/opf/openproject/stable/15/ubuntu` 22.04 InRelease' changed its 'Label' value from '' to 'Ubuntu 22.04 packages for opf/openproject'
+> E: Repository '`https://dl.packager.io/srv/deb/opf/openproject/stable/16/ubuntu` 22.04 InRelease' changed its 'Origin' value from '' to '`https://packager.io/gh/opf/openproject`'
+> E: Repository '`https://dl.packager.io/srv/deb/opf/openproject/stable/16/ubuntu` 22.04 InRelease' changed its 'Label' value from '' to 'Ubuntu 22.04 packages for opf/openproject'
 
 These two messages messages are expected, due to a change in Origin and Label repository metadata, to better explain what the repository is about. You should allow the change, and/or run `sudo apt-get update --allow-releaseinfo-change` for the update to go through.
 
@@ -119,7 +119,7 @@ When using the all-in-one docker container, you need to perform the following st
 
 ```shell
 docker pull openproject/openproject:VERSION
-# e.g. docker pull openproject/openproject:15
+# e.g. docker pull openproject/openproject:16
 ```
 
 Then stop and remove your existing container (we assume that you are running with the recommended production setup here):
@@ -171,7 +171,7 @@ If you are using Docker, you should mount your OpenProject volume at `/var/openp
 
 ## Upgrade notes from 9.x to 10.4.x
 
-When upgrading from OpenProject <= 10.4.x to a newer version, you might need to remove the old cron jobs from ```/etc/cron.d/```.  
+When upgrading from OpenProject <= 10.4.x to a newer version, you might need to remove the old cron jobs from ```/etc/cron.d/```.
 You can list all OpenProject related cronjobs by using the ```sudo ls  /etc/cron.d/openproject-*``` command.
 
 ## Upgrade notes for 8.x to 9.x

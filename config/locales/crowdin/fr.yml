@@ -2410,7 +2410,7 @@ fr:
         static_token_name: "Jeton RSS"
         disabled_text: "Les jetons RSS ne sont pas activés par l'administrateur. Veuillez contacter votre administrateur pour utiliser cette fonctionnalité."
       storages:
-        title: "Espaces de stockage des fichiers"
+        title: "File storages"
         text_hint: "Les jetons de stockage de fichiers connectent cette instance OpenProject à une solution de stockage de fichiers externe."
         empty_text_hint: "Il n'y a pas d'accès à l'espace de stockage lié à votre compte."
         revoke_token: "Voulez-vous vraiment supprimer ce jeton ? Vous devrez vous reconnecter sur %{storage}"
@@ -2892,8 +2892,8 @@ fr:
   label_project_custom_field_plural: "Attributs du projet"
   label_project_settings: "Paramètres du projet"
   label_project_attributes_settings: "Paramètres des attributs du projet"
-  label_project_storage_plural: "Espaces de stockage des fichiers"
-  label_project_storage_project_folder: "Espaces de stockage des fichiers : dossiers du projet"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} projets utilisant %{used_disk_space} d'espace disque"
   label_project_view_all: "Afficher tous les projets"
   label_project_show_details: "Afficher les détails du projet"
@@ -3634,7 +3634,7 @@ fr:
       oauth_application_details: "La clé secrète du client ne sera plus accessible après la fermeture de cette fenêtre. Veuillez copier ces valeurs dans les paramètres d'intégration Nextcloud OpenProject :"
       oauth_application_details_link_text: "Aller à la page des paramètres"
       setup_documentation_details: "Si vous avez besoin d'aide pour configurer un nouvel espace de stockage des fichiers, veuillez consulter la documentation : "
-      setup_documentation_details_link_text: "Configuration de l'espace de stockage des fichiers"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Pour utiliser ce stockage de fichiers, n'oubliez pas d'activer le module et le stockage spécifique dans les paramètres du projet de chaque projet souhaité."
     subversion:
       existing_title: "Dépôt Subversion existant"
@@ -4334,8 +4334,12 @@ fr:
       code_500_missing_enterprise_token: "La requête ne peut pas être traitée en raison d'un jeton Entreprise invalide ou manquant."
       bad_request:
         emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "Le lot de travaux que vous cherchez est introuvable ou a été supprimé."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "AAAA-MM-JJ (date ISO 8601 uniquement)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (n'importe quelle date heure compatible ISO 8601)"

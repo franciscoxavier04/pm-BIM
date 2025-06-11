@@ -127,7 +127,7 @@ class WorkPackage < ApplicationRecord
     where(author_id: author.id)
   }
 
-  scopes :covering_dates_and_days_of_week,
+  scopes :covering_dates_or_days_of_week,
          :allowed_to,
          :for_scheduling,
          :include_derived_dates,
@@ -335,7 +335,7 @@ class WorkPackage < ApplicationRecord
   end
 
   def duration_in_hours
-    duration ? duration * 24 : nil
+    duration * 24 if duration
   end
 
   def project_phase

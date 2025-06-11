@@ -746,8 +746,8 @@ zh-CN:
     lag:
       subject: "间隔"
       caption: |-
-        The minimum number of working days to keep in between the two work packages.
-        It can also be negative.
+        两个工作包间的最少工作日数。
+        也可以是负数。
     relations:
       label_new_child_created: "创建新工作包并将其添加为子项"
       label_relates_singular: "关联到"
@@ -2369,7 +2369,7 @@ zh-CN:
         static_token_name: "RSS 令牌"
         disabled_text: "管理员未启用 RSS 令牌。请联系管理员以使用此功能。"
       storages:
-        title: "文件存储区"
+        title: "File storages"
         text_hint: "文件存储区令牌将此 OpenProject 实例与外部文件存储区连接。"
         empty_text_hint: "没有与您的帐户相关联的存储区访问权限。"
         revoke_token: "是否确实要移除此令牌？您需要再次登录 %{storage}"
@@ -2560,8 +2560,8 @@ zh-CN:
   label_deleted_custom_item: "(删除项目)"
   label_deleted_custom_option: "（删除的选项）"
   label_empty_element: "（空）"
-  label_go_back: "Go back one menu level"
-  label_go_forward: "Open %{module} sub-menu"
+  label_go_back: "返回一级菜单"
+  label_go_forward: "打开 %{module} 子菜单"
   label_missing_or_hidden_custom_option: "（缺少值或缺少访问权限）"
   label_descending: "降序"
   label_details: "详细信息"
@@ -2851,8 +2851,8 @@ zh-CN:
   label_project_custom_field_plural: "项目属性"
   label_project_settings: "项目设置"
   label_project_attributes_settings: "项目属性设置"
-  label_project_storage_plural: "文件存储区"
-  label_project_storage_project_folder: "文件存储区：项目文件夹"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} 个项目正在使用 %{used_disk_space} 磁盘空间"
   label_project_view_all: "查看所有项目"
   label_project_show_details: "显示项目详细信息"
@@ -3586,7 +3586,7 @@ zh-CN:
       oauth_application_details: "关闭此窗口后，将无法再次访问客户端密钥值。请将这些值复制到 Nextcloud OpenProject 集成设置中："
       oauth_application_details_link_text: "转到设置页面"
       setup_documentation_details: "如果您在配置新文件存储方面需要帮助，请查看文档："
-      setup_documentation_details_link_text: "文件存储设置"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "要使用此文件存储，请记得在每个所需项目的项目设置中激活模块和特定存储。"
     subversion:
       existing_title: "现有的 Subversion 存储库"
@@ -4285,8 +4285,12 @@ zh-CN:
       code_500_missing_enterprise_token: "由于企业令牌是无效的或缺失的，故无法处理该请求。"
       bad_request:
         emoji_reactions_activity_type_not_supported: "此活动类型不支持表情符号反应。"
+      conflict:
+        multiple_reminders_not_allowed: |-
+          您每次只能设置一个工作包提醒。请删除或更新现有提醒。
       not_found:
         work_package: "找不到您要查找的工作包或者它已被删除。"
+        reminder: "找不到您要查找的提醒或者它已被删除。"
       expected:
         date: "YYYY-MM-DD（仅适用于 ISO 8601 日期）"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm]（任何兼容的 ISO 8601 日期时间）"
