@@ -30,7 +30,6 @@
 
 module EnterpriseTrials
   class TrialButtonComponent < ApplicationComponent
-
     def initialize
       @trial_key = Token::EnterpriseTrialKey.find_by(user_id: User.system.id)
 
@@ -46,7 +45,7 @@ module EnterpriseTrials
         render(
           Primer::Beta::Button.new(
             tag: :a,
-            href: enterprise_path
+            href: enterprise_tokens_path
           )
         ) do
           I18n.t("admin.enterprise.check_trial_status")
@@ -63,6 +62,5 @@ module EnterpriseTrials
         end
       end
     end
-
   end
 end

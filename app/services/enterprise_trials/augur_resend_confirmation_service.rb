@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,6 +29,35 @@
 #++
 
 module EnterpriseTrials
-  class DeleteService < BaseServices::Delete
+  class AugurResendConfirmationService
+    def initialize(trial_key)
+      @trial_key = trial_key
+    end
+
+    def call
+      handle_response(
+        OpenProject.httpx.post(
+          URI.join(augur_host, "/public/v1/trials/", @trial_key.value, "/resend")
+        )
+      )
+    end
+
+    private
+
+    def handle_response(response)
+      case response
+      in { status: 202 }
+        ServiceResult.success(result: nil)
+      in { status: 404 }
+        ServiceResult.failure(message: I18n.t("ee.trial.not_found"))
+      else
+        Rails.logger.error { "Unexpected response from Augur: #{response.inspect}" }
+        ServiceResult.failure(message: I18n.t("js.error.internal"))
+      end
+    end
+
+    def augur_host
+      OpenProject::Configuration.enterprise_trial_creation_host
+    end
   end
 end

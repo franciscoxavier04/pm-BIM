@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,6 @@
 
 module EnterpriseTrials
   class CreateService < BaseServices::Create
-
     def persist(call)
       trial = call.result
       AugurCreateTrialService.new(trial).call

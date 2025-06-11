@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -30,23 +32,27 @@ class EnterpriseTrialsController < ApplicationController
   include OpTurbo::DialogStreamHelper
 
   before_action :require_admin
-  before_action :load_trial_details, only: %i[trial_status]
+  before_action :load_trial_key, only: %i[request_resend]
 
   def trial_dialog
     respond_with_dialog EnterpriseTrials::DialogComponent.new(EnterpriseTrial.new)
   end
 
-  def trial_status
+  def request_resend
+    EnterpriseTrials::AugurResendConfirmationService
+      .new(@trial_key)
+      .call
 
+    redirect_to enterprise_tokens_path, status: :see_other
   end
 
   def create
     call = EnterpriseTrials::CreateService
-             .new(user: current_user)
-             .call(trial_params)
+      .new(user: current_user)
+      .call(trial_params.to_h)
 
     if call.success?
-      redirect_to enterprise_path, status: :see_other
+      redirect_to enterprise_tokens_path, status: :see_other
     else
       form_component = EnterpriseTrials::FormComponent.new(call.result)
       update_via_turbo_stream(component: form_component, status: :bad_request)
@@ -56,13 +62,12 @@ class EnterpriseTrialsController < ApplicationController
 
   private
 
-  def load_trial_details
-    @trial_status = Token::EnterpriseTrialKey.find_by(user_id: User.system.id)
+  def load_trial_key
+    @trial_key = Token::EnterpriseTrialKey.find_by!(user_id: User.system.id)
   end
 
   def trial_params
     params
-      .require(:enterprise_trial)
-      .permit(:company, :firstname, :lastname, :email, :general_consent, :newsletter_consent)
+      .expect(enterprise_trial: %i[company firstname lastname email general_consent newsletter_consent])
   end
 end

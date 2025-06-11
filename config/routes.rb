@@ -490,6 +490,7 @@ Rails.application.routes.draw do
 
       resource :enterprise_trial, only: %i[show create destroy] do
         get :trial_dialog
+        post :request_resend, on: :collection
       end
     end
 

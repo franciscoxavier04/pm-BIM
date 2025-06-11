@@ -37,7 +37,7 @@ class EnterpriseTokensController < ApplicationController
   before_action :require_admin
   before_action :check_user_limit, only: [:index]
   before_action :find_token, only: %i[destroy destroy_dialog]
-  before_action :get_trial_key, only: [:show]
+  before_action :check_trial_status, only: [:index]
 
   def index
     # TODO: delete next line. @current_token is used in the old angular thingy.
@@ -116,7 +116,24 @@ class EnterpriseTokensController < ApplicationController
     end
   end
 
-  def get_trial_key
+  def check_trial_status
     @trial_key = Token::EnterpriseTrialKey.find_by(user_id: User.system.id)
+    return if @trial_key.nil?
+
+    @trial_status = EnterpriseTrials::AugurLoadTrialService.new(@trial_key).call
+    case @trial_status.result
+    when EnterpriseTrials::AugurLoadTrialService::STATUS_WAITING_CONFIRMATION
+      flash.now[:warning] = {
+        message: @trial_status.message,
+        action_button_arguments: {
+          tag: :a,
+          href: request_resend_enterprise_trial_path,
+          data: { turbo_method: :post }
+        },
+        action_button_content: I18n.t("ee.trial.resend_action")
+      }
+    else
+      @trial_status.apply_flash_message!(flash)
+    end
   end
 end

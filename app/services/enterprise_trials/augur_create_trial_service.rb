@@ -41,7 +41,7 @@ module EnterpriseTrials
       handle_response(
         OpenProject.httpx.post(
           URI.join(augur_host, "/public/v1/trials"),
-          json: trial.to_json.merge(
+          json: trial.to_h.merge(
             version: OpenProject::VERSION.to_semver,
             token_version: OpenProject::Token::VERSION,
             domain: Setting.host_name
@@ -71,7 +71,8 @@ module EnterpriseTrials
         return ServiceResult.failure(result: trial)
       end
 
-      trial_key = Token::EnterpriseTrialKey.create!(user_id: User.system.id, value:)
+      data = { email: trial.email }
+      trial_key = Token::EnterpriseTrialKey.create!(user_id: User.system.id, value:, data:)
       ServiceResult.success(result: trial_key)
     end
 

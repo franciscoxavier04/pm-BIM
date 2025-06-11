@@ -68,7 +68,7 @@ RSpec.describe EnterpriseTrials::AugurCreateTrialService, :webmock do
             version: OpenProject::VERSION.to_semver,
             token_version: OpenProject::Token::VERSION,
             domain: Setting.host_name
-          }.to_json,
+          }.to_json
         )
         .to_return(status: 202, body: success_response.to_json, headers: { "Content-Type" => "application/json" })
     end
@@ -279,7 +279,7 @@ RSpec.describe EnterpriseTrials::AugurCreateTrialService, :webmock do
             version: OpenProject::VERSION.to_semver,
             token_version: OpenProject::Token::VERSION,
             domain: Setting.host_name
-          }.to_json,
+          }.to_json
         )
         .to_return(status: 202, body: success_response.to_json, headers: { "Content-Type" => "application/json" })
 

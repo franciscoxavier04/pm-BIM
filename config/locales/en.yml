@@ -2189,9 +2189,15 @@ en:
         title: "Write internal comments only a small group can see"
         description: " "
     trial:
-      not_found: "The trial object could not be found."
-      wait_for_confirmation: "Waiting for email confirmation."
-      already_retrieved: "Trial token was already retrieved. Please reach out to our support team if you need a new one."
+      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
+      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      already_retrieved: "Your trial enterprise token was already retrieved. Please reach out to our support team if you need a new one."
+      successfully_saved: "Your trial enterprise token has been successfully retrieved."
+      start_over: "Start over trial request"
+      resend_action: "Resend confirmation email"
+      confirmation_info: >
+        We sent you an email on %{date} to %{email}.
+        Please check your inbox and click the confirmation link provided to start your 14 days trial.
       domain_caption:
         The token will be valid for your currently configured host name.
       receive_newsletter_html: >

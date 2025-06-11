@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,6 +30,8 @@
 
 module EnterpriseTrials
   class AugurLoadTrialService
+    STATUS_WAITING_CONFIRMATION = :awaiting_confirmation
+
     def initialize(trial_key)
       @trial_key = trial_key
     end
@@ -50,7 +54,9 @@ module EnterpriseTrials
         @trial_key.destroy
         ServiceResult.failure(message: I18n.t("ee.trial.not_found"))
       in { status: 422 }
-        ServiceResult.failure(message: I18n.t("ee.trial.wait_for_confirmation"))
+        ServiceResult.failure(result: STATUS_WAITING_CONFIRMATION,
+                              message: I18n.t("ee.trial.wait_for_confirmation"),
+                              message_type: :warning)
       else
         Rails.logger.error { "Unexpected response from Augur: #{response.inspect}" }
         ServiceResult.failure(message: I18n.t("js.error.internal"))
@@ -62,9 +68,11 @@ module EnterpriseTrials
         token = EnterpriseToken.new(encoded_token: trial_json["token"])
         if token.save
           @trial_key.destroy
-          return ServiceResult.success(result: token, message: I18n.t("ee.trial.already_retrieved"))
+          return ServiceResult.success(result: token, message: I18n.t("ee.trial.successfully_saved"))
         else
-          return ServiceResult.failure(result: token)
+          return ServiceResult.failure(result: token,
+                                       message_type: :info,
+                                       message: I18n.t("ee.trial.successfully_saved"))
         end
       end
 

@@ -1,3 +1,34 @@
-<% if @trial_status %>
-  <%= @trial_status.inspect %>
+<% if @trial_key %>
+  <%= I18n.t("ee.trial.confirmation_info",
+             date: helpers.format_date(@trial_key.created_at),
+             email: @trial_key.data[:email],
+      ) %>
+
+  <%=
+    flex_layout do |flex|
+      flex.with_row(flex_layout: true, align_items: :center) do |row|
+        row.with_column do
+          render Primer::Beta::Button.new(
+            tag: :a,
+            href: request_resend_enterprise_trial_path,
+            data: { turbo_method: :post },
+          ) do
+            I18n.t("ee.trial.resend_action")
+          end
+        end
+
+        row.with_column(ml: 1) do
+          render Primer::Beta::Button.new(
+            tag: :a,
+            href: trial_dialog_enterprise_trial_path,
+            data: { turbo_stream: true },
+            ) do
+            I18n.t("ee.trial.start_over")
+          end
+        end
+      end
+    end
+  %>
+<% else %>
+  <%= render EnterpriseTrials::TrialButtonComponent.new %>
 <% end %>

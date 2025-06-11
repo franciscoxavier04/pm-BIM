@@ -32,12 +32,7 @@ See COPYRIGHT and LICENSE files for more details.
 <% end %>
 
 <div class="upsell--information-container">
-
-  <% if @trial_key.present? %>
-    <%= render EnterpriseTrials::StatusComponent.new(@trial_key) %>
-  <% else %>
-    <%= render EnterpriseTrials::TrialButtonComponent.new %>
-  <% end %>
+  <%= render EnterpriseTrials::StatusComponent.new %>
 
   <div class='upsell-actions'>
     <a href="#"

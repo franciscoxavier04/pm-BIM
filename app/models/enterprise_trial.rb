@@ -40,12 +40,12 @@ class EnterpriseTrial < ApplicationRecord
   attribute :general_consent, :boolean, default: false
   attribute :newsletter_consent, :boolean, default: false
 
-  validates_presence_of :company, :firstname, :lastname, :email
+  validates :company, :firstname, :lastname, :email, presence: true
   validates :email, email: true, if: Proc.new { |data| data.email.present? }
 
   validate :accepted_terms
 
-  def to_json
+  def to_h
     {
       company:,
       first_name: firstname,

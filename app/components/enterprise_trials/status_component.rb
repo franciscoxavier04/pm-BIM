@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -34,15 +35,10 @@ module EnterpriseTrials
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(trial_key)
-      @trial_key = trial_key
-      @trial_status = EnterpriseTrials::AugurLoadTrialService.new(@trial_key).call
+    def initialize
+      @trial_key = Token::EnterpriseTrialKey.find_by(user_id: User.system.id)
 
       super
-    end
-
-    def render?
-      @trial_status.present?
     end
   end
 end
