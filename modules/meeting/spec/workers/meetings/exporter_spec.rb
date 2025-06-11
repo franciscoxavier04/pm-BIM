@@ -132,7 +132,7 @@ RSpec.describe Meetings::Exporter do
     let(:meeting_section_second) { create(:meeting_section, meeting:, title: "Second section") }
     let(:meeting_agenda_item) do
       create(:meeting_agenda_item, meeting_section:, duration_in_minutes: 15, title: "Agenda Item TOP 1", presenter: user,
-             notes: "**foo**")
+                                   notes: "**foo**")
     end
     let(:wp_agenda_item) do
       create(:wp_meeting_agenda_item,
@@ -146,8 +146,8 @@ RSpec.describe Meetings::Exporter do
     let(:attachment) { create(:attachment, container: meeting) }
     let(:meeting_backlog_item) do
       create(:meeting_agenda_item, meeting_section: meeting.backlog,
-             duration_in_minutes: 1,
-             title: "Agenda Item in Backlog", presenter: user, notes: "# yeah")
+                                   duration_in_minutes: 1,
+                                   title: "Agenda Item in Backlog", presenter: user, notes: "# yeah")
     end
     let(:invited) { create(:meeting_participant, user: other_user, meeting:, invited: true) }
     let(:attended) { create(:meeting_participant, :attendee, user: user, meeting:) }
@@ -251,7 +251,7 @@ RSpec.describe Meetings::Exporter do
     let(:secret_work_package) { create(:work_package, project: secret_project) }
     let(:wp_agenda_item) do
       create(:wp_meeting_agenda_item, meeting:, work_package: secret_work_package, duration_in_minutes: 10,
-             notes: "title of the work package should not be visible")
+                                      notes: "title of the work package should not be visible")
     end
 
     before do
