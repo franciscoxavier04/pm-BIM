@@ -99,16 +99,17 @@ module SharingStrategies
       Shares::WorkPackages::DeleteContract
     end
 
-    def modal_body_component(errors)
-      if EnterpriseToken.allows_to?(:work_package_sharing)
-        super
-      else
-        Shares::WorkPackages::ModalUpsellComponent.new
-      end
-    end
-
     def title
       I18n.t(:label_share_work_package)
+    end
+
+    def upsell_banner(modal_content:)
+      Shares::WorkPackages::ModalUpsellComponent.new(modal_content:)
+    end
+
+    def allow_feature?
+      EnterpriseToken.allows_to?(:work_package_sharing) ||
+        EnterpriseToken.trialling?(:work_package_sharing)
     end
 
     private

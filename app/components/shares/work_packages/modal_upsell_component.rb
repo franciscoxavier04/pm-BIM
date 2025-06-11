@@ -33,6 +33,14 @@ module Shares
       include OpTurbo::Streamable
       include OpPrimer::ComponentHelpers
 
+      def initialize(modal_content:)
+        super
+
+        @modal_content = modal_content
+      end
+
+      attr_reader :modal_content
+
       def self.wrapper_key
         "share_modal_body"
       end
