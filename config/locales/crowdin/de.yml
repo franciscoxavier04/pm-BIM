@@ -681,7 +681,7 @@ de:
         automatic: "Automatisch"
         manual: "Manuell"
       show_relations: "Beziehungen anzeigen"
-      update_inputs_aria_live_message: "Date picker updated. %{message}"
+      update_inputs_aria_live_message: "Datumsauswahl aktualisiert. %{message}"
       tabs:
         aria_label: "Datumsauswahl Reiter"
         children: "Untergeordnete Arbeitspakete"
@@ -751,8 +751,7 @@ de:
     lag:
       subject: "Verzögerung"
       caption: |-
-        The minimum number of working days to keep in between the two work packages.
-        It can also be negative.
+        Die minimale Anzahl von Arbeitstagen zwischen den zwei Arbeitspaketen; kann auch negativ sein.
     relations:
       label_new_child_created: "Neues Arbeitspaket erstellt und als Kind hinzugefügt"
       label_relates_singular: "Beziehung mit"
@@ -968,10 +967,10 @@ de:
       project/phase:
         date_range: "Zeitraum"
         definition: "Definition"
-        duration: "Duration"
-        start_date: "Start date"
-        start_date_caption: "Follows the previous phase."
-        finish_date: "Finish date"
+        duration: "Dauer"
+        start_date: "Anfangstermin"
+        start_date_caption: "Folgt der vorherigen Phase."
+        finish_date: "Endtermin"
       project/phase_definition:
         name: "Name"
         color: "Farbe"
@@ -1284,11 +1283,11 @@ de:
         project/phase:
           attributes:
             start_date:
-              must_be_before_finish_date: "must be before the finish date."
-              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              must_be_before_finish_date: "muss vor dem Enddatum liegen."
+              non_continuous_dates: "kann nicht vor dem Enddatum der vorherigen Phase liegen."
             finish_date:
-              must_be_after_start_date: "must be after the start date."
-          cannot_be_a_non_working_day: "can't be a non-working day."
+              must_be_after_start_date: "muss nach dem Startdatum liegen."
+          cannot_be_a_non_working_day: "kann kein arbeitsfreier Tag sein."
         query:
           attributes:
             project:
@@ -2405,7 +2404,7 @@ de:
         static_token_name: "RSS-Token"
         disabled_text: "RSS-Token sind vom Administrator nicht aktiviert. Bitte kontaktieren Sie Ihren Administrator, um diese Funktion zu nutzen."
       storages:
-        title: "File storages"
+        title: "Dateispeicher"
         text_hint: "Dateispeicher-Tokens verbinden diese OpenProject Instanz mit einem externen Dateispeicher."
         empty_text_hint: "Es gibt keinen Dateispeicher, der mit Ihrem Konto verknüpft ist."
         revoke_token: "Möchten Sie dieses Token wirklich entfernen? Sie müssen sich erneut bei %{storage} anmelden"
@@ -2596,8 +2595,8 @@ de:
   label_deleted_custom_item: "(gelöschter Eintrag)"
   label_deleted_custom_option: "(gelöschte Option)"
   label_empty_element: "(leer)"
-  label_go_back: "Go back one menu level"
-  label_go_forward: "Open %{module} sub-menu"
+  label_go_back: "Eine Menüebene zurückgehen"
+  label_go_forward: "Öffne %{module} Untermenü"
   label_missing_or_hidden_custom_option: "(Fehlender Wert oder fehlende Zugriffsberechtigungen)"
   label_descending: "Absteigend"
   label_details: "Details"
@@ -2887,8 +2886,8 @@ de:
   label_project_custom_field_plural: "Projektattribute"
   label_project_settings: "Projektkonfiguration"
   label_project_attributes_settings: "Einstellungen für Projektattribute"
-  label_project_storage_plural: "File storages"
-  label_project_storage_project_folder: "File storages: Project folders"
+  label_project_storage_plural: "Dateispeicher"
+  label_project_storage_project_folder: "Dateispeicher: Projektordner"
   label_projects_disk_usage_information: "%{count} Projekte, die %{used_disk_space} Speicherplatz belegen"
   label_project_view_all: "Alle Projekte anzeigen"
   label_project_show_details: "Projektdetails anzeigen"
@@ -2897,7 +2896,7 @@ de:
   label_query_new: "Neuer Bericht"
   label_query_plural: "Benutzerdefinierte Berichte"
   label_read: "Lesen ..."
-  label_read_documentation: "Read documentation"
+  label_read_documentation: "Dokumentation lesen"
   label_register: "Neues Konto erstellen"
   label_register_with_developer: "Als Entwickler anmelden"
   label_registered_on: "Angemeldet am"
@@ -3629,7 +3628,7 @@ de:
       oauth_application_details: "Der Client Geheimcode wird nach dem Schließen dieses Fensters nicht mehr zugänglich sein. Bitte kopieren Sie diese Werte in die Nextcloud OpenProject Integrationseinstellungen:"
       oauth_application_details_link_text: "Zu den Einstellungen gehen"
       setup_documentation_details: "Wenn Sie Hilfe bei der Konfiguration eines neuen Dateispeichers benötigen, konsultieren Sie bitte die Dokumentation: "
-      setup_documentation_details_link_text: "File storages setup"
+      setup_documentation_details_link_text: "Dateispeicher einrichten"
       show_warning_details: "Um diesen Dateispeicher nutzen zu können, müssen Sie das Modul und den spezifischen Speicher in den Projekteinstellungen jedes gewünschten Projekts aktivieren."
     subversion:
       existing_title: "Vorhandenes Subversion Projektarchiv"
@@ -4328,13 +4327,13 @@ de:
       code_500_outbound_request_failure: "Eine ausgehende Anfrage an eine andere Ressource ist mit dem Statuscode %{status_code} fehlgeschlagen."
       code_500_missing_enterprise_token: "Die Anfrage kann wegen ungültigem oder fehlenden Enterprise Token nicht bearbeitet werden."
       bad_request:
-        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+        emoji_reactions_activity_type_not_supported: "Dieser Aktivitätstyp unterstützt keine Emoji-Reaktionen."
       conflict:
         multiple_reminders_not_allowed: |-
-          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
+          Sie können nur eine Erinnerung gleichzeitig für ein Arbeitspaket festlegen. Bitte löschen oder aktualisieren Sie die bestehende Erinnerung.
       not_found:
         work_package: "Das von Ihnen gesuchte Arbeitspaket konnte nicht gefunden werden oder wurde gelöscht."
-        reminder: "The reminder you are looking for cannot be found or has been deleted."
+        reminder: "Die Erinnerung, die Sie suchen, konnte nicht gefunden werden oder wurde gelöscht."
       expected:
         date: "YYYY-MM-DD (Datum nach ISO 8601)"
         datetime: "JJJJ-MM-TTThh:mm:ss[.lll][+hh:mm] (kompatible ISO 8601-Datum)"
