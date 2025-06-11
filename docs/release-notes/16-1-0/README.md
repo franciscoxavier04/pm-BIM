@@ -89,15 +89,23 @@ Clicking on any entry in the tree opens that item in the same view, making it ea
 
 ### Benefit from improved accessibility for the date picker with ARIA live regions
 
-Text 
+OpenProject 16.1 includes an important accessibility enhancement for users working with screen readers: Dynamic updates are now announced automatically using ARIA live regions.
 
-Screenshot
+This applies to **changes in the date picker** such as scheduling mode, working days only selector, start and finish dates, and duration. When one of these values is updated, the screen reader will announce a full summary like: “Date picker updated. Scheduling mode: Manual, Working days only, Start date: June 10, Finish date: June 12, Duration: 3 days”.
+
+This ensures that no important context is lost and improves the experience for all users relying on assistive technologies.
 
 ## Important technical changes
 
 ### Added API for Emoji reactions, Reminders, and Internal Comments
 
-text
+OpenProject 16.1 extends its API to support three features that were previously only available via the web interface. This update enables integrations with other clients, including the mobile app, to access:
+
+- Emoji reactions on work package comments
+- Reminders for work packages
+- Internal comments with restricted visibility
+
+Developers can now read and manage emoji reactions, create and update reminders, and write internal comments via API V3.
 
 <!--more-->
 
