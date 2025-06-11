@@ -91,7 +91,7 @@ module ProjectPhases
     end
 
     def initial_reschedule_date(phase)
-      phase.active? ? Day.next_working(from: phase.finish_date).date : phase.start_date
+      phase.active? ? phase.finish_date + 1 : phase.start_date
     end
 
     def default_contract_class

@@ -48,7 +48,7 @@ module ProjectPhases
     end
 
     def initial_reschedule_date
-      model.active? ? Day.next_working(from: model.finish_date).date : model.start_date
+      model.active? ? model.finish_date + 1 : model.start_date
     end
   end
 end
