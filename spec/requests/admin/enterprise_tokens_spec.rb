@@ -35,7 +35,6 @@ RSpec.describe "Enterprise Edition token domain",
   let(:current_user) { create(:admin) }
   let(:valid_token) { Rails.root.join("spec/fixtures/ee_tokens/v2_1_user_test_host.token").read }
   let(:invalid_token) { Rails.root.join("spec/fixtures/ee_tokens/v2_1_user_localhost_3001.token").read }
-  let(:ee_token) { valid_token }
 
   before do
     login_as(current_user)
@@ -43,7 +42,7 @@ RSpec.describe "Enterprise Edition token domain",
 
   shared_context "when uploading a token" do
     before do
-      post "/admin/enterprise",
+      post "/admin/enterprise_tokens",
            params: {
              "enterprise_token[encoded_token]": ee_token
            }
@@ -52,10 +51,12 @@ RSpec.describe "Enterprise Edition token domain",
 
   describe "initial upload" do
     context "with correct domain" do
+      let(:ee_token) { valid_token }
+
       it_behaves_like "when uploading a token" do
         it "saves the token" do
           expect(response).to be_redirect
-          expect(EnterpriseToken.current).to be_present
+          expect(EnterpriseToken.all_tokens).to be_present
         end
       end
     end
@@ -71,7 +72,7 @@ RSpec.describe "Enterprise Edition token domain",
     end
   end
 
-  context "with an active token" do
+  context "with an existing inactive invalid token" do
     let!(:token) do
       obj = EnterpriseToken.new(encoded_token: invalid_token, created_at: 5.days.ago, updated_at: 5.days.ago)
       obj.save!(validate: false)
@@ -80,10 +81,13 @@ RSpec.describe "Enterprise Edition token domain",
 
     describe "replacing the token" do
       context "with correct domain" do
+        let(:ee_token) { valid_token }
+
         it_behaves_like "when uploading a token" do
-          it "updates the token" do
+          it "adds the token" do
             expect(response).to be_redirect
-            expect(EnterpriseToken.current.updated_at.to_date).to eq(Time.zone.today)
+            expect(EnterpriseToken.all_tokens.count).to eq(2)
+            expect(EnterpriseToken.active_tokens.count).to eq(1)
           end
         end
       end
@@ -92,8 +96,12 @@ RSpec.describe "Enterprise Edition token domain",
         it_behaves_like "when uploading a token" do
           let(:ee_token) { invalid_token }
 
-          it "shows an invalid domain error", :aggregate_failures do
+          it "shows an invalid domain error" do
             expect(page).to have_text "Domain is invalid."
+          end
+
+          it "does not save it" do
+            expect(EnterpriseToken.all_tokens.count).to eq(1)
           end
         end
       end
