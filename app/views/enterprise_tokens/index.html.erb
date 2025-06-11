@@ -8,23 +8,25 @@
        t(:label_enterprise_edition)]
     )
 
-    button_title = t("admin.enterprise.create_dialog.title")
-    header.with_action_button(
-      tag: :a,
-      scheme: :primary,
-      mobile_label: button_title,
-      mobile_icon: :plus,
-      size: :medium,
-      href: new_enterprise_token_path,
-      aria: { label: button_title },
-      role: "button",
-      data: {
-        turbo_stream: true
-      },
-      title: button_title
-    ) do |button|
-      button.with_leading_visual_icon(icon: :plus)
-      button_title
+    if EnterpriseToken.all_tokens.any?
+      button_title = t("admin.enterprise.create_dialog.title")
+      header.with_action_button(
+        tag: :a,
+        scheme: :primary,
+        mobile_label: button_title,
+        mobile_icon: :plus,
+        size: :medium,
+        href: new_enterprise_token_path,
+        aria: { label: button_title },
+        role: "button",
+        data: {
+          turbo_stream: true
+        },
+        title: button_title
+      ) do |button|
+        button.with_leading_visual_icon(icon: :plus)
+        button_title
+      end
     end
   end
 %>

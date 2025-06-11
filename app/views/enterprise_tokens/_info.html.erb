@@ -36,8 +36,7 @@ See COPYRIGHT and LICENSE files for more details.
     <%= angular_component_tag(
           "opce-enterprise-base",
           inputs: enterprise_angular_trial_inputs
-        )
-    %>
+        ) %>
   </div>
 
   <div class='upsell-actions'>
@@ -52,11 +51,33 @@ See COPYRIGHT and LICENSE files for more details.
     <%= link_to t(quote_link[:label]),
                 quote_link[:href],
                 target: "_blank",
-                class: "button -highlight-inverted" %>
+                class: "button -highlight-inverted", rel: "noopener" %>
   </div>
 
   <%= static_link_to :contact %>
 </div>
+
+<%# temporary add button %>
+<%- button_title = t("admin.enterprise.create_dialog.title") %>
+<%= render(
+      Primer::Beta::Button.new(
+        tag: :a,
+        scheme: :primary,
+        mobile_label: button_title,
+        mobile_icon: :plus,
+        size: :medium,
+        href: new_enterprise_token_path,
+        aria: { label: button_title },
+        role: "button",
+        data: {
+          turbo_stream: true
+        },
+        title: button_title
+      )
+    ) do |button|
+      button.with_leading_visual_icon(icon: :plus)
+      button_title
+    end %>
 
 <div class="info-boxes upsell-benefits">
   <h3 class="info-boxes--title -no-border"><%= t("js.admin.enterprise.upsell.benefits.description") %></h3>
