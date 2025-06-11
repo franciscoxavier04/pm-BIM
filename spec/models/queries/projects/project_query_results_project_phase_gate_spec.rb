@@ -309,14 +309,14 @@ RSpec.describe ProjectQuery, "results of a project phase gate filter" do
           gate.update_column(:"#{boundary}_date", Date.parse("2025-03-02"))
         end
 
-        it "returns no project as the stage ended in the week before" do
+        it "returns no project as the gate is in the week before" do
           Timecop.travel(Date.parse("2025-03-03").noon) do
             expect(instance.results).to be_empty
           end
         end
       end
 
-      context "when being on Sunday, the gate is on Monday and the week is configured to start on Monday",
+      context "when being on Sunday after the gate, the gate is on Monday and the week is configured to start on Monday",
               with_settings: { start_of_week: 1 } do
         before do
           # This might produce invalid phases where the start date is after the end date.
@@ -339,7 +339,7 @@ RSpec.describe ProjectQuery, "results of a project phase gate filter" do
           gate.update_column(:"#{boundary}_date", Date.parse("2025-03-03"))
         end
 
-        it "returns no project as the stage ended in the week before" do
+        it "returns no project as the gate is in the week before" do
           Timecop.travel(Date.parse("2025-03-09").noon) do
             expect(instance.results).to be_empty
           end
