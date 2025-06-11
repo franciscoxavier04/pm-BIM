@@ -40,6 +40,50 @@ module Repositories
         @changeset = changeset
         @repository = repository
       end
+
+      def previous_button_present?
+        @previous_button_present ||= @changeset.previous.present?
+      end
+
+      def next_button_present?
+        @next_button_present ||= @changeset.next.present?
+      end
+
+      def previous_button_disabled?
+        !previous_button_present?
+      end
+
+      def next_button_disabled?
+        !next_button_present?
+      end
+
+      def previous_button_url
+        return nil unless previous_button_present?
+
+        url_for(controller: "/repositories", action: "revision", project_id: @project, rev: @changeset.previous.identifier)
+      end
+
+      def next_button_url
+        return nil unless next_button_present?
+
+        url_for(controller: "/repositories", action: "revision", project_id: @project, rev: @changeset.next.identifier)
+      end
+
+      def previous_button_tag
+        previous_button_present? ? :a : :button
+      end
+
+      def next_button_tag
+        next_button_tag ? :a : :button
+      end
+
+      def previous_button_title
+        previous_button_present? ? t(:label_revision_id, value: helpers.format_revision(@changeset.previous)) : t(:label_previous)
+      end
+
+      def next_button_title
+        previous_button_present? ? t(:label_revision_id, value: helpers.format_revision(@changeset.next)) : t(:label_next)
+      end
     end
   end
 end
