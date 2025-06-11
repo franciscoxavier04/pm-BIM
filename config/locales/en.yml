@@ -96,7 +96,6 @@ en:
         title: "Add Enterprise token"
         type_token_text: "Type support token text"
         token_placeholder: "Paste your Enterprise edition support token here"
-      upgrade_to_ee: "Upgrade to the Enterprise edition"
       add_token: "Upload an Enterprise edition support token"
       delete_token_modal:
         text: "Are you sure you want to remove the current Enterprise edition token used?"
