@@ -31,14 +31,14 @@
 require "spec_helper"
 require "services/base_services/behaves_like_update_service"
 
-RSpec.describe ProjectLifeCycleSteps::UpdateService, type: :model do
+RSpec.describe ProjectPhases::UpdateService, type: :model do
   before do
     allow(project).to receive(:touch_and_save_journals)
   end
 
   it_behaves_like "BaseServices update service" do
     let(:factory) { :project_phase }
-    let(:contract_class) { ProjectLifeCycleSteps::UpdateContract }
+    let(:contract_class) { ProjectPhases::UpdateContract }
     let(:project) { model_instance.project }
   end
 

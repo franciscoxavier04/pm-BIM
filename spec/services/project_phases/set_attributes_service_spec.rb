@@ -30,10 +30,10 @@
 
 require "spec_helper"
 
-RSpec.describe ProjectLifeCycleSteps::SetAttributesService, type: :model do
+RSpec.describe ProjectPhases::SetAttributesService, type: :model do
   let(:user) { build_stubbed(:user) }
   let(:contract_class) do
-    contract = class_double(ProjectLifeCycleSteps::UpdateContract)
+    contract = class_double(ProjectPhases::UpdateContract)
 
     allow(contract)
       .to receive(:new)

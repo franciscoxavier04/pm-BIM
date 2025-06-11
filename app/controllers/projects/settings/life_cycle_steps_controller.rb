@@ -66,7 +66,7 @@ class Projects::Settings::LifeCycleStepsController < Projects::SettingsControlle
   end
 
   def set_steps_active_status(definitions, active:)
-    ::ProjectLifeCycleSteps::ActivationService
+    ::ProjectPhases::ActivationService
       .new(user: current_user, project: @project, definitions:)
       .call(active:)
   end
