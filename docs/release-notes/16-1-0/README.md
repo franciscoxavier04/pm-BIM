@@ -16,7 +16,14 @@ We released [OpenProject 16.1.0](https://community.openproject.org/versions/2194
 
 ### Structure the project life cycle with phases and phase gates
 
-Text 
+OpenProject now introduces support for a structured project life cycle. This allows you to define key phases of your projects, optionally marked by phase gates.
+
+Project administrators can now **activate relevant phases and phase gates per project**. Portfolio managers can then assign start and finish dates, with **automatic scheduling of subsequent phases and gates** to reduce manual effort and ensure consistency. These changes are fully journalized and shown in the project’s Activity module.
+
+Work packages can now be assigned to a project phase for better context and filtering. And on the project list, new columns and filters let you track which projects are currently in which phase or gate — ideal for portfolio-level oversight.
+
+> [!NOTE]
+> Project phases and gates are configured centrally in the global phase administration (Enterprise add-on). All other features are available in the Community edition as well.
 
 Screenshot
 
