@@ -10,10 +10,7 @@ release_date: 2025-06-18
 
 Release date: 2025-06-18
 
-We released OpenProject [OpenProject 16.1.0](https://community.openproject.org/versions/2194).
-The release contains several bug fixes and we recommend updating to the newest version.
-In these Release Notes, we will give an overview of important feature changes.
-At the end, you will find a complete list of all changes and bug fixes.
+We released [OpenProject 16.1.0](https://community.openproject.org/versions/2194). The release contains several bug fixes and we recommend updating to the newest version. In these Release Notes, we will give an overview of important feature changes and important technical changes. At the end, you will find a complete list of all changes and bug fixes.
 
 ## Important feature changes
 
@@ -58,8 +55,6 @@ We released Reminders with OpenProject 15.2 in January 2025. With this update, i
 ![Dropdown menu on a work package when clicking on the reminder icon, with options to quickly choose a date to be reminded](openproject-16-1-reminder-options.png)
 
 ### Use negative lag for work package dates
-
-### Use negative lag to start work packages earlier
 
 You can now define **negative lag** when setting up relations between work packages. This allows you to specify that a work package should start a few days before its **predecessor** finishes.
 
@@ -186,12 +181,13 @@ Developers can now read and manage emoji reactions, create and update reminders,
 <!-- Warning: Anything above this line will be automatically removed by the release script -->
 
 ## Contributions
-A very special thank you goes to our sponsors for this release.
-Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes.
-Special thanks for reporting and finding bugs go to Cameron Dutro, Maxim Béliveau.
 
-Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings!
-Would you like to help out with translations yourself?
-Then take a look at our translation guide and find out exactly how you can contribute.
-It is very much appreciated!
+A very special thank you goes to City of Cologne, Deutsche Bahn and ZenDiS for sponsoring released or upcoming features. Your support, alongside the efforts of our amazing Community, helps drive these innovations. Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to Cameron Dutro and Maxim Béliveau.
 
+Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to particularly thank the following users:
+
+- [BigSeung](https://crowdin.com/profile/bigseung), for a great number of translations into Korean.
+- [rmiyata](https://crowdin.com/profile/rmiyata), for a great number of translations into Japanese.
+- [William](https://crowdin.com/profile/williamfromtw), for a great number of translations into Chinese Traditional.
+
+Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
