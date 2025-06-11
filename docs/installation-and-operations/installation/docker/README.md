@@ -25,15 +25,15 @@ The OpenProject **BIM Edition** is only supported on AMD64, however.
 
 ## Limitations
 
-Note that the docker container setup does not allow for integration of repositories within OpenProject. You can reference external repositories, but cannot set them up through OpenProject itself.
-For that feature to work, you need to use the packaged installation method.
+Note that the docker container setup does not allow for integration of repositories, such as Git and Subversion, within OpenProject. You can reference external repositories, but cannot set them up through OpenProject itself.
+For that feature to work, you still need to use the packaged installation method.
 
 ## Available containers
 
 OpenProject provides two container flavors with a number of target tags:
 
-- **slim**:  Contains just the application image and application server used for starting behind a proxy, or within the [OpenProject for Docker compose](../docker-compose/) or [OpenProject Helm chart](../helm-chart/) installation methods. We recommend using this image for production systems.
-- **all-in-one**: Starts internal PostgreSQL, memcached servers alongside the application in order to provide a quick-start for testing or getting started with OpenProject. The lower part of this documentation focused on this installation method.
+- **slim**: Recommended for production environments, this image contains just the application image and the application server. It is usually started behind a proxy, or via the [OpenProject for Docker compose](../docker-compose/) or [OpenProject Helm chart](../helm-chart/) installation methods.
+- **all-in-one**: Intended for quick trials and not for production environments. This image starts an internal PostgreSQL, memcached servers alongside the application in order to provide a quick-start for testing or getting started with OpenProject.
 
 OpenProject follows semantic versioning, and tags are pushed on [Docker Hub openproject/openproject](https://hub.docker.com/r/openproject/openproject/tags) in the following way:
 
@@ -52,17 +52,17 @@ We recommend to use non-floating tags for production systems, and use the built-
 
 OpenProject's docker setup can be launched in two ways:
 
-### One container per process (recommend)
+### One container per process (recommend for production environments)
 
-This is the recommended approach for using OpenProject with Docker, where each component has a single container inside, orchestrated using a Compose file. Allows to easily choose which services you want to run, and simplifies scaling and monitoring aspects.
+This is the recommended approach for using OpenProject with Docker, where each component has a single container inside, orchestrated using a Compose file. This allows to easily choose which services you want to run, and simplifies scaling and monitoring aspects.
 
 Please follow the [OpenProject for Docker compose](../docker-compose/) documentation for this installation method
 
-### Single docker container
+### Single, all-in-one Docker container (not recommended for production environments)
 
-This guide will show you to install OpenProject in one container with all the processes inside. This allows for a very quick start but is not recommended for production as it hinders upgradability of the different components such as the database.
+This guide will show you to install OpenProject in one container with all the processes inside. This allows for quickly starting a setup but is not recommended for production as it hinders the upgradability of each component individually, such as the database.
 
-## All-in-one container
+## All-in-one container (not for production)
 
 ### Quick Start
 
@@ -113,12 +113,12 @@ because of an [issue regarding pseudo-TTY allocations](https://github.com/moby/m
 and permissions to write to `/dev/stdout`. If you run into this, a workaround
 seems to be to add `-t` to your run command, even if you run in detached mode.
 
-## Using this container in production
+## Using Docker in production
 
-The one-liner above is great to get started quickly, but we strongly advise against
-using this setup for production purposes, as it disables HTTPS mode and is insecure.
+The one-liner above using the all-in-one image is great to get started quickly, but we strongly advise against
+using this setup for production environments, as it disables HTTPS mode and is insecure.
 
-Also, if you want to run OpenProject in production you need to ensure that your data is not
+Also, if you want to run OpenProject in production, you need to ensure that your data is not
 lost if you restart the container.
 
 To achieve this, we recommend that you create a directory on your host system
