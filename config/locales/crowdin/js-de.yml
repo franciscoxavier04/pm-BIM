@@ -360,7 +360,7 @@ de:
           "16_1":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
+                Die Version enthält verschiedene neue Funktionen und Verbesserungen wie <br> <ul class="%{list_styling_class}"> <li>Strukturieren Sie den Projektlebenszyklus mit Phasen und Phasen-Gates.</li> <li>Meetings im PDF-Format exportieren.</li> <li>Setzen Sie leichter Erinnerungen.</li> <li>Benutzen Sie negative Verzögerung für Arbeitspaketdaten.</li> <li>Bäume für benutzerdefinierte Hierarchiefelder anzeigen.</li> <li>Profitieren Sie von einer verbesserten Zugänglichkeit für die Datumsauswahl mit ARIA Live-Regionen.</li> </ul>
     ical_sharing_modal:
       title: "Kalender abonnieren"
       inital_setup_error_message: "Beim Abrufen der Daten ist ein Fehler aufgetreten."
@@ -565,7 +565,7 @@ de:
     label_version_plural: "Versionen"
     label_view_has_changed: "Diese Ansicht hat ungespeicherte Änderungen. Klicken, um sie zu speichern."
     help_texts:
-      show_modal: "Show help text"
+      show_modal: "Hilfetext anzeigen"
     onboarding:
       buttons:
         skip: "Überspringen"
@@ -1034,15 +1034,15 @@ de:
       reminders:
         button_label: "Erinnerung einrichten"
         title:
-          new: "Set a reminder"
+          new: "Erinnerung einrichten"
           edit: "Erinnerung bearbeiten"
         subtitle: "Sie erhalten zum ausgewählten Zeitpunkt eine Benachrichtigung für dieses Arbeitspaket."
         presets:
-          tomorrow: "Tomorrow"
-          three_days: "In 3 days"
-          week: "In a week"
-          month: "In a month"
-          custom: "At a particular date/time"
+          tomorrow: "Morgen"
+          three_days: "In 3 Tagen"
+          week: "In einer Woche"
+          month: "In einem Monat"
+          custom: "Zu einem bestimmten Datum/Zeitpunkt"
       scheduling:
         is_parent: "Die Termine dieses Arbeitspakets werden automatisch von seinen Kindern aggregiert. Aktivieren Sie \"Manuelle Planung\", um die Termine frei zu setzen."
         is_switched_from_manual_to_automatic: "Die Termine dieses Arbeitspakets müssen nach dem Wechsel auf automatische Planung neu berechnet werden."
