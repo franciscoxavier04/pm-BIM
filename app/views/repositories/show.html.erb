@@ -36,7 +36,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%= render_properties(@properties) %>
 
-<div class="revisions-toolbar-container repository--revision-toolbar">
+<div class="repository--revision-toolbar">
   <%# rev => nil prevents overwriting the rev parameter queried for in the form with the parameter from the request %>
   <div class="revisions-title-container"><h2><%= t(:label_revision_plural) %></h2></div>
   <%= form_tag(
@@ -53,12 +53,13 @@ See COPYRIGHT and LICENSE files for more details.
       ) do %>
     <div class="revisions-items">
       <div class="revisions-item hidden-for-mobile">
-        <div>
+        <div class="revisions-item--label">
           <%= label_tag "rev", I18n.t("repositories.go_to_revision") %>
         </div>
         <%= text_field_tag :rev,
                            @rev,
                            id: "revision-identifier-input",
+                           class: "revisions-item--input",
                            placeholder: t(:label_revision),
                            data: {
                              "repository-navigation-target": "revision",
@@ -67,13 +68,14 @@ See COPYRIGHT and LICENSE files for more details.
       </div>
       <% if !@repository.branches.nil? && @repository.branches.length > 0 %>
         <div class="revisions-item hidden-for-mobile">
-          <div>
+          <div class="revisions-item--label">
             <%= label_tag "branch", I18n.t(:label_branch) %>
           </div>
           <%= select_tag :branch,
                          options_for_select(@repository.branches, @rev),
                          include_blank: "--- #{t(:actionview_instancetag_blank_option)} ---",
                          id: "revision-branch-select",
+                         class: "revisions-item--input",
                          data: {
                            "repository-navigation-target": "branch",
                            action: "repository-navigation#applyValue"
@@ -82,13 +84,14 @@ See COPYRIGHT and LICENSE files for more details.
       <% end %>
       <% if !@repository.tags.nil? && @repository.tags.length > 0 %>
         <div class="revisions-item hidden-for-mobile">
-          <div>
+          <div class="revisions-item--label">
             <%= label_tag "tag", I18n.t(:label_tag) %>
           </div>
           <%= select_tag :tag,
                          options_for_select(@repository.tags, @rev),
                          include_blank: "--- #{t(:actionview_instancetag_blank_option)} ---",
                          id: "revision-tag-select",
+                         class: "revisions-item--input",
                          data: {
                            "repository-navigation-target": "tag",
                            action: "repository-navigation#applyValue"
@@ -99,7 +102,7 @@ See COPYRIGHT and LICENSE files for more details.
         <%= link_to(
               { url: { action: "revision#revision-identifier-inputs", project_id: @project,
                        key: User.current.rss_key } },
-              { class: "button", title: t("repositories.atom_revision_feed") }
+              { class: "button button_no-margin", title: t("repositories.atom_revision_feed") }
             ) do %>
           <%= op_icon("button--icon icon-export-atom") %>
         <% end %>

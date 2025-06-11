@@ -71,11 +71,11 @@ li.change
     margin-right: 1em
 
 .repository--revision-toolbar
+  display: flex
   margin-top: 3rem
 
 .repository--checkout-container
   width: 450px
-  display: flex
 
 .repository-input-group
   display: flex
@@ -87,9 +87,6 @@ li.change
   .button
     height: 36px
 
-.revisions-toolbar-container
-  display: flex
-
 .revisions-title-container
   flex: 1 1
   white-space: nowrap
@@ -97,31 +94,18 @@ li.change
 
 .revisions-items
   display: flex
+  gap: 0.5rem
 
   .revisions-item
-    margin-right: 0.5rem
     display: flex
-    &:last-of-type
-      margin-right: 0
-    input
+    align-items: center
+
+    .revisions-item--input
       flex: 1
       flex-basis: 150px
 
-    > div
-      height: 36px
-      display: flex
-      align-items: center
+    .revisions-item--label
       padding: 0 5px
-
-    label
-      font-size: 1rem
-    .button
-      margin-right: 0
-.repository--checkout-instructions-toggle
-  margin-left: 0.5rem
-  display: block
-  a
-    height: 36px
 
 table.filecontent
   border: 1px solid var(--borderColor-default)
