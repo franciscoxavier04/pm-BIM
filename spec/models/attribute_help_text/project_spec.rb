@@ -111,6 +111,12 @@ RSpec.describe AttributeHelpText::Project do
     end
   end
 
+  describe "normalization" do
+    it "normalizes attribute_name" do
+      expect(subject).to normalize(:attribute_name).from("parent_id").to("parent")
+    end
+  end
+
   describe "instance" do
     subject { build(:project_help_text) }
 
