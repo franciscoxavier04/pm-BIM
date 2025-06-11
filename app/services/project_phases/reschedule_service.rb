@@ -52,8 +52,13 @@ module ProjectPhases
         if phase.date_range_set?
           next_start_date = reschedule_phase_and_retrieve_next_start(phase, from)
           from = next_start_date unless next_start_date.nil?
-        elsif phase.start_date.present?
-          reschedule_phase_start_only(phase, from)
+        else
+          reschedule_phase_start(phase, from)
+
+          if phase.finish_date.present?
+            next_start_date = reschedule_phase_finish_and_retrieve_next_start(phase, from)
+            from = next_start_date unless next_start_date.nil?
+          end
         end
       end
     end
@@ -74,9 +79,16 @@ module ProjectPhases
       [days.first.date, days.last.date] if days.length == duration
     end
 
-    def reschedule_phase_start_only(phase, from)
+    def reschedule_phase_start(phase, from)
       start_date = working_days_from(from, count: 1).first.date
-      phase.update(start_date: start_date)
+      phase.update(start_date:)
+    end
+
+    def reschedule_phase_finish_and_retrieve_next_start(phase, from)
+      finish_date = [from, phase.finish_date].max
+      working_finish_date = working_days_from(finish_date, count: 1).first.date
+      phase.update(finish_date: working_finish_date)
+      working_finish_date + 1
     end
 
     def working_days_from(from, count:)

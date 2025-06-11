@@ -106,6 +106,17 @@ RSpec.describe ProjectPhases::UpdateService, type: :model do
       allow(Project).to receive(:allowed_to).with(user, :view_project_phases).and_return(Project.all)
     end
 
+    context "for no dates range" do
+      let!(:phase) { create(:project_phase, project:, start_date: date, finish_date: date) }
+      let!(:following) { create(:project_phase, project:, start_date: date - 10, finish_date: date - 10, duration: 3) }
+
+      it "doesn't get rescheduled" do
+        expect do
+          expect(service.call(start_date: nil, finish_date: nil)).to be_success
+        end.not_to change(following, :attributes)
+      end
+    end
+
     context "for invalid date range" do
       let!(:phase) { create(:project_phase, project:, start_date: date, finish_date: date) }
       let!(:following) { create(:project_phase, project:, start_date: date - 10, finish_date: date - 10, duration: 3) }
@@ -141,6 +152,26 @@ RSpec.describe ProjectPhases::UpdateService, type: :model do
         expect(following2).to have_attributes(start_date: date + 7, finish_date: date + 8, duration: 2)
         expect(following3).to have_attributes(start_date: date + 9, finish_date: date + 9, duration: 1)
       end
+
+      context "when providing a start date only" do
+        it "reschedules all of them relying on duration" do
+          expect(service.call(start_date: date, finish_date: nil)).to be_success
+
+          expect(following1).to have_attributes(start_date: date + 1, finish_date: date + 5, duration: 3)
+          expect(following2).to have_attributes(start_date: date + 6, finish_date: date + 7, duration: 2)
+          expect(following3).to have_attributes(start_date: date + 8, finish_date: date + 8, duration: 1)
+        end
+      end
+
+      context "for a finish date only" do
+        it "reschedules all of them relying on duration" do
+          expect(service.call(start_date: nil, finish_date: date + 1)).to be_success
+
+          expect(following1).to have_attributes(start_date: date + 2, finish_date: date + 6, duration: 3)
+          expect(following2).to have_attributes(start_date: date + 7, finish_date: date + 8, duration: 2)
+          expect(following3).to have_attributes(start_date: date + 9, finish_date: date + 9, duration: 1)
+        end
+      end
     end
 
     context "for following phase without duration" do
@@ -158,10 +189,9 @@ RSpec.describe ProjectPhases::UpdateService, type: :model do
       let!(:phase) { create(:project_phase, project:, start_date: date, finish_date: date) }
       let!(:following) { create(:project_phase, project:, start_date: nil, finish_date: nil, duration: 3) }
 
-      it "doesn't get rescheduled" do
-        expect do
-          expect(service.call(start_date: date, finish_date: date + 1)).to be_success
-        end.not_to change(following, :attributes)
+      it "reschedules setting the start date to follow the previous phase" do
+        expect(service.call(start_date: date, finish_date: date + 1)).to be_success
+        expect(following).to have_attributes(start_date: date + 2, finish_date: nil, duration: 3)
       end
     end
 

@@ -85,17 +85,23 @@ module ProjectPhases
 
       if preceding_phase
         preceding_phase
-      elsif phase.date_range_set?
+      elsif phase.any_dates_set?
         phase
       end
     end
 
     def preceding_active_phase(phase)
-      project.available_phases.reverse.find { it.date_range_set? && it.position < phase.position }
+      project.available_phases.reverse.find { it.any_dates_set? && it.position < phase.position }
     end
 
     def initial_reschedule_date(phase)
-      phase.active? ? phase.finish_date + 1 : phase.start_date
+      if phase.date_range_set?
+        phase.active? ? phase.finish_date + 1 : phase.start_date
+      else
+        from = phase.start_date || phase.finish_date
+        from += 1 if phase.active?
+        from
+      end
     end
 
     def default_contract_class
