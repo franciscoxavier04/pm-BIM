@@ -74,7 +74,7 @@ module Repositories
       end
 
       def next_button_tag
-        next_button_tag ? :a : :button
+        next_button_present? ? :a : :button
       end
 
       def previous_button_title
