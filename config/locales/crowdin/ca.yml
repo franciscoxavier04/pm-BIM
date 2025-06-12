@@ -79,7 +79,14 @@ ca:
         main-menu-bg-color: "Color de fons del menú lateral de l'esquerra."
       theme_warning: Canviant el tema substituiràs el teu estil personalitzat. El disseny es perdrà. Estàs segur que vols continuar?
     enterprise:
-      upgrade_to_ee: "Actualitza a l'edició Enterprise"
+      delete_dialog:
+        title: "Delete enterprise token"
+        heading: "Delete this enterprise token?"
+        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+      create_dialog:
+        title: "Add Enterprise token"
+        type_token_text: "Type support token text"
+        token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Carrega un token de suport de l'edició Enterprise"
       delete_token_modal:
         text: "Estàs segur que vols eliminar el token de l'edició Enterprise utilitzat?"
@@ -906,6 +913,7 @@ ca:
         domain: "Domini"
         starts_at: "Vàlid des de"
         subscriber: "Subscriptor"
+        plan: "Plan"
         encoded_token: "Token de suport Enterprise"
         active_user_count_restriction: "Màxim nombre d'usuaris actius"
       grids/grid:
@@ -1512,6 +1520,9 @@ ca:
       custom_action: "Accions personalitzades"
       custom_field: "Camp personalitzat"
       "doorkeeper/application": "Aplicació OAuth"
+      enterprise_token:
+        one: "Enterprise token"
+        other: "Enterprise tokens"
       forum: "Fòrum"
       global_role: "Global role"
       group: "Grup"
@@ -2015,12 +2026,12 @@ ca:
       readonly_work_packages: Readonly Work Packages
       sso_auth_providers: Single sign-on
       team_planner_view: Team Planner View
-      two_factor_authentication: 2FA Authentication
       virus_scanning: Antivirus Scanning
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      buy_now_button: "Buy now"
       plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
@@ -2585,6 +2596,7 @@ ca:
   label_dashboard: "Tauler de control"
   label_database_version: "Versió PostgreSQL"
   label_date: "Data"
+  label_dates: "Dates"
   label_date_and_time: "Data i hora"
   label_date_format: "Format de data"
   label_date_from: "De"

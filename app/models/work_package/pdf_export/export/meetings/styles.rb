@@ -122,6 +122,10 @@ module WorkPackage::PDFExport::Export::Meetings::Styles
       resolve_table_cell(@styles.dig(:participants, :cell))
     end
 
+    def participants_status
+      resolve_font(@styles.dig(:participants, :status))
+    end
+
     def participants_margins
       resolve_margin(@styles[:participants])
     end

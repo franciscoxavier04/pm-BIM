@@ -79,7 +79,14 @@ pl:
         main-menu-bg-color: "Kolor tła lewego menu."
       theme_warning: Zmiana motywu poskutkuje zastąpieniem stylu niestandardowego. Projekt zostanie wówczas utracony. Czy na pewno chcesz kontynuować?
     enterprise:
-      upgrade_to_ee: "Uaktualnij do wersji Enterprise"
+      delete_dialog:
+        title: "Delete enterprise token"
+        heading: "Delete this enterprise token?"
+        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+      create_dialog:
+        title: "Add Enterprise token"
+        type_token_text: "Type support token text"
+        token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Wyślij swój token wsparcia wersji Enterprise"
       delete_token_modal:
         text: "Czy na pewno chcesz usunąć używany token wersji Enterprise?"
@@ -922,6 +929,7 @@ pl:
         domain: "Domena"
         starts_at: "Ważne od"
         subscriber: "Subskrybent"
+        plan: "Plan"
         encoded_token: "Token wsparcia Enterprise"
         active_user_count_restriction: "Maksymalna liczba aktywnych użytkowników"
       grids/grid:
@@ -1532,6 +1540,11 @@ pl:
       custom_action: "Działanie niestandardowe"
       custom_field: "Pola niestandardowe"
       "doorkeeper/application": "Aplikacje OAuth"
+      enterprise_token:
+        one: "Enterprise token"
+        few: "Enterprise tokens"
+        many: "Enterprise tokens"
+        other: "Enterprise tokens"
       forum: "Forum"
       global_role: "Rola globalna"
       group: "Grupa"
@@ -2093,12 +2106,12 @@ pl:
       readonly_work_packages: Pakiety robocze tylko do odczytu
       sso_auth_providers: Logowanie jednokrotne
       team_planner_view: Widok planisty zespołu
-      two_factor_authentication: Uwierzytelnienie 2FA
       virus_scanning: Skanowanie antywirusowe
       work_package_query_relation_columns: Kolumny relacji zapytań dotyczących pakietów roboczych
       work_package_sharing: Udostępnij pakiety robocze użytkownikom zewnętrznym
       work_package_subject_generation: Generowanie tematu pakietu roboczego
     upsell:
+      buy_now_button: "Buy now"
       plans_title: "Plany Enterprise"
       title: "Dodatek wersji Enterprise"
       plan_title: "Dodatek do planu Enterprise %{plan}"
@@ -2663,6 +2676,7 @@ pl:
   label_dashboard: "Pulpit nawigacyjny"
   label_database_version: "Wersja PostgreSQL"
   label_date: "Data"
+  label_dates: "Dates"
   label_date_and_time: "Data i czas"
   label_date_format: "Format daty"
   label_date_from: "Od"

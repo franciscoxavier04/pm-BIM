@@ -237,7 +237,7 @@ ko:
         download_report: 다운로드
         rerun_checks: 모든 검사 다시 실행
         run_checks: 지금 검사 실행
-      checked: '마지막 확인: %{datetime}'
+      checked: 'Last check: %{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: 자동 폴더 생성
@@ -247,7 +247,7 @@ ko:
           group_folder_app: '종속성: 그룹 폴더'
           group_folder_contents: 그룹 폴더에 예상 콘텐츠가 있습니다
           group_folder_presence: 그룹 폴더가 존재합니다
-          header: 자동으로 관리되는 프로젝트 폴더 구성
+          header: Automatically managed project folders
           userless_access: 서버 측 요청 인증
         authentication:
           existing_token: 사용자 토큰
@@ -266,7 +266,7 @@ ko:
           diagnostic_request: 진단 요청
           drive_id_exists: 드라이브가 존재합니다
           drive_id_format: 드라이브 ID 형식
-          header: 기본 구성
+          header: Configuration
           host_url_accessible: 호스트 URL 액세스 가능
           storage_configured: 구성 완료
           tenant_id: 테넌트 ID

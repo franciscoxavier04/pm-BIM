@@ -74,5 +74,5 @@ zh-TW:
   permission_view_budgets: "檢視預算"
   project_module_budgets: "預算"
   text_budget_reassign_to: "將它們重新分配到此預算："
-  text_budget_delete: "從所有工作包中刪除預算"
-  text_budget_destroy_assigned_wp: "有 %{count} 個工作項目被分配到此預算。您想怎麼做？"
+  text_budget_delete: "從所有工作套件中刪除預算"
+  text_budget_destroy_assigned_wp: "有 %{count} 個工作套件被分配到此預算。您想怎麼做？"

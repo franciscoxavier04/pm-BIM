@@ -79,7 +79,14 @@ si:
         main-menu-bg-color: "වම් පැත්තේ මෙනුවේ පසුබිම් වර්ණය."
       theme_warning: තේමාව වෙනස් කිරීම ඔබට අභිරුචි විලාසිතාව උඩින් ලියනු ඇත. එවිට සැලසුම අහිමි වනු ඇත. ඔබට දිගටම කරගෙන යාමට අවශ්ය බව ඔබට විශ්වාසද?
     enterprise:
-      upgrade_to_ee: "Upgrade to the Enterprise edition"
+      delete_dialog:
+        title: "Delete enterprise token"
+        heading: "Delete this enterprise token?"
+        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+      create_dialog:
+        title: "Add Enterprise token"
+        type_token_text: "Type support token text"
+        token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Upload an Enterprise edition support token"
       delete_token_modal:
         text: "Are you sure you want to remove the current Enterprise edition token used?"
@@ -909,6 +916,7 @@ si:
         domain: "Domain"
         starts_at: "එතැන් සිට වලංගු වේ"
         subscriber: "ග්රාහකයා"
+        plan: "Plan"
         encoded_token: "ව්යවසාය සහාය ටෝකනය"
         active_user_count_restriction: "උපරිම ක්රියාකාරී පරිශීලකයින්"
       grids/grid:
@@ -1515,6 +1523,9 @@ si:
       custom_action: "අභිරුචි පියවර"
       custom_field: "අභිරුචි ක්ෂේත්රය"
       "doorkeeper/application": "OAUTH අයදුම්"
+      enterprise_token:
+        one: "Enterprise token"
+        other: "Enterprise tokens"
       forum: "සංසදය"
       global_role: "Global role"
       group: "කණ්ඩායම"
@@ -2018,12 +2029,12 @@ si:
       readonly_work_packages: Readonly Work Packages
       sso_auth_providers: Single sign-on
       team_planner_view: Team Planner View
-      two_factor_authentication: 2FA Authentication
       virus_scanning: Antivirus Scanning
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      buy_now_button: "Buy now"
       plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
@@ -2588,6 +2599,7 @@ si:
   label_dashboard: "Dashboard"
   label_database_version: "PostgreSQL version"
   label_date: "දිනය"
+  label_dates: "Dates"
   label_date_and_time: "දිනය සහ වේලාව"
   label_date_format: "දිනය ආකෘතිය"
   label_date_from: "සිට"

@@ -79,7 +79,14 @@ es:
         main-menu-bg-color: "Color de fondo del menú lateral izquierdo."
       theme_warning: Al cambiar el tema, se sobrescribirá su estilo personalizado y, como consecuencia, se perderá el diseño. ¿Seguro que quiere continuar?
     enterprise:
-      upgrade_to_ee: "Actualizar a Enterprise"
+      delete_dialog:
+        title: "Delete enterprise token"
+        heading: "Delete this enterprise token?"
+        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+      create_dialog:
+        title: "Add Enterprise token"
+        type_token_text: "Type support token text"
+        token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Cargue el token de soporte de Enterprise"
       delete_token_modal:
         text: "¿Está seguro que desea eliminar el token actual de Enterpise usado?"
@@ -907,6 +914,7 @@ es:
         domain: "Dominio"
         starts_at: "Válido desde"
         subscriber: "Suscriptor"
+        plan: "Plan"
         encoded_token: "Token de soporte de Enterprise"
         active_user_count_restriction: "Máximo de usuarios activos"
       grids/grid:
@@ -1513,6 +1521,9 @@ es:
       custom_action: "Acción personalizada"
       custom_field: "Campo personalizado"
       "doorkeeper/application": "Aplicación OAuth"
+      enterprise_token:
+        one: "Enterprise token"
+        other: "Enterprise tokens"
       forum: "Foro"
       global_role: "Rol global"
       group: "Grupo"
@@ -2016,12 +2027,12 @@ es:
       readonly_work_packages: Paquetes de trabajo de solo lectura
       sso_auth_providers: Inicio de sesión único
       team_planner_view: Vista del planificador de equipos
-      two_factor_authentication: Autenticación 2FA
       virus_scanning: Análisis de antivirus
       work_package_query_relation_columns: Columnas de relación de consulta de paquetes de trabajo
       work_package_sharing: Compartir paquetes de trabajo con usuarios externos
       work_package_subject_generation: Generación de temas del paquete de trabajo
     upsell:
+      buy_now_button: "Buy now"
       plans_title: "Planes Enterprise"
       title: "extensión Enterprise"
       plan_title: "Extensión Enterprise de %{plan}"
@@ -2586,6 +2597,7 @@ es:
   label_dashboard: "Paneles de control"
   label_database_version: "Versión de PostgreSQL"
   label_date: "Fecha"
+  label_dates: "Dates"
   label_date_and_time: "Fecha y hora"
   label_date_format: "Formato de fecha"
   label_date_from: "De"

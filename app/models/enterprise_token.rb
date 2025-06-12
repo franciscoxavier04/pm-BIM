@@ -96,7 +96,10 @@ class EnterpriseToken < ApplicationRecord
     end
 
     def set_active_tokens
+      # although we use the `active` scope here, we still need to filter out expired tokens
+      # as not all token validity period is extracted into the DB
       EnterpriseToken
+        .active
         .order(Arel.sql("created_at DESC"))
         .to_a
         .reject(&:expired?)
@@ -121,8 +124,17 @@ class EnterpriseToken < ApplicationRecord
   validate :valid_token_object
   validate :valid_domain
 
+  before_save :extract_validity_from_token
   before_save :clear_current_tokens_cache
   before_destroy :clear_current_tokens_cache
+
+  scope :active, ->(date = Date.current) {
+    where(<<~SQL.squish, date: date)
+      (valid_from IS NULL OR valid_from <= :date)
+      AND
+      (valid_until IS NULL OR valid_until >= :date)
+    SQL
+  }
 
   delegate :will_expire?,
            :subscriber,
@@ -192,5 +204,14 @@ class EnterpriseToken < ApplicationRecord
 
   def valid_domain
     errors.add :domain, :invalid if invalid_domain?
+  end
+
+  def extract_validity_from_token
+    return unless token_object
+
+    self.valid_from = token_object.starts_at
+    self.valid_until = if token_object.will_expire?
+                         token_object.expires_at.next_day(token_object.reprieve_days.to_i)
+                       end
   end
 end

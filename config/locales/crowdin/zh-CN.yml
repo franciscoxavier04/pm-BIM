@@ -79,7 +79,14 @@ zh-CN:
         main-menu-bg-color: "左菜单的背景色。"
       theme_warning: 更改主题将覆盖您的自定义样式。设计将会丢失。您确定要继续吗？
     enterprise:
-      upgrade_to_ee: "升级到企业版"
+      delete_dialog:
+        title: "Delete enterprise token"
+        heading: "Delete this enterprise token?"
+        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+      create_dialog:
+        title: "Add Enterprise token"
+        type_token_text: "Type support token text"
+        token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "上传企业版支持令牌"
       delete_token_modal:
         text: "您确定要删除当前使用的企业版令牌吗？"
@@ -897,6 +904,7 @@ zh-CN:
         domain: "域"
         starts_at: "生效时间"
         subscriber: "订阅者"
+        plan: "Plan"
         encoded_token: "企业版支持令牌"
         active_user_count_restriction: "最大活动用户数"
       grids/grid:
@@ -1501,6 +1509,8 @@ zh-CN:
       custom_action: "自定义操作"
       custom_field: "自定义字段"
       "doorkeeper/application": "OAuth应用程序"
+      enterprise_token:
+        other: "Enterprise tokens"
       forum: "论坛"
       global_role: "全局角色"
       group: "组"
@@ -1975,12 +1985,12 @@ zh-CN:
       readonly_work_packages: 只读工作包
       sso_auth_providers: 单点登录
       team_planner_view: 工作组规划器视图
-      two_factor_authentication: 双因子认证
       virus_scanning: 反病毒扫描
       work_package_query_relation_columns: 工作包查询关系列
       work_package_sharing: 与外部用户共享工作包
       work_package_subject_generation: 工作包主题生成
     upsell:
+      buy_now_button: "Buy now"
       plans_title: "企业计划"
       title: "企业附加组件"
       plan_title: "企业 %{plan} 附加组件"
@@ -2369,7 +2379,7 @@ zh-CN:
         static_token_name: "RSS 令牌"
         disabled_text: "管理员未启用 RSS 令牌。请联系管理员以使用此功能。"
       storages:
-        title: "File storages"
+        title: "文件存储"
         text_hint: "文件存储区令牌将此 OpenProject 实例与外部文件存储区连接。"
         empty_text_hint: "没有与您的帐户相关联的存储区访问权限。"
         revoke_token: "是否确实要移除此令牌？您需要再次登录 %{storage}"
@@ -2545,6 +2555,7 @@ zh-CN:
   label_dashboard: "仪表板"
   label_database_version: "PostgreSQL 版本"
   label_date: "日期"
+  label_dates: "Dates"
   label_date_and_time: "日期和时间"
   label_date_format: "日期格式"
   label_date_from: "从"
@@ -2851,8 +2862,8 @@ zh-CN:
   label_project_custom_field_plural: "项目属性"
   label_project_settings: "项目设置"
   label_project_attributes_settings: "项目属性设置"
-  label_project_storage_plural: "File storages"
-  label_project_storage_project_folder: "File storages: Project folders"
+  label_project_storage_plural: "文件存储"
+  label_project_storage_project_folder: "文件存储：项目文件夹"
   label_projects_disk_usage_information: "%{count} 个项目正在使用 %{used_disk_space} 磁盘空间"
   label_project_view_all: "查看所有项目"
   label_project_show_details: "显示项目详细信息"
@@ -3586,7 +3597,7 @@ zh-CN:
       oauth_application_details: "关闭此窗口后，将无法再次访问客户端密钥值。请将这些值复制到 Nextcloud OpenProject 集成设置中："
       oauth_application_details_link_text: "转到设置页面"
       setup_documentation_details: "如果您在配置新文件存储方面需要帮助，请查看文档："
-      setup_documentation_details_link_text: "File storages setup"
+      setup_documentation_details_link_text: "文件存储设置"
       show_warning_details: "要使用此文件存储，请记得在每个所需项目的项目设置中激活模块和特定存储。"
     subversion:
       existing_title: "现有的 Subversion 存储库"

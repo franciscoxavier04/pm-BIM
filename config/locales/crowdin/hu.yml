@@ -79,7 +79,14 @@ hu:
         main-menu-bg-color: "Baloldali menü háttérszíne."
       theme_warning: A téma megváltoztatása felülírja az egyéni stílust. A forma elvész. Biztos, hogy folytatni akarod?
     enterprise:
-      upgrade_to_ee: "Frissítés a Vállalati Verzióra"
+      delete_dialog:
+        title: "Delete enterprise token"
+        heading: "Delete this enterprise token?"
+        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+      create_dialog:
+        title: "Add Enterprise token"
+        type_token_text: "Type support token text"
+        token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Töltse fel a Vállalati Verzió támogatási tokenjét"
       delete_token_modal:
         text: "Biztos, hogy el akarja távolítani a jelenleg használt Vállalati Verzió tokenjét?"
@@ -908,6 +915,7 @@ hu:
         domain: "Domain"
         starts_at: "Érvényes"
         subscriber: "Előfizető"
+        plan: "Plan"
         encoded_token: "Vállalati támogatás kulcs"
         active_user_count_restriction: "Maximális aktív felhasználók"
       grids/grid:
@@ -1514,6 +1522,9 @@ hu:
       custom_action: "Egyéni művelet"
       custom_field: "Választható mező"
       "doorkeeper/application": "OAuth alkalmazás"
+      enterprise_token:
+        one: "Enterprise token"
+        other: "Enterprise tokens"
       forum: "Fórum"
       global_role: "Globális szerepkör"
       group: "Csoport"
@@ -2017,12 +2028,12 @@ hu:
       readonly_work_packages: Readonly Work Packages
       sso_auth_providers: Single sign-on
       team_planner_view: Team Planner View
-      two_factor_authentication: 2FA Authentication
       virus_scanning: Antivirus Scanning
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      buy_now_button: "Buy now"
       plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
@@ -2587,6 +2598,7 @@ hu:
   label_dashboard: "Vezérlőpult"
   label_database_version: "PostgreSQL verzió"
   label_date: "dátum"
+  label_dates: "Dates"
   label_date_and_time: "Dátum és idő"
   label_date_format: "Dátum formátum"
   label_date_from: "tól"
