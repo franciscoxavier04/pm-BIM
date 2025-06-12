@@ -33,6 +33,8 @@ require "spec_helper"
 RSpec.describe "Enterprise trial management",
                :js,
                :webmock do
+  include Redmine::I18n
+
   let(:admin) { create(:admin) }
 
   let(:trial_id) { "1b6486b4-5a30-4042-8714-99d7c8e6b637" }
@@ -178,9 +180,11 @@ RSpec.describe "Enterprise trial management",
   end
 
   it "does not send a request when an internal validation fails" do
+    click_link_or_button("Start free trial")
     fill_in "Company", with: "Foo Corp."
-    click_link_or_button("Continue")
 
+    # No stubbed request with webmock -> No allowed requests
+    click_link_or_button("Continue")
 
     page.within("#enterprise-trial-dialog") do
       expect(page).to have_text("First name can't be blank.")
@@ -231,7 +235,7 @@ RSpec.describe "Enterprise trial management",
   context "with a waiting request pending" do
     before do
       stub_request(:post, "https://start.openproject-edge.com:443/public/v1/trials")
-        .to_return(status: 200, headers: { "Content-Type" => "application/json" }, body: created_body.to_json)
+        .to_return(status: 202, headers: { "Content-Type" => "application/json" }, body: created_body.to_json)
 
       stub_request(:get, "https://start.openproject-edge.com:443/public/v1/trials/#{trial_id}")
         .to_return(status: 422, headers: { "Content-Type" => "application/json" }, body: waiting_body.to_json)
@@ -246,22 +250,14 @@ RSpec.describe "Enterprise trial management",
     end
 
     it "can get the trial if reloading the page" do
-      # We need to go to another page to stop the request cycle
-      visit info_admin_index_path
-
       # Stub with successful body
       # Stub the proxy to a successful return
       # which marks the user has confirmed the mail link
       stub_request(:get, "https://start.openproject-edge.com:443/public/v1/trials/#{trial_id}")
         .to_return(status: 200, headers: { "Content-Type" => "application/json" }, body: confirmed_body.to_json)
 
-      # Stub the details URL to still return 403
-      stub_request(:get, "https://start.openproject-edge.com:443/public/v1/trials/#{trial_id}/details")
-        .to_return(status: 403)
-
       visit enterprise_tokens_path
 
-      expect_and_dismiss_flash(message: "Successful update.")
       expect(page).to have_text("Enterprise Plan (Token Version 1)")
       expect(page).to have_text("OpenProject Test")
       expect(page).to have_text("5")
@@ -270,27 +266,14 @@ RSpec.describe "Enterprise trial management",
     end
 
     it "can confirm that trial regularly" do
-      find_test_selector("op-ee-trial-waiting-resend-link", text: "Resend").click
-      expect(page).to have_css(".op-toast", text: "Email has been resent.", wait: 20)
-
-      expect(page).to have_text "foo@foocorp.example"
-      expect(page).to have_text "email sent - waiting for confirmation"
-
+      expect(page).to have_text "We sent you an email on #{format_date(Date.current)} to foo@foocorp.example"
       # Stub the proxy to a successful return
       # which marks the user has confirmed the mail link
       stub_request(:get, "https://start.openproject-edge.com:443/public/v1/trials/#{trial_id}")
-        .to_return(status: 200, headers: { "Content-Type" => "application/json" }, body: confirmed_body.to_json)
+        .to_return(status: 202, headers: { "Content-Type" => "application/json" }, body: confirmed_body.to_json)
 
-      # Wait until the next request
-      expect(page).to have_test_selector "op-ee-trial-waiting-status--confirmed", text: "confirmed", wait: 20
+      click_link_or_button("Resend confirmation email")
 
-      # advance to video
-      click_on "Continue"
-
-      # advance to close
-      click_on "Continue"
-
-      expect_and_dismiss_flash(message: "Successful update.")
       expect(page).to have_text("Enterprise Plan (Token Version 1)")
       expect(page).to have_text("OpenProject Test")
       expect(page).to have_text("5")

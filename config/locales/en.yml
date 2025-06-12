@@ -2195,6 +2195,8 @@ en:
       successfully_saved: "Your trial enterprise token has been successfully retrieved."
       start_over: "Start over trial request"
       resend_action: "Resend confirmation email"
+      welcome_title: "Quick feature overview"
+      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
       confirmation_info: >
         We sent you an email on %{date} to %{email}.
         Please check your inbox and click the confirmation link provided to start your 14 days trial.

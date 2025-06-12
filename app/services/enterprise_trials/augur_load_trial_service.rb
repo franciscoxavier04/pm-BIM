@@ -31,6 +31,7 @@
 module EnterpriseTrials
   class AugurLoadTrialService
     STATUS_WAITING_CONFIRMATION = :awaiting_confirmation
+    STATUS_TOKEN_SAVED = :token_saved
 
     def initialize(trial_key)
       @trial_key = trial_key
@@ -64,19 +65,17 @@ module EnterpriseTrials
     end
 
     def handle_successful_trial(trial_json)
-      if trial_json["token"]
-        token = EnterpriseToken.new(encoded_token: trial_json["token"])
-        if token.save
-          @trial_key.destroy
-          return ServiceResult.success(result: token, message: I18n.t("ee.trial.successfully_saved"))
-        else
-          return ServiceResult.failure(result: token,
-                                       message_type: :info,
-                                       message: I18n.t("ee.trial.successfully_saved"))
-        end
+      if trial_json["token"].nil?
+        return ServiceResult.success(result: nil, message: I18n.t("ee.trial.already_retrieved"))
       end
 
-      ServiceResult.success(result: nil, message: I18n.t("ee.trial.already_retrieved"))
+      token = EnterpriseToken.new(encoded_token: trial_json["token"])
+      if token.save
+        @trial_key.destroy
+        ServiceResult.success(result: STATUS_TOKEN_SAVED, message: I18n.t("ee.trial.successfully_saved"))
+      else
+        ServiceResult.failure(result: token)
+      end
     end
 
     def augur_host
