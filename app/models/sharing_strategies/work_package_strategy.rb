@@ -46,7 +46,7 @@ module SharingStrategies
     end
 
     def manageable?
-      user.allowed_in_project?(:share_work_packages, @entity.project)
+      feature_available? && user.allowed_in_project?(:share_work_packages, @entity.project)
     end
 
     def viewable?
@@ -103,13 +103,8 @@ module SharingStrategies
       I18n.t(:label_share_work_package)
     end
 
-    def upsell_banner(modal_content:)
-      Shares::WorkPackages::ModalUpsellComponent.new(modal_content:)
-    end
-
-    def allow_feature?
-      EnterpriseToken.allows_to?(:work_package_sharing) ||
-        EnterpriseToken.trialling?(:work_package_sharing)
+    def enterprise_feature
+      :work_package_sharing
     end
 
     private

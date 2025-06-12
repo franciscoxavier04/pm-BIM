@@ -7,8 +7,7 @@
         end
       end
 
-      render(strategy.upsell_banner(modal_content:))
-      render(strategy.manage_shares_component(modal_content:, errors:)) if strategy.allow_feature?
+      render(strategy.manage_shares_component(modal_content:, errors:))
     end
   end
 %>

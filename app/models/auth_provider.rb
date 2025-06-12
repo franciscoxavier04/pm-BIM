@@ -29,6 +29,8 @@
 class AuthProvider < ApplicationRecord
   belongs_to :creator, class_name: "User"
 
+  has_many :scim_clients, dependent: :restrict_with_error
+
   has_many :user_auth_provider_links, dependent: :destroy
   has_many :users, through: :user_auth_provider_links
 

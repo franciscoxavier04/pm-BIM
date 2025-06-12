@@ -88,6 +88,7 @@ module EnterpriseTokenFactory
 
   def mock_token_object(encoded_token_name, **attributes)
     token = OpenProject::Token.new(domain: Setting.host_name,
+                                   starts_at: Date.yesterday,
                                    expires_at: 1.year.from_now,
                                    **attributes)
     allow(OpenProject::Token)

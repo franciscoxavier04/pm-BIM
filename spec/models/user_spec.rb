@@ -374,12 +374,13 @@ RSpec.describe User do
   end
 
   describe "#authentication_provider" do
+    let!(:authentication_provider) { create(:oidc_provider) }
+
     context "when there is a link between user and auth provider" do
-      let!(:user) { create(:user, identity_url: "provider:123123213") }
+      let(:user) { create(:user, authentication_provider:) }
 
       it "returns the provider when there is a link" do
-        provider = AuthProvider.find_by!(slug: "provider")
-        expect(user.authentication_provider).to eql(provider)
+        expect(user.authentication_provider).to eql(authentication_provider)
       end
     end
 
@@ -391,17 +392,19 @@ RSpec.describe User do
   end
 
   describe "#human_authentication_provider" do
+    let!(:authentication_provider) { create(:oidc_provider) }
+
     context "when there is a link between user and auth provider" do
-      let(:user) { create(:user, identity_url: "provider:123123213") }
+      let(:user) { create(:user, authentication_provider:) }
 
       it "returns a human readable name" do
-        expect(user.human_authentication_provider).to eql("Foobar")
+        expect(user.human_authentication_provider).to eql(authentication_provider.display_name)
       end
     end
 
     context "when no provider exists" do
       it "returns nil" do
-        expect(user.authentication_provider).to be_nil
+        expect(user.human_authentication_provider).to be_nil
       end
     end
   end

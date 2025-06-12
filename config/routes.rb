@@ -255,7 +255,7 @@ Rails.application.routes.draw do
     resource :menu, only: %i[show]
   end
 
-  resources :projects, except: %i[show edit create update] do
+  resources :projects, except: %i[show edit update] do
     scope module: "projects" do
       namespace "settings" do
         resource :general, only: %i[show update], controller: "general" do
@@ -494,7 +494,6 @@ Rails.application.routes.draw do
     delete "design/export_cover" => "custom_styles#export_cover_delete", as: "custom_style_export_cover_delete"
     delete "design/favicon" => "custom_styles#favicon_delete", as: "custom_style_favicon_delete"
     delete "design/touch_icon" => "custom_styles#touch_icon_delete", as: "custom_style_touch_icon_delete"
-    get "design/upsell" => "custom_styles#upsell", as: "custom_style_upsell"
     post "design/colors" => "custom_styles#update_colors", as: "update_design_colors"
     post "design/themes" => "custom_styles#update_themes", as: "update_design_themes"
     post "design/export_cover_text_color" => "custom_styles#update_export_cover_text_color",
