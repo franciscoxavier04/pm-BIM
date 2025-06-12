@@ -403,6 +403,9 @@ heading:
 
 participants:
   margin_bottom: 8
+  status:
+    size: 9
+    color: "636C76"
   cell:
     size: 10
     padding_left: 0

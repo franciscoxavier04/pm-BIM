@@ -46,7 +46,7 @@ module Meetings::PDF
         pdf.table(
           rows,
           column_widths: participants_table_column_widths(columns_count),
-          cell_style: styles.participants_table_cell
+          cell_style: { inline_format: true }.merge(styles.participants_table_cell)
         )
       end
     end
@@ -66,9 +66,23 @@ module Meetings::PDF
 
       Array.new(groups[0].size) do |row_index|
         (0..(columns_count - 1)).map do |group_nr|
-          { content: participant_name(groups.dig(group_nr, row_index)) }
+          participant = groups.dig(group_nr, row_index)
+          { content: "#{participant_name(participant)}   #{participants_status(participant)}".strip }
         end
       end
+    end
+
+    def participants_status(participant)
+      return "" if participant.nil?
+
+      content = if participant.attended?
+                  I18n.t("description_attended")
+                elsif participant.invited?
+                  I18n.t("description_invite")
+                else
+                  ""
+                end
+      prawn_table_cell_inline_formatting_data(content.capitalize, styles.participants_status)
     end
 
     def participant_name(participant)
