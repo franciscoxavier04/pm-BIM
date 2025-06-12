@@ -309,6 +309,14 @@ RSpec.describe EnterpriseToken do
       end
     end
 
+    context "with a token that has not started yet" do
+      let!(:future_token) { create_enterprise_token("a_future_token", starts_at: 1.month.from_now) }
+
+      it "does not return the future token" do
+        expect(described_class.active_tokens).to be_empty
+      end
+    end
+
     context "with an active token" do
       let!(:active_token) { create_enterprise_token("an_active_token", expires_at: 1.year.from_now) }
 
@@ -329,6 +337,18 @@ RSpec.describe EnterpriseToken do
       let!(:expired_token) { create_enterprise_token("an_expired_token", expires_at: Date.yesterday) }
       let!(:expired_trial_token) { create_enterprise_token("an_expired_trial_token", trial: true, expires_at: Date.yesterday) }
       let!(:invalid_token) { create_enterprise_token("an_invalid_token_with_wrong_domain", domain: "wrong.domain") }
+
+      it "returns an empty array" do
+        expect(described_class.active_tokens).to be_empty
+      end
+    end
+
+    context "when the user messed with the database to 'extend' their validity" do
+      let!(:expired_token) { create_enterprise_token("an_active_token", expires_at: 1.day.ago) }
+
+      before do
+        expired_token.update(valid_until: 1.year.from_now)
+      end
 
       it "returns an empty array" do
         expect(described_class.active_tokens).to be_empty
