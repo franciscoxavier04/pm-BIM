@@ -83,7 +83,11 @@ module ProjectPhases
       phase = project.phases.find_by(definition_id: first_definition.id)
       preceding_phase = preceding_active_phase(phase)
 
-      preceding_phase || (phase.date_range_set? && phase)
+      if preceding_phase
+        preceding_phase
+      elsif phase.date_range_set?
+        phase
+      end
     end
 
     def preceding_active_phase(phase)

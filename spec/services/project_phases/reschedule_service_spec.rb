@@ -148,7 +148,8 @@ RSpec.describe ProjectPhases::RescheduleService, type: :model do
           create(:project_phase, project:, start_date: date, finish_date: nil, duration: 5),
           create(:project_phase, project:, start_date: date + 1, finish_date: nil, duration: 5),
           create(:project_phase, project:, start_date: nil, finish_date: nil, duration: 5),
-          create(:project_phase, project:, start_date: date, finish_date: date, duration: 10)
+          create(:project_phase, project:, start_date: date, finish_date: date, duration: 13),
+          create(:project_phase, project:, start_date: date, finish_date: nil, duration: 2)
         ]
       end
 
@@ -159,7 +160,8 @@ RSpec.describe ProjectPhases::RescheduleService, type: :model do
         expect(phases[1]).to have_attributes(start_date: from, finish_date: nil, duration: 5)
         expect(phases[2]).to have_attributes(start_date: from, finish_date: nil, duration: 5)
         expect(phases[3]).to have_attributes(start_date: nil, finish_date: nil, duration: 5)
-        expect(phases[4]).to have_attributes(start_date: from, finish_date: from + 13, duration: 10)
+        expect(phases[4]).to have_attributes(start_date: from, finish_date: from + 16, duration: 13)
+        expect(phases[5]).to have_attributes(start_date: from + 19, finish_date: nil, duration: 2)
       end
     end
 

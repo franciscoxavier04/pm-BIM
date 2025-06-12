@@ -93,9 +93,7 @@ class Project::Phase < ApplicationRecord
   end
 
   def previous_phases
-    return @previous_phases if defined?(@previous_phases)
-
-    @previous_phases = project.available_phases.select { it.position < position }
+    @previous_phases ||= project.available_phases.select { it.position < position }
   end
 
   def previous_phase
@@ -107,8 +105,6 @@ class Project::Phase < ApplicationRecord
   end
 
   def following_phases
-    return @following_phases if defined?(@following_phases)
-
-    @following_phases = project.available_phases.select { it.position > position }
+    @following_phases ||= project.available_phases.select { it.position > position }
   end
 end
