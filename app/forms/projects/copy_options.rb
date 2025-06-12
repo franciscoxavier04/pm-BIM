@@ -34,7 +34,10 @@ module Projects
     include ActiveModel::Attributes
 
     def self.all_dependencies
-      CopyService.copyable_dependencies.to_h { [it[:identifier], it[:name_source].call] }
+      CopyService.copyable_dependencies
+        .map { [it[:identifier], it[:name_source].call] }
+        .sort_by { it[1] }
+        .to_h
     end
 
     attribute :dependencies, array: true, default: all_dependencies.keys

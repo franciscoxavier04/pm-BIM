@@ -42,21 +42,21 @@ RSpec.describe Projects::CopyOptionsForm, type: :forms do
   end
 
   describe "dependencies" do
-    include_examples "rendering dependency checkbox", "Project members"
-    include_examples "rendering dependency checkbox", "Versions"
-    include_examples "rendering dependency checkbox", "Work packages: categories"
-    include_examples "rendering dependency checkbox", "Work packages"
-    include_examples "rendering dependency checkbox", "Work packages: attachments"
-    include_examples "rendering dependency checkbox", "Work packages: shares"
-    include_examples "rendering dependency checkbox", "Wiki pages"
-    include_examples "rendering dependency checkbox", "Wiki pages: attachments"
-    include_examples "rendering dependency checkbox", "Forums"
-    include_examples "rendering dependency checkbox", "Work packages: saved views"
     include_examples "rendering dependency checkbox", "Boards"
-    include_examples "rendering dependency checkbox", "Project overview"
-    include_examples "rendering dependency checkbox", "File storages"
     include_examples "rendering dependency checkbox", "File storages: Project folders"
+    include_examples "rendering dependency checkbox", "File storages"
+    include_examples "rendering dependency checkbox", "Forums"
+    include_examples "rendering dependency checkbox", "Project members"
+    include_examples "rendering dependency checkbox", "Project overview"
+    include_examples "rendering dependency checkbox", "Versions"
+    include_examples "rendering dependency checkbox", "Wiki pages: attachments"
+    include_examples "rendering dependency checkbox", "Wiki pages"
+    include_examples "rendering dependency checkbox", "Work packages: attachments"
+    include_examples "rendering dependency checkbox", "Work packages: categories"
     include_examples "rendering dependency checkbox", "Work packages: file links"
+    include_examples "rendering dependency checkbox", "Work packages: saved views"
+    include_examples "rendering dependency checkbox", "Work packages: shares"
+    include_examples "rendering dependency checkbox", "Work packages"
   end
 
   describe "notifications" do
