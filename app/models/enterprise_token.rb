@@ -151,7 +151,9 @@ class EnterpriseToken < ApplicationRecord
            :plan,
            :features,
            :version,
+           :started?,
            :trial?,
+           :active?,
            to: :token_object
 
   def token_object
