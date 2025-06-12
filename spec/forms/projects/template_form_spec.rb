@@ -27,40 +27,38 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-module Projects
-  module Settings
-    class RelationsForm < ApplicationForm
-      delegate :parent, to: :model
+#
+require "spec_helper"
 
-      form do |f|
-        f.project_autocompleter(
-          name: :parent_id,
-          label: attribute_name(:parent_id),
-          autocomplete_options: {
-            model: project_autocompleter_model,
-            focusDirectly: false,
-            dropdownPosition: "bottom",
-            url: project_autocompleter_url,
-            filters: [],
-            data: { qa_field_name: "parent" }
-          }
-        )
-      end
+RSpec.describe Projects::TemplateForm, type: :forms do
+  include ViewComponent::TestHelpers
 
-      private
-
-      def project_autocompleter_model
-        return nil unless parent
-        return { id: parent.id, name: I18n.t(:"api_v3.undisclosed.parent") } unless parent.visible? || User.current.admin?
-
-        { id: parent.id, name: parent.name }
-      end
-
-      def project_autocompleter_url
-        url_str = ::API::V3::Utilities::PathHelper::ApiV3Path.projects_available_parents
-        url_str << "?of=#{model.id}" unless model.new_record?
-        url_str
+  def render_form
+    render_in_view_context(
+      model,
+      template,
+      copy_options,
+      described_class
+    ) do |model, template, copy_options, described_class|
+      primer_form_with(url: "/foo", model:) do |f|
+        render(described_class.new(f, template:, copy_options:))
       end
     end
+  end
+
+  before do
+    render_form
+  end
+
+  let(:model) { build_stubbed(:project) }
+  let(:template) { build_stubbed(:template_project) }
+  let(:copy_options) { Projects::CopyOptions.new }
+
+  it "renders hidden field" do
+    expect(page).to have_field "template_id", type: :hidden, with: template.id
+  end
+
+  it "renders Copy options" do
+    expect(page).to have_selector :fieldset, "Copy options"
   end
 end

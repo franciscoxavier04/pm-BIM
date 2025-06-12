@@ -27,40 +27,25 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-module Projects
-  module Settings
-    class RelationsForm < ApplicationForm
-      delegate :parent, to: :model
+#
+require "spec_helper"
 
-      form do |f|
-        f.project_autocompleter(
-          name: :parent_id,
-          label: attribute_name(:parent_id),
-          autocomplete_options: {
-            model: project_autocompleter_model,
-            focusDirectly: false,
-            dropdownPosition: "bottom",
-            url: project_autocompleter_url,
-            filters: [],
-            data: { qa_field_name: "parent" }
-          }
-        )
-      end
+RSpec.describe Projects::CopyOptions, type: :model do
+  describe "#dependencies" do
+    let(:all_dependencies) { Projects::CopyService.copyable_dependencies.pluck(:identifier) }
 
-      private
+    it "has a default value" do
+      expect(subject.dependencies).to match_array(all_dependencies)
+    end
 
-      def project_autocompleter_model
-        return nil unless parent
-        return { id: parent.id, name: I18n.t(:"api_v3.undisclosed.parent") } unless parent.visible? || User.current.admin?
+    it "validates dependencies" do
+      expect(subject).to validate_inclusion_of(:dependencies).in_array(all_dependencies)
+    end
+  end
 
-        { id: parent.id, name: parent.name }
-      end
-
-      def project_autocompleter_url
-        url_str = ::API::V3::Utilities::PathHelper::ApiV3Path.projects_available_parents
-        url_str << "?of=#{model.id}" unless model.new_record?
-        url_str
-      end
+  describe "#send_notifications" do
+    it "has a default value" do
+      expect(subject.send_notifications).to be false
     end
   end
 end

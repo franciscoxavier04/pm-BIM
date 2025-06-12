@@ -27,40 +27,44 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+
 module Projects
-  module Settings
-    class RelationsForm < ApplicationForm
-      delegate :parent, to: :model
+  class SubmitOrCancel < ApplicationForm
+    attr_reader :submit_options, :cancel_options
 
-      form do |f|
-        f.project_autocompleter(
-          name: :parent_id,
-          label: attribute_name(:parent_id),
-          autocomplete_options: {
-            model: project_autocompleter_model,
-            focusDirectly: false,
-            dropdownPosition: "bottom",
-            url: project_autocompleter_url,
-            filters: [],
-            data: { qa_field_name: "parent" }
-          }
-        )
+    form do |buttons|
+      buttons.group(layout: :horizontal) do |button_group|
+        button_group.submit(**submit_options)
+        button_group.button(**cancel_options)
       end
+    end
 
-      private
+    def initialize(submit_options: {}, cancel_options: {})
+      super()
 
-      def project_autocompleter_model
-        return nil unless parent
-        return { id: parent.id, name: I18n.t(:"api_v3.undisclosed.parent") } unless parent.visible? || User.current.admin?
+      @submit_options = submit_options.with_defaults(default_submit_options)
+      @cancel_options = cancel_options.with_defaults(default_cancel_options)
+    end
 
-        { id: parent.id, name: parent.name }
-      end
+    private
 
-      def project_autocompleter_url
-        url_str = ::API::V3::Utilities::PathHelper::ApiV3Path.projects_available_parents
-        url_str << "?of=#{model.id}" unless model.new_record?
-        url_str
-      end
+    def default_submit_options
+      {
+        name: :submit,
+        scheme: :primary,
+        label: I18n.t("button_create"),
+        disabled: false
+      }
+    end
+
+    def default_cancel_options
+      {
+        name: :cancel,
+        scheme: :default,
+        tag: :a,
+        href: OpenProject::StaticRouting::StaticRouter.new.url_helpers.projects_path,
+        label: I18n.t("button_cancel")
+      }
     end
   end
 end

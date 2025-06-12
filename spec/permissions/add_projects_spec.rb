@@ -27,40 +27,15 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-module Projects
-  module Settings
-    class RelationsForm < ApplicationForm
-      delegate :parent, to: :model
 
-      form do |f|
-        f.project_autocompleter(
-          name: :parent_id,
-          label: attribute_name(:parent_id),
-          autocomplete_options: {
-            model: project_autocompleter_model,
-            focusDirectly: false,
-            dropdownPosition: "bottom",
-            url: project_autocompleter_url,
-            filters: [],
-            data: { qa_field_name: "parent" }
-          }
-        )
-      end
+require "spec_helper"
+require "support/permission_specs"
 
-      private
+# rubocop:disable RSpec/EmptyExampleGroup,RSpec/SpecFilePathFormat
+RSpec.describe ProjectsController, "add_project permission", type: :controller do
+  include PermissionSpecs
 
-      def project_autocompleter_model
-        return nil unless parent
-        return { id: parent.id, name: I18n.t(:"api_v3.undisclosed.parent") } unless parent.visible? || User.current.admin?
-
-        { id: parent.id, name: parent.name }
-      end
-
-      def project_autocompleter_url
-        url_str = ::API::V3::Utilities::PathHelper::ApiV3Path.projects_available_parents
-        url_str << "?of=#{model.id}" unless model.new_record?
-        url_str
-      end
-    end
-  end
+  check_permission_required_for("projects#new", :add_project)
+  check_permission_required_for("projects#create", :add_project)
 end
+# rubocop:enable RSpec/EmptyExampleGroup,RSpec/SpecFilePathFormat
