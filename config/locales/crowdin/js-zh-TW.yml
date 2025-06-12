@@ -1272,7 +1272,7 @@ zh-TW:
       no_results: "您還沒有設定收藏的專案"
       no_results_subtext: "由專案總覽或專案列表可以收藏一個或多個專案"
     include_projects:
-      toggle_title: "包含的專案"
+      toggle_title: "特定專案"
       title: "專案"
       clear_selection: "清除"
       apply: "套用"

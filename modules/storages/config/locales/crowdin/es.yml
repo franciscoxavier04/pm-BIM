@@ -237,7 +237,7 @@ es:
         download_report: Descargar
         rerun_checks: Volver a realizar todas las comprobaciones
         run_checks: Realizar comprobaciones ahora
-      checked: Última comprobación %{datetime}
+      checked: 'Last check: %{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: Creación automática de carpetas
@@ -247,7 +247,7 @@ es:
           group_folder_app: 'Dependencia: Carpetas de grupo'
           group_folder_contents: La carpeta de grupo tiene el contenido esperado
           group_folder_presence: La carpeta del grupo existe
-          header: Configuración de carpetas de proyectos gestionadas automáticamente
+          header: Automatically managed project folders
           userless_access: Autenticación de solicitudes del lado del servidor
         authentication:
           existing_token: Token de usuario
@@ -266,7 +266,7 @@ es:
           diagnostic_request: Solicitud de diagnóstico
           drive_id_exists: La unidad existe
           drive_id_format: Formato de ID de unidad
-          header: Configuración básica
+          header: Configuration
           host_url_accessible: URL de host accesible
           storage_configured: Configuración completada
           tenant_id: ID de inquilino

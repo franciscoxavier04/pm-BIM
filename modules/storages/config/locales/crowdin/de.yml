@@ -237,7 +237,7 @@ de:
         download_report: Download
         rerun_checks: Alle Überprüfungen erneut ausführen
         run_checks: Überprüfungen jetzt ausführen
-      checked: Zuletzt geprüft %{datetime}
+      checked: 'Last check: %{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: Automatische Ordnererstellung
@@ -247,7 +247,7 @@ de:
           group_folder_app: 'Abhängigkeit: Gruppenordner'
           group_folder_contents: Gruppenordner hat erwarteten Inhalt
           group_folder_presence: Gruppenordner existiert
-          header: Automatisch verwaltete Projektordner-Konfiguration
+          header: Automatically managed project folders
           userless_access: Serverseitige Anfrageauthentifizierung
         authentication:
           existing_token: Benutzer Token
@@ -266,7 +266,7 @@ de:
           diagnostic_request: Diagnoseanfrage
           drive_id_exists: Laufwerk existiert
           drive_id_format: Laufwerks-ID-Format
-          header: Basiskonfiguration
+          header: Configuration
           host_url_accessible: Host-URL erreichbar
           storage_configured: Konfiguration abgeschlossen
           tenant_id: Tenant ID

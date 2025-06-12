@@ -79,7 +79,14 @@ it:
         main-menu-bg-color: "Colore di sfondo del menu a sinistra."
       theme_warning: Cambiando il tema si sovrascriverà lo stile personalizzato. Il design andrà poi perso. Sei sicuro di voler continuare?
     enterprise:
-      upgrade_to_ee: "Aggiorna a Enterprise edition"
+      delete_dialog:
+        title: "Delete enterprise token"
+        heading: "Delete this enterprise token?"
+        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+      create_dialog:
+        title: "Add Enterprise token"
+        type_token_text: "Type support token text"
+        token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Carica un token di assistenza per Enterprise edition"
       delete_token_modal:
         text: "Vuoi davvero rimuovere il token Enterprise edition attualmente utilizzato?"
@@ -906,6 +913,7 @@ it:
         domain: "Dominio"
         starts_at: "Valido dal"
         subscriber: "Iscritto"
+        plan: "Plan"
         encoded_token: "Token di assistenza Enterprise"
         active_user_count_restriction: "Numero massimo di utenti attivi"
       grids/grid:
@@ -1512,6 +1520,9 @@ it:
       custom_action: "Azione personalizzata"
       custom_field: "Campo personalizzato"
       "doorkeeper/application": "Applicazione OAuth"
+      enterprise_token:
+        one: "Enterprise token"
+        other: "Enterprise tokens"
       forum: "Forum"
       global_role: "Ruolo globale"
       group: "Gruppo"
@@ -2015,12 +2026,12 @@ it:
       readonly_work_packages: Macro-attività di sola lettura
       sso_auth_providers: Single sign-on
       team_planner_view: Vista del Pianificatore di team
-      two_factor_authentication: Autenticazione 2FA
       virus_scanning: Scansione antivirus
       work_package_query_relation_columns: Colonne di relazione delle query della macro-attività
       work_package_sharing: Condividi macro-attività con utenti esterni
       work_package_subject_generation: Generazione oggetto di macro-attività
     upsell:
+      buy_now_button: "Buy now"
       plans_title: "Piani Enterprise"
       title: "Componente aggiuntivo Enterprise"
       plan_title: "Addon del %{plan} Enterprise"
@@ -2585,6 +2596,7 @@ it:
   label_dashboard: "Dashboard"
   label_database_version: "Versione di PostgreSQL"
   label_date: "Data"
+  label_dates: "Dates"
   label_date_and_time: "Data e ora"
   label_date_format: "Formato data"
   label_date_from: "Da"

@@ -79,7 +79,14 @@ nl:
         main-menu-bg-color: "De kleur van de achtergrond van de linkerzijde menu's."
       theme_warning: Als u het thema wijzigt, wordt uw aangepaste stijl overschreven. Het ontwerp gaat dan verloren. Weet je zeker dat je door wilt gaan?
     enterprise:
-      upgrade_to_ee: "Upgrade to the Enterprise edition"
+      delete_dialog:
+        title: "Delete enterprise token"
+        heading: "Delete this enterprise token?"
+        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+      create_dialog:
+        title: "Add Enterprise token"
+        type_token_text: "Type support token text"
+        token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Upload an Enterprise edition support token"
       delete_token_modal:
         text: "Are you sure you want to remove the current Enterprise edition token used?"
@@ -905,6 +912,7 @@ nl:
         domain: "Domein"
         starts_at: "Geldig sinds"
         subscriber: "Abonnee"
+        plan: "Plan"
         encoded_token: "Enterprise ondersteuningstoken"
         active_user_count_restriction: "Maximum aantal actieve gebruikers"
       grids/grid:
@@ -1511,6 +1519,9 @@ nl:
       custom_action: "Aangepaste actie"
       custom_field: "Aangepast veld"
       "doorkeeper/application": "OAuth-authenticatie"
+      enterprise_token:
+        one: "Enterprise token"
+        other: "Enterprise tokens"
       forum: "Forum"
       global_role: "Algemene rol"
       group: "Groep"
@@ -2014,12 +2025,12 @@ nl:
       readonly_work_packages: Readonly Work Packages
       sso_auth_providers: Single sign-on
       team_planner_view: Team Planner View
-      two_factor_authentication: 2FA Authentication
       virus_scanning: Antivirus Scanning
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      buy_now_button: "Buy now"
       plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
@@ -2584,6 +2595,7 @@ nl:
   label_dashboard: "Dashboard"
   label_database_version: "PostgreSQL versie"
   label_date: "Datum"
+  label_dates: "Dates"
   label_date_and_time: "Datum en tijd"
   label_date_format: "Datumnotatie"
   label_date_from: "Van"

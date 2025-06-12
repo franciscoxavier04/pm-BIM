@@ -79,7 +79,14 @@ uk:
         main-menu-bg-color: "Колір фону меню зліва."
       theme_warning: Змінення теми перезапише ваш власний стиль. У такому разі дизайн буде втрачено. Справді продовжити?
     enterprise:
-      upgrade_to_ee: "Перейти на версію Enterprise"
+      delete_dialog:
+        title: "Delete enterprise token"
+        heading: "Delete this enterprise token?"
+        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+      create_dialog:
+        title: "Add Enterprise token"
+        type_token_text: "Type support token text"
+        token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Додати маркер підтримки версії Enterprise"
       delete_token_modal:
         text: "Справді вилучити поточний маркер версії Enterprise?"
@@ -919,6 +926,7 @@ uk:
         domain: "Домен"
         starts_at: "Дійсний з"
         subscriber: "Абонент"
+        plan: "Plan"
         encoded_token: "Маркер підтримки підприємства"
         active_user_count_restriction: "Максимальна кількість активних користувачів"
       grids/grid:
@@ -1529,6 +1537,11 @@ uk:
       custom_action: "Спеціальні дії"
       custom_field: "Користувацьке поле"
       "doorkeeper/application": "Програма OAuth"
+      enterprise_token:
+        one: "Enterprise token"
+        few: "Enterprise tokens"
+        many: "Enterprise tokens"
+        other: "Enterprise tokens"
       forum: "Форум"
       global_role: "Глобальна роль"
       group: "Група"
@@ -2090,12 +2103,12 @@ uk:
       readonly_work_packages: Пакети робіт лише для читання
       sso_auth_providers: Єдиний вхід
       team_planner_view: Подання командного планувальника
-      two_factor_authentication: Двофакторна автентифікація
       virus_scanning: Пошук вірусів
       work_package_query_relation_columns: Стовпці зв’язків запиту пакета робіт
       work_package_sharing: Діліться пакетами робіт із зовнішніми користувачами
       work_package_subject_generation: Створення теми пакета робіт
     upsell:
+      buy_now_button: "Buy now"
       plans_title: "Плани Enterprise"
       title: "Доповнення версії Enterprise"
       plan_title: "Доповнення версії Enterprise %{plan}"
@@ -2660,6 +2673,7 @@ uk:
   label_dashboard: "Панель керування"
   label_database_version: "Версія PostgreSQL"
   label_date: "Дата"
+  label_dates: "Dates"
   label_date_and_time: "Дата і час"
   label_date_format: "Формат дати:"
   label_date_from: "Від"
