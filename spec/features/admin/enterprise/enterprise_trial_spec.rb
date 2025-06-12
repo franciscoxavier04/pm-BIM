@@ -31,7 +31,8 @@
 require "spec_helper"
 
 RSpec.describe "Enterprise trial management",
-               driver: :chrome_billy do
+               :js,
+               :webmock do
   let(:admin) { create(:admin) }
 
   let(:trial_id) { "1b6486b4-5a30-4042-8714-99d7c8e6b637" }
@@ -173,64 +174,75 @@ RSpec.describe "Enterprise trial management",
     fill_in "Last name", with: "Bar"
     fill_in "Email", with: mail
 
-    find_by_id("trial-general-consent").check
+    find_by_id("enterprise_trial_general_consent").check
+  end
+
+  it "does not send a request when an internal validation fails" do
+    fill_in "Company", with: "Foo Corp."
+    click_link_or_button("Continue")
+
+
+    page.within("#enterprise-trial-dialog") do
+      expect(page).to have_text("First name can't be blank.")
+      expect(page).to have_text("Last name can't be blank.")
+      expect(page).to have_text("Email can't be blank.")
+    end
   end
 
   it "blocks the request assuming the mail was used" do
-    proxy.stub("https://start.openproject-edge.com:443/public/v1/trials", method: "post")
-      .and_return(headers: { "Access-Control-Allow-Origin" => "*" }, code: 422, body: mail_in_use_body.to_json)
+    stub_request(:post, "https://start.openproject-edge.com:443/public/v1/trials")
+      .to_return(status: 422, headers: { "Content-Type" => "application/json" }, body: mail_in_use_body.to_json)
 
-    find(".button", text: "Start free trial").click
+    click_link_or_button("Start free trial")
     fill_out_modal
-    find(".button:not(:disabled)", text: "Submit").click
+    click_link_or_button("Continue")
 
-    expect(page).to have_css(".-required-highlighting #trial-email")
-    expect(page).to have_text("Each user can only create one trial.")
-    expect(page).to have_no_text "email sent - waiting for confirmation"
+    page.within("#enterprise-trial-dialog") do
+      expect(page).to have_text("Email was already used to create a trial.")
+    end
   end
 
   it "blocks the request assuming the domain was used" do
-    proxy.stub("https://start.openproject-edge.com:443/public/v1/trials", method: "post")
-      .and_return(headers: { "Access-Control-Allow-Origin" => "*" }, code: 422, body: domain_in_use_body.to_json)
+    stub_request(:post, "https://start.openproject-edge.com:443/public/v1/trials")
+      .to_return(status: 422, headers: { "Content-Type" => "application/json" }, body: domain_in_use_body.to_json)
 
-    find(".button", text: "Start free trial").click
+    click_link_or_button("Start free trial")
     fill_out_modal
-    find(".button:not(:disabled)", text: "Submit").click
+    click_link_or_button("Continue")
 
-    expect(page).to have_css(".-required-highlighting #trial-domain-name")
-    expect(page).to have_text("There can only be one active trial per domain.")
-    expect(page).to have_no_text "email sent - waiting for confirmation"
+    page.within("#enterprise-trial-dialog") do
+      expect(page).to have_text("Domain was already used to create a trial.")
+    end
   end
 
   it "shows an error in case of other errors" do
-    proxy.stub("https://start.openproject-edge.com:443/public/v1/trials", method: "post")
-      .and_return(headers: { "Access-Control-Allow-Origin" => "*" }, code: 409, body: other_error_body.to_json)
+    stub_request(:post, "https://start.openproject-edge.com:443/public/v1/trials")
+      .to_return(status: 409, headers: { "Content-Type" => "application/json" }, body: other_error_body.to_json)
 
-    find(".button", text: "Start free trial").click
+    click_link("Start free trial")
     fill_out_modal
-    find(".button:not(:disabled)", text: "Submit").click
+    click_link_or_button("Continue")
 
-    expect(page).to have_text("Token version is invalid")
-    expect(page).to have_no_text "email sent - waiting for confirmation"
+    page.within("#enterprise-trial-dialog") do
+      expect(page).to have_text("Token version is invalid")
+    end
   end
 
   context "with a waiting request pending" do
     before do
-      proxy.stub("https://start.openproject-edge.com:443/public/v1/trials", method: "post")
-        .and_return(headers: { "Access-Control-Allow-Origin" => "*" }, code: 200, body: created_body.to_json)
+      stub_request(:post, "https://start.openproject-edge.com:443/public/v1/trials")
+        .to_return(status: 200, headers: { "Content-Type" => "application/json" }, body: created_body.to_json)
 
-      proxy.stub("https://start.openproject-edge.com:443/public/v1/trials/#{trial_id}")
-        .and_return(headers: { "Access-Control-Allow-Origin" => "*" }, code: 422, body: waiting_body.to_json)
+      stub_request(:get, "https://start.openproject-edge.com:443/public/v1/trials/#{trial_id}")
+        .to_return(status: 422, headers: { "Content-Type" => "application/json" }, body: waiting_body.to_json)
 
-      proxy.stub("https://start.openproject-edge.com:443/public/v1/trials/#{trial_id}/resend", method: "post")
-        .and_return(headers: { "Access-Control-Allow-Origin" => "*" }, code: 200, body: waiting_body.to_json)
+      stub_request(:post, "https://start.openproject-edge.com:443/public/v1/trials/#{trial_id}/resend")
+        .to_return(status: 200, headers: { "Content-Type" => "application/json" }, body: waiting_body.to_json)
 
-      find(".button", text: "Start free trial").click
+      click_link("Start free trial")
       fill_out_modal
-      find(".button:not(:disabled)", text: "Submit").click
-
-      expect(page).to have_text "foo@foocorp.example"
-      expect(page).to have_text "email sent - waiting for confirmation"
+      click_link_or_button("Continue")
+      wait_for_network_idle
     end
 
     it "can get the trial if reloading the page" do
@@ -240,12 +252,12 @@ RSpec.describe "Enterprise trial management",
       # Stub with successful body
       # Stub the proxy to a successful return
       # which marks the user has confirmed the mail link
-      proxy.stub("https://start.openproject-edge.com:443/public/v1/trials/#{trial_id}")
-        .and_return(headers: { "Access-Control-Allow-Origin" => "*" }, code: 200, body: confirmed_body.to_json)
+      stub_request(:get, "https://start.openproject-edge.com:443/public/v1/trials/#{trial_id}")
+        .to_return(status: 200, headers: { "Content-Type" => "application/json" }, body: confirmed_body.to_json)
 
       # Stub the details URL to still return 403
-      proxy.stub("https://start.openproject-edge.com:443/public/v1/trials/#{trial_id}/details")
-        .and_return(headers: { "Access-Control-Allow-Origin" => "*" }, code: 403)
+      stub_request(:get, "https://start.openproject-edge.com:443/public/v1/trials/#{trial_id}/details")
+        .to_return(status: 403)
 
       visit enterprise_tokens_path
 
@@ -266,8 +278,8 @@ RSpec.describe "Enterprise trial management",
 
       # Stub the proxy to a successful return
       # which marks the user has confirmed the mail link
-      proxy.stub("https://start.openproject-edge.com:443/public/v1/trials/#{trial_id}")
-        .and_return(headers: { "Access-Control-Allow-Origin" => "*" }, code: 200, body: confirmed_body.to_json)
+      stub_request(:get, "https://start.openproject-edge.com:443/public/v1/trials/#{trial_id}")
+        .to_return(status: 200, headers: { "Content-Type" => "application/json" }, body: confirmed_body.to_json)
 
       # Wait until the next request
       expect(page).to have_test_selector "op-ee-trial-waiting-status--confirmed", text: "confirmed", wait: 20
