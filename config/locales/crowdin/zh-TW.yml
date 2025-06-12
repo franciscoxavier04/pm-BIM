@@ -709,16 +709,16 @@ zh-TW:
       move_failed: "此工作項目無法被移動"
       could_not_be_saved: "以下文檔無法被保存"
       none_could_be_saved: " %{total} 個工作項目無法更新"
-      x_out_of_y_could_be_saved: "在 %{total} 個工作包中，%{failing} 個無法更新，%{success} 個可以更新。"
+      x_out_of_y_could_be_saved: "在 %{total} 個工作套件中，有 %{failing} 個無法更新，而 %{success} 個更新成功。"
       selected_because_descendants: "雖然選擇了 %{selected} 工作項目，但共有 %{total} 個工作項目受到影響，包括子工作項目。"
       descendant: "所選項的子工作"
     move:
       no_common_statuses_exists: "被選取的工作項目沒有可用的狀態。他們的狀態不可以變更。"
       unsupported_for_multiple_projects: "工作項目不支援從多個專案的大區塊的移動/複製"
       current_type_not_available_in_target_project: >
-        當前工作包類型未在目標項目中啓用。 如果您想保持不變，請啓用目標項目中的類型。 否則，將從列表中選擇目標項目中的可用類型。
+        目前工作套件的類型在目標專案中未啟用。若希望保持不變，請先在目標專案啟用該類型；否則，請從列表中選擇目標專案中已啟用的類型。
       bulk_current_type_not_available_in_target_project: >
-        當前類型之工作項目尚未啓用於目標專案。如果您希望工作項目類型保持不變，請在目標專案中啓用這些類型。否則，請從列表中選擇目標專案中的可用類型。
+        當前類型之工作套件尚未啓用於目標專案。如果您希望工作套件類型保持不變，請在目標專案中啓用這些類型。否則，請從列表中選擇目標專案中的可用類型。
     sharing:
       missing_workflow_warning:
         title: "共用工作項目缺少工作流"
@@ -1025,7 +1025,7 @@ zh-TW:
         permissions: "權限"
       status:
         is_closed: "關閉工作項目"
-        is_readonly: "設定「工作項目」唯讀"
+        is_readonly: "設定「工作套件」唯讀"
         excluded_from_totals: "從層次結構的總計中排除"
         default_done_ratio: "% 完成"
       token/ical:
@@ -1271,7 +1271,7 @@ zh-TW:
               id_filter_required: "'id' 篩選條件是必要的"
         project:
           archived_ancestor: "該專案已有一個存檔。"
-          foreign_wps_reference_version: "非子級項目中的工作包會引用此項目或其子級的版本。"
+          foreign_wps_reference_version: "非子孫專案中的工作套件參考該專案或其子孫專案的版本。"
           attributes:
             base:
               archive_permission_missing_on_subprojects: "您沒有權限將所有子專案封存。請洽系統管理員。"
@@ -1420,7 +1420,7 @@ zh-TW:
             schedule_manually:
               cannot_be_automatically_scheduled: "無法設定為 false（自動排程），因為它沒有前置或後續項目。"
             start_date:
-              violates_relationships: "只能設置為 %{soonest_start} 或更晚，才不會違反工作包的關聯。"
+              violates_relationships: "只能設置為 %{soonest_start} 或更晚，才不會違反工作套件的關聯。"
               cannot_be_null: "無法設置為 null，因為結束日期和持續時間已知。"
             status_id:
               status_transition_invalid: "無效，因為目前使用者的角色沒有從舊狀態到新狀態的有效過度狀態"
