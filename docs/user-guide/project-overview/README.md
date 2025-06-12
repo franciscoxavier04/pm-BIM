@@ -32,6 +32,10 @@ Open the project overview by navigating to **Overview** in the project menu on t
 
 ![project_overview](openproject_user_guide_project_overview.png)
 
+## Project life cycle 
+
+add 
+
 ## Project attributes
 
 **Project attributes** are a set of project-level custom fields that let you display certain types of information relevant to your project.
