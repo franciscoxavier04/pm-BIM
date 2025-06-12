@@ -237,7 +237,7 @@ ms:
         download_report: Muat turun
         rerun_checks: Re-run all checks
         run_checks: Run checks now
-      checked: Terakhir disemak %{datetime}
+      checked: 'Last check: %{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: Automatic folder creation
@@ -247,7 +247,7 @@ ms:
           group_folder_app: 'Dependency: Group Folders'
           group_folder_contents: Group folder has expected content
           group_folder_presence: Group folder exists
-          header: Automatically managed project folder configuration
+          header: Automatically managed project folders
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
@@ -266,7 +266,7 @@ ms:
           diagnostic_request: Diagnostic request
           drive_id_exists: Drive exists
           drive_id_format: Drive ID format
-          header: Basic configuration
+          header: Configuration
           host_url_accessible: Host URL accessible
           storage_configured: Configuration complete
           tenant_id: Tenant ID

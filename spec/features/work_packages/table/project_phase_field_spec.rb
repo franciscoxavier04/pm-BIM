@@ -1,5 +1,33 @@
 # frozen_string_literal: true
 
+#-- copyright
+# OpenProject is an open source project management software.
+# Copyright (C) the OpenProject GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License version 3.
+#
+# OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+# Copyright (C) 2006-2013 Jean-Philippe Lang
+# Copyright (C) 2010-2013 the ChiliProject Team
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# See COPYRIGHT and LICENSE files for more details.
+#++
+
 require "spec_helper"
 
 RSpec.describe "Project phase field in the work package table", :js do
@@ -341,7 +369,7 @@ RSpec.describe "Project phase field in the work package table", :js do
       end
     end
 
-    context "without the necessary permissions to view_phases" do
+    context "without the necessary permissions to view phases in some projects" do
       let!(:query) { build(:global_query, user: current_user) }
       let(:another_project_permissions) do
         all_permissions - [:view_project_phases]
@@ -378,6 +406,10 @@ RSpec.describe "Project phase field in the work package table", :js do
       end
 
       describe "filtering" do
+        it "offers a phase filter" do
+          expect(query.available_filters.map(&:name)).to include(:project_phase_definition_id)
+        end
+
         context "when filtering to include multiple phases" do
           let(:query_filters) do
             [{
@@ -409,6 +441,21 @@ RSpec.describe "Project phase field in the work package table", :js do
             wp_table.ensure_work_package_not_listed!(other_wp, work_package)
           end
         end
+      end
+    end
+  end
+
+  context "without the necessary permissions to view phases in all projects" do
+    let(:project_permissions) { all_permissions - [:view_project_phases] }
+    let(:query_columns) { %w(subject) }
+
+    it "does not offer a phase column" do
+      expect(query.available_columns.map(&:name)).not_to include(:project_phase)
+    end
+
+    describe "filtering" do
+      it "does not offer a phase filter" do
+        expect(query.available_filters.map(&:name)).not_to include(:project_phase_definition_id)
       end
     end
   end
