@@ -118,7 +118,6 @@ class EnterpriseTokensController < ApplicationController
   end
 
   def check_trial_status
-    token_saved_flash
     @trial_key = Token::EnterpriseTrialKey.find_by(user_id: User.system.id)
     return if @trial_key.nil?
 

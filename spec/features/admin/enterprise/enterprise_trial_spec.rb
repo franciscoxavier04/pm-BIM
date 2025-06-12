@@ -258,6 +258,9 @@ RSpec.describe "Enterprise trial management",
 
       visit enterprise_tokens_path
 
+      expect(page).to have_text("Quick feature overview")
+      expect(page).to have_css("#enterprise-trial-welcome-dialog iframe")
+
       expect(page).to have_text("Enterprise Plan (Token Version 1)")
       expect(page).to have_text("OpenProject Test")
       expect(page).to have_text("5")
@@ -272,7 +275,13 @@ RSpec.describe "Enterprise trial management",
       stub_request(:get, "https://start.openproject-edge.com:443/public/v1/trials/#{trial_id}")
         .to_return(status: 202, headers: { "Content-Type" => "application/json" }, body: confirmed_body.to_json)
 
-      click_link_or_button("Resend confirmation email")
+      # Expect flash with resend link
+      page.within("#primerized-flash-messages") do
+        click_link_or_button("Resend confirmation email")
+      end
+
+      expect(page).to have_text("Quick feature overview")
+      expect(page).to have_css("#enterprise-trial-welcome-dialog iframe")
 
       expect(page).to have_text("Enterprise Plan (Token Version 1)")
       expect(page).to have_text("OpenProject Test")
