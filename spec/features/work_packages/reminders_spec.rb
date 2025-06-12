@@ -135,7 +135,7 @@ RSpec.describe "Work package reminder modal",
       expect(Reminder.upcoming_and_visible_to(user_with_permissions).count).to eq(0)
     end
 
-    it "renders an error flash when the reminder modal is opened in edit mode" \
+    it "renders an error flash when the reminder modal is opened in edit mode " \
        "and the notification for it is fired and subsequently clicking save",
        with_settings: { notifications_polling_interval: 1_000 } do
       Reminders::CreateService.new(user: current_user).call(
@@ -336,6 +336,19 @@ RSpec.describe "Work package reminder modal",
           expect(page).to have_field("Time", with: reminder.remind_at.in_time_zone(current_user.time_zone).strftime("%H:%M"))
           expect(page).to have_field("Note", with: reminder.note)
           expect(page).to have_button("Save")
+
+          # Edit form renders validation errors
+          fill_in "Date", with: ""
+          fill_in "Time", with: ""
+
+          click_link_or_button "Save"
+
+          wait_for_network_idle
+          expect(page).to have_css(".FormControl-inlineValidation", text: "Date can't be blank.")
+          expect(page).to have_css(".FormControl-inlineValidation", text: "Time can't be blank.")
+          expect(page).to have_field("Date", with: "")
+          expect(page).to have_field("Time", with: "09:00") # Default time
+          expect(page).to have_field("Note", with: reminder.note)
         end
       end
     end

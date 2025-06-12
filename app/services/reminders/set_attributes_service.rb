@@ -31,23 +31,28 @@
 module Reminders
   class SetAttributesService < ::BaseServices::SetAttributes
     def perform(params = {})
-      remind_at_date = params.delete(:remind_at_date)
-      remind_at_time = params.delete(:remind_at_time)
+      remind_at_params = params.extract!(:remind_at_date, :remind_at_time)
 
-      if remind_at_date.present? && remind_at_time.present?
-        params[:remind_at] = User.current.time_zone.parse("#{remind_at_date} #{remind_at_time}")
-      end
+      build_remind_at_from_params(params, remind_at_params) unless params.key?(:remind_at)
 
       contract_call = super
 
       if contract_call.failure?
-        prepare_errors_from_result({ remind_at_date:, remind_at_time: }, contract_call)
+        prepare_errors_from_result(remind_at_params, contract_call)
       end
 
       contract_call
     end
 
     private
+
+    def build_remind_at_from_params(params, remind_at_params)
+      return params if remind_at_params.empty?
+
+      date = remind_at_params[:remind_at_date]
+      time = remind_at_params[:remind_at_time]
+      params[:remind_at] = date.present? && time.present? ? User.current.time_zone.parse("#{date} #{time}") : nil
+    end
 
     # At the form level, we split the date and time into two form fields.
     # In order to be a bit more informative of which field is causing

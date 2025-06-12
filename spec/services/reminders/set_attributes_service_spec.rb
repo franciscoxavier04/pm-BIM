@@ -64,6 +64,28 @@ RSpec.describe Reminders::SetAttributesService do
       )
     end
 
+    context "when the `remind_at` attribute is specified" do
+      it "does not override the remind_at attribute", :freeze_time do
+        params = {
+          remind_at: current_user.time_zone.parse("2027-10-01 08:00"),
+          remind_at_date: "2023-10-01",
+          remind_at_time: "12:00",
+          note: "Some notes",
+          remindable:,
+          creator: user
+        }
+
+        model_result = service.perform(params).result
+
+        expect(model_result).to have_attributes(
+          remind_at: current_user.time_zone.parse("2027-10-01 08:00"),
+          note: "Some notes",
+          remindable:,
+          creator: user
+        )
+      end
+    end
+
     context "when remind_at_date or remind_at_time is not provided" do
       it "does not set the remind_at attribute" do
         aggregate_failures "one is nil" do
@@ -79,6 +101,20 @@ RSpec.describe Reminders::SetAttributesService do
         aggregate_failures "none provided" do
           service.perform({})
           expect(model_instance.remind_at).to be_nil
+        end
+      end
+    end
+
+    context "when the model instance already has a remind_at set" do
+      let(:model_instance) { build_stubbed(:reminder, remind_at: 1.day.from_now) }
+
+      context "and neither remind_at, remind_at_date nor remind_at_time are provided" do
+        it "does not change the remind_at attribute" do
+          contract_call = service.perform({})
+
+          model_result = contract_call.result
+          expect(model_result.remind_at).to eq(model_instance.remind_at)
+          expect(model_result.remind_at).to be_present
         end
       end
     end
