@@ -1,7 +1,7 @@
 # Schema: ProjectPhaseDefinitionCollectionModel
 ---
 allOf:
-  - $ref: './collection_model.yml'
+  - $ref: './offset_paginated_collection_model.yml'
   - type: object
     required:
       - _links
