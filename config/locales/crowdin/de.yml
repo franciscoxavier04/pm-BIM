@@ -1414,7 +1414,7 @@ de:
               cannot_be_in_another_project: "darf nicht in einem anderen Projekt sein."
               not_a_valid_parent: "ist ungültig."
             schedule_manually:
-              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
+              cannot_be_automatically_scheduled: "kann nicht auf false gesetzt werden (automatisch geplant), da es keine Vorgänger oder Kinder hat."
             start_date:
               violates_relationships: "muss mindestens auf %{soonest_start} gesetzt werden, um Beziehungen zu anderen Arbeitspaketen nicht zu verletzten."
               cannot_be_null: "kann nicht auf Null gesetzt werden, als Enddatum und Dauer bekannt sind."
@@ -4333,7 +4333,7 @@ de:
           Sie können nur eine Erinnerung gleichzeitig für ein Arbeitspaket festlegen. Bitte löschen oder aktualisieren Sie die bestehende Erinnerung.
       not_found:
         work_package: "Das von Ihnen gesuchte Arbeitspaket konnte nicht gefunden werden oder wurde gelöscht."
-        reminder: "Die Erinnerung, die Sie suchen, konnte nicht gefunden werden oder wurde gelöscht."
+        reminder: "Die Erinnerung konnte nicht gefunden werden oder wurde gelöscht."
       expected:
         date: "YYYY-MM-DD (Datum nach ISO 8601)"
         datetime: "JJJJ-MM-TTThh:mm:ss[.lll][+hh:mm] (kompatible ISO 8601-Datum)"

@@ -237,7 +237,7 @@ pt-BR:
         download_report: Baixar
         rerun_checks: Executar todas as verificações novamente
         run_checks: Executar as verificações agora
-      checked: Última verificação em %{datetime}
+      checked: 'Last check: %{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: Criação automática de pasta
@@ -247,7 +247,7 @@ pt-BR:
           group_folder_app: 'Dependência: Pastas de grupo'
           group_folder_contents: A pasta do grupo contém o conteúdo esperado
           group_folder_presence: A pasta do grupo existe
-          header: Configuração de pasta de projeto gerenciada de forma automática
+          header: Automatically managed project folders
           userless_access: Autenticação de solicitações no servidor
         authentication:
           existing_token: Token do usuário
@@ -266,7 +266,7 @@ pt-BR:
           diagnostic_request: Solicitação de diagnóstico
           drive_id_exists: Drive existente
           drive_id_format: Formato do Drive ID
-          header: Configuração básica
+          header: Configuration
           host_url_accessible: URL do host acessível
           storage_configured: Configuração concluída
           tenant_id: ID do locatário

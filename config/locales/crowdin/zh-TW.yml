@@ -100,7 +100,7 @@ zh-TW:
     jemalloc_allocator: Jemalloc 記憶體分配器
     journal_aggregation:
       explanation:
-        text: "例如使用者\"更新\"工作項目兩次，如果時間間隔小於設定值，則將合併視為為單次操作。應用程序中亦會顯示為單個操作。這也會套用在電子郵件通知，以及 %{webhook_link} 。"
+        text: "使用者的個別操作（例如：在短時間內更新同一工作套件兩次）若時間差距小於指定時長，系統會將這些操作合併為單一動作，並於應用程式中以單一動作顯示。\n此機制同時會延遲通知發送相同的時間，以減少電子郵件數量，並且會影響 %{webhook_link} 的延遲時間。"
         link: "webhook"
   authentication:
     login_and_registration: "登入及註冊"
@@ -252,10 +252,10 @@ zh-TW:
     is_enabled_globally: "已全域啟用"
     enabled_in_project: "已在專案中啟用"
     contained_in_type: "已包含在類型中"
-    confirm_destroy_option: "刪除一個項目將會一併刪除所有出現這個項目的地方 (例如：在工作項目中)。你確定要刪除它嗎？"
+    confirm_destroy_option: "刪除此選項將會刪除其所有出現位置（例如：工作套件中的該選項）。您確定要刪除嗎？"
     reorder_alphabetical: "按字母順序重新排列"
     reorder_confirmation: "警告：目前可用值的順序將會遺失。繼續嗎？"
-    placeholder_version_select: "需要先選擇工作項目或專案"
+    placeholder_version_select: "需要先選擇工作套件或專案"
     instructions:
       is_required: "將此欄位定義成必填。\n"
       is_required_for_project: "勾選以啟用此屬性，並使其成為所有專案的必要屬性。個別專案無法停用。"
@@ -317,12 +317,12 @@ zh-TW:
       #Contains custom strings for options when copying a project that cannot be found elsewhere.
       members: "專案成員"
       overviews: "專案總覽"
-      queries: "工作項目：儲存的檢視"
+      queries: "工作套件：儲存的檢視"
       wiki_page_attachments: "Wiki 頁面附件"
-      work_package_attachments: "工作項目：附件"
-      work_package_categories: "工作項目：類別"
-      work_package_file_links: "工作項目：檔案連結"
-      work_package_shares: "工作項目：參與"
+      work_package_attachments: "工作套件：附件"
+      work_package_categories: "工作套件：類別"
+      work_package_file_links: "工作套件：檔案連結"
+      work_package_shares: "工作套件：參與"
     delete:
       scheduled: "已經安排背景執行刪除任務。你將會收到結果通知。"
       schedule_failed: "專案無法刪除: %{errors}"
@@ -380,8 +380,8 @@ zh-TW:
         no_results_title_text: 專案上目前沒有任何論壇。
         no_results_content_text: 建立論壇。
       categories:
-        no_results_title_text: 目前沒有工作項目類別
-        no_results_content_text: 建立一個新工作項目類別
+        no_results_title_text: 目前沒有工作套件類別。
+        no_results_content_text: 建立一個新工作套件類別
       custom_fields:
         no_results_title_text: 目前沒有客製欄位可用。
       life_cycle:
@@ -450,7 +450,7 @@ zh-TW:
       invited: "已邀請"
       locked: "停用"
       project_roles: "專案角色"
-      wp_shares: "參與之工作項目"
+      wp_shares: "參與之工作套件"
       groups: "群組"
     delete_member_dialog:
       title: "移除成員"
@@ -480,13 +480,13 @@ zh-TW:
         other: "%{all_shared_work_packages_link} 已讓該群組參與。"
       shared_with_permission_html:
         other: "只有 %{shared_work_packages_link} 分享 %{shared_role_name} 權限。"
-      revoke_all_or_with_role: "您想撤銷所有參與工作項目的存取權限，還是只撤銷 %{shared_role_name} 的相關權限？"
-      will_not_affect_inherited_shares: "(這不會影響其群組參與工作項目)。"
-      cannot_remove_inherited: "無法刪除通過群組參與的工作項目。"
-      cannot_remove_inherited_with_role: "角色 %{shared_role_name} 參與的工作項目是通過群組分享的，不能刪除。"
+      revoke_all_or_with_role: "您想撤銷所有參與工作套件的存取權限，還是只撤銷 %{shared_role_name} 的相關權限？"
+      will_not_affect_inherited_shares: "(這不會影響其群組參與工作套件)。"
+      cannot_remove_inherited: "無法刪除通過群組參與的工作套件。"
+      cannot_remove_inherited_with_role: "與角色 %{shared_role_name} 共享的工作套件是透過群組分享的，無法移除。"
       cannot_remove_inherited_note_admin_html: "您可以在 %{administration_settings_link} 中撤銷群組參與，或從群組中刪除該特定成員。"
       cannot_remove_inherited_note_non_admin: "您可以撤銷對該群組參與，或者聯繫管理員將該特定成員從群組中刪除。"
-      will_revoke_directly_granted_access: "此操作將取消他們對所有工作項目的訪問權限，但會取消他們對某個群組共用的工作項目存取權限。"
+      will_revoke_directly_granted_access: "此操作將撤銷他們對所有工作套件的存取權限，但不包含與群組共享的工作套件。"
       will_revoke_access_to_all: "此操作將撤銷他們對所有這些系統的存取權限。"
   my:
     access_token:
@@ -556,8 +556,8 @@ zh-TW:
   prioritiies:
     edit:
       priority_color_text: |
-        按一下以分配或更改此優先順序的顏色。
-        它可用於突出顯示表中的工作項目。
+        點擊以指派或變更此優先順序的顏色。
+        可用於在表格中突顯工作套件。
   reactions:
     action_title: "反應"
     add_reaction: "加入反應"
@@ -573,13 +573,12 @@ zh-TW:
   statuses:
     edit:
       status_color_text: |
-        按一下以分配或更改此優先順序的顏色。
-        它可用於突出顯示表中的工作包。
+        點擊以指派或變更此狀態的顏色。
+        此顏色會顯示在狀態按鈕上，並可用於在表格中突顯工作套件。
       status_default_text: |-
         新工作項目預設為此類型。它們不能為唯讀。
       status_excluded_from_totals_text: |-
-        選中此選項可將具有此狀態的工作包排除在層次結構中的 "工時"、"
-        剩餘工時 "和 "完成百分比 "總數之外。
+        勾選此選項以排除具有此狀態的工作套件，讓它們不計入階層中的工作總量、剩餘工作量及完成百分比。
       status_percent_complete_text: |-
         在<a href="%{href}">基於狀態的進度計算模式</a>下，工作項目的完成百分比會自動設定為此值。
         而基於工作的模式則會被忽略。
@@ -612,7 +611,7 @@ zh-TW:
         enabled_projects: "已啟用專案"
       settings:
         tab: "設定"
-        type_color_text: 選取的顏色可區分甘特圖或工作包表格中的不同類型。因此建議使用強烈的顏色。
+        type_color_text: 選取的顏色可區分甘特圖或工作套件表格中的不同類型。因此建議使用強烈的顏色。
       subject_configuration:
         tab: "主題設定"
         manually_editable_subjects:
@@ -642,8 +641,8 @@ zh-TW:
             label_disable_all: "全部停用"
   versions:
     overview:
-      work_packages_in_archived_projects: "該版本與歸檔項目共用，這些專案仍然有分配給此版本的工作項目。雖然這些工作項目被計算在內，但不會顯示在視圖中。"
-      no_results_title_text: 目前沒有分配給此版本的工作項目。
+      work_packages_in_archived_projects: "該版本與歸檔項目共用，這些專案仍然有分配給此版本的工作項目。雖然這些工作套件被計算在內，但不會顯示在視圖中。"
+      no_results_title_text: 目前沒有分配給此版本的工作套件。
   wiki:
     page_not_editable_index: 本頁不存在,重新導至wiki目錄頁。
     no_results_title_text: 目前沒有 wiki 頁面
@@ -692,7 +691,7 @@ zh-TW:
             description: "本工作項目沒有任何前工作項目。"
           successors:
             title: "沒有繼任工作"
-            description: "本工作包沒有任何繼任工作。"
+            description: "本工作套件沒有任何繼任工作。"
           children:
             title: "沒有子項"
             description: "此工作項目沒有任何子項。"
@@ -703,16 +702,16 @@ zh-TW:
       move_failed: "此工作項目無法被移動"
       could_not_be_saved: "以下文檔無法被保存"
       none_could_be_saved: " %{total} 個工作項目無法更新"
-      x_out_of_y_could_be_saved: "在 %{total} 個工作包中，%{failing} 個無法更新，%{success} 個可以更新。"
+      x_out_of_y_could_be_saved: "在 %{total} 個工作套件中，有 %{failing} 個無法更新，而 %{success} 個更新成功。"
       selected_because_descendants: "雖然選擇了 %{selected} 工作項目，但共有 %{total} 個工作項目受到影響，包括子工作項目。"
       descendant: "所選項的子工作"
     move:
       no_common_statuses_exists: "被選取的工作項目沒有可用的狀態。他們的狀態不可以變更。"
       unsupported_for_multiple_projects: "工作項目不支援從多個專案的大區塊的移動/複製"
       current_type_not_available_in_target_project: >
-        當前工作包類型未在目標項目中啓用。 如果您想保持不變，請啓用目標項目中的類型。 否則，將從列表中選擇目標項目中的可用類型。
+        目前工作套件的類型在目標專案中未啟用。若希望保持不變，請先在目標專案啟用該類型；否則，請從列表中選擇目標專案中已啟用的類型。
       bulk_current_type_not_available_in_target_project: >
-        當前類型之工作項目尚未啓用於目標專案。如果您希望工作項目類型保持不變，請在目標專案中啓用這些類型。否則，請從列表中選擇目標專案中的可用類型。
+        當前類型之工作套件尚未啓用於目標專案。如果您希望工作套件類型保持不變，請在目標專案中啓用這些類型。否則，請從列表中選擇目標專案中的可用類型。
     sharing:
       missing_workflow_warning:
         title: "共用工作項目缺少工作流"
@@ -1018,7 +1017,7 @@ zh-TW:
         permissions: "權限"
       status:
         is_closed: "關閉工作項目"
-        is_readonly: "設定「工作項目」唯讀"
+        is_readonly: "設定「工作套件」唯讀"
         excluded_from_totals: "從層次結構的總計中排除"
         default_done_ratio: "% 完成"
       token/ical:
@@ -1264,7 +1263,7 @@ zh-TW:
               id_filter_required: "'id' 篩選條件是必要的"
         project:
           archived_ancestor: "該專案已有一個存檔。"
-          foreign_wps_reference_version: "非子級項目中的工作包會引用此項目或其子級的版本。"
+          foreign_wps_reference_version: "非子孫專案中的工作套件參考該專案或其子孫專案的版本。"
           attributes:
             base:
               archive_permission_missing_on_subprojects: "您沒有權限將所有子專案封存。請洽系統管理員。"
@@ -1413,7 +1412,7 @@ zh-TW:
             schedule_manually:
               cannot_be_automatically_scheduled: "無法設定為 false（自動排程），因為它沒有前置或後續項目。"
             start_date:
-              violates_relationships: "只能設置為 %{soonest_start} 或更晚，才不會違反工作包的關聯。"
+              violates_relationships: "只能設置為 %{soonest_start} 或更晚，才不會違反工作套件的關聯。"
               cannot_be_null: "無法設置為 null，因為結束日期和持續時間已知。"
             status_id:
               status_transition_invalid: "無效，因為目前使用者的角色沒有從舊狀態到新狀態的有效過度狀態"

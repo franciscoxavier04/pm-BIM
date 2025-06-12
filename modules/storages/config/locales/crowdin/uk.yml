@@ -237,7 +237,7 @@ uk:
         download_report: Завантажити
         rerun_checks: Перезапустити всі перевірки
         run_checks: Запустити перевірку зараз
-      checked: 'Востаннє перевірено: %{datetime}'
+      checked: 'Last check: %{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: Автоматичне створення папки
@@ -247,7 +247,7 @@ uk:
           group_folder_app: 'Залежність: папки групи'
           group_folder_contents: Папка групи містить очікуваний контент
           group_folder_presence: Папка групи вже існує
-          header: Конфігурація папки проєкту з автоматичним керуванням
+          header: Automatically managed project folders
           userless_access: Автентифікація запиту на стороні сервера
         authentication:
           existing_token: Маркер користувача
@@ -266,7 +266,7 @@ uk:
           diagnostic_request: Діагностичний запит
           drive_id_exists: Диск існує
           drive_id_format: Формат ID Диска
-          header: Базова конфігурація
+          header: Configuration
           host_url_accessible: URL-адреса хосту доступна
           storage_configured: Налаштування завершено
           tenant_id: ID клієнта

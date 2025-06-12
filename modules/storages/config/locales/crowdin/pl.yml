@@ -237,7 +237,7 @@ pl:
         download_report: Pobierz
         rerun_checks: Uruchom ponownie wszystkie kontrole
         run_checks: Uruchom sprawdzanie teraz
-      checked: Ostatnio sprawdzono %{datetime}
+      checked: 'Last check: %{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: Automatyczne tworzenie folderów
@@ -247,7 +247,7 @@ pl:
           group_folder_app: 'Zależne: foldery grup'
           group_folder_contents: Folder grupy ma oczekiwaną zawartość
           group_folder_presence: Folder grupy istnieje
-          header: Automatycznie zarządzana konfiguracja folderu projektu
+          header: Automatically managed project folders
           userless_access: Uwierzytelnianie żądań po stronie serwera
         authentication:
           existing_token: Token użytkownika
@@ -266,7 +266,7 @@ pl:
           diagnostic_request: Żądanie diagnostyki
           drive_id_exists: Dysk istnieje
           drive_id_format: Format Drive ID
-          header: Konfiguracja podstawowa
+          header: Configuration
           host_url_accessible: Adres URL hosta jest dostępny
           storage_configured: Ukończono konfigurację
           tenant_id: Identyfikator dzierżawcy

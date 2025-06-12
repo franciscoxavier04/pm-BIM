@@ -237,7 +237,7 @@ zh-TW:
         download_report: 下載
         rerun_checks: 重新執行所有檢查
         run_checks: 立即執行檢查
-      checked: 上次檢查時間：%{datetime}
+      checked: 'Last check: %{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: 自動新增資料夾
@@ -247,7 +247,7 @@ zh-TW:
           group_folder_app: '依賴：群組資料夾'
           group_folder_contents: 群組資料夾包含預期的內容
           group_folder_presence: 群組目錄已存在
-          header: 自動管理專案資料夾設定
+          header: Automatically managed project folders
           userless_access: 服務器端要求認證
         authentication:
           existing_token: 用戶權杖(token)
@@ -266,7 +266,7 @@ zh-TW:
           diagnostic_request: 檢查請求
           drive_id_exists: 硬碟已存在
           drive_id_format: 硬碟ID格式
-          header: 基本設定
+          header: Configuration
           host_url_accessible: 主機URL可存取
           storage_configured: 設定完成
           tenant_id: 租戶ID
