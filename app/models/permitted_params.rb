@@ -356,7 +356,7 @@ class PermittedParams
     params.permit(attachments: %i[file description id])["attachments"]
   end
 
-  def enumerations
+  def enumerations # rubocop:disable Metrics/AbcSize
     acceptable_params = %i[active is_default move_to name reassign_to_i
                            parent_id custom_field_values reassign_to_id]
 
