@@ -83,7 +83,7 @@ class WorkPackage::PDFExport::Common::View
     end
   end
 
-  def register_fonts!(document)
+  def register_fonts!(document) # rubocop:disable Metrics/AbcSize
     FONT_SPEC[:latin].each do |font|
       register_full_font!(font[:name], font_base_path.join(font[:path]), document)
     end
