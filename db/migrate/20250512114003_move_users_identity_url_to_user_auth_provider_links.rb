@@ -52,7 +52,7 @@ class MoveUsersIdentityUrlToUserAuthProviderLinks < ActiveRecord::Migration[8.0]
           slug, external_id = identity_url.split(":", 2)
           next if slug.blank? || external_id.blank?
 
-          auth_provider_id = auth_providers_data.find { |_, auth_provider_slug| auth_provider_slug == slug }.first
+          auth_provider_id = auth_providers_data.find { |_, auth_provider_slug| auth_provider_slug == slug }&.first
           next if auth_provider_id.blank?
 
           "(#{user_id}, #{auth_provider_id}, '#{external_id}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"
