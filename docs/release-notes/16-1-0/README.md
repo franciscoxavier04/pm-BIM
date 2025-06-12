@@ -27,7 +27,7 @@ You’ll find the full life cycle directly in the project overview page, where y
 ![Project overview page with the project life cycle displayed in the right column](openproject-16-1-project-life-cycle-project-overview-highlighted.png)
 
 > [!NOTE]
-> With the Enterprise add-on available in the Premium plan or higher, you can configure existing project phases and gates and even create new ones. All other features are available in the Community edition as well, with phases based on the PM² framework.
+> With the Enterprise add-on available in the Premium plan or higher, you can configure existing project phases and gates and even create new ones. This is done in the global settings. The project-level features are available in all editions, with pre-defined phases based on the PM² framework.
 
 [Read more about working with a project life cycle in OpenProject](https://www.openproject.org/blog/openproject-16-1-release/).
 
@@ -47,6 +47,8 @@ The export is available via the More (⋯) menu for both one-time meetings and i
 
 The PDF is generated in A4 format and includes a professional layout. 
 
+[Learn more about exporting meetings in PDF format in our documentation](../../user-guide/meetings/one-time-meetings/#export-a-meeting).
+
 ![Overlay of Export PDF options for OpenProject meetings](openproject-16-1-export-meeting-to-pdf.png)
 
 ### Set smart default options for reminders
@@ -62,6 +64,8 @@ To make setting reminders even quicker, OpenProject now offers pre-filled option
 Selecting one of the quick options will open the reminder dialog with a pre-filled date and time – typically at 9:00 local time on the selected future day. You can still adjust the date, time, and add a note before saving the reminder.
 
 We released Reminders with OpenProject 15.2 in January 2025. With this update, it’s easier than ever to use them to stay organized and keep your notification center clean.
+
+[Learn more about work package reminders in our documentation](../../user-guide/work-packages/edit-work-package/#work-package-reminders).
 
 ![Dropdown menu on a work package when clicking on the reminder icon, with options to quickly choose a date to be reminded](openproject-16-1-reminder-options.png)
 
@@ -83,13 +87,17 @@ Please note that negative lags can be counterintuitive:
 > [!NOTE]
 > **Only working days** are taken into account. For example: If work package A finishes on a Tuesday and Saturday/Sunday are non-working days, then a lag of -3 will schedule its successor (work package B) to start on the previous Friday.
 
+[Learn more about work package relations in our documentation](../../user-guide/work-packages/work-package-relations-hierarchies/#work-package-relations).
+
 ### Display hierarchy trees for hierarchy custom fields
 
 Hierarchy custom fields are now easier to explore and use. When viewing such a custom field, a **hierarchical tree is displayed next to the details section**, showing the entire structure at a glance.
 
 This tree helps you understand the position of the current item in the overall hierarchy and makes it easier to add or navigate related items. The currently selected item is highlighted, and all its parent nodes are automatically expanded, while unrelated branches remain collapsed by default.
 
-Clicking on any entry in the tree opens that item in the same view, making it easy to move through even complex hierarchies without losing context. 
+Clicking on any entry in the tree opens that item in the same view, making it easy to move through even complex hierarchies without losing context.
+
+[Learn more about custom fields in our system admin guide](../../system-admin-guide/custom-fields/).
 
 ![Example of a hierarchy custom field with the new visualization, the hierarchical tree](openproject-hierarchy-custom-field-tree.png)
 
@@ -100,6 +108,8 @@ OpenProject 16.1 includes an important accessibility enhancement for users worki
 This applies to **changes in the date picker** such as scheduling mode, working days only selector, start and finish dates, and duration. When one of these values is updated, the screen reader will announce a full summary like: “Date picker updated. Scheduling mode: Manual, Working days only, Start date: June 10, Finish date: June 12, Duration: 3 days”.
 
 This ensures that no important context is lost and improves the experience for all users relying on assistive technologies.
+
+To learn what more is planned regarding accessibility in OpenProject, see [these open work packages on our Community instance](https://community.openproject.org/projects/openproject/work_packages?query_id=2906).
 
 ## Important technical changes
 
