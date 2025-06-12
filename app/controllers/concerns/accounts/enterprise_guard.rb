@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,35 +26,41 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-RSpec::Matchers.define :have_enterprise_upsell_page do |**args|
-  include TestSelectorFinders
+##
+# Intended to be used by the ApplicationController to provide authorization helpers
+module Accounts::EnterpriseGuard
+  extend ActiveSupport::Concern
 
-  match do |page|
-    if args[:plan]
-      expected_text = I18n.t("ee.upsell.plan_text_html", plan: args[:plan].capitalize)
-      page.find(test_selector("op-enterprise-upsell-page"), **args, text: expected_text)
-    else
-      page.find(test_selector("op-enterprise-upsell-page"), **args)
+  class_methods do
+    ##
+    # Adds a before_action check to test enterprise status of the feature
+    # @param feature_key [String] the name of the enterprise feature to check
+    #
+    # If a block is passed, it will be executed if the feature is not available.
+    def guard_enterprise_feature(feature_key, **action_args, &)
+      before_action(**action_args) do
+        perform_enterprise_feature_guard(feature_key, &)
+      end
     end
   end
 
-  match_when_negated do |page|
-    page.has_no_selector?(test_selector("op-enterprise-upsell-page"), **args)
-  end
+  private
 
-  failure_message do
-    <<~MESSAGE
-      Expected page to have Enterprise edition upsell page, but it does not:
-      #{@error}
-    MESSAGE
-  end
+  ##
+  # Checks if the current action is covered by any authorization method.
+  # @param feature_key [String] the name of the enterprise feature to check
+  # If a block is passed, it will be executed if the feature is not available.
+  def perform_enterprise_feature_guard(feature_key, &)
+    return if EnterpriseToken.allows_to?(feature_key)
 
-  failure_message_when_negated do
-    <<~MESSAGE
-      Expected page not to have Enterprise edition upsell page, but it does:
-      #{@error}
-    MESSAGE
+    plan = OpenProject::Token.lowest_plan_for(feature_key)
+    if block_given?
+      flash[:error] = I18n.t("error_enterprise_plan_needed", plan:)
+      instance_eval(&)
+    else
+      render_403 message: I18n.t("error_enterprise_plan_needed", plan:)
+    end
   end
 end
