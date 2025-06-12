@@ -39,7 +39,9 @@ RSpec.describe TimeEntries::UpdateContract do
                     activity: time_entry_activity,
                     spent_on: time_entry_spent_on,
                     hours: time_entry_hours,
-                    comments: time_entry_comments)
+                    comments: time_entry_comments) do |te|
+        te.ongoing = time_entry_ongoing
+      end
     end
     subject(:contract) { described_class.new(time_entry, current_user) }
 
