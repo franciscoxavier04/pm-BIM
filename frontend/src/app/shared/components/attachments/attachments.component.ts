@@ -76,6 +76,8 @@ export class OpAttachmentsComponent extends UntilDestroyedMixin implements OnIni
 
   @Input() public allowUploading = true;
 
+  @Input() public allowRemoval = true;
+
   @Input() public destroyImmediately = true;
 
   @Input() public externalUploadButton:string|null = null;
