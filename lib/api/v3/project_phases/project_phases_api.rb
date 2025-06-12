@@ -33,12 +33,6 @@ module API
     module ProjectPhases
       class ProjectPhasesAPI < ::API::OpenProjectAPI
         resources :project_phases do
-          get &::API::V3::Utilities::Endpoints::Index
-                 .new(model: Project::Phase,
-                      scope: -> { Project::Phase.visible(current_user).where(active: true) },
-                      api_name: "ProjectPhases")
-                 .mount
-
           route_param :id do
             after_validation do
               @phase = ::Project::Phase.visible(current_user).find(params[:id])
