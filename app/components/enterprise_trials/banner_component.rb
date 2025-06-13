@@ -29,7 +29,7 @@
 #++
 
 module EnterpriseTrials
-  class StatusComponent < ApplicationComponent
+  class BannerComponent < ApplicationComponent
     include ApplicationHelper
     include OpenProject::FormTagHelper
     include OpTurbo::Streamable

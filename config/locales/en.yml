@@ -106,7 +106,6 @@ en:
       required_for_feature: "This add-on is only available with an active Enterprise edition support token."
       enterprise_link: "For more information, click here."
       start_trial: "Start free trial"
-      check_trial_status: "Check trial status"
       book_now: "Book now"
       get_quote: "Get a quote"
       buttons:
@@ -1911,6 +1910,7 @@ en:
   button_sort: "Sort"
   button_submit: "Submit"
   button_test: "Test"
+  button_try_again: "Try again"
   button_unarchive: "Unarchive"
   button_uncheck_all: "Uncheck all"
   button_unlock: "Unlock"
@@ -2133,6 +2133,8 @@ en:
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
+      already_have_token: >
+        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Hide this banner"
       homescreen_description: >
         Enterprise plans extend the Community edition of OpenProject you are currently using.
@@ -2193,13 +2195,16 @@ en:
       wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
       already_retrieved: "Your trial enterprise token was already retrieved. Please reach out to our support team if you need a new one."
       successfully_saved: "Your trial enterprise token has been successfully retrieved."
+      token_sent: "Trial token requested"
       start_over: "Start over trial request"
       resend_action: "Resend confirmation email"
       welcome_title: "Quick feature overview"
       welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
       confirmation_info: >
-        We sent you an email on %{date} to %{email}.
-        Please check your inbox and click the confirmation link provided to start your 14 days trial.
+        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise.
+        Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+      confirmation_subline: >
+        Please, check your inbox and follow the steps to start your 14-day free trial.
       domain_caption:
         The token will be valid for your currently configured host name.
       receive_newsletter_html: >

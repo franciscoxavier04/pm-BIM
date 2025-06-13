@@ -48,7 +48,7 @@ module EnterpriseTrials
             href: enterprise_tokens_path
           )
         ) do
-          I18n.t("admin.enterprise.check_trial_status")
+          I18n.t(:button_try_again)
         end
       else
         render(

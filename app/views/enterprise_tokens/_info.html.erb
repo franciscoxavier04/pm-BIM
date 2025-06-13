@@ -31,48 +31,76 @@ See COPYRIGHT and LICENSE files for more details.
                                     "data-cb-site": OpenProject::Configuration.enterprise_chargebee_site %>
 <% end %>
 
-<div class="upsell--information-container">
-  <%= render EnterpriseTrials::StatusComponent.new %>
+<%= render EnterpriseTrials::BannerComponent.new %>
 
-  <div class='upsell-actions'>
-    <a href="#"
-       class="button -highlight-inverted"
-       data-cb-type="checkout"
-       data-cb-plan-id="<%= OpenProject::Configuration.enterprise_plan %>">
-      <%= t("admin.enterprise.book_now") %>
-    </a>
 
-    <% quote_link = OpenProject::Static::Links.links.fetch :upsell_get_quote %>
-    <%= link_to t(quote_link[:label]),
-                quote_link[:href],
-                target: "_blank",
-                class: "button -highlight-inverted", rel: "noopener" %>
-  </div>
+<%=
+  render(Primer::Beta::Subhead.new) do |subhead|
+    subhead.with_heading(size: :medium) { EnterpriseToken.human_attribute_name(:encoded_token) }
+    subhead.with_description { I18n.t("ee.upsell.already_have_token") }
+  end
+%>
 
-  <%= static_link_to :contact %>
-</div>
+<%=
+  render(Primer::OpenProject::FlexLayout.new(mb: 1)) do |button_row|
+    button_row.with_column do
+      button_title = t("admin.enterprise.create_dialog.title")
+      render(
+        Primer::Beta::Button.new(
+          tag: :a,
+          scheme: :primary,
+          mobile_label: button_title,
+          mobile_icon: :plus,
+          size: :medium,
+          href: new_enterprise_token_path,
+          aria: { label: button_title },
+          role: "button",
+          data: {
+            turbo_stream: true
+          },
+          title: button_title
+        )
+      ) do |button|
+        button.with_leading_visual_icon(icon: :plus)
+        button_title
+      end
+    end
 
-<%# temporary add button %>
-<%- button_title = t("admin.enterprise.create_dialog.title") %>
-<%= render(
-      Primer::Beta::Button.new(
-        tag: :a,
-        scheme: :primary,
-        mobile_label: button_title,
-        mobile_icon: :plus,
-        size: :medium,
-        href: new_enterprise_token_path,
-        aria: { label: button_title },
-        role: "button",
-        data: {
-          turbo_stream: true
-        },
-        title: button_title
-      )
-    ) do |button|
-      button.with_leading_visual_icon(icon: :plus)
-      button_title
-    end %>
+    button_row.with_column(ml: 1) do
+      button_title = t("admin.enterprise.book_now")
+      render(
+        Primer::Beta::Button.new(
+          tag: :a,
+          size: :medium,
+          href: '#',
+          aria: { label: button_title },
+          role: "button",
+          data: {
+            "cb-type": "checkout",
+            "cb-plan-id": OpenProject::Configuration.enterprise_plan,
+          },
+          title: button_title
+        )
+      )  { button_title }
+    end
+
+    button_row.with_column(ml: 1) do
+      quote_link = OpenProject::Static::Links.links.fetch :upsell_get_quote
+      button_title = t(quote_link[:label])
+      render(
+        Primer::Beta::Button.new(
+          tag: :a,
+          size: :medium,
+          href: quote_link[:href],
+          aria: { label: button_title },
+          target: "_blank",
+          title: button_title
+        )
+      )  { button_title }
+    end
+
+  end
+%>
 
 <div class="info-boxes upsell-benefits">
   <h3 class="info-boxes--title -no-border"><%= t("js.admin.enterprise.upsell.benefits.description") %></h3>

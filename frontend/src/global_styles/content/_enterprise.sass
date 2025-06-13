@@ -16,11 +16,19 @@
 .controller-homescreen .widget-boxes
   .widget-box.upsell
     padding: 0
-    background: var(--bgColor-accent-muted)
     flex-basis: 100%
     border: var(--borderWidth-thin) solid var(--borderColor-severe-muted)
     border-radius: var(--borderRadius-medium)
     background: var(--body-background)
+
+.widget-box--upsell-block
+  margin-bottom: 1rem
+  border: var(--borderWidth-thin) solid var(--borderColor-severe-muted)
+  border-radius: var(--borderRadius-medium)
+  background: var(--body-background)
+  // Ensure the image does not overflow the container on the borders
+  position: relative
+  overflow: hidden
 
 .widget-box--blocks--upsell-container
   position: relative
