@@ -33,14 +33,25 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%=
   render(Primer::OpenProject::SubHeader.new) do |subheader|
-    subheader.with_action_button(
+    subheader.with_action_menu(
       scheme: :primary,
       leading_icon: :plus,
-      label: t(:label_custom_field_new),
-      tag: :a,
-      href: new_custom_field_path(type: selected_tab(custom_fields_tabs)[:name])
-    ) do
-      t("activerecord.models.custom_field")
+      trailing_icon: :"triangle-down",
+      label: I18n.t(:label_custom_field_new),
+      button_arguments: {
+        scheme: :primary,
+        aria: { label: I18n.t(:label_custom_field_new) }
+      }
+    ) do |menu|
+      OpenProject::CustomFieldFormat.all_for_class_name(@tab.delete_suffix("CustomField"))
+                                    .sort_by(&:name)
+                                    .map do |format|
+        menu.with_item(
+          label: label_for_custom_field_format(format.name),
+          tag: :a,
+          href: new_custom_field_path(type: selected_tab(custom_fields_tabs)[:name], field_format: format.name)
+        )
+      end
     end
   end
 %>

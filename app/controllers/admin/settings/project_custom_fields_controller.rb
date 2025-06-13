@@ -59,7 +59,8 @@ module Admin::Settings
     end
 
     def new
-      @custom_field = ProjectCustomField.new(custom_field_section_id: params[:custom_field_section_id])
+      @custom_field = ProjectCustomField.new(custom_field_section_id: params[:custom_field_section_id],
+                                             field_format: params[:field_format])
 
       respond_to :html
     end
