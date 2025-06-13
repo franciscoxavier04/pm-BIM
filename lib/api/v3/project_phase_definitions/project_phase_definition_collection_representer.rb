@@ -28,17 +28,11 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Queries::ProjectPhases
-  class PhaseQuery
-    include Queries::BaseQuery
-    include Queries::UnpersistedQuery
-
-    def self.model
-      Project::Phase
-    end
-
-    def default_scope
-      Project::Phase.visible(User.current)
+module API
+  module V3
+    module ProjectPhaseDefinitions
+      class ProjectPhaseDefinitionCollectionRepresenter < ::API::Decorators::OffsetPaginatedCollection
+      end
     end
   end
 end

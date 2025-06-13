@@ -347,12 +347,7 @@ module API
 
           resources :project
 
-          index :project_phase
           show :project_phase
-
-          def self.project_phases_by_project(project_id)
-            "#{project(project_id)}/project_phases"
-          end
 
           index :project_phase_definition
           show :project_phase_definition

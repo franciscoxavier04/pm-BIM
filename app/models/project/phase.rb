@@ -85,10 +85,6 @@ class Project::Phase < ApplicationRecord
     Day.working.from_range(from: start_date, to: finish_date).count
   end
 
-  def follows_previous_phase?
-    !!previous_phase&.date_range_set?
-  end
-
   def default_start_date
     return @default_start_date if defined?(@default_start_date)
 
@@ -96,14 +92,19 @@ class Project::Phase < ApplicationRecord
     @default_start_date = previous_finish_date && Day.next_working(from: previous_finish_date).date
   end
 
-  private
+  def previous_phases
+    @previous_phases ||= project.available_phases.select { it.position < position }
+  end
 
   def previous_phase
-    return @previous_phase if defined?(@previous_phase)
+    previous_phases.last
+  end
 
-    @previous_phase = project
-     .available_phases
-     .select { it.position < position }
-     .last
+  def follows_previous_phase?
+    !!previous_phase&.date_range_set?
+  end
+
+  def following_phases
+    @following_phases ||= project.available_phases.select { it.position > position }
   end
 end
