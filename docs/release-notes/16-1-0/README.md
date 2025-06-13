@@ -3,25 +3,125 @@ title: OpenProject 16.1.0
 sidebar_navigation:
     title: 16.1.0
 release_version: 16.1.0
-release_date: 2025-06-05
+release_date: 2025-06-18
 ---
 
 # OpenProject 16.1.0
 
-Release date: 2025-06-05
+Release date: 2025-06-18
 
-We released OpenProject [OpenProject 16.1.0](https://community.openproject.org/versions/2194).
-The release contains several bug fixes and we recommend updating to the newest version.
-In these Release Notes, we will give an overview of important feature changes.
-At the end, you will find a complete list of all changes and bug fixes.
+We released [OpenProject 16.1.0](https://community.openproject.org/versions/2194). The release contains several bug fixes and we recommend updating to the newest version. In these Release Notes, we will give an overview of important feature changes and important technical changes. At the end, you will find a complete list of all changes and bug fixes.
 
 ## Important feature changes
 
-<!-- Inform about the major features in this section -->
+### Structure the project life cycle with phases and phase gates
 
-## Important updates and breaking changes
+OpenProject 16.1 introduces a powerful new way to reflect your project’s structure over time: using project phases like **Initiating, Planning, Executing, and Closing**, with optional phase gates at the start or end of each phase.
 
-<!-- Remove this section if empty, add to it in pull requests linking to tickets and provide information -->
+Project administrators can now **activate relevant phases and phase gates per project**. Portfolio managers can then assign start and finish dates to each phase, with automatic scheduling of all following phases and gates based on working days. This helps reduce manual effort and keeps your project timelines consistent.
+
+Work packages can be assigned to a specific phase, making it easier to understand their context, filter by phase, and group work in the table view. And in the project list, you can now add columns and use new filters to track which projects are currently in which phase or gate – ideal for portfolio level planning and reporting.
+
+You’ll find the full life cycle directly in the project overview page, where you can enter dates, view the current phase, and access the new scheduling tools at a glance:
+
+![Project overview page with the project life cycle displayed in the right column](openproject-16-1-project-life-cycle-project-overview-highlighted.png)
+
+> [!NOTE]
+> With the Enterprise add-on available in the Premium plan or higher, you can configure existing project phases and gates and even create new ones. This is done in the global settings. The project-level features are available in all editions, with pre-defined phases based on the PM² framework.
+
+[Read more about working with a project life cycle in OpenProject](https://www.openproject.org/blog/openproject-16-1-release/).
+
+### Export meetings in PDF format
+
+One of the most upvoted Community requests is now available: You can now **export meetings as PDF documents** in OpenProject.
+
+Meeting organizers and participants can generate a printable PDF that includes the agenda, outcomes, participants, and more. This makes it ideal for sharing with colleagues, archiving meeting records, or informing stakeholders who could not attend.
+
+The export is available via the More (⋯) menu for both one-time meetings and individual occurrences of recurring meetings. You can **customize the PDF** before download by choosing wheather to include:
+
+- the list of participants,
+- the list of attachements,
+- the backlog,
+- the agenda outcomes,
+- a customized footer text (e.g. project name), which appears on each page.
+
+The PDF is generated in A4 format and includes a professional layout. 
+
+[Learn more about exporting meetings in PDF format in our documentation](../../user-guide/meetings/one-time-meetings/#export-a-meeting).
+
+![Overlay of Export PDF options for OpenProject meetings](openproject-16-1-export-meeting-to-pdf.png)
+
+### Set smart default options for reminders
+
+To make setting reminders even quicker, OpenProject now offers pre-filled options when clicking the reminder icon on a work package. Instead of entering details manually, you can now choose one of the following defaults:
+
+- Tomorrow
+- In 3 days
+- In a week
+- In a month
+- At a particular date/time
+
+Selecting one of the quick options will open the reminder dialog with a pre-filled date and time – typically at 9:00 local time on the selected future day. You can still adjust the date, time, and add a note before saving the reminder.
+
+We released Reminders with OpenProject 15.2 in January 2025. With this update, it’s easier than ever to use them to stay organized and keep your notification center clean.
+
+[Learn more about work package reminders in our documentation](../../user-guide/work-packages/edit-work-package/#work-package-reminders).
+
+![Dropdown menu on a work package when clicking on the reminder icon, with options to quickly choose a date to be reminded](openproject-16-1-reminder-options.png)
+
+### Use negative lag for work package dates
+
+You can now define **negative lag** when setting up relations between work packages. This allows you to specify that a work package should start a few days before its **predecessor** finishes.
+
+When adding or editing a successor or predecessor relation, the Lag field now accepts negative values. The updated help text reads: “The minimum number of working days in between the two work packages. It can also be negative.”
+
+This makes it easier to represent overlapping tasks and more flexible schedules in your project plan. For example, you may want the review of a document to begin two days before the final draft is complete. You will then have to enter a lag of -3 days for the (review) Successor work package.
+
+![Overlay of editing a successor (after) with a lag of -3 days](openproject-16-1-negative-lag.png)
+
+Please note that negative lags can be counterintuitive:
+- A lag of 0 schedules the successor one day after the predecessor’s finish date.
+- A lag of -1 schedules it on the same day.
+- A lag of -2 schedules it one day before, and so on.
+
+> [!NOTE]
+> **Only working days** are taken into account. For example: If work package A finishes on a Tuesday and Saturday/Sunday are non-working days, then a lag of -3 will schedule its successor (work package B) to start on the previous Friday.
+
+[Learn more about work package relations in our documentation](../../user-guide/work-packages/work-package-relations-hierarchies/#work-package-relations).
+
+### Display hierarchy trees for hierarchy custom fields
+
+Hierarchy custom fields are now easier to explore and use. When viewing such a custom field, a **hierarchical tree is displayed next to the details section**, showing the entire structure at a glance.
+
+This tree helps you understand the position of the current item in the overall hierarchy and makes it easier to add or navigate related items. The currently selected item is highlighted, and all its parent nodes are automatically expanded, while unrelated branches remain collapsed by default.
+
+Clicking on any entry in the tree opens that item in the same view, making it easy to move through even complex hierarchies without losing context.
+
+[Learn more about custom fields in our system admin guide](../../system-admin-guide/custom-fields/).
+
+![Example of a hierarchy custom field with the new visualization, the hierarchical tree](openproject-hierarchy-custom-field-tree.png)
+
+### Benefit from improved accessibility for the date picker with ARIA live regions
+
+OpenProject 16.1 includes an important accessibility enhancement for users working with screen readers: Dynamic updates are now announced automatically using ARIA live regions.
+
+This applies to **changes in the date picker** such as scheduling mode, working days only selector, start and finish dates, and duration. When one of these values is updated, the screen reader will announce a full summary like: “Date picker updated. Scheduling mode: Manual, Working days only, Start date: June 10, Finish date: June 12, Duration: 3 days”.
+
+This ensures that no important context is lost and improves the experience for all users relying on assistive technologies.
+
+To learn what more is planned regarding accessibility in OpenProject, see [these open work packages on our Community instance](https://community.openproject.org/projects/openproject/work_packages?query_id=2906).
+
+## Important technical changes
+
+### Added API for Emoji reactions, Reminders, and Internal Comments
+
+OpenProject 16.1 extends its API to support three features that were previously only available via the web interface. This update enables integrations with other clients, including the mobile app, to access:
+
+- Emoji reactions on work package comments
+- Reminders for work packages
+- Internal comments with restricted visibility
+
+Developers can now read and manage emoji reactions, create and update reminders, and write internal comments via API V3.
 
 <!--more-->
 
@@ -102,12 +202,13 @@ At the end, you will find a complete list of all changes and bug fixes.
 <!-- Warning: Anything above this line will be automatically removed by the release script -->
 
 ## Contributions
-A very special thank you goes to our sponsors for this release.
-Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes.
-Special thanks for reporting and finding bugs go to Cameron Dutro, Maxim Béliveau.
 
-Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings!
-Would you like to help out with translations yourself?
-Then take a look at our translation guide and find out exactly how you can contribute.
-It is very much appreciated!
+A very special thank you goes to City of Cologne, Deutsche Bahn and ZenDiS for sponsoring released or upcoming features. Your support, alongside the efforts of our amazing Community, helps drive these innovations. Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to Cameron Dutro and Maxim Béliveau.
 
+Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to particularly thank the following users:
+
+- [BigSeung](https://crowdin.com/profile/bigseung), for a great number of translations into Korean.
+- [rmiyata](https://crowdin.com/profile/rmiyata), for a great number of translations into Japanese.
+- [William](https://crowdin.com/profile/williamfromtw), for a great number of translations into Chinese Traditional.
+
+Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!

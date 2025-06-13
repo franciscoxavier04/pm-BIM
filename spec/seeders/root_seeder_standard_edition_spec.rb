@@ -51,7 +51,7 @@ RSpec.describe RootSeeder,
       expect(User.not_builtin.where(admin: true).count).to eq 1
     end
 
-    it "creates the demo data" do
+    it "creates the demo data" do # rubocop:disable RSpec/MultipleExpectations
       expect(Project.count).to eq 2
       expect(EnabledModule.count).to eq 13
       expect(WorkPackage.count).to eq 36
@@ -173,12 +173,14 @@ RSpec.describe RootSeeder,
 
     include_examples "no email deliveries"
 
-    context "when run a second time" do
+    context "when run a second time in a different language", :settings_reset do
       before_all do
-        described_class.new.seed_data!
+        with_locale_env("de") do
+          described_class.new.seed_data!
+        end
       end
 
-      it "does not create additional data" do
+      it "does not create additional data and does not raise any errors" do # rubocop:disable RSpec/MultipleExpectations
         expect(Project.count).to eq 2
         expect(WorkPackage.count).to eq 36
         expect(Wiki.count).to eq 2
@@ -195,6 +197,23 @@ RSpec.describe RootSeeder,
         expect(VersionSetting.count).to eq 4
         expect(Boards::Grid.count).to eq 5
         expect(Project::PhaseDefinition.count).to eq 4
+      end
+    end
+
+    context "when run a second time in a different language with some color data deleted", :settings_reset do
+      before_all do
+        with_locale_env("de") do
+          # Simulate a user having deleted the seeded colors.
+          # Could also be the user changing the hexcode of the colors, making lookup by hexcode fail.
+          Color.where(name: ["Grey", "Blue", "Black"]).delete_all
+          described_class.new.seed_data!
+        end
+      end
+
+      it "does not create additional data and does not raise any errors" do
+        expect(Project.count).to eq 2
+        expect(WorkPackage.count).to eq 36
+        expect(Wiki.count).to eq 2
       end
     end
   end
@@ -255,16 +274,13 @@ RSpec.describe RootSeeder,
       shared_let(:root_seeder) { described_class.new }
 
       before_all do
-        with_env(env_var_name => "de") do
+        with_locale_env("de", env_var_name:) do
           with_edition("standard") do
-            reset(:default_language) # Settings are a pain to reset
             root_seeder.seed_data!
 
             # Run background jobs as those are also triggered by seeding.
             # But since those background jobs retrigger themselves, don't wrap the seeding inside a block.
             perform_enqueued_jobs
-          ensure
-            reset(:default_language)
           end
         end
       end

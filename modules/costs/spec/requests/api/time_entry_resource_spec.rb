@@ -565,6 +565,27 @@ RSpec.describe "API v3 time_entry resource" do
           .at_path("message")
       end
     end
+
+    context "when starting an ongoing time entry with an ongoing timer already running" do
+      let(:additional_setup) { -> { existing_ongoing_time_entry } }
+
+      let(:existing_ongoing_time_entry) do
+        create(:time_entry, ongoing: true, project:, work_package:, user: current_user)
+      end
+
+      let(:params) do
+        super().merge({ ongoing: true })
+      end
+
+      it "returns 422 and remarks that another time entry is ongoing" do
+        expect(subject.status)
+          .to be(422)
+
+        expect(subject.body)
+          .to be_json_eql("An ongoing time entry already exists for this user.".to_json)
+                .at_path("message")
+      end
+    end
   end
 
   describe "PATCH api/v3/time_entries/:id" do

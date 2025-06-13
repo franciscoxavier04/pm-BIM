@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,18 +26,16 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
-module BasicData
-  class ColorSeeder < ModelSeeder
-    self.model_class = Color
-    self.seed_data_model_key = "colors"
-    self.attribute_names_for_lookups = %i[hexcode]
+# ++
 
-    def model_attributes(color_data)
-      {
-        name: color_data["name"],
-        hexcode: color_data["hexcode"]
-      }
+module TimeEntries::Scopes
+  module OngoingForUserOtherThan
+    extend ActiveSupport::Concern
+
+    class_methods do
+      def ongoing_for_user_other_than(user, time_entry)
+        ongoing.where(user:).where.not(id: time_entry.id)
+      end
     end
   end
 end

@@ -60,6 +60,7 @@ module TimeEntries
     end
     attribute :ongoing do
       validate_self_timer
+      validate_no_other_ongoing
     end
     attribute :hours
     attribute :comments
@@ -133,6 +134,13 @@ module TimeEntries
 
     def validate_self_timer
       errors.add :ongoing, :not_current_user if model.ongoing? && model.user != user
+    end
+
+    def validate_no_other_ongoing
+      if model.ongoing? && model.ongoing_changed? && TimeEntry.ongoing_for_user_other_than(model.user, model).any?
+        errors.add :base,
+                   :duplicate_ongoing
+      end
     end
   end
 end
