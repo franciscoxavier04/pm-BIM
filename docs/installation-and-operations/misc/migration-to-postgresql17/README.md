@@ -109,7 +109,7 @@ For Debian/Ubuntu:
 
 ```shell
 sudo su - postgres -c "cp /etc/postgresql/{13,17}/main/conf.d/custom.conf"
-sudo su - postgres -c "sed -i 's|45432|45433|' /etc/postgresql/17/main/conf.d/custom.conf"
+sudo su - postgres -c "sed -i 's|45432|45433|' /etc/postgresql/13/main/conf.d/custom.conf"
 sudo su - postgres -c "cp /etc/postgresql/13/main/pg_hba.conf /etc/postgresql/17/main/pg_hba.conf"
 sudo su - postgres -c "/usr/lib/postgresql/17/bin/pg_ctl start --wait --pgdata=/var/lib/postgresql/17/main -o '-c config_file=/etc/postgresql/17/main/postgresql.conf'"
 ```
