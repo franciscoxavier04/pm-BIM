@@ -46,7 +46,7 @@ export class OpUnlinkTableAction extends OpTableAction {
     element.href = '#';
     element.classList.add(contextColumnIcon, 'wp-table-action--unlink');
     element.dataset.workPackageId = this.workPackage.id!;
-    element.appendChild(opIconElement('icon', 'icon-delete'));
+    element.appendChild(opIconElement('icon', 'icon-close'));
     jQuery(element).click((event) => {
       event.preventDefault();
       this.onClick(this.workPackage);

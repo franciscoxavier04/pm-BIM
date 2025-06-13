@@ -130,12 +130,20 @@ RSpec.describe Meetings::Exporter do
     let(:type_task) { create(:type_task) }
     let(:status) { create(:status, is_default: true, name: "Workin' on it") }
     let(:work_package) { create(:work_package, project:, status:, subject: "Important task", type: type_task) }
-    let(:meeting_section) { create(:meeting_section, meeting:, title: "Section Work in Progress") }
+    let(:meeting_section) { create(:meeting_section, meeting:, title: nil) }
+    let(:meeting_section_second) { create(:meeting_section, meeting:, title: "Second section") }
     let(:meeting_agenda_item) do
       create(:meeting_agenda_item, meeting_section:, duration_in_minutes: 15, title: "Agenda Item TOP 1", presenter: user,
                                    notes: "**foo**")
     end
-    let(:wp_agenda_item) { create(:wp_meeting_agenda_item, meeting:, work_package:, duration_in_minutes: 10, notes: "*bar*") }
+    let(:wp_agenda_item) do
+      create(:wp_meeting_agenda_item,
+             meeting:,
+             meeting_section: meeting_section_second,
+             work_package:,
+             duration_in_minutes: 10,
+             notes: "*bar*")
+    end
     let(:outcome) { create(:meeting_outcome, meeting_agenda_item:, notes: "An outcome") }
     let(:attachment) { create(:attachment, container: meeting) }
     let(:meeting_backlog_item) do
@@ -173,12 +181,14 @@ RSpec.describe Meetings::Exporter do
 
           "Meeting agenda",
 
-          "Section Work in Progress", "  ", "25 mins",
+          "Untitled section", "  ", "15 mins",
 
           "Agenda Item TOP 1", "  ", "15 mins", "  ", "Export User",
           "foo",
           "Outcome",
           "An outcome",
+
+          "Second section", "  ", "10 mins",
 
           "Task", "##{work_package.id}", "Important task", " (Workin' on it)", "  ", "10 mins",
           "bar",
@@ -215,11 +225,11 @@ RSpec.describe Meetings::Exporter do
           *single_meeting_head,
           "Meeting agenda",
 
-          "Section Work in Progress", "  ", "25 mins",
-
+          "Untitled section", "  ", "15 mins",
           "Agenda Item TOP 1", "  ", "15 mins", "  ", "Export User",
           "foo",
 
+          "Second section", "  ", "10 mins",
           "Task", "##{work_package.id}", "Important task", " (Workin' on it)", "  ", "10 mins",
           "bar",
 

@@ -57,7 +57,7 @@ es:
         spent_on: Fecha
         start_time: Hora de inicio
         end_time: Hora de finalización
-        time: Tiempo
+        time: Hora
     models:
       time_entry:
         one: "Entrada de tiempo"
@@ -168,7 +168,7 @@ es:
   label_specific_month: "Mes %{month}"
   label_list: "Lista"
   label_month: "Mes"
-  label_workweek: "Semana de trabajo"
+  label_workweek: "Semana laboral"
   label_day: "Día"
   label_today_capitalized: "Hoy"
   label_view_mode_switcher: "Cambia vista"
@@ -193,11 +193,11 @@ es:
   permission_view_own_hourly_rate: "Ver tarifa por hora propia"
   permission_view_own_time_entries: "Ver tiempo propio invertido"
   project_module_costs: "Tiempo y costos"
-  setting_allow_tracking_start_and_end_times: "Allow start and finish times"
+  setting_allow_tracking_start_and_end_times: "Permitir horas de inicio y finalización"
   setting_costs_currency: "Moneda"
   setting_costs_currency_format: "Formato de moneda"
-  setting_enforce_tracking_start_and_end_times: "Require start and finish times"
-  setting_enforce_without_allow: "Requiring start and finish times is not possible without allowing them"
+  setting_enforce_tracking_start_and_end_times: "Requerir horas de inicio y finalización"
+  setting_enforce_without_allow: "No es posible requerir horas de inicio y finalización sin permitirlas antes"
   setting_allow_tracking_start_and_end_times_caption: "Habilita la introducción de hora de inicio y de fin cuando se registra tiempo."
   setting_enforce_tracking_start_and_end_times_caption: "Hace que las horas de inicio y de fin sean obligatorias cuando se registra tiempo."
   text_assign_time_and_cost_entries_to_project: "Asignar horas reportadas y los costos al proyecto"

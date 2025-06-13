@@ -353,12 +353,12 @@ ro:
         heading: "Delete this project list?"
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
-      header_details: Basic details
+      header_details: Informații de bază
       header_status: Stare proiect
-      header_relations: Project relations
-      button_update_details: Update details
-      button_update_status_description: Update status description
-      button_update_parent_project: Update parent project
+      header_relations: Relații proiect
+      button_update_details: Actualizează detalii
+      button_update_status_description: Actualizează descrierea stării
+      button_update_parent_project: Actualizează proiect părinte
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -2377,7 +2377,7 @@ ro:
       work_package_parent_changed_times: by changes to parent %{link}
       work_package_children_changed_times: by changes to child %{link}
       work_package_related_changed_times: by changes to related %{link}
-      work_package_duplicate_closed: The status was automatically updated by the duplicated work package %{link}
+      work_package_duplicate_closed: Starea a fost actualizată automat de pachetul de lucru duplicat %{link}
       unaccessable_work_package_changed: by changes to a related work package
       working_days_changed:
         changed: "by changes to working days (%{changes})"
@@ -2553,7 +2553,7 @@ ro:
   label_api_doc: "Documentație API"
   label_backup: "Backup"
   label_backup_code: "Cod copie de rezervă"
-  label_basic_details: "Basic details"
+  label_basic_details: "Informații de bază"
   label_between: "între"
   label_blocked_by: "blocat de"
   label_blocks: "blochează"

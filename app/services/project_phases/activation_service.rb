@@ -48,12 +48,12 @@ module ProjectPhases
       upsert(active:)
 
       if (phase = reschedule_from_phase)
-        UpdateService.new(user:, model: phase).call
-      else
-        project.touch_and_save_journals
-
-        service_call
+        service_call = reschedule_following_phases(phase)
       end
+
+      project.touch_and_save_journals
+
+      service_call
     end
 
     def upsert(active:)
@@ -69,22 +69,33 @@ module ProjectPhases
       )
     end
 
+    def reschedule_following_phases(phase)
+      from = initial_reschedule_date(phase)
+
+      RescheduleService.new(user:, project:)
+        .call(phases: phase.following_phases, from:)
+    end
+
     def reschedule_from_phase
       first_definition = definitions.min_by(&:position)
       return unless first_definition
 
       phase = project.phases.find_by(definition_id: first_definition.id)
-      return unless phase.date_range_set?
+      preceding_phase = preceding_active_phase(phase)
 
-      if phase.active?
-        preceding_active_phase(phase) || phase
-      else
+      if preceding_phase
+        preceding_phase
+      elsif phase.date_range_set?
         phase
       end
     end
 
     def preceding_active_phase(phase)
       project.available_phases.reverse.find { it.date_range_set? && it.position < phase.position }
+    end
+
+    def initial_reschedule_date(phase)
+      phase.active? ? phase.finish_date + 1 : phase.start_date
     end
 
     def default_contract_class
