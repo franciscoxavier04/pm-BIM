@@ -44,7 +44,7 @@ You will then get a list of all your active projects in OpenProject.
 
 ### Project lists view explained
 
-You can use the Project overview page to **create a multi-project status dashboard** if you include your own [project attributes](../../../system-admin-guide/projects/project-attributes), e.g. custom status options, project duration or any relevant project information.
+You can use the Project overview page to **create a multi-project status dashboard** if you include your own [project attributes](../../../system-admin-guide/projects/project-attributes) or [project life cycle phases](../../../system-admin-guide/projects/project-life-cycle), e.g. custom status options, project duration or any relevant project information.
 
 Each project is displayed in a single line, starting with the **Favorite** column, marking favorite projects. For the the fields where the text is too long to be displayed completely, please use the **Expand** icon.
 
@@ -285,3 +285,22 @@ In this project overarching list, you can search, filter, group by, sort, highli
 You can group by projects by clicking in the header of the work package table next to PROJECT and select **Group by**. Collapsing the groups will allow you an **overview of the projects' aggregated milestones** as described [here](../../work-packages/work-package-table-configuration/#flat-list-hierarchy-mode-and-group-by).
 
 ![project overarching report](project-overarching-report.gif)
+
+### Project life cycle overview
+
+To better understand the state and progress of multiple projects at once, you can configure a project list view filtered or grouped by specific project phases or phase gates. This allows you to get a high-level overview of where each project currently stands in the lifecycle. This consolidated view helps you monitor key milestones and better support strategic decision-making across your project portfolio.
+
+You can add individual project phases and gates as columns in the project list. This is done through the standard **configure view** modal or by adjusting the **default columns** in administration. You can select specific date ranges to focus on. For example, only showing projects with phases that fall within the current year. 
+
+To help differentiate between stages and gates in the project list phases and gates are indicated by differently shaped icons that are shown as prefixes in the column headers. 
+
+- Phases are indicated with an **arrow-shaped** icon in the configured color
+- Gates are indicated with a **rhombus-shaped** icon in the configured color
+
+Each phase or gate is displayed as a separate column. If a phase or gate is disabled in a project, the value won't appear for that project. The view remains intact even if a lifecycle phase or gate is later removed from the global configuration.
+
+> [!TIP]
+>
+> You can add phases and gates in any order to your list view. There’s no requirement to follow the lifecycle sequence, which provides flexibility for different reporting needs.
+
+![Project life cycle phases under project lists in OpenProject](project-life-cycle-view-configured.png)
