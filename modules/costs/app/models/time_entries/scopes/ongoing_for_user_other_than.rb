@@ -1,4 +1,6 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -24,32 +26,16 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-class TimeEntries::CreateService < BaseServices::Create
-  protected
+module TimeEntries::Scopes
+  module OngoingForUserOtherThan
+    extend ActiveSupport::Concern
 
-  def persist(service_result)
-    super
-  rescue ActiveRecord::RecordNotUnique
-    fail_service_on_duplicate_ongoing(service_result)
-
-    service_result
-  end
-
-  def after_perform(call)
-    OpenProject::Notifications.send(
-      OpenProject::Events::TIME_ENTRY_CREATED,
-      time_entry: call.result
-    )
-
-    call
-  end
-
-  def fail_service_on_duplicate_ongoing(service_result)
-    return unless service_result.result.ongoing
-
-    service_result.errors.add :base, :duplicate_ongoing
-    service_result.success = false
+    class_methods do
+      def ongoing_for_user_other_than(user, time_entry)
+        ongoing.where(user:).where.not(id: time_entry.id)
+      end
+    end
   end
 end
