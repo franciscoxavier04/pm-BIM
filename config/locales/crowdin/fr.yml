@@ -686,7 +686,7 @@ fr:
         automatic: "Automatique"
         manual: "Manuel"
       show_relations: "Afficher les relations"
-      update_inputs_aria_live_message: "Date picker updated. %{message}"
+      update_inputs_aria_live_message: "Sélecteur de dates mis à jour. %{message}"
       tabs:
         aria_label: "Onglets de sélection de date"
         children: "Enfants"
@@ -756,8 +756,7 @@ fr:
     lag:
       subject: "Délai"
       caption: |-
-        The minimum number of working days to keep in between the two work packages.
-        It can also be negative.
+        Le nombre minimum de jours ouvrables à respecter entre les deux lots de travaux. Il peut également être négatif.
     relations:
       label_new_child_created: "Nouveau lot de travaux créé et ajouté en tant qu'enfant"
       label_relates_singular: "lié à"
@@ -973,10 +972,10 @@ fr:
       project/phase:
         date_range: "Plage de dates"
         definition: "Définition"
-        duration: "Duration"
-        start_date: "Start date"
-        start_date_caption: "Follows the previous phase."
-        finish_date: "Finish date"
+        duration: "Durée"
+        start_date: "Date de départ"
+        start_date_caption: "Suit la phase précédente."
+        finish_date: "Date de fin"
       project/phase_definition:
         name: "Nom"
         color: "Couleur"
@@ -1289,11 +1288,11 @@ fr:
         project/phase:
           attributes:
             start_date:
-              must_be_before_finish_date: "must be before the finish date."
-              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              must_be_before_finish_date: "doit être antérieur à la date de fin."
+              non_continuous_dates: "ne peut pas être antérieure à la date de fin de la phase précédente."
             finish_date:
-              must_be_after_start_date: "must be after the start date."
-          cannot_be_a_non_working_day: "can't be a non-working day."
+              must_be_after_start_date: "doit être après la date de début."
+          cannot_be_a_non_working_day: "ne peut pas être un jour non travaillé."
         query:
           attributes:
             project:
@@ -1420,7 +1419,7 @@ fr:
               cannot_be_in_another_project: "ne peut pas être dans un autre projet."
               not_a_valid_parent: "est invalide."
             schedule_manually:
-              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
+              cannot_be_automatically_scheduled: "ne peut pas être défini sur false (programmé automatiquement) car il n'a ni prédécesseurs ni enfants."
             start_date:
               violates_relationships: "peut uniquement valoir %{soonest_start} ou une date ultérieure afin de ne pas violer les relations du lot de travaux."
               cannot_be_null: "ne peut pas être définie à NULL car la date de fin et la durée sont connues."
@@ -1596,7 +1595,7 @@ fr:
       added_date: "définie sur %{date}"
       changed_date: "changée du %{from} au %{to}"
       deactivated: "désactivée"
-      deleted_project_phase: "Deleted project phase"
+      deleted_project_phase: "Phase de projet supprimée"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} et %{finish_gate_message}"
       phase_and_one_gate: "%{phase_message}. %{gate_message}"
       removed_date: "date de suppression %{date}"
@@ -2056,7 +2055,7 @@ fr:
       work_package_sharing:
         description: "Partagez les lots de travaux avec des utilisateurs qui ne sont pas membres du projet."
       project_list_sharing:
-        description: "Share project lists with individual users."
+        description: "Partagez les listes de projets avec des utilisateurs individuels."
       define_custom_style:
         title: "Thème de couleur et logo personnalisés"
         more_info: "Remarque : le logo utilisé sera accessible publiquement."
@@ -2410,7 +2409,7 @@ fr:
         static_token_name: "Jeton RSS"
         disabled_text: "Les jetons RSS ne sont pas activés par l'administrateur. Veuillez contacter votre administrateur pour utiliser cette fonctionnalité."
       storages:
-        title: "File storages"
+        title: "Stockages de fichiers"
         text_hint: "Les jetons de stockage de fichiers connectent cette instance OpenProject à une solution de stockage de fichiers externe."
         empty_text_hint: "Il n'y a pas d'accès à l'espace de stockage lié à votre compte."
         revoke_token: "Voulez-vous vraiment supprimer ce jeton ? Vous devrez vous reconnecter sur %{storage}"
@@ -2445,7 +2444,7 @@ fr:
         responsible: "Vous êtes devenu responsable de %{work_package}"
         watched: "Vous surveillez %{work_package}"
     query:
-      invalid_filter: "Invalid notification filter"
+      invalid_filter: "Filtre de notification invalide"
   label_accessibility: "Accessibilité"
   label_account: "Compte"
   label_active: "Actif"
@@ -2601,8 +2600,8 @@ fr:
   label_deleted_custom_item: "(élément supprimé)"
   label_deleted_custom_option: "(option supprimée)"
   label_empty_element: "(vide)"
-  label_go_back: "Go back one menu level"
-  label_go_forward: "Open %{module} sub-menu"
+  label_go_back: "Revenir en arrière d'un niveau de menu"
+  label_go_forward: "Ouvrir le sous-menu %{module}"
   label_missing_or_hidden_custom_option: "(valeur manquante ou manque d'autorisations d'accès)"
   label_descending: "Décroissant"
   label_details: "Détails"
@@ -2892,8 +2891,8 @@ fr:
   label_project_custom_field_plural: "Attributs du projet"
   label_project_settings: "Paramètres du projet"
   label_project_attributes_settings: "Paramètres des attributs du projet"
-  label_project_storage_plural: "File storages"
-  label_project_storage_project_folder: "File storages: Project folders"
+  label_project_storage_plural: "Stockages de fichiers"
+  label_project_storage_project_folder: "Espaces de stockage des fichiers : dossiers du projet"
   label_projects_disk_usage_information: "%{count} projets utilisant %{used_disk_space} d'espace disque"
   label_project_view_all: "Afficher tous les projets"
   label_project_show_details: "Afficher les détails du projet"
@@ -2902,7 +2901,7 @@ fr:
   label_query_new: "Nouvelle requête"
   label_query_plural: "Requêtes personnalisées"
   label_read: "Lire…"
-  label_read_documentation: "Read documentation"
+  label_read_documentation: "Lire la documentation"
   label_register: "Créer un compte"
   label_register_with_developer: "S'inscrire en tant que développeur"
   label_registered_on: "Enregistré sur"
@@ -3634,7 +3633,7 @@ fr:
       oauth_application_details: "La clé secrète du client ne sera plus accessible après la fermeture de cette fenêtre. Veuillez copier ces valeurs dans les paramètres d'intégration Nextcloud OpenProject :"
       oauth_application_details_link_text: "Aller à la page des paramètres"
       setup_documentation_details: "Si vous avez besoin d'aide pour configurer un nouvel espace de stockage des fichiers, veuillez consulter la documentation : "
-      setup_documentation_details_link_text: "File storages setup"
+      setup_documentation_details_link_text: "Configuration de l'espace de stockage des fichiers"
       show_warning_details: "Pour utiliser ce stockage de fichiers, n'oubliez pas d'activer le module et le stockage spécifique dans les paramètres du projet de chaque projet souhaité."
     subversion:
       existing_title: "Dépôt Subversion existant"
@@ -4333,13 +4332,13 @@ fr:
       code_500_outbound_request_failure: "Une requête sortante vers une autre ressource a échoué avec le code de statut %{status_code}."
       code_500_missing_enterprise_token: "La requête ne peut pas être traitée en raison d'un jeton Entreprise invalide ou manquant."
       bad_request:
-        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+        emoji_reactions_activity_type_not_supported: "Ce type d'activité ne prend pas en charge les réactions émojis."
       conflict:
         multiple_reminders_not_allowed: |-
-          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
+          Vous ne pouvez définir qu'un seul rappel à la fois pour un lot de travaux. Veuillez supprimer ou mettre à jour le rappel existant.
       not_found:
         work_package: "Le lot de travaux que vous cherchez est introuvable ou a été supprimé."
-        reminder: "The reminder you are looking for cannot be found or has been deleted."
+        reminder: "Le rappel que vous cherchez est introuvable ou a été supprimé."
       expected:
         date: "AAAA-MM-JJ (date ISO 8601 uniquement)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (n'importe quelle date heure compatible ISO 8601)"

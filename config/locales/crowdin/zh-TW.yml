@@ -100,7 +100,7 @@ zh-TW:
     jemalloc_allocator: Jemalloc 記憶體分配器
     journal_aggregation:
       explanation:
-        text: "例如使用者\"更新\"工作項目兩次，如果時間間隔小於設定值，則將合併視為為單次操作。應用程序中亦會顯示為單個操作。這也會套用在電子郵件通知，以及 %{webhook_link} 。"
+        text: "使用者的個別操作（例如：在短時間內更新同一工作套件兩次）若時間差距小於指定時長，系統會將這些操作合併為單一動作，並於應用程式中以單一動作顯示。\n此機制同時會延遲通知發送相同的時間，以減少電子郵件數量，並且會影響 %{webhook_link} 的延遲時間。"
         link: "webhook"
   authentication:
     login_and_registration: "登入及註冊"
@@ -252,10 +252,10 @@ zh-TW:
     is_enabled_globally: "已全域啟用"
     enabled_in_project: "已在專案中啟用"
     contained_in_type: "已包含在類型中"
-    confirm_destroy_option: "刪除一個項目將會一併刪除所有出現這個項目的地方 (例如：在工作項目中)。你確定要刪除它嗎？"
+    confirm_destroy_option: "刪除此選項將會刪除其所有出現位置（例如：工作套件中的該選項）。您確定要刪除嗎？"
     reorder_alphabetical: "按字母順序重新排列"
     reorder_confirmation: "警告：目前可用值的順序將會遺失。繼續嗎？"
-    placeholder_version_select: "需要先選擇工作項目或專案"
+    placeholder_version_select: "需要先選擇工作套件或專案"
     instructions:
       is_required: "將此欄位定義成必填。\n"
       is_required_for_project: "勾選以啟用此屬性，並使其成為所有專案的必要屬性。個別專案無法停用。"
@@ -266,7 +266,7 @@ zh-TW:
       editable: "允許使用者自行編輯此欄位"
       admin_only: "勾選可使此屬性只對管理員可見。沒有管理員權限的使用者將無法檢視或編輯。"
       is_filter: >
-        允許在工作項目檢視中的篩選條件使用客製欄位。請注意，僅在選擇「所有專案」的情況下，客製欄位才會出現在所有檢視中。
+        允許在工作套件檢視中的篩選條件使用客製欄位。請注意，僅在選擇「所有專案」的情況下，客製欄位才會出現在所有檢視中。
     tab:
       no_results_title_text: 目前沒有自定義的欄位
       no_results_content_text: 建立一個新的自定義欄位
@@ -317,12 +317,12 @@ zh-TW:
       #Contains custom strings for options when copying a project that cannot be found elsewhere.
       members: "專案成員"
       overviews: "專案總覽"
-      queries: "工作項目：儲存的檢視"
+      queries: "工作套件：儲存的檢視"
       wiki_page_attachments: "Wiki 頁面附件"
-      work_package_attachments: "工作項目：附件"
-      work_package_categories: "工作項目：類別"
-      work_package_file_links: "工作項目：檔案連結"
-      work_package_shares: "工作項目：參與"
+      work_package_attachments: "工作套件：附件"
+      work_package_categories: "工作套件：類別"
+      work_package_file_links: "工作套件：檔案連結"
+      work_package_shares: "工作套件：共享"
     delete:
       scheduled: "已經安排背景執行刪除任務。你將會收到結果通知。"
       schedule_failed: "專案無法刪除: %{errors}"
@@ -343,7 +343,7 @@ zh-TW:
       my: "我的專案"
       favored: "收藏的專案"
       archived: "封存專案"
-      shared: "共用專案清單"
+      shared: "共享專案清單"
       my_lists: "我的專案列表"
       new:
         placeholder: "新專案清單"
@@ -380,8 +380,8 @@ zh-TW:
         no_results_title_text: 專案上目前沒有任何論壇。
         no_results_content_text: 建立論壇。
       categories:
-        no_results_title_text: 目前沒有工作項目類別
-        no_results_content_text: 建立一個新工作項目類別
+        no_results_title_text: 目前沒有工作套件類別。
+        no_results_content_text: 建立一個新工作套件類別
       custom_fields:
         no_results_title_text: 目前沒有客製欄位可用。
       life_cycle:
@@ -442,15 +442,15 @@ zh-TW:
     invite_by_mail: "寄發邀請至：%{mail}"
     send_invite_to: "寄送邀請"
     columns:
-      shared: "參與"
+      shared: "共享"
     filters:
-      all_shares: "所有參與的"
+      all_shares: "所有共享的"
     menu:
       all: "全部"
       invited: "已邀請"
       locked: "停用"
       project_roles: "專案角色"
-      wp_shares: "參與之工作項目"
+      wp_shares: "工作套件共享"
       groups: "群組"
     delete_member_dialog:
       title: "移除成員"
@@ -460,9 +460,9 @@ zh-TW:
         other: "不過， %{shared_work_packages_link} ，也與此使用者共同參與。"
       however_work_packages_shared_with_group_html:
         other: "不過， %{shared_work_packages_link} ，也與此群組共同參與。"
-      remove_work_packages_shared_with_user_too: "已移除專案成員的使用者，但其仍可參與工作項目。您也想移除參與權限嗎？"
-      remove_work_packages_shared_with_group_too: "已移除群組，但其中若是專案成員仍可參與工作項目。您也想移除參與權限嗎？"
-      will_not_affect_inherited_shares: "(這不會影響與其小組參與工作項目)。"
+      remove_work_packages_shared_with_user_too: "某位已被移除的成員仍可存取其被共享的工作套件。你是否也想一併移除這些共享？"
+      remove_work_packages_shared_with_group_too: "已移除群組，但專案成員仍可參與工作套件。您也想移除參與權限嗎？"
+      will_not_affect_inherited_shares: "（這不會影響與其所屬群組共享的工作套件。）"
       can_remove_direct_but_not_shared_roles: "您可以直接刪除該用戶的專案成員身份，但他們所在的群組也是該專案成員，因此他們將繼續通過群組成為成員。"
       also_work_packages_shared_with_user_html:
         other: "此外，還與該用戶參與了 %{shared_work_packages_link}。"
@@ -473,20 +473,20 @@ zh-TW:
       cannot_delete_inherited_membership_note_admin_html: "您可以在 %{administration_settings_link} 中刪除作為項目成員的組或組中的特定成員。"
       cannot_delete_inherited_membership_note_non_admin: "您可以將該群組作為專案成員移除，或者聯繫管理員將該特定成員從組中移除。"
     delete_work_package_shares_dialog:
-      title: "撤銷已參與的工作項目"
+      title: "撤銷已參與的工作套件"
       shared_with_this_user_html:
         other: "%{all_shared_work_packages_link} 已讓用戶參與。"
       shared_with_this_group_html:
         other: "%{all_shared_work_packages_link} 已讓該群組參與。"
       shared_with_permission_html:
         other: "只有 %{shared_work_packages_link} 分享 %{shared_role_name} 權限。"
-      revoke_all_or_with_role: "您想撤銷所有參與工作項目的存取權限，還是只撤銷 %{shared_role_name} 的相關權限？"
-      will_not_affect_inherited_shares: "(這不會影響其群組參與工作項目)。"
-      cannot_remove_inherited: "無法刪除通過群組參與的工作項目。"
-      cannot_remove_inherited_with_role: "角色 %{shared_role_name} 參與的工作項目是通過群組分享的，不能刪除。"
+      revoke_all_or_with_role: "您想撤銷所有參與工作套件的存取權限，還是只撤銷 %{shared_role_name} 的相關權限？"
+      will_not_affect_inherited_shares: "(這不會影響其群組參與工作套件)。"
+      cannot_remove_inherited: "無法刪除通過群組參與的工作套件。"
+      cannot_remove_inherited_with_role: "與角色 %{shared_role_name} 共享的工作套件是透過群組分享的，無法移除。"
       cannot_remove_inherited_note_admin_html: "您可以在 %{administration_settings_link} 中撤銷群組參與，或從群組中刪除該特定成員。"
       cannot_remove_inherited_note_non_admin: "您可以撤銷對該群組參與，或者聯繫管理員將該特定成員從群組中刪除。"
-      will_revoke_directly_granted_access: "此操作將取消他們對所有工作項目的訪問權限，但會取消他們對某個群組共用的工作項目存取權限。"
+      will_revoke_directly_granted_access: "此操作將撤銷他們對所有工作套件的存取權限，但不包含與群組共享的工作套件。"
       will_revoke_access_to_all: "此操作將撤銷他們對所有這些系統的存取權限。"
   my:
     access_token:
@@ -556,8 +556,8 @@ zh-TW:
   prioritiies:
     edit:
       priority_color_text: |
-        按一下以分配或更改此優先順序的顏色。
-        它可用於突出顯示表中的工作項目。
+        點擊以指派或變更此優先順序的顏色。
+        可用於在表格中突顯工作套件。
   reactions:
     action_title: "反應"
     add_reaction: "加入反應"
@@ -573,23 +573,22 @@ zh-TW:
   statuses:
     edit:
       status_color_text: |
-        按一下以分配或更改此優先順序的顏色。
-        它可用於突出顯示表中的工作包。
+        點擊以指派或變更此狀態的顏色。
+        此顏色會顯示在狀態按鈕上，並可用於在表格中突顯工作套件。
       status_default_text: |-
-        新工作項目預設為此類型。它們不能為唯讀。
+        新工作套件預設為此類型。它們不能為唯讀。
       status_excluded_from_totals_text: |-
-        選中此選項可將具有此狀態的工作包排除在層次結構中的 "工時"、"
-        剩餘工時 "和 "完成百分比 "總數之外。
+        勾選此選項以排除具有此狀態的工作套件，讓它們不計入階層中的工作總量、剩餘工作量及完成百分比。
       status_percent_complete_text: |-
-        在<a href="%{href}">基於狀態的進度計算模式</a>下，工作項目的完成百分比會自動設定為此值。
-        而基於工作的模式則會被忽略。
+        在 <a href="%{href}">狀態導向的進度計算模式</a> 中，選擇此狀態時，工作套件的完成百分比將自動設定為此值。
+        若使用工作量導向模式，此設定將被忽略。
       status_readonly_html: |
-        勾選此選項可以將該狀態的工作項目標記為唯讀。
+        勾選此選項可以將該狀態的工作套件標記為唯讀。
         除狀態外，任何屬性都無法改變。
         <br>
         <strong>注意</strong>：繼承的值（例如來自子項或關係）仍然適用。
     index:
-      no_results_title_text: 目前沒有工作項目狀態
+      no_results_title_text: 目前沒有任何工作套件狀態。
       no_results_content_text: 新增一個狀態
       headers:
         is_default: "預設"
@@ -612,19 +611,19 @@ zh-TW:
         enabled_projects: "已啟用專案"
       settings:
         tab: "設定"
-        type_color_text: 選取的顏色可區分甘特圖或工作包表格中的不同類型。因此建議使用強烈的顏色。
+        type_color_text: 選取的顏色可區分甘特圖或工作套件表格中的不同類型。因此建議使用強烈的顏色。
       subject_configuration:
         tab: "主題設定"
         manually_editable_subjects:
           label: "可手動編輯的主題"
-          caption: "使用者可以不受限制地手動輸入和編輯工作項目主題。"
+          caption: "使用者可以不受限制地手動輸入和編輯工作套件標題。"
         automatically_generated_subjects:
           label: "自動產生的主題"
-          caption: "使用參考屬性和文字定義模式，以自動產生工作項目主題。使用者將無法手動編輯主題。"
+          caption: "使用參考屬性和文字定義模式，以自動產生工作套件標題。使用者將無法手動編輯標題。"
         token:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:
-            work_package: "工作項目"
+            work_package: "工作套件"
             parent: "上層目錄："
             project: "專案"
         pattern:
@@ -634,7 +633,7 @@ zh-TW:
           supported_attributes_link: "支援的屬性"
       export_configuration:
         tab: "產生PDF檔案"
-        intro: "從可用的範本中選擇您想要為此類型啟用的範本。範本決定了使用此類工作項目匯出的 PDF 中顯示的設計和屬性。預設為選定清單中的第一個模板。"
+        intro: "從可用的範本中選擇您想要為此類型啟用的範本。範本決定了使用此類工作套件匯出的 PDF 中顯示的設計和屬性。預設為選定清單中的第一個模板。"
         pdf_export_templates:
           label: "PDF匯出範本"
           actions:
@@ -642,8 +641,8 @@ zh-TW:
             label_disable_all: "全部停用"
   versions:
     overview:
-      work_packages_in_archived_projects: "該版本與歸檔項目共用，這些專案仍然有分配給此版本的工作項目。雖然這些工作項目被計算在內，但不會顯示在視圖中。"
-      no_results_title_text: 目前沒有分配給此版本的工作項目。
+      work_packages_in_archived_projects: "此版本與已封存的專案共享，而這些專案仍有指派至該版本的工作套件。這些工作套件會被計算在內，但不會出現在關聯檢視中。"
+      no_results_title_text: 目前沒有分配給此版本的工作套件。
   wiki:
     page_not_editable_index: 本頁不存在,重新導至wiki目錄頁。
     no_results_title_text: 目前沒有 wiki 頁面
@@ -662,16 +661,16 @@ zh-TW:
           manual_mobile: "忽略關係。"
           manual_gap_between_predecessors: "這款產品與所有前代產品之間存在差距。"
           manual_overlap_with_predecessors: "與至少一個前置工作任務重疊。"
-          manual_with_children: "這有子工作項目，但它們的開始日期會被忽略。"
+          manual_with_children: "這有子工作套件，但它們的開始日期會被忽略。"
         title:
           automatic_mobile: "自動排程。"
-          automatic_with_children: "日期由子工作項目決定。"
-          automatic_with_predecessor: "開始日期由前工作項目設定。"
+          automatic_with_children: "日期由子工作套件決定。"
+          automatic_with_predecessor: "開始日期由前工作套件設定。"
           manual_mobile: "手動排程。"
           manually_scheduled: "手動排程。日期不受關聯任務影響。"
       blankslate:
         title: "沒有前置項目"
-        description: "若要啟用自動排程，此工作項目必須至少有一個前置工作。這樣它就會自動排程在最接近的前置工作之後開始。"
+        description: "若要啟用自動排程，此工作套件必須至少有一個前置工作。這樣它就會自動排程在最接近的前置工作之後開始。"
       ignore_non_working_days:
         title: "限工作日"
       mode:
@@ -684,39 +683,39 @@ zh-TW:
         aria_label: "日期選擇器標籤"
         children: "子項目"
         dates: "日期"
-        predecessors: "前工作項目"
+        predecessors: "前工作套件"
         successors: "繼承者"
         blankslate:
           predecessors:
             title: "沒有前置項目"
-            description: "本工作項目沒有任何前工作項目。"
+            description: "此工作套件沒有任何前置任務。"
           successors:
             title: "沒有繼任工作"
-            description: "本工作包沒有任何繼任工作。"
+            description: "本工作套件沒有任何繼任工作。"
           children:
             title: "沒有子項"
-            description: "此工作項目沒有任何子項。"
+            description: "此工作套件沒有任何子項。"
     x_descendants:
-      other: "%{count} 個子工作項目"
+      other: "%{count} 個子工作套件"
     bulk:
-      copy_failed: "此工作項目無法被複製"
-      move_failed: "此工作項目無法被移動"
+      copy_failed: "此工作套件無法被複製。"
+      move_failed: "此工作套件無法被移動。"
       could_not_be_saved: "以下文檔無法被保存"
-      none_could_be_saved: " %{total} 個工作項目無法更新"
-      x_out_of_y_could_be_saved: "在 %{total} 個工作包中，%{failing} 個無法更新，%{success} 個可以更新。"
-      selected_because_descendants: "雖然選擇了 %{selected} 工作項目，但共有 %{total} 個工作項目受到影響，包括子工作項目。"
+      none_could_be_saved: "%{total} 個工作套件無法更新。"
+      x_out_of_y_could_be_saved: "在 %{total} 個工作套件中，有 %{failing} 個無法更新，而 %{success} 個更新成功。"
+      selected_because_descendants: "雖然選擇了 %{selected} 工作套件，但共有 %{total} 個工作套件受到影響，包括子工作套件。"
       descendant: "所選項的子工作"
     move:
-      no_common_statuses_exists: "被選取的工作項目沒有可用的狀態。他們的狀態不可以變更。"
-      unsupported_for_multiple_projects: "工作項目不支援從多個專案的大區塊的移動/複製"
+      no_common_statuses_exists: "被選取的工作套件沒有可用的狀態。他們的狀態不可以變更。"
+      unsupported_for_multiple_projects: "工作套件不支援從多個專案的大區塊的移動/複製"
       current_type_not_available_in_target_project: >
-        當前工作包類型未在目標項目中啓用。 如果您想保持不變，請啓用目標項目中的類型。 否則，將從列表中選擇目標項目中的可用類型。
+        目前工作套件的類型在目標專案中未啟用。若希望保持不變，請先在目標專案啟用該類型；否則，請從列表中選擇目標專案中已啟用的類型。
       bulk_current_type_not_available_in_target_project: >
-        當前類型之工作項目尚未啓用於目標專案。如果您希望工作項目類型保持不變，請在目標專案中啓用這些類型。否則，請從列表中選擇目標專案中的可用類型。
+        當前類型之工作套件尚未啓用於目標專案。如果您希望工作套件類型保持不變，請在目標專案中啓用這些類型。否則，請從列表中選擇目標專案中的可用類型。
     sharing:
       missing_workflow_warning:
-        title: "共用工作項目缺少工作流"
-        message: "沒有為\"工作項目編輯者\"角色配置工作流程。沒有工作流參與，參與用戶就無法更改工作項目的狀態。工作流程可以複製。選擇一個類型(例如\"任務\")和角色(例如\"成員\")。然後選擇目標類型。一開始，您可以將所有類型都選擇為目標類型。最後，選擇\"工作項目編輯者\"角色作為目標，然後點擊\"複製\"。在建立預設設定之後，像對其他角色一樣進行微調，以其對工作流程進行詳細調整。"
+        title: "共用工作套件缺少工作流"
+        message: "「工作套件編輯者」角色尚未設定工作流程。沒有工作流程時，共享給該角色的使用者無法變更工作套件的狀態。您可以複製其他工作流程：選擇來源類型（例如「任務」）和來源角色（例如「成員」）。接著選擇目標類型。初期建議選擇所有類型作為目標。最後，選擇「工作套件編輯者」角色作為目標，並按下「複製」。建立預設後，您可以像調整其他角色的工作流程一樣，進行細部調整。"
         link_message: "在管理中配置工作流。"
     templated_subject_hint: 透過類型 %{type}自動產生
     summary:
@@ -737,10 +736,10 @@ zh-TW:
           no_results_title_text: 目前沒有可用的版本
   work_package_relations_tab:
     index:
-      action_bar_title: "新增關係至其他工作項目，以建立它們之間的連結。"
-      no_results_title_text: 目前沒有相關工作項目
+      action_bar_title: "新增關係至其他工作套件，以建立它們之間的連結。"
+      no_results_title_text: 目前沒有相關工作套件。
       blankslate_heading: "沒有關聯"
-      blankslate_description: "此工作項目尚未建立任何關係。"
+      blankslate_description: "此工作套件尚未建立任何關係。"
     label_add_child_button: "子項目"
     label_add_x: "新增 %{x}"
     label_edit_x: "編輯：%{x}"
@@ -748,66 +747,66 @@ zh-TW:
     lag:
       subject: "延遲"
       caption: |-
-        兩個工作項目之間的最少間隔工作天數。這個數值也可以是負數。
+        兩個工作套件之間的最少間隔工作天數。這個數值也可以是負數。
     relations:
-      label_new_child_created: "建立新的工作項目，並以子項目新增"
+      label_new_child_created: "建立新的工作套件，並以子套件新增"
       label_relates_singular: "相關於"
       label_relates_plural: "相關於"
       label_relates_to_singular: "相關於"
       label_relates_to_plural: "相關於"
-      relates_description: "在兩個工作項目之間建立可見的連結，沒有額外影響"
-      relates_to_description: "在兩個工作項目之間建立可見的連結，沒有額外影響"
+      relates_description: "在兩個工作套件之間建立可見的連結，沒有額外影響"
+      relates_to_description: "在兩個工作套件之間建立可見的連結，沒有額外影響"
       label_precedes_singular: "後置任務(FS)"
       label_precedes_plural: "後置任務(FS)"
-      precedes_description: "相關的工作項目必須在完成後才開始執行"
+      precedes_description: "相關的工作套件必須在完成後才開始執行"
       label_follows_singular: "前置任務(SF)"
       label_follows_plural: "前置任務(SF)"
-      follows_description: "在這個工作項目開始之前，相關的工作必須先完成"
+      follows_description: "在這個工作套件開始之前，相關的工作必須先完成"
       label_child_singular: "子項目"
       label_child_plural: "子項目"
       new_child: "建立子項目"
-      new_child_description: "使相關工作成為目前（上層）工作項目的子項目"
+      new_child_description: "使相關工作成為目前（上層）工作套件的子套件"
       child: "子項目"
-      child_description: "使相關工作成為目前（父）工作項目的子項目"
+      child_description: "使相關工作套件成為目前（父）工作套件的子套件"
       parent: "上層目錄："
-      parent_description: "使相關工作成為當前（子）工作項目的上層項目"
+      parent_description: "使相關工作成為當前（子）工作套件的上層套件"
       label_closest: "最近的"
       label_blocks_singular: "區塊"
       label_blocks_plural: "區塊"
-      blocks_description: "在本工作項目結束之前，關聯工作無法結束"
+      blocks_description: "在本工作套件結束之前，關聯工作無法結束"
       label_blocked_singular: "標示禁止"
       label_blocked_plural: "標示禁止"
       label_blocked_by_singular: "標示禁止"
       label_blocked__by_plural: "標示禁止"
-      blocked_description: "在關聯工作項目先結束之前，此工作無法結束"
-      blocked_by_description: "在關聯工作項目先結束之前，此工作無法結束"
+      blocked_description: "在關聯工作套件先結束之前，此工作無法結束"
+      blocked_by_description: "在關聯工作套件先結束之前，此工作無法結束"
       label_duplicates_singular: "重複"
       label_duplicates_plural: "重複"
-      duplicates_description: "這是關聯工作項目的複本"
+      duplicates_description: "這是關聯工作套件的複本"
       label_duplicated_singular: "重複於"
       label_duplicated_plural: "重複於"
       label_duplicated_by_singular: "重複於"
       label_duplicated_by_plural: "重複於"
-      duplicated_by_description: "關聯工作項目於此複製"
-      duplicated_description: "關聯工作項目於此複製"
+      duplicated_by_description: "關聯工作套件於此複製"
+      duplicated_description: "關聯工作套件於此複製"
       label_includes_singular: "包括"
       label_includes_plural: "包括"
-      includes_description: "將關聯工作標示包含此工作項目，但無額外影響"
+      includes_description: "將關聯工作標示包含此工作套件，但無額外影響"
       label_partof_singular: "部份於"
       label_partof_plural: "部份於"
       label_part_of_singular: "部份於"
       label_part_of_plural: "部份於"
-      partof_description: "將相關工作項目標示為此工作一部分，但無額外影響"
-      part_of_description: "將相關工作項目標示為此工作一部分，但無額外影響"
+      partof_description: "將相關工作套件標示為此工作一部分，但無額外影響"
+      part_of_description: "將相關工作套件標示為此工作一部分，但無額外影響"
       label_requires_singular: "需要"
       label_requires_plural: "需要"
-      requires_description: "將關聯工作項目標示為此工作套件的需求"
+      requires_description: "將關聯工作套件標示為此工作套件的需求"
       label_required_singular: "要求由"
       label_required_plural: "要求由"
-      required_description: "將此工作項目標示為相關工作的需求"
+      required_description: "將此工作套件標示為相關工作的需求"
       label_parent_singular: "上層"
       label_parent_plural: "上層"
-      ghost_relation_title: "相關的工作項目"
+      ghost_relation_title: "相關的工作套件"
       ghost_relation_description: "由於權限的緣故，您無法看到。"
   label_invitation: 邀請
   account:
@@ -816,8 +815,8 @@ zh-TW:
     deletion_pending: "帳戶已被鎖定且預計刪除。 請注意，此過程背景執行。 可能需要一些時間才能完全刪除使用者。"
     deletion_info:
       data_consequences:
-        other: '您創建的資料 （例如電子郵件、 我的最愛、 工作項目，維基條目） 一樣可能會被刪除。但是請注意像工作項目和維基條目的資料刪除可能導致阻礙其他使用者的工作。這種資料因此重新分配到稱為"刪除使用者"的帳戶。由每筆被刪除而分配到這帳戶將不可能再從刪除帳戶中分配資料給你創建。'
-        self: '您創建的資料 （例如電子郵件、 我的最愛、 工作項目，維基條目） 一樣可能會被刪除。但是請注意像工作項目和維基條目的資料刪除可能導致阻礙其他使用者的工作。這種資料因此重新分配到稱為"刪除使用者"的帳戶。由每筆被刪除而分配到這帳戶將不可能再從刪除帳戶中分配資料給你創建。'
+        other: '使用者所建立的資料（例如電子郵件、偏好設定、工作套件、維基條目）將盡可能被刪除。但請注意，像工作套件和維基條目等資料若刪除，會影響其他使用者的工作，因此這些資料會被重新指派給名為「已刪除使用者」的帳號。由於所有被刪除帳號的資料都會集中指派至此帳號，因此無法區分該使用者所建立的資料與其他已刪除帳號的資料。'
+        self: '您所建立的資料（例如電子郵件、偏好設定、工作套件、維基條目）將盡可能被刪除。但請注意，像工作套件和維基條目等資料若被刪除，將會影響其他使用者的工作，因此這些資料會被重新指派給名為「已刪除使用者」的帳號。由於所有被刪除帳號的資料都會集中指派至此帳號，因此無法區分您所建立的資料與其他已刪除帳號的資料。'
       heading: "刪除帳號 %{name}"
       info:
         other: "刪除使用者帳號是不可逆轉的動作。"
@@ -957,7 +956,7 @@ zh-TW:
           false: "解除範本"
         types: "類型"
         versions: "版本"
-        work_packages: "工作項目"
+        work_packages: "工作套件"
       project_custom_field:
         is_required: "所有專案都需要"
         custom_field_section: 區段
@@ -981,7 +980,7 @@ zh-TW:
         column_names: "欄"
         relations_to_type_column: "與 %{type} 的關連"
         relations_of_type_column: "%{type} 關係"
-        child_work_packages: "子工作項目"
+        child_work_packages: "子工作套件"
         group_by: "分組依據"
         sort_by: "排序結果"
         filters: "篩選條件"
@@ -997,13 +996,13 @@ zh-TW:
         starred: "收藏"
         hidden: "隐藏"
         manual_sorting: "手動排序順序"
-        ordered_work_packages: "工作項目排序"
+        ordered_work_packages: "工作套件排序"
         include_subprojects: "包含子專案"
         results: "結果"
       relation:
         lag: "延遲"
-        from: "相關的工作項目"
-        to: "相關的工作項目"
+        from: "相關的工作套件"
+        to: "相關的工作套件"
         relation_type: "關聯類別"
       reminder:
         remindable: "提醒物件"
@@ -1017,8 +1016,8 @@ zh-TW:
       role:
         permissions: "權限"
       status:
-        is_closed: "關閉工作項目"
-        is_readonly: "設定「工作項目」唯讀"
+        is_closed: "關閉工作套件"
+        is_readonly: "設定「工作套件」唯讀"
         excluded_from_totals: "從層次結構的總計中排除"
         default_done_ratio: "% 完成"
       token/ical:
@@ -1063,7 +1062,7 @@ zh-TW:
         dismissed_enterprise_banners: "隱藏的企業版廣告"
         impaired: "協助工具模式"
         auto_hide_popups: "提醒後自動隱藏"
-        warn_on_leaving_unsaved: "離開尚未儲存的工作項目時提示我"
+        warn_on_leaving_unsaved: "離開尚未儲存的工作套件時提示我"
         theme: "模式 "
         time_zone: "時區"
         mode_guideline: "為了親和性以及方便閱讀性，某些模式將覆蓋自訂主題顏色。對於完整的自訂主題，請選擇白色模式。"
@@ -1098,8 +1097,8 @@ zh-TW:
         journal_internal: 內部日誌
         notify: "通知" #used in custom actions
         parent: "上層目錄："
-        parent_issue: "上層工作項目："
-        parent_work_package: "上層工作項目："
+        parent_issue: "上層工作套件"
+        parent_work_package: "上層工作套件"
         priority: "優先等級"
         progress: "完成度(%)"
         readonly: "唯讀"
@@ -1126,7 +1125,7 @@ zh-TW:
         blank_nested: "需要設置屬性  '%{property}' "
         cannot_delete_mapping: "必需項，不能刪除"
         is_for_all_cannot_modify: "適用於所有專案，因此無法修改。"
-        cant_link_a_work_package_with_a_descendant: "一個工作項目不能聯結到它的一個子項目"
+        cant_link_a_work_package_with_a_descendant: "工作套件不能聯結到自己的子套件。"
         circular_dependency: "這個關係會建立一個循環依賴"
         confirmation: "不吻合 %{attribute}。"
         could_not_be_copied: "%{dependency} 無法完整複製."
@@ -1264,12 +1263,12 @@ zh-TW:
               id_filter_required: "'id' 篩選條件是必要的"
         project:
           archived_ancestor: "該專案已有一個存檔。"
-          foreign_wps_reference_version: "非子級項目中的工作包會引用此項目或其子級的版本。"
+          foreign_wps_reference_version: "非子孫專案中的工作套件參考該專案或其子孫專案的版本。"
           attributes:
             base:
               archive_permission_missing_on_subprojects: "您沒有權限將所有子專案封存。請洽系統管理員。"
             types:
-              in_use_by_work_packages: "%{types} 仍在被工作項目使用中"
+              in_use_by_work_packages: "%{types} 仍在被工作套件使用中"
             enabled_modules:
               dependency_missing: "還需要啓用模塊“%{dependency}”，因為模塊“%{module}”依賴於該模塊。"
               format: "%{message}"
@@ -1322,7 +1321,7 @@ zh-TW:
         queries/principals/filters/internal_mentionable_on_work_package_filter:
           attributes:
             values:
-              single_value_requirement: "必須是單一工作項目"
+              single_value_requirement: "必須是單一工作套件"
         relation:
           typed_dag:
             circular_dependency: "無限迴圈的關聯。"
@@ -1382,11 +1381,11 @@ zh-TW:
             slug:
               undeducible: "無法從標題“%{title}”推導出。"
         work_package:
-          is_not_a_valid_target_for_time_entries: "工作項目 #%{id} 不是重新分配時間項目有效的目標"
+          is_not_a_valid_target_for_time_entries: "工作套件 #%{id} 不是重新分配時間項目有效的目標。"
           attributes:
             id:
               format: "%{message}"
-              cannot_add_child_because_of_lack_of_permission: "無法新增子項，因為您沒有所選工作項目的編輯權限。"
+              cannot_add_child_because_of_lack_of_permission: "無法新增子項，因為您沒有所選工作套件的編輯權限。"
               blank: "ID 不能空白。"
             assigned_to:
               format: "%{message}"
@@ -1402,7 +1401,7 @@ zh-TW:
             duration:
               larger_than_dates: "大於開始日期和結束日期之間的間隔。"
               smaller_than_dates: "小於開始日期和結束日期之間的間隔。"
-              not_available_for_milestones: "不適用於里程碑類型的工作項目。"
+              not_available_for_milestones: "不適用於里程碑類型的工作套件。"
               cannot_be_null: "無法設置為 null，因為開始日期和結束日期已知。"
               not_an_integer: "不是有效的持續時間。"
             parent:
@@ -1413,17 +1412,17 @@ zh-TW:
             schedule_manually:
               cannot_be_automatically_scheduled: "無法設定為 false（自動排程），因為它沒有前置或後續項目。"
             start_date:
-              violates_relationships: "只能設置為 %{soonest_start} 或更晚，才不會違反工作包的關聯。"
+              violates_relationships: "只能設置為 %{soonest_start} 或更晚，才不會違反工作套件的關聯。"
               cannot_be_null: "無法設置為 null，因為結束日期和持續時間已知。"
             status_id:
               status_transition_invalid: "無效，因為目前使用者的角色沒有從舊狀態到新狀態的有效過度狀態"
               status_invalid_in_type: "無效, 因為此類型中不存在目前狀態。"
             type:
-              cannot_be_milestone_due_to_children: "不可以是 MileStone 因為這個工作項目有子項目。"
+              cannot_be_milestone_due_to_children: "不可以是里程碑，因為這個工作套件有子套件。"
             priority_id:
               only_active_priorities_allowed: "需要被啟用"
             category:
-              only_same_project_categories_allowed: "工作項目的類別必須與工作項目在同一個專案中"
+              only_same_project_categories_allowed: "工作套件的類別必須與工作套件在同一個專案中。"
               does_not_exist: "指定的類別不存在"
             estimated_hours:
               not_a_number: "不是有效的持續時間。"
@@ -1438,12 +1437,12 @@ zh-TW:
                 當工時設定後，其完成度100%時，剩餘工時必須為 0。
               must_be_empty_when_work_is_empty_and_percent_complete_is_100p: >-
                 工時未設定設定，但完成度100%時，剩餘工時必須是空白。
-          readonly_status: "工作項目處於唯讀狀態，因此無法變更其屬性。"
+          readonly_status: "工作套件處於唯讀狀態，因此無法變更其屬性。"
         type:
           attributes:
             attribute_groups:
-              attribute_unknown: "使用了無效的工作項目屬性。"
-              attribute_unknown_name: "使用了無效的工作項目屬性: %{attribute}。"
+              attribute_unknown: "使用了無效的工作套件屬性。"
+              attribute_unknown_name: "使用了無效的工作套件屬性: %{attribute}"
               duplicate_group: "群組名稱 %{group} 已被使用，群組名稱不可重複。"
               query_invalid: "這個遷入的查詢 '%{group}' 是無效的: %{details}"
               group_without_name: "不允許未命名的群組。"
@@ -1484,8 +1483,8 @@ zh-TW:
             principal:
               unassignable: "無法分派到專案。"
         version:
-          undeletable_archived_projects: "該版本無法刪除，因為包含工作項目。"
-          undeletable_work_packages_attached: "該版本無法刪除，因為它附帶了工作項目。"
+          undeletable_archived_projects: "該版本無法刪除，因為包含工作套件。"
+          undeletable_work_packages_attached: "該版本無法刪除，因為它附帶了工作套件。"
         token/api:
           attributes:
             token_name:
@@ -1520,14 +1519,14 @@ zh-TW:
       reminder: "提醒"
       role:
         other: "角色"
-      status: "工作項目狀態"
+      status: "工作套件狀態"
       token/api:
         other: 存取權杖
       type: "類型"
       user: "使用者"
       version: "版本"
       workflow: "工作流程"
-      work_package: "工作項目"
+      work_package: "工作套件"
       wiki: "維基"
       wiki_page: "維基頁面"
   errors:
@@ -1569,7 +1568,7 @@ zh-TW:
       subproject: "包含子專案"
       time_entry: "耗時"
       wiki_edit: "維基"
-      work_package: "工作項目"
+      work_package: "工作套件"
     project_phase:
       activated: "已啟用"
       added_date: "設定為 %{date}"
@@ -1587,11 +1586,11 @@ zh-TW:
     attachments: "附加檔"
     actor: "行動者"
     action: "動作"
-    author: "工作項目發起者"
+    author: "工作套件發起者"
     avatar: "大頭貼"
     base: "一般錯誤:"
     body: "本體"
-    blocks_ids: "已被限制的工作項目 IDs"
+    blocks_ids: "已被限制的工作套件 IDs"
     category: "類別"
     comment: "留言"
     comments: "留言"
@@ -1628,7 +1627,7 @@ zh-TW:
     public: "公開"
     principal: "使用者或群組"
     #kept for backwards compatibility
-    issue: "工作項目"
+    issue: "工作套件"
     journal: "日誌"
     journal_notes: "留言"
     lastname: "姓："
@@ -1675,8 +1674,8 @@ zh-TW:
     values: "值"
     version: "版本"
     visible: "可見"
-    work_package: "工作項目"
-    work_package_id: "工作項目"
+    work_package: "工作套件"
+    work_package_id: "工作套件"
   backup:
     failed: "備份失敗"
     label_backup_token: "備份權杖(Token)"
@@ -1785,11 +1784,11 @@ zh-TW:
   button_add_menu_entry: "新增選單項目"
   button_configure_menu_entry: "設定選單項目"
   button_delete_menu_entry: "刪除選單項目"
-  button_view_shared_work_packages: "檢視參與的工作項目"
+  button_view_shared_work_packages: "檢視參與的工作套件"
   button_manage_roles: "管理角色"
   button_remove_member: "移除成員"
   button_remove_member_and_shares: "移除成員及參與項目"
-  button_revoke_work_package_shares: "撤銷已參與的工作項目"
+  button_revoke_work_package_shares: "撤銷已參與的工作套件"
   button_revoke_access: "撤銷存取權限"
   button_revoke_all: "全部撤銷"
   button_revoke_only: "僅撤銷 %{shared_role_name}"
@@ -1927,7 +1926,7 @@ zh-TW:
   description_active: "啟用？"
   description_attachment_toggle: "顯示/隱藏附件"
   description_autocomplete: >
-    這個欄位使用自動完成的功能。當你在輸入工作項目的標題的時候，你將會收到可能的候選清單。請使用上下鍵移動游標並且按下 Tab 鍵或 Enter 鍵選擇。或者您可直接輸入工作項目編號。
+    這個欄位使用自動完成的功能。當你在輸入工作套件的標題的時候，你將會收到可能的候選清單。請使用上下鍵移動游標並且按下 Tab 鍵或 Enter 鍵選擇。或者您可直接輸入工作套件編號。
   description_available_columns: "可用欄"
   description_choose_project: "專案"
   description_compare_from: "比較："
@@ -1943,14 +1942,14 @@ zh-TW:
   description_message_content: "訊息內容"
   description_my_project: "您是專案成員"
   description_notes: "備註"
-  description_parent_work_package: "上層工作項目"
+  description_parent_work_package: "上層工作套件"
   description_project_scope: "搜尋範圍"
   description_query_sort_criteria_attribute: "排序的屬性"
   description_query_sort_criteria_direction: "排序方向"
   description_search: "搜尋說明"
-  description_select_work_package: "選取工作項目"
+  description_select_work_package: "選取工作套件"
   description_selected_columns: "所選的欄"
-  description_sub_work_package: "顯示目前的子工作項目"
+  description_sub_work_package: "顯示目前的子工作套件"
   description_toc_toggle: "顯示/隱藏目錄"
   description_wiki_subpages_reassign: "選擇一個新的上層頁面"
   #Text direction: Left-to-Right (ltr) or Right-to-Left (rtl)
@@ -1973,14 +1972,14 @@ zh-TW:
       one_drive_sharepoint_file_storage: OneDrive/SharePoint 檔案儲存
       placeholder_users: 占位使用者
       project_list_sharing: 專案清單分享
-      readonly_work_packages: 唯讀工作項目
+      readonly_work_packages: 唯讀工作套件
       sso_auth_providers: 單一登入
       team_planner_view: 團隊規劃檢視
       two_factor_authentication: 雙重身份驗證
       virus_scanning: 掃描病毒
-      work_package_query_relation_columns: 工作項目查詢關聯列
-      work_package_sharing: 與外部使用者共用工作項目
-      work_package_subject_generation: 工作項目標題產生
+      work_package_query_relation_columns: 工作套件查詢關聯列
+      work_package_sharing: 與外部使用者共用工作套件
+      work_package_subject_generation: 工作套件標題產生
     upsell:
       plans_title: "企業方案"
       title: "企業版附加元件"
@@ -1998,23 +1997,23 @@ zh-TW:
       customize_life_cycle:
         description: "建立並組織不同於 PM2 專案週期規劃所提供的專案階段。"
       conditional_highlighting:
-        description: "需要讓某些工作項目從大量項目中脫穎而出嗎？請在工作項目表格中使用條件突顯功能。"
+        description: "想讓特定工作套件從眾多套件中脫穎而出？在工作套件列表中使用條件式醒目標示功能。"
       work_package_query_relation_columns:
-        description: "需要在工作項目清單中查看關聯或子項目嗎？"
+        description: "需要在工作套件清單中查看關聯或子套件嗎？"
       edit_attribute_groups:
         description: "使用以下額外附加元件自訂表單設定："
         features:
           groups: "增加新的屬性群組"
           rename: "重新命名群组屬性"
-          related: "新增相關工作項目表"
+          related: "新增相關工作套件表"
       readonly_work_packages:
-        description: "將特定狀態的工作項目標記為唯讀。"
+        description: "將特定狀態的工作套件標記為唯讀。"
       custom_field_hierarchies:
-        description: "階層自訂欄位允許透過多層選擇清單來組織工作項目中的階層結構。"
+        description: "階層自訂欄位允許透過多層選擇清單來組織工作套件中的階層結構。"
       date_alerts:
         description: "透過日期提醒，您將收到即將到來的開始或結束日期的通知，這樣您就不會錯過或忘記重要的截止日期。"
       work_package_sharing:
-        description: "與不是專案成員的使用者共同參與工作項目。"
+        description: "與不是專案成員的使用者共同參與工作套件。"
       project_list_sharing:
         description: "分享專案清單給個別使用者。"
       define_custom_style:
@@ -2023,7 +2022,7 @@ zh-TW:
         description: 客製OpenProject中專屬您的標誌(logo)與顏色。
       custom_actions:
         title: "自訂動作"
-        description: "自訂動作是一系列預先定義動作的單鍵捷徑，您可以根據狀態、角色、類型或專案，在特定工作項目上使用這些動作。"
+        description: "自訂動作是一系列預先定義動作的單鍵捷徑，您可以根據狀態、角色、類型或專案，在特定工作套件上使用這些動作。"
       nextcloud_sso:
         title: "Nextcloud 儲存空間的單一登入(SSO)"
         description: "使用單一登入為您的 Nextcloud 儲存空間啟用無縫且安全的驗證。簡化存取管理並提升使用者便利性。"
@@ -2032,7 +2031,7 @@ zh-TW:
       placeholder_users:
         title: 占位使用者
         description: >
-          「佔位使用者」是一種將工作項目分配給不屬於您專案成員的方法。它們在一系列場景中十分有用；例如，如果您需要追蹤尚未命名或可用的資源的任務，或者如果您不想讓該人員存取專案，但仍希望追蹤分配給他們的任務。
+          「佔位使用者」是一種將工作套件分配給不屬於您專案成員的方法。它們在一系列場景中十分有用；例如，如果您需要追蹤尚未命名或可用的資源的任務，或者如果您不想讓該人員存取專案，但仍希望追蹤分配給他們的任務。
       internal_comments:
         title: 內部備註
         description: "內部備註讓內部團隊可以私下溝通。這些僅對某些專案角色可见，永遠不會公開顯示。"
@@ -2040,7 +2039,7 @@ zh-TW:
         title: "只讓少數人能看到的內部備註"
         description: " "
   enumeration_activities: "時間追蹤活動"
-  enumeration_work_package_priorities: "工作項目優先等級"
+  enumeration_work_package_priorities: "工作套件優先等級"
   enumeration_reported_project_statuses: "報告的專案狀態"
   enumeration_caption_order_changed: "成功更改排序。"
   enumeration_could_not_be_moved: "無法移動枚舉。"
@@ -2048,14 +2047,14 @@ zh-TW:
   error_can_not_archive_project: "這個專案無法封存：%{errors}"
   error_can_not_delete_entry: "無法刪除項目"
   error_can_not_delete_custom_field: "無法刪除客製欄位"
-  error_can_not_delete_in_use_archived_undisclosed: "歸檔專案中也有工作項目。您需要請管理員執行刪除，才能看到哪些專案會受到影響。"
-  error_can_not_delete_in_use_archived_work_packages: "已歸檔的專案中也有工作項目。您需要先重新啟動下列專案，才能變更各工作項目屬性： %{archived_projects_urls}"
+  error_can_not_delete_in_use_archived_undisclosed: "歸檔專案中也有工作套件。您需要請管理員執行刪除，才能看到哪些專案會受到影響。"
+  error_can_not_delete_in_use_archived_work_packages: "已歸檔的專案中也有工作套件。您需要先重新啟動下列專案，才能變更各工作套件的屬性： %{archived_projects_urls}"
   error_can_not_delete_type:
     explanation: '此類型包含工作套件，且無法刪除。您可以在<a target="_blank" href="%{url}">此檢視</a>中看到所有受影響的工作套件。'
   error_can_not_delete_standard_type: "標準類型無法刪除"
   error_can_not_invite_user: "無法向用戶發送邀請。"
   error_can_not_remove_role: "這個角色正在使用中，無法刪除。"
-  error_can_not_reopen_work_package_on_closed_version: "被指定到已關閉版本的工作項目將無法重新開啟"
+  error_can_not_reopen_work_package_on_closed_version: "被指定到已關閉版本的工作套件將無法重新開啟"
   error_can_not_find_all_resources: "無法找到此請求的所有相關資源。"
   error_can_not_unarchive_project: "這個專案無法解除封存：%{errors}"
   error_check_user_and_role: "請選擇一個使用者與一個角色。"
@@ -2074,12 +2073,12 @@ zh-TW:
   error_pdf_failed_to_export: "無法另存 pdf 匯出: %{error}"
   error_token_authenticity: "無法驗證跨網域請求權杖(Token)。你是不是試圖在多個瀏覽器或者分頁上傳送資料？請關閉所有的分頁後再試一次。"
   error_reminder_not_found: "未找到提醒內容或已收到相關通知。"
-  error_work_package_not_found_in_project: "工作項目找不到或是不屬於這個專案"
-  error_work_package_id_not_found: "無此工作項目"
+  error_work_package_not_found_in_project: "工作套件找不到或是不屬於這個專案"
+  error_work_package_id_not_found: "無此工作套件。"
   error_must_be_project_member: "必須是專案的成員"
   error_migrations_are_pending: "您的 OpenProject 安裝有待定的資料庫轉移。您可能在上次升級時遺漏了執行遷移。請檢查升級指南以正確升級您的安裝。"
   error_migrations_visit_upgrade_guides: "請參閱我們的升級指南文件"
-  error_no_default_work_package_status: '沒有定義預設的工作項目狀態。請檢查您的設定 (前往 "管理 -> 工作項目狀態")。'
+  error_no_default_work_package_status: '沒有定義預設的工作套件狀態。請檢查您的設定 (前往 "管理 -> 工作套件狀態")。'
   error_no_type_in_project: "這個專案沒有關聯的類型，請檢查專案設定。"
   error_omniauth_registration_timed_out: "外部身份驗證註冊逾時，請再試一次。"
   error_omniauth_invalid_auth: "從身分提供者傳回的驗證資訊無效。請聯絡您的管理員尋求進一步協助。"
@@ -2087,8 +2086,8 @@ zh-TW:
   error_scm_command_failed: "嘗試存取版本庫的時候發生錯誤: %{value}"
   error_scm_not_found: "在版本庫中找不到項目或修訂"
   error_type_could_not_be_saved: "類型無法保存"
-  error_unable_delete_status: "工作項目狀態無法刪除，因為它被至少一個工作項目使用了。"
-  error_unable_delete_default_status: "無法刪除預設工作項目狀態。請在刪除這個狀態前選擇另外一個預設工作項目狀態。"
+  error_unable_delete_status: "工作套件狀態無法刪除，因為它被至少一個工作套件使用了。"
+  error_unable_delete_default_status: "無法刪除預設工作套件狀態。請在刪除這個狀態前選擇另外一個預設工作套件狀態。"
   error_unable_to_connect: "無法連接 (%{value})"
   error_unable_delete_wiki: "無法刪除 wiki 頁面"
   error_unable_update_wiki: "無法更新 wiki 頁面"
@@ -2110,9 +2109,9 @@ zh-TW:
     reply: 已回覆
     time_entry: "已編輯時間日誌"
     wiki_page: "維基頁面已編輯"
-    work_package_closed: "關閉工作項目"
-    work_package_edit: "工作項目已編輯"
-    work_package_note: "工作項目註記已新增"
+    work_package_closed: "關閉工作套件"
+    work_package_edit: "工作套件已編輯"
+    work_package_note: "工作套件註記已新增"
     title:
       project: "專案: %{name}"
       subproject: "子專案: %{name}"
@@ -2133,8 +2132,8 @@ zh-TW:
             label: "XLS"
       columns:
         input_label_report: "將欄位新增至屬性表"
-        input_caption_report: "預設情況下，所有在工作項目清單中新增為欄位的屬性都會被選取。長文字欄位在屬性表中不可用，但可以顯示在屬性表下方。"
-        input_caption_table: "預設情況下，所有在工作項目清單中新增為欄位的屬性都會被選取。長文字欄位在以表格匯出中不可用。"
+        input_caption_report: "預設情況下，所有在工作套件清單中新增為欄位的屬性都會被選取。長文字欄位在屬性表中不可用，但可以顯示在屬性表下方。"
+        input_caption_table: "預設情況下，所有在工作套件清單中新增為欄位的屬性都會被選取。長文字欄位在以表格匯出中不可用。"
         input_caption_required: "無法匯出沒有任何欄位的檢視。請至少新增一欄。"
       pdf:
         export_type:
@@ -2142,13 +2141,13 @@ zh-TW:
           options:
             table:
               label: "表格"
-              caption: "匯出所需欄位表格含有工作項目清單"
+              caption: "匯出所需欄位表格含有工作套件清單。"
             report:
               label: "報表"
-              caption: "在清單中所有工作項目的詳細報告上匯出工作項目。"
+              caption: "在清單中所有工作套件的詳細報告上匯出工作套件。"
             gantt:
               label: "甘特圖"
-              caption: "匯出甘特圖檢視中的工作項目清單。"
+              caption: "匯出甘特圖檢視中的工作套件清單。"
         include_images:
           label: "包含圖片"
           caption: "排除影像以減少 PDF 匯出的大小。"
@@ -2178,15 +2177,15 @@ zh-TW:
       xls:
         include_relations:
           label: "包含相關連的"
-          caption: "此選項會針對每個工作項目與其他工作項目的關係，建立一個複本。"
+          caption: "此選項會針對每個工作套件與其他工作套件的關係，建立一個複本。"
         include_descriptions:
           label: "包含說明"
           caption: "此選項會在原始格式新增說明欄位。"
-    your_work_packages_export: "正在匯出工作項目"
+    your_work_packages_export: "正在匯出工作套件"
     succeeded: "匯出完成"
-    failed: "嘗試匯出工作項目時發生錯誤： %{message}"
+    failed: "嘗試匯出工作套件時發生錯誤： %{message}"
     errors:
-      embedded_table_with_too_many_columns: "此內嵌工作項目表格無法符合頁面大小，請減少欄位數量。"
+      embedded_table_with_too_many_columns: "此內嵌工作套件表格無法符合頁面大小，請減少欄位數量。"
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2213,13 +2212,13 @@ zh-TW:
       caption: 目前表單配置中存在的所有屬性均使用預設範本。
     template_contract:
       label: "合約範本"
-      caption: 工作項目詳細資料格式化為標準德國合約格式。
+      caption: 工作套件詳細資料格式化為標準德國合約格式。
     dialog:
       title: 產生PDF檔案
       submit: 下載
       templates:
         label: "範本"
-        none_enabled: "尚未啟用此工作項目類型範本"
+        none_enabled: "尚未啟用此工作套件類型範本"
       footer_center:
         label: 頁尾文字
         caption: 此文字將會出現在每一頁頁尾的中心。
@@ -2288,16 +2287,16 @@ zh-TW:
       progress_mode_changed_to_status_based: "更新計算後的進度"
       status_changed: "狀態 '%{status_name}'"
       system_update: "OpenProject 系統更新："
-      work_package_duplicate_closed: "更新了重複工作項目："
+      work_package_duplicate_closed: "更新了重複工作套件："
       total_percent_complete_mode_changed_to_work_weighted_average: "完成百分比總計的計算現在以工作加權。"
       total_percent_complete_mode_changed_to_simple_average: "完成百分比總數的計算現在僅基於完成百分比值的簡單平均值。"
     cause_descriptions:
       work_package_predecessor_changed_times: 根據前置任務 %{link} 的更改
       work_package_parent_changed_times: 因上層%{link}而異動
-      work_package_children_changed_times: 因子工作項目%{link}而異動
+      work_package_children_changed_times: 因子工作套件%{link}而異動
       work_package_related_changed_times: 因與%{link}相關而異動
-      work_package_duplicate_closed: 重複的工作項目會自動更新狀態 %{link}
-      unaccessable_work_package_changed: 因相關工作項目而異動
+      work_package_duplicate_closed: 重複的工作套件會自動更新狀態 %{link}
+      unaccessable_work_package_changed: 因相關工作套件而異動
       working_days_changed:
         changed: "因工作天數 (%{changes})變更而異動"
         days:
@@ -2320,11 +2319,11 @@ zh-TW:
         scheduling_mode_adjusted: >-
           隨版本更新自動調整排程模式。
         totals_removed_from_childless_work_packages: >-
-          使用 <a href="%{href}" target="_blank">版本更新</a>的非父工作包的工作和進度總計自動移除。 這是一個維護任務，可以安全地被忽略。
+          對於帶有<a href="%{href}" target="_blank">版本更新</a>的非父工作套件，工時和進度總計已自動移除。這是一項維護任務，您可放心忽略。
       total_percent_complete_mode_changed_to_work_weighted_average: >-
-        沒有工作內容的子工作項目會被忽略。
+        沒有工作內容的子工作套件會被忽略。
       total_percent_complete_mode_changed_to_simple_average: >-
-        子工作包的工作值會被忽略。
+        子工作套件的工作數值將被忽略。
   links:
     configuration_guide: "設定指南"
     get_in_touch: "如有任何問題，歡迎聯繫我們"
@@ -2370,7 +2369,7 @@ zh-TW:
         static_token_name: "RSS 權杖(Token)"
         disabled_text: "尚未啟用 RSS 權杖(Token)功能。 請聯絡您的管理員。"
       storages:
-        title: "File storages"
+        title: "檔案儲存"
         text_hint: "檔案儲存區權杖(Token)，可將本專案管理系統與外部檔案儲存系統連接。"
         empty_text_hint: "沒有與您帳戶連動的儲存裝置存取權限。"
         revoke_token: "是否確實要移除此權杖？您需要再次登錄 %{storage}"
@@ -2398,10 +2397,10 @@ zh-TW:
     send_notifications: "發送此操作的通知"
     work_packages:
       subject:
-        created: "工作項目已建立"
+        created: "工作套件已建立"
         assigned: "您已被指派到 %{work_package}"
         subscribed: "您訂閱了 %{work_package}"
-        mentioned: "您在工作項目「%{work_package}」中被提到"
+        mentioned: "您在工作套件「%{work_package}」中被提到"
         responsible: "您已對 %{work_package} 負責"
         watched: "您正在監看 %{work_package}"
     query:
@@ -2417,7 +2416,7 @@ zh-TW:
   label_add_columns: "新增所選欄"
   label_add_note: "新增註記"
   label_add_projects: "新增專案"
-  label_add_related_work_packages: "新增相關的工作項目"
+  label_add_related_work_packages: "新增相關的工作套件"
   label_add_subtask: "新增子任務"
   label_added: "已新增"
   label_added_by: "由 %{author} 新增"
@@ -2433,7 +2432,7 @@ zh-TW:
   label_all: "所有"
   label_all_time: "所有的時間"
   label_all_words: "所以的詞"
-  label_all_open_wps: "所有「未關閉」工作項目"
+  label_all_open_wps: "所有「未關閉」工作套件"
   label_always_visible: "總是顯示"
   label_announcement: "公告"
   label_angular: "AngularJS"
@@ -2450,7 +2449,7 @@ zh-TW:
   label_applied_status: "套用的狀態"
   label_archive_project: "封存專案"
   label_ascending: "昇冪"
-  label_assigned_to_me_work_packages: "分配給我的工作項目"
+  label_assigned_to_me_work_packages: "分配給我的工作套件"
   label_associated_revisions: "關聯的修訂"
   label_attachment_plural: "附件"
   label_attribute: "属性"
@@ -2466,8 +2465,8 @@ zh-TW:
   label_available_project_forums: "可用的討論區"
   label_available_project_repositories: "可用的版本庫"
   label_available_project_versions: "可用的版本"
-  label_available_project_work_package_categories: "可用的工作項目類別"
-  label_available_project_work_package_types: "可用的工作項目類型"
+  label_available_project_work_package_categories: "可用的工作套件類別"
+  label_available_project_work_package_types: "可用的工作套件類型"
   label_available_projects: "可用專案"
   label_api_doc: "API文件"
   label_backup: "備份"
@@ -2485,7 +2484,7 @@ zh-TW:
   label_board_plural: "看板"
   label_branch: "分支"
   label_browse: "瀏覽"
-  label_bulk_edit_selected_work_packages: "整批編輯選取的工作項目"
+  label_bulk_edit_selected_work_packages: "整批編輯選取的工作套件"
   label_bundled: "(已附帶)"
   label_calendar: "行事曆"
   label_calendars_and_dates: "行事曆與日期"
@@ -2509,7 +2508,7 @@ zh-TW:
   label_checked: "已選取"
   label_check_uncheck_all_in_column: "選取/取消選取 全部"
   label_check_uncheck_all_in_row: "選取/取消選取 全部"
-  label_child_element: "子項目"
+  label_child_element: "子套件"
   label_choices: "選項"
   label_close_versions: "關閉已完成的版本"
   label_closed_work_packages: "已關閉"
@@ -2537,7 +2536,7 @@ zh-TW:
   label_created_by: "由 %{user} 建立"
   label_current_status: "目前狀態"
   label_current_version: "目前版本"
-  label_custom_field_add_no_type: "新增此欄位至一個工作項目類別"
+  label_custom_field_add_no_type: "新增此欄位至一個工作套件類別"
   label_custom_field_new: "新增欄位"
   label_custom_field_plural: "客製欄位"
   label_custom_field_default_type: "空類型"
@@ -2674,7 +2673,7 @@ zh-TW:
   label_item_plural: "欄位"
   label_share: "參與"
   label_share_project_list: "分享專案清單"
-  label_share_work_package: "參與工作項目"
+  label_share_work_package: "參與工作套件"
   label_show_all_registered_users: "顯示所有註冊使用者"
   label_show_less: "減少顯示"
   label_show_more: "顯示更多"
@@ -2751,7 +2750,7 @@ zh-TW:
   label_more_than_ago: "超過幾天"
   label_move_column_left: "欄位左移"
   label_move_column_right: "欄位右移"
-  label_move_work_package: "移動工作項目"
+  label_move_work_package: "移動工作套件"
   label_my_account: "帳號設定"
   label_my_activity: "我的活動紀錄"
   label_my_account_data: "我的帳號資料"
@@ -2852,8 +2851,8 @@ zh-TW:
   label_project_custom_field_plural: "專案屬性"
   label_project_settings: "專案設定"
   label_project_attributes_settings: "專案屬性設置"
-  label_project_storage_plural: "File storages"
-  label_project_storage_project_folder: "File storages: Project folders"
+  label_project_storage_plural: "文件儲存空間"
+  label_project_storage_project_folder: "文件存儲區：專案文件夾"
   label_projects_disk_usage_information: "%{count} 專案，使用 %{used_disk_space} 磁碟空間"
   label_project_view_all: "檢視所有專案"
   label_project_show_details: "顯示專案詳細資訊"
@@ -2866,7 +2865,7 @@ zh-TW:
   label_register: "建立新帳號"
   label_register_with_developer: "註冊成開發者"
   label_registered_on: "註冊在"
-  label_related_work_packages: "相關的工作項目"
+  label_related_work_packages: "相關的工作套件"
   label_relates: "相關於"
   label_relates_to: "相關於"
   label_relation: "關聯"
@@ -2883,7 +2882,7 @@ zh-TW:
   label_report: "報表"
   label_report_bug: "回報錯誤"
   label_report_plural: "報表"
-  label_reported_work_packages: "相關的工作項目"
+  label_reported_work_packages: "相關的工作套件"
   label_reporting: "報表"
   label_reporting_plural: "報表"
   label_repository: "版本庫"
@@ -2899,7 +2898,7 @@ zh-TW:
   label_roadmap: "藍圖"
   label_roadmap_edit: "編輯藍圖 %{name}"
   label_roadmap_due_in: "%{value} 截止"
-  label_roadmap_no_work_packages: "此版本沒有工作項目"
+  label_roadmap_no_work_packages: "此版本沒有工作套件"
   label_roadmap_overdue: "%{value} 逾期"
   label_role_and_permissions: "角色與權限"
   label_role_new: "新增角色"
@@ -3002,7 +3001,7 @@ zh-TW:
   label_view_all_revisions: "檢視所有修訂"
   label_view_diff: "檢視差異"
   label_view_revisions: "檢視修訂"
-  label_watched_work_packages: "監看的工作項目"
+  label_watched_work_packages: "監看的工作套件"
   label_what_is_this: "這是什麼？"
   label_week: "週"
   label_wiki_content_added: "新增維基頁面"
@@ -3023,20 +3022,20 @@ zh-TW:
   label_wiki_show_submenu_item: "呈現於子功能表的 "
   label_wiki_start: "開始頁面"
   label_work: "工時"
-  label_work_package: "工作項目"
-  label_work_package_attachments: "工作項目附件"
+  label_work_package: "工作套件"
+  label_work_package_attachments: "工作套件附件"
   label_work_package_category_new: "新增類別"
-  label_work_package_category_plural: "工作項目類別"
-  label_work_package_hierarchy: "工作項目層級"
-  label_work_package_new: "新增工作項目"
-  label_work_package_edit: "編輯工作項目 %{name}"
-  label_work_package_plural: "工作項目"
-  label_work_package_status: "工作項目狀態"
+  label_work_package_category_plural: "工作套件類別"
+  label_work_package_hierarchy: "工作套件層級"
+  label_work_package_new: "新增工作套件"
+  label_work_package_edit: "編輯工作套件 %{name}"
+  label_work_package_plural: "工作套件"
+  label_work_package_status: "工作套件狀態"
   label_work_package_status_new: "新狀態"
-  label_work_package_status_plural: "工作項目狀態"
-  label_work_package_types: "工作項目類型"
-  label_work_package_tracking: "工作項目追蹤"
-  label_work_package_view_all: "檢視所有工作項目"
+  label_work_package_status_plural: "工作套件狀態"
+  label_work_package_types: "工作套件類型"
+  label_work_package_tracking: "工作套件追蹤"
+  label_work_package_view_all: "檢視所有工作套件"
   label_workflow: "工作流程"
   label_workflow_copy: "複製工作流程"
   label_workflow_plural: "工作流程"
@@ -3055,9 +3054,9 @@ zh-TW:
     other: "%{count} 個未完成"
     zero: "0 個已開啟"
   label_x_work_packages:
-    one: "1個工作項目"
-    other: "%{count} 個工作項目"
-    zero: "無工作項目"
+    one: "1個工作套件"
+    other: "%{count} 個工作套件"
+    zero: "無工作套件"
   label_x_projects:
     one: "1 個專案"
     other: "%{count} 個專案"
@@ -3091,7 +3090,7 @@ zh-TW:
       errors:
         no_project_context: "從外部專案上下文呼叫 create_work_package_link 巨集。"
         invalid_type: "在專案 \"%{project}\" 中找不到名稱為 \"%{type}\" 的類型。"
-      link_name: "新增工作項目"
+      link_name: "新增工作套件"
       link_name_type: "新增 %{type_name}"
   mail:
     actions: "操作"
@@ -3116,7 +3115,7 @@ zh-TW:
       mentioned: "您在<b>討論中被cue到</b>"
       mentioned_by: "%{user} 留言時提到您。"
       more_to_see:
-        other: "還有 1 個工作項目通知\n\n還有 %{count} 個工作項目通知"
+        other: "還有 1 個工作套件通知\n\n還有 %{count} 個工作套件通知。"
       open_in_browser: "在瀏覽器中開啟"
       reason:
         watched: "監看"
@@ -3137,14 +3136,14 @@ zh-TW:
       note: "備註： \"%{note}\""
     sharing:
       work_packages:
-        allowed_actions: "您擁有這個工作項目的 %{allowed_actions} 權限. 這些權限將隨著您的角色不同而更改."
-        create_account: "要存取此工作項目，您需要建立一個 %{instance} 帳戶。"
-        open_work_package: "開啟工作項目"
-        subject: "有個工作項目 #%{id} 與您共同參與"
-        enterprise_text: "與不是專案成員的使用者共同參與工作項目。"
+        allowed_actions: "您擁有這個工作套件的 %{allowed_actions} 權限. 這些權限將隨著您的角色不同而更改。"
+        create_account: "要存取此工作套件，您需要建立一個 %{instance} 帳戶。"
+        open_work_package: "開啟工作套件"
+        subject: "有個工作套件 #%{id} 與您共同參與"
+        enterprise_text: "與不是專案成員的使用者共同參與工作套件。"
         summary:
-          user: "%{user} 將一個工作項目邀請您參與，權限：%{role_rights}\""
-          group: "%{user} 將一個工作項目與您之群組共同參與： %{group}"
+          user: "%{user} 將一個工作套件邀請您參與，權限：%{role_rights}\""
+          group: "%{user} 將一個工作套件與您之群組共同參與： %{group}"
     storages:
       health:
         plaintext:
@@ -3201,7 +3200,7 @@ zh-TW:
     如果您有任何其他問題，請查閱我們的文件 (%{documentation_link}) 或聯繫您的管理員。
   mail_body_register_closing: "您的OpenProject 團隊"
   mail_body_register_ending: "親，保持聯繫！"
-  mail_body_reminder: "%{count} 個指派給您的工作項目將在 %{days} 天後到期"
+  mail_body_reminder: "%{count} 個指派給您的工作套件將在 %{days} 天後到期："
   mail_body_group_reminder: '%{count} 個分配給群組 “%{group}”的工作(包) 將在 %{days} 天後到期：'
   mail_body_wiki_page_added: "Wiki 頁面 '%{id}' 已經被 %{author} 新增"
   mail_body_wiki_page_updated: "Wiki 頁面 '%{id}' 已經被 %{author} 更新"
@@ -3272,7 +3271,7 @@ zh-TW:
   notice_custom_options_deleted: "選項“%{option_value}”和其“%{num_deleted}”事件已刪除。"
   notice_email_error: "傳送郵件 (%{value}) 的時候發生錯誤"
   notice_email_sent: "一封郵件被傳送給 %{value}"
-  notice_failed_to_save_work_packages: "%{total} 個選取的工作項目中的 %{count} 儲存失敗: %{ids}"
+  notice_failed_to_save_work_packages: "%{total} 個選取的工作套件中的 %{count} 儲存失敗: %{ids}。"
   notice_failed_to_save_members: "無法保存成員: %{errors}。"
   notice_deletion_scheduled: "已安排排程進行刪除。"
   notice_file_not_found: "您試圖存取的頁面不存在或已被移除。"
@@ -3342,11 +3341,11 @@ zh-TW:
     welcome: "歡迎使用 %{app_title}"
     select_language: "請選擇您的語言"
   permission_add_work_package_comments: "增加留言"
-  permission_add_work_packages: "新增工作項目"
+  permission_add_work_packages: "新增工作套件"
   permission_add_messages: "張貼訊息"
   permission_add_project: "建立專案"
   permission_add_work_package_attachments: "新增附件"
-  permission_add_work_package_attachments_explanation: "允許在沒有編輯工作項目權限的情況下新增附件"
+  permission_add_work_package_attachments_explanation: "允許在沒有編輯工作套件權限的情況下新增附件"
   permission_add_internal_comments: "撰寫內部留言"
   permission_archive_project: "封存專案"
   permission_create_user: "新增使用者"
@@ -3357,15 +3356,15 @@ zh-TW:
   permission_assign_versions: "指派版本"
   permission_browse_repository: "唯讀版本庫 (瀏覽和 Checkout)"
   permission_change_wiki_parent_page: "更改上層 Wiki 頁面"
-  permission_change_work_package_status: "變更工作項目狀態"
-  permission_change_work_package_status_explanation: "允許在無編輯工作項目權限的情況下更改狀態"
+  permission_change_work_package_status: "變更工作套件狀態"
+  permission_change_work_package_status_explanation: "允許在無編輯工作套件權限的情況下更改狀態"
   permission_comment_news: "在「最新消息」留言"
   permission_commit_access: "讀/寫 權限版本庫 (Commit)"
   permission_copy_projects: "複製專案"
-  permission_copy_work_packages: "複製工作項目"
+  permission_copy_work_packages: "複製工作套件"
   permission_create_backup: "建立備份"
   permission_delete_work_package_watchers: "刪除監看者"
-  permission_delete_work_packages: "刪除工作項目"
+  permission_delete_work_packages: "刪除工作套件"
   permission_delete_messages: "刪除訊息"
   permission_delete_own_messages: "刪除自己張貼的訊息"
   permission_delete_reportings: "刪除報表"
@@ -3374,7 +3373,7 @@ zh-TW:
   permission_delete_wiki_pages_attachments: "刪除附件"
   permission_edit_work_package_comments: "審閱留言"
   permission_edit_work_package_comments_explanation: "注意：擁有此權限的使用者可以編輯任何人的註解。"
-  permission_edit_work_packages: "編輯工作項目"
+  permission_edit_work_packages: "編輯工作套件"
   permission_edit_messages: "編輯訊息"
   permission_edit_own_internal_comments: "編輯內部備註"
   permission_edit_own_work_package_comments: "編輯自己的留言"
@@ -3389,25 +3388,25 @@ zh-TW:
   permission_edit_time_entries: "編輯他人耗時"
   permission_edit_timelines: "編輯時間軸"
   permission_edit_wiki_pages: "編輯維基頁面"
-  permission_export_work_packages: "匯出工作項目"
+  permission_export_work_packages: "匯出工作套件"
   permission_export_wiki_pages: "匯出維基頁面"
   permission_list_attachments: "列出附件"
   permission_log_own_time: "記錄個人耗時"
   permission_log_time: "紀錄他人耗時"
   permission_manage_forums: "管理討論區"
-  permission_manage_categories: "管理工作項目類別"
+  permission_manage_categories: "管理工作套件類別"
   permission_manage_dashboards: "管理儀表板"
-  permission_manage_work_package_relations: "管理工作項目關聯"
+  permission_manage_work_package_relations: "管理工作套件關聯"
   permission_manage_members: "管理成員"
   permission_manage_news: "管理消息"
   permission_manage_project_activities: "管理專案活動"
   permission_manage_public_queries: "管理公開查詢"
   permission_manage_repository: "管理版本庫"
-  permission_manage_subtasks: "管理工作項目階層"
+  permission_manage_subtasks: "管理工作套件階層"
   permission_manage_versions: "管理版本"
   permission_manage_wiki: "管理維基"
   permission_manage_wiki_menu: "管理維基選單"
-  permission_move_work_packages: "移動工作項目"
+  permission_move_work_packages: "移動工作套件"
   permission_protect_wiki_pages: "專案維基頁面"
   permission_rename_wiki_pages: "重新命名維基頁面"
   permission_save_queries: "儲存版面"
@@ -3417,7 +3416,7 @@ zh-TW:
   permission_select_project_phases: "選擇專案階段"
   permission_select_project_phases_explanation: "啟用或停用專案中的各階段。使用者可以依專案需求選擇適合的生命週期，未啟用的階段將不會顯示在專案總覽頁或專案清單中。"
   permission_select_project_modules: "選擇專案的模組"
-  permission_share_work_packages: "參與工作項目"
+  permission_share_work_packages: "參與工作套件"
   permission_manage_types: "選擇類型"
   permission_manage_own_reminders: "建立自己的提醒事項"
   permission_view_project: "檢視專案"
@@ -3426,19 +3425,19 @@ zh-TW:
   permission_view_commit_author_statistics: "檢視 Commit 的作者統計資訊"
   permission_view_dashboards: "檢視儀表板"
   permission_view_work_package_watchers: "檢視監看者清單"
-  permission_view_work_packages: "檢視工作項目"
+  permission_view_work_packages: "檢視工作套件"
   permission_view_messages: "檢視訊息"
   permission_view_news: "檢視公告"
   permission_view_members: "檢視成員"
   permission_view_reportings: "檢視報表"
-  permission_view_shared_work_packages: "檢視參與的工作項目"
+  permission_view_shared_work_packages: "檢視參與的工作套件"
   permission_view_time_entries: "檢視耗時"
   permission_view_timelines: "檢視時間軸"
   permission_view_user_email: "檢視使用者的郵件地址"
   permission_view_wiki_edits: "檢視維基歷史"
   permission_view_wiki_pages: "檢視維基"
   permission_work_package_assigned: "成為執行者/負責人"
-  permission_work_package_assigned_explanation: "可以將工作項目分配給在相應專案中擁有此角色的使用者和群組"
+  permission_work_package_assigned_explanation: "工作套件可指派給在各自專案中擁有此角色的使用者或群組"
   permission_view_project_activity: "查看專案活動"
   permission_view_project_attributes: "查看專案屬性"
   permission_view_project_phases: "檢視專案階段"
@@ -3483,11 +3482,11 @@ zh-TW:
       remove_from_templates: "從範本中移除"
   project_module_activity: "活動"
   project_module_forums: "討論區"
-  project_module_work_package_tracking: "工作項目"
+  project_module_work_package_tracking: "工作套件"
   project_module_news: "最新消息"
   project_module_repository: "版本庫"
   project_module_wiki: "維基"
-  permission_header_for_project_module_work_package_tracking: "工作項目與甘特圖"
+  permission_header_for_project_module_work_package_tracking: "工作套件與甘特圖"
   query:
     attribute_and_direction: "%{attribute} (%{direction})"
   #possible query parameters (e.g. issue queries),
@@ -3590,7 +3589,7 @@ zh-TW:
       oauth_application_details: "關閉此窗口後，將無法再次訪問客戶端密鑰值。請將這些值複製到 Nextcloud OpenProject 集成設置中："
       oauth_application_details_link_text: "前往設定"
       setup_documentation_details: "如果您在配置新文件存儲方面需要幫助，請查看文檔： "
-      setup_documentation_details_link_text: "File storages setup"
+      setup_documentation_details_link_text: "設定文件儲存區"
       show_warning_details: "無法在應用程序中更改外部帳戶的密碼。請使用您的身份驗證服務提供商的密碼丟失功能。"
     subversion:
       existing_title: "現有的 Subversion 版本庫"
@@ -3616,7 +3615,7 @@ zh-TW:
   search_input_placeholder: "搜尋 ..."
   setting_allowed_link_protocols: "允許連結"
   setting_allowed_link_protocols_text_html: >-
-    允許在工作項目描述、長文字欄位與留言中，將這些協定顯示為連結。例如：%{tel_code} 或 %{element_code}。每行輸入一個協定。<br/>協定 %{http_code}、%{https_code} 與 %{mailto_code} 一律允許使用。
+    允許在工作套件描述、長文字欄位與留言中，將這些協定顯示為連結。例如：%{tel_code} 或 %{element_code}。每行輸入一個協定。<br/>協定 %{http_code}、%{https_code} 與 %{mailto_code} 一律允許使用。
   setting_after_first_login_redirect_url: "首次登入重新導向"
   setting_after_first_login_redirect_url_text_html: >
     設定使用者首次登入後的重新導向路徑。如果為空，則會重定向到上線導覽的首頁。 <br/> 範例：<code>/my/page</code>
@@ -3665,7 +3664,7 @@ zh-TW:
   setting_brute_force_block_minutes: "使用者被禁止的時間"
   setting_cache_formatted_text: "快取格式化文字"
   setting_use_wysiwyg_description: "勾選此選項可在預設情況下為所有使用者啟用 CKEditor5 所見即所得 (WYSIWYG) 編輯器。CKEditor 對 GFM Markdown的功能有限。"
-  setting_column_options: "預設工作項目欄位"
+  setting_column_options: "預設工作套件欄位"
   setting_commit_fix_keywords: "固定的關鍵字"
   setting_commit_logs_encoding: "Commit 訊息的編碼"
   setting_commit_logtime_activity_id: "紀錄時間的動作"
@@ -3675,7 +3674,7 @@ zh-TW:
   setting_consent_info: "條文"
   setting_consent_required: "是否需要使用者允許"
   setting_consent_decline_mail: "同意郵件列在通訊錄"
-  setting_cross_project_work_package_relations: "允許將跨專案之工作項目關聯起來"
+  setting_cross_project_work_package_relations: "允許將跨專案之工作套件關聯起來"
   setting_first_week_of_year: "一年的第一週從哪一天開始"
   setting_date_format: "日期"
   setting_default_language: "預設語言"
@@ -3684,7 +3683,7 @@ zh-TW:
   setting_disable_password_login: "停用密碼驗證"
   setting_diff_max_lines_displayed: "顯示比對差異的最大行數"
   setting_omniauth_direct_login_provider: "直接登入 SSO 提供者"
-  setting_display_subprojects_work_packages: "預設在主專案中顯示子專案的工作項目"
+  setting_display_subprojects_work_packages: "預設在主專案中顯示子專案的工作套件"
   setting_duration_format: "持續時間格式"
   setting_duration_format_hours_only: "僅限小時"
   setting_duration_format_days_and_hours: "天數和小時數"
@@ -3713,9 +3712,9 @@ zh-TW:
     每個狀態都有一個與之相關的<i>完成百分比</i>值。變更狀態會變更<i>完成百分比</i>。
   setting_work_package_done_ratio_explanation_html: >
     在<b>基於工作</b>模式下，完成百分比可以自由設定為任何值。如果您可以選擇輸入工時，則會自動算出剩餘工時。在<b>基於狀態</b>模式下，每個狀態都有一個與其關聯的完成百分比值。更改狀態將更改完成百分比。
-  setting_work_package_properties: "工作項目屬性"
-  setting_work_package_startdate_is_adddate: "使用目前日期作為新工作項目的開始日期"
-  setting_work_packages_projects_export_limit: "工作項目/專案匯出數量限制"
+  setting_work_package_properties: "工作套件屬性"
+  setting_work_package_startdate_is_adddate: "使用目前日期作為新工作套件的開始日期"
+  setting_work_packages_projects_export_limit: "工作套件/專案匯出數量限制"
   setting_journal_aggregation_time_minutes: "合併使用者操作"
   setting_log_requesting_user: "記錄所有使用者登入、姓名和郵件地址等資料"
   setting_login_required: "需要身份驗證"
@@ -3737,10 +3736,10 @@ zh-TW:
   setting_percent_complete_on_status_closed: "狀態結束時之完成百分比"
   setting_percent_complete_on_status_closed_no_change: "未變更"
   setting_percent_complete_on_status_closed_no_change_caption_html: >-
-    即使工作項目關閉，<i>完成百分比的</i>值也不會改變。
+    即使工作套件關閉，<i>完成百分比的</i>值也不會改變。
   setting_percent_complete_on_status_closed_set_100p: "自動設定為 100%"
   setting_percent_complete_on_status_closed_set_100p_caption: >-
-    工作項目結束即視為完成。
+    工作套件結束即視為完成。
   setting_plain_text_mail: "純文字郵件（不含 HTML）"
   setting_protocol: "Protocol"
   setting_project_gantt_query: "專案含甘特圖檢視"
@@ -3784,7 +3783,7 @@ zh-TW:
   setting_total_percent_complete_mode: "完成百分比層級總計"
   setting_total_percent_complete_mode_work_weighted_average: "工作加權"
   setting_total_percent_complete_mode_work_weighted_average_caption_html: >-
-    <i>總完成百分比</i>將根據層級架構中每個工作套件的<i>工作量</i>加權計算。沒有<i>工作</i>的工作包將被忽略。
+    <i>總完成百分比</i>將根據層級架構中每個工作套件的<i>工作量</i>加權計算。沒有<i>工作</i>的工作套件將被忽略。
   setting_total_percent_complete_mode_simple_average: "簡易平均"
   setting_total_percent_complete_mode_simple_average_caption_html: >-
     <i>工作</i>會被忽略，<i>總完成百分比</i>將是層級結構中工作套件<i>完成百分比</i>值的簡單平均值。
@@ -3810,7 +3809,7 @@ zh-TW:
       whitelist_text_html: >
         為上傳的文件定義有效文件副檔名和/或 MIME 類型的列表。 <br/> 輸入文件副檔名（例如 <code>%{ext_example}</code>）或 MIME 類型（例如 <code>%{mime_example}</code>）。 <br/> 留空以允許上傳任何文件類型。允許多個值（每個值一行）。
       show_work_package_attachments: >
-        禁用此選項將會為新項目隱藏工作包文件標籤上的附件列表。 工作包描述中的文件仍將上傳到內部附件存儲。
+        禁用此選項將會為新專案隱藏工作套件文件標籤上的附件列表。 工作套件描述中的文件仍將上傳到內部附件存儲。
     antivirus:
       title: "病毒掃描中："
       clamav_ping_failed: "無法連接 ClamAV 守護進程。請仔細檢查配置，然後重試。"
@@ -3845,14 +3844,14 @@ zh-TW:
       mode_long:
         inline: "專案屬性"
         none: "無高亮度顯示"
-        status: "依工作項目狀態區分"
-        type: "依工作項目類型區分"
-        priority: "依工作項目優先順序區分"
+        status: "依工作套件狀態區分"
+        type: "依工作套件類型區分"
+        priority: "依工作套件優先順序區分"
     icalendar:
-      enable_subscriptions_text_html: 允許有相關權限用戶通過外部日曆客戶端訂閱 OpenProject 日曆並存取工作項目訊息。<strong>注意</strong>：在啓用此功能之前，請閱讀關於 <a href="%{link}" target="_blank">iCalendar 訂閱</a>的信息以瞭解潛在的安全風險。
+      enable_subscriptions_text_html: "允許具有相應權限的使用者訂閱 OpenProject 行事曆，並透過外部行事曆客戶端存取工作套件資訊。\n<strong>注意：</strong> 啟用前請閱讀關於<a href=\"%{link}\" target=\"_blank\">iCalendar 訂閱</a>的相關說明，以了解可能的安全風險。"
     language_name_being_default: "%{language_name} (預設)"
     notifications:
-      events_explanation: "控制已發送電子郵件事件。工作項目不包括在此列表中，因為可以為每個用戶專門配置它們的通知"
+      events_explanation: "控制已發送電子郵件事件。工作套件不包括在此列表中，因為可以為每個用戶專門配置它們的通知。"
       delay_minutes_explanation: "電子郵件發送可以延遲，以使應用通知中配置的用戶能夠在郵件發出之前確認應用程序中的通知。在應用程序中閱讀過通知的用戶不會接收到已閱讀通知的電子郵件。"
     other: "其他"
     passwords: "密碼"
@@ -3927,12 +3926,12 @@ zh-TW:
   text_analyze: "進一步分析: %{subject}"
   text_are_you_sure: "是否確定？"
   text_are_you_sure_continue: "你要繼續嗎?"
-  text_are_you_sure_with_children: "刪除工作項目以及所有子工作項目?"
+  text_are_you_sure_with_children: "刪除工作套件以及所有子工作套件？"
   text_are_you_sure_with_project_custom_fields: "刪除該屬性也會刪除其在所有項目中的值。您確定要這樣做嗎？"
   text_are_you_sure_with_project_life_cycle_step: "刪除此階段也會刪除其在所有專案中的使用。您確定要這麼做？"
   text_assign_to_project: "分配給專案"
   text_form_configuration: >
-    您可以自訂哪些欄位將會顯示在工作項目表單中。您可以自由的群組化這些欄位來符合您的需求。
+    您可以自訂哪些欄位將會顯示在工作套件表單中。您可以自由的群組化這些欄位來符合您的需求。
   text_form_configuration_required_attribute: "以標示為必須的屬性將會永遠顯示"
   text_caracters_maximum: "最多 %{count} 個字元。"
   text_caracters_minimum: "必須至少 %{count} 個字元長。"
@@ -3942,7 +3941,7 @@ zh-TW:
   text_custom_field_hint_activate_per_project: >
     當使用客製欄位：請留意欄位需要依專案個別啟用。
   text_custom_field_hint_activate_per_project_and_type: >
-    客製欄位需要個別被工作項目類別和專案啟用。
+    客製欄位需要各別被工作套件類別和專案啟用。
   text_project_custom_field_html: >
     企業版將為項目的自定義字段添加以下其他附加組件：<br> <ul> <li><b>在項目列表中添加項目自定義字段，以創建項目組合視圖</b></li> </ul>
   text_custom_logo_instructions: >
@@ -3959,7 +3958,7 @@ zh-TW:
   text_default_administrator_account_changed: "預設管理者帳號已更改"
   text_default_encoding: "預設值: UTF-8"
   text_destroy: "删除"
-  text_destroy_with_associated: "還有其他物件與要刪除的工作項目有關聯。這些物件具有以下類型:"
+  text_destroy_with_associated: "欲刪除的工作套件還關聯有其他物件，這些物件類型如下："
   text_destroy_what_to_do: "您想要做什麼？"
   text_diff_truncated: "... 此差異被截斷, 因為它超出了可以顯示的最大大小。"
   text_email_delivery_not_configured: "電子郵件傳送未配置，通知已禁用。\n配置您的 SMTP 服務器將其啓用。"
@@ -3970,15 +3969,15 @@ zh-TW:
   text_hint_date_format: "輸入格式為 YYYY-MM-DD 的日期。其他格式可能會被更改為無效的日期。"
   text_hint_disable_with_0: "注意: 0 表示停用"
   text_hours_between: "在 %{min} 到 %{max} 小時。"
-  text_work_package_added: "%{author} 報告了工作項目 %{id}。"
+  text_work_package_added: "%{author} 報告了工作套件 %{id}。"
   text_work_package_category_destroy_assignments: "刪除類別分配"
-  text_work_package_category_destroy_question: "一些工作項目(%{count})被分配給此類別。你想要做什麼？"
-  text_work_package_category_reassign_to: "重新分配工作項目到這個類別"
-  text_work_package_updated: "%{author} 更新了工作項目 %{id}。"
-  text_work_package_watcher_added: "%{watcher_changer} 已將您添加為工作包 %{id} 的一個關注者。"
-  text_work_package_watcher_removed: "%{watcher_changer} 已將您從工作包 %{id} 的關注者中移除。"
-  text_work_packages_destroy_confirmation: "你確定要刪除選定的工作項目嗎？"
-  text_work_packages_ref_in_commit_messages: "在提交訊息中引用和修復工作項目"
+  text_work_package_category_destroy_question: "一些工作套件(%{count})被分配給此類別。你想要做什麼？"
+  text_work_package_category_reassign_to: "重新分配工作套件到這個類別"
+  text_work_package_updated: "%{author} 更新了工作套件 %{id}。"
+  text_work_package_watcher_added: "您已被 %{watcher_changer} 加入為工作套件 %{id} 的關注者。"
+  text_work_package_watcher_removed: "您已被 %{watcher_changer} 從工作套件 %{id} 的關注者名單中移除。"
+  text_work_packages_destroy_confirmation: "你確定要刪除選定的工作套件嗎？"
+  text_work_packages_ref_in_commit_messages: "在提交訊息中參考並修正工作套件"
   text_journal_added: "%{label} %{value} 已增加"
   text_journal_attachment_added: "新增附件「%{label} %{value} 」"
   text_journal_attachment_deleted: "%{label} %{old} 已從附件移除"
@@ -4001,8 +4000,8 @@ zh-TW:
   text_min_max_length_info: "0 代表沒有限制"
   text_no_roles_defined: 沒有定義的角色
   text_no_access_tokens_configurable: "沒有存取權杖(Token)可以被設定"
-  text_no_configuration_data: "角色，類型，工作項目狀態與工作流程都尚未設定。\n強烈建議先載入預設值，然後再修改它們。"
-  text_no_notes: "這個工作項目沒有留言"
+  text_no_configuration_data: "角色，類型，工作套件狀態與工作流程都尚未設定。\n強烈建議先載入預設值，然後再修改它們。"
+  text_no_notes: "這個工作套件沒有留言。"
   text_notice_too_many_values_are_inperformant: "注意: 每頁顯示超過100個項目會增加頁面載入時間。"
   text_notice_security_badge_displayed_html: >
     注：如果啓用，這會在 <a href="%{information_panel_path}">%{information_panel_label}</a> 管理面板中和首頁上顯示一個包含您的安裝狀態的徽章。徽章僅向管理員顯示。<br/>徽章將根據官方的 OpenProject 版本數據庫檢查您當前的 OpenProject 版本，提醒您是否存在任何更新或已知漏洞。如需詳細瞭解檢查可以提供哪些信息，需要哪些數據來提供可用更新，以及如何禁用此檢查，請訪問<a href="%{more_info_url}">配置文檔</a>。
@@ -4011,22 +4010,22 @@ zh-TW:
   text_plugin_assets_writable: "Plugin 資產目錄可寫"
   text_powered_by: "由 %{link} 提供"
   text_project_identifier_info: "僅允許小寫字母(a-z)、數字、破折號(-) 及底線(_)，且必須以小寫字母開頭。"
-  text_reassign: "重新指派到工作項目:"
+  text_reassign: "重新指派到工作套件："
   text_regexp_info: "例如: ^[A-Z0-9]+$"
   text_regexp_multiline: '這個正規表達式套用在多行模式。 e.g., ^---\s+'
   text_repository_usernames_mapping: "選擇或更新與版本庫中的帳號所對應的OpenProject使用者。\n版本庫中與OpenProject的使用者具有相同名稱或email將被自動對應。"
   text_status_changed_by_changeset: "已套用至變更列表 %{value} 中。"
   text_table_difference_description: "此表格展示了單個%{entries}。您可以先選擇複選框，再點擊表格下方的按鈕來比較兩項之間的差異。"
   text_time_logged_by_changeset: "已套用至變更列表 %{value} 中。"
-  text_tip_work_package_begin_day: "這一天開始的工作項目"
-  text_tip_work_package_begin_end_day: "這一天開始並結束的工作項目"
-  text_tip_work_package_end_day: "這一天結束的工作項目"
+  text_tip_work_package_begin_day: "這一天開始的工作套件"
+  text_tip_work_package_begin_end_day: "這一天開始並結束的工作套件"
+  text_tip_work_package_end_day: "這一天結束的工作套件"
   text_type_no_workflow: "這個類型沒有定義工作流程"
   text_unallowed_characters: "不允許的字元"
   text_user_invited: 這個使用者已經被邀請而且正在等待註冊。
   text_user_wrote: "%{value} 寫道："
   text_wrote: "寫"
-  text_warn_on_leaving_unsaved: "若離開當前頁面，將遺失此工作項目未儲存的內容。"
+  text_warn_on_leaving_unsaved: "若離開當前頁面，將遺失此工作套件未儲存的內容。"
   text_what_did_you_change_click_to_add_comment: "點擊這裡來說明變更了什麼"
   text_wiki_destroy_confirmation: "您是否確定要刪除此 wiki 和它所有的內容？"
   text_wiki_page_destroy_children: "刪除子頁面和所有他們的派生頁面"
@@ -4040,8 +4039,8 @@ zh-TW:
   help_texts:
     views:
       project: >
-        %{plural} 始終與項目關聯。您只能在此處選擇已激活 %{plural} 模塊的項目。創建了 %{singular} 後，您可以將其他項目的工作包添加到其中。
-      public: "發布此版面，允許其他使用者存取您的版面。 具有「管理公開版面」權限的使用者可以修改或刪除公開查詢。 這不會影響該版面中工作項目的可見性，並且根據使用者的權限，使用者可能會看到不同的結果。"
+        %{plural} 總是附加在某個專案中。您只能在此選擇已啟用 %{plural} 模組的專案。建立 %{singular} 之後，您可以將其他專案的工作套件新增至其中。
+      public: "發布此版面，允許其他使用者存取您的版面。 具有「管理公開版面」權限的使用者可以修改或刪除公開查詢。 這不會影響該版面中工作套件的可見性，並且根據使用者的權限，使用者可能會看到不同的結果。"
       favoured: "將此視圖標記為收藏項，並添加到左側的已保存視圖邊欄中。"
   time:
     am: "am"
@@ -4151,15 +4150,15 @@ zh-TW:
   #TODO: merge with work_packages top level key
   work_package:
     updated_automatically_by_child_changes: |
-      子工作項目「 %{child} 」有新的更新
+      因變更子工作套件 %{child} 的數值而自動更新
     destroy:
-      info: "刪除工作項目是一個不可逆的動作"
-      title: "刪除工作項目"
+      info: "刪除工作套件是一個不可逆的動作。"
+      title: "刪除工作套件"
     progress:
       label_note: "備註"
       modal:
         work_based_help_text: "在可能的情況下，每個欄位都會根據其他兩個欄位自動計算。"
-        status_based_help_text: "完成百分比依工作項目狀態設定。"
+        status_based_help_text: "完成百分比依工作套件狀態設定。"
         migration_warning_text: "在「基於工時」進度計算模式下，完成百分比無法手動設置，並且與「工時」相關聯。目前手動輸入數值已保留，無法編輯。 請務必輸入「工時」才能進行。"
       derivation_hints:
         done_ratio:
@@ -4179,15 +4178,15 @@ zh-TW:
           same_as_work: "設定與工時相同值。"
     permissions:
       comment: "留言"
-      comment_description: "可查看此工作項目與留言"
+      comment_description: "可查看此工作套件與留言。"
       edit: "編輯"
-      edit_description: "可以查看，留言與編輯此工作項目"
+      edit_description: "可以查看，留言與編輯此工作套件。"
       view: "檢視"
-      view_description: "查看此工作項目"
+      view_description: "查看此工作套件。"
     reminders:
       label_remind_at: "日期"
       note_placeholder: "為什麼要設定這個提醒？"
-      success_creation_message: "提醒設定成功。您會在選定的時間收到此工作項目的通知。"
+      success_creation_message: "提醒設定成功。您會在選定的時間收到此工作套件的通知。"
       success_update_message: "提醒成功更新"
       success_deletion_message: "提醒已成功刪除。"
   sharing:
@@ -4259,12 +4258,12 @@ zh-TW:
         message: "與單個用戶共用專案列表是一項企業附加功能。"
   working_days:
     info: >
-      在安排工作包時，未選擇的日期將被跳過(且不計入天數)。可以在工作包級別覆蓋這些選項。
+      未被選取的日期在排程工作套件時將被略過（且不計入天數統計）。這些設定可在單一工作套件層級進行覆蓋。
     instance_wide_info: >
-      加到下面列表中的日期被視為非工作日，設定工作項目時程時跳過。
+      加到下面列表中的日期被視為非工作日，設定工作套件時程時跳過。
     change_button: "修改工作日"
     warning: >
-      在這種情況下，更改一周中哪些天被視為工作日或非工作日，會影響所有項目中所有工作包的開始和結束日期。
+      在這種情況下，更改一周中哪些天被視為工作日或非工作日，會影響所有項目中所有工作套件的開始和結束日期。
     journal_note:
       changed: _**工作日**已更改 (%{changes})。_
       days:
@@ -4292,10 +4291,10 @@ zh-TW:
         emoji_reactions_activity_type_not_supported: "此活動類型不支持表情符號反應。"
       conflict:
         multiple_reminders_not_allowed: |-
-          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
+          每次只能為一個工作套件設定一個提醒。請先刪除或更新現有的提醒。
       not_found:
-        work_package: "找不到您要查找的工作項目或者它已被刪除。"
-        reminder: "The reminder you are looking for cannot be found or has been deleted."
+        work_package: "找不到您要查找的工作套件或者它已被刪除。"
+        reminder: "您查找的提醒不存在或已被刪除。"
       expected:
         date: "YYYY-MM-DD (僅適用於 ISO 8601 日期)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm](任何兼容的 ISO 8601 日期時間)"
@@ -4322,9 +4321,9 @@ zh-TW:
         unsupported_context: "所提供的資源不受相對應支援。"
         context_object_not_found: "Cannot find the resource given with the context.\n無法找到本文對應的資源。"
       validation:
-        due_date: "無法在主工作項目上設置結束日期。"
-        invalid_user_assigned_to_work_package: "所指定的使用者不允許成為工作項目的 '%{property}' 。"
-        start_date: "無法在主工作項目設置開始日期。"
+        due_date: "無法在主工作套件上設置結束日期。"
+        invalid_user_assigned_to_work_package: "所指定的使用者不允許成為工作套件的 '%{property}' 。"
+        start_date: "無法在父工作套件設置開始日期。"
       eprops:
         invalid_gzip: "gzip檔案錯誤：%{message}"
         invalid_json: "json檔案錯誤：%{message}"

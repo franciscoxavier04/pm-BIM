@@ -29,6 +29,8 @@
 #++
 
 class Queries::WorkPackages::Selects::ProjectPhaseSelect < Queries::WorkPackages::Selects::WorkPackageSelect
+  include Queries::ProjectPhaseDefinitions::DatabaseQueries
+
   def initialize
     super(:project_phase,
           association: :project_phase_definition,
@@ -52,30 +54,8 @@ class Queries::WorkPackages::Selects::ProjectPhaseSelect < Queries::WorkPackages
     active_phase_null_case(true_case: "1", false_case: "0")
   end
 
-  # Is called when the query is grouped by project phase definition. We ensure that only active project phases are considered.
-  # Note that one project might have an active phase while another project has set the phase with the same definition to inactive.
-  # Additionally, the permissions to view project phases are considered on a project level, too.
   def group_by_join_statement
-    # The project is joined here anew which should not be necessary but is.
-    # The necessity comes from AR's behaviour of automatically determining the alias for tables LEFT JOINed via includes.
-    # To avoid conflicts, AR will search strings for occurrences of the table name and if found, an included table will be aliased
-    # (potentially with a numbering). In this case, if the permission checks are part of the query, it will include a reference
-    # to the projects table. Therefore, the include for projects, which happens in the query itself, will be considered needing
-    # an alias. That assumption is wrong in this case as the reference to projects is in a subquery but AR does not know that.
-    <<~SQL.squish
-      LEFT OUTER JOIN "projects" ON "projects"."id" = "work_packages"."project_id"
-      LEFT OUTER JOIN (
-        SELECT
-          ph.id,
-          ph.project_id,
-          ph.definition_id AS active_phase_definition_id
-        FROM project_phases ph
-        WHERE ph.project_id IN (#{project_with_view_phases_permissions.to_sql})
-        AND ph.active = true
-      ) AS active_phases
-      ON active_phases.active_phase_definition_id = work_packages.project_phase_definition_id
-        AND active_phases.project_id = work_packages.project_id
-    SQL
+    join_project_phase_definitions_based_on_permissions_and_active_phases
   end
 
   def sortable_join_statement(_query)

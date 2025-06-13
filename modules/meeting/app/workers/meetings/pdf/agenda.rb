@@ -53,7 +53,9 @@ module Meetings::PDF
 
     def write_section(section, section_index)
       write_optional_page_break
-      write_section_title(section, section_index) unless section.title.empty?
+      unless section.title.blank? && section_index == 0 && meeting.sections.count == 1
+        write_section_title(section, section_index)
+      end
       write_agenda_items(section)
     end
 

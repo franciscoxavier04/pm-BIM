@@ -216,13 +216,6 @@ export class IanCenterService extends UntilDestroyedMixin {
     this.onReload.pipe(take(1)).subscribe((collection) => {
       this.store.update({ activeCollection: collection });
     });
-
-    if (facet === 'unread') {
-      if (this.selectedNotification?.readIAN) {
-        this.goToCenter();
-      }
-    }
-    this.reload.next(true);
   }
 
   markAsRead(notifications:ID[]):void {
@@ -238,11 +231,6 @@ export class IanCenterService extends UntilDestroyedMixin {
 
   openFullView(workPackageId:string|null):void {
     void this.state.go('work-packages.show', { workPackageId });
-  }
-
-  goToCenter():void {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-argument
-    void this.state.go(this.state.current.data.baseRoute);
   }
 
   showNextNotification():void {
