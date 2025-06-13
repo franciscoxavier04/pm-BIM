@@ -347,7 +347,7 @@ RSpec.describe EnterpriseToken do
       let!(:expired_token) { create_enterprise_token("an_active_token", expires_at: 1.day.ago) }
 
       before do
-        expired_token.update(valid_until: 1.year.from_now)
+        expired_token.update_column(:valid_until, 1.year.from_now)
       end
 
       it "returns an empty array" do
