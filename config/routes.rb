@@ -476,8 +476,11 @@ Rails.application.routes.draw do
 
   scope "admin" do
     resource :announcements, only: %i[edit update]
+
+    get "/enterprise", to: redirect("#{rails_relative_url_root}/admin/enterprise_tokens")
+
     constraints(Constraints::Enterprise) do
-      resources :enterprise_tokens, only: %i[index show new create destroy] do
+      resources :enterprise_tokens, only: %i[index new create destroy] do
         member do
           get :destroy_dialog
         end
