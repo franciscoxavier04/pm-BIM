@@ -157,7 +157,7 @@ For RedHat/CentOS:
 
 ```shell
 sudo rm -rf /var/lib/pgsql/13/data
-sudo yum remove pgsql13
+sudo yum remove postgresql13
 ```
 
 ## Compose-based docker installation
