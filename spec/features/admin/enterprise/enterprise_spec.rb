@@ -54,10 +54,7 @@ RSpec.describe "Enterprise token", :js do
     end
 
     it "shows a teaser page and has a button to add a token" do
-      # The teaser page is displayed
-      # TODO: this will likely change, adapt to the new teaser page
       expect(page).to have_link("Start free trial")
-      expect(page).to have_css(".button", text: "Book now")
 
       # Try adding invalid enterprise token data
       expect(page).to have_button("Add Enterprise token")

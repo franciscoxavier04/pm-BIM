@@ -41,23 +41,16 @@ module EnterpriseTrials
     end
 
     def call
-      if @trial_key
-        render(
-          Primer::Beta::Button.new(
-            tag: :a,
-            href: enterprise_tokens_path
-          )
-        ) do
-          I18n.t(:button_try_again)
-        end
-      else
-        render(
-          Primer::Beta::Button.new(
-            tag: :a,
-            href: trial_dialog_enterprise_trial_path,
-            data: { turbo_stream: true }
-          )
-        ) do
+      render(
+        Primer::Beta::Button.new(
+          tag: :a,
+          href: trial_dialog_enterprise_trial_path,
+          data: { turbo_stream: true }
+        )
+      ) do
+        if @trial_key
+          I18n.t("ee.trial.request_again")
+        else
           I18n.t("admin.enterprise.start_trial")
         end
       end

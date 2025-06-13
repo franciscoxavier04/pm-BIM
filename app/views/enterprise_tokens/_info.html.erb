@@ -65,40 +65,6 @@ See COPYRIGHT and LICENSE files for more details.
         button_title
       end
     end
-
-    button_row.with_column(ml: 1) do
-      button_title = t("admin.enterprise.book_now")
-      render(
-        Primer::Beta::Button.new(
-          tag: :a,
-          size: :medium,
-          href: '#',
-          aria: { label: button_title },
-          role: "button",
-          data: {
-            "cb-type": "checkout",
-            "cb-plan-id": OpenProject::Configuration.enterprise_plan,
-          },
-          title: button_title
-        )
-      )  { button_title }
-    end
-
-    button_row.with_column(ml: 1) do
-      quote_link = OpenProject::Static::Links.links.fetch :upsell_get_quote
-      button_title = t(quote_link[:label])
-      render(
-        Primer::Beta::Button.new(
-          tag: :a,
-          size: :medium,
-          href: quote_link[:href],
-          aria: { label: button_title },
-          target: "_blank",
-          title: button_title
-        )
-      )  { button_title }
-    end
-
   end
 %>
 
