@@ -66,6 +66,9 @@ module EnterpriseTrials
 
     def handle_successful_trial(trial_json)
       if trial_json["token"].nil?
+        # Ensure we delete the trial key regardless of the outcome
+        # as reloading it would always end in the same non-successful flow
+        @trial_key.destroy
         return ServiceResult.success(result: nil, message: I18n.t("ee.trial.already_retrieved"))
       end
 

@@ -100,7 +100,7 @@ RSpec.describe EnterpriseTrials::AugurLoadTrialService, :webmock do
 
           expect(result).to be_success
           expect(result.message).to eq(I18n.t("ee.trial.already_retrieved"))
-          expect(Token::EnterpriseTrialKey).to exist(trial_key.id)
+          expect(Token::EnterpriseTrialKey).not_to exist(trial_key.id)
           expect(EnterpriseToken).not_to have_received(:new)
         end
       end

@@ -2192,7 +2192,9 @@ en:
     trial:
       not_found: "You have requested a trial token, but that request is no longer available. Please try again."
       wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
-      already_retrieved: "Your trial enterprise token was already retrieved. Please reach out to our support team if you need a new one."
+      already_retrieved: >
+        Your trial enterprise token was already retrieved. Please check your emails for the token being attached.
+        Please reach out to our support team if you need a new one.
       successfully_saved: "Your trial enterprise token has been successfully retrieved."
       token_sent: "Trial token requested"
       request_again: "Request again"
