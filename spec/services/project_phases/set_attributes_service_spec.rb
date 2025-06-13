@@ -108,7 +108,7 @@ RSpec.describe ProjectPhases::SetAttributesService, type: :model do
           allow(phase).to receive(:default_start_date).and_return(date)
         end
 
-        context "and the previous_date is not set" do
+        context "and the previous start date is not set" do
           let(:previous_date) { nil }
 
           it "sets the model's start_date to the default_start_date" do
@@ -116,11 +116,19 @@ RSpec.describe ProjectPhases::SetAttributesService, type: :model do
           end
         end
 
-        context "and the previous_date is set" do
+        context "and the previous start date is set" do
           let(:previous_date) { Time.zone.yesterday }
 
           it "does not sets the model's start_date to the default_start_date" do
             expect { subject }.not_to change(phase, :start_date)
+          end
+
+          context "and the current start date is cleared" do
+            let(:call_attributes) { { start_date: "", finish_date: date + 27 } }
+
+            it "sets the model's start_date to nil" do
+              expect { subject }.to change(phase, :start_date).from(previous_date).to(nil)
+            end
           end
         end
       end

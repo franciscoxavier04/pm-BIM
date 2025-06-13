@@ -36,8 +36,11 @@ module ProjectPhases
 
     private
 
-    def ensure_default_attributes(_params)
-      model.start_date ||= model.default_start_date if model.default_start_date.present?
+    def ensure_default_attributes(params)
+      # Set default start date only when there is no user provided value.
+      if params[:start_date].nil? && model.default_start_date.present?
+        model.start_date ||= model.default_start_date
+      end
     end
 
     def set_calculated_duration

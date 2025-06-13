@@ -276,7 +276,13 @@ RSpec.describe "Edit project phases on project overview page", :js, with_flag: {
 
         dialog.close
 
-        # Opening the Planning phase with no dates
+        # Save the Initiating phase to trigger rescheduling on the cleared Planning phase
+        dialog = overview_page.open_edit_dialog_for_life_cycle(life_cycle_initiating, wait_angular: true)
+
+        dialog.submit # Saving the dialog is successful
+        dialog.expect_closed
+
+        # Opening the Planning phase with the default start date
         dialog = overview_page.open_edit_dialog_for_life_cycle(life_cycle_planning, wait_angular: true)
 
         # The start date automatically succeeds the life_cycle_initiating
@@ -313,6 +319,42 @@ RSpec.describe "Edit project phases on project overview page", :js, with_flag: {
         overview_page.within_life_cycle_container(life_cycle_planning) do
           expect(page).to have_text formatted_date_range(life_cycle_planning)
         end
+
+        # Make the Initiating phase incomplete to allow editing the Planning start date
+        life_cycle_initiating.update!(start_date: nil)
+        dialog = overview_page.open_edit_dialog_for_life_cycle(life_cycle_planning, wait_angular: true)
+
+        # Clear the start date of life_cycle_planning
+        dialog.clear_dates(fields: :start_date)
+
+        dialog.submit # Saving the dialog is successful
+        dialog.expect_closed
+
+        # Sidebar shows the refreshed life_cycle_planning
+        life_cycle_planning.reload
+        overview_page.within_life_cycle_container(life_cycle_planning) do
+          expect(page).to have_text formatted_date_range(life_cycle_planning)
+        end
+
+        # Planning start date is cleared in the database
+        expect(life_cycle_planning).to have_attributes(start_date: nil)
+
+        # Saving the Initiating phase will trigger rescheduling and assigns a start date for Planning
+        dialog = overview_page.open_edit_dialog_for_life_cycle(life_cycle_initiating, wait_angular: true)
+
+        dialog.submit # Saving the dialog is successful
+        dialog.expect_closed
+
+        # Sidebar shows the refreshed life_cycle_planning
+        life_cycle_planning.reload
+        overview_page.within_life_cycle_container(life_cycle_planning) do
+          expect(page).to have_text formatted_date_range(life_cycle_planning)
+        end
+
+        # Planning start date is saved in the database
+        # Since the Initiating phase is now incomplete without a duration, the planning
+        # starts at the same date as the initiating.
+        expect(life_cycle_planning.start_date).to eq(initiating_finish_date)
       end
     end
 
