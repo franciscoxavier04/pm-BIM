@@ -47,7 +47,9 @@ On each project's **overview page**, you can find a section called **project lif
 
 ![Project life cycle phases displayed on a project overview page in OpenProject](openproject_user_guide_project_overview_project_life_cycle.png)
 
-### Edit project phases
+### Schedule project phases
+
+Project phases must follow specific rules for setting and adjusting dates. The system automatically schedules phases based on the input provided, enforcing correct order, preventing overlaps, and preserving durations where possible.
 
 For each of the active project phases, you can defined a date range. To set or manage the date range click on that date range (it will be empty initially)and set the date with a OpenProject date picker. 
 
@@ -57,18 +59,63 @@ For each of the active project phases, you can defined a date range. To set or m
 
 ![Edit date range for project phase on a project overview page in OpenProject](openproject_user_guide_project_overview_project_life_cycle_edit_date_range.png)
 
-When modifying the dates of project phases, keep the following in mind:
+Use the guidelines below to understand how phase and gate scheduling behaves.
 
-- A phase must have either both a start and end date or none at all. You cannot set only one of the two.
-- The start date must be before or equal to the end date.
-- The shortest possible phase duration is one day (start and end date can be the same).
+#### Basic rules
+
+- A phase must have both a start and end date, or neither—partial entries are not allowed.
+- The start date must be on or before the end date.
+- The minimum duration of a phase is one day (start and end date can be the same).
 - There is no maximum duration for a phase.
-- Gaps between phases and gates are allowed.
 - Phases cannot overlap with one another.
-- Gates can share the same date as the start or end of a phase, but cannot be set to a date that falls within a phase’s date range.
-- No two gates can have the same date.
-- The dates you assign must follow the order defined for phases and gates in the system administration. For example, the **initiating** phase must always occur before **closing**.
-- Dates in child projects are not restricted by the lifecycle dates in the parent project.
+- Gaps between phases and gates are allowed.
+
+#### Gates and phase sequence constraints
+
+- **Gates** can:
+    - Share the same date as the **start or end** of a phase.
+    - **Not** be placed **within** the date range of a phase.
+    - **Not** share the same date with another gate.
+  - **Phases and gates must follow the predefined order** configured in system administration (e.g., *Initiating* must come before *Closing*).
+  - **Child projects** are **not restricted** by the lifecycle dates of their parent project.
+
+#### Automatic scheduling behavior
+
+- **Scheduling occurs automatically** and without user confirmation when possible.
+- When the **finish date of a phase changes**:
+  - The **next active phase’s start date** is updated to the **next working day**.
+  - If the next phase has a **duration**, its **finish date is adjusted** to preserve it (based on working days).
+  - If the next phase has a **finish date but no prior start date**, the finish date is only adjusted if it falls **before** the new start date.
+  - **Scheduling continues down the chain** of phases until no further adjustments are needed.
+
+#### Missing or partial dates
+
+- Scheduling begins **as soon as enough dates are defined**, even if not all phases have dates.
+- If a user **removes the finish date** of a phase, the **start date of the successor** phase is preserved to maintain its duration.
+
+#### Constraints and errors
+
+- Scheduling only proceeds **forward in time**.
+- Setting a finish date that is **before the start date** results in an **error**. The start date is **not auto-adjusted**, and duration is not preserved in this case.
+
+#### Inactive phases
+
+- **Inactive phases are ignored** during scheduling.
+- The next **active** phase is treated as the logical successor.
+- When a phase is **deactivated**, its dates remain unchanged, and the scheduling continues from the following active phase.
+
+#### Activating or deactivating phases
+
+- When a phase is **activated**:
+    - If it had a **duration**, the system may adjust the finish date to maintain it.
+    - This can trigger rescheduling of succeeding phases.
+    - If it had **no duration**, a start date may be set, but the finish date may remain unset. This may unset the next phase’s start date.
+- When a phase is **deactivated**, its dates are preserved, and scheduling skips it going forward.
+
+#### Other scheduling triggers
+ - **Changes to non-working days** (added or removed) will reschedule all affected phases across all projects to **preserve duration**.
+ - **Modifications in global phase configuration** (adding, deleting, reordering) do **not** immediately reschedule existing projects.
+ - However, the **first user interaction** with a lifecycle after such changes will trigger a rescheduling to preserve phase durations.
 
 ## Project attributes
 
