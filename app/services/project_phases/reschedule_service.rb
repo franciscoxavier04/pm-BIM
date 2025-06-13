@@ -77,7 +77,12 @@ module ProjectPhases
 
     def reschedule_partial_phase_and_retrieve_next_start(phase, from)
       phase.start_date = calculate_start_date(from)
-      phase.finish_date = calculate_finish_date(phase, from) if phase.finish_date?
+
+      if phase.finish_date?
+        phase.finish_date = calculate_finish_date(phase, from)
+        phase.duration = phase.calculate_duration
+      end
+
       phase.save
 
       phase.finish_date + 1 if phase.finish_date?

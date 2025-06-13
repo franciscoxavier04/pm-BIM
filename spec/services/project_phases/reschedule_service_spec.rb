@@ -149,7 +149,10 @@ RSpec.describe ProjectPhases::RescheduleService, type: :model do
           create(:project_phase, project:, start_date: date + 1, finish_date: nil, duration: 5),
           create(:project_phase, project:, start_date: nil, finish_date: nil, duration: 5),
           create(:project_phase, project:, start_date: date, finish_date: date, duration: 13),
-          create(:project_phase, project:, start_date: date, finish_date: nil, duration: 2)
+          # Always ending later than the schedule (rescheduling extends the duration)
+          create(:project_phase, project:, start_date: nil, finish_date: [from, date].max + 21, duration: 1),
+          # Always ending earlier than the schedule (rescheduling shrinks the duration)
+          create(:project_phase, project:, start_date: nil, finish_date: [from, date].min - 1, duration: 2)
         ]
       end
 
@@ -157,12 +160,13 @@ RSpec.describe ProjectPhases::RescheduleService, type: :model do
 
       it "reschedules only the ones with a start_date or finish_date present" do
         expect(subject).to be_success
-        expect(phases[0]).to have_attributes(start_date: from, finish_date: from, calculate_duration: 1)
-        expect(phases[1]).to have_attributes(start_date: from + 1, finish_date: nil, calculate_duration: nil)
-        expect(phases[2]).to have_attributes(start_date: from + 1, finish_date: nil, calculate_duration: nil)
-        expect(phases[3]).to have_attributes(start_date: from + 1, finish_date: nil, calculate_duration: nil)
-        expect(phases[4]).to have_attributes(start_date: from + 1, finish_date: from + 19, calculate_duration: 13)
-        expect(phases[5]).to have_attributes(start_date: from + 20, finish_date: nil, calculate_duration: nil)
+        expect(phases[0]).to have_attributes(start_date: from, finish_date: from, duration: 1)
+        expect(phases[1]).to have_attributes(start_date: from + 1, finish_date: nil, duration: 5)
+        expect(phases[2]).to have_attributes(start_date: from + 1, finish_date: nil, duration: 5)
+        expect(phases[3]).to have_attributes(start_date: from + 1, finish_date: nil, duration: 5)
+        expect(phases[4]).to have_attributes(start_date: from + 1, finish_date: from + 19, duration: 13)
+        expect(phases[5]).to have_attributes(start_date: from + 20, finish_date: from + 21, duration: 2)
+        expect(phases[6]).to have_attributes(start_date: from + 22, finish_date: from + 22, duration: 1)
       end
 
       context "when the from date is earlier than the phases dates" do
@@ -170,12 +174,13 @@ RSpec.describe ProjectPhases::RescheduleService, type: :model do
 
         it "reschedules only the ones with a start_date or finish_date present" do
           expect(subject).to be_success
-          expect(phases[0]).to have_attributes(start_date: from, finish_date: date, calculate_duration: 2)
-          expect(phases[1]).to have_attributes(start_date: date + 1, finish_date: nil, calculate_duration: nil)
-          expect(phases[2]).to have_attributes(start_date: date + 1, finish_date: nil, calculate_duration: nil)
-          expect(phases[3]).to have_attributes(start_date: date + 1, finish_date: nil, calculate_duration: nil)
-          expect(phases[4]).to have_attributes(start_date: date + 1, finish_date: date + 17, calculate_duration: 13)
-          expect(phases[5]).to have_attributes(start_date: date + 20, finish_date: nil, calculate_duration: nil)
+          expect(phases[0]).to have_attributes(start_date: from, finish_date: date, duration: 2)
+          expect(phases[1]).to have_attributes(start_date: date + 1, finish_date: nil, duration: 5)
+          expect(phases[2]).to have_attributes(start_date: date + 1, finish_date: nil, duration: 5)
+          expect(phases[3]).to have_attributes(start_date: date + 1, finish_date: nil, duration: 5)
+          expect(phases[4]).to have_attributes(start_date: date + 1, finish_date: date + 17, duration: 13)
+          expect(phases[5]).to have_attributes(start_date: date + 20, finish_date: date + 21, duration: 2)
+          expect(phases[6]).to have_attributes(start_date: date + 22, finish_date: date + 22, duration: 1)
         end
       end
     end
