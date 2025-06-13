@@ -37,6 +37,7 @@ module WorkPackageTypes
     attribute :is_milestone
     attribute :name
 
-    validates :is_in_roadmap, inclusion: { in: [true, false] }
+    validates :name, presence: true, length: { maximum: 255 }
+    validates :is_default, :is_milestone, :is_in_roadmap, inclusion: { in: [true, false] }
   end
 end
