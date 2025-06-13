@@ -92,7 +92,7 @@ zh-TW:
         automatically_managed_appendix: 此外，在這種情況下，此儲存空間有一個自動管理的專案資料夾，此資料夾及其檔案將永遠刪除。
         confirmation_text: 請確認您瞭解並希望從本專案中移除此檔案儲存空間
         heading_text: 從 %{storage} 移除專案
-        text: 此動作是不可逆轉的，並會移除此專案的工作項目到該儲存的檔案和資料夾的所有連結。
+        text: 此動作是不可逆轉的，並會移除此專案的工作套件到該儲存的檔案和資料夾的所有連結。
         title: 從儲存庫中移除專案
       label: 移除專案
   services:
@@ -195,11 +195,11 @@ zh-TW:
       input_delete_confirmation: 輸入檔案儲存名稱 %{file_storage} 以確認刪除。
       irreversible_notice: 刪除這個儲存空間是不可逆轉的動作
       project_storage: '您確定要從此項目中刪除 %{file_storage} 嗎？ 若要確認此操作，請在下面的欄位中輸入儲存名稱，這將：'
-      project_storage_delete_result_1: 刪除從此項目的工作包到該儲存的檔案和資料夾的所有連結。
+      project_storage_delete_result_1: 移除此專案中所有工作套件與該儲存空間檔案及資料夾的連結。
       project_storage_delete_result_2: 如果此儲存空間具有自動管理的專案資料夾，則該資料夾及其檔案將永久刪除。
       storage: '您確定要從此項目中刪除 %{file_storage} 嗎？ 若要確認此操作，請在下面的欄位中輸入儲存名稱，這將：'
       storage_delete_result_1: 刪除使用此儲存的所有項目的所有儲存設定。
-      storage_delete_result_2: 刪除從此專案的工作項目與該儲存的檔案和資料夾的所有連結。
+      storage_delete_result_2: 移除所有專案中工作套件與該儲存空間檔案及資料夾的所有連結。
       storage_delete_result_3: 如果此儲存空間具有自動管理的專案資料夾，則該資料夾及其檔案將永久刪除。
     dependencies:
       nextcloud:
@@ -237,7 +237,7 @@ zh-TW:
         download_report: 下載
         rerun_checks: 重新執行所有檢查
         run_checks: 立即執行檢查
-      checked: 'Last check: %{datetime}'
+      checked: '最後檢查時間：%{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: 自動新增資料夾
@@ -247,7 +247,7 @@ zh-TW:
           group_folder_app: '依賴：群組資料夾'
           group_folder_contents: 群組資料夾包含預期的內容
           group_folder_presence: 群組目錄已存在
-          header: Automatically managed project folders
+          header: 自動管理的專案資料夾
           userless_access: 服務器端要求認證
         authentication:
           existing_token: 用戶權杖(token)
@@ -266,7 +266,7 @@ zh-TW:
           diagnostic_request: 檢查請求
           drive_id_exists: 硬碟已存在
           drive_id_format: 硬碟ID格式
-          header: Configuration
+          header: 配置
           host_url_accessible: 主機URL可存取
           storage_configured: 設定完成
           tenant_id: 租戶ID
@@ -371,9 +371,9 @@ zh-TW:
         tenant_id: 請從所需應用程序和應用註冊中複製目錄(租戶) ID，鏈接文本為 %{application_link_text}。
         tenant_id_placeholder: 姓名或UUID
       setting_up_additional_storages: 額外設定檔案儲存裝置，請參閱
-      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
+      setting_up_additional_storages_non_admin: 管理員可在 「管理」/「檔案儲存」 中設定額外的檔案儲存空間。
       setting_up_storages: 設定檔案儲存裝置，請參閱
-      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
+      setting_up_storages_non_admin: 管理員可在 「管理」/「檔案儲存」 中設定檔案儲存空間。
       type: '請確保您在 Nextcloud 實例中具有管理權限，並在進行設置之前安裝了以下應用程序：'
       type_link_text: "“整合 OpenProject”"
     label_active: 啟用
@@ -447,7 +447,7 @@ zh-TW:
     page_titles:
       file_storages:
         delete: 刪除儲存區
-        subtitle: 新增外部檔案存儲空間，以便上傳、連結和管理工作項目中的文件。
+        subtitle: 新增外部檔案存儲空間，以便上傳、連結和管理工作套件中的文件。
       managed_project_folders:
         subtitle: |-
           讓 OpenProject 自動為每個專案建立資料夾。建議這樣做，因為這樣可以確保每個團隊
@@ -476,8 +476,8 @@ zh-TW:
         name: OneDrive/SharePoint
         name_placeholder: 例如 OneDrive
     show_attachments_toggle:
-      description: 停用此選項將隱藏工作項目檔案索引標籤上的附件清單。工作項目說明中附加的檔案仍會上傳至內部附件儲存區。
-      label: 顯示與工作項目相關之附件
+      description: 停用此選項將隱藏工作套件檔案索引標籤上的附件清單。工作套件說明中附加的檔案仍會上傳至內部附件儲存區。
+      label: 顯示與工作套件相關之附件
     storage_audience:
       documentation_intro: 請參閱我們的文件，以瞭解以下選項及身份提供者的相關設定細節。
       idp:
@@ -493,5 +493,5 @@ zh-TW:
     upsell:
       description: |-
         整合您的 OneDrive/SharePoint 作為 OpenProject 的檔案儲存空間。上傳檔案並將其直接連結至專案中的
-        工作項目。
+        工作套件。
       title: OneDrive/SharePoint 整合

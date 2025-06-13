@@ -361,7 +361,7 @@ uk:
           "16_1":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
+                Цей випуск містить кілька нових і поліпшених функцій. <br> <ul class="%{list_styling_class}"> <li>Можливість проєктувати етапи й контрольні точки життєвого циклу проєкту.</li> <li>Експортуйте наради у форматі PDF.</li> <li>Налаштовуйте розумні параметри за замовчуванням для нагадувань.</li> <li>Використовуйте від’ємне значення затримки для дат пакетів робіт.</li> <li>Відображайте дерева ієрархії для користувацьких полів ієрархії.</li> <li>Отримайте переваги покращеної доступності елемента вибору дати за допомогою live-областей ARIA.</li> </ul>
     ical_sharing_modal:
       title: "Підписатися на календар"
       inital_setup_error_message: "Під час отримання даних сталася помилка."
@@ -566,7 +566,7 @@ uk:
     label_version_plural: "Версії"
     label_view_has_changed: "Це подання містить незбережені зміни. Натисніть, щоб переглянути їх."
     help_texts:
-      show_modal: "Show help text"
+      show_modal: "Показати текст довідки"
     onboarding:
       buttons:
         skip: "Пропустити"
@@ -1037,15 +1037,15 @@ uk:
       reminders:
         button_label: "Установити нагадування"
         title:
-          new: "Set a reminder"
+          new: "Установити нагадування"
           edit: "Редагувати нагадування"
         subtitle: "Ви отримаєте сповіщення про цей пакет робіт у вибраний час."
         presets:
-          tomorrow: "Tomorrow"
-          three_days: "In 3 days"
-          week: "In a week"
-          month: "In a month"
-          custom: "At a particular date/time"
+          tomorrow: "Завтра"
+          three_days: "Через 3 дні"
+          week: "Через тиждень"
+          month: "Через місяць"
+          custom: "У конкретний день / час"
       scheduling:
         is_parent: "Дати цього пакета робіт автоматично виводяться з його дочірніх елементів. Активуйте «Ручне планування», щоб установити ці дати."
         is_switched_from_manual_to_automatic: "Можливо, дати цього пакета робіт знадобиться перерахувати після переходу з ручного на автоматичне планування через зв’язок з іншими пакетами робіт."
