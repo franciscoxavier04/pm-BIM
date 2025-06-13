@@ -6,11 +6,7 @@ description: Viewing, creating and modifying project phases and gates in OpenPro
 keywords: project life cycle, project phase, project phase gate, project settings
 ---
 
-# Project life cycle (Enterprise add-on)
-
-> [!NOTE]
-> Defining project phases for the project life cycle is an Enterprise add-on and can only be used with [Enterprise cloud](../../../enterprise-guide/enterprise-cloud-guide/)
-> or [Enterprise on-premises](../../../enterprise-guide/enterprise-on-premises-guide/). An upgrade from the free Community edition is easy and helps support OpenProject.
+# Project life cycle
 
 ## Overview
 
@@ -30,16 +26,21 @@ Existing projects created before the life cycle feature is enabled will not auto
 >
 > While project phases and gates can be customized globally in system administration, they **cannot** be modified per individual project, only enabled or disabled.
 
-## Manage project phases
-
-To manage project phases and gates, navigate to:  *Administration → Projects → Project life cycle*.
-
 By default, OpenProject includes four standard project phases:
-
 - **Initiating**
 - **Planning**
 - **Executing**
 - **Closing**
+
+These four stages, based on the [PM² framework](https://www.openproject.org/blog/blog/pm2-alternative-pmi-prince2/) are created on the global level and available for all installations. Adding new phases or editing existing ones is an Enterprise add-on. 
+
+## Manage project phases (Enterprise add-on)
+
+> [!NOTE]
+> Defining project phases for the project life cycle is an Enterprise add-on and can only be used with [Enterprise cloud](../../../enterprise-guide/enterprise-cloud-guide/)
+> or [Enterprise on-premises](../../../enterprise-guide/enterprise-on-premises-guide/). An upgrade from the free Community edition is easy and helps support OpenProject.
+
+To manage project phases and gates, navigate to:  *Administration → Projects → Project life cycle*.
 
 Each phase can have a **start gate** and/or a **finish gate**, which are optional and configurable.
 
