@@ -13,6 +13,7 @@ The **Project overview** page is a dashboard with important information about yo
 | Topic                                                        | Content                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [What is the project overview?](#what-is-the-project-overview) | What can I do with the project overview page?                |
+| [Project life cycle](#project-attributes)                    | What is the project life cycle?                              |
 | [Project attributes](#project-attributes)                    | What are project attributes and how can I use them?          |
 | [Mark project as a favorite](#mark-a-project-as-favorite)    | How can I mark a project as favorite?                        |
 | [Archive a project](#archive-a-project)                      | How can I archive a project from the project overview page?  |
@@ -30,11 +31,44 @@ Project information is added to the dashboard as either [project attributes](#pr
 
 Open the project overview by navigating to **Overview** in the project menu on the left.
 
-![project_overview](openproject_user_guide_project_overview.png)
+![Project overview page for a specific project in OpenProject](openproject_user_guide_project_overview.png)
 
 ## Project life cycle 
 
-add 
+**Project life cycle** is an overview of project phases and phase gates, which offers a clear view of where each project stands within its defined timeline. 
+
+Project phases are managed in system administration and can be enabled or disabled under project settings for every project. 
+
+On each project's **overview page**, you can find a section called **project life cycle**. This section appears in the side panel above the **project attributes** and shows the dates configured for each phase and gate of the current project. 
+
+> [!TIP]
+>
+> If all phases and gates are disabled for a project, the project lifecycle section is hidden from the overview page.
+
+![Project life cycle phases displayed on a project overview page in OpenProject](openproject_user_guide_project_overview_project_life_cycle.png)
+
+### Edit project phases
+
+For each of the active project phases, you can defined a date range. To set or manage the date range click on that date range (it will be empty initially)and set the date with a OpenProject date picker. 
+
+> [!NOTE]
+>
+> Keep in mind that you require certain permissions to to edit the date range for project phases.
+
+![Edit date range for project phase on a project overview page in OpenProject](openproject_user_guide_project_overview_project_life_cycle_edit_date_range.png)
+
+When modifying the dates of project phases, keep the following in mind:
+
+- A phase must have either both a start and end date or none at all. You cannot set only one of the two.
+- The start date must be before or equal to the end date.
+- The shortest possible phase duration is one day (start and end date can be the same).
+- There is no maximum duration for a phase.
+- Gaps between phases and gates are allowed.
+- Phases cannot overlap with one another.
+- Gates can share the same date as the start or end of a phase, but cannot be set to a date that falls within a phase’s date range.
+- No two gates can have the same date.
+- The dates you assign must follow the order defined for phases and gates in the system administration. For example, the **initiating** phase must always occur before **closing**.
+- Dates in child projects are not restricted by the lifecycle dates in the parent project.
 
 ## Project attributes
 
