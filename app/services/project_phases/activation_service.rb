@@ -85,13 +85,13 @@ module ProjectPhases
 
       if preceding_phase
         preceding_phase
-      elsif phase.any_dates_set?
+      elsif phase.any_date_set?
         phase
       end
     end
 
     def preceding_active_phase(phase)
-      project.available_phases.reverse.find { it.any_dates_set? && it.position < phase.position }
+      project.available_phases.reverse.find { it.any_date_set? && it.position < phase.position }
     end
 
     def initial_reschedule_date(phase)

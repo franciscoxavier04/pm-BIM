@@ -77,7 +77,7 @@ module ProjectPhases
 
     def reschedule_partial_phase_and_retrieve_next_start(phase, from)
       reschedule_phase_start(phase, from)
-      return if phase.finish_date.blank?
+      return unless phase.finish_date?
 
       reschedule_phase_finish_and_retrieve_next_start(phase, from)
     end
