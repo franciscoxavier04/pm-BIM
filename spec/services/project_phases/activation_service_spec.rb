@@ -215,7 +215,7 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
           context "and later than the preceding phase finish date" do
             let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: nil, finish_date: date + 3) }
 
-            it "reschedules that and following phases filling the start date and maintining the finish date" do
+            it "reschedules that and following phases filling the start date and maintaining the finish date" do
               service.call(active: true)
 
               expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date - 1)
@@ -415,7 +415,7 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
           context "and later than the preceding phase finish date" do
             let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: nil, finish_date: date + 3) }
 
-            it "reschedules that and following phases filling the start date and maintining the finish date" do
+            it "reschedules that and following phases filling the start date and maintaining the finish date" do
               service.call(active: true)
 
               expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
@@ -498,7 +498,7 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
           context "and later than the preceding phase finish date" do
             let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: nil, finish_date: date + 3) }
 
-            it "reschedules that and following phases filling the start date and maintining the finish date" do
+            it "reschedules that and following phases filling the start date and maintaining the finish date" do
               service.call(active: true)
 
               expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
@@ -581,7 +581,7 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
           context "and later than the following phase" do
             let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: nil, finish_date: date + 10) }
 
-            it "reschedules that and following phases filling the start date and maintining the finish date" do
+            it "reschedules that and following phases filling the start date and maintaining the finish date" do
               service.call(active: true)
 
               expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: nil)

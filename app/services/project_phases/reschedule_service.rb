@@ -49,17 +49,13 @@ module ProjectPhases
       phases.each do |phase|
         next unless phase.active?
 
-        if phase.date_range_set?
-          next_start_date = reschedule_phase_and_retrieve_next_start(phase, from)
-          from = next_start_date unless next_start_date.nil?
-        else
-          reschedule_phase_start(phase, from)
+        next_start_date = if phase.date_range_set?
+                            reschedule_phase_and_retrieve_next_start(phase, from)
+                          else
+                            reschedule_partial_phase_and_retrieve_next_start(phase, from)
+                          end
 
-          if phase.finish_date.present?
-            next_start_date = reschedule_phase_finish_and_retrieve_next_start(phase, from)
-            from = next_start_date unless next_start_date.nil?
-          end
-        end
+        from = next_start_date unless next_start_date.nil?
       end
     end
 
@@ -77,6 +73,13 @@ module ProjectPhases
       days = working_days_from(from, count: duration)
 
       [days.first.date, days.last.date] if days.length == duration
+    end
+
+    def reschedule_partial_phase_and_retrieve_next_start(phase, from)
+      reschedule_phase_start(phase, from)
+      return if phase.finish_date.blank?
+
+      reschedule_phase_finish_and_retrieve_next_start(phase, from)
     end
 
     def reschedule_phase_start(phase, from)
