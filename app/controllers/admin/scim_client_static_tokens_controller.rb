@@ -28,40 +28,36 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class ScimClients::CreateService < BaseServices::Create
-  def after_perform(_)
-    super.tap do |service_result|
-      self.model = service_result.result
+module Admin
+  class ScimClientStaticTokensController < ::ApplicationController
+    include OpTurbo::ComponentStream
 
-      update_oauth_application(service_result)
+    before_action :require_admin
+
+    def create
+      scim_client = ScimClient.find(params[:scim_client_id])
+      result = ::ScimClients::GenerateStaticTokenService.new(scim_client).call
+
+      update_via_turbo_stream(component: Admin::ScimClients::TokenListComponent.new(scim_client))
+
+      respond_with_dialog ScimClients::CreatedTokenDialogComponent.new(result.result)
     end
-  end
 
-  private
-
-  def update_oauth_application(service_result)
-    return if !model.authentication_method_oauth2_client? && !model.authentication_method_oauth2_token?
-
-    persist_service_result = create_oauth_application
-    model.oauth_application = persist_service_result.result if persist_service_result.success?
-    service_result.add_dependent!(persist_service_result)
-  end
-
-  def service_account
-    model.service_account
-  end
-
-  def create_oauth_application
-    ::OAuth::Applications::CreateService
-      .new(user:)
-      .call(
-        name: "#{model.name} (#{ScimClient.model_name.human})",
-        redirect_uri: "urn:ietf:wg:oauth:2.0:oob",
-        client_credentials_user_id: service_account.id,
-        scopes: "scim_v2",
-        confidential: true,
-        integration: model,
-        owner: user
+    def deletion_dialog
+      respond_with_dialog ScimClients::RevokeStaticTokenDialogComponent.new(
+        Doorkeeper::AccessToken.find(params[:id]),
+        scim_client_id: params[:scim_client_id],
+        turbo_frame: params[:target].presence
       )
+    end
+
+    def destroy
+      token = Doorkeeper::AccessToken.find(params[:id])
+      scim_client = ScimClient.find(params[:scim_client_id])
+
+      ::ScimClients::RevokeStaticTokenService.new(scim_client).call(token)
+
+      redirect_to edit_admin_scim_client_path(scim_client)
+    end
   end
 end

@@ -28,40 +28,38 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class ScimClients::CreateService < BaseServices::Create
-  def after_perform(_)
-    super.tap do |service_result|
-      self.model = service_result.result
+module Admin::ScimClients
+  class TableComponent < OpPrimer::BorderBoxTableComponent
+    columns :name, :user_count, :authentication_method, :created_at
+    mobile_labels :user_count, :authentication_method, :created_at
 
-      update_oauth_application(service_result)
+    def mobile_title
+      ScimClient.model_name.human(count: 2)
     end
-  end
 
-  private
+    def row_class
+      RowComponent
+    end
 
-  def update_oauth_application(service_result)
-    return if !model.authentication_method_oauth2_client? && !model.authentication_method_oauth2_token?
+    def headers
+      [
+        [:name, { caption: ScimClient.human_attribute_name(:name) }],
+        [:user_count, { caption: t(".user_count") }],
+        [:authentication_method, { caption: ScimClient.human_attribute_name(:authentication_method) }],
+        [:created_at, { caption: ScimClient.human_attribute_name(:created_at) }]
+      ]
+    end
 
-    persist_service_result = create_oauth_application
-    model.oauth_application = persist_service_result.result if persist_service_result.success?
-    service_result.add_dependent!(persist_service_result)
-  end
+    def blank_title
+      t(".blank_slate.title")
+    end
 
-  def service_account
-    model.service_account
-  end
+    def blank_description
+      t(".blank_slate.description")
+    end
 
-  def create_oauth_application
-    ::OAuth::Applications::CreateService
-      .new(user:)
-      .call(
-        name: "#{model.name} (#{ScimClient.model_name.human})",
-        redirect_uri: "urn:ietf:wg:oauth:2.0:oob",
-        client_credentials_user_id: service_account.id,
-        scopes: "scim_v2",
-        confidential: true,
-        integration: model,
-        owner: user
-      )
+    def blank_icon
+      :key
+    end
   end
 end

@@ -34,6 +34,24 @@ module ScimClients
 
     def set_attributes(params)
       super(params.except(:jwt_sub))
+      update_service_account
+    end
+
+    def update_service_account
+      service_account.assign_attributes(params.slice(:name))
+
+      if model.authentication_method_sso?
+        auth_provider_link.assign_attributes(params.slice(:auth_provider_id))
+        auth_provider_link.external_id = params[:jwt_sub] if params.key?(:jwt_sub)
+      end
+    end
+
+    def service_account
+      model.service_account || model.build_service_account(admin: true)
+    end
+
+    def auth_provider_link
+      @auth_provider_link ||= model.auth_provider_link || service_account.user_auth_provider_links.build
     end
   end
 end

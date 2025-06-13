@@ -41,4 +41,23 @@ class ScimClient < ApplicationRecord
     oauth2_client: 1,
     oauth2_token: 2
   }, scopes: false, prefix: true
+
+  def access_tokens
+    return Doorkeeper::AccessToken.none unless authentication_method_oauth2_token?
+
+    oauth_application.access_tokens
+  end
+
+  def jwt_sub
+    auth_provider_link&.external_id
+  end
+
+  # This method is part of a nasty workaround for creating and updating SCIM clients:
+  # To be able to validate the jwt_sub, the SetAttributesService must be able to effectively set the jwt_sub,
+  # before it's validated by a contract. Afterwards the UpdateService must be able to persist the change. Since
+  # user_auth_provider_links is a has_many association, there is no built-in memoization for values. So to make sure the
+  # SetAttributesService, the Contract and the UpdateService all look at the same jwt_sub, we memoize the auth_provider_link here
+  def auth_provider_link
+    @auth_provider_link ||= service_account&.user_auth_provider_links&.first
+  end
 end

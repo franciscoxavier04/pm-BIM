@@ -29,7 +29,7 @@
 #++
 
 class ScimClients::DeleteService < BaseServices::Delete
-  def before_perform(_, call)
+  def before_perform(call)
     # pre-loading service_account association before destroy to ensure it's available afterwards
     call.result.service_account
     call
