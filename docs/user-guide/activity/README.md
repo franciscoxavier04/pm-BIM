@@ -57,7 +57,7 @@ You can:
 ### Internal comments (Enterprise add-on)
 
 > [!NOTE]
-> Internal comments are an Enterprise add-on and can only be used with [Enterprise cloud](../../enterprise-guide/enterprise-cloud-guide/) or [Enterprise on-premises](../../enterprise-guide/enterprise-cloud-guide/). An upgrade from the free Community edition is easily possible.
+> Internal comments are an Enterprise add-on and can only be used with [Enterprise cloud](../../enterprise-guide/enterprise-cloud-guide/) or [Enterprise on-premises](../../enterprise-guide/enterprise-on-premises-guide/). An upgrade from the free Community edition is easily possible.
 
 Projects may include external clients or suppliers, who can be invited to a project or individual work package with restricted roles. To keep sensitive discussions (for example rates, negotiations, or financial and contextual details) confined to the core team, internal comments can be used. These comments are only visible to authorized users and are not accessible to external participants. This allows teams to manage sensitive information directly within work packages and avoid using external tools, maintaining a single source of truth.
 

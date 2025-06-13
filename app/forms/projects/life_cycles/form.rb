@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +30,11 @@
 module Projects::LifeCycles
   class Form < ApplicationForm
     form do |f|
-      multi_value_life_cycle_input(f)
+      f.group(layout: :horizontal) do |horizontal_form|
+        start_date_input(horizontal_form)
+        finish_date_input(horizontal_form)
+        duration_input(horizontal_form)
+      end
     end
 
     private
@@ -37,13 +43,21 @@ module Projects::LifeCycles
       "life-cycle-step-#{model.id}"
     end
 
-    def base_input_attributes
+    def datepicker_attributes(field_name)
       {
-        label:,
-        leading_visual: { icon: :calendar },
-        datepicker_options: {
-          inDialog: Overviews::ProjectPhases::EditDialogComponent::DIALOG_ID,
-          data: { action: "change->overview--project-life-cycles-form#previewForm" }
+        name: field_name,
+        label: attribute_name(field_name),
+        type: field_type,
+        value: value(field_name),
+        autofocus: autofocus?(field_name),
+        placeholder:,
+        show_clear_button: show_clear_button?(field_name),
+        clear_button_id: "#{field_name}_clear_button",
+        inset: true,
+        data: {
+          action: "focus->overview--project-life-cycles-form#onHighlightField " \
+                  "overview--project-life-cycles-form#previewForm ",
+          "overview--project-life-cycles-form-target": field_name.to_s.camelize(:lower)
         },
         wrapper_data_attributes: {
           "qa-field-name": qa_field_name
@@ -51,28 +65,92 @@ module Projects::LifeCycles
       }
     end
 
-    def multi_value_life_cycle_input(form)
-      value = [model.start_date, model.finish_date].compact.join(" - ")
+    def start_date_input(form)
+      input_attributes = {
+        disabled: start_date_disabled?,
+        caption: start_date_caption
+      }
+      form.text_field **datepicker_attributes(:start_date), **input_attributes
+    end
 
-      input_attributes = { name: :date_range, value: }
-      if model.duration
-        input_attributes[:caption] =
-          I18n.t("project_phase.duration", count: model.duration)
+    def finish_date_input(form)
+      form.text_field **datepicker_attributes(:finish_date)
+    end
+
+    def duration_input(form)
+      input_attributes = {
+        name: :duration,
+        label: attribute_name(:duration),
+        type: :number,
+        inset: true,
+        disabled: true,
+        value: model.duration,
+        trailing_visual: { text: { text: I18n.t("datetime.units.day", count: model.duration) } },
+        data: { "overview--project-life-cycles-form-target": "duration" }
+      }
+      form.text_field **input_attributes
+    end
+
+    def autofocus?(field_name)
+      # let javascipt handle focusing when rendering for preview
+      return false if model.changed?
+
+      field_name == autofocus_field_name
+    end
+
+    def autofocus_field_name
+      if start_date_disabled? || (model.start_date? && !model.finish_date?)
+        :finish_date
+      else
+        :start_date
       end
-
-      form.range_date_picker **base_input_attributes, **input_attributes
     end
 
-    def label
-      helpers.safe_join([icon, " ", model.name])
+    def show_clear_button?(field_name)
+      case field_name
+      when :start_date
+        !start_date_disabled?
+      when :finish_date
+        true
+      end
     end
 
-    def icon
-      render Primer::Beta::Octicon.new(icon: :"op-phase", classes: icon_color_class)
+    def value(field_name)
+      case field_name
+      when :start_date
+        model.start_date || model.default_start_date || model.start_date_before_type_cast
+      when :finish_date
+        model.finish_date_before_type_cast
+      end
     end
 
-    def icon_color_class
-      helpers.hl_inline_class("project_phase_definition", model.definition)
+    def start_date_disabled?
+      model.follows_previous_phase? && model.default_start_date.present?
+    end
+
+    def start_date_caption
+      start_date_disabled? ? I18n.t("activerecord.attributes.project/phase.start_date_caption") : nil
+    end
+
+    def field_type
+      # Do not show the native datepicker on iOS safari because it
+      # behaves totally different than all other browsers and destroys the behavior of the datepicker
+      # Given a date field with no value: When Safari opens its native datepicker, the first thing it does is to
+      # set the date to Today. And not only in the datepicker but directly in the field.
+      # This behaviour has however consequences:
+      # * The "reset" button in the datepicker does not clear the input (as the other browsers do it) but it resets
+      #   it to the original value it had when you opened it. So if the value was empty, it sets it back to empty.
+      #   If the value was set before, you cannot clear it, but only set it back to that value.
+      # * Since the input changes, the whole datepicker updates without the user even knowing about it,
+      #   since the form is hidden behind the datepicker. That leads to this:
+      #     when you enter a start date after today, and then open the datepicker for finish date,
+      #     it will reset the start date because the finish date is set automatically to today,
+      #     but the finish date can't be before the start date.
+      helpers.browser.device.mobile? && !helpers.browser.safari? ? :date : :text
+    end
+
+    def placeholder
+      helpers.browser.device.mobile? ? "yyyy-mm-dd" : nil
     end
   end
 end

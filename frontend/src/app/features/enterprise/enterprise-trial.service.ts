@@ -232,7 +232,7 @@ export class EnterpriseTrialService {
         } else if (errorResponse?.message) {
           this.toastService.addError(errorResponse.message);
         } else {
-          this.toastService.addError(error.error || I18n.t('js.error.internal'));
+          this.toastService.addError(String(error.error) || I18n.t('js.error.internal'));
         }
       });
   }
@@ -244,7 +244,7 @@ export class EnterpriseTrialService {
     // extract token from resend link
     const trialKey = resendlink.split('/')[6];
     return this.http.post(
-      `${this.pathHelper.appBasePath}/admin/enterprise/save_trial_key`,
+      `${this.pathHelper.appBasePath}/admin/enterprise_tokens/save_trial_key`,
       { trial_key: trialKey },
       { withCredentials: true },
     )
@@ -258,7 +258,7 @@ export class EnterpriseTrialService {
   // save received token in controller
   private saveToken(token:string) {
     return this.http.post(
-      `${this.pathHelper.appBasePath}/admin/enterprise`,
+      `${this.pathHelper.appBasePath}/admin/enterprise_tokens`,
       { enterprise_token: { encoded_token: token } },
       { withCredentials: true },
     )
@@ -277,7 +277,7 @@ export class EnterpriseTrialService {
         // Without this deletion, we run into an endless loop of an confirmed mail, but no saved token.
         void this.http
           .delete(
-            `${this.pathHelper.api.v3.apiV3Base}/admin/enterprise/delete_trial_key`,
+            `${this.pathHelper.api.v3.apiV3Base}/admin/enterprise_tokens/delete_trial_key`,
             { withCredentials: true },
           )
           .toPromise();

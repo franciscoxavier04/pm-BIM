@@ -87,6 +87,7 @@ module Projects::Copy
         .new(user:,
              work_package: source_work_package,
              contract_class: WorkPackages::CopyProjectContract)
+        .with_state(bulk_copy_in_progress: true)
         .call(
           copy_attachments: copy_attachments?,
           copy_share_members: copy_shares?,

@@ -28,19 +28,181 @@
  * ++
  */
 
+import { TimezoneService } from 'core-app/core/datetime/timezone.service';
+import { DeviceService } from 'core-app/core/browser/device.service';
 import FormPreviewController from '../../form-preview.controller';
+import {
+  debounce,
+  DebouncedFunc,
+} from 'lodash';
 
 export default class ProjectLifeCyclesFormController extends FormPreviewController {
-  previewForm(event:Event) {
-    const target = event.target as HTMLElement;
-    if (this.datePickerVisible(target)) {
-      return; // flatpickr is still open, do not submit yet.
-    }
+  private timezoneService:TimezoneService;
+  private deviceService:DeviceService;
+  private handleFlatpickrDatesChangedBound = this.handleFlatpickrDatesChanged.bind(this);
+  private updateFlatpickrCalendarBound = this.updateFlatpickrCalendar.bind(this);
+  private preventValueMorphingActiveElementBound = this.preventValueMorphingActiveElement.bind(this);
+  private previewForm:DebouncedFunc<() => void>;
 
-    void this.submit();
+  static targets = ['startDate', 'finishDate', 'duration'];
+
+  declare readonly startDateTarget:HTMLInputElement;
+  declare readonly finishDateTarget:HTMLInputElement;
+  declare readonly durationTarget:HTMLInputElement;
+
+  private readonly CURRENT_FIELD_CLASS_NAME = 'op-datepicker-modal--date-field_current';
+
+  async connect() {
+    super.connect();
+
+    this.previewForm = debounce(() => {
+      if (this.dateInputFieldsAreValid) {
+        void this.submit();
+      }
+    }, 300);
+
+    const context = await window.OpenProject.getPluginContext();
+    this.timezoneService = context.services.timezone;
+    this.deviceService = new DeviceService();
+
+    document.addEventListener('date-picker:flatpickr-dates-changed', this.handleFlatpickrDatesChangedBound);
+    document.addEventListener('turbo:before-stream-render', this.updateFlatpickrCalendarBound);
+    document.addEventListener('turbo:before-morph-attribute', this.preventValueMorphingActiveElementBound);
+
+    const activeElement = document.activeElement as HTMLInputElement;
+    if (activeElement) {
+      this.highlightField(activeElement);
+    }
   }
 
-  datePickerVisible(element:HTMLElement) {
-    return element.classList.contains('active');
+  disconnect() {
+    document.removeEventListener('date-picker:flatpickr-dates-changed', this.handleFlatpickrDatesChangedBound);
+    document.removeEventListener('turbo:before-stream-render', this.updateFlatpickrCalendarBound);
+    document.removeEventListener('turbo:before-morph-attribute', this.preventValueMorphingActiveElementBound);
+    this.previewForm.cancel();
+  }
+
+  onHighlightField(e:Event) {
+    const fieldToHighlight = e.target as HTMLInputElement;
+    if (fieldToHighlight) {
+      this.highlightField(fieldToHighlight);
+    }
+  }
+
+  private updateFlatpickrCalendar() {
+    const dates:Date[] = _.compact(this.dateInputFields.map((field) => this.toDate(field.value)));
+    const ignoreNonWorkingDays = false;
+    const mode = 'range';
+
+    document.dispatchEvent(
+      new CustomEvent('date-picker:flatpickr-set-values', {
+        detail: {
+          dates,
+          ignoreNonWorkingDays,
+          mode,
+        },
+      }),
+    );
+  }
+
+  handleFlatpickrDatesChanged(event:CustomEvent<{ dates:Date[] }>) {
+    const dates = event.detail.dates;
+
+    if (dates.length === 1) {
+      const assignFinish = (this.highlightedField === this.finishDateTarget) || this.startDateTarget.disabled;
+
+      const assignTarget = assignFinish ? this.finishDateTarget : this.startDateTarget;
+      assignTarget.value = this.dateToIso(dates[0]);
+
+      const highlightTarget = assignFinish && !this.startDateTarget.disabled ? this.startDateTarget : this.finishDateTarget;
+      this.highlightField(highlightTarget, true);
+    } else {
+      this.startDateTarget.value = this.dateToIso(dates[0]);
+      this.finishDateTarget.value = this.dateToIso(dates[1]);
+
+      const highlightTarget = this.startDateTarget.disabled ? this.finishDateTarget : this.startDateTarget;
+      this.highlightField(highlightTarget, true);
+    }
+
+    this.updateFlatpickrCalendar();
+    this.previewForm();
+  }
+
+  preventValueMorphingActiveElement(event:CustomEvent<{ attributeName:string }>) {
+    const target = event.target as HTMLInputElement;
+    const { attributeName } = event.detail;
+    const isActiveElement = this.highlightedField && this.highlightedField.id === target?.id;
+
+    if (isActiveElement && ['value', 'class'].includes(attributeName)) {
+      event.preventDefault();
+    }
+  }
+
+  private get dateInputFieldsAreValid():boolean {
+    return this.dateInputFields.every((field) => field.value === '' || this.toDate(field.value));
+  }
+
+  private get dateInputFieldsToUpdate():HTMLInputElement[] {
+    if (this.highlightedField) {
+      return [this.highlightedField];
+    }
+    return this.dateInputFields;
+  }
+
+  private get dateInputFields():HTMLInputElement[] {
+    return [this.startDateTarget, this.finishDateTarget];
+  }
+
+  private get enabledDateInputFields():HTMLInputElement[] {
+    return this.dateInputFields.filter((field) => !field.disabled);
+  }
+
+  private get highlightedField():HTMLInputElement|undefined {
+    const field = this.dateInputFields.find(
+      (el) => el.classList.contains(this.CURRENT_FIELD_CLASS_NAME),
+    );
+
+    return field;
+  }
+
+  private highlightField(field:HTMLInputElement, clearIfInvalid:boolean=false) {
+    this.clearHighLight();
+
+    if (field.disabled || !this.dateInputFields.includes(field)) {
+      return;
+    }
+
+    if (clearIfInvalid && (this.startDateTarget.value > this.finishDateTarget.value)) {
+      field.value = '';
+    }
+
+    field.classList.add(this.CURRENT_FIELD_CLASS_NAME);
+    this.updateFlatpickrCalendar();
+
+    if (this.deviceService.isMobile) {
+      window.setTimeout(() => {
+        // For mobile, we have to make sure that the active field is scrolled into view after the keyboard is opened
+        field.scrollIntoView(true);
+      }, 300);
+    }
+  }
+
+  private clearHighLight() {
+    this.dateInputFields
+        .forEach((el) => el.classList.remove(this.CURRENT_FIELD_CLASS_NAME));
+  }
+
+  private dateToIso(date:Date|null):string {
+    if (date) {
+      return this.timezoneService.utcDateToISODateString(date);
+    }
+    return '';
+  }
+
+  private toDate(date:string|null):Date|null {
+    if (date && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
+      return new Date(date);
+    }
+    return null;
   }
 }

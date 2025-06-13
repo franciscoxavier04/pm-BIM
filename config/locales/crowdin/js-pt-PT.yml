@@ -358,10 +358,10 @@ pt-PT:
           learn_about: "Saiba mais sobre todas as novas funcionalidades"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_0":
+          "16_1":
             standard:
               new_features_html: >
-                A versão inclui várias novas funcionalidades e melhorias, tais como <br> <ul class="%{list_styling_class}"> <li>Backlogs de reuniões e o final das reuniões clássicas.</li> <li>Planos Enterprise atualizados.</li> <li>Comentários internos em pacotes de trabalho (complemento Enterprise).</li> <li>Assuntos de pacotes de trabalho gerados automaticamente (complemento Enterprise).</li> <li>Módulo de controlo de tempo individual com vista de calendário.</li> <li>Relação de projeto principal exibida no separador de relações do pacote de trabalho.</li> <li>Versão para Community: gráficos na página de visão geral do projeto.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
     ical_sharing_modal:
       title: "Subscrever o calendário"
       inital_setup_error_message: "Ocorreu um erro ao recuperar os dados."
@@ -566,7 +566,7 @@ pt-PT:
     label_version_plural: "Versões"
     label_view_has_changed: "Esta vista tem alterações não guardadas. Clique para guardá-las."
     help_texts:
-      show_modal: "Mostrar entrada do texto de ajuda de atributos"
+      show_modal: "Show help text"
     onboarding:
       buttons:
         skip: "Saltar"
@@ -1035,9 +1035,15 @@ pt-PT:
       reminders:
         button_label: "Definir lembrete"
         title:
-          new: "Definir lembrete"
+          new: "Set a reminder"
           edit: "Editar lembrete"
         subtitle: "Irá receber uma notificação para este pacote de trabalho na hora selecionada."
+        presets:
+          tomorrow: "Tomorrow"
+          three_days: "In 3 days"
+          week: "In a week"
+          month: "In a month"
+          custom: "At a particular date/time"
       scheduling:
         is_parent: "As datas deste pacote de trabalho são deduzidas automaticamente dos seus filhos. Ative o 'Agendamento manual' para definir as datas."
         is_switched_from_manual_to_automatic: "As datas deste pacote de trabalho podem precisar de ser recalculadas após mudar de agendamento manual para automático, devido a relações com outros pacotes de trabalho."

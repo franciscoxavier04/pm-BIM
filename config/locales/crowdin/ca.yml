@@ -79,7 +79,14 @@ ca:
         main-menu-bg-color: "Color de fons del menú lateral de l'esquerra."
       theme_warning: Canviant el tema substituiràs el teu estil personalitzat. El disseny es perdrà. Estàs segur que vols continuar?
     enterprise:
-      upgrade_to_ee: "Actualitza a l'edició Enterprise"
+      delete_dialog:
+        title: "Delete enterprise token"
+        heading: "Delete this enterprise token?"
+        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+      create_dialog:
+        title: "Add Enterprise token"
+        type_token_text: "Type support token text"
+        token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Carrega un token de suport de l'edició Enterprise"
       delete_token_modal:
         text: "Estàs segur que vols eliminar el token de l'edició Enterprise utilitzat?"
@@ -418,10 +425,6 @@ ca:
         new_label: "New priority"
     status:
       button_edit: Edit project status
-  project_phase:
-    duration:
-      one: "Duration: %{count} working day"
-      other: "Duration: %{count} working days"
   lists:
     create:
       success: "The modified list has been saved as a new list"
@@ -758,7 +761,9 @@ ca:
     label_add_description: "Add description"
     lag:
       subject: "Retard"
-      caption: "The minimum number of working days to keep in between the two work packages."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "relacionat amb"
@@ -851,6 +856,10 @@ ca:
     auth_source_login: Si us plau, entra com a <em>%{login}</em> per activar el teu compte.
     omniauth_login: Si us plau, entra per activar el teu compte.
   actionview_instancetag_blank_option: "Si us plau, selecciona"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -866,6 +875,8 @@ ca:
       attribute_help_text:
         attribute_name: "Atribut"
         help_text: "Text d'ajuda"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Context"
       changeset:
@@ -908,6 +919,7 @@ ca:
         domain: "Domini"
         starts_at: "Vàlid des de"
         subscriber: "Subscriptor"
+        plan: "Plan"
         encoded_token: "Token de suport Enterprise"
         active_user_count_restriction: "Màxim nombre d'usuaris actius"
       grids/grid:
@@ -974,6 +986,10 @@ ca:
       project/phase:
         date_range: "Interval de dates"
         definition: "Definition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Nom"
         color: "Color"
@@ -1285,10 +1301,12 @@ ca:
               blank: "Please select a project."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1337,10 +1355,6 @@ ca:
             from_id:
               error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
-            lag:
-              greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
         repository:
           not_available: "El proveïdor SCM no està disponible"
           not_whitelisted: "no està permès per la configuració."
@@ -1418,6 +1432,8 @@ ca:
               cannot_be_self_assigned: "no pot ser assignat a si mateix."
               cannot_be_in_another_project: "no pot estar en un altre projecte."
               not_a_valid_parent: "no és vàlid."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "només es pot posar a %{soonest_start} o més tard per tal de no es violar les relacions del paquet de treball."
               cannot_be_null: "no es pot assignar com a nul, ja que la data final i la duració són conegudes."
@@ -1510,6 +1526,9 @@ ca:
       custom_action: "Accions personalitzades"
       custom_field: "Camp personalitzat"
       "doorkeeper/application": "Aplicació OAuth"
+      enterprise_token:
+        one: "Enterprise token"
+        other: "Enterprise tokens"
       forum: "Fòrum"
       global_role: "Global role"
       group: "Grup"
@@ -1533,6 +1552,9 @@ ca:
       role:
         one: "Rol"
         other: "Rols"
+      scim_client:
+        one: "SCIM Client"
+        other: "SCIM Clients"
       status: "Estat del paquet de treball"
       token/api:
         one: Token d'accés
@@ -2013,12 +2035,12 @@ ca:
       readonly_work_packages: Readonly Work Packages
       sso_auth_providers: Single sign-on
       team_planner_view: Team Planner View
-      two_factor_authentication: 2FA Authentication
       virus_scanning: Antivirus Scanning
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      buy_now_button: "Buy now"
       plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
@@ -2100,6 +2122,7 @@ ca:
   error_color_could_not_be_saved: "No s'ha pogut desar el color"
   error_cookie_missing: "La cookie d'OpenProject no s'ha trobat. Assegureu-vos que les cookies estan habilitades, ja que aquesta aplicació no pot funcionar correctament sense."
   error_custom_option_not_found: "L'opció no existeix."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "El teu compte no s'ha pogut activar (límit d'usuaris assolit). Si us plau, contacte amb el teu administrador per obtenir accés."
   error_enterprise_token_invalid_domain: "L'edició Enterprise no està activa. El domini del token Enterprise (%{actual}) no concorda amb el nom d'allotjament del sistema (%{expected})."
   error_failed_to_delete_entry: "Error a l'eliminar aquesta entrada."
@@ -2407,7 +2430,7 @@ ca:
         static_token_name: "RSS token"
         disabled_text: "RSS tokens are not enabled by the administrator. Please contact your administrator to use this feature."
       storages:
-        title: "Emmagatzematges de fitxers"
+        title: "File storages"
         text_hint: "File Storage tokens connect this OpenProject instance with an external File Storage."
         empty_text_hint: "There is no storage access linked to your account."
         revoke_token: "Do you really want to remove this token? You will need to login again on %{storage}"
@@ -2583,6 +2606,7 @@ ca:
   label_dashboard: "Tauler de control"
   label_database_version: "Versió PostgreSQL"
   label_date: "Data"
+  label_dates: "Dates"
   label_date_and_time: "Data i hora"
   label_date_format: "Format de data"
   label_date_from: "De"
@@ -2598,6 +2622,8 @@ ca:
   label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(opció eliminada)"
   label_empty_element: "(buit)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(valor absent o manca de permisos per accedir)"
   label_descending: "Descendent"
   label_details: "Detalls"
@@ -2887,8 +2913,8 @@ ca:
   label_project_custom_field_plural: "Atributs de projecte"
   label_project_settings: "Configuració del projecte"
   label_project_attributes_settings: "Project attributes settings"
-  label_project_storage_plural: "Emmagatzematges de fitxers"
-  label_project_storage_project_folder: "File Storages: Project folders"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} projects using %{used_disk_space} disk space"
   label_project_view_all: "Veure tots els projectes"
   label_project_show_details: "Mostra detalls del projecte"
@@ -2897,6 +2923,7 @@ ca:
   label_query_new: "Nova consulta"
   label_query_plural: "Consultes personalitzades"
   label_read: "Llegir..."
+  label_read_documentation: "Read documentation"
   label_register: "Crea un nou compte"
   label_register_with_developer: "Registrar com a desenvolupador"
   label_registered_on: "Registrat a"
@@ -3336,6 +3363,8 @@ ca:
   notice_successful_delete: "Esborrat correctament."
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "S'ha modificat correctament."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Update failed."
   notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -3622,7 +3651,7 @@ ca:
       oauth_application_details: "El valor secret de client no serà accessible de nou un cop tanquis aquesta pestanya. Si us plau, còpia aquests valors a la configuració de \"Nextcloud OpenProject Integration\":"
       oauth_application_details_link_text: "Ves a la pàgina de configuracions"
       setup_documentation_details: "Si necessites ajuda configurant un nou emmagatzematge de fitxer si us plau, comprova la nostra documentació:"
-      setup_documentation_details_link_text: "Configuració d'emmagatzematge de fitxers"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Per tal d'utilitzar aquest emmagatzematge de fitxers recorda activar el mòdul i l'emmagatzematge específic a la configuració del projecte desitjat."
     subversion:
       existing_title: "Repositori de Subversion existent"
@@ -4321,8 +4350,14 @@ ca:
       code_500: "S'ha produït un error intern."
       code_500_outbound_request_failure: "Hi ha un error en una petició sortint a un altre recurs amb el codi d'estat %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "No s'ha pogut trobar o s'ha eliminat el paquet de treball que estàs buscant."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "AAAA-MM-DD ( només dates ISO 8601)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (qualsevol data o temps compatible amb la ISO 8601)"

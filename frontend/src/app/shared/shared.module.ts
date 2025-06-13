@@ -62,7 +62,6 @@ import { HomescreenNewFeaturesBlockComponent } from 'core-app/features/homescree
 import { TablePaginationComponent } from 'core-app/shared/components/table-pagination/table-pagination.component';
 import { StaticQueriesService } from 'core-app/shared/components/op-view-select/op-static-queries.service';
 import { CopyToClipboardService } from './components/copy-to-clipboard/copy-to-clipboard.service';
-import { CopyToClipboardComponent } from './components/copy-to-clipboard/copy-to-clipboard.component';
 import { OpDateTimeComponent } from './components/date/op-date-time.component';
 import { ToastComponent } from './components/toaster/toast.component';
 import { ToastsContainerComponent } from './components/toaster/toasts-container.component';
@@ -196,9 +195,6 @@ export function bootstrapModule(injector:Injector):void {
 
     OPContextMenuComponent,
     IconTriggeredContextMenuComponent,
-
-    // Add functionality to rails rendered templates
-    CopyToClipboardComponent,
 
     ResizerComponent,
 

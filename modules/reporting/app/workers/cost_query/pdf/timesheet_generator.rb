@@ -45,6 +45,8 @@ class CostQuery::PDF::TimesheetGenerator
   TABLE_CELL_FONT_SIZE = 10
   TABLE_CELL_BORDER_COLOR = "BBBBBB"
   TABLE_CELL_PADDING = 4
+  TABLE_CELL_PADDING_RIGHT = 8
+  TABLE_CELL_PADDING_BOTTOM = 6
   COMMENT_FONT_COLOR = "636C76"
   H2_FONT_SIZE = 20
   H2_MARGIN_BOTTOM = 10
@@ -55,8 +57,8 @@ class CostQuery::PDF::TimesheetGenerator
   COLUMN_DATE_WIDTH = 90
   COLUMN_ACTIVITY_WIDTH = 100
   COLUMN_HOURS_WIDTH = 60
-  COLUMN_TIME_WIDTH = 110
-  COLUMN_WP_WIDTH = 164
+  COLUMN_TIME_WIDTH = 108
+  COLUMN_WP_WIDTH = 166
 
   attr_accessor :pdf
 
@@ -285,7 +287,7 @@ class CostQuery::PDF::TimesheetGenerator
         border_color: TABLE_CELL_BORDER_COLOR,
         border_width: 0.5,
         borders: %i[top bottom],
-        padding: [TABLE_CELL_PADDING, TABLE_CELL_PADDING, TABLE_CELL_PADDING + 2, TABLE_CELL_PADDING]
+        padding: [TABLE_CELL_PADDING, TABLE_CELL_PADDING_RIGHT, TABLE_CELL_PADDING_BOTTOM, TABLE_CELL_PADDING]
       }
     ) do |table|
       adjust_borders_first_column(table)
@@ -298,7 +300,10 @@ class CostQuery::PDF::TimesheetGenerator
   end
 
   def adjust_borders_first_column(table)
-    table.columns(0).borders = %i[top bottom left right]
+    table.columns(0).style do |c|
+      c.borders = %i[top bottom left right]
+      c.padding = [TABLE_CELL_PADDING, TABLE_CELL_PADDING, TABLE_CELL_PADDING_BOTTOM, TABLE_CELL_PADDING]
+    end
   end
 
   def adjust_borders_last_column(table)
@@ -311,7 +316,7 @@ class CostQuery::PDF::TimesheetGenerator
     table.columns(1).style do |c|
       if c.colspan > 1
         c.borders = %i[left right bottom]
-        c.padding = [0, TABLE_CELL_PADDING, TABLE_CELL_PADDING + 2, TABLE_CELL_PADDING]
+        c.padding = [0, TABLE_CELL_PADDING_RIGHT, TABLE_CELL_PADDING_BOTTOM, TABLE_CELL_PADDING]
         row_nr = c.row - 1
         values = table.columns(1..-1).rows(row_nr..row_nr)
         values.each do |cell|
@@ -460,7 +465,7 @@ class CostQuery::PDF::TimesheetGenerator
         border_color: TABLE_CELL_BORDER_COLOR,
         border_width: 0.5,
         borders: %i[top bottom left right],
-        padding: [TABLE_CELL_PADDING, TABLE_CELL_PADDING, TABLE_CELL_PADDING + 2, TABLE_CELL_PADDING]
+        padding: [TABLE_CELL_PADDING, TABLE_CELL_PADDING, TABLE_CELL_PADDING_BOTTOM, TABLE_CELL_PADDING]
       }
     ) do |table|
       adjust_overview_border_sum_row(table)
@@ -592,7 +597,7 @@ class CostQuery::PDF::TimesheetGenerator
         border_color: TABLE_CELL_BORDER_COLOR,
         border_width: 0.5,
         borders: %i[top bottom left right],
-        padding: [TABLE_CELL_PADDING, TABLE_CELL_PADDING, TABLE_CELL_PADDING + 2, TABLE_CELL_PADDING]
+        padding: [TABLE_CELL_PADDING, TABLE_CELL_PADDING, TABLE_CELL_PADDING_BOTTOM, TABLE_CELL_PADDING]
       }
     )
   end

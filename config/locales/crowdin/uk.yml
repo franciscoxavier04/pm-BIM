@@ -79,7 +79,14 @@ uk:
         main-menu-bg-color: "Колір фону меню зліва."
       theme_warning: Змінення теми перезапише ваш власний стиль. У такому разі дизайн буде втрачено. Справді продовжити?
     enterprise:
-      upgrade_to_ee: "Перейти на версію Enterprise"
+      delete_dialog:
+        title: "Вилучити корпоративний маркер"
+        heading: "Вилучити цей корпоративний маркер?"
+        confirmation: "Справді видалити цей маркер підтримки версії Enterprise?"
+      create_dialog:
+        title: "Додати маркер Enterprise"
+        type_token_text: "Введіть текст маркера підтримки"
+        token_placeholder: "Вставте тут свій маркер підтримки версії Enterprise"
       add_token: "Додати маркер підтримки версії Enterprise"
       delete_token_modal:
         text: "Справді вилучити поточний маркер версії Enterprise?"
@@ -417,12 +424,6 @@ uk:
         new_label: "Новий пріоритет"
     status:
       button_edit: Змінити статус проєкту
-  project_phase:
-    duration:
-      one: "Тривалість: %{count} робочий день"
-      few: "Тривалість: %{count} робочого дня"
-      many: "Тривалість: %{count} робочого дня"
-      other: "Тривалість: %{count} робочих днів"
   lists:
     create:
       success: "Змінений список збережено як новий"
@@ -702,7 +703,7 @@ uk:
         automatic: "Автоматично"
         manual: "Вручну"
       show_relations: "Показати зв’язки"
-      update_inputs_aria_live_message: "Date picker updated. %{message}"
+      update_inputs_aria_live_message: "Засіб вибору дати оновлено. %{message}"
       tabs:
         aria_label: "Вкладки вибору даних"
         children: "Дочірні елементи"
@@ -773,7 +774,8 @@ uk:
     label_add_description: "Додати опис"
     lag:
       subject: "Затримка"
-      caption: "Мінімальна кількість робочих днів між двома пакетами робіт."
+      caption: |-
+        Мінімальна кількість робочих днів між двома пакетами робіт. Може бути від’ємним числом.
     relations:
       label_new_child_created: "Новий пакет робіт створено й додано як дочірній"
       label_relates_singular: "зв’язано з"
@@ -866,6 +868,10 @@ uk:
     auth_source_login: Увійдіть, як <em>%{login}</em> для активації облікового запису.
     omniauth_login: Увійдіть, щоб активувати свій обліковий запис.
   actionview_instancetag_blank_option: "Будь ласка, виберіть"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -881,6 +887,8 @@ uk:
       attribute_help_text:
         attribute_name: "Атрибут"
         help_text: "Довідковий текст"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Контекст"
       changeset:
@@ -923,6 +931,7 @@ uk:
         domain: "Домен"
         starts_at: "Дійсний з"
         subscriber: "Абонент"
+        plan: "План"
         encoded_token: "Маркер підтримки підприємства"
         active_user_count_restriction: "Максимальна кількість активних користувачів"
       grids/grid:
@@ -989,6 +998,10 @@ uk:
       project/phase:
         date_range: "Діапазон дат"
         definition: "Визначення"
+        duration: "Тривалість"
+        start_date: "Дата початку"
+        start_date_caption: "Слідує за попереднім етапом."
+        finish_date: "Дата закінчення"
       project/phase_definition:
         name: "Назва"
         color: "Колір"
@@ -1300,10 +1313,12 @@ uk:
               blank: "Виберіть проєкт."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "дата початку має передувати даті закінчення."
+            start_date:
+              must_be_before_finish_date: "має передувати даті закінчення."
               non_continuous_dates: "не може передувати даті закінчення попереднього етапу."
-              incomplete: "неповний."
+            finish_date:
+              must_be_after_start_date: "має слідувати за датою початку."
+          cannot_be_a_non_working_day: "не може припадати на неробочий день."
         query:
           attributes:
             project:
@@ -1352,10 +1367,6 @@ uk:
             from_id:
               error_not_found: "не знайдено або приховано."
               error_readonly: "не можна змінити для наявних зв’язків."
-            lag:
-              greater_than_or_equal_to:
-                zero: "не може мати від’ємне значення."
-              less_than_or_equal_to: "має зависоке значення."
         repository:
           not_available: "Постачальник SCM недоступний"
           not_whitelisted: "не дозволяється конфігурацією."
@@ -1433,6 +1444,8 @@ uk:
               cannot_be_self_assigned: "– не можна призначити собі."
               cannot_be_in_another_project: "не може бути в іншому проекті."
               not_a_valid_parent: "зазначено невірно"
+            schedule_manually:
+              cannot_be_automatically_scheduled: "не може мати значення false (автоматично заплановано), оскільки не має попередників або дочірніх елементів."
             start_date:
               violates_relationships: "може бути встановлено лише для %{soonest_start} або пізнішої версії, щоб не порушувати зв'язки робочого пакету."
               cannot_be_null: "не може мати нульове значення, оскільки задано дату початку й тривалість."
@@ -1529,6 +1542,11 @@ uk:
       custom_action: "Спеціальні дії"
       custom_field: "Користувацьке поле"
       "doorkeeper/application": "Програма OAuth"
+      enterprise_token:
+        one: "Маркер Enterprise"
+        few: "Маркери Enterprise"
+        many: "Маркери Enterprise"
+        other: "Маркери Enterprise"
       forum: "Форум"
       global_role: "Глобальна роль"
       group: "Група"
@@ -1562,6 +1580,11 @@ uk:
         few: "Роль"
         many: "Роль"
         other: "Роль"
+      scim_client:
+        one: "SCIM Client"
+        few: "SCIM Clients"
+        many: "SCIM Clients"
+        other: "SCIM Clients"
       status: "Стан робочого пакета"
       token/api:
         one: Маркер доступу
@@ -1632,7 +1655,7 @@ uk:
       added_date: "визначено як %{date}"
       changed_date: "змінено з %{from} на %{to}"
       deactivated: "деактивовано"
-      deleted_project_phase: "Deleted project phase"
+      deleted_project_phase: "Видалений етап проєкту"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} і %{finish_gate_message}"
       phase_and_one_gate: "%{phase_message}. %{gate_message}"
       removed_date: "видалено %{date}"
@@ -2090,12 +2113,12 @@ uk:
       readonly_work_packages: Пакети робіт лише для читання
       sso_auth_providers: Єдиний вхід
       team_planner_view: Подання командного планувальника
-      two_factor_authentication: Двофакторна автентифікація
       virus_scanning: Пошук вірусів
       work_package_query_relation_columns: Стовпці зв’язків запиту пакета робіт
       work_package_sharing: Діліться пакетами робіт із зовнішніми користувачами
       work_package_subject_generation: Створення теми пакета робіт
     upsell:
+      buy_now_button: "Купити"
       plans_title: "Плани Enterprise"
       title: "Доповнення версії Enterprise"
       plan_title: "Доповнення версії Enterprise %{plan}"
@@ -2130,7 +2153,7 @@ uk:
       work_package_sharing:
         description: "Діліться пакетами робіт із користувачами, які не належать до учасників проєкту."
       project_list_sharing:
-        description: "Share project lists with individual users."
+        description: "Діліться списками проєктів з окремими користувачами."
       define_custom_style:
         title: "Користувацький колір теми й логотип"
         more_info: "Примітка: вибраний логотип буде загальнодоступний."
@@ -2177,6 +2200,7 @@ uk:
   error_color_could_not_be_saved: "Не вдалося зберегти колір"
   error_cookie_missing: "Файл cookie OpenProject відсутній. Переконайтеся, що файли cookie увімкнено, оскільки ця програма не буде функціонувати належним чином."
   error_custom_option_not_found: "Варіант не існує."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Ваш обліковий запис не можна активувати (досягнуто обмеження користувача). Щоб отримати доступ, зверніться до свого адміністратора."
   error_enterprise_token_invalid_domain: "Версія Enterprise не активна. Домен вашого маркера Enterprise (%{actual}) не збігається з іменем хосту системи (%{expected})."
   error_failed_to_delete_entry: "Не вдалося видалити цей запис."
@@ -2519,7 +2543,7 @@ uk:
         responsible: "Ви стали відповідальними за %{work_package}"
         watched: "Ви переглядаєте %{work_package}"
     query:
-      invalid_filter: "Invalid notification filter"
+      invalid_filter: "Недійсний фільтр сповіщень"
   label_accessibility: "Розробникам також потрібно оплачувати свої рахунки. З доступністю"
   label_account: "Обліковий запис"
   label_active: "Активні"
@@ -2660,6 +2684,7 @@ uk:
   label_dashboard: "Панель керування"
   label_database_version: "Версія PostgreSQL"
   label_date: "Дата"
+  label_dates: "Дати"
   label_date_and_time: "Дата і час"
   label_date_format: "Формат дати:"
   label_date_from: "Від"
@@ -2675,6 +2700,8 @@ uk:
   label_deleted_custom_item: "(видалений елемент)"
   label_deleted_custom_option: "(параметр видалення)"
   label_empty_element: "(пусто)"
+  label_go_back: "Повернутися на попередній рівень меню"
+  label_go_forward: "Відкрити підменю %{module}"
   label_missing_or_hidden_custom_option: "(відсутнє значення або бракує дозволів для доступу)"
   label_descending: "За спаданням"
   label_details: "Детальніше"
@@ -2974,6 +3001,7 @@ uk:
   label_query_new: "Новий запит"
   label_query_plural: "Спеціальні запити"
   label_read: "Читання..."
+  label_read_documentation: "Прочитати документацію"
   label_register: "Створити новий акаунт"
   label_register_with_developer: "Зареєструйтеся як розробник"
   label_registered_on: "Зареєстровано на"
@@ -3417,6 +3445,8 @@ uk:
   notice_successful_delete: "Видалення успішно завершене."
   notice_successful_cancel: "Успішно видалено."
   notice_successful_update: "Успішно оновлено."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Не вдалось оновити."
   notice_unsuccessful_update_with_reason: "Помилка оновлення: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -4407,8 +4437,14 @@ uk:
       code_500: "Сталася внутрішня помилка."
       code_500_outbound_request_failure: "Вихідний запит до іншого ресурсу завершився помилкою з кодом стану: %{status_code}."
       code_500_missing_enterprise_token: "Цей запит не можна обробити через недійсний або відсутній маркер версії Enterprise."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "Дія такого типу не підтримує реакцію за допомогою емодзі."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          Можна одночасно встановити лише одне нагадування для пакета робіт. Видаліть або оновіть наявне нагадування.
       not_found:
         work_package: "Пакет робіт, який ви шукаєте, не можна знайти або його видалено."
+        reminder: "Нагадування, яке ви шукаєте, не вдалося знайти. Можливо, його видалено."
       expected:
         date: "YYYY-MM-DD (ISO 8601 date only)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (будь-який сумісний формат ISO 8601 дати й часу)"

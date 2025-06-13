@@ -72,6 +72,7 @@ module API
       mount ::API::V3::Queries::QueriesAPI
       mount ::API::V3::Render::RenderAPI
       mount ::API::V3::Relations::RelationsAPI
+      mount ::API::V3::Reminders::RemindersAPI
       mount ::API::V3::Repositories::RevisionsAPI
       mount ::API::V3::Roles::RolesAPI
       mount ::API::V3::Shares::SharesAPI

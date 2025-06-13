@@ -148,20 +148,28 @@ For high-availability setups, distribute traffic across multiple servers and ava
 
 ## Host operating system
 
-The [package-based installation](../installation/packaged) requires one of the following Linux distributions:
+> [!IMPORTANT]
+>
+> Some features we plan for the future will only be shipped with Docker-based installations. We also don't plan to provide packaged-based installations for more recent Linux versions, e.g. Ubuntu 24.04.  
 
-| Distribution (__64 bits only__) |
-| ------------------------------- |
-| Ubuntu 22.04 Jammy              |
-| Ubuntu 20.04 Focal              |
-| Debian 12 Bookworm              |
-| Debian 11 Bullseye              |
-| CentOS/RHEL 9.x                 |
-| Suse Linux Enterprise Server 15 |
+### Docker-based installation (recommendation)
 
 The [docker-based installation](../installation/docker) requires a system with Docker installed. Please see the [official Docker page](https://docs.docker.com/install/) for the list of supported systems.
 
 **Please note**, that we only provide packages for the __AMD64__ (x86) architecture. We do provide *docker containers* for both __ARM64__ and __AMD64__.
+
+### Packaged-based installation (.rpm/.deb)
+
+The [package-based installation](../installation/packaged) requires one of the following Linux distributions:
+
+| Distribution (__64 bits only__) | End of life software package                                 |
+| ------------------------------- | ------------------------------------------------------------ |
+| Ubuntu 22.04 Jammy              | *≈ 2027 Q2*                                                  |
+| Ubuntu 20.04 Focal              | 2025 Q3 - [OpenProject 16.2](https://community.openproject.org/wp/64078) |
+| Debian 12 Bookworm              | *≈ 2027 Q2*                                                  |
+| Debian 11 Bullseye              | *2026 Q3*                                                    |
+| CentOS/RHEL 9.x                 | *≈ 2027 Q2*                                                  |
+| Suse Linux Enterprise Server 15 | *≈ 2027 Q2*                                                  |
 
 ### Overview of dependencies
 
@@ -211,7 +219,7 @@ OpenProject supports the latest versions of the major browsers.
 
 ##### OpenProject integration
 
-* [OpenProject Integration 2.8.1](https://github.com/nextcloud/integration_openproject/releases/tag/v2.8.1)
+* [OpenProject Integration 2.9.0](https://github.com/nextcloud/integration_openproject/releases/tag/v2.9.0)
 
 ##### Team folders
 

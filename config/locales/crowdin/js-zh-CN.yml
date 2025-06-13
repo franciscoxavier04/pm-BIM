@@ -357,10 +357,10 @@ zh-CN:
           learn_about: "详细了解所有新功能"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_0":
+          "16_1":
             standard:
               new_features_html: >
-                此版本包含各种新功能和改进，例如 <br> <ul class="%{list_styling_class}"> <li>会议待办和经典会议结束。</li><li>更新了企业计划。</li><li>工作文件包中的内部评论（企业附加组件）。</li><li>自动生成的工作文件包主题（企业附加组件）。</li><li>带有日历视图的单独时间跟踪模块。</li><li>工作文件包关系选项卡中显示的父关系。</li> <li>发布到社区：项目概述页面上的图表。</li></ul>
+                该版本包含各种新功能和改进，例如<br><ul class="%{list_styling_class}"><li>使用阶段和阶段关口构建项目生命周期。</li><li>以 PDF 格式导出会议。</li><li>为提醒设置智能默认选项。</li><li>对工作包的日期使用负滞后。</li><li>为层级结构自定义字段显示结构树。</li><li>受益于 ARIA 实时区域的日期选择器的功能改进。</li> </ul>
     ical_sharing_modal:
       title: "订阅日历"
       inital_setup_error_message: "获取数据时发生错误。"
@@ -565,7 +565,7 @@ zh-CN:
     label_version_plural: "版本"
     label_view_has_changed: "此视图有未保存的更改。单击以保存。"
     help_texts:
-      show_modal: "显示属性帮助文本项"
+      show_modal: "显示帮助文本"
     onboarding:
       buttons:
         skip: "跳过"
@@ -1036,6 +1036,12 @@ zh-CN:
           new: "设置提醒"
           edit: "编辑提醒"
         subtitle: "您将在所选时间收到此工作包的通知。"
+        presets:
+          tomorrow: "明天"
+          three_days: "3天内"
+          week: "一周内"
+          month: "一个月内"
+          custom: "在某个特定日期/时间"
       scheduling:
         is_parent: "此工作包的日期会自动从其子项推导出。可激活“手动计划”来设置日期。"
         is_switched_from_manual_to_automatic: "由于与其他工作包的关系，在从手动计划切换为自动计划后，此工作包的日期可能需要重新计算。"

@@ -36,15 +36,17 @@ module WorkPackages
       include OpPrimer::ComponentHelpers
 
       FORM_ID = "reminder-form"
+      DEFAULT_TIME = "09:00"
 
-      attr_reader :remindable, :reminder, :errors
+      attr_reader :remindable, :reminder, :errors, :preset
 
-      def initialize(remindable:, reminder:, errors: nil)
+      def initialize(remindable:, reminder:, errors: nil, preset: nil)
         super
 
         @remindable = remindable
         @reminder = reminder
         @errors = errors
+        @preset = preset
       end
 
       class << self
@@ -55,9 +57,9 @@ module WorkPackages
 
       def submit_path
         if @reminder.persisted?
-          work_package_reminder_path(@remindable, @reminder)
+          url_helpers.work_package_reminder_path(@remindable, @reminder)
         else
-          work_package_reminders_path(@remindable)
+          url_helpers.work_package_reminders_path(@remindable)
         end
       end
 
@@ -82,11 +84,32 @@ module WorkPackages
       end
 
       def remind_at_date_initial_value
-        format_time_as_date(@reminder.remind_at, format: "%Y-%m-%d")
+        return time_as_date(@reminder.remind_at) if @reminder.remind_at
+        return calculate_preset_date if @preset
+
+        nil
       end
 
       def remind_at_time_initial_value
-        format_time(@reminder.remind_at, include_date: false, format: "%H:%M")
+        return format_time(@reminder.remind_at, include_date: false, format: "%H:%M") if @reminder.remind_at
+
+        DEFAULT_TIME
+      end
+
+      private
+
+      def calculate_preset_date
+        case @preset
+        when "tomorrow" then time_as_date(1.day.from_now)
+        when "three_days" then time_as_date(3.days.from_now)
+        when "week" then time_as_date(7.days.from_now)
+        when "month" then time_as_date(1.month.from_now)
+        when "custom" then nil
+        end
+      end
+
+      def time_as_date(time)
+        format_time_as_date(time, format: "%Y-%m-%d")
       end
     end
   end

@@ -324,7 +324,7 @@ ja:
         farRight: "右端"
         description: >
           Select the attributes you want to be shown in the respective positions of the Gantt chart at all times. Note that when hovering over an element, its date labels will be shown instead of these attributes.
-      button_activate: "ガントチャートの表示"
+      button_activate: "ガントチャートを表示"
       button_deactivate: "ガントチャートを隠す"
       filter:
         noneSelection: "(なし)"
@@ -332,7 +332,7 @@ ja:
         notification: "関連を作成するには、強調表示されたワークパッケージをクリックします。キャンセルするにはエスケープキーを押してください。"
       zoom:
         in: "拡大"
-        out: "拡大"
+        out: "縮小"
         auto: "自動ズーム"
         days: "日"
         weeks: "週"
@@ -359,10 +359,10 @@ ja:
           learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_0":
+          "16_1":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "An error occured while fetching data."
@@ -429,13 +429,12 @@ ja:
     label_expanded: "展開"
     label_expand_all: "全てを展開"
     label_expand_project_menu: "プロジェクトメニューを展開"
-    label_export: "外部出力"
+    label_export: "エクスポート"
     label_export_preparing: "エクスポートは準備中です。まもなくダウンロードされます。"
     label_favorites: "Favorites"
     label_filename: "ファイル"
     label_filesize: "サイズ"
     label_general: "概要"
-    label_global_roles: "グローバルロール"
     label_greater_or_equal: ">="
     label_group: "グループ"
     label_group_by: "グループ化"
@@ -547,28 +546,28 @@ ja:
     label_custom_queries: "非公開"
     label_columns: "列"
     label_attachments: 添付ファイル
-    label_drop_files: "Drop files here to attach files."
-    label_drop_or_click_files: "Drop files here or click to attach files."
+    label_drop_files: "ここにファイルをドロップして添付。"
+    label_drop_or_click_files: "ここにファイルをドロップするかクリックしてファイルを添付。"
     label_drop_folders_hint: フォルダを添付ファイルとしてアップロードすることはできません。 単一のファイルを選択してください。
     label_add_attachments: "ファイルを添付"
     label_formattable_attachment_hint: "このフィールドにドロップ、またはクリップボードから貼り付けて、ファイルを添付およびリンクします。"
-    label_remove_file: "%{fileName}を削除"
-    label_remove_watcher: "ウォッチャー%{name}を削除"
+    label_remove_file: "%{fileName} を削除"
+    label_remove_watcher: "ウォッチャー %{name} を削除"
     label_remove_all_files: 全てのファイルを削除
-    label_add_description: "%{file}の説明を追加"
+    label_add_description: "%{file} の説明を追加"
     label_upload_notification: "ファイルをアップロード中..."
-    label_work_package_upload_notification: "作業項目#%{id}: %{subject}用ファイルをアップロード中"
-    label_wp_id_added_by: "#%{id}が%{author}によって追加されました"
+    label_work_package_upload_notification: "作業項目#%{id}: %{subject} 用ファイルをアップロード中"
+    label_wp_id_added_by: "#%{id} が %{author} によって追加されました"
     label_files_to_upload: "これらのファイルをアップロードします:"
     label_rejected_files: "これらのファイルをアップロードできません："
-    label_rejected_files_reason: "ファイルサイズが%{maximumFilesize}を越えたために、これらのファイルをアップロードできません"
+    label_rejected_files_reason: "ファイルサイズが %{maximumFilesize} を越えたために、これらのファイルをアップロードできません"
     label_wait: "構成をお待ちください..."
-    label_upload_counter: "%{count}ファイルの中に%{done}が完了"
+    label_upload_counter: "%{done} / %{count} 個のファイルが完了"
     label_validation_error: "次のエラーのために作業項目を保存できませんでした:"
     label_version_plural: "バージョン"
     label_view_has_changed: "このビューには未保存の変更があります。 クリックすると保存します。"
     help_texts:
-      show_modal: "テキスト入力属性のヘルプを表示"
+      show_modal: "Show help text"
     onboarding:
       buttons:
         skip: "スキップ"
@@ -627,7 +626,7 @@ ja:
         reminder: "Reminder"
       date_alerts:
         milestone_date: "Milestone date"
-        overdue: "Overdue"
+        overdue: "期限切れ"
         overdue_since: "%{difference_in_days}以降。"
         property_today: "は今日です。"
         property_is: "は%{difference_in_days}後。"
@@ -763,7 +762,7 @@ ja:
           last_day: "Last day"
     text_are_you_sure: "よろしいですか？"
     text_data_lost: "All entered data will be lost."
-    text_user_wrote: "%{value}が書き込みました："
+    text_user_wrote: "%{value} が書き込みました："
     types:
       attribute_groups:
         error_duplicate_group_name: "名前 %{group} が複数回使用されています。グループ名は一意にする必要があります。"
@@ -920,7 +919,7 @@ ja:
       message_work_package_status_blocked: "ステータスがクローズでクローズされたバージョンが割り当てられているため、ワークパッケージのステータスは書き込みできません。"
       placeholder_filter_by_text: "タイトル、説明、コメント、..."
       progress:
-        title: "Work estimates and progress"
+        title: "作業見積もりと進捗"
       baseline:
         addition_label: "Added to view within the comparison time period"
         removal_label: "Removed from view within the comparison time period"
@@ -992,11 +991,11 @@ ja:
       default_queries:
         manually_sorted: "New manually sorted query"
         latest_activity: "最新の活動"
-        created_by_me: "私が作成した"
-        assigned_to_me: "私に割り当てられた"
-        recently_created: "最近作成された"
+        created_by_me: "自分が作成したもの"
+        assigned_to_me: "自分の担当するもの"
+        recently_created: "最近作成されたもの"
         all_open: "未完了"
-        overdue: "Overdue"
+        overdue: "期限の過ぎたもの"
         summary: "サマリ"
         shared_with_users: "ユーザーと共有"
         shared_with_me: "Shared with me"
@@ -1036,9 +1035,15 @@ ja:
       reminders:
         button_label: "Set reminder"
         title:
-          new: "Set reminder"
+          new: "Set a reminder"
           edit: "Edit reminder"
         subtitle: "You will receive a notification for this work package at the chosen time."
+        presets:
+          tomorrow: "Tomorrow"
+          three_days: "In 3 days"
+          week: "In a week"
+          month: "In a month"
+          custom: "At a particular date/time"
       scheduling:
         is_parent: "このワークパッケージの日付は、その子から自動的に推定されます。日付を設定するには、「手動スケジューリング」を有効にします。"
         is_switched_from_manual_to_automatic: "他のワークパッケージとの関連により、手動スケジューリングから自動スケジューリングに切り替えた後に、このワークパッケージの日付を再計算する必要がある場合があります。"
@@ -1074,7 +1079,7 @@ ja:
           priority: "優先度"
           type: "タイプ"
         sorting_mode:
-          description: "ワークパッケージを並び替えるモードを選択:"
+          description: "並び替えモードを選択："
           automatic: "自動"
           manually: "手動"
           warning: "自動並び替えモードをアクティブにすると、以前のソートが失われます。"
@@ -1103,7 +1108,7 @@ ja:
         hide_sums: "合計の非表示"
         save: "保存"
         save_as: "名前をつけて保存"
-        export: "外部出力"
+        export: "エクスポート"
         visibility_settings: "表示の設定"
         share_calendar: "Subscribe to calendar"
         page_settings: "ビューの名前を変更..."
@@ -1153,8 +1158,8 @@ ja:
       null_value_label: "値なし"
       clear_value_label: "-"
       errors:
-        required: "%{field}を空にできません"
-        number: "%{field}は有効な数値ではありません"
+        required: "%{field} を空にできません"
+        number: "%{field} は有効な数値ではありません"
         maxlength: "%{field} は %{maxLength} 以上の桁の数字を入れることはできません"
         minlength: "%{field} は %{minLength} 未満の桁の数字を入れることはできません"
         messages_on_field: "このフィールドは無効です: %{messages}"
@@ -1173,7 +1178,7 @@ ja:
         zero: "0 h"
       day:
         one: "1 day"
-        other: "%{count}日間"
+        other: "%{count} 日間"
         zero: "0 days"
       word:
         other: "%{count} words"
@@ -1214,7 +1219,7 @@ ja:
         no_results: "プロジェクトが見つかりませんでした"
         no_invite_rights: "このプロジェクトにメンバーを招待することは許可されていません"
       type:
-        required: "招待するタイプを選択してください "
+        required: "招待するタイプを選択してください"
         user:
           title: "ユーザ"
           description: "選択したプロジェクトで割り当てられたロールに基づく権限"
@@ -1270,15 +1275,15 @@ ja:
       no_results: "You have no favorite projects"
       no_results_subtext: "Add one or multiple projects as favorite through their overview or in a project list."
     include_projects:
-      toggle_title: "Include projects"
+      toggle_title: "対象プロジェクト"
       title: "プロジェクト"
-      clear_selection: "Clear selection"
+      clear_selection: "選択をクリア"
       apply: "適用"
       selected_filter:
         all: "すべてのプロジェクト"
-        selected: "Only selected"
-      search_placeholder: "Search project..."
-      include_subprojects: "Include all sub-projects"
+        selected: "選択したもののみ"
+      search_placeholder: "プロジェクトを検索…"
+      include_subprojects: "すべてのサブプロジェクトを含む"
       tooltip:
         include_all_selected: "Project already included since Include all sub-projects is enabled."
         current_project: "This is the current project you are in."
@@ -1293,8 +1298,8 @@ ja:
       help_description: "Reference time zone for the baseline."
       time_description: "In your local time: %{datetime}"
       time: "時間"
-      from: "日付指定: "
-      to: "から"
+      from: "From"
+      to: "To"
       drop_down:
         none: "-"
         yesterday: "昨日"

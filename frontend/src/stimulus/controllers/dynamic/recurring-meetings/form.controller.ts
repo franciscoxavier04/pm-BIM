@@ -25,7 +25,9 @@ export default class OpRecurringMeetingsFormController extends ApplicationContro
       .request(
         `${this.pathHelper.staticBase}/recurring_meetings/humanize_schedule?${urlSearchParams.toString()}`,
         {
-          headers: { Accept: 'text/vnd.turbo-stream.html' },
+          headers: {
+            Accept: 'text/vnd.turbo-stream.html',
+          },
         },
       );
   }

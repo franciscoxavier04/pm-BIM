@@ -79,7 +79,14 @@ ru:
         main-menu-bg-color: "Цвет фона меню слева."
       theme_warning: Изменение темы перезапишет ваш пользовательский стиль. Дизайн будет утерян. Вы уверены, что хотите продолжить?
     enterprise:
-      upgrade_to_ee: "Обновить до корпоративной версии"
+      delete_dialog:
+        title: "Delete enterprise token"
+        heading: "Delete this enterprise token?"
+        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+      create_dialog:
+        title: "Add Enterprise token"
+        type_token_text: "Type support token text"
+        token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Загрузить токен поддержки корпоративной версии"
       delete_token_modal:
         text: "Вы уверены, что хотите удалить текущий токен корпоративной версии?"
@@ -420,12 +427,6 @@ ru:
         new_label: "Новый приоритет"
     status:
       button_edit: Редактировать статус проекта
-  project_phase:
-    duration:
-      one: "Продолжительность: %{count} рабочий день"
-      few: "Продолжительность: %{count} рабочих дня"
-      many: "Продолжительность: %{count} рабочих дня"
-      other: "Продолжительность: %{count} рабочих дня"
   lists:
     create:
       success: "Измененный список был сохранен как новый"
@@ -777,7 +778,9 @@ ru:
     label_add_description: "Добавить описание"
     lag:
       subject: "Отставание"
-      caption: "Минимальное количество рабочих дней, которое должно быть между двумя пакетами работ."
+      caption: |-
+        Минимальное количество рабочих дней, которое должно быть между двумя пакетами работ.
+        Оно также может быть отрицательным.
     relations:
       label_new_child_created: "Новый пакет работ создан и добавлен как дочерний"
       label_relates_singular: "Связан с"
@@ -870,6 +873,10 @@ ru:
     auth_source_login: Пожалуйста, авторизируйтесь как <em>%{login}</em> для активации вашей учетной записи.
     omniauth_login: Пожалуйста, авторизируйтесь для активации вашей учетной записи.
   actionview_instancetag_blank_option: "Пожалуйста, выберите"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -885,6 +892,8 @@ ru:
       attribute_help_text:
         attribute_name: "Атрибут"
         help_text: "Текст справки"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Контекст"
       changeset:
@@ -927,6 +936,7 @@ ru:
         domain: "Домен"
         starts_at: "Действует с"
         subscriber: "Подписчик"
+        plan: "Plan"
         encoded_token: "Маркер поддержки корпоративной версии"
         active_user_count_restriction: "Максимальное число активных пользователей"
       grids/grid:
@@ -993,6 +1003,10 @@ ru:
       project/phase:
         date_range: "Диапазон дат"
         definition: "Описание"
+        duration: "Продолжительность"
+        start_date: "Дата начала"
+        start_date_caption: "Следует предыдущей фазе."
+        finish_date: "Дата окончания"
       project/phase_definition:
         name: "Имя"
         color: "Цвет"
@@ -1304,10 +1318,12 @@ ru:
               blank: "Пожалуйста, выберите проект."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "дата начала должна быть раньше даты окончания."
-              non_continuous_dates: "не может быть раньше, чем дата окончания предыдущего этапа."
-              incomplete: "неполный."
+            start_date:
+              must_be_before_finish_date: "должно быть до даты окончания."
+              non_continuous_dates: "не может быть раньше, чем дата окончания предыдущей фазы."
+            finish_date:
+              must_be_after_start_date: "должно быть после даты начала."
+          cannot_be_a_non_working_day: "не может быть нерабочим днем."
         query:
           attributes:
             project:
@@ -1356,10 +1372,6 @@ ru:
             from_id:
               error_not_found: "не найден или невидим."
               error_readonly: "не может быть изменен для существующих отношений."
-            lag:
-              greater_than_or_equal_to:
-                zero: "не может быть отрицательным."
-              less_than_or_equal_to: "слишком высокий."
         repository:
           not_available: "SCM поставщик не доступен"
           not_whitelisted: "не допускается конфигурацией."
@@ -1437,6 +1449,8 @@ ru:
               cannot_be_self_assigned: "не может быть присвоено самому себе."
               cannot_be_in_another_project: "не может быть в другом проекте."
               not_a_valid_parent: "имеет неверное значение."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "не может быть установлено значение false (автоматическое планирование), так как у него нет предшественников или дочерних элементов."
             start_date:
               violates_relationships: "может быть установлено лишь в %{soonest_start} или позднее и без нарушения взаимосвязи рабочих пакетов."
               cannot_be_null: "не может быть нулевым, поскольку известны дата окончания и продолжительность."
@@ -1533,6 +1547,11 @@ ru:
       custom_action: "Пользовательское действие"
       custom_field: "Настраиваемое поле"
       "doorkeeper/application": "Приложение OAuth"
+      enterprise_token:
+        one: "Enterprise token"
+        few: "Enterprise tokens"
+        many: "Enterprise tokens"
+        other: "Enterprise tokens"
       forum: "Форум"
       global_role: "Глобальная роль"
       group: "Группа"
@@ -1566,6 +1585,11 @@ ru:
         few: "Роль"
         many: "Роль"
         other: "Роль"
+      scim_client:
+        one: "SCIM Client"
+        few: "SCIM Clients"
+        many: "SCIM Clients"
+        other: "SCIM Clients"
       status: "Статус пакета работ"
       token/api:
         one: Токен доступа
@@ -2094,12 +2118,12 @@ ru:
       readonly_work_packages: Пакеты работ только для чтения
       sso_auth_providers: Единый вход (SSO)
       team_planner_view: Просмотр командных планировщиков
-      two_factor_authentication: 2FA аутентификация
       virus_scanning: Антивирусное сканирование
       work_package_query_relation_columns: Колонки запросов пакета работ
       work_package_sharing: Поделиться пакетами работ с внешними пользователями
       work_package_subject_generation: Создание темы пакета работ
     upsell:
+      buy_now_button: "Buy now"
       plans_title: "Корпоративный план"
       title: "Корпоративное дополнение"
       plan_title: "Дополнение корпоративной версии %{plan}"
@@ -2181,6 +2205,7 @@ ru:
   error_color_could_not_be_saved: "Цвет не может быть сохранен"
   error_cookie_missing: "Отсутствуют cookie OpenProject. Пожалуйста, убедитесь, что Cookie разрешены. Без них приложение не будет функционировать должным образом."
   error_custom_option_not_found: "Параметр не существует."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Ваша учетная запись не может быть активирована (достигнут предел пользователя). Обратитесь к администратору для получения доступа."
   error_enterprise_token_invalid_domain: "Версия Enterprise не активна. Домен вашего токена предприятия (%{actual}) не соответствует названию системного имени (%{expected})."
   error_failed_to_delete_entry: "Не удалось удалить эту запись."
@@ -2488,7 +2513,7 @@ ru:
         static_token_name: "Токен RSS"
         disabled_text: "Токены RSS не включены администратором. Пожалуйста, обратитесь к администратору, чтобы использовать эту функцию."
       storages:
-        title: "Файловые хранилища"
+        title: "File storages"
         text_hint: "Токены хранения файлов подключают этот экземпляр OpenProject к внешнему хранилищу файлов."
         empty_text_hint: "Нет доступа к хранилищу, связанному с вашей учетной записью."
         revoke_token: "Вы действительно хотите удалить этот токен?  Вам нужно будет снова войти в систему на %{storage}"
@@ -2664,6 +2689,7 @@ ru:
   label_dashboard: "Панель"
   label_database_version: "Версия PostgreSQL"
   label_date: "Дата"
+  label_dates: "Dates"
   label_date_and_time: "Дата и время"
   label_date_format: "Формат даты"
   label_date_from: "От"
@@ -2679,6 +2705,8 @@ ru:
   label_deleted_custom_item: "(удалено)"
   label_deleted_custom_option: "(удалённая опция)"
   label_empty_element: "(пусто)"
+  label_go_back: "Вернуться на один уровень меню назад"
+  label_go_forward: "Открыть подменю %{module}"
   label_missing_or_hidden_custom_option: "(отсутствует значение или недостаточно прав для доступа)"
   label_descending: "По убыванию"
   label_details: "Детали"
@@ -2968,8 +2996,8 @@ ru:
   label_project_custom_field_plural: "Атрибуты проекта"
   label_project_settings: "Настройки проекта"
   label_project_attributes_settings: "Настройки атрибутов проекта"
-  label_project_storage_plural: "Файловые хранилища"
-  label_project_storage_project_folder: "Файловые хранилища: Папки проекта"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} проектов, использующих %{used_disk_space} дискового пространства"
   label_project_view_all: "Просмотреть все проекты"
   label_project_show_details: "Показать детали проекта"
@@ -2978,6 +3006,7 @@ ru:
   label_query_new: "Новый запрос"
   label_query_plural: "Пользовательские запросы"
   label_read: "Читать..."
+  label_read_documentation: "Читать документацию"
   label_register: "Создайте новую учетную запись"
   label_register_with_developer: "Зарегистрируйтесь как разработчик"
   label_registered_on: "Зарегистрированы на"
@@ -3421,6 +3450,8 @@ ru:
   notice_successful_delete: "Удаление выполнено."
   notice_successful_cancel: "Отмена прошла успешно."
   notice_successful_update: "Обновление выполнено."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Ошибка обновления."
   notice_unsuccessful_update_with_reason: "Не удалось обновить: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -3710,7 +3741,7 @@ ru:
       oauth_application_details: "Секретное значение клиента не будет доступно после закрытия этого окна. Пожалуйста, скопируйте это значение в настройки интеграции Nextcloud OpenProject:"
       oauth_application_details_link_text: "Перейти на страницу настроек"
       setup_documentation_details: "Если вам нужна помощь в настройке нового хранилища файлов, пожалуйста, проверьте документацию: "
-      setup_documentation_details_link_text: "Настройка файловых хранилищ"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Для использования этого хранилища файлов не забудьте активировать модуль и конкретное хранилище в настройках проекта каждого желаемого проекта."
     subversion:
       existing_title: "Существующий репозиторий Subversion"
@@ -4410,8 +4441,14 @@ ru:
       code_500: "Произошла внутренняя ошибка."
       code_500_outbound_request_failure: "Исходящий запрос к другому ресурсу не удался с кодом статуса %{status_code}."
       code_500_missing_enterprise_token: "Запрос не может быть обработан из-за недействительного или отсутствующего корпоративного токена."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "Этот тип деятельности не поддерживает реакции эмодзи."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          Вы можете установить только одно напоминание для пакета работ. Пожалуйста, удалите или обновите напоминание.
       not_found:
         work_package: "Пакет работ, который вы ищете, не найден или был удален."
+        reminder: "Напоминание, которое вы ищете, не найдено или было удалено."
       expected:
         date: "ГГГГ-мм-дд (только для даты ISO 8601)"
         datetime: "ГГГГ-ММ-Дтч:мм:сс[.lll][+чч:мм] (любой совместимый ISO 8601 формат времени)"

@@ -216,9 +216,12 @@ module OpenProject::Bim
     end
 
     config.to_prepare do
+      Doorkeeper.configuration.scopes.add(:bcf_v2_1)
+    end
+
+    config.before_initialize do
       unless defined? OpenProject::Authentication::Scope::BCF_V2_1
         OpenProject::Authentication::Scope::BCF_V2_1 = :bcf_v2_1
-        Doorkeeper.configuration.scopes.add(OpenProject::Authentication::Scope::BCF_V2_1)
       end
 
       OpenProject::Authentication.update_strategies(OpenProject::Authentication::Scope::BCF_V2_1,

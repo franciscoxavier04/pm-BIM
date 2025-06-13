@@ -79,7 +79,14 @@ fr:
         main-menu-bg-color: "Couleur d’arrière-plan du menu de gauche."
       theme_warning: Le changement de thème écrasera votre style personnalisé. Le design sera alors perdu. Êtes-vous sûr de vouloir continuer ?
     enterprise:
-      upgrade_to_ee: "Passer à la version Entreprise"
+      delete_dialog:
+        title: "Supprimer le jeton d'entreprise"
+        heading: "Supprimer ce jeton d'entreprise ?"
+        confirmation: "Êtes-vous sûr de vouloir supprimer le jeton de support de cette édition Entreprise ?"
+      create_dialog:
+        title: "Ajouter un jeton d'entreprise"
+        type_token_text: "Tapez le texte du jeton de support"
+        token_placeholder: "Coller votre jeton de support pour la version Entreprise ici"
       add_token: "Charger un jeton de support pour la version Entreprise"
       delete_token_modal:
         text: "Voulez-vous vraiment supprimer le jeton actuellement utilisé pour l'édition Entreprise ?"
@@ -421,10 +428,6 @@ fr:
         new_label: "Nouvelle priorité"
     status:
       button_edit: Modifier le statut du projet
-  project_phase:
-    duration:
-      one: "Durée : %{count} jour ouvrable"
-      other: "Durée : %{count} jours ouvrables"
   lists:
     create:
       success: "La liste modifiée a été enregistrée en tant que nouvelle liste"
@@ -690,7 +693,7 @@ fr:
         automatic: "Automatique"
         manual: "Manuel"
       show_relations: "Afficher les relations"
-      update_inputs_aria_live_message: "Date picker updated. %{message}"
+      update_inputs_aria_live_message: "Sélecteur de dates mis à jour. %{message}"
       tabs:
         aria_label: "Onglets de sélection de date"
         children: "Enfants"
@@ -759,7 +762,8 @@ fr:
     label_add_description: "Ajouter une description"
     lag:
       subject: "Délai"
-      caption: "Le nombre minimum de jours ouvrables à respecter entre les deux lots de travaux."
+      caption: |-
+        Le nombre minimum de jours ouvrables à respecter entre les deux lots de travaux. Il peut également être négatif.
     relations:
       label_new_child_created: "Nouveau lot de travaux créé et ajouté en tant qu'enfant"
       label_relates_singular: "lié à"
@@ -852,6 +856,10 @@ fr:
     auth_source_login: Veuillez vous connecter en tant que <em>%{login}</em> pour activer votre compte.
     omniauth_login: Veuillez vous connecter pour activer votre compte.
   actionview_instancetag_blank_option: "Veuillez sélectionner"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -867,6 +875,8 @@ fr:
       attribute_help_text:
         attribute_name: "Attribut"
         help_text: "Texte d’aide"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Contexte"
       changeset:
@@ -909,6 +919,7 @@ fr:
         domain: "Domaine"
         starts_at: "Valable depuis"
         subscriber: "Abonné"
+        plan: "Abonnement"
         encoded_token: "Licence Entreprise"
         active_user_count_restriction: "Nombre maximal d’utilisateurs actif"
       grids/grid:
@@ -975,6 +986,10 @@ fr:
       project/phase:
         date_range: "Plage de dates"
         definition: "Définition"
+        duration: "Durée"
+        start_date: "Date de départ"
+        start_date_caption: "Suit la phase précédente."
+        finish_date: "Date de fin"
       project/phase_definition:
         name: "Nom"
         color: "Couleur"
@@ -1286,10 +1301,12 @@ fr:
               blank: "Veuillez sélectionner un projet."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "la date de début doit être antérieure à la date de fin."
+            start_date:
+              must_be_before_finish_date: "doit être antérieur à la date de fin."
               non_continuous_dates: "ne peut pas être antérieure à la date de fin de la phase précédente."
-              incomplete: "est incomplet."
+            finish_date:
+              must_be_after_start_date: "doit être après la date de début."
+          cannot_be_a_non_working_day: "ne peut pas être un jour non travaillé."
         query:
           attributes:
             project:
@@ -1338,10 +1355,6 @@ fr:
             from_id:
               error_not_found: "introuvable ou non visible."
               error_readonly: "ne peut pas être modifié pour les relations existantes."
-            lag:
-              greater_than_or_equal_to:
-                zero: "ne peut pas être négatif."
-              less_than_or_equal_to: "est trop élevé."
         repository:
           not_available: "Le fournisseur de gestion de contrôle de sources n'est pas disponible"
           not_whitelisted: "n'est pas autorisé par la configuration."
@@ -1419,6 +1432,8 @@ fr:
               cannot_be_self_assigned: "ne peut pas être assigné à lui-même."
               cannot_be_in_another_project: "ne peut pas être dans un autre projet."
               not_a_valid_parent: "est invalide."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "ne peut pas être défini sur false (programmé automatiquement) car il n'a ni prédécesseurs ni enfants."
             start_date:
               violates_relationships: "peut uniquement valoir %{soonest_start} ou une date ultérieure afin de ne pas violer les relations du lot de travaux."
               cannot_be_null: "ne peut pas être définie à NULL car la date de fin et la durée sont connues."
@@ -1511,6 +1526,9 @@ fr:
       custom_action: "Action personnalisée"
       custom_field: "Champ personnalisé"
       "doorkeeper/application": "Application OAuth"
+      enterprise_token:
+        one: "Jeton Enterprise"
+        other: "Jetons Enterprise"
       forum: "Forum"
       global_role: "Rôle global"
       group: "Groupe"
@@ -1534,6 +1552,9 @@ fr:
       role:
         one: "Rôle"
         other: "Rôles"
+      scim_client:
+        one: "SCIM Client"
+        other: "SCIM Clients"
       status: "Statut du lot de travaux"
       token/api:
         one: Jeton d'accès
@@ -1594,7 +1615,7 @@ fr:
       added_date: "définie sur %{date}"
       changed_date: "changée du %{from} au %{to}"
       deactivated: "désactivée"
-      deleted_project_phase: "Deleted project phase"
+      deleted_project_phase: "Phase de projet supprimée"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} et %{finish_gate_message}"
       phase_and_one_gate: "%{phase_message}. %{gate_message}"
       removed_date: "date de suppression %{date}"
@@ -2014,12 +2035,12 @@ fr:
       readonly_work_packages: Lots de travaux en lecture seule
       sso_auth_providers: Authentification unique
       team_planner_view: Vue du planificateur d'équipe
-      two_factor_authentication: Authentification 2FA
       virus_scanning: Analyse antivirus
       work_package_query_relation_columns: Colonnes de relation de requête de lot de travaux
       work_package_sharing: Partager les lots de travaux avec des utilisateurs
       work_package_subject_generation: Génération du sujet du lot de travaux
     upsell:
+      buy_now_button: "Acheter maintenant"
       plans_title: "Formules d'abonnement Enterprise"
       title: "Add-on Enterprise"
       plan_title: "Add-on Enterprise %{plan}"
@@ -2054,7 +2075,7 @@ fr:
       work_package_sharing:
         description: "Partagez les lots de travaux avec des utilisateurs qui ne sont pas membres du projet."
       project_list_sharing:
-        description: "Share project lists with individual users."
+        description: "Partagez les listes de projets avec des utilisateurs individuels."
       define_custom_style:
         title: "Thème de couleur et logo personnalisés"
         more_info: "Remarque : le logo utilisé sera accessible publiquement."
@@ -2101,6 +2122,7 @@ fr:
   error_color_could_not_be_saved: "La couleur n'a pas pu être enregistrée"
   error_cookie_missing: "Le cookie OpenProject est manquant. Assurez-vous que les cookies sont activés, sans quoi cette application ne fonctionnera pas correctement."
   error_custom_option_not_found: "L'option n'existe pas."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Votre compte n'a pas pu être activé (limite d'utilisateurs atteinte). Veuillez contacter votre administrateur pour obtenir l'accès."
   error_enterprise_token_invalid_domain: "La version Entreprise n'est pas active. Le domaine de votre jeton Entreprise (%{actual}) ne correspond pas au nom d'hôte du système (%{expected})."
   error_failed_to_delete_entry: "Échec lors de la suppression de cette entrée."
@@ -2408,7 +2430,7 @@ fr:
         static_token_name: "Jeton RSS"
         disabled_text: "Les jetons RSS ne sont pas activés par l'administrateur. Veuillez contacter votre administrateur pour utiliser cette fonctionnalité."
       storages:
-        title: "Espaces de stockage des fichiers"
+        title: "Stockages de fichiers"
         text_hint: "Les jetons de stockage de fichiers connectent cette instance OpenProject à une solution de stockage de fichiers externe."
         empty_text_hint: "Il n'y a pas d'accès à l'espace de stockage lié à votre compte."
         revoke_token: "Voulez-vous vraiment supprimer ce jeton ? Vous devrez vous reconnecter sur %{storage}"
@@ -2443,7 +2465,7 @@ fr:
         responsible: "Vous êtes devenu responsable de %{work_package}"
         watched: "Vous surveillez %{work_package}"
     query:
-      invalid_filter: "Invalid notification filter"
+      invalid_filter: "Filtre de notification invalide"
   label_accessibility: "Accessibilité"
   label_account: "Compte"
   label_active: "Actif"
@@ -2584,6 +2606,7 @@ fr:
   label_dashboard: "Tableau de bord"
   label_database_version: "Version de PostgreSQL"
   label_date: "Date"
+  label_dates: "Dates"
   label_date_and_time: "Date et heure"
   label_date_format: "Format de date"
   label_date_from: "De"
@@ -2599,6 +2622,8 @@ fr:
   label_deleted_custom_item: "(élément supprimé)"
   label_deleted_custom_option: "(option supprimée)"
   label_empty_element: "(vide)"
+  label_go_back: "Revenir en arrière d'un niveau de menu"
+  label_go_forward: "Ouvrir le sous-menu %{module}"
   label_missing_or_hidden_custom_option: "(valeur manquante ou manque d'autorisations d'accès)"
   label_descending: "Décroissant"
   label_details: "Détails"
@@ -2888,7 +2913,7 @@ fr:
   label_project_custom_field_plural: "Attributs du projet"
   label_project_settings: "Paramètres du projet"
   label_project_attributes_settings: "Paramètres des attributs du projet"
-  label_project_storage_plural: "Espaces de stockage des fichiers"
+  label_project_storage_plural: "Stockages de fichiers"
   label_project_storage_project_folder: "Espaces de stockage des fichiers : dossiers du projet"
   label_projects_disk_usage_information: "%{count} projets utilisant %{used_disk_space} d'espace disque"
   label_project_view_all: "Afficher tous les projets"
@@ -2898,6 +2923,7 @@ fr:
   label_query_new: "Nouvelle requête"
   label_query_plural: "Requêtes personnalisées"
   label_read: "Lire…"
+  label_read_documentation: "Lire la documentation"
   label_register: "Créer un compte"
   label_register_with_developer: "S'inscrire en tant que développeur"
   label_registered_on: "Enregistré sur"
@@ -3340,6 +3366,8 @@ fr:
   notice_successful_delete: "Suppression réussie."
   notice_successful_cancel: "Annulation réussie."
   notice_successful_update: "Mise à jour réussie."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Mise à jour échouée."
   notice_unsuccessful_update_with_reason: "Échec de la mise à jour : %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -4327,8 +4355,14 @@ fr:
       code_500: "Une erreur interne s'est produite."
       code_500_outbound_request_failure: "Une requête sortante vers une autre ressource a échoué avec le code de statut %{status_code}."
       code_500_missing_enterprise_token: "La requête ne peut pas être traitée en raison d'un jeton Entreprise invalide ou manquant."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "Ce type d'activité ne prend pas en charge les réactions émojis."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          Vous ne pouvez définir qu'un seul rappel à la fois pour un lot de travaux. Veuillez supprimer ou mettre à jour le rappel existant.
       not_found:
         work_package: "Le lot de travaux que vous cherchez est introuvable ou a été supprimé."
+        reminder: "Le rappel que vous cherchez est introuvable ou a été supprimé."
       expected:
         date: "AAAA-MM-JJ (date ISO 8601 uniquement)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (n'importe quelle date heure compatible ISO 8601)"

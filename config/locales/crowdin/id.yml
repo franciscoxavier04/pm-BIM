@@ -79,7 +79,14 @@ id:
         main-menu-bg-color: "Warna latar belakang menu sisi kiri."
       theme_warning: mengubah tema akan mengubah custom style anda. Desain akan menghilang. Apakah anda ingin melanjutkannya?
     enterprise:
-      upgrade_to_ee: "Tingkatkan ke edisi Enterprise"
+      delete_dialog:
+        title: "Delete enterprise token"
+        heading: "Delete this enterprise token?"
+        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+      create_dialog:
+        title: "Add Enterprise token"
+        type_token_text: "Type support token text"
+        token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Unggah sebuah token bantuan Edisi Enterprise"
       delete_token_modal:
         text: "Are you sure you want to remove the current Enterprise edition token used?"
@@ -417,9 +424,6 @@ id:
         new_label: "New priority"
     status:
       button_edit: Edit project status
-  project_phase:
-    duration:
-      other: "Duration: %{count} working days"
   lists:
     create:
       success: "The modified list has been saved as a new list"
@@ -748,7 +752,9 @@ id:
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      caption: "Jumlah hari kerja minimum yang harus dijaga di antara dua paket pekerjaan."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "terkait dengan"
@@ -841,6 +847,10 @@ id:
     auth_source_login: Please login as <em>%{login}</em> to activate your account.
     omniauth_login: Please login to activate your account.
   actionview_instancetag_blank_option: "Silakan pilih"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -856,6 +866,8 @@ id:
       attribute_help_text:
         attribute_name: "Atribut"
         help_text: "Teks bantuan"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Context"
       changeset:
@@ -898,6 +910,7 @@ id:
         domain: "Domain"
         starts_at: "Valid sejak"
         subscriber: "Pelanggan"
+        plan: "Plan"
         encoded_token: "Token pendukung perusahaan"
         active_user_count_restriction: "Pengguna aktif maksimum"
       grids/grid:
@@ -964,6 +977,10 @@ id:
       project/phase:
         date_range: "Kisaran tanggal"
         definition: "Definition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Nama"
         color: "Warna"
@@ -1275,10 +1292,12 @@ id:
               blank: "Please select a project."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1327,10 +1346,6 @@ id:
             from_id:
               error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
-            lag:
-              greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Vendor SCM tidak tersedia"
           not_whitelisted: "konfigurasi tidak mengijinkan."
@@ -1408,6 +1423,8 @@ id:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "tidak boleh dari proyek lain."
               not_a_valid_parent: "tidak valid."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "can only be set to %{soonest_start} or later so as not to violate the work package's relationships."
               cannot_be_null: "can not be set to null as finish date and duration are known."
@@ -1498,6 +1515,8 @@ id:
       custom_action: "Custom action"
       custom_field: "Isian kustom"
       "doorkeeper/application": "aplikasi OAuth"
+      enterprise_token:
+        other: "Enterprise tokens"
       forum: "Forum"
       global_role: "Global role"
       group: "Grup"
@@ -1516,6 +1535,8 @@ id:
       reminder: "Reminder"
       role:
         other: "Roles"
+      scim_client:
+        other: "SCIM Clients"
       status: "Status Work Package"
       token/api:
         other: Token akses
@@ -1972,12 +1993,12 @@ id:
       readonly_work_packages: Readonly Work Packages
       sso_auth_providers: Single sign-on
       team_planner_view: Team Planner View
-      two_factor_authentication: 2FA Authentication
       virus_scanning: Antivirus Scanning
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      buy_now_button: "Buy now"
       plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
@@ -2059,6 +2080,7 @@ id:
   error_color_could_not_be_saved: "Warna tidak dapat disimpan"
   error_cookie_missing: "The OpenProject cookie is missing. Please ensure that cookies are enabled, as this application will not properly function without."
   error_custom_option_not_found: "Pilihan tidak ada."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Akun Anda tidak dapat diaktifkan (batas pengguna tercapai). Silakan hubungi administrator Anda untuk mendapatkan akses."
   error_enterprise_token_invalid_domain: "The Enterprise edition is not active. Your Enterprise token's domain (%{actual}) does not match the system's host name (%{expected})."
   error_failed_to_delete_entry: "Gagal untuk menghapus isian ini."
@@ -2366,7 +2388,7 @@ id:
         static_token_name: "RSS token"
         disabled_text: "RSS tokens are not enabled by the administrator. Please contact your administrator to use this feature."
       storages:
-        title: "File Storages"
+        title: "File storages"
         text_hint: "File Storage tokens connect this OpenProject instance with an external File Storage."
         empty_text_hint: "There is no storage access linked to your account."
         revoke_token: "Do you really want to remove this token? You will need to login again on %{storage}"
@@ -2542,6 +2564,7 @@ id:
   label_dashboard: "Dasbor"
   label_database_version: "Versi PostgreSQL"
   label_date: "Tanggal"
+  label_dates: "Dates"
   label_date_and_time: "Tanggal dan waktu"
   label_date_format: "Format tanggal"
   label_date_from: "Dari"
@@ -2557,6 +2580,8 @@ id:
   label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(opsi dihapus)"
   label_empty_element: "(kosong)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(nilai hilang atau kurang izin untuk mengakses)"
   label_descending: "Deskending"
   label_details: "Detil"
@@ -2846,8 +2871,8 @@ id:
   label_project_custom_field_plural: "Atribut proyek"
   label_project_settings: "Projek setting"
   label_project_attributes_settings: "Project attributes settings"
-  label_project_storage_plural: "File Storages"
-  label_project_storage_project_folder: "File Storages: Project folders"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} projects using %{used_disk_space} disk space"
   label_project_view_all: "Lihat semua Project"
   label_project_show_details: "Tampilkan detail proyek"
@@ -2856,6 +2881,7 @@ id:
   label_query_new: "Queri baru"
   label_query_plural: "Kustom queri"
   label_read: "Baca..."
+  label_read_documentation: "Read documentation"
   label_register: "Buat akun baru"
   label_register_with_developer: "Daftar sebagai pengembang"
   label_registered_on: "Terdaftar sejak"
@@ -3297,6 +3323,8 @@ id:
   notice_successful_delete: "Berhasil dihapus."
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Berhasil diperbarui."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Update failed."
   notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -3582,7 +3610,7 @@ id:
       oauth_application_details: "Nilai rahasia klien tidak akan dapat diakses lagi setelah Anda menutup jendela ini. Harap salin nilai-nilai ini ke pengaturan Nextcloud OpenProject Integration:"
       oauth_application_details_link_text: "Buka halaman pengaturan"
       setup_documentation_details: "Jika Anda memerlukan bantuan untuk mengonfigurasi penyimpanan file baru, harap periksa dokumentasinya:"
-      setup_documentation_details_link_text: "Pengaturan Penyimpanan File"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "To use this file storage remember to activate the module and the specific storage in the project settings of each desired project."
     subversion:
       existing_title: "Repository Subversion yang sudah ada"
@@ -4280,8 +4308,14 @@ id:
       code_500: "An internal error has occurred."
       code_500_outbound_request_failure: "Permintaan keluar ke sumber daya lain telah gagal dengan kode status %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "Paket pekerjaan yang Anda cari tidak dapat ditemukan atau telah dihapus."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "YYYY-MM-DD (ISO 8601 date only)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (setiap waktu ISO 8601 yang kompatibel)"

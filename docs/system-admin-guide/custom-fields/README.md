@@ -29,8 +29,10 @@ Depending on the module, for which the new custom field is being  created, sligh
 
 1. Custom field **Name**, which will appear as the attribute name on the work package form.
 2. Choose a **Format** of the custom field, e.g. text, list, date, boolean. In this example the format *Text* is selected.
-   > [!TIP]
-   > Depending on the format of the custom field, the fields to specify vary.
+   
+> [!TIP]
+> Depending on the format of the custom field, the fields to specify vary.
+
 3. Specify the **minimal and maximal length**. If a 0 is chosen, no restriction will be imposed on the length of the custom field.
 4. **Regular expression** specifying which values are allowed for the custom field.
 5. **Default value** will be used as a default value for the custom field.
@@ -73,7 +75,7 @@ You can edit the name and initial settings under the *Details* tab.
 
 ![Detailed view of a custom field in OpenProject administration](openproject_system_guide_new_custom_hierarchy_details_tab.png)
 
-Under the *Items* tab you can specify which hierarchy items should be selectable for this specific custom field. Initially the list of items will be empty.To add items, click the **+Item** button. 
+Under the *Items* tab you can specify which hierarchy items should be selectable for this specific custom field. Initially the list of items will be empty. To add items, click the **+Item** button. 
 
 ![Items tab for a hierarchy custom field in OpenProject administration](openproject_system_guide_hierarchy_field_add_item_button.png)
 
@@ -81,17 +83,21 @@ You can then specify labels and short names for each of the items you want to ad
 
 ![Add an item to the hierarchy custom field in OpenProject administration](openproject_system_guide_hierarchy_field_add_item_form.png)
 
-All items you add here will constitute one hierarchical level. You can add further levels to each of the items. Here you can edit the items, change the position in the list or delete the items. To do that click the icon with the three dots on the far right and select the respective option. You can also re-arrange the items by dragging and dropping.
+All items you add here will constitute one hierarchical level. Once added, all items will be displayed in the hierarchy tree on the left side for easier navigation. 
+
+You can add further levels to each of the items. Here you can edit the items, change the position in the list or delete the items. To do that click the icon with the three dots on the far right and select the respective option. You can also re-arrange the items by dragging and dropping.
 
 ![Edit items for hierarchy custom fields in OpenProject administration](openproject_system_guide_hierarchy_field_edit_items.png)
 
-You can add further hierarchical levels by clicking on the name of the item and adding the items same way you did on the first level. Once you do that, the number of sub-items will be displayed on the higher hierarchy level. 
+You can add further hierarchical levels by clicking on the name of the item and adding the items same way you did on the first level. 
 
 ![Add further hierarchy levels for custom fields in OpenProject](openproject_system_guide_hierarchy_field_add_further_levels.png)
 
+Once you have added sub-items, the number of nested items will appear next to the name of the parent item. In the hierarchy tree on the left, an **arrow icon** will be shown next to any item that contains sub-items. By default, these sub-menus are collapsed. Clicking the arrow icon will expand the view to show all associated sub-items.
+
 ![Number of sub-items for a hierarchy value in OpenProject custom fields](openproject_system_guide_custom_field_new_hierarchy_subitems.png)
 
-You can add as many sub-times and hierarchy levels as you need. You can always navigate to the level you need by clicking the respective option from the hierarchy path displayed above the items.
+You can add as many sub-times and hierarchy levels as you need. You can always navigate to the level you need by clicking the respective option from the hierarchy tree on the left or in the path displayed above the items.
 
 ![New custom field path](openproject_system_guide_new_custom_field_path.png)
 

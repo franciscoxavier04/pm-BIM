@@ -28,7 +28,7 @@ ja:
   activerecord:
     attributes:
       meeting:
-        type: ""
+        type: "会議の種類"
         location: "場所"
         duration: "期間"
         notes: "注記"
@@ -155,7 +155,7 @@ ja:
   label_past_invitations: "過去の招待状"
   label_attended: "出席済み"
   label_attended_user: "出席したユーザー"
-  label_created_by_me: "私が作成した"
+  label_created_by_me: "自分が作成したもの"
   label_notify: "レビュー用に送信"
   label_icalendar: "iCalendar を送信"
   label_icalendar_download: "iCalendarイベントをダウンロード"
@@ -166,9 +166,9 @@ ja:
   label_start_date: "開始日"
   meeting:
     participants:
-      template: "これらの参加者は、今後作成されたすべてのミーティングに自動的に招待されます"
+      template: "これらの参加者は、今後作成されたすべてのミーティングに自動的に招待されます。"
     attachments:
-      template: "これらの添付ファイルは、今後の一連の会議に含まれます"
+      template: "これらの添付ファイルは、今後の一連の会議に含まれます。"
       text: "添付ファイルはすべての会議参加者が利用可能です。また、これらのファイルを議題項目のノートにドラッグアンドドロップすることもできます。"
     copy:
       title: "会議をコピー：%{title}"
@@ -231,8 +231,31 @@ ja:
           Any meeting information not in the template will be lost. Do you want to continue?
         confirm_button: "Cancel occurrence"
     blankslate:
-      title: "表示する会議がありません。"
+      title: "表示する会議がありません"
       desc: "条件を満たす会議はありません。"
+    label_export_pdf: "Export PDF"
+    export:
+      your_meeting_export: "Meeting is being exported"
+      label_meeting_agenda: "Meeting agenda"
+    export_pdf_dialog:
+      title: Export PDF
+      description: Generate a printable PDF file of this meeting at the current state.
+      include_participants:
+        label: Include list of participants
+        caption: A list of participants will be preset above the meeting agenda.
+      include_attachments:
+        label: Include list of attachments
+        caption: A list containing the filenames of attachments will be appended at the end.
+      include_backlog:
+        label: Include backlog
+        caption: Backlog elements are not normally considered part of a meeting occurrence but you can choose to include them.
+      include_outcomes:
+        label: Include agenda outcomes
+        caption: If your agenda outcomes contain confidential information, you can choose to not include them in the export.
+      footer_text:
+        label: Footer text
+        caption: This text will appear on every page on the right of the footer.
+      submit_button: Download
   meeting_section:
     untitled_title: "タイトルなしセクション"
     delete_confirmation: "セクションを削除すると、そのすべての議題項目も削除されます。これを実行してもよろしいですか？"
@@ -274,7 +297,7 @@ ja:
     starts: "Starts"
     in_words:
       daily_interval: "Every %{interval} days"
-      working_days: "Every working day"
+      working_days: "稼働日"
       weekly: "Every week on %{weekday}"
       weekly_interval: "Every %{interval} weeks on %{weekday}"
       frequency: "%{base} at %{time}"

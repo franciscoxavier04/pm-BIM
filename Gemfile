@@ -36,7 +36,7 @@ ruby File.read(File.expand_path(".ruby-version", __dir__)).strip
 
 gem "actionpack-xml_parser", "~> 2.0.0"
 gem "activemodel-serializers-xml", "~> 1.0.1"
-gem "activerecord-import", "~> 2.1.0"
+gem "activerecord-import", "~> 2.2.0"
 gem "activerecord-session_store", "~> 2.2.0"
 gem "ox"
 gem "rails", "~> 8.0.1"
@@ -64,7 +64,7 @@ gem "scimitar", "~> 2.11"
 gem "acts_as_list", "~> 1.2.0"
 gem "acts_as_tree", "~> 2.9.0"
 gem "awesome_nested_set", "~> 3.8.0"
-gem "closure_tree", "~> 7.4.0"
+gem "closure_tree", "~> 8.0.0"
 gem "rubytree", "~> 2.1.0"
 # Only used in down migrations now.
 # Is to be removed once the referencing migrations have been squashed.
@@ -203,7 +203,7 @@ gem "aws-sdk-core", "~> 3.107"
 # File upload via fog + screenshots on travis
 gem "aws-sdk-s3", "~> 1.91"
 
-gem "openproject-token", "~> 7.0.0"
+gem "openproject-token", "~> 7.2.0"
 
 gem "plaintext", "~> 0.3.2"
 
@@ -227,7 +227,7 @@ gem "appsignal", "~> 3.10.0", require: false
 
 # Yabeda integration
 gem "yabeda-activerecord"
-gem "yabeda-prometheus-mmap"
+gem "yabeda-prometheus-mmap", require: false
 gem "yabeda-puma-plugin"
 gem "yabeda-rails"
 
@@ -402,7 +402,7 @@ platforms :mri, :mingw, :x64_mingw do
 
   # Have application level locks on the database to have a mutex shared between workers/hosts.
   # We e.g. employ this to safeguard the creation of journals.
-  gem "with_advisory_lock", "~> 5.1.0"
+  gem "with_advisory_lock", "~> 5.3.0"
 end
 
 # Load Gemfile.modules explicitly to allow dependabot to work

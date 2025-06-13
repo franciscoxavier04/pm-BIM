@@ -79,7 +79,14 @@ cs:
         main-menu-bg-color: "Barva pozadí levého menu."
       theme_warning: Změna motivu přepíše váš vlastní styl. Vzhled pak bude ztracen. Jste si jisti, že chcete pokračovat?
     enterprise:
-      upgrade_to_ee: "Upgradovat na Enterprise Edici"
+      delete_dialog:
+        title: "Delete enterprise token"
+        heading: "Delete this enterprise token?"
+        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+      create_dialog:
+        title: "Add Enterprise token"
+        type_token_text: "Type support token text"
+        token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Nahrát  podpůrný token Enterprise Edition"
       delete_token_modal:
         text: "Jste si jisti, že chcete odstranit použitý aktuální token verze Enterprise?"
@@ -421,12 +428,6 @@ cs:
         new_label: "nová priorita"
     status:
       button_edit: Edit project status
-  project_phase:
-    duration:
-      one: "Doba trvání: %{count} pracovní den"
-      few: "Doba trvání: %{count} pracovní dny"
-      many: "Doba trvání: %{count} pracovní dny"
-      other: "Doba trvání: %{count} pracovní dny"
   lists:
     create:
       success: "Upravený seznam byl uložen jako nový seznam."
@@ -779,7 +780,9 @@ cs:
     label_add_description: "Přidat popis"
     lag:
       subject: "Zpožďování"
-      caption: "Minimální počet pracovních dnů mezi oběma pracovními balíčky."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Nový pracovní balíček vytvořen a přidán jako potomek"
       label_relates_singular: "související s"
@@ -872,6 +875,10 @@ cs:
     auth_source_login: Přihlaste se prosím jako <em>%{login}</em> pro aktivaci vašeho účtu.
     omniauth_login: Prosím přihlaste se pro aktivaci účtu.
   actionview_instancetag_blank_option: "Zvolte prosím"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -887,6 +894,8 @@ cs:
       attribute_help_text:
         attribute_name: "Atribut"
         help_text: "Text nápovědy"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Kontext"
       changeset:
@@ -929,6 +938,7 @@ cs:
         domain: "Doména"
         starts_at: "Platné od"
         subscriber: "Odběratel"
+        plan: "Plan"
         encoded_token: "Token podpory Enterprise."
         active_user_count_restriction: "Maximální počet aktivních uživatelů"
       grids/grid:
@@ -995,6 +1005,10 @@ cs:
       project/phase:
         date_range: "Časový rozsah"
         definition: "Definice"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Název:"
         color: "Barva"
@@ -1306,10 +1320,12 @@ cs:
               blank: "Vyberte prosím projekt."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "je neúplný."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1358,10 +1374,6 @@ cs:
             from_id:
               error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
-            lag:
-              greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Prodejce SCM není k dispozici"
           not_whitelisted: "není povoleno konfigurací."
@@ -1439,6 +1451,8 @@ cs:
               cannot_be_self_assigned: "nemůže být přiřazeno k sobě."
               cannot_be_in_another_project: "nemůže být v jiném projektu."
               not_a_valid_parent: "je neplatné."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "lze nastavit pouze na %{soonest_start} nebo později, aby nedošlo k porušování vztahů pracovního balíčku."
               cannot_be_null: "nelze nastavit na null jako datum ukončení a doba trvání je známa."
@@ -1535,6 +1549,11 @@ cs:
       custom_action: "Vlastní akce"
       custom_field: "Vlastní pole"
       "doorkeeper/application": "OAuth aplikace"
+      enterprise_token:
+        one: "Enterprise token"
+        few: "Enterprise tokens"
+        many: "Enterprise tokens"
+        other: "Enterprise tokens"
       forum: "Fórum"
       global_role: "Globální role"
       group: "Skupina"
@@ -1568,6 +1587,11 @@ cs:
         few: "Role"
         many: "Role"
         other: "Role"
+      scim_client:
+        one: "SCIM Client"
+        few: "SCIM Clients"
+        many: "SCIM Clients"
+        other: "SCIM Clients"
       status: "Stav pracovního balíčku"
       token/api:
         one: Přístupový token
@@ -2096,12 +2120,12 @@ cs:
       readonly_work_packages: Readonly Work Packages
       sso_auth_providers: Single sign-on
       team_planner_view: Team Planner View
-      two_factor_authentication: 2FA Authentication
       virus_scanning: Antivirus Scanning
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      buy_now_button: "Buy now"
       plans_title: "Enterprise plans"
       title: "Doplňky Enterprise Edice"
       plan_title: "Enterprise %{plan} add-on"
@@ -2183,6 +2207,7 @@ cs:
   error_color_could_not_be_saved: "Barvu nelze uložit"
   error_cookie_missing: "OpenProject cookie chybí. Ujistěte se, že jsou soubory cookie povoleny, protože aplikace nebude správně fungovat."
   error_custom_option_not_found: "Nastavení neexistuje."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Váš účet nebyl aktivován (dosažen limit počtu uživatelů). Prosím obraťte se na správce pro získání přístupu."
   error_enterprise_token_invalid_domain: "Enterprise Edice není aktivní. Doména Enterprise tokenu (%{actual}) neodpovídá hostiteli systému (%{expected})."
   error_failed_to_delete_entry: "Nepodařilo se odstranit tento záznam."
@@ -2490,7 +2515,7 @@ cs:
         static_token_name: "RSS token"
         disabled_text: "API tokeny nejsou administrátorem povoleny. Pro použití této funkce kontaktujte svého správce."
       storages:
-        title: "Úložiště souborů"
+        title: "File storages"
         text_hint: "Tokeny úložiště souborů připojují tuto OpenProject instanci s externím úložištěm souborů."
         empty_text_hint: "K vašemu účtu není připojen žádný přístup k úložišti."
         revoke_token: "Opravdu chcete odstranit tento token? Budete se muset znovu přihlásit na %{storage}"
@@ -2666,6 +2691,7 @@ cs:
   label_dashboard: "Dashboard"
   label_database_version: "Verze PostgreSQL"
   label_date: "Datum"
+  label_dates: "Dates"
   label_date_and_time: "Datum a čas"
   label_date_format: "Formát data"
   label_date_from: "Od"
@@ -2681,6 +2707,8 @@ cs:
   label_deleted_custom_item: "(smazaná položka)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(prázdný)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(chybí hodnota nebo chybí oprávnění k přístupu)"
   label_descending: "Sestupně"
   label_details: "Podrobnosti"
@@ -2970,8 +2998,8 @@ cs:
   label_project_custom_field_plural: "Atributy projektu"
   label_project_settings: "Nastavení projektu"
   label_project_attributes_settings: ""
-  label_project_storage_plural: "Úložiště souborů"
-  label_project_storage_project_folder: "Úložiště souborů: Složky projektů"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} projekty využívající diskový prostor %{used_disk_space}"
   label_project_view_all: "Zobrazit všechny projekty - seznam"
   label_project_show_details: "Zobrazit detail projektu"
@@ -2980,6 +3008,7 @@ cs:
   label_query_new: "Nový dotaz"
   label_query_plural: "Vlastní dotazy"
   label_read: "Číst..."
+  label_read_documentation: "Read documentation"
   label_register: "Vytvořit nový účet"
   label_register_with_developer: "Zaregistrovat se jako vývojář"
   label_registered_on: "Registrován"
@@ -3423,6 +3452,8 @@ cs:
   notice_successful_delete: "Úspěšné odstranění."
   notice_successful_cancel: "Úspěšné zrušení."
   notice_successful_update: "Úspěšná aktualizace."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Update failed."
   notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -3714,7 +3745,7 @@ cs:
       oauth_application_details: "Tajná hodnota klienta nebude po zavření tohoto okna přístupná. Zkopírujte tyto hodnoty do Nextcloud OpenProject Integration nastavení:"
       oauth_application_details_link_text: "Přejít na stránku nastavení"
       setup_documentation_details: "Pokud potřebujete pomoci s nastavením nového úložiště souborů, prosím zkonzultujte dokumentaci: "
-      setup_documentation_details_link_text: "Nastavení úložiště souborů"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Pro použití tohoto úložiště souborů nezapomeňte aktivovat modul a konkrétní úložiště v nastavení projektu každého požadovaného projektu."
     subversion:
       existing_title: "Existující repozitář Subversion"
@@ -4414,8 +4445,14 @@ cs:
       code_500: "Došlo k vnitřní chybě."
       code_500_outbound_request_failure: "Odchozí požadavek na jiný dokument selhal se stavovým kódem %{status_code}."
       code_500_missing_enterprise_token: "Požadavek nelze zpracovat kvůli neplatnému nebo chybějícímu tokenu Enterprise."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "Pracovní balíček, který hledáte, nebyl nalezen nebo byl odstraněn."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "RRRR-MM-DD (pouze ISO 8601 datum)"
         datetime: "RRRR-MM-DDThh:mm:ss[.lll][+hh:mm] (jakýkoli kompatibilní datový prvek podle ISO 8601)"

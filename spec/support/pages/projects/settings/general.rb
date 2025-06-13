@@ -45,6 +45,11 @@ module Pages
         def path
           "/projects/#{project.identifier}/settings/general"
         end
+
+        def click_copy_action
+          page.find_test_selector("project-settings-more-menu").click
+          page.find_test_selector("project-settings--copy").click
+        end
       end
     end
   end
