@@ -856,6 +856,10 @@ it:
     auth_source_login: Accedi come <em>%{login}</em> per attivare il tuo account.
     omniauth_login: Accedi per attivare il tuo account.
   actionview_instancetag_blank_option: "Si prega di selezionare"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -871,6 +875,8 @@ it:
       attribute_help_text:
         attribute_name: "Attributo"
         help_text: "Testo guida"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Contesto"
       changeset:
@@ -1546,6 +1552,9 @@ it:
       role:
         one: "Ruolo"
         other: "Ruoli"
+      scim_client:
+        one: "SCIM Client"
+        other: "SCIM Clients"
       status: "Stato della macro-attività"
       token/api:
         one: Token di accesso
@@ -2113,6 +2122,7 @@ it:
   error_color_could_not_be_saved: "Il colore non può essere salvato"
   error_cookie_missing: "Il cookie di OpenProject è mancante. Prego, verifica che i cookie siano attivati, questa applicazione non funziona correttamente senza."
   error_custom_option_not_found: "L'opzione non esiste."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Il tuo account potrebbe non essere attivo (raggiunto il limite utente). Si prega di contattare l'amministratore per ottenere l'accesso."
   error_enterprise_token_invalid_domain: "L'Enterprise edition non è attiva. Il dominio del token Enterprise (%{actual}) non corrisponde al nome host del sistema (%{expected})."
   error_failed_to_delete_entry: "Cancellazione voce non riuscita."
@@ -3356,6 +3366,8 @@ it:
   notice_successful_delete: "Cancellato con successo."
   notice_successful_cancel: "Cancellato con successo."
   notice_successful_update: "Aggiornato con successo."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Aggiornamento non riuscito."
   notice_unsuccessful_update_with_reason: "Aggiornamento non riuscito: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |

@@ -235,27 +235,27 @@ zh-TW:
       desc: "沒有符合篩選條件的會議。"
     label_export_pdf: "匯出 PDF"
     export:
-      your_meeting_export: "Meeting is being exported"
-      label_meeting_agenda: "Meeting agenda"
+      your_meeting_export: "正在進行會議匯出作業"
+      label_meeting_agenda: "會議議程"
     export_pdf_dialog:
-      title: Export PDF
-      description: Generate a printable PDF file of this meeting at the current state.
+      title: 匯出 PDF
+      description: 產生此目前會議的可列印之 PDF 檔案。
       include_participants:
-        label: Include list of participants
-        caption: A list of participants will be preset above the meeting agenda.
+        label: 包含參與者清單
+        caption: 參與者名單將會預先顯示在會議議程上方。
       include_attachments:
-        label: Include list of attachments
-        caption: A list containing the filenames of attachments will be appended at the end.
+        label: 包含附件清單
+        caption: 附件檔案名稱清單將會附加於最後。
       include_backlog:
-        label: Include backlog
-        caption: Backlog elements are not normally considered part of a meeting occurrence but you can choose to include them.
+        label: 包含待辦事項
+        caption: 待辦事項通常不會被視為會議事件的一部分，但您可以選擇將其包含在內。
       include_outcomes:
-        label: Include agenda outcomes
-        caption: If your agenda outcomes contain confidential information, you can choose to not include them in the export.
+        label: 包含議程成果
+        caption: 如果您的議程成果包含機密資訊，您可以選擇不將其包含在匯出內容中。
       footer_text:
-        label: Footer text
-        caption: This text will appear on every page on the right of the footer.
-      submit_button: Download
+        label: 頁尾文字
+        caption: 此文字將會出現在每一頁頁尾右邊。
+      submit_button: 下載
   meeting_section:
     untitled_title: "無標題章節"
     delete_confirmation: "刪除該章節也會刪除其所有的議程項目。您確定要這麼做？"
@@ -446,7 +446,7 @@ zh-TW:
   text_meeting_not_present_anymore: "此次會議已被刪除。請選擇另一場會議。"
   label_add_work_package_to_meeting_dialog_title: "將工作套件新增到到會議"
   label_add_work_package_to_meeting_dialog_button: "增加到會議"
-  label_meeting_selection_caption: "將此工作項目新增至即將舉行或正在進行的會議。"
+  label_meeting_selection_caption: "將此工作套件新增至即將舉行或正在進行的會議。"
   text_add_work_package_to_meeting_description: "工作套件可以新增到一或多個會議供討論。相關的說明也可在這裡看到。"
   text_agenda_item_no_notes: "沒註記"
   text_agenda_item_not_editable_anymore: "本次會議已不可編輯。"

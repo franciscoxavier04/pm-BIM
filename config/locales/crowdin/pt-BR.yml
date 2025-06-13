@@ -856,6 +856,10 @@ pt-BR:
     auth_source_login: Faça login como <em>%{login}</em> para ativar sua conta.
     omniauth_login: Faça login para ativar sua conta.
   actionview_instancetag_blank_option: "Por favor selecione"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -871,6 +875,8 @@ pt-BR:
       attribute_help_text:
         attribute_name: "Atributo"
         help_text: "Texto de ajuda"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Contexto"
       changeset:
@@ -1546,6 +1552,9 @@ pt-BR:
       role:
         one: "Papel"
         other: "Papéis"
+      scim_client:
+        one: "SCIM Client"
+        other: "SCIM Clients"
       status: "Situação do pacote de trabalho"
       token/api:
         one: Token de acesso
@@ -2113,6 +2122,7 @@ pt-BR:
   error_color_could_not_be_saved: "Cor não pôde ser salva"
   error_cookie_missing: "Está faltando o cookie do OpenProject. Por favor, certifique-se de que os cookies estão habilitados, sem os quais esta função não funcionará adequadamente."
   error_custom_option_not_found: "A opção não existe."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Sua conta não pôde ser ativada (limite de usuários atingido). Por favor, contate o administrador para obter acesso."
   error_enterprise_token_invalid_domain: "A edição Enterprise não esta ativa. Seu domínio do token Enterprise (%{actual}) não corresponde ao nome do host do sistema (%{expected})."
   error_failed_to_delete_entry: "Falha ao excluir esta entrada."
@@ -3355,6 +3365,8 @@ pt-BR:
   notice_successful_delete: "Exclusão bem sucedida."
   notice_successful_cancel: "Cancelamento bem-sucedido."
   notice_successful_update: "Atualizado com sucesso."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Falha na atualização."
   notice_unsuccessful_update_with_reason: "Atualização falhou: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |

@@ -851,6 +851,10 @@ vi:
     auth_source_login: Vui lòng đăng nhập với <em>%{login}</em> để kích hoạt tài khoản của bạn.
     omniauth_login: Vui lòng đăng nhập để kích hoạt tài khoản của bạn.
   actionview_instancetag_blank_option: "Vui lòng chọn"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -866,6 +870,8 @@ vi:
       attribute_help_text:
         attribute_name: "Thuộc tính"
         help_text: "Văn bản trợ giúp"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Context"
       changeset:
@@ -1533,6 +1539,8 @@ vi:
       reminder: "Reminder"
       role:
         other: "Vai trò"
+      scim_client:
+        other: "SCIM Clients"
       status: "Tình trạng work package"
       token/api:
         other: Mã truy cập
@@ -2076,6 +2084,7 @@ vi:
   error_color_could_not_be_saved: "Màu sắc không thể được lưu"
   error_cookie_missing: "Cookie OpenProject bị thiếu. Vui lòng đảm bảo rằng cookies được bật, vì ứng dụng này sẽ không hoạt động đúng nếu không có cookies."
   error_custom_option_not_found: "Tùy chọn không tồn tại."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Không thể kích hoạt tài khoản của bạn (đã đạt đến giới hạn người dùng). Vui lòng liên hệ với quản trị viên của bạn để có quyền truy cập."
   error_enterprise_token_invalid_domain: "Phiên bản Enterprise không hoạt động. Miền của token Enterprise của bạn (%{actual}) không khớp với tên máy chủ của hệ thống (%{expected})."
   error_failed_to_delete_entry: "Không xóa được mục này."
@@ -3318,6 +3327,8 @@ vi:
   notice_successful_delete: "Xóa thành công."
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Cập nhật thành công."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Update failed."
   notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |

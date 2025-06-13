@@ -849,6 +849,10 @@ ms:
     auth_source_login: Sila log masuk sebagai <em>%{login}</em> untuk mengaktifkan akaun anda.
     omniauth_login: Sila log masuk untuk mengaktifkan akaun anda.
   actionview_instancetag_blank_option: "Sila pilih"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -864,6 +868,8 @@ ms:
       attribute_help_text:
         attribute_name: "Atribut"
         help_text: "Teks bantuan"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Context"
       changeset:
@@ -1531,6 +1537,8 @@ ms:
       reminder: "Peringatan"
       role:
         other: "Peranan\n"
+      scim_client:
+        other: "SCIM Clients"
       status: "Status pakej kerja"
       token/api:
         other: Token akses
@@ -2074,6 +2082,7 @@ ms:
   error_color_could_not_be_saved: "Warna tidak dapat disimpan"
   error_cookie_missing: "Kuki OpenProject tidak ditemui. Sila pastikan bahawa kuki telah diaktifkan, kerana aplikasi ini tidak akan berfungsi dengan betul tanpanya."
   error_custom_option_not_found: "Pilihan tidak wujud."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Akaun anda tidak dapat diaktifkan (had pengguna dicapai). Sila hubungi pentadbir anda  untuk dapatkan akses."
   error_enterprise_token_invalid_domain: "Edisi Enterprise tidak aktif. Domain token Enterprise anda (%{actual}) tidak sepadan dengan nama hos sistem (%{expected})."
   error_failed_to_delete_entry: "Gagal untuk memadamkan entri ini."
@@ -3316,6 +3325,8 @@ ms:
   notice_successful_delete: "Pemadaman yang berjaya."
   notice_successful_cancel: "Pembatalan yang berjaya."
   notice_successful_update: "Kemas kini berjaya."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Update failed."
   notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |

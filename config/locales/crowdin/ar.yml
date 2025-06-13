@@ -891,6 +891,10 @@ ar:
     auth_source_login: الرجاء الدخول ك <em>%{login}</em>لتفعيل حسابك.
     omniauth_login: الرجاء تسجيل الدخول لتفعيل حسابك.
   actionview_instancetag_blank_option: "من فضلك اختر"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -906,6 +910,8 @@ ar:
       attribute_help_text:
         attribute_name: "الواصفة"
         help_text: "Help text"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Context"
       changeset:
@@ -1613,6 +1619,13 @@ ar:
         few: "دور"
         many: "دور"
         other: "دور"
+      scim_client:
+        zero: "SCIM Clients"
+        one: "SCIM Client"
+        two: "SCIM Clients"
+        few: "SCIM Clients"
+        many: "SCIM Clients"
+        other: "SCIM Clients"
       status: "حالة مجموعة العمل"
       token/api:
         zero: Access tokens
@@ -2276,6 +2289,7 @@ ar:
   error_color_could_not_be_saved: "تعذر حفظ الألوان"
   error_cookie_missing: "ملف تعريف الارتباط \"كوكي\" لأوبن بروجكت مفقود. من فضلك تأكد من أن يتم تمكين ملفات تعريف الارتباط \"كوكيز\"، لأن هذا التطبيق لن يعمل بشكل صحيح دون ذلك."
   error_custom_option_not_found: "Option does not exist."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Your account could not be activated (user limit reached). Please contact your administrator to gain access."
   error_enterprise_token_invalid_domain: "The Enterprise edition is not active. Your Enterprise token's domain (%{actual}) does not match the system's host name (%{expected})."
   error_failed_to_delete_entry: "Failed to delete this entry."
@@ -3523,6 +3537,8 @@ ar:
   notice_successful_delete: "حذف ناجح."
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "تحديث ناجح."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Update failed."
   notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |

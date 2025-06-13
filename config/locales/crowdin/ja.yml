@@ -849,6 +849,10 @@ ja:
     auth_source_login: アカウントをアクティブにするのに<em>%{login}</em>としてログインしてください。
     omniauth_login: アカウントをアクティブにするのにログインしてください。
   actionview_instancetag_blank_option: "選択してください"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -864,6 +868,8 @@ ja:
       attribute_help_text:
         attribute_name: "属性"
         help_text: "ヘルプ テキスト"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Context"
       changeset:
@@ -1531,6 +1537,8 @@ ja:
       reminder: "Reminder"
       role:
         other: "ロール"
+      scim_client:
+        other: "SCIM Clients"
       status: "ステータス名"
       token/api:
         other: アクセストークン
@@ -2074,6 +2082,7 @@ ja:
   error_color_could_not_be_saved: "色を保存できませんでした。"
   error_cookie_missing: "OpenProject のcookieが見つかりません。cookieが有効であることを確認してください。そうしないとこのアプリケーションは正しく動作しません。"
   error_custom_option_not_found: "オプションが存在しません。"
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "あなたのアカウントを有効にすることができませんでした（ユーザー制限に達しました）。アクセスするには管理者に連絡してください。"
   error_enterprise_token_invalid_domain: "Enterprise Edition がアクティブではありません。Enterprise トークンのドメイン (%{actual}) がシステムのホスト名(%{expected}) と一致しません。"
   error_failed_to_delete_entry: "このエントリを削除できませんでした。"
@@ -3316,6 +3325,8 @@ ja:
   notice_successful_delete: "正常に削除しました。"
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "正常に更新しました。"
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Update failed."
   notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |

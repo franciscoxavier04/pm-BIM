@@ -639,7 +639,7 @@ es:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:
             work_package: "Paquete de trabajo"
-            parent: "Padre"
+            parent: "Principal"
             project: "Proyecto"
         pattern:
           label: "Patrón del asunto"
@@ -857,6 +857,10 @@ es:
     auth_source_login: Por favor, inicia sesión como <em>%{login}</em> para activar tu cuenta.
     omniauth_login: Por favor inicie sesión para activar su cuenta.
   actionview_instancetag_blank_option: "Por favor, elija"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -872,6 +876,8 @@ es:
       attribute_help_text:
         attribute_name: "Atributo"
         help_text: "Texto de ayuda"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Contexto"
       changeset:
@@ -1428,7 +1434,7 @@ es:
               cannot_be_in_another_project: "no puede estar en otro proyecto."
               not_a_valid_parent: "no es válido."
             schedule_manually:
-              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
+              cannot_be_automatically_scheduled: "no puede establecerse en falso (programado automáticamente) ya que no tiene predecesores ni elementos secundarios."
             start_date:
               violates_relationships: "sólo se puede establecer a %{soonest_start} o posterior para que no se violen las relaciones de los paquetes de trabajo."
               cannot_be_null: "no puede establecerse como nulo, ya que la fecha final y la duración son conocidas."
@@ -1547,6 +1553,9 @@ es:
       role:
         one: "Rol"
         other: "Roles"
+      scim_client:
+        one: "SCIM Client"
+        other: "SCIM Clients"
       status: "Estado del paquete de trabajo"
       token/api:
         one: Token de acceso
@@ -2067,7 +2076,7 @@ es:
       work_package_sharing:
         description: "Compartir paquetes de trabajo con usuarios que no son miembros del proyecto."
       project_list_sharing:
-        description: "Share project lists with individual users."
+        description: "Comparta listas de proyectos con usuarios individuales."
       define_custom_style:
         title: "Tema de color y logotipo personalizados"
         more_info: "Nota: el logotipo utilizado será de acceso público."
@@ -2114,6 +2123,7 @@ es:
   error_color_could_not_be_saved: "No se pudo guardar el color"
   error_cookie_missing: "No se encuentra la cookie de OpenProject. Por favor asegúrese de que las cookies están habilitadas, ya que sin ellas esta aplicación no funcionará correctamente."
   error_custom_option_not_found: "Esta opción no existe."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Su cuenta no puede ser activada (se alcanzó el límite del usuario). Por favor, contacte su administrador para obtener acceso."
   error_enterprise_token_invalid_domain: "Enterprise no está activo. Su dominio del token de Enterprise (%{actual}) no coincide con el nombre de host del sistema (%{expected})."
   error_failed_to_delete_entry: "No se puede eliminar esta entrada."
@@ -3357,6 +3367,8 @@ es:
   notice_successful_delete: "Eliminado con éxito."
   notice_successful_cancel: "Cancelación exitosa."
   notice_successful_update: "Actualización correcta."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Error al actualizar."
   notice_unsuccessful_update_with_reason: "Error en la actualización: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |

@@ -859,6 +859,10 @@ si:
     auth_source_login: කරුණාකර ඔබගේ ගිණුම සක්රිය කිරීමට <em>%{login}</em> ලෙස ලොගින් වන්න.
     omniauth_login: කරුණාකර ඔබගේ ගිණුම සක්රිය කිරීමට පුරනය වන්න.
   actionview_instancetag_blank_option: "කරුණාකර තෝරන්න"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -874,6 +878,8 @@ si:
       attribute_help_text:
         attribute_name: "ගුණාංගය"
         help_text: "උපකාරක පෙළ"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Context"
       changeset:
@@ -1549,6 +1555,9 @@ si:
       role:
         one: "කාර්යභාරය"
         other: "භූමිකාවන්"
+      scim_client:
+        one: "SCIM Client"
+        other: "SCIM Clients"
       status: "වැඩ පැකේජ තත්ත්වය"
       token/api:
         one: ටෝකනය ප්රවේශ
@@ -2116,6 +2125,7 @@ si:
   error_color_could_not_be_saved: "වර්ණය සුරැකිය නොහැකි විය"
   error_cookie_missing: "OpenProject කුකිය අස්ථානගත වී ඇත. මෙම යෙදුම නොමැතිව නිසි ලෙස ක්රියා නොකරන බැවින් කුකීස් සක්රීය කර ඇති බවට සහතික වන්න."
   error_custom_option_not_found: "විකල්පය නොපවතී."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "ඔබගේ ගිණුම සක්රිය කළ නොහැක (පරිශීලක සීමාව කරා ළඟා විය). ප්රවේශය ලබා ගැනීම සඳහා කරුණාකර ඔබේ පරිපාලක අමතන්න."
   error_enterprise_token_invalid_domain: "The Enterprise edition is not active. Your Enterprise token's domain (%{actual}) does not match the system's host name (%{expected})."
   error_failed_to_delete_entry: "මෙම ප්රවේශය මකා දැමීමට අසමත් විය."
@@ -3359,6 +3369,8 @@ si:
   notice_successful_delete: "සාර්ථක මකාදැමීම."
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "සාර්ථක යාවත්කාලීන කිරීම."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Update failed."
   notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |

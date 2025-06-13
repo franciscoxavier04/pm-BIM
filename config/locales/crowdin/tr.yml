@@ -858,6 +858,10 @@ tr:
     auth_source_login: Hesabınızı aktifleştirmek için lütfen <em>%{login}</em> olarak giriş yapın.
     omniauth_login: Hesabınızı aktifleştirmek için lütfen giriş yapın.
   actionview_instancetag_blank_option: "Lütfen seçin"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -873,6 +877,8 @@ tr:
       attribute_help_text:
         attribute_name: "Özellik"
         help_text: "Yardım metni"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Context"
       changeset:
@@ -1548,6 +1554,9 @@ tr:
       role:
         one: "Rol"
         other: "Yetkiler"
+      scim_client:
+        one: "SCIM Client"
+        other: "SCIM Clients"
       status: "İş paketi durumu"
       token/api:
         one: Erişim simgesi
@@ -2115,6 +2124,7 @@ tr:
   error_color_could_not_be_saved: "Renk kaydedilemedi"
   error_cookie_missing: "OpenProject çerezi yok. Lütfen uygulamanın düzgün çalışabilmesi için, tarayıcınızda çerezlere izin verildiğine emin olun."
   error_custom_option_not_found: "Seçenek yok."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Hesabınız etkinleştirilemedi (kullanıcı limitine ulaşıldı). Erişim sağlamak için lütfen yöneticinize başvurun."
   error_enterprise_token_invalid_domain: "Enterprise sürümü etkin değil. Enterprise belirtecinizin alanı (%{actual}), sistemin ana bilgisayar adıyla (%{expected}) eşleşmiyor."
   error_failed_to_delete_entry: "Girdi silinemedi."
@@ -3357,6 +3367,8 @@ tr:
   notice_successful_delete: "Silme başarılı."
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Güncelleme başarılı."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Update failed."
   notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |

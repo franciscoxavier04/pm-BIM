@@ -872,6 +872,10 @@ pl:
     auth_source_login: Zaloguj się jako <em>%{login}</em> aby aktywować konto.
     omniauth_login: Zaloguj się, aby aktywować konto.
   actionview_instancetag_blank_option: "Proszę wybrać"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -887,6 +891,8 @@ pl:
       attribute_help_text:
         attribute_name: "Atrybut"
         help_text: "Tekst pomocy"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Kontekst"
       changeset:
@@ -1578,6 +1584,11 @@ pl:
         few: "Rol"
         many: "Rol"
         other: "Rol"
+      scim_client:
+        one: "SCIM Client"
+        few: "SCIM Clients"
+        many: "SCIM Clients"
+        other: "SCIM Clients"
       status: "Status pakietu roboczego"
       token/api:
         one: Token dostępu
@@ -2193,6 +2204,7 @@ pl:
   error_color_could_not_be_saved: "Nie można zapisać koloru"
   error_cookie_missing: "Brakuje pliku cookie OpenProject. Upewnij się, że obsługa plików cookie jest włączona, ponieważ bez tego aplikacja nie będzie funkcjonować prawidłowo."
   error_custom_option_not_found: "Opcja nie istnieje."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Twoje konto nie mogło zostać aktywowane (osiągnięty limit użytkownika). Skontaktuj się z administratorem, aby uzyskać dostęp."
   error_enterprise_token_invalid_domain: "Wersja Enterprise jest nieaktywna. Domena twojego tokenu Enterprise (%{actual}) nie odpowiada nazwie hosta systemu (%{expected})."
   error_failed_to_delete_entry: "Nie udało się usunąć tego wpisu."
@@ -3437,6 +3449,8 @@ pl:
   notice_successful_delete: "Usuwanie zakończone sukcesem."
   notice_successful_cancel: "Anulowanie powiodło się."
   notice_successful_update: "Aktualizacja zakończona sukcesem."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Aktualizacja nie powiodła się."
   notice_unsuccessful_update_with_reason: "Aktualizacja nie powiodła się: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |

@@ -874,6 +874,10 @@ sl:
     auth_source_login: Prosim prijavite se kot <em>%{login}</em> , da aktivirate svoj račun.
     omniauth_login: Prosim aktivirajte svoj račun
   actionview_instancetag_blank_option: "Prosimo izberite"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -889,6 +893,8 @@ sl:
       attribute_help_text:
         attribute_name: "Atribut"
         help_text: "Besedilo pomoči"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Context"
       changeset:
@@ -1580,6 +1586,11 @@ sl:
         two: "Vloge"
         few: "Vloge"
         other: "Vloge"
+      scim_client:
+        one: "SCIM Client"
+        two: "SCIM Clients"
+        few: "SCIM Clients"
+        other: "SCIM Clients"
       status: "Stanje delovnega paketa"
       token/api:
         one: Žeton za dostop
@@ -2195,6 +2206,7 @@ sl:
   error_color_could_not_be_saved: "Barve ni mogoče shraniti"
   error_cookie_missing: "Piškotek OpenProject manjka. Prepričajte se, da so piškotki omogočeni, saj ta aplikacija ne bo pravilno delovala brez."
   error_custom_option_not_found: "Možnost ne obstaja."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Vašega računa ni bilo mogoče aktivirati (dosežena uporabniška omejitev). Če želite dobiti dostop, se obrnite na skrbnika."
   error_enterprise_token_invalid_domain: "The Enterprise edition is not active. Your Enterprise token's domain (%{actual}) does not match the system's host name (%{expected})."
   error_failed_to_delete_entry: "Izbris tega vnosa ni bilo mogoče."
@@ -3440,6 +3452,8 @@ sl:
   notice_successful_delete: "Uspešen izbris."
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Posodobitev uspela."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Update failed."
   notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |

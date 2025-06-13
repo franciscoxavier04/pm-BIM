@@ -858,6 +858,10 @@ hu:
     auth_source_login: Kérjük, jelentkezzen be <em>%{login}</em>ként, hogy aktiválja fiókját.
     omniauth_login: Kérjük, jelentkezzen be, hogy aktiválja fiókját.
   actionview_instancetag_blank_option: "Kérem válasszon"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -873,6 +877,8 @@ hu:
       attribute_help_text:
         attribute_name: "Attribútum"
         help_text: "Súgószöveg"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Context"
       changeset:
@@ -1548,6 +1554,9 @@ hu:
       role:
         one: "Szerepkör"
         other: "Szerepkörök"
+      scim_client:
+        one: "SCIM Client"
+        other: "SCIM Clients"
       status: "Feladatcsoport állapot"
       token/api:
         one: Hozzáférési token
@@ -2115,6 +2124,7 @@ hu:
   error_color_could_not_be_saved: "A szín nem menthető"
   error_cookie_missing: "Hiányzó OpenProject cookie. Ellenőrizze, hogy böngészőjében a cookie-k használata engedélyezve van, mert anélkül ez az alkalmazás nem tud megfelelően működni."
   error_custom_option_not_found: "A beállítás nem létezik."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Fiókját nem lehet aktiválni (elérte a felhasználói korlátot). Kérjük, lépjen kapcsolatba rendszergazdájával a hozzáféréshez."
   error_enterprise_token_invalid_domain: "The Enterprise edition is not active. Your Enterprise token's domain (%{actual}) does not match the system's host name (%{expected})."
   error_failed_to_delete_entry: "Nem sikerült törölni ezt a bejegyzést."
@@ -3357,6 +3367,8 @@ hu:
   notice_successful_delete: "Sikeres törlés."
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Sikeres frissítés."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Update failed."
   notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
