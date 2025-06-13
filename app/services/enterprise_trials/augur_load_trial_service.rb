@@ -40,7 +40,7 @@ module EnterpriseTrials
     def call
       handle_response(
         OpenProject.httpx.get(
-          URI.join(augur_host, "/public/v1/trials/", @trial_key.value)
+          URI.join(augur_host, "/public/v1/trials/#{@trial_key.value}")
         )
       )
     end

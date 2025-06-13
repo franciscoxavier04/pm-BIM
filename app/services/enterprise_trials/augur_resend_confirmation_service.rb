@@ -37,7 +37,7 @@ module EnterpriseTrials
     def call
       handle_response(
         OpenProject.httpx.post(
-          URI.join(augur_host, "/public/v1/trials/", @trial_key.value, "/resend")
+          URI.join(augur_host, "/public/v1/trials/#{@trial_key.value}/resend")
         )
       )
     end
@@ -46,7 +46,7 @@ module EnterpriseTrials
 
     def handle_response(response)
       case response
-      in { status: 202 }
+      in { status: 200 | 202 }
         ServiceResult.success(result: nil)
       in { status: 404 }
         ServiceResult.failure(message: I18n.t("ee.trial.not_found"))

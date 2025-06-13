@@ -176,7 +176,10 @@ RSpec.describe "Enterprise trial management",
     fill_in "Last name", with: "Bar"
     fill_in "Email", with: mail
 
-    find_by_id("enterprise_trial_general_consent").check
+    retry_block do
+      check "enterprise_trial_general_consent", allow_label_click: true
+      expect(page).to have_checked_field("enterprise_trial_general_consent")
+    end
   end
 
   it "does not send a request when an internal validation fails" do
@@ -273,7 +276,7 @@ RSpec.describe "Enterprise trial management",
       # Stub the proxy to a successful return
       # which marks the user has confirmed the mail link
       stub_request(:get, "https://start.openproject-edge.com:443/public/v1/trials/#{trial_id}")
-        .to_return(status: 202, headers: { "Content-Type" => "application/json" }, body: confirmed_body.to_json)
+        .to_return(status: 200, headers: { "Content-Type" => "application/json" }, body: confirmed_body.to_json)
 
       # Expect flash with resend link
       page.within("#primerized-flash-messages") do
