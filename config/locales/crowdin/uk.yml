@@ -79,7 +79,14 @@ uk:
         main-menu-bg-color: "Колір фону меню зліва."
       theme_warning: Змінення теми перезапише ваш власний стиль. У такому разі дизайн буде втрачено. Справді продовжити?
     enterprise:
-      upgrade_to_ee: "Перейти на версію Enterprise"
+      delete_dialog:
+        title: "Вилучити корпоративний маркер"
+        heading: "Вилучити цей корпоративний маркер?"
+        confirmation: "Справді видалити цей маркер підтримки версії Enterprise?"
+      create_dialog:
+        title: "Додати маркер Enterprise"
+        type_token_text: "Введіть текст маркера підтримки"
+        token_placeholder: "Вставте тут свій маркер підтримки версії Enterprise"
       add_token: "Додати маркер підтримки версії Enterprise"
       delete_token_modal:
         text: "Справді вилучити поточний маркер версії Enterprise?"
@@ -861,6 +868,10 @@ uk:
     auth_source_login: Увійдіть, як <em>%{login}</em> для активації облікового запису.
     omniauth_login: Увійдіть, щоб активувати свій обліковий запис.
   actionview_instancetag_blank_option: "Будь ласка, виберіть"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -876,6 +887,8 @@ uk:
       attribute_help_text:
         attribute_name: "Атрибут"
         help_text: "Довідковий текст"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Контекст"
       changeset:
@@ -918,6 +931,7 @@ uk:
         domain: "Домен"
         starts_at: "Дійсний з"
         subscriber: "Абонент"
+        plan: "План"
         encoded_token: "Маркер підтримки підприємства"
         active_user_count_restriction: "Максимальна кількість активних користувачів"
       grids/grid:
@@ -1528,6 +1542,11 @@ uk:
       custom_action: "Спеціальні дії"
       custom_field: "Користувацьке поле"
       "doorkeeper/application": "Програма OAuth"
+      enterprise_token:
+        one: "Маркер Enterprise"
+        few: "Маркери Enterprise"
+        many: "Маркери Enterprise"
+        other: "Маркери Enterprise"
       forum: "Форум"
       global_role: "Глобальна роль"
       group: "Група"
@@ -1561,6 +1580,11 @@ uk:
         few: "Роль"
         many: "Роль"
         other: "Роль"
+      scim_client:
+        one: "SCIM Client"
+        few: "SCIM Clients"
+        many: "SCIM Clients"
+        other: "SCIM Clients"
       status: "Стан робочого пакета"
       token/api:
         one: Маркер доступу
@@ -1649,7 +1673,7 @@ uk:
     body: "Текст"
     blocks_ids: "Ідентифікатори заблокованих робочих пакетів"
     category: "Категорія"
-    comment: "Коментування"
+    comment: "Коментар"
     comments: "Коментування"
     content: "Контент"
     color: "Колір"
@@ -2089,12 +2113,12 @@ uk:
       readonly_work_packages: Пакети робіт лише для читання
       sso_auth_providers: Єдиний вхід
       team_planner_view: Подання командного планувальника
-      two_factor_authentication: Двофакторна автентифікація
       virus_scanning: Пошук вірусів
       work_package_query_relation_columns: Стовпці зв’язків запиту пакета робіт
       work_package_sharing: Діліться пакетами робіт із зовнішніми користувачами
       work_package_subject_generation: Створення теми пакета робіт
     upsell:
+      buy_now_button: "Купити"
       plans_title: "Плани Enterprise"
       title: "Доповнення версії Enterprise"
       plan_title: "Доповнення версії Enterprise %{plan}"
@@ -2176,6 +2200,7 @@ uk:
   error_color_could_not_be_saved: "Не вдалося зберегти колір"
   error_cookie_missing: "Файл cookie OpenProject відсутній. Переконайтеся, що файли cookie увімкнено, оскільки ця програма не буде функціонувати належним чином."
   error_custom_option_not_found: "Варіант не існує."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Ваш обліковий запис не можна активувати (досягнуто обмеження користувача). Щоб отримати доступ, зверніться до свого адміністратора."
   error_enterprise_token_invalid_domain: "Версія Enterprise не активна. Домен вашого маркера Enterprise (%{actual}) не збігається з іменем хосту системи (%{expected})."
   error_failed_to_delete_entry: "Не вдалося видалити цей запис."
@@ -2659,6 +2684,7 @@ uk:
   label_dashboard: "Панель керування"
   label_database_version: "Версія PostgreSQL"
   label_date: "Дата"
+  label_dates: "Дати"
   label_date_and_time: "Дата і час"
   label_date_format: "Формат дати:"
   label_date_from: "Від"
@@ -2778,7 +2804,7 @@ uk:
   label_index_by_title: "Індекс за назвою"
   label_information: "Інформація"
   label_information_plural: "Інформація"
-  label_installation_guides: "Інструкції із встановлення"
+  label_installation_guides: "Інструкції зі встановлення"
   label_integer: "Ціле число"
   label_internal: "Власне"
   label_introduction_video: "Введення відео"
@@ -3419,6 +3445,8 @@ uk:
   notice_successful_delete: "Видалення успішно завершене."
   notice_successful_cancel: "Успішно видалено."
   notice_successful_update: "Успішно оновлено."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Не вдалось оновити."
   notice_unsuccessful_update_with_reason: "Помилка оновлення: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |

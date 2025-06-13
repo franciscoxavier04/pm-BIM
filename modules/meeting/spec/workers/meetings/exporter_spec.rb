@@ -35,6 +35,7 @@ RSpec.describe Meetings::Exporter do
   include Redmine::I18n
   shared_let(:role) { create(:project_role, permissions: [:view_work_packages]) }
   shared_let(:user) { create(:user, firstname: "Export", lastname: "User") }
+  shared_let(:other_user) { create(:user, firstname: "Other", lastname: "Account") }
   shared_let(:project) do
     project = create(:project, enabled_module_names: Setting.default_projects_modules + %w[meetings])
     create(:member, principal: user, project:, roles: [role])
@@ -58,10 +59,7 @@ RSpec.describe Meetings::Exporter do
     }
   end
   let(:exporter) { described_class.new(meeting, options) }
-  let(:meeting) do
-    create(:meeting, :author_participates,
-           project:, title: "Awesome meeting!", location: "Moon Base")
-  end
+  let(:meeting) { create(:meeting, author: user, project:, title: "Awesome meeting!", location: "Moon Base") }
 
   subject(:pdf) do
     result = Timecop.freeze(export_time) do
@@ -151,6 +149,8 @@ RSpec.describe Meetings::Exporter do
                                    duration_in_minutes: 1,
                                    title: "Agenda Item in Backlog", presenter: user, notes: "# yeah")
     end
+    let(:invited) { create(:meeting_participant, user: other_user, meeting:, invited: true) }
+    let(:attended) { create(:meeting_participant, :attendee, user: user, meeting:) }
 
     before do
       User.current = user
@@ -159,6 +159,8 @@ RSpec.describe Meetings::Exporter do
       outcome # create the outcome
       attachment # create the attachment
       meeting_backlog_item # create the backlog item
+      attended # create the attended participant
+      invited # create the invited participant
     end
 
     context "with bells and whistles options" do
@@ -176,8 +178,9 @@ RSpec.describe Meetings::Exporter do
         expected_document = [
           *expected_cover_page,
           *single_meeting_head,
-          "Participants (1)",
-          meeting.author.name,
+          "Participants (2)",
+          "Export User", "  ", "Attended",
+          "Other Account", "  ", "Invited",
 
           "Meeting agenda",
 
@@ -244,7 +247,6 @@ RSpec.describe Meetings::Exporter do
   end
 
   context "with a meeting with special work package agenda item" do
-    let!(:other_user) { create(:user) }
     let!(:secret_project) { create(:project, members: [other_user]) }
     let(:secret_work_package) { create(:work_package, project: secret_project) }
     let(:wp_agenda_item) do

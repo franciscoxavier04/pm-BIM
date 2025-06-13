@@ -79,7 +79,14 @@ zh-TW:
         main-menu-bg-color: "左側選單的背景顏色"
       theme_warning: 改變佈景主題會覆蓋你的自訂樣式，你的變更將會遺失。你確定要繼續嗎？
     enterprise:
-      upgrade_to_ee: "升級到企業版"
+      delete_dialog:
+        title: "刪除企業版令牌"
+        heading: "刪除此企業版令牌？"
+        confirmation: "您確定要刪除這個企業版支援令牌嗎？"
+      create_dialog:
+        title: "新增企業版令牌"
+        type_token_text: "輸入企業版令牌密碼"
+        token_placeholder: "在此貼上您的企業版所需的令牌"
       add_token: "上傳企業版所需權杖(Token)"
       delete_token_modal:
         text: "您確定要刪除當前使用的企業版權杖(Token)嗎？"
@@ -840,6 +847,10 @@ zh-TW:
     auth_source_login: 請登入 <em>%{login}</em> 來啟用您的帳號。
     omniauth_login: 請登入來啟用您的帳號。
   actionview_instancetag_blank_option: "請選擇"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -855,6 +866,8 @@ zh-TW:
       attribute_help_text:
         attribute_name: "属性"
         help_text: "說明文字"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "內容"
       changeset:
@@ -897,6 +910,7 @@ zh-TW:
         domain: "網域"
         starts_at: "生效自"
         subscriber: "訂閱者"
+        plan: "計畫"
         encoded_token: "Enterprise support token"
         active_user_count_restriction: "最大活動使用者數"
       grids/grid:
@@ -1501,6 +1515,8 @@ zh-TW:
       custom_action: "自訂動作"
       custom_field: "客製欄位"
       "doorkeeper/application": "Oauth 應用程式"
+      enterprise_token:
+        other: "企業版令牌"
       forum: "討論區"
       global_role: "全域角色"
       group: "群組"
@@ -1519,6 +1535,8 @@ zh-TW:
       reminder: "提醒"
       role:
         other: "角色"
+      scim_client:
+        other: "SCIM Clients"
       status: "工作套件狀態"
       token/api:
         other: 存取權杖
@@ -1975,12 +1993,12 @@ zh-TW:
       readonly_work_packages: 唯讀工作套件
       sso_auth_providers: 單一登入
       team_planner_view: 團隊規劃檢視
-      two_factor_authentication: 雙重身份驗證
       virus_scanning: 掃描病毒
       work_package_query_relation_columns: 工作套件查詢關聯列
       work_package_sharing: 與外部使用者共用工作套件
       work_package_subject_generation: 工作套件標題產生
     upsell:
+      buy_now_button: "立刻購買"
       plans_title: "企業方案"
       title: "企業版附加元件"
       plan_title: "企業版 %{plan} 外掛"
@@ -2062,6 +2080,7 @@ zh-TW:
   error_color_could_not_be_saved: "無法儲存顏色"
   error_cookie_missing: "OpenProject的Cookie遺失了。請確保瀏覽器的Cookie已經啟用，否則本應用程式將無法正常做用。"
   error_custom_option_not_found: "選項不存在。"
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "無法啟動您的帳戶 (已達到使用者限制)。請與管理員聯繫以獲取存取權限。"
   error_enterprise_token_invalid_domain: "企業版未啟用。您的企業版權杖(Token)的域名（%{actual}）與系統的主機名（%{expected}）不匹配。"
   error_failed_to_delete_entry: "刪除此項目失敗。"
@@ -2545,6 +2564,7 @@ zh-TW:
   label_dashboard: "儀表板"
   label_database_version: "PostgreSQL 版本"
   label_date: "日期"
+  label_dates: "日期"
   label_date_and_time: "日期和時間"
   label_date_format: "日期格式"
   label_date_from: "寄件者"
@@ -2623,7 +2643,7 @@ zh-TW:
   label_filter_add: "新增條件"
   label_filter_by: "篩選條件："
   label_filter_any_name_attribute: "名稱屬性"
-  label_filter_plural: "篩選條件"
+  label_filter_plural: "篩選器"
   label_filters_toggle: "顯示/隱藏篩選條件"
   label_float: "浮點數"
   label_folder: "資料夾"
@@ -2637,7 +2657,7 @@ zh-TW:
   label_global_roles: "全域角色"
   label_git_path: ".git 目錄的路徑"
   label_greater_or_equal: ">="
-  label_group_by: "分類"
+  label_group_by: "分組依據"
   label_group_new: "新增群組"
   label_group: "群組"
   label_group_named: "群組名稱 %{name}"
@@ -2649,7 +2669,7 @@ zh-TW:
   label_hierarchy: "階層"
   label_hierarchy_leaf: "頁面結構頁"
   label_home: "Home"
-  label_subject_or_id: "名稱或 id"
+  label_subject_or_id: "主旨或 id"
   label_calendar_subscriptions: "訂閱行事曆"
   label_identifier: "識別碼"
   label_in: "在"
@@ -2695,7 +2715,7 @@ zh-TW:
   label_latest_revision_plural: "最新版本"
   label_ldap_authentication: "LDAP 認證"
   label_learn_more: "了解更多"
-  label_less_or_equal: "之後"
+  label_less_or_equal: "<="
   label_less_than_ago: "幾天內"
   label_link_url: "連結(URL)"
   label_list: "清單"
@@ -3302,6 +3322,8 @@ zh-TW:
   notice_successful_delete: "刪除成功"
   notice_successful_cancel: "取消成功"
   notice_successful_update: "更新成功"
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "更新失敗。"
   notice_unsuccessful_update_with_reason: "更新失敗： %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
