@@ -72,33 +72,31 @@ module ProjectPhases
     def calculate_date_range(from, duration:)
       days = working_days_from(from, count: duration)
 
-      [days.first.date, days.last.date] if days.length == duration
+      [days.first, days.last] if days.length == duration
     end
 
     def reschedule_partial_phase_and_retrieve_next_start(phase, from)
-      reschedule_phase_start(phase, from)
-      return unless phase.finish_date?
+      phase.start_date = calculate_start_date(from)
+      phase.finish_date = calculate_finish_date(phase, from) if phase.finish_date?
+      phase.save
 
-      reschedule_phase_finish_and_retrieve_next_start(phase, from)
+      phase.finish_date + 1 if phase.finish_date?
     end
 
-    def reschedule_phase_start(phase, from)
-      start_date = working_days_from(from, count: 1).first.date
-      phase.update(start_date:)
+    def calculate_start_date(from)
+      working_days_from(from, count: 1).first
     end
 
-    def reschedule_phase_finish_and_retrieve_next_start(phase, from)
-      finish_date = [from, phase.finish_date].max
-      working_finish_date = working_days_from(finish_date, count: 1).first.date
-      phase.update(finish_date: working_finish_date)
-      working_finish_date + 1
+    def calculate_finish_date(phase, from)
+      max_finish_date = [from, phase.finish_date].max
+      working_days_from(max_finish_date, count: 1).first
     end
 
     def working_days_from(from, count:)
-      days = Day.working.from_range(from:, to: from.next_year).first(count)
+      days = Day.working.from_range(from:, to: from.next_year).limit(count).pluck(days: :date)
       if days.length < count && !days.empty?
         years = count.ceildiv(days.length) + 1
-        days = Day.working.from_range(from:, to: from.next_year(years)).first(count)
+        days = Day.working.from_range(from:, to: from.next_year(years)).limit(count).pluck(days: :date)
       end
       days
     end

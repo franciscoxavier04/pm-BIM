@@ -153,20 +153,16 @@ RSpec.describe ProjectPhases::RescheduleService, type: :model do
         ]
       end
 
-      subject do
-        service_response = service.call(phases:, from:)
-        phases.each { |p| p.duration = p.calculate_duration }
-        service_response
-      end
+      subject { service.call(phases:, from:) }
 
       it "reschedules only the ones with a start_date or finish_date present" do
         expect(subject).to be_success
-        expect(phases[0]).to have_attributes(start_date: from, finish_date: from, duration: 1)
-        expect(phases[1]).to have_attributes(start_date: from + 1, finish_date: nil, duration: nil)
-        expect(phases[2]).to have_attributes(start_date: from + 1, finish_date: nil, duration: nil)
-        expect(phases[3]).to have_attributes(start_date: from + 1, finish_date: nil, duration: nil)
-        expect(phases[4]).to have_attributes(start_date: from + 1, finish_date: from + 19, duration: 13)
-        expect(phases[5]).to have_attributes(start_date: from + 20, finish_date: nil, duration: nil)
+        expect(phases[0]).to have_attributes(start_date: from, finish_date: from, calculate_duration: 1)
+        expect(phases[1]).to have_attributes(start_date: from + 1, finish_date: nil, calculate_duration: nil)
+        expect(phases[2]).to have_attributes(start_date: from + 1, finish_date: nil, calculate_duration: nil)
+        expect(phases[3]).to have_attributes(start_date: from + 1, finish_date: nil, calculate_duration: nil)
+        expect(phases[4]).to have_attributes(start_date: from + 1, finish_date: from + 19, calculate_duration: 13)
+        expect(phases[5]).to have_attributes(start_date: from + 20, finish_date: nil, calculate_duration: nil)
       end
 
       context "when the from date is earlier than the phases dates" do
@@ -174,12 +170,12 @@ RSpec.describe ProjectPhases::RescheduleService, type: :model do
 
         it "reschedules only the ones with a start_date or finish_date present" do
           expect(subject).to be_success
-          expect(phases[0]).to have_attributes(start_date: from, finish_date: date, duration: 2)
-          expect(phases[1]).to have_attributes(start_date: date + 1, finish_date: nil, duration: nil)
-          expect(phases[2]).to have_attributes(start_date: date + 1, finish_date: nil, duration: nil)
-          expect(phases[3]).to have_attributes(start_date: date + 1, finish_date: nil, duration: nil)
-          expect(phases[4]).to have_attributes(start_date: date + 1, finish_date: date + 17, duration: 13)
-          expect(phases[5]).to have_attributes(start_date: date + 20, finish_date: nil, duration: nil)
+          expect(phases[0]).to have_attributes(start_date: from, finish_date: date, calculate_duration: 2)
+          expect(phases[1]).to have_attributes(start_date: date + 1, finish_date: nil, calculate_duration: nil)
+          expect(phases[2]).to have_attributes(start_date: date + 1, finish_date: nil, calculate_duration: nil)
+          expect(phases[3]).to have_attributes(start_date: date + 1, finish_date: nil, calculate_duration: nil)
+          expect(phases[4]).to have_attributes(start_date: date + 1, finish_date: date + 17, calculate_duration: 13)
+          expect(phases[5]).to have_attributes(start_date: date + 20, finish_date: nil, calculate_duration: nil)
         end
       end
     end
