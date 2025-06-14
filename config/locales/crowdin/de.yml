@@ -557,10 +557,14 @@ de:
         Alle Vorkommnisse des Platzhalter-Benutzers (z.B. als zugewiesene Person, Verantwortlicher oder andere Benutzerwerte) werden einem Konto mit dem Namen "Gelöschter Benutzer" zugewiesen. Da die Daten jedes gelöschten Kontos diesem Konto zugewiesen werden, wird es nicht möglich sein, die Daten dieses Benutzers von den Daten eines anderen gelöschten Kontos zu unterscheiden.
       irreversible: "Dieser Vorgang kann nicht rückgängig gemacht werden"
       confirmation: "Geben Sie den Namen des Platzhalter-Benutzers %{name} ein, um die Löschung zu bestätigen."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Klicken zum Zuweisen einer Farbe für diesen Prioritätswert. Diese wird für die Hervorhebung von Arbeitspaketen in Tabellen verwendet.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "Reagieren"
     add_reaction: "Reaktion hinzufügen"
@@ -3920,9 +3924,9 @@ de:
       phase_gates: "Phasen Gates"
       new:
         description: "Änderungen an dieser Projekt-Phase werden in allen sie verwendenden Projekten sichtbar."
-        heading: "Neue Phase"
+        heading: "New phase"
       edit:
-        heading: "Phase bearbeiten"
+        heading: "Edit phase"
       both_gate: "Gate zum Beginn und zum Ende"
       no_gate: "Kein Gate"
       start_gate: "Gate zum Beginn"

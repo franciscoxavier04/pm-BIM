@@ -560,11 +560,14 @@ fr:
         Toutes les occurrences de l'utilisateur de remplacement (par exemple, en tant que responsable ou autre valeur utilisateur) seront réaffectées à un compte appelé « Utilisateur supprimé ». Comme les données de chaque compte supprimé sont réaffectées à ce compte, il ne sera pas possible de distinguer les données que l'utilisateur a créées des données d'un autre compte supprimé.
       irreversible: "Cette action est irréversible"
       confirmation: "Saisissez le nom d'utilisateur fictif %{name} pour confirmer ça suppression."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Cliquez pour assigner ou modifier la couleur de cette priorité.
-        Elle peut être utilisée pour mettre en évidence les lots de travaux dans le tableau.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "Réagir"
     add_reaction: "Ajouter une réaction"
@@ -3925,9 +3928,9 @@ fr:
       phase_gates: "Portes de phase"
       new:
         description: "Les modifications apportées à cette phase du projet seront répercutées dans tous les projets où elle est activée."
-        heading: "Nouvelle phase"
+        heading: "New phase"
       edit:
-        heading: "Modifier la phase"
+        heading: "Edit phase"
       both_gate: "Porte de début et de fin"
       no_gate: "Aucune porte"
       start_gate: "Porte de début"

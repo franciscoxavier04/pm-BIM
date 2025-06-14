@@ -551,11 +551,14 @@ zh-CN:
         出现的所有占位符用户（例如，作为受理人、负责人或其他用户值）将被重新分配给一个名为“已删除用户”的帐户。 由于每个已删除帐户的数据都会被重新分配给此帐户，因此无法将用户创建的数据与另一个已删除帐户的数据区分。
       irreversible: "此操作不可逆"
       confirmation: "输入占位符用户名 %{name} 以确认删除。"
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        单击可以分配或更改此优先级的颜色。
-        颜色可用于突出显示表中的工作包。
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "回应"
     add_reaction: "添加回应"
@@ -1988,7 +1991,7 @@ zh-CN:
       plan_text_html: "从 %{plan_name} 开始可用。"
       hide_banner: "隐藏此广告"
       homescreen_description: >
-        企业计划将扩展您正在使用的 OpenProject 社区版本。 它们包括附加组件、额外功能和专业支持，使各种规模的组织能够一起取得巨大成就。
+        企业计划将扩展您正在使用的 OpenProject 社区版本。 它们包括附加组件、额外功能和专业支持，使各种规模的组织能够一起取得工作成果。
       homescreen_subline: 通过升级，您也将支持一个开源项目。
       baseline_comparison:
         description: 高亮显示自从过去任意时间点以来对此列表所做的更改。
@@ -3878,9 +3881,9 @@ zh-CN:
       phase_gates: "阶段关口"
       new:
         description: "对此项目阶段的更改将反映在所有启用的项目中。"
-        heading: "新阶段"
+        heading: "New phase"
       edit:
-        heading: "编辑阶段"
+        heading: "Edit phase"
       both_gate: "开始和结束关口"
       no_gate: "无关口"
       start_gate: "开始关口"

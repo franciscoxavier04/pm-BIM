@@ -558,11 +558,14 @@ pt-PT:
         Todas as ocorrências do utilizador de espaço reservado (por exemplo, como responsável, competente ou outros valores de utilizador) serão reatribuídas a uma conta chamada "Utilizador eliminado". Como os dados de todas as contas eliminadas são reatribuídos a esta conta, não será possível diferenciar os dados criados pelo utilizador a partir de dados de outra conta eliminada.
       irreversible: "Esta ação é irreversível"
       confirmation: "Insira o nome de utilizador do espaço reservado %{name} para confirmar a eliminação."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Clique para atribuir ou alterar a cor desta prioridade.
-        Pode ser usada para destacar os pacotes de trabalho na tabela.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "Reagir"
     add_reaction: "Adicionar reação"
@@ -685,7 +688,7 @@ pt-PT:
         automatic: "Automático"
         manual: "Manual"
       show_relations: "Mostrar relações"
-      update_inputs_aria_live_message: "Date picker updated. %{message}"
+      update_inputs_aria_live_message: "Seletor de data atualizado. %{message}"
       tabs:
         aria_label: "Separadores de seletor de datas"
         children: "Elementos secundários"
@@ -755,8 +758,8 @@ pt-PT:
     lag:
       subject: "Desfasamento"
       caption: |-
-        The minimum number of working days to keep in between the two work packages.
-        It can also be negative.
+        O número mínimo de dias úteis a manter entre os dois pacotes de trabalho.
+        Também pode ser negativo.
     relations:
       label_new_child_created: "Novo pacote de trabalho criado e adicionado como um elemento secundário"
       label_relates_singular: "relacionado com"
@@ -972,10 +975,10 @@ pt-PT:
       project/phase:
         date_range: "Intervalo de datas"
         definition: "Definição"
-        duration: "Duration"
-        start_date: "Start date"
-        start_date_caption: "Follows the previous phase."
-        finish_date: "Finish date"
+        duration: "Duração"
+        start_date: "Data de início"
+        start_date_caption: "Segue a fase anterior."
+        finish_date: "Data de término"
       project/phase_definition:
         name: "Nome"
         color: "Cor"
@@ -1288,11 +1291,11 @@ pt-PT:
         project/phase:
           attributes:
             start_date:
-              must_be_before_finish_date: "must be before the finish date."
-              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              must_be_before_finish_date: "deve ser antes da data de término."
+              non_continuous_dates: "não pode ser anterior à data de término da fase anterior."
             finish_date:
-              must_be_after_start_date: "must be after the start date."
-          cannot_be_a_non_working_day: "can't be a non-working day."
+              must_be_after_start_date: "deve ser após a data de início."
+          cannot_be_a_non_working_day: "não pode ser um dia não útil."
         query:
           attributes:
             project:
@@ -1419,7 +1422,7 @@ pt-PT:
               cannot_be_in_another_project: "não pode ser em outro projeto."
               not_a_valid_parent: "é inválido."
             schedule_manually:
-              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
+              cannot_be_automatically_scheduled: "não pode ser definido como falso (agendado automaticamente), dado que não tem antecessores nem filhos."
             start_date:
               violates_relationships: "só pode ser definida como %{soonest_start} ou posterior de modo a não violar as relações do pacote de trabalho."
               cannot_be_null: "não pode ser definido como nulo porque a data de término e a duração são conhecidas."
@@ -1595,7 +1598,7 @@ pt-PT:
       added_date: "definida para %{date}"
       changed_date: "alterada de %{from} para %{to}"
       deactivated: "desativada"
-      deleted_project_phase: "Deleted project phase"
+      deleted_project_phase: "Fase do projeto eliminada"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, e %{finish_gate_message}"
       phase_and_one_gate: "%{phase_message}. %{gate_message}"
       removed_date: "data eliminada %{date}"
@@ -2055,7 +2058,7 @@ pt-PT:
       work_package_sharing:
         description: "Partilhe pacotes de trabalho com utilizadores que não são membros do projeto."
       project_list_sharing:
-        description: "Share project lists with individual users."
+        description: "Partilhar listas de projetos com utilizadores individuais."
       define_custom_style:
         title: "Tema e logótipo de cor personalizada"
         more_info: "Nota: o logótipo usado estará acessível ao público."
@@ -2409,7 +2412,7 @@ pt-PT:
         static_token_name: "Token RSS"
         disabled_text: "Os tokens RSS não são ativados pelo administrador. Contacte o seu administrador para utilizar esta funcionalidade."
       storages:
-        title: "File storages"
+        title: "Armazenamentos de ficheiros"
         text_hint: "Os tokens de armazenamento de ficheiros ligam esta instância do OpenProject a um armazenamento de ficheiros externo."
         empty_text_hint: "Não existe um acesso ao armazenamento associado à sua conta."
         revoke_token: "Tem a certeza de que deseja remover este token? Terá de iniciar sessão novamente em %{storage}"
@@ -2444,7 +2447,7 @@ pt-PT:
         responsible: "Tornou-se responsável por %{work_package}"
         watched: "Está a observar %{work_package}"
     query:
-      invalid_filter: "Invalid notification filter"
+      invalid_filter: "Filtro de notificação inválido"
   label_accessibility: "Accessibilidade"
   label_account: "Conta"
   label_active: "Ativo"
@@ -2600,8 +2603,8 @@ pt-PT:
   label_deleted_custom_item: "(item eliminado)"
   label_deleted_custom_option: "(opção eliminada)"
   label_empty_element: "(vazio)"
-  label_go_back: "Go back one menu level"
-  label_go_forward: "Open %{module} sub-menu"
+  label_go_back: "Retroceder um nível de menu"
+  label_go_forward: "Abrir sub-menu %{module}"
   label_missing_or_hidden_custom_option: "(faltam valores ou permissões para acessar)"
   label_descending: "Descendente"
   label_details: "Detalhes"
@@ -2891,8 +2894,8 @@ pt-PT:
   label_project_custom_field_plural: "Atributos do projeto"
   label_project_settings: "Configurações do projeto"
   label_project_attributes_settings: "Definições dos atributos do projeto"
-  label_project_storage_plural: "File storages"
-  label_project_storage_project_folder: "File storages: Project folders"
+  label_project_storage_plural: "Armazenamentos de ficheiros"
+  label_project_storage_project_folder: "Armazenamentos de ficheiros: pastas do projeto"
   label_projects_disk_usage_information: "%{count} projetos utilizam %{used_disk_space} espaço no disco"
   label_project_view_all: "Ver todos os projetos"
   label_project_show_details: "Mostrar detalhes do projeto"
@@ -2901,7 +2904,7 @@ pt-PT:
   label_query_new: "Nova consulta"
   label_query_plural: "Consultas personalizadas"
   label_read: "Leia..."
-  label_read_documentation: "Read documentation"
+  label_read_documentation: "Ler a documentação"
   label_register: "Criar uma nova conta"
   label_register_with_developer: "Registe-se como programador"
   label_registered_on: "Registado em"
@@ -3630,7 +3633,7 @@ pt-PT:
       oauth_application_details: "O valor secreto do cliente não estará acessível novamente após fechar esta janela. Copie esses valores para as definições de integração do OpenProject da Nextcloud:"
       oauth_application_details_link_text: "Ir para a página de definições"
       setup_documentation_details: "Se precisar de ajuda para configurar um novo armazenamento de ficheiros, verifique a documentação: "
-      setup_documentation_details_link_text: "File storages setup"
+      setup_documentation_details_link_text: "Definição de armazenamentos"
       show_warning_details: "Para usar esse armazenamento de ficheiros, lembre-se de ativar o módulo e o armazenamento específico nas definições do projeto de cada projeto desejado."
     subversion:
       existing_title: "Repositório Subversion existente"
@@ -3922,9 +3925,9 @@ pt-PT:
       phase_gates: "Portas de fases"
       new:
         description: "As alterações a esta fase do projeto serão refletidas em todos os projetos em que estiver ativada."
-        heading: "Nova fase"
+        heading: "New phase"
       edit:
-        heading: "Editar fase"
+        heading: "Edit phase"
       both_gate: "Porta de início e conclusão"
       no_gate: "Sem porta"
       start_gate: "Porta de início"
@@ -4330,13 +4333,13 @@ pt-PT:
       code_500_outbound_request_failure: "Um pedido de saída para outro recurso falhou com o código de estado %{status_code}."
       code_500_missing_enterprise_token: "O pedido não pode ser tratado devido a um token empresarial inválido ou em falta."
       bad_request:
-        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+        emoji_reactions_activity_type_not_supported: "Este tipo de atividade não suporta reações de emoji."
       conflict:
         multiple_reminders_not_allowed: |-
-          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
+          Só é possível definir um lembrete de cada vez para um pacote de trabalho. Elimine ou atualize o lembrete existente.
       not_found:
         work_package: "O pacote de trabalho que procura não foi encontrado ou foi eliminado."
-        reminder: "The reminder you are looking for cannot be found or has been deleted."
+        reminder: "O lembrete que procura não pode ser encontrado ou foi eliminado."
       expected:
         date: "AAAA-MM-DD (Data ISO 8601 apenas)"
         datetime: "AAAA-MM-DDThh:mm:ss[.lll][+hh:mm] (qualquer data ISO 8601 compatível)"

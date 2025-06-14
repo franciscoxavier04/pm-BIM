@@ -550,11 +550,14 @@ id:
         Semua kemunculan pengguna placeholder (mis., sebagai penerima tugas, penanggung jawab, atau nilai pengguna lainnya) akan dipindahkan ke akun yang disebut "Pengguna yang dihapus". Karena data setiap akun yang dihapus dipindahkan ke akun ini, data yang dibuat pengguna tidak dapat dibedakan dari data akun lain yang dihapus.
       irreversible: "Tindakan ini tidak dapat diubah"
       confirmation: "Masukkan nama pengguna placeholder %{name} untuk mengonfirmasi penghapusan."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Klik untuk menetapkan atau merubah warna dari prioritas ini
-        Ini dapat digunakan untuk menyorot paket pekerjaan dalam tabel
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "React"
     add_reaction: "Add reaction"
@@ -3880,9 +3883,9 @@ id:
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
+        heading: "New phase"
       edit:
-        heading: "Edit Phase"
+        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"

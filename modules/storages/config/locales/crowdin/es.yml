@@ -278,7 +278,7 @@ es:
           one: "%{count} comprobación devolvió una advertencia"
           other: "%{count} comprobaciones devolvieron una advertencia"
       connection_validation:
-        client_id_invalid: El id de cliente OAuth 2 configurado no es válido. Compruebe la configuración.
+        client_id_invalid: El ID de cliente OAuth 2 configurado no es válido. Compruebe la configuración.
         client_secret_invalid: El secreto de cliente OAuth 2 configurado no es válido. Compruebe la configuración.
         nc_dependency_missing: 'Falta una dependencia necesaria en el almacenamiento de archivos. Añada la siguiente dependencia: %{dependency}.'
         nc_dependency_version_mismatch: La versión de la aplicación %{dependency} no es compatible. Actualice su servidor Nextcloud.

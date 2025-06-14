@@ -553,11 +553,14 @@ zh-TW:
         出現的所有佔位符用戶(例如，作為受理人、負責人或其他用戶值) 將被重新分配給一個名為“已刪除用戶”的帳戶。 由於每個已刪除帳戶的數據都會被重新分配給此帳戶，因此無法將用戶創建的數據與另一個已刪除帳戶的數據區分。
       irreversible: "這一行動是不可還原的"
       confirmation: "輸入占位使用者名稱 %{name} 確認刪除。"
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        點擊以指派或變更此優先順序的顏色。
-        可用於在表格中突顯工作套件。
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "反應"
     add_reaction: "加入反應"
@@ -3881,9 +3884,9 @@ zh-TW:
       phase_gates: "階段關卡"
       new:
         description: "此專案階段的變更會反映在啟用此階段的所有專案中。"
-        heading: "新增階段"
+        heading: "New phase"
       edit:
-        heading: "編輯階段"
+        heading: "Edit phase"
       both_gate: "開始以及結束關卡"
       no_gate: "沒有關卡"
       start_gate: "開始關卡"

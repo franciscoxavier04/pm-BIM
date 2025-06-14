@@ -571,11 +571,14 @@ ru:
         Все вхождения пользователя плейсхолдера (например, как цессионария, ответственные или другие пользовательские значения) будут переназначены на учетную запись под названием "Удаленный пользователь". Так как данные каждого удаленного аккаунта переназначены на этот аккаунт, невозможно отличить данные пользователя от данных другого удаленного аккаунта.
       irreversible: "Это действие необратимо"
       confirmation: "Введите имя пользователя %{name} для подтверждения удаления."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Щелкните, чтобы задать или изменить цвет этого приоритета.
-        Этот цвет может использоваться для выделения пакетов работ в таблице.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "Реакция"
     add_reaction: "Добавить реакцию"
@@ -4005,9 +4008,9 @@ ru:
       phase_gates: "Стадии этапа"
       new:
         description: "Изменения на этом этапе проекта будут отражены во всех проектах, где он включен."
-        heading: "Новый этап"
+        heading: "New phase"
       edit:
-        heading: "Изменить этап"
+        heading: "Edit phase"
       both_gate: "Начать и завершить стадию"
       no_gate: "Нет стадии"
       start_gate: "Начать стадию"

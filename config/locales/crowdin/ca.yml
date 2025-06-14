@@ -557,11 +557,14 @@ ca:
         Tots els rols de l'usuari de marcador de posició (ex. assignat, responsable o altres valors d'usuari) seran reassignats a un compte anomenat "Usuari eliminat". Com que les dades de totes les comptes eliminades seran assignades a aquest compte no serà possible distingir les dades que l'usuari ha creat de les que altres usuaris eliminats han creat.
       irreversible: "Aquesta acció és irreversible"
       confirmation: "Introdueix el nom de l'usuari de marcador de posició %{name} per confirmar l'eliminació."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Cliqueu per assignar o canviar el color d'aquesta prioritat.
-        Pot fer-se servir per a destacar paquets de treball en la taula.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "React"
     add_reaction: "Add reaction"
@@ -3919,9 +3922,9 @@ ca:
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
+        heading: "New phase"
       edit:
-        heading: "Edit Phase"
+        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"

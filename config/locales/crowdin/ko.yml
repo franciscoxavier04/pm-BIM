@@ -554,11 +554,14 @@ ko:
         플레이스홀더 사용자의 모든 항목(예: 담당자, 책임자, 기타 사용자 값 등)은 "삭제된 사용자"라는 계정에 다시 할당됩니다. 삭제된 모든 계정의 데이터는 이 계정에 다시 할당되기 때문에 사용자가 생성한 데이터와 다른 삭제된 계정의 데이터를 구별할 수 없습니다.
       irreversible: "이 작업은 취소할 수 없습니다"
       confirmation: "삭제를 확인하려면 플레이스홀더 사용자 이름 %{name}(을)를 입력하세요."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        이 우선 순위 색상을 할당하거나 변경하려면 클릭하세요.
-        테이블의 작업 패키지를 강조 표시하는 데 사용할 수 있습니다.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "반응"
     add_reaction: "반응 추가"
@@ -681,7 +684,7 @@ ko:
         automatic: "자동"
         manual: "수동"
       show_relations: "관계 표시"
-      update_inputs_aria_live_message: "Date picker updated. %{message}"
+      update_inputs_aria_live_message: "날짜 선택기가 업데이트되었습니다. %{message}"
       tabs:
         aria_label: "날짜 선택기 탭"
         children: "하위"
@@ -750,8 +753,8 @@ ko:
     lag:
       subject: "지연"
       caption: |-
-        The minimum number of working days to keep in between the two work packages.
-        It can also be negative.
+        두 작업 패키지 간에 유지할 최소 근무일 수입니다.
+        음수일 수도 있습니다.
     relations:
       label_new_child_created: "새로운 작업 패키지를 만들고 자식으로 추가함"
       label_relates_singular: "관련 항목"
@@ -967,10 +970,10 @@ ko:
       project/phase:
         date_range: "날짜 범위"
         definition: "정의"
-        duration: "Duration"
-        start_date: "Start date"
-        start_date_caption: "Follows the previous phase."
-        finish_date: "Finish date"
+        duration: "기간"
+        start_date: "시작 날짜"
+        start_date_caption: "이전 단계를 따릅니다."
+        finish_date: "완료 날짜"
       project/phase_definition:
         name: "이름"
         color: "색상"
@@ -1283,11 +1286,11 @@ ko:
         project/phase:
           attributes:
             start_date:
-              must_be_before_finish_date: "must be before the finish date."
-              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              must_be_before_finish_date: "- 완료 날짜 전이어야 합니다."
+              non_continuous_dates: "- 이전 단계의 종료 날짜보다 빠를 수 없습니다."
             finish_date:
-              must_be_after_start_date: "must be after the start date."
-          cannot_be_a_non_working_day: "can't be a non-working day."
+              must_be_after_start_date: "- 시작 날짜 후여야 합니다."
+          cannot_be_a_non_working_day: "휴무일은 사용할 수 없습니다."
         query:
           attributes:
             project:
@@ -1414,7 +1417,7 @@ ko:
               cannot_be_in_another_project: "다른 프로젝트에 포함될 수 없음"
               not_a_valid_parent: "은(는) 올바르지 않은 값입니다"
             schedule_manually:
-              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
+              cannot_be_automatically_scheduled: "- 선행 단계 또는 자식이 없으므로 false(자동 예약)로 설정할 수 없습니다."
             start_date:
               violates_relationships: "은(는) %{soonest_start} 이상으로만 설정할 수 있습니다. 작업 패키지의 관계를 위반하지 않도록 하기 위해서입니다."
               cannot_be_null: "완료 날짜와 기간을 알고 있으므로 null로 설정할 수 없습니다."
@@ -1578,7 +1581,7 @@ ko:
       added_date: "%{date}(으)로 설정됨"
       changed_date: "- %{from}에서 %{to}(으)로 변경되었습니다"
       deactivated: "비활성화됨"
-      deleted_project_phase: "Deleted project phase"
+      deleted_project_phase: "프로젝트 단계 삭제됨"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} 및 %{finish_gate_message}"
       phase_and_one_gate: "%{phase_message}. %{gate_message}"
       removed_date: "삭제된 날짜 %{date}"
@@ -2019,7 +2022,7 @@ ko:
       work_package_sharing:
         description: "프로젝트 멤버가 아닌 사용자와 작업 패키지를 공유합니다."
       project_list_sharing:
-        description: "Share project lists with individual users."
+        description: "개별 사용자와 프로젝트 목록을 공유합니다."
       define_custom_style:
         title: "사용자 지정 색상 테마 및 로고"
         more_info: "참고: 사용된 로그는 공개적으로 액세스 가능합니다."
@@ -2373,7 +2376,7 @@ ko:
         static_token_name: "RSS 토큰"
         disabled_text: "관리자가 RSS 토큰을 활성화하지 않았습니다. 이 기능을 사용하려면 관리자에게 문의하세요."
       storages:
-        title: "File storages"
+        title: "파일 저장소"
         text_hint: "파일 저장소 토큰은 이 OpenProject 인스턴스를 외부 파일 저장소에 연결합니다."
         empty_text_hint: "사용자 계정에 연결된 저장소 액세스 권한이 없습니다."
         revoke_token: "이 토큰을 제거하시겠습니까? %{storage}에서 다시 로그인해야 합니다."
@@ -2408,7 +2411,7 @@ ko:
         responsible: "%{work_package}을(를) 담당하게 되었습니다"
         watched: "%{work_package}을(를) 지켜 보는 중입니다."
     query:
-      invalid_filter: "Invalid notification filter"
+      invalid_filter: "잘못된 알림 필터"
   label_accessibility: "접근성"
   label_account: "계정"
   label_active: "활성"
@@ -2564,8 +2567,8 @@ ko:
   label_deleted_custom_item: "(삭제된 항목)"
   label_deleted_custom_option: "(삭제된 옵션)"
   label_empty_element: "(비어 있음)"
-  label_go_back: "Go back one menu level"
-  label_go_forward: "Open %{module} sub-menu"
+  label_go_back: "한 메뉴 레벨 뒤로 돌아가기"
+  label_go_forward: "%{module} 하위 메뉴 열기"
   label_missing_or_hidden_custom_option: "(값이 없거나 액세스 권한이 없음)"
   label_descending: "내림차순"
   label_details: "세부 정보"
@@ -2855,8 +2858,8 @@ ko:
   label_project_custom_field_plural: "프로젝트 특성"
   label_project_settings: "프로젝트 설정"
   label_project_attributes_settings: "프로젝트 특성 설정"
-  label_project_storage_plural: "File storages"
-  label_project_storage_project_folder: "File storages: Project folders"
+  label_project_storage_plural: "파일 저장소"
+  label_project_storage_project_folder: "파일 저장소: 프로젝트 폴더"
   label_projects_disk_usage_information: "%{used_disk_space} 디스크 공간을 사용하고 있는 %{count}개 프로젝트"
   label_project_view_all: "모든 프로젝트 보기"
   label_project_show_details: "프로젝트 세부 정보 표시"
@@ -2865,7 +2868,7 @@ ko:
   label_query_new: "새 쿼리"
   label_query_plural: "사용자 지정 쿼리"
   label_read: "읽기..."
-  label_read_documentation: "Read documentation"
+  label_read_documentation: "설명서 읽기"
   label_register: "새 계정 만들기"
   label_register_with_developer: "개발자로 등록"
   label_registered_on: "등록된 날짜"
@@ -3592,7 +3595,7 @@ ko:
       oauth_application_details: "이 창을 닫으면 클라이언트 비밀 값에 다시 액세스할 수 없습니다. 다음 값을 Nextcloud OpenProject Integration 설정에 복사하세요:"
       oauth_application_details_link_text: "설정 페이지로 이동"
       setup_documentation_details: "새 파일 저장소를 구성하는 데 도움이 필요하면 설명서를 확인하세요. "
-      setup_documentation_details_link_text: "File storages setup"
+      setup_documentation_details_link_text: "파일 저장소 설정"
       show_warning_details: "이 파일 저장소를 사용하려면 원하는 각 프로젝트의 프로젝트 설정에서 모듈과 특정 저장소를 활성화해야 합니다."
     subversion:
       existing_title: "기존 Subversion 리포지토리"
@@ -3884,9 +3887,9 @@ ko:
       phase_gates: "프로젝트 게이트"
       new:
         description: "이 프로젝트 단계의 변경 사항은 이 단계가 활성화된 모든 프로젝트에 반영됩니다."
-        heading: "새로운 단계"
+        heading: "New phase"
       edit:
-        heading: "단계 편집"
+        heading: "Edit phase"
       both_gate: "시작 및 완료 게이트"
       no_gate: "게이트 없음"
       start_gate: "시작 게이트"
@@ -4291,13 +4294,13 @@ ko:
       code_500_outbound_request_failure: "다른 리소스에 대한 아웃바운드 요청이 실패했으며 상태 코드는 %{status_code}입니다."
       code_500_missing_enterprise_token: "Enterprise 토큰이 유효하지 않거나 누락되어 요청을 처리할 수 없습니다."
       bad_request:
-        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+        emoji_reactions_activity_type_not_supported: "이 활동 유형은 이모티콘 반응을 지원하지 않습니다."
       conflict:
         multiple_reminders_not_allowed: |-
-          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
+          작업 패키지에 대해 한 번에 하나의 미리 알림만 설정할 수 있습니다. 기존 미리 알림을 삭제하거나 업데이트하세요.
       not_found:
         work_package: "원하는 작업 패키지를 찾을 수 없거나 삭제되었습니다."
-        reminder: "The reminder you are looking for cannot be found or has been deleted."
+        reminder: "원하는 미리 알림을 찾을 수 없거나 삭제되었습니다."
       expected:
         date: "YYYY-MM-DD(ISO 8601 날짜만)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm](호환되는 모든 ISO 8601 날짜/시간)"

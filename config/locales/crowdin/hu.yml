@@ -559,11 +559,14 @@ hu:
         A teszt felhasználó minden előfordulása (pl. Mint jogosult, felelős vagy más felhasználói érték) át lesz rendelve a "Törölt felhasználó" nevű fiókba. Mivel minden törölt fiók adatait újra hozzárendeli ehhez a fiókhoz, nem lehet megkülönböztetni a felhasználó által létrehozott adatokat egy másik törölt fiók adataitól.
       irreversible: "Ez a művelet visszavonhatatlan"
       confirmation: "Adja meg a teszt felhasználó nevét %{name} a törlés megerősítéséhez."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Ide kattintva rendelhet vagy változtathatja meg a színét az állapotnak.
-        Az állapot gomb látható és kiemelhető a feladatcsoport táblázatban.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "React"
     add_reaction: "Add reaction"
@@ -3926,9 +3929,9 @@ hu:
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
+        heading: "New phase"
       edit:
-        heading: "Edit Phase"
+        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"
