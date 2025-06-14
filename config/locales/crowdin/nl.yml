@@ -821,6 +821,7 @@ nl:
       required_description: "Markeert dit werkpakket als een vereiste voor het gerelateerde werkpakket"
       label_parent_singular: "bovenliggende"
       label_parent_plural: "bovenliggend"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Verwante werkpakket"
       ghost_relation_description: "Dit is niet zichtbaar voor u vanwege rechten."
   label_invitation: Uitnodiging
@@ -3947,9 +3948,9 @@ nl:
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
+        heading: "New phase"
       edit:
-        heading: "Edit Phase"
+        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"

@@ -839,6 +839,7 @@ ru:
       required_description: "Отмечает этот пакет работ как требование к связанному"
       label_parent_singular: "родители"
       label_parent_plural: "родитель"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Похожий пакет работ"
       ghost_relation_description: "Это не видно для вас из-за разрешений."
   label_invitation: Приглашение
@@ -4033,9 +4034,9 @@ ru:
       phase_gates: "Стадии этапа"
       new:
         description: "Изменения на этом этапе проекта будут отражены во всех проектах, где он включен."
-        heading: "Новый этап"
+        heading: "New phase"
       edit:
-        heading: "Изменить этап"
+        heading: "Edit phase"
       both_gate: "Начать и завершить стадию"
       no_gate: "Нет стадии"
       start_gate: "Начать стадию"

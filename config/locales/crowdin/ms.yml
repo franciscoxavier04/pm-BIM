@@ -815,6 +815,7 @@ ms:
       required_description: "Tandakan pakej kerja ini sebagai keperluan kepada yang berkaitan"
       label_parent_singular: "ibu bapa"
       label_parent_plural: "ibu bapa"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Pakej kerja yang berkaitan"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Jemputan
@@ -3906,9 +3907,9 @@ ms:
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
+        heading: "New phase"
       edit:
-        heading: "Edit Phase"
+        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"

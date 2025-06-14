@@ -822,6 +822,7 @@ it:
       required_description: "Contrassegna questa macro-attività come obbligatoria per quella correlata"
       label_parent_singular: "genitore"
       label_parent_plural: "genitore"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Macro-attività correlata"
       ghost_relation_description: "Non puoi visualizzare a causa delle autorizzazioni."
   label_invitation: Invito
@@ -3949,9 +3950,9 @@ it:
       phase_gates: "Controlli di fase"
       new:
         description: "Le modifiche a questa fase di progetto si rifletteranno in tutti i progetti in cui è abilitata."
-        heading: "Nuova fase"
+        heading: "New phase"
       edit:
-        heading: "Modifica fase"
+        heading: "Edit phase"
       both_gate: "Controlli di inizio e fine"
       no_gate: "Nessun controllo"
       start_gate: "Inizia controllo"

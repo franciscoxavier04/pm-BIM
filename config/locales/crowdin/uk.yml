@@ -834,6 +834,7 @@ uk:
       required_description: "Позначає цей робочий пакет як обовʼязковий для звʼязаного з ним"
       label_parent_singular: "батьківський елемент"
       label_parent_plural: "батьківський елемент"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Пов’язаний пакет робіт"
       ghost_relation_description: "Ви не маєте дозволів на перегляд цього елемента."
   label_invitation: Запрошення
@@ -871,7 +872,7 @@ uk:
   activemodel:
     attributes:
       projects/copy_options:
-        dependencies: "Dependencies"
+        dependencies: "Залежності"
   activerecord:
     attributes:
       announcements:
@@ -888,7 +889,7 @@ uk:
         attribute_name: "Атрибут"
         help_text: "Довідковий текст"
       auth_provider:
-        scim_clients: "SCIM Clients"
+        scim_clients: "Клієнти SCIM"
       capability:
         context: "Контекст"
       changeset:
@@ -1581,10 +1582,10 @@ uk:
         many: "Роль"
         other: "Роль"
       scim_client:
-        one: "SCIM Client"
-        few: "SCIM Clients"
-        many: "SCIM Clients"
-        other: "SCIM Clients"
+        one: "Клієнт SCIM"
+        few: "Клієнти SCIM"
+        many: "Клієнти SCIM"
+        other: "Клієнти SCIM"
       status: "Стан робочого пакета"
       token/api:
         one: Маркер доступу
@@ -2200,7 +2201,7 @@ uk:
   error_color_could_not_be_saved: "Не вдалося зберегти колір"
   error_cookie_missing: "Файл cookie OpenProject відсутній. Переконайтеся, що файли cookie увімкнено, оскільки ця програма не буде функціонувати належним чином."
   error_custom_option_not_found: "Варіант не існує."
-  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
+  error_enterprise_plan_needed: "Щоб виконати цю дію, потрібен корпоративний план %{plan}."
   error_enterprise_activation_user_limit: "Ваш обліковий запис не можна активувати (досягнуто обмеження користувача). Щоб отримати доступ, зверніться до свого адміністратора."
   error_enterprise_token_invalid_domain: "Версія Enterprise не активна. Домен вашого маркера Enterprise (%{actual}) не збігається з іменем хосту системи (%{expected})."
   error_failed_to_delete_entry: "Не вдалося видалити цей запис."
@@ -3445,8 +3446,8 @@ uk:
   notice_successful_delete: "Видалення успішно завершене."
   notice_successful_cancel: "Успішно видалено."
   notice_successful_update: "Успішно оновлено."
-  notice_unsuccessful_create: "Creation failed."
-  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
+  notice_unsuccessful_create: "Не вдалося створити."
+  notice_unsuccessful_create_with_reason: "Не вдалося створити: %{reason}"
   notice_unsuccessful_update: "Не вдалось оновити."
   notice_unsuccessful_update_with_reason: "Помилка оновлення: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -4029,9 +4030,9 @@ uk:
       phase_gates: "Контрольні точки етапів"
       new:
         description: "Зміни цього етапу проєкту відображатимуться в усіх проєктах із цим етапом."
-        heading: "Створення етапу"
+        heading: "New phase"
       edit:
-        heading: "Редагування етапу"
+        heading: "Edit phase"
       both_gate: "Початкова й кінцева контрольні точки"
       no_gate: "Немає контрольної точки"
       start_gate: "Початкова контрольна точка"

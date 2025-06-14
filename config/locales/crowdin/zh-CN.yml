@@ -813,6 +813,7 @@ zh-CN:
       required_description: "将此工作包标记为相关工作包的需求"
       label_parent_singular: "父级"
       label_parent_plural: "父级"
+      label_other_relations: "Other relations"
       ghost_relation_title: "相关工作包"
       ghost_relation_description: "由于权限问题，您无法看到这些信息。"
   label_invitation: 邀请
@@ -2006,7 +2007,7 @@ zh-CN:
       plan_text_html: "从 %{plan_name} 开始可用。"
       hide_banner: "隐藏此广告"
       homescreen_description: >
-        企业计划将扩展您正在使用的 OpenProject 社区版本。 它们包括附加组件、额外功能和专业支持，使各种规模的组织能够一起取得巨大成就。
+        企业计划将扩展您正在使用的 OpenProject 社区版本。 它们包括附加组件、额外功能和专业支持，使各种规模的组织能够一起取得工作成果。
       homescreen_subline: 通过升级，您也将支持一个开源项目。
       baseline_comparison:
         description: 高亮显示自从过去任意时间点以来对此列表所做的更改。
@@ -2080,7 +2081,7 @@ zh-CN:
   error_color_could_not_be_saved: "无法保存颜色"
   error_cookie_missing: "OpenProject cookie 丢失。请确保已启用 cookie，因为如果不启用，此应用程序将无法正常运行。"
   error_custom_option_not_found: "选项不存在。"
-  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
+  error_enterprise_plan_needed: "您需要%{plan}企业计划以执行此操作。"
   error_enterprise_activation_user_limit: "无法激活您的帐户 (已达到用户限制)。请与管理员联系以获取访问权限。"
   error_enterprise_token_invalid_domain: "企业版未激活。您的企业版令牌的域名（%{actual}）与系统的主机名（%{expected}）不匹配。"
   error_failed_to_delete_entry: "无法删除此条目。"
@@ -3900,9 +3901,9 @@ zh-CN:
       phase_gates: "阶段关口"
       new:
         description: "对此项目阶段的更改将反映在所有启用的项目中。"
-        heading: "新阶段"
+        heading: "New phase"
       edit:
-        heading: "编辑阶段"
+        heading: "Edit phase"
       both_gate: "开始和结束关口"
       no_gate: "无关口"
       start_gate: "开始关口"

@@ -817,6 +817,7 @@ de:
       required_description: "Markiert dieses Arbeitspaket als Voraussetzung für das verknüpfte Arbeitspaket"
       label_parent_singular: "Übergeordnete Arbeitspakete"
       label_parent_plural: "Übergeordnetes Arbeitspaket"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Zugehöriges Arbeitspaket"
       ghost_relation_description: "Dies ist für Sie aufgrund von Berechtigungen nicht sichtbar."
   label_invitation: Einladung
@@ -3944,9 +3945,9 @@ de:
       phase_gates: "Phasen Gates"
       new:
         description: "Änderungen an dieser Projekt-Phase werden in allen sie verwendenden Projekten sichtbar."
-        heading: "Neue Phase"
+        heading: "New phase"
       edit:
-        heading: "Phase bearbeiten"
+        heading: "Edit phase"
       both_gate: "Gate zum Beginn und zum Ende"
       no_gate: "Kein Gate"
       start_gate: "Gate zum Beginn"

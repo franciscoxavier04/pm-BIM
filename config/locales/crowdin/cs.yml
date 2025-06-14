@@ -841,6 +841,7 @@ cs:
       required_description: "Označí tento pracovní balíček jako nevyhnutnost na související"
       label_parent_singular: "nadřazený"
       label_parent_plural: "nadřazený"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Související pracovní balíček"
       ghost_relation_description: "Toto není viditelné z důvodu oprávnění."
   label_invitation: Pozvánka
@@ -4037,9 +4038,9 @@ cs:
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
+        heading: "New phase"
       edit:
-        heading: "Edit Phase"
+        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"

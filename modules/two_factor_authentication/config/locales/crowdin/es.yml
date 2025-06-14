@@ -84,7 +84,7 @@ es:
       only_sms_allowed: "Solo se puede configurar el envío de SMS para otros usuarios."
     upsell:
       title: "Autenticación de dos factores"
-      description: "Fortalezca la seguridad de su instancia de OpenProject ofreciendo (o aplicando) reconocimiento de dos factores a todos los miembros del proyecto."
+      description: "Refuerce la seguridad de su instancia de OpenProject ofreciendo (o aplicando) reconocimiento de dos factores a todos los miembros del proyecto."
     backup_codes:
       none_found: No existen códigos de respaldo para esta cuenta.
       singular: Código de respaldo
