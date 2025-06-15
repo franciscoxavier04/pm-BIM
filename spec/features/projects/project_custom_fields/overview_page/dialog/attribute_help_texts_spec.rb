@@ -33,6 +33,7 @@ require_relative "../shared_context"
 
 RSpec.describe "Edit project custom fields on project overview page", "attribute help texts", :js, :selenium do
   include_context "with seeded projects, members and project custom fields"
+  include API::V3::Utilities::PathHelper
 
   let(:overview_page) { Pages::Projects::Show.new(project) }
   let(:edit_dialog) { Components::Projects::ProjectCustomFields::EditDialog.new(project, section) }
@@ -88,18 +89,52 @@ RSpec.describe "Edit project custom fields on project overview page", "attribute
         edit_dialog.expect_field_label_with_help_text "Text field"
       end
 
-      it "shows help text modal on clicking help text link" do
-        edit_dialog.expect_title section.name
+      context "without attachments" do
+        it "shows help text modal on clicking help text link" do
+          edit_dialog.expect_title section.name
 
-        edit_dialog.click_help_text_link_for_label "Date field"
+          edit_dialog.click_help_text_link_for_label "Date field"
 
-        expect(page).to have_modal "Date field"
-        within_modal "Date field" do
-          expect(page).to have_text "Attribute help text"
+          expect(page).to have_modal "Date field"
+          within_modal "Date field" do
+            expect(page).to have_text "Attribute help text"
+            expect(page).to have_no_heading "Attachments"
 
-          click_on "Close"
+            click_on "Close"
+          end
+          expect(page).to have_no_modal "Date field"
         end
-        expect(page).to have_no_modal "Date field"
+      end
+
+      context "with attachments" do
+        let!(:attachments) { create_list(:attachment, 2, container: integer_help_text) }
+
+        it "shows help text modal, including attachments, on clicking help text link" do
+          edit_dialog.expect_title section.name
+
+          edit_dialog.click_help_text_link_for_label "Integer field"
+          expect(page).to have_modal "Integer field"
+          within_modal "Integer field" do
+            expect(page).to have_text "Attribute help text"
+
+            expect(page).to have_heading "Attachments"
+            expect(page).to have_list_item count: 2
+            expect(page).to have_list_item text: "file-1.test"
+            expect(page).to have_list_item text: "file-2.test"
+
+            attachment_window = window_opened_by do
+              click_on "file-1.test"
+            end
+            within_window(attachment_window) do
+              expect(page).to have_current_path api_v3_paths.attachment_content(attachments.first.id)
+              expect(page).to have_text "test content"
+            end
+            attachment_window.close
+
+            click_on "Close"
+          end
+          expect(page).to have_no_modal "Integer field"
+        end
       end
     end
   end
