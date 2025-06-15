@@ -182,7 +182,7 @@ fr:
       agenda_items: "Copier les points de l'ordre du jour"
       agenda_text: "Copier l'ordre du jour de l'ancienne réunion"
       participants: "Copier la liste des participants"
-      to_clipboard: "Copier dans le presse-papier"
+      to_clipboard: "Copier dans le presse-papiers"
     email:
       send_emails: "Envoyer un e-mail aux participants"
       send_invitation_emails: >
@@ -237,13 +237,13 @@ fr:
     blankslate:
       title: "Aucune réunion à afficher"
       desc: "Aucune réunion ne répond aux critères du filtre actif."
-    label_export_pdf: "Exporter en PDF"
+    label_export_pdf: "Exporter au format PDF"
     export:
-      your_meeting_export: "La réunion est en cours d'export"
+      your_meeting_export: "La réunion est en cours d'exportation"
       label_meeting_agenda: "Ordre du jour de la réunion"
     export_pdf_dialog:
-      title: Exporter en PDF
-      description: Générer un fichier PDF imprimable de cette réunion à l'état actuel.
+      title: Exporter au format PDF
+      description: Générez un fichier PDF imprimable de cette réunion dans son état actuel.
       include_participants:
         label: Inclure la liste des participants
         caption: Une liste des participants sera prédéfinie au-dessus de l'ordre du jour de la réunion.
@@ -252,13 +252,13 @@ fr:
         caption: Une liste contenant les noms de fichiers des pièces jointes sera ajoutée à la fin.
       include_backlog:
         label: Inclure le backlog
-        caption: Les éléments backlog ne sont normalement pas considérés comme faisant partie d'une occurrence de réunion, mais vous pouvez choisir de les inclure.
+        caption: Les éléments du backlog ne sont normalement pas considérés comme faisant partie d'une occurrence de réunion, mais vous pouvez choisir de les inclure.
       include_outcomes:
-        label: Inclure les conclusions de l'ordre du jour
-        caption: Si les conclusions de l'ordre du jour contiennent des informations confidentielles, vous pouvez choisir de ne pas les inclure dans l'export.
+        label: Inclure les résultats de l'ordre du jour
+        caption: Si les résultats de votre ordre du jour contiennent des informations confidentielles, vous pouvez choisir de ne pas les inclure dans l'exportation.
       footer_text:
-        label: Texte du pied de page
-        caption: Le texte sera affiché sur tous les pieds de page.
+        label: Texte de pied de page
+        caption: Ce texte apparaîtra sur chaque page à droite du pied de page.
       submit_button: Télécharger
   meeting_section:
     untitled_title: "Section sans titre"
@@ -437,12 +437,12 @@ fr:
   label_meeting_reopen_action: "Réouvrir la réunion"
   label_meeting_close_action: "Clôturer la réunion"
   label_meeting_in_progress_action: "Démarrer la réunion"
-  text_meeting_open_description: "Cette réunion est ouverte. Vous pouvez ajouter/supprimer des éléments de l'ordre du jour et les modifier comme vous le souhaitez. Une fois l'ordre du jour prêt, marquez-le comme étant en cours pour documenter les résultats."
+  text_meeting_open_description: "Cette réunion est ouverte. Vous pouvez ajouter/supprimer des points de l'ordre du jour et les modifier comme vous le souhaitez. Une fois l'ordre du jour prêt, marquez-le comme étant en cours pour documenter les résultats."
   text_meeting_closed_description: "Cette réunion est clôturée. Vous ne pouvez plus ajouter/supprimer des points de l'ordre du jour."
-  text_meeting_in_progress_description: "Cette réunion est en cours. Vous pouvez documenter les résultats pour chaque élément de l'ordre du jour, les réorganiser et même en ajouter de nouveaux. Une fois la réunion terminée, vous pouvez la marquer comme fermée pour la verrouiller."
+  text_meeting_in_progress_description: "Cette réunion est en cours. Vous pouvez documenter les résultats pour chaque point de l'ordre du jour, les réorganiser et même en ajouter de nouveaux. Une fois la réunion terminée, vous pouvez la marquer comme étant fermée pour la verrouiller."
   text_meeting_open_dropdown_description: "Tous les résultats existants resteront, mais les utilisateurs ne pourront pas ajouter de nouveaux résultats."
   text_meeting_in_progress_dropdown_description: "Documentez les résultats tels que les besoins d'information ou les décisions prises pendant la réunion."
-  text_meeting_closed_dropdown_description: "Cette réunion est terminée. Vous ne pouvez plus modifier les éléments de l'ordre du jour ou les résultats."
+  text_meeting_closed_dropdown_description: "Cette réunion est terminée. Vous ne pouvez plus modifier les points de l'ordre du jour ou les résultats."
   label_meeting_manage_participants: "Gérer les participants"
   label_meeting_no_participants: "Aucun participant"
   label_meeting_show_hide_participants: "Afficher/masquer %{count} autre(s)"

@@ -572,11 +572,11 @@ pl:
   priorities:
     edit:
       priority_color_text: |
-        Click to assign or change the color of this priority.
-        It can be used for highlighting work packages in the table.
+        Kliknij, aby przypisać lub zmienić kolor tego priorytetu.
+        Można go używać do wyróżniania pakietów roboczych w tabeli.
     admin:
       default:
-        caption: Making this priority default will override the previous default priority.
+        caption:
   reactions:
     action_title: "Zareaguj"
     add_reaction: "Dodaj reakcję"
