@@ -49,12 +49,13 @@ module ProjectPhases
       phases.each do |phase|
         next unless phase.active?
 
-        if phase.date_range_set?
-          next_start_date = reschedule_phase_and_retrieve_next_start(phase, from)
-          from = next_start_date unless next_start_date.nil?
-        elsif phase.start_date.present?
-          reschedule_phase_start_only(phase, from)
-        end
+        next_start_date = if phase.date_range_set?
+                            reschedule_phase_and_retrieve_next_start(phase, from)
+                          else
+                            reschedule_partial_phase_and_retrieve_next_start(phase, from)
+                          end
+
+        from = next_start_date unless next_start_date.nil?
       end
     end
 
@@ -71,19 +72,39 @@ module ProjectPhases
     def calculate_date_range(from, duration:)
       days = working_days_from(from, count: duration)
 
-      [days.first.date, days.last.date] if days.length == duration
+      [days.first, days.last] if days.length == duration
     end
 
-    def reschedule_phase_start_only(phase, from)
-      start_date = working_days_from(from, count: 1).first.date
-      phase.update(start_date: start_date)
+    def reschedule_partial_phase_and_retrieve_next_start(phase, from)
+      phase.start_date = calculate_start_date(from)
+      next_start_date = phase.start_date
+
+      if phase.finish_date?
+        phase.finish_date = calculate_finish_date(phase, from)
+        phase.duration = phase.calculate_duration
+        # The phase's date range is complete now, and 1 day gap should follow it.
+        next_start_date = phase.finish_date + 1
+      end
+
+      phase.save
+
+      next_start_date
+    end
+
+    def calculate_start_date(from)
+      working_days_from(from, count: 1).first
+    end
+
+    def calculate_finish_date(phase, from)
+      max_finish_date = [from, phase.finish_date].max
+      working_days_from(max_finish_date, count: 1).first
     end
 
     def working_days_from(from, count:)
-      days = Day.working.from_range(from:, to: from.next_year).first(count)
+      days = Day.working.from_range(from:, to: from.next_year).limit(count).pluck(days: :date)
       if days.length < count && !days.empty?
         years = count.ceildiv(days.length) + 1
-        days = Day.working.from_range(from:, to: from.next_year(years)).first(count)
+        days = Day.working.from_range(from:, to: from.next_year(years)).limit(count).pluck(days: :date)
       end
       days
     end
