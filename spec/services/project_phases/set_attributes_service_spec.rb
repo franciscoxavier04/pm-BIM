@@ -97,53 +97,5 @@ RSpec.describe ProjectPhases::SetAttributesService, type: :model do
         end
       end
     end
-
-    describe "setting default start date" do
-      let(:phase) do
-        build_stubbed(:project_phase, project:, start_date: previous_date)
-      end
-
-      context "when there is a default_start_date on the phase" do
-        before do
-          allow(phase).to receive(:default_start_date).and_return(date)
-        end
-
-        context "and the previous start date is not set" do
-          let(:previous_date) { nil }
-
-          it "sets the model's start_date to the default_start_date" do
-            expect { subject }.to change(phase, :start_date).from(nil).to(date)
-          end
-        end
-
-        context "and the previous start date is set" do
-          let(:previous_date) { Time.zone.yesterday }
-
-          it "does not sets the model's start_date to the default_start_date" do
-            expect { subject }.not_to change(phase, :start_date)
-          end
-
-          context "and the current start date is cleared" do
-            let(:call_attributes) { { start_date: "", finish_date: date + 27 } }
-
-            it "sets the model's start_date to nil" do
-              expect { subject }.to change(phase, :start_date).from(previous_date).to(nil)
-            end
-          end
-        end
-      end
-
-      context "when there is no default_start_date on the phase" do
-        let(:previous_date) { date }
-
-        before do
-          allow(phase).to receive(:default_start_date).and_return(nil)
-        end
-
-        it "does not set the model's start_date" do
-          expect { subject }.not_to change(phase, :start_date).from(date)
-        end
-      end
-    end
   end
 end
