@@ -125,6 +125,9 @@ RSpec.describe Meetings::Exporter do
   end
 
   context "with a meeting with agenda items" do
+    let(:meeting) do
+      create(:meeting, author: user, project:, title: "Awesome closed meeting!", location: "Mars Base", state: :closed)
+    end
     let(:type_task) { create(:type_task) }
     let(:status) { create(:status, is_default: true, name: "Workin' on it") }
     let(:work_package) { create(:work_package, project:, status:, subject: "Important task", type: type_task) }
@@ -182,7 +185,7 @@ RSpec.describe Meetings::Exporter do
           "Export User", "  ", "Attended",
           "Other Account", "  ", "Invited",
 
-          "Meeting agenda",
+          "Minutes",
 
           "Untitled section", "  ", "15 mins",
 
@@ -226,7 +229,7 @@ RSpec.describe Meetings::Exporter do
         expected_document = [
           *expected_cover_page,
           *single_meeting_head,
-          "Meeting agenda",
+          "Minutes",
 
           "Untitled section", "  ", "15 mins",
           "Agenda Item TOP 1", "  ", "15 mins", "  ", "Export User",
@@ -268,7 +271,7 @@ RSpec.describe Meetings::Exporter do
         expected_document = [
           *expected_cover_page,
           *single_meeting_head,
-          "Meeting agenda",
+          "Agenda",
 
           "Work package ##{secret_work_package.id} not visible", "  ", "10 mins",
           "title of the work package should not be visible",
@@ -295,7 +298,7 @@ RSpec.describe Meetings::Exporter do
         expected_document = [
           *expected_cover_page,
           *single_meeting_head,
-          "Meeting agenda",
+          "Agenda",
 
           "Deleted work package reference", "  ", "10 mins",
           "title of the work package should not be visible",

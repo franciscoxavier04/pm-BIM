@@ -35,8 +35,12 @@ module Meetings::PDF
 
       write_hr
       write_optional_page_break
-      write_heading(I18n.t("meeting.export.label_meeting_agenda"))
+      write_meeting_heading
       write_agenda_sections
+    end
+
+    def write_meeting_heading
+      write_heading(meeting.state == "open" ? I18n.t("label_meeting_agenda") : I18n.t("label_meeting_minutes"))
     end
 
     def write_backlog
