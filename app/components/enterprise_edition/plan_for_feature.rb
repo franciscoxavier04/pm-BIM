@@ -41,8 +41,9 @@ module EnterpriseEdition
       feature_key == :teaser
     end
 
+    # Allow providing a subscription
     def current_subscription
-      @current_subscription ||= Subscription.current
+      nil
     end
 
     def title
@@ -53,8 +54,9 @@ module EnterpriseEdition
       teaser? ? teaser_title : I18n.t(feature_key, scope: :"ee.features")
     end
 
+    # Allow providing a title based on the subscription
     def teaser_title
-      I18n.t("ee.teaser.title", count: current_subscription.trial_days_left, trial_plan: current_subscription.enterprise_plan)
+      nil
     end
 
     def description
@@ -77,8 +79,9 @@ module EnterpriseEdition
       )
     end
 
+    # Allow providing a description based on the subscription
     def teaser_description
-      I18n.t("ee.teaser.description", trial_plan: plan_name(current_subscription.enterprise_plan)).html_safe
+      nil
     end
 
     def features
