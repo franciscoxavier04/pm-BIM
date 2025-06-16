@@ -153,6 +153,8 @@ In addition to those overview dashboard options, you can create a [custom query]
 
 Date alerts in OpenProject are an [Enterprise add-on](#enterprise-add-on) and defined as a feature to generate automatic and customized [notifications](#notifications) regarding a work package's due date or start date. You can find the date alerts feature in your notification center, symbolized by a little bell on the right upper side of your instance. [Read more about the date alerts feature in our user guide](../user-guide/notifications/notification-settings/#date-alerts-enterprise-add-on) or in [this article on deadline management with OpenProject](https://www.openproject.org/blog/deadline-management-date-alert/).
 
+You can also set [work package reminders](#reminder) to be notified about a work package at a certain date and time.
+
 ## E
 
 ### Enterprise add-on
@@ -392,6 +394,12 @@ The quick context menu in OpenProject opens when you open a [work package table]
 ### Relations
 
 In OpenProject, you can set work packages in relation to each other. Some relation types simply create a visible link between the two work packages. Others have an additional effect, e.g. force one work package to be finished before the other one starts (Predecessor). The simplest way to add a relation between two existing work packages is to click the +Relation button on the Relations tab of one of the work packages. [Read more about work package relations and hierarchies in our user guide](../user-guide/work-packages/work-package-relations-hierarchies/).
+
+### Reminder
+
+OpenProject offers different types of reminders so that you can lean back and never forget a task. One is the [date alert](#date-alerts) (Enterprise add-on), which generates automatic and customized [notifications](#notifications) regarding a work package's due date or start date.
+
+OpenProject also allows you to seet **work package reminders**:  Simply activate the clock icon on top of a work package and choose from different options, e.g. to be reminded the next day (at 9 am) or in one week. You can also set a custom date. [Read more about work package reminders in OpenProject](../user-guide/work-packages/#work-package-reminders).
 
 ### Repository
 
