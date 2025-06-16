@@ -51,6 +51,8 @@ $arrow-left-width: 40px
   background-color: var(--main-menu-bg-color)
 
   #menu-sidebar
+    display: flex
+    flex-direction: column
     +allow-vertical-scrolling
     height: calc(100vh - var(--header-height))
     position: relative
@@ -210,6 +212,8 @@ a.main-menu--parent-node:not(.Button)
 // logic for showing either parent or child menu
 .main-menu
   ul.menu_root
+    flex-grow: 1
+
     &.closed
       li
         display: none
@@ -263,7 +267,7 @@ a.main-menu--parent-node:not(.Button)
   .main-menu--children
     display: none
 
-#sidebar
+#sidebar:has(> *)
   margin: 30px 0 0 0
 
 #sidebar, #menu-sidebar .sidebar
