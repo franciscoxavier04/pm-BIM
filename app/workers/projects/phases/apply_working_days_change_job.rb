@@ -33,8 +33,8 @@ class Projects::Phases::ApplyWorkingDaysChangeJob < ApplyWorkingDaysChangeJobBas
 
   def apply_working_days_change
     Project.where(id: applicable_phases.select(:project_id)).find_each do |project|
-      phases = project.available_phases.to_a
-      from = phases.filter_map(&:start_date).first
+      phases = project.available_phases.drop_while { !it.start_date? }
+      from = phases.first&.start_date
       next unless from
 
       ProjectPhases::RescheduleService.new(user: User.current, project:).call(phases:, from:)
