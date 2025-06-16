@@ -33,15 +33,14 @@ class Projects::Phases::ApplyWorkingDaysChangeJob < ApplyWorkingDaysChangeJobBas
 
   def apply_working_days_change
     Project.where(id: applicable_phases.select(:project_id)).find_each do |project|
-      phases = project.available_phases.to_a
-      from = phases.filter_map(&:start_date).first
+      available_phases = project.available_phases.to_a
+      phase = available_phases.find(&:start_date?)
+      from = phase&.start_date
       next unless from
 
-      ProjectPhases::RescheduleService.new(user: User.current, project:).call(phases:, from:)
+      phases = available_phases.filter { it.position >= phase.position }
 
-      project.journal_cause = journal_cause
-
-      project.touch_and_save_journals
+      reschedule_project_phases(project:, phases:, from:)
     end
   end
 
@@ -52,5 +51,13 @@ class Projects::Phases::ApplyWorkingDaysChangeJob < ApplyWorkingDaysChangeJobBas
     Project::Phase
       .active
       .covering_dates_or_days_of_week(days_of_week:, dates:)
+  end
+
+  def reschedule_project_phases(project:, phases:, from:)
+    ProjectPhases::RescheduleService.new(user: User.current, project:).call(phases:, from:)
+
+    project.journal_cause = journal_cause
+
+    project.touch_and_save_journals
   end
 end
