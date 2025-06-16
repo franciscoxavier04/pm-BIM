@@ -374,6 +374,20 @@ RSpec.describe EnterpriseToken do
         (valid_until IS NULL OR valid_until >= '2026-06-01'))
       SQL
     end
+
+    it "is consistent with #active?" do
+      combinations = [nil, Date.yesterday, Date.current, Date.tomorrow]
+        .then { |dates| dates.product(dates) }
+      combinations.each do |starts_at, expires_at|
+        described_class.delete_all
+        token = create_enterprise_token(starts_at:, expires_at:)
+        if token.active?
+          expect(described_class.active).to include(token), "Expected .active to have returned active token #{token.inspect}"
+        else
+          expect(described_class.active).to be_empty, "Expected .active to have NOT returned inactive token #{token.inspect}"
+        end
+      end
+    end
   end
 
   describe ".available_features" do
@@ -540,6 +554,40 @@ RSpec.describe EnterpriseToken do
 
       it "is false" do
         expect(token.unlimited_users?).to be false
+      end
+    end
+  end
+
+  describe "#expired?" do
+    context "when token has no expiration date" do
+      let(:token) { build_enterprise_token(expires_at: nil) }
+
+      it "is not expired" do
+        expect(token).not_to be_expired
+      end
+    end
+
+    context "when token expiration date is in the past" do
+      let(:token) { build_enterprise_token(expires_at: Date.yesterday) }
+
+      it "is expired" do
+        expect(token).to be_expired
+      end
+    end
+
+    context "when token expiration date is today" do
+      let(:token) { build_enterprise_token(expires_at: Date.current) }
+
+      it "is not expired" do
+        expect(token).not_to be_expired
+      end
+    end
+
+    context "when token expiration date is in the future" do
+      let(:token) { build_enterprise_token(expires_at: Date.tomorrow) }
+
+      it "is not expired" do
+        expect(token).not_to be_expired
       end
     end
   end
