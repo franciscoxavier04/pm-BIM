@@ -79,24 +79,17 @@ RSpec.describe Meetings::Exporter do
      export_time_formatted]
   end
 
-  def single_meeting_head
+  def meeting_head
     [meeting.title,
-     "   #{exporter.badge_text}    ",
-     exporter.meeting_subtitle_dates]
-  end
-
-  def recurring_meeting_head
-    [format_date(meeting.start_time), "-", meeting.title,
-     "   #{exporter.badge_text}    ",
-     exporter.meeting_subtitle_dates,
-     "-", meeting.recurring_meeting.base_schedule]
+     "   #{exporter.badge_text}   ",
+     exporter.meeting_subtitle]
   end
 
   context "with an empty single meeting" do
     it "renders the expected document" do
       expected_document = [
         *expected_cover_page,
-        *single_meeting_head,
+        *meeting_head,
         "1", # Page number
         export_time_formatted,
         project.name
@@ -114,7 +107,7 @@ RSpec.describe Meetings::Exporter do
     it "renders the expected document" do
       expected_document = [
         *expected_cover_page,
-        *recurring_meeting_head,
+        *meeting_head,
         "1", # Page number
         export_time_formatted,
         project.name
@@ -135,7 +128,7 @@ RSpec.describe Meetings::Exporter do
     let(:meeting_section_second) { create(:meeting_section, meeting:, title: "Second section") }
     let(:meeting_agenda_item) do
       create(:meeting_agenda_item, meeting_section:, duration_in_minutes: 15, title: "Agenda Item TOP 1", presenter: user,
-                                   notes: "**foo**")
+             notes: "**foo**")
     end
     let(:wp_agenda_item) do
       create(:wp_meeting_agenda_item,
@@ -149,8 +142,8 @@ RSpec.describe Meetings::Exporter do
     let(:attachment) { create(:attachment, container: meeting) }
     let(:meeting_backlog_item) do
       create(:meeting_agenda_item, meeting_section: meeting.backlog,
-                                   duration_in_minutes: 1,
-                                   title: "Agenda Item in Backlog", presenter: user, notes: "# yeah")
+             duration_in_minutes: 1,
+             title: "Agenda Item in Backlog", presenter: user, notes: "# yeah")
     end
     let(:invited) { create(:meeting_participant, user: other_user, meeting:, invited: true) }
     let(:attended) { create(:meeting_participant, :attendee, user: user, meeting:) }
@@ -180,7 +173,7 @@ RSpec.describe Meetings::Exporter do
       it "renders the expected document" do
         expected_document = [
           *expected_cover_page,
-          *single_meeting_head,
+          *meeting_head,
           "Participants (2)",
           "Export User", "  ", "Attended",
           "Other Account", "  ", "Invited",
@@ -188,7 +181,6 @@ RSpec.describe Meetings::Exporter do
           "Minutes",
 
           "Untitled section", "  ", "15 mins",
-
           "Agenda Item TOP 1", "  ", "15 mins", "  ", "Export User",
           "foo",
           "Outcome",
@@ -228,7 +220,7 @@ RSpec.describe Meetings::Exporter do
       it "renders the expected document" do
         expected_document = [
           *expected_cover_page,
-          *single_meeting_head,
+          *meeting_head,
           "Minutes",
 
           "Untitled section", "  ", "15 mins",
@@ -254,7 +246,7 @@ RSpec.describe Meetings::Exporter do
     let(:secret_work_package) { create(:work_package, project: secret_project) }
     let(:wp_agenda_item) do
       create(:wp_meeting_agenda_item, meeting:, work_package: secret_work_package, duration_in_minutes: 10,
-                                      notes: "title of the work package should not be visible")
+             notes: "title of the work package should not be visible")
     end
 
     before do
@@ -270,7 +262,7 @@ RSpec.describe Meetings::Exporter do
       it "renders the expected document" do
         expected_document = [
           *expected_cover_page,
-          *single_meeting_head,
+          *meeting_head,
           "Agenda",
 
           "Work package ##{secret_work_package.id} not visible", "  ", "10 mins",
@@ -297,7 +289,7 @@ RSpec.describe Meetings::Exporter do
       it "renders the expected document" do
         expected_document = [
           *expected_cover_page,
-          *single_meeting_head,
+          *meeting_head,
           "Agenda",
 
           "Deleted work package reference", "  ", "10 mins",

@@ -41,7 +41,7 @@ module Meetings::PDF
 
     def write_page_title
       pdf.formatted_text([styles.page_heading.merge(
-        { text: meeting_title, link: url_helpers.meeting_url(meeting) }
+        { text: meeting.title, link: url_helpers.meeting_url(meeting) }
       )])
     end
 
@@ -55,18 +55,12 @@ module Meetings::PDF
     end
 
     def meeting_subtitle
-      list = ["", meeting_subtitle_dates]
-      list.push("-", meeting.recurring_meeting.base_schedule) if meeting.recurring?
-      list.join(" ")
-    end
-
-    def meeting_subtitle_dates
       [
+        "",
         "#{format_date(meeting.start_time)},",
         format_time(meeting.start_time, include_date: false),
         "–",
-        format_time(meeting.end_time, include_date: false),
-        "(#{OpenProject::Common::DurationComponent.new(meeting.duration, :hours, abbreviated: true).text})"
+        format_time(meeting.end_time, include_date: false)
       ].join(" ")
     end
 
@@ -81,14 +75,6 @@ module Meetings::PDF
     def meetings_state_color
       status = Meetings::Statuses.find_by_id(meeting.state) # rubocop:disable Rails/DynamicFindBy
       (status || Meetings::Statuses::OPEN).color
-    end
-
-    def meeting_title
-      if meeting.recurring?
-        "#{format_date(meeting.start_time)} - #{meeting.title}"
-      else
-        meeting.title
-      end
     end
   end
 end

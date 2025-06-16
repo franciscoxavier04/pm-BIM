@@ -57,11 +57,24 @@ module Meetings::PDF
     end
 
     def participants
-      meeting.invited_or_attended_participants
+      meeting.invited_or_attended_participants.sort_by(&:name)
+    end
+
+    def participants_groups(columns_count)
+      # note participants.in_groups does not work with the alphabetically sorted requirement
+      # should be left to right and then the next row
+      array = Array.new(columns_count) { [] }
+      chunks = participants.in_groups_of(columns_count)
+      chunks.each do |chunk|
+        chunk.each_with_index do |participant, participant_index|
+          array[participant_index] << participant
+        end
+      end
+      array
     end
 
     def participants_table_rows(columns_count)
-      groups = participants.in_groups(columns_count)
+      groups = participants_groups(columns_count)
       return [] if groups.empty?
 
       Array.new(groups[0].size) do |row_index|

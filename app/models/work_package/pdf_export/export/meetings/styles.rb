@@ -87,6 +87,10 @@ module WorkPackage::PDFExport::Export::Meetings::Styles
       resolve_margin(@styles.dig(:outcome, :title))
     end
 
+    def outcome_markdown_margins
+      resolve_margin(@styles.dig(:outcome, :markdown_margin))
+    end
+
     def outcome_indent
       @styles.dig(:outcome, :indent).presence || 15
     end

@@ -218,10 +218,12 @@ module Meetings::PDF
     end
 
     def write_outcome_notes(notes)
-      write_markdown!(
-        apply_markdown_field_macros(notes, { project: meeting.project, user: User.current }),
-        styles.outcome_markdown_styling_yml
-      )
+      with_vertical_margin(styles.outcome_markdown_margins) do
+        write_markdown!(
+          apply_markdown_field_macros(notes, { project: meeting.project, user: User.current }),
+          styles.outcome_markdown_styling_yml
+        )
+      end
     end
   end
 end
