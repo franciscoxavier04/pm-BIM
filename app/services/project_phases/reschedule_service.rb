@@ -85,7 +85,7 @@ module ProjectPhases
 
       phase.save
 
-      (phase.finish_date || phase.start_date) + 1
+      phase.finish_date + 1 if phase.finish_date?
     end
 
     def calculate_start_date(from)
