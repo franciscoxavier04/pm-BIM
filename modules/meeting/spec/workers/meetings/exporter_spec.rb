@@ -80,9 +80,7 @@ RSpec.describe Meetings::Exporter do
   end
 
   def meeting_head
-    [meeting.title,
-     "   #{exporter.badge_text}   ",
-     exporter.meeting_subtitle]
+    [meeting.title, exporter.meeting_subtitle]
   end
 
   context "with an empty single meeting" do
@@ -178,12 +176,10 @@ RSpec.describe Meetings::Exporter do
           "Export User", "  ", "Attended",
           "Other Account", "  ", "Invited",
 
-          "Minutes",
-
           "Untitled section", "  ", "15 mins",
           "Agenda Item TOP 1", "  ", "15 mins", "  ", "Export User",
           "foo",
-          "Outcome",
+          "✓   Outcome",
           "An outcome",
 
           "Second section", "  ", "10 mins",
@@ -221,7 +217,6 @@ RSpec.describe Meetings::Exporter do
         expected_document = [
           *expected_cover_page,
           *meeting_head,
-          "Minutes",
 
           "Untitled section", "  ", "15 mins",
           "Agenda Item TOP 1", "  ", "15 mins", "  ", "Export User",
@@ -263,7 +258,6 @@ RSpec.describe Meetings::Exporter do
         expected_document = [
           *expected_cover_page,
           *meeting_head,
-          "Agenda",
 
           "Work package ##{secret_work_package.id} not visible", "  ", "10 mins",
           "title of the work package should not be visible",
@@ -290,7 +284,6 @@ RSpec.describe Meetings::Exporter do
         expected_document = [
           *expected_cover_page,
           *meeting_head,
-          "Agenda",
 
           "Deleted work package reference", "  ", "10 mins",
           "title of the work package should not be visible",
