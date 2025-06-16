@@ -79,7 +79,14 @@ fr:
         main-menu-bg-color: "Couleur d’arrière-plan du menu de gauche."
       theme_warning: Le changement de thème écrasera votre style personnalisé. Le design sera alors perdu. Êtes-vous sûr de vouloir continuer ?
     enterprise:
-      upgrade_to_ee: "Passer à la version Entreprise"
+      delete_dialog:
+        title: "Supprimer le jeton Enterprise"
+        heading: "Supprimer ce jeton Enterprise ?"
+        confirmation: "Voulez-vous vraiment supprimer le jeton d'assistance de cette édition Enterprise ?"
+      create_dialog:
+        title: "Ajouter un jeton Enterprise"
+        type_token_text: "Saisissez le texte du jeton d'assistance"
+        token_placeholder: "Collez votre jeton d'assistance pour l'édition Enterprise ici"
       add_token: "Charger un jeton de support pour la version Entreprise"
       delete_token_modal:
         text: "Voulez-vous vraiment supprimer le jeton actuellement utilisé pour l'édition Entreprise ?"
@@ -819,6 +826,7 @@ fr:
       required_description: "Marque ce lot de travaux comme étant une exigence pour le lot de travaux correspondant"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Lot de travaux associé"
       ghost_relation_description: "Cela n'est pas visible pour vous en raison des autorisations."
   label_invitation: Invitation
@@ -853,6 +861,10 @@ fr:
     auth_source_login: Veuillez vous connecter en tant que <em>%{login}</em> pour activer votre compte.
     omniauth_login: Veuillez vous connecter pour activer votre compte.
   actionview_instancetag_blank_option: "Veuillez sélectionner"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -868,6 +880,8 @@ fr:
       attribute_help_text:
         attribute_name: "Attribut"
         help_text: "Texte d’aide"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Contexte"
       changeset:
@@ -910,6 +924,7 @@ fr:
         domain: "Domaine"
         starts_at: "Valable depuis"
         subscriber: "Abonné"
+        plan: "Abonnement"
         encoded_token: "Licence Entreprise"
         active_user_count_restriction: "Nombre maximal d’utilisateurs actif"
       grids/grid:
@@ -1516,6 +1531,9 @@ fr:
       custom_action: "Action personnalisée"
       custom_field: "Champ personnalisé"
       "doorkeeper/application": "Application OAuth"
+      enterprise_token:
+        one: "Jeton Enterprise"
+        other: "Jetons Enterprise"
       forum: "Forum"
       global_role: "Rôle global"
       group: "Groupe"
@@ -1539,6 +1557,9 @@ fr:
       role:
         one: "Rôle"
         other: "Rôles"
+      scim_client:
+        one: "SCIM Client"
+        other: "SCIM Clients"
       status: "Statut du lot de travaux"
       token/api:
         one: Jeton d'accès
@@ -2019,12 +2040,12 @@ fr:
       readonly_work_packages: Lots de travaux en lecture seule
       sso_auth_providers: Authentification unique
       team_planner_view: Vue du planificateur d'équipe
-      two_factor_authentication: Authentification 2FA
       virus_scanning: Analyse antivirus
       work_package_query_relation_columns: Colonnes de relation de requête de lot de travaux
       work_package_sharing: Partager les lots de travaux avec des utilisateurs
       work_package_subject_generation: Génération du sujet du lot de travaux
     upsell:
+      buy_now_button: "Acheter maintenant"
       plans_title: "Formules d'abonnement Enterprise"
       title: "Add-on Enterprise"
       plan_title: "Add-on Enterprise %{plan}"
@@ -2106,6 +2127,7 @@ fr:
   error_color_could_not_be_saved: "La couleur n'a pas pu être enregistrée"
   error_cookie_missing: "Le cookie OpenProject est manquant. Assurez-vous que les cookies sont activés, sans quoi cette application ne fonctionnera pas correctement."
   error_custom_option_not_found: "L'option n'existe pas."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Votre compte n'a pas pu être activé (limite d'utilisateurs atteinte). Veuillez contacter votre administrateur pour obtenir l'accès."
   error_enterprise_token_invalid_domain: "L'édition Enterprise n'est pas active. Le domaine de votre jeton Enterprise (%{actual}) ne correspond pas au nom d'hôte du système (%{expected})."
   error_failed_to_delete_entry: "Échec lors de la suppression de cette entrée."
@@ -2589,6 +2611,7 @@ fr:
   label_dashboard: "Tableau de bord"
   label_database_version: "Version de PostgreSQL"
   label_date: "Date"
+  label_dates: "Dates"
   label_date_and_time: "Date et heure"
   label_date_format: "Format de date"
   label_date_from: "De"
@@ -3348,6 +3371,8 @@ fr:
   notice_successful_delete: "Suppression réussie."
   notice_successful_cancel: "Annulation réussie."
   notice_successful_update: "Mise à jour réussie."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Mise à jour échouée."
   notice_unsuccessful_update_with_reason: "Échec de la mise à jour : %{reason}"
   notice_successful_update_custom_fields_added_to_project: |

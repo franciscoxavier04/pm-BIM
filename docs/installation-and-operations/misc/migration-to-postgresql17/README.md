@@ -53,7 +53,7 @@ sudo pg_createcluster 17 main --start
 For RedHat/CentOS:
 
 ```shell
-sudo yum install pgsql17
+sudo yum install postgresql17 postgresql17-contrib
 sudo /usr/bin/postgresql-17-setup initdb
 ```
 
@@ -125,7 +125,7 @@ include_dir = 'conf.d'
 
 sudo su - postgres -c "cp -p /var/lib/pgsql/13/data/conf.d/custom.conf /var/lib/pgsql/17/data/conf.d/custom.conf"
 sudo su - postgres -c "sed -i 's|45432|45433|' /var/lib/pgsql/13/data/conf.d/custom.conf"
-sudo su - postgres -c "/usr/pgsql-17/bin/pg_ctl start --wait --pgdata=/var/lib/pgsql/17/data -o '-c config_file=/etc/postgresql/17/main/postgresql.conf'"
+sudo su - postgres -c "/usr/pgsql-17/bin/pg_ctl start --wait --pgdata=/var/lib/pgsql/17/data -o '-c config_file=/var/lib/pgsql/17/data/postgresql.conf'"
 
 # Getting the password for the PostgreSQL database from the configuration
 sudo openproject config:get DATABASE_URL
@@ -157,7 +157,7 @@ For RedHat/CentOS:
 
 ```shell
 sudo rm -rf /var/lib/pgsql/13/data
-sudo yum remove pgsql13
+sudo yum remove postgresql13
 ```
 
 ## Compose-based docker installation

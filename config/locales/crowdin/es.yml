@@ -79,7 +79,14 @@ es:
         main-menu-bg-color: "Color de fondo del menú lateral izquierdo."
       theme_warning: Al cambiar el tema, se sobrescribirá su estilo personalizado y, como consecuencia, se perderá el diseño. ¿Seguro que quiere continuar?
     enterprise:
-      upgrade_to_ee: "Actualizar a Enterprise"
+      delete_dialog:
+        title: "Eliminar token de Enterprise"
+        heading: "¿Eliminar este token de Enterprise?"
+        confirmation: "¿Seguro que desea eliminar este token de soporte de la edición Enterprise?"
+      create_dialog:
+        title: "Añadir token de Enterprise"
+        type_token_text: "Escribir texto del token de soporte"
+        token_placeholder: "Pegue su token de soporte de la edición Enterprise aquí"
       add_token: "Cargue el token de soporte de Enterprise"
       delete_token_modal:
         text: "¿Está seguro que desea eliminar el token actual de Enterpise usado?"
@@ -678,7 +685,7 @@ es:
           automatic_with_children: "Fechas determinadas por paquetes de trabajo secundarios."
           automatic_with_predecessor: "La fecha de inicio la fija un predecesor."
           manual_mobile: "Programado manualmente."
-          manually_scheduled: "Programado manualmente. No afectadas por relaciones."
+          manually_scheduled: "Programado manualmente. Fechas no afectadas por relaciones."
       blankslate:
         title: "Sin predecesores"
         description: "Para activar la programación automática, este paquete de trabajo debe tener al menos un predecesor. Entonces se programará automáticamente para que comience después del predecesor más cercano."
@@ -818,6 +825,7 @@ es:
       required_description: "Marca este paquete de trabajo como requisito del relacionado"
       label_parent_singular: "principal"
       label_parent_plural: "principal"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Paquete de trabajo relacionado"
       ghost_relation_description: "No tiene los permisos necesarios para ver esto."
   label_invitation: Invitación
@@ -852,6 +860,10 @@ es:
     auth_source_login: Por favor, inicia sesión como <em>%{login}</em> para activar tu cuenta.
     omniauth_login: Por favor inicie sesión para activar su cuenta.
   actionview_instancetag_blank_option: "Por favor, elija"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencias"
   activerecord:
     attributes:
       announcements:
@@ -867,6 +879,8 @@ es:
       attribute_help_text:
         attribute_name: "Atributo"
         help_text: "Texto de ayuda"
+      auth_provider:
+        scim_clients: "Clientes SCIM"
       capability:
         context: "Contexto"
       changeset:
@@ -909,6 +923,7 @@ es:
         domain: "Dominio"
         starts_at: "Válido desde"
         subscriber: "Suscriptor"
+        plan: "Plan"
         encoded_token: "Token de soporte de Enterprise"
         active_user_count_restriction: "Máximo de usuarios activos"
       grids/grid:
@@ -1515,6 +1530,9 @@ es:
       custom_action: "Acción personalizada"
       custom_field: "Campo personalizado"
       "doorkeeper/application": "Aplicación OAuth"
+      enterprise_token:
+        one: "Token de Enterprise"
+        other: "Tokens de Enterprise"
       forum: "Foro"
       global_role: "Rol global"
       group: "Grupo"
@@ -1538,6 +1556,9 @@ es:
       role:
         one: "Rol"
         other: "Roles"
+      scim_client:
+        one: "Cliente SCIM"
+        other: "Clientes SCIM"
       status: "Estado del paquete de trabajo"
       token/api:
         one: Token de acceso
@@ -2018,12 +2039,12 @@ es:
       readonly_work_packages: Paquetes de trabajo de solo lectura
       sso_auth_providers: Inicio de sesión único
       team_planner_view: Vista del planificador de equipo
-      two_factor_authentication: Autenticación 2FA
       virus_scanning: Análisis de antivirus
       work_package_query_relation_columns: Columnas de relación de consulta de paquetes de trabajo
       work_package_sharing: Compartir paquetes de trabajo con usuarios externos
       work_package_subject_generation: Generación de temas del paquete de trabajo
     upsell:
+      buy_now_button: "Comprar ahora"
       plans_title: "Planes Enterprise"
       title: "Extensión Enterprise"
       plan_title: "Extensión Enterprise de %{plan}"
@@ -2105,6 +2126,7 @@ es:
   error_color_could_not_be_saved: "No se pudo guardar el color"
   error_cookie_missing: "No se encuentra la cookie de OpenProject. Por favor asegúrese de que las cookies están habilitadas, ya que sin ellas esta aplicación no funcionará correctamente."
   error_custom_option_not_found: "Esta opción no existe."
+  error_enterprise_plan_needed: "Necesita el plan Enterprise %{plan} para realizar esta acción."
   error_enterprise_activation_user_limit: "Su cuenta no puede ser activada (se alcanzó el límite del usuario). Por favor, contacte su administrador para obtener acceso."
   error_enterprise_token_invalid_domain: "Enterprise no está activo. Su dominio del token de Enterprise (%{actual}) no coincide con el nombre de host del sistema (%{expected})."
   error_failed_to_delete_entry: "No se puede eliminar esta entrada."
@@ -2588,6 +2610,7 @@ es:
   label_dashboard: "Paneles de control"
   label_database_version: "Versión de PostgreSQL"
   label_date: "Fecha"
+  label_dates: "Fechas"
   label_date_and_time: "Fecha y hora"
   label_date_format: "Formato de fecha"
   label_date_from: "De"
@@ -3347,6 +3370,8 @@ es:
   notice_successful_delete: "Eliminado con éxito."
   notice_successful_cancel: "Cancelación exitosa."
   notice_successful_update: "Actualización correcta."
+  notice_unsuccessful_create: "Error en la creación."
+  notice_unsuccessful_create_with_reason: "Error en la creación: %{reason}"
   notice_unsuccessful_update: "Error al actualizar."
   notice_unsuccessful_update_with_reason: "Error en la actualización: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |

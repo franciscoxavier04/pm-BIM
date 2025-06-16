@@ -79,7 +79,14 @@ ko:
         main-menu-bg-color: "왼쪽 메뉴의 배경색입니다."
       theme_warning: 테마를 변경하면 사용자 정의 스타일을 덮어 씁니다. 그러면 디자인이 손실됩니다. 너 정말 계속하고 싶니?
     enterprise:
-      upgrade_to_ee: "Enterprise edition으로 업그레이드하기"
+      delete_dialog:
+        title: "Enterprise 토큰 삭제"
+        heading: "이 Enterprise 토큰을 삭제하시겠습니까?"
+        confirmation: "이 Enterprise Edition 지원 토큰을 삭제하시겠습니까?"
+      create_dialog:
+        title: "Enterprise 토큰 추가"
+        type_token_text: "지원 토큰 텍스트 입력"
+        token_placeholder: "여기에 Enterprise Edition 지원 토큰을 붙여넣으세요"
       add_token: "Enterprise edition 지원 토큰을 업로드하세요."
       delete_token_modal:
         text: "현재 사용된 Enterprise edition 토큰을 제거하시겠습니까?"
@@ -813,6 +820,7 @@ ko:
       required_description: "이 작업 패키지를 관련 패키지에 대한 요구 사항으로 표시합니다"
       label_parent_singular: "부모"
       label_parent_plural: "부모"
+      label_other_relations: "Other relations"
       ghost_relation_title: "관련 작업 패키지"
       ghost_relation_description: "권한 문제로 인해 이 항목이 표시되지 않습니다."
   label_invitation: 초대
@@ -847,6 +855,10 @@ ko:
     auth_source_login: <em>%{login}</em> 계정을 활성화하려면 로그인하시기 바랍니다.
     omniauth_login: 계정을 활성화하려면 로그인하시기 바랍니다.
   actionview_instancetag_blank_option: "선택하십시오"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "종속성"
   activerecord:
     attributes:
       announcements:
@@ -862,6 +874,8 @@ ko:
       attribute_help_text:
         attribute_name: "특성"
         help_text: "도움말 텍스트"
+      auth_provider:
+        scim_clients: "SCIM 클라이언트"
       capability:
         context: "컨텍스트"
       changeset:
@@ -904,6 +918,7 @@ ko:
         domain: "도메인"
         starts_at: "이후로 유효함"
         subscriber: "구독자"
+        plan: "플랜"
         encoded_token: "엔터프라이즈 지원 토큰"
         active_user_count_restriction: "최대 활성 사용자"
       grids/grid:
@@ -1508,6 +1523,8 @@ ko:
       custom_action: "사용자 지정 작업"
       custom_field: "사용자 정의 필드"
       "doorkeeper/application": "OAuth 애플리케이션"
+      enterprise_token:
+        other: "Enterprise 토큰"
       forum: "포럼"
       global_role: "글로벌 역할"
       group: "그룹"
@@ -1526,6 +1543,8 @@ ko:
       reminder: "미리 알림"
       role:
         other: "역할"
+      scim_client:
+        other: "SCIM 클라이언트"
       status: "작업 패키지 상태"
       token/api:
         other: 액세스 토큰
@@ -1982,12 +2001,12 @@ ko:
       readonly_work_packages: 읽기 전용 작업 패키지
       sso_auth_providers: Single Sign-On
       team_planner_view: 팀 플래너 보기
-      two_factor_authentication: 2FA 인증
       virus_scanning: 바이러스 백신 검사
       work_package_query_relation_columns: 작업 패키지 쿼리 관계 열
       work_package_sharing: 외부 사용자와 작업 패키지 공유
       work_package_subject_generation: 작업 패키지 제목 생성
     upsell:
+      buy_now_button: "지금 구입"
       plans_title: "Enterprise 플랜"
       title: "Enterprise 추가 기능"
       plan_title: "Enterprise %{plan} 추가 기능"
@@ -2069,6 +2088,7 @@ ko:
   error_color_could_not_be_saved: "색상을 저장할 수 없습니다."
   error_cookie_missing: "OpenProject 쿠키가 없습니다. 이 응용 프로그램은 쿠키 없이 제대로 작동하지 않으므로, 쿠키를 활성화해야 합니다."
   error_custom_option_not_found: "존재하지 않는 옵션입니다."
+  error_enterprise_plan_needed: "이 작업을 수행하려면 %{plan} Enterprise 플랜이 필요합니다."
   error_enterprise_activation_user_limit: "사용자 계정을 활성화할 수 없습니다(사용자 제한에 도달함). 액세스하려면 관리자에게 문의하세요."
   error_enterprise_token_invalid_domain: "Enterprise Edition이 활성화되지 않았습니다. 해당 Enterprise 토큰의 도메인(%{actual})이 시스템의 호스트 이름(%{expected})과 일치하지 않습니다."
   error_failed_to_delete_entry: "항목 삭제에 실패하였습니다."
@@ -2552,6 +2572,7 @@ ko:
   label_dashboard: "대시보드"
   label_database_version: "PostgreSQL 버전"
   label_date: "날짜"
+  label_dates: "날짜"
   label_date_and_time: "날짜 및 시간"
   label_date_format: "날짜 형식"
   label_date_from: "시작"
@@ -3310,6 +3331,8 @@ ko:
   notice_successful_delete: "삭제에 성공했습니다."
   notice_successful_cancel: "취소에 성공했습니다."
   notice_successful_update: "업데이트에 성공했습니다."
+  notice_unsuccessful_create: "생성이 실패했습니다."
+  notice_unsuccessful_create_with_reason: "생성 실패: %{reason}"
   notice_unsuccessful_update: "업데이트에 실패했습니다."
   notice_unsuccessful_update_with_reason: "업데이트 실패: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |

@@ -122,6 +122,8 @@ class Principal < ApplicationRecord
 
   before_create :set_default_empty_values
 
+  self.ignored_columns += [:identity_url]
+
   # Columns required for formatting the principal's name.
   def self.columns_for_name(formatter = nil)
     raise NotImplementedError, "Redefine in subclass" unless self == Principal

@@ -79,7 +79,14 @@ it:
         main-menu-bg-color: "Colore di sfondo del menu a sinistra."
       theme_warning: Cambiando il tema si sovrascriverà lo stile personalizzato. Il design andrà poi perso. Sei sicuro di voler continuare?
     enterprise:
-      upgrade_to_ee: "Aggiorna a Enterprise edition"
+      delete_dialog:
+        title: "Elimina token enterprise"
+        heading: "Eliminare questo token enterprise?"
+        confirmation: "Vuoi davvero eliminare questo token di assistenza dell'Enterprise Edition?"
+      create_dialog:
+        title: "Aggiungi token Enterprise"
+        type_token_text: "Digita il testo del token di assistenza"
+        token_placeholder: "Incolla il tuo token di assistenza per Enterprise edition qui"
       add_token: "Carica un token di assistenza per Enterprise edition"
       delete_token_modal:
         text: "Vuoi davvero rimuovere il token Enterprise edition attualmente utilizzato?"
@@ -818,6 +825,7 @@ it:
       required_description: "Contrassegna questa macro-attività come obbligatoria per quella correlata"
       label_parent_singular: "genitore"
       label_parent_plural: "genitore"
+      label_other_relations: "Altre relazioni"
       ghost_relation_title: "Macro-attività correlata"
       ghost_relation_description: "Non puoi visualizzare a causa delle autorizzazioni."
   label_invitation: Invito
@@ -852,6 +860,10 @@ it:
     auth_source_login: Accedi come <em>%{login}</em> per attivare il tuo account.
     omniauth_login: Accedi per attivare il tuo account.
   actionview_instancetag_blank_option: "Si prega di selezionare"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dipendenze"
   activerecord:
     attributes:
       announcements:
@@ -867,6 +879,8 @@ it:
       attribute_help_text:
         attribute_name: "Attributo"
         help_text: "Testo guida"
+      auth_provider:
+        scim_clients: "Client SCIM"
       capability:
         context: "Contesto"
       changeset:
@@ -909,6 +923,7 @@ it:
         domain: "Dominio"
         starts_at: "Valido dal"
         subscriber: "Iscritto"
+        plan: "Piano"
         encoded_token: "Token di assistenza Enterprise"
         active_user_count_restriction: "Numero massimo di utenti attivi"
       grids/grid:
@@ -1515,6 +1530,9 @@ it:
       custom_action: "Azione personalizzata"
       custom_field: "Campo personalizzato"
       "doorkeeper/application": "Applicazione OAuth"
+      enterprise_token:
+        one: "Token Enterprise"
+        other: "Token Enterprise"
       forum: "Forum"
       global_role: "Ruolo globale"
       group: "Gruppo"
@@ -1538,6 +1556,9 @@ it:
       role:
         one: "Ruolo"
         other: "Ruoli"
+      scim_client:
+        one: "Client SCIM"
+        other: "Client SCIM"
       status: "Stato della macro-attività"
       token/api:
         one: Token di accesso
@@ -2018,12 +2039,12 @@ it:
       readonly_work_packages: Macro-attività di sola lettura
       sso_auth_providers: Single sign-on
       team_planner_view: Vista del Pianificatore di team
-      two_factor_authentication: Autenticazione 2FA
       virus_scanning: Scansione antivirus
       work_package_query_relation_columns: Colonne di relazione delle query della macro-attività
       work_package_sharing: Condividi macro-attività con utenti esterni
       work_package_subject_generation: Generazione oggetto di macro-attività
     upsell:
+      buy_now_button: "Acquista subito"
       plans_title: "Piani Enterprise"
       title: "Componente aggiuntivo Enterprise"
       plan_title: "Addon del %{plan} Enterprise"
@@ -2105,6 +2126,7 @@ it:
   error_color_could_not_be_saved: "Il colore non può essere salvato"
   error_cookie_missing: "Il cookie di OpenProject è mancante. Prego, verifica che i cookie siano attivati, questa applicazione non funziona correttamente senza."
   error_custom_option_not_found: "L'opzione non esiste."
+  error_enterprise_plan_needed: "Hai bisogno del piano aziendale %{plan} per eseguire questa azione."
   error_enterprise_activation_user_limit: "Il tuo account potrebbe non essere attivo (raggiunto il limite utente). Si prega di contattare l'amministratore per ottenere l'accesso."
   error_enterprise_token_invalid_domain: "L'Enterprise edition non è attiva. Il dominio del token Enterprise (%{actual}) non corrisponde al nome host del sistema (%{expected})."
   error_failed_to_delete_entry: "Cancellazione voce non riuscita."
@@ -2588,6 +2610,7 @@ it:
   label_dashboard: "Dashboard"
   label_database_version: "Versione di PostgreSQL"
   label_date: "Data"
+  label_dates: "Date"
   label_date_and_time: "Data e ora"
   label_date_format: "Formato data"
   label_date_from: "Da"
@@ -3347,6 +3370,8 @@ it:
   notice_successful_delete: "Cancellato con successo."
   notice_successful_cancel: "Cancellato con successo."
   notice_successful_update: "Aggiornato con successo."
+  notice_unsuccessful_create: "Creazione fallita."
+  notice_unsuccessful_create_with_reason: "Creazione non riuscita: %{reason}"
   notice_unsuccessful_update: "Aggiornamento non riuscito."
   notice_unsuccessful_update_with_reason: "Aggiornamento non riuscito: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |

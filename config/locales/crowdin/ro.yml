@@ -79,7 +79,14 @@ ro:
         main-menu-bg-color: "Culoarea de fundal pentru meniul din partea stângă."
       theme_warning: Schimbarea temei va suprascrie stilul personalizat. În acest caz, designul va fi pierdut. Sunteți sigur că doriți să continuați?
     enterprise:
-      upgrade_to_ee: "Actualizare la ediția Enterprise"
+      delete_dialog:
+        title: "Delete enterprise token"
+        heading: "Delete this enterprise token?"
+        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+      create_dialog:
+        title: "Add Enterprise token"
+        type_token_text: "Type support token text"
+        token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Încărcacă un token de suport pentru ediția Enterprise"
       delete_token_modal:
         text: "Ești sigur că vrei să elimini actualul token Enterprise edition utilizat?"
@@ -829,6 +836,7 @@ ro:
       required_description: "Marchează acest pachet de lucru ca fiind o cerință pentru cel asociat"
       label_parent_singular: "părinte"
       label_parent_plural: "părinte"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Pachet de lucru asociat"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Invitație
@@ -863,6 +871,10 @@ ro:
     auth_source_login: Autentifică-te ca <em>%{login}</em> pentru a activa contul.
     omniauth_login: Autentifică-te pentru activarea contului tău.
   actionview_instancetag_blank_option: "Selectează"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -878,6 +890,8 @@ ro:
       attribute_help_text:
         attribute_name: "Atribut"
         help_text: "Text de ajutor"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Context"
       changeset:
@@ -920,6 +934,7 @@ ro:
         domain: "Domeniu"
         starts_at: "Valabil din"
         subscriber: "Abonat"
+        plan: "Plan"
         encoded_token: "Token de sprijin pentru întreprinderi"
         active_user_count_restriction: "Număr maxim de utilizatori activi"
       grids/grid:
@@ -1528,6 +1543,10 @@ ro:
       custom_action: "Adaugă acțiune personalizată"
       custom_field: "Câmp personalizat"
       "doorkeeper/application": "Aplicație OAuth"
+      enterprise_token:
+        one: "Enterprise token"
+        few: "Enterprise tokens"
+        other: "Enterprise tokens"
       forum: "Forum"
       global_role: "Rol Global"
       group: "Grup"
@@ -1556,6 +1575,10 @@ ro:
         one: "Rol"
         few: "Roluri"
         other: "Roluri"
+      scim_client:
+        one: "SCIM Client"
+        few: "SCIM Clients"
+        other: "SCIM Clients"
       status: "Stare pachet de lucru"
       token/api:
         one: Token acces
@@ -2060,12 +2083,12 @@ ro:
       readonly_work_packages: Readonly Work Packages
       sso_auth_providers: Single sign-on
       team_planner_view: Team Planner View
-      two_factor_authentication: 2FA Authentication
       virus_scanning: Antivirus Scanning
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      buy_now_button: "Buy now"
       plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
@@ -2147,6 +2170,7 @@ ro:
   error_color_could_not_be_saved: "Culoarea nu a putut fi salvată"
   error_cookie_missing: "Cookie-ul OpenProject lipseşte. Vă rugăm să verificați setările referitoare la cookies, această aplicație nu va funcţiona corespunzător fără acestea."
   error_custom_option_not_found: "Opțiunea nu există."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Contul dvs. nu a putut fi activat (limita utilizatorilor a fost atinsă). Contactați administratorul dvs. pentru a avea acces."
   error_enterprise_token_invalid_domain: "Ediția Enterprise nu este activă. Domeniul token-ului Enterprise (%{actual}) nu se potrivește cu numele de gazdă al sistemului (%{expected})."
   error_failed_to_delete_entry: "Nu s-a reușit ștergerea acestei intrări."
@@ -2630,6 +2654,7 @@ ro:
   label_dashboard: "Panou de control"
   label_database_version: "Versiunea PostgreSQL"
   label_date: "Data"
+  label_dates: "Dates"
   label_date_and_time: "Data"
   label_date_format: "Format dată"
   label_date_from: "Din"
@@ -2667,7 +2692,7 @@ ro:
   label_duplicated_by: "dublat de"
   label_duplicate: "duplicat"
   label_duplicates: "dublează"
-  label_edit: "Editează"
+  label_edit: "Editare"
   label_edit_x: "Editare: %{x}"
   label_enable_multi_select: "Comutare selecție multiplă"
   label_enabled_project_custom_fields: "Câmpuri personalizate activate"
@@ -2722,7 +2747,7 @@ ro:
   label_global_roles: "Global roles"
   label_git_path: "Calea catre directorul .git"
   label_greater_or_equal: ">="
-  label_group_by: "Grupează după"
+  label_group_by: "Grupare după"
   label_group_new: "Grupare nouă"
   label_group: "Grup"
   label_group_named: "Grup %{name}"
@@ -3389,6 +3414,8 @@ ro:
   notice_successful_delete: "Ştergere reuşită."
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Actualizare reușită."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Update failed."
   notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
