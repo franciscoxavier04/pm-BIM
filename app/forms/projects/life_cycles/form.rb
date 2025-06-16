@@ -118,14 +118,14 @@ module Projects::LifeCycles
     def value(field_name)
       case field_name
       when :start_date
-        model.start_date || model.default_start_date || model.start_date_before_type_cast
+        model.start_date || model.start_date_before_type_cast
       when :finish_date
         model.finish_date_before_type_cast
       end
     end
 
     def start_date_disabled?
-      model.follows_previous_phase? && model.default_start_date.present?
+      model.follows_previous_phase? && model.start_date.present?
     end
 
     def start_date_caption

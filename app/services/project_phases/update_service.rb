@@ -33,7 +33,7 @@ module ProjectPhases
     delegate :project, to: :model
 
     def after_perform(*)
-      reschedule_following_phases if model.date_range_set?
+      reschedule_following_phases if model.any_date_set?
 
       project.touch_and_save_journals
 
@@ -48,7 +48,11 @@ module ProjectPhases
     end
 
     def initial_reschedule_date
-      model.active? ? model.finish_date + 1 : model.start_date
+      if model.date_range_set?
+        model.active? ? model.finish_date + 1 : model.start_date
+      else
+        model.start_date || model.finish_date
+      end
     end
   end
 end

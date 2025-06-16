@@ -186,16 +186,16 @@ RSpec.describe Project::Phase do
   describe "#default_start_date" do
     include_context "with project phases"
 
-    context "when the previous phase has a finish date" do
+    context "when the previous phase has a complete date range" do
       it "returns the next working day after the previous phase finish date" do
         expected = Day.next_working(from: phase1.finish_date).date
         expect(phase2.default_start_date).to eq(expected)
       end
     end
 
-    context "when the previous phase does not have a finish date" do
+    context "when the previous phase has an incomplete date range" do
       before do
-        phase1.update(finish_date: nil)
+        phase1.update(start_date: nil)
       end
 
       it "returns nil" do

@@ -173,6 +173,58 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
           end
         end
 
+        context "with a start date only" do
+          context "and earlier than the preceding phase finish date" do
+            let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: date - 3, finish_date: nil) }
+
+            it "reschedules that and following phases" do
+              service.call(active: true)
+
+              expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date - 1)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date, finish_date: nil)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+            end
+          end
+
+          context "and later than the preceding phase finish date" do
+            let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: date + 2, finish_date: nil) }
+
+            it "reschedules that and following phases" do
+              service.call(active: true)
+
+              expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date - 1)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date, finish_date: nil)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+            end
+          end
+        end
+
+        context "with a finish date only" do
+          context "and earlier than the preceding phase finish date" do
+            let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: nil, finish_date: date - 3) }
+
+            it "reschedules that and following phases filling the start date and creating 1 day phase" do
+              service.call(active: true)
+
+              expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date - 1)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date, finish_date: date)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date + 1, finish_date: date + 3)
+            end
+          end
+
+          context "and later than the preceding phase finish date" do
+            let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: nil, finish_date: date + 3) }
+
+            it "reschedules that and following phases filling the start date and maintaining the finish date" do
+              service.call(active: true)
+
+              expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date - 1)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date, finish_date: date + 3)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date + 4, finish_date: date + 6)
+            end
+          end
+        end
+
         context "when already activated" do
           let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: date + 2, finish_date: date + 3) }
 
@@ -192,7 +244,7 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
             service.call(active: true)
 
             expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date - 1)
-            expect(phase1.reload).to have_attributes(active: true, start_date: nil, finish_date: nil)
+            expect(phase1.reload).to have_attributes(active: true, start_date: date, finish_date: nil)
             expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
           end
         end
@@ -303,6 +355,172 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
         end
       end
 
+      context "having preceding phases with a start_date only" do
+        let!(:phase0) { create_phase(definition: definitions[0], active: true, start_date: date - 1, finish_date: nil) }
+        let!(:phase2) { create_phase(definition: definitions[2], active: true, start_date: date + 7, finish_date: date + 9) }
+
+        let(:service) { described_class.new(user:, project:, definitions: [definitions[1]]) }
+
+        context "with date range" do
+          let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: date + 2, finish_date: date + 3) }
+
+          it "reschedules that and following phases" do
+            service.call(active: true)
+
+            expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+            expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date + 1, finish_date: date + 3)
+          end
+        end
+
+        context "with a start date only" do
+          context "and earlier than the preceding phase start date" do
+            let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: date - 3, finish_date: nil) }
+
+            it "reschedules that and following phases" do
+              service.call(active: true)
+
+              expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
+            end
+          end
+
+          context "and later than the preceding phase start date" do
+            let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: date + 2, finish_date: nil) }
+
+            it "reschedules that and following phases" do
+              service.call(active: true)
+
+              expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
+            end
+          end
+        end
+
+        context "with a finish date only" do
+          context "and earlier than the preceding phase start date" do
+            let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: nil, finish_date: date - 3) }
+
+            it "reschedules that and following phases filling the start date and creating 1 day phase" do
+              service.call(active: true)
+
+              expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date - 1)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+            end
+          end
+
+          context "and later than the preceding phase finish date" do
+            let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: nil, finish_date: date + 3) }
+
+            it "reschedules that and following phases filling the start date and maintaining the finish date" do
+              service.call(active: true)
+
+              expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 3)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date + 4, finish_date: date + 6)
+            end
+          end
+        end
+
+        context "without date range" do
+          let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: nil, finish_date: nil) }
+
+          it "reschedules following phases using dates of the closest preceding phase with start date" do
+            service.call(active: true)
+
+            expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+            expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
+          end
+        end
+      end
+
+      context "having preceding phases with a finish_date only" do
+        let!(:phase0) { create_phase(definition: definitions[0], active: true, start_date: nil, finish_date: date - 1) }
+        let!(:phase2) { create_phase(definition: definitions[2], active: true, start_date: date + 7, finish_date: date + 9) }
+
+        let(:service) { described_class.new(user:, project:, definitions: [definitions[1]]) }
+
+        context "with date range" do
+          let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: date + 2, finish_date: date + 3) }
+
+          it "reschedules that and following phases" do
+            service.call(active: true)
+
+            expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
+            expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date + 1, finish_date: date + 3)
+          end
+        end
+
+        context "with a start date only" do
+          context "and earlier than the preceding phase finish date" do
+            let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: date - 3, finish_date: nil) }
+
+            it "reschedules that and following phases" do
+              service.call(active: true)
+
+              expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
+            end
+          end
+
+          context "and later than the preceding phase finish date" do
+            let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: date + 2, finish_date: nil) }
+
+            it "reschedules that and following phases" do
+              service.call(active: true)
+
+              expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
+            end
+          end
+        end
+
+        context "with a finish date only" do
+          context "and earlier than the preceding phase finish date" do
+            let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: nil, finish_date: date - 3) }
+
+            it "reschedules that and following phases filling the start date and creating 1 day phase" do
+              service.call(active: true)
+
+              expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date - 1)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+            end
+          end
+
+          context "and later than the preceding phase finish date" do
+            let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: nil, finish_date: date + 3) }
+
+            it "reschedules that and following phases filling the start date and maintaining the finish date" do
+              service.call(active: true)
+
+              expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 3)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date + 4, finish_date: date + 6)
+            end
+          end
+        end
+
+        context "without date range" do
+          let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: nil, finish_date: nil) }
+
+          it "reschedules following phases using dates of the closest preceding phase with start date" do
+            service.call(active: true)
+
+            expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
+            expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
+          end
+        end
+      end
+
       context "having preceding phases without date range" do
         let!(:phase0) { create_phase(definition: definitions[0], active: true, start_date: nil, finish_date: nil) }
         let!(:phase2) { create_phase(definition: definitions[2], active: true, start_date: date + 7, finish_date: date + 9) }
@@ -318,6 +536,58 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
             expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: nil)
             expect(phase1.reload).to have_attributes(active: true, start_date: date + 2, finish_date: date + 3)
             expect(phase2.reload).to have_attributes(active: true, start_date: date + 4, finish_date: date + 6)
+          end
+        end
+
+        context "with a start date only" do
+          context "and earlier than the following phase" do
+            let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: date - 3, finish_date: nil) }
+
+            it "reschedules that and following phases" do
+              service.call(active: true)
+
+              expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: nil)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date - 3, finish_date: nil)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date - 3, finish_date: date - 1)
+            end
+          end
+
+          context "and later than the following phase" do
+            let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: date + 10, finish_date: nil) }
+
+            it "reschedules that and following phases" do
+              service.call(active: true)
+
+              expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: nil)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date + 10, finish_date: nil)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date + 10, finish_date: date + 12)
+            end
+          end
+        end
+
+        context "with a finish date only" do
+          context "and earlier than the following phase" do
+            let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: nil, finish_date: date - 3) }
+
+            it "reschedules that and following phases" do
+              service.call(active: true)
+
+              expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: nil)
+              expect(phase1.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 3)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date - 3, finish_date: date - 1)
+            end
+          end
+
+          context "and later than the following phase" do
+            let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: nil, finish_date: date + 10) }
+
+            it "reschedules that and following phases" do
+              service.call(active: true)
+
+              expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: nil)
+              expect(phase1.reload).to have_attributes(active: true, start_date: nil, finish_date: date + 10)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date + 10, finish_date: date + 12)
+            end
           end
         end
 
@@ -391,44 +661,204 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
     end
 
     context "when deactivating one phase" do
-      let!(:phase0) { create_phase(definition: definitions[0], active: true, start_date: date - 1, finish_date: date - 1) }
-      let!(:phase2) { create_phase(definition: definitions[2], active: true, start_date: date + 7, finish_date: date + 9) }
+      context "having preceding phases with date range" do
+        let!(:phase0) { create_phase(definition: definitions[0], active: true, start_date: date - 1, finish_date: date - 1) }
+        let!(:phase2) { create_phase(definition: definitions[2], active: true, start_date: date + 7, finish_date: date + 9) }
 
-      let(:service) { described_class.new(user:, project:, definitions: [definitions[1]]) }
+        let(:service) { described_class.new(user:, project:, definitions: [definitions[1]]) }
 
-      context "with date range" do
-        let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: date + 2, finish_date: date + 3) }
+        context "with date range" do
+          let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: date + 2, finish_date: date + 3) }
 
-        it "reschedules following phases using dates of the closest preceding phase with date range" do
-          service.call(active: false)
+          it "reschedules following phases using dates of the closest preceding phase with date range" do
+            service.call(active: false)
 
-          expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date - 1)
-          expect(phase1.reload).to have_attributes(active: false, start_date: date + 2, finish_date: date + 3)
-          expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+            expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date - 1)
+            expect(phase1.reload).to have_attributes(active: false, start_date: date + 2, finish_date: date + 3)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+          end
+        end
+
+        context "when already deactivated" do
+          let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: date + 2, finish_date: date + 3) }
+
+          it "reschedules following phases using dates of the closest preceding phase with date range" do
+            service.call(active: false)
+
+            expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date - 1)
+            expect(phase1.reload).to have_attributes(active: false, start_date: date + 2, finish_date: date + 3)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+          end
+        end
+
+        context "without date range" do
+          let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: nil, finish_date: nil) }
+
+          it "reschedules following phases using dates of the closest preceding phase with date range" do
+            service.call(active: false)
+
+            expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date - 1)
+            expect(phase1.reload).to have_attributes(active: false, start_date: nil, finish_date: nil)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+          end
+        end
+
+        context "with a start date only" do
+          let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: date - 3, finish_date: nil) }
+
+          it "reschedules following phases using dates of the closest preceding phase with date range" do
+            service.call(active: false)
+
+            expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date - 1)
+            expect(phase1.reload).to have_attributes(active: false, start_date: date - 3, finish_date: nil)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+          end
+        end
+
+        context "with a finish date only" do
+          let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: nil, finish_date: date - 3) }
+
+          it "reschedules that and following phases filling the start date and creating 1 day phase" do
+            service.call(active: false)
+
+            expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date - 1)
+            expect(phase1.reload).to have_attributes(active: false, start_date: nil, finish_date: date - 3)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+          end
         end
       end
 
-      context "when already deactivated" do
-        let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: date + 2, finish_date: date + 3) }
+      context "having preceding phases with a start_date only" do
+        let!(:phase0) { create_phase(definition: definitions[0], active: true, start_date: date - 1, finish_date: nil) }
+        let!(:phase2) { create_phase(definition: definitions[2], active: true, start_date: date + 7, finish_date: date + 9) }
 
-        it "reschedules following phases using dates of the closest preceding phase with date range" do
-          service.call(active: false)
+        let(:service) { described_class.new(user:, project:, definitions: [definitions[1]]) }
 
-          expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date - 1)
-          expect(phase1.reload).to have_attributes(active: false, start_date: date + 2, finish_date: date + 3)
-          expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+        context "with date range" do
+          let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: date + 2, finish_date: date + 3) }
+
+          it "reschedules following phases using dates of the closest preceding phase with a start date" do
+            service.call(active: false)
+
+            expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+            expect(phase1.reload).to have_attributes(active: false, start_date: date + 2, finish_date: date + 3)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
+          end
+        end
+
+        context "when already deactivated" do
+          let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: date + 2, finish_date: date + 3) }
+
+          it "reschedules following phases using dates of the closest preceding phase with a start date" do
+            service.call(active: false)
+
+            expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+            expect(phase1.reload).to have_attributes(active: false, start_date: date + 2, finish_date: date + 3)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
+          end
+        end
+
+        context "without date range" do
+          let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: nil, finish_date: nil) }
+
+          it "reschedules following phases using dates of the closest preceding phase with a start date" do
+            service.call(active: false)
+
+            expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+            expect(phase1.reload).to have_attributes(active: false, start_date: nil, finish_date: nil)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
+          end
+        end
+
+        context "with a start date only" do
+          let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: date - 3, finish_date: nil) }
+
+          it "reschedules following phases using dates of the closest preceding phase with a start date" do
+            service.call(active: false)
+
+            expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+            expect(phase1.reload).to have_attributes(active: false, start_date: date - 3, finish_date: nil)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
+          end
+        end
+
+        context "with a finish date only" do
+          let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: nil, finish_date: date - 3) }
+
+          it "reschedules following phases using the dates of the closest preceding phase with a start date" do
+            service.call(active: false)
+
+            expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+            expect(phase1.reload).to have_attributes(active: false, start_date: nil, finish_date: date - 3)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
+          end
         end
       end
 
-      context "without date range" do
-        let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: nil, finish_date: nil) }
+      context "having preceding phases with a finish_date only" do
+        let!(:phase0) { create_phase(definition: definitions[0], active: true, start_date: nil, finish_date: date - 1) }
+        let!(:phase2) { create_phase(definition: definitions[2], active: true, start_date: date + 7, finish_date: date + 9) }
 
-        it "reschedules following phases using dates of the closest preceding phase with date range" do
-          service.call(active: false)
+        let(:service) { described_class.new(user:, project:, definitions: [definitions[1]]) }
 
-          expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date - 1)
-          expect(phase1.reload).to have_attributes(active: false, start_date: nil, finish_date: nil)
-          expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+        context "with date range" do
+          let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: date + 2, finish_date: date + 3) }
+
+          it "reschedules following phases using dates of the closest preceding phase with a start date" do
+            service.call(active: false)
+
+            expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
+            expect(phase1.reload).to have_attributes(active: false, start_date: date + 2, finish_date: date + 3)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
+          end
+        end
+
+        context "when already deactivated" do
+          let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: date + 2, finish_date: date + 3) }
+
+          it "reschedules following phases using dates of the closest preceding phase with a start date" do
+            service.call(active: false)
+
+            expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
+            expect(phase1.reload).to have_attributes(active: false, start_date: date + 2, finish_date: date + 3)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
+          end
+        end
+
+        context "without date range" do
+          let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: nil, finish_date: nil) }
+
+          it "reschedules following phases using dates of the closest preceding phase with a start date" do
+            service.call(active: false)
+
+            expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
+            expect(phase1.reload).to have_attributes(active: false, start_date: nil, finish_date: nil)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
+          end
+        end
+
+        context "with a start date only" do
+          let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: date - 3, finish_date: nil) }
+
+          it "reschedules following phases using dates of the closest preceding phase with a start date" do
+            service.call(active: false)
+
+            expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
+            expect(phase1.reload).to have_attributes(active: false, start_date: date - 3, finish_date: nil)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
+          end
+        end
+
+        context "with a finish date only" do
+          let!(:phase1) { create_phase(definition: definitions[1], active: true, start_date: nil, finish_date: date - 3) }
+
+          it "reschedules following phases using the dates of the closest preceding phase with a start date" do
+            service.call(active: false)
+
+            expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
+            expect(phase1.reload).to have_attributes(active: false, start_date: nil, finish_date: date - 3)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
+          end
         end
       end
     end

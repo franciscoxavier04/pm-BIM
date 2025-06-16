@@ -31,6 +31,8 @@
 require "spec_helper"
 
 RSpec.describe WorkPackages::DatePickerController do
+  create_shared_association_defaults_for_work_package_factory
+
   shared_let(:week_days) { week_with_saturday_and_sunday_as_weekend }
   shared_let(:work_package) do
     create(:work_package,
@@ -327,6 +329,54 @@ RSpec.describe WorkPackages::DatePickerController do
             due_date: [have_attributes(class: ActiveModel::Error, type: :error_readonly)]
           )
         end
+      end
+    end
+  end
+
+  describe "PATCH /work_packages/:id/date_picker" do
+    context "when changing a milestone successor scheduling mode from manual to automatic" do
+      shared_let(:predecessor) do
+        create(:work_package, schedule_manually: true,
+                              start_date: "2025-06-10",
+                              due_date: "2025-06-12",
+                              duration: 3)
+      end
+      shared_let(:milestone_successor) do
+        create(:work_package, :is_milestone, schedule_manually: true,
+                                             start_date: "2025-06-16",
+                                             due_date: "2025-06-16",
+                                             duration: 1) do |successor|
+          create(:follows_relation, predecessor:, successor:)
+        end
+      end
+
+      let(:params) do
+        {
+          "work_package_id" => milestone_successor.id,
+          "work_package" => {
+            "ignore_non_working_days" => "0",
+            "schedule_manually" => "false",
+            "initial" => {
+              "start_date" => "2025-06-16",
+              "ignore_non_working_days" => "false",
+              "schedule_manually" => "true"
+            },
+            "start_date_touched" => "false",
+            "ignore_non_working_days_touched" => "false",
+            "schedule_manually_touched" => "false"
+          }
+        }
+      end
+
+      it "updates the date to start as soon as possible (Bug #64603)" do
+        patch("update", params:, format: :turbo_stream)
+        expect(response).to have_http_status(:success)
+
+        expect(milestone_successor.reload).to have_attributes(
+          start_date: Date.parse("2025-06-13"),
+          due_date: Date.parse("2025-06-13"),
+          duration: 1
+        )
       end
     end
   end
