@@ -77,15 +77,18 @@ module ProjectPhases
 
     def reschedule_partial_phase_and_retrieve_next_start(phase, from)
       phase.start_date = calculate_start_date(from)
+      next_start_date = phase.start_date
 
       if phase.finish_date?
         phase.finish_date = calculate_finish_date(phase, from)
         phase.duration = phase.calculate_duration
+        # The phase's date range is complete now, and 1 day gap should follow it.
+        next_start_date = phase.finish_date + 1
       end
 
       phase.save
 
-      phase.finish_date + 1 if phase.finish_date?
+      next_start_date
     end
 
     def calculate_start_date(from)

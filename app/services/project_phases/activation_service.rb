@@ -98,9 +98,7 @@ module ProjectPhases
       if phase.date_range_set?
         phase.active? ? phase.finish_date + 1 : phase.start_date
       else
-        from = phase.start_date || phase.finish_date
-        from += 1 if phase.active?
-        from
+        phase.start_date || phase.finish_date
       end
     end
 

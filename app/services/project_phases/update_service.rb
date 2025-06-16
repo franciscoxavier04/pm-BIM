@@ -51,9 +51,7 @@ module ProjectPhases
       if model.date_range_set?
         model.active? ? model.finish_date + 1 : model.start_date
       else
-        from = model.start_date || model.finish_date
-        from += 1 if model.active?
-        from
+        model.start_date || model.finish_date
       end
     end
   end

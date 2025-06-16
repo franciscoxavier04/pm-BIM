@@ -368,8 +368,8 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
             service.call(active: true)
 
             expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
-            expect(phase1.reload).to have_attributes(active: true, start_date: date, finish_date: date + 1)
-            expect(phase2.reload).to have_attributes(active: true, start_date: date + 2, finish_date: date + 4)
+            expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date + 1, finish_date: date + 3)
           end
         end
 
@@ -381,8 +381,8 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
               service.call(active: true)
 
               expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
-              expect(phase1.reload).to have_attributes(active: true, start_date: date, finish_date: nil)
-              expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
             end
           end
 
@@ -393,8 +393,8 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
               service.call(active: true)
 
               expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
-              expect(phase1.reload).to have_attributes(active: true, start_date: date, finish_date: nil)
-              expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
             end
           end
         end
@@ -407,8 +407,8 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
               service.call(active: true)
 
               expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
-              expect(phase1.reload).to have_attributes(active: true, start_date: date, finish_date: date)
-              expect(phase2.reload).to have_attributes(active: true, start_date: date + 1, finish_date: date + 3)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date - 1)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
             end
           end
 
@@ -419,7 +419,7 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
               service.call(active: true)
 
               expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
-              expect(phase1.reload).to have_attributes(active: true, start_date: date, finish_date: date + 3)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 3)
               expect(phase2.reload).to have_attributes(active: true, start_date: date + 4, finish_date: date + 6)
             end
           end
@@ -432,8 +432,8 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
             service.call(active: true)
 
             expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
-            expect(phase1.reload).to have_attributes(active: true, start_date: date, finish_date: nil)
-            expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+            expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
           end
         end
       end
@@ -451,8 +451,8 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
             service.call(active: true)
 
             expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
-            expect(phase1.reload).to have_attributes(active: true, start_date: date, finish_date: date + 1)
-            expect(phase2.reload).to have_attributes(active: true, start_date: date + 2, finish_date: date + 4)
+            expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date + 1, finish_date: date + 3)
           end
         end
 
@@ -464,8 +464,8 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
               service.call(active: true)
 
               expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
-              expect(phase1.reload).to have_attributes(active: true, start_date: date, finish_date: nil)
-              expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
             end
           end
 
@@ -476,8 +476,8 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
               service.call(active: true)
 
               expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
-              expect(phase1.reload).to have_attributes(active: true, start_date: date, finish_date: nil)
-              expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
             end
           end
         end
@@ -490,8 +490,8 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
               service.call(active: true)
 
               expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
-              expect(phase1.reload).to have_attributes(active: true, start_date: date, finish_date: date)
-              expect(phase2.reload).to have_attributes(active: true, start_date: date + 1, finish_date: date + 3)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date - 1)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
             end
           end
 
@@ -502,7 +502,7 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
               service.call(active: true)
 
               expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
-              expect(phase1.reload).to have_attributes(active: true, start_date: date, finish_date: date + 3)
+              expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 3)
               expect(phase2.reload).to have_attributes(active: true, start_date: date + 4, finish_date: date + 6)
             end
           end
@@ -515,8 +515,8 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
             service.call(active: true)
 
             expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
-            expect(phase1.reload).to have_attributes(active: true, start_date: date, finish_date: nil)
-            expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+            expect(phase1.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
           end
         end
       end
@@ -548,7 +548,7 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
 
               expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: nil)
               expect(phase1.reload).to have_attributes(active: true, start_date: date - 3, finish_date: nil)
-              expect(phase2.reload).to have_attributes(active: true, start_date: date - 2, finish_date: date)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date - 3, finish_date: date - 1)
             end
           end
 
@@ -560,7 +560,7 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
 
               expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: nil)
               expect(phase1.reload).to have_attributes(active: true, start_date: date + 10, finish_date: nil)
-              expect(phase2.reload).to have_attributes(active: true, start_date: date + 11, finish_date: date + 13)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date + 10, finish_date: date + 12)
             end
           end
         end
@@ -569,24 +569,24 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
           context "and earlier than the following phase" do
             let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: nil, finish_date: date - 3) }
 
-            it "reschedules that and following phases filling the start date and creating 1 day phase" do
+            it "reschedules that and following phases" do
               service.call(active: true)
 
               expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: nil)
               expect(phase1.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 3)
-              expect(phase2.reload).to have_attributes(active: true, start_date: date - 2, finish_date: date)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date - 3, finish_date: date - 1)
             end
           end
 
           context "and later than the following phase" do
             let!(:phase1) { create_phase(definition: definitions[1], active: false, start_date: nil, finish_date: date + 10) }
 
-            it "reschedules that and following phases filling the start date and maintaining the finish date" do
+            it "reschedules that and following phases" do
               service.call(active: true)
 
               expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: nil)
               expect(phase1.reload).to have_attributes(active: true, start_date: nil, finish_date: date + 10)
-              expect(phase2.reload).to have_attributes(active: true, start_date: date + 11, finish_date: date + 13)
+              expect(phase2.reload).to have_attributes(active: true, start_date: date + 10, finish_date: date + 12)
             end
           end
         end
@@ -742,7 +742,7 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
 
             expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
             expect(phase1.reload).to have_attributes(active: false, start_date: date + 2, finish_date: date + 3)
-            expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
           end
         end
 
@@ -754,7 +754,7 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
 
             expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
             expect(phase1.reload).to have_attributes(active: false, start_date: date + 2, finish_date: date + 3)
-            expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
           end
         end
 
@@ -766,7 +766,7 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
 
             expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
             expect(phase1.reload).to have_attributes(active: false, start_date: nil, finish_date: nil)
-            expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
           end
         end
 
@@ -778,7 +778,7 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
 
             expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
             expect(phase1.reload).to have_attributes(active: false, start_date: date - 3, finish_date: nil)
-            expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
           end
         end
 
@@ -790,7 +790,7 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
 
             expect(phase0.reload).to have_attributes(active: true, start_date: date - 1, finish_date: nil)
             expect(phase1.reload).to have_attributes(active: false, start_date: nil, finish_date: date - 3)
-            expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
           end
         end
       end
@@ -809,7 +809,7 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
 
             expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
             expect(phase1.reload).to have_attributes(active: false, start_date: date + 2, finish_date: date + 3)
-            expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
           end
         end
 
@@ -821,7 +821,7 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
 
             expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
             expect(phase1.reload).to have_attributes(active: false, start_date: date + 2, finish_date: date + 3)
-            expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
           end
         end
 
@@ -833,7 +833,7 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
 
             expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
             expect(phase1.reload).to have_attributes(active: false, start_date: nil, finish_date: nil)
-            expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
           end
         end
 
@@ -845,7 +845,7 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
 
             expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
             expect(phase1.reload).to have_attributes(active: false, start_date: date - 3, finish_date: nil)
-            expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
           end
         end
 
@@ -857,7 +857,7 @@ RSpec.describe ProjectPhases::ActivationService, type: :model do
 
             expect(phase0.reload).to have_attributes(active: true, start_date: nil, finish_date: date - 1)
             expect(phase1.reload).to have_attributes(active: false, start_date: nil, finish_date: date - 3)
-            expect(phase2.reload).to have_attributes(active: true, start_date: date, finish_date: date + 2)
+            expect(phase2.reload).to have_attributes(active: true, start_date: date - 1, finish_date: date + 1)
           end
         end
       end

@@ -157,9 +157,9 @@ RSpec.describe ProjectPhases::UpdateService, type: :model do
         it "reschedules all of them relying on duration" do
           expect(service.call(start_date: date, finish_date: nil)).to be_success
 
-          expect(following1).to have_attributes(start_date: date + 1, finish_date: date + 5, duration: 3)
-          expect(following2).to have_attributes(start_date: date + 6, finish_date: date + 7, duration: 2)
-          expect(following3).to have_attributes(start_date: date + 8, finish_date: date + 8, duration: 1)
+          expect(following1).to have_attributes(start_date: date, finish_date: date + 2, duration: 3)
+          expect(following2).to have_attributes(start_date: date + 5, finish_date: date + 6, duration: 2)
+          expect(following3).to have_attributes(start_date: date + 7, finish_date: date + 7, duration: 1)
         end
       end
 
@@ -167,9 +167,9 @@ RSpec.describe ProjectPhases::UpdateService, type: :model do
         it "reschedules all of them relying on duration" do
           expect(service.call(start_date: nil, finish_date: date + 1)).to be_success
 
-          expect(following1).to have_attributes(start_date: date + 2, finish_date: date + 6, duration: 3)
-          expect(following2).to have_attributes(start_date: date + 7, finish_date: date + 8, duration: 2)
-          expect(following3).to have_attributes(start_date: date + 9, finish_date: date + 9, duration: 1)
+          expect(following1).to have_attributes(start_date: date + 1, finish_date: date + 5, duration: 3)
+          expect(following2).to have_attributes(start_date: date + 6, finish_date: date + 7, duration: 2)
+          expect(following3).to have_attributes(start_date: date + 8, finish_date: date + 8, duration: 1)
         end
       end
     end
