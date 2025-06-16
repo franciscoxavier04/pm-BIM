@@ -33,14 +33,8 @@ module Meetings::PDF
     def write_agenda
       return if meeting.sections.empty?
 
-      write_hr
       write_optional_page_break
-      write_meeting_heading
       write_agenda_sections
-    end
-
-    def write_meeting_heading
-      write_heading(meeting.state == "open" ? I18n.t("label_meeting_agenda") : I18n.t("label_meeting_minutes"))
     end
 
     def write_backlog
@@ -206,6 +200,7 @@ module Meetings::PDF
       return if outcome.notes.blank?
 
       pdf.indent(styles.outcome_indent) do
+        write_optional_page_break
         write_outcome_title
         write_outcome_notes(outcome.notes)
       end
@@ -213,7 +208,10 @@ module Meetings::PDF
 
     def write_outcome_title
       with_vertical_margin(styles.outcome_title_margins) do
-        pdf.formatted_text([{ text: I18n.t("label_agenda_outcome") }.merge(styles.outcome_title)])
+        pdf.formatted_text([
+                             { text: "✓ " }.merge(styles.outcome_symbol),
+                             { text: I18n.t("label_agenda_outcome") }.merge(styles.outcome_title)
+                           ])
       end
     end
 

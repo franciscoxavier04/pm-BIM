@@ -33,7 +33,6 @@ module Meetings::PDF
     def write_participants
       return if participants.empty?
 
-      write_hr
       write_heading(participants_title)
       write_participants_table
     end

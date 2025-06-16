@@ -112,10 +112,17 @@ module Meetings
     end
 
     def cover_page_dates
-      ["#{format_date(meeting.start_time)},",
-       format_time(meeting.start_time, include_date: false),
-       "–",
-       format_time(meeting.end_time, include_date: false)].join(" ")
+      [
+        "#{meeting_mode},",
+        "#{format_date(meeting.start_time)},",
+        format_time(meeting.start_time, include_date: false),
+        "–",
+        format_time(meeting.end_time, include_date: false)
+      ].join(" ")
+    end
+
+    def meeting_mode
+      meeting.state == "open" ? I18n.t("label_meeting_agenda") : I18n.t("label_meeting_minutes")
     end
 
     def cover_page_subheading

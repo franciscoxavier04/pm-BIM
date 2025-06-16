@@ -1400,6 +1400,15 @@
             }
           ]
         },
+        "symbol": {
+          "type": "object",
+          "title": "Agenda item outcome symbol",
+          "allOf": [
+            {
+              "$ref": "#/$defs/font"
+            }
+          ]
+        },
         "indent": {
           "title": "Indent width",
           "description": "Indent for agenda item notes",

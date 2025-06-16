@@ -83,6 +83,10 @@ module WorkPackage::PDFExport::Export::Meetings::Styles
       resolve_font(@styles.dig(:outcome, :title))
     end
 
+    def outcome_symbol
+      resolve_font(@styles.dig(:outcome, :symbol))
+    end
+
     def outcome_title_margins
       resolve_margin(@styles.dig(:outcome, :title))
     end

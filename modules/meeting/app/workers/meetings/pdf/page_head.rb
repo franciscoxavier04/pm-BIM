@@ -37,6 +37,7 @@ module Meetings::PDF
       with_vertical_margin(styles.page_subtitle_margins) do
         write_meeting_subtitle
       end
+      write_hr
     end
 
     def write_page_title
@@ -46,35 +47,17 @@ module Meetings::PDF
     end
 
     def write_meeting_subtitle
-      pdf.formatted_text(
-        [
-          prawn_badge(badge_text, badge_color, offset: 0, radius: 2),
-          styles.page_subtitle.merge({ text: meeting_subtitle })
-        ]
-      )
+      pdf.formatted_text([styles.page_subtitle.merge({ text: meeting_subtitle })])
     end
 
     def meeting_subtitle
       [
-        "",
+        "#{meeting_mode} (#{I18n.t("label_meeting_state_#{meeting.state}")}),",
         "#{format_date(meeting.start_time)},",
         format_time(meeting.start_time, include_date: false),
         "–",
         format_time(meeting.end_time, include_date: false)
       ].join(" ")
-    end
-
-    def badge_text
-      I18n.t("label_meeting_state_#{meeting.state}")
-    end
-
-    def badge_color
-      meetings_state_color.hexcode&.sub("#", "") || "F0F0F0"
-    end
-
-    def meetings_state_color
-      status = Meetings::Statuses.find_by_id(meeting.state) # rubocop:disable Rails/DynamicFindBy
-      (status || Meetings::Statuses::OPEN).color
     end
   end
 end
