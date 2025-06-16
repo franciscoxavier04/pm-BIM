@@ -579,11 +579,14 @@ cs:
         Všechny výskyty zástupného uživatele (např. jako pověřené nebo odpovědné nebo jiné uživatelské hodnoty) budou přeřazeny na účet nazvaný "Smazaný uživatel". Vzhledem k tomu, že data každého smazaného účtu jsou znovu přiřazena k tomuto účtu, nebude možné rozlišit data, která uživatel vytvořil od dat jiného smazaného účtu.
       irreversible: "Tato akce je nevratná"
       confirmation: "Zadejte název zástupného uživatele %{name} pro potvrzení odstranění."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Klikněte na přiřadit nebo změnit barvu této priority.
-        lze použít ke zvýraznění pracovních balíčků v tabulce.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "Reagovat"
     add_reaction: "Přidat reakci"

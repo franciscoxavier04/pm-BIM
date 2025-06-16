@@ -567,11 +567,14 @@ bg:
         Всички повторения на потребителя на резервоар (напр. Като правоприемник, отговорник или други потребителски стойности) ще бъдат преназначени към акаунт, наречен „Изтрит потребител“. Тъй като данните от всеки изтрит акаунт се пренасочват към този акаунт, няма да е възможно да се разграничат данните, създадени от потребителя, от данните на друг изтрит акаунт.
       irreversible: "Това действие е необратимо"
       confirmation: "Въведете заместващото потребителско име %{name} , за да потвърдите изтриването."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Щракнете, за да зададете или промените цвета на този приоритет.
-        Той може да се използва за подчертаване на работните пакети в таблицата.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "React"
     add_reaction: "Add reaction"

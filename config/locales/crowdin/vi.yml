@@ -561,11 +561,14 @@ vi:
         Tất cả các trường hợp của người dùng giả định (ví dụ, làm người giao việc, người chịu trách nhiệm hoặc các giá trị người dùng khác) sẽ được chuyển nhượng cho một tài khoản có tên là "Người dùng đã xóa". Vì dữ liệu của mỗi tài khoản bị xóa được chuyển nhượng cho tài khoản này, nên sẽ không thể phân biệt dữ liệu mà người dùng đã tạo từ dữ liệu của một tài khoản đã xóa khác.
       irreversible: "Hành động này không thể đảo ngược"
       confirmation: "Nhập tên người dùng giả định %{name} để xác nhận việc xóa."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Nhấp để chỉ định hoặc thay đổi màu của mức ưu tiên này.
-        Có thể sử dụng để làm nổi bật các gói công việc trong bảng.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "React"
     add_reaction: "Add reaction"

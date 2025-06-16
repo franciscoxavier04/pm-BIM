@@ -565,11 +565,14 @@ da:
         Alle forekomster af pladsholder brugeren (f.eks. som modtager, ansvarlig eller andre brugerværdier) vil blive omfordelt til en konto kaldet "Slettet bruger". Da dataene for hver slettet konto er omfordelt til denne konto, vil det ikke være muligt at skelne de data, brugeren har oprettet fra data fra en anden slettet konto.
       irreversible: "Denne handling kan ikke fortrydes"
       confirmation: "Indtast pladsholderens brugernavn %{name} for at bekræfte sletningen."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
         Click to assign or change the color of this priority.
         It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "React"
     add_reaction: "Add reaction"

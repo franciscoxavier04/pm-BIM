@@ -573,11 +573,14 @@ ro:
         Toate prezențele utilizatorului de tip "placeholder" (de exemplu, ca destinatar, responsabil sau alte valori de utilizator) vor fi realocate unui cont numit "Utilizator eliminat". Deoarece datele fiecărui cont șters sunt realocate acestui cont, nu va fi posibilă deosebirea datelor create de utilizator de datele unui alt cont șters.
       irreversible: "Această acțiune este ireversibilă"
       confirmation: "Introdu numele de utilizator de tip placeholder %{name} pentru a confirma ștergerea."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Clic pentru a desemna sau schimba culoarea acestui nivel de prioritate.
-        Poate fi utilizate pentru a evidenția pachetele de lucru dintr-un tabel.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "React"
     add_reaction: "Add reaction"

@@ -560,11 +560,14 @@ zh-TW:
         出現的所有佔位符用戶(例如，作為受理人、負責人或其他用戶值) 將被重新分配給一個名為“已刪除用戶”的帳戶。 由於每個已刪除帳戶的數據都會被重新分配給此帳戶，因此無法將用戶創建的數據與另一個已刪除帳戶的數據區分。
       irreversible: "這一行動是不可還原的"
       confirmation: "輸入占位使用者名稱 %{name} 確認刪除。"
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
         點擊以指派或變更此優先順序的顏色。
         可用於在表格中突顯工作套件。
+    admin:
+      default:
+        caption: 將此優先順序設為預設值，將會覆寫先前的預設優先順序。
   reactions:
     action_title: "反應"
     add_reaction: "加入反應"

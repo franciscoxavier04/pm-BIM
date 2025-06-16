@@ -565,11 +565,14 @@ pt-PT:
         Todas as ocorrências do utilizador de espaço reservado (por exemplo, como responsável, competente ou outros valores de utilizador) serão reatribuídas a uma conta chamada "Utilizador eliminado". Como os dados de todas as contas eliminadas são reatribuídos a esta conta, não será possível diferenciar os dados criados pelo utilizador a partir de dados de outra conta eliminada.
       irreversible: "Esta ação é irreversível"
       confirmation: "Insira o nome de utilizador do espaço reservado %{name} para confirmar a eliminação."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Clique para atribuir ou alterar a cor desta prioridade.
-        Pode ser usada para destacar os pacotes de trabalho na tabela.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "Reagir"
     add_reaction: "Adicionar reação"

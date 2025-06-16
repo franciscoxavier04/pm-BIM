@@ -564,11 +564,14 @@ nl:
         Alle gebeurtenissen van de tijdelijke gebruiker (bijv. als taakontvanger, verantwoordelijke of andere gebruikerswaarden) zullen opnieuw worden toegewezen aan een account genaamd "Verwijderde gebruiker". Aangezien de gegevens van elke verwijderde account opnieuw zijn toegewezen aan dit account, zal het niet mogelijk zijn om de gegevens die de gebruiker heeft aangemaakt van een ander verwijderd account te onderscheiden.
       irreversible: "Deze actie is onomkeerbaar"
       confirmation: "Voer de naam van de tijdelijke gebruiker %{name} in om de verwijdering te bevestigen."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Klik op toewijzen of wijzigen van de kleur van deze prioriteit.
-        het kan worden gebruikt voor het benadrukken van de werkpakketten in de tabel.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "Reageren"
     add_reaction: "Reactie toevoegen"

@@ -565,11 +565,14 @@ es:
         Todas las repeticiones del usuario de marcador de posición (por ejemplo, como asignado, responsable u otros valores de usuario) se reasignarán a una cuenta denominada «Usuario eliminado». Como los datos de todas las cuentas eliminadas se reasignarán a esta cuenta, no podrán distinguirse los datos del usuario de los datos creados con cualquier otra cuenta eliminada.
       irreversible: "Esta acción no se puede deshacer"
       confirmation: "Escriba el nombre de usuario de marcador de posición %{name} para confirmar la eliminación."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Haga clic para asignar o cambiar el color de esta prioridad.
-        Puede usarse para resaltar paquetes de trabajo en la tabla.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "Reaccionar"
     add_reaction: "Añadir reacción"
