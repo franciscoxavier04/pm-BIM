@@ -813,7 +813,7 @@ zh-TW:
       required_description: "將此工作套件標示為相關工作的需求"
       label_parent_singular: "上層"
       label_parent_plural: "上層"
-      label_other_relations: "Other relations"
+      label_other_relations: "其他關聯"
       ghost_relation_title: "相關的工作套件"
       ghost_relation_description: "由於權限的緣故，您無法看到。"
   label_invitation: 邀請
@@ -851,7 +851,7 @@ zh-TW:
   activemodel:
     attributes:
       projects/copy_options:
-        dependencies: "Dependencies"
+        dependencies: "依賴套件"
   activerecord:
     attributes:
       announcements:
@@ -868,7 +868,7 @@ zh-TW:
         attribute_name: "属性"
         help_text: "說明文字"
       auth_provider:
-        scim_clients: "SCIM Clients"
+        scim_clients: "SCIM 用戶端"
       capability:
         context: "內容"
       changeset:
@@ -1537,7 +1537,7 @@ zh-TW:
       role:
         other: "角色"
       scim_client:
-        other: "SCIM Clients"
+        other: "SCIM 用戶端"
       status: "工作套件狀態"
       token/api:
         other: 存取權杖
@@ -2081,7 +2081,7 @@ zh-TW:
   error_color_could_not_be_saved: "無法儲存顏色"
   error_cookie_missing: "OpenProject的Cookie遺失了。請確保瀏覽器的Cookie已經啟用，否則本應用程式將無法正常做用。"
   error_custom_option_not_found: "選項不存在。"
-  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
+  error_enterprise_plan_needed: "您需要 %{plan} 企業方案才能執行此操作。"
   error_enterprise_activation_user_limit: "無法啟動您的帳戶 (已達到使用者限制)。請與管理員聯繫以獲取存取權限。"
   error_enterprise_token_invalid_domain: "企業版未啟用。您的企業版權杖(Token)的域名（%{actual}）與系統的主機名（%{expected}）不匹配。"
   error_failed_to_delete_entry: "刪除此項目失敗。"
@@ -3323,8 +3323,8 @@ zh-TW:
   notice_successful_delete: "刪除成功"
   notice_successful_cancel: "取消成功"
   notice_successful_update: "更新成功"
-  notice_unsuccessful_create: "Creation failed."
-  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
+  notice_unsuccessful_create: "建立失敗。"
+  notice_unsuccessful_create_with_reason: "建立失敗：%{reason}"
   notice_unsuccessful_update: "更新失敗。"
   notice_unsuccessful_update_with_reason: "更新失敗： %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -3904,9 +3904,9 @@ zh-TW:
       phase_gates: "階段關卡"
       new:
         description: "此專案階段的變更會反映在啟用此階段的所有專案中。"
-        heading: "New phase"
+        heading: "新增階段"
       edit:
-        heading: "Edit phase"
+        heading: "編輯階段"
       both_gate: "開始以及結束關卡"
       no_gate: "沒有關卡"
       start_gate: "開始關卡"
