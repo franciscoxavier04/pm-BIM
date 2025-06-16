@@ -92,7 +92,7 @@ class Project::Phase < ApplicationRecord
   def default_start_date
     return @default_start_date if defined?(@default_start_date)
 
-    previous_finish_date = previous_phase&.finish_date
+    previous_finish_date = previous_phase.finish_date if follows_previous_phase?
     @default_start_date = previous_finish_date && Day.next_working(from: previous_finish_date).date
   end
 

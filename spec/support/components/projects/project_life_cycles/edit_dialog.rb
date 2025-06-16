@@ -51,13 +51,15 @@ module Components
           close if close_after_yield
         end
 
-        def clear_dates
-          if has_button?("start_date_clear_button")
+        def clear_dates(fields: %i(start_date finish_date))
+          fields = Array(fields)
+
+          if fields.include?(:start_date) && has_button?("start_date_clear_button")
             click_button("start_date_clear_button")
             wait_for_form_preview_to_reload
           end
 
-          if has_button?("finish_date_clear_button")
+          if fields.include?(:finish_date) && has_button?("finish_date_clear_button")
             click_button("finish_date_clear_button")
             wait_for_form_preview_to_reload
           end
