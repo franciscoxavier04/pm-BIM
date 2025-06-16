@@ -567,6 +567,14 @@ RSpec.describe EnterpriseToken do
       end
     end
 
+    context "when token is invalid" do
+      let(:token) { build_enterprise_token(domain: "wrong.domain") }
+
+      it "is not expired" do
+        expect(token).not_to be_expired
+      end
+    end
+
     context "when token expiration date is in the past" do
       let(:token) { build_enterprise_token(expires_at: Date.yesterday) }
 

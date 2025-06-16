@@ -168,7 +168,7 @@ class EnterpriseToken < ApplicationRecord
   delegate :clear_current_tokens_cache, to: :EnterpriseToken
 
   def expired?(reprieve: true)
-    token_object.expired?(reprieve:) || invalid_domain?
+    token_object.expired?(reprieve:)
   end
 
   ##
