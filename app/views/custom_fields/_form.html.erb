@@ -32,6 +32,9 @@ See COPYRIGHT and LICENSE files for more details.
 <section
   class="form--section"
   id="custom_field_form">
+
+  <%= f.hidden_field :field_format %>
+
   <div class="form--field -required" id="custom_field_name_attributes">
     <%= f.text_field :name,
                      required: true,
