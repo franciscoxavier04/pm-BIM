@@ -100,7 +100,7 @@ module Storages
 
             def ancestors(parent_location)
               path = parent_location.split("/")
-              return [] if path.count == 0
+              return [] if path.none?
 
               path.take(path.count - 1).reduce([]) do |list, item|
                 last = list.last
