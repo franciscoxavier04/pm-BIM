@@ -215,6 +215,12 @@ In OpenProject, you can choose from several integrations, such as the [Excel syn
 
 Internal comments are available as [Enterprise add-on](#enterprise-add-on) in OpenProject. If enabled, users can choose whether their comment in a work package Activity tab is visible to everyone that has access to the work package – or if it is internal. An internal comment is only visible to users with a dedicated permission – by default, those with a project admin role. [Learn more about internal comments for work packages in OpenProject in this blog article](https://www.openproject.org/blog/internal-comments/).
 
+## L
+
+### Lag
+
+In OpenProject, a lag defines the number of working days between two work packages with a finish-to-start [relation](#relations). You can use positive or negative values to delay or overlap tasks. [Learn more about work package relations in the user guide](../user-guide/work-packages/work-package-relations-hierarchies).
+
 ## M
 
 ### Macro
@@ -290,18 +296,30 @@ OpenID Connect (OIDC) is an authentication protocol built on OAuth 2.0 that enab
 
 ### Phase
 
-A phase in OpenProject is defined as a [work package type](#work-package-types), which usually includes several work packages of types like task or feature. For example, typical phases for a construction repair project would be the following: Project definition, detailed Design & Tender, Construction and Post project.
+A phase in OpenProject can either be a [work package type](#work-package-types) or [project](#project) phase.
+
+ The **type 'Phase'** usually includes several work packages of types like task or feature. For example, typical phases for a construction repair project would be the following: Project definition, detailed Design & Tender, Construction and Post project.
+
+ The **project phase** is part of the overall [project life cycle](#project-life-cycle) and helps structure the project's progression over time. A project phase can begin or end with a [phase gate](#phase-gate), marking key decision points. In OpenProject, administrators can enable some or all of the following project phases: Initiating, Planning, Executing, and Closing. These phases are based on the [open source project management framework PM²](#pm--pm2) and help teams manage complex projects in a structured, methodical way. [Read more about phases in a project management life cycle](../system-admin-guide/projects/project-life-cylce).
+
+ ### Phase gate
+
+A phase gate is a decision point between two [project phases](#phase) within the [project life cycle](#project-life-cycle). It marks the review of progress and determines whether the project can move to the next phase. In OpenProject, phase gates follow the structure defined by the [PM² project management framework](#pm--pm2).
 
 ### Plugin
 
 In OpenProject, you can choose from several plugins or [integrations](#integration), or add your own plugins to the Community. In contrast to an integration, a plugin is installed on top of / as part of the OpenProject installation. As an open source software, OpenProject is open to Community-created plugins. Please note that we do not guarantee error-free and seamless use of those plugins.
 
-Your activated plugins are listed together with your [modules](#module) in your instance under --> Administration --> Plugins.
+Your activated plugins are listed together with your [modules](#module) in your instance under → Administration → Plugins.
 
 **More information on plugins in OpenProject**
 
 - [See all available plugins and integrations for OpenProject](../system-admin-guide/integrations/)
 - [Read how to create an OpenProject plugin](../development/create-openproject-plugin/)
+
+### PM² / PM2
+
+PM² is a project management framework developed by the European Commission to support the successful delivery of projects, especially in the public sector. It combines best practices from various methodologies and provides clear guidance, templates, and governance structures. In OpenProject, the [project life cycle](#project-life-cycle) can be structured according to PM², with predefined [project phases](#phase), [phase gates](#phase-gate), and roles based on this framework. [Read more about PM² and its role for OpenProject](https://www.openproject.org/pm2/).
 
 ### Primer design system
 
@@ -326,6 +344,14 @@ Project folders help collaborating in the most efficient way. They can be used w
 ### Project identifier
 
 The project identifier is defined as the unique name used to identify and reference projects in the application as well as in the address bar of your browser. Project identifiers can be changed in the [project settings](#project-settings).
+
+### Project life cycle
+
+In OpenProject, the project life cycle consists of [phases](#phase) and [phase gates](#phase-gate) that help you structure your projects and work packages methodically. By default, these follow the [PM² project management framework](#pm--pm2), using the phases *Initiating*, *Planning*, *Executing*, and *Closing*.
+
+Phases and phase gates are visible on the [project overview](#project-overview) page, in [work package tables](#work-package-table), and in [project lists](#project-lists). They can be used for filtering, grouping, and scheduling. Project administrators can activate relevant phases and gates for each project, while the global configuration of phases is an [Enterprise add-on](#enterprise-add-on).
+
+[Read more acout the project life cycle in our system admin guide](../system-admin-guide/projects/project-life-cycle).
 
 ### Project lists
 
@@ -419,7 +445,7 @@ A theme is a visual customization setting that changes the overall look and feel
 
 ### User
 
-In OpenProject, a user is defined as a person who uses OpenProject, described by an identifier. New users can be created in the admin settings. Users can become project [members](#member) by either assigning them a role and adding them via the [project settings](#project-settings). Or by adding them to a project by the system admin at: Administration --> Users and permissions --> Users. Then clicking on the username and navigating to the tab "Projects".
+In OpenProject, a user is defined as a person who uses OpenProject, described by an identifier. New users can be created in the admin settings. Users can become project [members](#member) by either assigning them a role and adding them via the [project settings](#project-settings). Or by adding them to a project by the system admin at: Administration → Users and permissions → Users. Then clicking on the username and navigating to the tab "Projects".
 
 ### User guide
 
