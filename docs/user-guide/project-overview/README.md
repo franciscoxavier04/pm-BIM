@@ -51,7 +51,7 @@ On each project's **overview page**, you can find a section called **project lif
 
 Project phases must follow specific rules for setting and adjusting dates. The system automatically schedules phases based on the input provided, enforcing correct order, preventing overlaps, and preserving durations where possible.
 
-For each of the active project phases, you can defined a date range. To set or manage the date range click on that date range (it will be empty initially)and set the date with a OpenProject date picker. 
+For each of the active project phases, you can defined a date range. To set or manage the date range click on that date range (it will be empty initially) and set the date with a OpenProject date picker. 
 
 > [!NOTE]
 >
@@ -70,10 +70,10 @@ Use the guidelines below to understand how phase and gate scheduling behaves.
 - Phases cannot overlap with one another.
 - Gaps between phases and gates are allowed.
 
-#### Gates and phase sequence constraints
+#### Phase gates and constraints
 
-- **Gates** can:
-    - Share the same date as the **start or end** of a phase.
+- **Gates** must:
+    - Share the same date with another gate of the same phase.
     - **Not** be placed **within** the date range of a phase.
     - **Not** share the same date with another gate.
   - **Phases and gates must follow the predefined order** configured in system administration (e.g., *Initiating* must come before *Closing*).
@@ -110,7 +110,7 @@ Use the guidelines below to understand how phase and gate scheduling behaves.
     - If it had a **duration**, the system may adjust the finish date to maintain it.
     - This can trigger rescheduling of succeeding phases.
     - If it had **no duration**, a start date may be set, but the finish date may remain unset. This may unset the next phase’s start date.
-- When a phase is **deactivated**, its dates are preserved, and scheduling skips it going forward.
+- When a phase is **deactivated**, its dates are preserved, and scheduling skips it going forward with the next stage.
 
 #### Other scheduling triggers
  - **Changes to non-working days** (added or removed) will reschedule all affected phases across all projects to **preserve duration**.
