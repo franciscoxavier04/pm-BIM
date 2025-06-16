@@ -29,6 +29,5 @@
 #++
 
 module WorkPackageTypes
-  class UpdateSettingsContract < CreateContract
-  end
+  UpdateSettingsContract = CreateContract
 end
