@@ -11,7 +11,10 @@
 
       if has_attachments?
         concat render(Primer::Beta::Heading.new(tag: :h4)) { I18n.t(:label_attachment_plural) }
-        concat helpers.list_attachments(resource_representer, inputs: { allowUploading: false })
+        concat helpers.list_attachments(
+          resource_representer,
+          inputs: { allowUploading: false, allowRemoval: false }
+        )
       end
     end
 
