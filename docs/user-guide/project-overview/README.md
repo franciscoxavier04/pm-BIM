@@ -51,7 +51,7 @@ On each project's **overview page**, you can find a section called **project lif
 
 Project phases must follow specific rules for setting and adjusting dates. The system automatically schedules phases based on the input provided, enforcing correct order, preventing overlaps, and preserving durations where possible.
 
-For each of the active project phases, you can defined a date range. To set or manage the date range click on that date range (it will be empty initially) and set the date with a OpenProject date picker. 
+For each of the active project phases, you can define a date range. To set or manage the date range click on that date range (it will be empty initially) and set the date with a OpenProject date picker. 
 
 > [!NOTE]
 >
