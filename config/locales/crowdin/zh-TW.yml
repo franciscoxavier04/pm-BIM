@@ -556,11 +556,11 @@ zh-TW:
   priorities:
     edit:
       priority_color_text: |
-        Click to assign or change the color of this priority.
-        It can be used for highlighting work packages in the table.
+        點擊以指派或變更此優先順序的顏色。
+        可用於在表格中突顯工作套件。
     admin:
       default:
-        caption: Making this priority default will override the previous default priority.
+        caption: 將此優先順序設為預設值，將會覆寫先前的預設優先順序。
   reactions:
     action_title: "反應"
     add_reaction: "加入反應"
@@ -3884,9 +3884,9 @@ zh-TW:
       phase_gates: "階段關卡"
       new:
         description: "此專案階段的變更會反映在啟用此階段的所有專案中。"
-        heading: "New phase"
+        heading: "新增階段"
       edit:
-        heading: "Edit phase"
+        heading: "編輯階段"
       both_gate: "開始以及結束關卡"
       no_gate: "沒有關卡"
       start_gate: "開始關卡"

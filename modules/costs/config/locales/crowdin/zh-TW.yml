@@ -73,7 +73,7 @@ zh-TW:
         time_entry:
           invalid_time: "必須在 00:00 到 23:59 之間。"
           cannot_log_for_this_work_package: "無法記錄此工作套件的時間。"
-          duplicate_ongoing: "An ongoing time entry already exists for this user."
+          duplicate_ongoing: "此使用者已有一筆正在進行中的工時紀錄。"
         work_package:
           is_not_a_valid_target_for_cost_entries: "工作套件 #%{id} 無法作為有效的支出重新分配目標。"
           nullify_is_not_valid_for_cost_entries: "支出項目無法分配至專案"
