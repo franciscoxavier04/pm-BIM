@@ -85,7 +85,16 @@ module FlashMessagesHelper
   def build_flash_component(type, *args)
     options = args.extract_options!
     content = args.first || options[:message]
-    OpPrimer::FlashComponent.new(scheme: mapped_flash_type(type), **options)
-      .with_content(join_flash_messages(content))
+
+    action_button_arguments = options.delete(:action_button_arguments)
+    action_button_content = options.delete(:action_button_content)
+
+    OpPrimer::FlashComponent.new(scheme: mapped_flash_type(type), **options).tap do |component|
+      component.with_content(join_flash_messages(content))
+
+      if action_button_arguments.present?
+        component.with_action_button(**action_button_arguments) { action_button_content }
+      end
+    end
   end
 end
