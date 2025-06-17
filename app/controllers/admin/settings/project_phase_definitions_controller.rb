@@ -29,12 +29,12 @@
 #++
 
 module Admin::Settings
-  class ProjectLifeCycleDefinitionsController < ::Admin::SettingsController
+  class ProjectPhaseDefinitionsController < ::Admin::SettingsController
     include FlashMessagesOutputSafetyHelper
     include OpTurbo::ComponentStream
     include Projects::LifeCycleDefinitionHelper
 
-    menu_item :project_life_cycle_definitions_settings
+    menu_item :project_phase_definitions_settings
 
     before_action :check_feature_flag
     before_action :require_enterprise_token, except: %i[index]
