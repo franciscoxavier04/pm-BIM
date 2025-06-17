@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Projects::LifeCycleStepDefinitions
+module Projects::PhaseDefinitions
   class FinishGateNameForm < ApplicationForm
     form do |f|
       f.text_field(

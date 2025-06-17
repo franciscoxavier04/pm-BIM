@@ -28,14 +28,20 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Projects::LifeCycleStepDefinitions
-  class StartGateNameForm < ApplicationForm
+module Projects::PhaseDefinitions
+  class DetailsForm < ApplicationForm
     form do |f|
       f.text_field(
-        label: attribute_name(:start_gate_name),
-        name: :start_gate_name,
-        input_width: :medium,
-        required: true
+        label: attribute_name(:name),
+        name: :name,
+        required: true,
+        input_width: :medium
+      )
+      f.color_select_list(
+        label: attribute_name(:color),
+        name: :color,
+        required: true,
+        input_width: :medium
       )
     end
   end

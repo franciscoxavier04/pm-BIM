@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# -- copyright
+#-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2010-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,28 +26,21 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
-module Projects::LifeCycleStepDefinitions
-  class FormComponent < ApplicationComponent
-    include OpPrimer::ComponentHelpers
-    include OpPrimer::FormHelpers
+#++
 
-    def selected?(tabname)
-      tabname == if no_errors || details_tab_errors.any?
-                   :details
-                 else
-                   :phase_gates
-                 end
-    end
-
-    private
-
-    def no_errors
-      model.errors.empty?
-    end
-
-    def details_tab_errors
-      model.errors.attribute_names & %i[name color]
+module Projects::PhaseDefinitions
+  class FinishGateCheckboxForm < ApplicationForm
+    form do |f|
+      f.check_box(
+        label: attribute_name(:finish_gate),
+        name: :finish_gate,
+        caption: I18n.t("settings.project_phase_definitions.finish_gate_caption"),
+        input_width: :medium,
+        data: {
+          "show-when-checked-target": "cause",
+          target_name: "finish_gate"
+        }
+      )
     end
   end
 end

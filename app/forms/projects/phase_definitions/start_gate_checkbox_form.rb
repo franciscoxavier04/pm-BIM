@@ -28,17 +28,17 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Projects::LifeCycleStepDefinitions
-  class FinishGateCheckboxForm < ApplicationForm
+module Projects::PhaseDefinitions
+  class StartGateCheckboxForm < ApplicationForm
     form do |f|
       f.check_box(
-        label: attribute_name(:finish_gate),
-        name: :finish_gate,
-        caption: I18n.t("settings.project_phase_definitions.finish_gate_caption"),
+        label: attribute_name(:start_gate),
+        name: :start_gate,
+        caption: I18n.t("settings.project_phase_definitions.start_gate_caption"),
         input_width: :medium,
         data: {
           "show-when-checked-target": "cause",
-          target_name: "finish_gate"
+          target_name: "start_gate"
         }
       )
     end
