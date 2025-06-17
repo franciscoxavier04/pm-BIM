@@ -100,8 +100,8 @@ module Pages
       end
 
       def within_life_cycles_sidebar(&)
-        within "#project-life-cycles-sidebar" do
-          expect(page).to have_css("[data-test-selector='project-life-cycles-sidebar-async-content']")
+        within "#project-life-cycle-sidebar" do
+          expect(page).to have_css("[data-test-selector='project-life-cycle-sidebar-async-content']")
           yield
         end
       end

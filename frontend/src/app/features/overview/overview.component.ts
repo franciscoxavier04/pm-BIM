@@ -65,7 +65,7 @@ export class OverviewComponent extends GridPageComponent {
   }
 
   protected lifeCyclesSidebarId():string {
-    return 'project-life-cycles-sidebar';
+    return 'project-life-cycle-sidebar';
   }
 
   protected projectCustomFieldsSidebarSrc():string {

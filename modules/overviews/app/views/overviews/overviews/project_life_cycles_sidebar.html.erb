@@ -26,6 +26,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
-<%= content_tag("turbo-frame", id: "project-life-cycles-sidebar") do %>
+<%= content_tag("turbo-frame", id: "project-life-cycle-sidebar") do %>
   <%= render(Overviews::ProjectPhases::SidePanelComponent.new(project: @project)) %>
 <% end %>
