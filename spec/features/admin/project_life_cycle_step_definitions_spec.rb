@@ -36,7 +36,7 @@ RSpec.describe "Projects life cycle settings", :js, with_flag: { stages_and_gate
     create(:project_phase_definition, name: "Executing", start_gate: true, start_gate_name: "Ready to Execute")
   end
 
-  let(:definitions_page) { Pages::Admin::Settings::ProjectLifeCycleStepDefinitions.new }
+  let(:definitions_page) { Pages::Admin::Settings::ProjectPhaseDefinitions.new }
 
   context "as non admin" do
     current_user { create(:user) }

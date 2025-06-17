@@ -29,7 +29,7 @@
 #++
 
 module Settings
-  module ProjectLifeCycleStepDefinitions
+  module ProjectPhaseDefinitions
     class IndexComponent < ApplicationComponent
       include OpPrimer::ComponentHelpers
       include OpTurbo::Streamable

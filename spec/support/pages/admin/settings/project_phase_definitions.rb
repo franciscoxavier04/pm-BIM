@@ -33,7 +33,7 @@ require "support/pages/page"
 module Pages
   module Admin
     module Settings
-      class ProjectLifeCycleStepDefinitions < ::Pages::Page
+      class ProjectPhaseDefinitions < ::Pages::Page
         def path = "/admin/settings/project_life_cycle"
 
         def expect_listed(names)

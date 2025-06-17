@@ -29,5 +29,5 @@ See COPYRIGHT and LICENSE files for more details.
 
 <% html_title t(:label_administration), t("settings.project_phase_definitions.heading") %>
 
-<%= render Settings::ProjectLifeCycleStepDefinitions::IndexHeaderComponent.new %>
-<%= render Settings::ProjectLifeCycleStepDefinitions::IndexComponent.new(definitions: @definitions) %>
+<%= render Settings::ProjectPhaseDefinitions::IndexHeaderComponent.new %>
+<%= render Settings::ProjectPhaseDefinitions::IndexComponent.new(definitions: @definitions) %>

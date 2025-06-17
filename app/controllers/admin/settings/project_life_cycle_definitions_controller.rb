@@ -136,7 +136,7 @@ module Admin::Settings
 
     def update_definitions_via_turbo_stream
       update_via_turbo_stream(
-        component: Settings::ProjectLifeCycleStepDefinitions::IndexComponent.new(
+        component: Settings::ProjectPhaseDefinitions::IndexComponent.new(
           definitions: find_definitions
         )
       )

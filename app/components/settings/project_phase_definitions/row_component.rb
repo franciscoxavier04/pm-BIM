@@ -29,26 +29,31 @@
 #++
 
 module Settings
-  module ProjectLifeCycleStepDefinitions
-    class FormHeaderComponent < ApplicationComponent
-      options :heading_scope
+  module ProjectPhaseDefinitions
+    class RowComponent < ApplicationComponent
+      include OpPrimer::ComponentHelpers
+      include Projects::LifeCycleDefinitionHelper
 
-      def breadcrumbs_items
-        [
-          {
-            href: admin_index_path,
-            text: t("label_administration")
+      alias_method :definition, :model
+
+      options :first?,
+              :last?
+
+      private
+
+      def move_action(menu:, move_to:, label:, icon:)
+        menu.with_item(
+          label:,
+          href: move_admin_settings_project_phase_definition_path(definition, move_to:),
+          form_arguments: {
+            method: :patch
           },
-          {
-            href: admin_settings_project_custom_fields_path,
-            text: t("label_project_plural")
-          },
-          {
-            href: admin_settings_project_phase_definitions_path,
-            text: t("settings.project_phase_definitions.heading")
-          },
-          t("settings.project_phase_definitions.#{heading_scope}.heading")
-        ]
+          data: {
+            "projects--settings--border-box-filter-target": "hideWhenFiltering"
+          }
+        ) do |item|
+          item.with_leading_visual_icon(icon:)
+        end
       end
     end
   end

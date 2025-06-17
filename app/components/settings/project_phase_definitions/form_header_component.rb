@@ -29,13 +29,25 @@
 #++
 
 module Settings
-  module ProjectLifeCycleStepDefinitions
-    class IndexHeaderComponent < ApplicationComponent
+  module ProjectPhaseDefinitions
+    class FormHeaderComponent < ApplicationComponent
+      options :heading_scope
+
       def breadcrumbs_items
         [
-          { href: admin_index_path, text: t("label_administration") },
-          { href: admin_settings_project_custom_fields_path, text: t("label_project_plural") },
-          t("settings.project_phase_definitions.heading")
+          {
+            href: admin_index_path,
+            text: t("label_administration")
+          },
+          {
+            href: admin_settings_project_custom_fields_path,
+            text: t("label_project_plural")
+          },
+          {
+            href: admin_settings_project_phase_definitions_path,
+            text: t("settings.project_phase_definitions.heading")
+          },
+          t("settings.project_phase_definitions.#{heading_scope}.heading")
         ]
       end
     end
