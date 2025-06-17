@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,44 +27,35 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+#
+require "spec_helper"
 
-module CustomFields::Inputs::Base::Utils
-  delegate :attribute_name, to: :@custom_field
+RSpec.describe CustomFields::Inputs::Text, type: :forms do
+  include_context "with rendered custom field input form"
 
-  def base_input_attributes
-    {
-      name:,
-      label:,
-      value:,
-      required: required?,
-      invalid: invalid?,
-      validation_message:,
-      help_text_options: { attribute_name: }
-    }
+  let(:custom_field) { create(:text_project_custom_field, name: "Text field") }
+
+  it_behaves_like "rendering label with help text", "Text field"
+
+  context "without a value" do
+    it "renders field" do
+      expect(rendered_form).to have_field "Text field", type: :textarea, with: "", visible: :hidden
+    end
   end
 
-  def name
-    @custom_field.id.to_s
+  context "when value is empty" do
+    let(:value) { "" }
+
+    it "renders field" do
+      expect(rendered_form).to have_field "Text field", type: :textarea, with: "", visible: :hidden
+    end
   end
 
-  def label
-    @custom_field.name
-  end
+  context "when value is present" do
+    let(:value) { "parce que nous le valons bien" }
 
-  def value
-    @custom_value
-  end
-
-  def required?
-    @custom_field.is_required?
-  end
-
-  def qa_field_name
-    attribute_name(:kebab_case)
-  end
-
-  # used within autocompleter inputs
-  def append_to
-    options.fetch(:wrapper_id, "body")
+    it "renders field" do
+      expect(rendered_form).to have_field "Text field", type: :textarea, with: "parce que nous le valons bien", visible: :hidden
+    end
   end
 end

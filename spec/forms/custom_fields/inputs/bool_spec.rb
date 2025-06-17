@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,44 +27,35 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+#
+require "spec_helper"
 
-module CustomFields::Inputs::Base::Utils
-  delegate :attribute_name, to: :@custom_field
+RSpec.describe CustomFields::Inputs::Bool, type: :forms do
+  include_context "with rendered custom field input form"
 
-  def base_input_attributes
-    {
-      name:,
-      label:,
-      value:,
-      required: required?,
-      invalid: invalid?,
-      validation_message:,
-      help_text_options: { attribute_name: }
-    }
+  let(:custom_field) { create(:boolean_project_custom_field, name: "Boolean field") }
+
+  it_behaves_like "rendering label with help text", "Boolean field"
+
+  context "without a value" do
+    it "renders field" do
+      expect(rendered_form).to have_unchecked_field "Boolean field", with: "1"
+    end
   end
 
-  def name
-    @custom_field.id.to_s
+  context "when value is true" do
+    let(:value) { true }
+
+    it "renders field" do
+      expect(rendered_form).to have_checked_field "Boolean field", with: "1"
+    end
   end
 
-  def label
-    @custom_field.name
-  end
+  context "when value is false" do
+    let(:value) { false }
 
-  def value
-    @custom_value
-  end
-
-  def required?
-    @custom_field.is_required?
-  end
-
-  def qa_field_name
-    attribute_name(:kebab_case)
-  end
-
-  # used within autocompleter inputs
-  def append_to
-    options.fetch(:wrapper_id, "body")
+    it "renders field" do
+      expect(rendered_form).to have_unchecked_field "Boolean field", with: "1"
+    end
   end
 end

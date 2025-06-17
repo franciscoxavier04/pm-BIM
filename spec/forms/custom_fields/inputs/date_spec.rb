@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,44 +27,39 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+#
+require "spec_helper"
 
-module CustomFields::Inputs::Base::Utils
-  delegate :attribute_name, to: :@custom_field
+RSpec.describe CustomFields::Inputs::Date, type: :forms do
+  include_context "with rendered custom field input form"
 
-  def base_input_attributes
-    {
-      name:,
-      label:,
-      value:,
-      required: required?,
-      invalid: invalid?,
-      validation_message:,
-      help_text_options: { attribute_name: }
-    }
+  let(:custom_field) { create(:date_project_custom_field, name: "Date field") }
+
+  it_behaves_like "rendering label with help text", "Date field"
+
+  context "without a value" do
+    it "renders field" do
+      expect(rendered_form).to have_field "Date field", type: :date, with: ""
+    end
   end
 
-  def name
-    @custom_field.id.to_s
+  context "when value is invalid" do
+    let(:value) { "NOT A DATE" }
+
+    it "renders invalid field" do
+      expect(rendered_form).to have_field "Date field", type: :date, with: "NOT A DATE", aria: { invalid: true }
+    end
+
+    it "renders error message" do
+      expect(rendered_form).to have_css ".FormControl-inlineValidation", text: "Value is not a valid date."
+    end
   end
 
-  def label
-    @custom_field.name
-  end
+  context "when value is valid" do
+    let(:value) { Date.civil(2024, 3, 20) }
 
-  def value
-    @custom_value
-  end
-
-  def required?
-    @custom_field.is_required?
-  end
-
-  def qa_field_name
-    attribute_name(:kebab_case)
-  end
-
-  # used within autocompleter inputs
-  def append_to
-    options.fetch(:wrapper_id, "body")
+    it "renders field" do
+      expect(rendered_form).to have_field "Date field", type: :date, with: "2024-03-20"
+    end
   end
 end

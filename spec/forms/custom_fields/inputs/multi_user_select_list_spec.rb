@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,44 +27,22 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+#
+require "spec_helper"
 
-module CustomFields::Inputs::Base::Utils
-  delegate :attribute_name, to: :@custom_field
+RSpec.describe CustomFields::Inputs::MultiUserSelectList, type: :forms do
+  include_context "with rendered custom field input form"
 
-  def base_input_attributes
-    {
-      name:,
-      label:,
-      value:,
-      required: required?,
-      invalid: invalid?,
-      validation_message:,
-      help_text_options: { attribute_name: }
-    }
-  end
+  let(:custom_field) { create(:user_project_custom_field, name: "Users field", multi_value: true) }
+  let(:value) { create_list(:user, 2) }
 
-  def name
-    @custom_field.id.to_s
-  end
-
-  def label
-    @custom_field.name
-  end
-
-  def value
-    @custom_value
-  end
-
-  def required?
-    @custom_field.is_required?
-  end
-
-  def qa_field_name
-    attribute_name(:kebab_case)
-  end
-
-  # used within autocompleter inputs
-  def append_to
-    options.fetch(:wrapper_id, "body")
+  it_behaves_like "rendering label with help text", "Users field"
+  it_behaves_like "rendering autocompleter", "Users field", tag_name: "opce-user-autocompleter", multiple: true do
+    it "sets correct autocompleter inputs" do
+      expect(autocompleter["data-resource"]).to be_json_eql(%{"principals"})
+      expect(autocompleter["data-url"]).to be_json_eql(%{"/api/v3/principals"})
+      expect(autocompleter["data-input-value"]).to have_json_size(2)
+      expect(autocompleter["data-input-value"]).to be_json_eql(value.pluck(:id).map(&:to_s).to_json)
+    end
   end
 end

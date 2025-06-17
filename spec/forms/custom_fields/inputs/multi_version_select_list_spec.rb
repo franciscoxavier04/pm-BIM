@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,44 +27,22 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+#
+require "spec_helper"
 
-module CustomFields::Inputs::Base::Utils
-  delegate :attribute_name, to: :@custom_field
+RSpec.describe CustomFields::Inputs::MultiVersionSelectList, type: :forms do
+  include_context "with rendered custom field input form"
 
-  def base_input_attributes
-    {
-      name:,
-      label:,
-      value:,
-      required: required?,
-      invalid: invalid?,
-      validation_message:,
-      help_text_options: { attribute_name: }
-    }
-  end
+  let(:custom_field) { create(:version_project_custom_field, name: "Versions field", multi_value: true) }
+  let(:value) { create_list(:version, 2, project: model) }
+  let!(:other_versions) { create_list(:version, 3, project: model) }
 
-  def name
-    @custom_field.id.to_s
-  end
-
-  def label
-    @custom_field.name
-  end
-
-  def value
-    @custom_value
-  end
-
-  def required?
-    @custom_field.is_required?
-  end
-
-  def qa_field_name
-    attribute_name(:kebab_case)
-  end
-
-  # used within autocompleter inputs
-  def append_to
-    options.fetch(:wrapper_id, "body")
+  it_behaves_like "rendering label with help text", "Versions field"
+  it_behaves_like "rendering autocompleter", "Versions field", multiple: true do
+    it "sets correct autocompleter inputs" do
+      expect(autocompleter["data-items"]).to have_json_size(5)
+      expect(autocompleter["data-model"]).to have_json_size(2)
+      expect(autocompleter["data-model"]).to be_json_eql(value.map { it.slice(:name) }.to_json).excluding("group_by")
+    end
   end
 end
