@@ -168,7 +168,7 @@ module Authentication
       if developer_provider?
         User.find_by(mail: auth_hash[:uid])
       else
-        UserAuthProviderLink.with_identity_url(user_attributes[:identity_url]).first&.user
+        UserAuthProviderLink.with_identity_url(user_attributes[:identity_url]).first&.principal
       end
     end
 

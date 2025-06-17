@@ -387,7 +387,7 @@ RSpec.describe OmniAuthLoginController, :skip_2fa_stage do
                 # The authorization is successful which results in the registration
                 # of a new user in this case because we changed the provider
                 # and there isn't a user with that identity URL yet.
-                new_user = UserAuthProviderLink.with_identity_url("some other:123545").first.user
+                new_user = UserAuthProviderLink.with_identity_url("some other:123545").first.principal
                 expect(OpenProject::OmniAuth::Authorization)
                   .to have_received(:after_login!).with(new_user, any_args)
               end
