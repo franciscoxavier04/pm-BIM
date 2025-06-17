@@ -60,6 +60,7 @@ module WorkPackageTypes
     end
 
     def check_patterns(params)
+      return true unless params.key?(:patterns)
       return true if params.key?(:patterns) && params[:patterns].blank?
 
       Types::Patterns::CollectionContract.new.call(params[:patterns]).success?
