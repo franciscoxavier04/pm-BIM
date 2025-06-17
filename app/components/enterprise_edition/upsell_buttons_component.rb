@@ -75,14 +75,7 @@ module EnterpriseEdition
       return unless EnterpriseToken.active?
       return unless User.current.admin?
 
-      render(Primer::Beta::Button.new(
-               classes: "upsell-colored-background",
-               tag: :a,
-               href: OpenProject::Enterprise.upgrade_path,
-               align_self: :center
-             )) do
-        I18n.t("ee.upsell.buy_now_button")
-      end
+      render(EnterpriseEdition::BuyNowButtonComponent.new)
     end
 
     # Allow providing a custom upgrade now button

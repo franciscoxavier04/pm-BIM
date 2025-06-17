@@ -61,6 +61,10 @@ class EnterpriseToken < ApplicationRecord
       active_tokens.any?
     end
 
+    def trial_only?
+      active_non_trial_tokens.empty? && active_trial_tokens.any?
+    end
+
     def available_features
       active_tokens.map(&:available_features).flatten.uniq
     end
@@ -216,6 +220,10 @@ class EnterpriseToken < ApplicationRecord
 
   def sort_key
     [expires_at || FAR_FUTURE_DATE, starts_at || FAR_FUTURE_DATE]
+  end
+
+  def days_left
+    (valid_until.to_date - Time.zone.today).to_i
   end
 
   private

@@ -38,7 +38,7 @@ module EnterpriseEdition
       render(Primer::Beta::Button.new(
                classes: "upsell-colored-background hidden-for-mobile",
                tag: :a,
-               href: "/admin/subscriptions/new",
+               href: OpenProject::Enterprise.upgrade_path,
                align_self: :center
              )) do
         I18n.t(:button_buy_now)

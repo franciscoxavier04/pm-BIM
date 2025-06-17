@@ -69,14 +69,10 @@
             end
 
           flex.with_row(mt: 1) do
-            if teaser?
-              render(EnterpriseEdition::BuyNowButtonComponent.new)
-            else
-              render EnterpriseEdition::UpsellButtonsComponent.new(
-                feature_key,
-                justify_content: (large? ? :center : :flex_start)
-              )
-            end
+            render EnterpriseEdition::UpsellButtonsComponent.new(
+              feature_key,
+              justify_content: (large? ? :center : :flex_start)
+            )
           end
         end
       end
