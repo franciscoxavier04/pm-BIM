@@ -154,6 +154,20 @@ It will then display the corresponding work package with the attachment.
 
 ![Filter a work package table by attachment name](openproject_user_guide_wp_table_filter_by_attachment_name.png)
 
+### Filter for project phases and phase gates
+
+To focus on specific stages of your project, you can use the **Project phase** filter in the work packages table. Simply select the relevant phase(s) from the filter dropdown to display all associated work packages.
+
+![Project phase filter in work packages table in OpenProject](openproject_user_guide_wp_table_project_phases_filter.png)
+
+Once applied, the filtered view shows only the work packages assigned to the selected phase(s), providing a clear snapshot of where your tasks sit within the overall project lifecycle. 
+
+![Work packages filtered by project phase in OpenProject](openproject_user_guide_wp_table_project_phases_displayed.png)
+
+To gain even more insight, you can group the work packages by project phase. This helps visualize how tasks are distributed across phases and identify any gaps or overlaps in planning. This filtering and grouping combination makes it easier to manage progress, align tasks with strategic milestones, and ensure smooth transitions through phase gates.
+
+![Work packages grouped by phase in OpenProject](openproject_user_guide_wp_table_project_phases_displayed_grouped_by_phase.png)
+
 ## Sort the work package table
 
 ### Automatic sorting of the work package table
