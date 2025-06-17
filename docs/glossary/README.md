@@ -267,7 +267,7 @@ OpenProject offers a Nextcloud integration which allows you to manage files in a
 
 ### Notifications
 
-In OpenProject, you get in-app notifications about important changes that are relevant to you – for example new comments that mention you, updates to status, [type](#work-package-types) or dates or new assignments. This feature is enabled by default and can be used as an addition or an alternative to email notifications. To view the notifications, click the bell icon at the top right of the header. The bell icon will be displayed with a red badge if there are new notifications for you. [Read more about notifications in OpenProject](../user-guide/notifications/).
+In OpenProject, you get in-app notifications about important changes that are relevant to you – for example new comments that mention you, updates to status, [type](#work-package-type) or dates or new assignments. This feature is enabled by default and can be used as an addition or an alternative to email notifications. To view the notifications, click the bell icon at the top right of the header. The bell icon will be displayed with a red badge if there are new notifications for you. [Read more about notifications in OpenProject](../user-guide/notifications/).
 
 ## O
 
@@ -367,7 +367,7 @@ In OpenProject, the project overview is defined as a single [dashboard](#dashboa
 
 In OpenProject, the **project phase** is part of the overall [project life cycle](#project-life-cycle) and helps structure the project's progression over time. A project phase can begin or end with a [phase gate](#phase-gate), marking key decision points. In OpenProject, administrators can enable some or all of the following project phases: Initiating, Planning, Executing, and Closing. These phases are based on the [open source project management framework PM²](#pm--pm2) and help teams manage complex projects in a structured, methodical way. Configuring project phases and adding new ones is available as an [Enterprise add-on](#enterprise-add-on).
 
-[Read more about phases in a project management life cycle](../system-admin-guide/projects/project-life-cylce).
+[Read more about phases in a project management life cycle](../system-admin-guide/projects/project-life-cycle).
 
 ### Project settings
 
@@ -488,13 +488,13 @@ To make it easier for project managers to work with work package hierarchies, Op
 
 ### Workflow
 
-A workflow in OpenProject is defined as the allowed transitions between status for a [role](#role) and a type, i.e. which status changes can a certain role implement depending on the [work package type](#work-package-types). Workflows can be defined in the admin settings. For example, you might only want developers to be able to set the status "developed". [Read more about work package workflows in OpenProject](../system-admin-guide/manage-work-packages/work-package-workflows/#manage-work-package-workflows).
+A workflow in OpenProject is defined as the allowed transitions between status for a [role](#role) and a type, i.e. which status changes can a certain role implement depending on the [work package type](#work-package-type). Workflows can be defined in the admin settings. For example, you might only want developers to be able to set the status "developed". [Read more about work package workflows in OpenProject](../system-admin-guide/manage-work-packages/work-package-workflows/#manage-work-package-workflows).
 
 ![glossary-openproject-sys-admin-edit-workflow](glossary-openproject-sys-admin-edit-workflow.png)
 
 ### Work package
 
-In OpenProject, a [work package](../user-guide/work-packages/#overview) is defined as an item in a project. It is a subset of a project that can be assigned to users for execution, such as Tasks, Bugs, User Stories, Milestones, and more. Work packages have a [type](#work-package-types), an [ID](#work-package-id) and a [subject](#work-package-subject) and may have additional attributes, such as assignee, responsible, [story points](#story-points) or [version](#versions). Work packages are displayed in a project timeline (unless they are [filtered](#filters) out in the timeline configuration) - either as a milestone or as a [phase](#phase). In order to use the work packages, the work package module has to be activated in the [project settings](#project-settings) by a project admin.
+In OpenProject, a [work package](../user-guide/work-packages/#overview) is defined as an item in a project. It is a subset of a project that can be assigned to users for execution, such as Tasks, Bugs, User Stories, Milestones, and more. Work packages have a [type](#work-package-type), an [ID](#work-package-id) and a [subject](#work-package-subject) and may have additional attributes, such as assignee, responsible, [story points](#story-points) or [version](#versions). Work packages are displayed in a project timeline (unless they are [filtered](#filters) out in the timeline configuration) - either as a milestone or as a [phase](#phase). In order to use the work packages, the work package module has to be activated in the [project settings](#project-settings) by a project admin.
 
 ![A work package in OpenProject](glossary-openproject-work-package.png)
 
