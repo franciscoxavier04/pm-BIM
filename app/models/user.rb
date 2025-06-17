@@ -98,8 +98,6 @@ class User < Principal
   has_many :emoji_reactions, dependent: :destroy
   has_many :reminders, foreign_key: "creator_id", dependent: :destroy, inverse_of: :creator
   has_many :remote_identities, dependent: :destroy
-  has_many :user_auth_provider_links, dependent: :destroy
-  has_many :auth_providers, through: :user_auth_provider_links
 
   # Users blocked via brute force prevention
   # use lambda here, so time is evaluated on each query
@@ -310,20 +308,6 @@ class User < Principal
     else
       "#{firstname} #{lastname}"
     end
-  end
-
-  def active_user_auth_provider_link
-    # note: order("updated_at") is not used, because it returns nil if relation is not persisted
-    user_auth_provider_links.max_by(&:updated_at)
-  end
-
-  def identity_url
-    link = active_user_auth_provider_link
-    "#{link.auth_provider.slug}:#{link.external_id}" if link.present?
-  end
-
-  def authentication_provider
-    active_user_auth_provider_link&.auth_provider
   end
 
   # Return user's authentication provider for display
@@ -573,16 +557,17 @@ class User < Principal
   end
 
   def scim_external_id
-    return nil if identity_url.blank?
-
-    identity_url.split(":", 2).second
+    active_user_auth_provider_link&.external_id
   end
 
   def scim_external_id=(external_id)
     oidc_provider = OpenIDConnect::Provider.first
     raise "There should at least one OIDC Provider for SCIM to work with" unless oidc_provider
 
-    self.identity_url = "#{oidc_provider.slug}:#{external_id}"
+    ::Users::SetAttributesService
+      .new(user: User.system, model: self, contract_class: EmptyContract)
+      .call(identity_url: "#{oidc_provider.slug}:#{external_id}")
+      .on_failure { |result| raise result.to_s }
     external_id
   end
 
@@ -600,6 +585,15 @@ class User < Principal
     active?
   end
 
+  Email = Struct.new("Email", :value, :primary, :type)
+  def scim_emails
+    [Email.new(mail, true, "work")]
+  end
+
+  def scim_emails=(emails)
+    self.mail = emails.first.value
+  end
+
   def self.scim_resource_type
     Scimitar::Resources::User
   end
@@ -615,21 +609,23 @@ class User < Principal
       },
       emails: [
         {
-          match: "type",
-          with: "work",
+          list: :scim_emails,
+          class: User,
           using: {
-            value: :mail,
-            primary: true
-          }
+            value: :value,
+            primary: :primary,
+            type: :type
+          },
+          find_with: Proc.new do |qwe|
+            Email.new(qwe["value"], !!qwe["primary"], qwe["type"])
+          end
         }
       ],
-
       groups: [
         {
           list: :groups,
           using: {
-            value: :id,
-            # TODO $ref seems to be mandadory accroding to the spec.
+            value: :id
           }
         }
       ],
@@ -644,6 +640,8 @@ class User < Principal
 
   def self.scim_queryable_attributes
     {
+      externalId: { column: UserAuthProviderLink.arel_table[:external_id] },
+      username: { column: :login },
       givenName: { column: :firstname },
       familyName: { column: :lastname },
       emails: { column: :mail },

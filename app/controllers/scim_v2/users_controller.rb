@@ -37,10 +37,23 @@ module ScimV2
         storage_class.transaction do
           user = storage_class.new
           user.from_scim!(scim_hash: scim_resource.as_json)
+          user.firstname = "123" if user.firstname.blank?
+          user.lastname = "456" if user.lastname.blank?
           call = Users::CreateService
-                   .new(user: User.system)
+                   .new(user: User.system, model: user)
                    .call(user.attributes)
-                   .on_failure { |result| raise result.message }
+                   .on_failure do |result|
+            uniqueness_error = result.errors.find { |e| e.type == :taken }
+            if uniqueness_error.present?
+              raise Scimitar::ErrorResponse.new(
+                status: 409,
+                scimType: "uniqueness",
+                detail: "Operation failed due to a uniqueness constraint: #{result.message}"
+              )
+            else
+              raise result.message
+            end
+          end
 
           user = call.result
           user.to_scim(location: url_for(action: :show, id: user.id))
@@ -53,6 +66,20 @@ module ScimV2
         storage_class.transaction do
           user = storage_scope.find(user_id)
           user.from_scim!(scim_hash: scim_resource.as_json)
+          Users::UpdateService
+            .new(user: User.system, model: user)
+            .call
+            .on_failure { |call| raise call.message }
+          user.to_scim(location: url_for(action: :show, id: user.id))
+        end
+      end
+    end
+
+    def update
+      super do |user_id, patch_hash|
+        storage_class.transaction do
+          user = storage_scope.find(user_id)
+          user.from_scim_patch!(patch_hash: patch_hash)
           Users::UpdateService
             .new(user: User.system, model: user)
             .call
@@ -79,7 +106,7 @@ module ScimV2
     end
 
     def storage_scope
-      User.not_builtin
+      User.left_joins(:groups, :user_auth_provider_links).includes(:groups, :user_auth_provider_links).not_builtin
     end
   end
 end

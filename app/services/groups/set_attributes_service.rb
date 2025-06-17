@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -32,6 +34,7 @@ module Groups
 
     def set_attributes(params)
       set_users(params) if params.key?(:user_ids)
+      set_user_auth_provider_links(params.delete(:identity_url))
       super
     end
 
@@ -46,6 +49,27 @@ module Groups
       existing_user_ids = model.group_users.map(&:user_id)
       build_new_users user_ids - existing_user_ids
       mark_outdated_users existing_user_ids - user_ids
+    end
+
+    def set_user_auth_provider_links(identity_url)
+      if identity_url.present?
+        slug, external_id = identity_url.split(":", 2)
+        if slug.present? && external_id.present?
+          auth_provider_id = AuthProvider.where(slug:).pick(:id)
+          if auth_provider_id.present?
+            link = model.user_auth_provider_links
+                     .find_or_initialize_by(auth_provider_id:)
+            link.assign_attributes(external_id:, principal: model)
+            if link.changed? && link.persisted?
+              link.save!
+              model.user_auth_provider_links.reload
+              model.user_auth_provider_links.find { |l| l.id == link.id }.external_id_will_change!
+            end
+          else
+            raise ActiveRecord::RecordNotFound, "AuthProvider with slug: \"#{slug}\" has been not found"
+          end
+        end
+      end
     end
 
     def build_new_users(new_user_ids)

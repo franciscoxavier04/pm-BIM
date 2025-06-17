@@ -38,10 +38,11 @@ module ScimV2
           group = storage_class.new
           group.from_scim!(scim_hash: scim_resource.as_json)
           call = Groups::CreateService
-                   .new(user: User.system)
+                   .new(user: User.system, model: group)
                    .call(group.attributes)
                    .on_failure { |result| raise result.message }
           group = call.result
+
           Groups::AddUsersService
             .new(group, current_user: User.system)
             .call(ids: scim_resource.members.map(&:value), send_notifications: false)
@@ -60,6 +61,21 @@ module ScimV2
           Groups::UpdateService
             .new(user: User.system, model: group)
             .call(user_ids: scim_resource.members.map(&:value))
+            .on_failure { |call| raise call.message }
+          group.reload
+          group.to_scim(location: url_for(action: :show, id: group.id))
+        end
+      end
+    end
+
+    def update
+      super do |group_id, patch_hash|
+        storage_class.transaction do
+          group = storage_scope.find(group_id)
+          group.from_scim_patch!(patch_hash: patch_hash)
+          Groups::UpdateService
+            .new(user: User.system, model: group)
+            .call
             .on_failure { |call| raise call.message }
           group.to_scim(location: url_for(action: :show, id: group.id))
         end
@@ -83,7 +99,7 @@ module ScimV2
     end
 
     def storage_scope
-      Group.all
+      Group.left_joins(:users, :user_auth_provider_links).includes(:users, :user_auth_provider_links).not_builtin
     end
   end
 end

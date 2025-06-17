@@ -65,6 +65,8 @@ class Principal < ApplicationRecord
            foreign_key: "user_id"
   has_many :projects, through: :memberships
   has_many :categories, foreign_key: "assigned_to_id", dependent: :nullify, inverse_of: :assigned_to
+  has_many :user_auth_provider_links, dependent: :destroy, foreign_key: :user_id
+  has_many :auth_providers, through: :user_auth_provider_links
 
   has_paper_trail
 
@@ -155,6 +157,20 @@ class Principal < ApplicationRecord
   def self.in_visible_project_or_me(user = User.current)
     in_visible_project(user)
       .or(me)
+  end
+
+  def active_user_auth_provider_link
+    # note: order("updated_at") is not used, because it returns nil if relation is not persisted
+    user_auth_provider_links.max_by(&:updated_at)
+  end
+
+  def identity_url
+    link = active_user_auth_provider_link
+    "#{link.auth_provider.slug}:#{link.external_id}" if link.present?
+  end
+
+  def authentication_provider
+    active_user_auth_provider_link&.auth_provider
   end
 
   # Helper method to identify internal users

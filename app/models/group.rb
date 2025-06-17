@@ -70,16 +70,17 @@ class Group < Principal
   end
 
   def scim_external_id
-    return nil if identity_url.blank?
-
-    identity_url.split(":", 2).second
+    active_user_auth_provider_link&.external_id
   end
 
   def scim_external_id=(external_id)
     oidc_provider = OpenIDConnect::Provider.first
     raise "There should at least one OIDC Provider for SCIM to work with" unless oidc_provider
 
-    self.identity_url = "#{oidc_provider.slug}:#{external_id}"
+    ::Groups::SetAttributesService
+      .new(user: User.system, model: self, contract_class: EmptyContract)
+      .call(identity_url: "#{oidc_provider.slug}:#{external_id}")
+      .on_failure { |result| raise result.to_s }
     external_id
   end
 
@@ -133,7 +134,8 @@ class Group < Principal
 
   def self.scim_queryable_attributes
     {
-      displayName: { column: :lastname }
+      displayName: { column: :lastname },
+      externalId: { column: UserAuthProviderLink.arel_table[:external_id] }
     }
   end
 

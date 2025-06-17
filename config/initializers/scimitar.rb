@@ -29,12 +29,26 @@
 #++
 
 Rails.application.config.to_prepare do
-  Scimitar.service_provider_configuration = Scimitar::ServiceProviderConfiguration.new({
-    patch:  Scimitar::Supportable.unsupported
-  })
+  Scimitar.service_provider_configuration = Scimitar::ServiceProviderConfiguration.new(
+    patch: Scimitar::Supportable.supported
+  )
   Scimitar.engine_configuration = Scimitar::EngineConfiguration.new(
     token_authenticator: Proc.new do |_token, _options|
       OpenProject::FeatureDecisions.scim_api_active?
     end
   )
+
+  module ScimitarSchemaExtension
+    def scim_attributes
+      super + [Scimitar::Schema::Attribute.new(name: "externalId", type: "string")]
+    end
+  end
+
+  Scimitar::Schema::User.singleton_class.class_eval do
+    prepend ScimitarSchemaExtension
+  end
+
+  Scimitar::Schema::Group.singleton_class.class_eval do
+    prepend ScimitarSchemaExtension
+  end
 end

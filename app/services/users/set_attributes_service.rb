@@ -69,10 +69,14 @@ module Users
         if slug.present? && external_id.present?
           auth_provider_id = AuthProvider.where(slug:).pick(:id)
           if auth_provider_id.present?
-            model
-              .user_auth_provider_links
-              .find_or_initialize_by(auth_provider_id:)
-              .assign_attributes(external_id:)
+            link = model.user_auth_provider_links
+                     .find_or_initialize_by(auth_provider_id:)
+            link.assign_attributes(external_id:, principal: model)
+            if link.changed? && link.persisted?
+              link.save!
+              model.user_auth_provider_links.reload
+              model.user_auth_provider_links.find { |l| l.id == link.id }.external_id_will_change!
+            end
           else
             raise ActiveRecord::RecordNotFound, "AuthProvider with slug: \"#{slug}\" has been not found"
           end
