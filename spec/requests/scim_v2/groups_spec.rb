@@ -246,18 +246,18 @@ RSpec.describe "SCIM API Groups" do
 
         response_body = JSON.parse(last_response.body)
         group.reload
-        expect(response_body).to eq({ "displayName" => group.name,
-                                      "externalId" => new_external_group_id,
-                                      "id" => group.id.to_s,
-                                      "members" => [
-                                        { "value" => user.id.to_s },
-                                        { "value" => admin.id.to_s }
-                                      ],
-                                      "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
-                                                  "created" => group.created_at.iso8601,
-                                                  "lastModified" => group.updated_at.iso8601,
-                                                  "resourceType" => "Group" },
-                                      "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] })
+        expect(response_body).to match({ "displayName" => group.name,
+                                         "externalId" => new_external_group_id,
+                                         "id" => group.id.to_s,
+                                         "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                     "created" => group.created_at.iso8601,
+                                                     "lastModified" => group.updated_at.iso8601,
+                                                     "resourceType" => "Group" },
+                                         "members" => match_array([
+                                           { "value" => user.id.to_s },
+                                           { "value" => admin.id.to_s }
+                                         ]),
+                                         "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] })
       end
     end
 

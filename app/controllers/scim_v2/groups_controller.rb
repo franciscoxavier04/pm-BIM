@@ -77,6 +77,7 @@ module ScimV2
             .new(user: User.system, model: group)
             .call
             .on_failure { |call| raise call.message }
+          group.reload
           group.to_scim(location: url_for(action: :show, id: group.id))
         end
       end
