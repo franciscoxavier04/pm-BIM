@@ -41,8 +41,7 @@ module Settings
 
       def wrapper_data_attributes
         {
-          controller: "projects--settings--border-box-filter generic-drag-and-drop",
-          "application-target": "dynamic"
+          controller: "projects--settings--border-box-filter generic-drag-and-drop"
         }
       end
 

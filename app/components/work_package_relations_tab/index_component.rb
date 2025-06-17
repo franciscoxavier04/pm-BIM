@@ -204,7 +204,6 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
     if scroll_to?(item)
       {
         controller: "work-packages--relations-tab--scroll",
-        application_target: "dynamic",
         "work-packages--relations-tab--scroll-target": "scrollToRow"
       }
     end

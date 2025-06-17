@@ -78,7 +78,6 @@ module WorkPackages
           scheme: :secondary,
           data: {
             controller: "primer-to-angular-modal",
-            application_target: "dynamic",
             action: "click->primer-to-angular-modal#close",
             test_selector: "op-reminder-modal-close-button"
           }
