@@ -399,7 +399,7 @@ In OpenProject, you can set work packages in relation to each other. Some relati
 
 OpenProject offers different types of reminders so that you can lean back and never forget a task. One is the [date alert](#date-alerts) (Enterprise add-on), which generates automatic and customized [notifications](#notifications) regarding a work package's due date or start date.
 
-OpenProject also allows you to seet **work package reminders**:  Simply activate the clock icon on top of a work package and choose from different options, e.g. to be reminded the next day (at 9 am) or in one week. You can also set a custom date. [Read more about work package reminders in OpenProject](../user-guide/work-packages/#work-package-reminders).
+OpenProject also allows you to set **work package reminders**:  Simply activate the clock icon on top of a work package and choose from different options, e.g. to be reminded the next day (at 9 am) or in one week. You can also set a custom date. [Read more about work package reminders in OpenProject](../user-guide/work-packages/edit-work-package/#work-package-reminders).
 
 ### Repository
 
