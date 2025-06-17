@@ -305,3 +305,27 @@ The view remains intact even if a phase or gate is later removed from the global
 > You can add phases and gates in any order to your list view. There’s no requirement to follow the lifecycle sequence, which provides flexibility for different reporting needs.
 
 ![Project life cycle phases under project lists in OpenProject](project-life-cycle-view-configured.png)
+
+You can also filter project lists by project phases and phase gates. Simply select a phase or phase gate.
+
+
+
+![Project lists filter by project phases and phase gates in OpenProject](openproject_user_guide_project_lists_filter_by_phase_and_gate.png)
+
+
+
+
+
+ Specify the timeframe. You can choose between
+
+- today
+- this week
+- on a specific date
+- between specific dates
+- is empty.
+
+![Project lists filtered by project phases and phase gates with a timeframe dropdown menu filter opened in OpenProject](openproject_user_guide_project_lists_filter_by_phase_and_gate_timeframe_filter.png)
+
+You will then see all projects that have the selected phase, which is active during the specified timeframe. For example *Executing* project phase that is scheduled for the current week. 
+
+![Project lists filter by project phases and phase gates with a specified timeframe in OpenProject](openproject_user_guide_project_lists_filter_by_phase_and_gate_timeframe.png)
