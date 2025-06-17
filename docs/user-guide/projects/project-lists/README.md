@@ -292,7 +292,11 @@ To better understand the state and progress of multiple projects at once, you ca
 
 You can add individual project phases and gates as columns in the project list. This is done through the standard **configure view** modal or by adjusting the **default columns** in administration. You can select specific date ranges to focus on. For example, only showing projects with phases that fall within the current year. 
 
-To help differentiate between stages and gates in the project list phases and gates are indicated by differently shaped icons that are shown as prefixes in the column headers. 
+In a project list, each project phase appears as a separate column. If a phase includes a phase gate, this is indicated by an icon (a line with a circle) next to the phase name, there are no separate columns for phase gates. 
+
+If no project phase values are displayed for a project, it could be because the phases are disabled for that project or because you don't have the required *View project phases* permission."
+
+The view remains intact even if a phase or gate is later removed from the global configuration.
 
 
 
