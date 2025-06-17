@@ -4261,12 +4261,12 @@ zh-TW:
         message: "與單個用戶共用專案列表是一項企業附加功能。"
   working_days:
     info: >
-      未被選取的日期在排程工作套件時將被略過（且不計入天數統計）。這些設定可在單一工作套件層級進行覆蓋。
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       加到下面列表中的日期被視為非工作日，設定工作套件時程時跳過。
     change_button: "修改工作日"
     warning: >
-      在這種情況下，更改一周中哪些天被視為工作日或非工作日，會影響所有項目中所有工作套件的開始和結束日期。
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**工作日**已更改 (%{changes})。_
       days:

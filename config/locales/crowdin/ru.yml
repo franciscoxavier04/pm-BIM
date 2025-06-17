@@ -574,11 +574,11 @@ ru:
   priorities:
     edit:
       priority_color_text: |
-        Click to assign or change the color of this priority.
-        It can be used for highlighting work packages in the table.
+        Щелкните, чтобы задать или изменить цвет этого приоритета.
+        Этот цвет может использоваться для выделения пакетов работ в таблице.
     admin:
       default:
-        caption: Making this priority default will override the previous default priority.
+        caption: Использование этого приоритета переопределит предыдущий приоритет по умолчанию.
   reactions:
     action_title: "Реакция"
     add_reaction: "Добавить реакцию"
@@ -2491,7 +2491,7 @@ ru:
         static_token_name: "Токен RSS"
         disabled_text: "Токены RSS не включены администратором. Пожалуйста, обратитесь к администратору, чтобы использовать эту функцию."
       storages:
-        title: "File storages"
+        title: "Файловые хранилища"
         text_hint: "Токены хранения файлов подключают этот экземпляр OpenProject к внешнему хранилищу файлов."
         empty_text_hint: "Нет доступа к хранилищу, связанному с вашей учетной записью."
         revoke_token: "Вы действительно хотите удалить этот токен?  Вам нужно будет снова войти в систему на %{storage}"
@@ -2973,8 +2973,8 @@ ru:
   label_project_custom_field_plural: "Атрибуты проекта"
   label_project_settings: "Настройки проекта"
   label_project_attributes_settings: "Настройки атрибутов проекта"
-  label_project_storage_plural: "File storages"
-  label_project_storage_project_folder: "File storages: Project folders"
+  label_project_storage_plural: "Файловые хранилища"
+  label_project_storage_project_folder: "Файловые хранилища: папки проекта"
   label_projects_disk_usage_information: "%{count} проектов, использующих %{used_disk_space} дискового пространства"
   label_project_view_all: "Просмотреть все проекты"
   label_project_show_details: "Показать детали проекта"
@@ -3716,7 +3716,7 @@ ru:
       oauth_application_details: "Секретное значение клиента не будет доступно после закрытия этого окна. Пожалуйста, скопируйте это значение в настройки интеграции Nextcloud OpenProject:"
       oauth_application_details_link_text: "Перейти на страницу настроек"
       setup_documentation_details: "Если вам нужна помощь в настройке нового хранилища файлов, пожалуйста, проверьте документацию: "
-      setup_documentation_details_link_text: "File storages setup"
+      setup_documentation_details_link_text: "Настройка файловых хранилищ"
       show_warning_details: "Для использования этого хранилища файлов не забудьте активировать модуль и конкретное хранилище в настройках проекта каждого желаемого проекта."
     subversion:
       existing_title: "Существующий репозиторий Subversion"
@@ -4008,9 +4008,9 @@ ru:
       phase_gates: "Стадии этапа"
       new:
         description: "Изменения на этом этапе проекта будут отражены во всех проектах, где он включен."
-        heading: "New phase"
+        heading: "Новый этап"
       edit:
-        heading: "Edit phase"
+        heading: "Изменить этап"
       both_gate: "Начать и завершить стадию"
       no_gate: "Нет стадии"
       start_gate: "Начать стадию"
@@ -4387,12 +4387,12 @@ ru:
         message: "Совместное использование списков проектов с отдельными пользователями является корпоративным дополнением."
   working_days:
     info: >
-      Невыбранные дни пропускаются при планировании пакетов работ (и не включаются в подсчет дней). Они могут быть переопределены на уровне пакетов работ.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Даты, добавленные в список ниже, считаются нерабочими и пропускаются при планировании пакетов работ.
     change_button: "Изменить рабочие дни"
     warning: >
-      Изменение дней, считающихся рабочими или нерабочими днями недели, может повлиять на дату начала и окончания всех пакетов работ во всех проектах в данной системе.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Рабочие дни** изменены (%{changes})._
       days:

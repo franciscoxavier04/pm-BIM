@@ -266,7 +266,7 @@ de:
           diagnostic_request: Diagnoseanfrage
           drive_id_exists: Laufwerk existiert
           drive_id_format: Laufwerks-ID-Format
-          header: Configuration
+          header: Konfiguration
           host_url_accessible: Host-URL erreichbar
           storage_configured: Konfiguration abgeschlossen
           tenant_id: Tenant ID
@@ -284,8 +284,8 @@ de:
         nc_dependency_version_mismatch: Die %{dependency} App-Version wird nicht unterstützt. Bitte aktualisieren Sie Ihren Nextcloud Server.
         nc_group_folder_not_found: Der Gruppenordner konnte nicht gefunden werden.
         nc_host_not_found: Kein Nextcloud-Server unter der konfigurierten Host-URL gefunden. Bitte überprüfen Sie die Konfiguration.
-        nc_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
-        nc_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
+        nc_oauth_request_not_found: Der Endpunkt für den Abruf des aktuell verbundenen Benutzers wurde nicht gefunden. Bitte überprüfen Sie die Serverprotokolle für weitere Informationen.
+        nc_oauth_request_unauthorized: Der aktuelle Benutzer ist nicht berechtigt, auf den Remote-Datei-Speicher zuzugreifen. Bitte überprüfen Sie die Server-Protokolle für weitere Informationen.
         nc_oauth_token_missing: OpenProject kann die Kommunikation auf Benutzerebene mit Nextcloud nicht testen, da der Benutzer sein Nextcloud Konto noch nicht verknüpft hat.
         nc_unexpected_content: Unerwarteter Inhalt im verwalteten Gruppenordner gefunden.
         nc_userless_access_denied: Das konfigurierte App-Passwort ist ungültig.
@@ -294,8 +294,8 @@ de:
         od_client_write_permission_missing: Der Client hat anscheinend keine Schreibberechtigungen. Bitte überprüfen Sie die Setup-Dokumentation für Ihren Speicher.
         od_drive_id_invalid: Die konfigurierte Laufwerks-ID scheint ungültig. Bitte überprüfen Sie die Konfiguration.
         od_drive_id_not_found: Die konfigurierte Laufwerks-ID konnte nicht gefunden werden. Bitte überprüfen Sie die Konfiguration.
-        od_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
-        od_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
+        od_oauth_request_not_found: Der Endpunkt für den Abruf des aktuell verbundenen Benutzers wurde nicht gefunden. Bitte überprüfen Sie die Serverprotokolle für weitere Informationen.
+        od_oauth_request_unauthorized: Der aktuelle Benutzer ist nicht berechtigt, auf den Remote-Datei-Speicher zuzugreifen. Bitte überprüfen Sie die Server-Protokolle für weitere Informationen.
         od_oauth_token_missing: OpenProject kann die Verbindung zu OneDrive/SharePoint auf Benutzerebene nicht testen, da das Microsoft-Konto noch nicht verknüpft wurde.
         od_tenant_id_wrong: Die konfigurierte Verzeichnis-(Mandanten-)ID ist ungültig. Bitte überprüfen Sie die Konfiguration.
         od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
@@ -351,9 +351,9 @@ de:
         integration: Nextcloud Administration / OpenProject
         oauth_configuration: Kopieren Sie diese Werte aus der %{application_link_text}.
         provider_configuration: Bitte stellen Sie sicher, dass Sie Administrationsrechte in Ihrer Nextcloud-Instanz haben und die %{application_link_text} vor dem Setup installiert wurde.
-        storage_audience: The client ID that the Nextcloud instance uses to communicate with the identity provider.
+        storage_audience: Die Client-ID, die die Nextcloud-Instanz verwendet, um mit dem Identity Provider zu kommunizieren.
         storage_audience_placeholder: z.B. Nextcloud
-        token_exchange_scope: The scopes that should be requested during token exchange, each one separated by a space.
+        token_exchange_scope: Die Scopes, die während des Tokenaustauschs angefordert werden sollen, jeweils durch ein Leerzeichen getrennt.
       no_specific_folder: Standardmäßig startet jeder Benutzer in seinem eigenen Home-Ordner, wenn er eine Datei hochlädt.
       no_storage_set_up: Es sind noch keine Dateispeicher eingerichtet.
       not_logged_into_storage: Bitte melden Sie sich zunächst an, um einen Projektordner auszuwählen
@@ -375,7 +375,7 @@ de:
       setting_up_additional_storages: Um zusätzliche Dateispeicher einzurichten, besuchen Sie bitte
       setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: Zum Einrichten von Dateispeichern besuchen Sie bitte
-      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
+      setting_up_storages_non_admin: Administratoren können Dateispeicher in Administration / Dateien einrichten.
       type: 'Bitte stellen Sie sicher, dass Sie Administrationsrechte in Ihrer Nextcloud-Instanz haben und die folgende Anwendung vor dem Setup installiert wurde:'
       type_link_text: "„OpenProject Integration“"
     label_active: Aktiv
@@ -387,7 +387,7 @@ de:
     label_edit_storage_access_management: Speicherzugriffsverwaltung bearbeiten
     label_edit_storage_automatically_managed_folders: Automatisch verwaltete Projektordner des Dateispeichers bearbeiten
     label_edit_storage_host: Dateispeicher-Host bearbeiten
-    label_edit_token_exchange: Edit token exchange configuration
+    label_edit_token_exchange: Token-Austausch-Konfiguration bearbeiten
     label_existing_manual_folder: Vorhandener Ordner mit manuell verwalteten Berechtigungen
     label_file_storage: Dateispeicher
     label_host: Host-URL
@@ -480,13 +480,13 @@ de:
       description: Beim Deaktivieren dieser Option wird die Liste der Anhänge auf der Registerkarte Arbeitspakete ausgeblendet. Die in der Beschreibung eines Arbeitspakets angehängten Dateien werden weiterhin im internen Anhang gespeichert.
       label: Anhänge auf dem Dateien-Tab der Arbeitspakete anzeigen
     storage_audience:
-      documentation_intro: Please read our documentation for details on the following options and configuration of the identity provider.
+      documentation_intro: Bitte lesen Sie unsere Dokumentation für Details zu den folgenden Optionen und Konfiguration des Identity Providers.
       idp:
-        helptext: OpenProject will use the access token received by the identity provider during log in to authenticate requests to the storage. It will not try to obtain another token.
-        label: Use access token obtained during user log in
+        helptext: OpenProject wird das Access Token verwenden, das der Identity Provider während des Logins empfangen hat, um Anfragen an den Speicher zu authentifizieren. Es wird nicht versuchen, ein neues Token zu erhalten.
+        label: Das beim Benutzer-Login erhaltene Access Token verwenden
       manual:
-        helptext: OpenProject will exchange a token with the identity provider for the given audience.
-        label: Manually specify audience for which to exchange access token
+        helptext: OpenProject tauscht ein Token mit dem Identity Provider für die angegebene Audience aus.
+        label: Manuell die Audience angeben, für die das Access Token eingetauscht werden soll
     storage_list_blank_slate:
       description: Fügen Sie einen Dateispeicher hinzu, um ihn hier zu sehen.
       heading: Sie haben noch keine Dateispeicher.

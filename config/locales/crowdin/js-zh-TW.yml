@@ -274,9 +274,10 @@ zh-TW:
         change_button: "儲存後重新編排"
         change_title: "修改工作日"
         removed_title: "您將從非工作日列表中刪除以下日期："
-        change_description: "變更一週中哪些日子被視為工作日或非工作日，可能會影響此系統中所有專案所有工作套件的開始與結束日期。"
+        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
         warning: >
-          更改可能需要一些時間才能生效。當更新完所有相關工作套件時，您將收到通知。
+          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
+          Are you sure you want to continue?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           將進度計算模式從基於狀態變更為基於工作將使<i>完成百分比</i>欄位可自由編輯。如果您選擇輸入<i>工時</i>或<i>剩餘工時</i>，它們也會連結到<i>完成百分比</i>。更改<i>剩餘工作</i>可以更新<i>完成百分比</i>。

@@ -560,11 +560,10 @@ de:
   priorities:
     edit:
       priority_color_text: |
-        Click to assign or change the color of this priority.
-        It can be used for highlighting work packages in the table.
+        Klicken zum Zuweisen einer Farbe für diese Priorität. Diese wird für die Hervorhebung von Arbeitspaketen in Tabellen verwendet.
     admin:
       default:
-        caption: Making this priority default will override the previous default priority.
+        caption: Wird diese Priorität als Standard gesetzt, überschreibt das den vorherhigen Standardwert.
   reactions:
     action_title: "Reagieren"
     add_reaction: "Reaktion hinzufügen"
@@ -3924,9 +3923,9 @@ de:
       phase_gates: "Phasen Gates"
       new:
         description: "Änderungen an dieser Projekt-Phase werden in allen sie verwendenden Projekten sichtbar."
-        heading: "New phase"
+        heading: "Neue Phase"
       edit:
-        heading: "Edit phase"
+        heading: "Phase bearbeiten"
       both_gate: "Gate zum Beginn und zum Ende"
       no_gate: "Kein Gate"
       start_gate: "Gate zum Beginn"
@@ -4301,12 +4300,12 @@ de:
         message: "Das Teilen von Projektlisten mit einzelnen Nutzern ist ein Enterprise Add-on"
   working_days:
     info: >
-      Tage, die nicht ausgewählt sind, werden bei der Planung von Arbeitspaketen übersprungen (und bei der Tageszählung nicht berücksichtigt). Diese können auf Arbeitspaket-Ebene überschrieben werden.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Daten, die der Liste unten hinzugefügt werden, gelten als arbeitsfrei und werden bei der Planung von Arbeitspaketen übersprungen.
     change_button: "Arbeitstage ändern"
     warning: >
-      Die Änderung der Wochentage, die als Arbeitstage oder arbeitsfreie Tage gelten, kann sich in diesem Fall auf die Start- und Endtage aller Arbeitspakete in allen Projekten auswirken.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Arbeitstage** geändert (%{changes})._
       days:

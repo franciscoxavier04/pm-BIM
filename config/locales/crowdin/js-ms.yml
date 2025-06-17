@@ -275,10 +275,10 @@ ms:
         change_button: "Simpan dan jadualkan semula"
         change_title: "Tukar hari bekerja"
         removed_title: "Anda akan mengeluarkan hari berikut dari senarai hari tidak bekerja:"
-        change_description: "Penukaran hari dalam seminggu yang dianggap sebagai hari bekerja atau hari tidak bekerja akan mempengaruhi hari mula dan akhir semua pakej kerja dalam semua projek bagi contoh ini."
+        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
         warning: >
-          Perubahan mungkin mengambil sedikit masa untuk berkesan. Anda akan dimaklumkan apabila semua pakej kerja yang berkaitan telah dikemas kini.
-          Adakah anda pasti anda ingin teruskan?
+          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
+          Are you sure you want to continue?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           Menukar mod pengiraan kemajuan daripada berasaskan status kepada berasaskan kerja akan menjadikan medan <i>% Selesai</i> boleh diedit secara bebas. Jika anda secara pilihan memasukkan nilai untuk <i>Kerja</i> atau <i>Kerja yang tinggal</i>, nilai tersebut juga akan dipautkan kepada <i>% Selesai</i>. Menukar <i>Baki kerja</i> kemudian boleh mengemas kini <i>% Selesai</i>.

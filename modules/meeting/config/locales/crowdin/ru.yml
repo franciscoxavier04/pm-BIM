@@ -250,19 +250,19 @@ ru:
       your_meeting_export: "Совещание экспортируется"
     export_pdf_dialog:
       title: Экспорт в PDF
-      description: Generate a printable PDF file of this meeting at the current state.
+      description: Создать печатный PDF-файл этого совещания в текущем состоянии.
       include_participants:
         label: Включить список участников
-        caption: A list of participants will be preset above the meeting agenda.
+        caption: Список участников будет представлен выше повестки дня совещания.
       include_attachments:
         label: Включить список вложений
-        caption: A list containing the filenames of attachments will be appended at the end.
+        caption: Список с именами файлов вложений будет добавлен в конце.
       include_backlog:
         label: Включить бэклог
-        caption: Backlog elements are not normally considered part of a meeting occurrence but you can choose to include them.
+        caption: Элементы бэклога обычно не считаются частью совещания, но вы можете включить их.
       include_outcomes:
         label: Включить итоги повестки дня
-        caption: If your agenda outcomes contain confidential information, you can choose to not include them in the export.
+        caption: Если результаты вашей повестки дня содержат конфиденциальную информацию, вы можете не включать их в экспорт.
       footer_text:
         label: Текст нижнего колонтитула
         caption: Этот текст появится на каждой странице с правой стороны нижнего колонтитула.
