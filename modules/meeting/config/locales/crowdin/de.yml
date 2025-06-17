@@ -350,7 +350,7 @@ de:
   permission_delete_meetings: "Besprechungen löschen"
   permission_view_meetings: "Besprechungen ansehen"
   permission_manage_agendas: "Agenden anlegen/bearbeiten"
-  permission_manage_agendas_explanation: "Ermöglicht das Bearbeiten des Inhalts der dynamischen Meetings."
+  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
   permission_manage_outcomes: "Ergebnisse verwalten"
   permission_send_meeting_invites_and_outcomes: "Besprechungseinladungen und -ergebnisse an Teilnehmer senden"
   project_module_meetings: "Besprechungen"

@@ -358,7 +358,7 @@ ru:
           "16_1":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
+                Релиз содержит различные новые функции и улучшения, например <br> <ul class="%{list_styling_class}"> <li>Структура жизненного цикла проекта с этапами и стадиями.</li> <li>Экспорт совещаний в формате PDF.</li> <li>Установка смарт-параметров по умолчанию для напоминаний.</li> <li>Использование отрицательного лага для даты пакета работ.</li> <li>Отображение иерархических деревьев для иерархии пользовательских полей.</li> <li>Улучшение доступности для выбора даты с ARIA регионами.</li> </ul>
     ical_sharing_modal:
       title: "Подписаться на календарь"
       inital_setup_error_message: "Произошла ошибка при получении данных."
@@ -563,7 +563,7 @@ ru:
     label_version_plural: "Этапы"
     label_view_has_changed: "Это представление имеет несохраненные изменения. Кликните, чтобы сохранить их."
     help_texts:
-      show_modal: "Show help text"
+      show_modal: "Показать текст справки"
     onboarding:
       buttons:
         skip: "Пропустить"

@@ -81,12 +81,12 @@ ru:
     enterprise:
       delete_dialog:
         title: "Удалить корпоративный токен"
-        heading: "Delete this enterprise token?"
-        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+        heading: "Удалить этот корпоративный токен?"
+        confirmation: "Вы уверены, что хотите удалить этот токен поддержки корпоративной версии?"
       create_dialog:
-        title: "Add Enterprise token"
-        type_token_text: "Type support token text"
-        token_placeholder: "Paste your Enterprise edition support token here"
+        title: "Добавить корпоративный токен"
+        type_token_text: "Введите текст токена поддержки"
+        token_placeholder: "Вставьте ваш токен поддержки корпоративной версии здесь"
       add_token: "Загрузить токен поддержки корпоративной версии"
       delete_token_modal:
         text: "Вы уверены, что хотите удалить текущий токен корпоративной версии?"
@@ -581,11 +581,11 @@ ru:
   priorities:
     edit:
       priority_color_text: |
-        Click to assign or change the color of this priority.
-        It can be used for highlighting work packages in the table.
+        Щелкните, чтобы задать или изменить цвет этого приоритета.
+        Этот цвет может использоваться для выделения пакетов работ в таблице.
     admin:
       default:
-        caption: Making this priority default will override the previous default priority.
+        caption: Использование этого приоритета переопределит предыдущий приоритет по умолчанию.
   reactions:
     action_title: "Реакция"
     add_reaction: "Добавить реакцию"
@@ -842,7 +842,7 @@ ru:
       required_description: "Отмечает этот пакет работ как требование к связанному"
       label_parent_singular: "родители"
       label_parent_plural: "родитель"
-      label_other_relations: "Other relations"
+      label_other_relations: "Другие отношения"
       ghost_relation_title: "Похожий пакет работ"
       ghost_relation_description: "Это не видно для вас из-за разрешений."
   label_invitation: Приглашение
@@ -880,7 +880,7 @@ ru:
   activemodel:
     attributes:
       projects/copy_options:
-        dependencies: "Dependencies"
+        dependencies: "Зависимости"
   activerecord:
     attributes:
       announcements:
@@ -897,7 +897,7 @@ ru:
         attribute_name: "Атрибут"
         help_text: "Текст справки"
       auth_provider:
-        scim_clients: "SCIM Clients"
+        scim_clients: "Клиенты SCIM"
       capability:
         context: "Контекст"
       changeset:
@@ -939,11 +939,11 @@ ru:
       enterprise_token:
         starts_at: "Действует с"
         subscriber: "Подписчик"
-        plan: "Plan"
+        plan: "Подписка"
         encoded_token: "Маркер поддержки корпоративной версии"
         active_user_count_restriction: "Максимальное число активных пользователей"
       enterprise_trial:
-        company: "Company"
+        company: "Компания"
       grids/grid:
         page: "Страница"
         row_count: "Количество строк"
@@ -1272,9 +1272,9 @@ ru:
             scopes:
               not_match_configured: "не соответствует доступным областям."
         enterprise_trial:
-          already_used: "was already used to create a trial."
-          failed_to_create: "Trial could not be created (%{status})"
-          general_consent: "Please accept the terms and conditions."
+          already_used: "уже использовался для создания пробной версии."
+          failed_to_create: "Пробная версия не может быть создана (%{status})"
+          general_consent: "Пожалуйста, подтвердите правила и условия пользования."
         enterprise_token:
           unreadable: "невозможно прочитать. Вы уверены, что это маркер поддержки?"
         grids/grid:
@@ -1557,10 +1557,10 @@ ru:
       custom_field: "Настраиваемое поле"
       "doorkeeper/application": "Приложение OAuth"
       enterprise_token:
-        one: "Enterprise token"
+        one: "Корпоративный токен"
         few: "Enterprise tokens"
         many: "Enterprise tokens"
-        other: "Enterprise tokens"
+        other: "Корпоративные токены"
       forum: "Форум"
       global_role: "Глобальная роль"
       group: "Группа"
@@ -1595,10 +1595,10 @@ ru:
         many: "Роль"
         other: "Роль"
       scim_client:
-        one: "SCIM Client"
+        one: "Клиент SCIM"
         few: "SCIM Clients"
         many: "SCIM Clients"
-        other: "SCIM Clients"
+        other: "Клиенты SCIM"
       status: "Статус пакета работ"
       token/api:
         one: Токен доступа
@@ -1705,7 +1705,7 @@ ru:
     derived_start_date: "Дата начала производства"
     direction: "Направление"
     display_sums: "Отображение суммы"
-    domain: "Domain"
+    domain: "Доменное имя"
     due_date: "Дата окончания"
     estimated_hours: "Предполагаемое время"
     estimated_time: "Предполагаемое время"
@@ -2133,14 +2133,14 @@ ru:
       work_package_sharing: Поделиться пакетами работ с внешними пользователями
       work_package_subject_generation: Создание темы пакета работ
     upsell:
-      buy_now_button: "Buy now"
+      buy_now_button: "Купить сейчас"
       plans_title: "Корпоративный план"
       title: "Корпоративное дополнение"
       plan_title: "Дополнение корпоративной версии %{plan}"
       plan_name: "Корпоративная версия %{plan}"
       plan_text_html: "Доступно начиная с %{plan_name}."
       already_have_token: >
-        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
+        Уже есть токен? Добавьте его с помощью кнопки ниже, чтобы перейти на корпоративную лицензию.
       hide_banner: "Скрыть этот баннер"
       homescreen_description: >
         Планы предприятия расширяют версию OpenProject Сообщества, которую вы сейчас используете. Они включают дополнения, дополнительные возможности и профессиональную поддержку, которые позволяют организациям всех размеров достигать больших успехов вместе.
@@ -2194,25 +2194,25 @@ ru:
         title: "Напишите внутренние комментарии только небольшой группы"
         description: " "
     trial:
-      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
-      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      not_found: "Вы запросили пробный токен, но запрос более недоступен. Пожалуйста, попробуйте еще раз."
+      wait_for_confirmation: "Мы отправили вам письмо для подтверждения вашего адреса для получения токена пробной версии."
       already_retrieved: >
-        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
-      successfully_saved: "Your trial enterprise token has been successfully retrieved."
-      token_sent: "Trial token requested"
-      request_again: "Request again"
-      resend_action: "Resend confirmation email"
-      welcome_title: "Quick feature overview"
-      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+        Токен пробной версии уже был получен. Пожалуйста, проверьте ваши письма на наличие прикрепленного токена. Свяжитесь с нашей службой поддержки, если вам нужен новый токен.
+      successfully_saved: "Ваш токен пробной версии был успешно получен."
+      token_sent: "Запрошен токен пробной версии"
+      request_again: "Запросить ещё раз"
+      resend_action: "Повторно отправить письмо с подтверждением"
+      welcome_title: "Быстрый обзор функции"
+      welcome_description: "Узнайте вкратце об управлении проектами и совместной работе в OpenProject корпоративной версии."
       confirmation_info: >
-        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+        Мы отправили вам письмо от %{date} на %{email} со всей информацией, чтобы начать бесплатную пробную корпоративную версию OpenProject. Пожалуйста, проверьте свой почтовый ящик и нажмите на ссылку подтверждения, чтобы начать 14-дневную бесплатную пробную версию.
       confirmation_subline: >
-        Please, check your inbox and follow the steps to start your 14-day free trial.
-      domain_caption: The token will be valid for your currently configured host name.
+        Пожалуйста, проверьте папку "Входящие" вашего почтового ящика и выполните шаги по запуску бесплатной 14-дневной пробной версии.
+      domain_caption: Токен будет действителен для настроенного в данный момент имени хоста.
       receive_newsletter_html: >
-        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+        Я хочу получить <a target="_blank" href="https://www.openproject.org/newsletter/">информационный бюллетень OpenProject</a>.
       consent_html: >
-        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+        Я подтверждаю <a target="_blank" href="https://www.openproject.org/terms-of-service/">правила</a> и <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">условия пользования</a>.
   enumeration_activities: "Отслеживание времени"
   enumeration_work_package_priorities: "Приоритеты пакета работ"
   enumeration_reported_project_statuses: "Перечень отчетов о статусах проекта"
@@ -2237,7 +2237,7 @@ ru:
   error_color_could_not_be_saved: "Цвет не может быть сохранен"
   error_cookie_missing: "Отсутствуют cookie OpenProject. Пожалуйста, убедитесь, что Cookie разрешены. Без них приложение не будет функционировать должным образом."
   error_custom_option_not_found: "Параметр не существует."
-  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
+  error_enterprise_plan_needed: "Вам нужна корпоративная подписка %{plan} для выполнения этого действия."
   error_enterprise_activation_user_limit: "Ваша учетная запись не может быть активирована (достигнут предел пользователя). Обратитесь к администратору для получения доступа."
   error_enterprise_token_invalid_domain: "Версия Enterprise не активна. Домен вашего токена предприятия (%{actual}) не соответствует названию системного имени (%{expected})."
   error_failed_to_delete_entry: "Не удалось удалить эту запись."
@@ -2545,7 +2545,7 @@ ru:
         static_token_name: "Токен RSS"
         disabled_text: "Токены RSS не включены администратором. Пожалуйста, обратитесь к администратору, чтобы использовать эту функцию."
       storages:
-        title: "File storages"
+        title: "Файловые хранилища"
         text_hint: "Токены хранения файлов подключают этот экземпляр OpenProject к внешнему хранилищу файлов."
         empty_text_hint: "Нет доступа к хранилищу, связанному с вашей учетной записью."
         revoke_token: "Вы действительно хотите удалить этот токен?  Вам нужно будет снова войти в систему на %{storage}"
@@ -2721,7 +2721,7 @@ ru:
   label_dashboard: "Панель"
   label_database_version: "Версия PostgreSQL"
   label_date: "Дата"
-  label_dates: "Dates"
+  label_dates: "Даты"
   label_date_and_time: "Дата и время"
   label_date_format: "Формат даты"
   label_date_from: "От"
@@ -3028,8 +3028,8 @@ ru:
   label_project_custom_field_plural: "Атрибуты проекта"
   label_project_settings: "Настройки проекта"
   label_project_attributes_settings: "Настройки атрибутов проекта"
-  label_project_storage_plural: "File storages"
-  label_project_storage_project_folder: "File storages: Project folders"
+  label_project_storage_plural: "Файловые хранилища"
+  label_project_storage_project_folder: "Файловые хранилища: папки проекта"
   label_projects_disk_usage_information: "%{count} проектов, использующих %{used_disk_space} дискового пространства"
   label_project_view_all: "Просмотреть все проекты"
   label_project_show_details: "Показать детали проекта"
@@ -3482,8 +3482,8 @@ ru:
   notice_successful_delete: "Удаление выполнено."
   notice_successful_cancel: "Отмена прошла успешно."
   notice_successful_update: "Обновление выполнено."
-  notice_unsuccessful_create: "Creation failed."
-  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
+  notice_unsuccessful_create: "Создание не удалось."
+  notice_unsuccessful_create_with_reason: "Создание не удалось: %{reason}"
   notice_unsuccessful_update: "Ошибка обновления."
   notice_unsuccessful_update_with_reason: "Не удалось обновить: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -3773,7 +3773,7 @@ ru:
       oauth_application_details: "Секретное значение клиента не будет доступно после закрытия этого окна. Пожалуйста, скопируйте это значение в настройки интеграции Nextcloud OpenProject:"
       oauth_application_details_link_text: "Перейти на страницу настроек"
       setup_documentation_details: "Если вам нужна помощь в настройке нового хранилища файлов, пожалуйста, проверьте документацию: "
-      setup_documentation_details_link_text: "File storages setup"
+      setup_documentation_details_link_text: "Настройка файловых хранилищ"
       show_warning_details: "Для использования этого хранилища файлов не забудьте активировать модуль и конкретное хранилище в настройках проекта каждого желаемого проекта."
     subversion:
       existing_title: "Существующий репозиторий Subversion"
@@ -4065,9 +4065,9 @@ ru:
       phase_gates: "Стадии этапа"
       new:
         description: "Изменения на этом этапе проекта будут отражены во всех проектах, где он включен."
-        heading: "New phase"
+        heading: "Новый этап"
       edit:
-        heading: "Edit phase"
+        heading: "Изменить этап"
       both_gate: "Начать и завершить стадию"
       no_gate: "Нет стадии"
       start_gate: "Начать стадию"
