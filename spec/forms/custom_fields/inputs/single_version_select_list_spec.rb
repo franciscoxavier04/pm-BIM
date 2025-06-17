@@ -27,37 +27,20 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+#
+require "spec_helper"
 
-module Meetings::PDF
-  module PageHead
-    def write_page_head
-      with_vertical_margin(styles.page_heading_margins) do
-        write_page_title
-      end
-      with_vertical_margin(styles.page_subtitle_margins) do
-        write_meeting_subtitle
-      end
-      write_hr
-    end
+RSpec.describe CustomFields::Inputs::SingleVersionSelectList, type: :forms do
+  include_context "with rendered custom field input form"
 
-    def write_page_title
-      pdf.formatted_text([styles.page_heading.merge(
-        { text: meeting.title, link: url_helpers.meeting_url(meeting) }
-      )])
-    end
+  let(:custom_field) { create(:version_project_custom_field, name: "Version field") }
+  let(:value) { create(:version, name: "Version 26", project: model) }
 
-    def write_meeting_subtitle
-      pdf.formatted_text([styles.page_subtitle.merge({ text: meeting_subtitle })])
-    end
-
-    def meeting_subtitle
-      [
-        "#{meeting_mode} (#{I18n.t("label_meeting_state_#{meeting.state}")}),",
-        "#{format_date(meeting.start_time)},",
-        format_time(meeting.start_time, include_date: false),
-        "–",
-        format_time(meeting.end_time, include_date: false)
-      ].join(" ")
+  it_behaves_like "rendering label with help text", "Version field"
+  it_behaves_like "rendering autocompleter", "Version field" do
+    it "sets correct autocompleter inputs" do
+      expect(autocompleter["data-items"]).to have_json_size(1)
+      expect(autocompleter["data-model"]).to be_json_eql(%{{"name":"Version 26"}}).excluding("group_by")
     end
   end
 end

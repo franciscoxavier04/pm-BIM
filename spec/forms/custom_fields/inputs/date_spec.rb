@@ -27,37 +27,39 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+#
+require "spec_helper"
 
-module Meetings::PDF
-  module PageHead
-    def write_page_head
-      with_vertical_margin(styles.page_heading_margins) do
-        write_page_title
-      end
-      with_vertical_margin(styles.page_subtitle_margins) do
-        write_meeting_subtitle
-      end
-      write_hr
+RSpec.describe CustomFields::Inputs::Date, type: :forms do
+  include_context "with rendered custom field input form"
+
+  let(:custom_field) { create(:date_project_custom_field, name: "Date field") }
+
+  it_behaves_like "rendering label with help text", "Date field"
+
+  context "without a value" do
+    it "renders field" do
+      expect(rendered_form).to have_field "Date field", type: :date, with: ""
+    end
+  end
+
+  context "when value is invalid" do
+    let(:value) { "NOT A DATE" }
+
+    it "renders invalid field" do
+      expect(rendered_form).to have_field "Date field", type: :date, with: "NOT A DATE", aria: { invalid: true }
     end
 
-    def write_page_title
-      pdf.formatted_text([styles.page_heading.merge(
-        { text: meeting.title, link: url_helpers.meeting_url(meeting) }
-      )])
+    it "renders error message" do
+      expect(rendered_form).to have_css ".FormControl-inlineValidation", text: "Value is not a valid date."
     end
+  end
 
-    def write_meeting_subtitle
-      pdf.formatted_text([styles.page_subtitle.merge({ text: meeting_subtitle })])
-    end
+  context "when value is valid" do
+    let(:value) { Date.civil(2024, 3, 20) }
 
-    def meeting_subtitle
-      [
-        "#{meeting_mode} (#{I18n.t("label_meeting_state_#{meeting.state}")}),",
-        "#{format_date(meeting.start_time)},",
-        format_time(meeting.start_time, include_date: false),
-        "–",
-        format_time(meeting.end_time, include_date: false)
-      ].join(" ")
+    it "renders field" do
+      expect(rendered_form).to have_field "Date field", type: :date, with: "2024-03-20"
     end
   end
 end

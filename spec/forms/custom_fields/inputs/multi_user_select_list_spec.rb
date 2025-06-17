@@ -27,37 +27,22 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+#
+require "spec_helper"
 
-module Meetings::PDF
-  module PageHead
-    def write_page_head
-      with_vertical_margin(styles.page_heading_margins) do
-        write_page_title
-      end
-      with_vertical_margin(styles.page_subtitle_margins) do
-        write_meeting_subtitle
-      end
-      write_hr
-    end
+RSpec.describe CustomFields::Inputs::MultiUserSelectList, type: :forms do
+  include_context "with rendered custom field input form"
 
-    def write_page_title
-      pdf.formatted_text([styles.page_heading.merge(
-        { text: meeting.title, link: url_helpers.meeting_url(meeting) }
-      )])
-    end
+  let(:custom_field) { create(:user_project_custom_field, name: "Users field", multi_value: true) }
+  let(:value) { create_list(:user, 2) }
 
-    def write_meeting_subtitle
-      pdf.formatted_text([styles.page_subtitle.merge({ text: meeting_subtitle })])
-    end
-
-    def meeting_subtitle
-      [
-        "#{meeting_mode} (#{I18n.t("label_meeting_state_#{meeting.state}")}),",
-        "#{format_date(meeting.start_time)},",
-        format_time(meeting.start_time, include_date: false),
-        "–",
-        format_time(meeting.end_time, include_date: false)
-      ].join(" ")
+  it_behaves_like "rendering label with help text", "Users field"
+  it_behaves_like "rendering autocompleter", "Users field", tag_name: "opce-user-autocompleter", multiple: true do
+    it "sets correct autocompleter inputs" do
+      expect(autocompleter["data-resource"]).to be_json_eql(%{"principals"})
+      expect(autocompleter["data-url"]).to be_json_eql(%{"/api/v3/principals"})
+      expect(autocompleter["data-input-value"]).to have_json_size(2)
+      expect(autocompleter["data-input-value"]).to be_json_eql(value.pluck(:id).map(&:to_s).to_json)
     end
   end
 end

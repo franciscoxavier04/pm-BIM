@@ -5,6 +5,22 @@ module Primer
     module Forms
       module Dsl
         module InputMethods
+          def multi(**, &)
+            super(**decorate_options(**), &)
+          end
+
+          def check_box(**, &)
+            super(**decorate_options(**), &)
+          end
+
+          def radio_button_group(**, &)
+            super(**decorate_options(**), &)
+          end
+
+          def check_box_group(**, &)
+            super(**decorate_options(**), &)
+          end
+
           def autocompleter(**, &)
             add_input AutocompleterInput.new(builder:, form:, **decorate_options(**), &)
           end
@@ -45,9 +61,10 @@ module Primer
             add_input WorkPackageAutocompleterInput.new(builder:, form:, **decorate_options(**), &)
           end
 
-          def decorate_options(include_help_text: true, **options)
-            if include_help_text && supports_help_texts?(builder.object)
-              options[:label] = form.wrap_attribute_label_with_help_text(options[:label], options[:name])
+          def decorate_options(include_help_text: true, help_text_options: {}, **options)
+            if include_help_text && supports_help_texts?(form.model)
+              attribute_name = help_text_options[:attribute_name] || options[:name]
+              options[:label] = form.wrap_attribute_label_with_help_text(options[:label], attribute_name)
             end
             options
           end
