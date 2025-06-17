@@ -38,7 +38,7 @@ export type BreadcrumbItem =
   | string;
 
 @Component({
-  template: './op-breadcrumbs.component.html',
+  templateUrl: './op-breadcrumbs.component.html',
   selector: 'op-breadcrumbs',
   styleUrls: ['./op-breadcrumbs.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush,
