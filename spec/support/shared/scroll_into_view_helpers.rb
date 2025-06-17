@@ -45,9 +45,9 @@ def scroll_to_element(element, block: :start, inline: :nearest)
   end
 end
 
-def scroll_to_and_click(element)
+def scroll_to_and_click(element, block: :start, inline: :nearest)
   retry_block do
-    scroll_to_element(element)
+    scroll_to_element(element, block:, inline:)
     element.click
   end
 end

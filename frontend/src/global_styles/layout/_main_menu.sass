@@ -67,11 +67,6 @@ $arrow-left-width: 40px
     position: relative
     @include styled-scroll-bar
 
-
-    .main-menu--projects-divider
-      background: var(--borderColor-muted)
-      margin: 0.75rem 0
-
   ul
     margin: 0
     padding: 0
@@ -130,10 +125,6 @@ $arrow-left-width: 40px
     justify-content: center
     align-items: center
 
-  .icon-time
-    background: none
-    padding: 0
-
   .op-project-select--trigger-button
     &:hover, &:focus, &:active
       @include main-menu-hover(false)
@@ -188,7 +179,7 @@ $arrow-left-width: 40px
 
 .main-menu--children-menu-header
   position: sticky
-  top: 77px
+  top: 0
   z-index: 1
   background: var(--main-menu-bg-color)
   padding: 0px 10px 0 4px
@@ -205,6 +196,16 @@ $arrow-left-width: 40px
 
     &:hover, &:focus, &:active
       @include main-menu-hover(false)
+
+.main-menu--top-container
+  position: sticky
+  top: 0
+  z-index: 1
+  background: var(--main-menu-bg-color)
+
+  .main-menu--projects-divider
+    background: var(--borderColor-neutral-emphasis)
+    margin: 1rem 0
 
 a.main-menu--parent-node:not(.Button)
   border: 1px solid transparent
@@ -227,11 +228,13 @@ a.main-menu--parent-node:not(.Button)
     flex-grow: 1
 
     &.closed
+      overflow: hidden
       li
         display: none
 
       > li.open
         display: list-item
+        height: 100%
 
         .main-item-wrapper
           display: none
@@ -244,9 +247,14 @@ a.main-menu--parent-node:not(.Button)
 
         .main-menu--children
           display: block
+          // Children header == 50px
+          height: calc(100% - 50px)
+          overflow: auto
 
           li
             display: list-item
+            &.partial
+              height: 100%
 
     &.open
       > li

@@ -38,11 +38,17 @@ module Redmine::MenuManager::TopMenuHelper
   end
 
   def top_menu_left_menu_items
-    [render_main_top_menu_nodes,
+    [render_module_top_menu_node,
+     render_logo,
+     render_main_top_menu_nodes,
      render_quick_add_menu]
   end
 
   def render_top_menu_center
+    nil
+  end
+
+  def render_logo
     content_tag :div, class: "op-logo" do
       mode_class = User.current.pref.high_contrast_theme? ? "op-logo--link_high_contrast" : ""
       link_to(I18n.t("label_home"),
@@ -85,8 +91,7 @@ module Redmine::MenuManager::TopMenuHelper
   end
 
   def top_menu_right_menu_items
-    [render_module_top_menu_node,
-     render_notification_top_menu_node,
+    [render_notification_top_menu_node,
      render_help_top_menu_node,
      render_user_top_menu_node]
   end
@@ -175,7 +180,7 @@ module Redmine::MenuManager::TopMenuHelper
                                            anchor_align: :end) do |menu|
         menu.with_show_button(icon: "op-grid-menu",
                               scheme: :invisible,
-                              classes: "op-app-menu--item-action op-app-header--primer-button hidden-for-mobile",
+                              classes: "op-app-menu--item-action op-app-header--primer-button",
                               title: I18n.t("label_modules"),
                               test_selector: "op-app-header--modules-menu-button",
                               "aria-label": I18n.t("label_modules"))
