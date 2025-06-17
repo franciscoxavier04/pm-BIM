@@ -76,8 +76,8 @@ module ::Overviews
       respond_to_with_turbo_streams(status: service_call.success? ? :ok : :unprocessable_entity)
     end
 
-    def project_life_cycles_sidebar
-      render :project_life_cycles_sidebar, layout: false
+    def project_life_cycle_sidebar
+      render :project_life_cycle_sidebar, layout: false
     end
 
     def jump_to_project_menu_item
@@ -97,7 +97,7 @@ module ::Overviews
       @custom_fields_sidebar_enabled =
         User.current.allowed_in_project?(:view_project_attributes, @project) &&
         @project.project_custom_fields.visible.any?
-      @life_cycles_sidebar_enabled =
+      @life_cycle_sidebar_enabled =
         OpenProject::FeatureDecisions.stages_and_gates_active? &&
         User.current.allowed_in_project?(:view_project_phases, @project) &&
         @project.phases.active.any?
