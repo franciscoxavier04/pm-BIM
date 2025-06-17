@@ -365,7 +365,9 @@ In OpenProject, the project overview is defined as a single [dashboard](#dashboa
 
 ### Project phase
 
-In OpenProject, the **project phase** is part of the overall [project life cycle](#project-life-cycle) and helps structure the project's progression over time. A project phase can begin or end with a [phase gate](#phase-gate), marking key decision points. In OpenProject, administrators can enable some or all of the following project phases: Initiating, Planning, Executing, and Closing. These phases are based on the [open source project management framework PM²](#pm--pm2) and help teams manage complex projects in a structured, methodical way. [Read more about phases in a project management life cycle](../system-admin-guide/projects/project-life-cylce).
+In OpenProject, the **project phase** is part of the overall [project life cycle](#project-life-cycle) and helps structure the project's progression over time. A project phase can begin or end with a [phase gate](#phase-gate), marking key decision points. In OpenProject, administrators can enable some or all of the following project phases: Initiating, Planning, Executing, and Closing. These phases are based on the [open source project management framework PM²](#pm--pm2) and help teams manage complex projects in a structured, methodical way. Configuring project phases and adding new ones is available as an [Enterprise add-on](#enterprise-add-on).
+
+[Read more about phases in a project management life cycle](../system-admin-guide/projects/project-life-cylce).
 
 ### Project settings
 
