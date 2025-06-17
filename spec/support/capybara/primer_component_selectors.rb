@@ -52,9 +52,12 @@ Capybara.add_selector :primer_label, locator_type: [String, Symbol] do
   # `node_filter` applies the filter on the elements returned by the query so
   # that error message can list them if none matches.
   node_filter :scheme do |node, scheme|
-    actual = node[:class].scan(/(?<=Label--)[\w-]+/).first
-    (actual&.downcase == scheme.downcase).tap do |res|
-      add_error("Expected scheme to be #{scheme.inspect} but was #{actual.inspect}") unless res
+    actual = node[:class].scan(/(?<=Label--)[\w-]+/)
+    scheme = scheme.to_s
+
+    actual.include?(scheme).tap do |res|
+      actual_values = actual.any? ? actual.map(&:inspect).to_sentence : "not set"
+      add_error("Expected scheme to be #{scheme.inspect} but was #{actual_values}") unless res
     end
   end
 
@@ -81,9 +84,12 @@ Capybara.add_selector :primer_text, locator_type: [String] do
   # `node_filter` applies the filter on the elements returned by the query so
   # that error message can list them if none matches.
   node_filter :color do |node, color|
-    actual = node[:class].scan(/(?<=color-fg-)[\w-]+/).first
-    (actual&.downcase == color.downcase).tap do |res|
-      add_error("Expected color to be #{color.inspect} but was #{actual ? actual.inspect : 'not set'}") unless res
+    actual = node[:class].scan(/(?<=color-fg-)[\w-]+/)
+    color = color.to_s
+
+    actual.include?(color).tap do |res|
+      actual_values = actual.any? ? actual.map(&:inspect).to_sentence : "not set"
+      add_error("Expected color to be #{color.inspect} but was #{actual_values}") unless res
     end
   end
 
