@@ -38,7 +38,6 @@ instance.handleError = (error, message, detail) => {
   console.warn(error, message, detail);
 };
 
-instance.register('application', OpApplicationController);
 instance.register('async-dialog', AsyncDialogController);
 instance.register('disable-when-checked', OpDisableWhenCheckedController);
 instance.register('flash', FlashController);
@@ -59,5 +58,8 @@ instance.register('pattern-input', PatternInputController);
 instance.register('scroll-into-view', ScrollIntoViewController);
 instance.register('ckeditor-focus', CkeditorFocusController);
 instance.register('highlight-when-value-selected', HighlightWhenValueSelectedController);
-
 instance.register('auto-submit', AutoSubmit);
+
+// Application controller must be registered last, as it tries to automatically load other controllers
+// not yet registered.
+instance.register('application', OpApplicationController);

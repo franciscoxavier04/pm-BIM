@@ -18,18 +18,18 @@ We released [OpenProject 16.1.0](https://community.openproject.org/versions/2194
 
 OpenProject 16.1 introduces a powerful new way to reflect your project’s structure over time: using project phases like **Initiating, Planning, Executing, and Closing**, with optional phase gates at the start or end of each phase.
 
-Project administrators can now **activate relevant phases and phase gates per project**. Portfolio managers can then assign start and finish dates to each phase, with automatic scheduling of all following phases and gates based on working days. This helps reduce manual effort and keeps your project timelines consistent.
+Project administrators can now **activate relevant phases and phase gates per project**. Portfolio managers can then assign start and finish dates to each phase, with automatic scheduling of all following phases and phase gates based on working days. This helps reduce manual effort and keeps your project timelines consistent.
 
-Work packages can be assigned to a specific phase, making it easier to understand their context, filter by phase, and group work in the table view. And in the project list, you can now add columns and use new filters to track which projects are currently in which phase or gate – ideal for portfolio level planning and reporting.
+Work packages can be assigned to a specific phase, making it easier to understand their context, filter by phase, and group work in the table view. And in the project list, you can use columns and new filters to track which projects are currently in which phase or gate – ideal for portfolio level planning and reporting.
 
 You’ll find the full life cycle directly in the project overview page, where you can enter dates, view the current phase, and access the new scheduling tools at a glance:
 
 ![Project overview page with the project life cycle displayed in the right column](openproject-16-1-project-life-cycle-project-overview-highlighted.png)
 
 > [!NOTE]
-> With the Enterprise add-on available in the Premium plan or higher, you can configure existing project phases and gates and even create new ones. This is done in the global settings. The project-level features are available in all editions, with pre-defined phases based on the PM² framework.
+> With the Enterprise add-on available in the Premium plan or higher, you can configure existing project phases and phase gates and even create new ones. This is done in the global settings. The project-level features are available in all editions, with pre-defined phases based on the [open source PM² framework](https://www.openproject.org/pm2/).
 
-[Read more about working with a project life cycle in OpenProject](https://www.openproject.org/blog/openproject-16-1-release/).
+[Read more about working with a project life cycle in OpenProject](../system-admin-guide/projects/project-life-cycle).
 
 ### Export meetings in PDF format
 
@@ -40,18 +40,20 @@ Meeting organizers and participants can generate a printable PDF that includes t
 The export is available via the More (⋯) menu for both one-time meetings and individual occurrences of recurring meetings. You can **customize the PDF** before download by choosing wheather to include:
 
 - the list of participants,
-- the list of attachements,
+- the list of attachments,
 - the backlog,
 - the agenda outcomes,
 - a customized footer text (e.g. project name), which appears on each page.
 
-The PDF is generated in A4 format and includes a professional layout. 
+The PDF is generated in A4 format and includes a clearly structured layout. 
 
 [Learn more about exporting meetings in PDF format in our documentation](../../user-guide/meetings/one-time-meetings/#export-a-meeting).
 
 ![Overlay of Export PDF options for OpenProject meetings](openproject-16-1-export-meeting-to-pdf.png)
 
 ### Set smart default options for reminders
+
+We released work package reminders with OpenProject 15.2 in January 2025. With this update, it’s easier than ever to use them to stay organized and keep your notification center clean.
 
 To make setting reminders even quicker, OpenProject now offers pre-filled options when clicking the reminder icon on a work package. Instead of entering details manually, you can now choose one of the following defaults:
 
@@ -62,8 +64,6 @@ To make setting reminders even quicker, OpenProject now offers pre-filled option
 - At a particular date/time
 
 Selecting one of the quick options will open the reminder dialog with a pre-filled date and time – typically at 9:00 local time on the selected future day. You can still adjust the date, time, and add a note before saving the reminder.
-
-We released Reminders with OpenProject 15.2 in January 2025. With this update, it’s easier than ever to use them to stay organized and keep your notification center clean.
 
 [Learn more about work package reminders in our documentation](../../user-guide/work-packages/edit-work-package/#work-package-reminders).
 
@@ -89,7 +89,7 @@ Please note that negative lags can be counterintuitive:
 
 [Learn more about work package relations in our documentation](../../user-guide/work-packages/work-package-relations-hierarchies/#work-package-relations).
 
-### Display hierarchy trees for hierarchy custom fields
+### Display hierarchy trees for hierarchy custom fields (Enterprise add-on)
 
 Hierarchy custom fields are now easier to explore and use. When viewing such a custom field, a **hierarchical tree is displayed next to the details section**, showing the entire structure at a glance.
 
@@ -113,9 +113,9 @@ To learn what more is planned regarding accessibility in OpenProject, see [these
 
 ## Important technical changes
 
-### Added API for Emoji reactions, Reminders, and Internal Comments
+### Added API for emoji reactions, reminders, and internal comments
 
-OpenProject 16.1 extends its API to support three features that were previously only available via the web interface. This update enables integrations with other clients, including the mobile app, to access:
+OpenProject 16.1 extends its API to support three features that were previously only available via the web interface. This update enables integrations with other clients to access:
 
 - Emoji reactions on work package comments
 - Reminders for work packages

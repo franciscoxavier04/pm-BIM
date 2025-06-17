@@ -27,7 +27,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<% content_controller "repository-navigation", dynamic: true %>
+<% content_controller "repository-navigation" %>
 <%= render partial: "repository_header", locals: { empty: false } %>
 
 <% if !@entries.nil? && authorize_for('repositories', 'browse') %>
