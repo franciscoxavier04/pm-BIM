@@ -240,7 +240,6 @@ es:
     label_export_pdf: "Exportar PDF"
     export:
       your_meeting_export: "Se está exportando la reunión"
-      label_meeting_agenda: "Agenda de la reunión"
     export_pdf_dialog:
       title: Exportar PDF
       description: Genere un archivo PDF imprimible de esta reunión en el estado actual.

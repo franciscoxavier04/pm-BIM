@@ -240,7 +240,6 @@ it:
     label_export_pdf: "Esporta PDF"
     export:
       your_meeting_export: "Riunione in corso di esportazione"
-      label_meeting_agenda: "Agenda delle riunioni"
     export_pdf_dialog:
       title: Esporta PDF
       description: Genera un file PDF stampabile di questa riunione allo stato attuale.

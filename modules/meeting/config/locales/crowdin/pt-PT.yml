@@ -240,7 +240,6 @@ pt-PT:
     label_export_pdf: "Exportar PDF"
     export:
       your_meeting_export: "A reunião está a ser exportada"
-      label_meeting_agenda: "Ordem de trabalhos da reunião"
     export_pdf_dialog:
       title: Exportar PDF
       description: Gerar um ficheiro PDF para impressão desta reunião no estado atual.
