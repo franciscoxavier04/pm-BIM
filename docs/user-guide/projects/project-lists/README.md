@@ -294,7 +294,7 @@ You can add individual project phases and gates as columns in the project list. 
 
 In a project list, each project phase appears as a separate column. If a phase includes a phase gate, this is indicated by an icon (a line with a circle) next to the phase name, there are no separate columns for phase gates. 
 
-If no project phase values are displayed for a project, it could be because the phases are disabled for that project or because you don't have the required *View project phases* permission."
+If no project phase values are displayed for a project, it could be because the phases are disabled for that project or because you don't have the required *View project phases* permission.
 
 The view remains intact even if a phase or gate is later removed from the global configuration.
 
