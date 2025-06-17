@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,51 +26,26 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-require "support/pages/page"
+require "support/pages/projects/index"
 
 module Pages
   module CustomFields
-    class IndexPage < Page
-      def path
-        "/custom_fields"
+    class ProjectMappings < ::Pages::Projects::Index
+      def path(project_custom_field)
+        "/custom_fields/#{project_custom_field.id}/projects"
       end
 
-      def visit_tab(name)
-        visit!
-        within_test_selector("custom-fields--tab-nav") do
-          click_on name.to_s
+      def within_row(project)
+        row = page.find("#{row_id_prefix}-#{project.id}")
+        row.hover
+        within row do
+          yield row
         end
       end
 
-      def set_name(name)
-        find_by_id("custom_field_name").set name
-      end
-
-      def set_default_value(value)
-        fill_in "custom_field[default_value]", with: value
-      end
-
-      def set_all_projects(value)
-        find_by_id("custom_field_is_for_all").set value
-      end
-
-      def has_form_element?(name)
-        page.has_css? "label.form--label", text: name
-      end
-
-      def click_to_create_new_custom_field(type)
-        wait_for_network_idle
-
-        click_button "New custom field"
-
-        click_on type
-      end
-
-      def expect_none_listed
-        expect(page).to have_text("There are currently no custom fields.")
-      end
+      def row_id_prefix = "#admin-custom-fields-custom-field-projects-row-component-project"
     end
   end
 end

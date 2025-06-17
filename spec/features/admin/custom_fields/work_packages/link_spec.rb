@@ -28,49 +28,47 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "support/pages/page"
+require "spec_helper"
 
-module Pages
-  module CustomFields
-    class IndexPage < Page
-      def path
-        "/custom_fields"
-      end
+RSpec.describe "Link custom fields edit", :js do
+  shared_let(:admin) { create(:admin) }
+  let(:cf_page) { Pages::CustomFields::IndexPage.new }
 
-      def visit_tab(name)
-        visit!
-        within_test_selector("custom-fields--tab-nav") do
-          click_on name.to_s
-        end
-      end
+  current_user { admin }
 
-      def set_name(name)
-        find_by_id("custom_field_name").set name
-      end
+  before do
+    cf_page.visit!
+  end
 
-      def set_default_value(value)
-        fill_in "custom_field[default_value]", with: value
-      end
+  it "can create and edit link custom fields" do
+    # Create CF
+    cf_page.click_to_create_new_custom_field("Link (URL)")
 
-      def set_all_projects(value)
-        find_by_id("custom_field_is_for_all").set value
-      end
+    fill_in "custom_field_name", with: "My Link CF"
 
-      def has_form_element?(name)
-        page.has_css? "label.form--label", text: name
-      end
+    expect(page).to have_no_field("custom_field_custom_options_attributes_0_value")
 
-      def click_to_create_new_custom_field(type)
-        wait_for_network_idle
+    click_on "Save"
 
-        click_button "New custom field"
+    cf_page.expect_and_dismiss_flash(message: "Successful creation.")
 
-        click_on type
-      end
+    # Expect field to be created
+    cf = CustomField.last
+    expect(cf.name).to eq("My Link CF")
+    expect(cf.field_format).to eq "link"
 
-      def expect_none_listed
-        expect(page).to have_text("There are currently no custom fields.")
-      end
-    end
+    # Edit again
+    find("a", text: "My Link CF").click
+
+    expect(page).to have_no_field("custom_field_custom_options_attributes_0_value")
+    fill_in "custom_field_name", with: "My Link CF (edited)"
+
+    click_on "Save"
+
+    cf_page.expect_and_dismiss_flash(message: "Successful update.")
+
+    # Expect field to be saved
+    cf = CustomField.last
+    expect(cf.name).to eq("My Link CF (edited)")
   end
 end
