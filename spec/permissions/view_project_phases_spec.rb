@@ -31,7 +31,7 @@
 require "spec_helper"
 require "support/permission_specs"
 
-RSpec.describe Overviews::OverviewsController, "view_project_life_cycles permission", # rubocop:disable RSpec/EmptyExampleGroup,RSpec/SpecFilePathFormat
+RSpec.describe Overviews::OverviewsController, "view_project_phases permission", # rubocop:disable RSpec/EmptyExampleGroup,RSpec/SpecFilePathFormat
                type: :controller do
   include PermissionSpecs
 
