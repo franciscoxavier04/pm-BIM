@@ -248,7 +248,6 @@ uk:
     label_export_pdf: "Експорт PDF"
     export:
       your_meeting_export: "Нарада експортується"
-      label_meeting_agenda: "Порядок денний наради"
     export_pdf_dialog:
       title: Експорт PDF
       description: Згенеруйте PDF-файл для друку з поточним змістом наради.

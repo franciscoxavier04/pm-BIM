@@ -207,8 +207,6 @@
         text_expired: "utløpt"
         trial:
           confirmation: "Bekreftelse av e-postadresse"
-          confirmation_info: >
-            Vi har sendt deg en e-post  %{date} til %{email}. Sjekk innboksen og klikk på bekreftelseslenken du ga for å starte prøveperioden på 14 dager.
           form:
             general_consent: >
               Jeg godtar <a target="_blank" href="%{link_terms}">sine vilkår for personvern</a> og <a target="_blank" href="%{link_privacy}">personvernregler</a>.

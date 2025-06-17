@@ -206,8 +206,6 @@ sl:
         text_expired: "expired"
         trial:
           confirmation: "Potrditev e-poštnega naslova"
-          confirmation_info: >
-            Na dan %{date} smo vam na elektronski naslov %{email} poslali e-pošto. Prosimo preglejte vašo pošto in kliknite na potrditveno povezavo za začetek vašega 14 dnevnega preizkusa.
           form:
             general_consent: >
               Strinjam se z  <a target="_blank" href="%{link_terms}">pogoji uporabe</a> in <a target="_blank" href="%{link_privacy}">politiko zasebnosti</a>.

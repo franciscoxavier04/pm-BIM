@@ -922,12 +922,13 @@
       emoji_reaction:
         reactable: "Reacted on"
       enterprise_token:
-        domain: "Domene"
         starts_at: "Gyldig siden"
         subscriber: "Abonnent"
         plan: "Plan"
         encoded_token: "Enterprise support nøkkel"
         active_user_count_restriction: "Maksimalt antall aktive brukere"
+      enterprise_trial:
+        company: "Company"
       grids/grid:
         page: "Side"
         row_count: "Antall rader"
@@ -1255,6 +1256,10 @@
               forbidden_uri: "er forbudt av serveren."
             scopes:
               not_match_configured: "samsvarer ikke med tilgjengelige omfang."
+        enterprise_trial:
+          already_used: "was already used to create a trial."
+          failed_to_create: "Trial could not be created (%{status})"
+          general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "kan ikke leses. Er du sikker på at det er en brukerstøttenøkkel?"
         grids/grid:
@@ -1657,6 +1662,7 @@
     derived_start_date: "Utledet startdato"
     direction: "Direction"
     display_sums: "Vis summer"
+    domain: "Domain"
     due_date: "Sluttdato"
     estimated_hours: "Arbeid"
     estimated_time: "Arbeid"
@@ -2052,6 +2058,8 @@
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
+      already_have_token: >
+        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Skjul banneret"
       homescreen_description: >
         Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
@@ -2104,6 +2112,26 @@
       internal_comments_inline:
         title: "Write internal comments only a small group can see"
         description: " "
+    trial:
+      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
+      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      already_retrieved: >
+        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
+      successfully_saved: "Your trial enterprise token has been successfully retrieved."
+      token_sent: "Trial token requested"
+      request_again: "Request again"
+      resend_action: "Resend confirmation email"
+      welcome_title: "Quick feature overview"
+      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+      confirmation_info: >
+        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+      confirmation_subline: >
+        Please, check your inbox and follow the steps to start your 14-day free trial.
+      domain_caption: The token will be valid for your currently configured host name.
+      receive_newsletter_html: >
+        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+      consent_html: >
+        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
   enumeration_activities: "Tidregistrering aktiviteter"
   enumeration_work_package_priorities: "Prioritering av arbeidspakker"
   enumeration_reported_project_statuses: "Rapportert prosjektstatus"

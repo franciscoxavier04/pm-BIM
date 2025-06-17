@@ -920,12 +920,13 @@ es:
       emoji_reaction:
         reactable: "Reaccionó el"
       enterprise_token:
-        domain: "Dominio"
         starts_at: "Válido desde"
         subscriber: "Suscriptor"
         plan: "Plan"
         encoded_token: "Token de soporte de Enterprise"
         active_user_count_restriction: "Máximo de usuarios activos"
+      enterprise_trial:
+        company: "Company"
       grids/grid:
         page: "Página"
         row_count: "Número de filas"
@@ -1253,6 +1254,10 @@ es:
               forbidden_uri: "está prohibida por el servidor."
             scopes:
               not_match_configured: "no coincide con los ámbitos disponibles."
+        enterprise_trial:
+          already_used: "was already used to create a trial."
+          failed_to_create: "Trial could not be created (%{status})"
+          general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "no se puede leer. ¿Seguro que es un token de soporte?"
         grids/grid:
@@ -1655,6 +1660,7 @@ es:
     derived_start_date: "Fecha de comienzo deseada"
     direction: "Dirección"
     display_sums: "Mostrar sumas"
+    domain: "Domain"
     due_date: "Fecha de finalización"
     estimated_hours: "Trabajo"
     estimated_time: "Trabajo"
@@ -2050,6 +2056,8 @@ es:
       plan_title: "Extensión Enterprise de %{plan}"
       plan_name: "Plan Enterprise %{plan}"
       plan_text_html: "Disponible a partir del %{plan_name}."
+      already_have_token: >
+        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Ocultar este banner"
       homescreen_description: >
         Los planes Enterprise amplían la edición Community de OpenProject que está utilizando actualmente. Incluyen complementos, funciones adicionales y asistencia profesional que permiten a organizaciones de todos los tamaños lograr grandes cosas juntas.
@@ -2102,6 +2110,26 @@ es:
       internal_comments_inline:
         title: "Escriba comentarios internos que solo un pequeño grupo pueda ver"
         description: " "
+    trial:
+      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
+      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      already_retrieved: >
+        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
+      successfully_saved: "Your trial enterprise token has been successfully retrieved."
+      token_sent: "Trial token requested"
+      request_again: "Request again"
+      resend_action: "Resend confirmation email"
+      welcome_title: "Quick feature overview"
+      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+      confirmation_info: >
+        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+      confirmation_subline: >
+        Please, check your inbox and follow the steps to start your 14-day free trial.
+      domain_caption: The token will be valid for your currently configured host name.
+      receive_newsletter_html: >
+        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+      consent_html: >
+        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
   enumeration_activities: "Actividades de seguimiento del tiempo"
   enumeration_work_package_priorities: "Prioridades del paquete de trabajo"
   enumeration_reported_project_statuses: "Estatus del proyecto reportado"

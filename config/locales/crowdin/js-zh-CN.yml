@@ -207,8 +207,6 @@ zh-CN:
         text_expired: "已过期"
         trial:
           confirmation: "确认电子邮件地址"
-          confirmation_info: >
-            我们在 %{date}向您的 %{email} 发送了一封电子邮件。请查看您的电子邮件并点击提供的确认链接以开始 14 天的试用。
           form:
             general_consent: >
               我同意<a target="_blank" href="%{link_terms}">服务条款</a>和<a target="_blank" href="%{link_privacy}">隐私政策</a>。
@@ -360,7 +358,7 @@ zh-CN:
           "16_1":
             standard:
               new_features_html: >
-                该版本包含各种新功能和改进，例如<br><ul class="%{list_styling_class}"><li>使用阶段和阶段关口构建项目生命周期。</li><li>以 PDF 格式导出会议。</li><li>为提醒设置智能默认选项。</li><li>对工作包的日期使用负滞后。</li><li>为层级结构自定义字段显示结构树。</li><li>受益于 ARIA 实时区域的日期选择器的功能改进。</li> </ul>
+                该版本包含各种新功能和改进，例如<br><ul class="%{list_styling_class}"><li>使用阶段和阶段关口构建项目生命周期。</li><li>以 PDF 格式导出会议。</li><li>为提醒设置智能默认选项。</li><li>对工作包日期使用负滞后。</li><li>为层次结构自定义字段显示结构树。</li><li>受益于 ARIA 实时区域日期选择器的无障碍功能改进。</li> </ul>
     ical_sharing_modal:
       title: "订阅日历"
       inital_setup_error_message: "获取数据时发生错误。"
@@ -1038,9 +1036,9 @@ zh-CN:
         subtitle: "您将在所选时间收到此工作包的通知。"
         presets:
           tomorrow: "明天"
-          three_days: "3天内"
-          week: "一周内"
-          month: "一个月内"
+          three_days: "3 天后"
+          week: "一周后"
+          month: "一个月后"
           custom: "在某个特定日期/时间"
       scheduling:
         is_parent: "此工作包的日期会自动从其子项推导出。可激活“手动计划”来设置日期。"

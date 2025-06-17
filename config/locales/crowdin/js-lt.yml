@@ -207,8 +207,6 @@ lt:
         text_expired: "nebegalioja"
         trial:
           confirmation: "Patvirtinti el. pašto adresą"
-          confirmation_info: >
-            Mes %{date} išsiuntėme jums el. laišką adresu %{email}. Prašome patikrinti savo laiškų dėžutę ir spustelėti ant patvirtinimo nuorodos, kad pradėtumėte savo 14 dienų bandomąjį periodą.
           form:
             general_consent: >
               Sutinku su <a target="_blank" href="%{link_terms}">paslaugos sąlygomis</a> ir <a target="_blank" href="%{link_privacy}">privatumo taisyklėmis</a>.

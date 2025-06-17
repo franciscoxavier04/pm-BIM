@@ -236,7 +236,6 @@ ko:
     label_export_pdf: "PDF 내보내기"
     export:
       your_meeting_export: "미팅을 내보내는 중입니다"
-      label_meeting_agenda: "미팅 의제"
     export_pdf_dialog:
       title: PDF 내보내기
       description: 현재 상태에서 이 미팅에 대한 인쇄 가능한 PDF 파일을 생성합니다.

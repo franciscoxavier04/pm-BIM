@@ -207,8 +207,6 @@ es:
         text_expired: "expirado"
         trial:
           confirmation: "Confirmación de dirección de correo electrónico"
-          confirmation_info: >
-            Le hemos enviado un correo electrónico a %{email} el %{date}. Por favor, compruebe su bandeja de entrada y haga clic en el enlace de confirmación que le hemos enviado para comenzar con su prueba gratuita de 14 días.
           form:
             general_consent: >
               Estoy de acuerdo con los <a target="_blank" href="%{link_terms}">términos del servicio</a> y la <a target="_blank" href="%{link_privacy}">política de privacidad</a>.

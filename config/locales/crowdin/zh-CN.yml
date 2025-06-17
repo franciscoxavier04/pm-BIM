@@ -82,11 +82,11 @@ zh-CN:
       delete_dialog:
         title: "删除企业令牌"
         heading: "删除此企业令牌？"
-        confirmation: "您确定要删除此企业版支持令牌吗？"
+        confirmation: "确定要删除此企业版支持令牌吗？"
       create_dialog:
         title: "添加企业令牌"
         type_token_text: "输入支持令牌文本"
-        token_placeholder: "在此粘贴您的企业版支持令牌"
+        token_placeholder: "在此处粘贴您的企业版支持令牌"
       add_token: "上传企业版支持令牌"
       delete_token_modal:
         text: "您确定要删除当前使用的企业版令牌吗？"
@@ -561,11 +561,11 @@ zh-CN:
   priorities:
     edit:
       priority_color_text: |
-        Click to assign or change the color of this priority.
-        It can be used for highlighting work packages in the table.
+        单击可以分配或更改此优先级的颜色。
+        颜色可用于突出显示表中的工作包。
     admin:
       default:
-        caption: Making this priority default will override the previous default priority.
+        caption: 设置此优先级将覆盖上一个默认优先级。
   reactions:
     action_title: "回应"
     add_reaction: "添加回应"
@@ -816,7 +816,7 @@ zh-CN:
       required_description: "将此工作包标记为相关工作包的需求"
       label_parent_singular: "父级"
       label_parent_plural: "父级"
-      label_other_relations: "Other relations"
+      label_other_relations: "其他关系"
       ghost_relation_title: "相关工作包"
       ghost_relation_description: "由于权限问题，您无法看到这些信息。"
   label_invitation: 邀请
@@ -854,7 +854,7 @@ zh-CN:
   activemodel:
     attributes:
       projects/copy_options:
-        dependencies: "Dependencies"
+        dependencies: "依赖项"
   activerecord:
     attributes:
       announcements:
@@ -871,7 +871,7 @@ zh-CN:
         attribute_name: "属性"
         help_text: "帮助文本"
       auth_provider:
-        scim_clients: "SCIM Clients"
+        scim_clients: "SCIM 客户端"
       capability:
         context: "背景"
       changeset:
@@ -911,12 +911,13 @@ zh-CN:
       emoji_reaction:
         reactable: "作用于"
       enterprise_token:
-        domain: "域"
         starts_at: "生效时间"
         subscriber: "订阅者"
-        plan: "计划"
+        plan: "方案"
         encoded_token: "企业版支持令牌"
         active_user_count_restriction: "最大活动用户数"
+      enterprise_trial:
+        company: "Company"
       grids/grid:
         page: "页"
         row_count: "行数"
@@ -1244,6 +1245,10 @@ zh-CN:
               forbidden_uri: "被服务器禁止。"
             scopes:
               not_match_configured: "与可用范围不匹配。"
+        enterprise_trial:
+          already_used: "was already used to create a trial."
+          failed_to_create: "Trial could not be created (%{status})"
+          general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "无法读取。是否确定为支持令牌？"
         grids/grid:
@@ -1540,7 +1545,7 @@ zh-CN:
       role:
         other: "角色"
       scim_client:
-        other: "SCIM Clients"
+        other: "SCIM 客户端"
       status: "工作包状态"
       token/api:
         other: 访问令牌
@@ -1596,7 +1601,7 @@ zh-CN:
       added_date: "设为 %{date}"
       changed_date: "由 %{from} 变更为 %{to}"
       deactivated: "已停用"
-      deleted_project_phase: "删除项目阶段"
+      deleted_project_phase: "删除的项目阶段"
       phase_and_both_gates: "%{phase_message}。%{start_gate_message}，和%{finish_gate_message}"
       phase_and_one_gate: "%{phase_message}。%{gate_message}"
       removed_date: "删除日期%{date}"
@@ -1632,6 +1637,7 @@ zh-CN:
     derived_start_date: "派生的开始日期"
     direction: "方向"
     display_sums: "显示汇总"
+    domain: "Domain"
     due_date: "完成日期"
     estimated_hours: "工时"
     estimated_time: "工时"
@@ -2008,9 +2014,11 @@ zh-CN:
       plan_title: "企业 %{plan} 附加组件"
       plan_name: "%{plan} 企业计划"
       plan_text_html: "从 %{plan_name} 开始可用。"
+      already_have_token: >
+        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "隐藏此广告"
       homescreen_description: >
-        企业计划将扩展您正在使用的 OpenProject 社区版本。 它们包括附加组件、额外功能和专业支持，使各种规模的组织能够一起取得工作成果。
+        企业方案可以扩展您当前正在使用的 OpenProject 社区版。它们包括附加组件、额外功能和专业支持，使各种规模的组织能够共同实现伟大目标。
       homescreen_subline: 通过升级，您也将支持一个开源项目。
       baseline_comparison:
         description: 高亮显示自从过去任意时间点以来对此列表所做的更改。
@@ -2060,6 +2068,26 @@ zh-CN:
       internal_comments_inline:
         title: "编写只有小部分群体能看见的内部评论"
         description: " "
+    trial:
+      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
+      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      already_retrieved: >
+        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
+      successfully_saved: "Your trial enterprise token has been successfully retrieved."
+      token_sent: "Trial token requested"
+      request_again: "Request again"
+      resend_action: "Resend confirmation email"
+      welcome_title: "Quick feature overview"
+      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+      confirmation_info: >
+        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+      confirmation_subline: >
+        Please, check your inbox and follow the steps to start your 14-day free trial.
+      domain_caption: The token will be valid for your currently configured host name.
+      receive_newsletter_html: >
+        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+      consent_html: >
+        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
   enumeration_activities: "时间跟踪活动"
   enumeration_work_package_priorities: "工作包优先级"
   enumeration_reported_project_statuses: "报告的项目状态"
@@ -2584,7 +2612,7 @@ zh-CN:
   label_deleted_custom_item: "(删除项目)"
   label_deleted_custom_option: "（删除的选项）"
   label_empty_element: "（空）"
-  label_go_back: "返回一级菜单"
+  label_go_back: "返回上一级菜单"
   label_go_forward: "打开 %{module} 子菜单"
   label_missing_or_hidden_custom_option: "（缺少值或缺少访问权限）"
   label_descending: "降序"
@@ -2885,7 +2913,7 @@ zh-CN:
   label_query_new: "新的查询"
   label_query_plural: "自定义查询"
   label_read: "阅读..."
-  label_read_documentation: "阅读帮助"
+  label_read_documentation: "阅读文档"
   label_register: "创建一个新帐户"
   label_register_with_developer: "注册成为开发人员"
   label_registered_on: "注册于"
@@ -3325,8 +3353,8 @@ zh-CN:
   notice_successful_delete: "成功删除。"
   notice_successful_cancel: "取消成功"
   notice_successful_update: "成功更新。"
-  notice_unsuccessful_create: "Creation failed."
-  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
+  notice_unsuccessful_create: "创建失败。"
+  notice_unsuccessful_create_with_reason: "创建失败：%{reason}"
   notice_unsuccessful_update: "更新失败。"
   notice_unsuccessful_update_with_reason: "更新失败：%{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -3904,9 +3932,9 @@ zh-CN:
       phase_gates: "阶段关口"
       new:
         description: "对此项目阶段的更改将反映在所有启用的项目中。"
-        heading: "New phase"
+        heading: "新增阶段"
       edit:
-        heading: "Edit phase"
+        heading: "编辑阶段"
       both_gate: "开始和结束关口"
       no_gate: "无关口"
       start_gate: "开始关口"
@@ -4310,7 +4338,7 @@ zh-CN:
       code_500_outbound_request_failure: "对另一个资源的出站请求存在失败状态代码 %{status_code} 。"
       code_500_missing_enterprise_token: "由于企业令牌是无效的或缺失的，故无法处理该请求。"
       bad_request:
-        emoji_reactions_activity_type_not_supported: "此活动类型不支持表情符号反应。"
+        emoji_reactions_activity_type_not_supported: "此活动类型不支持表情符号回应。"
       conflict:
         multiple_reminders_not_allowed: |-
           您每次只能设置一个工作包提醒。请删除或更新现有提醒。

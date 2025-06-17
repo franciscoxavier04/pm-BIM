@@ -207,8 +207,6 @@ vi:
         text_expired: "hết hạn"
         trial:
           confirmation: "Xác nhận địa chỉ email"
-          confirmation_info: >
-            Chúng tôi đã gửi cho bạn một email vào %{date} đến %{email}. Vui lòng kiểm tra hộp thư đến của bạn và nhấp vào liên kết xác nhận để bắt đầu dùng thử 14 ngày của bạn.
           form:
             general_consent: >
               Tôi đồng ý với <a target="_blank" href="%{link_terms}">các điều khoản dịch vụ</a> và <a target="_blank" href="%{link_privacy}">chính sách bảo mật</a>.
