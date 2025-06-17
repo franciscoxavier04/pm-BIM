@@ -206,8 +206,6 @@ ro:
         text_expired: "expirat"
         trial:
           confirmation: "Confirmarea adresei de e-mail"
-          confirmation_info: >
-            Ți-am trimis un e-mail în %{date} către %{email}. Te rog să verifici căsuța de e-mail și să faci clic pe link-ul de confirmare furnizat pentru a începe perioada de probă de 14 zile.
           form:
             general_consent: >
               Sunt de acord cu <a target="_blank" href="%{link_terms}">termenii serviciului</a> și cu <a target="_blank" href="%{link_privacy}">politica de confidențialitate</a>.

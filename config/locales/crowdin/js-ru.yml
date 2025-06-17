@@ -206,8 +206,6 @@ ru:
         text_expired: "просрочено"
         trial:
           confirmation: "Подтверждение адреса электронной почты"
-          confirmation_info: >
-            Мы отправили вам письмо %{date} на адрес %{email}. Проверьте свой почтовый ящик и нажмите на ссылку подтверждения, чтобы начать 14 дней пробной версии.
           form:
             general_consent: >
               Я принимаю <a target="_blank" href="%{link_terms}">условия обслуживания</a> и <a target="_blank" href="%{link_privacy}">политику конфиденциальности</a>.

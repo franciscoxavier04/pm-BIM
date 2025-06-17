@@ -79,24 +79,15 @@ RSpec.describe Meetings::Exporter do
      export_time_formatted]
   end
 
-  def single_meeting_head
-    [meeting.title,
-     "   #{exporter.badge_text}    ",
-     exporter.meeting_subtitle_dates]
-  end
-
-  def recurring_meeting_head
-    [format_date(meeting.start_time), "-", meeting.title,
-     "   #{exporter.badge_text}    ",
-     exporter.meeting_subtitle_dates,
-     "-", meeting.recurring_meeting.base_schedule]
+  def meeting_head
+    [meeting.title, exporter.meeting_subtitle]
   end
 
   context "with an empty single meeting" do
     it "renders the expected document" do
       expected_document = [
         *expected_cover_page,
-        *single_meeting_head,
+        *meeting_head,
         "1", # Page number
         export_time_formatted,
         project.name
@@ -114,7 +105,7 @@ RSpec.describe Meetings::Exporter do
     it "renders the expected document" do
       expected_document = [
         *expected_cover_page,
-        *recurring_meeting_head,
+        *meeting_head,
         "1", # Page number
         export_time_formatted,
         project.name
@@ -125,6 +116,9 @@ RSpec.describe Meetings::Exporter do
   end
 
   context "with a meeting with agenda items" do
+    let(:meeting) do
+      create(:meeting, author: user, project:, title: "Awesome closed meeting!", location: "Mars Base", state: :closed)
+    end
     let(:type_task) { create(:type_task) }
     let(:status) { create(:status, is_default: true, name: "Workin' on it") }
     let(:work_package) { create(:work_package, project:, status:, subject: "Important task", type: type_task) }
@@ -177,18 +171,15 @@ RSpec.describe Meetings::Exporter do
       it "renders the expected document" do
         expected_document = [
           *expected_cover_page,
-          *single_meeting_head,
+          *meeting_head,
           "Participants (2)",
           "Export User", "  ", "Attended",
           "Other Account", "  ", "Invited",
 
-          "Meeting agenda",
-
           "Untitled section", "  ", "15 mins",
-
           "Agenda Item TOP 1", "  ", "15 mins", "  ", "Export User",
           "foo",
-          "Outcome",
+          "✓   Outcome",
           "An outcome",
 
           "Second section", "  ", "10 mins",
@@ -225,8 +216,7 @@ RSpec.describe Meetings::Exporter do
       it "renders the expected document" do
         expected_document = [
           *expected_cover_page,
-          *single_meeting_head,
-          "Meeting agenda",
+          *meeting_head,
 
           "Untitled section", "  ", "15 mins",
           "Agenda Item TOP 1", "  ", "15 mins", "  ", "Export User",
@@ -267,8 +257,7 @@ RSpec.describe Meetings::Exporter do
       it "renders the expected document" do
         expected_document = [
           *expected_cover_page,
-          *single_meeting_head,
-          "Meeting agenda",
+          *meeting_head,
 
           "Work package ##{secret_work_package.id} not visible", "  ", "10 mins",
           "title of the work package should not be visible",
@@ -294,8 +283,7 @@ RSpec.describe Meetings::Exporter do
       it "renders the expected document" do
         expected_document = [
           *expected_cover_page,
-          *single_meeting_head,
-          "Meeting agenda",
+          *meeting_head,
 
           "Deleted work package reference", "  ", "10 mins",
           "title of the work package should not be visible",

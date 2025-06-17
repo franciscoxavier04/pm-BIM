@@ -560,11 +560,14 @@ zh-TW:
         出現的所有佔位符用戶(例如，作為受理人、負責人或其他用戶值) 將被重新分配給一個名為“已刪除用戶”的帳戶。 由於每個已刪除帳戶的數據都會被重新分配給此帳戶，因此無法將用戶創建的數據與另一個已刪除帳戶的數據區分。
       irreversible: "這一行動是不可還原的"
       confirmation: "輸入占位使用者名稱 %{name} 確認刪除。"
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
         點擊以指派或變更此優先順序的顏色。
         可用於在表格中突顯工作套件。
+    admin:
+      default:
+        caption: 將此優先順序設為預設值，將會覆寫先前的預設優先順序。
   reactions:
     action_title: "反應"
     add_reaction: "加入反應"
@@ -813,6 +816,7 @@ zh-TW:
       required_description: "將此工作套件標示為相關工作的需求"
       label_parent_singular: "上層"
       label_parent_plural: "上層"
+      label_other_relations: "其他關聯"
       ghost_relation_title: "相關的工作套件"
       ghost_relation_description: "由於權限的緣故，您無法看到。"
   label_invitation: 邀請
@@ -850,7 +854,7 @@ zh-TW:
   activemodel:
     attributes:
       projects/copy_options:
-        dependencies: "Dependencies"
+        dependencies: "依賴套件"
   activerecord:
     attributes:
       announcements:
@@ -867,7 +871,7 @@ zh-TW:
         attribute_name: "属性"
         help_text: "說明文字"
       auth_provider:
-        scim_clients: "SCIM Clients"
+        scim_clients: "SCIM 用戶端"
       capability:
         context: "內容"
       changeset:
@@ -907,12 +911,13 @@ zh-TW:
       emoji_reaction:
         reactable: "反應於"
       enterprise_token:
-        domain: "網域"
         starts_at: "生效自"
         subscriber: "訂閱者"
         plan: "計畫"
         encoded_token: "Enterprise support token"
         active_user_count_restriction: "最大活動使用者數"
+      enterprise_trial:
+        company: "Company"
       grids/grid:
         page: "頁面"
         row_count: "列數"
@@ -1240,6 +1245,10 @@ zh-TW:
               forbidden_uri: "被伺服器禁止。"
             scopes:
               not_match_configured: "與可用的範圍不吻合。"
+        enterprise_trial:
+          already_used: "was already used to create a trial."
+          failed_to_create: "Trial could not be created (%{status})"
+          general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "無法讀取，確定是一個 support token?"
         grids/grid:
@@ -1536,7 +1545,7 @@ zh-TW:
       role:
         other: "角色"
       scim_client:
-        other: "SCIM Clients"
+        other: "SCIM 用戶端"
       status: "工作套件狀態"
       token/api:
         other: 存取權杖
@@ -1628,6 +1637,7 @@ zh-TW:
     derived_start_date: "派生的開始日期"
     direction: "方向"
     display_sums: "顯示加總"
+    domain: "Domain"
     due_date: "完成日期"
     estimated_hours: "工時"
     estimated_time: "工時"
@@ -2004,6 +2014,8 @@ zh-TW:
       plan_title: "企業版 %{plan} 外掛"
       plan_name: "%{plan} 企業版計畫"
       plan_text_html: "需 %{plan_name} 方案以上才可使用。"
+      already_have_token: >
+        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "隱藏此廣告"
       homescreen_description: >
         企業方案擴展您目前使用的 OpenProject 社群版，包含附加元件、額外功能和專業支援，讓各規模組織都能共同達成卓越目標。
@@ -2056,6 +2068,26 @@ zh-TW:
       internal_comments_inline:
         title: "只讓少數人能看到的內部備註"
         description: " "
+    trial:
+      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
+      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      already_retrieved: >
+        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
+      successfully_saved: "Your trial enterprise token has been successfully retrieved."
+      token_sent: "Trial token requested"
+      request_again: "Request again"
+      resend_action: "Resend confirmation email"
+      welcome_title: "Quick feature overview"
+      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+      confirmation_info: >
+        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+      confirmation_subline: >
+        Please, check your inbox and follow the steps to start your 14-day free trial.
+      domain_caption: The token will be valid for your currently configured host name.
+      receive_newsletter_html: >
+        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+      consent_html: >
+        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
   enumeration_activities: "時間追蹤活動"
   enumeration_work_package_priorities: "工作套件優先等級"
   enumeration_reported_project_statuses: "報告的專案狀態"
@@ -2080,7 +2112,7 @@ zh-TW:
   error_color_could_not_be_saved: "無法儲存顏色"
   error_cookie_missing: "OpenProject的Cookie遺失了。請確保瀏覽器的Cookie已經啟用，否則本應用程式將無法正常做用。"
   error_custom_option_not_found: "選項不存在。"
-  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
+  error_enterprise_plan_needed: "您需要 %{plan} 企業方案才能執行此操作。"
   error_enterprise_activation_user_limit: "無法啟動您的帳戶 (已達到使用者限制)。請與管理員聯繫以獲取存取權限。"
   error_enterprise_token_invalid_domain: "企業版未啟用。您的企業版權杖(Token)的域名（%{actual}）與系統的主機名（%{expected}）不匹配。"
   error_failed_to_delete_entry: "刪除此項目失敗。"
@@ -3322,8 +3354,8 @@ zh-TW:
   notice_successful_delete: "刪除成功"
   notice_successful_cancel: "取消成功"
   notice_successful_update: "更新成功"
-  notice_unsuccessful_create: "Creation failed."
-  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
+  notice_unsuccessful_create: "建立失敗。"
+  notice_unsuccessful_create_with_reason: "建立失敗：%{reason}"
   notice_unsuccessful_update: "更新失敗。"
   notice_unsuccessful_update_with_reason: "更新失敗： %{reason}"
   notice_successful_update_custom_fields_added_to_project: |

@@ -206,8 +206,6 @@ pt-BR:
         text_expired: "expirado"
         trial:
           confirmation: "Confirmação de endereço de e-mail"
-          confirmation_info: >
-            Enviamos um e-mail para %{email} em %{date}. Por favor, verifique sua caixa de entrada e clique no link de confirmação fornecido para iniciar seu teste de 14 dias.
           form:
             general_consent: >
               Concordo com os <a target="_blank" href="%{link_terms}">termos do serviço</a> e com a <a target="_blank" href="%{link_privacy}">política de privacidade</a>.
@@ -360,7 +358,7 @@ pt-BR:
           "16_1":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
+                A versão inclui diversos novos recursos e melhorias, como:<br> <ul class="%{list_styling_class}"> <li>Estruturar o ciclo de vida do projeto com fases e marcos de aprovação.</li> <li>Exportar reuniões em formato PDF.</li> <li>Definir opções padrão inteligentes para lembretes.</li> <li>Usar atraso negativo nas datas dos pacotes de trabalho.</li> <li>Exibir árvores hierárquicas para campos personalizados hierárquicos.</li> <li>Aproveitar a acessibilidade aprimorada do seletor de datas com regiões ARIA ao vivo.</li> </ul>
     ical_sharing_modal:
       title: "Assinar calendário"
       inital_setup_error_message: "Ocorreu um erro ao buscar dados."
@@ -565,7 +563,7 @@ pt-BR:
     label_version_plural: "Versões"
     label_view_has_changed: "Esta visão tem alterações não salvas. Clique para salvá-las."
     help_texts:
-      show_modal: "Show help text"
+      show_modal: "Exibir texto de ajuda"
     onboarding:
       buttons:
         skip: "Pular"
@@ -1034,15 +1032,15 @@ pt-BR:
       reminders:
         button_label: "Definir lembrete"
         title:
-          new: "Set a reminder"
+          new: "Definir um lembrete"
           edit: "Editar lembrete"
         subtitle: "Você receberá uma notificação para este pacote de trabalho no horário selecionado."
         presets:
-          tomorrow: "Tomorrow"
-          three_days: "In 3 days"
-          week: "In a week"
-          month: "In a month"
-          custom: "At a particular date/time"
+          tomorrow: "Amanhã"
+          three_days: "Em 3 dias"
+          week: "Em uma semana"
+          month: "Em um mês"
+          custom: "Em uma data/hora específica"
       scheduling:
         is_parent: "As datas deste pacote de trabalho são deduzidas automaticamente de seus filhos. Ative o 'Planejamento manual' para definir as datas."
         is_switched_from_manual_to_automatic: "As datas deste pacote de trabalho podem precisar ser recalculadas após a alteração de planejamento manual para automático devido a relações com outros pacotes de trabalho."

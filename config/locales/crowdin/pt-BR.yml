@@ -80,13 +80,13 @@ pt-BR:
       theme_warning: Alterar o tema irá sobrescrever seu estilo personalizado. O design será perdido. Tem certeza que deseja continuar?
     enterprise:
       delete_dialog:
-        title: "Delete enterprise token"
-        heading: "Delete this enterprise token?"
-        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+        title: "Excluir token Enterprise"
+        heading: "Excluir este token Enterprise?"
+        confirmation: "Tem certeza de que deseja excluir este token de suporte da edição Enterprise?"
       create_dialog:
-        title: "Add Enterprise token"
-        type_token_text: "Type support token text"
-        token_placeholder: "Paste your Enterprise edition support token here"
+        title: "Adicionar token Enterprise"
+        type_token_text: "Digitar texto do token de suporte"
+        token_placeholder: "Colar seu token de suporte da edição Enterprise"
       add_token: "Carregar um token de suporte da edição Enterprise "
       delete_token_modal:
         text: "Tem a certeza de que deseja remover o token atual da edição Enterprise?"
@@ -566,11 +566,14 @@ pt-BR:
         Todas as ocorrências do usuário de espaço reservado (por exemplo, como responsável, competente ou outros valores de usuário) serão reatribuídas a uma conta chamada "Usuário excluído". Como os dados de todas as contas excluídas são reatribuídos a esta conta, não será possível diferenciar os dados criados por usuários de dados excluídos por outra conta.
       irreversible: "Esta ação é irreversível"
       confirmation: "Digite o nome de usuário do espaço reservado %{name} para confirmar a exclusão."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Clique para atribuir ou alterar a cor desta prioridade.
-        Pode ser usado para destacar pacotes de trabalho na tabela.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "Reagir"
     add_reaction: "Adicionar reação"
@@ -692,7 +695,7 @@ pt-BR:
         automatic: "Automático"
         manual: "Manual"
       show_relations: "Exibir relações"
-      update_inputs_aria_live_message: "Date picker updated. %{message}"
+      update_inputs_aria_live_message: "Seletor de data atualizado. %{message}"
       tabs:
         aria_label: "Abas de seletor de datas"
         children: "Filhos"
@@ -762,8 +765,8 @@ pt-BR:
     lag:
       subject: "Atraso"
       caption: |-
-        The minimum number of working days to keep in between the two work packages.
-        It can also be negative.
+        O número mínimo de dias úteis a ser mantido entre os dois pacotes de trabalho.
+        Também pode ser negativo.
     relations:
       label_new_child_created: "Novo pacote de trabalho criado e adicionado como subpacote"
       label_relates_singular: "relacionado a"
@@ -822,6 +825,7 @@ pt-BR:
       required_description: "Marca este pacote de trabalho como um requisito para o pacote de trabalho relacionado"
       label_parent_singular: "pais"
       label_parent_plural: "pais"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Pacote de trabalho relacionado"
       ghost_relation_description: "Você não possui permissão para visualizar isso."
   label_invitation: Convite
@@ -859,7 +863,7 @@ pt-BR:
   activemodel:
     attributes:
       projects/copy_options:
-        dependencies: "Dependencies"
+        dependencies: "Dependências"
   activerecord:
     attributes:
       announcements:
@@ -876,7 +880,7 @@ pt-BR:
         attribute_name: "Atributo"
         help_text: "Texto de ajuda"
       auth_provider:
-        scim_clients: "SCIM Clients"
+        scim_clients: "Clientes SCIM"
       capability:
         context: "Contexto"
       changeset:
@@ -916,12 +920,13 @@ pt-BR:
       emoji_reaction:
         reactable: "Reagiu em"
       enterprise_token:
-        domain: "Domínio"
         starts_at: "Válido desde"
         subscriber: "Assinante"
-        plan: "Plan"
+        plan: "Plano"
         encoded_token: "Token de suporte Enterprise"
         active_user_count_restriction: "Máximo de usuários ativos"
+      enterprise_trial:
+        company: "Company"
       grids/grid:
         page: "Página"
         row_count: "Número de linhas"
@@ -986,10 +991,10 @@ pt-BR:
       project/phase:
         date_range: "Período"
         definition: "Definição"
-        duration: "Duration"
-        start_date: "Start date"
-        start_date_caption: "Follows the previous phase."
-        finish_date: "Finish date"
+        duration: "Duração"
+        start_date: "Data de início"
+        start_date_caption: "Segue a fase anterior."
+        finish_date: "Data de conclusão"
       project/phase_definition:
         name: "Nome"
         color: "Cor"
@@ -1249,6 +1254,10 @@ pt-BR:
               forbidden_uri: "é proibido pelo servidor."
             scopes:
               not_match_configured: "não corresponde a escopos disponíveis."
+        enterprise_trial:
+          already_used: "was already used to create a trial."
+          failed_to_create: "Trial could not be created (%{status})"
+          general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "não pode ser lido. Tem certeza que é um token de suporte?"
         grids/grid:
@@ -1302,11 +1311,11 @@ pt-BR:
         project/phase:
           attributes:
             start_date:
-              must_be_before_finish_date: "must be before the finish date."
-              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              must_be_before_finish_date: "deve ser anterior à data final."
+              non_continuous_dates: "não pode ser anterior à data final da fase anterior."
             finish_date:
-              must_be_after_start_date: "must be after the start date."
-          cannot_be_a_non_working_day: "can't be a non-working day."
+              must_be_after_start_date: "deve ser após a data de início."
+          cannot_be_a_non_working_day: "não pode ser um dia não útil."
         query:
           attributes:
             project:
@@ -1433,7 +1442,7 @@ pt-BR:
               cannot_be_in_another_project: "não pode ser em outro projeto."
               not_a_valid_parent: "é inválido."
             schedule_manually:
-              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
+              cannot_be_automatically_scheduled: "não pode ser definido como falso (agendado automaticamente) porque não possui predecessores nem filhos."
             start_date:
               violates_relationships: "somente pode ser definida como %{soonest_start} ou posterior para não violar as relações de trabalho do pacote."
               cannot_be_null: "não pode ser definido como nulo já que a data de conclusão e a duração são conhecidas. "
@@ -1527,8 +1536,8 @@ pt-BR:
       custom_field: "Campo personalizado"
       "doorkeeper/application": "Aplicação OAuth"
       enterprise_token:
-        one: "Enterprise token"
-        other: "Enterprise tokens"
+        one: "Token Enterprise"
+        other: "Tokens Enterprise"
       forum: "Fórum"
       global_role: "Função global"
       group: "Grupo"
@@ -1553,8 +1562,8 @@ pt-BR:
         one: "Papel"
         other: "Papéis"
       scim_client:
-        one: "SCIM Client"
-        other: "SCIM Clients"
+        one: "Cliente SCIM"
+        other: "Clientes SCIM"
       status: "Situação do pacote de trabalho"
       token/api:
         one: Token de acesso
@@ -1651,6 +1660,7 @@ pt-BR:
     derived_start_date: "Data inicial derivada"
     direction: "Direção"
     display_sums: "Mostrar somas"
+    domain: "Domain"
     due_date: "Data de conclusão"
     estimated_hours: "Trabalho"
     estimated_time: "Trabalho"
@@ -2040,12 +2050,14 @@ pt-BR:
       work_package_sharing: Compartilhar pacotes de trabalho com pessoas de fora da organização
       work_package_subject_generation: Geração de assunto do pacote de trabalho
     upsell:
-      buy_now_button: "Buy now"
+      buy_now_button: "Comprar agora"
       plans_title: "Planos para empresas"
       title: "Complemento empresarial"
       plan_title: "Complemento do %{plan} Enterprise"
       plan_name: "Plano enterprise %{plan}"
       plan_text_html: "Disponível a partir do %{plan_name}."
+      already_have_token: >
+        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Ocultar este banner"
       homescreen_description: >
         Os planos Enterprise ampliam a edição Community do OpenProject que você está utilizando. Eles incluem complementos, recursos adicionais e suporte profissional, permitindo que organizações de todos os tamanhos conquistem grandes resultados juntos.
@@ -2098,6 +2110,26 @@ pt-BR:
       internal_comments_inline:
         title: "Escreva comentários internos visíveis apenas para um grupo restrito"
         description: " "
+    trial:
+      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
+      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      already_retrieved: >
+        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
+      successfully_saved: "Your trial enterprise token has been successfully retrieved."
+      token_sent: "Trial token requested"
+      request_again: "Request again"
+      resend_action: "Resend confirmation email"
+      welcome_title: "Quick feature overview"
+      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+      confirmation_info: >
+        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+      confirmation_subline: >
+        Please, check your inbox and follow the steps to start your 14-day free trial.
+      domain_caption: The token will be valid for your currently configured host name.
+      receive_newsletter_html: >
+        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+      consent_html: >
+        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
   enumeration_activities: "Atividades de controle de tempo"
   enumeration_work_package_priorities: "Prioridades do pacote de trabalho"
   enumeration_reported_project_statuses: "Situação de projeto comunicada"
@@ -2122,7 +2154,7 @@ pt-BR:
   error_color_could_not_be_saved: "Cor não pôde ser salva"
   error_cookie_missing: "Está faltando o cookie do OpenProject. Por favor, certifique-se de que os cookies estão habilitados, sem os quais esta função não funcionará adequadamente."
   error_custom_option_not_found: "A opção não existe."
-  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
+  error_enterprise_plan_needed: "Você precisa do plano enterprise %{plan} para executar esta ação."
   error_enterprise_activation_user_limit: "Sua conta não pôde ser ativada (limite de usuários atingido). Por favor, contate o administrador para obter acesso."
   error_enterprise_token_invalid_domain: "A edição Enterprise não esta ativa. Seu domínio do token Enterprise (%{actual}) não corresponde ao nome do host do sistema (%{expected})."
   error_failed_to_delete_entry: "Falha ao excluir esta entrada."
@@ -2430,7 +2462,7 @@ pt-BR:
         static_token_name: "Token de RSS"
         disabled_text: "Os tokens de RSS não estão habilitados pelo administrador. Entre em contato com o administrador para utilizar este recurso."
       storages:
-        title: "File storages"
+        title: "Armazenamento de arquivos"
         text_hint: "Tokens de Armazenamento de Arquivo conectam esta instância do OpenProject a um Armazenamento de Arquivos externo."
         empty_text_hint: "Não há nenhum acesso de armazenamento vinculado à sua conta."
         revoke_token: "Você realmente deseja remover este token? Você precisará fazer login novamente no %{storage}"
@@ -2606,7 +2638,7 @@ pt-BR:
   label_dashboard: "Painel"
   label_database_version: "Versão do PostgreSQL"
   label_date: "Data"
-  label_dates: "Dates"
+  label_dates: "Datas"
   label_date_and_time: "Data e hora"
   label_date_format: "Formato de data"
   label_date_from: "De"
@@ -2622,8 +2654,8 @@ pt-BR:
   label_deleted_custom_item: "(item excluído)"
   label_deleted_custom_option: "(opção excluída)"
   label_empty_element: "(vazio)"
-  label_go_back: "Go back one menu level"
-  label_go_forward: "Open %{module} sub-menu"
+  label_go_back: "Voltar um nível no menu"
+  label_go_forward: "Abrir o submenu %{module}"
   label_missing_or_hidden_custom_option: "(algum valor faltando ou falta permissões para acessar)"
   label_descending: "Decrescente"
   label_details: "Detalhes"
@@ -2913,8 +2945,8 @@ pt-BR:
   label_project_custom_field_plural: "Atributos do projeto"
   label_project_settings: "Configurações do projeto"
   label_project_attributes_settings: "Configurações de atributos de projeto"
-  label_project_storage_plural: "File storages"
-  label_project_storage_project_folder: "File storages: Project folders"
+  label_project_storage_plural: "Armazenamentos de arquivo"
+  label_project_storage_project_folder: "Armazenamentos de arquivo: pastas do projeto"
   label_projects_disk_usage_information: "%{count} projetos usando %{used_disk_space} do espaço em disco"
   label_project_view_all: "Ver todos os projetos"
   label_project_show_details: "Mostrar detalhes do projeto"
@@ -2923,7 +2955,7 @@ pt-BR:
   label_query_new: "Nova consulta"
   label_query_plural: "Consultas personalizadas"
   label_read: "Leia..."
-  label_read_documentation: "Read documentation"
+  label_read_documentation: "Ler a documentação"
   label_register: "Criar uma nova conta"
   label_register_with_developer: "Registre-se como desenvolvedor"
   label_registered_on: "Registrado em"
@@ -3354,7 +3386,7 @@ pt-BR:
   notice_bad_request: "Requisição Inválida."
   notice_not_authorized: "Você não está autorizado a acessar esta página."
   notice_not_authorized_archived_project: "O projeto que você está tentando acessar foi arquivado."
-  notice_requires_enterprise_token: "O token corporativo está ausente ou não permite acesso a esta página."
+  notice_requires_enterprise_token: "O token Enterprise está ausente ou não permite acesso a esta página."
   notice_password_confirmation_failed: "Sua senha não está correta. Não é possível continuar."
   notice_principals_found_multiple: "Existe(m) %{number} resultado(s) encontrado(s).\nTecle tab para ir ao primeiro resultado."
   notice_principals_found_single: "Existe um resultado. Tecle tab para ir para ele."
@@ -3365,8 +3397,8 @@ pt-BR:
   notice_successful_delete: "Exclusão bem sucedida."
   notice_successful_cancel: "Cancelamento bem-sucedido."
   notice_successful_update: "Atualizado com sucesso."
-  notice_unsuccessful_create: "Creation failed."
-  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
+  notice_unsuccessful_create: "Falha na criação."
+  notice_unsuccessful_create_with_reason: "Falha na criação: %{reason}"
   notice_unsuccessful_update: "Falha na atualização."
   notice_unsuccessful_update_with_reason: "Atualização falhou: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -3656,7 +3688,7 @@ pt-BR:
       oauth_application_details: "O valor secreto do cliente não poderá ser acessado novamente após esta janela ser fechada. Copie estes valores nas configurações de Integração do Nextcloud OpenProject:"
       oauth_application_details_link_text: "Ir para a página de configurações"
       setup_documentation_details: "Se você precisar de ajuda para configurar um novo armazenamento de arquivos, confira a documentação:"
-      setup_documentation_details_link_text: "File storages setup"
+      setup_documentation_details_link_text: "Configuração dos armazenamentos de arquivo"
       show_warning_details: "Para usar este armazenamento de arquivos, lembre-se de ativar o módulo e o armazenamento específico nas configurações de projeto de cada projeto desejado."
     subversion:
       existing_title: "Repositório Subversion existente"
@@ -3948,9 +3980,9 @@ pt-BR:
       phase_gates: "Controles de fase"
       new:
         description: "As alterações nesta fase do projeto serão aplicadas a todos os projetos nos quais ela esteja ativada."
-        heading: "Nova fase"
+        heading: "New phase"
       edit:
-        heading: "Editar fase"
+        heading: "Edit phase"
       both_gate: "Controle inicial e controle final"
       no_gate: "Sem controle"
       start_gate: "Data inicial"
@@ -4355,13 +4387,13 @@ pt-BR:
       code_500_outbound_request_failure: "Uma solicitação de saída para outro recurso falhou com o código de status %{status_code}."
       code_500_missing_enterprise_token: "O pedido não pode ser manipulado devido a um token Enterprise inválido ou ausente."
       bad_request:
-        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+        emoji_reactions_activity_type_not_supported: "Este tipo de atividade não dá suporte a reações por emoji."
       conflict:
         multiple_reminders_not_allowed: |-
-          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
+          É possível definir apenas um lembrete por vez para o pacote de trabalho. Exclua ou atualize o lembrete atual.
       not_found:
         work_package: "O pacote de trabalho que você está procurando não pode ser encontrado ou foi excluído."
-        reminder: "The reminder you are looking for cannot be found or has been deleted."
+        reminder: "O lembrete que você está procurando não pode ser encontrado ou foi excluído."
       expected:
         date: "AAAA-MM-DD (somente data no formato ISO 8601)"
         datetime: "AAAA-MM-DDThh:mm:ss[.lll][+hh:mm] (qualquer data e hora compatível com a ISO 8601)"
@@ -4520,16 +4552,16 @@ pt-BR:
       oauth_returned_standard_error: "OAuth2 retornou um erro interno"
       wrong_token_type_returned: "OAuth2 retornou um tipo errado de token, aguardando AccessToken::Bearer"
       oauth_issue_contact_admin: "OAuth2 comunicou um erro. Entre em contato com o administrador do sistema."
-      oauth_client_not_found: "Cliente OAuth2 não encontrado no ponto de extremidade 'callback' (redirect_uri)."
+      oauth_client_not_found: "Cliente OAuth2 não encontrado no endpoint 'callback' (redirect_uri)."
       refresh_token_called_without_existing_token: >
         Erro interno: refresh_token chamada sem um token existente.
       refresh_token_updated_failed: "Erro durante a atualização do OAuthClientToken"
       oauth_client_not_found_explanation: >
         Este erro é exibido após você atualizar o client_id e client_secret no OpenProject, mas não atualizar o campo 'Return URI' no provedor OAuth2.
-      oauth_code_not_present: "OAuth2 'code' não encontrado no ponto de extremidade 'callback' (redirect_uri)."
+      oauth_code_not_present: "OAuth2 'code' não encontrado no endpoint 'callback' (redirect_uri)."
       oauth_code_not_present_explanation: >
         Este erro é exibido quando você seleciona o response_type incorreto no provedor OAuth2. Resposta _type deve ser 'code' ou similar.
-      oauth_state_not_present: "OAuth2 'state' não encontrado no ponto de extremidade 'callback' (redirect_uri)."
+      oauth_state_not_present: "OAuth2 'state' não encontrado no endpoint 'callback' (redirect_uri)."
       oauth_state_not_present_explanation: >
         O 'state' é utilizado para indicar ao OpenProject onde continuar após uma autorização OAuth2 bem-sucedida. Um 'state' ausente é um erro interno que pode aparecer durante a configuração. Entre em contate com seu administrador de sistema.
       rack_oauth2:

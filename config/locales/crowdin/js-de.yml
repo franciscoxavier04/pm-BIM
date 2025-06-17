@@ -206,8 +206,6 @@ de:
         text_expired: "abgelaufen"
         trial:
           confirmation: "E-Mail-Adresse bestätigen"
-          confirmation_info: >
-            Wir haben Ihnen am %{date} eine E-Mail an %{email} gesendet. Bitte überprüfen Sie Ihren Posteingang und klicken Sie auf den Bestätigungslink, um Ihre 14 Tage Testversion zu starten.
           form:
             general_consent: >
               Ich stimme den <a target="_blank" href="%{link_terms}">Nutzungsbedingungen</a> und der <a target="_blank" href="%{link_privacy}">Datenschutzrichtlinie</a> zu.

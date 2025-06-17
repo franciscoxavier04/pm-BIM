@@ -575,11 +575,14 @@ uk:
         Усі екземпляри прототипу користувача (наприклад, виконавець, відповідальний тощо) буде перепризначено обліковому запису з назвою «Видалений користувач». Оскільки дані кожного видаленого облікового запису перепризначаються цьому обліковому запису, відрізнити дані, створені користувачем, від даних іншого видаленого облікового запису, може бути важко.
       irreversible: "Цю дію не можна скасувати"
       confirmation: "Введіть ім’я прототипу  користувача %{name}, щоб підтвердити видалення."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Натисніть, щоб призначити або змінити колір цього пріоритету.
-        Його можна використовувати для виділення робочих пакетів у таблиці.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "Реакція"
     add_reaction: "Додати реакцію"
@@ -834,6 +837,7 @@ uk:
       required_description: "Позначає цей робочий пакет як обовʼязковий для звʼязаного з ним"
       label_parent_singular: "батьківський елемент"
       label_parent_plural: "батьківський елемент"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Пов’язаний пакет робіт"
       ghost_relation_description: "Ви не маєте дозволів на перегляд цього елемента."
   label_invitation: Запрошення
@@ -871,7 +875,7 @@ uk:
   activemodel:
     attributes:
       projects/copy_options:
-        dependencies: "Dependencies"
+        dependencies: "Залежності"
   activerecord:
     attributes:
       announcements:
@@ -888,7 +892,7 @@ uk:
         attribute_name: "Атрибут"
         help_text: "Довідковий текст"
       auth_provider:
-        scim_clients: "SCIM Clients"
+        scim_clients: "Клієнти SCIM"
       capability:
         context: "Контекст"
       changeset:
@@ -928,12 +932,13 @@ uk:
       emoji_reaction:
         reactable: "Реакція на"
       enterprise_token:
-        domain: "Домен"
         starts_at: "Дійсний з"
         subscriber: "Абонент"
         plan: "План"
         encoded_token: "Маркер підтримки підприємства"
         active_user_count_restriction: "Максимальна кількість активних користувачів"
+      enterprise_trial:
+        company: "Company"
       grids/grid:
         page: "Сторінка"
         row_count: "Кількість рядків"
@@ -1261,6 +1266,10 @@ uk:
               forbidden_uri: "заборонено сервером."
             scopes:
               not_match_configured: "не відповідає доступним областям."
+        enterprise_trial:
+          already_used: "was already used to create a trial."
+          failed_to_create: "Trial could not be created (%{status})"
+          general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "неможливо прочитати. Ви впевнені, що це маркер підтримки?"
         grids/grid:
@@ -1581,10 +1590,10 @@ uk:
         many: "Роль"
         other: "Роль"
       scim_client:
-        one: "SCIM Client"
-        few: "SCIM Clients"
-        many: "SCIM Clients"
-        other: "SCIM Clients"
+        one: "Клієнт SCIM"
+        few: "Клієнти SCIM"
+        many: "Клієнти SCIM"
+        other: "Клієнти SCIM"
       status: "Стан робочого пакета"
       token/api:
         one: Маркер доступу
@@ -1691,6 +1700,7 @@ uk:
     derived_start_date: "Отримана дата початку"
     direction: "Напрямок"
     display_sums: "Відображати суми"
+    domain: "Domain"
     due_date: "Дата закінчення"
     estimated_hours: "Робота"
     estimated_time: "Робота"
@@ -2124,6 +2134,8 @@ uk:
       plan_title: "Доповнення версії Enterprise %{plan}"
       plan_name: "Версія Enterprise %{plan}"
       plan_text_html: "Доступно, починаючи з версії %{plan_name}."
+      already_have_token: >
+        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Приховати цей банер"
       homescreen_description: >
         Плани Enterprise розширюють можливості вашого випуску OpenProject Community. Вони включають доповнення, додаткові функції та професійну підтримку, що дає організаціям усіх розмірів досягати кращих результатів разом.
@@ -2176,6 +2188,26 @@ uk:
       internal_comments_inline:
         title: "Створюйте внутрішні коментарі лише для учасників невеликої групи"
         description: " "
+    trial:
+      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
+      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      already_retrieved: >
+        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
+      successfully_saved: "Your trial enterprise token has been successfully retrieved."
+      token_sent: "Trial token requested"
+      request_again: "Request again"
+      resend_action: "Resend confirmation email"
+      welcome_title: "Quick feature overview"
+      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+      confirmation_info: >
+        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+      confirmation_subline: >
+        Please, check your inbox and follow the steps to start your 14-day free trial.
+      domain_caption: The token will be valid for your currently configured host name.
+      receive_newsletter_html: >
+        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+      consent_html: >
+        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
   enumeration_activities: "Дії щодо відстеження часу"
   enumeration_work_package_priorities: "Пріоритети робочого пакету"
   enumeration_reported_project_statuses: "Повідомлення про статус проекту"
@@ -2200,7 +2232,7 @@ uk:
   error_color_could_not_be_saved: "Не вдалося зберегти колір"
   error_cookie_missing: "Файл cookie OpenProject відсутній. Переконайтеся, що файли cookie увімкнено, оскільки ця програма не буде функціонувати належним чином."
   error_custom_option_not_found: "Варіант не існує."
-  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
+  error_enterprise_plan_needed: "Щоб виконати цю дію, потрібен корпоративний план %{plan}."
   error_enterprise_activation_user_limit: "Ваш обліковий запис не можна активувати (досягнуто обмеження користувача). Щоб отримати доступ, зверніться до свого адміністратора."
   error_enterprise_token_invalid_domain: "Версія Enterprise не активна. Домен вашого маркера Enterprise (%{actual}) не збігається з іменем хосту системи (%{expected})."
   error_failed_to_delete_entry: "Не вдалося видалити цей запис."
@@ -3445,8 +3477,8 @@ uk:
   notice_successful_delete: "Видалення успішно завершене."
   notice_successful_cancel: "Успішно видалено."
   notice_successful_update: "Успішно оновлено."
-  notice_unsuccessful_create: "Creation failed."
-  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
+  notice_unsuccessful_create: "Не вдалося створити."
+  notice_unsuccessful_create_with_reason: "Не вдалося створити: %{reason}"
   notice_unsuccessful_update: "Не вдалось оновити."
   notice_unsuccessful_update_with_reason: "Помилка оновлення: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -4029,9 +4061,9 @@ uk:
       phase_gates: "Контрольні точки етапів"
       new:
         description: "Зміни цього етапу проєкту відображатимуться в усіх проєктах із цим етапом."
-        heading: "Створення етапу"
+        heading: "New phase"
       edit:
-        heading: "Редагування етапу"
+        heading: "Edit phase"
       both_gate: "Початкова й кінцева контрольні точки"
       no_gate: "Немає контрольної точки"
       start_gate: "Початкова контрольна точка"

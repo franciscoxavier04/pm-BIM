@@ -573,11 +573,14 @@ ro:
         Toate prezențele utilizatorului de tip "placeholder" (de exemplu, ca destinatar, responsabil sau alte valori de utilizator) vor fi realocate unui cont numit "Utilizator eliminat". Deoarece datele fiecărui cont șters sunt realocate acestui cont, nu va fi posibilă deosebirea datelor create de utilizator de datele unui alt cont șters.
       irreversible: "Această acțiune este ireversibilă"
       confirmation: "Introdu numele de utilizator de tip placeholder %{name} pentru a confirma ștergerea."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Clic pentru a desemna sau schimba culoarea acestui nivel de prioritate.
-        Poate fi utilizate pentru a evidenția pachetele de lucru dintr-un tabel.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "React"
     add_reaction: "Add reaction"
@@ -833,6 +836,7 @@ ro:
       required_description: "Marchează acest pachet de lucru ca fiind o cerință pentru cel asociat"
       label_parent_singular: "părinte"
       label_parent_plural: "părinte"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Pachet de lucru asociat"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Invitație
@@ -927,12 +931,13 @@ ro:
       emoji_reaction:
         reactable: "Reacted on"
       enterprise_token:
-        domain: "Domeniu"
         starts_at: "Valabil din"
         subscriber: "Abonat"
         plan: "Plan"
         encoded_token: "Token de sprijin pentru întreprinderi"
         active_user_count_restriction: "Număr maxim de utilizatori activi"
+      enterprise_trial:
+        company: "Company"
       grids/grid:
         page: "Pagină"
         row_count: "Număr de rânduri"
@@ -1260,6 +1265,10 @@ ro:
               forbidden_uri: "este interzisă de către server."
             scopes:
               not_match_configured: "nu se potrivește cu domeniile de aplicare disponibile."
+        enterprise_trial:
+          already_used: "was already used to create a trial."
+          failed_to_create: "Trial could not be created (%{status})"
+          general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "nu poate fi citit. Sunteți sigur că este un jeton de suport?"
         grids/grid:
@@ -1676,6 +1685,7 @@ ro:
     derived_start_date: "Dată început derivată"
     direction: "Direction"
     display_sums: "Afişare totaluri"
+    domain: "Domain"
     due_date: "Dată finalizare"
     estimated_hours: "Muncă"
     estimated_time: "Muncă"
@@ -2090,6 +2100,8 @@ ro:
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
+      already_have_token: >
+        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Hide this banner"
       homescreen_description: >
         Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
@@ -2142,6 +2154,26 @@ ro:
       internal_comments_inline:
         title: "Scrie comentarii interne pe care doar un grup restrâns le poate vedea"
         description: " "
+    trial:
+      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
+      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      already_retrieved: >
+        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
+      successfully_saved: "Your trial enterprise token has been successfully retrieved."
+      token_sent: "Trial token requested"
+      request_again: "Request again"
+      resend_action: "Resend confirmation email"
+      welcome_title: "Quick feature overview"
+      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+      confirmation_info: >
+        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+      confirmation_subline: >
+        Please, check your inbox and follow the steps to start your 14-day free trial.
+      domain_caption: The token will be valid for your currently configured host name.
+      receive_newsletter_html: >
+        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+      consent_html: >
+        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
   enumeration_activities: "Activități de urmărire timp activate"
   enumeration_work_package_priorities: "Priorități pentru pachetele de lucru"
   enumeration_reported_project_statuses: "Stările proiectului raportat"
@@ -3994,9 +4026,9 @@ ro:
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
+        heading: "New phase"
       edit:
-        heading: "Edit Phase"
+        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"

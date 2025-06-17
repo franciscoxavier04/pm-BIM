@@ -48,7 +48,6 @@ RSpec.describe TimeEntries::CreateContract do
         t.changed_by_system(changed_by_system) if changed_by_system
       end
     end
-    let(:time_entry_ongoing) { false }
     let(:permissions) { %i(log_time) }
     let(:other_user) { build_stubbed(:user) }
     let(:changed_by_system) do

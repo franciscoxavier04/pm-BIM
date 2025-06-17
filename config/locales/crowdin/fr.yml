@@ -80,13 +80,13 @@ fr:
       theme_warning: Le changement de thème écrasera votre style personnalisé. Le design sera alors perdu. Êtes-vous sûr de vouloir continuer ?
     enterprise:
       delete_dialog:
-        title: "Supprimer le jeton d'entreprise"
-        heading: "Supprimer ce jeton d'entreprise ?"
-        confirmation: "Êtes-vous sûr de vouloir supprimer le jeton de support de cette édition Entreprise ?"
+        title: "Supprimer le jeton Enterprise"
+        heading: "Supprimer ce jeton Enterprise ?"
+        confirmation: "Voulez-vous vraiment supprimer le jeton d'assistance de cette édition Enterprise ?"
       create_dialog:
-        title: "Ajouter un jeton d'entreprise"
-        type_token_text: "Tapez le texte du jeton de support"
-        token_placeholder: "Coller votre jeton de support pour la version Entreprise ici"
+        title: "Ajouter un jeton Enterprise"
+        type_token_text: "Saisissez le texte du jeton d'assistance"
+        token_placeholder: "Collez votre jeton d'assistance pour l'édition Enterprise ici"
       add_token: "Charger un jeton de support pour la version Entreprise"
       delete_token_modal:
         text: "Voulez-vous vraiment supprimer le jeton actuellement utilisé pour l'édition Entreprise ?"
@@ -567,11 +567,14 @@ fr:
         Toutes les occurrences de l'utilisateur de remplacement (par exemple, en tant que responsable ou autre valeur utilisateur) seront réaffectées à un compte appelé « Utilisateur supprimé ». Comme les données de chaque compte supprimé sont réaffectées à ce compte, il ne sera pas possible de distinguer les données que l'utilisateur a créées des données d'un autre compte supprimé.
       irreversible: "Cette action est irréversible"
       confirmation: "Saisissez le nom d'utilisateur fictif %{name} pour confirmer ça suppression."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Cliquez pour assigner ou modifier la couleur de cette priorité.
-        Elle peut être utilisée pour mettre en évidence les lots de travaux dans le tableau.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "Réagir"
     add_reaction: "Ajouter une réaction"
@@ -693,7 +696,7 @@ fr:
         automatic: "Automatique"
         manual: "Manuel"
       show_relations: "Afficher les relations"
-      update_inputs_aria_live_message: "Sélecteur de dates mis à jour. %{message}"
+      update_inputs_aria_live_message: "Sélecteur de date mis à jour. %{message}"
       tabs:
         aria_label: "Onglets de sélection de date"
         children: "Enfants"
@@ -763,7 +766,8 @@ fr:
     lag:
       subject: "Délai"
       caption: |-
-        Le nombre minimum de jours ouvrables à respecter entre les deux lots de travaux. Il peut également être négatif.
+        Le nombre minimum de jours ouvrables à respecter entre les deux lots de travaux.
+        Il peut également être négatif.
     relations:
       label_new_child_created: "Nouveau lot de travaux créé et ajouté en tant qu'enfant"
       label_relates_singular: "lié à"
@@ -822,6 +826,7 @@ fr:
       required_description: "Marque ce lot de travaux comme étant une exigence pour le lot de travaux correspondant"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Lot de travaux associé"
       ghost_relation_description: "Cela n'est pas visible pour vous en raison des autorisations."
   label_invitation: Invitation
@@ -916,12 +921,13 @@ fr:
       emoji_reaction:
         reactable: "Réagi le"
       enterprise_token:
-        domain: "Domaine"
         starts_at: "Valable depuis"
         subscriber: "Abonné"
         plan: "Abonnement"
         encoded_token: "Licence Entreprise"
         active_user_count_restriction: "Nombre maximal d’utilisateurs actif"
+      enterprise_trial:
+        company: "Company"
       grids/grid:
         page: "Page"
         row_count: "Nombre de lignes"
@@ -987,7 +993,7 @@ fr:
         date_range: "Plage de dates"
         definition: "Définition"
         duration: "Durée"
-        start_date: "Date de départ"
+        start_date: "Date de début"
         start_date_caption: "Suit la phase précédente."
         finish_date: "Date de fin"
       project/phase_definition:
@@ -1249,6 +1255,10 @@ fr:
               forbidden_uri: "est interdit par le serveur."
             scopes:
               not_match_configured: "ne correspond pas aux portées disponibles."
+        enterprise_trial:
+          already_used: "was already used to create a trial."
+          failed_to_create: "Trial could not be created (%{status})"
+          general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "ne peut être lu. Êtes-vous sûr qu'il s'agisse d'une licence Entreprise ?"
         grids/grid:
@@ -1302,10 +1312,10 @@ fr:
         project/phase:
           attributes:
             start_date:
-              must_be_before_finish_date: "doit être antérieur à la date de fin."
+              must_be_before_finish_date: "doit être antérieure à la date de fin."
               non_continuous_dates: "ne peut pas être antérieure à la date de fin de la phase précédente."
             finish_date:
-              must_be_after_start_date: "doit être après la date de début."
+              must_be_after_start_date: "doit être postérieure à la date de début."
           cannot_be_a_non_working_day: "ne peut pas être un jour non travaillé."
         query:
           attributes:
@@ -1651,6 +1661,7 @@ fr:
     derived_start_date: "Date de début dérivée"
     direction: "Direction"
     display_sums: "Afficher les sommes"
+    domain: "Domain"
     due_date: "Date de fin"
     estimated_hours: "Travail"
     estimated_time: "Travail"
@@ -1769,7 +1780,7 @@ fr:
   button_configure: "Configurer"
   button_continue: "Continuer"
   button_copy: "Copier"
-  button_copy_to_clipboard: "Copier dans le presse-papier"
+  button_copy_to_clipboard: "Copier dans le presse-papiers"
   button_copy_link_to_clipboard: "Copier le lien dans le presse-papiers"
   button_copy_and_follow: "Copier et suivre"
   button_create: "Créer"
@@ -2046,6 +2057,8 @@ fr:
       plan_title: "Add-on Enterprise %{plan}"
       plan_name: "Abonnement Enterprise %{plan}"
       plan_text_html: "Disponible à partir de l'abonnement %{plan_name}."
+      already_have_token: >
+        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Masquer cette bannière"
       homescreen_description: >
         Les abonnements Enterprise prolongent l'édition Community d'OpenProject que vous utilisez actuellement. Ils comprennent des add-ons, des fonctionnalités supplémentaires et une assistance professionnelle qui permet aux organisations de toutes tailles de réaliser de grandes choses ensemble.
@@ -2069,7 +2082,7 @@ fr:
       readonly_work_packages:
         description: "Marquer les lots de travaux comme étant en lecture seule pour des statuts spécifiques."
       custom_field_hierarchies:
-        description: "Les champs personnalisés de hiérarchie permettent d'organiser des structures hiérarchiques dans les lots de travaux en utilisant des listes de sélection à plusieurs niveaux."
+        description: "Les champs personnalisés de type hiérarchie permettent d'organiser des structures hiérarchiques dans les lots de travaux en utilisant des listes de sélection à plusieurs niveaux."
       date_alerts:
         description: "Avec les alarmes, vous serez informé(e) à l'approche des dates de début ou de fin vous concernant afin de ne jamais manquer ou oublier une échéance importante."
       work_package_sharing:
@@ -2098,6 +2111,26 @@ fr:
       internal_comments_inline:
         title: "Écrire des commentaires internes qu'un petit groupe peut voir"
         description: " "
+    trial:
+      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
+      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      already_retrieved: >
+        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
+      successfully_saved: "Your trial enterprise token has been successfully retrieved."
+      token_sent: "Trial token requested"
+      request_again: "Request again"
+      resend_action: "Resend confirmation email"
+      welcome_title: "Quick feature overview"
+      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+      confirmation_info: >
+        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+      confirmation_subline: >
+        Please, check your inbox and follow the steps to start your 14-day free trial.
+      domain_caption: The token will be valid for your currently configured host name.
+      receive_newsletter_html: >
+        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+      consent_html: >
+        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
   enumeration_activities: "Activités de suivi du temps"
   enumeration_work_package_priorities: "Priorités du Lot de Travaux"
   enumeration_reported_project_statuses: "Statuts de projet signalés"
@@ -2124,7 +2157,7 @@ fr:
   error_custom_option_not_found: "L'option n'existe pas."
   error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Votre compte n'a pas pu être activé (limite d'utilisateurs atteinte). Veuillez contacter votre administrateur pour obtenir l'accès."
-  error_enterprise_token_invalid_domain: "La version Entreprise n'est pas active. Le domaine de votre jeton Entreprise (%{actual}) ne correspond pas au nom d'hôte du système (%{expected})."
+  error_enterprise_token_invalid_domain: "L'édition Enterprise n'est pas active. Le domaine de votre jeton Enterprise (%{actual}) ne correspond pas au nom d'hôte du système (%{expected})."
   error_failed_to_delete_entry: "Échec lors de la suppression de cette entrée."
   error_in_dependent: "Erreur lors de la tentative de modification de l'objet dépendant : %{dependent_class} #%{related_id} - %{related_subject} : %{error}"
   error_in_new_dependent: "Erreur lors de la tentative de création d'un objet dépendant : %{dependent_class} - %{related_subject} : %{error}"
@@ -2430,7 +2463,7 @@ fr:
         static_token_name: "Jeton RSS"
         disabled_text: "Les jetons RSS ne sont pas activés par l'administrateur. Veuillez contacter votre administrateur pour utiliser cette fonctionnalité."
       storages:
-        title: "Stockages de fichiers"
+        title: "Espaces de stockage de fichiers"
         text_hint: "Les jetons de stockage de fichiers connectent cette instance OpenProject à une solution de stockage de fichiers externe."
         empty_text_hint: "Il n'y a pas d'accès à l'espace de stockage lié à votre compte."
         revoke_token: "Voulez-vous vraiment supprimer ce jeton ? Vous devrez vous reconnecter sur %{storage}"
@@ -2622,7 +2655,7 @@ fr:
   label_deleted_custom_item: "(élément supprimé)"
   label_deleted_custom_option: "(option supprimée)"
   label_empty_element: "(vide)"
-  label_go_back: "Revenir en arrière d'un niveau de menu"
+  label_go_back: "Revenir en arrière d'un niveau dans le menu"
   label_go_forward: "Ouvrir le sous-menu %{module}"
   label_missing_or_hidden_custom_option: "(valeur manquante ou manque d'autorisations d'accès)"
   label_descending: "Décroissant"
@@ -2913,7 +2946,7 @@ fr:
   label_project_custom_field_plural: "Attributs du projet"
   label_project_settings: "Paramètres du projet"
   label_project_attributes_settings: "Paramètres des attributs du projet"
-  label_project_storage_plural: "Stockages de fichiers"
+  label_project_storage_plural: "Espaces de stockage de fichiers"
   label_project_storage_project_folder: "Espaces de stockage des fichiers : dossiers du projet"
   label_projects_disk_usage_information: "%{count} projets utilisant %{used_disk_space} d'espace disque"
   label_project_view_all: "Afficher tous les projets"
@@ -3355,7 +3388,7 @@ fr:
   notice_bad_request: "Mauvaise requête."
   notice_not_authorized: "Vous n'êtes pas autorisé à accéder à cette page."
   notice_not_authorized_archived_project: "Le projet auquel vous essayer d'accéder a été archivé."
-  notice_requires_enterprise_token: "Le jeton d'entreprise est manquant ou n'autorise pas l'accès à cette page."
+  notice_requires_enterprise_token: "Le jeton Enterprise est manquant ou n'autorise pas l'accès à cette page."
   notice_password_confirmation_failed: "Votre mot de passe est incorrect. Impossible de continuer."
   notice_principals_found_multiple: "Il y a %{number} résultats trouvés. Tabulation pour sélectionner le premier résultat."
   notice_principals_found_single: "Il y a un seul résultat. Tabulation pour le sélectionner."
@@ -3657,7 +3690,7 @@ fr:
       oauth_application_details: "La clé secrète du client ne sera plus accessible après la fermeture de cette fenêtre. Veuillez copier ces valeurs dans les paramètres d'intégration Nextcloud OpenProject :"
       oauth_application_details_link_text: "Aller à la page des paramètres"
       setup_documentation_details: "Si vous avez besoin d'aide pour configurer un nouvel espace de stockage des fichiers, veuillez consulter la documentation : "
-      setup_documentation_details_link_text: "Configuration de l'espace de stockage des fichiers"
+      setup_documentation_details_link_text: "Configuration des espaces de stockage des fichiers"
       show_warning_details: "Pour utiliser ce stockage de fichiers, n'oubliez pas d'activer le module et le stockage spécifique dans les paramètres du projet de chaque projet souhaité."
     subversion:
       existing_title: "Dépôt Subversion existant"
@@ -3949,9 +3982,9 @@ fr:
       phase_gates: "Portes de phase"
       new:
         description: "Les modifications apportées à cette phase du projet seront répercutées dans tous les projets où elle est activée."
-        heading: "Nouvelle phase"
+        heading: "New phase"
       edit:
-        heading: "Modifier la phase"
+        heading: "Edit phase"
       both_gate: "Porte de début et de fin"
       no_gate: "Aucune porte"
       start_gate: "Porte de début"
@@ -4354,9 +4387,9 @@ fr:
       code_429: "Trop de demandes, Veuillez réessayer ultérieurement."
       code_500: "Une erreur interne s'est produite."
       code_500_outbound_request_failure: "Une requête sortante vers une autre ressource a échoué avec le code de statut %{status_code}."
-      code_500_missing_enterprise_token: "La requête ne peut pas être traitée en raison d'un jeton Entreprise invalide ou manquant."
+      code_500_missing_enterprise_token: "La requête ne peut pas être traitée en raison d'un jeton Enterprise invalide ou manquant."
       bad_request:
-        emoji_reactions_activity_type_not_supported: "Ce type d'activité ne prend pas en charge les réactions émojis."
+        emoji_reactions_activity_type_not_supported: "Ce type d'activité ne prend pas en charge les réactions via émojis."
       conflict:
         multiple_reminders_not_allowed: |-
           Vous ne pouvez définir qu'un seul rappel à la fois pour un lot de travaux. Veuillez supprimer ou mettre à jour le rappel existant.

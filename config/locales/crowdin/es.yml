@@ -80,13 +80,13 @@ es:
       theme_warning: Al cambiar el tema, se sobrescribirá su estilo personalizado y, como consecuencia, se perderá el diseño. ¿Seguro que quiere continuar?
     enterprise:
       delete_dialog:
-        title: "Delete enterprise token"
-        heading: "Delete this enterprise token?"
-        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+        title: "Eliminar token de Enterprise"
+        heading: "¿Eliminar este token de Enterprise?"
+        confirmation: "¿Seguro que desea eliminar este token de soporte de la edición Enterprise?"
       create_dialog:
-        title: "Add Enterprise token"
-        type_token_text: "Type support token text"
-        token_placeholder: "Paste your Enterprise edition support token here"
+        title: "Añadir token de Enterprise"
+        type_token_text: "Escribir texto del token de soporte"
+        token_placeholder: "Pegue su token de soporte de la edición Enterprise aquí"
       add_token: "Cargue el token de soporte de Enterprise"
       delete_token_modal:
         text: "¿Está seguro que desea eliminar el token actual de Enterpise usado?"
@@ -565,11 +565,14 @@ es:
         Todas las repeticiones del usuario de marcador de posición (por ejemplo, como asignado, responsable u otros valores de usuario) se reasignarán a una cuenta denominada «Usuario eliminado». Como los datos de todas las cuentas eliminadas se reasignarán a esta cuenta, no podrán distinguirse los datos del usuario de los datos creados con cualquier otra cuenta eliminada.
       irreversible: "Esta acción no se puede deshacer"
       confirmation: "Escriba el nombre de usuario de marcador de posición %{name} para confirmar la eliminación."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Haga clic para asignar o cambiar el color de esta prioridad.
-        Puede usarse para resaltar paquetes de trabajo en la tabla.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "Reaccionar"
     add_reaction: "Añadir reacción"
@@ -693,7 +696,7 @@ es:
         automatic: "Automático"
         manual: "Manual"
       show_relations: "Mostrar relaciones"
-      update_inputs_aria_live_message: "Date picker updated. %{message}"
+      update_inputs_aria_live_message: "Selector de fecha actualizado. %{message}"
       tabs:
         aria_label: "Pestañas del selector de fechas"
         children: "Elementos secundarios"
@@ -763,8 +766,7 @@ es:
     lag:
       subject: "Retraso"
       caption: |-
-        The minimum number of working days to keep in between the two work packages.
-        It can also be negative.
+        El número mínimo de días laborables que debe haber entre los dos paquetes de trabajo. También puede ser un valor negativo.
     relations:
       label_new_child_created: "Nuevo paquete de trabajo creado y añadido como secundario"
       label_relates_singular: "relacionado con"
@@ -785,7 +787,7 @@ es:
       new_child_description: "Crea un paquete de trabajo relacionado como un subelemento del paquete de trabajo actual (principal)"
       child: "Elemento secundario"
       child_description: "Hace que el paquete de trabajo relacionado sea un subelemento del paquete de trabajo actual (principal)"
-      parent: "Padre"
+      parent: "Principal"
       parent_description: "Hace que el paquete de trabajo relacionado sea el paquete de trabajo principal del paquete de trabajo actual (secundario)"
       label_closest: "Más cercano"
       label_blocks_singular: "bloquea"
@@ -823,6 +825,7 @@ es:
       required_description: "Marca este paquete de trabajo como requisito del relacionado"
       label_parent_singular: "principal"
       label_parent_plural: "principal"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Paquete de trabajo relacionado"
       ghost_relation_description: "No tiene los permisos necesarios para ver esto."
   label_invitation: Invitación
@@ -860,7 +863,7 @@ es:
   activemodel:
     attributes:
       projects/copy_options:
-        dependencies: "Dependencies"
+        dependencies: "Dependencias"
   activerecord:
     attributes:
       announcements:
@@ -877,7 +880,7 @@ es:
         attribute_name: "Atributo"
         help_text: "Texto de ayuda"
       auth_provider:
-        scim_clients: "SCIM Clients"
+        scim_clients: "Clientes SCIM"
       capability:
         context: "Contexto"
       changeset:
@@ -917,12 +920,13 @@ es:
       emoji_reaction:
         reactable: "Reaccionó el"
       enterprise_token:
-        domain: "Dominio"
         starts_at: "Válido desde"
         subscriber: "Suscriptor"
         plan: "Plan"
         encoded_token: "Token de soporte de Enterprise"
         active_user_count_restriction: "Máximo de usuarios activos"
+      enterprise_trial:
+        company: "Company"
       grids/grid:
         page: "Página"
         row_count: "Número de filas"
@@ -987,10 +991,10 @@ es:
       project/phase:
         date_range: "Intervalo de fechas"
         definition: "Definición"
-        duration: "Duration"
-        start_date: "Start date"
-        start_date_caption: "Follows the previous phase."
-        finish_date: "Finish date"
+        duration: "Duración"
+        start_date: "Fecha de inicio"
+        start_date_caption: "Sigue a la fase anterior."
+        finish_date: "Fecha de finalización"
       project/phase_definition:
         name: "Nombre"
         color: "Color"
@@ -1250,6 +1254,10 @@ es:
               forbidden_uri: "está prohibida por el servidor."
             scopes:
               not_match_configured: "no coincide con los ámbitos disponibles."
+        enterprise_trial:
+          already_used: "was already used to create a trial."
+          failed_to_create: "Trial could not be created (%{status})"
+          general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "no se puede leer. ¿Seguro que es un token de soporte?"
         grids/grid:
@@ -1303,11 +1311,11 @@ es:
         project/phase:
           attributes:
             start_date:
-              must_be_before_finish_date: "must be before the finish date."
-              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              must_be_before_finish_date: "debe ser anterior a la fecha de finalización."
+              non_continuous_dates: "no puede ser anterior a la fecha de finalización de la fase anterior."
             finish_date:
-              must_be_after_start_date: "must be after the start date."
-          cannot_be_a_non_working_day: "can't be a non-working day."
+              must_be_after_start_date: "debe ser posterior a la fecha de inicio."
+          cannot_be_a_non_working_day: "no puede ser un día no laborable."
         query:
           attributes:
             project:
@@ -1528,8 +1536,8 @@ es:
       custom_field: "Campo personalizado"
       "doorkeeper/application": "Aplicación OAuth"
       enterprise_token:
-        one: "Enterprise token"
-        other: "Enterprise tokens"
+        one: "Token de Enterprise"
+        other: "Tokens de Enterprise"
       forum: "Foro"
       global_role: "Rol global"
       group: "Grupo"
@@ -1554,8 +1562,8 @@ es:
         one: "Rol"
         other: "Roles"
       scim_client:
-        one: "SCIM Client"
-        other: "SCIM Clients"
+        one: "Cliente SCIM"
+        other: "Clientes SCIM"
       status: "Estado del paquete de trabajo"
       token/api:
         one: Token de acceso
@@ -1616,7 +1624,7 @@ es:
       added_date: "establecido en %{date}"
       changed_date: "cambiado de %{from} a %{to}"
       deactivated: "desactivado"
-      deleted_project_phase: "Deleted project phase"
+      deleted_project_phase: "Fase de proyecto eliminada"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} y %{finish_gate_message}"
       phase_and_one_gate: "%{phase_message}. %{gate_message}"
       removed_date: "fecha de eliminación %{date}"
@@ -1652,6 +1660,7 @@ es:
     derived_start_date: "Fecha de comienzo deseada"
     direction: "Dirección"
     display_sums: "Mostrar sumas"
+    domain: "Domain"
     due_date: "Fecha de finalización"
     estimated_hours: "Trabajo"
     estimated_time: "Trabajo"
@@ -2035,18 +2044,20 @@ es:
       project_list_sharing: Compartición de la lista de proyectos
       readonly_work_packages: Paquetes de trabajo de solo lectura
       sso_auth_providers: Inicio de sesión único
-      team_planner_view: Vista del planificador de equipos
+      team_planner_view: Vista del planificador de equipo
       virus_scanning: Análisis de antivirus
       work_package_query_relation_columns: Columnas de relación de consulta de paquetes de trabajo
       work_package_sharing: Compartir paquetes de trabajo con usuarios externos
       work_package_subject_generation: Generación de temas del paquete de trabajo
     upsell:
-      buy_now_button: "Buy now"
+      buy_now_button: "Comprar ahora"
       plans_title: "Planes Enterprise"
-      title: "extensión Enterprise"
+      title: "Extensión Enterprise"
       plan_title: "Extensión Enterprise de %{plan}"
       plan_name: "Plan Enterprise %{plan}"
       plan_text_html: "Disponible a partir del %{plan_name}."
+      already_have_token: >
+        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Ocultar este banner"
       homescreen_description: >
         Los planes Enterprise amplían la edición Community de OpenProject que está utilizando actualmente. Incluyen complementos, funciones adicionales y asistencia profesional que permiten a organizaciones de todos los tamaños lograr grandes cosas juntas.
@@ -2079,7 +2090,7 @@ es:
         description: "Comparta listas de proyectos con usuarios individuales."
       define_custom_style:
         title: "Tema de color y logotipo personalizados"
-        more_info: "Nota: el logotipo utilizado será de acceso público."
+        more_info: "Nota: El logotipo utilizado será de acceso público."
         description: Personalice su instalación de OpenProject con su logotipo y colores.
       custom_actions:
         title: "Acciones personalizadas"
@@ -2099,6 +2110,26 @@ es:
       internal_comments_inline:
         title: "Escriba comentarios internos que solo un pequeño grupo pueda ver"
         description: " "
+    trial:
+      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
+      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      already_retrieved: >
+        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
+      successfully_saved: "Your trial enterprise token has been successfully retrieved."
+      token_sent: "Trial token requested"
+      request_again: "Request again"
+      resend_action: "Resend confirmation email"
+      welcome_title: "Quick feature overview"
+      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+      confirmation_info: >
+        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+      confirmation_subline: >
+        Please, check your inbox and follow the steps to start your 14-day free trial.
+      domain_caption: The token will be valid for your currently configured host name.
+      receive_newsletter_html: >
+        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+      consent_html: >
+        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
   enumeration_activities: "Actividades de seguimiento del tiempo"
   enumeration_work_package_priorities: "Prioridades del paquete de trabajo"
   enumeration_reported_project_statuses: "Estatus del proyecto reportado"
@@ -2123,7 +2154,7 @@ es:
   error_color_could_not_be_saved: "No se pudo guardar el color"
   error_cookie_missing: "No se encuentra la cookie de OpenProject. Por favor asegúrese de que las cookies están habilitadas, ya que sin ellas esta aplicación no funcionará correctamente."
   error_custom_option_not_found: "Esta opción no existe."
-  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
+  error_enterprise_plan_needed: "Necesita el plan Enterprise %{plan} para realizar esta acción."
   error_enterprise_activation_user_limit: "Su cuenta no puede ser activada (se alcanzó el límite del usuario). Por favor, contacte su administrador para obtener acceso."
   error_enterprise_token_invalid_domain: "Enterprise no está activo. Su dominio del token de Enterprise (%{actual}) no coincide con el nombre de host del sistema (%{expected})."
   error_failed_to_delete_entry: "No se puede eliminar esta entrada."
@@ -2327,7 +2358,7 @@ es:
     blocks:
       community: "OpenProject Community"
       upsell:
-        title: "Actualizar a Enterprise"
+        title: "Actualizar a la edición Enterprise"
     links:
       upgrade_enterprise_edition: "Actualizar a Enterprise"
       postgres_migration: "Migrando su instalación a PostgreSQL"
@@ -2431,7 +2462,7 @@ es:
         static_token_name: "Token RSS"
         disabled_text: "Los tokens RSS no están habilitados por el administrador. Póngase en contacto con su administrador para utilizar esta función."
       storages:
-        title: "File storages"
+        title: "Almacenamientos de archivos"
         text_hint: "Los tokens de Almacenamiento de archivos conectan esta instancia de OpenProject con un Almacenamiento de archivos externo."
         empty_text_hint: "No hay acceso de almacenamiento vinculado a su cuenta."
         revoke_token: "¿Realmente desea eliminar este token? Tendrá que volver a iniciar sesión en %{storage}"
@@ -2466,7 +2497,7 @@ es:
         responsible: "Ahora es responsable de %{work_package}"
         watched: "Estás viendo a %{work_package}"
     query:
-      invalid_filter: "Invalid notification filter"
+      invalid_filter: "Filtro de notificación no válido"
   label_accessibility: "Accesibilidad"
   label_account: "Cuenta"
   label_active: "Activo"
@@ -2607,7 +2638,7 @@ es:
   label_dashboard: "Paneles de control"
   label_database_version: "Versión de PostgreSQL"
   label_date: "Fecha"
-  label_dates: "Dates"
+  label_dates: "Fechas"
   label_date_and_time: "Fecha y hora"
   label_date_format: "Formato de fecha"
   label_date_from: "De"
@@ -2623,8 +2654,8 @@ es:
   label_deleted_custom_item: "(elemento eliminado)"
   label_deleted_custom_option: "(opción eliminada)"
   label_empty_element: "(vacío)"
-  label_go_back: "Go back one menu level"
-  label_go_forward: "Open %{module} sub-menu"
+  label_go_back: "Retroceder un nivel de menú"
+  label_go_forward: "Abrir el submenú %{module}"
   label_missing_or_hidden_custom_option: "(faltan valores o permisos de acceso)"
   label_descending: "Descendente"
   label_details: "Detalles"
@@ -2914,8 +2945,8 @@ es:
   label_project_custom_field_plural: "Atributos del proyecto"
   label_project_settings: "Configuración del proyecto"
   label_project_attributes_settings: "Ajustes de los atributos del proyecto"
-  label_project_storage_plural: "File storages"
-  label_project_storage_project_folder: "File storages: Project folders"
+  label_project_storage_plural: "Almacenamientos de archivos"
+  label_project_storage_project_folder: "Almacenamientos de archivos: Carpetas del proyecto"
   label_projects_disk_usage_information: "%{count} proyectos utilizando %{used_disk_space} espacio de disco"
   label_project_view_all: "Ver todos los proyectos"
   label_project_show_details: "Mostrar los detalles del proyecto"
@@ -2924,7 +2955,7 @@ es:
   label_query_new: "Nueva consulta"
   label_query_plural: "Consultas personalizadas"
   label_read: "Leer..."
-  label_read_documentation: "Read documentation"
+  label_read_documentation: "Leer documentación"
   label_register: "Crear una nueva cuenta"
   label_register_with_developer: "Registrarse como desarrollador"
   label_registered_on: "Registrado en"
@@ -3367,8 +3398,8 @@ es:
   notice_successful_delete: "Eliminado con éxito."
   notice_successful_cancel: "Cancelación exitosa."
   notice_successful_update: "Actualización correcta."
-  notice_unsuccessful_create: "Creation failed."
-  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
+  notice_unsuccessful_create: "Error en la creación."
+  notice_unsuccessful_create_with_reason: "Error en la creación: %{reason}"
   notice_unsuccessful_update: "Error al actualizar."
   notice_unsuccessful_update_with_reason: "Error en la actualización: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -3657,7 +3688,7 @@ es:
       oauth_application_details: "La clave secreta de cliente no será accesible una vez se cierre esta ventana. Por favor, copie estos valores en la configuración de la integración de OpenProject en Nextcloud:"
       oauth_application_details_link_text: "Ir a la página de configuración"
       setup_documentation_details: "Si necesita ayuda para configurar un nuevo almacenamiento de archivos, compruebe la documentación: "
-      setup_documentation_details_link_text: "File storages setup"
+      setup_documentation_details_link_text: "Configuración de almacenamiento de archivos"
       show_warning_details: "Para utilizar este almacenamiento recuerde activar el módulo y el almacenamiento específico en la configuración de cada proyecto deseado."
     subversion:
       existing_title: "Subversion existentes de repositorio"
@@ -3949,9 +3980,9 @@ es:
       phase_gates: "Puertas de fase"
       new:
         description: "Los cambios en esta fase del proyecto se reflejarán en todos los proyectos en los que esté activada."
-        heading: "Nueva fase"
+        heading: "New phase"
       edit:
-        heading: "Editar fase"
+        heading: "Edit phase"
       both_gate: "Puerta inicial y final"
       no_gate: "Sin puerta"
       start_gate: "Puerta de inicio"
@@ -4356,13 +4387,13 @@ es:
       code_500_outbound_request_failure: "Una solicitud de salida a otro recurso ha fallado con el código de estado %{status_code}."
       code_500_missing_enterprise_token: "La solicitud no puede ser manejada debido a un token Enterprise inválido o inexistente."
       bad_request:
-        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+        emoji_reactions_activity_type_not_supported: "Este tipo de actividad no admite reacciones emoji."
       conflict:
         multiple_reminders_not_allowed: |-
-          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
+          Solo puede establecer un recordatorio a la vez en un paquete de trabajo. Elimine o actualice el recordatorio existente.
       not_found:
         work_package: "No se encuentra el paquete de trabajo que busca, o bien se ha eliminado."
-        reminder: "The reminder you are looking for cannot be found or has been deleted."
+        reminder: "No se encuentra el recordatorio que busca, o bien se ha eliminado."
       expected:
         date: "AAAA-MM-DD (ISO 8601 fecha solamente)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (cualquier valor de fecha/hora compatible con el formato ISO 8601)"

@@ -61,8 +61,7 @@ class Type < ApplicationRecord
 
   acts_as_list
 
-  validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
-  validates :is_default, :is_milestone, inclusion: { in: [true, false] }
+  validates :name, uniqueness: { case_sensitive: false }
 
   scopes :milestone
 

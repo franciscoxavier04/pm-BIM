@@ -476,8 +476,11 @@ Rails.application.routes.draw do
 
   scope "admin" do
     resource :announcements, only: %i[edit update]
+
+    get "/enterprise", to: redirect("#{rails_relative_url_root}/admin/enterprise_tokens")
+
     constraints(Constraints::Enterprise) do
-      resources :enterprise_tokens, only: %i[index show new create destroy] do
+      resources :enterprise_tokens, only: %i[index new create destroy] do
         member do
           get :destroy_dialog
         end
@@ -486,6 +489,11 @@ Rails.application.routes.draw do
           post :save_trial_key
           delete :delete_trial_key
         end
+      end
+
+      resource :enterprise_trial, only: %i[show create destroy] do
+        get :trial_dialog
+        post :request_resend, on: :collection
       end
     end
 
@@ -912,6 +920,7 @@ Rails.application.routes.draw do
   end
 
   if OpenProject::Configuration.lookbook_enabled?
+    mount Primer::ViewComponents::Engine, at: "/"
     mount Lookbook::Engine, at: "/lookbook"
   end
 

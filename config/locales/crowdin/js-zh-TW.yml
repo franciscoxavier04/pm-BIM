@@ -206,8 +206,6 @@ zh-TW:
         text_expired: "已過期"
         trial:
           confirmation: "確認您的電子郵件地址"
-          confirmation_info: >
-            我們在 %{date} 向您的 %{email} 發送了一封電子郵件。請查看您的電子郵件並點擊提供的確認鏈接以開始 14 天的試用。
           form:
             general_consent: >
               我同意<a target="_blank" href="%{link_terms}">服務條款</a>和<a target="_blank" href="%{link_privacy}">隱私政策</a>。

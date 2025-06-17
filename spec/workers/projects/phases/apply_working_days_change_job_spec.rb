@@ -246,13 +246,13 @@ RSpec.describe Projects::Phases::ApplyWorkingDaysChangeJob do
           allow(project).to receive(:touch_and_save_journals)
         end
 
-        it "calls RescheduleService with first start_date" do
+        it "calls RescheduleService with first start_date and only with phases after the start date" do
           subject
 
           expect(ProjectPhases::RescheduleService)
             .to have_received(:new).with(user:, project:).once
           expect(reschedule_service)
-            .to have_received(:call).with(phases: phases, from: date + 1).once
+            .to have_received(:call).with(phases: phases[2..3], from: date + 1).once
         end
 
         it "journals project with correct cause" do

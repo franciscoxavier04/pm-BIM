@@ -207,8 +207,6 @@ pl:
         text_expired: "wygasł"
         trial:
           confirmation: "Potwierdzenie adresu e-mail"
-          confirmation_info: >
-            Wysłaliśmy Ci wiadomość e-mail %{date} na adres %{email}. Sprawdź swoją skrzynkę odbiorczą i kliknij link potwierdzający, aby rozpocząć 14-dniowy okres próbny.
           form:
             general_consent: >
               Przyjmuję <a target="_blank" href="%{link_terms}">warunki umowy</a> i <a target="_blank" href="%{link_privacy}">politykę prywatności</a>.
@@ -361,7 +359,7 @@ pl:
           "16_1":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
+                Wersja zawiera różne nowe funkcje i ulepszenia, takie jak <br> <ul class="%{list_styling_class}"> <li>Porządkowanie cyklu życia projektu za pomocą faz i bramek faz.</li> <li>Eksportowanie spotkań w formacie PDF.</li> <li>Ustawianie inteligentnych opcji domyślnych dla przypomnień.</li> <li>Stosowanie ujemnego opóźnienia do dat pakietów roboczych.</li> <li>Wyświetlanie drzew hierarchii niestandardowych pól hierarchii.</li> <li>Korzyści z ulepszonej dostępności selektora dat dzięki aktywnym regionom ARIA.</li> </ul>
     ical_sharing_modal:
       title: "Subskrybuj kalendarz"
       inital_setup_error_message: "Podczas pobierania danych wystąpił błąd."
@@ -566,7 +564,7 @@ pl:
     label_version_plural: "Wersje"
     label_view_has_changed: "Ten widok zawiera niezapisane zmiany. Kliknij, aby je zapisać."
     help_texts:
-      show_modal: "Show help text"
+      show_modal: "Pokaż tekst pomocy"
     onboarding:
       buttons:
         skip: "Omiń"
@@ -1037,15 +1035,15 @@ pl:
       reminders:
         button_label: "Ustaw przypomnienie"
         title:
-          new: "Set a reminder"
+          new: "Ustaw przypomnienie"
           edit: "Edytuj przypomnienie"
         subtitle: "W wybranym terminie otrzymasz powiadomienie dotyczące tego pakietu roboczego."
         presets:
-          tomorrow: "Tomorrow"
-          three_days: "In 3 days"
-          week: "In a week"
-          month: "In a month"
-          custom: "At a particular date/time"
+          tomorrow: "Jutro"
+          three_days: "Za 3 dni"
+          week: "Za tydzień"
+          month: "Za miesiąc"
+          custom: "W określonym dniu/godzinie"
       scheduling:
         is_parent: "Daty tego pakietu roboczego są automatycznie odejmowane od jego elementów podrzędnych. Włącz funkcję Planowanie ręczne, aby ustawić daty."
         is_switched_from_manual_to_automatic: "Po przełączeniu planowania z ręcznego na automatyczne konieczne może być ponowne obliczenie dat tego pakietu roboczego ze względu na jego powiązania z innymi pakietami roboczymi."

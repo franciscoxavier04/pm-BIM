@@ -236,7 +236,6 @@ zh-TW:
     label_export_pdf: "匯出 PDF"
     export:
       your_meeting_export: "正在進行會議匯出作業"
-      label_meeting_agenda: "會議議程"
     export_pdf_dialog:
       title: 匯出 PDF
       description: 產生此目前會議的可列印之 PDF 檔案。

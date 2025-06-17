@@ -248,7 +248,6 @@ ru:
     label_export_pdf: "Экспорт в PDF"
     export:
       your_meeting_export: "Совещание экспортируется"
-      label_meeting_agenda: "Повестка дня совещания"
     export_pdf_dialog:
       title: Экспорт в PDF
       description: Generate a printable PDF file of this meeting at the current state.

@@ -207,8 +207,6 @@ id:
         text_expired: "expired"
         trial:
           confirmation: "Confirmation of email address"
-          confirmation_info: >
-            Kami mengirimkan surel pada %{date} ke %{email}. Silakan periksa kotak surel Anda dan klik tautan konfirmasi untuk mendapatkan uji coba 14 hari.
           form:
             general_consent: >
               I agree with the <a target="_blank" href="%{link_terms}">terms of service</a> and the <a target="_blank" href="%{link_privacy}">privacy policy</a>.

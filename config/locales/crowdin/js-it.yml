@@ -207,8 +207,6 @@ it:
         text_expired: "scaduto"
         trial:
           confirmation: "Conferma l'indirizzo email"
-          confirmation_info: >
-            Ti abbiamo inviato un'email il %{date} su %{email}. Controlla le tue email e clicca sul link di conferma fornito per iniziare la prova di 14 giorni.
           form:
             general_consent: >
               Accetto le <a target="_blank" href="%{link_terms}">condizioni d'uso</a> e l'<a target="_blank" href="%{link_privacy}">informativa sulla privacy</a>.
@@ -361,7 +359,7 @@ it:
           "16_1":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
+                Questa versione contiene diverse nuove funzionalità e miglioramenti, come <br> <ul class="%{list_styling_class}"> <li>Struttura del ciclo di vita del progetto con fasi e controlli di fase.</li> <li>Esportazione delle riunioni in formato PDF.</li> <li>Impostazione di opzioni smart predefinite per i promemoria.</li> <li>Utilizzo di un ritardo negativo per le date delle macro-attività.</li> <li>Visualizzazione di alberi gerarchici per i campi personalizzati della gerarchia.</li> <li>Approfitta di un'accessibilità migliorata per il selettore data con le regioni live ARIA.</li> </ul>
     ical_sharing_modal:
       title: "Iscriviti al calendario"
       inital_setup_error_message: "Si è verificato un errore recuperando i dati."
@@ -566,7 +564,7 @@ it:
     label_version_plural: "Versioni"
     label_view_has_changed: "Questa vista ha modifiche non salvate. Clicca per salvarle."
     help_texts:
-      show_modal: "Show help text"
+      show_modal: "Mostra testo guida"
     onboarding:
       buttons:
         skip: "Salta"
@@ -1035,15 +1033,15 @@ it:
       reminders:
         button_label: "Imposta promemoria"
         title:
-          new: "Set a reminder"
+          new: "Imposta un promemoria"
           edit: "Modifica promemoria"
         subtitle: "Riceverai una notifica per questa macro-attività all'ora scelta."
         presets:
-          tomorrow: "Tomorrow"
-          three_days: "In 3 days"
-          week: "In a week"
-          month: "In a month"
-          custom: "At a particular date/time"
+          tomorrow: "Domani"
+          three_days: "Tra 3 giorni"
+          week: "Tra una settimana"
+          month: "Tra un mese"
+          custom: "A una data/ora particolare"
       scheduling:
         is_parent: "Le date di questa macro-attività vengono automaticamente dedotte dai suoi figli. Attiva 'Programmazione manuale' per impostare le date."
         is_switched_from_manual_to_automatic: "Potrebbe essere necessario ricalcolare le date di questa macro-attività dopo il passaggio dalla programmazione manuale alla programmazione automatica a causa delle relazioni con altre macro-attività."

@@ -37,58 +37,27 @@ module Meetings::PDF
       with_vertical_margin(styles.page_subtitle_margins) do
         write_meeting_subtitle
       end
+      write_hr
     end
 
     def write_page_title
       pdf.formatted_text([styles.page_heading.merge(
-        { text: meeting_title, link: url_helpers.meeting_url(meeting) }
+        { text: meeting.title, link: url_helpers.meeting_url(meeting) }
       )])
     end
 
     def write_meeting_subtitle
-      pdf.formatted_text(
-        [
-          prawn_badge(badge_text, badge_color, offset: 0, radius: 2),
-          styles.page_subtitle.merge({ text: meeting_subtitle })
-        ]
-      )
+      pdf.formatted_text([styles.page_subtitle.merge({ text: meeting_subtitle })])
     end
 
     def meeting_subtitle
-      list = ["", meeting_subtitle_dates]
-      list.push("-", meeting.recurring_meeting.base_schedule) if meeting.recurring?
-      list.join(" ")
-    end
-
-    def meeting_subtitle_dates
       [
+        "#{meeting_mode} (#{I18n.t("label_meeting_state_#{meeting.state}")}),",
         "#{format_date(meeting.start_time)},",
         format_time(meeting.start_time, include_date: false),
         "–",
-        format_time(meeting.end_time, include_date: false),
-        "(#{OpenProject::Common::DurationComponent.new(meeting.duration, :hours, abbreviated: true).text})"
+        format_time(meeting.end_time, include_date: false)
       ].join(" ")
-    end
-
-    def badge_text
-      I18n.t("label_meeting_state_#{meeting.state}")
-    end
-
-    def badge_color
-      meetings_state_color.hexcode&.sub("#", "") || "F0F0F0"
-    end
-
-    def meetings_state_color
-      status = Meetings::Statuses.find_by_id(meeting.state) # rubocop:disable Rails/DynamicFindBy
-      (status || Meetings::Statuses::OPEN).color
-    end
-
-    def meeting_title
-      if meeting.recurring?
-        "#{format_date(meeting.start_time)} - #{meeting.title}"
-      else
-        meeting.title
-      end
     end
   end
 end

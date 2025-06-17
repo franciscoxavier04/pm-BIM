@@ -80,13 +80,13 @@ it:
       theme_warning: Cambiando il tema si sovrascriverà lo stile personalizzato. Il design andrà poi perso. Sei sicuro di voler continuare?
     enterprise:
       delete_dialog:
-        title: "Delete enterprise token"
-        heading: "Delete this enterprise token?"
-        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+        title: "Elimina token enterprise"
+        heading: "Eliminare questo token enterprise?"
+        confirmation: "Vuoi davvero eliminare questo token di assistenza dell'Enterprise Edition?"
       create_dialog:
-        title: "Add Enterprise token"
-        type_token_text: "Type support token text"
-        token_placeholder: "Paste your Enterprise edition support token here"
+        title: "Aggiungi token Enterprise"
+        type_token_text: "Digita il testo del token di assistenza"
+        token_placeholder: "Incolla il tuo token di assistenza per Enterprise edition qui"
       add_token: "Carica un token di assistenza per Enterprise edition"
       delete_token_modal:
         text: "Vuoi davvero rimuovere il token Enterprise edition attualmente utilizzato?"
@@ -565,11 +565,14 @@ it:
         Tutte le occorrenze dell'utente segnaposto (ad esempio, come assegnatario, responsabile o altri valori) saranno riassegnate a un account chiamato "Utente eliminato". Poiché i dati di ogni account eliminato vengono riassegnati a questo account, non sarà possibile distinguere i dati creati dall'utente dai dati di un altro account eliminato.
       irreversible: "Questa azione è irreversibile"
       confirmation: "Inserisci il nome utente del segnaposto %{name} per confermare l'eliminazione."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
         Clicca per assegnare o modificare il colore di questa priorità.
         Può essere utilizzato per evidenziare le macro-attività nella tabella.
+    admin:
+      default:
+        caption: Rendere questa priorità predefinita sovrascriverà la priorità predefinita precedente.
   reactions:
     action_title: "Reagisci"
     add_reaction: "Aggiungi reazione"
@@ -692,7 +695,7 @@ it:
         automatic: "Automatico"
         manual: "Manuale"
       show_relations: "Visualizza relazioni"
-      update_inputs_aria_live_message: "Date picker updated. %{message}"
+      update_inputs_aria_live_message: "Selettore data aggiornato. %{message}"
       tabs:
         aria_label: "Schede di selezione data"
         children: "Figli"
@@ -762,8 +765,8 @@ it:
     lag:
       subject: "Ritardo"
       caption: |-
-        The minimum number of working days to keep in between the two work packages.
-        It can also be negative.
+        Il numero minimo di giorni lavorativi da far trascorrere tra le due macro-attività.
+        Può anche essere negativo.
     relations:
       label_new_child_created: "Nuova macro-attività creata e aggiunta come figlia"
       label_relates_singular: "correlata con"
@@ -822,6 +825,7 @@ it:
       required_description: "Contrassegna questa macro-attività come obbligatoria per quella correlata"
       label_parent_singular: "genitore"
       label_parent_plural: "genitore"
+      label_other_relations: "Altre relazioni"
       ghost_relation_title: "Macro-attività correlata"
       ghost_relation_description: "Non puoi visualizzare a causa delle autorizzazioni."
   label_invitation: Invito
@@ -859,7 +863,7 @@ it:
   activemodel:
     attributes:
       projects/copy_options:
-        dependencies: "Dependencies"
+        dependencies: "Dipendenze"
   activerecord:
     attributes:
       announcements:
@@ -876,7 +880,7 @@ it:
         attribute_name: "Attributo"
         help_text: "Testo guida"
       auth_provider:
-        scim_clients: "SCIM Clients"
+        scim_clients: "Client SCIM"
       capability:
         context: "Contesto"
       changeset:
@@ -916,12 +920,13 @@ it:
       emoji_reaction:
         reactable: "Reazione il"
       enterprise_token:
-        domain: "Dominio"
         starts_at: "Valido dal"
         subscriber: "Iscritto"
-        plan: "Plan"
+        plan: "Piano"
         encoded_token: "Token di assistenza Enterprise"
         active_user_count_restriction: "Numero massimo di utenti attivi"
+      enterprise_trial:
+        company: "Company"
       grids/grid:
         page: "Pagina"
         row_count: "Numero di righe"
@@ -986,10 +991,10 @@ it:
       project/phase:
         date_range: "Intervallo di date"
         definition: "Definizione"
-        duration: "Duration"
-        start_date: "Start date"
-        start_date_caption: "Follows the previous phase."
-        finish_date: "Finish date"
+        duration: "Durata"
+        start_date: "Data di inizio"
+        start_date_caption: "Segue la fase precedente."
+        finish_date: "Data di fine"
       project/phase_definition:
         name: "Nome"
         color: "Colore"
@@ -1249,6 +1254,10 @@ it:
               forbidden_uri: "è vietato dal server."
             scopes:
               not_match_configured: "non corrisponde a nessuno degli ambiti disponibili."
+        enterprise_trial:
+          already_used: "was already used to create a trial."
+          failed_to_create: "Trial could not be created (%{status})"
+          general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "non può essere letto. Sei sicuro che si tratta di un token di assistenza?"
         grids/grid:
@@ -1302,11 +1311,11 @@ it:
         project/phase:
           attributes:
             start_date:
-              must_be_before_finish_date: "must be before the finish date."
-              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              must_be_before_finish_date: "deve essere prima della data di fine."
+              non_continuous_dates: "non può essere precedente alla data di fine della fase precedente."
             finish_date:
-              must_be_after_start_date: "must be after the start date."
-          cannot_be_a_non_working_day: "can't be a non-working day."
+              must_be_after_start_date: "deve essere successivo alla data di inizio."
+          cannot_be_a_non_working_day: "non può essere un giorno non lavorativo."
         query:
           attributes:
             project:
@@ -1433,7 +1442,7 @@ it:
               cannot_be_in_another_project: "non può essere in un altro progetto."
               not_a_valid_parent: "non è valido."
             schedule_manually:
-              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
+              cannot_be_automatically_scheduled: "non può essere impostato su falso (pianificato automaticamente) poiché non ha predecessori o figli."
             start_date:
               violates_relationships: "può essere impostata solo su %{soonest_start} o successiva per non violare le relazioni dei pacchetti di lavoro."
               cannot_be_null: "non può essere impostato a nulla poiché la data di fine e la durata sono note."
@@ -1527,8 +1536,8 @@ it:
       custom_field: "Campo personalizzato"
       "doorkeeper/application": "Applicazione OAuth"
       enterprise_token:
-        one: "Enterprise token"
-        other: "Enterprise tokens"
+        one: "Token Enterprise"
+        other: "Token Enterprise"
       forum: "Forum"
       global_role: "Ruolo globale"
       group: "Gruppo"
@@ -1553,8 +1562,8 @@ it:
         one: "Ruolo"
         other: "Ruoli"
       scim_client:
-        one: "SCIM Client"
-        other: "SCIM Clients"
+        one: "Client SCIM"
+        other: "Client SCIM"
       status: "Stato della macro-attività"
       token/api:
         one: Token di accesso
@@ -1615,7 +1624,7 @@ it:
       added_date: "impostata su %{date}"
       changed_date: "cambiata da %{from} a %{to}"
       deactivated: "disattivata"
-      deleted_project_phase: "Deleted project phase"
+      deleted_project_phase: "Fase del progetto eliminata"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, e %{finish_gate_message}"
       phase_and_one_gate: "%{phase_message}. %{gate_message}"
       removed_date: "data cancellata %{date}"
@@ -1651,6 +1660,7 @@ it:
     derived_start_date: "Data di inizio derivata"
     direction: "Direzione"
     display_sums: "Visualizza somme"
+    domain: "Domain"
     due_date: "Data di fine"
     estimated_hours: "Lavoro"
     estimated_time: "Lavoro"
@@ -2040,12 +2050,14 @@ it:
       work_package_sharing: Condividi macro-attività con utenti esterni
       work_package_subject_generation: Generazione oggetto di macro-attività
     upsell:
-      buy_now_button: "Buy now"
+      buy_now_button: "Acquista subito"
       plans_title: "Piani Enterprise"
       title: "Componente aggiuntivo Enterprise"
       plan_title: "Addon del %{plan} Enterprise"
       plan_name: "%{plan} piano Enterprise"
       plan_text_html: "Disponibile a partire dal %{plan_name}."
+      already_have_token: >
+        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Nascondi questo banner"
       homescreen_description: >
         I piani Enterprise estendono l'edizione Community di OpenProject che stai attualmente utilizzando. Includono componenti aggiuntivi, funzionalità aggiuntive e supporto professionale che consentono alle organizzazioni di tutte le dimensioni di raggiungere ottimi risultati sinergicamente.
@@ -2075,7 +2087,7 @@ it:
       work_package_sharing:
         description: "Condividi macro-attività con utenti che non sono membri del progetto."
       project_list_sharing:
-        description: "Share project lists with individual users."
+        description: "Condividi gli elenchi dei progetti con singoli utenti."
       define_custom_style:
         title: "Tema e logo a colori personalizzati"
         more_info: "Nota: il logo utilizzato sarà accessibile al pubblico."
@@ -2098,6 +2110,26 @@ it:
       internal_comments_inline:
         title: "Scrivi commenti interni che solo un piccolo gruppo può vedere"
         description: " "
+    trial:
+      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
+      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      already_retrieved: >
+        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
+      successfully_saved: "Your trial enterprise token has been successfully retrieved."
+      token_sent: "Trial token requested"
+      request_again: "Request again"
+      resend_action: "Resend confirmation email"
+      welcome_title: "Quick feature overview"
+      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+      confirmation_info: >
+        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+      confirmation_subline: >
+        Please, check your inbox and follow the steps to start your 14-day free trial.
+      domain_caption: The token will be valid for your currently configured host name.
+      receive_newsletter_html: >
+        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+      consent_html: >
+        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
   enumeration_activities: "Attività di monitoraggio dei tempi"
   enumeration_work_package_priorities: "Priorità della macro-attività"
   enumeration_reported_project_statuses: "Stato di progetto segnalato"
@@ -2122,7 +2154,7 @@ it:
   error_color_could_not_be_saved: "Il colore non può essere salvato"
   error_cookie_missing: "Il cookie di OpenProject è mancante. Prego, verifica che i cookie siano attivati, questa applicazione non funziona correttamente senza."
   error_custom_option_not_found: "L'opzione non esiste."
-  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
+  error_enterprise_plan_needed: "Hai bisogno del piano aziendale %{plan} per eseguire questa azione."
   error_enterprise_activation_user_limit: "Il tuo account potrebbe non essere attivo (raggiunto il limite utente). Si prega di contattare l'amministratore per ottenere l'accesso."
   error_enterprise_token_invalid_domain: "L'Enterprise edition non è attiva. Il dominio del token Enterprise (%{actual}) non corrisponde al nome host del sistema (%{expected})."
   error_failed_to_delete_entry: "Cancellazione voce non riuscita."
@@ -2430,7 +2462,7 @@ it:
         static_token_name: "Token RSS"
         disabled_text: "I token RSS non sono abilitati dall'amministratore. Contatta il tuo amministratore per utilizzare questa funzione."
       storages:
-        title: "File storages"
+        title: "Archivi file"
         text_hint: "I token di archiviazione dei file connettono questa istanza OpenProject con un sistema di archiviazione file esterno."
         empty_text_hint: "Non esiste alcun accesso allo spazio di archiviazione collegato al tuo account."
         revoke_token: "Vuoi davvero rimuovere questo token? Dovrai effettuare nuovamente l'accesso su %{storage}"
@@ -2465,7 +2497,7 @@ it:
         responsible: "Sei diventato responsabile per %{work_package}"
         watched: "Stai guardando il %{work_package}"
     query:
-      invalid_filter: "Invalid notification filter"
+      invalid_filter: "Filtro notifica non valido"
   label_accessibility: "Accessibilità"
   label_account: "Account"
   label_active: "Attivo"
@@ -2606,7 +2638,7 @@ it:
   label_dashboard: "Dashboard"
   label_database_version: "Versione di PostgreSQL"
   label_date: "Data"
-  label_dates: "Dates"
+  label_dates: "Date"
   label_date_and_time: "Data e ora"
   label_date_format: "Formato data"
   label_date_from: "Da"
@@ -2622,8 +2654,8 @@ it:
   label_deleted_custom_item: "(elemento eliminato)"
   label_deleted_custom_option: "(opzione eliminata)"
   label_empty_element: "(vuoto)"
-  label_go_back: "Go back one menu level"
-  label_go_forward: "Open %{module} sub-menu"
+  label_go_back: "Torna indietro di un livello di menu"
+  label_go_forward: "Apri sottomenu %{module}"
   label_missing_or_hidden_custom_option: "(valore mancante o assenza di permessi di accesso)"
   label_descending: "Decrescente"
   label_details: "Dettagli"
@@ -2913,8 +2945,8 @@ it:
   label_project_custom_field_plural: "Attributi del progetto"
   label_project_settings: "Impostazioni progetto"
   label_project_attributes_settings: "Impostazioni degli attributi del progetto"
-  label_project_storage_plural: "File storages"
-  label_project_storage_project_folder: "File storages: Project folders"
+  label_project_storage_plural: "Archivi file"
+  label_project_storage_project_folder: "Archiviazione dei file: cartelle di progetto"
   label_projects_disk_usage_information: "%{count} progetti occupano uno spazio su disco di %{used_disk_space}"
   label_project_view_all: "Vedi tutti i progetti"
   label_project_show_details: "Mostra dettagli progetto"
@@ -2923,7 +2955,7 @@ it:
   label_query_new: "Nuova query"
   label_query_plural: "Query personalizzate"
   label_read: "Leggi..."
-  label_read_documentation: "Read documentation"
+  label_read_documentation: "Leggi la documentazione"
   label_register: "Registrati"
   label_register_with_developer: "Registrati come sviluppatore"
   label_registered_on: "Registrato su"
@@ -3366,8 +3398,8 @@ it:
   notice_successful_delete: "Cancellato con successo."
   notice_successful_cancel: "Cancellato con successo."
   notice_successful_update: "Aggiornato con successo."
-  notice_unsuccessful_create: "Creation failed."
-  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
+  notice_unsuccessful_create: "Creazione fallita."
+  notice_unsuccessful_create_with_reason: "Creazione non riuscita: %{reason}"
   notice_unsuccessful_update: "Aggiornamento non riuscito."
   notice_unsuccessful_update_with_reason: "Aggiornamento non riuscito: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -3657,7 +3689,7 @@ it:
       oauth_application_details: "Il valore segreto del client non sarà nuovamente accessibile dopo aver chiuso questa finestra. Copia questi valori nelle impostazioni d'integrazione di Nextcloud OpenProject:"
       oauth_application_details_link_text: "Vai alla pagina delle impostazioni"
       setup_documentation_details: "Se hai bisogno di aiuto per configurare un nuovo archivio file, controlla la documentazione: "
-      setup_documentation_details_link_text: "File storages setup"
+      setup_documentation_details_link_text: "Configurazione archivi file"
       show_warning_details: "Per utilizzare questo archivio di file ricordarsi di attivare il modulo e l'archivio specifico nelle impostazioni del progetto di ogni progetto desiderato."
     subversion:
       existing_title: "Archivio Subversion preesistente"
@@ -4357,13 +4389,13 @@ it:
       code_500_outbound_request_failure: "Una richiesta in uscita a un'altra risorsa è fallita con codice di stato %{status_code}."
       code_500_missing_enterprise_token: "La richiesta non può essere gestita a causa di un token Enterprise non valido o mancante."
       bad_request:
-        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+        emoji_reactions_activity_type_not_supported: "Questo tipo di attività non supporta le reazioni emoji."
       conflict:
         multiple_reminders_not_allowed: |-
-          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
+          È possibile impostare un solo promemoria alla volta per ogni macro-attività. Elimina o aggiorna il promemoria esistente.
       not_found:
         work_package: "La macro-attività che stai cercando non può essere trovata o è stata eliminata."
-        reminder: "The reminder you are looking for cannot be found or has been deleted."
+        reminder: "Il promemoria che stai cercando non può essere trovatoo è stato eliminato."
       expected:
         date: "AAAA-MM-GG (solo date ISO 8601)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (qualsiasi formato data e ora compatibile con ISO 8601)"

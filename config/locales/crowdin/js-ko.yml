@@ -207,8 +207,6 @@ ko:
         text_expired: "만료됨"
         trial:
           confirmation: "이메일 주소 확인"
-          confirmation_info: >
-            We sent you an email on %{date} to %{email}. Please check your inbox and click the confirmation link provided to start your 14 days trial.
           form:
             general_consent: >
               <a target="_blank" href="%{link_terms}">서비스 약관</a> 및 <a target="_blank" href="%{link_privacy}">개인정보 취급방침</a>에 동의합니다.
@@ -361,7 +359,7 @@ ko:
           "16_1":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
+                이 릴리스에는 다음과 같은 다양한 새로운 기능과 개선 사항이 포함되어 있습니다. <br> <ul class="%{list_styling_class}"> <li>단계 및 단계 게이트를 사용하여 프로젝트 수명 주기를 구성합니다.</li> <li>미팅을 PDF 형식으로 내보냅니다.</li> <li>미리 알림에 대한 스마트 기본 옵션을 설정합니다.</li> <li>작업 패키지 날짜에 음수 지연을 사용합니다.</li> <li>계층 사용자 지정 필드에 대한 계층 트리를 표시합니다.</li> <li>ARIA 라이브 영역에서 날짜 선택기의 개선된 접근성의 이점을 활용합니다.</li> </ul>
     ical_sharing_modal:
       title: "캘린더 구독"
       inital_setup_error_message: "데이터를 가져오는 중에 오류가 발생했습니다."
@@ -566,7 +564,7 @@ ko:
     label_version_plural: "버전"
     label_view_has_changed: "이 보기에는 저장되지 않은 변경 사항이 있습니다. 클릭하여 저장하십시오."
     help_texts:
-      show_modal: "Show help text"
+      show_modal: "도움말 텍스트 표시"
     onboarding:
       buttons:
         skip: "건너뛰기"
@@ -1034,15 +1032,15 @@ ko:
       reminders:
         button_label: "미리 알림 설정"
         title:
-          new: "Set a reminder"
+          new: "미리 알림 설정"
           edit: "미리 알림 편집"
         subtitle: "선택한 시간에 이 작업 패키지에 대한 알림을 받게 됩니다."
         presets:
-          tomorrow: "Tomorrow"
-          three_days: "In 3 days"
-          week: "In a week"
-          month: "In a month"
-          custom: "At a particular date/time"
+          tomorrow: "내일"
+          three_days: "3일 내"
+          week: "일주일 내"
+          month: "1개월 내"
+          custom: "특정 날짜/시간에"
       scheduling:
         is_parent: "이 작업 패키지의 날짜는 자식으로부터 자동으로 추정됩니다. '수동 스케줄링'을 활성화하여 날짜를 설정할 수 있습니다."
         is_switched_from_manual_to_automatic: "다른 작업 패키지와의 관계로 인해 수동 스케줄링에서 자동 스케줄링으로 전환한 후 이 작업 패키지의 날짜를 다시 계산해야 할 수 있습니다."
