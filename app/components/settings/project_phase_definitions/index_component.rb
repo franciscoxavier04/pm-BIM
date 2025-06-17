@@ -33,7 +33,7 @@ module Settings
     class IndexComponent < ApplicationComponent
       include OpPrimer::ComponentHelpers
       include OpTurbo::Streamable
-      include Projects::LifeCycleDefinitionHelper
+      include Projects::PhaseDefinitionHelper
 
       options :definitions
 

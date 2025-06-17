@@ -32,7 +32,7 @@ module Admin::Settings
   class ProjectPhaseDefinitionsController < ::Admin::SettingsController
     include FlashMessagesOutputSafetyHelper
     include OpTurbo::ComponentStream
-    include Projects::LifeCycleDefinitionHelper
+    include Projects::PhaseDefinitionHelper
 
     menu_item :project_phase_definitions_settings
 

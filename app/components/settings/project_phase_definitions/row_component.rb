@@ -32,7 +32,7 @@ module Settings
   module ProjectPhaseDefinitions
     class RowComponent < ApplicationComponent
       include OpPrimer::ComponentHelpers
-      include Projects::LifeCycleDefinitionHelper
+      include Projects::PhaseDefinitionHelper
 
       alias_method :definition, :model
 

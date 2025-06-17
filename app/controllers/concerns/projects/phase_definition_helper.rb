@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Projects::LifeCycleDefinitionHelper
+module Projects::PhaseDefinitionHelper
   private
 
   def allowed_to_customize_life_cycle?
