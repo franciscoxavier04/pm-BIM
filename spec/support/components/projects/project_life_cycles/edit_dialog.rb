@@ -35,7 +35,7 @@ module Components
     module ProjectLifeCycles
       class EditDialog < Components::Common::Modal
         def dialog_css_selector
-          "dialog#edit-project-life-cycles-dialog"
+          "dialog#edit-project-life-cycle-dialog"
         end
 
         def async_content_container_css_selector
@@ -104,7 +104,7 @@ module Components
 
         def submit
           within_dialog do
-            page.find("[data-test-selector='save-project-life-cycles-button']").click
+            page.find("[data-test-selector='save-project-life-cycle-button']").click
           end
         end
 

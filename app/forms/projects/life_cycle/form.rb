@@ -27,7 +27,7 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-module Projects::LifeCycles
+module Projects::LifeCycle
   class Form < ApplicationForm
     form do |f|
       f.group(layout: :horizontal) do |horizontal_form|
@@ -55,9 +55,9 @@ module Projects::LifeCycles
         clear_button_id: "#{field_name}_clear_button",
         inset: true,
         data: {
-          action: "focus->overview--project-life-cycles-form#onHighlightField " \
-                  "overview--project-life-cycles-form#previewForm ",
-          "overview--project-life-cycles-form-target": field_name.to_s.camelize(:lower)
+          action: "focus->overview--project-life-cycle-form#onHighlightField " \
+                  "overview--project-life-cycle-form#previewForm ",
+          "overview--project-life-cycle-form-target": field_name.to_s.camelize(:lower)
         },
         wrapper_data_attributes: {
           "qa-field-name": qa_field_name
@@ -86,7 +86,7 @@ module Projects::LifeCycles
         disabled: true,
         value: model.duration,
         trailing_visual: { text: { text: I18n.t("datetime.units.day", count: model.duration) } },
-        data: { "overview--project-life-cycles-form-target": "duration" }
+        data: { "overview--project-life-cycle-form-target": "duration" }
       }
       form.text_field **input_attributes
     end

@@ -36,7 +36,7 @@ import {
   DebouncedFunc,
 } from 'lodash';
 
-export default class ProjectLifeCyclesFormController extends FormPreviewController {
+export default class ProjectLifeCycleFormController extends FormPreviewController {
   private timezoneService:TimezoneService;
   private deviceService:DeviceService;
   private handleFlatpickrDatesChangedBound = this.handleFlatpickrDatesChanged.bind(this);
