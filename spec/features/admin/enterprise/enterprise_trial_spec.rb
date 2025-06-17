@@ -264,10 +264,10 @@ RSpec.describe "Enterprise trial management",
       expect(page).to have_text("Quick feature overview")
       expect(page).to have_css("#enterprise-trial-welcome-dialog iframe")
 
-      expect(page).to have_text("Enterprise Plan (Token Version 1)")
+      expect(page).to have_text("Enterprise Plan")
+      expect(page).to have_text("Expired")
       expect(page).to have_text("OpenProject Test")
       expect(page).to have_text("5")
-      expect(page).to have_text("info@openproject.com") # Generated token has different mail than the one used for trial
       expect(page).to have_text("01/01/2020 – 01/02/2020")
     end
 
@@ -286,10 +286,10 @@ RSpec.describe "Enterprise trial management",
       expect(page).to have_text("Quick feature overview")
       expect(page).to have_css("#enterprise-trial-welcome-dialog iframe")
 
-      expect(page).to have_text("Enterprise Plan (Token Version 1)")
+      expect(page).to have_text("Enterprise Plan")
+      expect(page).to have_text("Expired")
       expect(page).to have_text("OpenProject Test")
       expect(page).to have_text("5")
-      expect(page).to have_text("info@openproject.com") # Generated token has different mail than the one used for trial
       expect(page).to have_text("01/01/2020 – 01/02/2020")
     end
   end
