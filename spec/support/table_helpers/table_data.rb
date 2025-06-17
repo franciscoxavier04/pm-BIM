@@ -160,9 +160,9 @@ module TableHelpers
         if identical_identifiers.any?
           puts <<~MESSAGE
             [let_work_packages] Warning: existing work packages with identical identifiers found: #{identical_identifiers.map(&:inspect).join(', ')}
-            [let_work_packages] This can cause failures when checking work package with `expect_work_packages(WorkPackage.all)`."
-            [let_work_packages] Current example is #{RSpec.current_example.description.inspect} at #{RSpec.current_example.location}
+            [let_work_packages] This can cause failures when checking work package with `expect_work_packages(WorkPackage.all)`"
           MESSAGE
+          puts "[let_work_packages] Current example is #{RSpec.current_example.location}" if RSpec.current_example
         end
       end
 
