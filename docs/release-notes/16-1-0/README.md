@@ -29,7 +29,7 @@ You’ll find the full life cycle directly in the project overview page, where y
 > [!NOTE]
 > With the Enterprise add-on available in the Premium plan or higher, you can configure existing project phases and phase gates and even create new ones. This is done in the global settings. The project-level features are available in all editions, with pre-defined phases based on the [open source PM² framework](https://www.openproject.org/pm2/).
 
-[Read more about working with a project life cycle in OpenProject](https://www.openproject.org/blog/openproject-16-1-release/).
+[Read more about working with a project life cycle in OpenProject](../system-admin-guide/projects/project-life-cycle).
 
 ### Export meetings in PDF format
 
