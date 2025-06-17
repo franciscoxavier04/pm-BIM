@@ -30,13 +30,13 @@
 
 module Admin::EnterpriseTokens
   class TableComponent < ::OpPrimer::BorderBoxTableComponent
-    columns :plan, :subscriber, :max_active_users, :email, :domain, :dates
+    columns :subscription, :max_active_users, :domain, :dates
 
-    mobile_columns :plan, :subscriber, :max_active_users, :dates
+    mobile_columns :subscription, :max_active_users, :dates
 
     mobile_labels :project_name
 
-    main_column :plan
+    main_column :subscription
 
     def sortable?
       false
@@ -56,10 +56,8 @@ module Admin::EnterpriseTokens
 
     def headers
       @headers ||= [
-        [:plan, { caption: EnterpriseToken.human_attribute_name(:plan) }],
-        [:subscriber, { caption: EnterpriseToken.human_attribute_name(:subscriber) }],
+        [:subscription, { caption: EnterpriseToken.human_attribute_name(:subscription) }],
         [:max_active_users, { caption: EnterpriseToken.human_attribute_name(:active_user_count_restriction) }],
-        [:email, { caption: EnterpriseToken.human_attribute_name(:email) }],
         [:domain, { caption: EnterpriseToken.human_attribute_name(:domain) }],
         [:dates, { caption: I18n.t(:label_dates) }]
       ].compact

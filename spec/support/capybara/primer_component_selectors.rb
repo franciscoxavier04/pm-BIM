@@ -46,12 +46,49 @@ Capybara.add_selector :primer_label, locator_type: [String, Symbol] do
     text.public_send(exact ? :eql? : :include?, locator.to_s)
   end
 
-  expression_filter :scheme do |expr, scheme|
-    builder(expr).add_attribute_conditions(class: "Label--#{scheme.downcase}")
+  # Use `node_filter` instead of `expression_filter` to have a better failure
+  # message when the selector fails: `expression_filter` modifies the initial
+  # query and elements without the expected scheme are not returned.
+  # `node_filter` applies the filter on the elements returned by the query so
+  # that error message can list them if none matches.
+  node_filter :scheme do |node, scheme|
+    actual = node[:class].scan(/(?<=Label--)[\w-]+/).first
+    (actual&.downcase == scheme.downcase).tap do |res|
+      add_error("Expected scheme to be #{scheme.inspect} but was #{actual.inspect}") unless res
+    end
   end
 
   describe_expression_filters do |scheme: nil, **|
     " with scheme #{scheme.inspect}" if scheme
+  end
+end
+
+Capybara.add_selector :primer_text, locator_type: [String] do
+  label "Primer Text"
+
+  xpath do |locator, **|
+    xpath = XPath.descendant(:span)
+    unless locator.nil?
+      locator = locator.to_s
+      xpath = xpath[XPath.string.n.is(locator)]
+    end
+    xpath
+  end
+
+  # Use `node_filter` instead of `expression_filter` to have a better failure
+  # message when the selector fails: `expression_filter` modifies the initial
+  # query and elements without the expected color are not returned.
+  # `node_filter` applies the filter on the elements returned by the query so
+  # that error message can list them if none matches.
+  node_filter :color do |node, color|
+    actual = node[:class].scan(/(?<=color-fg-)[\w-]+/).first
+    (actual&.downcase == color.downcase).tap do |res|
+      add_error("Expected color to be #{color.inspect} but was #{actual ? actual.inspect : 'not set'}") unless res
+    end
+  end
+
+  describe_expression_filters do |color: nil, **|
+    " with color #{color.inspect}" if color
   end
 end
 
@@ -87,6 +124,14 @@ module Capybara
 
     def have_no_primer_label(...)
       Matchers::NegatedMatcher.new(have_primer_label(...))
+    end
+
+    def have_primer_text(locator = nil, **, &)
+      Matchers::HaveSelector.new(:primer_text, locator, **, &)
+    end
+
+    def have_no_primer_text(...)
+      Matchers::NegatedMatcher.new(have_primer_text(...))
     end
 
     def have_octicon(locator = nil, **, &)

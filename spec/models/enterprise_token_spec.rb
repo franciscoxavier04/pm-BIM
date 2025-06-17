@@ -558,6 +558,70 @@ RSpec.describe EnterpriseToken do
     end
   end
 
+  describe "#expiring_soon?" do
+    context "when token expiration date is within 30 days" do
+      it "returns true" do
+        expect(build_enterprise_token(expires_at: Date.current)).to be_expiring_soon
+        expect(build_enterprise_token(expires_at: Date.current.next_day(10))).to be_expiring_soon
+        expect(build_enterprise_token(expires_at: Date.current.next_day(30))).to be_expiring_soon
+      end
+    end
+
+    context "when token has no expiration date" do
+      it "returns false" do
+        expect(build_enterprise_token(expires_at: nil)).not_to be_expiring_soon
+      end
+    end
+
+    context "when token expiration date is within 30 days but token is not active yet" do
+      it "returns false" do
+        expect(build_enterprise_token(starts_at: Date.tomorrow, expires_at: Date.current.next_day(20))).not_to be_expiring_soon
+      end
+    end
+
+    context "when token is expired but in grace period" do
+      it "returns false" do
+        expect(build_enterprise_token(expires_at: Date.yesterday, reprieve_days: 1)).not_to be_expiring_soon
+      end
+    end
+
+    context "when token is expired" do
+      it "returns false" do
+        expect(build_enterprise_token(expires_at: Date.current.prev_day(10), reprieve_days: 5)).not_to be_expiring_soon
+      end
+    end
+  end
+
+  describe "#in_grace_period?" do
+    context "when token has no expiration date" do
+      it "returns false" do
+        expect(build_enterprise_token(expires_at: nil)).not_to be_in_grace_period
+      end
+    end
+
+    context "when token expiration date is today or in the future" do
+      it "returns false" do
+        expect(build_enterprise_token(expires_at: Date.current, reprieve_days: 100)).not_to be_in_grace_period
+        expect(build_enterprise_token(expires_at: Date.tomorrow, reprieve_days: 100)).not_to be_in_grace_period
+      end
+    end
+
+    context "when token expiration date is in the past within reprieve_days days" do
+      it "returns true" do
+        expect(build_enterprise_token(expires_at: Date.yesterday, reprieve_days: 1)).to be_in_grace_period
+        expect(build_enterprise_token(expires_at: Date.current.prev_day(10), reprieve_days: 10)).to be_in_grace_period
+        expect(build_enterprise_token(expires_at: Date.current.prev_day(10), reprieve_days: 20)).to be_in_grace_period
+      end
+    end
+
+    context "when token expiration date is in the past outside of reprieve_days days" do
+      it "returns false" do
+        expect(build_enterprise_token(expires_at: Date.yesterday, reprieve_days: 0)).not_to be_in_grace_period
+        expect(build_enterprise_token(expires_at: Date.current.prev_day(10), reprieve_days: 9)).not_to be_in_grace_period
+      end
+    end
+  end
+
   describe "#expired?" do
     context "when token has no expiration date" do
       let(:token) { build_enterprise_token(expires_at: nil) }
