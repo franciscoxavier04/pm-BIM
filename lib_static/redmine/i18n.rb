@@ -86,10 +86,10 @@ module Redmine
         elsif date_or_time.instance_of?(Date) # Important not to use is_a? as it will match DateTime
           date_or_time
         else
-          in_user_zone(time).to_date
+          in_user_zone(date_or_time).to_date
         end
 
-      format.blank? ? ::I18n.l(local) : date.strftime(format)
+      format.present? ? ::I18n.l(local, format:) : ::I18n.l(local)
     end
 
     ##
