@@ -143,6 +143,7 @@ module TableHelpers
       end
 
       def create
+        warn_for_existing_work_packages_with_same_identifier
         table_data.work_package_identifiers.each do |identifier|
           create_work_package(identifier)
         end
@@ -151,6 +152,18 @@ module TableHelpers
           create_relations(identifier)
         end
         [work_packages_by_identifier, relations]
+      end
+
+      def warn_for_existing_work_packages_with_same_identifier
+        existing_identifiers = WorkPackage.pluck(:subject).map { |subject| to_identifier(subject) }
+        identical_identifiers = existing_identifiers & table_data.work_package_identifiers
+        if identical_identifiers.any?
+          puts <<~MESSAGE
+            [let_work_packages] Warning: existing work packages with identical identifiers found: #{identical_identifiers.map(&:inspect).join(', ')}
+            [let_work_packages] This can cause failures when checking work package with `expect_work_packages(WorkPackage.all)`."
+            [let_work_packages] Current example is #{RSpec.current_example.description.inspect} at #{RSpec.current_example.location}
+          MESSAGE
+        end
       end
 
       def create_work_package(identifier)
