@@ -92,7 +92,7 @@ module Pages
           page.find("[data-test-selector='project-life-cycle-edit-button-#{life_cycle.id}']").click
         end
 
-        Components::Projects::ProjectLifeCycles::EditDialog.new.tap do |dialog|
+        Components::Projects::ProjectLifeCycle::EditDialog.new.tap do |dialog|
           dialog.expect_open
 
           expect_angular_frontend_initialized if wait_angular
