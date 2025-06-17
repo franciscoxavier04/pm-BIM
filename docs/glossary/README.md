@@ -298,13 +298,9 @@ OpenID Connect (OIDC) is an authentication protocol built on OAuth 2.0 that enab
 
 ### Phase
 
-A phase in OpenProject can either be a [work package type](#work-package-types) or [project](#project) phase.
+A phase in OpenProject can either be a [work package type](#work-package-type) or [project phase](#project-phase).
 
- The **type 'Phase'** usually includes several work packages of types like task or feature. For example, typical phases for a construction repair project would be the following: Project definition, detailed Design & Tender, Construction and Post project.
-
- The **project phase** is part of the overall [project life cycle](#project-life-cycle) and helps structure the project's progression over time. A project phase can begin or end with a [phase gate](#phase-gate), marking key decision points. In OpenProject, administrators can enable some or all of the following project phases: Initiating, Planning, Executing, and Closing. These phases are based on the [open source project management framework PM²](#pm--pm2) and help teams manage complex projects in a structured, methodical way. [Read more about phases in a project management life cycle](../system-admin-guide/projects/project-life-cylce).
-
- ### Phase gate
+### Phase gate
 
 A phase gate is a decision point between two [project phases](#phase) within the [project life cycle](#project-life-cycle). It marks the review of progress and determines whether the project can move to the next phase. In OpenProject, phase gates follow the structure defined by the [PM² project management framework](#pm--pm2).
 
@@ -366,6 +362,10 @@ The project navigation is the side navigation within a project. Entries in the p
 ### Project overview
 
 In OpenProject, the project overview is defined as a single [dashboard](#dashboard) page where all important information of a selected project can be displayed. The idea is to provide a central repository of information for the whole project team. Project information is added to the dashboard as [widgets](#widget). Open the project overview by navigating to "Overview" in the project menu on the left. [Read more about the project overview in OpenProject](../user-guide/project-overview/#project-overview).
+
+### Project phase
+
+In OpenProject, the **project phase** is part of the overall [project life cycle](#project-life-cycle) and helps structure the project's progression over time. A project phase can begin or end with a [phase gate](#phase-gate), marking key decision points. In OpenProject, administrators can enable some or all of the following project phases: Initiating, Planning, Executing, and Closing. These phases are based on the [open source project management framework PM²](#pm--pm2) and help teams manage complex projects in a structured, methodical way. [Read more about phases in a project management life cycle](../system-admin-guide/projects/project-life-cylce).
 
 ### Project settings
 
@@ -519,9 +519,9 @@ The work package table in OpenProject is defined as the overview of all work pac
 
 ![A work package table in OpenProject](glossary-openproject-work-package-table.png)
 
-### Work package types
+### Work package type
 
-Work package types are the different items a work package can represent. Each work package is associated to exactly one type. Examples for most used work package types are a Task, a Milestone, a [Phase](#phase) or a Bug. The work package types can be customized in the system administration. [Read more about work package types in OpenProject](../user-guide/projects/project-settings/work-packages/#work-package-types).
+Work package types are the different items a work package can represent. Each work package is associated to exactly one type. Examples for most used work package types are Task, Milestone, [Phase](#phase) or Bug. The work package types can be customized in the system administration. [Read more about work package types in OpenProject](../user-guide/projects/project-settings/work-packages/#work-package-types).
 
 ### Work package view
 
@@ -535,4 +535,4 @@ WYSIWYG stands for 'What you see is what you get'. A WYSIWYG editor is a content
 
 ### Zen mode
 
-In OpenProject, Zen mode allows users to focus on a certain page, as all other menu items and elements are hidden, and the page is displayed in full screen. OpenProject offers zen mode for other modules like work packages, boards, Gantt charts, calendars, and project lists.
+In OpenProject, Zen mode allows users to focus on a certain page, as all other menu items and elements are hidden, and the page is displayed in full screen. OpenProject offers zen mode for other modules like [work packages](#work-package), [boards](#board), [Gantt charts](#gantt-charts), calendars, and [project lists](#project-lists).
