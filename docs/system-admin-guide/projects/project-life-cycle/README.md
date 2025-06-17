@@ -48,7 +48,7 @@ Each phase can have a **start gate** and/or a **finish gate**, which are optiona
 
 ### Reorder phases
 
-Project phases are listen in order. You can rearrange the order of the phases within **system administration**:
+Project phases are listed in order of execution. You can rearrange the order of the phases within **system administration**:
 
 - Use **drag and drop** to move phases into the desired order
 
@@ -68,7 +68,7 @@ To add a new project phase go to *Administration → Projects → Project life c
 
 ### Add a phase gate
 
-After creating the phase, navigate to the *Phase gate* tab and activate and name start and/or finish phase gates. 
+After creating the phase or while setting one up, navigate to the *Phase gate* tab and activate and name start and/or finish phase gates. 
 
 ![Add phase gates under project life cycle settings in OpenProject administration](openproject_userguide_project_settings_life_cycle_add_new_gates.png)
 

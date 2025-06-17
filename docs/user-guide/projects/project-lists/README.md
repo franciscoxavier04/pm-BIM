@@ -294,10 +294,7 @@ You can add individual project phases and gates as columns in the project list. 
 
 To help differentiate between stages and gates in the project list phases and gates are indicated by differently shaped icons that are shown as prefixes in the column headers. 
 
-- Phases are indicated with an **arrow-shaped** icon in the configured color
-- Gates are indicated with a **rhombus-shaped** icon in the configured color
 
-Each phase or gate is displayed as a separate column. If a phase or gate is disabled in a project, the value won't appear for that project. The view remains intact even if a lifecycle phase or gate is later removed from the global configuration.
 
 > [!TIP]
 >
