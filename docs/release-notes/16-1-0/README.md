@@ -27,7 +27,7 @@ You’ll find the full life cycle directly in the project overview page, where y
 ![Project overview page with the project life cycle displayed in the right column](openproject-16-1-project-life-cycle-project-overview-highlighted.png)
 
 > [!NOTE]
-> With the Enterprise add-on available in the Premium plan or higher, you can configure existing project phases and phase gates and even create new ones. This is done in the global settings. The project-level features are available in all editions, with pre-defined phases based on the PM² framework.
+> With the Enterprise add-on available in the Premium plan or higher, you can configure existing project phases and phase gates and even create new ones. This is done in the global settings. The project-level features are available in all editions, with pre-defined phases based on the [open source PM² framework](https://www.openproject.org/pm2/).
 
 [Read more about working with a project life cycle in OpenProject](https://www.openproject.org/blog/openproject-16-1-release/).
 
@@ -115,7 +115,7 @@ To learn what more is planned regarding accessibility in OpenProject, see [these
 
 ### Added API for emoji reactions, reminders, and internal comments
 
-OpenProject 16.1 extends its API to support three features that were previously only available via the web interface. This update enables integrations with other clients, including the mobile app, to access:
+OpenProject 16.1 extends its API to support three features that were previously only available via the web interface. This update enables integrations with other clients to access:
 
 - Emoji reactions on work package comments
 - Reminders for work packages
