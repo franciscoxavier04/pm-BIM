@@ -53,7 +53,7 @@ The PDF is generated in A4 format and includes a clearly structured layout.
 
 ### Set smart default options for reminders
 
-We released Reminders with OpenProject 15.2 in January 2025. With this update, it’s easier than ever to use them to stay organized and keep your notification center clean.
+We released work package reminders with OpenProject 15.2 in January 2025. With this update, it’s easier than ever to use them to stay organized and keep your notification center clean.
 
 To make setting reminders even quicker, OpenProject now offers pre-filled options when clicking the reminder icon on a work package. Instead of entering details manually, you can now choose one of the following defaults:
 
@@ -89,7 +89,7 @@ Please note that negative lags can be counterintuitive:
 
 [Learn more about work package relations in our documentation](../../user-guide/work-packages/work-package-relations-hierarchies/#work-package-relations).
 
-### Display hierarchy trees for hierarchy custom fields
+### Display hierarchy trees for hierarchy custom fields (Enterprise add-on)
 
 Hierarchy custom fields are now easier to explore and use. When viewing such a custom field, a **hierarchical tree is displayed next to the details section**, showing the entire structure at a glance.
 
