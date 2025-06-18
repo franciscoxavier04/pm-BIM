@@ -8,18 +8,18 @@ de:
         project_folder_type: Projektordner-Typ
       storages/file_link:
         origin: Ursprung
-        storage: Speicherung
+        storage: Dateispeicher-Scope
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On über OpenID Connect Identity Provider
           oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On mit Zwei-Wege OAuth 2.0 als Fallback
           two_way_oauth2: Zwei-Wege OAuth 2.0 Authorization-Code-Flow
         storage_audience: Speicher-Audience
-        token_exchange_scope: Storage Scope
+        token_exchange_scope: Dateispeicher-Scope
       storages/project_storage:
         project_folder: Projektordner
         project_folder_mode: Projektordnermodus
-        storage: Speicherung
+        storage: Dateispeicher
         storage_url: Speicher-URL
       storages/storage:
         authentication_method: Authentifizierungsmethode
@@ -81,7 +81,7 @@ de:
     edit_project_folder:
       label: Projektordner bearbeiten
     open:
-      remote_identity_error: An unexpected error occurred while connecting to the storage.
+      remote_identity_error: Unerwarteter Fehler beim Verbinden mit dem Speicher.
     project_folder_mode:
       automatic: Automatisch verwaltet
       inactive: Kein spezifischer Ordner
@@ -227,17 +227,17 @@ de:
       project_folders: Projektordner
       redirect_uri: Umleitungs-URI
       storage_audience_blank: Keine Audience wurde konfiguriert.
-      storage_audience_description: Exchanging tokens for audience "%{audience}".
-      storage_audience_idp: Using access token obtained by identity provider during login, regardless of audience.
+      storage_audience_description: Tokenaustausch für Audience "%{audience}".
+      storage_audience_idp: Verwende den Access Tokens, den der Identity Provider beim Login erhalten hat, unabhängig von der Audience.
       storage_oauth: Nextcloud OAuth
       storage_provider: Speicheranbieter
-      token_exchange: Token Exchange
+      token_exchange: Tokenaustausch
     health:
       actions:
         download_report: Download
         rerun_checks: Alle Überprüfungen erneut ausführen
         run_checks: Überprüfungen jetzt ausführen
-      checked: 'Last check: %{datetime}'
+      checked: 'Zuletzt geprüft: %{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: Automatische Ordnererstellung
@@ -247,7 +247,7 @@ de:
           group_folder_app: 'Abhängigkeit: Gruppenordner'
           group_folder_contents: Gruppenordner hat erwarteten Inhalt
           group_folder_presence: Gruppenordner existiert
-          header: Automatically managed project folders
+          header: Automatisch verwaltete Projektordner
           userless_access: Serverseitige Anfrageauthentifizierung
         authentication:
           existing_token: Benutzer Token
@@ -373,7 +373,7 @@ de:
         tenant_id: Bitte kopieren Sie die Verzeichnis-ID (Mandant) der gewünschten Anwendung aus den App-Registrierungen im %{application_link_text}.
         tenant_id_placeholder: Name oder UUID
       setting_up_additional_storages: Um zusätzliche Dateispeicher einzurichten, besuchen Sie bitte
-      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
+      setting_up_additional_storages_non_admin: Administratoren können zusätzliche Dateispeicher in Administration / Dateispeicher einrichten.
       setting_up_storages: Zum Einrichten von Dateispeichern besuchen Sie bitte
       setting_up_storages_non_admin: Administratoren können Dateispeicher in Administration / Dateien einrichten.
       type: 'Bitte stellen Sie sicher, dass Sie Administrationsrechte in Ihrer Nextcloud-Instanz haben und die folgende Anwendung vor dem Setup installiert wurde:'
