@@ -32,7 +32,7 @@ By default, OpenProject includes four standard project phases:
 - **Executing**
 - **Closing**
 
-These four stages, based on the [PM² framework](https://www.openproject.org/blog/blog/pm2-alternative-pmi-prince2/) are created on the global level and available for all installations. Adding new phases or editing existing ones is an Enterprise add-on. 
+These four stages, based on the [PM² framework](https://www.openproject.org/pm2/) are created on the global level and available for all installations. Adding new phases or editing existing ones is an Enterprise add-on. 
 
 ## Manage project phases (Enterprise add-on)
 

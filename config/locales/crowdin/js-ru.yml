@@ -272,10 +272,10 @@ ru:
         change_button: "Сохранить и перенести"
         change_title: "Изменить рабочие дни"
         removed_title: "Следующие дни будут удалены из списка нерабочих дней:"
-        change_description: "Изменение дней, считающихся рабочими или нерабочими днями недели, может повлиять на дату начала и окончания всех пакетов работ во всех проектах в данной системе."
+        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
         warning: >
-          Для вступления изменений в силу может потребоваться некоторое время. Вы будете уведомлены, когда все соответствующие пакеты работ будут обновлены.
-          Хотите продолжить?
+          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
+          Are you sure you want to continue?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           При изменении расчета прогресса с режима "На основе статуса" на режим "На основе трудозатрат" поле <i>% завершения</i> станет редактируемым. Если Вы дополнительно введете значения для <i>Предполагаемого времени</i> или <i>Оставшихся часов</i>, они также будут связаны с <i>% завершения</i>. Изменение значения <i>Оставшихся часов</i> может привести к обновлению <i>% завершения</i>.
