@@ -32,6 +32,7 @@ import {
   Input,
   ViewEncapsulation,
 } from '@angular/core';
+import { ChevronLeftIconComponent } from '@openproject/octicons-angular';
 
 export type BreadcrumbItem =
   | { href:string; text:string }
@@ -49,5 +50,13 @@ export class OpBreadcrumbsComponent {
 
   isLink(item:BreadcrumbItem):item is { href:string; text:string } {
     return typeof item !== 'string' && 'href' in item && 'text' in item;
+  }
+
+  getText(item:BreadcrumbItem):string {
+    return this.isLink(item) ? item.text : item;
+  }
+
+  getHref(item:BreadcrumbItem):string | null {
+    return this.isLink(item) ? item.href : null;
   }
 }

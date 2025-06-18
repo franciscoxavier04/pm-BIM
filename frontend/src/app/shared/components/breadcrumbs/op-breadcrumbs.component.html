@@ -1,5 +1,6 @@
 <div class="op-breadcrumbs">
-  <nav aria-label="breadcrumb" class="">
+  <!-- Desktop Version -->
+  <nav aria-label="breadcrumb" class="desktop">
     <ol class="breadcrumb">
       <li
         class="breadcrumb-item"
@@ -23,4 +24,17 @@
       </li>
     </ol>
   </nav>
+
+  <!-- Mobile Version -->
+  <nav aria-label="breadcrumb" class="mobile">
+    <div class="breadcrumb-mobile" *ngIf="items.length > 1">
+      <ng-container *ngIf="getHref(items[items.length - 2]) as href">
+        <a class="breadcrumb-back" [href]="href">
+          <svg arrow-left-icon size="small"></svg>
+          {{ getText(items[items.length - 2]) }}
+        </a>
+      </ng-container>
+    </div>
+  </nav>
 </div>
+

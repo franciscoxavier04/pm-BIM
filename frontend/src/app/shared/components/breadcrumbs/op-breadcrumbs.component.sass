@@ -3,3 +3,24 @@
     margin-left: 0
   .breadcrumb-item
     margin-left: 0
+
+  .mobile
+    display: none
+
+  @media (max-width: 768px)
+    .desktop
+      display: none
+    .mobile
+      display: block
+
+    .breadcrumb-mobile
+      display: flex
+      align-items: center
+      margin-bottom: 0.5rem
+
+    .breadcrumb-back
+      display: flex
+      align-items: center
+      text-decoration: none
+      color: var(--fgColor-muted)
+      gap: 0.5rem
