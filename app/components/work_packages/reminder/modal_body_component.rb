@@ -120,7 +120,7 @@ module WorkPackages
       end
 
       def time_as_date(time)
-        format_time_as_date(time, format: "%Y-%m-%d")
+        format_date(time, format: "%Y-%m-%d")
       end
 
       def attribute_blank?(attribute)
