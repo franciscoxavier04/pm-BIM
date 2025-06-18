@@ -27,10 +27,25 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<% html_title(t(:label_administration), t(:label_custom_field_plural)) -%>
-
-<%= render CustomFields::IndexPageHeaderComponent.new(tabs: custom_fields_tabs) %>
-
-<%= render(CustomFields::FormatSubHeaderComponent.new(customizable_name: @tab.delete_suffix("CustomField"))) %>
-
-<%= render_tabs custom_fields_tabs %>
+<%=
+  render(Primer::OpenProject::SubHeader.new) do |subheader|
+    subheader.with_action_menu(
+      scheme: :primary,
+      leading_icon: :plus,
+      trailing_icon: :"triangle-down",
+      label:,
+      button_arguments: {
+        scheme: :primary,
+        aria: { label: }
+      }
+    ) do |menu|
+      available_format_names.map do |format|
+        menu.with_item(
+          label: helpers.label_for_custom_field_format(format),
+          tag: :a,
+          href: new_custom_field_path(type: type, field_format: format)
+        )
+      end
+    end
+  end
+%>
