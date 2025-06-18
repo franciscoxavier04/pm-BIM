@@ -30,10 +30,42 @@
 
 module WorkPackageTypes
   class SetAttributesService < ::BaseServices::SetAttributes
+    def initialize(user:, model:, contract_class:, contract_options: nil)
+      super
+      @valid_pattern = true
+    end
+
     private
 
     def set_attributes(params)
-      super(params.except(:copy_workflow_from))
+      permitted = params.except(:copy_workflow_from)
+      @valid_pattern = check_patterns(permitted)
+
+      if @valid_pattern
+        super(permitted)
+      else
+        super(permitted.except(:patterns))
+      end
+    end
+
+    def validate_and_result
+      success, errors = validate(model, user, options: {})
+
+      if @valid_pattern
+        ServiceResult.new(success:, errors:, result: model)
+      else
+        errors.add(:patterns, :is_invalid)
+        ServiceResult.failure(errors:, result: model)
+      end
+    end
+
+    def check_patterns(params)
+      return true unless params.key?(:patterns)
+      return true if params.key?(:patterns) && params[:patterns].blank?
+
+      Types::Patterns::CollectionContract.new.call(params[:patterns]).success?
+    rescue ArgumentError
+      false
     end
   end
 end

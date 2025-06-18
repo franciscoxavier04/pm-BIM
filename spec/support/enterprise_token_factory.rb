@@ -55,7 +55,7 @@ module EnterpriseTokenFactory
   # @yield [EnterpriseToken] The `EnterpriseToken` instance
   # @return [EnterpriseToken] The created `EnterpriseToken`
   def create_enterprise_token(encoded_token_name = nil, **attributes)
-    encoded_token_name ||= "token"
+    encoded_token_name ||= "token_#{SecureRandom.uuid}"
     enterprise_token = build_enterprise_token(encoded_token_name, **attributes) do |token|
       token.save!(validate: false)
     end

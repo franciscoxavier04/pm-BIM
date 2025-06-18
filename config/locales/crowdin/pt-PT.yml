@@ -4356,12 +4356,12 @@ pt-PT:
         message: "A partilha de listas de projetos com utilizadores individuais é um complemento Enterprise."
   working_days:
     info: >
-      Os dias não selecionados são ignorados ao agendar pacotes de trabalho (e não são incluídos na contagem de dias). Podem ser substituídos ao nível dos pacotes de trabalho.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       As datas adicionadas à lista abaixo são consideradas inúteis e ignoradas ao agendar pacotes de trabalho.
     change_button: "Alterar dias úteis"
     warning: >
-      Mudar os dias da semana que são considerados dias úteis ou não-úteis pode afetar os dias de início e de término de todos os pacotes de trabalho em todos os projetos nesta instância.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Dias úteis** alterados (%{changes})._
       days:

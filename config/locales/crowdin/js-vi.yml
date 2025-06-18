@@ -273,10 +273,10 @@ vi:
         change_button: "Lưu và lên lịch lại"
         change_title: "Thay đổi ngày làm việc"
         removed_title: "Bạn sẽ xóa các ngày sau khỏi danh sách ngày không làm việc:"
-        change_description: "Thay đổi các ngày trong tuần được coi là ngày làm việc hoặc không làm việc có thể ảnh hưởng đến ngày bắt đầu và kết thúc của tất cả các gói công việc trong tất cả các dự án trong phiên bản này."
+        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
         warning: >
-          Các thay đổi có thể mất một thời gian để có hiệu lực. Bạn sẽ được thông báo khi tất cả các công việc liên quan đã được cập nhật.
-          Bạn có chắc chắn muốn tiếp tục không?
+          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
+          Are you sure you want to continue?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           Thay đổi chế độ tính toán tiến độ từ dựa trên trạng thái sang dựa trên công việc sẽ làm cho trường <i>% Hoàn thành</i> có thể chỉnh sửa tự do. Nếu bạn tùy ý nhập giá trị cho <i>Công việc</i> hoặc <i>Công việc còn lại</i>, chúng cũng sẽ được liên kết với <i>% Hoàn thành</i>. Thay đổi <i>Công việc còn lại</i> sau đó có thể cập nhật <i>% Hoàn thành</i>.

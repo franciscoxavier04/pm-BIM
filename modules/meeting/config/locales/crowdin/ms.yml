@@ -344,7 +344,7 @@ ms:
   permission_delete_meetings: "Padam mesyuarat"
   permission_view_meetings: "Lihat mesyuarat"
   permission_manage_agendas: "Urus agenda"
-  permission_manage_agendas_explanation: "Benarkan pengurusan item agenda Mesyuarat Dinamik."
+  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
   permission_manage_outcomes: "Manage outcomes"
   permission_send_meeting_invites_and_outcomes: "Send meeting invites and outcomes to participants"
   project_module_meetings: "Mesyuarat-mesyuarat"

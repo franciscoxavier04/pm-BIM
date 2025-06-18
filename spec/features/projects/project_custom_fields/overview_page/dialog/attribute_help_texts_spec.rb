@@ -118,12 +118,12 @@ RSpec.describe "Edit project custom fields on project overview page", "attribute
             expect(page).to have_text "Attribute help text"
 
             expect(page).to have_heading "Attachments"
-            expect(page).to have_list_item count: 2
-            expect(page).to have_list_item text: "file-1.test"
-            expect(page).to have_list_item text: "file-2.test"
+            expect(page).to have_list_item count: attachments.count
+            expect(page).to have_list_item text: attachments.first.filename
+            expect(page).to have_list_item text: attachments.second.filename
 
             attachment_window = window_opened_by do
-              click_on "file-1.test"
+              click_on attachments.first.filename
             end
             within_window(attachment_window) do
               expect(page).to have_current_path api_v3_paths.attachment_content(attachments.first.id)

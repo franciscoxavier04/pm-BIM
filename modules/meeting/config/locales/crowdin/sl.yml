@@ -362,7 +362,7 @@ sl:
   permission_delete_meetings: "Izbriši sestanke"
   permission_view_meetings: "Poglej sestanke"
   permission_manage_agendas: "Uredi dnevne rede"
-  permission_manage_agendas_explanation: "Allows managing the Dynamic Meeting's agenda items."
+  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
   permission_manage_outcomes: "Manage outcomes"
   permission_send_meeting_invites_and_outcomes: "Send meeting invites and outcomes to participants"
   project_module_meetings: "Sestanki"

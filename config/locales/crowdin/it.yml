@@ -4359,12 +4359,12 @@ it:
         message: "La condivisione degli elenchi di progetti con i singoli utenti è un modulo aggiuntivo Enterprise."
   working_days:
     info: >
-      I giorni non selezionati vengono saltati durante la pianificazione delle macro-attività (e non inclusi nel conteggio dei giorni). Questi possono essere sovrascritti a livello di macro-attività.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Le date aggiunte all'elenco seguente sono considerate non lavorative e saltate durante la pianificazione delle macro-attività.
     change_button: "Cambia giorni lavorativi"
     warning: >
-      Cambiare quali giorni della settimana sono considerati giorni lavorativi o giorni non lavorativi può influenzare l'inizio e la fine di tutte le macro-attività in tutti i progetti in questo caso.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Giorni lavorativi** cambiati (%{changes})._
       days:

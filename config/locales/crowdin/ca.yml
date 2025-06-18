@@ -4353,12 +4353,12 @@ ca:
         message: "Sharing project lists with individual users is an enterprise add-on."
   working_days:
     info: >
-      Days that are not selected are skipped when scheduling work packages (and not included in the day count). These can be overridden at a work-package level.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Les dates afegides a la llista de sota són considerades com a no laborals i omeses en programar paquets de treball.
     change_button: "Canvia els dies laborals"
     warning: >
-      Canviar quins dies de la setmana són laborals i quins no pot afectar les dates d'inici i final de tots els paquets de treball a tots els projectes en aquesta instància.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Dies laborals"" han canviat (%{changes})._
       days:

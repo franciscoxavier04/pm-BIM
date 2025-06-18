@@ -162,6 +162,10 @@ To focus on specific stages of your project, you can use the **Project phase** f
 
 Once applied, the filtered view shows only the work packages assigned to the selected phase(s), providing a clear snapshot of where your tasks sit within the overall project lifecycle. 
 
+> [!TIP]
+>
+> To be able to assign a work package to a specific project phase,  it is required to enable the **project phase** attribute in the administration for a a specific work package type and to active this work package type for a project. Read more about [configuring work package forms](../../../system-admin-guide/manage-work-packages/work-package-types/#work-package-form-configuration-enterprise-add-on)
+
 ![Work packages filtered by project phase in OpenProject](openproject_user_guide_wp_table_project_phases_displayed.png)
 
 To gain even more insight, you can group the work packages by project phase. This helps visualize how tasks are distributed across phases and identify any gaps or overlaps in planning. This filtering and grouping combination makes it easier to manage progress, align tasks with strategic milestones, and ensure smooth transitions through phase gates.

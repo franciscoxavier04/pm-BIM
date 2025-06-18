@@ -115,9 +115,9 @@ Setting a project to public will make it accessible to all people within your Op
 
 ### Copy a project
 
-You can copy an existing project by navigating to the [project settings](project-settings) and clicking **Copy project** in the upper right of the project settings.
+You can copy an existing project by navigating to the [Project settings](project-settings) -> Information. Click the **More** (three dots) menu in the upper right corner and selec **Copy**.
 
-![project information copy project](project-information-copy-project.png)
+![Copy a project under project settings in OpenProject](project-information-copy-project.png)
 
 Give the new project a name. Under **Copy options** select which modules and settings you want to copy and whether or not you want to notify users via email during copying.
 You can copy existing [boards](../agile-boards) (apart from the Subproject board) and the [Project overview](../project-overview/#project-overview) dashboards along with your project, too.
@@ -131,7 +131,7 @@ For further configuration open the **Advanced settings**. Here you can specify (
 
 ![copy project advanced settings](project-settings-copy-project-advanced-settings.png)
 
-Under the **Copy options** section you can select what additional project data and settings, such as versions, work package categories, attachments and project members should be copied as well.
+Under the **Copy options** section you can select what additional project data and settings, such as versions, work package categories, attachments, project life cycle and project members should be copied as well.
 
 ![Copy options when copying a project in OpenProject](project-settings-copy-project-copy-options.png)
 

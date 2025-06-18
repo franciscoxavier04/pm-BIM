@@ -343,8 +343,8 @@ GEM
     awesome_nested_set (3.8.0)
       activerecord (>= 4.0.0, < 8.1)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1115.0)
-    aws-sdk-core (3.225.2)
+    aws-partitions (1.1117.0)
+    aws-sdk-core (3.226.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
@@ -856,7 +856,7 @@ GEM
       actionview
       openproject-octicons (= 19.25.0)
       railties
-    openproject-primer_view_components (0.69.4)
+    openproject-primer_view_components (0.69.5)
       actionview (>= 7.1.0)
       activesupport (>= 7.1.0)
       openproject-octicons (>= 19.25.0)
@@ -1097,7 +1097,7 @@ GEM
     rspec-support (3.13.4)
     rspec-wait (1.0.1)
       rspec (>= 3.4)
-    rubocop (1.76.1)
+    rubocop (1.76.2)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -1105,7 +1105,7 @@ GEM
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 2.9.3, < 3.0)
-      rubocop-ast (>= 1.45.0, < 2.0)
+      rubocop-ast (>= 1.45.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
     rubocop-ast (1.45.1)
@@ -1445,7 +1445,7 @@ DEPENDENCIES
   openproject-octicons (~> 19.25.0)
   openproject-octicons_helper (~> 19.25.0)
   openproject-openid_connect!
-  openproject-primer_view_components (~> 0.69.4)
+  openproject-primer_view_components (~> 0.69.5)
   openproject-recaptcha!
   openproject-reporting!
   openproject-storages!
@@ -1578,8 +1578,8 @@ CHECKSUMS
   auto_strip_attributes (2.6.0) sha256=a7e2e0cf744de2bcd947fd68014220702bcc88c81274c1cd9ce6f7316aae39b0
   awesome_nested_set (3.8.0) sha256=469daff411d80291dbb80d1973133e498048a7afc2519c545f62d2cdebc60eda
   aws-eventstream (1.4.0) sha256=116bf85c436200d1060811e6f5d2d40c88f65448f2125bc77ffce5121e6e183b
-  aws-partitions (1.1115.0) sha256=787dc8a8d8db2aeb1474b4ee9a71e9f8b315d8109063fea0021030a6522f9e6c
-  aws-sdk-core (3.225.2) sha256=3ebed026b4bb527740cdf9f2a0c1b4a542d070ee015f8dd6bfc4c265d75dd4f8
+  aws-partitions (1.1117.0) sha256=fe6469ff7426b449c0c6d0aa43e45f387a4b26992bf48f6897c0b730b205a8a3
+  aws-sdk-core (3.226.0) sha256=6b2dca6576d965b8c7ddf393fe49dac6aea2b6f4a07ead0c35306bba2b0c90f5
   aws-sdk-kms (1.104.0) sha256=d65f13254452a9648fc3557018214e4c1809224c8538de576dd079772f0390f4
   aws-sdk-s3 (1.189.1) sha256=dd46336000eb3d78ff3ba4b648dd520c83c171ac29a04f13ddb08249fd1b7de4
   aws-sdk-sns (1.100.0) sha256=706bb13c5da789a5b9c6219b397980645536dd7f7301c09fbb8d3e8613f65a96
@@ -1817,7 +1817,7 @@ CHECKSUMS
   openproject-octicons (19.25.0) sha256=16fc221375e693f0e893b1c208286f2d7719ae4dfe080c5415642b221f51f550
   openproject-octicons_helper (19.25.0) sha256=9b1778a67b0015ebe84ca0471f74e31004b985a8dcaaa443f7a2ac365b0a4e2d
   openproject-openid_connect (1.0.0)
-  openproject-primer_view_components (0.69.4) sha256=7691923d7e408b6d98c1579f18c08d9d0ad8ea165ab18490195c915239af32a5
+  openproject-primer_view_components (0.69.5) sha256=0484bab4f5b37d94eb96e44251c7f654c2a4e9c04f53da9bf72a7904e6167dc8
   openproject-recaptcha (1.0.0)
   openproject-reporting (1.0.0)
   openproject-storages (1.0.0)
@@ -1914,7 +1914,7 @@ CHECKSUMS
   rspec-retry (0.6.2) sha256=6101ba23a38809811ae3484acde4ab481c54d846ac66d5037ccb40131a60d858
   rspec-support (3.13.4) sha256=184b1814f6a968102b57df631892c7f1990a91c9a3b9e80ef892a0fc2a71a3f7
   rspec-wait (1.0.1) sha256=50ce9cc7cd20b8bb67b95a4ed56b59a16d4af7e86ae91b28dbf20eeaa2481d1f
-  rubocop (1.76.1) sha256=e15a2d750794cf2157d2de8b1b403dfa71b8dc3957a22ae6043b1bdf21e7e0e7
+  rubocop (1.76.2) sha256=ae44f172ba0bbe3d623c927111798f85a7879bcc88e544d08f51f62c19f45633
   rubocop-ast (1.45.1) sha256=94042e49adc17f187ba037b33f941ba7398fede77cdf4bffafba95190a473a3e
   rubocop-capybara (2.22.1) sha256=ced88caef23efea53f46e098ff352f8fc1068c649606ca75cb74650970f51c0c
   rubocop-factory_bot (2.27.1) sha256=9d744b5916778c1848e5fe6777cc69855bd96548853554ec239ba9961b8573fe

@@ -84,10 +84,8 @@ RSpec.describe "Enterprise token", :js do
 
         # Table headers
         [
-          "Plan",
-          "Subscriber",
-          "Maximum active users",
-          "Email",
+          "Subscription",
+          "Active users",
           "Domain",
           "Dates"
         ].each do |attribute|
@@ -96,10 +94,8 @@ RSpec.describe "Enterprise token", :js do
 
         # Token values
         [
-          "Enterprise Plan (Token Version #{token_object.version})",
-          "Foobar",
+          "Enterprise Plan\nFoobar",
           "Unlimited",
-          "foo@example.org",
           Setting.host_name,
           "#{format_date(Date.current)} – Unlimited"
         ].each do |attribute|

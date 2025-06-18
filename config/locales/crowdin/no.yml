@@ -4361,12 +4361,12 @@
         message: "Deling av prosjektlister med enkeltbrukere er et enterprise-tillegg."
   working_days:
     info: >
-      Hoppet over dager som ikke er valgt ved planlegging av arbeidspakker (og ikke inkludert i antall dager). Disse kan overstyres på arbeidspakkenivå.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Datoer som er lagt til i listen nedenfor regnes som arbeidsfrie og hoppet over når arbeidspakker planlegges.
     change_button: "Endre virkedager"
     warning: >
-      Endring av hvilke ukedager som regnes som arbeidsdager eller arbeidsfrie dager kan påvirke start- og sluttdager for alle arbeidspakker i alle prosjekter i denne forekomsten.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Arbeidsdager** endret (%{changes})._
       days:
