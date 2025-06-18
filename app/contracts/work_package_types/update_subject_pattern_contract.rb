@@ -29,43 +29,29 @@
 #++
 
 module WorkPackageTypes
-  class SetAttributesService < ::BaseServices::SetAttributes
-    def initialize(user:, model:, contract_class:, contract_options: nil)
-      super
-      @valid_pattern = true
-    end
+  class UpdateSubjectPatternContract < BaseContract
+    attribute :patterns
+
+    validate :validate_subject_generation_pattern
 
     private
 
-    def set_attributes(params)
-      permitted = params.except(:copy_workflow_from)
-      @valid_pattern = check_patterns(permitted)
+    def validate_subject_generation_pattern
+      blueprint = model.patterns.subject&.blueprint
+      return if blueprint.nil?
 
-      if @valid_pattern
-        super(permitted)
-      else
-        super(permitted.except(:patterns))
+      valid_tokens = flat_valid_token_list
+      invalid_tokens = blueprint.scan(Types::PatternResolver::TOKEN_REGEX)
+                                .reduce([]) do |acc, match|
+        token = Types::Patterns::PatternToken.build(match).key
+        valid_tokens.include?(token) ? acc : acc << token
+      end
+
+      if invalid_tokens.any?
+        errors.add(:patterns, :invalid_tokens)
       end
     end
 
-    def validate_and_result
-      success, errors = validate(model, user, options: {})
-
-      if @valid_pattern
-        ServiceResult.new(success:, errors:, result: model)
-      else
-        errors.add(:patterns, :is_invalid)
-        ServiceResult.failure(errors:, result: model)
-      end
-    end
-
-    def check_patterns(params)
-      return true unless params.key?(:patterns)
-      return true if params.key?(:patterns) && params[:patterns].blank?
-
-      Types::Patterns::CollectionContract.new.call(params[:patterns]).success?
-    rescue ArgumentError
-      false
-    end
+    def flat_valid_token_list = Types::Patterns::TokenPropertyMapper.new.tokens_for_type(model).map(&:key)
   end
 end
