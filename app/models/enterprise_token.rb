@@ -89,14 +89,6 @@ class EnterpriseToken < ApplicationRecord
       end
     end
 
-    def banner_type_for(feature:)
-      if !active?
-        :no_token
-      elsif !allows_to?(feature)
-        :upsell
-      end
-    end
-
     def set_active_tokens
       # although we use the `active` scope here, we still need to filter out non-active tokens
       # as not all token validity period is extracted into the DB
