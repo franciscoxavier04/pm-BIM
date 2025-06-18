@@ -344,7 +344,7 @@ zh-TW:
   permission_delete_meetings: "刪除會議"
   permission_view_meetings: "檢視會議"
   permission_manage_agendas: "管理議程"
-  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
+  permission_manage_agendas_explanation: "允許建立、編輯與移除議程項目"
   permission_manage_outcomes: "管理成果"
   permission_send_meeting_invites_and_outcomes: "將會議邀請與結果發送給與會者"
   project_module_meetings: "會議"
