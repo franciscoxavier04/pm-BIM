@@ -3,6 +3,7 @@
     <ol class="breadcrumb">
       <li
         class="breadcrumb-item"
+        data-test-selector="breadcrumb-item"
         *ngFor="let item of items; let last = last"
         [class.active]="last"
         [attr.aria-current]="last ? 'page' : null"

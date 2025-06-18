@@ -157,6 +157,9 @@ RSpec.describe "Work package calendars", :js do
     # open the page via the url should show the next month again
     visit future_url
 
+    expect(page).to have_test_selector("breadcrumb-item", text: "Calendars")
+    expect(page).to have_css('.breadcrumb-item.active[aria-current="page"]', text: "Unnamed calendar")
+
     expect(page)
       .to have_no_css ".fc-event-title", text: current_work_package.subject
     expect(page)
