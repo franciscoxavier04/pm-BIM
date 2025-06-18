@@ -52,16 +52,20 @@ module WorkPackageTypes
 
     describe "validations" do
       context "when attribute_groups is present and valid" do
+        let(:valid_group) { ["foo", ["assignee", "responsible"]] }
+
         it "is valid" do
-          model.attribute_groups = [["foo", ["assignee", "responsible"]]]
+          model.attribute_groups = [valid_group]
 
           expect(contract.validate).to be_truthy
         end
       end
 
       context "when a group has no name" do
+        let(:invalid_group) { ["", ["assignee"]] }
+
         it "is invalid and adds :group_without_name error" do
-          model.attribute_groups = [["", ["assignee"]]]
+          model.attribute_groups = [invalid_group]
 
           expect(contract.validate).to be_falsey
           expect(contract.errors.details[:attribute_groups]).to include(error: :group_without_name)
@@ -69,8 +73,10 @@ module WorkPackageTypes
       end
 
       context "when there are duplicate group names" do
+        let(:duplicate_group) { ["foo", ["assignee"]] }
+
         it "is invalid and adds :duplicate_group error" do
-          model.attribute_groups = [["foo", ["assignee"]], ["foo", ["responsible"]]]
+          model.attribute_groups = [duplicate_group, duplicate_group]
 
           expect(contract.validate).to be_falsey
           expect(contract.errors.details[:attribute_groups]).to include(error: :duplicate_group, group: "foo")
@@ -78,8 +84,10 @@ module WorkPackageTypes
       end
 
       context "when an attribute group contains unknown attributes" do
+        let(:invalid_group) { ["foo", ["unknown_attribute"]] }
+
         it "is invalid and adds an error for the unknown attribute" do
-          model.attribute_groups = [["foo", ["unknown_attribute"]]]
+          model.attribute_groups = [invalid_group]
 
           expect(contract.validate).to be_falsey
           expect(contract.errors.details[:attribute_groups]).to include(
@@ -90,9 +98,10 @@ module WorkPackageTypes
 
       context "with invalid query group" do
         let(:query) { Query.new(name: "Invalid Query", user:) }
+        let(:invalid_query_group) { ["query_group", [query]] }
 
         it "is invalid and adds an error for the query group" do
-          model.attribute_groups = [["query_group", [query]]]
+          model.attribute_groups = [invalid_query_group]
 
           expect(contract.validate).to be_falsey
           expect(contract.errors.details[:attribute_groups])
