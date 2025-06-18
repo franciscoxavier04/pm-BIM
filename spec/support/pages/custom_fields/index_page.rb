@@ -68,6 +68,22 @@ module Pages
         click_on type
       end
 
+      def expect_having_create_item(type)
+        wait_for_network_idle
+
+        click_button "New custom field"
+
+        expect(page).to have_link(type)
+      end
+
+      def expect_not_having_create_item(type)
+        wait_for_network_idle
+
+        click_button "New custom field"
+
+        expect(page).to have_no_link(type)
+      end
+
       def expect_none_listed
         expect(page).to have_text("There are currently no custom fields.")
       end
