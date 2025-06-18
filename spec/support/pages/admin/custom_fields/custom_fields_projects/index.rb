@@ -44,6 +44,8 @@ module Pages
 
             click_button "Add"
 
+            click_button "Project attribute"
+
             click_on type
           end
         end

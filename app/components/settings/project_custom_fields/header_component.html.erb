@@ -28,14 +28,11 @@
           content_arguments: { data: { controller: "async-dialog" } }
         )
 
-        menu.with_divider
-        menu.with_group do |group|
-          group.with_heading(title: t("settings.project_attributes.label_new_attribute"))
-
+        menu.with_sub_menu_item(label: t("settings.project_attributes.label_new_attribute")) do |sub_menu|
           OpenProject::CustomFieldFormat.all_for_class_name("Project")
                                         .sort_by(&:name)
                                         .map do |format|
-            group.with_item(
+            sub_menu.with_item(
               label: helpers.label_for_custom_field_format(format.name),
               tag: :a,
               href: new_admin_settings_project_custom_field_path(field_format: format.name),
