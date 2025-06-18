@@ -42,8 +42,8 @@ module OpenProject
           end
 
           def authenticate_user(id)
-            user = id && User.find_by(id:)
-            if user&.active?
+            user = id && User.active.find_by(id:)
+            if user
               success!(user)
             else
               fail_with_header!(error: "invalid_token")
