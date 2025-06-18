@@ -108,6 +108,29 @@ export class WorkPackageViewPageComponent extends PartitionedQuerySpacePageCompo
     this.text.button_settings = this.I18n.t('js.button_settings');
   }
 
+  breadcrumbItems() {
+    const items = [
+      {
+        href: this.pathHelperService.projectPath(this.currentProject.identifier as string),
+        text: this.currentProject.name,
+      },
+      {
+        href: this.pathHelperService.projectWorkPackagesPath(this.currentProject.identifier as string),
+        text: this.I18n.t('js.work_packages.work_packages_label'),
+      },
+      this.selectedTitle ?? '',
+    ];
+
+    if (this.isGantt) {
+      items[1] = {
+        href: this.pathHelperService.projectGanttChartsPath(this.currentProject.identifier as string),
+        text: this.I18n.t('js.work_packages.gantt_charts_label'),
+      };
+    }
+
+    return items;
+  }
+
   protected additionalLoadingTime():Promise<unknown> {
     if (this.wpTableTimeline.isVisible) {
       return this.querySpace.timelineRendered.pipe(take(1)).toPromise();
@@ -120,10 +143,14 @@ export class WorkPackageViewPageComponent extends PartitionedQuerySpacePageCompo
   }
 
   private get stateName() {
-    if (this.$state.current.name?.includes('gantt')) {
+    if (this.isGantt) {
       return 'gantt.partitioned.list.new';
     }
 
     return 'work-packages.partitioned.list.new';
+  }
+
+  private get isGantt() {
+    return this.$state.current.name?.includes('gantt');
   }
 }
