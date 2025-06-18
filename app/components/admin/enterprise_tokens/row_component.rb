@@ -69,7 +69,7 @@ module Admin::EnterpriseTokens
     def max_active_users
       count =
         if token.unlimited_users?
-          I18n.t("js.admin.enterprise.upsell.unlimited")
+          I18n.t("ee.upsell.unlimited")
         else
           token.max_active_users.to_s
         end
@@ -143,7 +143,7 @@ module Admin::EnterpriseTokens
     end
 
     def expiration_date
-      token.will_expire? ? helpers.format_date(token.expires_at) : I18n.t("js.admin.enterprise.upsell.unlimited")
+      token.will_expire? ? helpers.format_date(token.expires_at) : I18n.t("ee.upsell.unlimited")
     end
 
     def start_date_color
