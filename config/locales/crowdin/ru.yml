@@ -79,7 +79,14 @@ ru:
         main-menu-bg-color: "Цвет фона меню слева."
       theme_warning: Изменение темы перезапишет ваш пользовательский стиль. Дизайн будет утерян. Вы уверены, что хотите продолжить?
     enterprise:
-      upgrade_to_ee: "Обновить до корпоративной версии"
+      delete_dialog:
+        title: "Удалить корпоративный токен"
+        heading: "Удалить этот корпоративный токен?"
+        confirmation: "Вы уверены, что хотите удалить этот токен поддержки корпоративной версии?"
+      create_dialog:
+        title: "Добавить корпоративный токен"
+        type_token_text: "Введите текст токена поддержки"
+        token_placeholder: "Вставьте ваш токен поддержки корпоративной версии здесь"
       add_token: "Загрузить токен поддержки корпоративной версии"
       delete_token_modal:
         text: "Вы уверены, что хотите удалить текущий токен корпоративной версии?"
@@ -835,6 +842,7 @@ ru:
       required_description: "Отмечает этот пакет работ как требование к связанному"
       label_parent_singular: "родители"
       label_parent_plural: "родитель"
+      label_other_relations: "Другие отношения"
       ghost_relation_title: "Похожий пакет работ"
       ghost_relation_description: "Это не видно для вас из-за разрешений."
   label_invitation: Приглашение
@@ -869,6 +877,10 @@ ru:
     auth_source_login: Пожалуйста, авторизируйтесь как <em>%{login}</em> для активации вашей учетной записи.
     omniauth_login: Пожалуйста, авторизируйтесь для активации вашей учетной записи.
   actionview_instancetag_blank_option: "Пожалуйста, выберите"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Зависимости"
   activerecord:
     attributes:
       announcements:
@@ -884,6 +896,8 @@ ru:
       attribute_help_text:
         attribute_name: "Атрибут"
         help_text: "Текст справки"
+      auth_provider:
+        scim_clients: "Клиенты SCIM"
       capability:
         context: "Контекст"
       changeset:
@@ -923,11 +937,13 @@ ru:
       emoji_reaction:
         reactable: "Реакция на"
       enterprise_token:
-        domain: "Домен"
         starts_at: "Действует с"
         subscriber: "Подписчик"
+        plan: "Подписка"
         encoded_token: "Маркер поддержки корпоративной версии"
         active_user_count_restriction: "Максимальное число активных пользователей"
+      enterprise_trial:
+        company: "Компания"
       grids/grid:
         page: "Страница"
         row_count: "Количество строк"
@@ -1255,6 +1271,10 @@ ru:
               forbidden_uri: "запрещен сервером."
             scopes:
               not_match_configured: "не соответствует доступным областям."
+        enterprise_trial:
+          already_used: "уже использовался для создания пробной версии."
+          failed_to_create: "Пробная версия не может быть создана (%{status})"
+          general_consent: "Пожалуйста, подтвердите правила и условия пользования."
         enterprise_token:
           unreadable: "невозможно прочитать. Вы уверены, что это маркер поддержки?"
         grids/grid:
@@ -1536,6 +1556,11 @@ ru:
       custom_action: "Пользовательское действие"
       custom_field: "Настраиваемое поле"
       "doorkeeper/application": "Приложение OAuth"
+      enterprise_token:
+        one: "Корпоративный токен"
+        few: "Enterprise tokens"
+        many: "Enterprise tokens"
+        other: "Корпоративные токены"
       forum: "Форум"
       global_role: "Глобальная роль"
       group: "Группа"
@@ -1569,6 +1594,11 @@ ru:
         few: "Роль"
         many: "Роль"
         other: "Роль"
+      scim_client:
+        one: "Клиент SCIM"
+        few: "SCIM Clients"
+        many: "SCIM Clients"
+        other: "Клиенты SCIM"
       status: "Статус пакета работ"
       token/api:
         one: Токен доступа
@@ -1675,6 +1705,7 @@ ru:
     derived_start_date: "Дата начала производства"
     direction: "Направление"
     display_sums: "Отображение суммы"
+    domain: "Доменное имя"
     due_date: "Дата окончания"
     estimated_hours: "Предполагаемое время"
     estimated_time: "Предполагаемое время"
@@ -2097,17 +2128,19 @@ ru:
       readonly_work_packages: Пакеты работ только для чтения
       sso_auth_providers: Единый вход (SSO)
       team_planner_view: Просмотр командных планировщиков
-      two_factor_authentication: 2FA аутентификация
       virus_scanning: Антивирусное сканирование
       work_package_query_relation_columns: Колонки запросов пакета работ
       work_package_sharing: Поделиться пакетами работ с внешними пользователями
       work_package_subject_generation: Создание темы пакета работ
     upsell:
+      buy_now_button: "Купить сейчас"
       plans_title: "Корпоративный план"
       title: "Корпоративное дополнение"
       plan_title: "Дополнение корпоративной версии %{plan}"
       plan_name: "Корпоративная версия %{plan}"
       plan_text_html: "Доступно начиная с %{plan_name}."
+      already_have_token: >
+        Уже есть токен? Добавьте его с помощью кнопки ниже, чтобы перейти на корпоративную лицензию.
       hide_banner: "Скрыть этот баннер"
       homescreen_description: >
         Планы предприятия расширяют версию OpenProject Сообщества, которую вы сейчас используете. Они включают дополнения, дополнительные возможности и профессиональную поддержку, которые позволяют организациям всех размеров достигать больших успехов вместе.
@@ -2160,6 +2193,26 @@ ru:
       internal_comments_inline:
         title: "Напишите внутренние комментарии только небольшой группы"
         description: " "
+    trial:
+      not_found: "Вы запросили пробный токен, но запрос более недоступен. Пожалуйста, попробуйте еще раз."
+      wait_for_confirmation: "Мы отправили вам письмо для подтверждения вашего адреса для получения токена пробной версии."
+      already_retrieved: >
+        Токен пробной версии уже был получен. Пожалуйста, проверьте ваши письма на наличие прикрепленного токена. Свяжитесь с нашей службой поддержки, если вам нужен новый токен.
+      successfully_saved: "Ваш токен пробной версии был успешно получен."
+      token_sent: "Запрошен токен пробной версии"
+      request_again: "Запросить ещё раз"
+      resend_action: "Повторно отправить письмо с подтверждением"
+      welcome_title: "Быстрый обзор функции"
+      welcome_description: "Узнайте вкратце об управлении проектами и совместной работе в OpenProject корпоративной версии."
+      confirmation_info: >
+        Мы отправили вам письмо от %{date} на %{email} со всей информацией, чтобы начать бесплатную пробную корпоративную версию OpenProject. Пожалуйста, проверьте свой почтовый ящик и нажмите на ссылку подтверждения, чтобы начать 14-дневную бесплатную пробную версию.
+      confirmation_subline: >
+        Пожалуйста, проверьте папку "Входящие" вашего почтового ящика и выполните шаги по запуску бесплатной 14-дневной пробной версии.
+      domain_caption: Токен будет действителен для настроенного в данный момент имени хоста.
+      receive_newsletter_html: >
+        Я хочу получить <a target="_blank" href="https://www.openproject.org/newsletter/">информационный бюллетень OpenProject</a>.
+      consent_html: >
+        Я подтверждаю <a target="_blank" href="https://www.openproject.org/terms-of-service/">правила</a> и <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">условия пользования</a>.
   enumeration_activities: "Отслеживание времени"
   enumeration_work_package_priorities: "Приоритеты пакета работ"
   enumeration_reported_project_statuses: "Перечень отчетов о статусах проекта"
@@ -2184,6 +2237,7 @@ ru:
   error_color_could_not_be_saved: "Цвет не может быть сохранен"
   error_cookie_missing: "Отсутствуют cookie OpenProject. Пожалуйста, убедитесь, что Cookie разрешены. Без них приложение не будет функционировать должным образом."
   error_custom_option_not_found: "Параметр не существует."
+  error_enterprise_plan_needed: "Вам нужна корпоративная подписка %{plan} для выполнения этого действия."
   error_enterprise_activation_user_limit: "Ваша учетная запись не может быть активирована (достигнут предел пользователя). Обратитесь к администратору для получения доступа."
   error_enterprise_token_invalid_domain: "Версия Enterprise не активна. Домен вашего токена предприятия (%{actual}) не соответствует названию системного имени (%{expected})."
   error_failed_to_delete_entry: "Не удалось удалить эту запись."
@@ -2667,6 +2721,7 @@ ru:
   label_dashboard: "Панель"
   label_database_version: "Версия PostgreSQL"
   label_date: "Дата"
+  label_dates: "Даты"
   label_date_and_time: "Дата и время"
   label_date_format: "Формат даты"
   label_date_from: "От"
@@ -3427,6 +3482,8 @@ ru:
   notice_successful_delete: "Удаление выполнено."
   notice_successful_cancel: "Отмена прошла успешно."
   notice_successful_update: "Обновление выполнено."
+  notice_unsuccessful_create: "Создание не удалось."
+  notice_unsuccessful_create_with_reason: "Создание не удалось: %{reason}"
   notice_unsuccessful_update: "Ошибка обновления."
   notice_unsuccessful_update_with_reason: "Не удалось обновить: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |

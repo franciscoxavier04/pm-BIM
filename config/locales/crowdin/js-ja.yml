@@ -208,8 +208,6 @@ ja:
         text_expired: "expired"
         trial:
           confirmation: "メールアドレスの確認"
-          confirmation_info: >
-            %{date} に %{email} へメールを送信しました。 14日間のトライアルを開始するには、受信トレイを確認し、確認リンクをクリックしてください。
           form:
             general_consent: >
               <a target="_blank" href="%{link_terms}">利用規約</a>と<a target="_blank" href="%{link_privacy}">プライバシー ポリシー</a>に同意します。

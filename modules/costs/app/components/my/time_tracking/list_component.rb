@@ -43,7 +43,6 @@ module My
       def wrapper_data
         {
           "controller" => "my--time-tracking",
-          "application-target" => "dynamic",
           "my--time-tracking-mode-value" => mode,
           "my--time-tracking-view-mode-value" => "list"
         }

@@ -206,8 +206,6 @@ el:
         text_expired: "expired"
         trial:
           confirmation: "Επιβεβαίωση της διεύθυνσης email"
-          confirmation_info: >
-            Σας στείλαμε ένα email στο %{date} στο %{email}. Παρακαλούμε ελέγξτε τα εισερχόμενά σας και κάντε κλικ στον σύνδεσμο επιβεβαίωσης που παρέχεται για να ξεκινήσετε τη δοκιμή 14 ημερών.
           form:
             general_consent: >
               Συμφωνώ με τους <a target="_blank" href="%{link_terms}">όρους χρήσης</a> και με την <a target="_blank" href="%{link_privacy}">πολιτική απορρήτου</a>.

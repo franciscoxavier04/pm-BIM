@@ -43,8 +43,7 @@ module Meetings
 
     def wrapper_data_attributes
       {
-        controller: "meetings-drag-and-drop add-meeting-params",
-        "application-target": "dynamic"
+        controller: "meetings-drag-and-drop add-meeting-params"
       }
     end
   end

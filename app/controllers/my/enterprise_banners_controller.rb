@@ -47,9 +47,13 @@ class My::EnterpriseBannersController < ApplicationController
 
   def dismiss
     pref = User.current.pref
-    pref.dismiss_banner(@feature_key)
+    pref.dismiss_banner(@dismiss_key)
     if pref.save
-      remove_via_turbo_stream(component: EnterpriseEdition::BannerComponent.new(@feature_key))
+      remove_via_turbo_stream(component: EnterpriseEdition::BannerComponent.new(
+        @feature_key,
+        dismiss_key: @dismiss_key,
+        show_always: true
+      ))
       respond_with_turbo_streams
     else
       respond_with_flash_error(message: call.message)
@@ -59,7 +63,11 @@ class My::EnterpriseBannersController < ApplicationController
   private
 
   def get_feature_key
-    @feature_key = params[:feature_key].to_sym
+    raw_key = params[:feature_key]
+
+    @dismiss_key = raw_key
+    @feature_key = raw_key.gsub(/_trial$/, "").to_sym
+
     render_400 unless OpenProject::Token.lowest_plan_for(@feature_key)
   end
 end

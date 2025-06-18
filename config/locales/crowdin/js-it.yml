@@ -207,8 +207,6 @@ it:
         text_expired: "scaduto"
         trial:
           confirmation: "Conferma l'indirizzo email"
-          confirmation_info: >
-            Ti abbiamo inviato un'email il %{date} su %{email}. Controlla le tue email e clicca sul link di conferma fornito per iniziare la prova di 14 giorni.
           form:
             general_consent: >
               Accetto le <a target="_blank" href="%{link_terms}">condizioni d'uso</a> e l'<a target="_blank" href="%{link_privacy}">informativa sulla privacy</a>.

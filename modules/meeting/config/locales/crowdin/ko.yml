@@ -344,7 +344,7 @@ ko:
   permission_delete_meetings: "미팅 삭제"
   permission_view_meetings: "미팅 보기"
   permission_manage_agendas: "의제 관리"
-  permission_manage_agendas_explanation: "다이내믹 미팅의 의제 항목 관리를 허용합니다."
+  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
   permission_manage_outcomes: "결과 관리"
   permission_send_meeting_invites_and_outcomes: "참가자에게 미팅 초대장 및 결과 보내기"
   project_module_meetings: "미팅"

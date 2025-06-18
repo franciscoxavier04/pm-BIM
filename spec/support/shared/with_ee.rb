@@ -47,25 +47,21 @@ end
 RSpec.configure do |config|
   config.before do |example|
     allowed = ee_actions(example)
-    if allowed.present?
+    if allowed.present? || example.metadata[:with_ee_trial]
       allowed = aggregate_parent_array(example, allowed.to_set)
 
-      token_double = instance_double(EnterpriseToken)
-      token_object_double = instance_double(OpenProject::Token)
-      allow(EnterpriseToken).to receive(:allows_to?).and_call_original
-      allow(token_object_double).to receive(:has_feature?).and_return(false)
-      allowed.each do |enterprise_feature|
-        allow(EnterpriseToken).to receive(:allows_to?).with(enterprise_feature).and_return(true)
-        allow(token_object_double).to receive(:has_feature?).with(enterprise_feature).and_return(true)
-      end
+      # partial double of OpenProject::Token with available features
+      token_object = OpenProject::Token.new
+      allow(token_object).to receive_messages(available_features: allowed.to_a,
+                                              trial?: !!example.metadata[:with_ee_trial])
 
-      # Also signal available features
-      allow(EnterpriseToken).to receive(:current).and_return(token_double)
-      allow(token_double)
-        .to receive_messages(token_object: token_object_double,
-                             available_features: allowed.to_a,
-                             expired?: false,
-                             restrictions: {})
+      # partial double of EnterpriseToken returning the partial double of token object
+      enterprise_token = EnterpriseToken.new
+      allow(enterprise_token).to receive_messages(token_object:)
+
+      # EnterpriseToken is mocked to return the partial double of enterprise
+      # token as active token
+      allow(EnterpriseToken).to receive(:active_tokens).and_return([enterprise_token])
     end
   end
 end

@@ -206,9 +206,6 @@ hu:
         text_expired: "lejárt"
         trial:
           confirmation: "E-mail cím megerősítése"
-          confirmation_info: >
-
-            E -mailt küldtünk Önnek %{date} dátummal: %{email}. Kérjük, ellenőrizze a postaládáját, és kattintson a megerősítő linkre a 14 napos próbaidőszak megkezdéséhez.
           form:
             general_consent: >
               Elfogadom az <a target="_blank" href="%{link_terms}"> Általános Szerződési Feltételeket </a> és az <a target="_blank" href="%{link_privacy}"> adatvédelmi irányelveket </a >
