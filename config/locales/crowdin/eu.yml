@@ -421,10 +421,6 @@ eu:
         new_label: "New priority"
     status:
       button_edit: Edit project status
-  project_phase:
-    working_days_count:
-      one: "Duration: %{count} working day"
-      other: "Duration: %{count} working days"
   lists:
     create:
       success: "The modified list has been saved as a new list"
@@ -564,11 +560,14 @@ eu:
         All occurrences of the placeholder user (e.g., as assignee, responsible or other user values) will be reassigned to an account called "Deleted user". As the data of every deleted account is reassigned to this account it will not be possible to distinguish the data the user created from the data of another deleted account.
       irreversible: "This action is irreversible"
       confirmation: "Enter the placeholder user name %{name} to confirm the deletion."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
         Click to assign or change the color of this priority.
         It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "React"
     add_reaction: "Add reaction"
@@ -692,6 +691,7 @@ eu:
         automatic: "Automatic"
         manual: "Manual"
       show_relations: "Show relations"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Children"
@@ -760,7 +760,9 @@ eu:
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      caption: "The minimum number of working days to keep in between the two work packages."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "related to"
@@ -976,6 +978,10 @@ eu:
       project/phase:
         date_range: "Date range"
         definition: "Definition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Name"
         color: "Color"
@@ -1287,10 +1293,12 @@ eu:
               blank: "Please select a project."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1339,10 +1347,6 @@ eu:
             from_id:
               error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
-            lag:
-              greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM vendor is not available"
           not_whitelisted: "is not allowed by the configuration."
@@ -1594,12 +1598,13 @@ eu:
       work_package: "Work packages"
     project_phase:
       activated: "activated"
-      deactivated: "deactivated"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "deactivated"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Active"
@@ -1666,6 +1671,8 @@ eu:
     priority: "Priority"
     project: "Project"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reason"
     responsible: "Accountable"
     required: "Required"
@@ -2408,7 +2415,7 @@ eu:
         static_token_name: "RSS token"
         disabled_text: "RSS tokens are not enabled by the administrator. Please contact your administrator to use this feature."
       storages:
-        title: "File Storages"
+        title: "File storages"
         text_hint: "File Storage tokens connect this OpenProject instance with an external File Storage."
         empty_text_hint: "There is no storage access linked to your account."
         revoke_token: "Do you really want to remove this token? You will need to login again on %{storage}"
@@ -2599,6 +2606,8 @@ eu:
   label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(empty)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
   label_descending: "Descending"
   label_details: "Details"
@@ -2671,6 +2680,7 @@ eu:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "General"
   label_generate_key: "Generate a key"
+  label_global_roles: "Global roles"
   label_git_path: "Path to .git directory"
   label_greater_or_equal: ">="
   label_group_by: "Group by"
@@ -2887,8 +2897,8 @@ eu:
   label_project_custom_field_plural: "Project attributes"
   label_project_settings: "Project settings"
   label_project_attributes_settings: "Project attributes settings"
-  label_project_storage_plural: "File Storages"
-  label_project_storage_project_folder: "File Storages: Project folders"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} projects using %{used_disk_space} disk space"
   label_project_view_all: "View all projects"
   label_project_show_details: "Show project details"
@@ -2897,6 +2907,7 @@ eu:
   label_query_new: "New query"
   label_query_plural: "Custom queries"
   label_read: "Read..."
+  label_read_documentation: "Read documentation"
   label_register: "Create a new account"
   label_register_with_developer: "Register as developer"
   label_registered_on: "Registered on"
@@ -3628,7 +3639,7 @@ eu:
       oauth_application_details: "The client secret value will not be accessible again after you close this window. Please copy these values into the Nextcloud OpenProject Integration settings:"
       oauth_application_details_link_text: "Go to settings page"
       setup_documentation_details: "If you need help configuring a new file storage please check the documentation: "
-      setup_documentation_details_link_text: "File Storages setup"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "To use this file storage remember to activate the module and the specific storage in the project settings of each desired project."
     subversion:
       existing_title: "Existing Subversion repository"
@@ -3920,9 +3931,9 @@ eu:
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
+        heading: "New phase"
       edit:
-        heading: "Edit Phase"
+        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"
@@ -4298,12 +4309,12 @@ eu:
         message: "Sharing project lists with individual users is an enterprise add-on."
   working_days:
     info: >
-      Days that are not selected are skipped when scheduling work packages (and not included in the day count). These can be overridden at a work-package level.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Dates added to the list below are considered non-working and skipped when scheduling work packages.
     change_button: "Change working days"
     warning: >
-      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages in all projects in this instance.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Working days** changed (%{changes})._
       days:
@@ -4327,8 +4338,14 @@ eu:
       code_500: "An internal error has occurred."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "YYYY-MM-DD (ISO 8601 date only)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (any compatible ISO 8601 datetime)"

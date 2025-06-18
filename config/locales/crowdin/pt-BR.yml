@@ -420,10 +420,6 @@ pt-BR:
         new_label: "Nova prioridade"
     status:
       button_edit: Editar o status do projeto
-  project_phase:
-    working_days_count:
-      one: "Duração: %{count} dia útil"
-      other: "Duração: %{count} dias úteis"
   lists:
     create:
       success: "A lista modificada foi salva como uma nova lista"
@@ -563,11 +559,14 @@ pt-BR:
         Todas as ocorrências do usuário de espaço reservado (por exemplo, como responsável, competente ou outros valores de usuário) serão reatribuídas a uma conta chamada "Usuário excluído". Como os dados de todas as contas excluídas são reatribuídos a esta conta, não será possível diferenciar os dados criados por usuários de dados excluídos por outra conta.
       irreversible: "Esta ação é irreversível"
       confirmation: "Digite o nome de usuário do espaço reservado %{name} para confirmar a exclusão."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Clique para atribuir ou alterar a cor desta prioridade.
-        Pode ser usado para destacar pacotes de trabalho na tabela.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "Reagir"
     add_reaction: "Adicionar reação"
@@ -689,6 +688,7 @@ pt-BR:
         automatic: "Automático"
         manual: "Manual"
       show_relations: "Exibir relações"
+      update_inputs_aria_live_message: "Seletor de data atualizado. %{message}"
       tabs:
         aria_label: "Abas de seletor de datas"
         children: "Filhos"
@@ -757,7 +757,9 @@ pt-BR:
     label_add_description: "Adicionar descrição"
     lag:
       subject: "Atraso"
-      caption: "O número mínimo de dias úteis a ser mantido entre os dois pacotes de trabalho."
+      caption: |-
+        O número mínimo de dias úteis a ser mantido entre os dois pacotes de trabalho.
+        Também pode ser negativo.
     relations:
       label_new_child_created: "Novo pacote de trabalho criado e adicionado como subpacote"
       label_relates_singular: "relacionado a"
@@ -973,6 +975,10 @@ pt-BR:
       project/phase:
         date_range: "Período"
         definition: "Definição"
+        duration: "Duração"
+        start_date: "Data de início"
+        start_date_caption: "Segue a fase anterior."
+        finish_date: "Data de conclusão"
       project/phase_definition:
         name: "Nome"
         color: "Cor"
@@ -1284,10 +1290,12 @@ pt-BR:
               blank: "Selecione um projeto."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "a data inicial deve ser anterior à data final."
+            start_date:
+              must_be_before_finish_date: "deve ser anterior à data final."
               non_continuous_dates: "não pode ser anterior à data final da fase anterior."
-              incomplete: "não foi concluído."
+            finish_date:
+              must_be_after_start_date: "deve ser após a data de início."
+          cannot_be_a_non_working_day: "não pode ser um dia não útil."
         query:
           attributes:
             project:
@@ -1336,10 +1344,6 @@ pt-BR:
             from_id:
               error_not_found: "não encontrado ou não visível."
               error_readonly: "não pode ser alterado para relações existentes."
-            lag:
-              greater_than_or_equal_to:
-                zero: "não pode ser negativo."
-              less_than_or_equal_to: "é muito alto."
         repository:
           not_available: "Fornecedor SCM não está disponível"
           not_whitelisted: "não é permitido pela configuração."
@@ -1418,7 +1422,7 @@ pt-BR:
               cannot_be_in_another_project: "não pode ser em outro projeto."
               not_a_valid_parent: "é inválido."
             schedule_manually:
-              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
+              cannot_be_automatically_scheduled: "não pode ser definido como falso (agendado automaticamente) porque não possui predecessores nem filhos."
             start_date:
               violates_relationships: "somente pode ser definida como %{soonest_start} ou posterior para não violar as relações de trabalho do pacote."
               cannot_be_null: "não pode ser definido como nulo já que a data de conclusão e a duração são conhecidas. "
@@ -1591,12 +1595,13 @@ pt-BR:
       work_package: "Pacotes de trabalho"
     project_phase:
       activated: "ativado"
-      deactivated: "desativado"
       added_date: "definido para %{date}"
       changed_date: "alterado de %{from} para %{to}"
-      removed_date: "data excluída %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "desativado"
+      deleted_project_phase: "Excluir fase de projeto"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} e %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "data excluída %{date}"
   #common attributes of all models
   attributes:
     active: "Ativo"
@@ -1663,6 +1668,8 @@ pt-BR:
     priority: "Prioridade"
     project: "Projeto"
     project_ids: "IDs do projeto"
+    project_phase: "Fase do projeto"
+    project_phase_definition: "Fase do projeto"
     reason: "Motivo"
     responsible: "Responsável"
     required: "Obrigatório"
@@ -2405,7 +2412,7 @@ pt-BR:
         static_token_name: "Token de RSS"
         disabled_text: "Os tokens de RSS não estão habilitados pelo administrador. Entre em contato com o administrador para utilizar este recurso."
       storages:
-        title: "Armazenamentos de arquivo"
+        title: "Armazenamento de arquivos"
         text_hint: "Tokens de Armazenamento de Arquivo conectam esta instância do OpenProject a um Armazenamento de Arquivos externo."
         empty_text_hint: "Não há nenhum acesso de armazenamento vinculado à sua conta."
         revoke_token: "Você realmente deseja remover este token? Você precisará fazer login novamente no %{storage}"
@@ -2596,6 +2603,8 @@ pt-BR:
   label_deleted_custom_item: "(item excluído)"
   label_deleted_custom_option: "(opção excluída)"
   label_empty_element: "(vazio)"
+  label_go_back: "Voltar um nível no menu"
+  label_go_forward: "Abrir o submenu %{module}"
   label_missing_or_hidden_custom_option: "(algum valor faltando ou falta permissões para acessar)"
   label_descending: "Decrescente"
   label_details: "Detalhes"
@@ -2668,6 +2677,7 @@ pt-BR:
   label_gantt_chart_plural: "Gráficos de Gantt"
   label_general: "Geral"
   label_generate_key: "Gerar uma chave"
+  label_global_roles: "Funções globais"
   label_git_path: "Caminho para o diretório .git"
   label_greater_or_equal: ">="
   label_group_by: "Agrupar por"
@@ -2885,7 +2895,7 @@ pt-BR:
   label_project_settings: "Configurações do projeto"
   label_project_attributes_settings: "Configurações de atributos de projeto"
   label_project_storage_plural: "Armazenamentos de arquivo"
-  label_project_storage_project_folder: "Armazenamentos de arquivos: pastas do Projeto"
+  label_project_storage_project_folder: "Armazenamentos de arquivo: pastas do projeto"
   label_projects_disk_usage_information: "%{count} projetos usando %{used_disk_space} do espaço em disco"
   label_project_view_all: "Ver todos os projetos"
   label_project_show_details: "Mostrar detalhes do projeto"
@@ -2894,6 +2904,7 @@ pt-BR:
   label_query_new: "Nova consulta"
   label_query_plural: "Consultas personalizadas"
   label_read: "Leia..."
+  label_read_documentation: "Ler a documentação"
   label_register: "Criar uma nova conta"
   label_register_with_developer: "Registre-se como desenvolvedor"
   label_registered_on: "Registrado em"
@@ -3324,7 +3335,7 @@ pt-BR:
   notice_bad_request: "Requisição Inválida."
   notice_not_authorized: "Você não está autorizado a acessar esta página."
   notice_not_authorized_archived_project: "O projeto que você está tentando acessar foi arquivado."
-  notice_requires_enterprise_token: "O token corporativo está ausente ou não permite acesso a esta página."
+  notice_requires_enterprise_token: "O token Enterprise está ausente ou não permite acesso a esta página."
   notice_password_confirmation_failed: "Sua senha não está correta. Não é possível continuar."
   notice_principals_found_multiple: "Existe(m) %{number} resultado(s) encontrado(s).\nTecle tab para ir ao primeiro resultado."
   notice_principals_found_single: "Existe um resultado. Tecle tab para ir para ele."
@@ -3624,7 +3635,7 @@ pt-BR:
       oauth_application_details: "O valor secreto do cliente não poderá ser acessado novamente após esta janela ser fechada. Copie estes valores nas configurações de Integração do Nextcloud OpenProject:"
       oauth_application_details_link_text: "Ir para a página de configurações"
       setup_documentation_details: "Se você precisar de ajuda para configurar um novo armazenamento de arquivos, confira a documentação:"
-      setup_documentation_details_link_text: "Configuração de armazenamento"
+      setup_documentation_details_link_text: "Configuração dos armazenamentos de arquivo"
       show_warning_details: "Para usar este armazenamento de arquivos, lembre-se de ativar o módulo e o armazenamento específico nas configurações de projeto de cada projeto desejado."
     subversion:
       existing_title: "Repositório Subversion existente"
@@ -3916,9 +3927,9 @@ pt-BR:
       phase_gates: "Controles de fase"
       new:
         description: "As alterações nesta fase do projeto serão aplicadas a todos os projetos nos quais ela esteja ativada."
-        heading: "Nova fase"
+        heading: "New phase"
       edit:
-        heading: "Editar fase"
+        heading: "Edit phase"
       both_gate: "Controle inicial e controle final"
       no_gate: "Sem controle"
       start_gate: "Data inicial"
@@ -4293,12 +4304,12 @@ pt-BR:
         message: "Compartilhar listas de projetos com usuários individuais é um complemento Enterprise."
   working_days:
     info: >
-      Dias não selecionados são ignorados ao agendar pacotes de trabalho (e não são incluídos na contagem de dias). Isso pode ser alterado individualmente em cada pacote de trabalho.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       As datas adicionadas à lista abaixo são consideradas não úteis e ignoradas ao agendar pacotes de trabalho.
     change_button: "Alterar dias úteis"
     warning: >
-      Alterar os dias da semana considerados úteis ou não úteis pode impactar as datas de início e término de todos os pacotes de trabalho em todos os projetos desta instância.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Dias úteis** alterado (%{changes})._
       days:
@@ -4322,8 +4333,14 @@ pt-BR:
       code_500: "Ocorreu um erro interno."
       code_500_outbound_request_failure: "Uma solicitação de saída para outro recurso falhou com o código de status %{status_code}."
       code_500_missing_enterprise_token: "O pedido não pode ser manipulado devido a um token Enterprise inválido ou ausente."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "Este tipo de atividade não dá suporte a reações por emoji."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          É possível definir apenas um lembrete por vez para o pacote de trabalho. Exclua ou atualize o lembrete atual.
       not_found:
         work_package: "O pacote de trabalho que você está procurando não pode ser encontrado ou foi excluído."
+        reminder: "O lembrete que você está procurando não pode ser encontrado ou foi excluído."
       expected:
         date: "AAAA-MM-DD (somente data no formato ISO 8601)"
         datetime: "AAAA-MM-DDThh:mm:ss[.lll][+hh:mm] (qualquer data e hora compatível com a ISO 8601)"
@@ -4482,16 +4499,16 @@ pt-BR:
       oauth_returned_standard_error: "OAuth2 retornou um erro interno"
       wrong_token_type_returned: "OAuth2 retornou um tipo errado de token, aguardando AccessToken::Bearer"
       oauth_issue_contact_admin: "OAuth2 comunicou um erro. Entre em contato com o administrador do sistema."
-      oauth_client_not_found: "Cliente OAuth2 não encontrado no ponto de extremidade 'callback' (redirect_uri)."
+      oauth_client_not_found: "Cliente OAuth2 não encontrado no endpoint 'callback' (redirect_uri)."
       refresh_token_called_without_existing_token: >
         Erro interno: refresh_token chamada sem um token existente.
       refresh_token_updated_failed: "Erro durante a atualização do OAuthClientToken"
       oauth_client_not_found_explanation: >
         Este erro é exibido após você atualizar o client_id e client_secret no OpenProject, mas não atualizar o campo 'Return URI' no provedor OAuth2.
-      oauth_code_not_present: "OAuth2 'code' não encontrado no ponto de extremidade 'callback' (redirect_uri)."
+      oauth_code_not_present: "OAuth2 'code' não encontrado no endpoint 'callback' (redirect_uri)."
       oauth_code_not_present_explanation: >
         Este erro é exibido quando você seleciona o response_type incorreto no provedor OAuth2. Resposta _type deve ser 'code' ou similar.
-      oauth_state_not_present: "OAuth2 'state' não encontrado no ponto de extremidade 'callback' (redirect_uri)."
+      oauth_state_not_present: "OAuth2 'state' não encontrado no endpoint 'callback' (redirect_uri)."
       oauth_state_not_present_explanation: >
         O 'state' é utilizado para indicar ao OpenProject onde continuar após uma autorização OAuth2 bem-sucedida. Um 'state' ausente é um erro interno que pode aparecer durante a configuração. Entre em contate com seu administrador de sistema.
       rack_oauth2:

@@ -275,10 +275,10 @@ ms:
         change_button: "Simpan dan jadualkan semula"
         change_title: "Tukar hari bekerja"
         removed_title: "Anda akan mengeluarkan hari berikut dari senarai hari tidak bekerja:"
-        change_description: "Penukaran hari dalam seminggu yang dianggap sebagai hari bekerja atau hari tidak bekerja akan mempengaruhi hari mula dan akhir semua pakej kerja dalam semua projek bagi contoh ini."
+        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
         warning: >
-          Perubahan mungkin mengambil sedikit masa untuk berkesan. Anda akan dimaklumkan apabila semua pakej kerja yang berkaitan telah dikemas kini.
-          Adakah anda pasti anda ingin teruskan?
+          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
+          Are you sure you want to continue?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           Menukar mod pengiraan kemajuan daripada berasaskan status kepada berasaskan kerja akan menjadikan medan <i>% Selesai</i> boleh diedit secara bebas. Jika anda secara pilihan memasukkan nilai untuk <i>Kerja</i> atau <i>Kerja yang tinggal</i>, nilai tersebut juga akan dipautkan kepada <i>% Selesai</i>. Menukar <i>Baki kerja</i> kemudian boleh mengemas kini <i>% Selesai</i>.
@@ -358,10 +358,10 @@ ms:
           learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_0":
+          "16_1":
             standard:
               new_features_html: >
-                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Meeting backlogs and the end of classic meetings.</li> <li>Updated Enterprise plans.</li> <li>Internal comments in work packages (Enterprise add-on).</li> <li>Automatically generated work package subjects (Enterprise add-on).</li> <li>Separate time tracking module with calendar view.</li> <li>Parent relation displayed in work package relations tab.</li> <li>Release to Community: Graphs on project overview page.</li> </ul>
+                The release contains various new features and improvements, such as <br> <ul class="%{list_styling_class}"> <li>Structure the project life cycle with phases and phase gates.</li> <li>Export meetings in PDF format.</li> <li>Set smart default options for reminders.</li> <li>Use negative lag for work package dates.</li> <li>Display hierarchy trees for hierarchy custom fields.</li> <li>Benefit from improved accessibility for the date picker with ARIA live regions.</li> </ul>
     ical_sharing_modal:
       title: "Langgan kalendar"
       inital_setup_error_message: "Ralat berlaku ketika sedang mengambil data."
@@ -434,7 +434,6 @@ ms:
     label_filename: "Fail"
     label_filesize: "Saiz"
     label_general: "Umum"
-    label_global_roles: "Peranan global"
     label_greater_or_equal: ">="
     label_group: "Kumpulan"
     label_group_by: "Kumpulkan mengikut"
@@ -567,7 +566,7 @@ ms:
     label_version_plural: "Versi-versi"
     label_view_has_changed: "Paparan ini mempunyai perubahan yang tidak disimpan. Klik untuk simpan mereka."
     help_texts:
-      show_modal: "Paparkan entri atribut teks bantuan"
+      show_modal: "Show help text"
     onboarding:
       buttons:
         skip: "Langkau"
@@ -1035,9 +1034,15 @@ ms:
       reminders:
         button_label: "Tetapkan peringatan"
         title:
-          new: "Tetapkan peringatan"
+          new: "Set a reminder"
           edit: "Sunting peringatan"
         subtitle: "Anda akan menerima pemberitahuan untuk pakej kerja ini pada masa yang dipilih."
+        presets:
+          tomorrow: "Tomorrow"
+          three_days: "In 3 days"
+          week: "In a week"
+          month: "In a month"
+          custom: "At a particular date/time"
       scheduling:
         is_parent: "Tarikh pakej kerja ini disimpulkan secara automatik dari anaknya. Aktifkan 'Penjadualan Manual' untuk tetapkan tarikh."
         is_switched_from_manual_to_automatic: "Tarikh pakej kerja ini mungkin perlu dikira semula selepas menukar dari penjadualan manual ke automatik kerana hubungan dengan pakej kerja lain."

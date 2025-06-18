@@ -57,7 +57,7 @@ es:
         spent_on: Fecha
         start_time: Hora de inicio
         end_time: Hora de finalización
-        time: Tiempo
+        time: Hora
     models:
       time_entry:
         one: "Entrada de tiempo"
@@ -77,6 +77,7 @@ es:
         time_entry:
           invalid_time: "debe estar entre las 00:00 y las 23:59."
           cannot_log_for_this_work_package: "No se puede registrar el tiempo para este paquete de trabajo."
+          duplicate_ongoing: "An ongoing time entry already exists for this user."
         work_package:
           is_not_a_valid_target_for_cost_entries: "Paquete de trabajo #%{id} no es un objetivo válido para reasignar las entradas de costo."
           nullify_is_not_valid_for_cost_entries: "Las entradas de costo  no pueden ser asignadas a un proyecto."
@@ -168,7 +169,7 @@ es:
   label_specific_month: "Mes %{month}"
   label_list: "Lista"
   label_month: "Mes"
-  label_workweek: "Semana de trabajo"
+  label_workweek: "Semana laboral"
   label_day: "Día"
   label_today_capitalized: "Hoy"
   label_view_mode_switcher: "Cambia vista"
@@ -193,13 +194,13 @@ es:
   permission_view_own_hourly_rate: "Ver tarifa por hora propia"
   permission_view_own_time_entries: "Ver tiempo propio invertido"
   project_module_costs: "Tiempo y costos"
-  setting_allow_tracking_start_and_end_times: "Allow start and finish times"
+  setting_allow_tracking_start_and_end_times: "Permitir horas de inicio y finalización"
   setting_costs_currency: "Moneda"
   setting_costs_currency_format: "Formato de moneda"
-  setting_enforce_tracking_start_and_end_times: "Require start and finish times"
-  setting_enforce_without_allow: "Requiring start and finish times is not possible without allowing them"
-  setting_allow_tracking_start_and_end_times_caption: "Habilita la introducción de hora de inicio y de fin cuando se registra tiempo."
-  setting_enforce_tracking_start_and_end_times_caption: "Hace que las horas de inicio y de fin sean obligatorias cuando se registra tiempo."
+  setting_enforce_tracking_start_and_end_times: "Requerir horas de inicio y finalización"
+  setting_enforce_without_allow: "No es posible requerir horas de inicio y finalización sin permitirlas antes"
+  setting_allow_tracking_start_and_end_times_caption: "Habilita la introducción de las horas de inicio y finalización cuando se registra tiempo."
+  setting_enforce_tracking_start_and_end_times_caption: "Hace que introducir las horas de inicio y finalización sea obligatorio cuando se registra tiempo."
   text_assign_time_and_cost_entries_to_project: "Asignar horas reportadas y los costos al proyecto"
   text_destroy_cost_entries_question: "%{cost_entries} fueron reportados en los paquetes de trabajo que van a eliminar. ¿Qué quieres hacer?"
   text_destroy_time_and_cost_entries: "Eliminar horas reportadas y costos"

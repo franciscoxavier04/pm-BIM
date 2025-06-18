@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) 2010-2024 the OpenProject GmbH
@@ -35,6 +37,7 @@ RSpec.describe "Projects life cycle settings", :js, with_flag: { stages_and_gate
     create(:user,
            member_with_permissions: {
              project => %w[
+               edit_project_phases
                select_project_phases
              ]
            })

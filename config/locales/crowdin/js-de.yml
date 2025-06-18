@@ -274,10 +274,10 @@ de:
         change_button: "Speichern und neu planen"
         change_title: "Arbeitstage ändern"
         removed_title: "Sie werden die folgenden Tage aus der Liste der arbeitsfreien Tage entfernen:"
-        change_description: "Die Änderung der Wochentage, die als Arbeitstage oder arbeitsfreie Tage gelten, kann sich in diesem Fall auf die Start- und Endtage aller Arbeitspakete in allen Projekten auswirken."
+        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
         warning: >
-          Es kann einige Zeit dauern, bis die Änderungen wirksam werden. Sie werden benachrichtigt, wenn alle relevanten Arbeitspakete aktualisiert worden sind.
-          Sind Sie sicher, dass Sie fortfahren möchten?
+          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
+          Are you sure you want to continue?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           Wenn Sie den Modus der Fortschrittsberechnung von statusbasiert auf arbeitsbasiert ändern, ist das Feld <i>% abgeschlossen</i> frei editierbar. Wenn Sie optional Werte für <i>Aufwand</i> oder <i>Verbleibenden Aufwand</i> eingeben, werden diese auch mit <i>% abgeschlossen</i> verknüpft. Eine Änderung des <i>verbleibenden Aufwands</i> aktualisiert dann <i>% abgschlossen</i>.
@@ -357,10 +357,10 @@ de:
           learn_about: "Erfahren Sie mehr über die neuen Funktionen"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_0":
+          "16_1":
             standard:
               new_features_html: >
-                Die Version enthält verschiedene neue Funktionen und Verbesserungen wie <br> <ul class="%{list_styling_class}"> <li>Meeting Backlogs und das Ende der klassischen Meetings.</li> <li>Aktualisierte Enterprise-Add-on-Pläne.</li> <li>Interne Kommentare in Arbeitspaketen (Enterprise-Add-on).</li> <li>Automatisch generierte Arbeitspaket-Themen (Enterprise-Add-on).</li> <li>Separates Zeiterfassungsmodul mit Kalenderansicht.</li> <li>Das "Beziehungen"-Tab zeigt übergeordnete Arbeitspakete an.</li> <li>Übergabe in die Community-Version: Graphen auf Projektübersichtsseite.</li> </ul>
+                Die Version enthält verschiedene neue Funktionen und Verbesserungen wie <br> <ul class="%{list_styling_class}"> <li>Strukturieren Sie den Projektlebenszyklus mit Phasen und Phasen-Gates.</li> <li>Meetings im PDF-Format exportieren.</li> <li>Setzen Sie leichter Erinnerungen.</li> <li>Benutzen Sie negative Verzögerung für Arbeitspaketdaten.</li> <li>Bäume für benutzerdefinierte Hierarchiefelder anzeigen.</li> <li>Profitieren Sie von einer verbesserten Zugänglichkeit für die Datumsauswahl mit ARIA Live-Regionen.</li> </ul>
     ical_sharing_modal:
       title: "Kalender abonnieren"
       inital_setup_error_message: "Beim Abrufen der Daten ist ein Fehler aufgetreten."
@@ -433,7 +433,6 @@ de:
     label_filename: "Datei"
     label_filesize: "Größe"
     label_general: "Allgemein"
-    label_global_roles: "Globale Rollen"
     label_greater_or_equal: ">="
     label_group: "Gruppe"
     label_group_by: "Gruppieren nach"
@@ -566,7 +565,7 @@ de:
     label_version_plural: "Versionen"
     label_view_has_changed: "Diese Ansicht hat ungespeicherte Änderungen. Klicken, um sie zu speichern."
     help_texts:
-      show_modal: "Hilfe-Text für dieses Attribut anzeigen"
+      show_modal: "Hilfetext anzeigen"
     onboarding:
       buttons:
         skip: "Überspringen"
@@ -611,7 +610,7 @@ de:
       reasons:
         mentioned: "Erwähnt"
         watched: "Beobachter"
-        assigned: "Beauftragter"
+        assigned: "Zugewiesen an"
         #The enum value is named 'responsible' in the database and that is what is transported through the API
         #up to the frontend.
         responsible: "Verantwortlich"
@@ -687,7 +686,7 @@ de:
         global:
           immediately:
             title: "Beteiligt"
-            description: "Benachrichtigungen für alle Aktivitäten in Arbeitspaketen, an denen Sie beteiligt sind (Beauftragter, Verantwortlicher oder Beobachter)."
+            description: "Benachrichtigungen für alle Aktivitäten in Arbeitspaketen, an denen Sie beteiligt sind (Zugewiesen an, Verantwortlicher oder Beobachter)."
           delayed:
             title: "Nicht beteiligt"
             description: "Zusätzliche Benachrichtigungen für Aktivitäten in allen Projekten."
@@ -1038,6 +1037,12 @@ de:
           new: "Erinnerung einrichten"
           edit: "Erinnerung bearbeiten"
         subtitle: "Sie erhalten zum ausgewählten Zeitpunkt eine Benachrichtigung für dieses Arbeitspaket."
+        presets:
+          tomorrow: "Morgen"
+          three_days: "In 3 Tagen"
+          week: "In einer Woche"
+          month: "In einem Monat"
+          custom: "Zu einem bestimmten Datum/Zeitpunkt"
       scheduling:
         is_parent: "Die Termine dieses Arbeitspakets werden automatisch von seinen Kindern aggregiert. Aktivieren Sie \"Manuelle Planung\", um die Termine frei zu setzen."
         is_switched_from_manual_to_automatic: "Die Termine dieses Arbeitspakets müssen nach dem Wechsel auf automatische Planung neu berechnet werden."

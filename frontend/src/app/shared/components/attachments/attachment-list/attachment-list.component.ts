@@ -49,6 +49,8 @@ export class OpAttachmentListComponent extends UntilDestroyedMixin {
 
   @Input() public showTimestamp = true;
 
+  @Input() public showDelete = true;
+
   @Output() public attachmentRemoved = new EventEmitter<void>();
 
   constructor(

@@ -84,7 +84,8 @@ class TimeEntry < ApplicationRecord
   include Entry::SplashedDates
 
   scopes :of_user_and_day,
-         :ongoing
+         :ongoing,
+         :ongoing_for_user_other_than
 
   # TODO: move into service
   before_save :update_costs

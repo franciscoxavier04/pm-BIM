@@ -240,8 +240,8 @@ es:
           test_ee: "Pruebe Enterprise de forma gratuita durante 14 días"
           quick_overview: "Obtenga un resumen rápido sobre la gestión de proyectos y la colaboración en equipo con OpenProject Enterprise."
         upsell:
-          become_hero: "¡Conviértete en héroe!"
-          enterprise_info_html: "%{feature_title} es una extensión de la Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
+          become_hero: "¡Conviértase en héroe!"
+          enterprise_info_html: "%{feature_title} es una extensión Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
           upgrade_info: "Actualice a un plan de pago para activarla y empiece a usarla en su equipo."
           text: >
             OpenProject Enterprise está basada en Community. Incluye extensiones Enterprise y soporte profesional dirigida principalmente a organizaciones con más de 10 usuarios que gestionen proyectos empresariales críticos con OpenProject.
@@ -252,10 +252,10 @@ es:
             high_security_text: "Inicio de sesión único (SAML, OpenID Connect, CAS), grupos LDAP."
             installation: "Soporte de instalación"
             installation_text: "Nuestros ingenieros de software especializados le guiarán en todo el proceso de instalación y configuración en su propia infraestructura."
-            premium_features: "Extensión Enterprise"
+            premium_features: "Extensiones Enterprise"
             premium_features_text: "Tableros Agile, tema y logotipo personalizados, gráficos, flujos de trabajo inteligentes con acciones personalizadas, búsqueda de texto completo en archivos adjuntos de paquetes de trabajo y campos personalizados de selección múltiple."
             professional_support: "Soporte profesional"
-            professional_support_text: "Obtenga ayuda rápida y de confianza de nuestros agentes de asistencia con conocimientos especializados sobre cómo ejecutar OpenProject en entornos empresariales críticos."
+            professional_support_text: "Obtenga ayuda rápida y de confianza de nuestros agentes de soporte con conocimientos especializados sobre cómo ejecutar OpenProject en entornos empresariales críticos."
           button_start_trial: "Iniciar prueba gratuita"
           button_upgrade: "Mejorar ahora"
           button_contact_us: "Contacte con nosotros para solicitar una demostración"
@@ -275,10 +275,10 @@ es:
         change_button: "Guardar y reprogramar"
         change_title: "Cambiar los días laborables"
         removed_title: "Eliminará los siguientes días de la lista de días no laborables:"
-        change_description: "Cambiar qué días de la semana se consideran laborables y cuáles no, puede afectar a las fechas de inicio y fin de todos los paquetes de trabajo en todos los proyectos de esta instancia."
+        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
         warning: >
-          Los cambios pueden tardar algún tiempo en surtir efecto. Se le notificará cuando todos los paquetes de trabajo relevantes hayan sido actualizados.
-          ¿Está seguro de que desea continuar?
+          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
+          Are you sure you want to continue?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           Cambiar el modo de cálculo del progreso de basado en el estado a basado en el trabajo hará que el campo <i>% completado</i> se pueda editar libremente. Si introduce opcionalmente valores para <i>Trabajo</i> o <i>Trabajo restante</i>, también se vincularán a <i>% completado</i>. Cambiar <i>Trabajo restante</i> puede entonces actualizar <i>% completado</i>.
@@ -358,10 +358,10 @@ es:
           learn_about: "Más información sobre todas las nuevas funciones"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_0":
+          "16_1":
             standard:
               new_features_html: >
-                La versión contiene varias funciones nuevas y mejoras, como <br> <ul class="%{list_styling_class}"> <li>Backlogs de reuniones y fin de las reuniones clásicas.</li> <li>Actualización de los planes Enterprise.</li> <li>Comentarios internos en los paquetes de trabajo (extensión Enterprise). </li> <li>Asuntos de paquetes de trabajo generados automáticamente (extensión Enterprise).</li> <li>Módulo de seguimiento del tiempo independiente con vista de calendario.</li> <li>Relación parental mostrada en la pestaña de relaciones de paquetes de trabajo.</li> <li>Lanzamiento a la Comunidad: Gráficos en la página de vista general del proyecto.</li> </ul>
+                La versión contiene varias nuevas funciones y mejoras, como <br> <ul class="%{list_styling_class}"> <li>Estructura el ciclo de vida del proyecto con fases y puertas de fase.</li> <li>Exportar reuniones en formato PDF.</li> <li>Establecer opciones predeterminadas inteligentes para recordatorios.</li> <li>Usar un retraso negativo en las fechas del paquete de trabajo.</li> <li>Mostrar árboles de jerarquía para campos personalizados de jerarquía.</li> <li>Benefíciese de una accesibilidad mejorada en el selector de fechas con regiones en vivo de ARIA</li> </ul>
     ical_sharing_modal:
       title: "Suscribirse al calendario"
       inital_setup_error_message: "Se ha producido un error al obtener los datos."
@@ -434,7 +434,6 @@ es:
     label_filename: "Archivo"
     label_filesize: "Tamaño"
     label_general: "General"
-    label_global_roles: "Roles globales"
     label_greater_or_equal: ">="
     label_group: "Grupo"
     label_group_by: "Agrupar por"
@@ -567,7 +566,7 @@ es:
     label_version_plural: "Versiones"
     label_view_has_changed: "Esta vista tiene cambios sin guardar. Haga clic para guardarlos."
     help_texts:
-      show_modal: "Mostrar texto de ayuda de atributo"
+      show_modal: "Mostrar texto de ayuda"
     onboarding:
       buttons:
         skip: "Saltar"
@@ -867,7 +866,7 @@ es:
       zooms: "Nivel de zoom"
       outlines: "Nivel de jerarquía"
     upsell:
-      ee_only: "Extensión Enterprise"
+      ee_only: "Extensión de la edición Enterprise"
     wiki_formatting:
       strong: "Negrita"
       italic: "Cursiva"
@@ -1036,9 +1035,15 @@ es:
       reminders:
         button_label: "Establecer recordatorio"
         title:
-          new: "Establecer recordatorio"
+          new: "Establecer un recordatorio"
           edit: "Editar recordatorio"
         subtitle: "Recibirá una notificación para este paquete de trabajo en el momento elegido."
+        presets:
+          tomorrow: "Mañana"
+          three_days: "En 3 días"
+          week: "En una semana"
+          month: "En un mes"
+          custom: "En una fecha y hora en particular"
       scheduling:
         is_parent: "Las fechas de este paquete de trabajo son deducidas automáticamente de sus sub-elementos. Active 'Programación manual' para establecer las fechas."
         is_switched_from_manual_to_automatic: "Las fechas de este paquete de trabajo pueden necesitar ser recalculadas después de pasar de programación manual a programación automática debido a las relaciones con otros paquetes de trabajo."

@@ -3,7 +3,7 @@ sidebar_navigation:
   title: Edit work packages
   priority: 980
 description: How to edit work packages in OpenProject.
-keywords: edit work packages
+keywords: edit work packages, reminders, work package reminders, attachment, internal comment, bulk edit
 ---
 
 # Edit work packages
@@ -143,6 +143,21 @@ You can remove an attachment by hovering over it and clicking the **Delete** ico
 If you want to be reminded about a work package at a later point in time, you can use the **Reminder** function. Click the **Reminder** (alarm clock) icon in the work package detailed view.
 
 ![Work package reminder icon in OpenProject](openproject_user_guide_wp_reminder_icon.png)
+
+A list with helpful pre-defined options will open, from which you can select: 
+
+- tomorrow
+- in 3 days
+- in a week
+- in a month
+- at a particular date/time
+
+Selecting any of these options will display a modal. The time will be set to 9 am for the date you selected (apart from the last option). This modal allows you to adjust the pre-filled date and time and to add a note. This note will be visible when the reminder is triggered in Notification center.
+
+> [!TIP]
+> All the pre-defined reminder options will be set to 9 am of the selected date.
+
+![Pre-defined options for a work package reminder in OpenProject](openproject_user_guide_wp_reminder_quick_options.png) 
 
 Specify the time and date on which you would like to be reminded and optionally add a note for more context. Then click the **Set reminder** button.
 

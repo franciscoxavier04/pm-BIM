@@ -353,12 +353,12 @@ ro:
         heading: "Delete this project list?"
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
-      header_details: Basic details
+      header_details: Informații de bază
       header_status: Stare proiect
-      header_relations: Project relations
-      button_update_details: Update details
-      button_update_status_description: Update status description
-      button_update_parent_project: Update parent project
+      header_relations: Relații proiect
+      button_update_details: Actualizează detalii
+      button_update_status_description: Actualizează descrierea stării
+      button_update_parent_project: Actualizează proiect părinte
       public_warning: >
         This project is public. Anyone who has access to this instance will be able to view and interact with this project depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       public_confirmation:
@@ -421,11 +421,6 @@ ro:
         new_label: "New priority"
     status:
       button_edit: Edit project status
-  project_phase:
-    working_days_count:
-      one: "Duration: %{count} working day"
-      few: "Duration: %{count} working days"
-      other: "Duration: %{count} working days"
   lists:
     create:
       success: "The modified list has been saved as a new list"
@@ -571,11 +566,14 @@ ro:
         Toate prezențele utilizatorului de tip "placeholder" (de exemplu, ca destinatar, responsabil sau alte valori de utilizator) vor fi realocate unui cont numit "Utilizator eliminat". Deoarece datele fiecărui cont șters sunt realocate acestui cont, nu va fi posibilă deosebirea datelor create de utilizator de datele unui alt cont șters.
       irreversible: "Această acțiune este ireversibilă"
       confirmation: "Introdu numele de utilizator de tip placeholder %{name} pentru a confirma ștergerea."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Clic pentru a desemna sau schimba culoarea acestui nivel de prioritate.
-        Poate fi utilizate pentru a evidenția pachetele de lucru dintr-un tabel.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "React"
     add_reaction: "Add reaction"
@@ -700,6 +698,7 @@ ro:
         automatic: "Automat"
         manual: "Manual"
       show_relations: "Arată relațiile"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Copii"
@@ -769,7 +768,9 @@ ro:
     label_add_description: "Adaugă descriere"
     lag:
       subject: "Întârziere"
-      caption: "Numărul minim de zile lucrătoare care trebuie păstrate între cele două pachete de lucru."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "Pachet de lucru nou creat și adăugat ca și copil"
       label_relates_singular: "asociat cu"
@@ -985,6 +986,10 @@ ro:
       project/phase:
         date_range: "Interval calendaristic"
         definition: "Definition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Nume"
         color: "Culoare"
@@ -1296,10 +1301,12 @@ ro:
               blank: "Te rog selectează un proiect."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1348,10 +1355,6 @@ ro:
             from_id:
               error_not_found: "negăsit sau invizibil."
               error_readonly: "nu poate fi schimbat pentru relaţiile existente."
-            lag:
-              greater_than_or_equal_to:
-                zero: "nu poate fi negativ."
-              less_than_or_equal_to: "este prea mare."
         repository:
           not_available: "Nu este disponibil furnizorul de SCM"
           not_whitelisted: "nu este permisă de configurație."
@@ -1615,12 +1618,13 @@ ro:
       work_package: "Pachete de lucru"
     project_phase:
       activated: "Activat"
-      deactivated: "Dezactivat"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "Dezactivat"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Activ"
@@ -1687,6 +1691,8 @@ ro:
     priority: "Prioritate"
     project: "Proiect"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Motiv"
     responsible: "Responsabil"
     required: "Obligatoriu"
@@ -2374,7 +2380,7 @@ ro:
       work_package_parent_changed_times: by changes to parent %{link}
       work_package_children_changed_times: by changes to child %{link}
       work_package_related_changed_times: by changes to related %{link}
-      work_package_duplicate_closed: The status was automatically updated by the duplicated work package %{link}
+      work_package_duplicate_closed: Starea a fost actualizată automat de pachetul de lucru duplicat %{link}
       unaccessable_work_package_changed: by changes to a related work package
       working_days_changed:
         changed: "by changes to working days (%{changes})"
@@ -2448,7 +2454,7 @@ ro:
         static_token_name: "RSS token"
         disabled_text: "RSS tokens are not enabled by the administrator. Please contact your administrator to use this feature."
       storages:
-        title: "File Storages"
+        title: "File storages"
         text_hint: "File Storage tokens connect this OpenProject instance with an external File Storage."
         empty_text_hint: "There is no storage access linked to your account."
         revoke_token: "Do you really want to remove this token? You will need to login again on %{storage}"
@@ -2550,7 +2556,7 @@ ro:
   label_api_doc: "Documentație API"
   label_backup: "Backup"
   label_backup_code: "Cod copie de rezervă"
-  label_basic_details: "Basic details"
+  label_basic_details: "Informații de bază"
   label_between: "între"
   label_blocked_by: "blocat de"
   label_blocks: "blochează"
@@ -2639,6 +2645,8 @@ ro:
   label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(opțiune eliminată)"
   label_empty_element: "(gol)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(valoare lipsă sau lipsă permisiunilor de acces)"
   label_descending: "Descrescător"
   label_details: "Detalii"
@@ -2711,6 +2719,7 @@ ro:
   label_gantt_chart_plural: "Diagrame Gantt"
   label_general: "General"
   label_generate_key: "Generare cheie"
+  label_global_roles: "Global roles"
   label_git_path: "Calea catre directorul .git"
   label_greater_or_equal: ">="
   label_group_by: "Grupează după"
@@ -2927,8 +2936,8 @@ ro:
   label_project_custom_field_plural: "Atribute proiect"
   label_project_settings: "Setările proiectului"
   label_project_attributes_settings: "Project attributes settings"
-  label_project_storage_plural: "File Storages"
-  label_project_storage_project_folder: "File Storages: Project folders"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} proiecte care utilizează %{used_disk_space} spațiu pe disc"
   label_project_view_all: "Vizualizează toate proiectele"
   label_project_show_details: "Arată detaliile proietului"
@@ -2937,6 +2946,7 @@ ro:
   label_query_new: "Interogare nouă"
   label_query_plural: "Interogări personalizate"
   label_read: "Citeşte..."
+  label_read_documentation: "Read documentation"
   label_register: "Creează cont nou"
   label_register_with_developer: "Înregistrare ca programator"
   label_registered_on: "Înregistrat pe"
@@ -3669,7 +3679,7 @@ ro:
       oauth_application_details: "Valoarea secretă a clientului nu va mai fi accesibilă după ce închideți această fereastră. Vă rugăm să copiați aceste valori în setările Nextcloud OpenProject Integration:"
       oauth_application_details_link_text: "Mergi la pagina setări"
       setup_documentation_details: "Dacă aveți nevoie de ajutor pentru configurarea unui nou depozit de fișiere, consultați documentația: "
-      setup_documentation_details_link_text: "Configurarea fișierelor de stocare"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Pentru a utiliza acest spațiu de stocare a fișierelor, nu uita să activezi modulul și spațiul de stocare specific în setările de proiect ale fiecărui proiect dorit."
     subversion:
       existing_title: "Repo Subversion existent"
@@ -3961,9 +3971,9 @@ ro:
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
+        heading: "New phase"
       edit:
-        heading: "Edit Phase"
+        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"
@@ -4340,12 +4350,12 @@ ro:
         message: "Partajarea listelor de proiecte cu utilizatorii individuali este un add-on Enterprise."
   working_days:
     info: >
-      Days that are not selected are skipped when scheduling work packages (and not included in the day count). These can be overridden at a work-package level.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Dates added to the list below are considered non-working and skipped when scheduling work packages.
     change_button: "Modifică zilelor lucrătoare"
     warning: >
-      Schimbarea zilelor din săptămână care sunt considerate zile lucrătoare sau zile nelucrătoare poate afecta zilele de începere și sfârșit ale tuturor pachetelor de lucru în toate proiectele, în acest caz.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Zile lucrătoare** schimbate (%{changes})._
       days:
@@ -4369,8 +4379,14 @@ ro:
       code_500: "A apărut o eroare internă."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "Cererea nu poate fi gestionată din cauza token-ului Enterprise invalid sau lipsă."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "Pachetul de lucru pe care îl căutați nu poate fi găsit sau a fost șters."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "AAAA-MM-ZZ (doar formate ISO 8601)"
         datetime: "AAAA-LL-ZZZZH:mm:ss[.lll][+h:mm] (orice dăți compatibile ISO 8601 dată-oră)"

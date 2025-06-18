@@ -67,11 +67,11 @@ RSpec.describe "Work package reminder modal",
       date = time.to_date
 
       work_package_page.visit!
-      work_package_page.click_reminder_button
+      work_package_page.click_reminder_button_with_context_menu
       wait_for_network_idle
       within ".spot-modal" do
         expect(page)
-          .to have_css(".spot-modal--header-title", text: "Set reminder")
+          .to have_css(".spot-modal--header-title", text: "Set a reminder")
         expect(page)
           .to have_css(".spot-modal--subheader",
                        text: "You will receive a notification for this work package at the chosen time.")
@@ -135,7 +135,7 @@ RSpec.describe "Work package reminder modal",
       expect(Reminder.upcoming_and_visible_to(user_with_permissions).count).to eq(0)
     end
 
-    it "renders an error flash when the reminder modal is opened in edit mode" \
+    it "renders an error flash when the reminder modal is opened in edit mode " \
        "and the notification for it is fired and subsequently clicking save",
        with_settings: { notifications_polling_interval: 1_000 } do
       Reminders::CreateService.new(user: current_user).call(
@@ -176,12 +176,12 @@ RSpec.describe "Work package reminder modal",
 
       work_package_page.dismiss_flash!
       work_package_page.expect_reminder_button_alarm_not_set_icon
-      work_package_page.click_reminder_button
+      work_package_page.click_reminder_button_with_context_menu
       wait_for_network_idle
 
       within ".spot-modal" do
         # Now it should be the create reminder modal
-        expect(page).to have_css(".spot-modal--header-title", text: "Set reminder")
+        expect(page).to have_css(".spot-modal--header-title", text: "Set a reminder")
       end
     end
 
@@ -200,11 +200,11 @@ RSpec.describe "Work package reminder modal",
         today = Time.current.in_time_zone(current_user.time_zone).to_date
 
         work_package_page.visit!
-        work_package_page.click_reminder_button
+        work_package_page.click_reminder_button_with_context_menu
         wait_for_network_idle
         within ".spot-modal" do
           expect(page)
-            .to have_css(".spot-modal--header-title", text: "Set reminder")
+            .to have_css(".spot-modal--header-title", text: "Set a reminder")
           expect(page)
             .to have_css(".spot-modal--subheader",
                          text: "You will receive a notification for this work package at the chosen time.")
@@ -226,7 +226,6 @@ RSpec.describe "Work package reminder modal",
 
           wait_for_network_idle
           expect(page).to have_css(".FormControl-inlineValidation", text: "Time must be in the future.")
-          expect(page).to have_no_css(".FormControl-inlineValidation", text: "Date must be in the future.", wait: 0)
 
           # 30 minutes from now
           fill_in "Date", with: today
@@ -243,12 +242,12 @@ RSpec.describe "Work package reminder modal",
 
       it "renders a required error on the date or time field when either isn't set" do
         work_package_page.visit!
-        work_package_page.click_reminder_button
+        work_package_page.click_reminder_button_with_context_menu
         wait_for_network_idle
 
         within ".spot-modal" do
           expect(page)
-            .to have_css(".spot-modal--header-title", text: "Set reminder")
+            .to have_css(".spot-modal--header-title", text: "Set a reminder")
           expect(page)
             .to have_css(".spot-modal--subheader",
                          text: "You will receive a notification for this work package at the chosen time.")
@@ -258,25 +257,31 @@ RSpec.describe "Work package reminder modal",
 
           wait_for_network_idle
           expect(page).to have_css(".FormControl-inlineValidation", text: "Date can't be blank")
-          expect(page).to have_css(".FormControl-inlineValidation", text: "Time can't be blank")
+          expect(page).to have_field("Time", with: "09:00")
 
-          # Fill in the date but not the time
-          fill_in "Date", with: 1.week.from_now.to_date
+          one_week_from_now = 1.week.from_now
+          # Fill in the date and unset the time
+          fill_in "Date", with: one_week_from_now.to_date
+          fill_in "Time", with: ""
           click_link_or_button "Set reminder"
 
           wait_for_network_idle
           # The error message is only on the time field
           expect(page).to have_css(".FormControl-inlineValidation", text: "Time can't be blank")
           expect(page).to have_no_css(".FormControl-inlineValidation", text: "Date can't be blank", wait: 0)
+          expect(page).to have_field("Date", with: one_week_from_now.to_date)
 
           # Fill in the time but not the date
           fill_in "Date", with: ""
-          fill_in "Time", with: Time.zone.parse("05:00")
+          fill_in "Time", with: Time.use_zone(current_user.time_zone) { Time.zone.parse("05:00") }
           click_link_or_button "Set reminder"
 
           wait_for_network_idle
           expect(page).to have_css(".FormControl-inlineValidation", text: "Date can't be blank.")
           expect(page).to have_no_css(".FormControl-inlineValidation", text: "Time can't be blank.", wait: 0)
+          expect(page).to have_field("Time", with: Time.use_zone(current_user.time_zone) {
+            Time.zone.parse("05:00").localtime.strftime("%H:%M:%S")
+          })
         end
       end
 
@@ -317,6 +322,8 @@ RSpec.describe "Work package reminder modal",
 
       specify "clicking on the reminder button opens the edit reminder modal" do
         work_package_page.visit!
+        work_package_page.expect_reminder_button_alarm_set_icon
+
         work_package_page.click_reminder_button
         wait_for_network_idle
         within ".spot-modal" do
@@ -329,6 +336,19 @@ RSpec.describe "Work package reminder modal",
           expect(page).to have_field("Time", with: reminder.remind_at.in_time_zone(current_user.time_zone).strftime("%H:%M"))
           expect(page).to have_field("Note", with: reminder.note)
           expect(page).to have_button("Save")
+
+          # Edit form renders validation errors
+          fill_in "Date", with: ""
+          fill_in "Time", with: ""
+
+          click_link_or_button "Save"
+
+          wait_for_network_idle
+          expect(page).to have_css(".FormControl-inlineValidation", text: "Date can't be blank.")
+          expect(page).to have_css(".FormControl-inlineValidation", text: "Time can't be blank.")
+          expect(page).to have_field("Date", with: "")
+          expect(page).to have_field("Time", with: "09:00") # Default time
+          expect(page).to have_field("Note", with: reminder.note)
         end
       end
     end
@@ -343,15 +363,23 @@ RSpec.describe "Work package reminder modal",
       specify "clicking on the reminder button opens the create reminder modal" do
         work_package_page.visit!
         work_package_page.click_reminder_button
+
+        within "#reminder-dropdown-menu" do
+          expect(page).to have_css(".dropdown-menu", aria: { label: "Set a reminder" })
+          expect(page).to have_css(".op-menu--headline", text: "SET A REMINDER", aria: { hidden: true })
+
+          click_link_or_button "Tomorrow"
+        end
+
         wait_for_network_idle
         within ".spot-modal" do
           expect(page)
-            .to have_css(".spot-modal--header-title", text: "Set reminder")
+            .to have_css(".spot-modal--header-title", text: "Set a reminder")
           expect(page)
             .to have_css(".spot-modal--subheader",
                          text: "You will receive a notification for this work package at the chosen time.")
-          expect(page).to have_field("Date")
-          expect(page).to have_field("Time")
+          expect(page).to have_field("Date", with: 1.day.from_now.to_date)
+          expect(page).to have_field("Time", with: "09:00")
           expect(page).to have_field("Note")
           expect(page).to have_button("Set reminder")
         end
@@ -360,11 +388,11 @@ RSpec.describe "Work package reminder modal",
 
     it "has a Primer close button that closes the Angular spot modal" do
       work_package_page.visit!
-      work_package_page.click_reminder_button
+      work_package_page.click_reminder_button_with_context_menu
       wait_for_network_idle
       within ".spot-modal" do
         expect(page)
-          .to have_css(".spot-modal--header-title", text: "Set reminder")
+          .to have_css(".spot-modal--header-title", text: "Set a reminder")
         find_test_selector("op-reminder-modal-close-button").click
       end
 

@@ -36,7 +36,7 @@ ruby File.read(File.expand_path(".ruby-version", __dir__)).strip
 
 gem "actionpack-xml_parser", "~> 2.0.0"
 gem "activemodel-serializers-xml", "~> 1.0.1"
-gem "activerecord-import", "~> 2.1.0"
+gem "activerecord-import", "~> 2.2.0"
 gem "activerecord-session_store", "~> 2.2.0"
 gem "ox"
 gem "rails", "~> 8.0.1"
@@ -62,7 +62,7 @@ gem "friendly_id", "~> 5.5.0"
 gem "acts_as_list", "~> 1.2.0"
 gem "acts_as_tree", "~> 2.9.0"
 gem "awesome_nested_set", "~> 3.8.0"
-gem "closure_tree", "~> 7.4.0"
+gem "closure_tree", "~> 8.0.0"
 gem "rubytree", "~> 2.1.0"
 # Only used in down migrations now.
 # Is to be removed once the referencing migrations have been squashed.
@@ -201,7 +201,7 @@ gem "aws-sdk-core", "~> 3.107"
 # File upload via fog + screenshots on travis
 gem "aws-sdk-s3", "~> 1.91"
 
-gem "openproject-token", "~> 6.0.0"
+gem "openproject-token", "~> 7.1.0"
 
 gem "plaintext", "~> 0.3.2"
 
@@ -225,7 +225,7 @@ gem "appsignal", "~> 3.10.0", require: false
 
 # Yabeda integration
 gem "yabeda-activerecord"
-gem "yabeda-prometheus-mmap"
+gem "yabeda-prometheus-mmap", require: false
 gem "yabeda-puma-plugin"
 gem "yabeda-rails"
 
@@ -261,7 +261,7 @@ group :test do
   gem "rack_session_access"
   gem "rspec", "~> 3.13.0"
   # also add to development group, so 'spec' rake task gets loaded
-  gem "rspec-rails", "~> 7.1.0", group: :development
+  gem "rspec-rails", "~> 8.0.0", group: :development
 
   # Retry failures within the same environment
   gem "retriable", "~> 3.1.1"
@@ -285,8 +285,7 @@ group :test do
   gem "capybara", "~> 3.40.0"
   gem "capybara_accessible_selectors", git: "https://github.com/citizensadvice/capybara_accessible_selectors", tag: "v0.12.0"
   gem "capybara-screenshot", "~> 1.0.17"
-  gem "cuprite", "~> 0.15.0"
-  gem "ferrum", github: "opf/ferrum", ref: "mouse-events-buttons-property-0.15"
+  gem "cuprite", "~> 0.17.0"
   gem "rspec-wait"
   gem "selenium-devtools"
   gem "selenium-webdriver", "~> 4.20"
@@ -401,7 +400,7 @@ platforms :mri, :mingw, :x64_mingw do
 
   # Have application level locks on the database to have a mutex shared between workers/hosts.
   # We e.g. employ this to safeguard the creation of journals.
-  gem "with_advisory_lock", "~> 5.1.0"
+  gem "with_advisory_lock", "~> 5.3.0"
 end
 
 # Load Gemfile.modules explicitly to allow dependabot to work
@@ -418,4 +417,4 @@ end
 
 gem "openproject-octicons", "~>19.25.0"
 gem "openproject-octicons_helper", "~>19.25.0"
-gem "openproject-primer_view_components", "~>0.64.1"
+gem "openproject-primer_view_components", "~>0.68.0"

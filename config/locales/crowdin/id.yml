@@ -417,9 +417,6 @@ id:
         new_label: "New priority"
     status:
       button_edit: Edit project status
-  project_phase:
-    working_days_count:
-      other: "Duration: %{count} working days"
   lists:
     create:
       success: "The modified list has been saved as a new list"
@@ -553,11 +550,14 @@ id:
         Semua kemunculan pengguna placeholder (mis., sebagai penerima tugas, penanggung jawab, atau nilai pengguna lainnya) akan dipindahkan ke akun yang disebut "Pengguna yang dihapus". Karena data setiap akun yang dihapus dipindahkan ke akun ini, data yang dibuat pengguna tidak dapat dibedakan dari data akun lain yang dihapus.
       irreversible: "Tindakan ini tidak dapat diubah"
       confirmation: "Masukkan nama pengguna placeholder %{name} untuk mengonfirmasi penghapusan."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Klik untuk menetapkan atau merubah warna dari prioritas ini
-        Ini dapat digunakan untuk menyorot paket pekerjaan dalam tabel
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "React"
     add_reaction: "Add reaction"
@@ -680,6 +680,7 @@ id:
         automatic: "Automatic"
         manual: "Manual"
       show_relations: "Show relations"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Sub"
@@ -747,7 +748,9 @@ id:
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      caption: "Jumlah hari kerja minimum yang harus dijaga di antara dua paket pekerjaan."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "terkait dengan"
@@ -963,6 +966,10 @@ id:
       project/phase:
         date_range: "Kisaran tanggal"
         definition: "Definition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Nama"
         color: "Warna"
@@ -1274,10 +1281,12 @@ id:
               blank: "Please select a project."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1326,10 +1335,6 @@ id:
             from_id:
               error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
-            lag:
-              greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Vendor SCM tidak tersedia"
           not_whitelisted: "konfigurasi tidak mengijinkan."
@@ -1569,12 +1574,13 @@ id:
       work_package: "Paket-Penugasan"
     project_phase:
       activated: "diaktifkan"
-      deactivated: "dinonaktifkan"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "dinonaktifkan"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktif"
@@ -1641,6 +1647,8 @@ id:
     priority: "Prioritas"
     project: "Project"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reason"
     responsible: "Akuntabel"
     required: "Harus diisi"
@@ -2364,7 +2372,7 @@ id:
         static_token_name: "RSS token"
         disabled_text: "RSS tokens are not enabled by the administrator. Please contact your administrator to use this feature."
       storages:
-        title: "File Storages"
+        title: "File storages"
         text_hint: "File Storage tokens connect this OpenProject instance with an external File Storage."
         empty_text_hint: "There is no storage access linked to your account."
         revoke_token: "Do you really want to remove this token? You will need to login again on %{storage}"
@@ -2555,6 +2563,8 @@ id:
   label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(opsi dihapus)"
   label_empty_element: "(kosong)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(nilai hilang atau kurang izin untuk mengakses)"
   label_descending: "Deskending"
   label_details: "Detil"
@@ -2627,6 +2637,7 @@ id:
   label_gantt_chart_plural: "Gantt charts"
   label_general: "Umum"
   label_generate_key: "Generate a key"
+  label_global_roles: "Global roles"
   label_git_path: "Path to .git directory"
   label_greater_or_equal: ">="
   label_group_by: "Pengelompokan"
@@ -2843,8 +2854,8 @@ id:
   label_project_custom_field_plural: "Atribut proyek"
   label_project_settings: "Projek setting"
   label_project_attributes_settings: "Project attributes settings"
-  label_project_storage_plural: "File Storages"
-  label_project_storage_project_folder: "File Storages: Project folders"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} projects using %{used_disk_space} disk space"
   label_project_view_all: "Lihat semua Project"
   label_project_show_details: "Tampilkan detail proyek"
@@ -2853,6 +2864,7 @@ id:
   label_query_new: "Queri baru"
   label_query_plural: "Kustom queri"
   label_read: "Baca..."
+  label_read_documentation: "Read documentation"
   label_register: "Buat akun baru"
   label_register_with_developer: "Daftar sebagai pengembang"
   label_registered_on: "Terdaftar sejak"
@@ -3579,7 +3591,7 @@ id:
       oauth_application_details: "Nilai rahasia klien tidak akan dapat diakses lagi setelah Anda menutup jendela ini. Harap salin nilai-nilai ini ke pengaturan Nextcloud OpenProject Integration:"
       oauth_application_details_link_text: "Buka halaman pengaturan"
       setup_documentation_details: "Jika Anda memerlukan bantuan untuk mengonfigurasi penyimpanan file baru, harap periksa dokumentasinya:"
-      setup_documentation_details_link_text: "Pengaturan Penyimpanan File"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "To use this file storage remember to activate the module and the specific storage in the project settings of each desired project."
     subversion:
       existing_title: "Repository Subversion yang sudah ada"
@@ -3871,9 +3883,9 @@ id:
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
+        heading: "New phase"
       edit:
-        heading: "Edit Phase"
+        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"
@@ -4248,12 +4260,12 @@ id:
         message: "Sharing project lists with individual users is an enterprise add-on."
   working_days:
     info: >
-      Days that are not selected are skipped when scheduling work packages (and not included in the day count). These can be overridden at a work-package level.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Tanggal yang ditambahkan ke daftar di bawah ini dianggap tidak berfungsi dan dilewati saat menjadwalkan paket pekerjaan.
     change_button: "Ubah hari kerja"
     warning: >
-      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages in all projects in this instance.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Hari kerja** berubah (%{changes})._
       days:
@@ -4277,8 +4289,14 @@ id:
       code_500: "An internal error has occurred."
       code_500_outbound_request_failure: "Permintaan keluar ke sumber daya lain telah gagal dengan kode status %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "Paket pekerjaan yang Anda cari tidak dapat ditemukan atau telah dihapus."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "YYYY-MM-DD (ISO 8601 date only)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (setiap waktu ISO 8601 yang kompatibel)"

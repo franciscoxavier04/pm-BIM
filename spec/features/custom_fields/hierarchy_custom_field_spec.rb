@@ -38,16 +38,15 @@ RSpec.describe "custom fields of type hierarchy", :js do
 
   before do
     allow(EnterpriseToken).to receive(:allows_to?).and_return(true)
+    login_as admin
   end
 
   it "lets you create, update and delete a custom field of type hierarchy" do
-    login_as admin
-
     # region CustomField creation
 
     custom_field_index_page.visit!
 
-    click_on "New custom field"
+    page.find("[aria-label='New custom field']").click
     new_custom_field_page.expect_current_path
 
     hierarchy_name = "Stormtrooper Organisation"
@@ -77,7 +76,7 @@ RSpec.describe "custom fields of type hierarchy", :js do
     fill_in "Name", with: "", fill_options: { clear: :backspace }
     fill_in "Name", with: hierarchy_name
     click_on "Save"
-    expect(page).to have_css(".PageHeader-title", text: hierarchy_name)
+    expect(page).to have_heading(hierarchy_name)
 
     # endregion
 
@@ -192,5 +191,57 @@ RSpec.describe "custom fields of type hierarchy", :js do
     expect(page).to have_test_selector("op-custom-fields--hierarchy-item", count: 2)
     expect(page).to have_test_selector("op-custom-fields--hierarchy-item", text: "Imperial Navy")
     expect(page).to have_test_selector("op-custom-fields--hierarchy-item", text: "Stormtroopers\n(ST)\n1 sub-item")
+  end
+
+  context "when navigating the hierarchy" do
+    let(:service) { CustomFields::Hierarchy::HierarchicalItemService.new }
+    let(:custom_field) { create(:wp_custom_field, name: "Hogwarts", field_format: "hierarchy", hierarchy_root: nil) }
+    let!(:root) { service.generate_root(custom_field).value! }
+    let!(:ravenclaw) { service.insert_item(parent: root, label: "Ravenclaw").value! }
+    let!(:slytherin) { service.insert_item(parent: root, label: "Slytherin").value! }
+    let!(:hufflepuff) { service.insert_item(parent: root, label: "Hufflepuff").value! }
+    let!(:gryffindor) { service.insert_item(parent: root, label: "Gryffindor").value! }
+    let!(:luna) { service.insert_item(parent: ravenclaw, label: "Luna Lovegood").value! }
+    let!(:harry) { service.insert_item(parent: gryffindor, label: "Harry Potter").value! }
+    let!(:hermione) { service.insert_item(parent: gryffindor, label: "Hermione Granger").value! }
+    let(:tree_view) { Components::TreeView.new }
+
+    before do
+      custom_field.reload
+      hierarchy_page.add_custom_field_state(custom_field)
+      visit custom_field_item_path(root.custom_field_id, gryffindor)
+    end
+
+    it "can navigate and keep the tab selection (regression #63921)" do
+      # Expect items to be loaded and the tab nav to be selected correctly
+      expect(page).to have_test_selector("op-custom-fields--hierarchy-item", count: 2)
+      hierarchy_page.expect_tab "Items"
+
+      # Navigating to an item will keep the tab nav selection
+      page.find_test_selector("op-custom-fields--hierarchy-item", text: "Hermione Granger").click
+      hierarchy_page.expect_tab "Items"
+    end
+
+    it "can use the TreeView for navigation" do
+      expect(page).to have_test_selector("op-custom-fields--hierarchy-item", count: 2)
+
+      # Expect the current item to be selected
+      tree_view.should_have_active_item("Gryffindor")
+
+      # All other nodes are collapsed initially
+      tree_view.should_have_collapsed_node("Ravenclaw")
+
+      # Navigate to another item
+      tree_view.open_node "Ravenclaw"
+      tree_view.click_node "Luna Lovegood"
+
+      # Expect tree and page to update
+      tree_view.should_have_active_item("Luna Lovegood")
+      tree_view.should_have_open_node("Ravenclaw")
+      tree_view.should_have_collapsed_node("Gryffindor")
+
+      expect(page).to have_test_selector("op-custom-fields--hierarchy-item", count: 0)
+      hierarchy_page.expect_tab "Items"
+    end
   end
 end

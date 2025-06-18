@@ -149,17 +149,10 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def toggle_reaction # rubocop:disable Metrics/AbcSize
-    emoji_reaction_service =
-      if @journal.emoji_reactions.exists?(user: User.current, reaction: params[:reaction])
-        EmojiReactions::DeleteService
-         .new(user: User.current,
-              model: @journal.emoji_reactions.find_by(user: User.current, reaction: params[:reaction]))
-         .call
-      else
-        EmojiReactions::CreateService
-         .new(user: User.current)
-         .call(user: User.current, reactable: @journal, reaction: params[:reaction])
-      end
+    emoji_reaction_service = EmojiReactions::ToggleEmojiReactionService
+      .call(user: User.current,
+            reactable: @journal,
+            reaction: params[:reaction])
 
     emoji_reaction_service.on_success do
       update_via_turbo_stream(
@@ -344,7 +337,7 @@ class WorkPackages::ActivitiesTabController < ApplicationController
       journals = journals.where.not(notes: "")
     end
 
-    grouped_emoji_reactions = Journal.grouped_emoji_reactions_by_reactable(
+    grouped_emoji_reactions = EmojiReactions::GroupedQueries.grouped_emoji_reactions_by_reactable(
       reactable_id: journals.pluck(:id), reactable_type: "Journal"
     )
 
@@ -359,7 +352,8 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def generate_work_package_journals_emoji_reactions_update_streams
-    wp_journal_emoji_reactions = Journal.grouped_work_package_journals_emoji_reactions(@work_package)
+    wp_journal_emoji_reactions =
+      EmojiReactions::GroupedQueries.grouped_work_package_journals_emoji_reactions_by_reactable(@work_package)
     @work_package.journals.each do |journal|
       update_via_turbo_stream(
         component: WorkPackages::ActivitiesTab::Journals::ItemComponent::Reactions.new(
@@ -474,7 +468,8 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def grouped_emoji_reactions_for_journal
-    Journal.grouped_journal_emoji_reactions(@journal).fetch(@journal.id, {})
+    EmojiReactions::GroupedQueries
+      .grouped_emoji_reactions_by_reactable(reactable: @journal)[@journal.id]
   end
 
   def allowed_to_edit?(journal)

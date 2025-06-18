@@ -418,10 +418,6 @@ de:
         new_label: "Neue Priorität"
     status:
       button_edit: Projektstatus bearbeiten
-  project_phase:
-    working_days_count:
-      one: "Dauer: %{count} Arbeitstag"
-      other: "Dauer: %{count} Arbeitstage"
   lists:
     create:
       success: "Die geänderte Liste wurde als neue Liste gespeichert"
@@ -561,10 +557,13 @@ de:
         Alle Vorkommnisse des Platzhalter-Benutzers (z.B. als zugewiesene Person, Verantwortlicher oder andere Benutzerwerte) werden einem Konto mit dem Namen "Gelöschter Benutzer" zugewiesen. Da die Daten jedes gelöschten Kontos diesem Konto zugewiesen werden, wird es nicht möglich sein, die Daten dieses Benutzers von den Daten eines anderen gelöschten Kontos zu unterscheiden.
       irreversible: "Dieser Vorgang kann nicht rückgängig gemacht werden"
       confirmation: "Geben Sie den Namen des Platzhalter-Benutzers %{name} ein, um die Löschung zu bestätigen."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Klicken zum Zuweisen einer Farbe für diesen Prioritätswert. Diese wird für die Hervorhebung von Arbeitspaketen in Tabellen verwendet.
+        Klicken zum Zuweisen einer Farbe für diese Priorität. Diese wird für die Hervorhebung von Arbeitspaketen in Tabellen verwendet.
+    admin:
+      default:
+        caption: Wird diese Priorität als Standard gesetzt, überschreibt das den vorherhigen Standardwert.
   reactions:
     action_title: "Reagieren"
     add_reaction: "Reaktion hinzufügen"
@@ -685,6 +684,7 @@ de:
         automatic: "Automatisch"
         manual: "Manuell"
       show_relations: "Beziehungen anzeigen"
+      update_inputs_aria_live_message: "Datumsauswahl aktualisiert. %{message}"
       tabs:
         aria_label: "Datumsauswahl Reiter"
         children: "Untergeordnete Arbeitspakete"
@@ -753,7 +753,8 @@ de:
     label_add_description: "Beschreibung hinzufügen"
     lag:
       subject: "Verzögerung"
-      caption: "Die minimale Anzahl von Arbeitstagen zwischen den zwei Arbeitspaketen."
+      caption: |-
+        Die minimale Anzahl von Arbeitstagen zwischen den zwei Arbeitspaketen; kann auch negativ sein.
     relations:
       label_new_child_created: "Neues Arbeitspaket erstellt und als Kind hinzugefügt"
       label_relates_singular: "Beziehung mit"
@@ -969,6 +970,10 @@ de:
       project/phase:
         date_range: "Zeitraum"
         definition: "Definition"
+        duration: "Dauer"
+        start_date: "Anfangstermin"
+        start_date_caption: "Folgt der vorherigen Phase."
+        finish_date: "Endtermin"
       project/phase_definition:
         name: "Name"
         color: "Farbe"
@@ -1280,10 +1285,12 @@ de:
               blank: "Bitte wählen Sie ein Projekt aus."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "Startdatum muss vor dem Enddatum liegen."
+            start_date:
+              must_be_before_finish_date: "muss vor dem Enddatum liegen."
               non_continuous_dates: "kann nicht vor dem Enddatum der vorherigen Phase liegen."
-              incomplete: "ist unvollständig."
+            finish_date:
+              must_be_after_start_date: "muss nach dem Startdatum liegen."
+          cannot_be_a_non_working_day: "kann kein arbeitsfreier Tag sein."
         query:
           attributes:
             project:
@@ -1332,10 +1339,6 @@ de:
             from_id:
               error_not_found: "nicht gefunden oder nicht sichtbar."
               error_readonly: "kann für bestehende Beziehungen nicht geändert werden."
-            lag:
-              greater_than_or_equal_to:
-                zero: "darf nicht negativ sein."
-              less_than_or_equal_to: "ist zu hoch."
         repository:
           not_available: "SCM-Anbieter ist nicht verfügbar"
           not_whitelisted: "wird durch die Konfiguration nicht erlaubt."
@@ -1414,7 +1417,7 @@ de:
               cannot_be_in_another_project: "darf nicht in einem anderen Projekt sein."
               not_a_valid_parent: "ist ungültig."
             schedule_manually:
-              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
+              cannot_be_automatically_scheduled: "kann nicht auf false gesetzt werden (automatisch geplant), da es keine Vorgänger oder Kinder hat."
             start_date:
               violates_relationships: "muss mindestens auf %{soonest_start} gesetzt werden, um Beziehungen zu anderen Arbeitspaketen nicht zu verletzten."
               cannot_be_null: "kann nicht auf Null gesetzt werden, als Enddatum und Dauer bekannt sind."
@@ -1587,12 +1590,13 @@ de:
       work_package: "Arbeitspakete"
     project_phase:
       activated: "aktiviert"
-      deactivated: "deaktiviert"
       added_date: "auf %{date} festlegen"
       changed_date: "von %{from} zu %{to} geändert"
-      removed_date: "Datum gelöscht %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "deaktiviert"
+      deleted_project_phase: "Gelöschte Projektphase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} und %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "Datum gelöscht %{date}"
   #common attributes of all models
   attributes:
     active: "Aktiv"
@@ -1659,6 +1663,8 @@ de:
     priority: "Priorität"
     project: "Projekt"
     project_ids: "Projekt IDs"
+    project_phase: "Projektphase"
+    project_phase_definition: "Projektphase"
     reason: "Grund"
     responsible: "Verantwortlich"
     required: "Erforderlich"
@@ -2410,7 +2416,7 @@ de:
         unknown_storage: "Unbekannter Speicher"
   notifications:
     reasons:
-      assigned: "Beauftragter"
+      assigned: "Zugewiesen an"
       dateAlert: "Datumsalarm"
       mentioned: "Erwähnt"
       responsible: "Verantwortlich"
@@ -2592,6 +2598,8 @@ de:
   label_deleted_custom_item: "(gelöschter Eintrag)"
   label_deleted_custom_option: "(gelöschte Option)"
   label_empty_element: "(leer)"
+  label_go_back: "Eine Menüebene zurückgehen"
+  label_go_forward: "Öffne %{module} Untermenü"
   label_missing_or_hidden_custom_option: "(Fehlender Wert oder fehlende Zugriffsberechtigungen)"
   label_descending: "Absteigend"
   label_details: "Details"
@@ -2664,6 +2672,7 @@ de:
   label_gantt_chart_plural: "Gantt Diagramme"
   label_general: "Allgemein"
   label_generate_key: "Schlüssel generieren"
+  label_global_roles: "Globale Rollen"
   label_git_path: "Pfad zum .git-Verzeichnis"
   label_greater_or_equal: ">="
   label_group_by: "Gruppieren nach"
@@ -2890,6 +2899,7 @@ de:
   label_query_new: "Neuer Bericht"
   label_query_plural: "Benutzerdefinierte Berichte"
   label_read: "Lesen ..."
+  label_read_documentation: "Dokumentation lesen"
   label_register: "Neues Konto erstellen"
   label_register_with_developer: "Als Entwickler anmelden"
   label_registered_on: "Angemeldet am"
@@ -4290,12 +4300,12 @@ de:
         message: "Das Teilen von Projektlisten mit einzelnen Nutzern ist ein Enterprise Add-on"
   working_days:
     info: >
-      Tage, die nicht ausgewählt sind, werden bei der Planung von Arbeitspaketen übersprungen (und bei der Tageszählung nicht berücksichtigt). Diese können auf Arbeitspaket-Ebene überschrieben werden.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Daten, die der Liste unten hinzugefügt werden, gelten als arbeitsfrei und werden bei der Planung von Arbeitspaketen übersprungen.
     change_button: "Arbeitstage ändern"
     warning: >
-      Die Änderung der Wochentage, die als Arbeitstage oder arbeitsfreie Tage gelten, kann sich in diesem Fall auf die Start- und Endtage aller Arbeitspakete in allen Projekten auswirken.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Arbeitstage** geändert (%{changes})._
       days:
@@ -4319,8 +4329,14 @@ de:
       code_500: "Ein interner Fehler ist aufgetreten."
       code_500_outbound_request_failure: "Eine ausgehende Anfrage an eine andere Ressource ist mit dem Statuscode %{status_code} fehlgeschlagen."
       code_500_missing_enterprise_token: "Die Anfrage kann wegen ungültigem oder fehlenden Enterprise Token nicht bearbeitet werden."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "Dieser Aktivitätstyp unterstützt keine Emoji-Reaktionen."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          Sie können nur eine Erinnerung gleichzeitig für ein Arbeitspaket festlegen. Bitte löschen oder aktualisieren Sie die bestehende Erinnerung.
       not_found:
         work_package: "Das von Ihnen gesuchte Arbeitspaket konnte nicht gefunden werden oder wurde gelöscht."
+        reminder: "Die Erinnerung konnte nicht gefunden werden oder wurde gelöscht."
       expected:
         date: "YYYY-MM-DD (Datum nach ISO 8601)"
         datetime: "JJJJ-MM-TTThh:mm:ss[.lll][+hh:mm] (kompatible ISO 8601-Datum)"

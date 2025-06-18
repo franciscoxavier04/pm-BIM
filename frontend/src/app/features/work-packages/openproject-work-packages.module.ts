@@ -405,6 +405,9 @@ import {
 } from 'core-app/features/work-packages/routing/wp-split-view/wp-split-view-entry.component';
 import { OpWpDatePickerModalComponent } from 'core-app/shared/components/datepicker/wp-date-picker-modal/wp-date-picker.modal';
 import { OpenprojectEnterpriseModule } from 'core-app/features/enterprise/openproject-enterprise.module';
+import {
+  WorkPackageReminderContextMenuDirective,
+} from 'core-app/features/work-packages/components/wp-buttons/wp-reminder-button/wp-reminder-context-menu.directive';
 
 @NgModule({
   imports: [
@@ -596,6 +599,7 @@ import { OpenprojectEnterpriseModule } from 'core-app/features/enterprise/openpr
     WorkPackageSplitViewToolbarComponent,
     WorkPackageWatcherButtonComponent,
     WorkPackageReminderButtonComponent,
+    WorkPackageReminderContextMenuDirective,
     WorkPackageShareButtonComponent,
     WorkPackageSubjectComponent,
 

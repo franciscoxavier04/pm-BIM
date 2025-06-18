@@ -421,9 +421,6 @@ vi:
         new_label: "New priority"
     status:
       button_edit: Edit project status
-  project_phase:
-    working_days_count:
-      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Danh sách đã sửa đổi đã được lưu thành danh sách mới"
@@ -557,11 +554,14 @@ vi:
         Tất cả các trường hợp của người dùng giả định (ví dụ, làm người giao việc, người chịu trách nhiệm hoặc các giá trị người dùng khác) sẽ được chuyển nhượng cho một tài khoản có tên là "Người dùng đã xóa". Vì dữ liệu của mỗi tài khoản bị xóa được chuyển nhượng cho tài khoản này, nên sẽ không thể phân biệt dữ liệu mà người dùng đã tạo từ dữ liệu của một tài khoản đã xóa khác.
       irreversible: "Hành động này không thể đảo ngược"
       confirmation: "Nhập tên người dùng giả định %{name} để xác nhận việc xóa."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Nhấp để chỉ định hoặc thay đổi màu của mức ưu tiên này.
-        Có thể sử dụng để làm nổi bật các gói công việc trong bảng.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "React"
     add_reaction: "Add reaction"
@@ -684,6 +684,7 @@ vi:
         automatic: "Tự động"
         manual: "Manual"
       show_relations: "Hiển thị các mối quan hệ"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Con"
@@ -751,7 +752,9 @@ vi:
     label_add_description: "Add description"
     lag:
       subject: "Kết quả chậm"
-      caption: "The minimum number of working days to keep in between the two work packages."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "liên quan đến"
@@ -967,6 +970,10 @@ vi:
       project/phase:
         date_range: "Khoảng thời gian"
         definition: "Definition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Tên"
         color: "Màu sắc"
@@ -1278,10 +1285,12 @@ vi:
               blank: "Vui lòng chọn một dự án."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1330,10 +1339,6 @@ vi:
             from_id:
               error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
-            lag:
-              greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Nhà cung cấp SCM không có sẵn"
           not_whitelisted: "không được cấu hình cho phép."
@@ -1573,12 +1578,13 @@ vi:
       work_package: "Gói công việc"
     project_phase:
       activated: "đã kích hoạt"
-      deactivated: "đã tắt"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "đã tắt"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Đang hoạt động"
@@ -1645,6 +1651,8 @@ vi:
     priority: "Ưu tiên"
     project: "Dự án"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Lý do"
     responsible: "Trách nhiệm"
     required: "Bắt buộc"
@@ -2368,7 +2376,7 @@ vi:
         static_token_name: "Mã RSS"
         disabled_text: "Mã RSS không được kích hoạt bởi quản trị viên. Vui lòng liên hệ với quản trị viên của bạn để sử dụng tính năng này."
       storages:
-        title: "Lưu trữ tệp"
+        title: "File storages"
         text_hint: "Mã Lưu trữ Tệp kết nối phiên bản OpenProject này với một lưu trữ tệp bên ngoài."
         empty_text_hint: "Không có quyền truy cập lưu trữ nào liên kết với tài khoản của bạn."
         revoke_token: "Bạn có thực sự muốn xóa mã truy cập này không? Bạn sẽ cần phải đăng nhập lại trên %{storage}"
@@ -2559,6 +2567,8 @@ vi:
   label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(tùy chọn đã xóa)"
   label_empty_element: "(rỗng)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(giá trị thiếu hoặc không có quyền truy cập)"
   label_descending: "Giảm dần"
   label_details: "Chi tiết"
@@ -2631,6 +2641,7 @@ vi:
   label_gantt_chart_plural: "Biểu đồ Gantt"
   label_general: "Tổng quan"
   label_generate_key: "Tạo khóa"
+  label_global_roles: "Vai trò toàn cầu"
   label_git_path: "Đường dẫn đến thư mục .git"
   label_greater_or_equal: ">="
   label_group_by: "Nhóm theo"
@@ -2847,8 +2858,8 @@ vi:
   label_project_custom_field_plural: "Các thuộc tính dự án"
   label_project_settings: "Thiết lập dự án"
   label_project_attributes_settings: "Cài đặt thuộc tính dự án"
-  label_project_storage_plural: "Lưu trữ Tệp"
-  label_project_storage_project_folder: "Lưu trữ tệp: Thư mục dự án"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} dự án đang sử dụng %{used_disk_space} dung lượng đĩa"
   label_project_view_all: "Xem tất cả các dự án"
   label_project_show_details: "Hiển thị chi tiết dự án"
@@ -2857,6 +2868,7 @@ vi:
   label_query_new: "Truy vấn mới"
   label_query_plural: "Truy vấn tùy chỉnh"
   label_read: "Đọc..."
+  label_read_documentation: "Read documentation"
   label_register: "Tạo tài khoản mới"
   label_register_with_developer: "Đăng ký là nhà phát triển"
   label_registered_on: "Ngày tham gia"
@@ -3586,7 +3598,7 @@ vi:
       oauth_application_details: "Giá trị bí mật của khách hàng sẽ không còn khả dụng sau khi bạn đóng cửa sổ này. Vui lòng sao chép các giá trị này vào cài đặt tích hợp OpenProject của Nextcloud:"
       oauth_application_details_link_text: "Đi đến trang cài đặt"
       setup_documentation_details: "Nếu bạn cần trợ giúp để cấu hình một lưu trữ tệp mới, vui lòng kiểm tra tài liệu: "
-      setup_documentation_details_link_text: "Cấu hình lưu trữ tệp"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Để sử dụng lưu trữ tệp này, hãy nhớ kích hoạt mô-đun và lưu trữ cụ thể trong cài đặt dự án của từng dự án mong muốn."
     subversion:
       existing_title: "Kho Subversion hiện có"
@@ -3878,9 +3890,9 @@ vi:
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
+        heading: "New phase"
       edit:
-        heading: "Edit Phase"
+        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"
@@ -4254,12 +4266,12 @@ vi:
         message: "Chia sẻ danh sách dự án với người dùng cá nhân là một tiện ích bổ sung doanh nghiệp."
   working_days:
     info: >
-      Các ngày không được chọn sẽ bị bỏ qua khi lập kế hoạch gói công việc (và không được tính vào số ngày). Những điều này có thể bị ghi đè ở cấp gói công việc.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Các ngày được thêm vào danh sách dưới đây được coi là không làm việc và bị bỏ qua khi lập kế hoạch gói công việc.
     change_button: "Thay đổi ngày làm việc"
     warning: >
-      Thay đổi những ngày trong tuần được coi là ngày làm việc hoặc ngày không làm việc có thể ảnh hưởng đến ngày bắt đầu và kết thúc của tất cả các công việc trong tất cả các dự án trong trường hợp này.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Ngày làm việc** đã thay đổi (%{changes})._
       days:
@@ -4283,8 +4295,14 @@ vi:
       code_500: "Đã xảy ra lỗi nội bộ."
       code_500_outbound_request_failure: "Yêu cầu ra ngoài tới tài nguyên khác đã thất bại với mã trạng thái %{status_code}."
       code_500_missing_enterprise_token: "Yêu cầu không thể được xử lý do token Doanh nghiệp không hợp lệ hoặc bị thiếu."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "Gói công việc bạn tìm kiếm không thể tìm thấy hoặc đã bị xóa."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "YYYY-MM-DD (chỉ nhận ISO 8601)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (bất kỳ ngày giờ ISO 8601 nào)"

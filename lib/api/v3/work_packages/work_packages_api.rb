@@ -98,7 +98,8 @@ module API
             mount ::API::V3::WorkPackages::AvailableProjectsOnEditAPI
             mount ::API::V3::WorkPackages::AvailableRelationCandidatesAPI
             mount ::API::V3::WorkPackages::WorkPackageRelationsAPI
-            mount ::API::V3::Reminders::RemindersAPI
+            mount ::API::V3::Reminders::RemindersByWorkPackageAPI
+            mount ::API::V3::EmojiReactions::EmojiReactionsByWorkPackageCommentsAPI
           end
 
           mount ::API::V3::WorkPackages::CreateFormAPI

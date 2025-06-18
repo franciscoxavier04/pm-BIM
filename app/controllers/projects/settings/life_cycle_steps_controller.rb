@@ -40,17 +40,17 @@ class Projects::Settings::LifeCycleStepsController < Projects::SettingsControlle
   def toggle
     definition = Project::PhaseDefinition.where(id: params[:id])
 
-    upsert_steps(definition, active: params["value"])
+    set_steps_active_status(definition, active: params["value"])
   end
 
   def disable_all
-    upsert_steps(@life_cycle_definitions, active: false)
+    set_steps_active_status(@life_cycle_definitions, active: false)
 
     redirect_to action: :index
   end
 
   def enable_all
-    upsert_steps(@life_cycle_definitions, active: true)
+    set_steps_active_status(@life_cycle_definitions, active: true)
 
     redirect_to action: :index
   end
@@ -65,18 +65,9 @@ class Projects::Settings::LifeCycleStepsController < Projects::SettingsControlle
     deny_access(not_found: true) unless OpenProject::FeatureDecisions.stages_and_gates_active?
   end
 
-  def upsert_steps(definitions, active:)
-    Project::Phase.upsert_all(
-      definitions.map do |definition|
-        {
-          project_id: @project.id,
-          definition_id: definition.id,
-          active:
-        }
-      end,
-      unique_by: %i[project_id definition_id]
-    )
-
-    @project.touch_and_save_journals
+  def set_steps_active_status(definitions, active:)
+    ::ProjectPhases::ActivationService
+      .new(user: current_user, project: @project, definitions:)
+      .call(active:)
   end
 end

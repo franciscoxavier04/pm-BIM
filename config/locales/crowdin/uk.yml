@@ -417,12 +417,6 @@ uk:
         new_label: "Новий пріоритет"
     status:
       button_edit: Змінити статус проєкту
-  project_phase:
-    working_days_count:
-      one: "Тривалість: %{count} робочий день"
-      few: "Тривалість: %{count} робочі дні"
-      many: "Тривалість: %{count} робочих днів"
-      other: "Тривалість: %{count} робочого дня"
   lists:
     create:
       success: "Змінений список збережено як новий"
@@ -574,11 +568,14 @@ uk:
         Усі екземпляри прототипу користувача (наприклад, виконавець, відповідальний тощо) буде перепризначено обліковому запису з назвою «Видалений користувач». Оскільки дані кожного видаленого облікового запису перепризначаються цьому обліковому запису, відрізнити дані, створені користувачем, від даних іншого видаленого облікового запису, може бути важко.
       irreversible: "Цю дію не можна скасувати"
       confirmation: "Введіть ім’я прототипу  користувача %{name}, щоб підтвердити видалення."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Натисніть, щоб призначити або змінити колір цього пріоритету.
-        Його можна використовувати для виділення робочих пакетів у таблиці.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "Реакція"
     add_reaction: "Додати реакцію"
@@ -702,6 +699,7 @@ uk:
         automatic: "Автоматично"
         manual: "Вручну"
       show_relations: "Показати зв’язки"
+      update_inputs_aria_live_message: "Засіб вибору дати оновлено. %{message}"
       tabs:
         aria_label: "Вкладки вибору даних"
         children: "Дочірні елементи"
@@ -772,7 +770,8 @@ uk:
     label_add_description: "Додати опис"
     lag:
       subject: "Затримка"
-      caption: "Мінімальна кількість робочих днів між двома пакетами робіт."
+      caption: |-
+        Мінімальна кількість робочих днів між двома пакетами робіт. Може бути від’ємним числом.
     relations:
       label_new_child_created: "Новий пакет робіт створено й додано як дочірній"
       label_relates_singular: "зв’язано з"
@@ -988,6 +987,10 @@ uk:
       project/phase:
         date_range: "Діапазон дат"
         definition: "Визначення"
+        duration: "Тривалість"
+        start_date: "Дата початку"
+        start_date_caption: "Слідує за попереднім етапом."
+        finish_date: "Дата закінчення"
       project/phase_definition:
         name: "Назва"
         color: "Колір"
@@ -1299,10 +1302,12 @@ uk:
               blank: "Виберіть проєкт."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "дата початку має передувати даті закінчення."
+            start_date:
+              must_be_before_finish_date: "має передувати даті закінчення."
               non_continuous_dates: "не може передувати даті закінчення попереднього етапу."
-              incomplete: "неповний."
+            finish_date:
+              must_be_after_start_date: "має слідувати за датою початку."
+          cannot_be_a_non_working_day: "не може припадати на неробочий день."
         query:
           attributes:
             project:
@@ -1351,10 +1356,6 @@ uk:
             from_id:
               error_not_found: "не знайдено або приховано."
               error_readonly: "не можна змінити для наявних зв’язків."
-            lag:
-              greater_than_or_equal_to:
-                zero: "не може мати від’ємне значення."
-              less_than_or_equal_to: "має зависоке значення."
         repository:
           not_available: "Постачальник SCM недоступний"
           not_whitelisted: "не дозволяється конфігурацією."
@@ -1433,7 +1434,7 @@ uk:
               cannot_be_in_another_project: "не може бути в іншому проекті."
               not_a_valid_parent: "зазначено невірно"
             schedule_manually:
-              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
+              cannot_be_automatically_scheduled: "не може мати значення false (автоматично заплановано), оскільки не має попередників або дочірніх елементів."
             start_date:
               violates_relationships: "може бути встановлено лише для %{soonest_start} або пізнішої версії, щоб не порушувати зв'язки робочого пакету."
               cannot_be_null: "не може мати нульове значення, оскільки задано дату початку й тривалість."
@@ -1630,12 +1631,13 @@ uk:
       work_package: "Пакети робіт"
     project_phase:
       activated: "активовано"
-      deactivated: "деактивовано"
       added_date: "визначено як %{date}"
       changed_date: "змінено з %{from} на %{to}"
-      removed_date: "видалено %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "деактивовано"
+      deleted_project_phase: "Видалений етап проєкту"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} і %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "видалено %{date}"
   #common attributes of all models
   attributes:
     active: "Активний"
@@ -1702,6 +1704,8 @@ uk:
     priority: "Пріоритет"
     project: "Проєкт"
     project_ids: "ID проєктів"
+    project_phase: "Етап проєкту"
+    project_phase_definition: "Етап проєкту"
     reason: "Причина"
     responsible: "Відповідальний"
     required: "Обов'язкове поле"
@@ -2128,7 +2132,7 @@ uk:
       work_package_sharing:
         description: "Діліться пакетами робіт із користувачами, які не належать до учасників проєкту."
       project_list_sharing:
-        description: "Share project lists with individual users."
+        description: "Діліться списками проєктів з окремими користувачами."
       define_custom_style:
         title: "Користувацький колір теми й логотип"
         more_info: "Примітка: вибраний логотип буде загальнодоступний."
@@ -2517,7 +2521,7 @@ uk:
         responsible: "Ви стали відповідальними за %{work_package}"
         watched: "Ви переглядаєте %{work_package}"
     query:
-      invalid_filter: "Invalid notification filter"
+      invalid_filter: "Недійсний фільтр сповіщень"
   label_accessibility: "Розробникам також потрібно оплачувати свої рахунки. З доступністю"
   label_account: "Обліковий запис"
   label_active: "Активні"
@@ -2673,6 +2677,8 @@ uk:
   label_deleted_custom_item: "(видалений елемент)"
   label_deleted_custom_option: "(параметр видалення)"
   label_empty_element: "(пусто)"
+  label_go_back: "Повернутися на попередній рівень меню"
+  label_go_forward: "Відкрити підменю %{module}"
   label_missing_or_hidden_custom_option: "(відсутнє значення або бракує дозволів для доступу)"
   label_descending: "За спаданням"
   label_details: "Детальніше"
@@ -2745,6 +2751,7 @@ uk:
   label_gantt_chart_plural: "Діаграми Ґанта"
   label_general: "Загальні"
   label_generate_key: "Згенерувати ключ"
+  label_global_roles: "Глобальні ролі"
   label_git_path: "Шлях до каталогу .git"
   label_greater_or_equal: ">="
   label_group_by: "Групувати за"
@@ -2971,6 +2978,7 @@ uk:
   label_query_new: "Новий запит"
   label_query_plural: "Спеціальні запити"
   label_read: "Читання..."
+  label_read_documentation: "Прочитати документацію"
   label_register: "Створити новий акаунт"
   label_register_with_developer: "Зареєструйтеся як розробник"
   label_registered_on: "Зареєстровано на"
@@ -3996,9 +4004,9 @@ uk:
       phase_gates: "Контрольні точки етапів"
       new:
         description: "Зміни цього етапу проєкту відображатимуться в усіх проєктах із цим етапом."
-        heading: "Створення етапу"
+        heading: "New phase"
       edit:
-        heading: "Редагування етапу"
+        heading: "Edit phase"
       both_gate: "Початкова й кінцева контрольні точки"
       no_gate: "Немає контрольної точки"
       start_gate: "Початкова контрольна точка"
@@ -4375,12 +4383,12 @@ uk:
         message: "Надавати спільний доступ до списків проєктів окремим користувачам можна за допомогою доповнення версії Enterprise."
   working_days:
     info: >
-      Під час планування пакетів робіт невибрані дні пропускаються й не включаються в кількість днів. Це налаштування можна змінити на рівні пакета робіт.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Під час планування пакетів робіт дати, додані в список нижче, вважаються неробочим днями й пропускаються.
     change_button: "Змінити робочі дні"
     warning: >
-      Змінення днів тижня, які вважаються робочими або неробочими, може вплинути на дати початку й закінчення всіх пакетів робіт в усіх проєктах цього екземпляра.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Робочі дні** змінено (%{changes})._
       days:
@@ -4404,8 +4412,14 @@ uk:
       code_500: "Сталася внутрішня помилка."
       code_500_outbound_request_failure: "Вихідний запит до іншого ресурсу завершився помилкою з кодом стану: %{status_code}."
       code_500_missing_enterprise_token: "Цей запит не можна обробити через недійсний або відсутній маркер версії Enterprise."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "Дія такого типу не підтримує реакцію за допомогою емодзі."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          Можна одночасно встановити лише одне нагадування для пакета робіт. Видаліть або оновіть наявне нагадування.
       not_found:
         work_package: "Пакет робіт, який ви шукаєте, не можна знайти або його видалено."
+        reminder: "Нагадування, яке ви шукаєте, не вдалося знайти. Можливо, його видалено."
       expected:
         date: "YYYY-MM-DD (ISO 8601 date only)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (будь-який сумісний формат ISO 8601 дати й часу)"

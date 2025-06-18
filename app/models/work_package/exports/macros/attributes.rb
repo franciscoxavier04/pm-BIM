@@ -63,19 +63,18 @@ module WorkPackage::Exports
       end
 
       def self.process_match(match, _matched_string, context)
-        context => { user:, work_package: }
         type = match[2].downcase
-        model_s = match[1]
+        model_s = match[1].downcase
         id = match[4] || match[3]
         attribute = match[6] || match[5]
-        resolve_match(type, model_s, id, attribute, work_package, user)
+        resolve_match(type, model_s, id, attribute, context)
       end
 
-      def self.resolve_match(type, model_s, id, attribute, work_package, user)
-        if model_s == "workPackage"
-          resolve_work_package_match(id || work_package.id, type, attribute, user)
+      def self.resolve_match(type, model_s, id, attribute, context)
+        if model_s == "workpackage"
+          resolve_work_package_match(id || context[:work_package]&.id, type, attribute, context[:user])
         elsif model_s == "project"
-          resolve_project_match(id || work_package.project.id, type, attribute, user)
+          resolve_project_match(id || context[:project]&.id, type, attribute, context[:user])
         else
           msg_macro_error I18n.t("export.macro.model_not_found", model: model_s)
         end

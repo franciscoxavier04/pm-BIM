@@ -421,10 +421,6 @@
         new_label: "Ny prioritet"
     status:
       button_edit: Edit project status
-  project_phase:
-    working_days_count:
-      one: "Duration: %{count} working day"
-      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Den endrede listen er lagret som en ny liste"
@@ -564,11 +560,14 @@
         Alle forekomster av plassholderbrukeren (f.eks. som utførende, ansvarlig eller andre brukerverdier) blir tilordnet på nytt til en konto kalt "Slettet bruker". Siden dataene for hver slettede konto blir tilordnet denne kontoen vil det ikke være mulig å skille dataene brukeren har opprettet fra data for en annen slettet konto.
       irreversible: "Du kan ikke angre denne handlingen"
       confirmation: "Skriv inn plassholderbrukernavnet %{name} for å bekrefte slettingen."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Klikk for å tildele eller endre fargen for denne prioriteten.
-        Det kan brukes til å fremheve arbeidspakker i tabellen.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "React"
     add_reaction: "Add reaction"
@@ -691,6 +690,7 @@
         automatic: "Automatisk"
         manual: "Manual"
       show_relations: "Vis relasjoner"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Underordnede"
@@ -759,7 +759,9 @@
     label_add_description: "Add description"
     lag:
       subject: "Forsinkelse"
-      caption: "The minimum number of working days to keep in between the two work packages."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "relatert til"
@@ -975,6 +977,10 @@
       project/phase:
         date_range: "Datointervall"
         definition: "Definisjon"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Navn"
         color: "Farge"
@@ -1286,10 +1292,12 @@
               blank: "Velg et prosjekt."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1338,10 +1346,6 @@
             from_id:
               error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
-            lag:
-              greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM leverandør er ikke tilgjengelig"
           not_whitelisted: "er ikke tillatt av konfigurasjonen."
@@ -1593,12 +1597,13 @@
       work_package: "Arbeidspakker"
     project_phase:
       activated: "aktivert"
-      deactivated: "deaktivert"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "deaktivert"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktiv"
@@ -1665,6 +1670,8 @@
     priority: "Prioritet"
     project: "Prosjekt"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Grunn"
     responsible: "Ansvarlig"
     required: "Obligatorisk"
@@ -2407,7 +2414,7 @@
         static_token_name: "RSS nøkkel"
         disabled_text: "RSS-nøkler er ikke aktivert av administrator. Kontakt systemansvarlig for å bruke denne funksjonen."
       storages:
-        title: "Fillagringer"
+        title: "File storages"
         text_hint: "Fillagrings-nøkler kobler til dette OpenProjectets instansen med et eksternt fillager."
         empty_text_hint: "Det er ingen lagringstilgang knyttet til kontoen din."
         revoke_token: "Vil du virkelig fjerne denne nøkkelen? Du må logge inn igjen på %{storage}"
@@ -2598,6 +2605,8 @@
   label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(slettet alternativ)"
   label_empty_element: "(tom)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(manglende verdi eller manglende rettigheter)"
   label_descending: "Synkende"
   label_details: "Detaljer"
@@ -2670,6 +2679,7 @@
   label_gantt_chart_plural: "Gantt-diagrammer"
   label_general: "Generell"
   label_generate_key: "Genererer en nøkkel"
+  label_global_roles: "Globale roller"
   label_git_path: "Sti til .git-mappe"
   label_greater_or_equal: ">="
   label_group_by: "Grupper etter"
@@ -2886,8 +2896,8 @@
   label_project_custom_field_plural: "Prosjektegenskaper"
   label_project_settings: "Prosjektinnstillinger"
   label_project_attributes_settings: "Innstillinger for prosjektegenskaper"
-  label_project_storage_plural: "Fillagringer"
-  label_project_storage_project_folder: "Fillagringer: Prosjektmapper"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} prosjekter som bruker %{used_disk_space} diskplass"
   label_project_view_all: "Vis alle prosjekter"
   label_project_show_details: "Vis prosjektdetaljer"
@@ -2896,6 +2906,7 @@
   label_query_new: "Ny spørring"
   label_query_plural: "Egendefinerte spørringer"
   label_read: "Les..."
+  label_read_documentation: "Read documentation"
   label_register: "Opprett ny konto"
   label_register_with_developer: "Registrer som utvikler"
   label_registered_on: "Registrert den"
@@ -3627,7 +3638,7 @@
       oauth_application_details: "Den hemmelige verdien for klienten blir ikke tilgjengelig igjen etter at du har lukket dette vinduet. Kopier disse verdiene inn i Nextcloud OpenProject integrasjonsinnstillinger:"
       oauth_application_details_link_text: "Gå til innstillingssiden"
       setup_documentation_details: "Hvis du trenger hjelp til å konfigurere en ny fillagring, bør du kontrollere dokumentasjonen: "
-      setup_documentation_details_link_text: "Fillagring satt opp"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "For å bruke denne fillagringen, husk å aktivere modulen og spesifikk lagring i prosjektinnstillingene for hvert ønsket prosjekt."
     subversion:
       existing_title: "Eksisterende subversion kodelager"
@@ -3919,9 +3930,9 @@
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
+        heading: "New phase"
       edit:
-        heading: "Edit Phase"
+        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"
@@ -4297,12 +4308,12 @@
         message: "Deling av prosjektlister med enkeltbrukere er et enterprise-tillegg."
   working_days:
     info: >
-      Hoppet over dager som ikke er valgt ved planlegging av arbeidspakker (og ikke inkludert i antall dager). Disse kan overstyres på arbeidspakkenivå.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Datoer som er lagt til i listen nedenfor regnes som arbeidsfrie og hoppet over når arbeidspakker planlegges.
     change_button: "Endre virkedager"
     warning: >
-      Endring av hvilke ukedager som regnes som arbeidsdager eller arbeidsfrie dager kan påvirke start- og sluttdager for alle arbeidspakker i alle prosjekter i denne forekomsten.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Arbeidsdager** endret (%{changes})._
       days:
@@ -4326,8 +4337,14 @@
       code_500: "En intern feil har oppstått."
       code_500_outbound_request_failure: "En utgående forespørsel til en annen ressurs har mislyktes med statuskode %{status_code}."
       code_500_missing_enterprise_token: "Forespørselen kan ikke håndteres på grunn av ugyldig eller manglende Enterprise nøkkel."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "Arbeidspakken du leter etter kan ikke bli funnet eller den har blitt slettet."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "YYYY-MM-DD (kun dato (ISO 8601)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (enhver kompatibel ISO 8601 datetime)"

@@ -20,6 +20,12 @@ if [ -d "/var/db/openproject" ]; then
 	exit 2
 fi
 
+# Ensure PGBIN is set according to PGVERSION env var
+if [ -n "$PGVERSION" ]; then
+	export PGBIN="/usr/lib/postgresql/$PGVERSION/bin"
+	export PATH="$PGBIN:$PATH"
+fi
+
 if [ "$(id -u)" = '0' ]; then
 	# reexport PGVERSION and PGBIN env variables according to postgres version of existing cluster (if any)
 	# this must happen in the entrypoint

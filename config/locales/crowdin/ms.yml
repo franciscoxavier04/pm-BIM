@@ -420,9 +420,6 @@ ms:
         new_label: "New priority"
     status:
       button_edit: Edit project status
-  project_phase:
-    working_days_count:
-      other: "Tempoh: %{count} hari bekerja"
   lists:
     create:
       success: "Senarai yang diubah suai telah disimpan sebagai senarai baharu."
@@ -556,11 +553,14 @@ ms:
         Semua kejadian pengguna placeholder (cth., sebagai penerima tugasan, bertanggungjawab atau nilai pengguna lain) akan ditugaskan semula kepada akaun yang dipanggil "Pengguna yang dipadam". Oleh kerana data setiap akaun yang dipadam ditugaskan semula ke akaun ini, tidak mungkin akan dapat untuk membezakan data yang dicipta oleh pengguna, daripada data akaun lain yang dipadam.
       irreversible: "Tindakan ini tidak dapat dipulihkan"
       confirmation: "Masukkan nama pengguna placeholder %{name} untuk mengesahkan pembuangan."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Klik untuk menugaskan atau menukar warna untuk keutamaan ini.
-        Ia boleh digunakan untuk menyoroti pakej kerja dalam jadual ini.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "Reaksi"
     add_reaction: "Tambah reaksi"
@@ -682,6 +682,7 @@ ms:
         automatic: "Automatik"
         manual: "Manual"
       show_relations: "Paparkan hubungan"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Anak-anak"
@@ -749,7 +750,9 @@ ms:
     label_add_description: "Tambah penerangan"
     lag:
       subject: "Lag"
-      caption: "The minimum number of working days to keep in between the two work packages."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "berkaitan dengan"
@@ -965,6 +968,10 @@ ms:
       project/phase:
         date_range: "Date range"
         definition: "Definition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Nama"
         color: "Warna"
@@ -1276,10 +1283,12 @@ ms:
               blank: "Sila pilih projek."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "tidak lengkap."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1328,10 +1337,6 @@ ms:
             from_id:
               error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
-            lag:
-              greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Vendor SCM tidak tersedia"
           not_whitelisted: "tidak dibenarkan oleh konfigurasi."
@@ -1571,12 +1576,13 @@ ms:
       work_package: "Pakej kerja"
     project_phase:
       activated: "diaktifkan"
-      deactivated: "dinyahaktifkan"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "dinyahaktifkan"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktif"
@@ -1643,6 +1649,8 @@ ms:
     priority: "Keutamaan"
     project: "Projek"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Sebab"
     responsible: "Bertanggungjawab"
     required: "Diperlukan"
@@ -2366,7 +2374,7 @@ ms:
         static_token_name: "Token RSS"
         disabled_text: "Token RSS tidak diaktifkan oleh pentadbir. Sila hubungi pentadbir anda untuk menggunakan fitur ini."
       storages:
-        title: "Storan Fail"
+        title: "File storages"
         text_hint: "Token Storan Fail menyambungkan contoh OpenProject dengan Storan Fail luaran."
         empty_text_hint: "Tiada akses storan terpaut pada akaun anda."
         revoke_token: "Adakah anda ingin membuang token ini? Anda perlu log masuk semula di %{storage}"
@@ -2557,6 +2565,8 @@ ms:
   label_deleted_custom_item: "(item dipadamkan)"
   label_deleted_custom_option: "(pilihan yang telah dipadam)"
   label_empty_element: "(kosong)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(nilai yang hilang atau kurang kebenaran untuk mengakses)"
   label_descending: "Menurun"
   label_details: "Butiran-butiran"
@@ -2629,6 +2639,7 @@ ms:
   label_gantt_chart_plural: "Carta Gantt"
   label_general: "Umum"
   label_generate_key: "Jana kunci"
+  label_global_roles: "Peranan global"
   label_git_path: "Laluan ke direktori .git"
   label_greater_or_equal: ">="
   label_group_by: "Kumpulkan mengikut"
@@ -2845,8 +2856,8 @@ ms:
   label_project_custom_field_plural: "Atribut projek"
   label_project_settings: "Tetapan projek"
   label_project_attributes_settings: "Tetapan atribut projek"
-  label_project_storage_plural: "Storan Fail"
-  label_project_storage_project_folder: "Storan Fail: Folder projek"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} projek menggunakan %{used_disk_space} ruang cakera"
   label_project_view_all: "Lihat semua projek"
   label_project_show_details: "Paparkan butiran projek"
@@ -2855,6 +2866,7 @@ ms:
   label_query_new: "Pertanyaan baharu"
   label_query_plural: "Pertanyaan tersuai"
   label_read: "Baca..."
+  label_read_documentation: "Read documentation"
   label_register: "Cipta akaun baru"
   label_register_with_developer: "Daftar sebagai pembangun"
   label_registered_on: "Didaftar pada"
@@ -3583,7 +3595,7 @@ ms:
       oauth_application_details: "Nilai rahsia pelanggan tidak akan dapat untuk diakses lagi setelah anda menutup tetingkap ini. Sila salin nilai-nilai ini ke tetapan Integrasi Nextcloud OpenProject:"
       oauth_application_details_link_text: "Pergi ke halaman tetapan"
       setup_documentation_details: "Jika anda memerlukan bantuan mengkonfigurasikan storan fail baharu, sila lihat dokumentasi berikut:"
-      setup_documentation_details_link_text: "Penyediaan Storan Fail"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Untuk gunakan storan fail ini, ingat untuk mengaktifkan modul dan storan khusus di tetapan projek setiap projek yang dikehendaki."
     subversion:
       existing_title: "Repositori Subversion sedia ada"
@@ -3875,9 +3887,9 @@ ms:
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
+        heading: "New phase"
       edit:
-        heading: "Edit Phase"
+        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"
@@ -4252,12 +4264,12 @@ ms:
         message: "Berkongsi senarai projek dengan pengguna individu ialah alat tambah perusahaan."
   working_days:
     info: >
-      Hari yang tidak dipilih akan dilangkau semasa penjadualan pakej kerja (dan tidak termasuk dalam kiraan hari). Ini boleh digantikan di peringkat pakej-kerja.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Tarikh yang ditambah ke senarai dibawah diterima sebagai tidak berfungsi dan dilangkau semasa penjadualan pakej kerja.
     change_button: "Tukar hari bekerja"
     warning: >
-      Mengubah hari dalam seminggu yang dianggap hari bekerja atau hari tidak bekerja akan mempengaruhi hari mula dan selesai semua pakej kerja dalam semua projek dalam kejadian ini.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Hari bekerja** telah diubah (%{changes})._
       days:
@@ -4281,8 +4293,14 @@ ms:
       code_500: "Sebuah ralat dalaman telah berlaku."
       code_500_outbound_request_failure: "Satu permintaan outbound ke sumber lain telah gagal dengan kod status %{status_code}. "
       code_500_missing_enterprise_token: "Permintaan tidak boleh dikendalikan kerana token Enterprise yang tidak sah atau hilang."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "Pakej kerja yang anda cari tidak dapat ditemui atau telah dipadamkan."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "TTTT-BB-HH (ISO 8601 tarikh sahaja)"
         datetime: "TTTT-BB-HHTjj:mm:ss[.lll][+jj:mm] (mana-mana tarikh masa ISO 8601 yang sesuai)"

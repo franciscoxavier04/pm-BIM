@@ -419,10 +419,6 @@ es:
         new_label: "Nueva prioridad"
     status:
       button_edit: Editar estado del proyecto
-  project_phase:
-    working_days_count:
-      one: "Duración: %{count} día laborable"
-      other: "Duración: %{count} días laborables"
   lists:
     create:
       success: "La lista modificada se ha guardado como una nueva lista"
@@ -562,11 +558,14 @@ es:
         Todas las repeticiones del usuario de marcador de posición (por ejemplo, como asignado, responsable u otros valores de usuario) se reasignarán a una cuenta denominada «Usuario eliminado». Como los datos de todas las cuentas eliminadas se reasignarán a esta cuenta, no podrán distinguirse los datos del usuario de los datos creados con cualquier otra cuenta eliminada.
       irreversible: "Esta acción no se puede deshacer"
       confirmation: "Escriba el nombre de usuario de marcador de posición %{name} para confirmar la eliminación."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Haga clic para asignar o cambiar el color de esta prioridad.
-        Puede usarse para resaltar paquetes de trabajo en la tabla.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "Reaccionar"
     add_reaction: "Añadir reacción"
@@ -636,7 +635,7 @@ es:
           label_with_context: "%{attribute_context}: %{attribute_label}"
           context:
             work_package: "Paquete de trabajo"
-            parent: "Padre"
+            parent: "Principal"
             project: "Proyecto"
         pattern:
           label: "Patrón del asunto"
@@ -690,6 +689,7 @@ es:
         automatic: "Automático"
         manual: "Manual"
       show_relations: "Mostrar relaciones"
+      update_inputs_aria_live_message: "Selector de fecha actualizado. %{message}"
       tabs:
         aria_label: "Pestañas del selector de fechas"
         children: "Elementos secundarios"
@@ -758,7 +758,8 @@ es:
     label_add_description: "Añadir descripción"
     lag:
       subject: "Retraso"
-      caption: "El número mínimo de días laborables que debe haber entre los dos paquetes de trabajo."
+      caption: |-
+        El número mínimo de días laborables que debe haber entre los dos paquetes de trabajo. También puede ser un valor negativo.
     relations:
       label_new_child_created: "Nuevo paquete de trabajo creado y añadido como secundario"
       label_relates_singular: "relacionado con"
@@ -779,7 +780,7 @@ es:
       new_child_description: "Crea un paquete de trabajo relacionado como un subelemento del paquete de trabajo actual (principal)"
       child: "Elemento secundario"
       child_description: "Hace que el paquete de trabajo relacionado sea un subelemento del paquete de trabajo actual (principal)"
-      parent: "Padre"
+      parent: "Principal"
       parent_description: "Hace que el paquete de trabajo relacionado sea el paquete de trabajo principal del paquete de trabajo actual (secundario)"
       label_closest: "Más cercano"
       label_blocks_singular: "bloquea"
@@ -974,6 +975,10 @@ es:
       project/phase:
         date_range: "Intervalo de fechas"
         definition: "Definición"
+        duration: "Duración"
+        start_date: "Fecha de inicio"
+        start_date_caption: "Sigue a la fase anterior."
+        finish_date: "Fecha de finalización"
       project/phase_definition:
         name: "Nombre"
         color: "Color"
@@ -1285,10 +1290,12 @@ es:
               blank: "Por favor, selecciona un proyecto."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "la fecha de inicio debe ser anterior a la fecha de finalización."
+            start_date:
+              must_be_before_finish_date: "debe ser anterior a la fecha de finalización."
               non_continuous_dates: "no puede ser anterior a la fecha de finalización de la fase anterior."
-              incomplete: "está incompleto."
+            finish_date:
+              must_be_after_start_date: "debe ser posterior a la fecha de inicio."
+          cannot_be_a_non_working_day: "no puede ser un día no laborable."
         query:
           attributes:
             project:
@@ -1337,10 +1344,6 @@ es:
             from_id:
               error_not_found: "no se encuentra o no es visible."
               error_readonly: "no se puede cambiar para las relaciones existentes."
-            lag:
-              greater_than_or_equal_to:
-                zero: "no puede ser negativo."
-              less_than_or_equal_to: "es demasiado alto."
         repository:
           not_available: "El proveedor SMC no está disponible"
           not_whitelisted: "no está permitido por la configuración."
@@ -1419,7 +1422,7 @@ es:
               cannot_be_in_another_project: "no puede estar en otro proyecto."
               not_a_valid_parent: "no es válido."
             schedule_manually:
-              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
+              cannot_be_automatically_scheduled: "no puede establecerse en falso (programado automáticamente) ya que no tiene predecesores ni elementos secundarios."
             start_date:
               violates_relationships: "sólo se puede establecer a %{soonest_start} o posterior para que no se violen las relaciones de los paquetes de trabajo."
               cannot_be_null: "no puede establecerse como nulo, ya que la fecha final y la duración son conocidas."
@@ -1592,12 +1595,13 @@ es:
       work_package: "Paquetes de trabajo"
     project_phase:
       activated: "activado"
-      deactivated: "desactivado"
       added_date: "establecido en %{date}"
       changed_date: "cambiado de %{from} a %{to}"
-      removed_date: "fecha de eliminación %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "desactivado"
+      deleted_project_phase: "Fase de proyecto eliminada"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} y %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "fecha de eliminación %{date}"
   #common attributes of all models
   attributes:
     active: "Activo"
@@ -1664,6 +1668,8 @@ es:
     priority: "Prioridad"
     project: "Proyecto"
     project_ids: "IDs de proyectos"
+    project_phase: "Fase del proyecto"
+    project_phase_definition: "Fase del proyecto"
     reason: "Motivo"
     responsible: "Responsable"
     required: "Obligatorio"
@@ -2011,7 +2017,7 @@ es:
       project_list_sharing: Compartición de la lista de proyectos
       readonly_work_packages: Paquetes de trabajo de solo lectura
       sso_auth_providers: Inicio de sesión único
-      team_planner_view: Vista del planificador de equipos
+      team_planner_view: Vista del planificador de equipo
       two_factor_authentication: Autenticación 2FA
       virus_scanning: Análisis de antivirus
       work_package_query_relation_columns: Columnas de relación de consulta de paquetes de trabajo
@@ -2019,7 +2025,7 @@ es:
       work_package_subject_generation: Generación de temas del paquete de trabajo
     upsell:
       plans_title: "Planes Enterprise"
-      title: "extensión Enterprise"
+      title: "Extensión Enterprise"
       plan_title: "Extensión Enterprise de %{plan}"
       plan_name: "Plan Enterprise %{plan}"
       plan_text_html: "Disponible a partir del %{plan_name}."
@@ -2052,10 +2058,10 @@ es:
       work_package_sharing:
         description: "Compartir paquetes de trabajo con usuarios que no son miembros del proyecto."
       project_list_sharing:
-        description: "Share project lists with individual users."
+        description: "Comparta listas de proyectos con usuarios individuales."
       define_custom_style:
         title: "Tema de color y logotipo personalizados"
-        more_info: "Nota: el logotipo utilizado será de acceso público."
+        more_info: "Nota: El logotipo utilizado será de acceso público."
         description: Personalice su instalación de OpenProject con su logotipo y colores.
       custom_actions:
         title: "Acciones personalizadas"
@@ -2302,7 +2308,7 @@ es:
     blocks:
       community: "OpenProject Community"
       upsell:
-        title: "Actualizar a Enterprise"
+        title: "Actualizar a la edición Enterprise"
     links:
       upgrade_enterprise_edition: "Actualizar a Enterprise"
       postgres_migration: "Migrando su instalación a PostgreSQL"
@@ -2406,7 +2412,7 @@ es:
         static_token_name: "Token RSS"
         disabled_text: "Los tokens RSS no están habilitados por el administrador. Póngase en contacto con su administrador para utilizar esta función."
       storages:
-        title: "Almacenamiento de archivos"
+        title: "Almacenamientos de archivos"
         text_hint: "Los tokens de Almacenamiento de archivos conectan esta instancia de OpenProject con un Almacenamiento de archivos externo."
         empty_text_hint: "No hay acceso de almacenamiento vinculado a su cuenta."
         revoke_token: "¿Realmente desea eliminar este token? Tendrá que volver a iniciar sesión en %{storage}"
@@ -2441,7 +2447,7 @@ es:
         responsible: "Ahora es responsable de %{work_package}"
         watched: "Estás viendo a %{work_package}"
     query:
-      invalid_filter: "Invalid notification filter"
+      invalid_filter: "Filtro de notificación no válido"
   label_accessibility: "Accesibilidad"
   label_account: "Cuenta"
   label_active: "Activo"
@@ -2597,6 +2603,8 @@ es:
   label_deleted_custom_item: "(elemento eliminado)"
   label_deleted_custom_option: "(opción eliminada)"
   label_empty_element: "(vacío)"
+  label_go_back: "Retroceder un nivel de menú"
+  label_go_forward: "Abrir el submenú %{module}"
   label_missing_or_hidden_custom_option: "(faltan valores o permisos de acceso)"
   label_descending: "Descendente"
   label_details: "Detalles"
@@ -2669,6 +2677,7 @@ es:
   label_gantt_chart_plural: "Diagramas de Gantt"
   label_general: "General"
   label_generate_key: "Generar una contraseña"
+  label_global_roles: "Roles globales"
   label_git_path: "Ruta al directorio .git"
   label_greater_or_equal: ">="
   label_group_by: "Agrupar por"
@@ -2885,8 +2894,8 @@ es:
   label_project_custom_field_plural: "Atributos del proyecto"
   label_project_settings: "Configuración del proyecto"
   label_project_attributes_settings: "Ajustes de los atributos del proyecto"
-  label_project_storage_plural: "Almacenes de archivos"
-  label_project_storage_project_folder: "Almacenes de archivos: Carpetas de proyectos"
+  label_project_storage_plural: "Almacenamientos de archivos"
+  label_project_storage_project_folder: "Almacenamientos de archivos: Carpetas del proyecto"
   label_projects_disk_usage_information: "%{count} proyectos utilizando %{used_disk_space} espacio de disco"
   label_project_view_all: "Ver todos los proyectos"
   label_project_show_details: "Mostrar los detalles del proyecto"
@@ -2895,6 +2904,7 @@ es:
   label_query_new: "Nueva consulta"
   label_query_plural: "Consultas personalizadas"
   label_read: "Leer..."
+  label_read_documentation: "Leer documentación"
   label_register: "Crear una nueva cuenta"
   label_register_with_developer: "Registrarse como desarrollador"
   label_registered_on: "Registrado en"
@@ -3917,9 +3927,9 @@ es:
       phase_gates: "Puertas de fase"
       new:
         description: "Los cambios en esta fase del proyecto se reflejarán en todos los proyectos en los que esté activada."
-        heading: "Nueva fase"
+        heading: "New phase"
       edit:
-        heading: "Editar fase"
+        heading: "Edit phase"
       both_gate: "Puerta inicial y final"
       no_gate: "Sin puerta"
       start_gate: "Puerta de inicio"
@@ -4294,12 +4304,12 @@ es:
         message: "Compartir listas de proyectos con usuarios individuales es una extensión Enterprise."
   working_days:
     info: >
-      Los días no seleccionados se omiten al programar los paquetes de trabajo (y no se incluyen en el recuento de días). Esto puede anularse a nivel de paquete de trabajo.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Las fechas añadidas a la lista siguiente se consideran no laborables y se omiten al programar los paquetes de trabajo.
     change_button: "Cambiar los días laborables"
     warning: >
-      Cambiar qué días de la semana se consideran laborables y cuáles no, puede afectar a las fechas de inicio y fin de todos los paquetes de trabajo en todos los proyectos de esta instancia.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Días laborales** cambiados (%{changes})._
       days:
@@ -4323,8 +4333,14 @@ es:
       code_500: "Ha ocurrido un error interno."
       code_500_outbound_request_failure: "Una solicitud de salida a otro recurso ha fallado con el código de estado %{status_code}."
       code_500_missing_enterprise_token: "La solicitud no puede ser manejada debido a un token Enterprise inválido o inexistente."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "Este tipo de actividad no admite reacciones emoji."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          Solo puede establecer un recordatorio a la vez en un paquete de trabajo. Elimine o actualice el recordatorio existente.
       not_found:
         work_package: "No se encuentra el paquete de trabajo que busca, o bien se ha eliminado."
+        reminder: "No se encuentra el recordatorio que busca, o bien se ha eliminado."
       expected:
         date: "AAAA-MM-DD (ISO 8601 fecha solamente)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (cualquier valor de fecha/hora compatible con el formato ISO 8601)"

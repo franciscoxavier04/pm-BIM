@@ -419,9 +419,6 @@ ja:
         new_label: "New priority"
     status:
       button_edit: Edit project status
-  project_phase:
-    working_days_count:
-      other: "期間： %{count} 営業日"
   lists:
     create:
       success: "変更されたリストは新しいリストとして保存されました"
@@ -555,11 +552,14 @@ ja:
         プレースホルダー ユーザのすべての発生(担当者、担当者、その他のユーザ値など)は、「削除されたユーザー」というアカウントに再割り当てられます。 削除されたすべてのアカウントのデータがこのアカウントに再割り当てられるため、ユーザーが作成したデータと別の削除されたアカウントのデータを区別することはできません。
       irreversible: "この操作は元に戻せません"
       confirmation: "削除を確認するため、プレースホルダーユーザー名 %{name} を入力してください。"
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        この優先順位の色を割り当てたり変更する場合にクリックします。
-        テーブル内のワークパッケージを強調表示するために使用できます。
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "React"
     add_reaction: "Add reaction"
@@ -682,6 +682,7 @@ ja:
         automatic: "自動"
         manual: "Manual"
       show_relations: "関連するタスクを表示"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "子"
@@ -749,7 +750,9 @@ ja:
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      caption: "2つの作業パッケージの間に空ける最低作業日数。"
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "関連している"
@@ -965,6 +968,10 @@ ja:
       project/phase:
         date_range: "期間"
         definition: "Definition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "名称"
         color: "色"
@@ -1204,7 +1211,7 @@ ja:
         custom_fields_project:
           attributes:
             project_ids:
-              blank: "Please select a project."
+              blank: "プロジェクトを選択してください。"
         custom_actions:
           only_one_allowed: "(%{name}) 1 つの値のみ可能です。"
           empty: "(%{name}) 値を空にすることはできません。"
@@ -1276,10 +1283,12 @@ ja:
               blank: "プロジェクトを選択してください。"
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "開始日は終了日より前でなければなりません。"
-              non_continuous_dates: "前のフェーズの終了日よりも早くすることはできません。"
-              incomplete: "is incomplete."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
+              non_continuous_dates: "can't be earlier than the previous phase's end date."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1328,10 +1337,6 @@ ja:
             from_id:
               error_not_found: "見つからないか、非表示になっています。"
               error_readonly: "既存のリレーションを変更することはできません。"
-            lag:
-              greater_than_or_equal_to:
-                zero: "を否定することはできない。"
-              less_than_or_equal_to: "が大きすぎます。"
         repository:
           not_available: "SCMベンダーは使用できません。"
           not_whitelisted: "は設定で許可されていません。"
@@ -1571,12 +1576,13 @@ ja:
       work_package: "ワークパッケージ"
     project_phase:
       activated: "有効化"
-      deactivated: "無効化"
       added_date: "set to %{date}"
       changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
-      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      deactivated: "無効化"
+      deleted_project_phase: "Deleted project phase"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message}, and %{finish_gate_message}"
+      phase_and_one_gate: "%{phase_message}. %{gate_message}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "アクティブ"
@@ -1643,6 +1649,8 @@ ja:
     priority: "優先度"
     project: "プロジェクト"
     project_ids: "Project IDs"
+    project_phase: "Project phase"
+    project_phase_definition: "Project phase"
     reason: "Reason"
     responsible: "責任者"
     required: "必須"
@@ -2033,7 +2041,7 @@ ja:
         title: Internal comments
         description: "Internal comments allow an internal team to communicate amongst themselves privately. These are only visible to certain project roles and will never be visible publicly."
       internal_comments_inline:
-        title: "Write internal comments only a small group can see"
+        title: "内部コメントはグループ内のメンバーのみ閲覧できます"
         description: " "
   enumeration_activities: "タイムトラッキングアクティビティ"
   enumeration_work_package_priorities: "ワークパッケージの優先度"
@@ -2366,7 +2374,7 @@ ja:
         static_token_name: "RSS token"
         disabled_text: "RSS tokens are not enabled by the administrator. Please contact your administrator to use this feature."
       storages:
-        title: "File Storages"
+        title: "File storages"
         text_hint: "File Storage tokens connect this OpenProject instance with an external File Storage."
         empty_text_hint: "There is no storage access linked to your account."
         revoke_token: "Do you really want to remove this token? You will need to login again on %{storage}"
@@ -2557,6 +2565,8 @@ ja:
   label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(削除されたオプション)"
   label_empty_element: "(空)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
   label_descending: "降順"
   label_details: "詳細"
@@ -2593,7 +2603,7 @@ ja:
   label_enterprise_edition: "エンタープライズ版"
   label_enterprise_support: "Enterprise support"
   label_environment: "環境"
-  label_estimates_and_progress: "Estimates and progress"
+  label_estimates_and_progress: "見積もりと進捗"
   label_equals: "等しい"
   label_equals_with_descendants: "is any with descendants"
   label_everywhere: "どこにでも"
@@ -2629,6 +2639,7 @@ ja:
   label_gantt_chart_plural: "ガントチャート"
   label_general: "概要"
   label_generate_key: "キーを生成する"
+  label_global_roles: "Global roles"
   label_git_path: ".gitディレクトリへのパス"
   label_greater_or_equal: ">="
   label_group_by: "グループ化"
@@ -2845,8 +2856,8 @@ ja:
   label_project_custom_field_plural: "Project attributes"
   label_project_settings: "プロジェクトの設定"
   label_project_attributes_settings: "Project attributes settings"
-  label_project_storage_plural: "File Storages"
-  label_project_storage_project_folder: "File Storages: Project folders"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} projects using %{used_disk_space} disk space"
   label_project_view_all: "全プロジェクトを表示"
   label_project_show_details: "プロジェクトの詳細を表示"
@@ -2855,6 +2866,7 @@ ja:
   label_query_new: "新しいクエリ"
   label_query_plural: "カスタムクエリ"
   label_read: "続いて読む..."
+  label_read_documentation: "Read documentation"
   label_register: "登録する"
   label_register_with_developer: "開発者として登録する"
   label_registered_on: "登録日"
@@ -2967,7 +2979,7 @@ ja:
   label_used_by_types: "タイプで使用"
   label_used_in_projects: "プロジェクトで使用"
   label_user: "ユーザ"
-  label_user_and_permission: "Users and permissions"
+  label_user_and_permission: "ユーザーと権限"
   label_user_named: "ユーザー名 %{name}"
   label_user_activity: "%{value}の活動"
   label_user_anonymous: "匿名ユーザ"
@@ -2981,7 +2993,7 @@ ja:
   label_user_plural: "ユーザ"
   label_user_search: "ユーザーを検索:"
   label_user_settings: "ユーザー設定"
-  label_users_settings: "Users settings"
+  label_users_settings: "ユーザー設定"
   label_version_new: "新しいバージョン"
   label_version_edit: "バージョンを編集"
   label_version_plural: "バージョン"
@@ -3335,23 +3347,23 @@ ja:
     text_getting_started_description: "Get a quick overview of project management and team collaboration with OpenProject. You can restart this video from the help menu."
     welcome: "Welcome to %{app_title}"
     select_language: "言語を選択してください"
-  permission_add_work_package_comments: "Add comments"
+  permission_add_work_package_comments: "コメントの追加"
   permission_add_work_packages: "ワークパッケージの追加"
   permission_add_messages: "メッセージの投稿"
   permission_add_project: "プロジェクトの作成"
   permission_add_work_package_attachments: "添付ファイルを追加"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
-  permission_add_internal_comments: "Write internal comments"
+  permission_add_internal_comments: "内部コメントの追加"
   permission_archive_project: "プロジェクトをアーカイブ"
-  permission_create_user: "Create users"
-  permission_manage_user: "Edit users"
+  permission_create_user: "ユーザーの作成"
+  permission_manage_user: "ユーザーの編集"
   permission_manage_placeholder_user: "プレースホルダーユーザーの作成、編集、削除"
   permission_add_subprojects: "子プロジェクトの追加"
   permission_add_work_package_watchers: "ウォッチャーの追加"
   permission_assign_versions: "バージョンの割り当て"
   permission_browse_repository: "リポジトリに読み取り専用のアクセス (参照およびチェックアウト)"
   permission_change_wiki_parent_page: "親Wikiページの変更"
-  permission_change_work_package_status: "Change work package status"
+  permission_change_work_package_status: "ワークパッケージのステータス変更"
   permission_change_work_package_status_explanation: "Allows changing status without Edit work packages permission"
   permission_comment_news: "ニュースへのコメント"
   permission_commit_access: "リポジトリに読み取り/書き込みアクセス (コミット)"
@@ -3366,18 +3378,18 @@ ja:
   permission_delete_timelines: "タイムラインの削除"
   permission_delete_wiki_pages: "Wikiページの削除"
   permission_delete_wiki_pages_attachments: "添付ファイルの削除"
-  permission_edit_work_package_comments: "Moderate comments"
+  permission_edit_work_package_comments: "コメントの承認"
   permission_edit_work_package_comments_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "ワークパッケージの編集"
   permission_edit_messages: "メッセージの編集"
-  permission_edit_own_internal_comments: "Edit own internal comments"
-  permission_edit_own_work_package_comments: "Edit own comments"
+  permission_edit_own_internal_comments: "自分がした内部コメントの編集"
+  permission_edit_own_work_package_comments: "自分がしたコメントの編集"
   permission_edit_own_messages: "自分の投稿したメッセージの編集"
   permission_edit_own_time_entries: "自分が記入した作業時間の編集"
-  permission_edit_others_internal_comments: "Moderate internal comments"
+  permission_edit_others_internal_comments: "内部コメントの承認"
   permission_edit_others_internal_comments_explanation: "Caution: Users with this permission are able to edit other users' internal comments."
   permission_edit_project: "プロジェクトの編集"
-  permission_edit_project_attributes: "Edit project attributes"
+  permission_edit_project_attributes: "プロジェクト属性の編集"
   permission_edit_project_phases: "Edit project phases"
   permission_edit_reportings: "レポートの編集"
   permission_edit_time_entries: "他のユーザーの作業時間を編集"
@@ -3406,8 +3418,8 @@ ja:
   permission_rename_wiki_pages: "Wikiページ名の変更"
   permission_save_queries: "ビューを保存"
   permission_search_project: "Search project"
-  permission_select_custom_fields: "Select custom fields"
-  permission_select_project_custom_fields: "Select project attributes"
+  permission_select_custom_fields: "カスタムフィールドの選択"
+  permission_select_project_custom_fields: "プロジェクト属性の選択"
   permission_select_project_phases: "Select project phases"
   permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the life cycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "プロジェクトでモジュールの選択"
@@ -3416,7 +3428,7 @@ ja:
   permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "View projects"
   permission_view_changesets: "OpenProject にリポジトリのリビジョンを表示"
-  permission_view_internal_comments: "View internal comments"
+  permission_view_internal_comments: "内部コメントの閲覧"
   permission_view_commit_author_statistics: "コミット作成者の統計情報の閲覧"
   permission_view_dashboards: "View dashboards"
   permission_view_work_package_watchers: "ウォッチャー一覧の閲覧"
@@ -3428,18 +3440,18 @@ ja:
   permission_view_shared_work_packages: "View work package shares"
   permission_view_time_entries: "作業時間記録の閲覧"
   permission_view_timelines: "タイムラインの閲覧"
-  permission_view_user_email: "View users' mail addresses"
+  permission_view_user_email: "ユーザーのメールアドレス閲覧"
   permission_view_wiki_edits: "Wiki履歴の閲覧"
   permission_view_wiki_pages: "Wikiの閲覧"
-  permission_work_package_assigned: "Become assignee/responsible"
+  permission_work_package_assigned: "担当者/責任者になる"
   permission_work_package_assigned_explanation: "それぞれのプロジェクトで、ワークパッケージはこの役割をもつユーザーおよびグループに割り当てることができます。"
   permission_view_project_activity: "View project activity"
-  permission_view_project_attributes: "View project attributes"
+  permission_view_project_attributes: "プロジェクト属性の閲覧"
   permission_view_project_phases: "View project phases"
   permission_save_bcf_queries: "Save BCF queries"
   permission_manage_public_bcf_queries: "Manage public BCF queries"
   permission_edit_attribute_help_texts: "Edit attribute help texts"
-  permission_manage_public_project_queries: "Manage public project lists"
+  permission_manage_public_project_queries: "公開プロジェクトリストの管理"
   permission_view_project_query: "View project query"
   permission_edit_project_query: "Edit project query"
   placeholders:
@@ -3584,7 +3596,7 @@ ja:
       oauth_application_details: "The client secret value will not be accessible again after you close this window. Please copy these values into the Nextcloud OpenProject Integration settings:"
       oauth_application_details_link_text: "Go to settings page"
       setup_documentation_details: "If you need help configuring a new file storage please check the documentation: "
-      setup_documentation_details_link_text: "File Storages setup"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "このファイルストレージを使用するには、各プロジェクトのプロジェクト設定でモジュールと特定のストレージを有効にする必要があります。"
     subversion:
       existing_title: "既存の Subversion リポジトリ"
@@ -3667,7 +3679,7 @@ ja:
   setting_commit_ref_keywords: "参照用キーワード"
   setting_consent_time: "同意時間"
   setting_consent_info: "同意文"
-  setting_consent_required: "同意が必要です。"
+  setting_consent_required: "同意を求める"
   setting_consent_decline_mail: "連絡先メールアドレスに同意します。"
   setting_cross_project_work_package_relations: "他プロジェクトとの間にワークパッケージの関連付けを許可する"
   setting_first_week_of_year: "年の最初の週に含む"
@@ -3783,10 +3795,10 @@ ja:
   setting_total_percent_complete_mode_simple_average_caption_html: >-
     <i>Work</i> is ignored and the <i>total % Complete</i> will be a simple average of <i>% Complete</i> values of work packages in the hierarchy.
   setting_accessibility_mode_for_anonymous: "匿名ユーザ向けにアクセシビリティモードを有効"
-  setting_user_format: "Users name format"
+  setting_user_format: "ユーザー名の形式"
   setting_user_default_timezone: "ユーザーのデフォルトのタイム ゾーン"
-  setting_users_deletable_by_admins: "管理者によるユーザアカウントが削除可能"
-  setting_users_deletable_by_self: "ユーザによる自分のアカウント削除を許可"
+  setting_users_deletable_by_admins: "管理者によるユーザアカウント削除を許可"
+  setting_users_deletable_by_self: "自分のアカウント削除を許可"
   setting_welcome_text: "ようこそブロックのテキスト"
   setting_welcome_title: "ようこそブロックのタイトル"
   setting_welcome_on_homescreen: "ホーム画面にようこそブロックを表示"
@@ -3854,7 +3866,7 @@ ja:
       heading: "Project attributes"
       label_new_attribute: "Project attribute"
       label_new_section: "セクション"
-      label_edit_section: "Edit title"
+      label_edit_section: "タイトルの編集"
       label_section_actions: "Section actions"
       heading_description: "These project attributes appear in the overview page of each project. You can add new attributes, group them into sections and re-order them as you please. These attributes can be enabled or disabled but not re-ordered at a project level."
       label_project_custom_field_actions: "Project attribute actions"
@@ -3876,9 +3888,9 @@ ja:
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
+        heading: "New phase"
       edit:
-        heading: "Edit Phase"
+        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"
@@ -3892,7 +3904,7 @@ ja:
     session: "セッション"
     user:
       default_preferences: "デフォルト設定"
-      display_format: "Display format"
+      display_format: "表示形式"
       deletion: "削除"
     working_days:
       section_work_week: "作業週"
@@ -4094,8 +4106,8 @@ ja:
     error_status_change_failed: "次のエラーによりユーザのステータスの変更が失敗しました：%{errors}"
     invite: メールでユーザを招待
     invited: 招待済み
-    lock: "永続ロックする"
-    locked: "永続ロック"
+    lock: "ロックする"
+    locked: "ロック済み"
     no_login: "このユーザは、パスワードを使用してログイン認証します。パスワードによってのログインは無効なので、ユーザがログインできません。"
     password_change_unsupported: パスワードの変更はサポートされていません。
     registered: "登録済み"
@@ -4252,12 +4264,12 @@ ja:
         message: "個人ユーザーとのプロジェクトリストの共有は、エンタープライズアドオンです。"
   working_days:
     info: >
-      Days that are not selected are skipped when scheduling work packages (and not included in the day count). These can be overridden at a work-package level.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Dates added to the list below are considered non-working and skipped when scheduling work packages.
     change_button: "営業日を変更する"
     warning: >
-      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages in all projects in this instance.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Working days** changed (%{changes})._
       days:
@@ -4281,8 +4293,14 @@ ja:
       code_500: "内部エラーが発生しました。"
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "Enterprise トークンが無効または見つからないため、リクエストを処理できません。"
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "YYYY-MM-DD (ISO 8601 日付のみ)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (any compatible ISO 8601 datetime)"
