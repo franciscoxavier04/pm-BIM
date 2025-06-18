@@ -50,6 +50,8 @@ import isPersistedResource from 'core-app/features/hal/helpers/is-persisted-reso
 import { UIRouterGlobals } from '@uirouter/core';
 import { ConfigurationService } from 'core-app/core/config/configuration.service';
 import { firstValueFrom } from 'rxjs';
+import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
+import { CurrentProjectService } from 'core-app/core/current-project/current-project.service';
 
 export interface DynamicComponentDefinition {
   component:ComponentType<any>;
@@ -80,6 +82,10 @@ export class PartitionedQuerySpacePageComponent extends WorkPackagesViewBase imp
   @InjectField() titleService:OpTitleService;
 
   @InjectField() queryParamListener:QueryParamListenerService;
+
+  @InjectField() pathHelperService:PathHelperService;
+
+  @InjectField() currentProjectService:CurrentProjectService;
 
   @InjectField() opModalService:OpModalService;
 
@@ -129,6 +135,8 @@ export class PartitionedQuerySpacePageComponent extends WorkPackagesViewBase imp
   filterContainerDefinition:DynamicComponentDefinition = {
     component: WorkPackageFilterContainerComponent,
   };
+
+  breadcrumbItems() {}
 
   ngOnInit():void {
     super.ngOnInit();

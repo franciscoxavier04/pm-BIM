@@ -1,5 +1,8 @@
 <div class="work-packages-partitioned-query-space--container"
      [ngClass]="currentPartition">
+  <op-breadcrumbs
+    [items]="breadcrumbItems()"
+  ></op-breadcrumbs>
   <div class="toolbar-container -editable">
     <div class="toolbar">
       <op-back-button *ngIf="backButtonCallback"
