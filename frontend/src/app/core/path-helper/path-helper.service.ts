@@ -156,6 +156,18 @@ export class PathHelperService {
     return `${this.projectPath(projectId)}/calendars`;
   }
 
+  public projectTeamplannerPath(projectId:string) {
+    return `${this.projectPath(projectId)}/team_planners`;
+  }
+
+  public projectGanttChartsPath(projectId:string) {
+    return `${this.projectPath(projectId)}/gantt`;
+  }
+
+  public projectBCFPath(projectId:string) {
+    return `${this.projectPath(projectId)}/bcf`;
+  }
+
   public projectMembershipsPath(projectId:string) {
     return `${this.projectPath(projectId)}/members`;
   }
