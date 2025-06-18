@@ -31,9 +31,9 @@
 require "spec_helper"
 
 RSpec.describe "Projects life cycle settings", :js, with_flag: { stages_and_gates: true } do
-  shared_let(:initiating_stage) { create(:project_phase_definition, name: "Initiating") }
+  shared_let(:initiating_stage) { create(:project_phase_definition, name: "Initiating", position: 1) }
   shared_let(:executing_stage) do
-    create(:project_phase_definition, name: "Executing", start_gate: true, start_gate_name: "Ready to Execute")
+    create(:project_phase_definition, name: "Executing", start_gate: true, start_gate_name: "Ready to Execute", position: 2)
   end
 
   let(:definitions_page) { Pages::Admin::Settings::ProjectLifeCycleStepDefinitions.new }
