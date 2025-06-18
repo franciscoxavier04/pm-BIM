@@ -31,7 +31,7 @@
 require "spec_helper"
 require_relative "shared_context"
 
-RSpec.describe "Show project life cycles on project overview page", :js, with_flag: { stages_and_gates: true } do
+RSpec.describe "Show project life cycles on project overview page", :js do
   include_context "with seeded projects and phases"
 
   let(:overview_page) { Pages::Projects::Show.new(project) }
@@ -41,13 +41,6 @@ RSpec.describe "Show project life cycles on project overview page", :js, with_fl
   it "does show the sidebar" do
     overview_page.visit_page
     overview_page.expect_visible_sidebar
-  end
-
-  context "when phases are disabled", with_flag: { stages_and_gates: false } do
-    it "does not show the sidebar" do
-      overview_page.visit_page
-      overview_page.expect_no_visible_sidebar
-    end
   end
 
   context "when all phases are disabled for this project" do
