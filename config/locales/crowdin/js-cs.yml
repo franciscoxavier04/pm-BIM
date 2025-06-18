@@ -207,8 +207,6 @@ cs:
         text_expired: "vypršela platnost"
         trial:
           confirmation: "Potvrzení e-mailové adresy"
-          confirmation_info: >
-            Poslali jsme Vám e-mail od %{date} do %{email}. Zkontrolujte prosím svou doručenou poštu a klikněte na odkaz pro potvrzení poskytnutý pro zahájení čtrnáctidenního zkušebního období.
           form:
             general_consent: >
               Souhlasím s <a target="_blank" href="%{link_terms}">podmínkami služby</a> a <a target="_blank" href="%{link_privacy}">zásadami ochrany osobních údajů</a>.

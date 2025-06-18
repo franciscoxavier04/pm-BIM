@@ -207,8 +207,6 @@ nl:
         text_expired: "verlopen"
         trial:
           confirmation: "Bevestiging van het e-mailadres"
-          confirmation_info: >
-            We hebben je een e-mail gestuurd op %{date} naar %{email}. Controleer uw inbox en klik op de bevestigingslink om uw proefperiode van 14 dagen te starten.
           form:
             general_consent: >
               Ik ga akkoord met de <a target="_blank" href="%{link_terms}">gebruiksvoorwaarden</a> en het <a target="_blank" href="%{link_privacy}">privacybeleid</a>.

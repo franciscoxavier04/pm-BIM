@@ -79,7 +79,14 @@ zh-TW:
         main-menu-bg-color: "左側選單的背景顏色"
       theme_warning: 改變佈景主題會覆蓋你的自訂樣式，你的變更將會遺失。你確定要繼續嗎？
     enterprise:
-      upgrade_to_ee: "升級到企業版"
+      delete_dialog:
+        title: "刪除企業版令牌"
+        heading: "刪除此企業版令牌？"
+        confirmation: "您確定要刪除這個企業版支援令牌嗎？"
+      create_dialog:
+        title: "新增企業版令牌"
+        type_token_text: "輸入企業版令牌密碼"
+        token_placeholder: "在此貼上您的企業版所需的令牌"
       add_token: "上傳企業版所需令牌(Token)"
       delete_token_modal:
         text: "您確定要刪除當前使用的企業版令牌(Token)嗎？"
@@ -809,6 +816,7 @@ zh-TW:
       required_description: "將此工作套件標示為相關工作的需求"
       label_parent_singular: "上層"
       label_parent_plural: "上層"
+      label_other_relations: "其他關聯"
       ghost_relation_title: "相關的工作套件"
       ghost_relation_description: "由於權限的緣故，您無法看到。"
   label_invitation: 邀請
@@ -843,6 +851,10 @@ zh-TW:
     auth_source_login: 請登入 <em>%{login}</em> 來啟用您的帳號。
     omniauth_login: 請登入來啟用您的帳號。
   actionview_instancetag_blank_option: "請選擇"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "依賴套件"
   activerecord:
     attributes:
       announcements:
@@ -858,6 +870,8 @@ zh-TW:
       attribute_help_text:
         attribute_name: "属性"
         help_text: "說明文字"
+      auth_provider:
+        scim_clients: "SCIM 用戶端"
       capability:
         context: "內容"
       changeset:
@@ -897,11 +911,13 @@ zh-TW:
       emoji_reaction:
         reactable: "反應於"
       enterprise_token:
-        domain: "網域"
         starts_at: "生效自"
         subscriber: "訂閱者"
+        plan: "計畫"
         encoded_token: "Enterprise support token"
         active_user_count_restriction: "最大活動使用者數"
+      enterprise_trial:
+        company: "公司"
       grids/grid:
         page: "頁面"
         row_count: "列數"
@@ -1229,6 +1245,10 @@ zh-TW:
               forbidden_uri: "被伺服器禁止。"
             scopes:
               not_match_configured: "與可用的範圍不吻合。"
+        enterprise_trial:
+          already_used: "已被用來建立試用帳號。"
+          failed_to_create: "無法建立試用帳號（%{status}）"
+          general_consent: "請接受條款與條件。"
         enterprise_token:
           unreadable: "無法讀取，確定是一個 support token?"
         grids/grid:
@@ -1504,6 +1524,8 @@ zh-TW:
       custom_action: "自訂動作"
       custom_field: "客製欄位"
       "doorkeeper/application": "Oauth 應用程式"
+      enterprise_token:
+        other: "企業版令牌"
       forum: "討論區"
       global_role: "全域角色"
       group: "群組"
@@ -1522,6 +1544,8 @@ zh-TW:
       reminder: "提醒"
       role:
         other: "角色"
+      scim_client:
+        other: "SCIM 用戶端"
       status: "工作套件狀態"
       token/api:
         other: 存取令牌(Token)
@@ -1613,6 +1637,7 @@ zh-TW:
     derived_start_date: "派生的開始日期"
     direction: "方向"
     display_sums: "顯示加總"
+    domain: "網域"
     due_date: "完成日期"
     estimated_hours: "工時"
     estimated_time: "工時"
@@ -1978,17 +2003,19 @@ zh-TW:
       readonly_work_packages: 唯讀工作套件
       sso_auth_providers: 單一登入
       team_planner_view: 團隊規劃檢視
-      two_factor_authentication: 雙重身份驗證
       virus_scanning: 掃描病毒
       work_package_query_relation_columns: 工作套件查詢關聯列
       work_package_sharing: 與外部使用者共用工作套件
       work_package_subject_generation: 工作套件標題產生
     upsell:
+      buy_now_button: "立刻購買"
       plans_title: "企業方案"
       title: "企業版附加元件"
       plan_title: "企業版 %{plan} 外掛"
       plan_name: "%{plan} 企業版計畫"
       plan_text_html: "需 %{plan_name} 方案以上才可使用。"
+      already_have_token: >
+        已經有令牌了嗎？請使用下方按鈕新增，以升級至預約的 Enterprise 方案。
       hide_banner: "隱藏此廣告"
       homescreen_description: >
         企業方案擴展您目前使用的 OpenProject 社群版，包含附加元件、額外功能和專業支援，讓各規模組織都能共同達成卓越目標。
@@ -2041,6 +2068,26 @@ zh-TW:
       internal_comments_inline:
         title: "只讓少數人能看到的內部備註"
         description: " "
+    trial:
+      not_found: "您已請求試用令牌，但該請求已無效。請再試一次。"
+      wait_for_confirmation: "我們已傳送一封電子郵件給您，請確認您的地址以取得試用令牌。"
+      already_retrieved: >
+        您的試用 Enterprise 令牌已經被領取。請檢查您的電子郵件，令牌已隨信附上。如需新的，請聯絡我們的支援團隊。
+      successfully_saved: "您的試用 Enterprise 令牌已成功領取。"
+      token_sent: "已請求試用令牌"
+      request_again: "重新申請"
+      resend_action: "重新傳送確認電子郵件"
+      welcome_title: "功能快速總覽"
+      welcome_description: "快速瞭解 OpenProject Enterprise 版的專案管理與團隊協作功能。"
+      confirmation_info: >
+        我們已於 %{date} 寄送一封電子郵件至 %{email}，內含開始 OpenProject Enterprise 免費試用所需的所有資訊。請查看您的收件匣，並點擊信中的確認連結以開始為期 14 天的免費試用。
+      confirmation_subline: >
+        請查看您的收件匣並依照指示操作，以開始為期 14 天的免費試用。
+      domain_caption: 此令牌將僅對您目前設定的主機名稱有效。
+      receive_newsletter_html: >
+        我想訂閱 OpenProject 的<a target="_blank" href="https://www.openproject.org/newsletter/">電子報</a>。
+      consent_html: >
+        我同意<a target="_blank" href="https://www.openproject.org/terms-of-service/">服務條款</a>及<a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">隱私政策</a>。
   enumeration_activities: "時間追蹤活動"
   enumeration_work_package_priorities: "工作套件優先等級"
   enumeration_reported_project_statuses: "報告的專案狀態"
@@ -2065,6 +2112,7 @@ zh-TW:
   error_color_could_not_be_saved: "無法儲存顏色"
   error_cookie_missing: "OpenProject的Cookie遺失了。請確保瀏覽器的Cookie已經啟用，否則本應用程式將無法正常做用。"
   error_custom_option_not_found: "選項不存在。"
+  error_enterprise_plan_needed: "您需要 %{plan} 企業方案才能執行此操作。"
   error_enterprise_activation_user_limit: "無法啟動您的帳戶 (已達到使用者限制)。請與管理員聯繫以獲取存取權限。"
   error_enterprise_token_invalid_domain: "企業版未啟用。您的企業版令牌(Token)的域名（%{actual}）與系統的主機名（%{expected}）不匹配。"
   error_failed_to_delete_entry: "刪除此項目失敗。"
@@ -2548,6 +2596,7 @@ zh-TW:
   label_dashboard: "儀表板"
   label_database_version: "PostgreSQL 版本"
   label_date: "日期"
+  label_dates: "日期"
   label_date_and_time: "日期和時間"
   label_date_format: "日期格式"
   label_date_from: "寄件者"
@@ -2626,7 +2675,7 @@ zh-TW:
   label_filter_add: "新增條件"
   label_filter_by: "篩選條件："
   label_filter_any_name_attribute: "名稱屬性"
-  label_filter_plural: "篩選條件"
+  label_filter_plural: "篩選器"
   label_filters_toggle: "顯示/隱藏篩選條件"
   label_float: "浮點數"
   label_folder: "資料夾"
@@ -2640,7 +2689,7 @@ zh-TW:
   label_global_roles: "全域角色"
   label_git_path: ".git 目錄的路徑"
   label_greater_or_equal: ">="
-  label_group_by: "分類"
+  label_group_by: "分組依據"
   label_group_new: "新增群組"
   label_group: "群組"
   label_group_named: "群組名稱 %{name}"
@@ -2652,7 +2701,7 @@ zh-TW:
   label_hierarchy: "階層"
   label_hierarchy_leaf: "頁面結構頁"
   label_home: "Home"
-  label_subject_or_id: "名稱或 id"
+  label_subject_or_id: "主旨或 id"
   label_calendar_subscriptions: "訂閱行事曆"
   label_identifier: "識別碼"
   label_in: "在"
@@ -2698,7 +2747,7 @@ zh-TW:
   label_latest_revision_plural: "最新版本"
   label_ldap_authentication: "LDAP 認證"
   label_learn_more: "了解更多"
-  label_less_or_equal: "之後"
+  label_less_or_equal: "<="
   label_less_than_ago: "幾天內"
   label_link_url: "連結(URL)"
   label_list: "清單"
@@ -3305,6 +3354,8 @@ zh-TW:
   notice_successful_delete: "刪除成功"
   notice_successful_cancel: "取消成功"
   notice_successful_update: "更新成功"
+  notice_unsuccessful_create: "建立失敗。"
+  notice_unsuccessful_create_with_reason: "建立失敗：%{reason}"
   notice_unsuccessful_update: "更新失敗。"
   notice_unsuccessful_update_with_reason: "更新失敗： %{reason}"
   notice_successful_update_custom_fields_added_to_project: |

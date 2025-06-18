@@ -207,8 +207,6 @@ ms:
         text_expired: "tamat tempoh"
         trial:
           confirmation: "Pengesahan alamat e-mel "
-          confirmation_info: >
-            Kami telah menghantar e-mel kepada anda pada %{date} di %{email}. Sila semak peti masuk anda dan klik pautan pengesahan yang disediakan untuk memulakan percubaan 14 hari anda.
           form:
             general_consent: >
               Saya bersetuju dengan <a target="_blank" href="%{link_terms}">syarat-syarat perkhidmatan</a> dan <a target="_blank" href="%{link_privacy}">polisi privasi</a>.

@@ -362,7 +362,7 @@ ru:
   permission_delete_meetings: "Удалить совещания"
   permission_view_meetings: "Просмотреть совещания"
   permission_manage_agendas: "Управление повестками"
-  permission_manage_agendas_explanation: "Позволяет управлять пунктами повестки для Динамического совещания."
+  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
   permission_manage_outcomes: "Управление результатами"
   permission_send_meeting_invites_and_outcomes: "Рассылать приглашения на собрания и результаты их проведения участникам"
   project_module_meetings: "Совещания"

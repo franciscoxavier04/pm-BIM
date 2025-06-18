@@ -37,7 +37,7 @@ RSpec.describe "custom fields of type hierarchy", :js do
   let(:hierarchy_page) { Pages::CustomFields::HierarchyPage.new }
 
   before do
-    allow(EnterpriseToken).to receive(:allows_to?).and_return(true)
+    allow(EnterpriseToken).to receive_messages(allows_to?: true, trialling?: false)
     login_as admin
   end
 

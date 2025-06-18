@@ -10,8 +10,7 @@
           "meetings--form",
           "show-when-value-selected",
           @meeting.is_a?(RecurringMeeting) ? "recurring-meetings--form" : nil
-        ].compact.join(" "),
-        "application-target": "dynamic"
+        ].compact.join(" ")
       },
       html: {
         id: "meeting-form"

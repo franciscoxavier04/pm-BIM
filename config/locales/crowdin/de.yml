@@ -79,15 +79,22 @@ de:
         main-menu-bg-color: "Hintergrundfarbe des Menüs in der linken Seitenleiste."
       theme_warning: Das Ändern des Themes wird Ihr benutzerdefiniertes Design überschreiben. Alle Änderungen werden dann verloren gehen. Sind Sie sicher, dass Sie fortfahren möchten?
     enterprise:
-      upgrade_to_ee: "Auf Enterprise-Edition upgraden"
-      add_token: "Enterprise-Edition Support Token hochladen"
+      delete_dialog:
+        title: "Enterprise-Token löschen"
+        heading: "Diesen Enterprise-Token löschen?"
+        confirmation: "Sind Sie sicher, dass Sie diesen Enterprise-Edition Support-Token löschen möchten?"
+      create_dialog:
+        title: "Enterprise-Token hinzufügen"
+        type_token_text: "Enterprise-Token Text"
+        token_placeholder: "Enterprise-Token Text hier einfügen"
+      add_token: "Enterprise edition Support Token hochladen"
       delete_token_modal:
-        text: "Sind Sie sicher, dass Sie das aktuelle Enterprise Edition-Token entfernen möchten?"
+        text: "Sind Sie sicher, dass Sie das aktuelle Enterprise edition token entfernen möchten?"
         title: "Token löschen"
       replace_token: "Aktuellen Enterprise edition Support Token ersetzen"
       order: "Enterprise on-premises bestellen"
-      paste: "Enterprise-Edition Support Token hier einfügen"
-      required_for_feature: "Dieses Add-on ist nur mit einem aktiven Enterprise-Edition Support-Token verfügbar."
+      paste: "Enterprise edition Support Token hier einfügen"
+      required_for_feature: "Dieses Add-on ist nur mit einem aktiven Enterprise edition Support-Token verfügbar."
       enterprise_link: "Klicken Sie hier für weitere Informationen."
       start_trial: "Kostenlose Testversion starten"
       book_now: "Jetzt buchen"
@@ -773,7 +780,7 @@ de:
       label_child_plural: "Untergeordnete Arbeitspakete"
       new_child: "Neues Kind"
       new_child_description: "Erstellt ein zugehöriges Arbeitspaket als Unterelement des aktuellen (übergeordneten) Arbeitspakets"
-      child: "Kind"
+      child: "Unteraufgabe"
       child_description: "Macht das zugehörige Arbeitspaket zu einem Unterelement des aktuellen (übergeordneten) Arbeitspakets"
       parent: "Übergeordnetes Arbeitspaket"
       parent_description: "Wandelt das verknüpfte in ein übergeordnetes Arbeitspaket dieses Arbeitspakets um"
@@ -813,6 +820,7 @@ de:
       required_description: "Markiert dieses Arbeitspaket als Voraussetzung für das verknüpfte Arbeitspaket"
       label_parent_singular: "Übergeordnete Arbeitspakete"
       label_parent_plural: "Übergeordnetes Arbeitspaket"
+      label_other_relations: "Andere Beziehungen"
       ghost_relation_title: "Zugehöriges Arbeitspaket"
       ghost_relation_description: "Dies ist für Sie aufgrund von Berechtigungen nicht sichtbar."
   label_invitation: Einladung
@@ -847,6 +855,10 @@ de:
     auth_source_login: Bitte melden Sie sich als <em>%{login}</em> an um Ihr Konto zu aktivieren.
     omniauth_login: Bitte loggen Sie sich ein um Ihr Konto zu aktivieren.
   actionview_instancetag_blank_option: "Bitte auswählen"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Abhängigkeiten"
   activerecord:
     attributes:
       announcements:
@@ -862,6 +874,8 @@ de:
       attribute_help_text:
         attribute_name: "Attribut"
         help_text: "Hilfe-Text"
+      auth_provider:
+        scim_clients: "SCIM-Clients"
       capability:
         context: "Kontext"
       changeset:
@@ -901,11 +915,13 @@ de:
       emoji_reaction:
         reactable: "Reagiert am"
       enterprise_token:
-        domain: "Domain"
         starts_at: "Aktiv seit"
         subscriber: "Abonnent"
+        plan: "Plan"
         encoded_token: "Enterprise edition Support Token"
         active_user_count_restriction: "Maximale aktive Nutzer"
+      enterprise_trial:
+        company: "Unternehmen"
       grids/grid:
         page: "Seite"
         row_count: "Anzahl der Zeilen"
@@ -1233,6 +1249,10 @@ de:
               forbidden_uri: "ist vom Server nicht erlaubt."
             scopes:
               not_match_configured: "stimmt nicht mit verfügbaren Geltungsbereichen überein."
+        enterprise_trial:
+          already_used: "wurde bereits verwendet, um eine Testversion zu erstellen."
+          failed_to_create: "Testversion konnte nicht erstellt werden (%{status})"
+          general_consent: "Bitte akzeptieren Sie die Nutzungs- und Vertragsbedingungen."
         enterprise_token:
           unreadable: "kann nicht gelesen werden. Ist dies ein Enterprise edition Support Token?"
         grids/grid:
@@ -1510,6 +1530,9 @@ de:
       custom_action: "Benutzerdefinierte Aktion"
       custom_field: "Benutzerdefiniertes Feld"
       "doorkeeper/application": "OAuth-Anwendung"
+      enterprise_token:
+        one: "Enterprise-Token"
+        other: "Enterprise-Tokens"
       forum: "Forum"
       global_role: "Globale Rolle"
       group: "Gruppe"
@@ -1533,6 +1556,9 @@ de:
       role:
         one: "Rolle"
         other: "Rollen"
+      scim_client:
+        one: "SCIM-Client"
+        other: "SCIM-Clients"
       status: "Arbeitspaket-Status"
       token/api:
         one: Zugangs-Token
@@ -1629,6 +1655,7 @@ de:
     derived_start_date: "Aggregierter Starttermin"
     direction: "Richtung"
     display_sums: "Summen anzeigen"
+    domain: "Domain"
     due_date: "Endtermin"
     estimated_hours: "Aufwand"
     estimated_time: "Aufwand"
@@ -2013,17 +2040,19 @@ de:
       readonly_work_packages: Schreibgeschützte Arbeitspakete
       sso_auth_providers: Single Sign-on
       team_planner_view: Teamplaner
-      two_factor_authentication: 2FA-Authentifizierung
       virus_scanning: Antivirus-Überprüfung
       work_package_query_relation_columns: Arbeitspaket-Relationsspalten
       work_package_sharing: Teilen von Arbeitspaketen mit externen Nutzer:innen
       work_package_subject_generation: Arbeitspaket-Betreff Generierung
     upsell:
+      buy_now_button: "Jetzt kaufen"
       plans_title: "Enterprise-Plan"
       title: "Enterprise Add-on"
       plan_title: "Enterprise %{plan} Add-on"
       plan_name: "%{plan} Enterprise Plan"
       plan_text_html: "Beginnend mit dem %{plan_name} verfügbar."
+      already_have_token: >
+        Haben Sie bereits ein Token? Fügen Sie es über den Button unten hinzu, um zum gebuchten Enterprise-Plan zu wechseln.
       hide_banner: "Dieses Banner ausblenden"
       homescreen_description: >
         Enterprise-Pläne erweitern die Community Edition von OpenProject, welche Sie derzeit verwenden. Sie beinhalten Add-ons, zusätzliche Funktionen und professionelle Unterstützung, die es Organisationen aller Größenordnungen ermöglicht, gemeinsam Großartiges zu erreichen.
@@ -2076,6 +2105,26 @@ de:
       internal_comments_inline:
         title: "Interne Kommentare schreiben, die nur für ausgewählte Mitglieder sichtbar ist."
         description: " "
+    trial:
+      not_found: "Sie haben einen Test-Token angefordert, aber diese Anfrage ist nicht mehr abrufbar. Bitte versuchen Sie es erneut."
+      wait_for_confirmation: "Wir haben Ihnen eine E-Mail zur Bestätigung geschickt, um den Token der Testversion abzurufen."
+      already_retrieved: >
+        Ihr Test-Enterprise-Token wurde bereits abgerufen. Bitte überprüfen Sie Ihre E-Mails auf das beigefügte Enterprise-Token. Bitte wenden Sie sich an unser Support-Team, wenn Sie Hilfe benötigen.
+      successfully_saved: "Ihr Enterprise-Token der Testversion wurde erfolgreich abgerufen."
+      token_sent: "Testversion-Token angefordert"
+      request_again: "Anfrage wiederholen"
+      resend_action: "Bestätigungsmail erneut senden"
+      welcome_title: "Kurze Funktionsübersicht"
+      welcome_description: "Erhalten Sie einen schnellen Überblick über Projektmanagement und Teamzusammenarbeit mit der OpenProject Enterprise edition."
+      confirmation_info: >
+        Wir haben Ihnen eine E-Mail am %{date} an die Adresse %{email} mit Informationen geschickt, um die kostenlose Testversion von OpenProject Enterprise zu starten. Bitte überprüfen Sie Ihren Posteingang und klicken Sie auf den Bestätigungslink, um Ihre 14 Tage kostenlose Testversion zu starten.
+      confirmation_subline: >
+        Bitte überprüfen Sie Ihren E-Mail-Posteingang und folgen Sie den Schritten, um Ihre 14-tägige kostenlose Testversion zu starten.
+      domain_caption: Das Token wird für den aktuell konfigurierten Hostnamen gültig sein.
+      receive_newsletter_html: >
+        Ich möchte den OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">Newsletter</a> erhalten.
+      consent_html: >
+        Ich stimme den <a target="_blank" href="https://www.openproject.org/de/rechtliches/nutzungsbedingungen"></a> und den <a target="_blank" href="https://www.openproject.org/de/rechtliches/datenschutz/">Datenschutzrichtlinien</a> zu.
   enumeration_activities: "Aktivitäten für Zeiterfassung"
   enumeration_work_package_priorities: "Arbeitspaket-Prioritäten"
   enumeration_reported_project_statuses: "Gemeldeter Projektstatus"
@@ -2100,8 +2149,9 @@ de:
   error_color_could_not_be_saved: "Farbe konnte nicht gespeichert werden"
   error_cookie_missing: "Das OpenProject Cookie fehlt. Bitte stellen Sie sicher, dass Cookies aktiviert sind, da diese Applikation ohne aktivierte Cookies nicht korrekt funktioniert."
   error_custom_option_not_found: "Option ist nicht vorhanden."
+  error_enterprise_plan_needed: "Sie benötigen den Enterprise-Plan %{plan}, um diese Aktion durchzuführen."
   error_enterprise_activation_user_limit: "Ihr Konto konnte nicht aktiviert werden (Nutzerlimit erreicht). Bitte kontaktieren Sie Ihren Administrator um Zugriff zu erhalten."
-  error_enterprise_token_invalid_domain: "Die Enterprise-Edition ist nicht aktiv. Die aktuelle Domain (%{actual}) entspricht nicht dem erwarteten Hostnamen (%{expected})."
+  error_enterprise_token_invalid_domain: "Die Enterprise edition ist nicht aktiv. Die aktuelle Domain (%{actual}) entspricht nicht dem erwarteten Hostnamen (%{expected})."
   error_failed_to_delete_entry: "Fehler beim Löschen dieses Eintrags."
   error_in_dependent: "Fehler beim Versuch, abhängiges Objekt zu ändern: %{dependent_class} #%{related_id} - %{related_subject}: %{error}"
   error_in_new_dependent: "Fehler beim Versuch, abhängiges Objekt zu erstellen: %{dependent_class} - %{related_subject}: %{error}"
@@ -2305,7 +2355,7 @@ de:
       upsell:
         title: "Auf Enterprise edition upgraden"
     links:
-      upgrade_enterprise_edition: "Auf Enterprise-Edition upgraden"
+      upgrade_enterprise_edition: "Auf Enterprise edition upgraden"
       postgres_migration: "Migration Ihrer Installation zu PostgreSQL"
       user_guides: "Benutzerhandbuch"
       faq: "Häufig gestellte Fragen"
@@ -2343,7 +2393,7 @@ de:
         dates:
           working: "%{date} ist jetzt ein Arbeitstag"
           non_working: "%{date} ist jetzt ein arbeitsfreier Tag"
-      progress_mode_changed_to_status_based: Fortschrittberechnung wurde auf Status-bezogen gesetzt
+      progress_mode_changed_to_status_based: Fortschrittberechnung wurde auf Status-basiert gesetzt
       status_excluded_from_totals_set_to_false_message: jetzt in den Gesamtwerten der Hierarchie enthalten
       status_excluded_from_totals_set_to_true_message: jetzt von den Hierarchie-Gesamtwerten ausgeschlossen
       status_percent_complete_changed: "% abgeschlossen von %{old_value}% auf %{new_value} % geändert"
@@ -2583,6 +2633,7 @@ de:
   label_dashboard: "Dashboard"
   label_database_version: "PostgreSQL-Version"
   label_date: "Datum"
+  label_dates: "Daten"
   label_date_and_time: "Datum und Zeit"
   label_date_format: "Datumsformat"
   label_date_from: "Von"
@@ -2633,7 +2684,7 @@ de:
   label_enumerations: "Aufzählungen"
   label_enterprise: "Enterprise"
   label_enterprise_active_users: "%{current}/%{limit} gebuchte aktive Nutzer"
-  label_enterprise_edition: "Enterprise Edition"
+  label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Enterprise Support"
   label_environment: "Umgebung"
   label_estimates_and_progress: "Schätzungen und Fortschritt"
@@ -3342,6 +3393,8 @@ de:
   notice_successful_delete: "Erfolgreich gelöscht."
   notice_successful_cancel: "Erfolgreiche Absage."
   notice_successful_update: "Erfolgreich aktualisiert."
+  notice_unsuccessful_create: "Erstellung fehlgeschlagen."
+  notice_unsuccessful_create_with_reason: "Erstellung fehlgeschlagen: %{reason}"
   notice_unsuccessful_update: "Aktualisierung fehlgeschlagen."
   notice_unsuccessful_update_with_reason: "Aktualisierung fehlgeschlagen: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -3630,7 +3683,7 @@ de:
       update_timeout: "Speichere die Informationen bzgl. des genutzten Festplattenspeichers eines Projektarchivs für N Minuten.\nErhöhen Sie diesen Wert zur Verbesserung der Performance, da die Erfassung des genutzten Festplattenspeichers Ressourcen-intensiv ist."
       oauth_application_details: "Der Client Geheimcode wird nach dem Schließen dieses Fensters nicht mehr zugänglich sein. Bitte kopieren Sie diese Werte in die Nextcloud OpenProject Integrationseinstellungen:"
       oauth_application_details_link_text: "Zu den Einstellungen gehen"
-      setup_documentation_details: "Wenn Sie Hilfe bei der Konfiguration eines neuen Dateispeichers benötigen, konsultieren Sie bitte die Dokumentation: "
+      setup_documentation_details: "Wenn Sie Hilfe bei der Konfiguration eines neuen Datei-Speichers benötigen, konsultieren Sie bitte die Dokumentation: "
       setup_documentation_details_link_text: "Dateispeicher einrichten"
       show_warning_details: "Um diesen Dateispeicher nutzen zu können, müssen Sie das Modul und den spezifischen Speicher in den Projekteinstellungen jedes gewünschten Projekts aktivieren."
     subversion:
@@ -4170,7 +4223,7 @@ de:
   warning_user_limit_reached_admin: >
     Das Hinzufügen zusätzlicher Benutzer überschreitet das aktuelle Benutzerlimit. Bitte <a href="%{upgrade_url}">aktualisieren Sie Ihr Abonnement</a> um sicherzustellen, dass externe Benutzer auf diese Instanz zugreifen können.
   warning_user_limit_reached_instructions: >
-    Du hast dein Nutzerlimit erreicht (%{current}/%{max} active users). Bitte kontaktiere sales@openproject.com um deinen Enterprise Edition Plan upzugraden und weitere Nutzer hinzuzufügen.
+    Du hast dein Nutzerlimit erreicht (%{current}/%{max} active users). Bitte kontaktiere sales@openproject.com um deinen Enterprise edition Plan upzugraden und weitere Nutzer hinzuzufügen.
   warning_protocol_mismatch_html: >
 
   warning_bar:

@@ -79,7 +79,14 @@ sl:
         main-menu-bg-color: "Barva ozadja levega menija."
       theme_warning: "Sprememba teme bo nadomestilo vaš slog po meri. Oblikovanje bo tako izgubljeno. Ali ste prepričani, da bi radi nadaljevali?\n"
     enterprise:
-      upgrade_to_ee: "Upgrade to the Enterprise edition"
+      delete_dialog:
+        title: "Delete enterprise token"
+        heading: "Delete this enterprise token?"
+        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+      create_dialog:
+        title: "Add Enterprise token"
+        type_token_text: "Type support token text"
+        token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Upload an Enterprise edition support token"
       delete_token_modal:
         text: "Are you sure you want to remove the current Enterprise edition token used?"
@@ -836,6 +843,7 @@ sl:
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Soroden zahtevek"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Povabilo
@@ -870,6 +878,10 @@ sl:
     auth_source_login: Prosim prijavite se kot <em>%{login}</em> , da aktivirate svoj račun.
     omniauth_login: Prosim aktivirajte svoj račun
   actionview_instancetag_blank_option: "Prosimo izberite"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -885,6 +897,8 @@ sl:
       attribute_help_text:
         attribute_name: "Atribut"
         help_text: "Besedilo pomoči"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Context"
       changeset:
@@ -924,11 +938,13 @@ sl:
       emoji_reaction:
         reactable: "Reacted on"
       enterprise_token:
-        domain: "Domena"
         starts_at: "Velja od"
         subscriber: "Naročnik"
+        plan: "Plan"
         encoded_token: "Token podpore za podjetja"
         active_user_count_restriction: "Največje število aktivnih uporabnikov"
+      enterprise_trial:
+        company: "Company"
       grids/grid:
         page: "Stran"
         row_count: "Število vrstic"
@@ -1256,6 +1272,10 @@ sl:
               forbidden_uri: "je prepovedano s strani strežnika. "
             scopes:
               not_match_configured: "ne ustreza razpoložljivim področjem uporabe."
+        enterprise_trial:
+          already_used: "was already used to create a trial."
+          failed_to_create: "Trial could not be created (%{status})"
+          general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "ni mogoče prebrati. Ali ste prepričani, da gre za podporni žeton?"
         grids/grid:
@@ -1537,6 +1557,11 @@ sl:
       custom_action: "Dejanja po meri"
       custom_field: "Polje po meri"
       "doorkeeper/application": "Aplikacija OAuth"
+      enterprise_token:
+        one: "Enterprise token"
+        two: "Enterprise tokens"
+        few: "Enterprise tokens"
+        other: "Enterprise tokens"
       forum: "Forum"
       global_role: "Global role"
       group: "Skupina"
@@ -1570,6 +1595,11 @@ sl:
         two: "Vloge"
         few: "Vloge"
         other: "Vloge"
+      scim_client:
+        one: "SCIM Client"
+        two: "SCIM Clients"
+        few: "SCIM Clients"
+        other: "SCIM Clients"
       status: "Stanje delovnega paketa"
       token/api:
         one: Žeton za dostop
@@ -1676,6 +1706,7 @@ sl:
     derived_start_date: "Izpeljan začetni datum"
     direction: "Direction"
     display_sums: "Prikaži vsote"
+    domain: "Domain"
     due_date: "Končni datum"
     estimated_hours: "Work"
     estimated_time: "Work"
@@ -1941,8 +1972,8 @@ sl:
       - "avgust"
       - "september"
       - "oktober"
-      - "november"
-      - "december"
+      - "November"
+      - "December"
     order:
       - :leto
       - :mesec
@@ -2098,17 +2129,19 @@ sl:
       readonly_work_packages: Readonly Work Packages
       sso_auth_providers: Single sign-on
       team_planner_view: Team Planner View
-      two_factor_authentication: 2FA Authentication
       virus_scanning: Antivirus Scanning
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      buy_now_button: "Buy now"
       plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
+      already_have_token: >
+        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Hide this banner"
       homescreen_description: >
         Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
@@ -2161,6 +2194,26 @@ sl:
       internal_comments_inline:
         title: "Write internal comments only a small group can see"
         description: " "
+    trial:
+      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
+      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      already_retrieved: >
+        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
+      successfully_saved: "Your trial enterprise token has been successfully retrieved."
+      token_sent: "Trial token requested"
+      request_again: "Request again"
+      resend_action: "Resend confirmation email"
+      welcome_title: "Quick feature overview"
+      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+      confirmation_info: >
+        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+      confirmation_subline: >
+        Please, check your inbox and follow the steps to start your 14-day free trial.
+      domain_caption: The token will be valid for your currently configured host name.
+      receive_newsletter_html: >
+        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+      consent_html: >
+        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
   enumeration_activities: "Dejavnosti spremljanja časa"
   enumeration_work_package_priorities: "Prednostne naloge delovnega paketa"
   enumeration_reported_project_statuses: "Poročano stanje projekta"
@@ -2185,6 +2238,7 @@ sl:
   error_color_could_not_be_saved: "Barve ni mogoče shraniti"
   error_cookie_missing: "Piškotek OpenProject manjka. Prepričajte se, da so piškotki omogočeni, saj ta aplikacija ne bo pravilno delovala brez."
   error_custom_option_not_found: "Možnost ne obstaja."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Vašega računa ni bilo mogoče aktivirati (dosežena uporabniška omejitev). Če želite dobiti dostop, se obrnite na skrbnika."
   error_enterprise_token_invalid_domain: "The Enterprise edition is not active. Your Enterprise token's domain (%{actual}) does not match the system's host name (%{expected})."
   error_failed_to_delete_entry: "Izbris tega vnosa ni bilo mogoče."
@@ -2668,6 +2722,7 @@ sl:
   label_dashboard: "Nadzorna plošča"
   label_database_version: "PostgreSQL verzija"
   label_date: "Datum"
+  label_dates: "Dates"
   label_date_and_time: "Datum in ura"
   label_date_format: "Format datuma"
   label_date_from: "Od"
@@ -3429,6 +3484,8 @@ sl:
   notice_successful_delete: "Uspešen izbris."
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Posodobitev uspela."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Update failed."
   notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
