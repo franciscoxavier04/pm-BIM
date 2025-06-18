@@ -41,7 +41,7 @@ One of the most upvoted Community requests is now available: You can now **expor
 
 Meeting organizers and participants can generate a printable PDF that includes the agenda, outcomes, participants, and more. This makes it ideal for sharing with colleagues, archiving meeting records, or informing stakeholders who could not attend.
 
-The export is available via the More (⋯) menu for both one-time meetings and individual occurrences of recurring meetings. You can **customize the PDF** before download by choosing wheather to include:
+The export is available via the More (⋯) menu for both one-time meetings and individual occurrences of recurring meetings. You can **customize the PDF** before download by choosing whether to include:
 
 - the list of participants,
 - the list of attachments,
@@ -156,7 +156,7 @@ Developers can now read and manage emoji reactions, create and update reminders,
 - Feature: Add hovercard to gates \[[#62608](https://community.openproject.org/wp/62608)\]
 - Feature: TreeView Primer View Component \[[#62667](https://community.openproject.org/wp/62667)\]
 - Feature: Implementing ARIA live regions to communicate contextual changes \[[#62708](https://community.openproject.org/wp/62708)\]
-- Feature: Show a TreeView on the page of hierachy customFields \[[#62993](https://community.openproject.org/wp/62993)\]
+- Feature: Show a TreeView on the page of hierarchy customFields \[[#62993](https://community.openproject.org/wp/62993)\]
 - Feature: Show attribute help texts in Primerized Project Settings &gt; Information form \[[#63737](https://community.openproject.org/wp/63737)\]
 - Feature: Primerize attribute help texts \[[#63738](https://community.openproject.org/wp/63738)\]
 - Feature: Re-order and re-structure the &#39;More&#39; action menu for sections and agenda items \[[#64074](https://community.openproject.org/wp/64074)\]
@@ -170,7 +170,7 @@ Developers can now read and manage emoji reactions, create and update reminders,
 - Bugfix: Project search is under the Search icon in New Recurring Meeting modal \[[#59945](https://community.openproject.org/wp/59945)\]
 - Bugfix: User can&#39;t save lifecycle modal if project is invalid \[[#60666](https://community.openproject.org/wp/60666)\]
 - Bugfix: Activity Tab renders the same turbo frame multiple times inside of itself \[[#61544](https://community.openproject.org/wp/61544)\]
-- Bugfix: The &#39;overdue&#39; date colour does not adapt well to dark mode (fixed hex/odd colour variable) \[[#62199](https://community.openproject.org/wp/62199)\]
+- Bugfix: The &#39;overdue&#39; date color does not adapt well to dark mode (fixed hex/odd color variable) \[[#62199](https://community.openproject.org/wp/62199)\]
 - Bugfix: Seeder fails during upgrade with ArgumentError: Nothing registered with reference :default\_role\_project\_admin (ArgumentError) \[[#62582](https://community.openproject.org/wp/62582)\]
 - Bugfix: (Regression) Error on Save (in various places) \[[#62627](https://community.openproject.org/wp/62627)\]
 - Bugfix: Reminders: saving without entering a date or time throws an error but also unnecessarily clears the other field \[[#63461](https://community.openproject.org/wp/63461)\]
