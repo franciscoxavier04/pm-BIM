@@ -115,7 +115,7 @@ Setting a project to public will make it accessible to all people within your Op
 
 ### Copy a project
 
-You can copy an existing project by navigating to the [Project settings](project-settings) -> Information. Click the **More** (three dots) menu in the upper right corner and selec **Copy**.
+You can copy an existing project by navigating to the [Project settings](project-settings) -> Information. Click the **More** (three dots) menu in the upper right corner and select **Copy**.
 
 ![Copy a project under project settings in OpenProject](project-information-copy-project.png)
 

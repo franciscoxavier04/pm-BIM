@@ -184,7 +184,6 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   }
 
   public async saveForm(evt?:SubmitEvent):Promise<void> {
-    this.saveRequested.emit(); // Provide a hook for the parent component to do something before the form is submitted
     CkeditorAugmentedTextareaComponent.inFlight.set(this.formElement, true);
 
     this.syncToTextarea();
