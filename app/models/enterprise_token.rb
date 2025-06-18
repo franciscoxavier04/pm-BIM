@@ -28,6 +28,8 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 class EnterpriseToken < ApplicationRecord
+  EXPIRING_SOON_DAYS = 30
+
   class << self
     def all_tokens
       all.sort_by(&:sort_key)
@@ -167,8 +169,39 @@ class EnterpriseToken < ApplicationRecord
 
   delegate :clear_current_tokens_cache, to: :EnterpriseToken
 
+  def expiring_soon?
+    token_object.will_expire? \
+      && token_object.active?(reprieve: false) \
+      && token_object.expires_at <= EXPIRING_SOON_DAYS.days.from_now
+  end
+
+  def in_grace_period?
+    token_object.expired?(reprieve: false) \
+      && !token_object.expired?(reprieve: true)
+  end
+
   def expired?(reprieve: true)
-    token_object.expired?(reprieve:) || invalid_domain?
+    token_object.expired?(reprieve:)
+  end
+
+  def statuses
+    statuses = []
+    if trial?
+      statuses << :trial
+    end
+    if invalid_domain?
+      statuses << :invalid_domain
+    end
+    if !started?
+      statuses << :not_active
+    elsif expiring_soon?
+      statuses << :expiring_soon
+    elsif in_grace_period?
+      statuses << :in_grace_period
+    elsif expired?
+      statuses << :expired
+    end
+    statuses
   end
 
   ##

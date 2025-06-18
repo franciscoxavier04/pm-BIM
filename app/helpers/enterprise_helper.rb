@@ -59,11 +59,7 @@ module EnterpriseHelper
 
   def enterprise_token_plan_name(enterprise_token)
     plan = enterprise_token.plan.to_s
-
-    <<~LABEL.squish
-      #{I18n.t(plan, scope: [:enterprise_plans], default: plan.humanize)}
-      (#{I18n.t(:label_token_version)} #{enterprise_token.version})
-    LABEL
+    I18n.t(plan, scope: [:enterprise_plans], default: plan.humanize)
   end
 
   def enterprise_plan_additional_features(enterprise_token)
