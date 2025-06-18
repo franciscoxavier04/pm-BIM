@@ -31,10 +31,10 @@
 require "spec_helper"
 
 RSpec.describe "Project phase field in the work package table", :js do
-  let(:phase_definition) { create(:project_phase_definition, position: 99) }
+  let(:phase_definition) { create(:project_phase_definition, position: 2) }
   let(:project_phase) { create(:project_phase, definition: phase_definition) }
   let(:project_phase_from_other_project) { create(:project_phase, definition: phase_definition) }
-  let(:other_project_phase) { create(:project_phase) }
+  let(:other_project_phase) { create(:project_phase, definition: create(:project_phase_definition, position: 1)) }
   let(:project) { create(:project_with_types, phases: [project_phase, other_project_phase]) }
   let(:another_project) { create(:project_with_types, phases: [project_phase_from_other_project]) }
   let(:all_permissions) do
