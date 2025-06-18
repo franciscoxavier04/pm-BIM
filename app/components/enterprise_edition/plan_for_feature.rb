@@ -54,7 +54,7 @@ module EnterpriseEdition
     end
 
     def teaser_title
-      I18n.t("ee.teaser.title", count: token.days_left, trial_plan: token.plan)
+      I18n.t("ee.teaser.title", count: token.days_left || 365, trial_plan: token.plan)
     end
 
     def description

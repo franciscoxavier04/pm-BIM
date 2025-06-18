@@ -223,7 +223,7 @@ class EnterpriseToken < ApplicationRecord
   end
 
   def days_left
-    (valid_until.to_date - Time.zone.today).to_i
+    valid_until.present? ? (valid_until.to_date - Time.zone.today).to_i : nil
   end
 
   private

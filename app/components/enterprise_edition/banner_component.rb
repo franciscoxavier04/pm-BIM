@@ -128,7 +128,8 @@ module EnterpriseEdition
         "op-enterprise-banner",
         "op-enterprise-banner_medium" => @variant == :medium,
         "op-enterprise-banner_large" => @variant == :large,
-        "op-enterprise-banner_trial" => trial_feature?
+        "op-enterprise-banner_trial" => trial_feature?,
+        "op-enterprise-banner_teaser" => teaser?
       )
     end
 
