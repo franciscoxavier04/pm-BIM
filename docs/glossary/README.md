@@ -349,7 +349,7 @@ In OpenProject, the project life cycle consists of [phases](#phase) and [phase g
 
 Phases and phase gates are visible on the [project overview](#project-overview) page, in [work package tables](#work-package-table), and in [project lists](#project-lists). They can be used for filtering, grouping, and scheduling. Project administrators can activate relevant phases and gates for each project, while the global configuration of phases is an [Enterprise add-on](#enterprise-add-on).
 
-[Read more acout the project life cycle in our system admin guide](../system-admin-guide/projects/project-life-cycle).
+[Read more about the project life cycle in our system admin guide](../system-admin-guide/projects/project-life-cycle).
 
 ### Project lists
 
