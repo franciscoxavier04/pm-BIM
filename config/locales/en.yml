@@ -1345,6 +1345,7 @@ en:
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "can't be read. Are you sure it is a support token?"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "overlap."
           outside: "is outside of the grid."

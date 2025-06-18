@@ -114,10 +114,12 @@ class EnterpriseToken < ApplicationRecord
   FAR_FUTURE_DATE = Date.new(9999, 1, 1)
   private_constant :FAR_FUTURE_DATE
 
-  validates :encoded_token, presence: true
+  validates :encoded_token, presence: true,
+                            uniqueness: { message: I18n.t("activerecord.errors.models.enterprise_token.already_added") }
   validate :valid_token_object
   validate :valid_domain
 
+  before_validation :strip_encoded_token
   before_save :extract_validity_from_token
   before_save :clear_current_tokens_cache
   before_destroy :clear_current_tokens_cache
@@ -217,6 +219,10 @@ class EnterpriseToken < ApplicationRecord
   end
 
   private
+
+  def strip_encoded_token
+    self.encoded_token = encoded_token.strip if encoded_token.present?
+  end
 
   def load_token!
     @token_object = OpenProject::Token.import(encoded_token)
