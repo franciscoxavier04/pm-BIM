@@ -28,16 +28,21 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Settings
-  module ProjectLifeCycleStepDefinitions
-    class IndexHeaderComponent < ApplicationComponent
-      def breadcrumbs_items
-        [
-          { href: admin_index_path, text: t("label_administration") },
-          { href: admin_settings_project_custom_fields_path, text: t("label_project_plural") },
-          t("settings.project_phase_definitions.heading")
-        ]
-      end
+module Projects::PhaseDefinitions
+  class DetailsForm < ApplicationForm
+    form do |f|
+      f.text_field(
+        label: attribute_name(:name),
+        name: :name,
+        required: true,
+        input_width: :medium
+      )
+      f.color_select_list(
+        label: attribute_name(:color),
+        name: :color,
+        required: true,
+        input_width: :medium
+      )
     end
   end
 end

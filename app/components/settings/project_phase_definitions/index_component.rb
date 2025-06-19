@@ -28,13 +28,37 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
-require "support/permission_specs"
+module Settings
+  module ProjectPhaseDefinitions
+    class IndexComponent < ApplicationComponent
+      include OpPrimer::ComponentHelpers
+      include OpTurbo::Streamable
+      include Projects::PhaseDefinitionHelper
 
-RSpec.describe Overviews::OverviewsController, "view_project_life_cycles permission", # rubocop:disable RSpec/EmptyExampleGroup,RSpec/SpecFilePathFormat
-               type: :controller do
-  include PermissionSpecs
+      options :definitions
 
-  # render sidebar on project overview page with view_project permission
-  check_permission_required_for("overviews/overviews#project_life_cycles_sidebar", :view_project_phases)
+      private
+
+      def wrapper_data_attributes
+        {
+          controller: "projects--settings--border-box-filter generic-drag-and-drop"
+        }
+      end
+
+      def drop_target_config
+        {
+          "is-drag-and-drop-target": true,
+          "target-container-accessor": "& > ul",
+          "target-allowed-drag-type": "life-cycle-step-definition"
+        }
+      end
+
+      def draggable_item_config(definition)
+        {
+          "draggable-type": "life-cycle-step-definition",
+          "drop-url": drop_admin_settings_project_phase_definition_path(definition)
+        }
+      end
+    end
+  end
 end

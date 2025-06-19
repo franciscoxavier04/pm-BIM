@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,35 +26,28 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
+module Projects::PhaseDefinitions
+  class FormComponent < ApplicationComponent
+    include OpPrimer::ComponentHelpers
+    include OpPrimer::FormHelpers
 
-module Settings
-  module ProjectLifeCycleStepDefinitions
-    class RowComponent < ApplicationComponent
-      include OpPrimer::ComponentHelpers
-      include Projects::LifeCycleDefinitionHelper
+    def selected?(tabname)
+      tabname == if no_errors || details_tab_errors.any?
+                   :details
+                 else
+                   :phase_gates
+                 end
+    end
 
-      alias_method :definition, :model
+    private
 
-      options :first?,
-              :last?
+    def no_errors
+      model.errors.empty?
+    end
 
-      private
-
-      def move_action(menu:, move_to:, label:, icon:)
-        menu.with_item(
-          label:,
-          href: move_admin_settings_project_phase_definition_path(definition, move_to:),
-          form_arguments: {
-            method: :patch
-          },
-          data: {
-            "projects--settings--border-box-filter-target": "hideWhenFiltering"
-          }
-        ) do |item|
-          item.with_leading_visual_icon(icon:)
-        end
-      end
+    def details_tab_errors
+      model.errors.attribute_names & %i[name color]
     end
   end
 end

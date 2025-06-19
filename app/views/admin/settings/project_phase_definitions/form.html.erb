@@ -27,7 +27,12 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<% html_title t(:label_administration), t("settings.project_phase_definitions.heading") %>
+<% heading_scope = @definition.persisted? ? :edit : :new %>
 
-<%= render Settings::ProjectLifeCycleStepDefinitions::IndexHeaderComponent.new %>
-<%= render Settings::ProjectLifeCycleStepDefinitions::IndexComponent.new(definitions: @definitions) %>
+<% html_title t(:label_administration),
+              t("settings.project_phase_definitions.heading"),
+              t("settings.project_phase_definitions.#{heading_scope}.heading") %>
+
+<%= render Settings::ProjectPhaseDefinitions::FormHeaderComponent.new(@definition, heading_scope:) %>
+
+<%= render Projects::PhaseDefinitions::FormComponent.new(@definition) %>

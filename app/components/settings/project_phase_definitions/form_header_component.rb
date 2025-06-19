@@ -28,19 +28,28 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Projects::LifeCycleStepDefinitions
-  class FinishGateCheckboxForm < ApplicationForm
-    form do |f|
-      f.check_box(
-        label: attribute_name(:finish_gate),
-        name: :finish_gate,
-        caption: I18n.t("settings.project_phase_definitions.finish_gate_caption"),
-        input_width: :medium,
-        data: {
-          "show-when-checked-target": "cause",
-          target_name: "finish_gate"
-        }
-      )
+module Settings
+  module ProjectPhaseDefinitions
+    class FormHeaderComponent < ApplicationComponent
+      options :heading_scope
+
+      def breadcrumbs_items
+        [
+          {
+            href: admin_index_path,
+            text: t("label_administration")
+          },
+          {
+            href: admin_settings_project_custom_fields_path,
+            text: t("label_project_plural")
+          },
+          {
+            href: admin_settings_project_phase_definitions_path,
+            text: t("settings.project_phase_definitions.heading")
+          },
+          t("settings.project_phase_definitions.#{heading_scope}.heading")
+        ]
+      end
     end
   end
 end

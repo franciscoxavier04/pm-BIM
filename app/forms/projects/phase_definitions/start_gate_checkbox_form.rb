@@ -28,14 +28,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Projects::LifeCycleStepDefinitions
-  class FinishGateNameForm < ApplicationForm
+module Projects::PhaseDefinitions
+  class StartGateCheckboxForm < ApplicationForm
     form do |f|
-      f.text_field(
-        label: attribute_name(:finish_gate_name),
-        name: :finish_gate_name,
+      f.check_box(
+        label: attribute_name(:start_gate),
+        name: :start_gate,
+        caption: I18n.t("settings.project_phase_definitions.start_gate_caption"),
         input_width: :medium,
-        required: true
+        data: {
+          "show-when-checked-target": "cause",
+          target_name: "start_gate"
+        }
       )
     end
   end

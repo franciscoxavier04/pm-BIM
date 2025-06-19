@@ -26,13 +26,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
-
-<% heading_scope = @definition.persisted? ? :edit : :new %>
-
-<% html_title t(:label_administration),
-              t("settings.project_phase_definitions.heading"),
-              t("settings.project_phase_definitions.#{heading_scope}.heading") %>
-
-<%= render Settings::ProjectLifeCycleStepDefinitions::FormHeaderComponent.new(@definition, heading_scope:) %>
-
-<%= render Projects::LifeCycleStepDefinitions::FormComponent.new(@definition) %>
+<%= content_tag("turbo-frame", id: "project-life-cycle-sidebar") do %>
+  <%= render(Overviews::ProjectPhases::SidePanelComponent.new(project: @project)) %>
+<% end %>

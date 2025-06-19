@@ -29,12 +29,12 @@
 #++
 
 module Admin::Settings
-  class ProjectLifeCycleDefinitionsController < ::Admin::SettingsController
+  class ProjectPhaseDefinitionsController < ::Admin::SettingsController
     include FlashMessagesOutputSafetyHelper
     include OpTurbo::ComponentStream
-    include Projects::LifeCycleDefinitionHelper
+    include Projects::PhaseDefinitionHelper
 
-    menu_item :project_life_cycle_definitions_settings
+    menu_item :project_phase_definitions_settings
 
     before_action :check_feature_flag
     before_action :require_enterprise_token, except: %i[index]
@@ -136,7 +136,7 @@ module Admin::Settings
 
     def update_definitions_via_turbo_stream
       update_via_turbo_stream(
-        component: Settings::ProjectLifeCycleStepDefinitions::IndexComponent.new(
+        component: Settings::ProjectPhaseDefinitions::IndexComponent.new(
           definitions: find_definitions
         )
       )

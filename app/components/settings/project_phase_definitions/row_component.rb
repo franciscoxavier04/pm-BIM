@@ -28,10 +28,33 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Projects::LifeCycleDefinitionHelper
-  private
+module Settings
+  module ProjectPhaseDefinitions
+    class RowComponent < ApplicationComponent
+      include OpPrimer::ComponentHelpers
+      include Projects::PhaseDefinitionHelper
 
-  def allowed_to_customize_life_cycle?
-    EnterpriseToken.allows_to?(:customize_life_cycle)
+      alias_method :definition, :model
+
+      options :first?,
+              :last?
+
+      private
+
+      def move_action(menu:, move_to:, label:, icon:)
+        menu.with_item(
+          label:,
+          href: move_admin_settings_project_phase_definition_path(definition, move_to:),
+          form_arguments: {
+            method: :patch
+          },
+          data: {
+            "projects--settings--border-box-filter-target": "hideWhenFiltering"
+          }
+        ) do |item|
+          item.with_leading_visual_icon(icon:)
+        end
+      end
+    end
   end
 end

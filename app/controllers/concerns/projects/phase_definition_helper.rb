@@ -28,19 +28,10 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Projects::LifeCycleStepDefinitions
-  class StartGateCheckboxForm < ApplicationForm
-    form do |f|
-      f.check_box(
-        label: attribute_name(:start_gate),
-        name: :start_gate,
-        caption: I18n.t("settings.project_phase_definitions.start_gate_caption"),
-        input_width: :medium,
-        data: {
-          "show-when-checked-target": "cause",
-          target_name: "start_gate"
-        }
-      )
-    end
+module Projects::PhaseDefinitionHelper
+  private
+
+  def allowed_to_customize_life_cycle?
+    EnterpriseToken.allows_to?(:customize_life_cycle)
   end
 end

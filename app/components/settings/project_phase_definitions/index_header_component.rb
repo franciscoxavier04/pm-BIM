@@ -28,19 +28,16 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
-require "support/permission_specs"
-
-RSpec.describe Overviews::OverviewsController, "edit_project_life_cycles permission", # rubocop:disable RSpec/EmptyExampleGroup,RSpec/SpecFilePathFormat
-               type: :controller do
-  include PermissionSpecs
-
-  # render dialog with inputs for editing project attributes with edit_project permission
-  check_permission_required_for("overviews/project_phases#edit", :edit_project_phases)
-
-  # render form with inputs for editing project attributes with edit_project permission
-  check_permission_required_for("overviews/project_phases#preview", :edit_project_phases)
-
-  # update project attributes with edit_project permission, deeper permission check via contract in place
-  check_permission_required_for("overviews/project_phases#update", :edit_project_phases)
+module Settings
+  module ProjectPhaseDefinitions
+    class IndexHeaderComponent < ApplicationComponent
+      def breadcrumbs_items
+        [
+          { href: admin_index_path, text: t("label_administration") },
+          { href: admin_settings_project_custom_fields_path, text: t("label_project_plural") },
+          t("settings.project_phase_definitions.heading")
+        ]
+      end
+    end
+  end
 end

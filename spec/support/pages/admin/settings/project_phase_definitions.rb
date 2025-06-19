@@ -33,8 +33,8 @@ require "support/pages/page"
 module Pages
   module Admin
     module Settings
-      class ProjectLifeCycleStepDefinitions < ::Pages::Page
-        def path = "/admin/settings/project_life_cycle"
+      class ProjectPhaseDefinitions < ::Pages::Page
+        def path = "/admin/settings/project_phase_definitions"
 
         def expect_listed(names)
           page.document.synchronize do

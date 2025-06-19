@@ -65,7 +65,7 @@ RSpec.describe "Show project life cycles on project overview page", :js, with_fl
     it "shows the project phases in the correct order" do
       overview_page.visit_page
 
-      overview_page.within_life_cycles_sidebar do
+      overview_page.within_life_cycle_sidebar do
         expected_stages = [
           "Initiating",
           "Planning",
@@ -80,7 +80,7 @@ RSpec.describe "Show project life cycles on project overview page", :js, with_fl
 
       overview_page.visit_page
 
-      overview_page.within_life_cycles_sidebar do
+      overview_page.within_life_cycle_sidebar do
         expected_stages = [
           "Initiating",
           "Planning",
@@ -95,13 +95,13 @@ RSpec.describe "Show project life cycles on project overview page", :js, with_fl
     it "shows a hover card when you hover over a gate" do
       overview_page.visit_page
 
-      overview_page.within_life_cycles_sidebar do
+      overview_page.within_life_cycle_sidebar do
         page.find_test_selector("phase-#{life_cycle_planning.id}-start-gate").hover
       end
 
       expect(page).to have_test_selector("phase-gate-hover-card-name", text: life_cycle_planning.start_gate_name)
 
-      overview_page.within_life_cycles_sidebar do
+      overview_page.within_life_cycle_sidebar do
         page.find_test_selector("phase-#{life_cycle_planning.id}-finish-gate").hover
       end
 
@@ -113,7 +113,7 @@ RSpec.describe "Show project life cycles on project overview page", :js, with_fl
 
       overview_page.visit_page
 
-      overview_page.within_life_cycles_sidebar do
+      overview_page.within_life_cycle_sidebar do
         expect(page).to have_no_text life_cycle_executing.name
       end
     end
@@ -124,7 +124,7 @@ RSpec.describe "Show project life cycles on project overview page", :js, with_fl
       it "shows the correct value for the project custom field if given" do
         overview_page.visit_page
 
-        overview_page.within_life_cycles_sidebar do
+        overview_page.within_life_cycle_sidebar do
           project_life_cycles.each do |life_cycle|
             overview_page.within_life_cycle_container(life_cycle) do
               expected_date = [
@@ -147,7 +147,7 @@ RSpec.describe "Show project life cycles on project overview page", :js, with_fl
       it "shows the correct value for the project custom field if given" do
         overview_page.visit_page
 
-        overview_page.within_life_cycles_sidebar do
+        overview_page.within_life_cycle_sidebar do
           project_life_cycles.each do |life_cycle|
             overview_page.within_life_cycle_container(life_cycle) do
               expect(page).to have_text I18n.t("placeholders.default")

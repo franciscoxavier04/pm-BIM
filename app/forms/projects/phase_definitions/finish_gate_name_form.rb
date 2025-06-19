@@ -28,37 +28,15 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Settings
-  module ProjectLifeCycleStepDefinitions
-    class IndexComponent < ApplicationComponent
-      include OpPrimer::ComponentHelpers
-      include OpTurbo::Streamable
-      include Projects::LifeCycleDefinitionHelper
-
-      options :definitions
-
-      private
-
-      def wrapper_data_attributes
-        {
-          controller: "projects--settings--border-box-filter generic-drag-and-drop"
-        }
-      end
-
-      def drop_target_config
-        {
-          "is-drag-and-drop-target": true,
-          "target-container-accessor": "& > ul",
-          "target-allowed-drag-type": "life-cycle-step-definition"
-        }
-      end
-
-      def draggable_item_config(definition)
-        {
-          "draggable-type": "life-cycle-step-definition",
-          "drop-url": drop_admin_settings_project_phase_definition_path(definition)
-        }
-      end
+module Projects::PhaseDefinitions
+  class FinishGateNameForm < ApplicationForm
+    form do |f|
+      f.text_field(
+        label: attribute_name(:finish_gate_name),
+        name: :finish_gate_name,
+        input_width: :medium,
+        required: true
+      )
     end
   end
 end

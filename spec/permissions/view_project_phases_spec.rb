@@ -28,28 +28,13 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Settings
-  module ProjectLifeCycleStepDefinitions
-    class FormHeaderComponent < ApplicationComponent
-      options :heading_scope
+require "spec_helper"
+require "support/permission_specs"
 
-      def breadcrumbs_items
-        [
-          {
-            href: admin_index_path,
-            text: t("label_administration")
-          },
-          {
-            href: admin_settings_project_custom_fields_path,
-            text: t("label_project_plural")
-          },
-          {
-            href: admin_settings_project_phase_definitions_path,
-            text: t("settings.project_phase_definitions.heading")
-          },
-          t("settings.project_phase_definitions.#{heading_scope}.heading")
-        ]
-      end
-    end
-  end
+RSpec.describe Overviews::OverviewsController, "view_project_phases permission", # rubocop:disable RSpec/EmptyExampleGroup,RSpec/SpecFilePathFormat
+               type: :controller do
+  include PermissionSpecs
+
+  # render sidebar on project overview page with view_project permission
+  check_permission_required_for("overviews/overviews#project_life_cycle_sidebar", :view_project_phases)
 end

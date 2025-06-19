@@ -28,21 +28,19 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Projects::LifeCycleStepDefinitions
-  class DetailsForm < ApplicationForm
-    form do |f|
-      f.text_field(
-        label: attribute_name(:name),
-        name: :name,
-        required: true,
-        input_width: :medium
-      )
-      f.color_select_list(
-        label: attribute_name(:color),
-        name: :color,
-        required: true,
-        input_width: :medium
-      )
-    end
-  end
+require "spec_helper"
+require "support/permission_specs"
+
+RSpec.describe Overviews::OverviewsController, "edit_project_phases permission", # rubocop:disable RSpec/EmptyExampleGroup,RSpec/SpecFilePathFormat
+               type: :controller do
+  include PermissionSpecs
+
+  # render dialog with inputs for editing project attributes with edit_project permission
+  check_permission_required_for("overviews/project_phases#edit", :edit_project_phases)
+
+  # render form with inputs for editing project attributes with edit_project permission
+  check_permission_required_for("overviews/project_phases#preview", :edit_project_phases)
+
+  # update project attributes with edit_project permission, deeper permission check via contract in place
+  check_permission_required_for("overviews/project_phases#update", :edit_project_phases)
 end

@@ -32,10 +32,10 @@ require "support/components/common/modal"
 require "support/components/autocompleter/ng_select_autocomplete_helpers"
 module Components
   module Projects
-    module ProjectLifeCycles
+    module ProjectLifeCycle
       class EditDialog < Components::Common::Modal
         def dialog_css_selector
-          "dialog#edit-project-life-cycles-dialog"
+          "dialog#edit-project-life-cycle-dialog"
         end
 
         def async_content_container_css_selector
@@ -104,7 +104,7 @@ module Components
 
         def submit
           within_dialog do
-            page.find("[data-test-selector='save-project-life-cycles-button']").click
+            page.find("[data-test-selector='save-project-life-cycle-button']").click
           end
         end
 
