@@ -202,47 +202,7 @@ zh-TW:
         new_group: "新增群組"
         reset_to_defaults: "重設為預設值"
       enterprise:
-        text_reprieve_days_left: "剩下 %{days} 天測試結束"
-        text_expired: "已過期"
-        trial:
-          confirmation: "確認您的電子郵件地址"
-          form:
-            general_consent: >
-              我同意<a target="_blank" href="%{link_terms}">服務條款</a>和<a target="_blank" href="%{link_privacy}">隱私政策</a>。
-            invalid_email: "無效的電子郵件"
-            label_company: "公司"
-            label_first_name: "名字"
-            label_last_name: "姓："
-            label_domain: "網域"
-            label_subscriber: "訂閱者"
-            label_maximum_users: "使用者帳號上限"
-            label_starts_at: "開始於"
-            label_expires_at: "過期於"
-            label_plan: "計畫"
-            label_additional_features: "附加功能"
-            receive_newsletter: 我想要接收 OpenProject <a target="_blank" href="%{link}">簡報</a>。
-            taken_domain: 每個域名只能有一個活動的試用。
-            domain_mismatch: 當前請求的主機名與配置的主機名不匹配。請仔細檢查您的系統設置。
-            taken_email: 每個用戶只能創建一個試用。
-          email_not_received: "沒有收到電子郵件？您可以使用右側的鏈接重新發送電子郵件。"
-          try_another_email: "或嘗試使用其他電子郵件"
-          next_steps: "下一步"
-          resend_link: "重新發送"
-          resend_success: "已重新發送電子郵件。請查看您的電子郵件並點擊提供的確認鏈接。"
-          resend_warning: "無法重送郵件"
-          session_timeout: "您的連線超時。請嘗試重新載入頁面或重新發送電子郵件。"
-          status_label: "狀態："
-          status_confirmed: "已確認"
-          status_waiting: "電子郵件已寄發-等待確認"
-          test_ee: "免費體驗企業版 14 天"
-          quick_overview: "用 OpenProject 企業版，快速瞭解項目管理和團隊協作的概況。"
         upsell:
-          become_hero: "成為英雄!"
-          enterprise_info_html: "%{feature_title} 是一個企業版<span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>的附加功能。"
-          upgrade_info: "請升級到付費版以啟用此功能"
-          text: >
-            OpenProject 企業版基於社群版，包含企業附加元件和專業支援，主要針對擁有超過 10 位使用者，並以 OpenProject 管理關鍵業務專案的組織。
-          you_contribute: "開發者也有生計需要。升級企業版可助力開源社群的發展，促進其維護與不斷優化。"
           benefits:
             description: "本地部署的 Enterprise edition 具有哪些優勢？"
             high_security: "安全功能"
@@ -253,15 +213,6 @@ zh-TW:
             premium_features_text: "敏捷看板、客製化主題與標誌、圖表、具備客製化動作的智慧工作流程、支援全文檢索工作套件文件及複選客製欄位。"
             professional_support: "專業支援"
             professional_support_text: "從高級支持工程師那裡獲得可靠的個性化支持，這些工程師擁有在業務關鍵型環境中運行 OpenProject 的專業知識。"
-          button_start_trial: "開始免費試用"
-          button_upgrade: "立即升級"
-          button_contact_us: "聯絡我們取得試用"
-          button_book_now: "立即預約"
-          confidence: >
-            我們秉承開源和開放心態，有信心提供經得起考驗和充分支持的企業級項目管理軟件。
-          link_quote: "獲取報價"
-          more_info: "更多資訊"
-          unlimited: "無限"
       working_days:
         calendar:
           empty_state_header: "非工作日"
