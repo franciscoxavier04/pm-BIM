@@ -410,11 +410,9 @@ RSpec.describe "Project phase field in the work package table", :js do
     end
   end
 
-  context "without the necessary permissions to view phases in some projects" do
+  context "without the necessary permissions to view phases in some other projects" do
     let!(:query) { build(:global_query, user: current_user) }
-    let(:another_project_permissions) do
-      all_permissions - [:view_project_phases]
-    end
+    let(:another_project_permissions) { all_permissions - [:view_project_phases] }
 
     it "does not render project phases you don't have permission for" do
       # permission given, phase visible:
@@ -501,21 +499,6 @@ RSpec.describe "Project phase field in the work package table", :js do
 
           wp_table.ensure_work_package_not_listed!(other_wp, work_package)
         end
-      end
-    end
-  end
-
-  context "without the necessary permissions to view phases in all projects" do
-    let(:project_permissions) { all_permissions - [:view_project_phases] }
-    let(:query_columns) { %w(subject) }
-
-    it "does not offer a phase column" do
-      expect(query.available_columns.map(&:name)).not_to include(:project_phase)
-    end
-
-    describe "filtering" do
-      it "does not offer a phase filter" do
-        expect(query.available_filters.map(&:name)).not_to include(:project_phase_definition_id)
       end
     end
   end

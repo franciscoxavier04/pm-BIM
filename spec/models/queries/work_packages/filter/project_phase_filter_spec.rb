@@ -34,14 +34,12 @@ RSpec.describe Queries::WorkPackages::Filter::ProjectPhaseFilter do
   it_behaves_like "basic query filter" do
     let(:type) { :list_optional }
     let(:class_key) { :project_phase_definition_id }
+
+    let!(:other_project) { create(:project) }
+
     current_user { build_stubbed(:user) }
 
-    context "with the permission to view project phases" do
-      before do
-        mock_permissions_for(current_user, &:allow_everything)
-        login_as(current_user)
-      end
-
+    shared_examples_for "be available" do
       describe "#available?" do
         context "with existing phases" do
           before do
@@ -62,9 +60,9 @@ RSpec.describe Queries::WorkPackages::Filter::ProjectPhaseFilter do
 
       describe "#allowed_values" do
         context "with existing phases" do
-          let!(:definition) { create(:project_phase_definition) }
-          let!(:other_definition) { create(:project_phase_definition) }
-          let!(:first_definition) { create(:project_phase_definition, position: 0) }
+          let!(:definition) { create(:project_phase_definition, position: 2) }
+          let!(:other_definition) { create(:project_phase_definition, position: 3) }
+          let!(:first_definition) { create(:project_phase_definition, position: 1) }
 
           it "returns an array of phase definition options, ordered by position" do
             expect(instance.allowed_values)
@@ -97,7 +95,7 @@ RSpec.describe Queries::WorkPackages::Filter::ProjectPhaseFilter do
       end
     end
 
-    context "without the permission to view project phases" do
+    shared_examples_for "be not available" do
       describe "#available?" do
         context "with existing phases" do
           before do
@@ -134,6 +132,54 @@ RSpec.describe Queries::WorkPackages::Filter::ProjectPhaseFilter do
               .to be_empty
           end
         end
+      end
+    end
+
+    context "with the permission to view project phases on this project" do
+      before do
+        mock_permissions_for(current_user) do |mock|
+          mock.allow_in_project(:view_project_phases, project:)
+        end
+      end
+
+      context "for single project query" do
+        it_behaves_like "be available"
+      end
+
+      context "for global query" do
+        let(:context) { build_stubbed(:query, project: nil) }
+
+        it_behaves_like "be available"
+      end
+    end
+
+    context "with the permission to view project phases on other project" do
+      before do
+        mock_permissions_for(current_user) do |mock|
+          mock.allow_in_project(:view_project_phases, project: other_project)
+        end
+      end
+
+      context "for single project query" do
+        it_behaves_like "be not available"
+      end
+
+      context "for global query" do
+        let(:context) { build_stubbed(:query, project: nil) }
+
+        it_behaves_like "be available"
+      end
+    end
+
+    context "without the permission to view project phases on any project" do
+      context "for single project query" do
+        it_behaves_like "be not available"
+      end
+
+      context "for global query" do
+        let(:context) { build_stubbed(:query, project: nil) }
+
+        it_behaves_like "be not available"
       end
     end
 
