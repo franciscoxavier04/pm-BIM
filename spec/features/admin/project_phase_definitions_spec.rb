@@ -140,7 +140,7 @@ RSpec.describe "Projects phase definition settings", :js, with_flag: { stages_an
       definitions_page.expect_listed(["Initiating", "Starting", "Imagining", "Processing"])
 
       definitions_page.drag_and_drop_list(from: 0, to: 3,
-                                          elements: "[data-test-selector=project-life-cycle-step-definition]",
+                                          elements: "[data-test-selector=project-phase-definition]",
                                           handler: ".DragHandle")
       wait_for_network_idle
       definitions_page.expect_listed(["Starting", "Imagining", "Processing", "Initiating"])
