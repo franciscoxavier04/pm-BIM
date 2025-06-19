@@ -88,9 +88,6 @@ zh-CN:
         type_token_text: "输入支持令牌文本"
         token_placeholder: "在此处粘贴您的企业版支持令牌"
       add_token: "上传企业版支持令牌"
-      delete_token_modal:
-        text: "您确定要删除当前使用的企业版令牌吗？"
-        title: "删除令牌"
       replace_token: "替换您当前的支持令牌"
       order: "订购本地部署的 Enterprise edition"
       paste: "粘贴您企业版的支持令牌"
@@ -102,8 +99,13 @@ zh-CN:
       buttons:
         upgrade: "立即升级"
         contact: "联系我们获取演示"
-      enterprise_info_html: "是企业版的 <span class='spot-icon spot-icon_enterprise-addons'></span> 附加功能。"
-      upgrade_info: "请升级到付费方案，以激活并开始在您的团队中使用该功能。"
+      status:
+        expired: "Expired"
+        expiring_soon: "Expiring soon"
+        in_grace_period: "In grace period"
+        invalid_domain: "Invalid domain"
+        not_active: "Not active"
+        trial: "Trial"
     jemalloc_allocator: 使用 jemalloc 内存分配器
     journal_aggregation:
       explanation:
@@ -913,9 +915,10 @@ zh-CN:
       enterprise_token:
         starts_at: "生效时间"
         subscriber: "订阅者"
+        subscription: "Subscription"
         plan: "方案"
         encoded_token: "企业版支持令牌"
-        active_user_count_restriction: "最大活动用户数"
+        active_user_count_restriction: "Active users"
       enterprise_trial:
         company: "Company"
       grids/grid:
@@ -1251,6 +1254,7 @@ zh-CN:
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "无法读取。是否确定为支持令牌？"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "重叠."
           outside: "不在网格内。"
@@ -2014,6 +2018,7 @@ zh-CN:
       plan_title: "企业 %{plan} 附加组件"
       plan_name: "%{plan} 企业计划"
       plan_text_html: "从 %{plan_name} 开始可用。"
+      unlimited: "Unlimited"
       already_have_token: >
         Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "隐藏此广告"

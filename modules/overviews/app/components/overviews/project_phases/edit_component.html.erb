@@ -1,12 +1,12 @@
 <%=
   component_wrapper do
     primer_form_with(
-      id: "project-life-cycles-edit-form",
+      id: "project-life-cycle-edit-form",
       model:,
       method: :put,
       data: {
-        controller: "overview--project-life-cycles-form",
-        "overview--project-life-cycles-form-url-value": preview_project_phase_path(model),
+        controller: "overview--project-life-cycle-form",
+        "overview--project-life-cycle-form-url-value": preview_project_phase_path(model),
         turbo: true,
         turbo_stream: true,
         "test-selector": "async-dialog-content"
@@ -15,7 +15,7 @@
     ) do |f|
       flex_layout do |flex|
         flex.with_row(mb: 1) do
-          render(Projects::LifeCycles::Form.new(f))
+          render(Projects::LifeCycle::Form.new(f))
         end
         flex.with_row do
           helpers.angular_component_tag "opce-wp-date-picker-instance",

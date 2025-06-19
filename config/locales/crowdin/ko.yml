@@ -88,9 +88,6 @@ ko:
         type_token_text: "지원 토큰 텍스트 입력"
         token_placeholder: "여기에 Enterprise Edition 지원 토큰을 붙여넣으세요"
       add_token: "Enterprise edition 지원 토큰을 업로드하세요."
-      delete_token_modal:
-        text: "현재 사용된 Enterprise edition 토큰을 제거하시겠습니까?"
-        title: "토큰 제거"
       replace_token: "당신의 현재 지원 토큰을 바꾸세요."
       order: "Enterprise on-premises edition 주문하기"
       paste: "Enterprise edition 지원 토큰을 붙여넣으세요."
@@ -102,8 +99,13 @@ ko:
       buttons:
         upgrade: "지금 업그레이드"
         contact: "당사에 데모 요청하기"
-      enterprise_info_html: "- Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> 추가 기능입니다."
-      upgrade_info: "활성화하고 팀에서 사용하려면 유료 플랜으로 업그레이드하세요."
+      status:
+        expired: "Expired"
+        expiring_soon: "Expiring soon"
+        in_grace_period: "In grace period"
+        invalid_domain: "Invalid domain"
+        not_active: "Not active"
+        trial: "Trial"
     jemalloc_allocator: Jemalloc 메모리 할당기
     journal_aggregation:
       explanation:
@@ -917,9 +919,10 @@ ko:
       enterprise_token:
         starts_at: "이후로 유효함"
         subscriber: "구독자"
+        subscription: "Subscription"
         plan: "플랜"
         encoded_token: "엔터프라이즈 지원 토큰"
-        active_user_count_restriction: "최대 활성 사용자"
+        active_user_count_restriction: "Active users"
       enterprise_trial:
         company: "Company"
       grids/grid:
@@ -1255,6 +1258,7 @@ ko:
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "읽을 수 없습니다. 지원하는 토큰이 확실한가요?"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "오버랩"
           outside: "- 그리드의 외부에 있습니다."
@@ -2018,6 +2022,7 @@ ko:
       plan_title: "Enterprise %{plan} 추가 기능"
       plan_name: "%{plan} Enterprise 플랜"
       plan_text_html: "%{plan_name}부터 사용 가능합니다."
+      unlimited: "Unlimited"
       already_have_token: >
         Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "이 배너 숨기기"

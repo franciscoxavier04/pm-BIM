@@ -88,9 +88,6 @@ fr:
         type_token_text: "Saisissez le texte du jeton d'assistance"
         token_placeholder: "Collez votre jeton d'assistance pour l'édition Enterprise ici"
       add_token: "Charger un jeton de support pour la version Entreprise"
-      delete_token_modal:
-        text: "Voulez-vous vraiment supprimer le jeton actuellement utilisé pour l'édition Entreprise ?"
-        title: "Supprimer le jeton"
       replace_token: "Remplacer votre licence actuelle"
       order: "Commander l'édition Entreprise auto-hébergée"
       paste: "Coller votre jeton de support pour la version Entreprise"
@@ -102,8 +99,13 @@ fr:
       buttons:
         upgrade: "Passer au plan supérieur"
         contact: "Contactez-nous pour une démo"
-      enterprise_info_html: "est un module de la version <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>Enterprise."
-      upgrade_info: "Veuillez passer à un plan payant pour l'activer et commencer à l'utiliser dans votre équipe."
+      status:
+        expired: "Expired"
+        expiring_soon: "Expiring soon"
+        in_grace_period: "In grace period"
+        invalid_domain: "Invalid domain"
+        not_active: "Not active"
+        trial: "Trial"
     jemalloc_allocator: Allocateur de mémoire Jemalloc
     journal_aggregation:
       explanation:
@@ -923,9 +925,10 @@ fr:
       enterprise_token:
         starts_at: "Valable depuis"
         subscriber: "Abonné"
+        subscription: "Subscription"
         plan: "Abonnement"
         encoded_token: "Licence Entreprise"
-        active_user_count_restriction: "Nombre maximal d’utilisateurs actif"
+        active_user_count_restriction: "Active users"
       enterprise_trial:
         company: "Company"
       grids/grid:
@@ -1261,6 +1264,7 @@ fr:
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "ne peut être lu. Êtes-vous sûr qu'il s'agisse d'une licence Entreprise ?"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "superposition."
           outside: "est hors de la grille."
@@ -2057,6 +2061,7 @@ fr:
       plan_title: "Add-on Enterprise %{plan}"
       plan_name: "Abonnement Enterprise %{plan}"
       plan_text_html: "Disponible à partir de l'abonnement %{plan_name}."
+      unlimited: "Unlimited"
       already_have_token: >
         Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Masquer cette bannière"

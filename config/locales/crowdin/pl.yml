@@ -88,9 +88,6 @@ pl:
         type_token_text: "Wpisz tekst tokenu wsparcia"
         token_placeholder: "Wklej swój token wsparcia wersji Enterprise tutaj"
       add_token: "Wyślij swój token wsparcia wersji Enterprise"
-      delete_token_modal:
-        text: "Czy na pewno chcesz usunąć używany token wersji Enterprise?"
-        title: "Usuń token"
       replace_token: "Wymień swój obecny token wsparcia"
       order: "Zamów wersję Enterprise On-Premises"
       paste: "Wklej swój token wsparcia wersji Enterprise"
@@ -102,8 +99,13 @@ pl:
       buttons:
         upgrade: "Zmień plan teraz"
         contact: "Skontaktuj się z nami, aby uzyskać demo"
-      enterprise_info_html: "jest dodatkiem wersji Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
-      upgrade_info: "Aby ją aktywować i zacząć korzystać z niej w zespole, przejdź na plan płatny."
+      status:
+        expired: "Expired"
+        expiring_soon: "Expiring soon"
+        in_grace_period: "In grace period"
+        invalid_domain: "Invalid domain"
+        not_active: "Not active"
+        trial: "Trial"
     jemalloc_allocator: Alokator pamięci Jemalloc
     journal_aggregation:
       explanation:
@@ -937,9 +939,10 @@ pl:
       enterprise_token:
         starts_at: "Ważne od"
         subscriber: "Subskrybent"
+        subscription: "Subscription"
         plan: "Plan"
         encoded_token: "Token wsparcia Enterprise"
-        active_user_count_restriction: "Maksymalna liczba aktywnych użytkowników"
+        active_user_count_restriction: "Active users"
       enterprise_trial:
         company: "Company"
       grids/grid:
@@ -1275,6 +1278,7 @@ pl:
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "nie można odczytać. Czy na pewno jest to token wsparcia?"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "nałożenie."
           outside: "jest poza siatką."
@@ -2137,6 +2141,7 @@ pl:
       plan_title: "Dodatek do planu Enterprise %{plan}"
       plan_name: "Plan Enterprise %{plan}"
       plan_text_html: "Dostępne od wersji %{plan_name}."
+      unlimited: "Unlimited"
       already_have_token: >
         Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Ukryj ten baner"

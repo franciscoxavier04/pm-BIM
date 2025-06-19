@@ -149,6 +149,18 @@ RSpec.describe "API V3 Authentication" do
       end
     end
 
+    context "when the token's resource owner is locked" do
+      let(:token) { create(:oauth_access_token, resource_owner: user) }
+      let(:oauth_access_token) { token.plaintext_token }
+      let(:user) { create(:user, :locked) }
+
+      it "returns unauthorized" do
+        expect(last_response).to have_http_status :unauthorized
+        expect(last_response.header["WWW-Authenticate"]).to eq('Bearer realm="OpenProject API", error="invalid_token"')
+        expect(JSON.parse(last_response.body)).to eq(error_response_body)
+      end
+    end
+
     context "when there is no resource owner on the token" do
       let(:token) { create(:oauth_access_token, resource_owner: nil, application:) }
       let(:application) { create(:oauth_application) }
@@ -172,6 +184,17 @@ RSpec.describe "API V3 Authentication" do
 
         it "authenticates successfully" do
           expect(last_response).to have_http_status :ok
+        end
+
+        context "and the client credentials user is locked" do
+          let(:user) { create(:user, :locked) }
+          let(:expected_message) { "You did not provide the correct credentials." }
+
+          it "returns unauthorized" do
+            expect(last_response).to have_http_status :unauthorized
+            expect(last_response.header["WWW-Authenticate"]).to eq('Bearer realm="OpenProject API", error="invalid_token"')
+            expect(JSON.parse(last_response.body)).to eq(error_response_body)
+          end
         end
       end
     end
