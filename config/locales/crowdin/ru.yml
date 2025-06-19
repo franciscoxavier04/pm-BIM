@@ -88,9 +88,6 @@ ru:
         type_token_text: "Введите текст токена поддержки"
         token_placeholder: "Вставьте ваш токен поддержки корпоративной версии здесь"
       add_token: "Загрузить токен поддержки корпоративной версии"
-      delete_token_modal:
-        text: "Вы уверены, что хотите удалить текущий токен корпоративной версии?"
-        title: "Удалить токен"
       replace_token: "Замените ваш текущий маркер поддержки"
       order: "Закажите корпоративную версию"
       paste: "Вставьте ваш маркер поддержки корпоративной версии"
@@ -102,8 +99,13 @@ ru:
       buttons:
         upgrade: "Обновить сейчас"
         contact: "Свяжитесь с нами для демо"
-      enterprise_info_html: "является дополнением Корпоративной версии <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
-      upgrade_info: "Пожалуйста, перейдите на платный тарифный план, чтобы активировать его и начать использовать в вашей команде."
+      status:
+        expired: "Expired"
+        expiring_soon: "Expiring soon"
+        in_grace_period: "In grace period"
+        invalid_domain: "Invalid domain"
+        not_active: "Not active"
+        trial: "Trial"
     jemalloc_allocator: Распределитель памяти Jemalloc
     journal_aggregation:
       explanation:
@@ -939,9 +941,10 @@ ru:
       enterprise_token:
         starts_at: "Действует с"
         subscriber: "Подписчик"
+        subscription: "Subscription"
         plan: "Подписка"
         encoded_token: "Маркер поддержки корпоративной версии"
-        active_user_count_restriction: "Максимальное число активных пользователей"
+        active_user_count_restriction: "Active users"
       enterprise_trial:
         company: "Компания"
       grids/grid:
@@ -1277,6 +1280,7 @@ ru:
           general_consent: "Пожалуйста, подтвердите правила и условия пользования."
         enterprise_token:
           unreadable: "невозможно прочитать. Вы уверены, что это маркер поддержки?"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "перекрытие."
           outside: "за пределами сетки."
@@ -2139,6 +2143,7 @@ ru:
       plan_title: "Дополнение корпоративной версии %{plan}"
       plan_name: "Корпоративная версия %{plan}"
       plan_text_html: "Доступно начиная с %{plan_name}."
+      unlimited: "Unlimited"
       already_have_token: >
         Уже есть токен? Добавьте его с помощью кнопки ниже, чтобы перейти на корпоративную лицензию.
       hide_banner: "Скрыть этот баннер"
@@ -4444,12 +4449,12 @@ ru:
         message: "Совместное использование списков проектов с отдельными пользователями является корпоративным дополнением."
   working_days:
     info: >
-      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
+      Невыбранные дни пропускаются при планировании пакетов работ и жизненного цикла проекта (и не включаются в подсчет дней). Они могут быть переопределены на уровне пакетов работ.
     instance_wide_info: >
       Даты, добавленные в список ниже, считаются нерабочими и пропускаются при планировании пакетов работ.
     change_button: "Изменить рабочие дни"
     warning: >
-      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
+      Изменение дней недели, считающихся рабочими или нерабочими днями, может повлиять на начало и завершение всех пакетов работ и жизненных циклов во всех проектах.
     journal_note:
       changed: _**Рабочие дни** изменены (%{changes})._
       days:

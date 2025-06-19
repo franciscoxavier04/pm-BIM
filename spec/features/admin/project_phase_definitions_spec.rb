@@ -115,14 +115,10 @@ RSpec.describe "Projects phase definition settings", :js, with_flag: { stages_an
       definitions_page.select_color("Azure")
       click_on "Create"
 
-      definitions_page.expect_and_dismiss_flash(message: "Successful creation.")
-
       definitions_page.add
       fill_in "Name", with: "Initiating"
       definitions_page.select_color("Gold")
       click_on "Create"
-
-      definitions_page.expect_and_dismiss_flash(message: "Successful creation.")
 
       definitions_page.expect_listed(["Starting", "Processing", "Imagining", "Initiating"])
 
@@ -143,22 +139,20 @@ RSpec.describe "Projects phase definition settings", :js, with_flag: { stages_an
       wait_for_network_idle
       definitions_page.expect_listed(["Initiating", "Starting", "Imagining", "Processing"])
 
-      retry_block do
-        definitions_page.drag_and_drop_list(from: 0, to: 2,
-                                            elements: "[data-test-selector=project-life-cycle-step-definition]",
-                                            handler: ".DragHandle")
-        wait_for_network_idle
-        definitions_page.expect_listed(["Starting", "Imagining", "Initiating", "Processing"])
-      end
+      definitions_page.drag_and_drop_list(from: 0, to: 3,
+                                          elements: "[data-test-selector=project-life-cycle-step-definition]",
+                                          handler: ".DragHandle")
+      wait_for_network_idle
+      definitions_page.expect_listed(["Starting", "Imagining", "Processing", "Initiating"])
 
       definitions_page.reload!
-      definitions_page.expect_listed(["Starting", "Imagining", "Initiating", "Processing"])
+      definitions_page.expect_listed(["Starting", "Imagining", "Processing", "Initiating"])
 
       # deleting
       accept_confirm I18n.t(:text_are_you_sure_with_project_life_cycle_step) do
         definitions_page.click_definition_action("Imagining", action: "Delete")
       end
-      definitions_page.expect_listed(["Starting", "Initiating", "Processing"])
+      definitions_page.expect_listed(["Starting", "Processing", "Initiating"])
     end
   end
 end

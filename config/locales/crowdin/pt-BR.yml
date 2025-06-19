@@ -88,9 +88,6 @@ pt-BR:
         type_token_text: "Digitar texto do token de suporte"
         token_placeholder: "Colar seu token de suporte da edição Enterprise"
       add_token: "Carregar um token de suporte da edição Enterprise "
-      delete_token_modal:
-        text: "Tem a certeza de que deseja remover o token atual da edição Enterprise?"
-        title: "Excluir token"
       replace_token: "Substitua seu token atual de suporte"
       order: "Solicitar edição Enterprise local"
       paste: "Cole o seu token de suporte da edição Enterprise"
@@ -102,8 +99,13 @@ pt-BR:
       buttons:
         upgrade: "Atualizar agora"
         contact: "Contate-nos para uma demonstração"
-      enterprise_info_html: "é um complemento do <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> Enterprise."
-      upgrade_info: "Por favor, faça o upgrade para um plano pago para ativar e começar a usá-lo em sua equipe."
+      status:
+        expired: "Expired"
+        expiring_soon: "Expiring soon"
+        in_grace_period: "In grace period"
+        invalid_domain: "Invalid domain"
+        not_active: "Not active"
+        trial: "Trial"
     jemalloc_allocator: Alocador de memória Jemalloc
     journal_aggregation:
       explanation:
@@ -922,9 +924,10 @@ pt-BR:
       enterprise_token:
         starts_at: "Válido desde"
         subscriber: "Assinante"
+        subscription: "Subscription"
         plan: "Plano"
         encoded_token: "Token de suporte Enterprise"
-        active_user_count_restriction: "Máximo de usuários ativos"
+        active_user_count_restriction: "Active users"
       enterprise_trial:
         company: "Company"
       grids/grid:
@@ -1260,6 +1263,7 @@ pt-BR:
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "não pode ser lido. Tem certeza que é um token de suporte?"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "sobreposição."
           outside: "está fora da grade."
@@ -2056,6 +2060,7 @@ pt-BR:
       plan_title: "Complemento do %{plan} Enterprise"
       plan_name: "Plano enterprise %{plan}"
       plan_text_html: "Disponível a partir do %{plan_name}."
+      unlimited: "Unlimited"
       already_have_token: >
         Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Ocultar este banner"

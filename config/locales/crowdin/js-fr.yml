@@ -203,47 +203,7 @@ fr:
         new_group: "Nouveau groupe"
         reset_to_defaults: "Rétablir les valeurs par défaut"
       enterprise:
-        text_reprieve_days_left: "%{days} jours avant la fin de la période de grâce"
-        text_expired: "expiré"
-        trial:
-          confirmation: "Confirmation de l'adresse e-mail"
-          form:
-            general_consent: >
-              J'accepte les <a target="_blank" href="%{link_terms}">conditions d'utilisation</a> et la <a target="_blank" href="%{link_privacy}">politique de confidentialité</a>.
-            invalid_email: "Adresse e-mail invalide"
-            label_company: "Société"
-            label_first_name: "Prénom"
-            label_last_name: "Nom de famille"
-            label_domain: "Domaine"
-            label_subscriber: "Abonné"
-            label_maximum_users: "Nombre maximal d’utilisateurs actif"
-            label_starts_at: "Commence à"
-            label_expires_at: "Expire le"
-            label_plan: "Abonnement"
-            label_additional_features: "Fonctionnalités supplémentaires"
-            receive_newsletter: Je veux recevoir la <a target="_blank" href="%{link}">newsletter OpenProject</a>.
-            taken_domain: Il ne peut y avoir qu'un seul essai actif par domaine.
-            domain_mismatch: Le nom d'hôte de la requête actuelle ne correspond pas au nom d'hôte configuré. Veuillez vérifier les paramètres de votre système.
-            taken_email: Chaque utilisateur ne peut créer qu'un essai.
-          email_not_received: "Vous n'avez pas reçu d'e-mail ? Vous pouvez renvoyer l'e-mail avec le lien à droite."
-          try_another_email: "Ou essayez avec une autre adresse e-mail."
-          next_steps: "Prochaines étapes"
-          resend_link: "Renvoyer"
-          resend_success: "L'e-mail a été renvoyé. Veuillez vérifier vos e-mails et cliquer sur le lien de confirmation fourni."
-          resend_warning: "Impossible de renvoyer l'e-mail."
-          session_timeout: "Votre session a expiré. Veuillez rafraîchir la page ou renvoyer l'e-mail."
-          status_label: "Statut :"
-          status_confirmed: "confirmé"
-          status_waiting: "e-mail envoyé - en attente de confirmation"
-          test_ee: "Essayez gratuitement la version Entreprise pendant 14 jours"
-          quick_overview: "Obtenez un aperçu rapide de la gestion de projets et de la collaboration en équipe avec la version Entreprise d'OpenProject."
         upsell:
-          become_hero: "Devenez un héros !"
-          enterprise_info_html: "%{feature_title} est un module de la version <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>Enterprise."
-          upgrade_info: "Veuillez passer à une offre payante pour l'activer et commencer à l'utiliser dans votre équipe."
-          text: >
-            L'édition OpenProject Enterprise s'appuie sur l'édition Community. Elle comprend des add-ons Enterprise et une assistance professionnelle principalement destinée aux organisations comptant plus de 10 utilisateurs qui gèrent des projets sensibles avec OpenProject.
-          you_contribute: "Les développeurs doivent également payer leurs factures. En passant à l'édition Enterprise, vous soutiendrez cet effort communautaire open source et contribuerez à son développement, à sa maintenance et à son amélioration continue."
           benefits:
             description: "Quels sont les avantages de l'édition Entreprise autohébergée ?"
             high_security: "Fonctionnalités de sécurité"
@@ -254,15 +214,6 @@ fr:
             premium_features_text: "Tableaux agiles, thème et logo personnalisés, graphiques, flux de travail intelligents avec actions personnalisées, recherche en plein texte des pièces jointes de lots de travaux et champs personnalisés à choix multiples"
             professional_support: "Support professionnel"
             professional_support_text: "Obtenez une assistance fiable et disponible de la part d'ingénieurs d'assistance expérimentés qui ont une connaissance approfondie de la mise en œuvre d'OpenProject dans des environnements critiques pour l'entreprise."
-          button_start_trial: "Commencer l'essai gratuit"
-          button_upgrade: "Mettre à niveau maintenant"
-          button_contact_us: "Contactez-nous pour une démo"
-          button_book_now: "Réserver maintenant"
-          confidence: >
-            Nous fournissons la confiance d'un logiciel de gestion de projet de classe entreprise testé et supporté - en Open Source et un avec esprit ouvert.
-          link_quote: "Obtenir un devis"
-          more_info: "Plus d'informations"
-          unlimited: "Illimité"
       working_days:
         calendar:
           empty_state_header: "Jours non travaillés"

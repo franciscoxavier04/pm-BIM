@@ -88,9 +88,6 @@ ca:
         type_token_text: "Type support token text"
         token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Carrega un token de suport de l'edició Enterprise"
-      delete_token_modal:
-        text: "Estàs segur que vols eliminar el token de l'edició Enterprise utilitzat?"
-        title: "Eliminar el token"
       replace_token: "Substitueix el teu token de suport actual"
       order: "Ordena l'edició Enterpise on-premises"
       paste: "Enganxa el teu token de suport de l'edició Enterprise"
@@ -102,8 +99,13 @@ ca:
       buttons:
         upgrade: "Actualitza ara"
         contact: "Contacta amb nosaltres per una demostració"
-      enterprise_info_html: "és una extensió de l'edició Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'>."
-      upgrade_info: "Si us plau, actualitza a una versió de pagament per tal d'activar i començar a utilitzar aquesta funcionalitat en el teu equip."
+      status:
+        expired: "Expired"
+        expiring_soon: "Expiring soon"
+        in_grace_period: "In grace period"
+        invalid_domain: "Invalid domain"
+        not_active: "Not active"
+        trial: "Trial"
     jemalloc_allocator: Jemalloc memory allocator
     journal_aggregation:
       explanation:
@@ -922,9 +924,10 @@ ca:
       enterprise_token:
         starts_at: "Vàlid des de"
         subscriber: "Subscriptor"
+        subscription: "Subscription"
         plan: "Plan"
         encoded_token: "Token de suport Enterprise"
-        active_user_count_restriction: "Màxim nombre d'usuaris actius"
+        active_user_count_restriction: "Active users"
       enterprise_trial:
         company: "Company"
       grids/grid:
@@ -1260,6 +1263,7 @@ ca:
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "no es pot llegir. Estàs segur que és un token de suport?"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "superposició."
           outside: "és fora de la graella."
@@ -2056,6 +2060,7 @@ ca:
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
+      unlimited: "Unlimited"
       already_have_token: >
         Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Hide this banner"

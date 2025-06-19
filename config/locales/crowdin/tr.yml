@@ -88,9 +88,6 @@ tr:
         type_token_text: "Type support token text"
         token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Bir Enterprise sürümü destek belirteci yükleyin"
-      delete_token_modal:
-        text: "Kullanılan geçerli Enterprise sürümü belirtecini kaldırmak istediğinizden emin misiniz?"
-        title: "Anahtarı sil"
       replace_token: "Geçerli destek anahtarını değiştirin"
       order: "Enterprise on-premises edition sipariş edin"
       paste: "Enterprise sürümü destek belirtecinizi yapıştırın"
@@ -102,8 +99,13 @@ tr:
       buttons:
         upgrade: "Şimdi yükselt"
         contact: "Demo için bizimle iletişime geçin"
-      enterprise_info_html: "Kurumsal bir <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> eklentidir."
-      upgrade_info: "Etkinleştirmek ve ekibinizde kullanmaya başlamak için lütfen ücretli bir plana yükseltin."
+      status:
+        expired: "Expired"
+        expiring_soon: "Expiring soon"
+        in_grace_period: "In grace period"
+        invalid_domain: "Invalid domain"
+        not_active: "Not active"
+        trial: "Trial"
     jemalloc_allocator: Jemalloc bellek ayırıcı
     journal_aggregation:
       explanation:
@@ -924,9 +926,10 @@ tr:
       enterprise_token:
         starts_at: "Beri geçerli"
         subscriber: "Abone"
+        subscription: "Subscription"
         plan: "Plan"
         encoded_token: "Kurumsal Destek anahtarı"
-        active_user_count_restriction: "En çok aktif kullanıcı"
+        active_user_count_restriction: "Active users"
       enterprise_trial:
         company: "Company"
       grids/grid:
@@ -1262,6 +1265,7 @@ tr:
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "okunamıyor. Desteklenen bir destek anahtarı olduğuna emin misiniz?"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "üst üste gelmek."
           outside: "Grup dışında görünmektedir."
@@ -2058,6 +2062,7 @@ tr:
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
+      unlimited: "Unlimited"
       already_have_token: >
         Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Hide this banner"

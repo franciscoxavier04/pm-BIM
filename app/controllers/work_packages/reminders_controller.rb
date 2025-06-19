@@ -30,7 +30,10 @@
 
 class WorkPackages::RemindersController < ApplicationController
   include OpTurbo::ComponentStream
+  include Redmine::I18n
+
   layout false
+
   before_action :find_work_package
   before_action :find_or_build_reminder, only: %i[modal_body create]
   before_action :find_reminder, only: %i[update destroy]
@@ -50,7 +53,9 @@ class WorkPackages::RemindersController < ApplicationController
                                              .call(reminder_params)
 
     if service_result.success?
-      respond_with_success_flash_message(message: I18n.t("work_package.reminders.success_creation_message"))
+      message = I18n.t("work_package.reminders.create_success_message",
+                       reminder_time: reminder_chosen_time(service_result.result)).html_safe
+      respond_with_success_flash_message(message:)
     else
       respond_with_error_modal_component(service_result)
     end
@@ -100,6 +105,12 @@ class WorkPackages::RemindersController < ApplicationController
     )
 
     respond_with_turbo_streams(status: :unprocessable_entity)
+  end
+
+  def reminder_chosen_time(reminder)
+    OpPrimer::RelativeTimeComponent.new(
+      datetime: in_user_zone(reminder.remind_at)
+    ).render_in(view_context)
   end
 
   def find_work_package
