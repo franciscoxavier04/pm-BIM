@@ -115,12 +115,27 @@ RSpec.describe "Projects phase definition settings", :js, with_flag: { stages_an
       definitions_page.select_color("Azure")
       click_on "Create"
 
+      definitions_page.expect_and_dismiss_flash(message: "Successful creation.")
+
+      definitions_page.expect_gates_mentioned_for("Imagining", "No gate")
+
       definitions_page.add
       fill_in "Name", with: "Initiating"
       definitions_page.select_color("Gold")
+
+      click_on "Phase gates"
+
+      check "Start phase gate"
+      fill_in "Start phase gate name", with: "Ready to Initiate"
+      check "Finish phase gate"
+      fill_in "Finish phase gate name", with: "Finished initiating"
+
       click_on "Create"
 
+      definitions_page.expect_and_dismiss_flash(message: "Successful creation.")
+
       definitions_page.expect_listed(["Starting", "Processing", "Imagining", "Initiating"])
+      definitions_page.expect_gates_mentioned_for("Initiating", "Start and finish gate")
 
       # moving
       definitions_page.click_definition_action("Processing", action: "Move to bottom")

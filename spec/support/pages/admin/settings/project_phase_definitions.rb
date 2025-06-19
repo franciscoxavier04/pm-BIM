@@ -57,6 +57,12 @@ module Pages
           end
         end
 
+        def expect_gates_mentioned_for(definition, gates_string)
+          within page.find(test_selector("project-phase-definition"), text: definition) do
+            expect(page).to have_content(gates_string)
+          end
+        end
+
         def filter_with(string)
           fill_in I18n.t("settings.project_phase_definitions.filter.label"), with: string
         end
