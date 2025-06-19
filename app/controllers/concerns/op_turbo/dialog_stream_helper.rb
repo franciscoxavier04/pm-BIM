@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,13 +31,9 @@
 module OpTurbo
   module DialogStreamHelper
     def respond_with_dialog(dialog_component, status: :ok, &format_block)
-      respond_to do |format|
-        format.turbo_stream do
-          render turbo_stream: dialog_component.render_as_turbo_stream(view_context:, action: :dialog), status:
-        end
+      modify_via_turbo_stream(component: dialog_component, action: :dialog, status:)
 
-        yield(format) if format_block
-      end
+      respond_to_with_turbo_streams(&format_block)
     end
   end
 end
