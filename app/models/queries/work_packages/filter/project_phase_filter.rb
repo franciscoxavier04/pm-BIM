@@ -68,7 +68,11 @@ class Queries::WorkPackages::Filter::ProjectPhaseFilter < Queries::WorkPackages:
   private
 
   def project_phase_feature_available?
-    User.current.allowed_in_any_project?(:view_project_phases)
+    if (project = context&.project)
+      User.current.allowed_in_project?(:view_project_phases, project)
+    else
+      User.current.allowed_in_any_project?(:view_project_phases)
+    end
   end
 
   def project_phase_definitions
