@@ -163,7 +163,7 @@ gem "prawn", "~> 2.4"
 gem "ttfunk", "~> 1.7.0" # remove after https://github.com/prawnpdf/prawn/issues/1346 resolved.
 
 # prawn implicitly depends on matrix gem no longer in ruby core with 3.1
-gem "matrix", "~> 0.4.2"
+gem "matrix", "~> 0.4.3"
 
 gem "meta-tags", "~> 2.22.0"
 
