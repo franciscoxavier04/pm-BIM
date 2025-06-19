@@ -34,7 +34,7 @@ See COPYRIGHT and LICENSE files for more details.
         container_class: defined?(input_size) ? "-#{input_size}" : "-wide"
       ) %>
   <div class="form--field">
-    <%= pref_fields.select :theme, theme_options_for_select, container_class: "-middle" %>
+    <%= pref_fields.select :theme, theme_options_for_select, container_class: "-middle" %> <!-- TODO -->
     <div class="form--field-instructions">
       <%= I18n.t("activerecord.attributes.user_preference.mode_guideline") %>
     </div>

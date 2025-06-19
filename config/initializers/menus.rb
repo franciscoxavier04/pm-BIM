@@ -203,6 +203,10 @@ Redmine::MenuManager.map :my_menu do |menu|
             { controller: "/my", action: "settings" },
             caption: :label_setting_plural,
             icon: "gear"
+  menu.push :interface,
+            { controller: "/my", action: "interface" },
+            caption: :label_interface,
+            icon: "device-desktop"
   menu.push :password,
             { controller: "/my", action: "password" },
             caption: :button_change_password,
