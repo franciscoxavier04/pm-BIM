@@ -1878,4 +1878,28 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
         .to eq [[custom_field_of_new_type.id, "8"]]
     end
   end
+
+  context "when a predecessor with a child is made a child of its successor" do
+    let_work_packages(<<~TABLE)
+      hierarchy    | scheduling mode | successors
+      work_package | automatic       | successor
+        child      | manual          |
+      successor    | automatic       |
+    TABLE
+    let(:attributes) do
+      {
+        parent: successor
+      }
+    end
+
+    # Bug #63499: this was causing an infinite loop when computing the future
+    # dates of the predecessor.
+    it "displays an error about the inability to have multiple relations between the same work packages (Bug #63499)" do
+      expect(subject).to be_failure
+
+      expect(subject.errors.attribute_names).to contain_exactly(:parent)
+      # the error message in this case is far from ideal
+      expect(subject.errors.details).to include(parent: [{ error: :cant_link_a_work_package_with_a_descendant }])
+    end
+  end
 end
