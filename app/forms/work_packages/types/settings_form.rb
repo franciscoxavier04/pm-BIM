@@ -52,7 +52,8 @@ module WorkPackages
             name: :copy_workflow_from,
             input_width: :medium,
             label: I18n.t(:label_copy_workflow_from),
-            include_blank: true
+            include_blank: true,
+            validation_message: validation_message_for(:copy_workflow_from)
           ) do |other_types|
             work_package_types.each do |type|
               other_types.option(
@@ -104,6 +105,10 @@ module WorkPackages
 
       def work_package_types
         Type.all
+      end
+
+      def validation_message_for(attribute)
+        model.errors.messages_for(attribute).to_sentence.presence
       end
 
       def prefilled_copy_workflow_from
