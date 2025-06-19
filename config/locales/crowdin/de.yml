@@ -4300,12 +4300,12 @@ de:
         message: "Das Teilen von Projektlisten mit einzelnen Nutzern ist ein Enterprise Add-on"
   working_days:
     info: >
-      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
+      Tage, die nicht ausgewählt sind, werden bei der Planung von Arbeitspaketen und Projektphasen übersprungen (und bei der Tageszählung nicht berücksichtigt). Diese können auf Arbeitspaket-Ebene überschrieben werden.
     instance_wide_info: >
       Daten, die der Liste unten hinzugefügt werden, gelten als arbeitsfrei und werden bei der Planung von Arbeitspaketen übersprungen.
     change_button: "Arbeitstage ändern"
     warning: >
-      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
+      Die Änderung der Wochentage, die als Arbeitstage oder arbeitsfreie Tage gelten, kann sich auf die Start- und Endtage aller Arbeitspakete und Projektphasen in allen Projekten auswirken.
     journal_note:
       changed: _**Arbeitstage** geändert (%{changes})._
       days:

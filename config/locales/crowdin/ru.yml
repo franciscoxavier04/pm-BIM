@@ -4387,12 +4387,12 @@ ru:
         message: "Совместное использование списков проектов с отдельными пользователями является корпоративным дополнением."
   working_days:
     info: >
-      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
+      Невыбранные дни пропускаются при планировании пакетов работ и жизненного цикла проекта (и не включаются в подсчет дней). Они могут быть переопределены на уровне пакетов работ.
     instance_wide_info: >
       Даты, добавленные в список ниже, считаются нерабочими и пропускаются при планировании пакетов работ.
     change_button: "Изменить рабочие дни"
     warning: >
-      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
+      Изменение дней недели, считающихся рабочими или нерабочими днями, может повлиять на начало и завершение всех пакетов работ и жизненных циклов во всех проектах.
     journal_note:
       changed: _**Рабочие дни** изменены (%{changes})._
       days:
