@@ -131,9 +131,15 @@ html_table:
     styles: [ 'bold' ]
     background-color: 'F0F0F0'
     size: 10
+    border-width: 0.25
+    border-color: '000000'
+    no_border: true
   cell:
     padding: 1mm
     size: 9
+    border-width: 0.25
+    border-color: '000000'
+    no_border: true
 
 blockquote:
   background-color: 'f4f9ff'
