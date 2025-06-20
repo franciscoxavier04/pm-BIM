@@ -47,12 +47,14 @@ See COPYRIGHT and LICENSE files for more details.
     <div class="form--field">
       <%= f.select :language, lang_options_for_select, container_class: "-middle" %>
     </div>
-    <%= render Settings::TimeZoneSettingComponent.new(
-          "time_zone",
-          form: f,
-          include_blank: false,
-          container_class: "-middle"
-        ) %>
+    <%= fields_for :pref, @user.pref, builder: TabularFormBuilder, lang: current_language do |pref_fields| %>
+      <%= render Settings::TimeZoneSettingComponent.new(
+            "time_zone",
+            form: pref_fields,
+            include_blank: false,
+            container_class: "-middle"
+          ) %>
+      <% end %>
   </fieldset>
   <%= styled_button_tag t(:button_save), class: "-primary -with-icon icon-checkmark" %>
 <% end %>

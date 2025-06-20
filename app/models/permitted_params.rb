@@ -264,8 +264,11 @@ class PermittedParams
   end
 
   def pref
-    params.fetch(:pref, {}).permit(:time_zone, :theme,
-                                   :comments_sorting, :warn_on_leaving_unsaved,
+    params.fetch(:pref, {}).permit(:time_zone,
+                                   :theme,
+                                   :comments_sorting,
+                                   :disable_keyboard_shortcuts,
+                                   :warn_on_leaving_unsaved,
                                    :auto_hide_popups)
   end
 

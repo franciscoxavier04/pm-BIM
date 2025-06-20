@@ -47,7 +47,7 @@ See COPYRIGHT and LICENSE files for more details.
   end
 %>
 <%=
-  settings_primer_form_with(model: @user.pref, scope: :pref, url: { action: "update_settings" }) do |form|
+  settings_primer_form_with(model: @user.pref, scope: :pref, url: { action: "update_settings" }, method: :patch, data: { turbo: false }) do |form|
     render(My::LookAndFeelForm.new(form))
   end
 %>
@@ -58,7 +58,7 @@ See COPYRIGHT and LICENSE files for more details.
   end
 %>
 <%=
-  settings_primer_form_with(model: @user.pref, scope: :pref, url: { action: "update_settings" }) do |form|
+  settings_primer_form_with(model: @user.pref, scope: :pref, url: { action: "update_settings" }, data: { turbo: false }) do |form|
     render(My::AlertsForm.new(form))
   end
 %>

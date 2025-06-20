@@ -30,12 +30,12 @@
 
 class My::BacklogsForm < ApplicationForm
   form do |f|
-    f.text_field name: :"backlogs[task_color]",
+    f.text_field name: :task_color,
                  label: I18n.t("backlogs.task_color"),
                  value: @color,
                  input_width: :xsmall
 
-    f.check_box name: :"backlogs[versions_default_fold_state]",
+    f.check_box name: :versions_default_fold_state,
                 value: DEFAULT_FOLD_STATE,
                 checked: default_fold_state_checked?,
                 label: I18n.t("backlogs.label_versions_default_fold_state"),
