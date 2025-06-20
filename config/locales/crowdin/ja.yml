@@ -37,8 +37,8 @@ ja:
         label_submit_comment: "コメントする"
         label_who: 誰が？
         changed_on: "を変更した"
-        created_on: "created this on"
-        changed: "changed"
+        created_on: "これを作成したのは"
+        changed: "変更済み"
         created: "作成する"
         commented: "コメント"
         internal_comment: 内部コメント
@@ -70,8 +70,8 @@ ja:
       custom_colors: "カスタム色"
       manage_colors: "色の選択オプションを編集"
       instructions:
-        primary-button-color: "Strong accent color, used for the most important button on a screen."
-        accent-color: "Color for links and other decently highlighted elements."
+        primary-button-color: "画面上で最も重要なボタンに使用される強いアクセントカラー。"
+        accent-color: "リンクや強調表示された要素の色。"
         header-item-bg-hover-color: "クリック可能なヘッダー項目にマウスを置いたときの背景色。"
         header-item-font-color: "クリック可能なヘッダー項目のフォント色。"
         header-item-font-hover-color: "クリック可能なヘッダー項目にマウスを置いたときのフォント色。"
@@ -97,7 +97,7 @@ ja:
         contact: "デモについてはお問い合わせください"
       enterprise_info_html: "は、Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> アドオンです。"
       upgrade_info: "有料プランにアップグレードして、チームで使用を開始してください。"
-    jemalloc_allocator: Jemalloc memory allocator
+    jemalloc_allocator: Jemalloc メモリアロケータ
     journal_aggregation:
       explanation:
         text: "Individual actions of a user (e.g. updating a work package twice) are aggregated into a single action if their age difference is less than the specified timespan. They will be displayed as a single action within the application. This will also delay notifications by the same amount of time reducing the number of emails being sent and will also affect %{webhook_link} delay."
@@ -237,8 +237,8 @@ ja:
           heading: "カスタムフィールド項目を削除しますか？"
           description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
-          label: "Item label"
-          short: "Short name"
+          label: "アイテムラベル"
+          short: "ショートネーム"
       notice:
         remember_items_and_projects: "Remember to set items and projects in the respective tabs for this custom field."
       hierarchy:
@@ -286,16 +286,16 @@ ja:
         short:
           not_unique: "は、同じ階層レベル内で一意である必要があります。"
         parent:
-          not_descendant: "must be a descendant of the hierarchy root."
+          not_descendant: "階層ルートの子孫でなければなりません"
     rules:
-      depth: "Depth"
-      item: "Item"
+      depth: "深さ"
+      item: "アイテム"
       label: "Label"
-      short: "Short name"
+      short: "ショートネーム"
       parent: "親項目"
       blueprint: "Pattern blueprint"
   global_search:
-    placeholder: "Search in %{app_title}"
+    placeholder: "%{app_title}で検索"
     overwritten_tabs:
       all: "全て"
       messages: "フォーラム"
@@ -349,7 +349,7 @@ ja:
       delete_modal:
         title: "プロジェクトリストの削除"
         heading: "このプロジェクトリストを削除しますか？"
-        text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
+        text: "この操作では、リストに含まれるプロジェクトは削除されません。本当にこのプロジェクトリストを削除しますか？"
     settings:
       header_details: 基本情報
       header_status: プロジェクトの進捗状況
@@ -365,14 +365,14 @@ ja:
         description: >
           このプロジェクトは公開されています。このインスタンスにアクセスできる人は誰でも、自分の役割と関連する権限に応じて、このプロジェクトを表示し、操作することができます。サブプロジェクトは影響を受けず、独自の設定を持ちます。
       private_confirmation:
-        checkbox: "I understand that this will make the previously public content private."
-        title: "Make this project private?"
+        checkbox: "これにより、公開されていたコンテンツが非公開になることを理解しています。"
+        title: "このプロジェクトを非公開にしますか？"
         description: >
           The project will only be visible to project members depending on their role and associated permissions. Sub-projects are not affected and have their own settings.
       change_identifier: 識別子の変更
       actions:
-        label_enable_all: "Enable all"
-        label_disable_all: "Disable all"
+        label_enable_all: "全て有効"
+        label_disable_all: "すべて無効"
       activities:
         no_results_title_text: 現在、有効な活動はありません。
       forums:
@@ -398,7 +398,7 @@ ja:
           title: "Project attributes"
           description_html: 'These project attributes will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> under their respective sections. You can enable or disable individual attributes. Project attributes and sections are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. '
         filter:
-          label: "Search project attribute"
+          label: "プロジェクトの属性を検索"
         actions:
           label_enable_single: "Active in this project, click to disable"
           label_disable_single: "Inactive in this project, click to enable"
@@ -490,14 +490,14 @@ ja:
   my:
     access_token:
       create_dialog:
-        title: Token generated
+        title: トークン生成完了
         header: '%{type} トークンが生成されました'
         warning: このトークンが表示されるのは今回だけなので、必ずコピーしてください。
       errors:
-        token_name_blank: "Please provide an API token name"
-        token_name_in_use: "This API token name is already in use, please select a different one"
-      new_access_token_dialog_title: "Create new API token"
-      new_access_token_dialog_show_button_text: "API token"
+        token_name_blank: "APIトークン名を入力してください"
+        token_name_in_use: "この API トークン名は既に使用されています。別のトークンを選択してください"
+      new_access_token_dialog_title: "新しいAPIトークンを作成"
+      new_access_token_dialog_show_button_text: "APIトークン"
       new_access_token_dialog_text_field_placeholder_text: "My API token"
       new_access_token_dialog_text_field_label: "名称"
       new_access_token_dialog_submit_button_text: "作成"
@@ -523,7 +523,7 @@ ja:
       remembered_devices: "Remembered devices"
       remembered_devices_caption: "A list of all devices that logged into this account using the 'Stay logged in' option."
       session_name: "%{browser_name} %{browser_version} on %{os_name}"
-      browser: "Browser"
+      browser: "ブラウザ"
       device: "デバイス / OS"
       unknown_browser: "不明なブラウザ"
       unknown_os: "不明なオペレーティング システム"
@@ -890,7 +890,7 @@ ja:
         uid: "クライアントID"
         secret: "秘密鍵"
         owner: "所有者"
-        builtin: "Builtin"
+        builtin: "組み込み"
         enabled: "アクティブ"
         redirect_uri: "リダイレクトURI"
         client_credentials_user_id: "クライアント資格情報ユーザーID"
@@ -967,11 +967,11 @@ ja:
         custom_field_section: セクション
       project/phase:
         date_range: "期間"
-        definition: "Definition"
+        definition: "定義"
         duration: "Duration"
-        start_date: "Start date"
-        start_date_caption: "Follows the previous phase."
-        finish_date: "Finish date"
+        start_date: "開始日"
+        start_date_caption: "前のフェーズに従います。"
+        finish_date: "終了日"
       project/phase_definition:
         name: "名称"
         color: "色"
@@ -1864,7 +1864,7 @@ ja:
       #Use the strftime parameters for formats.
       #When no format has been given, it uses default.
       #You can provide other formats here if you like!
-      default: "%m/%d/%Y"
+      default: "%Y / %m / %d"
       long: "%B %d、%Y"
       short: "%b%d"
     #Don't forget the nil at the beginning; there's no such thing as a 0th month
@@ -1918,7 +1918,7 @@ ja:
       x_months:
         other: "%{count} ヶ月間"
       x_years:
-        other: "%{count} years"
+        other: "%{count} 年"
       x_seconds:
         other: "%{count} 秒"
       x_seconds_abbreviated:
@@ -2177,7 +2177,7 @@ ja:
         long_text_fields:
           input_caption: "By default all long text fields are selected."
           input_label: "Add long text fields"
-          input_placeholder: "Search for long text fields"
+          input_placeholder: "長いテキストフィールドを検索"
           drag_area_label: "Manage long text fields"
       xls:
         include_relations:
@@ -2813,7 +2813,7 @@ ja:
   label_password_rule_special: "特殊文字"
   label_password_rule_uppercase: "大文字"
   label_path_encoding: "パスのエンコード"
-  label_per_page: "ページ毎"
+  label_per_page: "1ページあたりの件数"
   label_people: "人"
   label_permissions: "権限"
   label_permissions_report: "権限のレポート"
@@ -2914,7 +2914,7 @@ ja:
   label_scroll_left: "Scroll left"
   label_scroll_right: "Scroll right"
   label_search: "検索"
-  label_search_by_name: "Search by name"
+  label_search_by_name: "名前で検索"
   label_send_information: "Send new credentials to the user"
   label_send_test_email: "テスト電子メールを送信"
   label_session: "セッション"
@@ -3417,7 +3417,7 @@ ja:
   permission_protect_wiki_pages: "Wikiページの凍結"
   permission_rename_wiki_pages: "Wikiページ名の変更"
   permission_save_queries: "ビューを保存"
-  permission_search_project: "Search project"
+  permission_search_project: "プロジェクトを検索"
   permission_select_custom_fields: "カスタムフィールドの選択"
   permission_select_project_custom_fields: "プロジェクト属性の選択"
   permission_select_project_phases: "Select project phases"
@@ -3480,7 +3480,7 @@ ja:
       warning_one: プロジェクトのメンバーは、プロジェクトのリポジトリを再配置する必要があります。
       warning_two: プロジェクトへの既存のリンクは機能しなくなります。
       title: プロジェクトの識別子を変更
-    not_available: "Project N/A"
+    not_available: "プロジェクトなし"
     template:
       copying: >
         プロジェクトは選択したテンプレートプロジェクトから作成されています。プロジェクトが利用可能になるとすぐにメールで通知されます。
@@ -4303,7 +4303,7 @@ ja:
         reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "YYYY-MM-DD (ISO 8601 日付のみ)"
-        datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (any compatible ISO 8601 datetime)"
+        datetime: "YYYY-MM-DDThh:mm:ss[.lll][+h:mm] (ISO 8601形式の日時)"
         duration: "ISO 8601 期間"
       invalid_content_type: "コンテンツの種類は'%{content_type}'を期待されたが '%{actual}'を得ました。"
       invalid_format: "不正なフォーマットのプロパティ '%{property}': 期待されるフォーマットは '%{expected_format}', ですが '%{actual}'を受け取りました."

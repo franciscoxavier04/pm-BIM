@@ -773,7 +773,7 @@ ru:
     label_edit_x: "Редактировать %{x}"
     label_add_description: "Добавить описание"
     lag:
-      subject: "Отставание"
+      subject: "Задержка"
       caption: |-
         Минимальное количество рабочих дней, которое должно быть между двумя пакетами работ.
         Оно также может быть отрицательным.
@@ -923,7 +923,7 @@ ru:
       emoji_reaction:
         reactable: "Реакция на"
       enterprise_token:
-        domain: "Домен"
+        domain: "Доменное имя"
         starts_at: "Действует с"
         subscriber: "Подписчик"
         encoded_token: "Маркер поддержки корпоративной версии"
@@ -1029,7 +1029,7 @@ ru:
         include_subprojects: "Включить подпроекты"
         results: "Результаты"
       relation:
-        lag: "Отставание"
+        lag: "Задержка"
         from: "Похожий пакет работ"
         to: "Похожий пакет работ"
         relation_type: "Тип отношения"
