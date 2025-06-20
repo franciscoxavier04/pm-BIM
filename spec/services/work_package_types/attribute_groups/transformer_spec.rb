@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe WorkPackageTypes::AttributeGroups::Transformer do
   subject(:transformer) { described_class.new(groups: raw_groups, user: user) }
 
-  let(:user) { double("User") }
+  let(:user) { build(:admin) }
 
   describe "#call" do
     context "when groups are empty" do
