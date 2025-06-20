@@ -1042,7 +1042,7 @@ ja:
           tomorrow: "Tomorrow"
           three_days: "In 3 days"
           week: "In a week"
-          month: "In a month"
+          month: "1ヶ月以内"
           custom: "At a particular date/time"
       scheduling:
         is_parent: "このワークパッケージの日付は、その子から自動的に推定されます。日付を設定するには、「手動スケジューリング」を有効にします。"

@@ -81,15 +81,15 @@ ro:
     standard:
       project_phases:
         item_0:
-          name: Initiating
+          name: Inițializare
         item_1:
           name: Planificare
           start_gate: Ready for Planning
         item_2:
-          name: Executing
-          start_gate: Ready for Executing
+          name: Execuție
+          start_gate: Gata de execuție
         item_3:
-          name: Closing
+          name: Închidere
           start_gate: Ready for Closing
       priorities:
         item_0:
