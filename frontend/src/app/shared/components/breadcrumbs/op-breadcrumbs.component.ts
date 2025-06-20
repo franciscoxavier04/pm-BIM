@@ -32,7 +32,6 @@ import {
   Input,
   ViewEncapsulation,
 } from '@angular/core';
-import { ChevronLeftIconComponent } from '@openproject/octicons-angular';
 
 export type BreadcrumbItem =
   | { href:string; text:string }

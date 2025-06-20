@@ -1,3 +1,5 @@
+@import "helpers"
+
 .op-breadcrumbs
   ol
     margin-left: 0
@@ -7,7 +9,7 @@
   .mobile
     display: none
 
-  @media (max-width: 768px)
+  @media (max-width: $breakpoint-sm)
     .desktop
       display: none
     .mobile
