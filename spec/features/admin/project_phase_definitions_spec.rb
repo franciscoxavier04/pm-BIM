@@ -85,6 +85,9 @@ RSpec.describe "Projects phase definition settings", :js do
 
       # editing steps
       definitions_page.click_definition("Initiating")
+
+      definitions_page.expect_header_to_display("Initiating")
+
       fill_in "Name", with: "Starting"
       click_on "Update"
 
@@ -96,6 +99,9 @@ RSpec.describe "Projects phase definition settings", :js do
 
       # creating steps
       definitions_page.add
+
+      definitions_page.expect_header_to_display("New phase")
+
       fill_in "Name", with: "Imagining"
       definitions_page.select_color("Azure")
       click_on "Create"

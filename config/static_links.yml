@@ -158,6 +158,8 @@ enterprise_features:
     href: https://www.openproject.org/docs/user-guide/activity/#internal-comments-enterprise-add-on
   nextcloud_sso:
     href: https://www.openproject.org/docs/system-admin-guide/integrations/nextcloud/oidc-sso
+  customize_life_cycle:
+    href: https://www.openproject.org/docs/system-admin-guide/projects/project-life-cycle/
 sysadmin_docs:
   saml:
     href: https://www.openproject.org/docs/system-admin-guide/authentication/saml/
