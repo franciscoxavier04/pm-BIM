@@ -28,7 +28,6 @@
 
 class AttributeHelpTextsController < ApplicationController
   include OpTurbo::ComponentStream
-  include OpTurbo::DialogStreamHelper
 
   layout "admin"
   menu_item :attribute_help_texts

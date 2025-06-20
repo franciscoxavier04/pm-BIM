@@ -29,7 +29,6 @@
 module ::Overviews
   class OverviewsController < ::Grids::BaseInProjectController
     include OpTurbo::ComponentStream
-    include OpTurbo::DialogStreamHelper
 
     before_action :jump_to_project_menu_item
     before_action :set_sidebar_enabled
