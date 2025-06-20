@@ -100,12 +100,12 @@ zh-TW:
         upgrade: "立即更新"
         contact: "聯絡我們取得試用"
       status:
-        expired: "Expired"
-        expiring_soon: "Expiring soon"
-        in_grace_period: "In grace period"
-        invalid_domain: "Invalid domain"
-        not_active: "Not active"
-        trial: "Trial"
+        expired: "已過期"
+        expiring_soon: "即將過期"
+        in_grace_period: "寬限期內"
+        invalid_domain: "無效域名"
+        not_active: "尚未啟用"
+        trial: "試用"
     jemalloc_allocator: Jemalloc 記憶體分配器
     journal_aggregation:
       explanation:
@@ -915,10 +915,10 @@ zh-TW:
       enterprise_token:
         starts_at: "生效自"
         subscriber: "訂閱者"
-        subscription: "Subscription"
+        subscription: "訂閱"
         plan: "計畫"
         encoded_token: "Enterprise support token"
-        active_user_count_restriction: "Active users"
+        active_user_count_restriction: "活躍使用者"
       enterprise_trial:
         company: "公司"
       grids/grid:
@@ -1254,7 +1254,7 @@ zh-TW:
           general_consent: "請接受條款與條件。"
         enterprise_token:
           unreadable: "無法讀取，確定是一個 support token?"
-          already_added: "This token has already been added."
+          already_added: "此令牌已經新增過。"
         grids/grid:
           overlaps: "重疊"
           outside: "不在網格(grid)內。"
@@ -2018,7 +2018,7 @@ zh-TW:
       plan_title: "企業版 %{plan} 外掛"
       plan_name: "%{plan} 企業版計畫"
       plan_text_html: "需 %{plan_name} 方案以上才可使用。"
-      unlimited: "Unlimited"
+      unlimited: "不限"
       already_have_token: >
         已經有令牌了嗎？請使用下方按鈕新增，以升級至預約的 Enterprise 方案。
       hide_banner: "隱藏此廣告"
@@ -2027,6 +2027,16 @@ zh-TW:
       homescreen_subline: 升級即是對開源專案的一種支持。
       baseline_comparison:
         description: 突顯自過去任一時間點以來對此清單所做的變更。
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "使用參考的屬性和文字建立自動產生的主題。"
       customize_life_cycle:
@@ -4245,7 +4255,7 @@ zh-TW:
     reminders:
       label_remind_at: "日期"
       note_placeholder: "為什麼要設定這個提醒？"
-      success_creation_message: "提醒設定成功。您會在選定的時間收到此工作套件的通知。"
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "提醒成功更新"
       success_deletion_message: "提醒已成功刪除。"
   sharing:

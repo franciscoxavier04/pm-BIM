@@ -201,18 +201,6 @@ de:
         edit_query: "Abfrage bearbeiten"
         new_group: "Neue Gruppe"
         reset_to_defaults: "Auf Standardwerte zurücksetzen"
-      enterprise:
-        upsell:
-          benefits:
-            description: "Was sind die Vorteile von Enterprise on-premises?"
-            high_security: "Weitere Sicherheitsfunktionen"
-            high_security_text: "Single Sign on (SAML, OpenID Connect, CAS), LDAP Gruppen."
-            installation: "Installations-Support"
-            installation_text: "Erfahrene Software-Ingenieure führen Sie durch den gesamten Installations- und Einrichtungsprozess in Ihrer eigenen Infrastruktur."
-            premium_features: "Enterprise Add-ons"
-            premium_features_text: "Agile Boards, benutzerdefinierte Farben und Logo, Graphen, intelligente Workflows mit benutzerdefinierten Aktionen, Volltextsuche für Anhänge von Arbeitspaketen und Mehrfachauswahl benutzerdefinierter Felder."
-            professional_support: "Professionelle Unterstützung"
-            professional_support_text: "Sie bekommen zuverlässigen und persönlichen Support von Experten, die sich mit dem Einsatz von OpenProject in geschäftskritischen Umgebungen auskennen."
       working_days:
         calendar:
           empty_state_header: "Arbeitsfreie Tage"

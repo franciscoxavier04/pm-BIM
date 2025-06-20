@@ -202,18 +202,6 @@ nl:
         edit_query: "Zoekopdracht bewerken"
         new_group: "Nieuwe groep"
         reset_to_defaults: "Standaardinstellingen herstellen"
-      enterprise:
-        upsell:
-          benefits:
-            description: "What are the benefits of the Enterprise on-premises edition?"
-            high_security: "Beveiliging functies"
-            high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
-            installation: "Installatie ondersteuning"
-            installation_text: "Ervaren softwareingenieurs begeleiden u door het volledige installatieproces in uw eigen infrastructuur."
-            premium_features: "Enterprise add-ons"
-            premium_features_text: "Agile borden, aangepast thema en logo, grafieken, intelligente workflows met aangepaste acties, volledige tekst zoeken voor werkpakket bijlagen en meervoudige aangepaste velden."
-            professional_support: "Professionele ondersteuning"
-            professional_support_text: "Krijg betrouwbare, krachtige ondersteuning van ervaren ondersteunende ingenieurs met deskundige kennis over het functioneren van OpenProject in zakelijke kritieke omgevingen."
       working_days:
         calendar:
           empty_state_header: "Vrije dagen"

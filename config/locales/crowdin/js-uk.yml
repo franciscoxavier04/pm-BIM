@@ -202,18 +202,6 @@ uk:
         edit_query: "Редагувати запит"
         new_group: "Нова група"
         reset_to_defaults: "Скинути на типові значення"
-      enterprise:
-        upsell:
-          benefits:
-            description: "Які переваги локальної версії Enterprise?"
-            high_security: "Функції безпеки"
-            high_security_text: "Єдиний вхід (SAML, OpenID Connect, CAS), групи LDAP."
-            installation: "Підтримка встановлення"
-            installation_text: "Досвідчені інженери програмного забезпечення допоможуть вам виконати повне встановлення та налаштувати процес у вашій інфраструктурі."
-            premium_features: "Доповнення версії Enterprise"
-            premium_features_text: "Дошки Agile, власні тема й логотип, діаграми, розумні робочі процеси з користувацькими діями, повнотекстовий пошук у вкладеннях пакетів робіт і можливість вибору кількість власних полів."
-            professional_support: "Професійна підтримка"
-            professional_support_text: "Отримайте надійну, комплексну підтримку від досвідчених інженерів, які знають усе про запуск OpenProject у критично важливих для бізнесу середовищах."
       working_days:
         calendar:
           empty_state_header: "Неробочі дні"

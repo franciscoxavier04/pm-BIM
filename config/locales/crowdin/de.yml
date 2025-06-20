@@ -2064,6 +2064,16 @@ de:
       homescreen_subline: Durch ein Upgrade unterstützen Sie zudem ein Open-Source-Projekt.
       baseline_comparison:
         description: An dieser Liste vorgenommene Änderungen seit einem beliebigen Zeitpunkt in der Vergangenheit hervorheben.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "Erstellen Sie automatisch generierte Betreffe mit referenzierten Attributen und Text."
       customize_life_cycle:
@@ -4286,7 +4296,7 @@ de:
     reminders:
       label_remind_at: "Datum"
       note_placeholder: "Warum richten Sie diese Erinnerung ein?"
-      success_creation_message: "Erinnerung erfolgreich eingerichtet. Sie erhalten zum ausgewählten Zeitpunkt eine Benachrichtigung für dieses Arbeitspaket."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "Erinnerung aktualisiert erfolgreich."
       success_deletion_message: "Erinnerung erfolgreich gelöscht."
   sharing:

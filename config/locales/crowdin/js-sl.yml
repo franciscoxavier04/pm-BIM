@@ -201,18 +201,6 @@ sl:
         edit_query: "Uredi poizvedbo"
         new_group: "Nova skupina"
         reset_to_defaults: "Ponastavi na privzete vrednosti"
-      enterprise:
-        upsell:
-          benefits:
-            description: "What are the benefits of the Enterprise on-premises edition?"
-            high_security: "Varnostne funkcije"
-            high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
-            installation: "Namestitvena podpora"
-            installation_text: "Izkušeni programski inženirji vas vodijo skozi celoten postopek namestitve in nastavitve v lastni infrastrukturi."
-            premium_features: "Enterprise add-ons"
-            premium_features_text: "Kanban table, teme in logotip po meri, grafikoni, inteligentni delovni tokovi z dejanji po meri, iskanje po celotnem besedilu prilog v delovnem paketu in izbira polj po meri."
-            professional_support: "Strokovna podpora"
-            professional_support_text: "Pridobite zanesljivo in visoko dotično podporo starejših podpornih inženirjev s strokovnim znanjem o izvajanju OpenProject-a v poslovnih kritičnih okoljih."
       working_days:
         calendar:
           empty_state_header: "Non-working days"
