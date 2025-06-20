@@ -202,18 +202,6 @@ tr:
         edit_query: "Sorguyu düzenle"
         new_group: "Yeni grup"
         reset_to_defaults: "Varsayılanlara geri yükle"
-      enterprise:
-        upsell:
-          benefits:
-            description: "Enterprise şirket içi sürümünün avantajları nelerdir?"
-            high_security: "Güvenlik özellikleri"
-            high_security_text: "Çoklu oturum açma (SAML, OpenID Connect, CAS), LDAP grupları."
-            installation: "Kurulum desteği"
-            installation_text: "Deneyimli yazılım mühendisleri, kendi altyapınızdaki eksiksiz kurulum ve kurulum sürecinde size rehberlik eder."
-            premium_features: "Enterprise eklentiler"
-            premium_features_text: "Çevik tahtalar, özel tema ve logo, grafikler, özel eylemlerle akıllı iş akışları, iş paketi ekleri için tam metin araması ve çoklu seçim özel alanları."
-            professional_support: "Profesyonel destek"
-            professional_support_text: "İş açısından kritik ortamlarda OpenProject çalıştırma konusunda uzman bilgiye sahip kıdemli destek mühendislerinden güvenilir, yüksek dokunuşlu destek alın."
       working_days:
         calendar:
           empty_state_header: "Çalışılmayan günler"

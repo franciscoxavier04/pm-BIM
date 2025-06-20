@@ -36,7 +36,6 @@ module Admin::Settings
 
     menu_item :project_phase_definitions_settings
 
-    before_action :check_feature_flag
     before_action :require_enterprise_token, except: %i[index]
 
     before_action :find_definitions, only: %i[index]
@@ -107,10 +106,6 @@ module Admin::Settings
     end
 
     private
-
-    def check_feature_flag
-      render_404 unless OpenProject::FeatureDecisions.stages_and_gates_active?
-    end
 
     def require_enterprise_token
       render_402 unless allowed_to_customize_life_cycle?

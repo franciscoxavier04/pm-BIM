@@ -100,12 +100,12 @@ ru:
         upgrade: "Обновить сейчас"
         contact: "Свяжитесь с нами для демо"
       status:
-        expired: "Expired"
-        expiring_soon: "Expiring soon"
-        in_grace_period: "In grace period"
-        invalid_domain: "Invalid domain"
-        not_active: "Not active"
-        trial: "Trial"
+        expired: "Срок действия истёк"
+        expiring_soon: "Срок действия скоро истечет"
+        in_grace_period: "В льготный период"
+        invalid_domain: "Недопустимое доменное имя"
+        not_active: "Не активный"
+        trial: "Пробная версия"
     jemalloc_allocator: Распределитель памяти Jemalloc
     journal_aggregation:
       explanation:
@@ -782,7 +782,7 @@ ru:
     label_edit_x: "Редактировать %{x}"
     label_add_description: "Добавить описание"
     lag:
-      subject: "Отставание"
+      subject: "Задержка"
       caption: |-
         Минимальное количество рабочих дней, которое должно быть между двумя пакетами работ.
         Оно также может быть отрицательным.
@@ -941,10 +941,10 @@ ru:
       enterprise_token:
         starts_at: "Действует с"
         subscriber: "Подписчик"
-        subscription: "Subscription"
+        subscription: "Подписка"
         plan: "Подписка"
         encoded_token: "Маркер поддержки корпоративной версии"
-        active_user_count_restriction: "Active users"
+        active_user_count_restriction: "Активные пользователи"
       enterprise_trial:
         company: "Компания"
       grids/grid:
@@ -1048,7 +1048,7 @@ ru:
         include_subprojects: "Включить подпроекты"
         results: "Результаты"
       relation:
-        lag: "Отставание"
+        lag: "Задержка"
         from: "Похожий пакет работ"
         to: "Похожий пакет работ"
         relation_type: "Тип отношения"
@@ -1280,7 +1280,7 @@ ru:
           general_consent: "Пожалуйста, подтвердите правила и условия пользования."
         enterprise_token:
           unreadable: "невозможно прочитать. Вы уверены, что это маркер поддержки?"
-          already_added: "This token has already been added."
+          already_added: "Этот токен уже был добавлен."
         grids/grid:
           overlaps: "перекрытие."
           outside: "за пределами сетки."
@@ -2143,7 +2143,7 @@ ru:
       plan_title: "Дополнение корпоративной версии %{plan}"
       plan_name: "Корпоративная версия %{plan}"
       plan_text_html: "Доступно начиная с %{plan_name}."
-      unlimited: "Unlimited"
+      unlimited: "Без ограничений"
       already_have_token: >
         Уже есть токен? Добавьте его с помощью кнопки ниже, чтобы перейти на корпоративную лицензию.
       hide_banner: "Скрыть этот баннер"
@@ -2152,6 +2152,16 @@ ru:
       homescreen_subline: При обновлении вы также поддержите проект с открытым исходным кодом.
       baseline_comparison:
         description: Выделите изменения, внесенные в этот список с любого момента в прошлом.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "Создать автоматически генерируемые темы, используя атрибуты и текст."
       customize_life_cycle:
@@ -4377,7 +4387,7 @@ ru:
     reminders:
       label_remind_at: "Дата"
       note_placeholder: "Причина установки напоминания"
-      success_creation_message: "Напоминание установлено. Вы получите уведомление о данном пакете работ в выбранное время."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "Напоминание успешно обновлено."
       success_deletion_message: "Напоминание успешно удалено."
   sharing:

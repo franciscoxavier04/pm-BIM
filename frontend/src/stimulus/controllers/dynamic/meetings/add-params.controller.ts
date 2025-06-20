@@ -30,9 +30,9 @@
 
 import { ApplicationController } from 'stimulus-use';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
-import { appendCollapsedState } from '../helpers/collapsible-helper';
+import { appendCollapsedState } from '../../../helpers/collapsible-helper';
 
-export default class AddMeetingParamsController extends ApplicationController {
+export default class extends ApplicationController {
   private turboRequests:TurboRequestsService;
   static targets = ['container'];
 

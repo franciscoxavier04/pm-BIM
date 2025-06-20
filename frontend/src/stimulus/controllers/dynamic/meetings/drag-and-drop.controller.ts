@@ -28,10 +28,10 @@
  * ++
  */
 
-import GenericDragAndDropController from './generic-drag-and-drop.controller';
-import { appendCollapsedState } from '../../helpers/collapsible-helper';
+import GenericDragAndDropController from '../generic-drag-and-drop.controller';
+import { appendCollapsedState } from '../../../helpers/collapsible-helper';
 
-export default class MeetingsDragAndDropController extends GenericDragAndDropController {
+export default class extends GenericDragAndDropController {
   protected override buildData(el:Element, target:Element):FormData {
     const data = super.buildData(el, target);
 

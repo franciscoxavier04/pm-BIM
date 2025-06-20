@@ -201,18 +201,6 @@ hu:
         edit_query: "Lekérdezés módosítása"
         new_group: "Új csoport"
         reset_to_defaults: "Alapbeállítások visszaállítása"
-      enterprise:
-        upsell:
-          benefits:
-            description: "What are the benefits of the Enterprise on-premises edition?"
-            high_security: "Biztonsági szolgáltatások"
-            high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
-            installation: "Telepítési támogatás"
-            installation_text: "Tapasztalt szoftvermérnökök végigvezetik Önt a teljes telepítési és beállítási folyamaton saját infrastruktúrájában.\n"
-            premium_features: "Enterprise add-ons"
-            premium_features_text: "Agilis táblák, egyedi téma és embléma, grafikonok, intelligens munkafolyamatok egyéni műveletekkel, teljes szövegű keresés a munkacsomag mellékletekhez és több kiválasztott egyéni mező."
-            professional_support: "Szakmai támogatás"
-            professional_support_text: "Megbízható támogatást kaphat a vezető támogató mérnököktől, akik szakértő ismeretekkel rendelkeznek az OpenProject futtatásáról üzleti szempontból kritikus környezetben."
       working_days:
         calendar:
           empty_state_header: "Non-working days"

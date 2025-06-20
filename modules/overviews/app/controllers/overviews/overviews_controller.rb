@@ -29,7 +29,6 @@
 module ::Overviews
   class OverviewsController < ::Grids::BaseInProjectController
     include OpTurbo::ComponentStream
-    include OpTurbo::DialogStreamHelper
 
     before_action :jump_to_project_menu_item
     before_action :set_sidebar_enabled
@@ -98,7 +97,6 @@ module ::Overviews
         User.current.allowed_in_project?(:view_project_attributes, @project) &&
         @project.project_custom_fields.visible.any?
       @life_cycle_sidebar_enabled =
-        OpenProject::FeatureDecisions.stages_and_gates_active? &&
         User.current.allowed_in_project?(:view_project_phases, @project) &&
         @project.phases.active.any?
     end

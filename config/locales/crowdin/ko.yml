@@ -2031,6 +2031,16 @@ ko:
       homescreen_subline: 업그레이드하면 오픈 소스 프로젝트도 지원하게 됩니다.
       baseline_comparison:
         description: 과거 어느 시점 이후에 이 목록에서 변경된 사항을 강조 표시합니다.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "참조된 특성과 텍스트를 사용하여 자동으로 생성되는 제목을 만듭니다."
       customize_life_cycle:
@@ -4248,7 +4258,7 @@ ko:
     reminders:
       label_remind_at: "날짜"
       note_placeholder: "이 미리 알림을 설정하는 이유는 무엇입니까?"
-      success_creation_message: "미리 알림이 설정되었습니다. 선택한 시간에 이 작업 패키지에 대한 알림을 받게 됩니다."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "미리 알림이 업데이트되었습니다."
       success_deletion_message: "미리 알림이 삭제되었습니다."
   sharing:

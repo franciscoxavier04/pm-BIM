@@ -72,4 +72,8 @@ class MeetingSection < ApplicationRecord
       agenda_items.maximum(:position) + 1
     end
   end
+
+  def first_after_backlog?
+    position == meeting.backlog.position + 1
+  end
 end

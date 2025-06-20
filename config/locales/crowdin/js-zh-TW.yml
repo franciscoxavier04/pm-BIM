@@ -201,18 +201,6 @@ zh-TW:
         edit_query: "編輯查詢"
         new_group: "新增群組"
         reset_to_defaults: "重設為預設值"
-      enterprise:
-        upsell:
-          benefits:
-            description: "本地部署的 Enterprise edition 具有哪些優勢？"
-            high_security: "安全功能"
-            high_security_text: "單點登錄（SAML，OpenID Connect，CAS），LDAP 群組。\n"
-            installation: "支援安裝"
-            installation_text: "經驗豐富的軟件工程師將指導您在自己的基礎設施中完成整個安裝和設置過程。"
-            premium_features: "企業版附加插件"
-            premium_features_text: "敏捷看板、客製化主題與標誌、圖表、具備客製化動作的智慧工作流程、支援全文檢索工作套件文件及複選客製欄位。"
-            professional_support: "專業支援"
-            professional_support_text: "從高級支持工程師那裡獲得可靠的個性化支持，這些工程師擁有在業務關鍵型環境中運行 OpenProject 的專業知識。"
       working_days:
         calendar:
           empty_state_header: "非工作日"
