@@ -53,24 +53,18 @@ RSpec.describe WorkPackageTypes::AttributeGroups::Transformer do
     end
 
     context "when given a query group with valid JSON" do
-      let(:query_json) do
-        {
-          "_links" => {
-            "columns" => [{ "href" => "/api/v3/queries/columns/id" }]
-          },
-          "filters" => "[]",
-          "groupBy" => nil,
-          "sortBy" => "[]",
-          "name" => "Some query"
-        }.to_json
-      end
-
       let(:raw_groups) do
         [
           {
             "name" => "Embedded Table",
             "type" => "query",
-            "query" => query_json
+            "attributes" => nil,
+            "query" => {
+              "columns[]" => %w[id subject],
+              "filters" => "[]",
+              "sortBy" => "[['id', 'asc']]",
+              "groupBy" => ""
+            }.to_json
           }
         ]
       end
