@@ -28,7 +28,6 @@
 
 class ProjectsController < ApplicationController
   include OpTurbo::ComponentStream
-  include OpTurbo::DialogStreamHelper
 
   menu_item :overview
   menu_item :roadmap, only: :roadmap

@@ -33,7 +33,6 @@ module Admin
     module Hierarchy
       class ItemsController < ApplicationController
         include OpTurbo::ComponentStream
-        include OpTurbo::DialogStreamHelper
 
         layout :admin_or_frame_layout
         model_object CustomField
