@@ -43,7 +43,7 @@ RSpec.describe WorkPackageTypes::CreateService, type: :model do
     let(:params) do
       {
         name: "Order 66",
-        copy_workflow_from: existing_type.id,
+        copy_workflow_from: existing_type.id.to_s,
         is_milestone: false,
         is_in_roadmap: true,
         is_default: false
