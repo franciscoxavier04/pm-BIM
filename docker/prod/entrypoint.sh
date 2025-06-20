@@ -33,13 +33,13 @@ if [ "$(id -u)" = '0' ]; then
 		EXISTING_PGVERSION="$(cat "$PGDATA/PG_VERSION")"
 		echo "-----> Existing PostgreSQL cluster found in $PGDATA."
 
-		# Check for version mismatch: if Docker default is PG 17 but existing data is PG 13
-		if [ "$PGVERSION" = "17" ] && [ "$EXISTING_PGVERSION" = "13" ]; then
+		# Check for version mismatch between configured and existing PostgreSQL versions
+		if [ "$PGVERSION" != "$EXISTING_PGVERSION" ]; then
 			echo "WARNING: PostgreSQL version mismatch detected!"
-			echo "Your container is configured for PostgreSQL 17, but existing data is from PostgreSQL 13."
-			echo "You need to upgrade your postgresql data before you can use it with PGVERSION=17 in the container"
+			echo "Your container is configured for PostgreSQL $PGVERSION, but existing data is from PostgreSQL $EXISTING_PGVERSION."
+			echo "You need to upgrade your postgresql data before you can use it with PGVERSION=$PGVERSION in the container"
 			echo "Please see the migration guide: https://www.openproject.org/docs/installation-and-operations/misc/migration-to-postgresql17/"
-			echo "Continuing with PostgreSQL 13 for now..."
+			echo "Continuing with PostgreSQL $EXISTING_PGVERSION for now..."
 		fi
 
 		export PGVERSION="$EXISTING_PGVERSION"
