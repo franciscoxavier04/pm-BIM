@@ -64,9 +64,9 @@ RSpec.describe WorkPackageTypes::AttributeGroups::Transformer do
           "_links" => {
             "columns" => [{ "href" => "/api/v3/queries/columns/id" }]
           },
-          "filters" => [],
+          "filters" => "[]",
           "groupBy" => nil,
-          "sortBy" => [],
+          "sortBy" => "[]",
           "name" => "Some query"
         }.to_json
       end
@@ -81,29 +81,13 @@ RSpec.describe WorkPackageTypes::AttributeGroups::Transformer do
         ]
       end
 
-      let(:query_instance) { double("Query") }
-
-      before do
-        allow(User).to receive(:system).and_return(double("SystemUser"))
-        allow(Query).to receive(:new_default).and_return(query_instance)
-
-        allow(query_instance).to receive(:extend)
-        allow(query_instance).to receive(:change_by_system).and_yield
-        allow(query_instance).to receive(:user=)
-        allow(query_instance).to receive(:show_hierarchies=)
-
-        allow(API::V3::UpdateQueryFromV3ParamsService).to receive(:new)
-          .and_return(
-            double("UpdateQueryService", call: double("ServiceResult", success?: true))
-          )
-      end
-
       it "returns a group with a Query instance" do
         result = transformer.call
         name, entries = result.first
 
         expect(name).to eq("Embedded Table")
-        expect(entries.first).to eq(query_instance)
+        expect(entries.first).to be_a(Query)
+        expect(entries.first.name).to eq("Embedded table: Embedded Table")
       end
     end
 
