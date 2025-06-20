@@ -86,7 +86,8 @@ module OpenProject::Documents
     additional_permitted_attributes search: %i(documents)
 
     config.to_prepare do
-      Enumeration.register_subclass(DocumentCategory)
+      # Load Enumeration descendants due to STI
+      DocumentCategory
     end
   end
 end
