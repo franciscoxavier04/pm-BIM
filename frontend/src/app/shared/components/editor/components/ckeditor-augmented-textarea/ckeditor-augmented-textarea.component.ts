@@ -184,6 +184,10 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   }
 
   public async saveForm(evt?:SubmitEvent):Promise<void> {
+    if (CkeditorAugmentedTextareaComponent.inFlight.get(this.formElement)) {
+      return;
+    }
+
     CkeditorAugmentedTextareaComponent.inFlight.set(this.formElement, true);
 
     this.syncToTextarea();
