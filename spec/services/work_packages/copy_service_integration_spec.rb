@@ -107,7 +107,7 @@ RSpec.describe WorkPackages::CopyService, "integration", type: :model do
         end
       end
 
-      describe "#project_phase_definition", with_flag: { stages_and_gates: true } do
+      describe "#project_phase_definition" do
         it "is the one of the copied work package" do
           expect(copy.project_phase_definition)
             .to eql project_phase_definition
@@ -204,7 +204,7 @@ RSpec.describe WorkPackages::CopyService, "integration", type: :model do
         end
       end
 
-      describe "#project_phase_definition", with_flag: { stages_and_gates: true } do
+      describe "#project_phase_definition" do
         it "is the one of the copied work package" do
           expect(copy.project_phase_definition)
             .to eql project_phase_definition

@@ -695,8 +695,7 @@ module API
         def view_project_phase_allowed?
           return @view_project_phase_allowed if defined?(@view_project_phase_allowed)
 
-          @view_project_phase_allowed = current_user.allowed_in_project?(:view_project_phases, represented.project) &&
-            OpenProject::FeatureDecisions.stages_and_gates_active?
+          @view_project_phase_allowed = current_user.allowed_in_project?(:view_project_phases, represented.project)
         end
 
         def export_work_packages_allowed?

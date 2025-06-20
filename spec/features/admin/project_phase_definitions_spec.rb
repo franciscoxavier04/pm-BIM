@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Projects phase definition settings", :js, with_flag: { stages_and_gates: true } do
+RSpec.describe "Projects phase definition settings", :js do
   shared_let(:initiating_stage) { create(:project_phase_definition, name: "Initiating") }
   shared_let(:executing_stage) do
     create(:project_phase_definition, name: "Executing", start_gate: true, start_gate_name: "Ready to Execute")
@@ -59,21 +59,6 @@ RSpec.describe "Projects phase definition settings", :js, with_flag: { stages_an
       definitions_page.expect_listed(["Initiating", "Executing"])
 
       definitions_page.expect_no_controls
-    end
-  end
-
-  context "as admin without feature flag", with_flag: { stages_and_gates: false } do
-    current_user { create(:admin) }
-
-    it "allows viewing definitions" do
-      definitions_page.visit!
-
-      definitions_page.expect_listed([])
-
-      definitions_page.expect_flash(
-        message: "[Error 404] The page you were trying to access doesn't exist or has been removed.",
-        type: :error
-      )
     end
   end
 

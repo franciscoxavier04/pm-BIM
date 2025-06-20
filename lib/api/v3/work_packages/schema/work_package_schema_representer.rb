@@ -237,8 +237,7 @@ module API
                                          required: false,
                                          show_if: ->(*) {
                                            current_user.allowed_in_project?(:view_project_phases, represented.project) &&
-                                             represented.assignable_project_phases.any? &&
-                                             OpenProject::FeatureDecisions.stages_and_gates_active?
+                                             represented.assignable_project_phases.any?
                                          },
                                          writable: -> { represented.writable?(:project_phase_definition_id) }
 

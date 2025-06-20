@@ -141,16 +141,14 @@ Rails.application.reloader.to_prepare do
                        "project_phases/hover_card": :show
                      },
                      permissible_on: :project,
-                     dependencies: :view_project,
-                     visible: -> { OpenProject::FeatureDecisions.stages_and_gates_active? }
+                     dependencies: :view_project
 
       map.permission :edit_project_phases,
                      {},
                      permissible_on: :project,
                      require: :member,
                      dependencies: :view_project_phases,
-                     contract_actions: { projects: %i[update] },
-                     visible: -> { OpenProject::FeatureDecisions.stages_and_gates_active? }
+                     contract_actions: { projects: %i[update] }
 
       map.permission :select_project_phases,
                      {
@@ -158,8 +156,7 @@ Rails.application.reloader.to_prepare do
                      },
                      permissible_on: :project,
                      require: :member,
-                     dependencies: :edit_project_phases,
-                     visible: -> { OpenProject::FeatureDecisions.stages_and_gates_active? }
+                     dependencies: :edit_project_phases
 
       map.permission :manage_members,
                      {

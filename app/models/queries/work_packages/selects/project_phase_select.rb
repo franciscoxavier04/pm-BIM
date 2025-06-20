@@ -72,11 +72,9 @@ class Queries::WorkPackages::Selects::ProjectPhaseSelect < Queries::WorkPackages
 
   def self.instances(context = nil)
     allowed = if context
-                OpenProject::FeatureDecisions.stages_and_gates_active? &&
-                  User.current.allowed_in_project?(:view_project_phases, context)
+                User.current.allowed_in_project?(:view_project_phases, context)
               else
-                OpenProject::FeatureDecisions.stages_and_gates_active? &&
-                  User.current.allowed_in_any_project?(:view_project_phases)
+                User.current.allowed_in_any_project?(:view_project_phases)
               end
 
     if allowed
