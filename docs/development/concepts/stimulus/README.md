@@ -22,11 +22,10 @@ If you want to add a common pattern, manually register the controller under `fro
 ### Dynamically loaded controllers
 
 To dynamically load a controller, it needs to live under `frontend/src/stimulus/controllers/dynamic/<controller-name>.controller.ts`.
-
-In DOM, you'll tell the application the controller is dynamically loaded using the `data-application-target="dynamic"`attribute. It tells the application controller (`frontend/src/stimulus/controllers/op-application.controller.ts`) we load on every page on body to dynamically import and load the controller named `users`.
+The application controller (`frontend/src/stimulus/controllers/op-application.controller.ts`) will automatically load controllers dynamically if they are not registered in the `setup.ts` file.
 
 ```html
-<div data-controller="users" data-application-target="dynamic"></div>
+<div data-controller="users"></div>
 ```
 
 #### Namespacing dynamic controllers
@@ -37,7 +36,7 @@ If you want to organize your dynamic controllers in a subfolder, use the [double
 2. Specify the controller name with a double dash for each folder
 
 ```html
-<div data-controller="admin--settings" data-application-target="dynamic"></div>
+<div data-controller="admin--settings"></div>
 ```
 
 You need to take care to prefix all actions, values etc. with the exact same pattern, e.g., `data-admin--settings-target="foobar"`.
@@ -48,6 +47,5 @@ If you have a single controller used in a partial, we have added a helper to use
 
 ```erb
 <% content_controller 'project-storage-form',
-                      dynamic: true,
                       'project-storage-form-folder-mode-value': @project_storage.project_folder_mode %>
 ```

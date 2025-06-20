@@ -64,7 +64,7 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
     set_factory_default(:user, user)
   end
 
-  shared_let(:work_package, refind: true, reload: false) do
+  let(:work_package) do
     create(:work_package,
            subject: "work_package")
   end

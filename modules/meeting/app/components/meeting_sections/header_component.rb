@@ -72,7 +72,7 @@ module MeetingSections
         if @first_and_last.first
           @first_and_last.first == @meeting_section
         else
-          @meeting_section.first?
+          @meeting_section.first_after_backlog?
         end
     end
 

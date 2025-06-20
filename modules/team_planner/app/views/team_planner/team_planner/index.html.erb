@@ -16,4 +16,12 @@
   end
 %>
 
-<%= render ::TeamPlanner::TableComponent.new(rows: @views, current_user: current_user) %>
+<%=
+  with_enterprise_banner_guard(
+    :team_planner_view,
+    variant: :large,
+    video: "enterprise/team-planner-animation.mp4"
+  ) do
+    render ::TeamPlanner::TableComponent.new(rows: @views, current_user: current_user)
+  end
+%>

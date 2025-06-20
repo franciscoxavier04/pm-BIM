@@ -29,8 +29,6 @@
 class Projects::Settings::LifeCycleStepsController < Projects::SettingsController
   include OpTurbo::ComponentStream
 
-  before_action :deny_access_on_feature_flag
-
   before_action :load_life_cycle_definitions, only: %i[index enable_all disable_all]
 
   menu_item :settings_life_cycle_steps
@@ -59,10 +57,6 @@ class Projects::Settings::LifeCycleStepsController < Projects::SettingsControlle
 
   def load_life_cycle_definitions
     @life_cycle_definitions = Project::PhaseDefinition.order(position: :asc)
-  end
-
-  def deny_access_on_feature_flag
-    deny_access(not_found: true) unless OpenProject::FeatureDecisions.stages_and_gates_active?
   end
 
   def set_steps_active_status(definitions, active:)

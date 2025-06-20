@@ -356,7 +356,7 @@ lv:
   permission_delete_meetings: "Delete meetings"
   permission_view_meetings: "View meetings"
   permission_manage_agendas: "Manage agendas"
-  permission_manage_agendas_explanation: "Allows managing the Dynamic Meeting's agenda items."
+  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
   permission_manage_outcomes: "Manage outcomes"
   permission_send_meeting_invites_and_outcomes: "Send meeting invites and outcomes to participants"
   project_module_meetings: "Sanāksmes"

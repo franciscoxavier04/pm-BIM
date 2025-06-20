@@ -201,7 +201,7 @@ gem "aws-sdk-core", "~> 3.107"
 # File upload via fog + screenshots on travis
 gem "aws-sdk-s3", "~> 1.91"
 
-gem "openproject-token", "~> 7.1.0"
+gem "openproject-token", "~> 7.2.0"
 
 gem "plaintext", "~> 0.3.2"
 
@@ -231,7 +231,7 @@ gem "yabeda-rails"
 
 gem "view_component"
 # Lookbook
-gem "lookbook", "~> 2.3.4"
+gem "lookbook", "~> 2.3.11"
 
 # Require factory_bot for usage with openproject plugins testing
 gem "factory_bot", "~> 6.5.0", require: false
@@ -417,4 +417,4 @@ end
 
 gem "openproject-octicons", "~>19.25.0"
 gem "openproject-octicons_helper", "~>19.25.0"
-gem "openproject-primer_view_components", "~>0.68.0"
+gem "openproject-primer_view_components", "~>0.70.0"

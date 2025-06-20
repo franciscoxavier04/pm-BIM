@@ -28,12 +28,9 @@
 
 module StimulusHelper
   # rubocop:disable Rails/HelperInstanceVariable
-  def content_controller(name, dynamic: false, **data)
+  def content_controller(name, **data)
     @stimulus_content_data = data
-      .merge({
-               controller: name,
-               "application-target": dynamic ? "dynamic" : nil
-             })
+      .merge({ controller: name })
   end
 
   def stimulus_content_data

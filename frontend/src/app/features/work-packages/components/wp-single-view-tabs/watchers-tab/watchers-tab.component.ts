@@ -163,7 +163,7 @@ export class WorkPackageWatchersTabComponent extends UntilDestroyedMixin impleme
   public removeWatcher(watcher:any) {
     this.workPackage.removeWatcher.$link.$prepare({ user_id: watcher.id })()
       .then(() => {
-        _.remove(this.watching, (other:HalResource) => other.href === watcher.href);
+        this.watching = this.watching.filter((other:HalResource) => other.href !== watcher.href);
 
         // Forcefully reload the resource to update the watch/unwatch links
         // should the current user have been removed

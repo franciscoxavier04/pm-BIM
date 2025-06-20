@@ -31,6 +31,10 @@
 module OpenProject
   module Common
     class AttributeHelpTextComponent < ApplicationComponent
+      renders_one :additional_label, lambda { |**system_arguments|
+        Primer::Beta::Text.new(**system_arguments)
+      }
+
       def initialize(help_text:, **system_arguments) # rubocop:disable Metrics/AbcSize
         super()
 
@@ -65,6 +69,7 @@ module OpenProject
         return unless @help_text
 
         @system_arguments[:href] = show_dialog_attribute_help_text_path(@help_text)
+        @system_arguments[:data][:qa_help_text_for] = @help_text.attribute_name.camelize(:lower)
       end
     end
   end

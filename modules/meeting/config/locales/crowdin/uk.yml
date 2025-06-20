@@ -362,7 +362,7 @@ uk:
   permission_delete_meetings: "Видалити зустрічі"
   permission_view_meetings: "Переглянути зустрічі"
   permission_manage_agendas: "Керувати програмами"
-  permission_manage_agendas_explanation: "Дає змогу налаштовувати пункти порядку денного динамічної наради."
+  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
   permission_manage_outcomes: "Керування результатами"
   permission_send_meeting_invites_and_outcomes: "Надсилайте запрошення на нараду і її результати учасникам"
   project_module_meetings: "Зустрічі"

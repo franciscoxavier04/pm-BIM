@@ -344,7 +344,7 @@ ja:
   permission_delete_meetings: "会議の削除"
   permission_view_meetings: "会議を表示"
   permission_manage_agendas: "議題を管理する"
-  permission_manage_agendas_explanation: "ダイナミック会議の議題内容を編集することができます。"
+  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
   permission_manage_outcomes: "Manage outcomes"
   permission_send_meeting_invites_and_outcomes: "Send meeting invites and outcomes to participants"
   project_module_meetings: "会議"

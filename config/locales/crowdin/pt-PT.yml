@@ -79,11 +79,15 @@ pt-PT:
         main-menu-bg-color: "Cor de fundo do menu do lado esquerdo."
       theme_warning: Alterar o tema irá sobrescrever seu estilo personalizado. O design será perdido. Tem certeza que deseja continuar?
     enterprise:
-      upgrade_to_ee: "Atualizar para a edição Enterprise"
+      delete_dialog:
+        title: "Eliminar token Enterprise"
+        heading: "Eliminar este token Enterprise?"
+        confirmation: "Tem a certeza de que quer eliminar este token de apoio da edição Enterprise?"
+      create_dialog:
+        title: "Adicionar token Enterprise"
+        type_token_text: "Digite o texto do token de apoio"
+        token_placeholder: "Cole aqui o seu token de apoio da edição Enterprise"
       add_token: "Carregar um token de suporte da edição Enterprise"
-      delete_token_modal:
-        text: "Tem a certeza de que deseja remover o token da edição Enterprise atual?"
-        title: "Eliminar Token"
       replace_token: "Substituir o seu token de suporte atual"
       order: "Encomendar a edição Enterprise on-premises"
       paste: "Cole o seu token de suporte da edição Enterprise"
@@ -95,8 +99,13 @@ pt-PT:
       buttons:
         upgrade: "Fazer o upgrade agora"
         contact: "Contacte-nos para obter uma demonstração"
-      enterprise_info_html: "é um complemento de Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
-      upgrade_info: "Faça o upgrade para um plano pago para ativar e começar a usar na sua equipa."
+      status:
+        expired: "Expired"
+        expiring_soon: "Expiring soon"
+        in_grace_period: "In grace period"
+        invalid_domain: "Invalid domain"
+        not_active: "Not active"
+        trial: "Trial"
     jemalloc_allocator: Alocador de memória Jemalloc
     journal_aggregation:
       explanation:
@@ -818,6 +827,7 @@ pt-PT:
       required_description: "Assinala este pacote de trabalho como sendo um requisito para o pacote relacionado"
       label_parent_singular: "principal"
       label_parent_plural: "principal"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Pacote de trabalho relacionado"
       ghost_relation_description: "Não tem as permissões necessárias para ver isto."
   label_invitation: Convite
@@ -852,6 +862,10 @@ pt-PT:
     auth_source_login: Por favor, inicie a sessão como <em>%{login}</em> para ativar a sua conta.
     omniauth_login: Por favor, inicie a sessão para ativar a sua conta.
   actionview_instancetag_blank_option: "Por favor, selecione"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependências"
   activerecord:
     attributes:
       announcements:
@@ -867,6 +881,8 @@ pt-PT:
       attribute_help_text:
         attribute_name: "Atributo"
         help_text: "Texto de ajuda"
+      auth_provider:
+        scim_clients: "Clientes SCIM"
       capability:
         context: "Contexto"
       changeset:
@@ -906,11 +922,14 @@ pt-PT:
       emoji_reaction:
         reactable: "Reagiu a"
       enterprise_token:
-        domain: "Domínio"
         starts_at: "Válido desde"
         subscriber: "Assinante"
+        subscription: "Subscription"
+        plan: "Plano"
         encoded_token: "Token de suporte da versão Enterprise"
-        active_user_count_restriction: "Máximo de utilizadores ativos"
+        active_user_count_restriction: "Active users"
+      enterprise_trial:
+        company: "Company"
       grids/grid:
         page: "Página"
         row_count: "Número de linhas"
@@ -1238,8 +1257,13 @@ pt-PT:
               forbidden_uri: "é proibido pelo servidor."
             scopes:
               not_match_configured: "não corresponde a âmbitos disponíveis."
+        enterprise_trial:
+          already_used: "was already used to create a trial."
+          failed_to_create: "Trial could not be created (%{status})"
+          general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "não foi possível ler. Tem a certeza que é um token de suporte?"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "sobreposição."
           outside: "está fora da rede."
@@ -1515,6 +1539,9 @@ pt-PT:
       custom_action: "Ação personalizada"
       custom_field: "Campo personalizado"
       "doorkeeper/application": "Aplicação OAuth"
+      enterprise_token:
+        one: "Token Enterprise"
+        other: "Tokens Enterprise"
       forum: "Fórum"
       global_role: "Função global"
       group: "Grupo"
@@ -1538,6 +1565,9 @@ pt-PT:
       role:
         one: "Função"
         other: "Papel"
+      scim_client:
+        one: "Cliente SCIM"
+        other: "Clientes SCIM"
       status: "Estado do pacote de trabalho"
       token/api:
         one: Token de acesso
@@ -1634,6 +1664,7 @@ pt-PT:
     derived_start_date: "Data inicial derivada"
     direction: "Direção"
     display_sums: "Exibir somas"
+    domain: "Domain"
     due_date: "Data de término"
     estimated_hours: "Trabalho"
     estimated_time: "Trabalho"
@@ -2018,23 +2049,36 @@ pt-PT:
       readonly_work_packages: Pacotes de trabalho só de leitura
       sso_auth_providers: Início de sessão único
       team_planner_view: Vista do planeador de equipas
-      two_factor_authentication: Autenticação de dois fatores
       virus_scanning: Análise antivírus
       work_package_query_relation_columns: Colunas de relação de consulta do pacote de trabalho
       work_package_sharing: Partilhe pacotes de trabalho com utilizadores externos
       work_package_subject_generation: Geração de tema do pacote de trabalho
     upsell:
+      buy_now_button: "Comprar agora"
       plans_title: "Planos Enterprise"
       title: "Suplemento Enterprise"
       plan_title: "Complemento %{plan} Enterprise"
       plan_name: "Plano Enterprise %{plan}"
       plan_text_html: "Disponível a partir do %{plan_name}."
+      unlimited: "Unlimited"
+      already_have_token: >
+        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Ocultar esta faixa"
       homescreen_description: >
         Os planos Enterprise aumentam a Edição Community do OpenProject que está atualmente a usar. Eles incluem complementos, funcionalidades adicionais e assistência profissional que permite que organizações de todas as dimensões alcancem grandes coisas em conjunto.
       homescreen_subline: Ao atualizar, estará também a apoiar um projeto de código aberto.
       baseline_comparison:
         description: Destacar as alterações introduzidas nesta lista desde qualquer ponto no passado.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "Crie temas gerados automaticamente utilizando atributos e texto referenciados."
       customize_life_cycle:
@@ -2081,6 +2125,26 @@ pt-PT:
       internal_comments_inline:
         title: "Escreva comentários internos visíveis apenas para um pequeno grupo"
         description: " "
+    trial:
+      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
+      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      already_retrieved: >
+        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
+      successfully_saved: "Your trial enterprise token has been successfully retrieved."
+      token_sent: "Trial token requested"
+      request_again: "Request again"
+      resend_action: "Resend confirmation email"
+      welcome_title: "Quick feature overview"
+      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+      confirmation_info: >
+        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+      confirmation_subline: >
+        Please, check your inbox and follow the steps to start your 14-day free trial.
+      domain_caption: The token will be valid for your currently configured host name.
+      receive_newsletter_html: >
+        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+      consent_html: >
+        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
   enumeration_activities: "Atividades de controlo de tempo"
   enumeration_work_package_priorities: "Prioridades do pacote de trabalho"
   enumeration_reported_project_statuses: "Estado do projeto reportado"
@@ -2105,6 +2169,7 @@ pt-PT:
   error_color_could_not_be_saved: "Não foi possível guardar a cor"
   error_cookie_missing: "O cookie OpenProject está em falta. Por favor, certifique-se de que os cookies estão habilitados, uma vez que esta aplicação não funcionará corretamente sem eles."
   error_custom_option_not_found: "A opção não existe."
+  error_enterprise_plan_needed: "É necessário o plano Enterprise %{plan} para executar esta ação."
   error_enterprise_activation_user_limit: "Não foi possível ativar a sua conta (alcançado o limite do utilizador). Por favor contate o seu administrador para obter acesso."
   error_enterprise_token_invalid_domain: "A edição Enterprise não está ativa. O domínio do Enterprise token (%{actual}) não corresponde ao nome do sistema de hospedagem (%{expected})."
   error_failed_to_delete_entry: "Falha ao apagar esta entrada."
@@ -2588,6 +2653,7 @@ pt-PT:
   label_dashboard: "Painel"
   label_database_version: "versão PostgreSQL"
   label_date: "Data"
+  label_dates: "Datas"
   label_date_and_time: "Data e hora"
   label_date_format: "Formato da data"
   label_date_from: "De"
@@ -3346,6 +3412,8 @@ pt-PT:
   notice_successful_delete: "Eliminado com sucesso."
   notice_successful_cancel: "Cancelamento bem-sucedido."
   notice_successful_update: "Actualizado com sucesso."
+  notice_unsuccessful_create: "A criação falhou."
+  notice_unsuccessful_create_with_reason: "A criação falhou: %{reason}"
   notice_unsuccessful_update: "Falha na atualização."
   notice_unsuccessful_update_with_reason: "Falha na atualização: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -4231,7 +4299,7 @@ pt-PT:
     reminders:
       label_remind_at: "Data"
       note_placeholder: "Porque está a definir este lembrete?"
-      success_creation_message: "Lembrete definido com sucesso. Irá receber uma notificação para este pacote de trabalho na hora selecionada."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "Lembrete atualizado com sucesso."
       success_deletion_message: "Lembrete eliminado com sucesso."
   sharing:

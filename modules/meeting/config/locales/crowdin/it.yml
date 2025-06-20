@@ -350,7 +350,7 @@ it:
   permission_delete_meetings: "Annullare riunioni"
   permission_view_meetings: "Vedere riunioni"
   permission_manage_agendas: "Gestire gli ordini del giorno"
-  permission_manage_agendas_explanation: "Consente di gestire gli elementi dell'ordine del giorno della Riunione dinamica."
+  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
   permission_manage_outcomes: "Gestisci risultati"
   permission_send_meeting_invites_and_outcomes: "Invia inviti alla riunione e risultati ai partecipanti"
   project_module_meetings: "Riunioni"
