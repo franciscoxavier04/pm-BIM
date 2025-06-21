@@ -3996,8 +3996,6 @@ es:
       new:
         description: "Los cambios en esta fase del proyecto se reflejarán en todos los proyectos en los que esté activada."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Puerta inicial y final"
       no_gate: "Sin puerta"
       start_gate: "Puerta de inicio"

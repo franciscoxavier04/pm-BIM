@@ -2028,15 +2028,15 @@ zh-TW:
       baseline_comparison:
         description: 突顯自過去任一時間點以來對此清單所做的變更。
       benefits:
-        description: "What are the benefits of the Enterprise on-premises edition?"
-        high_security: "Security features"
-        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
-        installation: "Installation support"
-        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
-        premium_features: "Enterprise add-ons"
-        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
-        professional_support: "Professional support"
-        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
+        description: "Enterprise 本地部署版有什麼好處？"
+        high_security: "安全功能"
+        high_security_text: "單一登入（SAML、OpenID Connect、CAS）、LDAP 群組支援。"
+        installation: "安裝支援"
+        installation_text: "經驗豐富的軟體工程師將引導您在自己的基礎架構中完成整個安裝與設定流程。"
+        premium_features: "Enterprise 附加元件"
+        premium_features_text: "敏捷看板、自訂主題與標誌、圖表、具備自訂動作的智慧工作流程、工作套件附件的全文搜尋，以及多選自訂欄位。"
+        professional_support: "專業支援"
+        professional_support_text: "由資深支援工程師提供可靠且貼近需求的高品質支援，具備在商業關鍵環境中執行 OpenProject 的專業知識。"
       work_package_subject_generation:
         description: "使用參考的屬性和文字建立自動產生的主題。"
       customize_life_cycle:
@@ -3951,8 +3951,6 @@ zh-TW:
       new:
         description: "此專案階段的變更會反映在啟用此階段的所有專案中。"
         heading: "新增階段"
-      edit:
-        heading: "編輯階段"
       both_gate: "開始以及結束關卡"
       no_gate: "沒有關卡"
       start_gate: "開始關卡"
@@ -4255,7 +4253,7 @@ zh-TW:
     reminders:
       label_remind_at: "日期"
       note_placeholder: "為什麼要設定這個提醒？"
-      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
+      create_success_message: "提醒已成功設定。您將會在此工作套件的 %{reminder_time} 收到通知。"
       success_update_message: "提醒成功更新"
       success_deletion_message: "提醒已成功刪除。"
   sharing:

@@ -4079,8 +4079,6 @@ pl:
       new:
         description: "Zmiany w tej fazie projektu zostaną odzwierciedlone we wszystkich projektach, w których jest ona włączona."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Bramka początkowa i końcowa"
       no_gate: "Brak bramki"
       start_gate: "Bramka początkowa"

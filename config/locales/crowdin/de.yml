@@ -3992,8 +3992,6 @@ de:
       new:
         description: "Änderungen an dieser Projekt-Phase werden in allen sie verwendenden Projekten sichtbar."
         heading: "Neue Phase"
-      edit:
-        heading: "Phase bearbeiten"
       both_gate: "Gate zum Beginn und zum Ende"
       no_gate: "Kein Gate"
       start_gate: "Gate zum Beginn"
