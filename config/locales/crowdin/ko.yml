@@ -3888,8 +3888,6 @@ ko:
       new:
         description: "이 프로젝트 단계의 변경 사항은 이 단계가 활성화된 모든 프로젝트에 반영됩니다."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "시작 및 완료 게이트"
       no_gate: "게이트 없음"
       start_gate: "시작 게이트"

@@ -3929,8 +3929,6 @@ it:
       new:
         description: "Le modifiche a questa fase di progetto si rifletteranno in tutti i progetti in cui è abilitata."
         heading: "Nuova fase"
-      edit:
-        heading: "Modifica fase"
       both_gate: "Controlli di inizio e fine"
       no_gate: "Nessun controllo"
       start_gate: "Inizia controllo"

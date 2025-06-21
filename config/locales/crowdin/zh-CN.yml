@@ -3882,8 +3882,6 @@ zh-CN:
       new:
         description: "对此项目阶段的更改将反映在所有启用的项目中。"
         heading: "新增阶段"
-      edit:
-        heading: "编辑阶段"
       both_gate: "开始和结束关口"
       no_gate: "无关口"
       start_gate: "开始关口"

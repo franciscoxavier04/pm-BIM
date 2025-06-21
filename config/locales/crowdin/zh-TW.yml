@@ -3885,8 +3885,6 @@ zh-TW:
       new:
         description: "此專案階段的變更會反映在啟用此階段的所有專案中。"
         heading: "新增階段"
-      edit:
-        heading: "編輯階段"
       both_gate: "開始以及結束關卡"
       no_gate: "沒有關卡"
       start_gate: "開始關卡"
