@@ -552,7 +552,7 @@ zh-TW:
       data_consequences: >
         出現的所有佔位符用戶(例如，作為受理人、負責人或其他用戶值) 將被重新分配給一個名為“已刪除用戶”的帳戶。 由於每個已刪除帳戶的數據都會被重新分配給此帳戶，因此無法將用戶創建的數據與另一個已刪除帳戶的數據區分。
       irreversible: "這一行動是不可還原的"
-      confirmation: "輸入占位使用者名稱 %{name} 確認刪除。"
+      confirmation: "輸入佔位使用者名稱 %{name} 確認刪除。"
   priorities:
     edit:
       priority_color_text: |
@@ -1513,7 +1513,7 @@ zh-TW:
       news: "最新消息"
       notification:
         other: "通知"
-      placeholder_user: "占位使用者"
+      placeholder_user: "佔位使用者"
       project:
         other: "專案"
       project_query:
@@ -1973,7 +1973,7 @@ zh-TW:
       ldap_groups: 同步LDAP使用者與群組
       nextcloud_sso: Nextcloud 儲存空間的單一登入(SSO)
       one_drive_sharepoint_file_storage: OneDrive/SharePoint 檔案儲存
-      placeholder_users: 占位使用者
+      placeholder_users: 佔位使用者
       project_list_sharing: 專案清單分享
       readonly_work_packages: 唯讀工作套件
       sso_auth_providers: 單一登入
@@ -2032,7 +2032,7 @@ zh-TW:
       virus_scanning:
         description: "確保在其他使用者存取 OpenProject 中上傳的檔案前，對其進行病毒掃描。"
       placeholder_users:
-        title: 占位使用者
+        title: 佔位使用者
         description: >
           「佔位使用者」是一種將工作套件分配給不屬於您專案成員的方法。它們在一系列場景中十分有用；例如，如果您需要追蹤尚未命名或可用的資源的任務，或者如果您不想讓該人員存取專案，但仍希望追蹤分配給他們的任務。
       internal_comments:
@@ -2152,7 +2152,7 @@ zh-TW:
               label: "甘特圖"
               caption: "匯出甘特圖檢視中的工作套件清單。"
         include_images:
-          label: "包含圖片"
+          label: "圖片"
           caption: "排除影像以減少 PDF 匯出的大小。"
         gantt_zoom_levels:
           label: "縮放等級"
@@ -2816,9 +2816,9 @@ zh-TW:
   label_permissions: "權限"
   label_permissions_report: "權限列表"
   label_personalize_page: "個人化本頁"
-  label_placeholder_user: "占位使用者"
+  label_placeholder_user: "佔位使用者"
   label_placeholder_user_new: "新的佔位使用者"
-  label_placeholder_user_plural: "占位使用者"
+  label_placeholder_user_plural: "佔位使用者"
   label_planning: "計劃中"
   label_please_login: "請登入"
   label_plugins: "擴充套件"
@@ -3353,7 +3353,7 @@ zh-TW:
   permission_archive_project: "封存專案"
   permission_create_user: "新增使用者"
   permission_manage_user: "編輯使用者"
-  permission_manage_placeholder_user: "建立、編輯及刪除占位使用者"
+  permission_manage_placeholder_user: "建立、編輯及刪除佔位使用者"
   permission_add_subprojects: "建立子專案"
   permission_add_work_package_watchers: "新增監看者"
   permission_assign_versions: "指派版本"
