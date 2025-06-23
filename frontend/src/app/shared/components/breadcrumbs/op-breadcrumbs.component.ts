@@ -35,7 +35,8 @@ import {
 
 export type BreadcrumbItem =
   | { href:string; text:string }
-  | string;
+  | string
+  | { section:string; text:string };
 
 @Component({
   templateUrl: './op-breadcrumbs.component.html',
@@ -52,7 +53,9 @@ export class OpBreadcrumbsComponent {
   }
 
   getText(item:BreadcrumbItem):string {
-    return this.isLink(item) ? item.text : item;
+    if (typeof item === 'string') return item;
+    if ('section' in item) return `${item.section}: ${item.text}`;
+    return item.text;
   }
 
   getHref(item:BreadcrumbItem):string | null {
