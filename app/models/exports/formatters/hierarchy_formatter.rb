@@ -33,14 +33,7 @@ module Exports
     class HierarchyFormatter
       def format(object, custom_field)
         cvs = object.custom_value_for(custom_field)
-        case cvs
-        when Array
-          cvs.map { |item| format_hierarchy_item_for_export(item) }.join(", ")
-        when CustomValue
-          format_hierarchy_item_for_export(cvs)
-        else
-          cvs
-        end
+        Array(cvs).map { |cv| format_hierarchy_item_for_export(cv) }.join(", ")
       end
 
       def format_hierarchy_item_for_export(item_value)
