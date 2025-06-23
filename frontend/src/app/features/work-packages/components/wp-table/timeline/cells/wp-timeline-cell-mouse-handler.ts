@@ -27,7 +27,7 @@
 //++
 
 import { Injector } from '@angular/core';
-import * as moment from 'moment';
+import moment, { Moment } from 'moment';
 import { IsolatedQuerySpace } from 'core-app/features/work-packages/directives/query-space/isolated-query-space';
 import { LoadingIndicatorService } from 'core-app/core/loading-indicator/loading-indicator.service';
 
@@ -45,7 +45,6 @@ import {
 } from './timeline-cell-renderer';
 import { RenderInfo } from '../wp-timeline';
 import { WorkPackageTimelineTableController } from '../container/wp-timeline-container.directive';
-import Moment = moment.Moment;
 
 export function registerWorkPackageMouseHandler(this:void,
   injector:Injector,
