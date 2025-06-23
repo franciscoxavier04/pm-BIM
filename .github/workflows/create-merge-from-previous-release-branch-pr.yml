@@ -1,0 +1,123 @@
+name: create-merge-from-previous-release-branch
+on:
+  push:
+    branches: [ "release/*" ]
+  workflow_dispatch:
+
+permissions: {}
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      previous_release_branch: ${{ steps.find_previous_release.outputs.branch }}
+      latest_release_branch: ${{ steps.find_latest_release.outputs.branch }}
+    steps:
+    - id: find_previous_release
+      env:
+        GITHUB_TOKEN: ${{ secrets.OPENPROJECT_CI_GH_TOKEN }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+      run: |
+        BRANCH=$(curl -H "Authorization: token $GITHUB_TOKEN" \
+          https://api.github.com/repos/$GITHUB_REPOSITORY/branches?protected=true | \
+          jq -r '.[].name' | grep '^release/' | sort --version-sort | tail -2 | head -1
+        )
+        if [ "$BRANCH" = "" ]; then
+          echo "Invalid release branch found: $BRANCH"
+          exit 1
+        fi
+        echo "branch=${BRANCH}" >> $GITHUB_OUTPUT
+    - id: find_latest_release
+      env:
+        GITHUB_TOKEN: ${{ secrets.OPENPROJECT_CI_GH_TOKEN }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+      run: |
+        BRANCH=$(curl -H "Authorization: token $GITHUB_TOKEN" \
+          https://api.github.com/repos/$GITHUB_REPOSITORY/branches?protected=true | \
+          jq -r '.[].name' | grep '^release/' | sort --version-sort | tail -1
+        )
+        if [ "$BRANCH" = "" ]; then
+          echo "Invalid release branch found: $BRANCH"
+          exit 1
+        fi
+        
+        echo "branch=${BRANCH}" >> $GITHUB_OUTPUT
+  merge-or-create-pr:
+    if: github.ref_name == needs.setup.outputs.previous_release_branch
+    env:
+      RELEASE_BRANCH: ${{ needs.setup.outputs.latest_release_branch }}
+      PREVIOUS_RELEASE_BRANCH: ${{ needs.setup.outputs.previous_release_branch }}
+
+    permissions:
+      contents: write # for git push
+      pull-requests: write # for creating pull request
+
+    runs-on: ubuntu-latest
+    needs: setup
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.RELEASE_BRANCH }}
+
+      - name: Fetch dev branch upto release branch
+        run: git fetch --shallow-exclude "$PREVIOUS_RELEASE_BRANCH" origin "$PREVIOUS_RELEASE_BRANCH" || git fetch --depth 1 origin "$PREVIOUS_RELEASE_BRANCH"
+
+      - name: Fetch release branch upto dev branch
+        run: git fetch --shallow-exclude "$RELEASE_BRANCH" origin "$PREVIOUS_RELEASE_BRANCH" || git fetch --depth 1 origin "$PREVIOUS_RELEASE_BRANCH"
+
+      - name: Resolve bug in git https://stackoverflow.com/a/63879454/96823
+        run: git repack -d
+
+      - name: Get one commit more to connect the history of dev and release branches
+        run: git fetch --deepen 1 origin "$RELEASE_BRANCH" "$PREVIOUS_RELEASE_BRANCH"
+
+      - name: Create branch without checkout just to have shorter automatic commit message
+        run: git branch "$PREVIOUS_RELEASE_BRANCH" origin/"$PREVIOUS_RELEASE_BRANCH"
+
+      - name: Required git config
+        run: |
+          git config user.name "OpenProject Actions CI"
+          git config user.email "operations+ci@openproject.com"
+
+      - name: Show diff
+        run: git diff ..."$PREVIOUS_RELEASE_BRANCH"
+
+      - name: Try merging or create a PR
+        run: |
+          if git diff --exit-code --quiet ..."$PREVIOUS_RELEASE_BRANCH"; then
+            echo "Nothing to merge from $PREVIOUS_RELEASE_BRANCH into $RELEASE_BRANCH"
+          else
+            if git merge --no-edit --no-ff "$PREVIOUS_RELEASE_BRANCH" && git push origin "$RELEASE_BRANCH"; then
+              echo "Successfully merged $PREVIOUS_RELEASE_BRANCH into $RELEASE_BRANCH and pushed"
+            else
+              # Close all previous PRs with label
+              pr_numbers=$(gh pr list --label merge-previous-release-branch --json number --jq='.[].number')
+              for pr_number in $pr_numbers; do
+                gh pr close "$pr_number" --delete-branch
+              done
+
+              pr_body=$(
+                echo 'Created by GitHub action'
+                for pr_number in $pr_numbers; do
+                  echo "Replaces #$pr_number"
+                done
+              )
+
+              TEMP_BRANCH="merge-$PREVIOUS_RELEASE_BRANCH-$(date "+%Y%m%d%H%M%S")"
+
+              git branch "$TEMP_BRANCH" "$PREVIOUS_RELEASE_BRANCH"
+
+              git push origin "$TEMP_BRANCH"
+
+              gh pr create \
+                --base "$RELEASE_BRANCH" \
+                --head "$TEMP_BRANCH" \
+                --title "Merge $PREVIOUS_RELEASE_BRANCH into $RELEASE_BRANCH" \
+                --body "$pr_body" \
+                --label merge-previous-release-branch
+              echo "Created a PR to merge $PREVIOUS_RELEASE_BRANCH ($TEMP_BRANCH) into $RELEASE_BRANCH"
+            fi
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.OPENPROJECT_CI_GH_TOKEN }}
