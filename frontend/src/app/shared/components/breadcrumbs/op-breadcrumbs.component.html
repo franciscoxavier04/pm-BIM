@@ -1,17 +1,17 @@
 <div class="op-breadcrumbs">
   <!-- Desktop Version -->
   <nav [attr.aria-label]="text.breadcrumb" class="hidden-for-mobile">
-    <ol class="breadcrumb">
+    <ol class="op-breadcrumb-items">
       <li
-        class="breadcrumb-item"
-        data-test-selector="breadcrumb-item"
+        class="op-breadcrumb-item"
+        data-test-selector="op-breadcrumb-item"
         *ngFor="let item of items; let last = last"
         [class.active]="last"
         [attr.aria-current]="last ? 'page' : null"
       >
         <ng-container *ngIf="!last">
           <ng-container *ngIf="isLink(item); else plainText">
-            <a [href]="item.href">{{ item.text }}</a>
+            <a [href]="item.href" target="_self">{{ item.text }}</a>
           </ng-container>
           <ng-template #plainText>
             <span>{{ item }}</span>
@@ -26,9 +26,9 @@
 
   <!-- Mobile Version -->
   <nav [attr.aria-label]="text.breadcrumb" class="hidden-for-desktop">
-    <div class="breadcrumb-mobile" *ngIf="items.length > 1">
+    <div class="op-breadcrumb-mobile" *ngIf="items.length > 1">
       <ng-container *ngIf="getHref(items[items.length - 2]) as href">
-        <a class="breadcrumb-back" [href]="href">
+        <a class="op-breadcrumb-back" [href]="href" target="_self">
           <svg arrow-left-icon size="small"></svg>
           {{ getText(items[items.length - 2]) }}
         </a>

@@ -1,17 +1,30 @@
 @import "helpers"
 
 .op-breadcrumbs
-  ol
+  .op-breadcrumb-items
     margin-left: 0
-  .breadcrumb-item
+  .op-breadcrumb-item
+    display: inline-block
+    list-style: none
     margin-left: 0
+    &:after
+      border-right: 0.1em solid var(--borderColor-neutral-emphasis)
+      content: ""
+      display: inline-block
+      height: 0.8em
+      margin: 0 0.5em
+      transform: rotate(15deg) translateY(0.0625em)
+    &:last-child:after
+      content: none
+    &.active
+      font-weight: bold
 
   @media (max-width: $breakpoint-sm)
-    .breadcrumb-mobile
+    .op-breadcrumb-mobile
       display: flex
       align-items: center
 
-    .breadcrumb-back
+    .op-breadcrumb-back
       display: flex
       align-items: center
       text-decoration: none

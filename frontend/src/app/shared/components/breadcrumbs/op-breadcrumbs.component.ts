@@ -30,7 +30,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   Input,
-  ViewEncapsulation,
 } from '@angular/core';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 
@@ -44,7 +43,6 @@ export type BreadcrumbItem =
   selector: 'op-breadcrumbs',
   styleUrls: ['./op-breadcrumbs.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
 })
 export class OpBreadcrumbsComponent {
   @Input() items:BreadcrumbItem[] = [];
