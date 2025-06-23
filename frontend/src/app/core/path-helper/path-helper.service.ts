@@ -161,7 +161,10 @@ export class PathHelperService {
   }
 
   public projectGanttChartsPath(projectId:string) {
-    return `${this.projectPath(projectId)}/gantt`;
+    if (projectId) {
+      return `${this.projectPath(projectId)}/gantt`;
+    }
+    return `${this.staticBase}/gantt`;
   }
 
   public projectBCFPath(projectId:string) {
@@ -189,7 +192,10 @@ export class PathHelperService {
   }
 
   public projectWorkPackagesPath(projectId:string) {
-    return `${this.projectPath(projectId)}/work_packages`;
+    if (projectId) {
+      return `${this.projectPath(projectId)}/work_packages`;
+    }
+    return `${this.staticBase}/work_packages`;
   }
 
   public projectWorkPackageNewPath(projectId:string) {
