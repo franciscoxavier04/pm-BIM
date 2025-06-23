@@ -14,3 +14,4 @@ keywords: use-cases
 | [Portfolio management](portfolio-management)                 | This guide provides detailed step-by-step instruction on how to set up an overview of your project portfolio and create custom reports using the Project Overview, Wiki and the Rich text (WYSIWYG) editor in OpenProject. |
 | [Implementing Scaled Agile Framework (SAFe) in OpenProject](safe-framework) | Learn how to set up and configure OpenProject to support the Scaled Agile Framework (SAFe) to successfully deliver value to customers using agile practices at scale. |
 | [Test management](test-management)                           | OpenProject can be configured to support lightweight test management using custom work package types, workflows and project templates. This guide describes how to manage test cases and test runs in a reusable, scalable way |
+| [Meeting management](meeting-management)                     | tbd                                                          |
