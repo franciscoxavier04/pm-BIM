@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe Exports::Formatters::CustomField do
+RSpec.describe Exports::Formatters::CustomField, with_ee: [:custom_field_hierarchies] do
   let(:service) { CustomFields::Hierarchy::HierarchicalItemService.new }
   let(:custom_field) { create(:custom_field, field_format: "hierarchy", hierarchy_root: nil) }
   let(:root) { service.generate_root(custom_field).value! }
