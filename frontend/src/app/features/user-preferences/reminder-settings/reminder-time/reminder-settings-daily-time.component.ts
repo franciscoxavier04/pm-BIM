@@ -29,6 +29,7 @@ import moment from 'moment';
   templateUrl: './reminder-settings-daily-time.component.html',
   styleUrls: ['./reminder-settings-daily-time.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ReminderSettingsDailyTimeComponent implements OnInit {
   // All times that are available in a day with a 1 hour gap between each.

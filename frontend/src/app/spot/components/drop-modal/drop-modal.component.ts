@@ -22,6 +22,7 @@ import { autoUpdate, computePosition, flip, limitShift, Placement, shift } from 
   selector: 'spot-drop-modal',
   templateUrl: './drop-modal.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SpotDropModalComponent implements OnDestroy {
   @HostBinding('class.spot-drop-modal') public className = true;

@@ -68,6 +68,7 @@ const DEFAULT_SELECTED_TIME = '08:00';
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './baseline.component.html',
   styleUrls: ['./baseline.component.sass'],
+  standalone: false,
 })
 export class OpBaselineComponent extends UntilDestroyedMixin implements OnInit {
   @HostBinding('class.op-baseline') className = true;

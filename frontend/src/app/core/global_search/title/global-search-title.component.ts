@@ -48,6 +48,7 @@ import { OpTitleService } from 'core-app/core/html/op-title.service';
   selector: 'opce-global-search-title',
   templateUrl: './global-search-title.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class GlobalSearchTitleComponent extends UntilDestroyedMixin implements OnInit {
   @Input() public searchTerm:string;

@@ -47,6 +47,7 @@ export const attributeHelpTextSelector = 'attribute-help-text';
   selector: attributeHelpTextSelector,
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './attribute-help-text.component.html',
+  standalone: false,
 })
 export class AttributeHelpTextComponent implements OnInit {
   // Attribute to show help text for

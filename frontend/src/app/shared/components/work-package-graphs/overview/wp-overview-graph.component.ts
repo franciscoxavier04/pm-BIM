@@ -30,6 +30,7 @@ import {
   providers: [
     WpGraphConfigurationService,
   ],
+  standalone: false,
 })
 export class WorkPackageOverviewGraphComponent implements OnInit {
   @Input() initialFilters:any;

@@ -47,6 +47,7 @@ import { TimezoneService } from 'core-app/core/datetime/timezone.service';
            [id]="handler.htmlId" />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class HoursDurationEditFieldComponent extends EditFieldComponent {
   @InjectField() TimezoneService:TimezoneService;

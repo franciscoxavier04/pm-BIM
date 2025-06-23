@@ -96,6 +96,7 @@ interface SearchResultItems {
   ],
   // Necessary because of ng-select
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class GlobalSearchInputComponent implements AfterViewInit, OnDestroy {
   @Input() public placeholder:string;

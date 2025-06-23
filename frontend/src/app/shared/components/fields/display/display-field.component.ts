@@ -11,6 +11,7 @@ import { SchemaResource } from 'core-app/features/hal/resources/schema-resource'
   selector: 'display-field',
   template: '<span #displayFieldContainer></span>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DisplayFieldComponent implements OnInit {
   @Input() resource:HalResource;

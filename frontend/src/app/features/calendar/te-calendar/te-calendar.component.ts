@@ -109,6 +109,7 @@ const ADD_ENTRY_PROHIBITED_CLASS_NAME = '-prohibited';
     TurboRequestsService,
     PathHelperService,
   ],
+  standalone: false,
 })
 export class TimeEntryCalendarComponent implements AfterViewInit, OnDestroy {
   @ViewChild(FullCalendarComponent) ucCalendar:FullCalendarComponent;

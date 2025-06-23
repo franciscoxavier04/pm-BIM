@@ -6,6 +6,7 @@ import Mousetrap from 'mousetrap';
 
 @Directive({
   selector: '[opContextMenuTrigger]',
+  standalone: false,
 })
 export class OpContextMenuTrigger extends OpContextMenuHandler implements AfterViewInit {
   protected $element:JQuery;

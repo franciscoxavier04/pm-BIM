@@ -47,6 +47,7 @@ import { TimezoneService } from 'core-app/core/datetime/timezone.service';
     ></op-basic-single-date-picker>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DateEditFieldComponent extends EditFieldComponent implements OnInit {
   @InjectField() readonly timezoneService:TimezoneService;

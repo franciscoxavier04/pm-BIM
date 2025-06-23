@@ -102,6 +102,7 @@ import { TimezoneService } from 'core-app/core/datetime/timezone.service';
     OpWorkPackagesCalendarService,
     OpCalendarService,
   ],
+  standalone: false,
 })
 export class WorkPackagesCalendarComponent extends UntilDestroyedMixin implements OnInit {
   @ViewChild(FullCalendarComponent) ucCalendar:FullCalendarComponent;
