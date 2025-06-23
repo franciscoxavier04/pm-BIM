@@ -2027,6 +2027,16 @@ zh-CN:
       homescreen_subline: 通过升级，您也将支持一个开源项目。
       baseline_comparison:
         description: 高亮显示自从过去任意时间点以来对此列表所做的更改。
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "使用引用的属性和文本自动生成主题。"
       customize_life_cycle:
@@ -3938,8 +3948,6 @@ zh-CN:
       new:
         description: "对此项目阶段的更改将反映在所有启用的项目中。"
         heading: "新增阶段"
-      edit:
-        heading: "编辑阶段"
       both_gate: "开始和结束关口"
       no_gate: "无关口"
       start_gate: "开始关口"
@@ -4241,7 +4249,7 @@ zh-CN:
     reminders:
       label_remind_at: "日期"
       note_placeholder: "您为什么要设置此提醒？"
-      success_creation_message: "提醒设置成功。您将在所选时间收到此工作包的通知。"
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "提醒更新成功。"
       success_deletion_message: "提醒已成功删除。"
   sharing:

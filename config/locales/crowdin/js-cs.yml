@@ -202,18 +202,6 @@ cs:
         edit_query: "Upravit dotaz"
         new_group: "Nová skupina"
         reset_to_defaults: "Obnovit výchozí nastavení"
-      enterprise:
-        upsell:
-          benefits:
-            description: "Jaké jsou výhody  Enterprise on-premises Edice?"
-            high_security: "Bezpečnostní prvky"
-            high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP skupiny."
-            installation: "Instalační podpora"
-            installation_text: "Zkušení softwaroví inženýři vás povedou kompletní instalací a instalací ve vaší vlastní infrastruktuře."
-            premium_features: "Doplňky Enterprise Edice"
-            premium_features_text: "Agile desky, vlastní téma a logo, grafy, inteligentní pracovní postupy s vlastními akcemi, fulltextové vyhledávání příloh pracovního balíčku a vícenásobný výběr vlastních polí."
-            professional_support: "Profesionální podpora"
-            professional_support_text: "Získejte spolehlivou, vysoce profesionální podporu od seniorních podpůrných inženýrů s odbornými znalostmi o používání OpenProject."
       working_days:
         calendar:
           empty_state_header: "Nepracovní dny"

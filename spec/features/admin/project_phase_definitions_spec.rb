@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Projects phase definition settings", :js, with_flag: { stages_and_gates: true } do
+RSpec.describe "Projects phase definition settings", :js do
   shared_let(:initiating_stage) { create(:project_phase_definition, name: "Initiating") }
   shared_let(:executing_stage) do
     create(:project_phase_definition, name: "Executing", start_gate: true, start_gate_name: "Ready to Execute")
@@ -62,21 +62,6 @@ RSpec.describe "Projects phase definition settings", :js, with_flag: { stages_an
     end
   end
 
-  context "as admin without feature flag", with_flag: { stages_and_gates: false } do
-    current_user { create(:admin) }
-
-    it "allows viewing definitions" do
-      definitions_page.visit!
-
-      definitions_page.expect_listed([])
-
-      definitions_page.expect_flash(
-        message: "[Error 404] The page you were trying to access doesn't exist or has been removed.",
-        type: :error
-      )
-    end
-  end
-
   context "as admin with activated enterprise token", with_ee: %i[customize_life_cycle] do
     current_user { create(:admin) }
 
@@ -100,6 +85,9 @@ RSpec.describe "Projects phase definition settings", :js, with_flag: { stages_an
 
       # editing steps
       definitions_page.click_definition("Initiating")
+
+      definitions_page.expect_header_to_display("Initiating")
+
       fill_in "Name", with: "Starting"
       click_on "Update"
 
@@ -111,6 +99,9 @@ RSpec.describe "Projects phase definition settings", :js, with_flag: { stages_an
 
       # creating steps
       definitions_page.add
+
+      definitions_page.expect_header_to_display("New phase")
+
       fill_in "Name", with: "Imagining"
       definitions_page.select_color("Azure")
       click_on "Create"

@@ -2150,6 +2150,16 @@ pl:
       homescreen_subline: Uaktualniając, weprzesz również projekt open source.
       baseline_comparison:
         description: Wyróżnij zmiany wprowadzone na tej liście od dowolnego momentu w przeszłości.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "Utwórz automatycznie generowane tematy za pomocą wywoływanych atrybutów i tekstu."
       customize_life_cycle:
@@ -4069,8 +4079,6 @@ pl:
       new:
         description: "Zmiany w tej fazie projektu zostaną odzwierciedlone we wszystkich projektach, w których jest ona włączona."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Bramka początkowa i końcowa"
       no_gate: "Brak bramki"
       start_gate: "Bramka początkowa"
@@ -4376,7 +4384,7 @@ pl:
     reminders:
       label_remind_at: "Data"
       note_placeholder: "Dlaczego ustawiasz to przypomnienie?"
-      success_creation_message: "Przypomnienie zostało ustawione. W wybranym terminie otrzymasz powiadomienie dotyczące tego pakietu roboczego."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "Przypomnienie zostało zaktualizowane."
       success_deletion_message: "Przypomnienie zostało usunięte."
   sharing:

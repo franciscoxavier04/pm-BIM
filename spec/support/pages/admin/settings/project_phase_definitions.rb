@@ -36,6 +36,12 @@ module Pages
       class ProjectPhaseDefinitions < ::Pages::Page
         def path = "/admin/settings/project_phase_definitions"
 
+        def expect_header_to_display(text)
+          expect(page).to have_css("h2", text:)
+          expect(page).to have_css(".breadcrumb-item-selected a", text:)
+          expect(page).to have_title("#{text} | Project life cycle | Administration | OpenProject")
+        end
+
         def expect_listed(names)
           page.document.synchronize do
             found = page.all("[data-test-selector=project-life-cycle-step-definition-name]").collect(&:text)

@@ -202,18 +202,6 @@ vi:
         edit_query: "Chỉnh sửa truy vấn"
         new_group: "Nhóm mới"
         reset_to_defaults: "Đặt lại mặc định"
-      enterprise:
-        upsell:
-          benefits:
-            description: "Những lợi ích của phiên bản Enterprise tại chỗ là gì?"
-            high_security: "Tính năng bảo mật"
-            high_security_text: "Đăng nhập một lần (SAML, OpenID Connect, CAS), nhóm LDAP."
-            installation: "Hỗ trợ cài đặt"
-            installation_text: "Các kỹ sư phần mềm có kinh nghiệm sẽ hướng dẫn bạn qua toàn bộ quá trình cài đặt và cấu hình trong hạ tầng của bạn."
-            premium_features: "Phần mở rộng Enterprise"
-            premium_features_text: "Bảng Agile, chủ đề và logo tùy chỉnh, đồ thị, quy trình làm việc thông minh với các hành động tùy chỉnh, tìm kiếm toàn văn cho các tệp đính kèm công việc và trường tùy chỉnh nhiều chọn."
-            professional_support: "Hỗ trợ chuyên nghiệp"
-            professional_support_text: "Nhận hỗ trợ tin cậy, tận tâm từ các kỹ sư hỗ trợ cấp cao với kiến thức chuyên môn về việc chạy OpenProject trong môi trường kinh doanh quan trọng."
       working_days:
         calendar:
           empty_state_header: "Ngày không làm việc"

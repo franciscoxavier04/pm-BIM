@@ -202,18 +202,6 @@ lt:
         edit_query: "Keisti užklausą"
         new_group: "Nauja grupė"
         reset_to_defaults: "Atstatyti į numatytuosius"
-      enterprise:
-        upsell:
-          benefits:
-            description: "Kokie yra Enterprise vietinės versijos privalumai?"
-            high_security: "Saugumo funkcijos"
-            high_security_text: "Vienas prisijungimas (SAML, OpenID Connect, CAS), LDAP grupės."
-            installation: "Diegimo pagalba"
-            installation_text: "Patyręs programų inžinierius ves jus per visą diegimo ir nustatymo procesą naudojant jūsų pačių infrastruktūrą."
-            premium_features: "Enterprise priedai"
-            premium_features_text: "Agile lentos, savo tema ir logotipas, grafai, protingi darbo scenarijai su apibrėžtais veiksmais, pilna teksto paieška darbo paketų prieduose ir galimybė pasirinkti daugiau nei vieną reikšmę pritaikytuose laukuose."
-            professional_support: "Profesionali pagalba"
-            professional_support_text: "Gaukite patikimą, artimą pagalbą iš patyrusių pagalbos inžinierių su ekspertinėmis žiniomis apie OpenProject naudojimą verslui kritinėse aplinkose."
       working_days:
         calendar:
           empty_state_header: "Nedarbo dienos"

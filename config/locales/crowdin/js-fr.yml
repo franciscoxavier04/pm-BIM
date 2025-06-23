@@ -202,18 +202,6 @@ fr:
         edit_query: "Modifier la requête"
         new_group: "Nouveau groupe"
         reset_to_defaults: "Rétablir les valeurs par défaut"
-      enterprise:
-        upsell:
-          benefits:
-            description: "Quels sont les avantages de l'édition Entreprise autohébergée ?"
-            high_security: "Fonctionnalités de sécurité"
-            high_security_text: "Authentification unique (SAML, OpenID Connect, CAS), groupes LDAP."
-            installation: "Assistance à l'installation"
-            installation_text: "Des ingénieurs logiciel expérimentés vous guident à travers le processus complet d'installation et de configuration de votre propre infrastructure."
-            premium_features: "Modules Enterprise"
-            premium_features_text: "Tableaux agiles, thème et logo personnalisés, graphiques, flux de travail intelligents avec actions personnalisées, recherche en plein texte des pièces jointes de lots de travaux et champs personnalisés à choix multiples"
-            professional_support: "Support professionnel"
-            professional_support_text: "Obtenez une assistance fiable et disponible de la part d'ingénieurs d'assistance expérimentés qui ont une connaissance approfondie de la mise en œuvre d'OpenProject dans des environnements critiques pour l'entreprise."
       working_days:
         calendar:
           empty_state_header: "Jours non travaillés"

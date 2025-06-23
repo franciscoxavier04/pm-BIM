@@ -2070,6 +2070,16 @@ fr:
       homescreen_subline: En optant pour une formule d'abonnement supérieure, vous soutiendrez également un projet open source.
       baseline_comparison:
         description: Mettre en évidence les modifications apportées à cette liste depuis n'importe quel point dans le passé.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "Créez des sujets générés automatiquement à l'aide d'attributs et de textes référencés."
       customize_life_cycle:
@@ -3988,8 +3998,6 @@ fr:
       new:
         description: "Les modifications apportées à cette phase du projet seront répercutées dans tous les projets où elle est activée."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Porte de début et de fin"
       no_gate: "Aucune porte"
       start_gate: "Porte de début"
@@ -4292,7 +4300,7 @@ fr:
     reminders:
       label_remind_at: "Date"
       note_placeholder: "Pourquoi définissez-vous ce rappel ?"
-      success_creation_message: "Le rappel a été défini avec succès. Vous recevrez une notification pour ce lot de travaux au moment choisi."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "Rappel mis à jour avec succès."
       success_deletion_message: "Rappel supprimé avec succès."
   sharing:

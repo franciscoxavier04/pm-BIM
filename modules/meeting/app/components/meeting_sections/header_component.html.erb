@@ -46,8 +46,8 @@
         method: :put,
         url: meeting_section_path(@meeting_section.meeting, @meeting_section),
         data: {
-          controller: "meeting-section-form scroll-into-view",
-          "meeting-section-form-cancel-url-value": cancel_edit_meeting_section_path(@meeting_section.meeting, @meeting_section)
+          controller: "meetings--section-form scroll-into-view",
+          "meetings--section-form-cancel-url-value": cancel_edit_meeting_section_path(@meeting_section.meeting, @meeting_section)
         }
       ) do |f|
         flex_layout do |editable_title_form|

@@ -27,6 +27,10 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
+<% if @tab == "WorkPackageCustomField" %>
+  <%= render(EnterpriseEdition::BannerComponent.new(:custom_field_hierarchies)) %>
+<% end %>
+
 <% if @custom_fields_by_type[tab[:name]].blank? %>
   <%= no_results_box(action_url: new_custom_field_path(type: tab[:name]), display_action: true) %>
 <% else %>

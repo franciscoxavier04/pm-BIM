@@ -203,18 +203,6 @@ ja:
         edit_query: "クエリの編集"
         new_group: "新規グループ"
         reset_to_defaults: "デフォルトに戻す"
-      enterprise:
-        upsell:
-          benefits:
-            description: "What are the benefits of the Enterprise on-premises edition?"
-            high_security: "セキュリティ機能"
-            high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
-            installation: "インストールサポート"
-            installation_text: "経験豊富なソフトウェアエンジニアが、あなた独自のインフラストラクチャへの完全なインストールとセットアッププロセスをガイドします。"
-            premium_features: "エンタープライズアドオン"
-            premium_features_text: "アジャイルボード、カスタムテーマとロゴ、グラフ、カスタムアクションによるインテリジェントワークフロー、ワークパッケージの添付ファイルおよびマルチセレクトカスタムフィールドの全文検索。"
-            professional_support: "プロフェッショナルサポート"
-            professional_support_text: "ビジネスクリティカルな環境での OpenProject 利用に関する専門知識を持つ上級サポートエンジニアから、信頼性の高いハイタッチサポートを受けましょう。"
       working_days:
         calendar:
           empty_state_header: "Non-working days"
@@ -991,7 +979,7 @@ ja:
           tomorrow: "Tomorrow"
           three_days: "In 3 days"
           week: "In a week"
-          month: "In a month"
+          month: "1ヶ月以内"
           custom: "At a particular date/time"
       scheduling:
         is_parent: "このワークパッケージの日付は、その子から自動的に推定されます。日付を設定するには、「手動スケジューリング」を有効にします。"

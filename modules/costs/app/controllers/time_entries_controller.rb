@@ -30,7 +30,6 @@
 
 class TimeEntriesController < ApplicationController
   include OpTurbo::ComponentStream
-  include OpTurbo::DialogStreamHelper
   include Redmine::I18n
 
   before_action :require_login

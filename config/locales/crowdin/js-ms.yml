@@ -202,18 +202,6 @@ ms:
         edit_query: "Edit pertanyaan"
         new_group: "Kumpulan baharu"
         reset_to_defaults: "Set semula ke default"
-      enterprise:
-        upsell:
-          benefits:
-            description: "Apakah manfaat edisi Enterprise di premis?"
-            high_security: "Fitur keselamatan"
-            high_security_text: "Log masuk tunggal (SAML, OpenID Connect, CAS), kumpulan LDAP."
-            installation: "Sokongan pemasangan"
-            installation_text: "Jurutera perisian berpengalaman membimbing anda melalui pemasangan lengkap dan proses persediaan dalam infrastruktur anda sendiri."
-            premium_features: "Tambahan Enterprise"
-            premium_features_text: "Board Agile, tema tersuai dan logo, graf, aliran kerja yang cerdas dengan tindakan tersuai, carian teks penuh untuk lampiran pakej kerja dan pelbagai pilihan ruang tersuai."
-            professional_support: "Sokongan profesional"
-            professional_support_text: "Dapatkan sokongan yang boleh dipercayai, sokongan peribadi yang berkualiti tinggi daripada jurutera sokongan berpengalaman dengan pengetahuan pakar tentang menjalankan OpenProject dalam persekitaran perniagaan yang kritikal."
       working_days:
         calendar:
           empty_state_header: "Hari tidak bekerja"

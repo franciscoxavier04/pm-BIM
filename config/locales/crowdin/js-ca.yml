@@ -202,18 +202,6 @@ ca:
         edit_query: "Editar consulta"
         new_group: "Nou grup"
         reset_to_defaults: "Restableix als valors per defecte"
-      enterprise:
-        upsell:
-          benefits:
-            description: "Quins són els beneficis de l'edició Enterprise on-premises?"
-            high_security: "Funcions de seguretat"
-            high_security_text: "Inici de sessió únic (SAML, OpenID Conenct, CAS), grups LDAP."
-            installation: "Suport d'instal·lació"
-            installation_text: "Enginyers de programari amb experiència et guien durant tot el procés d'instal·lació i configuració de la teva pròpia estructura."
-            premium_features: "Extensions Enterprise"
-            premium_features_text: "Taulells \"agile\", tema personalitzat i logotip, gràfiques, fluxos de treball amb accions personalitzades, cerca de text completa per a fitxers adjunt en paquets de treball i la selecció múltiple de camps personalitzats."
-            professional_support: "Suport professional"
-            professional_support_text: "Obté un suport de confiança i d'alt nivell dels nostres enginyers de suport sèniors amb experiència en manegar OpenProject en ambients empresarials crítics."
       working_days:
         calendar:
           empty_state_header: "Dies no laborables"

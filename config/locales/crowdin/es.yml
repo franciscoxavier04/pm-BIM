@@ -2069,6 +2069,16 @@ es:
       homescreen_subline: Al mejorar su plan, también estará apoyando un proyecto de código abierto.
       baseline_comparison:
         description: Resalte los cambios realizados en esta lista desde cualquier momento en el pasado.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "Cree asuntos generados automáticamente utilizando atributos y texto referenciados."
       customize_life_cycle:
@@ -3986,8 +3996,6 @@ es:
       new:
         description: "Los cambios en esta fase del proyecto se reflejarán en todos los proyectos en los que esté activada."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Puerta inicial y final"
       no_gate: "Sin puerta"
       start_gate: "Puerta de inicio"
@@ -4290,7 +4298,7 @@ es:
     reminders:
       label_remind_at: "Fecha"
       note_placeholder: "¿Por qué establece este recordatorio?"
-      success_creation_message: "Recordatorio establecido con éxito. Recibirá una notificación para este paquete de trabajo a la hora elegida."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "Recordatorio actualizado con éxito."
       success_deletion_message: "Recordatorio eliminado correctamente."
   sharing:

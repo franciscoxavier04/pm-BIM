@@ -2029,6 +2029,16 @@ ms:
       homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Sorotkan perubahan yang dibuat ke senarai ini pada bila-bila masa lalu.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -3944,8 +3954,6 @@ ms:
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"
@@ -4248,7 +4256,7 @@ ms:
     reminders:
       label_remind_at: "Tarikh"
       note_placeholder: "Mengapa anda menetapkan peringatan ini?"
-      success_creation_message: "Peringatan berjaya ditetapkan. Anda akan menerima pemberitahuan untuk pakej kerja ini pada masa yang dipilih."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "Peringatan berjaya dikemas kini."
       success_deletion_message: "Peringatan berjaya dipadamkan."
   sharing:

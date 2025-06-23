@@ -202,18 +202,6 @@ ko:
         edit_query: "쿼리 편집"
         new_group: "새 그룹"
         reset_to_defaults: "기본값으로 초기화"
-      enterprise:
-        upsell:
-          benefits:
-            description: "Enterprise on-premises Edition의 장점은 무엇입니까?"
-            high_security: "보안 기능"
-            high_security_text: "SSO(SAML, OpenID Connect, CAS), LDAP 그룹."
-            installation: "설치 지원"
-            installation_text: "숙련된 소프트웨어 엔지니어들이 사용자 고유 인프라에서 완전한 설치 및 설정 프로세스를 안내해줍니다."
-            premium_features: "Enterprise 추가 기능"
-            premium_features_text: "민첩한 보드, 사용자 지정 테마 및 로고, 그래프, 인텔리전트 워크플로와 사용자 지정 작업, 작업 패키지 첨부 파일 및 다중 선택 사용자 지정 필드에 대한 전체 텍스트 검색."
-            professional_support: "전문적 지원"
-            professional_support_text: "비즈니스 크리티컬 환경에서의 OpenProject 실행에 대한 전문 지식을 갖춘 선임 지원 엔지니어가 신뢰할 수 있는 뛰어난 지원을 제공합니다."
       working_days:
         calendar:
           empty_state_header: "휴무일"

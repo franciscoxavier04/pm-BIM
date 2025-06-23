@@ -202,18 +202,6 @@
         edit_query: "Rediger spørring"
         new_group: "Ny gruppe"
         reset_to_defaults: "Tilbakestill til standard"
-      enterprise:
-        upsell:
-          benefits:
-            description: "Hva er fordelene ved Enterprise on-premises-utgaven?"
-            high_security: "Sikkerhetsfunksjoner"
-            high_security_text: "Engangs pålogging (SAML, OpenID Connect, CAS), LDAP-grupper."
-            installation: "Installasjons støtte"
-            installation_text: "Erfarne programvareingeniører veileder deg gjennom hele installerings- og installasjonsprosessen på din egen infrastruktur."
-            premium_features: "Enterprise tillegg"
-            premium_features_text: "Dynamiske tavler, egendefinert tema og logo, grafer, intelligente arbeidsprosesser med egendefinerte handlinger, fulltekst søk etter vedlegg til arbeidspakke og tilpassede felter."
-            professional_support: "Profesjonell hjelp"
-            professional_support_text: "Få pålitelig, høykvalitets støtte fra seniorstøtteteknikere med ekspertkunnskap om å drive OpenProject i forretningskritiske omgivelser."
       working_days:
         calendar:
           empty_state_header: "Arbeidsfrie dager"

@@ -202,18 +202,6 @@ it:
         edit_query: "Modifica query"
         new_group: "Nuovo gruppo"
         reset_to_defaults: "Ripristino predefinite"
-      enterprise:
-        upsell:
-          benefits:
-            description: "Quali sono i benefici dell'edizione Enterprise in sede?"
-            high_security: "Funzionalità di sicurezza"
-            high_security_text: "Singolo segno su (SAML, OpenID Connect, CAS), gruppi LDAP."
-            installation: "Assistenza all'installazione"
-            installation_text: "I nostri ingegneri del software esperti ti guidano durante il processo di installazione e configurazione nella tua infrastruttura."
-            premium_features: "Componenti aggiuntivi Enterprise"
-            premium_features_text: "Tabelloni Agile, tema e logo personalizzati, grafici, flussi di lavoro intelligenti con azioni personalizzate, ricerca completa di allegati nelle macro-attività e campi personalizzati a selezione multipla."
-            professional_support: "Supporto professionale"
-            professional_support_text: "Ottieni un supporto affidabile e di livello da esperti tecnici con conoscenze dettagliate sulla gestione di OpenProject in ambienti critici per le imprese."
       working_days:
         calendar:
           empty_state_header: "Giorni non lavorativi"

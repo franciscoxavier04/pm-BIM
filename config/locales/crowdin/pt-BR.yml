@@ -2069,6 +2069,16 @@ pt-BR:
       homescreen_subline: Ao fazer o upgrade, você também estará apoiando um projeto de código aberto.
       baseline_comparison:
         description: Destaque as alterações realizadas nesta lista desde qualquer ponto no passado.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "Crie assuntos gerados automaticamente com base em atributos e textos referenciados."
       customize_life_cycle:
@@ -3986,8 +3996,6 @@ pt-BR:
       new:
         description: "As alterações nesta fase do projeto serão aplicadas a todos os projetos nos quais ela esteja ativada."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Controle inicial e controle final"
       no_gate: "Sem controle"
       start_gate: "Data inicial"
@@ -4290,7 +4298,7 @@ pt-BR:
     reminders:
       label_remind_at: "Data"
       note_placeholder: "Por que você está configurando este lembrete?"
-      success_creation_message: "Lembrete definido com sucesso. Você receberá uma notificação para este pacote de trabalho no horário selecionado."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "Lembrete atualizado com sucesso."
       success_deletion_message: "Lembrete excluído com sucesso."
   sharing:

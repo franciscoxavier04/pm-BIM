@@ -201,18 +201,6 @@ el:
         edit_query: "Επεξεργασία αναζήτησης"
         new_group: "Νέα ομάδα"
         reset_to_defaults: "Επαναφορά στα προεπιλεγμένα"
-      enterprise:
-        upsell:
-          benefits:
-            description: "What are the benefits of the Enterprise on-premises edition?"
-            high_security: "Χαρακτηριστικά ασφαλείας"
-            high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
-            installation: "Υποστήριξη εγκατάστασης"
-            installation_text: "Οι έμπειροι μηχανικοί λογισμικού σας καθοδηγούν στην πλήρη διαδικασία εγκατάστασης και εγκατάστασης στη δική σας υποδομή."
-            premium_features: "Enterprise add-ons"
-            premium_features_text: "Agile πίνακες, προσαρμοσμένα θέματα και λογότυπα, γραφήματα, έξυπνες ροές εργασίας με προσαρμοσμένες ενέργειες, αναζήτηση κειμένου για συνημμένα πακέτων εργασίας και πολλαπλή επιλογή προσαρμοσμένων πεδίων."
-            professional_support: "Επαγγελματική υποστήριξη"
-            professional_support_text: "Αποκτήστε αξιόπιστη, high-touch υποστήριξη από ανώτερους μηχανικούς υποστήριξης με εξειδικευμένες γνώσεις σχετικά με τη λειτουργία του OpenProject σε κρίσιμα επιχειρηματικά περιβάλλοντα."
       working_days:
         calendar:
           empty_state_header: "Non-working days"
