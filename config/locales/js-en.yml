@@ -758,6 +758,7 @@ en:
           last_day: "Last day"
 
     text_are_you_sure: "Are you sure?"
+    breadcrumb: "breadcrumb"
     text_data_lost: "All entered data will be lost."
     text_user_wrote: "%{value} wrote:"
 

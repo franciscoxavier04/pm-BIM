@@ -114,21 +114,24 @@ export class WorkPackageViewPageComponent extends PartitionedQuerySpacePageCompo
         href: this.pathHelperService.projectPath(this.currentProject.identifier as string),
         text: this.currentProject.name,
       },
-      {
-        href: this.pathHelperService.projectWorkPackagesPath(this.currentProject.identifier as string),
-        text: this.I18n.t('js.work_packages.work_packages_label'),
-      },
+      this.breadcrumbModuleEntry(),
       this.selectedTitle ?? '',
     ];
 
+    return items;
+  }
+
+  breadcrumbModuleEntry():{ href:string, text:string } {
     if (this.isGantt) {
-      items[1] = {
+      return {
         href: this.pathHelperService.projectGanttChartsPath(this.currentProject.identifier as string),
         text: this.I18n.t('js.work_packages.gantt_charts_label'),
       };
     }
-
-    return items;
+    return {
+      href: this.pathHelperService.projectWorkPackagesPath(this.currentProject.identifier as string),
+      text: this.I18n.t('js.work_packages.work_packages_label'),
+    };
   }
 
   protected additionalLoadingTime():Promise<unknown> {

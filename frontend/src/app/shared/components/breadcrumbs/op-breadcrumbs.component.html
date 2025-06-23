@@ -1,6 +1,6 @@
 <div class="op-breadcrumbs">
   <!-- Desktop Version -->
-  <nav aria-label="breadcrumb" class="desktop">
+  <nav [attr.aria-label]="text.breadcrumb" class="hidden-for-mobile">
     <ol class="breadcrumb">
       <li
         class="breadcrumb-item"
@@ -17,7 +17,6 @@
             <span>{{ item }}</span>
           </ng-template>
         </ng-container>
-
         <ng-container *ngIf="last">
           <span>{{ getText(item) }}</span>
         </ng-container>
@@ -26,7 +25,7 @@
   </nav>
 
   <!-- Mobile Version -->
-  <nav aria-label="breadcrumb" class="mobile">
+  <nav [attr.aria-label]="text.breadcrumb" class="hidden-for-desktop">
     <div class="breadcrumb-mobile" *ngIf="items.length > 1">
       <ng-container *ngIf="getHref(items[items.length - 2]) as href">
         <a class="breadcrumb-back" [href]="href">
