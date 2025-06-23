@@ -66,6 +66,11 @@ module OpenProject
                                    default: {},
                                    format: :hash
       end
+
+      config.to_prepare do
+        # Load AuthProvider descendants due to STI
+        Saml::Provider
+      end
     end
   end
 end
