@@ -27,35 +27,40 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<% html_title t(:label_administration), t("label_user_new") %>
+<% html_title(t(:label_my_account), t(:label_interface)) %>
 
 <%=
   render(Primer::OpenProject::PageHeader.new) do |header|
-    header.with_title { t(:label_user_new) }
+    header.with_title { t(:label_interface) }
     header.with_breadcrumbs(
-      [{ href: admin_index_path, text: t("label_administration") },
-       { href: admin_settings_users_path, text: t(:label_user_and_permission) },
-       { href: users_path, text: t(:label_user_plural) },
-       t(:label_user_new)]
+      [{ href: my_account_path, text: t(:label_my_account) },
+       t(:label_interface)]
     )
   end
 %>
 
-<%= error_messages_for @user %>
+<%= error_messages_for "user" %>
 
-<%= labelled_tabular_form_for @user,
-                              url: { action: "create" },
-                              html: { class: nil, autocomplete: "off" },
-                              data: {
-                                controller: "admin--users",
-                                turbo: false,
-                                "admin--users-password-auth-selected-value": @user.ldap_auth_source_id.blank?
-                              },
-                              as: :user do |f| %>
-  <%= render partial: "simple_form", locals: { f: f, auth_sources: @ldap_auth_sources, user: @user } %>
+<%=
+  render(Primer::Beta::Subhead.new) do |component|
+    component.with_heading(tag: :h3, size: :medium) { I18n.t("activerecord.attributes.user_preference.header_look_and_feel") }
+  end
+%>
+<%=
+  settings_primer_form_with(model: @user.pref, scope: :pref, url: { action: "update_settings" }, method: :patch, data: { turbo: false }) do |form|
+    render(My::LookAndFeelForm.new(form))
+  end
+%>
 
-  <p>
-    <%= styled_button_tag t(:button_create), class: "-primary -with-icon icon-checkmark" %>
-    <%= styled_button_tag t(:button_create_and_continue), name: "continue", class: "-primary -with-icon icon-checkmark" %>
-  </p>
-<% end %>
+<%=
+  render(Primer::Beta::Subhead.new(mt: 3)) do |component|
+    component.with_heading(tag: :h3, size: :medium) { I18n.t("activerecord.attributes.user_preference.header_alerts") }
+  end
+%>
+<%=
+  settings_primer_form_with(model: @user.pref, scope: :pref, url: { action: "update_settings" }, data: { turbo: false }) do |form|
+    render(My::AlertsForm.new(form))
+  end
+%>
+
+<%= call_hook(:view_my_settings, user: @user) %>
