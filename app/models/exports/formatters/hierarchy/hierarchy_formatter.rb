@@ -48,12 +48,7 @@ module Exports
           item = ::CustomField::Hierarchy::Item.find_by(id: item_value.to_s)
           return "#{item_value} #{I18n.t(:label_not_found)}" if item.nil?
 
-          nodes = hierarchy_item_service.get_branch(item:).value!
-          nodes
-            .reject(&:root?)
-            .map do |branch_item|
-            branch_item.short.present? ? "#{branch_item.label} (#{branch_item.short})" : branch_item.label
-          end.join(" / ")
+          item.ancestry_path
         end
 
         def hierarchy_item_service
