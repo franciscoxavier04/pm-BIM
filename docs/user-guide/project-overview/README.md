@@ -13,7 +13,7 @@ The **Project overview** page is a dashboard with important information about yo
 | Topic                                                        | Content                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [What is the project overview?](#what-is-the-project-overview) | What can I do with the project overview page?                |
-| [Project life cycle](#project-attributes)                    | What is the project life cycle?                              |
+| [Project life cycle](#project-life-cycle)                    | What is the project life cycle?                              |
 | [Project attributes](#project-attributes)                    | What are project attributes and how can I use them?          |
 | [Mark project as a favorite](#mark-a-project-as-favorite)    | How can I mark a project as favorite?                        |
 | [Archive a project](#archive-a-project)                      | How can I archive a project from the project overview page?  |
