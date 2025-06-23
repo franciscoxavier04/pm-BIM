@@ -30,30 +30,28 @@
 
 module Exports
   module Formatters
-    module Hierarchy
-      class HierarchyFormatter
-        def format(object, custom_field)
-          cvs = object.custom_value_for(custom_field)
-          case cvs
-          when Array
-            cvs.map { |item| format_hierarchy_item_for_export(item) }.join(", ")
-          when CustomValue
-            format_hierarchy_item_for_export(cvs)
-          else
-            cvs
-          end
+    class HierarchyFormatter
+      def format(object, custom_field)
+        cvs = object.custom_value_for(custom_field)
+        case cvs
+        when Array
+          cvs.map { |item| format_hierarchy_item_for_export(item) }.join(", ")
+        when CustomValue
+          format_hierarchy_item_for_export(cvs)
+        else
+          cvs
         end
+      end
 
-        def format_hierarchy_item_for_export(item_value)
-          item = ::CustomField::Hierarchy::Item.find_by(id: item_value.to_s)
-          return "#{item_value} #{I18n.t(:label_not_found)}" if item.nil?
+      def format_hierarchy_item_for_export(item_value)
+        item = ::CustomField::Hierarchy::Item.find_by(id: item_value.to_s)
+        return "#{item_value} #{I18n.t(:label_not_found)}" if item.nil?
 
-          item.ancestry_path
-        end
+        item.ancestry_path
+      end
 
-        def hierarchy_item_service
-          ::CustomFields::Hierarchy::HierarchicalItemService.new
-        end
+      def hierarchy_item_service
+        ::CustomFields::Hierarchy::HierarchicalItemService.new
       end
     end
   end

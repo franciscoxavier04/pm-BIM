@@ -59,7 +59,7 @@ module Exports
         when "text"
           object.typed_custom_value_for(custom_field)
         when "hierarchy"
-          ::Exports::Formatters::Hierarchy::HierarchyFormatter.new.format(object, custom_field)
+          HierarchyFormatter.new.format(object, custom_field)
         else
           object.formatted_custom_value_for(custom_field)
         end
