@@ -25,6 +25,7 @@ jobs:
           echo "Invalid release branch found: $BRANCH"
           exit 1
         fi
+        echo "Found previous release branch: $BRANCH"
         echo "branch=${BRANCH}" >> $GITHUB_OUTPUT
     - id: find_latest_release
       env:
@@ -40,9 +41,10 @@ jobs:
           exit 1
         fi
         
+        echo "Found current release branch: $BRANCH"
         echo "branch=${BRANCH}" >> $GITHUB_OUTPUT
   merge-or-create-pr:
-    if: github.ref_name == needs.setup.outputs.previous_release_branch
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref_name == needs.setup.outputs.previous_release_branch)
     env:
       RELEASE_BRANCH: ${{ needs.setup.outputs.latest_release_branch }}
       PREVIOUS_RELEASE_BRANCH: ${{ needs.setup.outputs.previous_release_branch }}
