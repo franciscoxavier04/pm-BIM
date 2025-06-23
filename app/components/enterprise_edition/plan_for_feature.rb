@@ -37,29 +37,15 @@ module EnterpriseEdition
       attr_accessor :i18n_scope
     end
 
-    def teaser?
-      feature_key == :teaser
-    end
-
-    def token
-      @token ||= EnterpriseToken.active_trial_tokens.last
-    end
-
     def title
       I18n.t(:title, scope: i18n_scope, default: default_title)
     end
 
     def default_title
-      teaser? ? teaser_title : I18n.t(feature_key, scope: :"ee.features")
-    end
-
-    def teaser_title
-      I18n.t("ee.teaser.title", count: token.days_left || 365, trial_plan: token.plan)
+      I18n.t(feature_key, scope: :"ee.features")
     end
 
     def description
-      return teaser_description if teaser?
-
       @description || begin
         if I18n.exists?(:description_html, scope: i18n_scope)
           I18n.t(:description_html, scope: i18n_scope).html_safe
@@ -75,10 +61,6 @@ module EnterpriseEdition
           If that isn't applicable, a description parameter needs to be provided.
         TEXT
       )
-    end
-
-    def teaser_description
-      I18n.t("ee.teaser.description", trial_plan: plan_name(token.plan)).html_safe
     end
 
     def features
@@ -99,13 +81,11 @@ module EnterpriseEdition
     end
 
     def plan_text
-      I18n.t("ee.upsell.plan_text_html", plan_name: plan_name(plan)).html_safe
-    end
-
-    def plan_name(plan)
-      render(Primer::Beta::Text.new(font_weight: :bold, classes: "upsell-colored")) do
+      plan_name = render(Primer::Beta::Text.new(font_weight: :bold, classes: "upsell-colored")) do
         I18n.t("ee.upsell.plan_name", plan: plan.capitalize)
       end
+
+      I18n.t("ee.upsell.plan_text_html", plan_name:).html_safe
     end
   end
 end

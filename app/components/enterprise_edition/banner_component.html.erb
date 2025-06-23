@@ -42,10 +42,10 @@
             flex.with_row(classes: "op-enterprise-banner--description") do
               concat render(Primer::Beta::Text.new(tag: :p)) { description }
 
-            unless large? || teaser?
-              concat render(Primer::Beta::Text.new(tag: :p)) { plan_text }
+              unless large?
+                concat render(Primer::Beta::Text.new(tag: :p)) { plan_text }
+              end
             end
-          end
 
             if features.present?
               flex.with_row do
@@ -68,14 +68,14 @@
               end
             end
 
-          flex.with_row(mt: 1) do
-            render EnterpriseEdition::UpsellButtonsComponent.new(
-              feature_key,
-              justify_content: (large? ? :center : :flex_start)
-            )
+            flex.with_row(mt: 1) do
+              render EnterpriseEdition::UpsellButtonsComponent.new(
+                feature_key,
+                justify_content: (large? ? :center : :flex_start)
+              )
+            end
           end
         end
-      end
 
         if medium?
           grid.with_area(:image, **@image_arguments)
