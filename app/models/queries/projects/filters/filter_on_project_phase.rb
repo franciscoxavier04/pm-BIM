@@ -47,8 +47,7 @@ module Queries::Projects::Filters::FilterOnProjectPhase
   end
 
   def available?
-    OpenProject::FeatureDecisions.stages_and_gates_active? &&
-      User.current.allowed_in_any_project?(:view_project_phases)
+    User.current.allowed_in_any_project?(:view_project_phases)
   end
 
   def where

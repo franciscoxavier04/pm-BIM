@@ -50,7 +50,6 @@ class MeetingsController < ApplicationController
 
   include OpTurbo::ComponentStream
   include OpTurbo::FlashStreamHelper
-  include OpTurbo::DialogStreamHelper
   include Meetings::AgendaComponentStreams
   include MetaTagsHelper
 

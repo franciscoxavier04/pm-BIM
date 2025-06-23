@@ -56,9 +56,11 @@ export default class CustomFieldsController extends Controller {
   static values = {
     formatConfig: Array,
     hierarchyEnabled: Boolean,
+    format: String,
   };
 
   declare readonly formatConfigValue:[string, string, string[]][];
+  declare readonly formatValue:string;
   declare readonly hierarchyEnabledValue:boolean;
 
   declare readonly formatTarget:HTMLInputElement;
@@ -88,11 +90,7 @@ export default class CustomFieldsController extends Controller {
       this.setupDragAndDrop();
     }
 
-    this.formatChanged();
-  }
-
-  formatChanged() {
-    this.toggleFormat(this.formatTarget.value);
+    this.adaptInputsToFormat(this.formatValue);
   }
 
   moveRowUp(event:{ target:HTMLElement }) {
@@ -250,7 +248,7 @@ export default class CustomFieldsController extends Controller {
     });
   }
 
-  private toggleFormat(format:string) {
+  private adaptInputsToFormat(format:string) {
     if (this.hasSubmitButtonTarget) {
       this.submitButtonTarget.disabled = format === 'hierarchy' && !this.hierarchyEnabledValue;
     }

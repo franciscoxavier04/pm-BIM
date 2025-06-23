@@ -30,7 +30,6 @@ module Admin::Settings
   class ProjectCustomFieldSectionsController < ::Admin::SettingsController
     include OpTurbo::ComponentStream
     include Admin::Settings::ProjectCustomFields::ComponentStreams
-    include OpTurbo::DialogStreamHelper
 
     before_action :set_project_custom_field_section, only: %i[update move drop destroy]
 

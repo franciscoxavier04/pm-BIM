@@ -677,69 +677,61 @@ RSpec.describe API::V3::WorkPackages::WorkPackageRepresenter do
       end
 
       describe "projectPhase" do
-        context "with the feature flag being active", with_flag: { stages_and_gates: true } do
-          context "with a phase being set" do
-            it_behaves_like "has a titled link" do
-              let(:link) { "projectPhase" }
-              let(:href) { api_v3_paths.project_phase(project_phase.id) }
-              let(:title) { project_phase.name }
-            end
-          end
-
-          context "without a phase being set" do
-            before do
-              work_package.project_phase_definition = nil
-            end
-
-            it_behaves_like "has an empty link" do
-              let(:link) { "projectPhase" }
-            end
-          end
-
-          context "with the phase not existing in the project" do
-            let(:project_phase) { nil }
-
-            it_behaves_like "has an empty link" do
-              let(:link) { "projectPhase" }
-            end
-          end
-
-          context "with the phase being inactive in the project" do
-            let(:project_phase) { build_stubbed(:project_phase, active: false, definition: project_phase_definition) }
-
-            it_behaves_like "has an empty link" do
-              let(:link) { "projectPhase" }
-            end
-          end
-
-          context "without the user being allowed to see the reference" do
-            let(:permissions) { all_permissions - [:view_project_phases] }
-
-            it_behaves_like "has no link" do
-              let(:link) { "projectPhase" }
-            end
-          end
-
-          context "without any phase existing in the project" do
-            let(:project_phases) { [] }
-
-            it_behaves_like "has no link" do
-              let(:link) { "projectPhase" }
-            end
-          end
-
-          context "without any phase active in the project" do
-            before do
-              project_phases.each { |phase| phase.active = false }
-            end
-
-            it_behaves_like "has no link" do
-              let(:link) { "projectPhase" }
-            end
+        context "with a phase being set" do
+          it_behaves_like "has a titled link" do
+            let(:link) { "projectPhase" }
+            let(:href) { api_v3_paths.project_phase(project_phase.id) }
+            let(:title) { project_phase.name }
           end
         end
 
-        context "without the feature flag being active" do
+        context "without a phase being set" do
+          before do
+            work_package.project_phase_definition = nil
+          end
+
+          it_behaves_like "has an empty link" do
+            let(:link) { "projectPhase" }
+          end
+        end
+
+        context "with the phase not existing in the project" do
+          let(:project_phase) { nil }
+
+          it_behaves_like "has an empty link" do
+            let(:link) { "projectPhase" }
+          end
+        end
+
+        context "with the phase being inactive in the project" do
+          let(:project_phase) { build_stubbed(:project_phase, active: false, definition: project_phase_definition) }
+
+          it_behaves_like "has an empty link" do
+            let(:link) { "projectPhase" }
+          end
+        end
+
+        context "without the user being allowed to see the reference" do
+          let(:permissions) { all_permissions - [:view_project_phases] }
+
+          it_behaves_like "has no link" do
+            let(:link) { "projectPhase" }
+          end
+        end
+
+        context "without any phase existing in the project" do
+          let(:project_phases) { [] }
+
+          it_behaves_like "has no link" do
+            let(:link) { "projectPhase" }
+          end
+        end
+
+        context "without any phase active in the project" do
+          before do
+            project_phases.each { |phase| phase.active = false }
+          end
+
           it_behaves_like "has no link" do
             let(:link) { "projectPhase" }
           end
@@ -1395,93 +1387,85 @@ RSpec.describe API::V3::WorkPackages::WorkPackageRepresenter do
         let(:embedded_resource) { project_phase_definition }
         let(:embedded_resource_type) { "ProjectPhase" }
 
-        context "with the feature flag being active", with_flag: { stages_and_gates: true } do
-          context "with a phase being set" do
-            it_behaves_like "has the resource embedded"
-          end
-
-          context "without a phase being set" do
-            before do
-              work_package.project_phase_definition = nil
-            end
-
-            it_behaves_like "has the resource not embedded"
-          end
-
-          context "with the phase not existing in the project" do
-            let(:project_phases) { [other_project_phase] }
-
-            it_behaves_like "has the resource not embedded"
-          end
-
-          context "with the phase being inactive in the project" do
-            let(:project_phase) { build_stubbed(:project_phase, active: false, definition: project_phase_definition) }
-
-            it_behaves_like "has the resource not embedded"
-          end
-
-          context "without the user being allowed to see the reference" do
-            let(:permissions) { all_permissions - [:view_project_phases] }
-
-            it_behaves_like "has the resource not embedded"
-          end
+        context "with a phase being set" do
+          it_behaves_like "has the resource embedded"
         end
 
-        context "with the feature flag being inactive" do
+        context "without a phase being set" do
+          before do
+            work_package.project_phase_definition = nil
+          end
+
+          it_behaves_like "has the resource not embedded"
+        end
+
+        context "with the phase not existing in the project" do
+          let(:project_phases) { [other_project_phase] }
+
+          it_behaves_like "has the resource not embedded"
+        end
+
+        context "with the phase being inactive in the project" do
+          let(:project_phase) { build_stubbed(:project_phase, active: false, definition: project_phase_definition) }
+
+          it_behaves_like "has the resource not embedded"
+        end
+
+        context "without the user being allowed to see the reference" do
+          let(:permissions) { all_permissions - [:view_project_phases] }
+
           it_behaves_like "has the resource not embedded"
         end
       end
 
       describe "projectPhaseDefinition" do
-        context "with the feature flag being active", with_flag: { stages_and_gates: true } do
-          context "with a phase being set" do
-            it_behaves_like "has a titled link" do
-              let(:link) { "projectPhaseDefinition" }
-              let(:href) { "/api/v3/project_phase_definitions/#{work_package.project_phase_definition_id}" }
-              let(:title) { work_package.project_phase_definition.name }
-            end
+        context "with a phase being set" do
+          it_behaves_like "has a titled link" do
+            let(:link) { "projectPhaseDefinition" }
+            let(:href) { "/api/v3/project_phase_definitions/#{work_package.project_phase_definition_id}" }
+            let(:title) { work_package.project_phase_definition.name }
+          end
+        end
+
+        context "without a phase being set" do
+          before do
+            work_package.project_phase_definition = nil
           end
 
-          context "without a phase being set" do
-            before do
-              work_package.project_phase_definition = nil
-            end
-
-            it_behaves_like "has a titled link" do
-              let(:link) { "projectPhaseDefinition" }
-              let(:href) { nil }
-              let(:title) { nil }
-            end
+          it_behaves_like "has a titled link" do
+            let(:link) { "projectPhaseDefinition" }
+            let(:href) { nil }
+            let(:title) { nil }
           end
+        end
 
-          context "with the phase not existing in the project" do
-            let(:project_phases) { [other_project_phase] }
+        context "with the phase not existing in the project" do
+          let(:project_phases) { [other_project_phase] }
 
-            it_behaves_like "has a titled link" do
-              let(:link) { "projectPhaseDefinition" }
-              let(:href) { nil }
-              let(:title) { nil }
-            end
+          it_behaves_like "has a titled link" do
+            let(:link) { "projectPhaseDefinition" }
+            let(:href) { nil }
+            let(:title) { nil }
           end
+        end
 
-          context "with the phase being inactive in the project" do
-            let(:project_phase) { build_stubbed(:project_phase, active: false, definition: project_phase_definition) }
+        context "with the phase being inactive in the project" do
+          let(:project_phase) { build_stubbed(:project_phase, active: false, definition: project_phase_definition) }
 
-            it_behaves_like "has a titled link" do
-              let(:link) { "projectPhaseDefinition" }
-              let(:href) { nil }
-              let(:title) { nil }
-            end
+          it_behaves_like "has a titled link" do
+            let(:link) { "projectPhaseDefinition" }
+            let(:href) { nil }
+            let(:title) { nil }
           end
+        end
 
-          context "without the user being allowed to see the reference" do
-            let(:permissions) { all_permissions - [:view_project_phases] }
+        context "without the user being allowed to see the reference" do
+          let(:permissions) { all_permissions - [:view_project_phases] }
 
-            it_behaves_like "has a titled link" do
-              let(:link) { "projectPhaseDefinition" }
-              let(:href) { nil }
-              let(:title) { nil }
-            end
+          it_behaves_like "has a titled link" do
+            let(:link) { "projectPhaseDefinition" }
+            let(:href) { nil }
+            let(:title) { nil }
           end
         end
       end

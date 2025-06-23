@@ -29,7 +29,6 @@
 #++
 class EnterpriseTrialsController < ApplicationController
   include OpTurbo::ComponentStream
-  include OpTurbo::DialogStreamHelper
 
   before_action :require_admin
   before_action :load_trial_key, only: %i[request_resend]

@@ -88,9 +88,6 @@ hu:
         type_token_text: "Type support token text"
         token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Töltse fel a Vállalati Verzió támogatási tokenjét"
-      delete_token_modal:
-        text: "Biztos, hogy el akarja távolítani a jelenleg használt Vállalati Verzió tokenjét?"
-        title: "Token törlése"
       replace_token: "A jelenlegi támogatási token lecserélése"
       order: "On-premises vállalati verzió megrendelése"
       paste: "Illessze be a Vállalati Verzió támogatási tokentjét"
@@ -102,8 +99,13 @@ hu:
       buttons:
         upgrade: "Frissítés most"
         contact: "Keressen fel minket a próbaverzióért"
-      enterprise_info_html: "egy Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> kiegészítő."
-      upgrade_info: "Kérjük, válasszon egy fizetős csomagot az aktiváláshoz, hogy mihamarabb használhassa a csapatában."
+      status:
+        expired: "Expired"
+        expiring_soon: "Expiring soon"
+        in_grace_period: "In grace period"
+        invalid_domain: "Invalid domain"
+        not_active: "Not active"
+        trial: "Trial"
     jemalloc_allocator: Jemalloc memory allocator
     journal_aggregation:
       explanation:
@@ -924,9 +926,10 @@ hu:
       enterprise_token:
         starts_at: "Érvényes"
         subscriber: "Előfizető"
+        subscription: "Subscription"
         plan: "Plan"
         encoded_token: "Vállalati támogatás kulcs"
-        active_user_count_restriction: "Maximális aktív felhasználók"
+        active_user_count_restriction: "Active users"
       enterprise_trial:
         company: "Company"
       grids/grid:
@@ -1262,6 +1265,7 @@ hu:
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "nem olvasható. Biztos vagy benne, hogy ez támogatási token?"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "átfedés"
           outside: "hatókörön kívül van."
@@ -2058,6 +2062,7 @@ hu:
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
+      unlimited: "Unlimited"
       already_have_token: >
         Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Hide this banner"
@@ -2066,6 +2071,16 @@ hu:
       homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -3983,8 +3998,6 @@ hu:
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"
@@ -4288,7 +4301,7 @@ hu:
     reminders:
       label_remind_at: "dátum"
       note_placeholder: "Why are you setting this reminder?"
-      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "Reminder updated successfully."
       success_deletion_message: "Reminder deleted successfully."
   sharing:

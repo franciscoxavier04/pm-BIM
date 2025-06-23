@@ -28,7 +28,6 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 class EnterpriseTokensController < ApplicationController
-  include OpTurbo::DialogStreamHelper
   include OpTurbo::ComponentStream
   include OpModalFlashable
 

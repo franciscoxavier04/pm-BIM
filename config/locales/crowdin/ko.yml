@@ -88,9 +88,6 @@ ko:
         type_token_text: "지원 토큰 텍스트 입력"
         token_placeholder: "여기에 Enterprise Edition 지원 토큰을 붙여넣으세요"
       add_token: "Enterprise edition 지원 토큰을 업로드하세요."
-      delete_token_modal:
-        text: "현재 사용된 Enterprise edition 토큰을 제거하시겠습니까?"
-        title: "토큰 제거"
       replace_token: "당신의 현재 지원 토큰을 바꾸세요."
       order: "Enterprise on-premises edition 주문하기"
       paste: "Enterprise edition 지원 토큰을 붙여넣으세요."
@@ -102,8 +99,13 @@ ko:
       buttons:
         upgrade: "지금 업그레이드"
         contact: "당사에 데모 요청하기"
-      enterprise_info_html: "- Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> 추가 기능입니다."
-      upgrade_info: "활성화하고 팀에서 사용하려면 유료 플랜으로 업그레이드하세요."
+      status:
+        expired: "Expired"
+        expiring_soon: "Expiring soon"
+        in_grace_period: "In grace period"
+        invalid_domain: "Invalid domain"
+        not_active: "Not active"
+        trial: "Trial"
     jemalloc_allocator: Jemalloc 메모리 할당기
     journal_aggregation:
       explanation:
@@ -917,9 +919,10 @@ ko:
       enterprise_token:
         starts_at: "이후로 유효함"
         subscriber: "구독자"
+        subscription: "Subscription"
         plan: "플랜"
         encoded_token: "엔터프라이즈 지원 토큰"
-        active_user_count_restriction: "최대 활성 사용자"
+        active_user_count_restriction: "Active users"
       enterprise_trial:
         company: "Company"
       grids/grid:
@@ -1255,6 +1258,7 @@ ko:
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "읽을 수 없습니다. 지원하는 토큰이 확실한가요?"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "오버랩"
           outside: "- 그리드의 외부에 있습니다."
@@ -2018,6 +2022,7 @@ ko:
       plan_title: "Enterprise %{plan} 추가 기능"
       plan_name: "%{plan} Enterprise 플랜"
       plan_text_html: "%{plan_name}부터 사용 가능합니다."
+      unlimited: "Unlimited"
       already_have_token: >
         Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "이 배너 숨기기"
@@ -2026,6 +2031,16 @@ ko:
       homescreen_subline: 업그레이드하면 오픈 소스 프로젝트도 지원하게 됩니다.
       baseline_comparison:
         description: 과거 어느 시점 이후에 이 목록에서 변경된 사항을 강조 표시합니다.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "참조된 특성과 텍스트를 사용하여 자동으로 생성되는 제목을 만듭니다."
       customize_life_cycle:
@@ -3939,8 +3954,6 @@ ko:
       new:
         description: "이 프로젝트 단계의 변경 사항은 이 단계가 활성화된 모든 프로젝트에 반영됩니다."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "시작 및 완료 게이트"
       no_gate: "게이트 없음"
       start_gate: "시작 게이트"
@@ -4243,7 +4256,7 @@ ko:
     reminders:
       label_remind_at: "날짜"
       note_placeholder: "이 미리 알림을 설정하는 이유는 무엇입니까?"
-      success_creation_message: "미리 알림이 설정되었습니다. 선택한 시간에 이 작업 패키지에 대한 알림을 받게 됩니다."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "미리 알림이 업데이트되었습니다."
       success_deletion_message: "미리 알림이 삭제되었습니다."
   sharing:

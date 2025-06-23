@@ -88,9 +88,6 @@ ro:
         type_token_text: "Type support token text"
         token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Încărcacă un token de suport pentru ediția Enterprise"
-      delete_token_modal:
-        text: "Ești sigur că vrei să elimini actualul token Enterprise edition utilizat?"
-        title: "Ștergeți tokenul"
       replace_token: "Înlocuiți tokenul de suport actual"
       order: "Comandă ediția Enterprise on-premise"
       paste: "Lipește token-ul de suport pentru ediția Enterprise"
@@ -102,8 +99,13 @@ ro:
       buttons:
         upgrade: "Actualizează acum"
         contact: "Contactați-ne pentru un demo"
-      enterprise_info_html: "is an Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> add-on."
-      upgrade_info: "Te rog să treci la un plan plătit pentru a-l activa și a începe să îl utilizezi în echipa ta."
+      status:
+        expired: "Expired"
+        expiring_soon: "Expiring soon"
+        in_grace_period: "In grace period"
+        invalid_domain: "Invalid domain"
+        not_active: "Not active"
+        trial: "Trial"
     jemalloc_allocator: Jemalloc memory allocator
     journal_aggregation:
       explanation:
@@ -394,14 +396,14 @@ ro:
         no_results_title_text: În acest moment nu există câmpuri personalizate disponibile.
       life_cycle:
         header:
-          title: "Project life cycle"
-          description_html: "The active project phases define this project's life cycle and are defined in the <a href=%{admin_settings_url} target=\"_blank\">administration settings</a>. Enabled phases will be displayed in your <a href=%{overview_url} target=\"_blank\">project overview</a>."
-        non_defined: "No phases are currently defined."
-        section_header: "Phases"
+          title: "Ciclul de viață proiect"
+          description_html: "Fazele de proiect active definesc ciclul de viață al acestui proiect și sunt definite în setările de administrare <a href=%{admin_settings_url} target=\"_blank\"></a>. Fazele activate vor fi afișate în prezentarea generală <a href=%{overview_url} target=\"_blank\">a proiectului tău</a>."
+        non_defined: "Nici o fază nu este definită."
+        section_header: "Faze"
         step:
-          use_in_project: "Use %{step} in this project"
+          use_in_project: "Utilizează %{step} în acest proiect"
         filter:
-          label: "Search project phase"
+          label: "Caută fază proiect"
       project_custom_fields:
         header:
           title: "Atributele proiectului"
@@ -933,9 +935,10 @@ ro:
       enterprise_token:
         starts_at: "Valabil din"
         subscriber: "Abonat"
+        subscription: "Subscription"
         plan: "Plan"
         encoded_token: "Token de sprijin pentru întreprinderi"
-        active_user_count_restriction: "Număr maxim de utilizatori activi"
+        active_user_count_restriction: "Active users"
       enterprise_trial:
         company: "Company"
       grids/grid:
@@ -1271,6 +1274,7 @@ ro:
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "nu poate fi citit. Sunteți sigur că este un jeton de suport?"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "suprapunere."
           outside: "se află în afara rețelei."
@@ -1720,8 +1724,8 @@ ro:
     priority: "Prioritate"
     project: "Proiect"
     project_ids: "Project IDs"
-    project_phase: "Project phase"
-    project_phase_definition: "Project phase"
+    project_phase: "Fază proiect"
+    project_phase_definition: "Fază proiect"
     reason: "Motiv"
     responsible: "Responsabil"
     required: "Obligatoriu"
@@ -2076,7 +2080,7 @@ ro:
       internal_comments: Comentarii interne
       custom_actions: Custom Actions
       custom_field_hierarchies: Custom fields of type hierarchy
-      customize_life_cycle: Customize Life Cycle
+      customize_life_cycle: Personalizează ciclul de viață
       date_alerts: Date Alerts
       define_custom_style: Custom theme and logo
       edit_attribute_groups: Edit Attribute Groups
@@ -2100,6 +2104,7 @@ ro:
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
+      unlimited: "Unlimited"
       already_have_token: >
         Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Hide this banner"
@@ -2108,10 +2113,20 @@ ro:
       homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Evidențiază modificările făcute la această listă de la orice punct din trecut.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
-        description: "Create and organize different project phases than the ones provided by PM2 project cycle planning."
+        description: "Creează și organizează diferite faze de proiect decât cele furnizate de planificarea ciclului proiectului PM2."
       conditional_highlighting:
         description: "Need certain work packages to stand out from the mass? Use conditional highlighting in the work packages table."
       work_package_query_relation_columns:
@@ -2922,7 +2937,7 @@ ro:
   label_none_parentheses: "(niciuna)"
   label_not_contains: "nu conține"
   label_not_equals: "nu este"
-  label_life_cycle_step_plural: "Project life cycle"
+  label_life_cycle_step_plural: "Ciclul de viață proiect"
   label_on: "pe"
   label_operator_all: "nu este gol"
   label_operator_none: "este gol"
@@ -2984,7 +2999,7 @@ ro:
   label_project_new: "Proiect nou"
   label_project_plural: "Proiecte"
   label_project_list_plural: "Listă proiecte"
-  label_project_life_cycle: "Project life cycle"
+  label_project_life_cycle: "Ciclul de viață proiect"
   label_project_attributes_plural: "Atribute proiect"
   label_project_custom_field_plural: "Atribute proiect"
   label_project_settings: "Setările proiectului"
@@ -3528,7 +3543,7 @@ ro:
   permission_edit_others_internal_comments_explanation: "Atenție: Utilizatorii cu această permisiune pot edita comentariile interne ale altor utilizatori."
   permission_edit_project: "Editare proiect"
   permission_edit_project_attributes: "Edit project attributes"
-  permission_edit_project_phases: "Edit project phases"
+  permission_edit_project_phases: "Editează faze proiect"
   permission_edit_reportings: "Editare raportări"
   permission_edit_time_entries: "Editează jurnalele de timp pentru alți utilizatori"
   permission_edit_timelines: "Editare linii de timp"
@@ -3558,8 +3573,8 @@ ro:
   permission_search_project: "Caută proiect"
   permission_select_custom_fields: "Selectează câmpuri personalizate"
   permission_select_project_custom_fields: "Select project attributes"
-  permission_select_project_phases: "Select project phases"
-  permission_select_project_phases_explanation: "Activate/Deactivate the phases in a project. Enables the user to select the life cycle appropriate for the project as inactive phases will not be visible in the project overview page nor the project list."
+  permission_select_project_phases: "Selectează faze proiect"
+  permission_select_project_phases_explanation: "Activează/Dezactivează fazele unui proiect. Permite utilizatorului să selecteze ciclul de viață potrivit pentru proiect ca fazele inactive nu vor fi vizibile în pagina de ansamblu a proiectului și nici în lista de proiecte."
   permission_select_project_modules: "Selectare module proiect"
   permission_share_work_packages: "Partajare pachete de lucru"
   permission_manage_types: "Selectare tipuri"
@@ -3585,7 +3600,7 @@ ro:
   permission_work_package_assigned_explanation: "Pachetele de lucru pot fi atribuite utilizatorilor și grupurilor care dețin acest rol în proiectul respectiv"
   permission_view_project_activity: "Vezi activitate proiect"
   permission_view_project_attributes: "Vezi atribute proiect"
-  permission_view_project_phases: "View project phases"
+  permission_view_project_phases: "Vezi faze proiect"
   permission_save_bcf_queries: "Save BCF queries"
   permission_manage_public_bcf_queries: "Manage public BCF queries"
   permission_edit_attribute_help_texts: "Edit attribute help texts"
@@ -3611,8 +3626,8 @@ ro:
       subprojects_confirmation: "Se vor șterge și sub-proiectul/sub-proiectele: %{value}."
       title: "Ștergere proiect %{name}"
     filters:
-      project_phase: "Project phase: %{phase}"
-      project_phase_any: "Project phase: Any"
+      project_phase: "Fază proiect: %{phase}"
+      project_phase_any: "Fază proiect: Oricare"
       project_phase_gate: "Project phase gate: %{gate}"
     identifier:
       warning_one: Participanții la proiect vor trebui să mute arhivele proiectului.
@@ -4015,8 +4030,8 @@ ro:
         heading: "New attribute"
         description: "Modificările la acest atribut al proiectului se vor reflecta în toate proiectele în care este activată. Atributele necesare nu pot fi dezactivate pentru fiecare proiect."
     project_phase_definitions:
-      heading: "Project life cycle"
-      heading_description: "Project life cycle define the project phases that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
+      heading: "Ciclul de viață proiect"
+      heading_description: "Ciclul de viață al proiectului definește fazele proiectului care pot fi utilizate pentru planificarea proiectului și vor apărea în pagina de ansamblu a fiecărui proiect. Aceste atribute pot fi activate sau dezactivate, dar nu pot fi reordonate la nivel de proiect."
       label_add: "Adaugă"
       label_add_description: "Add project phase definition"
       filter:
@@ -4027,8 +4042,6 @@ ro:
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"
@@ -4073,7 +4086,7 @@ ro:
   text_are_you_sure_continue: "Sigur dorești să continui?"
   text_are_you_sure_with_children: "Doriți ștergerea pachetului de lucru și a tuturor pachetelor fii?"
   text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
-  text_are_you_sure_with_project_life_cycle_step: "Deleting this phase will also delete its usages in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Ștergerea acestei faze va șterge și utilizarea sa în toate proiectele. Ești sigur că vrei să faci asta?"
   text_assign_to_project: "Alocare la proiect"
   text_form_configuration: >
     Puteți personaliza ce câmpuri vor fi afișate în formularele pachetelor de lucru. Puteți grupa în mod liber câmpurile pentru a reflecta nevoile domeniului dumneavoastră.
@@ -4333,7 +4346,7 @@ ro:
     reminders:
       label_remind_at: "Dată"
       note_placeholder: "Why are you setting this reminder?"
-      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "Reminder updated successfully."
       success_deletion_message: "Reminder deleted successfully."
   sharing:
@@ -4405,12 +4418,12 @@ ro:
         message: "Partajarea listelor de proiecte cu utilizatorii individuali este un add-on Enterprise."
   working_days:
     info: >
-      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
+      Zile care nu sunt selectate sunt omise când se programează pachetele de lucru și ciclul de viață al proiectului (și nu sunt incluse în numărul zilelor). Acestea pot fi suprascrise la nivelul pachetului de lucru.
     instance_wide_info: >
       Dates added to the list below are considered non-working and skipped when scheduling work packages.
     change_button: "Modifică zilelor lucrătoare"
     warning: >
-      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
+      Schimbarea zilelor din săptămână care sunt considerate zile lucrătoare sau zile nelucrătoare poate afecta zilele de începere și de încheiere a tuturor pachetelor de lucru și ciclurilor de viață în toate proiectele, în acest caz.
     journal_note:
       changed: _**Zile lucrătoare** schimbate (%{changes})._
       days:

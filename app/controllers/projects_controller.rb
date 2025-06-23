@@ -47,7 +47,6 @@ class ProjectsController < ApplicationController
   include QueriesHelper
   include ProjectsHelper
   include Queries::Loading
-  include OpTurbo::DialogStreamHelper
 
   helper_method :has_managed_project_folders?
 
