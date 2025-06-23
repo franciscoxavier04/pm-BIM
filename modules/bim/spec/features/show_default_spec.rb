@@ -75,8 +75,8 @@ RSpec.describe "show default model", :js, with_config: { edition: "bim" } do
     end
 
     it "loads and shows the viewer and WPs correctly" do
-      expect(show_default_page).to have_test_selector("breadcrumb-item", text: "BCF")
-      expect(show_default_page).to have_css('.breadcrumb-item.active[aria-current="page"]', text: "All open")
+      expect(show_default_page).to have_test_selector("op-breadcrumb-item", text: "BCF")
+      expect(show_default_page).to have_css(".op-breadcrumb-item.active", text: "All open", aria: { current: "page" })
 
       show_default_page.model_viewer_visible true
       show_default_page.model_viewer_shows_a_toolbar true

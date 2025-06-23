@@ -1,7 +1,6 @@
 en:
   js:
     work_packages:
-      work_packages_label: 'Work packages'
-      gantt_charts_label: "Gantt charts"
+      label_gantt_charts_plural: "Gantt charts"
       default_queries:
         milestones: 'Milestones'

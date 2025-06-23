@@ -52,8 +52,8 @@ RSpec.describe "Work package pagination", :js do
     it do
       expect(page).to have_content("All open")
 
-      expect(page).to have_test_selector("breadcrumb-item", text: "Work packages")
-      expect(page).to have_css('.breadcrumb-item.active[aria-current="page"]', text: "All open")
+      expect(page).to have_test_selector("op-breadcrumb-item", text: "Work packages")
+      expect(page).to have_css(".op-breadcrumb-item.active", text: "All open", aria: { current: "page" })
 
       within(".work-packages-partitioned-query-space--container") do
         expect(page).to have_content(work_package_1.subject)
