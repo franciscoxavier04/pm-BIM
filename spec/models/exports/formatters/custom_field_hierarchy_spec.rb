@@ -37,6 +37,7 @@ RSpec.describe Exports::Formatters::CustomField do
   let!(:homer) { service.insert_item(parent: root, label: "Homer", short: "HS").value! }
   let!(:bart) { service.insert_item(parent: homer, label: "Bart", short: "BS").value! }
   let!(:lisa) { service.insert_item(parent: homer, label: "Lisa").value! }
+  let!(:zia) { service.insert_item(parent: lisa, label: "Zia").value! }
   let(:work_package) do
     cf = build_stubbed(:work_package)
     allow(cf)
@@ -75,18 +76,19 @@ RSpec.describe Exports::Formatters::CustomField do
       end
     end
 
-    describe "with a multiple values" do
+    describe "with multiple values" do
       let(:custom_values) do
         [
           CustomValue.new(custom_field:, value: homer.id),
           CustomValue.new(custom_field:, value: bart.id),
-          CustomValue.new(custom_field:, value: lisa.id)
+          CustomValue.new(custom_field:, value: lisa.id),
+          CustomValue.new(custom_field:, value: zia.id)
         ]
       end
 
-      it "returns mulitple comma-separated values" do
+      it "returns multiple comma-separated values" do
         expect(subject.format_for_export(work_package, custom_field))
-          .to eq("Homer (HS), Homer (HS) / Bart (BS), Homer (HS) / Lisa")
+          .to eq("Homer (HS), Homer (HS) / Bart (BS), Homer (HS) / Lisa, Homer (HS) / Lisa / Zia")
       end
     end
   end
