@@ -140,6 +140,7 @@ html_table:
     border-width: 0.25
     border-color: '000000'
     no_border: true
+    valign: middle
 
 blockquote:
   background-color: 'f4f9ff'

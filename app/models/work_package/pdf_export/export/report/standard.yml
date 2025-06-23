@@ -226,6 +226,7 @@ work_package:
         border_width: 0.25
         border_color: '000000'
         no_border: true
+        valign: middle
     alerts:
       NOTE:
         border_color: '0969da'
