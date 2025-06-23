@@ -62,23 +62,50 @@ jobs:
         with:
           ref: ${{ env.RELEASE_BRANCH }}
 
-      - name: Fetch dev branch upto release branch
-        run: git fetch --shallow-exclude "$PREVIOUS_RELEASE_BRANCH" origin "$PREVIOUS_RELEASE_BRANCH" || git fetch --depth 1 origin "$PREVIOUS_RELEASE_BRANCH"
-
-      - name: Fetch release branch upto dev branch
-        run: git fetch --shallow-exclude "$RELEASE_BRANCH" origin "$PREVIOUS_RELEASE_BRANCH" || git fetch --depth 1 origin "$PREVIOUS_RELEASE_BRANCH"
+      - name: Fetch both release branches with sufficient history
+        run: |
+          # Calculate a reasonable date to fetch from (e.g., 6 months ago)
+          SINCE_DATE=$(date -d '3 months ago' '+%Y-%m-%d')
+          echo "Fetching commits since: $SINCE_DATE"
+          
+          # Fetch both branches with commits since the calculated date
+          git fetch --shallow-since="$SINCE_DATE" origin "$RELEASE_BRANCH" "$PREVIOUS_RELEASE_BRANCH" || {
+            echo "Shallow-since fetch failed, trying with depth strategy..."
+            
+            # Fallback: Use progressive deepening
+            git fetch --depth=50 origin "$RELEASE_BRANCH" "$PREVIOUS_RELEASE_BRANCH"
+            for depth in 100 200 500 1000; do
+              if git merge-base --is-ancestor "origin/$PREVIOUS_RELEASE_BRANCH" "origin/$RELEASE_BRANCH" 2>/dev/null || \
+                 git merge-base --is-ancestor "origin/$RELEASE_BRANCH" "origin/$PREVIOUS_RELEASE_BRANCH" 2>/dev/null || \
+                 git merge-base "origin/$RELEASE_BRANCH" "origin/$PREVIOUS_RELEASE_BRANCH" >/dev/null 2>&1; then
+                echo "Found sufficient history at depth $depth"
+                break
+              fi
+              echo "Deepening to $depth commits..."
+              git fetch --deepen=$((depth-50)) origin "$RELEASE_BRANCH" "$PREVIOUS_RELEASE_BRANCH" || true
+            done
+          }
 
       - name: Resolve bug in git https://stackoverflow.com/a/63879454/96823
         run: git repack -d
 
-      - name: Get one commit more to connect the history of the release branches
+      - name: Verify we have sufficient history
         run: |
-          git fetch --deepen 1 origin "$RELEASE_BRANCH" "$PREVIOUS_RELEASE_BRANCH"
-          git fetch --deepen 1 origin dev "$RELEAESE_BRANCH"
-          git fetch --deepen 1 origin dev "$PREVIOUS_RELEASE_BRANCH"
+          echo "Checking if we can find merge-base between branches..."
+          if git merge-base "origin/$RELEASE_BRANCH" "origin/$PREVIOUS_RELEASE_BRANCH" >/dev/null 2>&1; then
+            MERGE_BASE=$(git merge-base "origin/$RELEASE_BRANCH" "origin/$PREVIOUS_RELEASE_BRANCH")
+            echo "✅ Found merge-base: $MERGE_BASE"
+          else
+            echo "⚠️ Could not find merge-base, operations may be limited"
+          fi
+          
+          echo "Branch $RELEASE_BRANCH has $(git rev-list --count origin/$RELEASE_BRANCH) commits"
+          echo "Branch $PREVIOUS_RELEASE_BRANCH has $(git rev-list --count origin/$PREVIOUS_RELEASE_BRANCH) commits"
 
-      - name: Create branch without checkout just to have shorter automatic commit message
-        run: git branch "$PREVIOUS_RELEASE_BRANCH" origin/"$PREVIOUS_RELEASE_BRANCH"
+      - name: Create local tracking branches
+        run: |
+          git branch "$PREVIOUS_RELEASE_BRANCH" "origin/$PREVIOUS_RELEASE_BRANCH" || true
+          git branch "$RELEASE_BRANCH" "origin/$RELEASE_BRANCH" || true
 
       - name: Required git config
         run: |
