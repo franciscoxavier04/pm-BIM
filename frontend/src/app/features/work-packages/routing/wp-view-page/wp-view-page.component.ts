@@ -129,7 +129,7 @@ export class WorkPackageViewPageComponent extends PartitionedQuerySpacePageCompo
     if (this.isGantt) {
       return {
         href: this.pathHelperService.projectGanttChartsPath(this.currentProject.identifier as string),
-        text: this.I18n.t('js.work_packages.label_gantt_charts_plural'),
+        text: this.I18n.t('js.work_packages.label_gantt_chart_plural'),
       };
     }
     return {
