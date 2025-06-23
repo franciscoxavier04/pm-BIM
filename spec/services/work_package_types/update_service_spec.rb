@@ -59,17 +59,5 @@ module WorkPackageTypes
       result = service.call(params)
       expect(result).to be_failure
     end
-
-    context "if another type is selected to copy the workflow from" do
-      let(:existing_type) { create(:type_with_workflow) }
-
-      it "copies the workflow to the newly created type" do
-        params = { copy_workflow_from: existing_type.id }
-        result = service.call(params)
-
-        expect(result).to be_success
-        expect(model.workflows).not_to be_empty
-      end
-    end
   end
 end

@@ -34,15 +34,6 @@ module WorkPackageTypes
 
     def instance_class = Type
 
-    def after_perform(service_call)
-      type = service_call.result
-      if @params[:copy_workflow_from].present? && (copy_from = ::Type.find_by(id: @params[:copy_workflow_from]))
-        type.workflows.copy_from_type(copy_from)
-      end
-
-      service_call
-    end
-
     private
 
     def default_contract_class = UpdateSettingsContract
