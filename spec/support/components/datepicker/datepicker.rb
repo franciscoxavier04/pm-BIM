@@ -206,6 +206,15 @@ module Components
       expect(page).to have_css(".flatpickr-day:not(.flatpickr-disabled):not(.flatpickr-non-working-day)[aria-label='#{label}']")
     end
 
+    def displays_date?(date)
+      label = date.strftime("%B %-d, %Y")
+      page.has_css?(".flatpickr-day.flatpickr-disabled[aria-label='#{label}']")
+    end
+
+    def has_previous_month_toggle?
+      page.has_css?(".flatpickr-prev-month")
+    end
+
     protected
 
     def save_button_label
