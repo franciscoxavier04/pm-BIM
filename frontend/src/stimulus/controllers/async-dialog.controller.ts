@@ -49,13 +49,20 @@ export default class AsyncDialogController extends ApplicationController {
         Accept: 'text/vnd.turbo-stream.html',
         'X-Authentication-Scheme': 'Session',
       },
-    }).then((r) => r.text())
-      .then((html) => {
-        renderStreamMessage(html);
-      })
-      .finally(() => {
-        TurboHelpers.hideProgressBar();
-      });
+    }).then((response) => {
+      const contentType = response.headers.get('Content-Type') || '';
+      const isTurboStream = contentType.includes('text/vnd.turbo-stream.html');
+
+      if (!isTurboStream) {
+        return Promise.reject();
+      }
+
+      return response.text();
+    }).then((html) => {
+      renderStreamMessage(html);
+    }).finally(() => {
+      TurboHelpers.hideProgressBar();
+    });
   }
 
   get href() {

@@ -88,9 +88,6 @@ uk:
         type_token_text: "Введіть текст маркера підтримки"
         token_placeholder: "Вставте тут свій маркер підтримки версії Enterprise"
       add_token: "Додати маркер підтримки версії Enterprise"
-      delete_token_modal:
-        text: "Справді вилучити поточний маркер версії Enterprise?"
-        title: "Видалити маркер"
       replace_token: "Замініть поточний маркер підтримки"
       order: "Замовте локальну версію Enterprise"
       paste: "Вставте свій маркер підтримки версії Enterprise"
@@ -102,8 +99,13 @@ uk:
       buttons:
         upgrade: "Оновити зараз"
         contact: "Зв’яжіться з нами, щоб отримати демоверсію"
-      enterprise_info_html: "– це доповнення версії Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
-      upgrade_info: "Перейдіть на платний план, щоб активувати його та почати використовувати його у своїй команді."
+      status:
+        expired: "Expired"
+        expiring_soon: "Expiring soon"
+        in_grace_period: "In grace period"
+        invalid_domain: "Invalid domain"
+        not_active: "Not active"
+        trial: "Trial"
     jemalloc_allocator: Розподіл пам'яті Jemalloc
     journal_aggregation:
       explanation:
@@ -934,9 +936,10 @@ uk:
       enterprise_token:
         starts_at: "Дійсний з"
         subscriber: "Абонент"
+        subscription: "Subscription"
         plan: "План"
         encoded_token: "Маркер підтримки підприємства"
-        active_user_count_restriction: "Максимальна кількість активних користувачів"
+        active_user_count_restriction: "Active users"
       enterprise_trial:
         company: "Company"
       grids/grid:
@@ -1272,6 +1275,7 @@ uk:
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "неможливо прочитати. Ви впевнені, що це маркер підтримки?"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "перекриваються."
           outside: "знаходиться за межами сітки."
@@ -2134,6 +2138,7 @@ uk:
       plan_title: "Доповнення версії Enterprise %{plan}"
       plan_name: "Версія Enterprise %{plan}"
       plan_text_html: "Доступно, починаючи з версії %{plan_name}."
+      unlimited: "Unlimited"
       already_have_token: >
         Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Приховати цей банер"
@@ -2142,6 +2147,16 @@ uk:
       homescreen_subline: Підвищивши рівень, ви також долучитеся до підтримки проєкту з відкритим кодом.
       baseline_comparison:
         description: Виділяйте зміни, внесені в цей список із будь-якого моменту часу в минулому.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "Створюйте автоматично згенеровані теми на основі атрибутів і тексту."
       customize_life_cycle:
@@ -4062,8 +4077,6 @@ uk:
       new:
         description: "Зміни цього етапу проєкту відображатимуться в усіх проєктах із цим етапом."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Початкова й кінцева контрольні точки"
       no_gate: "Немає контрольної точки"
       start_gate: "Початкова контрольна точка"
@@ -4368,7 +4381,7 @@ uk:
     reminders:
       label_remind_at: "Дата"
       note_placeholder: "Навіщо ви встановлюєте це нагадування?"
-      success_creation_message: "Нагадування встановлено. Ви отримаєте сповіщення про цей пакет робіт у вибраний час."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "Нагадування оновлено."
       success_deletion_message: "Нагадування видалено."
   sharing:

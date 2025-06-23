@@ -43,7 +43,7 @@ module Meetings
 
     def wrapper_data_attributes
       {
-        controller: "meetings-drag-and-drop add-meeting-params"
+        controller: "meetings--drag-and-drop meetings--add-params"
       }
     end
   end

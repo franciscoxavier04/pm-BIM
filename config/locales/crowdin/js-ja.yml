@@ -203,67 +203,6 @@ ja:
         edit_query: "クエリの編集"
         new_group: "新規グループ"
         reset_to_defaults: "デフォルトに戻す"
-      enterprise:
-        text_reprieve_days_left: "%{days} days until end of grace period"
-        text_expired: "expired"
-        trial:
-          confirmation: "メールアドレスの確認"
-          form:
-            general_consent: >
-              <a target="_blank" href="%{link_terms}">利用規約</a>と<a target="_blank" href="%{link_privacy}">プライバシー ポリシー</a>に同意します。
-            invalid_email: "無効なメールアドレス"
-            label_company: "会社名"
-            label_first_name: "名前"
-            label_last_name: "苗字"
-            label_domain: "ドメイン"
-            label_subscriber: "購入者"
-            label_maximum_users: "アクティブなユーザーの最大数"
-            label_starts_at: "開始"
-            label_expires_at: "有効期限"
-            label_plan: "プラン"
-            label_additional_features: "Additional features"
-            receive_newsletter: OpenProject <a target="_blank" href="%{link}">ニュースレター</a> を受け取りたい。
-            taken_domain: 有効なトライアルはドメインごとに1つしかありません。
-            domain_mismatch: The current request host name does not match the configured host name. Please double check your system settings.
-            taken_email: 各ユーザーはトライアルを1回のみ作成できます。
-          email_not_received: "メールが届きませんでしたか？右側のリンクでメールを再送信できます。"
-          try_another_email: "または別のメールアドレスでお試しください。"
-          next_steps: "次のステップ"
-          resend_link: "再送信"
-          resend_success: "メールが再送信されました。メールを確認し、確認リンクをクリックしてください。"
-          resend_warning: "メールを再送信できませんでした。"
-          session_timeout: "セッションがタイムアウトしました。ページを再読み込みするか、メールを再送信してください。"
-          status_label: "ステータス:"
-          status_confirmed: "確認済み"
-          status_waiting: "メールが送信されました - 確認待ちです"
-          test_ee: "エンタープライズ版を14日間無料でテストする"
-          quick_overview: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
-        upsell:
-          become_hero: "ヒーローになろう!"
-          enterprise_info_html: "%{feature_title} is an Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> add-on."
-          upgrade_info: "Please upgrade to a paid plan to activate and start using it in your team."
-          text: >
-            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
-          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
-          benefits:
-            description: "What are the benefits of the Enterprise on-premises edition?"
-            high_security: "セキュリティ機能"
-            high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
-            installation: "インストールサポート"
-            installation_text: "経験豊富なソフトウェアエンジニアが、あなた独自のインフラストラクチャへの完全なインストールとセットアッププロセスをガイドします。"
-            premium_features: "エンタープライズアドオン"
-            premium_features_text: "アジャイルボード、カスタムテーマとロゴ、グラフ、カスタムアクションによるインテリジェントワークフロー、ワークパッケージの添付ファイルおよびマルチセレクトカスタムフィールドの全文検索。"
-            professional_support: "プロフェッショナルサポート"
-            professional_support_text: "ビジネスクリティカルな環境での OpenProject 利用に関する専門知識を持つ上級サポートエンジニアから、信頼性の高いハイタッチサポートを受けましょう。"
-          button_start_trial: "無料トライアルを開始"
-          button_upgrade: "今すぐアップグレード"
-          button_contact_us: "デモについてはお問い合わせください"
-          button_book_now: "今すぐ予約"
-          confidence: >
-            テストおよびサポートされているエンタープライズクラスのプロジェクト管理ソフトウェアの信頼性を提供します。オープンソースとオープンマインドとともに。
-          link_quote: "見積もりの入手"
-          more_info: "詳細情報"
-          unlimited: "無制限"
       working_days:
         calendar:
           empty_state_header: "Non-working days"
@@ -1040,7 +979,7 @@ ja:
           tomorrow: "Tomorrow"
           three_days: "In 3 days"
           week: "In a week"
-          month: "In a month"
+          month: "1ヶ月以内"
           custom: "At a particular date/time"
       scheduling:
         is_parent: "このワークパッケージの日付は、その子から自動的に推定されます。日付を設定するには、「手動スケジューリング」を有効にします。"

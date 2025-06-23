@@ -46,7 +46,3 @@ OpenProject::FeatureDecisions.add :built_in_oauth_applications,
 
 OpenProject::FeatureDecisions.add :calculated_value_project_attribute,
                                   description: "Allows the use of calculated values as a project attribute."
-
-OpenProject::FeatureDecisions.add :stages_and_gates,
-                                  description: "Enables the project phases feature.",
-                                  force_active: true

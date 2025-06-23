@@ -30,16 +30,16 @@ See COPYRIGHT and LICENSE files for more details.
 <%=
   flex_layout do |cell|
     cell.with_row do
-      flex_layout(justify_content: :space_between) do |row|
-        row.with_column(flex_layout: true) do |text|
-          text.with_column do
+      flex_layout(justify_content: :space_between, classes: "flex-wrap") do |row|
+        row.with_column(flex_layout: true, classes: "flex-wrap") do |text|
+          text.with_column(mr: 2) do
             render(Primer::Beta::Text.new(font_weight: :bold)) { data[:text] }
           end
-          text.with_column(ml: 2) do
+          text.with_column(mr: 2) do
             render(Primer::Beta::Text.new(font_size: :small, color: data[:status_color])) { data[:status_text] }
           end
           if data[:error_code].present?
-            text.with_column(ml: 2) do
+            text.with_column do
               render(Primer::Beta::Label.new(scheme: data[:status_color])) { data[:error_code] }
             end
           end

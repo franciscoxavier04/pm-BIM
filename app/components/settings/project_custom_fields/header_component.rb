@@ -32,6 +32,7 @@ module Settings
       include ApplicationHelper
       include OpPrimer::ComponentHelpers
       include OpTurbo::Streamable
+      include CustomFieldsHelper
 
       def breadcrumbs_items
         [{ href: admin_index_path, text: t("label_administration") },

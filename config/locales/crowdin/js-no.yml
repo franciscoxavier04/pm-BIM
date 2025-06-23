@@ -202,67 +202,6 @@
         edit_query: "Rediger spørring"
         new_group: "Ny gruppe"
         reset_to_defaults: "Tilbakestill til standard"
-      enterprise:
-        text_reprieve_days_left: "%{days} dager til slutten av utsettelsesperioden"
-        text_expired: "utløpt"
-        trial:
-          confirmation: "Bekreftelse av e-postadresse"
-          form:
-            general_consent: >
-              Jeg godtar <a target="_blank" href="%{link_terms}">sine vilkår for personvern</a> og <a target="_blank" href="%{link_privacy}">personvernregler</a>.
-            invalid_email: "Ugyldig e-postadresse"
-            label_company: "Firma"
-            label_first_name: "Fornavn"
-            label_last_name: "Etternavn"
-            label_domain: "Domene"
-            label_subscriber: "Abonnent"
-            label_maximum_users: "Maksimalt antall aktive brukere"
-            label_starts_at: "Starter på"
-            label_expires_at: "Utløper på"
-            label_plan: "Abonnement"
-            label_additional_features: "Additional features"
-            receive_newsletter: Jeg vil motta OpenProject <a target="_blank" href="%{link}">nyhetsbrev</a>.
-            taken_domain: Det kan kun være en aktiv prøveversjon per domene.
-            domain_mismatch: Gjeldende forespørselsnavnet samsvarer ikke med det konfigurerte vertsnavnet. Vennligst dobbeltsjekk systeminnstillingene.
-            taken_email: Hver bruker kan kun opprette en prøveversjon.
-          email_not_received: "Du har ikke mottatt en e-post? Du kan sende e-posten på nytt med lenken til høyre."
-          try_another_email: "Eller prøv det med en annen e-postadresse."
-          next_steps: "De neste trinnene"
-          resend_link: "Send igjen"
-          resend_success: "E-post er oppdatert. Sjekk e-posten din, og klikk på bekreftelseskoblingen din."
-          resend_warning: "Kunne ikke sende e-post på nytt."
-          session_timeout: "Økten ble tidsavbrutt. Vennligst prøv å laste siden på nytt eller send på nytt."
-          status_label: "Status:"
-          status_confirmed: "bekreftet"
-          status_waiting: "e-post sendt - venter på bekreftelse"
-          test_ee: "Test Enterprise-utgaven 14 dager gratis"
-          quick_overview: "Få en rask oversikt over prosjektledelse og teamsamarbeid med OpenProject Enterprise-utgaven."
-        upsell:
-          become_hero: "Bli en helt!"
-          enterprise_info_html: "%{feature_title} er en Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> utvidelse."
-          upgrade_info: "Vennligst oppgrader til et betalt abonnement for å kunne aktivere og begynne å bruke det i ditt team."
-          text: >
-            The OpenProject Enterprise edition builds on top of the Community edition. It includes Enterprise add-ons and professional support mainly aimed at organizations with more than 10 users that manage business critical projects with OpenProject.
-          you_contribute: "Developers need to pay their bills, too. By upgrading to the Enterprise edition, you will be supporting this open source community effort and contributing to its development, maintenance and continuous improvement."
-          benefits:
-            description: "Hva er fordelene ved Enterprise on-premises-utgaven?"
-            high_security: "Sikkerhetsfunksjoner"
-            high_security_text: "Engangs pålogging (SAML, OpenID Connect, CAS), LDAP-grupper."
-            installation: "Installasjons støtte"
-            installation_text: "Erfarne programvareingeniører veileder deg gjennom hele installerings- og installasjonsprosessen på din egen infrastruktur."
-            premium_features: "Enterprise tillegg"
-            premium_features_text: "Dynamiske tavler, egendefinert tema og logo, grafer, intelligente arbeidsprosesser med egendefinerte handlinger, fulltekst søk etter vedlegg til arbeidspakke og tilpassede felter."
-            professional_support: "Profesjonell hjelp"
-            professional_support_text: "Få pålitelig, høykvalitets støtte fra seniorstøtteteknikere med ekspertkunnskap om å drive OpenProject i forretningskritiske omgivelser."
-          button_start_trial: "Start gratis prøveversjon"
-          button_upgrade: "Oppgrader nå"
-          button_contact_us: "Kontakt oss for en demo"
-          button_book_now: "Bestill nå"
-          confidence: >
-            Vi leverer sikkerheten til et testet og støttet program for styring av bedriftsklasse-prosjekter - med åpen kildekode og med et åpent sinn.
-          link_quote: "Få tilbud"
-          more_info: "Mer informasjon"
-          unlimited: "Ubegrenset"
       working_days:
         calendar:
           empty_state_header: "Arbeidsfrie dager"
