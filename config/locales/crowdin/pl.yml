@@ -569,11 +569,14 @@ pl:
         Wszystkie wystąpienia użytkownika zastępczego (np. jako osoby przypisanej, odpowiedzialnej lub inne wartości użytkownika) zostaną przypisane do konta o nazwie „Usunięty użytkownik”. Jako że do tego konta przypisywane są dane każdego usuniętego konta, nie można odróżnić danych utworzonych przez użytkownika od danych innego usuniętego konta.
       irreversible: "To działanie jest nieodwracalne."
       confirmation: "Wprowadź nazwę użytkownika zastępczego %{name}, aby potwierdzić usunięcie."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
         Kliknij, aby przypisać lub zmienić kolor tego priorytetu.
         Można go używać do wyróżniania pakietów roboczych w tabeli.
+    admin:
+      default:
+        caption:
   reactions:
     action_title: "Zareaguj"
     add_reaction: "Dodaj reakcję"
@@ -699,7 +702,7 @@ pl:
         automatic: "Automatyczny"
         manual: "Ręczny"
       show_relations: "Pokaż relacje"
-      update_inputs_aria_live_message: "Date picker updated. %{message}"
+      update_inputs_aria_live_message: "Zaktualizowano selektor dat. %{message}"
       tabs:
         aria_label: "Karty wyboru dat"
         children: "Elementy podrzędne"
@@ -771,8 +774,7 @@ pl:
     lag:
       subject: "Opóźnienie"
       caption: |-
-        The minimum number of working days to keep in between the two work packages.
-        It can also be negative.
+        Minimalna liczba dni roboczych wymagana między dwoma pakietami roboczymi. Może być też ujemna.
     relations:
       label_new_child_created: "Nowy pakiet roboczy utworzono i dodano jako element podrzędny"
       label_relates_singular: "ma relację z"
@@ -988,10 +990,10 @@ pl:
       project/phase:
         date_range: "Zakres dat"
         definition: "Definicja"
-        duration: "Duration"
-        start_date: "Start date"
-        start_date_caption: "Follows the previous phase."
-        finish_date: "Finish date"
+        duration: "Czas trwania"
+        start_date: "Data rozpoczęcia"
+        start_date_caption: "Po poprzedniej fazie."
+        finish_date: "Data zakończenia"
       project/phase_definition:
         name: "Nazwa"
         color: "Kolor"
@@ -1304,11 +1306,11 @@ pl:
         project/phase:
           attributes:
             start_date:
-              must_be_before_finish_date: "must be before the finish date."
-              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              must_be_before_finish_date: "musi być wcześniejsza niż data zakończenia."
+              non_continuous_dates: "nie może być wcześniejsza niż data zakończenia poprzedniej fazy."
             finish_date:
-              must_be_after_start_date: "must be after the start date."
-          cannot_be_a_non_working_day: "can't be a non-working day."
+              must_be_after_start_date: "musi być późniejsza niż data rozpoczęcia."
+          cannot_be_a_non_working_day: "nie może być dniem wolnym od pracy."
         query:
           attributes:
             project:
@@ -1435,7 +1437,7 @@ pl:
               cannot_be_in_another_project: "nie może być w innym projekcie."
               not_a_valid_parent: "jest nieprawidłowe."
             schedule_manually:
-              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
+              cannot_be_automatically_scheduled: "nie można ustawić na wartość false (automatycznie planowane), ponieważ nie ma poprzedników ani elementów podrzędnych."
             start_date:
               violates_relationships: "aby nie naruszyć relacji pakietu pracy, należy ustawić datę %{soonest_start} lub późniejszą."
               cannot_be_null: "nie można ustawić na wartość zero, ponieważ data zakończenia i czas trwania są znane."
@@ -1635,7 +1637,7 @@ pl:
       added_date: "ustawiono na %{date}"
       changed_date: "zmieniono z %{from} na %{to}"
       deactivated: "dezaktywowano"
-      deleted_project_phase: "Deleted project phase"
+      deleted_project_phase: "Usunięto fazę projektu"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} i %{finish_gate_message}"
       phase_and_one_gate: "%{phase_message}. %{gate_message}"
       removed_date: "data usunięcia %{date}"
@@ -2133,7 +2135,7 @@ pl:
       work_package_sharing:
         description: "Udostępnij pakiety robocze użytkownikom, którzy nie są członkami projektu."
       project_list_sharing:
-        description: "Share project lists with individual users."
+        description: "Udostępniaj listy projektów poszczególnym użytkownikom."
       define_custom_style:
         title: "Niestandardowy motyw kolorystyczny i logotyp"
         more_info: "Uwaga: użyte logo będzie ogólnodostępne."
@@ -2522,7 +2524,7 @@ pl:
         responsible: "Odpowiadasz za %{work_package}"
         watched: "Obserwujesz %{work_package}"
     query:
-      invalid_filter: "Invalid notification filter"
+      invalid_filter: "Nieprawidłowy filtr powiadomień"
   label_accessibility: "Dostępność"
   label_account: "Konto"
   label_active: "Aktywne"
@@ -2678,8 +2680,8 @@ pl:
   label_deleted_custom_item: "(usunięty element)"
   label_deleted_custom_option: "(opcja usunięta)"
   label_empty_element: "(pusty)"
-  label_go_back: "Go back one menu level"
-  label_go_forward: "Open %{module} sub-menu"
+  label_go_back: "Przejdź wstecz o jeden poziom menu"
+  label_go_forward: "Otwórz podmenu %{module}"
   label_missing_or_hidden_custom_option: "(brakująca wartość lub brak uprawnień do dostępu)"
   label_descending: "Malejąco"
   label_details: "Szczegóły"
@@ -2979,7 +2981,7 @@ pl:
   label_query_new: "Nowe zapytanie"
   label_query_plural: "Zapytania niestandardowe"
   label_read: "Czytaj..."
-  label_read_documentation: "Read documentation"
+  label_read_documentation: "Przeczytaj dokumentację"
   label_register: "Utwórz nowe konto"
   label_register_with_developer: "Zarejestruj się jako programista"
   label_registered_on: "Zarejestrowany na"
@@ -4004,9 +4006,7 @@ pl:
       phase_gates: "Bramki faz"
       new:
         description: "Zmiany w tej fazie projektu zostaną odzwierciedlone we wszystkich projektach, w których jest ona włączona."
-        heading: "Nowa faza"
-      edit:
-        heading: "Edytuj fazę"
+        heading: "New phase"
       both_gate: "Bramka początkowa i końcowa"
       no_gate: "Brak bramki"
       start_gate: "Bramka początkowa"
@@ -4384,12 +4384,12 @@ pl:
         message: "Udostępnianie list projektów poszczególnym użytkownikom jest dodatkiem wersji Enterprise."
   working_days:
     info: >
-      Dni, które nie zostały wybrane, są pomijane podczas planowania pakietów roboczych (i nie są uwzględnione w liczbie dni). Mogą one zostać zastąpione na poziomie pakietu roboczego.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Daty dodane do poniższej listy są uważane za niedziałające i są pomijane podczas planowania pakietów roboczych.
     change_button: "Zmień dni robocze"
     warning: >
-      Zmiana dni tygodnia, które są uważane za dni robocze lub nierobocze może wpłynąć na dni rozpoczęcia i zakończenia wszystkich pakietów roboczych we wszystkich projektach w tym wystąpieniu.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _Zmieniono **Dni robocze** (%{changes})._
       days:
@@ -4414,13 +4414,13 @@ pl:
       code_500_outbound_request_failure: "Żądanie wychodzące do innego zasobu nie powiodło się z kodem statusu %{status_code}."
       code_500_missing_enterprise_token: "Żądania nie można obsłużyć z powodu nieprawidłowego lub brakującego tokena wersji Enterprise."
       bad_request:
-        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+        emoji_reactions_activity_type_not_supported: "Ten typ działań nie obsługuje reakcji emoji."
       conflict:
         multiple_reminders_not_allowed: |-
-          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
+          Dla jednego pakietu roboczego można ustawić tylko jedno przypomnienie. Usuń lub zaktualizuj istniejące przypomnienie.
       not_found:
         work_package: "Pakiet roboczy, którego szukasz nie został znaleziony lub został usunięty."
-        reminder: "The reminder you are looking for cannot be found or has been deleted."
+        reminder: "Nie można znaleźć szukanego przypomnienia lub zostało ono usunięte."
       expected:
         date: "RRRR-MM-DD (tylko data ISO 8601)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (dowolna data i godzina zgodne z ISO 8601)"

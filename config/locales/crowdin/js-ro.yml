@@ -274,9 +274,9 @@ ro:
         change_button: "Salvează și reprogramează"
         change_title: "Modifică zilelor lucrătoare"
         removed_title: "Veţi elimina următoarele zile din lista de zile nelucrătoare:"
-        change_description: "Schimbarea zilelor din săptămână care sunt considerate zile lucrătoare sau zile nelucrătoare poate afecta zilele de începere și sfârșit ale tuturor pachetelor de lucru în toate proiectele, în acest caz."
+        change_description: "Schimbarea zilelor din săptămână care sunt considerate zile lucrătoare sau zile nelucrătoare poate afecta zilele de începere și de încheiere a tuturor pachetelor de lucru și ciclurilor de viață în toate proiectele, în acest caz."
         warning: >
-          Modificările ar putea dura ceva timp pentru a produce efecte. Vei fi notificat când toate pachetele de lucru relevante au fost actualizate.
+          Modificările ar putea dura ceva timp pentru a produce efecte. Vei fi notificat când toate pachetele de lucru relevante și ciclurile de viață ale proiectului au fost actualizate.
           Ești sigur că vrei să continui?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
@@ -357,10 +357,10 @@ ro:
           learn_about: "Learn more about all new features"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_0":
+          "16_1":
             standard:
               new_features_html: >
-                Versiunea conține diverse caracteristici noi și îmbunătățiri, cum ar fi <br> <ul class="%{list_styling_class}"> <li>Întâlniri în așteptare și sfârșitul întâlnirilor clasice.</li> <li>Planuri Enterprise actualizate.</li> <li>Comentarii interne în pachetele de lucru (add-on Enterprise).</li> <li>Subiecte generate automat pentru pachetele de lucru (add-on Enterprise).</li> <li>Modul separat de urmărire a timpului cu vedere calendaristică.</li> <li>Relația părinte afișată în fila relații pachet de lucru.</li> <li>Versiune pentru comunitate: Grafice pe pagina de prezentare generală a proiectului.</li> </ul>
+                Publicarea conține diverse caracteristici noi și îmbunătățiri, cum ar fi <br> <ul class="%{list_styling_class}"> <li>Structura ciclul de viață al proiectului cu etape și faze.</li> <li>Ședințe la export în format PDF.</li> <li>Setează opțiuni implicite inteligente pentru mementouri.</li> <li>Utilizați decalajul negativ pentru pachetele de lucru.</li> <li>Afișați copaci ierarhici pentru câmpuri personalizate ierarhice.</li> <li>Beneficiază de o mai bună accesibilitate pentru selectorul de date cu regiunile vii ARIA</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "An error occured while fetching data."
@@ -565,7 +565,7 @@ ro:
     label_version_plural: "Versiuni"
     label_view_has_changed: "Această vizualizare are modificări nesalvate. Faceți clic pentru a le salva."
     help_texts:
-      show_modal: "Afișare text de ajutor pentru atributul de intrare"
+      show_modal: "Show help text"
     onboarding:
       buttons:
         skip: "Sari"

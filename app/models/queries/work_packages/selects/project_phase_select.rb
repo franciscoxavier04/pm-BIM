@@ -29,6 +29,8 @@
 #++
 
 class Queries::WorkPackages::Selects::ProjectPhaseSelect < Queries::WorkPackages::Selects::WorkPackageSelect
+  include Queries::ProjectPhaseDefinitions::DatabaseQueries
+
   def initialize
     super(:project_phase,
           association: :project_phase_definition,
@@ -41,42 +43,19 @@ class Queries::WorkPackages::Selects::ProjectPhaseSelect < Queries::WorkPackages
   end
 
   def groupable_select
-    "pd.id as project_phase_definition_id"
+    "#{group_by_statement} as project_phase_definition_id"
   end
 
   def group_by_statement
-    "pd.id"
+    active_phase_null_case(true_case: "NULL", false_case: "project_phase_definitions.id")
   end
 
   def order_for_count
-    Arel.sql(
-      <<~SQL.squish
-        CASE WHEN COALESCE(pd.id, 0) = 0 THEN 1 ELSE 0 END
-      SQL
-    )
+    active_phase_null_case(true_case: "1", false_case: "0")
   end
 
-  # Is called when the query is grouped by project phase definition. We ensure that only active project phases are considered.
-  # Note that one project might have an active phase while another project has set the phase with the same definition to inactive.
-  # Additionally, the permissions to view project phases are considered on a project level, too.
   def group_by_join_statement
-    # FIXME: the last line (join on projects) is only necessary because the specs break otherwise (invalid statement).
-    # I have no idea why yet. Remove this hacky fix and investigate.
-    Arel.sql(
-      <<~SQL.squish
-        LEFT JOIN (
-          SELECT
-            wp.id AS wp_id,
-            MAX(CASE WHEN ph.active THEN ph.definition_id ELSE NULL END) AS active_phase_definition_id
-          FROM work_packages wp
-          LEFT JOIN project_phases ph ON ph.project_id = wp.project_id AND ph.definition_id = wp.project_phase_definition_id
-          WHERE wp.project_id IN (#{project_with_view_phases_permissions.to_sql})
-          GROUP BY wp.id
-        ) AS active_phases ON active_phases.wp_id = work_packages.id
-        LEFT JOIN project_phase_definitions pd ON pd.id = active_phases.active_phase_definition_id
-        JOIN projects on projects.id = work_packages.project_id
-      SQL
-    )
+    join_project_phase_definitions_based_on_permissions_and_active_phases
   end
 
   def sortable_join_statement(_query)
@@ -88,7 +67,7 @@ class Queries::WorkPackages::Selects::ProjectPhaseSelect < Queries::WorkPackages
     # We use the join alias from the group by join statement to ensure that work packages with an *inactive* project
     # phase are treated like work packages *without* a project phase. In the result list, they will belong to the
     # same group: without an active project phase.
-    "COALESCE(pd.position, -1)"
+    active_phase_null_case(true_case: "-1", false_case: "project_phase_definitions.position")
   end
 
   def self.instances(context = nil)
@@ -111,5 +90,9 @@ class Queries::WorkPackages::Selects::ProjectPhaseSelect < Queries::WorkPackages
 
   def project_with_view_phases_permissions
     Project.allowed_to(User.current, :view_project_phases).select(:id)
+  end
+
+  def active_phase_null_case(true_case:, false_case:)
+    "(CASE WHEN ACTIVE_PHASES.ID IS NULL THEN #{true_case} ELSE #{false_case} END)"
   end
 end

@@ -31,6 +31,11 @@
 require "rails_helper"
 
 RSpec.describe Project::Phase do
+  shared_let(:admin) { create(:admin) }
+  before do
+    login_as(admin)
+  end
+
   it "can be instantiated" do
     expect { described_class.new }.not_to raise_error(NotImplementedError)
   end
@@ -104,6 +109,104 @@ RSpec.describe Project::Phase do
       subject.start_date = nil
 
       expect(subject.calculate_duration).to be_nil
+    end
+  end
+
+  shared_context "with project phases" do
+    let(:project) { create(:project) }
+
+    let!(:definition1) { create(:project_phase_definition, position: 1) }
+    let!(:definition2) { create(:project_phase_definition, position: 2) }
+    let!(:phase1) do
+      create(:project_phase,
+             project:,
+             definition: definition1,
+             start_date: Time.zone.today,
+             finish_date: Time.zone.today + 5)
+    end
+    let!(:phase2) { create(:project_phase, project:, definition: definition2) }
+  end
+
+  describe "#follows_previous_phase?" do
+    include_context "with project phases"
+
+    context "when the previous phase has a date range set" do
+      it "returns truthy" do
+        expect(phase2).to be_follows_previous_phase
+      end
+    end
+
+    context "when the previous phase does not have a date range set" do
+      before do
+        phase1.update(start_date: nil, finish_date: nil)
+      end
+
+      it "returns falsy" do
+        expect(phase2).not_to be_follows_previous_phase
+      end
+    end
+
+    context "when there is no previous phase" do
+      it "returns falsy" do
+        expect(phase1).not_to be_follows_previous_phase
+      end
+    end
+
+    context "when only the start date is set on the previous phase" do
+      before do
+        phase1.update(start_date: Time.zone.today, finish_date: nil)
+      end
+
+      it "returns falsy" do
+        expect(phase2).not_to be_follows_previous_phase
+      end
+    end
+
+    context "when only the finish date is set on the previous phase" do
+      before do
+        phase1.update(start_date: nil, finish_date: Time.zone.today + 5)
+      end
+
+      it "returns falsy" do
+        expect(phase2).not_to be_follows_previous_phase
+      end
+    end
+
+    context "when the previous phase is inactive" do
+      before do
+        phase1.update(active: false)
+      end
+
+      it "does not consider the previous phase when it is inactive" do
+        expect(phase2).not_to be_follows_previous_phase
+      end
+    end
+  end
+
+  describe "#default_start_date" do
+    include_context "with project phases"
+
+    context "when the previous phase has a complete date range" do
+      it "returns the next working day after the previous phase finish date" do
+        expected = Day.next_working(from: phase1.finish_date).date
+        expect(phase2.default_start_date).to eq(expected)
+      end
+    end
+
+    context "when the previous phase has an incomplete date range" do
+      before do
+        phase1.update(start_date: nil)
+      end
+
+      it "returns nil" do
+        expect(phase2.default_start_date).to be_nil
+      end
+    end
+
+    context "when there is no previous phase" do
+      it "returns nil" do
+        expect(phase1.default_start_date).to be_nil
+      end
     end
   end
 end

@@ -40,13 +40,15 @@ module WorkPackages
 
       attr_reader :remindable, :reminder, :errors, :preset
 
-      def initialize(remindable:, reminder:, errors: nil, preset: nil)
+      def initialize(remindable:, reminder:, errors: nil, preset: nil, remind_at_date: nil, remind_at_time: nil)
         super
 
         @remindable = remindable
         @reminder = reminder
         @errors = errors
         @preset = preset
+        @remind_at_date = remind_at_date
+        @remind_at_time = remind_at_time
       end
 
       class << self
@@ -84,6 +86,11 @@ module WorkPackages
       end
 
       def remind_at_date_initial_value
+        if attribute_blank?(:remind_at_time) && @remind_at_date.present?
+          # If the time is not set, we return the date that was passed in
+          return @remind_at_date
+        end
+
         return time_as_date(@reminder.remind_at) if @reminder.remind_at
         return calculate_preset_date if @preset
 
@@ -91,6 +98,11 @@ module WorkPackages
       end
 
       def remind_at_time_initial_value
+        if attribute_blank?(:remind_at_date) && @remind_at_time.present?
+          # If the date is not set, we return the time that was passed in
+          return @remind_at_time
+        end
+
         return format_time(@reminder.remind_at, include_date: false, format: "%H:%M") if @reminder.remind_at
 
         DEFAULT_TIME
@@ -110,6 +122,11 @@ module WorkPackages
 
       def time_as_date(time)
         format_time_as_date(time, format: "%Y-%m-%d")
+      end
+
+      def attribute_blank?(attribute)
+        @errors.present? &&
+          @errors.any? { |error| error.attribute == attribute && error.type == :blank }
       end
     end
   end

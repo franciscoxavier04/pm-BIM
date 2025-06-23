@@ -33,7 +33,6 @@ module Meetings::PDF
     def write_participants
       return if participants.empty?
 
-      write_hr
       write_heading(participants_title)
       write_participants_table
     end
@@ -46,7 +45,7 @@ module Meetings::PDF
         pdf.table(
           rows,
           column_widths: participants_table_column_widths(columns_count),
-          cell_style: styles.participants_table_cell
+          cell_style: { inline_format: true }.merge(styles.participants_table_cell)
         )
       end
     end
@@ -57,18 +56,45 @@ module Meetings::PDF
     end
 
     def participants
-      meeting.invited_or_attended_participants
+      meeting.invited_or_attended_participants.sort_by(&:name)
+    end
+
+    def participants_groups(columns_count)
+      # note participants.in_groups does not work with the alphabetically sorted requirement
+      # should be left to right and then the next row
+      array = Array.new(columns_count) { [] }
+      chunks = participants.in_groups_of(columns_count)
+      chunks.each do |chunk|
+        chunk.each_with_index do |participant, participant_index|
+          array[participant_index] << participant
+        end
+      end
+      array
     end
 
     def participants_table_rows(columns_count)
-      groups = participants.in_groups(columns_count)
+      groups = participants_groups(columns_count)
       return [] if groups.empty?
 
       Array.new(groups[0].size) do |row_index|
         (0..(columns_count - 1)).map do |group_nr|
-          { content: participant_name(groups.dig(group_nr, row_index)) }
+          participant = groups.dig(group_nr, row_index)
+          { content: "#{participant_name(participant)}   #{participants_status(participant)}".strip }
         end
       end
+    end
+
+    def participants_status(participant)
+      return "" if participant.nil?
+
+      content = if participant.attended?
+                  I18n.t("description_attended")
+                elsif participant.invited?
+                  I18n.t("description_invite")
+                else
+                  ""
+                end
+      prawn_table_cell_inline_formatting_data(content.capitalize, styles.participants_status)
     end
 
     def participant_name(participant)

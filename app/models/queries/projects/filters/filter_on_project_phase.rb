@@ -148,7 +148,7 @@ module Queries::Projects::Filters::FilterOnProjectPhase
   end
 
   def end_of_week
-    beginning_of_week + 7.days
+    (beginning_of_week + 6.days).end_of_day
   end
 
   def project_phase_scope

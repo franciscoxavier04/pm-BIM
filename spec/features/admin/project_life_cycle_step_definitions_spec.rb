@@ -100,6 +100,9 @@ RSpec.describe "Projects life cycle settings", :js, with_flag: { stages_and_gate
 
       # editing steps
       definitions_page.click_definition("Initiating")
+
+      definitions_page.expect_header_to_display("Initiating")
+
       fill_in "Name", with: "Starting"
       click_on "Update"
 
@@ -111,6 +114,9 @@ RSpec.describe "Projects life cycle settings", :js, with_flag: { stages_and_gate
 
       # creating steps
       definitions_page.add
+
+      definitions_page.expect_header_to_display("New phase")
+
       fill_in "Name", with: "Imagining"
       definitions_page.select_color("Azure")
       click_on "Create"
@@ -144,21 +150,21 @@ RSpec.describe "Projects life cycle settings", :js, with_flag: { stages_and_gate
       definitions_page.expect_listed(["Initiating", "Starting", "Imagining", "Processing"])
 
       retry_block do
-        definitions_page.drag_and_drop_list(from: 0, to: 3,
+        definitions_page.drag_and_drop_list(from: 0, to: 2,
                                             elements: "[data-test-selector=project-life-cycle-step-definition]",
                                             handler: ".DragHandle")
         wait_for_network_idle
-        definitions_page.expect_listed(["Starting", "Imagining", "Processing", "Initiating"])
+        definitions_page.expect_listed(["Starting", "Imagining", "Initiating", "Processing"])
       end
 
       definitions_page.reload!
-      definitions_page.expect_listed(["Starting", "Imagining", "Processing", "Initiating"])
+      definitions_page.expect_listed(["Starting", "Imagining", "Initiating", "Processing"])
 
       # deleting
       accept_confirm I18n.t(:text_are_you_sure_with_project_life_cycle_step) do
         definitions_page.click_definition_action("Imagining", action: "Delete")
       end
-      definitions_page.expect_listed(["Starting", "Processing", "Initiating"])
+      definitions_page.expect_listed(["Starting", "Initiating", "Processing"])
     end
   end
 end

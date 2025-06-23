@@ -153,6 +153,8 @@ In addition to those overview dashboard options, you can create a [custom query]
 
 Date alerts in OpenProject are an [Enterprise add-on](#enterprise-add-on) and defined as a feature to generate automatic and customized [notifications](#notifications) regarding a work package's due date or start date. You can find the date alerts feature in your notification center, symbolized by a little bell on the right upper side of your instance. [Read more about the date alerts feature in our user guide](../user-guide/notifications/notification-settings/#date-alerts-enterprise-add-on) or in [this article on deadline management with OpenProject](https://www.openproject.org/blog/deadline-management-date-alert/).
 
+You can also set [work package reminders](#reminder) to be notified about a work package at a certain date and time.
+
 ## E
 
 ### Enterprise add-on
@@ -215,6 +217,12 @@ In OpenProject, you can choose from several integrations, such as the [Excel syn
 
 Internal comments are available as [Enterprise add-on](#enterprise-add-on) in OpenProject. If enabled, users can choose whether their comment in a work package Activity tab is visible to everyone that has access to the work package – or if it is internal. An internal comment is only visible to users with a dedicated permission – by default, those with a project admin role. [Learn more about internal comments for work packages in OpenProject in this blog article](https://www.openproject.org/blog/internal-comments/).
 
+## L
+
+### Lag
+
+In OpenProject, a lag defines the number of working days between two work packages with a finish-to-start [relation](#relations). You can use positive or negative values to delay or overlap tasks. [Learn more about work package relations in the user guide](../user-guide/work-packages/work-package-relations-hierarchies).
+
 ## M
 
 ### Macro
@@ -259,7 +267,7 @@ OpenProject offers a Nextcloud integration which allows you to manage files in a
 
 ### Notifications
 
-In OpenProject, you get in-app notifications about important changes that are relevant to you – for example new comments that mention you, updates to status, [type](#work-package-types) or dates or new assignments. This feature is enabled by default and can be used as an addition or an alternative to email notifications. To view the notifications, click the bell icon at the top right of the header. The bell icon will be displayed with a red badge if there are new notifications for you. [Read more about notifications in OpenProject](../user-guide/notifications/).
+In OpenProject, you get in-app notifications about important changes that are relevant to you – for example new comments that mention you, updates to status, [type](#work-package-type) or dates or new assignments. This feature is enabled by default and can be used as an addition or an alternative to email notifications. To view the notifications, click the bell icon at the top right of the header. The bell icon will be displayed with a red badge if there are new notifications for you. [Read more about notifications in OpenProject](../user-guide/notifications/).
 
 ## O
 
@@ -290,18 +298,26 @@ OpenID Connect (OIDC) is an authentication protocol built on OAuth 2.0 that enab
 
 ### Phase
 
-A phase in OpenProject is defined as a [work package type](#work-package-types), which usually includes several work packages of types like task or feature. For example, typical phases for a construction repair project would be the following: Project definition, detailed Design & Tender, Construction and Post project.
+A phase in OpenProject can either be a [work package type](#work-package-type) or [project phase](#project-phase).
+
+### Phase gate
+
+A phase gate is a decision point between two [project phases](#phase) within the [project life cycle](#project-life-cycle). It marks the review of progress and determines whether the project can move to the next phase. In OpenProject, phase gates follow the structure defined by the [PM² project management framework](#pm--pm2).
 
 ### Plugin
 
 In OpenProject, you can choose from several plugins or [integrations](#integration), or add your own plugins to the Community. In contrast to an integration, a plugin is installed on top of / as part of the OpenProject installation. As an open source software, OpenProject is open to Community-created plugins. Please note that we do not guarantee error-free and seamless use of those plugins.
 
-Your activated plugins are listed together with your [modules](#module) in your instance under --> Administration --> Plugins.
+Your activated plugins are listed together with your [modules](#module) in your instance under → Administration → Plugins.
 
 **More information on plugins in OpenProject**
 
 - [See all available plugins and integrations for OpenProject](../system-admin-guide/integrations/)
 - [Read how to create an OpenProject plugin](../development/create-openproject-plugin/)
+
+### PM² / PM2
+
+PM² is a project management framework developed by the European Commission to support the successful delivery of projects, especially in the public sector. It combines best practices from various methodologies and provides clear guidance, templates, and governance structures. In OpenProject, the [project life cycle](#project-life-cycle) can be structured according to PM², with predefined [project phases](#phase), [phase gates](#phase-gate), and roles based on this framework. [Read more about PM² and its role for OpenProject](https://www.openproject.org/pm2/).
 
 ### Primer design system
 
@@ -327,6 +343,14 @@ Project folders help collaborating in the most efficient way. They can be used w
 
 The project identifier is defined as the unique name used to identify and reference projects in the application as well as in the address bar of your browser. Project identifiers can be changed in the [project settings](#project-settings).
 
+### Project life cycle
+
+In OpenProject, the project life cycle consists of [phases](#phase) and [phase gates](#phase-gate) that help you structure your projects and work packages methodically. By default, these follow the [PM² project management framework](#pm--pm2), using the phases *Initiating*, *Planning*, *Executing*, and *Closing*.
+
+Phases and phase gates are visible on the [project overview](#project-overview) page, in [work package tables](#work-package-table), and in [project lists](#project-lists). They can be used for filtering, grouping, and scheduling. Project administrators can activate relevant phases and gates for each project, while the global configuration of phases is an [Enterprise add-on](#enterprise-add-on).
+
+[Read more about the project life cycle in our system admin guide](../system-admin-guide/projects/project-life-cycle).
+
 ### Project lists
 
 In OpenProject, project lists are very useful for project portfolio managers to get an overview of all their [projects](#project) on the instance. Access your project lists on OpenProject by either navigating to the "select a project" menu and clicking on the "Project list" button, or via the [Global modules](#global-modules). [Read more about project lists OpenProject](../user-guide/projects/project-lists/).
@@ -339,9 +363,15 @@ The project navigation is the side navigation within a project. Entries in the p
 
 In OpenProject, the project overview is defined as a single [dashboard](#dashboard) page where all important information of a selected project can be displayed. The idea is to provide a central repository of information for the whole project team. Project information is added to the dashboard as [widgets](#widget). Open the project overview by navigating to "Overview" in the project menu on the left. [Read more about the project overview in OpenProject](../user-guide/project-overview/#project-overview).
 
+### Project phase
+
+In OpenProject, the **project phase** is part of the overall [project life cycle](#project-life-cycle) and helps structure the project's progression over time. A project phase can begin or end with a [phase gate](#phase-gate), marking key decision points. In OpenProject, administrators can enable some or all of the following project phases: Initiating, Planning, Executing, and Closing. These phases are based on the [open source project management framework PM²](#pm--pm2) and help teams manage complex projects in a structured, methodical way. Configuring project phases and adding new ones is available as an [Enterprise add-on](#enterprise-add-on).
+
+[Read more about phases in a project management life cycle](../system-admin-guide/projects/project-life-cycle).
+
 ### Project settings
 
-Project settings means project-specific setting configuration. The project settings contain general settings (e.g. the name and [project identifier](#project-identifier)), configuration of [modules](#module), [work package categories](#work-package-categories) and [types](#work-package-types), [custom fields](#custom-field), [version](#versions) settings, [time tracking activities](#time-and-costs), required disk storage, [file storages](#file-storage) and [Backlogs](#backlogs) settings (if plugin is installed). [Read more about project settings in OpenProject](../user-guide/projects/#project-settings).
+Project settings means project-specific setting configuration. The project settings contain general settings (e.g. the name and [project identifier](#project-identifier)), configuration of [modules](#module), [work package categories](#work-package-categories) and [types](#work-package-type), [custom fields](#custom-field), [version](#versions) settings, [time tracking activities](#time-and-costs), required disk storage, [file storages](#file-storage) and [Backlogs](#backlogs) settings (if plugin is installed). [Read more about project settings in OpenProject](../user-guide/projects/#project-settings).
 
 ### Project status
 
@@ -366,6 +396,12 @@ The quick context menu in OpenProject opens when you open a [work package table]
 ### Relations
 
 In OpenProject, you can set work packages in relation to each other. Some relation types simply create a visible link between the two work packages. Others have an additional effect, e.g. force one work package to be finished before the other one starts (Predecessor). The simplest way to add a relation between two existing work packages is to click the +Relation button on the Relations tab of one of the work packages. [Read more about work package relations and hierarchies in our user guide](../user-guide/work-packages/work-package-relations-hierarchies/).
+
+### Reminder
+
+OpenProject offers different types of reminders so that you can lean back and never forget a task. One is the [date alert](#date-alerts) (Enterprise add-on), which generates automatic and customized [notifications](#notifications) regarding a work package's due date or start date.
+
+OpenProject also allows you to set **work package reminders**:  Simply activate the clock icon on top of a work package and choose from different options, e.g. to be reminded the next day (at 9 am) or in one week. You can also set a custom date. [Read more about work package reminders in OpenProject](../user-guide/work-packages/edit-work-package/#work-package-reminders).
 
 ### Repository
 
@@ -419,7 +455,7 @@ A theme is a visual customization setting that changes the overall look and feel
 
 ### User
 
-In OpenProject, a user is defined as a person who uses OpenProject, described by an identifier. New users can be created in the admin settings. Users can become project [members](#member) by either assigning them a role and adding them via the [project settings](#project-settings). Or by adding them to a project by the system admin at: Administration --> Users and permissions --> Users. Then clicking on the username and navigating to the tab "Projects".
+In OpenProject, a user is defined as a person who uses OpenProject, described by an identifier. New users can be created in the admin settings. Users can become project [members](#member) by either assigning them a role and adding them via the [project settings](#project-settings). Or by adding them to a project by the system admin at: Administration → Users and permissions → Users. Then clicking on the username and navigating to the tab "Projects".
 
 ### User guide
 
@@ -452,13 +488,13 @@ To make it easier for project managers to work with work package hierarchies, Op
 
 ### Workflow
 
-A workflow in OpenProject is defined as the allowed transitions between status for a [role](#role) and a type, i.e. which status changes can a certain role implement depending on the [work package type](#work-package-types). Workflows can be defined in the admin settings. For example, you might only want developers to be able to set the status "developed". [Read more about work package workflows in OpenProject](../system-admin-guide/manage-work-packages/work-package-workflows/#manage-work-package-workflows).
+A workflow in OpenProject is defined as the allowed transitions between status for a [role](#role) and a type, i.e. which status changes can a certain role implement depending on the [work package type](#work-package-type). Workflows can be defined in the admin settings. For example, you might only want developers to be able to set the status "developed". [Read more about work package workflows in OpenProject](../system-admin-guide/manage-work-packages/work-package-workflows/#manage-work-package-workflows).
 
 ![glossary-openproject-sys-admin-edit-workflow](glossary-openproject-sys-admin-edit-workflow.png)
 
 ### Work package
 
-In OpenProject, a [work package](../user-guide/work-packages/#overview) is defined as an item in a project. It is a subset of a project that can be assigned to users for execution, such as Tasks, Bugs, User Stories, Milestones, and more. Work packages have a [type](#work-package-types), an [ID](#work-package-id) and a [subject](#work-package-subject) and may have additional attributes, such as assignee, responsible, [story points](#story-points) or [version](#versions). Work packages are displayed in a project timeline (unless they are [filtered](#filters) out in the timeline configuration) - either as a milestone or as a [phase](#phase). In order to use the work packages, the work package module has to be activated in the [project settings](#project-settings) by a project admin.
+In OpenProject, a [work package](../user-guide/work-packages/#overview) is defined as an item in a project. It is a subset of a project that can be assigned to users for execution, such as Tasks, Bugs, User Stories, Milestones, and more. Work packages have a [type](#work-package-type), an [ID](#work-package-id) and a [subject](#work-package-subject) and may have additional attributes, such as assignee, responsible, [story points](#story-points) or [version](#versions). Work packages are displayed in a project timeline (unless they are [filtered](#filters) out in the timeline configuration) - either as a milestone or as a [phase](#phase). In order to use the work packages, the work package module has to be activated in the [project settings](#project-settings) by a project admin.
 
 ![A work package in OpenProject](glossary-openproject-work-package.png)
 
@@ -485,9 +521,9 @@ The work package table in OpenProject is defined as the overview of all work pac
 
 ![A work package table in OpenProject](glossary-openproject-work-package-table.png)
 
-### Work package types
+### Work package type
 
-Work package types are the different items a work package can represent. Each work package is associated to exactly one type. Examples for most used work package types are a Task, a Milestone, a [Phase](#phase) or a Bug. The work package types can be customized in the system administration. [Read more about work package types in OpenProject](../user-guide/projects/project-settings/work-packages/#work-package-types).
+Work package types are the different items a work package can represent. Each work package is associated to exactly one type. Examples for most used work package types are Task, Milestone, [Phase](#phase) or Bug. The work package types can be customized in the system administration. [Read more about work package types in OpenProject](../user-guide/projects/project-settings/work-packages/#work-package-types).
 
 ### Work package view
 
@@ -501,4 +537,4 @@ WYSIWYG stands for 'What you see is what you get'. A WYSIWYG editor is a content
 
 ### Zen mode
 
-In OpenProject, Zen mode allows users to focus on a certain page, as all other menu items and elements are hidden, and the page is displayed in full screen. OpenProject offers zen mode for other modules like work packages, boards, Gantt charts, calendars, and project lists.
+In OpenProject, Zen mode allows users to focus on a certain page, as all other menu items and elements are hidden, and the page is displayed in full screen. OpenProject offers zen mode for other modules like [work packages](#work-package), [boards](#board), [Gantt charts](#gantt-charts), calendars, and [project lists](#project-lists).

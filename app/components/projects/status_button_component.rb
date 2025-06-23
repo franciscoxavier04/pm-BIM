@@ -46,23 +46,6 @@ class Projects::StatusButtonComponent < ApplicationComponent
     @status = find_status(project.status_code)
   end
 
-  def call
-    component_wrapper do
-      render(
-        OpPrimer::StatusButtonComponent.new(
-          current_status: build_item(@status),
-          items: build_items,
-          readonly: !edit_enabled?,
-          disabled: !edit_enabled?,
-          button_arguments: {
-            title: t("projects.status.button_edit"),
-            size: @size
-          }
-        )
-      )
-    end
-  end
-
   private
 
   def edit_enabled?

@@ -237,7 +237,7 @@ vi:
         download_report: Tải
         rerun_checks: Re-run all checks
         run_checks: Run checks now
-      checked: Đã kiểm tra lần cuối vào %{datetime}
+      checked: 'Last check: %{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: Automatic folder creation
@@ -247,7 +247,7 @@ vi:
           group_folder_app: 'Dependency: Group Folders'
           group_folder_contents: Group folder has expected content
           group_folder_presence: Group folder exists
-          header: Automatically managed project folder configuration
+          header: Automatically managed project folders
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
@@ -266,7 +266,7 @@ vi:
           diagnostic_request: Diagnostic request
           drive_id_exists: Drive exists
           drive_id_format: Drive ID format
-          header: Basic configuration
+          header: Configuration
           host_url_accessible: Host URL accessible
           storage_configured: Configuration complete
           tenant_id: Tenant ID
@@ -371,9 +371,9 @@ vi:
         tenant_id: Vui lòng sao chép ID Thư mục (người thuê) từ ứng dụng mong muốn và Đăng ký ứng dụng trong %{application_link_text}.
         tenant_id_placeholder: Tên hoặc UUID
       setting_up_additional_storages: Để thiết lập các lưu trữ tệp bổ sung, vui lòng truy cập
-      setting_up_additional_storages_non_admin: Các quản trị viên có thể thiết lập các lưu trữ tệp bổ sung trong Quản trị / Lưu trữ tệp.
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: Để thiết lập lưu trữ tệp, vui lòng truy cập
-      setting_up_storages_non_admin: Các quản trị viên có thể thiết lập lưu trữ tệp trong Quản trị / Lưu trữ tệp.
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: 'Vui lòng đảm bảo bạn có quyền quản trị trong phiên bản Nextcloud của bạn và đã cài đặt ứng dụng sau đây trước khi thực hiện cấu hình:'
       type_link_text: "“Tích hợp OpenProject”"
     label_active: Đang hoạt động

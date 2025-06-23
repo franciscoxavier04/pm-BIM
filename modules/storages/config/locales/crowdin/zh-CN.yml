@@ -237,7 +237,7 @@ zh-CN:
         download_report: 下载
         rerun_checks: 重新运行所有检查
         run_checks: 现在运行检查
-      checked: 上次检查于 %{datetime} 
+      checked: '上次检查于 %{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: 自动创建文件夹
@@ -247,7 +247,7 @@ zh-CN:
           group_folder_app: '依赖：组文件夹'
           group_folder_contents: 群组文件夹有预期内容
           group_folder_presence: 组文件夹已存在
-          header: 自动管理项目文件夹：配置
+          header: 自动托管的项目文件夹
           userless_access: 服务器端请求身份验证
         authentication:
           existing_token: 用户 token
@@ -266,7 +266,7 @@ zh-CN:
           diagnostic_request: 诊断请求
           drive_id_exists: 驱动器已存在
           drive_id_format: 驱动器 ID 格式
-          header: 基础配置
+          header: 配置
           host_url_accessible: 主机 URL 可访问
           storage_configured: 配置完成
           tenant_id: 租户 ID

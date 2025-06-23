@@ -275,10 +275,10 @@ pl:
         change_button: "Zapisz i zmień harmonogram"
         change_title: "Zmień dni robocze"
         removed_title: "Z listy dni nieroboczych usuniesz następujące dni:"
-        change_description: "Zmiana dni tygodnia, które są uważane za dni robocze lub nierobocze może wpłynąć na dni rozpoczęcia i zakończenia wszystkich pakietów roboczych we wszystkich projektach w tym wystąpieniu."
+        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
         warning: >
-          Zmiany mogą wejść w życie po pewnym czasie. Gdy wszystkie odpowiednie pakiety robocze zostaną zaktualizowane, otrzymasz powiadomienie.
-          Czy na pewno chcesz kontynuować?
+          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
+          Are you sure you want to continue?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           Zmiana trybu obliczania postępu z opartego na statusie na oparty na pracy spowoduje, że pole <i>% ukończenia</i> będzie można dowolnie edytować. Jeśli opcjonalnie wprowadzisz wartości <i>Praca</i> lub <i>Pozostała praca</i>, zostaną one również powiązane z wartością <i>% ukończenia</i>. Zmiana wartości <i>Pozostała praca</i> może wówczas skutkować zaktualizowaniem wartości <i>% ukończenia</i>.
@@ -358,10 +358,10 @@ pl:
           learn_about: "Dowiedz się więcej o wszystkich nowych funkcjach"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_0":
+          "16_1":
             standard:
               new_features_html: >
-                Wydanie zawiera różne nowe funkcje i ulepszenia, takie jak <br> <ul class="%{list_styling_class}"> <li>Backlogi spotkań i koniec klasycznych spotkań.</li> <li>Zaktualizowane plany Enterprise.</li> <li>Komentarze wewnętrzne w pakietach roboczych (dodatek wersji Enterprise).</li> <li>Automatycznie generowane tematy pakietów roboczych (dodatek wersji Enterprise).</li> <li>Oddzielny moduł śledzenia czasu z widokiem kalendarza.</li> <li>Relacja nadrzędna wyświetlana na karcie relacji pakietu roboczego.</li> <li>Wydanie dla społeczności: wykresy na stronie przeglądu projektu.</li> </ul>
+                Wersja zawiera różne nowe funkcje i ulepszenia, takie jak <br> <ul class="%{list_styling_class}"> <li>Porządkowanie cyklu życia projektu za pomocą faz i bramek faz.</li> <li>Eksportowanie spotkań w formacie PDF.</li> <li>Ustawianie inteligentnych opcji domyślnych dla przypomnień.</li> <li>Stosowanie ujemnego opóźnienia do dat pakietów roboczych.</li> <li>Wyświetlanie drzew hierarchii niestandardowych pól hierarchii.</li> <li>Korzyści z ulepszonej dostępności selektora dat dzięki aktywnym regionom ARIA.</li> </ul>
     ical_sharing_modal:
       title: "Subskrybuj kalendarz"
       inital_setup_error_message: "Podczas pobierania danych wystąpił błąd."
@@ -566,7 +566,7 @@ pl:
     label_version_plural: "Wersje"
     label_view_has_changed: "Ten widok zawiera niezapisane zmiany. Kliknij, aby je zapisać."
     help_texts:
-      show_modal: "Pokaż atrybut wpisu tekstu pomocy"
+      show_modal: "Pokaż tekst pomocy"
     onboarding:
       buttons:
         skip: "Omiń"
@@ -1037,15 +1037,15 @@ pl:
       reminders:
         button_label: "Ustaw przypomnienie"
         title:
-          new: "Set a reminder"
+          new: "Ustaw przypomnienie"
           edit: "Edytuj przypomnienie"
         subtitle: "W wybranym terminie otrzymasz powiadomienie dotyczące tego pakietu roboczego."
         presets:
-          tomorrow: "Tomorrow"
-          three_days: "In 3 days"
-          week: "In a week"
-          month: "In a month"
-          custom: "At a particular date/time"
+          tomorrow: "Jutro"
+          three_days: "Za 3 dni"
+          week: "Za tydzień"
+          month: "Za miesiąc"
+          custom: "W określonym dniu/godzinie"
       scheduling:
         is_parent: "Daty tego pakietu roboczego są automatycznie odejmowane od jego elementów podrzędnych. Włącz funkcję Planowanie ręczne, aby ustawić daty."
         is_switched_from_manual_to_automatic: "Po przełączeniu planowania z ręcznego na automatyczne konieczne może być ponowne obliczenie dat tego pakietu roboczego ze względu na jego powiązania z innymi pakietami roboczymi."

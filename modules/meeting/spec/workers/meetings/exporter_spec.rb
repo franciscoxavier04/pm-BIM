@@ -35,6 +35,7 @@ RSpec.describe Meetings::Exporter do
   include Redmine::I18n
   shared_let(:role) { create(:project_role, permissions: [:view_work_packages]) }
   shared_let(:user) { create(:user, firstname: "Export", lastname: "User") }
+  shared_let(:other_user) { create(:user, firstname: "Other", lastname: "Account") }
   shared_let(:project) do
     project = create(:project, enabled_module_names: Setting.default_projects_modules + %w[meetings])
     create(:member, principal: user, project:, roles: [role])
@@ -58,10 +59,7 @@ RSpec.describe Meetings::Exporter do
     }
   end
   let(:exporter) { described_class.new(meeting, options) }
-  let(:meeting) do
-    create(:meeting, :author_participates,
-           project:, title: "Awesome meeting!", location: "Moon Base")
-  end
+  let(:meeting) { create(:meeting, author: user, project:, title: "Awesome meeting!", location: "Moon Base") }
 
   subject(:pdf) do
     result = Timecop.freeze(export_time) do
@@ -81,24 +79,15 @@ RSpec.describe Meetings::Exporter do
      export_time_formatted]
   end
 
-  def single_meeting_head
-    [meeting.title,
-     "   #{exporter.badge_text}    ",
-     exporter.meeting_subtitle_dates]
-  end
-
-  def recurring_meeting_head
-    [format_date(meeting.start_time), "-", meeting.title,
-     "   #{exporter.badge_text}    ",
-     exporter.meeting_subtitle_dates,
-     "-", meeting.recurring_meeting.base_schedule]
+  def meeting_head
+    [meeting.title, exporter.meeting_subtitle]
   end
 
   context "with an empty single meeting" do
     it "renders the expected document" do
       expected_document = [
         *expected_cover_page,
-        *single_meeting_head,
+        *meeting_head,
         "1", # Page number
         export_time_formatted,
         project.name
@@ -116,7 +105,7 @@ RSpec.describe Meetings::Exporter do
     it "renders the expected document" do
       expected_document = [
         *expected_cover_page,
-        *recurring_meeting_head,
+        *meeting_head,
         "1", # Page number
         export_time_formatted,
         project.name
@@ -127,15 +116,26 @@ RSpec.describe Meetings::Exporter do
   end
 
   context "with a meeting with agenda items" do
+    let(:meeting) do
+      create(:meeting, author: user, project:, title: "Awesome closed meeting!", location: "Mars Base", state: :closed)
+    end
     let(:type_task) { create(:type_task) }
     let(:status) { create(:status, is_default: true, name: "Workin' on it") }
     let(:work_package) { create(:work_package, project:, status:, subject: "Important task", type: type_task) }
-    let(:meeting_section) { create(:meeting_section, meeting:, title: "Section Work in Progress") }
+    let(:meeting_section) { create(:meeting_section, meeting:, title: nil) }
+    let(:meeting_section_second) { create(:meeting_section, meeting:, title: "Second section") }
     let(:meeting_agenda_item) do
       create(:meeting_agenda_item, meeting_section:, duration_in_minutes: 15, title: "Agenda Item TOP 1", presenter: user,
                                    notes: "**foo**")
     end
-    let(:wp_agenda_item) { create(:wp_meeting_agenda_item, meeting:, work_package:, duration_in_minutes: 10, notes: "*bar*") }
+    let(:wp_agenda_item) do
+      create(:wp_meeting_agenda_item,
+             meeting:,
+             meeting_section: meeting_section_second,
+             work_package:,
+             duration_in_minutes: 10,
+             notes: "*bar*")
+    end
     let(:outcome) { create(:meeting_outcome, meeting_agenda_item:, notes: "An outcome") }
     let(:attachment) { create(:attachment, container: meeting) }
     let(:meeting_backlog_item) do
@@ -143,6 +143,8 @@ RSpec.describe Meetings::Exporter do
                                    duration_in_minutes: 1,
                                    title: "Agenda Item in Backlog", presenter: user, notes: "# yeah")
     end
+    let(:invited) { create(:meeting_participant, user: other_user, meeting:, invited: true) }
+    let(:attended) { create(:meeting_participant, :attendee, user: user, meeting:) }
 
     before do
       User.current = user
@@ -151,6 +153,8 @@ RSpec.describe Meetings::Exporter do
       outcome # create the outcome
       attachment # create the attachment
       meeting_backlog_item # create the backlog item
+      attended # create the attended participant
+      invited # create the invited participant
     end
 
     context "with bells and whistles options" do
@@ -167,18 +171,18 @@ RSpec.describe Meetings::Exporter do
       it "renders the expected document" do
         expected_document = [
           *expected_cover_page,
-          *single_meeting_head,
-          "Participants (1)",
-          meeting.author.name,
+          *meeting_head,
+          "Participants (2)",
+          "Export User", "  ", "Attended",
+          "Other Account", "  ", "Invited",
 
-          "Meeting agenda",
-
-          "Section Work in Progress", "  ", "25 mins",
-
+          "Untitled section", "  ", "15 mins",
           "Agenda Item TOP 1", "  ", "15 mins", "  ", "Export User",
           "foo",
-          "Outcome",
+          "✓   Outcome",
           "An outcome",
+
+          "Second section", "  ", "10 mins",
 
           "Task", "##{work_package.id}", "Important task", " (Workin' on it)", "  ", "10 mins",
           "bar",
@@ -212,14 +216,13 @@ RSpec.describe Meetings::Exporter do
       it "renders the expected document" do
         expected_document = [
           *expected_cover_page,
-          *single_meeting_head,
-          "Meeting agenda",
+          *meeting_head,
 
-          "Section Work in Progress", "  ", "25 mins",
-
+          "Untitled section", "  ", "15 mins",
           "Agenda Item TOP 1", "  ", "15 mins", "  ", "Export User",
           "foo",
 
+          "Second section", "  ", "10 mins",
           "Task", "##{work_package.id}", "Important task", " (Workin' on it)", "  ", "10 mins",
           "bar",
 
@@ -234,7 +237,6 @@ RSpec.describe Meetings::Exporter do
   end
 
   context "with a meeting with special work package agenda item" do
-    let!(:other_user) { create(:user) }
     let!(:secret_project) { create(:project, members: [other_user]) }
     let(:secret_work_package) { create(:work_package, project: secret_project) }
     let(:wp_agenda_item) do
@@ -255,8 +257,7 @@ RSpec.describe Meetings::Exporter do
       it "renders the expected document" do
         expected_document = [
           *expected_cover_page,
-          *single_meeting_head,
-          "Meeting agenda",
+          *meeting_head,
 
           "Work package ##{secret_work_package.id} not visible", "  ", "10 mins",
           "title of the work package should not be visible",
@@ -282,8 +283,7 @@ RSpec.describe Meetings::Exporter do
       it "renders the expected document" do
         expected_document = [
           *expected_cover_page,
-          *single_meeting_head,
-          "Meeting agenda",
+          *meeting_head,
 
           "Deleted work package reference", "  ", "10 mins",
           "title of the work package should not be visible",

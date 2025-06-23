@@ -557,11 +557,14 @@ nl:
         Alle gebeurtenissen van de tijdelijke gebruiker (bijv. als taakontvanger, verantwoordelijke of andere gebruikerswaarden) zullen opnieuw worden toegewezen aan een account genaamd "Verwijderde gebruiker". Aangezien de gegevens van elke verwijderde account opnieuw zijn toegewezen aan dit account, zal het niet mogelijk zijn om de gegevens die de gebruiker heeft aangemaakt van een ander verwijderd account te onderscheiden.
       irreversible: "Deze actie is onomkeerbaar"
       confirmation: "Voer de naam van de tijdelijke gebruiker %{name} in om de verwijdering te bevestigen."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Klik op toewijzen of wijzigen van de kleur van deze prioriteit.
-        het kan worden gebruikt voor het benadrukken van de werkpakketten in de tabel.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "Reageren"
     add_reaction: "Reactie toevoegen"
@@ -2408,7 +2411,7 @@ nl:
         static_token_name: "RSS token"
         disabled_text: "RSS tokens are not enabled by the administrator. Please contact your administrator to use this feature."
       storages:
-        title: "Bestandsopslag"
+        title: "File storages"
         text_hint: "File Storage tokens connect this OpenProject instance with an external File Storage."
         empty_text_hint: "Er is geen opslagtoegang gekoppeld aan uw account."
         revoke_token: "Do you really want to remove this token? You will need to login again on %{storage}"
@@ -2890,8 +2893,8 @@ nl:
   label_project_custom_field_plural: "Projectkenmerken"
   label_project_settings: "Project Instellingen"
   label_project_attributes_settings: "Project kenmerken instellingen"
-  label_project_storage_plural: "Bestandsopslag"
-  label_project_storage_project_folder: "Bestandsopslag: Projectmappen"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} projecten die %{used_disk_space} schijfruimte gebruiken"
   label_project_view_all: "Bekijk alle projecten"
   label_project_show_details: "Toon project details"
@@ -3631,7 +3634,7 @@ nl:
       oauth_application_details: "De klantgeheim waarde zal niet meer toegankelijk zijn nadat u dit venster sluit. Kopieer deze waarden in de Nextcloud OpenProject integratie-instellingen:"
       oauth_application_details_link_text: "Ga naar instellingen pagina"
       setup_documentation_details: "Als u hulp nodig heeft bij het configureren van een nieuw bestand controleer dan de documentatie: "
-      setup_documentation_details_link_text: "Bestandsopslag setup"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Als u deze bestandsopslag wilt gebruiken, moet u de module en de specifieke opslag activeren in de projectinstellingen van elk gewenst project."
     subversion:
       existing_title: "Bestaande Subversion-repository"
@@ -3923,9 +3926,7 @@ nl:
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
-      edit:
-        heading: "Edit Phase"
+        heading: "New phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"
@@ -4300,12 +4301,12 @@ nl:
         message: "Sharing project lists with individual users is an enterprise add-on."
   working_days:
     info: >
-      Days that are not selected are skipped when scheduling work packages (and not included in the day count). These can be overridden at a work-package level.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Dates added to the list below are considered non-working and skipped when scheduling work packages.
     change_button: "Wijzig werkdagen"
     warning: >
-      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages in all projects in this instance.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Werkdagen** veranderd (%{changes})._
       days:

@@ -29,6 +29,8 @@
 #++
 
 class Queries::WorkPackages::Filter::ProjectPhaseFilter < Queries::WorkPackages::Filter::WorkPackageFilter
+  include Queries::ProjectPhaseDefinitions::DatabaseQueries
+
   def allowed_values
     @allowed_values ||= project_phase_definitions.map { |s| [s.name, s.id.to_s] }
   end
@@ -38,7 +40,7 @@ class Queries::WorkPackages::Filter::ProjectPhaseFilter < Queries::WorkPackages:
   end
 
   def type
-    :list
+    :list_optional
   end
 
   def self.key
@@ -55,56 +57,24 @@ class Queries::WorkPackages::Filter::ProjectPhaseFilter < Queries::WorkPackages:
     values.filter_map { |id| available_definitions[id.to_i] }
   end
 
-  # TODO: copied over from ProjectPhaseSelect, refactor to use the same truth
   def joins
-    Arel.sql(
-      <<~SQL.squish
-        LEFT JOIN (
-          SELECT
-            wp.id AS wp_id,
-            MAX(CASE WHEN ph.active THEN ph.definition_id ELSE NULL END) AS active_phase_definition_id
-          FROM work_packages wp
-          LEFT JOIN project_phases ph ON ph.project_id = wp.project_id AND ph.definition_id = wp.project_phase_definition_id
-          WHERE wp.project_id IN (#{project_with_view_phases_permissions.to_sql})
-          GROUP BY wp.id
-        ) AS active_phases ON active_phases.wp_id = work_packages.id
-        LEFT JOIN project_phase_definitions pd ON pd.id = active_phases.active_phase_definition_id
-        JOIN projects on projects.id = work_packages.project_id
-      SQL
-    )
-  end
-
-  def project_with_view_phases_permissions
-    Project.allowed_to(User.current, :view_project_phases).select(:id)
+    join_project_phase_definitions_based_on_permissions_and_active_phases
   end
 
   def where
-    placeholders = values.map { "?" }.join(",")
-
-    sql = if operator_strategy.to_sym == :"="
-            <<~SQL.squish
-              active_phases.active_phase_definition_id IS NOT NULL AND
-                active_phases.active_phase_definition_id IN (#{placeholders})
-            SQL
-          else
-            <<~SQL.squish
-              active_phases.active_phase_definition_id IS NULL OR
-                active_phases.active_phase_definition_id NOT IN (#{placeholders})
-            SQL
-          end
-
-    ActiveRecord::Base.sanitize_sql_array([sql, *values])
+    operator_strategy.sql_for_field(values, :active_phases, :active_phase_definition_id)
   end
 
   private
 
-  def project_phase_feature_flag_enabled?
-    OpenProject::FeatureDecisions.stages_and_gates_active?
+  def project_phase_feature_available?
+    OpenProject::FeatureDecisions.stages_and_gates_active? &&
+      User.current.allowed_in_any_project?(:view_project_phases)
   end
 
   def project_phase_definitions
-    return Project::PhaseDefinition.none unless project_phase_feature_flag_enabled?
+    return Project::PhaseDefinition.none unless project_phase_feature_available?
 
-    Project::PhaseDefinition.order(Arel.sql("position"))
+    Project::PhaseDefinition.order(position: :asc)
   end
 end

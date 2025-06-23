@@ -72,7 +72,7 @@ fr:
     button_confirm: "Confirmer"
     button_continue: "Continuer"
     button_copy: "Copier"
-    button_copy_to_clipboard: "Copier dans le presse-papier"
+    button_copy_to_clipboard: "Copier dans le presse-papiers"
     button_copy_link_to_clipboard: "Copier le lien dans le presse-papiers"
     button_copy_to_other_project: "Dupliquer dans un autre projet"
     button_custom-fields: "Champs personnalisés"
@@ -275,10 +275,10 @@ fr:
         change_button: "Enregistrer et reprogrammer"
         change_title: "Changer les jours travaillés"
         removed_title: "Vous supprimerez les jours suivants de la liste des jours non travaillés :"
-        change_description: "La modification des jours de la semaine qui sont considérés comme des jours travaillés ou des jours non travaillés peut affecter les jours de début et de fin de tous les lots de travaux de tous les projets dans ce cas."
+        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
         warning: >
-          Les modifications pourraient prendre un certain temps pour être appliquées. Vous serez averti(e) lorsque tous les lots de travaux pertinents auront été mis à jour.
-          Voulez-vous continuer ?
+          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
+          Are you sure you want to continue?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           Passer du mode de calcul de la progression basé sur le statut au mode basé sur le travail transformera <i>% réalisé</i> en champ librement modifiable. Si vous complétez les champs <i>Travail</i> et <i>Travail restant</i>, ils seront également liés à <i>% réalisé</i>. Changer le champ <i>Travail restant</i> peut alors changer le <i>% réalisé</i>.
@@ -358,10 +358,10 @@ fr:
           learn_about: "En savoir plus sur les nouvelles fonctionnalités"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_0":
+          "16_1":
             standard:
               new_features_html: >
-                La version contient diverses nouvelles fonctionnalités et améliorations, telles que les <br> <ul class="%{list_styling_class}"> <li>backlogs de réunions et la fin des réunions classiques.</li> <li>Abonnements Enterprise mis à jour.</li> <li>Commentaires internes dans les lots de travaux (add-on Enterprise).</li> <li>Sujets de lot de travaux générés automatiquement (add-on Enterprise).</li> <li>Module de suivi du temps séparé avec vue calendrier.</li> <li>La relation parent s'affiche dans l'onglet des relations du lot de travaux.</li> <li>Publication dans la communauté : graphiques sur la page de présentation du projet.</li> </ul>
+                La version contient plusieurs nouvelles fonctionnalités et améliorations, telles que :<br><ul class="%{list_styling_class}"> <li>Structurez le cycle de vie du projet avec des phases et des portes de phase.</li> <li>Exportez les réunions au format PDF.</li> <li>Définissez des options intelligentes par défaut pour les rappels.</li> <li>Utilisez un décalage négatif pour les dates des lots de travaux.</li> <li>Affichez les arborescences hiérarchiques pour les champs personnalisés de type hiérarchie.</li> <li>Profitez d'une meilleure accessibilité pour le sélecteur de date grâce aux régions dynamiques ARIA.</li> </ul>
     ical_sharing_modal:
       title: "S'abonner au calendrier"
       inital_setup_error_message: "Une erreur est survenue lors de la récupération des données."
@@ -566,7 +566,7 @@ fr:
     label_version_plural: "Versions"
     label_view_has_changed: "Cette vue a des changements non sauvegardés. Cliquez pour les enregistrer."
     help_texts:
-      show_modal: "Afficher l’aide de l’attribut de saisie de texte"
+      show_modal: "Afficher le texte d'aide"
     onboarding:
       buttons:
         skip: "Passer"
@@ -1035,15 +1035,15 @@ fr:
       reminders:
         button_label: "Définir un rappel"
         title:
-          new: "Set a reminder"
+          new: "Définir un rappel"
           edit: "Modifier un rappel"
         subtitle: "Vous recevrez une notification pour ce lot de travaux au moment choisi."
         presets:
-          tomorrow: "Tomorrow"
-          three_days: "In 3 days"
-          week: "In a week"
-          month: "In a month"
-          custom: "At a particular date/time"
+          tomorrow: "Demain"
+          three_days: "Dans 3 jours"
+          week: "Dans une semaine"
+          month: "Dans un mois"
+          custom: "À une date/heure particulière"
       scheduling:
         is_parent: "Les dates de ce lot de travaux sont automatiquement déduites de ses enfants. Activez la « Planification manuelle » pour définir les dates."
         is_switched_from_manual_to_automatic: "Les dates de ce lot de travaux peuvent avoir besoin d'être recalculées après avoir passé de la planification manuelle à la planification automatique en raison de relations avec d'autres lots de travaux."

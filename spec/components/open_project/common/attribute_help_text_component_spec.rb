@@ -39,16 +39,16 @@ RSpec.describe OpenProject::Common::AttributeHelpTextComponent, type: :component
   end
 
   shared_examples "component renders" do
-    it "renders a muted link" do
+    it "renders a link" do
       expect(subject).to have_link href: show_dialog_attribute_help_text_path(help_text),
-                                   class: "Link Link--muted"
+                                   class: "Link"
     end
 
     it "renders a tooltip" do
-      expect(subject).to have_element "tool-tip", text: "Show attribute help text entry",
+      expect(subject).to have_element "tool-tip", text: "Show help text",
                                                   for: /attribute-help-text-component-\d+/,
                                                   popover: "manual",
-                                                  "data-direction": "e",
+                                                  "data-direction": "sw",
                                                   "data-type": "label"
     end
 

@@ -37,6 +37,7 @@ RSpec.describe "Projects life cycle settings", :js, with_flag: { stages_and_gate
     create(:user,
            member_with_permissions: {
              project => %w[
+               edit_project_phases
                select_project_phases
              ]
            })

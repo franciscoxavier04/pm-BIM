@@ -560,11 +560,14 @@
         Alle forekomster av plassholderbrukeren (f.eks. som utførende, ansvarlig eller andre brukerverdier) blir tilordnet på nytt til en konto kalt "Slettet bruker". Siden dataene for hver slettede konto blir tilordnet denne kontoen vil det ikke være mulig å skille dataene brukeren har opprettet fra data for en annen slettet konto.
       irreversible: "Du kan ikke angre denne handlingen"
       confirmation: "Skriv inn plassholderbrukernavnet %{name} for å bekrefte slettingen."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Klikk for å tildele eller endre fargen for denne prioriteten.
-        Det kan brukes til å fremheve arbeidspakker i tabellen.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "React"
     add_reaction: "Add reaction"
@@ -2411,7 +2414,7 @@
         static_token_name: "RSS nøkkel"
         disabled_text: "RSS-nøkler er ikke aktivert av administrator. Kontakt systemansvarlig for å bruke denne funksjonen."
       storages:
-        title: "Fillagringer"
+        title: "File storages"
         text_hint: "Fillagrings-nøkler kobler til dette OpenProjectets instansen med et eksternt fillager."
         empty_text_hint: "Det er ingen lagringstilgang knyttet til kontoen din."
         revoke_token: "Vil du virkelig fjerne denne nøkkelen? Du må logge inn igjen på %{storage}"
@@ -2893,8 +2896,8 @@
   label_project_custom_field_plural: "Prosjektegenskaper"
   label_project_settings: "Prosjektinnstillinger"
   label_project_attributes_settings: "Innstillinger for prosjektegenskaper"
-  label_project_storage_plural: "Fillagringer"
-  label_project_storage_project_folder: "Fillagringer: Prosjektmapper"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} prosjekter som bruker %{used_disk_space} diskplass"
   label_project_view_all: "Vis alle prosjekter"
   label_project_show_details: "Vis prosjektdetaljer"
@@ -3635,7 +3638,7 @@
       oauth_application_details: "Den hemmelige verdien for klienten blir ikke tilgjengelig igjen etter at du har lukket dette vinduet. Kopier disse verdiene inn i Nextcloud OpenProject integrasjonsinnstillinger:"
       oauth_application_details_link_text: "Gå til innstillingssiden"
       setup_documentation_details: "Hvis du trenger hjelp til å konfigurere en ny fillagring, bør du kontrollere dokumentasjonen: "
-      setup_documentation_details_link_text: "Fillagring satt opp"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "For å bruke denne fillagringen, husk å aktivere modulen og spesifikk lagring i prosjektinnstillingene for hvert ønsket prosjekt."
     subversion:
       existing_title: "Eksisterende subversion kodelager"
@@ -3927,9 +3930,7 @@
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
-      edit:
-        heading: "Edit Phase"
+        heading: "New phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"
@@ -4305,12 +4306,12 @@
         message: "Deling av prosjektlister med enkeltbrukere er et enterprise-tillegg."
   working_days:
     info: >
-      Hoppet over dager som ikke er valgt ved planlegging av arbeidspakker (og ikke inkludert i antall dager). Disse kan overstyres på arbeidspakkenivå.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Datoer som er lagt til i listen nedenfor regnes som arbeidsfrie og hoppet over når arbeidspakker planlegges.
     change_button: "Endre virkedager"
     warning: >
-      Endring av hvilke ukedager som regnes som arbeidsdager eller arbeidsfrie dager kan påvirke start- og sluttdager for alle arbeidspakker i alle prosjekter i denne forekomsten.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Arbeidsdager** endret (%{changes})._
       days:

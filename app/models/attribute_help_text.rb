@@ -62,6 +62,8 @@ class AttributeHelpText < ApplicationRecord
     scope
   end
 
+  normalizes :attribute_name, with: -> { it.delete_suffix("_id") }
+
   validates :help_text, presence: true
   validates :attribute_name, uniqueness: { scope: :type }
 

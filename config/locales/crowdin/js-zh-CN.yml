@@ -275,9 +275,10 @@ zh-CN:
         change_button: "保存并重新安排"
         change_title: "更改工作日"
         removed_title: "您将从非工作日列表中删除以下日期："
-        change_description: "更改一周中哪些天被视为工作日或非工作日可能会影响此实例中所有项目中所有工作包的开始和结束日期。"
+        change_description: "Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance."
         warning: >
-          更改可能需要一些时间才能生效。当更新完所有相关工作包时，您将收到通知。
+          The changes might take some time to take effect. You will be notified when all relevant work packages and project life cycles have been updated.
+          Are you sure you want to continue?
       work_packages_settings:
         warning_progress_calculation_mode_change_from_status_to_field_html: >-
           将进度计算模式从基于状态改为基于工时，将使<i>完成 %</i>字段可自由编辑。如果您选择输入<i>工时</i>或<i>剩余工时</i>的值，它们也将与<i>完成 %</i>相关联。更改<i>剩余工时</i>就可以更新<i>完成 %</i>。
@@ -357,10 +358,10 @@ zh-CN:
           learn_about: "详细了解所有新功能"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "16_0":
+          "16_1":
             standard:
               new_features_html: >
-                此版本包含各种新功能和改进，例如 <br> <ul class="%{list_styling_class}"> <li>会议待办和经典会议结束。</li><li>更新了企业计划。</li><li>工作文件包中的内部评论（企业附加组件）。</li><li>自动生成的工作文件包主题（企业附加组件）。</li><li>带有日历视图的单独时间跟踪模块。</li><li>工作文件包关系选项卡中显示的父关系。</li> <li>发布到社区：项目概述页面上的图表。</li></ul>
+                该版本包含各种新功能和改进，例如<br><ul class="%{list_styling_class}"><li>使用阶段和阶段关口构建项目生命周期。</li><li>以 PDF 格式导出会议。</li><li>为提醒设置智能默认选项。</li><li>对工作包日期使用负滞后。</li><li>为层次结构自定义字段显示结构树。</li><li>受益于 ARIA 实时区域日期选择器的无障碍功能改进。</li> </ul>
     ical_sharing_modal:
       title: "订阅日历"
       inital_setup_error_message: "获取数据时发生错误。"
@@ -565,7 +566,7 @@ zh-CN:
     label_version_plural: "版本"
     label_view_has_changed: "此视图有未保存的更改。单击以保存。"
     help_texts:
-      show_modal: "显示属性帮助文本项"
+      show_modal: "显示帮助文本"
     onboarding:
       buttons:
         skip: "跳过"
@@ -1038,9 +1039,9 @@ zh-CN:
         subtitle: "您将在所选时间收到此工作包的通知。"
         presets:
           tomorrow: "明天"
-          three_days: "3天内"
-          week: "一周内"
-          month: "一个月内"
+          three_days: "3 天后"
+          week: "一周后"
+          month: "一个月后"
           custom: "在某个特定日期/时间"
       scheduling:
         is_parent: "此工作包的日期会自动从其子项推导出。可激活“手动计划”来设置日期。"

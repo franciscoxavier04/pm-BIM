@@ -4,7 +4,7 @@ page:
   margin_bottom: 60
   margin_left: 36
   margin_right: 36
-  page_break_threshold: 100
+  page_break_threshold: 150
   link_color: "175A8E"
 
 page_header:
@@ -21,7 +21,7 @@ page_logo:
   align: "right"
 
 page_heading:
-  size: 14
+  size: 18
   styles: [ "bold" ]
   margin_bottom: 2
 
@@ -228,14 +228,17 @@ notes:
         no_border_top: true
 
 outcome:
-  indent: 15
+  indent: 0
+  symbol:
+    size: 10
+    color: "1F883D"
   title:
     size: 10
     styles: [ "bold" ]
     margin_top: 5
     margin_bottom: 5
   markdown_margin:
-    margin: 16
+    margin_bottom: 8
   markdown:
     font:
       size: 10
@@ -393,16 +396,19 @@ outcome:
         no_border_top: true
 
 heading:
-  size: 12
+  size: 11
   styles: [ "bold" ]
   margin_bottom: 8
   hr:
     color: "6E7781"
-    height: 1.5
+    height: 1
     margin_bottom: 10
 
 participants:
   margin_bottom: 8
+  status:
+    size: 9
+    color: "636C76"
   cell:
     size: 10
     padding_left: 0
@@ -419,7 +425,7 @@ attachments:
 
 agenda_section:
   title:
-    size: 12
+    size: 14
     color: "000000"
     styles: [ "bold" ]
   subtitle:
@@ -427,24 +433,27 @@ agenda_section:
     color: "636C76"
   title_cell:
     padding_top: 2
-    padding_bottom: 10
-    padding_left: 5
-    padding_right: 5
-    no_border: true
-    background_color: "EAEAEA"
+    padding_bottom: 5
+    padding_left: 0
+    padding_right: 0
+    border_color: "D0D7DE"
+    border_width: 1
+    no_border_top: true
+    no_border_left: true
+    no_border_right: true
   title_margins:
     margin_top: 15
-    margin_bottom: 5
+    margin_bottom: 10
 
 agenda_item:
-  indent: 5
+  indent: 0
   title_margin:
     margin_bottom: 10
   title_cell:
     padding_top: 0
     padding_bottom: 0
-    padding_left: 5
-    padding_right: 5
+    padding_left: 0
+    padding_right: 0
     no_border: true
   title:
     styles: [ "bold" ]
@@ -453,7 +462,7 @@ agenda_item:
     color: "636C76"
     size: 10
   hr:
-    color: "D0D7DE"
-    height: 1
+    color: "FFFFFF"
+    height: 0
     margin_top: 6
     margin_bottom: 6

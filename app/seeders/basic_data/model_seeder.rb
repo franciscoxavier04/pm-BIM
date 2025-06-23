@@ -80,6 +80,8 @@ module BasicData
         if model = model_class.find_by(lookup_attributes)
           seed_data.store_reference(model_data["reference"], model)
         end
+      rescue ArgumentError
+        # ignore when lookups can not be done because of missing references
       end
     end
 

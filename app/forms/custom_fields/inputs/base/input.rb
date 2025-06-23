@@ -41,6 +41,10 @@ class CustomFields::Inputs::Base::Input < ApplicationForm
     @options = options
   end
 
+  def model
+    @object
+  end
+
   def input_attributes
     base_input_attributes.merge(
       {

@@ -60,7 +60,7 @@ class Projects::Settings::GeneralController < Projects::SettingsController
       flash[:notice] = I18n.t(:notice_successful_update)
       redirect_to project_settings_general_path(@project)
     else
-      flash[:error] = I18n.t(:notice_unsuccessful_update_with_reason, reason: call.message)
+      flash.now[:error] = I18n.t(:notice_unsuccessful_update_with_reason, reason: call.message)
       render action: :show, status: :unprocessable_entity
     end
   end

@@ -233,25 +233,24 @@ zh-CN:
     blankslate:
       title: "无会议显示"
       desc: "没有符合主动筛选条件的会议。"
-    label_export_pdf: "导出PDF"
+    label_export_pdf: "导出 PDF"
     export:
       your_meeting_export: "会议正在导出"
-      label_meeting_agenda: "会议议程"
     export_pdf_dialog:
-      title: 导出PDF
-      description: Generate a printable PDF file of this meeting at the current state.
+      title: 导出 PDF
+      description: 生成当前状态下此会议的可打印 PDF 文件。
       include_participants:
-        label: 包含与会者列表
-        caption: A list of participants will be preset above the meeting agenda.
+        label: 包含与会者名单
+        caption: 与会者名单将列在会议议程上方。
       include_attachments:
         label: 包含附件列表
-        caption: A list containing the filenames of attachments will be appended at the end.
+        caption: 附件的文件名清单将附加在结尾。
       include_backlog:
-        label: 包含待办事项
-        caption: Backlog elements are not normally considered part of a meeting occurrence but you can choose to include them.
+        label: 包含积压工作
+        caption: 积压工作元素通常不被视为会议事件的一部分，但您可以选择将它们包含在内。
       include_outcomes:
-        label: 包含议程成果
-        caption: If your agenda outcomes contain confidential information, you can choose to not include them in the export.
+        label: 包含议程结果
+        caption: 如果您的议程结果包含机密信息，您可以选择不在导出内容中包括它们。
       footer_text:
         label: 页脚文本
         caption: 此文本将出现在每一页的页脚右侧。
@@ -376,7 +375,7 @@ zh-CN:
   label_agenda_items_reordered: "重新排序"
   label_agenda_item_add: "添加议程项"
   label_agenda_item_remove_from_agenda: "从议程中移除"
-  label_agenda_item_remove_from_backlog: "从待办中移除"
+  label_agenda_item_remove_from_backlog: "从积压工作中移除"
   label_agenda_item_undisclosed_wp: "工作包 #%{id} 不可见"
   label_agenda_item_deleted_wp: "已删除工作包引用"
   label_agenda_item_actions: "议程项目行动"

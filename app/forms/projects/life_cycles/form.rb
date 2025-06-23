@@ -92,36 +92,40 @@ module Projects::LifeCycles
     end
 
     def autofocus?(field_name)
-      start_date_blank = model.start_date.blank? && model.default_start_date.blank?
-      case field_name
-      when :start_date
-        start_date_blank
-      when :finish_date
-        !start_date_blank && model.finish_date.blank?
+      # let javascipt handle focusing when rendering for preview
+      return false if model.changed?
+
+      field_name == autofocus_field_name
+    end
+
+    def autofocus_field_name
+      if start_date_disabled? || (model.start_date? && !model.finish_date?)
+        :finish_date
+      else
+        :start_date
       end
     end
 
     def show_clear_button?(field_name)
-      value_is_present = value(field_name).present?
       case field_name
       when :start_date
-        value_is_present && !start_date_disabled?
+        !start_date_disabled?
       when :finish_date
-        value_is_present
+        true
       end
     end
 
     def value(field_name)
       case field_name
       when :start_date
-        model.start_date || model.default_start_date || model.start_date_before_type_cast
+        model.start_date || model.start_date_before_type_cast
       when :finish_date
         model.finish_date_before_type_cast
       end
     end
 
     def start_date_disabled?
-      model.follows_previous_phase? && model.default_start_date.present?
+      model.follows_previous_phase? && model.start_date.present?
     end
 
     def start_date_caption

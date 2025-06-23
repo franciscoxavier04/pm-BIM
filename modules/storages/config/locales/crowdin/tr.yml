@@ -237,7 +237,7 @@ tr:
         download_report: İndir
         rerun_checks: Re-run all checks
         run_checks: Run checks now
-      checked: Son kontrol %{datetime}
+      checked: 'Last check: %{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: Automatic folder creation
@@ -247,7 +247,7 @@ tr:
           group_folder_app: 'Dependency: Group Folders'
           group_folder_contents: Group folder has expected content
           group_folder_presence: Group folder exists
-          header: Automatically managed project folder configuration
+          header: Automatically managed project folders
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
@@ -266,7 +266,7 @@ tr:
           diagnostic_request: Diagnostic request
           drive_id_exists: Drive exists
           drive_id_format: Drive ID format
-          header: Basic configuration
+          header: Configuration
           host_url_accessible: Host URL accessible
           storage_configured: Configuration complete
           tenant_id: Tenant ID
@@ -373,9 +373,9 @@ tr:
         tenant_id: Lütfen %{application_link_text} adresindeki istenen uygulama ve Uygulama kayıtlarından Dizin (kiracı) Kimliğini kopyalayın.
         tenant_id_placeholder: Ad veya UUID
       setting_up_additional_storages: Ek dosya depoları ayarlamak için lütfen adresi ziyaret edin.
-      setting_up_additional_storages_non_admin: Yöneticiler, Yönetim'de ek dosya depoları kurabilir
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: Dosya depolarını ayarlamak için lütfen adresi ziyaret edin.
-      setting_up_storages_non_admin: Yöneticiler, Yönetim'de dosya depoları kurabilir
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: 'Lütfen Nextcloud bulut sunucunuzda yönetici ayrıcalıklarına sahip olduğunuzdan ve kurulumu yapmadan önce aşağıdaki uygulamanın kurulu olduğundan emin olun:'
       type_link_text: "“Entegrasyon OpenProject”"
     label_active: Aktif

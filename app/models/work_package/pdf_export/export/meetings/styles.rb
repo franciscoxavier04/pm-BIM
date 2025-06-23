@@ -83,8 +83,16 @@ module WorkPackage::PDFExport::Export::Meetings::Styles
       resolve_font(@styles.dig(:outcome, :title))
     end
 
+    def outcome_symbol
+      resolve_font(@styles.dig(:outcome, :symbol))
+    end
+
     def outcome_title_margins
       resolve_margin(@styles.dig(:outcome, :title))
+    end
+
+    def outcome_markdown_margins
+      resolve_margin(@styles.dig(:outcome, :markdown_margin))
     end
 
     def outcome_indent
@@ -120,6 +128,10 @@ module WorkPackage::PDFExport::Export::Meetings::Styles
 
     def participants_table_cell
       resolve_table_cell(@styles.dig(:participants, :cell))
+    end
+
+    def participants_status
+      resolve_font(@styles.dig(:participants, :status))
     end
 
     def participants_margins

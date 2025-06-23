@@ -554,11 +554,14 @@ vi:
         Tất cả các trường hợp của người dùng giả định (ví dụ, làm người giao việc, người chịu trách nhiệm hoặc các giá trị người dùng khác) sẽ được chuyển nhượng cho một tài khoản có tên là "Người dùng đã xóa". Vì dữ liệu của mỗi tài khoản bị xóa được chuyển nhượng cho tài khoản này, nên sẽ không thể phân biệt dữ liệu mà người dùng đã tạo từ dữ liệu của một tài khoản đã xóa khác.
       irreversible: "Hành động này không thể đảo ngược"
       confirmation: "Nhập tên người dùng giả định %{name} để xác nhận việc xóa."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Nhấp để chỉ định hoặc thay đổi màu của mức ưu tiên này.
-        Có thể sử dụng để làm nổi bật các gói công việc trong bảng.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "React"
     add_reaction: "Add reaction"
@@ -2373,7 +2376,7 @@ vi:
         static_token_name: "Mã RSS"
         disabled_text: "Mã RSS không được kích hoạt bởi quản trị viên. Vui lòng liên hệ với quản trị viên của bạn để sử dụng tính năng này."
       storages:
-        title: "Lưu trữ tệp"
+        title: "File storages"
         text_hint: "Mã Lưu trữ Tệp kết nối phiên bản OpenProject này với một lưu trữ tệp bên ngoài."
         empty_text_hint: "Không có quyền truy cập lưu trữ nào liên kết với tài khoản của bạn."
         revoke_token: "Bạn có thực sự muốn xóa mã truy cập này không? Bạn sẽ cần phải đăng nhập lại trên %{storage}"
@@ -2855,8 +2858,8 @@ vi:
   label_project_custom_field_plural: "Các thuộc tính dự án"
   label_project_settings: "Thiết lập dự án"
   label_project_attributes_settings: "Cài đặt thuộc tính dự án"
-  label_project_storage_plural: "Lưu trữ Tệp"
-  label_project_storage_project_folder: "Lưu trữ tệp: Thư mục dự án"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} dự án đang sử dụng %{used_disk_space} dung lượng đĩa"
   label_project_view_all: "Xem tất cả các dự án"
   label_project_show_details: "Hiển thị chi tiết dự án"
@@ -3595,7 +3598,7 @@ vi:
       oauth_application_details: "Giá trị bí mật của khách hàng sẽ không còn khả dụng sau khi bạn đóng cửa sổ này. Vui lòng sao chép các giá trị này vào cài đặt tích hợp OpenProject của Nextcloud:"
       oauth_application_details_link_text: "Đi đến trang cài đặt"
       setup_documentation_details: "Nếu bạn cần trợ giúp để cấu hình một lưu trữ tệp mới, vui lòng kiểm tra tài liệu: "
-      setup_documentation_details_link_text: "Cấu hình lưu trữ tệp"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Để sử dụng lưu trữ tệp này, hãy nhớ kích hoạt mô-đun và lưu trữ cụ thể trong cài đặt dự án của từng dự án mong muốn."
     subversion:
       existing_title: "Kho Subversion hiện có"
@@ -3887,9 +3890,7 @@ vi:
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
-      edit:
-        heading: "Edit Phase"
+        heading: "New phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"
@@ -4263,12 +4264,12 @@ vi:
         message: "Chia sẻ danh sách dự án với người dùng cá nhân là một tiện ích bổ sung doanh nghiệp."
   working_days:
     info: >
-      Các ngày không được chọn sẽ bị bỏ qua khi lập kế hoạch gói công việc (và không được tính vào số ngày). Những điều này có thể bị ghi đè ở cấp gói công việc.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Các ngày được thêm vào danh sách dưới đây được coi là không làm việc và bị bỏ qua khi lập kế hoạch gói công việc.
     change_button: "Thay đổi ngày làm việc"
     warning: >
-      Thay đổi những ngày trong tuần được coi là ngày làm việc hoặc ngày không làm việc có thể ảnh hưởng đến ngày bắt đầu và kết thúc của tất cả các công việc trong tất cả các dự án trong trường hợp này.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Ngày làm việc** đã thay đổi (%{changes})._
       days:

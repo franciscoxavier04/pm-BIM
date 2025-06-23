@@ -201,7 +201,7 @@ gem "aws-sdk-core", "~> 3.107"
 # File upload via fog + screenshots on travis
 gem "aws-sdk-s3", "~> 1.91"
 
-gem "openproject-token", "~> 7.0.0"
+gem "openproject-token", "~> 7.1.0"
 
 gem "plaintext", "~> 0.3.2"
 
@@ -225,7 +225,7 @@ gem "appsignal", "~> 3.10.0", require: false
 
 # Yabeda integration
 gem "yabeda-activerecord"
-gem "yabeda-prometheus-mmap"
+gem "yabeda-prometheus-mmap", require: false
 gem "yabeda-puma-plugin"
 gem "yabeda-rails"
 

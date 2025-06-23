@@ -309,7 +309,7 @@ class WorkPackages::DatePickerController < ApplicationController
   end
 
   def handle_milestone_dates
-    if work_package.is_milestone?
+    if work_package.is_milestone? && params.require(:work_package).has_key?(:start_date)
       # Set the dueDate as the SetAttributesService will otherwise throw an error because the fields do not match
       params.require(:work_package)[:due_date] = params.require(:work_package)[:start_date]
       params.require(:work_package)[:due_date_touched] = "true"

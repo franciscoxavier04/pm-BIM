@@ -33,9 +33,7 @@ module Meetings::PDF
     def write_agenda
       return if meeting.sections.empty?
 
-      write_hr
       write_optional_page_break
-      write_heading(I18n.t("meeting.export.label_meeting_agenda"))
       write_agenda_sections
     end
 
@@ -53,7 +51,9 @@ module Meetings::PDF
 
     def write_section(section, section_index)
       write_optional_page_break
-      write_section_title(section, section_index) unless section.title.empty?
+      unless section.title.blank? && section_index == 0 && meeting.sections.count == 1
+        write_section_title(section, section_index)
+      end
       write_agenda_items(section)
     end
 
@@ -200,6 +200,7 @@ module Meetings::PDF
       return if outcome.notes.blank?
 
       pdf.indent(styles.outcome_indent) do
+        write_optional_page_break
         write_outcome_title
         write_outcome_notes(outcome.notes)
       end
@@ -207,15 +208,20 @@ module Meetings::PDF
 
     def write_outcome_title
       with_vertical_margin(styles.outcome_title_margins) do
-        pdf.formatted_text([{ text: I18n.t("label_agenda_outcome") }.merge(styles.outcome_title)])
+        pdf.formatted_text([
+                             { text: "✓ " }.merge(styles.outcome_symbol),
+                             { text: I18n.t("label_agenda_outcome") }.merge(styles.outcome_title)
+                           ])
       end
     end
 
     def write_outcome_notes(notes)
-      write_markdown!(
-        apply_markdown_field_macros(notes, { project: meeting.project, user: User.current }),
-        styles.outcome_markdown_styling_yml
-      )
+      with_vertical_margin(styles.outcome_markdown_margins) do
+        write_markdown!(
+          apply_markdown_field_macros(notes, { project: meeting.project, user: User.current }),
+          styles.outcome_markdown_styling_yml
+        )
+      end
     end
   end
 end

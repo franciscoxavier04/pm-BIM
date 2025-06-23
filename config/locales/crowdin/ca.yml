@@ -557,11 +557,14 @@ ca:
         Tots els rols de l'usuari de marcador de posició (ex. assignat, responsable o altres valors d'usuari) seran reassignats a un compte anomenat "Usuari eliminat". Com que les dades de totes les comptes eliminades seran assignades a aquest compte no serà possible distingir les dades que l'usuari ha creat de les que altres usuaris eliminats han creat.
       irreversible: "Aquesta acció és irreversible"
       confirmation: "Introdueix el nom de l'usuari de marcador de posició %{name} per confirmar l'eliminació."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Cliqueu per assignar o canviar el color d'aquesta prioritat.
-        Pot fer-se servir per a destacar paquets de treball en la taula.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "React"
     add_reaction: "Add reaction"
@@ -2409,7 +2412,7 @@ ca:
         static_token_name: "RSS token"
         disabled_text: "RSS tokens are not enabled by the administrator. Please contact your administrator to use this feature."
       storages:
-        title: "Emmagatzematges de fitxers"
+        title: "File storages"
         text_hint: "File Storage tokens connect this OpenProject instance with an external File Storage."
         empty_text_hint: "There is no storage access linked to your account."
         revoke_token: "Do you really want to remove this token? You will need to login again on %{storage}"
@@ -2891,8 +2894,8 @@ ca:
   label_project_custom_field_plural: "Atributs de projecte"
   label_project_settings: "Configuració del projecte"
   label_project_attributes_settings: "Project attributes settings"
-  label_project_storage_plural: "Emmagatzematges de fitxers"
-  label_project_storage_project_folder: "File Storages: Project folders"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} projects using %{used_disk_space} disk space"
   label_project_view_all: "Veure tots els projectes"
   label_project_show_details: "Mostra detalls del projecte"
@@ -3627,7 +3630,7 @@ ca:
       oauth_application_details: "El valor secret de client no serà accessible de nou un cop tanquis aquesta pestanya. Si us plau, còpia aquests valors a la configuració de \"Nextcloud OpenProject Integration\":"
       oauth_application_details_link_text: "Ves a la pàgina de configuracions"
       setup_documentation_details: "Si necessites ajuda configurant un nou emmagatzematge de fitxer si us plau, comprova la nostra documentació:"
-      setup_documentation_details_link_text: "Configuració d'emmagatzematge de fitxers"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Per tal d'utilitzar aquest emmagatzematge de fitxers recorda activar el mòdul i l'emmagatzematge específic a la configuració del projecte desitjat."
     subversion:
       existing_title: "Repositori de Subversion existent"
@@ -3919,9 +3922,7 @@ ca:
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
-      edit:
-        heading: "Edit Phase"
+        heading: "New phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"
@@ -4297,12 +4298,12 @@ ca:
         message: "Sharing project lists with individual users is an enterprise add-on."
   working_days:
     info: >
-      Days that are not selected are skipped when scheduling work packages (and not included in the day count). These can be overridden at a work-package level.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Les dates afegides a la llista de sota són considerades com a no laborals i omeses en programar paquets de treball.
     change_button: "Canvia els dies laborals"
     warning: >
-      Canviar quins dies de la setmana són laborals i quins no pot afectar les dates d'inici i final de tots els paquets de treball a tots els projectes en aquesta instància.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Dies laborals"" han canviat (%{changes})._
       days:
