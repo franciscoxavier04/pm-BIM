@@ -31,7 +31,7 @@
 require_relative "base"
 
 module OpenProject::Webhooks::EventResources
-  class WorkPackage < Base
+  class WorkPackageComment < Base
     class << self
       def notification_names
         [
@@ -40,21 +40,23 @@ module OpenProject::Webhooks::EventResources
       end
 
       def available_actions
-        %i(updated created)
+        %i(comment internal_comment)
       end
 
       def resource_name
-        I18n.t :label_work_package_plural
+        I18n.t :label_work_package_comments
       end
 
       protected
 
-      def handle_notification(payload, event_name)
-        action = payload[:journal].initial? ? "created" : "updated"
+      def handle_notification(payload, _)
+        journal = payload[:journal]
+        return if journal.notes.blank?
+
+        action = journal.internal? ? "internal_comment" : "comment"
         event_name = prefixed_event_name(action)
-        work_package = payload[:journal].journable
         active_webhooks.with_event_name(event_name).pluck(:id).each do |id|
-          WorkPackageWebhookJob.perform_later(id, work_package, event_name)
+          WorkPackageCommentWebhookJob.perform_later(id, journal, event_name)
         end
       end
     end
