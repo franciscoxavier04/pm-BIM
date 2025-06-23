@@ -237,7 +237,7 @@ nl:
         download_report: Downloaden
         rerun_checks: Re-run all checks
         run_checks: Run checks now
-      checked: Laatst gecontroleerd op %{datetime}
+      checked: 'Last check: %{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: Automatic folder creation
@@ -247,7 +247,7 @@ nl:
           group_folder_app: 'Dependency: Group Folders'
           group_folder_contents: Group folder has expected content
           group_folder_presence: Group folder exists
-          header: Automatically managed project folder configuration
+          header: Automatically managed project folders
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
@@ -266,7 +266,7 @@ nl:
           diagnostic_request: Diagnostic request
           drive_id_exists: Drive exists
           drive_id_format: Drive ID format
-          header: Basic configuration
+          header: Configuration
           host_url_accessible: Host URL accessible
           storage_configured: Configuration complete
           tenant_id: Tenant ID
@@ -373,9 +373,9 @@ nl:
         tenant_id: Please copy the Directory (tenant) ID from the desired application and App registrations in the %{application_link_text}.
         tenant_id_placeholder: Name or UUID
       setting_up_additional_storages: Voor het opzetten van extra bestandsopslag, bezoek a.u.b.
-      setting_up_additional_storages_non_admin: Beheerders kunnen extra bestandsopslag instellen in Administratie / Bestandsopslag.
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: Voor het opzetten van extra bestandsopslag, bezoek a.u.b.
-      setting_up_storages_non_admin: Beheerders kunnen bestandsopslag in Administratie / Bestandsopslag instellen.
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: 'Zorg ervoor dat u beheerrechten heeft in uw Nextcloud en dat de volgende applicatie geïnstalleerd is voordat u de installatie uitvoert:'
       type_link_text: "Integratie met OpenProject\""
     label_active: Actief

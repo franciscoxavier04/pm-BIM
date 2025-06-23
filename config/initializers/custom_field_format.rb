@@ -86,5 +86,6 @@ OpenProject::CustomFieldFormat.map do |fields|
                                                      only: %w(WorkPackage),
                                                      order: 12,
                                                      multi_value_possible: true,
+                                                     enterprise_feature: :custom_field_hierarchies,
                                                      formatter: "CustomValue::HierarchyStrategy")
 end

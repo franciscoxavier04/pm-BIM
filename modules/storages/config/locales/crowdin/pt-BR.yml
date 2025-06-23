@@ -15,7 +15,7 @@ pt-BR:
           oauth2_sso_with_two_way_oauth2_fallback: Login único com OAuth 2.0 bidirecional como alternativa
           two_way_oauth2: Fluxo de código de autorização OAuth 2.0 bidirecional
         storage_audience: Audiência de Armazenamento
-        token_exchange_scope: Storage Scope
+        token_exchange_scope: Escopo de armazenamento
       storages/project_storage:
         project_folder: Pasta de projeto
         project_folder_mode: Modo de pasta de projeto
@@ -81,7 +81,7 @@ pt-BR:
     edit_project_folder:
       label: Editar pasta do projeto
     open:
-      remote_identity_error: An unexpected error occurred while connecting to the storage.
+      remote_identity_error: Um erro inesperado ocorreu ao conectar ao armazenamento.
     project_folder_mode:
       automatic: Gerenciado automaticamente
       inactive: Nenhuma pasta específica
@@ -227,17 +227,17 @@ pt-BR:
       project_folders: Pastas do projeto
       redirect_uri: Redirecionar URI
       storage_audience_blank: Nenhuma audiência foi configurada.
-      storage_audience_description: Exchanging tokens for audience "%{audience}".
-      storage_audience_idp: Using access token obtained by identity provider during login, regardless of audience.
+      storage_audience_description: Trocando tokens para o público-alvo "%{audience}".
+      storage_audience_idp: Usando o token de acesso obtido pelo provedor de identidade durante o login, independentemente do público-alvo.
       storage_oauth: OAuth Nextcloud
       storage_provider: Provedor de armazenamento
-      token_exchange: Token Exchange
+      token_exchange: Troca de Token
     health:
       actions:
         download_report: Baixar
         rerun_checks: Executar todas as verificações novamente
         run_checks: Executar as verificações agora
-      checked: Última verificação em %{datetime}
+      checked: 'Última verificaçã: %{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: Criação automática de pasta
@@ -247,7 +247,7 @@ pt-BR:
           group_folder_app: 'Dependência: Pastas de grupo'
           group_folder_contents: A pasta do grupo contém o conteúdo esperado
           group_folder_presence: A pasta do grupo existe
-          header: Configuração de pasta de projeto gerenciada de forma automática
+          header: Pastas de projeto gerenciadas automaticamente
           userless_access: Autenticação de solicitações no servidor
         authentication:
           existing_token: Token do usuário
@@ -266,14 +266,14 @@ pt-BR:
           diagnostic_request: Solicitação de diagnóstico
           drive_id_exists: Drive existente
           drive_id_format: Formato do Drive ID
-          header: Configuração básica
+          header: Configuração
           host_url_accessible: URL do host acessível
           storage_configured: Configuração concluída
           tenant_id: ID do locatário
         failures:
           one: "%{count} teste falhou"
           other: "%{count} testes falharam"
-        success: All checks passed
+        success: Verificações concluídas com êxito
         warnings:
           one: "%{count} teste retornou com um aviso"
           other: "%{count} testes retornaram com um aviso"
@@ -284,8 +284,8 @@ pt-BR:
         nc_dependency_version_mismatch: A versão do aplicativo %{dependency} não é compatível. Atualize seu servidor Nextcloud.
         nc_group_folder_not_found: A pasta do grupo não pôde ser localizada.
         nc_host_not_found: Nenhum servidor Nextcloud encontrado na URL de host configurada. Verifique a configuração.
-        nc_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
-        nc_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
+        nc_oauth_request_not_found: O endpoint para recuperar o usuário conectado não foi encontrado. Verifique os logs do servidor para mais detalhes.
+        nc_oauth_request_unauthorized: O usuário atual não está autorizado a acessar o armazenamento remoto de arquivos. Verifique os logs do servidor para mais informações.
         nc_oauth_token_missing: O OpenProject não pode testar a comunicação do usuário com o Nextcloud, pois a conta do Nextcloud ainda não foi vinculada.
         nc_unexpected_content: Conteúdo inesperado encontrado na pasta do grupo gerenciado.
         nc_userless_access_denied: A senha configurada do aplicativo não é válida.
@@ -294,19 +294,19 @@ pt-BR:
         od_client_write_permission_missing: O cliente parece não ter permissão para gravar. Verifique a documentação de configuração do armazenamento.
         od_drive_id_invalid: O Id da unidade configurada parece ser inválido. Verifique a configuração.
         od_drive_id_not_found: O drive Id configurado não foi encontrado. Verifique a configuração.
-        od_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
-        od_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
+        od_oauth_request_not_found: O endpoint para recuperar o usuário conectado não foi encontrado. Verifique os logs do servidor para mais detalhes.
+        od_oauth_request_unauthorized: O usuário atual não está autorizado a acessar o armazenamento remoto de arquivos. Verifique os logs do servidor para mais informações.
         od_oauth_token_missing: O OpenProject não pode testar a comunicação do usuário com o OneDrive/SharePoint, pois a conta do Microsoft ainda não foi vinculada.
         od_tenant_id_wrong: O ID do diretório (inquilino) configurado é inválido. Verifique a configuração.
-        od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
+        od_test_folder_exists: A pasta %{folder_name}, necessária para o teste, já existe. Exclua-a e tente novamente.
         od_unexpected_content: Conteúdo inesperado encontrado na unidade.
         offline_access_scope_missing: É recomendável configurar o provedor OpenID Connect para solicitar o escopo offline_access. A integração pode continuar funcionando, mas é importante garantir que os tokens de atualização não expirem.
         oidc_cant_refresh_token: Ocorreu um erro ao tentar verificar seu acesso ao armazenamento. Verifique os logs do servidor para mais informações.
         oidc_non_oidc_user: O usuário atual, embora provisionado, não foi provisionado por um Provedor de Identidade OpenID Connect (OIDC). Execute a verificação novamente com um usuário provisionado pelo OIDC.
         oidc_non_provisioned_user: O usuário atual não foi fornecido por um Provedor de Identidade OpenID Connect. Execute a verificação novamente com um usuário fornecido.
-        oidc_token_acquisition_failed: Your OpenID Connect setup doesn't provide the necessary audience, nor does it provide token exchange capabilities. Please check out our documentation for more information.
-        oidc_token_exchange_failed: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
-        oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
+        oidc_token_acquisition_failed: A configuração do seu OpenID Connect não fornece o público-alvo necessário nem oferece recursos de troca de tokens. Consulte nossa documentação para mais informações.
+        oidc_token_exchange_failed: Parece haver um problema na configuração da troca de tokens no seu provedor OpenID Connect. Verifique as configurações e tente novamente.
+        oidc_token_refresh_failed: Ocorreu um erro ao tentar verificar seu acesso ao armazenamento. Verifique os logs do servidor para mais informações.
         unknown_error: A conexão não pôde ser validada. Ocorreu um erro desconhecido. Verifique os registros do servidor para obter mais informações.
       label_error: Erro
       label_failed: Falhou
@@ -351,9 +351,9 @@ pt-BR:
         integration: Administração de Nextcloud / OpenProject
         oauth_configuration: Copie estes valores de %{application_link_text}.
         provider_configuration: 'Certifique-se de ter os privilégios de administração em sua instância de Nextcloud e de que o %{application_link_text} está instalado antes de realizar a configuração:'
-        storage_audience: The client ID that the Nextcloud instance uses to communicate with the identity provider.
+        storage_audience: O ID do Cliente que a instância do Nextcloud usa para se comunicar com o provedor de identidade.
         storage_audience_placeholder: 'ex.: Nextcloud'
-        token_exchange_scope: The scopes that should be requested during token exchange, each one separated by a space.
+        token_exchange_scope: Os escopos que devem ser solicitados durante a troca de token, separados por espaço.
       no_specific_folder: Por padrão, cada usuário começará na sua própria pasta inicial ao carregar arquivos.
       no_storage_set_up: Ainda não há armazenamento de arquivos configurado.
       not_logged_into_storage: Para selecionar uma pasta de projeto, primeiro faça login
@@ -373,9 +373,9 @@ pt-BR:
         tenant_id: Copie o ID do diretório (inquilino) do aplicativo desejado e dos registros de aplicativos no %{application_link_text}.
         tenant_id_placeholder: Nome ou UUID
       setting_up_additional_storages: Para configurar armazenamentos de arquivos adicionais, por favor visite
-      setting_up_additional_storages_non_admin: Os administradores podem configurar armazenamentos adicionais em Administração/Armazenamento de arquivos.
+      setting_up_additional_storages_non_admin: Os administradores podem configurar armazenamentos adicionais em Administração/Armazenamentos de arquivo.
       setting_up_storages: Para configurar armazenamentos de arquivos, visite
-      setting_up_storages_non_admin: Administradores podem configurar armazenamentos de arquivos em Administração / Armazenamento de arquivos.
+      setting_up_storages_non_admin: Administradores podem configurar armazenamentos de arquivos em Administração / Armazenamentos de arquivo.
       type: 'Certifique-se de ter privilégios de administração em sua instância Nextcloud e de ter o seguinte aplicativo instalado antes de realizar a configuração:'
       type_link_text: "“Integração OpenProject”"
     label_active: Ativo
@@ -387,7 +387,7 @@ pt-BR:
     label_edit_storage_access_management: Editar gerenciamento de acesso ao armazenamento
     label_edit_storage_automatically_managed_folders: Editar pastas gerencias automaticamente de armazenamento
     label_edit_storage_host: Editar host de armazenamento
-    label_edit_token_exchange: Edit token exchange configuration
+    label_edit_token_exchange: Editar configuração de troca de token
     label_existing_manual_folder: Pasta existente com permissões gerenciadas manualmente
     label_file_storage: Armazenamento de arquivos
     label_host: URL do host
@@ -480,13 +480,13 @@ pt-BR:
       description: Desativar esta opção ocultará a lista de anexos na guia de arquivos dos pacotes de trabalho. Os arquivos anexados na descrição de um pacote de trabalho ainda serão enviados para o armazenamento interno de anexos.
       label: Exibir anexos na aba arquivos de pacotes de trabalho
     storage_audience:
-      documentation_intro: Please read our documentation for details on the following options and configuration of the identity provider.
+      documentation_intro: Consulte nossa documentação para obter mais informações sobre as opções a seguir e a configuração do provedor de identidade.
       idp:
-        helptext: OpenProject will use the access token received by the identity provider during log in to authenticate requests to the storage. It will not try to obtain another token.
-        label: Use access token obtained during user log in
+        helptext: O OpenProject usará o token de acesso recebido do provedor de identidade durante o login para autenticar as solicitações ao armazenamento. Ele não tentará obter outro token.
+        label: Usar token de acesso obtido durante o login do usuário
       manual:
-        helptext: OpenProject will exchange a token with the identity provider for the given audience.
-        label: Manually specify audience for which to exchange access token
+        helptext: O OpenProject trocará um token com o provedor de identidade para o público-alvo especificado.
+        label: Especificar manualmente o público-alvo para o qual trocar o token de acesso
     storage_list_blank_slate:
       description: Adicione um armazenamento para vê-lo aqui.
       heading: Ainda não tem nenhum armazenamento.

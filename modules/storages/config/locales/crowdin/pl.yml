@@ -15,7 +15,7 @@ pl:
           oauth2_sso_with_two_way_oauth2_fallback: Logowanie jednokrotne z dwukierunkowym OAuth 2.0 jako rozwiązaniem awaryjnym
           two_way_oauth2: Przepływ kodu autoryzacji dwukierunkowego OAuth 2.0
         storage_audience: Odbiorcy magazynu
-        token_exchange_scope: Storage Scope
+        token_exchange_scope: Zakres przechowywania
       storages/project_storage:
         project_folder: Folder projektu
         project_folder_mode: Tryb folderu projektu
@@ -81,7 +81,7 @@ pl:
     edit_project_folder:
       label: Edytuj folder projektu
     open:
-      remote_identity_error: An unexpected error occurred while connecting to the storage.
+      remote_identity_error: Podczas łączenia się z magazynem wystąpił nieoczekiwany błąd.
     project_folder_mode:
       automatic: Automatyczne zarządzanie
       inactive: Brak konkretnego folderu
@@ -227,17 +227,17 @@ pl:
       project_folders: Foldery projektu
       redirect_uri: Przekieruj URI
       storage_audience_blank: Nie skonfigurowano żadnych odbiorców.
-      storage_audience_description: Exchanging tokens for audience "%{audience}".
-      storage_audience_idp: Using access token obtained by identity provider during login, regardless of audience.
+      storage_audience_description: Wymienianie tokenów dla odbiorców „%{audience}”.
+      storage_audience_idp: Użycie tokena dostępu uzyskanego przez dostawcę tożsamości podczas logowania, niezależnie od odbiorców.
       storage_oauth: Nextcloud OAuth
       storage_provider: Dostawca magazynu
-      token_exchange: Token Exchange
+      token_exchange: Wymiana tokenów
     health:
       actions:
         download_report: Pobierz
         rerun_checks: Uruchom ponownie wszystkie kontrole
         run_checks: Uruchom sprawdzanie teraz
-      checked: Ostatnio sprawdzono %{datetime}
+      checked: 'Ostatnio sprawdzono: %{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: Automatyczne tworzenie folderów
@@ -247,7 +247,7 @@ pl:
           group_folder_app: 'Zależne: foldery grup'
           group_folder_contents: Folder grupy ma oczekiwaną zawartość
           group_folder_presence: Folder grupy istnieje
-          header: Automatycznie zarządzana konfiguracja folderu projektu
+          header: Automatycznie zarządzane foldery projektu
           userless_access: Uwierzytelnianie żądań po stronie serwera
         authentication:
           existing_token: Token użytkownika
@@ -266,7 +266,7 @@ pl:
           diagnostic_request: Żądanie diagnostyki
           drive_id_exists: Dysk istnieje
           drive_id_format: Format Drive ID
-          header: Konfiguracja podstawowa
+          header: Konfiguracja
           host_url_accessible: Adres URL hosta jest dostępny
           storage_configured: Ukończono konfigurację
           tenant_id: Identyfikator dzierżawcy
@@ -275,7 +275,7 @@ pl:
           few: "%{count} kontrole nie powiodły się"
           many: "%{count} kontroli nie powiodło się"
           other: "%{count} kontroli nie powiodło się"
-        success: All checks passed
+        success: Wszystkie kontrole powiodły się
         warnings:
           one: "%{count} kontrola zwróciła ostrzeżenie"
           few: "%{count} kontrole zwróciły ostrzeżenie"
@@ -288,8 +288,8 @@ pl:
         nc_dependency_version_mismatch: Wersja aplikacji %{dependency} jest nieobsługiwana. Zaktualizuj swój serwer Nextcloud.
         nc_group_folder_not_found: Folder grupy nie został znaleziony.
         nc_host_not_found: Nie znaleziono serwera Nextcloud pod skonfigurowanym adresem URL hosta. Sprawdź konfigurację.
-        nc_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
-        nc_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
+        nc_oauth_request_not_found: Nie znaleziono punktu końcowego, z którego można pobrać informacje o aktualnie połączonym użytkowniku. Aby uzyskać więcej informacji, sprawdź dzienniki serwera.
+        nc_oauth_request_unauthorized: Bieżący użytkownik nie ma uprawnień dostępu do zdalnego magazynu plików. Aby uzyskać więcej informacji, sprawdź dzienniki serwera.
         nc_oauth_token_missing: Aplikacja OpenProject nie może przetestować komunikacji z usługą Nextcloud na poziomie użytkownika, ponieważ użytkownik nie powiązał jeszcze swojego konta Nextcloud.
         nc_unexpected_content: W folderze zarządzanej grupy znaleziono nieoczekiwaną zawartość.
         nc_userless_access_denied: Skonfigurowane hasło aplikacji jest nieprawidłowe.
@@ -298,19 +298,19 @@ pl:
         od_client_write_permission_missing: Klient nie ma uprawnień zapisu. Sprawdź dokumentację konfiguracji swojej pamięci masowej.
         od_drive_id_invalid: Skonfigurowany Drive ID jest nieprawidłowy. Sprawdź konfigurację.
         od_drive_id_not_found: Nie można znaleźć skonfigurowanego Drive ID. Sprawdź konfigurację.
-        od_oauth_request_not_found: The endpoint to fetch the currently connected user was not found. Please check the server logs for further information.
-        od_oauth_request_unauthorized: The current user isn't authorized to access the remote file storage. Please check the server logs for further information.
+        od_oauth_request_not_found: Nie znaleziono punktu końcowego, z którego można pobrać informacje o aktualnie połączonym użytkowniku. Aby uzyskać więcej informacji, sprawdź dzienniki serwera.
+        od_oauth_request_unauthorized: Bieżący użytkownik nie ma uprawnień dostępu do zdalnego magazynu plików. Aby uzyskać więcej informacji, sprawdź dzienniki serwera.
         od_oauth_token_missing: Aplikacja OpenProject nie może przetestować komunikacji z usługą OneDrive/SharePoint na poziomie użytkownika, ponieważ użytkownik nie powiązał jeszcze swojego konta Microsoft.
         od_tenant_id_wrong: Skonfigurowany katalog (dzierżawca) jest nieprawidłowy. Sprawdź konfigurację.
-        od_test_folder_exists: The folder %{folder_name} needed for testing already exists. Please delete it and try again.
+        od_test_folder_exists: Wymagany do testowania folder %{folder_name} już istnieje. Usuń go i spróbuj ponownie.
         od_unexpected_content: Na dysku znaleziono nieoczekiwaną zawartość.
         offline_access_scope_missing: Zalecane jest skonfigurowanie dostawcy OpenID Connect tak, aby żądał zakresu offline_access. Integracja i tak może działać, ale upewnij się, że tokeny odświeżania nie wygasły.
         oidc_cant_refresh_token: Podczas próby sprawdzenia Twojego dostępu do magazynu wystąpił błąd. Aby uzyskać dalsze informacje, sprawdź dzienniki serwera.
         oidc_non_oidc_user: Bieżący użytkownik, choć otrzymał konfigurację, nie otrzymał konfiguracji od dostawcy tożsamości OpenID Connect (OIDC). Przeprowadź ponowne sprawdzenie z użytkownikiem, który otrzymał konfigurację od OIDC.
         oidc_non_provisioned_user: Bieżący użytkownik nie jest dostarczany przez dostawcę tożsamości OpenID Connect. Ponownie uruchom sprawdzanie z dostarczonym użytkownikiem.
-        oidc_token_acquisition_failed: Your OpenID Connect setup doesn't provide the necessary audience, nor does it provide token exchange capabilities. Please check out our documentation for more information.
-        oidc_token_exchange_failed: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
-        oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
+        oidc_token_acquisition_failed: Twoja konfiguracja OpenID Connect nie zapewnia niezbędnych odbiorców ani możliwości wymiany tokenów. Sprawdź naszą dokumentację, aby uzyskać więcej informacji.
+        oidc_token_exchange_failed: Wygląda na to, że wystąpił problem z konfiguracją wymiany tokenów u Twojego dostawcy OpenID Connect. Sprawdź jego konfigurację i spróbuj ponownie.
+        oidc_token_refresh_failed: Podczas próby sprawdzenia Twojego dostępu do magazynu wystąpił błąd. Aby uzyskać dalsze informacje, sprawdź dzienniki serwera.
         unknown_error: Nie można zweryfikować połączenia. Wystąpił nieznany błąd. Aby uzyskać dalsze informacje, sprawdź dzienniki serwera.
       label_error: Błąd
       label_failed: Niepowodzenie
@@ -355,9 +355,9 @@ pl:
         integration: Administracja Nextcloud / OpenProject
         oauth_configuration: Skopiuj te wartości z %{application_link_text}.
         provider_configuration: Przed wykonaniem konfiguracji upewnij się, że masz uprawnienia administracyjne w swoim wystąpieniu Nextcloud oraz zainstalowaną aplikację %{application_link_text}.
-        storage_audience: The client ID that the Nextcloud instance uses to communicate with the identity provider.
+        storage_audience: Identyfikator klienta, który wykorzystuje wystąpienie Nextcloud do komunikowania się z dostawcą tożsamości.
         storage_audience_placeholder: np. nextcloud
-        token_exchange_scope: The scopes that should be requested during token exchange, each one separated by a space.
+        token_exchange_scope: Zakresy, które powinny być wymagane podczas wymiany tokenów, każdy oddzielony spacją.
       no_specific_folder: Domyślnie każdy użytkownik rozpocznie we własnym folderze domowym po przesłaniu pliku.
       no_storage_set_up: Nie ma jeszcze skonfigurowanych magazynów plików.
       not_logged_into_storage: Aby wybrać folder projektu, najpierw się zaloguj
@@ -391,7 +391,7 @@ pl:
     label_edit_storage_access_management: Edytuj zarządzania dostępem do magazynu
     label_edit_storage_automatically_managed_folders: Edytuj automatycznie zarządzane foldery magazynu
     label_edit_storage_host: Edytuj hosta magazynu
-    label_edit_token_exchange: Edit token exchange configuration
+    label_edit_token_exchange: Edytuj konfigurację wymiany tokenów
     label_existing_manual_folder: Istniejący folder z ręcznie zarządzanymi uprawnieniami
     label_file_storage: Magazyn plików
     label_host: Adres URL hosta 
@@ -417,7 +417,7 @@ pl:
     member_connection_status:
       connected: Połączono
       connected_no_permissions: Rola użytkownika nie ma uprawnień do magazynów
-      not_connectable: Not connectable. The storage requires login through an SSO provider, but the user is not logging in through SSO.
+      not_connectable: Nie można połączyć. Magazyn wymaga logowania poprzez dostawcę SSO, ale użytkownik nie loguje się poprzez SSO.
       not_connected: Nie połączono. Użytkownik powinien zalogować się do magazynu za pomocą %{link}.
       not_connected_sso: Jeszcze nie powiązano, usługa SSO powinna je automatycznie powiązać po sprawdzeniu plików.
     members_no_results: Brak członków do wyświetlenia.
@@ -484,13 +484,13 @@ pl:
       description: Wyłączenie tej opcji spowoduje ukrycie listy załączników na karcie plików pakietów roboczych. Pliki załączone w opisie pakietu roboczego będą nadal przesyłane do wewnętrznego magazynu załączników.
       label: Pokaż załączniki na karcie plików pakietów roboczych
     storage_audience:
-      documentation_intro: Please read our documentation for details on the following options and configuration of the identity provider.
+      documentation_intro: Zapoznaj się z naszą dokumentacją, aby uzyskać szczegółowe informacje na temat poniższych opcji i konfiguracji dostawcy tożsamości.
       idp:
-        helptext: OpenProject will use the access token received by the identity provider during log in to authenticate requests to the storage. It will not try to obtain another token.
-        label: Use access token obtained during user log in
+        helptext: OpenProject użyje tokena dostępu otrzymanego przez dostawcę tożsamości podczas logowania w celu uwierzytelnienia żądań do magazynu. Nie spowoduje to próby otrzymania kolejnego tokena.
+        label: Użyj tokena dostępu uzyskanego podczas logowania użytkownika
       manual:
-        helptext: OpenProject will exchange a token with the identity provider for the given audience.
-        label: Manually specify audience for which to exchange access token
+        helptext: OpenProject wymieni token z dostawcą tożsamości danej grupy odbiorców.
+        label: Ręcznie określ odbiorców, których token dostępu chcesz wymienić
     storage_list_blank_slate:
       description: Dodaj magazyn, aby zobaczyć go tutaj.
       heading: Nie masz jeszcze żadnych magazynów.

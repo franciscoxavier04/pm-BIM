@@ -79,11 +79,15 @@ pl:
         main-menu-bg-color: "Kolor tła lewego menu."
       theme_warning: Zmiana motywu poskutkuje zastąpieniem stylu niestandardowego. Projekt zostanie wówczas utracony. Czy na pewno chcesz kontynuować?
     enterprise:
-      upgrade_to_ee: "Uaktualnij do wersji Enterprise"
+      delete_dialog:
+        title: "Usuń token Enterprise"
+        heading: "Usunąć ten token Enterprise?"
+        confirmation: "Czy na pewno chcesz usunąć ten token wsparcia wersji Enterprise?"
+      create_dialog:
+        title: "Dodaj token Enterprise"
+        type_token_text: "Wpisz tekst tokenu wsparcia"
+        token_placeholder: "Wklej swój token wsparcia wersji Enterprise tutaj"
       add_token: "Wyślij swój token wsparcia wersji Enterprise"
-      delete_token_modal:
-        text: "Czy na pewno chcesz usunąć używany token wersji Enterprise?"
-        title: "Usuń token"
       replace_token: "Wymień swój obecny token wsparcia"
       order: "Zamów wersję Enterprise On-Premises"
       paste: "Wklej swój token wsparcia wersji Enterprise"
@@ -95,8 +99,13 @@ pl:
       buttons:
         upgrade: "Zmień plan teraz"
         contact: "Skontaktuj się z nami, aby uzyskać demo"
-      enterprise_info_html: "jest dodatkiem wersji Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
-      upgrade_info: "Aby ją aktywować i zacząć korzystać z niej w zespole, przejdź na plan płatny."
+      status:
+        expired: "Expired"
+        expiring_soon: "Expiring soon"
+        in_grace_period: "In grace period"
+        invalid_domain: "Invalid domain"
+        not_active: "Not active"
+        trial: "Trial"
     jemalloc_allocator: Alokator pamięci Jemalloc
     journal_aggregation:
       explanation:
@@ -569,11 +578,14 @@ pl:
         Wszystkie wystąpienia użytkownika zastępczego (np. jako osoby przypisanej, odpowiedzialnej lub inne wartości użytkownika) zostaną przypisane do konta o nazwie „Usunięty użytkownik”. Jako że do tego konta przypisywane są dane każdego usuniętego konta, nie można odróżnić danych utworzonych przez użytkownika od danych innego usuniętego konta.
       irreversible: "To działanie jest nieodwracalne."
       confirmation: "Wprowadź nazwę użytkownika zastępczego %{name}, aby potwierdzić usunięcie."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
         Kliknij, aby przypisać lub zmienić kolor tego priorytetu.
         Można go używać do wyróżniania pakietów roboczych w tabeli.
+    admin:
+      default:
+        caption:
   reactions:
     action_title: "Zareaguj"
     add_reaction: "Dodaj reakcję"
@@ -699,7 +711,7 @@ pl:
         automatic: "Automatyczny"
         manual: "Ręczny"
       show_relations: "Pokaż relacje"
-      update_inputs_aria_live_message: "Date picker updated. %{message}"
+      update_inputs_aria_live_message: "Zaktualizowano selektor dat. %{message}"
       tabs:
         aria_label: "Karty wyboru dat"
         children: "Elementy podrzędne"
@@ -771,8 +783,7 @@ pl:
     lag:
       subject: "Opóźnienie"
       caption: |-
-        The minimum number of working days to keep in between the two work packages.
-        It can also be negative.
+        Minimalna liczba dni roboczych wymagana między dwoma pakietami roboczymi. Może być też ujemna.
     relations:
       label_new_child_created: "Nowy pakiet roboczy utworzono i dodano jako element podrzędny"
       label_relates_singular: "ma relację z"
@@ -831,6 +842,7 @@ pl:
       required_description: "Oznacza ten pakiet roboczy jako wymaganie powiązanego pakietu roboczego"
       label_parent_singular: "nadrzędny"
       label_parent_plural: "nadrzędne"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Powiązany pakiet roboczy"
       ghost_relation_description: "To nie jest widoczne dla Ciebie ze względu na uprawnienia."
   label_invitation: Zaproszenie
@@ -865,6 +877,10 @@ pl:
     auth_source_login: Zaloguj się jako <em>%{login}</em> aby aktywować konto.
     omniauth_login: Zaloguj się, aby aktywować konto.
   actionview_instancetag_blank_option: "Proszę wybrać"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Zależności"
   activerecord:
     attributes:
       announcements:
@@ -880,6 +896,8 @@ pl:
       attribute_help_text:
         attribute_name: "Atrybut"
         help_text: "Tekst pomocy"
+      auth_provider:
+        scim_clients: "Klienci SCIM"
       capability:
         context: "Kontekst"
       changeset:
@@ -919,11 +937,14 @@ pl:
       emoji_reaction:
         reactable: "Zareagowano na"
       enterprise_token:
-        domain: "Domena"
         starts_at: "Ważne od"
         subscriber: "Subskrybent"
+        subscription: "Subscription"
+        plan: "Plan"
         encoded_token: "Token wsparcia Enterprise"
-        active_user_count_restriction: "Maksymalna liczba aktywnych użytkowników"
+        active_user_count_restriction: "Active users"
+      enterprise_trial:
+        company: "Company"
       grids/grid:
         page: "Strona"
         row_count: "Liczba wierszy"
@@ -988,10 +1009,10 @@ pl:
       project/phase:
         date_range: "Zakres dat"
         definition: "Definicja"
-        duration: "Duration"
-        start_date: "Start date"
-        start_date_caption: "Follows the previous phase."
-        finish_date: "Finish date"
+        duration: "Czas trwania"
+        start_date: "Data rozpoczęcia"
+        start_date_caption: "Po poprzedniej fazie."
+        finish_date: "Data zakończenia"
       project/phase_definition:
         name: "Nazwa"
         color: "Kolor"
@@ -1251,8 +1272,13 @@ pl:
               forbidden_uri: "jest zabroniony przez serwer."
             scopes:
               not_match_configured: "nie pasuje do dostępnych zakresów."
+        enterprise_trial:
+          already_used: "was already used to create a trial."
+          failed_to_create: "Trial could not be created (%{status})"
+          general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "nie można odczytać. Czy na pewno jest to token wsparcia?"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "nałożenie."
           outside: "jest poza siatką."
@@ -1304,11 +1330,11 @@ pl:
         project/phase:
           attributes:
             start_date:
-              must_be_before_finish_date: "must be before the finish date."
-              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              must_be_before_finish_date: "musi być wcześniejsza niż data zakończenia."
+              non_continuous_dates: "nie może być wcześniejsza niż data zakończenia poprzedniej fazy."
             finish_date:
-              must_be_after_start_date: "must be after the start date."
-          cannot_be_a_non_working_day: "can't be a non-working day."
+              must_be_after_start_date: "musi być późniejsza niż data rozpoczęcia."
+          cannot_be_a_non_working_day: "nie może być dniem wolnym od pracy."
         query:
           attributes:
             project:
@@ -1435,7 +1461,7 @@ pl:
               cannot_be_in_another_project: "nie może być w innym projekcie."
               not_a_valid_parent: "jest nieprawidłowe."
             schedule_manually:
-              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
+              cannot_be_automatically_scheduled: "nie można ustawić na wartość false (automatycznie planowane), ponieważ nie ma poprzedników ani elementów podrzędnych."
             start_date:
               violates_relationships: "aby nie naruszyć relacji pakietu pracy, należy ustawić datę %{soonest_start} lub późniejszą."
               cannot_be_null: "nie można ustawić na wartość zero, ponieważ data zakończenia i czas trwania są znane."
@@ -1532,6 +1558,11 @@ pl:
       custom_action: "Działanie niestandardowe"
       custom_field: "Pola niestandardowe"
       "doorkeeper/application": "Aplikacje OAuth"
+      enterprise_token:
+        one: "Token Enterprise"
+        few: "Tokeny Enterprise"
+        many: "Tokeny Enterprise"
+        other: "Tokeny Enterprise"
       forum: "Forum"
       global_role: "Rola globalna"
       group: "Grupa"
@@ -1565,6 +1596,11 @@ pl:
         few: "Rol"
         many: "Rol"
         other: "Rol"
+      scim_client:
+        one: "Klient SCIM"
+        few: "Klienci SCIM"
+        many: "Klienci SCIM"
+        other: "Klienci SCIM"
       status: "Status pakietu roboczego"
       token/api:
         one: Token dostępu
@@ -1635,7 +1671,7 @@ pl:
       added_date: "ustawiono na %{date}"
       changed_date: "zmieniono z %{from} na %{to}"
       deactivated: "dezaktywowano"
-      deleted_project_phase: "Deleted project phase"
+      deleted_project_phase: "Usunięto fazę projektu"
       phase_and_both_gates: "%{phase_message}. %{start_gate_message} i %{finish_gate_message}"
       phase_and_one_gate: "%{phase_message}. %{gate_message}"
       removed_date: "data usunięcia %{date}"
@@ -1671,6 +1707,7 @@ pl:
     derived_start_date: "Wyprowadzona data rozpoczęcia"
     direction: "Kierunek"
     display_sums: "Wyświetl sumy"
+    domain: "Domain"
     due_date: "Data zakończenia"
     estimated_hours: "Praca"
     estimated_time: "Praca"
@@ -2093,23 +2130,36 @@ pl:
       readonly_work_packages: Pakiety robocze tylko do odczytu
       sso_auth_providers: Logowanie jednokrotne
       team_planner_view: Widok planisty zespołu
-      two_factor_authentication: Uwierzytelnienie 2FA
       virus_scanning: Skanowanie antywirusowe
       work_package_query_relation_columns: Kolumny relacji zapytań dotyczących pakietów roboczych
       work_package_sharing: Udostępnij pakiety robocze użytkownikom zewnętrznym
       work_package_subject_generation: Generowanie tematu pakietu roboczego
     upsell:
+      buy_now_button: "Kup teraz"
       plans_title: "Plany Enterprise"
       title: "Dodatek wersji Enterprise"
       plan_title: "Dodatek do planu Enterprise %{plan}"
       plan_name: "Plan Enterprise %{plan}"
       plan_text_html: "Dostępne od wersji %{plan_name}."
+      unlimited: "Unlimited"
+      already_have_token: >
+        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Ukryj ten baner"
       homescreen_description: >
         Plany Enterprise rozszerzają wersję Community oprogramowania OpenProject, z której obecnie korzystasz. Obejmują one dodatki, dodatkowe funkcje i profesjonalne wsparcie, które umożliwia organizacjom każdej wielkości wspólne osiąganie wielkich celów.
       homescreen_subline: Uaktualniając, weprzesz również projekt open source.
       baseline_comparison:
         description: Wyróżnij zmiany wprowadzone na tej liście od dowolnego momentu w przeszłości.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "Utwórz automatycznie generowane tematy za pomocą wywoływanych atrybutów i tekstu."
       customize_life_cycle:
@@ -2133,7 +2183,7 @@ pl:
       work_package_sharing:
         description: "Udostępnij pakiety robocze użytkownikom, którzy nie są członkami projektu."
       project_list_sharing:
-        description: "Share project lists with individual users."
+        description: "Udostępniaj listy projektów poszczególnym użytkownikom."
       define_custom_style:
         title: "Niestandardowy motyw kolorystyczny i logotyp"
         more_info: "Uwaga: użyte logo będzie ogólnodostępne."
@@ -2156,6 +2206,26 @@ pl:
       internal_comments_inline:
         title: "Pisz komentarze wewnętrzne, które może zobaczyć tylko niewielka grupa"
         description: " "
+    trial:
+      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
+      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      already_retrieved: >
+        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
+      successfully_saved: "Your trial enterprise token has been successfully retrieved."
+      token_sent: "Trial token requested"
+      request_again: "Request again"
+      resend_action: "Resend confirmation email"
+      welcome_title: "Quick feature overview"
+      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+      confirmation_info: >
+        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+      confirmation_subline: >
+        Please, check your inbox and follow the steps to start your 14-day free trial.
+      domain_caption: The token will be valid for your currently configured host name.
+      receive_newsletter_html: >
+        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+      consent_html: >
+        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
   enumeration_activities: "Działania śledzenia czasu"
   enumeration_work_package_priorities: "Priorytety pakietów roboczych"
   enumeration_reported_project_statuses: "Status zgłoszonego projektu"
@@ -2180,6 +2250,7 @@ pl:
   error_color_could_not_be_saved: "Nie można zapisać koloru"
   error_cookie_missing: "Brakuje pliku cookie OpenProject. Upewnij się, że obsługa plików cookie jest włączona, ponieważ bez tego aplikacja nie będzie funkcjonować prawidłowo."
   error_custom_option_not_found: "Opcja nie istnieje."
+  error_enterprise_plan_needed: "Aby wykonać to działanie, potrzebujesz planu %{plan} Enterprise."
   error_enterprise_activation_user_limit: "Twoje konto nie mogło zostać aktywowane (osiągnięty limit użytkownika). Skontaktuj się z administratorem, aby uzyskać dostęp."
   error_enterprise_token_invalid_domain: "Wersja Enterprise jest nieaktywna. Domena twojego tokenu Enterprise (%{actual}) nie odpowiada nazwie hosta systemu (%{expected})."
   error_failed_to_delete_entry: "Nie udało się usunąć tego wpisu."
@@ -2522,7 +2593,7 @@ pl:
         responsible: "Odpowiadasz za %{work_package}"
         watched: "Obserwujesz %{work_package}"
     query:
-      invalid_filter: "Invalid notification filter"
+      invalid_filter: "Nieprawidłowy filtr powiadomień"
   label_accessibility: "Dostępność"
   label_account: "Konto"
   label_active: "Aktywne"
@@ -2663,6 +2734,7 @@ pl:
   label_dashboard: "Pulpit nawigacyjny"
   label_database_version: "Wersja PostgreSQL"
   label_date: "Data"
+  label_dates: "Daty"
   label_date_and_time: "Data i czas"
   label_date_format: "Format daty"
   label_date_from: "Od"
@@ -2678,6 +2750,8 @@ pl:
   label_deleted_custom_item: "(usunięty element)"
   label_deleted_custom_option: "(opcja usunięta)"
   label_empty_element: "(pusty)"
+  label_go_back: "Przejdź wstecz o jeden poziom menu"
+  label_go_forward: "Otwórz podmenu %{module}"
   label_missing_or_hidden_custom_option: "(brakująca wartość lub brak uprawnień do dostępu)"
   label_descending: "Malejąco"
   label_details: "Szczegóły"
@@ -2977,7 +3051,7 @@ pl:
   label_query_new: "Nowe zapytanie"
   label_query_plural: "Zapytania niestandardowe"
   label_read: "Czytaj..."
-  label_read_documentation: "Read documentation"
+  label_read_documentation: "Przeczytaj dokumentację"
   label_register: "Utwórz nowe konto"
   label_register_with_developer: "Zarejestruj się jako programista"
   label_registered_on: "Zarejestrowany na"
@@ -3421,6 +3495,8 @@ pl:
   notice_successful_delete: "Usuwanie zakończone sukcesem."
   notice_successful_cancel: "Anulowanie powiodło się."
   notice_successful_update: "Aktualizacja zakończona sukcesem."
+  notice_unsuccessful_create: "Utworzenie nie powiodło się."
+  notice_unsuccessful_create_with_reason: "Utworzenie nie powiodło się: %{reason}"
   notice_unsuccessful_update: "Aktualizacja nie powiodła się."
   notice_unsuccessful_update_with_reason: "Aktualizacja nie powiodła się: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -4002,9 +4078,7 @@ pl:
       phase_gates: "Bramki faz"
       new:
         description: "Zmiany w tej fazie projektu zostaną odzwierciedlone we wszystkich projektach, w których jest ona włączona."
-        heading: "Nowa faza"
-      edit:
-        heading: "Edytuj fazę"
+        heading: "New phase"
       both_gate: "Bramka początkowa i końcowa"
       no_gate: "Brak bramki"
       start_gate: "Bramka początkowa"
@@ -4310,7 +4384,7 @@ pl:
     reminders:
       label_remind_at: "Data"
       note_placeholder: "Dlaczego ustawiasz to przypomnienie?"
-      success_creation_message: "Przypomnienie zostało ustawione. W wybranym terminie otrzymasz powiadomienie dotyczące tego pakietu roboczego."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "Przypomnienie zostało zaktualizowane."
       success_deletion_message: "Przypomnienie zostało usunięte."
   sharing:
@@ -4382,12 +4456,12 @@ pl:
         message: "Udostępnianie list projektów poszczególnym użytkownikom jest dodatkiem wersji Enterprise."
   working_days:
     info: >
-      Dni, które nie zostały wybrane, są pomijane podczas planowania pakietów roboczych (i nie są uwzględnione w liczbie dni). Mogą one zostać zastąpione na poziomie pakietu roboczego.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Daty dodane do poniższej listy są uważane za niedziałające i są pomijane podczas planowania pakietów roboczych.
     change_button: "Zmień dni robocze"
     warning: >
-      Zmiana dni tygodnia, które są uważane za dni robocze lub nierobocze może wpłynąć na dni rozpoczęcia i zakończenia wszystkich pakietów roboczych we wszystkich projektach w tym wystąpieniu.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _Zmieniono **Dni robocze** (%{changes})._
       days:
@@ -4412,9 +4486,13 @@ pl:
       code_500_outbound_request_failure: "Żądanie wychodzące do innego zasobu nie powiodło się z kodem statusu %{status_code}."
       code_500_missing_enterprise_token: "Żądania nie można obsłużyć z powodu nieprawidłowego lub brakującego tokena wersji Enterprise."
       bad_request:
-        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+        emoji_reactions_activity_type_not_supported: "Ten typ działań nie obsługuje reakcji emoji."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          Dla jednego pakietu roboczego można ustawić tylko jedno przypomnienie. Usuń lub zaktualizuj istniejące przypomnienie.
       not_found:
         work_package: "Pakiet roboczy, którego szukasz nie został znaleziony lub został usunięty."
+        reminder: "Nie można znaleźć szukanego przypomnienia lub zostało ono usunięte."
       expected:
         date: "RRRR-MM-DD (tylko data ISO 8601)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (dowolna data i godzina zgodne z ISO 8601)"

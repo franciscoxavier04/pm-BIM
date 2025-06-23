@@ -311,7 +311,9 @@ module Costs
     end
 
     config.to_prepare do
-      Enumeration.register_subclass(TimeEntryActivity)
+      # Load Enumeration descendants due to STI
+      TimeEntryActivity
+
       OpenProject::ProjectLatestActivity.register on: "TimeEntry"
       Costs::Patches::MembersPatch.mixin!
 

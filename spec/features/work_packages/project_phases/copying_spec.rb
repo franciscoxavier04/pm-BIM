@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Copying a work package with linked project phases", :js, with_flag: { stages_and_gates: true } do
+RSpec.describe "Copying a work package with linked project phases", :js do
   include Components::Autocompleter::NgSelectAutocompleteHelpers
 
   shared_let(:phase_definition) { create(:project_phase_definition) }

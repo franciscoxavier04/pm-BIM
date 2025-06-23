@@ -79,11 +79,15 @@ id:
         main-menu-bg-color: "Warna latar belakang menu sisi kiri."
       theme_warning: mengubah tema akan mengubah custom style anda. Desain akan menghilang. Apakah anda ingin melanjutkannya?
     enterprise:
-      upgrade_to_ee: "Tingkatkan ke edisi Enterprise"
+      delete_dialog:
+        title: "Delete enterprise token"
+        heading: "Delete this enterprise token?"
+        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+      create_dialog:
+        title: "Add Enterprise token"
+        type_token_text: "Type support token text"
+        token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Unggah sebuah token bantuan Edisi Enterprise"
-      delete_token_modal:
-        text: "Are you sure you want to remove the current Enterprise edition token used?"
-        title: "Hapus token"
       replace_token: "Gantilah token bantuan yang sedang digunakan"
       order: "Pesan Enterprise edisi di tempat"
       paste: "Rekat sebuah token bantuan Edisi Enterprise"
@@ -95,8 +99,13 @@ id:
       buttons:
         upgrade: "Upgrade sekarang"
         contact: "Hubungi kami untuk demo"
-      enterprise_info_html: "adalah add-on <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> Perusahaan."
-      upgrade_info: "Tingkatkan ke paket berbayar untuk mengaktifkan dan mulai menggunakannya di tim Anda."
+      status:
+        expired: "Expired"
+        expiring_soon: "Expiring soon"
+        in_grace_period: "In grace period"
+        invalid_domain: "Invalid domain"
+        not_active: "Not active"
+        trial: "Trial"
     jemalloc_allocator: Jemalloc memory allocator
     journal_aggregation:
       explanation:
@@ -550,11 +559,14 @@ id:
         Semua kemunculan pengguna placeholder (mis., sebagai penerima tugas, penanggung jawab, atau nilai pengguna lainnya) akan dipindahkan ke akun yang disebut "Pengguna yang dihapus". Karena data setiap akun yang dihapus dipindahkan ke akun ini, data yang dibuat pengguna tidak dapat dibedakan dari data akun lain yang dihapus.
       irreversible: "Tindakan ini tidak dapat diubah"
       confirmation: "Masukkan nama pengguna placeholder %{name} untuk mengonfirmasi penghapusan."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Klik untuk menetapkan atau merubah warna dari prioritas ini
-        Ini dapat digunakan untuk menyorot paket pekerjaan dalam tabel
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "React"
     add_reaction: "Add reaction"
@@ -806,6 +818,7 @@ id:
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Work package terkait"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Undangan
@@ -840,6 +853,10 @@ id:
     auth_source_login: Please login as <em>%{login}</em> to activate your account.
     omniauth_login: Please login to activate your account.
   actionview_instancetag_blank_option: "Silakan pilih"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -855,6 +872,8 @@ id:
       attribute_help_text:
         attribute_name: "Atribut"
         help_text: "Teks bantuan"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Context"
       changeset:
@@ -894,11 +913,14 @@ id:
       emoji_reaction:
         reactable: "Reacted on"
       enterprise_token:
-        domain: "Domain"
         starts_at: "Valid sejak"
         subscriber: "Pelanggan"
+        subscription: "Subscription"
+        plan: "Plan"
         encoded_token: "Token pendukung perusahaan"
-        active_user_count_restriction: "Pengguna aktif maksimum"
+        active_user_count_restriction: "Active users"
+      enterprise_trial:
+        company: "Company"
       grids/grid:
         page: "Halaman"
         row_count: "Jumlah baris"
@@ -1226,8 +1248,13 @@ id:
               forbidden_uri: "dilarang oleh server."
             scopes:
               not_match_configured: "doesn't match available scopes."
+        enterprise_trial:
+          already_used: "was already used to create a trial."
+          failed_to_create: "Trial could not be created (%{status})"
+          general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "tidak dapat dibaca. Apakah Anda yakin ini adalah token pendukung?"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "tumpang tindih."
           outside: "berada di luar jaringan."
@@ -1501,6 +1528,8 @@ id:
       custom_action: "Custom action"
       custom_field: "Isian kustom"
       "doorkeeper/application": "aplikasi OAuth"
+      enterprise_token:
+        other: "Enterprise tokens"
       forum: "Forum"
       global_role: "Global role"
       group: "Grup"
@@ -1519,6 +1548,8 @@ id:
       reminder: "Reminder"
       role:
         other: "Roles"
+      scim_client:
+        other: "SCIM Clients"
       status: "Status Work Package"
       token/api:
         other: Token akses
@@ -1610,6 +1641,7 @@ id:
     derived_start_date: "Tanggal mulai turunan"
     direction: "Direction"
     display_sums: "Tampilkan jumlah"
+    domain: "Domain"
     due_date: "Tanggal selesai"
     estimated_hours: "Work"
     estimated_time: "Work"
@@ -1975,23 +2007,36 @@ id:
       readonly_work_packages: Readonly Work Packages
       sso_auth_providers: Single sign-on
       team_planner_view: Team Planner View
-      two_factor_authentication: 2FA Authentication
       virus_scanning: Antivirus Scanning
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      buy_now_button: "Buy now"
       plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
+      unlimited: "Unlimited"
+      already_have_token: >
+        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Hide this banner"
       homescreen_description: >
         Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
       homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2038,6 +2083,26 @@ id:
       internal_comments_inline:
         title: "Write internal comments only a small group can see"
         description: " "
+    trial:
+      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
+      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      already_retrieved: >
+        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
+      successfully_saved: "Your trial enterprise token has been successfully retrieved."
+      token_sent: "Trial token requested"
+      request_again: "Request again"
+      resend_action: "Resend confirmation email"
+      welcome_title: "Quick feature overview"
+      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+      confirmation_info: >
+        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+      confirmation_subline: >
+        Please, check your inbox and follow the steps to start your 14-day free trial.
+      domain_caption: The token will be valid for your currently configured host name.
+      receive_newsletter_html: >
+        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+      consent_html: >
+        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
   enumeration_activities: "Kegiatan pelacakan waktu"
   enumeration_work_package_priorities: "Paket-Penugasan prioritas"
   enumeration_reported_project_statuses: "Status Project yang di-Report"
@@ -2062,6 +2127,7 @@ id:
   error_color_could_not_be_saved: "Warna tidak dapat disimpan"
   error_cookie_missing: "The OpenProject cookie is missing. Please ensure that cookies are enabled, as this application will not properly function without."
   error_custom_option_not_found: "Pilihan tidak ada."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Akun Anda tidak dapat diaktifkan (batas pengguna tercapai). Silakan hubungi administrator Anda untuk mendapatkan akses."
   error_enterprise_token_invalid_domain: "The Enterprise edition is not active. Your Enterprise token's domain (%{actual}) does not match the system's host name (%{expected})."
   error_failed_to_delete_entry: "Gagal untuk menghapus isian ini."
@@ -2369,7 +2435,7 @@ id:
         static_token_name: "RSS token"
         disabled_text: "RSS tokens are not enabled by the administrator. Please contact your administrator to use this feature."
       storages:
-        title: "File Storages"
+        title: "File storages"
         text_hint: "File Storage tokens connect this OpenProject instance with an external File Storage."
         empty_text_hint: "There is no storage access linked to your account."
         revoke_token: "Do you really want to remove this token? You will need to login again on %{storage}"
@@ -2545,6 +2611,7 @@ id:
   label_dashboard: "Dasbor"
   label_database_version: "Versi PostgreSQL"
   label_date: "Tanggal"
+  label_dates: "Dates"
   label_date_and_time: "Tanggal dan waktu"
   label_date_format: "Format tanggal"
   label_date_from: "Dari"
@@ -2560,6 +2627,8 @@ id:
   label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(opsi dihapus)"
   label_empty_element: "(kosong)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(nilai hilang atau kurang izin untuk mengakses)"
   label_descending: "Deskending"
   label_details: "Detil"
@@ -2849,8 +2918,8 @@ id:
   label_project_custom_field_plural: "Atribut proyek"
   label_project_settings: "Projek setting"
   label_project_attributes_settings: "Project attributes settings"
-  label_project_storage_plural: "File Storages"
-  label_project_storage_project_folder: "File Storages: Project folders"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} projects using %{used_disk_space} disk space"
   label_project_view_all: "Lihat semua Project"
   label_project_show_details: "Tampilkan detail proyek"
@@ -3301,6 +3370,8 @@ id:
   notice_successful_delete: "Berhasil dihapus."
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Berhasil diperbarui."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Update failed."
   notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -3586,7 +3657,7 @@ id:
       oauth_application_details: "Nilai rahasia klien tidak akan dapat diakses lagi setelah Anda menutup jendela ini. Harap salin nilai-nilai ini ke pengaturan Nextcloud OpenProject Integration:"
       oauth_application_details_link_text: "Buka halaman pengaturan"
       setup_documentation_details: "Jika Anda memerlukan bantuan untuk mengonfigurasi penyimpanan file baru, harap periksa dokumentasinya:"
-      setup_documentation_details_link_text: "Pengaturan Penyimpanan File"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "To use this file storage remember to activate the module and the specific storage in the project settings of each desired project."
     subversion:
       existing_title: "Repository Subversion yang sudah ada"
@@ -3878,9 +3949,7 @@ id:
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
-      edit:
-        heading: "Edit Phase"
+        heading: "New phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"
@@ -4183,7 +4252,7 @@ id:
     reminders:
       label_remind_at: "Tanggal"
       note_placeholder: "Why are you setting this reminder?"
-      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "Reminder updated successfully."
       success_deletion_message: "Reminder deleted successfully."
   sharing:
@@ -4255,12 +4324,12 @@ id:
         message: "Sharing project lists with individual users is an enterprise add-on."
   working_days:
     info: >
-      Days that are not selected are skipped when scheduling work packages (and not included in the day count). These can be overridden at a work-package level.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Tanggal yang ditambahkan ke daftar di bawah ini dianggap tidak berfungsi dan dilewati saat menjadwalkan paket pekerjaan.
     change_button: "Ubah hari kerja"
     warning: >
-      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages in all projects in this instance.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Hari kerja** berubah (%{changes})._
       days:
@@ -4286,8 +4355,12 @@ id:
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
       bad_request:
         emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "Paket pekerjaan yang Anda cari tidak dapat ditemukan atau telah dihapus."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "YYYY-MM-DD (ISO 8601 date only)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (setiap waktu ISO 8601 yang kompatibel)"

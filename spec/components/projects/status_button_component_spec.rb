@@ -69,6 +69,20 @@ RSpec.describe Projects::StatusButtonComponent, type: :component do
     it "does not render a Primer ActionMenu" do
       expect(subject).not_to have_element "action-menu"
     end
+
+    context "without attribute help text" do
+      it "does not render help text" do
+        expect(subject).to have_no_element class: "op-attribute-help-text"
+      end
+    end
+
+    context "with attribute help text" do
+      let!(:help_text) { create(:project_help_text, attribute_name: :status) }
+
+      it "renders help text" do
+        expect(subject).to have_element class: "op-attribute-help-text"
+      end
+    end
   end
 
   context "when the user has project edit permissions" do
@@ -129,6 +143,20 @@ RSpec.describe Projects::StatusButtonComponent, type: :component do
           expect(page).to have_selector :menuitem, text: "Discontinued"
           expect(page).to have_selector :menuitem, text: "Off track"
         end
+      end
+    end
+
+    context "without attribute help text" do
+      it "does not render help text" do
+        expect(subject).to have_no_element class: "op-attribute-help-text"
+      end
+    end
+
+    context "with attribute help text" do
+      let!(:help_text) { create(:project_help_text, attribute_name: :status) }
+
+      it "renders help text" do
+        expect(subject).to have_element class: "op-attribute-help-text"
       end
     end
   end

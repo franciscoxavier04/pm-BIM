@@ -89,8 +89,8 @@ module Meetings
       Icalendar::Values::DateTime.new time.in_time_zone(timezone_id), "tzid" => timezone_id
     end
 
-    def ical_organizer(meeting)
-      Icalendar::Values::CalAddress.new("mailto:#{meeting.author.mail}", cn: meeting.author.name)
+    def ical_organizer
+      Icalendar::Values::CalAddress.new("mailto:#{Setting.mail_from}", cn: Setting.app_title)
     end
   end
 end

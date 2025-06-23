@@ -70,8 +70,7 @@ class Meeting::TimeGroup < ApplicationForm
         required: true,
         caption: I18n.t("text_in_hours"),
         data: {
-          controller: "chronic-duration",
-          application_target: "dynamic"
+          controller: "chronic-duration"
         }
       )
     end

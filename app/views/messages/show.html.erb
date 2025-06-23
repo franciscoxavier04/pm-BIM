@@ -29,8 +29,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%= render Messages::ShowPageHeaderComponent.new(topic: @topic, message: @message, forum: @forum, project:@project) %>
 
-<% content_controller 'forum-messages',
-                      dynamic: true %>
+<% content_controller 'forum-messages' %>
 
 <% title avatar(@topic.author) + h(@topic.subject) %>
 

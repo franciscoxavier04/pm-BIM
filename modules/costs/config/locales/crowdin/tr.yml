@@ -77,6 +77,7 @@ tr:
         time_entry:
           invalid_time: "00:00 ile 23:59 arasında olmalı."
           cannot_log_for_this_work_package: "Bu iş paketi için zaman kaydedilemiyor."
+          duplicate_ongoing: "Bu kullanıcı için devam eden bir zaman girişi zaten var."
         work_package:
           is_not_a_valid_target_for_cost_entries: "İş numarası # {id}, maliyet girişlerini yeniden atamak için geçerli bir hedef değil.%{id}."
           nullify_is_not_valid_for_cost_entries: "Maliyet girdileri bir projeye atanamaz."
@@ -221,4 +222,4 @@ tr:
       time_entry_time_restrictions: Tam zaman takibi gerektirir
     upsell:
       time_entry_time_restrictions:
-        description: "Improve your time tracking by requiring exact start and finish times when logging time."
+        description: "Zaman kaydı yaparken tam başlangıç ve bitiş zamanlarını zorunlu tutarak zaman takibinizi geliştirin."

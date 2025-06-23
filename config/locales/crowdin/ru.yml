@@ -79,11 +79,15 @@ ru:
         main-menu-bg-color: "Цвет фона меню слева."
       theme_warning: Изменение темы перезапишет ваш пользовательский стиль. Дизайн будет утерян. Вы уверены, что хотите продолжить?
     enterprise:
-      upgrade_to_ee: "Обновить до корпоративной версии"
+      delete_dialog:
+        title: "Удалить корпоративный токен"
+        heading: "Удалить этот корпоративный токен?"
+        confirmation: "Вы уверены, что хотите удалить этот токен поддержки корпоративной версии?"
+      create_dialog:
+        title: "Добавить корпоративный токен"
+        type_token_text: "Введите текст токена поддержки"
+        token_placeholder: "Вставьте ваш токен поддержки корпоративной версии здесь"
       add_token: "Загрузить токен поддержки корпоративной версии"
-      delete_token_modal:
-        text: "Вы уверены, что хотите удалить текущий токен корпоративной версии?"
-        title: "Удалить токен"
       replace_token: "Замените ваш текущий маркер поддержки"
       order: "Закажите корпоративную версию"
       paste: "Вставьте ваш маркер поддержки корпоративной версии"
@@ -95,8 +99,13 @@ ru:
       buttons:
         upgrade: "Обновить сейчас"
         contact: "Свяжитесь с нами для демо"
-      enterprise_info_html: "является дополнением Корпоративной версии <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>."
-      upgrade_info: "Пожалуйста, перейдите на платный тарифный план, чтобы активировать его и начать использовать в вашей команде."
+      status:
+        expired: "Срок действия истёк"
+        expiring_soon: "Срок действия скоро истечет"
+        in_grace_period: "В льготный период"
+        invalid_domain: "Недопустимое доменное имя"
+        not_active: "Не активный"
+        trial: "Пробная версия"
     jemalloc_allocator: Распределитель памяти Jemalloc
     journal_aggregation:
       explanation:
@@ -571,11 +580,14 @@ ru:
         Все вхождения пользователя плейсхолдера (например, как цессионария, ответственные или другие пользовательские значения) будут переназначены на учетную запись под названием "Удаленный пользователь". Так как данные каждого удаленного аккаунта переназначены на этот аккаунт, невозможно отличить данные пользователя от данных другого удаленного аккаунта.
       irreversible: "Это действие необратимо"
       confirmation: "Введите имя пользователя %{name} для подтверждения удаления."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
         Щелкните, чтобы задать или изменить цвет этого приоритета.
         Этот цвет может использоваться для выделения пакетов работ в таблице.
+    admin:
+      default:
+        caption: Использование этого приоритета переопределит предыдущий приоритет по умолчанию.
   reactions:
     action_title: "Реакция"
     add_reaction: "Добавить реакцию"
@@ -770,10 +782,10 @@ ru:
     label_edit_x: "Редактировать %{x}"
     label_add_description: "Добавить описание"
     lag:
-      subject: "Отставание"
+      subject: "Задержка"
       caption: |-
-        The minimum number of working days to keep in between the two work packages.
-        It can also be negative.
+        Минимальное количество рабочих дней, которое должно быть между двумя пакетами работ.
+        Оно также может быть отрицательным.
     relations:
       label_new_child_created: "Новый пакет работ создан и добавлен как дочерний"
       label_relates_singular: "Связан с"
@@ -832,6 +844,7 @@ ru:
       required_description: "Отмечает этот пакет работ как требование к связанному"
       label_parent_singular: "родители"
       label_parent_plural: "родитель"
+      label_other_relations: "Другие отношения"
       ghost_relation_title: "Похожий пакет работ"
       ghost_relation_description: "Это не видно для вас из-за разрешений."
   label_invitation: Приглашение
@@ -866,6 +879,10 @@ ru:
     auth_source_login: Пожалуйста, авторизируйтесь как <em>%{login}</em> для активации вашей учетной записи.
     omniauth_login: Пожалуйста, авторизируйтесь для активации вашей учетной записи.
   actionview_instancetag_blank_option: "Пожалуйста, выберите"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Зависимости"
   activerecord:
     attributes:
       announcements:
@@ -881,6 +898,8 @@ ru:
       attribute_help_text:
         attribute_name: "Атрибут"
         help_text: "Текст справки"
+      auth_provider:
+        scim_clients: "Клиенты SCIM"
       capability:
         context: "Контекст"
       changeset:
@@ -920,11 +939,14 @@ ru:
       emoji_reaction:
         reactable: "Реакция на"
       enterprise_token:
-        domain: "Домен"
         starts_at: "Действует с"
         subscriber: "Подписчик"
+        subscription: "Подписка"
+        plan: "Подписка"
         encoded_token: "Маркер поддержки корпоративной версии"
-        active_user_count_restriction: "Максимальное число активных пользователей"
+        active_user_count_restriction: "Активные пользователи"
+      enterprise_trial:
+        company: "Компания"
       grids/grid:
         page: "Страница"
         row_count: "Количество строк"
@@ -989,10 +1011,10 @@ ru:
       project/phase:
         date_range: "Диапазон дат"
         definition: "Описание"
-        duration: "Duration"
-        start_date: "Start date"
-        start_date_caption: "Follows the previous phase."
-        finish_date: "Finish date"
+        duration: "Продолжительность"
+        start_date: "Дата начала"
+        start_date_caption: "Следует предыдущей фазе."
+        finish_date: "Дата окончания"
       project/phase_definition:
         name: "Имя"
         color: "Цвет"
@@ -1026,7 +1048,7 @@ ru:
         include_subprojects: "Включить подпроекты"
         results: "Результаты"
       relation:
-        lag: "Отставание"
+        lag: "Задержка"
         from: "Похожий пакет работ"
         to: "Похожий пакет работ"
         relation_type: "Тип отношения"
@@ -1252,8 +1274,13 @@ ru:
               forbidden_uri: "запрещен сервером."
             scopes:
               not_match_configured: "не соответствует доступным областям."
+        enterprise_trial:
+          already_used: "уже использовался для создания пробной версии."
+          failed_to_create: "Пробная версия не может быть создана (%{status})"
+          general_consent: "Пожалуйста, подтвердите правила и условия пользования."
         enterprise_token:
           unreadable: "невозможно прочитать. Вы уверены, что это маркер поддержки?"
+          already_added: "Этот токен уже был добавлен."
         grids/grid:
           overlaps: "перекрытие."
           outside: "за пределами сетки."
@@ -1305,11 +1332,11 @@ ru:
         project/phase:
           attributes:
             start_date:
-              must_be_before_finish_date: "must be before the finish date."
-              non_continuous_dates: "can't be earlier than the previous phase's end date."
+              must_be_before_finish_date: "должно быть до даты окончания."
+              non_continuous_dates: "не может быть раньше, чем дата окончания предыдущей фазы."
             finish_date:
-              must_be_after_start_date: "must be after the start date."
-          cannot_be_a_non_working_day: "can't be a non-working day."
+              must_be_after_start_date: "должно быть после даты начала."
+          cannot_be_a_non_working_day: "не может быть нерабочим днем."
         query:
           attributes:
             project:
@@ -1436,7 +1463,7 @@ ru:
               cannot_be_in_another_project: "не может быть в другом проекте."
               not_a_valid_parent: "имеет неверное значение."
             schedule_manually:
-              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
+              cannot_be_automatically_scheduled: "не может быть установлено значение false (автоматическое планирование), так как у него нет предшественников или дочерних элементов."
             start_date:
               violates_relationships: "может быть установлено лишь в %{soonest_start} или позднее и без нарушения взаимосвязи рабочих пакетов."
               cannot_be_null: "не может быть нулевым, поскольку известны дата окончания и продолжительность."
@@ -1533,6 +1560,11 @@ ru:
       custom_action: "Пользовательское действие"
       custom_field: "Настраиваемое поле"
       "doorkeeper/application": "Приложение OAuth"
+      enterprise_token:
+        one: "Корпоративный токен"
+        few: "Enterprise tokens"
+        many: "Enterprise tokens"
+        other: "Корпоративные токены"
       forum: "Форум"
       global_role: "Глобальная роль"
       group: "Группа"
@@ -1566,6 +1598,11 @@ ru:
         few: "Роль"
         many: "Роль"
         other: "Роль"
+      scim_client:
+        one: "Клиент SCIM"
+        few: "SCIM Clients"
+        many: "SCIM Clients"
+        other: "Клиенты SCIM"
       status: "Статус пакета работ"
       token/api:
         one: Токен доступа
@@ -1672,6 +1709,7 @@ ru:
     derived_start_date: "Дата начала производства"
     direction: "Направление"
     display_sums: "Отображение суммы"
+    domain: "Доменное имя"
     due_date: "Дата окончания"
     estimated_hours: "Предполагаемое время"
     estimated_time: "Предполагаемое время"
@@ -2094,23 +2132,36 @@ ru:
       readonly_work_packages: Пакеты работ только для чтения
       sso_auth_providers: Единый вход (SSO)
       team_planner_view: Просмотр командных планировщиков
-      two_factor_authentication: 2FA аутентификация
       virus_scanning: Антивирусное сканирование
       work_package_query_relation_columns: Колонки запросов пакета работ
       work_package_sharing: Поделиться пакетами работ с внешними пользователями
       work_package_subject_generation: Создание темы пакета работ
     upsell:
+      buy_now_button: "Купить сейчас"
       plans_title: "Корпоративный план"
       title: "Корпоративное дополнение"
       plan_title: "Дополнение корпоративной версии %{plan}"
       plan_name: "Корпоративная версия %{plan}"
       plan_text_html: "Доступно начиная с %{plan_name}."
+      unlimited: "Без ограничений"
+      already_have_token: >
+        Уже есть токен? Добавьте его с помощью кнопки ниже, чтобы перейти на корпоративную лицензию.
       hide_banner: "Скрыть этот баннер"
       homescreen_description: >
         Планы предприятия расширяют версию OpenProject Сообщества, которую вы сейчас используете. Они включают дополнения, дополнительные возможности и профессиональную поддержку, которые позволяют организациям всех размеров достигать больших успехов вместе.
       homescreen_subline: При обновлении вы также поддержите проект с открытым исходным кодом.
       baseline_comparison:
         description: Выделите изменения, внесенные в этот список с любого момента в прошлом.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "Создать автоматически генерируемые темы, используя атрибуты и текст."
       customize_life_cycle:
@@ -2157,6 +2208,26 @@ ru:
       internal_comments_inline:
         title: "Напишите внутренние комментарии только небольшой группы"
         description: " "
+    trial:
+      not_found: "Вы запросили пробный токен, но запрос более недоступен. Пожалуйста, попробуйте еще раз."
+      wait_for_confirmation: "Мы отправили вам письмо для подтверждения вашего адреса для получения токена пробной версии."
+      already_retrieved: >
+        Токен пробной версии уже был получен. Пожалуйста, проверьте ваши письма на наличие прикрепленного токена. Свяжитесь с нашей службой поддержки, если вам нужен новый токен.
+      successfully_saved: "Ваш токен пробной версии был успешно получен."
+      token_sent: "Запрошен токен пробной версии"
+      request_again: "Запросить ещё раз"
+      resend_action: "Повторно отправить письмо с подтверждением"
+      welcome_title: "Быстрый обзор функции"
+      welcome_description: "Узнайте вкратце об управлении проектами и совместной работе в OpenProject корпоративной версии."
+      confirmation_info: >
+        Мы отправили вам письмо от %{date} на %{email} со всей информацией, чтобы начать бесплатную пробную корпоративную версию OpenProject. Пожалуйста, проверьте свой почтовый ящик и нажмите на ссылку подтверждения, чтобы начать 14-дневную бесплатную пробную версию.
+      confirmation_subline: >
+        Пожалуйста, проверьте папку "Входящие" вашего почтового ящика и выполните шаги по запуску бесплатной 14-дневной пробной версии.
+      domain_caption: Токен будет действителен для настроенного в данный момент имени хоста.
+      receive_newsletter_html: >
+        Я хочу получить <a target="_blank" href="https://www.openproject.org/newsletter/">информационный бюллетень OpenProject</a>.
+      consent_html: >
+        Я подтверждаю <a target="_blank" href="https://www.openproject.org/terms-of-service/">правила</a> и <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">условия пользования</a>.
   enumeration_activities: "Отслеживание времени"
   enumeration_work_package_priorities: "Приоритеты пакета работ"
   enumeration_reported_project_statuses: "Перечень отчетов о статусах проекта"
@@ -2181,6 +2252,7 @@ ru:
   error_color_could_not_be_saved: "Цвет не может быть сохранен"
   error_cookie_missing: "Отсутствуют cookie OpenProject. Пожалуйста, убедитесь, что Cookie разрешены. Без них приложение не будет функционировать должным образом."
   error_custom_option_not_found: "Параметр не существует."
+  error_enterprise_plan_needed: "Вам нужна корпоративная подписка %{plan} для выполнения этого действия."
   error_enterprise_activation_user_limit: "Ваша учетная запись не может быть активирована (достигнут предел пользователя). Обратитесь к администратору для получения доступа."
   error_enterprise_token_invalid_domain: "Версия Enterprise не активна. Домен вашего токена предприятия (%{actual}) не соответствует названию системного имени (%{expected})."
   error_failed_to_delete_entry: "Не удалось удалить эту запись."
@@ -2664,6 +2736,7 @@ ru:
   label_dashboard: "Панель"
   label_database_version: "Версия PostgreSQL"
   label_date: "Дата"
+  label_dates: "Даты"
   label_date_and_time: "Дата и время"
   label_date_format: "Формат даты"
   label_date_from: "От"
@@ -2679,6 +2752,8 @@ ru:
   label_deleted_custom_item: "(удалено)"
   label_deleted_custom_option: "(удалённая опция)"
   label_empty_element: "(пусто)"
+  label_go_back: "Вернуться на один уровень меню назад"
+  label_go_forward: "Открыть подменю %{module}"
   label_missing_or_hidden_custom_option: "(отсутствует значение или недостаточно прав для доступа)"
   label_descending: "По убыванию"
   label_details: "Детали"
@@ -2969,7 +3044,7 @@ ru:
   label_project_settings: "Настройки проекта"
   label_project_attributes_settings: "Настройки атрибутов проекта"
   label_project_storage_plural: "Файловые хранилища"
-  label_project_storage_project_folder: "Файловые хранилища: Папки проекта"
+  label_project_storage_project_folder: "Файловые хранилища: папки проекта"
   label_projects_disk_usage_information: "%{count} проектов, использующих %{used_disk_space} дискового пространства"
   label_project_view_all: "Просмотреть все проекты"
   label_project_show_details: "Показать детали проекта"
@@ -2978,7 +3053,7 @@ ru:
   label_query_new: "Новый запрос"
   label_query_plural: "Пользовательские запросы"
   label_read: "Читать..."
-  label_read_documentation: "Read documentation"
+  label_read_documentation: "Читать документацию"
   label_register: "Создайте новую учетную запись"
   label_register_with_developer: "Зарегистрируйтесь как разработчик"
   label_registered_on: "Зарегистрированы на"
@@ -3422,6 +3497,8 @@ ru:
   notice_successful_delete: "Удаление выполнено."
   notice_successful_cancel: "Отмена прошла успешно."
   notice_successful_update: "Обновление выполнено."
+  notice_unsuccessful_create: "Создание не удалось."
+  notice_unsuccessful_create_with_reason: "Создание не удалось: %{reason}"
   notice_unsuccessful_update: "Ошибка обновления."
   notice_unsuccessful_update_with_reason: "Не удалось обновить: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -4004,8 +4081,6 @@ ru:
       new:
         description: "Изменения на этом этапе проекта будут отражены во всех проектах, где он включен."
         heading: "Новый этап"
-      edit:
-        heading: "Изменить этап"
       both_gate: "Начать и завершить стадию"
       no_gate: "Нет стадии"
       start_gate: "Начать стадию"
@@ -4310,7 +4385,7 @@ ru:
     reminders:
       label_remind_at: "Дата"
       note_placeholder: "Причина установки напоминания"
-      success_creation_message: "Напоминание установлено. Вы получите уведомление о данном пакете работ в выбранное время."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "Напоминание успешно обновлено."
       success_deletion_message: "Напоминание успешно удалено."
   sharing:
@@ -4382,12 +4457,12 @@ ru:
         message: "Совместное использование списков проектов с отдельными пользователями является корпоративным дополнением."
   working_days:
     info: >
-      Невыбранные дни пропускаются при планировании пакетов работ (и не включаются в подсчет дней). Они могут быть переопределены на уровне пакетов работ.
+      Невыбранные дни пропускаются при планировании пакетов работ и жизненного цикла проекта (и не включаются в подсчет дней). Они могут быть переопределены на уровне пакетов работ.
     instance_wide_info: >
       Даты, добавленные в список ниже, считаются нерабочими и пропускаются при планировании пакетов работ.
     change_button: "Изменить рабочие дни"
     warning: >
-      Изменение дней, считающихся рабочими или нерабочими днями недели, может повлиять на дату начала и окончания всех пакетов работ во всех проектах в данной системе.
+      Изменение дней недели, считающихся рабочими или нерабочими днями, может повлиять на начало и завершение всех пакетов работ и жизненных циклов во всех проектах.
     journal_note:
       changed: _**Рабочие дни** изменены (%{changes})._
       days:
@@ -4412,9 +4487,13 @@ ru:
       code_500_outbound_request_failure: "Исходящий запрос к другому ресурсу не удался с кодом статуса %{status_code}."
       code_500_missing_enterprise_token: "Запрос не может быть обработан из-за недействительного или отсутствующего корпоративного токена."
       bad_request:
-        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+        emoji_reactions_activity_type_not_supported: "Этот тип деятельности не поддерживает реакции эмодзи."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          Вы можете установить только одно напоминание для пакета работ. Пожалуйста, удалите или обновите напоминание.
       not_found:
         work_package: "Пакет работ, который вы ищете, не найден или был удален."
+        reminder: "Напоминание, которое вы ищете, не найдено или было удалено."
       expected:
         date: "ГГГГ-мм-дд (только для даты ISO 8601)"
         datetime: "ГГГГ-ММ-Дтч:мм:сс[.lll][+чч:мм] (любой совместимый ISO 8601 формат времени)"

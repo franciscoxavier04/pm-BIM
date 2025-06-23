@@ -85,6 +85,7 @@ sk:
         time_entry:
           invalid_time: "must be between 00:00 and 23:59."
           cannot_log_for_this_work_package: "Cannot log time for this work package."
+          duplicate_ongoing: "An ongoing time entry already exists for this user."
         work_package:
           is_not_a_valid_target_for_cost_entries: "Pracovný balíček #%{id} nie je platný cieľ pre pridelenie položky nákladov."
           nullify_is_not_valid_for_cost_entries: "Nákladové položky nie je možné priradiť k projektu."

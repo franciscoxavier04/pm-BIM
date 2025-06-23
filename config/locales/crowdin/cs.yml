@@ -79,11 +79,15 @@ cs:
         main-menu-bg-color: "Barva pozadí levého menu."
       theme_warning: Změna motivu přepíše váš vlastní styl. Vzhled pak bude ztracen. Jste si jisti, že chcete pokračovat?
     enterprise:
-      upgrade_to_ee: "Upgradovat na Enterprise Edici"
+      delete_dialog:
+        title: "Delete enterprise token"
+        heading: "Delete this enterprise token?"
+        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+      create_dialog:
+        title: "Add Enterprise token"
+        type_token_text: "Type support token text"
+        token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Nahrát  podpůrný token Enterprise Edition"
-      delete_token_modal:
-        text: "Jste si jisti, že chcete odstranit použitý aktuální token verze Enterprise?"
-        title: "Odstranit Token"
       replace_token: "Nahradit aktuální podpůrný token"
       order: "Objednat Enterprise Edici"
       paste: "Vložte svůj podpůrný token Enterprise Edition"
@@ -95,8 +99,13 @@ cs:
       buttons:
         upgrade: "Upgradovat nyní"
         contact: "Kontaktujte nás pro demo"
-      enterprise_info_html: "je doplněk Enterprise edice <span class='spot-icon spot-icon_enterprise-addons'></span>."
-      upgrade_info: "Přejděte na placenou verzi a začněte ji používat ve vašem týmu."
+      status:
+        expired: "Expired"
+        expiring_soon: "Expiring soon"
+        in_grace_period: "In grace period"
+        invalid_domain: "Invalid domain"
+        not_active: "Not active"
+        trial: "Trial"
     jemalloc_allocator: Jemalloc alokátor paměti
     journal_aggregation:
       explanation:
@@ -572,11 +581,14 @@ cs:
         Všechny výskyty zástupného uživatele (např. jako pověřené nebo odpovědné nebo jiné uživatelské hodnoty) budou přeřazeny na účet nazvaný "Smazaný uživatel". Vzhledem k tomu, že data každého smazaného účtu jsou znovu přiřazena k tomuto účtu, nebude možné rozlišit data, která uživatel vytvořil od dat jiného smazaného účtu.
       irreversible: "Tato akce je nevratná"
       confirmation: "Zadejte název zástupného uživatele %{name} pro potvrzení odstranění."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
-        Klikněte na přiřadit nebo změnit barvu této priority.
-        lze použít ke zvýraznění pracovních balíčků v tabulce.
+        Click to assign or change the color of this priority.
+        It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "Reagovat"
     add_reaction: "Přidat reakci"
@@ -834,6 +846,7 @@ cs:
       required_description: "Označí tento pracovní balíček jako nevyhnutnost na související"
       label_parent_singular: "nadřazený"
       label_parent_plural: "nadřazený"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Související pracovní balíček"
       ghost_relation_description: "Toto není viditelné z důvodu oprávnění."
   label_invitation: Pozvánka
@@ -868,6 +881,10 @@ cs:
     auth_source_login: Přihlaste se prosím jako <em>%{login}</em> pro aktivaci vašeho účtu.
     omniauth_login: Prosím přihlaste se pro aktivaci účtu.
   actionview_instancetag_blank_option: "Zvolte prosím"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -883,6 +900,8 @@ cs:
       attribute_help_text:
         attribute_name: "Atribut"
         help_text: "Text nápovědy"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Kontext"
       changeset:
@@ -922,11 +941,14 @@ cs:
       emoji_reaction:
         reactable: "Reacted on"
       enterprise_token:
-        domain: "Doména"
         starts_at: "Platné od"
         subscriber: "Odběratel"
+        subscription: "Subscription"
+        plan: "Plan"
         encoded_token: "Token podpory Enterprise."
-        active_user_count_restriction: "Maximální počet aktivních uživatelů"
+        active_user_count_restriction: "Active users"
+      enterprise_trial:
+        company: "Company"
       grids/grid:
         page: "Stránka"
         row_count: "Počet řádků"
@@ -1254,8 +1276,13 @@ cs:
               forbidden_uri: "je zakázán serverem."
             scopes:
               not_match_configured: "neodpovídá dostupným rozsahům."
+        enterprise_trial:
+          already_used: "was already used to create a trial."
+          failed_to_create: "Trial could not be created (%{status})"
+          general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "nelze číst. Jste si jisti, že se jedná o token podpory?"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "se překrývá."
           outside: "je mimo mřížku."
@@ -1535,6 +1562,11 @@ cs:
       custom_action: "Vlastní akce"
       custom_field: "Vlastní pole"
       "doorkeeper/application": "OAuth aplikace"
+      enterprise_token:
+        one: "Enterprise token"
+        few: "Enterprise tokens"
+        many: "Enterprise tokens"
+        other: "Enterprise tokens"
       forum: "Fórum"
       global_role: "Globální role"
       group: "Skupina"
@@ -1568,6 +1600,11 @@ cs:
         few: "Role"
         many: "Role"
         other: "Role"
+      scim_client:
+        one: "SCIM Client"
+        few: "SCIM Clients"
+        many: "SCIM Clients"
+        other: "SCIM Clients"
       status: "Stav pracovního balíčku"
       token/api:
         one: Přístupový token
@@ -1674,6 +1711,7 @@ cs:
     derived_start_date: "Derivované Datum zahájení "
     direction: "Direction"
     display_sums: "Zobrazit součty"
+    domain: "Domain"
     due_date: "Datum dokončení"
     estimated_hours: "Práce"
     estimated_time: "Práce"
@@ -2096,23 +2134,36 @@ cs:
       readonly_work_packages: Readonly Work Packages
       sso_auth_providers: Single sign-on
       team_planner_view: Team Planner View
-      two_factor_authentication: 2FA Authentication
       virus_scanning: Antivirus Scanning
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      buy_now_button: "Buy now"
       plans_title: "Enterprise plans"
       title: "Doplňky Enterprise Edice"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
+      unlimited: "Unlimited"
+      already_have_token: >
+        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Hide this banner"
       homescreen_description: >
         Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
       homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Zvýraznit změny provedené v tomto seznamu od té doby v minulosti.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "Vytváření automaticky generovaných předmětů pomocí odkazovaných atributů a textu."
       customize_life_cycle:
@@ -2159,6 +2210,26 @@ cs:
       internal_comments_inline:
         title: "Write internal comments only a small group can see"
         description: " "
+    trial:
+      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
+      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      already_retrieved: >
+        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
+      successfully_saved: "Your trial enterprise token has been successfully retrieved."
+      token_sent: "Trial token requested"
+      request_again: "Request again"
+      resend_action: "Resend confirmation email"
+      welcome_title: "Quick feature overview"
+      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+      confirmation_info: >
+        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+      confirmation_subline: >
+        Please, check your inbox and follow the steps to start your 14-day free trial.
+      domain_caption: The token will be valid for your currently configured host name.
+      receive_newsletter_html: >
+        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+      consent_html: >
+        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
   enumeration_activities: "Sledování času"
   enumeration_work_package_priorities: "Priority pracovního balíčku"
   enumeration_reported_project_statuses: "Nahlášený stav projektu"
@@ -2183,6 +2254,7 @@ cs:
   error_color_could_not_be_saved: "Barvu nelze uložit"
   error_cookie_missing: "OpenProject cookie chybí. Ujistěte se, že jsou soubory cookie povoleny, protože aplikace nebude správně fungovat."
   error_custom_option_not_found: "Nastavení neexistuje."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Váš účet nebyl aktivován (dosažen limit počtu uživatelů). Prosím obraťte se na správce pro získání přístupu."
   error_enterprise_token_invalid_domain: "Enterprise Edice není aktivní. Doména Enterprise tokenu (%{actual}) neodpovídá hostiteli systému (%{expected})."
   error_failed_to_delete_entry: "Nepodařilo se odstranit tento záznam."
@@ -2490,7 +2562,7 @@ cs:
         static_token_name: "RSS token"
         disabled_text: "API tokeny nejsou administrátorem povoleny. Pro použití této funkce kontaktujte svého správce."
       storages:
-        title: "Úložiště souborů"
+        title: "File storages"
         text_hint: "Tokeny úložiště souborů připojují tuto OpenProject instanci s externím úložištěm souborů."
         empty_text_hint: "K vašemu účtu není připojen žádný přístup k úložišti."
         revoke_token: "Opravdu chcete odstranit tento token? Budete se muset znovu přihlásit na %{storage}"
@@ -2666,6 +2738,7 @@ cs:
   label_dashboard: "Dashboard"
   label_database_version: "Verze PostgreSQL"
   label_date: "Datum"
+  label_dates: "Dates"
   label_date_and_time: "Datum a čas"
   label_date_format: "Formát data"
   label_date_from: "Od"
@@ -2681,6 +2754,8 @@ cs:
   label_deleted_custom_item: "(smazaná položka)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(prázdný)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(chybí hodnota nebo chybí oprávnění k přístupu)"
   label_descending: "Sestupně"
   label_details: "Podrobnosti"
@@ -2970,8 +3045,8 @@ cs:
   label_project_custom_field_plural: "Atributy projektu"
   label_project_settings: "Nastavení projektu"
   label_project_attributes_settings: ""
-  label_project_storage_plural: "Úložiště souborů"
-  label_project_storage_project_folder: "Úložiště souborů: Složky projektů"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} projekty využívající diskový prostor %{used_disk_space}"
   label_project_view_all: "Zobrazit všechny projekty - seznam"
   label_project_show_details: "Zobrazit detail projektu"
@@ -3424,6 +3499,8 @@ cs:
   notice_successful_delete: "Úspěšné odstranění."
   notice_successful_cancel: "Úspěšné zrušení."
   notice_successful_update: "Úspěšná aktualizace."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Update failed."
   notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -3715,7 +3792,7 @@ cs:
       oauth_application_details: "Tajná hodnota klienta nebude po zavření tohoto okna přístupná. Zkopírujte tyto hodnoty do Nextcloud OpenProject Integration nastavení:"
       oauth_application_details_link_text: "Přejít na stránku nastavení"
       setup_documentation_details: "Pokud potřebujete pomoci s nastavením nového úložiště souborů, prosím zkonzultujte dokumentaci: "
-      setup_documentation_details_link_text: "Nastavení úložiště souborů"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "Pro použití tohoto úložiště souborů nezapomeňte aktivovat modul a konkrétní úložiště v nastavení projektu každého požadovaného projektu."
     subversion:
       existing_title: "Existující repozitář Subversion"
@@ -4007,9 +4084,7 @@ cs:
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
-      edit:
-        heading: "Edit Phase"
+        heading: "New phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"
@@ -4314,7 +4389,7 @@ cs:
     reminders:
       label_remind_at: "Datum"
       note_placeholder: "Proč nastavujete toto připomenutí?"
-      success_creation_message: "Připomínka byla úspěšně nastavena. Obdržíte oznámení pro tento pracovní balíček ve zvoleném čase."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "Připomínka byla úspěšně aktualizována."
       success_deletion_message: "Připomínka byla úspěšně odstraněna."
   sharing:
@@ -4386,12 +4461,12 @@ cs:
         message: "Sdílení seznamů projektů s jednotlivými uživateli je enterprise doplňek."
   working_days:
     info: >
-      Nevybrané dny jsou při plánování pracovních balíčků přeskočeny (a nejsou zahrnuty ve denním počtu). Ty mohou být přepsány na úrovni pracovního balíčku.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Data přidaná do níže uvedeného seznamu jsou považována za nefunkční a při plánování pracovních balíčků přeskočena.
     change_button: "Změnit pracovní dny"
     warning: >
-      Změna, těch dnů v týdnu, které jsou považovány za pracovní dny, může ovlivnit datum zahájení a datum ukončení všech pracovních balíčků ve všech projektech v této instanci.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Pracovní dny** změněny (%{changes})._
       days:
@@ -4417,8 +4492,12 @@ cs:
       code_500_missing_enterprise_token: "Požadavek nelze zpracovat kvůli neplatnému nebo chybějícímu tokenu Enterprise."
       bad_request:
         emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "Pracovní balíček, který hledáte, nebyl nalezen nebo byl odstraněn."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "RRRR-MM-DD (pouze ISO 8601 datum)"
         datetime: "RRRR-MM-DDThh:mm:ss[.lll][+hh:mm] (jakýkoli kompatibilní datový prvek podle ISO 8601)"

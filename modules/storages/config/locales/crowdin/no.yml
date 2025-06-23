@@ -237,7 +237,7 @@
         download_report: Last ned
         rerun_checks: Re-run all checks
         run_checks: Run checks now
-      checked: Sist sjekket %{datetime}
+      checked: 'Last check: %{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: Automatic folder creation
@@ -247,7 +247,7 @@
           group_folder_app: 'Dependency: Group Folders'
           group_folder_contents: Group folder has expected content
           group_folder_presence: Group folder exists
-          header: Automatically managed project folder configuration
+          header: Automatically managed project folders
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
@@ -266,7 +266,7 @@
           diagnostic_request: Diagnostic request
           drive_id_exists: Drive exists
           drive_id_format: Drive ID format
-          header: Basic configuration
+          header: Configuration
           host_url_accessible: Host URL accessible
           storage_configured: Configuration complete
           tenant_id: Tenant ID
@@ -373,9 +373,9 @@
         tenant_id: Kopier Katalogen (leietaker) ID fra ønsket program og App-registreringer i %{application_link_text}.
         tenant_id_placeholder: Navn eller UUID
       setting_up_additional_storages: For å sette opp ekstra fillagre, vennligst besøk
-      setting_up_additional_storages_non_admin: Administratorer kan sette opp flere fillagre i Administrasjon/fillagre.
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: For å sette opp fillagre, vennligst besøk
-      setting_up_storages_non_admin: Administratorer kan sette opp fillagring i Administrasjon-/fillagre.
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: 'Sørg for at du har administrasjonsrettigheter i din Nextcloud-instans og har følgende applikasjon installert før du utfører oppsettet:'
       type_link_text: "«Integrasjon OpenProject»"
     label_active: Aktiv

@@ -19,6 +19,7 @@ In OpenProject you can customize your project settings. To do this, open a proje
 | Topic                                                  | Content                                                      |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
 | [Project information](project-information)             | Define project name, subproject, description, project status, and much more. |
+| [Project life cycle](project-life-cycle)               | Activate or deactivate project phases in a project.          |
 | [Project attributes](project-attributes)               | View and edit project attributes in a project.               |
 | [Modules](modules)                                     | Activate or deactivate modules in a project.                 |
 | [Work package types](work-packages)                    | Activate or deactivate work package types in a project.      |

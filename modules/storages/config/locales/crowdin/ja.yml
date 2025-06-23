@@ -41,11 +41,11 @@ ja:
         storages/project_storage:
           attributes:
             project_folder_id:
-              blank: Please select a folder.
+              blank: フォルダーを選択してください。
             project_folder_mode:
               mode_unavailable: is not available for this storage.
             project_ids:
-              blank: Please select a project.
+              blank: プロジェクトを選択してください。
         storages/storage:
           attributes:
             host:
@@ -69,12 +69,12 @@ ja:
   permission_delete_files: '自動的に管理されたプロジェクトフォルダ: ファイルの削除'
   permission_delete_files_explanation: この権限はNextcloudストレージでのみ利用できます
   permission_header_for_project_module_storages: Automatically managed project folders
-  permission_manage_file_links: Manage file links
-  permission_manage_files_in_project: Manage files in project
+  permission_manage_file_links: ファイルへのリンク管理
+  permission_manage_files_in_project: プロジェクト内のファイル管理
   permission_read_files: '自動的に管理されたプロジェクトフォルダ: ファイルの読み込み'
   permission_share_files: '自動的に管理されたプロジェクトフォルダ: ファイルを共有'
   permission_share_files_explanation: この権限はNextcloudストレージでのみ利用できます
-  permission_view_file_links: View file links
+  permission_view_file_links: ファイルへのリンク閲覧
   permission_write_files: '自動的に管理されたプロジェクトフォルダ: ファイルの書き込み'
   project_module_storages: ファイルを添付する
   project_storages:
@@ -237,7 +237,7 @@ ja:
         download_report: ダウンロード
         rerun_checks: Re-run all checks
         run_checks: Run checks now
-      checked: Last checked %{datetime}
+      checked: 'Last check: %{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: Automatic folder creation
@@ -247,7 +247,7 @@ ja:
           group_folder_app: 'Dependency: Group Folders'
           group_folder_contents: Group folder has expected content
           group_folder_presence: Group folder exists
-          header: Automatically managed project folder configuration
+          header: Automatically managed project folders
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
@@ -266,7 +266,7 @@ ja:
           diagnostic_request: Diagnostic request
           drive_id_exists: Drive exists
           drive_id_format: Drive ID format
-          header: Basic configuration
+          header: Configuration
           host_url_accessible: Host URL accessible
           storage_configured: Configuration complete
           tenant_id: Tenant ID
@@ -306,7 +306,7 @@ ja:
         oidc_token_exchange_failed: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
         oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         unknown_error: The connection could not be validated. An unknown error occurred. Please check the server logs for further information.
-      label_error: エラー！
+      label_error: エラー
       label_failed: Failed
       label_healthy: Healthy
       label_passed: Passed
@@ -371,9 +371,9 @@ ja:
         tenant_id: ディレクトリ(テナント)IDは、 %{application_link_text}のアプリケーションおよびアプリ登録からコピーしてください。
         tenant_id_placeholder: Name or UUID
       setting_up_additional_storages: For setting up additional file storages, please visit
-      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File Storages.
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: For setting up file storages, please visit
-      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File Storages.
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: 'Please make sure you have administration privileges in your Nextcloud instance and have the following application installed before doing the setup:'
       type_link_text: "“Integration OpenProject”"
     label_active: アクティブ

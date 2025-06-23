@@ -116,6 +116,12 @@ Rails.application.routes.draw do
     post "/account/confirm_consent", action: "confirm_consent", as: "account_confirm_consent"
   end
 
+  resources :attribute_help_texts, only: [] do
+    member do
+      get :show_dialog
+    end
+  end
+
   # Because of https://github.com/intridea/grape/pull/853/files this has to be
   # placed behind handling the deprecated v1 because otherwise, a 405 is
   # returned for all routes for which the v3 has also resources. Grape does
@@ -249,7 +255,7 @@ Rails.application.routes.draw do
     resource :menu, only: %i[show]
   end
 
-  resources :projects, except: %i[show edit create update] do
+  resources :projects, except: %i[show edit update] do
     scope module: "projects" do
       namespace "settings" do
         resource :general, only: %i[show update], controller: "general" do
@@ -470,11 +476,24 @@ Rails.application.routes.draw do
 
   scope "admin" do
     resource :announcements, only: %i[edit update]
+
+    get "/enterprise", to: redirect("#{rails_relative_url_root}/admin/enterprise_tokens")
+
     constraints(Constraints::Enterprise) do
-      resource :enterprise, only: %i[show create destroy]
-      scope controller: "enterprises" do
-        post "enterprise/save_trial_key" => "enterprises#save_trial_key"
-        delete "enterprise/delete_trial_key" => "enterprises#delete_trial_key"
+      resources :enterprise_tokens, only: %i[index new create destroy] do
+        member do
+          get :destroy_dialog
+        end
+
+        collection do
+          post :save_trial_key
+          delete :delete_trial_key
+        end
+      end
+
+      resource :enterprise_trial, only: %i[show create destroy] do
+        get :trial_dialog
+        post :request_resend, on: :collection
       end
     end
 
@@ -483,7 +502,6 @@ Rails.application.routes.draw do
     delete "design/export_cover" => "custom_styles#export_cover_delete", as: "custom_style_export_cover_delete"
     delete "design/favicon" => "custom_styles#favicon_delete", as: "custom_style_favicon_delete"
     delete "design/touch_icon" => "custom_styles#touch_icon_delete", as: "custom_style_touch_icon_delete"
-    get "design/upsell" => "custom_styles#upsell", as: "custom_style_upsell"
     post "design/colors" => "custom_styles#update_colors", as: "update_design_colors"
     post "design/themes" => "custom_styles#update_themes", as: "update_design_themes"
     post "design/export_cover_text_color" => "custom_styles#update_export_cover_text_color",
@@ -563,8 +581,7 @@ Rails.application.routes.draw do
       resource :projects, controller: "/admin/settings/projects_settings", only: %i[show update]
       resource :new_project, controller: "/admin/settings/new_project_settings", only: %i[show update]
       resources :project_phase_definitions,
-                path: "project_life_cycle",
-                controller: "/admin/settings/project_life_cycle_definitions",
+                controller: "/admin/settings/project_phase_definitions",
                 except: :show do
         member do
           patch :move
@@ -884,6 +901,7 @@ Rails.application.routes.draw do
   end
 
   if OpenProject::Configuration.lookbook_enabled?
+    mount Primer::ViewComponents::Engine, at: "/"
     mount Lookbook::Engine, at: "/lookbook"
   end
 

@@ -69,7 +69,7 @@ module Queries
     end
 
     def project_visible?
-      Project.visible(user).exists?(id: project_id)
+      ::Project.visible(user).exists?(id: project_id)
     end
 
     def may_not_manage_queries?

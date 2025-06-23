@@ -50,6 +50,7 @@ RSpec.shared_examples_for "time entry contract" do
   let(:time_entry_spent_on) { Time.zone.today }
   let(:time_entry_hours) { 5 }
   let(:time_entry_comments) { "A comment" }
+  let(:time_entry_ongoing) { false }
   let(:work_package_visible) { true }
   let(:user_visible) { true }
   let(:time_entry_day_sum) { 5 }
@@ -221,6 +222,21 @@ RSpec.shared_examples_for "time entry contract" do
 
     it "is valid" do
       expect_valid(true)
+    end
+  end
+
+  context "when ongoing and another ongoing time entry already exists for the current user" do
+    let(:time_entry_ongoing) { true }
+
+    before do
+      allow(TimeEntry)
+        .to receive(:ongoing_for_user_other_than)
+              .with(time_entry_user, time_entry)
+              .and_return([build_stubbed(:time_entry, user: time_entry_user, ongoing: true)])
+    end
+
+    it "is invalid" do
+      expect_valid(false, base: %i(duplicate_ongoing))
     end
   end
 

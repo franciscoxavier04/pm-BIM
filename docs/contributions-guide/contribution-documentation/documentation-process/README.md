@@ -65,7 +65,7 @@ Open `https://github.com/[your-user]/openproject`. On the forked repository go t
 
 ![switch-the-default-branch-step-1](switch-the-default-branch-step-1.png)
 
-Select `release/12.3` as default branch and confirm with **Update**
+Select `release/16.0` as default branch and confirm with **Update**
 
 *NOTE:* There will be an additional window. Press the button: **I understand, update the default branch.**
 
@@ -73,13 +73,13 @@ Select `release/12.3` as default branch and confirm with **Update**
 
 ## Step 8: Sync fork and Update branches (update local repository)
 
-Every time you start editing please make sure you have fetched the latest changes from GitHub.com. First you need to update your forked repository. There you select the branch you are working on, e.g. `release/12.3`. If there are updates in the main repository opf/openproject click on **Sync fork** and **Update branch**.
+Every time you start editing please make sure you have fetched the latest changes from GitHub.com. First you need to update your forked repository. There you select the branch you are working on, e.g. `release/16.0`. If there are updates in the main repository opf/openproject click on **Sync fork** and **Update branch**.
 
 ![sync fork update branch](sync-fork-update-branch.png)
 
 Now you have fetched the latest changes from the main repository and can go back to GitHub Desktop.
 
-Finally you have to press **"Pull origin"**. Afterwards your local repository is updated to the latest commits of eg. `opf/openproject/release/12.3`
+Finally you have to press **"Pull origin"**. Afterwards your local repository is updated to the latest commits of eg. `opf/openproject/release/16.0`
 
 ![pull-upstream-changes](pull-upstream-changes.png)
 
@@ -99,11 +99,11 @@ In the next screen select **To contribute to the parent project**.
 
 ## Step 10: Create a new Git branch for your change
 
-Select the latest release branch e.g. `release/12.3` as the current branch.
+Select the latest release branch e.g. `release/16.0` as the current branch.
 
 ![create new branch - step 1](create-new-branch-step-1.png)
 
-In the same drop down click on "New branch". In this window **insert a branch name that describes your changes** and **select the latest release branch** e.g. `release/12.3` the created branch is based on.
+In the same drop down click on "New branch". In this window **insert a branch name that describes your changes** and **select the latest release branch** e.g. `release/16.0` the created branch is based on.
 
 ![create new branch - step 2](create-new-branch-step-2.png)
 
@@ -179,7 +179,7 @@ In GitHub Desktop choose menu "Repository -> Repository settings". This will ope
 
 ### B) Fetch origin (in this case repository 'opf')
 
-In GitHub Desktop **at Current branch the old branch is visible [1]** . After you press **Fetch origin [2]** you will be able to **select the new branch at Current branch** (e.g. `origin/release/12.3`
+In GitHub Desktop **at Current branch the old branch is visible [1]** . After you press **Fetch origin [2]** you will be able to **select the new branch at Current branch** (e.g. `origin/release/16.0`
 
 ![rebase-your-fork-step-2](rebase-your-fork-step-2.png)
 
