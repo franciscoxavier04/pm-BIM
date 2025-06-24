@@ -44,7 +44,7 @@ class AddWorkPackageNoteService
     self.contract_class = WorkPackages::CreateNoteContract
   end
 
-  def call(notes, send_notifications: nil, internal: false)
+  def call(notes, send_notifications: nil, internal: false) # rubocop:disable Metrics/AbcSize
     in_context(work_package, send_notifications:) do
       work_package.add_journal(user:, notes:, internal:)
 
@@ -60,7 +60,18 @@ class AddWorkPackageNoteService
         end
       end
 
-      ServiceResult.new(success:, result: journal, errors:)
+      ServiceResult.new(success:, result: journal, errors:).on_success do |r|
+        attachments_claims = claim_attachments_for(r.result)
+        r.add_dependent!(attachments_claims)
+      end
     end
+  end
+
+  private
+
+  def claim_attachments_for(journal)
+    WorkPackages::ActivitiesTab::CommentAttachmentsClaims::ClaimsService
+      .new(user: User.current, model: journal)
+      .call
   end
 end
