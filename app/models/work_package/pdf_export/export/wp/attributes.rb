@@ -241,8 +241,13 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
     ]
   end
 
+  def get_link_cell(custom_url)
+    make_link_href_cell(custom_url.href, custom_url.href)
+  end
+
   def get_column_value_cell(work_package, column_name)
     value = get_column_value(work_package, column_name)
+    return get_link_cell(value) if value.is_a?(::Exports::Formatters::LinkFormatter)
     return get_id_column_cell(work_package, value) if column_name == :id
     return get_subject_column_cell(work_package, value) if column_name == :subject
 
