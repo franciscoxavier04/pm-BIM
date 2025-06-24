@@ -79,6 +79,12 @@ RSpec.describe CustomValue::LinkStrategy do
       it { is_expected.to eq "random:hello" }
     end
 
+    context "when value is just a schema" do
+      let(:value) { "https:" }
+
+      it { is_expected.to eq "https:" }
+    end
+
     context "when value is a path" do
       let(:value) { "/projects" }
 
@@ -147,6 +153,12 @@ RSpec.describe CustomValue::LinkStrategy do
       let(:value) { "random:hello" }
 
       it { is_expected.to eq "random:hello" }
+    end
+
+    context "when value is just a schema" do
+      let(:value) { "https:" }
+
+      it { is_expected.to eq "https:" }
     end
 
     context "when value is a path" do
@@ -221,6 +233,12 @@ RSpec.describe CustomValue::LinkStrategy do
       it { is_expected.to eq "random:hello" }
     end
 
+    context "when value is just a schema" do
+      let(:input) { "https:" }
+
+      it { is_expected.to be_nil }
+    end
+
     context "when value is a path" do
       let(:input) { "/projects" }
 
@@ -289,6 +307,12 @@ RSpec.describe CustomValue::LinkStrategy do
       let(:value) { "random:hello" }
 
       it { is_expected.to be_nil }
+    end
+
+    context "when value is just a schema" do
+      let(:value) { "https:" }
+
+      it { is_expected.to eq :invalid_url }
     end
 
     context "when value is a path" do
