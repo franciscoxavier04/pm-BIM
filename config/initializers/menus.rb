@@ -203,6 +203,10 @@ Redmine::MenuManager.map :my_menu do |menu|
             { controller: "/my", action: "settings" },
             caption: :label_setting_plural,
             icon: "gear"
+  menu.push :interface,
+            { controller: "/my", action: "interface" },
+            caption: :label_interface,
+            icon: "device-desktop"
   menu.push :password,
             { controller: "/my", action: "password" },
             caption: :button_change_password,
@@ -348,20 +352,14 @@ Redmine::MenuManager.map :admin_menu do |menu|
             parent: :admin_work_packages
 
   menu.push :admin_projects_settings,
-            ->(_) { # TODO: doesn't need to be a proc when condition is removed
-              if OpenProject::FeatureDecisions.stages_and_gates_active?
-                { controller: "/admin/settings/project_life_cycle_definitions", action: :index }
-              else
-                { controller: "/admin/settings/project_custom_fields", action: :index }
-              end
-            },
+            { controller: "/admin/settings/project_phase_definitions", action: :index },
             if: ->(_) { User.current.admin? },
             caption: :label_project_plural,
             icon: "project"
 
-  menu.push :project_life_cycle_definitions_settings,
-            { controller: "/admin/settings/project_life_cycle_definitions", action: :index },
-            if: ->(_) { User.current.admin? && OpenProject::FeatureDecisions.stages_and_gates_active? },
+  menu.push :project_phase_definitions_settings,
+            { controller: "/admin/settings/project_phase_definitions", action: :index },
+            if: ->(_) { User.current.admin? },
             caption: :label_project_life_cycle,
             parent: :admin_projects_settings
 
@@ -560,7 +558,7 @@ Redmine::MenuManager.map :admin_menu do |menu|
             icon: "meter"
 
   menu.push :enterprise,
-            { controller: "/enterprises", action: :show },
+            { controller: "/enterprise_tokens", action: :index },
             caption: :label_enterprise_edition,
             icon: "op-enterprise-addons",
             if: proc { User.current.admin? && OpenProject::Configuration.ee_manager_visible? }
@@ -646,8 +644,7 @@ Redmine::MenuManager.map :project_menu do |menu|
     general: { caption: :label_information_plural },
     life_cycle_steps: {
       caption: :label_project_life_cycle,
-      action: :index,
-      if: ->(_) { OpenProject::FeatureDecisions.stages_and_gates_active? }
+      action: :index
     },
     project_custom_fields: { caption: :label_project_attributes_plural },
     modules: { caption: :label_module_plural },

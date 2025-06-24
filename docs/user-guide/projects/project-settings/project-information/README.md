@@ -15,8 +15,8 @@ Project settings are grouped into three sections:
 
 1. **Basic details**. Here you can edit: 
 
-    -  **Project name**. The name will be displayed in the project list.
-    -  Add a project **description**.
+    - **Project name**. The name will be displayed in the project list.
+    - Add a project **description**.
 
 2. **Project status**. Here you can: 
 

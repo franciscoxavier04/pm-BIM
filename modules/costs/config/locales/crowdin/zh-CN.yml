@@ -73,6 +73,7 @@ zh-CN:
         time_entry:
           invalid_time: "必须在 00:00-23:59之间。"
           cannot_log_for_this_work_package: "无法记录该工作包的时间。"
+          duplicate_ongoing: "此用户已存在一个进行中的时间记录。"
         work_package:
           is_not_a_valid_target_for_cost_entries: "工作包 #%{id} 不是重新分配成本条目的有效目标。"
           nullify_is_not_valid_for_cost_entries: "无法将成本条目分配到项目。"
@@ -193,9 +194,9 @@ zh-CN:
   setting_costs_currency: "货币"
   setting_costs_currency_format: "货币格式"
   setting_enforce_tracking_start_and_end_times: "需要开始和完成时间"
-  setting_enforce_without_allow: "要求开始和结束时间而不允许设置它们是不可能的"
-  setting_allow_tracking_start_and_end_times_caption: "允许在日志记录时间时输入开始和结束时间。"
-  setting_enforce_tracking_start_and_end_times_caption: "当日志记录时间时，必须输入开始和结束时间。"
+  setting_enforce_without_allow: "如果不允许，则无法要求开始和结束时间"
+  setting_allow_tracking_start_and_end_times_caption: "启用在记录时间时输入开始和结束时间。"
+  setting_enforce_tracking_start_and_end_times_caption: "记录时间时强制输入开始和结束时间。"
   text_assign_time_and_cost_entries_to_project: "将已上报的工时和成本提交到项目中"
   text_destroy_cost_entries_question: "您要删除的工作包已经上报了 %{cost_entries}。您想进行哪种操作？"
   text_destroy_time_and_cost_entries: "删除已上报的工时和成本"

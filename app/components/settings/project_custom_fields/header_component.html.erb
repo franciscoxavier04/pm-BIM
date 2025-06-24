@@ -9,24 +9,38 @@
 
   <%=
     render Primer::OpenProject::SubHeader.new do |subheader|
-      subheader.with_action_button(leading_icon: :plus,
-                                   label: t("settings.project_attributes.label_new_section"),
-                                   tag: :a,
-                                   id: "dialog-show-project-custom-field-section-dialog",
-                                   href: new_link_admin_settings_project_custom_field_sections_path,
-                                   data: { controller: "async-dialog" }) do
-        t("settings.project_attributes.label_new_section")
-      end
-
-      subheader.with_action_button(
-        tag: :a,
-        href: new_admin_settings_project_custom_field_path(type: "ProjectCustomField"),
-        scheme: :primary,
+      subheader.with_action_menu(
         leading_icon: :plus,
-        label: t("settings.project_attributes.label_new_attribute"),
-        data: { turbo: "false", test_selector: "new-project-custom-field-button" },
-      ) do
-        t("settings.project_attributes.label_new_attribute")
+        trailing_icon: :"triangle-down",
+        label: I18n.t(:button_add),
+        anchor_align: :end,
+        button_arguments: {
+          scheme: :primary,
+          aria: { label: I18n.t(:button_add) },
+          test_selector: "project-attributes-add-menu-button"
+        }
+      ) do |menu|
+        menu.with_item(
+          label: t("settings.project_attributes.label_new_section"),
+          id: "dialog-show-project-custom-field-section-dialog",
+          tag: :a,
+          href: new_link_admin_settings_project_custom_field_sections_path,
+          content_arguments: { data: { controller: "async-dialog" } }
+        )
+
+        menu.with_sub_menu_item(label: t("settings.project_attributes.label_new_attribute")) do |sub_menu|
+          OpenProject::CustomFieldFormat.available_for_class_name("Project")
+                                        .sort_by(&:name)
+                                        .map do |format|
+            sub_menu.with_item(
+              label: helpers.label_for_custom_field_format(format.name),
+              tag: :a,
+              href: new_admin_settings_project_custom_field_path(field_format: format.name),
+              content_arguments: { data: { turbo: "false",
+                                           test_selector: "new-project-custom-field-button" } }
+            )
+          end
+        end
       end
     end
   %>

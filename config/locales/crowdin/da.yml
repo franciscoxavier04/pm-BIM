@@ -79,11 +79,15 @@ da:
         main-menu-bg-color: "Baggrundsfarve på venstre sidemenu."
       theme_warning: Ændring af temaet vil overskrive din brugerdefinerede stil. Designet vil derefter gå tabt. Er du sikker på du vil fortsætte?
     enterprise:
-      upgrade_to_ee: "Upgrade to the Enterprise edition"
+      delete_dialog:
+        title: "Delete enterprise token"
+        heading: "Delete this enterprise token?"
+        confirmation: "Are you sure you want to delete this Enterprise edition support token?"
+      create_dialog:
+        title: "Add Enterprise token"
+        type_token_text: "Type support token text"
+        token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Upload an Enterprise edition support token"
-      delete_token_modal:
-        text: "Are you sure you want to remove the current Enterprise edition token used?"
-        title: "Delete token"
       replace_token: "Erstat din nuværende support-token"
       order: "Order Enterprise on-premises edition"
       paste: "Paste your Enterprise edition support token"
@@ -95,8 +99,13 @@ da:
       buttons:
         upgrade: "Upgrade now"
         contact: "Kontakt os for en demo"
-      enterprise_info_html: "is an Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> add-on."
-      upgrade_info: "Please upgrade to a paid plan to activate and start using it in your team."
+      status:
+        expired: "Expired"
+        expiring_soon: "Expiring soon"
+        in_grace_period: "In grace period"
+        invalid_domain: "Invalid domain"
+        not_active: "Not active"
+        trial: "Trial"
     jemalloc_allocator: Jemalloc memory allocator
     journal_aggregation:
       explanation:
@@ -419,10 +428,6 @@ da:
         new_label: "New priority"
     status:
       button_edit: Edit project status
-  project_phase:
-    duration:
-      one: "Duration: %{count} working day"
-      other: "Duration: %{count} working days"
   lists:
     create:
       success: "The modified list has been saved as a new list"
@@ -562,11 +567,14 @@ da:
         Alle forekomster af pladsholder brugeren (f.eks. som modtager, ansvarlig eller andre brugerværdier) vil blive omfordelt til en konto kaldet "Slettet bruger". Da dataene for hver slettet konto er omfordelt til denne konto, vil det ikke være muligt at skelne de data, brugeren har oprettet fra data fra en anden slettet konto.
       irreversible: "Denne handling kan ikke fortrydes"
       confirmation: "Indtast pladsholderens brugernavn %{name} for at bekræfte sletningen."
-  prioritiies:
+  priorities:
     edit:
       priority_color_text: |
         Click to assign or change the color of this priority.
         It can be used for highlighting work packages in the table.
+    admin:
+      default:
+        caption: Making this priority default will override the previous default priority.
   reactions:
     action_title: "React"
     add_reaction: "Add reaction"
@@ -690,6 +698,7 @@ da:
         automatic: "Automatic"
         manual: "Manual"
       show_relations: "Show relations"
+      update_inputs_aria_live_message: "Date picker updated. %{message}"
       tabs:
         aria_label: "Datepicker tabs"
         children: "Underordnede"
@@ -758,7 +767,9 @@ da:
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      caption: "The minimum number of working days to keep in between the two work packages."
+      caption: |-
+        The minimum number of working days to keep in between the two work packages.
+        It can also be negative.
     relations:
       label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "Forbundet til"
@@ -817,6 +828,7 @@ da:
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
+      label_other_relations: "Other relations"
       ghost_relation_title: "Sammenhørende arbejdspakker"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Invitation
@@ -851,6 +863,10 @@ da:
     auth_source_login: Log venligst ind som <em>%{login}</em> for at aktivere din konto.
     omniauth_login: Log venligst ind for at aktivere din konto.
   actionview_instancetag_blank_option: "Vælg venligst"
+  activemodel:
+    attributes:
+      projects/copy_options:
+        dependencies: "Dependencies"
   activerecord:
     attributes:
       announcements:
@@ -866,6 +882,8 @@ da:
       attribute_help_text:
         attribute_name: "Egenskab"
         help_text: "Help text"
+      auth_provider:
+        scim_clients: "SCIM Clients"
       capability:
         context: "Context"
       changeset:
@@ -905,11 +923,14 @@ da:
       emoji_reaction:
         reactable: "Reacted on"
       enterprise_token:
-        domain: "Domæne"
         starts_at: "Valid since"
         subscriber: "Subscriber"
+        subscription: "Subscription"
+        plan: "Plan"
         encoded_token: "Enterprise support token"
-        active_user_count_restriction: "Maximum active users"
+        active_user_count_restriction: "Active users"
+      enterprise_trial:
+        company: "Company"
       grids/grid:
         page: "Page"
         row_count: "Number of rows"
@@ -974,6 +995,10 @@ da:
       project/phase:
         date_range: "Datointerval"
         definition: "Definition"
+        duration: "Duration"
+        start_date: "Start date"
+        start_date_caption: "Follows the previous phase."
+        finish_date: "Finish date"
       project/phase_definition:
         name: "Navn"
         color: "Farve"
@@ -1065,14 +1090,21 @@ da:
         password_confirmation: "Bekræftelse"
         consented_at: "Consented at"
       user_preference:
-        comments_sorting: "Vis kommentarer"
+        header_look_and_feel: "Look and feel"
+        header_alerts: "Alerts"
+        button_update_look_and_feel: "Update look and feel"
+        button_update_alerts: "Update alerts"
+        comments_sorting: "Display work package activity sorted by"
+        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Tilgængelighedstilstand"
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
-        theme: "Mode"
+        theme: "Colour mode"
         time_zone: "Tidszone"
-        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
       version:
@@ -1233,8 +1265,13 @@ da:
               forbidden_uri: "is forbidden by the server."
             scopes:
               not_match_configured: "doesn't match available scopes."
+        enterprise_trial:
+          already_used: "was already used to create a trial."
+          failed_to_create: "Trial could not be created (%{status})"
+          general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "can't be read. Are you sure it is a support token?"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "overlap."
           outside: "is outside of the grid."
@@ -1285,10 +1322,12 @@ da:
               blank: "Please select a project."
         project/phase:
           attributes:
-            date_range:
-              start_date_must_be_before_finish_date: "start date must be before the finish date."
+            start_date:
+              must_be_before_finish_date: "must be before the finish date."
               non_continuous_dates: "can't be earlier than the previous phase's end date."
-              incomplete: "is incomplete."
+            finish_date:
+              must_be_after_start_date: "must be after the start date."
+          cannot_be_a_non_working_day: "can't be a non-working day."
         query:
           attributes:
             project:
@@ -1337,10 +1376,6 @@ da:
             from_id:
               error_not_found: "not found or not visible."
               error_readonly: "cannot be changed for existing relations."
-            lag:
-              greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM-leverandør utilgængelig"
           not_whitelisted: "tillades ikke af opsætningen."
@@ -1418,6 +1453,8 @@ da:
               cannot_be_self_assigned: "cannot be assigned to itself."
               cannot_be_in_another_project: "kan ikke være i et andet projekt."
               not_a_valid_parent: "er ugyldig."
+            schedule_manually:
+              cannot_be_automatically_scheduled: "cannot be set to false (automatically scheduled) as it has no predecessors or children."
             start_date:
               violates_relationships: "can only be set to %{soonest_start} or later so as not to violate the work package's relationships."
               cannot_be_null: "can not be set to null as finish date and duration are known."
@@ -1510,6 +1547,9 @@ da:
       custom_action: "Custom action"
       custom_field: "Selvvalgt felt"
       "doorkeeper/application": "OAuth application"
+      enterprise_token:
+        one: "Enterprise token"
+        other: "Enterprise tokens"
       forum: "Forum"
       global_role: "Global role"
       group: "Gruppe"
@@ -1533,6 +1573,9 @@ da:
       role:
         one: "Rolle"
         other: "Rollee"
+      scim_client:
+        one: "SCIM Client"
+        other: "SCIM Clients"
       status: "Status for arbejdspakke"
       token/api:
         one: Adgangstegn
@@ -1629,6 +1672,7 @@ da:
     derived_start_date: "Derived start date"
     direction: "Direction"
     display_sums: "Vis totaler"
+    domain: "Domain"
     due_date: "Finish date"
     estimated_hours: "Work"
     estimated_time: "Work"
@@ -2013,23 +2057,36 @@ da:
       readonly_work_packages: Readonly Work Packages
       sso_auth_providers: Single sign-on
       team_planner_view: Team Planner View
-      two_factor_authentication: 2FA Authentication
       virus_scanning: Antivirus Scanning
       work_package_query_relation_columns: Work Package Query Relation Columns
       work_package_sharing: Share work packages with external users
       work_package_subject_generation: Work Package Subject Generation
     upsell:
+      buy_now_button: "Buy now"
       plans_title: "Enterprise plans"
       title: "Enterprise add-on"
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
+      unlimited: "Unlimited"
+      already_have_token: >
+        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Hide this banner"
       homescreen_description: >
         Enterprise plans extend the Community edition of OpenProject you are currently using. They include add-ons, additional features and professional support that enables organisations of all sizes to achieve great things together.
       homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Highlight changes made to this list since any point in the past.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2076,6 +2133,26 @@ da:
       internal_comments_inline:
         title: "Write internal comments only a small group can see"
         description: " "
+    trial:
+      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
+      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      already_retrieved: >
+        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
+      successfully_saved: "Your trial enterprise token has been successfully retrieved."
+      token_sent: "Trial token requested"
+      request_again: "Request again"
+      resend_action: "Resend confirmation email"
+      welcome_title: "Quick feature overview"
+      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+      confirmation_info: >
+        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+      confirmation_subline: >
+        Please, check your inbox and follow the steps to start your 14-day free trial.
+      domain_caption: The token will be valid for your currently configured host name.
+      receive_newsletter_html: >
+        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+      consent_html: >
+        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Prioritering af arbejdspakker"
   enumeration_reported_project_statuses: "Rapporteret projektstatus"
@@ -2100,6 +2177,7 @@ da:
   error_color_could_not_be_saved: "Farve kan ikke gemmes"
   error_cookie_missing: "The OpenProject cookie is missing. Please ensure that cookies are enabled, as this application will not properly function without."
   error_custom_option_not_found: "Option does not exist."
+  error_enterprise_plan_needed: "You need the %{plan} enterprise plan to perform this action."
   error_enterprise_activation_user_limit: "Your account could not be activated (user limit reached). Please contact your administrator to gain access."
   error_enterprise_token_invalid_domain: "The Enterprise edition is not active. Your Enterprise token's domain (%{actual}) does not match the system's host name (%{expected})."
   error_failed_to_delete_entry: "Failed to delete this entry."
@@ -2407,7 +2485,7 @@ da:
         static_token_name: "RSS token"
         disabled_text: "RSS tokens are not enabled by the administrator. Please contact your administrator to use this feature."
       storages:
-        title: "File Storages"
+        title: "File storages"
         text_hint: "File Storage tokens connect this OpenProject instance with an external File Storage."
         empty_text_hint: "There is no storage access linked to your account."
         revoke_token: "Do you really want to remove this token? You will need to login again on %{storage}"
@@ -2583,6 +2661,7 @@ da:
   label_dashboard: "Dashboard"
   label_database_version: "PostgreSQL version"
   label_date: "Dato"
+  label_dates: "Dates"
   label_date_and_time: "Date and time"
   label_date_format: "Datoformat"
   label_date_from: "Fra"
@@ -2598,6 +2677,8 @@ da:
   label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(tom)"
+  label_go_back: "Go back one menu level"
+  label_go_forward: "Open %{module} sub-menu"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
   label_descending: "Faldende"
   label_details: "Detaljer"
@@ -2702,6 +2783,7 @@ da:
   label_information_plural: "Information"
   label_installation_guides: "Installation guides"
   label_integer: "Heltal"
+  label_interface: "Interface"
   label_internal: "Intern"
   label_introduction_video: "Introduction video"
   label_invite_user: "Invitér bruger"
@@ -2887,8 +2969,8 @@ da:
   label_project_custom_field_plural: "Project attributes"
   label_project_settings: "Projektindstillinger"
   label_project_attributes_settings: "Project attributes settings"
-  label_project_storage_plural: "File Storages"
-  label_project_storage_project_folder: "File Storages: Project folders"
+  label_project_storage_plural: "File storages"
+  label_project_storage_project_folder: "File storages: Project folders"
   label_projects_disk_usage_information: "%{count} projects using %{used_disk_space} disk space"
   label_project_view_all: "Se alle projekter"
   label_project_show_details: "Show project details"
@@ -2897,6 +2979,7 @@ da:
   label_query_new: "Ny forespørgsel"
   label_query_plural: "Selvvalgte forespørgsler"
   label_read: "Læs..."
+  label_read_documentation: "Read documentation"
   label_register: "Opret en ny konto"
   label_register_with_developer: "Registrer dig som udvikler"
   label_registered_on: "Registreret den"
@@ -3339,6 +3422,8 @@ da:
   notice_successful_delete: "Sletning gennemført."
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Opdatering gennemført."
+  notice_unsuccessful_create: "Creation failed."
+  notice_unsuccessful_create_with_reason: "Creation failed: %{reason}"
   notice_unsuccessful_update: "Update failed."
   notice_unsuccessful_update_with_reason: "Update failed: %{reason}"
   notice_successful_update_custom_fields_added_to_project: |
@@ -3626,7 +3711,7 @@ da:
       oauth_application_details: "The client secret value will not be accessible again after you close this window. Please copy these values into the Nextcloud OpenProject Integration settings:"
       oauth_application_details_link_text: "Go to settings page"
       setup_documentation_details: "If you need help configuring a new file storage please check the documentation: "
-      setup_documentation_details_link_text: "File Storages setup"
+      setup_documentation_details_link_text: "File storages setup"
       show_warning_details: "To use this file storage remember to activate the module and the specific storage in the project settings of each desired project."
     subversion:
       existing_title: "Eksisterende underversions-repositorie"
@@ -3918,9 +4003,7 @@ da:
       phase_gates: "Phase gates"
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
-        heading: "New Phase"
-      edit:
-        heading: "Edit Phase"
+        heading: "New phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"
@@ -4224,7 +4307,7 @@ da:
     reminders:
       label_remind_at: "Dato"
       note_placeholder: "Why are you setting this reminder?"
-      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "Reminder updated successfully."
       success_deletion_message: "Reminder deleted successfully."
   sharing:
@@ -4296,12 +4379,12 @@ da:
         message: "Sharing project lists with individual users is an enterprise add-on."
   working_days:
     info: >
-      Days that are not selected are skipped when scheduling work packages (and not included in the day count). These can be overridden at a work-package level.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Dates added to the list below are considered non-working and skipped when scheduling work packages.
     change_button: "Change working days"
     warning: >
-      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages in all projects in this instance.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Working days** changed (%{changes})._
       days:
@@ -4325,8 +4408,14 @@ da:
       code_500: "En intern fejl opstod."
       code_500_outbound_request_failure: "An outbound request to another resource has failed with status code %{status_code}."
       code_500_missing_enterprise_token: "The request can not be handled due to invalid or missing Enterprise token."
+      bad_request:
+        emoji_reactions_activity_type_not_supported: "This activity type does not support emoji reactions."
+      conflict:
+        multiple_reminders_not_allowed: |-
+          You can only set one reminder at a time for a work package. Please delete or update the existing reminder.
       not_found:
         work_package: "The work package you are looking for cannot be found or has been deleted."
+        reminder: "The reminder you are looking for cannot be found or has been deleted."
       expected:
         date: "YYYY-MM-DD (ISO 8601 date only)"
         datetime: "YYYY-MM-DDThh:mm:ss[.lll][+hh:mm] (any compatible ISO 8601 datetime)"

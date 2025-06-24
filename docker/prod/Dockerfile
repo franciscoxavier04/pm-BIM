@@ -1,4 +1,4 @@
-ARG RUBY_VERSION="3.4.2"
+ARG RUBY_VERSION="3.4.4"
 FROM ruby:${RUBY_VERSION}-bookworm AS base
 LABEL maintainer="operations@openproject.com"
 
@@ -15,7 +15,7 @@ ENV DOCKER=1
 ENV APP_USER=app
 ENV APP_PATH=/app
 ENV APP_DATA_PATH=/var/openproject/assets
-ENV PGVERSION="13"
+ENV PGVERSION="17"
 ENV PGVERSION_CHOICES="13 15 17"
 ENV PGBIN="/usr/lib/postgresql/$PGVERSION/bin"
 ENV PATH="$PGBIN:$PATH"

@@ -1,4 +1,4 @@
-FROM ruby:3.4.2-bullseye AS develop
+FROM ruby:3.4.4-bookworm AS develop
 MAINTAINER operations@openproject.com
 
 ARG DEV_UID=1000
@@ -21,8 +21,13 @@ RUN groupmod -g $DEV_GID $USER || true
 WORKDIR /home/$USER
 
 RUN apt-get update -qq && \
+  apt-get install -y wget gnupg lsb-release curl && \
+  echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
+  wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
+  apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y \
-  postgresql-client libffi7 libffi-dev curl
+  postgresql-client-17 libffi8 libffi-dev curl && \
+  rm -rf /var/lib/apt/lists/*
 
 # Setup node source and install nodejs. Needed for running certain scripts in backend container,
 # as the `./scripts/api/validate_spec`.

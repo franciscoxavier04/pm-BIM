@@ -31,3 +31,9 @@ Yes, you can. If the file storage in your project had the automatically managed 
 ## Is there a virus scanner for the files attachments in OpenProject?
 
 Yes, there is a virus scanner for attachments in OpenProject. At the moment it is only available for on-premises installations and is an Enterprise add-on. Your system administrator will need to [configure it first](../../../system-admin-guide/files/attachments/virus-scanning/).
+
+## Is Nextcloud integration a part of Community or Enterprise edition?
+
+The integration between OpenProject and Nextcloud is part of the open source and free of charge **Community edition**, including all file management functionalities. 
+
+However, please note that setting up the Single Sign-on via OpenID Connect Identity Provider is an Enterprise Add-on and can only be used with [Enterprise cloud](../../../enterprise-guide/enterprise-cloud-guide) or [Enterprise on-premises](../../../enterprise-guide/enterprise-on-premises-guide). This Add-On is available for all installations under the [Enterprise Corporate plan](https://www.openproject.org/pricing/). 

@@ -46,6 +46,9 @@ module Types
     attribute :attribute_groups
     attribute :patterns
 
+    validates :name, presence: true, length: { maximum: 255 }
+    validates :is_default, :is_milestone, :is_in_roadmap, inclusion: { in: [true, false] }
+
     validate :validate_current_user_is_admin
     validate :validate_attribute_group_names
     validate :validate_attribute_groups

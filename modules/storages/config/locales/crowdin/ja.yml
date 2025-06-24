@@ -15,6 +15,7 @@ ja:
           oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         storage_audience: Storage Audience
+        token_exchange_scope: Storage Scope
       storages/project_storage:
         project_folder: Project folder
         project_folder_mode: Project folder mode
@@ -40,11 +41,11 @@ ja:
         storages/project_storage:
           attributes:
             project_folder_id:
-              blank: Please select a folder.
+              blank: フォルダーを選択してください。
             project_folder_mode:
               mode_unavailable: is not available for this storage.
             project_ids:
-              blank: Please select a project.
+              blank: プロジェクトを選択してください。
         storages/storage:
           attributes:
             host:
@@ -68,12 +69,12 @@ ja:
   permission_delete_files: '自動的に管理されたプロジェクトフォルダ: ファイルの削除'
   permission_delete_files_explanation: この権限はNextcloudストレージでのみ利用できます
   permission_header_for_project_module_storages: Automatically managed project folders
-  permission_manage_file_links: Manage file links
-  permission_manage_files_in_project: Manage files in project
+  permission_manage_file_links: ファイルへのリンク管理
+  permission_manage_files_in_project: プロジェクト内のファイル管理
   permission_read_files: '自動的に管理されたプロジェクトフォルダ: ファイルの読み込み'
   permission_share_files: '自動的に管理されたプロジェクトフォルダ: ファイルを共有'
   permission_share_files_explanation: この権限はNextcloudストレージでのみ利用できます
-  permission_view_file_links: View file links
+  permission_view_file_links: ファイルへのリンク閲覧
   permission_write_files: '自動的に管理されたプロジェクトフォルダ: ファイルの書き込み'
   project_module_storages: ファイルを添付する
   project_storages:
@@ -92,15 +93,15 @@ ja:
         confirmation_text: Please, confirm you understand and want to remove this file storage from this project
         heading_text: Remove project from %{storage}
         text: This action is irreversible and will remove all links from work packages of this project to files and folders of that storage.
-        title: Remove project from storage
-      label: Remove project
+        title: ストレージからプロジェクトを削除
+      label: プロジェクトを削除
   services:
     attributes:
       nextcloud_sync_service:
-        add_user_to_group: 'Add User to Group:'
-        create_folder: 'Managed Project Folder Creation:'
-        ensure_root_folder_permissions: 'Set Base Folder Permissions:'
-        hide_inactive_folders: 'Hide Inactive Folders Step:'
+        add_user_to_group: 'ユーザーをグループに追加：'
+        create_folder: 'プロジェクトフォルダの作成を管理：'
+        ensure_root_folder_permissions: 'ベースフォルダの権限を設定：'
+        hide_inactive_folders: '非アクティブフォルダを隠す：'
         remote_folders: 'Read contents of the group folder:'
         remove_user_from_group: 'Remove User from Group:'
         rename_project_folder: 'Rename managed project Folder:'
@@ -225,18 +226,18 @@ ja:
       openproject_oauth: OpenProject OAuth
       project_folders: Project folders
       redirect_uri: リダイレクトURI
-      storage_audience: Storage Audience
       storage_audience_blank: No audience has been configured.
-      storage_audience_description: Obtaining tokens for audience "%{audience}".
-      storage_audience_idp: Using first access token received by identity provider, regardless of audience.
+      storage_audience_description: Exchanging tokens for audience "%{audience}".
+      storage_audience_idp: Using access token obtained by identity provider during login, regardless of audience.
       storage_oauth: Nextcloud OAuth
       storage_provider: Storage provider
+      token_exchange: Token Exchange
     health:
       actions:
         download_report: ダウンロード
         rerun_checks: Re-run all checks
         run_checks: Run checks now
-      checked: Last checked %{datetime}
+      checked: 'Last check: %{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: Automatic folder creation
@@ -246,7 +247,7 @@ ja:
           group_folder_app: 'Dependency: Group Folders'
           group_folder_contents: Group folder has expected content
           group_folder_presence: Group folder exists
-          header: Automatically managed project folder configuration
+          header: Automatically managed project folders
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
@@ -265,7 +266,7 @@ ja:
           diagnostic_request: Diagnostic request
           drive_id_exists: Drive exists
           drive_id_format: Drive ID format
-          header: Basic configuration
+          header: Configuration
           host_url_accessible: Host URL accessible
           storage_configured: Configuration complete
           tenant_id: Tenant ID
@@ -305,7 +306,7 @@ ja:
         oidc_token_exchange_failed: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
         oidc_token_refresh_failed: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         unknown_error: The connection could not be validated. An unknown error occurred. Please check the server logs for further information.
-      label_error: エラー！
+      label_error: エラー
       label_failed: Failed
       label_healthy: Healthy
       label_passed: Passed
@@ -348,8 +349,9 @@ ja:
         integration: Nextcloud Administration / OpenProject
         oauth_configuration: Copy these values from %{application_link_text}.
         provider_configuration: Please make sure you have administration privileges in your Nextcloud instance and the %{application_link_text} is installed before doing the setup.
-        storage_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        storage_audience: The client ID that the Nextcloud instance uses to communicate with the identity provider.
         storage_audience_placeholder: e.g. nextcloud
+        token_exchange_scope: The scopes that should be requested during token exchange, each one separated by a space.
       no_specific_folder: By default, each user will start at their own home folder when they upload a file.
       no_storage_set_up: There are no file storages set up yet.
       not_logged_into_storage: To select a project folder, please first login
@@ -369,9 +371,9 @@ ja:
         tenant_id: ディレクトリ(テナント)IDは、 %{application_link_text}のアプリケーションおよびアプリ登録からコピーしてください。
         tenant_id_placeholder: Name or UUID
       setting_up_additional_storages: For setting up additional file storages, please visit
-      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File Storages.
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: For setting up file storages, please visit
-      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File Storages.
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: 'Please make sure you have administration privileges in your Nextcloud instance and have the following application installed before doing the setup:'
       type_link_text: "“Integration OpenProject”"
     label_active: アクティブ
@@ -381,9 +383,9 @@ ja:
     label_creator: 作成者
     label_delete_storage: Delete storage
     label_edit_storage_access_management: Edit storage access management
-    label_edit_storage_audience: Edit Storage Audience
     label_edit_storage_automatically_managed_folders: Edit storage automatically managed folders
     label_edit_storage_host: Edit storage host
+    label_edit_token_exchange: Edit token exchange configuration
     label_existing_manual_folder: Existing folder with manually managed permissions
     label_file_storage: File storage
     label_host: Host URL
@@ -477,13 +479,13 @@ ja:
       description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
       label: Show attachments in the work packages files tab
     storage_audience:
-      documentation_intro: Details on the following options and what needs to be configured in the identity provider can be found in our documentation.
+      documentation_intro: Please read our documentation for details on the following options and configuration of the identity provider.
       idp:
-        helptext: OpenProject will use the first access token received by the identity provider to authenticate requests to the storage. It will not try to obtain another token.
-        label: Use first access token obtained by identity provider
+        helptext: OpenProject will use the access token received by the identity provider during log in to authenticate requests to the storage. It will not try to obtain another token.
+        label: Use access token obtained during user log in
       manual:
-        helptext: Allows you to set the audience of the storage. OpenProject will try to obtain a token for the given audience from the identity provider.
-        label: Define storage audience manually
+        helptext: OpenProject will exchange a token with the identity provider for the given audience.
+        label: Manually specify audience for which to exchange access token
     storage_list_blank_slate:
       description: Add a storage to see them here.
       heading: You don't have any storages yet.

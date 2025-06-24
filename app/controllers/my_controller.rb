@@ -45,6 +45,7 @@ class MyController < ApplicationController
   no_authorization_required! :account,
                              :update_account,
                              :settings,
+                             :interface,
                              :update_settings,
                              :password,
                              :change_password,
@@ -60,6 +61,7 @@ class MyController < ApplicationController
 
   menu_item :account, only: [:account]
   menu_item :settings, only: [:settings]
+  menu_item :interface, only: [:interface]
   menu_item :password, only: [:password]
   menu_item :access_token, only: [:access_token]
   menu_item :notifications, only: [:notifications]
@@ -76,6 +78,8 @@ class MyController < ApplicationController
   def update_settings
     write_settings
   end
+
+  def interface; end
 
   # Manage user's password
   def password

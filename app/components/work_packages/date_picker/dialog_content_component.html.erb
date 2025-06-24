@@ -1,8 +1,13 @@
 <%=
   content_tag("turbo-frame", id: "wp-datepicker-dialog--content") do
+%>
+  <live-region></live-region>
+  <% if @live_region_message %>
+    <%= render OpTurbo::StreamComponent.new(action: :liveRegion, message: @live_region_message, politeness: "polite", delay: "500", target: nil) %>
+  <% end %>
+  <%=
     component_wrapper(
-      data: { "application-target": "dynamic",
-              controller: "work-packages--date-picker--preview",
+      data: { controller: "work-packages--date-picker--preview",
               "work-packages--date-picker--preview-date-mode-value": date_mode,
               "work-packages--date-picker--preview-triggering-field-value": triggering_field,
               "work-packages--date-picker--preview-schedule-manually-value": schedule_manually,
@@ -99,5 +104,5 @@
         end
       end
     end
-  end
-%>
+  %>
+<% end %>

@@ -58,7 +58,16 @@ You can select one of the following relations:
 > [!TIP]
 > Prior to 15.1, *Predecessor (before)* was called *Precedes*, and *Successor (after)* was called *Follows*.
 
-For the relations of type Predecessor/Successor, you can also define **Lag**, which is the minimum number of working days to keep in between the two work packages. The default setting for lag is 0 working days. You can always edit the *Description* and *Lag* fields at a later time.
+For the relations of type Predecessor/Successor, you can also define **lag**, which is the minimum number of working days to keep in between the two work packages. The default setting for lag is 0 working days. Lag can also be negative. Here are a few examples:
+
+- A lag of 0 means the successor starts one working day after the predecessor finishes.
+- A lag of 2 means the successor starts three working day after the predecessor finishes.
+- A lag of -1 means the successor starts on the same day the predecessor finishes.
+- A lag of -2 schedules the successor to start one working day before the predecessor finishes, and so on.
+
+Only working days are considered when calculating lag. For example, if the predecessor finishes on a Wednesday and Saturday/Sunday are non-working days, then a lag of -3 schedules the successor to start on the previous Thursday.
+
+You can always edit the *Description* and *Lag* fields at a later time.
 
 ![Add a successor work package in OpenProject](openproject_user_guide_relations_tab_edit_lag.png)
 
@@ -111,7 +120,7 @@ There are **four ways to add or create a child work package**:
 
    ![Add a child in a work package table](openproject_user_guide_wp_table_add_child.png)
 
-4.  You can add a child work package directly under the table of related work packages. To do that you first need to [include a table of related work packages to work package forms (Enterprise add-on)](../../../system-admin-guide/manage-work-packages/work-package-types/#add-table-of-related-work-packages-to-a-work-package-form-enterprise-add-on). 
+4. You can add a child work package directly under the table of related work packages. To do that you first need to [include a table of related work packages to work package forms (Enterprise add-on)](../../../system-admin-guide/manage-work-packages/work-package-types/#add-table-of-related-work-packages-to-a-work-package-form-enterprise-add-on). 
 
    ![A table of related work packages in OpenProject](open_project_admin_related_wp_table.png)
 
@@ -149,14 +158,12 @@ Alternatively you can select the **Delete relation** option next to the parent r
 
 After adding the parent and child work packages they are listed in the *Relations* tab. Related work packages are grouped by the type of relation into respective sections. 
 
->  [!TIP]
->
+> [!TIP]
 > Dates of the related work packages are only shown for date-based relations: children, predecessor and successor. 
 
 ![Work package relations displayed in the Relations tab in OpenProject](openproject_user_guide_wp_relations_tab_overview.png)
 
 > [!NOTE]
->
 > If you do not have necessary permissions (for example if only one specific work package was shared with you, but not the entire project), you will be able to see that a work package has a relation, and the dates of that related work package, but not other details of that related work package.
 
 ![Example of work package relations displayed under Relations tab for a user with limited permissions in OpenProject](openproject_user_guide_ghost_relations.png)

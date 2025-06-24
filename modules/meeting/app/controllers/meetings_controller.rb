@@ -50,7 +50,6 @@ class MeetingsController < ApplicationController
 
   include OpTurbo::ComponentStream
   include OpTurbo::FlashStreamHelper
-  include OpTurbo::DialogStreamHelper
   include Meetings::AgendaComponentStreams
   include MetaTagsHelper
 
@@ -69,6 +68,7 @@ class MeetingsController < ApplicationController
 
   def show
     respond_to do |format|
+      format.pdf { export_pdf }
       format.html do
         html_title "#{t(:label_meeting)}: #{@meeting.title}"
         if @meeting.state == "cancelled"
@@ -341,6 +341,13 @@ class MeetingsController < ApplicationController
     respond_with_turbo_streams
   end
 
+  def generate_pdf_dialog
+    respond_with_dialog Meetings::Exports::ModalDialogComponent.new(
+      meeting: @meeting,
+      project: @project
+    )
+  end
+
   private
 
   def load_query
@@ -537,5 +544,20 @@ class MeetingsController < ApplicationController
 
   def timezone_params
     @timezone_params ||= params.require(:meeting).permit(:start_date, :start_time_hour).compact_blank
+  end
+
+  def export_pdf
+    job = ::Meetings::ExportJob.perform_later(
+      export: MeetingExport.create,
+      user: current_user,
+      mime_type: :pdf,
+      query: @meeting,
+      options: params.to_unsafe_h
+    )
+    if request.headers["Accept"]&.include?("application/json")
+      render json: { job_id: job.job_id }
+    else
+      redirect_to job_status_path(job.job_id)
+    end
   end
 end

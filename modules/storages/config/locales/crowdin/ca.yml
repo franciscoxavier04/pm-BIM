@@ -15,6 +15,7 @@ ca:
           oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         storage_audience: Storage Audience
+        token_exchange_scope: Storage Scope
       storages/project_storage:
         project_folder: Carpeta del projecte
         project_folder_mode: Project folder mode
@@ -225,18 +226,18 @@ ca:
       openproject_oauth: OpenProject OAuth
       project_folders: Project folders
       redirect_uri: Redirigeix URI
-      storage_audience: Storage Audience
       storage_audience_blank: No audience has been configured.
-      storage_audience_description: Obtaining tokens for audience "%{audience}".
-      storage_audience_idp: Using first access token received by identity provider, regardless of audience.
+      storage_audience_description: Exchanging tokens for audience "%{audience}".
+      storage_audience_idp: Using access token obtained by identity provider during login, regardless of audience.
       storage_oauth: Nextcloud OAuth
       storage_provider: Storage provider
+      token_exchange: Token Exchange
     health:
       actions:
         download_report: Descàrrega
         rerun_checks: Re-run all checks
         run_checks: Run checks now
-      checked: Last checked %{datetime}
+      checked: 'Last check: %{datetime}'
       checks:
         ampf_configuration:
           client_folder_creation: Automatic folder creation
@@ -246,7 +247,7 @@ ca:
           group_folder_app: 'Dependency: Group Folders'
           group_folder_contents: Group folder has expected content
           group_folder_presence: Group folder exists
-          header: Automatically managed project folder configuration
+          header: Automatically managed project folders
           userless_access: Server-side request authentication
         authentication:
           existing_token: User token
@@ -265,7 +266,7 @@ ca:
           diagnostic_request: Diagnostic request
           drive_id_exists: Drive exists
           drive_id_format: Drive ID format
-          header: Basic configuration
+          header: Configuration
           host_url_accessible: Host URL accessible
           storage_configured: Configuration complete
           tenant_id: Tenant ID
@@ -350,8 +351,9 @@ ca:
         integration: Administració Nextcloud / OpenProject
         oauth_configuration: Copy these values from %{application_link_text}.
         provider_configuration: Please make sure you have administration privileges in your Nextcloud instance and the %{application_link_text} is installed before doing the setup.
-        storage_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        storage_audience: The client ID that the Nextcloud instance uses to communicate with the identity provider.
         storage_audience_placeholder: e.g. nextcloud
+        token_exchange_scope: The scopes that should be requested during token exchange, each one separated by a space.
       no_specific_folder: Per defecte, cada usuari començarà a la seva carpeta d'inici en carregar un fitxer.
       no_storage_set_up: No hi ha emmagatzematges de fitxers configurats encara.
       not_logged_into_storage: Per seleccionar una carpeta de projecte, si us plau inicia sessió primer.
@@ -371,9 +373,9 @@ ca:
         tenant_id: Please copy the Directory (tenant) ID from the desired application and App registrations in the %{application_link_text}.
         tenant_id_placeholder: Name or UUID
       setting_up_additional_storages: Per configurar emmagatzematges de fitxers addicionals, si us plau, visita
-      setting_up_additional_storages_non_admin: Els administradors poden configurar emmagatzematges de fitxers addicionals a través d'Administració / Emmagatzematges de fitxers.
+      setting_up_additional_storages_non_admin: Administrators can set up additional file storages in Administration / File storages.
       setting_up_storages: Per configurar emmagatzematges de fitxers, si us plau, visita
-      setting_up_storages_non_admin: Els administradors poden configurar emmagatzematges de fitxers a través d'Administració / Emmagatzematges de fitxers.
+      setting_up_storages_non_admin: Administrators can set up file storages in Administration / File storages.
       type: 'Si us plau, assegura''t que tens privilegis d''administrador a la instància Nextcloud i tens la següent aplicació instal·lada abans de fer la configuració:'
       type_link_text: "\"Integració d'OpenProject\""
     label_active: Actiu
@@ -383,9 +385,9 @@ ca:
     label_creator: Autor
     label_delete_storage: Delete storage
     label_edit_storage_access_management: Edit storage access management
-    label_edit_storage_audience: Edit Storage Audience
     label_edit_storage_automatically_managed_folders: Edit storage automatically managed folders
     label_edit_storage_host: Edit storage host
+    label_edit_token_exchange: Edit token exchange configuration
     label_existing_manual_folder: Carpeta existent amb permisos gestionats automàticament
     label_file_storage: File storage
     label_host: URL d'allotjament
@@ -479,13 +481,13 @@ ca:
       description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
       label: Show attachments in the work packages files tab
     storage_audience:
-      documentation_intro: Details on the following options and what needs to be configured in the identity provider can be found in our documentation.
+      documentation_intro: Please read our documentation for details on the following options and configuration of the identity provider.
       idp:
-        helptext: OpenProject will use the first access token received by the identity provider to authenticate requests to the storage. It will not try to obtain another token.
-        label: Use first access token obtained by identity provider
+        helptext: OpenProject will use the access token received by the identity provider during log in to authenticate requests to the storage. It will not try to obtain another token.
+        label: Use access token obtained during user log in
       manual:
-        helptext: Allows you to set the audience of the storage. OpenProject will try to obtain a token for the given audience from the identity provider.
-        label: Define storage audience manually
+        helptext: OpenProject will exchange a token with the identity provider for the given audience.
+        label: Manually specify audience for which to exchange access token
     storage_list_blank_slate:
       description: Add a storage to see them here.
       heading: You don't have any storages yet.

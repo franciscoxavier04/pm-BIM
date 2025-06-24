@@ -41,8 +41,10 @@ module Storages
           context "when using OAuth2" do
             let(:user) { create(:user) }
             let(:storage) do
-              create(:nextcloud_storage_with_local_connection, :as_not_automatically_managed,
-                     oauth_client_token_user: user, origin_user_id: "m.jade@death.star")
+              create(:nextcloud_storage_with_local_connection,
+                     :as_not_automatically_managed,
+                     oauth_client_token_user: user,
+                     origin_user_id: "m.jade@death.star")
             end
 
             before { User.current = user }
@@ -72,8 +74,9 @@ module Storages
           context "when using OpenID Connect" do
             let(:storage) { create(:nextcloud_storage_configured, :oidc_sso_enabled) }
 
-            let(:user) { create(:user, authentication_provider: oidc_provider) }
+            let(:user) { create(:user, identity_url: "#{oidc_provider.slug}:123123123123") }
             let!(:oidc_provider) { create(:oidc_provider, scope:) }
+            let!(:saml_provider) { create(:saml_provider) }
             let(:scope) { "openid email profile offline_access" }
 
             before do
@@ -91,7 +94,7 @@ module Storages
 
             describe "error and warning handling" do
               it "returns a warning if the current user isn't provisioned" do
-                user.update!(identity_url: nil)
+                user.user_auth_provider_links.destroy_all
                 result = validator.call
 
                 expect(result[:non_provisioned_user]).to be_warning
@@ -102,7 +105,9 @@ module Storages
               end
 
               it "returns a warning if the user is not provisioned by an oidc provider" do
-                user.update!(identity_url: "ldap-provider:this-will-trigger-a-warning")
+                link = user.user_auth_provider_links.first
+                link.update!(auth_provider_id: saml_provider.id)
+
                 result = validator.call
 
                 expect(result[:provisioned_user_provider]).to be_warning
@@ -178,12 +183,13 @@ module Storages
 
                 context "when the server supports token exchange" do
                   let(:oidc_provider) { create(:oidc_provider, :token_exchange_capable, scope: "offline_access") }
-                  let(:exchangeable_token) { create(:oidc_user_token, user:, refresh_token: nil) }
+                  let!(:exchangeable_token) { create(:oidc_user_token, user:, refresh_token: nil) }
 
                   it "favors token exchange when refreshing" do
                     exchange_request = stub_request(:post, oidc_provider.token_endpoint)
-                                         .with(body: { audience: storage.audience, subject_token: exchangeable_token.access_token,
-                                                       grant_type: OpenIDConnect::Provider::TOKEN_EXCHANGE_GRANT_TYPE })
+                                         .with(body: hash_including(
+                                           grant_type: OpenProject::OpenIDConnect::TOKEN_EXCHANGE_GRANT_TYPE
+                                         ))
                                          .and_return_json(status: 200, body: { access_token: "NEW_TOKEN" })
 
                     expect(validator.call).to be_success
@@ -192,8 +198,9 @@ module Storages
 
                   it "fails if the exchange is met with an unexpected body" do
                     exchange_request = stub_request(:post, oidc_provider.token_endpoint)
-                                         .with(body: { audience: storage.audience, subject_token: exchangeable_token.access_token,
-                                                       grant_type: OpenIDConnect::Provider::TOKEN_EXCHANGE_GRANT_TYPE })
+                                         .with(body: hash_including(
+                                           grant_type: OpenProject::OpenIDConnect::TOKEN_EXCHANGE_GRANT_TYPE
+                                         ))
                                          .and_return_json(status: 200, body: { error: "failed " })
 
                     result = validator.call
@@ -205,8 +212,9 @@ module Storages
 
                   it "fails if the exchange fails" do
                     exchange_request = stub_request(:post, oidc_provider.token_endpoint)
-                                         .with(body: { audience: storage.audience, subject_token: exchangeable_token.access_token,
-                                                       grant_type: OpenIDConnect::Provider::TOKEN_EXCHANGE_GRANT_TYPE })
+                                         .with(body: hash_including(
+                                           grant_type: OpenProject::OpenIDConnect::TOKEN_EXCHANGE_GRANT_TYPE
+                                         ))
                                          .and_return(status: 401)
 
                     result = validator.call

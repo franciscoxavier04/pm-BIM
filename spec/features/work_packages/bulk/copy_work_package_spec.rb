@@ -33,12 +33,14 @@ RSpec.describe "Copy work packages through Rails view", :js do
 
   shared_let(:work_package) do
     create(:work_package,
+           subject: "work_package",
            author: dev,
            project:,
            type:)
   end
   shared_let(:work_package2) do
     create(:work_package,
+           subject: "work_package2",
            author: dev,
            project:,
            type:)
@@ -67,7 +69,6 @@ RSpec.describe "Copy work packages through Rails view", :js do
       let(:wp_table_target) { Pages::WorkPackagesTable.new(project2) }
 
       before do
-        wp_table.expect_work_package_count 2
         context_menu.open_for work_package
         context_menu.choose "Bulk copy"
 
@@ -104,7 +105,7 @@ RSpec.describe "Copy work packages through Rails view", :js do
         expect(copied_wps.map { |wp| wp.journals.last.notes }.uniq).to eq(["A note on copy"])
       end
 
-      context "when the limit to move in the frontend is 1",
+      context "when the limit to move in the frontend is reached",
               with_settings: { work_packages_bulk_request_limit: 1 } do
         it "copies them in the background and shows a status page" do
           select version.name, from: "version_id"
@@ -120,42 +121,56 @@ RSpec.describe "Copy work packages through Rails view", :js do
         end
       end
 
-      context "with a work package having a child" do
-        let!(:child) do
+      context "with hierarchies and relations" do
+        shared_let(:child) do
           create(:work_package,
+                 subject: "child",
                  author: dev,
                  project:,
                  type:,
                  parent: work_package)
         end
+        shared_let(:child2) do
+          create(:work_package,
+                 subject: "child2",
+                 author: dev,
+                 project:,
+                 type:,
+                 parent: work_package2)
+        end
         let!(:relation) do
           create(:relation,
                  from: child,
-                 to: work_package,
+                 to: child2,
                  relation_type: Relation::TYPE_RELATES)
         end
 
         before do
-          login_as current_user
-          wp_table.visit!
-          expect_angular_frontend_initialized
-          wp_table.expect_work_package_listed work_package, work_package2, child
-          find("body").send_keys [:control, "a"]
-          wp_table.expect_work_package_count 3
-          context_menu.open_for work_package
-          context_menu.choose "Bulk copy"
+          # make work_package and child be parent/child with automatically scheduled parent
+          work_package.update(
+            subject: "work_package parent",
+            start_date: "2025-05-22", due_date: "2025-05-23", duration: 2,
+            schedule_manually: false
+          )
+          child.update(
+            start_date: "2025-05-22", due_date: "2025-05-23", duration: 2,
+            schedule_manually: true
+          )
 
-          expect(page).to have_css("#new_project_id") # rubocop:disable RSpec/ExpectInHook
-          expect_page_reload do
-            select_autocomplete page.find_test_selector("new_project_id"),
-                                query: project2.name,
-                                select_text: project2.name,
-                                results_selector: "body"
-          end
-          sleep(1) # wait for the change of target project to finish updating the page
+          # make work_package2 and child2 be parent/child with manually scheduled parent
+          work_package2.update(
+            subject: "work_package2 parent",
+            start_date: "2025-05-21", due_date: "2025-05-26", duration: 6,
+            schedule_manually: true
+          )
+          child2.update(
+            start_date: "2025-05-23", due_date: "2025-05-23", duration: 1,
+            schedule_manually: true
+          )
         end
 
-        it "copies WPs with parent/child hierarchy and relations maintained" do
+        it "copies WPs with parent/child hierarchy and relations maintained, " \
+           "as well as dates and scheduling modes" do
           click_on "Copy and follow"
 
           wp_table_target.expect_current_path
@@ -165,25 +180,87 @@ RSpec.describe "Copy work packages through Rails view", :js do
           expect(work_package.reload.project_id).to eq(project.id)
           expect(work_package2.reload.project_id).to eq(project.id)
           expect(child.reload.project_id).to eq(project.id)
+          expect(child2.reload.project_id).to eq(project.id)
 
-          # Check project of last three created wps
-          copied_wps = WorkPackage.last(3)
-          expect(copied_wps.map(&:project_id).uniq).to eq([project2.id])
+          # Check target project contains the copied work packages
+          expect_work_packages(project2.reload.work_packages, <<~TABLE)
+            | hierarchy            | start date | due date   | duration | scheduling mode |
+            | work_package parent  | 2025-05-22 | 2025-05-23 |        2 | automatic       |
+            |   child              | 2025-05-22 | 2025-05-23 |        2 | manual          |
+            | work_package2 parent | 2025-05-21 | 2025-05-26 |        6 | manual          |
+            |   child2             | 2025-05-23 | 2025-05-23 |        1 | manual          |
+          TABLE
 
-          new_parent = project2.work_packages.find_by(subject: work_package.subject)
           new_child = project2.work_packages.find_by(subject: child.subject)
+          new_child2 = project2.work_packages.find_by(subject: child2.subject)
 
-          expect(new_child.parent)
-            .to eq new_parent
+          expect(new_child.relations.count).to eq 1
+          expect(new_child.relations.first).to have_attributes(
+            relation_type: relation.relation_type,
+            to_id: new_child2.id
+          )
+        end
+      end
 
-          expect(new_child.relations.count)
-            .to eq 1
+      context "with predecessor-successor relations" do
+        shared_let(:work_package3) do
+          create(:work_package,
+                 author: dev,
+                 project:,
+                 type:)
+        end
+        let!(:relation_to_successor_automatic) do
+          create(:follows_relation,
+                 predecessor: work_package,
+                 successor: work_package2)
+        end
+        let!(:relation_to_successor_manual) do
+          create(:follows_relation,
+                 predecessor: work_package,
+                 successor: work_package3)
+        end
 
-          expect(new_child.relations.first.relation_type)
-            .to eq relation.relation_type
+        before do
+          work_package.update(
+            subject: "predecessor",
+            start_date: "2025-05-20", due_date: "2025-05-21", duration: 2,
+            schedule_manually: true
+          )
+          work_package2.update(
+            subject: "successor automatic",
+            start_date: "2025-05-22", due_date: "2025-05-23", duration: 2,
+            schedule_manually: false
+          )
+          work_package3.update(
+            subject: "successor manual",
+            start_date: "2025-05-28", due_date: "2025-05-28", duration: 1,
+            schedule_manually: true
+          )
+        end
 
-          expect(new_child.relations.first.to_id)
-            .to eq new_parent.id
+        it "copies WPs with relations maintained, " \
+           "as well as dates and scheduling modes" do
+          click_on "Copy and follow"
+
+          wp_table_target.expect_current_path
+          expect(page).to have_css("#projects-menu", text: "Target")
+
+          # Check target project contains the copied work packages
+          expect_work_packages(project2.reload.work_packages, <<~TABLE)
+            | subject             | start date | due date   | duration | scheduling mode |
+            | predecessor         | 2025-05-20 | 2025-05-21 |        2 | manual          |
+            | successor automatic | 2025-05-22 | 2025-05-23 |        2 | automatic       |
+            | successor manual    | 2025-05-28 | 2025-05-28 |        1 | manual          |
+          TABLE
+
+          new_predecessor = project2.work_packages.find_by(subject: work_package.subject)
+
+          expect(new_predecessor.relations.count).to eq 2
+          expect(new_predecessor.relations)
+            .to all(have_attributes(
+                      relation_type: Relation::TYPE_FOLLOWS,
+                      to_id: new_predecessor.id
+                    ))
         end
       end
 

@@ -41,21 +41,24 @@ module EnterpriseEdition
     include PlanForFeature
 
     DEFAULT_VARIANT = :inline
-    VARIANT_OPTIONS = %i[inline medium].freeze
+    VARIANT_OPTIONS = %i[inline medium large].freeze
 
     # @param feature_key [Symbol, NilClass] The key of the feature to show the banner for.
-    # @param variant [Symbol, NilClass] The variant of the banner comopnent.
+    # @param variant [Symbol, NilClass] The variant of the banner component.
     # @param image [String, NilClass] Path to the image to show on the banner, or nil.
-    #   Required when variant is :medium.
+    #   Only applicable and required when variant is :medium.
+    # @param video [String, NilClass] Path to the video to show on the banner, or nil.
+    #   Only applicable and required when variant is :video.
     # @param i18n_scope [String] Provide the i18n scope to look for title, description, and features.
     #                            Defaults to "ee.upsell.{feature_key}"
     # @param dismissable [boolean] Allow this banner to be dismissed.
     # @param show_always [boolean] Always show the banner, regardless of the dismissed or feature state.
     # @param dismiss_key [String] Provide a string to identify this banner when being dismissed. Defaults to feature_key
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(feature_key, # rubocop:disable Metrics/AbcSize
+    def initialize(feature_key,
                    variant: DEFAULT_VARIANT,
                    image: nil,
+                   video: nil,
                    i18n_scope: "ee.upsell.#{feature_key}",
                    dismissable: false,
                    show_always: false,
@@ -63,27 +66,26 @@ module EnterpriseEdition
                    **system_arguments)
       @variant = fetch_or_fallback(VARIANT_OPTIONS, variant, DEFAULT_VARIANT)
       @image = image
+      @video = video
       @dismissable = dismissable
-      @dismiss_key = dismiss_key
+      @dismiss_key = dismiss_key.to_s
+
       @show_always = show_always
 
       self.feature_key = feature_key
       self.i18n_scope = i18n_scope
 
+      trial_overrides! if trial_feature?
+
       if @variant == :medium && @image.nil?
         raise ArgumentError, "The 'image' parameter is required when the variant is :medium."
       end
 
-      @system_arguments = system_arguments
-      @system_arguments[:tag] = :div
-      @system_arguments[:mb] ||= 2
-      @system_arguments[:id] = "op-enterprise-banner-#{feature_key.to_s.tr('_', '-')}"
-      @system_arguments[:test_selector] = "op-enterprise-banner"
-      @system_arguments[:classes] = class_names(
-        @system_arguments[:classes],
-        "op-enterprise-banner",
-        @variant == :medium ? "op-enterprise-banner_medium" : nil
-      )
+      if @variant == :large && @video.nil?
+        raise ArgumentError, "The 'video' parameter is required when the variant is :large."
+      end
+
+      set_system_arguments(system_arguments, feature_key)
 
       super
     end
@@ -97,20 +99,48 @@ module EnterpriseEdition
       @variant == :medium
     end
 
+    def large?
+      @variant == :large
+    end
+
     def inline?
       @variant == :inline
     end
 
     def wrapper_key
-      "enterprise_banner_#{feature_key}"
+      "enterprise_banner_#{@dismiss_key}"
     end
 
     private
 
+    def set_system_arguments(system_arguments, feature_key)
+      @system_arguments = system_arguments
+      @system_arguments[:tag] = :div
+      @system_arguments[:mb] ||= 2
+      @system_arguments[:id] = "op-enterprise-banner-#{feature_key.to_s.tr('_', '-')}"
+      @system_arguments[:test_selector] = "op-enterprise-banner"
+      @system_arguments[:classes] = class_names(
+        @system_arguments[:classes],
+        "op-enterprise-banner",
+        "op-enterprise-banner_medium" => @variant == :medium,
+        "op-enterprise-banner_large" => @variant == :large,
+        "op-enterprise-banner_trial" => trial_feature?
+      )
+    end
+
+    def trial_overrides!
+      @dismissable = true
+      @dismiss_key += "_trial" unless @dismiss_key.end_with?("_trial")
+      @variant = :inline
+    end
+
     def render?
       return true if @show_always
+      return false if dismissed?
+      return true if feature_available? && trial_feature?
+      return false if EnterpriseToken.hide_banners?
 
-      !(EnterpriseToken.hide_banners? || feature_available? || dismissed?)
+      !feature_available?
     end
 
     def feature_available?
@@ -121,6 +151,10 @@ module EnterpriseEdition
       return false unless @dismissable
 
       User.current.pref.dismissed_banner?(@dismiss_key)
+    end
+
+    def trial_feature?
+      EnterpriseToken.trialling?(feature_key)
     end
   end
 end

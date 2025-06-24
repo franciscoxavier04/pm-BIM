@@ -125,7 +125,7 @@ module My
       @time_entries = TimeEntry
         .includes(:project, :activity, { work_package: :status })
         .where(project_id: Project.visible.select(:id))
-        .where(user: User.current, spent_on: time_scope)
+        .where(user: User.current, spent_on: time_scope, ongoing: false)
         .order(:spent_on, :start_time, :hours)
     end
 

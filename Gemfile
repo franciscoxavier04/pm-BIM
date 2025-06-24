@@ -36,7 +36,7 @@ ruby File.read(File.expand_path(".ruby-version", __dir__)).strip
 
 gem "actionpack-xml_parser", "~> 2.0.0"
 gem "activemodel-serializers-xml", "~> 1.0.1"
-gem "activerecord-import", "~> 2.1.0"
+gem "activerecord-import", "~> 2.2.0"
 gem "activerecord-session_store", "~> 2.2.0"
 gem "ox"
 gem "rails", "~> 8.0.1"
@@ -62,7 +62,7 @@ gem "friendly_id", "~> 5.5.0"
 gem "acts_as_list", "~> 1.2.0"
 gem "acts_as_tree", "~> 2.9.0"
 gem "awesome_nested_set", "~> 3.8.0"
-gem "closure_tree", "~> 7.4.0"
+gem "closure_tree", "~> 8.0.0"
 gem "rubytree", "~> 2.1.0"
 # Only used in down migrations now.
 # Is to be removed once the referencing migrations have been squashed.
@@ -158,12 +158,12 @@ gem "structured_warnings", "~> 0.5.0"
 gem "airbrake", "~> 13.0.0", require: false
 
 gem "markly", "~> 0.13" # another markdown parser like commonmarker, but with AST support used in PDF export
-gem "md_to_pdf", git: "https://github.com/opf/md-to-pdf", ref: "67d14c6c7a13f918d158bde1a51ef1067a8cf724"
+gem "md_to_pdf", git: "https://github.com/opf/md-to-pdf", ref: "be1ab00e2c49ce2e5e08a4edb4733438081c53ab"
 gem "prawn", "~> 2.4"
 gem "ttfunk", "~> 1.7.0" # remove after https://github.com/prawnpdf/prawn/issues/1346 resolved.
 
 # prawn implicitly depends on matrix gem no longer in ruby core with 3.1
-gem "matrix", "~> 0.4.2"
+gem "matrix", "~> 0.4.3"
 
 gem "meta-tags", "~> 2.22.0"
 
@@ -201,7 +201,7 @@ gem "aws-sdk-core", "~> 3.107"
 # File upload via fog + screenshots on travis
 gem "aws-sdk-s3", "~> 1.91"
 
-gem "openproject-token", "~> 6.0.0"
+gem "openproject-token", "~> 7.2.0"
 
 gem "plaintext", "~> 0.3.2"
 
@@ -225,13 +225,13 @@ gem "appsignal", "~> 3.10.0", require: false
 
 # Yabeda integration
 gem "yabeda-activerecord"
-gem "yabeda-prometheus-mmap"
+gem "yabeda-prometheus-mmap", require: false
 gem "yabeda-puma-plugin"
 gem "yabeda-rails"
 
 gem "view_component"
 # Lookbook
-gem "lookbook", "~> 2.3.4"
+gem "lookbook", "~> 2.3.11"
 
 # Require factory_bot for usage with openproject plugins testing
 gem "factory_bot", "~> 6.5.0", require: false
@@ -400,7 +400,7 @@ platforms :mri, :mingw, :x64_mingw do
 
   # Have application level locks on the database to have a mutex shared between workers/hosts.
   # We e.g. employ this to safeguard the creation of journals.
-  gem "with_advisory_lock", "~> 5.1.0"
+  gem "with_advisory_lock", "~> 5.3.0"
 end
 
 # Load Gemfile.modules explicitly to allow dependabot to work
@@ -417,4 +417,4 @@ end
 
 gem "openproject-octicons", "~>19.25.0"
 gem "openproject-octicons_helper", "~>19.25.0"
-gem "openproject-primer_view_components", "~>0.66.2"
+gem "openproject-primer_view_components", "~>0.70.0"

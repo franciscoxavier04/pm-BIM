@@ -28,7 +28,25 @@
  / ++
  /
 
-$op-enterprise-banner-fixed-height: 220px
+$op-enterprise-banner-fixed-height-medium: 220px
+$op-enterprise-banner-fixed-height-large: 320px
+
+.op-enterprise-banner-container
+  container-name: banner
+  container-type: inline-size
+
+// Hide the medium banner image when the container is smaller than 1000px
+@container banner (max-width: 1000px)
+  .op-enterprise-banner.op-enterprise-banner_medium
+    grid-template-columns: 1fr
+    height: auto
+
+  .op-enterprise-banner--image
+    background-image: none !important
+
+@container banner (max-width: 1300px)
+  .op-enterprise-banner .op-enterprise-banner--image
+    background-size: cover
 
 .op-enterprise-banner
   display: grid
@@ -47,11 +65,7 @@ $op-enterprise-banner-fixed-height: 220px
     padding: 0
     grid-template-areas: "content graphic"
     grid-template-columns: 2fr 1fr
-    height: $op-enterprise-banner-fixed-height
-
-    @media screen and (max-width: $breakpoint-lg)
-      grid-template-columns: 1fr
-      height: auto
+    height: $op-enterprise-banner-fixed-height-medium
 
   &_medium &
     padding: 0
@@ -63,8 +77,37 @@ $op-enterprise-banner-fixed-height: 220px
       align-self: center
       padding: var(--base-size-16)
 
+  &_large
+    position: relative
+    padding: 0
+    display: flex
+    justify-content: center
+    grid-template-areas: "content"
+    grid-template-columns: 100%
+
+  &_large &
+    &--title-wrapper
+      justify-content: center
+
+    &--description
+      text-align: center
+
   &--image
     @include upsell-image
+
+  &--video-control
+    display: block
+    margin: 0 auto
+    max-width: 50vw
+    object-fit: contain
+    box-shadow: var(--shadow-floating-small)
+    border-radius: 25px
+    border: 1px solid var(--borderColor-default)
+
+    @media screen and (max-width: $breakpoint-md)
+      max-width: unset
+      width: 100%
+      border-radius: 15px
 
   &--visual
     display: grid
@@ -77,7 +120,7 @@ $op-enterprise-banner-fixed-height: 220px
 
   &--close-icon
     .Button-visual
-      color: var(--enterprise-upsell-color)
+    color: var(--enterprise-upsell-color)
 
     &_hovering
       position: absolute

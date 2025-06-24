@@ -14,6 +14,15 @@ export class TurboRequestsService {
     html:string,
     headers:Headers
   }> {
+    const defaultHeaders = {
+      'X-Authentication-Scheme': 'Session',
+    };
+
+    init.headers = {
+      ...defaultHeaders,
+      ...init.headers,
+    };
+
     return fetch(url, init)
       .then((response) => {
         return response.text().then((html) => ({
@@ -72,7 +81,9 @@ export class TurboRequestsService {
   public requestStream(url:string):Promise<{ html:string, headers:Headers }> {
     return this.request(url, {
       method: 'GET',
-      headers: { Accept: 'text/vnd.turbo-stream.html' },
+      headers: {
+        Accept: 'text/vnd.turbo-stream.html',
+      },
       credentials: 'same-origin',
     });
   }

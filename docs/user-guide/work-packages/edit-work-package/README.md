@@ -3,7 +3,7 @@ sidebar_navigation:
   title: Edit work packages
   priority: 980
 description: How to edit work packages in OpenProject.
-keywords: edit work packages
+keywords: edit work packages, reminders, work package reminders, attachment, internal comment, bulk edit
 ---
 
 # Edit work packages
@@ -96,6 +96,7 @@ You can copy a direct link to a specific work package comment in OpenProject. To
 ![Copy a link to a work package comment in OpenProject](openproject_user_guide_wp_edit_comment_copy_link.png)
 
 ### Internal comments (Enterprise add-on)
+
 > [!NOTE]
 > Internal comments are an Enterprise add-on and can only be used with [Enterprise cloud](../../../enterprise-guide/enterprise-cloud-guide/) or [Enterprise on-premises](../../../enterprise-guide/enterprise-on-premises-guide/). An upgrade from the free Community edition is easily possible.
 
@@ -143,6 +144,21 @@ If you want to be reminded about a work package at a later point in time, you ca
 
 ![Work package reminder icon in OpenProject](openproject_user_guide_wp_reminder_icon.png)
 
+A list with helpful pre-defined options will open, from which you can select: 
+
+- tomorrow
+- in 3 days
+- in a week
+- in a month
+- at a particular date/time
+
+Selecting any of these options will display a modal. The time will be set to 9 am for the date you selected (apart from the last option). This modal allows you to adjust the pre-filled date and time and to add a note. This note will be visible when the reminder is triggered in Notification center.
+
+> [!TIP]
+> All the pre-defined reminder options will be set to 9 am of the selected date.
+
+![Pre-defined options for a work package reminder in OpenProject](openproject_user_guide_wp_reminder_quick_options.png) 
+
 Specify the time and date on which you would like to be reminded and optionally add a note for more context. Then click the **Set reminder** button.
 
 ![Set reminder in OpenProject work packages](openproject_user_guide_wp_set_reminder.png)
@@ -155,14 +171,11 @@ At the configured date and time, you will receive the reminder in [Notification 
 
 ![Work package reminder in OpenProject notification center](openproject_user_guide_wp_set_reminder_notification.png)
 
->  [!NOTE] 
->
+> [!NOTE] 
 > If multiple notifications exist for a single work package, the reminder will take precedence, showing the reminder note at the bottom of the  page. 
->
 > In case a work package has both a reminder and date alert  notification set up, then the date alert is combined with the reminder note, so that both are visible.
 
 > [!TIP]
->
 > You can set to receive immediate notifications via e-mail for personal reminders. To do that, adjust your [account settings](../../account-settings/#email-reminders) accordingly.
 
 ## Watchers
@@ -170,7 +183,9 @@ At the configured date and time, you will receive the reminder in [Notification 
 ### How to add watchers to a work package
 
 <div class="glossary">
+
 **Watchers** can be added to a work package in order to notify members about changes. They will receive notifications according to their notification settings if changes are made to the respective work package.
+
 </div>
 
 To add watchers, open the work package [detailed view](../../work-packages/work-package-views/#full-screen-view), select the *Watchers* tab on the right hand side and choose the members you want to add with the drop-down menu or by starting to type their name.

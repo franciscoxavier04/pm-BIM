@@ -142,7 +142,7 @@ Naming/ClassAndModuleCamelCase:
 Naming/FileName:
   Enabled: false
 
-Naming/PredicateName:
+Naming/PredicatePrefix:
   ForbiddenPrefixes:
     - is_
 
@@ -203,6 +203,10 @@ RSpec/DescribeClass:
   Exclude:
     - 'spec/features/**/*.rb'
     - 'modules/*/spec/features/**/*.rb'
+
+# Nothing wrong with `include_examples` when used properly.
+RSpec/IncludeExamples:
+  Enabled: false
 
 # Allow number HTTP status codes in specs
 RSpecRails/HttpStatus:

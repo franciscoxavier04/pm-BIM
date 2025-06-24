@@ -173,7 +173,7 @@ are cached in a docker volume. Meaning that from the 2nd run onwards it will sta
 
 Wait until you see `✔ Compiled successfully.` in the frontend logs and the success message from Puma in the backend
 logs. This means both frontend and backend have come up successfully. You can now access OpenProject
-under http://localhost:3000, and via the live-reloaded under http://localhost:4200.
+under `http://localhost:3000`, and via the live-reloaded under `http://localhost:4200`.
 
 Again the first request to the server can take some time too. But subsequent requests will be a lot faster.
 
@@ -222,7 +222,7 @@ Adding additional external docker networks to the test services like `backend-te
 `docker-compose.override.yml`) breaks the functionality of the Selenium service. This results in failing tests running
 inside a Selenium context, like feature and UI tests.
 
-```
+```text
 Selenium::WebDriver::Error::UnknownError:
   unknown error: net::ERR_CONNECTION_REFUSED
     (Session info: chrome=130.0.6723.91)

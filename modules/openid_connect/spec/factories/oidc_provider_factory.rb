@@ -30,8 +30,8 @@
 
 FactoryBot.define do
   factory :oidc_provider, class: "OpenIDConnect::Provider" do
-    display_name { "Foobar" }
-    slug { "oidc-foobar" }
+    sequence(:display_name) { |n| "Foobar ##{n}" }
+    sequence(:slug) { |n| "oidc-foobar-#{n}" }
     limit_self_registration { true }
     creator factory: :user
 
@@ -52,7 +52,7 @@ FactoryBot.define do
     trait :token_exchange_capable do
       callback(:after_build) do |provider|
         provider.options["grant_types_supported"] ||= []
-        provider.options["grant_types_supported"] << OpenIDConnect::Provider::TOKEN_EXCHANGE_GRANT_TYPE
+        provider.options["grant_types_supported"] << OpenProject::OpenIDConnect::TOKEN_EXCHANGE_GRANT_TYPE
       end
     end
   end

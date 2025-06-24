@@ -139,6 +139,7 @@ class Project < ApplicationRecord
                 datetime: :created_at
 
   register_journal_formatted_fields "active", formatter_key: :active_status
+  register_journal_formatted_fields "cause", formatter_key: :cause
   register_journal_formatted_fields "templated", formatter_key: :template
   register_journal_formatted_fields "identifier", "name", formatter_key: :plaintext
   register_journal_formatted_fields "status_explanation", "description", formatter_key: :diff
@@ -203,6 +204,7 @@ class Project < ApplicationRecord
   scope :archived, -> { where(active: false) }
   scope :with_member, ->(user = User.current) { where(id: user.memberships.select(:project_id)) }
   scope :without_member, ->(user = User.current) { where.not(id: user.memberships.select(:project_id)) }
+  scope :templated, -> { where(templated: true) }
 
   scopes :activated_time_activity,
          :visible_with_activated_time_activity

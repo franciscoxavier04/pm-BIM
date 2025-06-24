@@ -233,6 +233,28 @@ ms:
     blankslate:
       title: "No meetings to display"
       desc: "There are no meetings that meet the active filter criteria."
+    label_export_pdf: "Export PDF"
+    export:
+      your_meeting_export: "Meeting is being exported"
+    export_pdf_dialog:
+      title: Export PDF
+      description: Generate a printable PDF file of this meeting at the current state.
+      include_participants:
+        label: Include list of participants
+        caption: A list of participants will be preset above the meeting agenda.
+      include_attachments:
+        label: Include list of attachments
+        caption: A list containing the filenames of attachments will be appended at the end.
+      include_backlog:
+        label: Include backlog
+        caption: Backlog elements are not normally considered part of a meeting occurrence but you can choose to include them.
+      include_outcomes:
+        label: Include agenda outcomes
+        caption: If your agenda outcomes contain confidential information, you can choose to not include them in the export.
+      footer_text:
+        label: Footer text
+        caption: This text will appear on every page on the right of the footer.
+      submit_button: Download
   meeting_section:
     untitled_title: "Bahagian tanpa tajuk"
     delete_confirmation: "Memadam bahagian ini akan memadam setiap item agenda juga. Adakah anda pasti anda ingin berbuat demikian?"
@@ -322,7 +344,7 @@ ms:
   permission_delete_meetings: "Padam mesyuarat"
   permission_view_meetings: "Lihat mesyuarat"
   permission_manage_agendas: "Urus agenda"
-  permission_manage_agendas_explanation: "Benarkan pengurusan item agenda Mesyuarat Dinamik."
+  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
   permission_manage_outcomes: "Manage outcomes"
   permission_send_meeting_invites_and_outcomes: "Send meeting invites and outcomes to participants"
   project_module_meetings: "Mesyuarat-mesyuarat"

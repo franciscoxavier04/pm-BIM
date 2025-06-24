@@ -9,7 +9,9 @@ keywords: gantt chart, timeline, project plan
 # Gantt charts
 
 <div class="glossary">
+
 The **Gantt charts** module in OpenProject displays the work packages in a timeline. You can collaboratively create and manage your project plan, have your project timelines available to all team members, and share up-to-date information with stakeholders. You can add start and finish dates and adapt them via drag and drop directly in the Gantt chart. Also, you can add dependencies, predecessors, or followers within the Gantt chart.
+
 </div>
 
 | Topic                                                                                                           | Content                                                                   |

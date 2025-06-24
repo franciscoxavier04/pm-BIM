@@ -157,7 +157,33 @@ class WorkPackages::DatePickerController < ApplicationController
                                                          focused_field:,
                                                          triggering_field: params[:triggering_field],
                                                          touched_field_map:,
-                                                         date_mode:)
+                                                         date_mode:,
+                                                         live_region_message:)
+  end
+
+  def live_region_message
+    message_parts = [
+      "Scheduling mode: #{scheduling_label}",
+      working_days_label
+    ]
+
+    message_parts << "Start date: #{@work_package.start_date}" if @work_package.start_date.present?
+    message_parts << "Finish date: #{@work_package.due_date}" if @work_package.due_date.present?
+    message_parts << "Duration: #{@work_package.duration} days" if @work_package.duration.present?
+
+    I18n.t(
+      "work_packages.datepicker_modal.update_inputs_aria_live_message",
+      message: message_parts.join(", ")
+    )
+  end
+
+  def working_days_label
+    I18n.t("activerecord.attributes.work_package.include_non_working_days.#{@work_package.ignore_non_working_days || false}")
+  end
+
+  def scheduling_label
+    mode = @work_package.schedule_manually ? "manual" : "automatic"
+    I18n.t("work_packages.datepicker_modal.mode.#{mode}")
   end
 
   def focused_field
@@ -283,7 +309,7 @@ class WorkPackages::DatePickerController < ApplicationController
   end
 
   def handle_milestone_dates
-    if work_package.is_milestone?
+    if work_package.is_milestone? && params.require(:work_package).has_key?(:start_date)
       # Set the dueDate as the SetAttributesService will otherwise throw an error because the fields do not match
       params.require(:work_package)[:due_date] = params.require(:work_package)[:start_date]
       params.require(:work_package)[:due_date_touched] = "true"
