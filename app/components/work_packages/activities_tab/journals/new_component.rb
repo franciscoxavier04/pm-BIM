@@ -35,17 +35,19 @@ module WorkPackages
         include OpTurbo::Streamable
         include WorkPackages::ActivitiesTab::StimulusControllers
 
-        def initialize(work_package:, journal: nil, form_hidden_initially: true)
+        def initialize(work_package:, filter:, last_server_timestamp:, journal: nil, form_hidden_initially: true)
           super
 
           @work_package = work_package
+          @filter = filter
+          @last_server_timestamp = last_server_timestamp
           @journal = journal
           @form_hidden_initially = form_hidden_initially
         end
 
         private
 
-        attr_reader :work_package, :form_hidden_initially
+        attr_reader :work_package, :filter, :last_server_timestamp, :form_hidden_initially
 
         def journal
           @journal || Journal.new(journable: work_package)

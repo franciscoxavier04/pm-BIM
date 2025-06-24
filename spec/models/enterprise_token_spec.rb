@@ -154,43 +154,6 @@ RSpec.describe EnterpriseToken do
     end
   end
 
-  describe ".banner_type_for" do
-    before do
-      allow(described_class).to receive(:allows_to?).with(:active_feature).and_return(true)
-      allow(described_class).to receive(:allows_to?).with(:inactive_feature).and_return(false)
-    end
-
-    context "without an EnterpriseToken" do
-      before do
-        allow(described_class).to receive(:active?).and_return(false)
-      end
-
-      it "returns :no_token" do
-        expect(described_class.banner_type_for(feature: :active_feature)).to eq(:no_token)
-      end
-    end
-
-    context "with a feature that is included in the EnterpriseToken" do
-      before do
-        allow(described_class).to receive(:active?).and_return(true)
-      end
-
-      it "returns nil" do
-        expect(described_class.banner_type_for(feature: :active_feature)).to be_nil
-      end
-    end
-
-    context "with a feature that is not included in the EnterpriseToken" do
-      before do
-        allow(described_class).to receive(:active?).and_return(true)
-      end
-
-      it "returns :upsell" do
-        expect(described_class.banner_type_for(feature: :inactive_feature)).to eq(:upsell)
-      end
-    end
-  end
-
   context "with an existing token" do
     context "when inner token is active" do
       subject! do
@@ -374,6 +337,20 @@ RSpec.describe EnterpriseToken do
         (valid_until IS NULL OR valid_until >= '2026-06-01'))
       SQL
     end
+
+    it "is consistent with #active?" do
+      combinations = [nil, Date.yesterday, Date.current, Date.tomorrow]
+        .then { |dates| dates.product(dates) }
+      combinations.each do |starts_at, expires_at|
+        described_class.delete_all
+        token = create_enterprise_token(starts_at:, expires_at:)
+        if token.active?
+          expect(described_class.active).to include(token), "Expected .active to have returned active token #{token.inspect}"
+        else
+          expect(described_class.active).to be_empty, "Expected .active to have NOT returned inactive token #{token.inspect}"
+        end
+      end
+    end
   end
 
   describe ".available_features" do
@@ -540,6 +517,112 @@ RSpec.describe EnterpriseToken do
 
       it "is false" do
         expect(token.unlimited_users?).to be false
+      end
+    end
+  end
+
+  describe "#expiring_soon?" do
+    context "when token expiration date is within 30 days" do
+      it "returns true" do
+        expect(build_enterprise_token(expires_at: Date.current)).to be_expiring_soon
+        expect(build_enterprise_token(expires_at: Date.current.next_day(10))).to be_expiring_soon
+        expect(build_enterprise_token(expires_at: Date.current.next_day(30))).to be_expiring_soon
+      end
+    end
+
+    context "when token has no expiration date" do
+      it "returns false" do
+        expect(build_enterprise_token(expires_at: nil)).not_to be_expiring_soon
+      end
+    end
+
+    context "when token expiration date is within 30 days but token is not active yet" do
+      it "returns false" do
+        expect(build_enterprise_token(starts_at: Date.tomorrow, expires_at: Date.current.next_day(20))).not_to be_expiring_soon
+      end
+    end
+
+    context "when token is expired but in grace period" do
+      it "returns false" do
+        expect(build_enterprise_token(expires_at: Date.yesterday, reprieve_days: 1)).not_to be_expiring_soon
+      end
+    end
+
+    context "when token is expired" do
+      it "returns false" do
+        expect(build_enterprise_token(expires_at: Date.current.prev_day(10), reprieve_days: 5)).not_to be_expiring_soon
+      end
+    end
+  end
+
+  describe "#in_grace_period?" do
+    context "when token has no expiration date" do
+      it "returns false" do
+        expect(build_enterprise_token(expires_at: nil)).not_to be_in_grace_period
+      end
+    end
+
+    context "when token expiration date is today or in the future" do
+      it "returns false" do
+        expect(build_enterprise_token(expires_at: Date.current, reprieve_days: 100)).not_to be_in_grace_period
+        expect(build_enterprise_token(expires_at: Date.tomorrow, reprieve_days: 100)).not_to be_in_grace_period
+      end
+    end
+
+    context "when token expiration date is in the past within reprieve_days days" do
+      it "returns true" do
+        expect(build_enterprise_token(expires_at: Date.yesterday, reprieve_days: 1)).to be_in_grace_period
+        expect(build_enterprise_token(expires_at: Date.current.prev_day(10), reprieve_days: 10)).to be_in_grace_period
+        expect(build_enterprise_token(expires_at: Date.current.prev_day(10), reprieve_days: 20)).to be_in_grace_period
+      end
+    end
+
+    context "when token expiration date is in the past outside of reprieve_days days" do
+      it "returns false" do
+        expect(build_enterprise_token(expires_at: Date.yesterday, reprieve_days: 0)).not_to be_in_grace_period
+        expect(build_enterprise_token(expires_at: Date.current.prev_day(10), reprieve_days: 9)).not_to be_in_grace_period
+      end
+    end
+  end
+
+  describe "#expired?" do
+    context "when token has no expiration date" do
+      let(:token) { build_enterprise_token(expires_at: nil) }
+
+      it "is not expired" do
+        expect(token).not_to be_expired
+      end
+    end
+
+    context "when token is invalid" do
+      let(:token) { build_enterprise_token(domain: "wrong.domain") }
+
+      it "is not expired" do
+        expect(token).not_to be_expired
+      end
+    end
+
+    context "when token expiration date is in the past" do
+      let(:token) { build_enterprise_token(expires_at: Date.yesterday) }
+
+      it "is expired" do
+        expect(token).to be_expired
+      end
+    end
+
+    context "when token expiration date is today" do
+      let(:token) { build_enterprise_token(expires_at: Date.current) }
+
+      it "is not expired" do
+        expect(token).not_to be_expired
+      end
+    end
+
+    context "when token expiration date is in the future" do
+      let(:token) { build_enterprise_token(expires_at: Date.tomorrow) }
+
+      it "is not expired" do
+        expect(token).not_to be_expired
       end
     end
   end

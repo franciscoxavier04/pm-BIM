@@ -88,9 +88,6 @@ pt-BR:
         type_token_text: "Digitar texto do token de suporte"
         token_placeholder: "Colar seu token de suporte da edição Enterprise"
       add_token: "Carregar um token de suporte da edição Enterprise "
-      delete_token_modal:
-        text: "Tem a certeza de que deseja remover o token atual da edição Enterprise?"
-        title: "Excluir token"
       replace_token: "Substitua seu token atual de suporte"
       order: "Solicitar edição Enterprise local"
       paste: "Cole o seu token de suporte da edição Enterprise"
@@ -102,8 +99,13 @@ pt-BR:
       buttons:
         upgrade: "Atualizar agora"
         contact: "Contate-nos para uma demonstração"
-      enterprise_info_html: "é um complemento do <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> Enterprise."
-      upgrade_info: "Por favor, faça o upgrade para um plano pago para ativar e começar a usá-lo em sua equipe."
+      status:
+        expired: "Expired"
+        expiring_soon: "Expiring soon"
+        in_grace_period: "In grace period"
+        invalid_domain: "Invalid domain"
+        not_active: "Not active"
+        trial: "Trial"
     jemalloc_allocator: Alocador de memória Jemalloc
     journal_aggregation:
       explanation:
@@ -922,9 +924,10 @@ pt-BR:
       enterprise_token:
         starts_at: "Válido desde"
         subscriber: "Assinante"
+        subscription: "Subscription"
         plan: "Plano"
         encoded_token: "Token de suporte Enterprise"
-        active_user_count_restriction: "Máximo de usuários ativos"
+        active_user_count_restriction: "Active users"
       enterprise_trial:
         company: "Company"
       grids/grid:
@@ -1086,14 +1089,21 @@ pt-BR:
         password_confirmation: "Confirmação"
         consented_at: "Consentido em"
       user_preference:
-        comments_sorting: "Exibir comentários"
+        header_look_and_feel: "Look and feel"
+        header_alerts: "Alerts"
+        button_update_look_and_feel: "Update look and feel"
+        button_update_alerts: "Update alerts"
+        comments_sorting: "Display work package activity sorted by"
+        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Banners empresariais ocultos"
         impaired: "Modo de acessibilidade"
         auto_hide_popups: "Auto-ocultar notificações de sucesso"
         warn_on_leaving_unsaved: "Alertar-me ao sair de um pacote de trabalho sem salvar as alterações"
-        theme: "Modo"
+        theme: "Colour mode"
         time_zone: "Fuso horário"
-        mode_guideline: "Alguns modos substituirão as cores personalizadas do tema para melhorar a acessibilidade e a legibilidade. Para usar o tema totalmente personalizado, selecione o modo Claro."
+        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
         daily_reminders: "Lembretes diários"
         workdays: "Dias úteis"
       version:
@@ -1260,6 +1270,7 @@ pt-BR:
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "não pode ser lido. Tem certeza que é um token de suporte?"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "sobreposição."
           outside: "está fora da grade."
@@ -2056,6 +2067,7 @@ pt-BR:
       plan_title: "Complemento do %{plan} Enterprise"
       plan_name: "Plano enterprise %{plan}"
       plan_text_html: "Disponível a partir do %{plan_name}."
+      unlimited: "Unlimited"
       already_have_token: >
         Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Ocultar este banner"
@@ -2064,6 +2076,16 @@ pt-BR:
       homescreen_subline: Ao fazer o upgrade, você também estará apoiando um projeto de código aberto.
       baseline_comparison:
         description: Destaque as alterações realizadas nesta lista desde qualquer ponto no passado.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "Crie assuntos gerados automaticamente com base em atributos e textos referenciados."
       customize_life_cycle:
@@ -2760,6 +2782,7 @@ pt-BR:
   label_information_plural: "Informações"
   label_installation_guides: "Guias de instalação"
   label_integer: "Número inteiro"
+  label_interface: "Interface"
   label_internal: "Interno"
   label_introduction_video: "Vídeo de introdução"
   label_invite_user: "Convidar usuário"
@@ -3981,8 +4004,6 @@ pt-BR:
       new:
         description: "As alterações nesta fase do projeto serão aplicadas a todos os projetos nos quais ela esteja ativada."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Controle inicial e controle final"
       no_gate: "Sem controle"
       start_gate: "Data inicial"
@@ -4285,7 +4306,7 @@ pt-BR:
     reminders:
       label_remind_at: "Data"
       note_placeholder: "Por que você está configurando este lembrete?"
-      success_creation_message: "Lembrete definido com sucesso. Você receberá uma notificação para este pacote de trabalho no horário selecionado."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "Lembrete atualizado com sucesso."
       success_deletion_message: "Lembrete excluído com sucesso."
   sharing:
@@ -4357,12 +4378,12 @@ pt-BR:
         message: "Compartilhar listas de projetos com usuários individuais é um complemento Enterprise."
   working_days:
     info: >
-      Dias não selecionados são ignorados ao agendar pacotes de trabalho (e não são incluídos na contagem de dias). Isso pode ser alterado individualmente em cada pacote de trabalho.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       As datas adicionadas à lista abaixo são consideradas não úteis e ignoradas ao agendar pacotes de trabalho.
     change_button: "Alterar dias úteis"
     warning: >
-      Alterar os dias da semana considerados úteis ou não úteis pode impactar as datas de início e término de todos os pacotes de trabalho em todos os projetos desta instância.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Dias úteis** alterado (%{changes})._
       days:

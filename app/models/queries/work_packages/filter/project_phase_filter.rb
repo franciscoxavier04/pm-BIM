@@ -68,8 +68,11 @@ class Queries::WorkPackages::Filter::ProjectPhaseFilter < Queries::WorkPackages:
   private
 
   def project_phase_feature_available?
-    OpenProject::FeatureDecisions.stages_and_gates_active? &&
+    if (project = context&.project)
+      User.current.allowed_in_project?(:view_project_phases, project)
+    else
       User.current.allowed_in_any_project?(:view_project_phases)
+    end
   end
 
   def project_phase_definitions

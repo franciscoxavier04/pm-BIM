@@ -87,14 +87,11 @@ zh-TW:
         title: "新增企業版令牌"
         type_token_text: "輸入企業版令牌密碼"
         token_placeholder: "在此貼上您的企業版所需的令牌"
-      add_token: "上傳企業版所需權杖(Token)"
-      delete_token_modal:
-        text: "您確定要刪除當前使用的企業版權杖(Token)嗎？"
-        title: "刪除權杖(Token)"
-      replace_token: "替換當前權杖(Token)"
+      add_token: "上傳企業版所需令牌(Token)"
+      replace_token: "替換當前令牌(Token)"
       order: "升級至地端企業版"
-      paste: "貼上您的企業版所需的權杖(Token)"
-      required_for_feature: "此功能僅限具啟用中的企業版所需權杖(Token)的訂閱者使用。"
+      paste: "貼上您的企業版所需的令牌(Token)"
+      required_for_feature: "此功能僅限具啟用中的企業版所需令牌(Token)的訂閱者使用。"
       enterprise_link: "如需了解詳細信息，請點擊此處。"
       start_trial: "開始免費試用"
       book_now: "立即預約"
@@ -102,8 +99,13 @@ zh-TW:
       buttons:
         upgrade: "立即更新"
         contact: "聯絡我們取得試用"
-      enterprise_info_html: "是企業版功能 <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> 。"
-      upgrade_info: "請升級到付費版以啟用此功能"
+      status:
+        expired: "已過期"
+        expiring_soon: "即將過期"
+        in_grace_period: "寬限期內"
+        invalid_domain: "無效域名"
+        not_active: "尚未啟用"
+        trial: "試用"
     jemalloc_allocator: Jemalloc 記憶體分配器
     journal_aggregation:
       explanation:
@@ -498,28 +500,28 @@ zh-TW:
   my:
     access_token:
       create_dialog:
-        title: 權杖(Token)已產生
-        header: '%{type} 權杖已生成'
-        warning: '注意: 這是您唯一可以看到此權杖的時候, 請務必立即複製它。'
+        title: 令牌(Token)已產生
+        header: '%{type} 令牌(Token)已生成'
+        warning: '注意: 這是您唯一可以看到此令牌(Token)的時候, 請務必立即複製它。'
       errors:
         token_name_blank: "請提供API token名稱"
         token_name_in_use: "此 API token名稱已被使用，請選擇其他名稱"
-      new_access_token_dialog_title: "產生新 API 權杖(token)"
-      new_access_token_dialog_show_button_text: "API 權杖"
-      new_access_token_dialog_text_field_placeholder_text: "我的 API 權杖"
-      new_access_token_dialog_text_field_label: "權杖(token)名稱"
+      new_access_token_dialog_title: "產生新 API 令牌(Token)"
+      new_access_token_dialog_show_button_text: "API 令牌(Token)"
+      new_access_token_dialog_text_field_placeholder_text: "我的 API 令牌(Token)"
+      new_access_token_dialog_text_field_label: "名稱"
       new_access_token_dialog_submit_button_text: "建立"
-      new_access_token_dialog_text: "此權杖(token)允許第三方應用程式與本專案系統進行互動。為了區分新 API token用途，請為其命名。"
-      new_access_token_dialog_attention_text: "請務必將API Token(權杖) 視為密碼一樣重要。任何知道此連結的人都可以存取此系統中的信息，只能讓受信任使用者參與。"
-      failed_to_reset_token: "無法重置訪問權杖(Token): %{error}"
-      failed_to_create_token: "無法建立訪問權杖: %{error}"
-      failed_to_revoke_token: "無法撤銷訪問權杖: %{error}"
-      notice_reset_token: "生成了一個新的 %{type} 權杖(Token)。您權杖是:"
-      token_value_warning: "注意: 這是您唯一可以看到此權杖(Token)的時候, 請務必立即複製它。"
-      no_results_title_text: 目前沒有存取權杖(Token)
-      notice_api_token_revoked: "API token已被刪除。請使用 API 區段中的按鈕產生新的權杖(token)。"
-      notice_rss_token_revoked: "RSS 權杖(Token)已被刪除。 請使用 在RSS 選項裡提供的連結建立新權杖。"
-      notice_ical_token_revoked: '專案「%{project_name}」日曆「%{calendar_name}」的 iCalendar 權杖(Token)「%{token_name}」已被撤銷。 帶有此權杖的 iCalendar URL 無效。'
+      new_access_token_dialog_text: "此令牌(Token)允許第三方應用程式與本專案系統進行互動。為了區分新 API 令牌(Token)用途，請為其命名。"
+      new_access_token_dialog_attention_text: "請務必將API 令牌(Token)視為密碼一樣重要。任何知道此連結的人都可以存取此系統中的信息，只能讓受信任使用者參與。"
+      failed_to_reset_token: "無法重置訪問令牌(Token): %{error}"
+      failed_to_create_token: "無法建立訪問令牌(Token): %{error}"
+      failed_to_revoke_token: "無法撤銷訪問令牌(Token): %{error}"
+      notice_reset_token: "生成了一個新的 %{type} 令牌(Token)。你的存取令牌是："
+      token_value_warning: "注意: 這是您唯一可以看到此令牌(Token)的時候, 請務必立即複製它。"
+      no_results_title_text: 目前沒有存取令牌(Token)。
+      notice_api_token_revoked: "API 令牌(Token)已被刪除。請使用 API 區段中的按鈕產生新的。"
+      notice_rss_token_revoked: "RSS 令牌(Token)已被刪除。 請使用 在RSS 選項裡提供的連結建立新的。"
+      notice_ical_token_revoked: '專案「%{project_name}」日曆「%{calendar_name}」的 iCalendar 令牌(Token)「%{token_name}」已被撤銷。 帶有此令牌的 iCalendar URL 無效。'
   news:
     index:
       no_results_title_text: 目前沒有新消息報告
@@ -559,7 +561,7 @@ zh-TW:
       data_consequences: >
         出現的所有佔位符用戶(例如，作為受理人、負責人或其他用戶值) 將被重新分配給一個名為“已刪除用戶”的帳戶。 由於每個已刪除帳戶的數據都會被重新分配給此帳戶，因此無法將用戶創建的數據與另一個已刪除帳戶的數據區分。
       irreversible: "這一行動是不可還原的"
-      confirmation: "輸入占位使用者名稱 %{name} 確認刪除。"
+      confirmation: "輸入佔位使用者名稱 %{name} 確認刪除。"
   priorities:
     edit:
       priority_color_text: |
@@ -913,11 +915,12 @@ zh-TW:
       enterprise_token:
         starts_at: "生效自"
         subscriber: "訂閱者"
+        subscription: "訂閱"
         plan: "計畫"
         encoded_token: "Enterprise support token"
-        active_user_count_restriction: "最大活動使用者數"
+        active_user_count_restriction: "活躍使用者"
       enterprise_trial:
-        company: "Company"
+        company: "公司"
       grids/grid:
         page: "頁面"
         row_count: "列數"
@@ -1077,14 +1080,21 @@ zh-TW:
         password_confirmation: "確認密碼"
         consented_at: "同意在"
       user_preference:
-        comments_sorting: "顯示留言"
+        header_look_and_feel: "Look and feel"
+        header_alerts: "Alerts"
+        button_update_look_and_feel: "Update look and feel"
+        button_update_alerts: "Update alerts"
+        comments_sorting: "Display work package activity sorted by"
+        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "隱藏的企業版廣告"
         impaired: "協助工具模式"
         auto_hide_popups: "提醒後自動隱藏"
         warn_on_leaving_unsaved: "離開尚未儲存的工作套件時提示我"
-        theme: "模式 "
+        theme: "Colour mode"
         time_zone: "時區"
-        mode_guideline: "為了親和性以及方便閱讀性，某些模式將覆蓋自訂主題顏色。對於完整的自訂主題，請選擇白色模式。"
+        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
         daily_reminders: "每日提醒"
         workdays: "工作日"
       version:
@@ -1246,11 +1256,12 @@ zh-TW:
             scopes:
               not_match_configured: "與可用的範圍不吻合。"
         enterprise_trial:
-          already_used: "was already used to create a trial."
-          failed_to_create: "Trial could not be created (%{status})"
-          general_consent: "Please accept the terms and conditions."
+          already_used: "已被用來建立試用帳號。"
+          failed_to_create: "無法建立試用帳號（%{status}）"
+          general_consent: "請接受條款與條件。"
         enterprise_token:
           unreadable: "無法讀取，確定是一個 support token?"
+          already_added: "此令牌已經新增過。"
         grids/grid:
           overlaps: "重疊"
           outside: "不在網格(grid)內。"
@@ -1535,7 +1546,7 @@ zh-TW:
       news: "最新消息"
       notification:
         other: "通知"
-      placeholder_user: "占位使用者"
+      placeholder_user: "佔位使用者"
       project:
         other: "專案"
       project_query:
@@ -1548,7 +1559,7 @@ zh-TW:
         other: "SCIM 用戶端"
       status: "工作套件狀態"
       token/api:
-        other: 存取權杖
+        other: 存取令牌(Token)
       type: "類型"
       user: "使用者"
       version: "版本"
@@ -1637,7 +1648,7 @@ zh-TW:
     derived_start_date: "派生的開始日期"
     direction: "方向"
     display_sums: "顯示加總"
-    domain: "Domain"
+    domain: "網域"
     due_date: "完成日期"
     estimated_hours: "工時"
     estimated_time: "工時"
@@ -1706,30 +1717,30 @@ zh-TW:
     work_package_id: "工作套件"
   backup:
     failed: "備份失敗"
-    label_backup_token: "備份權杖(Token)"
-    label_create_token: "產生備份用的權杖(Token)"
-    label_delete_token: "刪除備份權杖(Token)"
-    label_reset_token: "重置備份權杖(Token)"
-    label_token_users: "以下用戶擁有啟用的備份權杖(Token)"
+    label_backup_token: "備份令牌(Token)"
+    label_create_token: "產生備份用的令牌(Token)"
+    label_delete_token: "刪除備份令牌(Token)"
+    label_reset_token: "重置備份令牌(Token)"
+    label_token_users: "以下用戶擁有啟用的備份令牌(Token)"
     reset_token:
       action_create: 建立
       action_reset: 重置
-      heading_reset: "重置備份權杖(Token)"
+      heading_reset: "重置備份令牌(Token)"
       heading_create: "產生備份用的token"
       implications: >
-        啓用備份將允許具有所需權限和此備份權杖的任何用戶下載包含此 OpenProject 安裝的所有數據的備份。這包括所有其他用戶的數據。
+        啓用備份將允許具有所需權限和此備份令牌(Token)的任何用戶下載包含此 OpenProject 安裝的所有數據的備份。這包括所有其他用戶的數據。
       info: >
         您將需要產生備份token才能建立備份。 每次您想要請求備份時，您都必須提供此token。 您可以刪除備份token以停用該備份。
       verification: >
-        輸入 %{word} 以確認您要%{action} 備份權杖。
+        輸入 %{word} 以確認您要%{action} 備份令牌(Token)。
       verification_word_reset: 重置
       verification_word_create: 建立
       warning: >
-        創建新權杖時，您只有在 24 小時之後才能請求備份。這是一項安全措施。之後，您可以隨時使用該權杖請求備份。
-    text_token_deleted: 備份用權杖(Token)已刪除。 備份已停用。
+        創建新令牌(Token)時，您只有在 24 小時之後才能請求備份。這是一項安全措施。之後，您可以隨時使用該令牌(Token)請求備份。
+    text_token_deleted: 備份用令牌(Token)已刪除。 備份已停用。
     error:
-      invalid_token: 無效或缺少備份權杖(Token)
-      token_cooldown: 備份權杖將在 %{hours} 小時後有效。
+      invalid_token: 無效或缺少備份令牌(Token)
+      token_cooldown: 備份令牌(Token)將在 %{hours} 小時後有效。
       backup_pending: 已經有一個備份待處理。
       limit_reached: 您每天只能進行 %{limit} 次備份。
   button_actions: "動作"
@@ -1998,7 +2009,7 @@ zh-TW:
       ldap_groups: 同步LDAP使用者與群組
       nextcloud_sso: Nextcloud 儲存空間的單一登入(SSO)
       one_drive_sharepoint_file_storage: OneDrive/SharePoint 檔案儲存
-      placeholder_users: 占位使用者
+      placeholder_users: 佔位使用者
       project_list_sharing: 專案清單分享
       readonly_work_packages: 唯讀工作套件
       sso_auth_providers: 單一登入
@@ -2014,14 +2025,25 @@ zh-TW:
       plan_title: "企業版 %{plan} 外掛"
       plan_name: "%{plan} 企業版計畫"
       plan_text_html: "需 %{plan_name} 方案以上才可使用。"
+      unlimited: "不限"
       already_have_token: >
-        Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
+        已經有令牌了嗎？請使用下方按鈕新增，以升級至預約的 Enterprise 方案。
       hide_banner: "隱藏此廣告"
       homescreen_description: >
         企業方案擴展您目前使用的 OpenProject 社群版，包含附加元件、額外功能和專業支援，讓各規模組織都能共同達成卓越目標。
       homescreen_subline: 升級即是對開源專案的一種支持。
       baseline_comparison:
         description: 突顯自過去任一時間點以來對此清單所做的變更。
+      benefits:
+        description: "Enterprise 本地部署版有什麼好處？"
+        high_security: "安全功能"
+        high_security_text: "單一登入（SAML、OpenID Connect、CAS）、LDAP 群組支援。"
+        installation: "安裝支援"
+        installation_text: "經驗豐富的軟體工程師將引導您在自己的基礎架構中完成整個安裝與設定流程。"
+        premium_features: "Enterprise 附加元件"
+        premium_features_text: "敏捷看板、自訂主題與標誌、圖表、具備自訂動作的智慧工作流程、工作套件附件的全文搜尋，以及多選自訂欄位。"
+        professional_support: "專業支援"
+        professional_support_text: "由資深支援工程師提供可靠且貼近需求的高品質支援，具備在商業關鍵環境中執行 OpenProject 的專業知識。"
       work_package_subject_generation:
         description: "使用參考的屬性和文字建立自動產生的主題。"
       customize_life_cycle:
@@ -2059,7 +2081,7 @@ zh-TW:
       virus_scanning:
         description: "確保在其他使用者存取 OpenProject 中上傳的檔案前，對其進行病毒掃描。"
       placeholder_users:
-        title: 占位使用者
+        title: 佔位使用者
         description: >
           「佔位使用者」是一種將工作套件分配給不屬於您專案成員的方法。它們在一系列場景中十分有用；例如，如果您需要追蹤尚未命名或可用的資源的任務，或者如果您不想讓該人員存取專案，但仍希望追蹤分配給他們的任務。
       internal_comments:
@@ -2069,25 +2091,25 @@ zh-TW:
         title: "只讓少數人能看到的內部備註"
         description: " "
     trial:
-      not_found: "You have requested a trial token, but that request is no longer available. Please try again."
-      wait_for_confirmation: "We sent you an email to confirm your address in order to retrieve a trial token."
+      not_found: "您已請求試用令牌，但該請求已無效。請再試一次。"
+      wait_for_confirmation: "我們已傳送一封電子郵件給您，請確認您的地址以取得試用令牌。"
       already_retrieved: >
-        Your trial enterprise token was already retrieved. Please check your emails for the token being attached. Please reach out to our support team if you need a new one.
-      successfully_saved: "Your trial enterprise token has been successfully retrieved."
-      token_sent: "Trial token requested"
-      request_again: "Request again"
-      resend_action: "Resend confirmation email"
-      welcome_title: "Quick feature overview"
-      welcome_description: "Get a quick overview of project management and team collaboration with OpenProject Enterprise edition."
+        您的試用 Enterprise 令牌已經被領取。請檢查您的電子郵件，令牌已隨信附上。如需新的，請聯絡我們的支援團隊。
+      successfully_saved: "您的試用 Enterprise 令牌已成功領取。"
+      token_sent: "已請求試用令牌"
+      request_again: "重新申請"
+      resend_action: "重新傳送確認電子郵件"
+      welcome_title: "功能快速總覽"
+      welcome_description: "快速瞭解 OpenProject Enterprise 版的專案管理與團隊協作功能。"
       confirmation_info: >
-        We sent you an email on %{date} to %{email} with all the information to start the free trial of OpenProject Enterprise. Please check your inbox and click the confirmation link provided to start your 14-day free trial.
+        我們已於 %{date} 寄送一封電子郵件至 %{email}，內含開始 OpenProject Enterprise 免費試用所需的所有資訊。請查看您的收件匣，並點擊信中的確認連結以開始為期 14 天的免費試用。
       confirmation_subline: >
-        Please, check your inbox and follow the steps to start your 14-day free trial.
-      domain_caption: The token will be valid for your currently configured host name.
+        請查看您的收件匣並依照指示操作，以開始為期 14 天的免費試用。
+      domain_caption: 此令牌將僅對您目前設定的主機名稱有效。
       receive_newsletter_html: >
-        I want to receive the OpenProject <a target="_blank" href="https://www.openproject.org/newsletter/">newsletter</a>.
+        我想訂閱 OpenProject 的<a target="_blank" href="https://www.openproject.org/newsletter/">電子報</a>。
       consent_html: >
-        I agree with the <a target="_blank" href="https://www.openproject.org/terms-of-service/">terms of service</a> and the <a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">privacy policy</a>.
+        我同意<a target="_blank" href="https://www.openproject.org/terms-of-service/">服務條款</a>及<a target="_blank" href="https://www.openproject.org/data-privacy-and-security/">隱私政策</a>。
   enumeration_activities: "時間追蹤活動"
   enumeration_work_package_priorities: "工作套件優先等級"
   enumeration_reported_project_statuses: "報告的專案狀態"
@@ -2114,7 +2136,7 @@ zh-TW:
   error_custom_option_not_found: "選項不存在。"
   error_enterprise_plan_needed: "您需要 %{plan} 企業方案才能執行此操作。"
   error_enterprise_activation_user_limit: "無法啟動您的帳戶 (已達到使用者限制)。請與管理員聯繫以獲取存取權限。"
-  error_enterprise_token_invalid_domain: "企業版未啟用。您的企業版權杖(Token)的域名（%{actual}）與系統的主機名（%{expected}）不匹配。"
+  error_enterprise_token_invalid_domain: "企業版未啟用。您的企業版令牌(Token)的域名（%{actual}）與系統的主機名（%{expected}）不匹配。"
   error_failed_to_delete_entry: "刪除此項目失敗。"
   error_in_dependent: "嘗試改變依賴物件時出錯： %{dependent_class} #%{related_id} - %{related_subject}: %{error}"
   error_in_new_dependent: "嘗試建立依附物件時出錯： %{dependent_class} - %{related_subject}: %{error}"
@@ -2122,7 +2144,7 @@ zh-TW:
   error_journal_attribute_not_present: "Journal 不含有屬性 %{attribute}。"
   error_pdf_export_too_many_columns: "為 PDF 匯出選擇的列太多。請減少列數。"
   error_pdf_failed_to_export: "無法另存 pdf 匯出: %{error}"
-  error_token_authenticity: "無法驗證跨網域請求權杖(Token)。你是不是試圖在多個瀏覽器或者分頁上傳送資料？請關閉所有的分頁後再試一次。"
+  error_token_authenticity: "無法驗證跨網域請求令牌(Token)。你是不是試圖在多個瀏覽器或者分頁上傳送資料？請關閉所有的分頁後再試一次。"
   error_reminder_not_found: "未找到提醒內容或已收到相關通知。"
   error_work_package_not_found_in_project: "工作套件找不到或是不屬於這個專案"
   error_work_package_id_not_found: "無此工作套件。"
@@ -2200,7 +2222,7 @@ zh-TW:
               label: "甘特圖"
               caption: "匯出甘特圖檢視中的工作套件清單。"
         include_images:
-          label: "包含圖片"
+          label: "圖片"
           caption: "排除影像以減少 PDF 匯出的大小。"
         gantt_zoom_levels:
           label: "縮放等級"
@@ -2392,40 +2414,40 @@ zh-TW:
   my_account:
     access_tokens:
       no_results:
-        title: "沒有可顯示的存取權杖(Token)"
+        title: "沒有可顯示的存取令牌(Token)"
         description: "他們全都被停用了。他們可以在管理功能表重新啟用"
-      access_tokens: "存取權杖(Token)"
+      access_tokens: "存取令牌(Token)"
       headers:
         action: "動作"
         expiration: "過期"
       indefinite_expiration: "無"
-      simple_revoke_confirmation: "你確定要撤銷此權杖(Token)"
+      simple_revoke_confirmation: "你確定要撤銷此令牌(Token)？"
       api:
         title: "API"
         text_hint: "API token允許第三方應用程式透過 REST API 與本專案系統進行通訊。"
-        static_token_name: "API 權杖(Token)"
-        disabled_text: "管理員未啓用 API 權杖。請聯繫管理員以使用此功能。"
+        static_token_name: "API 令牌(Token)"
+        disabled_text: "管理員未啓用 API 令牌(Token)。請聯繫管理員以使用此功能。"
       ical:
         title: "iCalendar "
-        text_hint: 'iCalendar 權杖(Token)允許使用者<a href="%{path}" target="_blank">訂閱專案管理系統日曆</a>，並查看來自外部客戶端的最新工作資訊。'
+        text_hint: 'iCalendar 令牌(Token)允許使用者<a href="%{path}" target="_blank">訂閱專案管理系統日曆</a>，並查看來自外部客戶端的最新工作資訊。'
         disabled_text: "管理員未啟用 iCalendar 訂閱。 請聯絡您的管理員以使用此功能。"
-        empty_text_hint: "新增 iCalendar 權杖(Token)，可訂閱各專案裡面的日曆( 需擁有相關權限)。"
+        empty_text_hint: "新增 iCalendar 令牌(Token)，可訂閱各專案裡面的日曆( 需擁有相關權限)。"
       oauth:
         title: "OAuth"
-        text_hint: "OAuth 權杖(Token)允許第三方應用程式與此 OpenProject 連線。"
+        text_hint: "OAuth 令牌(Token)允許第三方應用程式與此 OpenProject 連線。"
         empty_text_hint: "沒有為您設定和啟動第三方應用程式存取權限。請聯絡您的管理員以啟動此功能"
       rss:
         title: "RSS訂閱"
-        text_hint: "RSS 權杖(Token)可讓使用者透過外部 RSS 閱讀器了解本專案管理系統中最新異動。"
-        static_token_name: "RSS 權杖(Token)"
-        disabled_text: "尚未啟用 RSS 權杖(Token)功能。 請聯絡您的管理員。"
+        text_hint: "RSS 令牌(Token)可讓使用者透過外部 RSS 閱讀器了解本專案管理系統中最新異動。"
+        static_token_name: "RSS 令牌(Token)"
+        disabled_text: "尚未啟用 RSS令牌(Token)功能。 請聯絡您的管理員。"
       storages:
         title: "檔案儲存"
-        text_hint: "檔案儲存區權杖(Token)，可將本專案管理系統與外部檔案儲存系統連接。"
+        text_hint: "檔案儲存區令牌(Token)，可將本專案管理系統與外部檔案儲存系統連接。"
         empty_text_hint: "沒有與您帳戶連動的儲存裝置存取權限。"
-        revoke_token: "是否確實要移除此權杖？您需要再次登錄 %{storage}"
-        removed: "文件存儲區權杖已成功移除"
-        failed: "出錯了，無法移除權杖。請稍後再試。"
+        revoke_token: "是否確實要移除此令牌(Token)？您需要再次登錄 %{storage}"
+        removed: "文件存儲區令牌(Token)已成功移除"
+        failed: "出錯了，無法移除令牌(Token)。請稍後再試。"
         unknown_storage: "不明的儲存區"
   notifications:
     reasons:
@@ -2492,7 +2514,7 @@ zh-TW:
   label_api_access_key_type: "API"
   label_ical_access_key_type: "iCalendar "
   label_ical_access_key_description: 'iCalendar令牌"%{token_name}" 為"%{calendar_name}" 屬於 "%{project_name}"'
-  label_ical_access_key_not_present: "iCalendar 權杖 (token) 不存在。"
+  label_ical_access_key_not_present: "iCalendar 令牌(Token) 不存在。"
   label_ical_access_key_generation_hint: "訂閱日曆時自動生成的。"
   label_ical_access_key_latest: "最新"
   label_ical_access_key_revoke: "撤銷"
@@ -2718,6 +2740,7 @@ zh-TW:
   label_information_plural: "資訊"
   label_installation_guides: "安裝說明"
   label_integer: "整數"
+  label_interface: "Interface"
   label_internal: "內部"
   label_introduction_video: "簡介影片"
   label_invite_user: "邀請使用者"
@@ -2865,9 +2888,9 @@ zh-TW:
   label_permissions: "權限"
   label_permissions_report: "權限列表"
   label_personalize_page: "個人化本頁"
-  label_placeholder_user: "占位使用者"
+  label_placeholder_user: "佔位使用者"
   label_placeholder_user_new: "新的佔位使用者"
-  label_placeholder_user_plural: "占位使用者"
+  label_placeholder_user_plural: "佔位使用者"
   label_planning: "計劃中"
   label_please_login: "請登入"
   label_plugins: "擴充套件"
@@ -3008,7 +3031,7 @@ zh-TW:
   label_title: "標題"
   label_projects_menu: "專案"
   label_today: "今天"
-  label_token_version: "權杖(token)版本"
+  label_token_version: "令牌(Token)版本"
   label_today_as_start_date: "選擇今天為開始日期。"
   label_today_as_due_date: "選擇今天為完成日期。"
   label_today_as_date: "選擇今天為開始日期。"
@@ -3229,10 +3252,10 @@ zh-TW:
   mail_body_account_information: "您的帳號資訊"
   mail_body_account_information_external: "您可以使用您的帳號 %{value} 登錄。"
   mail_body_backup_ready: "您請求的備份已就緒。您可以在此處下載："
-  mail_body_backup_token_reset_admin_info: 用戶“%{user}”的備份權杖已重置。
-  mail_body_backup_token_reset_user_info: 您備份用權杖(Token)已重置
-  mail_body_backup_token_info: 之前的權杖(Token)不再有效。
-  mail_body_backup_waiting_period: 新權杖將在 %{hours} 小時後啓用。
+  mail_body_backup_token_reset_admin_info: 用戶“%{user}”的備份令牌(Token)已重置。
+  mail_body_backup_token_reset_user_info: 您備份用令牌(Token)已重置。
+  mail_body_backup_token_info: 之前的令牌(Token)不再有效。
+  mail_body_backup_waiting_period: 新令牌(Token)將在 %{hours} 小時後啓用。
   mail_body_backup_token_warning: 如果不是您在操作，請立即登錄 OpenProject 並重置。
   mail_body_incoming_email_error: 無法處理您發送給 OpenProject 的電子郵件。
   mail_body_incoming_email_error_in_reply_to: "%{from_email} 在 %{received_at} 撰寫"
@@ -3258,7 +3281,7 @@ zh-TW:
   mail_body_wiki_page_updated: "Wiki 頁面 '%{id}' 已經被 %{author} 更新"
   mail_subject_account_activation_request: "帳號 %{value} 啟用請求"
   mail_subject_backup_ready: "備份已準備好"
-  mail_subject_backup_token_reset: "重設備份用權杖(Token)"
+  mail_subject_backup_token_reset: "重設備份用令牌(Token)"
   mail_subject_incoming_email_error: "無法處理您發送給 OpenProject 的電子郵件"
   mail_subject_lost_password: "你的 %{value} 密碼"
   mail_subject_register: "你的帳號 %{value} 啟用"
@@ -3300,7 +3323,7 @@ zh-TW:
   notice_accessibility_mode: 可以在您的 [帳戶設定](url) 中啟用輔助功能模式。
   notice_account_activated: "您的帳號已被啟用。您現在可以登入。"
   notice_account_already_activated: 這個帳號已經被啟用
-  notice_account_invalid_token: 無效的啟動權杖(Token)
+  notice_account_invalid_token: 無效的啟動令牌(Token)
   notice_account_invalid_credentials: "不正確的使用者或密碼"
   notice_account_invalid_credentials_or_blocked: "不正確的使用者或密碼。又或者這個帳號由於多次登入失敗已經被禁用。如果是這樣，它會在一段時間後被自動解禁。"
   notice_account_lost_email_sent: "一封包含選擇新密碼的說明的電子郵件已經傳送給你。"
@@ -3404,7 +3427,7 @@ zh-TW:
   permission_archive_project: "封存專案"
   permission_create_user: "新增使用者"
   permission_manage_user: "編輯使用者"
-  permission_manage_placeholder_user: "建立、編輯及刪除占位使用者"
+  permission_manage_placeholder_user: "建立、編輯及刪除佔位使用者"
   permission_add_subprojects: "建立子專案"
   permission_add_work_package_watchers: "新增監看者"
   permission_assign_versions: "指派版本"
@@ -3936,8 +3959,6 @@ zh-TW:
       new:
         description: "此專案階段的變更會反映在啟用此階段的所有專案中。"
         heading: "新增階段"
-      edit:
-        heading: "編輯階段"
       both_gate: "開始以及結束關卡"
       no_gate: "沒有關卡"
       start_gate: "開始關卡"
@@ -3976,7 +3997,7 @@ zh-TW:
       sentence_connector: "和"
       skip_last_comma: "否"
   text_accessibility_hint: "輔助功能模式設計用於失明、具有行動障礙或視力不佳的用戶。為視力不佳的用戶特別突出顯示關注的元素。請注意，此模式不支援待辦清單模塊。"
-  text_access_token_hint: "存取權杖(Token)讓你能夠允許外部程式存取專案內的資源"
+  text_access_token_hint: "存取令牌(Token)讓你能夠允許外部程式存取專案內的資源。"
   text_analyze: "進一步分析: %{subject}"
   text_are_you_sure: "是否確定？"
   text_are_you_sure_continue: "你要繼續嗎?"
@@ -4053,7 +4074,7 @@ zh-TW:
   text_load_default_configuration: "載入預設組態"
   text_min_max_length_info: "0 代表沒有限制"
   text_no_roles_defined: 沒有定義的角色
-  text_no_access_tokens_configurable: "沒有存取權杖(Token)可以被設定"
+  text_no_access_tokens_configurable: "沒有存取令牌(Token)可以被設定。"
   text_no_configuration_data: "角色，類型，工作套件狀態與工作流程都尚未設定。\n強烈建議先載入預設值，然後再修改它們。"
   text_no_notes: "這個工作套件沒有留言。"
   text_notice_too_many_values_are_inperformant: "注意: 每頁顯示超過100個項目會增加頁面載入時間。"
@@ -4240,7 +4261,7 @@ zh-TW:
     reminders:
       label_remind_at: "日期"
       note_placeholder: "為什麼要設定這個提醒？"
-      success_creation_message: "提醒設定成功。您會在選定的時間收到此工作套件的通知。"
+      create_success_message: "提醒已成功設定。您將會在此工作套件的 %{reminder_time} 收到通知。"
       success_update_message: "提醒成功更新"
       success_deletion_message: "提醒已成功刪除。"
   sharing:
@@ -4312,12 +4333,12 @@ zh-TW:
         message: "與單個用戶共用專案列表是一項企業附加功能。"
   working_days:
     info: >
-      未被選取的日期在排程工作套件時將被略過（且不計入天數統計）。這些設定可在單一工作套件層級進行覆蓋。
+      未選取的天數在排程工作套件與專案生命週期時會被跳過（且不計入天數），但可於工作套件層級進行覆寫。
     instance_wide_info: >
       加到下面列表中的日期被視為非工作日，設定工作套件時程時跳過。
     change_button: "修改工作日"
     warning: >
-      在這種情況下，更改一周中哪些天被視為工作日或非工作日，會影響所有項目中所有工作套件的開始和結束日期。
+      變更一週中哪些天為工作日或非工作日，可能會影響此實例中所有專案的工作套件與生命週期的開始及結束日期。
     journal_note:
       changed: _**工作日**已更改 (%{changes})。_
       days:
@@ -4340,7 +4361,7 @@ zh-TW:
       code_429: "請求過於頻繁，請稍後再試"
       code_500: "發生內部錯誤。"
       code_500_outbound_request_failure: "對另一個資源的出站請求存在失敗狀態代碼 %{status_code} 。"
-      code_500_missing_enterprise_token: "由於企業權杖是無效的或缺失的，故無法處理該請求。"
+      code_500_missing_enterprise_token: "由於企業令牌(Token)是無效的或缺失的，故無法處理該請求。"
       bad_request:
         emoji_reactions_activity_type_not_supported: "此活動類型不支持表情符號反應。"
       conflict:
@@ -4390,7 +4411,7 @@ zh-TW:
     pre_authorization:
       status: "提前授權"
     auth_url: "Auth URL"
-    access_token_url: "存取權杖(Token)URL"
+    access_token_url: "存取令牌(Token)URL"
     errors:
       messages:
         #Common error messages
@@ -4417,9 +4438,9 @@ zh-TW:
         invalid_grant: "提供的授權授予無效、過期、已撤銷、與授權請求中使用的轉址 uri 不符合, 或已發給其他用戶端。"
         unsupported_grant_type: "授權伺服器不支援授權授予類型。"
         invalid_token:
-          revoked: "訪問權杖(Token)已被撤銷"
-          expired: "訪問權杖(Token)已過期"
-          unknown: "訪問權杖(Token)無效"
+          revoked: "訪問令牌(Token)已被撤銷"
+          expired: "訪問令牌(Token)已過期"
+          unknown: "訪問令牌(Token)無效"
         revoke:
           unauthorized: "您無權撤銷此裝置。"
         forbidden_token:
@@ -4474,7 +4495,7 @@ zh-TW:
       successful_application_revocation: "已成功撤銷應用程序 %{application_name}。"
       none_given: "沒有 OAuth 應用程序已獲得訪問您的用戶帳戶的權限。"
     x_active_tokens:
-      other: "%{count} 已啟用權杖(Token)"
+      other: "%{count} 已啟用令牌(Token)"
     flows:
       authorization_code: "授權碼流程"
       client_credentials: "客戶端憑據流"
@@ -4495,8 +4516,8 @@ zh-TW:
     labels:
       label_oauth_integration: "整合OAuth2 "
       label_redirect_uri: "轉址 uri"
-      label_request_token: "要求權杖(Token)"
-      label_refresh_token: "更新權杖(Token)"
+      label_request_token: "要求令牌(Token)"
+      label_refresh_token: "更新令牌(Token)"
     errors:
       oauth_authorization_code_grant_had_errors: "OAuth2 授權授予失敗"
       oauth_reported: "OAuth2 提供程序報告"
@@ -4504,11 +4525,11 @@ zh-TW:
       oauth_returned_json_error: "OAuth2 回傳JSON錯誤"
       oauth_returned_http_error: "OAuth2 回傳網路錯誤"
       oauth_returned_standard_error: "OAuth2 回傳內部錯誤"
-      wrong_token_type_returned: "OAuth2 返回了錯誤類型的權杖，應為 AccessToken::Bearer"
+      wrong_token_type_returned: "OAuth2 返回了錯誤類型的令牌(Token)，應為 AccessToken::Bearer"
       oauth_issue_contact_admin: "OAuth2 報告錯誤。請聯繫您的系統管理員。"
       oauth_client_not_found: "在 'callback' 端點 (redirect_uri) 中找不到 OAuth2 客戶端。"
       refresh_token_called_without_existing_token: >
-        內部錯誤：在沒有先前存在的權杖的情況下調用 refresh_token。
+        內部錯誤：在沒有先前存在的令牌(Token)情況下調用 refresh_token。
       refresh_token_updated_failed: "更新 OAuthClientToken 時出錯"
       oauth_client_not_found_explanation: >
         此錯誤在您更新 OpenProject 中的 client_id 和 client_secret，但尚未更新 OAuth2 提供程序中的 'Return URI' 字段後出現。

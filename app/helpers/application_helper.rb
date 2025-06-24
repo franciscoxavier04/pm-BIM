@@ -286,10 +286,15 @@ module ApplicationHelper
 
   def theme_options_for_select
     [
-      [t("themes.light"), "light"],
-      [t("themes.light_high_contrast"), "light_high_contrast"],
-      [t("themes.dark"), "dark"]
+      [I18n.t("themes.light"), "light"],
+      [I18n.t("themes.light_high_contrast"), "light_high_contrast"],
+      [I18n.t("themes.dark"), "dark"]
     ]
+  end
+
+  def comment_sort_order_options
+    [[I18n.t("activities.work_packages.activity_tab.label_sort_asc"), "asc"],
+     [I18n.t("activities.work_packages.activity_tab.label_sort_desc"), "desc"]]
   end
 
   def body_data_attributes(local_assigns)

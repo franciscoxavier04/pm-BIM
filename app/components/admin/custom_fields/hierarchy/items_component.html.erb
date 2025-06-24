@@ -27,7 +27,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<% helpers.content_controller "admin--hierarchy-item", dynamic: true %>
+<% helpers.content_controller "admin--hierarchy-item" %>
 
 <%=
   component_wrapper(tag: "turbo-frame", refresh: :morph, data: { turbo_action: :advance }) do

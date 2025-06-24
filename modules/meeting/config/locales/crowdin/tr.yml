@@ -350,7 +350,7 @@ tr:
   permission_delete_meetings: "Toplantıları silme"
   permission_view_meetings: "Toplantıları görüntüle"
   permission_manage_agendas: "Acentaları yönetme"
-  permission_manage_agendas_explanation: "Dinamik Toplantı modülünün gündem maddelerinin yönetilmesini sağlar."
+  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
   permission_manage_outcomes: "Sonuçları yönet"
   permission_send_meeting_invites_and_outcomes: "Toplantı davetlerini ve sonuçlarını katılımcılara gönderin"
   project_module_meetings: "Toplantı"

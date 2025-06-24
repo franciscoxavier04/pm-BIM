@@ -88,9 +88,6 @@
         type_token_text: "Type support token text"
         token_placeholder: "Paste your Enterprise edition support token here"
       add_token: "Last opp en Enterprise edition supportnøkkel"
-      delete_token_modal:
-        text: "Er du sikker på at du vil fjerne gjeldende Enterprise edition nøkkel som brukes?"
-        title: "Slett token"
       replace_token: "Erstatt din nåværende supporttoken"
       order: "Oppgradere til Enterprise on-premises-utgave"
       paste: "Lim inn din Enterprise edition supportnøkkel"
@@ -102,8 +99,13 @@
       buttons:
         upgrade: "Oppgrader nå"
         contact: "Kontakt oss for en demo"
-      enterprise_info_html: "er en Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span>-utvidelse."
-      upgrade_info: "Vennligst oppgrader til et betalt abonnement for å kunne aktivere og begynne å bruke det i ditt team."
+      status:
+        expired: "Expired"
+        expiring_soon: "Expiring soon"
+        in_grace_period: "In grace period"
+        invalid_domain: "Invalid domain"
+        not_active: "Not active"
+        trial: "Trial"
     jemalloc_allocator: Jemalloc minne allokator
     journal_aggregation:
       explanation:
@@ -924,9 +926,10 @@
       enterprise_token:
         starts_at: "Gyldig siden"
         subscriber: "Abonnent"
+        subscription: "Subscription"
         plan: "Plan"
         encoded_token: "Enterprise support nøkkel"
-        active_user_count_restriction: "Maksimalt antall aktive brukere"
+        active_user_count_restriction: "Active users"
       enterprise_trial:
         company: "Company"
       grids/grid:
@@ -1088,14 +1091,21 @@
         password_confirmation: "Bekreftelse"
         consented_at: "Godkjent"
       user_preference:
-        comments_sorting: "Vis kommentarer"
+        header_look_and_feel: "Look and feel"
+        header_alerts: "Alerts"
+        button_update_look_and_feel: "Update look and feel"
+        button_update_alerts: "Update alerts"
+        comments_sorting: "Display work package activity sorted by"
+        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Tilgjengelighetsmodus"
         auto_hide_popups: "Auto-skjul suksessvarsler"
         warn_on_leaving_unsaved: "Varsle meg når jeg forlater en arbeidspakke med ulagrede endringer"
-        theme: "Modus"
+        theme: "Colour mode"
         time_zone: "Tidssone"
-        mode_guideline: "Noen moduser vil overskrive tilpassede temafarger for tilgjengelighet og leselighet. For å få fullstendig tilpasset tema, velg lys modus."
+        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
         daily_reminders: "Daily reminders"
         workdays: "Arbeidsdager"
       version:
@@ -1262,6 +1272,7 @@
           general_consent: "Please accept the terms and conditions."
         enterprise_token:
           unreadable: "kan ikke leses. Er du sikker på at det er en brukerstøttenøkkel?"
+          already_added: "This token has already been added."
         grids/grid:
           overlaps: "overlapp."
           outside: "er utenfor rutenett."
@@ -2058,6 +2069,7 @@
       plan_title: "Enterprise %{plan} add-on"
       plan_name: "%{plan} enterprise plan"
       plan_text_html: "Available starting with the %{plan_name}."
+      unlimited: "Unlimited"
       already_have_token: >
         Already have a token? Add it using the button below to upgrade to the booked Enterprise plan.
       hide_banner: "Skjul banneret"
@@ -2066,6 +2078,16 @@
       homescreen_subline: By upgrading, you will also be supporting an open source project.
       baseline_comparison:
         description: Marker endringer som er gjort på denne listen tidligere.
+      benefits:
+        description: "What are the benefits of the Enterprise on-premises edition?"
+        high_security: "Security features"
+        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
+        installation: "Installation support"
+        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
+        premium_features: "Enterprise add-ons"
+        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
+        professional_support: "Professional support"
+        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
       work_package_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2762,6 +2784,7 @@
   label_information_plural: "Informasjon"
   label_installation_guides: "Installasjons guider"
   label_integer: "Heltall"
+  label_interface: "Interface"
   label_internal: "Intern"
   label_introduction_video: "Introduksjonsvideo"
   label_invite_user: "Inviter bruker"
@@ -3984,8 +4007,6 @@
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"
@@ -4289,7 +4310,7 @@
     reminders:
       label_remind_at: "Dato"
       note_placeholder: "Why are you setting this reminder?"
-      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
       success_update_message: "Reminder updated successfully."
       success_deletion_message: "Reminder deleted successfully."
   sharing:
@@ -4361,12 +4382,12 @@
         message: "Deling av prosjektlister med enkeltbrukere er et enterprise-tillegg."
   working_days:
     info: >
-      Hoppet over dager som ikke er valgt ved planlegging av arbeidspakker (og ikke inkludert i antall dager). Disse kan overstyres på arbeidspakkenivå.
+      Days that are not selected are skipped when scheduling work packages and project life cycles (and not included in the day count). These can be overridden at a work-package level.
     instance_wide_info: >
       Datoer som er lagt til i listen nedenfor regnes som arbeidsfrie og hoppet over når arbeidspakker planlegges.
     change_button: "Endre virkedager"
     warning: >
-      Endring av hvilke ukedager som regnes som arbeidsdager eller arbeidsfrie dager kan påvirke start- og sluttdager for alle arbeidspakker i alle prosjekter i denne forekomsten.
+      Changing which days of the week are considered working days or non-working days can affect the start and finish days of all work packages and life cycles in all projects in this instance.
     journal_note:
       changed: _**Arbeidsdager** endret (%{changes})._
       days:

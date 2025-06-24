@@ -17,6 +17,7 @@
     [accesskey]="4"
     class="global-search"
     [placeholder]="placeholder"
+    [ariaLabel]="placeholder"
     [dropdownPosition]="'bottom'"
     [classes]="{'top-menu-search--input': true, '-markable': markable, '-expanded': expanded }"
     [inputAttrs]="{ 'class': 'global-search--input', 'name': 'global-search--input', autocomplete: 'off'}"
@@ -90,7 +91,7 @@
     #btn
     id="top-menu-search-button"
     class="top-menu-search--button search-form-normal"
-    title="{{text.search}}"
+    [attr.aria-label]="text.search"
     [class.-input-focused]="expanded"
     (click)="handleClick($event)"
 

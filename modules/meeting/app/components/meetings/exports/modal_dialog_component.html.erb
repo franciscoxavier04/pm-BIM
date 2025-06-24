@@ -12,7 +12,6 @@
           url: project_meeting_path(@project, @meeting, format: :pdf),
           method: :get,
           data: {
-            "application-target": "dynamic",
             controller: "meetings--export--form",
             action: "submit->meetings--export--form#submitForm",
             "meetings--export--form-job-status-dialog-url-value": job_status_dialog_path("_job_uuid_")

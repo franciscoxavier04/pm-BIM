@@ -31,7 +31,7 @@
 require "spec_helper"
 require_relative "../shared_context"
 
-RSpec.describe "Edit project phases on project overview page", :js, with_flag: { stages_and_gates: true } do
+RSpec.describe "Edit project phases on project overview page", :js do
   include_context "with seeded projects and phases"
 
   shared_let(:overview) { create :overview, project: }
@@ -131,7 +131,13 @@ RSpec.describe "Edit project phases on project overview page", :js, with_flag: {
         dialog.expect_input("Finish date", value: expected_finish_date)
         dialog.expect_input("Duration", value: planning_duration, disabled: true)
 
-        datepicker.expect_disabled(expected_start_date - 1.day)
+        # The spec uses relative dates. On some occasions, this can mean the expected_start_date
+        # is on the first date of a month. The day before that is then not shown at all.
+        # And because the date is disabled, flatpickr also does not provide a button to move to the previous
+        # month. In total, we cannot check for the date to be disabled in these occasions.
+        if datepicker.displays_date?(expected_start_date - 1.day) && !datepicker.has_previous_month_toggle?
+          datepicker.expect_disabled(expected_start_date - 1.day)
+        end
         datepicker.expect_not_disabled(expected_start_date)
 
         # Set invalid range (finish date before start date) via input field

@@ -3,7 +3,7 @@ sidebar_navigation:
   title: Edit work packages
   priority: 980
 description: How to edit work packages in OpenProject.
-keywords: edit work packages
+keywords: edit work packages, reminders, work package reminders, attachment, internal comment, bulk edit
 ---
 
 # Edit work packages

@@ -508,6 +508,9 @@ RSpec.describe "Custom actions", :js, with_ee: %i[custom_actions] do
     wp_page.visit!
 
     wp_page.ensure_page_loaded
+    wait_for_network_idle
+    wp_page.expect_custom_action("Unassign")
+
     # Stop sending ajax requests in order to test disabled fields upon submit
     wp_page.disable_ajax_requests
 

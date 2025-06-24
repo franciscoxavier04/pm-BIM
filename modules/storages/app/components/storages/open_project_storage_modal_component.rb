@@ -50,7 +50,6 @@ class Storages::OpenProjectStorageModalComponent < ViewComponent::Base
   def data
     @data ||= {
       controller:,
-      "application-target": "dynamic",
       "#{controller}-project-storage-open-url-value": project_storage_open_url,
       "#{controller}-redirect-url-value": redirect_url,
       "#{controller}-subtitle-timeout-text-value": subtitle_timeout_text

@@ -108,6 +108,9 @@ module OpenProject::OpenIDConnect
 
     config.to_prepare do
       ::OpenProject::OpenIDConnect::Hooks::Hook
+
+      # Load AuthProvider descendants due to STI
+      OpenIDConnect::Provider
     end
   end
 end

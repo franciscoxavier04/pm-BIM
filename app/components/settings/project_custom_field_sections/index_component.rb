@@ -47,8 +47,7 @@ module Settings
 
       def wrapper_data_attributes
         {
-          controller: "generic-drag-and-drop",
-          "application-target": "dynamic"
+          controller: "generic-drag-and-drop"
         }
       end
 
