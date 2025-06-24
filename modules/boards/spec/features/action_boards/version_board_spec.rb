@@ -76,8 +76,9 @@ RSpec.describe "Version action board",
     board_page = board_index.create_board title: "My Version Board",
                                           action: "Version"
 
-    expect(board_page).to have_css(".breadcrumb-item", text: "Boards")
-    expect(board_page).to have_css('.breadcrumb-item.active[aria-current="page"]', text: "My Version Board")
+    expect(board_page).to have_test_selector("op-breadcrumb-item", text: "Boards")
+    expect(page).to have_css(".op-breadcrumb-item.active", text: "My Version Board", aria: { current: "page" })
+
     # expect lists of open versions
     board_page.expect_list "Open version"
     board_page.expect_list "A second version"
