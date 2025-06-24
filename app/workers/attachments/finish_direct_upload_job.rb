@@ -32,6 +32,11 @@ class Attachments::FinishDirectUploadJob < ApplicationJob
   def perform(attachment_id, allowlist: true)
     attachment = Attachment.pending_direct_upload.find_by(id: attachment_id)
 
+    unless attachment
+      log_not_found(attachment_id)
+      return
+    end
+
     Attachments::FinishDirectUploadService
       .new(user: attachment.author, model: attachment, contract_options: derive_contract_options(allowlist))
       .call
@@ -49,14 +54,18 @@ class Attachments::FinishDirectUploadJob < ApplicationJob
     OpenProject.logger.error(
       <<~MSG
         Failed to finish attachment upload for:
-          * user: #{attachment.author}
-          * container: #{attachment.container}
+          * user: #{attachment.author_id} - #{attachment.author.name}
+          * container: #{attachment.container_id} - #{attachment.container}
           * attachment file name: #{attachment.filename}
 
         Errors:
-          #{errors.join("\n")}
+          #{errors.join("\n          ")}
       MSG
     )
+  end
+
+  def log_not_found(attachment_id)
+    OpenProject.logger.error("Attachment #{attachment_id} not found")
   end
 
   def derive_contract_options(allowlist)

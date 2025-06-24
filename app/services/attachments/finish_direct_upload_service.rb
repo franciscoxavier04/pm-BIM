@@ -59,8 +59,11 @@ module Attachments
     end
 
     def persist(call)
-      super.tap do
-        attachment.save!
+      super.tap do |service_result|
+        unless attachment.save
+          service_result.errors = attachment.errors
+          service_result.success = false
+        end
       end
     end
 
@@ -83,9 +86,7 @@ module Attachments
       attachment.extend(OpenProject::ChangedBySystem)
       attachment.change_by_system do
         attachment.status = :uploaded
-        attachment.set_file_size local_file
-        attachment.set_content_type local_file
-        attachment.set_digest local_file
+        attachment.file = local_file
       end
     end
 
@@ -133,10 +134,7 @@ module Attachments
     end
 
     def local_file
-      # An attachment is guaranteed to have a file.
-      # But if the attachment is nil the expression attachment&.file will be nil and attachment&.file.local_file
-      # will throw a NoMethodError: undefined method local_file' for nil:NilClass`.
-      attachment&.file&.local_file
+      attachment&.diskfile
     end
   end
 end
