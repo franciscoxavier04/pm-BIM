@@ -1104,14 +1104,21 @@ pl:
         password_confirmation: "Potwierdzenie"
         consented_at: "Zgodę na"
       user_preference:
-        comments_sorting: "Wyświetlanie komentarzy"
+        header_look_and_feel: "Look and feel"
+        header_alerts: "Alerts"
+        button_update_look_and_feel: "Update look and feel"
+        button_update_alerts: "Update alerts"
+        comments_sorting: "Display work package activity sorted by"
+        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Ukryte banery przedsiębiorstwa"
         impaired: "Ułatwienia dostępu"
         auto_hide_popups: "Automatyczne ukrycie powiadomień o sukcesie"
         warn_on_leaving_unsaved: "Ostrzegaj mnie, gdy opuszczam zadanie z niezapisanymi zmianami"
-        theme: "Tryb"
+        theme: "Colour mode"
         time_zone: "Strefa czasowa"
-        mode_guideline: "Niektóre tryby zastąpią niestandardowe kolory motywu w celu zapewnienia dostępności i czytelności. Aby stosować pełny motyw niestandardowy, wybierz tryb Jasny."
+        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
         daily_reminders: "Codzienne przypomnienia"
         workdays: "Dni robocze"
       version:
@@ -2856,6 +2863,7 @@ pl:
   label_information_plural: "Informacje"
   label_installation_guides: "Przewodniki instalacyjne"
   label_integer: "Liczba całkowita"
+  label_interface: "Interface"
   label_internal: "Wewnętrzne"
   label_introduction_video: "Film wprowadzający"
   label_invite_user: "Zaproś użytkownika"

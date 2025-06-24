@@ -1106,14 +1106,21 @@ ru:
         password_confirmation: "Подтверждение"
         consented_at: "Согласен с"
       user_preference:
-        comments_sorting: "Показывать комментарии"
+        header_look_and_feel: "Look and feel"
+        header_alerts: "Alerts"
+        button_update_look_and_feel: "Update look and feel"
+        button_update_alerts: "Update alerts"
+        comments_sorting: "Display work package activity sorted by"
+        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Скрытые корпоративные баннеры"
         impaired: "Режим отображения для людей с ограниченными возможностями"
         auto_hide_popups: "Автоматически скрывать уведомления об успешных действиях"
         warn_on_leaving_unsaved: "При покидании рабочего пакета предупреждать о не сохраненных изменениях"
-        theme: "Режим"
+        theme: "Colour mode"
         time_zone: "Часовой пояс"
-        mode_guideline: "Некоторые режимы перезаписывают пользовательские цвета темы для удобства и удобочитаемости. Для полной пользовательской темы выберите светлый режим."
+        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
         daily_reminders: "Ежедневные напоминания"
         workdays: "Рабочие дни"
       version:
@@ -2858,6 +2865,7 @@ ru:
   label_information_plural: "Информация"
   label_installation_guides: "Инструкции по установке"
   label_integer: "Целое число"
+  label_interface: "Interface"
   label_internal: "Внутренние"
   label_introduction_video: "Вводное видео"
   label_invite_user: "Пригласить пользователя"

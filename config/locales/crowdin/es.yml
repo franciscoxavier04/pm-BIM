@@ -100,12 +100,12 @@ es:
         upgrade: "Actualizar ahora"
         contact: "Contáctenos para una demostración"
       status:
-        expired: "Expired"
-        expiring_soon: "Expiring soon"
-        in_grace_period: "In grace period"
-        invalid_domain: "Invalid domain"
-        not_active: "Not active"
-        trial: "Trial"
+        expired: ""
+        expiring_soon: ""
+        in_grace_period: ""
+        invalid_domain: ""
+        not_active: ""
+        trial: ""
     jemalloc_allocator: Asignador de memoria Jemalloc
     journal_aggregation:
       explanation:
@@ -1089,14 +1089,21 @@ es:
         password_confirmation: "Confirmación"
         consented_at: "Consentido en"
       user_preference:
-        comments_sorting: "Mostrar comentarios"
+        header_look_and_feel: "Look and feel"
+        header_alerts: "Alerts"
+        button_update_look_and_feel: "Update look and feel"
+        button_update_alerts: "Update alerts"
+        comments_sorting: "Display work package activity sorted by"
+        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Banners empresariales ocultos"
         impaired: "Modo de accesibilidad"
         auto_hide_popups: "Auto-ocultar notificaciones satisfactorias"
         warn_on_leaving_unsaved: "Avisarme cuando salga de un paquete de trabajo con cambios sin guardar"
-        theme: "Modo"
+        theme: "Colour mode"
         time_zone: "Zona horaria"
-        mode_guideline: "Algunos modos sobrescribirán los colores del tema personalizado por motivos de accesibilidad y legibilidad. Para obtener el tema personalizado completo, seleccione el modo Claro."
+        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
         daily_reminders: "Recordatorios diarios"
         workdays: "Días laborables"
       version:
@@ -2775,6 +2782,7 @@ es:
   label_information_plural: "Información"
   label_installation_guides: "Guías de instalación"
   label_integer: "Número entero"
+  label_interface: "Interface"
   label_internal: "Interno"
   label_introduction_video: "Vídeo de introducción"
   label_invite_user: "Invitar usuario"

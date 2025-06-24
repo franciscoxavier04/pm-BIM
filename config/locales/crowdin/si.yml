@@ -1092,14 +1092,21 @@ si:
         password_confirmation: "තහවුරු කිරීම"
         consented_at: "එකඟ විය"
       user_preference:
-        comments_sorting: "අදහස් පෙන්වන්න"
+        header_look_and_feel: "Look and feel"
+        header_alerts: "Alerts"
+        button_update_look_and_feel: "Update look and feel"
+        button_update_alerts: "Update alerts"
+        comments_sorting: "Display work package activity sorted by"
+        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "ප්රවේශ්යතා ප්රකාරය"
         auto_hide_popups: "ස්වයං සඟවන්න සාර්ථකත්වය දැනුම්දීම්"
         warn_on_leaving_unsaved: "නොගැලවූ වෙනස්කම් සහිත වැඩ පැකේජයකින් පිටවන විට මට අනතුරු අඟවන්න"
-        theme: "Mode"
+        theme: "Colour mode"
         time_zone: "වේලා කලාපය"
-        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
       version:
@@ -2778,6 +2785,7 @@ si:
   label_information_plural: "තොරතුරු"
   label_installation_guides: "Installation guides"
   label_integer: "නිඛිල"
+  label_interface: "Interface"
   label_internal: "අභ්යන්තර"
   label_introduction_video: "හැඳින්වීම වීඩියෝ"
   label_invite_user: "පරිශීලකයාට ආරාධනා කරන්න"

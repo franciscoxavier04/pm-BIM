@@ -1088,14 +1088,21 @@ nl:
         password_confirmation: "Bevestiging"
         consented_at: "Ingestemd op"
       user_preference:
-        comments_sorting: "Toon reacties"
+        header_look_and_feel: "Look and feel"
+        header_alerts: "Alerts"
+        button_update_look_and_feel: "Update look and feel"
+        button_update_alerts: "Update alerts"
+        comments_sorting: "Display work package activity sorted by"
+        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Toegankelijkheidsmodus"
         auto_hide_popups: "Automatisch verbergen geslaagd-meldingen"
         warn_on_leaving_unsaved: "Mij waarschuwen bij het verlaten van een werkpakket met niet-opgeslagen wijzigingen"
-        theme: "Modus"
+        theme: "Colour mode"
         time_zone: "Tijdzone"
-        mode_guideline: "Sommige modi overschrijven aangepaste themakleuren voor toegankelijkheid en leesbaarheid. Voor het volledige aangepaste thema selecteert u de Light-modus."
+        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
         daily_reminders: "Daily reminders"
         workdays: "Werkdagen"
       version:
@@ -2774,6 +2781,7 @@ nl:
   label_information_plural: "Informatie"
   label_installation_guides: "Installatie gidsen"
   label_integer: "Integer"
+  label_interface: "Interface"
   label_internal: "Intern"
   label_introduction_video: "Introductie video"
   label_invite_user: "Gebruiker uitnodigen"

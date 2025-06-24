@@ -1092,14 +1092,21 @@ bg:
         password_confirmation: "Потвърждение"
         consented_at: "Съгласие в"
       user_preference:
-        comments_sorting: "Покажи коментарите"
+        header_look_and_feel: "Look and feel"
+        header_alerts: "Alerts"
+        button_update_look_and_feel: "Update look and feel"
+        button_update_alerts: "Update alerts"
+        comments_sorting: "Display work package activity sorted by"
+        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Достъпен режим"
         auto_hide_popups: "Автоматично скриване на успешните известия"
         warn_on_leaving_unsaved: "Предупреждавайте ме при напускане на работен пакет с незаписани промени"
-        theme: "Режим"
+        theme: "Colour mode"
         time_zone: "Часова зона"
-        mode_guideline: "Някои режими ще пренапишат цветовете на персонализираната тема за достъпност и четливост. За пълна персонализирана тема изберете режим Light."
+        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
         daily_reminders: "Daily reminders"
         workdays: "Работни дни"
       version:
@@ -2778,6 +2785,7 @@ bg:
   label_information_plural: "Информация"
   label_installation_guides: "Installation guides"
   label_integer: "Цяло число"
+  label_interface: "Interface"
   label_internal: "Вътрешен"
   label_introduction_video: "Въвеждащо видео"
   label_invite_user: "Покани потребител"

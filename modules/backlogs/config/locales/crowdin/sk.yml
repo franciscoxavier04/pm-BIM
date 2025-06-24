@@ -55,6 +55,7 @@ sk:
     hours: "Hodín"
     impediment: "Prekážka"
     label_versions_default_fold_state: "Zobrazenie zložených verzií"
+    caption_versions_default_fold_state: "Versions will not be expanded by default when viewing backlogs. Each one has to be manually expanded."
     work_package_is_closed: "Pracovný balík je hotový, keď"
     label_is_done_status: "Status %{status_name} znamená dokončené"
     no_burndown_data: "Nie sú k dispozícii údaje o postupe prác. Je potrebné mať nastavené dátumy začiatku a konca šprintov."
@@ -73,6 +74,9 @@ sk:
     task: "Úloha"
     task_color: "Farba úlohy"
     unassigned: "Nepriradené"
+    user_preference:
+      header_backlogs: "Backlogs module"
+      button_update_backlogs: "Update backlogs module"
     x_more: "ďalších %{count}..."
   backlogs_active: "aktívne"
   backlogs_any: "akékoľvek"

@@ -1100,14 +1100,21 @@ hr:
         password_confirmation: "Potvrda"
         consented_at: "Pristanak na"
       user_preference:
-        comments_sorting: "Prikaži komentare"
+        header_look_and_feel: "Look and feel"
+        header_alerts: "Alerts"
+        button_update_look_and_feel: "Update look and feel"
+        button_update_alerts: "Update alerts"
+        comments_sorting: "Display work package activity sorted by"
+        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Mod dostupnosti"
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
-        theme: "Mode"
+        theme: "Colour mode"
         time_zone: "Vremenska zona"
-        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
       version:
@@ -2819,6 +2826,7 @@ hr:
   label_information_plural: "Informacija"
   label_installation_guides: "Installation guides"
   label_integer: "Integer"
+  label_interface: "Interface"
   label_internal: "Unutarnji"
   label_introduction_video: "Introduction video"
   label_invite_user: "Pozovi korisnika"

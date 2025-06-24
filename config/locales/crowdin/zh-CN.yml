@@ -1080,14 +1080,21 @@ zh-CN:
         password_confirmation: "确认"
         consented_at: "同意在"
       user_preference:
-        comments_sorting: "显示评论"
+        header_look_and_feel: "Look and feel"
+        header_alerts: "Alerts"
+        button_update_look_and_feel: "Update look and feel"
+        button_update_alerts: "Update alerts"
+        comments_sorting: "Display work package activity sorted by"
+        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "隐藏企业横幅"
         impaired: "辅助功能模式"
         auto_hide_popups: "自动隐藏成功通知"
         warn_on_leaving_unsaved: "离开未保存更改的工作包时提示我"
-        theme: "模式"
+        theme: "Colour mode"
         time_zone: "时区"
-        mode_guideline: "某些模式会覆盖自定义主题的颜色，以便于访问和阅读。如需完整的自定义主题，请选择 \"浅色 \"模式。"
+        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
         daily_reminders: "每日提醒"
         workdays: "工作日"
       version:
@@ -2733,6 +2740,7 @@ zh-CN:
   label_information_plural: "信息"
   label_installation_guides: "安装指南"
   label_integer: "整数"
+  label_interface: "Interface"
   label_internal: "内部"
   label_introduction_video: "自我介绍视频"
   label_invite_user: "邀请用户"

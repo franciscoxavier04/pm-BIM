@@ -1091,14 +1091,21 @@
         password_confirmation: "Bekreftelse"
         consented_at: "Godkjent"
       user_preference:
-        comments_sorting: "Vis kommentarer"
+        header_look_and_feel: "Look and feel"
+        header_alerts: "Alerts"
+        button_update_look_and_feel: "Update look and feel"
+        button_update_alerts: "Update alerts"
+        comments_sorting: "Display work package activity sorted by"
+        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Tilgjengelighetsmodus"
         auto_hide_popups: "Auto-skjul suksessvarsler"
         warn_on_leaving_unsaved: "Varsle meg når jeg forlater en arbeidspakke med ulagrede endringer"
-        theme: "Modus"
+        theme: "Colour mode"
         time_zone: "Tidssone"
-        mode_guideline: "Noen moduser vil overskrive tilpassede temafarger for tilgjengelighet og leselighet. For å få fullstendig tilpasset tema, velg lys modus."
+        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
         daily_reminders: "Daily reminders"
         workdays: "Arbeidsdager"
       version:
@@ -2777,6 +2784,7 @@
   label_information_plural: "Informasjon"
   label_installation_guides: "Installasjons guider"
   label_integer: "Heltall"
+  label_interface: "Interface"
   label_internal: "Intern"
   label_introduction_video: "Introduksjonsvideo"
   label_invite_user: "Inviter bruker"

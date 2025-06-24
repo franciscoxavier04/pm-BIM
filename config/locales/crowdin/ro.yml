@@ -1100,14 +1100,21 @@ ro:
         password_confirmation: "Confirmare"
         consented_at: "Consimţit la"
       user_preference:
-        comments_sorting: "Afişare Comentarii"
+        header_look_and_feel: "Look and feel"
+        header_alerts: "Alerts"
+        button_update_look_and_feel: "Update look and feel"
+        button_update_alerts: "Update alerts"
+        comments_sorting: "Display work package activity sorted by"
+        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Mod accesibilitate"
         auto_hide_popups: "Ascunde automat notificările de succes"
         warn_on_leaving_unsaved: "Avertizează când părăsesc un pachet de lucru cu modificări nesalvate"
-        theme: "Mod"
+        theme: "Colour mode"
         time_zone: "Fus orar"
-        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
         daily_reminders: "Daily reminders"
         workdays: "Zile lucrătoare"
       version:
@@ -2819,6 +2826,7 @@ ro:
   label_information_plural: "Informații"
   label_installation_guides: "Ghiduri de instalare"
   label_integer: "Număr întreg"
+  label_interface: "Interface"
   label_internal: "Intern"
   label_introduction_video: "Video de introducere"
   label_invite_user: "Invitare utilizator"

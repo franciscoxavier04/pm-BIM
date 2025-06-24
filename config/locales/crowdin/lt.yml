@@ -1105,14 +1105,21 @@ lt:
         password_confirmation: "Patvirtinimas"
         consented_at: "Sutikimo laikas"
       user_preference:
-        comments_sorting: "Rodyti komentarus"
+        header_look_and_feel: "Look and feel"
+        header_alerts: "Alerts"
+        button_update_look_and_feel: "Update look and feel"
+        button_update_alerts: "Update alerts"
+        comments_sorting: "Display work package activity sorted by"
+        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Pritaikymas neįgaliesiems"
         auto_hide_popups: "Automatiškai slėpti sėkmės pranešimus"
         warn_on_leaving_unsaved: "Įspėti mane, kai palieku darbų paketą su neišsaugotais pakeitimais"
-        theme: "Režimas"
+        theme: "Colour mode"
         time_zone: "Laiko juosta"
-        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
         daily_reminders: "Daily reminders"
         workdays: "Darbo dienos"
       version:
@@ -2857,6 +2864,7 @@ lt:
   label_information_plural: "Informacija"
   label_installation_guides: "Diegimo gidai"
   label_integer: "Sveikasis skaičius"
+  label_interface: "Interface"
   label_internal: "Vidinis"
   label_introduction_video: "Įvado video"
   label_invite_user: "Pakviesti vartotoją"
