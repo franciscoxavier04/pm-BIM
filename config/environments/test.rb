@@ -100,6 +100,8 @@ Rails.application.configure do
   config.assets.digest = false
   config.assets.debug = false
 
+  config.assets.unknown_asset_fallback = true
+
   # Raises error for missing translations.
   config.i18n.raise_on_missing_translations = true
 

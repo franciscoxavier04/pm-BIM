@@ -229,7 +229,7 @@ gem "yabeda-prometheus-mmap", require: false
 gem "yabeda-puma-plugin"
 gem "yabeda-rails"
 
-gem "view_component"
+gem "view_component", "~> 4.0.0.rc1"
 # Lookbook
 gem "lookbook", "~> 2.3.11"
 
@@ -417,4 +417,4 @@ end
 
 gem "openproject-octicons", "~>19.25.0"
 gem "openproject-octicons_helper", "~>19.25.0"
-gem "openproject-primer_view_components", "~>0.70.0"
+gem "openproject-primer_view_components", "~>0.70.0", github: "opf/primer_view_components"
