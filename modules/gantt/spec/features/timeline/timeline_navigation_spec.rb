@@ -112,8 +112,8 @@ RSpec.describe "Work package timeline navigation",
       # Visit timeline query
       wp_timeline.visit_query query_tl
 
-      expect(wp_timeline).to have_test_selector("op-breadcrumb-item", text: "Gantt charts")
-      expect(wp_timeline).to have_css(".op-breadcrumb-item.active", text: "Query with Timeline", aria: { current: "page" })
+      expect(wp_timeline).to have_test_selector("op-breadcrumbs--item", text: "Gantt charts")
+      expect(wp_timeline).to have_css(".op-breadcrumbs--item.active", text: "Query with Timeline", aria: { current: "page" })
 
       wp_timeline.expect_timeline!(open: true)
       wp_timeline.expect_work_package_listed work_package2

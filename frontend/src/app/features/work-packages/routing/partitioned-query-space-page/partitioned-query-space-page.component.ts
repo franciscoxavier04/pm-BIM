@@ -181,7 +181,9 @@ export class PartitionedQuerySpacePageComponent extends WorkPackagesViewBase imp
       });
   }
 
-  breadcrumbItems() {}
+  breadcrumbItems() {
+    throw new Error('Not implemented');
+  }
 
   currentMenuSectionHeader() {
     if (!this.currentQuery?.id) return this.I18n.t('js.label_default_queries');

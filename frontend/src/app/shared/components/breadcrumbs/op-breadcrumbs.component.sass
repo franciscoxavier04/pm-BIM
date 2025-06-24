@@ -1,9 +1,9 @@
 @import "helpers"
 
 .op-breadcrumbs
-  .op-breadcrumb-items
+  .op-breadcrumbs--items
     margin-left: 0
-  .op-breadcrumb-item
+  .op-breadcrumbs--item
     display: inline-block
     list-style: none
     margin-left: 0
@@ -18,16 +18,20 @@
       content: none
     &.active
       font-weight: bold
-  .op-breadcrumb-section
+  .op-breadcrumbs--section
     font-weight: normal
     margin-right: 0.25rem
 
+  .op-breadcrumbs--current
+    text-decoration: none
+    color: inherit
+
   @media (max-width: $breakpoint-sm)
-    .op-breadcrumb-mobile
+    .op-breadcrumbs--mobile
       display: flex
       align-items: center
 
-    .op-breadcrumb-back
+    .op-breadcrumbs--back
       display: flex
       align-items: center
       text-decoration: none
