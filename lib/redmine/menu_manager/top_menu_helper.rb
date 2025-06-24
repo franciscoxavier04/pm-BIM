@@ -59,7 +59,9 @@ module Redmine::MenuManager::TopMenuHelper
   end
 
   def render_top_menu_teaser
-    render EnterpriseEdition::UpsellButtonsComponent.new(:teaser)
+    if User.current.admin? && EnterpriseToken.trial_only?
+      render(EnterpriseEdition::BuyNowButtonComponent.new)
+    end
   end
 
   def render_global_search_input
