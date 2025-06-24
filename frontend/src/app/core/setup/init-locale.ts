@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import moment from 'moment';
+import { Settings } from 'luxon';
 import { I18n } from 'i18n-js';
 
 export function initializeLocale() {
@@ -43,22 +43,7 @@ export function initializeLocale() {
 
   window.I18n = i18n;
 
-  moment.locale(userLocale);
-
-  // Remove Postformatting numbers in dates, this will ensure we are always using
-  // Arabic numbers in dates and durations, regardless of the chosen locale.
-  // Using moment.locale() ensures locale like "zh-CN" falls back to "zh-cn"
-  moment.updateLocale(moment.locale(), { postformat: (string:string) => string });
-
-  if (!Number.isNaN(firstDayOfWeek) && !Number.isNaN(firstWeekOfYear)) {
-    // ensure locale like "zh-CN" falls back to "zh-cn"
-    moment.updateLocale(moment.locale(), {
-      week: {
-        dow: firstDayOfWeek,
-        doy: 7 + firstDayOfWeek - firstWeekOfYear,
-      },
-    });
-  }
+  Settings.defaultLocale = userLocale;
 
   // Override the default pluralization function to allow
   // "other" to be used as a fallback for "one" in languages where one is not set

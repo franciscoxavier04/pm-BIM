@@ -1,13 +1,13 @@
-import moment from 'moment/moment';
+import { DateTime } from 'luxon';
 
 function paddedNumber(input:number):string {
   return input.toString().padStart(2, '0');
 }
 
 export function formatElapsedTime(startTime:string):string {
-  const start = moment(startTime);
-  const now = moment();
-  const duration = now.diff(start, 'seconds');
+  const start = DateTime.fromISO(startTime);
+  const now = DateTime.now();
+  const duration = now.diff(start, 'seconds').seconds;
 
   const hours = Math.floor(duration / 3600);
   const minutes = Math.floor((duration - (hours * 3600)) / 60);

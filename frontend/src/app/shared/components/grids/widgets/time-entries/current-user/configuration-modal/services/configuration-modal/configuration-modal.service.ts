@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DisplayedDays } from 'core-app/features/calendar/te-calendar/te-calendar.component';
-import moment from 'moment-timezone';
+import { Info, Settings } from 'luxon';
 
 @Injectable()
 export class TimeEntriesCurrentUserConfigurationModalService {
@@ -14,8 +14,8 @@ export class TimeEntriesCurrentUserConfigurationModalService {
 
   getOrderedDaysData(
     daysCheckedValues:boolean[],
-    localeWeekDays = moment.weekdays(true),
-    localeOffset = moment.localeData().firstDayOfWeek(),
+    localeWeekDays = Info.weekdays(),
+    localeOffset = Settings.defaultWeekSettings?.firstDay || 0
   ):IDayData[] {
     // The daysCheckedValues come with offset 1 (the week start day is Monday (1),
     // so the first element in the array is Monday). We have to subtract 1 to the

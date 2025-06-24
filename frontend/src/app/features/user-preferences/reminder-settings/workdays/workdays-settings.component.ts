@@ -8,8 +8,8 @@ import {
   UntypedFormControl,
   FormGroupDirective,
 } from '@angular/forms';
-import moment from 'moment';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
+import { Info } from 'luxon';
 
 @Component({
   selector: 'op-workdays-settings',
@@ -24,7 +24,7 @@ export class WorkdaysSettingsComponent implements OnInit {
    * The locale might render workdays in a different order, which is what moment return with localeSorted
    * and used for rendering the component.
    */
-  localeWorkdays:string[] = moment.weekdays(true);
+  localeWorkdays:string[] = Info.weekdays();
 
   /**
    * Almost* ISO workdays with localized strings.
@@ -58,12 +58,7 @@ export class WorkdaysSettingsComponent implements OnInit {
     return this.control.at(index) as UntypedFormControl;
   }
 
-  /** Workdays from moment.js are in non-ISO order, that means Sunday=0, Saturday=6 */
   static buildISOWeekdays():string[] {
-    const days = moment.weekdays(false);
-
-    days.push(days.shift() as string);
-
-    return days;
+    return Info.weekdays();
   }
 }

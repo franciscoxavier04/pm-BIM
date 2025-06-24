@@ -88,7 +88,7 @@
       >
          <display-field
            [resource]="workPackage"
-           [displayFieldOptions]="{ writable: false, dateFormat: 'MMM DD, YYYY', placeholder: '' }"
+           [displayFieldOptions]="{ writable: false, dateFormat: 'MMM dd, yyyy', placeholder: '' }"
            fieldName="startDate"
            containerType="single-view">
         </display-field>
@@ -116,7 +116,7 @@
         -
         <display-field
          [resource]="workPackage"
-         [displayFieldOptions]="{ writable: false, dateFormat: 'MMM DD, YYYY', placeholder: '' }"
+         [displayFieldOptions]="{ writable: false, dateFormat: 'MMM dd, yyyy', placeholder: '' }"
          fieldName="dueDate"
          containerType="single-view">
         </display-field>
@@ -154,7 +154,7 @@
     <display-field
       *ngIf="!showAsInlineCard && (workPackage.startDate || workPackage.dueDate)"
       [resource]="workPackage"
-      [displayFieldOptions]="{ writable: false, dateFormat: 'MMM DD, YYYY', placeholder: '' }"
+      [displayFieldOptions]="{ writable: false, dateFormat: 'MMM dd, yyyy', placeholder: '' }"
       [displayClass]="combinedDateDisplayField"
       fieldName="dueDate"
       class="op-wp-single-card--content-dates"

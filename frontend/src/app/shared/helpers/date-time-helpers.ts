@@ -27,19 +27,21 @@
 //++
 
 import { DateTime } from 'luxon';
-import { calculatePositionValueForDayCount, TimelineViewParameters } from '../wp-timeline';
-import { TimelineStaticElement } from './timeline-static-element';
 
-export class TodayLineElement extends TimelineStaticElement {
-  protected finishElement(elem:HTMLElement, vp:TimelineViewParameters):HTMLElement {
-    const offsetToday = vp.now.diff(vp.dateDisplayStart, 'days').days;
-    const dayProgress = DateTime.now().hour / 24;
-    elem.style.left = calculatePositionValueForDayCount(vp, offsetToday + dayProgress);
-
-    return elem;
+/**
+ * Helper to aid migration from Moment's `moment()` function to Luxon's API,
+ * which provides multiple, discreet creation functions.
+ *
+ * @param date
+ * @returns
+ */
+export function toDateTime(date:DateTime|Date|string):DateTime {
+  if (date instanceof DateTime) {
+    return date;
+  }
+  if (date instanceof Date) {
+    return DateTime.fromJSDate(date);
   }
 
-  public get identifier():string {
-    return 'wp-timeline-static-element-today-line';
-  }
+  return DateTime.fromISO(date);
 }
