@@ -174,7 +174,7 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   private registerFormSubmitListener():void {
     fromEvent(this.formElement, 'submit')
       .pipe(
-        filter(() => !CkeditorAugmentedTextareaComponent.inFlight.get(this.formElement)),
+        filter(() => !CkeditorAugmentedTextareaComponent.inFlight.has(this.formElement)),
         this.untilDestroyed(),
       )
       .subscribe((evt:SubmitEvent) => {
@@ -184,6 +184,10 @@ export class CkeditorAugmentedTextareaComponent extends UntilDestroyedMixin impl
   }
 
   public async saveForm(evt?:SubmitEvent):Promise<void> {
+    if (CkeditorAugmentedTextareaComponent.inFlight.has(this.formElement)) {
+      return;
+    }
+
     CkeditorAugmentedTextareaComponent.inFlight.set(this.formElement, true);
 
     this.syncToTextarea();

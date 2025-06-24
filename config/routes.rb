@@ -837,6 +837,7 @@ Rails.application.routes.draw do
 
     get "/my/account", action: "account"
     get "/my/settings", action: "settings"
+    get "/my/interface", action: "interface"
     get "/my/notifications", action: "notifications"
     get "/my/reminders", action: "reminders"
 

@@ -116,7 +116,9 @@ module CustomFields
       end
 
       def new_custom_field
-        ::CustomFields::CreateService.careful_new_custom_field(permitted_params.custom_field_type)
+        field = ::CustomFields::CreateService.careful_new_custom_field(permitted_params.custom_field_type)
+        field.field_format = params[:field_format]
+        field
       end
 
       def get_custom_field_params

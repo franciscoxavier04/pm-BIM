@@ -350,7 +350,7 @@ es:
   permission_delete_meetings: "Eliminar reuniones"
   permission_view_meetings: "Ver reuniones"
   permission_manage_agendas: "Gestionar agendas"
-  permission_manage_agendas_explanation: "Allows creating, editing and removing agenda items"
+  permission_manage_agendas_explanation: ""
   permission_manage_outcomes: "Gestionar resultados"
   permission_send_meeting_invites_and_outcomes: "Enviar invitaciones a reuniones y resultados a los participantes"
   project_module_meetings: "Reuniones"

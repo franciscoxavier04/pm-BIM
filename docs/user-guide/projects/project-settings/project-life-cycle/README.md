@@ -24,4 +24,4 @@ You can enable or disable existing project phases by navigating to **Project set
 >
 > A dedicated project permission is required to enable project phases.
 
-When copying a project, the active status of all gates and stages is preserved.
+When copying a project, the active status of all phases and phase gates is preserved.

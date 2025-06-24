@@ -1143,7 +1143,7 @@ zh-TW:
         invite_to_project: "邀請%{type} 加入 %{project}"
         User: "使用者"
         Group: "群組"
-        PlaceholderUser: "占位使用者"
+        PlaceholderUser: "佔位使用者"
         invite_principal_to_project: "邀請 %{principal} 加入 %{project}"
       project:
         label: "專案"
@@ -1162,7 +1162,7 @@ zh-TW:
           title: "群組"
           description: "基於所選專案中所分配角色的權限"
         placeholder:
-          title: "占位使用者"
+          title: "佔位使用者"
           title_no_ee: "佔位使用者（僅限企業版附加元件）"
           description: "無法訪問該專案並且未發送電子郵件。"
           description_no_ee: '由於沒有存取專案權限，所以不會發送電子郵件。<br>請查看<a href="%{eeHref}" target="_blank">企業版</a>。'
@@ -1179,7 +1179,7 @@ zh-TW:
         next_button: "下一個"
         required:
           user: "請選擇一個使用者"
-          placeholder: "請選擇占位使用者"
+          placeholder: "請選擇佔位使用者"
           group: "請選擇一個群組"
       role:
         label: "%{project} 中的角色"

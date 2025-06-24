@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -39,7 +40,7 @@ class MeetingSection < ApplicationRecord
     section.position_previously_changed?
   }
 
-  acts_as_list scope: :meeting
+  acts_as_list scope: [:meeting_id, { backlog: false }]
 
   default_scope { order(:position) }
 
@@ -71,9 +72,5 @@ class MeetingSection < ApplicationRecord
     else
       agenda_items.maximum(:position) + 1
     end
-  end
-
-  def first_after_backlog?
-    position == meeting.backlog.position + 1
   end
 end

@@ -30,10 +30,9 @@ module OpenProject
   class CustomFieldFormat
     include Redmine::I18n
 
-    cattr_reader :available
-    @@available = {}
+    class_attribute :registered, default: {}
 
-    attr_reader :name, :order, :label, :edit_as, :class_names
+    attr_reader :name, :order, :label, :edit_as, :class_names, :enterprise_feature
 
     def initialize(name,
                    label:,
@@ -41,6 +40,7 @@ module OpenProject
                    edit_as: name,
                    only: nil,
                    multi_value_possible: false,
+                   enterprise_feature: nil,
                    formatter: "CustomValue::StringStrategy")
       @name = name
       @label = label
@@ -48,6 +48,7 @@ module OpenProject
       @edit_as = edit_as
       @class_names = only
       @multi_value_possible = multi_value_possible
+      @enterprise_feature = enterprise_feature
       @formatter = formatter
     end
 
@@ -67,23 +68,23 @@ module OpenProject
 
       # Registers a custom field format
       def register(custom_field_format, _options = {})
-        @@available[custom_field_format.name] = custom_field_format unless @@available.include?(custom_field_format.name)
+        registered[custom_field_format.name] = custom_field_format unless registered.include?(custom_field_format.name)
+      end
+
+      def available
+        registered
+          .select { |_, format| !format.enterprise_feature || EnterpriseToken.allows_to?(format.enterprise_feature) }
       end
 
       def available_formats
-        @@available.keys
+        available.keys
       end
 
       def find_by(name:)
-        @@available[name.to_s]
+        registered[name.to_s]
       end
 
-      def all_for_field(custom_field)
-        class_name = custom_field.class.customized_class.name
-        all_for_class_name(class_name)
-      end
-
-      def all_for_class_name(class_name)
+      def available_for_class_name(class_name)
         available
           .values
           .select { |field| field.class_names.nil? || field.class_names.include?(class_name) }

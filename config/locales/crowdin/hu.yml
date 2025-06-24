@@ -1091,14 +1091,21 @@ hu:
         password_confirmation: "Új jelszó újra"
         consented_at: "Ehhez hozzájárult a"
       user_preference:
-        comments_sorting: "Hozzászólások megjelenítése"
+        header_look_and_feel: "Look and feel"
+        header_alerts: "Alerts"
+        button_update_look_and_feel: "Update look and feel"
+        button_update_alerts: "Update alerts"
+        comments_sorting: "Display work package activity sorted by"
+        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Hidden enterprise banners"
         impaired: "Kisegítő mód"
         auto_hide_popups: "Siker értesítések automatikus elrejtése"
         warn_on_leaving_unsaved: "Figyelmeztess, ha úgy hagyom el a munkacsomagot, hogy nem mentett változások vannak rajta"
-        theme: "Mód"
+        theme: "Colour mode"
         time_zone: "Idő zóna"
-        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
         daily_reminders: "Daily reminders"
         workdays: "Munkanapok"
       version:
@@ -2777,6 +2784,7 @@ hu:
   label_information_plural: "Információk"
   label_installation_guides: "Telepítési útmutató"
   label_integer: "Egész szám"
+  label_interface: "Interface"
   label_internal: "Belső"
   label_introduction_video: "Bemutató videó"
   label_invite_user: "Felhasználó meghívása"
@@ -3998,8 +4006,6 @@ hu:
       new:
         description: "Changes to this project phase will be reflected in all projects where it is enabled."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Start and finish gate"
       no_gate: "No gate"
       start_gate: "Start gate"

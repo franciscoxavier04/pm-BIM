@@ -1101,14 +1101,21 @@ uk:
         password_confirmation: "Підтвердження"
         consented_at: "Згоден на"
       user_preference:
-        comments_sorting: "Відображення коментарів"
+        header_look_and_feel: "Look and feel"
+        header_alerts: "Alerts"
+        button_update_look_and_feel: "Update look and feel"
+        button_update_alerts: "Update alerts"
+        comments_sorting: "Display work package activity sorted by"
+        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "Приховані банери Enterprise"
         impaired: "Режим спеціальних можливостей"
         auto_hide_popups: "Автоматичне приховування сповіщень про успіх"
         warn_on_leaving_unsaved: "Попереджати мене, коли залишив робочий пакет із незбереженими змінами"
-        theme: "Режим"
+        theme: "Colour mode"
         time_zone: "Часовий пояс"
-        mode_guideline: "У деяких режимах кольори користувацької теми замінюються, щоб полегшити взаємодію з користувачем і зробити її зручнішою. Якщо потрібна повністю користувацька тема, виберіть світлий режим."
+        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
         daily_reminders: "Щоденні нагадування"
         workdays: "Робочі дні"
       version:
@@ -2853,6 +2860,7 @@ uk:
   label_information_plural: "Інформація"
   label_installation_guides: "Інструкції зі встановлення"
   label_integer: "Ціле число"
+  label_interface: "Interface"
   label_internal: "Власне"
   label_introduction_video: "Введення відео"
   label_invite_user: "Запросити користувача"
@@ -4077,8 +4085,6 @@ uk:
       new:
         description: "Зміни цього етапу проєкту відображатимуться в усіх проєктах із цим етапом."
         heading: "New phase"
-      edit:
-        heading: "Edit phase"
       both_gate: "Початкова й кінцева контрольні точки"
       no_gate: "Немає контрольної точки"
       start_gate: "Початкова контрольна точка"

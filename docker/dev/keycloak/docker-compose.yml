@@ -1,6 +1,6 @@
 services:
   db-keycloak:
-    image: postgres:13
+    image: postgres:17
     restart: unless-stopped
     networks:
       - external

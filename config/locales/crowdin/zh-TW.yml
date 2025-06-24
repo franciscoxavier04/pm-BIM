@@ -561,7 +561,7 @@ zh-TW:
       data_consequences: >
         出現的所有佔位符用戶(例如，作為受理人、負責人或其他用戶值) 將被重新分配給一個名為“已刪除用戶”的帳戶。 由於每個已刪除帳戶的數據都會被重新分配給此帳戶，因此無法將用戶創建的數據與另一個已刪除帳戶的數據區分。
       irreversible: "這一行動是不可還原的"
-      confirmation: "輸入占位使用者名稱 %{name} 確認刪除。"
+      confirmation: "輸入佔位使用者名稱 %{name} 確認刪除。"
   priorities:
     edit:
       priority_color_text: |
@@ -1080,14 +1080,21 @@ zh-TW:
         password_confirmation: "確認密碼"
         consented_at: "同意在"
       user_preference:
-        comments_sorting: "顯示留言"
+        header_look_and_feel: "Look and feel"
+        header_alerts: "Alerts"
+        button_update_look_and_feel: "Update look and feel"
+        button_update_alerts: "Update alerts"
+        comments_sorting: "Display work package activity sorted by"
+        disable_keyboard_shortcuts: "Disable keyboard shortcuts"
+        disable_keyboard_shortcuts_caption_html: |-
+          You can choose to disable default <a href="%{href}">keyboard shortcuts</a> if you use a screen  reader or want to avoid accidentally triggering an action with a  shortcut.
         dismissed_enterprise_banners: "隱藏的企業版廣告"
         impaired: "協助工具模式"
         auto_hide_popups: "提醒後自動隱藏"
         warn_on_leaving_unsaved: "離開尚未儲存的工作套件時提示我"
-        theme: "模式 "
+        theme: "Colour mode"
         time_zone: "時區"
-        mode_guideline: "為了親和性以及方便閱讀性，某些模式將覆蓋自訂主題顏色。對於完整的自訂主題，請選擇白色模式。"
+        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. Please select Light mode for full custom theme support."
         daily_reminders: "每日提醒"
         workdays: "工作日"
       version:
@@ -1539,7 +1546,7 @@ zh-TW:
       news: "最新消息"
       notification:
         other: "通知"
-      placeholder_user: "占位使用者"
+      placeholder_user: "佔位使用者"
       project:
         other: "專案"
       project_query:
@@ -2002,7 +2009,7 @@ zh-TW:
       ldap_groups: 同步LDAP使用者與群組
       nextcloud_sso: Nextcloud 儲存空間的單一登入(SSO)
       one_drive_sharepoint_file_storage: OneDrive/SharePoint 檔案儲存
-      placeholder_users: 占位使用者
+      placeholder_users: 佔位使用者
       project_list_sharing: 專案清單分享
       readonly_work_packages: 唯讀工作套件
       sso_auth_providers: 單一登入
@@ -2028,15 +2035,15 @@ zh-TW:
       baseline_comparison:
         description: 突顯自過去任一時間點以來對此清單所做的變更。
       benefits:
-        description: "What are the benefits of the Enterprise on-premises edition?"
-        high_security: "Security features"
-        high_security_text: "Single sign on (SAML, OpenID Connect, CAS), LDAP groups."
-        installation: "Installation support"
-        installation_text: "Experienced software engineers guide you through the complete installation and setup process in your own infrastructure."
-        premium_features: "Enterprise add-ons"
-        premium_features_text: "Agile boards, custom theme and logo, graphs, intelligent workflows with custom actions, full text search for work package attachments and multi-select custom fields."
-        professional_support: "Professional support"
-        professional_support_text: "Get reliable, high-touch support from senior support engineers with expert knowledge about running OpenProject in business-critical environments."
+        description: "Enterprise 本地部署版有什麼好處？"
+        high_security: "安全功能"
+        high_security_text: "單一登入（SAML、OpenID Connect、CAS）、LDAP 群組支援。"
+        installation: "安裝支援"
+        installation_text: "經驗豐富的軟體工程師將引導您在自己的基礎架構中完成整個安裝與設定流程。"
+        premium_features: "Enterprise 附加元件"
+        premium_features_text: "敏捷看板、自訂主題與標誌、圖表、具備自訂動作的智慧工作流程、工作套件附件的全文搜尋，以及多選自訂欄位。"
+        professional_support: "專業支援"
+        professional_support_text: "由資深支援工程師提供可靠且貼近需求的高品質支援，具備在商業關鍵環境中執行 OpenProject 的專業知識。"
       work_package_subject_generation:
         description: "使用參考的屬性和文字建立自動產生的主題。"
       customize_life_cycle:
@@ -2074,7 +2081,7 @@ zh-TW:
       virus_scanning:
         description: "確保在其他使用者存取 OpenProject 中上傳的檔案前，對其進行病毒掃描。"
       placeholder_users:
-        title: 占位使用者
+        title: 佔位使用者
         description: >
           「佔位使用者」是一種將工作套件分配給不屬於您專案成員的方法。它們在一系列場景中十分有用；例如，如果您需要追蹤尚未命名或可用的資源的任務，或者如果您不想讓該人員存取專案，但仍希望追蹤分配給他們的任務。
       internal_comments:
@@ -2215,7 +2222,7 @@ zh-TW:
               label: "甘特圖"
               caption: "匯出甘特圖檢視中的工作套件清單。"
         include_images:
-          label: "包含圖片"
+          label: "圖片"
           caption: "排除影像以減少 PDF 匯出的大小。"
         gantt_zoom_levels:
           label: "縮放等級"
@@ -2733,6 +2740,7 @@ zh-TW:
   label_information_plural: "資訊"
   label_installation_guides: "安裝說明"
   label_integer: "整數"
+  label_interface: "Interface"
   label_internal: "內部"
   label_introduction_video: "簡介影片"
   label_invite_user: "邀請使用者"
@@ -2880,9 +2888,9 @@ zh-TW:
   label_permissions: "權限"
   label_permissions_report: "權限列表"
   label_personalize_page: "個人化本頁"
-  label_placeholder_user: "占位使用者"
+  label_placeholder_user: "佔位使用者"
   label_placeholder_user_new: "新的佔位使用者"
-  label_placeholder_user_plural: "占位使用者"
+  label_placeholder_user_plural: "佔位使用者"
   label_planning: "計劃中"
   label_please_login: "請登入"
   label_plugins: "擴充套件"
@@ -3419,7 +3427,7 @@ zh-TW:
   permission_archive_project: "封存專案"
   permission_create_user: "新增使用者"
   permission_manage_user: "編輯使用者"
-  permission_manage_placeholder_user: "建立、編輯及刪除占位使用者"
+  permission_manage_placeholder_user: "建立、編輯及刪除佔位使用者"
   permission_add_subprojects: "建立子專案"
   permission_add_work_package_watchers: "新增監看者"
   permission_assign_versions: "指派版本"
@@ -3951,8 +3959,6 @@ zh-TW:
       new:
         description: "此專案階段的變更會反映在啟用此階段的所有專案中。"
         heading: "新增階段"
-      edit:
-        heading: "編輯階段"
       both_gate: "開始以及結束關卡"
       no_gate: "沒有關卡"
       start_gate: "開始關卡"
@@ -4255,7 +4261,7 @@ zh-TW:
     reminders:
       label_remind_at: "日期"
       note_placeholder: "為什麼要設定這個提醒？"
-      create_success_message: "Reminder set successfully. You will receive a notification for this work package %{reminder_time}."
+      create_success_message: "提醒已成功設定。您將會在此工作套件的 %{reminder_time} 收到通知。"
       success_update_message: "提醒成功更新"
       success_deletion_message: "提醒已成功刪除。"
   sharing:
