@@ -46,6 +46,12 @@ RSpec.describe CustomValue::DateStrategy do
       it { is_expected.to eql(Date.iso8601(value)) }
     end
 
+    context "value is not a date" do
+      let(:value) { "hello, world!" }
+
+      it { is_expected.to be_nil }
+    end
+
     context "value is blank" do
       let(:value) { "" }
 
