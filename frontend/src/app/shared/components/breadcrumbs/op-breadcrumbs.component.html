@@ -18,7 +18,12 @@
           </ng-template>
         </ng-container>
         <ng-container *ngIf="last">
-          <span>{{ getText(item) }}</span>
+          <span>
+            <ng-container *ngIf="lastItemSection">
+              <span class="op-breadcrumb-section">{{ lastItemSection }}:</span>
+            </ng-container>
+            <strong>{{ getText(item) }}</strong>
+          </span>
         </ng-container>
       </li>
     </ol>

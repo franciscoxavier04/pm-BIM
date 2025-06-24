@@ -136,8 +136,6 @@ export class PartitionedQuerySpacePageComponent extends WorkPackagesViewBase imp
     component: WorkPackageFilterContainerComponent,
   };
 
-  breadcrumbItems() {}
-
   ngOnInit():void {
     super.ngOnInit();
 
@@ -181,6 +179,14 @@ export class PartitionedQuerySpacePageComponent extends WorkPackagesViewBase imp
         this.updateTitle(query);
         this.currentQuery = query;
       });
+  }
+
+  breadcrumbItems() {}
+
+  currentMenuSectionHeader() {
+    if (!this.currentQuery?.id) return this.I18n.t('js.label_default_queries');
+    if (this.currentQuery.starred) return this.I18n.t('js.label_starred_queries');
+    return this.currentQuery.public ? this.I18n.t('js.label_global_queries') : this.I18n.t('js.label_custom_queries');
   }
 
   /**

@@ -206,6 +206,8 @@ export class BoardPartitionedPageComponent extends UntilDestroyedMixin {
     ];
   }
 
+  currentMenuSectionHeader() { return this.I18n.t('js.label_global_queries'); }
+
   changeChangesFromTitle(newName:string) {
     this.board$
       .pipe(take(1))

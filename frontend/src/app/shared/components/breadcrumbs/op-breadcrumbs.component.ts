@@ -35,8 +35,7 @@ import { I18nService } from 'core-app/core/i18n/i18n.service';
 
 export type BreadcrumbItem =
   | { href:string; text:string }
-  | string
-  | { section:string; text:string };
+  | string;
 
 @Component({
   templateUrl: './op-breadcrumbs.component.html',
@@ -46,6 +45,7 @@ export type BreadcrumbItem =
 })
 export class OpBreadcrumbsComponent {
   @Input() items:BreadcrumbItem[] = [];
+  @Input() lastItemSection:string | null = null;
 
   constructor(
     readonly I18n:I18nService,
@@ -60,9 +60,13 @@ export class OpBreadcrumbsComponent {
   }
 
   getText(item:BreadcrumbItem):string {
-    if (typeof item === 'string') return item;
-    if ('section' in item) return `${item.section}: ${item.text}`;
-    return item.text;
+    if (this.isLink(item)) {
+      return item.text;
+    }
+    if (typeof item === 'string') {
+      return item;
+    }
+    return '';
   }
 
   getHref(item:BreadcrumbItem):string | null {
