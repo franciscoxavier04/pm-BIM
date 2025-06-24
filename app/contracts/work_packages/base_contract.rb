@@ -307,9 +307,20 @@ module WorkPackages
       if model.parent_id_changed? &&
          model.parent_id &&
          errors.exclude?(:parent) &&
-         WorkPackage.relatable(model, Relation::TYPE_PARENT).where(id: model.parent_id).empty?
+         current_parent_unrelatable?
+        # closure_tree adds an error on :parent_id because of the cycle
+        # detection, and active_record sees the error when saving the children
+        # association and adds an error on :children as well. We need to remove
+        # them.
+        errors.delete(:parent_id) # remove the error added by closure_tree
+        errors.delete(:children) # remove the error added by active_record
+        # add our own error
         errors.add :parent, :cant_link_a_work_package_with_a_descendant
       end
+    end
+
+    def current_parent_unrelatable?
+      WorkPackage.relatable(model, Relation::TYPE_PARENT).where(id: model.parent_id).empty?
     end
 
     def validate_status_exists
