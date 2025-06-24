@@ -242,7 +242,7 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
   end
 
   def get_link_cell(custom_url)
-    make_link_href_cell(custom_url.href, custom_url.href)
+    make_link_href_cell(custom_url.to_s, custom_url.to_s)
   end
 
   def get_column_value_cell(work_package, column_name)

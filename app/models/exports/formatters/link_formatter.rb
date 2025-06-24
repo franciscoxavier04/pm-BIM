@@ -35,10 +35,6 @@ module Exports
         @href = object.custom_value_for(custom_field).to_s
       end
 
-      def href
-        @href
-      end
-
       def to_html
         ApplicationController.helpers.link_to(@href, @href)
       end
