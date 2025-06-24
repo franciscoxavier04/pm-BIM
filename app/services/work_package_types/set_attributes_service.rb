@@ -30,8 +30,6 @@
 
 module WorkPackageTypes
   class SetAttributesService < ::BaseServices::SetAttributes
-    include Dry::Monads[:result]
-
     def initialize(user:, model:, contract_class:, contract_options: nil)
       super
       @param_validations = {}
@@ -42,9 +40,9 @@ module WorkPackageTypes
     def set_attributes(params)
       permitted = params.except(:copy_workflow_from)
 
-      check_patterns(permitted).or { |failures| @param_validations.update(failures) }
-      check_copy_workflow(params).or { |failure| @param_validations.update(failure) }
-      check_projects(permitted).or { |failure| @param_validations.update(failure) }
+      check_patterns(permitted)
+      check_copy_workflow(params)
+      check_projects(permitted)
 
       super(permitted.except(*@param_validations.keys))
     end
@@ -64,37 +62,32 @@ module WorkPackageTypes
     end
 
     def check_patterns(params)
-      return Success() unless params.key?(:patterns)
-      return Success() if params.key?(:patterns) && params[:patterns].blank?
+      return unless params.key?(:patterns)
+      return if params.key?(:patterns) && params[:patterns].blank?
 
-      Types::Patterns::CollectionContract
-        .new
-        .call(params[:patterns])
-        .to_monad
-        .or { |result| Failure({ patterns: validation_failure_to_message(result).join(", ") }) }
+      result = Types::Patterns::CollectionContract.new.call(params[:patterns])
+      if result.failure?
+        @param_validations.update({ patterns: validation_failure_to_message(result).join(", ") })
+      end
     rescue ArgumentError
-      Failure({ patterns: :is_invalid })
+      @param_validations.update({ patterns: :is_invalid })
     end
 
     def check_copy_workflow(params)
-      return Success() unless params.key?(:copy_workflow_from)
+      return unless params.key?(:copy_workflow_from)
 
-      CopyWorkflowAttributeContract
-        .new
-        .call(params.slice(:copy_workflow_from))
-        .to_monad
-        .or { |result| Failure({ copy_workflow_from: validation_failure_to_message(result).join(", ") }) }
+      result = CopyWorkflowAttributeContract.new.call(params.slice(:copy_workflow_from))
+      if result.failure?
+        @param_validations.update({ copy_workflow_from: validation_failure_to_message(result).join(", ") })
+      end
     end
 
     def check_projects(params)
-      return Success() unless params.key?(:project_ids)
+      return unless params.key?(:project_ids)
 
       invalid_project_ids = params[:project_ids].reject { |id| Project.exists?(id) }
-
-      if invalid_project_ids.empty?
-        Success()
-      else
-        Failure({ project_ids: "Projects with ids #{invalid_project_ids.join(', ')} do not exist." })
+      unless invalid_project_ids.empty?
+        @param_validations.update({ project_ids: "Projects with ids #{invalid_project_ids.join(', ')} do not exist." })
       end
     end
 
