@@ -31,6 +31,8 @@
 require "digest/sha1"
 
 class User < Principal
+  ScimEmail = Struct.new("ScimEmail", :value, :primary, :type)
+
   VALID_NAME_REGEX = /\A[\d\p{Alpha}\p{Mark}\p{Space}\p{Emoji}'’´\-_.,@()+&*–]+\z/
   CURRENT_USER_LOGIN_ALIAS = "me"
   USER_FORMATS_STRUCTURE = {
@@ -585,13 +587,16 @@ class User < Principal
     active?
   end
 
-  Email = Struct.new("Email", :value, :primary, :type)
   def scim_emails
-    [Email.new(mail, true, "work")]
+    [ScimEmail.new(mail, true, "work")]
   end
 
   def scim_emails=(emails)
-    self.mail = emails.first.value
+    email = (emails.find { |email| email.primary == true }) ||
+            (emails.find { |email| email.type == "work" }) ||
+            emails.sort.first
+
+    self.mail = email&.value
   end
 
   def self.scim_resource_type
@@ -617,7 +622,7 @@ class User < Principal
             type: :type
           },
           find_with: Proc.new do |qwe|
-            Email.new(qwe["value"], !!qwe["primary"], qwe["type"])
+            ScimEmail.new(qwe["value"], qwe["primary"] == true, qwe["type"])
           end
         }
       ],

@@ -40,13 +40,27 @@ module ScimV2
           call = Groups::CreateService
                    .new(user: User.system, model: group)
                    .call(group.attributes)
-                   .on_failure { |result| raise result.message }
+                   .on_failure do |result|
+            uniqueness_error = result.errors.find { |e| e.type == :taken }
+            if uniqueness_error.present?
+              raise Scimitar::ErrorResponse.new(
+                status: 409,
+                scimType: "uniqueness",
+                detail: "Operation failed due to a uniqueness constraint: #{result.message}"
+              )
+            else
+              raise result.message
+            end
+          end
           group = call.result
 
-          Groups::AddUsersService
-            .new(group, current_user: User.system)
-            .call(ids: scim_resource.members.map(&:value), send_notifications: false)
-            .on_failure { |call| raise call.message }
+          members = scim_resource.members
+          if members.present?
+            Groups::AddUsersService
+              .new(group, current_user: User.system)
+              .call(ids: members.map(&:value), send_notifications: false)
+              .on_failure { |call| raise call.message }
+          end
 
           group.to_scim(location: url_for(action: :show, id: group.id))
         end
@@ -73,9 +87,10 @@ module ScimV2
         storage_class.transaction do
           group = storage_scope.find(group_id)
           group.from_scim_patch!(patch_hash: patch_hash)
+          user_ids = group.scim_members.map(&:id)
           Groups::UpdateService
             .new(user: User.system, model: group)
-            .call
+            .call(user_ids:)
             .on_failure { |call| raise call.message }
           group.reload
           group.to_scim(location: url_for(action: :show, id: group.id))

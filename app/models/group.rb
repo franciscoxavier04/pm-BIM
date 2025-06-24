@@ -84,14 +84,29 @@ class Group < Principal
     external_id
   end
 
-  def scim_users_and_groups
-    users
+  def scim_members
+    @scim_members ||= users
   end
 
-  def scim_users_and_groups=(_array)
-    # Nothing is happening here, because users should be added/removed to the group
-    # through Groups::UpdateSerivce. So, it is done on a higher(controller) level.
-    users
+  def scim_members=(array)
+    # Here we just assign array of found users to an instance variable.
+    # So it is done on a higher(controller) level to pass users_ids list
+    # to Groups::UpdateService
+    @scim_members = array
+  end
+
+  def scim_active=(is_active)
+    if is_active
+      activate
+      true
+    else
+      lock if active?
+      false
+    end
+  end
+
+  def scim_active
+    active?
   end
 
   def self.scim_resource_type
@@ -104,7 +119,7 @@ class Group < Principal
       externalId: :scim_external_id,
       displayName: :name,
       members: [
-        list: :scim_users_and_groups,
+        list: :scim_members,
         using: {
           value: :id
         },

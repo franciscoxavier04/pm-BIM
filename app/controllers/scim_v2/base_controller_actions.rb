@@ -55,15 +55,27 @@ module ScimV2
                             .limit(pagination_info.limit)
                             .to_a
 
+        excluded_attributes = params.fetch(:excludedAttributes, "").split(",")
+        attributes = storage_class.scim_attributes_map.keys + storage_class.scim_attributes_map.values.find_all { |i| i.is_a? Hash }.flat_map(&:keys)
+        attributes = attributes.map(&:to_s)
         super(pagination_info, page_of_results) do |record|
-          record.to_scim(location: url_for(action: :show, id: record.id))
+          record.to_scim(
+            location: url_for(action: :show, id: record.id),
+            include_attributes: attributes - excluded_attributes
+          )
         end
       end
 
       def show
         super do |record_id|
           record = storage_scope.find(record_id)
-          record.to_scim(location: url_for(action: :show, id: record_id))
+          excluded_attributes = params.fetch(:excludedAttributes, "").split(",")
+          attributes = storage_class.scim_attributes_map.keys + storage_class.scim_attributes_map.values.find_all { |i| i.is_a? Hash }.flat_map(&:keys)
+          attributes = attributes.map(&:to_s)
+          record.to_scim(
+            location: url_for(action: :show, id: record_id),
+            include_attributes: attributes - excluded_attributes
+          )
         end
       end
     end

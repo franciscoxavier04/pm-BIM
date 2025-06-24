@@ -52,7 +52,6 @@ RSpec.describe "SCIM API Users" do
                                          "emails" => [{ "primary" => true,
                                                         "type" => "work",
                                                         "value" => admin.mail }],
-                                         "externalId" => nil,
                                          "groups" => [],
                                          "id" => admin.id.to_s,
                                          "meta" => { "created" => admin.created_at.iso8601,
