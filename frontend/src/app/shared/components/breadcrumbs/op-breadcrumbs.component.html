@@ -6,7 +6,6 @@
         class="op-breadcrumbs--item"
         data-test-selector="op-breadcrumbs--item"
         *ngFor="let item of items; let last = last"
-        [class.active]="last"
       >
         <ng-container *ngIf="!last">
           <ng-container *ngIf="isLink(item); else plainText">
@@ -25,7 +24,7 @@
             <ng-container *ngIf="lastItemSection">
               <span class="op-breadcrumbs--section">{{ lastItemSection }}:</span>
             </ng-container>
-            <strong>{{ getText(item) }}</strong>
+            <b>{{ getText(item) }}</b>
           </a>
         </ng-container>
       </li>

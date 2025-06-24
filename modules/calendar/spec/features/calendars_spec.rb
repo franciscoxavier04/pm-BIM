@@ -158,7 +158,7 @@ RSpec.describe "Work package calendars", :js do
     visit future_url
 
     expect(page).to have_test_selector("op-breadcrumbs--item", text: "Calendars")
-    expect(page).to have_css(".op-breadcrumbs--item.active", text: "Unnamed calendar", aria: { current: "page" })
+    expect(page).to have_css(".op-breadcrumbs--current", text: "Unnamed calendar", aria: { current: "page" })
 
     expect(page)
       .to have_no_css ".fc-event-title", text: current_work_package.subject
