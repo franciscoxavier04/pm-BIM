@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -289,6 +291,7 @@ module WorkPackages
 
     def validate_parent_not_self
       if model.parent == model
+        errors.delete(:parent_id) # remove the error added by closure_tree's cycle detection
         errors.add :parent, :cannot_be_self_assigned
       end
     end
