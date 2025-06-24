@@ -59,7 +59,7 @@ module EnterpriseEdition
     end
 
     def token
-      @token ||= EnterpriseToken.active_trial_tokens.last
+      @token ||= EnterpriseToken.active_trial_token
     end
 
     def title

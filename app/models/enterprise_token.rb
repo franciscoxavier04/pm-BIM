@@ -45,8 +45,8 @@ class EnterpriseToken < ApplicationRecord
       active_tokens.reject(&:trial?)
     end
 
-    def active_trial_tokens
-      active_tokens.select(&:trial?)
+    def active_trial_token
+      active_tokens.find(&:trial?)
     end
 
     def table_exists?
@@ -62,7 +62,7 @@ class EnterpriseToken < ApplicationRecord
     end
 
     def trial_only?
-      active_non_trial_tokens.empty? && active_trial_tokens.any?
+      active_non_trial_tokens.empty? && active_trial_token.present?
     end
 
     def available_features
@@ -88,8 +88,8 @@ class EnterpriseToken < ApplicationRecord
     def user_limit
       if active_non_trial_tokens.any?
         get_user_limit_of(active_non_trial_tokens)
-      else
-        get_user_limit_of(active_trial_tokens)
+      elsif active_trial_token
+        get_user_limit_of([active_trial_token])
       end
     end
 
@@ -122,6 +122,7 @@ class EnterpriseToken < ApplicationRecord
                             uniqueness: { message: I18n.t("activerecord.errors.models.enterprise_token.already_added") }
   validate :valid_token_object
   validate :valid_domain
+  validate :one_trial_token
 
   before_validation :strip_encoded_token
   before_save :extract_validity_from_token
@@ -245,6 +246,12 @@ class EnterpriseToken < ApplicationRecord
 
   def valid_domain
     errors.add :domain, :invalid if invalid_domain?
+  end
+
+  def one_trial_token
+    if self.class.active_trial_token.present?
+      errors.add :base, :only_one_trial
+    end
   end
 
   def extract_validity_from_token
