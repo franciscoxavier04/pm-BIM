@@ -38,13 +38,9 @@ module Exports
 
       def format_hierarchy_item_for_export(item_value)
         item = ::CustomField::Hierarchy::Item.find_by(id: item_value.to_s)
-        return "#{item_value} #{I18n.t(:label_not_found)}" if item.nil?
+        return "#{item_value} #{I18n.t(:label_not_found)}" unless item
 
         item.ancestry_path
-      end
-
-      def hierarchy_item_service
-        ::CustomFields::Hierarchy::HierarchicalItemService.new
       end
     end
   end
