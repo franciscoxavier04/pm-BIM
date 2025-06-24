@@ -327,7 +327,7 @@ RSpec.describe WorkPackages::UpdateContract do
       end
     end
 
-    describe "project_phase_definition", with_flag: { stages_and_gates: true } do
+    describe "project_phase_definition" do
       let(:permissions) { super() + %i[view_project_phases move_work_packages] }
 
       context "when not changing the value but assigning a project in which the phase is not active" do

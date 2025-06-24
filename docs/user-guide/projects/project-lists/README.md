@@ -44,7 +44,7 @@ You will then get a list of all your active projects in OpenProject.
 
 ### Project lists view explained
 
-You can use the Project overview page to **create a multi-project status dashboard** if you include your own [project attributes](../../../system-admin-guide/projects/project-attributes), e.g. custom status options, project duration or any relevant project information.
+You can use the Project overview page to **create a multi-project status dashboard** if you include your own [project attributes](../../../system-admin-guide/projects/project-attributes) or [project life cycle phases](../../../system-admin-guide/projects/project-life-cycle), e.g. custom status options, project duration or any relevant project information.
 
 Each project is displayed in a single line, starting with the **Favorite** column, marking favorite projects. For the the fields where the text is too long to be displayed completely, please use the **Expand** icon.
 
@@ -285,3 +285,47 @@ In this project overarching list, you can search, filter, group by, sort, highli
 You can group by projects by clicking in the header of the work package table next to PROJECT and select **Group by**. Collapsing the groups will allow you an **overview of the projects' aggregated milestones** as described [here](../../work-packages/work-package-table-configuration/#flat-list-hierarchy-mode-and-group-by).
 
 ![project overarching report](project-overarching-report.gif)
+
+### Project life cycle overview
+
+To better understand the state and progress of multiple projects at once, you can configure a project list view filtered or grouped by specific project phases or phase gates. This allows you to get a high-level overview of where each project currently stands in the lifecycle. This consolidated view helps you monitor key milestones and better support strategic decision-making across your project portfolio.
+
+You can add individual project phases and gates as columns in the project list. This is done through the standard **configure view** modal or by adjusting the **default columns** in administration. You can select specific date ranges to focus on. For example, only showing projects with phases that fall within the current year. 
+
+In a project list, each project phase appears as a separate column. If a phase includes a phase gate, this is indicated by an icon (a line with a circle) next to the phase name, there are no separate columns for phase gates. 
+
+If no project phase values are displayed for a project, it could be because the phases are disabled for that project or because you don't have the required *View project phases* permission.
+
+The view remains intact even if a phase or gate is later removed from the global configuration.
+
+
+
+> [!TIP]
+>
+> You can add phases and gates in any order to your list view. There’s no requirement to follow the lifecycle sequence, which provides flexibility for different reporting needs.
+
+![Project life cycle phases under project lists in OpenProject](project-life-cycle-view-configured.png)
+
+You can also filter project lists by project phases and phase gates. Simply select a phase or phase gate.
+
+
+
+![Project lists filter by project phases and phase gates in OpenProject](openproject_user_guide_project_lists_filter_by_phase_and_gate.png)
+
+
+
+
+
+ Specify the timeframe. You can choose between
+
+- today
+- this week
+- on a specific date
+- between specific dates
+- is empty.
+
+![Project lists filtered by project phases and phase gates with a timeframe dropdown menu filter opened in OpenProject](openproject_user_guide_project_lists_filter_by_phase_and_gate_timeframe_filter.png)
+
+You will then see all projects that have the selected phase, which is active during the specified timeframe. For example *Executing* project phase that is scheduled for the current week. 
+
+![Project lists filter by project phases and phase gates with a specified timeframe in OpenProject](openproject_user_guide_project_lists_filter_by_phase_and_gate_timeframe.png)

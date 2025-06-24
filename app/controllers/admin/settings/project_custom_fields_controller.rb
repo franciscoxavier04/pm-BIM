@@ -30,7 +30,6 @@ module Admin::Settings
   class ProjectCustomFieldsController < ::Admin::SettingsController
     include CustomFields::SharedActions
     include OpTurbo::ComponentStream
-    include OpTurbo::DialogStreamHelper
     include FlashMessagesOutputSafetyHelper
     include Admin::Settings::ProjectCustomFields::ComponentStreams
 
@@ -59,7 +58,8 @@ module Admin::Settings
     end
 
     def new
-      @custom_field = ProjectCustomField.new(custom_field_section_id: params[:custom_field_section_id])
+      @custom_field = ProjectCustomField.new(custom_field_section_id: params[:custom_field_section_id],
+                                             field_format: params[:field_format])
 
       respond_to :html
     end

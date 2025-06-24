@@ -36,6 +36,8 @@ RSpec.describe "SCIM API Groups" do
   let(:admin) { create(:admin) }
   let(:oidc_provider) { create(:oidc_provider, slug: "keycloak", creator: admin) }
   let(:user) { create(:user, identity_url: "#{oidc_provider.slug}:#{external_user_id}") }
+  let(:user1) { user }
+  let(:user2) { create(:user, identity_url: "#{oidc_provider.slug}:#{external_user_id}_user2") }
   let(:group) { create(:group, identity_url: "#{oidc_provider.slug}:#{external_group_id}", members: [user]) }
   let(:headers) { { "CONTENT_TYPE" => "application/scim+json", "HTTP_AUTHORIZATION" => "Bearer access_token" } }
 
@@ -123,6 +125,21 @@ RSpec.describe "SCIM API Groups" do
                                                   "resourceType" => "Group" },
                                       "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] })
       end
+
+      it "excludes specified attributes" do
+        get "/scim_v2/Groups/#{group.id}?excludedAttributes=members", {}, headers
+
+        response_body = JSON.parse(last_response.body)
+        expect(response_body).to eq({ "displayName" => group.name,
+                                      "externalId" => external_group_id,
+                                      "id" => group.id.to_s,
+                                      "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                  "created" => group.created_at.iso8601,
+                                                  "lastModified" => group.updated_at.iso8601,
+                                                  "resourceType" => "Group" },
+                                      "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] })
+        expect(response_body["members"]).to be_nil
+      end
     end
 
     context "with the feature flag disabled", with_flag: { scim_api: false } do
@@ -160,6 +177,29 @@ RSpec.describe "SCIM API Groups" do
                                                   "lastModified" => group.updated_at.iso8601,
                                                   "resourceType" => "Group" },
                                       "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] })
+
+      end
+
+      it "memberless request" do
+        user
+        request_body = { "displayName" => "Group 123",
+                         "externalId" => external_group_id,
+                         "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] }
+        post "/scim_v2/Groups/", request_body.to_json, headers
+
+        response_body = JSON.parse(last_response.body)
+        group = Group.last
+        expect(Group.count).to eq(1)
+        expect(response_body).to eq({ "displayName" => group.name,
+                                      "externalId" => external_group_id,
+                                      "id" => group.id.to_s,
+                                      "members" => [],
+                                      "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                  "created" => group.created_at.iso8601,
+                                                  "lastModified" => group.updated_at.iso8601,
+                                                  "resourceType" => "Group" },
+                                      "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] })
+
       end
     end
 
@@ -296,6 +336,92 @@ RSpec.describe "SCIM API Groups" do
                                       "externalId" => new_external_group_id,
                                       "id" => group.id.to_s,
                                       "members" => [{ "value" => user.id.to_s }],
+                                      "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                  "created" => group.created_at.iso8601,
+                                                  "lastModified" => group.updated_at.iso8601,
+                                                  "resourceType" => "Group" },
+                                      "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] })
+      end
+
+      it "replaces members" do
+        group
+        user2
+
+        request_body = {
+          "schemas" =>
+          ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+          "Operations" => [{
+                             "op"=> "replace",
+                             "path"=> "members",
+                             "value"=> [{
+                                          "value"=> user2.id.to_s
+                                        }]
+                           }]
+        }
+        patch "/scim_v2/Groups/#{group.id}", request_body.to_json, headers
+
+        response_body = JSON.parse(last_response.body)
+        group.reload
+        expect(response_body).to eq({ "displayName" => group.name,
+                                      "externalId" => external_group_id,
+                                      "id" => group.id.to_s,
+                                      "members" => [{ "value" => user2.id.to_s }],
+                                      "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                  "created" => group.created_at.iso8601,
+                                                  "lastModified" => group.updated_at.iso8601,
+                                                  "resourceType" => "Group" },
+                                      "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] })
+      end
+
+      it "adds a member" do
+        group
+        user2
+
+        request_body = {
+          "schemas" =>
+          ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+          "Operations" => [{
+                             "op"=> "add",
+                             "path"=> "members",
+                             "value"=> [{"value"=> user2.id.to_s},]
+                           }]
+        }
+        patch "/scim_v2/Groups/#{group.id}", request_body.to_json, headers
+
+        response_body = JSON.parse(last_response.body)
+        group.reload
+        expect(response_body).to eq({ "displayName" => group.name,
+                                      "externalId" => external_group_id,
+                                      "id" => group.id.to_s,
+                                      "members" => [{ "value" => user1.id.to_s },
+                                                    { "value" => user2.id.to_s }],
+                                      "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
+                                                  "created" => group.created_at.iso8601,
+                                                  "lastModified" => group.updated_at.iso8601,
+                                                  "resourceType" => "Group" },
+                                      "schemas" => ["urn:ietf:params:scim:schemas:core:2.0:Group"] })
+      end
+
+      it "removes a member" do
+        group
+
+        request_body = {
+          "schemas" =>
+          ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+          "Operations" => [{
+                             "op"=> "remove",
+                             "path"=> "members",
+                             "value"=> [{"value"=> user1.id.to_s},]
+                           }]
+        }
+        patch "/scim_v2/Groups/#{group.id}", request_body.to_json, headers
+
+        response_body = JSON.parse(last_response.body)
+        group.reload
+        expect(response_body).to eq({ "displayName" => group.name,
+                                      "externalId" => external_group_id,
+                                      "id" => group.id.to_s,
+                                      "members" => [],
                                       "meta" => { "location" => "http://test.host/scim_v2/Groups/#{group.id}",
                                                   "created" => group.created_at.iso8601,
                                                   "lastModified" => group.updated_at.iso8601,

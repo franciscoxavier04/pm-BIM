@@ -33,7 +33,7 @@ module EnterpriseTrials
     form do |f|
       f.text_field(
         name: :company,
-        label: I18n.t("js.admin.enterprise.trial.form.label_company"),
+        label: I18n.t("activerecord.attributes.enterprise_trial.company"),
         required: true
       )
 

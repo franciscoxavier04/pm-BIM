@@ -28,6 +28,8 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 class EnterpriseToken < ApplicationRecord
+  EXPIRING_SOON_DAYS = 30
+
   class << self
     def all_tokens
       all.sort_by(&:sort_key)
@@ -87,14 +89,6 @@ class EnterpriseToken < ApplicationRecord
       end
     end
 
-    def banner_type_for(feature:)
-      if !active?
-        :no_token
-      elsif !allows_to?(feature)
-        :upsell
-      end
-    end
-
     def set_active_tokens
       # although we use the `active` scope here, we still need to filter out non-active tokens
       # as not all token validity period is extracted into the DB
@@ -120,10 +114,12 @@ class EnterpriseToken < ApplicationRecord
   FAR_FUTURE_DATE = Date.new(9999, 1, 1)
   private_constant :FAR_FUTURE_DATE
 
-  validates :encoded_token, presence: true
+  validates :encoded_token, presence: true,
+                            uniqueness: { message: I18n.t("activerecord.errors.models.enterprise_token.already_added") }
   validate :valid_token_object
   validate :valid_domain
 
+  before_validation :strip_encoded_token
   before_save :extract_validity_from_token
   before_save :clear_current_tokens_cache
   before_destroy :clear_current_tokens_cache
@@ -167,8 +163,39 @@ class EnterpriseToken < ApplicationRecord
 
   delegate :clear_current_tokens_cache, to: :EnterpriseToken
 
+  def expiring_soon?
+    token_object.will_expire? \
+      && token_object.active?(reprieve: false) \
+      && token_object.expires_at <= EXPIRING_SOON_DAYS.days.from_now
+  end
+
+  def in_grace_period?
+    token_object.expired?(reprieve: false) \
+      && !token_object.expired?(reprieve: true)
+  end
+
   def expired?(reprieve: true)
-    token_object.expired?(reprieve:) || invalid_domain?
+    token_object.expired?(reprieve:)
+  end
+
+  def statuses
+    statuses = []
+    if trial?
+      statuses << :trial
+    end
+    if invalid_domain?
+      statuses << :invalid_domain
+    end
+    if !started?
+      statuses << :not_active
+    elsif expiring_soon?
+      statuses << :expiring_soon
+    elsif in_grace_period?
+      statuses << :in_grace_period
+    elsif expired?
+      statuses << :expired
+    end
+    statuses
   end
 
   ##
@@ -192,6 +219,10 @@ class EnterpriseToken < ApplicationRecord
   end
 
   private
+
+  def strip_encoded_token
+    self.encoded_token = encoded_token.strip if encoded_token.present?
+  end
 
   def load_token!
     @token_object = OpenProject::Token.import(encoded_token)

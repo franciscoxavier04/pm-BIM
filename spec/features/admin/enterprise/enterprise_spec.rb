@@ -34,18 +34,6 @@ RSpec.describe "Enterprise token", :js do
   include Redmine::I18n
 
   shared_let(:admin) { create(:admin) }
-  let(:token_object) do
-    OpenProject::Token.new.tap do |token|
-      token.subscriber = "Foobar"
-      token.mail = "foo@example.org"
-      token.starts_at = Date.current
-      token.expires_at = nil
-      token.domain = Setting.host_name
-    end
-  end
-
-  let(:textarea) { find_by_id "enterprise_token_encoded_token" }
-  let(:submit_button) { find_by_id "token-submit-button" }
 
   describe "EnterpriseToken management" do
     before do
@@ -53,24 +41,40 @@ RSpec.describe "Enterprise token", :js do
       visit enterprise_tokens_path
     end
 
-    it "shows a teaser page and has a button to add a token" do
+    it "shows a teaser page and has a button to add a token with a dialog" do
       expect(page).to have_link("Start free trial")
 
-      # Try adding invalid enterprise token data
       expect(page).to have_button("Add Enterprise token")
       click_button "Add Enterprise token"
 
       expect(page).to have_dialog("Add Enterprise token")
-      fill_in "Type support token text", with: "foobar"
-      click_button "Add"
+      expect(page).to have_field("Type support token text", type: "textarea")
+    end
 
-      # The dialog is still open with an error message on token field
-      expect(page).to have_dialog("Add Enterprise token")
-      expect(page).to have_field("Type support token text",
-                                 validation_error: "Enterprise support token can't be read. Are you sure it is a support token?")
+    context "with invalid input" do
+      it "shows an error message" do
+        click_button "Add Enterprise token"
+        fill_in "Type support token text", with: "foobar"
+        click_button "Add"
+
+        # The dialog is still open with an error message on token field
+        expect(page).to have_dialog("Add Enterprise token")
+        validation_error = "Enterprise support token can't be read. Are you sure it is a support token?"
+        expect(page).to have_field("Type support token text", validation_error:)
+      end
     end
 
     context "with valid input" do
+      let(:token_object) do
+        OpenProject::Token.new.tap do |token|
+          token.subscriber = "Foobar"
+          token.mail = "foo@example.org"
+          token.starts_at = Date.current
+          token.expires_at = nil
+          token.domain = Setting.host_name
+        end
+      end
+
       before do
         allow(OpenProject::Token).to receive(:import).and_return(token_object)
       end
@@ -84,10 +88,8 @@ RSpec.describe "Enterprise token", :js do
 
         # Table headers
         [
-          "Plan",
-          "Subscriber",
-          "Maximum active users",
-          "Email",
+          "Subscription",
+          "Active users",
           "Domain",
           "Dates"
         ].each do |attribute|
@@ -96,10 +98,8 @@ RSpec.describe "Enterprise token", :js do
 
         # Token values
         [
-          "Enterprise Plan (Token Version #{token_object.version})",
-          "Foobar",
+          "Enterprise Plan\nFoobar",
           "Unlimited",
-          "foo@example.org",
           Setting.host_name,
           "#{format_date(Date.current)} – Unlimited"
         ].each do |attribute|
@@ -123,6 +123,32 @@ RSpec.describe "Enterprise token", :js do
         # Token deleted
         expect_and_dismiss_flash(message: I18n.t(:notice_successful_delete))
         expect(EnterpriseToken.all).to be_empty
+      end
+
+      it "cannot import same token twice" do
+        click_button "Add Enterprise token"
+        fill_in "Type support token text", with: "foobar"
+        click_button "Add"
+
+        expect_and_dismiss_flash(message: I18n.t(:notice_successful_update))
+
+        click_button "Add Enterprise token"
+        fill_in "Type support token text", with: "foobar"
+        click_button "Add"
+
+        # The dialog is still open with an error message on token field
+        expect(page).to have_dialog("Add Enterprise token")
+        validation_error = "This token has already been added."
+        expect(page).to have_field("Type support token text", validation_error:)
+
+        # Try importing with blank spaces and newlines before and after
+        fill_in "Type support token text", with: " \nfoobar \n"
+        click_button "Add"
+
+        # The dialog is still open with an error message on token field
+        expect(page).to have_dialog("Add Enterprise token")
+        validation_error = "This token has already been added."
+        expect(page).to have_field("Type support token text", validation_error:)
       end
     end
   end

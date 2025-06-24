@@ -60,7 +60,7 @@ module Meetings
       else
         safe_join(
           [
-            helpers.format_time_as_date(model.start_time),
+            helpers.format_date(model.start_time),
             helpers.format_time(model.start_time, include_date: false)
           ],
           " "

@@ -51,6 +51,10 @@ export class ConfigurationService {
     return this.userPreference('commentSortDescending');
   }
 
+  public disableKeyboardShortcuts():boolean {
+    return this.userPreference('disableKeyboardShortcuts');
+  }
+
   public warnOnLeavingUnsaved():boolean {
     return this.userPreference('warnOnLeavingUnsaved');
   }

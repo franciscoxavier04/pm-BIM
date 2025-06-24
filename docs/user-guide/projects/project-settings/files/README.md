@@ -10,26 +10,19 @@ keywords: file storages, project folder, storages
 > [!NOTE]
 > Before a storage service can be added to a project, an administrator must first set up [Nextcloud integration](../../../../system-admin-guide/integrations/nextcloud/) or [OneDrive/SharePoint integration](../../../../system-admin-guide/integrations/one-drive/) with OpenProject.
 
-| Topic                                                        | Description                                       |
-| ------------------------------------------------------------ | :------------------------------------------------ |
-| [Files module overview](#files-module-overview)              | Files module explained                            |
-| [Add Nextcloud storage](#add-a-nextcloud-storage-to-a-project) | Add your Nextcloud storage to a project           |
-| [Nextcloud and project folders](#project-folders)            | How to manage Nextcloud project folders           |
-| [Edit and delete Nextcloud storage](#edit-an-existing-nextcloud-storage) | Edit and delete an existing Nextcloud storage     |
-| [Add OneDrive/SharePoint storage to a project](#add-a-onedrivesharepoint-storage-to-a-project-enterprise-add-on) | Add your OneDrive/SharePoint storage to a project |
+| Topic                                                        | Description                                                 |
+| ------------------------------------------------------------ | :---------------------------------------------------------- |
+| [Files module overview](#files-module-overview)              | Files module explained                                      |
+| [Add Nextcloud storage](#add-a-nextcloud-storage-to-a-project) | Add your Nextcloud storage to a project                     |
+| [Nextcloud and project folders](#project-folders)            | How to manage Nextcloud project folders                     |
+| [Edit and delete Nextcloud storage](#edit-an-existing-nextcloud-storage) | Edit and delete an existing Nextcloud storage               |
+| [Add OneDrive/SharePoint storage to a project](#add-a-onedrivesharepoint-storage-to-a-project-enterprise-add-on) | Add your OneDrive/SharePoint storage to a project           |
+| [Show attachments in work packages](#show-attachments-in-the-work-packages-files-tab) | Allow showing attachments under the work packages Files tab |
 
 ## Files module overview
 
 Under the **Files** module you will be able to manage external file storages, such as Nextcloud or OneDrive/SharePoint and manage attachments upload under *Files* tab in work packages. Navigate to **Project settings -> Files** to get here. 
 
-## Show attachments in the work packages files tab
-
-To activate or de-activate the attachments being shown under **Files** tab in work packages, navigate to *Project settings > Files* and select the *Attachments* tab. Here you can decide whether the attachments option will be shown under *Files* tab of work packages detailed view for a specific project. 
-
-![Show attachments in the work packages files tab in OpenProject](project-settings-attachments.png)
-
-> [!NOTE]
-> Please note that you need a *Manage files in project* permission to be able to activate or deactivate this work package attachment option.
 
 ## Add a new storage to a project
 
@@ -37,11 +30,11 @@ Click on the **External file storages** tab under **Files**. It will take you to
 
 Click on **+ Storage** or the **+** icon below the table.
 
-![List of file storages available to a project, empty](file-storages-available-in-project.png)
+![List of file storages available in a project under project settings in OpenProject](file-storages-available-in-project.png)
 
 In the page that follows, you will be able to select one of the file storages set up by your administrator. You can select Nextcloud or OneDrive/SharePoint storages from the drop-down menu. If you only have one file storage set up (which is the most likely scenario), it should already be selected by default. Once the storage is selected click on the **Continue** button to proceed.
 
-![Select the desired storage](storage-add-new.png)
+![Add a file storage to a project under project settings in OpenProject](storage-add-new.png)
 
 ## Add a OneDrive/SharePoint storage to a project (Enterprise add-on)
 
@@ -122,3 +115,12 @@ To delete an existing storage, you can click on the delete icon on the right sid
 To be able to delete a storage from a project you will be asked to confirm the action by introducing the name of the storage. This action is irreversible and will remove all links from work packages of this project to files and folders of that storage. Also, in case this storage has an automatically managed project folder, it and its files will be deleted forever.
 
 ![Delete a storage from a project](storage-delete.png)
+
+## Show attachments in the work packages files tab
+
+To activate or de-activate the attachments being shown under **Files** tab in work packages, navigate to *Project settings > Files* and select the *Attachments* tab. Here you can decide whether the attachments option will be shown under *Files* tab of work packages detailed view for a specific project. 
+
+![Show attachments in the work packages files tab in OpenProject](project-settings-attachments.png)
+
+> [!NOTE]
+> Please note that you need a *Manage files in project* permission to be able to activate or deactivate this work package attachment option.

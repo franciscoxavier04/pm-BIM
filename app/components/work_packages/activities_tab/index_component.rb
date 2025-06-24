@@ -59,7 +59,6 @@ module WorkPackages
         {
           test_selector: "op-wp-activity-tab",
           controller: index_stimulus_controller,
-          "application-target": "dynamic",
           index_stimulus_controller("-notification-center-path-name-value") => notifications_path,
           index_stimulus_controller("-update-streams-path-value") => update_streams_work_package_activities_path(work_package),
           index_stimulus_controller("-sorting-value") => journal_sorting,
@@ -77,7 +76,6 @@ module WorkPackages
         {
           test_selector: "op-work-package-journal--new-comment-component",
           controller: internal_comment_stimulus_controller,
-          "application-target": "dynamic",
           internal_comment_stimulus_controller("-target") => "formContainer",
           action: index_stimulus_controller(":onSubmit-end@window->#{internal_comment_stimulus_controller}#onSubmitEnd"),
           internal_comment_stimulus_controller("-highlight-class") => "work-packages-activities-tab-journals-new-component--journal-notes-body__internal-comment", # rubocop:disable Layout/LineLength
