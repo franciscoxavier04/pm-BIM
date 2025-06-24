@@ -30,7 +30,7 @@ import {
   Injectable,
   Injector,
 } from '@angular/core';
-import moment, { Moment } from 'moment';
+import { DateTime } from 'luxon';
 import {
   take,
   tap,
@@ -57,8 +57,13 @@ export class WeekdayService {
    * @param date The iso day number (1-7) or a date instance
    * @return {boolean} whether the given iso day is working or not
    */
-  public isNonWorkingDay(date:Moment|Date|number):boolean {
-    const isoDayOfWeek = (typeof date === 'number') ? date : moment(date).isoWeekday();
+  public isNonWorkingDay(date:DateTime|Date|number):boolean {
+    const isoDayOfWeek = (typeof date === 'number')
+      ? date
+      : (date instanceof DateTime)
+        ? date.weekday
+        : DateTime.fromJSDate(date).weekday;
+
     return !!(this.weekdays || []).find((wd) => wd.day === isoDayOfWeek && !wd.working);
   }
 

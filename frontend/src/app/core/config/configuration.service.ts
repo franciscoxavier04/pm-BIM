@@ -27,7 +27,7 @@
 //++
 
 import { Injectable } from '@angular/core';
-import moment from 'moment';
+import { Settings } from 'luxon';
 
 import { ConfigurationResource } from 'core-app/features/hal/resources/configuration-resource';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
@@ -139,7 +139,7 @@ export class ConfigurationService {
     if (this.startOfWeekPresent()) {
       return this.systemPreference('startOfWeek');
     }
-    return moment.localeData(I18n.locale).firstDayOfWeek();
+    return Settings.defaultWeekSettings?.firstDay || 0;
   }
 
   public get hostName():string {

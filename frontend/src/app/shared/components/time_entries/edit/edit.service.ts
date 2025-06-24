@@ -11,7 +11,7 @@ import { ResourceChangeset } from 'core-app/shared/components/fields/changeset/r
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { TimeEntryResource } from 'core-app/features/hal/resources/time-entry-resource';
 import { TimeEntryEditModalComponent } from './edit.modal';
-import moment from 'moment';
+import { DateTime } from 'luxon';
 import { SchemaCacheService } from 'core-app/core/schemas/schema-cache.service';
 import { TimezoneService } from 'core-app/core/datetime/timezone.service';
 import { TimeEntryTimerService } from 'core-app/shared/components/time_entries/services/time-entry-timer.service';
@@ -82,7 +82,7 @@ export class TimeEntryEditService {
     await this.schemaCache.ensureLoaded(activeTimer);
 
     const change = this.halEditing.edit(activeTimer);
-    const hours = moment().diff(moment(activeTimer.createdAt as string), 'hours', true);
+    const hours = DateTime.now().diff(DateTime.fromISO(activeTimer.createdAt), 'hours').hours;
     const formatted = this.timezoneService.toISODuration(hours, 'hours');
     change.setValue('hours', formatted);
     change.setValue('ongoing', false);

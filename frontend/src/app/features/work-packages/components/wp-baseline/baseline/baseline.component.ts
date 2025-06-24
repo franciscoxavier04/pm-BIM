@@ -56,10 +56,11 @@ import {
   getPartsFromTimestamp,
   offsetToUtcString,
 } from 'core-app/features/work-packages/components/wp-baseline/baseline-helpers';
-import moment from 'moment-timezone';
+
 import { BannersService } from 'core-app/core/enterprise/banners.service';
 import { enterpriseDocsUrl } from 'core-app/core/setup/globals/constants.const';
 import { DayElement } from 'flatpickr/dist/types/instance';
+import { DateTime } from 'luxon';
 
 const DEFAULT_SELECTED_TIME = '08:00';
 
@@ -124,11 +125,11 @@ export class OpBaselineComponent extends UntilDestroyedMixin implements OnInit {
         return '';
       }
 
-      const formatted = moment(`${date}T${time}${offset}`)
-        .tz(this.userTimezone);
+      let formatted = DateTime.fromISO(`${date}T${time}${offset}`);
+      formatted = formatted.setZone(this.userTimezone);
 
-      const formattedDate = formatted.format(this.timezoneService.getDateFormat());
-      const formattedTime = formatted.format(this.timezoneService.getTimeFormat());
+      const formattedDate = formatted.toLocaleString(this.timezoneService.getDateFormat());
+      const formattedTime = formatted.toLocaleString(this.timezoneService.getTimeFormat());
       return this.I18n.t('js.baseline.time_description', {
         datetime: `${formattedDate} ${formattedTime}`,
       });
@@ -177,7 +178,7 @@ export class OpBaselineComponent extends UntilDestroyedMixin implements OnInit {
 
   public ngOnInit():void {
     this.userTimezone = this.timezoneService.userTimezone();
-    this.userOffset = moment().tz(this.userTimezone).format('Z');
+    this.userOffset = DateTime.local().zone.name;
     this.resetSelection();
 
     if (this.wpTableBaseline.isActive()) {
@@ -211,7 +212,7 @@ export class OpBaselineComponent extends UntilDestroyedMixin implements OnInit {
   }
 
   public setToday(key:string):void {
-    const today = moment().format('YYYY-MM-DD');
+    const today = DateTime.now().toISODate();
     const from = key === 'from' ? today : this.selectedDates[0];
     // When setting the "from" date to today, the "to" date must also be set to today,
     // because we do not allow future dates, meaning "to" cannot be anything else but today.
@@ -266,8 +267,8 @@ export class OpBaselineComponent extends UntilDestroyedMixin implements OnInit {
   }
 
   public futureDateComparer():(dayElem:DayElement) => boolean {
-    const now = moment();
-    return (dayElem:DayElement) => moment(dayElem.dateObj).isAfter(now, 'days');
+    const now = DateTime.now();
+    return (dayElem:DayElement) => DateTime.fromJSDate(dayElem.dateObj).day > now.day;
   }
 
   private updateDateValues(date:string) {

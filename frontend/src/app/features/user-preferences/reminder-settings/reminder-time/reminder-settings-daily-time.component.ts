@@ -22,7 +22,7 @@ import {
   FormGroupDirective,
 } from '@angular/forms';
 import { ConfigurationService } from 'core-app/core/config/configuration.service';
-import moment from 'moment';
+import { DateTime } from 'luxon';
 
 @Component({
   selector: 'op-reminder-settings-daily-time',
@@ -246,7 +246,9 @@ export class ReminderSettingsDailyTimeComponent implements OnInit {
   private static dateForHour(hour:number) {
     const currentTime = new Date();
     currentTime.setTime(1000 * 60 * 60 * (hour - 1));
-    const convertTimeObject = new Date(moment(currentTime).utc().hours(hour).format('YYYY-MM-DDTHH:mm:ss'));
+
+    const dt = DateTime.fromJSDate(currentTime).toUTC().set({ hour });
+    const convertTimeObject = new Date(dt.toFormat('yyyy-MM-ddTHH:mm:ss'));
 
     return convertTimeObject;
   }

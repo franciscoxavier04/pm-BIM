@@ -8,7 +8,7 @@ import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { FormResource } from 'core-app/features/hal/resources/form-resource';
 import { ResourceChangeset } from 'core-app/shared/components/fields/changeset/resource-changeset';
 import { HalResourceEditingService } from 'core-app/shared/components/fields/edit/services/hal-resource-editing.service';
-import { Moment } from 'moment';
+import { DateTime } from 'luxon';
 import { WorkPackageResource } from 'core-app/features/hal/resources/work-package-resource';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { SchemaCacheService } from 'core-app/core/schemas/schema-cache.service';
@@ -29,12 +29,12 @@ export class TimeEntryCreateService {
   ) {
   }
 
-  public createNewTimeEntry(date:Moment, wp:WorkPackageResource, ongoing:boolean):Observable<ResourceChangeset> {
+  public createNewTimeEntry(date:DateTime, wp:WorkPackageResource, ongoing:boolean):Observable<ResourceChangeset> {
     const resource:FormResource = this.halResource.createHalResourceOfType(
       'Form',
       {
         payload: {
-          spentOn: date.format('YYYY-MM-DD'),
+          spentOn: date.toISODate()!,
           hours: null,
           ongoing,
           _links: {

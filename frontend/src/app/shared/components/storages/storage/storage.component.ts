@@ -503,7 +503,7 @@ export class StorageComponent extends UntilDestroyedMixin implements OnInit, OnD
             return null;
           }
 
-          const now = this.timezoneService.parseDate(new Date()).toISOString();
+          const now = this.timezoneService.parseDate(new Date()).toISO()!;
           return ({
             id: response.id,
             name: response.name,

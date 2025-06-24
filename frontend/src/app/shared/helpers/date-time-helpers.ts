@@ -26,39 +26,22 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-// 'Global' dependencies
-//
-// dependencies required by classic (Rails) and Angular application.
+import { DateTime } from 'luxon';
 
-// Lodash
-import lodash from 'lodash';
-
-// jQuery
-import 'jquery-ujs';
-
-// Jquery UI
-// import 'jquery-ui/ui/position';
-// import 'jquery-ui/ui/disable-selection';
-// import 'jquery-ui/ui/widgets/sortable';
-// import 'jquery-ui/ui/widgets/dialog';
-// import 'jquery-ui/ui/widgets/tooltip';
-import 'core-vendor/jquery-ui-1.14.1/jquery-ui';
-
-import 'jquery.caret';
-// Text highlight for autocompleter
-import 'mark.js/dist/jquery.mark.min';
-
-// eslint-disable-next-line import/extensions,import/no-extraneous-dependencies
-import '@openproject/primer-view-components/app/assets/javascripts/primer_view_components.js';
-
-import URI from 'urijs';
-import 'urijs/src/URITemplate';
-
-declare global {
-  interface Window {
-    _:typeof lodash;
+/**
+ * Helper to aid migration from Moment's `moment()` function to Luxon's API,
+ * which provides multiple, discreet creation functions.
+ *
+ * @param date
+ * @returns
+ */
+export function toDateTime(date:DateTime|Date|string):DateTime {
+  if (date instanceof DateTime) {
+    return date;
   }
-}
+  if (date instanceof Date) {
+    return DateTime.fromJSDate(date);
+  }
 
-window._ = lodash;
-window.URI = URI;
+  return DateTime.fromISO(date);
+}
