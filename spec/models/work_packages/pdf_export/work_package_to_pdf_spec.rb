@@ -382,7 +382,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
             I18n.t('export.macro.resource_not_found', resource: 'WorkPackage 1234567890'))}]  ",
           "Access denied:  ",
           "[#{I18n.t('export.macro.error', message:
-            I18n.t('export.macro.resource_not_found', resource: "WorkPackage #{forbidden_work_package.id}"))}]",
+            I18n.t('export.macro.resource_not_found', resource: "WorkPackage #{forbidden_work_package.id}"))}]"
         ]
       end
 
