@@ -74,6 +74,11 @@ export abstract class DialogPreviewController extends Controller {
     // caption and validation message unaccessible for screen readers and other
     // assistive technologies. This is why morph cannot be used here.
     this.frameMorphRenderer = (event:CustomEvent<TurboBeforeFrameRenderEventDetail>) => {
+      const oldFrame = event.srcElement as HTMLTurboFrameElement;
+      const requestUrl = new URL(oldFrame.src || '');
+      // Do not replace the angular datepicker unless the schedule_manually flag is changed.
+      const replaceAngularTags = requestUrl.searchParams.has('schedule_manually');
+
       event.detail.render = (currentElement:HTMLElement, newElement:HTMLElement) => {
         Idiomorph.morph(currentElement, newElement, {
           ignoreActiveValue: this.ignoreActiveValueWhenMorphing(),
@@ -82,7 +87,9 @@ export abstract class DialogPreviewController extends Controller {
               // In case the element is an OpenProject custom dom element, prevent morphing and
               // replace the angular tag with the new version.
               if (oldNode.tagName?.startsWith('OPCE-')) {
-                oldNode.replaceWith(newNode);
+                if (replaceAngularTags) {
+                  oldNode.replaceWith(newNode);
+                }
                 return false;
               }
               return true;
