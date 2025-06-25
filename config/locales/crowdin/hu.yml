@@ -1207,7 +1207,7 @@ hu:
           attributes:
             content_type:
               blank: "A fájltípus nem lehet üres."
-              not_whitelisted: "Az automatikus szűrő visszautasította a fájlt. Feltöltésnél a '%{value}' nem engedélyezett."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}\n"
         capability:
           context:

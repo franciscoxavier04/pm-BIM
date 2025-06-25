@@ -1217,7 +1217,7 @@ uk:
           attributes:
             content_type:
               blank: "Тип контенту файлу не може бути пустий."
-              not_whitelisted: "Файл відхилено автоматичним фільтром. Завантаження «%{value}» не дозволено."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:

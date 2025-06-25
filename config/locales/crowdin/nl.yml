@@ -1204,7 +1204,7 @@ nl:
           attributes:
             content_type:
               blank: "Het inhoudstype van het bestand mag niet leeg zijn."
-              not_whitelisted: "Het bestand is geweigerd door een automatisch filter. '%{value}' is niet gewhitelist voor uploaden."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:

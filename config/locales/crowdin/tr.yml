@@ -1207,7 +1207,7 @@ tr:
           attributes:
             content_type:
               blank: "Dosyanın içerik türü boş olamaz."
-              not_whitelisted: "Dosya, otomatik bir filtre tarafından reddedildi. '%{value}' yükleme için beyaz listeye alınmadı."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:

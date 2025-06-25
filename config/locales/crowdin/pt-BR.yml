@@ -1205,7 +1205,7 @@ pt-BR:
           attributes:
             content_type:
               blank: "O tipo de conteúdo do arquivo não pode ficar em branco."
-              not_whitelisted: "O arquivo foi rejeitado por um filtro automático. '%{value}' não está na lista de permissões para ser enviado."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:

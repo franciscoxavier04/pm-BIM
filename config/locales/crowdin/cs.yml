@@ -1224,7 +1224,7 @@ cs:
           attributes:
             content_type:
               blank: "Typ obsahu souboru nemůže být prázdný."
-              not_whitelisted: "Soubor byl odmítnut automatickým filtrem. '%{value}' není na seznamu povolených pro nahrávání."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:
