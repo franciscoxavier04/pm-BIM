@@ -109,7 +109,7 @@ RSpec.describe Projects::Menu do
   end
 
   describe "queries order" do
-    subject(:titles) { menu_items.map { _1.children.map(&:title) } }
+    subject(:titles) { menu_items.map { it.children.map(&:title) } }
 
     shared_let(:another_current_user_query) do
       ProjectQuery.create!(name: "Another current user query", user: current_user)

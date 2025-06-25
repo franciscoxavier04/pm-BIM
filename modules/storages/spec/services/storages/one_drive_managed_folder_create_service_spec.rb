@@ -355,7 +355,7 @@ RSpec.describe Storages::OneDriveManagedFolderCreateService, :webmock do
                    .value!
     Storages::Peripherals::Registry.resolve("one_drive.commands.set_permissions")
                                    .call(storage:, auth_strategy:, input_data:)
-                                   .on_failure { p _1.inspect }
+                                   .on_failure { p it.inspect }
   end
 
   def delete_created_folders

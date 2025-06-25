@@ -128,7 +128,7 @@ class Principal < ApplicationRecord
   def self.columns_for_name(formatter = nil)
     raise NotImplementedError, "Redefine in subclass" unless self == Principal
 
-    [User, Group, PlaceholderUser].map { _1.columns_for_name(formatter) }.inject(:|)
+    [User, Group, PlaceholderUser].map { it.columns_for_name(formatter) }.inject(:|)
   end
 
   # Select columns for formatting the user's name.
