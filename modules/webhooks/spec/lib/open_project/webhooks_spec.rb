@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,28 +28,28 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require_relative "../spec_helper"
+require "spec_helper"
 
 RSpec.describe OpenProject::Webhooks do
   describe ".register_hook" do
     after do
-      OpenProject::Webhooks.unregister_hook("testhook1")
+      described_class.unregister_hook("testhook1")
     end
 
     it "succeeds" do
-      OpenProject::Webhooks.register_hook("testhook1") {}
+      described_class.register_hook("testhook1") {}
     end
   end
 
   describe ".find" do
-    let!(:hook) { OpenProject::Webhooks.register_hook("testhook3") {} }
+    let!(:hook) { described_class.register_hook("testhook3") {} }
 
     after do
-      OpenProject::Webhooks.unregister_hook("testhook3")
+      described_class.unregister_hook("testhook3")
     end
 
     it "succeeds" do
-      expect(OpenProject::Webhooks.find("testhook3")).to equal(hook)
+      expect(described_class.find("testhook3")).to equal(hook)
     end
   end
 
@@ -55,12 +57,12 @@ RSpec.describe OpenProject::Webhooks do
     let(:probe) { lambda {} }
 
     before do
-      OpenProject::Webhooks.register_hook("testhook2", &probe)
+      described_class.register_hook("testhook2", &probe)
     end
 
     it "results in the hook no longer being found" do
-      OpenProject::Webhooks.unregister_hook("testhook2")
-      expect(OpenProject::Webhooks.find("testhook2")).to be_nil
+      described_class.unregister_hook("testhook2")
+      expect(described_class.find("testhook2")).to be_nil
     end
   end
 end

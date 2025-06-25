@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,3 +29,23 @@
 #++
 
 require "spec_helper"
+
+RSpec.describe OpenProject::Webhooks::Hook do
+  describe "#relative_url" do
+    let(:hook) { described_class.new("myhook") }
+
+    it "returns the correct URL" do
+      expect(hook.relative_url).to eql("webhooks/myhook")
+    end
+  end
+
+  describe "#handle" do
+    let(:probe) { -> {} }
+    let(:hook) { described_class.new("myhook", &probe) }
+
+    it "executes the callback with the correct parameters" do
+      expect(probe).to receive(:call).with(hook, 1, 2, 3)
+      hook.handle(1, 2, 3)
+    end
+  end
+end
