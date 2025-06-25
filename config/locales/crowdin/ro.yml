@@ -1242,7 +1242,7 @@ ro:
           attributes:
             content_type:
               blank: "Tipul de conținut al fișierului nu poate fi necompletat."
-              not_whitelisted: "Fişierul a fost respins de un filtru automat. '%{value}' nu este whitelisted pentru încărcare."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:

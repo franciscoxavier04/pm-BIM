@@ -1231,7 +1231,7 @@ ca:
           attributes:
             content_type:
               blank: "El tipus de contingut del fitxer no pot ser buit."
-              not_whitelisted: "El fitxer s'ha rebutjat per un filtre automàtic. '%{value}' no és a la llista blanca de càrrega."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:

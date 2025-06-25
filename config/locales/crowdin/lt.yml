@@ -1247,7 +1247,7 @@ lt:
           attributes:
             content_type:
               blank: "Failo turinio tipas negali būti tuščias."
-              not_whitelisted: "Failą atmetė automatinis filtras. „%{value}“ nėra tinkamas įkėlimui."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:

@@ -1234,7 +1234,7 @@ bg:
           attributes:
             content_type:
               blank: "Типът на съдържанието на файла не може да бъде празен."
-              not_whitelisted: "The file was rejected by an automatic filter. '%{value}' is not whitelisted for upload."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:

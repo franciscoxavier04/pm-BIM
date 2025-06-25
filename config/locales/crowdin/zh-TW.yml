@@ -1222,7 +1222,7 @@ zh-TW:
           attributes:
             content_type:
               blank: "文件的內容類型不能為空。"
-              not_whitelisted: "該文件被拒絕。 “%{value}”未列入上傳白名單。"
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:

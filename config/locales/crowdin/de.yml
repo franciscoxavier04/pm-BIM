@@ -1226,7 +1226,7 @@ de:
           attributes:
             content_type:
               blank: "Der Content-Type der Datei darf nicht leer sein."
-              not_whitelisted: "Die Datei wurde von einem automatischen Filter abgelehnt. '%{value}' ist nicht für Uploads freigegeben."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:

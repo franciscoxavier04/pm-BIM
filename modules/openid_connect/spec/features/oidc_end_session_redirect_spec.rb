@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,18 +28,28 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Attachments
-  class BaseService < ::BaseServices::Create
-    ##
-    # Create an attachment service bypassing the user-provided whitelist
-    # for internal purposes such as exporting data.
-    #
-    # @param user The user to call the service with
-    # @param whitelist A custom whitelist to validate with, or empty to disable validation
-    #
-    # Warning: When passing an empty whitelist, this results in no validations on the content type taking place.
-    def self.bypass_allowlist(user:, allowlist: [])
-      new(user:, contract_options: { allowlist: allowlist.map(&:to_s) })
-    end
+require "spec_helper"
+
+RSpec.describe "OpenID Connect end_session_redirect",
+               :js,
+               with_ee: %i[sso_auth_providers] do
+  let!(:provider) do
+    create(:oidc_provider,
+           slug: "keycloak",
+           end_session_endpoint: "https://example.com")
+  end
+
+  let(:password) { "password!123" }
+  let(:user) { create(:user, authentication_provider: provider, password:, password_confirmation: password) }
+
+  it "redirects to the OIDC logout endpoint without turbo (Regression #65076)" do
+    login_with(user.login, password)
+
+    visit home_path
+
+    page.find(".op-top-menu-user").click
+    click_link_or_button "Sign out"
+
+    expect(page).to have_current_path("https://example.com")
   end
 end

@@ -1224,7 +1224,7 @@ ms:
           attributes:
             content_type:
               blank: "Jenis kandungan fail tidak boleh kosong."
-              not_whitelisted: "Fail ditolak oleh penyaring automatik. '%{value}' tidak diluluskan untuk dimuat naik."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:

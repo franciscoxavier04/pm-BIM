@@ -1232,7 +1232,7 @@ fr:
           attributes:
             content_type:
               blank: "Le type de contenu du fichier ne peut pas être vide."
-              not_whitelisted: "Le fichier a été rejeté par un filtre automatique. « %{value} » n'est pas en liste blanche pour le téléversement."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:

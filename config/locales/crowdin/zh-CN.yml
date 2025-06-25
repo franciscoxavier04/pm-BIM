@@ -1222,7 +1222,7 @@ zh-CN:
           attributes:
             content_type:
               blank: "文件的内容类型不能为空。"
-              not_whitelisted: "文件被自动筛选器拒绝。“%{value}”未被列入上传白名单。"
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:

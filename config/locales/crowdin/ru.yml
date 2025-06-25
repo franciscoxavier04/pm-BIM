@@ -1248,7 +1248,7 @@ ru:
           attributes:
             content_type:
               blank: "Тип содержимого файла не может быть пустым."
-              not_whitelisted: "Файл был отклонен автоматическим фильтром. '%{value}' не является белым списком для загрузки."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:

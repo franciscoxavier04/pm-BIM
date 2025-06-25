@@ -1246,7 +1246,7 @@ pl:
           attributes:
             content_type:
               blank: "Zawartość tego typu zwartości nie może być pusta."
-              not_whitelisted: "Plik został odrzucony przez automatyczny filtr. '%{value}' nie jest na białej liście do przesyłania."
+              not_allowlisted: "The file was rejected by an automatic filter. '%{value}' is not allowed for upload."
               format: "%{message}"
         capability:
           context:
