@@ -33,10 +33,16 @@
 module CustomField::CalculatedValue
   def validate_formula
     return unless field_format_calculated_value?
-    # An empty formula is okay.
-    return if formula_string.blank?
 
-    errors.add(:formula, :invalid) unless formula_contains_only_allowed_characters?
+    if formula_string.blank?
+      errors.add(:formula, :blank)
+      return
+    end
+
+    unless formula_contains_only_allowed_characters?
+      errors.add(:formula, :invalid_characters)
+      return
+    end
 
     # WP-64348: check for valid (i.e., visible & enabled) custom field references (see #cf_ids_used_in_formula)
 
@@ -45,7 +51,7 @@ module CustomField::CalculatedValue
     #       e.g. Dentaku(formula_string, cf_123: CustomField.find(123).value)
     errors.add(:formula, :invalid) unless Dentaku(formula_string)
 
-    # TODO: consider differentiating between a formula that contains invalid characters, missing variables, invalid
+    # TODO: consider differentiating between a formula that contains missing variables, invalid
     #       syntax, or mathematical errors.
   end
 

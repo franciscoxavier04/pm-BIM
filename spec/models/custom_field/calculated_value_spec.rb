@@ -32,7 +32,7 @@ require "spec_helper"
 
 RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_project_attribute: true } do
   context "when calculated value" do
-    subject(:custom_field) { create(:calculated_value_project_custom_field) }
+    subject(:custom_field) { create(:calculated_value_project_custom_field, formula: "1 + 1") }
 
     describe "#formula=" do
       it "splits formula and referenced custom fields on persist if given a string" do
@@ -52,6 +52,7 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
 
     describe "#formula_string" do
       it "returns an empty string if no formula is set" do
+        subject.formula = nil
         expect(subject.formula_string).to eq("")
       end
 
@@ -72,8 +73,9 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
       end
 
       context "with an empty formula" do
-        it "is valid" do
-          expect(subject).to be_valid
+        it "is invalid" do
+          expect(subject).not_to be_valid
+          expect(subject.errors[:formula]).to include("can't be blank.")
         end
       end
 
@@ -90,7 +92,7 @@ RSpec.describe CustomField::CalculatedValue, with_flag: { calculated_value_proje
 
         it "is invalid" do
           expect(subject).not_to be_valid
-          expect(subject.errors[:formula]).to include("is invalid.")
+          expect(subject.errors[:formula]).to include("contains invalid characters.")
         end
       end
 

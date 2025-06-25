@@ -138,6 +138,7 @@ RSpec.describe "List project custom fields", :js do
           let!(:calculated_value_project_custom_field) do
             create(:calculated_value_project_custom_field,
                    name: "Calculated value field",
+                   formula: "42 + 1",
                    project_custom_field_section: section_for_input_fields)
           end
 
