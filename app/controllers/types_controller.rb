@@ -59,7 +59,11 @@ class TypesController < ApplicationController
   end
 
   def create
-    additional_params = { copy_workflow_from: params.dig(:type, :copy_workflow_from) }
+    additional_params = {}
+    if (value = params.dig(:type, :copy_workflow_from))
+      additional_params[:copy_workflow_from] = value
+    end
+
     service_call = WorkPackageTypes::CreateService
                      .new(user: current_user)
                      .call(permitted_type_params.merge(additional_params))

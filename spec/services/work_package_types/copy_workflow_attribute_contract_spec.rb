@@ -29,33 +29,37 @@
 #++
 
 require "spec_helper"
-require "services/base_services/behaves_like_create_service"
 
-RSpec.describe WorkPackageTypes::CreateService, type: :model do
-  it_behaves_like "BaseServices create service" do
-    let(:factory) { :type }
-    let(:model_class) { Type }
+RSpec.describe WorkPackageTypes::CopyWorkflowAttributeContract do
+  subject { described_class.new }
+
+  context "if the given work package type id exists and has a workflow" do
+    let(:wp_type) { create(:type_with_workflow) }
+    let(:params) { { copy_workflow_from: wp_type.id.to_s } }
+
+    it "is valid" do
+      expect(subject.call(params)).to be_success
+    end
   end
 
-  context "if another type is selected to copy the workflow from" do
-    let(:user) { create(:admin) }
-    let(:existing_type) { create(:type_with_workflow) }
-    let(:params) do
-      {
-        name: "Order 66",
-        copy_workflow_from: existing_type.id.to_s,
-        is_milestone: false,
-        is_in_roadmap: true,
-        is_default: false
-      }
+  context "if the given work package type id does not exists" do
+    let(:params) { { copy_workflow_from: "NO" } }
+
+    it "is invalid" do
+      result = subject.call(params)
+      expect(result).to be_failure
+      expect(result.errors(full: true)[:copy_workflow_from]).to match_array("Type for workflow copy not found.")
     end
+  end
 
-    it "copies the workflow to the newly created type" do
-      service = described_class.new(user:)
-      result = service.call(params)
+  context "if the given work package type id does not have a workflow" do
+    let(:wp_type) { create(:type) }
+    let(:params) { { copy_workflow_from: wp_type.id.to_s } }
 
-      expect(result).to be_success
-      expect(result.result.workflows).not_to be_empty
+    it "is invalid" do
+      result = subject.call(params)
+      expect(result).to be_failure
+      expect(result.errors(full: true)[:copy_workflow_from]).to match_array("Type for workflow copy has no own workflow.")
     end
   end
 end
